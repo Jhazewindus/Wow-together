@@ -2,6 +2,12 @@ local addonName, ns = ...
 
 local indexed, followups
 
+-- Prefer worthwhile leveling work, rather than the entire green difficulty
+-- band. Lower quests can still qualify through their useful continuations.
+local function preferredFloor(level)
+    return math.max(1, level - math.max(3, math.floor(level * 0.1)))
+end
+
 function ns.PartyLevelFloor(query)
     if query and query.floor then return query.floor[1], query.floor[2], query.floor[3] end
     local level, key, name
@@ -92,7 +98,7 @@ end
 
 function ns.UsefulQuestReason(id, key, level, query)
     local queue, seen, cursor = {id}, {[id] = true}, 1
-    local lower = math.max(1, level - math.max(5, math.floor(level * 0.2)))
+    local lower = preferredFloor(level)
     while queue[cursor] and cursor <= 128 do
         local previous = queue[cursor]; cursor = cursor + 1
         for nextID in pairs(nextQuests(previous, key)) do
@@ -100,7 +106,7 @@ function ns.UsefulQuestReason(id, key, level, query)
                 seen[nextID] = true
                 local quest = ns.CatalogueQuest(nextID)
                 local profile = key == ns.self and ns.profile or ns.members[key] and ns.members[key].profile
-                if quest and not quest.repeatable and not ns.IsProfessionQuest(nextID)
+                if quest and not ns.IsLevelingExcludedQuest(nextID) and not quest.repeatable and not ns.IsProfessionQuest(nextID)
                     and ns.CatalogueIdentityAllowed(nextID, profile) == true
                     and ns.CatalogueCompletion(key, nextID, query) ~= true then
                     local value = quest.level or 0
@@ -124,7 +130,8 @@ local function levelingValue(id, query)
     local value = quest.level or 0
     if value == 0 then return true end
     if value > level + 3 then return false, "Above the lowest player's level range." end
-    if value >= math.max(1, level - math.max(5, math.floor(level * 0.2))) then return true end
+    if ns.IsClassQuest(id) then return true, "Class progression." end
+    if value >= preferredFloor(level) then return true end
     local reason = ns.UsefulQuestReason(id, key, level, query)
     if not reason then
         for _, person in ipairs(query and query.profiles or ns.PartyProfiles()) do

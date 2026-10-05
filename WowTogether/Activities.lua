@@ -282,6 +282,7 @@ function ns.ShowActivityPrompt(key, title, text, callback, acceptLabel, declineL
         frame.later = ns.UIButton(frame, "Later", 130, function() frame:Hide() end); frame.later:SetPoint("BOTTOMRIGHT", -22, 18)
     end
     ns.db.activityNotices[key] = true
+    ns.activityPrompt.noticeKey = key
     ns.activityPrompt.title:SetText(title); ns.activityPrompt.text:SetText(text)
     ns.activityPrompt.accept.caption:SetText(acceptLabel or (string.find(key, "transition:", 1, true) and "Show next zone route" or "Show collection plan"))
     ns.activityPrompt.later.caption:SetText(declineLabel or "Later")

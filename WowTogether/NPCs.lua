@@ -39,16 +39,18 @@ end
 
 function ns.NPCTargets()
     local targets, known = {}, {}
+    local query = ns.NewQuestQuery()
     local function add(point, id, kind)
         if not point or not point.npc or not ns.GuideInteger(point.entityID) or point.entityID <= 0 then return end
         targets[point.entityID] = targets[point.entityID] or {kind = kind, action = point.action,
             title = ns.QuestTitle(id), label = point.name, quests = {}}
         local target = targets[point.entityID]
+        if kind == "a" then target.pickup = true end
         local priority = {q = 1, a = 2, t = 3}
         if priority[kind] > priority[target.kind] then target.kind, target.action = kind, point.action end
         target.quests[id] = ns.QuestTitle(id)
     end
-    for _, person in ipairs(ns.PartyProfiles()) do
+    for _, person in ipairs(query.profiles) do
         local active = person.key == ns.self and ns.active or (ns.members[person.key] and ns.members[person.key].active)
         if person.synced then
             for id in pairs(active or {}) do
@@ -78,9 +80,16 @@ function ns.NPCTargets()
     end
     if ns.selectedRoute and not ns.routePaused then
         for _, stop in ipairs(ns.selectedRoute.stops) do
-            if stop.kind == "a" and stop.entityID then
+            if stop.kind == "a" and stop.entityID and not ns.IsLevelingExcludedQuest(stop.id) then
                 local quest = ns.CatalogueQuest(stop.id)
-                for _, point in ipairs(quest and quest.starts or {}) do add(point, stop.id, "a") end
+                for _, person in ipairs(query.profiles) do
+                    local active = person.key == ns.self and ns.active or ns.members[person.key] and ns.members[person.key].active
+                    if person.synced and not (active and active[stop.id]) and ns.CatalogueCompletion(person.key, stop.id, query) ~= true
+                        and ns.CatalogueAllowed(stop.id, person.profile, person.key, query) == true then
+                        for _, point in ipairs(quest and quest.starts or {}) do add(point, stop.id, "a") end
+                        break
+                    end
+                end
             end
         end
     end
@@ -177,14 +186,22 @@ function ns.UpdateNPCHints()
             local friendly = target.kind == "a" or target.kind == "t"
             hint.questNames:SetShown(friendly); hint.pointer:SetShown(friendly)
             if friendly then
-                hint:SetSize(190, 47); hint:SetPoint("BOTTOM", plate, "TOP", 0, 6)
+                local star = target.pickup == true and ns.Option("questGiverStars")
+                hint:SetSize(190, star and 64 or 47); hint:SetPoint("BOTTOM", plate, "TOP", 0, 6)
+                hint.questNames:ClearAllPoints(); hint.questNames:SetPoint("TOP", 0, star and -36 or 0)
                 local titles = {}; for _, title in pairs(target.quests) do titles[#titles + 1] = title end; table.sort(titles)
                 local shown = {}; for index = 1, math.min(2, #titles) do shown[#shown + 1] = titles[index] end
                 if #titles > 2 then shown[2] = shown[2] .. " ( +" .. (#titles - 2) .. " )" end
                 hint.questNames:SetText(table.concat(shown, "\n"))
-                hint.icon:Hide(); hint.symbol:Hide()
+                hint.icon:ClearAllPoints()
+                if star then
+                    hint.icon:SetSize(34, 34); hint.icon:SetPoint("TOP", 0, 0)
+                    hint.icon:SetTexture("Interface\\TargetingFrame\\UI-RaidTargetingIcon_1")
+                end
+                hint.icon:SetShown(star); hint.pointer:SetShown(not star); hint.symbol:Hide()
             else
                 hint:SetSize(16, 16); hint:SetPoint("LEFT", markerAnchor(plate), "RIGHT", 3, 0)
+                hint.icon:ClearAllPoints(); hint.icon:SetAllPoints()
                 local icon = ns.Option("npcMarker") == "quest" and "Interface\\GossipFrame\\AvailableQuestIcon" or ns.StopIcon(target)
                 hint.icon:SetTexture(icon); hint.icon:SetShown(icon ~= nil)
                 hint.symbol:SetText(ns.StopSymbol(target)); hint.symbol:SetShown(icon == nil)

@@ -44,7 +44,12 @@ function ns.ToggleWindow()
     ns.Refresh()
 end
 
+function ns.IsPartyView(filter)
+    return filter == "all" or filter == "shared" or filter == "different" or filter == "suggestions"
+end
+
 function ns.SetFilter(filter)
+    if not ns.PartyFeaturesEnabled() and ns.IsPartyView(filter) then filter = "guides" end
     ns.filter = filter
     ns.ui.scroll:SetVerticalScroll(0)
     if ns.ui.librarySearch then
@@ -96,6 +101,7 @@ function ns.CreateUI()
     title:SetPoint("TOPLEFT", 82, -43)
     title:SetText("Adventure together")
     local subtitle = label(window, nil, nil, colors.muted)
+    ns.ui.subtitle = subtitle
     subtitle:SetPoint("TOPLEFT", 26, -87)
     subtitle:SetText("Choose a questline, compare your party, and find the next stop.")
     ns.ui.zone = label(window, "GameFontNormal", nil, colors.gold)
@@ -222,8 +228,10 @@ function ns.CreateUI()
     local probe = button(window, "Diagnostics", 132, function() ns.Diagnostics() end)
     probe:SetPoint("BOTTOMLEFT", 26, 22)
     local tracker = button(window, "Tracker", 84, function() ns.ToggleTracker() end)
+    ns.ui.trackerButton = tracker
     tracker:SetPoint("BOTTOMLEFT", 168, 22)
     local sync = button(window, "Sync party", 160, function() ns.SyncNow(true) end, true)
+    ns.ui.syncButton = sync
     sync:SetPoint("BOTTOMRIGHT", -26, 22)
     local grip = CreateFrame("Button", nil, window)
     ns.ui.resizeGrip = grip
@@ -350,6 +358,7 @@ local function makeCard()
             else ns.ShowQuestDetails(item.id) end
         elseif card.guide then
             ns.selectedGuide = card.guide.key
+            if ns.filter == "guides" and card.guide.fullGuide then ns.ShowGuideQuestList(card.guide); return end
             if card.guide.fullGuide or card.guide.hasPoint then ns.ShowGuideOnMap(card.guide) else ns.ShowQuestDetails(card.guide.target.id) end
         end
     end
@@ -432,13 +441,26 @@ end
 
 function ns.Render()
     if not ns.ui then return end
+    local partyEnabled = ns.PartyFeaturesEnabled()
+    if ns.ui.partyMode ~= partyEnabled then
+        ns.ui.partyMode = partyEnabled
+        ns.ui.viewChoice:SetVisibleEntries(function(key) return partyEnabled or not ns.IsPartyView(key) end)
+        ns.ui.trackerButton:SetShown(partyEnabled); ns.ui.syncButton:SetShown(partyEnabled)
+        ns.ui.subtitle:SetText(partyEnabled and "Choose a questline, compare your party, and find the next stop."
+            or "Follow your leveling guide and find the next stop.")
+        ns.ui.viewDescription:SetText(partyEnabled and "Choose a guide or explore your party's progress." or "Choose a solo guide or browse quests.")
+        ns.ui.guideLevel.entries[1][2] = partyEnabled and "My party's bracket" or "My level bracket"
+        ns.ui.guideLevel.options.party.caption:SetText(ns.ui.guideLevel.entries[1][2])
+        for _, chip in ipairs(ns.ui.levelButtons) do if chip.levelKey == "party" then chip.caption:SetText(partyEnabled and "Near party" or "My level") end end
+    end
     local queryContext = ns.NewQuestQuery()
     local rows = (ns.filter == "all" or ns.filter == "shared" or ns.filter == "different" or ns.filter == "suggestions") and ns.Rows(queryContext) or {}
     local synced, shared, own = 1, 0, 0
     for _, member in pairs(ns.members) do if member.active and not member.syncPending then synced = synced + 1 end end
     for _, row in ipairs(rows) do if row.active >= 2 then shared = shared + 1 end end
     for _ in pairs(ns.active or {}) do own = own + 1 end
-    ns.ui.metrics[1].value:SetText(synced .. " / " .. (#(ns.partyNames or {}) + 1))
+    ns.ui.metrics[1].caption:SetText(partyEnabled and "PARTY SYNC" or "PLAY MODE")
+    ns.ui.metrics[1].value:SetText(partyEnabled and (synced .. " / " .. (#(ns.partyNames or {}) + 1)) or "SOLO")
     local choices = ns.LevelingGuideChoices and ns.filter == "guides" and ns.LevelingGuideChoices(nil, queryContext) or {}
     ns.ui.hint:SetText(ns.filter == "guides"
         and "Choose a zone guide suited to your current level; search by zone, quest or NPC.\nStart route follows its full quest sequence."
@@ -463,6 +485,7 @@ function ns.Render()
         status = transport.retrying and "Delivery slowed; retrying" or ("Sending updates: " .. transport.queued .. " left")
     elseif string.find(ns.status, "Delivery failed", 1, true) then status = "Delivery failed; see Diagnostics"
     elseif not ns.questReady then status = "Quest data unavailable; see Diagnostics"
+    elseif not partyEnabled then status = ns.routePlanningError or ns.guideAction or "Solo leveling ready"
     elseif not ns.syncReady then status = "Sync unavailable; see Diagnostics"
     else status = ns.routePlanningError or ns.guideAction or (synced > 1 and "Party progress received" or "Waiting for friends") end
     ns.ui.status:SetText(status)
@@ -548,7 +571,7 @@ function ns.Render()
         card.detailsButton:SetEnabled(true)
         card.buyButton:SetShown(guide ~= nil and #ns.QuestShoppingList(guide.records, queryContext) > 0)
         card.catchupButton:SetShown(guide ~= nil and guide.mode == "zone" and guide.fullGuide
-            and not guide.catchup and #(ns.partyNames or {}) > 0 and ns.ReadPublic(IsInRaid) ~= true)
+            and not guide.catchup and partyEnabled and #(ns.partyNames or {}) > 0 and ns.ReadPublic(IsInRaid) ~= true)
         card.mapButton:SetEnabled(true)
         local height
         if activity then
@@ -587,7 +610,7 @@ function ns.Render()
                     or (string.upper(guide.kind) .. " / ALTERNATIVE"))
             end
             card.title:SetText(guide.title .. (guide.mapID > 0 and (" — " .. guide.zone) or ""))
-            card.count:SetText(guide.fullGuide and (guide.rangeLow .. "–" .. guide.rangeHigh) or (guide.level and ("Quest Lv " .. guide.level) or ""))
+            card.count:SetText(guide.fullGuide and guide.minLevel and ("Lv " .. (guide.mainLevelLow or guide.minLevel) .. "–" .. (guide.mainLevelHigh or guide.maxLevel)) or (guide.level and ("Quest Lv " .. guide.level) or ""))
             card.reason:SetHeight(height - 103)
             local nextTitle = guide.nextStop and guide.nextStop.label or guide.target.title
             local _, requirement = ns.CatalogueAllowed(guide.target.id, ns.profile, ns.self, queryContext)
@@ -599,7 +622,7 @@ function ns.Render()
                 or (requirement or "No NPC or objective coordinates are available for this step yet.")
             card.reason:SetText(guide.reason .. "\n" .. detail)
             card.reason:Show()
-            card.mapButton.caption:SetText(guide.fullGuide and "Show route" or (guide.hasPoint and "Show route" or "View details"))
+            card.mapButton.caption:SetText(ns.filter == "guides" and guide.fullGuide and "Show quest list" or (guide.hasPoint and "Show route" or "View details"))
             card.detailsButton.caption:SetText("Start route")
             card.detailsButton:SetShown(not guide.personal)
             card.detailsButton:SetEnabled(guide.fullGuide == true or guide.hasPoint == true)
@@ -631,7 +654,7 @@ function ns.Render()
     ns.ui.empty:SetShown(visible == 0)
     ns.ui.empty:SetText(ns.filter == "library" and "No imported quests match this search.\nTry a quest or zone name."
         or (ns.filter == "review" and "No unfinished quests need a low-value review.\nReady turn-ins and class/profession quests are kept."
-        or (ns.filter == "guides" and "No zone guides match your current level and filters.\nTry All levels or clear the search. Future quests are in All quests."
+        or (ns.filter == "guides" and "No leveling areas match this bracket at your current level.\nChoose your level bracket or clear the search. Future quests remain in All quests."
         or (ns.filter == "suggestions" and "Sync with a friend to get party suggestions."
         or (#rows == 0 and "Your adventure starts with a quest.\nAccept one, then sync your party."
         or "No quests in this view yet.\nTry All quests or compare more progress with friends.")))))

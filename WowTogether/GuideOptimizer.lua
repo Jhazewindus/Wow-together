@@ -6,10 +6,11 @@ local function distance(mapID, a, b)
     return ns.WalkingDistance(mapID, a, b) or ns.NormalizedDistance(a, b) * 6000
 end
 
-local function activeForParty(id)
+local function activeForParty(id, readyOnly)
     for _, person in ipairs(ns.PartyProfiles()) do
         local active = person.key == ns.self and ns.active or ns.members[person.key] and ns.members[person.key].active
-        if active and active[id] then return true end
+        if active and active[id] and (not readyOnly or ns.QuestProgressReady(person.key, id) == true
+            or person.key == ns.self and ns.readyToTurnIn[id] == true) then return true end
     end
     return false
 end
@@ -21,7 +22,8 @@ local function availableTasks(guide)
     for _, record in ipairs(guide.records) do
         if ns.PartyQuestFinished(record.id) then complete = complete + 1
         elseif not ns.GuideQuestSkipped(record.id) and ns.FocusCanStartRecord(record, focus)
-            and (ns.LevelingValue(record.id) ~= false or activeForParty(record.id)
+            and (ns.LevelingValue(record.id) ~= false or guide.mode == "bundle" and activeForParty(record.id)
+                or activeForParty(record.id, true)
                 or guide.catchupRequired and guide.catchupRequired[record.id]) then
             local candidate = live[record.id] or record
             local stages = ns.PartyRouteStages(candidate, focus)

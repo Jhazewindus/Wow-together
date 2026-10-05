@@ -54,7 +54,7 @@ function ns.GenerateFixedGuide(guide, cooperative)
     local tasks, done, ordered, work = {}, {}, {}, 0
     local metrics, learned = {}, {}
     for _, record in ipairs(guide.records) do
-        if not ns.IsRetiredQuest(record.id) and ns.CatalogueIdentityAllowed(record.id, ns.profile) ~= false and not ns.IsRepeatableQuest(record.id)
+        if not ns.IsLevelingExcludedQuest(record.id) and ns.CatalogueIdentityAllowed(record.id, ns.profile) ~= false and not ns.IsRepeatableQuest(record.id)
             and not ns.IsProfessionQuest(record.id) then
             local list = stages(record)
             if #list > 0 then tasks[#tasks + 1] = {id = record.id, stages = list, next = 1} end
@@ -144,13 +144,23 @@ local function doneFor(stop, key, query)
     return false
 end
 
-local function remaining(stop, query)
-    if ns.IsRetiredQuest(stop.id) or ns.GuideQuestSkipped(stop.id) or #ns.FilterGuideStages({stop}) == 0 then return nil end
+local function remaining(stop, query, guide)
+    if ns.IsLevelingExcludedQuest(stop.id) or ns.GuideQuestSkipped(stop.id) or #ns.FilterGuideStages({stop}) == 0 then return nil end
     local waiting, chosen
+    local useful = ns.LevelingValue(stop.id, query)
     for _, person in ipairs(query.profiles) do
         if ns.CatalogueIdentityAllowed(stop.id, person.profile) ~= false then
-            if not person.synced then waiting = true
-            elseif not doneFor(stop, person.key, query) then chosen = chosen or person end
+            local active = person.key == ns.self and ns.active or ns.members[person.key] and ns.members[person.key].active
+            local keep = useful ~= false or guide.catchupRequired and guide.catchupRequired[stop.id]
+                or active and active[stop.id] and (guide.mode == "bundle"
+                    or ns.QuestProgressReady(person.key, stop.id) == true
+                    or person.key == ns.self and ns.readyToTurnIn[stop.id] == true)
+            -- Keep the compiled order intact. Level-filtered steps receive no
+            -- completion/skip credit and can return if party context changes.
+            if keep then
+                if not person.synced then waiting = true
+                elseif not doneFor(stop, person.key, query) then chosen = chosen or person end
+            end
         end
     end
     return chosen, waiting
@@ -163,7 +173,7 @@ function ns.BuildFixedGuideRoute(guide, includeOrigin, cooperative, query)
     local deferred, firstDeferred, firstReason = {}, nil, nil
     guide.observedDeferrals = guide.observedDeferrals or {}
     for _, stop in ipairs(plan) do
-        local person, waiting = remaining(stop, query)
+        local person, waiting = remaining(stop, query, guide)
         if person or waiting then
             incomplete = incomplete + 1
             if stop.unknownLocation then unknown = unknown + 1 end

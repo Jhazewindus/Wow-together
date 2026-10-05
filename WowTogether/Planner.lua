@@ -303,7 +303,7 @@ function ns.ClassQuestLabel(id)
 end
 
 function ns.LevelingQuestEnabled(id)
-    return not ns.IsRetiredQuest(id) and not ns.IsProfessionQuest(id) and not ns.IsDungeonQuest(id) and not ns.IsRepeatableQuest(id) and not ns.GuideQuestSkipped(id)
+    return not ns.IsLevelingExcludedQuest(id) and not ns.IsProfessionQuest(id) and not ns.IsDungeonQuest(id) and not ns.IsRepeatableQuest(id) and not ns.GuideQuestSkipped(id)
         and (not ns.IsClassQuest(id) or ns.Option("classQuests"))
         and ns.LevelingValue(id) ~= false
 end

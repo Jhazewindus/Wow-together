@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.7.0"
+ns.VERSION = "0.7.1"
 ns.handlers = {}
 ns.members = {}
 ns.status = "Waiting for addon initialization."
@@ -20,6 +20,7 @@ function ns.Refresh()
     if ns.ui and ns.ui.resizing then ns.ui.resizeDirty = true
     elseif ns.Render then ns.Render() end
     if ns.RenderTracker then ns.RenderTracker() end
+    if ns.RenderGuideQuestList then ns.RenderGuideQuestList() end
     if ns.UpdateNavigation then ns.UpdateNavigation() end
     if ns.ScheduleActivitySuggestions then ns.ScheduleActivitySuggestions() end
     if ns.QueuePartyRouteFollow then ns.QueuePartyRouteFollow() end
@@ -189,6 +190,7 @@ ns.On("UPDATE_FACTION", function()
     ns.InvalidateNPCOffers(); ns.ScheduleSync()
 end)
 ns.On("GROUP_ROSTER_UPDATE", function()
+    if not ns.PartyFeaturesEnabled() then return end
     ns.UpdateRoster()
     ns.RenderTracker()
     ns.ScheduleSync()

@@ -92,7 +92,7 @@ local function geographic(quest)
 end
 
 local function browseEnabled(id)
-    return not ns.IsRetiredQuest(id) and not ns.IsProfessionQuest(id) and not ns.IsDungeonQuest(id) and not ns.IsRepeatableQuest(id)
+    return not ns.IsLevelingExcludedQuest(id) and not ns.IsProfessionQuest(id) and not ns.IsDungeonQuest(id) and not ns.IsRepeatableQuest(id)
         and (not ns.IsClassQuest(id) or ns.Option("classQuests"))
         and ns.CatalogueIdentityAllowed(id, ns.profile) ~= false
 end
@@ -151,6 +151,34 @@ local function addChain(records, seen, id)
     end
 end
 
+local function localWork(quest, mapID)
+    local mapped = false
+    for _, point in ipairs(quest.objectives or {}) do
+        if (point.mapID or 0) > 0 then
+            mapped = true
+            if point.mapID == mapID then return true end
+        end
+    end
+    -- Unknown geography cannot establish a remote objective. Use the published
+    -- zone category until detailed locations exist; known remote-only work does
+    -- not qualify its pickup zone as a leveling area.
+    return not mapped
+end
+
+local function coreRange(entry)
+    local levels = {}
+    for _, id in ipairs(entry.ids) do
+        local quest = ns.CatalogueQuest(id)
+        if browseEnabled(id) and (quest.level or 0) > 0 and localWork(quest, entry.mapID) then levels[#levels + 1] = quest.level end
+    end
+    table.sort(levels)
+    if #levels == 0 then return end
+    -- Large catalogues can contain a handful of high-level handoffs. The middle
+    -- 80% describes the main quest band; small/new-zone catalogues keep all data.
+    local trim = #levels >= 10 and math.floor(#levels * 0.1) or 0
+    return levels[1 + trim], levels[#levels - trim]
+end
+
 local function buildChoice(entry, low, high, query)
     query = query or ns.NewQuestQuery()
     local records, seen, relevant, search = {}, {}, 0, {entry.title, entry.zone}
@@ -159,7 +187,7 @@ local function buildChoice(entry, low, high, query)
         local quest = ns.CatalogueQuest(id)
         if browseEnabled(id) then
             local level = quest.level or 0
-            minimum, maximum = math.min(minimum, level), math.max(maximum, level)
+            if level > 0 then minimum, maximum = math.min(minimum, level), math.max(maximum, level) end
             search[#search + 1] = quest.title
             for _, point in ipairs(quest.starts or {}) do search[#search + 1] = point.name or "" end
             -- Brackets filter guide discovery, not its lifetime. Preserve the
@@ -197,6 +225,7 @@ local function buildChoice(entry, low, high, query)
         knownStops = located, hasPoint = located > 0, fullGuide = true,
         search = string.lower(table.concat(search, " ")),
         priority = ns.ZonePreference(mapID) + (entry.mode == "zone" and 30 or 0) + (located > 0 and 10 or 0)}
+    guide.mainLevelLow, guide.mainLevelHigh = coreRange(entry)
     guide.fixedRoute = ns.Option("fixedZoneGuides")
     guide.coverage = ns.GuideLocationCoverage(records)
     guide.knownStops, guide.hasPoint = guide.coverage.pickups, guide.coverage.pickups > 0
@@ -231,10 +260,15 @@ function ns.GuideLevelSuitable(guide, query)
     query = query or ns.NewQuestQuery()
     local level = ns.PartyLevelFloor(query)
     if not level then return false end
+    if ns.IsCapitalMap(guide.homeMapID) then return false end
+    -- Keep useful entry quests just below the main band: the same three-level
+    -- difficulty allowance used below still permits a zone transition.
+    if guide.mainLevelHigh and (guide.mainLevelHigh + 3 < (guide.rangeLow or 1) or guide.mainLevelLow > (guide.rangeHigh or 255) + 3) then return false end
     for _, record in ipairs(guide.records or {}) do
         local quest = ns.CatalogueQuest(record.id)
         local knownLevel = quest and ((quest.level or 0) > 0 or (quest.minLevel or 0) > 0)
-        if knownLevel and record.mapID == guide.homeMapID and ns.CatalogueIdentityAllowed(record.id, ns.profile) == true
+        local inBracket = quest and (quest.level or 0) >= (guide.rangeLow or 1) and (quest.level or 0) <= (guide.rangeHigh or 255)
+        if inBracket and knownLevel and localWork(quest, guide.homeMapID) and record.mapID == guide.homeMapID and ns.CatalogueIdentityAllowed(record.id, ns.profile) == true
             and ns.LevelingValue(record.id, query) == true and levelPath(record.id, level, {}, 0, query) then return true end
     end
     return false

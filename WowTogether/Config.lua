@@ -7,7 +7,7 @@ local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, cl
     scanSkipped = false, distanceUnits = "yards", trackerAuto = true, autoSelectQuests = false,
     suggestFlights = true, autoFly = false, nearbyFlights = true, corpseArrow = true, npcMarker = "cross", recordQuestData = true,
     useLearnedQuests = true, exportCharacterNames = false, fixedZoneGuides = true,
-    standaloneArrow = false, travelNetwork = true}
+    standaloneArrow = false, travelNetwork = true, soloMode = false, questGiverStars = true}
 
 function ns.Option(key)
     local value = ns.db and ns.db.config and ns.db.config[key]
@@ -15,7 +15,11 @@ function ns.Option(key)
     return value
 end
 
+function ns.PartyFeaturesEnabled() return not ns.Option("soloMode") end
+
 local sections = {
+    {"play", "Play mode", {
+        {"soloMode", "Solo leveling mode", "Disable party messages, shared progress, route invitations and catch-up. Guides use only your own progress, even while grouped."}}},
     {"guides", "Leveling guides", {
         {"fixedZoneGuides", "Follow fixed zone guides", "Generate a complete zone sequence once. Quest progress advances steps without reordering. Turn off for adaptive trips; start a guide again to change its mode."},
         {"nearbyPickups", "Collect useful quests nearby", "Add eligible nearby pickups to a quest-log trip. Level range, prerequisites and walking distance still apply."},
@@ -35,12 +39,14 @@ local sections = {
         {"nearbyFlights", "Check nearby flight paths", "Add a short visit to an observed flight master when its unlock is not confirmed."},
         {"autoFly", "Select the suggested flight", "Opt-in: when you open the correct flight master's map, request the suggested reachable destination outside combat. Test this on your beta build."},
         {"corpseArrow", "Point to my corpse while dead", "Temporarily replace quest directions while you are a ghost, then resume the guide."}}},
-    {"party", "Party and quest markers", {
+    {"party", "Party progress", {
         {"trackerAuto", "Show party progress automatically", "Show when joining a party; hide when solo or in a raid. You can close it for the current party session."},
         {"trackerOpacity", "Party panel background", "Choose readability behind quest progress text.", {{0, "Transparent"}, {0.08, "Subtle"}, {0.25, "Dark glass"}, {0.5, "Dark"}}},
-        {"trackerHeight", "Party panel size", "How much progress is visible before you scroll.", {{220, "Compact"}, {350, "Comfortable"}, {500, "Tall"}}},
+        {"trackerHeight", "Party panel size", "How much progress is visible before you scroll.", {{220, "Compact"}, {350, "Comfortable"}, {500, "Tall"}}}}},
+    {"markers", "Quest markers", {
         {"npcHints", "Mark needed quest NPCs and items", "Show a marker beside public quest-related nameplates and a quest-item tooltip hint, outside combat."},
         {"nameplateHints", "Show quest markers beside names", "Turn nameplate markers on or off separately from quest-item tooltip hints. Markers hide during combat."},
+        {"questGiverStars", "Star above guide quest givers", "Highlight eligible pickups in your selected guide with a large gold star. Requires visible friendly NPC nameplates; hides during combat."},
         {"npcMarker", "Objective marker style", "Choose a cross, a kill skull, or a quest ! beside needed enemy names.", {{"cross", "Cross"}, {"skull", "Skull for kills"}, {"quest", "Quest !"}}}}},
     {"automation", "Quest dialogs", {
         {"autoSelectQuests", "Open the current guide quest at an NPC", "When an NPC has several quests, select the exact current pickup or completed turn-in. Other quests stay manual."},
@@ -74,9 +80,11 @@ end
 
 function ns.SetOption(key, value)
     if defaults[key] == nil or type(value) ~= type(defaults[key]) then return end
+    local changed = ns.Option(key) ~= value
     if key == "recordQuestData" and ns.Option(key) ~= value then ns.ResearchCaptureBoundary() end
     ns.db.config[key] = value
     ns.InitializeConfig()
+    if key == "soloMode" and changed then ns.ApplyPartyMode() end
     ns.flightPlanCache = nil
     ns.ResetTravelPath()
     if key == "nearbyPickups" or key == "useLearnedQuests" then ns.forceRouteReplan, ns.routeSignature = true, nil end
@@ -143,7 +151,7 @@ function ns.CreateSettings()
     frame.findingsExport = ns.UIButton(research, "Export guide findings", 175, ns.ShowGuideFindings)
     frame.findingsExport:SetPoint("TOPLEFT", 205, -295)
     frame.section = ns.UIDropdown(frame, choices, 300, function(key) frame.sectionKey = key; ns.RenderSettings() end)
-    frame.section:SetPoint("TOPLEFT", 22, -58); frame.sectionKey = "guides"
+    frame.section:SetPoint("TOPLEFT", 22, -58); frame.sectionKey = "play"
     frame.note = ns.UILabel(frame, nil, 11)
     frame.note:SetPoint("BOTTOMLEFT", 22, 20); frame.note:SetWidth(390); frame.note:SetHeight(40)
     local reset = ns.UIButton(frame, "Reset guide skips", 135, ns.ResetGuideSkips)
@@ -159,7 +167,7 @@ function ns.RenderSettings()
     for key, control in pairs(ns.settings.dropdowns) do control:SetChoice(ns.Option(key)) end
     for key, page in pairs(ns.settings.pages) do page:SetShown(key == ns.settings.sectionKey) end
     ns.settings.section:SetChoice(ns.settings.sectionKey)
-    ns.settings.note:SetText("Party guides help useful catch-up first.\nChoose quest-log detours when starting a guide.")
+    ns.settings.note:SetText(ns.Option("soloMode") and "Solo leveling: party features are disabled.\nQuest progress and saved guides still update." or "Party guides help useful catch-up first.\nChoose quest-log detours when starting a guide.")
 end
 
 function ns.ToggleSettings()

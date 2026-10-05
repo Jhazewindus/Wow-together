@@ -200,5 +200,15 @@
   },
   "tester_corrections": [
     750
-  ]
+  ],
+  "leveling_exclusions": [
+    5805,
+    5841,
+    5842,
+    5843,
+    5844,
+    5847,
+    92454
+  ],
+  "leveling_exclusions_source": "User report: Collector's Edition Welcome! quests, 2026-10-05"
 }

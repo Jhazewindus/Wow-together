@@ -14,6 +14,13 @@ function ns.IsRetiredQuest(id)
     return string.find(title, "^<unused>") ~= nil or string.find(title, "^zzold") ~= nil
 end
 
+function ns.IsLevelingExcludedQuest(id)
+    if ns.IsRetiredQuest(id) then return true end
+    local quest = ns.CatalogueQuest(id)
+    local reason = quest and quest.levelingExcluded
+    return ns.Public(reason) and (reason == true or type(reason) == "string" and reason ~= "") or false
+end
+
 function ns.CatalogueCompletion(key, id, query)
     if key == ns.self then return ns.Completed(id, query) end
     local member = ns.members[key]

@@ -223,6 +223,7 @@ function ns.TrackerValue(key, id, index)
 end
 
 function ns.ToggleTracker()
+    if not ns.PartyFeaturesEnabled() then ns.tracker:Hide(); return end
     ns.db.trackerVisible = not ns.tracker:IsShown()
     ns.trackerDismissed = not ns.db.trackerVisible
     ns.tracker:SetShown(ns.db.trackerVisible)
@@ -276,6 +277,7 @@ end
 
 function ns.UpdateTrackerVisibility()
     if not ns.tracker then return end
+    if not ns.PartyFeaturesEnabled() then ns.trackerPartyState = false; ns.tracker:Hide(); return end
     local grouped, raid = ns.ReadPublic(IsInGroup), ns.ReadPublic(IsInRaid)
     local party = grouped == true and raid == false
     if ns.trackerPartyState ~= party then

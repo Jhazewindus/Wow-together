@@ -119,6 +119,12 @@ class GuideBrowserTests(unittest.TestCase):
         self.assertFalse(card.guide.hasPoint)
         self.assertIn('unknown', card.reason.text)
         card.mapButton.OnClick()
+        self.assertIn('Loading', c.ns.guideQuestList.summary.text)
+        self.assertIsNone(c.ns.routeSelection)
+        c.drain()
+        self.assertEqual(len(c.ns.guideQuestList.plan), 6)
+        # The list is read-only; Start route still permits an unmapped guide.
+        card.detailsButton.OnClick()
         self.assertEqual(c.ns.navigation.state.status, 'Loading route…')
         run_plan(c)
         self.assertIsNotNone(c.ns.routeSelection)
@@ -344,8 +350,12 @@ class MultiZoneGuideTests(unittest.TestCase):
         self.assertEqual({r.id for r in chosen.records.values()}, {900, 901, 903})
 
     def test_zone_transition_popup_requires_suitable_work_and_keep_does_not_switch(self):
-        c = self.client(); c.lua.globals().finished[900] = True
+        c = self.client(); c.ns.profile.level = 8; c.lua.globals().playerLevel = 8
         chosen = next(g for g in c.ns.LevelingGuideChoices().values() if g.mode == 'zone' and g.homeMapID == 501)
+        # Select while the home zone has useful work, then progress into its
+        # linked next zone. A finished/low-only home zone need not be offered anew.
+        c.lua.globals().finished[900] = True
+        c.ns.profile.level = 12; c.lua.globals().playerLevel = 12
         c.ns.ShowGuideOnMap(chosen); run_plan(c); c.drain()
         prompt = c.ns.activityPrompt
         self.assertTrue(prompt.IsShown(prompt))
@@ -357,8 +367,10 @@ class MultiZoneGuideTests(unittest.TestCase):
         self.assertIsNone(c.ns.LevelingZoneTransition())
 
     def test_accepting_zone_prompt_starts_full_next_guide_without_silent_switch(self):
-        c = self.client(); c.lua.globals().finished[900] = True
+        c = self.client(); c.ns.profile.level = 8; c.lua.globals().playerLevel = 8
         chosen = next(g for g in c.ns.LevelingGuideChoices().values() if g.mode == 'zone' and g.homeMapID == 501)
+        c.lua.globals().finished[900] = True
+        c.ns.profile.level = 12; c.lua.globals().playerLevel = 12
         c.ns.ShowGuideOnMap(chosen); run_plan(c); c.drain()
         self.assertEqual(c.ns.routeSelection.key, chosen.key)
         c.ns.activityPrompt.accept.OnClick()

@@ -26,6 +26,7 @@ end
 
 function ns.StartPartyRoute(guide)
     if not guide or guide.personal then return false end
+    if not ns.PartyFeaturesEnabled() then return ns.ShowGuideOnMap(guide) end
     if ns.RouteInCombat() then
         ns.pendingPartyRouteStart = guide
         ns.guideAction = "Your route will start after combat."; ns.Refresh(); return false
@@ -77,6 +78,7 @@ function ns.StartPartyRoute(guide)
 end
 
 local function currentPeer(sender)
+    if not ns.PartyFeaturesEnabled() then return false end
     for _, name in ipairs(ns.partyNames or {}) do if name == sender then return true end end
     return false
 end
@@ -152,6 +154,7 @@ function ns.FollowPartyRoute(invite)
 end
 
 function ns.ShowPartyRouteInvite()
+    if not ns.PartyFeaturesEnabled() then return end
     local invite = ns.pendingPartyRouteInvite
     if not invite or ns.RouteInCombat() then return end
     if not currentPeer(invite.sender) then ns.pendingPartyRouteInvite = nil; return end
@@ -261,6 +264,7 @@ function ns.PrunePartyRoutes()
 end
 
 function ns.QueuePartyRouteFollow()
+    if not ns.PartyFeaturesEnabled() then return end
     local invite = ns.waitingPartyRoute
     if not invite or ns.partyFollowQueued or ns.RouteInCombat() or not C_Timer or type(C_Timer.After) ~= "function" then return end
     local context = table.concat({ns.syncStats.accepted, ns.activityRevision or 0, ns.questEntries or 0,
@@ -274,6 +278,7 @@ function ns.QueuePartyRouteFollow()
 end
 
 function ns.FlushPartyRoutes()
+    if not ns.PartyFeaturesEnabled() then return end
     if ns.pendingPartyRouteStart then local guide = ns.pendingPartyRouteStart; ns.pendingPartyRouteStart = nil; ns.StartPartyRoute(guide) end
     if ns.pendingPartyRouteFollow then local invite = ns.pendingPartyRouteFollow; ns.pendingPartyRouteFollow = nil; ns.FollowPartyRoute(invite) end
     ns.ShowPartyRouteInvite()

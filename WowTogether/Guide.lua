@@ -340,6 +340,7 @@ end
 
 function ns.PartyProfiles()
     local profiles = {{name = "You", key = ns.self, profile = ns.profile, synced = ns.questReady}}
+    if not ns.PartyFeaturesEnabled() then return profiles end
     for _, name in ipairs(ns.partyNames or {}) do
         local member = ns.members[name]
         profiles[#profiles + 1] = {name = ns.MemberLabel(name), key = name,

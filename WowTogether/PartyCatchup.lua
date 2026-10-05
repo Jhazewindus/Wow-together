@@ -4,7 +4,7 @@ local requested, requestCount, sentRequests, pending = {}, 0, {}, false
 ns.partyCatchupStatus = "Join a synced party to compare zone progress."
 
 local function inParty()
-    return ns.ReadPublic(IsInGroup) == true and ns.ReadPublic(IsInRaid) ~= true and #(ns.partyNames or {}) > 0
+    return ns.PartyFeaturesEnabled() and ns.ReadPublic(IsInGroup) == true and ns.ReadPublic(IsInRaid) ~= true and #(ns.partyNames or {}) > 0
 end
 
 function ns.ResetCatchupHistory()
@@ -104,7 +104,7 @@ function ns.PartyCatchupGuide(base)
             end
         end
         if eligible >= 2 and complete > 0 and behind > 0 and not ns.GuideQuestSkipped(record.id)
-            and not ns.IsRepeatableQuest(record.id) and not ns.IsProfessionQuest(record.id)
+            and not ns.IsLevelingExcludedQuest(record.id) and not ns.IsRepeatableQuest(record.id) and not ns.IsProfessionQuest(record.id)
             and (ns.LevelingValue(record.id) == true or active(record.id))
             and record.mapID == base.homeMapID then targets[record.id] = true end
     end
@@ -113,7 +113,7 @@ function ns.PartyCatchupGuide(base)
         if depth > 24 or ns.CatalogueCompletion(key, id) == true or not ns.CatalogueQuest(id) then return end
         local profile
         for _, person in ipairs(people) do if person.key == key then profile = person.profile end end
-        if ns.CatalogueIdentityAllowed(id, profile) ~= true or ns.IsRepeatableQuest(id) or ns.IsProfessionQuest(id) then return end
+        if ns.CatalogueIdentityAllowed(id, profile) ~= true or ns.IsLevelingExcludedQuest(id) or ns.IsRepeatableQuest(id) or ns.IsProfessionQuest(id) then return end
         selected[id], required[id] = true, not targets[id]
         local quest = ns.CatalogueQuest(id)
         if quest.previousQuest then add(quest.previousQuest, key, depth + 1) end
@@ -147,6 +147,7 @@ function ns.PartyCatchupGuide(base)
 end
 
 function ns.ShowPartyCatchup(base, manual)
+    if not ns.PartyFeaturesEnabled() then ns.partyCatchupStatus = "Party catch-up is disabled in solo leveling mode."; return false end
     local guide, reason = ns.PartyCatchupGuide(base)
     ns.partyCatchupStatus = reason or guide.reason
     if not guide then ns.guideAction = reason; return false end

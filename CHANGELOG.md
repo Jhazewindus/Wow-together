@@ -1,5 +1,21 @@
 # Wow Together changelog
 
+## 0.7.1
+
+- Add Solo leveling mode in Play mode settings: stop party messages, hide party
+  controls and use only your progress. Local guides, objectives and learning continue.
+- Add a gold star above eligible guide quest givers with visible friendly NPC
+  nameplates. Its toggle is in Quest markers; markers hide during combat.
+- Replace Show route on leveling cards with a scrollable Show quest list: the
+  complete pickup/objective/turn-in order and progress, without starting a route.
+- Match brackets to useful work in actual leveling areas. Exclude capital pickup
+  hubs and sparse level outliers; display the area's main quest band.
+- Exclude all seven Collector's Edition Welcome! variants from leveling guides;
+  retain them in All quests and preserve the rule when rebuilding quest data.
+- Apply low-value filtering to fixed guides as well as adaptive planning. Favor
+  closer-level work; keep useful chains, class progression and ready turn-ins.
+  Fixed guides also ask before including current quests. Guide order stays fixed.
+
 ## 0.7.0
 
 - Add a separately movable standalone arrow toggle in Arrow and map settings.

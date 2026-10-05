@@ -230,6 +230,8 @@ function ns.MergeCurrentQuests(guide)
         end
     end
     copy.records, copy.pickupIDs, copy.mode, copy.baseGuide = records, pickups, "bundle", guide
+    copy.fixedPlan = nil -- Explicitly including extra work creates a new fixed sequence.
+    copy.batchIDs = nil -- A new selection must not inherit the previous trip's quest set.
     copy.mapID = guide.mapID or guide.target and guide.target.mapID or ns.profile.mapID
     copy.key, copy.title = "with-log:" .. guide.key, guide.title .. " + current quests"
     return copy
@@ -238,7 +240,7 @@ end
 function ns.RequestStartRoute(guide)
     if not guide then return end
     if guide.personal then return ns.ShowGuideOnMap(guide) end
-    if guide.fixedRoute or not ns.HasCurrentPartyQuests() or guide.mode == "current" or guide.mode == "bundle" then return ns.StartPartyRoute(guide) end
+    if not ns.HasCurrentPartyQuests() or guide.mode == "current" or guide.mode == "bundle" then return ns.StartPartyRoute(guide) end
     if not ns.startGuidePrompt then
         local frame = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
         frame:SetSize(500, 220); frame:SetPoint("CENTER"); frame:SetFrameStrata("DIALOG")

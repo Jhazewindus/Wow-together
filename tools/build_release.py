@@ -55,6 +55,9 @@ Turn Follow fixed zone guides off and restart a guide for adaptive trips, which
 hold up to six quests/twenty stops; their full preview is not limited to that trip.
 Optional suitable next-zone prompts offer Start zone guide / Keep my guide.
 /wt config has purpose-based settings pages with dropdowns and help text.
+Play mode → Solo leveling mode stops all party sends/receives, hides party
+controls and uses only your character, even while grouped. Guides, local progress
+and learning continue. Toggle off to request fresh party snapshots.
 /wt tracker toggles the movable, scrollable party panel; it opens when joining a
 normal party and hides when solo/in a raid. Closing it lasts for that party session.
 /wt arrow toggles the movable direction panel. Choose yards or metres in settings.
@@ -67,6 +70,9 @@ the saved selection. Route controls sit below the world map viewport.
 The current guide stays selected until accepted; friends choose Follow or Keep.
 Quest markers can sit beside names as Quest !, cross or skull. Nameplate hints
 have a separate toggle from item tooltip hints.
+Quest markers → Star above guide quest givers highlights eligible selected-guide
+pickups above visible friendly nameplates. It is cosmetic, hides in combat and
+does not apply real raid marks. Enable friendly NPC nameplates in the game.
 /wt sync requests fresh snapshots; normal quest/party changes sync automatically.
 /wt probe opens diagnostics; Ctrl+C copies and closes the report.
 /wt research opens local quest-data JSON; Select all, Ctrl+C, then save as a text
@@ -101,8 +107,10 @@ with other Horde characters; clean learned unlock requirements can be reused.
 /wt route clear clears the map route. /wt minimap toggles its dashboard button.
 
 Show route is local. Start route invites friends with Follow route / Keep my route.
-Fixed zone guides start directly and keep their generic order. Adaptive guides
-with current quests offer Start selected guide or Include current quests, with
+Leveling cards instead have Show quest list: the complete scrollable pickup,
+objective and turn-in order, including later steps and current progress. This
+preview does not start/switch a route; started fixed guides reuse their order.
+Fixed and adaptive guides with current quests offer Start selected guide or Include current quests, with
 a warning about detours. Explicit quest-log routes remain
 selectable in Party quests. Quest acceptance/zone updates retain the selection.
 Full zone/questline invitations share guide identity and bracket, allowing friends
@@ -110,6 +118,14 @@ to reconstruct the full catalogue scope beyond the twenty transmitted quest IDs.
 Low-level pickups need a known useful later quest/dungeon exception, explained
 under the arrow. Party stages focus on the member behind in confirmed progress.
 Unknown prerequisites/history stay unknown. Active work you choose can remain.
+Fixed guides also apply the value filter without rewriting the compiled order.
+The preferred floor is three levels below you, or 10% of your level if larger;
+ready hand-ins and useful chains are kept. At level 12, Carry Your Weight does
+not qualify as a new pickup. Collector's Edition Welcome! rewards are excluded
+from all leveling guides, but remain in All quests.
+Brackets must match useful work at your actual level in leveling areas, rather
+than sparse later handoffs or capital pickup hubs. Cards show the main quest
+band derived from catalogue data; missing objective geography remains unknown.
 
 Left/right arrow buttons preview previous/later steps without changing quest credit.
 History previews use published locations, not a recorded travel timeline.

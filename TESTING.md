@@ -1,12 +1,12 @@
 # Wow Together — friend test script
 
-For **0.7.0**, World of Warcraft: Forever beta, interface **16001**.
+For **0.7.1**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 36 Lua files**, in
+1. Replace the complete WowTogether folder, including **all 37 Lua files**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    `/reload`; restart fully if a new addon folder does not appear.
 2. Enable `/console scriptErrors 1`. Record version, build, level, faction, class,
@@ -28,6 +28,8 @@ Keep tester names and reports separate; label the main developer's report.
    followed by a numbered zone-guide step. The route should retain the full
    guide, beyond the old six-quest/twenty-stop trip limit. Missing locations or
    locked current pickups should be explained, without invented destinations.
+   If asked about existing quests, use Start selected guide for this check;
+   Include current quests explicitly includes that extra work and its detours.
 3. **Different starting locations/logs:** two matching-faction/class testers
    select the same zone guide from different places, with different active quests.
    Compare future numbered stages. The generated order should agree for matching
@@ -194,6 +196,33 @@ Keep tester names and reports separate; label the main developer's report.
     appear as leveling steps, including in a retained guide after upgrading.
     Genuine unknown locations stay explicit; no fabricated quest points.
 
+## New solo and guide checks
+
+29. **Quest-giver star:** start a guide with an eligible pickup, enable friendly
+    NPC nameplates and approach its giver. A gold star should appear above the
+    visible nameplate, with quest names below. Accepted/completed/blocked pickups
+    must not leave a pickup star. Toggle it in Quest markers; enter combat and
+    return. Missing nameplates mean no star; no real raid marks should be set.
+30. **Solo leveling mode:** while grouped with another addon user, enable it in
+    Play mode. Party tabs/buttons, progress and route invitations must disappear;
+    messages must stop, including previously queued updates. Accept, kill, hand in,
+    scan and reload: personal guides continue and the toggle persists. Re-enable
+    party features: compare fresh snapshots, without resurrecting old invitations.
+31. **Bonus rewards:** browse Welcome! in All quests; it remains searchable. No
+    starting-zone guide or retained guide should contain these Collector's Edition
+    pickups. Actual unrelated class progression must remain available when enabled.
+32. **Quest list and brackets:** Show quest list opens the complete scrollable
+    pickup/objective/turn-in sequence without changing the current route or map.
+    Check its last row and compare a started fixed guide's order. At level 12,
+    selecting 21–30 must not recommend Mulgore or a city just because it has a few
+    later pickup quests. Also test a level-25 character: actual useful quest areas
+    should appear, with their main quest band and truthful location coverage.
+33. **Low-value work:** at level 12, Durotar must not ask for a new Carry Your
+    Weight pickup. Check another low-level quest too. Useful lower prerequisite
+    chains should explain their continuation. Start selected guide should filter
+    unfinished low-value work; Include current quests may retain it. Ready hand-ins
+    still appear. Scan, movement and level changes must not reorder fixed steps.
+
 ## Copyable tester report
 
 ```text
@@ -203,7 +232,7 @@ Addon / client build:
 Level / class / race / faction / zone:
 Party size / selected guide:
 Fixed zone guides / full route / learning settings:
-Checks 1–28: Pass / Fail / Skip (reason)
+Checks 1–33: Pass / Fail / Skip (reason)
 Exact quest name and ID / NPC / current and next step numbers:
 What happened / expected result:
 Was the quest offered? Was its prerequisite handed in?

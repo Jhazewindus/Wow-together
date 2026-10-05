@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.7.0** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.7.1** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -16,7 +16,7 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **36 Lua
+Replace the folder on **every party member's client**, including all **37 Lua
 files**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
@@ -43,6 +43,12 @@ No Battle.net credentials, external API service or in-game HTTP access is needed
 The dashboard dropdown contains **Leveling guides**, **All quests** (the old
 Library), **Party quests** (the old All quests), **Shared**, **Party progress**,
 **Dungeon quests**, **Profession guides** and **Quest log review**.
+
+For solo leveling, enable **Settings → Play mode → Solo leveling mode**. This
+stops outgoing and incoming party messages, clears peer snapshots/invitations and
+hides party views and controls. Even while grouped, the planner uses only your
+progress. Local quest updates, guides, arrows and research recording continue.
+The toggle persists; turning it off requests fresh party data.
 All quests supports level brackets, Near party and search committed on Enter
 or after a typing pause. It retains manual browsing of known repeatables.
 
@@ -55,7 +61,14 @@ quest-log trips are in Party quests.
 
 Every recommended or alternative zone must also contain useful work for the
 actual lowest player level, with known pickup minimums and prerequisite levels
-met. Sharing the 11–20 browser bracket does not make level-20 work suitable at
+met, inside the selected browser bracket. Known remote-only objectives cannot
+qualify their pickup zone as a leveling area; capitals remain available for
+travel and quest pickups inside guides. A sparse late-level handoff does not
+make a starting zone a level-30 leveling area. Cards show a main quest-level
+band derived from the catalogue, rather than repeating your selected bracket.
+Where detailed objective geography is unknown, the published zone category is
+the fallback; the band is an estimate, not an official zone-level declaration.
+Sharing the 11–20 browser bracket does not make level-20 work suitable at
 level 12. All levels broadens the filter but still respects actual level;
 future quests remain browsable in All quests. Unfinished same-level prerequisites
 stay inside the full guide. NPC offers still confirm hidden pickup requirements.
@@ -131,6 +144,13 @@ Full zone/questline invitations also identify the guide and browser bracket,
 so recipients reconstruct its full catalogue scope beyond the twenty packet IDs.
 Update all clients together to use these new invitation modes.
 
+Leveling-guide cards instead have **Show quest list**: a movable, scrollable,
+read-only list of every pickup, objective and hand-in in guide order, including
+later locked steps. It shows levels and progress, and labels missing locations.
+Opening it does not start, switch or save a route. A started fixed guide supplies
+its existing sequence. In adaptive mode this is a catalogue-order preview;
+the trip's travel order is calculated when you start.
+
 When you start a new guide while quests are already in party logs, choose
 **Start selected guide** or **Include current quests**. The popup explains
 that including scattered current quests can cause unusual routes and long
@@ -149,10 +169,20 @@ Arrival alone never accepts, completes or hands in a quest.
   class, race and completion requirements. Discovery favors the current zone
   and suitable known neighbors. Opposing-faction starters and distant unlinked
   zones do not become automatic recommendations.
-- Low-value pickups are excluded. An earlier quest can remain when a known
+- Low-value work is filtered while advancing fixed guides as well as planning
+  adaptive routes. The preferred floor is three levels below you, widening to
+  10% of your level when that is larger; the upper limit remains three above.
+  This is a leveling preference, not a statement that lower quests give no XP.
+  At level 12, Carry Your Weight (level 7, no known useful continuation) does
+  not become a new guide pickup. Compiled steps retain their order and receive
+  no false completion or manual-skip credit when filtered.
+  An earlier quest can remain when a known
   useful follow-up or a suitable dungeon quest justifies it; the arrow explains
   the exception. Accepted work explicitly included by you can remain below
   that range. Unknown follow-ups cannot justify a low-level detour.
+- Collector's Edition **Welcome!** rewards are excluded from leveling guides,
+  including older retained plans. All seven catalogue variants remain browsable
+  in All quests. Bonus exclusion rules are retained separately for future imports.
 - Among members with comparable known history, the guide focuses on the member
   furthest behind in its selected quests. Unknown history does not prove a
   player is behind. The lowest level is the fallback; missing snapshots retain
@@ -385,6 +415,13 @@ name. Friendly givers can show quest names and a downward pointer. Hints hide
 in combat and require public data; world objects without nameplates are not
 universally marked. No raid-target icons or secure Blizzard controls are changed.
 
+**Quest markers → Star above guide quest givers** adds a large gold star above
+an eligible pickup giver's visible friendly nameplate, with quest names beneath.
+Accepted/completed or known-blocked pickups do not qualify. The option defaults
+on and respects the general NPC/nameplate toggles. Enable friendly nameplates in
+the game's settings to see it; the addon does not change that setting. The star
+is our cosmetic overlay and does not put a real raid-target mark on the NPC.
+
 **Quest dialogs** contains separate opt-ins for opening the exact current guide
 quest at a multi-quest NPC, accepting a dialog you open, and turning in completed
 opened quests with no reward choice. All default off and defer in combat.
@@ -442,7 +479,7 @@ provided broad inspiration about progress clarity; its code/assets/layouts
 were not copied. This implementation is independent.
 
 Reported beta build **70205** established the earlier sync APIs in user tests.
-**0.7.0 has host validation, not a live-client compatibility certification.**
+**0.7.1 has host validation, not a live-client compatibility certification.**
 Retest UI rendering, optional gossip/flight actions, corpse positions and item
 hooks on the build in front of you. `/wt probe` lists capabilities and runtime
 status. Do not interpret presence as proof that protected actions work.
@@ -459,7 +496,7 @@ compiler discards temporary caches when it yields. Guide decisions, prerequisite
 rules, fixed/adaptive order, sync behavior, settings and UI remain the same.
 See PERFORMANCE.md for measured host results and the repeatable benchmark command.
 
-Host checks load all 36 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
+Host checks load all 37 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
 
 ```sh
 python3 -m venv /tmp/wow-together-tests

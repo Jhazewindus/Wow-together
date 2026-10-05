@@ -21,6 +21,18 @@ function ns.UIDropdown(parent, entries, width, callback)
         end
         self.caption:SetText("Choose…  ▾")
     end
+    function control:SetVisibleEntries(predicate)
+        local count = 0
+        for _, entry in ipairs(self.entries) do
+            local row, visible = self.options[entry[1]], predicate(entry[1])
+            row:SetShown(visible)
+            if visible then
+                row:ClearAllPoints(); row:SetPoint("TOPLEFT", 4, -4 - count * 30)
+                count = count + 1
+            end
+        end
+        self.menu:SetHeight(count * 30 + 8); self.menu:Hide()
+    end
     control:SetScript("OnClick", function() menu:SetShown(not menu:IsShown()) end)
     control:SetScript("OnHide", function() menu:Hide() end)
     menu:Hide()

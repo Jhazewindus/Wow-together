@@ -30,6 +30,8 @@ local zoneFactions = {
     [1438] = "Alliance", [1439] = "Alliance", [1453] = "Alliance", [1455] = "Alliance", [1457] = "Alliance",
 }
 local linkCache = {}
+local cities = {[1453] = true, [1454] = true, [1455] = true, [1456] = true, [1457] = true, [1458] = true}
+function ns.IsCapitalMap(mapID) return cities[mapID] == true end
 function ns.ResetZoneConnections()
     linkCache = {}
     if ns.ResetMapProjection then ns.ResetMapProjection() end

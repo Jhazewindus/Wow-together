@@ -1,3 +1,41 @@
+# Follow-up review for 0.7.1
+
+The user requests cosmetic stars above quest pickup givers and a complete solo
+leveling mode that disables party features. A quoted, unlabeled report identifies
+Welcome! as a Collector's Edition reward; it is not attributed to a named tester.
+Follow-up user requests replace leveling-card Show route with an ordered quest
+list and show actual leveling areas for brackets. Their screenshot is a level-12
+character in Durotar with 21–30 selected, recommending Mulgore, Orgrimmar and
+Silverpine. The screenshot alone does not establish class/build/active quests.
+The latest user report also names Carry Your Weight being recommended at level
+12; whether it was active or a new pickup was not supplied. No friend diagnostic
+is attached to this batch. These requests are compatible; fixed order and optional
+party-follow acceptance remain in effect.
+
+Inspection: solo guides already work but shared state/transport/UI need a master
+gate. Clear queued transport and peer state on toggles; stale callbacks cannot
+send into a new party session. Personal events/research continue. Stars use owned
+overlays on visible friendly nameplates, never real raid marks or secure attributes.
+All seven Welcome! catalogue variants receive a reviewed leveling exclusion,
+retained through regeneration; raw catalogue records remain browsable.
+
+Bracket qualification previously could rely on lower-level work after discovering
+a later outlier. Match qualifying work to both bracket and actual level. Known
+remote-only objectives do not qualify their pickup zone; exclude capital hubs,
+and derive a main level band from the catalogue to avoid sparse handoff outliers.
+Unknown objective geography still uses the published zone category. This is a
+data-informed estimate, not complete terrain/zone knowledge. Preview all ordered
+stages in a virtualized scroll window without changing the selected route.
+
+Carry Your Weight (791) is level 7 with no known follow-up in the shipped data.
+At level 12 the old five-level allowance admitted it, and fixed-guide advancement
+bypassed LevelingValue entirely. Tighten the preferred band and apply eligibility
+to fixed steps without completion/skip credit or reordering. Preserve useful
+chains/class progression, ready hand-ins and explicitly included current quests.
+Fixed guides now honor the previously requested Start selected guide / Include
+current quests popup as adaptive guides do. Test both choices, fresh scans and
+context changes. Host fixtures cannot establish native beta star/UI behavior.
+
 # Follow-up review for 0.7.0
 
 King Kai requests an optional standalone next-step arrow (18:07). The user

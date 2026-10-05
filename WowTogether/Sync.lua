@@ -12,6 +12,7 @@ local identities = {}
 local labels = {}
 local assemblies = {}
 local repairs = {}
+local pump, transportGeneration, prefixReady = nil, 0, false
 local MAX_PARTS = 64
 ns.syncStats = {sendAttempts = 0, received = 0, accepted = 0, snapshots = 0, titles = 0, ignored = 0, throttled = 0, retries = 0, failures = 0, coalesced = 0, repairs = 0, trace = {}}
 
@@ -65,9 +66,11 @@ function ns.UpdateRoster()
         return key
     end
     ns.self = addUnit("player")
-    for index = 1, 4 do
-        local key = addUnit("party" .. index)
-        if key then roster[key] = true end
+    if ns.PartyFeaturesEnabled() then
+        for index = 1, 4 do
+            local key = addUnit("party" .. index)
+            if key then roster[key] = true end
+        end
     end
     for key in pairs(ns.members) do
         if not roster[key] then ns.members[key] = nil; assemblies[key] = nil; repairs[key] = nil end
@@ -82,6 +85,8 @@ function ns.UpdateRoster()
     local signature = (ns.self or "") .. "|" .. table.concat(ns.partyNames, "|")
     if lastRoster and lastRoster ~= signature then
         -- Old-party transfers must not be delivered into a newly formed party.
+        transportGeneration = transportGeneration + 1
+        pumping = false
         queue = {}
         retryCount = 0
         announced = false
@@ -127,11 +132,17 @@ local function resolveSender(sender)
 end
 
 local function inParty()
+    if not ns.PartyFeaturesEnabled() then return false end
     local raid, grouped = IsInRaid(), IsInGroup()
     return ns.Public(raid) and ns.Public(grouped) and not raid and grouped
 end
 
-local function pump()
+local function schedulePump(delay)
+    local generation = transportGeneration
+    C_Timer.After(delay, function() if generation == transportGeneration then pump() end end)
+end
+
+pump = function()
     if #queue == 0 then pumping = false; ns.Refresh(); return end
     if not inParty() then
         queue = {}
@@ -180,7 +191,7 @@ local function pump()
         return
     end
     ns.Refresh()
-    C_Timer.After(sendDelay, pump)
+    schedulePump(sendDelay)
 end
 
 function ns.TransportState()
@@ -192,7 +203,7 @@ function ns.ActiveSnapshotRevision() return lastActiveRevision end
 function ns.QueueMessage(message)
     if not ns.syncReady or not inParty() or type(message) ~= "string" or #message > 255 or #queue >= 256 then return false end
     queue[#queue + 1] = message
-    if not pumping then pumping = true; C_Timer.After(0, pump) end
+    if not pumping then pumping = true; schedulePump(0) end
     return true
 end
 
@@ -286,7 +297,8 @@ function ns.SyncNow(force)
     ns.UpdateRoster()
     if not ns.ReadQuests() then ns.Refresh(); return end
     if ns.ReadGuide then ns.ReadGuide() end
-    if not ns.syncReady then ns.status = "Party messaging unavailable. Run /wt probe."
+    if not ns.PartyFeaturesEnabled() then ns.status = "Solo leveling mode. Party features are disabled."
+    elseif not ns.syncReady then ns.status = "Party messaging unavailable. Run /wt probe."
     elseif not inParty() then announced = false; ns.status = "Local quest view ready. Join a party (raids unsupported)."
     else
         if force and #queue > 0 then
@@ -349,6 +361,7 @@ local function repairPeer(sender)
 end
 
 function ns.Receive(prefix, message, channel, sender)
+    if not ns.PartyFeaturesEnabled() then return end
     if not ns.Public(prefix) then return end
     if prefix ~= PREFIX then return end
     ns.syncStats.received = ns.syncStats.received + 1
@@ -539,20 +552,24 @@ function ns.Receive(prefix, message, channel, sender)
     ns.Refresh()
 end
 
-function ns.InitializeSync()
-    ns.syncReady = C_ChatInfo and type(C_ChatInfo.RegisterAddonMessagePrefix) == "function"
+function ns.InitializeSync(reusePrefix)
+    ns.syncReady = ns.PartyFeaturesEnabled() and C_ChatInfo and type(C_ChatInfo.RegisterAddonMessagePrefix) == "function"
         and type(C_ChatInfo.SendAddonMessage) == "function"
         and C_Timer and type(C_Timer.After) == "function"
     if ns.syncReady then
-        local registered = C_ChatInfo.RegisterAddonMessagePrefix(PREFIX)
-        ns.syncStats.registration = ns.ResultText(registered, "RegisterAddonMessagePrefixResult")
+        local registered, reused
+        if reusePrefix and prefixReady then reused = true
+        else
+            registered = C_ChatInfo.RegisterAddonMessagePrefix(PREFIX)
+            ns.syncStats.registration = ns.ResultText(registered, "RegisterAddonMessagePrefixResult")
+        end
         -- Modern clients return an enum, older clients may return a boolean.
         -- Confirm actual registration when the query exists; never assume a numeric code.
         if type(C_ChatInfo.IsAddonMessagePrefixRegistered) == "function" then
             local confirmed = C_ChatInfo.IsAddonMessagePrefixRegistered(PREFIX)
             ns.syncReady = ns.Public(confirmed) and confirmed == true
             ns.syncStats.confirmation = ns.ResultText(confirmed, "RegisterAddonMessagePrefixResult")
-        else
+        elseif not reused then
             local values = Enum and Enum.RegisterAddonMessagePrefixResult
             local success = type(values) == "table" and values.Success
             ns.syncReady = ns.Public(registered) and (registered == true
@@ -560,11 +577,37 @@ function ns.InitializeSync()
             ns.syncStats.confirmation = "query unavailable; checked boolean/named Success result"
         end
         trace("Prefix registration: " .. ns.syncStats.registration .. "; ready: " .. tostring(ns.syncReady))
+        prefixReady = ns.syncReady
     end
-    ns.On("CHAT_MSG_ADDON", ns.Receive)
+    if ns.PartyFeaturesEnabled() then ns.On("CHAT_MSG_ADDON", ns.Receive)
+    else
+        ns.handlers.CHAT_MSG_ADDON = nil
+        ns.frame:UnregisterEvent("CHAT_MSG_ADDON")
+        ns.status = "Solo leveling mode. Party features are disabled."
+    end
     ns.UpdateRoster()
 end
 
+function ns.ApplyPartyMode()
+    -- Old queued callbacks must never pump a new session after toggling back on.
+    transportGeneration = transportGeneration + 1
+    queue, pumping, retryCount, sendDelay, announced = {}, false, 0, 1, false
+    assemblies, repairs, ns.members = {}, {}, {}
+    lastSnapshot, lastCompletion, lastOffers, lastActiveRevision = nil, nil, nil, nil
+    ns.ResetGuideTraffic(); ns.ResetCatchupHistory()
+    ns.pendingPartyRouteStart, ns.pendingPartyRouteFollow, ns.pendingPartyRouteInvite, ns.waitingPartyRoute = nil, nil, nil, nil
+    ns.partyFollowContext = nil
+    if ns.partyRoutePrompt then ns.partyRoutePrompt:Hide() end
+    if ns.activityPrompt and ns.activityPrompt.noticeKey and string.find(ns.activityPrompt.noticeKey, ":catchup:", 1, true) then ns.activityPrompt:Hide() end
+    ns.partyRouteStatus = ns.PartyFeaturesEnabled() and "No party route has been started." or "Party routes disabled in solo leveling mode."
+    ns.partyCatchupStatus = ns.PartyFeaturesEnabled() and "Join a synced party to compare zone progress." or "Party catch-up disabled in solo leveling mode."
+    if ns.routeSelection then ns.routeSelection.focusKey = ns.self end
+    ns.forceRouteReplan, ns.routeSignature = true, nil
+    ns.guideAction = nil
+    ns.InitializeSync(true)
+    if not ns.PartyFeaturesEnabled() and ns.IsPartyView(ns.filter) then ns.SetFilter("guides") end
+    ns.SyncNow(false)
+end
 
 function ns.SyncDiagnostics(output)
     local function safe(value)
@@ -574,6 +617,7 @@ function ns.SyncDiagnostics(output)
     end
     output("")
     output("Sync runtime")
+    output("Play mode: " .. (ns.PartyFeaturesEnabled() and "Party features enabled" or "Solo leveling; party features disabled"))
     output("Player name candidates: " .. safe(ns.self) .. " / " .. safe(ns.MemberLabel(ns.self)))
     output("Sender matching: qualified name, or unique exact first-name + surname in the current roster")
     output("Grouped: " .. safe(IsInGroup()) .. "; raid: " .. safe(IsInRaid()))
@@ -604,7 +648,8 @@ function ns.SyncDiagnostics(output)
     output("Objective read status: " .. (ns.progressReadError or "no read failures recorded"))
     output("Peer objective snapshots received: " .. (ns.syncStats.objectives or 0))
     output("NPC hints: " .. ns.npcHintCount .. "; " .. ns.npcHintStatus)
-    output("Automatic sync: group / quest / objective / level / zone events; updates batched for 2 seconds.")
+    output(ns.PartyFeaturesEnabled() and "Automatic sync: group / quest / objective / level / zone events; updates batched for 2 seconds."
+        or "Local quest updates: quest / objective / level / zone events; no party messages.")
     output("Current quests first: " .. safe(ns.Option("currentQuestsFirst")) .. "; nearby pickups: " .. safe(ns.Option("nearbyPickups")))
     output("Auto-accept enabled: " .. safe(ns.Option("autoAccept")) .. "; last attempted dialog quest: " .. safe(ns.autoAcceptAttempt))
     output("Auto turn-in enabled: " .. safe(ns.Option("autoTurnIn")) .. "; " .. ns.turnInStatus)
@@ -675,6 +720,7 @@ function ns.SyncDiagnostics(output)
     output("Recent sync activity (this session)")
     for _, message in ipairs(ns.syncStats.trace) do output(message) end
     output("")
-    output("Run /wt sync on BOTH clients, let the queue drain (retries may take longer), then Refresh this report.")
+    output(ns.PartyFeaturesEnabled() and "Run /wt sync on BOTH clients, let the queue drain (retries may take longer), then Refresh this report."
+        or "Solo leveling mode: party sync is disabled. Refresh this report after quest progress changes.")
     output("Send attempts do not prove delivery. Self echoes do not prove peer delivery.")
 end
