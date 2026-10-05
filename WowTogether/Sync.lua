@@ -272,7 +272,7 @@ end
 
 function ns.SendOffers(force)
     if not ns.offerReady then return end
-    local signature = fingerprint(ns.offered or {})
+    local signature = (lastActiveRevision or 0) .. "|" .. fingerprint(ns.offered or {})
     if not force and signature == lastOffers then return end
     if send("O", ns.offered or {}) then lastOffers = signature end
 end
@@ -284,7 +284,6 @@ function ns.SyncNow(force)
     ns.UpdateRoster()
     if not ns.ReadQuests() then ns.Refresh(); return end
     if ns.ReadGuide then ns.ReadGuide() end
-    if force and ns.InvalidatePickupAvailability then ns.InvalidatePickupAvailability() end
     if not ns.syncReady then ns.status = "Party messaging unavailable. Run /wt probe."
     elseif not inParty() then announced = false; ns.status = "Local quest view ready. Join a party (raids unsupported)."
     else
@@ -300,7 +299,6 @@ function ns.SyncNow(force)
         end
         ns.SendActiveSnapshot(force)
         if ns.SendProgress then ns.SendProgress(force, lastActiveRevision) end
-        if ns.SendPickupAvailability then ns.SendPickupAvailability(force, lastActiveRevision) end
         ns.SendCompletion(force)
         ns.SendOffers(force)
         if ns.SendGuideContext then ns.SendGuideContext(force) end
@@ -321,7 +319,6 @@ local function replySnapshot()
     if ns.ReadGuide then ns.ReadGuide() end
     ns.SendActiveSnapshot(true)
     if ns.SendProgress then ns.SendProgress(true, lastActiveRevision) end
-    if ns.SendPickupAvailability then ns.SendPickupAvailability(true, lastActiveRevision) end
     ns.SendCompletion(true)
     ns.SendOffers(true)
     if ns.SendGuideContext then ns.SendGuideContext(true) end
@@ -378,7 +375,7 @@ function ns.Receive(prefix, message, channel, sender)
         member.syncPending, member.activeRevision = true, nil
         member.completionRevision, member.historyRevision, member.routeLocations = nil, nil, nil
         member.progress, member.progressTransfers = nil, nil
-        member.pickupAvailability, member.pickupTransfer = nil, nil
+        member.offered, member.offerRevision = nil, nil
         repairs[sender] = nil
         replySnapshot()
         repairPeer(sender)
@@ -419,13 +416,6 @@ function ns.Receive(prefix, message, channel, sender)
             if accepted then ns.syncStats.accepted = ns.syncStats.accepted + 1 else ignored(reason) end
             ns.Refresh()
             return
-        end
-    end
-    if ns.ReceivePickupAvailabilityMessage then
-        local handled, accepted, reason = ns.ReceivePickupAvailabilityMessage(message, sender)
-        if handled then
-            if accepted then ns.syncStats.accepted = ns.syncStats.accepted + 1 else ignored(reason) end
-            ns.Refresh(); return
         end
     end
     if ns.ReceiveGuideMessage then
@@ -532,7 +522,10 @@ function ns.Receive(prefix, message, channel, sender)
     elseif kind == "K" then
         ns.members[sender].historyChecked = result
         ns.members[sender].historyRevision = rev
-    else ns.members[sender].offered = result end
+    else
+        ns.members[sender].offered = result
+        ns.members[sender].offerRevision = rev
+    end
     if kind == "C" or kind == "K" then repairPeer(sender) end
     ns.Refresh()
 end

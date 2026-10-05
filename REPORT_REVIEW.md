@@ -1,5 +1,42 @@
 # Report review for 0.6.0
 
+## Follow-up correction for 0.6.2
+
+The supplied Tt Tte capture reports 0.6.1, client 70205/interface 16001, solo at
+capture, level 2 Horde Shaman in Durotar. Do not relabel it as the earlier
+user-labeled main developer's report or infer a current party from old peer
+traffic. The namespaced sharing API is present; the global is missing. The
+aggregate 140 true/147 false results do not prove any individual pickup's state.
+Medallion (794) is absent from the captured trip; Vile Familiars (792) is present.
+That does not disprove an earlier recommendation or a future guide entry.
+
+Code inspection reproduces a shared cause: a positive native result, and some
+actual-offer route paths, bypass known prerequisite history. The user authorized
+a generic fix for all quests and then corrected the API interpretation:
+IsPushableQuest describes sharing; IsQuestCompletable describes completion of
+the currently opened dialog. Mainline QuestFrame uses the latter with no argument
+to enable the progress panel's Complete button. No arbitrary-ID pickup contract
+is established. This correction supersedes the 0.6.1 beta-gate assumption below.
+
+Apply one prerequisite/identity/level rule before every new pickup. Actual NPC
+offers can fill missing published evidence but cannot bypass a known unfinished
+prerequisite. Keep locked future quests in full guides; normal progress rechecks
+them. Remove the incorrect gate, setting and packet stream, retain optional
+opened-dialog turn-in, and add per-character diagnostic reasons. Host tests
+cover all route modes, secret/unknown history, alternative prerequisites, NPC
+offers, party independence and stale markers. Unknown hidden gates still need
+NPC evidence on the beta build; no fixed example-only prerequisite is invented.
+
+During implementation the user also requested data collected during their and
+friends' leveling sessions, mainly to improve prerequisite evidence. Capture
+bounded per-character public NPC offers and acceptance/hand-in events with
+relevant history and build/level/reputation-change context. Export locally via
+settings or /wt research, with no names/chat/automatic transmission. Identify
+missing planned pickups only against a complete list at a known giver and only
+for that character. Preserve evidence rather than silently learning a dependency;
+before/after differences can have other causes. A partial detail dialog must
+not erase an earlier complete list's absence evidence in unchanged context.
+
 ## Follow-up batch for 0.6.1
 
 The user reports missing non-Barrens guides, single-quest tiles, blocked Start

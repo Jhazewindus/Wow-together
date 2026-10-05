@@ -75,7 +75,10 @@ class RouteTests(unittest.TestCase):
         c.lua.globals().pyShift = lambda a, b: int(a) << int(b)
         c.lua.execute('bit={band=function(a,b) return pyBand(a,b) end, lshift=function(a,b) return pyShift(a,b) end}')
         p = c.ns.profile
-        self.assertIsNone(c.ns.CatalogueAllowed(900, p, c.ns.self)[0])
+        self.assertFalse(c.ns.CatalogueAllowed(900, p, c.ns.self)[0])  # A known unfinished chain blocks even while identity is unknown.
+        c.lua.globals().finished[899] = True
+        self.assertIsNone(c.ns.CatalogueAllowed(900, p, c.ns.self)[0])  # Identity remains unknown after the prerequisite is met.
+        c.lua.globals().finished[899] = False
         p.classID, p.raceID = 8, 8
         self.assertFalse(c.ns.CatalogueAllowed(900, p, c.ns.self)[0])
         p.classID, p.raceID = 1, 2

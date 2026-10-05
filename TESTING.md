@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.6.1**, World of Warcraft: Forever beta, interface **16001**.
+For **0.6.2**, World of Warcraft: Forever beta, interface **16001**.
 Allow about **45–60 minutes** for the main checks. Player A starts routes;
 Player B tests the invitation and reports their own progress. Swap roles once.
 Record **Pass / Fail / Skip** for each check. If a quest is already completed
@@ -26,7 +26,7 @@ or unavailable, use another suitable quest or mark that example skipped.
 | --- | --- | --- |
 | 1. Automatic sync | A accepts an available quest, then both watch `/wt`. Do not repeatedly press Sync. Wait for the paced queue to drain. | B sees A's quest change automatically. Diagnostics show received snapshots and no continuing failed transfers. |
 | 2. Nearby bundle | With Lazy Peons active around Valley of Trials, inspect the refreshed guide. Use **Show route** on that guide. | Available Galgar's Cactus Apple Surprise and the general Vile Familiars can join the trip when within the walking budget. The pickup NPCs are named. Completed or unavailable quests are excluded. Apple's missing objective coordinates are described as incomplete. |
-| 3. Prerequisites | Before completing Vile Familiars, inspect Burning Blade Medallion in All quests. Check again after handing in the prerequisite. | Accepting or finishing objectives alone does not unlock the follow-up. Completed history, or a live NPC offer, confirms availability. A general quest must not demand the other class variant's introduction. |
+| 3. Prerequisites | Before completing Vile Familiars, inspect Burning Blade Medallion in All quests. Check again after handing in the prerequisite. | Accepting or finishing objectives alone does not unlock the follow-up. Known prerequisite history must be completed; a positive offer cannot bypass it. A general quest must not demand the other class variant's introduction. |
 | 4. Nearby ready quests | Have one ready-to-turn-in quest at a nearby NPC plus unfinished work. Refresh the recommendation and show it. | The nearby ready turn-in precedes new pickups. Later objective/return stages remain for unfinished party members. A distant delivery should not pull the plan away from local work. |
 | 5. Keep my route | B selects a route. A presses **Start route** on another guide. B chooses **Keep my route**. | B receives a popup. Their route stays unchanged before and after choosing Keep. |
 | 6. Follow route | A presses Start route again. B chooses **Follow route**. | B gets the same quest selection, including nearby pickups. Each client uses the party's actual quest progress; invitations do not resend themselves. |
@@ -77,7 +77,17 @@ or unavailable, use another suitable quest or mark that example skipped.
 | 36. Quest greeting and scorpion pickup | On the affected character, visit the scorpion quest's giver before it unlocks. Record the greeting list, whether Cutting Teeth is completed and the greeting diagnostics. Progress and revisit. Also test a giver offering multiple quests with optional dialog selection. | A complete public greeting list can block an absent quest just as gossip can. Changed progress invalidates that absence. Actual offers confirm availability; hidden gates are not guessed. Opt-in selection uses the matching native slot. Missing/restricted APIs stay explicit and manual. |
 | 37. Extra waypoint and scan footer | Place your own manual Blizzard waypoint first. Start a route, progress and Scan guide; then clear the addon route. Inspect the arrow controls. If an old addon waypoint remains, remove it manually. | No extra Blizzard pin is created or moved; your manual waypoint remains. Numbered addon route markers/lines remain available. Scan optimizes progress with Loading route and has no extra Guide replanned footer below its controls. |
 | 38. Trip stability and shared scope | With a multi-quest guide, accept one pickup, complete a subset, then finish the trip. Share a full guide with more than twenty quests. B chooses Keep, then Follow on a second invitation. | Acceptance retains the current trip's quest set; finished work leaves as confirmed. The next trip comes from the retained full guide. Follow reconstructs the same full guide identity, not only the invitation's twenty IDs; Keep leaves B's guide untouched. |
-| 39. Tested pickup gate and automatic unlock | Keep Use the tested beta pickup check enabled on both updated clients. Test solo, then in a party: before the scorpion follow-up unlocks, record its actual NPC offer and the pickup diagnostics. Turn in the prerequisite, wait for the queue to drain, and revisit without pressing Scan. Compare players at different progress. Also inspect an accepted quest and try the setting off. | A public false excludes a new pickup; true allows a useful, compatible candidate with a known location. The changed result refreshes automatically, including when the quest-log revision is unchanged. Each friend supplies their own result, matched to their log snapshot. Newly unlocked nearby work can join the trip while its unfinished objective stays first. Accepted work is retained. Unknown/restricted values are not false. Missing/disabled APIs use existing gates. Report the build and any boolean/NPC disagreement. |
+| 39. Prerequisite and NPC evidence | Update both clients to 0.6.2. Before handing in Vile Familiars, inspect Burning Blade Medallion in the retained guide and copied Diagnostics; visit Zureetha and record her actual offers. Hand in Vile Familiars, wait for automatic sync, revisit and compare. Repeat with another zone's chain and two players at different progress. | Known unfinished prerequisites block pickups in every route mode, even with positive offer evidence. Completed history can unlock a published-data candidate; the NPC confirms hidden requirements. The full guide retains future quests, and accepted objectives remain. Neither IsPushableQuest nor IsQuestCompletable affects pickup decisions. Report per-quest reasons, actual NPC list and build. |
+
+## New 0.6.2 pickup checks
+
+| Check | Actions | Expected result |
+| --- | --- | --- |
+| 40. Ready versus handed in | Finish a prerequisite's objectives but leave it in the log. Inspect the follow-up, then hand in and wait for automatic sync without pressing Scan. | Ready does not unlock the next pickup. Hand-in re-evaluates the full guide; useful follow-up work may enter the next/current nearby trip. Future scope stays selected. |
+| 41. Independent party history | A has handed in the prerequisite; B has not. Share the full guide and compare each character's pickup diagnostics. Let B progress, then reload one client. | A's completion does not unlock B's follow-up. Missing history stays unknown until synced. Actual offer lists refresh with the log, and reload does not reuse old peer offers. |
+| 42. NPC absence and partial information | Inspect an unavailable pickup at its giver, progress and revisit. Try a published quest with incomplete/branching requirements. Copy Diagnostics with the guide selected. | A complete public NPC list can block absence in its current context. A single detail dialog confirms only that quest. Known prerequisites remain mandatory; missing metadata needs actual offer confirmation. Diagnostics distinguish inferred candidates from NPC evidence. |
+| 43. Single-quest marker cleanup | Show an individual pickup route, then speak to its known giver while the quest is unavailable. Compare full-guide behavior. | Invalidated pickup markers disappear in both modes; the guide remains selected waiting for eligibility/location data. Accepted objective/turn-in markers remain. Optional automatic dialog selection uses the same pickup rules. |
+| 44. Quest research export | Leave Record NPC offers and quest progression on. Visit a known giver before a follow-up unlocks, accept/hand in the earlier quest, then revisit the same giver. Each tester runs `/wt research` or opens Settings → Quest data for testing → Export quest data. Select all, Ctrl+C and save as a text file labeled with the tester name. Reload and export again; briefly try recording off. | JSON contains separate NPC offers, acceptance/hand-in events, build, relevant history and level/reputation-change context. Individual dialogs never claim a complete list. Known planned pickups missing from a full list are identified for that character. Reload preserves observations; recording off stops new records. Exports omit character names/chat and are never sent automatically. Latest 300 records remain; replaced count is explicit. No learned prerequisite is silently applied. |
 
 If a guide cannot start, include its exact name, bracket, first NPC/quest, copied
 Diagnostics and the NPC's actual offered list. For an 18-versus-3 comparison,
@@ -196,7 +206,12 @@ Results (Pass / Fail / Skip; state why a check was skipped):
 36 Quest greeting / unavailable scorpion pickup:
 37 Extra waypoint removal / Scan footer:
 38 Trip stability / full shared guide scope:
-39 Tested pickup boolean / automatic unlock / peer differences:
+39 Prerequisites / actual NPC evidence / automatic unlock:
+40 Ready versus handed in:
+41 Independent party history / offer freshness:
+42 NPC absence / partial requirements / diagnostics:
+43 Single-quest marker cleanup:
+44 Quest research / before-and-after NPC offers / saved export:
 Flight network / actions / timed rides (optional):
 Corpse directions (optional):
 Selected guide / current step / settings:

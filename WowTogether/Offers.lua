@@ -5,6 +5,7 @@ ns.turnInStatus = "Automatic turn-in is off."
 
 function ns.InvalidateNPCOffers()
     if ns.db and ns.db.offerKnowledge then ns.db.offerKnowledge[ns.self] = {} end
+    ns.offered = {}
 end
 
 local function offerContext()
@@ -23,13 +24,17 @@ function ns.RecordNPCOfferAvailability(quests, complete)
             or not ns.GuideInteger(quest.questID) or quest.questID <= 0 then return end
         offered[quest.questID] = true
     end
+    local observed, completeList = {}, complete ~= false
+    for questID in pairs(offered) do observed[questID] = true end
     if complete == false then
         local previous = ns.db.offerKnowledge[ns.self][id]
         if previous and previous.context == offerContext() then
             for questID in pairs(previous.offered) do offered[questID] = true end
+            completeList = previous.complete == true
         end
     end
-    ns.db.offerKnowledge[ns.self][id] = {context = offerContext(), offered = offered, complete = complete ~= false}
+    ns.db.offerKnowledge[ns.self][id] = {context = offerContext(), offered = offered, complete = completeList}
+    ns.RecordQuestResearch("offers", {npcID = id, offered = observed, complete = complete ~= false})
 end
 
 function ns.ObservedPickupAvailable(id)
@@ -51,7 +56,8 @@ function ns.AutoSelectGuideQuest()
     if not ns.Option("autoSelectQuests") or ns.RouteInCombat() then return end
     local stop = ns.selectedRoute and ns.selectedRoute.stops[1]
     if not stop or ns.autoGossipAttempt == stop.id then return end
-    if stop.kind == "a" and ns.offered[stop.id] and C_GossipInfo and type(C_GossipInfo.SelectAvailableQuest) == "function" then
+    if stop.kind == "a" and ns.offered[stop.id] and ns.CatalogueAllowed(stop.id, ns.profile, ns.self) == true
+        and C_GossipInfo and type(C_GossipInfo.SelectAvailableQuest) == "function" then
         ns.autoGossipAttempt = stop.id
         C_GossipInfo.SelectAvailableQuest(stop.id)
     elseif stop.kind == "t" and C_GossipInfo and type(C_GossipInfo.SelectActiveQuest) == "function" then
@@ -74,6 +80,8 @@ function ns.AutoTurnInOpenedQuest(stage)
         ns.turnInStatus = "Waiting for a public, accepted quest dialog."; return
     end
     if stage == "progress" then
+        -- This zero-argument API describes the currently opened turn-in dialog;
+        -- it is never queried by the planner for arbitrary quest IDs.
         if type(CompleteQuest) ~= "function" or ns.ReadPublic(IsQuestCompletable) ~= true then
             ns.turnInStatus = "Quest progress is incomplete or unavailable."; return
         end
@@ -97,8 +105,40 @@ function ns.AutoTurnInOpenedQuest(stage)
     end
 end
 
+function ns.PickupDiagnostics(output)
+    output("Pickup rules: known level / faction / class / race / prerequisites, plus actual NPC offers.")
+    output("IsPushableQuest is sharing only. IsQuestCompletable is opened-dialog turn-in only. Neither is a pickup gate.")
+    local guide = ns.routeSelection
+    if not guide then output("Select a guide for per-quest pickup reasons."); return end
+    for _, person in ipairs(ns.PartyProfiles()) do
+        local blocked, unknown, candidates, details, eligible = 0, 0, 0, {}, {}
+        for _, record in ipairs(guide.records or {}) do
+            local member = ns.members[person.key]
+            local active = person.key == ns.self and ns.active[record.id] or member and member.active and member.active[record.id]
+            if not active and ns.CatalogueCompletion(person.key, record.id) ~= true then
+                local allowed, reason = ns.CatalogueAllowed(record.id, person.profile, person.key)
+                if allowed == false then blocked = blocked + 1
+                elseif allowed == nil then unknown = unknown + 1
+                else candidates = candidates + 1 end
+                local offer = ns.PickupOfferEvidence(person.key, record.id)
+                local evidence = offer == true and "NPC offered" or (offer == false and "NPC absent" or "NPC not checked")
+                local label = "  " .. ns.QuestTitle(record.id) .. " (" .. record.id .. "; " .. evidence .. "): "
+                if allowed ~= true and #details < 8 then
+                    details[#details + 1] = label .. (reason or "Pickup unconfirmed.")
+                elseif allowed == true and #eligible < 4 then
+                    eligible[#eligible + 1] = label .. (offer == true and "Known requirements met and NPC offer confirmed."
+                        or "Known requirements met; hidden requirements may still need NPC confirmation.")
+                end
+            end
+        end
+        output("Guide pickups for " .. ns.MemberLabel(person.key) .. ": " .. candidates .. " candidates; " .. blocked .. " blocked; " .. unknown .. " unknown.")
+        for _, detail in ipairs(details) do output(detail) end
+        for _, detail in ipairs(eligible) do output(detail) end
+    end
+    output("Candidates are based on known data; NPC offers are required to confirm hidden requirements.")
+end
+
 function ns.ReadOffers()
-    ns.InvalidatePickupAvailability()
     ns.offered = {}
     if not ns.gossipReady then return end
     ns.ReadQuests()
@@ -121,7 +161,6 @@ function ns.ReadOffers()
 end
 
 function ns.ReadGreetingOffers()
-    ns.InvalidatePickupAvailability()
     if not ns.greetingReady then return end
     ns.ReadQuests()
     local count = ns.ReadPublic(GetNumAvailableQuests)
@@ -144,7 +183,8 @@ function ns.ReadGreetingOffers()
     ns.SendOffers(); ns.ScheduleSync(); ns.Refresh()
     local stop = ns.selectedRoute and ns.selectedRoute.stops[1]
     if ns.Option("autoSelectQuests") and not ns.RouteInCombat() and stop and stop.kind == "a"
-        and slots[stop.id] and type(SelectAvailableQuest) == "function" and ns.autoGossipAttempt ~= stop.id then
+        and slots[stop.id] and ns.CatalogueAllowed(stop.id, ns.profile, ns.self) == true
+        and type(SelectAvailableQuest) == "function" and ns.autoGossipAttempt ~= stop.id then
         ns.autoGossipAttempt = stop.id
         SelectAvailableQuest(slots[stop.id])
     end
@@ -164,7 +204,6 @@ function ns.InitializeOffers()
     if ns.greetingReady then ns.On("QUEST_GREETING", ns.ReadGreetingOffers) end
     if type(GetQuestID) == "function" then
         ns.On("QUEST_DETAIL", function()
-            ns.InvalidatePickupAvailability()
             local id = GetQuestID()
             if ns.Public(id) and type(id) == "number" and id > 0
                 and id <= 2147483647 and id == math.floor(id) then

@@ -1,7 +1,7 @@
 # Wow Together
 
 A party quest guide for the **World of Warcraft: Forever beta**. Version
-**0.6.1** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.6.2** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -28,6 +28,7 @@ No Battle.net credentials, external API service or in-game HTTP access is needed
 | `/wt tracker` | Toggle the movable, scrollable party progress panel. |
 | `/wt arrow` | Toggle the movable direction and instruction panel. |
 | `/wt guide scan` | Refresh real progress and replan the selected guide. |
+| `/wt research` | Open a copyable local quest-data export for prerequisite research. |
 | `/wt guide reset` | Clear all saved guide skips for this character. |
 | `/wt sync` | Request fresh party snapshots; let the send queue drain. |
 | `/wt probe` | Open diagnostics; Ctrl+C copies and closes the report. |
@@ -198,25 +199,50 @@ Absence blocks a pickup only after all known givers were checked. A single
 quest-detail dialog confirms that quest without claiming the list is complete.
 Progress, level or reputation changes invalidate relevant knowledge; visit
 again to recheck. This cannot discover every hidden prerequisite in advance.
-**Use the tested beta pickup check** is enabled by default, at the user's
-request after testing Forever. It uses the user's beta interpretation of
-`IsPushableQuest(questID)`: a public true confirms a pickup candidate and false
-blocks a new pickup. Probe the global function first, then the present
-`C_QuestLog.IsPushableQuest` function. This compatibility gate does not assert
-the same semantics on other WoW clients or future builds; disable it in
-Leveling guides settings if a build behaves differently. Known faction, class
-and minimum-level mismatches still block pickups. Actual NPC absence also
-blocks them until the progress context changes.
+Every pickup uses known level, faction, class, race and prerequisite rules.
+Known prerequisite history is checked before positive NPC evidence: accepting
+the earlier quest, completing its objectives or skipping it does not count as
+handing it in. An alternative prerequisite needs one confirmed completion;
+unknown/restricted history stays unknown. Actual offers can confirm missing or
+unverified published requirements but cannot bypass a known unfinished prerequisite.
+Without an NPC observation, a candidate is based on published data and may still
+have a hidden beta requirement. Visit the giver to confirm it.
 
-Each client checks its own character, then sends bounded true/false snapshots
-to the party. Missing API or a disabled check retains the existing evidence
-gates; nil, restricted or failed results from a present API remain unknown.
-Quest updates, turn-ins, level/faction/zone changes and NPC visits invalidate
-cached results. Automatic sync batches those updates for two seconds, including
-solo guide refresh. A newly unlocked nearby pickup can join the committed trip;
-an unfinished objective stays first. Accepted quests remain work/turn-in steps,
-even when their pickup check returns false. Combat keeps already-public cached
-results, defers new reads and rechecks after combat. Scan guide also rechecks.
+`IsPushableQuest` reports shareability and is no longer queried for pickups.
+`IsQuestCompletable()` describes the currently opened NPC progress/turn-in
+dialog; it is used only for optional turn-in, with no quest-ID argument. Neither
+function is an arbitrary-quest pickup check. The old beta pickup setting and
+packets are removed; update every client to avoid using the old interpretation.
+
+Each client sends its own history and actual NPC offers. Peer offers are tied
+to fresh quest-log context, and an empty list does not mean every quest is
+unavailable. Automatic sync batches quest/turn-in/party/level/zone updates for
+two seconds, including solo guide refresh. Locked quests stay in the full guide;
+newly eligible nearby work can join the trip while its unfinished objective stays
+first. Accepted work remains. Scan guide also rechecks. Diagnostics show candidate,
+blocked and unknown counts plus sample per-quest reasons and NPC offer evidence.
+
+Quest research is enabled locally in **Settings → Quest data for testing**.
+Each character retains the latest 300 observations across reloads: public NPC
+offers (complete lists distinguished from individual dialogs), accepted quests,
+turn-ins, build, level/class/race/faction/map and relevant completion-history
+checks. Snapshots check at most 128 relevant IDs and mark history truncation.
+Level and reputation-change events flag alternative explanations for unlocks;
+no actual reputation standing or unobserved NPC offers are guessed.
+
+Use `/wt research` or **Export quest data**, choose **Select all** and press
+Ctrl+C. Save the JSON export as a text file and send it with your tester name
+after a session; export before older observations roll off. Diagnostics shows
+the retained/replaced count. Each friend exports their own character's data;
+the export contains no character names, realms, chat or friends' histories.
+Records are not sent through party sync or uploaded automatically. Disable
+recording to pause collection; previous observations remain exportable.
+Reloads and recording toggles mark a new capture segment so gaps remain visible.
+Visit the same giver before and after hand-in for the strongest comparisons.
+A missing planned pickup is recorded only for this character at a known giver
+with a complete public list. Differences suggest prerequisite candidates; they
+do not automatically create a dependency because levels, reputation, branches
+and other quest changes can explain them. Retest capture APIs/events on the beta.
 
 The greeting reader probes GetNumAvailableQuests/GetAvailableQuestInfo and
 reads the quest ID from the fifth return, as documented by Mainline's native
@@ -281,7 +307,7 @@ provided broad inspiration about progress clarity; its code/assets/layouts
 were not copied. This implementation is independent.
 
 Reported beta build **70205** established the earlier sync APIs in user tests.
-**0.6.1 has host validation, not a live-client compatibility certification.**
+**0.6.2 has host validation, not a live-client compatibility certification.**
 Retest UI rendering, optional gossip/flight actions, corpse positions and item
 hooks on the build in front of you. `/wt probe` lists capabilities and runtime
 status. Do not interpret presence as proof that protected actions work.

@@ -624,7 +624,7 @@ function ns.Render()
     ns.ui.content:SetHeight(math.max(250, top))
 end
 
-function ns.ShowDiagnostics(report)
+function ns.ShowDiagnostics(report, caption, onRefresh)
     if not ns.diagnosticsWindow then
         local window = CreateFrame("Frame", "WowTogetherDiagnostics", UIParent, "BackdropTemplate")
         ns.diagnosticsWindow = window
@@ -639,6 +639,7 @@ function ns.ShowDiagnostics(report)
         window:SetScript("OnDragStart", window.StartMoving)
         window:SetScript("OnDragStop", window.StopMovingOrSizing)
         local title = window:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
+        window.title = title
         title:SetPoint("TOPLEFT", 20, -20)
         title:SetText("Wow Together — Diagnostics")
         local close = CreateFrame("Button", nil, window, "UIPanelCloseButton")
@@ -653,6 +654,7 @@ function ns.ShowDiagnostics(report)
         local edit = CreateFrame("EditBox", nil, scroll)
         ns.diagnosticsText = edit
         edit:SetMultiLine(true)
+        if type(edit.SetMaxLetters) == "function" then edit:SetMaxLetters(0) end
         edit:SetAutoFocus(false)
         edit:SetFontObject("ChatFontNormal")
         edit:SetSize(575, 900)
@@ -685,9 +687,11 @@ function ns.ShowDiagnostics(report)
         refresh:SetSize(110, 24)
         refresh:SetPoint("BOTTOMRIGHT", -20, 20)
         refresh:SetText("Refresh")
-        refresh:SetScript("OnClick", function() ns.Diagnostics() end)
+        refresh:SetScript("OnClick", function() ns.reportRefresh() end)
     end
     ns.diagnosticsGeneration = (ns.diagnosticsGeneration or 0) + 1
+    ns.reportRefresh = onRefresh or ns.Diagnostics
+    ns.diagnosticsWindow.title:SetText(caption or "Wow Together — Diagnostics")
     local _, lineCount = string.gsub(report, "\n", "\n")
     ns.diagnosticsText:SetHeight(math.max(900, (lineCount + 1) * 30))
     ns.diagnosticsText:SetText(report)

@@ -5,7 +5,7 @@ local defaults = {autoAccept = false, npcHints = true, classQuests = false,
     trackerHeight = 350, circuitRadius = 0.16, circuitLimit = 6, mapLegend = true, professionBatch = 5, routeArrow = true,
     currentQuestsFirst = true, nearbyPickups = true, fullRoute = false, routeAhead = 2, autoTurnIn = false,
     scanSkipped = false, distanceUnits = "yards", trackerAuto = true, autoSelectQuests = false,
-    suggestFlights = true, autoFly = false, nearbyFlights = true, corpseArrow = true, npcMarker = "cross", betaPickupCheck = true}
+    suggestFlights = true, autoFly = false, nearbyFlights = true, corpseArrow = true, npcMarker = "cross", recordQuestData = true}
 
 function ns.Option(key)
     local value = ns.db and ns.db.config and ns.db.config[key]
@@ -15,7 +15,6 @@ end
 
 local sections = {
     {"guides", "Leveling guides", {
-        {"betaPickupCheck", "Use the tested beta pickup check", "Use IsPushableQuest as pickup eligibility on your tested Forever build. Missing/restricted values stay unknown. Disable if a later build behaves differently."},
         {"nearbyPickups", "Collect useful quests nearby", "Add eligible nearby pickups to a quest-log trip. Level range, prerequisites and walking distance still apply."},
         {"classQuests", "Include class quests", "Class restrictions are shown. Personal profession quests remain in Profession guides."},
         {"dungeonPrompts", "Suggest dungeon quest collection", "Offer a collection guide when the party reaches the relevant quest levels."},
@@ -40,12 +39,15 @@ local sections = {
         {"autoSelectQuests", "Open the current guide quest at an NPC", "When an NPC has several quests, select the exact current pickup or completed turn-in. Other quests stay manual."},
         {"autoAccept", "Accept the quest dialog I open", "Opt-in: accept an opened quest-detail dialog outside combat."},
         {"autoTurnIn", "Turn in quests without a reward choice", "Opt-in: handle completed quest dialogs you open. Item reward choices always remain manual."}}},
+    {"research", "Quest data for testing", {
+        {"recordQuestData", "Record NPC offers and quest progression", "Save the latest 300 local observations for prerequisite research. Export manually; no character names, chat or automatic uploads."}}},
     {"professions", "Personal professions", {
         {"professionBatch", "Crafts per suggested batch", "Set the number of crafts used to calculate materials in your personal profession guide.", {{1, "1 craft"}, {5, "5 crafts"}, {10, "10 crafts"}, {20, "20 crafts"}}}}}
 }
 
 function ns.InitializeConfig()
     if type(ns.db.config) ~= "table" then ns.db.config = {} end
+    ns.db.config.betaPickupCheck = nil -- Retired: this API measures sharing, not pickup eligibility.
     for key, value in pairs(defaults) do
         local configured = ns.db.config[key]
         if type(configured) ~= type(value) or (type(configured) == "number"
@@ -63,11 +65,11 @@ end
 
 function ns.SetOption(key, value)
     if defaults[key] == nil or type(value) ~= type(defaults[key]) then return end
+    if key == "recordQuestData" and ns.Option(key) ~= value then ns.ResearchCaptureBoundary() end
     ns.db.config[key] = value
     ns.InitializeConfig()
     ns.flightPlanCache = nil
     if key == "nearbyPickups" then ns.forceRouteReplan, ns.routeSignature = true, nil end
-    if key == "betaPickupCheck" then ns.InvalidatePickupAvailability(); ns.ResetPickupTraffic(); ns.ScheduleSync() end
     if ns.RenderSettings then ns.RenderSettings() end
     if ns.UpdateNPCHints then ns.UpdateNPCHints() end
     if ns.DrawRoute then ns.DrawRoute() end
@@ -121,6 +123,13 @@ function ns.CreateSettings()
         end
         page:Hide()
     end
+    local research = frame.pages.research
+    local instructions = ns.UILabel(research, nil, 11)
+    instructions:SetPoint("TOPLEFT", 36, -75); instructions:SetSize(520, 70)
+    instructions:SetText("Visit quest givers before and after turning in a prerequisite.\nExport after your session, then Select all and Ctrl+C. Send the export as a text file, labeled with your tester name.\nLevel/reputation changes are recorded as possible alternative causes.")
+    local export = ns.UIButton(research, "Export quest data", 150, ns.ShowQuestResearch)
+    export:SetPoint("TOPLEFT", 36, -160)
+    frame.researchExport = export
     frame.section = ns.UIDropdown(frame, choices, 300, function(key) frame.sectionKey = key; ns.RenderSettings() end)
     frame.section:SetPoint("TOPLEFT", 22, -58); frame.sectionKey = "guides"
     frame.note = ns.UILabel(frame, nil, 11)

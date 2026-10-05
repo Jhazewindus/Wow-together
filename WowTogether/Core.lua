@@ -1,5 +1,6 @@
 local addonName, ns = ...
 
+ns.VERSION = "0.6.2"
 ns.handlers = {}
 ns.members = {}
 ns.status = "Waiting for addon initialization."
@@ -35,7 +36,7 @@ ns.frame:SetScript("OnEvent", function(_, event, ...)
 end)
 
 function ns.Diagnostics()
-    local lines = {"Wow Together 0.6.1 — beta capability and sync report", ""}
+    local lines = {"Wow Together " .. ns.VERSION .. " — beta capability and sync report", ""}
     local function output(line) lines[#lines + 1] = line end
     local version, build, _, interface = GetBuildInfo()
     local function readable(value)
@@ -78,14 +79,14 @@ function ns.Diagnostics()
         {"C_QuestLog.GetTitleForQuestID", C_QuestLog and C_QuestLog.GetTitleForQuestID},
         {"C_QuestLog.IsComplete", C_QuestLog and C_QuestLog.IsComplete},
         {"C_QuestLog.GetQuestObjectives", C_QuestLog and C_QuestLog.GetQuestObjectives},
-        {"IsPushableQuest (tested beta pickup check)", IsPushableQuest},
-        {"C_QuestLog.IsPushableQuest (tested beta pickup check)", C_QuestLog and C_QuestLog.IsPushableQuest},
+        {"IsPushableQuest (sharing only; unused by planner)", IsPushableQuest},
+        {"C_QuestLog.IsPushableQuest (sharing only; unused by planner)", C_QuestLog and C_QuestLog.IsPushableQuest},
         {"C_NamePlate.GetNamePlateForUnit", C_NamePlate and C_NamePlate.GetNamePlateForUnit},
         {"C_NamePlate.GetNamePlates", C_NamePlate and C_NamePlate.GetNamePlates},
         {"C_QuestLog.UnitIsRelatedToActiveQuest", C_QuestLog and C_QuestLog.UnitIsRelatedToActiveQuest},
         {"AcceptQuest", AcceptQuest},
         {"CanAcceptQuest", CanAcceptQuest},
-        {"IsQuestCompletable", IsQuestCompletable},
+        {"IsQuestCompletable (opened turn-in dialog only)", IsQuestCompletable},
         {"CompleteQuest", CompleteQuest},
         {"GetNumQuestChoices", GetNumQuestChoices},
         {"GetQuestReward", GetQuestReward},
@@ -134,6 +135,7 @@ function ns.Diagnostics()
     ns.SyncDiagnostics(output)
     ns.NavigationDiagnostics(output)
     output("Travel: " .. ns.travelStatus)
+    ns.ResearchDiagnostics(output)
     ns.ShowDiagnostics(table.concat(lines, "\n"))
 end
 
@@ -152,6 +154,7 @@ ns.On("ADDON_LOADED", function(name)
     ns.InitializeTravel()
     ns.InitializeItemHints()
     ns.InitializeOffers()
+    ns.InitializeQuestResearch()
     ns.InitializeGuide()
     ns.ReadProgress()
     ns.CreateTracker()
@@ -163,18 +166,21 @@ end)
 
 ns.On("PLAYER_LOGIN", function() ns.ScheduleSync() end)
 ns.On("QUEST_LOG_UPDATE", function()
-    ns.InvalidatePickupAvailability()
     if ns.db then ns.ReadProgress(); ns.UpdateNPCHints(); ns.Refresh() end
     ns.ScheduleSync()
 end)
-ns.On("ZONE_CHANGED_NEW_AREA", function() ns.InvalidatePickupAvailability(); ns.ResetZoneConnections(); ns.ReadGuide(); ns.ScheduleSync(); ns.Refresh() end)
-ns.On("PLAYER_LEVEL_UP", function() ns.InvalidatePickupAvailability(); ns.ScheduleSync() end)
-ns.On("QUEST_TURNED_IN", function()
-    ns.InvalidatePickupAvailability()
+ns.On("ZONE_CHANGED_NEW_AREA", function() ns.ResetZoneConnections(); ns.ReadGuide(); ns.ScheduleSync(); ns.Refresh() end)
+ns.On("PLAYER_LEVEL_UP", function(level) ns.RecordQuestResearch("level", {level = level}); ns.ScheduleSync() end)
+ns.On("QUEST_ACCEPTED", function(_, id) ns.RecordQuestResearch("accept", {questID = id}); ns.ScheduleSync() end)
+ns.On("QUEST_TURNED_IN", function(id)
+    ns.RecordQuestResearch("turn-in", {questID = id})
     ns.InvalidateNPCOffers()
     ns.activityRevision = (ns.activityRevision or 0) + 1; ns.ScheduleSync()
 end)
-ns.On("UPDATE_FACTION", function() ns.InvalidateNPCOffers(); ns.InvalidatePickupAvailability(); ns.ScheduleSync() end)
+ns.On("UPDATE_FACTION", function()
+    ns.RecordQuestResearch("reputation")
+    ns.InvalidateNPCOffers(); ns.ScheduleSync()
+end)
 ns.On("GROUP_ROSTER_UPDATE", function()
     ns.UpdateRoster()
     ns.RenderTracker()
@@ -194,5 +200,6 @@ SlashCmdList.WOWTOGETHER = function(command)
     elseif command == "route clear" then ns.ClearRoute(); ns.Refresh()
     elseif command == "guide reset" then ns.ResetGuideSkips()
     elseif command == "guide scan" then ns.ScanGuideProgress()
+    elseif command == "research" then ns.ShowQuestResearch()
     else ns.ToggleWindow() end
 end

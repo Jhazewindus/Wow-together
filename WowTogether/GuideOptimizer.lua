@@ -181,7 +181,6 @@ local function fingerprint(guide)
             .. ":" .. tostring(ns.QuestProgressReady(ns.self, record.id))
             .. ":" .. tostring((ns.ObservedPickupAvailable(record.id))) .. ":" .. tostring(ns.offered[record.id])
             .. ":" .. tostring(ns.GuideQuestSkipped(record.id))
-            .. ":" .. tostring((ns.PickupAvailability(ns.self, record.id)))
         local skipped = ns.db.guideSkips and ns.db.guideSkips[ns.self]
         local steps = {}; for key, value in pairs(skipped and skipped.steps[record.id] or {}) do if value == true then steps[#steps + 1] = key end end
         table.sort(steps); values[#values + 1] = table.concat(steps, ",")
@@ -191,7 +190,7 @@ local function fingerprint(guide)
         values[#values + 1] = person.key .. ":" .. tostring(person.synced) .. ":" .. (member and member.activeRevision or 0)
             .. ":" .. (member and member.completionRevision or 0)
             .. ":" .. (member and member.historyRevision or 0) .. ":" .. (person.profile and person.profile.level or 0)
-            .. ":" .. (member and member.pickupAvailability and member.pickupAvailability.revision or 0)
+            .. ":" .. (member and member.offerRevision or 0)
     end
     return table.concat(values, "|")
 end

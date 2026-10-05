@@ -1,5 +1,24 @@
 # Wow Together changelog
 
+## 0.6.2
+
+- Remove the incorrect IsPushableQuest pickup gate, setting and packets.
+  IsQuestCompletable remains for opened turn-in dialogs only.
+- Check known prerequisites before every pickup in all route modes. Accepted,
+  ready or skipped prerequisites and positive offers cannot bypass a hand-in.
+  Alternative prerequisites need a real completion; unknown history stays unknown.
+- Retain locked future quests and accepted work. Event sync rechecks unlocks.
+  Actual NPC lists can confirm missing requirements; fresh peer offers stay
+  separate. Opening one dialog preserves a prior complete list in the same context.
+- Clear invalidated pickup markers and guard optional guided dialog selection.
+  Diagnostics now show per-character requirement reasons and NPC evidence.
+- Record the latest 300 local NPC-offer/acceptance/turn-in observations per
+  character, with build, history, level and reputation-change context. Identify
+  recommended pickups missing at an NPC; infer no automatic new prerequisites.
+- Use /wt research or Settings → Quest data for testing to copy an export for
+  feedback. Recording can be disabled; exports omit character names/chat and
+  are never uploaded automatically. The test checklist covers before/after visits.
+
 ## 0.6.1
 
 - Browse full zone guides and published questlines across the catalogue, with

@@ -38,6 +38,45 @@ function ns.CatalogueIdentityAllowed(id, profile)
     return true
 end
 
+function ns.CataloguePrerequisitesAllowed(id, key)
+    local quest = ns.CatalogueQuest(id)
+    if not quest then return true end
+    key = key or ns.self
+    if quest.prerequisiteAny then
+        local met, unknown, titles = false, false, {}
+        for _, previous in ipairs(quest.prerequisiteAny) do
+            local complete = ns.CatalogueCompletion(key, previous)
+            if complete == true then met = true end
+            if complete == nil then unknown = true end
+            titles[#titles + 1] = ns.QuestTitle(previous)
+        end
+        if not met then
+            local reason = (unknown and "Checking prerequisite history: " or "Finish a prerequisite first: ") .. table.concat(titles, " / ") .. "."
+            if unknown then return nil, reason end
+            return false, reason
+        end
+    end
+    if quest.previousQuest then
+        local complete = ns.CatalogueCompletion(key or ns.self, quest.previousQuest)
+        if complete == nil then return nil, "Checking history for " .. ns.QuestTitle(quest.previousQuest) .. "." end
+        if not complete then return false, "Finish " .. ns.QuestTitle(quest.previousQuest) .. " first." end
+    end
+    return true
+end
+
+function ns.PickupOfferEvidence(key, id)
+    if key == ns.self then
+        local observed = ns.ObservedPickupAvailable and ns.ObservedPickupAvailable(id)
+        if observed ~= nil then return observed end
+        if ns.offered[id] == true then return true end
+    else
+        local member = ns.members[key]
+        if member and not member.syncPending and member.activeRevision and member.offerRevision
+            and member.offerRevision >= member.activeRevision and member.offered and member.offered[id] == true then return true end
+        -- An empty peer list only describes their current NPC, not every giver.
+    end
+end
+
 function ns.CatalogueAllowed(id, profile, key)
     local quest = ns.CatalogueQuest(id)
     if quest and (not profile or not profile.level or profile.level <= 0) then return nil, "Waiting for player level." end
@@ -45,42 +84,20 @@ function ns.CatalogueAllowed(id, profile, key)
     local identity, reason = ns.CatalogueIdentityAllowed(id, profile)
     if identity == false then return false, reason end
     key = key or ns.self
-    local observed
-    if key == ns.self and ns.ObservedPickupAvailable then
-        observed = ns.ObservedPickupAvailable(id)
-        if observed == false then return false, "This quest giver did not offer this quest at your current progress. Recheck after progressing." end
-    end
-    local pickup, supported
-    if ns.PickupAvailability then pickup, supported = ns.PickupAvailability(key, id) end
-    if supported then
-        if pickup == false then return false, "The tested beta pickup check says this quest is not available yet." end
-        if pickup == true or observed == true then return true end
-        return nil, "Waiting for a public beta pickup result for this character."
-    end
+    -- Neither shareability nor an opened turn-in dialog proves remote pickup
+    -- eligibility. Even a positive NPC offer must agree with known chain history.
+    local prerequisites, prerequisiteReason = ns.CataloguePrerequisitesAllowed(id, key)
+    if prerequisites ~= true then return prerequisites, prerequisiteReason end
+    local offered = ns.PickupOfferEvidence(key, id)
+    if offered == false then return false, "This quest giver did not offer this quest at your current progress. Recheck after progressing." end
+    if offered == true then return true end
     if identity ~= true then return identity, reason end
-    if observed == true or not quest then return true end
+    if not quest then return true end
     if ns.catalogue.detailSource and quest.prerequisitesRead ~= true then
         return nil, "Pickup requirements are missing from the detailed data. Talk to the quest giver to check its offer."
     end
     if quest.prerequisitesUnverified then
         return nil, "This quest has a branching prerequisite that still needs quest-giver confirmation."
-    end
-    if quest.prerequisiteAny then
-        local unknown, titles = false, {}
-        for _, previous in ipairs(quest.prerequisiteAny) do
-            local complete = ns.CatalogueCompletion(key, previous)
-            if complete == true then return true end
-            if complete == nil then unknown = true end
-            titles[#titles + 1] = ns.QuestTitle(previous)
-        end
-        local reason = (unknown and "Checking prerequisite history: " or "Finish a prerequisite first: ") .. table.concat(titles, " / ") .. "."
-        if unknown then return nil, reason end
-        return false, reason
-    end
-    if quest.previousQuest then
-        local complete = ns.CatalogueCompletion(key or ns.self, quest.previousQuest)
-        if complete == nil then return nil, "Checking history for " .. ns.QuestTitle(quest.previousQuest) .. "." end
-        if not complete then return false, "Finish " .. ns.QuestTitle(quest.previousQuest) .. " first." end
     end
     return true
 end

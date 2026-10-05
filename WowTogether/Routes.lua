@@ -150,13 +150,10 @@ function ns.RouteStop(record, focusKey)
     if completed and not active and not offered then return end
     local catalog = ns.catalogue and ns.catalogue.quests[record.id]
     local profile = focusKey == ns.self and ns.profile or (ns.members[focusKey] and ns.members[focusKey].profile)
-    if not active and catalog and ns.CatalogueIdentityAllowed(record.id, profile) == false then return end
-    local pickup, supported
-    if not active and ns.PickupAvailability then pickup, supported = ns.PickupAvailability(focusKey, record.id) end
-    if supported and pickup == false then return end
-    if not active and not offered and catalog then
-        if ns.CatalogueCompletion(focusKey, record.id) ~= false and pickup ~= true
-            or ns.CatalogueAllowed(record.id, profile, focusKey) ~= true then return end
+    if not active then
+        if ns.CatalogueAllowed(record.id, profile, focusKey) ~= true then return end
+        if catalog and ns.CatalogueCompletion(focusKey, record.id) ~= false
+            and ns.PickupOfferEvidence(focusKey, record.id) ~= true then return end
     end
     local p = ns.RoutePointForMember(focusKey, record.id)
     if active then
@@ -767,7 +764,7 @@ function ns.UpdateSelectedRoute(choices)
         end
         if finished then ns.ClearRoute(); ns.routeStats.status = selection.mode == "current" and "No selected quests remain in party logs." or "Selected route completed."; ns.guideAction = ns.routeStats.status
         else
-            if not waiting and route and guide.fullGuide then
+            if not waiting and route then
                 ns.routeSelection, ns.selectedRoute = guide, route
             end
             ns.routePaused = waiting and "Waiting for refreshed party quest snapshots."

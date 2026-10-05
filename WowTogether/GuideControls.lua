@@ -74,7 +74,6 @@ end
 function ns.ScanGuideProgress(guide, refresh)
     guide = guide or ns.routeSelection
     if not guide then return end
-    ns.InvalidatePickupAvailability()
     if refresh ~= false and ns.Option("scanSkipped") then
         local state = saved()
         for _, record in ipairs(guide.records or {}) do state.quests[record.id], state.steps[record.id] = nil, nil end

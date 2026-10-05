@@ -246,7 +246,6 @@ function ns.ResetGuideTraffic()
     if ns.ResetRouteTraffic then ns.ResetRouteTraffic() end
     if ns.ResetCatalogueTraffic then ns.ResetCatalogueTraffic() end
     if ns.ResetProgressTraffic then ns.ResetProgressTraffic() end
-    if ns.ResetPickupTraffic then ns.ResetPickupTraffic() end
 end
 
 function ns.SendGuideContext(force)
@@ -481,7 +480,6 @@ function ns.ShowGuideOnMap(guide)
 end
 
 ns.On("PLAYER_REGEN_ENABLED", function()
-    if ns.InvalidatePickupAvailability then ns.InvalidatePickupAvailability() end
     if ns.ReadProgress then ns.ReadProgress() end
     if ns.db then ns.ScheduleSync() end
     if ns.FlushRouteUpdates then ns.FlushRouteUpdates() end

@@ -54,6 +54,13 @@ normal party and hides when solo/in a raid. Closing it lasts for that party sess
 /wt arrow toggles the movable direction panel. Choose yards or metres in settings.
 /wt sync requests fresh snapshots; normal quest/party changes sync automatically.
 /wt probe opens diagnostics; Ctrl+C copies and closes the report.
+/wt research opens local quest-data JSON; Select all, Ctrl+C, then save as a text
+file labeled with your tester name for feedback. Settings → Quest data for testing
+has the recording toggle and Export quest data. The latest 300 local observations
+persist per character: actual NPC offers, acceptance/hand-in, build and relevant
+history/context. Visit the same NPC before/after a hand-in. Exports omit character
+names/chat and are never uploaded automatically. No new prerequisite is inferred
+automatically; changed level/reputation/branch conditions can explain an unlock.
 /wt route clear clears the map route. /wt minimap toggles its dashboard button.
 
 Show route is local. Start route invites friends with Follow route / Keep my route.
@@ -97,12 +104,15 @@ Kill / Pick up / Talk instructions name known targets. Cross markers (or optiona
 kill skulls) and quest-item tooltip hints require public data and hide in combat.
 Finished objective types lose hints unless another unfinished quest/member needs them.
 NPC gossip and quest-greeting lists can confirm/block offers in the current progress context; a single dialog
-confirms that quest only. The user-tested IsPushableQuest beta pickup gate is ON
-by default: true confirms a compatible candidate, false blocks a new pickup.
-Each client queries itself and syncs its own results. Quest/NPC/level/zone updates
-recheck unlocks automatically; accepted work and unfinished objectives remain.
-Missing/disabled APIs use existing evidence; restricted/nil results stay unknown.
-Disable Use the tested beta pickup check if another client build behaves differently.
+confirms that quest only. Every pickup checks known prerequisites before positive
+NPC evidence. Accepting, objective completion or skipping is not a prerequisite
+hand-in. Unknown history stays unknown. Actual offers can confirm missing source
+requirements but cannot bypass known unfinished chains or identity/level restrictions.
+IsPushableQuest is sharing only; IsQuestCompletable is opened-dialog turn-in only.
+Neither is a pickup gate. The old beta setting/packets are removed.
+Normal event sync rechecks progress; locked quests stay in the full guide and
+accepted work remains. Diagnostics show per-quest reasons and NPC evidence.
+Published-data candidates can still have hidden beta gates; visit the NPC to verify.
 Quest-dialog selection, auto-accept and no-choice auto-turn-in are separate opt-ins,
 all OFF by default. Reward choices stay manual. Presence/attempts do not prove beta
 protected-action behavior. New flight, gossip, item-hook and corpse APIs need testing.
