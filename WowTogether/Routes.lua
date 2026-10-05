@@ -572,8 +572,11 @@ function ns.DrawRoute(provider, geometryOnly)
         surface.left, surface.top, surface.spanX, surface.spanY)
     local points = {}
     provider.playerOrigin = origin
-    local travel = origin and displayed[1] and ns.TravelLinePoints(origin, displayed[1])
-    if travel then
+    local travel = not route.flying and origin and displayed[1] and ns.TravelLinePoints(origin, displayed[1])
+    if route.flying then
+        -- The flight's terrain path is unknown. Do not draw ground directions
+        -- from the moving gryphon/wyvern to quest objectives.
+    elseif travel then
         for _, point in ipairs(travel) do points[#points + 1] = point and ns.ProjectMapPoint(point, mapID, projectionContext) or false end
         for index = 2, #displayed do points[#points + 1] = projected[index] or false end
     else
@@ -674,14 +677,16 @@ function ns.DrawRoute(provider, geometryOnly)
         pin:Show()
     end
     local missingTravel = displayed[1] and displayed[1].mapID ~= mapID and not projected[1]
-    updateLegend(legend, "Wow Together • " .. #displayed .. " stops • " .. #groups .. " visible " .. (#groups == 1 and "place" or "places")
+    updateLegend(legend, route.flying and "Wow Together • Flying • Ground directions resume after landing" or
+        "Wow Together • " .. #displayed .. " stops • " .. #groups .. " visible " .. (#groups == 1 and "place" or "places")
         .. (ns.Option("fullRoute") and " • All eligible mapped quests" or " • Next steps")
         .. (ns.routePaused and " • Waiting for party updates" or "")
         .. (route.partial and " • Partial route" or "")
         .. ((route.otherMaps or 0) > 0 and " • Other zones" or "")
         .. (missingTravel and ("\nTravel to " .. ns.MapName(displayed[1].mapID) .. "; travel coordinates unavailable here.") or ""))
     ns.routeStats.pins, ns.routeStats.lines = #groups, visibleLines
-    ns.routeStats.status = ns.routePaused and (ns.routePaused .. " Showing the last confirmed route.")
+    ns.routeStats.status = route.flying and "Flying; ground route lines hidden until landing."
+        or ns.routePaused and (ns.routePaused .. " Showing the last confirmed route.")
         or missingTravel and ("Cross-zone travel coordinates unavailable on map " .. mapID .. ".")
         or ("Route drawn on map " .. mapID .. ".")
 end
@@ -712,6 +717,7 @@ function ns.AttachRouteProvider()
 end
 
 function ns.ActivateRoute(guide, route)
+    ns.CancelGuideScan()
     ns.ResetTravelPath()
     ns.guideStepHistory, ns.navigationPreview, ns.forceRouteReplan = {}, nil, nil
     ns.routePaused = nil
@@ -859,6 +865,7 @@ function ns.UpdateSelectedRoute(choices, query)
 end
 
 function ns.ClearRoute()
+    ns.CancelGuideScan()
     ns.ResetTravelPath()
     if ns.ClearSavedGuide then ns.ClearSavedGuide() end
     if ns.CancelGuidePlanning then ns.CancelGuidePlanning() end

@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.7.3** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.7.4** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -86,7 +86,10 @@ quests or completion history to choose the order. The arrow shows **Loading
 route…** while generation runs. Progress then advances completed pickups,
 objectives and hand-ins, keeping the same numbered sequence. Abandoning a quest
 can restore its pickup instruction, but does not reshuffle the guide. Scan guide
-refreshes progress in that same sequence. A guide waits when its current pickup
+refreshes progress in that same sequence. During a user scan, a rotating loop
+replaces the direction arrow in both arrow displays. History batches yield to the
+UI; the arrow returns after scanning (and adaptive planning, when enabled).
+Switching or clearing a guide cancels its pending scan. A guide waits when its current pickup
 is locked or its location is missing; Skip step / Skip quest remain available.
 Catalogue-based routes remain partial where published coordinates are missing;
 these are generated guides, not fully hand-verified walkthroughs.
@@ -315,9 +318,15 @@ When public flight
 states and positions exist, the guide compares walking with getting to a known
 reachable flight, flying and walking from its destination. It includes a
 boarding allowance. The travel graph can combine observed flight legs; direct
-flight comparisons remain available in uncovered areas or with the graph off.
+flight comparisons remain available when no connected graph path exists or with
+the graph off. A connected Dijkstra path supplies the same decision to the arrow,
+map and optional flight action. Walking to a flight master names the flight that
+follows. Learning a flight immediately refreshes those directions and can change
+the Orgrimmar gate chosen by the personal travel guide.
 Flight times are estimates until that character has timed the route. While
 flying, the panel shows elapsed time or an approximate remaining timed duration.
+Ground lines hide during an actual flight; only its known destination is marked.
+Ground directions resume after landing. The exact airborne terrain path is unknown.
 
 The probe reports **Flight paths**, **Flight unlock scan** and **Flight map read**:
 known paths, those with locations, observed connections and the actual getter/read
@@ -519,7 +528,7 @@ provided broad inspiration about progress clarity; its code/assets/layouts
 were not copied. This implementation is independent.
 
 Reported beta build **70205** established the earlier sync APIs in user tests.
-**0.7.3 has host validation, not a live-client compatibility certification.**
+**0.7.4 has host validation, not a live-client compatibility certification.**
 Retest UI rendering, optional gossip/flight actions, corpse positions and item
 hooks on the build in front of you. `/wt probe` lists capabilities and runtime
 status. Do not interpret presence as proof that protected actions work.

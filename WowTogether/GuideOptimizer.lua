@@ -228,6 +228,7 @@ local function fingerprint(guide)
 end
 
 function ns.PlanLevelingGuide(guide, invite)
+    if ns.guideScanning and not ns.guideScanning.executing then ns.CancelGuideScan() end
     if not guide then return false end
     ns.CancelGuidePlanning()
     ns.routePlanningError, ns.routePlanningErrorDetail = nil, nil

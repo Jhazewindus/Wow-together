@@ -655,6 +655,8 @@ function ns.SyncDiagnostics(output)
     output("Auto turn-in enabled: " .. safe(ns.Option("autoTurnIn")) .. "; " .. ns.turnInStatus)
     output("Map preview: " .. (ns.Option("fullRoute") and "full route" or ("current place + " .. ns.Option("routeAhead") .. " ahead")))
     output(ns.guideScanStatus)
+    output("Guide scan: " .. (ns.guideScanning and "calculating" or "idle"))
+    if ns.guideScanError then output("Guide scan error: " .. safe(ns.guideScanError)) end
     output("Profession guides: " .. ns.professionStatus .. " Personal recipe/material data is not sent to peers.")
     output("Map route: " .. ns.routeStats.status)
     local selection, route = ns.routeSelection, ns.selectedRoute

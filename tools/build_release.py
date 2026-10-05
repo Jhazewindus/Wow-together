@@ -148,6 +148,12 @@ Left/right arrow buttons preview previous/later steps without changing quest cre
 History previews use published locations, not a recorded travel timeline.
 Skip step / Skip quest persist for this character and do not change friends' credit.
 Scan guide reads real progress without changing fixed order; adaptive mode replans.
+A rotating loop replaces both arrow displays while scanning/calculating, then
+directions return. History reads yield between batches; changing/clearing a guide
+cancels its pending scan. Flight observations refresh the arrow and map immediately,
+including the Orgrimmar gate choice. Walking to a flight master explains the flight
+that follows; automatic flight selection uses the same travel decision. Actual
+flights hide ground lines until landing; no airborne terrain route is invented.
 The extra Guide replanned footer is removed. Diagnostics distinguish the full
 guide's quest scope from its current trip's quests and map stop counts.
 Reconsider skips when scanning is off by default; on clears selected-guide quest skips.

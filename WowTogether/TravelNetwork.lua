@@ -195,6 +195,38 @@ end
 
 function ns.ResetTravelPath() ns.travelPath, ns.travelPathSignature, ns.travelPathChecked, ns.travelWaypoint = nil, nil, nil, nil end
 
+function ns.HasTravelPathTo(stop)
+    local path = ns.travelPath
+    return not ns.navigationPreview and not ns.routePaused
+        and (ns.Option("travelNetwork") or ns.routeSelection and ns.routeSelection.mode == "travel")
+        and path and stop and path.goal.mapID == stop.mapID and path.goal.x == stop.x and path.goal.y == stop.y
+end
+
+local function nextFlight(path)
+    for index = path.cursor, #path.legs do
+        if path.legs[index].flight then return path.legs[index] end
+    end
+end
+
+function ns.TravelPathSummary(stop)
+    if ns.ReadPublic(UnitOnTaxi, "player") == true then return end
+    if not ns.HasTravelPathTo(stop.goal or stop) then return end
+    local path = ns.travelPath
+    if stop.travelLeg and stop.travelLeg.method ~= "walk" and stop.travelLeg.method ~= "taxi" then
+        return "Travel towards " .. ns.MapName(stop.goal.mapID) .. ".\nBoard the correct transport; waiting time varies."
+    end
+    local flight = nextFlight(path)
+    if flight then
+        local source, target = flight.flight.source.name, flight.flight.destination.name
+        return (stop.kind == "f" and ("Fly to " .. target .. ".") or ("Walk to " .. source .. "; then fly to " .. target .. "."))
+            .. "\nEstimated flight route: " .. string.format("%dm %02ds", math.floor(path.seconds / 60), math.floor(path.seconds % 60)) .. "."
+    end
+    if stop.travelLeg then
+        return "Travel towards " .. ns.MapName(stop.goal.mapID) .. ".\n"
+            .. (stop.travelLeg.method == "walk" and "Follow roads to the crossing." or "Board the correct transport; waiting time varies.")
+    end
+end
+
 function ns.TravelNetworkDestination(stop)
     ns.travelWaypoint = nil
     local travelGuide = ns.routeSelection and ns.routeSelection.mode == "travel"
@@ -219,6 +251,9 @@ function ns.TravelNetworkDestination(stop)
     path = ns.travelPath
     if not path then return end
     while path.legs[path.cursor] do
+        local flight = nextFlight(path)
+        ns.travelNetworkStatus = flight and ("Dijkstra route: walk to " .. flight.flight.source.name .. ", fly to " .. flight.flight.destination.name .. "; times are estimates.")
+            or "Dijkstra travel directions; walk segments are estimates."
         local leg = path.legs[path.cursor]
         local remaining = ns.TravelPointDistance(position, leg.to)
         if leg.toID == "GOAL" then return end
@@ -227,8 +262,10 @@ function ns.TravelNetworkDestination(stop)
         else
             local transport = leg.method ~= "walk"
             local target = transport and leg.from or leg.to
+            local following = path.legs[path.cursor + 1]
             local instruction = transport and ((leg.method == "taxi" and "Fly" or leg.method == "ship" and "Take the ship" or
                 leg.method == "zeppelin" and "Take the zeppelin" or leg.method == "tram" and "Take the tram" or "Use the passage") .. " to " .. leg.name)
+                or following and following.flight and ("Walk to " .. following.flight.source.name .. " (flight master)")
                 or "Head to " .. leg.name
             local result = {id = stop.id, kind = "travel", title = stop.title, mapID = target.mapID, x = target.x, y = target.y,
                 action = "travel", label = instruction, travelLeg = leg, goal = stop, guideStep = stop.guideStep}

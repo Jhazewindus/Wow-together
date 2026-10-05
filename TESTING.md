@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.7.3**, World of Warcraft: Forever beta, interface **16001**.
+For **0.7.4**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 
@@ -14,6 +14,23 @@ Keep tester names and reports separate; label the main developer's report.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Focus checks for 0.7.4
+
+- **Flight agreement:** with flight suggestions enabled, start Path to Orgrimmar
+  or a distant quest route. Open a flight master with a reachable useful flight.
+  The arrow and map must refresh immediately. If approaching a master, the text
+  should explain walking to it and the flight that follows. With automatic flight
+  selection enabled, it must select the same flight shown in the guide.
+  If Dijkstra chooses walking as faster, it must not secretly select a flight.
+- **While flying:** confirm Flying to the destination. Ground walking lines should
+  hide for the ride; the known flight destination can remain marked. After landing,
+  walking directions resume towards the original guide step. Recheck pan/zoom.
+- **Scan loop:** press Scan guide. Both enabled arrow displays should show a rotating
+  loop while calculating, then return to the direction arrow. Try with the large
+  panel hidden and only the standalone arrow enabled. A short scan can finish quickly.
+  Fixed stage order must stay unchanged. Change/clear the guide mid-scan; stale
+  callbacks must not bring it back. Confirm saved skips still follow scan settings.
 
 ## Fixed leveling guides and full map
 

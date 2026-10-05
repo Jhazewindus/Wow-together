@@ -161,7 +161,7 @@ class TravelSearchTests(unittest.TestCase):
         self.assertTrue(any(s['from'] == 'BORDER_DUROTAR_TO_THE_BARRENS' and s.to == 'BORDER_THE_BARRENS_TO_DUROTAR' for s in c.ns.travelData.edges.values()))
 
     def test_missing_taxi_map_id_uses_published_point_but_still_requires_a_reachable_observation(self):
-        c = flight_client()
+        c = flight_client(include_geography=True)
         c.lua.execute("GetTaxiMapID=nil; FlightMapFrame=CreateFrame('Frame');FlightMapFrame:Show();function FlightMapFrame:GetMapID() return 501 end;taxiNodes={{nodeID=23,name='Orgrimmar',state=60,slotIndex=1},{nodeID=25,name='Crossroads',state=70,slotIndex=2}}")
         c.ns.ReadFlightMap()
         state = c.ns.db.flights[c.ns.self]

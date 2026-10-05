@@ -47,13 +47,14 @@ function ns.UpdateStandaloneArrow(state)
     if not frame then return end
     frame.state = state
     frame:SetShown(state.visible == true and ns.Option("standaloneArrow"))
+    ns.HideNavigationGeometry(frame.icon)
     if not frame:IsShown() then return end
-    for _, line in ipairs(frame.icon.lines) do line:Hide() end
     local drawable = type(frame.icon.CreateLine) == "function"
     frame.symbol:SetText(state.flight and "…" or state.arrived and "↓" or "…")
     frame.symbol:SetShown(not drawable or not state.arrived and state.angle == nil)
     if drawable then
-        if state.arrived then ns.DrawNavigationArrow(math.pi, frame.icon)
+        if state.busy then frame.symbol:SetShown(not ns.DrawNavigationSpinner(frame.icon))
+        elseif state.arrived then ns.DrawNavigationArrow(math.pi, frame.icon)
         elseif state.angle ~= nil then ns.DrawNavigationArrow(state.angle, frame.icon) end
     end
     frame.distance:SetText(state.flight and "Flying" or state.distance and ns.FormatDistance(state.distance) or state.status)

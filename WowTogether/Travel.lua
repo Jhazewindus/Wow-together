@@ -133,7 +133,7 @@ function ns.ReadKnownFlightPaths()
     ns.flightDiscoveryStatus = reads .. " map reads; " .. flags .. " public unlock flags; " .. skipped .. " unknown flags; " .. known .. " known paths saved."
     if flags > 0 then
         ns.travelStatus = known .. " unlocked paths recognized. Open a flight master's map to confirm reachable connections."
-        ns.UpdateNavigation()
+        ns.RefreshTravelDirections()
     end
 end
 
@@ -151,6 +151,15 @@ local function taxiMapID()
         id = ns.ReadPublic(FlightMapFrame.GetMapID, FlightMapFrame)
         if ns.GuideInteger(id) and id > 0 then return id, "FlightMapFrame.GetMapID" end
     end
+end
+
+function ns.RefreshTravelDirections(tryFlight)
+    -- The city destination can change when a faster flight becomes known.
+    -- Refresh it before either the renderer or the flight action reads it.
+    if ns.routeSelection and ns.routeSelection.mode == "travel" then ns.UpdateTravelGuide(ns.routeSelection) end
+    ns.UpdateNavigation()
+    if tryFlight then ns.TrySuggestedFlight() end
+    ns.DrawRoute(nil, true)
 end
 
 function ns.InitializeTravel()
@@ -253,8 +262,7 @@ function ns.ReadFlightMap(attempt)
     ns.flightMapStatus = "Map " .. mapID .. " via " .. source .. "; " .. accepted .. " nodes read; " .. restricted .. " restricted/invalid; source " .. (current and state.nodes[current].name or "not reported") .. "."
     ns.travelStatus = accepted > 0 and ("Flight network observed; " .. known .. " known paths. Travel times are estimates until timed.")
         or "No public flight nodes could be recorded; choose flights manually."
-    ns.UpdateNavigation()
-    ns.TrySuggestedFlight()
+    ns.RefreshTravelDirections(true)
 end
 
 function ns.TravelDiagnostics(output)
@@ -305,10 +313,13 @@ function ns.TravelDestination(stop)
     local signature = table.concat({stop.id, stop.kind, stop.mapID, stop.x, stop.y, mapID or 0, ns.travelRevision or 0}, ":")
     local cache = ns.flightPlanCache
     if not cache or cache.signature ~= signature or not now or not cache.time or now - cache.time > 1 then
-        cache = {signature = signature, time = now, plan = ns.FindFlightPlan(stop)}
+        -- A terminal Dijkstra walking leg returns no intermediate waypoint.
+        -- It still is a decision: do not replace it with a second flight solver.
+        cache = {signature = signature, time = now,
+            plan = not ns.HasTravelPathTo(stop) and ns.FindFlightPlan(stop) or nil}
         ns.flightPlanCache = cache
     end
-    local plan = cache.plan
+    local plan = not ns.HasTravelPathTo(stop) and cache.plan or nil
     if plan then
         local p = plan.source.point
         local flightStop = {id = stop.id, kind = "f", action = "flight", title = stop.title, npcName = plan.source.name,
@@ -335,6 +346,7 @@ end
 
 function ns.TrySuggestedFlight()
     if not ns.Option("autoFly") or not ns.Option("suggestFlights") or ns.RouteInCombat()
+        or ns.guideScanning or ns.routePlanning or ns.ReadPublic(UnitOnTaxi, "player") == true
         or ns.navigationPreview or ns.routePaused or ns.ReadPublic(UnitIsGhost, "player") == true
         or type(TakeTaxiNode) ~= "function" then return end
     local first = ns.selectedRoute and ns.selectedRoute.stops[1]
@@ -357,6 +369,7 @@ function ns.FlightState()
     if not ns.flightStarted and number(now) then ns.flightStarted = now end
     local elapsed = number(now) and number(ns.flightStarted) and math.max(0, now - ns.flightStarted) or nil
     local selection = ns.pendingFlight
+    ns.travelNetworkStatus = "Flying to " .. (selection and selection.name or "destination") .. "; ground directions resume after landing."
     local remaining = selection and selection.expected and elapsed and math.max(0, selection.expected - elapsed)
     return {elapsed = elapsed, remaining = remaining, name = selection and selection.name or "destination"}
 end
@@ -374,7 +387,7 @@ function ns.FinishFlight()
     ns.flightStarted, ns.pendingFlight, ns.flightPlanCache = nil, nil, nil
     ns.travelRevision = (ns.travelRevision or 0) + 1
     ns.ResetTravelPath()
-    ns.UpdateNavigation()
+    ns.RefreshTravelDirections()
 end
 
 function ns.CorpseDestination()
@@ -393,7 +406,16 @@ end
 function ns.RouteForDisplay()
     local route = ns.selectedRoute
     if not route then return end
-    if ns.ReadPublic(UnitOnTaxi, "player") == true then return route end
+    if ns.ReadPublic(UnitOnTaxi, "player") == true then
+        ns.travelWaypoint = nil
+        local selection = ns.pendingFlight
+        local node = selection and flights() and flights().nodes[selection.destination]
+        local p = node and node.point
+        local stop = p and {id = 0, kind = "f", action = "flight", mapID = p.mapID, x = p.x, y = p.y,
+            title = "Flying to " .. node.name, label = "Flying to " .. node.name}
+        return {key = route.key, title = route.title, mapID = p and p.mapID or route.mapID,
+            flying = true, stops = stop and {stop} or {}}
+    end
     local stop = ns.CorpseDestination() or ns.TravelDestination(route.stops[1])
     if stop and stop.travelLeg and stop.kind ~= "f" then return route end
     if stop and (stop.kind == "corpse" or stop.kind == "f") then
@@ -415,7 +437,7 @@ ns.On("TAXI_NODE_STATUS_CHANGED", function()
     ns.ScheduleFlightDiscovery()
     if flightMapOpen and ns.db then ns.ReadFlightMap() end
 end)
-ns.On("PLAYER_CONTROL_LOST", function() if ns.db then ns.FlightState(); ns.UpdateNavigation() end end)
+ns.On("PLAYER_CONTROL_LOST", function() if ns.db then ns.FlightState(); ns.RefreshTravelDirections() end end)
 ns.On("PLAYER_CONTROL_GAINED", function() if ns.db then ns.FinishFlight() end end)
 ns.On("PLAYER_DEAD", function()
     if ns.db then

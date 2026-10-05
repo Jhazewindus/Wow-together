@@ -42,6 +42,13 @@ local function duration(value)
 end
 
 function ns.RouteContext(stop, mapID)
+    if stop.kind == "loading" then
+        return stop.action == "scan" and ("Checking your quests and completion history.\n"
+            .. (ns.guideScanning and ns.guideScanning.guide.fixedRoute and "The guide's fixed step order is retained." or "Checking the route for your next steps."))
+            or "Checking progress and prerequisites.\nComparing nearby pickups, work and returns."
+    end
+    local travelSummary = ns.TravelPathSummary(stop)
+    if travelSummary then return travelSummary end
     if ns.routeSelection and ns.routeSelection.mode == "travel" then
         if stop.travelLeg or stop.flightPlan then
             return (stop.travelLeg and stop.travelLeg.method == "walk" and "Follow the crossing towards Orgrimmar."
@@ -49,7 +56,6 @@ function ns.RouteContext(stop, mapID)
         end
         return ns.routePaused or "Reach Orgrimmar.\nTravel guide • Levels 1–60."
     end
-    if stop.kind == "loading" then return "Checking progress and prerequisites.\nComparing nearby pickups, work and returns." end
     if stop.kind == "notice" and ns.routeSelection and ns.routeSelection.fullGuide then
         if ns.selectedRoute and ns.selectedRoute.complete then return "Guide complete.\nChoose another guide or Scan to check progress." end
         return ns.routeSelection.zone .. " • Guide retained.\nVisit its quest giver or Scan after progressing."
@@ -93,8 +99,11 @@ end
 
 function ns.NavigationState()
     if not ns.Option("routeArrow") and not ns.Option("standaloneArrow") then return {status = "Disabled in settings"} end
-    if ns.routePlanning then
-        return {visible = true, status = "Loading route…", stop = {id = 0, kind = "loading", title = ns.routePlanning.guide.title}}
+    if ns.guideScanning or ns.routePlanning then
+        local scan = ns.guideScanning
+        local work = scan or ns.routePlanning
+        return {visible = true, busy = true, status = scan and "Scanning guide…" or "Loading route…",
+            stop = {id = 0, kind = "loading", action = scan and "scan" or "plan", title = work.guide.title}}
     end
     if ns.routeSelection and ns.routeSelection.mode == "travel" then ns.UpdateTravelGuide(ns.routeSelection, true) end
     local route = ns.routeSelection and ns.selectedRoute
@@ -159,6 +168,29 @@ function ns.DrawNavigationArrow(angle, icon)
     end
 end
 
+function ns.HideNavigationGeometry(icon)
+    for _, line in ipairs(icon.lines) do line:Hide() end
+    for _, line in ipairs(icon.spinnerLines or {}) do line:Hide() end
+end
+
+function ns.DrawNavigationSpinner(icon)
+    if type(icon.CreateLine) ~= "function" then return false end
+    icon.spinnerLines = icon.spinnerLines or {}
+    local now = ns.ReadPublic(GetTime)
+    icon.spinnerPhase = finite(now) and -now * 4 or (icon.spinnerPhase or 0) - 0.4
+    for index = 1, 12 do
+        local line = icon.spinnerLines[index]
+        if not line then line = icon:CreateLine(nil, "OVERLAY"); icon.spinnerLines[index] = line end
+        local angle = icon.spinnerPhase + index * math.pi / 8
+        line:SetThickness(3); line:SetColorTexture(1, 0.82, 0.30, index / 12)
+        line:SetStartPoint("CENTER", icon, math.cos(angle) * 18, math.sin(angle) * 18)
+        angle = angle + math.pi / 8
+        line:SetEndPoint("CENTER", icon, math.cos(angle) * 18, math.sin(angle) * 18)
+        line:Show()
+    end
+    return true
+end
+
 function ns.UpdateNavigation()
     local frame = ns.navigation
     if not frame then return end
@@ -166,7 +198,7 @@ function ns.UpdateNavigation()
     frame.state = state
     frame:SetShown(state.visible == true and ns.Option("routeArrow"))
     ns.UpdateStandaloneArrow(state)
-    if not state.visible then return end
+    if not state.visible then ns.HideNavigationGeometry(frame.icon); return end
     frame.title:SetText(state.stop.title)
     local clock = state.flight and (state.flight.remaining and ("~" .. duration(state.flight.remaining) .. " remaining")
         or state.flight.elapsed and (duration(state.flight.elapsed) .. " flying") or "Flight time unavailable")
@@ -174,10 +206,10 @@ function ns.UpdateNavigation()
     frame.status:SetText(state.angle and ns.StopInstruction(state.stop) or state.status)
     local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
     frame.context:SetText(ns.RouteContext(state.stop, mapID))
-    for _, line in ipairs(frame.icon.lines) do line:Hide() end
+    ns.HideNavigationGeometry(frame.icon)
     frame.symbol:SetText("…"); frame.symbol:SetTextColor(0.96, 0.76, 0.35, 1)
     frame.symbol:SetShown(state.angle == nil and not state.arrived and not state.flight)
-    frame.step:SetText(state.stop.kind == "loading" and "Generating an efficient trip" or state.stop.historyPreview and "History preview • published location" or
+    frame.step:SetText(state.stop.kind == "loading" and (state.stop.action == "scan" and "Checking guide progress" or "Generating an efficient trip") or state.stop.historyPreview and "History preview • published location" or
         (ns.routeSelection and ns.routeSelection.mode == "travel" and "Travel guide • Levels 1–60" or
             ns.navigationPreview and "Preview step • arrows browse; Scan returns to the plan" or
             (state.stop.guideStep and ("Zone guide step " .. state.stop.guideStep) or "Current guide step")))
@@ -186,7 +218,8 @@ function ns.UpdateNavigation()
     local quests = not (ns.routeSelection and ns.routeSelection.mode == "travel")
     frame.skipStep:SetEnabled(editable and quests); frame.skipQuest:SetEnabled(editable and quests); frame.scan:SetEnabled(not state.flight and state.stop.kind ~= "loading")
     frame.back:SetEnabled(state.stop.kind ~= "loading"); frame.next:SetEnabled(state.stop.kind ~= "loading")
-    if state.arrived then ns.DrawNavigationArrow(math.pi)
+    if state.busy then frame.symbol:SetShown(not ns.DrawNavigationSpinner(frame.icon))
+    elseif state.arrived then ns.DrawNavigationArrow(math.pi)
     elseif state.angle ~= nil then ns.DrawNavigationArrow(state.angle) end
 end
 

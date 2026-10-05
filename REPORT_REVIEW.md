@@ -1,3 +1,36 @@
+# Follow-up review for 0.7.4
+
+The user reports successful automatic flight to Orgrimmar while Dijkstra still
+suggested walking, and asks for a calculating loop on Scan guide. No character,
+version, build, selected goal, settings or exact direction text is supplied for
+this observation; its live cause remains unconfirmed. This is one unlabeled
+report, not a new capture from the earlier level-23 friend. No preference conflicts.
+
+Inspection confirms that flight-map reads reset the travel graph and update the
+arrow but do not immediately repaint map geometry. The personal city guide can
+retain a gate chosen before learning a faster flight. A terminal graph walking
+leg returns no intermediate waypoint, allowing a separate legacy flight solver
+to replace its decision. Directions can also call a walking approach leg a generic
+crossing without explaining the flight next. Ground quest lines remain drawn
+while actually on a taxi. Fix these shared paths, not a specific flight or quest.
+
+Recompute the personal city's gate before refreshing navigation/actions; repaint
+owned geometry with the existing combat guard. A connected graph path is authoritative
+for flight choice; the fallback remains available without a path or with graph off.
+Describe walking to the flight master and the upcoming flight. During actual
+UnitOnTaxi state hide ground lines; restore them on landing. Flight ownership and
+native reachable slots still gate automatic travel. Times and walk links are estimates.
+
+User scans yield to the UI before work and between bounded history batches. Both
+owned arrow displays use the existing update cadence to animate a loop. Internal
+history reads remain synchronous; fixed guide order stays fixed. Cancel pending
+scans on guide changes/clear, preserve skip settings and restore geometry after
+success/failure. Diagnostics retain failures; no extra popup or UI provenance text.
+Synthetic host tests verify state/action agreement and cancellation, not native
+beta behavior. The synthetic flight fixture now has isolated geography: its node
+IDs collided with unrelated real published locations, previously masked by the
+legacy fallback. Keep the published city-gate guard and test it separately.
+
 # Follow-up review for 0.7.3
 
 The user asks for immediate map updates after Skip quest and a close level band

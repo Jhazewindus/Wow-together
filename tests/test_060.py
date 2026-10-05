@@ -162,7 +162,7 @@ class GuideControlTests(unittest.TestCase):
         c = current_client({900: nearby('Done now'), 901: nearby('Still active')})
         map_canvas(c); c.ns.ShowGuideOnMap(c.ns.GuideChoices()[1])
         c.lua.execute("entries={{questID=901,title='Still active',isHeader=false}}; finished[900]=true")
-        c.ns.navigation.scan.OnClick()
+        c.ns.navigation.scan.OnClick(); c.drain()
         self.assertEqual({r.id for r in c.ns.routeSelection.records.values()}, {901})
         self.assertIsNone(c.ns.guideScanWindow)
         self.assertIsNone(c.ns.navigation.notice)
@@ -172,10 +172,10 @@ class GuideControlTests(unittest.TestCase):
         c.ns.SkipGuide('quest')
         self.assertTrue(c.ns.GuideQuestSkipped(900))
         self.assertIsNotNone(c.ns.routeSelection)
-        c.ns.ScanGuideProgress()
+        c.ns.ScanGuideProgress(); c.drain()
         self.assertTrue(c.ns.GuideQuestSkipped(900))
         self.assertEqual(len(c.ns.selectedRoute.stops), 0)
-        c.ns.SetOption('scanSkipped', True); c.ns.ScanGuideProgress()
+        c.ns.SetOption('scanSkipped', True); c.ns.ScanGuideProgress(); c.drain()
         self.assertFalse(c.ns.GuideQuestSkipped(900))
         self.assertGreater(len(c.ns.selectedRoute.stops), 0)
         self.assertTrue(c.ns.active[900])
@@ -193,7 +193,7 @@ class GuideControlTests(unittest.TestCase):
         c.ns.PreviewGuideStep(1)
         c.ns.PreviewGuideStep(1)
         self.assertEqual(c.ns.navigation.state.stop.kind, 't')
-        c.ns.ScanGuideProgress()
+        c.ns.ScanGuideProgress(); c.drain()
         self.assertIsNone(c.ns.navigationPreview)
         self.assertEqual(c.ns.navigation.state.stop.id, 901)
 
@@ -242,7 +242,7 @@ class GuideControlTests(unittest.TestCase):
             self.assertEqual(c.ns.StopInstruction(stop), expected)
 
 
-def flight_client():
+def flight_client(include_geography=False):
     c = current_client({900: quest('Far goal', objectives=[{'mapID': 501, 'x': .95, 'y': .4, 'name': 'Target'}])})
     map_canvas(c); c.ns.ShowGuideOnMap(c.ns.GuideChoices()[1])
     c.lua.execute("""
@@ -263,6 +263,9 @@ def flight_client():
     end}
     function TakeTaxiNode(slot) taken=slot; takeCalls=(takeCalls or 0)+1 end
     """)
+    # Synthetic IDs 11/22 must not collide with shipped real flight-node geography.
+    if not include_geography:
+        c.ns.travelData = c.lua.table_from({'nodes': {}, 'edges': {}, 'factors': {}}, recursive=True)
     return c
 
 

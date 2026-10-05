@@ -49,6 +49,7 @@ function ns.GuideSelectionHasSkips(guide)
 end
 
 function ns.SkipGuide(kind)
+    if ns.guideScanning or ns.routePlanning then return end
     if ns.routeSelection and ns.routeSelection.mode == "travel" then return end
     local stop = ns.navigation and ns.navigation.state and ns.navigation.state.stop
     if ns.navigationPreview or stop and stop.kind == "corpse" or ns.navigation and ns.navigation.state and ns.navigation.state.flight then return end
@@ -83,7 +84,7 @@ function ns.ResetGuideSkips()
     ns.Refresh()
 end
 
-function ns.ScanGuideProgress(guide, refresh)
+local function scanGuideProgress(guide, refresh, cooperative)
     guide = guide or ns.routeSelection
     if not guide then return end
     if guide.mode == "travel" then
@@ -103,6 +104,7 @@ function ns.ScanGuideProgress(guide, refresh)
         if done ~= nil then checked = checked + 1 end
         if done == true then completed = completed + 1 end
         if ns.active[id] then active = active + 1 end
+        if cooperative and total % 40 == 0 then coroutine.yield() end
     end
     ns.guideScanStatus = "Guide history: " .. checked .. "/" .. total .. " checked; " .. completed .. " completed; " .. active .. " active."
     if checked < total then ns.guideScanStatus = ns.guideScanStatus .. " Restricted history stays unknown." end
@@ -142,6 +144,45 @@ function ns.ScanGuideProgress(guide, refresh)
     end
 end
 
+function ns.CancelGuideScan()
+    ns.guideScanning = nil
+end
+
+function ns.ScanGuideProgress(guide, refresh)
+    guide = guide or ns.routeSelection
+    if not guide then return end
+    -- Internal history reads stay synchronous. User scans yield to the UI
+    -- before reading and between history batches; no timer is saved to disk.
+    if refresh == false then return scanGuideProgress(guide, false) end
+    if ns.guideScanning or ns.routePlanning then return end
+    if not C_Timer or type(C_Timer.After) ~= "function" then
+        ns.guideScanStatus = "Guide scan unavailable: timer API missing."
+        return
+    end
+    local scan = {guide = guide, selectionKey = ns.routeSelection and ns.routeSelection.key}
+    local worker = coroutine.create(function() scanGuideProgress(guide, refresh, true) end)
+    ns.guideScanning = scan
+    ns.UpdateNavigation()
+    local function advance()
+        if ns.guideScanning ~= scan then return end
+        if (ns.routeSelection and ns.routeSelection.key) ~= scan.selectionKey then ns.CancelGuideScan(); ns.UpdateNavigation(); return end
+        scan.executing = true
+        local ok, detail = coroutine.resume(worker)
+        scan.executing = nil
+        if ns.guideScanning ~= scan then return end
+        if not ok then
+            ns.guideScanning = nil
+            ns.guideScanStatus = "Guide scan failed; the selected guide is retained."
+            ns.guideScanError = ns.Public(detail) and type(detail) == "string" and string.sub(detail, 1, 400) or "Unknown scan failure"
+            ns.Refresh(); ns.UpdateNavigation()
+        elseif coroutine.status(worker) == "dead" then
+            ns.guideScanning, ns.guideScanError = nil, nil
+            ns.Refresh(); ns.UpdateNavigation(); ns.DrawRoute(nil, true)
+        else C_Timer.After(0.01, advance) end
+    end
+    C_Timer.After(0.01, advance)
+end
+
 function ns.InitializeGuideStepHistory(guide, route)
     local history, current = {}, route and route.stops[1]
     local function add(record, point, kind)
@@ -178,6 +219,7 @@ function ns.RememberGuideStep(before, after)
 end
 
 function ns.PreviewGuideStep(delta)
+    if ns.guideScanning or ns.routePlanning then return end
     local index = (ns.navigationPreview and ns.navigationPreview.index or 0) + delta
     local stop
     if index < 0 then

@@ -1,5 +1,20 @@
 # Wow Together changelog
 
+## 0.7.4
+
+- Refresh the arrow and map immediately when a flight is learned. Reconsider
+  the Orgrimmar gate before choosing directions or selecting a flight.
+- Use the same Dijkstra travel decision for directions and auto-flight. A
+  walking leg to a flight master names the upcoming flight; a terminal walking
+  leg cannot be replaced by a conflicting fallback flight recommendation.
+- During an actual flight, show its destination and hide ground route lines.
+  Restore ground directions after landing; the selected quest guide is retained.
+- Scan guide shows a rotating loop in both arrow displays while checking progress,
+  then restores the arrow. History batches yield to the UI. Cancel stale scans on
+  guide changes; fixed step order and saved-skip preferences are preserved.
+- Host checks cover state and logic. Retest flight actions, map rendering and
+  spinner animation on the current Forever beta build; travel times remain estimates.
+
 ## 0.7.3
 
 - Skip quest/step updates the selected route, arrow and owned map markers
