@@ -92,6 +92,10 @@ function ns.CatalogueAllowed(id, profile, key)
     if offered == false then return false, "This quest giver did not offer this quest at your current progress. Recheck after progressing." end
     if offered == true then return true end
     if identity ~= true then return identity, reason end
+    if ns.LearnedPrerequisiteAllowed then
+        local learned, learnedReason = ns.LearnedPrerequisiteAllowed(id, profile, key)
+        if learned ~= true then return learned, learnedReason end
+    end
     if not quest then return true end
     if ns.catalogue.detailSource and quest.prerequisitesRead ~= true then
         return nil, "Pickup requirements are missing from the detailed data. Talk to the quest giver to check its offer."
@@ -107,6 +111,12 @@ function ns.CataloguePrerequisiteIDs(id)
     if quest then
         if quest.previousQuest then ids[#ids + 1] = quest.previousQuest end
         for _, previous in ipairs(quest.prerequisiteAny or quest.prerequisiteCandidates or {}) do ids[#ids + 1] = previous end
+    end
+    if ns.LearnedPrerequisiteIDs then
+        local seen = {}; for _, previous in ipairs(ids) do seen[previous] = true end
+        for _, previous in ipairs(ns.LearnedPrerequisiteIDs(id)) do
+            if not seen[previous] then ids[#ids + 1], seen[previous] = previous, true end
+        end
     end
     return ids
 end
@@ -126,7 +136,8 @@ function ns.CatalogueScopeIDs()
     local keys = {}
     for mapID in pairs(maps) do keys[#keys + 1] = mapID end
     table.sort(keys)
-    local signature = table.concat(keys, ",")
+    local signature = table.concat(keys, ",") .. ":" .. tostring(ns.db and ns.db.questLearning and ns.db.questLearning.revision or 0)
+        .. ":" .. tostring(ns.Option("useLearnedQuests"))
     if signature == scopeSignature and scopeCatalogue == ns.catalogue then return scopeCache end
     local ordered = {}
     for id, quest in pairs(ns.catalogue and ns.catalogue.quests or {}) do

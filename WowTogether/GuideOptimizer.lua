@@ -136,6 +136,27 @@ local function optimize(tasks, mapID, position, cooperative)
     return beam[1] and beam[1].stops or {}, beam[1] and beam[1].cost or 0
 end
 
+local function completePreview(tasks, position, cooperative)
+    local nextStage, ordered, previous, work = {}, {}, position, 0
+    for index in ipairs(tasks) do nextStage[index] = 1 end
+    while true do
+        local best, cost
+        for index, task in ipairs(tasks) do
+            local stop = task.stages[nextStage[index]]
+            if stop then
+                local d = previous and previous.mapID ~= stop.mapID and 15000 or distance(stop.mapID, previous, stop)
+                if not cost or d < cost or d == cost and stop.id < tasks[best].id then best, cost = index, d end
+            end
+            work = work + 1
+            if cooperative and work % 200 == 0 then coroutine.yield() end
+        end
+        if not best then break end
+        previous = tasks[best].stages[nextStage[best]]
+        ordered[#ordered + 1], nextStage[best] = previous, nextStage[best] + 1
+    end
+    return ordered
+end
+
 function ns.BuildLevelingRoute(guide, includeOrigin, cooperative)
     guide.pendingReason = nil
     local tasks, missing, complete = availableTasks(guide)
@@ -164,6 +185,7 @@ function ns.BuildLevelingRoute(guide, includeOrigin, cooperative)
             or "Visit a quest giver in " .. guide.zone .. "; the next pickup or objective location is not known yet."
     end
     return {key = guide.key, title = guide.title, mapID = mapID, stops = stops, origin = includeOrigin and position or nil,
+        previewStops = completePreview(tasks, position, cooperative), eligibleMappedQuests = #tasks,
         missing = missing, otherMaps = otherMaps, limited = math.max(0, #tasks - #batch), focusKey = guide.focusKey,
         partial = partial or missing > 0 or otherMaps > 0, estimatedWalkingCost = cost,
         guideQuests = #guide.records, tripQuests = #batch, completed = complete, optimized = true}
@@ -175,7 +197,9 @@ function ns.CancelGuidePlanning()
 end
 
 local function fingerprint(guide)
-    local values = {ns.profile and ns.profile.mapID or 0, ns.profile and ns.profile.level or 0}
+    if guide.fixedRoute then return "fixed:" .. guide.key end
+    local values = {ns.profile and ns.profile.mapID or 0, ns.profile and ns.profile.level or 0,
+        ns.db.questLearning and ns.db.questLearning.revision or 0}
     for _, record in ipairs(guide.records) do
         values[#values + 1] = record.id .. ":" .. tostring(ns.active[record.id] ~= nil) .. ":" .. tostring(ns.Completed(record.id))
             .. ":" .. tostring(ns.QuestProgressReady(ns.self, record.id))
@@ -221,6 +245,7 @@ function ns.PlanLevelingGuide(guide, invite)
             C_Timer.After(0.01, advance); return
         end
         ns.routePlanning, ns.routePlanningError, ns.routePlanningErrorDetail = nil, nil, nil
+        if guide.fixedRoute then result = ns.BuildFixedGuideRoute(guide, true) end
         if fingerprint(guide) ~= before then
             ns.guideAction = "Quest data changed during generation. Start route again when sync finishes."
             ns.Refresh(); return

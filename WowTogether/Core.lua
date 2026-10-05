@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.6.2"
+ns.VERSION = "0.6.3"
 ns.handlers = {}
 ns.members = {}
 ns.status = "Waiting for addon initialization."
@@ -72,6 +72,7 @@ function ns.Diagnostics()
         {"C_Map.CanSetUserWaypointOnMap", C_Map and C_Map.CanSetUserWaypointOnMap},
         {"C_QuestLine.GetAvailableQuestLines", C_QuestLine and C_QuestLine.GetAvailableQuestLines},
         {"C_QuestLine.GetQuestLineInfo", C_QuestLine and C_QuestLine.GetQuestLineInfo},
+        {"C_QuestLine.GetQuestLineQuests", C_QuestLine and C_QuestLine.GetQuestLineQuests},
         {"C_QuestLine.RequestQuestLinesForMap", C_QuestLine and C_QuestLine.RequestQuestLinesForMap},
         {"C_QuestLog.GetQuestDifficultyLevel", C_QuestLog and C_QuestLog.GetQuestDifficultyLevel},
         {"C_QuestLog.GetQuestsOnMap", C_QuestLog and C_QuestLog.GetQuestsOnMap},
@@ -155,6 +156,7 @@ ns.On("ADDON_LOADED", function(name)
     ns.InitializeItemHints()
     ns.InitializeOffers()
     ns.InitializeQuestResearch()
+    ns.InitializeQuestLearning()
     ns.InitializeGuide()
     ns.ReadProgress()
     ns.CreateTracker()
@@ -201,5 +203,7 @@ SlashCmdList.WOWTOGETHER = function(command)
     elseif command == "guide reset" then ns.ResetGuideSkips()
     elseif command == "guide scan" then ns.ScanGuideProgress()
     elseif command == "research" then ns.ShowQuestResearch()
+    elseif command == "findings" then ns.ShowGuideFindings()
+    elseif command == "questlines" then ns.ShowQuestLineReport()
     else ns.ToggleWindow() end
 end

@@ -1,7 +1,7 @@
 # Wow Together
 
 A party quest guide for the **World of Warcraft: Forever beta**. Version
-**0.6.2** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.6.3** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -16,7 +16,7 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **28 Lua
+Replace the folder on **every party member's client**, including all **30 Lua
 files**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
@@ -27,8 +27,10 @@ No Battle.net credentials, external API service or in-game HTTP access is needed
 | `/wt config` | Open settings grouped by purpose. |
 | `/wt tracker` | Toggle the movable, scrollable party progress panel. |
 | `/wt arrow` | Toggle the movable direction and instruction panel. |
-| `/wt guide scan` | Refresh real progress and replan the selected guide. |
-| `/wt research` | Open a copyable local quest-data export for prerequisite research. |
+| `/wt guide scan` | Refresh progress; fixed guides retain their order. |
+| `/wt research` | Export this character's raw quest observations. |
+| `/wt findings` | Export account-wide observed prerequisite findings and supporting evidence. |
+| `/wt questlines` | Inspect the current client's questline table and optional chain quest IDs. |
 | `/wt guide reset` | Clear all saved guide skips for this character. |
 | `/wt sync` | Request fresh party snapshots; let the send queue drain. |
 | `/wt probe` | Open diagnostics; Ctrl+C copies and closes the report. |
@@ -51,13 +53,29 @@ later results accessible. Individual quests stay in All quests, and explicit
 quest-log trips are in Party quests.
 
 A bracket filters the browser; it does not cut a selected guide down to that
-bracket. The guide retains later quests and published cross-zone chain steps.
-New pickups still require suitable levels, faction and known progression. A
-full guide selects the next nearby trip rather than drawing every future stop.
-The arrow shows **Loading route…** while cooperative route generation compares
-dependency-ready walking orders. Trips hold up to six quests and twenty stops;
-pickups precede their work and returns. This is a bounded straight-line optimizer,
-not a guarantee of the globally shortest road route.
+bracket. **Follow fixed zone guides** is on by default. Start route compiles the
+whole zone/questline once from catalogue geography and prerequisite dependencies,
+including known cross-zone chain steps. It does not use your location, active
+quests or completion history to choose the order. The arrow shows **Loading
+route…** while generation runs. Progress then advances completed pickups,
+objectives and hand-ins, keeping the same numbered sequence. Abandoning a quest
+can restore its pickup instruction, but does not reshuffle the guide. Scan guide
+refreshes progress in that same sequence. A guide waits when its current pickup
+is locked or its location is missing; Skip step / Skip quest remain available.
+Catalogue-based routes remain partial where published coordinates are missing;
+these are generated guides, not fully hand-verified walkthroughs.
+
+Guide cards distinguish total quests from published pickup, objective and
+turn-in coverage. **Show full route** shows all currently eligible mapped quests,
+including those beyond the former six-quest/twenty-stop trip limit. Locked future
+quests remain in the internal sequence and enter the map preview after unlocking.
+Browse another map to see that zone's eligible markers. Cross-zone gaps do not
+become false local connecting lines. Focus next steps restores the short preview.
+
+Turn **Follow fixed zone guides** off and start a guide again for adaptive trips.
+Those compare nearby dependency-ready walking orders, with up to six quests and
+twenty stops per active trip. Their full map preview still includes all eligible
+mapped quests. Straight lines express visiting order; follow terrain and roads.
 
 As useful work leads into a suitable nearby zone, an optional popup offers
 **Start zone guide** or **Keep my guide**. For example, a known Durotar chain can
@@ -83,8 +101,8 @@ Quest-log plans remain available without replacing an explicitly chosen guide.
 
 Normal quest acceptance and zone updates retain the selected quest set.
 A committed unfinished objective stays selected while crossing a zone.
-**Scan guide** is the explicit way to refresh that selection and optimize it
-again. Ready turn-ins and unfinished friends' work remain separate stages.
+In adaptive mode, **Scan guide** refreshes the selection and optimizes it
+again. Fixed mode only updates progress in the existing sequence. Ready turn-ins and unfinished friends' work remain separate stages.
 Arrival alone never accepts, completes or hands in a quest.
 
 ## Planning and party progress
@@ -139,8 +157,7 @@ kept for the current session.
 
 **Skip step** and **Skip quest** persist per character. They do not unlock
 prerequisites or change friends' progress. **Scan guide** reads actual quest
-logs, objectives and completion history, then rebuilds the useful plan and
-returns to its current step without a report popup. History scope includes
+logs, objectives and completion history, then returns to the current fixed step, or rebuilds the useful adaptive plan without a report popup. History scope includes
 known series and prerequisites and is bounded to 512 IDs. Restricted values
 remain unknown; peer history waits for received snapshots.
 There is no extra "Guide replanned" footer below the arrow controls.
@@ -150,7 +167,7 @@ not mean eighteen quests. Completed progress and missing coordinates also
 affect each trip; compare the guide identity and scope before comparing counts.
 
 **Reconsider skips when scanning** is off by default. When enabled, Scan clears
-skips for quests in the selected guide before replanning. A quest shared with
+skips for quests in the selected guide before refreshing progress. A quest shared with
 another guide has the same saved skip. **Reset guide skips** clears every guide's
 skips for this character, across zones; other characters are unaffected.
 
@@ -218,8 +235,8 @@ Each client sends its own history and actual NPC offers. Peer offers are tied
 to fresh quest-log context, and an empty list does not mean every quest is
 unavailable. Automatic sync batches quest/turn-in/party/level/zone updates for
 two seconds, including solo guide refresh. Locked quests stay in the full guide;
-newly eligible nearby work can join the trip while its unfinished objective stays
-first. Accepted work remains. Scan guide also rechecks. Diagnostics show candidate,
+in adaptive mode newly eligible nearby work can join the trip while its unfinished objective stays
+first. Fixed guides advance through their existing steps. Accepted work remains. Scan guide also rechecks. Diagnostics show candidate,
 blocked and unknown counts plus sample per-quest reasons and NPC offer evidence.
 
 Quest research is enabled locally in **Settings → Quest data for testing**.
@@ -240,9 +257,27 @@ recording to pause collection; previous observations remain exportable.
 Reloads and recording toggles mark a new capture segment so gaps remain visible.
 Visit the same giver before and after hand-in for the strongest comparisons.
 A missing planned pickup is recorded only for this character at a known giver
-with a complete public list. Differences suggest prerequisite candidates; they
-do not automatically create a dependency because levels, reputation, branches
-and other quest changes can explain them. Retest capture APIs/events on the beta.
+with a complete public list. **Use observed prerequisite patterns** is on by default. One complete NPC list
+showing a quest absent, followed by exactly one observed hand-in and a positive
+offer, can create a tentative relationship. Relevant history must be public and
+untruncated; no other newly accepted quest may intervene. Matching build, faction,
+class and race can reuse it on new characters on this account. Changed level
+makes the pattern review-only. Reputation notifications are noted as a possible
+alternative cause, not treated as actual standing measurements. Multiple givers,
+repeatables and professions do not become automatic learned gates. Published
+alternative prerequisites are never narrowed to one observed branch. A positive
+NPC offer contradicting a learned requirement disables that tentative rule.
+Steps influenced by learning say **Observed by <character> • tentative**. An
+already running fixed guide keeps its order; new guides use the current findings.
+
+Use **Export guide findings** or `/wt findings` to send retained account-wide
+patterns with their before/after evidence plus the current character's latest
+raw observations. **Include source names in guide findings** is optional and off
+by default. Raw `/wt research` exports always omit names. Each friend exports
+locally and sends a labeled file for review; findings never upload or sync
+automatically and never overwrite the bundled catalogue themselves. Manual
+review of overlapping/contradictory reports is how shared guide data improves.
+Retest capture APIs/events on the beta.
 
 The greeting reader probes GetNumAvailableQuests/GetAvailableQuestInfo and
 reads the quest ID from the fifth return, as documented by Mainline's native
@@ -283,10 +318,10 @@ The offline snapshot was captured **October 5, 2026** from public game facts in
 | Coverage | Records |
 | --- | ---: |
 | Distinct quest records / category lists | 5,230 / 123 |
-| Detailed pages | 1,366 |
-| Pickup / objective-area / turn-in coordinates | 763 / 179 / 831 |
-| Published series / prerequisite facts | 599 / 432 |
-| Incomplete objective locations / known repeatables | 785 / 68 |
+| Detailed pages | 1,619 |
+| Quests with mapped pickup / objective-area / turn-in coordinates | 905 / 196 / 972 |
+| Published series / prerequisite facts | 726 / 524 |
+| Incomplete objective locations / known repeatables | 950 / 78 |
 
 This is a partial catalogue, not every Forever quest or a complete prerequisite
 or flight graph. Detailed reads now spread across outdoor categories through
@@ -307,7 +342,7 @@ provided broad inspiration about progress clarity; its code/assets/layouts
 were not copied. This implementation is independent.
 
 Reported beta build **70205** established the earlier sync APIs in user tests.
-**0.6.2 has host validation, not a live-client compatibility certification.**
+**0.6.3 has host validation, not a live-client compatibility certification.**
 Retest UI rendering, optional gossip/flight actions, corpse positions and item
 hooks on the build in front of you. `/wt probe` lists capabilities and runtime
 status. Do not interpret presence as proof that protected actions work.
@@ -317,7 +352,7 @@ combat automation or replacement of Blizzard combat tools is used.
 
 ## Development and release
 
-Host checks load all 28 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
+Host checks load all 30 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
 
 ```sh
 python3 -m venv /tmp/wow-together-tests

@@ -580,7 +580,10 @@ function ns.Render()
             card.reason:SetHeight(height - 103)
             local nextTitle = guide.nextStop and guide.nextStop.label or guide.target.title
             local _, requirement = ns.CatalogueAllowed(guide.target.id, ns.profile, ns.self)
-            local detail = guide.fullGuide and (guide.knownStops .. " selected quest(s) have a known pickup location. Start route checks progress and generates the next trip.")
+            local coverage = guide.coverage
+            local detail = guide.fullGuide and (coverage and ("Published: " .. coverage.pickups .. "/" .. coverage.quests .. " pickups • "
+                .. coverage.objectives .. "/" .. coverage.quests .. " objectives • " .. coverage.turnins .. "/" .. coverage.quests .. " turn-ins")
+                or (guide.knownStops .. " selected quest(s) have a known pickup location."))
                 or guide.hasPoint and (guide.knownStops .. " mapped stops • Next: " .. nextTitle)
                 or (requirement or "No NPC or objective coordinates are available for this step yet.")
             card.reason:SetText(guide.reason .. "\n" .. detail)

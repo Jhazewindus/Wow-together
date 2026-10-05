@@ -1,227 +1,103 @@
 # Wow Together — friend test script
 
-For **0.6.2**, World of Warcraft: Forever beta, interface **16001**.
-Allow about **45–60 minutes** for the main checks. Player A starts routes;
-Player B tests the invitation and reports their own progress. Swap roles once.
-Record **Pass / Fail / Skip** for each check. If a quest is already completed
-or unavailable, use another suitable quest or mark that example skipped.
+For **0.6.3**, World of Warcraft: Forever beta, interface **16001**.
+Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
+Keep tester names and reports separate; label the main developer's report.
 
-## Before playing
+## Install and capture context
 
-1. Both players replace the complete `WowTogether` folder, including every Lua
-   file, in `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
-   Run `/reload`; restart fully if a new addon folder does not appear.
-2. Join a normal party. Start in the same zone for the route comparison.
-   Open `/wt config` → **Leveling guides**: enable **Collect useful quests
-   nearby**; choose **Small detours**. Leave **Reconsider skips when scanning** off.
-   Leave auto-accept and auto-turn-in off for the main run.
-3. Enable `/console scriptErrors 1`. Open `/wt probe` on both clients and
-   record addon version, client build, levels, classes, factions and zones.
-   Let sync drain; use `/wt sync` once if needed to establish the baseline.
-   Each client should show the other player's received quest snapshot.
+1. Replace the complete WowTogether folder, including **all 30 Lua files**, in
+   `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
+   `/reload`; restart fully if a new addon folder does not appear.
+2. Enable `/console scriptErrors 1`. Record version, build, level, faction, class,
+   race, zone, party size and relevant settings. Update every party member.
+3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
+   and **Use observed prerequisite patterns** on. Source names in exports are
+   optional and off by default. Recording never uploads automatically.
 
-## Main run
+## Fixed leveling guides and full map
 
-| Check | Actions | Expected result |
-| --- | --- | --- |
-| 1. Automatic sync | A accepts an available quest, then both watch `/wt`. Do not repeatedly press Sync. Wait for the paced queue to drain. | B sees A's quest change automatically. Diagnostics show received snapshots and no continuing failed transfers. |
-| 2. Nearby bundle | With Lazy Peons active around Valley of Trials, inspect the refreshed guide. Use **Show route** on that guide. | Available Galgar's Cactus Apple Surprise and the general Vile Familiars can join the trip when within the walking budget. The pickup NPCs are named. Completed or unavailable quests are excluded. Apple's missing objective coordinates are described as incomplete. |
-| 3. Prerequisites | Before completing Vile Familiars, inspect Burning Blade Medallion in All quests. Check again after handing in the prerequisite. | Accepting or finishing objectives alone does not unlock the follow-up. Known prerequisite history must be completed; a positive offer cannot bypass it. A general quest must not demand the other class variant's introduction. |
-| 4. Nearby ready quests | Have one ready-to-turn-in quest at a nearby NPC plus unfinished work. Refresh the recommendation and show it. | The nearby ready turn-in precedes new pickups. Later objective/return stages remain for unfinished party members. A distant delivery should not pull the plan away from local work. |
-| 5. Keep my route | B selects a route. A presses **Start route** on another guide. B chooses **Keep my route**. | B receives a popup. Their route stays unchanged before and after choosing Keep. |
-| 6. Follow route | A presses Start route again. B chooses **Follow route**. | B gets the same quest selection, including nearby pickups. Each client uses the party's actual quest progress; invitations do not resend themselves. |
-| 7. Different pickup progress | Only A accepts one newly bundled quest. B leaves it unaccepted briefly, then accepts it. | B still has a pickup step while A has objective work. After B accepts, B's pickup changes to work. Refreshing recommendations does not discard the selected bundle. |
-| 8. Personal drop counts | Both hold an item/drop quest. A collects an item while B does not; then swap. Check the movable tracker. | Each player's count matches their own quest log. The addon does not copy one player's item count to everyone. Objective credit shared by the game is allowed to update both. |
-| 9. Last player finishes | Only A completes and turns in a selected quest; B finishes later. | B's remaining objectives and turn-in stay marked after A's hand-in. The quest's remaining stages disappear after the final participating player hands in. Other selected quests remain. |
-| 10. Reload recovery | While both have unfinished selected work, B runs `/reload`. | A retains the last confirmed route while B's snapshot refreshes. Sync resumes and current progress replaces the old data. |
+1. **Discover zones:** open Leveling guides. The default bracket follows the
+   lowest party level. Search another suitable zone; try another bracket and
+   All levels. Cards show total quests and separate published pickup/objective/
+   turn-in counts. A large quest count must not imply every location is mapped.
+2. **Start the complete guide:** press Start route. Loading route should appear,
+   followed by a numbered zone-guide step. The route should retain the full
+   guide, beyond the old six-quest/twenty-stop trip limit. Missing locations or
+   locked current pickups should be explained, without invented destinations.
+3. **Different starting locations/logs:** two matching-faction/class testers
+   select the same zone guide from different places, with different active quests.
+   Compare future numbered stages. The generated order should agree for matching
+   catalogue/learning data; completed stages may already be advanced on one client.
+4. **Accept and hand in:** follow several steps. Accepting a quest advances its
+   pickup, without reshuffling future stages. Killing/collecting advances completed
+   objectives; a quest cannot advance past its hand-in until actually turned in.
+5. **Abandon and scan:** record several future quest names/step numbers, abandon
+   one test quest, move elsewhere, then Scan guide. Its pickup can become pending
+   again. Existing stage numbers/order must stay the same; no new route generation
+   or new detour chosen from your current position. Skip step / Skip quest remain
+   saved; Reconsider skips when scanning restores selected-guide skips only.
+6. **Full route toggle:** click Show full route in the map overlay. Every currently
+   eligible mapped quest in the guide should be included, beyond the current trip.
+   Locked later quests stay in the internal sequence and become visible after
+   unlocking. Focus next steps restores the short preview. Shared NPC markers can
+   contain several numbered steps; hover to see them. No extra Blizzard pin.
+7. **Other maps:** view another zone used by the route. Its eligible markers should
+   appear in full mode. Lines must not falsely connect across a different zone.
+   Pan/zoom, including during combat, and confirm pins/lines stay attached to the
+   terrain. Actual rendering needs live testing; a host test cannot prove it.
 
-## Map, arrow and window
+## Party, findings and native data
 
-| Check | Actions | Expected result |
-| --- | --- | --- |
-| 11. Map rendering | Show the route, zoom in/out, pan, resize the map, then close/reopen it. Hover a clustered numbered marker. | Addon lines and pins stay on their locations. A shared pin lists all its steps. An incomplete route does not invent missing coordinates. Lines show visiting order; follow roads and terrain. |
-| 12. Navigation | Close the map, turn your character and walk toward the next stop. Drag the arrow. Approach a known NPC. | The arrow turns and the distance decreases when public map/facing data exists. At the destination it keeps the quest name, points down and names the NPC. Arrival alone does not accept or complete the quest. |
-| 13. Controls | Drag-resize the main window in several directions. Scroll the tracker; drag it. Use the minimap button. Search All quests by typing a zone, then pressing Enter or pausing. | Resizing is smooth; text and party cells fit. Tracker scrolling reaches later quests. The minimap button opens the addon; route lines are on the world map only. Searches commit on Enter/pause. |
-| 14. Strict mode | In Party quests, turn off **Collect useful quests nearby**, select the explicit quest-log guide card and inspect its local route. Turn it back on. | Quest-log trips switch to accepted party quests only, then permit nearby pickups again. An explicitly followed friend's bundle retains the selection you accepted. |
-| 15. Persistence | Move the window, tracker and arrow. Resize the window, then reload; optionally log out and back in. | Saved positions, size and settings return. If they do not, report the client build and whether it occurred on reload or a full restart. |
-| 16. Short preview | With a route longer than three places, inspect the map. Use **Show full route**, then **Focus next steps**. Cycle **2 ahead** through zero, one and two. Complete an objective or accept a pickup. | Default pins/lines show the current place and two ahead; consecutive shared-NPC steps stay grouped. Controls change only the preview, and later steps appear as quest progress advances. Arrival alone does not skip unfinished work. |
-| 17. Local work first | Hold active Barrens work plus a delivery to Thunder Bluff, or an equivalent local/remote pair. Select the explicit quest-log guide card; then start a new leveling guide and choose whether to include current quests. | Known active local work remains above remote delivery and new pickups. The new-guide popup warns about detours; Start selected guide preserves that selection. No other zone's coordinates are drawn on the current map. |
-| 18. Zone handoff | View a different zone with a selected route. Use **View route zone**. Finish a selected quest whose receiver is in another zone. Read the arrow's small context text. | The map explains where the retained route is. The button opens that map. The active route advances to the receiver's map after progress confirms it; the arrow explains travel and whose pickup/work/hand-in is next. |
-| 19. Repeatables | Inspect Spirit of the Wind or another known repeatable in All quests and automatic guides. | It remains in All quests, labeled repeatable, but does not join automatic leveling plans. Report other misclassified quests with their names/NPCs. |
-| 20. Saved skips | Start a route with several stops. Click **Skip step**, then **Skip quest** on another quest. Reload and reselect the guide. Use **Reset guide skips** in settings. | Only your guide advances. Skips persist for your character; reset restores them. Actual quest credit/history and friends' guides do not change. Skipping a prerequisite must not unlock its follow-up. |
-| 21. Guide scan | Start a guide containing completed and unfinished quests. Click **Scan guide** on the arrow. | Completed work is omitted and actual accepted stages remain. The route replans to useful current work without opening a report popup. Missing history remains unknown; friends' histories wait for their received snapshots. |
-| 22. Mob-type markers | Hold a quest requiring two mob types. Finish the first type while leaving the second unfinished. Check both nameplates outside combat. | The finished type loses its marker even while the native quest flag still relates it to the quest. The unfinished type keeps its marker. Another unfinished quest/party participant may still need the first type. |
-| 23. Combat map motion | With a route already drawn, enter combat, open the map and pan/zoom. After combat, inspect the next waypoint. | Unprotected addon lines/pins move with the map rather than staying at their old screen position. Protected/native actions wait for combat to end. Report any blocked-action text and `/wt probe` geometry. |
+8. **Follow or keep:** Player A starts the zone guide. Player B gets Follow route /
+   Keep my route. Keep retains B's guide; Follow selects the full guide and fixed
+   mode even if B normally uses adaptive trips. Large guides still send at most
+   twenty IDs plus guide identity; the recipient reconstructs the full scope.
+9. **Last participant:** finish an objective/quest while a friend still needs it.
+   The required step/marker remains for that friend. Verify progress counts and
+   skull/cross hints stop marking finished target types, except when still needed
+   by another participant. Normal events sync automatically; check queue drain.
+10. **Observe an unlock:** with a prerequisite already active, open its giver's
+    complete quest list before handing it in. Record a quest that is absent.
+    Hand in exactly one prerequisite, then reopen the same giver and observe the
+    new offer. One clean pair can produce a tentative pattern. A single quest
+    detail alone does not prove absence. Changed level, unknown/truncated history,
+    other accepted quests, multiple hand-ins or multiple givers can prevent reuse.
+    Reputation notifications are recorded as possible alternative explanations.
+11. **Reuse and export:** on a new matching build/faction/class/race character,
+    start a guide that uses a learned relationship. Relevant steps credit the
+    observing character. Existing fixed guides keep their compiled order.
+    `/wt findings` or Export guide findings includes patterns and supporting
+    before/after evidence; Select all, Ctrl+C closes the window. Names are omitted
+    unless enabled; `/wt research` always omits names. Send labeled text files.
+    A real offer before a learned prerequisite is done should disable that rule.
+    Published alternative prerequisites must remain valid on another branch.
+12. **Native questlines:** run `/wt questlines` in two or three zones. Export the
+    result, including empty results. It shows actual native fields and optionally
+    GetQuestLineQuests IDs. This does not assume table membership/order proves a
+    prerequisite or that an absent quest is unavailable. `/wt probe` reports APIs.
+13. **Optional regression:** turn Follow fixed zone guides off and start a new
+    guide. Adaptive trips should optimize nearby work and current logs. Their
+    full preview should still include all eligible mapped quests. Check reward
+    choices stay manual, tracker auto-hides solo/raid, and UI resizing/arrow work.
 
-## New 0.6.0 report regressions
-
-| Check | Actions | Expected result |
-| --- | --- | --- |
-| 24. Useful level range | At roughly level 25, browse Barrens guides. Compare an old isolated quest with an early prerequisite leading to a relevant later/dungeon quest. | Old junk is not newly recommended. A justified low-level prerequisite explains its worthwhile follow-up under the arrow. Manually included active work can remain. |
-| 25. Party behind | Use a known chain where A has finished an earlier quest and B has not. Let history sync, then start the same guide. Swap which player starts it. | Both help B through useful earlier stages; A's later quest does not prove B's prerequisite complete. Unknown peer history stays waiting. Test with an actual party, since the submitted diagnostics were solo. |
-| 26. Hidden NPC unlock | Visit a known giver before an unavailable follow-up unlocks. Inspect the route, then complete the prerequisite and visit again. If a direct single quest dialog opens, inspect the other quests too. | A complete public list can block an absent pickup; new progress causes a recheck. A single dialog does not mark all other quests unavailable. The optional user-tested beta pickup gate is checked separately; record any disagreement between its boolean and the actual NPC offer. |
-| 27. Stable crossing | Select an active cross-zone objective such as Deepmoss Spider Eggs. Accept another quest, cross the zone boundary and continue to that objective before finishing it. | The selected quest set remains. Crossing a zone alone does not turn the player around. Scan guide explicitly recalculates the best plan; report its before/after destinations. |
-| 28. Step navigation and scan skips | Start mid-guide with an accepted quest. Preview back to its pickup, then forward. Skip work, reload and scan with Reconsider skips off, then on. | Preview is read-only and labeled; skip controls cannot change the previewed quest. Off retains skips; on clears selected-guide quest skips and replans to the best current step. An entirely skipped guide can still be scanned. Reset clears all zones' skips for this character only. |
-| 29. Dashboard and start choice | Browse the dashboard and each settings category; resize. Find an explicit quest-log route in Party quests. Start a different guide with current quests, test each popup choice separately, then select metres. | Dropdown labels and tooltips are readable. Start selected guide uses that guide; Include current quests keeps existing work and warns about detours. Distances switch units. Party quests / All quests names are clear. |
-| 30. Markers and actions | Inspect a kill step, an item-collection step and a giver/receiver. Hover a known required quest item outside combat; optionally switch Cross to Skull for kills. | Instructions distinguish Kill / Pick up / Talk to NPC. Cross markers and item-tooltip quest hints use known data. Finished targets remain unmarked unless another unfinished quest/member needs them. Unsupported world objects need not have nameplates. |
-| 31. Panel lifecycle and dungeon start | Leave the party, join it, dismiss the tracker, rejoin and enter a raid. In Dungeon quests press Start route for a level-appropriate collection; inspect Quest log review. | Tracker hides solo/raid and opens on a new party session. Dungeon collection has steps and a known nearby entrance, with missing prerequisites explained. Quest-log review only suggests; no quest is abandoned. |
-
-## New 0.6.1 guide regressions
-
-| Check | Actions | Expected result |
-| --- | --- | --- |
-| 32. Catalogue-wide guides | Use two suitable characters in different zones, such as Ashenvale and another zone outside the Barrens. Open Leveling guides. Change brackets, search a zone/NPC, pause or press Enter, and page through results. | Default lists full zone guides/questlines matching the lowest party level bracket, with faction restrictions. Remote guides remain browsable. No single NPC quest is presented as a full guide. All quests retains individual records. |
-| 33. Start and loading | Start or show a real guide in each tested zone. Record the first NPC/quest and whether that NPC offers it. Test a guide with incomplete locations too. | Loading route appears before planning finishes. The first located useful unlocked step is mapped. Missing locations are explained and the guide stays selected; no coordinates or quest availability are invented. |
-| 34. Full guide versus trip | Start the same guide on both updated clients after history sync. Compare Diagnostics: Selected guide, quests in scope, Current trip, Trip quest IDs and stops. Complete the trip and continue leveling. | The full guide persists beyond its current trip and bracket. A quest can have three or more stops; different confirmed progress or partial locations can change stop counts. Later eligible work enters the trip rather than replacing the full guide. |
-| 35. Optional next-zone guide | Follow a useful chain into a suitable nearby next zone, or finish local work and enter one. Keep zone prompts enabled. Test Keep my guide, then accept a later offered transition. Try below the next zone's useful level range. | Known chain steps can cross zones. A suitable transition offers Start zone guide / Keep my guide; no silent switch occurs. Accept starts the full next-zone guide, with the normal current-quests choice where applicable. Unsuitable levels, unknown links or missing peer snapshots do not confirm a transition. |
-| 36. Quest greeting and scorpion pickup | On the affected character, visit the scorpion quest's giver before it unlocks. Record the greeting list, whether Cutting Teeth is completed and the greeting diagnostics. Progress and revisit. Also test a giver offering multiple quests with optional dialog selection. | A complete public greeting list can block an absent quest just as gossip can. Changed progress invalidates that absence. Actual offers confirm availability; hidden gates are not guessed. Opt-in selection uses the matching native slot. Missing/restricted APIs stay explicit and manual. |
-| 37. Extra waypoint and scan footer | Place your own manual Blizzard waypoint first. Start a route, progress and Scan guide; then clear the addon route. Inspect the arrow controls. If an old addon waypoint remains, remove it manually. | No extra Blizzard pin is created or moved; your manual waypoint remains. Numbered addon route markers/lines remain available. Scan optimizes progress with Loading route and has no extra Guide replanned footer below its controls. |
-| 38. Trip stability and shared scope | With a multi-quest guide, accept one pickup, complete a subset, then finish the trip. Share a full guide with more than twenty quests. B chooses Keep, then Follow on a second invitation. | Acceptance retains the current trip's quest set; finished work leaves as confirmed. The next trip comes from the retained full guide. Follow reconstructs the same full guide identity, not only the invitation's twenty IDs; Keep leaves B's guide untouched. |
-| 39. Prerequisite and NPC evidence | Update both clients to 0.6.2. Before handing in Vile Familiars, inspect Burning Blade Medallion in the retained guide and copied Diagnostics; visit Zureetha and record her actual offers. Hand in Vile Familiars, wait for automatic sync, revisit and compare. Repeat with another zone's chain and two players at different progress. | Known unfinished prerequisites block pickups in every route mode, even with positive offer evidence. Completed history can unlock a published-data candidate; the NPC confirms hidden requirements. The full guide retains future quests, and accepted objectives remain. Neither IsPushableQuest nor IsQuestCompletable affects pickup decisions. Report per-quest reasons, actual NPC list and build. |
-
-## New 0.6.2 pickup checks
-
-| Check | Actions | Expected result |
-| --- | --- | --- |
-| 40. Ready versus handed in | Finish a prerequisite's objectives but leave it in the log. Inspect the follow-up, then hand in and wait for automatic sync without pressing Scan. | Ready does not unlock the next pickup. Hand-in re-evaluates the full guide; useful follow-up work may enter the next/current nearby trip. Future scope stays selected. |
-| 41. Independent party history | A has handed in the prerequisite; B has not. Share the full guide and compare each character's pickup diagnostics. Let B progress, then reload one client. | A's completion does not unlock B's follow-up. Missing history stays unknown until synced. Actual offer lists refresh with the log, and reload does not reuse old peer offers. |
-| 42. NPC absence and partial information | Inspect an unavailable pickup at its giver, progress and revisit. Try a published quest with incomplete/branching requirements. Copy Diagnostics with the guide selected. | A complete public NPC list can block absence in its current context. A single detail dialog confirms only that quest. Known prerequisites remain mandatory; missing metadata needs actual offer confirmation. Diagnostics distinguish inferred candidates from NPC evidence. |
-| 43. Single-quest marker cleanup | Show an individual pickup route, then speak to its known giver while the quest is unavailable. Compare full-guide behavior. | Invalidated pickup markers disappear in both modes; the guide remains selected waiting for eligibility/location data. Accepted objective/turn-in markers remain. Optional automatic dialog selection uses the same pickup rules. |
-| 44. Quest research export | Leave Record NPC offers and quest progression on. Visit a known giver before a follow-up unlocks, accept/hand in the earlier quest, then revisit the same giver. Each tester runs `/wt research` or opens Settings → Quest data for testing → Export quest data. Select all, Ctrl+C and save as a text file labeled with the tester name. Reload and export again; briefly try recording off. | JSON contains separate NPC offers, acceptance/hand-in events, build, relevant history and level/reputation-change context. Individual dialogs never claim a complete list. Known planned pickups missing from a full list are identified for that character. Reload preserves observations; recording off stops new records. Exports omit character names/chat and are never sent automatically. Latest 300 records remain; replaced count is explicit. No learned prerequisite is silently applied. |
-
-If a guide cannot start, include its exact name, bracket, first NPC/quest, copied
-Diagnostics and the NPC's actual offered list. For an 18-versus-3 comparison,
-include both players' guide identity, scope, trip IDs, active quests, completion
-history and party snapshot status; do not compare only the map's stop count.
-
-## Flight and corpse checks (optional, beta API behavior)
-
-- Open two flight-master maps on the same character. Record `/wt probe` travel
-  capability/status, the suggested destination and whether you actually know it.
-  With **Suggest faster known flights** on, choose a long route where flying
-  should save travel time. The arrow/map should first direct you to the appropriate
-  known flight master; estimated savings must be labeled. Local walking should
-  not detour across the world just to board a flight.
-- Keep **Select the suggested flight** off initially: opening the map must not
-  board a flight. Test a manual flight; record elapsed time. On a later measured
-  ride check approximate remaining time. Restart/reload between rides to check
-  private network/timing persistence. Flight time is not a server-confirmed ETA.
-- If you opt in, open the correct source map and check that only its currently
-  reachable suggested destination is requested. Wrong sources, missing/restricted
-  data and combat must stay manual. Report Lua errors or blocked-action text,
-  whether the request worked, and the build. Turn off the option after testing
-  if you do not want it. Do not assume API presence proves protected action success.
-- Near an observed unconfirmed flight master, check that a small optional visit
-  names it. Confirm/learn the path and reopen the map; it should stop asking.
-  There is no complete global flight-path database in this release.
-- During ordinary gameplay, die with a guide selected and release manually.
-  Check corpse directions in the death zone, then from a neighboring graveyard
-  zone; recover manually. The quest guide should survive and resume. If corpse
-  API data is unavailable, a recorded death position is approximate or the panel
-  explicitly reports unavailable data. No resurrection/release is automated.
-
-## Optional checks
-
-- **Third player:** repeat pickup counts and last-player completion in a party
-  of three. A member without a received addon snapshot stays waiting.
-- **Combat:** enter combat naturally with a selected route. NPC nameplate hints
-  should hide in combat; pending map/route changes should apply afterward.
-  Approach a quest NPC with nameplates visible outside combat; where its public
-  ID is available, check the quest-name hint and downward pointer.
-- **Different levels/zones:** recommendations should account for the lowest
-  synced level and faction. Nearby quests should not send a low-level Horde
-  character across the world or into an Alliance starting zone. Moving into
-  another zone should update context while party quest sync continues.
-- **Dungeon / Buy list / Professions:** inspect an available dungeon collection
-  and its pickup NPCs; inspect a quest with known buyable items. Open a profession
-  window and check its personal recipe/material guide. AH prices depend on
-  searches you perform. Missing source information should be explained.
-- **Auto-accept:** opt in, open one available quest-detail dialog outside combat,
-  and confirm whether it is accepted. Report any blocked-action message. Turn
-  the option off again afterward if you do not want this behavior.
-- **Auto-turn-in:** in `/wt config`, enable the turn-in option. Open an accepted,
-  completed quest at its NPC with **no reward choice**; confirm it hands in.
-  Then open one with reward choices: it must wait for your manual choice.
-  Repeat with the option off. Report `/wt probe` plus any Lua/blocked-action
-  message, and whether `CompleteQuest` / `GetQuestReward` actually worked on
-  your build. Automatic actions should not run during combat.
-
-## Send back this report
-
-Label your report **main developer** or **friend: [name]**. Include all checks
-that failed or were skipped; do not combine different players into one identity.
-
-Copy this block and fill it in. For a failure, send both clients' `/wt probe`
-reports after the problem occurs. Ctrl+C in diagnostics copies and closes it.
-For map issues, include a screenshot plus rendered pins/lines, drawing surface
-and view geometry. For quest exclusions, include the **quest name, NPC, class,
-level, whether already accepted/completed, and whether the NPC offers it**.
+## Copyable tester report
 
 ```text
-Wow Together test report
-Reporter (main developer / friend name):
+Tester: [name; say whether this is the main developer]
 Date:
-Addon version on A / B:
-Client build on A / B:
-A: level / class / faction / zone:
-B: level / class / faction / zone:
-Party size:
-
-Results (Pass / Fail / Skip; state why a check was skipped):
-1 Automatic sync:
-2 Nearby bundle:
-3 Prerequisites:
-4 Ready turn-ins:
-5 Keep my route:
-6 Follow route:
-7 Different pickup progress:
-8 Personal drop counts:
-9 Last player finishes:
-10 Reload recovery:
-11 Map rendering:
-12 Navigation:
-13 Controls:
-14 Strict mode:
-15 Persistence:
-16 Short preview:
-17 Local work first:
-18 Zone handoff:
-19 Repeatables:
-20 Saved skips:
-21 Guide scan:
-22 Mob-type markers:
-23 Combat map motion:
-24 Useful level range:
-25 Party behind:
-26 Hidden NPC unlock:
-27 Stable crossing:
-28 Step navigation / scan skips:
-29 Dashboard / start choice / units:
-30 Markers / action wording:
-31 Panel lifecycle / dungeon start / log review:
-32 Catalogue-wide guide browser / brackets / search:
-33 Start / Loading route / first NPC:
-34 Full guide / trip IDs / map stops:
-35 Optional next-zone guide / Keep my guide:
-36 Quest greeting / unavailable scorpion pickup:
-37 Extra waypoint removal / Scan footer:
-38 Trip stability / full shared guide scope:
-39 Prerequisites / actual NPC evidence / automatic unlock:
-40 Ready versus handed in:
-41 Independent party history / offer freshness:
-42 NPC absence / partial requirements / diagnostics:
-43 Single-quest marker cleanup:
-44 Quest research / before-and-after NPC offers / saved export:
-Flight network / actions / timed rides (optional):
-Corpse directions (optional):
-Selected guide / current step / settings:
-Optional checks:
-
-Failure to investigate:
-Quest and NPC:
-Steps to reproduce:
-Expected:
-Actual:
-Lua error or blocked-action text:
-Both diagnostics / screenshot attached:
+Addon / client build:
+Level / class / race / faction / zone:
+Party size / selected guide:
+Fixed zone guides / full route / learning settings:
+Checks 1–13: Pass / Fail / Skip (reason)
+Exact quest name and ID / NPC / current and next step numbers:
+What happened / expected result:
+Was the quest offered? Was its prerequisite handed in?
+Attach /wt probe, /wt findings, relevant /wt questlines and a screenshot if useful.
 ```
+
+Review overlapping reports before changing shared guide data. Ask the user first
+when suggested behaviors contradict; observations alone are not contradictions.
+Host checks validate Lua 5.1 logic only. Retest beta APIs and map rendering on the
+client build in front of you before treating results as final.

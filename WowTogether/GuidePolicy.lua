@@ -65,7 +65,7 @@ function ns.QuestDifficultyLabel(id)
     return "Normal quest"
 end
 
-local function nextQuests(id)
+local function nextQuests(id, key)
     if indexed ~= ns.catalogue then
         indexed, followups = ns.catalogue, {}
         local function add(previous, nextID)
@@ -82,7 +82,9 @@ local function nextQuests(id)
             end
         end
     end
-    return followups[id] or {}
+    local result = {}; for nextID in pairs(followups[id] or {}) do result[nextID] = true end
+    for _, nextID in ipairs(ns.LearnedFollowers and ns.LearnedFollowers(id, key) or {}) do result[nextID] = true end
+    return result
 end
 
 function ns.UsefulQuestReason(id, key, level)
@@ -90,7 +92,7 @@ function ns.UsefulQuestReason(id, key, level)
     local lower = math.max(1, level - math.max(5, math.floor(level * 0.2)))
     while queue[cursor] and cursor <= 128 do
         local previous = queue[cursor]; cursor = cursor + 1
-        for nextID in pairs(nextQuests(previous)) do
+        for nextID in pairs(nextQuests(previous, key)) do
             if not seen[nextID] then
                 seen[nextID] = true
                 local quest = ns.CatalogueQuest(nextID)

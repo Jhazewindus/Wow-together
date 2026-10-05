@@ -35,6 +35,7 @@ function ns.ResetZoneConnections() linkCache = {} end
 function ns.KnownZoneMaps()
     local result = {}
     for id in pairs(neighbours) do result[id] = true end
+    for id in pairs(zoneFactions) do result[id] = true end
     if ns.profile and ns.profile.mapID > 0 then result[ns.profile.mapID] = true end
     return result
 end

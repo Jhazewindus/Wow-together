@@ -56,7 +56,10 @@ function ns.RouteContext(stop, mapID)
             .. "\nFly to " .. plan.destination.name .. "; saves ~" .. duration(plan.walkingSeconds - plan.seconds) .. "."
     end
     if stop.action == "flight-check" then return "Check this nearby flight master.\nUnlock status has not been confirmed." end
-    if ns.routePaused then return "Waiting for confirmed party progress.\nYour last route is retained." end
+    if ns.routePaused then
+        if ns.routeSelection and ns.routeSelection.fixedRoute then return ns.routePaused end
+        return "Waiting for confirmed party progress.\nYour last route is retained."
+    end
     local reason
     if stop.kind == "t" then reason = "Hand in a completed quest."
     elseif stop.kind == "a" then
@@ -82,7 +85,10 @@ function ns.NavigationState()
     local route = ns.routeSelection and ns.selectedRoute
     local stop = ns.navigationPreview and ns.navigationPreview.stop or route and route.stops and route.stops[1]
     if not stop and ns.routeSelection then
-        stop = {kind = "notice", id = 0, title = ns.routeSelection.title, mapID = route and route.mapID or 0,
+        local pending = route and route.pendingStop
+        stop = {kind = "notice", id = pending and pending.id or 0, title = pending and pending.title or ns.routeSelection.title, mapID = route and route.mapID or 0,
+            stepKind = pending and pending.kind, guideStep = pending and pending.guideStep,
+            learnedSource = pending and pending.learnedSource,
             x = 0, y = 0, label = ns.routePaused or "Waiting for the next available guide step."}
     end
     stop = ns.CorpseDestination() or ns.TravelDestination(stop)
@@ -151,8 +157,11 @@ function ns.UpdateNavigation()
     frame.symbol:SetText("…"); frame.symbol:SetTextColor(0.96, 0.76, 0.35, 1)
     frame.symbol:SetShown(state.angle == nil and not state.arrived and not state.flight)
     frame.step:SetText(state.stop.kind == "loading" and "Generating an efficient trip" or state.stop.historyPreview and "History preview • published location" or
-        (ns.navigationPreview and "Preview step • arrows browse; Scan returns to the plan" or "Current guide step"))
-    local editable = not ns.navigationPreview and not state.flight and state.stop.kind ~= "corpse" and state.stop.kind ~= "notice" and state.stop.kind ~= "loading"
+        (ns.navigationPreview and "Preview step • arrows browse; Scan returns to the plan" or
+            (state.stop.learnedSource and ("Observed by " .. state.stop.learnedSource .. " • tentative") or
+            (state.stop.guideStep and ("Zone guide step " .. state.stop.guideStep) or "Current guide step"))))
+    local editable = not ns.navigationPreview and not state.flight and state.stop.kind ~= "corpse"
+        and (state.stop.kind ~= "notice" or state.stop.id > 0) and state.stop.kind ~= "loading"
     frame.skipStep:SetEnabled(editable); frame.skipQuest:SetEnabled(editable); frame.scan:SetEnabled(not state.flight and state.stop.kind ~= "loading")
     frame.back:SetEnabled(state.stop.kind ~= "loading"); frame.next:SetEnabled(state.stop.kind ~= "loading")
     if state.arrived then ns.DrawNavigationArrow(math.pi)

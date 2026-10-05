@@ -20,10 +20,12 @@ function ns.GuideQuestSkipped(id)
 end
 
 function ns.GuideStepKey(stop)
+    local kind = stop.stepKind or stop.kind
     if ns.GuideInteger(stop.entityID) and stop.entityID > 0 then
-        return table.concat({stop.kind, stop.mapID, "npc", stop.entityID}, ":")
+        return table.concat({kind, stop.mapID, "npc", stop.entityID}, ":")
     end
-    return table.concat({stop.kind, stop.mapID, math.floor(stop.x * 100000 + 0.5),
+    if type(stop.x) ~= "number" or type(stop.y) ~= "number" then return kind .. ":" .. (stop.mapID or 0) .. ":unknown" end
+    return table.concat({kind, stop.mapID, math.floor(stop.x * 100000 + 0.5),
         math.floor(stop.y * 100000 + 0.5)}, ":")
 end
 
@@ -49,7 +51,7 @@ end
 function ns.SkipGuide(kind)
     local stop = ns.navigation and ns.navigation.state and ns.navigation.state.stop
     if ns.navigationPreview or stop and stop.kind == "corpse" or ns.navigation and ns.navigation.state and ns.navigation.state.flight then return end
-    if not stop or stop.kind ~= "f" then stop = ns.selectedRoute and ns.selectedRoute.stops[1] end
+    if not stop or stop.kind ~= "f" then stop = ns.selectedRoute and (ns.selectedRoute.pendingStop or ns.selectedRoute.stops[1]) end
     local state = saved()
     if not stop or not state then return end
     if kind == "quest" then state.quests[stop.id] = true
@@ -99,6 +101,10 @@ function ns.ScanGuideProgress(guide, refresh)
     end
     ns.ScheduleSync()
     if refresh ~= false then
+        if guide.fixedRoute then
+            ns.navigationPreview, ns.routeSignature = nil, nil
+            ns.Refresh(); return
+        end
         if guide.fullGuide and not guide.baseGuide then
             local fresh = ns.RebuildLevelingGuide(guide)
             fresh.batchIDs = nil
@@ -228,7 +234,7 @@ end
 
 function ns.RequestStartRoute(guide)
     if not guide then return end
-    if not ns.HasCurrentPartyQuests() or guide.mode == "current" or guide.mode == "bundle" then return ns.StartPartyRoute(guide) end
+    if guide.fixedRoute or not ns.HasCurrentPartyQuests() or guide.mode == "current" or guide.mode == "bundle" then return ns.StartPartyRoute(guide) end
     if not ns.startGuidePrompt then
         local frame = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
         frame:SetSize(500, 220); frame:SetPoint("CENTER"); frame:SetFrameStrata("DIALOG")

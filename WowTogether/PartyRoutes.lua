@@ -35,7 +35,7 @@ function ns.StartPartyRoute(guide)
     local ids, seen = {}, {}
     -- Share the selected quests, not another player's stage or coordinates.
     for _, stop in ipairs(ns.selectedRoute.stops) do
-        if not seen[stop.id] then ids[#ids + 1] = stop.id; seen[stop.id] = true end
+        if #ids < 20 and not seen[stop.id] then ids[#ids + 1] = stop.id; seen[stop.id] = true end
     end
     for _, record in ipairs(guide.records or {}) do
         if #ids < 20 and not seen[record.id] then ids[#ids + 1] = record.id; seen[record.id] = true end
@@ -59,6 +59,7 @@ function ns.StartPartyRoute(guide)
         local packet = table.concat({"1", "V", revision, part, total, mode, ns.selectedRoute.mapID > 0 and ns.selectedRoute.mapID or guide.homeMapID,
             target, table.concat(values, ",")}, "|")
         if mode == "zone" or mode == "chain" then packet = packet .. "|" .. guide.key .. "|" .. guide.rangeLow .. "|" .. guide.rangeHigh end
+        if guide.fixedRoute then packet = packet .. "|fixed" end
         if not ns.QueueMessage(packet) then queued = false end
     end
     ns.partyRouteStatus = queued and "Route started. Invitations queued for your party." or "Route started locally; invitation queue was full. Try Start route again."
@@ -166,6 +167,8 @@ end
 function ns.ReceivePartyRouteMessage(message, sender)
     if string.sub(message, 1, 4) ~= "1|V|" then return false end
     if not currentPeer(sender) then return true, false, "party route sender left roster" end
+    local fixedRoute = string.sub(message, -6) == "|fixed"
+    if fixedRoute then message = string.sub(message, 1, -7) end
     local rev, part, total, mode, mapID, target, payload = string.match(message, "^1|V|(%d+)|(%d+)|(%d+)|(%a+)|(%d+)|(%d+)|([%d,+]+)$")
     local guideKey, rangeLow, rangeHigh
     if not rev then
@@ -183,6 +186,7 @@ function ns.ReceivePartyRouteMessage(message, sender)
         return true, false, "invalid full guide identity"
     end
     if (mode == "zone" or mode == "chain") and not guideKey then return true, false, "full guide identity missing" end
+    if fixedRoute and not guideKey then return true, false, "fixed route requires full guide identity" end
     if rev <= (received[sender] or 0) then return true, false, "old party route invitation" end
     local ids, seen, pickupIDs, canonical = {}, {}, {}, {}
     for value in string.gmatch(payload, "[^,]+") do
@@ -199,7 +203,7 @@ function ns.ReceivePartyRouteMessage(message, sender)
     if bucket and rev < bucket.revision then return true, false, "older party route transfer" end
     if not bucket or rev > bucket.revision then
         bucket = {revision = rev, total = total, mode = mode, mapID = mapID, target = target, parts = {}, pickupIDs = {}, count = 0,
-            guideKey = guideKey, rangeLow = rangeLow, rangeHigh = rangeHigh}
+            guideKey = guideKey, rangeLow = rangeLow, rangeHigh = rangeHigh, fixedRoute = fixedRoute}
         transfers[sender] = bucket
         if C_Timer and type(C_Timer.After) == "function" then
             C_Timer.After(300, function() if transfers[sender] == bucket then transfers[sender] = nil end end)
@@ -207,6 +211,7 @@ function ns.ReceivePartyRouteMessage(message, sender)
     end
     if bucket.total ~= total or bucket.mode ~= mode or bucket.mapID ~= mapID or bucket.target ~= target
         or bucket.guideKey ~= guideKey or bucket.rangeLow ~= rangeLow or bucket.rangeHigh ~= rangeHigh
+        or bucket.fixedRoute ~= fixedRoute
         or bucket.parts[part] then return true, false, "duplicate or inconsistent party route part" end
     bucket.parts[part] = ids; bucket.count = bucket.count + 1
     for id in pairs(pickupIDs) do bucket.pickupIDs[id] = true end
@@ -221,7 +226,7 @@ function ns.ReceivePartyRouteMessage(message, sender)
     if not unique[target] then transfers[sender] = nil; return true, false, "party route target is outside selection" end
     received[sender], transfers[sender] = rev, nil
     ns.pendingPartyRouteInvite = {sender = sender, revision = rev, ids = all, mode = mode, mapID = mapID, target = target, pickupIDs = bucket.pickupIDs,
-        guideKey = guideKey, rangeLow = rangeLow, rangeHigh = rangeHigh}
+        guideKey = guideKey, rangeLow = rangeLow, rangeHigh = rangeHigh, fixedRoute = fixedRoute}
     ns.partyRouteStatus = "Route invitation received from " .. ns.MemberLabel(sender) .. "."
     ns.ShowPartyRouteInvite()
     return true, true

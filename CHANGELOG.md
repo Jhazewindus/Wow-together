@@ -1,5 +1,24 @@
 # Wow Together changelog
 
+## 0.6.3
+
+- Fixed zone/questline guides are now the default: compile the complete sequence
+  once, then advance progress without changing order on pickup, hand-in, abandon,
+  travel or Scan guide. Adaptive trips remain optional in settings.
+- Show full route covers all currently eligible mapped quests, beyond the old
+  trip limit. Keep fixed step numbers; draw other zones without false connections.
+- Show separate pickup/objective/turn-in coverage. Add 253 detailed quest pages
+  across zones: 1,619 detailed records; 905 pickups, 196 objective areas and 972
+  turn-ins mapped. Some source pages/coordinates remain unavailable.
+- Learn tentative prerequisites from one clean full-list/hand-in/new-offer pair.
+  Matching characters on this account reuse them; influenced steps credit the
+  source. Live contradictions disable them; published alternatives stay intact.
+- Export guide findings and supporting evidence with /wt findings or settings.
+  Source names are optional; raw research exports omit names. No automatic upload.
+- /wt questlines displays public native questline fields and optional chain IDs
+  in a copyable window. Retest API results on the current Forever build.
+- Fix the 20-ID party invitation bound when sharing large complete guides.
+
 ## 0.6.2
 
 - Remove the incorrect IsPushableQuest pickup gate, setting and packets.

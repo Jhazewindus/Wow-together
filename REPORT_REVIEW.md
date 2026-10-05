@@ -1,3 +1,35 @@
+# Follow-up review for 0.6.3
+
+The user supplied an anonymous 0.6.2 JSON export from build 70205/interface16001,
+level2 Horde Shaman/Orc in Durotar. It contains reputation notifications and one
+partial Zureetha list offering Vile Familiars. completeList=false proves no
+absence of Medallion, and there is no before/after turn-in pair. It does not
+justify inventing Cutting Teeth → Scorpid or any new prerequisite from that payload.
+
+The user chose one clear observation as sufficient for tentative account-local
+learning, with source-character attribution on affected steps. Everyone needs a
+manual findings export so joint review can improve bundled leveling guide data.
+Keep raw exports anonymous, make finding attribution optional, and never treat
+one local pattern as permission to rewrite published branching requirements.
+
+The next requests overlap: full-route counts did not match the bounded trip,
+other zones had thin coordinate coverage, and abandoning/scanning/moving reshuffled
+the guide. The user explicitly selected currently eligible quests for full map
+preview and then requested generic fixed zone routes with automatic progress.
+This supersedes automatic route reordering for default zone guides, not automatic
+completion checks or party sync. Keep adaptive trips available as an explicit
+setting; compile fixed order independently of position, active quests and history.
+Scanning checks progress in that existing order. Completed steps can advance,
+but unavailable/missing-location steps must remain explicit rather than fabricated.
+
+Refresh accessible source detail pages across zones, distinguish metadata from
+pickup/objective/turn-in coverage, preserve denied-request limits. Add native
+questline inspection for the user's C_QuestLine question. Mainline documentation
+establishes the table shape and optional membership query, not Forever coverage
+or an arbitrary-ID pickup contract. Empty tables cannot prove negative availability;
+questline membership does not prove prerequisite order. No other tester reports
+were added to this batch or silently attributed to the main developer.
+
 # Report review for 0.6.0
 
 ## Follow-up correction for 0.6.2

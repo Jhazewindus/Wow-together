@@ -39,6 +39,8 @@ function methods:IsProtected() return self.protected or false end
 function methods:GetStringHeight() return 100 end
 function methods:IsShown() return self.shown or false end
 function methods:SetShown(value) self.shown = value end
+function methods:SetEnabled(value) self.enabled = value end
+function methods:IsEnabled() return self.enabled ~= false end
 function methods:Hide() self.shown = false end
 function methods:Show() self.shown = true end
 function methods:SetText(text) self.text = text end

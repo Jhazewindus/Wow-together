@@ -152,6 +152,47 @@ function ns.ReadGuide()
     if ns.UpdateNPCHints then ns.UpdateNPCHints() end
 end
 
+function ns.ShowQuestLineReport()
+    ns.ReadProfile()
+    local mapID = ns.profile.mapID
+    local output = {"Client questline data • " .. ns.MapName(mapID) .. " (" .. mapID .. ")",
+        "Read-only snapshot; availability is character-specific. No prerequisite order is inferred.", ""}
+    local api = C_QuestLine
+    if not api or type(api.GetAvailableQuestLines) ~= "function" then
+        output[#output + 1] = "C_QuestLine.GetAvailableQuestLines: missing"
+    else
+        local lines = ns.ReadPublic(api.GetAvailableQuestLines, mapID)
+        if type(lines) ~= "table" then output[#output + 1] = "No public table returned."
+        elseif #lines == 0 then output[#output + 1] = "The client returned an empty table for this map."
+        else
+            for index, info in ipairs(lines) do
+                if index > 32 then output[#output + 1] = "Snapshot limited to 32 entries."; break end
+                if ns.Public(info) and type(info) == "table" then
+                    output[#output + 1] = "Entry " .. index
+                    for _, key in ipairs({"questLineID", "questLineName", "questID", "questName", "x", "y", "startMapID",
+                        "isHidden", "isLegendary", "isLocalStory", "isDaily", "isCampaign", "isImportant",
+                        "isAccountCompleted", "isCombatAllyQuest", "isMeta", "inProgress", "isQuestStart", "floorLocation"}) do
+                        local value = info[key]
+                        local textValue = ns.Public(value) and (type(value) == "number" or type(value) == "boolean") and tostring(value)
+                            or ns.SafeTitle(value) or (ns.Public(value) and "not supplied" or "restricted")
+                        output[#output + 1] = "  " .. key .. ": " .. textValue
+                    end
+                    if integer(info.questLineID) and type(api.GetQuestLineQuests) == "function" then
+                        local ids, public = ns.ReadPublic(api.GetQuestLineQuests, info.questLineID), {}
+                        if type(ids) == "table" then
+                            for position, id in ipairs(ids) do if position > 128 then break end; if integer(id) then public[#public + 1] = id end end
+                        end
+                        output[#output + 1] = "  GetQuestLineQuests IDs: " .. (#public > 0 and table.concat(public, ",") or "none returned")
+                    end
+                    output[#output + 1] = ""
+                end
+            end
+        end
+        output[#output + 1] = "GetQuestLineQuests: " .. (type(api.GetQuestLineQuests) == "function" and "present" or "missing")
+    end
+    ns.ShowDiagnostics(table.concat(output, "\n"), "Wow Together — Client questline data", ns.ShowQuestLineReport)
+end
+
 function ns.ObserveQuestGiver(quests)
     if not ns.profile then ns.ReadProfile() end
     local name, surname

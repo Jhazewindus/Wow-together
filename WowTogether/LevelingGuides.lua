@@ -193,8 +193,12 @@ local function buildChoice(entry, low, high)
         knownStops = located, hasPoint = located > 0, fullGuide = true,
         search = string.lower(table.concat(search, " ")),
         priority = ns.ZonePreference(mapID) + (entry.mode == "zone" and 30 or 0) + (located > 0 and 10 or 0)}
+    guide.fixedRoute = ns.Option("fixedZoneGuides")
+    guide.coverage = ns.GuideLocationCoverage(records)
+    guide.knownStops, guide.hasPoint = guide.coverage.pickups, guide.coverage.pickups > 0
     guide.reason = relevant .. " quest(s) in levels " .. low .. "–" .. high .. "; " .. #records .. " in the full guide. "
-        .. "Optimize pickups, nearby objectives and returns for " .. (name or "your character") .. "."
+        .. (guide.fixedRoute and "Fixed order; progress advances steps without replanning."
+            or ("Optimize pickups, nearby objectives and returns for " .. (name or "your character") .. "."))
     if located < #records then guide.reason = guide.reason .. " Some NPC/objective locations remain unknown." end
     guide.destination = "Generate the route to its first useful, unlocked step."
     return guide
@@ -229,7 +233,7 @@ function ns.InvitedLevelingGuide(invite)
         local entry = entries[invite.guideKey]
         if not entry or entry.mode ~= invite.mode then return end
         local guide = buildChoice(entry, invite.rangeLow, invite.rangeHigh)
-        if guide then guide.sharedBy = invite.sender; return guide end
+        if guide then guide.sharedBy, guide.fixedRoute = invite.sender, invite.fixedRoute == true; return guide end
     end
     for _, entry in pairs(entries) do
         if entry.mode == invite.mode and entry.seen[invite.target] then

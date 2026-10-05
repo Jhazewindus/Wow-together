@@ -1,0 +1,190 @@
+local addonName, ns = ...
+
+-- Compile from catalogue geography and chain dependencies, never the player's
+-- position, quest log, completion flags or current level. Progress is a separate
+-- pass over this immutable order. Unknown locations are explicit instructions.
+local function copy(value)
+    local result = {}; for key, item in pairs(value) do result[key] = item end; return result
+end
+
+function ns.GuideLocationCoverage(records)
+    local result = {quests = #records, pickups = 0, objectives = 0, turnins = 0, details = 0}
+    for _, record in ipairs(records) do
+        local quest = ns.CatalogueQuest(record.id) or {}
+        if quest.starts and #quest.starts > 0 then result.pickups = result.pickups + 1 end
+        if quest.objectives and #quest.objectives > 0 then result.objectives = result.objectives + 1 end
+        if quest.ends and #quest.ends > 0 then result.turnins = result.turnins + 1 end
+        if quest.prerequisitesRead then result.details = result.details + 1 end
+    end
+    return result
+end
+
+local function stages(record)
+    local quest, result = ns.CatalogueQuest(record.id), {}
+    if not quest then return result end
+    local function add(point, kind)
+        local stop = ns.PublishedGuideStop(record, point, kind)
+        if not stop then stop = {id = record.id, kind = kind, title = record.title, unknownLocation = true,
+            mapID = record.mapID, label = "Location not recorded for " .. record.title} end
+        stop.planned, stop.learnedSource = true, ns.LearnedStepSource(record.id, ns.profile, ns.self)
+        result[#result + 1] = stop
+    end
+    add(quest.starts and quest.starts[1], "a")
+    if quest.objectives and #quest.objectives > 0 then
+        for _, point in ipairs(quest.objectives) do add(point, "q") end
+    elseif not quest.objectiveLocationsIncomplete then add(quest.ends and quest.ends[1], "q") end
+    if quest.objectiveLocationsIncomplete or not quest.objectives and not quest.ends then add(nil, "q") end
+    add(quest.ends and quest.ends[1], "t")
+    return result
+end
+
+local function distance(a, b)
+    if not a or b.unknownLocation then return b.unknownLocation and 12000 or 0 end
+    if a.mapID ~= b.mapID then return 15000 end
+    return ns.WalkingDistance(b.mapID, a, b) or ns.NormalizedDistance(a, b) * 6000
+end
+
+function ns.GenerateFixedGuide(guide, cooperative)
+    local tasks, done, ordered, work = {}, {}, {}, 0
+    for _, record in ipairs(guide.records) do
+        if ns.CatalogueIdentityAllowed(record.id, ns.profile) ~= false and not ns.IsRepeatableQuest(record.id)
+            and not ns.IsProfessionQuest(record.id) then
+            local list = stages(record)
+            if #list > 0 then tasks[#tasks + 1] = {id = record.id, stages = list, next = 1} end
+        end
+    end
+    table.sort(tasks, function(a, b) return a.id < b.id end)
+    local function unlocked(id)
+        local quest = ns.CatalogueQuest(id)
+        if quest.previousQuest and not done[quest.previousQuest] then return false end
+        if quest.prerequisiteAny then
+            local met = false; for _, previous in ipairs(quest.prerequisiteAny) do if done[previous] then met = true end end
+            if not met then return false end
+        elseif not quest.previousQuest then
+            for _, previous in ipairs(ns.LearnedPrerequisiteIDs(id)) do if not done[previous] then return false end end
+        end
+        return true
+    end
+    local previous
+    while true do
+        local available, floor = {}, 255
+        for _, task in ipairs(tasks) do
+            local stop = task.stages[task.next]
+            if stop and (stop.kind ~= "a" or unlocked(task.id)) then
+                available[#available + 1] = task
+                floor = math.min(floor, ns.CatalogueQuest(task.id).level or 0)
+            end
+            work = work + 1
+            if cooperative and work % 200 == 0 then coroutine.yield() end
+        end
+        if #available == 0 then break end
+        local best, score
+        for _, task in ipairs(available) do
+            local stop, quest = task.stages[task.next], ns.CatalogueQuest(task.id)
+            local value = distance(previous, stop) + math.max(0, (quest.level or 0) - floor - 2) * 2500
+            if stop.kind == "a" then value = value - 100 end
+            if not score or value < score or value == score and task.id < best.id then best, score = task, value end
+        end
+        local stop = best.stages[best.next]
+        ordered[#ordered + 1], best.next = stop, best.next + 1
+        if not stop.unknownLocation then previous = stop end
+        if stop.kind == "t" then done[stop.id] = true end
+    end
+    -- Missing external prerequisites/cycles must not produce an invented path.
+    for _, task in ipairs(tasks) do
+        if task.stages[task.next] then
+            for index = task.next, #task.stages do
+                local stop = task.stages[index]
+                stop.planNeedsReview = true
+                ordered[#ordered + 1] = stop
+            end
+        end
+    end
+    for index, stop in ipairs(ordered) do stop.guideStep = index end
+    guide.fixedPlan = ordered
+    return ordered
+end
+
+local function doneFor(stop, key)
+    if ns.CatalogueCompletion(key, stop.id) == true then return true end
+    local active = key == ns.self and ns.active or ns.members[key] and ns.members[key].active
+    if stop.kind == "a" then return active and active[stop.id] ~= nil end
+    if stop.kind == "q" then
+        if ns.QuestProgressReady(key, stop.id) == true or key == ns.self and ns.readyToTurnIn[stop.id] == true then return true end
+        local progress, matched = ns.ProgressForMember(key, stop.id), false
+        for _, objective in ipairs(progress and progress.objectives or {}) do
+            if ns.ObjectiveMatchesPoint(objective.text, {name = stop.targetName or stop.npcName, itemName = stop.itemName}) then
+                matched = true
+                if not ns.ObjectiveFinished(objective) then return false end
+            end
+        end
+        return matched
+    end
+    return false
+end
+
+local function remaining(stop)
+    if ns.GuideQuestSkipped(stop.id) or #ns.FilterGuideStages({stop}) == 0 then return nil end
+    local waiting, chosen
+    for _, person in ipairs(ns.PartyProfiles()) do
+        if ns.CatalogueIdentityAllowed(stop.id, person.profile) ~= false then
+            if not person.synced then waiting = true
+            elseif not doneFor(stop, person.key) then chosen = chosen or person end
+        end
+    end
+    return chosen, waiting
+end
+
+function ns.BuildFixedGuideRoute(guide, includeOrigin, cooperative)
+    local plan = guide.fixedPlan or ns.GenerateFixedGuide(guide, cooperative)
+    local stops, preview, eligibility, mapped, incomplete, unknown, pending, pendingStop = {}, {}, {}, {}, 0, 0, nil, nil
+    for _, stop in ipairs(plan) do
+        local person, waiting = remaining(stop)
+        if person or waiting then
+            incomplete = incomplete + 1
+            if stop.unknownLocation then unknown = unknown + 1 end
+            local current = copy(stop)
+            if person then
+                current.memberKey, current.forPlayer = person.key, person.name
+                local active = person.key == ns.self and ns.active or ns.members[person.key] and ns.members[person.key].active
+                local allowed, reason = ns.CatalogueAllowed(stop.id, person.profile, person.key)
+                if active and active[stop.id] then allowed = true end
+                if allowed == true then eligibility[stop.id] = true end
+                if not pending and #stops == 0 then
+                    if waiting then pending = "Waiting for your party's quest history."
+                    elseif stop.unknownLocation then pending = stop.blockedReason or ("Quest location missing: " .. stop.title .. ". Use the game quest tracker or Skip step.")
+                    elseif stop.kind == "a" and allowed ~= true then pending = reason or "Check this quest's pickup requirements at its NPC."
+                    elseif stop.kind ~= "a" and not (active and active[stop.id]) then pending = "Accept " .. stop.title .. " before this step."
+                    elseif stop.kind == "t" and not ns.QuestProgressReady(person.key, stop.id)
+                        and not (person.key == ns.self and ns.readyToTurnIn[stop.id]) then pending = "Finish " .. stop.title .. " before handing it in." end
+                end
+            elseif waiting and not pending and #stops == 0 then pending = "Waiting for your party's quest history." end
+            if pending and not pendingStop then pendingStop = current end
+            if not current.unknownLocation then
+                if not pending then stops[#stops + 1] = current end
+                if eligibility[stop.id] then preview[#preview + 1] = current; mapped[stop.id] = true end
+            end
+        end
+    end
+    local first = stops[1]
+    local mapID = first and first.mapID or guide.homeMapID or guide.mapID
+    local count = 0; for _ in pairs(mapped) do count = count + 1 end
+    guide.pendingReason = pending
+    return {key = guide.key, title = guide.title, mapID = mapID, stops = stops, previewStops = preview,
+        origin = includeOrigin and ns.PlayerPoint(mapID) or nil, missing = unknown, otherMaps = 0,
+        fixed = true, guideQuests = #guide.records, totalSteps = #plan, remainingSteps = incomplete,
+        eligibleMappedQuests = count, partial = unknown > 0, pendingReason = pending, pendingStop = pendingStop, focusKey = guide.focusKey}
+end
+
+function ns.UpdateFixedGuideRoute(guide)
+    local before = ns.selectedRoute and ns.selectedRoute.stops[1]
+    local route = ns.BuildFixedGuideRoute(guide, false)
+    local after = route.stops[1]
+    if before and after then ns.RememberGuideStep(before, after) end
+    ns.selectedRoute, ns.routePaused = route, route.pendingReason
+    if not before or not after or before.guideStep ~= after.guideStep then ns.navigationPreview = nil end
+    if route.remainingSteps == 0 then
+        ns.ClearRoute(); ns.routeStats.status = "Selected route completed."; return
+    end
+    ns.DrawRoute()
+end

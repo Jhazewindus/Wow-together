@@ -5,7 +5,8 @@ local defaults = {autoAccept = false, npcHints = true, classQuests = false,
     trackerHeight = 350, circuitRadius = 0.16, circuitLimit = 6, mapLegend = true, professionBatch = 5, routeArrow = true,
     currentQuestsFirst = true, nearbyPickups = true, fullRoute = false, routeAhead = 2, autoTurnIn = false,
     scanSkipped = false, distanceUnits = "yards", trackerAuto = true, autoSelectQuests = false,
-    suggestFlights = true, autoFly = false, nearbyFlights = true, corpseArrow = true, npcMarker = "cross", recordQuestData = true}
+    suggestFlights = true, autoFly = false, nearbyFlights = true, corpseArrow = true, npcMarker = "cross", recordQuestData = true,
+    useLearnedQuests = true, exportCharacterNames = false, fixedZoneGuides = true}
 
 function ns.Option(key)
     local value = ns.db and ns.db.config and ns.db.config[key]
@@ -15,6 +16,7 @@ end
 
 local sections = {
     {"guides", "Leveling guides", {
+        {"fixedZoneGuides", "Follow fixed zone guides", "Generate a complete zone sequence once. Quest progress advances steps without reordering. Turn off for adaptive trips; start a guide again to change its mode."},
         {"nearbyPickups", "Collect useful quests nearby", "Add eligible nearby pickups to a quest-log trip. Level range, prerequisites and walking distance still apply."},
         {"classQuests", "Include class quests", "Class restrictions are shown. Personal profession quests remain in Profession guides."},
         {"dungeonPrompts", "Suggest dungeon quest collection", "Offer a collection guide when the party reaches the relevant quest levels."},
@@ -40,7 +42,9 @@ local sections = {
         {"autoAccept", "Accept the quest dialog I open", "Opt-in: accept an opened quest-detail dialog outside combat."},
         {"autoTurnIn", "Turn in quests without a reward choice", "Opt-in: handle completed quest dialogs you open. Item reward choices always remain manual."}}},
     {"research", "Quest data for testing", {
-        {"recordQuestData", "Record NPC offers and quest progression", "Save the latest 300 local observations for prerequisite research. Export manually; no character names, chat or automatic uploads."}}},
+        {"recordQuestData", "Record NPC offers and quest progression", "Save the latest 300 local observations for prerequisite research. Export manually; no chat or automatic uploads."},
+        {"useLearnedQuests", "Use observed prerequisite patterns", "One clear before/after hand-in can inform matching characters on this account. Tentative rules name their source; actual offers override them."},
+        {"exportCharacterNames", "Include source names in guide findings", "Optional: attribute findings to the character that observed them. Quest data exports always omit character names."}}},
     {"professions", "Personal professions", {
         {"professionBatch", "Crafts per suggested batch", "Set the number of crafts used to calculate materials in your personal profession guide.", {{1, "1 craft"}, {5, "5 crafts"}, {10, "10 crafts"}, {20, "20 crafts"}}}}}
 }
@@ -69,7 +73,7 @@ function ns.SetOption(key, value)
     ns.db.config[key] = value
     ns.InitializeConfig()
     ns.flightPlanCache = nil
-    if key == "nearbyPickups" then ns.forceRouteReplan, ns.routeSignature = true, nil end
+    if key == "nearbyPickups" or key == "useLearnedQuests" then ns.forceRouteReplan, ns.routeSignature = true, nil end
     if ns.RenderSettings then ns.RenderSettings() end
     if ns.UpdateNPCHints then ns.UpdateNPCHints() end
     if ns.DrawRoute then ns.DrawRoute() end
@@ -125,11 +129,13 @@ function ns.CreateSettings()
     end
     local research = frame.pages.research
     local instructions = ns.UILabel(research, nil, 11)
-    instructions:SetPoint("TOPLEFT", 36, -75); instructions:SetSize(520, 70)
+    instructions:SetPoint("TOPLEFT", 36, -200); instructions:SetSize(520, 80)
     instructions:SetText("Visit quest givers before and after turning in a prerequisite.\nExport after your session, then Select all and Ctrl+C. Send the export as a text file, labeled with your tester name.\nLevel/reputation changes are recorded as possible alternative causes.")
     local export = ns.UIButton(research, "Export quest data", 150, ns.ShowQuestResearch)
-    export:SetPoint("TOPLEFT", 36, -160)
+    export:SetPoint("TOPLEFT", 36, -295)
     frame.researchExport = export
+    frame.findingsExport = ns.UIButton(research, "Export guide findings", 175, ns.ShowGuideFindings)
+    frame.findingsExport:SetPoint("TOPLEFT", 205, -295)
     frame.section = ns.UIDropdown(frame, choices, 300, function(key) frame.sectionKey = key; ns.RenderSettings() end)
     frame.section:SetPoint("TOPLEFT", 22, -58); frame.sectionKey = "guides"
     frame.note = ns.UILabel(frame, nil, 11)

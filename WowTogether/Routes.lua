@@ -203,6 +203,7 @@ function ns.RouteStop(record, focusKey)
         end
     end
     return {id = record.id, mapID = p.mapID, x = p.x, y = p.y, kind = p.kind, title = title, published = p.published,
+        learnedSource = ns.LearnedStepSource(record.id, profile, focusKey),
         entityID = entityID, action = action, itemName = itemName, targetName = p.name or npcName,
         npcName = npcName or ((p.kind == "a" or p.kind == "t") and npc ~= "" and npc or nil),
         label = p.kind == "t" and ("Turn in " .. title) or (p.kind == "q" and ("Work on " .. title)
@@ -231,6 +232,7 @@ function ns.QuestRouteStages(record, focusKey)
             title = ns.QuestTitle(record.id), label = prefix .. point.name, planned = true, published = true,
             entityID = point.entityID, action = point.action, itemName = point.itemName,
             targetName = point.name, npcName = point.npc and point.name or nil}
+        result[#result].learnedSource = first.learnedSource
     end
     if first.kind == "a" then
         for _, point in ipairs(quest.objectives or {}) do add(point, "q", "Objective area: ") end
@@ -293,6 +295,7 @@ local function origin(mapID)
 end
 
 function ns.BuildGuideRoute(guide, includeOrigin, cooperative)
+    if guide.fixedRoute then return ns.BuildFixedGuideRoute(guide, includeOrigin, cooperative) end
     if guide.fullGuide and (guide.mode == "zone" or guide.mode == "chain") then return ns.BuildLevelingRoute(guide, includeOrigin, cooperative) end
     if (guide.mode == "current" or guide.mode == "bundle") and ns.BuildCurrentQuestRoute then return ns.BuildCurrentQuestRoute(guide, includeOrigin) end
     if guide.mode == "dungeon" and ns.BuildDungeonRoute then return ns.BuildDungeonRoute(guide, includeOrigin) end
@@ -418,7 +421,7 @@ function ns.ClipRouteSegment(x1, y1, x2, y2, width, height)
 end
 
 function ns.RouteDisplayStops(route)
-    if ns.Option("fullRoute") then return route.stops end
+    if ns.Option("fullRoute") then return route.previewStops or route.stops end
     local stops, places, previous = {}, 0, nil
     for _, stop in ipairs(route.stops) do
         local key = stop.mapID .. ":" .. math.floor(stop.x * 100000) .. ":" .. math.floor(stop.y * 100000)
@@ -510,7 +513,10 @@ function ns.DrawRoute(provider, geometryOnly)
     local strata = query(map.GetFrameStrata, map)
     local upper = {DIALOG = true, FULLSCREEN = true, FULLSCREEN_DIALOG = true, TOOLTIP = true}
     legend:SetFrameStrata(upper[strata] and strata or "HIGH")
-    if not ns.Public(mapID) or mapID ~= route.mapID then
+    local displayed = ns.RouteDisplayStops(route)
+    local hasDisplayedMap = false
+    if ns.Option("fullRoute") then for _, stop in ipairs(displayed) do if stop.mapID == mapID then hasDisplayedMap = true; break end end end
+    if not ns.Public(mapID) or mapID ~= route.mapID and not hasDisplayedMap then
         updateLegend(legend, "Next steps are in " .. ns.MapName(route.mapID) .. ".\nOnly that zone's steps are drawn. Use View route zone.")
         ns.routeStats.status = "Viewing another map; next route steps are in " .. ns.MapName(route.mapID) .. "."
         return
@@ -538,13 +544,14 @@ function ns.DrawRoute(provider, geometryOnly)
     ns.routeStats.surface = surface.mode
     ns.routeStats.geometry = string.format("%.0f x %.0f; view %.4f,%.4f / %.4f,%.4f", width, height,
         surface.left, surface.top, surface.spanX, surface.spanY)
-    local points, displayed = {}, ns.RouteDisplayStops(route)
+    local points = {}
     local playerMap = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
     provider.playerOrigin = playerMap == mapID and ns.PlayerPoint(mapID) or nil
     if provider.playerOrigin then points[#points + 1] = provider.playerOrigin end
-    for _, p in ipairs(displayed) do if p.mapID == mapID then points[#points + 1] = p end end
+    for _, p in ipairs(displayed) do points[#points + 1] = p end
     local visibleLines = 0
     for index = 2, #points do
+      if points[index - 1].mapID == mapID and points[index].mapID == mapID then
         local x1, y1 = ns.RouteProject(surface, points[index - 1])
         local x2, y2 = ns.RouteProject(surface, points[index])
         x1, y1, x2, y2 = ns.ClipRouteSegment(x1, y1, x2, y2, width, height)
@@ -564,6 +571,7 @@ function ns.DrawRoute(provider, geometryOnly)
             line:SetEndPoint("TOPLEFT", overlay, x2, -y2)
             line:Show()
         end
+      end
     end
     local groups, locations = {}, {}
     for index, p in ipairs(displayed) do
@@ -576,7 +584,7 @@ function ns.DrawRoute(provider, geometryOnly)
             end
             if not group then group = {point = p, x = x, y = y, stops = {}, numbers = {}}; groups[#groups + 1] = group end
             locations[key] = group
-            group.stops[#group.stops + 1], group.numbers[#group.numbers + 1] = p, tostring(index)
+            group.stops[#group.stops + 1], group.numbers[#group.numbers + 1] = p, tostring(p.guideStep or index)
         end
     end
     for index, group in ipairs(groups) do
@@ -623,8 +631,8 @@ function ns.DrawRoute(provider, geometryOnly)
         pin:SetPoint("CENTER", overlay, "TOPLEFT", group.x, -group.y)
         pin:Show()
     end
-    updateLegend(legend, "Wow Together • " .. #route.stops .. " stops • " .. #groups .. " visible " .. (#groups == 1 and "place" or "places")
-        .. (ns.Option("fullRoute") and " • Full route" or (" • " .. #displayed .. " steps shown"))
+    updateLegend(legend, "Wow Together • " .. #displayed .. " stops • " .. #groups .. " visible " .. (#groups == 1 and "place" or "places")
+        .. (ns.Option("fullRoute") and " • All eligible mapped quests" or " • Next steps")
         .. (ns.routePaused and " • Waiting for party updates" or "")
         .. (route.partial and " • Partial route" or "")
         .. ((route.otherMaps or 0) > 0 and " • Other zones" or ""))
@@ -680,6 +688,7 @@ end
 function ns.UpdateSelectedRoute(choices)
     local selection = ns.routeSelection
     if not selection then return end
+    if selection.fixedRoute then ns.UpdateFixedGuideRoute(selection); return end
     if selection.mode == "current" and not selection.sharedBy and ns.Option("nearbyPickups") then
         for _, choice in ipairs(ns.CurrentQuestChoices() or {}) do
             if choice.mode == "bundle" and choice.mapID == selection.mapID then

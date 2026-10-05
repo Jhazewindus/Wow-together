@@ -6,10 +6,18 @@ import unittest
 
 from test_addon import Client
 from test_routes import catalogue, guide, map_canvas, quest
-from test_050 import solo, nearby, world_positions
+from test_050 import solo as base_solo, nearby, world_positions
 import test_060 as previous
 from test_importers import detail
 from import_wowhead import detail_facts
+
+
+def solo():
+    # These regressions retain the adaptive planner; fixed-guide behavior has
+    # separate tests, and is the default for player-selected zone guides.
+    c = base_solo()
+    c.ns.db.config.fixedZoneGuides = False
+    return c
 
 
 def world_quest(title='World quest', zone='Test Coast', map_id=501, level=12, **extra):

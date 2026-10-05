@@ -606,8 +606,13 @@ function ns.SyncDiagnostics(output)
     local selection, route = ns.routeSelection, ns.selectedRoute
     if selection then
         output("Selected guide: " .. selection.key .. "; quests in scope: " .. #(selection.records or {}))
-        output("Current trip: " .. (route and route.tripQuests or "legacy") .. " quests; " .. (route and #route.stops or 0)
-            .. " stops; pending records: " .. (route and route.missing or 0))
+        if route and route.fixed then
+            output("Fixed zone guide: " .. route.totalSteps .. " total steps; " .. route.remainingSteps .. " remaining; "
+                .. route.eligibleMappedQuests .. " eligible quests with mapped steps; " .. route.missing .. " missing-location steps.")
+        else
+            output("Current trip: " .. (route and route.tripQuests or "legacy") .. " quests; " .. (route and #route.stops or 0)
+                .. " stops; pending records: " .. (route and route.missing or 0))
+        end
         if selection.batchIDs then output("Trip quest IDs: " .. table.concat(selection.batchIDs, ",")) end
     end
     output("Route generation: " .. (ns.routePlanning and "loading" or ns.routePlanningError or "idle"))

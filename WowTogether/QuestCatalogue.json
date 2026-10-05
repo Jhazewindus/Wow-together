@@ -1,7 +1,7 @@
 {
   "captured": "2026-10-05",
   "count": 5230,
-  "detailed_quests": 1366,
+  "detailed_quests": 1619,
   "zones": [
     "eastern-kingdoms/alterac-mountains",
     "eastern-kingdoms/alterac-valley",
@@ -128,40 +128,48 @@
     "uncategorized"
   ],
   "listed_quests": 5230,
-  "detail_level_max": 60,
+  "detail_level_max": null,
   "spread_details": true,
-  "new_detail_limit": 400,
+  "new_detail_limit": 600,
   "unavailable_details": [
     {
-      "questID": 4124,
+      "questID": 1514,
       "status": 403
     },
     {
-      "questID": 763,
+      "questID": 99108,
       "status": 403
     },
     {
-      "questID": 5730,
+      "questID": 1435,
       "status": 403
     },
     {
-      "questID": 6842,
+      "questID": 8323,
       "status": 403
     },
     {
-      "questID": 1072,
+      "questID": 1094,
+      "status": 403
+    },
+    {
+      "questID": 97236,
+      "status": 403
+    },
+    {
+      "questID": 82,
       "status": 403
     }
   ],
   "detail_requests_stopped_after_denials": true,
-  "with_starters": 763,
-  "with_objectives": 179,
-  "with_turnins": 831,
-  "with_series": 599,
-  "with_prerequisites": 432,
-  "repeatable_quests": 68,
-  "unverified_prerequisites": 13,
-  "incomplete_objective_locations": 785,
+  "with_starters": 905,
+  "with_objectives": 196,
+  "with_turnins": 972,
+  "with_series": 726,
+  "with_prerequisites": 524,
+  "repeatable_quests": 78,
+  "unverified_prerequisites": 14,
+  "incomplete_objective_locations": 950,
   "area_ui_maps": {
     "40": 1436,
     "17": 1413,

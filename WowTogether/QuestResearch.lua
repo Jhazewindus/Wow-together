@@ -35,6 +35,7 @@ function ns.ResearchCaptureBoundary()
     local saved = state()
     if saved then saved.session = saved.session + 1 end
     ns.researchSignature = nil
+    if ns.ResetLearningContext then ns.ResetLearningContext() end
 end
 
 function ns.InitializeQuestResearch()
@@ -124,6 +125,7 @@ function ns.RecordQuestResearch(kind, facts)
     saved.sequence = saved.sequence + 1
     record.sequence = saved.sequence
     saved.events[#saved.events + 1] = record
+    if ns.ObserveQuestLearning then ns.ObserveQuestLearning(record, ns.self) end
     if #saved.events > LIMIT then table.remove(saved.events, 1); saved.dropped = saved.dropped + 1 end
 end
 
@@ -144,9 +146,21 @@ function ns.ShowQuestResearch()
     ns.ShowDiagnostics(ns.ExportQuestResearch(), "Wow Together — Quest data export", ns.ShowQuestResearch)
 end
 
+function ns.ExportGuideFindings()
+    local saved = state()
+    return json({format = "wow-together-guide-findings", schema = 1, addon = ns.VERSION,
+        capacity = LIMIT, dropped = saved and saved.dropped or 0,
+        findings = ns.ExportLearnedFindings(), events = saved and saved.events or {}})
+end
+
+function ns.ShowGuideFindings()
+    ns.ShowDiagnostics(ns.ExportGuideFindings(), "Wow Together — Guide findings export", ns.ShowGuideFindings)
+end
+
 function ns.ResearchDiagnostics(output)
     local saved = state()
     output("Quest data recording: " .. (ns.Option("recordQuestData") and "on" or "off") .. "; "
         .. (saved and #saved.events or 0) .. "/" .. LIMIT .. " observations; "
         .. (saved and saved.dropped or 0) .. " older observations replaced. Export: /wt research.")
+    ns.LearningDiagnostics(output)
 end
