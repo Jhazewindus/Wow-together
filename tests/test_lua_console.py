@@ -4,6 +4,56 @@ from test_addon import Client
 from test_050 import solo
 
 
+def console_client(measurement=True):
+    """Model the EditBox method boundary and native SetText callbacks."""
+    c = solo()
+    c.lua.globals().consoleMeasurement = measurement
+    c.lua.execute(r'''
+    local create = CreateFrame
+    function CreateFrame(kind, ...)
+        local widget = create(kind, ...)
+        local createFontString = widget.CreateFontString
+        function widget:CreateFontString(...)
+            local font = createFontString(self, ...)
+            if consoleMeasurement then
+                function font:GetStringHeight()
+                    local text = self.text or ''
+                    if text == '' then return 0 end
+                    local columns = math.max(1, math.floor((self.width or 692) / 7))
+                    local lines = 0
+                    for line in (text .. '\n'):gmatch('(.-)\n') do
+                        lines = lines + math.max(1, math.ceil(#line / columns))
+                    end
+                    return lines * 14
+                end
+            else
+                local inherited = getmetatable(font).__index
+                setmetatable(font, {__index=function(_, key)
+                    if key ~= 'GetStringHeight' then return inherited[key] end
+                end})
+            end
+            return font
+        end
+        if kind == 'EditBox' then
+            local inherited = getmetatable(widget).__index
+            setmetatable(widget, {__index=function(_, key)
+                if key ~= 'GetStringHeight' and key ~= 'GetTextHeight' then return inherited[key] end
+            end})
+            function widget:SetText(text)
+                self.text = text
+                self.textChanges = (self.textChanges or 0) + 1
+                if self.OnTextChanged then self.OnTextChanged(self, false) end
+            end
+        end
+        if kind == 'ScrollFrame' then
+            function widget:UpdateScrollChildRect() self.scrollUpdates = (self.scrollUpdates or 0) + 1 end
+        end
+        return widget
+    end
+    ''')
+    return c
+
+
 class LuaConsoleTests(unittest.TestCase):
     def test_multiple_returns_preserve_nil_and_do_not_send_or_print_to_chat(self):
         c = solo()
@@ -79,16 +129,51 @@ class LuaConsoleTests(unittest.TestCase):
         self.assertIn('outside combat', c.ns.RunLuaInspection('return 1'))
 
     def test_slash_command_opens_owned_paste_and_output_window(self):
-        c = solo()
+        c = console_client()
         c.lua.globals().SlashCmdList.WOWTOGETHER('lua')
         frame = c.ns.luaConsole
         self.assertTrue(frame)
+        self.assertIsNone(frame.input.GetStringHeight)
+        self.assertIsNone(frame.output.GetStringHeight)
         self.assertEqual(frame.input.GetText(frame.input), 'return GetBuildInfo()')
         self.assertIn('Results stay here', frame.output.GetText(frame.output))
         self.assertIn('WowTogetherLuaConsole', c.lua.globals().UISpecialFrames.values())
         frame.input.SetText(frame.input, 'return 7')
         frame.run.OnClick()
         self.assertEqual(frame.output.GetText(frame.output), 'Return 1: 7')
+
+    def test_wrapped_paste_and_multiline_results_grow_scroll_children_and_clear_shrinks(self):
+        c = console_client()
+        c.ns.ShowLuaConsole()
+        frame = c.ns.luaConsole
+        frame.input.SetText(frame.input, '-- ' + 'a' * 3000 + '\nreturn 7')
+        self.assertGreater(frame.input.height, 180)
+        self.assertEqual(frame.input.parent.height, 180)
+        self.assertGreater(frame.input.parent.scrollUpdates, 0)
+        frame.run.OnClick()
+        self.assertEqual(frame.output.text, 'Return 1: 7')
+        frame.input.SetText(frame.input, 'print(string.rep("x\\n", 100)); return 7')
+        self.assertEqual(frame.input.height, 180)
+        frame.run.OnClick()
+        self.assertGreater(frame.output.height, 272)
+        self.assertEqual(frame.output.parent.height, 272)
+        self.assertGreater(frame.output.parent.scrollUpdates, 0)
+        frame.output.SetText(frame.output, '')
+        self.assertEqual(frame.output.height, 272)
+        frame.Hide(frame)
+        c.ns.ShowLuaConsole()
+        self.assertTrue(frame.shown)
+        self.assertEqual(frame.output.text, '')
+
+    def test_missing_text_measurement_does_not_break_open_paste_or_run(self):
+        c = console_client(measurement=False)
+        c.ns.ShowLuaConsole()
+        frame = c.ns.luaConsole
+        frame.input.SetText(frame.input, 'return 7')
+        frame.run.OnClick()
+        self.assertEqual(frame.output.text, 'Return 1: 7')
+        self.assertEqual(frame.input.height, 180)
+        self.assertEqual(frame.output.height, 272)
 
 
 if __name__ == '__main__':

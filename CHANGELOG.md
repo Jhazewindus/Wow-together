@@ -1,5 +1,14 @@
 # Wow Together changelog
 
+## 0.7.7
+
+- Fix /wt lua errors when opening, pasting or displaying results: the text-height
+  handler called a FontString method on an EditBox.
+- Measure wrapped input/output with an owned text label, update the scroll area
+  and shrink it again when cleared. Guard unavailable or restricted measurements.
+- Add regression checks with native-style text-change callbacks and the correct
+  EditBox method boundary. Retest pane scrolling and copying on the current beta.
+
 ## 0.7.6
 
 - Group useful selected-guide quests actually offered by an NPC into one pickup

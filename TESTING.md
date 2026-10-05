@@ -1,8 +1,9 @@
 # Wow Together — friend test script
 
-For **0.7.6**, World of Warcraft: Forever beta, interface **16001**.
+For **0.7.7**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
+The Lua-pane patch checks below take about **2–5 minutes**.
 
 ## Install and capture context
 
@@ -15,7 +16,22 @@ Keep tester names and reports separate; label the main developer's report.
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
 
-## Focus checks for 0.7.6
+## Focus checks for 0.7.7
+
+- **Open and paste:** enable script errors, then open /wt lua. Opening and typing
+  should produce no Lua errors. Paste a multiline check, then a long wrapped line;
+  scroll through the input and run it. Repeat with the console reopened.
+- **Output and clear:** run the check below. Scroll through the output, use Select
+  output and Ctrl+C, and confirm the final return is included. Clear should leave
+  an empty usable output pane; a short subsequent result should display normally.
+  Results should stay in this pane. Include any error and /wt probe in your report.
+
+```lua
+print(string.rep("scroll test\n", 100))
+return "end of output"
+```
+
+## NPC visit and Lua checks retained from 0.7.6
 
 - **Baine's three quests:** on a suitable level-6 Horde character following
   Mulgore, open Baine Bloodhoof with Rite of Vision, Sharing the Land and Dwarven

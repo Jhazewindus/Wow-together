@@ -197,7 +197,20 @@ function ns.ShowLuaConsole()
         box:SetMultiLine(true); box:SetAutoFocus(false); box:SetFontObject("ChatFontNormal")
         box:SetSize(704, height); box:SetTextInsets(6, 6, 6, 6); scroll:SetScrollChild(box)
         box:SetScript("OnEscapePressed", box.ClearFocus)
-        box:SetScript("OnTextChanged", function(self) self:SetHeight(math.max(height, (self:GetStringHeight() or height) + 12)) end)
+        -- GetStringHeight belongs to FontString, not EditBox. Match the editor's
+        -- font and inset width so wrapped pastes and output remain scrollable.
+        local measure = scroll:CreateFontString(nil, "OVERLAY", "ChatFontNormal")
+        measure:SetWidth(692); measure:SetWordWrap(true); measure:SetNonSpaceWrap(true); measure:Hide()
+        box:SetScript("OnTextChanged", function(self)
+            measure:SetText(self:GetText() or "")
+            local measured = type(measure.GetStringHeight) == "function" and measure:GetStringHeight()
+            local wanted = height
+            if ns.Public(measured) and type(measured) == "number" and measured >= 0 and measured < math.huge then
+                wanted = math.max(height, math.ceil(measured) + 12)
+            end
+            if self:GetHeight() ~= wanted then self:SetHeight(wanted) end
+            if type(scroll.UpdateScrollChildRect) == "function" then scroll:UpdateScrollChildRect() end
+        end)
         return box, scroll
     end
     frame.input = editor(-80, 180); frame.input:SetMaxLetters(CODE_LIMIT)
