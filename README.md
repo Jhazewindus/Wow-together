@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.8.1** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.2** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -524,10 +524,10 @@ The offline snapshot was captured **October 5, 2026** from public game facts in
 | Coverage | Records |
 | --- | ---: |
 | Distinct quest records / category lists | 5,230 / 123 |
-| Detailed Forever pages | 1,885 |
-| Quests with static pickup / objective-area / turn-in coordinates | 2,877 / 1,218 / 3,044 |
-| Series / quests with explicit prerequisite facts | 807 / 1,885 |
-| Incomplete objective locations / known repeatables | 2,270 / 412 |
+| Detailed Forever pages | 2,088 |
+| Quests with static pickup / objective-area / turn-in coordinates | 4,244 / 2,129 / 4,411 |
+| Series / quests with explicit prerequisite facts | 887 / 2,446 |
+| Incomplete objective locations / known repeatables | 1,398 / 627 |
 
 Mapped item-drop alternatives retain a single representative farming area near
 this quest's published giver. This is a stable geometric choice, not a requirement
@@ -537,8 +537,14 @@ For an active fixed-guide step with missing coordinates, your own public native
 quest-tracker destination can supply its current location. A catalogue fallback
 cannot fill that gap; unavailable/private native data keeps the existing notice.
 The fixed step order and saved skips are retained when native coordinates change.
-0.8.1 joins explicit NPC/object/item requirements and named drop/vendor relations.
-Provided quest items do not become farming steps. Instructions include quantities,
+0.8.2 joins explicit NPC/object/item requirements and named drop/vendor relations.
+Published Forever event, escort and healing types replace incorrect kill labels.
+AND prerequisites require every parent hand-in; OR variants retain their alternatives.
+Escorts stay beside their pickups. Community ground-item coordinates retain
+source comment IDs and are used only when explicit, consistent and otherwise missing.
+Provided quest items do not become farming steps or shopping requirements. Native
+Warcraft DB quest-map points fill otherwise missing stages without copying tiles.
+Instructions include quantities,
 item-use actions and named targets. Two items from the same proven mob can share
 its published farming area; step skips remain specific to each item.
 
@@ -551,15 +557,21 @@ Older-world numeric/name facts are used only when Forever labels the quest
 unchanged and its ID, title, level and minimum level agree. Published Forever
 and tester corrections take precedence; actual NPC offers can contradict an
 explicitly marked older-world prerequisite. No old API/server logic is used.
-Static map transforms require five broadly distributed published Forever NPC
-anchors and strict residual checks. Remaining world points can use native
+Published Forever DBC bounds cover 46 outdoor/capital map views. Separate
+empirical transforms require five broadly distributed published Forever NPC
+anchors and strict residual checks; converted-baseline anchors cannot validate
+themselves. Remaining world points can use native
 C_Map conversion only after three published Forever anchors agree. Missing,
 restricted or contradictory transforms leave the location unknown.
 
 See [QUEST_DATA.md](QUEST_DATA.md), QuestCoverage.json and GuideAudit.json for
 per-zone coverage, source pins, remaining gaps and host compilation checks.
 These files deliberately distinguish location coverage from quest availability
-and live beta validation. Source access denials still prevent a complete catalogue.
+and live beta validation. GuideSourceQueue.json names every remaining missing
+quest/stage/quantity/pickup requirement. The audit's --require-complete check
+fails while any guide has missing facts, even when its route invariants pass.
+Some individual source pages still return access denials after the environment
+rules were applied; those pages remain excluded.
 
 This is a partial catalogue, not every Forever quest or a complete prerequisite
 or flight graph. Detailed reads now spread across outdoor categories through
@@ -580,7 +592,7 @@ provided broad inspiration about progress clarity; its code/assets/layouts
 were not copied. This implementation is independent.
 
 Reported beta build **70205** established the earlier sync APIs in user tests.
-**0.8.1 has host validation, not a live-client compatibility certification.**
+**0.8.2 has host validation, not a live-client compatibility certification.**
 Retest UI rendering, optional gossip/flight actions, corpse positions and item
 hooks on the build in front of you. `/wt probe` lists capabilities and runtime
 status. Do not interpret presence as proof that protected actions work.

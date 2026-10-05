@@ -177,7 +177,7 @@ function ns.ObjectiveMatchesPoint(text, point)
         value = string.gsub(value, "%s+", " ")
         return string.match(value, "^%s*(.-)%s*$")
     end
-    local label, name = normalized(text), normalized(point.itemName or point.name)
+    local label, name = normalized(text), normalized(point.progressName or point.itemName or point.name)
     return name ~= "" and (label == name or label == name .. "s" or label == name .. "es" or label == name .. "(s)")
 end
 

@@ -11,7 +11,9 @@ function ns.IsRetiredQuest(id)
     local title = quest and quest.title
     if not ns.Public(title) or type(title) ~= "string" then return false end
     title = string.lower(string.match(title, "^%s*(.-)%s*$"))
-    return string.find(title, "^<unused>") ~= nil or string.find(title, "^zzold") ~= nil
+    return string.find(title, "^<unused>") ~= nil or string.find(title, "^%(unused%)") ~= nil
+        or title == "unused" or string.find(title, "^zzold") ~= nil
+        or string.find(title, "%(temp disabled%)") ~= nil
 end
 
 function ns.IsLevelingExcludedQuest(id)
@@ -42,7 +44,12 @@ function ns.CatalogueIdentityAllowed(id, profile)
     end
     for _, requirement in ipairs({{"classMask", "classID", "class"}, {"raceMask", "raceID", "race"}}) do
         local mask = quest[requirement[1]]
-        if mask and mask > 0 then
+        if requirement[1] == "raceMask" and quest.allowedRaceIDs and #quest.allowedRaceIDs > 0 then
+            local value, allowed = profile.raceID, false
+            if not value or value <= 0 then return nil, "Waiting for race." end
+            for _, race in ipairs(quest.allowedRaceIDs) do if race == value then allowed = true; break end end
+            if not allowed then return false, "This quest has a different race requirement." end
+        elseif mask and mask > 0 then
             local value = profile[requirement[2]]
             if not value or value <= 0 or value > 32 or not bit or type(bit.band) ~= "function" or type(bit.lshift) ~= "function" then
                 return nil, "This quest's " .. requirement[3] .. " restriction still needs checking."
@@ -57,6 +64,11 @@ function ns.CataloguePrerequisitesAllowed(id, key, query)
     local quest = ns.CatalogueQuest(id)
     if not quest then return true end
     key = key or ns.self
+    for _, previous in ipairs(quest.prerequisiteAll or {}) do
+        local complete = ns.CatalogueCompletion(key, previous, query)
+        if complete == nil then return nil, "Checking history for " .. ns.QuestTitle(previous) .. "." end
+        if not complete then return false, "Finish " .. ns.QuestTitle(previous) .. " first." end
+    end
     if quest.prerequisiteAny then
         local met, unknown, titles = false, false, {}
         for _, previous in ipairs(quest.prerequisiteAny) do
@@ -105,7 +117,8 @@ function ns.CatalogueAllowed(id, profile, key, query)
     local prerequisites, prerequisiteReason = ns.CataloguePrerequisitesAllowed(id, key, query)
     local offered = ns.PickupOfferEvidence(key, id)
     if offered == true and quest and quest.prerequisiteSource
-        and string.find(quest.prerequisiteSource, "^Identity%-matched unchanged quest:") then return true end
+        and (string.find(quest.prerequisiteSource, "^Identity%-matched unchanged quest:")
+            or quest.prerequisiteSource == "Published converted-baseline prerequisites") then return true end
     if prerequisites ~= true then return prerequisites, prerequisiteReason end
     if offered == false then return false, "This quest giver did not offer this quest at your current progress. Recheck after progressing." end
     if offered == true then return true end
@@ -128,6 +141,7 @@ function ns.CataloguePrerequisiteIDs(id)
     local quest, ids = ns.CatalogueQuest(id), {}
     if quest then
         if quest.previousQuest then ids[#ids + 1] = quest.previousQuest end
+        for _, previous in ipairs(quest.prerequisiteAll or {}) do ids[#ids + 1] = previous end
         for _, previous in ipairs(quest.prerequisiteAny or quest.prerequisiteCandidates or {}) do ids[#ids + 1] = previous end
     end
     if ns.LearnedPrerequisiteIDs then
@@ -387,8 +401,12 @@ function ns.ShowQuestDetails(id)
             local titles = {}; for _, previous in ipairs(quest.prerequisiteAny) do titles[#titles + 1] = ns.QuestTitle(previous) end
             lines[#lines + 1] = "Finish one published prerequisite variant: " .. table.concat(titles, " / ")
         end
+        if quest.prerequisiteAll then
+            local titles = {}; for _, previous in ipairs(quest.prerequisiteAll) do titles[#titles + 1] = ns.QuestTitle(previous) end
+            lines[#lines + 1] = "Finish all prerequisites: " .. table.concat(titles, ", ")
+        end
         lines[#lines + 1] = ""
-        lines[#lines + 1] = quest.starts and "Published map points come from Wowhead's Forever pages. Check them against this beta build."
+        lines[#lines + 1] = quest.starts and "Published map points come from the captured Forever sources and marked fallbacks. Check them against this beta build."
             or "The source has no quest-giver coordinates for this quest. A client marker or an NPC encounter can add a map destination."
     else lines[#lines + 1] = "This quest is not in the imported catalogue yet. Live party quest data is still available." end
     lines[#lines + 1] = "History and known requirements guide suggestions; the quest giver confirms pickup availability."

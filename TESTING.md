@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.1**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.2**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
@@ -15,7 +15,29 @@ The expanded-guide checks below take about **15–25 minutes**.
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
 
-## Focus checks for 0.8.1
+## Focus checks for 0.8.2
+
+- **Broader source coverage:** test Durotar, Mulgore, Zephras Isle and another
+  middle/later zone across testers. Known coordinates should replace previous
+  missing-location steps. Record every remaining gap with quest ID and /wt probe;
+  this release does not claim all guides are complete.
+- **Supplied items and events:** Mulgore well-cleansing quests should name the
+  well and Cleansing Totem; provided items must not become farming detours.
+  Galgar's apples should target actual Cactus Apple objects and require ten.
+  Fizsprocket's Notes uses three community-reported ground-item positions in
+  Venture Co. Mine; confirm them in the beta and report displaced points.
+- **Native source areas:** Testing the Wells in Westfall should route both
+  Jansen Stead and Molsen Farm samples. The supplied Well Water Sample Kit
+  must not appear as an item to buy or farm. Confirm both sample points in-game.
+- **Healing and prerequisites:** The Wounds of Betrayal should require its
+  three known parent quests before pickup and heal seven injured druids,
+  rather than kill each credit NPC. After seven credits, its target hints should
+  clear. Reload during this step: its shared target label/count should remain.
+  Test an escort: acceptance and its escort stage must stay together.
+- **Identity gates:** ordinary Horde quests must not acquire a race/class
+  restriction from older data. Where possible, test a Skyborne-specific quest
+  on the intended race and another race; a genuine restriction still applies.
+
 
 - **Farming source:** Sting of the Scorpid should point to Scorpid Workers and
   say to collect ten Scorpid Worker Tails, rather than tell you to farm Sarkoth.

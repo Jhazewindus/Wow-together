@@ -117,6 +117,7 @@ function ns.PartyCatchupGuide(base)
         selected[id], required[id] = true, not targets[id]
         local quest = ns.CatalogueQuest(id)
         if quest.previousQuest then add(quest.previousQuest, key, depth + 1) end
+        for _, previous in ipairs(quest.prerequisiteAll or {}) do add(previous, key, depth + 1) end
         if quest.prerequisiteAny then
             for _, previous in ipairs(quest.prerequisiteAny) do if ns.CatalogueCompletion(key, previous) == true then return end end
             local alternatives = {}; for _, previous in ipairs(quest.prerequisiteAny) do alternatives[#alternatives + 1] = previous end
@@ -126,7 +127,7 @@ function ns.PartyCatchupGuide(base)
                     add(previous, key, depth + 1); break
                 end
             end
-        elseif not quest.previousQuest and key == ns.self then
+        elseif not quest.previousQuest and not quest.prerequisiteAll and key == ns.self then
             for _, previous in ipairs(ns.LearnedPrerequisiteIDs(id)) do add(previous, key, depth + 1) end
         end
     end

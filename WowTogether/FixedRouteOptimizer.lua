@@ -16,15 +16,25 @@ function ns.OptimizeFixedPlan(plan, distance, cooperative, onYield)
         for index, stop in ipairs(list) do neighbors[stop] = {before = list[index - 1], after = list[index + 1]} end
         local quest = ns.CatalogueQuest(id) or {}
         gates[id] = {any = quest.prerequisiteAny, all = {}}
+        for _, previous in ipairs(quest.prerequisiteAll or {}) do gates[id].all[#gates[id].all + 1] = previous end
         if quest.previousQuest then gates[id].all[#gates[id].all + 1] = quest.previousQuest
-        elseif not quest.prerequisiteAny then gates[id].all = ns.LearnedPrerequisiteIDs(id) end
-        for _, previous in ipairs(quest.prerequisiteAny or gates[id].all) do
+        elseif not quest.prerequisiteAny and not quest.prerequisiteAll then gates[id].all = ns.LearnedPrerequisiteIDs(id) end
+        local parents = {}; for _, previous in ipairs(gates[id].all) do parents[#parents + 1] = previous end
+        for _, previous in ipairs(quest.prerequisiteAny or {}) do parents[#parents + 1] = previous end
+        for _, previous in ipairs(parents) do
             children[previous] = children[previous] or {}; children[previous][#children[previous] + 1] = id
         end
     end
     -- Retain the compiler's useful NPC hand-off bundles: turning in a parent
     -- before gathering nearby new quests is part of the plan's purpose.
     local hubs = {}
+    for _, list in pairs(stages) do
+        for index = 2, #list do
+            if list[index].action == "escort" then
+                hubs[#hubs + 1] = {before = list[index - 1], after = list[index], adjacent = true}
+            end
+        end
+    end
     for parent, list in pairs(children) do
         local handin = handins[parent]
         if handin and not handin.unknownLocation then
@@ -81,7 +91,9 @@ function ns.OptimizeFixedPlan(plan, distance, cooperative, onYield)
             for _, child in ipairs(children[stop.id] or {}) do if not allowed(child) then return false end end
         end
         for _, hub in ipairs(hubs) do
-            if (hub.before == stop or hub.after == stop) and pos(hub.before) >= pos(hub.after) then return false end
+            if hub.adjacent then
+                if pos(hub.after) ~= pos(hub.before) + 1 then return false end
+            elseif (hub.before == stop or hub.after == stop) and pos(hub.before) >= pos(hub.after) then return false end
         end
         return true
     end

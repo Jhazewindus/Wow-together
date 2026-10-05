@@ -189,6 +189,8 @@ function ns.ShowDungeonQuests(group)
         ns.dungeonHistoryScope[id] = true
         local quest = ns.CatalogueQuest(id)
         if quest.previousQuest then ns.dungeonHistoryScope[quest.previousQuest] = true end
+        for _, previous in ipairs(quest.prerequisiteAll or {}) do ns.dungeonHistoryScope[previous] = true end
+        for _, previous in ipairs(quest.prerequisiteAny or {}) do ns.dungeonHistoryScope[previous] = true end
     end
     ns.ScheduleSync()
     local guide = ns.DungeonGuide(group)
@@ -243,7 +245,7 @@ function ns.ZoneTransition()
     local best, score
     for id, quest in pairs(ns.catalogue.quests) do
         local point = quest.starts and quest.starts[1]
-        if ns.LevelingQuestEnabled(id) and (quest.previousQuest or quest.prerequisiteAny) and point
+        if ns.LevelingQuestEnabled(id) and (quest.previousQuest or quest.prerequisiteAny or quest.prerequisiteAll) and point
             and point.mapID ~= currentMap and ns.DiscoveryZoneAllowed(point.mapID, point) then
             local eligible = true
             for _, person in ipairs(ns.PartyProfiles()) do

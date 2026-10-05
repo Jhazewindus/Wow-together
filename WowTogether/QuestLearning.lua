@@ -108,7 +108,7 @@ end
 
 function ns.LearnedPrerequisiteIDs(id)
     local quest = ns.CatalogueQuest(id)
-    if quest and (quest.previousQuest or quest.prerequisiteAny) then return {} end
+    if quest and (quest.previousQuest or quest.prerequisiteAny or quest.prerequisiteAll) then return {} end
     local rule = ns.LearnedQuestRule(id)
     return rule and {rule.previousQuest} or {}
 end
@@ -132,7 +132,7 @@ end
 function ns.LearnedPrerequisiteAllowed(id, profile, key, query)
     local quest = ns.CatalogueQuest(id)
     -- Published alternatives must not be narrowed to a single observed branch.
-    if quest and (quest.previousQuest or quest.prerequisiteAny) then return true end
+    if quest and (quest.previousQuest or quest.prerequisiteAny or quest.prerequisiteAll) then return true end
     local rule = ns.LearnedQuestRule(id, profile, key)
     if not rule then return true end
     local completed = ns.CatalogueCompletion(key or ns.self, rule.previousQuest, query)
@@ -158,6 +158,7 @@ local function hasAncestor(id, wanted, seen, depth, context)
     seen[id] = true
     local quest, ids = ns.CatalogueQuest(id) or {}, {}
     if quest.previousQuest then ids[#ids + 1] = quest.previousQuest end
+    for _, previous in ipairs(quest.prerequisiteAll or {}) do ids[#ids + 1] = previous end
     for _, previous in ipairs(quest.prerequisiteAny or {}) do ids[#ids + 1] = previous end
     local learned = matchingRule(id, context)
     if learned and not learned.disabled and not learned.ambiguous then ids[#ids + 1] = learned.previousQuest end

@@ -171,7 +171,8 @@ def calibrate(entities, legacy):
         if len(positions)!=1:continue
         continent,wx,wy=positions[0]
         for point in entity.get('locations',[]):
-            if point.get('mapID'):
+            source=point.get('locationSource','')
+            if point.get('mapID') and not source.startswith('Older-world') and 'converted-baseline' not in source:
                 anchors[point['mapID'],continent].append((wx,wy,point['x'],point['y']))
     import statistics
     transforms={}
@@ -205,7 +206,8 @@ def mapped_locations(entity, transforms, map_ids):
     from quest_enrichment import representative_coords
     for map_id,coords in groups.items():
         for x,y in representative_coords(coords):result.append({'mapID':map_id,'x':round(x/100,5),'y':round(y/100,5),
-            'locationSource':'Older-world fallback; calibrated against Forever published NPCs'})
+            'locationSource':transforms[map_id].get('locationSource',
+                'Older-world fallback; calibrated against Forever published NPCs')})
     return result
 
 

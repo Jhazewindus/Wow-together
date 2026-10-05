@@ -1,5 +1,28 @@
 # Wow Together changelog
 
+## 0.8.2
+
+- Expand all-zone geography from public Forever quest, NPC, object and item
+  facts, with pinned source hashes and 46 published outdoor/capital map bounds.
+  Keep converted baseline facts distinct from beta observations.
+- Add typed event, escort and healing steps; use supplied quest items instead
+  of farming them. Shared-credit targets form one objective; retain explicit
+  counts and leave absent counts unknown.
+- Retain objective counts/item actions in adaptive routes, and shared target
+  labels and IDs after a guide reload. Match nearby objectives by target and
+  distance so one item's count cannot replace another's.
+- Require every parent in AND prerequisites; preserve OR variants and fixed
+  route order. Keep escorts together and retain nearby NPC hand-off bundles.
+- Preserve current faction/class/race data over older baseline restrictions,
+  including unrestricted masks; support explicit Skyborne race requirements.
+- Fill narrowly attributed community ground-item coordinates when an exact
+  item/zone observation exists. Conflicting reports stay unknown.
+- Import missing native Warcraft DB quest-map destinations, including two
+  Westfall well-sampling areas. Keep supplied items out of shopping requirements.
+- Add a per-guide missing-facts queue and a strict completion audit. This is
+  an expanded partial dataset, not a claim that every guide is gap-free or
+  terrain navigation is solved. Beta testing is still required.
+
 ## 0.8.1
 
 - Prefer a proven source whose creature name matches the requested item, within the same farming zone. Scorpid Worker Tails now point to the published Scorpid Worker area rather than Sarkoth. This applies to item-source selection generally.

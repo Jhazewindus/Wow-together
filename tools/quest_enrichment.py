@@ -69,6 +69,88 @@ def quest_relations(page):
     return refs
 
 
+def warcraftdb_objective_facts(raw):
+    """Structured IDs/counts and the explicitly provided item, without prose."""
+    data=raw.get('data',{});provided=[];requirements=[]
+    item=data.get('provided_item')
+    if isinstance(item,dict) and type(item.get('id')) is int and item['id']>0:
+        provided.append({'entityType':'item','entityID':item['id'],'name':text(item.get('name',''))})
+    for objective in data.get('objectives',[]):
+        kind=objective.get('link_node');ident=objective.get('link_id');quantity=objective.get('amount')
+        if kind not in ('npc','object','item') or type(ident) is not int or ident<=0 or type(quantity) is not int or quantity<=0:continue
+        if kind=='item' and any(p['entityID']==ident for p in provided):continue
+        ref={'entityType':kind,'entityID':ident,'name':text(objective.get('description','')),'quantity':quantity}
+        action={0:'kill',3:'talk',2:'interact',1:'collect'}.get(objective.get('type'))
+        if action:ref['action']=action
+        if action=='talk':ref['name']=re.sub(r'^Speak (?:with|to)\s+','',ref['name'])
+        requirements.append(ref)
+    return requirements,provided
+
+
+def warcraftdb_map_facts(raw, quest, refs, entities, known_maps):
+    """Fill missing stages from native map points, not tiles or quest prose.
+
+    Objective indexes refer to the original, unfiltered objective array. An
+    explicit target/count must match our requirement before an area is used.
+    A polygon contributes a listed area point, never an invented centroid or
+    an inferred NPC spawn. Existing detailed destinations always win.
+    """
+    data=raw.get('data',{});map_data=raw.get('extra',{}).get('quest_map',{})
+    if not isinstance(map_data,dict) or text(data.get('name',''))!=quest.get('title'):return 0
+    floors={f['id'] for f in map_data.get('floors',[]) if isinstance(f,dict)
+        and type(f.get('id')) is int and f['id'] in known_maps}
+    source='Warcraft DB Forever native quest map'
+    def point(row, map_id=None):
+        if not isinstance(row,dict):return None
+        map_id=row.get('ui_map_id') if map_id is None else map_id
+        x,y=row.get('u'),row.get('v')
+        if type(map_id) is not int or map_id not in floors or not all(type(v) in (int,float)
+            and math.isfinite(v) and 0<=v<=1 for v in (x,y)):return None
+        return {'mapID':map_id,'x':x,'y':y,'locationSource':source}
+    added=0
+    for key,role in (('starts','starts'),('turn_ins','ends')):
+        if quest.get(role):continue
+        points=[p for row in map_data.get(key,[]) if (p:=point(row))]
+        if not points:continue
+        references=refs.get(role,[])
+        ref=references[0] if len(references)==1 else None
+        for p in points:
+            # A sole published relation can name this destination. Without
+            # that relation, keep the quest label; do not invent a giver ID.
+            p.update(name=ref['name'] if ref else quest['title'],entityID=ref['entityID'] if ref else 0)
+            if ref:
+                p['entityType']=ref['entityType']
+                if ref['entityType']=='npc':p['npc']=True
+        quest[role]=[choose_location(points,quest)];added+=1
+    objectives=data.get('objectives',[])
+    candidates=collections.defaultdict(list)
+    for area in map_data.get('objectives',[]):
+        if not isinstance(area,dict):continue
+        index=area.get('objective_index')
+        if type(index) is not int or not 0<=index<len(objectives):continue
+        objective=objectives[index]
+        if not isinstance(objective,dict):continue
+        req=next((r for r in refs['requirements'] if r['entityType']==objective.get('link_node')
+            and r['entityID']==objective.get('link_id') and r.get('quantity')==objective.get('amount')),None)
+        if not req:continue
+        existing=quest.get('objectives',[])
+        if any((req['entityType']=='item' and (p.get('itemID')==req['entityID'] or p.get('itemName')==req['name']))
+            or (req['entityType']!='item' and p.get('entityID')==req['entityID']) for p in existing):continue
+        for row in area.get('points',[]):
+            p=point(row,area.get('ui_map_id'))
+            if p:
+                p.update(name=req['name'],entityID=req['entityID'],entityType=req['entityType'])
+                if req['entityType']=='npc':p['npc']=True
+                candidates[(req['entityType'],req['entityID'])].append(point_for(p,'q',req))
+    for values in candidates.values():
+        quest.setdefault('objectives',[]).append(choose_location(values,quest));added+=1
+    if candidates:
+        quest.pop('missingRequirements',None)
+        enrich(quest,refs,entities)
+    if added:quest['nativeMapSource']=source
+    return added
+
+
 def valid_coord(value):
     return isinstance(value, list) and len(value) == 2 and all(type(v) in (int, float)
         and math.isfinite(v) and 0 <= v <= 100 for v in value)
@@ -168,14 +250,18 @@ def point_for(entity, role, requirement=None):
     if entity.get('entityType') == 'npc':
         result['npc'] = True
     if requirement:
-        result['quantity'] = requirement.get('quantity', 1)
+        if requirement.get('quantity'):
+            result['quantity'] = requirement['quantity']
+        elif requirement.get('quantityUnknown'):
+            result.pop('quantity', None)
+            result['quantityUnknown'] = True
         result['objectiveKey'] = requirement['entityType'] + ':' + str(requirement['entityID'])
         if requirement['entityType'] == 'item':
             result['itemID'], result['itemName'] = requirement['entityID'], requirement['name']
         result['action'] = entity.get('action') or ('collect' if requirement['entityType'] == 'item' else None)
         if result['action'] is None:
             result.pop('action', None)
-        for key in ('useItemName','spellID'):
+        for key in ('useItemName','spellID','alternativeEntityIDs','progressName','objectiveLabel'):
             if key in requirement:
                 result[key] = requirement[key]
         if requirement.get('action') and (requirement['action'] != 'collect' or not entity.get('action')):
@@ -209,6 +295,13 @@ def enrich(quest, refs, entities):
     quest['requirements'] = refs['requirements']
     if refs.get('provided'):quest['providedItems'] = refs['provided']
     def locations(ref):
+        if ref.get('alternativeEntityIDs'):
+            result = []
+            for ident in ref['alternativeEntityIDs']:
+                alternate = dict(ref,entityID=ident,name='')
+                alternate.pop('alternativeEntityIDs')
+                result.extend(locations(alternate))
+            return result
         entity = entities.get(ref['entityType'], {}).get(ref['entityID'], {})
         return [dict(p, name=ref['name'] or entity.get('name',''), entityID=ref['entityID'],
                      entityType=ref['entityType']) for p in entity.get('locations',[]) if p.get('mapID')
@@ -244,7 +337,7 @@ def enrich(quest, refs, entities):
                     chosen=choose_location(alternatives,quest)
                     point.update({key:chosen[key] for key in ('mapID','x','y','name','entityID','npc','action') if key in chosen})
             point.update({k:v for k,v in point_for(point,'q',req).items() if k in
-                ('quantity','objectiveKey','itemID','itemName','action','useItemName','spellID')})
+                ('quantity','objectiveKey','itemID','itemName','action','useItemName','spellID','alternativeEntityIDs','progressName','objectiveLabel')})
         if matches:
             continue
         candidates = []
@@ -253,6 +346,11 @@ def enrich(quest, refs, entities):
             if item.get('source','').startswith('Older-world') and not quest.get('legacyFactsSource'):
                 item = {}
             sources = item.get('sources',[])
+            # An explicitly located ground item can be collected directly.
+            # Never substitute a drop source's position for the item itself.
+            for point in locations(req):
+                point['action']='collect'
+                candidates.append(point_for(point,'q',req))
             # Prefer sources the quest already explicitly names; a generic
             # common-item source in another continent cannot outrank them.
             targets = {p.get('entityID') for p in quest.get('npcTargets',[])}
@@ -292,12 +390,16 @@ def enrich(quest, refs, entities):
             if same:
                 chosen.update({key:same[key] for key in ('mapID','x','y','name','entityID','npc') if key in same})
         if chosen:
+            if chosen.get('action')=='event' and re.search(r'\b(?:DNT|DND|KILL CREDIT|QUEST CREDIT)\b',chosen.get('name',''),re.I):
+                # An invisible credit marker has a real event area, but its
+                # developer name isn't an NPC the player should talk to.
+                chosen['name']=quest['title']; chosen.pop('npc',None)
             objectives.append(chosen)
             if chosen.get('action') == 'buy':
                 for item in quest.get('requiredItems',[]):
                     if item['itemID'] == req['entityID']:item['buyable'] = True
             if chosen.get('npc'):
-                target = {k:chosen[k] for k in ('entityID','name','action','itemName','npc') if k in chosen}
+                target = {k:chosen[k] for k in ('entityID','name','action','itemName','npc','alternativeEntityIDs','progressName','objectiveLabel') if k in chosen}
                 if target not in quest.setdefault('npcTargets',[]):
                     quest['npcTargets'].append(target)
         else:
@@ -310,7 +412,7 @@ def enrich(quest, refs, entities):
         # Unmapped quest objectives not represented in the table still count.
         other = [p for p in quest.get('unmappedLocations',[]) if p.get('kind') == 'q'
             and not any(r['entityID'] == p.get('entityID') or r['name'] == p.get('itemName') for r in refs['requirements'])]
-        if not other:
+        if not other and not quest.get('unmodeledObjectiveKinds'):
             quest.pop('objectiveLocationsIncomplete',None)
             quest['otherLocationsIncomplete'] = False
     quest['objectiveFactsSource'] = quest.get('requirementSource', 'Published Forever quest/entity relations')

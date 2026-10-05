@@ -52,3 +52,22 @@ Additional Forever NPC geographic facts come from the same MIT Mapzeroth
 revision cited above (`Data/Forever/Pois.lua`, SHA256
 `3dfa6f85e6fbe1c5a01389d4bcf445f4fa63391484647cdec663a849111e977d`).
 Only NPC IDs and normalized coordinates are read, not the addon engine.
+
+## Published Forever facts
+
+Factual IDs, short names, counts, relationships, map bounds and coordinates
+were selected from Questie/QuestieDB revision
+`e0a6eaa86f181ac99262e34126bcd2ed1a1712d6`:
+https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6
+
+The selected source files and SHA256 values are in
+`data-tools/forever_source_manifest.json` in the release and
+`tools/forever_source_manifest.json` in this repository. Literal data parsing
+does not run their providers. No source engine, UI, route logic, functions or
+quest prose is included. The inspected source does not provide an explicit
+license file; no license grant is asserted for that source. This selection
+contains factual game data, rather than copied implementation.
+
+Narrow coordinate observations from public Wowhead Forever comments retain
+quest/comment IDs for attribution in the coverage report. Comment prose and
+artwork are excluded; observations are labeled as needing beta verification.

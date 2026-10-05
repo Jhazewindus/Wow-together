@@ -1,174 +1,279 @@
 # Quest data and guide audit
 
-This is an expanded **partial** Forever dataset. A quest ID/name is not a
-mapped quest, an NPC offer, or proof that a guide is optimal. The playing UI
-uses simple instructions; source and coverage details belong here.
+This is an expanded **partial** Forever dataset. A quest name is not a mapped
+quest, a confirmed NPC offer or proof of an optimal guide. The playing UI keeps
+simple instructions; source evidence and remaining gaps are recorded here.
 
-## Sources and precedence
+## Captured facts and source precedence
 
-1. Published Forever quest/entity records and reviewed tester corrections.
-2. Licensed Forever NPC/travel geographic facts, at the reviewed MIT revision.
-3. Older-world numeric/name fallbacks only for identity-matched unchanged quests.
+1. Current Forever quest/entity pages and reviewed tester corrections.
+2. Explicit public Forever beta delta, observation and reviewed factual fields.
+3. Identity-matched published converted-baseline facts; separately attributed
+   older-world fallbacks only for strictly unchanged quest identities.
+4. Explicit, consistent community ID/zone/coordinate observations for otherwise
+   unmapped ground items. Published entity positions take precedence.
 
-The public category union contains 5,230 records from 123 leaf lists. The root
-Wowhead list is truncated at 1,000 and is never treated as a complete index.
-There are 1,885 captured Forever detail pages and 1,143 Warcraft DB detail records.
-The latter add structured named objectives; they do not supply complete spawn maps.
+The category union contains **5,230 quests from 123 leaf lists**. The
+Wowhead root list is truncated at 1,000 and is never treated as a complete index.
+There are **2,088 captured Forever detail pages** and 1,143 Warcraft
+DB detail records. Static pickup / objective-area / hand-in coverage is
+**4,244 / 2,129 / 4,411 quests**.
+Runtime named entities: **13,340 NPCs / 6,973 objects /
+3,090 quest-used items**. Unrelated item loot tables are omitted.
 
-Source access uses the environment proxy and verified TLS. Quest/entity capture
-stops after access denials, keeps successful caches and records failed IDs. Raw
-downloaded JavaScript and SQL are never executed. Quest prose/artwork and other
-addon engines/UI are not bundled.
+Source capture uses normal proxy routing and verified TLS. Individual failed
+IDs remain excluded; renewed denials stop a batch. Successful captures remain
+cached. Downloaded JavaScript, Lua providers and SQL are never executed.
+No source engine, UI, quest prose, artwork or comment prose is bundled.
 
-Static pickup / objective-area / hand-in coverage: **2,877 / 1,218 / 3,044** quests.
-Named entity facts: **6,580 NPCs / 785 objects / 2,301 items**.
+## Published Forever database facts
 
-## Older-world fallback provenance
+Source: https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6
 
-- Source: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852
+`tools/forever_source_manifest.json` pins the selected factual files and hashes.
+Our literal-only parser reads raw entity fields, inherited literal corrections,
+beta deltas, trace observations and reviewed literal corrections in source
+precedence order. It does not execute static/dynamic providers, function calls
+or arbitrary expressions. Assumed fields and unsupported expressions remain
+withheld. Short names, typed objective IDs, numeric counts, masks, explicit
+relations and actual representative points are selected.
+
+Converted baseline fields require agreeing quest title, level and minimum
+level. Explicit beta field updates are distinguished from the baseline.
+Current source masks, including an explicit unrestricted mask, take precedence
+for unchanged inherited fields. High Skyborne race bits are represented as
+explicit race IDs, without 32-bit truncation. AND and OR prerequisites retain
+their distinct meanings. Conditions not modeled by the addon remain unknown
+until the actual NPC offer confirms availability.
+
+Typed beta facts correct **488 quest objective records**. Healing groups
+produce one credit goal with alternate targets, rather than individual kills.
+Provided items stay out of farming goals. Event areas and item-use instructions
+require explicit locations/mechanisms. Unknown counts are never defaulted to one.
+Escort work stays adjacent to acceptance, preserving its event sequence.
+
+## Map geometry and older-world facts
+
+Published geometry comes from the pinned Forever conversion report, targeting
+DBC **1.60.1.69893**. Its SHA256 is
+`0229566017126c2577e77d2bcc7c9f995648fb27ed32a7918fa44ace0664fb22`.
+The parser verifies target snapshots, coverage, build, map IDs and finite bounds.
+**46 outdoor/capital views** have supported rectangles; instance/battleground
+and unsupported world views are not turned into outdoor quest positions.
+Converted percentages preserve source world position, not proof of a current
+spawn or a terrain-safe road. This geometry still needs current-beta validation.
+
+Older-world source:
+https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852
+
 - File: `Full_DB/ClassicDB_1_12_1_z2815.sql.gz`.
 - SHA256: `4f92db520868ab4e566726f68b5b2e380ae781209beaf22237b4f7f04600d0c0`.
-- License: GPL-3.0; upstream license/copyright notice included. See THIRD_PARTY_NOTICES.md.
-- Changes: select factual IDs, names, quantities, explicit relations and actual spawns;
-  verify unchanged quest identity; annotate provenance; retain actual representative points.
+- GPL-3.0 license/copyright notices are included; see THIRD_PARTY_NOTICES.md.
+- **3,544** strictly unchanged ID/title/level/minimum-level quest identities match.
+  New, updated and unconfirmed quests cannot borrow these old quest core facts.
+  Published beta/tester gates win. Actual offers can contradict marked older gates.
 
-A Forever `unchanged` label and identical ID, title, level and minimum level are
-required: 3,544 quest identities match. Updated, new, unconfirmed and excluded
-quests cannot borrow these quest fallback facts. Missing conditions/reputation
-requirements remain uncertain. Positive explicit predecessors are used; arbitrary
-neighboring IDs and negative/ambiguous relations never establish a chain.
-Published beta/tester gates win. An actual beta NPC offer may contradict a
-marked older-world prerequisite without weakening published beta/tester gates.
+Separate empirical fits require at least five broadly distributed single-spawn
+published Forever anchors, at least 80% inliers and <=0.8% residuals.
+**12 maps** pass. Converted/older anchors cannot validate themselves.
+Remaining world positions can use guarded native conversion only after three
+published Forever anchors agree. Missing or contradictory native data stays unknown.
 
-Static map transforms are fitted only with at least five broadly distributed
-single-spawn published Forever NPC anchors, at least 80% inliers and <=0.8%
-normalized residuals. Eleven maps pass; all other maps keep world coordinates.
-A native C_Map conversion may fill those only after three published Forever
-anchors confirm its world-axis convention. Missing/private/contradictory native
-data leaves the gap visible. A valid transform proves the map convention, not
-that an old NPC spawn, cave floor or quest mechanism survived beta changes.
+Actual spawn representatives are retained; no centroid inside mountains is
+invented. Drop/vendor joins require explicit relations. A matching item/mob name
+does not create a loot relation or justify a remote farming detour. Two item
+goals from a proven common source may share a farming area. No beta drop rate
+is inferred from the old database.
 
-Actual representative spawn points are selected; a centroid inside mountains
-is never introduced. Drop/vendor joins require an explicit item-source relation.
-Common-item sources above the quest level allowance are not selected as farming
-targets; high-level friendly vendors can still sell a required item. Item goals
-from a proven common mob may share its already-published farming area.
-A proven drop source whose creature name matches the requested item is preferred
-within the same farming zone. A name match never creates an unproven drop relation
-or justifies travel to a remote zone. Published alternatives remain available.
-Provided items are distinguished from farming goals. Item-use facts require
-a matching explicit source mechanism, rather than assuming every NPC goal is a kill.
+## Additional geography and observed ground items
 
-## Forever NPC geography
+Warcraft DB's native quest-map fields fill **5 missing stages on 3 quests**:
+two well-sampling areas in Westfall and three class-quest pickup/hand-in points.
+Only known native map IDs, finite normalized coordinates and exact objective
+IDs/counts are accepted. Original objective indexes survive filtering supplied
+items. Existing destinations win; area polygons retain a published point,
+not an inferred spawn or centroid. Source quest IDs and SHA256 hashes of
+canonical JSON are retained in QuestCoverage.json. Tiles/artwork are excluded.
 
-Read-only geographic rows from Mapzeroth Forever 0.6.0 (MIT), revision
-`fd68cfe2153379898680c66a01833846f9933587`, file `Data/Forever/Pois.lua`.
-SHA256: `3dfa6f85e6fbe1c5a01389d4bcf445f4fa63391484647cdec663a849111e977d`.
-Only NPC IDs and normalized coordinates are read: 674 positions. The source
-addon engine, UI and service logic are not copied. Full MIT notice is included.
+Mapzeroth Forever 0.6.0 factual NPC geography is pinned at
+`fd68cfe2153379898680c66a01833846f9933587` (MIT), `Data/Forever/Pois.lua` SHA256
+`3dfa6f85e6fbe1c5a01389d4bcf445f4fa63391484647cdec663a849111e977d`.
+Only IDs and 674 normalized positions are selected; its engine/UI is excluded.
 
-## What the route audit establishes
+Community observations require an explicit entity ID, one explicit known zone,
+numeric coordinates and agreement between observations. Deleted, outdated and
+other-game comments are excluded. **3 ground-item points** are used, with
+quest/comment IDs retained in QuestCoverage.json. These need beta verification;
+community observations do not establish prerequisites or loot rates.
 
-The host audit checked **77 faction-specific zone guides** and **7,802 stored map points**.
-It uses the actual Lua 5.1 compiler with native world conversion unavailable.
-Checks cover finite map coordinates, excluded/repeatable quests, pickup/objective/
-hand-in order, explicit prerequisites and non-increasing estimated route distance.
-GuideAudit.json contains each guide, step count, remaining unknown steps and
-distance before/after the bounded local search. Search preserves NPC hand-off
-bundles and fixed order during play; it is not a globally optimal XP solution.
+## Audit and the remaining completion gate
 
-The checks do not certify actual beta APIs, NPC offers, secret-value behavior,
-protected actions, map rendering, walkable terrain, cave entrances or travel times.
-Lines show visiting order. A shortest line is not a safe road path; the travel
-graph has transport/crossing facts and estimated walks, not a terrain navmesh.
-Read TESTING.md for current beta validation and export labeled /wt findings.
+The Lua 5.1 host audit checked **77 faction-specific guides** and
+**11,704 stored map points**. It verifies finite coordinates, exclusions,
+repeatable filtering, stage ordering, AND/OR hand-in prerequisites, escort
+adjacency and non-increasing estimated distance. Movement, pickups, abandonment
+and Scan do not reorder a selected fixed guide. This is bounded local search,
+not globally optimal XP or terrain routing.
 
-## Remaining source work
+**5 of 77 guides currently have no audited source gaps.**
+`--require-complete` exits with status 2 while any guide has missing locations,
+pickup requirements, required quantities or prerequisite review steps. Passing
+route invariants alone must never be presented as 100% guide completion.
+`GuideSourceQueue.json` identifies **485 remaining quest records**, their exact
+missing stages/facts and relevant source URLs. It is included in releases.
 
-Source denials still block many detailed quest and entity pages. The environment
-draft already allows the required source domains; the running policy has not
-activated those rules. Save/publish the draft in environment settings, then
-recheck source access. A successful capture is required before marking gaps filled.
-QuestCoverage.json includes denied IDs, per-zone missing quest IDs and entity
-capture results. New/changed beta zones, including Zephras Isle, still need
-additional NPC/mob/item positions and live prerequisite evidence.
+The environment rules have been applied and initial source reads succeeded.
+Some individual source pages still return HTTP 403; known failures are recorded
+and not retried unchanged. Other gaps contain no position/condition evidence in
+the captured sources. An exact quest/NPC beta observation can fill such a gap;
+a neighboring quest or guessed chain cannot.
 
-Coordinate completeness below counts all source-category quests, before the
-leveling guide filters. Capitals, classes, dungeons, professions and seasonal
-quests may remain in the catalogue while excluded from normal zone leveling.
-A complete-location row does not establish current pickup availability.
+Host checks do not certify beta APIs, secret values, NPC offers, protected actions,
+map rendering, cave entrances, walkable terrain or travel times. Lines show visit
+order; the travel graph has transport facts and estimated walks, not a navmesh.
+Read TESTING.md and export labeled /wt findings for current-beta evidence.
+
+## Per-source-category coordinate coverage
+
+These counts include source-category quests before normal leveling filters.
+A complete-location row does not prove pickup eligibility, objective quantities
+or live beta behavior. Capitals, class/profession/dungeon/seasonal quests may
+remain in the catalogue while excluded from normal leveling.
 
 | Source zone/category | Quests | Pickups | Objective areas | Hand-ins | Complete locations |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| eastern-kingdoms/alterac-mountains | 21 | 16 | 8 | 18 | 7 |
+| battlegrounds/alterac-valley | 65 | 55 | 36 | 59 | 40 |
+| battlegrounds/arathi-basin | 48 | 36 | 4 | 36 | 10 |
+| battlegrounds/darkspear-islands | 9 | 3 | 0 | 3 | 0 |
+| battlegrounds/reuse-old-scarlet-monastery | 1 | 1 | 0 | 1 | 0 |
+| battlegrounds/warsong-gulch | 42 | 24 | 0 | 24 | 0 |
+| classes/druid | 58 | 58 | 15 | 58 | 51 |
+| classes/hunter | 52 | 51 | 19 | 52 | 46 |
+| classes/mage | 51 | 51 | 22 | 51 | 45 |
+| classes/paladin | 101 | 84 | 27 | 87 | 72 |
+| classes/priest | 89 | 61 | 8 | 62 | 57 |
+| classes/rogue | 66 | 54 | 23 | 54 | 42 |
+| classes/shaman | 87 | 70 | 19 | 69 | 53 |
+| classes/warlock | 102 | 95 | 38 | 91 | 68 |
+| classes/warrior | 74 | 73 | 27 | 73 | 58 |
+| dungeons/blackfathom-deeps | 13 | 9 | 2 | 10 | 4 |
+| dungeons/blackrock-depths | 43 | 27 | 3 | 27 | 4 |
+| dungeons/blackrock-spire | 37 | 27 | 3 | 28 | 5 |
+| dungeons/city-of-dalaran | 8 | 0 | 0 | 0 | 0 |
+| dungeons/dire-maul | 38 | 10 | 3 | 9 | 2 |
+| dungeons/excavation-site-wetlands | 14 | 3 | 0 | 2 | 0 |
+| dungeons/gnomeregan | 28 | 14 | 10 | 17 | 9 |
+| dungeons/maraudon | 11 | 9 | 5 | 8 | 3 |
+| dungeons/ragefire-chasm | 6 | 5 | 0 | 5 | 0 |
+| dungeons/razorfen-downs | 7 | 4 | 3 | 5 | 2 |
+| dungeons/razorfen-kraul | 6 | 4 | 1 | 5 | 0 |
+| dungeons/ruins-of-lordaeron | 12 | 6 | 1 | 10 | 1 |
+| dungeons/scarlet-monastery | 8 | 6 | 2 | 7 | 1 |
+| dungeons/scholomance | 12 | 11 | 0 | 12 | 0 |
+| dungeons/shadowfang-keep | 3 | 3 | 0 | 2 | 0 |
+| dungeons/stratholme | 17 | 12 | 1 | 11 | 0 |
+| dungeons/the-deadmines | 5 | 5 | 3 | 5 | 3 |
+| dungeons/the-hall-of-thanes | 4 | 3 | 0 | 3 | 0 |
+| dungeons/the-stockade | 6 | 6 | 0 | 6 | 0 |
+| dungeons/the-temple-of-atalhakkar | 10 | 7 | 2 | 6 | 3 |
+| dungeons/uldaman | 29 | 21 | 12 | 23 | 13 |
+| dungeons/wailing-caverns | 12 | 8 | 5 | 9 | 6 |
+| dungeons/zulfarrak | 10 | 10 | 1 | 10 | 3 |
+| eastern-kingdoms/alterac-mountains | 21 | 18 | 10 | 18 | 16 |
 | eastern-kingdoms/alterac-valley | 3 | 3 | 0 | 3 | 0 |
-| eastern-kingdoms/anvilmar | 1 | 1 | 1 | 1 | 0 |
-| eastern-kingdoms/arathi-highlands | 54 | 50 | 28 | 50 | 32 |
-| eastern-kingdoms/badlands | 44 | 42 | 25 | 43 | 29 |
-| eastern-kingdoms/blackrock-mountain | 15 | 4 | 4 | 2 | 0 |
-| eastern-kingdoms/blasted-lands | 26 | 26 | 17 | 25 | 22 |
-| eastern-kingdoms/burning-steppes | 24 | 24 | 13 | 24 | 9 |
+| eastern-kingdoms/anvilmar | 1 | 1 | 1 | 1 | 1 |
+| eastern-kingdoms/arathi-highlands | 54 | 50 | 31 | 50 | 47 |
+| eastern-kingdoms/badlands | 44 | 42 | 27 | 44 | 38 |
+| eastern-kingdoms/blackrock-mountain | 15 | 14 | 12 | 15 | 11 |
+| eastern-kingdoms/blasted-lands | 26 | 26 | 20 | 26 | 26 |
+| eastern-kingdoms/burning-steppes | 24 | 24 | 18 | 24 | 19 |
+| eastern-kingdoms/crafting | 150 | 0 | 9 | 36 | 0 |
 | eastern-kingdoms/deeprun-tram | 2 | 0 | 0 | 0 | 0 |
-| eastern-kingdoms/dun-morogh | 60 | 56 | 29 | 60 | 39 |
-| eastern-kingdoms/duskwood | 100 | 98 | 42 | 99 | 59 |
-| eastern-kingdoms/eastern-plaguelands | 109 | 80 | 42 | 104 | 39 |
-| eastern-kingdoms/elwynn-forest | 76 | 69 | 33 | 73 | 51 |
-| eastern-kingdoms/hillsbrad-foothills | 56 | 56 | 32 | 56 | 32 |
-| eastern-kingdoms/ironforge | 82 | 71 | 21 | 80 | 34 |
+| eastern-kingdoms/dun-morogh | 64 | 62 | 34 | 64 | 57 |
+| eastern-kingdoms/duskwood | 100 | 99 | 43 | 99 | 90 |
+| eastern-kingdoms/eastern-plaguelands | 109 | 82 | 53 | 108 | 58 |
+| eastern-kingdoms/elwynn-forest | 78 | 74 | 40 | 75 | 70 |
+| eastern-kingdoms/hillsbrad-foothills | 56 | 56 | 39 | 56 | 49 |
+| eastern-kingdoms/ironforge | 82 | 82 | 23 | 82 | 42 |
 | eastern-kingdoms/kharanos | 1 | 1 | 0 | 1 | 1 |
-| eastern-kingdoms/loch-modan | 47 | 38 | 18 | 38 | 18 |
-| eastern-kingdoms/redridge-mountains | 43 | 31 | 14 | 32 | 13 |
+| eastern-kingdoms/loch-modan | 47 | 46 | 24 | 46 | 44 |
+| eastern-kingdoms/redridge-mountains | 43 | 40 | 25 | 42 | 38 |
 | eastern-kingdoms/riverglades | 1 | 1 | 0 | 1 | 1 |
-| eastern-kingdoms/searing-gorge | 31 | 28 | 19 | 30 | 19 |
+| eastern-kingdoms/searing-gorge | 31 | 30 | 24 | 31 | 29 |
 | eastern-kingdoms/shadowfang-keep | 2 | 0 | 0 | 0 | 0 |
-| eastern-kingdoms/silverpine-forest | 50 | 36 | 9 | 36 | 16 |
+| eastern-kingdoms/silverpine-forest | 50 | 50 | 26 | 50 | 50 |
 | eastern-kingdoms/stonewrought-dam | 1 | 1 | 0 | 1 | 1 |
-| eastern-kingdoms/stormwind-city | 88 | 78 | 12 | 79 | 49 |
-| eastern-kingdoms/stranglethorn-vale | 125 | 58 | 23 | 63 | 25 |
-| eastern-kingdoms/swamp-of-sorrows | 28 | 23 | 14 | 21 | 16 |
-| eastern-kingdoms/the-hinterlands | 45 | 44 | 24 | 44 | 27 |
+| eastern-kingdoms/stormwind-city | 88 | 84 | 23 | 87 | 81 |
+| eastern-kingdoms/stranglethorn-vale | 125 | 104 | 75 | 105 | 91 |
+| eastern-kingdoms/swamp-of-sorrows | 28 | 24 | 14 | 23 | 21 |
+| eastern-kingdoms/the-hinterlands | 45 | 45 | 31 | 45 | 43 |
 | eastern-kingdoms/thoradins-wall | 1 | 1 | 0 | 1 | 1 |
-| eastern-kingdoms/tirisfal-glades | 66 | 36 | 25 | 37 | 22 |
-| eastern-kingdoms/undercity | 32 | 26 | 12 | 26 | 11 |
-| eastern-kingdoms/western-plaguelands | 92 | 63 | 30 | 62 | 32 |
-| eastern-kingdoms/westfall | 54 | 32 | 19 | 32 | 15 |
-| eastern-kingdoms/wetlands | 66 | 43 | 20 | 43 | 34 |
+| eastern-kingdoms/tirisfal-glades | 66 | 64 | 44 | 66 | 63 |
+| eastern-kingdoms/undercity | 32 | 31 | 16 | 31 | 27 |
+| eastern-kingdoms/western-plaguelands | 92 | 91 | 48 | 91 | 68 |
+| eastern-kingdoms/westfall | 54 | 54 | 29 | 54 | 52 |
+| eastern-kingdoms/wetlands | 66 | 44 | 26 | 44 | 43 |
 | kalimdor/abyssal-sands | 1 | 0 | 0 | 0 | 0 |
-| kalimdor/ashenvale | 82 | 69 | 34 | 70 | 52 |
-| kalimdor/azshara | 45 | 5 | 1 | 6 | 1 |
+| kalimdor/ashenvale | 82 | 73 | 41 | 74 | 67 |
+| kalimdor/azshara | 45 | 27 | 12 | 27 | 23 |
 | kalimdor/blackmaw-hold | 7 | 7 | 4 | 7 | 4 |
-| kalimdor/darkshore | 80 | 60 | 31 | 62 | 34 |
-| kalimdor/darnassus | 27 | 26 | 8 | 26 | 19 |
-| kalimdor/desolace | 76 | 41 | 22 | 41 | 24 |
-| kalimdor/durotar | 65 | 55 | 32 | 60 | 37 |
-| kalimdor/dustwallow-marsh | 69 | 50 | 20 | 49 | 33 |
-| kalimdor/felwood | 87 | 82 | 31 | 83 | 34 |
-| kalimdor/feralas | 78 | 47 | 19 | 48 | 25 |
+| kalimdor/darkshore | 80 | 80 | 52 | 80 | 74 |
+| kalimdor/darnassus | 29 | 28 | 7 | 28 | 20 |
+| kalimdor/desolace | 76 | 58 | 40 | 57 | 43 |
+| kalimdor/durotar | 67 | 61 | 39 | 62 | 56 |
+| kalimdor/dustwallow-marsh | 69 | 55 | 25 | 55 | 48 |
+| kalimdor/felwood | 87 | 83 | 39 | 83 | 43 |
+| kalimdor/feralas | 78 | 78 | 43 | 78 | 66 |
 | kalimdor/field-of-giants | 1 | 1 | 0 | 1 | 1 |
-| kalimdor/moonglade | 8 | 8 | 1 | 8 | 3 |
-| kalimdor/mulgore | 61 | 27 | 14 | 29 | 16 |
-| kalimdor/orgrimmar | 92 | 68 | 22 | 81 | 31 |
+| kalimdor/moonglade | 8 | 8 | 3 | 8 | 7 |
+| kalimdor/mulgore | 61 | 53 | 31 | 54 | 51 |
+| kalimdor/orgrimmar | 94 | 90 | 30 | 92 | 45 |
 | kalimdor/ruttheran-village | 4 | 4 | 2 | 4 | 4 |
 | kalimdor/shendralas | 3 | 0 | 1 | 0 | 0 |
-| kalimdor/silithus | 126 | 32 | 34 | 64 | 24 |
-| kalimdor/stonetalon-mountains | 52 | 42 | 27 | 42 | 33 |
-| kalimdor/tanaris | 94 | 67 | 24 | 66 | 21 |
-| kalimdor/teldrassil | 62 | 44 | 22 | 47 | 29 |
-| kalimdor/the-barrens | 116 | 114 | 73 | 114 | 84 |
-| kalimdor/thousand-needles | 71 | 35 | 18 | 40 | 17 |
-| kalimdor/thunder-bluff | 36 | 29 | 14 | 26 | 13 |
-| kalimdor/ungoro-crater | 53 | 34 | 20 | 35 | 15 |
-| kalimdor/winterspring | 57 | 34 | 19 | 36 | 18 |
-| map:2521 / Published zone 16593 | 9 | 0 | 0 | 0 | 0 |
-| map:2521 / Zephras Isle | 107 | 0 | 0 | 0 | 0 |
+| kalimdor/silithus | 126 | 75 | 73 | 117 | 51 |
+| kalimdor/stonetalon-mountains | 52 | 50 | 34 | 48 | 45 |
+| kalimdor/tanaris | 95 | 87 | 43 | 90 | 53 |
+| kalimdor/teldrassil | 62 | 59 | 34 | 60 | 54 |
+| kalimdor/the-barrens | 116 | 114 | 75 | 114 | 111 |
+| kalimdor/thousand-needles | 71 | 64 | 32 | 64 | 49 |
+| kalimdor/thunder-bluff | 38 | 38 | 14 | 37 | 27 |
+| kalimdor/ungoro-crater | 53 | 52 | 37 | 52 | 46 |
+| kalimdor/winterspring | 57 | 57 | 33 | 57 | 49 |
+| map:2521 / Published zone 16593 | 9 | 2 | 0 | 2 | 2 |
+| map:2521 / Zephras Isle | 107 | 107 | 74 | 107 | 107 |
+| miscellaneous/epic | 2 | 2 | 1 | 2 | 2 |
+| miscellaneous/legendary | 9 | 8 | 0 | 9 | 2 |
+| professions/alchemy | 1 | 1 | 0 | 1 | 0 |
+| professions/blacksmithing | 41 | 36 | 6 | 37 | 5 |
+| professions/cooking | 11 | 11 | 6 | 11 | 6 |
+| professions/engineering | 20 | 20 | 1 | 20 | 7 |
+| professions/first-aid | 4 | 4 | 2 | 4 | 4 |
+| professions/fishing | 13 | 10 | 1 | 10 | 3 |
+| professions/herbalism | 1 | 1 | 1 | 1 | 1 |
+| professions/leatherworking | 21 | 20 | 15 | 20 | 2 |
+| professions/tailoring | 3 | 2 | 2 | 2 | 2 |
+| raids/ahnqiraj | 79 | 27 | 18 | 28 | 0 |
+| raids/blackwing-lair | 2 | 1 | 0 | 2 | 0 |
+| raids/molten-core | 8 | 2 | 2 | 2 | 0 |
+| raids/naxxramas | 91 | 89 | 22 | 91 | 0 |
+| raids/onyxias-lair | 1 | 0 | 0 | 0 | 0 |
+| raids/ruins-of-ahnqiraj | 1 | 0 | 0 | 1 | 0 |
+| raids/zulgurub | 86 | 10 | 9 | 12 | 5 |
+| uncategorized | 259 | 129 | 107 | 144 | 122 |
+| world-events/childrens-week | 14 | 14 | 10 | 14 | 12 |
+| world-events/darkmoon-faire | 47 | 36 | 13 | 42 | 13 |
+| world-events/hallows-end | 15 | 15 | 13 | 15 | 12 |
+| world-events/love-is-in-the-air | 20 | 20 | 2 | 20 | 12 |
+| world-events/lunar-festival | 72 | 64 | 2 | 64 | 53 |
+| world-events/midsummer | 16 | 14 | 12 | 14 | 12 |
+| world-events/winter-veil | 29 | 27 | 6 | 27 | 21 |
 
 ## Reproduce capture, build and audit
 
-Use `/workspace/.wow-together-tests/bin/python` (Python with pinned Lupa 2.8).
-Run these from the development repository, not the installed AddOns folder.
-Source caches are development inputs outside the addon. Keep the reviewed
-older-world snapshot and Mapzeroth data checkout at their pinned revisions.
-The archive includes editable catalogue Lua, import/build scripts and notices.
+Use `/workspace/.wow-together-tests/bin/python` with pinned Lupa 2.8. Run from
+this repository, not the installed AddOns folder. Caches stay outside releases.
+Keep external factual checkouts at their documented revisions; source hashes
+must agree. No source acquisition is hidden inside the offline builder.
 
 ```sh
 python3 tools/import_warcraftdb.py
@@ -177,14 +282,20 @@ python3 tools/import_wowhead.py --all-categories --spread-details
   --from-catalogue WowTogether/QuestCatalogue.lua
 /workspace/.wow-together-tests/bin/python tools/build_quest_dataset.py \
   --legacy-snapshot /tmp/wow-together-classic-facts/source/Full_DB/ClassicDB_1_12_1_z2815.sql.gz \
-  --forever-pois /tmp/wow-together-mapzeroth-source/Data/Forever/Pois.lua
+  --forever-pois /tmp/wow-together-mapzeroth-source/Data/Forever/Pois.lua \
+  --forever-geometry /tmp/wow-together-questiedb-facts/data/Forever/conversion.json \
+  --forever-event-data /tmp/wow-together-questiedb-facts \
+  --forever-beta-data /tmp/wow-together-questiedb-facts
 /workspace/.wow-together-tests/bin/python tools/audit_quest_guides.py
+/workspace/.wow-together-tests/bin/python tools/guide_source_queue.py
+/workspace/.wow-together-tests/bin/python tools/capture_quest_pages.py \
+  WowTogether/GuideSourceQueue.json --denials WowTogether/QuestCatalogue.json
+/workspace/.wow-together-tests/bin/python tools/audit_quest_guides.py --require-complete
 /workspace/.wow-together-tests/bin/python -m unittest discover -s tests -q
 ```
 
-Capture commands may need configured source access; do not loop unchanged
-denials. After a meaningful access change, the entity capture tool supports
-`--access-changed` to recheck stored 403s and still stops on renewed denials.
-The dataset builder performs no network requests. It regenerates from source
-caches instead of accumulating stale fallback facts from yesterday's output.
-Run it twice with unchanged inputs and compare output checksums.
+Capture commands need source access; do not loop unchanged denials. The targeted
+quest capture excludes known failed IDs and does not overwrite generated addon
+files. After capture, rebuild and regenerate both audit reports and the queue.
+Run the offline builder twice with unchanged inputs and compare output checksums.
+The complete editable catalogue, build tools and notices are included in releases.

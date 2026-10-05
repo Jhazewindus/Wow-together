@@ -258,6 +258,9 @@ local function levelPath(id, level, seen, depth, query)
     local visited = {}; for key, value in pairs(seen) do visited[key] = value end; visited[id] = true
     if quest.previousQuest and not ns.PartyQuestFinished(quest.previousQuest, query)
         and not levelPath(quest.previousQuest, level, visited, depth + 1, query) then return false end
+    for _, previous in ipairs(quest.prerequisiteAll or {}) do
+        if not ns.PartyQuestFinished(previous, query) and not levelPath(previous, level, visited, depth + 1, query) then return false end
+    end
     if quest.prerequisiteAny then
         for _, previous in ipairs(quest.prerequisiteAny) do
             if ns.PartyQuestFinished(previous, query) or levelPath(previous, level, visited, depth + 1, query) then return true end

@@ -24,13 +24,13 @@ function ns.StopInstruction(stop)
     local target = stop.itemName or stop.targetName or stop.npcName
     local action, quantity = stop.action, stop.quantity
     for _, objective in ipairs((ns.ProgressForMember(stop.memberKey or ns.self, stop.id) or {}).objectives or {}) do
-        if target and ns.ObjectiveMatchesPoint(objective.text, {name = target}) then
-            if action ~= "use" and action ~= "interact" and action ~= "talk" then
+        if target and ns.ObjectiveMatchesPoint(objective.text, {name = target, progressName = stop.progressName}) then
+            if action ~= "use" and action ~= "heal" and action ~= "interact" and action ~= "talk" and action ~= "escort" and action ~= "event" then
                 if objective.kind == "monster" then action = "kill"
                 elseif objective.kind == "item" then action = "collect" end
             end
             quantity = objective.need or quantity
-            target = ns.ObjectiveLabel(objective.text)
+            if action ~= "escort" and action ~= "event" then target = ns.ObjectiveLabel(objective.text) end
             target = string.gsub(target, "%s+slain$", "")
             target = string.gsub(target, "%s+killed$", "")
             target = string.gsub(target, "%s+collected$", "")
@@ -39,8 +39,12 @@ function ns.StopInstruction(stop)
     end
     local count = finite(quantity) and quantity > 1 and (tostring(math.floor(quantity)) .. " × ") or ""
     if action == "use" then
-        return "Use " .. (stop.useItemName or "the quest item") .. " on " .. count .. (stop.npcName or stop.targetName or stop.title)
+        return "Use " .. (stop.useItemName or "the quest item") .. (stop.sourceAction == "use-at" and " at " or " on ")
+            .. count .. (stop.npcName or stop.targetName or stop.title)
     end
+    if action == "escort" then return "Escort " .. (target or stop.title) .. " to this destination" end
+    if action == "event" then return "Complete " .. stop.title .. " at this location" end
+    if action == "heal" then return "Heal " .. count .. (stop.objectiveLabel or target or stop.title) end
     if action == "kill" then return "Kill " .. count .. (target or stop.title) end
     if action == "buy" then return "Buy " .. count .. (target or stop.title) end
     if action == "interact" then return "Interact with " .. (target or stop.title) end

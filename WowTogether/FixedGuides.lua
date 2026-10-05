@@ -81,16 +81,19 @@ function ns.GenerateFixedGuide(guide, cooperative)
     local function unlocked(id, handedIn)
         local quest = ns.CatalogueQuest(id)
         if quest.previousQuest and not done[quest.previousQuest] and quest.previousQuest ~= handedIn then return false end
+        for _, previous in ipairs(quest.prerequisiteAll or {}) do
+            if not done[previous] and previous ~= handedIn then return false end
+        end
         if quest.prerequisiteAny then
             local met = false; for _, previous in ipairs(quest.prerequisiteAny) do if done[previous] or previous == handedIn then met = true end end
             if not met then return false end
-        elseif not quest.previousQuest then
+        elseif not quest.previousQuest and not quest.prerequisiteAll then
             if not learned[id] then learned[id] = ns.LearnedPrerequisiteIDs(id) end
             for _, previous in ipairs(learned[id]) do if not done[previous] and previous ~= handedIn then return false end end
         end
         return true
     end
-    local previous
+    local previous, urgent
     while true do
         local available, floor = {}, 255
         for _, task in ipairs(tasks) do
@@ -108,6 +111,7 @@ function ns.GenerateFixedGuide(guide, cooperative)
             local stop, quest = task.stages[task.next], ns.CatalogueQuest(task.id)
             local value = distance(previous, stop, metrics) + math.max(0, (quest.level or 0) - floor - 2) * 2500
             if stop.kind == "a" then value = value - 100 end
+            if task == urgent then value = -math.huge end
             if stop.kind == "t" then
                 -- Prefer a nearby hand-in that opens another pickup at this
                 -- hub. This depends on published geography, not player position.
@@ -125,6 +129,10 @@ function ns.GenerateFixedGuide(guide, cooperative)
         end
         local stop = best.stages[best.next]
         ordered[#ordered + 1], best.next = stop, best.next + 1
+        -- Accepting an escort can start the event immediately. Complete its
+        -- work stage before scheduling unrelated pickups or a farming detour.
+        local nextStop = best.stages[best.next]
+        urgent = nextStop and nextStop.action == "escort" and best or nil
         if not stop.unknownLocation then previous = stop end
         if stop.kind == "t" then done[stop.id] = true end
     end
@@ -153,7 +161,7 @@ local function doneFor(stop, key, query)
         if ns.QuestProgressReady(key, stop.id) == true or key == ns.self and ns.readyToTurnIn[stop.id] == true then return true end
         local progress, matched = ns.ProgressForMember(key, stop.id), false
         for _, objective in ipairs(progress and progress.objectives or {}) do
-            if ns.ObjectiveMatchesPoint(objective.text, {name = stop.targetName or stop.npcName, itemName = stop.itemName}) then
+            if ns.ObjectiveMatchesPoint(objective.text, {name = stop.targetName or stop.npcName, itemName = stop.itemName, progressName = stop.progressName}) then
                 matched = true
                 if not ns.ObjectiveFinished(objective) then return false end
             end

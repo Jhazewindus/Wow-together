@@ -16,8 +16,12 @@ from lupa.lua51 import LuaRuntime
 from import_warcraftdb import ROOT, apply_corrections, generate, normalize
 from import_wowhead import base_facts, detail_facts, json_after, list_rows
 from import_travel_network import encode
-from quest_enrichment import enrich, entity_facts, mapper_entities, quest_relations
+from quest_enrichment import enrich, entity_facts, mapper_entities, quest_relations, warcraftdb_objective_facts, warcraftdb_map_facts
 from legacy_quest_facts import COMMIT, SOURCE, calibrate, indexed, mapped_locations, matches, read_snapshot, requirements, world_locations
+from forever_map_geometry import read_geometry
+from quest_event_areas import event_rows, apply_event_areas
+from forever_beta_facts import merge_beta_facts
+from quest_observation_facts import apply_observations
 
 
 def plain(value):
@@ -66,25 +70,29 @@ def forever_pois(path, entities):
 
 
 def build(args):
+    output=args.output_directory
+    output.mkdir(parents=True,exist_ok=True)
     # Rebuild from captured sources, never yesterday's generated fallback.
     # Removing a source or correcting a requirement must remove stale facts.
     records={}
     source_requirements={}
+    source_provided={}
+    source_maps={}
     previous=json.loads((ROOT/'WowTogether/QuestCatalogue.json').read_text())
     area_maps={int(k):v for k,v in previous['area_ui_maps'].items()}
+    geometry, geometry_source = {}, {}
+    if args.forever_geometry:
+        geometry, geometry_areas, geometry_source = read_geometry(args.forever_geometry)
+        for area, map_id in geometry_areas.items():
+            if area in area_maps and area_maps[area] != map_id:
+                raise ValueError('Published map bounds contradict an existing area/map identity')
+            area_maps[area] = map_id
     for file in sorted(args.warcraftdb_cache.glob('quest-*.json')):
         ident=int(file.stem.split('-')[1]);raw=json.loads(file.read_text());facts=normalize({'record_id':ident},raw)
-        requirements_raw=[]
-        for objective in raw.get('data',{}).get('objectives',[]):
-            kind=objective.get('link_node');entity=objective.get('link_id');quantity=objective.get('amount')
-            if kind in ('npc','object','item') and type(entity) is int and entity>0 and type(quantity) is int and quantity>0:
-                ref={'entityType':kind,'entityID':entity,'name':objective.get('description',''),'quantity':quantity}
-                if objective.get('type')==3:
-                    ref['name']=re.sub(r'^Speak (?:with|to)\s+','',ref['name'])
-                action={0:'kill',3:'talk',2:'interact',1:'collect'}.get(objective.get('type'))
-                if action:ref['action']=action
-                requirements_raw.append(ref)
+        if raw.get('extra',{}).get('quest_map'):source_maps[ident]=raw
+        requirements_raw,provided=warcraftdb_objective_facts(raw)
         if requirements_raw:source_requirements[ident]=requirements_raw
+        if provided:source_provided[ident]=provided
         # Keep Forever list metadata and existing detailed facts authoritative.
         current=records.setdefault(ident,{})
         for key,value in facts.items():
@@ -124,7 +132,8 @@ def build(args):
         for loc in facts['locations']:
             if loc.get('sourceAreaID') and loc['sourceAreaID'] not in area_maps:
                 area_maps[loc['sourceAreaID']]=loc['mapID']
-    refs={ident:{'starts':[],'ends':[],'requirements':values} for ident,values in source_requirements.items()}
+    refs={ident:{'starts':[],'ends':[],'requirements':source_requirements.get(ident,[]),'provided':source_provided.get(ident,[])}
+        for ident in set(source_requirements)|set(source_provided)}
     for ident in source_requirements:records[ident]['requirementSource']='Warcraft DB Forever structured objectives'
     valid_pages=0
     for ident,page in sorted(pages.items()):
@@ -137,6 +146,8 @@ def build(args):
         if relation['requirements']:records[ident]['requirementSource']='Wowhead Forever objective table'
         if not relation['requirements']:
             relation['requirements']=source_requirements.get(ident,[])
+        for provided in source_provided.get(ident,[]):
+            if not any(p['entityID']==provided['entityID'] for p in relation['provided']):relation['provided'].append(provided)
         supplied={r['entityID'] for r in relation.get('provided',[])}
         relation['requirements']=[r for r in relation['requirements'] if not (r['entityType']=='item' and r['entityID'] in supplied)]
         refs[ident]=relation
@@ -150,14 +161,22 @@ def build(args):
         for ident in exclusion['questIDs']:
             if ident in records:records[ident]['levelingExcluded']=exclusion['reason']
     legacy_quests=[];transforms={};legacy_stats={}
+    # Tester-confirmed Forever gates must precede fallback imports so an older
+    # alternative branch cannot weaken or conflict with a tested requirement.
+    apply_corrections(records)
+    beta_source = merge_beta_facts(records,refs,entities,area_maps,args.forever_beta_data) if args.forever_beta_data else {}
     if args.legacy_snapshot:
         print('Reading pinned older-world facts (no SQL execution)...',flush=True)
         legacy=indexed(read_snapshot(args.legacy_snapshot))
         for ident,entity in entities['npc'].items():
             if not entity['name'] and ident in legacy['npc']:entity['name']=legacy['npc'][ident]['name']
-        transforms=calibrate(entities,legacy)
+        calibrated=calibrate(entities,legacy)
+        # Published build-specific DBC rectangles are direct geometry evidence;
+        # the empirical fit remains a separate fallback, not a guessed bound.
+        transforms=dict(calibrated)
+        transforms.update(geometry)
         eligible={ident for ident,quest in records.items() if ident in legacy['quests'] and matches(quest,legacy['quests'][ident])}
-        print(f'Identity-matched unchanged quests: {len(eligible)}; calibrated maps: {len(transforms)}',flush=True)
+        print(f'Identity-matched unchanged quests: {len(eligible)}; static map transforms: {len(transforms)}; empirical fits: {len(calibrated)}',flush=True)
         referenced={kind:set() for kind in ('npc','object','item')}
         for ident in sorted(eligible):
             quest,source=records[ident],legacy['quests'][ident]
@@ -172,8 +191,16 @@ def build(args):
                 # not evidence of where the event must actually take place.
                 quest['objectiveLocationsIncomplete']=True;quest['otherLocationsIncomplete']=True
             for requirement in relation['requirements']:
+                exact_old=next((r for r in requirements(source,legacy) if r['entityType']==requirement['entityType']
+                    and r['entityID']==requirement['entityID']),None)
+                if requirement.get('quantityUnknown') and not requirement.get('alternativeEntityIDs') and exact_old:
+                    # Only strictly unchanged, identity-matched quests reach
+                    # this branch. A known count for this exact target fills
+                    # a sparse export; it never replaces a published count.
+                    requirement['quantity']=exact_old['quantity']
+                    requirement.pop('quantityUnknown',None)
                 old_req=next((r for r in requirements(source,legacy) if r['entityType']==requirement['entityType']
-                    and r['entityID']==requirement['entityID'] and r['quantity']==requirement['quantity']),None)
+                    and r['entityID']==requirement['entityID'] and r.get('quantity')==requirement.get('quantity')),None)
                 if old_req and old_req.get('action')=='use':
                     requirement.update({k:old_req[k] for k in ('action','useItemName','spellID') if k in old_req})
             for role in relation.values():
@@ -181,7 +208,7 @@ def build(args):
             # Explicit positive predecessor only; keep published/tester branches.
             parent=source['PrevQuestId']
             if parent>0 and parent in eligible and not any(quest.get(k) for k in
-                    ('previousQuest','prerequisiteAny','prerequisiteCandidates','prerequisitesUnverified')):
+                    ('previousQuest','prerequisiteAll','prerequisiteAny','prerequisiteCandidates','prerequisitesUnverified')):
                 quest['previousQuest']=parent;quest['prerequisiteSource']='Identity-matched unchanged quest: '+SOURCE
             if source['SpecialFlags'] & 1:quest['repeatable']=True
             for old_key,key in (('RequiredClasses','classMask'),('RequiredRaces','raceMask')):
@@ -214,7 +241,8 @@ def build(args):
                 merge_entity(entities,kind,ident,value)
         legacy_stats={'source':SOURCE,'commit':COMMIT,'snapshot_sha256':hashlib.sha256(args.legacy_snapshot.read_bytes()).hexdigest(),
             'license':'GPL-3.0','identity_matched_unchanged_quests':len(eligible),
-            'maps_calibrated_against_forever_npcs':transforms,'limitations':['Older-world fallbacks need current-beta testing',
+            'maps_calibrated_against_forever_npcs':calibrated,'published_forever_map_geometry':geometry_source,
+            'maps_with_static_transforms':len(transforms),'limitations':['Older-world fallbacks need current-beta testing',
             'No server/addon logic or quest prose included','World points are not terrain-safe road paths']}
         checks=[]
         for ident,entity in sorted(entities['npc'].items()):
@@ -226,23 +254,52 @@ def build(args):
                     if point.get('mapID') and not point.get('locationSource'):
                         checks.append(dict(point,continent=continent,worldX=x,worldY=y));break
         world_checks={continent: [p for p in checks if p['continent']==continent][:16] for continent in (0,1)}
+    community_source=apply_observations(pages,records,refs,entities,area_maps)
     for ident,relation in refs.items():
         quest=records[ident]
+        supplied={p['entityID'] for p in relation.get('provided',[])}
+        relation['requirements']=[r for r in relation['requirements'] if not (r['entityType']=='item' and r['entityID'] in supplied)]
+        if quest.get('requiredItems'):
+            quest['requiredItems']=[r for r in quest['requiredItems'] if r['itemID'] not in supplied]
         quest['startRefs'],quest['endRefs']=relation['starts'],relation['ends']
         # Clear stale generated enrichment on reproducible rebuilds.
         quest.pop('missingRequirements',None)
         for ref in relation['requirements']:
-            if ref['entityType']=='item':
+            if ref['entityType']=='item' and ref.get('quantity'):
                 items=quest.setdefault('requiredItems',[])
                 if not any(i['itemID']==ref['entityID'] for i in items):
                     items.append({'itemID':ref['entityID'],'name':ref['name'],'quantity':ref['quantity']})
         enrich(quest,relation,entities)
+    native_maps={'source':'https://forever.warcraftdb.com/list/quests','stages_added':0,'quests':[]}
+    known_maps=set(area_maps.values())|set(geometry)|{n['mapID'] for n in travel['nodes'].values()}
+    for ident,raw in sorted(source_maps.items()):
+        added=warcraftdb_map_facts(raw,records[ident],refs.get(ident,{'starts':[],'ends':[],'requirements':[]}),entities,known_maps)
+        if added:
+            native_maps['stages_added']+=added
+            native_maps['quests'].append({'questID':ident,'sha256':hashlib.sha256(json.dumps(raw,sort_keys=True).encode()).hexdigest()})
+    if args.forever_event_data:
+        if not args.legacy_snapshot or not args.forever_geometry:
+            raise ValueError('Event areas require the reviewed identity snapshot and Forever geometry report')
+        rows, ambiguous = event_rows(args.forever_event_data, area_maps, json.loads(args.forever_geometry.read_text()))
+        legacy_stats['published_event_areas'] = apply_event_areas(records, rows, ambiguous, eligible,
+            legacy['quests'], legacy['item'], area_maps)
     corrections=apply_corrections(records)
     code=generate(records,datetime.date.today().isoformat())
     code=code.replace('-- Generated by tools/import_warcraftdb.py;','-- Generated by tools/build_quest_dataset.py;')
     code=code.replace('    count =','    detailSource = "https://www.wowhead.com/forever/quests",\n    count =',1)
+    # Importing a whole factual item database must not make the game load
+    # thousands of unrelated loot tables. Retain every item used by a quest,
+    # including starters/provided items and all of their actual source facts.
+    used_items=set()
+    for quest in records.values():
+        for field in ('startRefs','endRefs','requirements','providedItems'):
+            for ref in quest.get(field,[]):
+                if ref.get('entityType')=='item':used_items.add(ref['entityID'])
+        for ref in quest.get('requiredItems',[]):used_items.add(ref['itemID'])
+        for point in quest.get('objectives',[]):
+            if point.get('itemID'):used_items.add(point['itemID'])
     runtime_entities={kind:{ident:{key:value for key,value in entity.items() if key not in ('locations','source')}
-        for ident,entity in values.items()} for kind,values in entities.items()}
+        for ident,entity in values.items() if kind!='item' or ident in used_items} for kind,values in entities.items()}
     for values in runtime_entities.values():
         for entity in values.values():
             if 'worldLocations' in entity:
@@ -255,16 +312,17 @@ def build(args):
         code=code.replace('local addonName, ns = ...\n','local addonName, ns = ...\nlocal legacyFactsSource = '+literal+'\n',1)
         code=code.replace('-- Generated by tools/build_quest_dataset.py;',
             '-- Factual dataset includes GPL-3.0 older-world adaptations; see THIRD_PARTY_NOTICES.md.\n-- Generated by tools/build_quest_dataset.py;',1)
-    (ROOT/'WowTogether/QuestCatalogue.lua').write_text(code)
+    (output/'QuestCatalogue.lua').write_text(code)
     summary=dict(previous,captured=datetime.date.today().isoformat(),count=len(records),detailed_quests=valid_pages,
         with_starters=sum(bool(q.get('starts')) for q in records.values()),with_objectives=sum(bool(q.get('objectives')) for q in records.values()),
         with_turnins=sum(bool(q.get('ends')) for q in records.values()),with_series=sum(bool(q.get('series')) for q in records.values()),
-        with_prerequisites=sum(bool(q.get('previousQuest') or q.get('prerequisiteAny')) for q in records.values()),
+        with_prerequisites=sum(bool(q.get('previousQuest') or q.get('prerequisiteAny') or q.get('prerequisiteAll')) for q in records.values()),
         incomplete_objective_locations=sum(bool(q.get('objectiveLocationsIncomplete')) for q in records.values()),
         repeatable_quests=sum(q.get('repeatable') is True for q in records.values()),area_ui_maps=area_maps,
-        entities={k:len(v) for k,v in entities.items()},additional_map_joins=joins,legacy_fallback=legacy_stats,
-        forever_npc_geography=poi_source,tester_corrections=corrections)
-    (ROOT/'WowTogether/QuestCatalogue.json').write_text(json.dumps(summary,indent=2)+'\n')
+        entities={k:len(v) for k,v in runtime_entities.items()},source_entities={k:len(v) for k,v in entities.items()},additional_map_joins=joins,legacy_fallback=legacy_stats,
+        forever_npc_geography=poi_source,forever_beta_facts=beta_source,community_coordinate_facts=community_source,
+        warcraftdb_native_maps=native_maps,tester_corrections=corrections)
+    (output/'QuestCatalogue.json').write_text(json.dumps(summary,indent=2)+'\n')
     coverage=collections.defaultdict(lambda: {'quests':0,'pickups':0,'objectives':0,'turnins':0,'complete_locations':0,'missing_quest_ids':[]})
     for ident,quest in sorted(records.items()):
         zone=quest.get('categoryPath') or quest.get('zone') or 'Unknown category'
@@ -280,19 +338,27 @@ def build(args):
     report={'captured':summary['captured'],'sources':['https://forever.warcraftdb.com','https://www.wowhead.com/forever',SOURCE],
         'summary':{k:summary[k] for k in ('count','detailed_quests','with_starters','with_objectives','with_turnins','with_prerequisites','entities')},
         'zones':dict(sorted(coverage.items())),'unavailable_details':previous.get('unavailable_details',[]),
+        'quest_capture':json.loads((args.quest_cache/'capture.json').read_text()) if (args.quest_cache/'capture.json').exists() else {},
         'entity_capture':json.loads((args.entity_cache/'capture.json').read_text()) if (args.entity_cache/'capture.json').exists() else {},
-        'legacy_fallback':legacy_stats}
-    (ROOT/'WowTogether/QuestCoverage.json').write_text(json.dumps(report,indent=2)+'\n')
+        'legacy_fallback':legacy_stats,'forever_beta_facts':beta_source,'community_coordinate_facts':community_source,
+        'warcraftdb_native_maps':native_maps}
+    if geometry_source:report['sources'].append(geometry_source['source'])
+    if beta_source:report['sources'].append(beta_source['source'])
+    (output/'QuestCoverage.json').write_text(json.dumps(report,indent=2)+'\n')
     print(json.dumps(report['summary'],indent=2),flush=True)
 
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--output-directory',type=Path,default=ROOT/'WowTogether',help='Write a separate candidate dataset for reproducibility checks without changing the addon.')
     parser.add_argument('--quest-cache',type=Path,default=Path('/tmp/wow-together-wowhead'))
     parser.add_argument('--warcraftdb-cache',type=Path,default=Path('/tmp/wow-together-warcraftdb'))
     parser.add_argument('--entity-cache',type=Path,default=Path('/tmp/wow-together-wowhead-entities'))
     parser.add_argument('--legacy-snapshot',type=Path)
     parser.add_argument('--forever-pois',type=Path,help='Reviewed MIT Forever NPC data rows, used only as geographic facts.')
+    parser.add_argument('--forever-geometry',type=Path,help='Pinned published Forever DBC map bounds; no source addon code is read.')
+    parser.add_argument('--forever-event-data',type=Path,help='Pinned public event endpoints; literal facts only, no provider execution.')
+    parser.add_argument('--forever-beta-data',type=Path,help='Pinned public Forever facts; literal parsing excludes all source engine/UI code.')
     build(parser.parse_args())
 
 

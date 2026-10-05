@@ -67,7 +67,7 @@ function ns.FocusCanStartRecord(record, key)
     local profile = key == ns.self and ns.profile or ns.members[key] and ns.members[key].profile
     if active and active[record.id] or ns.CatalogueCompletion(key, record.id) == true
         or ns.CatalogueIdentityAllowed(record.id, profile) == false then return true end
-    if quest.previousQuest or quest.prerequisiteAny then
+    if quest.previousQuest or quest.prerequisiteAny or quest.prerequisiteAll then
         return ns.CatalogueAllowed(record.id, profile, key) == true
     end
     return true
@@ -90,6 +90,7 @@ local function nextQuests(id, key)
         end
         for nextID, quest in pairs(ns.catalogue and ns.catalogue.quests or {}) do
             add(quest.previousQuest, nextID)
+            for _, previous in ipairs(quest.prerequisiteAll or {}) do add(previous, nextID) end
             for _, previous in ipairs(quest.prerequisiteAny or {}) do add(previous, nextID) end
             for position, current in ipairs(quest.series or {}) do
                 if quest.series[position + 1] then add(current, quest.series[position + 1]) end

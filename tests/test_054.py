@@ -17,7 +17,7 @@ def local_client():
 
 
 def valley_client():
-    c = Client(quests=(5441,), use_catalogue=True)
+    c = Client(quests=(5441,), completed=(788,), use_catalogue=True)
     c.lua.globals().grouped = False
     c.unit_names({'player': ['Alice', 'TestRealm']})
     c.guide_environment(level=4, current_quests_first=True)
@@ -31,7 +31,7 @@ def valley_client():
 
 
 class NearbyPickupTests(unittest.TestCase):
-    def test_published_valley_quests_bundle_with_lazy_peons_without_fabricated_apple_locations(self):
+    def test_published_valley_quests_bundle_with_lazy_peons_and_real_apple_source(self):
         c = valley_client()
         choice = c.ns.GuideChoices()[1]
         self.assertEqual(choice.mode, 'bundle')
@@ -42,9 +42,12 @@ class NearbyPickupTests(unittest.TestCase):
         route = c.ns.BuildGuideRoute(choice, True)
         self.assertTrue(any(s.id == 5441 and s.kind == 'q' for s in route.stops.values()))
         apples = [s for s in route.stops.values() if s.id == 4402]
-        self.assertEqual([s.kind for s in apples], ['a'])
-        self.assertTrue(route.partial)
-        self.assertIn('incomplete objective locations', choice.reason)
+        self.assertEqual([s.kind for s in apples], ['a', 'q', 't'])
+        self.assertEqual(apples[1].entityID, 171938)
+        self.assertEqual(apples[1].itemID, 11583)
+        self.assertEqual(apples[1].quantity, 10)
+        self.assertFalse(apples[1].unknownLocation)
+        self.assertFalse(route.partial)
         self.assertTrue(all(s.mapID == 1411 for s in route.stops.values()))
 
     def test_general_vile_familiars_needs_no_warlock_intro_but_medallion_still_needs_completion(self):

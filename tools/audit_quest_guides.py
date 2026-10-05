@@ -35,7 +35,8 @@ def audit():
                     assert q.foreverStatus=='unchanged' and q.legacyFactsSource,(ident,'legacy identity')
                 points+=1
         for ref in (q.requirements.values() if q.requirements is not None else []):
-            assert ref.entityType in ('npc','object','item') and ref.entityID>0 and ref.quantity>0,(ident,'requirement')
+            assert ref.entityType in ('npc','object','item') and ref.entityID>0 \
+                and (ref.quantity and ref.quantity>0 or ref.quantityUnknown==True),(ident,'requirement')
         assert q.previousQuest!=ident,(ident,'self prerequisite')
     guides=[];seen=set()
     for faction,races in (('Horde',(2,6,5,8)),('Alliance',(1,3,4,7))):
@@ -59,29 +60,48 @@ def audit():
                             q=c.ns.CatalogueQuest(s.id)
                             if q.previousQuest:
                                 assert (q.previousQuest,'t') in positions and positions[q.previousQuest,'t']<i,(key,s.id,'prerequisite')
+                            for p in (q.prerequisiteAll.values() if q.prerequisiteAll else []):
+                                assert (p,'t') in positions and positions[p,'t']<i,(key,s.id,'AND prerequisite')
                             if q.prerequisiteAny:
                                 assert any((p,'t') in positions and positions[p,'t']<i for p in q.prerequisiteAny.values()),(key,s.id,'OR prerequisite')
                     for id,sequence in kinds.items():
                         assert sequence[0]=='a' and sequence[-1]=='t' and all(k=='q' for k in sequence[1:-1]),(key,id,'stage order')
                         assert not c.ns.IsLevelingExcludedQuest(id) and not c.ns.IsRepeatableQuest(id),(key,id,'excluded quest')
                     assert g.optimization.after<=g.optimization.before+1e-6,(key,'distance regression')
+                    gaps={kind:sorted({int(s.id) for s in plan if s.kind==kind and s.unknownLocation}) for kind in ('a','q','t')}
+                    unread=sorted(int(id) for id in kinds if not c.ns.CatalogueQuest(id).prerequisitesRead
+                        or c.ns.CatalogueQuest(id).prerequisitesUnverified)
+                    unknown_counts=sorted(int(id) for id in kinds if any(r.quantityUnknown and r.action in ('kill','collect','heal','use')
+                        for r in (c.ns.CatalogueQuest(id).requirements.values() if c.ns.CatalogueQuest(id).requirements else [])))
+                    for i,s in enumerate(plan):
+                        if s.action=='escort':
+                            assert i>0 and plan[i-1].id==s.id and plan[i-1].kind in ('a','q'),(key,s.id,'escort adjacency')
+                    unknown=sum(bool(s.unknownLocation) for s in plan)
+                    review=sum(bool(s.planNeedsReview) for s in plan)
                     guides.append({'faction':faction,'zone':g.zone,'key':g.key,'quests':len(kinds),'steps':len(plan),
-                        'unknown_location_steps':sum(bool(s.unknownLocation) for s in plan),
-                        'prerequisite_review_steps':sum(bool(s.planNeedsReview) for s in plan),
+                        'unknown_location_steps':unknown, 'missing_location_quest_ids_by_stage':gaps,
+                        'unverified_pickup_requirement_quest_ids':unread,
+                        'unverified_objective_quantity_quest_ids':unknown_counts,
+                        'prerequisite_review_steps':review, 'source_data_gap_free':unknown==0 and review==0 and not unread and not unknown_counts,
                         'estimated_distance_before':round(g.optimization.before,2),'estimated_distance_after':round(g.optimization.after,2)})
                     print(f'{faction}: {g.zone}: {len(plan)} steps checked',flush=True)
     return {'validation':'Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim',
         'quest_records':c.ns.catalogue.count,'static_points_checked':points,'fixed_zone_guides_checked':len(guides),
+        'source_data_gap_free_guides':sum(g['source_data_gap_free'] for g in guides),
         'guides':sorted(guides,key=lambda g:(g['faction'],g['zone']))}
 
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
     p.add_argument('--output',type=Path,default=ROOT/'WowTogether/GuideAudit.json')
+    p.add_argument('--require-complete',action='store_true',help='Fail when any guide still has missing source facts; invariants alone cannot pass this gate.')
     args=p.parse_args();result=audit()
     if result['fixed_zone_guides_checked']==0:raise ValueError('No zone guides were compiled')
     args.output.write_text(json.dumps(result,indent=2)+'\n')
     print(f"Checked {result['fixed_zone_guides_checked']} guides and {result['static_points_checked']} source points.")
+    if args.require_complete and result['source_data_gap_free_guides']!=result['fixed_zone_guides_checked']:
+        print(f"INCOMPLETE: {result['fixed_zone_guides_checked']-result['source_data_gap_free_guides']} guides still need source facts.",file=sys.stderr)
+        raise SystemExit(2)
 
 
 if __name__=='__main__':main()

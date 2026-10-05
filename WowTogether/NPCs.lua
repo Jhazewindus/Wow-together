@@ -42,6 +42,12 @@ function ns.NPCTargets()
     local query = ns.NewQuestQuery()
     local function add(point, id, kind)
         if not point or not point.npc or not ns.GuideInteger(point.entityID) or point.entityID <= 0 then return end
+        if point.alternativeEntityIDs then
+            local alternate = {}; for name,value in pairs(point) do alternate[name]=value end
+            alternate.alternativeEntityIDs=nil
+            for _, ident in ipairs(point.alternativeEntityIDs) do alternate.entityID=ident; add(alternate,id,kind) end
+            return
+        end
         targets[point.entityID] = targets[point.entityID] or {kind = kind, action = point.action,
             title = ns.QuestTitle(id), label = point.name, quests = {}}
         local target = targets[point.entityID]
@@ -58,6 +64,7 @@ function ns.NPCTargets()
                 if quest then
                     for _, p in ipairs(quest.npcTargets or quest.objectives or {}) do
                         if p.npc and ns.GuideInteger(p.entityID) and p.entityID > 0 then known[p.entityID] = true end
+                        for _, ident in ipairs(p.alternativeEntityIDs or {}) do known[ident]=true end
                     end
                     local point = ns.RoutePointForMember(person.key, id)
                     local ready = (person.key == ns.self and ns.readyToTurnIn[id]) or (point and point.kind == "t") or ns.QuestProgressReady(person.key, id)

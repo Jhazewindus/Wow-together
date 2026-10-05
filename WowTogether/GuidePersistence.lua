@@ -6,7 +6,8 @@ local guideFields = {"key", "title", "zone", "mode", "mapID", "homeMapID", "full
 local recordFields = {"id", "title", "level", "mapID", "x", "y", "npc", "source", "lineID", "lineName", "seriesRoot", "seriesName"}
 local stepFields = {"id", "kind", "mapID", "x", "y", "title", "label", "entityID", "action", "itemName", "targetName",
     "npcName", "published", "planned", "unknownLocation", "guideStep", "planNeedsReview", "learnedSource", "alternativeCount",
-    "quantity", "itemID", "objectiveKey", "useItemName", "spellID", "entityType", "worldFallback", "legacyStepKey", "sourceAction"}
+    "quantity", "itemID", "objectiveKey", "useItemName", "spellID", "entityType", "worldFallback", "legacyStepKey", "sourceAction",
+    "progressName", "objectiveLabel", "quantityUnknown"}
 local cachedGuide, cachedPlan, cachedBatch, cachedVisit
 ns.guideResumeStatus = "No saved guide to resume."
 
@@ -19,6 +20,20 @@ local function fields(source, keys)
             if kind == "boolean" or kind == "string" and #value <= 1000
                 or kind == "number" and value == value and math.abs(value) < math.huge then result[key] = value end
         end
+    end
+    return result
+end
+
+local function step(source)
+    local result = fields(source, stepFields)
+    local alternatives = source.alternativeEntityIDs
+    if ns.Public(alternatives) and type(alternatives) == "table" and #alternatives <= 256 then
+        local ids, seen = {}, {}
+        for _, id in ipairs(alternatives) do
+            if not ns.Public(id) or not ns.GuideInteger(id) or id <= 0 or seen[id] then return result end
+            ids[#ids + 1], seen[id] = id, true
+        end
+        if #ids > 0 then result.alternativeEntityIDs = ids end
     end
     return result
 end
@@ -44,7 +59,7 @@ local function descriptor(guide, depth)
         result.fixedPlan = {}
         for index, stop in ipairs(guide.fixedPlan) do
             if index > 4096 then return end
-            result.fixedPlan[index] = fields(stop, stepFields)
+            result.fixedPlan[index] = step(stop)
         end
     end
     if guide.baseGuide and depth == 0 then result.baseGuide = descriptor(guide.baseGuide, 1) end
@@ -110,7 +125,7 @@ local function restore(saved, reusePlan, depth)
         local plan = {}
         for index, source in ipairs(saved.fixedPlan) do
             if type(source) ~= "table" then return end
-            local stop = fields(source, stepFields)
+            local stop = step(source)
             if not ids[stop.id] or (stop.kind ~= "a" and stop.kind ~= "q" and stop.kind ~= "t")
                 or not ns.GuideInteger(stop.mapID) or stop.guideStep ~= index then return end
             if not stop.unknownLocation and (type(stop.x) ~= "number" or type(stop.y) ~= "number"

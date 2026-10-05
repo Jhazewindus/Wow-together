@@ -193,22 +193,44 @@ function ns.RouteStop(record, focusKey)
     if string.find(title, "(title pending)", 1, true) and record.title ~= "" then title = record.title end
     local npc = record.npc ~= "" and record.npc or (p.name or "")
     local entityID, action, itemName, npcName = p.entityID, p.action, p.itemName, p.npc and p.name or nil
+    local facts = p
+    local matched, bestIdentity, bestDistance
     local candidates = catalog and (p.kind == "a" and catalog.starts or (p.kind == "t" and catalog.ends or catalog.objectives))
     for _, candidate in ipairs(candidates or {}) do
         if candidate.mapID == p.mapID and math.abs(candidate.x - p.x) < 0.04 and math.abs(candidate.y - p.y) < 0.04 then
-            entityID, action = entityID or candidate.entityID, action or candidate.action
-            itemName = itemName or candidate.itemName
-            if candidate.npc then npcName = candidate.name end
-            break
+            local compatible = not (p.objectiveKey and candidate.objectiveKey and p.objectiveKey ~= candidate.objectiveKey)
+                and not (p.itemID and candidate.itemID and p.itemID ~= candidate.itemID)
+            local identity = (p.objectiveKey and p.objectiveKey == candidate.objectiveKey)
+                or (p.itemID and p.itemID == candidate.itemID)
+                or (p.entityID and p.entityID == candidate.entityID)
+                or (p.name and p.name ~= "" and p.name == candidate.name)
+            identity = identity and 0 or 1
+            local distance = (candidate.x - p.x) ^ 2 + (candidate.y - p.y) ^ 2
+            if compatible and (not matched or identity < bestIdentity or (identity == bestIdentity and distance < bestDistance)) then
+                matched, bestIdentity, bestDistance = candidate, identity, distance
+            end
         end
     end
-    return {id = record.id, mapID = p.mapID, x = p.x, y = p.y, kind = p.kind, title = title, published = p.published,
+    if matched then
+        facts = matched
+        entityID, action = entityID or matched.entityID, action or matched.action
+        itemName = itemName or matched.itemName
+        if matched.npc then npcName = npcName or matched.name end
+    end
+    local result = {id = record.id, mapID = p.mapID, x = p.x, y = p.y, kind = p.kind, title = title, published = p.published,
         learnedSource = ns.LearnedStepSource(record.id, profile, focusKey),
         entityID = entityID, action = action, itemName = itemName, targetName = p.name or npcName,
         npcName = npcName or ((p.kind == "a" or p.kind == "t") and npc ~= "" and npc or nil),
         label = p.kind == "t" and ("Turn in " .. title) or (p.kind == "q" and ("Work on " .. title)
             or (npc ~= "" and ("Talk to " .. npc) or ("Check pickup: " .. title))),
         approximate = p.kind == "a" and record.source == "n"}
+    for _, key in ipairs({"quantity", "itemID", "objectiveKey", "useItemName", "spellID", "entityType",
+        "legacyStepKey", "sourceAction", "alternativeEntityIDs", "progressName", "objectiveLabel", "quantityUnknown"}) do
+        result[key] = p[key]
+        if result[key] == nil then result[key] = facts[key] end
+    end
+    if result.quantityUnknown then result.quantity = nil end
+    return result
 end
 
 function ns.PublishedGuideStop(record, point, kind)
@@ -220,7 +242,8 @@ function ns.PublishedGuideStop(record, point, kind)
         alternativeCount = point.alternativeCount, quantity = point.quantity, itemID = point.itemID,
         objectiveKey = point.objectiveKey, useItemName = point.useItemName, spellID = point.spellID,
         entityType = point.entityType, worldFallback = point.worldFallback, legacyStepKey = point.legacyStepKey,
-        sourceAction = point.sourceAction}
+        sourceAction = point.sourceAction, alternativeEntityIDs = point.alternativeEntityIDs,
+        progressName = point.progressName, objectiveLabel = point.objectiveLabel, quantityUnknown = point.quantityUnknown}
 end
 
 function ns.ClientObjectiveStop(stop, key)
@@ -251,10 +274,9 @@ function ns.QuestRouteStages(record, focusKey)
         if not point or not validPoint(point.mapID, point.x, point.y) then return end
         local previous = result[#result]
         if previous.mapID == point.mapID and math.abs(previous.x - point.x) < 0.00001 and math.abs(previous.y - point.y) < 0.00001 then return end
-        result[#result + 1] = {id = record.id, mapID = point.mapID, x = point.x, y = point.y, kind = kind,
-            title = ns.QuestTitle(record.id), label = prefix .. point.name, planned = true, published = true,
-            entityID = point.entityID, action = point.action, itemName = point.itemName,
-            targetName = point.name, npcName = point.npc and point.name or nil}
+        local stop = ns.PublishedGuideStop(record, point, kind)
+        stop.label, stop.planned = prefix .. point.name, true
+        result[#result + 1] = stop
         result[#result].learnedSource = first.learnedSource
     end
     if first.kind == "a" then
