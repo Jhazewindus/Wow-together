@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.7.5** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.7.6** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -16,7 +16,7 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **38 Lua
+Replace the folder on **every party member's client**, including all **40 Lua
 files**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
@@ -35,6 +35,7 @@ No Battle.net credentials, external API service or in-game HTTP access is needed
 | `/wt guide reset` | Clear all saved guide skips for this character. |
 | `/wt sync` | Request fresh party snapshots; let the send queue drain. |
 | `/wt probe` | Open diagnostics; Ctrl+C copies and closes the report. |
+| `/wt lua` | Paste read-only Lua API checks and copy formatted results/errors. |
 | `/wt route clear` | Clear the selected map route. |
 | `/wt minimap` | Toggle the minimap button. |
 
@@ -93,6 +94,25 @@ Switching or clearing a guide cancels its pending scan. A guide waits when its c
 is locked or its location is missing; Skip step / Skip quest remain available.
 Catalogue-based routes remain partial where published coordinates are missing;
 these are generated guides, not fully hand-verified walkthroughs.
+
+With **Collect useful quests nearby** enabled, opening an NPC's complete list
+can add a short pickup group for useful quests already in your selected guide.
+Collect those quests in one visit even when their original pickups were later
+in the sequence. This also works when all pickup coordinates were already known.
+The compiled objective/hand-in sequence and its saved step keys stay unchanged;
+once collected, the guide continues with the first remaining original step.
+Level usefulness, identity, prerequisites, completion and manual skips still apply.
+Unrelated NPC quests remain manual. With **Open guide quests at an NPC** and
+**Accept the quest dialog I open** enabled, each returned native NPC list selects
+the next pickup. The addon does not reopen a closed NPC dialog remotely.
+
+Public NPC offers save approximate pickup locations for the current build on this
+account. These fill missing pickup points at runtime, including after reload and
+on another character, without inventing objective or turn-in locations. They are
+the player's dialogue position, not an exact NPC spawn. Availability is personal
+and rechecked each session; a saved location grants no pickup or completion credit.
+Pending pickup-group instructions survive reload. **/wt findings** includes the
+observed pickup locations for manual feedback; nothing uploads automatically.
 
 The selected guide now resumes after `/reload` or login. Each character saves
 its selection, complete fixed sequence and trip quest set; current quest history
@@ -471,8 +491,8 @@ on and respects the general NPC/nameplate toggles. Enable friendly nameplates in
 the game's settings to see it; the addon does not change that setting. The star
 is our cosmetic overlay and does not put a real raid-target mark on the NPC.
 
-**Quest dialogs** contains separate opt-ins for opening the exact current guide
-quest at a multi-quest NPC, accepting a dialog you open, and turning in completed
+**Quest dialogs** contains separate opt-ins for opening useful selected-guide
+pickups at a multi-quest NPC, accepting an opened dialog, and turning in completed
 opened quests with no reward choice. All default off and defer in combat.
 Reward choices remain manual. API presence or an attempted action is not proof
 of success on the Forever beta.
@@ -538,13 +558,47 @@ provided broad inspiration about progress clarity; its code/assets/layouts
 were not copied. This implementation is independent.
 
 Reported beta build **70205** established the earlier sync APIs in user tests.
-**0.7.5 has host validation, not a live-client compatibility certification.**
+**0.7.6 has host validation, not a live-client compatibility certification.**
 Retest UI rendering, optional gossip/flight actions, corpse positions and item
 hooks on the build in front of you. `/wt probe` lists capabilities and runtime
 status. Do not interpret presence as proof that protected actions work.
 SavedVariables initialize in ADDON_LOADED; beta persistence failures may belong
 to the client. No combat-log processing, secret arithmetic, secure snippets,
 combat automation or replacement of Blizzard combat tools is used.
+
+## In-game Lua checks
+
+Open **/wt lua**, paste a short check, click **Run**, then **Select output** and
+Ctrl+C. `return` preserves multiple results, including nil/false; `print` writes
+to this output pane. Nested tables expand automatically. Syntax errors and failed
+`assert` checks are shown there. Results never go to chat or party messages.
+
+The console exposes a read-only subset of quest, gossip, map, taxi, item/spell and
+character APIs. `apiType("C_API.Method")` checks actual client presence even for
+APIs outside that callable subset. For example:
+
+```lua
+return GetBuildInfo()
+```
+
+```lua
+local quests = C_GossipInfo.GetAvailableQuests()
+assert(type(quests) == "table", "No quest list returned")
+return quests
+```
+
+```lua
+return apiType("C_QuestLog.IsPushableQuest"), apiType("loadstring")
+```
+
+Run NPC-list checks while its window is open. The console requires public
+`loadstring` and `setfenv` capabilities on this build; missing compilation is
+reported, with both listed in Diagnostics. Run checks outside combat. Straight-line
+snippets support locals/conditionals/assert/print/return; loops and function
+definitions are excluded. Table/output limits and cycle detection keep results
+readable; secret values appear as `<restricted>` before formatting.
+Action APIs, frames, addon state and additional code loaders aren't exposed.
+This is for small in-game API tests; the Python host suite runs outside the game.
 
 ## Development and release
 
@@ -555,7 +609,7 @@ compiler discards temporary caches when it yields. Guide decisions, prerequisite
 rules, fixed/adaptive order, sync behavior, settings and UI remain the same.
 See PERFORMANCE.md for measured host results and the repeatable benchmark command.
 
-Host checks load all 38 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
+Host checks load all 40 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
 
 ```sh
 python3 -m venv /tmp/wow-together-tests

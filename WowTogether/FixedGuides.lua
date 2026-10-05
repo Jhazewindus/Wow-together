@@ -173,8 +173,9 @@ function ns.BuildFixedGuideRoute(guide, includeOrigin, cooperative, query)
         local person, waiting = remaining(stop, query, guide)
         if person or waiting then
             incomplete = incomplete + 1
-            if stop.unknownLocation then unknown = unknown + 1 end
             local current = copy(stop)
+            current = ns.NPCPickupStop(current) or current
+            if current.unknownLocation then unknown = unknown + 1 end
             local active, allowed, reason, offered
             if person then
                 current = ns.ClientObjectiveStop(current, person.key) or current
@@ -229,11 +230,12 @@ function ns.BuildFixedGuideRoute(guide, includeOrigin, cooperative, query)
     for _ in pairs(mapped) do count = count + 1 end
     for _ in pairs(deferred) do deferredCount = deferredCount + 1 end
     guide.pendingReason = pending
-    return {key = guide.key, title = guide.title, mapID = mapID, stops = stops, previewStops = preview,
+    local route = {key = guide.key, title = guide.title, mapID = mapID, stops = stops, previewStops = preview,
         origin = includeOrigin and ns.PlayerPoint(mapID) or nil, missing = unknown, otherMaps = 0,
         fixed = true, guideQuests = #guide.records, totalSteps = #plan, remainingSteps = incomplete,
         eligibleMappedQuests = count, deferredQuests = deferredCount, partial = unknown > 0,
         pendingReason = pending, pendingStop = pendingStop, focusKey = guide.focusKey}
+    return ns.AddNPCVisitPickups(guide, route, query)
 end
 
 function ns.UpdateFixedGuideRoute(guide, query)

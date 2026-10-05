@@ -26,6 +26,7 @@ function ns.RecordNPCOfferAvailability(quests, complete)
     end
     local observed, completeList = {}, complete ~= false
     for questID in pairs(offered) do observed[questID] = true end
+    ns.db.offerKnowledge[ns.self] = ns.db.offerKnowledge[ns.self] or {}
     if complete == false then
         local previous = ns.db.offerKnowledge[ns.self][id]
         if previous and previous.context == offerContext() then
@@ -34,6 +35,8 @@ function ns.RecordNPCOfferAvailability(quests, complete)
         end
     end
     ns.db.offerKnowledge[ns.self][id] = {context = offerContext(), offered = offered, complete = completeList}
+    ns.RecordNPCPickupLocations(id, observed)
+    if complete ~= false then ns.RecordGuideNPCVisit(observed) end
     ns.RecordQuestResearch("offers", {npcID = id, offered = observed, complete = complete ~= false})
 end
 
@@ -41,7 +44,10 @@ function ns.ObservedPickupAvailable(id)
     local quest, knowledge = ns.CatalogueQuest(id), ns.db.offerKnowledge and ns.db.offerKnowledge[ns.self]
     if not quest or not knowledge then return end
     local checked, total = 0, 0
-    for _, point in ipairs(quest.starts or {}) do
+    local starts = {}; for _, point in ipairs(quest.starts or {}) do starts[#starts + 1] = point end
+    local observedPoint = ns.NPCPickupPoint(id)
+    if observedPoint then starts[#starts + 1] = observedPoint end
+    for _, point in ipairs(starts) do
         total = total + 1
         local observed = point.npc and knowledge[point.entityID]
         if observed and observed.context == offerContext() then
@@ -192,12 +198,8 @@ end
 
 function ns.InitializeOffers()
     ns.db.offerKnowledge = type(ns.db.offerKnowledge) == "table" and ns.db.offerKnowledge or {}
-    ns.db.offerKnowledge[ns.self] = type(ns.db.offerKnowledge[ns.self]) == "table" and ns.db.offerKnowledge[ns.self] or {}
-    for id, observation in pairs(ns.db.offerKnowledge[ns.self]) do
-        if type(observation) ~= "table" or type(observation.context) ~= "string" or type(observation.offered) ~= "table" then
-            ns.db.offerKnowledge[ns.self][id] = nil
-        end
-    end
+    -- Pickup geography survives reload; availability must be observed again.
+    ns.db.offerKnowledge[ns.self] = {}
     ns.gossipReady = C_GossipInfo and type(C_GossipInfo.GetAvailableQuests) == "function" or false
     ns.greetingReady = type(GetNumAvailableQuests) == "function" and type(GetAvailableQuestInfo) == "function"
     ns.offerReady = ns.gossipReady or ns.greetingReady or type(GetQuestID) == "function"

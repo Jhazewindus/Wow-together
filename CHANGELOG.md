@@ -1,5 +1,19 @@
 # Wow Together changelog
 
+## 0.7.6
+
+- Group useful selected-guide quests actually offered by an NPC into one pickup
+  visit, including when their locations were already known. Respect level bands,
+  prerequisites and saved skips; retain fixed objective/hand-in order.
+- Save public dialogue pickup locations per build to fill missing pickup points.
+  Pending visits resume after reload; availability/completion remain personal.
+  Include these approximate locations in manual /wt findings exports.
+- Refresh the route immediately on acceptance. Optional selection/acceptance
+  collects the next quest when the native NPC list returns; unrelated quests stay manual.
+- Add /wt lua: paste read-only API checks/assertions, view tables, returns and
+  errors, and copy output. apiType checks actual presence; secret values are hidden.
+  Compilation capabilities and NPC dialog behavior need current-beta testing.
+
 ## 0.7.5
 
 - Fix known farming locations being discarded when an item has multiple drop

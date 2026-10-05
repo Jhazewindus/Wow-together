@@ -22,7 +22,7 @@ local sections = {
         {"soloMode", "Solo leveling mode", "Disable party messages, shared progress, route invitations and catch-up. Guides use only your own progress, even while grouped."}}},
     {"guides", "Leveling guides", {
         {"fixedZoneGuides", "Follow fixed zone guides", "Generate a complete zone sequence once. Quest progress advances steps without reordering. Turn off for adaptive trips; start a guide again to change its mode."},
-        {"nearbyPickups", "Collect useful quests nearby", "Add eligible nearby pickups to a quest-log trip. Level range, prerequisites and walking distance still apply."},
+        {"nearbyPickups", "Collect useful quests nearby", "Collect useful selected-guide quests offered at an NPC visit; also add nearby pickups to quest-log trips. Level range, prerequisites and skips still apply."},
         {"classQuests", "Include class quests", "Class restrictions are shown. Personal profession quests remain in Profession guides."},
         {"dungeonPrompts", "Suggest dungeon quest collection", "Offer a plan when your character meets every known pickup level for the dungeon's relevant regular quests. Prerequisites still apply; party sync is not required."},
         {"zonePrompts", "Suggest the next nearby zone", "Offer a known questline transition after the current work is complete."},
@@ -49,7 +49,7 @@ local sections = {
         {"questGiverStars", "Star above guide quest givers", "Highlight eligible pickups in your selected guide with a large gold star. Requires visible friendly NPC nameplates; hides during combat."},
         {"npcMarker", "Objective marker style", "Choose a cross, a kill skull, or a quest ! beside needed enemy names.", {{"cross", "Cross"}, {"skull", "Skull for kills"}, {"quest", "Quest !"}}}}},
     {"automation", "Quest dialogs", {
-        {"autoSelectQuests", "Open the current guide quest at an NPC", "When an NPC has several quests, select the exact current pickup or completed turn-in. Other quests stay manual."},
+        {"autoSelectQuests", "Open guide quests at an NPC", "Select useful pickups for this guide as the NPC list returns, or the current completed turn-in. Combine with auto-accept to collect a visit; unrelated quests stay manual."},
         {"autoAccept", "Accept the quest dialog I open", "Opt-in: accept an opened quest-detail dialog outside combat."},
         {"autoTurnIn", "Turn in quests without a reward choice", "Opt-in: handle completed quest dialogs you open. Item reward choices always remain manual."}}},
     {"research", "Quest data for testing", {
@@ -96,7 +96,7 @@ end
 
 function ns.AutoAcceptOpenedQuest(id)
     if not ns.Option("autoAccept") or type(AcceptQuest) ~= "function" or ns.RouteInCombat()
-        or not ns.GuideInteger(id) or id <= 0 or ns.autoAcceptAttempt == id then return end
+        or not ns.GuideInteger(id) or id <= 0 or ns.active[id] or ns.autoAcceptAttempt == id then return end
     if type(CanAcceptQuest) == "function" then
         local allowed = CanAcceptQuest()
         if not ns.Public(allowed) or allowed ~= true then return end

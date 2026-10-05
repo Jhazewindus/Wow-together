@@ -213,7 +213,7 @@ function ns.UpdateNavigation()
     frame.step:SetText(state.stop.kind == "loading" and (state.stop.action == "scan" and "Checking guide progress" or "Generating an efficient trip") or state.stop.historyPreview and "History preview • published location" or
         (ns.routeSelection and ns.routeSelection.mode == "travel" and "Travel guide • Levels 1–60" or
             ns.navigationPreview and "Preview step • arrows browse; Scan returns to the plan" or
-            (state.stop.guideStep and ("Zone guide step " .. state.stop.guideStep) or "Current guide step")))
+            (state.stop.npcVisitPickup and "Collect quests at this NPC" or state.stop.guideStep and ("Zone guide step " .. state.stop.guideStep) or "Current guide step")))
     local editable = not ns.navigationPreview and not state.flight and state.stop.kind ~= "corpse"
         and (state.stop.kind ~= "notice" or state.stop.id > 0) and state.stop.kind ~= "loading"
     local quests = not (ns.routeSelection and ns.routeSelection.mode == "travel")

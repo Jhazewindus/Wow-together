@@ -79,6 +79,16 @@ pickups above visible friendly nameplates. It is cosmetic, hides in combat and
 does not apply real raid marks. Enable friendly NPC nameplates in the game.
 /wt sync requests fresh snapshots; normal quest/party changes sync automatically.
 /wt probe opens diagnostics; Ctrl+C copies and closes the report.
+/wt lua opens a paste box and copyable output for read-only API checks/assertions.
+Use return for tables/multiple values, print for pane output, and apiType("C_API.Method")
+for actual capability presence. No action APIs or loops; compilation needs guarded
+loadstring/setfenv on this beta build. Run outside combat; secret values stay hidden.
+With Collect useful quests nearby enabled, actual NPC lists collect useful
+selected-guide pickups in one visit. Optional quest selection and acceptance work
+as each native list returns; a closed NPC is never reopened remotely. Objective
+and hand-in order stays fixed. Observed approximate pickup positions persist per
+build, fill missing pickups, and appear in /wt findings; they grant no availability
+or completion credit. Pending pickup instructions resume after reload.
 Flight unlock recognition uses public GetTaxiNodesForMap discovery flags where
 supported, refreshed on login/zone/unlock events and saved for this character.
 Open a flight master to confirm reachable connections. The reader uses the global

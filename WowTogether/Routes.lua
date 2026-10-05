@@ -743,6 +743,7 @@ function ns.ActivateRoute(guide, route)
     ns.routePaused = nil
     ns.routeSelection = guide
     ns.selectedRoute = route or ns.BuildGuideRoute(guide, true)
+    ns.selectedRoute = ns.AddNPCVisitPickups(guide, ns.selectedRoute)
     if guide.mode == "travel" then ns.routePaused = ns.selectedRoute.pendingReason or ns.selectedRoute.complete and "Arrived in Orgrimmar." end
     ns.InitializeGuideStepHistory(guide, ns.selectedRoute)
     ns.routeSignature = nil
@@ -832,6 +833,7 @@ function ns.UpdateSelectedRoute(choices, query)
     end
     local route = guide and ns.BuildGuideRoute(guide, false)
     if route and old then route = ns.PinCurrentDestination(old, route) end
+    if route then route = ns.AddNPCVisitPickups(guide, route, query) end
     if route and guide and route.mapID ~= guide.mapID then
         local copy = {}; for key, value in pairs(guide) do copy[key] = value end
         copy.mapID, copy.zone = route.mapID, ns.MapName(route.mapID); guide = copy

@@ -6,7 +6,7 @@ local guideFields = {"key", "title", "zone", "mode", "mapID", "homeMapID", "full
 local recordFields = {"id", "title", "level", "mapID", "x", "y", "npc", "source", "lineID", "lineName", "seriesRoot", "seriesName"}
 local stepFields = {"id", "kind", "mapID", "x", "y", "title", "label", "entityID", "action", "itemName", "targetName",
     "npcName", "published", "planned", "unknownLocation", "guideStep", "planNeedsReview", "learnedSource", "alternativeCount"}
-local cachedGuide, cachedPlan, cachedBatch
+local cachedGuide, cachedPlan, cachedBatch, cachedVisit
 ns.guideResumeStatus = "No saved guide to resume."
 
 local function fields(source, keys)
@@ -26,7 +26,7 @@ local function descriptor(guide, depth)
     local result = fields(guide, guideFields)
     if not result.key then return end
     if guide.mode == "travel" then return result end
-    result.records, result.pickupIDs, result.batchIDs, result.catchupTargets, result.catchupRequired = {}, {}, {}, {}, {}
+    result.records, result.pickupIDs, result.batchIDs, result.catchupTargets, result.catchupRequired, result.npcVisitPickupIDs = {}, {}, {}, {}, {}, {}
     local ids = {}
     for index, record in ipairs(guide.records or {}) do
         if index > 512 then return end
@@ -38,6 +38,7 @@ local function descriptor(guide, depth)
         for id in pairs(ids) do if guide[key] and guide[key][id] == true then result[key][id] = true end end
     end
     for _, id in ipairs(guide.batchIDs or {}) do if ids[id] then result.batchIDs[#result.batchIDs + 1] = id end end
+    for _, id in ipairs(guide.npcVisitPickupIDs or {}) do if ids[id] then result.npcVisitPickupIDs[#result.npcVisitPickupIDs + 1] = id end end
     if guide.fixedPlan then
         result.fixedPlan = {}
         for index, stop in ipairs(guide.fixedPlan) do
@@ -61,16 +62,17 @@ end
 function ns.SaveSelectedGuide()
     local guide = ns.routeSelection
     if not ns.db or not ns.db.guideState or not ns.self or not guide then return end
-    if cachedGuide == guide and cachedPlan == guide.fixedPlan and cachedBatch == guide.batchIDs then return end
+    if cachedGuide == guide and cachedPlan == guide.fixedPlan and cachedBatch == guide.batchIDs and cachedVisit == guide.npcVisitPickupIDs then return end
     local saved = descriptor(guide, 0)
     if not saved then return end
     ns.db.guideState[ns.self] = {schema = 1, addon = ns.VERSION, guide = saved}
     cachedGuide, cachedPlan, cachedBatch = guide, guide.fixedPlan, guide.batchIDs
+    cachedVisit = guide.npcVisitPickupIDs
 end
 
 function ns.ClearSavedGuide()
     ns.pendingSavedGuide, ns.resumingGuide = nil, nil
-    cachedGuide, cachedPlan, cachedBatch = nil, nil, nil
+    cachedGuide, cachedPlan, cachedBatch, cachedVisit = nil, nil, nil, nil
     if ns.db and ns.db.guideState and ns.self then ns.db.guideState[ns.self] = nil end
 end
 
@@ -93,6 +95,15 @@ local function restore(saved, reusePlan, depth)
     end
     if type(saved.batchIDs) == "table" then
         for index, id in ipairs(saved.batchIDs) do if index <= 6 and ids[id] then guide.batchIDs[#guide.batchIDs + 1] = id end end
+    end
+    if type(saved.npcVisitPickupIDs) == "table" then
+        guide.npcVisitPickupIDs = {}
+        local seen = {}
+        for index, id in ipairs(saved.npcVisitPickupIDs) do
+            if index <= 512 and ids[id] and not seen[id] then
+                guide.npcVisitPickupIDs[#guide.npcVisitPickupIDs + 1], seen[id] = id, true
+            end
+        end
     end
     if reusePlan and guide.fixedRoute and type(saved.fixedPlan) == "table" and #saved.fixedPlan <= 4096 then
         local plan = {}

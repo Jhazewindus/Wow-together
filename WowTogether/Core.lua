@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.7.5"
+ns.VERSION = "0.7.6"
 ns.handlers = {}
 ns.members = {}
 ns.status = "Waiting for addon initialization."
@@ -123,6 +123,8 @@ function ns.Diagnostics()
         {"C_Map.SetUserWaypoint", C_Map and C_Map.SetUserWaypoint},
         {"UiMapPoint.CreateFromCoordinates", UiMapPoint and UiMapPoint.CreateFromCoordinates},
         {"issecretvalue", issecretvalue},
+        {"loadstring (Lua checks)", loadstring},
+        {"setfenv (Lua checks)", setfenv},
         {"C_Timer.After", C_Timer and C_Timer.After},
         {"WorldMapFrame.GetCanvas", WorldMapFrame and WorldMapFrame.GetCanvas},
         {"WorldMapFrame.GetCanvasContainer", WorldMapFrame and WorldMapFrame.GetCanvasContainer},
@@ -147,6 +149,7 @@ function ns.Diagnostics()
     else output("Leveling quest band: waiting for public character level.") end
     output("Travel: " .. ns.travelStatus)
     ns.TravelDiagnostics(output)
+    ns.NPCPickupDiagnostics(output)
     output("Guide restore: " .. ns.guideResumeStatus)
     output("Party catch-up: " .. ns.partyCatchupStatus)
     ns.ResearchDiagnostics(output)
@@ -168,6 +171,7 @@ ns.On("ADDON_LOADED", function(name)
     ns.InitializeTravel()
     ns.InitializeItemHints()
     ns.InitializeOffers()
+    ns.InitializeNPCPickups()
     ns.InitializeQuestResearch()
     ns.InitializeQuestLearning()
     ns.InitializeGuide()
@@ -189,7 +193,11 @@ ns.On("ZONE_CHANGED_NEW_AREA", function()
     ns.ResetZoneConnections(); ns.ReadGuide(); ns.ScheduleFlightDiscovery(); ns.ScheduleSync(); ns.Refresh()
 end)
 ns.On("PLAYER_LEVEL_UP", function(level) ns.RecordQuestResearch("level", {level = level}); ns.ScheduleSync() end)
-ns.On("QUEST_ACCEPTED", function(_, id) ns.RecordQuestResearch("accept", {questID = id}); ns.ScheduleSync() end)
+ns.On("QUEST_ACCEPTED", function(_, id)
+    ns.RecordQuestResearch("accept", {questID = id})
+    ns.RefreshNPCGuideProgress(id)
+    ns.ScheduleSync()
+end)
 ns.On("QUEST_TURNED_IN", function(id)
     ns.RecordQuestResearch("turn-in", {questID = id})
     ns.InvalidateNPCOffers()
@@ -212,6 +220,7 @@ SlashCmdList.WOWTOGETHER = function(command)
     command = string.lower(command or "")
     if command == "probe" then ns.Diagnostics()
     elseif command == "sync" then ns.SyncNow(true)
+    elseif command == "lua" then ns.ShowLuaConsole()
     elseif command == "minimap" then ns.ToggleMinimap()
     elseif command == "tracker" then ns.ToggleTracker()
     elseif command == "arrow" then ns.ToggleNavigation()

@@ -158,7 +158,8 @@ function ns.ExportGuideFindings()
     local saved = state()
     return json({format = "wow-together-guide-findings", schema = 1, addon = ns.VERSION,
         capacity = LIMIT, dropped = saved and saved.dropped or 0,
-        findings = ns.ExportLearnedFindings(), events = saved and saved.events or {}})
+        findings = ns.ExportLearnedFindings(), events = saved and saved.events or {},
+        pickupLocations = ns.ExportNPCPickupLocations()})
 end
 
 function ns.ShowGuideFindings()

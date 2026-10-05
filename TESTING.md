@@ -1,12 +1,12 @@
 # Wow Together — friend test script
 
-For **0.7.5**, World of Warcraft: Forever beta, interface **16001**.
+For **0.7.6**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 38 Lua files**, in
+1. Replace the complete WowTogether folder, including **all 40 Lua files**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    `/reload`; restart fully if a new addon folder does not appear.
 2. Enable `/console scriptErrors 1`. Record version, build, level, faction, class,
@@ -15,7 +15,61 @@ Keep tester names and reports separate; label the main developer's report.
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
 
-## Focus checks for 0.7.5
+## Focus checks for 0.7.6
+
+- **Baine's three quests:** on a suitable level-6 Horde character following
+  Mulgore, open Baine Bloodhoof with Rite of Vision, Sharing the Land and Dwarven
+  Digging offered. Enable Collect useful quests nearby. All useful unaccepted
+  guide pickups should be collected in that visit, instead of leaving after one.
+  Check both normal gossip and the quest-greeting list where available.
+- **Optional automation:** enable Open guide quests at an NPC and Accept the
+  quest dialog I open. Each returned native list should select/accept the next
+  guide pickup. Test another multi-quest NPC with already mapped locations.
+  Turn each automation option off separately: selection and acceptance remain
+  independent, and closing the NPC doesn't reopen it remotely. Retest protected
+  actions on this build; a host fixture cannot prove native dialog event order.
+- **Guide stability:** note upcoming kill/collect/hand-in order. After collecting
+  the group, that original order should remain. Accept/Skip should refresh the
+  arrow and map immediately. Low-value, too-high, prerequisite-blocked, excluded
+  and manually skipped quests must remain out of the pickup group.
+- **Save and reuse:** reload mid-visit; pending pickup instructions should resume.
+  After seeing an NPC, missing pickup markers should use its approximate dialogue
+  position. Another character on this account/build may reuse the location, but
+  must meet its own requirements. No objective, hand-in or completion is inferred.
+  Export /wt findings and include it in your labeled report.
+- **Lua pane:** open /wt lua. Run each check below, then Select output and Ctrl+C.
+  Confirm results stay in the pane. Syntax errors/failed assertions should appear
+  there; hidden values should display `<restricted>`. Check with no NPC open too.
+  If compilation is unavailable, send the loadstring/setfenv probe lines.
+
+```lua
+return GetBuildInfo()
+```
+
+```lua
+return apiType("C_GossipInfo.GetAvailableQuests"), apiType("GetAvailableQuestInfo")
+```
+
+```lua
+local offered = C_GossipInfo.GetAvailableQuests()
+assert(type(offered) == "table", "No public NPC list returned")
+return offered
+```
+
+For an NPC using QUEST_GREETING instead of gossip, inspect one slot at a time:
+
+```lua
+return GetNumAvailableQuests(), GetAvailableQuestInfo(1)
+```
+
+Lua only expands the last expression's multiple returns. The fifth field from
+GetAvailableQuestInfo is the quest ID in our tested reader; verify this build.
+Short checks can also use the game's native /run. The addon pane accepts locals,
+conditionals, print, assert and return; return a table instead of writing loops.
+IsPushableQuest measures sharing; IsQuestCompletable describes the opened turn-in.
+Neither proves that an arbitrary quest can be picked up remotely.
+
+## Farming-location checks retained from 0.7.5
 
 - **The Battleboars:** on a suitable Horde character, finish The Hunt Continues,
   accept The Battleboars and start/resume Mulgore. Its known farming step should
