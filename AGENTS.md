@@ -28,3 +28,19 @@ add it to the addon. Persistent values belong in environment settings.
 
 Work in the existing checkout; preserve user changes. Do not push to GitHub or
 publish a new environment solely to make the Discord release appear successful.
+
+## Reviewing reports from the user and friends
+
+Before implementing feedback, compare all reports supplied for that batch.
+The user will identify their own report; preserve that label and each friend's
+identity. Do not assume an unlabeled report belongs to the user.
+
+Group overlapping symptoms and likely shared causes, and track issues observed
+by individual players. Compare the reported addon version, client build, level,
+faction, class, zone, party state, settings and selected route where available.
+Distinguish evidence from hypotheses; similar symptoms can have different causes.
+Briefly share the comparison and fix priorities before changing addon code.
+If the user explicitly says more reports are still coming for the batch, collect
+them before implementing fixes. Otherwise continue within the authorized task.
+
+Changes to this review workflow alone do not constitute a new addon release.
