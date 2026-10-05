@@ -284,6 +284,7 @@ function ns.SyncNow(force)
     ns.UpdateRoster()
     if not ns.ReadQuests() then ns.Refresh(); return end
     if ns.ReadGuide then ns.ReadGuide() end
+    if force and ns.InvalidatePickupAvailability then ns.InvalidatePickupAvailability() end
     if not ns.syncReady then ns.status = "Party messaging unavailable. Run /wt probe."
     elseif not inParty() then announced = false; ns.status = "Local quest view ready. Join a party (raids unsupported)."
     else
@@ -299,6 +300,7 @@ function ns.SyncNow(force)
         end
         ns.SendActiveSnapshot(force)
         if ns.SendProgress then ns.SendProgress(force, lastActiveRevision) end
+        if ns.SendPickupAvailability then ns.SendPickupAvailability(force, lastActiveRevision) end
         ns.SendCompletion(force)
         ns.SendOffers(force)
         if ns.SendGuideContext then ns.SendGuideContext(force) end
@@ -319,6 +321,7 @@ local function replySnapshot()
     if ns.ReadGuide then ns.ReadGuide() end
     ns.SendActiveSnapshot(true)
     if ns.SendProgress then ns.SendProgress(true, lastActiveRevision) end
+    if ns.SendPickupAvailability then ns.SendPickupAvailability(true, lastActiveRevision) end
     ns.SendCompletion(true)
     ns.SendOffers(true)
     if ns.SendGuideContext then ns.SendGuideContext(true) end
@@ -375,6 +378,7 @@ function ns.Receive(prefix, message, channel, sender)
         member.syncPending, member.activeRevision = true, nil
         member.completionRevision, member.historyRevision, member.routeLocations = nil, nil, nil
         member.progress, member.progressTransfers = nil, nil
+        member.pickupAvailability, member.pickupTransfer = nil, nil
         repairs[sender] = nil
         replySnapshot()
         repairPeer(sender)
@@ -415,6 +419,13 @@ function ns.Receive(prefix, message, channel, sender)
             if accepted then ns.syncStats.accepted = ns.syncStats.accepted + 1 else ignored(reason) end
             ns.Refresh()
             return
+        end
+    end
+    if ns.ReceivePickupAvailabilityMessage then
+        local handled, accepted, reason = ns.ReceivePickupAvailabilityMessage(message, sender)
+        if handled then
+            if accepted then ns.syncStats.accepted = ns.syncStats.accepted + 1 else ignored(reason) end
+            ns.Refresh(); return
         end
     end
     if ns.ReceiveGuideMessage then
@@ -571,9 +582,11 @@ function ns.SyncDiagnostics(output)
             or (member and member.active and "quest snapshot received" or "waiting for quest snapshot")))
     end
     output("Quest giver offer API ready: " .. safe(ns.offerReady))
+    output("Quest greeting list ready: " .. safe(ns.greetingReady) .. "; " .. (ns.greetingReadStatus or "not read this session"))
     local offered = 0
     for _ in pairs(ns.offered or {}) do offered = offered + 1 end
     output("Quest IDs currently reported by quest giver: " .. offered)
+    if ns.PickupDiagnostics then ns.PickupDiagnostics(output) end
     local guideCount = 0
     if ns.GuideQuestIDs then for _ in pairs(ns.GuideQuestIDs()) do guideCount = guideCount + 1 end end
     output("Guide quest records known: " .. guideCount)
@@ -597,6 +610,15 @@ function ns.SyncDiagnostics(output)
     output(ns.guideScanStatus)
     output("Profession guides: " .. ns.professionStatus .. " Personal recipe/material data is not sent to peers.")
     output("Map route: " .. ns.routeStats.status)
+    local selection, route = ns.routeSelection, ns.selectedRoute
+    if selection then
+        output("Selected guide: " .. selection.key .. "; quests in scope: " .. #(selection.records or {}))
+        output("Current trip: " .. (route and route.tripQuests or "legacy") .. " quests; " .. (route and #route.stops or 0)
+            .. " stops; pending records: " .. (route and route.missing or 0))
+        if selection.batchIDs then output("Trip quest IDs: " .. table.concat(selection.batchIDs, ",")) end
+    end
+    output("Route generation: " .. (ns.routePlanning and "loading" or ns.routePlanningError or "idle"))
+    if ns.routePlanningErrorDetail then output("Route generation error: " .. safe(ns.routePlanningErrorDetail)) end
     output("Route drawing surface: " .. (ns.routeStats.surface or "not drawn") .. "; " .. (ns.routeStats.geometry or "layout unavailable"))
     output("Current quests first: " .. safe(ns.Option("currentQuestsFirst")))
     output("Party route: " .. (ns.partyRouteStatus or "No route started."))

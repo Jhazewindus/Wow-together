@@ -41,6 +41,10 @@ local function duration(value)
 end
 
 function ns.RouteContext(stop, mapID)
+    if stop.kind == "loading" then return "Checking progress and prerequisites.\nComparing nearby pickups, work and returns." end
+    if stop.kind == "notice" and ns.routeSelection and ns.routeSelection.fullGuide then
+        return ns.routeSelection.zone .. " • Guide retained.\nVisit its quest giver or Scan after progressing."
+    end
     if stop.kind == "notice" then return "Scan can reconsider skipped steps.\nSettings can reset all skips for this character." end
     if stop.kind == "corpse" then
         return (stop.approximate and "Recorded death position; check nearby." or "Your quest guide is retained.")
@@ -72,6 +76,9 @@ end
 
 function ns.NavigationState()
     if not ns.Option("routeArrow") then return {status = "Disabled in settings"} end
+    if ns.routePlanning then
+        return {visible = true, status = "Loading route…", stop = {id = 0, kind = "loading", title = ns.routePlanning.guide.title}}
+    end
     local route = ns.routeSelection and ns.selectedRoute
     local stop = ns.navigationPreview and ns.navigationPreview.stop or route and route.stops and route.stops[1]
     if not stop and ns.routeSelection then
@@ -86,6 +93,7 @@ function ns.NavigationState()
     end
     if not stop then return {status = "No route selected"} end
     local state = {visible = true, stop = stop}
+    if stop.kind == "notice" then state.status = stop.label; return state end
     if stop.positionUnavailable then state.status = "Corpse position unavailable on this build"; return state end
     if ns.routePaused then state.status = "Waiting for party updates"; return state end
     if ns.navigation and type(ns.navigation.icon.CreateLine) ~= "function" then state.status = "Arrow drawing unavailable"; return state end
@@ -142,10 +150,11 @@ function ns.UpdateNavigation()
     for _, line in ipairs(frame.icon.lines) do line:Hide() end
     frame.symbol:SetText("…"); frame.symbol:SetTextColor(0.96, 0.76, 0.35, 1)
     frame.symbol:SetShown(state.angle == nil and not state.arrived and not state.flight)
-    frame.step:SetText(state.stop.historyPreview and "History preview • published location" or
+    frame.step:SetText(state.stop.kind == "loading" and "Generating an efficient trip" or state.stop.historyPreview and "History preview • published location" or
         (ns.navigationPreview and "Preview step • arrows browse; Scan returns to the plan" or "Current guide step"))
-    local editable = not ns.navigationPreview and not state.flight and state.stop.kind ~= "corpse" and state.stop.kind ~= "notice"
-    frame.skipStep:SetEnabled(editable); frame.skipQuest:SetEnabled(editable); frame.scan:SetEnabled(not state.flight)
+    local editable = not ns.navigationPreview and not state.flight and state.stop.kind ~= "corpse" and state.stop.kind ~= "notice" and state.stop.kind ~= "loading"
+    frame.skipStep:SetEnabled(editable); frame.skipQuest:SetEnabled(editable); frame.scan:SetEnabled(not state.flight and state.stop.kind ~= "loading")
+    frame.back:SetEnabled(state.stop.kind ~= "loading"); frame.next:SetEnabled(state.stop.kind ~= "loading")
     if state.arrived then ns.DrawNavigationArrow(math.pi)
     elseif state.angle ~= nil then ns.DrawNavigationArrow(state.angle) end
 end
@@ -196,8 +205,6 @@ function ns.CreateNavigation()
     frame.back:SetHeight(24); frame.back:SetPoint("BOTTOMLEFT", 6, 12)
     frame.next = ns.UIButton(frame, "›", 24, function() ns.PreviewGuideStep(1) end)
     frame.next:SetHeight(24); frame.next:SetPoint("BOTTOMRIGHT", -6, 12)
-    frame.notice = ns.UILabel(frame, nil, 9); frame.notice:SetPoint("BOTTOM", 0, -18); frame.notice:SetSize(344, 17)
-    frame.notice:SetJustifyH("CENTER")
     frame:SetScript("OnEnter", function(self)
         if not GameTooltip then return end
         GameTooltip:SetOwner(self, "ANCHOR_RIGHT")

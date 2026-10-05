@@ -181,19 +181,20 @@ class RouteTests(unittest.TestCase):
         c.ns.Diagnostics()
         self.assertIn('Rendered route pins: 2; lines: 3', c.ns.diagnosticsText.text)
 
-    def test_route_and_waypoint_follow_acceptance_turn_in_and_completion(self):
+    def test_route_markers_follow_acceptance_turn_in_and_completion_without_waypoint(self):
         c = route_client()
         map_canvas(c)
         c.ns.ShowGuideOnMap(guide(c))
         c.lua.execute("entries={{questID=900,title='Accepted quest',isHeader=false}}; C_QuestLog.GetNextWaypoint=function() return 501,.71,.63 end")
         c.ns.SyncNow(False)
         self.assertEqual(c.ns.selectedRoute.stops[1].kind, 'q')
-        self.assertAlmostEqual(c.lua.globals().waypoint.x, .71)
+        self.assertAlmostEqual(c.ns.selectedRoute.stops[1].x, .71)
+        self.assertIsNone(c.lua.globals().waypoint)
         c.lua.execute('C_QuestLog.IsComplete=function() return true end; C_QuestLog.GetNextWaypoint=function() return 501,.2,.25 end')
         c.ns.SyncNow(False)
         self.assertEqual(c.ns.selectedRoute.stops[1].kind, 't')
         self.assertEqual(len(c.ns.selectedRoute.stops), 1)
-        self.assertAlmostEqual(c.lua.globals().waypoint.x, .2)
+        self.assertAlmostEqual(c.ns.selectedRoute.stops[1].x, .2)
         c.lua.execute('entries={}; finished[900]=true')
         c.ns.SyncNow(False)
         # A detected party member still has to confirm completion.
@@ -204,17 +205,18 @@ class RouteTests(unittest.TestCase):
         self.assertIsNone(c.ns.selectedRoute)
         self.assertEqual(c.ns.routeStats.lines, 0)
 
-    def test_combat_defers_drawing_and_waypoint_updates_and_clearing(self):
+    def test_combat_retains_route_progress_and_defers_clearing_without_waypoint(self):
         c = route_client()
         map_canvas(c)
         c.ns.ShowGuideOnMap(guide(c))
         c.lua.execute("combat=true; entries={{questID=900,title='Accepted quest',isHeader=false}}; C_QuestLog.GetNextWaypoint=function() return 501,.71,.63 end")
         c.ns.SyncNow(False)
-        self.assertAlmostEqual(c.lua.globals().waypoint.x, .2)
-        self.assertTrue(c.ns.routeWaypointPending)
+        self.assertIsNone(c.lua.globals().waypoint)
+        self.assertAlmostEqual(c.ns.selectedRoute.stops[1].x, .71)
         c.lua.globals().combat = False
         c.ns.handlers.PLAYER_REGEN_ENABLED()
-        self.assertAlmostEqual(c.lua.globals().waypoint.x, .71)
+        self.assertAlmostEqual(c.ns.selectedRoute.stops[1].x, .71)
+        self.assertIsNone(c.lua.globals().waypoint)
         c.lua.globals().combat = True
         c.ns.ClearRoute()
         self.assertIsNone(c.ns.routeSelection)

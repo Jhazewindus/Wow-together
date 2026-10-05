@@ -40,17 +40,25 @@ end
 
 function ns.CatalogueAllowed(id, profile, key)
     local quest = ns.CatalogueQuest(id)
-    if not quest then return true end
-    if not profile or not profile.level or profile.level <= 0 then return nil, "Waiting for player level." end
-    if quest.minLevel and profile.level < quest.minLevel then return false, "Requires level " .. quest.minLevel .. "." end
+    if quest and (not profile or not profile.level or profile.level <= 0) then return nil, "Waiting for player level." end
+    if quest and quest.minLevel and profile.level < quest.minLevel then return false, "Requires level " .. quest.minLevel .. "." end
     local identity, reason = ns.CatalogueIdentityAllowed(id, profile)
-    if identity ~= true then return identity, reason end
+    if identity == false then return false, reason end
     key = key or ns.self
+    local observed
     if key == ns.self and ns.ObservedPickupAvailable then
-        local observed = ns.ObservedPickupAvailable(id)
+        observed = ns.ObservedPickupAvailable(id)
         if observed == false then return false, "This quest giver did not offer this quest at your current progress. Recheck after progressing." end
-        if observed == true then return true end
     end
+    local pickup, supported
+    if ns.PickupAvailability then pickup, supported = ns.PickupAvailability(key, id) end
+    if supported then
+        if pickup == false then return false, "The tested beta pickup check says this quest is not available yet." end
+        if pickup == true or observed == true then return true end
+        return nil, "Waiting for a public beta pickup result for this character."
+    end
+    if identity ~= true then return identity, reason end
+    if observed == true or not quest then return true end
     if ns.catalogue.detailSource and quest.prerequisitesRead ~= true then
         return nil, "Pickup requirements are missing from the detailed data. Talk to the quest giver to check its offer."
     end

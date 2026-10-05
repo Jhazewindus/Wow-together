@@ -41,6 +41,13 @@ No Battle.net credentials or external API service are needed.
 All quests (formerly Library), Party quests, Shared, Party progress, Dungeon quests,
 Profession guides and Quest log review. All quests searches commit on Enter or pause.
 Use level brackets / Near party to narrow the list.
+Leveling guides has its own bracket dropdown, deferred zone/quest/NPC search
+and pages. The default bracket follows the lowest party level. Only full zone
+guides and published questlines appear; explicit quest-log trips are in Party quests.
+Brackets filter browsing; a selected guide keeps later levels and known cross-zone
+steps. Loading route appears while a bounded optimizer compares nearby trips.
+Each trip holds up to six quests/twenty stops; dependencies precede their returns.
+Optional suitable next-zone prompts offer Start zone guide / Keep my guide.
 /wt config has purpose-based settings pages with dropdowns and help text.
 /wt tracker toggles the movable, scrollable party panel; it opens when joining a
 normal party and hides when solo/in a raid. Closing it lasts for that party session.
@@ -52,7 +59,9 @@ normal party and hides when solo/in a raid. Closing it lasts for that party sess
 Show route is local. Start route invites friends with Follow route / Keep my route.
 Starting a new guide with current quests offers Start selected guide or Include
 current quests, with a warning about detours. Explicit quest-log routes remain
-selectable alongside zone guides. Quest acceptance/zone updates retain the selection.
+selectable in Party quests. Quest acceptance/zone updates retain the selection.
+Full zone/questline invitations share guide identity and bracket, allowing friends
+to reconstruct the full catalogue scope beyond the twenty transmitted quest IDs.
 Low-level pickups need a known useful later quest/dungeon exception, explained
 under the arrow. Party stages focus on the member behind in confirmed progress.
 Unknown prerequisites/history stay unknown. Active work you choose can remain.
@@ -61,6 +70,8 @@ Left/right arrow buttons preview previous/later steps without changing quest cre
 History previews use published locations, not a recorded travel timeline.
 Skip step / Skip quest persist for this character and do not change friends' credit.
 Scan guide reads real progress and replans; it does not open a report popup.
+The extra Guide replanned footer is removed. Diagnostics distinguish the full
+guide's quest scope from its current trip's quests and map stop counts.
 Reconsider skips when scanning is off by default; on clears selected-guide quest skips.
 Reset guide skips or /wt guide reset restores ALL guides' skips for this character.
 /wt guide scan performs the same replan from the command line.
@@ -68,6 +79,9 @@ Reset guide skips or /wt guide reset restores ALL guides' skips for this charact
 Map lines show the current place plus two ahead, or use controls for the full route.
 Shared NPC steps stay grouped. View route zone opens the current destination map.
 Lines use world-map visiting order only; they do not follow roads or draw on the minimap.
+The addon no longer sets extra Blizzard waypoint pins. Numbered route markers
+and the arrow remain; unrelated manual waypoints are untouched. Clear older pins
+manually if one remains from a previous version.
 Follow roads/terrain. Pan/zoom redraws verified unprotected addon geometry in combat;
 protected frames and native map actions wait. Actual beta rendering needs testing.
 
@@ -82,11 +96,18 @@ corpse directions temporarily replace the guide; missing corpse data is explicit
 Kill / Pick up / Talk instructions name known targets. Cross markers (or optional
 kill skulls) and quest-item tooltip hints require public data and hide in combat.
 Finished objective types lose hints unless another unfinished quest/member needs them.
-NPC lists can confirm/block offers in the current progress context; a single dialog
-confirms that quest only. IsPushableQuest is sharing, not pickup eligibility.
+NPC gossip and quest-greeting lists can confirm/block offers in the current progress context; a single dialog
+confirms that quest only. The user-tested IsPushableQuest beta pickup gate is ON
+by default: true confirms a compatible candidate, false blocks a new pickup.
+Each client queries itself and syncs its own results. Quest/NPC/level/zone updates
+recheck unlocks automatically; accepted work and unfinished objectives remain.
+Missing/disabled APIs use existing evidence; restricted/nil results stay unknown.
+Disable Use the tested beta pickup check if another client build behaves differently.
 Quest-dialog selection, auto-accept and no-choice auto-turn-in are separate opt-ins,
 all OFF by default. Reward choices stay manual. Presence/attempts do not prove beta
 protected-action behavior. New flight, gossip, item-hook and corpse APIs need testing.
+Quest greeting probes must also be retested on Forever. Missing fields cannot
+prove absence, and unpublished prerequisites are not guessed from quest IDs.
 
 Dungeon Start route collects known eligible pickups then a nearby located entrance.
 Missing prerequisites/coordinates remain explicit; Record entrance here is available.

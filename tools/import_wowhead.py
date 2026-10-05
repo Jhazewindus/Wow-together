@@ -162,9 +162,11 @@ def detail_facts(page, row, area_maps, quest_facts=None):
         if value is not None:
             result[target] = value
     mapper = json_after(page, 'new Mapper(')
-    starts, ends, objectives, npc_targets = [], [], [], []
+    starts, ends, objectives, npc_targets, unmapped = [], [], [], [], []
     objective_groups = collections.defaultdict(list)
+    unmapped_groups = collections.defaultdict(list)
     incomplete = isinstance(mapper, dict) and bool(mapper.get('missing'))
+    other_incomplete = incomplete
     for area, group in (mapper.get('objectives', {}) if isinstance(mapper, dict) else {}).items():
         map_id = area_maps.get(int(area))
         if not map_id:
@@ -183,12 +185,10 @@ def detail_facts(page, row, area_maps, quest_facts=None):
                         target['itemName'] = clean(p['item'])
                     if target not in npc_targets and len(npc_targets) < 96:
                         npc_targets.append(target)
-                if not map_id:
-                    continue  # An AreaTable ID is not a C_Map UI ID.
                 coords = p.get('coord')
                 if not isinstance(coords, list) or len(coords) != 2 or any(type(n) not in (int, float) or not 0 <= n <= 100 for n in coords):
                     continue
-                point = {'mapID': map_id, 'x': coords[0] / 100, 'y': coords[1] / 100,
+                point = {'mapID': map_id or 0, 'x': coords[0] / 100, 'y': coords[1] / 100,
                          'name': clean(html.unescape(p.get('name', ''))), 'entityID': number(p.get('id')) or 0}
                 if p.get('type') == 1:
                     point['npc'] = True
@@ -198,6 +198,17 @@ def detail_facts(page, row, area_maps, quest_facts=None):
                     point['action'] = 'collect'
                     if p.get('item'):
                         point['itemName'] = clean(p['item'])
+                if not map_id:
+                    point.pop('mapID')
+                    point['sourceZone'] = clean(group.get('zone'))
+                    point['sourceAreaID'] = int(area)
+                    if p.get('point') in ('start', 'end'):
+                        point['kind'] = 'a' if p['point'] == 'start' else 't'
+                        unmapped.append(point)
+                    elif p.get('point') in ('requirement', 'sourcerequirement') and number(p.get('objective')) is not None:
+                        point['kind'], point['sourceObjective'] = 'q', p['objective']
+                        unmapped_groups[(p['point'], p['objective'])].append(point)
+                    continue  # Resolve only against an actual client UI-map name.
                 if p.get('point') == 'start':
                     starts.append(point)
                 elif p.get('point') == 'end':
@@ -210,10 +221,20 @@ def detail_facts(page, row, area_maps, quest_facts=None):
     for (kind, _), points in objective_groups.items():
         if kind == 'sourcerequirement' and len({p['entityID'] for p in points}) > 1:
             incomplete = True  # Alternative item drops do not prove a best target.
+            other_incomplete = True
         else:
             objectives.append(points[0])
     if len(objectives) > 8:
         incomplete = True
+        other_incomplete = True
+    for (kind, _), points in unmapped_groups.items():
+        if kind == 'sourcerequirement' and len({p['entityID'] for p in points}) > 1:
+            other_incomplete = True
+        else:
+            unmapped.append(points[0])
+    if unmapped:
+        result['unmappedLocations'] = unmapped[:24]
+        result['otherLocationsIncomplete'] = other_incomplete or len(unmapped) > 24
     if incomplete:
         result['objectiveLocationsIncomplete'] = True
     for key, points in [('starts', starts), ('ends', ends), ('objectives', objectives)]:
@@ -271,6 +292,10 @@ def main():
     parser.add_argument('--all-categories', action='store_true', help='Read bounded published category lists for broad quest facts')
     parser.add_argument('--detail-level-max', type=int, help='Only fetch new detailed pages up to this quest level; retain cached details')
     parser.add_argument('--cached-details', action='store_true', help='Build with accessible cached details without new detail-page requests')
+    parser.add_argument('--world-details', action='store_true', help='Fetch outdoor-world details, retaining other cached quest pages')
+    parser.add_argument('--detail-id-max', type=int, help='Bound new detail requests by quest ID; retain every cached page')
+    parser.add_argument('--spread-details', action='store_true', help='Read low-level details round-robin across zones before extending one zone')
+    parser.add_argument('--new-detail-limit', type=int, help='Bound new detailed-page reads; retain every cached page')
     args = parser.parse_args()
     args.cache.mkdir(parents=True, exist_ok=True)
 
@@ -332,6 +357,28 @@ def main():
     details = [row for row in zone_rows.values() if args.detail_level_max is None
                or (number(row.get('level'), 255) is not None and row['level'] <= args.detail_level_max)
                or (args.cache / ('quest-' + str(row['id']) + '.html')).exists()]
+    if args.world_details:
+        details = [row for row in details if row.get('categoryPath', '').startswith(('kalimdor/', 'eastern-kingdoms/'))
+                   or (args.cache / ('quest-' + str(row['id']) + '.html')).exists()]
+    if args.detail_id_max is not None:
+        details = [row for row in details if row['id'] <= args.detail_id_max
+                   or (args.cache / ('quest-' + str(row['id']) + '.html')).exists()]
+    cached_details = [row for row in details if (args.cache / ('quest-' + str(row['id']) + '.html')).exists()]
+    new_details = [row for row in details if not (args.cache / ('quest-' + str(row['id']) + '.html')).exists()]
+    if args.spread_details:
+        by_zone = collections.defaultdict(list)
+        for row in new_details:
+            by_zone[row.get('categoryPath', '')].append(row)
+        for rows in by_zone.values():
+            rows.sort(key=lambda row: (row.get('level', 255), row['id']))
+        new_details = []
+        for index in range(max((len(rows) for rows in by_zone.values()), default=0)):
+            for zone in sorted(by_zone):
+                if index < len(by_zone[zone]):
+                    new_details.append(by_zone[zone][index])
+    if args.new_detail_limit is not None:
+        new_details = new_details[:max(0, args.new_detail_limit)]
+    details = cached_details + new_details
     print(f'Reading {len(details)} detailed pages; {len(area_maps)} unambiguous Area-to-UI map joins.', flush=True)
     # Workers read fixed variant masks, independent of detailed-page merge order.
     requirement_facts = {id: {'classMask': record.get('classMask')} for id, record in records.items()}
@@ -388,6 +435,7 @@ def main():
     output.write_text(code)
     summary = {'captured': date, 'count': len(records), 'detailed_quests': detailed_count, 'zones': zones,
                'listed_quests': len(zone_rows), 'detail_level_max': args.detail_level_max,
+               'spread_details': args.spread_details, 'new_detail_limit': args.new_detail_limit,
                'unavailable_details': unavailable, 'detail_requests_stopped_after_denials': requests_stopped,
                'with_starters': sum(bool(r.get('starts')) for r in records.values()),
                'with_objectives': sum(bool(r.get('objectives')) for r in records.values()),

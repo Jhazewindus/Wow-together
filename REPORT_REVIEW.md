@@ -1,5 +1,48 @@
 # Report review for 0.6.0
 
+## Follow-up batch for 0.6.1
+
+The user reports missing non-Barrens guides, single-quest tiles, blocked Start
+route, slow/weak optimization and differing Durotar stop counts. A friend in
+Ashenvale sees a guide but cannot start it; another friend is asked to pick up
+an unavailable scorpion quest. Names, exact builds, levels and selected guides
+were not supplied for this batch; do not infer them from the older captures.
+
+Overlap: guide discovery depended on mapped points and a local catalogue scope;
+the map action depended on native waypoint acceptance. The old guide list also
+mixed single-NPC recommendations with actual plans. Quest greeting lists were
+not read, so an NPC's missing offer could be missed. Eighteen versus three stops
+alone does not establish a shared cause: compare selected scope, progress and
+source locations, since each quest supplies several stages.
+
+Resolved preferences: remove only the extra Blizzard waypoint, keep numbered
+route markers; remove the Scan footer; apply guide generation to all catalogue
+zones. The user further requests full guides with known cross-zone chains and
+optional next-zone guide switching driven by levels/progress. This complements
+the existing Follow route / Keep my route choice and useful-chain catch-up policy.
+
+Implementation uses catalogue-wide zone/chain plans, bracket/search pagination,
+retained full scope, cooperative bounded trips, explicit guide identity in
+invitations and optional next-zone prompts. The NPC greeting reader follows
+Mainline's native public format but must be retested on Forever. No unpublished
+Cutting Teeth-to-scorpion dependency is asserted without evidence. Source data
+remains partial; unknown locations or offers are explicit rather than fabricated.
+The 0.6.1 checklist covers each player's own NPC offers and full guide/trip counts.
+
+The user then explicitly asked to use IsPushableQuest as a pickup gate and said
+they had tested the true/false interpretation. This is their beta evidence and
+authorization, not a verified universal Mainline contract. The user also asks
+for automatic refresh when a quest such as the scorpion follow-up unlocks.
+Implement an enabled-by-default compatibility setting, own-character read-only
+queries, guarded public booleans, revision-matched peer snapshots and event
+invalidation. Public true confirms a candidate; false blocks new pickups;
+restricted/nil/error results remain unknown. Missing/disabled APIs use the
+existing offer/history gates. Preserve accepted quests and the current unfinished
+objective, and add newly unlocked nearby pickups without discarding the trip.
+No fixed scorpion prerequisite is needed for this native check. The older
+IsPushableQuest caution below describes 0.6.0 and is superseded for this tested
+beta compatibility option by the user's explicit latest instruction.
+
 ## Evidence and labels
 
 | Source | Captured character/context | Observations |

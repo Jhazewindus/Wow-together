@@ -1,7 +1,7 @@
 # Wow Together
 
 A party quest guide for the **World of Warcraft: Forever beta**. Version
-**0.6.0** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.6.1** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -16,7 +16,7 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **25 Lua
+Replace the folder on **every party member's client**, including all **28 Lua
 files**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
@@ -42,11 +42,37 @@ Library), **Party quests** (the old All quests), **Shared**, **Party progress**,
 All quests supports level brackets, Near party and search committed on Enter
 or after a typing pause. It retains manual browsing of known repeatables.
 
+**Leveling guides** lists real zone guides and published questlines across the
+catalogue, including remote zones. Its default bracket follows the lowest party
+level (1–10, 11–20, etc.). Choose another bracket or All levels, and search by
+zone, quest or known NPC; Enter or a short pause applies the search. Pages keep
+later results accessible. Individual quests stay in All quests, and explicit
+quest-log trips are in Party quests.
+
+A bracket filters the browser; it does not cut a selected guide down to that
+bracket. The guide retains later quests and published cross-zone chain steps.
+New pickups still require suitable levels, faction and known progression. A
+full guide selects the next nearby trip rather than drawing every future stop.
+The arrow shows **Loading route…** while cooperative route generation compares
+dependency-ready walking orders. Trips hold up to six quests and twenty stops;
+pickups precede their work and returns. This is a bounded straight-line optimizer,
+not a guarantee of the globally shortest road route.
+
+As useful work leads into a suitable nearby zone, an optional popup offers
+**Start zone guide** or **Keep my guide**. For example, a known Durotar chain can
+continue toward the Barrens while the full Barrens guide is offered. The same
+catalogue, level, faction, progress and adjacency checks apply to other zones;
+there is no special Durotar/Ashenvale route script. Missing links or locations
+remain unknown, and a popup never changes the guide by itself.
+
 **Show route** previews a selection locally. **Start route** starts it and
 invites friends with **Follow route** / **Keep my route**. Their route stays
 unchanged until they choose to follow. Invitations share selected quest IDs
 and pickup roles, up to 20 IDs; each recipient plans against received party
 progress rather than copying the sender's coordinates or completion flags.
+Full zone/questline invitations also identify the guide and browser bracket,
+so recipients reconstruct its full catalogue scope beyond the twenty packet IDs.
+Update all clients together to use these new invitation modes.
 
 When you start a new guide while quests are already in party logs, choose
 **Start selected guide** or **Include current quests**. The popup explains
@@ -116,6 +142,11 @@ logs, objectives and completion history, then rebuilds the useful plan and
 returns to its current step without a report popup. History scope includes
 known series and prerequisites and is bounded to 512 IDs. Restricted values
 remain unknown; peer history waits for received snapshots.
+There is no extra "Guide replanned" footer below the arrow controls.
+Diagnostics distinguish full guide quest counts, trip quest counts and stops:
+one quest can supply pickup, objective and turn-in stops, so eighteen stops do
+not mean eighteen quests. Completed progress and missing coordinates also
+affect each trip; compare the guide identity and scope before comparing counts.
 
 **Reconsider skips when scanning** is off by default. When enabled, Scan clears
 skips for quests in the selected guide before replanning. A quest shared with
@@ -132,6 +163,9 @@ Drawing projects onto the public map viewport, clips at its edges and redraws
 after pan, zoom and resize. Existing verified unprotected addon geometry can
 redraw in combat; protected frames and native map/waypoint actions defer.
 **Lines are on the world map only.** The minimap icon opens the addon.
+The addon no longer sets an extra Blizzard user-waypoint pin. Numbered route
+markers and the owned navigation arrow remain; unrelated manual waypoints are
+left alone. A pin left from an older release can be removed manually on the map.
 
 Distances and routes use straight-line estimates. Follow roads and terrain;
 this is not obstacle-aware pathfinding. Missing objective locations stay
@@ -159,12 +193,36 @@ unsupported corpse data gives an explicit status. Recovering your body resumes
 the guide. No release or resurrection is automated.
 
 NPC observations can correct missing pickup gates: a public complete gossip
-list records what that giver offers for your current quest/level context.
+or quest-greeting list records what that giver offers for your current quest/level context.
 Absence blocks a pickup only after all known givers were checked. A single
 quest-detail dialog confirms that quest without claiming the list is complete.
 Progress, level or reputation changes invalidate relevant knowledge; visit
 again to recheck. This cannot discover every hidden prerequisite in advance.
-`IsPushableQuest` is a sharing capability, **not proof of pickup eligibility**.
+**Use the tested beta pickup check** is enabled by default, at the user's
+request after testing Forever. It uses the user's beta interpretation of
+`IsPushableQuest(questID)`: a public true confirms a pickup candidate and false
+blocks a new pickup. Probe the global function first, then the present
+`C_QuestLog.IsPushableQuest` function. This compatibility gate does not assert
+the same semantics on other WoW clients or future builds; disable it in
+Leveling guides settings if a build behaves differently. Known faction, class
+and minimum-level mismatches still block pickups. Actual NPC absence also
+blocks them until the progress context changes.
+
+Each client checks its own character, then sends bounded true/false snapshots
+to the party. Missing API or a disabled check retains the existing evidence
+gates; nil, restricted or failed results from a present API remain unknown.
+Quest updates, turn-ins, level/faction/zone changes and NPC visits invalidate
+cached results. Automatic sync batches those updates for two seconds, including
+solo guide refresh. A newly unlocked nearby pickup can join the committed trip;
+an unfinished objective stays first. Accepted quests remain work/turn-in steps,
+even when their pickup check returns false. Combat keeps already-public cached
+results, defers new reads and rechecks after combat. Scan guide also rechecks.
+
+The greeting reader probes GetNumAvailableQuests/GetAvailableQuestInfo and
+reads the quest ID from the fifth return, as documented by Mainline's native
+QuestFrame. Missing or restricted fields cannot prove that a quest is absent.
+Retest these optional APIs on Forever; Sting of the Scorpid's exact unpublished
+gate is not inferred from a neighboring quest ID.
 
 Needed public nameplates show a cross, or an optional skull for kills. A
 finished mob objective loses its hint unless another unfinished objective or
@@ -192,23 +250,28 @@ Profession, flight-network and skip data are personal and are not sent to peers.
 
 ## Data and beta limits
 
-The offline snapshot was captured **October 4, 2026** from public game facts in
+The offline snapshot was captured **October 5, 2026** from public game facts in
 [Warcraft DB](https://forever.warcraftdb.com/list/quests) and
 [Wowhead Forever](https://www.wowhead.com/forever/quests).
 
 | Coverage | Records |
 | --- | ---: |
 | Distinct quest records / category lists | 5,230 / 123 |
-| Detailed pages | 435 |
-| Pickup / objective-area / turn-in coordinates | 392 / 118 / 417 |
-| Published series / prerequisite facts | 198 / 154 |
-| Incomplete objective locations / known repeatables | 157 / 13 |
+| Detailed pages | 1,366 |
+| Pickup / objective-area / turn-in coordinates | 763 / 179 / 831 |
+| Published series / prerequisite facts | 599 / 432 |
+| Incomplete objective locations / known repeatables | 785 / 68 |
 
 This is a partial catalogue, not every Forever quest or a complete prerequisite
-or flight graph. Details prioritized quests through level 30 and retained
-cached pages. Published legacy facts may differ from the beta. List metadata
+or flight graph. Detailed reads now spread across outdoor categories through
+level 60, retaining cached pages. Published legacy facts may differ from the beta. List metadata
 does not establish current availability. Live active destinations take precedence;
 area-table IDs are mapped to UI map IDs only with unambiguous shared evidence.
+Coordinates lacking that join are preserved separately, and can resolve at
+runtime only against an unambiguous matching native zone name. Localized or
+missing names can leave them unknown. The generic guide engine supports every
+zone present in usable catalogue data; it does not imply complete coverage of
+all current or future beta zones. Unknown locations do not hide the entire guide.
 Ambiguous faction, branch, class and race requirements remain unknown until
 live evidence establishes availability.
 
@@ -218,7 +281,7 @@ provided broad inspiration about progress clarity; its code/assets/layouts
 were not copied. This implementation is independent.
 
 Reported beta build **70205** established the earlier sync APIs in user tests.
-**0.6.0 has host validation, not a live-client compatibility certification.**
+**0.6.1 has host validation, not a live-client compatibility certification.**
 Retest UI rendering, optional gossip/flight actions, corpse positions and item
 hooks on the build in front of you. `/wt probe` lists capabilities and runtime
 status. Do not interpret presence as proof that protected actions work.
@@ -228,7 +291,7 @@ combat automation or replacement of Blizzard combat tools is used.
 
 ## Development and release
 
-Host checks load all 25 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
+Host checks load all 28 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
 
 ```sh
 python3 -m venv /tmp/wow-together-tests
@@ -247,7 +310,7 @@ Regenerate accessible source facts outside the game:
 
 ```sh
 python3 tools/import_warcraftdb.py --refresh
-python3 tools/import_wowhead.py --all-categories --detail-level-max 30
+python3 tools/import_wowhead.py --all-categories --world-details --detail-level-max 60 --spread-details --new-detail-limit 120
 ```
 
 Importers use paced reads and `/tmp` caches without executing site JavaScript.

@@ -565,7 +565,7 @@ class AddonTests(unittest.TestCase):
         c.ns.SetFilter('different')
         self.assertEqual(c.ns.ui.visibleCards, 2)
         c.ns.SetFilter('all')
-        self.assertEqual(c.ns.ui.visibleCards, 3)
+        self.assertEqual(len([card for card in c.ns.ui.cards.values() if card.IsShown(card) and card.memberCount > 0]), 3)
         self.assertEqual(c.ns.ui.zone.text, 'Durotar')
         icon = c.ns.minimapButton
         self.assertTrue(icon.IsShown(icon))
@@ -707,7 +707,7 @@ class AddonTests(unittest.TestCase):
         c.receive('1|S|1|1|1|1', sender='Shamoone Heehee-ClassicBetaPvP')
         c.receive('1|S|1|1|1|1', sender='Elianus Bronchilius-ClassicBetaPvP')
         c.ns.Render()
-        card = c.ns.ui.cards[1]
+        card = next(card for card in c.ns.ui.cards.values() if card.IsShown(card) and card.memberCount == 3)
         cells = card.memberCells
         self.assertEqual(len(cells), 3)
         self.assertLess(card.height, 130)  # Smaller than the old two-player card.
@@ -832,15 +832,16 @@ class AddonTests(unittest.TestCase):
         self.assertIsNone(c.lua.globals().waypoint)
         c.lua.globals().combat = False
         c.ns.handlers.PLAYER_REGEN_ENABLED()
-        self.assertEqual(c.lua.globals().waypoint.map, 501)
-        self.assertEqual(c.lua.globals().waypoint.x, 0.21)
+        self.assertIsNone(c.lua.globals().waypoint)
+        self.assertEqual(c.ns.selectedRoute.stops[1].mapID, 501)
+        self.assertEqual(c.ns.selectedRoute.stops[1].x, 0.21)
         self.assertTrue(c.lua.globals().WorldMapFrame.IsShown(c.lua.globals().WorldMapFrame))
         self.assertEqual(c.lua.globals().WorldMapFrame.mapID, 501)
         c.lua.globals().waypointAllowed = False
-        self.assertFalse(c.ns.ShowGuideOnMap(guide))
+        self.assertTrue(c.ns.ShowGuideOnMap(guide))
         c.lua.globals().waypointAllowed = True
         c.lua.globals().waypointAccepted = False
-        self.assertFalse(c.ns.ShowGuideOnMap(guide))
+        self.assertTrue(c.ns.ShowGuideOnMap(guide))
 
     def test_guide_without_destination_never_creates_a_waypoint(self):
         c = Client()
@@ -853,6 +854,7 @@ class AddonTests(unittest.TestCase):
     def test_resizing_reflows_cards_and_saves_size(self):
         c = Client(default_guide=True)
         self.assertEqual(c.ns.filter, 'guides')
+        c.ns.SetFilter('all')
         c.ns.window.SetSize(c.ns.window, 1080, 800)
         c.ns.window.OnSizeChanged(c.ns.window, 1080, 800)
         self.assertEqual(c.ns.ui.contentWidth, 1006)

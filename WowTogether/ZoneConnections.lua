@@ -32,6 +32,13 @@ local zoneFactions = {
 local linkCache = {}
 function ns.ResetZoneConnections() linkCache = {} end
 
+function ns.KnownZoneMaps()
+    local result = {}
+    for id in pairs(neighbours) do result[id] = true end
+    if ns.profile and ns.profile.mapID > 0 then result[ns.profile.mapID] = true end
+    return result
+end
+
 function ns.NearbyZoneMaps(mapID)
     local result = {}; if not ns.GuideInteger(mapID, 1000000) or mapID <= 0 then return result end
     if linkCache[mapID] then return linkCache[mapID] end

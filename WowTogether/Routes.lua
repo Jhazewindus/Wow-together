@@ -151,8 +151,12 @@ function ns.RouteStop(record, focusKey)
     local catalog = ns.catalogue and ns.catalogue.quests[record.id]
     local profile = focusKey == ns.self and ns.profile or (ns.members[focusKey] and ns.members[focusKey].profile)
     if not active and catalog and ns.CatalogueIdentityAllowed(record.id, profile) == false then return end
+    local pickup, supported
+    if not active and ns.PickupAvailability then pickup, supported = ns.PickupAvailability(focusKey, record.id) end
+    if supported and pickup == false then return end
     if not active and not offered and catalog then
-        if ns.CatalogueCompletion(focusKey, record.id) ~= false or ns.CatalogueAllowed(record.id, profile, focusKey) ~= true then return end
+        if ns.CatalogueCompletion(focusKey, record.id) ~= false and pickup ~= true
+            or ns.CatalogueAllowed(record.id, profile, focusKey) ~= true then return end
     end
     local p = ns.RoutePointForMember(focusKey, record.id)
     if active then
@@ -291,7 +295,8 @@ local function origin(mapID)
     end
 end
 
-function ns.BuildGuideRoute(guide, includeOrigin)
+function ns.BuildGuideRoute(guide, includeOrigin, cooperative)
+    if guide.fullGuide and (guide.mode == "zone" or guide.mode == "chain") then return ns.BuildLevelingRoute(guide, includeOrigin, cooperative) end
     if (guide.mode == "current" or guide.mode == "bundle") and ns.BuildCurrentQuestRoute then return ns.BuildCurrentQuestRoute(guide, includeOrigin) end
     if guide.mode == "dungeon" and ns.BuildDungeonRoute then return ns.BuildDungeonRoute(guide, includeOrigin) end
     if guide.mode == "circuit" and ns.BuildCircuitRoute then return ns.BuildCircuitRoute(guide, includeOrigin) end
@@ -635,7 +640,7 @@ function ns.AttachRouteProvider()
     local map = WorldMapFrame
     if not map or type(map.AddDataProvider) ~= "function" or type(map.GetCanvas) ~= "function"
         or type(map.GetMapID) ~= "function" or type(MapCanvasDataProviderMixin) ~= "table" then
-        ns.routeStats.status = "Map route canvas unavailable; the destination pin still works."; return false
+        ns.routeStats.status = "Map route canvas unavailable; the navigation arrow remains available."; return false
     end
     local provider = {pins = {}, lines = {}}
     for key, method in pairs(MapCanvasDataProviderMixin) do provider[key] = method end
@@ -673,21 +678,6 @@ local function routeSignature(route)
         parts[#parts + 1] = table.concat({p.id, p.kind, p.mapID, p.x, p.y, p.label}, ":")
     end
     return table.concat(parts, "|")
-end
-
-local function updateWaypoint()
-    local first = ns.selectedRoute and ns.selectedRoute.stops[1]
-    if not first then ns.routeWaypointPending = nil; return end
-    if inCombat() then ns.routeWaypointPending = true; return end
-    ns.routeWaypointPending = nil
-    if not C_Map or type(C_Map.SetUserWaypoint) ~= "function" or not UiMapPoint
-        or type(UiMapPoint.CreateFromCoordinates) ~= "function" then return end
-    if type(C_Map.CanSetUserWaypointOnMap) == "function" then
-        local allowed = C_Map.CanSetUserWaypointOnMap(first.mapID)
-        if not ns.Public(allowed) or allowed ~= true then return end
-    end
-    local result = C_Map.SetUserWaypoint(UiMapPoint.CreateFromCoordinates(first.mapID, first.x, first.y))
-    if not ns.Public(result) or result ~= true then ns.routeStats.status = "Route updated; the client declined its next waypoint." end
 end
 
 function ns.UpdateSelectedRoute(choices)
@@ -777,8 +767,11 @@ function ns.UpdateSelectedRoute(choices)
         end
         if finished then ns.ClearRoute(); ns.routeStats.status = selection.mode == "current" and "No selected quests remain in party logs." or "Selected route completed."; ns.guideAction = ns.routeStats.status
         else
+            if not waiting and route and guide.fullGuide then
+                ns.routeSelection, ns.selectedRoute = guide, route
+            end
             ns.routePaused = waiting and "Waiting for refreshed party quest snapshots."
-                or "Waiting for the next quest destination or prerequisite history."
+                or guide.pendingReason or "Waiting for the next quest destination or prerequisite history."
             ns.routeSignature = nil
             ns.DrawRoute()
             ns.guideAction = ns.routePaused
@@ -794,11 +787,10 @@ function ns.UpdateSelectedRoute(choices)
     ns.DrawRoute()
     ns.guideAction = #route.stops .. " route stop(s): " .. after.label .. "."
     if ns.UpdateNPCHints then ns.UpdateNPCHints() end
-    if not before or before.id ~= after.id or before.kind ~= after.kind or before.mapID ~= after.mapID
-        or before.x ~= after.x or before.y ~= after.y then updateWaypoint() end
 end
 
 function ns.ClearRoute()
+    if ns.CancelGuidePlanning then ns.CancelGuidePlanning() end
     ns.routeSelection = nil
     ns.routeZoneViewPending = nil
     if inCombat() then ns.routeClearPending = true; return end
@@ -812,7 +804,7 @@ end
 function ns.FlushRouteUpdates()
     if ns.routeClearPending then ns.routeClearPending = nil; ns.ClearRoute() end
     if ns.routeRedrawPending then ns.routeRedrawPending = nil; ns.DrawRoute() end
-    if ns.routeWaypointPending then updateWaypoint() end
+    ns.routeWaypointPending = nil
     if ns.routeZoneViewPending and ns.selectedRoute then
         ns.routeZoneViewPending = nil
         ns.ViewRouteZone()

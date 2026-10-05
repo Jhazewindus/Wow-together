@@ -62,6 +62,7 @@ function ns.ReadProfile()
     ns.profile = {level = integer(level, 255) and level or 0,
         faction = (faction == "Horde" or faction == "Alliance" or faction == "Neutral") and faction or "Unknown",
         mapID = integer(map, 1000000) and map or 0, zone = text(zone, 40), classID = identity(UnitClass), raceID = identity(UnitRace)}
+    if ns.ResolveCatalogueMaps then ns.ResolveCatalogueMaps() end
 end
 
 function ns.InitializeGuide()
@@ -227,6 +228,7 @@ local function allRecords()
 end
 
 function ns.GuideRecord(id) return allRecords()[id] end
+ns.AllGuideRecords = allRecords
 
 function ns.GuideQuestIDs()
     local ids = {}
@@ -244,6 +246,7 @@ function ns.ResetGuideTraffic()
     if ns.ResetRouteTraffic then ns.ResetRouteTraffic() end
     if ns.ResetCatalogueTraffic then ns.ResetCatalogueTraffic() end
     if ns.ResetProgressTraffic then ns.ResetProgressTraffic() end
+    if ns.ResetPickupTraffic then ns.ResetPickupTraffic() end
 end
 
 function ns.SendGuideContext(force)
@@ -437,13 +440,15 @@ function ns.GuideChoices(discoveryOnly)
 end
 
 function ns.ShowGuideOnMap(guide)
-    if guide then ns.ScanGuideProgress(guide, false) end
+    local prepared = ns.preparedLevelingRoute and ns.preparedLevelingRoute.guide == guide and ns.preparedLevelingRoute.route
+    if guide and guide.fullGuide and not prepared then return ns.PlanLevelingGuide(guide, false) end
+    if guide and not prepared then ns.ScanGuideProgress(guide, false) end
     -- An explicit local selection replaces an accepted invitation that was
     -- waiting for missing history. Following a ready invitation also passes here.
     ns.waitingPartyRoute = nil
-    local route = guide and ns.BuildGuideRoute(guide, true)
+    local route = prepared or guide and ns.BuildGuideRoute(guide, true)
     local first = route and route.stops[1]
-    if not first then
+    if not first and not (guide and guide.fullGuide) then
         ns.guideAction = guide and ns.GuideSelectionHasSkips(guide)
             and "Remaining guide steps are skipped. Reset guide skips in settings to restore them."
             or "This quest has no available NPC or objective destination yet. View its details in the Quest library."
@@ -457,33 +462,26 @@ function ns.ShowGuideOnMap(guide)
         ns.Refresh()
         return false
     end
-    if not C_Map or type(C_Map.SetUserWaypoint) ~= "function" or not UiMapPoint or type(UiMapPoint.CreateFromCoordinates) ~= "function" then
-        ns.guideAction = "Map waypoint API missing on this build."; ns.Refresh(); return false
-    end
-    if type(C_Map.CanSetUserWaypointOnMap) == "function" then
-        local allowed = C_Map.CanSetUserWaypointOnMap(first.mapID)
-        if not ns.Public(allowed) or allowed ~= true then ns.guideAction = "This map does not support a user waypoint."; ns.Refresh(); return false end
-    end
-    local point = UiMapPoint.CreateFromCoordinates(first.mapID, first.x, first.y)
-    local success = C_Map.SetUserWaypoint(point)
-    if not ns.Public(success) or success ~= true then ns.guideAction = "The client did not accept the waypoint."; ns.Refresh(); return false end
     if not WorldMapFrame and C_AddOns and type(C_AddOns.LoadAddOn) == "function" then C_AddOns.LoadAddOn("Blizzard_WorldMap") end
     if WorldMapFrame and type(WorldMapFrame.SetMapID) == "function" and type(WorldMapFrame.Show) == "function" then
-        WorldMapFrame:SetMapID(first.mapID)
+        local mapID = first and first.mapID or guide.mapID
+        if integer(mapID, 1000000) and mapID > 0 then WorldMapFrame:SetMapID(mapID) end
         WorldMapFrame:Show()
         ns.ActivateRoute(guide, route)
         if ns.window then ns.window:Hide() end
     else
         ns.ActivateRoute(guide, route)
-        ns.routeStats.status = "World map frame unavailable; the destination waypoint was set."
+        ns.routeStats.status = "World map frame unavailable; the guide is selected."
     end
-    ns.guideAction = #route.stops .. " route stop(s): " .. first.label .. "."
+    ns.guideAction = first and (#route.stops .. " route stop(s): " .. first.label .. ".")
+        or guide.pendingReason or "Guide selected; its next NPC or objective location needs confirmation."
     if ns.routeStats.lines == 0 then ns.guideAction = ns.guideAction .. " " .. ns.routeStats.status end
     ns.Refresh()
     return true
 end
 
 ns.On("PLAYER_REGEN_ENABLED", function()
+    if ns.InvalidatePickupAvailability then ns.InvalidatePickupAvailability() end
     if ns.ReadProgress then ns.ReadProgress() end
     if ns.db then ns.ScheduleSync() end
     if ns.FlushRouteUpdates then ns.FlushRouteUpdates() end

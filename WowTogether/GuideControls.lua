@@ -74,6 +74,7 @@ end
 function ns.ScanGuideProgress(guide, refresh)
     guide = guide or ns.routeSelection
     if not guide then return end
+    ns.InvalidatePickupAvailability()
     if refresh ~= false and ns.Option("scanSkipped") then
         local state = saved()
         for _, record in ipairs(guide.records or {}) do state.quests[record.id], state.steps[record.id] = nil, nil end
@@ -99,6 +100,13 @@ function ns.ScanGuideProgress(guide, refresh)
     end
     ns.ScheduleSync()
     if refresh ~= false then
+        if guide.fullGuide and not guide.baseGuide then
+            local fresh = ns.RebuildLevelingGuide(guide)
+            fresh.batchIDs = nil
+            ns.navigationPreview = nil
+            ns.PlanLevelingGuide(fresh, false)
+            return
+        end
         local choices
         if guide.mode == "current" or guide.mode == "bundle" then choices = ns.CurrentQuestChoices()
         else choices = ns.GuideChoices(true) end
@@ -112,7 +120,6 @@ function ns.ScanGuideProgress(guide, refresh)
         ns.navigationPreview, ns.routeSignature, ns.forceRouteReplan = nil, nil, true
         ns.Refresh()
         ns.guideAction = "Guide replanned using current quests, history and saved skip choices."
-        if ns.navigation then ns.navigation.notice:SetText(ns.guideAction) end
     end
 end
 

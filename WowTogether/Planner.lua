@@ -2,8 +2,8 @@ local addonName, ns = ...
 
 function ns.ReadPublic(fn, ...)
     if type(fn) ~= "function" then return end
-    local okay, a, b, c = pcall(fn, ...)
-    if okay and ns.Public(a) and ns.Public(b) and ns.Public(c) then return a, b, c end
+    local okay, a, b, c, d, e = pcall(fn, ...)
+    if okay and ns.Public(a) and ns.Public(b) and ns.Public(c) and ns.Public(d) and ns.Public(e) then return a, b, c, d, e end
 end
 
 local function currentPeople(id)

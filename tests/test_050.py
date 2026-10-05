@@ -252,7 +252,7 @@ class TransitionTests(unittest.TestCase):
         c.drain()
         self.assertTrue(c.ns.activityPrompt.IsShown(c.ns.activityPrompt))
         self.assertIn('Continue into', c.ns.activityPrompt.title.text)
-        self.assertEqual(c.ns.activityPrompt.accept.text, 'Show next zone route')
+        self.assertEqual(c.ns.activityPrompt.accept.caption.text, 'Show next zone route')
 
     def test_zone_change_requires_completed_previous_step_and_nearby_world_position(self):
         c = solo()

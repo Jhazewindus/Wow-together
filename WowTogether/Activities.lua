@@ -199,6 +199,7 @@ function ns.ShowDungeonQuestList(group)
 end
 
 function ns.ZoneTransition()
+    if ns.routeSelection and ns.routeSelection.fullGuide then return ns.LevelingZoneTransition() end
     local currentMap = ns.profile and ns.profile.mapID or 0
     local position = ns.PlayerPoint(currentMap)
     if not position then return end
@@ -229,7 +230,7 @@ function ns.ZoneTransition()
     end
 end
 
-function ns.ShowActivityPrompt(key, title, text, callback)
+function ns.ShowActivityPrompt(key, title, text, callback, acceptLabel, declineLabel)
     if ns.activityPrompt and ns.activityPrompt:IsShown() then return end
     ns.db.activityNotices = ns.db.activityNotices or {}
     key = ns.ActivityNoticeKey(key)
@@ -241,11 +242,12 @@ function ns.ShowActivityPrompt(key, title, text, callback)
         frame.title = ns.UILabel(frame, "GameFontNormalLarge", 18); frame.title:SetPoint("TOPLEFT", 22, -22); frame.title:SetWidth(436)
         frame.text = ns.UILabel(frame, nil, 12); frame.text:SetPoint("TOPLEFT", 22, -52); frame.text:SetWidth(436); frame.text:SetHeight(100)
         frame.accept = ns.UIButton(frame, "Show collection plan", 200, function() end, true); frame.accept:SetPoint("BOTTOMLEFT", 22, 18)
-        local later = ns.UIButton(frame, "Later", 110, function() frame:Hide() end); later:SetPoint("BOTTOMRIGHT", -22, 18)
+        frame.later = ns.UIButton(frame, "Later", 130, function() frame:Hide() end); frame.later:SetPoint("BOTTOMRIGHT", -22, 18)
     end
     ns.db.activityNotices[key] = true
     ns.activityPrompt.title:SetText(title); ns.activityPrompt.text:SetText(text)
-    ns.activityPrompt.accept:SetText(string.find(key, "transition:", 1, true) and "Show next zone route" or "Show collection plan")
+    ns.activityPrompt.accept.caption:SetText(acceptLabel or (string.find(key, "transition:", 1, true) and "Show next zone route" or "Show collection plan"))
+    ns.activityPrompt.later.caption:SetText(declineLabel or "Later")
     ns.activityPrompt.accept:SetScript("OnClick", function() ns.activityPrompt:Hide(); callback() end)
     ns.activityPrompt:Show()
 end
@@ -258,7 +260,8 @@ function ns.ScheduleActivitySuggestions()
     if not ns.Option("dungeonPrompts") and not ns.Option("zonePrompts") then return end
     local parts = {ns.profile and ns.profile.level or 0, ns.profile and ns.profile.mapID or 0, ns.activityRevision or 0,
         tostring(ns.Option("dungeonPrompts")), tostring(ns.Option("zonePrompts")),
-        tostring(ns.routeSelection and ns.routeSelection.mode), tostring(ns.HasCurrentPartyQuests())}
+        tostring(ns.routeSelection and ns.routeSelection.mode), tostring(ns.HasCurrentPartyQuests()),
+        ns.routeSelection and ns.routeSelection.key or "", ns.selectedRoute and ns.selectedRoute.mapID or 0}
     for _, person in ipairs(ns.PartyProfiles()) do
         local member = ns.members[person.key]
         parts[#parts + 1] = person.key .. ":" .. tostring(person.synced) .. ":" .. (member and member.completionRevision or 0)
@@ -269,7 +272,7 @@ function ns.ScheduleActivitySuggestions()
     pending = true
     C_Timer.After(1, function()
         pending = false
-        if ns.RouteInCombat() or (ns.activityPrompt and ns.activityPrompt:IsShown()) then return end
+        if ns.RouteInCombat() or ns.routePlanning or (ns.activityPrompt and ns.activityPrompt:IsShown()) then return end
         lastContext = context
         local selection = ns.routeSelection
         if selection and (selection.mode == "current" or selection.mode == "bundle") and ns.HasCurrentPartyQuests() then return end
@@ -293,6 +296,11 @@ function ns.ScheduleActivitySuggestions()
         end
         if ns.Option("zonePrompts") then
             local transition = ns.ZoneTransition()
+            if transition and transition.fullGuide then
+                ns.ShowActivityPrompt(transition.noticeKey, "Start " .. transition.zone .. " guide?", transition.reason,
+                    function() ns.RequestStartRoute(transition) end, "Start zone guide", "Keep my guide")
+                return
+            end
             local circuits = ns.LocalCircuitChoices()
             if transition and (#circuits == 0 or #circuits[1].records <= 1) then
                 ns.ShowActivityPrompt(transition.key, "Continue into " .. transition.zone .. "?", transition.reason .. " Local quest options are running low.", function() ns.ShowGuideOnMap(transition) end)

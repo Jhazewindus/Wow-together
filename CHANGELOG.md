@@ -1,5 +1,28 @@
 # Wow Together changelog
 
+## 0.6.1
+
+- Browse full zone guides and published questlines across the catalogue, with
+  level brackets, deferred search and pages. Single quests stay in All quests;
+  explicit quest-log trips move to Party quests.
+- Keep a full guide's later levels and known cross-zone chain steps. Offer an
+  optional next-zone guide when party level/progress fit; Keep my guide preserves
+  the selection. Full-guide invitations identify the same plan for friends.
+- Generate nearby trips asynchronously with Loading route in the arrow.
+  Compare dependency-ready walking orders, retain each trip through pickups,
+  then select later work as progress unlocks it.
+- Read native quest-greeting offers as well as gossip. Public NPC absence blocks
+  unavailable pickups in the current progress context; restricted data stays
+  unknown. The exact unpublished scorpion prerequisite still needs beta evidence.
+- Enable the user-tested IsPushableQuest beta pickup gate, with a settings switch.
+  Recheck unlocks automatically and sync each character's own results; accepted
+  work stays in the guide and nearby new pickups can join the current trip.
+- Stop setting the extra Blizzard waypoint pin; keep numbered route markers,
+  lines and the navigation arrow. Remove the Guide replanned footer.
+- Expand detailed outdoor data to 1,366 pages; preserve unresolved zone points
+  for safe native-name matching. Locations and hidden gates remain partial.
+- Add guide/trip/stop diagnostics and all-zone, cross-zone and greeting tests.
+
 ## 0.6.0
 
 - Keep the chosen guide through quest acceptance and zone changes. Scan guide

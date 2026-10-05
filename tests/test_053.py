@@ -273,7 +273,8 @@ class PartyRouteTests(unittest.TestCase):
         c.ns.handlers.QUEST_TURNED_IN()
         c.drain()
         self.assertIsNone(c.ns.waitingPartyRoute)
-        self.assertEqual(c.lua.globals().waypoint.map, 501)
+        self.assertIsNone(c.lua.globals().waypoint)
+        self.assertEqual(c.ns.selectedRoute.mapID, 501)
         self.assertEqual(c.ns.selectedRoute.stops[1].kind, 'a')
 
     def test_solo_start_and_main_guide_start_button(self):
@@ -281,7 +282,7 @@ class PartyRouteTests(unittest.TestCase):
         c.lua.globals().grouped = False
         c.unit_names({'player': ['Alice', 'TestRealm']})
         c.ns.SetOption('currentQuestsFirst', True)
-        c.ns.SetFilter('guides')
+        c.ns.SetFilter('all')
         card = c.ns.ui.cards[1]
         self.assertEqual(card.detailsButton.caption.text, 'Start route')
         card.detailsButton.OnClick()

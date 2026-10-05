@@ -140,9 +140,9 @@ class GuideControlTests(unittest.TestCase):
         c.ns.filter = 'library'; c.ns.Render()
         self.assertEqual(c.ns.routeSelection.key, chosen)
 
-    def test_dashboard_keeps_a_quest_log_route_selectable_beside_discovery(self):
+    def test_party_quests_keeps_a_quest_log_route_selectable(self):
         c = current_client({900: nearby('Already accepted')})
-        c.ns.filter = 'guides'; c.ns.Render()
+        c.ns.filter = 'all'; c.ns.Render()
         self.assertTrue(any(card.guide and card.guide.mode in ('current', 'bundle')
                             for card in c.ns.ui.cards.values()))
 
@@ -165,7 +165,7 @@ class GuideControlTests(unittest.TestCase):
         c.ns.navigation.scan.OnClick()
         self.assertEqual({r.id for r in c.ns.routeSelection.records.values()}, {901})
         self.assertIsNone(c.ns.guideScanWindow)
-        self.assertIn('replanned', c.ns.navigation.notice.text)
+        self.assertIsNone(c.ns.navigation.notice)
 
     def test_all_skipped_guide_can_scan_again_and_reconsider_only_when_enabled(self):
         c = preview_client()

@@ -5,7 +5,7 @@ local defaults = {autoAccept = false, npcHints = true, classQuests = false,
     trackerHeight = 350, circuitRadius = 0.16, circuitLimit = 6, mapLegend = true, professionBatch = 5, routeArrow = true,
     currentQuestsFirst = true, nearbyPickups = true, fullRoute = false, routeAhead = 2, autoTurnIn = false,
     scanSkipped = false, distanceUnits = "yards", trackerAuto = true, autoSelectQuests = false,
-    suggestFlights = true, autoFly = false, nearbyFlights = true, corpseArrow = true, npcMarker = "cross"}
+    suggestFlights = true, autoFly = false, nearbyFlights = true, corpseArrow = true, npcMarker = "cross", betaPickupCheck = true}
 
 function ns.Option(key)
     local value = ns.db and ns.db.config and ns.db.config[key]
@@ -15,6 +15,7 @@ end
 
 local sections = {
     {"guides", "Leveling guides", {
+        {"betaPickupCheck", "Use the tested beta pickup check", "Use IsPushableQuest as pickup eligibility on your tested Forever build. Missing/restricted values stay unknown. Disable if a later build behaves differently."},
         {"nearbyPickups", "Collect useful quests nearby", "Add eligible nearby pickups to a quest-log trip. Level range, prerequisites and walking distance still apply."},
         {"classQuests", "Include class quests", "Class restrictions are shown. Personal profession quests remain in Profession guides."},
         {"dungeonPrompts", "Suggest dungeon quest collection", "Offer a collection guide when the party reaches the relevant quest levels."},
@@ -66,6 +67,7 @@ function ns.SetOption(key, value)
     ns.InitializeConfig()
     ns.flightPlanCache = nil
     if key == "nearbyPickups" then ns.forceRouteReplan, ns.routeSignature = true, nil end
+    if key == "betaPickupCheck" then ns.InvalidatePickupAvailability(); ns.ResetPickupTraffic(); ns.ScheduleSync() end
     if ns.RenderSettings then ns.RenderSettings() end
     if ns.UpdateNPCHints then ns.UpdateNPCHints() end
     if ns.DrawRoute then ns.DrawRoute() end

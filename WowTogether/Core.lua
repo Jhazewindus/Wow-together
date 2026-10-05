@@ -35,7 +35,7 @@ ns.frame:SetScript("OnEvent", function(_, event, ...)
 end)
 
 function ns.Diagnostics()
-    local lines = {"Wow Together 0.6.0 — beta capability and sync report", ""}
+    local lines = {"Wow Together 0.6.1 — beta capability and sync report", ""}
     local function output(line) lines[#lines + 1] = line end
     local version, build, _, interface = GetBuildInfo()
     local function readable(value)
@@ -78,7 +78,8 @@ function ns.Diagnostics()
         {"C_QuestLog.GetTitleForQuestID", C_QuestLog and C_QuestLog.GetTitleForQuestID},
         {"C_QuestLog.IsComplete", C_QuestLog and C_QuestLog.IsComplete},
         {"C_QuestLog.GetQuestObjectives", C_QuestLog and C_QuestLog.GetQuestObjectives},
-        {"C_QuestLog.IsPushableQuest (sharing only)", C_QuestLog and C_QuestLog.IsPushableQuest},
+        {"IsPushableQuest (tested beta pickup check)", IsPushableQuest},
+        {"C_QuestLog.IsPushableQuest (tested beta pickup check)", C_QuestLog and C_QuestLog.IsPushableQuest},
         {"C_NamePlate.GetNamePlateForUnit", C_NamePlate and C_NamePlate.GetNamePlateForUnit},
         {"C_NamePlate.GetNamePlates", C_NamePlate and C_NamePlate.GetNamePlates},
         {"C_QuestLog.UnitIsRelatedToActiveQuest", C_QuestLog and C_QuestLog.UnitIsRelatedToActiveQuest},
@@ -102,6 +103,9 @@ function ns.Diagnostics()
         {"C_GossipInfo.GetActiveQuests", C_GossipInfo and C_GossipInfo.GetActiveQuests},
         {"C_GossipInfo.SelectAvailableQuest", C_GossipInfo and C_GossipInfo.SelectAvailableQuest},
         {"C_GossipInfo.SelectActiveQuest", C_GossipInfo and C_GossipInfo.SelectActiveQuest},
+        {"GetNumAvailableQuests", GetNumAvailableQuests},
+        {"GetAvailableQuestInfo", GetAvailableQuestInfo},
+        {"GetAvailableTitle", GetAvailableTitle}, {"SelectAvailableQuest", SelectAvailableQuest},
         {"C_TaxiMap.GetAllTaxiNodes", C_TaxiMap and C_TaxiMap.GetAllTaxiNodes},
         {"C_TaxiMap.GetTaxiMapID", C_TaxiMap and C_TaxiMap.GetTaxiMapID},
         {"C_Map.GetMapPosFromWorldPos", C_Map and C_Map.GetMapPosFromWorldPos},
@@ -142,12 +146,12 @@ ns.On("ADDON_LOADED", function(name)
     ns.CreateUI()
     ns.CreateSettings()
     ns.CreateMinimap()
+    ns.ReadQuests()
     ns.InitializeSync()
     ns.InitializeGuideControls()
     ns.InitializeTravel()
     ns.InitializeItemHints()
     ns.InitializeOffers()
-    ns.ReadQuests()
     ns.InitializeGuide()
     ns.ReadProgress()
     ns.CreateTracker()
@@ -159,16 +163,18 @@ end)
 
 ns.On("PLAYER_LOGIN", function() ns.ScheduleSync() end)
 ns.On("QUEST_LOG_UPDATE", function()
+    ns.InvalidatePickupAvailability()
     if ns.db then ns.ReadProgress(); ns.UpdateNPCHints(); ns.Refresh() end
     ns.ScheduleSync()
 end)
-ns.On("ZONE_CHANGED_NEW_AREA", function() ns.ResetZoneConnections(); ns.ReadGuide(); ns.ScheduleSync(); ns.Refresh() end)
-ns.On("PLAYER_LEVEL_UP", function() ns.ScheduleSync() end)
+ns.On("ZONE_CHANGED_NEW_AREA", function() ns.InvalidatePickupAvailability(); ns.ResetZoneConnections(); ns.ReadGuide(); ns.ScheduleSync(); ns.Refresh() end)
+ns.On("PLAYER_LEVEL_UP", function() ns.InvalidatePickupAvailability(); ns.ScheduleSync() end)
 ns.On("QUEST_TURNED_IN", function()
+    ns.InvalidatePickupAvailability()
     ns.InvalidateNPCOffers()
     ns.activityRevision = (ns.activityRevision or 0) + 1; ns.ScheduleSync()
 end)
-ns.On("UPDATE_FACTION", function() ns.InvalidateNPCOffers() end)
+ns.On("UPDATE_FACTION", function() ns.InvalidateNPCOffers(); ns.InvalidatePickupAvailability(); ns.ScheduleSync() end)
 ns.On("GROUP_ROSTER_UPDATE", function()
     ns.UpdateRoster()
     ns.RenderTracker()

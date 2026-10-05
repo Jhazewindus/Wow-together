@@ -98,6 +98,7 @@ function ns.AutoTurnInOpenedQuest(stage)
 end
 
 function ns.ReadOffers()
+    ns.InvalidatePickupAvailability()
     ns.offered = {}
     if not ns.gossipReady then return end
     ns.ReadQuests()
@@ -114,8 +115,39 @@ function ns.ReadOffers()
     if ns.ObserveQuestGiver and type(quests) == "table" then ns.ObserveQuestGiver(quests) end
     ns.RecordNPCOfferAvailability(quests)
     ns.SendOffers()
+    ns.ScheduleSync()
     ns.Refresh()
     ns.AutoSelectGuideQuest()
+end
+
+function ns.ReadGreetingOffers()
+    ns.InvalidatePickupAvailability()
+    if not ns.greetingReady then return end
+    ns.ReadQuests()
+    local count = ns.ReadPublic(GetNumAvailableQuests)
+    if not ns.GuideInteger(count, 100) then ns.greetingReadStatus = "Public quest count unavailable; no absence inferred."; return end
+    local quests, slots = {}, {}
+    for index = 1, count do
+        -- Mainline's QuestFrame uses the fifth return as the public quest ID.
+        -- Capability and returned fields must still be retested on Forever.
+        local _, _, _, _, id = ns.ReadPublic(GetAvailableQuestInfo, index)
+        if not ns.GuideInteger(id) or id <= 0 then ns.greetingReadStatus = "Public quest ID unavailable; no absence inferred."; return end
+        local title = ns.SafeTitle(ns.ReadPublic(GetAvailableTitle, index))
+        quests[#quests + 1] = {questID = id, title = title}
+        slots[id] = index
+    end
+    ns.greetingSlots, ns.offered = slots, {}
+    ns.greetingReadStatus = "Read " .. count .. " public quest(s) from the greeting list."
+    for _, quest in ipairs(quests) do ns.offered[quest.questID] = true end
+    ns.RecordNPCOfferAvailability(quests)
+    ns.ObserveQuestGiver(quests)
+    ns.SendOffers(); ns.ScheduleSync(); ns.Refresh()
+    local stop = ns.selectedRoute and ns.selectedRoute.stops[1]
+    if ns.Option("autoSelectQuests") and not ns.RouteInCombat() and stop and stop.kind == "a"
+        and slots[stop.id] and type(SelectAvailableQuest) == "function" and ns.autoGossipAttempt ~= stop.id then
+        ns.autoGossipAttempt = stop.id
+        SelectAvailableQuest(slots[stop.id])
+    end
 end
 
 function ns.InitializeOffers()
@@ -127,9 +159,12 @@ function ns.InitializeOffers()
         end
     end
     ns.gossipReady = C_GossipInfo and type(C_GossipInfo.GetAvailableQuests) == "function" or false
-    ns.offerReady = ns.gossipReady or type(GetQuestID) == "function"
+    ns.greetingReady = type(GetNumAvailableQuests) == "function" and type(GetAvailableQuestInfo) == "function"
+    ns.offerReady = ns.gossipReady or ns.greetingReady or type(GetQuestID) == "function"
+    if ns.greetingReady then ns.On("QUEST_GREETING", ns.ReadGreetingOffers) end
     if type(GetQuestID) == "function" then
         ns.On("QUEST_DETAIL", function()
+            ns.InvalidatePickupAvailability()
             local id = GetQuestID()
             if ns.Public(id) and type(id) == "number" and id > 0
                 and id <= 2147483647 and id == math.floor(id) then
@@ -143,6 +178,7 @@ function ns.InitializeOffers()
             end
         end)
         ns.On("QUEST_FINISHED", function()
+            ns.greetingSlots, ns.autoGossipAttempt = nil, nil
             ns.autoAcceptAttempt, ns.turnInProgressAttempt, ns.turnInRewardAttempt = nil, nil, nil
             ns.offered = {}; ns.SendOffers(); ns.Refresh()
         end)

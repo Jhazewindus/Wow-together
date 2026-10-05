@@ -96,7 +96,8 @@ class SkipAndScanTests(unittest.TestCase):
         self.assertIn('1 completed', c.ns.guideScanStatus)
         c.ns.navigation.scan.OnClick()
         self.assertIsNone(c.ns.guideScanWindow)
-        self.assertIn('replanned', c.ns.navigation.notice.text)
+        self.assertIsNone(c.ns.navigation.notice)
+        self.assertEqual(c.ns.selectedRoute.stops[1].id, 901)
         self.assertFalse(c.ns.Completed(901))
 
     def test_unknown_history_stays_unknown_and_scan_scope_is_bounded(self):
