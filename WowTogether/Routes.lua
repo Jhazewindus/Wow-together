@@ -1,0 +1,587 @@
+local addonName, ns = ...
+
+ns.routeLocations = {}
+ns.readyToTurnIn = {}
+local sentLocations = {}
+local MAX_STOPS = 20
+ns.routeStats = {pins = 0, lines = 0, status = "No route selected."}
+
+local function validPoint(mapID, x, y)
+    return ns.GuideInteger(mapID, 1000000) and mapID > 0 and ns.Public(x) and ns.Public(y)
+        and type(x) == "number" and type(y) == "number" and x >= 0 and x <= 1 and y >= 0 and y <= 1
+end
+
+local function query(fn, ...)
+    if type(fn) ~= "function" then return end
+    local okay, a, b, c = pcall(fn, ...)
+    if not okay then ns.routeReadError = "A read-only quest-location query failed on this build."; return end
+    if ns.Public(a) and ns.Public(b) and ns.Public(c) then return a, b, c end
+end
+
+function ns.ReadRouteLocations()
+    local points = {}
+    ns.readyToTurnIn = {}
+    local mapID = ns.profile and ns.profile.mapID or 0
+    if C_QuestLog and mapID > 0 then
+        local pois = query(C_QuestLog.GetQuestsOnMap, mapID)
+        if type(pois) == "table" then
+            for index, poi in ipairs(pois) do
+                if index > 96 then break end
+                if ns.Public(poi) and type(poi) == "table" and ns.GuideInteger(poi.questID) and poi.questID > 0
+                    and validPoint(mapID, poi.x, poi.y) and ns.Public(poi.isQuestStart) then
+                    if ns.active[poi.questID] or poi.isQuestStart == true then
+                        points[poi.questID] = {id = poi.questID, mapID = mapID, x = poi.x, y = poi.y,
+                            kind = poi.isQuestStart == true and "a" or "q"}
+                    end
+                end
+            end
+        end
+    end
+    for id in pairs(ns.active or {}) do
+        if C_QuestLog then
+            local targetMap, x, y = query(C_QuestLog.GetNextWaypoint, id)
+            if validPoint(targetMap, x, y) then points[id] = {id = id, mapID = targetMap, x = x, y = y, kind = "q"} end
+            local complete = query(C_QuestLog.IsComplete, id)
+            ns.readyToTurnIn[id] = complete == true
+            if not points[id] then
+                local quest = ns.CatalogueQuest(id)
+                local list
+                if quest then
+                    if complete == true then list = quest.ends else list = quest.objectives end
+                    if complete ~= true and (not list or #list == 0) and not quest.objectiveLocationsIncomplete then list = quest.ends end
+                end
+                local p = list and list[1]
+                if p and validPoint(p.mapID, p.x, p.y) then points[id] = {id = id, mapID = p.mapID, x = p.x, y = p.y,
+                    kind = complete == true and "t" or "q", published = true, name = p.name,
+                    entityID = p.entityID, action = p.action, itemName = p.itemName} end
+            end
+            if points[id] then
+                if complete == true then points[id].kind = "t" end
+            end
+        end
+    end
+    ns.routeLocations = points
+end
+
+function ns.ResetRouteTraffic() sentLocations = {} end
+
+function ns.SendRouteLocations(force, revision)
+    if not revision then return end
+    local ids = {}
+    for id in pairs(ns.routeLocations) do ids[#ids + 1] = id end
+    table.sort(ids)
+    for _, id in ipairs(ids) do
+        local p = ns.routeLocations[id]
+        local message = table.concat({"1", "R", revision, id, p.mapID,
+            math.floor(p.x * 100000), math.floor(p.y * 100000), p.kind}, "|")
+        if (force or sentLocations[id] ~= message) and ns.QueueMessage(message) then sentLocations[id] = message end
+    end
+    for id in pairs(sentLocations) do
+        if not ns.routeLocations[id] and ns.QueueMessage("1|R|" .. revision .. "|" .. id .. "|0|0|0|x") then sentLocations[id] = nil end
+    end
+end
+
+function ns.ReceiveRouteMessage(message, sender)
+    if string.sub(message, 1, 4) ~= "1|R|" then return false end
+    local revision, id, mapID, x, y, kind = string.match(message, "^1|R|(%d+)|(%d+)|(%d+)|(%d+)|(%d+)|([aqtx])$")
+    revision, id, mapID, x, y = tonumber(revision), tonumber(id), tonumber(mapID), tonumber(x), tonumber(y)
+    if not ns.GuideInteger(revision) or not ns.GuideInteger(id) or id <= 0 or not ns.GuideInteger(x, 100000)
+        or not ns.GuideInteger(y, 100000) or not ns.GuideInteger(mapID, 1000000)
+        or (kind ~= "x" and mapID <= 0) or (kind == "x" and (mapID ~= 0 or x ~= 0 or y ~= 0)) then
+        return true, false, "invalid quest destination"
+    end
+    ns.members[sender] = ns.members[sender] or {}
+    local member = ns.members[sender]
+    if member.activeRevision and revision < member.activeRevision then return true, false, "old quest destination" end
+    member.routeLocations = member.routeLocations or {}
+    if kind == "x" then member.routeLocations[id] = nil; return true, true end
+    local count = 0
+    for _ in pairs(member.routeLocations) do count = count + 1 end
+    if not member.routeLocations[id] and count >= 96 then return true, false, "quest destination limit" end
+    member.routeLocations[id] = {id = id, revision = revision, mapID = mapID, x = x / 100000, y = y / 100000, kind = kind}
+    return true, true
+end
+
+function ns.RoutePointForMember(key, id)
+    if key == ns.self then return ns.routeLocations[id] end
+    local member = ns.members[key]
+    if member and member.syncPending then return end
+    local point = member and member.routeLocations and member.routeLocations[id]
+    if point and point.revision == member.activeRevision and (point.kind == "a" or (member.active and member.active[id])) then return point end
+end
+
+function ns.RouteRecords()
+    local records = {}
+    local function add(key, points)
+        for id in pairs(points or {}) do
+            local point = ns.RoutePointForMember(key, id)
+            if point then
+                local title = ns.localTitles and ns.localTitles[id]
+                if not title and C_QuestLog then title = ns.SafeTitle(query(C_QuestLog.GetTitleForQuestID, id)) end
+                local catalog = ns.catalogue and ns.catalogue.quests[id]
+                if not title then title = catalog and catalog.title or "Quest " .. id end
+                records[id] = records[id] or {id = id, title = title, lineID = 0, lineName = "", npc = "",
+                    level = ns.questLevels[id] or (catalog and catalog.level) or 0,
+                    mapID = point.mapID, x = point.x, y = point.y, source = "p"}
+            end
+        end
+    end
+    add(ns.self, ns.routeLocations)
+    for _, name in ipairs(ns.partyNames or {}) do add(name, ns.members[name] and ns.members[name].routeLocations) end
+    return records
+end
+
+local function focusStatus(key, id)
+    if key == ns.self then return ns.active[id], ns.Completed(id), ns.offered[id] end
+    local member = ns.members[key]
+    return member and member.active and member.active[id], member and member.completed and member.completed[id], member and member.offered and member.offered[id]
+end
+
+function ns.RouteStop(record, focusKey)
+    focusKey = focusKey or ns.self
+    local active, completed, offered = focusStatus(focusKey, record.id)
+    if completed and not active and not offered then return end
+    local catalog = ns.catalogue and ns.catalogue.quests[record.id]
+    local profile = focusKey == ns.self and ns.profile or (ns.members[focusKey] and ns.members[focusKey].profile)
+    if not active and not offered and catalog then
+        if ns.CatalogueCompletion(focusKey, record.id) ~= false or ns.CatalogueAllowed(record.id, profile, focusKey) ~= true then return end
+    end
+    local p = ns.RoutePointForMember(focusKey, record.id)
+    if active then
+        -- A pickup location is not an objective or a turn-in. Keep those stages
+        -- separate rather than sending a player with an active quest to its giver.
+        if not p and catalog then
+            local ready = (focusKey == ns.self and ns.readyToTurnIn[record.id])
+                or (ns.QuestProgressReady and ns.QuestProgressReady(focusKey, record.id))
+            local point
+            if ready then point = catalog.ends and catalog.ends[1]
+            else point = catalog.objectives and catalog.objectives[1] end
+            if point and validPoint(point.mapID, point.x, point.y) then
+                p = {mapID = point.mapID, x = point.x, y = point.y, kind = ready and "t" or "q",
+                    entityID = point.entityID, action = point.action, name = point.name, published = true}
+            end
+        end
+        if not p or p.kind == "a" then return end
+    elseif not p then
+        if (record.source == "n" or record.source == "l") and validPoint(record.mapID, record.x, record.y) then
+            p = {mapID = record.mapID, x = record.x, y = record.y, kind = "a"}
+        elseif catalog and catalog.starts and catalog.starts[1] then
+            local start = catalog.starts[1]
+            if validPoint(start.mapID, start.x, start.y) then p = {mapID = start.mapID, x = start.x, y = start.y,
+                kind = "a", published = true, name = start.name, entityID = start.entityID} end
+        end
+    end
+    if not p then return end
+    local title = ns.QuestTitle(record.id)
+    if string.find(title, "(title pending)", 1, true) and record.title ~= "" then title = record.title end
+    local npc = record.npc ~= "" and record.npc or (p.name or "")
+    local entityID, action = p.entityID, p.action
+    local candidates = catalog and (p.kind == "a" and catalog.starts or (p.kind == "t" and catalog.ends or catalog.objectives))
+    for _, candidate in ipairs(candidates or {}) do
+        if candidate.mapID == p.mapID and math.abs(candidate.x - p.x) < 0.04 and math.abs(candidate.y - p.y) < 0.04 then
+            entityID, action = entityID or candidate.entityID, action or candidate.action
+            break
+        end
+    end
+    return {id = record.id, mapID = p.mapID, x = p.x, y = p.y, kind = p.kind, title = title, published = p.published,
+        entityID = entityID, action = action, itemName = p.itemName,
+        label = p.kind == "t" and ("Turn in " .. title) or (p.kind == "q" and ("Work on " .. title)
+            or (npc ~= "" and ("Talk to " .. npc) or ("Check pickup: " .. title))),
+        approximate = p.kind == "a" and record.source == "n"}
+end
+
+function ns.RouteStages(record, focusKey)
+    local first = ns.RouteStop(record, focusKey)
+    if not first then return {} end
+    local result, quest = {first}, ns.CatalogueQuest(record.id)
+    if not quest or first.kind == "t" then return result end
+    local function add(point, kind, prefix)
+        if not point or not validPoint(point.mapID, point.x, point.y) then return end
+        local previous = result[#result]
+        if previous.mapID == point.mapID and math.abs(previous.x - point.x) < 0.00001 and math.abs(previous.y - point.y) < 0.00001 then return end
+        result[#result + 1] = {id = record.id, mapID = point.mapID, x = point.x, y = point.y, kind = kind,
+            title = ns.QuestTitle(record.id), label = prefix .. point.name, planned = true, published = true,
+            entityID = point.entityID, action = point.action, itemName = point.itemName}
+    end
+    if first.kind == "a" then
+        for _, point in ipairs(quest.objectives or {}) do add(point, "q", "Objective area: ") end
+        if quest.objectiveLocationsIncomplete then return result end
+    elseif first.kind == "q" and first.published then
+        for _, point in ipairs(quest.objectives or {}) do
+            if point.mapID ~= first.mapID or math.abs(point.x - first.x) >= 0.00001 or math.abs(point.y - first.y) >= 0.00001 then
+                add(point, "q", "Objective area: ")
+            end
+        end
+        if quest.objectiveLocationsIncomplete then return result end
+    end
+    add(quest.ends and quest.ends[1], "t", "After objectives, return to ")
+    return result
+end
+
+function ns.PartyRouteStages(record, preferred)
+    local chosen, chosenPerson, chosenRank, chosenPreference
+    local stageOrder = {a = 1, q = 2, t = 3}
+    for _, person in ipairs(ns.PartyProfiles()) do
+        if person.synced then
+            local stages = ns.RouteStages(record, person.key)
+            if #stages > 0 then
+                local rank, preference = stageOrder[stages[1].kind], person.key == preferred and 0 or 1
+                if not chosen or rank < chosenRank or (rank == chosenRank and preference < chosenPreference)
+                    or (rank == chosenRank and preference == chosenPreference and person.key < chosenPerson.key) then
+                    chosen, chosenPerson, chosenRank, chosenPreference = stages, person, rank, preference
+                end
+            end
+        end
+    end
+    if chosen then
+        for _, stage in ipairs(chosen) do stage.memberKey = chosenPerson.key; stage.forPlayer = chosenPerson.name end
+    end
+    return chosen or {}
+end
+
+function ns.PartyQuestFinished(id)
+    for _, person in ipairs(ns.PartyProfiles()) do
+        local active, complete, offered = focusStatus(person.key, id)
+        if not person.synced or active or offered then return false end
+        local allowed = ns.CatalogueIdentityAllowed(id, person.profile)
+        if allowed ~= false and complete ~= true then return false end
+    end
+    return true
+end
+
+local function origin(mapID)
+    if not ns.profile or ns.profile.mapID ~= mapID or not C_Map then return end
+    local point = query(C_Map.GetPlayerMapPosition, mapID, "player")
+    if point and type(point.GetXY) == "function" then
+        local x, y = query(point.GetXY, point)
+        if validPoint(mapID, x, y) then return {mapID = mapID, x = x, y = y, label = "Route start"} end
+    end
+end
+
+function ns.BuildGuideRoute(guide, includeOrigin)
+    if guide.mode == "dungeon" and ns.BuildDungeonRoute then return ns.BuildDungeonRoute(guide, includeOrigin) end
+    if guide.mode == "circuit" and ns.BuildCircuitRoute then return ns.BuildCircuitRoute(guide, includeOrigin) end
+    local blocks, missing, focusKey = {}, 0, guide.focusKey or ns.self
+    local partial = false
+    for _, record in ipairs(guide.records or {guide.target}) do
+        local stages = guide.personal and ns.RouteStages(record, ns.self) or ns.PartyRouteStages(record, focusKey)
+        if #stages > 0 then
+            blocks[#blocks + 1] = stages
+            local quest = ns.CatalogueQuest(record.id)
+            if quest and quest.objectiveLocationsIncomplete then partial = true end
+        else missing = missing + 1 end
+    end
+    local mapID = blocks[1] and blocks[1][1].mapID or 0
+    local otherMaps = 0
+    local start = includeOrigin and origin(mapID) or nil
+    local tasks = {}
+    for _, block in ipairs(blocks) do
+        if block[1].mapID ~= mapID then otherMaps = otherMaps + #block
+        else
+            local localStages = {}
+            for index, p in ipairs(block) do
+                if p.mapID ~= mapID then otherMaps = otherMaps + #block - index + 1; break end
+                localStages[#localStages + 1] = p
+            end
+            if #localStages > 0 then tasks[#tasks + 1] = {stages = localStages, next = 1} end
+        end
+    end
+    local ordered, remaining = {}, 0
+    -- Choose among dependency-ready stages. This collects nearby pickups first,
+    -- groups objectives, and delays each return until its earlier stages finish.
+    while #ordered < MAX_STOPS do
+        local previous, best, cost = ordered[#ordered], nil, nil
+        for index, task in ipairs(tasks) do
+            local p = task.stages[task.next]
+            if p then
+                local distance = previous and (((p.x - previous.x) * 1.5)^2 + (p.y - previous.y)^2) or index
+                if p.kind == "a" and previous and distance < 0.0064 then distance = distance * 0.65 end
+                if not cost or distance < cost or (distance == cost and p.id < tasks[best].stages[tasks[best].next].id) then best, cost = index, distance end
+            end
+        end
+        if not best then break end
+        local task = tasks[best]
+        ordered[#ordered + 1] = task.stages[task.next]
+        task.next = task.next + 1
+    end
+    for _, task in ipairs(tasks) do remaining = remaining + math.max(0, #task.stages - task.next + 1) end
+    return {key = guide.key, title = guide.title, mapID = mapID, stops = ordered, origin = start,
+        missing = missing, otherMaps = otherMaps, limited = remaining, focusKey = focusKey, partial = partial}
+end
+
+local function inCombat()
+    local value = type(InCombatLockdown) == "function" and InCombatLockdown()
+    return not ns.Public(value) or value == true
+end
+ns.RouteInCombat = inCombat
+
+function ns.StopIcon(stop)
+    if stop.kind == "a" then return "Interface\\GossipFrame\\AvailableQuestIcon" end
+    if stop.kind == "t" then return "Interface\\GossipFrame\\ActiveQuestIcon" end
+    if stop.action == "kill" then return "Interface\\TargetingFrame\\UI-RaidTargetingIcon_8" end
+    return nil
+end
+
+function ns.StopSymbol(stop) return stop.action == "collect" and "*" or "+" end
+
+local function hideDrawing(provider)
+    for _, pin in ipairs(provider.pins or {}) do pin:Hide() end
+    for _, line in ipairs(provider.lines or {}) do line:Hide() end
+    for _, line in ipairs(provider.shadowLines or {}) do line:Hide() end
+    if provider.legend then provider.legend:Hide() end
+    ns.routeStats.pins, ns.routeStats.lines = 0, 0
+end
+
+function ns.DrawRoute(provider)
+    provider = provider or ns.routeProvider
+    if not provider then return end
+    if inCombat() then ns.routeRedrawPending = true; return end
+    hideDrawing(provider)
+    local map, route = provider.owningMap, ns.selectedRoute
+    if not map or not route then
+        if ns.routePaused then ns.routeStats.status = ns.routePaused end
+        return
+    end
+    local mapID = map:GetMapID()
+    if not ns.Public(mapID) or mapID ~= route.mapID then ns.routeStats.status = "Route hidden on a different map."; return end
+    local canvas = map:GetCanvas()
+    if not canvas or type(canvas.GetWidth) ~= "function" or type(canvas.CreateLine) ~= "function" then
+        ns.routeStats.status = "This map canvas cannot draw route lines."; return
+    end
+    local width, height = canvas:GetWidth(), canvas:GetHeight()
+    if not ns.Public(width) or not ns.Public(height) or type(width) ~= "number" or type(height) ~= "number"
+        or width <= 0 or height <= 0 then ns.routeStats.status = "Waiting for map layout."; return end
+    if not provider.overlay then
+        provider.overlay = CreateFrame("Frame", nil, canvas)
+        provider.overlay:SetAllPoints(canvas)
+        if type(provider.overlay.SetIgnoreParentAlpha) == "function" then provider.overlay:SetIgnoreParentAlpha(true) end
+        local level = canvas:GetFrameLevel()
+        if ns.Public(level) and type(level) == "number" then provider.overlay:SetFrameLevel(level + 100) end
+    end
+    local overlay = provider.overlay
+    local points = {}
+    if route.origin then points[#points + 1] = route.origin end
+    for _, p in ipairs(route.stops) do points[#points + 1] = p end
+    for index = 2, #points do
+        provider.shadowLines = provider.shadowLines or {}
+        local shadow = provider.shadowLines[index - 1]
+        if not shadow then shadow = overlay:CreateLine(nil, "OVERLAY", nil, 6); provider.shadowLines[index - 1] = shadow end
+        shadow:SetThickness(4); shadow:SetColorTexture(0.12, 0.085, 0.025, ns.routePaused and 0.45 or 0.85)
+        shadow:SetStartPoint("TOPLEFT", overlay, points[index - 1].x * width, -points[index - 1].y * height)
+        shadow:SetEndPoint("TOPLEFT", overlay, points[index].x * width, -points[index].y * height); shadow:Show()
+        local line = provider.lines[index - 1]
+        if not line then line = overlay:CreateLine(nil, "OVERLAY", nil, 7); provider.lines[index - 1] = line end
+        line:SetThickness(2)
+        line:SetColorTexture(1, 0.82, 0.30, ns.routePaused and 0.45 or 1)
+        line:SetStartPoint("TOPLEFT", overlay, points[index - 1].x * width, -points[index - 1].y * height)
+        line:SetEndPoint("TOPLEFT", overlay, points[index].x * width, -points[index].y * height)
+        line:Show()
+    end
+    local groups, locations = {}, {}
+    for index, p in ipairs(route.stops) do
+        local key = math.floor(p.x * 100000) .. ":" .. math.floor(p.y * 100000)
+        local group = locations[key]
+        if not group then group = {point = p, stops = {}, numbers = {}}; locations[key] = group; groups[#groups + 1] = group end
+        group.stops[#group.stops + 1], group.numbers[#group.numbers + 1] = p, tostring(index)
+    end
+    for index, group in ipairs(groups) do
+        local p = group.point
+        local pin = provider.pins[index]
+        if not pin then
+            pin = CreateFrame("Button", nil, overlay)
+            pin:SetSize(18, 18)
+            pin.icon = pin:CreateTexture(nil, "ARTWORK")
+            pin.icon:SetSize(16, 16)
+            pin.icon:SetPoint("CENTER")
+            pin.symbol = pin:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
+            pin.symbol:SetFont("Fonts\\FRIZQT__.TTF", 18, "OUTLINE")
+            pin.symbol:SetPoint("CENTER"); pin.symbol:SetTextColor(1, 0.85, 0.3, 1)
+            pin.number = pin:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+            pin.number:SetFont("Fonts\\FRIZQT__.TTF", 11, "OUTLINE")
+            pin.number:SetTextColor(1, 0.94, 0.76, 1)
+            pin.number:SetPoint("TOPLEFT", pin, "BOTTOMRIGHT", -3, 4)
+            pin:SetScript("OnEnter", function(self)
+                if not GameTooltip then return end
+                GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+                for step, stop in ipairs(self.group.stops) do
+                    GameTooltip:AddLine(self.group.numbers[step] .. ". " .. stop.label, 0.96, 0.76, 0.36, true)
+                    GameTooltip:AddLine(stop.title, 1, 1, 1, true)
+                    if stop.forPlayer then GameTooltip:AddLine("For " .. stop.forPlayer, 0.7, 0.85, 0.9, true) end
+                    if stop.approximate then GameTooltip:AddLine("Approximate NPC encounter location.", 0.7, 0.75, 0.8, true) end
+                    if stop.published then GameTooltip:AddLine("Published Forever location; check against this beta build.", 0.7, 0.75, 0.8, true) end
+                    if stop.planned then GameTooltip:AddLine("Planned stage after the previous step.", 0.7, 0.75, 0.8, true) end
+                end
+                GameTooltip:Show()
+            end)
+            pin:SetScript("OnLeave", function() if GameTooltip then GameTooltip:Hide() end end)
+            provider.pins[index] = pin
+        end
+        pin.stop, pin.group = p, group
+        local numbers = table.concat(group.numbers, "/")
+        local icon = ns.StopIcon(p)
+        pin.icon:SetTexture(icon); pin.icon:SetShown(icon ~= nil)
+        pin.symbol:SetText(ns.StopSymbol(p)); pin.symbol:SetShown(icon == nil)
+        pin:SetAlpha(ns.routePaused and 0.65 or 1)
+        pin.number:SetText(numbers)
+        pin:ClearAllPoints()
+        pin:SetPoint("CENTER", overlay, "TOPLEFT", p.x * width, -p.y * height)
+        pin:Show()
+    end
+    if not provider.legend then
+        local parent = type(map.GetCanvasContainer) == "function" and map:GetCanvasContainer() or map
+        local legend = CreateFrame("Frame", nil, parent or map, "BackdropTemplate")
+        legend:SetSize(300, 28)
+        legend:SetPoint("BOTTOMLEFT", 14, 14)
+        legend:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8X8"})
+        legend:SetBackdropColor(0.035, 0.045, 0.06, 0.45)
+        local level = overlay:GetFrameLevel()
+        if ns.Public(level) and type(level) == "number" then legend:SetFrameLevel(level + 5) end
+        legend.caption = legend:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
+        legend.caption:SetPoint("TOPLEFT", 10, -8)
+        legend.caption:SetWidth(260)
+        legend.caption:SetJustifyH("LEFT")
+        local close = CreateFrame("Button", nil, legend, "UIPanelCloseButton")
+        close:SetPoint("TOPRIGHT", 0, 0)
+        close:SetScript("OnClick", function() ns.ClearRoute(); ns.Refresh() end)
+        provider.legend = legend
+    end
+    provider.legend.caption:SetText("Wow Together • " .. #route.stops .. " stops"
+        .. (ns.routePaused and " • Waiting for party updates" or "")
+        .. (route.partial and " • Partial route" or "")
+        .. (route.otherMaps > 0 and " • Other zones" or ""))
+    provider.legend:SetShown(ns.Option("mapLegend"))
+    ns.routeStats.pins, ns.routeStats.lines = #groups, math.max(0, #points - 1)
+    ns.routeStats.status = ns.routePaused and (ns.routePaused .. " Showing the last confirmed route.") or ("Route drawn on map " .. mapID .. ".")
+end
+
+function ns.AttachRouteProvider()
+    if ns.routeProvider then return true end
+    local map = WorldMapFrame
+    if not map or type(map.AddDataProvider) ~= "function" or type(map.GetCanvas) ~= "function"
+        or type(map.GetMapID) ~= "function" or type(MapCanvasDataProviderMixin) ~= "table" then
+        ns.routeStats.status = "Map route canvas unavailable; the destination pin still works."; return false
+    end
+    local provider = {pins = {}, lines = {}}
+    for key, method in pairs(MapCanvasDataProviderMixin) do provider[key] = method end
+    provider.RefreshAllData = function(self) ns.DrawRoute(self) end
+    provider.OnCanvasSizeChanged = provider.RefreshAllData
+    provider.OnCanvasScaleChanged = provider.RefreshAllData
+    provider.OnShow = provider.RefreshAllData
+    ns.routeProvider = provider
+    map:AddDataProvider(provider)
+    return true
+end
+
+function ns.ActivateRoute(guide, route)
+    ns.routePaused = nil
+    ns.routeSelection = guide
+    ns.selectedRoute = route or ns.BuildGuideRoute(guide, true)
+    ns.routeSignature = nil
+    ns.AttachRouteProvider()
+    ns.DrawRoute()
+    if ns.UpdateNPCHints then ns.UpdateNPCHints() end
+end
+
+local function routeSignature(route)
+    local parts = {tostring(route.mapID)}
+    for _, p in ipairs(route.stops) do
+        parts[#parts + 1] = table.concat({p.id, p.kind, p.mapID, p.x, p.y, p.label}, ":")
+    end
+    return table.concat(parts, "|")
+end
+
+local function updateWaypoint()
+    local first = ns.selectedRoute and ns.selectedRoute.stops[1]
+    if not first then ns.routeWaypointPending = nil; return end
+    if inCombat() then ns.routeWaypointPending = true; return end
+    ns.routeWaypointPending = nil
+    if not C_Map or type(C_Map.SetUserWaypoint) ~= "function" or not UiMapPoint
+        or type(UiMapPoint.CreateFromCoordinates) ~= "function" then return end
+    if type(C_Map.CanSetUserWaypointOnMap) == "function" then
+        local allowed = C_Map.CanSetUserWaypointOnMap(first.mapID)
+        if not ns.Public(allowed) or allowed ~= true then return end
+    end
+    local result = C_Map.SetUserWaypoint(UiMapPoint.CreateFromCoordinates(first.mapID, first.x, first.y))
+    if not ns.Public(result) or result ~= true then ns.routeStats.status = "Route updated; the client declined its next waypoint." end
+end
+
+function ns.UpdateSelectedRoute(choices)
+    local selection = ns.routeSelection
+    if not selection then return end
+    if selection.mode == "dungeon" then
+        local finished = true
+        for _, record in ipairs(selection.records) do
+            if not ns.PartyQuestFinished(record.id) then finished = false; break end
+        end
+        if finished then
+            ns.ClearRoute(); ns.routeStats.status = "Selected route completed."; ns.guideAction = ns.routeStats.status
+            return
+        end
+    end
+    local guide
+    if selection.mode == "dungeon" and selection.dungeon then guide = ns.DungeonGuide(selection.dungeon) end
+    local id = tonumber(string.match(selection.key, "^quest:(%d+)$"))
+    if id then
+        local record = ns.CatalogueRecord(id)
+        if record then guide = {key = selection.key, title = selection.title, records = {record}, focusKey = ns.self, personal = selection.personal} end
+    else
+        if not guide then for _, choice in ipairs(choices or {}) do if choice.key == selection.key then guide = choice; break end end end
+        guide = guide or selection
+        if not guide.profilesReady and selection.focusKey then
+            local copy = {}
+            for key, value in pairs(guide) do copy[key] = value end
+            copy.focusKey = selection.focusKey
+            guide = copy
+        end
+    end
+    local old = ns.selectedRoute
+    local focus = guide and guide.focusKey or selection.focusKey
+    local member = focus ~= ns.self and ns.members[focus]
+    local waiting = focus ~= ns.self and (not member or not member.active or member.syncPending)
+    local route = guide and ns.BuildGuideRoute(guide, false)
+    if waiting or not route or #route.stops == 0 then
+        local finished = not waiting
+        for _, record in ipairs(selection.records or {selection.target}) do
+            local complete = selection.personal and ns.Completed(record.id) == true and not ns.active[record.id]
+                or (not selection.personal and ns.PartyQuestFinished(record.id))
+            if not complete then finished = false; break end
+        end
+        if finished then ns.ClearRoute(); ns.routeStats.status = "Selected route completed."; ns.guideAction = ns.routeStats.status
+        else
+            ns.routePaused = waiting and "Waiting for the route player's refreshed quest snapshot."
+                or "Waiting for the next quest destination or prerequisite history."
+            ns.routeSignature = nil
+            ns.DrawRoute()
+            ns.guideAction = ns.routePaused
+        end
+        return
+    end
+    if old and old.mapID == route.mapID then route.origin = old.origin end
+    local signature = routeSignature(route)
+    if signature == ns.routeSignature then return end
+    local before, after = old and old.stops[1], route.stops[1]
+    ns.routeSelection, ns.selectedRoute, ns.routeSignature, ns.routePaused = guide, route, signature, nil
+    ns.DrawRoute()
+    ns.guideAction = #route.stops .. " route stop(s): " .. after.label .. "."
+    if ns.UpdateNPCHints then ns.UpdateNPCHints() end
+    if not before or before.id ~= after.id or before.kind ~= after.kind or before.mapID ~= after.mapID
+        or before.x ~= after.x or before.y ~= after.y then updateWaypoint() end
+end
+
+function ns.ClearRoute()
+    ns.routeSelection = nil
+    if inCombat() then ns.routeClearPending = true; return end
+    ns.selectedRoute, ns.routeSelection, ns.routeSignature, ns.routeWaypointPending, ns.routePaused = nil, nil, nil, nil, nil
+    if ns.routeProvider then hideDrawing(ns.routeProvider) end
+    ns.routeStats.status = "Route cleared."
+    ns.guideAction = ns.routeStats.status
+    if ns.UpdateNPCHints then ns.UpdateNPCHints() end
+end
+
+function ns.FlushRouteUpdates()
+    if ns.routeClearPending then ns.routeClearPending = nil; ns.ClearRoute() end
+    if ns.routeRedrawPending then ns.routeRedrawPending = nil; ns.DrawRoute() end
+    if ns.routeWaypointPending then updateWaypoint() end
+end
+
+ns.On("QUEST_POI_UPDATE", function() if ns.db then ns.ReadRouteLocations(); ns.ScheduleSync(); ns.Refresh() end end)

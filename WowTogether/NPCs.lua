@@ -1,0 +1,142 @@
+local addonName, ns = ...
+
+local units, hints = {}, {}
+ns.npcHints = hints
+ns.npcHintCount = 0
+ns.npcHintStatus = "NPC hints wait for public nameplate NPC IDs."
+
+function ns.NPCTargets()
+    local targets = {}
+    local function add(point, id, kind)
+        if not point or not point.npc or not ns.GuideInteger(point.entityID) or point.entityID <= 0 then return end
+        targets[point.entityID] = targets[point.entityID] or {kind = kind, action = point.action,
+            title = ns.QuestTitle(id), label = point.name, quests = {}}
+        targets[point.entityID].quests[id] = ns.QuestTitle(id)
+    end
+    for _, person in ipairs(ns.PartyProfiles()) do
+        local active = person.key == ns.self and ns.active or (ns.members[person.key] and ns.members[person.key].active)
+        if person.synced then
+            for id in pairs(active or {}) do
+                local quest = ns.CatalogueQuest(id)
+                if quest then
+                    local point = ns.RoutePointForMember(person.key, id)
+                    local ready = (person.key == ns.self and ns.readyToTurnIn[id]) or (point and point.kind == "t") or ns.QuestProgressReady(person.key, id)
+                    local points
+                    if ready then points = quest.ends else points = quest.npcTargets or quest.objectives end
+                    for _, p in ipairs(points or {}) do
+                        local completed = false
+                        local progress = ns.ProgressForMember(person.key, id)
+                        for _, objective in ipairs(progress and progress.objectives or {}) do
+                            local label = string.lower(ns.ObjectiveLabel(objective.text))
+                            local name = string.lower(p.itemName or p.name or "")
+                            if name ~= "" and (label == name or label == name .. " slain") and objective.finished == true then completed = true end
+                        end
+                        if not completed then add(p, id, ready and "t" or "q") end
+                    end
+                end
+            end
+        end
+    end
+    if ns.selectedRoute and not ns.routePaused then
+        for _, stop in ipairs(ns.selectedRoute.stops) do
+            if stop.kind == "a" and stop.entityID then
+                local quest = ns.CatalogueQuest(stop.id)
+                for _, point in ipairs(quest and quest.starts or {}) do add(point, stop.id, "a") end
+            end
+        end
+    end
+    return targets
+end
+
+local function hide(hint)
+    local protected = type(hint.IsProtected) == "function" and hint:IsProtected()
+    if not ns.Public(protected) or (protected and ns.RouteInCombat()) then ns.npcHintsPending = true; return end
+    hint:Hide()
+end
+
+local function read(fn, ...)
+    if type(fn) ~= "function" then return end
+    local okay, value = pcall(fn, ...)
+    return okay and ns.Public(value) and value or nil
+end
+
+function ns.UpdateNPCHints()
+    if ns.RouteInCombat() then ns.npcHintsPending = true; return end
+    ns.npcHintsPending, ns.npcHintCount = nil, 0
+    for _, hint in pairs(hints) do hide(hint) end
+    if not ns.Option("npcHints") then ns.npcHintStatus = "NPC hints disabled in settings."; return end
+    if not C_NamePlate or type(C_NamePlate.GetNamePlateForUnit) ~= "function" or type(UnitGUID) ~= "function" then
+        ns.npcHintStatus = "Nameplate/NPC ID API unavailable; map objective icons still work."; return
+    end
+    local targets = ns.NPCTargets()
+    local visible = read(C_NamePlate.GetNamePlates)
+    if type(visible) == "table" then
+        for index, plate in ipairs(visible) do
+            if index > 40 then break end
+            if ns.Public(plate) and (type(plate) == "table" or type(plate) == "userdata") then
+                local unit = plate.namePlateUnitToken
+                if ns.Public(unit) and type(unit) == "string" and string.match(unit, "^nameplate%d+$") then units[unit] = true end
+            end
+        end
+    end
+    for unit in pairs(units) do
+        local guid = read(UnitGUID, unit)
+        local id = type(guid) == "string" and tonumber(string.match(guid, "^Creature%-%d+%-%d+%-%d+%-%d+%-(%d+)%-"))
+        local target = id and targets[id]
+        local related = C_QuestLog and read(C_QuestLog.UnitIsRelatedToActiveQuest, unit)
+        if not target and related == true then target = {kind = "q", label = "Your quest objective", quests = {}} end
+        local plate = target and read(C_NamePlate.GetNamePlateForUnit, unit)
+        if plate then
+            local hint = hints[unit]
+            if not hint then
+                hint = CreateFrame("Frame", nil, UIParent)
+                hint:SetSize(18, 18)
+                hint:SetFrameStrata("HIGH")
+                hint.icon = hint:CreateTexture(nil, "ARTWORK")
+                hint.icon:SetAllPoints()
+                hint.symbol = hint:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
+                hint.symbol:SetFont("Fonts\\FRIZQT__.TTF", 18, "OUTLINE"); hint.symbol:SetPoint("CENTER")
+                hint.symbol:SetTextColor(1, 0.85, 0.3, 1)
+                hint:EnableMouse(true)
+                hint:SetScript("OnEnter", function(self)
+                    if not GameTooltip then return end
+                    GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+                    GameTooltip:AddLine(self.target.label, 0.96, 0.76, 0.36)
+                    for _, title in pairs(self.target.quests) do GameTooltip:AddLine(title, 1, 1, 1, true) end
+                    GameTooltip:Show()
+                end)
+                hint:SetScript("OnLeave", function() if GameTooltip then GameTooltip:Hide() end end)
+                hints[unit] = hint
+            end
+            hint.target = target
+            hint:ClearAllPoints()
+            hint:SetPoint("BOTTOMLEFT", plate, "TOPRIGHT", 3, 0)
+            local icon = ns.StopIcon(target)
+            hint.icon:SetTexture(icon); hint.icon:SetShown(icon ~= nil)
+            hint.symbol:SetText(ns.StopSymbol(target)); hint.symbol:SetShown(icon == nil)
+            hint:Show()
+            ns.npcHintCount = ns.npcHintCount + 1
+        end
+    end
+    ns.npcHintStatus = "Public NPC IDs/quest flags; alternative drop sources included. Outside combat only."
+end
+
+ns.On("NAME_PLATE_UNIT_ADDED", function(unit)
+    if not ns.Public(unit) or type(unit) ~= "string" or not string.match(unit, "^nameplate%d+$") then return end
+    local count = 0
+    for _ in pairs(units) do count = count + 1 end
+    if count >= 40 and not units[unit] then return end
+    units[unit] = true
+    ns.UpdateNPCHints()
+end)
+
+ns.On("NAME_PLATE_UNIT_REMOVED", function(unit)
+    if not ns.Public(unit) or type(unit) ~= "string" then return end
+    units[unit] = nil
+    if hints[unit] then hide(hints[unit]) end
+end)
+
+ns.On("PLAYER_REGEN_DISABLED", function()
+    for _, hint in pairs(hints) do hide(hint) end
+    ns.npcHintsPending = true
+end)

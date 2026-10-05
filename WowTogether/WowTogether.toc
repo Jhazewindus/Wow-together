@@ -1,0 +1,24 @@
+## Interface: 16001
+## Title: Wow Together
+## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
+## Author: Wow Together contributors
+## Version: 0.5.0
+## SavedVariables: WowTogetherDB
+Core.lua
+QuestCatalogue.lua
+Catalogue.lua
+Quests.lua
+Sync.lua
+UI.lua
+Config.lua
+Minimap.lua
+Offers.lua
+Suggestions.lua
+Guide.lua
+Routes.lua
+Progress.lua
+NPCs.lua
+Planner.lua
+Shopping.lua
+Activities.lua
+Professions.lua
