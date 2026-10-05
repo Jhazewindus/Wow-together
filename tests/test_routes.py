@@ -80,7 +80,7 @@ class RouteTests(unittest.TestCase):
         self.assertFalse(c.ns.CatalogueAllowed(900, p, c.ns.self)[0])  # A known unfinished chain blocks even while identity is unknown.
         c.lua.globals().finished[899] = True
         self.assertIsNone(c.ns.CatalogueAllowed(900, p, c.ns.self)[0])  # Identity remains unknown after the prerequisite is met.
-        c.lua.globals().finished[899] = False
+        c.lua.globals().finished[899] = False; c.ns.ForgetQuestCompletion(899)
         p.classID, p.raceID = 8, 8
         self.assertFalse(c.ns.CatalogueAllowed(900, p, c.ns.self)[0])
         p.classID, p.raceID = 1, 2

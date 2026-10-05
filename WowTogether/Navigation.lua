@@ -83,7 +83,7 @@ function ns.RouteContext(stop, mapID)
     end
     if stop.kind == "notice" and ns.routeSelection and ns.routeSelection.fullGuide then
         if ns.selectedRoute and ns.selectedRoute.complete then return "Guide complete.\nChoose another guide or Scan to check progress." end
-        return ns.routeSelection.zone .. " • Guide retained.\nVisit its quest giver or Scan after progressing."
+        return (ns.routeSelection.zone or ns.MapName(ns.routeSelection.homeMapID or ns.routeSelection.mapID or 0)) .. " • Guide retained.\nVisit its quest giver or Scan after progressing."
     end
     if stop.kind == "notice" then return "Scan can reconsider skipped steps.\nSettings can reset all skips for this character." end
     if stop.kind == "corpse" then
@@ -227,7 +227,7 @@ function ns.UpdateNavigation()
     ns.UpdateStandaloneArrow(state)
     if not state.visible then ns.HideNavigationGeometry(frame.icon); return end
     frame.title:SetText(state.stop.title)
-    local clock = state.flight and (state.flight.remaining and ("~" .. duration(state.flight.remaining) .. " remaining")
+    local clock = state.flight and (state.flight.remaining and state.flight.remaining > 0 and ((state.flight.estimated and "Estimated " or "~") .. duration(state.flight.remaining) .. " remaining")
         or state.flight.elapsed and (duration(state.flight.elapsed) .. " flying") or "Flight time unavailable")
     frame.distance:SetText(clock or (state.distance and (ns.FormatDistance(state.distance) .. (state.arrived and " • Here" or "")) or ""))
     frame.status:SetText(state.angle and ns.StopInstruction(state.stop) or state.status)

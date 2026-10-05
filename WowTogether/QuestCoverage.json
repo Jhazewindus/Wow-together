@@ -9,15 +9,15 @@
   ],
   "summary": {
     "count": 5230,
-    "detailed_quests": 2088,
-    "with_starters": 4244,
-    "with_objectives": 2129,
-    "with_turnins": 4411,
-    "with_prerequisites": 2446,
+    "detailed_quests": 2232,
+    "with_starters": 4276,
+    "with_objectives": 2150,
+    "with_turnins": 4444,
+    "with_prerequisites": 2465,
     "entities": {
       "npc": 13340,
-      "object": 6973,
-      "item": 3090
+      "object": 6981,
+      "item": 3129
     }
   },
   "zones": {
@@ -974,7 +974,7 @@
     "eastern-kingdoms/arathi-highlands": {
       "quests": 54,
       "pickups": 50,
-      "objectives": 31,
+      "objectives": 32,
       "turnins": 50,
       "complete_locations": 47,
       "missing_quest_ids": [
@@ -990,7 +990,7 @@
     "eastern-kingdoms/badlands": {
       "quests": 44,
       "pickups": 42,
-      "objectives": 27,
+      "objectives": 28,
       "turnins": 44,
       "complete_locations": 38,
       "missing_quest_ids": [
@@ -1198,13 +1198,12 @@
     },
     "eastern-kingdoms/deeprun-tram": {
       "quests": 2,
-      "pickups": 0,
+      "pickups": 2,
       "objectives": 0,
-      "turnins": 0,
-      "complete_locations": 0,
+      "turnins": 2,
+      "complete_locations": 1,
       "missing_quest_ids": [
-        6661,
-        6662
+        6661
       ]
     },
     "eastern-kingdoms/dun-morogh": {
@@ -1409,9 +1408,8 @@
       "pickups": 40,
       "objectives": 25,
       "turnins": 42,
-      "complete_locations": 38,
+      "complete_locations": 39,
       "missing_quest_ids": [
-        116,
         95816,
         98247,
         98248,
@@ -1483,25 +1481,18 @@
     "eastern-kingdoms/stranglethorn-vale": {
       "quests": 125,
       "pickups": 104,
-      "objectives": 75,
+      "objectives": 79,
       "turnins": 105,
-      "complete_locations": 91,
+      "complete_locations": 98,
       "missing_quest_ids": [
-        210,
-        328,
-        329,
         338,
         349,
         593,
-        602,
-        607,
         614,
         615,
         618,
         619,
         620,
-        622,
-        623,
         796,
         797,
         798,
@@ -1560,12 +1551,11 @@
     },
     "eastern-kingdoms/tirisfal-glades": {
       "quests": 66,
-      "pickups": 64,
+      "pickups": 65,
       "objectives": 44,
       "turnins": 66,
-      "complete_locations": 63,
+      "complete_locations": 64,
       "missing_quest_ids": [
-        398,
         5847,
         99141
       ]
@@ -1630,34 +1620,20 @@
     },
     "eastern-kingdoms/wetlands": {
       "quests": 66,
-      "pickups": 44,
-      "objectives": 26,
-      "turnins": 44,
-      "complete_locations": 43,
+      "pickups": 60,
+      "objectives": 31,
+      "turnins": 60,
+      "complete_locations": 57,
       "missing_quest_ids": [
-        275,
         462,
-        647,
         87318,
         87491,
         88756,
         88757,
         88758,
-        98072,
         98208,
-        98209,
-        98216,
-        98221,
-        98223,
-        98230,
-        98240,
-        98245,
         98246,
-        98283,
-        98291,
-        98293,
-        98297,
-        98310
+        98293
       ]
     },
     "kalimdor/abyssal-sands": {
@@ -1672,15 +1648,14 @@
     },
     "kalimdor/ashenvale": {
       "quests": 82,
-      "pickups": 73,
+      "pickups": 76,
       "objectives": 41,
-      "turnins": 74,
-      "complete_locations": 67,
+      "turnins": 77,
+      "complete_locations": 69,
       "missing_quest_ids": [
         908,
         909,
         1016,
-        1028,
         1046,
         6504,
         6546,
@@ -1690,8 +1665,7 @@
         79098,
         86757,
         98027,
-        98417,
-        98418
+        98417
       ]
     },
     "kalimdor/azshara": {
@@ -1740,14 +1714,10 @@
     "kalimdor/darkshore": {
       "quests": 80,
       "pickups": 80,
-      "objectives": 52,
+      "objectives": 53,
       "turnins": 80,
-      "complete_locations": 74,
+      "complete_locations": 78,
       "missing_quest_ids": [
-        741,
-        950,
-        993,
-        1141,
         4725,
         4731
       ]
@@ -1772,28 +1742,20 @@
     },
     "kalimdor/desolace": {
       "quests": 76,
-      "pickups": 58,
-      "objectives": 40,
-      "turnins": 57,
-      "complete_locations": 43,
+      "pickups": 60,
+      "objectives": 42,
+      "turnins": 58,
+      "complete_locations": 52,
       "missing_quest_ids": [
-        1052,
         1277,
         1367,
         1368,
-        1370,
         1371,
-        1373,
-        1374,
-        1375,
-        1380,
-        1381,
         1382,
         1385,
         1441,
         1460,
         1461,
-        1467,
         6568,
         79229,
         79235,
@@ -1803,7 +1765,6 @@
         92812,
         92818,
         93224,
-        93225,
         93227,
         94872,
         94873,
@@ -1837,15 +1798,12 @@
       "pickups": 55,
       "objectives": 25,
       "turnins": 55,
-      "complete_locations": 48,
+      "complete_locations": 53,
       "missing_quest_ids": [
         1,
         1203,
-        1252,
         1263,
-        1269,
         1272,
-        1276,
         1280,
         1281,
         1283,
@@ -1856,8 +1814,6 @@
         1295,
         1296,
         1297,
-        1319,
-        1321,
         6601,
         9065
       ]
@@ -1956,21 +1912,15 @@
     },
     "kalimdor/mulgore": {
       "quests": 61,
-      "pickups": 53,
-      "objectives": 31,
-      "turnins": 54,
-      "complete_locations": 51,
+      "pickups": 57,
+      "objectives": 35,
+      "turnins": 59,
+      "complete_locations": 57,
       "missing_quest_ids": [
-        751,
         774,
         5844,
-        96241,
-        96259,
-        96260,
-        96261,
         96294,
-        99197,
-        99411
+        99197
       ]
     },
     "kalimdor/orgrimmar": {
@@ -2139,16 +2089,14 @@
       "quests": 52,
       "pickups": 50,
       "objectives": 34,
-      "turnins": 48,
-      "complete_locations": 45,
+      "turnins": 49,
+      "complete_locations": 47,
       "missing_quest_ids": [
         1073,
         1079,
-        1092,
         80001,
         86574,
-        86576,
-        97538
+        86576
       ]
     },
     "kalimdor/tanaris": {
@@ -2156,16 +2104,11 @@
       "pickups": 87,
       "objectives": 43,
       "turnins": 90,
-      "complete_locations": 53,
+      "complete_locations": 58,
       "missing_quest_ids": [
-        32,
-        113,
-        162,
         654,
         1157,
         1158,
-        2606,
-        2661,
         2747,
         2748,
         2749,
@@ -2204,17 +2147,12 @@
     },
     "kalimdor/teldrassil": {
       "quests": 62,
-      "pickups": 59,
-      "objectives": 34,
-      "turnins": 60,
-      "complete_locations": 54,
+      "pickups": 60,
+      "objectives": 35,
+      "turnins": 61,
+      "complete_locations": 59,
       "missing_quest_ids": [
-        490,
-        930,
-        931,
         934,
-        935,
-        941,
         2459,
         5842
       ]
@@ -2235,32 +2173,18 @@
     },
     "kalimdor/thousand-needles": {
       "quests": 71,
-      "pickups": 64,
-      "objectives": 32,
-      "turnins": 64,
-      "complete_locations": 49,
+      "pickups": 67,
+      "objectives": 34,
+      "turnins": 68,
+      "complete_locations": 63,
       "missing_quest_ids": [
         1099,
-        1100,
-        1111,
-        1112,
-        1114,
-        1117,
-        1118,
-        1119,
-        1120,
-        1121,
-        1122,
         1150,
         1174,
-        1179,
-        1189,
         1192,
         4323,
         5361,
         98069,
-        98070,
-        98155,
         98156
       ]
     },
@@ -2318,11 +2242,11 @@
       ]
     },
     "map:2521 / Published zone 16593": {
-      "quests": 9,
-      "pickups": 2,
+      "quests": 8,
+      "pickups": 1,
       "objectives": 0,
-      "turnins": 2,
-      "complete_locations": 2,
+      "turnins": 1,
+      "complete_locations": 1,
       "missing_quest_ids": [
         92454,
         92480,
@@ -2334,11 +2258,11 @@
       ]
     },
     "map:2521 / Zephras Isle": {
-      "quests": 107,
-      "pickups": 107,
+      "quests": 108,
+      "pickups": 108,
       "objectives": 74,
-      "turnins": 107,
-      "complete_locations": 107,
+      "turnins": 108,
+      "complete_locations": 108,
       "missing_quest_ids": []
     },
     "miscellaneous/epic": {
@@ -3197,6 +3121,741 @@
       "status": 200,
       "captured": "2026-10-05",
       "sha256": "e711020232009d8c600285ae3e9addeb06ba98c6e0b05a0671e48696f33cf8d1"
+    },
+    "92749": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "2713bd1f79facf06fb2d80f969c23bf832b010e5b75d7d1655af9239c6f28c05"
+    },
+    "92812": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "00b0898f4d52a9ee55c08f509d8434bd407dbef1eb480383d29bc2feaa4527ed"
+    },
+    "92818": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "33d88d6b4d5bedf89f1aeea09f815c22b78248f90095cd417bda4d685bc7d173"
+    },
+    "93224": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "e3d4fb194dd2e3b5902f1f7da44534100f3179d5acbc3bfa37fd0cce11d70da8"
+    },
+    "93225": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "4e2fcdc855e0833376b28c243c7b8d27ed52096d2e6c9504fe81bc41380d2a86"
+    },
+    "93227": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "3724014ded3bdeb4e10eda00e7cedaa697978408058dfa2ecde477804b657443"
+    },
+    "94484": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "2ea0f3c31c133cb0f896295623a6275f0d72d5e1c2ed4782dc28041e06a2aa05"
+    },
+    "94493": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "5d8b08ec730e041d429972c3698a39857bf6930059e0d313a67b162c5ad49ac2"
+    },
+    "94872": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "ea83e0bcaa432d187c731eb21489dec14dc5cb0d217bc8d1284df79f6cacf963"
+    },
+    "94873": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "c4af970818887d4bb6f3e73b6f25ef13a4bf25f6ff81ddfa540746335e074c90"
+    },
+    "94901": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "32ec60a22fba452d249aa2c8c78dcdbc3eace2bdf72d800cf19da61fb69233fe"
+    },
+    "94902": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "566094b66d2b74a7da9e30b3203c2b2d3cab3e6d157ade6634afc4abf665f1c7"
+    },
+    "95748": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "d020966aac485db19b57173e41a61ea71fc4c30f4b15a28498d96148fcd6a3a9"
+    },
+    "96222": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "f21d54763ee78a213d7ce92376c4a4305a048c2e9d3fa3a2a26d0e43fdb78b1e"
+    },
+    "96241": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "c0c6f73fb26152ae09107d53b0ef0b2c516ab69f0326418f8712bcad8cb80f15"
+    },
+    "96259": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "c94b6abcc28940ac479897a6ba47466ba0354e2f63a5b66861956f9ed05fda16"
+    },
+    "96260": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "c955ec56c0b3c4c2b3d222e000c651b209c965db509fe18aac39684df3cdf511"
+    },
+    "96261": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "908e5a0416fb1bf5c7177bf1f7a2dda88084c5d2fc008dfc24bcdbc1f1e30ebd"
+    },
+    "96294": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "231b263d956539111d536b8adfd37a8e9e34352588457adef3134aef8a8c4928"
+    },
+    "96897": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "b4b0ad278e2de7de71801f2c890eecbf3d5c78ee6070c107ecf6a933ddd5f4e5"
+    },
+    "97047": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "4c571361e02996db1a61535038bfedc5d9706c28e5bdcebf85a22cec1b757432"
+    },
+    "97048": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "14a6143e2d2e66755f94fd488ca850a6524349a9548c09ae70549eb905c8c8ae"
+    },
+    "97331": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "c4fd88727fee32c3c94a533dd530196a366e14237ef2024b3e4b50e2905feda9"
+    },
+    "97538": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "ff34d33e815c4ae5711f9673b5fdb9de2fabb24333b72ced28a0bd1f29219315"
+    },
+    "98027": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "0790ab850884bb20056d1fc1a03b3f5a22fd1575ac9eb18705f96939bab9d730"
+    },
+    "98042": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "6cb8cd7e6a110b152fb9d326cb8413217b0d979daf0a2b7d1e29aff28a1e1c75"
+    },
+    "98069": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "84ebe2fa47e963fd0a6f7e389f2746229b00c7e659e38dc9fa56ed894d775b39"
+    },
+    "98070": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "4f4a1e82ff20e3b621c831d84eab914ef24de04d072bb860cc4918be41f35d96"
+    },
+    "98072": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "8f7f50645b76d247f5a7372f4dca02179c5dd06603141886098488ec60d8f51d"
+    },
+    "98155": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "4e4c27ce9542c4ea12a7ee28fc407515ea6d9f6930d2e5a68775646eb0b1da26"
+    },
+    "98156": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "1962f157e6314abb830d558baecc120ce6ce2f5bd05f75fdfa08f6ddebe675ca"
+    },
+    "98208": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "ea8f685ddcad331ab594d942369b8bdeee69e578135097b78d8b6902bc924f2e"
+    },
+    "98209": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "ae36540f78128e41df661f09cc64a9ae94d0992602a9216efc80a1fa46996926"
+    },
+    "98216": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "bf23b1bd2b343028983ce34fc765d64493904d1b63627270e4c99c40ff94f7c0"
+    },
+    "98221": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "4e73c451e151a5ff9184f6681038541a4cd021af05b102b0fdd7d1cf002410d4"
+    },
+    "98223": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "e9e49d1275dc5f2421fd5577c8f03da731565ecaf4bbf0bf1ad63256868216c4"
+    },
+    "98230": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "6d4aed7e81794369ce4ec375a922e207eb80a6a34449b3c8efa618265c0686d0"
+    },
+    "98240": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "ba4f7a6a7f7f1d03c283391be81a674453dcca0a0a8f2c7a985b8ba2c518a4cc"
+    },
+    "98245": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "2af5f645ae9e391c456c83409c65a6178616fd6368178238981d459469989201"
+    },
+    "98246": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "a91bef9fedcd77e5fa66dddbe62392cc055c91e271b202bd57f105a0e31cc8a9"
+    },
+    "98283": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "986b17af51baf87d2a31edd5f64ae6195433b87d13d6996ea43ac1bbc78228a3"
+    },
+    "98291": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "dbc1235402e236a52babfbf2f605e0304c8ecb048aeaaff27da64c4e27d0d9d3"
+    },
+    "98293": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "2d0af509816fd7de30533447640148e86e458f7dd7517deaa5a674504fc4d86c"
+    },
+    "98297": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "059d9e82294e06490fe5c2d37cb7c6a62905c3f18b3eabf81a72d6a3147e83f8"
+    },
+    "98310": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "1f450cabcbbf0abc5501757b9b0b340c4cf81bfde511cc050ded42b5328e4f74"
+    },
+    "98392": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "34ae59dfc1d11ecaa8c835e47487c572073395f07ba97c2f25e9e8c31ac128f1"
+    },
+    "98403": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "902f33bd79a1c526ea0524acb405f0f184e7087848e54d74b0fe6332045d8069"
+    },
+    "98417": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "a8f2f0348f151fa576919817fac07b3a279534ec2698d22a9a26ef0a8faee5bd"
+    },
+    "98418": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "79aef4d62107c083768d262049b5b12cbbaf7bedba5eecdd2f159496340e6baa"
+    },
+    "98427": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "c71c3305a655939a49d01ee74b185853c16a6e7e7de582e4cf80a6ff3efc91f2"
+    },
+    "99050": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "ca331fad11a99cd7c6d6753ba4e7a038cdf98cb38bfc58ceebac8a479f41cb81"
+    },
+    "99080": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "7397db54b63257997de4b6eed0ac2aff437d02882869aaa0f632c085678ba73f"
+    },
+    "99153": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "95c24be26a60bb5583eebcb9a8740516e9b2464bcc88358e70f32f675adf165d"
+    },
+    "99156": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "a1a5f6a9f31dbbdb8853c24fd9655ba434a7ed3906baff1dc04da99df8b53bfb"
+    },
+    "99197": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "ddb8f214258af2570b4a4f13e7569e426af0c1ce4bb62c6414b1d4f513e90f8d"
+    },
+    "99411": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "d6b2d293e43244d2c8159278b5c2bfc2e6902ab8b21a46cf6691ca397fb311c9"
+    },
+    "32": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "852ee8d479c6945e7054a85cc52eabe246a646ac18dd85a991ae13f74cff7663"
+    },
+    "113": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "5213ae81cd00f760a744a729bceeb12a18d2d7a9e08596d35b8493b69402301d"
+    },
+    "162": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "3309d04e6a696388379f314dc7cf5744557a33f83adbab1bedb3a54cdce4dbca"
+    },
+    "210": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "146cfb7f7bdd31c3136b4a6471ae52bf6bcb051a1d8af4cf334e0c43f71eb42e"
+    },
+    "275": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "e8ad3e27ab28505f9b398d8c3681d0ba73b23842f21757e2cfeddce2ef63c7e7"
+    },
+    "328": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "b786a98a343b941ca9fb1b8dd7786b7e81c687beabd2e5f6df4f605ba17e8ecf"
+    },
+    "329": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "5f7716793709da8c464e52b11d5ab858df62c0e1cc288cbf1174ce94aaf500ae"
+    },
+    "338": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "f6d378f9c5360365ad65f78986c05e9ffbdf653010bab25591278b6302845a42"
+    },
+    "339": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "e9d1af7f86354d4d8adff0bb0304b22441f71cb5818a18ff7029c2142c3b0eee"
+    },
+    "340": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "527ffc5f362ee6e5cdf64774cd7a233007e9ad7e6cd989f4103405fd91a2a93e"
+    },
+    "341": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "f433840bdbae6d436a32295729dde6bcee7715c9c31523cb46d71ee62351d44c"
+    },
+    "342": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "97910c742f4bad78373b4efdef18cc2f03f6b3fbd31a02d8b504a0dd9849b60c"
+    },
+    "398": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "c0357d4d679b64752f8ebaf2428746af0a421ef9b2c04e7ed3eee5111331ac21"
+    },
+    "490": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "9acdfd9ecb3795d9ddfda9cb9219c4b2b2a7fecad06e3acc92968a36219f1584"
+    },
+    "602": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "fa24bacfa6c0efb231ce21da9d56cad47b90d6c7d698b25f4ecae59fc1f6653c"
+    },
+    "607": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "1df001b9de32320bde7f6ce164ca69f61639c6eced6e161729b3ceb1c70ab283"
+    },
+    "614": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "f130766464b068bbdc89551f9c87b4a78257e68405ae43c98fd9c068958add78"
+    },
+    "615": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "db6edd4e1fd121d061888955fe187f3c21a880047a703c9cdbb8e63aeb8528f6"
+    },
+    "618": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "7d705227e4bbe4e6afaff052ee3585f358d2431009263ecc272b10174c50b918"
+    },
+    "620": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "1223f665f088015cc34389a21ffef2cdbeb8a658852f4f11956a015a3f56f891"
+    },
+    "622": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "f91d6cae18c304001d0a5396be5cde5a088fab212f770bfa61bf25b1bad1812d"
+    },
+    "623": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "d66372b89166959fe94abcd0f6b2f45c62088759cc3624dfee296e6e5c2ba5ad"
+    },
+    "647": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "4c9b75c7a7719eb43531bc18d13fa8ee40bfc1711b1e73f6a3bc6d04696081c9"
+    },
+    "741": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "71641008ce5dfa47ff78315a33bbd77f74d1109f51a97169eb7a3c8e5a18fa86"
+    },
+    "751": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "20ea496b5a3e367ad1f63a4da126f8c74d583475a14f292c3169cbc088ba93bb"
+    },
+    "861": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "5c5eb94d08e7d2c9a2a3b134a076c9115a33c3c3bf95c550dae782ed205cf34c"
+    },
+    "908": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "7a3c274e62bfa6bc5d9b1a9dc44da6d961ef17aa0d6ebddbc923272394337ffb"
+    },
+    "909": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "168d27c89cce841f3ccd89a8dd19f60b3a855363f13e14371b337252572578bf"
+    },
+    "930": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "e9c97f61c29330bdfc820096dc84f1fb6048a8692b595b6b55eba0994020e5d7"
+    },
+    "931": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "e6536d04fa92e2d67494e344a2553c34a23635ea181666048101ac92f74380c1"
+    },
+    "932": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "9058b685c4340c5ee802b52b128947fc1be1df516ddb4113f7c786e83a05bce4"
+    },
+    "934": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "4cadea6393bd67bc3c8d1678489e1388d3faf1fe4179d002af17d36e82fad628"
+    },
+    "935": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "d301d903e54b904b5d4c75de1ce098a0ad16201196d06827b152c06d169429a1"
+    },
+    "941": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "57b6fee54e47a9c4d6bbb030d4c89fc540c7e7da250109cd4c55bdaff027babe"
+    },
+    "943": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "61d792844e929613ec6112cec6be1ffaea6f9bc4fbed9f7cb11e349a9cb4a23e"
+    },
+    "950": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "e4ddcdc05e3419ca633c7576b57496c9b1d06e1a3b3ef6e74d6fc984623bdb4e"
+    },
+    "975": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "f5bdf4f3f4e01e5363ec7723a15a497d9c22dd874baffd7ab5cd29cdf29479b5"
+    },
+    "993": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "343c55175d012ec7c672c2269bb6107781cd05527cf20204c8ec4520b7cba4ad"
+    },
+    "994": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "4fbf781cad607f65313403892f0213a308bfa0d4673bdd353dec3285010cc071"
+    },
+    "995": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "4360f469a4422d3023185888bbdd9b2ca4e213774d8c31997b3c915fb0026789"
+    },
+    "1000": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "de74bf224ae7cbae0dbf7a61f63aa6d5d0c4e49a425b957352e8a4dd7e012580"
+    },
+    "1018": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "1be3f266390ef9ff75c5b26311f11218a45c0fc44f0b01a18697e53f8090d24f"
+    },
+    "1028": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "2af54377514a73c8852eb4b316ccec7a976ce6c2ef9e3b522078086602d6019c"
+    },
+    "1036": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "237b0f0c5b4bca897e8d991acf2374f320c5b9b1a696b62f5cdc37fa9d9c12a4"
+    },
+    "1045": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "c6c8f1b43a710989a58d78b5ac241cee963685a2462ce2b5931d3b4f490b79bb"
+    },
+    "1046": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "4c6ab3cefc74df20947c838fd11544cd69537b640fa0cc4ab1da22a5674ba014"
+    },
+    "1052": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "d52641a3795d11cce00caa242fbc0d8343022edde878342924e2c959d5c2a003"
+    },
+    "1092": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "d23c41afffbd688613c3dd165cd243cae0fb373d53e5ec7a88dbde69cf733370"
+    },
+    "1100": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "7d5f22ce03d4bbea21f16c7c02aa8e822370fcb259c7c4a77616b7394e432e99"
+    },
+    "1111": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "eb588beb917120dc75238e5cab1cda9f499609f791ba0c103fe301ce1f133837"
+    },
+    "1112": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "b1e645d4b9f7a3d695e1ff96c2472b2f53de91e71b480ae684d5767a2f576c1c"
+    },
+    "1114": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "836eca4482b8c3422d790fd1a6f014a6c8e0cf68b5cf825403867ad81726c3bf"
+    },
+    "1117": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "0c78282f73e34036649866587a129bcd949e5f408b3665a8520bafb58f9ea926"
+    },
+    "1118": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "6d6e65a2cf0127047c59c480f75739a0b1982e3aa37fe48c51f82ae46c3a5123"
+    },
+    "1119": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "06be6c1cd941ca232ecf70a595d7fb5675eb554a425935d3271bc9c0133bf0be"
+    },
+    "1120": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "160e36e2ed63030e812569046b406b03e0a31394e301cf4c126cf90f7c52124f"
+    },
+    "1121": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "0cfc7df0c3086592272f023e098d74faf44bdc1ef76813a4f57e88c5325dabea"
+    },
+    "1122": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "48ebc293046c4008b3dc58c7c1e38d1c8bd71e13faeb78e397580092f38c7312"
+    },
+    "1157": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "64fb8286d9139abe53ebf238a6c6428de0976edb62017f6d1d9177b75158f482"
+    },
+    "1158": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "c80a95c2cc9ebec30c843dad65eca3592d640a36e982c651ee312d04083a3bbf"
+    },
+    "1179": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "f0fbc147507074abea1fec5c3b6c060d4124077e178a259bd41add5df5d25ab6"
+    },
+    "1189": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "e5da7ae8be0f5590320004fccc8233896ea546c0df1d2ba5aa75bad1144a2984"
+    },
+    "1252": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "815f36d11a3ccabb23a4f6bac49e2157bc8ccaca72fa90413a23309a919bf5de"
+    },
+    "1269": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "e79549c1b05c220e93a6c4da1d97fa4138047a819bf7bf53109a6ac018841ff5"
+    },
+    "1272": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "2110bc53777610560de25dd93e405c1c201834c0a35ac5ea8a3a0e30653aee60"
+    },
+    "1276": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "a81793387b8702427bf0f9647bdb3781f4958b40a1c27f75791d35ca00f60245"
+    },
+    "1277": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "5c4317176fca8bc3cf04da9714f13f9a0a10841f0a2aa6bfa7d949fc66f57c6f"
+    },
+    "1281": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "5cf6a5ab4091c9be1b307295f6986e7f8dc1e822523bec6c112a4327b35c45a5"
+    },
+    "1282": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "de3aaefe36e993e7469f1fa58dbdefb7a1600b78c9926a79ae198177475c134d"
+    },
+    "1283": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "c862b7d14a9f72d5b5c7f2e210622972bd46aad6a55e345ca0296a5485081d18"
+    },
+    "1288": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "cf280a0f94284a55b965b6dcac38a522486bc04e4f2c751def091461d2567784"
+    },
+    "1319": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "f5afadeae8702ba3a62b84c9625a54cf7afbb5c523818aab8cad2b0331290d83"
+    },
+    "1321": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "16c4cba831f3f96556d8c349444ee03a981532e618f05c0acfdfa4855b7e3465"
+    },
+    "1370": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "502c6723e5ef7ee8c358ab0edd19903a87228db1416b71bb35d2304da65c4880"
+    },
+    "1371": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "9c610950c451de87f5fce404448e0f530c2f5ae0feaa63f407b3420fa263ea41"
+    },
+    "1373": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "a5ee93d2e5ae702c23d580d193d207ce86ead5e61b6e734866148340599a1914"
+    },
+    "1374": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "6ff8de4ffe9f149fa8296f953bff88387e7b67f8f2325c25520692f5bf23ce24"
+    },
+    "1375": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "440e22d7b49045fbd09be8662e49827c7c68eb16190a38b0c1614ecbaccd06cd"
+    },
+    "1380": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "5dd64573e14c642d5ea69042a48ecd5835c6f8d4a87aca4fce3b4e6ff1f9fe46"
+    },
+    "1381": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "459352bdfa5b087b46c19bee72a088616ae15285cc80ce271dd160f3947589db"
+    },
+    "1382": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "ab3fa84de7668afd01004cb3bdc70d242e02119f38f476652045a48acdf376cb"
+    },
+    "1385": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "433b558ca2c344371d62d4e643af4287047798c0aa9dc1644137419ceb07cc1a"
+    },
+    "1467": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "185f938821c1299c2c229fabbb3c99ee6bbbee31d3997c5004531b012c6a98b6"
+    },
+    "1488": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "a038f3ca017941f1cbef3d9ac3ebcdac38e550175c9594794f88da8edfcd3a53"
+    },
+    "2139": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "5e430e8a809c8566afa9c21c9c586608dc320a33a90bcbdb64c9f9c5fa99b7d1"
+    },
+    "2459": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "e35602fc8e5d8d3dc5e08f5a4494bf83098d57f8faf00c200a11d25cec461b5e"
+    },
+    "2606": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "304c4dac462e84a8bf501b86191189e4dbf4e07ae7e2a50fcccf5ddef552615e"
+    },
+    "2661": {
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "3ac924615ce8da04bbd6e6c3cb2a55c32898647aaaca74dfd81a17cabe0b441e"
+    },
+    "2938": {
+      "status": 403
+    },
+    "2941": {
+      "status": 403
+    },
+    "2942": {
+      "status": 403
+    },
+    "2943": {
+      "status": 403
+    },
+    "2972": {
+      "status": 403
     }
   },
   "entity_capture": {
@@ -3243,7 +3902,9 @@
       "status": "not requested after access denials"
     },
     "npc-2986": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "59a5f6d100de734ca1d5d03ac32bdbcb93c94d012327828a47dde5a1e9ca8f5d"
     },
     "npc-4498": {
       "status": "not requested after access denials"
@@ -3778,427 +4439,701 @@
       "status": 403
     },
     "item-219404": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "d99f254ba8dcbb1de24486a731c1399eda71433e73ea8dbaa7ab145e6c12e4c3"
     },
     "item-219405": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "f2f039e12e3917f231d76b36ff7924029197381d7197b8a5d1e6cd003e1f54b4"
     },
     "item-219406": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "ec0a33cdc427971f5a4b065c594ce025dcad385ae17756d8f131ba4e82b76951"
     },
     "item-219399": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "2190fe11bae4bc43acd5d19dabfb7b7e6a7889444978b08ca862e1497a183f86"
     },
     "item-219401": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "5da47a5948ba6160b00a7f39224e1755e95a2a7e8d7eeb6f5ccb2102263c8b0c"
     },
     "item-273001": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "5130f42b54b126beccc8f79f7d7cfc0dcd863d28c1d7798befc27a6d7bc7cee3"
     },
     "item-273181": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "35faf972220117ea1c7cea81dd362938398af1f483c0f45982246da4aab572f7"
     },
     "npc-251493": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "23385c5814597440199259fc2b21acb71e9e0efe9734cbb3b549d0f202fdfef2"
     },
     "npc-270424": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "c6e2e55471c37638a5827e9bd311dfc6b8210b729ff879177ad942f8c9b4b353"
     },
     "item-279389": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "588e58856628ae23411869e8da0ed95d35e69f2cb01753a6d2b0b3f7a19e2bf3"
     },
     "npc-2705": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "83d5afc3032833258b8a848a8064884ab869de874227d287ca931247e3620ff9"
     },
     "npc-270426": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "af358d99d788efc4d148b9e4de6911115de08e09db69895663f6e67b144caf01"
     },
     "object-671481": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "5194d8914033ba3eb76672523b4ff4ece65ec7424271f46e17e2e1389fe8a243"
     },
     "object-671483": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "55240d9d07faa7f7105c7a001ff28e0de518e4dafa02071106c5c1fc3cb74ccd"
     },
     "object-671486": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "cb2005f633e088ce1be8adf639aef0e6ddc899f1290f7493ff9d66c48b4c4edc"
     },
     "object-671487": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "df8251e773a6217612bcca82c2d9637dd9cc541576b3bbdafeaaacf3def51ca1"
     },
     "npc-2094": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "c888085e06717ca77c4815c87dfa7638150d84fcf6c2cb05c688c2bfa99b8134"
     },
     "item-213566": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "f3cc213c19383e010c0f20ec58ce0d276249155de67e4e4f027b70f40de8c339"
     },
     "item-213567": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "2b3dc44804d63e33ecc800a4336c723ef768256735a7974397db9c68cee2ab9f"
     },
     "item-213568": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "240141a6a607eba44f23f3cf6be2b214d4de443faaf83e3cd8c6907058edbdf0"
     },
     "npc-217412": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "76343b4d553d37aa5e0084bc29e79710385b1ef33f864320cacf7adf5bb96b10"
     },
     "item-211269": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "5577c67f1f8650deac428cf3faba246d6ab25ffee9b042be533bdec8d8d223ea"
     },
     "npc-715": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "7cb8aa552cf6b24f43bdbe2525cf9c5a0a2548b1491c2a95ca3c9d4a6d510527"
     },
     "item-280806": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "d964047e8a2f0424ff7863bc4dc38abc84beda855e9180f47249e81a1a81563f"
     },
     "npc-268705": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "18715a518488bba45add2f297e86b090884b64dae5abe3c68de7ac33fd5a892f"
     },
     "item-279469": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "cec70f58252c24d32819ceb6e8dfdfa804ee7fc6e45061a76cb65878ba0ebbcd"
     },
     "npc-2410": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "a0e4ce2bcb511d520491ff7381c70c9dcaeb1984bc324cf4e2f8a649892bb00a"
     },
     "npc-269127": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "5cbc952e631e76015595a4355a39c0f77295f97b30f05e62c5c388f5de5c6950"
     },
     "item-278462": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "59f0da8446fbeff8ebb98e16d113139fc6e72302d5f85597dc7d4a413cfda8bc"
     },
     "npc-254797": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "07fce48e056aac8149def274707eaf74e7d6b68853fdbcb3a3ed58d8014ef1a6"
     },
     "npc-255597": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "2efe48fec8a174f6ba3babe0bc1a5adfaa28541312f1834ba17141c02e472aff"
     },
     "item-260452": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "a2fde31d56ea3aa63be9ddab47b8af6fc63894f076bd62be7ca199fa8fb29d3d"
     },
     "item-277953": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "3d9e9b38542ce50531148eeb281861c64dc8bb11ad0f24bfe86f1cb3ad74cb50"
     },
     "npc-12920": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "a5eb20d2c61740c225a3a4bdfa0b2ad39e0a20e810be115f06b5405c9b4cc30a"
     },
     "item-213422": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "96939f1940173ebf245ccf91a10a3356c7050dcde82058993970d431c3f66c2b"
     },
     "npc-217300": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "f1a7a454a9ec07cd433a554f540318609d66b04041214eea7f1835989fa94d6b"
     },
     "item-5188": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "ca8309b9b4e4a489661cf0d8686ffae7e502a77d34e5852892adcf7f7dc6d742"
     },
     "npc-3515": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "ca67e73ea010b2c833edcf70a252034558502d5d605463a729500c746b99f4f4"
     },
     "npc-3516": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "b5f8a4dcdddb7fc62e788850a2314f9611ad2c88c930354301eb6970c21f742c"
     },
     "item-5769": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "754e95803a103c93826e365a541380b1d8b5e44d9588582514a361abf94a4bf3"
     },
     "item-5768": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "7be705478fb99f064b1cf5c400ac034dfed60e919f1c22aecc3b019d909a4799"
     },
     "item-8050": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "3085893cad269adf8d78e5fcdbd510d6f38c482eb416bd5d20fe42ddef1276aa"
     },
     "npc-3567": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "8c6b3b7ca342fe9ccc74903118044fea5089eca6b44196ec70d3d1357df0b7f0"
     },
     "npc-14886": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "a0bea937c0fa70856de4ea30ba16874623b5a41d80fe2665330c8686c6cd6e71"
     },
     "item-19482": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "8437dab0d0529fd0568014ab52ff6f31c8c888f350fb97120b0286292427a7e2"
     },
     "item-5189": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "09e3d53641cd0a1109015254e1e073d106d5d1a68a678ddba668425eed185886"
     },
     "npc-2080": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "f69e10167bd727ce85a5448000377f3e7d1f6dc79b52521e7e1cf30e06185c21"
     },
     "object-6751": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "27d9370c33141997ed28adc6a2dde870d6cf51cf3155c7dbad97e6de8578fded"
     },
     "item-5190": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "5c0043b60df0cc3ea61772a273e0c91964979de47e974ab1169704171e6fa129"
     },
     "object-6752": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "d1489feb2d10c034a1f19bb0675701cdaa8a3a36fcc0d5f95ffb798c534142dc"
     },
     "item-4834": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "0145518079221958870749e5e4e04eda57898123cde3451ca9460ada9310308a"
     },
     "object-2908": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "395d2849f18f4fb2551c31048c0fb0a5e5825ae4a60bb29f8f8e4eb8e36a8b2d"
     },
     "item-5217": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "b5bc50c11ecf339e1700452ca0fb96d420aaed580401580f2665b5a49908e2b0"
     },
     "object-7923": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "6cdabec7b67fe7ae744ea52e47d602b83fda337c0a7cbdd1ece79d6a29101ccb"
     },
     "npc-3216": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "c3f342378d0d73d37c6e35be1a8b6d43a4601b7c08d5c667b35d2e1e043c9440"
     },
     "item-3237": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "cda2ec08b2f56e3a2dd5ecb5bd585012857f7564928ef83a58e25e19de362df0"
     },
     "npc-1498": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "d5caeade061c5865e3111a0727e1dc72ed5d07aafece7662598e6ff6bd00d131"
     },
     "npc-1937": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "f0b11af5e2083ca0d01dc4a52ff92fd329368c0baed9e978f4e54fc6fde28713"
     },
     "npc-2786": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "31ef6289e105a15641aa020a6df02f5b7f87a79c442ab72384500f5bbf0666f2"
     },
     "item-5387": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "29d52605e565833601fe4a7947285f8825edaf2a50600ba7beafa6adcbacea71"
     },
     "npc-3692": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "e2e7eab1a91f02bf202b4c245e582c3649f43a9ee0a13abecb457403b9ab6a39"
     },
     "npc-3693": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "04af044d1e733cd3c59f2d7e6bd4a2d51fae99bef9acca583ad5ac5c695b6d1e"
     },
     "item-12238": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "a49c241daa5837aca433c234dbe3c5eaf3a5ea26a928571913baddd8cfdb70e4"
     },
     "npc-10216": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "6c24cce236733a642ef5da0e56009bc885f6ee89acfec53990713054703ad53d"
     },
     "item-11149": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "d4b90d6298ded148af1e53a9c4760c1ae7b2ede7a98337636ab763981501807f"
     },
     "npc-9317": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "aa8b69f835eb55a4b4921772a7dfcd741f06f64a78448fa6081922ecc5af0041"
     },
     "npc-12997": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "e862050b80383dc254b633c47c483e7b24985dc2337bdfa460e32179d4cea200"
     },
     "npc-13017": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "6d2290fce2f8f720e48be31e30a150b52f09f98bf1b0f975d96b31fec3db0a14"
     },
     "npc-13018": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "0acd87fdff9a3398717260d39b75c4bf1bedcfd4f84abd616ce612b6ab43e19d"
     },
     "item-1939": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "7b38829350eab43a9aa92546f80d46c035dc6ec59c1ef2affd519c5a01334598"
     },
     "item-1941": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "ddd20d67e81d2726f5351005284967bc45c4ef5a6af81f4e51851baf2393c117"
     },
     "item-1942": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "764975d2f0c0ff40c0db0a2cb2ab633174e93a0c31e69189965160382af323aa"
     },
     "npc-346": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "863237d5b621937d4a3f27ceea8f3364530399a4d597421154307ad5ef22a6b0"
     },
     "item-3425": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "e7559e91ff713f53861f573865f98cd13991e70b5c9c2783bc88ee3d9b3f784f"
     },
     "object-112888": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "da8c95dfc2b9b65bf1320b944367b9ec629aab0195c5450da40db7e16fd10545"
     },
     "item-5272": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "89ec3431e4a964e368608a67ac27932d5f2eae8d9885057633ef66f30268d06d"
     },
     "npc-3616": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "2fa555f78877a8d520fecba770fd1bd48077d8005b28146551c9ce8642998f12"
     },
     "object-12666": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "eb9362759633e5741853f07426c23879560b01386684547398418a9f7a8e533d"
     },
     "item-12292": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "b3f0fb9b541b453d4cfe47b2ec81b36c0200e96b535c0246f82ffa09ca322be8"
     },
     "npc-10219": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "e78dd33016f69436a40f8a3129cc852407962a9ee5ae32170371599bb7ab0fb4"
     },
     "object-176197": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "ef5999c14d6e2aaf4a506962c7fdf8dc4716fb415d9fe900f4693ba5884f2b38"
     },
     "object-176198": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "08108d3558049ebdc9ee38762297e02842e8cd2c26440db469bd45a0f8fc78b9"
     },
     "item-4654": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "e33d487da1272cb02314402215d873a35a2c40fcaf6228c3cd85346a40f83d7e"
     },
     "npc-2912": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "4408952cf7ba11607b4a8fccd03a05ebe8ca3235bacbb1ffe3906daf5966a97f"
     },
     "npc-2913": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "411e200294b99be9b8b255678d764ef577dd8629fb7138957211758cf3f91513"
     },
     "item-2563": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "f912a10e4c0c96154db65385f7af0bfe7bb08a4b5130c9478a315c268e5330b1"
     },
     "npc-1093": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "5fa9481c7b7f640810a4e5b06d4fbfa2190732203aa81319ffbea8253c76c955"
     },
     "object-257": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "11ebac5d244e4bdef0d4aa2a3e80517188f86c00e30c7ac1a71fc87088fc9050"
     },
     "item-2610": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "c21ae9e5ac3b150810c27ca861da63f69aacf8ea298602b891cff8b89e7656e5"
     },
     "object-1585": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "b54af2f9e5e7ec7bdc068907e13ae555134f5cca74d7f8b2170ed0c1ecc0844e"
     },
     "item-2458": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "4792419abfecf1ea5c19082aad792f735d4a793c250eb70e2bfe480a9455bdd6"
     },
     "npc-4081": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "889853e732de1ebdcdd069a89c05ccb1763562de93b059958ded8aed0b18b1e5"
     },
     "item-5692": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "62cc0eba9acdfb9cdd222f0ef8e833d189fe89da873399623b642e52dc91bf91"
     },
     "item-5693": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "826fa157824544b04cabcdf21cfec857b01061c462164c8b8e9428086e5c7c8b"
     },
     "item-5694": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "9aa957692a67849cb086690acd0071be7e95ca8a0c6b1ed444e2992304a2c21d"
     },
     "item-5695": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "b33b134f3d2a968e2110998745cfed81dbb5984e600b8b4ad5836b84c745d9fa"
     },
     "npc-4077": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "1c3c831bce2166bbb15e5f1f30ef39fd458a3c63de7b487601809eb66eb905ee"
     },
     "item-5733": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "97bb432da5f98447a6b13a61981fee524b3e12ca0469172d0d9da4758d2cacc3"
     },
     "npc-4276": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "d366ab2e61be36cebe31587ecc4b07365d5bff5aff9576579094bd8789524806"
     },
     "item-16763": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "c2acf6c7c3623c80cc75ce47242af30a97e07369a657baf287e09eaf18bb01fa"
     },
     "item-16765": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "e3d9b3460e27bb46b65fa3f827cd70b092da23ead8e107c16dfa6d5269fd964a"
     },
     "npc-8582": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "2cf3ac9422aa2b86cd18a2442e27236d0431c04c06d90e3b0279c6f7b6da725e"
     },
     "item-5547": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "c207d85a1818291eddb3c1fa5b16ff61798e330581dc8112fc162a2d6a870944"
     },
     "npc-3916": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "f3c971e26dae0526cbc2dec67216c8ab6850c0e31ccd167d328f7fc55afabeca"
     },
     "object-19024": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "b8993a685766aadfc41d145dce9a1f7314c9e160a769663dda0ba1c12ccacb8a"
     },
     "item-3658": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "1e03799ecedb690c430f8d9051dfe64fdc15c9349fc740ea038c123ff4e210a3"
     },
     "npc-2277": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "4de16db159a36a2972c049eb7d6fdeee16e63099bd49c73e9b3f7b3b4970daa2"
     },
     "item-3660": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "8dca8770066954a47ebcd0581252ef8881bbfca386ea3f7ec054cdf8a75394ba"
     },
     "npc-1440": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "0f878cfd90473e647079cd7fe1d7a2b1e5d233dcdda38d196cd8807369412dae"
     },
     "item-5455": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "355eba0008ca398b0e7cbd978a78c10ca57a2df6677614da83c4ef4dac1058c3"
     },
     "npc-3885": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "7eca629a6dd09bb482c11f1f263fc3a64515e1fe50f60158439859664d722bce"
     },
     "npc-1416": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "480bcc3a58ee53f3106a979a84c634295a6e345892f72e39660b2bdc3fb7e676"
     },
     "item-16642": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "bd86dca3a844c40e52a5efba8e71a47fb6ff4419abeb8746965850a619284ea5"
     },
     "item-16643": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "e68b2ad4c8d12e8438b746995de2605bc8534ce588c8454c53ce77117bc55afd"
     },
     "item-16644": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "679e1502d9370391bc863abab16e2b7746db5c40c635e8c0c3abc1e298817e12"
     },
     "npc-12718": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "3fad9ade11c556822d8cbd93df390d3c659b960662833950bb75f5b09a7b2b46"
     },
     "item-5845": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "0129f256da06a0b0b9fe9eb888baea27c1d4e727baa99d6fddca492643c8795c"
     },
     "npc-3441": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "9e4e14b0959ccbf9fa66533fd353b134506efc47714f81e75f2403fae799252e"
     },
     "item-4441": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "31361b52dc105e74a81846e11da30a7a6d891fab52dc7e47aea7c572b61511d3"
     },
     "npc-2696": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "7489ac27fc8a2ea08bcf464a23386be061f91faa9dfce0449d6aa54f8abaa507"
     },
     "item-5849": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "be7f242fcbafa4b3f436240b6354796dd5fd3393e54bd9b99b8c62e8f332ba0b"
     },
     "npc-4453": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "b8d2bc35188cdd7a4ed36c46e4756d3308ce5bc56230ef6eae0bd8282d475ab0"
     },
     "item-3719": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "93870414d907f5128a221f1d9a74827db08745880c6b5e6096749b8709ada44e"
     },
     "npc-2438": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "68ba0fc02a3c14abc9e91a69625d35219f2f50e31c4ee9ca029311c8ad25abaa"
     },
     "item-5790": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "f23c94346b274eff54f20d82e28fc1a0242281adb10b2f0339115889ae3784f8"
     },
     "item-5791": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "d52e9929cf3d1768384c35e1faed10e5a8f6022d1c575b960aa5d6a835018673"
     },
     "npc-4048": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "f11531ee1d985b7d1ae6faf88d3ad4958f8205e645827a50615b230d35ee7af7"
     },
     "item-5865": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "684a8139b07826e08c23a6957e79880c70a1de184f7d583c9027e7afe682f006"
     },
     "npc-4708": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "fe61519901ab6e8645127e606fbc86f14cca482ccef3021dcb5c4351c5139de1"
     },
     "item-2719": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "f8da44c35d7d8492fb6b7ad7f0de40890f433b89e259619d3ab2421dc82882d8"
     },
     "object-287": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "b9602da939613dd134d8e7dcc53b735a36c509fe29ce596f7fb4a49c1a22df5a"
     },
     "object-288": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "0e719c5301c6950bdac6d57c8142a2d5ef0a1ee08ab63cf5bba269b66f48b6fe"
     },
     "item-2720": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "dc8839c7384c99af0957e96120ab179fb476b270ae1a154fe1642e9c69482a0c"
     },
     "npc-469": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "585885da490025a11a0e23b9fd05f0a2d5855c8b83a7c3dd3d941974a76b4bc2"
     },
     "item-2756": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "85c75f3a484cb3b5eebc2ad118befd27a9c61bab112f2aff2fd6d1d05124ad00"
     },
     "item-2757": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "9c45d5913789fd0789adf81153440620ff0ef9a41ce844a3d638d4a58dbc43e6"
     },
     "item-2758": {
-      "status": "not requested after access denials"
+      "status": 200,
+      "captured": "2026-10-05",
+      "sha256": "2813ae312f92900f7d717eadf353ebbbed35be8fcc80be22eca95cafcdee7621"
     },
     "item-2759": {
-      "status": "not requested after access denials"
+      "status": 403
     },
     "npc-716": {
-      "status": "not requested after access denials"
+      "status": 403
     },
     "item-3688": {
-      "status": "not requested after access denials"
+      "status": 403
     },
     "item-3689": {
-      "status": "not requested after access denials"
+      "status": 403
     },
     "item-3690": {
       "status": "not requested after access denials"
@@ -5160,19 +6095,51 @@
       },
       "1442": {
         "continent": 1,
-        "sx": -0.00020453178599317618,
-        "ox": 0.6637109766307481,
-        "sy": -0.00030739190005934526,
-        "oy": 0.8954745277678261,
-        "anchors": 18
+        "sx": -0.0002045488173051069,
+        "ox": 0.6638296889606488,
+        "sy": -0.0003073858404236885,
+        "oy": 0.8954700437768117,
+        "anchors": 19
+      },
+      "1440": {
+        "continent": 1,
+        "sx": -0.00017351025182224495,
+        "ox": 0.29415902524419246,
+        "sy": -0.0002611877970631558,
+        "oy": 1.217665254430322,
+        "anchors": 37
+      },
+      "1420": {
+        "continent": 0,
+        "sx": -0.00022159020569853475,
+        "ox": 0.6707350599047261,
+        "sy": -0.00033062230434690383,
+        "oy": 1.2707883388274266,
+        "anchors": 66
+      },
+      "1438": {
+        "continent": 1,
+        "sx": -0.00019569378218804755,
+        "ox": 0.7477100486370646,
+        "sy": -0.00029358451650900825,
+        "oy": 3.4753094280995267,
+        "anchors": 58
+      },
+      "1437": {
+        "continent": 0,
+        "sx": -0.00024197256031166064,
+        "ox": -0.09499968543567153,
+        "sy": -0.00036083055461589273,
+        "oy": -0.773031282720405,
+        "anchors": 29
       },
       "1434": {
         "continent": 0,
-        "sx": -0.00015607010011760018,
-        "ox": 0.3474852991548941,
-        "sy": -0.0002349548527395642,
-        "oy": -2.6241960005672964,
-        "anchors": 45
+        "sx": -0.00015545286245248087,
+        "ox": 0.34722934950043105,
+        "sy": -0.00023500280668703683,
+        "oy": -2.625045368579651,
+        "anchors": 75
       },
       "1411": {
         "continent": 1,
@@ -5182,14 +6149,6 @@
         "oy": 0.5125040014797176,
         "anchors": 62
       },
-      "1440": {
-        "continent": 1,
-        "sx": -0.00017351265281840384,
-        "ox": 0.2941248538039144,
-        "sy": -0.00026145887636844857,
-        "oy": 1.2184431407146008,
-        "anchors": 34
-      },
       "1435": {
         "continent": 0,
         "sx": -0.00043552539762746934,
@@ -5197,14 +6156,6 @@
         "sy": -0.0006470203475524599,
         "oy": -6.220440574893488,
         "anchors": 21
-      },
-      "1437": {
-        "continent": 0,
-        "sx": -0.00024197256031166064,
-        "ox": -0.09506375976964199,
-        "sy": -0.00036070116788000076,
-        "oy": -0.7726228693338021,
-        "anchors": 28
       },
       "1426": {
         "continent": 0,
@@ -5214,13 +6165,13 @@
         "oy": -1.182007241607523,
         "anchors": 72
       },
-      "1438": {
+      "1445": {
         "continent": 1,
-        "sx": -0.00019586259348782317,
-        "ox": 0.7481159544708499,
-        "sy": -0.0002940487831751761,
-        "oy": 3.4799474568567788,
-        "anchors": 47
+        "sx": -0.00019051156548984845,
+        "ox": -0.18632005943002322,
+        "sy": -0.0002852417850454207,
+        "oy": -0.5799862497758168,
+        "anchors": 23
       },
       "1448": {
         "continent": 1,
@@ -5229,14 +6180,6 @@
         "sy": -0.0002607623463891494,
         "oy": 1.8593580969068393,
         "anchors": 24
-      },
-      "1445": {
-        "continent": 1,
-        "sx": -0.00019053729610224757,
-        "ox": -0.18625773230498924,
-        "sy": -0.0002857768756716573,
-        "oy": -0.5818142822191126,
-        "anchors": 19
       },
       "1447": {
         "continent": 1,
@@ -7276,7 +8219,6 @@
       104,
       105,
       110,
-      113,
       114,
       115,
       122,
@@ -7316,7 +8258,6 @@
       207,
       208,
       209,
-      210,
       211,
       213,
       214,
@@ -7346,16 +8287,10 @@
       304,
       309,
       322,
-      328,
-      329,
       330,
       331,
       337,
       338,
-      339,
-      340,
-      341,
-      342,
       348,
       351,
       354,
@@ -7448,11 +8383,9 @@
       599,
       600,
       601,
-      602,
       603,
       604,
       606,
-      607,
       608,
       609,
       610,
@@ -7461,7 +8394,6 @@
       616,
       617,
       621,
-      622,
       623,
       624,
       625,
@@ -7478,7 +8410,6 @@
       637,
       638,
       641,
-      647,
       648,
       649,
       650,
@@ -7513,12 +8444,10 @@
       734,
       735,
       736,
-      741,
       743,
       745,
       746,
       749,
-      751,
       754,
       756,
       758,
@@ -7552,7 +8481,6 @@
       853,
       854,
       860,
-      861,
       863,
       870,
       872,
@@ -7575,10 +8503,7 @@
       927,
       930,
       931,
-      932,
       933,
-      934,
-      935,
       936,
       937,
       938,
@@ -7586,13 +8511,11 @@
       940,
       941,
       942,
-      943,
       944,
       945,
       947,
       948,
       949,
-      950,
       951,
       952,
       954,
@@ -7608,7 +8531,6 @@
       972,
       973,
       974,
-      975,
       976,
       978,
       980,
@@ -7620,13 +8542,11 @@
       993,
       994,
       995,
-      1000,
       1003,
       1009,
       1011,
       1012,
       1017,
-      1018,
       1020,
       1021,
       1022,
@@ -7634,7 +8554,6 @@
       1025,
       1026,
       1027,
-      1028,
       1029,
       1030,
       1031,
@@ -7642,7 +8561,6 @@
       1033,
       1034,
       1035,
-      1036,
       1037,
       1038,
       1039,
@@ -7651,12 +8569,9 @@
       1042,
       1043,
       1044,
-      1045,
-      1046,
       1048,
       1049,
       1050,
-      1052,
       1053,
       1054,
       1055,
@@ -7684,7 +8599,6 @@
       1089,
       1090,
       1091,
-      1092,
       1095,
       1096,
       1100,
@@ -7696,12 +8610,9 @@
       1108,
       1109,
       1110,
-      1111,
-      1112,
       1114,
       1115,
       1116,
-      1117,
       1118,
       1119,
       1120,
@@ -7733,7 +8644,6 @@
       1176,
       1177,
       1178,
-      1179,
       1180,
       1181,
       1182,
@@ -7743,7 +8653,6 @@
       1186,
       1187,
       1188,
-      1189,
       1190,
       1191,
       1192,
@@ -7768,22 +8677,18 @@
       1265,
       1267,
       1268,
-      1269,
       1270,
       1271,
       1273,
       1275,
       1276,
-      1282,
       1284,
       1285,
       1286,
       1287,
       1302,
       1318,
-      1319,
       1320,
-      1321,
       1322,
       1323,
       1324,
@@ -7792,14 +8697,7 @@
       1366,
       1369,
       1370,
-      1371,
-      1373,
-      1374,
       1375,
-      1380,
-      1381,
-      1382,
-      1385,
       1388,
       1392,
       1393,
@@ -7824,7 +8722,6 @@
       1463,
       1464,
       1466,
-      1467,
       1468,
       1469,
       1470,
@@ -8085,7 +8982,6 @@
       2438,
       2440,
       2458,
-      2459,
       2460,
       2478,
       2479,
@@ -8103,7 +8999,6 @@
       2602,
       2604,
       2605,
-      2606,
       2607,
       2608,
       2609,
@@ -10383,7 +11278,6 @@
       94468,
       94472,
       94473,
-      94484,
       94485,
       94486,
       94487,
@@ -10391,7 +11285,6 @@
       94489,
       94490,
       94491,
-      94493,
       94494,
       94495,
       94497,
@@ -10736,6 +11629,10 @@
       ],
       [
         526,
+        "preQuestSingle"
+      ],
+      [
+        935,
         "preQuestSingle"
       ],
       [
@@ -11306,6 +12203,7 @@
       99196,
       99411
     ],
+    "patrol_routes": 484,
     "inverse_beta_relations_used": [
       [
         1476,
@@ -11313,10 +12211,6 @@
       ],
       [
         2904,
-        "ends"
-      ],
-      [
-        398,
         "ends"
       ],
       [

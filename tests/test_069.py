@@ -31,8 +31,11 @@ class QueryTests(unittest.TestCase):
         self.assertTrue(c.ns.Completed(900,c.ns.NewQuestQuery()))
         c.lua.globals().historyPrivate=True
         query=c.ns.NewQuestQuery()
-        self.assertIsNone(c.ns.Completed(900,query))
-        self.assertIsNone(c.ns.Completed(900,query))
+        self.assertTrue(c.ns.Completed(900,query))  # Previously confirmed completion survives loading.
+        self.assertTrue(c.ns.Completed(900,query))
+        self.assertIsNone(c.ns.Completed(901,query))
+        self.assertIsNone(c.ns.Completed(901,query))
+        self.assertIsNone(c.ns.questHistory[901])
         self.assertEqual(c.lua.globals().historyReads[900],3)
         c.lua.globals().historyPrivate=False
         self.assertTrue(c.ns.Completed(900,c.ns.NewQuestQuery()))

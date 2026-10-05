@@ -44,10 +44,9 @@ function ns.QuestTitle(id)
 end
 
 function ns.ReadQuests()
-    ns.active = {}
-    ns.localTitles = {}
-    ns.questLevels = {}
-    ns.questEntries = nil
+    -- Commit a whole public snapshot. Zone loading must not look like every
+    -- quest was abandoned when one entry or the log API is temporarily nil.
+    local active, titles, levels, incomplete = {}, {}, {}, false
     ns.restrictedQuests = 0
     if not C_QuestLog or type(C_QuestLog.GetNumQuestLogEntries) ~= "function"
         or type(C_QuestLog.GetInfo) ~= "function" then
@@ -56,7 +55,7 @@ function ns.ReadQuests()
         return false
     end
     local count = C_QuestLog.GetNumQuestLogEntries()
-    if not ns.Public(count) or type(count) ~= "number" then
+    if not ns.Public(count) or type(count) ~= "number" or count < 0 or count > 10000 or count ~= math.floor(count) then
         ns.questReady = false
         ns.status = "Quest log count unavailable or restricted."
         return false
@@ -69,19 +68,53 @@ function ns.ReadQuests()
             if ns.Public(id) and ns.Public(header) and not header
                 and type(id) == "number" and id > 0 then
                 local level = info.level
-                if ns.Public(level) and type(level) == "number" and level > 0 and level <= 255 and level == math.floor(level) then ns.questLevels[id] = level end
+                if ns.Public(level) and type(level) == "number" and level > 0 and level <= 255 and level == math.floor(level) then levels[id] = level end
                 local title = ns.SafeTitle(info.title)
-                ns.localTitles[id] = title
-                ns.active[id] = title or ("Quest " .. id)
+                titles[id] = title
+                active[id] = title or ("Quest " .. id)
             elseif not ns.Public(id) or not ns.Public(header) then
                 ns.restrictedQuests = ns.restrictedQuests + 1
+                incomplete = true
             end
         elseif not ns.Public(info) then
             ns.restrictedQuests = ns.restrictedQuests + 1
+            incomplete = true
+        else
+            incomplete = true
         end
     end
+    if incomplete then ns.questReady = false; ns.status = "Waiting for a complete public quest log."; return false end
+    ns.active, ns.localTitles, ns.questLevels = active, titles, levels
     ns.questReady = true
     return true
+end
+
+function ns.InitializeQuestHistory()
+    local _, build = ns.ReadPublic(GetBuildInfo)
+    build = build and tostring(build) or "unknown"
+    ns.db.questHistory = type(ns.db.questHistory) == "table" and ns.db.questHistory or {}
+    local builds = ns.db.questHistory[ns.self]
+    if type(builds) ~= "table" then builds = {}; ns.db.questHistory[ns.self] = builds end
+    local history = builds[build]
+    if type(history) ~= "table" then history = {}; builds[build] = history end
+    local count = 0
+    for id, value in pairs(history) do
+        if type(id) ~= "number" or id <= 0 or id >= 2147483647 or id ~= math.floor(id) or value ~= true or count >= 8192 then history[id] = nil
+        else count = count + 1 end
+    end
+    ns.questHistory, ns.questHistoryCount = history, count
+end
+
+function ns.RememberQuestCompletion(id)
+    if not ns.questHistory or not ns.Public(id) or type(id) ~= "number" or id <= 0 or id >= 2147483647 or id ~= math.floor(id)
+        or ns.IsRepeatableQuest(id) or ns.questHistory[id] or ns.questHistoryCount >= 8192 then return end
+    ns.questHistory[id], ns.questHistoryCount = true, ns.questHistoryCount + 1
+end
+
+function ns.ForgetQuestCompletion(id)
+    if ns.Public(id) and ns.questHistory and ns.questHistory[id] then
+        ns.questHistory[id], ns.questHistoryCount = nil, ns.questHistoryCount - 1
+    end
 end
 
 -- One synchronous read pass owns this context. Never retain it across events
@@ -92,9 +125,11 @@ end
 
 function ns.Completed(id, query)
     if query and query.completionChecked[id] then return query.completed[id] end
-    if not C_QuestLog or type(C_QuestLog.IsQuestFlaggedCompleted) ~= "function" then return nil end
-    local value = C_QuestLog.IsQuestFlaggedCompleted(id)
+    local value
+    if C_QuestLog and type(C_QuestLog.IsQuestFlaggedCompleted) == "function" then value = C_QuestLog.IsQuestFlaggedCompleted(id) end
     if not ns.Public(value) or type(value) ~= "boolean" then value = nil end
+    if value == true then ns.RememberQuestCompletion(id)
+    elseif ns.questHistory and ns.questHistory[id] and not ns.IsRepeatableQuest(id) and not ns.active[id] then value = true end
     if query then query.completionChecked[id], query.completed[id] = true, value end
     return value
 end

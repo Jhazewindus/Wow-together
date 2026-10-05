@@ -30,6 +30,7 @@ SELECTION = {
     'gameobject_loot_template': {'entry','item','ChanceOrQuestChance','mincountOrRef'},
     'npc_vendor': {'entry','item','condition_id'},
     'npc_vendor_template': {'entry','item','condition_id'},
+    'player_xp_for_level': {'lvl', 'xp_for_next_level'},
 }
 
 
@@ -88,7 +89,8 @@ def read_snapshot(path):
 
 def indexed(facts):
     result={'quests':{},'npc':{},'object':{},'item':{},'starts':collections.defaultdict(list),
-        'ends':collections.defaultdict(list),'drops':collections.defaultdict(list)}
+        'ends':collections.defaultdict(list),'drops':collections.defaultdict(list),
+        'xpBaseline':{row['lvl']:row['xp_for_next_level'] for row in facts.get('player_xp_for_level', [])}}
     for row in facts['quest_template']:result['quests'][row['entry']]=row
     for kind,table,id_field,name_field in (('npc','creature_template','Entry','Name'),
             ('object','gameobject_template','entry','name'),('item','item_template','entry','name')):

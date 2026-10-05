@@ -72,7 +72,7 @@ Outside-guide questing and completion keep the controls visible; Clear route end
 the saved selection. Route controls sit below the world map viewport.
 /wt catchup reviews an optional useful party catch-up route in the current zone.
 The current guide stays selected until accepted; friends choose Follow or Keep.
-Quest markers can sit beside names as Quest !, cross or skull. Nameplate hints
+Quest markers default to stars; Quest !, cross and skull styles remain selectable. Nameplate hints
 have a separate toggle from item tooltip hints.
 Quest markers → Star above guide quest givers highlights eligible selected-guide
 pickups above visible friendly nameplates. It is cosmetic, hides in combat and
@@ -216,6 +216,8 @@ Neither is a pickup gate. The old beta setting/packets are removed.
 Normal event sync rechecks progress; locked quests stay in the full guide and
 accepted work remains. Diagnostics show per-quest reasons and NPC evidence.
 Published-data candidates can still have hidden beta gates; visit the NPC to verify.
+Auto-accept accepts only eligible actual offers from the selected guide. Unrelated
+quests remain manual; no selected guide means no automatic acceptance.
 Quest-dialog selection, auto-accept and no-choice auto-turn-in are separate opt-ins,
 all OFF by default. Reward choices stay manual. Presence/attempts do not prove beta
 protected-action behavior. New flight, gossip, item-hook and corpse APIs need testing.
@@ -245,6 +247,16 @@ Source denials and beta changes still prevent complete coverage. Terrain lines
 are visiting-order estimates, not a collision-safe road path. See QUEST_DATA.md.
 Known repeatables remain excluded from automatic leveling. Live offers/history
 are authoritative; published facts can differ from the beta.
+
+Published patrol paths for the next three pickup/hand-in givers draw as thin amber
+search traces. Toggle in Quest markers settings; live NPC positions are unknown.
+Temporary incomplete quest logs retain the last public snapshot. Confirmed ordinary
+quest completions are saved per character/build, separate from skips and peers.
+Flight countdowns label estimated first trips; measured trips use personal timings.
+Guide info estimates quest XP and finish level from route start. Unobserved XP
+thresholds use a labeled Classic baseline; kills/exploration and party/rested effects
+are excluded. Unknown rewards/thresholds remain explicit. Fixed guide order stays.
+The New Horde needs an actual NPC offer while exact race eligibility is unresolved.
 
 Read README.md for full behavior and limits, CHANGELOG.md for this release,
 and TESTING.md for the labeled friend-testing checklist. Host checks alone do not

@@ -425,6 +425,7 @@ function ns.StopIcon(stop)
     if stop.kind == "t" then return "Interface\\GossipFrame\\ActiveQuestIcon" end
     if stop.kind == "f" then return "Interface\\Icons\\Ability_Mount_Wyvern_01" end
     if stop.kind == "corpse" then return "Interface\\TargetingFrame\\UI-RaidTargetingIcon_8" end
+    if stop.kind == "q" and ns.Option("npcMarker") == "star" then return "Interface\\TargetingFrame\\UI-RaidTargetingIcon_1" end
     if stop.kind == "q" and ns.Option("npcMarker") == "cross" then return "Interface\\RaidFrame\\ReadyCheck-NotReady" end
     if stop.action == "kill" then return "Interface\\TargetingFrame\\UI-RaidTargetingIcon_8" end
     return nil
@@ -436,8 +437,9 @@ local function hideDrawing(provider)
     for _, pin in ipairs(provider.pins or {}) do pin:Hide() end
     for _, line in ipairs(provider.lines or {}) do line:Hide() end
     for _, line in ipairs(provider.shadowLines or {}) do line:Hide() end
+    for _, line in ipairs(provider.patrolLines or {}) do line:Hide() end
     if provider.legend then provider.legend:Hide() end
-    ns.routeStats.pins, ns.routeStats.lines = 0, 0
+    ns.routeStats.pins, ns.routeStats.lines, ns.routeStats.patrols = 0, 0, 0
 end
 
 function ns.RouteSurface(map)
@@ -562,6 +564,43 @@ local function publicOwnedDrawing(provider)
     return true
 end
 
+local function drawPatrols(provider, displayed, surface, mapID, context)
+    if not ns.Option("patrolHints") then return end
+    local seen, count, examined = {}, 0, 0
+    provider.patrolLines = provider.patrolLines or {}
+    for index = 1, math.min(3, #displayed) do
+        local stop = displayed[index]
+        local entity = (stop.kind == "a" or stop.kind == "t") and stop.entityID
+            and ns.questEntities and ns.questEntities.npc and ns.questEntities.npc[stop.entityID]
+        if entity and not seen[stop.entityID] then
+            seen[stop.entityID] = true
+            for _, patrol in ipairs(entity.patrols or {}) do
+                local previous
+                for _, pair in ipairs(patrol.points or {}) do
+                    if count >= 256 or examined >= 1024 then break end
+                    examined = examined + 1
+                    local p = ns.ProjectMapPoint({mapID = patrol.mapID, x = pair[1], y = pair[2]}, mapID, context)
+                    if p and previous and count < 256 then
+                        local x1, y1 = ns.RouteProject(surface, previous)
+                        local x2, y2 = ns.RouteProject(surface, p)
+                        x1, y1, x2, y2 = ns.ClipRouteSegment(x1, y1, x2, y2, surface.width, surface.height)
+                        if x1 then
+                            count = count + 1
+                            local line = provider.patrolLines[count]
+                            if not line then line = provider.overlay:CreateLine(nil, "OVERLAY", nil, 5); provider.patrolLines[count] = line end
+                            line:SetThickness(1); line:SetColorTexture(1, 0.65, 0.12, 0.65)
+                            line:SetStartPoint("TOPLEFT", provider.overlay, x1, -y1)
+                            line:SetEndPoint("TOPLEFT", provider.overlay, x2, -y2); line:Show()
+                        end
+                    end
+                    previous = p
+                end
+            end
+        end
+    end
+    ns.routeStats.patrols = count
+end
+
 function ns.DrawRoute(provider, geometryOnly)
     provider = provider or ns.routeProvider
     if not provider then return end
@@ -612,6 +651,7 @@ function ns.DrawRoute(provider, geometryOnly)
     local level = query(surface.parent.GetFrameLevel, surface.parent)
     if type(level) == "number" then overlay:SetFrameLevel(level + 30) end
     if type(overlay.CreateLine) ~= "function" then ns.routeStats.status = "Route line drawing unavailable."; return end
+    if not route.flying then drawPatrols(provider, displayed, surface, mapID, projectionContext) end
     ns.routeStats.surface = surface.mode
     ns.routeStats.geometry = string.format("%.0f x %.0f; view %.4f,%.4f / %.4f,%.4f", width, height,
         surface.left, surface.top, surface.spanX, surface.spanY)
@@ -702,6 +742,10 @@ function ns.DrawRoute(provider, geometryOnly)
                     if stop.forPlayer then GameTooltip:AddLine("For " .. stop.forPlayer, 0.7, 0.85, 0.9, true) end
                     if stop.approximate then GameTooltip:AddLine("Approximate NPC encounter location.", 0.7, 0.75, 0.8, true) end
                     if stop.published then GameTooltip:AddLine("Published Forever location; check against this beta build.", 0.7, 0.75, 0.8, true) end
+                    local entity = stop.entityID and ns.questEntities and ns.questEntities.npc and ns.questEntities.npc[stop.entityID]
+                    if (stop.kind == "a" or stop.kind == "t") and entity and entity.patrols and #entity.patrols > 0 then
+                        GameTooltip:AddLine("Patrolling quest giver: search along the thin amber path. Published patrol; live position unknown.", 1, 0.75, 0.3, true)
+                    end
                     if stop.planned then GameTooltip:AddLine("Planned stage after the previous step.", 0.7, 0.75, 0.8, true) end
                 end
                 GameTooltip:Show()
@@ -769,6 +813,7 @@ function ns.ActivateRoute(guide, route)
     ns.routeSelection = guide
     ns.selectedRoute = route or ns.BuildGuideRoute(guide, true)
     ns.selectedRoute = ns.AddNPCVisitPickups(guide, ns.selectedRoute)
+    ns.CaptureGuideXP(guide)
     if guide.mode == "travel" then ns.routePaused = ns.selectedRoute.pendingReason or ns.selectedRoute.complete and "Arrived in Orgrimmar." end
     ns.InitializeGuideStepHistory(guide, ns.selectedRoute)
     ns.routeSignature = nil

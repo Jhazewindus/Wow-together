@@ -122,6 +122,7 @@ function ns.CatalogueAllowed(id, profile, key, query)
     if prerequisites ~= true then return prerequisites, prerequisiteReason end
     if offered == false then return false, "This quest giver did not offer this quest at your current progress. Recheck after progressing." end
     if offered == true then return true end
+    if quest and quest.pickupRequiresOffer then return false, "Confirm this quest at its NPC; its published eligibility is under review." end
     if identity ~= true then return identity, reason end
     if ns.LearnedPrerequisiteAllowed then
         local learned, learnedReason = ns.LearnedPrerequisiteAllowed(id, profile, key, query)

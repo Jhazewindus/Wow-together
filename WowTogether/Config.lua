@@ -5,9 +5,9 @@ local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, cl
     trackerHeight = 350, circuitRadius = 0.16, circuitLimit = 6, mapLegend = true, professionBatch = 5, routeArrow = true,
     currentQuestsFirst = true, nearbyPickups = true, fullRoute = false, routeAhead = 2, autoTurnIn = false,
     scanSkipped = false, distanceUnits = "yards", trackerAuto = true, autoSelectQuests = false,
-    suggestFlights = true, autoFly = false, nearbyFlights = true, corpseArrow = true, npcMarker = "cross", recordQuestData = true,
+    suggestFlights = true, autoFly = false, nearbyFlights = true, corpseArrow = true, npcMarker = "star", recordQuestData = true,
     useLearnedQuests = true, exportCharacterNames = false, fixedZoneGuides = true,
-    standaloneArrow = false, travelNetwork = true, soloMode = false, questGiverStars = true}
+    standaloneArrow = false, travelNetwork = true, soloMode = false, questGiverStars = true, patrolHints = true}
 
 function ns.Option(key)
     local value = ns.db and ns.db.config and ns.db.config[key]
@@ -47,10 +47,11 @@ local sections = {
         {"npcHints", "Mark needed quest NPCs and items", "Show a marker beside public quest-related nameplates and a quest-item tooltip hint, outside combat."},
         {"nameplateHints", "Show quest markers beside names", "Turn nameplate markers on or off separately from quest-item tooltip hints. Markers hide during combat."},
         {"questGiverStars", "Star above guide quest givers", "Highlight eligible pickups in your selected guide with a large gold star. Requires visible friendly NPC nameplates; hides during combat."},
-        {"npcMarker", "Objective marker style", "Choose a cross, a kill skull, or a quest ! beside needed enemy names.", {{"cross", "Cross"}, {"skull", "Skull for kills"}, {"quest", "Quest !"}}}}},
+        {"patrolHints", "Show quest-giver patrols on the map", "Show a thin amber search path for upcoming quest givers with published patrol waypoints. It is a possible patrol path, not their live position."},
+        {"npcMarker", "Objective marker style", "Choose a star, cross, kill skull, or quest ! beside needed enemy names.", {{"star", "Star"}, {"cross", "Cross"}, {"skull", "Skull for kills"}, {"quest", "Quest !"}}}}},
     {"automation", "Quest dialogs", {
         {"autoSelectQuests", "Open guide quests at an NPC", "Select useful pickups for this guide as the NPC list returns, or the current completed turn-in. Combine with auto-accept to collect a visit; unrelated quests stay manual."},
-        {"autoAccept", "Accept the quest dialog I open", "Opt-in: accept an opened quest-detail dialog outside combat."},
+        {"autoAccept", "Accept guide quests only", "Opt-in: accept an opened pickup only when it belongs to the selected guide and passes its level, race, prerequisite and skip checks. Other quests stay manual."},
         {"autoTurnIn", "Turn in quests without a reward choice", "Opt-in: handle completed quest dialogs you open. Item reward choices always remain manual."}}},
     {"research", "Quest data for testing", {
         {"recordQuestData", "Record NPC offers and quest progression", "Save the latest 300 local observations for prerequisite research. Export manually; no chat or automatic uploads."},
@@ -62,6 +63,11 @@ local sections = {
 
 function ns.InitializeConfig()
     if type(ns.db.config) ~= "table" then ns.db.config = {} end
+    -- Adopt the requested star default once; later explicit choices survive.
+    if not ns.db.config.starMarkerDefault then
+        if ns.db.config.npcMarker == "cross" then ns.db.config.npcMarker = "star" end
+        ns.db.config.starMarkerDefault = true
+    end
     ns.db.config.betaPickupCheck = nil -- Retired: this API measures sharing, not pickup eligibility.
     for key, value in pairs(defaults) do
         local configured = ns.db.config[key]
@@ -75,7 +81,7 @@ function ns.InitializeConfig()
     ns.db.config.professionBatch = math.max(1, math.min(20, math.floor(ns.db.config.professionBatch)))
     ns.db.config.routeAhead = math.max(0, math.min(2, math.floor(ns.db.config.routeAhead)))
     if ns.db.config.distanceUnits ~= "yards" and ns.db.config.distanceUnits ~= "metres" then ns.db.config.distanceUnits = "yards" end
-    if ns.db.config.npcMarker ~= "cross" and ns.db.config.npcMarker ~= "skull" and ns.db.config.npcMarker ~= "quest" then ns.db.config.npcMarker = "cross" end
+    if ns.db.config.npcMarker ~= "star" and ns.db.config.npcMarker ~= "cross" and ns.db.config.npcMarker ~= "skull" and ns.db.config.npcMarker ~= "quest" then ns.db.config.npcMarker = "star" end
 end
 
 function ns.SetOption(key, value)
@@ -97,12 +103,13 @@ end
 function ns.AutoAcceptOpenedQuest(id)
     if not ns.Option("autoAccept") or type(AcceptQuest) ~= "function" or ns.RouteInCombat()
         or not ns.GuideInteger(id) or id <= 0 or ns.active[id] or ns.autoAcceptAttempt == id then return end
+    if not ns.CanAutoAcceptGuideQuest(id) then return end
     if type(CanAcceptQuest) == "function" then
         local allowed = CanAcceptQuest()
         if not ns.Public(allowed) or allowed ~= true then return end
     end
     ns.autoAcceptAttempt = id
-    -- Opt-in, one opened quest dialog only. No gossip selection or turn-in.
+    -- Opt-in, one eligible opened pickup in the selected guide only.
     AcceptQuest()
     ns.ScheduleSync()
 end

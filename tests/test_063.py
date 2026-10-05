@@ -218,7 +218,7 @@ class ObservedLearningTests(unittest.TestCase):
         self.assertEqual(rule.previousQuest, 900)
         self.assertTrue(rule.tentative)
         self.assertIn('Alice', rule.sourceCharacter)
-        c.lua.globals().finished[900] = False; c.ns.InvalidateNPCOffers()
+        c.lua.globals().finished[900] = False; c.ns.ForgetQuestCompletion(900); c.ns.InvalidateNPCOffers()
         allowed, reason = c.ns.CatalogueAllowed(901, c.ns.profile, c.ns.self)
         self.assertFalse(allowed); self.assertIn('Finish Quest 0 first.', reason); self.assertNotIn('Observed by', reason)
         self.assertEqual(list(c.ns.CataloguePrerequisiteIDs(901).values()), [900])
@@ -238,14 +238,14 @@ class ObservedLearningTests(unittest.TestCase):
 
     def test_known_alternative_prerequisites_are_never_narrowed(self):
         c = learner(); c.ns.catalogue.quests[901].prerequisiteAny = c.lua.table_from([900, 902])
-        learn(c); c.lua.globals().finished[900] = False; c.lua.globals().finished[902] = True
+        learn(c); c.lua.globals().finished[900] = False; c.ns.ForgetQuestCompletion(900); c.lua.globals().finished[902] = True
         c.ns.InvalidateNPCOffers()
         self.assertTrue(c.ns.CatalogueAllowed(901, c.ns.profile, c.ns.self))
         self.assertEqual(list(c.ns.CataloguePrerequisiteIDs(901).values()), [900, 902])
 
     def test_contradictory_positive_offer_disables_a_tentative_rule(self):
         c = learner(); learn(c)
-        c.lua.globals().finished[900] = False; offers(c, [901], full=False)
+        c.lua.globals().finished[900] = False; c.ns.ForgetQuestCompletion(900); offers(c, [901], full=False)
         self.assertIsNone(c.ns.LearnedQuestRule(901))
         self.assertTrue(json.loads(c.ns.ExportGuideFindings())['findings'][0]['disabled'])
 
@@ -298,7 +298,7 @@ class ObservedLearningTests(unittest.TestCase):
         self.assertIsNone(fresh.ns.LearnedQuestRule(901))
 
     def test_live_offer_overrides_learned_rule_and_learning_toggle_keeps_capture(self):
-        c = learner(); learn(c); c.lua.globals().finished[900] = False; c.ns.InvalidateNPCOffers()
+        c = learner(); learn(c); c.lua.globals().finished[900] = False; c.ns.ForgetQuestCompletion(900); c.ns.InvalidateNPCOffers()
         c.ns.offered[901] = True
         self.assertTrue(c.ns.CatalogueAllowed(901, c.ns.profile, c.ns.self))
         c.ns.offered[901] = None; c.ns.db.config.useLearnedQuests = False

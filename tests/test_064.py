@@ -16,7 +16,7 @@ class FactionLearningTests(unittest.TestCase):
     def test_ordinary_rule_applies_to_another_class_and_race_without_source_progress(self):
         c = learner(); learn(c)
         c.ns.profile.classID, c.ns.profile.raceID = 1, 6
-        c.lua.globals().finished[900] = False
+        c.lua.globals().finished[900] = False; c.ns.ForgetQuestCompletion(900)
         c.ns.InvalidateNPCOffers()
         rule = c.ns.LearnedQuestRule(901)
         self.assertEqual(rule.previousQuest, 900)
@@ -81,7 +81,7 @@ class FactionLearningTests(unittest.TestCase):
         self.assertIsNone(c.ns.LearnedQuestRule(901))
 
     def test_contradiction_from_another_class_disables_faction_wide_rule(self):
-        c = learner(); learn(c); c.lua.globals().finished[900] = False
+        c = learner(); learn(c); c.lua.globals().finished[900] = False; c.ns.ForgetQuestCompletion(900)
         c.lua.execute("function UnitClass() return 'Warrior','WARRIOR',1 end; function UnitRace() return 'Tauren','Tauren',6 end")
         offers(c, [901], full=False)
         self.assertIsNone(c.ns.LearnedQuestRule(901))

@@ -79,6 +79,21 @@ local function usefulPickup(guide, id, query)
     return step
 end
 
+function ns.CanAutoAcceptGuideQuest(id)
+    local guide = ns.routeSelection
+    if not guide or guide.mode == "travel" or ns.routePlanning or ns.guideScanning or ns.routePaused then return false end
+    local query = ns.NewQuestQuery()
+    local step = pickupStep(guide, id)
+    local eligible = guide.mode == "dungeon" or guide.personal
+    if eligible then
+        eligible = step ~= nil and not ns.active[id] and not ns.GuideQuestSkipped(id) and ns.Completed(id, query) == false
+            and #ns.FilterGuideStages({step}) > 0
+    else eligible = usefulPickup(guide, id, query) ~= nil end
+    return eligible
+        and ns.PickupOfferEvidence(ns.self, id) == true
+        and ns.CatalogueAllowed(id, ns.profile, ns.self, query) == true
+end
+
 function ns.RecordGuideNPCVisit(offered)
     local guide = ns.routeSelection
     if not guide or guide.mode == "travel" or guide.mode == "dungeon" or not ns.Option("nearbyPickups") then return end

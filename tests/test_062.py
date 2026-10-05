@@ -103,7 +103,7 @@ class UniversalPickupTests(unittest.TestCase):
         self.assertIsNone(allowed(c, 901))
         c.ns.offered[901] = True
         self.assertTrue(allowed(c, 901))
-        c.lua.globals().finished[900] = False
+        c.lua.globals().finished[900] = False; c.ns.ForgetQuestCompletion(900)
         self.assertFalse(allowed(c, 901))
 
     def test_actual_npc_absence_blocks_until_progress_invalidates_it(self):
@@ -175,7 +175,7 @@ class CharacterEvidenceTests(unittest.TestCase):
         c = client(); key, member = peer(c)
         c.lua.globals().finished[900] = True
         self.assertTrue(allowed(c, 901)); self.assertFalse(allowed(c, 901, key))
-        c.lua.globals().finished[900] = False; member.completed[900] = True
+        c.lua.globals().finished[900] = False; c.ns.ForgetQuestCompletion(900); member.completed[900] = True
         self.assertFalse(allowed(c, 901)); self.assertTrue(allowed(c, 901, key))
         member.completed[900] = None; member.historyChecked[900] = None
         self.assertIsNone(allowed(c, 901, key))

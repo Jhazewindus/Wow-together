@@ -2,7 +2,7 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.2
+## Version: 0.8.3
 ## SavedVariables: WowTogetherDB
 Core.lua
 QuestCatalogue.lua
@@ -12,6 +12,7 @@ TravelData.lua
 TravelNetwork.lua
 Catalogue.lua
 Quests.lua
+GuideXP.lua
 Sync.lua
 UI.lua
 UIControls.lua

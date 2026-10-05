@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.8.2** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.3** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -16,7 +16,7 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **42 Lua
+Replace the folder on **every party member's client**, including all **43 Lua
 files**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
@@ -344,7 +344,8 @@ map and optional flight action. Walking to a flight master names the flight that
 follows. Learning a flight immediately refreshes those directions and can change
 the Orgrimmar gate chosen by the personal travel guide.
 Flight times are estimates until that character has timed the route. While
-flying, the panel shows elapsed time or an approximate remaining timed duration.
+flying, the panel counts down an estimated first trip or a previously measured
+duration. If its duration is unknown or the estimate expires, elapsed time is shown.
 Ground lines hide during an actual flight; only its known destination is marked.
 Ground directions resume after landing. The exact airborne terrain path is unknown.
 
@@ -477,7 +478,8 @@ QuestFrame. Missing or restricted fields cannot prove that a quest is absent.
 Retest these optional APIs on Forever; Sting of the Scorpid's exact unpublished
 gate is not inferred from a neighboring quest ID.
 
-Needed public nameplates show a cross, or an optional skull for kills. A
+Needed public nameplates show a star by default. Cross, skull and quest ! styles
+remain selectable in Quest markers settings. A
 finished mob objective loses its hint unless another unfinished objective or
 participant still needs it. Known required-item tooltips get a cross and quest
 name. Friendly givers can show quest names and a downward pointer. Hints hide
@@ -487,12 +489,16 @@ universally marked. No raid-target icons or secure Blizzard controls are changed
 **Quest markers → Star above guide quest givers** adds a large gold star above
 an eligible pickup giver's visible friendly nameplate, with quest names beneath.
 Accepted/completed or known-blocked pickups do not qualify. The option defaults
-on and respects the general NPC/nameplate toggles. Enable friendly nameplates in
+on and respects the general NPC/nameplate toggles. Published patrol waypoints
+for the next three pickup/hand-in givers appear as thin amber search paths on the
+map. Turn these off with **Show quest-giver patrols on the map**. A patrol path is
+a possible search area, not a live NPC location. Enable friendly nameplates in
 the game's settings to see it; the addon does not change that setting. The star
 is our cosmetic overlay and does not put a real raid-target mark on the NPC.
 
 **Quest dialogs** contains separate opt-ins for opening useful selected-guide
-pickups at a multi-quest NPC, accepting an opened dialog, and turning in completed
+pickups at a multi-quest NPC, accepting an eligible selected-guide pickup dialog,
+and turning in completed
 opened quests with no reward choice. All default off and defer in combat.
 Reward choices remain manual. API presence or an attempted action is not proof
 of success on the Forever beta.
@@ -515,6 +521,23 @@ only from searches you make; there is no automatic AH search, buying or crafting
 Known vendor-listed quest items have a buy list with your own bag counts.
 Profession, flight-network and skip data are personal and are not sent to peers.
 
+
+Guide information and **Show quest list** display a quest-XP estimate from your
+level when the route starts. Confirmed completions and skips are excluded.
+Observed XP thresholds are saved for this build; remaining thresholds use a
+labeled Classic baseline. Quest rewards can change in Forever. Kills, exploration,
+rested XP and party effects are excluded; unknown rewards are reported. The
+starting estimate is saved across reloads and does not reorder the guide.
+
+Confirmed non-repeatable completion flags are remembered only for this
+character/build. Temporary restricted or unavailable quest-log reads preserve
+the last public snapshot. Accepting a quest again clears its remembered credit;
+manual skips still grant no credit.
+
+**The New Horde** currently needs an actual NPC offer before its pickup is
+recommended. Exact race eligibility is under review; the addon does not infer
+an exclusion for Orc/Troll or eligibility for another race from that report.
+
 ## Data and beta limits
 
 The offline snapshot was captured **October 5, 2026** from public game facts in
@@ -524,10 +547,10 @@ The offline snapshot was captured **October 5, 2026** from public game facts in
 | Coverage | Records |
 | --- | ---: |
 | Distinct quest records / category lists | 5,230 / 123 |
-| Detailed Forever pages | 2,088 |
-| Quests with static pickup / objective-area / turn-in coordinates | 4,244 / 2,129 / 4,411 |
-| Series / quests with explicit prerequisite facts | 887 / 2,446 |
-| Incomplete objective locations / known repeatables | 1,398 / 627 |
+| Detailed Forever pages | 2,232 |
+| Quests with static pickup / objective-area / turn-in coordinates | 4,276 / 2,150 / 4,444 |
+| Series / quests with explicit prerequisite facts | 938 / 2,465 |
+| Incomplete objective locations / known repeatables | 1,353 / 627 |
 
 Mapped item-drop alternatives retain a single representative farming area near
 this quest's published giver. This is a stable geometric choice, not a requirement
@@ -537,7 +560,7 @@ For an active fixed-guide step with missing coordinates, your own public native
 quest-tracker destination can supply its current location. A catalogue fallback
 cannot fill that gap; unavailable/private native data keeps the existing notice.
 The fixed step order and saved skips are retained when native coordinates change.
-0.8.2 joins explicit NPC/object/item requirements and named drop/vendor relations.
+0.8.3 joins explicit NPC/object/item requirements and named drop/vendor relations.
 Published Forever event, escort and healing types replace incorrect kill labels.
 AND prerequisites require every parent hand-in; OR variants retain their alternatives.
 Escorts stay beside their pickups. Community ground-item coordinates retain
@@ -592,7 +615,7 @@ provided broad inspiration about progress clarity; its code/assets/layouts
 were not copied. This implementation is independent.
 
 Reported beta build **70205** established the earlier sync APIs in user tests.
-**0.8.2 has host validation, not a live-client compatibility certification.**
+**0.8.3 has host validation, not a live-client compatibility certification.**
 Retest UI rendering, optional gossip/flight actions, corpse positions and item
 hooks on the build in front of you. `/wt probe` lists capabilities and runtime
 status. Do not interpret presence as proof that protected actions work.
@@ -643,7 +666,7 @@ compiler discards temporary caches when it yields. Guide decisions, prerequisite
 rules, fixed/adaptive order, sync behavior, settings and UI remain the same.
 See PERFORMANCE.md for measured host results and the repeatable benchmark command.
 
-Host checks load all 42 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
+Host checks load all 43 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
 
 ```sh
 python3 -m venv /tmp/wow-together-tests

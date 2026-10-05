@@ -15,11 +15,11 @@ simple instructions; source evidence and remaining gaps are recorded here.
 
 The category union contains **5,230 quests from 123 leaf lists**. The
 Wowhead root list is truncated at 1,000 and is never treated as a complete index.
-There are **2,088 captured Forever detail pages** and 1,143 Warcraft
+There are **2,232 captured Forever detail pages** and 1,143 Warcraft
 DB detail records. Static pickup / objective-area / hand-in coverage is
-**4,244 / 2,129 / 4,411 quests**.
-Runtime named entities: **13,340 NPCs / 6,973 objects /
-3,090 quest-used items**. Unrelated item loot tables are omitted.
+**4,276 / 2,150 / 4,444 quests**.
+Runtime named entities: **13,340 NPCs / 6,981 objects /
+3,129 quest-used items**. Unrelated item loot tables are omitted.
 
 Source capture uses normal proxy routing and verified TLS. Individual failed
 IDs remain excluded; renewed denials stop a batch. Successful captures remain
@@ -37,6 +37,11 @@ precedence order. It does not execute static/dynamic providers, function calls
 or arbitrary expressions. Assumed fields and unsupported expressions remain
 withheld. Short names, typed objective IDs, numeric counts, masks, explicit
 relations and actual representative points are selected.
+
+The importer also selects **484 explicit NPC patrol paths** as ordered points.
+Multiple spawn positions never imply a patrol. Removed/unresolved patrol fields
+remain absent; converted paths in known changed map frames are withheld. The map
+shows a bounded thin amber search trace for upcoming givers, not a live location.
 
 Converted baseline fields require agreeing quest title, level and minimum
 level. Explicit beta field updates are distinguished from the baseline.
@@ -75,7 +80,7 @@ https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db
 
 Separate empirical fits require at least five broadly distributed single-spawn
 published Forever anchors, at least 80% inliers and <=0.8% residuals.
-**12 maps** pass. Converted/older anchors cannot validate themselves.
+**13 maps** pass. Converted/older anchors cannot validate themselves.
 Remaining world positions can use guarded native conversion only after three
 published Forever anchors agree. Missing or contradictory native data stays unknown.
 
@@ -109,7 +114,7 @@ community observations do not establish prerequisites or loot rates.
 ## Audit and the remaining completion gate
 
 The Lua 5.1 host audit checked **77 faction-specific guides** and
-**11,704 stored map points**. It verifies finite coordinates, exclusions,
+**11,811 stored map points**. It verifies finite coordinates, exclusions,
 repeatable filtering, stage ordering, AND/OR hand-in prerequisites, escort
 adjacency and non-increasing estimated distance. Movement, pickups, abandonment
 and Scan do not reorder a selected fixed guide. This is bounded local search,
@@ -119,7 +124,7 @@ not globally optimal XP or terrain routing.
 `--require-complete` exits with status 2 while any guide has missing locations,
 pickup requirements, required quantities or prerequisite review steps. Passing
 route invariants alone must never be presented as 100% guide completion.
-`GuideSourceQueue.json` identifies **485 remaining quest records**, their exact
+`GuideSourceQueue.json` identifies **405 remaining quest records**, their exact
 missing stages/facts and relevant source URLs. It is included in releases.
 
 The environment rules have been applied and initial source reads succeeded.
@@ -182,13 +187,13 @@ remain in the catalogue while excluded from normal leveling.
 | eastern-kingdoms/alterac-mountains | 21 | 18 | 10 | 18 | 16 |
 | eastern-kingdoms/alterac-valley | 3 | 3 | 0 | 3 | 0 |
 | eastern-kingdoms/anvilmar | 1 | 1 | 1 | 1 | 1 |
-| eastern-kingdoms/arathi-highlands | 54 | 50 | 31 | 50 | 47 |
-| eastern-kingdoms/badlands | 44 | 42 | 27 | 44 | 38 |
+| eastern-kingdoms/arathi-highlands | 54 | 50 | 32 | 50 | 47 |
+| eastern-kingdoms/badlands | 44 | 42 | 28 | 44 | 38 |
 | eastern-kingdoms/blackrock-mountain | 15 | 14 | 12 | 15 | 11 |
 | eastern-kingdoms/blasted-lands | 26 | 26 | 20 | 26 | 26 |
 | eastern-kingdoms/burning-steppes | 24 | 24 | 18 | 24 | 19 |
 | eastern-kingdoms/crafting | 150 | 0 | 9 | 36 | 0 |
-| eastern-kingdoms/deeprun-tram | 2 | 0 | 0 | 0 | 0 |
+| eastern-kingdoms/deeprun-tram | 2 | 2 | 0 | 2 | 1 |
 | eastern-kingdoms/dun-morogh | 64 | 62 | 34 | 64 | 57 |
 | eastern-kingdoms/duskwood | 100 | 99 | 43 | 99 | 90 |
 | eastern-kingdoms/eastern-plaguelands | 109 | 82 | 53 | 108 | 58 |
@@ -197,50 +202,50 @@ remain in the catalogue while excluded from normal leveling.
 | eastern-kingdoms/ironforge | 82 | 82 | 23 | 82 | 42 |
 | eastern-kingdoms/kharanos | 1 | 1 | 0 | 1 | 1 |
 | eastern-kingdoms/loch-modan | 47 | 46 | 24 | 46 | 44 |
-| eastern-kingdoms/redridge-mountains | 43 | 40 | 25 | 42 | 38 |
+| eastern-kingdoms/redridge-mountains | 43 | 40 | 25 | 42 | 39 |
 | eastern-kingdoms/riverglades | 1 | 1 | 0 | 1 | 1 |
 | eastern-kingdoms/searing-gorge | 31 | 30 | 24 | 31 | 29 |
 | eastern-kingdoms/shadowfang-keep | 2 | 0 | 0 | 0 | 0 |
 | eastern-kingdoms/silverpine-forest | 50 | 50 | 26 | 50 | 50 |
 | eastern-kingdoms/stonewrought-dam | 1 | 1 | 0 | 1 | 1 |
 | eastern-kingdoms/stormwind-city | 88 | 84 | 23 | 87 | 81 |
-| eastern-kingdoms/stranglethorn-vale | 125 | 104 | 75 | 105 | 91 |
+| eastern-kingdoms/stranglethorn-vale | 125 | 104 | 79 | 105 | 98 |
 | eastern-kingdoms/swamp-of-sorrows | 28 | 24 | 14 | 23 | 21 |
 | eastern-kingdoms/the-hinterlands | 45 | 45 | 31 | 45 | 43 |
 | eastern-kingdoms/thoradins-wall | 1 | 1 | 0 | 1 | 1 |
-| eastern-kingdoms/tirisfal-glades | 66 | 64 | 44 | 66 | 63 |
+| eastern-kingdoms/tirisfal-glades | 66 | 65 | 44 | 66 | 64 |
 | eastern-kingdoms/undercity | 32 | 31 | 16 | 31 | 27 |
 | eastern-kingdoms/western-plaguelands | 92 | 91 | 48 | 91 | 68 |
 | eastern-kingdoms/westfall | 54 | 54 | 29 | 54 | 52 |
-| eastern-kingdoms/wetlands | 66 | 44 | 26 | 44 | 43 |
+| eastern-kingdoms/wetlands | 66 | 60 | 31 | 60 | 57 |
 | kalimdor/abyssal-sands | 1 | 0 | 0 | 0 | 0 |
-| kalimdor/ashenvale | 82 | 73 | 41 | 74 | 67 |
+| kalimdor/ashenvale | 82 | 76 | 41 | 77 | 69 |
 | kalimdor/azshara | 45 | 27 | 12 | 27 | 23 |
 | kalimdor/blackmaw-hold | 7 | 7 | 4 | 7 | 4 |
-| kalimdor/darkshore | 80 | 80 | 52 | 80 | 74 |
+| kalimdor/darkshore | 80 | 80 | 53 | 80 | 78 |
 | kalimdor/darnassus | 29 | 28 | 7 | 28 | 20 |
-| kalimdor/desolace | 76 | 58 | 40 | 57 | 43 |
+| kalimdor/desolace | 76 | 60 | 42 | 58 | 52 |
 | kalimdor/durotar | 67 | 61 | 39 | 62 | 56 |
-| kalimdor/dustwallow-marsh | 69 | 55 | 25 | 55 | 48 |
+| kalimdor/dustwallow-marsh | 69 | 55 | 25 | 55 | 53 |
 | kalimdor/felwood | 87 | 83 | 39 | 83 | 43 |
 | kalimdor/feralas | 78 | 78 | 43 | 78 | 66 |
 | kalimdor/field-of-giants | 1 | 1 | 0 | 1 | 1 |
 | kalimdor/moonglade | 8 | 8 | 3 | 8 | 7 |
-| kalimdor/mulgore | 61 | 53 | 31 | 54 | 51 |
+| kalimdor/mulgore | 61 | 57 | 35 | 59 | 57 |
 | kalimdor/orgrimmar | 94 | 90 | 30 | 92 | 45 |
 | kalimdor/ruttheran-village | 4 | 4 | 2 | 4 | 4 |
 | kalimdor/shendralas | 3 | 0 | 1 | 0 | 0 |
 | kalimdor/silithus | 126 | 75 | 73 | 117 | 51 |
-| kalimdor/stonetalon-mountains | 52 | 50 | 34 | 48 | 45 |
-| kalimdor/tanaris | 95 | 87 | 43 | 90 | 53 |
-| kalimdor/teldrassil | 62 | 59 | 34 | 60 | 54 |
+| kalimdor/stonetalon-mountains | 52 | 50 | 34 | 49 | 47 |
+| kalimdor/tanaris | 95 | 87 | 43 | 90 | 58 |
+| kalimdor/teldrassil | 62 | 60 | 35 | 61 | 59 |
 | kalimdor/the-barrens | 116 | 114 | 75 | 114 | 111 |
-| kalimdor/thousand-needles | 71 | 64 | 32 | 64 | 49 |
+| kalimdor/thousand-needles | 71 | 67 | 34 | 68 | 63 |
 | kalimdor/thunder-bluff | 38 | 38 | 14 | 37 | 27 |
 | kalimdor/ungoro-crater | 53 | 52 | 37 | 52 | 46 |
 | kalimdor/winterspring | 57 | 57 | 33 | 57 | 49 |
-| map:2521 / Published zone 16593 | 9 | 2 | 0 | 2 | 2 |
-| map:2521 / Zephras Isle | 107 | 107 | 74 | 107 | 107 |
+| map:2521 / Published zone 16593 | 8 | 1 | 0 | 1 | 1 |
+| map:2521 / Zephras Isle | 108 | 108 | 74 | 108 | 108 |
 | miscellaneous/epic | 2 | 2 | 1 | 2 | 2 |
 | miscellaneous/legendary | 9 | 8 | 0 | 9 | 2 |
 | professions/alchemy | 1 | 1 | 0 | 1 | 0 |
@@ -267,6 +272,21 @@ remain in the catalogue while excluded from normal leveling.
 | world-events/lunar-festival | 72 | 64 | 2 | 64 | 53 |
 | world-events/midsummer | 16 | 14 | 12 | 14 | 12 |
 | world-events/winter-veil | 29 | 27 | 6 | 27 | 21 |
+
+## XP estimate evidence
+
+Quest reward XP comes from captured quest facts. UnitXP/UnitXPMax are probed and
+only public numeric values are used. Observed thresholds are saved per client
+build. The fallback is the literal `player_xp_for_level` table from the pinned
+CMaNGOS snapshot above; no SQL is executed. It is labeled a Classic estimate,
+not verified Forever thresholds. Reward scaling is also an older-world estimate.
+Mob kills, exploration, rested XP and party effects are omitted. Missing rewards
+and unavailable thresholds are reported. Route-start estimates persist without
+changing fixed order; they are not an exact finish-level prediction.
+
+The New Horde (787) is flagged for actual-offer confirmation from the main
+developer's Orc/Troll report. Race eligibility remains unresolved; no guessed
+race mask is bundled. This flagged requirement still counts as an audit gap.
 
 ## Reproduce capture, build and audit
 

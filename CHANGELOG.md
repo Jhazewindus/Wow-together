@@ -1,5 +1,28 @@
 # Wow Together changelog
 
+## 0.8.3
+
+- Restrict auto-accept to eligible actual NPC offers in the selected guide;
+  leave unrelated quests manual. Preserve explicit dungeon/personal guide support.
+- Default quest-objective markers to stars; retain cross, skull and quest ! choices.
+  Show published patrol search paths for upcoming quest givers, with a map toggle.
+- Preserve the last valid quest-log snapshot during zone loading. Save confirmed
+  non-repeatable completions per character/build, so temporary history reads do
+  not bring completed fixed-guide steps back after zone entry or reload.
+- Count down first flights with labeled estimates; use personal recorded flight
+  times after landing. Keep elapsed time when no duration can be estimated.
+- Improve fixed route generation by moving nearby bundles intact, preserving
+  prerequisite hand-ins, per-quest stage order and escort adjacency.
+- Add route-start quest-XP/finish-level estimates to guide information and quest
+  lists. Unobserved thresholds use a labeled Classic curve; kills/exploration,
+  rested/party effects and unknown rewards remain outside the estimate.
+- Require an actual NPC offer for The New Horde while exact race eligibility is
+  unresolved. Do not guess race restrictions from the reported recommendation.
+- Capture 144 more quest pages and 138 more entity pages; import explicit patrol
+  facts. Remaining source needs fall from 485 to 405 quest records. All 77 guides
+  pass host invariants; 72 still have source gaps. Repeated source denials stopped
+  capture; this release does not claim 98%/100% completeness or beta certification.
+
 ## 0.8.2
 
 - Expand all-zone geography from public Forever quest, NPC, object and item

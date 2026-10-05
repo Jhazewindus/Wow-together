@@ -307,6 +307,7 @@ def build(args):
     code+='\n-- Named entity/drop facts; compact world points are decoded only when a guide needs them.\nns.questEntities = '+encode(runtime_entities)+'\n'
     if args.legacy_snapshot:
         code+='ns.worldQuestChecks = '+encode(world_checks)+'\n'
+        code+='-- Older-world XP curve: estimate only, never certified as Forever thresholds.\nns.xpBaseline = '+encode(legacy['xpBaseline'])+'\n'
         literal=json.dumps(SOURCE)
         code=code.replace(literal,'legacyFactsSource')
         code=code.replace('local addonName, ns = ...\n','local addonName, ns = ...\nlocal legacyFactsSource = '+literal+'\n',1)

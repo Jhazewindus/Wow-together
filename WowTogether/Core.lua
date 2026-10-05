@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.2"
+ns.VERSION = "0.8.3"
 ns.handlers = {}
 ns.members = {}
 ns.status = "Waiting for addon initialization."
@@ -58,6 +58,8 @@ function ns.Diagnostics()
         {"C_ChatInfo.RegisterAddonMessagePrefix", C_ChatInfo and C_ChatInfo.RegisterAddonMessagePrefix},
         {"C_ChatInfo.SendAddonMessage", C_ChatInfo and C_ChatInfo.SendAddonMessage},
         {"UnitLevel", UnitLevel},
+        {"UnitXP", UnitXP},
+        {"UnitXPMax", UnitXPMax},
         {"UnitFactionGroup", UnitFactionGroup},
         {"UnitName", UnitName},
         {"UnitClass", UnitClass},
@@ -167,6 +169,8 @@ ns.On("ADDON_LOADED", function(name)
     ns.CreateMinimap()
     ns.ReadQuests()
     ns.InitializeSync()
+    ns.InitializeQuestHistory()
+    ns.InitializeGuideXP()
     ns.InitializeGuideControls()
     ns.InitializeTravel()
     ns.InitializeItemHints()
@@ -192,13 +196,15 @@ end)
 ns.On("ZONE_CHANGED_NEW_AREA", function()
     ns.ResetZoneConnections(); ns.ReadGuide(); ns.ScheduleFlightDiscovery(); ns.ScheduleSync(); ns.Refresh()
 end)
-ns.On("PLAYER_LEVEL_UP", function(level) ns.RecordQuestResearch("level", {level = level}); ns.ScheduleSync() end)
+ns.On("PLAYER_LEVEL_UP", function(level) ns.ReadGuideXP(); ns.RecordQuestResearch("level", {level = level}); ns.ScheduleSync() end)
 ns.On("QUEST_ACCEPTED", function(_, id)
+    ns.ForgetQuestCompletion(id)
     ns.RecordQuestResearch("accept", {questID = id})
     ns.RefreshNPCGuideProgress(id)
     ns.ScheduleSync()
 end)
 ns.On("QUEST_TURNED_IN", function(id)
+    ns.RememberQuestCompletion(id)
     ns.RecordQuestResearch("turn-in", {questID = id})
     ns.InvalidateNPCOffers()
     ns.activityRevision = (ns.activityRevision or 0) + 1; ns.ScheduleSync()

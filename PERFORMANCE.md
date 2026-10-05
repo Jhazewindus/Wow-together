@@ -1,5 +1,18 @@
 # Performance maintenance — 0.6.9
 
+## Later changes in 0.8.3
+
+The measurements below describe the earlier maintenance pass. 0.8.3 expands
+compile-time local search to move short nearby bundles intact; it yields during
+search and preserves a selected guide's fixed order. Patrol redraws inspect at
+most 1,024 points and draw at most 256 segments for the next three giver steps.
+Quest history queries still reuse one synchronous pass. Confirmed ordinary
+completions now additionally persist per character/build to resist zone-loading
+resets; false and unknown/private results are never persisted as completion.
+These are host-checked limits, not a claim about beta FPS or terrain optimality.
+
+## Original 0.6.9 measurements
+
 This pass preserves guide decisions, prerequisite gates, fixed/adaptive route
 order, UI/settings and sync protocol/timing. It removes redundant reads and
 allocations rather than changing the planner's rules or limiting guide scope.

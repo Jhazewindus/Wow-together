@@ -320,7 +320,8 @@ class AddonTests(unittest.TestCase):
         g.entries[1].questID = g.secret
         g.finished[2] = g.secret
         c.ns.ReadQuests()
-        self.assertIsNone(c.ns.active[1])
+        self.assertEqual(c.ns.active[1], "Quest 1")  # Retain the prior public snapshot, not the restricted ID.
+        self.assertFalse(c.ns.questReady)
         self.assertIsNone(c.ns.Completed(2))
         c.ns.Receive('WowTogetherV1', g.secret, 'PARTY', 'Bob-TestRealm')
         self.assertIsNone(c.ns.members['Bob-TestRealm'])

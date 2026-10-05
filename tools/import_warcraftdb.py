@@ -22,6 +22,16 @@ def apply_corrections(records):
     applied = []
     corrections = json.loads((ROOT / 'tools' / 'quest_corrections.json').read_text())
     for correction in corrections:
+        if correction.get('pickupRequiresOffer'):
+            quest = records.get(correction['questID'])
+            if quest is None: continue
+            if quest['title'] != correction['title']:
+                raise ValueError('Tester correction quest identity changed; review required')
+            quest['pickupRequiresOffer'] = True
+            quest['prerequisitesUnverified'] = True
+            quest['pickupReviewSource'] = correction['source']
+            applied.append(correction['questID'])
+            continue
         quest_id, parent_id = correction['questID'], correction['previousQuest']
         if quest_id not in records or parent_id not in records:
             continue

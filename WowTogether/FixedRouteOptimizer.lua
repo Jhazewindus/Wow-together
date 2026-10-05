@@ -129,5 +129,82 @@ function ns.OptimizeFixedPlan(plan, distance, cooperative, onYield)
         end
         if not changed then break end
     end
-    return {before = before, after = cost(), moved = moved, heuristic = "Dependency-preserving local search"}
+    -- Move short nearby bundles together. A single-step search cannot move
+    -- an escort pickup/work pair or a dependency-locked hub hand-off intact.
+    local function validBlock(first, last, after)
+        local size = last - first + 1
+        local target = after < first and after + 1 or after - size + 1
+        local function pos(stop)
+            local index = positions[stop]
+            if index >= first and index <= last then return target + index - first end
+            if target < first and index >= target and index < first then return index + size end
+            if target > first and index > last and index <= after then return index - size end
+            return index
+        end
+        for _, list in pairs(stages) do
+            for index = 2, #list do if pos(list[index - 1]) >= pos(list[index]) then return false end end
+        end
+        for id, pickup in pairs(pickups) do
+            local gate = gates[id]
+            if not pickup.planNeedsReview then
+                for _, parent in ipairs(gate.all) do
+                    if not handins[parent] or pos(handins[parent]) >= pos(pickup) then return false end
+                end
+                if gate.any then
+                    local okay = false
+                    for _, parent in ipairs(gate.any) do if handins[parent] and pos(handins[parent]) < pos(pickup) then okay = true; break end end
+                    if not okay then return false end
+                end
+            end
+        end
+        for _, hub in ipairs(hubs) do
+            if pos(hub.before) >= pos(hub.after) or hub.adjacent and pos(hub.after) ~= pos(hub.before) + 1 then return false end
+        end
+        return true
+    end
+    local bundles = 0
+    for _ = 1, 2 do
+        local changed = false
+        for first = 2, #plan - 2 do
+            local best, saving, stop = nil, 0, plan[first]
+            local level = (ns.CatalogueQuest(stop.id) or {}).level or 0
+            for size = 2, math.min(4, #plan - first) do
+                local last, localBundle = first + size - 1, true
+                for index = first, last do
+                    local point = plan[index]
+                    local other = (ns.CatalogueQuest(point.id) or {}).level or 0
+                    if point.unknownLocation or point.planNeedsReview or point.mapID ~= stop.mapID
+                        or math.abs(other - level) > 2 or distance(stop, point) > 300 then localBundle = false; break end
+                end
+                if localBundle then
+                    local old = distance(plan[first - 1], stop) + distance(plan[last], plan[last + 1])
+                        - distance(plan[first - 1], plan[last + 1])
+                    for after = math.max(1, first - 32), math.min(#plan - 1, last + 32) do
+                        if after < first - 1 or after > last then
+                            local anchor, nextStop = plan[after], plan[after + 1]
+                            local other = (ns.CatalogueQuest(anchor.id) or {}).level or 0
+                            if not anchor.unknownLocation and not nextStop.unknownLocation and not anchor.planNeedsReview
+                                and not nextStop.planNeedsReview and math.abs(other - level) <= 2 then
+                                local delta = old - distance(anchor, stop) - distance(plan[last], nextStop) + distance(anchor, nextStop)
+                                if delta > saving + 0.001 and validBlock(first, last, after) then best, saving = {last = last, after = after}, delta end
+                            end
+                        end
+                        work = work + 1
+                        if cooperative and work % 200 == 0 then coroutine.yield(); if onYield then onYield() end end
+                    end
+                end
+            end
+            if best then
+                local block = {}
+                for index = first, best.last do block[#block + 1] = plan[index] end
+                for _ = first, best.last do table.remove(plan, first) end
+                local target = best.after < first and best.after + 1 or best.after - #block + 1
+                for index, point in ipairs(block) do table.insert(plan, target + index - 1, point) end
+                for index, point in ipairs(plan) do positions[point] = index end
+                bundles, changed = bundles + 1, true
+            end
+        end
+        if not changed then break end
+    end
+    return {before = before, after = cost(), moved = moved, bundles = bundles, heuristic = "Dependency-preserving step and bundle search"}
 end

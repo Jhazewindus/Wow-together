@@ -1,12 +1,12 @@
 # Wow Together — friend test script
 
-For **0.8.2**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.3**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 42 Lua files**, in
+1. Replace the complete WowTogether folder, including **all 43 Lua files**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    `/reload`; restart fully if a new addon folder does not appear.
 2. Enable `/console scriptErrors 1`. Record version, build, level, faction, class,
@@ -15,7 +15,35 @@ The expanded-guide checks below take about **15–25 minutes**.
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
 
-## Focus checks for 0.8.2
+## Focus checks for 0.8.3
+
+- **Patrick — dialog scope:** enable Accept guide quests only. At an NPC with
+  three offered guide quests and an unrelated quest, collect the guide quests;
+  the unrelated quest stays manual even if its dialog is opened. Test a skipped,
+  locked or wrong-class quest too; do not accept it. Confirm an explicit dungeon
+  guide still accepts its eligible pickup. No selected guide means no auto-accept.
+- **Patrick — progress stability:** finish a guide quest, leave/re-enter its
+  zone and /reload. The completed steps stay completed and the compiled order
+  stays fixed. A genuinely abandoned unfinished quest may restore its pickup.
+- **Patrick — markers/patrols:** stars are the default. Select Cross, reload and
+  confirm that choice stays. Where a giver has an explicit published patrol,
+  check the thin amber path; toggle patrol hints off, zoom/pan and enter combat.
+  Record displaced beta paths; the line is not a live NPC position.
+- **Patrick — flight timer:** take a suggested or manually selected known flight.
+  First-trip countdown is labeled Estimated; a later trip uses recorded timing.
+  With no duration/geometry, elapsed time is acceptable. No ground quest lines
+  appear during flight. Confirm the selected guide resumes after landing.
+- **Main developer — New Horde:** an Orc/Troll must not be sent to pick up this
+  quest merely from the catalogue. Record Eitrigg's actual offers and character
+  race before proposing a race rule. If it is offered, the positive evidence is used.
+- **Main developer — bundles/XP:** start a fresh guide and inspect quest order.
+  Nearby pickups, work and returns should form shorter trips; escorts stay next
+  to their pickups and prerequisites are handed in first. Movement and Scan must
+  not reorder a started fixed guide. Record the route-start XP estimate; its
+  Classic curve label and unknown-reward count are limitations, not a promise of
+  the level you will actually reach after kills/exploration.
+
+## Broader guide checks
 
 - **Broader source coverage:** test Durotar, Mulgore, Zephras Isle and another
   middle/later zone across testers. Known coordinates should replace previous

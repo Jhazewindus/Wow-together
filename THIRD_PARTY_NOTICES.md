@@ -43,7 +43,7 @@ LEGACY_DATA_COPYRIGHT.md for its Blizzard content/copyright notice.
 The original addon code retains the repository's Apache-2.0 license.
 
 Changes: select numeric IDs, short entity/quest names, explicit relations,
-quantities and spawn coordinates; retain only identity-matched unchanged quest
+quantities, spawn coordinates and the player XP-per-level baseline (estimate only); retain only identity-matched unchanged quest
 fallbacks; convert proven map points; select actual representative spawns;
 annotate source provenance. No source server logic, SQL execution, scripts,
 quest descriptions or third-party addon engine/UI are included.
@@ -55,7 +55,7 @@ Only NPC IDs and normalized coordinates are read, not the addon engine.
 
 ## Published Forever facts
 
-Factual IDs, short names, counts, relationships, map bounds and coordinates
+Factual IDs, short names, counts, relationships, map bounds, explicit patrol paths and coordinates
 were selected from Questie/QuestieDB revision
 `e0a6eaa86f181ac99262e34126bcd2ed1a1712d6`:
 https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6

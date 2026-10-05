@@ -199,8 +199,13 @@ function ns.NoteFlightSelection(slot)
         if info.slot == slot and info.reachable then
             local node = flights().nodes[id]
             local timing = flights().timings[ns.flightMapSource .. ":" .. id]
+            local previous = ns.pendingFlight
+            local source = flights().nodes[ns.flightMapSource]
+            local air = source and node and distance(source.world, node.world)
+            local expected = timing and timing.mean or previous and previous.source == ns.flightMapSource
+                and previous.destination == id and previous.expected or air and air / 32 * 1.35
             ns.pendingFlight = {source = ns.flightMapSource, destination = id, name = node.name,
-                expected = timing and timing.mean}
+                expected = expected, estimated = timing == nil}
             return
         end
     end
@@ -357,7 +362,7 @@ function ns.TrySuggestedFlight()
         or ns.flightAttempt == plan.destination.id then return end
     ns.flightAttempt = plan.destination.id
     ns.pendingFlight = {source = plan.source.id, destination = plan.destination.id,
-        name = plan.destination.name, expected = plan.measured and plan.flightSeconds or nil}
+        name = plan.destination.name, expected = plan.flightSeconds, estimated = not plan.measured}
     ns.travelStatus = "Requested flight to " .. plan.destination.name .. "; waiting for actual flight state."
     TakeTaxiNode(target.slot)
 end
@@ -371,7 +376,8 @@ function ns.FlightState()
     local selection = ns.pendingFlight
     ns.travelNetworkStatus = "Flying to " .. (selection and selection.name or "destination") .. "; ground directions resume after landing."
     local remaining = selection and selection.expected and elapsed and math.max(0, selection.expected - elapsed)
-    return {elapsed = elapsed, remaining = remaining, name = selection and selection.name or "destination"}
+    return {elapsed = elapsed, remaining = remaining, estimated = selection and selection.estimated,
+        name = selection and selection.name or "destination"}
 end
 
 function ns.FinishFlight()

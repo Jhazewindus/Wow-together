@@ -100,6 +100,8 @@ class SettingsTests(unittest.TestCase):
         c = solo()
         c.lua.execute('accepts=0; function AcceptQuest() accepts=accepts+1 end; function CanAcceptQuest() return allowed end; function GetQuestID() return 900 end; allowed=true')
         c.ns.InitializeOffers()
+        c.ns.routeSelection = guide(c, (900,))
+        c.ns.offered[900] = True
         c.ns.AutoAcceptOpenedQuest(900)
         self.assertEqual(c.lua.globals().accepts, 0)
         c.ns.SetOption('autoAccept', True)
@@ -117,6 +119,7 @@ class SettingsTests(unittest.TestCase):
         c.ns.AutoAcceptOpenedQuest(900)
         self.assertEqual(c.lua.globals().accepts, 1)
         c.ns.handlers.QUEST_FINISHED()
+        c.ns.offered[900] = True  # Another actual opened pickup supplies fresh positive evidence.
         c.ns.AutoAcceptOpenedQuest(900)
         self.assertEqual(c.lua.globals().accepts, 2)
 
@@ -389,7 +392,7 @@ class TargetAndSourceTests(unittest.TestCase):
         c.ns.UpdateNPCHints()
         self.assertEqual(c.ns.npcHintCount, 1)
         self.assertEqual(c.ns.npcHints['nameplate1'].target.label, 'Drop B')
-        self.assertIn('ReadyCheck-NotReady', c.ns.StopIcon(c.ns.npcHints['nameplate1'].target))
+        self.assertIn('Icon_1', c.ns.StopIcon(c.ns.npcHints['nameplate1'].target))
         c.ns.SetOption('npcHints', False)
         self.assertFalse(c.ns.npcHints['nameplate1'].IsShown(c.ns.npcHints['nameplate1']))
 

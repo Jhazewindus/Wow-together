@@ -23,7 +23,7 @@ FIELDS = {
         'objectives','objectivesText','sourceItemId','preQuestGroup','preQuestSingle','zoneOrSort','requiredSkill',
         'triggerEnd','requiredSourceItems','questFlags','specialFlags','requiredMaxLevel','exclusiveTo',
         'availableUntilCompleted','availableStartingWith','parentQuest','requiredMinRep','requiredMaxRep'},
-    'npc': {'name','minLevel','maxLevel','rank','spawns','zoneID','questStarts','questEnds'},
+    'npc': {'name','minLevel','maxLevel','rank','spawns','waypoints','zoneID','questStarts','questEnds'},
     'object': {'name','spawns','zoneID','questStarts','questEnds'},
     'item': {'name','npcDrops','objectDrops','itemDrops','vendors','startQuest'},
 }
@@ -131,7 +131,7 @@ def apply_fields(target, incoming):
         mode='add' if key.endswith('_add') else 'remove' if key.endswith('_remove') else 'set'
         base=re.sub(r'_(?:add|remove)$','',key)
         if mode=='set': target[base]=value
-        elif base in ('spawns','startedBy','finishedBy','objectives'):
+        elif base in ('spawns','waypoints','startedBy','finishedBy','objectives'):
             groups=target.setdefault(base,{})
             if not isinstance(groups,dict) or not isinstance(value,dict): continue
             for group, entries in value.items():
@@ -183,6 +183,23 @@ HORDE = 8589934770
 
 def ids(value):
     return [i for i in sequence(value) if type(i) is int and 0 < i < 2147483647]
+
+
+def patrol_paths(value):
+    """Only explicit ordered waypoint lists; spawns never imply movement."""
+    values = sequence(value)
+    if not values: return []
+    def pair(item):
+        return isinstance(item, dict) and set(item) == {1, 2} and all(
+            type(item[i]) in (int, float) and math.isfinite(item[i]) and 0 <= item[i] <= 100 for i in (1, 2))
+    if all(pair(item) for item in values):
+        return [[sequence(item) for item in values]] if 2 <= len(values) <= 2048 else []
+    result = []
+    for route in values[:16]:
+        points = sequence(route)
+        if 2 <= len(points) <= 2048 and all(pair(item) for item in points):
+            result.append([sequence(item) for item in points])
+    return result
 
 
 def entity_name(kind, ident, data):
@@ -273,7 +290,7 @@ def merge_beta_facts(records, refs, entities, area_maps, root):
         if area in area_maps and area_maps[area] != map_id:
             raise ValueError('Native area/map identity conflicts with captured data: '+str(area))
         area_maps[area] = map_id
-    provenance.update(quests_used=[], identity_conflicts=[], withheld_fields=[], location_points=0,corrected_objective_quest_ids=[])
+    provenance.update(quests_used=[], identity_conflicts=[], withheld_fields=[], location_points=0,corrected_objective_quest_ids=[], patrol_routes=0)
     # Entity records are facts, not quest eligibility. Converted baseline
     # positions remain explicitly distinguishable from new beta observations.
     for kind in ('npc','object','item'):
@@ -291,6 +308,19 @@ def merge_beta_facts(records, refs, entities, area_maps, root):
                         if point not in value['locations']: value['locations'].append(point); provenance['location_points']+=1
                 for key,output in (('minLevel','minlevel'),('maxLevel','maxlevel'),('rank','classification')):
                     if type(row.get(key)) is int: value.setdefault(output,row[key])
+                if kind == 'npc':
+                    basis = source.get('waypoints', 'converted-baseline')
+                    for area, routes in (row.get('waypoints') or {}).items():
+                        if area not in area_maps or basis == 'converted-baseline' and area in (44, 139, 215, 1519): continue
+                        for points in patrol_paths(routes):
+                            patrol = {'mapID':area_maps[area], 'points':[[x/100,y/100] for x,y in points],
+                                'source':'Published Forever '+basis+' patrol waypoints'}
+                            value.setdefault('patrols', []).append(patrol)
+                            provenance['patrol_routes'] += 1
+                            if not any(p.get('mapID') == patrol['mapID'] for p in value['locations']):
+                                x,y = patrol['points'][0]
+                                value['locations'].append({'mapID':patrol['mapID'],'x':x,'y':y,
+                                    'sourceAreaID':area,'patrol':True,'locationSource':patrol['source']})
             else:
                 sources = value.setdefault('sources',[])
                 for field,source_kind,action in (('npcDrops','npc','loot'),('objectDrops','object','gather'),('vendors','npc','buy')):

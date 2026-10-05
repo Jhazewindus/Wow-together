@@ -244,7 +244,7 @@ class CatchupTests(unittest.TestCase):
 class CleanUITests(unittest.TestCase):
     def test_learning_still_applies_but_source_only_appears_in_optional_export(self):
         c = learner(); learn(c)
-        c.lua.globals().finished[900] = False
+        c.lua.globals().finished[900] = False; c.ns.ForgetQuestCompletion(900)
         allowed, reason = c.ns.LearnedPrerequisiteAllowed(901, c.ns.profile, c.ns.self)
         self.assertFalse(allowed); self.assertEqual(reason, 'Finish Quest 0 first.')
         c.ns.ActivateRoute(zone(c)); c.ns.Refresh()

@@ -1,7 +1,7 @@
 {
   "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
   "quest_records": 5230,
-  "static_points_checked": 11704,
+  "static_points_checked": 11811,
   "fixed_zone_guides_checked": 77,
   "source_data_gap_free_guides": 5,
   "guides": [
@@ -28,7 +28,7 @@
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
       "estimated_distance_before": 181470.63,
-      "estimated_distance_after": 181470.63
+      "estimated_distance_after": 181240.58
     },
     {
       "faction": "Alliance",
@@ -36,15 +36,14 @@
       "key": "level-zone:eastern-kingdoms/arathi-highlands",
       "quests": 29,
       "steps": 101,
-      "unknown_location_steps": 5,
+      "unknown_location_steps": 4,
       "missing_location_quest_ids_by_stage": {
         "a": [
           636,
           79624
         ],
         "q": [
-          636,
-          79624
+          636
         ],
         "t": [
           636
@@ -54,67 +53,51 @@
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
-      "estimated_distance_before": 249801.79,
-      "estimated_distance_after": 228979.74
+      "estimated_distance_before": 238214.58,
+      "estimated_distance_after": 211858.11
     },
     {
       "faction": "Alliance",
       "zone": "Ashenvale",
       "key": "level-zone:kalimdor/ashenvale",
       "quests": 65,
-      "steps": 205,
-      "unknown_location_steps": 22,
+      "steps": 207,
+      "unknown_location_steps": 13,
       "missing_location_quest_ids_by_stage": {
         "a": [
           908,
           79090,
-          86757,
-          98027,
-          98417,
-          98418
+          86757
         ],
         "q": [
           908,
-          993,
           1016,
-          1028,
           1046,
           79090,
           86757,
           98027,
-          98417,
-          98418
+          98417
         ],
         "t": [
           908,
           79090,
-          86757,
-          98027,
-          98417,
-          98418
+          86757
         ]
       },
       "unverified_pickup_requirement_quest_ids": [
-        908,
         994,
         995,
         7863,
         7864,
         7865,
         79090,
-        86757,
-        98027,
-        98417,
-        98418
+        86757
       ],
-      "unverified_objective_quantity_quest_ids": [
-        1045,
-        1046
-      ],
+      "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
-      "estimated_distance_before": 541443.41,
-      "estimated_distance_after": 510176.37
+      "estimated_distance_before": 440129.82,
+      "estimated_distance_after": 401863.04
     },
     {
       "faction": "Alliance",
@@ -187,7 +170,7 @@
       "prerequisite_review_steps": 53,
       "source_data_gap_free": false,
       "estimated_distance_before": 635866.93,
-      "estimated_distance_after": 620188.59
+      "estimated_distance_after": 606731.9
     },
     {
       "faction": "Alliance",
@@ -195,7 +178,7 @@
       "key": "level-zone:eastern-kingdoms/badlands",
       "quests": 37,
       "steps": 120,
-      "unknown_location_steps": 7,
+      "unknown_location_steps": 6,
       "missing_location_quest_ids_by_stage": {
         "a": [
           78823
@@ -204,8 +187,7 @@
           715,
           716,
           723,
-          735,
-          78823
+          735
         ],
         "t": []
       },
@@ -215,8 +197,8 @@
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 26,
       "source_data_gap_free": false,
-      "estimated_distance_before": 413236.7,
-      "estimated_distance_after": 408387.6
+      "estimated_distance_before": 416236.7,
+      "estimated_distance_after": 397941.7
     },
     {
       "faction": "Alliance",
@@ -238,7 +220,7 @@
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
       "estimated_distance_before": 208013.07,
-      "estimated_distance_after": 207501.74
+      "estimated_distance_after": 206576.55
     },
     {
       "faction": "Alliance",
@@ -260,7 +242,7 @@
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
       "estimated_distance_before": 154368.71,
-      "estimated_distance_after": 145595.2
+      "estimated_distance_after": 144659.45
     },
     {
       "faction": "Alliance",
@@ -268,14 +250,10 @@
       "key": "level-zone:kalimdor/darkshore",
       "quests": 83,
       "steps": 259,
-      "unknown_location_steps": 6,
+      "unknown_location_steps": 2,
       "missing_location_quest_ids_by_stage": {
         "a": [],
         "q": [
-          741,
-          950,
-          993,
-          1141,
           4725,
           4731
         ],
@@ -286,15 +264,12 @@
         995
       ],
       "unverified_objective_quantity_quest_ids": [
-        943,
-        2139,
-        5321,
-        98042
+        5321
       ],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
-      "estimated_distance_before": 347651.29,
-      "estimated_distance_after": 317861.97
+      "estimated_distance_before": 347767.6,
+      "estimated_distance_after": 305547.53
     },
     {
       "faction": "Alliance",
@@ -302,35 +277,28 @@
       "key": "level-zone:eastern-kingdoms/deeprun-tram",
       "quests": 2,
       "steps": 6,
-      "unknown_location_steps": 6,
+      "unknown_location_steps": 1,
       "missing_location_quest_ids_by_stage": {
-        "a": [
-          6661,
-          6662
-        ],
+        "a": [],
         "q": [
-          6661,
-          6662
+          6661
         ],
-        "t": [
-          6661,
-          6662
-        ]
+        "t": []
       },
       "unverified_pickup_requirement_quest_ids": [],
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
-      "estimated_distance_before": 60000,
-      "estimated_distance_after": 60000
+      "estimated_distance_before": 0,
+      "estimated_distance_after": 0
     },
     {
       "faction": "Alliance",
       "zone": "Desolace",
       "key": "level-zone:kalimdor/desolace",
       "quests": 53,
-      "steps": 172,
-      "unknown_location_steps": 49,
+      "steps": 173,
+      "unknown_location_steps": 43,
       "missing_location_quest_ids_by_stage": {
         "a": [
           1277,
@@ -345,18 +313,13 @@
           93227,
           94872,
           94873,
-          96222,
           97284
         ],
         "q": [
-          1052,
           1277,
           1371,
-          1380,
-          1381,
           1382,
           1385,
-          1467,
           5561,
           79229,
           79235,
@@ -368,8 +331,7 @@
           93224,
           93227,
           94872,
-          94873,
-          96222
+          94873
         ],
         "t": [
           1277,
@@ -389,7 +351,6 @@
         ]
       },
       "unverified_pickup_requirement_quest_ids": [
-        1277,
         1369,
         1370,
         1371,
@@ -404,23 +365,13 @@
         79235,
         79236,
         79242,
-        92743,
-        92812,
-        92818,
-        93224,
-        93227,
-        94872,
-        94873,
-        96222
+        92743
       ],
-      "unverified_objective_quantity_quest_ids": [
-        1380,
-        1381
-      ],
+      "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
-      "estimated_distance_before": 743301.64,
-      "estimated_distance_after": 724016.18
+      "estimated_distance_before": 711789.83,
+      "estimated_distance_after": 693352.65
     },
     {
       "faction": "Alliance",
@@ -443,7 +394,7 @@
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
       "estimated_distance_before": 205824.08,
-      "estimated_distance_after": 197137.15
+      "estimated_distance_after": 195079.88
     },
     {
       "faction": "Alliance",
@@ -505,7 +456,7 @@
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
       "estimated_distance_before": 495793.16,
-      "estimated_distance_after": 475657.77
+      "estimated_distance_after": 452724.08
     },
     {
       "faction": "Alliance",
@@ -513,7 +464,7 @@
       "key": "level-zone:kalimdor/dustwallow-marsh",
       "quests": 40,
       "steps": 120,
-      "unknown_location_steps": 45,
+      "unknown_location_steps": 43,
       "missing_location_quest_ids_by_stage": {
         "a": [
           1,
@@ -534,7 +485,6 @@
         "q": [
           1,
           1203,
-          1252,
           1263,
           1272,
           1280,
@@ -547,7 +497,6 @@
           1295,
           1296,
           1297,
-          1319,
           9065
         ],
         "t": [
@@ -568,17 +517,13 @@
         ]
       },
       "unverified_pickup_requirement_quest_ids": [
-        1272,
-        1281,
-        1282,
-        1283,
-        1288
+        1282
       ],
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 3,
       "source_data_gap_free": false,
-      "estimated_distance_before": 735407.83,
-      "estimated_distance_after": 715100.11
+      "estimated_distance_before": 735466.22,
+      "estimated_distance_after": 707886.98
     },
     {
       "faction": "Alliance",
@@ -642,7 +587,7 @@
       "prerequisite_review_steps": 34,
       "source_data_gap_free": false,
       "estimated_distance_before": 736885.97,
-      "estimated_distance_after": 718620.08
+      "estimated_distance_after": 703546.48
     },
     {
       "faction": "Alliance",
@@ -675,7 +620,7 @@
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
       "estimated_distance_before": 241854.84,
-      "estimated_distance_after": 228290.44
+      "estimated_distance_after": 210249.16
     },
     {
       "faction": "Alliance",
@@ -714,7 +659,7 @@
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
       "estimated_distance_before": 255694.6,
-      "estimated_distance_after": 250529.88
+      "estimated_distance_after": 241040.06
     },
     {
       "faction": "Alliance",
@@ -742,7 +687,7 @@
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
       "estimated_distance_before": 208608.95,
-      "estimated_distance_after": 204513.13
+      "estimated_distance_after": 200185.09
     },
     {
       "faction": "Alliance",
@@ -766,7 +711,7 @@
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
       "estimated_distance_before": 120686.69,
-      "estimated_distance_after": 118005.93
+      "estimated_distance_after": 117486.42
     },
     {
       "faction": "Alliance",
@@ -795,7 +740,7 @@
       "prerequisite_review_steps": 3,
       "source_data_gap_free": false,
       "estimated_distance_before": 368632.0,
-      "estimated_distance_after": 347985.3
+      "estimated_distance_after": 345341.06
     },
     {
       "faction": "Alliance",
@@ -830,14 +775,13 @@
       "key": "level-zone:eastern-kingdoms/redridge-mountains",
       "quests": 42,
       "steps": 136,
-      "unknown_location_steps": 10,
+      "unknown_location_steps": 7,
       "missing_location_quest_ids_by_stage": {
         "a": [
           95816,
           98247
         ],
         "q": [
-          116,
           95816,
           98247,
           98387
@@ -852,8 +796,8 @@
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
-      "estimated_distance_before": 322512.41,
-      "estimated_distance_after": 283263.99
+      "estimated_distance_before": 320988.8,
+      "estimated_distance_after": 301615.41
     },
     {
       "faction": "Alliance",
@@ -874,7 +818,7 @@
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
       "estimated_distance_before": 77274.97,
-      "estimated_distance_after": 77274.97
+      "estimated_distance_after": 77024.36
     },
     {
       "faction": "Alliance",
@@ -897,7 +841,7 @@
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
       "estimated_distance_before": 170303.36,
-      "estimated_distance_after": 165923.77
+      "estimated_distance_after": 163774.61
     },
     {
       "faction": "Alliance",
@@ -1001,7 +945,7 @@
       "prerequisite_review_steps": 78,
       "source_data_gap_free": false,
       "estimated_distance_before": 863120.4,
-      "estimated_distance_after": 861488.22
+      "estimated_distance_after": 855161.01
     },
     {
       "faction": "Alliance",
@@ -1009,7 +953,7 @@
       "key": "level-zone:kalimdor/stonetalon-mountains",
       "quests": 30,
       "steps": 96,
-      "unknown_location_steps": 11,
+      "unknown_location_steps": 10,
       "missing_location_quest_ids_by_stage": {
         "a": [
           80001,
@@ -1018,7 +962,6 @@
         "q": [
           1073,
           1079,
-          1092,
           80001
         ],
         "t": [
@@ -1034,8 +977,8 @@
       ],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
-      "estimated_distance_before": 336870.19,
-      "estimated_distance_after": 336638.49
+      "estimated_distance_before": 336864.29,
+      "estimated_distance_after": 321281.0
     },
     {
       "faction": "Alliance",
@@ -1061,8 +1004,8 @@
       "zone": "Stranglethorn Vale",
       "key": "level-zone:eastern-kingdoms/stranglethorn-vale",
       "quests": 110,
-      "steps": 363,
-      "unknown_location_steps": 55,
+      "steps": 364,
+      "unknown_location_steps": 46,
       "missing_location_quest_ids_by_stage": {
         "a": [
           614,
@@ -1081,18 +1024,9 @@
           97331
         ],
         "q": [
-          210,
-          328,
-          329,
           338,
-          602,
-          607,
-          614,
           615,
-          618,
           620,
-          622,
-          623,
           1036,
           3511,
           3621,
@@ -1128,10 +1062,6 @@
         340,
         341,
         342,
-        614,
-        615,
-        618,
-        620,
         1036,
         3721,
         4621,
@@ -1139,18 +1069,15 @@
         8552,
         8553,
         8554,
-        9272,
-        97047,
-        97048,
-        97331
+        9272
       ],
       "unverified_objective_quantity_quest_ids": [
         8551
       ],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
-      "estimated_distance_before": 984260.87,
-      "estimated_distance_after": 937258.27
+      "estimated_distance_before": 917619.14,
+      "estimated_distance_after": 873023.44
     },
     {
       "faction": "Alliance",
@@ -1186,7 +1113,7 @@
       "prerequisite_review_steps": 6,
       "source_data_gap_free": false,
       "estimated_distance_before": 165530.31,
-      "estimated_distance_after": 161787.38
+      "estimated_distance_after": 160606.34
     },
     {
       "faction": "Alliance",
@@ -1194,7 +1121,7 @@
       "key": "level-zone:kalimdor/tanaris",
       "quests": 98,
       "steps": 319,
-      "unknown_location_steps": 47,
+      "unknown_location_steps": 43,
       "missing_location_quest_ids_by_stage": {
         "a": [
           1157,
@@ -1205,12 +1132,8 @@
           8730
         ],
         "q": [
-          113,
-          162,
           1157,
           1158,
-          2606,
-          2661,
           3064,
           4508,
           5538,
@@ -1246,8 +1169,6 @@
         ]
       },
       "unverified_pickup_requirement_quest_ids": [
-        1157,
-        1158,
         5066,
         5090,
         5091,
@@ -1291,48 +1212,35 @@
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 113,
       "source_data_gap_free": false,
-      "estimated_distance_before": 1175406.08,
-      "estimated_distance_after": 1169944.93
+      "estimated_distance_before": 1175330.5,
+      "estimated_distance_after": 1148653.38
     },
     {
       "faction": "Alliance",
       "zone": "Teldrassil",
       "key": "level-zone:kalimdor/teldrassil",
-      "quests": 61,
-      "steps": 197,
-      "unknown_location_steps": 10,
+      "quests": 62,
+      "steps": 201,
+      "unknown_location_steps": 3,
       "missing_location_quest_ids_by_stage": {
         "a": [
-          490,
           934
         ],
         "q": [
-          490,
-          930,
-          931,
-          935,
-          941,
           2459
         ],
         "t": [
-          490,
           934
         ]
       },
       "unverified_pickup_requirement_quest_ids": [
-        490,
         8734
       ],
-      "unverified_objective_quantity_quest_ids": [
-        932,
-        98392,
-        98403,
-        99050
-      ],
+      "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 3,
       "source_data_gap_free": false,
-      "estimated_distance_before": 208964.87,
-      "estimated_distance_after": 199222.41
+      "estimated_distance_before": 219379.31,
+      "estimated_distance_after": 199122.29
     },
     {
       "faction": "Alliance",
@@ -1357,7 +1265,7 @@
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
       "estimated_distance_before": 125003.31,
-      "estimated_distance_after": 122395.46
+      "estimated_distance_after": 122296.41
     },
     {
       "faction": "Alliance",
@@ -1378,7 +1286,7 @@
       "prerequisite_review_steps": 12,
       "source_data_gap_free": false,
       "estimated_distance_before": 225196.74,
-      "estimated_distance_after": 224812.2
+      "estimated_distance_after": 224719.17
     },
     {
       "faction": "Alliance",
@@ -1405,52 +1313,34 @@
       "key": "level-zone:kalimdor/thousand-needles",
       "quests": 40,
       "steps": 122,
-      "unknown_location_steps": 26,
+      "unknown_location_steps": 10,
       "missing_location_quest_ids_by_stage": {
         "a": [
           1099,
           1174,
           4323,
-          98155,
           98156
         ],
         "q": [
           1099,
-          1100,
-          1111,
-          1112,
-          1114,
-          1117,
-          1118,
-          1119,
-          1120,
-          1121,
-          1122,
           1174,
-          1179,
-          1189,
-          98155,
           98156
         ],
         "t": [
           1099,
           1174,
-          4323,
-          98155,
-          98156
+          4323
         ]
       },
       "unverified_pickup_requirement_quest_ids": [
         1120,
-        1121,
-        98155,
-        98156
+        1121
       ],
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
-      "estimated_distance_before": 499906.11,
-      "estimated_distance_after": 483836.12
+      "estimated_distance_before": 466994.73,
+      "estimated_distance_after": 463293.58
     },
     {
       "faction": "Alliance",
@@ -1481,7 +1371,7 @@
       "prerequisite_review_steps": 3,
       "source_data_gap_free": false,
       "estimated_distance_before": 345007.67,
-      "estimated_distance_after": 316978.88
+      "estimated_distance_after": 305556.37
     },
     {
       "faction": "Alliance",
@@ -1535,7 +1425,7 @@
       "prerequisite_review_steps": 45,
       "source_data_gap_free": false,
       "estimated_distance_before": 515337.86,
-      "estimated_distance_after": 508847.99
+      "estimated_distance_after": 501567.97
     },
     {
       "faction": "Alliance",
@@ -1555,109 +1445,55 @@
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
-      "estimated_distance_before": 493073.81,
-      "estimated_distance_after": 474653.94
+      "estimated_distance_before": 493176.34,
+      "estimated_distance_after": 453176.46
     },
     {
       "faction": "Alliance",
       "zone": "Wetlands",
       "key": "level-zone:eastern-kingdoms/wetlands",
-      "quests": 68,
-      "steps": 222,
-      "unknown_location_steps": 63,
+      "quests": 69,
+      "steps": 230,
+      "unknown_location_steps": 18,
       "missing_location_quest_ids_by_stage": {
         "a": [
-          275,
           87318,
           87491,
           88756,
           88757,
-          88758,
-          98072,
-          98208,
-          98209,
-          98216,
-          98221,
-          98223,
-          98230,
-          98240,
-          98245,
-          98246,
-          98283,
-          98291,
-          98293,
-          98297,
-          98310
+          88758
         ],
         "q": [
-          647,
           87318,
           87491,
           88756,
           88757,
           88758,
           98208,
-          98209,
-          98216,
-          98221,
-          98223,
-          98230,
-          98240,
           98246,
-          98283,
-          98293,
-          98297,
-          98310
+          98293
         ],
         "t": [
-          275,
           87318,
           87491,
           88756,
           88757,
-          88758,
-          98072,
-          98208,
-          98209,
-          98216,
-          98221,
-          98223,
-          98230,
-          98240,
-          98245,
-          98246,
-          98283,
-          98291,
-          98293,
-          98297,
-          98310
+          88758
         ]
       },
       "unverified_pickup_requirement_quest_ids": [
-        275,
         484,
         87318,
         87491,
         88756,
         88757,
-        88758,
-        98072,
-        98208,
-        98209,
-        98216,
-        98221,
-        98223,
-        98230,
-        98283,
-        98291,
-        98297,
-        98310
+        88758
       ],
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
-      "estimated_distance_before": 1001347.09,
-      "estimated_distance_after": 986713.01
+      "estimated_distance_before": 557425.29,
+      "estimated_distance_after": 526848.92
     },
     {
       "faction": "Alliance",
@@ -1688,8 +1524,8 @@
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 9,
       "source_data_gap_free": false,
-      "estimated_distance_before": 489571.36,
-      "estimated_distance_after": 475397.59
+      "estimated_distance_before": 489587.99,
+      "estimated_distance_after": 474720.05
     },
     {
       "faction": "Alliance",
@@ -1716,15 +1552,13 @@
         92464,
         92596,
         94484,
-        94493,
-        94901,
-        94902
+        94493
       ],
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
-      "estimated_distance_before": 141861.03,
-      "estimated_distance_after": 139143.7
+      "estimated_distance_before": 141842.94,
+      "estimated_distance_after": 137526.01
     },
     {
       "faction": "Horde",
@@ -1763,7 +1597,7 @@
       "key": "level-zone:eastern-kingdoms/arathi-highlands",
       "quests": 45,
       "steps": 148,
-      "unknown_location_steps": 12,
+      "unknown_location_steps": 11,
       "missing_location_quest_ids_by_stage": {
         "a": [
           636,
@@ -1774,7 +1608,6 @@
         "q": [
           636,
           8438,
-          79624,
           92519
         ],
         "t": [
@@ -1790,8 +1623,8 @@
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
-      "estimated_distance_before": 396719.32,
-      "estimated_distance_after": 376671.74
+      "estimated_distance_before": 385132.11,
+      "estimated_distance_after": 347641.62
     },
     {
       "faction": "Horde",
@@ -1819,8 +1652,6 @@
         ]
       },
       "unverified_pickup_requirement_quest_ids": [
-        908,
-        909,
         7866,
         7867,
         7868,
@@ -1829,8 +1660,8 @@
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
-      "estimated_distance_before": 202652.43,
-      "estimated_distance_after": 197719.93
+      "estimated_distance_before": 202647.47,
+      "estimated_distance_after": 190715.6
     },
     {
       "faction": "Horde",
@@ -1907,7 +1738,7 @@
       "prerequisite_review_steps": 47,
       "source_data_gap_free": false,
       "estimated_distance_before": 767978.3,
-      "estimated_distance_after": 722299.96
+      "estimated_distance_after": 720525.56
     },
     {
       "faction": "Horde",
@@ -1915,7 +1746,7 @@
       "key": "level-zone:eastern-kingdoms/badlands",
       "quests": 33,
       "steps": 109,
-      "unknown_location_steps": 6,
+      "unknown_location_steps": 5,
       "missing_location_quest_ids_by_stage": {
         "a": [
           78823
@@ -1923,8 +1754,7 @@
         "q": [
           715,
           716,
-          736,
-          78823
+          736
         ],
         "t": []
       },
@@ -1935,8 +1765,8 @@
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 14,
       "source_data_gap_free": false,
-      "estimated_distance_before": 432575.58,
-      "estimated_distance_after": 415373.54
+      "estimated_distance_before": 432976.84,
+      "estimated_distance_after": 393127.91
     },
     {
       "faction": "Horde",
@@ -1958,7 +1788,7 @@
       "prerequisite_review_steps": 61,
       "source_data_gap_free": false,
       "estimated_distance_before": 243467.26,
-      "estimated_distance_after": 242955.93
+      "estimated_distance_after": 242721.53
     },
     {
       "faction": "Horde",
@@ -1987,8 +1817,8 @@
       "zone": "Desolace",
       "key": "level-zone:kalimdor/desolace",
       "quests": 52,
-      "steps": 170,
-      "unknown_location_steps": 49,
+      "steps": 171,
+      "unknown_location_steps": 42,
       "missing_location_quest_ids_by_stage": {
         "a": [
           1277,
@@ -1999,11 +1829,9 @@
           92743,
           92812,
           92818,
-          93225,
           93227,
           94872,
           94873,
-          96222,
           97284
         ],
         "q": [
@@ -2011,8 +1839,6 @@
           1367,
           1368,
           1371,
-          1380,
-          1381,
           5561,
           6568,
           79229,
@@ -2022,11 +1848,9 @@
           92743,
           92812,
           92818,
-          93225,
           93227,
           94872,
-          94873,
-          96222
+          94873
         ],
         "t": [
           1277,
@@ -2037,7 +1861,6 @@
           92743,
           92812,
           92818,
-          93225,
           93227,
           94872,
           94873,
@@ -2047,7 +1870,6 @@
         ]
       },
       "unverified_pickup_requirement_quest_ids": [
-        1277,
         1369,
         1370,
         1371,
@@ -2060,24 +1882,13 @@
         79235,
         79236,
         79242,
-        92743,
-        92812,
-        92818,
-        93225,
-        93227,
-        94872,
-        94873,
-        96222
+        92743
       ],
-      "unverified_objective_quantity_quest_ids": [
-        1380,
-        1381,
-        1488
-      ],
+      "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 41,
       "source_data_gap_free": false,
-      "estimated_distance_before": 794247.25,
-      "estimated_distance_after": 773183.43
+      "estimated_distance_before": 743809.22,
+      "estimated_distance_after": 720136.29
     },
     {
       "faction": "Horde",
@@ -2101,13 +1912,14 @@
         ]
       },
       "unverified_pickup_requirement_quest_ids": [
+        787,
         788
       ],
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
       "estimated_distance_before": 204372.61,
-      "estimated_distance_after": 197084.91
+      "estimated_distance_after": 193416.89
     },
     {
       "faction": "Horde",
@@ -2148,7 +1960,7 @@
       "key": "level-zone:kalimdor/dustwallow-marsh",
       "quests": 50,
       "steps": 155,
-      "unknown_location_steps": 47,
+      "unknown_location_steps": 44,
       "missing_location_quest_ids_by_stage": {
         "a": [
           1,
@@ -2170,9 +1982,7 @@
           1,
           1203,
           1263,
-          1269,
           1272,
-          1276,
           1280,
           1281,
           1283,
@@ -2183,7 +1993,6 @@
           1295,
           1296,
           1297,
-          1321,
           6601,
           9065
         ],
@@ -2204,17 +2013,12 @@
           9065
         ]
       },
-      "unverified_pickup_requirement_quest_ids": [
-        1272,
-        1281,
-        1283,
-        1288
-      ],
+      "unverified_pickup_requirement_quest_ids": [],
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 21,
       "source_data_gap_free": false,
-      "estimated_distance_before": 838090.02,
-      "estimated_distance_after": 837070.72
+      "estimated_distance_before": 838076.95,
+      "estimated_distance_after": 836118.15
     },
     {
       "faction": "Horde",
@@ -2274,7 +2078,7 @@
       "prerequisite_review_steps": 34,
       "source_data_gap_free": false,
       "estimated_distance_before": 599796.33,
-      "estimated_distance_after": 571954.52
+      "estimated_distance_after": 550658.5
     },
     {
       "faction": "Horde",
@@ -2312,7 +2116,7 @@
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
       "estimated_distance_before": 278846.68,
-      "estimated_distance_after": 259283.86
+      "estimated_distance_after": 257078.48
     },
     {
       "faction": "Horde",
@@ -2336,7 +2140,7 @@
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
       "estimated_distance_before": 177721.67,
-      "estimated_distance_after": 172825.62
+      "estimated_distance_after": 167993.05
     },
     {
       "faction": "Horde",
@@ -2359,7 +2163,7 @@
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
       "estimated_distance_before": 378275.76,
-      "estimated_distance_after": 365572.23
+      "estimated_distance_after": 357852.33
     },
     {
       "faction": "Horde",
@@ -2383,62 +2187,36 @@
         8741
       ],
       "unverified_objective_quantity_quest_ids": [],
-      "prerequisite_review_steps": 15,
+      "prerequisite_review_steps": 43,
       "source_data_gap_free": false,
-      "estimated_distance_before": 203247.23,
-      "estimated_distance_after": 199138.76
+      "estimated_distance_before": 273355.41,
+      "estimated_distance_after": 273355.41
     },
     {
       "faction": "Horde",
       "zone": "Mulgore",
       "key": "level-zone:kalimdor/mulgore",
       "quests": 52,
-      "steps": 170,
-      "unknown_location_steps": 18,
+      "steps": 171,
+      "unknown_location_steps": 3,
       "missing_location_quest_ids_by_stage": {
         "a": [
-          96241,
-          96259,
-          96260,
-          96261,
           96294,
           99197
         ],
-        "q": [
-          751,
-          96241,
-          96259,
-          96260,
-          96261,
-          96294
-        ],
+        "q": [],
         "t": [
-          96241,
-          96259,
-          96260,
-          96261,
-          96294,
           99197
         ]
       },
       "unverified_pickup_requirement_quest_ids": [
-        861,
-        96241,
-        96259,
-        96260,
-        96261,
-        96294,
-        99197,
-        99411
+        861
       ],
-      "unverified_objective_quantity_quest_ids": [
-        98427,
-        99080
-      ],
+      "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
-      "estimated_distance_before": 338351.06,
-      "estimated_distance_after": 329759.3
+      "estimated_distance_before": 169245.05,
+      "estimated_distance_after": 157070.67
     },
     {
       "faction": "Horde",
@@ -2488,7 +2266,7 @@
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
       "estimated_distance_before": 85436.42,
-      "estimated_distance_after": 80327.63
+      "estimated_distance_after": 79973.7
     },
     {
       "faction": "Horde",
@@ -2592,10 +2370,10 @@
         9248
       ],
       "unverified_objective_quantity_quest_ids": [],
-      "prerequisite_review_steps": 24,
+      "prerequisite_review_steps": 46,
       "source_data_gap_free": false,
-      "estimated_distance_before": 904220.28,
-      "estimated_distance_after": 856852.2
+      "estimated_distance_before": 930902.5,
+      "estimated_distance_after": 879065.76
     },
     {
       "faction": "Horde",
@@ -2618,7 +2396,7 @@
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
       "estimated_distance_before": 236016.05,
-      "estimated_distance_after": 215275.84
+      "estimated_distance_after": 207789.89
     },
     {
       "faction": "Horde",
@@ -2626,19 +2404,17 @@
       "key": "level-zone:kalimdor/stonetalon-mountains",
       "quests": 35,
       "steps": 116,
-      "unknown_location_steps": 6,
+      "unknown_location_steps": 4,
       "missing_location_quest_ids_by_stage": {
         "a": [
           80001
         ],
         "q": [
-          1092,
           80001
         ],
         "t": [
           80001,
-          86576,
-          97538
+          86576
         ]
       },
       "unverified_pickup_requirement_quest_ids": [
@@ -2649,8 +2425,8 @@
       ],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
-      "estimated_distance_before": 335987.85,
-      "estimated_distance_after": 308339.56
+      "estimated_distance_before": 350975.3,
+      "estimated_distance_after": 327741.44
     },
     {
       "faction": "Horde",
@@ -2676,8 +2452,8 @@
       "zone": "Stranglethorn Vale",
       "key": "level-zone:eastern-kingdoms/stranglethorn-vale",
       "quests": 103,
-      "steps": 344,
-      "unknown_location_steps": 52,
+      "steps": 345,
+      "unknown_location_steps": 48,
       "missing_location_quest_ids_by_stage": {
         "a": [
           614,
@@ -2698,10 +2474,7 @@
         ],
         "q": [
           338,
-          607,
-          614,
           615,
-          618,
           620,
           1036,
           3511,
@@ -2711,7 +2484,6 @@
           8552,
           8553,
           8554,
-          95748,
           97047,
           97048,
           97328,
@@ -2740,10 +2512,6 @@
         340,
         341,
         342,
-        614,
-        615,
-        618,
-        620,
         1036,
         3721,
         4621,
@@ -2751,11 +2519,7 @@
         8552,
         8553,
         8554,
-        9272,
-        95748,
-        97047,
-        97048,
-        97331
+        9272
       ],
       "unverified_objective_quantity_quest_ids": [
         592,
@@ -2763,8 +2527,8 @@
       ],
       "prerequisite_review_steps": 53,
       "source_data_gap_free": false,
-      "estimated_distance_before": 974929.33,
-      "estimated_distance_after": 939403.83
+      "estimated_distance_before": 896814.99,
+      "estimated_distance_after": 873999.75
     },
     {
       "faction": "Horde",
@@ -2801,7 +2565,7 @@
       "prerequisite_review_steps": 6,
       "source_data_gap_free": false,
       "estimated_distance_before": 262148.07,
-      "estimated_distance_after": 253965.13
+      "estimated_distance_after": 253152.34
     },
     {
       "faction": "Horde",
@@ -2809,7 +2573,7 @@
       "key": "level-zone:kalimdor/tanaris",
       "quests": 116,
       "steps": 378,
-      "unknown_location_steps": 56,
+      "unknown_location_steps": 52,
       "missing_location_quest_ids_by_stage": {
         "a": [
           654,
@@ -2821,13 +2585,9 @@
           8730
         ],
         "q": [
-          32,
-          113,
           654,
           1157,
           1158,
-          2606,
-          2661,
           3064,
           4509,
           5514,
@@ -2868,8 +2628,6 @@
         ]
       },
       "unverified_pickup_requirement_quest_ids": [
-        1157,
-        1158,
         5093,
         5094,
         5095,
@@ -2917,8 +2675,8 @@
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 59,
       "source_data_gap_free": false,
-      "estimated_distance_before": 1316308.34,
-      "estimated_distance_after": 1267700.74
+      "estimated_distance_before": 1316363.26,
+      "estimated_distance_after": 1260381.73
     },
     {
       "faction": "Horde",
@@ -2949,8 +2707,8 @@
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
-      "estimated_distance_before": 560138.43,
-      "estimated_distance_after": 529097.88
+      "estimated_distance_before": 561808.63,
+      "estimated_distance_after": 502135.83
     },
     {
       "faction": "Horde",
@@ -2971,7 +2729,7 @@
       "prerequisite_review_steps": 9,
       "source_data_gap_free": false,
       "estimated_distance_before": 346049.71,
-      "estimated_distance_after": 333688.65
+      "estimated_distance_after": 329339.16
     },
     {
       "faction": "Horde",
@@ -2997,55 +2755,38 @@
       "zone": "Thousand Needles",
       "key": "level-zone:kalimdor/thousand-needles",
       "quests": 67,
-      "steps": 212,
-      "unknown_location_steps": 26,
+      "steps": 214,
+      "unknown_location_steps": 11,
       "missing_location_quest_ids_by_stage": {
         "a": [
           1099,
           1174,
-          4323,
-          98069,
-          98070
+          4323
         ],
         "q": [
           1099,
-          1111,
-          1112,
-          1114,
-          1117,
-          1118,
-          1119,
-          1120,
-          1121,
-          1122,
           1150,
           1174,
-          1189,
           5361,
-          98069,
-          98070
+          98069
         ],
         "t": [
           1099,
           1174,
-          4323,
-          98069,
-          98070
+          4323
         ]
       },
       "unverified_pickup_requirement_quest_ids": [
         1120,
-        1121,
-        98069,
-        98070
+        1121
       ],
       "unverified_objective_quantity_quest_ids": [
         4966
       ],
       "prerequisite_review_steps": 6,
       "source_data_gap_free": false,
-      "estimated_distance_before": 702216.44,
-      "estimated_distance_after": 691550.57
+      "estimated_distance_before": 637963.13,
+      "estimated_distance_after": 607371.6
     },
     {
       "faction": "Horde",
@@ -3053,28 +2794,22 @@
       "key": "level-zone:eastern-kingdoms/tirisfal-glades",
       "quests": 64,
       "steps": 221,
-      "unknown_location_steps": 4,
+      "unknown_location_steps": 3,
       "missing_location_quest_ids_by_stage": {
-        "a": [
-          398
-        ],
+        "a": [],
         "q": [
           99141
         ],
         "t": []
       },
-      "unverified_pickup_requirement_quest_ids": [
-        398
-      ],
+      "unverified_pickup_requirement_quest_ids": [],
       "unverified_objective_quantity_quest_ids": [
-        96897,
-        99153,
-        99156
+        96897
       ],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
-      "estimated_distance_before": 274302.77,
-      "estimated_distance_after": 262080.37
+      "estimated_distance_before": 250098.37,
+      "estimated_distance_after": 234626.28
     },
     {
       "faction": "Horde",
@@ -3106,7 +2841,7 @@
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
       "estimated_distance_before": 347369.59,
-      "estimated_distance_after": 313997.8
+      "estimated_distance_after": 303212.53
     },
     {
       "faction": "Horde",
@@ -3162,7 +2897,7 @@
       "prerequisite_review_steps": 45,
       "source_data_gap_free": false,
       "estimated_distance_before": 661935.48,
-      "estimated_distance_after": 644534.44
+      "estimated_distance_after": 642361.85
     },
     {
       "faction": "Horde",
@@ -3206,8 +2941,8 @@
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 9,
       "source_data_gap_free": false,
-      "estimated_distance_before": 354744.4,
-      "estimated_distance_after": 348350.53
+      "estimated_distance_before": 354742.51,
+      "estimated_distance_after": 348147.09
     },
     {
       "faction": "Horde",
@@ -3234,15 +2969,13 @@
         92464,
         92595,
         94484,
-        94493,
-        94901,
-        94902
+        94493
       ],
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
-      "estimated_distance_before": 146905.46,
-      "estimated_distance_after": 144000.5
+      "estimated_distance_before": 146877.04,
+      "estimated_distance_after": 142733.19
     }
   ]
 }

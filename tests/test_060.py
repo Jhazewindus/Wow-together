@@ -327,11 +327,11 @@ class TravelTests(unittest.TestCase):
         self.assertIsNone(c.ns.visibleFlights)
         self.assertIsNone(c.lua.globals().taken)
 
-    def test_flying_shows_elapsed_then_measured_remaining_time(self):
+    def test_flying_shows_estimated_then_measured_remaining_time(self):
         c = flight_client(); c.ns.ReadFlightMap(); c.ns.NoteFlightSelection(54)
         c.lua.globals().flying = True; c.ns.UpdateNavigation()
         c.lua.globals().clock = 112; c.ns.UpdateNavigation()
-        self.assertIn('0m 12s flying', c.ns.navigation.distance.text)
+        self.assertIn('Estimated', c.ns.navigation.distance.text)
         self.assertFalse(c.ns.navigation.symbol.IsShown(c.ns.navigation.symbol))
         c.lua.globals().flying = False; c.ns.FinishFlight()
         self.assertEqual(c.ns.db.flights[c.ns.self].timings['11:22'].mean, 12)

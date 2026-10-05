@@ -1,6 +1,6 @@
 {
   "source_data_complete": false,
-  "remaining_quest_records": 485,
+  "remaining_quest_records": 405,
   "limitations": [
     "This queue identifies missing facts, not a license to invent them",
     "Source capture must respect access policy and stop after denials",
@@ -37,22 +37,6 @@
       ]
     },
     {
-      "questID": 32,
-      "title": "Rise of the Silithid",
-      "guides": [
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=32",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=8594",
-        "https://www.wowhead.com/forever/npc=7010",
-        "https://www.wowhead.com/forever/npc=7724"
-      ]
-    },
-    {
       "questID": 90,
       "title": "Seasoned Wolf Kabobs",
       "guides": [
@@ -65,86 +49,6 @@
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=272"
       ]
-    },
-    {
-      "questID": 113,
-      "title": "Insect Part Analysis",
-      "guides": [
-        "Alliance / Tanaris",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=113",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=8594",
-        "https://www.wowhead.com/forever/npc=5594",
-        "https://www.wowhead.com/forever/npc=7724"
-      ]
-    },
-    {
-      "questID": 116,
-      "title": "Dry Times",
-      "guides": [
-        "Alliance / Redridge Mountains"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=116",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=1939",
-        "https://www.wowhead.com/forever/item=1941",
-        "https://www.wowhead.com/forever/item=1942",
-        "https://www.wowhead.com/forever/npc=346"
-      ]
-    },
-    {
-      "questID": 162,
-      "title": "Rise of the Silithid",
-      "guides": [
-        "Alliance / Tanaris"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=162",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=8594",
-        "https://www.wowhead.com/forever/npc=7724",
-        "https://www.wowhead.com/forever/npc=7740"
-      ]
-    },
-    {
-      "questID": 210,
-      "title": "Krazek's Cookery",
-      "guides": [
-        "Alliance / Stranglethorn Vale"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=210",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=4085",
-        "https://www.wowhead.com/forever/npc=770",
-        "https://www.wowhead.com/forever/npc=773"
-      ]
-    },
-    {
-      "questID": 275,
-      "title": "Blisters on the Land",
-      "guides": [
-        "Alliance / Wetlands"
-      ],
-      "needs": [
-        "hand-in",
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=275",
-      "entity_urls": []
     },
     {
       "questID": 282,
@@ -174,38 +78,6 @@
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=1217",
         "https://www.wowhead.com/forever/npc=1416"
-      ]
-    },
-    {
-      "questID": 328,
-      "title": "The Hidden Key",
-      "guides": [
-        "Alliance / Stranglethorn Vale"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=328",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=2719",
-        "https://www.wowhead.com/forever/object=287",
-        "https://www.wowhead.com/forever/object=288"
-      ]
-    },
-    {
-      "questID": 329,
-      "title": "The Spy Revealed!",
-      "guides": [
-        "Alliance / Stranglethorn Vale"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=329",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=2720",
-        "https://www.wowhead.com/forever/npc=469",
-        "https://www.wowhead.com/forever/object=288"
       ]
     },
     {
@@ -288,21 +160,6 @@
       ]
     },
     {
-      "questID": 398,
-      "title": "WANTED: Maggot Eye",
-      "guides": [
-        "Horde / Tirisfal Glades"
-      ],
-      "needs": [
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=398",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=1515"
-      ]
-    },
-    {
       "questID": 452,
       "title": "Pyrewood Ambush",
       "guides": [
@@ -343,21 +200,6 @@
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=2094"
       ]
-    },
-    {
-      "questID": 490,
-      "title": "Bounty: Gnarlpine Furbolg",
-      "guides": [
-        "Alliance / Teldrassil"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=490",
-      "entity_urls": []
     },
     {
       "questID": 515,
@@ -483,39 +325,6 @@
       ]
     },
     {
-      "questID": 602,
-      "title": "Magical Analysis",
-      "guides": [
-        "Alliance / Stranglethorn Vale"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=602",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=3960",
-        "https://www.wowhead.com/forever/npc=2496",
-        "https://www.wowhead.com/forever/npc=2543"
-      ]
-    },
-    {
-      "questID": 607,
-      "title": "Return to MacKinley",
-      "guides": [
-        "Alliance / Stranglethorn Vale",
-        "Horde / Stranglethorn Vale"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=607",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=3922",
-        "https://www.wowhead.com/forever/npc=2501",
-        "https://www.wowhead.com/forever/npc=2502"
-      ]
-    },
-    {
       "questID": 614,
       "title": "The Captain's Chest",
       "guides": [
@@ -524,9 +333,7 @@
       ],
       "needs": [
         "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=614",
       "entity_urls": []
@@ -541,8 +348,7 @@
       "needs": [
         "hand-in",
         "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=615",
       "entity_urls": []
@@ -556,9 +362,7 @@
       ],
       "needs": [
         "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=618",
       "entity_urls": []
@@ -573,43 +377,10 @@
       "needs": [
         "hand-in",
         "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=620",
       "entity_urls": []
-    },
-    {
-      "questID": 622,
-      "title": "Return to Corporal Kaleb",
-      "guides": [
-        "Alliance / Stranglethorn Vale"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=622",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=1987",
-        "https://www.wowhead.com/forever/npc=770",
-        "https://www.wowhead.com/forever/npc=773"
-      ]
-    },
-    {
-      "questID": 623,
-      "title": "Akiris by the Bundle",
-      "guides": [
-        "Alliance / Stranglethorn Vale"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=623",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=4028",
-        "https://www.wowhead.com/forever/npc=2494",
-        "https://www.wowhead.com/forever/npc=2616"
-      ]
     },
     {
       "questID": 636,
@@ -625,22 +396,6 @@
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=636",
       "entity_urls": []
-    },
-    {
-      "questID": 647,
-      "title": "MacKreel's Moonshine",
-      "guides": [
-        "Alliance / Wetlands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=647",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=4441",
-        "https://www.wowhead.com/forever/npc=2696",
-        "https://www.wowhead.com/forever/npc=2705"
-      ]
     },
     {
       "questID": 654,
@@ -743,38 +498,6 @@
       ]
     },
     {
-      "questID": 741,
-      "title": "The Absent Minded Prospector",
-      "guides": [
-        "Alliance / Darkshore"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=741",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=4654",
-        "https://www.wowhead.com/forever/npc=2912",
-        "https://www.wowhead.com/forever/npc=2913"
-      ]
-    },
-    {
-      "questID": 751,
-      "title": "The Ravaged Caravan",
-      "guides": [
-        "Horde / Mulgore"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=751",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=4834",
-        "https://www.wowhead.com/forever/npc=2988",
-        "https://www.wowhead.com/forever/object=2908"
-      ]
-    },
-    {
       "questID": 785,
       "title": "A Strategic Alliance",
       "guides": [
@@ -788,6 +511,21 @@
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=785",
       "entity_urls": []
+    },
+    {
+      "questID": 787,
+      "title": "The New Horde",
+      "guides": [
+        "Horde / Durotar"
+      ],
+      "needs": [
+        "pickup requirements"
+      ],
+      "quest_url": "https://www.wowhead.com/forever/quest=787",
+      "entity_urls": [
+        "https://www.wowhead.com/forever/npc=3143",
+        "https://www.wowhead.com/forever/npc=3144"
+      ]
     },
     {
       "questID": 788,
@@ -829,11 +567,12 @@
       "needs": [
         "hand-in",
         "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=908",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/item=16762"
+      ]
     },
     {
       "questID": 909,
@@ -844,8 +583,7 @@
       "needs": [
         "hand-in",
         "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=909",
       "entity_urls": []
@@ -865,52 +603,6 @@
       "entity_urls": []
     },
     {
-      "questID": 930,
-      "title": "The Glowing Fruit",
-      "guides": [
-        "Alliance / Teldrassil"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=930",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=5189",
-        "https://www.wowhead.com/forever/npc=2080",
-        "https://www.wowhead.com/forever/object=6751"
-      ]
-    },
-    {
-      "questID": 931,
-      "title": "The Shimmering Frond",
-      "guides": [
-        "Alliance / Teldrassil"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=931",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=5190",
-        "https://www.wowhead.com/forever/npc=2080",
-        "https://www.wowhead.com/forever/object=6752"
-      ]
-    },
-    {
-      "questID": 932,
-      "title": "Twisted Hatred",
-      "guides": [
-        "Alliance / Teldrassil"
-      ],
-      "needs": [
-        "objective quantities"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=932",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=3567"
-      ]
-    },
-    {
       "questID": 934,
       "title": "Crown of the Earth",
       "guides": [
@@ -922,68 +614,6 @@
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=934",
       "entity_urls": []
-    },
-    {
-      "questID": 935,
-      "title": "Crown of the Earth",
-      "guides": [
-        "Alliance / Teldrassil"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=935",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=5188",
-        "https://www.wowhead.com/forever/npc=3515",
-        "https://www.wowhead.com/forever/npc=3516"
-      ]
-    },
-    {
-      "questID": 941,
-      "title": "Planting the Heart",
-      "guides": [
-        "Alliance / Teldrassil"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=941",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=5217",
-        "https://www.wowhead.com/forever/npc=2080",
-        "https://www.wowhead.com/forever/object=7923"
-      ]
-    },
-    {
-      "questID": 943,
-      "title": "The Absent Minded Prospector",
-      "guides": [
-        "Alliance / Darkshore"
-      ],
-      "needs": [
-        "objective quantities"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=943",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=2911"
-      ]
-    },
-    {
-      "questID": 950,
-      "title": "Return to Onu",
-      "guides": [
-        "Alliance / Darkshore"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=950",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=5272",
-        "https://www.wowhead.com/forever/npc=3616",
-        "https://www.wowhead.com/forever/object=12666"
-      ]
     },
     {
       "questID": 975,
@@ -998,23 +628,6 @@
       "quest_url": "https://www.wowhead.com/forever/quest=975",
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=10307"
-      ]
-    },
-    {
-      "questID": 993,
-      "title": "A Lost Master",
-      "guides": [
-        "Alliance / Ashenvale",
-        "Alliance / Darkshore"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=993",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=5387",
-        "https://www.wowhead.com/forever/npc=3692",
-        "https://www.wowhead.com/forever/npc=3693"
       ]
     },
     {
@@ -1145,22 +758,6 @@
       ]
     },
     {
-      "questID": 1028,
-      "title": "Raene's Cleansing",
-      "guides": [
-        "Alliance / Ashenvale"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1028",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=5547",
-        "https://www.wowhead.com/forever/npc=3916",
-        "https://www.wowhead.com/forever/object=19024"
-      ]
-    },
-    {
       "questID": 1036,
       "title": "Avast Ye, Scallywag",
       "guides": [
@@ -1178,28 +775,13 @@
       ]
     },
     {
-      "questID": 1045,
-      "title": "Raene's Cleansing",
-      "guides": [
-        "Alliance / Ashenvale"
-      ],
-      "needs": [
-        "objective quantities"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1045",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=3897"
-      ]
-    },
-    {
       "questID": 1046,
       "title": "Raene's Cleansing",
       "guides": [
         "Alliance / Ashenvale"
       ],
       "needs": [
-        "objective area",
-        "objective quantities"
+        "objective area"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=1046",
       "entity_urls": [
@@ -1222,22 +804,6 @@
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=3516",
         "https://www.wowhead.com/forever/npc=10878"
-      ]
-    },
-    {
-      "questID": 1052,
-      "title": "Down the Scarlet Path",
-      "guides": [
-        "Alliance / Desolace"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1052",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=5539",
-        "https://www.wowhead.com/forever/npc=1182",
-        "https://www.wowhead.com/forever/npc=3980"
       ]
     },
     {
@@ -1274,23 +840,6 @@
       ]
     },
     {
-      "questID": 1092,
-      "title": "Gerenzo's Orders",
-      "guides": [
-        "Alliance / Stonetalon Mountains",
-        "Horde / Stonetalon Mountains"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1092",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=5733",
-        "https://www.wowhead.com/forever/npc=4201",
-        "https://www.wowhead.com/forever/npc=4276"
-      ]
-    },
-    {
       "questID": 1099,
       "title": "Goblins Win!",
       "guides": [
@@ -1308,124 +857,6 @@
       ]
     },
     {
-      "questID": 1100,
-      "title": "Lonebrow's Journal",
-      "guides": [
-        "Alliance / Thousand Needles"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1100",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=5790",
-        "https://www.wowhead.com/forever/item=5791",
-        "https://www.wowhead.com/forever/npc=4048"
-      ]
-    },
-    {
-      "questID": 1111,
-      "title": "Wharfmaster Dizzywig",
-      "guides": [
-        "Alliance / Thousand Needles",
-        "Horde / Thousand Needles"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1111",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=5799",
-        "https://www.wowhead.com/forever/npc=3453",
-        "https://www.wowhead.com/forever/npc=4452"
-      ]
-    },
-    {
-      "questID": 1112,
-      "title": "Parts for Kravel",
-      "guides": [
-        "Alliance / Thousand Needles",
-        "Horde / Thousand Needles"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1112",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=5800",
-        "https://www.wowhead.com/forever/npc=3453",
-        "https://www.wowhead.com/forever/npc=4452"
-      ]
-    },
-    {
-      "questID": 1114,
-      "title": "Delivery to the Gnomes",
-      "guides": [
-        "Alliance / Thousand Needles",
-        "Horde / Thousand Needles"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1114",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=5802",
-        "https://www.wowhead.com/forever/npc=4452",
-        "https://www.wowhead.com/forever/npc=4454"
-      ]
-    },
-    {
-      "questID": 1117,
-      "title": "Rumors for Kravel",
-      "guides": [
-        "Alliance / Thousand Needles",
-        "Horde / Thousand Needles"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1117",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=5804",
-        "https://www.wowhead.com/forever/npc=773",
-        "https://www.wowhead.com/forever/npc=4452"
-      ]
-    },
-    {
-      "questID": 1118,
-      "title": "Back to Booty Bay",
-      "guides": [
-        "Alliance / Thousand Needles",
-        "Horde / Thousand Needles"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1118",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=5826",
-        "https://www.wowhead.com/forever/npc=2498",
-        "https://www.wowhead.com/forever/npc=4452"
-      ]
-    },
-    {
-      "questID": 1119,
-      "title": "Zanzil's Mixture and a Fool's Stout",
-      "guides": [
-        "Alliance / Thousand Needles",
-        "Horde / Thousand Needles"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1119",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=5806",
-        "https://www.wowhead.com/forever/npc=2498",
-        "https://www.wowhead.com/forever/npc=4452"
-      ]
-    },
-    {
       "questID": 1120,
       "title": "Get the Gnomes Drunk",
       "guides": [
@@ -1433,12 +864,10 @@
         "Horde / Thousand Needles"
       ],
       "needs": [
-        "objective area",
         "pickup requirements"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=1120",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=5806",
         "https://www.wowhead.com/forever/npc=4452",
         "https://www.wowhead.com/forever/npc=4495"
       ]
@@ -1451,46 +880,12 @@
         "Horde / Thousand Needles"
       ],
       "needs": [
-        "objective area",
         "pickup requirements"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=1121",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=5806",
         "https://www.wowhead.com/forever/npc=4452",
         "https://www.wowhead.com/forever/npc=4496"
-      ]
-    },
-    {
-      "questID": 1122,
-      "title": "Report Back to Fizzlebub",
-      "guides": [
-        "Alliance / Thousand Needles",
-        "Horde / Thousand Needles"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1122",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=5807",
-        "https://www.wowhead.com/forever/npc=2498",
-        "https://www.wowhead.com/forever/npc=4452"
-      ]
-    },
-    {
-      "questID": 1141,
-      "title": "The Family and the Fishing Pole",
-      "guides": [
-        "Alliance / Darkshore"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1141",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=12238",
-        "https://www.wowhead.com/forever/npc=10216"
       ]
     },
     {
@@ -1533,8 +928,7 @@
       "needs": [
         "hand-in",
         "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=1157",
       "entity_urls": []
@@ -1549,8 +943,7 @@
       "needs": [
         "hand-in",
         "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=1158",
       "entity_urls": []
@@ -1618,39 +1011,6 @@
       ]
     },
     {
-      "questID": 1179,
-      "title": "The Brassbolts Brothers",
-      "guides": [
-        "Alliance / Thousand Needles"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1179",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=5849",
-        "https://www.wowhead.com/forever/npc=2092",
-        "https://www.wowhead.com/forever/npc=4453"
-      ]
-    },
-    {
-      "questID": 1189,
-      "title": "Safety First",
-      "guides": [
-        "Alliance / Thousand Needles",
-        "Horde / Thousand Needles"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1189",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=5865",
-        "https://www.wowhead.com/forever/npc=4706",
-        "https://www.wowhead.com/forever/npc=4708"
-      ]
-    },
-    {
       "questID": 1203,
       "title": "Jarl Needs a Blade",
       "guides": [
@@ -1664,22 +1024,6 @@
       "entity_urls": [
         "https://www.wowhead.com/forever/item=3853",
         "https://www.wowhead.com/forever/npc=4792"
-      ]
-    },
-    {
-      "questID": 1252,
-      "title": "Lieutenant Paval Reethe",
-      "guides": [
-        "Alliance / Dustwallow Marsh"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1252",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=5950",
-        "https://www.wowhead.com/forever/npc=4944",
-        "https://www.wowhead.com/forever/object=21042"
       ]
     },
     {
@@ -1698,22 +1042,6 @@
       "entity_urls": []
     },
     {
-      "questID": 1269,
-      "title": "Lieutenant Paval Reethe",
-      "guides": [
-        "Horde / Dustwallow Marsh"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1269",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=5950",
-        "https://www.wowhead.com/forever/npc=4926",
-        "https://www.wowhead.com/forever/object=21042"
-      ]
-    },
-    {
       "questID": 1272,
       "title": "Finding Reethe <CHANGE INTO GOSSIP>",
       "guides": [
@@ -1723,27 +1051,10 @@
       "needs": [
         "hand-in",
         "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=1272",
       "entity_urls": []
-    },
-    {
-      "questID": 1276,
-      "title": "The Black Shield",
-      "guides": [
-        "Horde / Dustwallow Marsh"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1276",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=5919",
-        "https://www.wowhead.com/forever/npc=4926",
-        "https://www.wowhead.com/forever/npc=4943"
-      ]
     },
     {
       "questID": 1277,
@@ -1755,8 +1066,7 @@
       "needs": [
         "hand-in",
         "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=1277",
       "entity_urls": []
@@ -1786,8 +1096,7 @@
       "needs": [
         "hand-in",
         "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=1281",
       "entity_urls": []
@@ -1817,8 +1126,7 @@
       "needs": [
         "hand-in",
         "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=1283",
       "entity_urls": []
@@ -1833,8 +1141,7 @@
       "needs": [
         "hand-in",
         "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=1288",
       "entity_urls": []
@@ -1928,38 +1235,6 @@
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=1297",
       "entity_urls": []
-    },
-    {
-      "questID": 1319,
-      "title": "The Black Shield",
-      "guides": [
-        "Alliance / Dustwallow Marsh"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1319",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=5919",
-        "https://www.wowhead.com/forever/npc=4941",
-        "https://www.wowhead.com/forever/npc=4944"
-      ]
-    },
-    {
-      "questID": 1321,
-      "title": "The Black Shield",
-      "guides": [
-        "Horde / Dustwallow Marsh"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1321",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=5919",
-        "https://www.wowhead.com/forever/npc=4926",
-        "https://www.wowhead.com/forever/npc=5087"
-      ]
     },
     {
       "questID": 1367,
@@ -2091,8 +1366,6 @@
         "Horde / Desolace"
       ],
       "needs": [
-        "objective area",
-        "objective quantities",
         "pickup requirements"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=1380",
@@ -2108,8 +1381,6 @@
         "Horde / Desolace"
       ],
       "needs": [
-        "objective area",
-        "objective quantities",
         "pickup requirements"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=1381",
@@ -2208,50 +1479,6 @@
       ]
     },
     {
-      "questID": 1467,
-      "title": "Reagents for Reclaimers Inc.",
-      "guides": [
-        "Alliance / Desolace"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1467",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=6253",
-        "https://www.wowhead.com/forever/npc=5637",
-        "https://www.wowhead.com/forever/npc=5638"
-      ]
-    },
-    {
-      "questID": 1488,
-      "title": "The Corrupter",
-      "guides": [
-        "Horde / Desolace"
-      ],
-      "needs": [
-        "objective quantities"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1488",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=5641"
-      ]
-    },
-    {
-      "questID": 2139,
-      "title": "Tharnariun's Hope",
-      "guides": [
-        "Alliance / Darkshore"
-      ],
-      "needs": [
-        "objective quantities"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=2139",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=3701"
-      ]
-    },
-    {
       "questID": 2203,
       "title": "Badlands Reagent Run II",
       "guides": [
@@ -2308,40 +1535,6 @@
       "quest_url": "https://www.wowhead.com/forever/quest=2501",
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=1470"
-      ]
-    },
-    {
-      "questID": 2606,
-      "title": "In Good Taste",
-      "guides": [
-        "Alliance / Tanaris",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=2606",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=8603",
-        "https://www.wowhead.com/forever/npc=7564",
-        "https://www.wowhead.com/forever/npc=7583"
-      ]
-    },
-    {
-      "questID": 2661,
-      "title": "Delivery for Marin",
-      "guides": [
-        "Alliance / Tanaris",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=2661",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=8528",
-        "https://www.wowhead.com/forever/npc=7564",
-        "https://www.wowhead.com/forever/npc=7583"
       ]
     },
     {
@@ -4097,31 +3290,12 @@
         "Alliance / Deeprun Tram"
       ],
       "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
+        "objective area"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=6661",
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=12997",
         "https://www.wowhead.com/forever/npc=13017"
-      ]
-    },
-    {
-      "questID": 6662,
-      "title": "Me Brother, Nipsy",
-      "guides": [
-        "Alliance / Deeprun Tram"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=6662",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=12997",
-        "https://www.wowhead.com/forever/npc=13018"
       ]
     },
     {
@@ -5902,12 +5076,10 @@
         "Horde / Badlands"
       ],
       "needs": [
-        "objective area",
         "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=78823",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=211269",
         "https://www.wowhead.com/forever/npc=715"
       ]
     },
@@ -6013,12 +5185,10 @@
         "Horde / Arathi Highlands"
       ],
       "needs": [
-        "objective area",
         "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=79624",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=213422",
         "https://www.wowhead.com/forever/npc=217300"
       ]
     },
@@ -6461,11 +5631,12 @@
       "needs": [
         "hand-in",
         "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=92812",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/item=254432"
+      ]
     },
     {
       "questID": 92818,
@@ -6477,11 +5648,12 @@
       "needs": [
         "hand-in",
         "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=92818",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/item=3855"
+      ]
     },
     {
       "questID": 93176,
@@ -6510,26 +5682,12 @@
       "needs": [
         "hand-in",
         "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=93224",
-      "entity_urls": []
-    },
-    {
-      "questID": 93225,
-      "title": "Carved Centaur Totems",
-      "guides": [
-        "Horde / Desolace"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=93225",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/item=254432"
+      ]
     },
     {
       "questID": 93227,
@@ -6541,8 +5699,7 @@
       "needs": [
         "hand-in",
         "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=93227",
       "entity_urls": []
@@ -6680,8 +5837,7 @@
       "needs": [
         "hand-in",
         "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=94872",
       "entity_urls": []
@@ -6696,8 +5852,7 @@
       "needs": [
         "hand-in",
         "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=94873",
       "entity_urls": []
@@ -6712,8 +5867,7 @@
       "needs": [
         "hand-in",
         "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=94901",
       "entity_urls": []
@@ -6728,8 +5882,7 @@
       "needs": [
         "hand-in",
         "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=94902",
       "entity_urls": []
@@ -6771,9 +5924,7 @@
       ],
       "needs": [
         "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=95748",
       "entity_urls": []
@@ -6834,77 +5985,12 @@
         "Horde / Desolace"
       ],
       "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
+        "hand-in"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=96222",
-      "entity_urls": []
-    },
-    {
-      "questID": 96241,
-      "title": "Talkin' bout Toxins, Mon",
-      "guides": [
-        "Horde / Mulgore"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=96241",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=273001"
+        "https://www.wowhead.com/forever/npc=253066"
       ]
-    },
-    {
-      "questID": 96259,
-      "title": "Defending the Dead",
-      "guides": [
-        "Horde / Mulgore"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=96259",
-      "entity_urls": []
-    },
-    {
-      "questID": 96260,
-      "title": "Stronger than Steel",
-      "guides": [
-        "Horde / Mulgore"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=96260",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=273181"
-      ]
-    },
-    {
-      "questID": 96261,
-      "title": "The Broodmother",
-      "guides": [
-        "Horde / Mulgore"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=96261",
-      "entity_urls": []
     },
     {
       "questID": 96294,
@@ -6913,13 +5999,12 @@
         "Horde / Mulgore"
       ],
       "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=96294",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/npc=259118"
+      ]
     },
     {
       "questID": 96873,
@@ -6975,11 +6060,12 @@
       "needs": [
         "hand-in",
         "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=97047",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/item=216617"
+      ]
     },
     {
       "questID": 97048,
@@ -6991,8 +6077,7 @@
       "needs": [
         "hand-in",
         "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=97048",
       "entity_urls": []
@@ -7080,25 +6165,10 @@
       "needs": [
         "hand-in",
         "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=97331",
       "entity_urls": []
-    },
-    {
-      "questID": 97538,
-      "title": "Pigments for Paints",
-      "guides": [
-        "Horde / Stonetalon Mountains"
-      ],
-      "needs": [
-        "hand-in"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=97538",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=3024"
-      ]
     },
     {
       "questID": 97539,
@@ -7121,27 +6191,13 @@
         "Alliance / Ashenvale"
       ],
       "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
+        "objective area"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=98027",
-      "entity_urls": []
-    },
-    {
-      "questID": 98042,
-      "title": "It's All Fun and Games Until...",
-      "guides": [
-        "Alliance / Darkshore"
-      ],
-      "needs": [
-        "objective quantities"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=98042",
       "entity_urls": [
-        "https://www.wowhead.com/forever/npc=3649",
-        "https://www.wowhead.com/forever/object=12666"
+        "https://www.wowhead.com/forever/item=279274",
+        "https://www.wowhead.com/forever/npc=3961",
+        "https://www.wowhead.com/forever/object=669176"
       ]
     },
     {
@@ -7166,28 +6222,13 @@
         "Horde / Thousand Needles"
       ],
       "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
+        "objective area"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=98069",
-      "entity_urls": []
-    },
-    {
-      "questID": 98070,
-      "title": "Stop the Screeching",
-      "guides": [
-        "Horde / Thousand Needles"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=98070",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/item=279383",
+        "https://www.wowhead.com/forever/npc=4877"
+      ]
     },
     {
       "questID": 98071,
@@ -7204,20 +6245,6 @@
         "https://www.wowhead.com/forever/npc=2705",
         "https://www.wowhead.com/forever/npc=270426"
       ]
-    },
-    {
-      "questID": 98072,
-      "title": "Crocs of the Sky",
-      "guides": [
-        "Alliance / Wetlands"
-      ],
-      "needs": [
-        "hand-in",
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=98072",
-      "entity_urls": []
     },
     {
       "questID": 98095,
@@ -7237,34 +6264,20 @@
       ]
     },
     {
-      "questID": 98155,
-      "title": "Pristine Pesterhide Pelts",
-      "guides": [
-        "Alliance / Thousand Needles"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=98155",
-      "entity_urls": []
-    },
-    {
       "questID": 98156,
       "title": "Packaged Pristine Pelts",
       "guides": [
         "Alliance / Thousand Needles"
       ],
       "needs": [
-        "hand-in",
         "objective area",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=98156",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/item=279481",
+        "https://www.wowhead.com/forever/npc=11827"
+      ]
     },
     {
       "questID": 98208,
@@ -7273,120 +6286,13 @@
         "Alliance / Wetlands"
       ],
       "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
+        "objective area"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=98208",
-      "entity_urls": []
-    },
-    {
-      "questID": 98209,
-      "title": "Bloom of the Heavens",
-      "guides": [
-        "Alliance / Wetlands"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=98209",
-      "entity_urls": []
-    },
-    {
-      "questID": 98216,
-      "title": "Understanding Our Present",
-      "guides": [
-        "Alliance / Wetlands"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=98216",
-      "entity_urls": []
-    },
-    {
-      "questID": 98221,
-      "title": "From the Ashes",
-      "guides": [
-        "Alliance / Wetlands"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=98221",
       "entity_urls": [
-        "https://www.wowhead.com/forever/object=671481",
-        "https://www.wowhead.com/forever/object=671483",
-        "https://www.wowhead.com/forever/object=671486",
-        "https://www.wowhead.com/forever/object=671487"
+        "https://www.wowhead.com/forever/item=279915",
+        "https://www.wowhead.com/forever/npc=270844"
       ]
-    },
-    {
-      "questID": 98223,
-      "title": "Old Habits",
-      "guides": [
-        "Alliance / Wetlands"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=98223",
-      "entity_urls": []
-    },
-    {
-      "questID": 98230,
-      "title": "This Land Was Their Land",
-      "guides": [
-        "Alliance / Wetlands"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=98230",
-      "entity_urls": []
-    },
-    {
-      "questID": 98240,
-      "title": "Crimson Crate Delivery",
-      "guides": [
-        "Alliance / Wetlands"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=98240",
-      "entity_urls": []
-    },
-    {
-      "questID": 98245,
-      "title": "Razormaw Needling",
-      "guides": [
-        "Alliance / Wetlands"
-      ],
-      "needs": [
-        "hand-in",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=98245",
-      "entity_urls": []
     },
     {
       "questID": 98246,
@@ -7395,13 +6301,12 @@
         "Alliance / Wetlands"
       ],
       "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
+        "objective area"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=98246",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=280132"
+        "https://www.wowhead.com/forever/item=280132",
+        "https://www.wowhead.com/forever/npc=270637"
       ]
     },
     {
@@ -7437,79 +6342,20 @@
       ]
     },
     {
-      "questID": 98283,
-      "title": "Carnage",
-      "guides": [
-        "Alliance / Wetlands"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=98283",
-      "entity_urls": []
-    },
-    {
-      "questID": 98291,
-      "title": "Death to the Dragonmaw",
-      "guides": [
-        "Alliance / Wetlands"
-      ],
-      "needs": [
-        "hand-in",
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=98291",
-      "entity_urls": []
-    },
-    {
       "questID": 98293,
       "title": "Forced Disarmament",
       "guides": [
         "Alliance / Wetlands"
       ],
       "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
+        "objective area"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=98293",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=280369"
+        "https://www.wowhead.com/forever/item=280369",
+        "https://www.wowhead.com/forever/npc=2104",
+        "https://www.wowhead.com/forever/object=672330"
       ]
-    },
-    {
-      "questID": 98297,
-      "title": "Stopping the Cycle",
-      "guides": [
-        "Alliance / Wetlands"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=98297",
-      "entity_urls": []
-    },
-    {
-      "questID": 98310,
-      "title": "Gleaning Our Future",
-      "guides": [
-        "Alliance / Wetlands"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=98310",
-      "entity_urls": []
     },
     {
       "questID": 98387,
@@ -7528,62 +6374,19 @@
       ]
     },
     {
-      "questID": 98392,
-      "title": "Darkness in the Glade",
-      "guides": [
-        "Alliance / Teldrassil"
-      ],
-      "needs": [
-        "objective quantities"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=98392",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=3519"
-      ]
-    },
-    {
-      "questID": 98403,
-      "title": "Twisted Hatred",
-      "guides": [
-        "Alliance / Teldrassil"
-      ],
-      "needs": [
-        "objective quantities"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=98403",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=3567"
-      ]
-    },
-    {
       "questID": 98417,
       "title": "Vengeful Trail",
       "guides": [
         "Alliance / Ashenvale"
       ],
       "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
+        "objective area"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=98417",
-      "entity_urls": []
-    },
-    {
-      "questID": 98418,
-      "title": "Shared Fury",
-      "guides": [
-        "Alliance / Ashenvale"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=98418",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/item=281014",
+        "https://www.wowhead.com/forever/npc=221269"
+      ]
     },
     {
       "questID": 98423,
@@ -7601,20 +6404,6 @@
       ]
     },
     {
-      "questID": 98427,
-      "title": "Ceasing Operations",
-      "guides": [
-        "Horde / Mulgore"
-      ],
-      "needs": [
-        "objective quantities"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=98427",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=2988"
-      ]
-    },
-    {
       "questID": 98447,
       "title": "The Valor Family",
       "guides": [
@@ -7627,34 +6416,6 @@
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=98447",
       "entity_urls": []
-    },
-    {
-      "questID": 99050,
-      "title": "The Great Tree Provides",
-      "guides": [
-        "Alliance / Teldrassil"
-      ],
-      "needs": [
-        "objective quantities"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=99050",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=6094"
-      ]
-    },
-    {
-      "questID": 99080,
-      "title": "Drive Them Out",
-      "guides": [
-        "Horde / Mulgore"
-      ],
-      "needs": [
-        "objective quantities"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=99080",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=2993"
-      ]
     },
     {
       "questID": 99123,
@@ -7689,34 +6450,6 @@
       ]
     },
     {
-      "questID": 99153,
-      "title": "The One That Got Away",
-      "guides": [
-        "Horde / Tirisfal Glades"
-      ],
-      "needs": [
-        "objective quantities"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=99153",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=259190"
-      ]
-    },
-    {
-      "questID": 99156,
-      "title": "Rear Guard Patrol",
-      "guides": [
-        "Horde / Tirisfal Glades"
-      ],
-      "needs": [
-        "objective quantities"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=99156",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=1495"
-      ]
-    },
-    {
       "questID": 99192,
       "title": "A Donation of Silk",
       "guides": [
@@ -7737,25 +6470,10 @@
       ],
       "needs": [
         "hand-in",
-        "pickup",
-        "pickup requirements"
+        "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=99197",
       "entity_urls": []
-    },
-    {
-      "questID": 99411,
-      "title": "Kyle's Gone Missing!",
-      "guides": [
-        "Horde / Mulgore"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=99411",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=277182"
-      ]
     }
   ]
 }

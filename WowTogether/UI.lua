@@ -557,6 +557,7 @@ function ns.Render()
         local card = ns.ui.cards[visible]
         if not card then card = makeCard(); ns.ui.cards[visible] = card end
         card:ClearAllPoints()
+        card:SetScript("OnEnter", nil); card:SetScript("OnLeave", nil)
         card:SetPoint("TOPLEFT", 0, -top)
         card.title:SetWidth(ns.ui.contentWidth - 130)
         card.reason:SetWidth(ns.ui.contentWidth - 24)
@@ -622,7 +623,9 @@ function ns.Render()
                 or (guide.knownStops .. " selected quest(s) have a known pickup location."))
                 or guide.hasPoint and (guide.knownStops .. " mapped stops • Next: " .. nextTitle)
                 or (requirement or "No NPC or objective coordinates are available for this step yet.")
-            card.reason:SetText(guide.reason .. "\n" .. detail)
+            local summary = guide.fullGuide and (#guide.records .. " quests • Fixed order with automatic progress.") or guide.reason
+            card.reason:SetText(summary .. "\n" .. detail .. (guide.fullGuide and ("\n" .. ns.GuideXPText(guide, queryContext)) or ""))
+            if guide.fullGuide then ns.GuideXPHelp(card) end
             card.reason:Show()
             card.mapButton.caption:SetText(ns.filter == "guides" and guide.fullGuide and "Show quest list" or (guide.hasPoint and "Show route" or "View details"))
             card.detailsButton.caption:SetText("Start route")

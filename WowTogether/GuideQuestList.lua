@@ -113,8 +113,8 @@ function ns.ShowGuideQuestList(guide)
         end
         local count = 0; for _ in pairs(quests) do count = count + 1 end
         frame.summary:SetText(count .. " quests • " .. #frame.plan .. " steps • Pickup → objectives → turn-in in guide order.\n"
-            .. (guide.fixedRoute and "Includes later locked steps; your progress advances through this fixed order."
-                or "Catalogue order preview. Adaptive travel order is calculated when you start."))
+            .. ns.GuideXPText(current and current.key == guide.key and current or copy))
+        ns.GuideXPHelp(frame)
         ns.RenderGuideQuestList()
     end
     if existing then advance()
