@@ -40,6 +40,11 @@ by individual players. Compare the reported addon version, client build, level,
 faction, class, zone, party state, settings and selected route where available.
 Distinguish evidence from hypotheses; similar symptoms can have different causes.
 Briefly share the comparison and fix priorities before changing addon code.
+If suggestions contradict each other or the user's established preferences,
+explain the conflict and ask the user which direction to take before implementing
+changes from that batch. Wait for their answer; do not silently choose a side or
+implement a compromise. Read-only investigation may continue to clarify the
+options. Different observations alone are not necessarily conflicting requests.
 If the user explicitly says more reports are still coming for the batch, collect
 them before implementing fixes. Otherwise continue within the authorized task.
 
