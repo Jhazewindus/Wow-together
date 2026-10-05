@@ -3,6 +3,7 @@ import argparse
 import hashlib
 import json
 import re
+import sys
 import zipfile
 from pathlib import Path
 
@@ -13,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, default=Path('/workspace/artifacts'))
+    parser.add_argument('--post-discord', action='store_true', help='Post the verified release and its matching changelog/test checklist.')
     args = parser.parse_args()
     addon = ROOT / 'WowTogether'
     coverage = json.loads((addon / 'QuestCatalogue.json').read_text())
@@ -62,6 +64,12 @@ The native resize gesture reflows cards without rebuilding plans per pixel.
 /wt arrow toggles the small direction arrow for your selected route. Drag it
 to move it; its position is saved. The arrow turns relative to your character
 and shows straight-line yards when public position, map scale and facing exist.
+The arrow also has Skip step, Skip quest and Scan guide. Skips persist per
+character and do not complete quests, unlock prerequisites or change friends'
+guides. Reset guide skips in settings or /wt guide reset restores them.
+Guide start/Scan guide reads the selected quests, known series and prerequisite
+history (bounded to 512 IDs); unknown results stay unknown. Friends' completion
+waits for their own received snapshots. /wt guide scan opens the scan report.
 Test turning and walking toward a route stop on your beta build. Unknown data
 shows a status. Cross-zone stops name the zone until you enter it.
 Two small context lines explain pickup/objectives/hand-in, the zone and whose
@@ -100,6 +108,8 @@ Connections are map data, not road pathfinding; verify geography in this beta.
 Map drawing uses the visible viewport when GetViewRect is available, clips
 lines to the map, and redraws after pan/zoom/resize. Nearby stops share a pin;
 hover for all steps. The legend distinguishes stops from visible places.
+Combat pan/zoom redraws existing verified unprotected owned overlay frames.
+Protected frames, reparenting and native map/waypoint actions still defer.
 If pins/lines are still absent, copy /wt probe after Show route and include
 Route drawing surface, view geometry, rendered pins/lines and GetViewRect.
 The new rendering path needs testing on your actual beta build.
@@ -128,14 +138,18 @@ New arrow facing/scale, recipe/AH, map-link/world-position, NPC fallback and que
 testing on your beta build; /wt probe reports capabilities. Restricted data
 stays unknown. NPC hints include alternative published drop NPC IDs and hide
 in combat. No raid-target marking.
+Known completed objective targets lose their skulls; generic native quest flags
+cannot restore them. Unfinished objectives for other quests/party members remain.
+Known repeatable quests, including Spirit of the Wind, stay in the library but
+are excluded from automatic leveling guides. Source coverage remains partial.
 
 The catalogue contains {coverage['count']:,} listed quests and {coverage['detailed_quests']:,} detailed pages. Locations
 and prerequisites are partial. Route lines show visiting order, not roads.
 Read README.md for coverage, limitations, source notes, and testing steps.
 TESTING.md contains the friend-testing script and copyable report template.
-CHANGELOG.md has the short release history. This release adds short map previews,
-active-quest walking priorities, cross-zone context and optional no-choice
-turn-ins. The general Vile Familiars prerequisite correction is retained;
+CHANGELOG.md has the short release history. This release adds saved skips, guide
+progression scans, repeatable filtering, objective-specific skull fixes and
+combat map redraws. The general Vile Familiars prerequisite correction is retained;
 Burning Blade Medallion still requires its completed prerequisite.
 '''
     args.output.mkdir(parents=True, exist_ok=True)
@@ -153,6 +167,13 @@ Burning Blade Medallion still requires its completed prerequisite.
             raise ValueError('Release archive failed verification')
     print(f'{destination}: {len(names)} Lua files, {destination.stat().st_size} bytes')
     print('SHA256 ' + hashlib.sha256(destination.read_bytes()).hexdigest())
+    if args.post_discord:
+        from post_discord_release import PublicationError, configured_webhook, post_release
+        try:
+            post_release(destination, configured_webhook())
+        except (PublicationError, ValueError) as error:
+            print(str(error), file=sys.stderr)
+            raise SystemExit(1) from None
 
 
 if __name__ == '__main__':

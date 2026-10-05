@@ -207,7 +207,7 @@ function ns.RouteStop(record, focusKey)
         approximate = p.kind == "a" and record.source == "n"}
 end
 
-function ns.RouteStages(record, focusKey)
+function ns.QuestRouteStages(record, focusKey)
     local first = ns.RouteStop(record, focusKey)
     if not first then return {} end
     local result, quest = {first}, ns.CatalogueQuest(record.id)
@@ -233,6 +233,11 @@ function ns.RouteStages(record, focusKey)
     end
     add(quest.ends and quest.ends[1], "t", "After objectives, return to ")
     return result
+end
+
+function ns.RouteStages(record, focusKey)
+    if ns.GuideQuestSkipped(record.id) then return {} end
+    return ns.FilterGuideStages(ns.QuestRouteStages(record, focusKey))
 end
 
 function ns.PartyRouteStages(record, preferred)
@@ -445,7 +450,7 @@ local function routeLegend(provider, map)
         if not route or mapID ~= route.mapID then return end
         local point = ns.PlayerPoint(mapID)
         local old = provider.playerOrigin
-        if point and (not old or math.abs(point.x - old.x) + math.abs(point.y - old.y) > 0.0001) then ns.DrawRoute(provider) end
+        if point and (not old or math.abs(point.x - old.x) + math.abs(point.y - old.y) > 0.0001) then ns.DrawRoute(provider, true) end
     end)
     provider.legend = legend
     return legend
@@ -460,10 +465,20 @@ local function updateLegend(legend, text)
     legend:Show()
 end
 
-function ns.DrawRoute(provider)
+local function publicOwnedDrawing(provider)
+    if not provider.overlay or not provider.legend then return false end
+    local frames = {provider.overlay, provider.legend}
+    for _, pin in ipairs(provider.pins or {}) do frames[#frames + 1] = pin end
+    for _, frame in ipairs(frames) do
+        if ns.ReadPublic(frame.IsProtected, frame) ~= false then return false end
+    end
+    return true
+end
+
+function ns.DrawRoute(provider, geometryOnly)
     provider = provider or ns.routeProvider
     if not provider then return end
-    if inCombat() then ns.routeRedrawPending = true; return end
+    if inCombat() and (not geometryOnly or not publicOwnedDrawing(provider)) then ns.routeRedrawPending = true; return end
     hideDrawing(provider)
     ns.routeStats.surface, ns.routeStats.geometry = nil, nil
     local map, route = provider.owningMap, ns.selectedRoute
@@ -483,6 +498,9 @@ function ns.DrawRoute(provider)
     end
     local surface, unavailable = ns.RouteSurface(map)
     if not surface then ns.routeStats.status = unavailable; updateLegend(legend, unavailable .. "\nThe selected route is retained."); return end
+    if inCombat() and ns.ReadPublic(provider.overlay.GetParent, provider.overlay) ~= surface.parent then
+        ns.routeRedrawPending = true; return
+    end
     local width, height = surface.width, surface.height
     if not provider.overlay then
         provider.overlay = CreateFrame("Frame", nil, surface.parent)
@@ -491,7 +509,8 @@ function ns.DrawRoute(provider)
         if type(provider.overlay.SetIgnoreParentAlpha) == "function" then provider.overlay:SetIgnoreParentAlpha(true) end
     end
     local overlay = provider.overlay
-    overlay:SetParent(surface.parent); overlay:ClearAllPoints(); overlay:SetAllPoints(surface.parent)
+    if not inCombat() then overlay:SetParent(surface.parent) end
+    overlay:ClearAllPoints(); overlay:SetAllPoints(surface.parent)
     overlay:Show()
     overlay:SetFrameStrata(upper[strata] and strata or "HIGH")
     local level = query(surface.parent.GetFrameLevel, surface.parent)
@@ -603,12 +622,12 @@ function ns.AttachRouteProvider()
     end
     local provider = {pins = {}, lines = {}}
     for key, method in pairs(MapCanvasDataProviderMixin) do provider[key] = method end
-    provider.RefreshAllData = function(self) ns.DrawRoute(self) end
+    provider.RefreshAllData = function(self) ns.DrawRoute(self, true) end
     local function afterLayout(self)
-        if not C_Timer or type(C_Timer.After) ~= "function" then ns.DrawRoute(self); return end
+        if not C_Timer or type(C_Timer.After) ~= "function" then ns.DrawRoute(self, true); return end
         if self.redrawQueued then return end
         self.redrawQueued = true
-        C_Timer.After(0, function() self.redrawQueued = nil; ns.DrawRoute(self) end)
+        C_Timer.After(0, function() self.redrawQueued = nil; ns.DrawRoute(self, true) end)
     end
     provider.OnCanvasSizeChanged = afterLayout
     provider.OnCanvasScaleChanged = afterLayout
@@ -717,10 +736,14 @@ function ns.UpdateSelectedRoute(choices)
         copy.mapID, copy.zone = route.mapID, ns.MapName(route.mapID); guide = copy
     end
     if waiting or not route or #route.stops == 0 then
+        if not waiting and route and #route.stops == 0 and ns.GuideSelectionHasSkips(selection) then
+            ns.ClearRoute(); ns.guideAction = "All mapped remaining steps were skipped. Reset guide skips in settings to restore them."; return
+        end
         local finished = not waiting
         for _, record in ipairs(selection.records or {selection.target}) do
             local complete
-            if selection.mode == "bundle" then complete = ns.BundleQuestFinished(selection, record.id)
+            if ns.GuideQuestSkipped(record.id) then complete = true
+            elseif selection.mode == "bundle" then complete = ns.BundleQuestFinished(selection, record.id)
             elseif selection.mode == "current" then complete = ns.CurrentQuestFinished(record.id)
             elseif selection.personal then complete = ns.Completed(record.id) == true and not ns.active[record.id]
             else complete = ns.PartyQuestFinished(record.id) end

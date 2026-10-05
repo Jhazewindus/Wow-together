@@ -30,7 +30,9 @@ end
 function ns.HasCurrentPartyQuests()
     for _, person in ipairs(ns.PartyProfiles()) do
         local active = person.key == ns.self and ns.active or (ns.members[person.key] and ns.members[person.key].active)
-        for id in pairs(active or {}) do if not ns.IsProfessionQuest(id) then return true end end
+        for id in pairs(active or {}) do
+            if not ns.IsProfessionQuest(id) and not ns.IsRepeatableQuest(id) and not ns.GuideQuestSkipped(id) then return true end
+        end
     end
     return false
 end
@@ -201,7 +203,9 @@ function ns.CurrentQuestChoices()
         if not person.synced then waiting = waiting + 1
         else
             local active = person.key == ns.self and ns.active or (ns.members[person.key] and ns.members[person.key].active)
-            for id in pairs(active or {}) do if not ns.IsProfessionQuest(id) then ids[id] = true end end
+            for id in pairs(active or {}) do
+                if not ns.IsProfessionQuest(id) and not ns.IsRepeatableQuest(id) and not ns.GuideQuestSkipped(id) then ids[id] = true end
+            end
         end
     end
     local ordered = {}; for id in pairs(ids) do ordered[#ordered + 1] = id end; table.sort(ordered)
@@ -299,8 +303,13 @@ function ns.ClassQuestLabel(id)
 end
 
 function ns.LevelingQuestEnabled(id)
-    return not ns.IsProfessionQuest(id) and not ns.IsDungeonQuest(id)
+    return not ns.IsProfessionQuest(id) and not ns.IsDungeonQuest(id) and not ns.IsRepeatableQuest(id) and not ns.GuideQuestSkipped(id)
         and (not ns.IsClassQuest(id) or ns.Option("classQuests"))
+end
+
+function ns.IsRepeatableQuest(id)
+    local quest = ns.CatalogueQuest(id)
+    return quest and quest.repeatable == true or false
 end
 
 function ns.PlayerPoint(mapID)

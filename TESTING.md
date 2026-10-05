@@ -1,7 +1,7 @@
 # Wow Together — friend test script
 
-For **0.5.6**, World of Warcraft: Forever beta, interface **16001**.
-Allow about **20–30 minutes** for the main checks. Player A starts routes;
+For **0.5.7**, World of Warcraft: Forever beta, interface **16001**.
+Allow about **30–40 minutes** for the main checks. Player A starts routes;
 Player B tests the invitation and reports their own progress. Swap roles once.
 Record **Pass / Fail / Skip** for each check. If a quest is already completed
 or unavailable, use another suitable quest or mark that example skipped.
@@ -47,6 +47,11 @@ or unavailable, use another suitable quest or mark that example skipped.
 | 16. Short preview | With a route longer than three places, inspect the map. Use **Show full route**, then **Focus next steps**. Cycle **2 ahead** through zero, one and two. Complete an objective or accept a pickup. | Default pins/lines show the current place and two ahead; consecutive shared-NPC steps stay grouped. Controls change only the preview, and later steps appear as quest progress advances. Arrival alone does not skip unfinished work. |
 | 17. Local work first | Hold active Barrens work plus a delivery to Thunder Bluff, or an equivalent local/remote pair. Inspect recommendations with current-quests-first on, then off. | Known active local work remains above remote delivery and new pickups. Turning the option off also shows discovery choices. No other zone's coordinates are drawn on the current map. |
 | 18. Zone handoff | View a different zone with a selected route. Use **View route zone**. Finish a selected quest whose receiver is in another zone. Read the arrow's small context text. | The map explains where the retained route is. The button opens that map. The active route advances to the receiver's map after progress confirms it; the arrow explains travel and whose pickup/work/hand-in is next. |
+| 19. Repeatables | Inspect Spirit of the Wind or another known repeatable in the library and automatic guides. | It remains in the library, labeled repeatable, but does not join automatic leveling plans. Report other misclassified quests with their names/NPCs. |
+| 20. Saved skips | Start a route with several stops. Click **Skip step**, then **Skip quest** on another quest. Reload and reselect the guide. Use **Reset guide skips** in settings. | Only your guide advances. Skips persist for your character; reset restores them. Actual quest credit/history and friends' guides do not change. Skipping a prerequisite must not unlock its follow-up. |
+| 21. Guide scan | Start a guide containing completed and unfinished quests. Click **Scan guide** on the arrow. | Completed work is omitted and actual accepted stages remain. A report shows checked/completed/active counts. Missing history remains unknown; friends' histories wait for their received snapshots. |
+| 22. Mob-type skulls | Hold a quest requiring two mob types. Finish the first type while leaving the second unfinished. Check both nameplates outside combat. | The finished type loses its skull even while the native quest flag still relates it to the quest. The unfinished type keeps its skull. Another unfinished quest/party participant may still need the first type. |
+| 23. Combat map motion | With a route already drawn, enter combat, open the map and pan/zoom. After combat, inspect the next waypoint. | Unprotected addon lines/pins move with the map rather than staying at their old screen position. Protected/native actions wait for combat to end. Report any blocked-action text and `/wt probe` geometry. |
 
 ## Optional checks
 
@@ -110,6 +115,11 @@ Results (Pass / Fail / Skip; state why a check was skipped):
 16 Short preview:
 17 Local work first:
 18 Zone handoff:
+19 Repeatables:
+20 Saved skips:
+21 Guide scan:
+22 Mob-type skulls:
+23 Combat map motion:
 Optional checks:
 
 Failure to investigate:

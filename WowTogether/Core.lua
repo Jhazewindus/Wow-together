@@ -35,7 +35,7 @@ ns.frame:SetScript("OnEvent", function(_, event, ...)
 end)
 
 function ns.Diagnostics()
-    local lines = {"Wow Together 0.5.6 — beta capability and sync report", ""}
+    local lines = {"Wow Together 0.5.7 — beta capability and sync report", ""}
     local function output(line) lines[#lines + 1] = line end
     local version, build, _, interface = GetBuildInfo()
     local function readable(value)
@@ -131,6 +131,7 @@ ns.On("ADDON_LOADED", function(name)
     ns.CreateSettings()
     ns.CreateMinimap()
     ns.InitializeSync()
+    ns.InitializeGuideControls()
     ns.InitializeOffers()
     ns.ReadQuests()
     ns.InitializeGuide()
@@ -166,5 +167,7 @@ SlashCmdList.WOWTOGETHER = function(command)
     elseif command == "arrow" then ns.ToggleNavigation()
     elseif command == "config" then ns.ToggleSettings()
     elseif command == "route clear" then ns.ClearRoute(); ns.Refresh()
+    elseif command == "guide reset" then ns.ResetGuideSkips()
+    elseif command == "guide scan" then ns.ScanGuideProgress(); ns.ShowGuideScanReport()
     else ns.ToggleWindow() end
 end

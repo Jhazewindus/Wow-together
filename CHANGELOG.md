@@ -1,5 +1,19 @@
 # Wow Together changelog
 
+## 0.5.7
+
+- Keep known repeatable quests out of automatic leveling plans, including
+  **Spirit of the Wind**. They remain available in the quest library.
+- Add **Skip step**, **Skip quest** and **Scan guide** to the arrow. Skips are
+  saved per character; settings can reset them. Starting a guide checks its
+  quests, known series and prerequisites against real progress/history.
+- Remove skulls for completed mob objectives without letting the generic
+  quest-related flag restore them. Other unfinished objectives stay marked.
+- Redraw unprotected addon map geometry during combat pan/zoom. Protected
+  drawing and native waypoint/map actions still wait until combat ends.
+- Add the recurring Discord release command with matching archive/docs and
+  confirmed-post receipts to prevent duplicate uploads.
+
 ## 0.5.6
 
 - Focus map lines and markers on the current place and two ahead. Map controls

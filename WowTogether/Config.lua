@@ -96,7 +96,9 @@ function ns.CreateSettings()
         end
     end
     frame.note = ns.UILabel(frame, nil, 11)
-    frame.note:SetPoint("BOTTOMLEFT", 22, 20); frame.note:SetWidth(510); frame.note:SetHeight(65)
+    frame.note:SetPoint("BOTTOMLEFT", 22, 20); frame.note:SetWidth(350); frame.note:SetHeight(65)
+    local reset = ns.UIButton(frame, "Reset guide skips", 135, ns.ResetGuideSkips)
+    reset:SetPoint("BOTTOMRIGHT", -22, 22)
     frame:Hide()
     if type(UISpecialFrames) == "table" then table.insert(UISpecialFrames, "WowTogetherSettings") end
 end

@@ -299,6 +299,7 @@ function ns.ShowQuestDetails(id)
         lines[#lines + 1] = ns.CatalogueZone(quest) .. " • Quest level " .. (quest.level or "unknown")
         lines[#lines + 1] = "Minimum level: " .. (quest.minLevel or "not supplied") .. " • Faction: " .. (quest.side or "not supplied")
         if ns.ClassQuestLabel(id) then lines[#lines + 1] = ns.ClassQuestLabel(id) end
+        if ns.IsRepeatableQuest(id) then lines[#lines + 1] = "Repeatable quest; excluded from automatic leveling guides." end
         if quest.xp then lines[#lines + 1] = "Published base quest XP: " .. quest.xp .. "; actual reward varies by player level." end
         for _, item in ipairs(quest.requiredItems or {}) do
             lines[#lines + 1] = "Bring " .. item.quantity .. " × " .. item.name .. (item.buyable and " • vendor-listed; check current availability" or " • item source not verified as buyable")

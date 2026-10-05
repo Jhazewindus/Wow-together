@@ -158,10 +158,33 @@ function ns.ObjectiveLabel(text)
     return string.gsub(text, "%s*:%s*%d+%s*/%s*%d+%s*$", "")
 end
 
+function ns.ObjectiveFinished(objective)
+    if ns.Public(objective.finished) and objective.finished == true then return true end
+    return ns.GuideInteger(objective.have) and ns.GuideInteger(objective.need)
+        and objective.need > 0 and objective.have >= objective.need or false
+end
+
+function ns.ObjectiveMatchesPoint(text, point)
+    if not ns.Public(text) or type(text) ~= "string" then return false end
+    local function normalized(value)
+        value = string.lower(value or "")
+        value = string.gsub(value, "^%s*%d+%s*/%s*%d+%s*", "")
+        value = string.gsub(value, "%s*[:%(]?%s*%d+%s*/%s*%d+%s*%)?%s*$", "")
+        value = string.gsub(value, "^%s*kill%s+", "")
+        value = string.gsub(value, "%s+slain%s*$", "")
+        value = string.gsub(value, "%s+killed%s*$", "")
+        value = string.gsub(value, "%s+collected%s*$", "")
+        value = string.gsub(value, "%s+", " ")
+        return string.match(value, "^%s*(.-)%s*$")
+    end
+    local label, name = normalized(text), normalized(point.itemName or point.name)
+    return name ~= "" and (label == name or label == name .. "s" or label == name .. "es" or label == name .. "(s)")
+end
+
 function ns.QuestProgressReady(key, id)
     local progress = ns.ProgressForMember(key, id)
     if not progress or #progress.objectives == 0 then return false end
-    for _, objective in ipairs(progress.objectives) do if objective.finished ~= true then return false end end
+    for _, objective in ipairs(progress.objectives) do if not ns.ObjectiveFinished(objective) then return false end end
     return true
 end
 

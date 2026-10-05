@@ -6,7 +6,7 @@ ns.npcHintCount = 0
 ns.npcHintStatus = "NPC hints wait for public nameplate NPC IDs."
 
 function ns.NPCTargets()
-    local targets = {}
+    local targets, known = {}, {}
     local function add(point, id, kind)
         if not point or not point.npc or not ns.GuideInteger(point.entityID) or point.entityID <= 0 then return end
         targets[point.entityID] = targets[point.entityID] or {kind = kind, action = point.action,
@@ -22,19 +22,23 @@ function ns.NPCTargets()
             for id in pairs(active or {}) do
                 local quest = ns.CatalogueQuest(id)
                 if quest then
+                    for _, p in ipairs(quest.npcTargets or quest.objectives or {}) do
+                        if p.npc and ns.GuideInteger(p.entityID) and p.entityID > 0 then known[p.entityID] = true end
+                    end
                     local point = ns.RoutePointForMember(person.key, id)
                     local ready = (person.key == ns.self and ns.readyToTurnIn[id]) or (point and point.kind == "t") or ns.QuestProgressReady(person.key, id)
                     local points
                     if ready then points = quest.ends else points = quest.npcTargets or quest.objectives end
                     for _, p in ipairs(points or {}) do
-                        local completed = false
+                        local matched, allDone = false, true
                         local progress = ns.ProgressForMember(person.key, id)
                         for _, objective in ipairs(progress and progress.objectives or {}) do
-                            local label = string.lower(ns.ObjectiveLabel(objective.text))
-                            local name = string.lower(p.itemName or p.name or "")
-                            if name ~= "" and (label == name or label == name .. " slain") and objective.finished == true then completed = true end
+                            if ns.ObjectiveMatchesPoint(objective.text, p) then
+                                matched = true
+                                if not ns.ObjectiveFinished(objective) then allDone = false end
+                            end
                         end
-                        if not completed then add(p, id, ready and "t" or "q") end
+                        if not (matched and allDone) then add(p, id, ready and "t" or "q") end
                     end
                 end
             end
@@ -48,7 +52,7 @@ function ns.NPCTargets()
             end
         end
     end
-    return targets
+    return targets, known
 end
 
 local function hide(hint)
@@ -71,7 +75,7 @@ function ns.UpdateNPCHints()
     if not C_NamePlate or type(C_NamePlate.GetNamePlateForUnit) ~= "function" or type(UnitGUID) ~= "function" then
         ns.npcHintStatus = "Nameplate/NPC ID API unavailable; map objective icons still work."; return
     end
-    local targets = ns.NPCTargets()
+    local targets, known = ns.NPCTargets()
     local visible = read(C_NamePlate.GetNamePlates)
     if type(visible) == "table" then
         for index, plate in ipairs(visible) do
@@ -87,7 +91,7 @@ function ns.UpdateNPCHints()
         local id = type(guid) == "string" and tonumber(string.match(guid, "^Creature%-%d+%-%d+%-%d+%-%d+%-(%d+)%-"))
         local target = id and targets[id]
         local related = C_QuestLog and read(C_QuestLog.UnitIsRelatedToActiveQuest, unit)
-        if not target and related == true then target = {kind = "q", label = "Your quest objective", quests = {}} end
+        if not target and related == true and not (id and known[id]) then target = {kind = "q", label = "Your quest objective", quests = {}} end
         local plate = target and read(C_NamePlate.GetNamePlateForUnit, unit)
         if plate then
             local hint = hints[unit]

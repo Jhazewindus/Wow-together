@@ -5,10 +5,17 @@ local modes = {current = true, bundle = true, circuit = true, normal = true, dun
 ns.partyRouteStatus = "No party route has been started."
 
 function ns.RouteHistoryScope(records)
-    local ids = {}
+    local ids, count = {}, 0
+    local function add(id)
+        if ns.GuideInteger(id) and id > 0 and not ids[id] and count < 512 then ids[id] = true; count = count + 1 end
+    end
+    for _, record in ipairs(records or {}) do add(record.id) end
     for _, record in ipairs(records or {}) do
-        ids[record.id] = true
-        for _, previous in ipairs(ns.CataloguePrerequisiteIDs(record.id)) do ids[previous] = true end
+        for _, previous in ipairs(ns.CataloguePrerequisiteIDs(record.id)) do add(previous) end
+    end
+    for _, record in ipairs(records or {}) do
+        local quest = ns.CatalogueQuest(record.id)
+        for _, id in ipairs(quest and quest.series or {}) do add(id) end
     end
     ns.partyRouteHistoryScope = ids
 end

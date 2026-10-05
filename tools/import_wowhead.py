@@ -149,6 +149,12 @@ def detail_facts(page, row, area_maps, quest_facts=None):
     if not isinstance(metadata, dict) or metadata.get('id') != quest_id:
         raise ValueError(f'Quest {quest_id} metadata missing')
     result = base_facts(dict(row, **metadata))
+    # Only the published facts box establishes recurrence. Player comments or
+    # a quest title containing "Daily" are not evidence of a repeatable quest.
+    for match in re.finditer(r'WH\.markup\.printHtml\(\s*("(?:[^"\\]|\\.)*")\s*,\s*"infobox-contents-\d+"', page):
+        box = json.loads(match.group(1))
+        if re.search(r'\[li\]\s*(?:Repeatable|Daily|Weekly)\s*\[/li\]', box, re.I):
+            result['repeatable'] = True
     gather = json_after(page, 'WH.Gatherer.addData(5, 16, ')
     entry = gather.get(str(quest_id), {}) if isinstance(gather, dict) else {}
     for key, target in [('reqclass', 'classMask'), ('reqrace', 'raceMask')]:
@@ -388,6 +394,7 @@ def main():
                'with_turnins': sum(bool(r.get('ends')) for r in records.values()),
                'with_series': sum(bool(r.get('series')) for r in records.values()),
                'with_prerequisites': sum(bool(r.get('previousQuest') or r.get('prerequisiteAny')) for r in records.values()),
+               'repeatable_quests': sum(r.get('repeatable') is True for r in records.values()),
                'unverified_prerequisites': sum(bool(r.get('prerequisitesUnverified')) for r in records.values()),
                'incomplete_objective_locations': sum(bool(r.get('objectiveLocationsIncomplete')) for r in records.values()),
                'area_ui_maps': area_maps}

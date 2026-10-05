@@ -136,6 +136,7 @@
   "with_turnins": 417,
   "with_series": 198,
   "with_prerequisites": 154,
+  "repeatable_quests": 13,
   "unverified_prerequisites": 3,
   "incomplete_objective_locations": 157,
   "area_ui_maps": {

@@ -434,15 +434,18 @@ function ns.GuideChoices()
 end
 
 function ns.ShowGuideOnMap(guide)
-    if guide and guide.mode == "bundle" then
-        ns.RouteHistoryScope(guide.records); ns.ScheduleSync()
-    end
+    if guide then ns.ScanGuideProgress(guide, false) end
     -- An explicit local selection replaces an accepted invitation that was
     -- waiting for missing history. Following a ready invitation also passes here.
     ns.waitingPartyRoute = nil
     local route = guide and ns.BuildGuideRoute(guide, true)
     local first = route and route.stops[1]
-    if not first then ns.guideAction = "This quest has no NPC or objective coordinates yet. View its details in the Quest library."; ns.Refresh(); return false end
+    if not first then
+        ns.guideAction = guide and ns.GuideSelectionHasSkips(guide)
+            and "Remaining guide steps are skipped. Reset guide skips in settings to restore them."
+            or "This quest has no available NPC or objective destination yet. View its details in the Quest library."
+        ns.Refresh(); return false
+    end
     local blocked = type(InCombatLockdown) == "function" and InCombatLockdown()
     if not ns.Public(blocked) then return false end
     if blocked then

@@ -7,7 +7,40 @@ are required by the addon.
 
 Quick references: [friend-testing script](TESTING.md) and [short changelog](CHANGELOG.md).
 
-## Version 0.5.6
+## Version 0.5.7
+
+- **Leveling plans exclude known repeatables:** the importer now retains
+  recurrence from the published quest facts box. Spirit of the Wind and other
+  known repeatables no longer become automatic leveling pickups or current-log
+  leveling work. The library and ordinary quest/progress comparison retain
+  them. Thirteen cached detailed pages supplied explicit recurrence; missing
+  detail metadata can still leave other quests unclassified.
+- **Personal skips:** the arrow has **Skip step** and **Skip quest**. These
+  persist per character without changing actual quest history or another
+  player's route. A skipped prerequisite remains unfinished. Restore them
+  with **Reset guide skips** in settings or `/wt guide reset`. Steps use the
+  mapped NPC when known and the destination otherwise.
+- **Guide progression scan:** starting a guide reads the current quest log,
+  objective progress and completion flags for its selected quests, known
+  series and prerequisites, bounded to 512 IDs. **Scan guide** on the arrow
+  repeats the check and opens a report; `/wt guide scan` also works. Friends
+  query their own history through normal party sync. Unknown/restricted or
+  unreceived results stay unknown. This checks the guide's scope, rather than
+  claiming access to every character's full quest history.
+- **Objective-specific skulls:** public completion flags or fulfilled counts
+  suppress the matching mob/item target. Other unfinished objectives and
+  another participating player's unfinished goals can retain their target.
+  The native quest-related fallback cannot re-add a target already accounted
+  for by catalogue data. Text matching still depends on available labels.
+- **Combat map movement:** pan/zoom redraws an already-created overlay when
+  its owned frames are confirmed unprotected. Geometry uses the current public
+  viewport; protected frames, reparenting and native map/waypoint actions stay
+  queued until combat ends. Retest this rendering path on the beta client.
+- **Discord releases:** each completed update has a release command that
+  uploads its ZIP, changelog and test script, with a confirmed-post receipt.
+  Credentials belong in environment settings and are absent from the addon.
+
+The 0.5.6 changes are retained:
 
 - **Less map clutter:** the default preview shows the current place and two
   ahead, with all consecutive quest steps at a shared NPC retained. Use the
@@ -218,7 +251,7 @@ World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
 `WowTogether.toc` belongs directly inside that folder. Update **every party
-member to 0.5.6**, including all new files, then `/reload`. Restart the client
+member to 0.5.7**, including all new files, then `/reload`. Restart the client
 fully if a new addon folder does not appear in the character-screen addon list.
 The release ZIP includes the complete TOC, every Lua file, data summary,
 instructions, and license. Copy the folder rather than individual changed files.
@@ -322,7 +355,7 @@ and layouts were not downloaded or copied. This implementation is independent.
    with your party. Friends choose **Follow route** or **Keep my route**; nothing
    replaces their route before they accept. Each client computes its own party
    objective/turn-in stages. Solo Start route starts locally. Update all clients
-   to 0.5.6 for the latest map controls and turn-in option. If more than 20 quests are selected,
+   to 0.5.7 for saved skips, guide scans and objective/combat fixes. If more than 20 quests are selected,
    the invitation explicitly reports that the shared selection is limited.
 3. Accepting a quest switches from pickup to an objective. A finished active
    quest switches to turn-in. Turning it in follows the next party member who
@@ -465,7 +498,7 @@ public position/scale/facing. No continuous facing event exists, so its own
 unprotected frame samples at 10 Hz only while visible with a selected route.
 The visible map overlay samples public player movement once per second to move
 its first leg; it does not re-read quest logs or rebuild recommendations there.
-The 0.5.6 preview controls and cross-zone changes still need actual beta testing.
+The latest preview controls, cross-zone changes and combat redraws still need actual beta testing.
 The user's latest solo report is explicitly **0.5.1 on build 70205**, level 4
 Horde in Durotar, with two active quests and an arrival distance of 3 yards.
 That diagnostic does not validate subsequent rendering, resize, invitation,
@@ -565,7 +598,7 @@ python3 -m venv /tmp/wow-together-tests
 /tmp/wow-together-tests/bin/python -m unittest discover -s tests -v
 ```
 
-Tests load all 21 Lua files in TOC order under Lua 5.1. They cover sync, history
+Tests load all 22 Lua files in TOC order under Lua 5.1. They cover sync, history
 pairing, names, secrets, throttling, UI controls, ranking, requirements,
 revision-bound destinations, route stages, cross-zone/partial routes, map
 geometry, resizing, party route completion, snapshot repair, tracker scrolling,
@@ -603,3 +636,21 @@ requests; the import continues using cached pages and list facts.
 
 Build the complete release ZIP with `python3 tools/build_release.py`. It includes
 every TOC-listed Lua file, the coverage summary, README, install notes, and license.
+
+Each completed addon update is also posted to the configured Discord channel.
+Save its webhook securely as `DISCORD_WEBHOOK_URL` in environment settings, then
+build and post in one command:
+
+```sh
+python3 tools/build_release.py --post-discord
+```
+
+For an already built release, run `python3 tools/post_discord_release.py
+/workspace/artifacts/WowTogether-<version>.zip`; add `--prompt` for hidden
+terminal input or `--dry-run` to preview without sending. The uploader extracts
+the matching CHANGELOG.md and TESTING.md from the ZIP, disables mention pings,
+and confirms all three attachments before recording a message receipt. Rebuilt
+identical contents are skipped; changed files need a new version. Network or
+credential failures leave the local ZIP ready and fail publication visibly.
+Do not retry an ambiguous delivery without checking channel history.
+The addon itself does not access Discord or contain webhook credentials.

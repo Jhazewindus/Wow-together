@@ -34,6 +34,8 @@ end
 function methods:GetFrameLevel() return self.frameLevel or 0 end
 function methods:SetFrameLevel(level) self.frameLevel = level end
 function methods:SetParent(parent) self.parent = parent end
+function methods:GetParent() return self.parent end
+function methods:IsProtected() return self.protected or false end
 function methods:GetStringHeight() return 100 end
 function methods:IsShown() return self.shown or false end
 function methods:SetShown(value) self.shown = value end
@@ -91,7 +93,7 @@ C_QuestLog = {
 '''
 
 class Client:
-    def __init__(self, name='Alice', peer='Bob', quests=(1, 2), completed=(), default_guide=False, use_catalogue=False):
+    def __init__(self, name='Alice', peer='Bob', quests=(1, 2), completed=(), default_guide=False, use_catalogue=False, saved_variables=None):
         self.lua = LuaRuntime(unpack_returned_tuples=True)
         self.lua.execute(MOCK)
         g = self.lua.globals()
@@ -108,6 +110,8 @@ class Client:
                                  (ROOT / 'WowTogether' / line).read_text(), 'WowTogether', self.ns)
         if not use_catalogue:
             self.ns.catalogue = self.lua.table_from({'count': 0, 'quests': self.lua.table()})
+        if saved_variables is not None:
+            g.WowTogetherDB = self.lua.table_from(saved_variables, recursive=True)
         self.ns.handlers.ADDON_LOADED('WowTogether')
         if not default_guide:
             self.ns.SetFilter('all')
