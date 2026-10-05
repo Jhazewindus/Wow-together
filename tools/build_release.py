@@ -75,6 +75,15 @@ pickups above visible friendly nameplates. It is cosmetic, hides in combat and
 does not apply real raid marks. Enable friendly NPC nameplates in the game.
 /wt sync requests fresh snapshots; normal quest/party changes sync automatically.
 /wt probe opens diagnostics; Ctrl+C copies and closes the report.
+Flight unlock recognition uses public GetTaxiNodesForMap discovery flags where
+supported, refreshed on login/zone/unlock events and saved for this character.
+Open a flight master to confirm reachable connections. The reader uses the global
+GetTaxiMapID(), falling back to the visible native flight frame's map ID. It never
+guesses from a taxi-system event or passes nil to GetAllTaxiNodes. Late map data
+gets bounded retries that cancel on close. Unlock flags do not create flights.
+Probe now reports Flight paths, Flight unlock scan and Flight map read; send these
+lines after opening a master if a known path is still missing. Unsupported/private
+data, missing positions or native slots keep flight actions manual.
 /wt research opens local quest-data JSON; Select all, Ctrl+C, then save as a text
 file labeled with your tester name for feedback. Settings → Quest data for testing
 has the recording toggle and Export quest data. The latest 300 local observations

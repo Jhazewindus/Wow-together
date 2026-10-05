@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.7.1"
+ns.VERSION = "0.7.2"
 ns.handlers = {}
 ns.members = {}
 ns.status = "Waiting for addon initialization."
@@ -112,7 +112,9 @@ function ns.Diagnostics()
         {"GetAvailableQuestInfo", GetAvailableQuestInfo},
         {"GetAvailableTitle", GetAvailableTitle}, {"SelectAvailableQuest", SelectAvailableQuest},
         {"C_TaxiMap.GetAllTaxiNodes", C_TaxiMap and C_TaxiMap.GetAllTaxiNodes},
-        {"C_TaxiMap.GetTaxiMapID", C_TaxiMap and C_TaxiMap.GetTaxiMapID},
+        {"GetTaxiMapID", GetTaxiMapID},
+        {"FlightMapFrame.GetMapID", FlightMapFrame and FlightMapFrame.GetMapID},
+        {"C_TaxiMap.GetTaxiNodesForMap", C_TaxiMap and C_TaxiMap.GetTaxiNodesForMap},
         {"C_Map.GetMapPosFromWorldPos", C_Map and C_Map.GetMapPosFromWorldPos},
         {"TakeTaxiNode", TakeTaxiNode}, {"UnitOnTaxi", UnitOnTaxi}, {"GetUnitSpeed", GetUnitSpeed},
         {"GetTime", GetTime}, {"UnitIsGhost", UnitIsGhost},
@@ -139,6 +141,7 @@ function ns.Diagnostics()
     ns.SyncDiagnostics(output)
     ns.NavigationDiagnostics(output)
     output("Travel: " .. ns.travelStatus)
+    ns.TravelDiagnostics(output)
     output("Guide restore: " .. ns.guideResumeStatus)
     output("Party catch-up: " .. ns.partyCatchupStatus)
     ns.ResearchDiagnostics(output)
@@ -172,12 +175,14 @@ ns.On("ADDON_LOADED", function(name)
     ns.Print("Loaded. /wt opens the quest view; /wt probe opens diagnostics.")
 end)
 
-ns.On("PLAYER_LOGIN", function() ns.RestoreSavedGuide(); ns.ScheduleSync() end)
+ns.On("PLAYER_LOGIN", function() ns.RestoreSavedGuide(); ns.ScheduleFlightDiscovery(); ns.ScheduleSync() end)
 ns.On("QUEST_LOG_UPDATE", function()
     if ns.db then ns.ReadProgress(); ns.UpdateNPCHints(); ns.Refresh() end
     ns.ScheduleSync()
 end)
-ns.On("ZONE_CHANGED_NEW_AREA", function() ns.ResetZoneConnections(); ns.ReadGuide(); ns.ScheduleSync(); ns.Refresh() end)
+ns.On("ZONE_CHANGED_NEW_AREA", function()
+    ns.ResetZoneConnections(); ns.ReadGuide(); ns.ScheduleFlightDiscovery(); ns.ScheduleSync(); ns.Refresh()
+end)
 ns.On("PLAYER_LEVEL_UP", function(level) ns.RecordQuestResearch("level", {level = level}); ns.ScheduleSync() end)
 ns.On("QUEST_ACCEPTED", function(_, id) ns.RecordQuestResearch("accept", {questID = id}); ns.ScheduleSync() end)
 ns.On("QUEST_TURNED_IN", function(id)

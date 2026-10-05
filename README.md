@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.7.1** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.7.2** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -279,13 +279,37 @@ These are estimated walks between points, not detailed collision-safe roads.
 See [TRAVEL_DATA.md](TRAVEL_DATA.md) for source hashes, coverage and limitations,
 and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for the license notice.
 
-Open flight-master maps to learn this character's network. When public flight
+The addon checks public **C_TaxiMap.GetTaxiNodesForMap** discovery flags on login,
+zone changes and flight-path unlock events, for the current zone and its parent
+maps. A public isUndiscovered=false recognizes an unlocked path; missing/private
+flags remain unknown. Opposing-faction map nodes are filtered where faction data
+is public. Unlock recognition and known locations persist for this character,
+including in solo mode; they do not create flight connections by themselves.
+Forever support for these optional fields must be checked on your beta build.
+
+Open flight-master maps to confirm this character's reachable network. The reader
+uses the global **GetTaxiMapID()** used by Blizzard's modern flight UI, with the
+visible **FlightMapFrame:GetMapID()** as a guarded fallback. The old nonexistent
+C_TaxiMap.GetTaxiMapID query could pass nil into GetAllTaxiNodes and fail silently.
+The map read now requires a valid map ID and retries briefly for late data;
+closing the flight map cancels pending retries. The TAXIMAP_OPENED argument is a
+taxi-system selector, not a map ID, so it cannot substitute for the getter.
+
+When public flight
 states and positions exist, the guide compares walking with getting to a known
 reachable flight, flying and walking from its destination. It includes a
 boarding allowance. The travel graph can combine observed flight legs; direct
 flight comparisons remain available in uncovered areas or with the graph off.
 Flight times are estimates until that character has timed the route. While
 flying, the panel shows elapsed time or an approximate remaining timed duration.
+
+The probe reports **Flight paths**, **Flight unlock scan** and **Flight map read**:
+known paths, those with locations, observed connections and the actual getter/read
+result. An unlocked destination is not proof of a reachable flight from every
+master. Explicit unreachable observations remove that source's stale connection
+without forgetting an already-known unlock. Unknown reads preserve saved evidence.
+The probe itself does not query a flight map or select a taxi. Missing APIs, public
+positions or current-master data leave connections and flight actions unconfirmed.
 
 Observed nearby flight masters with unconfirmed unlocks can receive a short
 check stop. This is not a complete flight-path database. Unknown reachability,
@@ -479,7 +503,7 @@ provided broad inspiration about progress clarity; its code/assets/layouts
 were not copied. This implementation is independent.
 
 Reported beta build **70205** established the earlier sync APIs in user tests.
-**0.7.1 has host validation, not a live-client compatibility certification.**
+**0.7.2 has host validation, not a live-client compatibility certification.**
 Retest UI rendering, optional gossip/flight actions, corpse positions and item
 hooks on the build in front of you. `/wt probe` lists capabilities and runtime
 status. Do not interpret presence as proof that protected actions work.

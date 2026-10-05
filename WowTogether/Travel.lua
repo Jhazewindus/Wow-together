@@ -1,6 +1,9 @@
 local addonName, ns = ...
 
 ns.travelStatus = "Open a flight master's map to learn this character's flight network."
+ns.flightDiscoveryStatus = "Map unlock flags have not been checked this session."
+ns.flightMapStatus = "No flight-master map read this session."
+local flightMapOpen, flightMapGeneration, discoveryPending = false, 0, false
 
 local function number(value)
     return ns.Public(value) and type(value) == "number" and value == value
@@ -43,6 +46,111 @@ local function flights() return ns.db.flights and ns.db.flights[ns.self] end
 local function savedPoint(p)
     return type(p) == "table" and ns.GuideInteger(p.mapID) and p.mapID > 0
         and number(p.x) and number(p.y) and p.x >= 0 and p.x <= 1 and p.y >= 0 and p.y <= 1
+end
+
+local function counts()
+    local known, located, edges = 0, 0, 0
+    local state = flights()
+    for _, node in pairs(state and state.nodes or {}) do
+        if node.known == true then
+            known = known + 1
+            if node.point then located = located + 1 end
+        end
+    end
+    for _ in pairs(state and state.edges or {}) do edges = edges + 1 end
+    return known, located, edges
+end
+
+local function changed()
+    ns.travelRevision, ns.flightPlanCache = (ns.travelRevision or 0) + 1, nil
+    ns.ResetTravelPath()
+end
+
+local function storeNode(info, mapID, ownMap, known, current)
+    if not ns.Public(info) or type(info) ~= "table" or not ns.GuideInteger(info.nodeID) or info.nodeID <= 0 then return end
+    local id, state = info.nodeID, flights()
+    local old = state.nodes[id] or {}
+    local published = ns.travelData and ns.travelData.nodes["TAXI_" .. id]
+    local name = ns.SafeTitle(info.name) or old.name or published and ns.SafeTitle(published.name)
+    if not name then return end
+    local p = point(mapID, ns.Public(info.position) and info.position)
+    if not p and published then p = {mapID = published.mapID, x = published.x, y = published.y} end
+    if current then p = ns.PlayerPoint(ownMap) or p end
+    if p then p = localPoint(ownMap, p) end
+    if known == nil then known = old.known == true end
+    state.nodes[id] = {id = id, name = name, point = p or old.point,
+        world = p and world(p) or old.world, known = known}
+    if known == false then
+        for key, edge in pairs(state.edges) do
+            if edge.source == id or edge.destination == id then state.edges[key] = nil end
+        end
+    end
+    return id
+end
+
+local function factionMatches(info)
+    local values = Enum and Enum.FlightPathFaction
+    if not values or not ns.Public(info.faction) then return nil end
+    local faction = ns.profile and ns.profile.faction or ns.ReadPublic(UnitFactionGroup, "player")
+    local own = faction == "Horde" and values.Horde or faction == "Alliance" and values.Alliance
+    if not number(own) or not number(values.Neutral) then return nil end
+    return info.faction == own or info.faction == values.Neutral
+end
+
+function ns.ReadKnownFlightPaths()
+    if not flights() then return end
+    if not C_TaxiMap or type(C_TaxiMap.GetTaxiNodesForMap) ~= "function" then
+        ns.flightDiscoveryStatus = "GetTaxiNodesForMap unavailable; confirm unlocks at flight masters."; return
+    end
+    local ownMap = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
+    local mapID, seen, reads, flags, skipped = ownMap, {}, 0, 0, 0
+    -- Public parent maps reach the current continent without scanning the world.
+    for _ = 1, 6 do
+        if not ns.GuideInteger(mapID) or mapID <= 0 or seen[mapID] then break end
+        seen[mapID] = true
+        local nodes = ns.ReadPublic(C_TaxiMap.GetTaxiNodesForMap, mapID)
+        if type(nodes) == "table" then
+            reads = reads + 1
+            for index, info in ipairs(nodes) do
+                if index > 512 then break end
+                if ns.Public(info) and type(info) == "table" then
+                    local matches = factionMatches(info)
+                    if matches ~= false and ns.Public(info.isUndiscovered) and type(info.isUndiscovered) == "boolean" then
+                        -- Without faction metadata, do not add an unowned enemy
+                        -- flight master as a nearby unlock recommendation.
+                        if info.isUndiscovered == false or matches == true then
+                            if storeNode(info, mapID, ownMap, not info.isUndiscovered) then flags = flags + 1 end
+                        end
+                    elseif matches ~= false then skipped = skipped + 1 end
+                end
+            end
+        end
+        local info = C_Map and ns.ReadPublic(C_Map.GetMapInfo, mapID)
+        mapID = type(info) == "table" and ns.GuideInteger(info.parentMapID) and info.parentMapID or nil
+    end
+    if flags > 0 then changed() end
+    local known = counts()
+    ns.flightDiscoveryStatus = reads .. " map reads; " .. flags .. " public unlock flags; " .. skipped .. " unknown flags; " .. known .. " known paths saved."
+    if flags > 0 then
+        ns.travelStatus = known .. " unlocked paths recognized. Open a flight master's map to confirm reachable connections."
+        ns.UpdateNavigation()
+    end
+end
+
+function ns.ScheduleFlightDiscovery()
+    if not ns.db or discoveryPending or not C_Timer or type(C_Timer.After) ~= "function" then return end
+    discoveryPending = true
+    C_Timer.After(0.2, function() discoveryPending = false; ns.ReadKnownFlightPaths() end)
+end
+
+local function taxiMapID()
+    -- Blizzard's FlightMapMixin uses the GLOBAL GetTaxiMapID(), not a C_ API.
+    local id = ns.ReadPublic(GetTaxiMapID)
+    if ns.GuideInteger(id) and id > 0 then return id, "GetTaxiMapID" end
+    if FlightMapFrame and ns.ReadPublic(FlightMapFrame.IsShown, FlightMapFrame) == true then
+        id = ns.ReadPublic(FlightMapFrame.GetMapID, FlightMapFrame)
+        if ns.GuideInteger(id) and id > 0 then return id, "FlightMapFrame.GetMapID" end
+    end
 end
 
 function ns.InitializeTravel()
@@ -89,36 +197,47 @@ function ns.NoteFlightSelection(slot)
     end
 end
 
-function ns.ReadFlightMap()
+function ns.ReadFlightMap(attempt)
+    attempt = attempt or 0
     ns.flightMapSource, ns.visibleFlights = nil, nil
-    local mapID = C_TaxiMap and ns.ReadPublic(C_TaxiMap.GetTaxiMapID)
-    local nodes = C_TaxiMap and ns.ReadPublic(C_TaxiMap.GetAllTaxiNodes, mapID)
+    local mapID, source = taxiMapID()
     local states = Enum and Enum.FlightPathState
-    if type(nodes) ~= "table" or not states or not ns.Public(states.Current) or not ns.Public(states.Reachable) then
-        ns.travelStatus = "Flight map APIs or state enums unavailable; choose flights manually."; return
+    local failure
+    if not C_TaxiMap or type(C_TaxiMap.GetAllTaxiNodes) ~= "function" then failure = "GetAllTaxiNodes unavailable"
+    elseif not states or not number(states.Current) or not number(states.Reachable) then failure = "FlightPathState enums unavailable"
+    elseif not mapID then failure = "No public flight map ID; GetTaxiMapID and the visible flight frame could not supply one" end
+    local nodes
+    if not failure then
+        nodes = ns.ReadPublic(C_TaxiMap.GetAllTaxiNodes, mapID)
+        if type(nodes) ~= "table" then failure = "GetAllTaxiNodes failed or returned restricted data for map " .. mapID
+        elseif not next(nodes) then failure = "Flight map " .. mapID .. " has not returned any nodes yet" end
     end
-    local current, visible = nil, {}
+    if failure then
+        ns.flightMapStatus = failure .. "."
+        ns.travelStatus = "Flight map read unavailable: " .. failure .. "; choose flights manually."
+        if flightMapOpen and attempt < 3 and C_Timer and type(C_Timer.After) == "function" then
+            local generation = flightMapGeneration
+            C_Timer.After(0.2, function()
+                if flightMapOpen and generation == flightMapGeneration then ns.ReadFlightMap(attempt + 1) end
+            end)
+        end
+        return
+    end
+    local current, visible, accepted, restricted = nil, {}, 0, 0
     local ownMap = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
     local state = flights()
     for index, info in ipairs(nodes) do
         if index > 256 then break end
-        if ns.Public(info) and type(info) == "table" and ns.Public(info.nodeID) and ns.GuideInteger(info.nodeID)
-            and ns.Public(info.state) and ns.Public(info.slotIndex) then
-            local id, name = info.nodeID, ns.SafeTitle(info.name)
-            if id > 0 and name then
-                local published = ns.travelData and ns.travelData.nodes["TAXI_" .. id]
-                local p = point(mapID, ns.Public(info.position) and info.position)
-                if not p and published then p = {mapID = published.mapID, x = published.x, y = published.y} end
-                if info.state == states.Current then current = id; p = ns.PlayerPoint(ownMap) or p end
-                if p then p = localPoint(ownMap, p) end
-                local old = state.nodes[id] or {}
-                local known = info.state == states.Current or info.state == states.Reachable or old.known == true
-                state.nodes[id] = {id = id, name = name, point = p or old.point,
-                    world = p and world(p) or old.world, known = known}
+        if ns.Public(info) and type(info) == "table" and ns.GuideInteger(info.nodeID) and number(info.state) then
+            local known = (info.state == states.Current or info.state == states.Reachable) and true or nil
+            local id = storeNode(info, mapID, ownMap, known, info.state == states.Current)
+            if id then
+                accepted = accepted + 1
+                if info.state == states.Current then current = id end
                 visible[id] = {slot = ns.GuideInteger(info.slotIndex, 1000) and info.slotIndex or nil,
-                    reachable = info.state == states.Reachable}
+                    reachable = info.state == states.Reachable, unreachable = number(states.Unreachable) and info.state == states.Unreachable}
             end
-        end
+        else restricted = restricted + 1 end
     end
     ns.flightMapSource, ns.visibleFlights = current, visible
     ns.checkedFlightNodes = ns.checkedFlightNodes or {}
@@ -126,12 +245,23 @@ function ns.ReadFlightMap()
     if current then
         for id, info in pairs(visible) do
             if info.reachable then state.edges[current .. ":" .. id] = {source = current, destination = id} end
+            if info.unreachable then state.edges[current .. ":" .. id] = nil end
         end
     end
-    ns.travelRevision, ns.flightPlanCache = (ns.travelRevision or 0) + 1, nil
-    ns.travelStatus = "Flight network observed. Travel times are estimated until this character has timed that flight."
+    changed()
+    local known = counts()
+    ns.flightMapStatus = "Map " .. mapID .. " via " .. source .. "; " .. accepted .. " nodes read; " .. restricted .. " restricted/invalid; source " .. (current and state.nodes[current].name or "not reported") .. "."
+    ns.travelStatus = accepted > 0 and ("Flight network observed; " .. known .. " known paths. Travel times are estimates until timed.")
+        or "No public flight nodes could be recorded; choose flights manually."
     ns.UpdateNavigation()
     ns.TrySuggestedFlight()
+end
+
+function ns.TravelDiagnostics(output)
+    local known, located, edges = counts()
+    output("Flight paths: " .. known .. " known; " .. located .. " with locations; " .. edges .. " observed connections. Personal to this character.")
+    output("Flight unlock scan: " .. ns.flightDiscoveryStatus)
+    output("Flight map read: " .. ns.flightMapStatus)
 end
 
 function ns.FindFlightPlan(stop)
@@ -273,8 +403,18 @@ function ns.RouteForDisplay()
     return route
 end
 
-ns.On("TAXIMAP_OPENED", function() if ns.db then ns.ReadFlightMap() end end)
-ns.On("TAXIMAP_CLOSED", function() ns.visibleFlights, ns.flightMapSource, ns.flightAttempt = nil, nil, nil end)
+ns.On("TAXIMAP_OPENED", function()
+    flightMapGeneration, flightMapOpen = flightMapGeneration + 1, true
+    if ns.db then ns.ReadKnownFlightPaths(); ns.ReadFlightMap() end
+end)
+ns.On("TAXIMAP_CLOSED", function()
+    flightMapGeneration, flightMapOpen = flightMapGeneration + 1, false
+    ns.visibleFlights, ns.flightMapSource, ns.flightAttempt = nil, nil, nil
+end)
+ns.On("TAXI_NODE_STATUS_CHANGED", function()
+    ns.ScheduleFlightDiscovery()
+    if flightMapOpen and ns.db then ns.ReadFlightMap() end
+end)
 ns.On("PLAYER_CONTROL_LOST", function() if ns.db then ns.FlightState(); ns.UpdateNavigation() end end)
 ns.On("PLAYER_CONTROL_GAINED", function() if ns.db then ns.FinishFlight() end end)
 ns.On("PLAYER_DEAD", function()

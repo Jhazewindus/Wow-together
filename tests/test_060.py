@@ -257,7 +257,10 @@ def flight_client():
     Enum.FlightPathState={Current=60,Reachable=70,Unreachable=80}
     taxiNodes={{nodeID=11,name='Start',position=CreateVector2D(.02,.4),state=60,slotIndex=40},
                {nodeID=22,name='End',position=CreateVector2D(.9,.4),state=70,slotIndex=54}}
-    C_TaxiMap={GetTaxiMapID=function() return 501 end,GetAllTaxiNodes=function() return taxiNodes end}
+    function GetTaxiMapID() return 501 end
+    C_TaxiMap={GetAllTaxiNodes=function(map)
+      assert(map==501,'A valid taxi map ID is required');return taxiNodes
+    end}
     function TakeTaxiNode(slot) taken=slot; takeCalls=(takeCalls or 0)+1 end
     """)
     return c

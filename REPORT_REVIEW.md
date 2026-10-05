@@ -1,3 +1,37 @@
+# Follow-up review for 0.7.2
+
+The user reports that unlocked flight paths are not recognized. Their supplied
+capture is Elianus Bronchilius, addon 0.7.0, build 70205, level-23 Horde Warrior/
+Orc, solo in the Barrens, with a fixed Barrens guide and automation disabled.
+It is not explicitly labeled as the main developer's own character report.
+GetAllTaxiNodes is present, C_TaxiMap.GetTaxiMapID is missing, and Travel says
+flight APIs/state enums are unavailable. There is no new contradictory request
+or second flight report. This is consistent with the earlier captures' missing
+namespaced getter; 0.7.1 still contains that query.
+
+Blizzard's current UI source uses the global GetTaxiMapID(); API documentation
+requires a non-nil uiMapID for GetAllTaxiNodes. The old reader can silently fail
+by passing nil, and the old host fixture accepted any arguments, masking this.
+Use the guarded global getter, then the visible native frame if necessary.
+Do not mistake TAXIMAP_OPENED's taxi-system payload for a map or invent one from
+the player's zone. Bound late-data retries and cancel them when the map closes.
+The corrected fixture requires the exact map ID and tests native slot selection.
+
+Documented GetTaxiNodesForMap returns MapTaxiNodeInfo with isUndiscovered and
+faction metadata. Capability-probe the API and inspect public flags for the
+current zone/parents on login, zone and unlock events. Unknown/private flags do
+not infer unlocks; source reachability is distinct from ownership. Save evidence
+per character and keep it out of party sync. Only current-master Reachable states
+create graph connections. Explicit Unreachable states remove that source's
+stale connection while retaining prior unlock evidence. Diagnostics distinguish
+getter/API failure, known paths, missing positions and observed connections.
+These are read-only data/API references, not copied addon code. Actual Forever
+getter/flag behavior still requires a beta capture after updating.
+
+Sources inspected (2026-10-05):
+- https://github.com/Gethe/wow-ui-source/blob/live/Interface/AddOns/Blizzard_FlightMap/Blizzard_FlightMap.lua
+- https://github.com/Gethe/wow-ui-source/blob/live/Interface/AddOns/Blizzard_APIDocumentationGenerated/TaxiMapDocumentation.lua
+
 # Follow-up review for 0.7.1
 
 The user requests cosmetic stars above quest pickup givers and a complete solo

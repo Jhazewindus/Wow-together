@@ -1,5 +1,19 @@
 # Wow Together changelog
 
+## 0.7.2
+
+- Fix flight-map detection: use the global GetTaxiMapID(), with a guarded
+  visible FlightMapFrame fallback. Never pass a missing or guessed map ID to
+  GetAllTaxiNodes. Retry briefly while the map loads; closing cancels retries.
+- Recognize character-specific unlocked flight paths from public map discovery
+  flags where supported. Refresh on login, zone changes and flight-path discoveries;
+  save paths per character, including in solo mode.
+- Keep ownership separate from reachable flights. Only actual flight-master
+  observations add connections; remove a connection when that master explicitly
+  reports it unreachable. Unlock flags alone cannot invent flights or grant access.
+- Add probe lines for known paths, mapped locations, observed connections and
+  the exact flight-map read result. Unknown/private data leaves flights manual.
+
 ## 0.7.1
 
 - Add Solo leveling mode in Play mode settings: stop party messages, hide party

@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.7.1**, World of Warcraft: Forever beta, interface **16001**.
+For **0.7.2**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 
@@ -188,7 +188,8 @@ Keep tester names and reports separate; label the main developer's report.
     Note wrong/missing crossings or terrain obstacles: point walks are estimates.
     Open flight maps: only observed reachable connections may be suggested; test
     a known multi-leg network and an unlearned flight. With no GetTaxiMapID, known
-    sourced coordinates can locate nodes but must not grant flight access.
+    sourced coordinates can locate nodes but must not grant flight access. A
+    visible native flight-frame map ID may allow the observed node read.
     Turn the graph off: ordinary directions remain and fixed quest order agrees.
 28. **Reported guide failure:** a level-12 Horde character starts Mulgore, then
     Durotar, then switches back and forth. Also start Durotar on a level-5 Horde
@@ -222,6 +223,19 @@ Keep tester names and reports separate; label the main developer's report.
     chains should explain their continuation. Start selected guide should filter
     unfinished low-value work; Include current quests may retain it. Ready hand-ins
     still appear. Scan, movement and level changes must not reorder fixed steps.
+34. **Recognize flight unlocks:** log in with some known paths, then open a flight
+    master's map. Capture the GetTaxiMapID / GetTaxiNodesForMap capability lines
+    and Flight paths / Flight unlock scan / Flight map read in /wt probe.
+    Where public flags exist, unlocked paths should be known before opening a
+    master; unknown flags must not grant access. Opening the master should record
+    its source and reachable connections. Close/reopen promptly: stale retries
+    must not read or choose flights after closing. Unlock another path, change
+    zones and reload; ownership should update and persist only for that character.
+    Repeat with Solo leveling mode on. Other characters and opposing-faction
+    nodes must not inherit access. Missing APIs/positions give a specific status.
+    A public unlocked node with zero observed connections still needs a master's
+    reachable list before it can become a flight suggestion. Auto-flight stays
+    off unless explicitly enabled; secret slots/current-master gaps stay manual.
 
 ## Copyable tester report
 
@@ -232,7 +246,7 @@ Addon / client build:
 Level / class / race / faction / zone:
 Party size / selected guide:
 Fixed zone guides / full route / learning settings:
-Checks 1–33: Pass / Fail / Skip (reason)
+Checks 1–34: Pass / Fail / Skip (reason)
 Exact quest name and ID / NPC / current and next step numbers:
 What happened / expected result:
 Was the quest offered? Was its prerequisite handed in?
