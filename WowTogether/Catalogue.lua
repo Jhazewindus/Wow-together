@@ -358,6 +358,12 @@ function ns.ShowQuestDetails(id)
         if ns.ClassQuestLabel(id) then lines[#lines + 1] = ns.ClassQuestLabel(id) end
         if ns.IsRepeatableQuest(id) then lines[#lines + 1] = "Repeatable quest; excluded from automatic leveling guides." end
         if quest.xp then lines[#lines + 1] = "Published base quest XP: " .. quest.xp .. "; actual reward varies by player level." end
+        local low, high = ns.PreferredQuestLevels()
+        if low then
+            local _, reason = ns.LevelingValue(id)
+            lines[#lines + 1] = "Preferred leveling quest levels: " .. low .. "–" .. high .. "."
+            if reason then lines[#lines + 1] = reason end
+        end
         for _, item in ipairs(quest.requiredItems or {}) do
             lines[#lines + 1] = "Bring " .. item.quantity .. " × " .. item.name .. (item.buyable and " • vendor-listed; check current availability" or " • item source not verified as buyable")
         end

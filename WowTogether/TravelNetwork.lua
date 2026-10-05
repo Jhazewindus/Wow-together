@@ -197,7 +197,8 @@ function ns.ResetTravelPath() ns.travelPath, ns.travelPathSignature, ns.travelPa
 
 function ns.TravelNetworkDestination(stop)
     ns.travelWaypoint = nil
-    if not ns.Option("travelNetwork") or not ns.ValidTravelPoint(stop) or ns.navigationPreview
+    local travelGuide = ns.routeSelection and ns.routeSelection.mode == "travel"
+    if not ns.Option("travelNetwork") and not travelGuide or not ns.ValidTravelPoint(stop) or ns.navigationPreview
         or ns.routePaused or ns.ReadPublic(UnitOnTaxi, "player") == true then return end
     local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
     local position = ns.GuideInteger(mapID) and ns.PlayerPoint(mapID)
@@ -245,7 +246,7 @@ function ns.TravelNetworkDestination(stop)
 end
 
 function ns.TravelLinePoints(origin, goal)
-    local path = ns.Option("travelNetwork") and ns.travelPath
+    local path = (ns.Option("travelNetwork") or ns.routeSelection and ns.routeSelection.mode == "travel") and ns.travelPath
     if not path or path.goal.mapID ~= goal.mapID or path.goal.x ~= goal.x or path.goal.y ~= goal.y then return end
     local points = {origin}
     for index = path.cursor, #path.legs do

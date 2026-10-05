@@ -316,7 +316,7 @@ function ns.TravelDestination(stop)
             label = "Fly to " .. plan.destination.name, flightPlan = plan, goal = stop}
         if #ns.FilterGuideStages({flightStop}) > 0 then return flightStop end
     end
-    if ns.Option("nearbyFlights") then
+    if ns.Option("nearbyFlights") and not (ns.routeSelection and ns.routeSelection.mode == "travel") then
         local state = flights()
         local position = ns.PlayerPoint(mapID)
         for _, node in pairs(state and state.nodes or {}) do

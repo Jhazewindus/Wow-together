@@ -254,11 +254,11 @@ function ns.RouteStages(record, focusKey)
     return ns.FilterGuideStages(ns.QuestRouteStages(record, focusKey))
 end
 
-function ns.PartyRouteStages(record, preferred)
+function ns.PartyRouteStages(record, preferred, leveling)
     local chosen, chosenPerson, chosenRank, chosenPreference
     local stageOrder = {a = 1, q = 2, t = 3}
     for _, person in ipairs(ns.PartyProfiles()) do
-        if person.synced then
+        if person.synced and (not leveling or ns.LevelingWorkAllowed(record.id, person.key)) then
             local stages = ns.RouteStages(record, person.key)
             if #stages > 0 then
                 local rank, preference = stageOrder[stages[1].kind], person.key == preferred and 0 or 1
@@ -273,6 +273,14 @@ function ns.PartyRouteStages(record, preferred)
         for _, stage in ipairs(chosen) do stage.memberKey = chosenPerson.key; stage.forPlayer = chosenPerson.name end
     end
     return chosen or {}
+end
+
+function ns.LevelingRouteStages(record, preferred, personal)
+    if not personal then return ns.PartyRouteStages(record, preferred, true) end
+    if ns.IsProfessionQuest(record.id) or ns.LevelingWorkAllowed(record.id, ns.self) then
+        return ns.RouteStages(record, ns.self)
+    end
+    return {}
 end
 
 function ns.PartyQuestFinished(id, query)
@@ -303,6 +311,7 @@ local function origin(mapID)
 end
 
 function ns.BuildGuideRoute(guide, includeOrigin, cooperative)
+    if guide.mode == "travel" then return ns.BuildTravelGuideRoute(guide) end
     if guide.fixedRoute then return ns.BuildFixedGuideRoute(guide, includeOrigin, cooperative) end
     if guide.fullGuide and (guide.mode == "zone" or guide.mode == "chain") then return ns.BuildLevelingRoute(guide, includeOrigin, cooperative) end
     if (guide.mode == "current" or guide.mode == "bundle") and ns.BuildCurrentQuestRoute then return ns.BuildCurrentQuestRoute(guide, includeOrigin) end
@@ -312,8 +321,9 @@ function ns.BuildGuideRoute(guide, includeOrigin, cooperative)
     local partial = false
     for _, record in ipairs(guide.records or {guide.target}) do
         local stages = {}
-        if guide.personal then stages = ns.RouteStages(record, ns.self)
-        elseif ns.FocusCanStartRecord(record, focusKey) then stages = ns.PartyRouteStages(record, focusKey) end
+        if guide.personal or ns.FocusCanStartRecord(record, focusKey) then
+            stages = ns.LevelingRouteStages(record, focusKey, guide.personal)
+        end
         if #stages > 0 then
             blocks[#blocks + 1] = stages
             local quest = ns.CatalogueQuest(record.id)
@@ -707,6 +717,7 @@ function ns.ActivateRoute(guide, route)
     ns.routePaused = nil
     ns.routeSelection = guide
     ns.selectedRoute = route or ns.BuildGuideRoute(guide, true)
+    if guide.mode == "travel" then ns.routePaused = ns.selectedRoute.pendingReason or ns.selectedRoute.complete and "Arrived in Orgrimmar." end
     ns.InitializeGuideStepHistory(guide, ns.selectedRoute)
     ns.routeSignature = nil
     ns.AttachRouteProvider()
@@ -736,6 +747,7 @@ end
 function ns.UpdateSelectedRoute(choices, query)
     local selection = ns.routeSelection
     if not selection then return end
+    if selection.mode == "travel" then ns.UpdateTravelGuide(selection); return end
     if selection.fixedRoute then ns.UpdateFixedGuideRoute(selection, query); return end
     if selection.mode == "current" and not selection.sharedBy and ns.Option("nearbyPickups") then
         for _, choice in ipairs(ns.CurrentQuestChoices() or {}) do

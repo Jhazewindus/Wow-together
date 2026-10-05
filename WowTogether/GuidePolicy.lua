@@ -5,7 +5,12 @@ local indexed, followups
 -- Prefer worthwhile leveling work, rather than the entire green difficulty
 -- band. Lower quests can still qualify through their useful continuations.
 local function preferredFloor(level)
-    return math.max(1, level - math.max(3, math.floor(level * 0.1)))
+    return math.max(1, level - 3)
+end
+
+function ns.PreferredQuestLevels(query)
+    local level = ns.PartyLevelFloor(query)
+    if level then return preferredFloor(level), level + 3 end
 end
 
 function ns.PartyLevelFloor(query)
@@ -13,7 +18,7 @@ function ns.PartyLevelFloor(query)
     local level, key, name
     for _, person in ipairs(query and query.profiles or ns.PartyProfiles()) do
         local value = person.profile and person.profile.level
-        if ns.GuideInteger(value) and value > 0 and
+        if person.synced and ns.GuideInteger(value) and value > 0 and
             (not level or value < level or value == level and person.key < key) then
             level, key, name = value, person.key, person.name
         end
@@ -140,7 +145,7 @@ local function levelingValue(id, query)
         end
     end
     if reason then return true, reason end
-    return false, "Below the useful level range; no worthwhile follow-up is known."
+    return false, "Below preferred quest levels " .. preferredFloor(level) .. "–" .. (level + 3) .. "; no worthwhile follow-up is known."
 end
 
 function ns.LevelingValue(id, query)
@@ -151,6 +156,15 @@ function ns.LevelingValue(id, query)
     local value, reason = levelingValue(id, query)
     query.values[id] = {value, reason}
     return value, reason
+end
+
+-- Being in a quest log is not a reason to bypass the leveling band. Retain a
+-- ready hand-in for that character without sending others to finish old work.
+function ns.LevelingWorkAllowed(id, key, query)
+    if ns.LevelingValue(id, query) ~= false then return true end
+    local active = key == ns.self and ns.active or ns.members[key] and ns.members[key].active
+    return active and active[id] ~= nil and (ns.QuestProgressReady(key, id) == true
+        or key == ns.self and ns.readyToTurnIn[id] == true) or false
 end
 
 function ns.QuestLogReview()

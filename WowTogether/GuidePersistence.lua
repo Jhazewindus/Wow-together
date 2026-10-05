@@ -25,6 +25,7 @@ end
 local function descriptor(guide, depth)
     local result = fields(guide, guideFields)
     if not result.key then return end
+    if guide.mode == "travel" then return result end
     result.records, result.pickupIDs, result.batchIDs, result.catchupTargets, result.catchupRequired = {}, {}, {}, {}, {}
     local ids = {}
     for index, record in ipairs(guide.records or {}) do
@@ -74,6 +75,7 @@ function ns.ClearSavedGuide()
 end
 
 local function restore(saved, reusePlan, depth)
+    if type(saved) == "table" and saved.mode == "travel" then return ns.RestoreTravelGuide(saved.key) end
     if type(saved) ~= "table" or type(saved.records) ~= "table" or #saved.records == 0 or #saved.records > 512 then return end
     local guide, ids = fields(saved, guideFields), {}
     if type(guide.key) ~= "string" or guide.key == "" or not ns.SafeTitle(guide.title) then return end

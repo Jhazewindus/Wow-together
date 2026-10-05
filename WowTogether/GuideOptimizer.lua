@@ -22,11 +22,10 @@ local function availableTasks(guide)
     for _, record in ipairs(guide.records) do
         if ns.PartyQuestFinished(record.id) then complete = complete + 1
         elseif not ns.GuideQuestSkipped(record.id) and ns.FocusCanStartRecord(record, focus)
-            and (ns.LevelingValue(record.id) ~= false or guide.mode == "bundle" and activeForParty(record.id)
-                or activeForParty(record.id, true)
+            and (ns.LevelingValue(record.id) ~= false or activeForParty(record.id, true)
                 or guide.catchupRequired and guide.catchupRequired[record.id]) then
             local candidate = live[record.id] or record
-            local stages = ns.PartyRouteStages(candidate, focus)
+            local stages = ns.LevelingRouteStages(candidate, focus)
             if #stages > 0 then
                 local first = stages[1]
                 tasks[#tasks + 1] = {id = record.id, stages = stages, first = first,

@@ -42,9 +42,13 @@ All quests (formerly Library), Party quests, Shared, Party progress, Dungeon que
 Profession guides and Quest log review. All quests searches commit on Enter or pause.
 Use level brackets / Near party to narrow the list.
 Leveling guides has its own bracket dropdown, deferred zone/quest/NPC search
-and pages. The default bracket follows the lowest party level. Only full zone
-guides appear, as Recommended zone guide / Alternative zone guide; questlines stay
-inside them. Explicit quest-log trips are in Party quests. Every zone must contain
+and pages. The default bracket follows the lowest synced party level. Full zone
+guides appear as Recommended zone guide / Alternative zone guide; questlines stay
+inside them. Path to Orgrimmar is a personal travel guide for Horde levels 1–60:
+search Orgrimmar and Start route. It compares known city gates and uses crossings,
+transports and confirmed flights, resumes after reload, and finishes on city entry.
+No quests or invitations. An unmapped connection is explained; timing and walking
+links are estimates. Explicit quest-log trips are in Party quests. Every zone must contain
 useful work for your actual level, respecting known pickup/prerequisite levels.
 All levels does not bypass this; future quests remain browsable in All quests.
 Brackets filter browsing; a selected guide keeps later levels and known cross-zone
@@ -126,11 +130,15 @@ Full zone/questline invitations share guide identity and bracket, allowing frien
 to reconstruct the full catalogue scope beyond the twenty transmitted quest IDs.
 Low-level pickups need a known useful later quest/dungeon exception, explained
 under the arrow. Party stages focus on the member behind in confirmed progress.
-Unknown prerequisites/history stay unknown. Active work you choose can remain.
+Unknown prerequisites/history stay unknown. Include current quests also filters
+unfinished low-level work; ready hand-ins and useful prerequisites are kept.
 Fixed guides also apply the value filter without rewriting the compiled order.
-The preferred floor is three levels below you, or 10% of your level if larger;
-ready hand-ins and useful chains are kept. At level 12, Carry Your Weight does
-not qualify as a new pickup. Collector's Edition Welcome! rewards are excluded
+The preferred band is three levels below to three above the lowest synced player.
+At level 23, Centaur Bracers does not qualify as a new pickup or unfinished work
+unless a useful known prerequisite exception applies. Diagnostics show the band.
+Skip quest/step updates the arrow and map immediately, even with the dashboard
+hidden/resizing; manual skips remain personal and never grant completion credit.
+Collector's Edition Welcome! rewards are excluded
 from all leveling guides, but remain in All quests.
 Brackets must match useful work at your actual level in leveling areas, rather
 than sparse later handoffs or capital pickup hubs. Cards show the main quest

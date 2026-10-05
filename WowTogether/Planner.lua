@@ -38,8 +38,18 @@ function ns.HasCurrentPartyQuests()
 end
 
 local function routePeople(guide, id)
-    if guide.mode == "bundle" and guide.pickupIDs and guide.pickupIDs[id] then return ns.PartyProfiles() end
-    return currentPeople(id)
+    if guide.mode == "bundle" and guide.pickupIDs and guide.pickupIDs[id] then
+        local result = {}
+        for _, person in ipairs(ns.PartyProfiles()) do
+            if ns.LevelingWorkAllowed(id, person.key) then result[#result + 1] = person end
+        end
+        return result
+    end
+    local result = {}
+    for _, person in ipairs(currentPeople(id)) do
+        if ns.LevelingWorkAllowed(id, person.key) then result[#result + 1] = person end
+    end
+    return result
 end
 
 function ns.CurrentRouteMap(guide)
@@ -204,7 +214,8 @@ function ns.CurrentQuestChoices()
         else
             local active = person.key == ns.self and ns.active or (ns.members[person.key] and ns.members[person.key].active)
             for id in pairs(active or {}) do
-                if not ns.IsProfessionQuest(id) and not ns.IsRepeatableQuest(id) and not ns.GuideQuestSkipped(id) then ids[id] = true end
+                if not ns.IsProfessionQuest(id) and not ns.IsRepeatableQuest(id) and not ns.GuideQuestSkipped(id)
+                    and ns.LevelingWorkAllowed(id, person.key) then ids[id] = true end
             end
         end
     end
@@ -526,7 +537,7 @@ function ns.BuildCircuitRoute(guide, includeOrigin)
     local phases, missing, partial = {a = {}, q = {}, t = {}}, 0, false
     local mapID = guide.mapID or (guide.target and guide.target.mapID) or 0
     for _, record in ipairs(guide.records) do
-        local stages = guide.personal and ns.RouteStages(record, ns.self) or ns.PartyRouteStages(record, guide.focusKey)
+        local stages = ns.LevelingRouteStages(record, guide.focusKey, guide.personal)
         if #stages == 0 then missing = missing + 1 end
         for _, stop in ipairs(stages) do
             if stop.mapID == mapID then phases[stop.kind][#phases[stop.kind] + 1] = stop else partial = true end

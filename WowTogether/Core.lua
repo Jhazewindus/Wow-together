@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.7.2"
+ns.VERSION = "0.7.3"
 ns.handlers = {}
 ns.members = {}
 ns.status = "Waiting for addon initialization."
@@ -140,6 +140,11 @@ function ns.Diagnostics()
     output("Presence is not proof of working behavior. No waypoint or protected action was called.")
     ns.SyncDiagnostics(output)
     ns.NavigationDiagnostics(output)
+    local low, high = ns.PreferredQuestLevels()
+    if low then
+        local level, _, name = ns.PartyLevelFloor()
+        output("Leveling quest band: " .. low .. "–" .. high .. "; lowest synced player: " .. name .. " (level " .. level .. ").")
+    else output("Leveling quest band: waiting for public character level.") end
     output("Travel: " .. ns.travelStatus)
     ns.TravelDiagnostics(output)
     output("Guide restore: " .. ns.guideResumeStatus)

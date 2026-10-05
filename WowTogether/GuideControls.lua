@@ -49,6 +49,7 @@ function ns.GuideSelectionHasSkips(guide)
 end
 
 function ns.SkipGuide(kind)
+    if ns.routeSelection and ns.routeSelection.mode == "travel" then return end
     local stop = ns.navigation and ns.navigation.state and ns.navigation.state.stop
     if ns.navigationPreview or stop and stop.kind == "corpse" or ns.navigation and ns.navigation.state and ns.navigation.state.flight then return end
     if not stop or stop.kind ~= "f" then stop = ns.selectedRoute and (ns.selectedRoute.pendingStop or ns.selectedRoute.stops[1]) end
@@ -64,6 +65,12 @@ function ns.SkipGuide(kind)
         stepKind = stop.stepKind or stop.kind, guideStep = stop.guideStep})
     ns.routeSignature = nil
     ns.navigationPreview = nil
+    ns.forceRouteReplan = true
+    ns.ResetTravelPath()
+    -- A hidden/resizing dashboard must not delay a user-requested route edit.
+    ns.UpdateSelectedRoute(nil, ns.NewQuestQuery())
+    ns.UpdateNavigation()
+    ns.DrawRoute(nil, true)
     ns.Refresh()
 end
 
@@ -79,6 +86,10 @@ end
 function ns.ScanGuideProgress(guide, refresh)
     guide = guide or ns.routeSelection
     if not guide then return end
+    if guide.mode == "travel" then
+        if ns.selectedRoute then ns.selectedRoute.travelOriginMap = nil end
+        ns.ResetTravelPath(); ns.UpdateTravelGuide(guide); ns.Refresh(); return
+    end
     if refresh ~= false and ns.Option("scanSkipped") then
         local state = saved()
         for _, record in ipairs(guide.records or {}) do state.quests[record.id], state.steps[record.id] = nil, nil end
@@ -239,6 +250,7 @@ end
 
 function ns.RequestStartRoute(guide)
     if not guide then return end
+    if guide.mode == "travel" then return ns.ShowGuideOnMap(guide) end
     if guide.personal then return ns.ShowGuideOnMap(guide) end
     if not ns.HasCurrentPartyQuests() or guide.mode == "current" or guide.mode == "bundle" then return ns.StartPartyRoute(guide) end
     if not ns.startGuidePrompt then
@@ -258,6 +270,6 @@ function ns.RequestStartRoute(guide)
     end
     ns.startGuidePrompt.guide = guide
     ns.startGuidePrompt.title:SetText("Start " .. guide.title)
-    ns.startGuidePrompt.text:SetText("Use this guide's plan, or include quests already in your party's logs?\nIncluding current quests can cause unusual routes and long detours when they are spread across zones.")
+    ns.startGuidePrompt.text:SetText("Use this guide's plan, or include worthwhile quests already in your party's logs?\nUnfinished low-level quests are filtered; ready hand-ins and useful prerequisites stay. Including current quests can cause unusual routes and long detours.")
     ns.startGuidePrompt:Show()
 end

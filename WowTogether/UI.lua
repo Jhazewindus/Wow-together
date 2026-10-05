@@ -461,7 +461,7 @@ function ns.Render()
     for _ in pairs(ns.active or {}) do own = own + 1 end
     ns.ui.metrics[1].caption:SetText(partyEnabled and "PARTY SYNC" or "PLAY MODE")
     ns.ui.metrics[1].value:SetText(partyEnabled and (synced .. " / " .. (#(ns.partyNames or {}) + 1)) or "SOLO")
-    local choices = ns.LevelingGuideChoices and ns.filter == "guides" and ns.LevelingGuideChoices(nil, queryContext) or {}
+    local choices = ns.filter == "guides" and ns.GuideBrowserChoices(nil, queryContext) or {}
     ns.ui.hint:SetText(ns.filter == "guides"
         and "Choose a zone guide suited to your current level; search by zone, quest or NPC.\nStart route follows its full quest sequence."
         or "Show route draws numbered stops and lines on your world map.\nUse All quests to browse zones, search names, and check requirements.")
@@ -603,14 +603,16 @@ function ns.Render()
             height = item.recommended and 176 or 160
             if guide.mode == "bundle" then height = height + 52 end
             card.accent:SetColorTexture(unpack(item.recommended and colors.gold or colors.border))
-            if ns.filter == "guides" then
+            if guide.mode == "travel" then
+                card.category:SetText("TRAVEL GUIDE")
+            elseif ns.filter == "guides" then
                 card.category:SetText(item.recommended and "RECOMMENDED ZONE GUIDE" or "ALTERNATIVE ZONE GUIDE")
             else
                 card.category:SetText(item.recommended and (guide.catchup and "RECOMMENDED / CATCH UP FIRST" or "RECOMMENDED NEXT STEP")
                     or (string.upper(guide.kind) .. " / ALTERNATIVE"))
             end
             card.title:SetText(guide.title .. (guide.mapID > 0 and (" — " .. guide.zone) or ""))
-            card.count:SetText(guide.fullGuide and guide.minLevel and ("Lv " .. (guide.mainLevelLow or guide.minLevel) .. "–" .. (guide.mainLevelHigh or guide.maxLevel)) or (guide.level and ("Quest Lv " .. guide.level) or ""))
+            card.count:SetText((guide.fullGuide or guide.mode == "travel") and guide.minLevel and ("Lv " .. (guide.mainLevelLow or guide.minLevel) .. "–" .. (guide.mainLevelHigh or guide.maxLevel)) or (guide.level and ("Quest Lv " .. guide.level) or ""))
             card.reason:SetHeight(height - 103)
             local nextTitle = guide.nextStop and guide.nextStop.label or guide.target.title
             local _, requirement = ns.CatalogueAllowed(guide.target.id, ns.profile, ns.self, queryContext)
@@ -624,7 +626,7 @@ function ns.Render()
             card.reason:Show()
             card.mapButton.caption:SetText(ns.filter == "guides" and guide.fullGuide and "Show quest list" or (guide.hasPoint and "Show route" or "View details"))
             card.detailsButton.caption:SetText("Start route")
-            card.detailsButton:SetShown(not guide.personal)
+            card.detailsButton:SetShown(not guide.personal or guide.mode == "travel")
             card.detailsButton:SetEnabled(guide.fullGuide == true or guide.hasPoint == true)
         else
             height = suggestion and 169 or 110

@@ -483,13 +483,13 @@ end
 function ns.ShowGuideOnMap(guide)
     local prepared = ns.preparedLevelingRoute and ns.preparedLevelingRoute.guide == guide and ns.preparedLevelingRoute.route
     if guide and guide.fullGuide and not prepared then return ns.PlanLevelingGuide(guide, false) end
-    if guide and not prepared then ns.ScanGuideProgress(guide, false) end
+    if guide and not prepared and guide.mode ~= "travel" then ns.ScanGuideProgress(guide, false) end
     -- An explicit local selection replaces an accepted invitation that was
     -- waiting for missing history. Following a ready invitation also passes here.
     ns.waitingPartyRoute = nil
     local route = prepared or guide and ns.BuildGuideRoute(guide, true)
     local first = route and route.stops[1]
-    if not first and not (guide and guide.fullGuide) then
+    if not first and not (guide and (guide.fullGuide or guide.mode == "travel")) then
         ns.guideAction = guide and ns.GuideSelectionHasSkips(guide)
             and "Remaining guide steps are skipped. Reset guide skips in settings to restore them."
             or "This quest has no available NPC or objective destination yet. View its details in the Quest library."
@@ -512,6 +512,7 @@ function ns.ShowGuideOnMap(guide)
     if not WorldMapFrame and C_AddOns and type(C_AddOns.LoadAddOn) == "function" then C_AddOns.LoadAddOn("Blizzard_WorldMap") end
     if WorldMapFrame and type(WorldMapFrame.SetMapID) == "function" and type(WorldMapFrame.Show) == "function" then
         local mapID = first and first.mapID or guide.mapID
+        if guide.mode == "travel" then mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player") or mapID end
         if integer(mapID, 1000000) and mapID > 0 then WorldMapFrame:SetMapID(mapID) end
         WorldMapFrame:Show()
         ns.ActivateRoute(guide, route)
@@ -521,7 +522,8 @@ function ns.ShowGuideOnMap(guide)
         ns.routeStats.status = "World map frame unavailable; the guide is selected."
     end
     ns.guideAction = first and (#route.stops .. " route stop(s): " .. first.label .. ".")
-        or guide.pendingReason or "Guide selected; its next NPC or objective location needs confirmation."
+        or route.complete and guide.mode == "travel" and "Arrived in Orgrimmar."
+        or route.pendingReason or guide.pendingReason or "Guide selected; its next NPC or objective location needs confirmation."
     if ns.routeStats.lines == 0 then ns.guideAction = ns.guideAction .. " " .. ns.routeStats.status end
     ns.Refresh()
     return true

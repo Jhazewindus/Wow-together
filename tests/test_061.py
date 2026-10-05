@@ -91,10 +91,11 @@ class GuideBrowserTests(unittest.TestCase):
                 data[900 + index * 10 + step] = world_quest(str(index) + str(step), 'Zone ' + str(index), 7000 + index)
         catalogue(c, data); c.ns.SetFilter('guides')
         self.assertEqual(c.ns.ui.visibleCards, 12)
-        self.assertIn('14 guides', c.ns.ui.guideCount.text)
+        self.assertIn('15 guides', c.ns.ui.guideCount.text)  # 14 zones plus the personal city journey.
         c.ns.ui.guideNext.OnClick()
         self.assertEqual(c.ns.guidePage, 2)
-        self.assertEqual(c.ns.ui.visibleCards, 2)
+        self.assertEqual(c.ns.ui.visibleCards, 3)
+        self.assertEqual(c.ns.ui.cards[3].guide.key, 'travel:orgrimmar')
 
     def test_identity_profession_dungeon_repeatable_and_single_quest_filters(self):
         c = solo(); c.ns.profile.classID = 8

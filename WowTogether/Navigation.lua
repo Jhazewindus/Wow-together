@@ -42,6 +42,13 @@ local function duration(value)
 end
 
 function ns.RouteContext(stop, mapID)
+    if ns.routeSelection and ns.routeSelection.mode == "travel" then
+        if stop.travelLeg or stop.flightPlan then
+            return (stop.travelLeg and stop.travelLeg.method == "walk" and "Follow the crossing towards Orgrimmar."
+                or "Use this transport towards Orgrimmar.") .. "\nQuickest known route; travel times are estimates."
+        end
+        return ns.routePaused or "Reach Orgrimmar.\nTravel guide • Levels 1–60."
+    end
     if stop.kind == "loading" then return "Checking progress and prerequisites.\nComparing nearby pickups, work and returns." end
     if stop.kind == "notice" and ns.routeSelection and ns.routeSelection.fullGuide then
         if ns.selectedRoute and ns.selectedRoute.complete then return "Guide complete.\nChoose another guide or Scan to check progress." end
@@ -89,6 +96,7 @@ function ns.NavigationState()
     if ns.routePlanning then
         return {visible = true, status = "Loading route…", stop = {id = 0, kind = "loading", title = ns.routePlanning.guide.title}}
     end
+    if ns.routeSelection and ns.routeSelection.mode == "travel" then ns.UpdateTravelGuide(ns.routeSelection, true) end
     local route = ns.routeSelection and ns.selectedRoute
     local stop = ns.navigationPreview and ns.navigationPreview.stop or route and route.stops and route.stops[1]
     if not stop and ns.routeSelection then
@@ -170,11 +178,13 @@ function ns.UpdateNavigation()
     frame.symbol:SetText("…"); frame.symbol:SetTextColor(0.96, 0.76, 0.35, 1)
     frame.symbol:SetShown(state.angle == nil and not state.arrived and not state.flight)
     frame.step:SetText(state.stop.kind == "loading" and "Generating an efficient trip" or state.stop.historyPreview and "History preview • published location" or
-        (ns.navigationPreview and "Preview step • arrows browse; Scan returns to the plan" or
+        (ns.routeSelection and ns.routeSelection.mode == "travel" and "Travel guide • Levels 1–60" or
+            ns.navigationPreview and "Preview step • arrows browse; Scan returns to the plan" or
             (state.stop.guideStep and ("Zone guide step " .. state.stop.guideStep) or "Current guide step")))
     local editable = not ns.navigationPreview and not state.flight and state.stop.kind ~= "corpse"
         and (state.stop.kind ~= "notice" or state.stop.id > 0) and state.stop.kind ~= "loading"
-    frame.skipStep:SetEnabled(editable); frame.skipQuest:SetEnabled(editable); frame.scan:SetEnabled(not state.flight and state.stop.kind ~= "loading")
+    local quests = not (ns.routeSelection and ns.routeSelection.mode == "travel")
+    frame.skipStep:SetEnabled(editable and quests); frame.skipQuest:SetEnabled(editable and quests); frame.scan:SetEnabled(not state.flight and state.stop.kind ~= "loading")
     frame.back:SetEnabled(state.stop.kind ~= "loading"); frame.next:SetEnabled(state.stop.kind ~= "loading")
     if state.arrived then ns.DrawNavigationArrow(math.pi)
     elseif state.angle ~= nil then ns.DrawNavigationArrow(state.angle) end

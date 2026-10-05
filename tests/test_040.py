@@ -94,7 +94,7 @@ class UpdateTests(unittest.TestCase):
         c = route_client()
         map_canvas(c)
         c.receive('1|S|1|1|1|900')
-        c.receive('1|P|5|2|501|Test Coast')
+        c.receive('1|P|10|2|501|Test Coast')
         c.receive('1|R|1|900|501|60000|40000|q')
         c.receive('1|C|2|1|1|')
         c.receive('1|K|2|1|1|900')
@@ -107,7 +107,7 @@ class UpdateTests(unittest.TestCase):
         self.assertIn('Waiting', c.ns.routeStats.status)
         self.assertGreater(c.ns.routeStats.pins, 0)
         c.receive('1|S|1|1|1|900')
-        c.receive('1|P|5|2|501|Test Coast')
+        c.receive('1|P|10|2|501|Test Coast')
         c.receive('1|R|1|900|501|61000|41000|q')
         self.assertIsNone(c.ns.routePaused)
 

@@ -155,7 +155,7 @@ class GuideBrowseTests(unittest.TestCase):
         self.assertTrue(c.ns.LevelingValue(791))
         self.assertTrue(any(s.id == 791 for s in c.ns.BuildFixedGuideRoute(g, False).previewStops.values()))
 
-    def test_fixed_guide_keeps_useful_low_level_chains_and_explicit_current_work(self):
+    def test_fixed_guide_keeps_useful_chains_and_ready_turnins_but_filters_current_old_work(self):
         c = guide_client(2)
         catalogue(c, {900: world_quest('Old work', level=7),
                       901: world_quest('Current work')})
@@ -163,7 +163,7 @@ class GuideBrowseTests(unittest.TestCase):
         c.ns.active[900] = 'Old work'
         self.assertFalse(any(s.id == 900 for s in c.ns.BuildFixedGuideRoute(g, False).stops.values()))
         included = c.ns.MergeCurrentQuests(g)
-        self.assertTrue(any(s.id == 900 for s in c.ns.BuildFixedGuideRoute(included, False).stops.values()))
+        self.assertFalse(any(s.id == 900 for s in c.ns.BuildFixedGuideRoute(included, False).stops.values()))
         c.ns.readyToTurnIn[900] = True
         self.assertTrue(any(s.id == 900 and s.kind == 't' for s in c.ns.BuildFixedGuideRoute(g, False).stops.values()))
         c.ns.active[900] = None; c.ns.readyToTurnIn[900] = None
@@ -183,13 +183,13 @@ class GuideBrowseTests(unittest.TestCase):
         c.ns.RequestStartRoute(g); c.ns.startGuidePrompt.current.OnClick(); c.drain()
         self.assertEqual(c.ns.routeSelection.mode, 'bundle')
 
-    def test_adaptive_selected_guide_filters_active_old_work_but_keeps_explicit_log_choice(self):
+    def test_adaptive_selected_guide_filters_current_old_work_but_keeps_ready_handins(self):
         c = guide_client(2)
         catalogue(c, {900: world_quest('Old work', level=7), 901: world_quest('Current work')})
         g = zone(c); c.ns.active[900] = 'Old work'
         self.assertFalse(any(s.id == 900 for s in c.ns.BuildLevelingRoute(g, False, False).previewStops.values()))
         included = c.ns.MergeCurrentQuests(g)
-        self.assertTrue(any(s.id == 900 for s in c.ns.BuildLevelingRoute(included, False, False).previewStops.values()))
+        self.assertFalse(any(s.id == 900 for s in c.ns.BuildLevelingRoute(included, False, False).previewStops.values()))
         c.ns.readyToTurnIn[900] = True
         # A retained adaptive trip need not detour to a distant hand-in now,
         # but the full eligible preview must keep it for the next trip.

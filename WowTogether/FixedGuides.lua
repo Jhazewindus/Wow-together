@@ -147,14 +147,11 @@ end
 local function remaining(stop, query, guide)
     if ns.IsLevelingExcludedQuest(stop.id) or ns.GuideQuestSkipped(stop.id) or #ns.FilterGuideStages({stop}) == 0 then return nil end
     local waiting, chosen
-    local useful = ns.LevelingValue(stop.id, query)
     for _, person in ipairs(query.profiles) do
         if ns.CatalogueIdentityAllowed(stop.id, person.profile) ~= false then
             local active = person.key == ns.self and ns.active or ns.members[person.key] and ns.members[person.key].active
-            local keep = useful ~= false or guide.catchupRequired and guide.catchupRequired[stop.id]
-                or active and active[stop.id] and (guide.mode == "bundle"
-                    or ns.QuestProgressReady(person.key, stop.id) == true
-                    or person.key == ns.self and ns.readyToTurnIn[stop.id] == true)
+            local keep = ns.LevelingWorkAllowed(stop.id, person.key, query)
+                or guide.catchupRequired and guide.catchupRequired[stop.id]
             -- Keep the compiled order intact. Level-filtered steps receive no
             -- completion/skip credit and can return if party context changes.
             if keep then

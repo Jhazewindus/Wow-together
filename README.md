@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.7.2** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.7.3** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -16,7 +16,7 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **37 Lua
+Replace the folder on **every party member's client**, including all **38 Lua
 files**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
@@ -154,8 +154,19 @@ the trip's travel order is calculated when you start.
 When you start a new guide while quests are already in party logs, choose
 **Start selected guide** or **Include current quests**. The popup explains
 that including scattered current quests can cause unusual routes and long
-detours. The former global current-quests-first switch is no longer exposed.
+detours. Both choices filter unfinished low-level work; ready hand-ins and useful
+prerequisites remain. The former global current-quests-first switch is no longer exposed.
 Quest-log plans remain available without replacing an explicitly chosen guide.
+
+**Path to Orgrimmar** is a personal travel guide in Leveling guides, available
+to Horde characters from levels 1–60 in each bracket. Search Orgrimmar and Start
+route; it compares known city gates and uses the travel graph for crossings,
+transports and character-confirmed flights. It does not pick up quests or invite
+friends. It survives reload and finishes when you enter Orgrimmar. Scan refreshes
+the journey; a missing connection is explained with the guide retained. It uses
+the travel graph for this explicitly selected journey even when graph guidance
+for ordinary quests is off. Walking costs/transport waits are estimates, so this
+chooses the quickest known path rather than guaranteeing collision-free travel.
 
 Normal quest acceptance and zone updates retain the selected quest set.
 A committed unfinished objective stays selected while crossing a zone.
@@ -165,21 +176,26 @@ Arrival alone never accepts, completes or hands in a quest.
 
 ## Planning and party progress
 
-- New leveling pickups use the lowest published party level and known faction,
+- New leveling pickups use the lowest synced party level and known faction,
   class, race and completion requirements. Discovery favors the current zone
   and suitable known neighbors. Opposing-faction starters and distant unlinked
   zones do not become automatic recommendations.
 - Low-value work is filtered while advancing fixed guides as well as planning
-  adaptive routes. The preferred floor is three levels below you, widening to
-  10% of your level when that is larger; the upper limit remains three above.
+  adaptive routes, retained quest/circuit routes and current-quest routes. The
+  preferred band is three quest levels below to three above the lowest synced
+  player's level. Unsynced/stale member context cannot lower that band.
   This is a leveling preference, not a statement that lower quests give no XP.
-  At level 12, Carry Your Weight (level 7, no known useful continuation) does
-  not become a new guide pickup. Compiled steps retain their order and receive
+  At level 23, the normal band is 20–26; Centaur Bracers (level 14, no known useful
+  continuation in the shipped data) is excluded from new pickups and unfinished
+  log work. Ready hand-ins remain. Compiled steps retain their order and receive
   no false completion or manual-skip credit when filtered.
   An earlier quest can remain when a known
   useful follow-up or a suitable dungeon quest justifies it; the arrow explains
-  the exception. Accepted work explicitly included by you can remain below
-  that range. Unknown follow-ups cannot justify a low-level detour.
+  the exception. Include current quests respects the same band. Unknown follow-ups
+  cannot justify a low-level detour. The catalogue stores quest/minimum levels
+  and published base XP where known; this filter is not a tested Forever XP
+  formula or an exact reproduction of Wowhead's difficulty colors. Diagnostics
+  show the band and player it uses, while quest details explain exceptions.
 - Collector's Edition **Welcome!** rewards are excluded from leveling guides,
   including older retained plans. All seven catalogue variants remain browsable
   in All quests. Bonus exclusion rules are retained separately for future imports.
@@ -503,7 +519,7 @@ provided broad inspiration about progress clarity; its code/assets/layouts
 were not copied. This implementation is independent.
 
 Reported beta build **70205** established the earlier sync APIs in user tests.
-**0.7.2 has host validation, not a live-client compatibility certification.**
+**0.7.3 has host validation, not a live-client compatibility certification.**
 Retest UI rendering, optional gossip/flight actions, corpse positions and item
 hooks on the build in front of you. `/wt probe` lists capabilities and runtime
 status. Do not interpret presence as proof that protected actions work.
@@ -520,7 +536,7 @@ compiler discards temporary caches when it yields. Guide decisions, prerequisite
 rules, fixed/adaptive order, sync behavior, settings and UI remain the same.
 See PERFORMANCE.md for measured host results and the repeatable benchmark command.
 
-Host checks load all 37 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
+Host checks load all 38 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
 
 ```sh
 python3 -m venv /tmp/wow-together-tests

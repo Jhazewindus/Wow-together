@@ -1,12 +1,12 @@
 # Wow Together — friend test script
 
-For **0.7.2**, World of Warcraft: Forever beta, interface **16001**.
+For **0.7.3**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 37 Lua files**, in
+1. Replace the complete WowTogether folder, including **all 38 Lua files**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    `/reload`; restart fully if a new addon folder does not appear.
 2. Enable `/console scriptErrors 1`. Record version, build, level, faction, class,
@@ -29,7 +29,7 @@ Keep tester names and reports separate; label the main developer's report.
    guide, beyond the old six-quest/twenty-stop trip limit. Missing locations or
    locked current pickups should be explained, without invented destinations.
    If asked about existing quests, use Start selected guide for this check;
-   Include current quests explicitly includes that extra work and its detours.
+   Include current quests includes worthwhile log work/ready returns and its detours.
 3. **Different starting locations/logs:** two matching-faction/class testers
    select the same zone guide from different places, with different active quests.
    Compare future numbered stages. The generated order should agree for matching
@@ -221,7 +221,7 @@ Keep tester names and reports separate; label the main developer's report.
 33. **Low-value work:** at level 12, Durotar must not ask for a new Carry Your
     Weight pickup. Check another low-level quest too. Useful lower prerequisite
     chains should explain their continuation. Start selected guide should filter
-    unfinished low-value work; Include current quests may retain it. Ready hand-ins
+    unfinished low-value work; Include current quests must filter it too. Ready hand-ins
     still appear. Scan, movement and level changes must not reorder fixed steps.
 34. **Recognize flight unlocks:** log in with some known paths, then open a flight
     master's map. Capture the GetTaxiMapID / GetTaxiNodesForMap capability lines
@@ -236,6 +236,30 @@ Keep tester names and reports separate; label the main developer's report.
     A public unlocked node with zero observed connections still needs a master's
     reachable list before it can become a flight suggestion. Auto-flight stays
     off unless explicitly enabled; secret slots/current-master gaps stay manual.
+35. **Immediate skip redraw:** with a guide and map open, Skip quest. All of that
+    quest's markers should disappear immediately; the arrow targets the next
+    remaining step. Skip step removes just that step. Repeat with the main window
+    hidden, while resizing, and during combat. Owned map geometry can update;
+    protected actions still wait. Reload should preserve the skip. Do not receive
+    completion credit, unlock a follower or change the fixed sequence's order.
+36. **Close level band across guides:** solo at level 23, confirm Diagnostics says
+    quest levels 20–26 / You. Centaur Bracers (14) must not become an unaccepted
+    pickup. Test normal zone, adaptive, retained quest/circuit and current-quest
+    routes; accepting it manually and choosing Include current quests must not
+    reintroduce unfinished low-value work. A ready return can remain. Repeat with
+    another zone/quest and at a higher level. Useful known prerequisites/class
+    progression must explain their exception. With a lower-level synced friend,
+    confirm the displayed band changes to that friend's level; a refreshing peer
+    must not lower it from stale data. Attach the actual offending pickup step's
+    probe if any low quest still appears, including version and party context.
+37. **Path to Orgrimmar:** Horde levels 1, 23 and 60 should find this travel guide
+    in their normal bracket/search. Start from Durotar, the Barrens and a zone
+    requiring a zeppelin where available. Compare directions and estimated time
+    with known flights on/off; never suggest an unconfirmed flight. No quest
+    pickups or party invitation. Reload and confirm it resumes; Scan refreshes
+    travel. Entering Orgrimmar finishes it and retains the panel. Starting inside
+    the city should say Arrived. An unmapped/disconnected zone should explain the
+    gap without inventing a crossing; this is a travel graph, not a terrain mesh.
 
 ## Copyable tester report
 
@@ -246,7 +270,7 @@ Addon / client build:
 Level / class / race / faction / zone:
 Party size / selected guide:
 Fixed zone guides / full route / learning settings:
-Checks 1–34: Pass / Fail / Skip (reason)
+Checks 1–37: Pass / Fail / Skip (reason)
 Exact quest name and ID / NPC / current and next step numbers:
 What happened / expected result:
 Was the quest offered? Was its prerequisite handed in?

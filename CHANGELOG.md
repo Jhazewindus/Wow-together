@@ -1,5 +1,22 @@
 # Wow Together changelog
 
+## 0.7.3
+
+- Skip quest/step updates the selected route, arrow and owned map markers
+  immediately, including with the main window hidden/resizing. Clear the old
+  travel target; keep saved skips and fixed guide order.
+- Apply the close level band to fixed, adaptive, retained quest/circuit and
+  current-quest routes. Include current quests no longer bypasses it. Normally
+  choose quests from three levels below to three above the lowest synced player;
+  retain ready hand-ins, class progression and explained useful prerequisites.
+  Filtering does not abandon quests, mark completion or learn a prerequisite.
+- Add Path to Orgrimmar in Leveling guides for Horde levels 1–60. Compare known
+  city crossings and use the existing travel search for transports/confirmed
+  flights. Save across reload, finish on entering the city, and explain unmapped
+  connections. Travel times and walking links remain estimates.
+- Show the preferred band and lowest synced player in Diagnostics, and the
+  band/reason in quest details. Exact beta XP reductions are not inferred.
+
 ## 0.7.2
 
 - Fix flight-map detection: use the global GetTaxiMapID(), with a guarded

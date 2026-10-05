@@ -1,3 +1,38 @@
+# Follow-up review for 0.7.3
+
+The user asks for immediate map updates after Skip quest and a close level band
+across every leveling guide. Their friend (unnamed) was directed to pick up
+Centaur Bracers at level 23; it was NOT accepted. The user's separate observation
+also reports it appearing, without supplying their level/version/party/route state.
+No probe was available because the friend had left. Do not attribute the previous
+Elianus report to this friend or claim a proven cause for this specific run.
+The accepted-quest bypass initially suggested does not explain that new pickup.
+The user explicitly chose to apply the level filter to unfinished current quests
+too, superseding the older Include current quests exception. They also request
+a simple Path to Orgrimmar travel guide for levels 1–60. These requests agree with
+fixed ordering, useful prerequisite exceptions and optional party invitations.
+
+Inspection finds three real gaps: SkipGuide relies on dashboard rendering, which
+is delayed during resizing; fixed/adaptive bundled work admits any accepted quest;
+and retained normal/circuit route construction does not reapply LevelingValue.
+Those gaps do not establish which path the absent friend's client used. The
+shipped Bracers record is level 14 with no known useful follower and is rejected
+by the normal level-23 policy. Test both unaccepted and accepted variants through
+all leveling route modes; use general gates, not a quest-specific blacklist.
+Apply a three-level lower/upper band, preserve ready hand-ins per character and
+known useful/class exceptions, and exclude unsynced stale levels from the floor.
+Expose that floor in diagnostics for the next real capture. Catalogue levels/
+base XP are known metadata, not proof of Forever's exact XP reduction formula.
+
+Make explicit skip actions update route state, cached travel target, navigation
+and owned geometry directly; protected actions retain their combat checks.
+Fixed sequence and saved skips remain separate from completion/prerequisites.
+The city journey uses original search and the existing licensed geographic data,
+compares both published gates, saves a personal descriptor with no fake quests,
+and completes on city entry. Missing connections retain explanatory controls.
+It is fastest in the known weighted graph, not a terrain/time guarantee. Host
+checks cover logic; native beta map/flight/arrival behavior still needs retesting.
+
 # Follow-up review for 0.7.2
 
 The user reports that unlocked flight paths are not recognized. Their supplied
