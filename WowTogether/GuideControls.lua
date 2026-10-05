@@ -59,6 +59,7 @@ function ns.SkipGuide(kind)
         state.steps[stop.id] = state.steps[stop.id] or {}
         state.steps[stop.id][ns.GuideStepKey(stop)] = true
     else return end
+    ns.RecordQuestResearch(kind == "quest" and "skip-quest" or "skip-step", {questID = stop.id})
     ns.routeSignature = nil
     ns.navigationPreview = nil
     ns.Refresh()

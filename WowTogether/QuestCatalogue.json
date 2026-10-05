@@ -166,7 +166,7 @@
   "with_objectives": 196,
   "with_turnins": 972,
   "with_series": 726,
-  "with_prerequisites": 524,
+  "with_prerequisites": 525,
   "repeatable_quests": 78,
   "unverified_prerequisites": 14,
   "incomplete_objective_locations": 950,
@@ -197,5 +197,8 @@
     "141": 1438,
     "215": 1412,
     "33": 1434
-  }
+  },
+  "tester_corrections": [
+    750
+  ]
 }

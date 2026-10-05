@@ -1,6 +1,7 @@
 local addonName, ns = ...
 
 local LIMIT, baselines, tracking = 512, {}, {}
+local ruleIndex, indexData, indexRevision = {}, nil, nil
 local function data() return ns.db and ns.db.questLearning end
 local function set(list)
     local result = {}
@@ -12,14 +13,49 @@ local function scope(record)
     if type(record) ~= "table" or record.interface ~= 16001 or type(record.build) ~= "string"
         or not string.match(record.build, "^%d+$") or #record.build > 12
         or (record.faction ~= "Horde" and record.faction ~= "Alliance")
-        or not ns.GuideInteger(record.classID, 255) or record.classID == 0
-        or not ns.GuideInteger(record.raceID, 255) or record.raceID == 0 then return end
-    return table.concat({record.interface, record.build, record.faction, record.classID, record.raceID}, ":")
+        or record.classID ~= nil and not ns.GuideInteger(record.classID, 255)
+        or record.raceID ~= nil and not ns.GuideInteger(record.raceID, 255) then return end
+    return table.concat({record.interface, record.build, record.faction, record.classID or 0, record.raceID or 0}, ":")
 end
-local function currentScope(profile)
+local function currentContext(profile)
     local _, build, _, interface = ns.ReadPublic(GetBuildInfo)
-    return scope({interface = interface, build = build, faction = profile and profile.faction,
-        classID = profile and profile.classID, raceID = profile and profile.raceID})
+    return {interface = interface, build = build, faction = profile and profile.faction,
+        classID = profile and profile.classID, raceID = profile and profile.raceID}
+end
+
+local function restrictions(parent, child)
+    local class, race = false, false
+    for _, id in ipairs({parent, child}) do
+        local quest = ns.CatalogueQuest(id) or {}
+        class = class or (quest.classMask or 0) > 0 or string.match(quest.categoryPath or "", "^classes/") ~= nil
+        race = race or (quest.raceMask or 0) > 0
+    end
+    return class, race
+end
+
+local function ruleScope(context, parent, child)
+    if type(context) ~= "table" or context.interface ~= 16001 or type(context.build) ~= "string"
+        or not string.match(context.build, "^%d+$") or #context.build > 12
+        or (context.faction ~= "Horde" and context.faction ~= "Alliance") then return end
+    local class, race = restrictions(parent, child)
+    if class and (not ns.GuideInteger(context.classID, 255) or context.classID == 0)
+        or race and (not ns.GuideInteger(context.raceID, 255) or context.raceID == 0) then return end
+    return table.concat({context.interface, context.build, context.faction,
+        class and context.classID or 0, race and context.raceID or 0}, ":"), class, race
+end
+
+local function indexedRules(id)
+    local saved = data()
+    if saved ~= indexData or saved.revision ~= indexRevision then
+        ruleIndex, indexData, indexRevision = {}, saved, saved.revision
+        local keys = {}; for key in pairs(saved.rules) do keys[#keys + 1] = key end; table.sort(keys)
+        for _, key in ipairs(keys) do
+            local rule = saved.rules[key]
+            ruleIndex[rule.questID] = ruleIndex[rule.questID] or {}
+            table.insert(ruleIndex[rule.questID], rule)
+        end
+    end
+    return ruleIndex[id] or {}
 end
 local function changed()
     local saved = data()
@@ -42,19 +78,29 @@ local function singleGiver(id, npcID)
     return count == 1
 end
 
-local function usable(rule, wanted)
-    return rule.scope == wanted and rule.disabled ~= true and not rule.ambiguous
+local function usable(rule, context)
+    return rule.scope == ruleScope(context, rule.previousQuest, rule.questID)
+        and rule.disabled ~= true and not rule.ambiguous
         and not ns.IsRepeatableQuest(rule.questID) and not ns.IsRepeatableQuest(rule.previousQuest)
         and not ns.IsProfessionQuest(rule.questID) and not ns.IsProfessionQuest(rule.previousQuest)
         and singleGiver(rule.questID, rule.npcID)
 end
 
+local function matchingRule(id, context)
+    local found
+    for _, rule in ipairs(indexedRules(id)) do
+        if usable(rule, context) then
+            if found and found.previousQuest ~= rule.previousQuest then return end
+            found = rule
+        end
+    end
+    return found
+end
+
 function ns.LearnedQuestRule(id, profile, key)
     if not ns.GuideInteger(id) or id <= 0 or key and key ~= ns.self
         or not ns.Option("useLearnedQuests") or not data() then return end
-    local wanted = currentScope(profile or ns.profile)
-    local rule = wanted and data().rules[wanted .. ":" .. id]
-    if rule and usable(rule, wanted) then return rule end
+    return matchingRule(id, currentContext(profile or ns.profile))
 end
 
 function ns.LearnedPrerequisiteIDs(id)
@@ -65,10 +111,13 @@ function ns.LearnedPrerequisiteIDs(id)
 end
 
 function ns.LearnedFollowers(id, key)
-    local result, wanted = {}, currentScope(ns.profile)
-    if key and key ~= ns.self or not ns.Option("useLearnedQuests") or not data() or not wanted then return result end
+    local result, context, seen = {}, currentContext(ns.profile), {}
+    if key and key ~= ns.self or not ns.Option("useLearnedQuests") or not data() then return result end
     for _, rule in pairs(data().rules) do
-        if rule.previousQuest == id and usable(rule, wanted) then result[#result + 1] = rule.questID end
+        if rule.previousQuest == id and usable(rule, context) and not seen[rule.questID]
+            and matchingRule(rule.questID, context) then
+            result[#result + 1], seen[rule.questID] = rule.questID, true
+        end
     end
     table.sort(result); return result
 end
@@ -104,7 +153,7 @@ local function hasAncestor(id, wanted, seen, depth, context)
     local quest, ids = ns.CatalogueQuest(id) or {}, {}
     if quest.previousQuest then ids[#ids + 1] = quest.previousQuest end
     for _, previous in ipairs(quest.prerequisiteAny or {}) do ids[#ids + 1] = previous end
-    local learned = data().rules[context .. ":" .. id]
+    local learned = matchingRule(id, context)
     if learned and not learned.disabled and not learned.ambiguous then ids[#ids + 1] = learned.previousQuest end
     for _, previous in ipairs(ids) do
         if hasAncestor(previous, wanted, seen, depth + 1, context) then return true end
@@ -124,9 +173,11 @@ local function evidence(before, after, sourceID)
     return {sourceID = sourceID, before = publicCopy(before), after = publicCopy(after)}
 end
 
-local function remember(before, after, parent, child, source, wanted)
+local function remember(before, after, parent, child, source)
     if parent == child or ns.IsRepeatableQuest(parent) or ns.IsRepeatableQuest(child)
         or ns.IsProfessionQuest(parent) or ns.IsProfessionQuest(child) then return end
+    local wanted, class, race = ruleScope(after, parent, child)
+    if not wanted then return end
     local saved, key = data(), wanted .. ":" .. child
     local rule = saved.rules[key]
     if not rule then
@@ -135,9 +186,11 @@ local function remember(before, after, parent, child, source, wanted)
         rule = {scope = wanted, interface = after.interface, build = after.build, faction = after.faction,
             classID = after.classID, raceID = after.raceID, npcID = after.npcID, questID = child,
             previousQuest = parent, sourceCharacter = ns.SafeTitle(ns.MemberLabel(source)) or "Unknown character",
-            characters = {}, proofs = {}, level = after.level, tentative = true}
+            characters = {}, proofs = {}, level = after.level, tentative = true,
+            classRestricted = class, raceRestricted = race}
         saved.rules[key] = rule
-        if hasAncestor(parent, child, {}, 0, wanted) then rule.disabled, rule.reason = true, "Would create a prerequisite cycle." end
+        indexData = nil
+        if hasAncestor(parent, child, {}, 0, after) then rule.disabled, rule.reason = true, "Would create a prerequisite cycle." end
     elseif rule.previousQuest ~= parent then
         rule.disabled, rule.reason, rule.alternativeParent = true, "Another predecessor was observed; possible branching.", parent
         changed()
@@ -177,7 +230,7 @@ function ns.ObserveQuestLearning(record, source)
     local offered, undone, completed = set(record.offered), set(record.notCompleted), set(record.completed)
     -- Positive offers contradict a tentative dependency even in a partial list.
     for _, rule in pairs(saved.rules) do
-        if rule.scope == wanted and rule.npcID == record.npcID and not rule.disabled
+        if rule.scope == ruleScope(record, rule.previousQuest, rule.questID) and rule.npcID == record.npcID and not rule.disabled
             and offered[rule.questID] and undone[rule.previousQuest] then
             rule.disabled, rule.reason = true, "NPC offered the quest before the learned prerequisite was completed."
             changed()
@@ -196,7 +249,7 @@ function ns.ObserveQuestLearning(record, source)
             for child in pairs(offered) do
                 if not beforeOffered[child] and not beforeActive[child] and beforeUndone[child]
                     and not beforeDone[child] and undone[child] and not afterActive[child]
-                    and not completed[child] then remember(before, record, parent, child, source, wanted) end
+                    and not completed[child] then remember(before, record, parent, child, source) end
             end
         end
     end
@@ -211,16 +264,46 @@ end
 
 function ns.InitializeQuestLearning()
     local saved = data()
-    if type(saved) ~= "table" or saved.schema ~= 1 or type(saved.rules) ~= "table" or type(saved.sources) ~= "table" then
-        saved = {schema = 1, rules = {}, sources = {}, sourceSequence = 0, revision = 0}; ns.db.questLearning = saved
+    if type(saved) ~= "table" or (saved.schema ~= 1 and saved.schema ~= 2)
+        or type(saved.rules) ~= "table" or type(saved.sources) ~= "table" then
+        saved = {schema = 2, rules = {}, sources = {}, sourceSequence = 0, revision = 0}; ns.db.questLearning = saved
     end
     if not ns.GuideInteger(saved.sourceSequence) then saved.sourceSequence = 0 end
     if not ns.GuideInteger(saved.revision) then saved.revision = 0 end
-    for key, rule in pairs(saved.rules) do
+    -- Preserve existing observations while broadening ordinary rules. Conflicting
+    -- predecessors from formerly separate classes/races require review.
+    local keys, migrated = {}, {}
+    for key in pairs(saved.rules) do keys[#keys + 1] = key end; table.sort(keys)
+    for _, key in ipairs(keys) do
+        local rule = saved.rules[key]
         if type(rule) ~= "table" or not ns.GuideInteger(rule.questID) or not ns.GuideInteger(rule.previousQuest)
             or not ns.GuideInteger(rule.npcID) or type(rule.scope) ~= "string" or type(rule.sourceCharacter) ~= "string"
-            or type(rule.characters) ~= "table" or type(rule.proofs) ~= "table" then saved.rules[key] = nil end
+            or type(rule.characters) ~= "table" or type(rule.proofs) ~= "table" then rule = nil end
+        local wanted, class, race
+        if rule then wanted, class, race = ruleScope(rule, rule.previousQuest, rule.questID) end
+        if wanted then
+            rule.scope, rule.classRestricted, rule.raceRestricted = wanted, class, race
+            local destination = wanted .. ":" .. rule.questID
+            local existing = migrated[destination]
+            if not existing then migrated[destination] = rule
+            else
+                if existing.previousQuest ~= rule.previousQuest or existing.npcID ~= rule.npcID then
+                    existing.disabled, existing.alternativeParent = true, rule.previousQuest
+                    existing.reason = "Conflicting observations merged across classes/races; needs review."
+                end
+                existing.disabled = existing.disabled or rule.disabled
+                existing.ambiguous = existing.ambiguous or rule.ambiguous
+                existing.reason = existing.reason or rule.reason
+                existing.reputationNotification = existing.reputationNotification or rule.reputationNotification
+                for character in pairs(rule.characters) do existing.characters[character] = true end
+                for _, proof in ipairs(rule.proofs) do
+                    if #existing.proofs < 4 then existing.proofs[#existing.proofs + 1] = proof end
+                end
+            end
+        end
     end
+    saved.rules, saved.schema, saved.revision = migrated, 2, saved.revision + 1
+    indexData = nil
     ns.ResetLearningContext()
     local names = {}; for name in pairs(ns.db.questResearch or {}) do names[#names + 1] = name end; table.sort(names)
     for _, name in ipairs(names) do
@@ -240,7 +323,7 @@ function ns.ExportLearnedFindings()
         local rule, copy = saved.rules[key], {}
         for _, field in ipairs({"questID", "previousQuest", "npcID", "interface", "build", "faction", "classID",
             "raceID", "level", "tentative", "disabled", "reason", "ambiguous", "alternativeParent",
-            "reputationNotification", "proofs"}) do copy[field] = rule[field] end
+            "reputationNotification", "proofs", "classRestricted", "raceRestricted"}) do copy[field] = rule[field] end
         local count = 0; for _ in pairs(rule.characters) do count = count + 1 end; copy.sourceCount = count
         if ns.Option("exportCharacterNames") then copy.sourceCharacter = rule.sourceCharacter end
         result[#result + 1] = copy
@@ -255,6 +338,7 @@ function ns.LearningDiagnostics(output)
     end
     output("Observed quest learning: " .. (ns.Option("useLearnedQuests") and "on" or "off") .. "; "
         .. active .. " patterns; " .. disabled .. " contradicted/disabled; " .. ambiguous .. " need review.")
-    output("One clear case is tentative; rules match build/faction/class/race and do not narrow published alternatives.")
+    output("Ordinary patterns match build/faction; class/race are required only for restricted quests or prerequisites.")
+    output("A skip is saved for this character; it does not learn an unlock or confirm a missing NPC offer.")
     if ns.learningStatus then output(ns.learningStatus) end
 end

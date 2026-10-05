@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.6.3**, World of Warcraft: Forever beta, interface **16001**.
+For **0.6.4**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 
@@ -64,14 +64,19 @@ Keep tester names and reports separate; label the main developer's report.
     detail alone does not prove absence. Changed level, unknown/truncated history,
     other accepted quests, multiple hand-ins or multiple givers can prevent reuse.
     Reputation notifications are recorded as possible alternative explanations.
-11. **Reuse and export:** on a new matching build/faction/class/race character,
-    start a guide that uses a learned relationship. Relevant steps credit the
+11. **Reuse and export:** on a new matching build/faction character of another
+    class/race on this account, test an ordinary learned quest requirement.
+    For a class/race quest or prerequisite, only the required dimension stays
+    specific; do not apply that finding to an incompatible character.
+    Start a guide that uses a learned relationship. Relevant steps credit the
     observing character. Existing fixed guides keep their compiled order.
     `/wt findings` or Export guide findings includes patterns and supporting
     before/after evidence; Select all, Ctrl+C closes the window. Names are omitted
     unless enabled; `/wt research` always omits names. Send labeled text files.
     A real offer before a learned prerequisite is done should disable that rule.
     Published alternative prerequisites must remain valid on another branch.
+    Existing findings should survive upgrading; conflicting merged predecessors
+    should remain visible in exports but not become active pickup requirements.
 12. **Native questlines:** run `/wt questlines` in two or three zones. Export the
     result, including empty results. It shows actual native fields and optionally
     GetQuestLineQuests IDs. This does not assume table membership/order proves a
@@ -80,6 +85,16 @@ Keep tester names and reports separate; label the main developer's report.
     guide. Adaptive trips should optimize nearby work and current logs. Their
     full preview should still include all eligible mapped quests. Check reward
     choices stay manual, tracker auto-hides solo/raid, and UI resizing/arrow work.
+14. **Mulgore Hunt chain:** start a fresh Mulgore guide. With The Hunt Begins
+    (747) accepted or ready for turn-in, The Hunt Continues (750) must stay locked.
+    The fixed sequence must place 747's hand-in before 750's pickup. Hand in 747
+    and inspect Grull Hawkwind's actual offers. Record whether 750 now appears;
+    the correction is tester-reported, not a newly verified API contract.
+15. **Skip versus learning:** with recording on, skip a step/quest. Hover both
+    buttons to read the distinction. /wt research should contain a skip-step or
+    skip-quest event, with no invented completion or NPC absence. A skip without
+    a later observed unlock must not create a learned prerequisite. Other
+    characters must retain their own independent saved skips.
 
 ## Copyable tester report
 
@@ -90,7 +105,7 @@ Addon / client build:
 Level / class / race / faction / zone:
 Party size / selected guide:
 Fixed zone guides / full route / learning settings:
-Checks 1–13: Pass / Fail / Skip (reason)
+Checks 1–15: Pass / Fail / Skip (reason)
 Exact quest name and ID / NPC / current and next step numbers:
 What happened / expected result:
 Was the quest offered? Was its prerequisite handed in?

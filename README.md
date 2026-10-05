@@ -1,7 +1,7 @@
 # Wow Together
 
 A party quest guide for the **World of Warcraft: Forever beta**. Version
-**0.6.3** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.6.4** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -156,7 +156,9 @@ order in which a player actually visited them. Visited guide steps are also
 kept for the current session.
 
 **Skip step** and **Skip quest** persist per character. They do not unlock
-prerequisites or change friends' progress. **Scan guide** reads actual quest
+prerequisites or change friends' progress. Recording saves these as explicit skip
+events, without inferring NPC absence or a prerequisite. Button tooltips explain
+the distinction. **Scan guide** reads actual quest
 logs, objectives and completion history, then returns to the current fixed step, or rebuilds the useful adaptive plan without a report popup. History scope includes
 known series and prerequisites and is bounded to 512 IDs. Restricted values
 remain unknown; peer history waits for received snapshots.
@@ -252,7 +254,8 @@ Ctrl+C. Save the JSON export as a text file and send it with your tester name
 after a session; export before older observations roll off. Diagnostics shows
 the retained/replaced count. Each friend exports their own character's data;
 the export contains no character names, realms, chat or friends' histories.
-Records are not sent through party sync or uploaded automatically. Disable
+Records are not sent through party sync or uploaded automatically. Manual guide
+skips are recorded separately from NPC offers and quest hand-ins. Disable
 recording to pause collection; previous observations remain exportable.
 Reloads and recording toggles mark a new capture segment so gaps remain visible.
 Visit the same giver before and after hand-in for the strongest comparisons.
@@ -260,8 +263,13 @@ A missing planned pickup is recorded only for this character at a known giver
 with a complete public list. **Use observed prerequisite patterns** is on by default. One complete NPC list
 showing a quest absent, followed by exactly one observed hand-in and a positive
 offer, can create a tentative relationship. Relevant history must be public and
-untruncated; no other newly accepted quest may intervene. Matching build, faction,
-class and race can reuse it on new characters on this account. Changed level
+untruncated; no other newly accepted quest may intervene. Matching build and
+faction can reuse ordinary findings on new characters on this account across
+classes and races. A class/race restriction on the quest **or its prerequisite**
+keeps that dimension specific to the observing character. The original class/race
+in an export identifies the observer; classRestricted/raceRestricted show reuse
+limits. Existing findings migrate without losing source evidence; contradictory
+predecessors that merge across classes/races remain disabled for review. Changed level
 makes the pattern review-only. Reputation notifications are noted as a possible
 alternative cause, not treated as actual standing measurements. Multiple givers,
 repeatables and professions do not become automatic learned gates. Published
@@ -269,6 +277,15 @@ alternative prerequisites are never narrowed to one observed branch. A positive
 NPC offer contradicting a learned requirement disables that tentative rule.
 Steps influenced by learning say **Observed by <character> • tentative**. An
 already running fixed guide keeps its order; new guides use the current findings.
+A missing offer or a skip alone does not identify the unlock. Visit the actual
+NPC before and after a hand-in to obtain a useful learning pair.
+
+The bundled **The Hunt Continues (750)** now requires **The Hunt Begins (747)**
+to be handed in. This correction is labeled as a Forever beta tester report,
+separate from published source facts. Both fixed and adaptive guides use it;
+accepting, finishing objectives or skipping The Hunt Begins cannot unlock it.
+Reviewed corrections are retained in tools/quest_corrections.json for subsequent
+catalogue imports; conflicting published gates require review before importing.
 
 Use **Export guide findings** or `/wt findings` to send retained account-wide
 patterns with their before/after evidence plus the current character's latest
@@ -342,7 +359,7 @@ provided broad inspiration about progress clarity; its code/assets/layouts
 were not copied. This implementation is independent.
 
 Reported beta build **70205** established the earlier sync APIs in user tests.
-**0.6.3 has host validation, not a live-client compatibility certification.**
+**0.6.4 has host validation, not a live-client compatibility certification.**
 Retest UI rendering, optional gossip/flight actions, corpse positions and item
 hooks on the build in front of you. `/wt probe` lists capabilities and runtime
 status. Do not interpret presence as proof that protected actions work.

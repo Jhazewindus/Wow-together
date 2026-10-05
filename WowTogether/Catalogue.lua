@@ -351,7 +351,10 @@ function ns.ShowQuestDetails(id)
         if quest.objectiveLocationsIncomplete then lines[#lines + 1] = "Some objective locations are missing or have several possible item-drop sources. Only clear destinations are routed." end
         local _, reason = ns.CatalogueAllowed(id, ns.profile, ns.self)
         if reason then lines[#lines + 1] = reason end
-        if quest.previousQuest then lines[#lines + 1] = "Published previous step: " .. ns.QuestTitle(quest.previousQuest) end
+        if quest.previousQuest then
+            lines[#lines + 1] = (quest.prerequisiteSource and "Reported prerequisite: " or "Published previous step: ") .. ns.QuestTitle(quest.previousQuest)
+            if quest.prerequisiteSource then lines[#lines + 1] = quest.prerequisiteSource end
+        end
         if quest.prerequisiteAny then
             local titles = {}; for _, previous in ipairs(quest.prerequisiteAny) do titles[#titles + 1] = ns.QuestTitle(previous) end
             lines[#lines + 1] = "Finish one published prerequisite variant: " .. table.concat(titles, " / ")

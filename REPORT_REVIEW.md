@@ -1,3 +1,29 @@
+# Follow-up review for 0.6.4
+
+The user reports a fresh Tauren in Mulgore being asked to pick up The Hunt
+Continues while The Hunt Begins is still active, then seeing the same problem
+on another Tauren. Exact addon version, class and build were not supplied.
+The user clarifies that ordinary findings should apply by faction across classes
+and races, retaining those dimensions only for restricted quests. This supersedes
+0.6.3's blanket class/race scope. Code inspection confirms quest 750 lacks the
+reported 747 prerequisite in the imported facts. Add that explicit tester-reported
+data correction with provenance, using the generic prerequisite gate/planner.
+
+Skipping alone is a saved local choice, not evidence of an unlock. Record skips
+as distinct research events and explain this in controls/diagnostics. Preserve
+the full-NPC-list/one-hand-in/new-offer evidence requirement. Account-local learning
+remains local, uses each character's own history, and never rewrites running fixed
+order or silently narrows published alternative branches. Migrate old ordinary
+findings across classes/races; merge sources, flag conflicting predecessors for
+review, retain class/race scope when either quest is restricted. Host checks cannot
+verify the user's actual NPC offer list; include a live Mulgore test.
+
+The previous Zephras/objective task was explicitly stopped by the user; do not
+resume it as part of this correction. No additional friend's report was supplied
+for this batch. The request to explain learning was followed by these concrete
+scope/data corrections, and the user asks whether the general learner covers
+other quests too. Apply the broader scope generally rather than only to Mulgore.
+
 # Follow-up review for 0.6.3
 
 The user supplied an anonymous 0.6.2 JSON export from build 70205/interface16001,

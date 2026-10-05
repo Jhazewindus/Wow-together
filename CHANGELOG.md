@@ -1,5 +1,20 @@
 # Wow Together changelog
 
+## 0.6.4
+
+- Reuse ordinary observed prerequisites across classes and races within the same
+  faction/client build on this account. Class/race quests or prerequisites keep
+  those restrictions. Preserve source attribution and published alternatives.
+- Migrate existing findings and merge matching sources/proofs. Conflicting
+  predecessors remain disabled for review instead of choosing one silently.
+- Correct the tester-reported Mulgore gate: hand in The Hunt Begins (747) before
+  picking up The Hunt Continues (750). Fixed/adaptive guides use the same gate;
+  imports preserve the correction and identify its tester provenance.
+- Record manual step/quest skips as separate export events. Explain in tooltips
+  and diagnostics that skipping alone does not learn a prerequisite or prove
+  NPC absence. Live learning still needs a clear observed hand-in/new-offer pair.
+- Keep running fixed-guide order stable; newly started guides use learned gates.
+
 ## 0.6.3
 
 - Fixed zone/questline guides are now the default: compile the complete sequence

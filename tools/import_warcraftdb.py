@@ -17,6 +17,25 @@ BASE = 'https://forever.warcraftdb.com'
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def apply_corrections(records):
+    """Keep reviewed tester facts separate from source parsing and provenance."""
+    applied = []
+    corrections = json.loads((ROOT / 'tools' / 'quest_corrections.json').read_text())
+    for correction in corrections:
+        quest_id, parent_id = correction['questID'], correction['previousQuest']
+        if quest_id not in records or parent_id not in records:
+            continue
+        quest, parent = records[quest_id], records[parent_id]
+        if quest['title'] != correction['title'] or parent['title'] != correction['previousTitle']:
+            raise ValueError('Tester correction quest identity changed; review required')
+        if quest_id == parent_id or quest.get('previousQuest', parent_id) != parent_id or quest.get('prerequisiteAny'):
+            raise ValueError('Tester correction conflicts with a prerequisite; review required')
+        quest['previousQuest'] = parent_id
+        quest['prerequisiteSource'] = correction['source']
+        applied.append(quest_id)
+    return applied
+
+
 def number(value, maximum=2147483647):
     return value if type(value) is int and 0 <= value <= maximum else None
 
@@ -133,13 +152,15 @@ def main():
             if len(records) % 100 == 0:
                 print(f'Details: {len(records)}/{total}', flush=True)
     date = datetime.date.today().isoformat()
+    corrections = apply_corrections(records)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(generate(records, date))
     summary = {'source': BASE, 'captured': date, 'count': total,
                'minimum_levels': sum('minLevel' in r for r in records.values()),
                'factions': sum('side' in r for r in records.values()),
                'zone_maps': sum(bool(r.get('mapID')) for r in records.values()),
-               'npc_locations': 0, 'verified_prerequisite_links': 0}
+               'npc_locations': 0, 'verified_prerequisite_links': 0,
+               'tester_corrections': corrections}
     args.output.with_suffix('.json').write_text(json.dumps(summary, indent=2) + '\n')
     print(json.dumps(summary), flush=True)
 

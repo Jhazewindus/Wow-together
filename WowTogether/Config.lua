@@ -43,7 +43,7 @@ local sections = {
         {"autoTurnIn", "Turn in quests without a reward choice", "Opt-in: handle completed quest dialogs you open. Item reward choices always remain manual."}}},
     {"research", "Quest data for testing", {
         {"recordQuestData", "Record NPC offers and quest progression", "Save the latest 300 local observations for prerequisite research. Export manually; no chat or automatic uploads."},
-        {"useLearnedQuests", "Use observed prerequisite patterns", "One clear before/after hand-in can inform matching characters on this account. Tentative rules name their source; actual offers override them."},
+        {"useLearnedQuests", "Use observed prerequisite patterns", "Ordinary findings apply across classes/races within a faction and build. Restricted quests keep their class/race scope. Requires an observed unlock; skipping alone teaches no prerequisite."},
         {"exportCharacterNames", "Include source names in guide findings", "Optional: attribute findings to the character that observed them. Quest data exports always omit character names."}}},
     {"professions", "Personal professions", {
         {"professionBatch", "Crafts per suggested batch", "Set the number of crafts used to calculate materials in your personal profession guide.", {{1, "1 craft"}, {5, "5 crafts"}, {10, "10 crafts"}, {20, "20 crafts"}}}}}

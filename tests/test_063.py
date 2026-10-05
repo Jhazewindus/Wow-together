@@ -277,7 +277,7 @@ class ObservedLearningTests(unittest.TestCase):
         c.ns.settings.findingsExport.OnClick()
         self.assertIn('Guide findings export', c.ns.diagnosticsWindow.title.text)
 
-    def test_account_wide_rules_survive_reload_and_match_build_class_race(self):
+    def test_account_wide_rules_survive_reload_and_match_build_faction(self):
         c = learner(); learn(c)
         saved = primitive(c.ns.db)
         fresh = Client(name='Fresh', quests=(), saved_variables=saved)
@@ -289,8 +289,10 @@ class ObservedLearningTests(unittest.TestCase):
         self.assertEqual(fresh.ns.LearnedQuestRule(901).previousQuest, 900)
         allowed = fresh.ns.CatalogueAllowed(901, fresh.ns.profile, fresh.ns.self)
         self.assertFalse(allowed[0])
-        fresh.ns.profile.classID = 8; self.assertIsNone(fresh.ns.LearnedQuestRule(901))
-        fresh.ns.profile.classID = 7; fresh.ns.profile.raceID = 8; self.assertIsNone(fresh.ns.LearnedQuestRule(901))
+        fresh.ns.profile.classID = 8; self.assertIsNotNone(fresh.ns.LearnedQuestRule(901))
+        fresh.ns.profile.raceID = 8; self.assertIsNotNone(fresh.ns.LearnedQuestRule(901))
+        fresh.ns.profile.faction = 'Alliance'; self.assertIsNone(fresh.ns.LearnedQuestRule(901))
+        fresh.ns.profile.faction = 'Horde'
         fresh.ns.profile.raceID = 2
         fresh.lua.execute("function GetBuildInfo() return '1.60.1','70205','test',16001 end")
         self.assertIsNone(fresh.ns.LearnedQuestRule(901))
