@@ -100,6 +100,7 @@ function ns.QuestIDs()
     if ns.GuideQuestIDs then for id in pairs(ns.GuideQuestIDs()) do ids[id] = true end end
     if ns.CatalogueScopeIDs then for id in pairs(ns.CatalogueScopeIDs()) do ids[id] = true end end
     for id in pairs(ns.dungeonHistoryScope or {}) do ids[id] = true end
+    for id in pairs(ns.partyRouteHistoryScope or {}) do ids[id] = true end
     return ids
 end
 

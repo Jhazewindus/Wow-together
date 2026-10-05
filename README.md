@@ -5,7 +5,38 @@ comparing progress, and drawing the next stops on the world map.
 Targets **interface 16001**, Lua **5.1**. No service or Battle.net credentials
 are required by the addon.
 
-## Version 0.5.2
+## Version 0.5.3
+
+- **Resize without repeated planning:** the top-left corner stays fixed while
+  the native bottom-right resize gesture reflows existing cards. Full quest,
+  recommendation and route updates wait until release; other size changes
+  coalesce into one render.
+- **Start route:** replaces Quest details on main guide cards. Show route keeps
+  the selection local; Start route also invites party members with **Follow
+  route** and **Keep my route**. Following uses that client's party progress,
+  not the sender's coordinates or completed objectives. Invitations share up
+  to 20 quest IDs, retain selected later chain steps, and do not rebroadcast
+  themselves. Missing history waits for data; combat actions are deferred.
+  Quest details remain in the library and profession guides remain personal.
+- **Check pickup gates:** known linear prerequisites and same-named branch
+  variants are checked against completion history. Burning Blade Medallion
+  requires a completed Vile Familiars variant. Distinct branches whose AND/OR
+  relationship is unclear stay unknown; basic list metadata alone does not
+  establish pickup eligibility. An accepted quest or a currently open NPC
+  offer remains live evidence. These published requirements need beta checks.
+- **Faction and nearby zones:** opposite-faction quests are excluded from
+  automatic pickups and library results. Discovery favours the current zone,
+  considers expected overland neighbours, and rejects distant/unlinked zones
+  and the opposing faction's starting zones. Very low-level new pickups lose
+  priority; accepted party quests still take precedence. Neutral quests remain
+  available for manual library browsing.
+- **NPC arrival:** the route arrow keeps the quest name, points down when you
+  arrive, and says **Talk to [NPC name]** when a receiver/giver is known.
+  Friendly quest-giver nameplates show quest names above a small downward
+  pointer. Mob objective hints remain separate, and nameplate hints still
+  require public NPC IDs and hide in combat. Arrival does not complete a quest.
+
+The 0.5.2 changes are retained:
 
 - **Finish our current quests first:** enabled by default in settings. Plans use
   confirmed party quest logs, prioritizing ready turn-ins before unfinished
@@ -116,7 +147,7 @@ World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
 `WowTogether.toc` belongs directly inside that folder. Update **every party
-member to 0.5.2**, including all new files, then `/reload`. Restart the client
+member to 0.5.3**, including all new files, then `/reload`. Restart the client
 fully if a new addon folder does not appear in the character-screen addon list.
 The release ZIP includes the complete TOC, every Lua file, data summary,
 instructions, and license. Copy the folder rather than individual changed files.
@@ -213,6 +244,12 @@ and layouts were not downloaded or copied. This implementation is independent.
    quest. The first native user waypoint is set and the map opens. Hover numbered
    pins for steps and source notes. If the canvas is unavailable, the destination
    waypoint still works and diagnostics explain why lines are absent.
+   **Start route** on a main guide card additionally shares its selected quests
+   with your party. Friends choose **Follow route** or **Keep my route**; nothing
+   replaces their route before they accept. Each client computes its own party
+   objective/turn-in stages. Solo Start route starts locally. Update all clients
+   to 0.5.3 for the new invitation protocol. If more than 20 quests are selected,
+   the invitation explicitly reports that the shared selection is limited.
 3. Accepting a quest switches from pickup to an objective. A finished active
    quest switches to turn-in. Turning it in follows the next party member who
    still needs that quest; after everyone finishes, the guide can advance an
@@ -238,6 +275,20 @@ profession quests and dungeon quests are excluded from these circuits. Class
 quests are excluded by default, or labelled when enabled. When public map sizes
 exist, walking estimates use distance at 7 yards/second before terrain/combat.
 These are approximate circuits, not road pathfinding or optimal XP-per-hour plans.
+
+`ZoneConnections.lua` records expected overland connections for the known base
+UI maps, separately from quest level/XP scoring. Boats, zeppelins and portals are
+not assumed to be walking neighbours. Additional client map links require
+same-parent zone maps, public short-distance estimates, and no transport icon.
+New-zone pickup recommendations need a known connection; manual library routes
+remain available. This geography and new beta map-link behavior need retesting;
+the addon does not compute navigable roads or crossings from a straight line.
+
+Cached Wowhead detail pages were reprocessed on October 5 to preserve variant
+prerequisites. This does not change the October 4 source-capture date. Same-named
+variants in one series step are alternatives; distinct-named branches do not
+become invented linear/OR dependencies. An unread prerequisite or unknown
+faction is not treated as permission for a new catalogue pickup.
 
 The **Dungeons** tab lets you inspect all collections even when a popup is
 inappropriate. Selected dungeon/prerequisite IDs get bounded party history
@@ -335,6 +386,10 @@ The 0.5.1 arrow also needs a beta check of `GetPlayerFacing` and
 `C_Map.GetMapWorldSize`. It deliberately avoids guessing an angle without a
 public position/scale/facing. No continuous facing event exists, so its own
 unprotected frame samples at 10 Hz only while visible with a selected route.
+The user's latest solo report is explicitly **0.5.1 on build 70205**, level 4
+Horde in Durotar, with two active quests and an arrival distance of 3 yards.
+It does not validate the 0.5.2/0.5.3 rendering, resize, invitation or arrival
+changes. Host-side checks are not a substitute for those client tests.
 
 1. Update both clients, `/reload`, sync, and wait for the queue to drain.
 2. In Durotar, click **Show route** for a quest with coordinates. Check numbered
@@ -391,6 +446,18 @@ unprotected frame samples at 10 Hz only while visible with a selected route.
     turn-ins at one NPC share a numbered pin. If rendering is still wrong,
     copy `/wt probe` and include **Route drawing surface**, its view geometry,
     **Rendered route pins / lines**, and the `GetViewRect` capability result.
+14. Drag the main window's resize grip repeatedly. The top-left corner should
+    stay fixed, cards should follow its width, and size should persist on reload.
+    Select **Start route** in a party: confirm each friend gets the two-button
+    prompt, keeping their current route until they follow. Test different ready
+    objectives, a reload, combat, and leaving the party before accepting.
+15. With neither Vile Familiars variant completed, Burning Blade Medallion must
+    not become a catalogue pickup. Complete the correct variant and check again.
+    Try Horde discovery/library browsing with Alliance-only records present;
+    recommendations should remain in the current or a known nearby suitable zone.
+16. Arrive at a known quest giver/receiver. The navigation overlay should retain
+    the quest title, draw a downward arrow and say Talk to the NPC. Friendly
+    nameplates may show quest names and a pointer when their public ID is visible.
 
 The diagnostic probe does not place a waypoint. API presence and self echoes
 do not prove behavior or peer delivery. Enable `/console scriptErrors 1` while
@@ -407,7 +474,7 @@ python3 -m venv /tmp/wow-together-tests
 /tmp/wow-together-tests/bin/python -m unittest discover -s tests -v
 ```
 
-Tests load all 19 Lua files in TOC order under Lua 5.1. They cover sync, history
+Tests load all 21 Lua files in TOC order under Lua 5.1. They cover sync, history
 pairing, names, secrets, throttling, UI controls, ranking, requirements,
 revision-bound destinations, route stages, cross-zone/partial routes, map
 geometry, resizing, party route completion, snapshot repair, tracker scrolling,
@@ -418,7 +485,9 @@ observed AH prices, alternate NPC targets, vendor buy lists, source parsing,
 arrow cardinal bearings, physical map scale, restricted position/facing,
 arrival without automation, movement sampling, persistence, party route updates,
 level-three ready-turn-in priority, current party log unions, missing destinations,
-viewport projection, pan/zoom timing, clipping, and clustered markers.
+viewport projection, pan/zoom timing, clipping, clustered markers, geometry-only
+resizing, real two-client invitation exchanges, branch gates, faction/adjacency
+filtering, delayed route metadata, and NPC arrival pointers.
 Synthetic fixtures are not shipped as game data. Mocks do not establish real
 beta rendering or protected-action compatibility.
 

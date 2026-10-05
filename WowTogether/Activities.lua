@@ -205,11 +205,11 @@ function ns.ZoneTransition()
     local best, score
     for id, quest in pairs(ns.catalogue.quests) do
         local point = quest.starts and quest.starts[1]
-        if ns.LevelingQuestEnabled(id) and quest.previousQuest and point and point.mapID ~= currentMap then
+        if ns.LevelingQuestEnabled(id) and (quest.previousQuest or quest.prerequisiteAny) and point
+            and point.mapID ~= currentMap and ns.DiscoveryZoneAllowed(point.mapID, point) then
             local eligible = true
             for _, person in ipairs(ns.PartyProfiles()) do
                 if not person.synced or ns.CatalogueAllowed(id, person.profile, person.key) ~= true
-                    or ns.CatalogueCompletion(person.key, quest.previousQuest) ~= true
                     or ns.CatalogueCompletion(person.key, id) == true then eligible = false; break end
             end
             if eligible then

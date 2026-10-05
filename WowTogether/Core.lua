@@ -16,10 +16,12 @@ function ns.Print(message)
 end
 
 function ns.Refresh()
-    if ns.Render then ns.Render() end
+    if ns.ui and ns.ui.resizing then ns.ui.resizeDirty = true
+    elseif ns.Render then ns.Render() end
     if ns.RenderTracker then ns.RenderTracker() end
     if ns.UpdateNavigation then ns.UpdateNavigation() end
     if ns.ScheduleActivitySuggestions then ns.ScheduleActivitySuggestions() end
+    if ns.QueuePartyRouteFollow then ns.QueuePartyRouteFollow() end
 end
 
 function ns.On(event, handler)
@@ -33,7 +35,7 @@ ns.frame:SetScript("OnEvent", function(_, event, ...)
 end)
 
 function ns.Diagnostics()
-    local lines = {"Wow Together 0.5.2 — beta capability and sync report", ""}
+    local lines = {"Wow Together 0.5.3 — beta capability and sync report", ""}
     local function output(line) lines[#lines + 1] = line end
     local version, build, _, interface = GetBuildInfo()
     local function readable(value)
@@ -141,7 +143,7 @@ ns.On("QUEST_LOG_UPDATE", function()
     if ns.db then ns.ReadProgress(); ns.UpdateNPCHints(); ns.Refresh() end
     ns.ScheduleSync()
 end)
-ns.On("ZONE_CHANGED_NEW_AREA", function() ns.ReadGuide(); ns.ScheduleSync(); ns.Refresh() end)
+ns.On("ZONE_CHANGED_NEW_AREA", function() ns.ResetZoneConnections(); ns.ReadGuide(); ns.ScheduleSync(); ns.Refresh() end)
 ns.On("PLAYER_LEVEL_UP", function() ns.ScheduleSync() end)
 ns.On("QUEST_TURNED_IN", function() ns.activityRevision = (ns.activityRevision or 0) + 1; ns.ScheduleSync() end)
 ns.On("GROUP_ROSTER_UPDATE", function()

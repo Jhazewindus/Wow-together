@@ -5,6 +5,15 @@ local function finite(value)
         and value > -math.huge and value < math.huge
 end
 
+function ns.StopInstruction(stop)
+    if stop.npcName and stop.npcName ~= "" and (stop.kind == "a" or stop.kind == "t" or not stop.action) then
+        return "Talk to " .. stop.npcName
+    end
+    if stop.kind == "t" then return "Turn in " .. stop.title end
+    if stop.kind == "a" then return "Pick up " .. stop.title end
+    return stop.label or ("Work on " .. stop.title)
+end
+
 function ns.NavigationState()
     if not ns.Option("routeArrow") then return {status = "Disabled in settings"} end
     local route = ns.routeSelection and ns.selectedRoute
@@ -23,7 +32,9 @@ function ns.NavigationState()
         or width >= 1000000 or height >= 1000000 then state.status = "Map scale unavailable"; return state end
     local east, north = (stop.x - position.x) * width, (position.y - stop.y) * height
     state.distance = math.sqrt(east * east + north * north)
-    if state.distance <= 8 then state.status = "At destination"; state.arrived = true; return state end
+    if state.distance <= 8 then
+        state.status = ns.StopInstruction(stop); state.arrived = true; return state
+    end
     local facing = ns.ReadPublic(GetPlayerFacing)
     if not finite(facing) then state.status = "Direction unavailable"; return state end
     -- Facing is counterclockwise from north; map X goes east and map Y south.
@@ -56,12 +67,12 @@ function ns.UpdateNavigation()
     if not state.visible then return end
     frame.title:SetText(state.stop.title)
     frame.distance:SetText(state.distance and (string.format("%.0f yd", state.distance) .. (state.arrived and " • Here" or "")) or "")
-    frame.status:SetText(state.angle and "Next route stop" or state.status)
+    frame.status:SetText(state.angle and ns.StopInstruction(state.stop) or state.status)
     for _, line in ipairs(frame.icon.lines) do line:Hide() end
-    frame.symbol:SetText(state.arrived and "✓" or "…")
-    frame.symbol:SetTextColor(state.arrived and 0.45 or 0.96, state.arrived and 0.9 or 0.76, state.arrived and 0.6 or 0.35, 1)
-    frame.symbol:SetShown(state.angle == nil)
-    if state.angle ~= nil then ns.DrawNavigationArrow(state.angle) end
+    frame.symbol:SetText("…"); frame.symbol:SetTextColor(0.96, 0.76, 0.35, 1)
+    frame.symbol:SetShown(state.angle == nil and not state.arrived)
+    if state.arrived then ns.DrawNavigationArrow(math.pi)
+    elseif state.angle ~= nil then ns.DrawNavigationArrow(state.angle) end
 end
 
 function ns.SaveNavigationPosition()
@@ -75,7 +86,7 @@ end
 function ns.CreateNavigation()
     local frame = CreateFrame("Frame", "WowTogetherRouteArrow", UIParent)
     ns.navigation = frame
-    frame:SetSize(180, 118); frame:SetPoint("BOTTOM", UIParent, "BOTTOM", 0, 160)
+    frame:SetSize(220, 118); frame:SetPoint("BOTTOM", UIParent, "BOTTOM", 0, 160)
     frame:SetClampedToScreen(true); frame:SetFrameStrata("MEDIUM")
     frame:SetMovable(true); frame:EnableMouse(true); frame:RegisterForDrag("LeftButton")
     frame:SetScript("OnDragStart", frame.StartMoving); frame:SetScript("OnDragStop", ns.SaveNavigationPosition)
@@ -86,7 +97,7 @@ function ns.CreateNavigation()
     end
     frame.title = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
     frame.title:SetFont("Fonts\\FRIZQT__.TTF", 11, "OUTLINE"); frame.title:SetPoint("TOP", 0, -4)
-    frame.title:SetSize(172, 18); frame.title:SetWordWrap(false)
+    frame.title:SetSize(214, 18); frame.title:SetWordWrap(false)
     frame.icon = CreateFrame("Frame", nil, frame); frame.icon:SetSize(52, 52); frame.icon:SetPoint("TOP", 0, -29)
     frame.icon.lines = {}
     frame.symbol = frame.icon:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
@@ -95,7 +106,7 @@ function ns.CreateNavigation()
     frame.distance:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE"); frame.distance:SetPoint("BOTTOM", 0, 21)
     frame.status = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
     frame.status:SetFont("Fonts\\FRIZQT__.TTF", 10, "OUTLINE"); frame.status:SetPoint("BOTTOM", 0, 3)
-    frame.status:SetSize(176, 17); frame.status:SetWordWrap(false)
+    frame.status:SetSize(214, 17); frame.status:SetWordWrap(false)
     frame:SetScript("OnEnter", function(self)
         if not GameTooltip then return end
         GameTooltip:SetOwner(self, "ANCHOR_RIGHT")

@@ -47,7 +47,9 @@ function methods:SetWidth(width) self.width = width end
 function methods:SetHeight(height) self.height = height end
 function methods:GetWidth() return self.width end
 function methods:GetHeight() return self.height end
-setmetatable(methods, {__index=function() return function() end end})
+-- Unknown frame methods may be no-ops; unset addon metadata is nil, just as
+-- on a real frame. Treating every missing field as a function hides UI bugs.
+setmetatable(methods, {__index=function(_, key) if key:match('^%u') then return function() end end end})
 function CreateFrame() return setmetatable({}, {__index=methods}) end
 function GetBuildInfo() return '1.60.1', '70009', 'test', 16001 end
 WOW_PROJECT_ID, LE_EXPANSION_LEVEL_CURRENT = 1, 0
@@ -142,6 +144,19 @@ class Client:
             unit: self.lua.table_from(parts) for unit, parts in names.items()
         })
         self.ns.UpdateRoster()
+
+    def nearby_zone_link(self):
+        # A synthetic public zone link, not inferred adjacency from distance.
+        self.lua.execute('''
+        Enum.UIMapType={Zone=3}
+        C_Map.GetMapInfo=function(id) return {name=id==501 and 'Test Coast' or 'Test Hills', mapType=3, parentMapID=1} end
+        C_Map.GetMapLinksForMap=function(id) return {{linkedUiMapID=id==501 and 502 or 501,atlasName='zone-link'}} end
+        function CreateVector2D(x,y) return {GetXY=function() return x,y end} end
+        C_Map.GetWorldPosFromMapPos=function(map,p)
+          local x,y=p:GetXY(); return 1,CreateVector2D(x*1000+(map==502 and 400 or 0),y*1000)
+        end
+        ''')
+        self.ns.ResetZoneConnections()
 
     def view_text(self):
         ui = self.ns.ui
@@ -753,6 +768,7 @@ class AddonTests(unittest.TestCase):
     def test_level_gap_changes_guide_direction_from_data(self):
         c = Client()
         c.guide_environment(level=4)
+        c.nearby_zone_link()
         c.receive('1|S|1|1|1|20')
         c.receive('1|P|20|2|501|Test Coast')
         c.receive('1|G|100|7|501|21000|37000|4|n|Low Quest|Coastal Story|Guide NPC')

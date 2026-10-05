@@ -53,6 +53,7 @@ function ns.ReadProfile()
     local faction = read(UnitFactionGroup, "player")
     local map = C_Map and read(C_Map.GetBestMapForUnit, "player")
     local zone = read(GetZoneText)
+    if ns.profile and ns.profile.mapID ~= map then ns.ResetZoneConnections() end
     local function identity(fn)
         if type(fn) ~= "function" then return 0 end
         local okay, _, _, id = pcall(fn, "player")
@@ -225,6 +226,8 @@ local function allRecords()
     return records
 end
 
+function ns.GuideRecord(id) return allRecords()[id] end
+
 function ns.GuideQuestIDs()
     local ids = {}
     for id in pairs(allRecords()) do ids[id] = true end
@@ -334,7 +337,8 @@ function ns.GuideChoices()
         local stages = ns.PartyRouteStages and ns.PartyRouteStages(record, lowKey)
         local stop = stages and stages[1]
         local focusProfile = lowKey == ns.self and ns.profile or (ns.members[lowKey] and ns.members[lowKey].profile)
-        if stop and (not focusProfile or record.level == 0 or record.level <= focusProfile.level + 3) then
+        if stop and (stop.kind ~= "a" or ns.DiscoveryZoneAllowed(stop.mapID, stop))
+            and (not focusProfile or record.level == 0 or record.level <= focusProfile.level + 3) then
             local routeKey = "zone-route:" .. stop.mapID
             local routeGroup = groups[routeKey]
             if not routeGroup then
@@ -386,12 +390,15 @@ function ns.GuideChoices()
         if lowest and target.level > 0 then
             priority = priority - math.abs(target.level - lowest) * 4
             if target.level > lowest + 2 then priority = priority - 100 end
+            if lowest - target.level > math.max(5, math.floor(lowest * 0.2)) and shared == 0 then priority = priority - 1200 end
         end
         group.finished = finished == #profiles
         if group.finished then priority = priority - 200 end
         group.target, group.priority, group.mapID = target, priority, target.mapID
         if knownStops > 0 then group.mapID = plan.mapID end
         group.zone = ns.MapName(group.mapID)
+        priority = priority + ns.ZonePreference(group.mapID)
+        group.priority = priority
         group.level = target.level > 0 and target.level or nil
         group.shared, group.profilesReady = shared, ready
         group.lowest, group.highest, group.lowName = lowest, highest, lowName
@@ -412,7 +419,9 @@ function ns.GuideChoices()
         if group.nextStop and group.nextStop.kind ~= "a" then group.destination = group.nextStop.label end
         local liveOnly = false
         for _, record in ipairs(group.records) do if not ns.CatalogueQuest(record.id) then liveOnly = true; break end end
-        if knownStops > 0 or liveOnly then choices[#choices + 1] = group end
+        local nextStop = plan and plan.stops[1]
+        local localPickup = not nextStop or nextStop.kind ~= "a" or ns.DiscoveryZoneAllowed(nextStop.mapID, nextStop)
+        if localPickup and (knownStops > 0 or liveOnly) then choices[#choices + 1] = group end
     end
     table.sort(choices, function(a, b)
         if a.priority ~= b.priority then return a.priority > b.priority end
@@ -422,6 +431,9 @@ function ns.GuideChoices()
 end
 
 function ns.ShowGuideOnMap(guide)
+    -- An explicit local selection replaces an accepted invitation that was
+    -- waiting for missing history. Following a ready invitation also passes here.
+    ns.waitingPartyRoute = nil
     local route = guide and ns.BuildGuideRoute(guide, true)
     local first = route and route.stops[1]
     if not first then ns.guideAction = "This quest has no NPC or objective coordinates yet. View its details in the Quest library."; ns.Refresh(); return false end
@@ -449,7 +461,9 @@ function ns.ShowGuideOnMap(guide)
         WorldMapFrame:Show()
         ns.ActivateRoute(guide, route)
         if ns.window then ns.window:Hide() end
-    else ns.routeStats.status = "World map frame unavailable; the destination waypoint was set."
+    else
+        ns.ActivateRoute(guide, route)
+        ns.routeStats.status = "World map frame unavailable; the destination waypoint was set."
     end
     ns.guideAction = #route.stops .. " route stop(s): " .. first.label .. "."
     if ns.routeStats.lines == 0 then ns.guideAction = ns.guideAction .. " " .. ns.routeStats.status end
@@ -461,6 +475,7 @@ ns.On("PLAYER_REGEN_ENABLED", function()
     if ns.ReadProgress then ns.ReadProgress() end
     if ns.db then ns.ScheduleSync() end
     if ns.FlushRouteUpdates then ns.FlushRouteUpdates() end
+    if ns.FlushPartyRoutes then ns.FlushPartyRoutes() end
     if ns.pendingGuideMap then local guide = ns.pendingGuideMap; ns.pendingGuideMap = nil; ns.ShowGuideOnMap(guide) end
     if ns.UpdateNPCHints then ns.UpdateNPCHints() end
 end)

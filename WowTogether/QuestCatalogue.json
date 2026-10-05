@@ -135,6 +135,8 @@
   "with_objectives": 118,
   "with_turnins": 417,
   "with_series": 198,
+  "with_prerequisites": 155,
+  "unverified_prerequisites": 3,
   "incomplete_objective_locations": 157,
   "area_ui_maps": {
     "40": 1436,
@@ -163,5 +165,6 @@
     "141": 1438,
     "215": 1412,
     "33": 1434
-  }
+  },
+  "reprocessed": "2026-10-05"
 }

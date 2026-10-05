@@ -43,8 +43,15 @@ function ns.ReadRouteLocations()
             if validPoint(targetMap, x, y) then points[id] = {id = id, mapID = targetMap, x = x, y = y, kind = "q"} end
             local complete = query(C_QuestLog.IsComplete, id)
             ns.readyToTurnIn[id] = complete == true
+            local quest = ns.CatalogueQuest(id)
+            local finish = complete == true and quest and quest.ends and quest.ends[1]
+            if finish and validPoint(finish.mapID, finish.x, finish.y) then
+                -- IsComplete can arrive before GetNextWaypoint stops pointing
+                -- at the objective. A known receiver is the correct next step.
+                points[id] = {id = id, mapID = finish.mapID, x = finish.x, y = finish.y, kind = "t", published = true,
+                    name = finish.name, npc = finish.npc, entityID = finish.entityID}
+            end
             if not points[id] then
-                local quest = ns.CatalogueQuest(id)
                 local list
                 if quest then
                     if complete == true then list = quest.ends else list = quest.objectives end
@@ -53,7 +60,7 @@ function ns.ReadRouteLocations()
                 local p = list and list[1]
                 if p and validPoint(p.mapID, p.x, p.y) then points[id] = {id = id, mapID = p.mapID, x = p.x, y = p.y,
                     kind = complete == true and "t" or "q", published = true, name = p.name,
-                    entityID = p.entityID, action = p.action, itemName = p.itemName} end
+                    entityID = p.entityID, action = p.action, itemName = p.itemName, npc = p.npc} end
             end
             if points[id] then
                 if complete == true then points[id].kind = "t" end
@@ -143,6 +150,7 @@ function ns.RouteStop(record, focusKey)
     if completed and not active and not offered then return end
     local catalog = ns.catalogue and ns.catalogue.quests[record.id]
     local profile = focusKey == ns.self and ns.profile or (ns.members[focusKey] and ns.members[focusKey].profile)
+    if not active and catalog and ns.CatalogueIdentityAllowed(record.id, profile) == false then return end
     if not active and not offered and catalog then
         if ns.CatalogueCompletion(focusKey, record.id) ~= false or ns.CatalogueAllowed(record.id, profile, focusKey) ~= true then return end
     end
@@ -155,7 +163,7 @@ function ns.RouteStop(record, focusKey)
             local finish = catalog and catalog.ends and catalog.ends[1]
             if finish and validPoint(finish.mapID, finish.x, finish.y) then
                 p = {mapID = finish.mapID, x = finish.x, y = finish.y, kind = "t", published = true,
-                    name = finish.name, entityID = finish.entityID}
+                    name = finish.name, entityID = finish.entityID, npc = finish.npc}
             else p = nil end
         end
         -- A pickup location is not an objective or a turn-in. Keep those stages
@@ -166,7 +174,7 @@ function ns.RouteStop(record, focusKey)
             else point = catalog.objectives and catalog.objectives[1] end
             if point and validPoint(point.mapID, point.x, point.y) then
                 p = {mapID = point.mapID, x = point.x, y = point.y, kind = ready and "t" or "q",
-                    entityID = point.entityID, action = point.action, name = point.name, published = true}
+                    entityID = point.entityID, action = point.action, name = point.name, published = true, npc = point.npc}
             end
         end
         if not p or p.kind == "a" then return end
@@ -183,16 +191,17 @@ function ns.RouteStop(record, focusKey)
     local title = ns.QuestTitle(record.id)
     if string.find(title, "(title pending)", 1, true) and record.title ~= "" then title = record.title end
     local npc = record.npc ~= "" and record.npc or (p.name or "")
-    local entityID, action = p.entityID, p.action
+    local entityID, action, npcName = p.entityID, p.action, p.npc and p.name or nil
     local candidates = catalog and (p.kind == "a" and catalog.starts or (p.kind == "t" and catalog.ends or catalog.objectives))
     for _, candidate in ipairs(candidates or {}) do
         if candidate.mapID == p.mapID and math.abs(candidate.x - p.x) < 0.04 and math.abs(candidate.y - p.y) < 0.04 then
             entityID, action = entityID or candidate.entityID, action or candidate.action
+            if candidate.npc then npcName = candidate.name end
             break
         end
     end
     return {id = record.id, mapID = p.mapID, x = p.x, y = p.y, kind = p.kind, title = title, published = p.published,
-        entityID = entityID, action = action, itemName = p.itemName,
+        entityID = entityID, action = action, itemName = p.itemName, npcName = npcName or ((p.kind == "a" or p.kind == "t") and npc ~= "" and npc or nil),
         label = p.kind == "t" and ("Turn in " .. title) or (p.kind == "q" and ("Work on " .. title)
             or (npc ~= "" and ("Talk to " .. npc) or ("Check pickup: " .. title))),
         approximate = p.kind == "a" and record.source == "n"}
@@ -209,7 +218,7 @@ function ns.RouteStages(record, focusKey)
         if previous.mapID == point.mapID and math.abs(previous.x - point.x) < 0.00001 and math.abs(previous.y - point.y) < 0.00001 then return end
         result[#result + 1] = {id = record.id, mapID = point.mapID, x = point.x, y = point.y, kind = kind,
             title = ns.QuestTitle(record.id), label = prefix .. point.name, planned = true, published = true,
-            entityID = point.entityID, action = point.action, itemName = point.itemName}
+            entityID = point.entityID, action = point.action, itemName = point.itemName, npcName = point.npc and point.name or nil}
     end
     if first.kind == "a" then
         for _, point in ipairs(quest.objectives or {}) do add(point, "q", "Objective area: ") end

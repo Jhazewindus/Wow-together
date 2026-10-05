@@ -11,7 +11,10 @@ function ns.NPCTargets()
         if not point or not point.npc or not ns.GuideInteger(point.entityID) or point.entityID <= 0 then return end
         targets[point.entityID] = targets[point.entityID] or {kind = kind, action = point.action,
             title = ns.QuestTitle(id), label = point.name, quests = {}}
-        targets[point.entityID].quests[id] = ns.QuestTitle(id)
+        local target = targets[point.entityID]
+        local priority = {q = 1, a = 2, t = 3}
+        if priority[kind] > priority[target.kind] then target.kind, target.action = kind, point.action end
+        target.quests[id] = ns.QuestTitle(id)
     end
     for _, person in ipairs(ns.PartyProfiles()) do
         local active = person.key == ns.self and ns.active or (ns.members[person.key] and ns.members[person.key].active)
@@ -94,6 +97,18 @@ function ns.UpdateNPCHints()
                 hint:SetFrameStrata("HIGH")
                 hint.icon = hint:CreateTexture(nil, "ARTWORK")
                 hint.icon:SetAllPoints()
+                hint.questNames = hint:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
+                hint.questNames:SetFont("Fonts\\FRIZQT__.TTF", 10, "OUTLINE")
+                hint.questNames:SetPoint("TOP", 0, 0); hint.questNames:SetSize(190, 27)
+                hint.questNames:SetTextColor(1, 0.9, 0.62, 1)
+                hint.pointer = CreateFrame("Frame", nil, hint); hint.pointer:SetSize(18, 18); hint.pointer:SetPoint("BOTTOM", 0, 0)
+                hint.pointer.lines = {}
+                for index, ends in ipairs({{0, 6, 0, -6}, {-6, 0, 0, -6}, {6, 0, 0, -6}}) do
+                    local line = hint.pointer:CreateLine(nil, "OVERLAY")
+                    line:SetThickness(2); line:SetColorTexture(1, 0.82, 0.3, 1)
+                    line:SetStartPoint("CENTER", hint.pointer, ends[1], ends[2]); line:SetEndPoint("CENTER", hint.pointer, ends[3], ends[4])
+                    hint.pointer.lines[index] = line
+                end
                 hint.symbol = hint:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
                 hint.symbol:SetFont("Fonts\\FRIZQT__.TTF", 18, "OUTLINE"); hint.symbol:SetPoint("CENTER")
                 hint.symbol:SetTextColor(1, 0.85, 0.3, 1)
@@ -110,10 +125,21 @@ function ns.UpdateNPCHints()
             end
             hint.target = target
             hint:ClearAllPoints()
-            hint:SetPoint("BOTTOMLEFT", plate, "TOPRIGHT", 3, 0)
-            local icon = ns.StopIcon(target)
-            hint.icon:SetTexture(icon); hint.icon:SetShown(icon ~= nil)
-            hint.symbol:SetText(ns.StopSymbol(target)); hint.symbol:SetShown(icon == nil)
+            local friendly = target.kind == "a" or target.kind == "t"
+            hint.questNames:SetShown(friendly); hint.pointer:SetShown(friendly)
+            if friendly then
+                hint:SetSize(190, 47); hint:SetPoint("BOTTOM", plate, "TOP", 0, 6)
+                local titles = {}; for _, title in pairs(target.quests) do titles[#titles + 1] = title end; table.sort(titles)
+                local shown = {}; for index = 1, math.min(2, #titles) do shown[#shown + 1] = titles[index] end
+                if #titles > 2 then shown[2] = shown[2] .. " ( +" .. (#titles - 2) .. " )" end
+                hint.questNames:SetText(table.concat(shown, "\n"))
+                hint.icon:Hide(); hint.symbol:Hide()
+            else
+                hint:SetSize(18, 18); hint:SetPoint("BOTTOMLEFT", plate, "TOPRIGHT", 3, 0)
+                local icon = ns.StopIcon(target)
+                hint.icon:SetTexture(icon); hint.icon:SetShown(icon ~= nil)
+                hint.symbol:SetText(ns.StopSymbol(target)); hint.symbol:SetShown(icon == nil)
+            end
             hint:Show()
             ns.npcHintCount = ns.npcHintCount + 1
         end

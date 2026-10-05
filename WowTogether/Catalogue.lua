@@ -22,6 +22,8 @@ function ns.CatalogueIdentityAllowed(id, profile)
     if quest.side == "Alliance" or quest.side == "Horde" then
         if not profile.faction or profile.faction == "Unknown" then return nil, "Waiting for faction." end
         if profile.faction ~= quest.side then return false, "A " .. quest.side .. " quest." end
+    elseif quest.side ~= "Both" and quest.side ~= "Neutral" then
+        return nil, "Faction availability has not been verified."
     end
     for _, requirement in ipairs({{"classMask", "classID", "class"}, {"raceMask", "raceID", "race"}}) do
         local mask = quest[requirement[1]]
@@ -43,12 +45,40 @@ function ns.CatalogueAllowed(id, profile, key)
     if quest.minLevel and profile.level < quest.minLevel then return false, "Requires level " .. quest.minLevel .. "." end
     local identity, reason = ns.CatalogueIdentityAllowed(id, profile)
     if identity ~= true then return identity, reason end
+    key = key or ns.self
+    if ns.catalogue.detailSource and quest.prerequisitesRead ~= true then
+        return nil, "Pickup requirements are missing from the detailed data. Talk to the quest giver to check its offer."
+    end
+    if quest.prerequisitesUnverified then
+        return nil, "This quest has a branching prerequisite that still needs quest-giver confirmation."
+    end
+    if quest.prerequisiteAny then
+        local unknown, titles = false, {}
+        for _, previous in ipairs(quest.prerequisiteAny) do
+            local complete = ns.CatalogueCompletion(key, previous)
+            if complete == true then return true end
+            if complete == nil then unknown = true end
+            titles[#titles + 1] = ns.QuestTitle(previous)
+        end
+        local reason = (unknown and "Checking prerequisite history: " or "Finish a prerequisite first: ") .. table.concat(titles, " / ") .. "."
+        if unknown then return nil, reason end
+        return false, reason
+    end
     if quest.previousQuest then
         local complete = ns.CatalogueCompletion(key or ns.self, quest.previousQuest)
         if complete == nil then return nil, "Checking history for " .. ns.QuestTitle(quest.previousQuest) .. "." end
         if not complete then return false, "Finish " .. ns.QuestTitle(quest.previousQuest) .. " first." end
     end
     return true
+end
+
+function ns.CataloguePrerequisiteIDs(id)
+    local quest, ids = ns.CatalogueQuest(id), {}
+    if quest then
+        if quest.previousQuest then ids[#ids + 1] = quest.previousQuest end
+        for _, previous in ipairs(quest.prerequisiteAny or quest.prerequisiteCandidates or {}) do ids[#ids + 1] = previous end
+    end
+    return ids
 end
 
 function ns.CatalogueScopeIDs()
@@ -60,6 +90,9 @@ function ns.CatalogueScopeIDs()
         if member and member.catalogueMapID and member.catalogueMapID > 0 then maps[member.catalogueMapID] = true end
     end
     if ns.libraryMapID then maps[ns.libraryMapID] = true end
+    if ns.NearbyZoneMaps then
+        for mapID in pairs(ns.NearbyZoneMaps(ns.profile and ns.profile.mapID or 0)) do maps[mapID] = true end
+    end
     local keys = {}
     for mapID in pairs(maps) do keys[#keys + 1] = mapID end
     table.sort(keys)
@@ -79,6 +112,7 @@ function ns.CatalogueScopeIDs()
         add(id)
         local quest = ns.CatalogueQuest(id)
         for _, previous in ipairs(quest.series or {}) do add(previous) end
+        for _, previous in ipairs(ns.CataloguePrerequisiteIDs(id)) do add(previous) end
     end
     scopeCache, scopeSignature, scopeCatalogue = ids, signature, ns.catalogue
     return ids
@@ -172,7 +206,7 @@ function ns.LibraryItems()
     for _, item in ipairs(libraryIndex) do
         local quest, zone, zoneKey = item.quest, item.zone, item.zoneKey
         local level = quest.level
-        if not low or (level and level >= low and level <= high) then
+        if ns.CatalogueIdentityAllowed(item.id, ns.profile) ~= false and (not low or (level and level >= low and level <= high)) then
           if query ~= "" then
             if string.find(item.search, query, 1, true) then quests[#quests + 1] = item end
           elseif ns.libraryZone == zoneKey then quests[#quests + 1] = item
@@ -275,6 +309,10 @@ function ns.ShowQuestDetails(id)
         local _, reason = ns.CatalogueAllowed(id, ns.profile, ns.self)
         if reason then lines[#lines + 1] = reason end
         if quest.previousQuest then lines[#lines + 1] = "Published previous step: " .. ns.QuestTitle(quest.previousQuest) end
+        if quest.prerequisiteAny then
+            local titles = {}; for _, previous in ipairs(quest.prerequisiteAny) do titles[#titles + 1] = ns.QuestTitle(previous) end
+            lines[#lines + 1] = "Finish one published prerequisite variant: " .. table.concat(titles, " / ")
+        end
         lines[#lines + 1] = ""
         lines[#lines + 1] = quest.starts and "Published map points come from Wowhead's Forever pages. Check them against this beta build."
             or "The source has no quest-giver coordinates for this quest. A client marker or an NPC encounter can add a map destination."

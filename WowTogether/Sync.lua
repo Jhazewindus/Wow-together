@@ -78,6 +78,7 @@ function ns.UpdateRoster()
     ns.partyNames = {}
     for key in pairs(roster) do ns.partyNames[#ns.partyNames + 1] = key end
     table.sort(ns.partyNames)
+    if ns.PrunePartyRoutes then ns.PrunePartyRoutes() end
     local signature = (ns.self or "") .. "|" .. table.concat(ns.partyNames, "|")
     if lastRoster and lastRoster ~= signature then
         -- Old-party transfers must not be delivered into a newly formed party.
@@ -368,6 +369,7 @@ function ns.Receive(prefix, message, channel, sender)
         ns.syncStats.accepted = ns.syncStats.accepted + 1
         trace("Accepted hello; await refreshed peer snapshot")
         assemblies[sender] = nil
+        if ns.ResetPartyRoutePeer then ns.ResetPartyRoutePeer(sender) end
         local member = ns.members[sender] or {}
         ns.members[sender] = member
         member.syncPending, member.activeRevision = true, nil
@@ -390,6 +392,13 @@ function ns.Receive(prefix, message, channel, sender)
             if accepted then ns.syncStats.accepted = ns.syncStats.accepted + 1 else ignored(reason) end
             ns.Refresh()
             return
+        end
+    end
+    if ns.ReceivePartyRouteMessage then
+        local handled, accepted, reason = ns.ReceivePartyRouteMessage(message, sender)
+        if handled then
+            if accepted then ns.syncStats.accepted = ns.syncStats.accepted + 1 else ignored(reason) end
+            ns.Refresh(); return
         end
     end
     if ns.ReceiveRouteMessage then
@@ -586,6 +595,7 @@ function ns.SyncDiagnostics(output)
     output("Map route: " .. ns.routeStats.status)
     output("Route drawing surface: " .. (ns.routeStats.surface or "not drawn") .. "; " .. (ns.routeStats.geometry or "layout unavailable"))
     output("Current quests first: " .. safe(ns.Option("currentQuestsFirst")))
+    output("Party route: " .. (ns.partyRouteStatus or "No route started."))
     output("Rendered route pins: " .. ns.routeStats.pins .. "; lines: " .. ns.routeStats.lines)
     for _, person in ipairs(ns.PartyProfiles and ns.PartyProfiles() or {}) do
         local profile = person.profile

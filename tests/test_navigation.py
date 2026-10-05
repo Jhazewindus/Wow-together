@@ -50,7 +50,7 @@ class NavigationTests(unittest.TestCase):
         c.lua.execute('function AcceptQuest() error("unexpected acceptance") end')
         state = c.ns.NavigationState()
         self.assertTrue(state.arrived)
-        self.assertEqual(state.status, 'At destination')
+        self.assertEqual(state.status, 'Pick up Pickup quest')
         self.assertIsNone(state.angle)
         self.assertIsNotNone(c.ns.routeSelection)
         self.assertEqual(c.ns.selectedRoute.stops[1].kind, 'a')

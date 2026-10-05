@@ -23,6 +23,7 @@ def nearby(title='Local quest', **extra):
 
 
 def world_positions(c, other_continent=False):
+    c.nearby_zone_link()
     c.lua.execute('''
     function CreateVector2D(x,y) return {GetXY=function() return x,y end} end
     C_Map.GetWorldPosFromMapPos=function(map, p)

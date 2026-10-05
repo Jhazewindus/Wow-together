@@ -44,11 +44,20 @@ Finish our current quests first is ON by default. Ready turn-ins come first,
 then unfinished party objectives and their later returns. Your completed quest
 can be handed in while a friend's objectives stay marked. No new pickups are
 planned until the current logs clear. Disable this option to discover new lines.
+Main guide cards offer Start route instead of Quest details. Show route stays
+local; Start route shares up to 20 selected quest IDs with party members.
+Friends choose Follow route or Keep my route. Their current route remains
+until they accept. Each client uses its own party objective/turn-in stages;
+missing prerequisite/history data waits for sync. Solo Start route stays local.
+The native resize gesture reflows cards without rebuilding plans per pixel.
 /wt arrow toggles the small direction arrow for your selected route. Drag it
 to move it; its position is saved. The arrow turns relative to your character
 and shows straight-line yards when public position, map scale and facing exist.
 Test turning and walking toward a route stop on your beta build. Unknown data
 shows a status. Cross-zone stops name the zone until you enter it.
+On arrival it keeps the quest name, points downward, and says Talk to the
+known NPC. Friendly quest-giver nameplates can show quest names and a pointer
+when public NPC IDs are visible; all nameplate hints hide in combat.
 Reaching a point does not accept or complete a quest. Follow roads and terrain.
 Route lines draw on the WORLD MAP ONLY; the minimap button opens the addon.
 /wt sync requests fresh party data. Let the send queue drain.
@@ -63,6 +72,12 @@ dimmed. Each client must select Show route for the route it wants to display.
 
 Library searches commit on Enter or after a typing pause. Choose a level
 bracket or Near party; use arrows for larger result sets.
+Known prerequisites (including Vile Familiars variants before Burning Blade
+Medallion), faction, level and identity gate catalogue pickups. Unread or
+ambiguous requirements stay unknown until a live NPC offer confirms them.
+Discovery prefers your current zone and suitable overland neighbours; distant
+or opposing-faction starter zones do not become automatic recommendations.
+Connections are map data, not road pathfinding; verify geography in this beta.
 
 Map drawing uses the visible viewport when GetViewRect is available, clips
 lines to the map, and redraws after pan/zoom/resize. Nearby stops share a pin;

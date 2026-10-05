@@ -74,7 +74,7 @@ function ns.CreateUI()
     window:SetMovable(true)
     window:EnableMouse(true)
     window:RegisterForDrag("LeftButton")
-    window:SetScript("OnDragStart", window.StartMoving)
+    window:SetScript("OnDragStart", function(self) if not ns.ui.resizing then self:StartMoving() end end)
     window:SetScript("OnDragStop", window.StopMovingOrSizing)
     if type(UISpecialFrames) == "table" then table.insert(UISpecialFrames, "WowTogetherWindow") end
 
@@ -209,17 +209,45 @@ function ns.CreateUI()
     texture:SetAllPoints()
     texture:SetTexture("Interface\\ChatFrame\\UI-ChatIM-SizeGrabber-Up")
     grip:SetScript("OnMouseDown", function(_, mouseButton)
-        if mouseButton == "LeftButton" then window:StartSizing("BOTTOMRIGHT") end
+        if mouseButton ~= "LeftButton" then return end
+        -- A CENTER anchor grows both sides and fights screen clamping. Keep
+        -- the top-left corner fixed for the native bottom-right size gesture.
+        local left, top = ns.ReadPublic(window.GetLeft, window), ns.ReadPublic(window.GetTop, window)
+        if type(left) == "number" and type(top) == "number" then
+            window:ClearAllPoints(); window:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", left, top)
+        end
+        ns.ui.resizing = true
+        window:StartSizing("BOTTOMRIGHT")
     end)
-    grip:SetScript("OnMouseUp", function()
-        window:StopMovingOrSizing()
-        ns.db.windowSize = {width = window:GetWidth(), height = window:GetHeight()}
+    grip:SetScript("OnMouseUp", function() ns.FinishWindowResize() end)
+    window:SetScript("OnSizeChanged", function()
+        -- Only geometry changes during the gesture. Do not rebuild the quest
+        -- catalogue, recommendations, map route or tracker for every pixel.
         ns.Layout()
-        ns.Refresh()
+        if not ns.ui.resizing then ns.QueueWindowRender() end
     end)
-    window:SetScript("OnSizeChanged", function() ns.Layout(); ns.Refresh() end)
+    window:SetScript("OnHide", function() if ns.ui.resizing then ns.FinishWindowResize() end end)
     ns.Layout()
     window:Hide()
+end
+
+function ns.FinishWindowResize()
+    ns.window:StopMovingOrSizing()
+    ns.ui.resizing, ns.ui.resizeDirty = nil, nil
+    local width, height = ns.ReadPublic(ns.window.GetWidth, ns.window), ns.ReadPublic(ns.window.GetHeight, ns.window)
+    if type(width) == "number" and type(height) == "number" then
+        ns.db.windowSize = {width = width, height = height}
+    end
+    ns.Layout(); ns.Refresh()
+end
+
+function ns.QueueWindowRender()
+    if ns.ui.resizeRenderQueued or not C_Timer or type(C_Timer.After) ~= "function" then return end
+    ns.ui.resizeRenderQueued = true
+    C_Timer.After(0.15, function()
+        ns.ui.resizeRenderQueued = nil
+        if ns.ui.resizing then ns.ui.resizeDirty = true else ns.Render() end
+    end)
 end
 
 function ns.Layout()
@@ -256,6 +284,19 @@ function ns.Layout()
         tab:SetWidth(tabWidth)
         tab:ClearAllPoints()
         tab:SetPoint("TOPLEFT", 26 + (index - 1) * (tabWidth + 10), -212)
+    end
+    for _, card in ipairs(ns.ui.cards) do
+        card:SetWidth(ns.ui.contentWidth)
+        card.title:SetWidth(ns.ui.contentWidth - 130)
+        card.reason:SetWidth(ns.ui.contentWidth - 24)
+        local count = card.memberCount or 0
+        local cellWidth = (ns.ui.contentWidth - 24 - math.max(0, count - 1) * 6) / math.max(1, count)
+        for index = 1, count do
+            local cell = card.memberCells[index]
+            cell:SetWidth(cellWidth); cell:ClearAllPoints()
+            cell:SetPoint("TOPLEFT", 12 + (index - 1) * (cellWidth + 6), -card.memberTop)
+            cell.name:SetWidth(cellWidth - 12); cell.state:SetWidth(cellWidth - 12); cell.history:SetWidth(cellWidth - 12)
+        end
     end
 end
 
@@ -296,6 +337,7 @@ local function makeCard()
     card.mapButton = button(card, "Show route", 140, activate, true)
     card.detailsButton = button(card, "Quest details", 116, function()
         if card.activity and card.activity.dungeon then ns.RecordDungeonEntrance(card.activity.dungeon); return end
+        if card.guide and not card.libraryItem and not card.guide.personal then ns.StartPartyRoute(card.guide); return end
         local id = card.libraryItem and card.libraryItem.id or (card.guide and card.guide.target.id)
         if id then ns.ShowQuestDetails(id) end
     end, true)
@@ -311,6 +353,7 @@ local function makeCard()
 end
 
 local function renderMembers(card, members, top)
+    card.memberCount, card.memberTop = #members, top
     for _, cell in ipairs(card.memberCells) do cell:Hide() end
     local width = (ns.ui.contentWidth - 24 - (#members - 1) * 6) / math.max(1, #members)
     for index, member in ipairs(members) do
@@ -455,12 +498,14 @@ function ns.Render()
         card.title:SetWidth(ns.ui.contentWidth - 130)
         card.reason:SetWidth(ns.ui.contentWidth - 24)
         for _, cell in ipairs(card.memberCells) do cell:Hide() end
+        card.memberCount = 0
         card.guide = guide
         card.libraryItem = libraryItem
         card.activity = activity
         card.mapButton:SetShown(guide ~= nil or libraryItem ~= nil or activity ~= nil)
         card.detailsButton:SetShown(guide ~= nil or (activity and activity.dungeon) ~= nil)
         card.detailsButton.caption:SetText("Quest details")
+        card.detailsButton:SetEnabled(true)
         card.buyButton:SetShown(guide ~= nil and #ns.QuestShoppingList(guide.records) > 0)
         card.mapButton:SetEnabled(true)
         local height
@@ -504,6 +549,9 @@ function ns.Render()
             card.reason:SetText(guide.reason .. "\n" .. detail)
             card.reason:Show()
             card.mapButton.caption:SetText(guide.hasPoint and "Show route" or "View details")
+            card.detailsButton.caption:SetText("Start route")
+            card.detailsButton:SetShown(not guide.personal)
+            card.detailsButton:SetEnabled(guide.hasPoint == true)
         else
             height = suggestion and 169 or 110
             card.accent:SetColorTexture(unpack(row.active >= 2 and {0.35, 0.77, 0.57, 1} or colors.gold))
