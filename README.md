@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.7.4** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.7.5** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -505,9 +505,19 @@ The offline snapshot was captured **October 5, 2026** from public game facts in
 | --- | ---: |
 | Distinct quest records / category lists | 5,230 / 123 |
 | Detailed pages | 1,619 |
-| Quests with mapped pickup / objective-area / turn-in coordinates | 905 / 196 / 972 |
-| Published series / prerequisite facts | 726 / 524 |
-| Incomplete objective locations / known repeatables | 950 / 78 |
+| Quests with mapped pickup / objective-area / turn-in coordinates | 905 / 319 / 972 |
+| Published series / prerequisite facts | 726 / 525 |
+| Incomplete objective locations / known repeatables | 840 / 78 |
+
+Mapped item-drop alternatives retain a single representative farming area near
+this quest's published giver. This is a stable geometric choice, not a requirement
+to visit every possible mob or proof of the best drop rate. Other source locations
+are retained as alternatives. Missing objective flags still mean a real source gap.
+For an active fixed-guide step with missing coordinates, your own public native
+quest-tracker destination can supply its current location. A catalogue fallback
+cannot fill that gap; unavailable/private native data keeps the existing notice.
+The fixed step order and saved skips are retained when native coordinates change.
+The same cached pages were reprocessed for 0.7.5; no new capture is claimed.
 
 This is a partial catalogue, not every Forever quest or a complete prerequisite
 or flight graph. Detailed reads now spread across outdoor categories through
@@ -528,7 +538,7 @@ provided broad inspiration about progress clarity; its code/assets/layouts
 were not copied. This implementation is independent.
 
 Reported beta build **70205** established the earlier sync APIs in user tests.
-**0.7.4 has host validation, not a live-client compatibility certification.**
+**0.7.5 has host validation, not a live-client compatibility certification.**
 Retest UI rendering, optional gossip/flight actions, corpse positions and item
 hooks on the build in front of you. `/wt probe` lists capabilities and runtime
 status. Do not interpret presence as proof that protected actions work.

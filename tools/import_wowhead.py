@@ -218,20 +218,35 @@ def detail_facts(page, row, area_maps, quest_facts=None):
                     # use slot IDs. Neither is a client quest-objective index.
                     point['sourceObjective'] = p['objective']
                     objective_groups[(p['point'], p['objective'])].append(point)
-    for (kind, _), points in objective_groups.items():
-        if kind == 'sourcerequirement' and len({p['entityID'] for p in points}) > 1:
-            incomplete = True  # Alternative item drops do not prove a best target.
-            other_incomplete = True
-        else:
-            objectives.append(points[0])
+    def representative(points):
+        # Pick a stable farming area from published points, anchored to this
+        # quest's giver rather than a player's current position. Alternatives
+        # are choices for one item objective, not a mandatory tour of all mobs.
+        anchor = starts[0] if starts else ends[0] if ends else None
+        def rank(p):
+            same = anchor and p.get('mapID') == anchor.get('mapID')
+            distance = ((p['x'] - anchor['x']) ** 2 + (p['y'] - anchor['y']) ** 2) if same else 0
+            return (0 if same else 1, distance, p.get('mapID', 0), p['entityID'], p['x'], p['y'])
+        return min(points, key=rank)
+
+    alternatives = []
+    for (kind, objective), points in objective_groups.items():
+        primary = dict(representative(points))
+        if kind == 'sourcerequirement' and len(points) > 1:
+            distinct = []
+            for point in sorted(points, key=lambda p: (p['mapID'], p['entityID'], p['x'], p['y'])):
+                if point not in distinct:
+                    distinct.append(point)
+            primary['alternativeCount'] = len(distinct)
+            alternatives.append({'sourceObjective': objective, 'itemName': primary.get('itemName', ''),
+                                 'locations': distinct[:24]})
+        objectives.append(primary)
     if len(objectives) > 8:
         incomplete = True
         other_incomplete = True
-    for (kind, _), points in unmapped_groups.items():
-        if kind == 'sourcerequirement' and len({p['entityID'] for p in points}) > 1:
-            other_incomplete = True
-        else:
-            unmapped.append(points[0])
+    for key, points in unmapped_groups.items():
+        if key not in objective_groups:
+            unmapped.append(representative(points))
     if unmapped:
         result['unmappedLocations'] = unmapped[:24]
         result['otherLocationsIncomplete'] = other_incomplete or len(unmapped) > 24
@@ -242,6 +257,8 @@ def detail_facts(page, row, area_maps, quest_facts=None):
             result[key] = points[:8]
     if npc_targets:
         result['npcTargets'] = npc_targets
+    if alternatives:
+        result['objectiveAlternatives'] = alternatives[:8]
     item_data = json_after(page, 'WH.Gatherer.addData(3, 16, ')
     boundary = page.find('new Mapper(')
     if boundary < 0:
@@ -449,7 +466,8 @@ def main():
                'area_ui_maps': area_maps, 'tester_corrections': corrections}
     if args.cached_details:
         summary['reprocessed'] = datetime.date.today().isoformat()
-        for field in ('unavailable_details', 'detail_requests_stopped_after_denials'):
+        for field in ('unavailable_details', 'detail_requests_stopped_after_denials',
+                      'leveling_exclusions', 'leveling_exclusions_source'):
             if field in previous_summary:
                 summary[field] = previous_summary[field]
     output.with_suffix('.json').write_text(json.dumps(summary, indent=2) + '\n')

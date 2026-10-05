@@ -177,6 +177,7 @@ function ns.BuildFixedGuideRoute(guide, includeOrigin, cooperative, query)
             local current = copy(stop)
             local active, allowed, reason, offered
             if person then
+                current = ns.ClientObjectiveStop(current, person.key) or current
                 current.memberKey, current.forPlayer = person.key, person.name
                 active = person.key == ns.self and ns.active or ns.members[person.key] and ns.members[person.key].active
                 allowed, reason = ns.CatalogueAllowed(stop.id, person.profile, person.key, query)
@@ -204,7 +205,7 @@ function ns.BuildFixedGuideRoute(guide, includeOrigin, cooperative, query)
                     if allowed == true then eligibility[stop.id] = true end
                     if not pending and #stops == 0 then
                         if waiting then pending = "Waiting for your party's quest history."
-                        elseif stop.unknownLocation then pending = stop.blockedReason or ("Quest location missing: " .. stop.title .. ". Use the game quest tracker or Skip step.")
+                        elseif current.unknownLocation then pending = stop.blockedReason or ("Quest location missing: " .. stop.title .. ". Use the game quest tracker or Skip step.")
                         elseif stop.kind == "a" and allowed ~= true then pending = reason or "Check this quest's pickup requirements at its NPC."
                         elseif stop.kind ~= "a" and not (active and active[stop.id]) then pending = "Accept " .. stop.title .. " before this step."
                         elseif stop.kind == "t" and not ns.QuestProgressReady(person.key, stop.id)

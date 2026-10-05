@@ -216,7 +216,27 @@ function ns.PublishedGuideStop(record, point, kind)
     return {id = record.id, mapID = point.mapID, x = point.x, y = point.y, kind = kind,
         title = ns.QuestTitle(record.id), label = point.name or record.title, published = true,
         entityID = point.entityID, action = point.action, itemName = point.itemName,
-        targetName = point.name, npcName = point.npc and point.name or nil}
+        targetName = point.name, npcName = point.npc and point.name or nil,
+        alternativeCount = point.alternativeCount}
+end
+
+function ns.ClientObjectiveStop(stop, key)
+    -- Peer packets do not distinguish native coordinates from a catalogue
+    -- fallback, so only our own native read can fill this missing stage.
+    if key ~= ns.self or not stop.unknownLocation or stop.kind ~= "q" then return end
+    local active = key == ns.self and ns.active or ns.members[key] and ns.members[key].active
+    if not active or not active[stop.id] then return end
+    local point = ns.RoutePointForMember(key, stop.id)
+    -- Published fallback points cannot fill a genuinely missing objective:
+    -- otherwise the same known drop area would be mislabeled as the missing one.
+    if not point or point.kind ~= "q" or point.published
+        or not validPoint(point.mapID, point.x, point.y) then return end
+    local result = {}; for name, value in pairs(stop) do result[name] = value end
+    result.fixedStepKey = ns.GuideStepKey(stop)
+    result.mapID, result.x, result.y = point.mapID, point.x, point.y
+    result.unknownLocation, result.clientLocation = nil, true
+    result.label = "Finish remaining objectives for " .. stop.title
+    return result
 end
 
 function ns.QuestRouteStages(record, focusKey)

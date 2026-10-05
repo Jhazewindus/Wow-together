@@ -1,3 +1,32 @@
+# Follow-up review for 0.7.5
+
+The user asks why The Battleboars location could not be found and requests that
+it work in the addon. This is a main user follow-up question without a new version,
+character or probe capture; it is not another friend's flight report. No conflict
+with fixed ordering, source validation or the leveling focus.
+
+Inspecting cached quest-780.html proves that the mapper has Mulgore (area 215,
+joined to UI map 1412) points at Battleboar 57.6/85.2 and Bristleback Battleboar
+63.4/78.2, both for Battleboar Flank. The mapper also flags one missing objective.
+Our importer discarded any item group with multiple source entities. That was a
+confirmed parsing policy error; the previous answer saying coordinates were absent
+was incomplete. Keep mapped alternatives, choose a deterministic representative
+near the published quest giver and leave real missing flags intact. Do not infer
+that the known Flank sources also prove Snout drops. Reprocess existing cache only.
+
+Add an active fixed-step location bridge using our own guarded public quest-log
+reads. Native coordinates decorate a copy of the placeholder; they do not mutate
+its saved fixed order. Catalogue fallbacks cannot fill the missing stage, and peer
+packets do not carry sufficient provenance for this bridge. Maintain the placeholder's
+stable skip key across position changes. Completion remains objective/history-driven.
+
+Coverage changes from 196 to 319 quests with mapped objective areas; incomplete
+location flags fall from 950 to 840. All 5,230 quest identities and non-location
+fields compare unchanged against 0.7.4, including level/prerequisite/faction data.
+Synthetic checks exercise alternatives, map-ID joins, native/private/unavailable
+positions, skips and hand-ins. Native beta waypoint behavior and source locations
+still need live verification.
+
 # Follow-up review for 0.7.4
 
 The user reports successful automatic flight to Orgrimmar while Dijkstra still

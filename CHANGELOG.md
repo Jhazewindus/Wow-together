@@ -1,5 +1,20 @@
 # Wow Together changelog
 
+## 0.7.5
+
+- Fix known farming locations being discarded when an item has multiple drop
+  sources. Keep their coordinates and select one stable area near the quest giver;
+  alternatives do not become a required tour of every mob.
+- Reprocess the same cached Forever pages: mapped objective coverage increases
+  from 196 to 319 quests. Quest count, requirements and source capture stay the same.
+- The Battleboars now has a routed Flank farming area; its remaining source gap
+  stays explicit. Use your public quest-tracker objective location for an unmapped
+  active fixed-guide step when available. Never recycle a published point as proof
+  of a missing objective or infer an item drop from nearby mobs.
+- Retain fixed step order, completion checks and saved skips when a native
+  objective location changes. Quest details distinguish alternatives from missing
+  data. Retest actual guide locations on the Forever beta.
+
 ## 0.7.4
 
 - Refresh the arrow and map immediately when a flight is learned. Reconsider

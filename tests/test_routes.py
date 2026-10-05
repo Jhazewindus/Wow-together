@@ -51,7 +51,7 @@ def map_canvas(c):
 
 
 class RouteTests(unittest.TestCase):
-    def test_shipped_facts_and_uncertain_drop_sources(self):
+    def test_shipped_facts_and_alternative_drop_sources(self):
         c = Client(quests=(), use_catalogue=True)
         q = c.ns.CatalogueQuest(97223)
         self.assertEqual(q.title, 'Bloodtalon Matriarch')
@@ -62,8 +62,10 @@ class RouteTests(unittest.TestCase):
         self.assertEqual(q.objectives[1].entityID, 268530)
         skull = c.ns.CatalogueQuest(827)
         self.assertEqual(skull.previousQuest, 828)
-        self.assertTrue(skull.objectiveLocationsIncomplete)
-        self.assertIsNone(skull.objectives)
+        self.assertFalse(skull.objectiveLocationsIncomplete)
+        self.assertEqual(skull.objectives[1].mapID, 1411)
+        self.assertGreater(skull.objectives[1].alternativeCount, 1)
+        self.assertGreater(len(skull.objectiveAlternatives[1].locations), 1)
         # Kill requirements use entity IDs, not small objective-slot numbers.
         self.assertEqual(len(c.ns.CatalogueQuest(837).objectives), 4)
 

@@ -20,6 +20,7 @@ function ns.GuideQuestSkipped(id)
 end
 
 function ns.GuideStepKey(stop)
+    if stop.fixedStepKey then return stop.fixedStepKey end
     local kind = stop.stepKind or stop.kind
     if ns.GuideInteger(stop.entityID) and stop.entityID > 0 then
         return table.concat({kind, stop.mapID, "npc", stop.entityID}, ":")

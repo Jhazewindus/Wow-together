@@ -163,13 +163,13 @@
   ],
   "detail_requests_stopped_after_denials": true,
   "with_starters": 905,
-  "with_objectives": 196,
+  "with_objectives": 319,
   "with_turnins": 972,
   "with_series": 726,
   "with_prerequisites": 525,
   "repeatable_quests": 78,
   "unverified_prerequisites": 14,
-  "incomplete_objective_locations": 950,
+  "incomplete_objective_locations": 840,
   "area_ui_maps": {
     "40": 1436,
     "17": 1413,
@@ -201,6 +201,7 @@
   "tester_corrections": [
     750
   ],
+  "reprocessed": "2026-10-05",
   "leveling_exclusions": [
     5805,
     5841,

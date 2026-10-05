@@ -29,14 +29,15 @@ class ImportTests(unittest.TestCase):
         self.assertEqual(mapped['starts'][0]['mapID'], 1411)
         self.assertAlmostEqual(mapped['starts'][0]['x'], .552)
 
-    def test_direct_entity_objectives_and_ambiguous_item_sources(self):
+    def test_direct_entity_objectives_and_alternative_item_sources(self):
         points = [{'point': 'requirement', 'objective': 3111, 'id': 3111, 'name': 'Kill target', 'coord': [50, 40]},
                   {'point': 'sourcerequirement', 'objective': 0, 'id': 7, 'name': 'Possible drop A', 'coord': [30, 20]},
                   {'point': 'sourcerequirement', 'objective': 0, 'id': 8, 'name': 'Possible drop B', 'coord': [70, 80]}]
         facts = detail_facts(detail(points), {'id': 42}, {14: 1411})
-        self.assertEqual(len(facts['objectives']), 1)
+        self.assertEqual(len(facts['objectives']), 2)
         self.assertEqual(facts['objectives'][0]['entityID'], 3111)
-        self.assertTrue(facts['objectiveLocationsIncomplete'])
+        self.assertNotIn('objectiveLocationsIncomplete', facts)
+        self.assertEqual(len(facts['objectiveAlternatives'][0]['locations']), 2)
         self.assertNotIn('objectiveIndex', facts['objectives'][0])
 
     def test_branching_series_is_not_invented_as_linear_prerequisites(self):

@@ -369,7 +369,8 @@ function ns.ShowQuestDetails(id)
         end
         if quest.starts and quest.starts[1] then lines[#lines + 1] = "Start: " .. quest.starts[1].name end
         if quest.ends and quest.ends[1] then lines[#lines + 1] = "Return to: " .. quest.ends[1].name end
-        if quest.objectiveLocationsIncomplete then lines[#lines + 1] = "Some objective locations are missing or have several possible item-drop sources. Only clear destinations are routed." end
+        if quest.objectiveAlternatives then lines[#lines + 1] = "Alternative farming locations are known; the guide chooses one per objective." end
+        if quest.objectiveLocationsIncomplete then lines[#lines + 1] = "Some objective locations are still missing. Known areas and public quest-tracker locations are used when available." end
         local _, reason = ns.CatalogueAllowed(id, ns.profile, ns.self)
         if reason then lines[#lines + 1] = reason end
         if quest.previousQuest then

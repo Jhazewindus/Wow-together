@@ -74,6 +74,7 @@ function ns.RouteContext(stop, mapID)
     if stop.travelLeg then return "Travel towards " .. ns.MapName(stop.goal.mapID) .. ".\n" .. (stop.travelLeg.method == "walk"
         and "Use the crossing; follow roads and terrain." or "Board the correct transport; waiting time varies.") end
     if stop.action == "flight-check" then return "Check this nearby flight master.\nUnlock status has not been confirmed." end
+    if stop.clientLocation then return "Finish this quest's remaining objectives.\nLocation supplied by your quest tracker." end
     if ns.routePaused then
         if ns.routeSelection and ns.routeSelection.fixedRoute then return ns.routePaused end
         return "Waiting for confirmed party progress.\nYour last route is retained."

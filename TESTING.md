@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.7.4**, World of Warcraft: Forever beta, interface **16001**.
+For **0.7.5**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 
@@ -15,7 +15,23 @@ Keep tester names and reports separate; label the main developer's report.
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
 
-## Focus checks for 0.7.4
+## Focus checks for 0.7.5
+
+- **The Battleboars:** on a suitable Horde character, finish The Hunt Continues,
+  accept The Battleboars and start/resume Mulgore. Its known farming step should
+  point to Battleboars around 57.6, 85.2 for Flanks. The other published source
+  around 63.4, 78.2 is an alternative, not a second mandatory stop. Verify against
+  the current beta; published coordinates are representative areas.
+- **Remaining source gap:** complete Flanks while Snouts remain. If the client
+  supplies a public active-objective waypoint, the unmapped step should use it and
+  explain that the location came from the quest tracker. If no usable native point
+  exists, keep the location-missing notice. Do not assume the Flank location proves
+  Snout drops. Actual quest completion still gates the turn-in.
+- **Other item quests:** try a quest with several possible drop mobs. It should
+  retain a mapped farming area instead of losing all targets. Move, reload, Scan,
+  complete an item and Skip step: fixed order and saved skips must remain coherent.
+
+## Flight and scan checks retained from 0.7.4
 
 - **Flight agreement:** with flight suggestions enabled, start Path to Orgrimmar
   or a distant quest route. Open a flight master with a reachable useful flight.
