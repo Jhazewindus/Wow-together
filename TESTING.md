@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.6.6**, World of Warcraft: Forever beta, interface **16001**.
+For **0.6.7**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 
@@ -21,6 +21,9 @@ Keep tester names and reports separate; label the main developer's report.
    lowest party level. Search another suitable zone; try another bracket and
    All levels. Cards show total quests and separate published pickup/objective/
    turn-in counts. A large quest count must not imply every location is mapped.
+   The first result says Recommended zone guide; remaining results say
+   Alternative zone guide. Linked questlines should not duplicate those cards;
+   their quests/prerequisites remain inside the zone route and searchable by name.
 2. **Start the complete guide:** press Start route. Loading route should appear,
    followed by a numbered zone-guide step. The route should retain the full
    guide, beyond the old six-quest/twenty-stop trip limit. Missing locations or

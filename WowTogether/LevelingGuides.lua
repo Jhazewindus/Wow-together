@@ -209,7 +209,9 @@ function ns.LevelingGuideChoices(ignoreSearch)
     local choices, low, high = {}, ns.GuideLevelRange()
     local query = ignoreSearch and "" or string.lower(ns.guideSearch or "")
     for _, entry in pairs(entries) do
-        local choice = buildChoice(entry, low, high)
+        -- Chains remain part of zone planning and saved/shared guides. The
+        -- browser offers whole zones rather than duplicate partial-chain cards.
+        local choice = entry.mode == "zone" and buildChoice(entry, low, high)
         if choice and (query == "" or string.find(choice.search, query, 1, true)) then choices[#choices + 1] = choice end
     end
     table.sort(choices, function(a, b)

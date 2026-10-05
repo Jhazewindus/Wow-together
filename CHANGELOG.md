@@ -1,5 +1,14 @@
 # Wow Together changelog
 
+## 0.6.7
+
+- Simplify Leveling guides to one Recommended zone guide and Alternative zone
+  guides. Remove duplicate standalone questline cards; chain order and
+  prerequisites remain inside full zone guides. Existing selected/shared
+  questline guides still work, and search still finds quests inside zones.
+- Includes 0.6.6: reload restoration, optional party catch-up, persistent guide
+  controls, clean labels, smaller nameplate markers and controls below the map.
+
 ## 0.6.6
 
 - Resume the selected guide after /reload or login, using fresh quest progress.

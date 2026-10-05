@@ -579,8 +579,12 @@ function ns.Render()
             height = item.recommended and 176 or 160
             if guide.mode == "bundle" then height = height + 52 end
             card.accent:SetColorTexture(unpack(item.recommended and colors.gold or colors.border))
-            card.category:SetText(item.recommended and (guide.catchup and "RECOMMENDED / CATCH UP FIRST" or "RECOMMENDED NEXT STEP")
-                or (string.upper(guide.kind) .. " / ALTERNATIVE"))
+            if ns.filter == "guides" then
+                card.category:SetText(item.recommended and "RECOMMENDED ZONE GUIDE" or "ALTERNATIVE ZONE GUIDE")
+            else
+                card.category:SetText(item.recommended and (guide.catchup and "RECOMMENDED / CATCH UP FIRST" or "RECOMMENDED NEXT STEP")
+                    or (string.upper(guide.kind) .. " / ALTERNATIVE"))
+            end
             card.title:SetText(guide.title .. (guide.mapID > 0 and (" — " .. guide.zone) or ""))
             card.count:SetText(guide.fullGuide and (guide.rangeLow .. "–" .. guide.rangeHigh) or (guide.level and ("Quest Lv " .. guide.level) or ""))
             card.reason:SetHeight(height - 103)

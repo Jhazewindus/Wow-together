@@ -1,5 +1,11 @@
 # Follow-up review for 0.6.6
 
+After the 0.6.6 release, the user asked what Questline / Alternative meant and
+preferred recommended zones plus alternative zone guides. 0.6.7 removes the
+duplicate chain cards from Leveling guides while retaining chains in planning,
+saved selections and invitations. This is a browser simplification, not a
+change to fixed ordering or prerequisite gates.
+
 This batch combines an unlabeled request for current-zone party catch-up and
 prerequisite-aware bundling with King Kai's report (17:08): distant nameplate
 crosses and losing the selected guide after reload. No version/build/character

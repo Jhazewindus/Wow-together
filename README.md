@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.6.6** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.6.7** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -46,12 +46,17 @@ Library), **Party quests** (the old All quests), **Shared**, **Party progress**,
 All quests supports level brackets, Near party and search committed on Enter
 or after a typing pause. It retains manual browsing of known repeatables.
 
-**Leveling guides** lists real zone guides and published questlines across the
+**Leveling guides** lists real zone guides across the
 catalogue, including remote zones. Its default bracket follows the lowest party
 level (1–10, 11–20, etc.). Choose another bracket or All levels, and search by
 zone, quest or known NPC; Enter or a short pause applies the search. Pages keep
 later results accessible. Individual quests stay in All quests, and explicit
 quest-log trips are in Party quests.
+
+The first card is **Recommended zone guide**; other matching zones are
+**Alternative zone guide**. A questline is a linked chain within a zone and is
+planned inside its complete zone guide, without a duplicate standalone card.
+Searching for a quest or its NPC still finds the containing zone guide.
 
 A bracket filters the browser; it does not cut a selected guide down to that
 bracket. **Follow fixed zone guides** is on by default. Start route compiles the
@@ -405,7 +410,7 @@ provided broad inspiration about progress clarity; its code/assets/layouts
 were not copied. This implementation is independent.
 
 Reported beta build **70205** established the earlier sync APIs in user tests.
-**0.6.6 has host validation, not a live-client compatibility certification.**
+**0.6.7 has host validation, not a live-client compatibility certification.**
 Retest UI rendering, optional gossip/flight actions, corpse positions and item
 hooks on the build in front of you. `/wt probe` lists capabilities and runtime
 status. Do not interpret presence as proof that protected actions work.
