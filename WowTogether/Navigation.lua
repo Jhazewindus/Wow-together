@@ -14,6 +14,21 @@ function ns.StopInstruction(stop)
     return stop.label or ("Work on " .. stop.title)
 end
 
+function ns.RouteContext(stop, mapID)
+    if ns.routePaused then return "Waiting for confirmed party progress.\nYour last route is retained." end
+    local reason
+    if stop.kind == "t" then reason = "Hand in a completed quest."
+    elseif stop.kind == "a" then
+        local selected = ns.routeSelection
+        reason = selected and selected.pickupIDs and selected.pickupIDs[stop.id]
+            and "Nearby pickup along this trip." or "Pick up a selected quest."
+    else reason = stop.npcName and not stop.action and "Visit this NPC for an active quest." or "Finish active quest objectives." end
+    local zone = ns.MapName(stop.mapID)
+    local who = stop.forPlayer and (" • For " .. stop.forPlayer) or ""
+    local context = mapID and mapID ~= stop.mapID and ("Travel to " .. zone .. who) or (zone .. who)
+    return reason .. "\n" .. context
+end
+
 function ns.NavigationState()
     if not ns.Option("routeArrow") then return {status = "Disabled in settings"} end
     local route = ns.routeSelection and ns.selectedRoute
@@ -68,6 +83,8 @@ function ns.UpdateNavigation()
     frame.title:SetText(state.stop.title)
     frame.distance:SetText(state.distance and (string.format("%.0f yd", state.distance) .. (state.arrived and " • Here" or "")) or "")
     frame.status:SetText(state.angle and ns.StopInstruction(state.stop) or state.status)
+    local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
+    frame.context:SetText(ns.RouteContext(state.stop, mapID))
     for _, line in ipairs(frame.icon.lines) do line:Hide() end
     frame.symbol:SetText("…"); frame.symbol:SetTextColor(0.96, 0.76, 0.35, 1)
     frame.symbol:SetShown(state.angle == nil and not state.arrived)
@@ -86,7 +103,7 @@ end
 function ns.CreateNavigation()
     local frame = CreateFrame("Frame", "WowTogetherRouteArrow", UIParent)
     ns.navigation = frame
-    frame:SetSize(220, 118); frame:SetPoint("BOTTOM", UIParent, "BOTTOM", 0, 160)
+    frame:SetSize(240, 152); frame:SetPoint("BOTTOM", UIParent, "BOTTOM", 0, 160)
     frame:SetClampedToScreen(true); frame:SetFrameStrata("MEDIUM")
     frame:SetMovable(true); frame:EnableMouse(true); frame:RegisterForDrag("LeftButton")
     frame:SetScript("OnDragStart", frame.StartMoving); frame:SetScript("OnDragStop", ns.SaveNavigationPosition)
@@ -97,20 +114,24 @@ function ns.CreateNavigation()
     end
     frame.title = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
     frame.title:SetFont("Fonts\\FRIZQT__.TTF", 11, "OUTLINE"); frame.title:SetPoint("TOP", 0, -4)
-    frame.title:SetSize(214, 18); frame.title:SetWordWrap(false)
+    frame.title:SetSize(234, 18); frame.title:SetWordWrap(false)
     frame.icon = CreateFrame("Frame", nil, frame); frame.icon:SetSize(52, 52); frame.icon:SetPoint("TOP", 0, -29)
     frame.icon.lines = {}
     frame.symbol = frame.icon:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
     frame.symbol:SetFont("Fonts\\FRIZQT__.TTF", 26, "OUTLINE"); frame.symbol:SetPoint("CENTER")
     frame.distance = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-    frame.distance:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE"); frame.distance:SetPoint("BOTTOM", 0, 21)
+    frame.distance:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE"); frame.distance:SetPoint("BOTTOM", 0, 55)
     frame.status = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
-    frame.status:SetFont("Fonts\\FRIZQT__.TTF", 10, "OUTLINE"); frame.status:SetPoint("BOTTOM", 0, 3)
-    frame.status:SetSize(214, 17); frame.status:SetWordWrap(false)
+    frame.status:SetFont("Fonts\\FRIZQT__.TTF", 10, "OUTLINE"); frame.status:SetPoint("BOTTOM", 0, 37)
+    frame.status:SetSize(234, 17); frame.status:SetWordWrap(false)
+    frame.context = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
+    frame.context:SetFont("Fonts\\FRIZQT__.TTF", 10, "OUTLINE"); frame.context:SetPoint("BOTTOM", 0, 3)
+    frame.context:SetSize(234, 30); frame.context:SetWordWrap(false)
     frame:SetScript("OnEnter", function(self)
         if not GameTooltip then return end
         GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
         if self.state and self.state.stop then GameTooltip:AddLine(self.state.stop.label, 1, 0.82, 0.3, true) end
+        if self.context then GameTooltip:AddLine(self.context:GetText() or "", 0.8, 0.85, 0.9, true) end
         GameTooltip:AddLine("Drag to move • /wt arrow to toggle", 1, 1, 1, true)
         GameTooltip:AddLine("Direction relative to your character; follow roads and terrain.", 0.75, 0.8, 0.85, true)
         GameTooltip:Show()

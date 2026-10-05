@@ -35,14 +35,84 @@ function ns.HasCurrentPartyQuests()
     return false
 end
 
+local function routePeople(guide, id)
+    if guide.mode == "bundle" and guide.pickupIDs and guide.pickupIDs[id] then return ns.PartyProfiles() end
+    return currentPeople(id)
+end
+
+function ns.CurrentRouteMap(guide)
+    local points, counts = {}, {}
+    for _, record in ipairs(guide.records) do
+        for _, person in ipairs(routePeople(guide, record.id)) do
+            local first = person.synced and ns.RouteStages(record, person.key)[1]
+            if first then
+                points[first.mapID] = points[first.mapID] or first
+                counts[first.mapID] = (counts[first.mapID] or 0) + 1
+            end
+        end
+    end
+    if points[guide.mapID] then return guide.mapID end
+    local current = ns.profile and ns.profile.mapID or 0
+    if points[current] then return current end
+    local position = ns.PlayerPoint(current)
+    local best, distance
+    for mapID, point in pairs(points) do
+        local value = position and ns.CrossMapDistance and ns.CrossMapDistance(position, point) or math.huge
+        if not best or value < distance or (value == distance and (counts[mapID] > counts[best]
+            or counts[mapID] == counts[best] and mapID < best)) then best, distance = mapID, value end
+    end
+    return best or guide.mapID
+end
+
+local function routeMetric(mapID)
+    local width, height
+    if C_Map then width, height = ns.ReadPublic(C_Map.GetMapWorldSize, mapID) end
+    local physical = type(width) == "number" and type(height) == "number" and width > 0 and height > 0
+        and width < 1000000 and height < 1000000
+    width, height = physical and width or 1.5, physical and height or 1
+    return function(a, b)
+        if not a or not b then return 0 end
+        return math.sqrt(((a.x - b.x) * width)^2 + ((a.y - b.y) * height)^2)
+    end, physical
+end
+
+local function improveObjectiveRuns(stops, position, distance)
+    local first = 1
+    while first <= #stops do
+        if stops[first].kind ~= "q" then first = first + 1
+        else
+            local last = first
+            while stops[last + 1] and stops[last + 1].kind == "q" do last = last + 1 end
+            -- Bounded two-edge swaps improve the nearest-neighbour loop while
+            -- keeping pickups and ready/future returns in their chosen order.
+            for pass = 1, 3 do
+                local changed = false
+                for a = first, last - 1 do
+                    for b = a + 1, last do
+                        local before, after = stops[a - 1] or position, stops[b + 1]
+                        local old = distance(before, stops[a]) + distance(stops[b], after)
+                        local new = distance(before, stops[b]) + distance(stops[a], after)
+                        if new + 0.000001 < old then
+                            local left, right = a, b
+                            while left < right do stops[left], stops[right] = stops[right], stops[left]; left, right = left + 1, right - 1 end
+                            changed = true
+                        end
+                    end
+                end
+                if not changed then break end
+            end
+            first = last + 1
+        end
+    end
+end
+
 function ns.BuildCurrentQuestRoute(guide, includeOrigin)
-    local mapID, phases, missing, otherMaps, partial = guide.mapID, {{}, {}, {}, {}}, 0, 0, false
+    local mapID, phases, missing, otherMaps, partial = ns.CurrentRouteMap(guide), {{}, {}, {}, {}}, 0, 0, false
     local seen, unknownObjectives = {{}, {}, {}, {}}, 0
     for _, record in ipairs(guide.records) do
         local found, unavailable = false, false
-        local people = currentPeople(record.id)
+        local people = routePeople(guide, record.id)
         local pickup = guide.mode == "bundle" and guide.pickupIDs and guide.pickupIDs[record.id]
-        if pickup then people = ns.PartyProfiles() end
         for _, person in ipairs(people) do
             if person.synced then
                 local stages = ns.RouteStages(record, person.key)
@@ -77,20 +147,39 @@ function ns.BuildCurrentQuestRoute(guide, includeOrigin)
         end
     end
     local position = ns.PlayerPoint(mapID)
+    if not ns.profile or ns.profile.mapID ~= mapID then position = nil end
     local stops, last, ready = {}, position, #phases[1]
-    for _, remaining in ipairs(phases) do
-        while #remaining > 0 and #stops < 20 do
-            local best, distance = 1, math.huge
-            for index, stop in ipairs(remaining) do
-                local value = last and ns.NormalizedDistance(last, stop) or index
-                if value < distance then best, distance = index, value end
+    local distance, physical = routeMetric(mapID)
+    local function closest(remaining)
+        local best, cost = 1, math.huge
+        for index, stop in ipairs(remaining) do
+            local value = last and distance(last, stop) or index
+            if value < cost then best, cost = index, value end
+        end
+        return best, cost
+    end
+    for phase = 2, 4 do
+        local remaining = phases[phase]
+        while (#remaining > 0 or #phases[1] > 0) and #stops < 20 do
+            local best, nextDistance = closest(remaining)
+            local readyIndex, readyDistance = closest(phases[1])
+            local nearbyReady = phases[1][readyIndex] and (not last
+                or ns.NormalizedDistance(last, phases[1][readyIndex]) <= ns.Option("circuitRadius") * 0.45)
+            if #phases[1] > 0 and (#remaining == 0 and phase == 4 or nearbyReady or readyDistance <= nextDistance and #remaining > 0) then
+                last = table.remove(phases[1], readyIndex)
+            elseif #remaining > 0 then last = table.remove(remaining, best)
+            else break
             end
-            last = table.remove(remaining, best); stops[#stops + 1] = last
+            stops[#stops + 1] = last
         end
     end
+    improveObjectiveRuns(stops, position, distance)
+    local yards, previous = physical and 0 or nil, position
+    for _, stop in ipairs(stops) do if previous and yards then yards = yards + distance(previous, stop) end; previous = stop end
     local limited = #phases[1] + #phases[2] + #phases[3] + #phases[4]
     return {key = guide.key, title = guide.title, mapID = mapID, stops = stops, origin = includeOrigin and position or nil,
         focusKey = ns.self, ready = ready, missing = missing, otherMaps = otherMaps, limited = limited, unknownObjectives = unknownObjectives,
+        walkingYards = yards,
         partial = partial or missing > 0 or otherMaps > 0 or limited > 0}
 end
 
@@ -149,25 +238,27 @@ function ns.CurrentQuestChoices()
         end
         group.nextStop, group.knownStops, group.missingStops = route.stops[1], #route.stops, route.missing
         group.hasPoint, group.ready = #route.stops > 0, route.ready
-        group.title = route.ready > 0 and ("Turn in " .. route.ready .. " ready quest" .. (route.ready == 1 and "" or "s")) or "Finish our current quests"
+        group.title = route.ready > 0 and route.stops[1] and route.stops[1].kind == "t"
+            and ("Turn in " .. route.ready .. " ready quest" .. (route.ready == 1 and "" or "s")) or "Finish our current quests"
         group.target = group.records[1]
         for _, record in ipairs(group.records) do if group.nextStop and record.id == group.nextStop.id then group.target = record; break end end
         group.level = group.target.level > 0 and group.target.level or nil
         group.priority = (group.mapID == currentMap and 10000 or 0) + (group.hasPoint and 2000 or 0) + route.ready * 100
-        group.reason = "From your party's quest logs. Ready turn-ins first, then unfinished objectives; no new quest pickups."
+        group.reason = "From your party's quest logs. Nearby ready turn-ins first; finish local work before long delivery detours. No new quest pickups."
         if group.mode == "bundle" then
             group.kind = "Current quests + nearby pickups"
-            if route.ready == 0 then group.title = "Current quests + nearby pickups" end
+            if route.ready == 0 or not route.stops[1] or route.stops[1].kind ~= "t" then group.title = "Current quests + nearby pickups" end
             local names = {}
             for _, record in ipairs(group.records) do
                 if group.pickupIDs[record.id] then names[#names + 1] = record.title .. (record.npc ~= "" and (" at " .. record.npc) or "") end
             end
-            group.reason = "Ready turn-ins first. Nearby pickups: " .. table.concat(names, "; ")
+            group.reason = "Nearby ready turn-ins first. Nearby pickups: " .. table.concat(names, "; ")
                 .. ". Combine mapped objectives, then group later turn-ins."
         end
         if route.unknownObjectives > 0 then group.reason = group.reason .. " " .. route.unknownObjectives .. " quest(s) have incomplete objective locations; those steps need the game tracker." end
-        if waiting > 0 then group.reason = group.reason .. " " .. waiting .. " friend(s) still need to sync." end
+        if waiting > 0 then group.reason = group.reason .. " " .. waiting .. " friend(s) still need a refreshed quest snapshot." end
         if route.missing > 0 then group.reason = group.reason .. " " .. route.missing .. " active quest(s) have no verified destination yet." end
+        if group.mapID ~= currentMap then group.reason = group.reason .. " Travel to " .. group.zone .. " for accepted party quests after the current-zone work." end
         group.destination = group.nextStop and group.nextStop.label or "Check active quest destinations"
         choices[#choices + 1] = group
     end

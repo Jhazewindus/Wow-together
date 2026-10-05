@@ -307,10 +307,8 @@ end
 
 function ns.GuideChoices()
     ns.currentGuideStatus = nil
-    if ns.Option("currentQuestsFirst") and ns.CurrentQuestChoices then
-        local current = ns.CurrentQuestChoices()
-        if current then return current end
-    end
+    local current = ns.CurrentQuestChoices and ns.CurrentQuestChoices()
+    if ns.Option("currentQuestsFirst") and current then return current end
     local groups, profiles = {}, ns.PartyProfiles()
     local lowest, highest, lowName, lowKey, ready = nil, nil, nil, ns.self, true
     local factions = {}
@@ -427,6 +425,11 @@ function ns.GuideChoices()
         if a.priority ~= b.priority then return a.priority > b.priority end
         return a.key < b.key
     end)
+    -- Discovery stays available, but never outranks confirmed local quest-log
+    -- work merely because a remote questline has more stops or listed XP.
+    if current then
+        for index = #current, 1, -1 do if current[index].hasPoint then table.insert(choices, 1, current[index]) end end
+    end
     return choices
 end
 

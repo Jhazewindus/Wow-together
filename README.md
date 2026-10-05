@@ -7,7 +7,34 @@ are required by the addon.
 
 Quick references: [friend-testing script](TESTING.md) and [short changelog](CHANGELOG.md).
 
-## Version 0.5.5
+## Version 0.5.6
+
+- **Less map clutter:** the default preview shows the current place and two
+  ahead, with all consecutive quest steps at a shared NPC retained. Use the
+  map overlay's **Show full route** / **Focus next steps** toggle and **0 / 1 / 2
+  ahead** button. Later steps remain in the plan and enter the preview as quest
+  progress changes. Arrival alone never skips unfinished objectives.
+- **Work already in the logs:** mapped accepted quests stay ahead of discovery
+  even when browsing new lines. Current-zone work beats remote deliveries;
+  nearby ready turn-ins can happen first, while long delivery detours wait for
+  local work. Physical map dimensions, where public, improve walking estimates,
+  and bounded objective-order improvements shorten the loop while retaining
+  pickups and later returns. This uses quest data, with no Barrens/Thunder Bluff
+  special case. Distances are straight-line estimates, not road pathfinding.
+- **Zone context:** viewing another map keeps the selected route and explains
+  which zone has the next steps. **View route zone** returns to its map. Active
+  plans advance when the selected quests' next destination changes zone, using
+  that zone's coordinates. The first visible leg starts at your current public
+  position; no line joins unrelated zone coordinates. Two small lines under
+  the arrow explain pickup/work/hand-in, the zone and whose progress needs it.
+- **Optional turn-ins:** enable **Auto turn-in opened quests without a reward
+  choice** in `/wt config`. This is off by default and handles only accepted
+  quest dialogs you open outside combat. Any reward choice stays manual. It
+  probes `IsQuestCompletable`, `CompleteQuest`, `GetNumQuestChoices` and
+  `GetQuestReward`; missing/restricted data stays manual. Actual action behavior
+  must be retested in your beta build; a request does not prove success.
+
+The 0.5.5 changes are retained:
 
 - **Vile Familiars pickup correction:** the importer mistakenly applied the
   Warlock-only introduction to the general quest shown beside its class variant.
@@ -25,7 +52,7 @@ The 0.5.4 changes are retained:
 - **Bundle pickups into the current trip:** **Include eligible nearby pickups**
   is on by default alongside **Finish our current quests first**. The planner
   checks local pickup/return NPCs and known objective areas against the existing
-  route, then orders ready turn-ins, nearby pickups, combined objectives and
+  route, then orders nearby ready turn-ins, nearby pickups, combined objectives and
   later returns. It uses catalogue locations and each player's eligibility,
   with no special cases for quest IDs. High XP cannot override a distant detour.
 - **Valley of Trials:** Lazy Peons can now share a plan with Galgar's Cactus
@@ -82,7 +109,7 @@ The 0.5.3 changes are retained:
 The 0.5.2 changes are retained:
 
 - **Finish our current quests first:** enabled by default in settings. Plans use
-  confirmed party quest logs, prioritizing ready turn-ins before unfinished
+  confirmed party quest logs, prioritizing nearby ready turn-ins before unfinished
   objectives. Nearby eligible pickups can now join that trip; disable the new
   nearby-pickup setting to hold all new pickups back. Your own
   turn-in can come first while a friend's remaining objectives stay on the route.
@@ -191,7 +218,7 @@ World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
 `WowTogether.toc` belongs directly inside that folder. Update **every party
-member to 0.5.5**, including all new files, then `/reload`. Restart the client
+member to 0.5.6**, including all new files, then `/reload`. Restart the client
 fully if a new addon folder does not appear in the character-screen addon list.
 The release ZIP includes the complete TOC, every Lua file, data summary,
 instructions, and license. Copy the folder rather than individual changed files.
@@ -206,7 +233,7 @@ Commands:
 - `/wt tracker` — show or hide the party objective overlay. Drag its background
   to move it; mouse-wheel scroll for more quests and objectives.
 - `/wt config` — open settings, including tracker transparency and opt-in
-  acceptance of opened quest dialogs.
+  acceptance/turn-in of opened quest dialogs. Reward choices stay manual.
 - `/wt arrow` — show or hide the direction arrow for a selected route. Drag
   the arrow to move it; its position and enabled setting are saved.
 - `/wt route clear` — remove the route overlay; the map legend also has a close
@@ -277,14 +304,16 @@ and layouts were not downloaded or copied. This implementation is independent.
    out before judging readiness. A recommendation is a heuristic, not a promise
    of efficient XP gains or pickup availability for every member.
    **Finish our current quests first** is now on by default. Current-log plans
-   route ready turn-ins, then eligible nearby pickups, combined objectives and
-   later returns. **Include eligible nearby pickups** is also on by default;
+   route nearby ready turn-ins, eligible nearby pickups, combined objectives and
+   later returns; long delivery detours wait for local work.
+   **Include eligible nearby pickups** is also on by default;
    disable it for accepted-quests-only routes. An unavailable
    active destination is explained rather than replaced with a new questline.
    Existing accepted class and dungeon quests can be included for their holders;
    profession quests stay in personal guides. Nearby known stops are grouped
    per map. After current logs clear, new-quest recommendations can resume.
-   Turn this option off in `/wt config` to use the earlier discovery ranking.
+   Turn this option off in `/wt config` to also browse discovery recommendations;
+   mapped accepted quests still stay at the top.
 2. Click **Show route** on a recommended questline, hub, zone route, or library
    quest. The first native user waypoint is set and the map opens. Hover numbered
    pins for steps and source notes. If the canvas is unavailable, the destination
@@ -293,13 +322,16 @@ and layouts were not downloaded or copied. This implementation is independent.
    with your party. Friends choose **Follow route** or **Keep my route**; nothing
    replaces their route before they accept. Each client computes its own party
    objective/turn-in stages. Solo Start route starts locally. Update all clients
-   to 0.5.5 for the prerequisite correction and invitations that retain nearby-pickup roles. If more than 20 quests are selected,
+   to 0.5.6 for the latest map controls and turn-in option. If more than 20 quests are selected,
    the invitation explicitly reports that the shared selection is limited.
 3. Accepting a quest switches from pickup to an objective. A finished active
    quest switches to turn-in. Turning it in follows the next party member who
    still needs that quest; after everyone finishes, the guide can advance an
    eligible known series or clear an exhausted route. Missing snapshots retain
    dimmed last-confirmed markers. Combat changes apply after combat ends.
+   The map previews the current place and two ahead by default. Use the overlay
+   controls to change the preview or show the complete plan. If the next stage
+   moves to another zone, use **View route zone**; the arrow explains travel.
 4. Use **Quest library** to browse another zone or search a name. Browsing a zone
    requests party history for that area. **View details** explains known
    restrictions, previous steps, and coordinates that are still missing. Choose
@@ -425,12 +457,15 @@ routes with 16 pins / 20 lines. Later screenshots still showed missing lines
 and pins despite a route legend. Version 0.5.2 changes the drawing surface to
 the visible viewport; actual rendering still needs a beta check. The native
 waypoint action worked. Compatibility never depends on project ID alone.
-New recipe, AH, map-link/world-position, NPC fallback and auto-accept behavior
+New recipe, AH, map-link/world-position, NPC fallback, auto-accept and turn-in behavior
 remain unverified in the beta. API presence does not establish working behavior.
 The 0.5.1 arrow also needs a beta check of `GetPlayerFacing` and
 `C_Map.GetMapWorldSize`. It deliberately avoids guessing an angle without a
 public position/scale/facing. No continuous facing event exists, so its own
 unprotected frame samples at 10 Hz only while visible with a selected route.
+The visible map overlay samples public player movement once per second to move
+its first leg; it does not re-read quest logs or rebuild recommendations there.
+The 0.5.6 preview controls and cross-zone changes still need actual beta testing.
 The user's latest solo report is explicitly **0.5.1 on build 70205**, level 4
 Horde in Durotar, with two active quests and an arrival distance of 3 yards.
 That diagnostic does not validate subsequent rendering, resize, invitation,

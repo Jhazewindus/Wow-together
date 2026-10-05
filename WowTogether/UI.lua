@@ -417,8 +417,8 @@ function ns.Render()
     ns.ui.metrics[1].value:SetText(synced .. " / " .. (#(ns.partyNames or {}) + 1))
     local choices = ns.GuideChoices and (ns.filter == "guides" or ns.routeSelection) and ns.GuideChoices() or {}
     ns.ui.hint:SetText(ns.filter == "guides" and ns.Option("currentQuestsFirst")
-        and (ns.Option("nearbyPickups") and "Ready turn-ins first; collect eligible nearby quests for the same trip.\nSettings controls nearby pickups and the walking detour budget."
-            or "Finish our current quests first: ready turn-ins, then party objectives.\nEnable nearby pickups in settings to bundle quests along this trip.")
+        and (ns.Option("nearbyPickups") and "Nearby turn-ins and current work first; collect eligible quests along the trip.\nSettings controls nearby pickups and the walking detour budget."
+            or "Finish local party work before long delivery trips.\nEnable nearby pickups in settings to bundle quests along this trip.")
         or "Show route draws numbered stops and lines on your world map.\nUse Quest library to browse zones, search names, and check requirements.")
     if ns.UpdateSelectedRoute then ns.UpdateSelectedRoute(choices) end
     ns.ui.metrics[2].caption:SetText(ns.filter == "library" and "CATALOGUE QUESTS" or (ns.filter == "guides" and "QUEST GUIDES" or "SHARED ACTIVE"))

@@ -1,5 +1,18 @@
 # Wow Together changelog
 
+## 0.5.6
+
+- Focus map lines and markers on the current place and two ahead. Map controls
+  switch to the full route or choose zero, one or two places ahead.
+- Prioritize mapped active quests over discovery; finish local work before
+  distant deliveries. Improve objective walking order without moving returns
+  ahead of their work.
+- Keep cross-zone routes, explain the next stop under the arrow, and add
+  **View route zone** when viewing another map. The first leg follows your
+  current public position; quest progress advances the preview.
+- Add opt-in turn-in for opened NPC quest dialogs with no reward choice.
+  Reward choices remain manual; beta action compatibility needs testing.
+
 ## 0.5.5
 
 - Fix the general **Vile Familiars** being blocked behind a Warlock-only

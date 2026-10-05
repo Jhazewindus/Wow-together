@@ -39,9 +39,11 @@ does not appear. No Battle.net credentials or web service are needed.
 /wt tracker toggles the movable party objective overlay. Mouse-wheel scroll
 through all quests/objectives; player names, zones and counts appear together.
 /wt config opens settings: transparent tracker, circuit budgets, class quests,
-NPC hints, map legend, dungeon/zone prompts and opt-in auto-accept.
-Finish our current quests first is ON by default. Ready turn-ins come first,
+NPC hints, map legend, dungeon/zone prompts and opt-in auto-accept/turn-in.
+Finish our current quests first is ON by default. Nearby ready turn-ins come first,
 then eligible nearby pickups, combined objectives and their later returns.
+Long delivery detours wait for local work. Mapped accepted quests stay ahead
+of discovery even when current-quests-first is off.
 Include eligible nearby pickups is also ON by default. The existing trip's
 walking budget limits pickup/return NPCs and known objective areas. Prerequisites,
 faction, level and per-player eligibility still gate new pickups. Unknown
@@ -62,11 +64,20 @@ to move it; its position is saved. The arrow turns relative to your character
 and shows straight-line yards when public position, map scale and facing exist.
 Test turning and walking toward a route stop on your beta build. Unknown data
 shows a status. Cross-zone stops name the zone until you enter it.
+Two small context lines explain pickup/objectives/hand-in, the zone and whose
+progress needs the stop. The selected active route can advance to another
+zone when its next destination changes; unrelated zone coordinates never join.
 On arrival it keeps the quest name, points downward, and says Talk to the
 known NPC. Friendly quest-giver nameplates can show quest names and a pointer
 when public NPC IDs are visible; all nameplate hints hide in combat.
 Reaching a point does not accept or complete a quest. Follow roads and terrain.
 Route lines draw on the WORLD MAP ONLY; the minimap button opens the addon.
+Map preview defaults to the current place and two ahead. Use Show full route /
+Focus next steps and the 0/1/2 ahead control on the map overlay. The complete
+plan stays selected; quest progress advances the preview, not arrival alone.
+Consecutive steps at a shared NPC stay grouped. The first leg follows your
+current public position. Viewing another zone keeps the route and shows a
+View route zone button. Controls remain when the text legend is disabled.
 /wt sync requests fresh party data. Let the send queue drain.
 /wt probe opens diagnostics; Ctrl+C copies the selected text and closes it.
 /wt route clear clears the route overlay. /wt minimap toggles the minimap icon.
@@ -106,8 +117,14 @@ searches you make. No automatic searching, buying or crafting takes place.
 Known vendor-listed quest items have a buy list with your own bag stock.
 Auto-accept is OFF by default. If enabled, only an opened quest-detail dialog
 is attempted outside combat. Verify this action on your beta build.
+Auto-turn-in is also OFF by default. Enable it in /wt config to attempt accepted
+quest dialogs you open outside combat, only when there is no reward choice.
+Reward choices remain manual. Missing/restricted IDs or reward counts stay
+manual. /wt probe reports IsQuestCompletable, CompleteQuest, GetNumQuestChoices
+and GetQuestReward; presence and an attempt do not prove working behavior.
+Test a no-choice turn-in and a choice-reward quest on your actual beta build.
 
-New arrow facing/scale, recipe/AH, map-link/world-position, NPC fallback and acceptance APIs need
+New arrow facing/scale, recipe/AH, map-link/world-position, NPC fallback and quest dialog APIs need
 testing on your beta build; /wt probe reports capabilities. Restricted data
 stays unknown. NPC hints include alternative published drop NPC IDs and hide
 in combat. No raid-target marking.
@@ -116,9 +133,10 @@ The catalogue contains {coverage['count']:,} listed quests and {coverage['detail
 and prerequisites are partial. Route lines show visiting order, not roads.
 Read README.md for coverage, limitations, source notes, and testing steps.
 TESTING.md contains the friend-testing script and copyable report template.
-CHANGELOG.md has the short release history. In this release, the general Vile
-Familiars no longer inherits the Warlock introduction's prerequisite. Select
-the refreshed bundle after updating; Burning Blade Medallion retains its gate.
+CHANGELOG.md has the short release history. This release adds short map previews,
+active-quest walking priorities, cross-zone context and optional no-choice
+turn-ins. The general Vile Familiars prerequisite correction is retained;
+Burning Blade Medallion still requires its completed prerequisite.
 '''
     args.output.mkdir(parents=True, exist_ok=True)
     destination = args.output / f'WowTogether-{version}.zip'

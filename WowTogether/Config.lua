@@ -3,7 +3,7 @@ local addonName, ns = ...
 local defaults = {autoAccept = false, npcHints = true, classQuests = false,
     dungeonPrompts = true, zonePrompts = true, trackerOpacity = 0.08,
     trackerHeight = 350, circuitRadius = 0.16, circuitLimit = 6, mapLegend = true, professionBatch = 5, routeArrow = true,
-    currentQuestsFirst = true, nearbyPickups = true}
+    currentQuestsFirst = true, nearbyPickups = true, fullRoute = false, routeAhead = 2, autoTurnIn = false}
 
 function ns.Option(key)
     local value = ns.db and ns.db.config and ns.db.config[key]
@@ -23,6 +23,7 @@ function ns.InitializeConfig()
     ns.db.config.circuitRadius = math.max(0.08, math.min(0.24, ns.db.config.circuitRadius))
     ns.db.config.circuitLimit = math.max(2, math.min(6, math.floor(ns.db.config.circuitLimit)))
     ns.db.config.professionBatch = math.max(1, math.min(20, math.floor(ns.db.config.professionBatch)))
+    ns.db.config.routeAhead = math.max(0, math.min(2, math.floor(ns.db.config.routeAhead)))
 end
 
 function ns.SetOption(key, value)
@@ -51,7 +52,7 @@ end
 function ns.CreateSettings()
     local frame = CreateFrame("Frame", "WowTogetherSettings", UIParent, "BackdropTemplate")
     ns.settings = frame
-    frame:SetSize(560, 668); frame:SetPoint("CENTER"); frame:SetFrameStrata("DIALOG")
+    frame:SetSize(560, 702); frame:SetPoint("CENTER"); frame:SetFrameStrata("DIALOG")
     frame:SetClampedToScreen(true); ns.UIPanel(frame)
     frame:SetMovable(true); frame:EnableMouse(true); frame:RegisterForDrag("LeftButton")
     frame:SetScript("OnDragStart", frame.StartMoving); frame:SetScript("OnDragStop", frame.StopMovingOrSizing)
@@ -64,8 +65,9 @@ function ns.CreateSettings()
         {"dungeonPrompts", "Suggest collecting dungeon quests when in level range"},
         {"zonePrompts", "Suggest nearby zone transitions from known questlines"}, {"mapLegend", "Show the small map route legend"},
         {"routeArrow", "Show the movable direction arrow for my selected route"},
-        {"currentQuestsFirst", "Finish our current quests first (ready turn-ins before new pickups)"},
-        {"nearbyPickups", "Include eligible nearby pickups in our current quest trip"}}) do
+        {"currentQuestsFirst", "Finish our current quests first (prioritize nearby work and turn-ins)"},
+        {"nearbyPickups", "Include eligible nearby pickups in our current quest trip"},
+        {"autoTurnIn", "Auto turn-in opened quests without a reward choice (beta; opt-in)"}}) do
         local key = entry[1]
         local check = CreateFrame("CheckButton", nil, frame, "UICheckButtonTemplate")
         check:SetPoint("TOPLEFT", 20, -52 - (index - 1) * 34); check:SetSize(26, 26)
@@ -73,6 +75,7 @@ function ns.CreateSettings()
         check.caption:SetWidth(472); check.caption:SetText(entry[2])
         check:SetScript("OnClick", function(self) ns.SetOption(key, self:GetChecked() == true) end)
         if key == "autoAccept" then check:SetEnabled(type(AcceptQuest) == "function") end
+        if key == "autoTurnIn" then check:SetEnabled(type(GetQuestID) == "function" and type(GetQuestReward) == "function" and type(GetNumQuestChoices) == "function") end
         frame.checks[key] = check
     end
     frame.values = {}
@@ -83,11 +86,11 @@ function ns.CreateSettings()
         {"professionBatch", "Profession craft batch", {1, 5, 10, 20}, {"1", "5", "10", "20"}}}
     for index, entry in ipairs(presets) do
         local key = entry[1]
-        local caption = ns.UILabel(frame, nil, 11); caption:SetPoint("TOPLEFT", 22, -372 - (index - 1) * 43)
+        local caption = ns.UILabel(frame, nil, 11); caption:SetPoint("TOPLEFT", 22, -406 - (index - 1) * 43)
         caption:SetText(entry[2]); caption:SetWidth(180)
         for column, value in ipairs(entry[3]) do
             local control = ns.UIButton(frame, entry[4][column], 74, function() ns.SetOption(key, value) end)
-            control:SetPoint("TOPLEFT", 202 + (column - 1) * 80, -362 - (index - 1) * 43)
+            control:SetPoint("TOPLEFT", 202 + (column - 1) * 80, -396 - (index - 1) * 43)
             control.optionKey, control.optionValue = key, value
             frame.values[#frame.values + 1] = control
         end
@@ -105,7 +108,7 @@ function ns.RenderSettings()
         control:SetBackdropBorderColor(ns.Option(control.optionKey) == control.optionValue and 0.93 or 0.19,
             ns.Option(control.optionKey) == control.optionValue and 0.73 or 0.23, 0.39, 1)
     end
-    ns.settings.note:SetText("Party sync is automatic on group, quest, objective, level, and zone changes.\nProfession recipes and shopping plans stay on your client. Auto-accept only handles opened dialogs; verify it on your beta build.")
+    ns.settings.note:SetText("Party sync is automatic; profession plans stay personal.\nAccept/turn-in options only handle dialogs you open. Reward choices stay manual. Test both actions on your beta build.")
 end
 
 function ns.ToggleSettings()

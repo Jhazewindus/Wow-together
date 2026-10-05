@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.5.5**, World of Warcraft: Forever beta, interface **16001**.
+For **0.5.6**, World of Warcraft: Forever beta, interface **16001**.
 Allow about **20–30 minutes** for the main checks. Player A starts routes;
 Player B tests the invitation and reports their own progress. Swap roles once.
 Record **Pass / Fail / Skip** for each check. If a quest is already completed
@@ -14,7 +14,7 @@ or unavailable, use another suitable quest or mark that example skipped.
 2. Join a normal party. Start in the same zone for the route comparison.
    Open `/wt config`: enable **Finish our current quests first** and
    **Include eligible nearby pickups**; use **Balanced** walking budget.
-   Leave auto-accept off for the main run.
+   Leave auto-accept and auto-turn-in off for the main run.
 3. Enable `/console scriptErrors 1`. Open `/wt probe` on both clients and
    record addon version, client build, levels, classes, factions and zones.
    Let sync drain; use `/wt sync` once if needed to establish the baseline.
@@ -27,7 +27,7 @@ or unavailable, use another suitable quest or mark that example skipped.
 | 1. Automatic sync | A accepts an available quest, then both watch `/wt`. Do not repeatedly press Sync. Wait for the paced queue to drain. | B sees A's quest change automatically. Diagnostics show received snapshots and no continuing failed transfers. |
 | 2. Nearby bundle | With Lazy Peons active around Valley of Trials, inspect the refreshed guide. Use **Show route** on that guide. | Available Galgar's Cactus Apple Surprise and the general Vile Familiars can join the trip when within the walking budget. The pickup NPCs are named. Completed or unavailable quests are excluded. Apple's missing objective coordinates are described as incomplete. |
 | 3. Prerequisites | Before completing Vile Familiars, inspect Burning Blade Medallion in the library. Check again after handing in the prerequisite. | Accepting or finishing objectives alone does not unlock the follow-up. Completed history, or a live NPC offer, confirms availability. A general quest must not demand the other class variant's introduction. |
-| 4. Ready quests first | Have one ready-to-turn-in quest plus unfinished work. Refresh the recommendation and show it. | The ready turn-in precedes new pickups. Later objective/return stages remain for unfinished party members. |
+| 4. Nearby ready quests | Have one ready-to-turn-in quest at a nearby NPC plus unfinished work. Refresh the recommendation and show it. | The nearby ready turn-in precedes new pickups. Later objective/return stages remain for unfinished party members. A distant delivery should not pull the plan away from local work. |
 | 5. Keep my route | B selects a route. A presses **Start route** on another guide. B chooses **Keep my route**. | B receives a popup. Their route stays unchanged before and after choosing Keep. |
 | 6. Follow route | A presses Start route again. B chooses **Follow route**. | B gets the same quest selection, including nearby pickups. Each client uses the party's actual quest progress; invitations do not resend themselves. |
 | 7. Different pickup progress | Only A accepts one newly bundled quest. B leaves it unaccepted briefly, then accepts it. | B still has a pickup step while A has objective work. After B accepts, B's pickup changes to work. Refreshing recommendations does not discard the selected bundle. |
@@ -44,6 +44,9 @@ or unavailable, use another suitable quest or mark that example skipped.
 | 13. Controls | Drag-resize the main window in several directions. Scroll the tracker; drag it. Use the minimap button. Search the library by typing a zone, then pressing Enter or pausing. | Resizing is smooth; text and party cells fit. Tracker scrolling reaches later quests. The minimap button opens the addon; route lines are on the world map only. Library searches commit on Enter/pause. |
 | 14. Strict mode | Turn off **Include eligible nearby pickups** and inspect the guide/current local route. Turn it back on. | Automatic plans switch to accepted party quests only, then permit nearby pickups again. An explicitly followed friend's bundle retains the selection you accepted. |
 | 15. Persistence | Move the window, tracker and arrow. Resize the window, then reload; optionally log out and back in. | Saved positions, size and settings return. If they do not, report the client build and whether it occurred on reload or a full restart. |
+| 16. Short preview | With a route longer than three places, inspect the map. Use **Show full route**, then **Focus next steps**. Cycle **2 ahead** through zero, one and two. Complete an objective or accept a pickup. | Default pins/lines show the current place and two ahead; consecutive shared-NPC steps stay grouped. Controls change only the preview, and later steps appear as quest progress advances. Arrival alone does not skip unfinished work. |
+| 17. Local work first | Hold active Barrens work plus a delivery to Thunder Bluff, or an equivalent local/remote pair. Inspect recommendations with current-quests-first on, then off. | Known active local work remains above remote delivery and new pickups. Turning the option off also shows discovery choices. No other zone's coordinates are drawn on the current map. |
+| 18. Zone handoff | View a different zone with a selected route. Use **View route zone**. Finish a selected quest whose receiver is in another zone. Read the arrow's small context text. | The map explains where the retained route is. The button opens that map. The active route advances to the receiver's map after progress confirms it; the arrow explains travel and whose pickup/work/hand-in is next. |
 
 ## Optional checks
 
@@ -64,6 +67,12 @@ or unavailable, use another suitable quest or mark that example skipped.
 - **Auto-accept:** opt in, open one available quest-detail dialog outside combat,
   and confirm whether it is accepted. Report any blocked-action message. Turn
   the option off again afterward if you do not want this behavior.
+- **Auto-turn-in:** in `/wt config`, enable the turn-in option. Open an accepted,
+  completed quest at its NPC with **no reward choice**; confirm it hands in.
+  Then open one with reward choices: it must wait for your manual choice.
+  Repeat with the option off. Report `/wt probe` plus any Lua/blocked-action
+  message, and whether `CompleteQuest` / `GetQuestReward` actually worked on
+  your build. Automatic actions should not run during combat.
 
 ## Send back this report
 
@@ -98,6 +107,9 @@ Results (Pass / Fail / Skip; state why a check was skipped):
 13 Controls:
 14 Strict mode:
 15 Persistence:
+16 Short preview:
+17 Local work first:
+18 Zone handoff:
 Optional checks:
 
 Failure to investigate:

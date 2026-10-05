@@ -35,7 +35,7 @@ ns.frame:SetScript("OnEvent", function(_, event, ...)
 end)
 
 function ns.Diagnostics()
-    local lines = {"Wow Together 0.5.5 — beta capability and sync report", ""}
+    local lines = {"Wow Together 0.5.6 — beta capability and sync report", ""}
     local function output(line) lines[#lines + 1] = line end
     local version, build, _, interface = GetBuildInfo()
     local function readable(value)
@@ -83,6 +83,10 @@ function ns.Diagnostics()
         {"C_QuestLog.UnitIsRelatedToActiveQuest", C_QuestLog and C_QuestLog.UnitIsRelatedToActiveQuest},
         {"AcceptQuest", AcceptQuest},
         {"CanAcceptQuest", CanAcceptQuest},
+        {"IsQuestCompletable", IsQuestCompletable},
+        {"CompleteQuest", CompleteQuest},
+        {"GetNumQuestChoices", GetNumQuestChoices},
+        {"GetQuestReward", GetQuestReward},
         {"C_Item.GetItemInfo", C_Item and C_Item.GetItemInfo},
         {"C_Item.GetItemCount", C_Item and C_Item.GetItemCount},
         {"C_Item.RequestLoadItemDataByID", C_Item and C_Item.RequestLoadItemDataByID},

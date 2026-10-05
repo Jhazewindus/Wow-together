@@ -238,6 +238,7 @@ class ViewportTests(unittest.TestCase):
 
     def test_neighboring_markers_cluster_and_legend_reports_visible_places(self):
         c = route_client()
+        c.ns.db.config.fullRoute = True  # Exercise clustering independently of the short preview.
         viewport(c)
         c.ns.routeSelection = guide(c)
         c.ns.selectedRoute = c.lua.table_from({'mapID': 501, 'stops': [

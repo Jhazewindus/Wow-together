@@ -393,6 +393,73 @@ function ns.ClipRouteSegment(x1, y1, x2, y2, width, height)
     return x1 + start * dx, y1 + start * dy, x1 + finish * dx, y1 + finish * dy
 end
 
+function ns.RouteDisplayStops(route)
+    if ns.Option("fullRoute") then return route.stops end
+    local stops, places, previous = {}, 0, nil
+    for _, stop in ipairs(route.stops) do
+        local key = stop.mapID .. ":" .. math.floor(stop.x * 100000) .. ":" .. math.floor(stop.y * 100000)
+        if key ~= previous then places = places + 1 end
+        if places > 1 + ns.Option("routeAhead") then break end
+        stops[#stops + 1], previous = stop, key
+    end
+    return stops
+end
+
+function ns.ViewRouteZone(provider)
+    local route = ns.selectedRoute
+    provider = provider or ns.routeProvider
+    if not route or not provider or not provider.owningMap then return end
+    if inCombat() then ns.routeZoneViewPending = true; return end
+    provider.owningMap:SetMapID(route.mapID); provider.owningMap:Show(); ns.DrawRoute(provider)
+end
+
+local function routeLegend(provider, map)
+    if provider.legend then return provider.legend end
+    local parent = query(map.GetCanvasContainer, map) or map
+    local legend = CreateFrame("Frame", nil, parent, "BackdropTemplate")
+    legend:SetPoint("BOTTOMLEFT", 14, 14)
+    legend:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8X8"})
+    legend:SetBackdropColor(0.035, 0.045, 0.06, 0.45)
+    local level = query(parent.GetFrameLevel, parent)
+    if type(level) == "number" then legend:SetFrameLevel(level + 40) end
+    legend.caption = legend:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
+    legend.caption:SetPoint("TOPLEFT", 10, -6); legend.caption:SetSize(308, 34); legend.caption:SetJustifyH("LEFT")
+    legend.full = ns.UIButton(legend, "Show full route", 120, function() ns.SetOption("fullRoute", not ns.Option("fullRoute")) end)
+    legend.full:SetPoint("BOTTOMLEFT", 8, 5)
+    legend.ahead = ns.UIButton(legend, "2 ahead", 90, function() ns.SetOption("routeAhead", (ns.Option("routeAhead") + 1) % 3) end)
+    legend.ahead:SetPoint("BOTTOMLEFT", 134, 5)
+    legend.zone = ns.UIButton(legend, "View route zone", 120, function() ns.ViewRouteZone(provider) end)
+    legend.zone:SetPoint("BOTTOMLEFT", 230, 5)
+    local close = CreateFrame("Button", nil, legend, "UIPanelCloseButton")
+    close:SetPoint("TOPRIGHT", 0, 0); close:SetScript("OnClick", function() ns.ClearRoute(); ns.Refresh() end)
+    -- There is no continuous position event. Only redraw map geometry at 1 Hz
+    -- while this owned overlay is visible; do not rescan quests or replan.
+    legend.elapsed = 0
+    legend:SetScript("OnUpdate", function(self, elapsed)
+        if not ns.Public(elapsed) or type(elapsed) ~= "number" or elapsed < 0 or elapsed ~= elapsed or elapsed > 1000 then return end
+        self.elapsed = self.elapsed + elapsed
+        if self.elapsed < 1 then return end
+        self.elapsed = 0
+        local route = ns.selectedRoute
+        local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
+        if not route or mapID ~= route.mapID then return end
+        local point = ns.PlayerPoint(mapID)
+        local old = provider.playerOrigin
+        if point and (not old or math.abs(point.x - old.x) + math.abs(point.y - old.y) > 0.0001) then ns.DrawRoute(provider) end
+    end)
+    provider.legend = legend
+    return legend
+end
+
+local function updateLegend(legend, text)
+    legend.caption:SetText(text); legend.caption:SetShown(ns.Option("mapLegend"))
+    legend:SetSize(360, ns.Option("mapLegend") and 78 or 37)
+    legend.full.caption:SetText(ns.Option("fullRoute") and "Focus next steps" or "Show full route")
+    legend.ahead.caption:SetText(ns.Option("routeAhead") .. " ahead")
+    legend.ahead:SetEnabled(not ns.Option("fullRoute"))
+    legend:Show()
+end
+
 function ns.DrawRoute(provider)
     provider = provider or ns.routeProvider
     if not provider then return end
@@ -405,9 +472,17 @@ function ns.DrawRoute(provider)
         return
     end
     local mapID = map:GetMapID()
-    if not ns.Public(mapID) or mapID ~= route.mapID then ns.routeStats.status = "Route hidden on a different map."; return end
+    local legend = routeLegend(provider, map)
+    local strata = query(map.GetFrameStrata, map)
+    local upper = {DIALOG = true, FULLSCREEN = true, FULLSCREEN_DIALOG = true, TOOLTIP = true}
+    legend:SetFrameStrata(upper[strata] and strata or "HIGH")
+    if not ns.Public(mapID) or mapID ~= route.mapID then
+        updateLegend(legend, "Next steps are in " .. ns.MapName(route.mapID) .. ".\nOnly that zone's steps are drawn. Use View route zone.")
+        ns.routeStats.status = "Viewing another map; next route steps are in " .. ns.MapName(route.mapID) .. "."
+        return
+    end
     local surface, unavailable = ns.RouteSurface(map)
-    if not surface then ns.routeStats.status = unavailable; return end
+    if not surface then ns.routeStats.status = unavailable; updateLegend(legend, unavailable .. "\nThe selected route is retained."); return end
     local width, height = surface.width, surface.height
     if not provider.overlay then
         provider.overlay = CreateFrame("Frame", nil, surface.parent)
@@ -418,8 +493,6 @@ function ns.DrawRoute(provider)
     local overlay = provider.overlay
     overlay:SetParent(surface.parent); overlay:ClearAllPoints(); overlay:SetAllPoints(surface.parent)
     overlay:Show()
-    local strata = query(map.GetFrameStrata, map)
-    local upper = {DIALOG = true, FULLSCREEN = true, FULLSCREEN_DIALOG = true, TOOLTIP = true}
     overlay:SetFrameStrata(upper[strata] and strata or "HIGH")
     local level = query(surface.parent.GetFrameLevel, surface.parent)
     if type(level) == "number" then overlay:SetFrameLevel(level + 30) end
@@ -427,9 +500,11 @@ function ns.DrawRoute(provider)
     ns.routeStats.surface = surface.mode
     ns.routeStats.geometry = string.format("%.0f x %.0f; view %.4f,%.4f / %.4f,%.4f", width, height,
         surface.left, surface.top, surface.spanX, surface.spanY)
-    local points = {}
-    if route.origin then points[#points + 1] = route.origin end
-    for _, p in ipairs(route.stops) do points[#points + 1] = p end
+    local points, displayed = {}, ns.RouteDisplayStops(route)
+    local playerMap = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
+    provider.playerOrigin = playerMap == mapID and ns.PlayerPoint(mapID) or nil
+    if provider.playerOrigin then points[#points + 1] = provider.playerOrigin end
+    for _, p in ipairs(displayed) do if p.mapID == mapID then points[#points + 1] = p end end
     local visibleLines = 0
     for index = 2, #points do
         local x1, y1 = ns.RouteProject(surface, points[index - 1])
@@ -453,9 +528,9 @@ function ns.DrawRoute(provider)
         end
     end
     local groups, locations = {}, {}
-    for index, p in ipairs(route.stops) do
+    for index, p in ipairs(displayed) do
         local x, y = ns.RouteProject(surface, p)
-        if x >= 0 and x <= width and y >= 0 and y <= height then
+        if p.mapID == mapID and x >= 0 and x <= width and y >= 0 and y <= height then
             local key = math.floor(p.x * 100000) .. ":" .. math.floor(p.y * 100000)
             local group = locations[key]
             if not group then
@@ -510,29 +585,11 @@ function ns.DrawRoute(provider)
         pin:SetPoint("CENTER", overlay, "TOPLEFT", group.x, -group.y)
         pin:Show()
     end
-    if not provider.legend then
-        local parent = type(map.GetCanvasContainer) == "function" and map:GetCanvasContainer() or map
-        local legend = CreateFrame("Frame", nil, parent or map, "BackdropTemplate")
-        legend:SetSize(300, 28)
-        legend:SetPoint("BOTTOMLEFT", 14, 14)
-        legend:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8X8"})
-        legend:SetBackdropColor(0.035, 0.045, 0.06, 0.45)
-        local level = overlay:GetFrameLevel()
-        if ns.Public(level) and type(level) == "number" then legend:SetFrameLevel(level + 5) end
-        legend.caption = legend:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
-        legend.caption:SetPoint("TOPLEFT", 10, -8)
-        legend.caption:SetWidth(260)
-        legend.caption:SetJustifyH("LEFT")
-        local close = CreateFrame("Button", nil, legend, "UIPanelCloseButton")
-        close:SetPoint("TOPRIGHT", 0, 0)
-        close:SetScript("OnClick", function() ns.ClearRoute(); ns.Refresh() end)
-        provider.legend = legend
-    end
-    provider.legend.caption:SetText("Wow Together • " .. #route.stops .. " stops • " .. #groups .. " visible " .. (#groups == 1 and "place" or "places")
+    updateLegend(legend, "Wow Together • " .. #route.stops .. " stops • " .. #groups .. " visible " .. (#groups == 1 and "place" or "places")
+        .. (ns.Option("fullRoute") and " • Full route" or (" • " .. #displayed .. " steps shown"))
         .. (ns.routePaused and " • Waiting for party updates" or "")
         .. (route.partial and " • Partial route" or "")
         .. ((route.otherMaps or 0) > 0 and " • Other zones" or ""))
-    provider.legend:SetShown(ns.Option("mapLegend"))
     ns.routeStats.pins, ns.routeStats.lines = #groups, visibleLines
     ns.routeStats.status = ns.routePaused and (ns.routePaused .. " Showing the last confirmed route.") or ("Route drawn on map " .. mapID .. ".")
 end
@@ -655,6 +712,10 @@ function ns.UpdateSelectedRoute(choices)
         end
     end
     local route = guide and ns.BuildGuideRoute(guide, false)
+    if route and guide and route.mapID ~= guide.mapID then
+        local copy = {}; for key, value in pairs(guide) do copy[key] = value end
+        copy.mapID, copy.zone = route.mapID, ns.MapName(route.mapID); guide = copy
+    end
     if waiting or not route or #route.stops == 0 then
         local finished = not waiting
         for _, record in ipairs(selection.records or {selection.target}) do
@@ -675,7 +736,7 @@ function ns.UpdateSelectedRoute(choices)
         end
         return
     end
-    if old and old.mapID == route.mapID then route.origin = old.origin end
+    route.origin = ns.profile and ns.profile.mapID == route.mapID and ns.PlayerPoint(route.mapID) or nil
     local signature = routeSignature(route)
     if signature == ns.routeSignature then return end
     local before, after = old and old.stops[1], route.stops[1]
@@ -689,6 +750,7 @@ end
 
 function ns.ClearRoute()
     ns.routeSelection = nil
+    ns.routeZoneViewPending = nil
     if inCombat() then ns.routeClearPending = true; return end
     ns.selectedRoute, ns.routeSelection, ns.routeSignature, ns.routeWaypointPending, ns.routePaused = nil, nil, nil, nil, nil
     if ns.routeProvider then hideDrawing(ns.routeProvider) end
@@ -701,6 +763,10 @@ function ns.FlushRouteUpdates()
     if ns.routeClearPending then ns.routeClearPending = nil; ns.ClearRoute() end
     if ns.routeRedrawPending then ns.routeRedrawPending = nil; ns.DrawRoute() end
     if ns.routeWaypointPending then updateWaypoint() end
+    if ns.routeZoneViewPending and ns.selectedRoute then
+        ns.routeZoneViewPending = nil
+        ns.ViewRouteZone()
+    end
 end
 
 ns.On("QUEST_POI_UPDATE", function() if ns.db then ns.ReadRouteLocations(); ns.ScheduleSync(); ns.Refresh() end end)
