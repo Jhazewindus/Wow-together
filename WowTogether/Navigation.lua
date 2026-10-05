@@ -108,13 +108,18 @@ function ns.NavigationState()
     if ns.navigation and type(ns.navigation.icon.CreateLine) ~= "function" then state.status = "Arrow drawing unavailable"; return state end
     local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
     if not ns.GuideInteger(mapID) or mapID <= 0 then state.status = "Position unavailable"; return state end
-    if mapID ~= stop.mapID then state.status = "Travel to " .. ns.MapName(stop.mapID); return state end
+    local destination = stop
+    if mapID ~= stop.mapID then
+        destination = ns.ProjectMapPoint(stop, mapID)
+        if not destination then state.status = "Travel to " .. ns.MapName(stop.mapID); return state end
+        state.crossZone = true
+    end
     local position = ns.PlayerPoint(mapID)
     if not position then state.status = "Position unavailable"; return state end
     local width, height = ns.ReadPublic(C_Map.GetMapWorldSize, mapID)
     if not finite(width) or not finite(height) or width <= 0 or height <= 0
         or width >= 1000000 or height >= 1000000 then state.status = "Map scale unavailable"; return state end
-    local east, north = (stop.x - position.x) * width, (position.y - stop.y) * height
+    local east, north = (destination.x - position.x) * width, (position.y - destination.y) * height
     state.distance = math.sqrt(east * east + north * north)
     if state.distance <= 8 then
         state.status = ns.StopInstruction(stop); state.arrived = true; return state
@@ -123,7 +128,7 @@ function ns.NavigationState()
     if not finite(facing) then state.status = "Direction unavailable"; return state end
     -- Facing is counterclockwise from north; map X goes east and map Y south.
     state.angle = math.atan2(-east, north) - facing
-    state.status = "Follow next route stop"
+    state.status = state.crossZone and ("Travel to " .. ns.MapName(stop.mapID)) or "Follow next route stop"
     return state
 end
 

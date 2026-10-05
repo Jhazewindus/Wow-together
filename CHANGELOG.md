@@ -1,5 +1,17 @@
 # Wow Together changelog
 
+## 0.6.8
+
+- Filter recommended and alternative zone guides by actual player level, useful
+  quest difficulty and known pickup/prerequisite levels. A broad browser bracket
+  no longer makes level-20 work suitable at level 12. Applies across all zones;
+  useful earlier chain steps remain included, and All quests keeps future browsing.
+- Draw the starting line from your live position, including travel to another
+  zone. Public world positions project routes onto zone/continent maps; lines
+  clip at zone edges and the arrow continues across borders. Fixed guide order
+  stays unchanged. Missing/private coordinates leave gaps and travel instructions.
+  Lines show visiting direction; terrain-aware road routing is still needed.
+
 ## 0.6.7
 
 - Simplify Leveling guides to one Recommended zone guide and Alternative zone

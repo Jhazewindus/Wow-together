@@ -1,3 +1,27 @@
+# Follow-up review for 0.6.8
+
+The user's own character is level 12 and sees Ashenvale suggested despite a
+level-20 requirement. They identify it as an example and request the same actual
+level rule across all zones. No exact addon version/build, class or route capture
+accompanies this report. Their second request is a live-position starting line,
+including travel to a new zone. These requests agree with the chosen fixed-order
+guides: drawing can move without replanning the guide.
+
+Inspection established that browser discovery only tested membership in the
+ten-level bracket, while the renderer only connected points with the viewed map's
+ID. Filter zones with useful actual-level work and known pickup/prerequisite
+levels, without hiding unfinished eligible parent chains. A shipped-catalogue
+host fixture excludes Ashenvale for level-12 Horde and includes it at level 20;
+generic fixtures cover other zones, alternative parents and selected-order stability.
+
+Cross-zone rendering uses guarded public world-coordinate projection and clipped
+viewport geometry; raw coordinates never transfer between different zone maps.
+The live origin and navigation direction update without changing the guide.
+Missing/private positions, degenerate mapping and different continents leave gaps;
+they do not create an invented transport/road connection. Synthetic host maps test
+border/continent projection and movement. Native projection behavior, map layout
+and real walking paths still require beta testing; lines remain straight directions.
+
 # Follow-up review for 0.6.6
 
 After the 0.6.6 release, the user asked what Questline / Alternative meant and

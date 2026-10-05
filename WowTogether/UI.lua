@@ -440,7 +440,7 @@ function ns.Render()
     ns.ui.metrics[1].value:SetText(synced .. " / " .. (#(ns.partyNames or {}) + 1))
     local choices = ns.LevelingGuideChoices and ns.filter == "guides" and ns.LevelingGuideChoices() or {}
     ns.ui.hint:SetText(ns.filter == "guides"
-        and "Browse zone guides and questlines in your party's level bracket; search by zone, quest or NPC.\nStart route generates a nearby trip. Scan guide optimizes again from your current progress."
+        and "Choose a zone guide suited to your current level; search by zone, quest or NPC.\nStart route follows its full quest sequence."
         or "Show route draws numbered stops and lines on your world map.\nUse All quests to browse zones, search names, and check requirements.")
     if ns.UpdateSelectedRoute then ns.UpdateSelectedRoute(choices) end
     ns.ui.metrics[2].caption:SetText(ns.filter == "library" and "CATALOGUE QUESTS" or (ns.filter == "guides" and "QUEST GUIDES" or "SHARED ACTIVE"))
@@ -630,7 +630,7 @@ function ns.Render()
     ns.ui.empty:SetShown(visible == 0)
     ns.ui.empty:SetText(ns.filter == "library" and "No imported quests match this search.\nTry a quest or zone name."
         or (ns.filter == "review" and "No unfinished quests need a low-value review.\nReady turn-ins and class/profession quests are kept."
-        or (ns.filter == "guides" and "No zone guides or questlines match this level bracket and search.\nChoose another bracket or clear the search. Individual quests are in All quests."
+        or (ns.filter == "guides" and "No zone guides match your current level and filters.\nTry All levels or clear the search. Future quests are in All quests."
         or (ns.filter == "suggestions" and "Sync with a friend to get party suggestions."
         or (#rows == 0 and "Your adventure starts with a quest.\nAccept one, then sync your party."
         or "No quests in this view yet.\nTry All quests or compare more progress with friends.")))))

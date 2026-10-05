@@ -43,7 +43,10 @@ Profession guides and Quest log review. All quests searches commit on Enter or p
 Use level brackets / Near party to narrow the list.
 Leveling guides has its own bracket dropdown, deferred zone/quest/NPC search
 and pages. The default bracket follows the lowest party level. Only full zone
-guides and published questlines appear; explicit quest-log trips are in Party quests.
+guides appear, as Recommended zone guide / Alternative zone guide; questlines stay
+inside them. Explicit quest-log trips are in Party quests. Every zone must contain
+useful work for your actual level, respecting known pickup/prerequisite levels.
+All levels does not bypass this; future quests remain browsable in All quests.
 Brackets filter browsing; a selected guide keeps later levels and known cross-zone
 steps. Fixed zone guides are ON by default. Loading route appears while the complete
 catalogue sequence is compiled once, independently of location and quest logs.
@@ -120,6 +123,10 @@ Map lines show the current place plus two ahead, or use Show full route for ALL
 currently eligible mapped quests. Locked future quests remain in the sequence.
 Coverage counts distinguish known quest facts from actual map coordinates.
 Shared NPC steps stay grouped. View route zone opens the current destination map.
+The first line follows your live position, including toward another zone. Public
+world coordinates project onto the viewed zone/continent; zone views clip at edges.
+The arrow continues across borders without changing the fixed guide sequence.
+Missing/private coordinates or different continents leave gaps and travel text.
 Lines use world-map visiting order only; they do not follow roads or draw on the minimap.
 The addon no longer sets extra Blizzard waypoint pins. Numbered route markers
 and the arrow remain; unrelated manual waypoints are untouched. Clear older pins

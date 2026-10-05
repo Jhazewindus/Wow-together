@@ -66,10 +66,10 @@ class FixedGuideTests(unittest.TestCase):
 
     def test_same_order_with_different_locations_levels_and_logs(self):
         a, b = guide_client(), guide_client()
+        ga, gb = zone(a), zone(b)  # Select while suitable; an existing guide remains usable after leveling.
         b.ns.profile.level = 19
         b.lua.execute("C_Map.GetPlayerMapPosition=function() return {GetXY=function() return .9,.9 end} end")
         b.ns.active[902] = 'Quest 2'; b.lua.globals().finished[900] = True
-        ga, gb = zone(a), zone(b)
         a.ns.BuildGuideRoute(ga, False); b.ns.BuildGuideRoute(gb, False)
         self.assertEqual(order(ga), order(gb))
 

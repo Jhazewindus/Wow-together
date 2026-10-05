@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.6.7** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.6.8** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -16,7 +16,7 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **32 Lua
+Replace the folder on **every party member's client**, including all **33 Lua
 files**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
@@ -52,6 +52,13 @@ level (1–10, 11–20, etc.). Choose another bracket or All levels, and search 
 zone, quest or known NPC; Enter or a short pause applies the search. Pages keep
 later results accessible. Individual quests stay in All quests, and explicit
 quest-log trips are in Party quests.
+
+Every recommended or alternative zone must also contain useful work for the
+actual lowest player level, with known pickup minimums and prerequisite levels
+met. Sharing the 11–20 browser bracket does not make level-20 work suitable at
+level 12. All levels broadens the filter but still respects actual level;
+future quests remain browsable in All quests. Unfinished same-level prerequisites
+stay inside the full guide. NPC offers still confirm hidden pickup requirements.
 
 The first card is **Recommended zone guide**; other matching zones are
 **Alternative zone guide**. A questline is a linked chain within a zone and is
@@ -93,8 +100,14 @@ Guide cards distinguish total quests from published pickup, objective and
 turn-in coverage. **Show full route** shows all currently eligible mapped quests,
 including those beyond the former six-quest/twenty-stop trip limit. Locked future
 quests remain in the internal sequence and enter the map preview after unlocking.
-Browse another map to see that zone's eligible markers. Cross-zone gaps do not
-become false local connecting lines. Focus next steps restores the short preview.
+Browse another map to see that zone's eligible markers. The starting line follows
+your live position, including when the next stop is in another zone. Public world
+coordinates project the line onto the viewed zone or continent map; zone views
+clip it at their edges. Entering the next zone continues the direction toward its
+destination. This changes drawing, not the fixed guide sequence. Missing/private
+coordinates or another continent leave a gap and travel instructions instead of
+a made-up connection. These are straight visiting directions, not terrain-aware
+roads. Focus next steps restores the short preview.
 These controls sit below the map viewport, outside the quest drawing area.
 
 Turn **Follow fixed zone guides** off and start a guide again for adaptive trips.
@@ -410,7 +423,7 @@ provided broad inspiration about progress clarity; its code/assets/layouts
 were not copied. This implementation is independent.
 
 Reported beta build **70205** established the earlier sync APIs in user tests.
-**0.6.7 has host validation, not a live-client compatibility certification.**
+**0.6.8 has host validation, not a live-client compatibility certification.**
 Retest UI rendering, optional gossip/flight actions, corpse positions and item
 hooks on the build in front of you. `/wt probe` lists capabilities and runtime
 status. Do not interpret presence as proof that protected actions work.
@@ -420,7 +433,7 @@ combat automation or replacement of Blizzard combat tools is used.
 
 ## Development and release
 
-Host checks load all 32 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
+Host checks load all 33 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
 
 ```sh
 python3 -m venv /tmp/wow-together-tests

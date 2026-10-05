@@ -109,7 +109,8 @@ class MapPreviewTests(unittest.TestCase):
         c = preview_client()
         c.lua.execute('C_Map.GetBestMapForUnit=function() return 502 end')
         c.ns.DrawRoute()
-        self.assertIsNone(c.ns.routeProvider.playerOrigin)
+        self.assertEqual(c.ns.routeProvider.playerOrigin.mapID, 502)
+        self.assertIsNone(c.ns.ProjectMapPoint(c.ns.routeProvider.playerOrigin, 501))
         self.assertEqual(c.ns.routeStats.lines, 2)
         self.assertAlmostEqual(c.ns.routeProvider.lines[1].startPoint[3], 300)
 

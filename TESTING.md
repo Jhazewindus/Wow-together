@@ -1,12 +1,12 @@
 # Wow Together — friend test script
 
-For **0.6.7**, World of Warcraft: Forever beta, interface **16001**.
+For **0.6.8**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 32 Lua files**, in
+1. Replace the complete WowTogether folder, including **all 33 Lua files**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    `/reload`; restart fully if a new addon folder does not appear.
 2. Enable `/console scriptErrors 1`. Record version, build, level, faction, class,
@@ -46,7 +46,9 @@ Keep tester names and reports separate; label the main developer's report.
    unlocking. Focus next steps restores the short preview. Shared NPC markers can
    contain several numbered steps; hover to see them. No extra Blizzard pin.
 7. **Other maps:** view another zone used by the route. Its eligible markers should
-   appear in full mode. Lines must not falsely connect across a different zone.
+   appear in full mode. Cross-zone lines must use public world positions rather
+   than treating one zone's raw x/y as coordinates in another. Unprojectable
+   stages must break the line instead of connecting around the missing stage.
    Pan/zoom, including during combat, and confirm pins/lines stay attached to the
    terrain. Actual rendering needs live testing; a host test cannot prove it.
 
@@ -147,6 +149,21 @@ Keep tester names and reports separate; label the main developer's report.
     terrain or quest pins. Toggle full route/ahead and View route zone. Test
     windowed/maximized map layouts, zoom/pan and combat. Send a screenshot if
     your beta layout clips the footer or places it off-screen.
+23. **Actual level eligibility:** at level 12, check Recommended and Alternative
+    zone guides, including Ashenvale. A zone must not appear solely because a
+    level-20 quest shares your 11–20 filter. Known pickup minimums and necessary
+    prerequisite levels must agree with your level, and its work must be useful.
+    Try All levels and a future bracket: neither bypasses actual level. Repeat in
+    another zone/level and with a lower-level synced friend. Appropriate earlier
+    prerequisite chains remain included; selected fixed guides keep their order
+    after leveling. Future quests remain browsable in All quests.
+24. **Live cross-zone direction:** start a route whose next mapped stop is in a
+    neighboring zone. Move with the map open: the line must start at your current
+    position and update, including after zoom/pan. View the destination zone and
+    continent map, then cross the border: geometry and arrow distance/direction
+    should continue toward the same step. Fixed step numbers/order must remain
+    unchanged. Missing/private positions or different continents must not invent
+    a connecting line. Lines express direction; follow actual roads/terrain.
 
 ## Copyable tester report
 
@@ -157,7 +174,7 @@ Addon / client build:
 Level / class / race / faction / zone:
 Party size / selected guide:
 Fixed zone guides / full route / learning settings:
-Checks 1–22: Pass / Fail / Skip (reason)
+Checks 1–24: Pass / Fail / Skip (reason)
 Exact quest name and ID / NPC / current and next step numbers:
 What happened / expected result:
 Was the quest offered? Was its prerequisite handed in?

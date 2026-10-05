@@ -30,7 +30,10 @@ local zoneFactions = {
     [1438] = "Alliance", [1439] = "Alliance", [1453] = "Alliance", [1455] = "Alliance", [1457] = "Alliance",
 }
 local linkCache = {}
-function ns.ResetZoneConnections() linkCache = {} end
+function ns.ResetZoneConnections()
+    linkCache = {}
+    if ns.ResetMapProjection then ns.ResetMapProjection() end
+end
 
 function ns.KnownZoneMaps()
     local result = {}

@@ -204,6 +204,37 @@ local function buildChoice(entry, low, high)
     return guide
 end
 
+local function levelPath(id, level, seen, depth)
+    if depth > 24 or seen[id] then return false end
+    local quest = ns.CatalogueQuest(id)
+    if not quest then return true end -- Missing requirements remain an NPC check.
+    if quest.minLevel and quest.minLevel > level then return false end
+    if (quest.level or 0) > level + 3 then return false end
+    if ns.CatalogueIdentityAllowed(id, ns.profile) == false then return false end
+    local visited = {}; for key, value in pairs(seen) do visited[key] = value end; visited[id] = true
+    if quest.previousQuest and not ns.PartyQuestFinished(quest.previousQuest)
+        and not levelPath(quest.previousQuest, level, visited, depth + 1) then return false end
+    if quest.prerequisiteAny then
+        for _, previous in ipairs(quest.prerequisiteAny) do
+            if ns.PartyQuestFinished(previous) or levelPath(previous, level, visited, depth + 1) then return true end
+        end
+        return false
+    end
+    return true
+end
+
+function ns.GuideLevelSuitable(guide)
+    local level = ns.PartyLevelFloor()
+    if not level then return false end
+    for _, record in ipairs(guide.records or {}) do
+        local quest = ns.CatalogueQuest(record.id)
+        local knownLevel = quest and ((quest.level or 0) > 0 or (quest.minLevel or 0) > 0)
+        if knownLevel and record.mapID == guide.homeMapID and ns.CatalogueIdentityAllowed(record.id, ns.profile) == true
+            and ns.LevelingValue(record.id) == true and levelPath(record.id, level, {}, 0) then return true end
+    end
+    return false
+end
+
 function ns.LevelingGuideChoices(ignoreSearch)
     ns.ResolveCatalogueMaps(); rebuildIndex()
     local choices, low, high = {}, ns.GuideLevelRange()
@@ -212,7 +243,8 @@ function ns.LevelingGuideChoices(ignoreSearch)
         -- Chains remain part of zone planning and saved/shared guides. The
         -- browser offers whole zones rather than duplicate partial-chain cards.
         local choice = entry.mode == "zone" and buildChoice(entry, low, high)
-        if choice and (query == "" or string.find(choice.search, query, 1, true)) then choices[#choices + 1] = choice end
+        if choice and ns.GuideLevelSuitable(choice)
+            and (query == "" or string.find(choice.search, query, 1, true)) then choices[#choices + 1] = choice end
     end
     table.sort(choices, function(a, b)
         if a.priority ~= b.priority then return a.priority > b.priority end

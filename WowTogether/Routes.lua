@@ -470,10 +470,11 @@ local function routeLegend(provider, map)
         self.elapsed = 0
         local route = ns.RouteForDisplay()
         local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
-        if not route or mapID ~= route.mapID then return end
-        local point = ns.PlayerPoint(mapID)
+        if not route then return end
+        local point = ns.GuideInteger(mapID) and mapID > 0 and ns.PlayerPoint(mapID) or nil
         local old = provider.playerOrigin
-        if point and (not old or math.abs(point.x - old.x) + math.abs(point.y - old.y) > 0.0001) then ns.DrawRoute(provider, true) end
+        if old and not point or point and (not old or point.mapID ~= old.mapID
+            or math.abs(point.x - old.x) + math.abs(point.y - old.y) > 0.0001) then ns.DrawRoute(provider, true) end
     end)
     provider.legend = legend
     return legend
@@ -510,15 +511,21 @@ function ns.DrawRoute(provider, geometryOnly)
         return
     end
     local mapID = map:GetMapID()
+    if not ns.GuideInteger(mapID) or mapID <= 0 then ns.routeStats.status = "Map view unavailable."; return end
     local legend = routeLegend(provider, map)
     local strata = query(map.GetFrameStrata, map)
     local upper = {DIALOG = true, FULLSCREEN = true, FULLSCREEN_DIALOG = true, TOOLTIP = true}
     legend:SetFrameStrata(upper[strata] and strata or "HIGH")
     local displayed = ns.RouteDisplayStops(route)
-    local hasDisplayedMap = false
-    if ns.Option("fullRoute") then for _, stop in ipairs(displayed) do if stop.mapID == mapID then hasDisplayedMap = true; break end end end
-    if not ns.Public(mapID) or mapID ~= route.mapID and not hasDisplayedMap then
-        updateLegend(legend, "Next steps are in " .. ns.MapName(route.mapID) .. ".\nOnly that zone's steps are drawn. Use View route zone.")
+    local playerMap = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
+    local origin = ns.GuideInteger(playerMap) and playerMap > 0 and ns.PlayerPoint(playerMap) or nil
+    local projected, hasDisplayedMap = {}, playerMap == mapID
+    for index, stop in ipairs(displayed) do
+        projected[index] = ns.ProjectMapPoint(stop, mapID)
+        if projected[index] then hasDisplayedMap = true end
+    end
+    if mapID ~= route.mapID and not hasDisplayedMap then
+        updateLegend(legend, "Next steps are in " .. ns.MapName(route.mapID) .. ".\nTravel coordinates are unavailable here. Use View route zone.")
         ns.routeStats.status = "Viewing another map; next route steps are in " .. ns.MapName(route.mapID) .. "."
         return
     end
@@ -546,13 +553,12 @@ function ns.DrawRoute(provider, geometryOnly)
     ns.routeStats.geometry = string.format("%.0f x %.0f; view %.4f,%.4f / %.4f,%.4f", width, height,
         surface.left, surface.top, surface.spanX, surface.spanY)
     local points = {}
-    local playerMap = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
-    provider.playerOrigin = playerMap == mapID and ns.PlayerPoint(mapID) or nil
-    if provider.playerOrigin then points[#points + 1] = provider.playerOrigin end
-    for _, p in ipairs(displayed) do points[#points + 1] = p end
+    provider.playerOrigin = origin
+    if origin then points[#points + 1] = ns.ProjectMapPoint(origin, mapID) or false end
+    for index in ipairs(displayed) do points[#points + 1] = projected[index] or false end
     local visibleLines = 0
     for index = 2, #points do
-      if points[index - 1].mapID == mapID and points[index].mapID == mapID then
+      if points[index - 1] and points[index] then
         local x1, y1 = ns.RouteProject(surface, points[index - 1])
         local x2, y2 = ns.RouteProject(surface, points[index])
         x1, y1, x2, y2 = ns.ClipRouteSegment(x1, y1, x2, y2, width, height)
@@ -576,9 +582,11 @@ function ns.DrawRoute(provider, geometryOnly)
     end
     local groups, locations = {}, {}
     for index, p in ipairs(displayed) do
-        local x, y = ns.RouteProject(surface, p)
-        if p.mapID == mapID and x >= 0 and x <= width and y >= 0 and y <= height then
-            local key = math.floor(p.x * 100000) .. ":" .. math.floor(p.y * 100000)
+        local location = projected[index]
+        local x, y
+        if location then x, y = ns.RouteProject(surface, location) end
+        if x and x >= 0 and x <= width and y >= 0 and y <= height then
+            local key = math.floor(location.x * 100000) .. ":" .. math.floor(location.y * 100000)
             local group = locations[key]
             if not group then
                 for _, nearby in ipairs(groups) do if math.abs(nearby.x - x) <= 6 and math.abs(nearby.y - y) <= 6 then group = nearby; break end end
@@ -632,13 +640,17 @@ function ns.DrawRoute(provider, geometryOnly)
         pin:SetPoint("CENTER", overlay, "TOPLEFT", group.x, -group.y)
         pin:Show()
     end
+    local missingTravel = displayed[1] and displayed[1].mapID ~= mapID and not projected[1]
     updateLegend(legend, "Wow Together • " .. #displayed .. " stops • " .. #groups .. " visible " .. (#groups == 1 and "place" or "places")
         .. (ns.Option("fullRoute") and " • All eligible mapped quests" or " • Next steps")
         .. (ns.routePaused and " • Waiting for party updates" or "")
         .. (route.partial and " • Partial route" or "")
-        .. ((route.otherMaps or 0) > 0 and " • Other zones" or ""))
+        .. ((route.otherMaps or 0) > 0 and " • Other zones" or "")
+        .. (missingTravel and ("\nTravel to " .. ns.MapName(displayed[1].mapID) .. "; travel coordinates unavailable here.") or ""))
     ns.routeStats.pins, ns.routeStats.lines = #groups, visibleLines
-    ns.routeStats.status = ns.routePaused and (ns.routePaused .. " Showing the last confirmed route.") or ("Route drawn on map " .. mapID .. ".")
+    ns.routeStats.status = ns.routePaused and (ns.routePaused .. " Showing the last confirmed route.")
+        or missingTravel and ("Cross-zone travel coordinates unavailable on map " .. mapID .. ".")
+        or ("Route drawn on map " .. mapID .. ".")
 end
 
 function ns.AttachRouteProvider()

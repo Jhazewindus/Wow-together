@@ -74,6 +74,8 @@ class GuideBrowserTests(unittest.TestCase):
         self.assertEqual(c.ns.guideSearch, 'Remote')
         self.assertEqual(c.ns.ui.visibleCards, 0)
         c.ns.ui.guideLevel.options['21-30'].OnClick()
+        self.assertEqual(c.ns.ui.visibleCards, 0)  # A future filter does not bypass actual character level.
+        c.lua.globals().playerLevel = 25; c.ns.ReadProfile(); c.ns.Refresh()
         self.assertEqual(c.ns.ui.visibleCards, 1)
         self.assertEqual(c.ns.ui.cards[1].guide.zone, 'Remote Zone')
         search.SetText(search, 'High'); search.OnTextChanged(search); search.OnEnterPressed(search)

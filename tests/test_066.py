@@ -270,7 +270,9 @@ class CleanUITests(unittest.TestCase):
         self.assertTrue(c.ns.Option('npcHints'))  # Item tooltip master remains enabled.
 
     def test_map_controls_are_below_viewport_not_children_of_the_canvas(self):
-        c = guide_client(2); c.ns.ActivateRoute(zone(c))
+        c = guide_client(2)
+        c.lua.globals().WorldMapFrame.SetMapID(c.lua.globals().WorldMapFrame, 501)
+        c.ns.ActivateRoute(zone(c))
         legend = c.ns.routeProvider.legend
         self.assertTrue(c.lua.eval('rawequal')(legend.GetParent(legend), c.lua.globals().WorldMapFrame))
         self.assertEqual(legend.point[1], 'TOPLEFT')
