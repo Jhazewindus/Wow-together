@@ -53,6 +53,9 @@ is never introduced. Drop/vendor joins require an explicit item-source relation.
 Common-item sources above the quest level allowance are not selected as farming
 targets; high-level friendly vendors can still sell a required item. Item goals
 from a proven common mob may share its already-published farming area.
+A proven drop source whose creature name matches the requested item is preferred
+within the same farming zone. A name match never creates an unproven drop relation
+or justifies travel to a remote zone. Published alternatives remain available.
 Provided items are distinguished from farming goals. Item-use facts require
 a matching explicit source mechanism, rather than assuming every NPC goal is a kill.
 

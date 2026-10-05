@@ -193,6 +193,17 @@ def choose_location(candidates, quest):
     return min(candidates, key=rank) if candidates else None
 
 
+def named_item_source(item_name, source_name):
+    """A source named by the item is preferable to an unrelated alternate.
+
+    This does not invent a loot relation or estimate drop rates. The caller
+    must already have an explicit source relation for this exact item goal.
+    """
+    normalize=lambda s:re.sub(r'[^a-z0-9]','',s.lower())
+    item,source=normalize(item_name),normalize(source_name)
+    return len(source) if len(source)>=5 and source in item else 0
+
+
 def enrich(quest, refs, entities):
     """Fill real source gaps. Existing mapped instructions take precedence."""
     quest['requirements'] = refs['requirements']
@@ -226,6 +237,12 @@ def enrich(quest, refs, entities):
         for point in matches:
             if req['entityType']=='item' and point.get('entityID') and point.get('mapID'):
                 point['legacyStepKey']='q:'+str(point['mapID'])+':npc:'+str(point['entityID'])
+                alternatives=[p for group in quest.get('objectiveAlternatives',[]) if group.get('itemName')==req['name']
+                    and group.get('sourceObjective')==point.get('sourceObjective') for p in group.get('locations',[])
+                    if p.get('npc') and p.get('mapID')==point.get('mapID') and named_item_source(req['name'],p.get('name',''))]
+                if alternatives and not named_item_source(req['name'],point.get('name','')):
+                    chosen=choose_location(alternatives,quest)
+                    point.update({key:chosen[key] for key in ('mapID','x','y','name','entityID','npc','action') if key in chosen})
             point.update({k:v for k,v in point_for(point,'q',req).items() if k in
                 ('quantity','objectiveKey','itemID','itemName','action','useItemName','spellID')})
         if matches:
@@ -262,6 +279,9 @@ def enrich(quest, refs, entities):
                 else:
                     p['action'] = 'interact'
         chosen = choose_location(candidates,quest)
+        named=[p for p in candidates if p.get('npc') and req['entityType']=='item' and chosen
+            and p['mapID']==chosen['mapID'] and named_item_source(req['name'],p.get('name',''))]
+        if named:chosen=choose_location(named,quest)
         # Two item goals from the same proven drop source can share the
         # already-published farming area; a second trip adds no useful work.
         if chosen and req['entityType']=='item':

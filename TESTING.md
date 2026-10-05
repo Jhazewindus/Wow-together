@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.0**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.1**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
@@ -15,7 +15,14 @@ The expanded-guide checks below take about **15–25 minutes**.
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
 
-## Focus checks for 0.8.0
+## Focus checks for 0.8.1
+
+- **Farming source:** Sting of the Scorpid should point to Scorpid Workers and
+  say to collect ten Scorpid Worker Tails, rather than tell you to farm Sarkoth.
+  The Sarkoth quest itself still points to Sarkoth. Check another multi-source
+  item goal: its named source must be real, in the same farming zone, and an
+  existing manual skip must remain respected.
+
 
 - **Zone coverage:** test a starting zone, a middle-level zone and a later zone
   where you have a suitable character. Include both factions across testers.

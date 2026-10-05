@@ -122,8 +122,8 @@
       "steps": 177,
       "unknown_location_steps": 22,
       "prerequisite_review_steps": 0,
-      "estimated_distance_before": 211200.77,
-      "estimated_distance_after": 205916.97
+      "estimated_distance_before": 211256.32,
+      "estimated_distance_after": 205776.29
     },
     {
       "faction": "Alliance",
@@ -166,8 +166,8 @@
       "steps": 229,
       "unknown_location_steps": 59,
       "prerequisite_review_steps": 31,
-      "estimated_distance_before": 760841.15,
-      "estimated_distance_after": 737511.35
+      "estimated_distance_before": 765434.16,
+      "estimated_distance_after": 744034.75
     },
     {
       "faction": "Alliance",
@@ -243,8 +243,8 @@
       "steps": 138,
       "unknown_location_steps": 53,
       "prerequisite_review_steps": 0,
-      "estimated_distance_before": 587076.46,
-      "estimated_distance_after": 582923.99
+      "estimated_distance_before": 586585.53,
+      "estimated_distance_after": 581542.25
     },
     {
       "faction": "Alliance",
@@ -397,8 +397,8 @@
       "steps": 139,
       "unknown_location_steps": 59,
       "prerequisite_review_steps": 3,
-      "estimated_distance_before": 615240.0,
-      "estimated_distance_after": 614743.51
+      "estimated_distance_before": 617056.15,
+      "estimated_distance_after": 616827.42
     },
     {
       "faction": "Alliance",
@@ -419,8 +419,8 @@
       "steps": 187,
       "unknown_location_steps": 90,
       "prerequisite_review_steps": 0,
-      "estimated_distance_before": 1097276.81,
-      "estimated_distance_after": 1087308.41
+      "estimated_distance_before": 1101466.69,
+      "estimated_distance_after": 1085988.91
     },
     {
       "faction": "Alliance",
@@ -496,8 +496,8 @@
       "steps": 114,
       "unknown_location_steps": 17,
       "prerequisite_review_steps": 6,
-      "estimated_distance_before": 452594.42,
-      "estimated_distance_after": 419073.09
+      "estimated_distance_before": 455969.77,
+      "estimated_distance_after": 415028.93
     },
     {
       "faction": "Horde",
@@ -551,8 +551,8 @@
       "steps": 192,
       "unknown_location_steps": 29,
       "prerequisite_review_steps": 0,
-      "estimated_distance_before": 276658.88,
-      "estimated_distance_after": 258175.87
+      "estimated_distance_before": 277492.51,
+      "estimated_distance_after": 258954.46
     },
     {
       "faction": "Horde",
@@ -584,8 +584,8 @@
       "steps": 213,
       "unknown_location_steps": 53,
       "prerequisite_review_steps": 31,
-      "estimated_distance_before": 632105.93,
-      "estimated_distance_after": 572587.58
+      "estimated_distance_before": 636385.62,
+      "estimated_distance_after": 577044.78
     },
     {
       "faction": "Horde",
@@ -617,8 +617,8 @@
       "steps": 165,
       "unknown_location_steps": 23,
       "prerequisite_review_steps": 0,
-      "estimated_distance_before": 327069.83,
-      "estimated_distance_after": 320529.86
+      "estimated_distance_before": 326590.05,
+      "estimated_distance_after": 319939.44
     },
     {
       "faction": "Horde",
@@ -639,8 +639,8 @@
       "steps": 200,
       "unknown_location_steps": 117,
       "prerequisite_review_steps": 0,
-      "estimated_distance_before": 1351171.43,
-      "estimated_distance_after": 1349198.47
+      "estimated_distance_before": 1353544.51,
+      "estimated_distance_after": 1351719.29
     },
     {
       "faction": "Horde",
@@ -804,8 +804,8 @@
       "steps": 142,
       "unknown_location_steps": 60,
       "prerequisite_review_steps": 0,
-      "estimated_distance_before": 619173.56,
-      "estimated_distance_after": 602269.54
+      "estimated_distance_before": 620179.79,
+      "estimated_distance_after": 604755.76
     },
     {
       "faction": "Horde",

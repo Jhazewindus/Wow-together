@@ -15,6 +15,18 @@ from test_addon import Client
 
 
 class SourceFactsTests(unittest.TestCase):
+    def test_named_item_source_wins_over_a_slightly_closer_unrelated_alternate(self):
+        refs={'starts':[],'ends':[],'requirements':[{'entityType':'item','entityID':10,'name':'Forest Spider Venom','quantity':8}]}
+        primary={'mapID':501,'x':.3,'y':.4,'entityID':7,'npc':True,'name':'Deathweb','itemName':'Forest Spider Venom','sourceObjective':0}
+        normal={'mapID':501,'x':.3,'y':.39,'entityID':8,'npc':True,'name':'Forest Spider','itemName':'Forest Spider Venom','sourceObjective':0}
+        q={'mapID':501,'starts':[{'mapID':501,'x':.3,'y':.4}],'objectives':[dict(primary)],
+            'objectiveAlternatives':[{'sourceObjective':0,'itemName':'Forest Spider Venom','locations':[primary,normal]}]}
+        enrich(q,refs,{'npc':{},'object':{},'item':{}})
+        self.assertEqual(q['objectives'][0]['entityID'],8)
+        self.assertEqual(q['objectives'][0]['legacyStepKey'],'q:501:npc:7')
+        q['objectiveAlternatives'][0]['itemName']='Another item'
+        q['objectives']=[dict(primary)];enrich(q,refs,{'npc':{},'object':{},'item':{}})
+        self.assertEqual(q['objectives'][0]['entityID'],7) # Unproven item/source joins cannot change the destination.
     def test_provided_items_are_not_farming_objectives_and_explicit_use_is_retained(self):
         table = '''<table class="icon-list">
         <tr data-icon-list-quantity="5"><td><a href="/forever/npc=7">Workers Awoken</a></td></tr>
@@ -163,6 +175,12 @@ class NativeTransformTests(unittest.TestCase):
 
 
 class GuideInstructionTests(unittest.TestCase):
+    def test_real_scorpid_tail_goal_prefers_the_published_worker_area(self):
+        c=Client(quests=(),use_catalogue=True)
+        q=c.ns.CatalogueQuest(789)
+        self.assertEqual(q.objectives[1].name,'Scorpid Worker')
+        self.assertEqual(q.objectives[1].quantity,10)
+        self.assertEqual({p.name for p in q.objectiveAlternatives[1].locations.values()},{'Scorpid Worker','Sarkoth'})
     def test_named_kill_loot_and_item_use_instructions(self):
         c=guide_client(1)
         stop=c.lua.table_from({'id':900,'kind':'q','title':'Supplies','quantity':8,'itemName':'Flank',

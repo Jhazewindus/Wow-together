@@ -120,7 +120,8 @@ end
 
 local function itemPoint(reference, quest, context)
     local item = ns.questEntities and ns.questEntities.item[reference.entityID]
-    local point, targets = nil, {}
+    local point, targets, bestName = nil, {}, 0
+    local itemName = string.gsub(string.lower(reference.name or ""), "[^%w]", "")
     for _, target in ipairs(quest.npcTargets or {}) do targets[target.entityID] = true end
     local explicit = next(targets) ~= nil
     for pass = 1, 2 do
@@ -129,15 +130,18 @@ local function itemPoint(reference, quest, context)
             local named = targets[source.entityID] == true
             if appropriate and (not explicit or pass == 1 and named or pass == 2) then
                 local location = candidate(source, quest, context)
+                local name = string.gsub(string.lower(source.name or ""), "[^%w]", "")
+                local nameRank = #name >= 5 and string.find(itemName, name, 1, true) and #name or 0
                 local home = location and location.mapID == quest.mapID
                 -- When the named source is unmapped, a fallback must stay in
                 -- the quest's home zone, rather than send a low-level player
                 -- to a common item's unrelated high-level drop source.
                 if location and (pass == 1 or home) and (not point or home and point.mapID ~= quest.mapID
-                    or location.mapID == point.mapID and quest.starts and quest.starts[1]
+                    or location.mapID == point.mapID and (nameRank > bestName
+                    or nameRank == bestName and quest.starts and quest.starts[1]
                     and quest.starts[1].mapID == location.mapID
-                    and ns.NormalizedDistance(quest.starts[1], location) < ns.NormalizedDistance(quest.starts[1], point)) then
-                    point, location.action = location, source.action
+                    and ns.NormalizedDistance(quest.starts[1], location) < ns.NormalizedDistance(quest.starts[1], point))) then
+                    point, location.action, bestName = location, source.action, nameRank
                 end
             end
         end

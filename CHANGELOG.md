@@ -1,5 +1,11 @@
 # Wow Together changelog
 
+## 0.8.1
+
+- Prefer a proven source whose creature name matches the requested item, within the same farming zone. Scorpid Worker Tails now point to the published Scorpid Worker area rather than Sarkoth. This applies to item-source selection generally.
+- Keep alternative sources, fixed guide order and existing skip credit. A matching name never invents a drop relation or justifies travel to another zone.
+- Recheck all zone guides and source-choice regressions. Full data/terrain coverage remains blocked by missing source captures and needs beta testing.
+
 ## 0.8.0
 
 - Expand the captured 5,230-quest catalogue: 2,877 mapped pickups, 1,218 objective areas and 3,044 hand-ins. Coverage remains partial; source denials and beta changes still need resolving.
