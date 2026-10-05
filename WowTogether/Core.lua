@@ -35,7 +35,7 @@ ns.frame:SetScript("OnEvent", function(_, event, ...)
 end)
 
 function ns.Diagnostics()
-    local lines = {"Wow Together 0.5.4 — beta capability and sync report", ""}
+    local lines = {"Wow Together 0.5.5 — beta capability and sync report", ""}
     local function output(line) lines[#lines + 1] = line end
     local version, build, _, interface = GetBuildInfo()
     local function readable(value)

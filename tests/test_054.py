@@ -17,7 +17,7 @@ def local_client():
 
 
 def valley_client():
-    c = Client(quests=(5441,), completed=(1485,), use_catalogue=True)
+    c = Client(quests=(5441,), use_catalogue=True)
     c.lua.globals().grouped = False
     c.unit_names({'player': ['Alice', 'TestRealm']})
     c.guide_environment(level=4, current_quests_first=True)
@@ -47,14 +47,17 @@ class NearbyPickupTests(unittest.TestCase):
         self.assertIn('incomplete objective locations', choice.reason)
         self.assertTrue(all(s.mapID == 1411 for s in route.stops.values()))
 
-    def test_real_prerequisite_still_blocks_vile_familiars_until_history_or_live_offer(self):
+    def test_general_vile_familiars_needs_no_warlock_intro_but_medallion_still_needs_completion(self):
         c = valley_client()
-        c.lua.globals().finished[1485] = None
         choice = c.ns.GuideChoices()[1]
-        self.assertFalse(choice.pickupIDs[792])
+        self.assertIsNone(c.ns.CatalogueQuest(792).previousQuest)
+        self.assertTrue(choice.pickupIDs[792])
         self.assertTrue(choice.pickupIDs[4402])
-        c.ns.offered[792] = True
-        self.assertTrue(c.ns.GuideChoices()[1].pickupIDs[792])
+        self.assertFalse(c.ns.CatalogueAllowed(794, c.ns.profile, c.ns.self)[0])
+        c.ns.active[792] = 'Vile Familiars'
+        self.assertFalse(c.ns.CatalogueAllowed(794, c.ns.profile, c.ns.self)[0])
+        c.lua.globals().finished[792] = True
+        self.assertTrue(c.ns.CatalogueAllowed(794, c.ns.profile, c.ns.self))
 
     def test_ready_turn_ins_precede_pickups_then_shared_work_and_returns(self):
         c = local_client()

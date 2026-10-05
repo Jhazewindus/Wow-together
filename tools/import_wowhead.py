@@ -92,12 +92,15 @@ def series_ids(page, current_id):
     return ids if current_id in ids and len(set(ids)) == len(ids) and len(ids) <= 24 else []
 
 
-def prerequisite_facts(page, current_id):
+def prerequisite_facts(page, current_id, quest_facts=None):
     """Preserve branch gates without turning a branch into a linear chain.
 
     Same-named variants in one published step are alternatives (e.g. class
     variants of Vile Familiars). Distinct branches keep an unknown gate; we
-    cannot establish AND versus OR from the presentation alone.
+    cannot establish AND versus OR from the presentation alone. A class-only
+    introduction can belong to a parallel class variant, rather than the
+    unrestricted quest shown beside it. Only explicit variant masks and names
+    establish that distinction; missing metadata preserves the gate.
     """
     table = re.search(r'<table[^>]*class=["\'][^"\']*\bseries\b[^"\']*["\'][^>]*>(.*?)</table>', page, re.S)
     if not table:
@@ -106,8 +109,9 @@ def prerequisite_facts(page, current_id):
     for body in re.findall(r'<tr[^>]*>(.*?)</tr>', table.group(1), re.S):
         links = re.findall(r'<a\b[^>]*href=["\']/forever/quest=(\d+)[^"\']*["\'][^>]*>(.*?)</a>', body, re.S)
         row = dict((int(id), clean(html.unescape(re.sub('<[^>]+>', '', title)))) for id, title in links)
-        if re.search(r'<b\b', body):
-            row[current_id] = ''
+        bold = re.search(r'<b\b[^>]*>(.*?)</b>', body, re.S)
+        if bold:
+            row[current_id] = clean(html.unescape(re.sub('<[^>]+>', '', bold[1])))
         if not row or len(rows) >= 24:
             return {'prerequisitesUnverified': True}
         if current_id in row:
@@ -121,14 +125,25 @@ def prerequisite_facts(page, current_id):
         return {}
     previous = rows[current - 1]
     if len(previous) == 1:
-        return {'previousQuest': next(iter(previous))}
+        predecessor = next(iter(previous))
+        facts = quest_facts or {}
+        current_mask = number(facts.get(current_id, {}).get('classMask'), 4294967295)
+        previous_mask = number(facts.get(predecessor, {}).get('classMask'), 4294967295)
+        variants = rows[current]
+        if current_mask == 0 and previous_mask and len(variants) > 1 \
+                and set(variants.values()) == {previous[predecessor]} and previous[predecessor]:
+            for variant in variants:
+                variant_mask = number(facts.get(variant, {}).get('classMask'), 4294967295)
+                if variant != current_id and variant_mask and variant_mask & previous_mask:
+                    return {'prerequisiteSource': 'Wowhead Forever parallel class branch'}
+        return {'previousQuest': predecessor}
     titles = set(previous.values())
     if len(titles) == 1 and '' not in titles and len(previous) <= 8:
         return {'prerequisiteAny': sorted(previous), 'prerequisiteSource': 'Wowhead Forever series variants'}
     return {'prerequisiteCandidates': sorted(previous)[:8], 'prerequisitesUnverified': True}
 
 
-def detail_facts(page, row, area_maps):
+def detail_facts(page, row, area_maps, quest_facts=None):
     quest_id = row['id']
     metadata = json_after(page, f'$.extend(g_quests[{quest_id}], ')
     if not isinstance(metadata, dict) or metadata.get('id') != quest_id:
@@ -228,7 +243,9 @@ def detail_facts(page, row, area_maps):
         result['seriesPosition'] = seq.index(quest_id) + 1
         if seq.index(quest_id) > 0:
             result['previousQuest'] = seq[seq.index(quest_id) - 1]
-    result.update(prerequisite_facts(page, quest_id))
+    branch_facts = dict(quest_facts or {})
+    branch_facts[quest_id] = dict(branch_facts.get(quest_id, {}), **result)
+    result.update(prerequisite_facts(page, quest_id, branch_facts))
     result['prerequisitesRead'] = True
     if isinstance(mapper, dict):
         own_area = str(result.get('areaID'))
@@ -310,6 +327,8 @@ def main():
                or (number(row.get('level'), 255) is not None and row['level'] <= args.detail_level_max)
                or (args.cache / ('quest-' + str(row['id']) + '.html')).exists()]
     print(f'Reading {len(details)} detailed pages; {len(area_maps)} unambiguous Area-to-UI map joins.', flush=True)
+    # Workers read fixed variant masks, independent of detailed-page merge order.
+    requirement_facts = {id: {'classMask': record.get('classMask')} for id, record in records.items()}
 
     unavailable = []
     lock = threading.Lock()
@@ -322,7 +341,7 @@ def main():
                 return row['id'], None
         try:
             page = fetch('/quest=' + str(row['id']), 'quest-' + str(row['id']))
-            facts = detail_facts(page, row, area_maps)
+            facts = detail_facts(page, row, area_maps, requirement_facts)
             if not cached:
                 with lock:
                     denial_streak = 0

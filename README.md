@@ -5,7 +5,22 @@ comparing progress, and drawing the next stops on the world map.
 Targets **interface 16001**, Lua **5.1**. No service or Battle.net credentials
 are required by the addon.
 
-## Version 0.5.4
+Quick references: [friend-testing script](TESTING.md) and [short changelog](CHANGELOG.md).
+
+## Version 0.5.5
+
+- **Vile Familiars pickup correction:** the importer mistakenly applied the
+  Warlock-only introduction to the general quest shown beside its class variant.
+  Parallel variants now use explicit class masks and matching source names to
+  keep that introduction on its own branch. The user confirmed that Zureetha
+  offers the general version. It can join an eligible local bundle without
+  completing the Warlock introduction; Burning Blade Medallion retains its
+  completion gate. Re-select the refreshed guide after updating.
+- **Friend testing:** the release includes `TESTING.md` with a practical
+  two-player test script, optional third-player checks and a copyable report,
+  plus a short `CHANGELOG.md`.
+
+The 0.5.4 changes are retained:
 
 - **Bundle pickups into the current trip:** **Include eligible nearby pickups**
   is on by default alongside **Finish our current quests first**. The planner
@@ -176,7 +191,7 @@ World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
 `WowTogether.toc` belongs directly inside that folder. Update **every party
-member to 0.5.4**, including all new files, then `/reload`. Restart the client
+member to 0.5.5**, including all new files, then `/reload`. Restart the client
 fully if a new addon folder does not appear in the character-screen addon list.
 The release ZIP includes the complete TOC, every Lua file, data summary,
 instructions, and license. Copy the folder rather than individual changed files.
@@ -278,7 +293,7 @@ and layouts were not downloaded or copied. This implementation is independent.
    with your party. Friends choose **Follow route** or **Keep my route**; nothing
    replaces their route before they accept. Each client computes its own party
    objective/turn-in stages. Solo Start route starts locally. Update all clients
-   to 0.5.4 for invitations that retain nearby-pickup roles. If more than 20 quests are selected,
+   to 0.5.5 for the prerequisite correction and invitations that retain nearby-pickup roles. If more than 20 quests are selected,
    the invitation explicitly reports that the shared selection is limited.
 3. Accepting a quest switches from pickup to an objective. A finished active
    quest switches to turn-in. Turning it in follows the next party member who
@@ -490,9 +505,10 @@ client tests; the 0.5.4 selection algorithm still needs a beta check.
     the quest title, draw a downward arrow and say Talk to the NPC. Friendly
     nameplates may show quest names and a pointer when their public ID is visible.
 17. With Lazy Peons active around Valley of Trials and nearby pickups enabled,
-    check that Galgar's quest can join the current trip. Vile Familiars should
-    join only if its prerequisite history or a live NPC offer permits pickup.
-    Its class variants remain restricted. The apple pickup is mapped, but its
+    check that Galgar's quest and the uncompleted general Vile Familiars can
+    join an eligible trip without a Warlock-only introduction. Its class
+    variants remain restricted and Burning Blade Medallion stays gated behind
+    completion. The apple pickup is mapped, but its
     missing objective coordinates remain partial. Repeat around another known
     quest hub to verify the rules use locations rather than special quest IDs.
     Add a ready quest: its turn-in must precede the pickups. Switch nearby
@@ -529,7 +545,8 @@ viewport projection, pan/zoom timing, clipping, clustered markers, geometry-only
 resizing, real two-client invitation exchanges, branch gates, faction/adjacency
 filtering, delayed route metadata, NPC arrival pointers, published Valley of
 Trials bundling, bounded nearby detours, strict-mode settings, pickup-role
-invitations, and preservation of selected bundles across recommendation refreshes.
+invitations, preservation of selected bundles across recommendation refreshes,
+and separation of general/class-variant prerequisite branches.
 Synthetic fixtures are not shipped as game data. Mocks do not establish real
 beta rendering or protected-action compatibility.
 

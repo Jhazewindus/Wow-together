@@ -115,6 +115,10 @@ in combat. No raid-target marking.
 The catalogue contains {coverage['count']:,} listed quests and {coverage['detailed_quests']:,} detailed pages. Locations
 and prerequisites are partial. Route lines show visiting order, not roads.
 Read README.md for coverage, limitations, source notes, and testing steps.
+TESTING.md contains the friend-testing script and copyable report template.
+CHANGELOG.md has the short release history. In this release, the general Vile
+Familiars no longer inherits the Warlock introduction's prerequisite. Select
+the refreshed bundle after updating; Burning Blade Medallion retains its gate.
 '''
     args.output.mkdir(parents=True, exist_ok=True)
     destination = args.output / f'WowTogether-{version}.zip'
@@ -122,7 +126,8 @@ Read README.md for coverage, limitations, source notes, and testing steps.
     with zipfile.ZipFile(destination, 'w', zipfile.ZIP_DEFLATED) as archive:
         for name in files:
             archive.write(addon / name, 'WowTogether/' + name)
-        archive.write(ROOT / 'README.md', 'WowTogether/README.md')
+        for name in ('README.md', 'TESTING.md', 'CHANGELOG.md'):
+            archive.write(ROOT / name, 'WowTogether/' + name)
         archive.write(ROOT / 'LICENSE', 'WowTogether/LICENSE')
         archive.writestr('WowTogether/INSTALL.md', instructions)
     with zipfile.ZipFile(destination) as archive:
