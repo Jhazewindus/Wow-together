@@ -375,7 +375,7 @@ function ns.StopIcon(stop)
     return nil
 end
 
-function ns.StopSymbol(stop) return stop.action == "collect" and "*" or "+" end
+function ns.StopSymbol(stop) return stop.kind == "travel" and "›" or stop.action == "collect" and "*" or "+" end
 
 local function hideDrawing(provider)
     for _, pin in ipairs(provider.pins or {}) do pin:Hide() end
@@ -562,8 +562,14 @@ function ns.DrawRoute(provider, geometryOnly)
         surface.left, surface.top, surface.spanX, surface.spanY)
     local points = {}
     provider.playerOrigin = origin
-    if origin then points[#points + 1] = ns.ProjectMapPoint(origin, mapID, projectionContext) or false end
-    for index in ipairs(displayed) do points[#points + 1] = projected[index] or false end
+    local travel = origin and displayed[1] and ns.TravelLinePoints(origin, displayed[1])
+    if travel then
+        for _, point in ipairs(travel) do points[#points + 1] = point and ns.ProjectMapPoint(point, mapID, projectionContext) or false end
+        for index = 2, #displayed do points[#points + 1] = projected[index] or false end
+    else
+        if origin then points[#points + 1] = ns.ProjectMapPoint(origin, mapID, projectionContext) or false end
+        for index in ipairs(displayed) do points[#points + 1] = projected[index] or false end
+    end
     local visibleLines = 0
     for index = 2, #points do
       if points[index - 1] and points[index] then
@@ -589,6 +595,15 @@ function ns.DrawRoute(provider, geometryOnly)
       end
     end
     local groups, locations = {}, {}
+    local waypoint = ns.travelWaypoint
+    if waypoint and waypoint.kind == "travel" then
+        local location = ns.ProjectMapPoint(waypoint, mapID, projectionContext)
+        local x, y
+        if location then x, y = ns.RouteProject(surface, location) end
+        if x and x >= 0 and x <= width and y >= 0 and y <= height then
+            groups[#groups + 1] = {point = waypoint, x = x, y = y, stops = {waypoint}, numbers = {"›"}}
+        end
+    end
     for index, p in ipairs(displayed) do
         local location = projected[index]
         local x, y
@@ -687,6 +702,7 @@ function ns.AttachRouteProvider()
 end
 
 function ns.ActivateRoute(guide, route)
+    ns.ResetTravelPath()
     ns.guideStepHistory, ns.navigationPreview, ns.forceRouteReplan = {}, nil, nil
     ns.routePaused = nil
     ns.routeSelection = guide
@@ -831,6 +847,7 @@ function ns.UpdateSelectedRoute(choices, query)
 end
 
 function ns.ClearRoute()
+    ns.ResetTravelPath()
     if ns.ClearSavedGuide then ns.ClearSavedGuide() end
     if ns.CancelGuidePlanning then ns.CancelGuidePlanning() end
     ns.routeSelection = nil

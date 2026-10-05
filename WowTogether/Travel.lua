@@ -106,7 +106,9 @@ function ns.ReadFlightMap()
             and ns.Public(info.state) and ns.Public(info.slotIndex) then
             local id, name = info.nodeID, ns.SafeTitle(info.name)
             if id > 0 and name then
+                local published = ns.travelData and ns.travelData.nodes["TAXI_" .. id]
                 local p = point(mapID, ns.Public(info.position) and info.position)
+                if not p and published then p = {mapID = published.mapID, x = published.x, y = published.y} end
                 if info.state == states.Current then current = id; p = ns.PlayerPoint(ownMap) or p end
                 if p then p = localPoint(ownMap, p) end
                 local old = state.nodes[id] or {}
@@ -164,7 +166,9 @@ function ns.FindFlightPlan(stop)
 end
 
 function ns.TravelDestination(stop)
-    if not stop or stop.kind == "notice" or ns.navigationPreview then return stop end
+    if not stop or stop.kind == "notice" or ns.navigationPreview then ns.travelWaypoint = nil; return stop end
+    local network = ns.TravelNetworkDestination(stop)
+    if network and #ns.FilterGuideStages({network}) > 0 then return network end
     local now = ns.ReadPublic(GetTime)
     now = number(now) and now or nil
     local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
@@ -238,6 +242,8 @@ function ns.FinishFlight()
         timings[key] = {mean = ((old and old.mean or 0) * samples + now - start) / (samples + 1), samples = samples + 1}
     end
     ns.flightStarted, ns.pendingFlight, ns.flightPlanCache = nil, nil, nil
+    ns.travelRevision = (ns.travelRevision or 0) + 1
+    ns.ResetTravelPath()
     ns.UpdateNavigation()
 end
 
@@ -259,6 +265,7 @@ function ns.RouteForDisplay()
     if not route then return end
     if ns.ReadPublic(UnitOnTaxi, "player") == true then return route end
     local stop = ns.CorpseDestination() or ns.TravelDestination(route.stops[1])
+    if stop and stop.travelLeg and stop.kind ~= "f" then return route end
     if stop and (stop.kind == "corpse" or stop.kind == "f") then
         return {mapID = stop.mapID, stops = {stop}, title = stop.title,
             origin = ns.PlayerPoint(stop.mapID), key = route.key, partial = false}

@@ -1,12 +1,12 @@
 # Wow Together — friend test script
 
-For **0.6.9**, World of Warcraft: Forever beta, interface **16001**.
+For **0.7.0**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 33 Lua files**, in
+1. Replace the complete WowTogether folder, including **all 36 Lua files**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    `/reload`; restart fully if a new addon folder does not appear.
 2. Enable `/console scriptErrors 1`. Record version, build, level, faction, class,
@@ -172,6 +172,28 @@ Keep tester names and reports separate; label the main developer's report.
     reload: every next update must use fresh state. Repeat learned-chain and
     combat/secret-data checks. Host timings/call counts do not establish beta FPS.
 
+## New navigation and guide checks
+
+26. **Standalone arrow:** enable it in Arrow and map. Move it independently,
+    hide the large direction panel, turn/move and switch yards/metres. It must
+    keep directing you to the same next step. Reload: its toggle/position persist.
+    Show both panels; neither should lag or double-poll. Clear route hides both.
+27. **Travel graph:** with Use travel connections on, test a cross-zone guide
+    step through a known pass or city gate, and a boat/zeppelin/tram trip if one
+    is relevant. Reaching the boarding point must not advance quest credit or
+    say the ride is complete. Check arrival resumes the same guide quest. Map
+    walking lines must follow the selected points and break at transport rides.
+    Note wrong/missing crossings or terrain obstacles: point walks are estimates.
+    Open flight maps: only observed reachable connections may be suggested; test
+    a known multi-leg network and an unlearned flight. With no GetTaxiMapID, known
+    sourced coordinates can locate nodes but must not grant flight access.
+    Turn the graph off: ordinary directions remain and fixed quest order agrees.
+28. **Reported guide failure:** a level-12 Horde character starts Mulgore, then
+    Durotar, then switches back and forth. Also start Durotar on a level-5 Horde
+    Warrior. Capture any generation error. `<UNUSED>`/zzOLD entries must not
+    appear as leveling steps, including in a retained guide after upgrading.
+    Genuine unknown locations stay explicit; no fabricated quest points.
+
 ## Copyable tester report
 
 ```text
@@ -181,7 +203,7 @@ Addon / client build:
 Level / class / race / faction / zone:
 Party size / selected guide:
 Fixed zone guides / full route / learning settings:
-Checks 1–25: Pass / Fail / Skip (reason)
+Checks 1–28: Pass / Fail / Skip (reason)
 Exact quest name and ID / NPC / current and next step numbers:
 What happened / expected result:
 Was the quest offered? Was its prerequisite handed in?

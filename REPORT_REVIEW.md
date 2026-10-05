@@ -1,3 +1,42 @@
+# Follow-up review for 0.7.0
+
+King Kai requests an optional standalone next-step arrow (18:07). The user
+requests Dijkstra routing over travel points/transport links and stresses that
+we must not steal code. These requests agree with fixed quest ordering: change
+travel between quest steps, not the compiled guide sequence. Our search/arrow
+code is original. A pinned Mapzeroth Forever 0.6.0 geographic snapshot is adapted
+with source hashes and the project's MIT notice. It is a point graph with
+estimated walking costs, not a terrain navigation mesh. Exclude Retail data,
+ability/race portals and unconfirmed flight links. Add flights only from this
+character's public reachable observations. No new transport automation.
+
+The user's own follow-up captures 0.6.9/build 70205: Barry Batsman, level 12,
+Horde Mage/Troll, solo in Durotar. They report switching from Mulgore back to
+Durotar failing; the captured selection is Orgrimmar with an <UNUSED> step.
+Diagnostics identify Planner.lua:340, arithmetic on nil x, during generation.
+This is separate from King's UI request. An unmapped turn-in used as the first
+operand in follow-up distance checks explains the crash. Handle both operands'
+missing geometry; reject malformed/restricted coordinates at distance helpers.
+Retired placeholders are not playable leveling content. Exclude them across
+automatic guides, including old retained plans. Keep genuine missing-location
+steps explicit; do not invent positions. Test with synthetic parent/child gaps
+and repeated shipped-catalogue Mulgore/Durotar switches at level 12.
+
+Friend report: Gladiator Eliaapje, 0.6.9/build 70205, solo level-5 Horde Warrior/
+Orc in Durotar. Seven active quests, ten completed history flags and no selected
+route. The failure is the identical Planner.lua:340 arithmetic on nil x. The
+overlap is a compiler error, with different consequences: first-start failure
+for the friend versus retaining a previous guide after a failed switch for the
+main developer. Fixed compilation is independent of current location/logs; cover
+both level/class fixtures. Friend auto-accept/turn-in are off; the main report has
+them on. No evidence connects those settings to this read-only compiler error.
+
+No conflicting preferences in this batch. Host tests cover shortest time paths,
+one-way/faction links, restricted positions, character flight access, city-gate
+isolation, detours/zone changes, boarding, line gaps, standalone polling/position
+and guide switching. Live Forever geometry, transport endpoints and frame
+rendering remain unverified here. Source limitations are in TRAVEL_DATA.md.
+
 # Follow-up review for 0.6.9
 
 The user requests a broad optimization/speed pass and explicitly asks to preserve

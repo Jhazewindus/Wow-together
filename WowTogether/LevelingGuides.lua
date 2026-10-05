@@ -92,7 +92,7 @@ local function geographic(quest)
 end
 
 local function browseEnabled(id)
-    return not ns.IsProfessionQuest(id) and not ns.IsDungeonQuest(id) and not ns.IsRepeatableQuest(id)
+    return not ns.IsRetiredQuest(id) and not ns.IsProfessionQuest(id) and not ns.IsDungeonQuest(id) and not ns.IsRepeatableQuest(id)
         and (not ns.IsClassQuest(id) or ns.Option("classQuests"))
         and ns.CatalogueIdentityAllowed(id, ns.profile) ~= false
 end

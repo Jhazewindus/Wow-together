@@ -44,6 +44,7 @@ local function distance(a, b, metrics)
     -- Use this quest's last published place for ordering only; never give an
     -- unmapped step fake coordinates or draw its anchor as an objective.
     if b.unknownLocation then b = b.planningAnchor; if not b then return 12000 end end
+    if a and a.unknownLocation then a = a.planningAnchor; if not a then return 12000 end end
     if not a then return 0 end
     if a.mapID ~= b.mapID then return 15000 end
     return ns.WalkingDistance(b.mapID, a, b, metrics) or ns.NormalizedDistance(a, b) * 6000
@@ -53,7 +54,7 @@ function ns.GenerateFixedGuide(guide, cooperative)
     local tasks, done, ordered, work = {}, {}, {}, 0
     local metrics, learned = {}, {}
     for _, record in ipairs(guide.records) do
-        if ns.CatalogueIdentityAllowed(record.id, ns.profile) ~= false and not ns.IsRepeatableQuest(record.id)
+        if not ns.IsRetiredQuest(record.id) and ns.CatalogueIdentityAllowed(record.id, ns.profile) ~= false and not ns.IsRepeatableQuest(record.id)
             and not ns.IsProfessionQuest(record.id) then
             local list = stages(record)
             if #list > 0 then tasks[#tasks + 1] = {id = record.id, stages = list, next = 1} end
@@ -144,7 +145,7 @@ local function doneFor(stop, key, query)
 end
 
 local function remaining(stop, query)
-    if ns.GuideQuestSkipped(stop.id) or #ns.FilterGuideStages({stop}) == 0 then return nil end
+    if ns.IsRetiredQuest(stop.id) or ns.GuideQuestSkipped(stop.id) or #ns.FilterGuideStages({stop}) == 0 then return nil end
     local waiting, chosen
     for _, person in ipairs(query.profiles) do
         if ns.CatalogueIdentityAllowed(stop.id, person.profile) ~= false then

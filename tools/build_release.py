@@ -58,6 +58,8 @@ Optional suitable next-zone prompts offer Start zone guide / Keep my guide.
 /wt tracker toggles the movable, scrollable party panel; it opens when joining a
 normal party and hides when solo/in a raid. Closing it lasts for that party session.
 /wt arrow toggles the movable direction panel. Choose yards or metres in settings.
+Arrow and map settings has a separate movable standalone arrow, with its own
+saved position; it can remain visible with the large direction panel hidden.
 Selected guides resume after reload/login; current progress advances their steps.
 Outside-guide questing and completion keep the controls visible; Clear route ends
 the saved selection. Route controls sit below the world map viewport.
@@ -127,7 +129,9 @@ The first line follows your live position, including toward another zone. Public
 world coordinates project onto the viewed zone/continent; zone views clip at edges.
 The arrow continues across borders without changing the fixed guide sequence.
 Missing/private coordinates or different continents leave gaps and travel text.
-Lines use world-map visiting order only; they do not follow roads or draw on the minimap.
+The current travel leg can use Dijkstra crossing/gate/transport directions;
+later quest markers remain visiting previews. Walks are point estimates, not
+collision-safe roads. Transport rides break the walking line. No minimap lines.
 The addon no longer sets extra Blizzard waypoint pins. Numbered route markers
 and the arrow remain; unrelated manual waypoints are untouched. Clear older pins
 manually if one remains from a previous version.
@@ -141,6 +145,14 @@ flight-path database. Select the suggested flight is optional and OFF by default
 only the open matching source's public reachable slot is requested outside combat.
 While flying, elapsed/approximate remaining time replaces distance. As a ghost,
 corpse directions temporarily replace the guide; missing corpse data is explicit.
+Travel routing settings enables our own Dijkstra search over an attributed
+Forever geographic snapshot (256 points, 1,620 directed links) plus this
+character's observed usable flights. No upstream addon engine/UI is included.
+Fixed quest order stays unchanged. Zone changes and detours refresh travel;
+boarding points never grant quest credit. Read TRAVEL_DATA.md and the bundled
+THIRD_PARTY_NOTICES.md for source license, coverage and beta-testing limits.
+Missing-coordinate generation errors are fixed; retired UNUSED/zzOLD entries
+are excluded from leveling guides and ignored in retained fixed steps.
 
 Kill / Pick up / Talk instructions name known targets. Cross markers (or optional
 kill skulls) and quest-item tooltip hints require public data and hide in combat.
@@ -183,14 +195,15 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
 '''
     args.output.mkdir(parents=True, exist_ok=True)
     destination = args.output / f'WowTogether-{version}.zip'
-    files = ['WowTogether.toc', *names, 'QuestCatalogue.json']
+    files = ['WowTogether.toc', *names, 'QuestCatalogue.json', 'TravelData.json']
     with zipfile.ZipFile(destination, 'w', zipfile.ZIP_DEFLATED) as archive:
         for name in files:
             archive.write(addon / name, 'WowTogether/' + name)
         for name in ('README.md', 'TESTING.md', 'CHANGELOG.md'):
             archive.write(ROOT / name, 'WowTogether/' + name)
-        if (ROOT / 'PERFORMANCE.md').exists():
-            archive.write(ROOT / 'PERFORMANCE.md', 'WowTogether/PERFORMANCE.md')
+        for name in ('PERFORMANCE.md', 'TRAVEL_DATA.md', 'THIRD_PARTY_NOTICES.md'):
+            if (ROOT / name).exists():
+                archive.write(ROOT / name, 'WowTogether/' + name)
         archive.write(ROOT / 'LICENSE', 'WowTogether/LICENSE')
         archive.writestr('WowTogether/INSTALL.md', instructions)
     with zipfile.ZipFile(destination) as archive:

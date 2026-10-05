@@ -1,5 +1,21 @@
 # Wow Together changelog
 
+## 0.7.0
+
+- Add a separately movable standalone arrow toggle in Arrow and map settings.
+  It can stay visible with the large guide panel hidden; both share one update.
+- Add our own Dijkstra travel search over 256 Forever travel points and 1,620
+  directed links: zone crossings, city gates, ships, zeppelins and the tram.
+  Adapt geographic data from Mapzeroth with source credit and its MIT notice;
+  no upstream routing engine or UI is included. Guide quest order is unchanged.
+- Add only character-observed usable flights to the graph, including multiple
+  legs. Recheck travel after zone changes/detours and keep transport boarding
+  pending until arriving. Map lines break at transport links. Walking segments
+  remain estimates, not collision-safe roads; beta retesting is required.
+- Fix guide generation crashing on missing turn-in coordinates before a mapped
+  follow-up. Exclude retired <UNUSED>/zzOLD quests from leveling plans and ignore
+  those steps in retained guides. Repeated Mulgore/Durotar switching is tested.
+
 ## 0.6.9
 
 - Performance maintenance with guide decisions, route order, pickup gates,

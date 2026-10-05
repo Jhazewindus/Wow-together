@@ -303,7 +303,7 @@ function ns.ClassQuestLabel(id)
 end
 
 function ns.LevelingQuestEnabled(id)
-    return not ns.IsProfessionQuest(id) and not ns.IsDungeonQuest(id) and not ns.IsRepeatableQuest(id) and not ns.GuideQuestSkipped(id)
+    return not ns.IsRetiredQuest(id) and not ns.IsProfessionQuest(id) and not ns.IsDungeonQuest(id) and not ns.IsRepeatableQuest(id) and not ns.GuideQuestSkipped(id)
         and (not ns.IsClassQuest(id) or ns.Option("classQuests"))
         and ns.LevelingValue(id) ~= false
 end
@@ -323,11 +323,12 @@ function ns.PlayerPoint(mapID)
 end
 
 function ns.NormalizedDistance(a, b)
-    if not a or not b or a.mapID ~= b.mapID then return math.huge end
+    if not ns.ValidTravelPoint(a) or not ns.ValidTravelPoint(b) or a.mapID ~= b.mapID then return math.huge end
     return math.sqrt(((a.x - b.x) * 1.5)^2 + (a.y - b.y)^2)
 end
 
 function ns.WalkingDistance(mapID, a, b, metrics)
+    if not ns.ValidTravelPoint(a) or not ns.ValidTravelPoint(b) then return end
     local width, height
     local cached = metrics and metrics[mapID]
     if cached then width, height = cached[1], cached[2]

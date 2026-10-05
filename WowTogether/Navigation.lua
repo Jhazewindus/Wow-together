@@ -6,6 +6,7 @@ local function finite(value)
 end
 
 function ns.StopInstruction(stop)
+    if stop.kind == "travel" then return stop.label end
     if stop.kind == "corpse" then return "Return to your corpse" end
     if stop.kind == "f" then return stop.label end
     if stop.npcName and stop.npcName ~= "" and (stop.kind == "a" or stop.kind == "t" or stop.action == "talk") then
@@ -54,8 +55,11 @@ function ns.RouteContext(stop, mapID)
     if stop.flightPlan then
         local plan = stop.flightPlan
         return (plan.measured and "Timed flight route: " or "Estimated flight route: ") .. duration(plan.seconds)
-            .. "\nFly to " .. plan.destination.name .. "; saves ~" .. duration(plan.walkingSeconds - plan.seconds) .. "."
+            .. "\nFly to " .. plan.destination.name .. (plan.walkingSeconds and plan.walkingSeconds > plan.seconds
+                and ("; saves ~" .. duration(plan.walkingSeconds - plan.seconds) .. ".") or ".")
     end
+    if stop.travelLeg then return "Travel towards " .. ns.MapName(stop.goal.mapID) .. ".\n" .. (stop.travelLeg.method == "walk"
+        and "Use the crossing; follow roads and terrain." or "Board the correct transport; waiting time varies.") end
     if stop.action == "flight-check" then return "Check this nearby flight master.\nUnlock status has not been confirmed." end
     if ns.routePaused then
         if ns.routeSelection and ns.routeSelection.fixedRoute then return ns.routePaused end
@@ -81,7 +85,7 @@ function ns.RouteContext(stop, mapID)
 end
 
 function ns.NavigationState()
-    if not ns.Option("routeArrow") then return {status = "Disabled in settings"} end
+    if not ns.Option("routeArrow") and not ns.Option("standaloneArrow") then return {status = "Disabled in settings"} end
     if ns.routePlanning then
         return {visible = true, status = "Loading route…", stop = {id = 0, kind = "loading", title = ns.routePlanning.guide.title}}
     end
@@ -132,8 +136,8 @@ function ns.NavigationState()
     return state
 end
 
-function ns.DrawNavigationArrow(angle)
-    local icon = ns.navigation.icon
+function ns.DrawNavigationArrow(angle, icon)
+    icon = icon or ns.navigation.icon
     local cosine, sine = math.cos(angle), math.sin(angle)
     local shape = {{0, 21}, {-12, -6}, {0, 0}, {12, -6}, {0, 21}}
     for index = 1, #shape - 1 do
@@ -152,7 +156,8 @@ function ns.UpdateNavigation()
     if not frame then return end
     local state = ns.NavigationState()
     frame.state = state
-    frame:SetShown(state.visible == true)
+    frame:SetShown(state.visible == true and ns.Option("routeArrow"))
+    ns.UpdateStandaloneArrow(state)
     if not state.visible then return end
     frame.title:SetText(state.stop.title)
     local clock = state.flight and (state.flight.remaining and ("~" .. duration(state.flight.remaining) .. " remaining")
@@ -243,6 +248,7 @@ function ns.CreateNavigation()
         self.elapsed = 0
         ns.UpdateNavigation()
     end)
+    ns.CreateStandaloneArrow()
     frame:Hide()
     ns.UpdateNavigation()
 end
@@ -253,5 +259,7 @@ function ns.NavigationDiagnostics(output)
     local state = ns.navigation and ns.navigation.state or ns.NavigationState()
     output("Navigation arrow: " .. state.status)
     if state.distance then output("Arrow distance: " .. string.format("%.0f yards", state.distance)) end
+    output("Standalone arrow: " .. (ns.Option("standaloneArrow") and "on" or "off"))
+    output("Travel network: " .. (ns.Option("travelNetwork") and (ns.travelNetworkStatus or "Ready; select a route.") or "off"))
     output("Route lines draw on the world map; the minimap button opens the addon.")
 end

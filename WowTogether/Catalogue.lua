@@ -6,6 +6,14 @@ function ns.CatalogueQuest(id)
     return ns.catalogue and ns.catalogue.quests[id]
 end
 
+function ns.IsRetiredQuest(id)
+    local quest = ns.CatalogueQuest(id)
+    local title = quest and quest.title
+    if not ns.Public(title) or type(title) ~= "string" then return false end
+    title = string.lower(string.match(title, "^%s*(.-)%s*$"))
+    return string.find(title, "^<unused>") ~= nil or string.find(title, "^zzold") ~= nil
+end
+
 function ns.CatalogueCompletion(key, id, query)
     if key == ns.self then return ns.Completed(id, query) end
     local member = ns.members[key]

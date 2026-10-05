@@ -1,0 +1,32 @@
+{
+  "source": "https://github.com/tr0tsky0/Mapzeroth",
+  "commit": "fd68cfe2153379898680c66a01833846f9933587",
+  "tag": "0.6.0",
+  "files_sha256": {
+    "Nodes_Kalimdor.lua": "58ad7e27da5391459bc1a9730e1910d6d99cdacc70fbac83ceef9ccc15146a2e",
+    "Nodes_EasternKingdoms.lua": "5e2136a3f0947d0728d1a212898eac239fe4ee652f9b9c9f673eb306e66b28fa",
+    "Nodes_ZephrasIsle.lua": "8cb0c47aa624b98f5a995ffdf5150fd0b1819bb9606636c004bb1fa85ad15f14",
+    "Borders.lua": "ccf3b0fefc42f580bd20e0a0d82ec1eb4ae93edeb4b23c719aab9326e8eac7be",
+    "Pois.lua": "3dfa6f85e6fbe1c5a01389d4bcf445f4fa63391484647cdec663a849111e977d",
+    "Edges.lua": "eaa9e485c58201ce3ad8cca022135e8ba83758f00c59ed93dc62b5532f19d4ae",
+    "Geometry.lua": "094adc0df530df37f7ebc89b2ee4748b7a70c4f38a8793b17fd9fb73c16c1350",
+    "PathFactors.lua": "710f6cdf644962c7755fea1b8fa2535fea35c728e543fabea0e6f5daf4668f41",
+    "NodeNames_enUS.lua": "f820d4d8b52131e2bace3017cd832896f51b2b7c536c335a8d74ad1254ed5a9a"
+  },
+  "nodes": 256,
+  "directed_edges": 1620,
+  "license": "MIT",
+  "license_revision": "676241e234cbeab5e2066b869b52c235d675a9e0",
+  "exclusions": [
+    "Retail data",
+    "POI services",
+    "spells/items",
+    "race/class portals",
+    "unconfirmed flights"
+  ],
+  "limitations": [
+    "Community data, not tested here in the beta client",
+    "Walk geometry uses estimated point-to-point distances, not terrain navigation",
+    "Boat waits and loading time are estimates"
+  ]
+}

@@ -6,7 +6,8 @@ local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, cl
     currentQuestsFirst = true, nearbyPickups = true, fullRoute = false, routeAhead = 2, autoTurnIn = false,
     scanSkipped = false, distanceUnits = "yards", trackerAuto = true, autoSelectQuests = false,
     suggestFlights = true, autoFly = false, nearbyFlights = true, corpseArrow = true, npcMarker = "cross", recordQuestData = true,
-    useLearnedQuests = true, exportCharacterNames = false, fixedZoneGuides = true}
+    useLearnedQuests = true, exportCharacterNames = false, fixedZoneGuides = true,
+    standaloneArrow = false, travelNetwork = true}
 
 function ns.Option(key)
     local value = ns.db and ns.db.config and ns.db.config[key]
@@ -23,10 +24,13 @@ local sections = {
         {"zonePrompts", "Suggest the next nearby zone", "Offer a known questline transition after the current work is complete."},
         {"scanSkipped", "Reconsider skips when scanning", "Scan guide clears saved skips for quests in the selected guide before replanning. Leave off to keep skips."},
         {"circuitRadius", "Nearby pickup distance", "Limit how much additional walking a nearby pickup adds to the current trip.", {{0.10, "Stay close"}, {0.16, "Small detours"}, {0.22, "Wider loop"}}}}},
-    {"navigation", "Arrow and travel", {
+    {"navigation", "Arrow and map", {
         {"routeArrow", "Show the direction arrow", "A movable guide panel with the current instruction and step controls."},
+        {"standaloneArrow", "Show a standalone direction arrow", "A small separately movable arrow and distance. You can hide the large direction panel and keep this arrow."},
         {"distanceUnits", "Distance units", "Choose how distances appear under the arrow.", {{"yards", "Yards"}, {"metres", "Metres"}}},
-        {"mapLegend", "Show route explanation on the map", "Show route status below the world map. Route controls remain available."},
+        {"mapLegend", "Show route explanation on the map", "Show route status below the world map. Route controls remain available."}}},
+    {"travel", "Travel routing", {
+        {"travelNetwork", "Use travel connections", "Find a short travel path through known zone crossings, city gates and transports. Guide order stays fixed. Walk segments remain estimates."},
         {"suggestFlights", "Suggest faster known flights", "Compare walking with routes learned at flight masters. Timed flights improve travel estimates."},
         {"nearbyFlights", "Check nearby flight paths", "Add a short visit to an observed flight master when its unlock is not confirmed."},
         {"autoFly", "Select the suggested flight", "Opt-in: when you open the correct flight master's map, request the suggested reachable destination outside combat. Test this on your beta build."},
@@ -74,6 +78,7 @@ function ns.SetOption(key, value)
     ns.db.config[key] = value
     ns.InitializeConfig()
     ns.flightPlanCache = nil
+    ns.ResetTravelPath()
     if key == "nearbyPickups" or key == "useLearnedQuests" then ns.forceRouteReplan, ns.routeSignature = true, nil end
     if ns.RenderSettings then ns.RenderSettings() end
     if ns.UpdateNPCHints then ns.UpdateNPCHints() end

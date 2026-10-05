@@ -1,0 +1,257 @@
+local addonName, ns = ...
+
+-- Our own Dijkstra search. The attributed snapshot supplies geography only;
+-- player progress, guide order and transport actions are outside this module.
+local function finite(value)
+    return ns.Public(value) and type(value) == "number" and value == value
+        and value > -math.huge and value < math.huge
+end
+
+function ns.ValidTravelPoint(point)
+    return ns.Public(point) and type(point) == "table" and ns.GuideInteger(point.mapID) and point.mapID > 0
+        and finite(point.x) and finite(point.y) and point.x >= 0 and point.x <= 1 and point.y >= 0 and point.y <= 1
+end
+
+local function world(point, cache)
+    if cache and cache[point] ~= nil then return cache[point] or nil end
+    local result
+    if C_Map and type(CreateVector2D) == "function" then
+        local continent, vector = ns.ReadPublic(C_Map.GetWorldPosFromMapPos, point.mapID, CreateVector2D(point.x, point.y))
+        if ns.GuideInteger(continent) and vector and (type(vector) == "table" or type(vector) == "userdata") then
+            local x, y = ns.ReadPublic(vector.GetXY, vector)
+            if finite(x) and finite(y) then result = {continent = continent, x = x, y = y} end
+        end
+    end
+    if cache then cache[point] = result or false end
+    return result
+end
+
+function ns.TravelPointDistance(a, b, cache)
+    if not ns.ValidTravelPoint(a) or not ns.ValidTravelPoint(b) then return end
+    if a.mapID == b.mapID then
+        local width, height
+        local scales = cache and cache.scales
+        if scales and scales[a.mapID] then width, height = scales[a.mapID][1], scales[a.mapID][2]
+        else
+            if C_Map then width, height = ns.ReadPublic(C_Map.GetMapWorldSize, a.mapID) end
+            if cache then cache.scales = scales or {}; cache.scales[a.mapID] = {width, height} end
+        end
+        if finite(width) and finite(height) and width > 0 and height > 0 and width < 1000000 and height < 1000000 then
+            return math.sqrt(((a.x - b.x) * width)^2 + ((a.y - b.y) * height)^2)
+        end
+    end
+    local x, y = world(a, cache), world(b, cache)
+    if x and y and x.continent == y.continent then return math.sqrt((x.x - y.x)^2 + (x.y - y.y)^2) end
+end
+
+local function less(a, b) return a.cost < b.cost or a.cost == b.cost and a.id < b.id end
+local function push(heap, item)
+    local index = #heap + 1
+    while index > 1 do
+        local parent = math.floor(index / 2)
+        if not less(item, heap[parent]) then break end
+        heap[index], index = heap[parent], parent
+    end
+    heap[index] = item
+end
+local function pop(heap)
+    local first, last = heap[1], table.remove(heap)
+    if #heap == 0 then return first end
+    local index = 1
+    while index * 2 <= #heap do
+        local child = index * 2
+        if child + 1 <= #heap and less(heap[child + 1], heap[child]) then child = child + 1 end
+        if not less(heap[child], last) then break end
+        heap[index], index = heap[child], child
+    end
+    heap[index] = last
+    return first
+end
+
+function ns.TravelWalkSpeed()
+    local speed, running = ns.ReadPublic(GetUnitSpeed, "player")
+    speed = finite(running) and running > 0 and running or speed
+    return finite(speed) and speed > 0 and speed < 100 and speed or 7
+end
+
+local function factor(mapID) return ns.travelData and ns.travelData.factors[mapID] or 1.25 end
+local function allowed(edge, faction)
+    return not edge.faction or edge.faction == "Both" or edge.faction == faction
+end
+local function nodeName(id, point)
+    if string.find(id, "^BORDER_") then
+        local target = string.match(id, "_TO_(.+)") or id
+        target = string.gsub(target, "_%d+$", "")
+        target = string.gsub(string.lower(target), "_", " ")
+        return string.gsub(target, "(%a)([%w]*)", function(a, b) return string.upper(a) .. b end) .. " crossing"
+    end
+    return point.name or ns.MapName(point.mapID)
+end
+
+function ns.FindTravelPath(origin, goal, useFlights)
+    if not ns.ValidTravelPoint(origin) or not ns.ValidTravelPoint(goal) then return end
+    local data, speed, positions = ns.travelData or {nodes = {}, edges = {}, factors = {}}, ns.TravelWalkSpeed(), {}
+    local nodes, adjacency = {START = origin, GOAL = goal}, {}
+    local faction = ns.profile and ns.profile.faction
+    local function link(from, to, seconds, method, extra)
+        if not nodes[from] or not nodes[to] or not finite(seconds) or seconds < 0 then return end
+        adjacency[from] = adjacency[from] or {}
+        adjacency[from][#adjacency[from] + 1] = {from = from, to = to, seconds = seconds, method = method, flight = extra}
+    end
+    for id, point in pairs(data.nodes) do
+        if ns.ValidTravelPoint(point) and allowed(point, faction) then nodes[id] = point end
+    end
+    local flights = ns.db and ns.db.flights and ns.db.flights[ns.self]
+    for id, node in pairs(flights and flights.nodes or {}) do
+        if ns.ValidTravelPoint(node.point) then
+            local key = "TAXI_" .. id
+            local published = nodes[key]
+            local source = published and published.mapID ~= node.point.mapID and published or node.point
+            local point = {}; for name, value in pairs(source) do point[name] = value end
+            point.name, point.taxiID = node.name, id
+            nodes[key] = point
+        end
+    end
+    if origin.mapID ~= goal.mapID then
+        local start, finish
+        for id, p in pairs(nodes) do
+            if id ~= "START" and id ~= "GOAL" then
+                if p.mapID == origin.mapID then start = true end
+                if p.mapID == goal.mapID then finish = true end
+            end
+        end
+        if not start or not finish then return end
+    end
+    for _, edge in ipairs(data.edges) do
+        if nodes[edge.from] and nodes[edge.to] and allowed(edge, faction) then
+            local cost = edge.seconds
+            if edge.distance then cost = edge.distance / speed
+            elseif cost == nil then
+                local length = ns.TravelPointDistance(nodes[edge.from], nodes[edge.to], positions)
+                cost = length and length * (factor(nodes[edge.from].mapID) + factor(nodes[edge.to].mapID)) / 2 / speed
+            end
+            link(edge.from, edge.to, cost, edge.method)
+        end
+    end
+    if useFlights then
+        for _, edge in pairs(flights and flights.edges or {}) do
+            local source, target = flights.nodes[edge.source], flights.nodes[edge.destination]
+            if source and target and source.known == true and target.known == true then
+                local timing = flights.timings[edge.source .. ":" .. edge.destination]
+                local air = ns.TravelPointDistance(source.point, target.point, positions)
+                local duration = timing and timing.mean or air and air / 32 * 1.35
+                if duration then link("TAXI_" .. edge.source, "TAXI_" .. edge.destination, duration + 45, "taxi",
+                    {source = source, destination = target, flightSeconds = duration, measured = timing ~= nil}) end
+            end
+        end
+    end
+    local ids = {}; for id in pairs(nodes) do if id ~= "START" and id ~= "GOAL" then ids[#ids + 1] = id end end; table.sort(ids)
+    for _, id in ipairs(ids) do
+        local p = nodes[id]
+        -- Attach only within the same map. Borders and city gates supply the
+        -- crossing; proximity in world space cannot jump walls or continents.
+        local indoor = p.container and (string.find(p.container, "wizards_sanctum", 1, true) or string.find(p.container, "blackrock_mountain", 1, true))
+        if not indoor and p.mapID == origin.mapID then
+            local length = ns.TravelPointDistance(origin, p, positions)
+            link("START", id, length and length * factor(p.mapID) / speed, "walk")
+        end
+        if not indoor and p.mapID == goal.mapID then
+            local length = ns.TravelPointDistance(p, goal, positions)
+            link(id, "GOAL", length and length * factor(p.mapID) / speed, "walk")
+        end
+    end
+    if origin.mapID == goal.mapID then
+        local length = ns.TravelPointDistance(origin, goal, positions)
+        link("START", "GOAL", length and length * factor(origin.mapID) / speed, "walk")
+    end
+    local heap, costs, previous, visited = {}, {START = 0}, {}, {}
+    push(heap, {id = "START", cost = 0})
+    while #heap > 0 do
+        local item = pop(heap)
+        if not visited[item.id] and item.cost == costs[item.id] then
+            visited[item.id] = true
+            if item.id == "GOAL" then break end
+            for _, edge in ipairs(adjacency[item.id] or {}) do
+                local value = item.cost + edge.seconds
+                if not visited[edge.to] and (costs[edge.to] == nil or value < costs[edge.to]) then
+                    costs[edge.to], previous[edge.to] = value, edge
+                    push(heap, {id = edge.to, cost = value})
+                end
+            end
+        end
+    end
+    if not visited.GOAL then return end
+    local reverse, cursor = {}, "GOAL"
+    while previous[cursor] do reverse[#reverse + 1] = previous[cursor]; cursor = previous[cursor].from end
+    local legs = {}
+    for index = #reverse, 1, -1 do
+        local edge = reverse[index]
+        legs[#legs + 1] = {from = nodes[edge.from], to = nodes[edge.to], method = edge.method,
+            fromID = edge.from, toID = edge.to, name = nodeName(edge.to, nodes[edge.to]),
+            seconds = edge.seconds, flight = edge.flight}
+    end
+    return {legs = legs, seconds = costs.GOAL, cursor = 1, origin = origin, goal = goal}
+end
+
+function ns.ResetTravelPath() ns.travelPath, ns.travelPathSignature, ns.travelPathChecked, ns.travelWaypoint = nil, nil, nil, nil end
+
+function ns.TravelNetworkDestination(stop)
+    ns.travelWaypoint = nil
+    if not ns.Option("travelNetwork") or not ns.ValidTravelPoint(stop) or ns.navigationPreview
+        or ns.routePaused or ns.ReadPublic(UnitOnTaxi, "player") == true then return end
+    local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
+    local position = ns.GuideInteger(mapID) and ns.PlayerPoint(mapID)
+    if not ns.ValidTravelPoint(position) then ns.ResetTravelPath(); return end
+    local signature = table.concat({ns.routeSelection and ns.routeSelection.key or "", stop.id or 0, stop.kind or "", stop.mapID,
+        stop.x, stop.y, mapID, ns.travelRevision or 0, tostring(ns.Option("suggestFlights")), ns.profile and ns.profile.faction or "Unknown"}, ":")
+    local now = ns.ReadPublic(GetTime)
+    local path = ns.travelPath
+    local moved = path and (not finite(now) or not ns.travelPathChecked or now - ns.travelPathChecked >= 2)
+        and ns.TravelPointDistance(position, path.origin)
+    if ns.travelPathSignature ~= signature or moved and moved > 175
+        or not path and (not finite(now) or not ns.travelPathChecked or now - ns.travelPathChecked >= 1) then
+        ns.travelPathSignature = signature
+        ns.travelPathChecked = finite(now) and now or nil
+        ns.travelPath = ns.FindTravelPath(position, stop, ns.Option("suggestFlights"))
+        ns.travelNetworkStatus = ns.travelPath and "Dijkstra travel directions; walk segments are estimates." or "No connected travel path; direct quest directions retained."
+    end
+    path = ns.travelPath
+    if not path then return end
+    while path.legs[path.cursor] do
+        local leg = path.legs[path.cursor]
+        local remaining = ns.TravelPointDistance(position, leg.to)
+        if leg.toID == "GOAL" then return end
+        if position.mapID == leg.to.mapID and remaining and remaining <= (leg.method == "walk" and 20 or 100) then
+            path.cursor = path.cursor + 1
+        else
+            local transport = leg.method ~= "walk"
+            local target = transport and leg.from or leg.to
+            local instruction = transport and ((leg.method == "taxi" and "Fly" or leg.method == "ship" and "Take the ship" or
+                leg.method == "zeppelin" and "Take the zeppelin" or leg.method == "tram" and "Take the tram" or "Use the passage") .. " to " .. leg.name)
+                or "Head to " .. leg.name
+            local result = {id = stop.id, kind = "travel", title = stop.title, mapID = target.mapID, x = target.x, y = target.y,
+                action = "travel", label = instruction, travelLeg = leg, goal = stop, guideStep = stop.guideStep}
+            if leg.flight then
+                result.kind, result.action, result.flightPlan = "f", "flight", {}
+                for key, value in pairs(leg.flight) do result.flightPlan[key] = value end
+                result.flightPlan.seconds = path.seconds
+                local direct = ns.TravelPointDistance(position, stop)
+                result.flightPlan.walkingSeconds = direct and direct / ns.TravelWalkSpeed()
+            end
+            ns.travelWaypoint = result
+            return result
+        end
+    end
+end
+
+function ns.TravelLinePoints(origin, goal)
+    local path = ns.Option("travelNetwork") and ns.travelPath
+    if not path or path.goal.mapID ~= goal.mapID or path.goal.x ~= goal.x or path.goal.y ~= goal.y then return end
+    local points = {origin}
+    for index = path.cursor, #path.legs do
+        local leg = path.legs[index]
+        if leg.method ~= "walk" then points[#points + 1] = leg.from; points[#points + 1] = false end
+        points[#points + 1] = leg.to
+    end
+    return points
+end

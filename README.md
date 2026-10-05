@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.6.9** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.7.0** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -16,7 +16,7 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **33 Lua
+Replace the folder on **every party member's client**, including all **36 Lua
 files**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
@@ -225,16 +225,35 @@ The addon no longer sets an extra Blizzard user-waypoint pin. Numbered route
 markers and the owned navigation arrow remain; unrelated manual waypoints are
 left alone. A pin left from an older release can be removed manually on the map.
 
-Distances and routes use straight-line estimates. Follow roads and terrain;
-this is not obstacle-aware pathfinding. Missing objective locations stay
-explicitly partial instead of inventing targets or early turn-ins.
+Travel directions use the shortest-time point graph described below; local walk
+segments still use estimates. Follow roads and terrain. Missing objective
+locations stay explicitly partial instead of inventing targets or early turn-ins.
 
 ## Travel, NPCs and personal tools
+
+**Show a standalone direction arrow** in **Settings → Arrow and map** enables a
+small transparent arrow with its own saved position. Drag it separately from the
+guide controls. Hide the large direction panel if desired; the standalone arrow
+continues updating. Both arrows use the same navigation state and one poll.
+
+**Use travel connections** in **Settings → Travel routing** is on by default.
+Our own Dijkstra search chooses travel between quest steps using 256 Forever
+border/gate/transport points and 1,620 directed geographic links adapted from
+Mapzeroth with its source credit and MIT notice. No upstream engine/UI is included.
+The fixed quest order is unchanged. Walking waypoint arrival advances directions,
+not quest credit. Boats, zeppelins, tram and passages remain manual; boarding
+directions remain until the destination is reached. Travel refreshes after zone
+changes and significant detours; map lines break at transport rides. The current
+travel path replaces the first map leg, while later markers remain guide previews.
+These are estimated walks between points, not detailed collision-safe roads.
+See [TRAVEL_DATA.md](TRAVEL_DATA.md) for source hashes, coverage and limitations,
+and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for the license notice.
 
 Open flight-master maps to learn this character's network. When public flight
 states and positions exist, the guide compares walking with getting to a known
 reachable flight, flying and walking from its destination. It includes a
-boarding allowance and suggests a flight only for meaningful estimated savings.
+boarding allowance. The travel graph can combine observed flight legs; direct
+flight comparisons remain available in uncovered areas or with the graph off.
 Flight times are estimates until that character has timed the route. While
 flying, the panel shows elapsed time or an approximate remaining timed duration.
 
@@ -423,7 +442,7 @@ provided broad inspiration about progress clarity; its code/assets/layouts
 were not copied. This implementation is independent.
 
 Reported beta build **70205** established the earlier sync APIs in user tests.
-**0.6.9 has host validation, not a live-client compatibility certification.**
+**0.7.0 has host validation, not a live-client compatibility certification.**
 Retest UI rendering, optional gossip/flight actions, corpse positions and item
 hooks on the build in front of you. `/wt probe` lists capabilities and runtime
 status. Do not interpret presence as proof that protected actions work.
@@ -440,7 +459,7 @@ compiler discards temporary caches when it yields. Guide decisions, prerequisite
 rules, fixed/adaptive order, sync behavior, settings and UI remain the same.
 See PERFORMANCE.md for measured host results and the repeatable benchmark command.
 
-Host checks load all 33 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
+Host checks load all 36 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
 
 ```sh
 python3 -m venv /tmp/wow-together-tests
