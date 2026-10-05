@@ -97,6 +97,14 @@ local function chooseBatch(guide, tasks, mapID, position)
     return selected
 end
 
+local function orderKey(state)
+    if not state.orderKey then
+        local keys = {}; for _, stop in ipairs(state.stops) do keys[#keys + 1] = stop.id .. stop.kind end
+        state.orderKey = table.concat(keys, ",")
+    end
+    return state.orderKey
+end
+
 local function optimize(tasks, mapID, position, cooperative)
     local initial, total, work = {}, 0, 0
     for i, task in ipairs(tasks) do initial[i] = 1; total = total + #task.stages end
@@ -126,10 +134,7 @@ local function optimize(tasks, mapID, position, cooperative)
         for _, candidate in pairs(signatures) do expanded[#expanded + 1] = candidate end
         table.sort(expanded, function(a, b)
             if a.cost ~= b.cost then return a.cost < b.cost end
-            local ak, bk = {}, {}
-            for _, stop in ipairs(a.stops) do ak[#ak + 1] = stop.id .. stop.kind end
-            for _, stop in ipairs(b.stops) do bk[#bk + 1] = stop.id .. stop.kind end
-            return table.concat(ak, ",") < table.concat(bk, ",")
+            return orderKey(a) < orderKey(b)
         end)
         beam = {}; for i = 1, math.min(BEAM_WIDTH, #expanded) do beam[i] = expanded[i] end
         if #beam == 0 then break end

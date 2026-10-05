@@ -6,8 +6,8 @@ function ns.CatalogueQuest(id)
     return ns.catalogue and ns.catalogue.quests[id]
 end
 
-function ns.CatalogueCompletion(key, id)
-    if key == ns.self then return ns.Completed(id) end
+function ns.CatalogueCompletion(key, id, query)
+    if key == ns.self then return ns.Completed(id, query) end
     local member = ns.members[key]
     if member and member.completed and member.completed[id] then return true end
     if member and member.historyRevision and member.historyRevision == member.completionRevision
@@ -38,14 +38,14 @@ function ns.CatalogueIdentityAllowed(id, profile)
     return true
 end
 
-function ns.CataloguePrerequisitesAllowed(id, key)
+function ns.CataloguePrerequisitesAllowed(id, key, query)
     local quest = ns.CatalogueQuest(id)
     if not quest then return true end
     key = key or ns.self
     if quest.prerequisiteAny then
         local met, unknown, titles = false, false, {}
         for _, previous in ipairs(quest.prerequisiteAny) do
-            local complete = ns.CatalogueCompletion(key, previous)
+            local complete = ns.CatalogueCompletion(key, previous, query)
             if complete == true then met = true end
             if complete == nil then unknown = true end
             titles[#titles + 1] = ns.QuestTitle(previous)
@@ -57,7 +57,7 @@ function ns.CataloguePrerequisitesAllowed(id, key)
         end
     end
     if quest.previousQuest then
-        local complete = ns.CatalogueCompletion(key or ns.self, quest.previousQuest)
+        local complete = ns.CatalogueCompletion(key or ns.self, quest.previousQuest, query)
         if complete == nil then return nil, "Checking history for " .. ns.QuestTitle(quest.previousQuest) .. "." end
         if not complete then return false, "Finish " .. ns.QuestTitle(quest.previousQuest) .. " first." end
     end
@@ -77,7 +77,7 @@ function ns.PickupOfferEvidence(key, id)
     end
 end
 
-function ns.CatalogueAllowed(id, profile, key)
+function ns.CatalogueAllowed(id, profile, key, query)
     local quest = ns.CatalogueQuest(id)
     if quest and (not profile or not profile.level or profile.level <= 0) then return nil, "Waiting for player level." end
     if quest and quest.minLevel and profile.level < quest.minLevel then return false, "Requires level " .. quest.minLevel .. "." end
@@ -86,14 +86,14 @@ function ns.CatalogueAllowed(id, profile, key)
     key = key or ns.self
     -- Neither shareability nor an opened turn-in dialog proves remote pickup
     -- eligibility. Even a positive NPC offer must agree with known chain history.
-    local prerequisites, prerequisiteReason = ns.CataloguePrerequisitesAllowed(id, key)
+    local prerequisites, prerequisiteReason = ns.CataloguePrerequisitesAllowed(id, key, query)
     if prerequisites ~= true then return prerequisites, prerequisiteReason end
     local offered = ns.PickupOfferEvidence(key, id)
     if offered == false then return false, "This quest giver did not offer this quest at your current progress. Recheck after progressing." end
     if offered == true then return true end
     if identity ~= true then return identity, reason end
     if ns.LearnedPrerequisiteAllowed then
-        local learned, learnedReason = ns.LearnedPrerequisiteAllowed(id, profile, key)
+        local learned, learnedReason = ns.LearnedPrerequisiteAllowed(id, profile, key, query)
         if learned ~= true then return learned, learnedReason end
     end
     if not quest then return true end

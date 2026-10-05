@@ -135,7 +135,7 @@ end
 function ns.FindFlightPlan(stop)
     if not stop or not ns.Option("suggestFlights") then return end
     local state = flights()
-    if not state then return end
+    if not state or not next(state.edges) then return end
     local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
     local position = ns.PlayerPoint(mapID)
     local a, b = world(position), world(stop)

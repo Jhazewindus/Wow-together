@@ -2,29 +2,32 @@ local addonName, ns = ...
 
 local indexed, followups
 
-function ns.PartyLevelFloor()
+function ns.PartyLevelFloor(query)
+    if query and query.floor then return query.floor[1], query.floor[2], query.floor[3] end
     local level, key, name
-    for _, person in ipairs(ns.PartyProfiles()) do
+    for _, person in ipairs(query and query.profiles or ns.PartyProfiles()) do
         local value = person.profile and person.profile.level
         if ns.GuideInteger(value) and value > 0 and
             (not level or value < level or value == level and person.key < key) then
             level, key, name = value, person.key, person.name
         end
     end
-    return level, key or ns.self, name or "You"
+    key, name = key or ns.self, name or "You"
+    if query then query.floor = {level, key, name} end
+    return level, key, name
 end
 
-function ns.GuideFocus(records)
-    local _, fallback = ns.PartyLevelFloor()
+function ns.GuideFocus(records, query)
+    local _, fallback = ns.PartyLevelFloor(query)
     local chosen, progress
-    for _, person in ipairs(ns.PartyProfiles()) do
+    for _, person in ipairs(query and query.profiles or ns.PartyProfiles()) do
         if person.synced then
             local done, checked, total = 0, 0, 0
             local active = person.key == ns.self and ns.active or ns.members[person.key].active
             for _, record in ipairs(records or {}) do
                 if ns.CatalogueIdentityAllowed(record.id, person.profile) ~= false then
                     total = total + 1
-                    local completed = ns.CatalogueCompletion(person.key, record.id)
+                    local completed = ns.CatalogueCompletion(person.key, record.id, query)
                     if completed ~= nil or active and active[record.id] then checked = checked + 1 end
                     if completed == true and not (active and active[record.id]) then done = done + 1 end
                 end
@@ -87,7 +90,7 @@ local function nextQuests(id, key)
     return result
 end
 
-function ns.UsefulQuestReason(id, key, level)
+function ns.UsefulQuestReason(id, key, level, query)
     local queue, seen, cursor = {id}, {[id] = true}, 1
     local lower = math.max(1, level - math.max(5, math.floor(level * 0.2)))
     while queue[cursor] and cursor <= 128 do
@@ -99,7 +102,7 @@ function ns.UsefulQuestReason(id, key, level)
                 local profile = key == ns.self and ns.profile or ns.members[key] and ns.members[key].profile
                 if quest and not quest.repeatable and not ns.IsProfessionQuest(nextID)
                     and ns.CatalogueIdentityAllowed(nextID, profile) == true
-                    and ns.CatalogueCompletion(key, nextID) ~= true then
+                    and ns.CatalogueCompletion(key, nextID, query) ~= true then
                     local value = quest.level or 0
                     local dungeon = ns.IsDungeonQuest(nextID) and (quest.minLevel or value) <= level + 5 and value <= level + 8
                     if dungeon or value >= lower and value <= level + 3 then
@@ -112,25 +115,35 @@ function ns.UsefulQuestReason(id, key, level)
     end
 end
 
-function ns.LevelingValue(id)
+local function levelingValue(id, query)
     local quest = ns.CatalogueQuest(id)
     if not quest then return true end
-    local level, key = ns.PartyLevelFloor()
+    local level, key = ns.PartyLevelFloor(query)
     if not level then return nil end
     if ns.IsGroupQuest(id) and #(ns.partyNames or {}) == 0 then return false, "Group / elite: bring a party." end
     local value = quest.level or 0
     if value == 0 then return true end
     if value > level + 3 then return false, "Above the lowest player's level range." end
     if value >= math.max(1, level - math.max(5, math.floor(level * 0.2))) then return true end
-    local reason = ns.UsefulQuestReason(id, key, level)
+    local reason = ns.UsefulQuestReason(id, key, level, query)
     if not reason then
-        for _, person in ipairs(ns.PartyProfiles()) do
-            if person.synced then reason = ns.UsefulQuestReason(id, person.key, level) end
+        for _, person in ipairs(query and query.profiles or ns.PartyProfiles()) do
+            if person.synced then reason = ns.UsefulQuestReason(id, person.key, level, query) end
             if reason then break end
         end
     end
     if reason then return true, reason end
     return false, "Below the useful level range; no worthwhile follow-up is known."
+end
+
+function ns.LevelingValue(id, query)
+    if not query then return levelingValue(id) end
+    query.values = query.values or {}
+    local cached = query.values[id]
+    if cached then return cached[1], cached[2] end
+    local value, reason = levelingValue(id, query)
+    query.values[id] = {value, reason}
+    return value, reason
 end
 
 function ns.QuestLogReview()

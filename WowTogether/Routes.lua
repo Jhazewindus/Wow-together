@@ -138,8 +138,8 @@ function ns.RouteRecords()
     return records
 end
 
-local function focusStatus(key, id)
-    if key == ns.self then return ns.active[id], ns.Completed(id), ns.offered[id] end
+local function focusStatus(key, id, query)
+    if key == ns.self then return ns.active[id], ns.Completed(id, query), ns.offered[id] end
     local member = ns.members[key]
     return member and member.active and member.active[id], member and member.completed and member.completed[id], member and member.offered and member.offered[id]
 end
@@ -275,13 +275,21 @@ function ns.PartyRouteStages(record, preferred)
     return chosen or {}
 end
 
-function ns.PartyQuestFinished(id)
-    for _, person in ipairs(ns.PartyProfiles()) do
-        local active, complete, offered = focusStatus(person.key, id)
-        if not person.synced or active or offered then return false end
+function ns.PartyQuestFinished(id, query)
+    if query and query.finished[id] ~= nil then return query.finished[id] end
+    for _, person in ipairs(query and query.profiles or ns.PartyProfiles()) do
+        local active, complete, offered = focusStatus(person.key, id, query)
+        if not person.synced or active or offered then
+            if query then query.finished[id] = false end
+            return false
+        end
         local allowed = ns.CatalogueIdentityAllowed(id, person.profile)
-        if allowed ~= false and complete ~= true then return false end
+        if allowed ~= false and complete ~= true then
+            if query then query.finished[id] = false end
+            return false
+        end
     end
+    if query then query.finished[id] = true end
     return true
 end
 
@@ -519,9 +527,9 @@ function ns.DrawRoute(provider, geometryOnly)
     local displayed = ns.RouteDisplayStops(route)
     local playerMap = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
     local origin = ns.GuideInteger(playerMap) and playerMap > 0 and ns.PlayerPoint(playerMap) or nil
-    local projected, hasDisplayedMap = {}, playerMap == mapID
+    local projected, projectionContext, hasDisplayedMap = {}, {}, playerMap == mapID
     for index, stop in ipairs(displayed) do
-        projected[index] = ns.ProjectMapPoint(stop, mapID)
+        projected[index] = ns.ProjectMapPoint(stop, mapID, projectionContext)
         if projected[index] then hasDisplayedMap = true end
     end
     if mapID ~= route.mapID and not hasDisplayedMap then
@@ -554,7 +562,7 @@ function ns.DrawRoute(provider, geometryOnly)
         surface.left, surface.top, surface.spanX, surface.spanY)
     local points = {}
     provider.playerOrigin = origin
-    if origin then points[#points + 1] = ns.ProjectMapPoint(origin, mapID) or false end
+    if origin then points[#points + 1] = ns.ProjectMapPoint(origin, mapID, projectionContext) or false end
     for index in ipairs(displayed) do points[#points + 1] = projected[index] or false end
     local visibleLines = 0
     for index = 2, #points do
@@ -709,10 +717,10 @@ local function routeSignature(route)
     return table.concat(parts, "|")
 end
 
-function ns.UpdateSelectedRoute(choices)
+function ns.UpdateSelectedRoute(choices, query)
     local selection = ns.routeSelection
     if not selection then return end
-    if selection.fixedRoute then ns.UpdateFixedGuideRoute(selection); return end
+    if selection.fixedRoute then ns.UpdateFixedGuideRoute(selection, query); return end
     if selection.mode == "current" and not selection.sharedBy and ns.Option("nearbyPickups") then
         for _, choice in ipairs(ns.CurrentQuestChoices() or {}) do
             if choice.mode == "bundle" and choice.mapID == selection.mapID then

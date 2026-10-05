@@ -1,3 +1,25 @@
+# Follow-up review for 0.6.9
+
+The user requests a broad optimization/speed pass and explicitly asks to preserve
+fundamentals and working behavior. No new gameplay report, build or preference
+conflict accompanies this request. Profile first; avoid changes to level policy,
+chain gates, route priorities/order, UI/settings and message protocol/timing.
+
+The 5,230-record host fixture showed repeated completion/history reads, party-list
+allocation, guide records constructed for irrelevant brackets, learned-rule/build
+queries with no matching rule, compiler scale reads and coincident map projections.
+Reuse read-only results within synchronous passes and reset compiler caches at
+cooperative yields; retain fresh reads on the next update. Index learned followers
+with the existing saved-data revision, retaining contradictory-rule safeguards.
+Skip empty flight-network comparisons because they cannot yield a flight plan.
+
+Baseline guide lists, fixed step sequence and map geometry fingerprints agree
+after optimization. Pre-optimization synthetic fixtures cover fixed ordering,
+alternative prerequisites, missing locations/external parents and adaptive cost
+ties. Added tests cover unknown/private history freshness, abandonment, level-up,
+rule revisions/contradictions, redraw privacy and compiler yields. PERFORMANCE.md
+separates host call-count/time improvements from unmeasured beta FPS.
+
 # Follow-up review for 0.6.8
 
 The user's own character is level 12 and sees Ashenvale suggested despite a

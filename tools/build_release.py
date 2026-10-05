@@ -189,6 +189,8 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
             archive.write(addon / name, 'WowTogether/' + name)
         for name in ('README.md', 'TESTING.md', 'CHANGELOG.md'):
             archive.write(ROOT / name, 'WowTogether/' + name)
+        if (ROOT / 'PERFORMANCE.md').exists():
+            archive.write(ROOT / 'PERFORMANCE.md', 'WowTogether/PERFORMANCE.md')
         archive.write(ROOT / 'LICENSE', 'WowTogether/LICENSE')
         archive.writestr('WowTogether/INSTALL.md', instructions)
     with zipfile.ZipFile(destination) as archive:

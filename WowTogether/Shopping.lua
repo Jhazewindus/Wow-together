@@ -22,11 +22,12 @@ function ns.MoneyText(copper)
     return math.floor(copper / 10000) .. "g " .. math.floor(copper / 100) % 100 .. "s " .. copper % 100 .. "c"
 end
 
-function ns.QuestShoppingList(records)
+function ns.QuestShoppingList(records, query)
     local items = {}
     for _, record in ipairs(records or {}) do
         local quest = ns.CatalogueQuest(record.id)
-        if quest and (ns.active[record.id] or ns.Completed(record.id) ~= true) then
+        if quest and quest.requiredItems and #quest.requiredItems > 0
+            and (ns.active[record.id] or ns.Completed(record.id, query) ~= true) then
             for _, item in ipairs(quest.requiredItems or {}) do
                 if item.buyable then
                     local row = items[item.itemID]

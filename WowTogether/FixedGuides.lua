@@ -39,18 +39,19 @@ local function stages(record)
     return result
 end
 
-local function distance(a, b)
+local function distance(a, b, metrics)
     -- Missing objective geography is a data gap, not a distant destination.
     -- Use this quest's last published place for ordering only; never give an
     -- unmapped step fake coordinates or draw its anchor as an objective.
     if b.unknownLocation then b = b.planningAnchor; if not b then return 12000 end end
     if not a then return 0 end
     if a.mapID ~= b.mapID then return 15000 end
-    return ns.WalkingDistance(b.mapID, a, b) or ns.NormalizedDistance(a, b) * 6000
+    return ns.WalkingDistance(b.mapID, a, b, metrics) or ns.NormalizedDistance(a, b) * 6000
 end
 
 function ns.GenerateFixedGuide(guide, cooperative)
     local tasks, done, ordered, work = {}, {}, {}, 0
+    local metrics, learned = {}, {}
     for _, record in ipairs(guide.records) do
         if ns.CatalogueIdentityAllowed(record.id, ns.profile) ~= false and not ns.IsRepeatableQuest(record.id)
             and not ns.IsProfessionQuest(record.id) then
@@ -66,7 +67,8 @@ function ns.GenerateFixedGuide(guide, cooperative)
             local met = false; for _, previous in ipairs(quest.prerequisiteAny) do if done[previous] or previous == handedIn then met = true end end
             if not met then return false end
         elseif not quest.previousQuest then
-            for _, previous in ipairs(ns.LearnedPrerequisiteIDs(id)) do if not done[previous] and previous ~= handedIn then return false end end
+            if not learned[id] then learned[id] = ns.LearnedPrerequisiteIDs(id) end
+            for _, previous in ipairs(learned[id]) do if not done[previous] and previous ~= handedIn then return false end end
         end
         return true
     end
@@ -80,23 +82,23 @@ function ns.GenerateFixedGuide(guide, cooperative)
                 floor = math.min(floor, ns.CatalogueQuest(task.id).level or 0)
             end
             work = work + 1
-            if cooperative and work % 200 == 0 then coroutine.yield() end
+            if cooperative and work % 200 == 0 then coroutine.yield(); metrics, learned = {}, {} end
         end
         if #available == 0 then break end
         local best, score
         for _, task in ipairs(available) do
             local stop, quest = task.stages[task.next], ns.CatalogueQuest(task.id)
-            local value = distance(previous, stop) + math.max(0, (quest.level or 0) - floor - 2) * 2500
+            local value = distance(previous, stop, metrics) + math.max(0, (quest.level or 0) - floor - 2) * 2500
             if stop.kind == "a" then value = value - 100 end
             if stop.kind == "t" then
                 -- Prefer a nearby hand-in that opens another pickup at this
                 -- hub. This depends on published geography, not player position.
                 for _, child in ipairs(tasks) do
                     work = work + 1
-                    if cooperative and work % 200 == 0 then coroutine.yield() end
+                    if cooperative and work % 200 == 0 then coroutine.yield(); metrics, learned = {}, {} end
                     local pickup = child.stages[child.next]
                     if pickup and pickup.kind == "a" and not unlocked(child.id) and unlocked(child.id, stop.id)
-                        and not pickup.unknownLocation and distance(stop, pickup) <= 150 then
+                        and not pickup.unknownLocation and distance(stop, pickup, metrics) <= 150 then
                         value = value - 250; break
                     end
                 end
@@ -123,8 +125,8 @@ function ns.GenerateFixedGuide(guide, cooperative)
     return ordered
 end
 
-local function doneFor(stop, key)
-    if ns.CatalogueCompletion(key, stop.id) == true then return true end
+local function doneFor(stop, key, query)
+    if ns.CatalogueCompletion(key, stop.id, query) == true then return true end
     local active = key == ns.self and ns.active or ns.members[key] and ns.members[key].active
     if stop.kind == "a" then return active and active[stop.id] ~= nil end
     if stop.kind == "q" then
@@ -141,25 +143,26 @@ local function doneFor(stop, key)
     return false
 end
 
-local function remaining(stop)
+local function remaining(stop, query)
     if ns.GuideQuestSkipped(stop.id) or #ns.FilterGuideStages({stop}) == 0 then return nil end
     local waiting, chosen
-    for _, person in ipairs(ns.PartyProfiles()) do
+    for _, person in ipairs(query.profiles) do
         if ns.CatalogueIdentityAllowed(stop.id, person.profile) ~= false then
             if not person.synced then waiting = true
-            elseif not doneFor(stop, person.key) then chosen = chosen or person end
+            elseif not doneFor(stop, person.key, query) then chosen = chosen or person end
         end
     end
     return chosen, waiting
 end
 
-function ns.BuildFixedGuideRoute(guide, includeOrigin, cooperative)
+function ns.BuildFixedGuideRoute(guide, includeOrigin, cooperative, query)
     local plan = guide.fixedPlan or ns.GenerateFixedGuide(guide, cooperative)
+    query = query or ns.NewQuestQuery()
     local stops, preview, eligibility, mapped, incomplete, unknown, pending, pendingStop = {}, {}, {}, {}, 0, 0, nil, nil
     local deferred, firstDeferred, firstReason = {}, nil, nil
     guide.observedDeferrals = guide.observedDeferrals or {}
     for _, stop in ipairs(plan) do
-        local person, waiting = remaining(stop)
+        local person, waiting = remaining(stop, query)
         if person or waiting then
             incomplete = incomplete + 1
             if stop.unknownLocation then unknown = unknown + 1 end
@@ -168,7 +171,7 @@ function ns.BuildFixedGuideRoute(guide, includeOrigin, cooperative)
             if person then
                 current.memberKey, current.forPlayer = person.key, person.name
                 active = person.key == ns.self and ns.active or ns.members[person.key] and ns.members[person.key].active
-                allowed, reason = ns.CatalogueAllowed(stop.id, person.profile, person.key)
+                allowed, reason = ns.CatalogueAllowed(stop.id, person.profile, person.key, query)
                 offered = ns.PickupOfferEvidence(person.key, stop.id)
                 if active and active[stop.id] then allowed = true end
             end
@@ -224,9 +227,9 @@ function ns.BuildFixedGuideRoute(guide, includeOrigin, cooperative)
         pendingReason = pending, pendingStop = pendingStop, focusKey = guide.focusKey}
 end
 
-function ns.UpdateFixedGuideRoute(guide)
+function ns.UpdateFixedGuideRoute(guide, query)
     local before = ns.selectedRoute and ns.selectedRoute.stops[1]
-    local route = ns.BuildFixedGuideRoute(guide, false)
+    local route = ns.BuildFixedGuideRoute(guide, false, false, query)
     local after = route.stops[1]
     if before and after then ns.RememberGuideStep(before, after) end
     ns.selectedRoute, ns.routePaused = route, route.pendingReason

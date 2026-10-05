@@ -1,5 +1,20 @@
 # Wow Together changelog
 
+## 0.6.9
+
+- Performance maintenance with guide decisions, route order, pickup gates,
+  settings, UI and sync behavior preserved. Reuse completion reads and party
+  lists within each update; build guide records only for matching brackets.
+- Index learned follow-ups and avoid build/identity work for unrelated rules.
+  Reuse compiler scale/prerequisite reads until its next cooperative yield,
+  and compute adaptive tie-break keys once rather than on every comparison.
+- Reuse coincident coordinate projections within each map redraw and skip flight
+  comparisons when no flight connections are known. The next update reads fresh
+  public data; caches do not persist quest progress or restricted values.
+- Includes repeatable host benchmarks and baseline route fixtures. Host measurements
+  show about 70% fewer dashboard completion API reads and 77% fewer coordinate
+  conversions in the large map fixture. Live beta smoothness still needs testing.
+
 ## 0.6.8
 
 - Filter recommended and alternative zone guides by actual player level, useful

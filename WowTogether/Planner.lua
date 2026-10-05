@@ -327,9 +327,14 @@ function ns.NormalizedDistance(a, b)
     return math.sqrt(((a.x - b.x) * 1.5)^2 + (a.y - b.y)^2)
 end
 
-function ns.WalkingDistance(mapID, a, b)
+function ns.WalkingDistance(mapID, a, b, metrics)
     local width, height
-    if C_Map then width, height = ns.ReadPublic(C_Map.GetMapWorldSize, mapID) end
+    local cached = metrics and metrics[mapID]
+    if cached then width, height = cached[1], cached[2]
+    else
+        if C_Map then width, height = ns.ReadPublic(C_Map.GetMapWorldSize, mapID) end
+        if metrics then metrics[mapID] = {width, height} end
+    end
     if type(width) == "number" and type(height) == "number" and width > 0 and height > 0
         and width < 1000000 and height < 1000000 then
         return math.sqrt(((a.x - b.x) * width)^2 + ((a.y - b.y) * height)^2)

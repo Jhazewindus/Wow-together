@@ -50,11 +50,11 @@ function ns.ResolveCatalogueMaps()
     if changed then ns.catalogueLocationRevision = (ns.catalogueLocationRevision or 0) + 1 end
 end
 
-function ns.GuideLevelRange(value)
+function ns.GuideLevelRange(value, query)
     value = value or ns.guideLevel
     if value == "all" then return 1, 255 end
     if value == "party" then
-        local level = ns.PartyLevelFloor() or 1
+        local level = ns.PartyLevelFloor(query) or 1
         local low = math.floor((math.max(1, level) - 1) / 10) * 10 + 1
         return low, low + 9
     end
@@ -151,7 +151,8 @@ local function addChain(records, seen, id)
     end
 end
 
-local function buildChoice(entry, low, high)
+local function buildChoice(entry, low, high, query)
+    query = query or ns.NewQuestQuery()
     local records, seen, relevant, search = {}, {}, 0, {entry.title, entry.zone}
     local minimum, maximum, located = 255, 0, 0
     for _, id in ipairs(entry.ids) do
@@ -163,7 +164,6 @@ local function buildChoice(entry, low, high)
             for _, point in ipairs(quest.starts or {}) do search[#search + 1] = point.name or "" end
             -- Brackets filter guide discovery, not its lifetime. Preserve the
             -- full chain, including later levels and published cross-zone work.
-            addChain(records, seen, id)
             if level >= low and level <= high then
                 relevant = relevant + 1
             end
@@ -172,13 +172,17 @@ local function buildChoice(entry, low, high)
     end
     -- A single observed/isolated quest is not a leveling guide. Completed
     -- earlier stages still count as evidence that a real multi-quest plan exists.
-    if relevant == 0 or #records < 2 then return end
-    local focus = ns.GuideFocus(records)
+    if relevant == 0 then return end
+    for _, id in ipairs(entry.ids) do
+        if browseEnabled(id) then addChain(records, seen, id) end
+    end
+    if #records < 2 then return end
+    local focus = ns.GuideFocus(records, query)
     local pending, completed = 0, 0
     for _, record in ipairs(records) do
-        if ns.PartyQuestFinished(record.id) then completed = completed + 1 else pending = pending + 1 end
+        if ns.PartyQuestFinished(record.id, query) then completed = completed + 1 else pending = pending + 1 end
     end
-    local level, _, name = ns.PartyLevelFloor()
+    local level, _, name = ns.PartyLevelFloor(query)
     local mapID = entry.mapID
     if mapID == 0 then
         for _, id in ipairs(entry.ids) do
@@ -204,7 +208,7 @@ local function buildChoice(entry, low, high)
     return guide
 end
 
-local function levelPath(id, level, seen, depth)
+local function levelPath(id, level, seen, depth, query)
     if depth > 24 or seen[id] then return false end
     local quest = ns.CatalogueQuest(id)
     if not quest then return true end -- Missing requirements remain an NPC check.
@@ -212,38 +216,40 @@ local function levelPath(id, level, seen, depth)
     if (quest.level or 0) > level + 3 then return false end
     if ns.CatalogueIdentityAllowed(id, ns.profile) == false then return false end
     local visited = {}; for key, value in pairs(seen) do visited[key] = value end; visited[id] = true
-    if quest.previousQuest and not ns.PartyQuestFinished(quest.previousQuest)
-        and not levelPath(quest.previousQuest, level, visited, depth + 1) then return false end
+    if quest.previousQuest and not ns.PartyQuestFinished(quest.previousQuest, query)
+        and not levelPath(quest.previousQuest, level, visited, depth + 1, query) then return false end
     if quest.prerequisiteAny then
         for _, previous in ipairs(quest.prerequisiteAny) do
-            if ns.PartyQuestFinished(previous) or levelPath(previous, level, visited, depth + 1) then return true end
+            if ns.PartyQuestFinished(previous, query) or levelPath(previous, level, visited, depth + 1, query) then return true end
         end
         return false
     end
     return true
 end
 
-function ns.GuideLevelSuitable(guide)
-    local level = ns.PartyLevelFloor()
+function ns.GuideLevelSuitable(guide, query)
+    query = query or ns.NewQuestQuery()
+    local level = ns.PartyLevelFloor(query)
     if not level then return false end
     for _, record in ipairs(guide.records or {}) do
         local quest = ns.CatalogueQuest(record.id)
         local knownLevel = quest and ((quest.level or 0) > 0 or (quest.minLevel or 0) > 0)
         if knownLevel and record.mapID == guide.homeMapID and ns.CatalogueIdentityAllowed(record.id, ns.profile) == true
-            and ns.LevelingValue(record.id) == true and levelPath(record.id, level, {}, 0) then return true end
+            and ns.LevelingValue(record.id, query) == true and levelPath(record.id, level, {}, 0, query) then return true end
     end
     return false
 end
 
-function ns.LevelingGuideChoices(ignoreSearch)
+function ns.LevelingGuideChoices(ignoreSearch, queryContext)
     ns.ResolveCatalogueMaps(); rebuildIndex()
-    local choices, low, high = {}, ns.GuideLevelRange()
+    queryContext = queryContext or ns.NewQuestQuery()
+    local choices, low, high = {}, ns.GuideLevelRange(nil, queryContext)
     local query = ignoreSearch and "" or string.lower(ns.guideSearch or "")
     for _, entry in pairs(entries) do
         -- Chains remain part of zone planning and saved/shared guides. The
         -- browser offers whole zones rather than duplicate partial-chain cards.
-        local choice = entry.mode == "zone" and buildChoice(entry, low, high)
-        if choice and ns.GuideLevelSuitable(choice)
+        local choice = entry.mode == "zone" and buildChoice(entry, low, high, queryContext)
+        if choice and ns.GuideLevelSuitable(choice, queryContext)
             and (query == "" or string.find(choice.search, query, 1, true)) then choices[#choices + 1] = choice end
     end
     table.sort(choices, function(a, b)

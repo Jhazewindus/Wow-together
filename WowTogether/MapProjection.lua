@@ -20,13 +20,19 @@ end
 
 function ns.ResetMapProjection() bases = {} end
 
-function ns.ProjectMapPoint(point, mapID)
-    if not ns.Public(point) or type(point) ~= "table" or not ns.GuideInteger(point.mapID) or point.mapID <= 0
-        or not ns.GuideInteger(mapID) or mapID <= 0 or not coordinate(point.x) or not coordinate(point.y) then return end
+local function project(point, mapID, context)
     if point.mapID == mapID then return {mapID = mapID, x = point.x, y = point.y} end
     local continent, wx, wy, vector = world(point.mapID, point.x, point.y)
     if not continent then return end
-    local targetContinent = world(mapID, 0, 0)
+    local targetContinent
+    if context then
+        context.continents = context.continents or {}
+        targetContinent = context.continents[mapID]
+        if targetContinent == nil then
+            targetContinent = world(mapID, 0, 0)
+            context.continents[mapID] = targetContinent or false
+        end
+    else targetContinent = world(mapID, 0, 0) end
     if targetContinent ~= continent then return end
     local resultMap, position = ns.ReadPublic(C_Map.GetMapPosFromWorldPos, continent, vector, mapID)
     if resultMap == mapID and ns.Public(position) and (type(position) == "table" or type(position) == "userdata") then
@@ -52,4 +58,25 @@ function ns.ProjectMapPoint(point, mapID)
     local x, y = (dx * basis.vy - dy * basis.vx) / basis.determinant,
         (basis.ux * dy - basis.uy * dx) / basis.determinant
     if coordinate(x) and coordinate(y) then return {mapID = mapID, x = x, y = y} end
+end
+
+function ns.ProjectMapPoint(point, mapID, context)
+    if not ns.Public(point) or type(point) ~= "table" or not ns.GuideInteger(point.mapID) or point.mapID <= 0
+        or not ns.GuideInteger(mapID) or mapID <= 0 or not coordinate(point.x) or not coordinate(point.y) then return end
+    if not context or point.mapID == mapID then return project(point, mapID, context) end
+    -- A redraw owns this cache; it is discarded before the next position/API
+    -- read. Numeric keys preserve exact coordinates, with no rounding of stops.
+    context.points = context.points or {}
+    local targets = context.points
+    targets[mapID] = targets[mapID] or {}
+    local sources = targets[mapID]
+    sources[point.mapID] = sources[point.mapID] or {}
+    local xs = sources[point.mapID]
+    xs[point.x] = xs[point.x] or {}
+    local ys = xs[point.x]
+    local cached = ys[point.y]
+    if cached ~= nil then return cached or nil end
+    local result = project(point, mapID, context)
+    ys[point.y] = result or false
+    return result
 end

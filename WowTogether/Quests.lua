@@ -84,10 +84,18 @@ function ns.ReadQuests()
     return true
 end
 
-function ns.Completed(id)
+-- One synchronous read pass owns this context. Never retain it across events
+-- or coroutine yields: unknown/private history is queried again next pass.
+function ns.NewQuestQuery()
+    return {profiles = ns.PartyProfiles(), completionChecked = {}, completed = {}, finished = {}}
+end
+
+function ns.Completed(id, query)
+    if query and query.completionChecked[id] then return query.completed[id] end
     if not C_QuestLog or type(C_QuestLog.IsQuestFlaggedCompleted) ~= "function" then return nil end
     local value = C_QuestLog.IsQuestFlaggedCompleted(id)
-    if not ns.Public(value) or type(value) ~= "boolean" then return nil end
+    if not ns.Public(value) or type(value) ~= "boolean" then value = nil end
+    if query then query.completionChecked[id], query.completed[id] = true, value end
     return value
 end
 
@@ -110,7 +118,7 @@ function ns.QuestIDs()
     return ids
 end
 
-function ns.MemberStates(id)
+function ns.MemberStates(id, query)
     local states = {}
     local function add(name, active, completed, checked, offered, ready, pending)
         local status, history
@@ -127,7 +135,7 @@ function ns.MemberStates(id)
         states[#states + 1] = {name = name, status = status, history = history,
             active = active and true or false, offered = offered and true or false, ready = ready and true or false}
     end
-    local localCompleted = ns.Completed(id)
+    local localCompleted = ns.Completed(id, query)
     add("You", ns.active and ns.active[id], localCompleted == true, localCompleted ~= nil, ns.offered and ns.offered[id], ns.readyToTurnIn and ns.readyToTurnIn[id])
     local names = {}
     for name, member in pairs(ns.members) do
@@ -136,7 +144,7 @@ function ns.MemberStates(id)
     table.sort(names)
     for _, name in ipairs(names) do
         local member = ns.members[name]
-        local checked = ns.CatalogueCompletion(name, id) ~= nil
+        local checked = ns.CatalogueCompletion(name, id, query) ~= nil
         local point = ns.RoutePointForMember and ns.RoutePointForMember(name, id)
         add(ns.MemberLabel(name), member.active[id], member.completed and member.completed[id], checked,
             member.offered and member.offered[id], (point and point.kind == "t") or (ns.QuestProgressReady and ns.QuestProgressReady(name, id)), member.syncPending)
@@ -144,21 +152,22 @@ function ns.MemberStates(id)
     return states
 end
 
-function ns.Rows()
+function ns.Rows(query)
+    query = query or ns.NewQuestQuery()
     local rows = {}
     local people = 1
     for _, member in pairs(ns.members) do if member.active then people = people + 1 end end
     for id in pairs(ns.QuestIDs()) do
         local active, completed = 0, 0
         if ns.active[id] then active = active + 1 end
-        if ns.Completed(id) == true then completed = completed + 1 end
+        if ns.Completed(id, query) == true then completed = completed + 1 end
         for _, member in pairs(ns.members) do
             if member.active and member.active[id] then active = active + 1 end
             if member.completed and member.completed[id] then completed = completed + 1 end
         end
         if active > 0 then
             rows[#rows + 1] = {id = id, title = ns.QuestTitle(id), active = active,
-                completed = completed, people = people, members = ns.MemberStates(id)}
+                completed = completed, people = people, members = ns.MemberStates(id, query)}
         end
     end
     table.sort(rows, function(a, b)

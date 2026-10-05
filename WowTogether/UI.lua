@@ -432,17 +432,18 @@ end
 
 function ns.Render()
     if not ns.ui then return end
-    local rows = (ns.filter == "all" or ns.filter == "shared" or ns.filter == "different" or ns.filter == "suggestions") and ns.Rows() or {}
+    local queryContext = ns.NewQuestQuery()
+    local rows = (ns.filter == "all" or ns.filter == "shared" or ns.filter == "different" or ns.filter == "suggestions") and ns.Rows(queryContext) or {}
     local synced, shared, own = 1, 0, 0
     for _, member in pairs(ns.members) do if member.active and not member.syncPending then synced = synced + 1 end end
     for _, row in ipairs(rows) do if row.active >= 2 then shared = shared + 1 end end
     for _ in pairs(ns.active or {}) do own = own + 1 end
     ns.ui.metrics[1].value:SetText(synced .. " / " .. (#(ns.partyNames or {}) + 1))
-    local choices = ns.LevelingGuideChoices and ns.filter == "guides" and ns.LevelingGuideChoices() or {}
+    local choices = ns.LevelingGuideChoices and ns.filter == "guides" and ns.LevelingGuideChoices(nil, queryContext) or {}
     ns.ui.hint:SetText(ns.filter == "guides"
         and "Choose a zone guide suited to your current level; search by zone, quest or NPC.\nStart route follows its full quest sequence."
         or "Show route draws numbered stops and lines on your world map.\nUse All quests to browse zones, search names, and check requirements.")
-    if ns.UpdateSelectedRoute then ns.UpdateSelectedRoute(choices) end
+    if ns.UpdateSelectedRoute then ns.UpdateSelectedRoute(choices, queryContext) end
     ns.ui.metrics[2].caption:SetText(ns.filter == "library" and "CATALOGUE QUESTS" or (ns.filter == "guides" and "QUEST GUIDES" or "SHARED ACTIVE"))
     ns.ui.metrics[2].value:SetText(tostring(ns.filter == "library" and ns.catalogue.count or (ns.filter == "guides" and #choices or shared)))
     ns.ui.metrics[3].value:SetText(tostring(own))
@@ -482,7 +483,7 @@ function ns.Render()
         for index = (ns.guidePage - 1) * 12 + 1, math.min(#choices, ns.guidePage * 12) do
             display[#display + 1] = {guide = choices[index], recommended = index == 1}
         end
-        local low, high = ns.GuideLevelRange()
+        local low, high = ns.GuideLevelRange(nil, queryContext)
         ns.ui.guideCount:SetText("Levels " .. low .. "–" .. high .. " • " .. #choices .. " guides • Page " .. ns.guidePage .. " / " .. pages .. " • Enter or pause to search")
         ns.ui.guidePrev:SetEnabled(ns.guidePage > 1); ns.ui.guideNext:SetEnabled(ns.guidePage < pages)
         ns.ui.guideLevel:SetChoice(ns.guideLevel)
@@ -545,7 +546,7 @@ function ns.Render()
         card.detailsButton:SetShown(guide ~= nil or (activity and activity.dungeon) ~= nil)
         card.detailsButton.caption:SetText("Quest details")
         card.detailsButton:SetEnabled(true)
-        card.buyButton:SetShown(guide ~= nil and #ns.QuestShoppingList(guide.records) > 0)
+        card.buyButton:SetShown(guide ~= nil and #ns.QuestShoppingList(guide.records, queryContext) > 0)
         card.catchupButton:SetShown(guide ~= nil and guide.mode == "zone" and guide.fullGuide
             and not guide.catchup and #(ns.partyNames or {}) > 0 and ns.ReadPublic(IsInRaid) ~= true)
         card.mapButton:SetEnabled(true)
@@ -567,7 +568,7 @@ function ns.Render()
             card.reason:SetHeight(height - 103)
             if libraryItem.id then
                 local quest = libraryItem.quest
-                local _, reason = ns.CatalogueAllowed(libraryItem.id, ns.profile, ns.self)
+                local _, reason = ns.CatalogueAllowed(libraryItem.id, ns.profile, ns.self, queryContext)
                 card.reason:SetText("Requires level " .. (quest.minLevel or "unknown") .. " • " .. (quest.side or "Faction not supplied")
                     .. "\n" .. (reason or (quest.starts and ("Start: " .. quest.starts[1].name) or "Quest giver coordinates are not supplied.")))
                 card.mapButton.caption:SetText(guide.hasPoint and "Show route" or "View details")
@@ -589,7 +590,7 @@ function ns.Render()
             card.count:SetText(guide.fullGuide and (guide.rangeLow .. "–" .. guide.rangeHigh) or (guide.level and ("Quest Lv " .. guide.level) or ""))
             card.reason:SetHeight(height - 103)
             local nextTitle = guide.nextStop and guide.nextStop.label or guide.target.title
-            local _, requirement = ns.CatalogueAllowed(guide.target.id, ns.profile, ns.self)
+            local _, requirement = ns.CatalogueAllowed(guide.target.id, ns.profile, ns.self, queryContext)
             local coverage = guide.coverage
             local detail = guide.fullGuide and (coverage and ("Published: " .. coverage.pickups .. "/" .. coverage.quests .. " pickups • "
                 .. coverage.objectives .. "/" .. coverage.quests .. " objectives • " .. coverage.turnins .. "/" .. coverage.quests .. " turn-ins")

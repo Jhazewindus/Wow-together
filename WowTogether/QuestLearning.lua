@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
 local LIMIT, baselines, tracking = 512, {}, {}
-local ruleIndex, indexData, indexRevision = {}, nil, nil
+local ruleIndex, followerIndex, indexData, indexRevision = {}, {}, nil, nil
 local function data() return ns.db and ns.db.questLearning end
 local function set(list)
     local result = {}
@@ -47,12 +47,14 @@ end
 local function indexedRules(id)
     local saved = data()
     if saved ~= indexData or saved.revision ~= indexRevision then
-        ruleIndex, indexData, indexRevision = {}, saved, saved.revision
+        ruleIndex, followerIndex, indexData, indexRevision = {}, {}, saved, saved.revision
         local keys = {}; for key in pairs(saved.rules) do keys[#keys + 1] = key end; table.sort(keys)
         for _, key in ipairs(keys) do
             local rule = saved.rules[key]
             ruleIndex[rule.questID] = ruleIndex[rule.questID] or {}
             table.insert(ruleIndex[rule.questID], rule)
+            followerIndex[rule.previousQuest] = followerIndex[rule.previousQuest] or {}
+            table.insert(followerIndex[rule.previousQuest], rule)
         end
     end
     return ruleIndex[id] or {}
@@ -100,21 +102,26 @@ end
 function ns.LearnedQuestRule(id, profile, key)
     if not ns.GuideInteger(id) or id <= 0 or key and key ~= ns.self
         or not ns.Option("useLearnedQuests") or not data() then return end
+    if #indexedRules(id) == 0 then return end
     return matchingRule(id, currentContext(profile or ns.profile))
 end
 
 function ns.LearnedPrerequisiteIDs(id)
-    local rule = ns.LearnedQuestRule(id)
     local quest = ns.CatalogueQuest(id)
     if quest and (quest.previousQuest or quest.prerequisiteAny) then return {} end
+    local rule = ns.LearnedQuestRule(id)
     return rule and {rule.previousQuest} or {}
 end
 
 function ns.LearnedFollowers(id, key)
-    local result, context, seen = {}, currentContext(ns.profile), {}
+    local result, seen = {}, {}
     if key and key ~= ns.self or not ns.Option("useLearnedQuests") or not data() then return result end
-    for _, rule in pairs(data().rules) do
-        if rule.previousQuest == id and usable(rule, context) and not seen[rule.questID]
+    indexedRules(id)
+    local followers = followerIndex[id]
+    if not followers then return result end
+    local context = currentContext(ns.profile)
+    for _, rule in ipairs(followers) do
+        if usable(rule, context) and not seen[rule.questID]
             and matchingRule(rule.questID, context) then
             result[#result + 1], seen[rule.questID] = rule.questID, true
         end
@@ -122,13 +129,13 @@ function ns.LearnedFollowers(id, key)
     table.sort(result); return result
 end
 
-function ns.LearnedPrerequisiteAllowed(id, profile, key)
+function ns.LearnedPrerequisiteAllowed(id, profile, key, query)
     local quest = ns.CatalogueQuest(id)
     -- Published alternatives must not be narrowed to a single observed branch.
     if quest and (quest.previousQuest or quest.prerequisiteAny) then return true end
     local rule = ns.LearnedQuestRule(id, profile, key)
     if not rule then return true end
-    local completed = ns.CatalogueCompletion(key or ns.self, rule.previousQuest)
+    local completed = ns.CatalogueCompletion(key or ns.self, rule.previousQuest, query)
     if completed == true then return true end
     local reason = (completed == false and "Finish " or "Check history for ") .. ns.QuestTitle(rule.previousQuest) .. " first."
     return completed, reason

@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.6.8** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.6.9** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -423,7 +423,7 @@ provided broad inspiration about progress clarity; its code/assets/layouts
 were not copied. This implementation is independent.
 
 Reported beta build **70205** established the earlier sync APIs in user tests.
-**0.6.8 has host validation, not a live-client compatibility certification.**
+**0.6.9 has host validation, not a live-client compatibility certification.**
 Retest UI rendering, optional gossip/flight actions, corpse positions and item
 hooks on the build in front of you. `/wt probe` lists capabilities and runtime
 status. Do not interpret presence as proof that protected actions work.
@@ -432,6 +432,13 @@ to the client. No combat-log processing, secret arithmetic, secure snippets,
 combat automation or replacement of Blizzard combat tools is used.
 
 ## Development and release
+
+0.6.9 reduces repeated history reads, party-list rebuilding, unrelated learned-rule
+scans, route-planning allocations and repeated coordinate conversions. Reuse stays
+within a synchronous read/draw pass; the next update queries fresh data, and the
+compiler discards temporary caches when it yields. Guide decisions, prerequisite
+rules, fixed/adaptive order, sync behavior, settings and UI remain the same.
+See PERFORMANCE.md for measured host results and the repeatable benchmark command.
 
 Host checks load all 33 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
 

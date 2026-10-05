@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.6.8**, World of Warcraft: Forever beta, interface **16001**.
+For **0.6.9**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 
@@ -164,6 +164,13 @@ Keep tester names and reports separate; label the main developer's report.
     should continue toward the same step. Fixed step numbers/order must remain
     unchanged. Missing/private positions or different continents must not invent
     a connecting line. Lines express direction; follow actual roads/terrain.
+25. **Performance and freshness:** compare opening/searching Leveling guides,
+    compiling a full guide, scanning progress and panning a full route against
+    0.6.8 with matching data/settings. Note any stutter and exact zone/guide/step.
+    Guide order, pickup gates, skips, UI controls and sync behavior should agree.
+    Accept/abandon/hand in, level up, change NPC offers, join/leave a party and
+    reload: every next update must use fresh state. Repeat learned-chain and
+    combat/secret-data checks. Host timings/call counts do not establish beta FPS.
 
 ## Copyable tester report
 
@@ -174,7 +181,7 @@ Addon / client build:
 Level / class / race / faction / zone:
 Party size / selected guide:
 Fixed zone guides / full route / learning settings:
-Checks 1–24: Pass / Fail / Skip (reason)
+Checks 1–25: Pass / Fail / Skip (reason)
 Exact quest name and ID / NPC / current and next step numbers:
 What happened / expected result:
 Was the quest offered? Was its prerequisite handed in?
