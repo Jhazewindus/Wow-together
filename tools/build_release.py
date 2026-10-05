@@ -40,6 +40,10 @@ does not appear. No Battle.net credentials or web service are needed.
 through all quests/objectives; player names, zones and counts appear together.
 /wt config opens settings: transparent tracker, circuit budgets, class quests,
 NPC hints, map legend, dungeon/zone prompts and opt-in auto-accept.
+Finish our current quests first is ON by default. Ready turn-ins come first,
+then unfinished party objectives and their later returns. Your completed quest
+can be handed in while a friend's objectives stay marked. No new pickups are
+planned until the current logs clear. Disable this option to discover new lines.
 /wt arrow toggles the small direction arrow for your selected route. Drag it
 to move it; its position is saved. The arrow turns relative to your character
 and shows straight-line yards when public position, map scale and facing exist.
@@ -59,6 +63,13 @@ dimmed. Each client must select Show route for the route it wants to display.
 
 Library searches commit on Enter or after a typing pause. Choose a level
 bracket or Near party; use arrows for larger result sets.
+
+Map drawing uses the visible viewport when GetViewRect is available, clips
+lines to the map, and redraws after pan/zoom/resize. Nearby stops share a pin;
+hover for all steps. The legend distinguishes stops from visible places.
+If pins/lines are still absent, copy /wt probe after Show route and include
+Route drawing surface, view geometry, rendered pins/lines and GetViewRect.
+The new rendering path needs testing on your actual beta build.
 
 Sync is automatic on party, quest/objective, level and zone changes, batched
 before the paced send queue. Normal play does not require repeated /wt sync.

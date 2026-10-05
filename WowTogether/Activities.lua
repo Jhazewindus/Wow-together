@@ -257,7 +257,8 @@ function ns.ScheduleActivitySuggestions()
     if pending or not ns.db or not C_Timer or type(C_Timer.After) ~= "function" then return end
     if not ns.Option("dungeonPrompts") and not ns.Option("zonePrompts") then return end
     local parts = {ns.profile and ns.profile.level or 0, ns.profile and ns.profile.mapID or 0, ns.activityRevision or 0,
-        tostring(ns.Option("dungeonPrompts")), tostring(ns.Option("zonePrompts"))}
+        tostring(ns.Option("dungeonPrompts")), tostring(ns.Option("zonePrompts")),
+        tostring(ns.Option("currentQuestsFirst")), tostring(ns.HasCurrentPartyQuests())}
     for _, person in ipairs(ns.PartyProfiles()) do
         local member = ns.members[person.key]
         parts[#parts + 1] = person.key .. ":" .. tostring(person.synced) .. ":" .. (member and member.completionRevision or 0)
@@ -270,6 +271,7 @@ function ns.ScheduleActivitySuggestions()
         pending = false
         if ns.RouteInCombat() or (ns.activityPrompt and ns.activityPrompt:IsShown()) then return end
         lastContext = context
+        if ns.Option("currentQuestsFirst") and ns.HasCurrentPartyQuests() then return end
         local lowest
         for _, person in ipairs(ns.PartyProfiles()) do
             if not person.synced or not person.profile or person.profile.level <= 0 then return end

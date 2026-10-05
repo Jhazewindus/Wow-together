@@ -33,7 +33,7 @@ ns.frame:SetScript("OnEvent", function(_, event, ...)
 end)
 
 function ns.Diagnostics()
-    local lines = {"Wow Together 0.5.1 — beta capability and sync report", ""}
+    local lines = {"Wow Together 0.5.2 — beta capability and sync report", ""}
     local function output(line) lines[#lines + 1] = line end
     local version, build, _, interface = GetBuildInfo()
     local function readable(value)
@@ -97,9 +97,12 @@ function ns.Diagnostics()
         {"issecretvalue", issecretvalue},
         {"C_Timer.After", C_Timer and C_Timer.After},
         {"WorldMapFrame.GetCanvas", WorldMapFrame and WorldMapFrame.GetCanvas},
+        {"WorldMapFrame.GetCanvasContainer", WorldMapFrame and WorldMapFrame.GetCanvasContainer},
+        {"WorldMapFrame.GetViewRect", WorldMapFrame and WorldMapFrame.GetViewRect},
         {"WorldMapFrame.AddDataProvider", WorldMapFrame and WorldMapFrame.AddDataProvider},
         {"WorldMapFrame.GetMapID", WorldMapFrame and WorldMapFrame.GetMapID},
         {"Frame.CreateLine", ns.frame.CreateLine},
+        {"Frame.SetClipsChildren", ns.frame.SetClipsChildren},
         {"Frame.SetIgnoreParentAlpha", ns.frame.SetIgnoreParentAlpha},
     }
     for _, probe in ipairs(probes) do

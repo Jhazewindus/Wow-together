@@ -40,6 +40,7 @@ def map_canvas(c):
     }
     function WorldMapFrame:GetCanvas() return canvas end
     function WorldMapFrame:GetCanvasContainer() return self end
+    WorldMapFrame.GetViewRect=false
     function WorldMapFrame:GetMapID() return self.mapID end
     function WorldMapFrame:AddDataProvider(p) self.provider = p; p:OnAdded(self) end
     function WorldMapFrame:SetMapID(id)
@@ -168,6 +169,7 @@ class RouteTests(unittest.TestCase):
         canvas = c.lua.globals().canvas
         canvas.SetSize(canvas, 2000, 1600)
         provider.OnCanvasSizeChanged(provider)
+        c.drain()
         self.assertAlmostEqual(provider.lines[1].endPoint[3], 400)
         self.assertAlmostEqual(provider.lines[1].endPoint[4], -400)
         world = c.lua.globals().WorldMapFrame

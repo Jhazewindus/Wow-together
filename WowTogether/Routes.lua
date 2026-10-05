@@ -148,11 +148,19 @@ function ns.RouteStop(record, focusKey)
     end
     local p = ns.RoutePointForMember(focusKey, record.id)
     if active then
+        local ready = (focusKey == ns.self and ns.readyToTurnIn[record.id])
+            or (ns.QuestProgressReady and ns.QuestProgressReady(focusKey, record.id))
+        if ready and p and p.kind ~= "t" then
+            -- Public objective completion can precede a native waypoint refresh.
+            local finish = catalog and catalog.ends and catalog.ends[1]
+            if finish and validPoint(finish.mapID, finish.x, finish.y) then
+                p = {mapID = finish.mapID, x = finish.x, y = finish.y, kind = "t", published = true,
+                    name = finish.name, entityID = finish.entityID}
+            else p = nil end
+        end
         -- A pickup location is not an objective or a turn-in. Keep those stages
         -- separate rather than sending a player with an active quest to its giver.
         if not p and catalog then
-            local ready = (focusKey == ns.self and ns.readyToTurnIn[record.id])
-                or (ns.QuestProgressReady and ns.QuestProgressReady(focusKey, record.id))
             local point
             if ready then point = catalog.ends and catalog.ends[1]
             else point = catalog.objectives and catalog.objectives[1] end
@@ -259,6 +267,7 @@ local function origin(mapID)
 end
 
 function ns.BuildGuideRoute(guide, includeOrigin)
+    if guide.mode == "current" and ns.BuildCurrentQuestRoute then return ns.BuildCurrentQuestRoute(guide, includeOrigin) end
     if guide.mode == "dungeon" and ns.BuildDungeonRoute then return ns.BuildDungeonRoute(guide, includeOrigin) end
     if guide.mode == "circuit" and ns.BuildCircuitRoute then return ns.BuildCircuitRoute(guide, includeOrigin) end
     local blocks, missing, focusKey = {}, 0, guide.focusKey or ns.self
@@ -332,11 +341,55 @@ local function hideDrawing(provider)
     ns.routeStats.pins, ns.routeStats.lines = 0, 0
 end
 
+function ns.RouteSurface(map)
+    local function finite(value) return type(value) == "number" and value == value and value > -math.huge and value < math.huge end
+    local canvas = query(map.GetCanvas, map)
+    if not canvas then return nil, "Map canvas unavailable." end
+    local parent = canvas
+    local left, top, spanX, spanY, mode = 0, 0, 1, 1, "Canvas fallback"
+    local viewport = query(map.GetCanvasContainer, map)
+    if viewport and type(map.GetViewRect) == "function" then
+        local rect = query(map.GetViewRect, map)
+        if not rect then return nil, "Waiting for map view rectangle." end
+        local right, bottom
+        left, right = query(rect.GetLeft, rect), query(rect.GetRight, rect)
+        top, bottom = query(rect.GetTop, rect), query(rect.GetBottom, rect)
+        if not finite(left) or not finite(right) or not finite(top) or not finite(bottom)
+            or right <= left or bottom <= top or right - left < 0.000001 or bottom - top < 0.000001 then
+            return nil, "Map view rectangle unavailable or restricted."
+        end
+        spanX, spanY, parent, mode = right - left, bottom - top, viewport, "Viewport projection"
+    end
+    local width, height = query(parent.GetWidth, parent), query(parent.GetHeight, parent)
+    if not finite(width) or not finite(height) or width <= 0 or height <= 0 then return nil, "Waiting for map layout." end
+    return {parent = parent, width = width, height = height, left = left, top = top, spanX = spanX, spanY = spanY, mode = mode}
+end
+
+function ns.RouteProject(surface, point)
+    return (point.x - surface.left) / surface.spanX * surface.width,
+        (point.y - surface.top) / surface.spanY * surface.height
+end
+
+function ns.ClipRouteSegment(x1, y1, x2, y2, width, height)
+    local dx, dy, start, finish = x2 - x1, y2 - y1, 0, 1
+    for _, bound in ipairs({{-dx, x1}, {dx, width - x1}, {-dy, y1}, {dy, height - y1}}) do
+        local p, q = bound[1], bound[2]
+        if p == 0 then if q < 0 then return end
+        else
+            local t = q / p
+            if p < 0 then start = math.max(start, t) else finish = math.min(finish, t) end
+            if start > finish then return end
+        end
+    end
+    return x1 + start * dx, y1 + start * dy, x1 + finish * dx, y1 + finish * dy
+end
+
 function ns.DrawRoute(provider)
     provider = provider or ns.routeProvider
     if not provider then return end
     if inCombat() then ns.routeRedrawPending = true; return end
     hideDrawing(provider)
+    ns.routeStats.surface, ns.routeStats.geometry = nil, nil
     local map, route = provider.owningMap, ns.selectedRoute
     if not map or not route then
         if ns.routePaused then ns.routeStats.status = ns.routePaused end
@@ -344,45 +397,65 @@ function ns.DrawRoute(provider)
     end
     local mapID = map:GetMapID()
     if not ns.Public(mapID) or mapID ~= route.mapID then ns.routeStats.status = "Route hidden on a different map."; return end
-    local canvas = map:GetCanvas()
-    if not canvas or type(canvas.GetWidth) ~= "function" or type(canvas.CreateLine) ~= "function" then
-        ns.routeStats.status = "This map canvas cannot draw route lines."; return
-    end
-    local width, height = canvas:GetWidth(), canvas:GetHeight()
-    if not ns.Public(width) or not ns.Public(height) or type(width) ~= "number" or type(height) ~= "number"
-        or width <= 0 or height <= 0 then ns.routeStats.status = "Waiting for map layout."; return end
+    local surface, unavailable = ns.RouteSurface(map)
+    if not surface then ns.routeStats.status = unavailable; return end
+    local width, height = surface.width, surface.height
     if not provider.overlay then
-        provider.overlay = CreateFrame("Frame", nil, canvas)
-        provider.overlay:SetAllPoints(canvas)
+        provider.overlay = CreateFrame("Frame", nil, surface.parent)
+        provider.overlay:EnableMouse(false)
+        if type(provider.overlay.SetClipsChildren) == "function" then provider.overlay:SetClipsChildren(true) end
         if type(provider.overlay.SetIgnoreParentAlpha) == "function" then provider.overlay:SetIgnoreParentAlpha(true) end
-        local level = canvas:GetFrameLevel()
-        if ns.Public(level) and type(level) == "number" then provider.overlay:SetFrameLevel(level + 100) end
     end
     local overlay = provider.overlay
+    overlay:SetParent(surface.parent); overlay:ClearAllPoints(); overlay:SetAllPoints(surface.parent)
+    overlay:Show()
+    local strata = query(map.GetFrameStrata, map)
+    local upper = {DIALOG = true, FULLSCREEN = true, FULLSCREEN_DIALOG = true, TOOLTIP = true}
+    overlay:SetFrameStrata(upper[strata] and strata or "HIGH")
+    local level = query(surface.parent.GetFrameLevel, surface.parent)
+    if type(level) == "number" then overlay:SetFrameLevel(level + 30) end
+    if type(overlay.CreateLine) ~= "function" then ns.routeStats.status = "Route line drawing unavailable."; return end
+    ns.routeStats.surface = surface.mode
+    ns.routeStats.geometry = string.format("%.0f x %.0f; view %.4f,%.4f / %.4f,%.4f", width, height,
+        surface.left, surface.top, surface.spanX, surface.spanY)
     local points = {}
     if route.origin then points[#points + 1] = route.origin end
     for _, p in ipairs(route.stops) do points[#points + 1] = p end
+    local visibleLines = 0
     for index = 2, #points do
-        provider.shadowLines = provider.shadowLines or {}
-        local shadow = provider.shadowLines[index - 1]
-        if not shadow then shadow = overlay:CreateLine(nil, "OVERLAY", nil, 6); provider.shadowLines[index - 1] = shadow end
-        shadow:SetThickness(4); shadow:SetColorTexture(0.12, 0.085, 0.025, ns.routePaused and 0.45 or 0.85)
-        shadow:SetStartPoint("TOPLEFT", overlay, points[index - 1].x * width, -points[index - 1].y * height)
-        shadow:SetEndPoint("TOPLEFT", overlay, points[index].x * width, -points[index].y * height); shadow:Show()
-        local line = provider.lines[index - 1]
-        if not line then line = overlay:CreateLine(nil, "OVERLAY", nil, 7); provider.lines[index - 1] = line end
-        line:SetThickness(2)
-        line:SetColorTexture(1, 0.82, 0.30, ns.routePaused and 0.45 or 1)
-        line:SetStartPoint("TOPLEFT", overlay, points[index - 1].x * width, -points[index - 1].y * height)
-        line:SetEndPoint("TOPLEFT", overlay, points[index].x * width, -points[index].y * height)
-        line:Show()
+        local x1, y1 = ns.RouteProject(surface, points[index - 1])
+        local x2, y2 = ns.RouteProject(surface, points[index])
+        x1, y1, x2, y2 = ns.ClipRouteSegment(x1, y1, x2, y2, width, height)
+        if x1 and math.abs(x2 - x1) + math.abs(y2 - y1) >= 0.5 then
+            visibleLines = visibleLines + 1
+            provider.shadowLines = provider.shadowLines or {}
+            local shadow = provider.shadowLines[visibleLines]
+            if not shadow then shadow = overlay:CreateLine(nil, "OVERLAY", nil, 6); provider.shadowLines[visibleLines] = shadow end
+            shadow:SetThickness(4); shadow:SetColorTexture(0.12, 0.085, 0.025, ns.routePaused and 0.45 or 0.85)
+            shadow:SetStartPoint("TOPLEFT", overlay, x1, -y1)
+            shadow:SetEndPoint("TOPLEFT", overlay, x2, -y2); shadow:Show()
+            local line = provider.lines[visibleLines]
+            if not line then line = overlay:CreateLine(nil, "OVERLAY", nil, 7); provider.lines[visibleLines] = line end
+            line:SetThickness(2)
+            line:SetColorTexture(1, 0.82, 0.30, ns.routePaused and 0.45 or 1)
+            line:SetStartPoint("TOPLEFT", overlay, x1, -y1)
+            line:SetEndPoint("TOPLEFT", overlay, x2, -y2)
+            line:Show()
+        end
     end
     local groups, locations = {}, {}
     for index, p in ipairs(route.stops) do
-        local key = math.floor(p.x * 100000) .. ":" .. math.floor(p.y * 100000)
-        local group = locations[key]
-        if not group then group = {point = p, stops = {}, numbers = {}}; locations[key] = group; groups[#groups + 1] = group end
-        group.stops[#group.stops + 1], group.numbers[#group.numbers + 1] = p, tostring(index)
+        local x, y = ns.RouteProject(surface, p)
+        if x >= 0 and x <= width and y >= 0 and y <= height then
+            local key = math.floor(p.x * 100000) .. ":" .. math.floor(p.y * 100000)
+            local group = locations[key]
+            if not group then
+                for _, nearby in ipairs(groups) do if math.abs(nearby.x - x) <= 6 and math.abs(nearby.y - y) <= 6 then group = nearby; break end end
+            end
+            if not group then group = {point = p, x = x, y = y, stops = {}, numbers = {}}; groups[#groups + 1] = group end
+            locations[key] = group
+            group.stops[#group.stops + 1], group.numbers[#group.numbers + 1] = p, tostring(index)
+        end
     end
     for index, group in ipairs(groups) do
         local p = group.point
@@ -417,14 +490,15 @@ function ns.DrawRoute(provider)
             provider.pins[index] = pin
         end
         pin.stop, pin.group = p, group
-        local numbers = table.concat(group.numbers, "/")
+        local numbers = #group.numbers <= 3 and table.concat(group.numbers, "/")
+            or (group.numbers[1] .. "/" .. group.numbers[2] .. "/+" .. (#group.numbers - 2))
         local icon = ns.StopIcon(p)
         pin.icon:SetTexture(icon); pin.icon:SetShown(icon ~= nil)
         pin.symbol:SetText(ns.StopSymbol(p)); pin.symbol:SetShown(icon == nil)
         pin:SetAlpha(ns.routePaused and 0.65 or 1)
         pin.number:SetText(numbers)
         pin:ClearAllPoints()
-        pin:SetPoint("CENTER", overlay, "TOPLEFT", p.x * width, -p.y * height)
+        pin:SetPoint("CENTER", overlay, "TOPLEFT", group.x, -group.y)
         pin:Show()
     end
     if not provider.legend then
@@ -445,12 +519,12 @@ function ns.DrawRoute(provider)
         close:SetScript("OnClick", function() ns.ClearRoute(); ns.Refresh() end)
         provider.legend = legend
     end
-    provider.legend.caption:SetText("Wow Together • " .. #route.stops .. " stops"
+    provider.legend.caption:SetText("Wow Together • " .. #route.stops .. " stops • " .. #groups .. " visible " .. (#groups == 1 and "place" or "places")
         .. (ns.routePaused and " • Waiting for party updates" or "")
         .. (route.partial and " • Partial route" or "")
-        .. (route.otherMaps > 0 and " • Other zones" or ""))
+        .. ((route.otherMaps or 0) > 0 and " • Other zones" or ""))
     provider.legend:SetShown(ns.Option("mapLegend"))
-    ns.routeStats.pins, ns.routeStats.lines = #groups, math.max(0, #points - 1)
+    ns.routeStats.pins, ns.routeStats.lines = #groups, visibleLines
     ns.routeStats.status = ns.routePaused and (ns.routePaused .. " Showing the last confirmed route.") or ("Route drawn on map " .. mapID .. ".")
 end
 
@@ -464,8 +538,15 @@ function ns.AttachRouteProvider()
     local provider = {pins = {}, lines = {}}
     for key, method in pairs(MapCanvasDataProviderMixin) do provider[key] = method end
     provider.RefreshAllData = function(self) ns.DrawRoute(self) end
-    provider.OnCanvasSizeChanged = provider.RefreshAllData
-    provider.OnCanvasScaleChanged = provider.RefreshAllData
+    local function afterLayout(self)
+        if not C_Timer or type(C_Timer.After) ~= "function" then ns.DrawRoute(self); return end
+        if self.redrawQueued then return end
+        self.redrawQueued = true
+        C_Timer.After(0, function() self.redrawQueued = nil; ns.DrawRoute(self) end)
+    end
+    provider.OnCanvasSizeChanged = afterLayout
+    provider.OnCanvasScaleChanged = afterLayout
+    provider.OnCanvasPanChanged = provider.RefreshAllData
     provider.OnShow = provider.RefreshAllData
     ns.routeProvider = provider
     map:AddDataProvider(provider)
@@ -508,6 +589,12 @@ end
 function ns.UpdateSelectedRoute(choices)
     local selection = ns.routeSelection
     if not selection then return end
+    local discovery = selection.mode == "circuit" or string.match(selection.key, "^zone%-route:")
+        or string.match(selection.key, "^series:") or string.match(selection.key, "^line:") or string.match(selection.key, "^npc:")
+    if ns.Option("currentQuestsFirst") and discovery and choices and choices[1] and choices[1].mode == "current" then
+        selection = choices[1]
+        ns.routeSelection, ns.routeSignature = selection, nil
+    end
     if selection.mode == "dungeon" then
         local finished = true
         for _, record in ipairs(selection.records) do
@@ -538,17 +625,21 @@ function ns.UpdateSelectedRoute(choices)
     local focus = guide and guide.focusKey or selection.focusKey
     local member = focus ~= ns.self and ns.members[focus]
     local waiting = focus ~= ns.self and (not member or not member.active or member.syncPending)
+    if selection.mode == "current" then
+        for _, record in ipairs(selection.records) do if ns.CurrentQuestPending(record.id) then waiting = true; break end end
+    end
     local route = guide and ns.BuildGuideRoute(guide, false)
     if waiting or not route or #route.stops == 0 then
         local finished = not waiting
         for _, record in ipairs(selection.records or {selection.target}) do
-            local complete = selection.personal and ns.Completed(record.id) == true and not ns.active[record.id]
+            local complete = selection.mode == "current" and ns.CurrentQuestFinished(record.id)
+                or selection.personal and ns.Completed(record.id) == true and not ns.active[record.id]
                 or (not selection.personal and ns.PartyQuestFinished(record.id))
             if not complete then finished = false; break end
         end
-        if finished then ns.ClearRoute(); ns.routeStats.status = "Selected route completed."; ns.guideAction = ns.routeStats.status
+        if finished then ns.ClearRoute(); ns.routeStats.status = selection.mode == "current" and "No selected quests remain in party logs." or "Selected route completed."; ns.guideAction = ns.routeStats.status
         else
-            ns.routePaused = waiting and "Waiting for the route player's refreshed quest snapshot."
+            ns.routePaused = waiting and "Waiting for refreshed party quest snapshots."
                 or "Waiting for the next quest destination or prerequisite history."
             ns.routeSignature = nil
             ns.DrawRoute()

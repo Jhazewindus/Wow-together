@@ -584,6 +584,8 @@ function ns.SyncDiagnostics(output)
     output("Auto-accept enabled: " .. safe(ns.Option("autoAccept")) .. "; last attempted dialog quest: " .. safe(ns.autoAcceptAttempt))
     output("Profession guides: " .. ns.professionStatus .. " Personal recipe/material data is not sent to peers.")
     output("Map route: " .. ns.routeStats.status)
+    output("Route drawing surface: " .. (ns.routeStats.surface or "not drawn") .. "; " .. (ns.routeStats.geometry or "layout unavailable"))
+    output("Current quests first: " .. safe(ns.Option("currentQuestsFirst")))
     output("Rendered route pins: " .. ns.routeStats.pins .. "; lines: " .. ns.routeStats.lines)
     for _, person in ipairs(ns.PartyProfiles and ns.PartyProfiles() or {}) do
         local profile = person.profile

@@ -373,6 +373,9 @@ function ns.Render()
     for _ in pairs(ns.active or {}) do own = own + 1 end
     ns.ui.metrics[1].value:SetText(synced .. " / " .. (#(ns.partyNames or {}) + 1))
     local choices = ns.GuideChoices and (ns.filter == "guides" or ns.routeSelection) and ns.GuideChoices() or {}
+    ns.ui.hint:SetText(ns.filter == "guides" and ns.Option("currentQuestsFirst")
+        and "Finish our current quests first: ready turn-ins, then party objectives.\nSettings can switch back to discovering new questlines."
+        or "Show route draws numbered stops and lines on your world map.\nUse Quest library to browse zones, search names, and check requirements.")
     if ns.UpdateSelectedRoute then ns.UpdateSelectedRoute(choices) end
     ns.ui.metrics[2].caption:SetText(ns.filter == "library" and "CATALOGUE QUESTS" or (ns.filter == "guides" and "QUEST GUIDES" or "SHARED ACTIVE"))
     ns.ui.metrics[2].value:SetText(tostring(ns.filter == "library" and ns.catalogue.count or (ns.filter == "guides" and #choices or shared)))
@@ -528,7 +531,7 @@ function ns.Render()
     end
     ns.ui.empty:SetShown(visible == 0)
     ns.ui.empty:SetText(ns.filter == "library" and "No imported quests match this search.\nTry a quest or zone name."
-        or (ns.filter == "guides" and "No suitable routes with known destinations yet.\nSync party history, browse the Quest library, or talk to a quest giver."
+        or (ns.filter == "guides" and (ns.currentGuideStatus or "No suitable routes with known destinations yet.\nSync party history, browse the Quest library, or talk to a quest giver.")
         or (ns.filter == "suggestions" and "Sync with a friend to get party suggestions."
         or (#rows == 0 and "Your adventure starts with a quest.\nAccept one, then sync your party."
         or "No quests in this view yet.\nTry All quests or compare more progress with friends."))))

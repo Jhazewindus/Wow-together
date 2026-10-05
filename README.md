@@ -5,7 +5,30 @@ comparing progress, and drawing the next stops on the world map.
 Targets **interface 16001**, Lua **5.1**. No service or Battle.net credentials
 are required by the addon.
 
-## Version 0.5.1
+## Version 0.5.2
+
+- **Finish our current quests first:** enabled by default in settings. Plans use
+  confirmed party quest logs, prioritizing ready turn-ins before unfinished
+  objectives. New pickups are held back while current quests remain. Your own
+  turn-in can come first while a friend's remaining objectives stay on the route.
+  Profession quests remain personal. Existing discovery routes switch to the
+  current-log plan, and new dungeon/zone pickup prompts wait while those logs
+  have quests. Manual library, dungeon, and profession guides stay available.
+  When all known logs are clear, discovery resumes; disable the option to
+  browse recommendations for new questlines.
+- **Map visibility repair:** routes are projected into the visible map viewport
+  using its normalized view rectangle, with clipped line segments and redraws
+  after pan, zoom, and resize. An explicitly shown overlay replaces reliance
+  on the canvas child's layout and inherited layers.
+  Nearby markers share a compact numbered pin; hover it for every step. The
+  legend counts visible places separately from route stops. Actual beta
+  rendering still needs checking; `/wt probe` reports the drawing surface and
+  view geometry. Builds without view-rectangle support use a canvas fallback.
+- **Ready quest correction:** public completed objective counts can move the
+  route to a known turn-in even before a native objective waypoint refreshes.
+  If no turn-in location is known, the old objective is not relabelled as one.
+
+The 0.5.1 arrow is retained:
 
 - **Movable route arrow:** a small transparent compass follows the selected
   route's current stop. Drag it to move; `/wt arrow` or settings toggles it.
@@ -93,7 +116,7 @@ World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
 `WowTogether.toc` belongs directly inside that folder. Update **every party
-member to 0.5.1**, including all new files, then `/reload`. Restart the client
+member to 0.5.2**, including all new files, then `/reload`. Restart the client
 fully if a new addon folder does not appear in the character-screen addon list.
 The release ZIP includes the complete TOC, every Lua file, data summary,
 instructions, and license. Copy the folder rather than individual changed files.
@@ -178,6 +201,14 @@ and layouts were not downloaded or copied. This implementation is independent.
    lowest synced player's progress. Missing profiles or snapshots are called
    out before judging readiness. A recommendation is a heuristic, not a promise
    of efficient XP gains or pickup availability for every member.
+   **Finish our current quests first** is now on by default. Current-log plans
+   route ready turn-ins, then the party's objectives and their later returns.
+   They contain no pickups for quests that nobody has accepted. An unavailable
+   active destination is explained rather than replaced with a new questline.
+   Existing accepted class and dungeon quests can be included for their holders;
+   profession quests stay in personal guides. Nearby known stops are grouped
+   per map. After current logs clear, new-quest recommendations can resume.
+   Turn this option off in `/wt config` to use the earlier discovery ranking.
 2. Click **Show route** on a recommended questline, hub, zone route, or library
    quest. The first native user waypoint is set and the map opens. Hover numbered
    pins for steps and source notes. If the canvas is unavailable, the destination
@@ -294,8 +325,9 @@ The user verified quest/title/history sync and level/faction/map context with
 showed route lines on one client and a cleared route/missing active snapshot on
 the other. Their **0.4.0 reports on build 70205** show objective details on both
 clients, incoming peer objective snapshots, matching quest/history sync, and
-routes with 16 pins / 20 lines. The screenshot exposes map presentation issues
-addressed in 0.5.0; its actual rendering still needs a beta check. The native
+routes with 16 pins / 20 lines. Later screenshots still showed missing lines
+and pins despite a route legend. Version 0.5.2 changes the drawing surface to
+the visible viewport; actual rendering still needs a beta check. The native
 waypoint action worked. Compatibility never depends on project ID alone.
 New recipe, AH, map-link/world-position, NPC fallback and auto-accept behavior
 remain unverified in the beta. API presence does not establish working behavior.
@@ -335,6 +367,8 @@ unprotected frame samples at 10 Hz only while visible with a selected route.
 8. Select a **Local XP circuit**. Confirm pickups precede objectives and grouped
    turn-ins, routes stay local, and listed rewards do not promise actual XP.
    Inspect **Buy list** on a quest with published vendor-listed requirements.
+   Disable **Finish our current quests first** to explore new-pickup circuits
+   while you still have quests in your log.
 9. In **Dungeons**, inspect nearby collections. Test the level prompt, current-zone
    pickups before the entrance, prerequisite checks, and the last party member's
    completion. If the entrance is unknown, record it while standing outside.
@@ -351,6 +385,12 @@ unprotected frame samples at 10 Hz only while visible with a selected route.
     on one client while a friend still needs the quest: the arrow should continue
     with the remaining party route. `/wt arrow` hides it. Cross-zone stops show
     the zone name until you reach that zone; lines remain on the world map only.
+13. With ready quests still in the logs, the guide should say **Turn in ready
+    quests** before offering new pickups. Show that route, then pan, zoom and
+    resize the map: pins/lines should stay on their coordinates. Several
+    turn-ins at one NPC share a numbered pin. If rendering is still wrong,
+    copy `/wt probe` and include **Route drawing surface**, its view geometry,
+    **Rendered route pins / lines**, and the `GetViewRect` capability result.
 
 The diagnostic probe does not place a waypoint. API presence and self echoes
 do not prove behavior or peer delivery. Enable `/console scriptErrors 1` while
@@ -376,7 +416,9 @@ local XP circuits and phase ordering, opt-in acceptance guards, dungeon collecti
 and completion, nearby zone transitions, personal recipe/material plans,
 observed AH prices, alternate NPC targets, vendor buy lists, source parsing,
 arrow cardinal bearings, physical map scale, restricted position/facing,
-arrival without automation, movement sampling, persistence, and party route updates.
+arrival without automation, movement sampling, persistence, party route updates,
+level-three ready-turn-in priority, current party log unions, missing destinations,
+viewport projection, pan/zoom timing, clipping, and clustered markers.
 Synthetic fixtures are not shipped as game data. Mocks do not establish real
 beta rendering or protected-action compatibility.
 

@@ -6,6 +6,136 @@ function ns.ReadPublic(fn, ...)
     if okay and ns.Public(a) and ns.Public(b) and ns.Public(c) then return a, b, c end
 end
 
+local function currentPeople(id)
+    local result = {}
+    for _, person in ipairs(ns.PartyProfiles()) do
+        local active = person.key == ns.self and ns.active or (ns.members[person.key] and ns.members[person.key].active)
+        if person.synced and active and active[id] then result[#result + 1] = person end
+    end
+    return result
+end
+
+function ns.CurrentQuestPending(id)
+    for _, name in ipairs(ns.partyNames or {}) do
+        local member = ns.members[name]
+        if member and member.syncPending and member.active and member.active[id] then return true end
+    end
+    return false
+end
+
+function ns.CurrentQuestFinished(id)
+    return #currentPeople(id) == 0 and not ns.CurrentQuestPending(id)
+end
+
+function ns.HasCurrentPartyQuests()
+    for _, person in ipairs(ns.PartyProfiles()) do
+        local active = person.key == ns.self and ns.active or (ns.members[person.key] and ns.members[person.key].active)
+        for id in pairs(active or {}) do if not ns.IsProfessionQuest(id) then return true end end
+    end
+    return false
+end
+
+function ns.BuildCurrentQuestRoute(guide, includeOrigin)
+    local mapID, phases, missing, otherMaps, partial = guide.mapID, {{}, {}, {}}, 0, 0, false
+    local seen = {{}, {}, {}}
+    for _, record in ipairs(guide.records) do
+        local found, unavailable = false, false
+        for _, person in ipairs(currentPeople(record.id)) do
+            found = true
+            local stages = ns.RouteStages(record, person.key)
+            if #stages == 0 then unavailable = true end
+            local immediate = stages[1] and stages[1].kind == "t"
+            for index, stop in ipairs(stages) do
+                if stop.mapID ~= mapID then otherMaps = otherMaps + #stages - index + 1; break end
+                local phase = immediate and 1 or (stop.kind == "q" and 2 or 3)
+                if stop.kind ~= "a" then
+                    local key = record.id .. ":" .. stop.kind .. ":" .. math.floor(stop.x * 100000) .. ":" .. math.floor(stop.y * 100000)
+                    local old = seen[phase][key]
+                    if not old then
+                        stop.memberKey, stop.forPlayer = person.key, person.name
+                        seen[phase][key] = stop; phases[phase][#phases[phase] + 1] = stop
+                    else old.forPlayer = old.forPlayer .. ", " .. person.name end
+                end
+            end
+        end
+        if unavailable then missing = missing + 1 end
+        if not found and ns.CurrentQuestPending(record.id) then partial = true end
+        local quest = ns.CatalogueQuest(record.id)
+        if quest and quest.objectiveLocationsIncomplete and not ns.CurrentQuestFinished(record.id) then partial = true end
+    end
+    local position = ns.PlayerPoint(mapID)
+    local stops, last, ready = {}, position, #phases[1]
+    for _, remaining in ipairs(phases) do
+        while #remaining > 0 and #stops < 20 do
+            local best, distance = 1, math.huge
+            for index, stop in ipairs(remaining) do
+                local value = last and ns.NormalizedDistance(last, stop) or index
+                if value < distance then best, distance = index, value end
+            end
+            last = table.remove(remaining, best); stops[#stops + 1] = last
+        end
+    end
+    local limited = #phases[1] + #phases[2] + #phases[3]
+    return {key = guide.key, title = guide.title, mapID = mapID, stops = stops, origin = includeOrigin and position or nil,
+        focusKey = ns.self, ready = ready, missing = missing, otherMaps = otherMaps, limited = limited,
+        partial = partial or missing > 0 or otherMaps > 0 or limited > 0}
+end
+
+function ns.CurrentQuestChoices()
+    local ids, waiting = {}, 0
+    for _, person in ipairs(ns.PartyProfiles()) do
+        if not person.synced then waiting = waiting + 1
+        else
+            local active = person.key == ns.self and ns.active or (ns.members[person.key] and ns.members[person.key].active)
+            for id in pairs(active or {}) do if not ns.IsProfessionQuest(id) then ids[id] = true end end
+        end
+    end
+    local ordered = {}; for id in pairs(ids) do ordered[#ordered + 1] = id end; table.sort(ordered)
+    if #ordered == 0 then
+        ns.currentGuideStatus = waiting > 0 and "Waiting for friends' quest logs before suggesting new pickups." or nil
+        return waiting > 0 and {} or nil
+    end
+    local groups, choices = {}, {}
+    local currentMap = ns.profile and ns.profile.mapID or 0
+    local liveRecords = ns.RouteRecords()
+    for _, id in ipairs(ordered) do
+        local record = ns.CatalogueRecord(id) or liveRecords[id] or {id = id, title = ns.QuestTitle(id),
+            level = ns.questLevels[id] or 0, source = "p", lineID = 0, lineName = "", npc = "", mapID = currentMap}
+        local maps = {}
+        for _, person in ipairs(currentPeople(id)) do
+            local stages = ns.RouteStages(record, person.key)
+            maps[stages[1] and stages[1].mapID or currentMap] = true
+        end
+        for mapID in pairs(maps) do
+            local group = groups[mapID]
+            if not group then
+                group = {key = "current:" .. mapID, mode = "current", mapID = mapID, records = {}, focusKey = ns.self,
+                    kind = "Current party quests", zone = ns.MapName(mapID), profilesReady = waiting == 0}
+                groups[mapID] = group
+            end
+            group.records[#group.records + 1] = record
+        end
+    end
+    for _, group in pairs(groups) do
+        local route = ns.BuildCurrentQuestRoute(group, true)
+        group.nextStop, group.knownStops, group.missingStops = route.stops[1], #route.stops, route.missing
+        group.hasPoint, group.ready = #route.stops > 0, route.ready
+        group.title = route.ready > 0 and ("Turn in " .. route.ready .. " ready quest" .. (route.ready == 1 and "" or "s")) or "Finish our current quests"
+        group.target = group.records[1]
+        for _, record in ipairs(group.records) do if group.nextStop and record.id == group.nextStop.id then group.target = record; break end end
+        group.level = group.target.level > 0 and group.target.level or nil
+        group.priority = (group.mapID == currentMap and 10000 or 0) + (group.hasPoint and 2000 or 0) + route.ready * 100
+        group.reason = "From your party's quest logs. Ready turn-ins first, then unfinished objectives; no new quest pickups."
+        if waiting > 0 then group.reason = group.reason .. " " .. waiting .. " friend(s) still need to sync." end
+        if route.missing > 0 then group.reason = group.reason .. " " .. route.missing .. " active quest(s) have no verified destination yet." end
+        group.destination = group.nextStop and group.nextStop.label or "Check active quest destinations"
+        choices[#choices + 1] = group
+    end
+    table.sort(choices, function(a, b) if a.priority ~= b.priority then return a.priority > b.priority end; return a.key < b.key end)
+    ns.currentGuideStatus = "Finish our current quests first is on."
+    return choices
+end
+
 function ns.IsProfessionQuest(id)
     local quest = ns.CatalogueQuest(id)
     return quest and quest.categoryPath and string.sub(quest.categoryPath, 1, 12) == "professions/" or false

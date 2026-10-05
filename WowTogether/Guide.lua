@@ -303,6 +303,11 @@ function ns.PartyProfiles()
 end
 
 function ns.GuideChoices()
+    ns.currentGuideStatus = nil
+    if ns.Option("currentQuestsFirst") and ns.CurrentQuestChoices then
+        local current = ns.CurrentQuestChoices()
+        if current then return current end
+    end
     local groups, profiles = {}, ns.PartyProfiles()
     local lowest, highest, lowName, lowKey, ready = nil, nil, nil, ns.self, true
     local factions = {}

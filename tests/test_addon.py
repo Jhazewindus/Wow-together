@@ -21,10 +21,19 @@ function methods:SetScript(name, callback) self[name] = callback end
 function methods:CreateFontString() return setmetatable({}, {__index=methods}) end
 function methods:CreateTexture() return setmetatable({}, {__index=methods}) end
 function methods:CreateLine() return setmetatable({}, {__index=methods}) end
-function methods:SetStartPoint(...) self.startPoint = {...} end
-function methods:SetEndPoint(...) self.endPoint = {...} end
+-- Mainline SimpleLineAPIDocumentation: relativePoint, relativeTo, offsetX, offsetY.
+-- Line anchors do not have the additional anchor string accepted by SetPoint.
+function methods:SetStartPoint(point, relativeTo, x, y, ...)
+    assert(type(point)=='string' and type(x)=='number' and type(y)=='number' and select('#', ...)==0, 'four-argument line anchor required')
+    self.startPoint = {point, relativeTo, x, y}
+end
+function methods:SetEndPoint(point, relativeTo, x, y, ...)
+    assert(type(point)=='string' and type(x)=='number' and type(y)=='number' and select('#', ...)==0, 'four-argument line anchor required')
+    self.endPoint = {point, relativeTo, x, y}
+end
 function methods:GetFrameLevel() return self.frameLevel or 0 end
 function methods:SetFrameLevel(level) self.frameLevel = level end
+function methods:SetParent(parent) self.parent = parent end
 function methods:GetStringHeight() return 100 end
 function methods:IsShown() return self.shown or false end
 function methods:SetShown(value) self.shown = value end
@@ -101,7 +110,7 @@ class Client:
         if not default_guide:
             self.ns.SetFilter('all')
 
-    def guide_environment(self, level=5):
+    def guide_environment(self, level=5, current_quests_first=False):
         # Synthetic beta API data; these coordinates/NPCs are not a game database.
         self.lua.execute(r"""
         playerLevel = 5
@@ -124,6 +133,8 @@ class Client:
         C_QuestLog.GetQuestDifficultyLevel=function(id) return questLevels[id] or 0 end
         """)
         self.lua.globals().playerLevel = level
+        # Legacy discovery tests explicitly exercise the new-pickup mode.
+        self.ns.db.config.currentQuestsFirst = current_quests_first
         self.ns.ReadGuide()
 
     def unit_names(self, names):
