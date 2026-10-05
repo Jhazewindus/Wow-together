@@ -25,6 +25,7 @@ def viewport(c, left=0, right=1, top=0, bottom=1):
 def current_client():
     c = solo()
     c.ns.db.config.currentQuestsFirst = True
+    c.ns.db.config.nearbyPickups = False  # Exercise the explicitly strict mode.
     catalogue(c, {900: nearby('Ready A', level=2, minLevel=1),
                   901: nearby('Ready B', level=3, minLevel=1),
                   902: nearby('Work here', level=5, minLevel=1),

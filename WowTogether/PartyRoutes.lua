@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
 local revision, transfers, received = 0, {}, {}
-local modes = {current = true, circuit = true, normal = true, dungeon = true}
+local modes = {current = true, bundle = true, circuit = true, normal = true, dungeon = true}
 ns.partyRouteStatus = "No party route has been started."
 
 function ns.RouteHistoryScope(records)
@@ -41,7 +41,10 @@ function ns.StartPartyRoute(guide)
     local total, queued = math.ceil(#ids / 8), true
     for part = 1, total do
         local values = {}
-        for index = (part - 1) * 8 + 1, math.min(part * 8, #ids) do values[#values + 1] = ids[index] end
+        for index = (part - 1) * 8 + 1, math.min(part * 8, #ids) do
+            local id = ids[index]
+            values[#values + 1] = tostring(id) .. (mode == "bundle" and guide.pickupIDs and guide.pickupIDs[id] and "+" or "")
+        end
         local packet = table.concat({"1", "V", revision, part, total, mode, ns.selectedRoute.mapID, target, table.concat(values, ",")}, "|")
         if not ns.QueueMessage(packet) then queued = false end
     end
@@ -73,8 +76,9 @@ function ns.BuildInvitedGuide(invite)
     local target = records[1]
     for _, record in ipairs(records) do if record.id == invite.target then target = record end end
     return {key = "party:" .. invite.sender .. ":" .. invite.revision, title = mode == "current" and "Our current party quests"
+            or (mode == "bundle" and "Our quests + nearby pickups")
             or (mode == "circuit" and "Party quest circuit" or target.seriesName or target.title),
-        mode = mode, mapID = invite.mapID, records = records, target = target, focusKey = ns.self,
+        mode = mode, mapID = invite.mapID, records = records, target = target, focusKey = ns.self, pickupIDs = invite.pickupIDs,
         kind = "Party route", zone = ns.MapName(invite.mapID), profilesReady = true, sharedBy = invite.sender},
         missing > 0 and (missing .. " quest record(s) are unavailable on this client.") or nil
 end
@@ -137,23 +141,27 @@ end
 function ns.ReceivePartyRouteMessage(message, sender)
     if string.sub(message, 1, 4) ~= "1|V|" then return false end
     if not currentPeer(sender) then return true, false, "party route sender left roster" end
-    local rev, part, total, mode, mapID, target, payload = string.match(message, "^1|V|(%d+)|(%d+)|(%d+)|(%a+)|(%d+)|(%d+)|([%d,]+)$")
+    local rev, part, total, mode, mapID, target, payload = string.match(message, "^1|V|(%d+)|(%d+)|(%d+)|(%a+)|(%d+)|(%d+)|([%d,+]+)$")
     rev, part, total, mapID, target = tonumber(rev), tonumber(part), tonumber(total), tonumber(mapID), tonumber(target)
     if not modes[mode] or not ns.GuideInteger(rev, 2147483647) or rev < 1 or not ns.GuideInteger(total, 3) or total < 1
         or not ns.GuideInteger(part, total) or part < 1 or not ns.GuideInteger(mapID, 1000000) or mapID < 1
         or not ns.GuideInteger(target, 2147483647) or target < 1 then return true, false, "invalid party route envelope" end
     if rev <= (received[sender] or 0) then return true, false, "old party route invitation" end
-    local ids, seen = {}, {}
+    local ids, seen, pickupIDs, canonical = {}, {}, {}, {}
     for value in string.gmatch(payload, "[^,]+") do
-        local id = tonumber(value)
+        local number, pickup = string.match(value, "^(%d+)(%+?)$")
+        local id = tonumber(number)
         if not ns.GuideInteger(id, 2147483647) or id <= 0 or seen[id] or #ids >= 8 then return true, false, "invalid party route quest IDs" end
+        if pickup == "+" and mode ~= "bundle" then return true, false, "pickup roles require a bundled route" end
         ids[#ids + 1] = id; seen[id] = true
+        if pickup == "+" then pickupIDs[id] = true end
+        canonical[#canonical + 1] = tostring(id) .. pickup
     end
-    if table.concat(ids, ",") ~= payload then return true, false, "invalid party route payload" end
+    if table.concat(canonical, ",") ~= payload then return true, false, "invalid party route payload" end
     local bucket = transfers[sender]
     if bucket and rev < bucket.revision then return true, false, "older party route transfer" end
     if not bucket or rev > bucket.revision then
-        bucket = {revision = rev, total = total, mode = mode, mapID = mapID, target = target, parts = {}, count = 0}
+        bucket = {revision = rev, total = total, mode = mode, mapID = mapID, target = target, parts = {}, pickupIDs = {}, count = 0}
         transfers[sender] = bucket
         if C_Timer and type(C_Timer.After) == "function" then
             C_Timer.After(300, function() if transfers[sender] == bucket then transfers[sender] = nil end end)
@@ -162,6 +170,7 @@ function ns.ReceivePartyRouteMessage(message, sender)
     if bucket.total ~= total or bucket.mode ~= mode or bucket.mapID ~= mapID or bucket.target ~= target
         or bucket.parts[part] then return true, false, "duplicate or inconsistent party route part" end
     bucket.parts[part] = ids; bucket.count = bucket.count + 1
+    for id in pairs(pickupIDs) do bucket.pickupIDs[id] = true end
     if bucket.count ~= total then return true, true end
     local all, unique = {}, {}
     for index = 1, total do
@@ -172,7 +181,7 @@ function ns.ReceivePartyRouteMessage(message, sender)
     end
     if not unique[target] then transfers[sender] = nil; return true, false, "party route target is outside selection" end
     received[sender], transfers[sender] = rev, nil
-    ns.pendingPartyRouteInvite = {sender = sender, revision = rev, ids = all, mode = mode, mapID = mapID, target = target}
+    ns.pendingPartyRouteInvite = {sender = sender, revision = rev, ids = all, mode = mode, mapID = mapID, target = target, pickupIDs = bucket.pickupIDs}
     ns.partyRouteStatus = "Route invitation received from " .. ns.MemberLabel(sender) .. "."
     ns.ShowPartyRouteInvite()
     return true, true

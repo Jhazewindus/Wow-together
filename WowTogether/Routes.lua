@@ -276,7 +276,7 @@ local function origin(mapID)
 end
 
 function ns.BuildGuideRoute(guide, includeOrigin)
-    if guide.mode == "current" and ns.BuildCurrentQuestRoute then return ns.BuildCurrentQuestRoute(guide, includeOrigin) end
+    if (guide.mode == "current" or guide.mode == "bundle") and ns.BuildCurrentQuestRoute then return ns.BuildCurrentQuestRoute(guide, includeOrigin) end
     if guide.mode == "dungeon" and ns.BuildDungeonRoute then return ns.BuildDungeonRoute(guide, includeOrigin) end
     if guide.mode == "circuit" and ns.BuildCircuitRoute then return ns.BuildCircuitRoute(guide, includeOrigin) end
     local blocks, missing, focusKey = {}, 0, guide.focusKey or ns.self
@@ -600,9 +600,23 @@ function ns.UpdateSelectedRoute(choices)
     if not selection then return end
     local discovery = selection.mode == "circuit" or string.match(selection.key, "^zone%-route:")
         or string.match(selection.key, "^series:") or string.match(selection.key, "^line:") or string.match(selection.key, "^npc:")
-    if ns.Option("currentQuestsFirst") and discovery and choices and choices[1] and choices[1].mode == "current" then
+    if ns.Option("currentQuestsFirst") and discovery and choices and choices[1]
+        and (choices[1].mode == "current" or choices[1].mode == "bundle") then
         selection = choices[1]
         ns.routeSelection, ns.routeSignature = selection, nil
+    end
+    if selection.mode == "current" and not selection.sharedBy and ns.Option("nearbyPickups") then
+        for _, choice in ipairs(choices or {}) do
+            if choice.mode == "bundle" and choice.mapID == selection.mapID then
+                selection = choice; ns.routeSelection, ns.routeSignature = choice, nil; break
+            end
+        end
+    elseif selection.mode == "bundle" and not selection.sharedBy and not ns.Option("nearbyPickups") then
+        -- Turning the setting off also removes planned pickups from an open route.
+        local copy = {}
+        for key, value in pairs(selection) do copy[key] = value end
+        copy.mode, copy.pickupIDs, copy.key = "current", nil, "current:" .. selection.mapID
+        selection = copy; ns.routeSelection, ns.routeSignature = copy, nil
     end
     if selection.mode == "dungeon" then
         local finished = true
@@ -634,16 +648,21 @@ function ns.UpdateSelectedRoute(choices)
     local focus = guide and guide.focusKey or selection.focusKey
     local member = focus ~= ns.self and ns.members[focus]
     local waiting = focus ~= ns.self and (not member or not member.active or member.syncPending)
-    if selection.mode == "current" then
+    if selection.mode == "current" or selection.mode == "bundle" then
         for _, record in ipairs(selection.records) do if ns.CurrentQuestPending(record.id) then waiting = true; break end end
+        if selection.mode == "bundle" then
+            for _, person in ipairs(ns.PartyProfiles()) do if not person.synced then waiting = true; break end end
+        end
     end
     local route = guide and ns.BuildGuideRoute(guide, false)
     if waiting or not route or #route.stops == 0 then
         local finished = not waiting
         for _, record in ipairs(selection.records or {selection.target}) do
-            local complete = selection.mode == "current" and ns.CurrentQuestFinished(record.id)
-                or selection.personal and ns.Completed(record.id) == true and not ns.active[record.id]
-                or (not selection.personal and ns.PartyQuestFinished(record.id))
+            local complete
+            if selection.mode == "bundle" then complete = ns.BundleQuestFinished(selection, record.id)
+            elseif selection.mode == "current" then complete = ns.CurrentQuestFinished(record.id)
+            elseif selection.personal then complete = ns.Completed(record.id) == true and not ns.active[record.id]
+            else complete = ns.PartyQuestFinished(record.id) end
             if not complete then finished = false; break end
         end
         if finished then ns.ClearRoute(); ns.routeStats.status = selection.mode == "current" and "No selected quests remain in party logs." or "Selected route completed."; ns.guideAction = ns.routeStats.status

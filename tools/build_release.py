@@ -41,13 +41,20 @@ through all quests/objectives; player names, zones and counts appear together.
 /wt config opens settings: transparent tracker, circuit budgets, class quests,
 NPC hints, map legend, dungeon/zone prompts and opt-in auto-accept.
 Finish our current quests first is ON by default. Ready turn-ins come first,
-then unfinished party objectives and their later returns. Your completed quest
-can be handed in while a friend's objectives stay marked. No new pickups are
-planned until the current logs clear. Disable this option to discover new lines.
+then eligible nearby pickups, combined objectives and their later returns.
+Include eligible nearby pickups is also ON by default. The existing trip's
+walking budget limits pickup/return NPCs and known objective areas. Prerequisites,
+faction, level and per-player eligibility still gate new pickups. Unknown
+objective locations are explicitly partial; use the game tracker for them.
+Your completed quest can be handed in while a friend's objectives stay marked.
+Disable nearby pickups for accepted-quests-only plans, or disable current quests
+first to discover new lines. No quest IDs are hardcoded into the bundler.
 Main guide cards offer Start route instead of Quest details. Show route stays
 local; Start route shares up to 20 selected quest IDs with party members.
 Friends choose Follow route or Keep my route. Their current route remains
-until they accept. Each client uses its own party objective/turn-in stages;
+until they accept. Nearby-pickup roles are retained, including when a friend
+has already accepted the quest. Explicit Follow route accepts that selection
+even with automatic nearby pickups off. Each client uses its own party stages;
 missing prerequisite/history data waits for sync. Solo Start route stays local.
 The native resize gesture reflows cards without rebuilding plans per pixel.
 /wt arrow toggles the small direction arrow for your selected route. Drag it

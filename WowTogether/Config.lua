@@ -3,7 +3,7 @@ local addonName, ns = ...
 local defaults = {autoAccept = false, npcHints = true, classQuests = false,
     dungeonPrompts = true, zonePrompts = true, trackerOpacity = 0.08,
     trackerHeight = 350, circuitRadius = 0.16, circuitLimit = 6, mapLegend = true, professionBatch = 5, routeArrow = true,
-    currentQuestsFirst = true}
+    currentQuestsFirst = true, nearbyPickups = true}
 
 function ns.Option(key)
     local value = ns.db and ns.db.config and ns.db.config[key]
@@ -51,7 +51,7 @@ end
 function ns.CreateSettings()
     local frame = CreateFrame("Frame", "WowTogetherSettings", UIParent, "BackdropTemplate")
     ns.settings = frame
-    frame:SetSize(560, 634); frame:SetPoint("CENTER"); frame:SetFrameStrata("DIALOG")
+    frame:SetSize(560, 668); frame:SetPoint("CENTER"); frame:SetFrameStrata("DIALOG")
     frame:SetClampedToScreen(true); ns.UIPanel(frame)
     frame:SetMovable(true); frame:EnableMouse(true); frame:RegisterForDrag("LeftButton")
     frame:SetScript("OnDragStart", frame.StartMoving); frame:SetScript("OnDragStop", frame.StopMovingOrSizing)
@@ -64,7 +64,8 @@ function ns.CreateSettings()
         {"dungeonPrompts", "Suggest collecting dungeon quests when in level range"},
         {"zonePrompts", "Suggest nearby zone transitions from known questlines"}, {"mapLegend", "Show the small map route legend"},
         {"routeArrow", "Show the movable direction arrow for my selected route"},
-        {"currentQuestsFirst", "Finish our current quests first (ready turn-ins before new pickups)"}}) do
+        {"currentQuestsFirst", "Finish our current quests first (ready turn-ins before new pickups)"},
+        {"nearbyPickups", "Include eligible nearby pickups in our current quest trip"}}) do
         local key = entry[1]
         local check = CreateFrame("CheckButton", nil, frame, "UICheckButtonTemplate")
         check:SetPoint("TOPLEFT", 20, -52 - (index - 1) * 34); check:SetSize(26, 26)
@@ -82,11 +83,11 @@ function ns.CreateSettings()
         {"professionBatch", "Profession craft batch", {1, 5, 10, 20}, {"1", "5", "10", "20"}}}
     for index, entry in ipairs(presets) do
         local key = entry[1]
-        local caption = ns.UILabel(frame, nil, 11); caption:SetPoint("TOPLEFT", 22, -338 - (index - 1) * 43)
+        local caption = ns.UILabel(frame, nil, 11); caption:SetPoint("TOPLEFT", 22, -372 - (index - 1) * 43)
         caption:SetText(entry[2]); caption:SetWidth(180)
         for column, value in ipairs(entry[3]) do
             local control = ns.UIButton(frame, entry[4][column], 74, function() ns.SetOption(key, value) end)
-            control:SetPoint("TOPLEFT", 202 + (column - 1) * 80, -328 - (index - 1) * 43)
+            control:SetPoint("TOPLEFT", 202 + (column - 1) * 80, -362 - (index - 1) * 43)
             control.optionKey, control.optionValue = key, value
             frame.values[#frame.values + 1] = control
         end

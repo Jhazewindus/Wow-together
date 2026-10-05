@@ -36,32 +36,45 @@ function ns.HasCurrentPartyQuests()
 end
 
 function ns.BuildCurrentQuestRoute(guide, includeOrigin)
-    local mapID, phases, missing, otherMaps, partial = guide.mapID, {{}, {}, {}}, 0, 0, false
-    local seen = {{}, {}, {}}
+    local mapID, phases, missing, otherMaps, partial = guide.mapID, {{}, {}, {}, {}}, 0, 0, false
+    local seen, unknownObjectives = {{}, {}, {}, {}}, 0
     for _, record in ipairs(guide.records) do
         local found, unavailable = false, false
-        for _, person in ipairs(currentPeople(record.id)) do
-            found = true
-            local stages = ns.RouteStages(record, person.key)
-            if #stages == 0 then unavailable = true end
-            local immediate = stages[1] and stages[1].kind == "t"
-            for index, stop in ipairs(stages) do
-                if stop.mapID ~= mapID then otherMaps = otherMaps + #stages - index + 1; break end
-                local phase = immediate and 1 or (stop.kind == "q" and 2 or 3)
-                if stop.kind ~= "a" then
-                    local key = record.id .. ":" .. stop.kind .. ":" .. math.floor(stop.x * 100000) .. ":" .. math.floor(stop.y * 100000)
-                    local old = seen[phase][key]
-                    if not old then
-                        stop.memberKey, stop.forPlayer = person.key, person.name
-                        seen[phase][key] = stop; phases[phase][#phases[phase] + 1] = stop
-                    else old.forPlayer = old.forPlayer .. ", " .. person.name end
+        local people = currentPeople(record.id)
+        local pickup = guide.mode == "bundle" and guide.pickupIDs and guide.pickupIDs[record.id]
+        if pickup then people = ns.PartyProfiles() end
+        for _, person in ipairs(people) do
+            if person.synced then
+                local stages = ns.RouteStages(record, person.key)
+                -- Only explicitly selected nearby quests may add pickup stages.
+                -- Completed or ineligible players contribute no stages.
+                if #stages > 0 then
+                    found = true
+                    local immediate = stages[1].kind == "t"
+                    for index, stop in ipairs(stages) do
+                        if stop.mapID ~= mapID then otherMaps = otherMaps + #stages - index + 1; break end
+                        local phase = immediate and 1 or (stop.kind == "a" and 2 or (stop.kind == "q" and 3 or 4))
+                        if stop.kind ~= "a" or pickup then
+                            local key = record.id .. ":" .. stop.kind .. ":" .. math.floor(stop.x * 100000) .. ":" .. math.floor(stop.y * 100000)
+                            local old = seen[phase][key]
+                            if not old then
+                                stop.memberKey, stop.forPlayer = person.key, person.name
+                                seen[phase][key] = stop; phases[phase][#phases[phase] + 1] = stop
+                            else old.forPlayer = old.forPlayer .. ", " .. person.name end
+                        end
+                    end
+                elseif person.key == ns.self and ns.active[record.id]
+                    or ns.members[person.key] and ns.members[person.key].active and ns.members[person.key].active[record.id] then
+                    unavailable = true
                 end
             end
         end
         if unavailable then missing = missing + 1 end
         if not found and ns.CurrentQuestPending(record.id) then partial = true end
         local quest = ns.CatalogueQuest(record.id)
-        if quest and quest.objectiveLocationsIncomplete and not ns.CurrentQuestFinished(record.id) then partial = true end
+        if quest and quest.objectiveLocationsIncomplete and found then
+            partial = true; unknownObjectives = unknownObjectives + 1
+        end
     end
     local position = ns.PlayerPoint(mapID)
     local stops, last, ready = {}, position, #phases[1]
@@ -75,10 +88,22 @@ function ns.BuildCurrentQuestRoute(guide, includeOrigin)
             last = table.remove(remaining, best); stops[#stops + 1] = last
         end
     end
-    local limited = #phases[1] + #phases[2] + #phases[3]
+    local limited = #phases[1] + #phases[2] + #phases[3] + #phases[4]
     return {key = guide.key, title = guide.title, mapID = mapID, stops = stops, origin = includeOrigin and position or nil,
-        focusKey = ns.self, ready = ready, missing = missing, otherMaps = otherMaps, limited = limited,
+        focusKey = ns.self, ready = ready, missing = missing, otherMaps = otherMaps, limited = limited, unknownObjectives = unknownObjectives,
         partial = partial or missing > 0 or otherMaps > 0 or limited > 0}
+end
+
+function ns.BundleQuestFinished(guide, id)
+    if not guide.pickupIDs or not guide.pickupIDs[id] then return ns.CurrentQuestFinished(id) end
+    for _, person in ipairs(ns.PartyProfiles()) do
+        if not person.synced then return false end
+        local active = person.key == ns.self and ns.active or (ns.members[person.key] and ns.members[person.key].active)
+        if active and active[id] then return false end
+        if ns.CatalogueCompletion(person.key, id) ~= true
+            and ns.CatalogueAllowed(id, person.profile, person.key) ~= false then return false end
+    end
+    return true
 end
 
 function ns.CurrentQuestChoices()
@@ -118,6 +143,10 @@ function ns.CurrentQuestChoices()
     end
     for _, group in pairs(groups) do
         local route = ns.BuildCurrentQuestRoute(group, true)
+        if ns.Option("nearbyPickups") and group.profilesReady and group.mapID == currentMap then
+            ns.AddNearbyPickups(group, route)
+            if group.mode == "bundle" then route = ns.BuildCurrentQuestRoute(group, true) end
+        end
         group.nextStop, group.knownStops, group.missingStops = route.stops[1], #route.stops, route.missing
         group.hasPoint, group.ready = #route.stops > 0, route.ready
         group.title = route.ready > 0 and ("Turn in " .. route.ready .. " ready quest" .. (route.ready == 1 and "" or "s")) or "Finish our current quests"
@@ -126,13 +155,24 @@ function ns.CurrentQuestChoices()
         group.level = group.target.level > 0 and group.target.level or nil
         group.priority = (group.mapID == currentMap and 10000 or 0) + (group.hasPoint and 2000 or 0) + route.ready * 100
         group.reason = "From your party's quest logs. Ready turn-ins first, then unfinished objectives; no new quest pickups."
+        if group.mode == "bundle" then
+            group.kind = "Current quests + nearby pickups"
+            if route.ready == 0 then group.title = "Current quests + nearby pickups" end
+            local names = {}
+            for _, record in ipairs(group.records) do
+                if group.pickupIDs[record.id] then names[#names + 1] = record.title .. (record.npc ~= "" and (" at " .. record.npc) or "") end
+            end
+            group.reason = "Ready turn-ins first. Nearby pickups: " .. table.concat(names, "; ")
+                .. ". Combine mapped objectives, then group later turn-ins."
+        end
+        if route.unknownObjectives > 0 then group.reason = group.reason .. " " .. route.unknownObjectives .. " quest(s) have incomplete objective locations; those steps need the game tracker." end
         if waiting > 0 then group.reason = group.reason .. " " .. waiting .. " friend(s) still need to sync." end
         if route.missing > 0 then group.reason = group.reason .. " " .. route.missing .. " active quest(s) have no verified destination yet." end
         group.destination = group.nextStop and group.nextStop.label or "Check active quest destinations"
         choices[#choices + 1] = group
     end
     table.sort(choices, function(a, b) if a.priority ~= b.priority then return a.priority > b.priority end; return a.key < b.key end)
-    ns.currentGuideStatus = "Finish our current quests first is on."
+    ns.currentGuideStatus = ns.Option("nearbyPickups") and "Current quests first, with eligible nearby pickups." or "Finish our current quests first is on."
     return choices
 end
 
@@ -218,6 +258,77 @@ local function focusPlayer()
         elseif not level or level <= 0 or p.level < level or (p.level == level and person.key < key) then key, level = person.key, p.level end
     end
     return key, level or 0, ready
+end
+
+local function distanceToTrip(point, route)
+    local best, last = math.huge, route.origin
+    for _, stop in ipairs(route.stops) do
+        best = math.min(best, ns.NormalizedDistance(point, stop))
+        if last and last.mapID == point.mapID and stop.mapID == point.mapID then
+            local dx, dy = (stop.x - last.x) * 1.5, stop.y - last.y
+            local length = dx * dx + dy * dy
+            if length > 0 then
+                local t = math.max(0, math.min(1, (((point.x - last.x) * 1.5) * dx + (point.y - last.y) * dy) / length))
+                best = math.min(best, ns.NormalizedDistance(point, {mapID = point.mapID,
+                    x = last.x + (stop.x - last.x) * t, y = last.y + dy * t}))
+            end
+        end
+        last = stop
+    end
+    return best
+end
+
+function ns.AddNearbyPickups(group, route)
+    local key, level, ready = focusPlayer()
+    if not ready or level <= 0 or #route.stops == 0 or #route.stops >= 20 then return end
+    local selected, candidates, radius = {}, {}, ns.Option("circuitRadius")
+    for _, record in ipairs(group.records) do selected[record.id] = true end
+    for _, id in ipairs(mapRecords(group.mapID)) do
+        local quest = ns.CatalogueQuest(id)
+        if not selected[id] and ns.LevelingQuestEnabled(id) and (quest.level or 0) <= level + 2
+            and (quest.minLevel or 0) <= level then
+            local record = ns.CatalogueRecord(id)
+            local stages = ns.PartyRouteStages(record, key)
+            local first, finish = stages[1], quest.ends and quest.ends[1]
+            local valid = first and first.kind == "a" and first.mapID == group.mapID
+                and finish and finish.mapID == group.mapID
+                and distanceToTrip(first, route) <= radius * 0.45
+                and distanceToTrip(finish, route) <= radius * 0.45
+            local detour = valid and distanceToTrip(first, route) or math.huge
+            for _, stop in ipairs(stages) do
+                local distance = distanceToTrip(stop, route)
+                if stop.mapID ~= group.mapID or distance > radius then valid = false end
+                detour = math.max(detour, distance)
+            end
+            if valid then candidates[#candidates + 1] = {record = record, stages = #stages, detour = detour,
+                incomplete = quest.objectiveLocationsIncomplete == true} end
+        end
+    end
+    table.sort(candidates, function(a, b)
+        -- Prefer complete location data, then shorter detours. XP cannot
+        -- justify a distant pickup or objective area.
+        if a.incomplete ~= b.incomplete then return not a.incomplete end
+        if a.detour ~= b.detour then return a.detour < b.detour end
+        return a.record.id < b.record.id
+    end)
+    local added, stops, incomplete = {}, #route.stops, 0
+    for _, candidate in ipairs(candidates) do
+        if #added < ns.Option("circuitLimit") and #group.records < 20 and stops + candidate.stages <= 20
+            and (not candidate.incomplete or incomplete < 2) then
+            group.records[#group.records + 1] = candidate.record
+            group.pickupIDs = group.pickupIDs or {}; group.pickupIDs[candidate.record.id] = true
+            added[#added + 1], stops = candidate.record.id, stops + candidate.stages
+            if candidate.incomplete then incomplete = incomplete + 1 end
+        end
+    end
+    if #added > 0 then
+        group.mode = "bundle"
+        local ids = {}; for _, record in ipairs(group.records) do ids[#ids + 1] = record.id end; table.sort(ids)
+        table.sort(added)
+        -- An accepted pickup changes its role in new recommendations. Keep an
+        -- explicitly selected bundle stable so other friends still get pickups.
+        group.key = "bundle:" .. group.mapID .. ":" .. table.concat(ids, ",") .. ":" .. table.concat(added, ",")
+    end
 end
 
 function ns.LocalCircuitChoices()

@@ -5,7 +5,35 @@ comparing progress, and drawing the next stops on the world map.
 Targets **interface 16001**, Lua **5.1**. No service or Battle.net credentials
 are required by the addon.
 
-## Version 0.5.3
+## Version 0.5.4
+
+- **Bundle pickups into the current trip:** **Include eligible nearby pickups**
+  is on by default alongside **Finish our current quests first**. The planner
+  checks local pickup/return NPCs and known objective areas against the existing
+  route, then orders ready turn-ins, nearby pickups, combined objectives and
+  later returns. It uses catalogue locations and each player's eligibility,
+  with no special cases for quest IDs. High XP cannot override a distant detour.
+- **Valley of Trials:** Lazy Peons can now share a plan with Galgar's Cactus
+  Apple Surprise and an eligible Vile Familiars variant. The apple quest's
+  published page has no objective coordinates, so its pickup can join the trip
+  while the guide explicitly calls its objective location incomplete. The game
+  tracker is needed for that missing step; no apple coordinates or early
+  turn-in are invented. Prerequisites still require history or a live NPC offer.
+- **Bounded, configurable trips:** the walking budget controls how far known
+  work may deviate from the original route. Pickup and return NPCs must be
+  closer still, and additions cannot expand the anchors to recruit successively
+  farther quests. Selections add at most six nearby quests (the circuit limit),
+  at most two with incomplete objective locations, and stay within 20 planned
+  stops. Unknown active destinations do not trigger unrelated discovery.
+  Disable nearby pickups for a strict accepted-quests-only plan.
+- **Party routes retain the bundle:** Start route shares which selected quests
+  are nearby pickups. Friends choose Follow route or Keep my route, and each
+  client checks its own prerequisites and progress. A friend's pickup/work
+  remains after another player accepts or hands in; a pending snapshot retains
+  the previous route. Explicitly following a friend's selection includes its
+  pickups even if your automatic nearby-pickup setting is off.
+
+The 0.5.3 changes are retained:
 
 - **Resize without repeated planning:** the top-left corner stays fixed while
   the native bottom-right resize gesture reflows existing cards. Full quest,
@@ -40,7 +68,8 @@ The 0.5.2 changes are retained:
 
 - **Finish our current quests first:** enabled by default in settings. Plans use
   confirmed party quest logs, prioritizing ready turn-ins before unfinished
-  objectives. New pickups are held back while current quests remain. Your own
+  objectives. Nearby eligible pickups can now join that trip; disable the new
+  nearby-pickup setting to hold all new pickups back. Your own
   turn-in can come first while a friend's remaining objectives stay on the route.
   Profession quests remain personal. Existing discovery routes switch to the
   current-log plan, and new dungeon/zone pickup prompts wait while those logs
@@ -147,7 +176,7 @@ World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
 `WowTogether.toc` belongs directly inside that folder. Update **every party
-member to 0.5.3**, including all new files, then `/reload`. Restart the client
+member to 0.5.4**, including all new files, then `/reload`. Restart the client
 fully if a new addon folder does not appear in the character-screen addon list.
 The release ZIP includes the complete TOC, every Lua file, data summary,
 instructions, and license. Copy the folder rather than individual changed files.
@@ -233,8 +262,9 @@ and layouts were not downloaded or copied. This implementation is independent.
    out before judging readiness. A recommendation is a heuristic, not a promise
    of efficient XP gains or pickup availability for every member.
    **Finish our current quests first** is now on by default. Current-log plans
-   route ready turn-ins, then the party's objectives and their later returns.
-   They contain no pickups for quests that nobody has accepted. An unavailable
+   route ready turn-ins, then eligible nearby pickups, combined objectives and
+   later returns. **Include eligible nearby pickups** is also on by default;
+   disable it for accepted-quests-only routes. An unavailable
    active destination is explained rather than replaced with a new questline.
    Existing accepted class and dungeon quests can be included for their holders;
    profession quests stay in personal guides. Nearby known stops are grouped
@@ -248,7 +278,7 @@ and layouts were not downloaded or copied. This implementation is independent.
    with your party. Friends choose **Follow route** or **Keep my route**; nothing
    replaces their route before they accept. Each client computes its own party
    objective/turn-in stages. Solo Start route starts locally. Update all clients
-   to 0.5.3 for the new invitation protocol. If more than 20 quests are selected,
+   to 0.5.4 for invitations that retain nearby-pickup roles. If more than 20 quests are selected,
    the invitation explicitly reports that the shared selection is limited.
 3. Accepting a quest switches from pickup to an objective. A finished active
    quest switches to turn-in. Turning it in follows the next party member who
@@ -388,8 +418,9 @@ public position/scale/facing. No continuous facing event exists, so its own
 unprotected frame samples at 10 Hz only while visible with a selected route.
 The user's latest solo report is explicitly **0.5.1 on build 70205**, level 4
 Horde in Durotar, with two active quests and an arrival distance of 3 yards.
-It does not validate the 0.5.2/0.5.3 rendering, resize, invitation or arrival
-changes. Host-side checks are not a substitute for those client tests.
+That diagnostic does not validate subsequent rendering, resize, invitation,
+arrival or nearby-bundling changes. Host-side checks are not a substitute for
+client tests; the 0.5.4 selection algorithm still needs a beta check.
 
 1. Update both clients, `/reload`, sync, and wait for the queue to drain.
 2. In Durotar, click **Show route** for a quest with coordinates. Check numbered
@@ -458,6 +489,15 @@ changes. Host-side checks are not a substitute for those client tests.
 16. Arrive at a known quest giver/receiver. The navigation overlay should retain
     the quest title, draw a downward arrow and say Talk to the NPC. Friendly
     nameplates may show quest names and a pointer when their public ID is visible.
+17. With Lazy Peons active around Valley of Trials and nearby pickups enabled,
+    check that Galgar's quest can join the current trip. Vile Familiars should
+    join only if its prerequisite history or a live NPC offer permits pickup.
+    Its class variants remain restricted. The apple pickup is mapped, but its
+    missing objective coordinates remain partial. Repeat around another known
+    quest hub to verify the rules use locations rather than special quest IDs.
+    Add a ready quest: its turn-in must precede the pickups. Switch nearby
+    pickups off for a strict current-log route. Share the bundle, let only one
+    friend accept or hand in, and verify the others' remaining stages persist.
 
 The diagnostic probe does not place a waypoint. API presence and self echoes
 do not prove behavior or peer delivery. Enable `/console scriptErrors 1` while
@@ -487,7 +527,9 @@ arrival without automation, movement sampling, persistence, party route updates,
 level-three ready-turn-in priority, current party log unions, missing destinations,
 viewport projection, pan/zoom timing, clipping, clustered markers, geometry-only
 resizing, real two-client invitation exchanges, branch gates, faction/adjacency
-filtering, delayed route metadata, and NPC arrival pointers.
+filtering, delayed route metadata, NPC arrival pointers, published Valley of
+Trials bundling, bounded nearby detours, strict-mode settings, pickup-role
+invitations, and preservation of selected bundles across recommendation refreshes.
 Synthetic fixtures are not shipped as game data. Mocks do not establish real
 beta rendering or protected-action compatibility.
 

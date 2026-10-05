@@ -431,6 +431,9 @@ function ns.GuideChoices()
 end
 
 function ns.ShowGuideOnMap(guide)
+    if guide and guide.mode == "bundle" then
+        ns.RouteHistoryScope(guide.records); ns.ScheduleSync()
+    end
     -- An explicit local selection replaces an accepted invitation that was
     -- waiting for missing history. Following a ready invitation also passes here.
     ns.waitingPartyRoute = nil
