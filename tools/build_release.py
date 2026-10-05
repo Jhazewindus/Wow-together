@@ -234,7 +234,15 @@ and AH searches YOU perform. No automatic buying, searching or crafting.
 Profession/flight/skip state is not sent to peers.
 
 The partial snapshot has {coverage['count']:,} quest records and
-{coverage['detailed_quests']:,} detailed pages; most objective coordinates are missing.
+{coverage['detailed_quests']:,} detailed Forever pages; mapped pickup / objective /
+hand-in coverage is {coverage['with_starters']:,} / {coverage['with_objectives']:,} /
+{coverage['with_turnins']:,} quests. QuestCoverage.json lists remaining zone gaps.
+Named target/item quantities and provided-item actions improve step instructions.
+The fixed compiler reduces estimated distance without reordering during play.
+Older-world fallbacks apply only to identity-matched unchanged quests and proven
+map transforms. Real NPC offers can contradict a marked older-world gate.
+Source denials and beta changes still prevent complete coverage. Terrain lines
+are visiting-order estimates, not a collision-safe road path. See QUEST_DATA.md.
 Known repeatables remain excluded from automatic leveling. Live offers/history
 are authoritative; published facts can differ from the beta.
 
@@ -244,16 +252,21 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
 '''
     args.output.mkdir(parents=True, exist_ok=True)
     destination = args.output / f'WowTogether-{version}.zip'
-    files = ['WowTogether.toc', *names, 'QuestCatalogue.json', 'TravelData.json']
+    files = ['WowTogether.toc', *names, 'QuestCatalogue.json', 'QuestCoverage.json', 'GuideAudit.json', 'TravelData.json']
     with zipfile.ZipFile(destination, 'w', zipfile.ZIP_DEFLATED) as archive:
         for name in files:
             archive.write(addon / name, 'WowTogether/' + name)
         for name in ('README.md', 'TESTING.md', 'CHANGELOG.md'):
             archive.write(ROOT / name, 'WowTogether/' + name)
-        for name in ('PERFORMANCE.md', 'TRAVEL_DATA.md', 'THIRD_PARTY_NOTICES.md'):
+        for name in ('PERFORMANCE.md', 'TRAVEL_DATA.md', 'THIRD_PARTY_NOTICES.md', 'QUEST_DATA.md',
+                     'LEGACY_DATA_LICENSE.txt', 'LEGACY_DATA_COPYRIGHT.md'):
             if (ROOT / name).exists():
                 archive.write(ROOT / name, 'WowTogether/' + name)
         archive.write(ROOT / 'LICENSE', 'WowTogether/LICENSE')
+        for name in ('build_quest_dataset.py', 'quest_enrichment.py', 'legacy_quest_facts.py', 'collect_quest_entities.py',
+                     'import_warcraftdb.py', 'import_wowhead.py', 'import_travel_network.py',
+                     'quest_corrections.json', 'quest_exclusions.json'):
+            archive.write(ROOT / 'tools' / name, 'WowTogether/data-tools/' + name)
         archive.writestr('WowTogether/INSTALL.md', instructions)
     with zipfile.ZipFile(destination) as archive:
         if archive.testzip() is not None:

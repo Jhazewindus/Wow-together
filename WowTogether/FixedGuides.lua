@@ -22,11 +22,21 @@ end
 local function stages(record)
     local quest, result, lastLocated = ns.CatalogueQuest(record.id), {}, nil
     if not quest then return result end
-    local function add(point, kind)
+    local function add(point, kind, requirement)
         local stop = ns.PublishedGuideStop(record, point, kind)
         if not stop then stop = {id = record.id, kind = kind, title = record.title, unknownLocation = true,
             mapID = record.mapID, label = "Location not recorded for " .. record.title,
-            planningAnchor = lastLocated} else lastLocated = stop end
+            planningAnchor = lastLocated}
+            local reference = requirement or (kind == "a" and quest.startRefs or kind == "t" and quest.endRefs or {})[1]
+            if reference then
+                stop.targetName, stop.quantity, stop.action = reference.name, reference.quantity, reference.action
+                stop.entityID, stop.entityType = reference.entityID, reference.entityType
+                stop.objectiveKey = kind == "q" and (reference.entityType .. ":" .. reference.entityID) or nil
+                if reference.entityType == "npc" then stop.npcName = reference.name end
+                if reference.entityType == "item" then stop.itemName, stop.itemID = reference.name, reference.entityID end
+                stop.useItemName, stop.spellID = reference.useItemName, reference.spellID
+            end
+        else lastLocated = stop end
         stop.planned, stop.learnedSource = true, ns.LearnedStepSource(record.id, ns.profile, ns.self)
         result[#result + 1] = stop
     end
@@ -34,7 +44,11 @@ local function stages(record)
     if quest.objectives and #quest.objectives > 0 then
         for _, point in ipairs(quest.objectives) do add(point, "q") end
     elseif not quest.objectiveLocationsIncomplete then add(quest.ends and quest.ends[1], "q") end
-    if quest.objectiveLocationsIncomplete or not quest.objectives and not quest.ends then add(nil, "q") end
+    if quest.objectiveLocationsIncomplete or not quest.objectives and not quest.ends then
+        if quest.missingRequirements and #quest.missingRequirements > 0 then
+            for _, requirement in ipairs(quest.missingRequirements) do add(nil, "q", requirement) end
+        else add(nil, "q") end
+    end
     add(quest.ends and quest.ends[1], "t")
     return result
 end
@@ -46,19 +60,22 @@ local function distance(a, b, metrics)
     if b.unknownLocation then b = b.planningAnchor; if not b then return 12000 end end
     if a and a.unknownLocation then a = a.planningAnchor; if not a then return 12000 end end
     if not a then return 0 end
-    if a.mapID ~= b.mapID then return 15000 end
+    if a.mapID ~= b.mapID then return ns.TravelPointDistance(a, b, metrics) or 15000 end
     return ns.WalkingDistance(b.mapID, a, b, metrics) or ns.NormalizedDistance(a, b) * 6000
 end
 
 function ns.GenerateFixedGuide(guide, cooperative)
     local tasks, done, ordered, work = {}, {}, {}, 0
-    local metrics, learned = {}, {}
+    local metrics, learned, locations = {}, {}, {cooperative = cooperative}
     for _, record in ipairs(guide.records) do
         if not ns.IsLevelingExcludedQuest(record.id) and ns.CatalogueIdentityAllowed(record.id, ns.profile) ~= false and not ns.IsRepeatableQuest(record.id)
             and not ns.IsProfessionQuest(record.id) then
+            ns.ResolveWorldQuestLocations(record.id, locations)
             local list = stages(record)
             if #list > 0 then tasks[#tasks + 1] = {id = record.id, stages = list, next = 1} end
         end
+        work = work + 1
+        if cooperative and work % 8 == 0 then coroutine.yield() end
     end
     table.sort(tasks, function(a, b) return a.id < b.id end)
     local function unlocked(id, handedIn)
@@ -121,6 +138,8 @@ function ns.GenerateFixedGuide(guide, cooperative)
             end
         end
     end
+    guide.optimization = ns.OptimizeFixedPlan(ordered, function(a, b) return distance(a, b, metrics) end,
+        cooperative, function() metrics, learned = {}, {} end)
     for index, stop in ipairs(ordered) do stop.guideStep = index end
     guide.fixedPlan = ordered
     return ordered
@@ -206,7 +225,8 @@ function ns.BuildFixedGuideRoute(guide, includeOrigin, cooperative, query)
                     if allowed == true then eligibility[stop.id] = true end
                     if not pending and #stops == 0 then
                         if waiting then pending = "Waiting for your party's quest history."
-                        elseif current.unknownLocation then pending = stop.blockedReason or ("Quest location missing: " .. stop.title .. ". Use the game quest tracker or Skip step.")
+                        elseif current.unknownLocation then pending = stop.blockedReason or
+                            (ns.StopInstruction(current) .. ". Exact location missing.")
                         elseif stop.kind == "a" and allowed ~= true then pending = reason or "Check this quest's pickup requirements at its NPC."
                         elseif stop.kind ~= "a" and not (active and active[stop.id]) then pending = "Accept " .. stop.title .. " before this step."
                         elseif stop.kind == "t" and not ns.QuestProgressReady(person.key, stop.id)

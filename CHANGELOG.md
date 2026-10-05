@@ -1,5 +1,14 @@
 # Wow Together changelog
 
+## 0.8.0
+
+- Expand the captured 5,230-quest catalogue: 2,877 mapped pickups, 1,218 objective areas and 3,044 hand-ins. Coverage remains partial; source denials and beta changes still need resolving.
+- Join named NPC/mob/item facts, quantities and proven drop/vendor sources. Keep supplied quest items out of farming steps; retain item-use actions and bundle common drop areas.
+- Add guarded native conversion for identity-matched unchanged quests. Reject unverified map transforms; retain source/license notices and per-zone coverage.
+- Improve fixed route distance while preserving quest stages, prerequisites and NPC hand-off bundles. Keep fixed order during play and saved item-specific skips.
+- Separate uncategorized new zones and exclude outdoor crafting categories from leveling. Real beta NPC offers can contradict marked older-world prerequisites.
+- Add all-zone host audits and regression checks. Retest coordinates, instructions, loading and NPC actions in the beta; terrain navigation remains approximate.
+
 ## 0.7.7
 
 - Fix /wt lua errors when opening, pasting or displaying results: the text-height

@@ -203,7 +203,7 @@ class CurrentTripTests(unittest.TestCase):
         c.lua.execute('C_Map.GetBestMapForUnit=function() return 502 end')
         c.ns.UpdateNavigation()
         self.assertEqual(c.ns.navigation.context.text.splitlines(),
-                         ['Hand in a completed quest.', 'Travel to Test Coast • For You, Bob'])
+                         ['Turn in “Pickup quest”.', 'Travel to Test Coast • For You, Bob'])
         self.assertIsNone(c.ns.navigation.state.angle)
         c.ns.routePaused = 'Waiting'
         c.ns.UpdateNavigation()

@@ -88,7 +88,7 @@ end
 local function geographic(quest)
     local category = quest.categoryPath or ""
     return string.find(category, "^kalimdor/") or string.find(category, "^eastern%-kingdoms/")
-        or category == "" and ((quest.mapID or 0) > 0 or (quest.areaID or 0) > 0)
+        or (category == "" or category == "uncategorized") and ((quest.mapID or 0) > 0 or (quest.areaID or 0) > 0)
 end
 
 local function browseEnabled(id)
@@ -100,6 +100,14 @@ end
 local function rebuildIndex()
     if indexed == ns.catalogue and indexRevision == ns.catalogueLocationRevision then return end
     indexed, indexRevision, entries = ns.catalogue, ns.catalogueLocationRevision, {}
+    local canonical, ambiguous = {}, {}
+    for _, quest in pairs(ns.catalogue and ns.catalogue.quests or {}) do
+        local path = quest.categoryPath
+        if geographic(quest) and path and path ~= "" and path ~= "uncategorized" and (quest.mapID or 0) > 0 then
+            if canonical[quest.mapID] and canonical[quest.mapID] ~= path then ambiguous[quest.mapID] = true end
+            canonical[quest.mapID] = path
+        end
+    end
     local function add(key, kind, title, zone, mapID, id)
         local entry = entries[key]
         if not entry then
@@ -112,7 +120,10 @@ local function rebuildIndex()
     for id, quest in pairs(ns.catalogue and ns.catalogue.quests or {}) do
         if geographic(quest) and ((quest.areaID or 0) > 0 or (quest.mapID or 0) > 0 or quest.zone and quest.zone ~= "") then
             local zone = ns.CatalogueZone(quest)
-            local key = quest.categoryPath and quest.categoryPath ~= "" and quest.categoryPath
+            local path = quest.categoryPath ~= "uncategorized" and quest.categoryPath
+                or not ambiguous[quest.mapID] and canonical[quest.mapID]
+            if quest.categoryPath == "uncategorized" and zone == "Uncategorized" and (quest.mapID or 0) > 0 then zone = ns.MapName(quest.mapID) end
+            local key = path and path ~= "" and path
                 or ((quest.mapID or 0) > 0 and ("map:" .. quest.mapID) or "zone:" .. normalize(zone))
             add("level-zone:" .. key, "zone", zone .. " leveling guide", zone, quest.mapID, id)
             if quest.seriesRoot then

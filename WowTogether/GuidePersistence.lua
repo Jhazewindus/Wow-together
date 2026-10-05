@@ -5,7 +5,8 @@ local guideFields = {"key", "title", "zone", "mode", "mapID", "homeMapID", "full
     "rangeLow", "rangeHigh", "reason", "kind", "destination", "catchup", "guideKey"}
 local recordFields = {"id", "title", "level", "mapID", "x", "y", "npc", "source", "lineID", "lineName", "seriesRoot", "seriesName"}
 local stepFields = {"id", "kind", "mapID", "x", "y", "title", "label", "entityID", "action", "itemName", "targetName",
-    "npcName", "published", "planned", "unknownLocation", "guideStep", "planNeedsReview", "learnedSource", "alternativeCount"}
+    "npcName", "published", "planned", "unknownLocation", "guideStep", "planNeedsReview", "learnedSource", "alternativeCount",
+    "quantity", "itemID", "objectiveKey", "useItemName", "spellID", "entityType", "worldFallback", "legacyStepKey", "sourceAction"}
 local cachedGuide, cachedPlan, cachedBatch, cachedVisit
 ns.guideResumeStatus = "No saved guide to resume."
 

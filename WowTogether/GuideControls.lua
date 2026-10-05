@@ -22,6 +22,7 @@ end
 function ns.GuideStepKey(stop)
     if stop.fixedStepKey then return stop.fixedStepKey end
     local kind = stop.stepKind or stop.kind
+    if stop.objectiveKey then return table.concat({kind, stop.mapID or 0, stop.objectiveKey}, ":") end
     if ns.GuideInteger(stop.entityID) and stop.entityID > 0 then
         return table.concat({kind, stop.mapID, "npc", stop.entityID}, ":")
     end
@@ -34,7 +35,9 @@ function ns.FilterGuideStages(stages)
     local state, result = saved(), {}
     for _, stop in ipairs(stages) do
         local steps = state and state.steps[stop.id]
-        if not steps or steps[ns.GuideStepKey(stop)] ~= true then result[#result + 1] = stop end
+        if not steps or steps[ns.GuideStepKey(stop)] ~= true and (not stop.legacyStepKey or steps[stop.legacyStepKey] ~= true) then
+            result[#result + 1] = stop
+        end
     end
     return result
 end

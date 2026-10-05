@@ -81,16 +81,33 @@ class QueryTests(unittest.TestCase):
 
 
 class CompilerTests(unittest.TestCase):
-    def test_fixed_and_adaptive_output_match_pre_optimization_fixtures(self):
+    def test_fixed_improvement_preserves_stages_and_adaptive_fixtures(self):
         fixtures=json.loads(Path(__file__).with_name('performance-fixtures.json').read_text())
         for fixture in fixtures['fixed']:
             c=guide_client(1);data={int(k):v for k,v in fixture['quests'].items()};catalogue(c,data)
             g=guide(c,tuple(data));g.fixedRoute=True
             c.lua.execute('C_Map.GetMapWorldSize=function() return 1000,800 end')
+            optimizer=c.ns.OptimizeFixedPlan
+            c.lua.globals().fixtureNS=c.ns
+            c.lua.execute('fixtureNS.OptimizeFixedPlan=function() end')
             c.ns.GenerateFixedGuide(g,False)
             fields=('id','kind','mapID','x','y','guideStep','unknownLocation','planNeedsReview')
             actual=[[s[k] for k in fields] for s in g.fixedPlan.values()]
             self.assertEqual(actual,fixture['stages'],fixture['seed'])
+            c.ns.OptimizeFixedPlan=optimizer
+            c.ns.GenerateFixedGuide(g,False)
+            self.assertLessEqual(g.optimization.after,g.optimization.before+1e-6)
+            optimized=[[s[k] for k in fields] for s in g.fixedPlan.values()]
+            self.assertEqual(sorted(repr(row[:5]+row[6:]) for row in optimized),
+                             sorted(repr(row[:5]+row[6:]) for row in actual))
+            for id in data:
+                self.assertEqual([row[1] for row in optimized if row[0]==id],
+                                 [row[1] for row in actual if row[0]==id])
+            positions={(row[0],row[1]):index for index,row in enumerate(optimized)}
+            for id,q in data.items():
+                pickup=next(row for row in optimized if row[0]==id and row[1]=='a')
+                if q.get('previousQuest') and not pickup[7]:
+                    self.assertLess(positions[q['previousQuest'],'t'],positions[id,'a'])
         fixture=fixtures['adaptive'];c=guide_client(1)
         data={int(k):v for k,v in fixture['quests'].items()};catalogue(c,data)
         g=guide(c,tuple(data));g.fullGuide=True;g.mode='zone';g.homeMapID=501

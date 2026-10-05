@@ -1,7 +1,7 @@
 {
   "captured": "2026-10-05",
   "count": 5230,
-  "detailed_quests": 1619,
+  "detailed_quests": 1885,
   "zones": [
     "eastern-kingdoms/alterac-mountains",
     "eastern-kingdoms/alterac-valley",
@@ -130,46 +130,58 @@
   "listed_quests": 5230,
   "detail_level_max": null,
   "spread_details": true,
-  "new_detail_limit": 600,
+  "new_detail_limit": null,
   "unavailable_details": [
     {
-      "questID": 1514,
+      "questID": 2848,
       "status": 403
     },
     {
-      "questID": 99108,
+      "questID": 3402,
       "status": 403
     },
     {
-      "questID": 1435,
+      "questID": 8042,
       "status": 403
     },
     {
-      "questID": 8323,
+      "questID": 558,
       "status": 403
     },
     {
-      "questID": 1094,
+      "questID": 8311,
       "status": 403
     },
     {
-      "questID": 97236,
+      "questID": 8899,
       "status": 403
     },
     {
-      "questID": 82,
+      "questID": 8788,
+      "status": 403
+    },
+    {
+      "questID": 6985,
+      "status": 403
+    },
+    {
+      "questID": 98896,
+      "status": 403
+    },
+    {
+      "questID": 8171,
       "status": 403
     }
   ],
   "detail_requests_stopped_after_denials": true,
-  "with_starters": 905,
-  "with_objectives": 319,
-  "with_turnins": 972,
-  "with_series": 726,
-  "with_prerequisites": 525,
-  "repeatable_quests": 78,
+  "with_starters": 2877,
+  "with_objectives": 1218,
+  "with_turnins": 3044,
+  "with_series": 807,
+  "with_prerequisites": 1885,
+  "repeatable_quests": 412,
   "unverified_prerequisites": 14,
-  "incomplete_objective_locations": 840,
+  "incomplete_objective_locations": 2270,
   "area_ui_maps": {
     "40": 1436,
     "17": 1413,
@@ -196,20 +208,144 @@
     "1657": 1457,
     "141": 1438,
     "215": 1412,
-    "33": 1434
+    "33": 1434,
+    "46": 1428,
+    "139": 1423,
+    "1377": 1451,
+    "15": 1445,
+    "440": 1446,
+    "618": 1452,
+    "490": 1449,
+    "400": 1441,
+    "357": 1444,
+    "361": 1448,
+    "405": 1443,
+    "28": 1422,
+    "8": 1435,
+    "51": 1427,
+    "3": 1418,
+    "36": 1416,
+    "45": 1417,
+    "493": 1450,
+    "4": 1419,
+    "16651": 2652
   },
   "tester_corrections": [
     750
   ],
-  "reprocessed": "2026-10-05",
-  "leveling_exclusions": [
-    5805,
-    5841,
-    5842,
-    5843,
-    5844,
-    5847,
-    92454
-  ],
-  "leveling_exclusions_source": "User report: Collector's Edition Welcome! quests, 2026-10-05"
+  "entities": {
+    "npc": 6580,
+    "object": 785,
+    "item": 2301
+  },
+  "additional_map_joins": [],
+  "legacy_fallback": {
+    "source": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "commit": "ec4f596146be6467ea93c57397858e329e2db852",
+    "snapshot_sha256": "4f92db520868ab4e566726f68b5b2e380ae781209beaf22237b4f7f04600d0c0",
+    "license": "GPL-3.0",
+    "identity_matched_unchanged_quests": 3544,
+    "maps_calibrated_against_forever_npcs": {
+      "1429": {
+        "continent": 0,
+        "sx": -0.00028801302753833077,
+        "ox": 0.44158909232864707,
+        "sy": -0.0004332025703352505,
+        "oy": -3.441548314119996,
+        "anchors": 73
+      },
+      "1440": {
+        "continent": 1,
+        "sx": -0.00017351263807800616,
+        "ox": 0.29409367677978077,
+        "sy": -0.0002615868746359267,
+        "oy": 1.2187770439360102,
+        "anchors": 33
+      },
+      "1426": {
+        "continent": 0,
+        "sx": -0.00020284064141264327,
+        "ox": 0.3655031778367155,
+        "sy": -0.0003046928756361015,
+        "oy": -1.182007241607523,
+        "anchors": 72
+      },
+      "1437": {
+        "continent": 0,
+        "sx": -0.00024209516504716447,
+        "ox": -0.09539202480526782,
+        "sy": -0.00036070116788000076,
+        "oy": -0.7724437724063603,
+        "anchors": 25
+      },
+      "1438": {
+        "continent": 1,
+        "sx": -0.00019586259348782317,
+        "ox": 0.7481159544708499,
+        "sy": -0.0002940487831751761,
+        "oy": 3.4799474568567788,
+        "anchors": 47
+      },
+      "1435": {
+        "continent": 0,
+        "sx": -0.0004353025591963646,
+        "ox": -0.9674849796699357,
+        "sy": -0.0006470395855409358,
+        "oy": -6.220612998458881,
+        "anchors": 20
+      },
+      "1411": {
+        "continent": 1,
+        "sx": -0.00018865883992838186,
+        "ox": -0.3695590189740329,
+        "sy": -0.00028353341877094846,
+        "oy": 0.5125040014797176,
+        "anchors": 62
+      },
+      "1448": {
+        "continent": 1,
+        "sx": -0.00017336117888307792,
+        "ox": 0.2857928874483435,
+        "sy": -0.0002607623463891494,
+        "oy": 1.8593580969068393,
+        "anchors": 24
+      },
+      "1442": {
+        "continent": 1,
+        "sx": -0.00020453178599317618,
+        "ox": 0.6637109766307481,
+        "sy": -0.00030739190005934526,
+        "oy": 0.8954745277678261,
+        "anchors": 18
+      },
+      "1445": {
+        "continent": 1,
+        "sx": -0.00019051214805308514,
+        "ox": -0.18606499848689356,
+        "sy": -0.0002844520522082794,
+        "oy": -0.5771002630552168,
+        "anchors": 16
+      },
+      "1425": {
+        "continent": 0,
+        "sx": -0.0002600144271327908,
+        "ox": -0.40975012532043326,
+        "sy": -0.0003884227311342399,
+        "oy": 0.5708227861040065,
+        "anchors": 6
+      }
+    },
+    "limitations": [
+      "Older-world fallbacks need current-beta testing",
+      "No server/addon logic or quest prose included",
+      "World points are not terrain-safe road paths"
+    ]
+  },
+  "forever_npc_geography": {
+    "commit": "fd68cfe2153379898680c66a01833846f9933587",
+    "file_sha256": "3dfa6f85e6fbe1c5a01389d4bcf445f4fa63391484647cdec663a849111e977d",
+    "npc_locations": 674,
+    "source": "https://github.com/tr0tsky0/Mapzeroth",
+    "license": "MIT"
+  }
 }

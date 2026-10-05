@@ -1,13 +1,12 @@
 # Wow Together — friend test script
 
-For **0.7.7**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.0**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
-The Lua-pane patch checks below take about **2–5 minutes**.
-
+The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 40 Lua files**, in
+1. Replace the complete WowTogether folder, including **all 42 Lua files**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    `/reload`; restart fully if a new addon folder does not appear.
 2. Enable `/console scriptErrors 1`. Record version, build, level, faction, class,
@@ -16,15 +15,43 @@ The Lua-pane patch checks below take about **2–5 minutes**.
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
 
-## Focus checks for 0.7.7
+## Focus checks for 0.8.0
 
-- **Open and paste:** enable script errors, then open /wt lua. Opening and typing
-  should produce no Lua errors. Paste a multiline check, then a long wrapped line;
-  scroll through the input and run it. Repeat with the console reopened.
-- **Output and clear:** run the check below. Scroll through the output, use Select
-  output and Ctrl+C, and confirm the final return is included. Clear should leave
-  an empty usable output pane; a short subsequent result should display normally.
-  Results should stay in this pane. Include any error and /wt probe in your report.
+- **Zone coverage:** test a starting zone, a middle-level zone and a later zone
+  where you have a suitable character. Include both factions across testers.
+  Start the fixed guide and open Show quest list. Record any missing pickup,
+  objective or hand-in location with its quest ID/name and NPC/target name.
+  Include /wt probe; native map conversion requires beta testing.
+- **Useful instructions:** Lazy Peons must say to use Foreman's Blackjack on
+  Lazy Peons, rather than kill them or farm the provided Blackjack. The Battleboars
+  must include both eight Flanks and eight Snouts at a proven Battleboar area.
+  Other kill, gather, interact and item-use quests should name the right target
+  and quantity. Check friendly targets are never mislabeled as kills.
+- **Static route order:** note the next ten steps. Move, accept a quest, abandon
+  it and Scan. Progress changes which steps remain; the compiled order stays
+  fixed. NPC pickup visits can gather useful guide quests actually offered there.
+  Inspect that parent hand-ins precede locked follow-up pickups.
+- **Skips:** skip one of two item goals at the same mob. The other goal must
+  remain. Old saved skips should still apply to the originally mapped objective.
+  Skip quest should refresh the map immediately. Reload and confirm persistence.
+- **NPC offers:** test a multiple-quest giver with useful guide quests offered.
+  Optional automation should collect them in one visit. An actual offer may
+  overrule an older-world fallback prerequisite; known beta/tester prerequisites
+  remain enforced. A missing quest remains deferred, with no completion credit.
+- **New zones:** Zephras Isle must have its own guide rather than merge with
+  unrelated uncategorized quests. Profession/crafting categories must stay out
+  of leveling guides. Expect remaining location gaps; export factual findings
+  with /wt research and /wt findings, labeled with your tester name.
+- **Map and loading:** start a large guide. Loading route should remain visible
+  while it compiles, with no freeze or Lua error. Verify pins at actual NPCs/mobs,
+  pan/zoom in and out of combat, and retest cross-zone travel. Lines still show
+  visiting order; they cannot guarantee a safe path through terrain.
+
+## Lua pane checks retained from 0.7.7
+
+Open /wt lua, paste a multiline check and a long wrapped line, then scroll.
+Run the following, copy its output and Clear. The final return must be visible;
+clearing must leave a usable empty pane. Include any Lua error and /wt probe.
 
 ```lua
 print(string.rep("scroll test\n", 100))

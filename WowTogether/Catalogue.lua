@@ -99,11 +99,14 @@ function ns.CatalogueAllowed(id, profile, key, query)
     local identity, reason = ns.CatalogueIdentityAllowed(id, profile)
     if identity == false then return false, reason end
     key = key or ns.self
-    -- Neither shareability nor an opened turn-in dialog proves remote pickup
-    -- eligibility. Even a positive NPC offer must agree with known chain history.
+    -- Neither shareability nor an opened turn-in dialog proves remote pickup.
+    -- Actual beta offers can contradict an explicitly marked older-world
+    -- fallback gate. Published beta and tester prerequisites remain strict.
     local prerequisites, prerequisiteReason = ns.CataloguePrerequisitesAllowed(id, key, query)
-    if prerequisites ~= true then return prerequisites, prerequisiteReason end
     local offered = ns.PickupOfferEvidence(key, id)
+    if offered == true and quest and quest.prerequisiteSource
+        and string.find(quest.prerequisiteSource, "^Identity%-matched unchanged quest:") then return true end
+    if prerequisites ~= true then return prerequisites, prerequisiteReason end
     if offered == false then return false, "This quest giver did not offer this quest at your current progress. Recheck after progressing." end
     if offered == true then return true end
     if identity ~= true then return identity, reason end
@@ -198,7 +201,10 @@ end
 function ns.CatalogueZone(quest)
     if type(quest.zone) == "string" and quest.zone ~= "" then return quest.zone end
     local category = quest.categoryPath and string.match(quest.categoryPath, "([^/]+)$")
-    return category and string.gsub(category, "-", " ") or "Other quests"
+    if not category then return "Other quests" end
+    local name = string.gsub(category, "-", " ")
+    name = string.gsub(name, "(%a)([%w']*)", function(first, rest) return string.upper(first) .. rest end)
+    return name
 end
 
 ns.libraryLevel = "all"

@@ -51,7 +51,7 @@ class NPCVisitTests(unittest.TestCase):
         before = order(g)
         offer(c, (745, 746, 767))
         self.assertEqual(set(pickup_ids(c)), {745, 746, 767})
-        self.assertEqual(c.ns.selectedRoute.stops[1].id, 767)
+        self.assertEqual(c.ns.selectedRoute.stops[1].id, next(s.id for s in g.fixedPlan.values() if s.kind=='a' and s.id in (745,746,767)))
         self.assertEqual(order(g), before)
         self.assertIsNone(c.ns.CatalogueQuest(745).starts)
         self.assertTrue(c.ns.NPCPickupPoint(745))

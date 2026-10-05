@@ -81,8 +81,7 @@ function ns.RenderGuideQuestList()
         row:ClearAllPoints(); row:SetPoint("TOPLEFT", 0, -(index - 1) * ROW_HEIGHT)
         row.number:SetText(index); row.number:SetTextColor(unpack(color))
         row.title:SetText((phases[stop.kind] or "Quest") .. " • " .. stop.title); row.title:SetTextColor(unpack(color))
-        row.detail:SetText(stop.unknownLocation and "Location not recorded; check the game quest tracker."
-            or (ns.StopInstruction(stop) .. " • " .. ns.MapName(stop.mapID)))
+        row.detail:SetText(ns.StopInstruction(stop) .. " • " .. (stop.unknownLocation and "Exact location not mapped" or ns.MapName(stop.mapID)))
         row.state:SetText((quest and quest.level and ("Lv " .. quest.level .. " • ") or "") .. status(stop, query))
         row.stop, row.step = stop, index; row:Show()
     end

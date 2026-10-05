@@ -9,17 +9,27 @@ function ns.StopInstruction(stop)
     if stop.kind == "travel" then return stop.label end
     if stop.kind == "corpse" then return "Return to your corpse" end
     if stop.kind == "f" then return stop.label end
+    if stop.action == "start-item" then
+        if stop.npcName then
+            return (stop.sourceAction == "buy" and "Buy " or "Loot ") .. (stop.itemName or stop.title)
+                .. " from " .. stop.npcName .. "; use it to start the quest"
+        end
+        return "Find " .. (stop.itemName or stop.title) .. " to start " .. stop.title
+    end
     if stop.npcName and stop.npcName ~= "" and (stop.kind == "a" or stop.kind == "t" or stop.action == "talk") then
         return "Talk to " .. stop.npcName
     end
     if stop.kind == "t" then return "Turn in " .. stop.title end
     if stop.kind == "a" then return "Pick up " .. stop.title end
     local target = stop.itemName or stop.targetName or stop.npcName
-    local action = stop.action
+    local action, quantity = stop.action, stop.quantity
     for _, objective in ipairs((ns.ProgressForMember(stop.memberKey or ns.self, stop.id) or {}).objectives or {}) do
         if target and ns.ObjectiveMatchesPoint(objective.text, {name = target}) then
-            if objective.kind == "monster" then action = "kill"
-            elseif objective.kind == "item" then action = "collect" end
+            if action ~= "use" and action ~= "interact" and action ~= "talk" then
+                if objective.kind == "monster" then action = "kill"
+                elseif objective.kind == "item" then action = "collect" end
+            end
+            quantity = objective.need or quantity
             target = ns.ObjectiveLabel(objective.text)
             target = string.gsub(target, "%s+slain$", "")
             target = string.gsub(target, "%s+killed$", "")
@@ -27,8 +37,18 @@ function ns.StopInstruction(stop)
             break
         end
     end
-    if action == "kill" then return "Kill " .. (target or stop.title) end
-    if action == "collect" or action == "loot" or action == "item" then return "Pick up " .. (target or stop.title) end
+    local count = finite(quantity) and quantity > 1 and (tostring(math.floor(quantity)) .. " × ") or ""
+    if action == "use" then
+        return "Use " .. (stop.useItemName or "the quest item") .. " on " .. count .. (stop.npcName or stop.targetName or stop.title)
+    end
+    if action == "kill" then return "Kill " .. count .. (target or stop.title) end
+    if action == "buy" then return "Buy " .. count .. (target or stop.title) end
+    if action == "interact" then return "Interact with " .. (target or stop.title) end
+    if action == "collect" or action == "loot" or action == "item" or action == "gather" then
+        local source = stop.itemName and stop.npcName and stop.npcName ~= stop.itemName and (" from " .. stop.npcName) or ""
+        return "Pick up " .. count .. (target or stop.title) .. source
+    end
+    if target then return "Complete “" .. target .. "” for " .. stop.title end
     return stop.label or ("Work on " .. stop.title)
 end
 
@@ -42,6 +62,7 @@ local function duration(value)
 end
 
 function ns.RouteContext(stop, mapID)
+    local title = stop.title or ns.QuestTitle(stop.id)
     if stop.kind == "loading" then
         return stop.action == "scan" and ("Checking your quests and completion history.\n"
             .. (ns.guideScanning and ns.guideScanning.guide.fixedRoute and "The guide's fixed step order is retained." or "Checking the route for your next steps."))
@@ -80,12 +101,13 @@ function ns.RouteContext(stop, mapID)
         return "Waiting for confirmed party progress.\nYour last route is retained."
     end
     local reason
-    if stop.kind == "t" then reason = "Hand in a completed quest."
+    if stop.kind == "t" then reason = "Turn in “" .. title .. "”."
     elseif stop.kind == "a" then
         local selected = ns.routeSelection
-        reason = selected and selected.pickupIDs and selected.pickupIDs[stop.id]
-            and "Nearby pickup along this trip." or "Pick up a selected quest."
-    else reason = stop.npcName and not stop.action and "Visit this NPC for an active quest." or "Finish active quest objectives." end
+        reason = "Accept “" .. title .. "”."
+        if selected and selected.pickupIDs and selected.pickupIDs[stop.id] then reason = reason .. " Nearby pickup." end
+        if stop.action == "start-item" then reason = "Use the item to start “" .. title .. "”." end
+    else reason = "For “" .. title .. "”." end
     local zone = ns.MapName(stop.mapID)
     local who = stop.forPlayer and (" • For " .. stop.forPlayer) or ""
     local context = mapID and mapID ~= stop.mapID and ("Travel to " .. zone .. who) or (zone .. who)

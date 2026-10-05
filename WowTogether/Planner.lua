@@ -284,7 +284,9 @@ end
 
 function ns.IsProfessionQuest(id)
     local quest = ns.CatalogueQuest(id)
-    return quest and quest.categoryPath and string.sub(quest.categoryPath, 1, 12) == "professions/" or false
+    local path = quest and quest.categoryPath or ""
+    return quest and quest.questType == "Profession" or string.sub(path, 1, 12) == "professions/"
+        or string.find(path, "/crafting$") ~= nil
 end
 
 function ns.IsDungeonQuest(id)

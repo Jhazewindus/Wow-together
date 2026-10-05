@@ -217,7 +217,10 @@ function ns.PublishedGuideStop(record, point, kind)
         title = ns.QuestTitle(record.id), label = point.name or record.title, published = true,
         entityID = point.entityID, action = point.action, itemName = point.itemName,
         targetName = point.name, npcName = point.npc and point.name or nil,
-        alternativeCount = point.alternativeCount}
+        alternativeCount = point.alternativeCount, quantity = point.quantity, itemID = point.itemID,
+        objectiveKey = point.objectiveKey, useItemName = point.useItemName, spellID = point.spellID,
+        entityType = point.entityType, worldFallback = point.worldFallback, legacyStepKey = point.legacyStepKey,
+        sourceAction = point.sourceAction}
 end
 
 function ns.ClientObjectiveStop(stop, key)

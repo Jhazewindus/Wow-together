@@ -86,7 +86,11 @@ function ns.NPCTargets()
                     local active = person.key == ns.self and ns.active or ns.members[person.key] and ns.members[person.key].active
                     if person.synced and not (active and active[stop.id]) and ns.CatalogueCompletion(person.key, stop.id, query) ~= true
                         and ns.CatalogueAllowed(stop.id, person.profile, person.key, query) == true then
-                        for _, point in ipairs(quest and quest.starts or {}) do add(point, stop.id, "a") end
+                        for _, point in ipairs(quest and quest.starts or {}) do
+                            -- An item drop starts this quest; its source mob
+                            -- isn't a quest-giver dialogue or a friendly star.
+                            add(point, stop.id, point.action == "start-item" and "q" or "a")
+                        end
                         break
                     end
                 end

@@ -90,16 +90,19 @@ def native_client():
 
 
 class NativeObjectiveTests(unittest.TestCase):
-    def test_shipped_battleboars_retains_verified_sources_without_inventing_snout_points(self):
+    def test_shipped_battleboars_maps_both_items_to_the_proven_common_source(self):
         c=Client(quests=(),use_catalogue=True)
         q=c.ns.CatalogueQuest(780)
         self.assertEqual(q.objectives[1].name,'Battleboar')
         self.assertAlmostEqual(q.objectives[1].x,.576)
         self.assertAlmostEqual(q.objectives[1].y,.852)
+        self.assertEqual(q.objectives[2].entityID,q.objectives[1].entityID)
+        self.assertEqual((q.objectives[2].x,q.objectives[2].y),(q.objectives[1].x,q.objectives[1].y))
+        self.assertEqual(q.objectives[2].quantity,8)
         self.assertEqual(q.objectives[1].itemName,'Battleboar Flank')
-        self.assertTrue(q.objectiveLocationsIncomplete)
+        self.assertFalse(q.objectiveLocationsIncomplete)
         self.assertEqual({p.entityID for p in q.objectiveAlternatives[1].locations.values()}, {2954,2966})
-        self.assertEqual({p.itemName for p in q.objectives.values()}, {'Battleboar Flank'})
+        self.assertEqual({p.itemName for p in q.objectives.values()}, {'Battleboar Flank', 'Battleboar Snout'})
 
     def test_native_position_fills_only_the_unmapped_stage_and_keeps_fixed_order(self):
         c,g = native_client()

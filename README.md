@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.7.7** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.0** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -16,7 +16,7 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **40 Lua
+Replace the folder on **every party member's client**, including all **42 Lua
 files**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
@@ -524,10 +524,10 @@ The offline snapshot was captured **October 5, 2026** from public game facts in
 | Coverage | Records |
 | --- | ---: |
 | Distinct quest records / category lists | 5,230 / 123 |
-| Detailed pages | 1,619 |
-| Quests with mapped pickup / objective-area / turn-in coordinates | 905 / 319 / 972 |
-| Published series / prerequisite facts | 726 / 525 |
-| Incomplete objective locations / known repeatables | 840 / 78 |
+| Detailed Forever pages | 1,885 |
+| Quests with static pickup / objective-area / turn-in coordinates | 2,877 / 1,218 / 3,044 |
+| Series / quests with explicit prerequisite facts | 807 / 1,885 |
+| Incomplete objective locations / known repeatables | 2,270 / 412 |
 
 Mapped item-drop alternatives retain a single representative farming area near
 this quest's published giver. This is a stable geometric choice, not a requirement
@@ -537,7 +537,29 @@ For an active fixed-guide step with missing coordinates, your own public native
 quest-tracker destination can supply its current location. A catalogue fallback
 cannot fill that gap; unavailable/private native data keeps the existing notice.
 The fixed step order and saved skips are retained when native coordinates change.
-The same cached pages were reprocessed for 0.7.5; no new capture is claimed.
+0.8.0 joins explicit NPC/object/item requirements and named drop/vendor relations.
+Provided quest items do not become farming steps. Instructions include quantities,
+item-use actions and named targets. Two items from the same proven mob can share
+its published farming area; step skips remain specific to each item.
+
+Compile-time local search reduces estimated distance while preserving per-quest
+stages, known hand-in prerequisites and useful NPC hand-off bundles. It never
+reorders an already selected guide because of movement, acceptance or Scan.
+This is a bounded heuristic, not a globally optimal XP/terrain solution.
+
+Older-world numeric/name facts are used only when Forever labels the quest
+unchanged and its ID, title, level and minimum level agree. Published Forever
+and tester corrections take precedence; actual NPC offers can contradict an
+explicitly marked older-world prerequisite. No old API/server logic is used.
+Static map transforms require five broadly distributed published Forever NPC
+anchors and strict residual checks. Remaining world points can use native
+C_Map conversion only after three published Forever anchors agree. Missing,
+restricted or contradictory transforms leave the location unknown.
+
+See [QUEST_DATA.md](QUEST_DATA.md), QuestCoverage.json and GuideAudit.json for
+per-zone coverage, source pins, remaining gaps and host compilation checks.
+These files deliberately distinguish location coverage from quest availability
+and live beta validation. Source access denials still prevent a complete catalogue.
 
 This is a partial catalogue, not every Forever quest or a complete prerequisite
 or flight graph. Detailed reads now spread across outdoor categories through
@@ -558,7 +580,7 @@ provided broad inspiration about progress clarity; its code/assets/layouts
 were not copied. This implementation is independent.
 
 Reported beta build **70205** established the earlier sync APIs in user tests.
-**0.7.7 has host validation, not a live-client compatibility certification.**
+**0.8.0 has host validation, not a live-client compatibility certification.**
 Retest UI rendering, optional gossip/flight actions, corpse positions and item
 hooks on the build in front of you. `/wt probe` lists capabilities and runtime
 status. Do not interpret presence as proof that protected actions work.
@@ -609,7 +631,7 @@ compiler discards temporary caches when it yields. Guide decisions, prerequisite
 rules, fixed/adaptive order, sync behavior, settings and UI remain the same.
 See PERFORMANCE.md for measured host results and the repeatable benchmark command.
 
-Host checks load all 40 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
+Host checks load all 42 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
 
 ```sh
 python3 -m venv /tmp/wow-together-tests

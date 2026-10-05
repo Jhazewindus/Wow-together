@@ -42,6 +42,9 @@ def list_rows(page):
 
 def base_facts(row):
     result = {'title': clean(row.get('name'))}
+    status = row.get('envChange', {}).get('status') if isinstance(row.get('envChange'), dict) else None
+    if status in ('unchanged', 'updated', 'new', 'unconfirmed'):
+        result['foreverStatus'] = status
     for old, new, cap in [('level', 'level', 255), ('reqlevel', 'minLevel', 255),
                            ('category', 'areaID', 1000000), ('reqclass', 'classMask', 4294967295),
                            ('reqrace', 'raceMask', 4294967295), ('xp', 'xp', 2147483647), ('money', 'money', 2147483647)]:
