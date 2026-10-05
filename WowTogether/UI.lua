@@ -364,6 +364,10 @@ local function makeCard()
         if card.guide then ns.ShowShoppingList(ns.QuestShoppingList(card.guide.records), "Your quest buy list") end
     end)
     card.buyButton:SetPoint("BOTTOMLEFT", 138, 12)
+    card.catchupButton = button(card, "Catch up party", 138, function()
+        if card.guide then ns.ShowPartyCatchup(card.guide, true) end
+    end)
+    card.catchupButton:SetPoint("BOTTOMLEFT", 240, 12)
     card.detailsButton:SetPoint("BOTTOMLEFT", 12, 12)
     card.mapButton:SetPoint("BOTTOMRIGHT", -12, 12)
     card:RegisterForClicks("LeftButtonUp")
@@ -459,7 +463,7 @@ function ns.Render()
     elseif string.find(ns.status, "Delivery failed", 1, true) then status = "Delivery failed; see Diagnostics"
     elseif not ns.questReady then status = "Quest data unavailable; see Diagnostics"
     elseif not ns.syncReady then status = "Sync unavailable; see Diagnostics"
-    else status = ns.guideAction or (synced > 1 and "Party progress received" or "Waiting for friends") end
+    else status = ns.routePlanningError or ns.guideAction or (synced > 1 and "Party progress received" or "Waiting for friends") end
     ns.ui.status:SetText(status)
     ns.ui.viewChoice:SetChoice(ns.filter)
     for _, card in ipairs(ns.ui.cards) do card:Hide() end
@@ -542,6 +546,8 @@ function ns.Render()
         card.detailsButton.caption:SetText("Quest details")
         card.detailsButton:SetEnabled(true)
         card.buyButton:SetShown(guide ~= nil and #ns.QuestShoppingList(guide.records) > 0)
+        card.catchupButton:SetShown(guide ~= nil and guide.mode == "zone" and guide.fullGuide
+            and not guide.catchup and #(ns.partyNames or {}) > 0 and ns.ReadPublic(IsInRaid) ~= true)
         card.mapButton:SetEnabled(true)
         local height
         if activity then

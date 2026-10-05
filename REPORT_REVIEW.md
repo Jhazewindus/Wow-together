@@ -1,3 +1,37 @@
+# Follow-up review for 0.6.6
+
+This batch combines an unlabeled request for current-zone party catch-up and
+prerequisite-aware bundling with King Kai's report (17:08): distant nameplate
+crosses and losing the selected guide after reload. No version/build/character
+context was supplied for King Kai, so the earlier solo Mulgore diagnostic below
+is not treated as proof of his party or marker state.
+
+The user resolved the preference conflict with fixed guides: offer **Catch up
+party**, preserve the current guide until accepted, and keep friends' Follow /
+Keep choice. The route checks fresh active/completion/history snapshots rather
+than inferring progression from unknown history. Known prerequisite closure and
+nearby hand-in/unlock bundling are generic across catalogue zone guides.
+
+Three later user requests concern playing UI: remove observer attribution, keep
+the navigation arrow and guide controls visible during unrelated questing, and
+move the world-map controls below the viewport. The user confirmed the window
+means navigation, not the party tracker. This overrides the older preference
+for observer labels in steps; optional export provenance remains intact.
+
+Inspection established that no selected-guide checkpoint was saved, nameplate
+markers used the root plate anchor, and automatic completion called ClearRoute.
+The implementation saves a primitive per-character guide descriptor/fixed plan,
+restores fresh progress without invitations or opening the map, uses a public
+name/health-bar anchor for smaller markers, and retains completed/waiting guide
+controls until explicit clearing. Nameplate hints have a separate toggle and a
+Quest ! style, preserving existing marker choices and item tooltip settings.
+
+Host regressions cover these state transitions, catch-up consent/known history,
+cross-zone behavior, prerequisite alternatives and bounded history requests.
+Actual beta nameplate/map-footer layout and SavedVariables persistence still
+need live testing. Known prerequisite facts and straight visiting-order lines
+remain partial; this release does not provide terrain-aware walking paths.
+
 # Follow-up review for 0.6.5
 
 The user reports that The Hunt Continues unlocked at its NPC but did not return

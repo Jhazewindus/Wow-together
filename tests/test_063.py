@@ -220,7 +220,7 @@ class ObservedLearningTests(unittest.TestCase):
         self.assertIn('Alice', rule.sourceCharacter)
         c.lua.globals().finished[900] = False; c.ns.InvalidateNPCOffers()
         allowed, reason = c.ns.CatalogueAllowed(901, c.ns.profile, c.ns.self)
-        self.assertFalse(allowed); self.assertIn('Observed by', reason)
+        self.assertFalse(allowed); self.assertIn('Finish Quest 0 first.', reason); self.assertNotIn('Observed by', reason)
         self.assertEqual(list(c.ns.CataloguePrerequisiteIDs(901).values()), [900])
 
     def test_partial_npc_list_and_acceptance_never_imply_absence_or_unlock(self):

@@ -176,7 +176,8 @@ class DungeonTests(unittest.TestCase):
         c.ns.ShowGuideOnMap(plan)
         c.lua.execute('finished[900]=true; finished[901]=true')
         c.ns.UpdateSelectedRoute(c.lua.table())
-        self.assertIsNone(c.ns.selectedRoute)
+        self.assertTrue(c.ns.selectedRoute.complete)
+        self.assertEqual(len(c.ns.selectedRoute.stops), 0)
 
     def test_missing_entrance_is_honest_and_public_map_link_is_used(self):
         c = solo()

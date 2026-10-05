@@ -44,6 +44,7 @@ function methods:IsEnabled() return self.enabled ~= false end
 function methods:Hide() self.shown = false end
 function methods:Show() self.shown = true end
 function methods:SetText(text) self.text = text end
+function methods:SetTexture(texture) self.texture = texture end
 function methods:GetText() return self.text end
 function methods:SetPoint(...) self.point = {...} end
 function methods:SetSize(width, height) self.width, self.height = width, height end
@@ -54,7 +55,7 @@ function methods:GetHeight() return self.height end
 -- Unknown frame methods may be no-ops; unset addon metadata is nil, just as
 -- on a real frame. Treating every missing field as a function hides UI bugs.
 setmetatable(methods, {__index=function(_, key) if key:match('^%u') then return function() end end end})
-function CreateFrame() return setmetatable({}, {__index=methods}) end
+function CreateFrame(kind, name, parent) return setmetatable({parent=parent}, {__index=methods}) end
 function GetBuildInfo() return '1.60.1', '70009', 'test', 16001 end
 WOW_PROJECT_ID, LE_EXPANSION_LEVEL_CURRENT = 1, 0
 function GetRealmName() return 'Test Realm' end

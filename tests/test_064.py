@@ -22,7 +22,7 @@ class FactionLearningTests(unittest.TestCase):
         self.assertEqual(rule.previousQuest, 900)
         self.assertFalse(rule.classRestricted); self.assertFalse(rule.raceRestricted)
         allowed, reason = c.ns.CatalogueAllowed(901, c.ns.profile, c.ns.self)
-        self.assertFalse(allowed); self.assertIn('Observed by', reason)
+        self.assertFalse(allowed); self.assertIn('Finish Quest 0 first.', reason); self.assertNotIn('Observed by', reason)
         self.assertIn('Quest 0', reason)
         # The new character's own hand-in, not the source's, unlocks the step.
         c.lua.globals().finished[900] = True

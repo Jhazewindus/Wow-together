@@ -130,7 +130,8 @@ class NearbyPickupTests(unittest.TestCase):
         self.assertEqual(c.ns.selectedRoute.stops[1].kind, 't')
         c.lua.execute('entries={}; finished[901]=true')
         c.ns.ReadQuests(); c.ns.UpdateSelectedRoute(c.lua.table())
-        self.assertIsNone(c.ns.selectedRoute)
+        self.assertTrue(c.ns.selectedRoute.complete)
+        self.assertEqual(len(c.ns.selectedRoute.stops), 0)
 
     def test_unknown_active_destinations_do_not_start_unrelated_pickup_discovery(self):
         c = local_client()
@@ -200,7 +201,8 @@ class BundleInvitationTests(unittest.TestCase):
         b.receive('1|S|3|1|1|', sender='Alice-TestRealm')
         b.receive('1|C|3|1|1|901', sender='Alice-TestRealm')
         b.ns.UpdateSelectedRoute(b.lua.table())
-        self.assertIsNone(b.ns.selectedRoute)
+        self.assertTrue(b.ns.selectedRoute.complete)
+        self.assertEqual(len(b.ns.selectedRoute.stops), 0)
 
     def test_pickup_role_is_invalid_in_other_modes_or_when_malformed(self):
         _, b = self.clients()

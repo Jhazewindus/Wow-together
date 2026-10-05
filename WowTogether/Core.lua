@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.6.5"
+ns.VERSION = "0.6.6"
 ns.handlers = {}
 ns.members = {}
 ns.status = "Waiting for addon initialization."
@@ -23,6 +23,8 @@ function ns.Refresh()
     if ns.UpdateNavigation then ns.UpdateNavigation() end
     if ns.ScheduleActivitySuggestions then ns.ScheduleActivitySuggestions() end
     if ns.QueuePartyRouteFollow then ns.QueuePartyRouteFollow() end
+    if ns.SchedulePartyCatchup then ns.SchedulePartyCatchup() end
+    if ns.SaveSelectedGuide then ns.SaveSelectedGuide() end
 end
 
 function ns.On(event, handler)
@@ -136,6 +138,8 @@ function ns.Diagnostics()
     ns.SyncDiagnostics(output)
     ns.NavigationDiagnostics(output)
     output("Travel: " .. ns.travelStatus)
+    output("Guide restore: " .. ns.guideResumeStatus)
+    output("Party catch-up: " .. ns.partyCatchupStatus)
     ns.ResearchDiagnostics(output)
     ns.ShowDiagnostics(table.concat(lines, "\n"))
 end
@@ -161,12 +165,13 @@ ns.On("ADDON_LOADED", function(name)
     ns.ReadProgress()
     ns.CreateTracker()
     ns.CreateNavigation()
+    ns.InitializeGuidePersistence()
     if ns.InitializeProfessionGuides then ns.InitializeProfessionGuides() end
     ns.Refresh()
     ns.Print("Loaded. /wt opens the quest view; /wt probe opens diagnostics.")
 end)
 
-ns.On("PLAYER_LOGIN", function() ns.ScheduleSync() end)
+ns.On("PLAYER_LOGIN", function() ns.RestoreSavedGuide(); ns.ScheduleSync() end)
 ns.On("QUEST_LOG_UPDATE", function()
     if ns.db then ns.ReadProgress(); ns.UpdateNPCHints(); ns.Refresh() end
     ns.ScheduleSync()
@@ -202,6 +207,7 @@ SlashCmdList.WOWTOGETHER = function(command)
     elseif command == "route clear" then ns.ClearRoute(); ns.Refresh()
     elseif command == "guide reset" then ns.ResetGuideSkips()
     elseif command == "guide scan" then ns.ScanGuideProgress()
+    elseif command == "catchup" then ns.ShowPartyCatchup(nil, true)
     elseif command == "research" then ns.ShowQuestResearch()
     elseif command == "findings" then ns.ShowGuideFindings()
     elseif command == "questlines" then ns.ShowQuestLineReport()

@@ -59,14 +59,14 @@ function ns.GenerateFixedGuide(guide, cooperative)
         end
     end
     table.sort(tasks, function(a, b) return a.id < b.id end)
-    local function unlocked(id)
+    local function unlocked(id, handedIn)
         local quest = ns.CatalogueQuest(id)
-        if quest.previousQuest and not done[quest.previousQuest] then return false end
+        if quest.previousQuest and not done[quest.previousQuest] and quest.previousQuest ~= handedIn then return false end
         if quest.prerequisiteAny then
-            local met = false; for _, previous in ipairs(quest.prerequisiteAny) do if done[previous] then met = true end end
+            local met = false; for _, previous in ipairs(quest.prerequisiteAny) do if done[previous] or previous == handedIn then met = true end end
             if not met then return false end
         elseif not quest.previousQuest then
-            for _, previous in ipairs(ns.LearnedPrerequisiteIDs(id)) do if not done[previous] then return false end end
+            for _, previous in ipairs(ns.LearnedPrerequisiteIDs(id)) do if not done[previous] and previous ~= handedIn then return false end end
         end
         return true
     end
@@ -88,6 +88,19 @@ function ns.GenerateFixedGuide(guide, cooperative)
             local stop, quest = task.stages[task.next], ns.CatalogueQuest(task.id)
             local value = distance(previous, stop) + math.max(0, (quest.level or 0) - floor - 2) * 2500
             if stop.kind == "a" then value = value - 100 end
+            if stop.kind == "t" then
+                -- Prefer a nearby hand-in that opens another pickup at this
+                -- hub. This depends on published geography, not player position.
+                for _, child in ipairs(tasks) do
+                    work = work + 1
+                    if cooperative and work % 200 == 0 then coroutine.yield() end
+                    local pickup = child.stages[child.next]
+                    if pickup and pickup.kind == "a" and not unlocked(child.id) and unlocked(child.id, stop.id)
+                        and not pickup.unknownLocation and distance(stop, pickup) <= 150 then
+                        value = value - 250; break
+                    end
+                end
+            end
             if not score or value < score or value == score and task.id < best.id then best, score = task, value end
         end
         local stop = best.stages[best.next]
@@ -219,7 +232,7 @@ function ns.UpdateFixedGuideRoute(guide)
     ns.selectedRoute, ns.routePaused = route, route.pendingReason
     if not before or not after or before.guideStep ~= after.guideStep then ns.navigationPreview = nil end
     if route.remainingSteps == 0 then
-        ns.ClearRoute(); ns.routeStats.status = "Selected route completed."; return
+        ns.CompleteSelectedGuide(guide); return
     end
     ns.DrawRoute()
 end

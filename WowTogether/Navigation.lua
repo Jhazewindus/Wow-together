@@ -43,6 +43,7 @@ end
 function ns.RouteContext(stop, mapID)
     if stop.kind == "loading" then return "Checking progress and prerequisites.\nComparing nearby pickups, work and returns." end
     if stop.kind == "notice" and ns.routeSelection and ns.routeSelection.fullGuide then
+        if ns.selectedRoute and ns.selectedRoute.complete then return "Guide complete.\nChoose another guide or Scan to check progress." end
         return ns.routeSelection.zone .. " • Guide retained.\nVisit its quest giver or Scan after progressing."
     end
     if stop.kind == "notice" then return "Scan can reconsider skipped steps.\nSettings can reset all skips for this character." end
@@ -71,7 +72,9 @@ function ns.RouteContext(stop, mapID)
     local who = stop.forPlayer and (" • For " .. stop.forPlayer) or ""
     local context = mapID and mapID ~= stop.mapID and ("Travel to " .. zone .. who) or (zone .. who)
     local useful, exception = ns.LevelingValue(stop.id)
-    if useful == true and exception then reason = exception
+    if ns.routeSelection and ns.routeSelection.catchupRequired and ns.routeSelection.catchupRequired[stop.id] then
+        reason = "Finish this prerequisite to catch your party up."
+    elseif useful == true and exception then reason = exception
     elseif useful == false then reason = "Quest-log work you chose to keep in this route." end
     if ns.IsGroupQuest(stop.id) then reason = "Group / elite: bring a party. " .. reason end
     return reason .. "\n" .. context
@@ -158,8 +161,7 @@ function ns.UpdateNavigation()
     frame.symbol:SetShown(state.angle == nil and not state.arrived and not state.flight)
     frame.step:SetText(state.stop.kind == "loading" and "Generating an efficient trip" or state.stop.historyPreview and "History preview • published location" or
         (ns.navigationPreview and "Preview step • arrows browse; Scan returns to the plan" or
-            (state.stop.learnedSource and ("Observed by " .. state.stop.learnedSource .. " • tentative") or
-            (state.stop.guideStep and ("Zone guide step " .. state.stop.guideStep) or "Current guide step"))))
+            (state.stop.guideStep and ("Zone guide step " .. state.stop.guideStep) or "Current guide step")))
     local editable = not ns.navigationPreview and not state.flight and state.stop.kind ~= "corpse"
         and (state.stop.kind ~= "notice" or state.stop.id > 0) and state.stop.kind ~= "loading"
     frame.skipStep:SetEnabled(editable); frame.skipQuest:SetEnabled(editable); frame.scan:SetEnabled(not state.flight and state.stop.kind ~= "loading")

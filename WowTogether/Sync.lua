@@ -87,6 +87,7 @@ function ns.UpdateRoster()
         announced = false
         lastSnapshot, lastCompletion, lastOffers = nil, nil, nil
         if ns.ResetGuideTraffic then ns.ResetGuideTraffic() end
+        if ns.ResetCatchupHistory then ns.ResetCatchupHistory() end
     end
     lastRoster = signature
     ns.Refresh()
@@ -278,6 +279,7 @@ function ns.SendOffers(force)
 end
 
 function ns.SyncNow(force)
+    if force and ns.ResetCatchupRequests then ns.ResetCatchupRequests() end
     if force == nil then force = true end
     if not ns.db then return end
     trace("Manual/event sync requested")
@@ -386,6 +388,13 @@ function ns.Receive(prefix, message, channel, sender)
         local target = string.sub(message, 5)
         if target == ns.self then ns.syncStats.accepted = ns.syncStats.accepted + 1; replySnapshot() end
         return
+    end
+    if ns.ReceiveCatchupHistory then
+        local handled, accepted, reason = ns.ReceiveCatchupHistory(message, sender)
+        if handled then
+            if accepted then ns.syncStats.accepted = ns.syncStats.accepted + 1 else ignored(reason) end
+            ns.Refresh(); return
+        end
     end
     if ns.ReceiveCatalogueMessage then
         local handled, accepted, reason = ns.ReceiveCatalogueMessage(message, sender)

@@ -205,7 +205,8 @@ class RouteTests(unittest.TestCase):
         c.receive('1|S|1|1|1|')
         c.receive('1|C|2|1|1|900')
         c.receive('1|K|2|1|1|900')
-        self.assertIsNone(c.ns.selectedRoute)
+        self.assertTrue(c.ns.selectedRoute.complete)
+        self.assertEqual(len(c.ns.selectedRoute.stops), 0)
         self.assertEqual(c.ns.routeStats.lines, 0)
 
     def test_combat_retains_route_progress_and_defers_clearing_without_waypoint(self):

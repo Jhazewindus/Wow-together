@@ -1,12 +1,12 @@
 # Wow Together — friend test script
 
-For **0.6.5**, World of Warcraft: Forever beta, interface **16001**.
+For **0.6.6**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 30 Lua files**, in
+1. Replace the complete WowTogether folder, including **all 32 Lua files**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    `/reload`; restart fully if a new addon folder does not appear.
 2. Enable `/console scriptErrors 1`. Record version, build, level, faction, class,
@@ -68,8 +68,8 @@ Keep tester names and reports separate; label the main developer's report.
     class/race on this account, test an ordinary learned quest requirement.
     For a class/race quest or prerequisite, only the required dimension stays
     specific; do not apply that finding to an incompatible character.
-    Start a guide that uses a learned relationship. Relevant steps credit the
-    observing character. Existing fixed guides keep their compiled order.
+    Start a guide that uses a learned relationship. Playing UI shows only the
+    action or requirement, without Observed by labels. Existing fixed guides keep their compiled order.
     `/wt findings` or Export guide findings includes patterns and supporting
     before/after evidence; Select all, Ctrl+C closes the window. Names are omitted
     unless enabled; `/wt research` always omits names. Send labeled text files.
@@ -121,6 +121,29 @@ Keep tester names and reports separate; label the main developer's report.
     A missing-offer observation alone must not apply a shared skip. Send exports
     labeled by tester and level; repeated manual skips are for baseline review,
     not an automatic account-wide skip rule. No data is uploaded automatically.
+19. **Reload and outside-guide questing:** note the selected guide, future fixed
+    steps and a saved skip. Accept/hand in an unrelated quest; the arrow and
+    controls must stay visible. /reload and log out/in: resume the same guide
+    using fresh progress without opening the map or sending new invitations.
+    Temporarily blocked and finished guides retain controls. Clear route ends
+    the guide, clears pins and prevents it restarting next login. Test two characters.
+20. **Party catch-up:** in a normal party, compare completed zone quests, with
+    one friend behind through a useful chain. Wait for sync. Catch up party
+    must offer a plan without replacing the selected fixed guide. Keep my guide
+    preserves it; review again through the zone card or /wt catchup. Accept:
+    missing parents come before their children, completed friends can help,
+    unrelated low-level junk/professions/repeatables stay out. Friends choose
+    Follow route or Keep my route. Test three members and a second zone; unknown
+    history must wait rather than infer progress. Raid/solo should not offer it.
+21. **Clean markers:** in settings → Party and quest markers, choose Quest !,
+    cross or skull. Enemy markers should sit beside names rather than far from
+    the nameplate. Disable only nameplate hints; item tooltip hints remain enabled.
+    Completed objective types lose their marker; unfinished types remain marked.
+    Markers hide in combat, and NPC arrival instructions keep their quest names.
+22. **Map footer:** route controls should sit below the map viewport, covering no
+    terrain or quest pins. Toggle full route/ahead and View route zone. Test
+    windowed/maximized map layouts, zoom/pan and combat. Send a screenshot if
+    your beta layout clips the footer or places it off-screen.
 
 ## Copyable tester report
 
@@ -131,7 +154,7 @@ Addon / client build:
 Level / class / race / faction / zone:
 Party size / selected guide:
 Fixed zone guides / full route / learning settings:
-Checks 1–18: Pass / Fail / Skip (reason)
+Checks 1–22: Pass / Fail / Skip (reason)
 Exact quest name and ID / NPC / current and next step numbers:
 What happened / expected result:
 Was the quest offered? Was its prerequisite handed in?

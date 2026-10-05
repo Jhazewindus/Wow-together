@@ -21,7 +21,8 @@ local function availableTasks(guide)
     for _, record in ipairs(guide.records) do
         if ns.PartyQuestFinished(record.id) then complete = complete + 1
         elseif not ns.GuideQuestSkipped(record.id) and ns.FocusCanStartRecord(record, focus)
-            and (ns.LevelingValue(record.id) ~= false or activeForParty(record.id)) then
+            and (ns.LevelingValue(record.id) ~= false or activeForParty(record.id)
+                or guide.catchupRequired and guide.catchupRequired[record.id]) then
             local candidate = live[record.id] or record
             local stages = ns.PartyRouteStages(candidate, focus)
             if #stages > 0 then
@@ -194,6 +195,7 @@ end
 function ns.CancelGuidePlanning()
     ns.planningGeneration = (ns.planningGeneration or 0) + 1
     ns.routePlanning = nil
+    ns.routePlanningError, ns.routePlanningErrorDetail = nil, nil
 end
 
 local function fingerprint(guide)
@@ -236,7 +238,7 @@ function ns.PlanLevelingGuide(guide, invite)
             ns.routePlanning = nil
             ns.routePlanningError = "Route generation failed; copy Diagnostics for investigation."
             if ns.Public(result) and type(result) == "string" then ns.routePlanningErrorDetail = string.sub(result, 1, 400) end
-            ns.guideAction = ns.routePlanningError; ns.Refresh(); return
+            ns.Refresh(); ns.guideAction = ns.routePlanningError; return
         end
         if coroutine.status(job) ~= "dead" then C_Timer.After(0.01, advance); return end
         if fingerprint(guide) ~= before and restarts < 2 then
@@ -257,8 +259,8 @@ function ns.PlanLevelingGuide(guide, invite)
     end
     if not C_Timer or type(C_Timer.After) ~= "function" then
         ns.routePlanning = nil
-        ns.guideAction = "Route scheduler unavailable on this build; copy Diagnostics."
-        ns.Refresh(); return false
+        ns.routePlanningError = "Route scheduler unavailable on this build; copy Diagnostics."
+        ns.Refresh(); ns.guideAction = ns.routePlanningError; return false
     end
     C_Timer.After(0.01, advance)
     return true

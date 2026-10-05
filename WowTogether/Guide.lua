@@ -502,6 +502,12 @@ function ns.ShowGuideOnMap(guide)
         ns.Refresh()
         return false
     end
+    if ns.resumingGuide == guide then
+        ns.ActivateRoute(guide, route)
+        ns.resumingGuide = nil
+        ns.guideAction = "Resumed " .. guide.title .. "."
+        ns.Refresh(); return true
+    end
     if not WorldMapFrame and C_AddOns and type(C_AddOns.LoadAddOn) == "function" then C_AddOns.LoadAddOn("Blizzard_WorldMap") end
     if WorldMapFrame and type(WorldMapFrame.SetMapID) == "function" and type(WorldMapFrame.Show) == "function" then
         local mapID = first and first.mapID or guide.mapID
@@ -521,6 +527,7 @@ function ns.ShowGuideOnMap(guide)
 end
 
 ns.On("PLAYER_REGEN_ENABLED", function()
+    if ns.pendingSavedGuide then ns.RestoreSavedGuide() end
     if ns.ReadProgress then ns.ReadProgress() end
     if ns.db then ns.ScheduleSync() end
     if ns.FlushRouteUpdates then ns.FlushRouteUpdates() end

@@ -101,6 +101,12 @@ function ns.QuestIDs()
     if ns.CatalogueScopeIDs then for id in pairs(ns.CatalogueScopeIDs()) do ids[id] = true end end
     for id in pairs(ns.dungeonHistoryScope or {}) do ids[id] = true end
     for id in pairs(ns.partyRouteHistoryScope or {}) do ids[id] = true end
+    if ns.RequestedCatchupHistory then
+        local count = 0; for _ in pairs(ids) do count = count + 1 end
+        for id in pairs(ns.RequestedCatchupHistory()) do
+            if not ids[id] and count < 1152 then ids[id], count = true, count + 1 end
+        end
+    end
     return ids
 end
 

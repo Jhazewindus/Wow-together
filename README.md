@@ -1,7 +1,7 @@
 # Wow Together
 
-A party quest guide for the **World of Warcraft: Forever beta**. Version
-**0.6.5** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
+**0.6.6** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -16,7 +16,7 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **30 Lua
+Replace the folder on **every party member's client**, including all **32 Lua
 files**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
@@ -28,6 +28,7 @@ No Battle.net credentials, external API service or in-game HTTP access is needed
 | `/wt tracker` | Toggle the movable, scrollable party progress panel. |
 | `/wt arrow` | Toggle the movable direction and instruction panel. |
 | `/wt guide scan` | Refresh progress; fixed guides retain their order. |
+| `/wt catchup` | Review a route to catch up synced party members in this zone. |
 | `/wt research` | Export this character's raw quest observations. |
 | `/wt findings` | Export account-wide observed prerequisite findings and supporting evidence. |
 | `/wt questlines` | Inspect the current client's questline table and optional chain quest IDs. |
@@ -65,12 +66,31 @@ is locked or its location is missing; Skip step / Skip quest remain available.
 Catalogue-based routes remain partial where published coordinates are missing;
 these are generated guides, not fully hand-verified walkthroughs.
 
+The selected guide now resumes after `/reload` or login. Each character saves
+its selection, complete fixed sequence and trip quest set; current quest history
+and peer snapshots supply progress. Resuming does not reopen the map or invite
+friends again. An addon upgrade recompiles the fixed sequence from updated data.
+Outside-guide questing, temporarily unavailable pickups and a finished route keep
+the arrow and controls visible. **Clear route** ends the selection and removes
+its saved checkpoint; saved quest/step skips are a separate setting.
+
+When a normal synced party has useful progression gaps in the current zone,
+**Catch up party** offers an adaptive route for missing prerequisites and nearby
+objectives. The existing guide stays selected until you accept. Use the zone
+card's Catch up party button or `/wt catchup` to review it again. Friends still
+choose **Follow route** or **Keep my route**. Unknown or stale history cannot
+establish that someone is behind. Low-level work needs a useful chain or active
+quest; required earlier stages explain their purpose under the arrow. Repeatables
+and profession quests are excluded. Every zone uses the same known prerequisite
+checks; absent catalogue facts still require actual NPC observations.
+
 Guide cards distinguish total quests from published pickup, objective and
 turn-in coverage. **Show full route** shows all currently eligible mapped quests,
 including those beyond the former six-quest/twenty-stop trip limit. Locked future
 quests remain in the internal sequence and enter the map preview after unlocking.
 Browse another map to see that zone's eligible markers. Cross-zone gaps do not
 become false local connecting lines. Focus next steps restores the short preview.
+These controls sit below the map viewport, outside the quest drawing area.
 
 Turn **Follow fixed zone guides** off and start a guide again for adaptive trips.
 Those compare nearby dependency-ready walking orders, with up to six quests and
@@ -288,8 +308,9 @@ alternative cause, not treated as actual standing measurements. Multiple givers,
 repeatables and professions do not become automatic learned gates. Published
 alternative prerequisites are never narrowed to one observed branch. A positive
 NPC offer contradicting a learned requirement disables that tentative rule.
-Steps influenced by learning say **Observed by <character> • tentative**. An
-already running fixed guide keeps its order; new guides use the current findings.
+Playing UI shows the quest action or blocking requirement without observer
+labels. Optional findings exports retain provenance. An already running fixed
+guide keeps its order; new guides use the current findings.
 A missing offer or a skip alone does not identify the unlock. Visit the actual
 NPC before and after a hand-in to obtain a useful learning pair.
 
@@ -384,7 +405,7 @@ provided broad inspiration about progress clarity; its code/assets/layouts
 were not copied. This implementation is independent.
 
 Reported beta build **70205** established the earlier sync APIs in user tests.
-**0.6.5 has host validation, not a live-client compatibility certification.**
+**0.6.6 has host validation, not a live-client compatibility certification.**
 Retest UI rendering, optional gossip/flight actions, corpse positions and item
 hooks on the build in front of you. `/wt probe` lists capabilities and runtime
 status. Do not interpret presence as proof that protected actions work.
@@ -394,7 +415,7 @@ combat automation or replacement of Blizzard combat tools is used.
 
 ## Development and release
 
-Host checks load all 30 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
+Host checks load all 32 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
 
 ```sh
 python3 -m venv /tmp/wow-together-tests

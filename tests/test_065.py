@@ -111,7 +111,8 @@ class FullDungeonCollectionTests(unittest.TestCase):
         self.assertFalse(any('|G|' in msg for _, msg, _ in c.drain()))
         c.lua.execute('finished[900]=true; finished[901]=true')
         c.ns.UpdateSelectedRoute(c.lua.table())
-        self.assertIsNone(c.ns.selectedRoute)
+        self.assertTrue(c.ns.selectedRoute.complete)
+        self.assertEqual(len(c.ns.selectedRoute.stops), 0)
 
     def test_old_early_notice_does_not_suppress_new_threshold_but_new_notice_is_once(self):
         c = solo(); group = collection(c)

@@ -170,7 +170,8 @@ class CurrentQuestTests(unittest.TestCase):
         self.assertIsNotNone(c.ns.routePaused)
         self.assertGreater(c.ns.routeStats.pins, 0)
         c.receive('1|S|3|1|1|')
-        self.assertIsNone(c.ns.selectedRoute)
+        self.assertTrue(c.ns.selectedRoute.complete)
+        self.assertEqual(len(c.ns.selectedRoute.stops), 0)
 
 
 class ViewportTests(unittest.TestCase):

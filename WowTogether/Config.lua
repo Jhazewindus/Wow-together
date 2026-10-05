@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-local defaults = {autoAccept = false, npcHints = true, classQuests = false,
+local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, classQuests = false,
     dungeonPrompts = true, zonePrompts = true, trackerOpacity = 0.08,
     trackerHeight = 350, circuitRadius = 0.16, circuitLimit = 6, mapLegend = true, professionBatch = 5, routeArrow = true,
     currentQuestsFirst = true, nearbyPickups = true, fullRoute = false, routeAhead = 2, autoTurnIn = false,
@@ -26,7 +26,7 @@ local sections = {
     {"navigation", "Arrow and travel", {
         {"routeArrow", "Show the direction arrow", "A movable guide panel with the current instruction and step controls."},
         {"distanceUnits", "Distance units", "Choose how distances appear under the arrow.", {{"yards", "Yards"}, {"metres", "Metres"}}},
-        {"mapLegend", "Show route explanation on the map", "Show route status and controls beside the world map drawing."},
+        {"mapLegend", "Show route explanation on the map", "Show route status below the world map. Route controls remain available."},
         {"suggestFlights", "Suggest faster known flights", "Compare walking with routes learned at flight masters. Timed flights improve travel estimates."},
         {"nearbyFlights", "Check nearby flight paths", "Add a short visit to an observed flight master when its unlock is not confirmed."},
         {"autoFly", "Select the suggested flight", "Opt-in: when you open the correct flight master's map, request the suggested reachable destination outside combat. Test this on your beta build."},
@@ -36,7 +36,8 @@ local sections = {
         {"trackerOpacity", "Party panel background", "Choose readability behind quest progress text.", {{0, "Transparent"}, {0.08, "Subtle"}, {0.25, "Dark glass"}, {0.5, "Dark"}}},
         {"trackerHeight", "Party panel size", "How much progress is visible before you scroll.", {{220, "Compact"}, {350, "Comfortable"}, {500, "Tall"}}},
         {"npcHints", "Mark needed quest NPCs and items", "Show a marker beside public quest-related nameplates and a quest-item tooltip hint, outside combat."},
-        {"npcMarker", "Objective marker style", "Choose the symbol used for kill targets and quest items.", {{"cross", "Cross"}, {"skull", "Skull for kills"}}}}},
+        {"nameplateHints", "Show quest markers beside names", "Turn nameplate markers on or off separately from quest-item tooltip hints. Markers hide during combat."},
+        {"npcMarker", "Objective marker style", "Choose a cross, a kill skull, or a quest ! beside needed enemy names.", {{"cross", "Cross"}, {"skull", "Skull for kills"}, {"quest", "Quest !"}}}}},
     {"automation", "Quest dialogs", {
         {"autoSelectQuests", "Open the current guide quest at an NPC", "When an NPC has several quests, select the exact current pickup or completed turn-in. Other quests stay manual."},
         {"autoAccept", "Accept the quest dialog I open", "Opt-in: accept an opened quest-detail dialog outside combat."},
@@ -64,7 +65,7 @@ function ns.InitializeConfig()
     ns.db.config.professionBatch = math.max(1, math.min(20, math.floor(ns.db.config.professionBatch)))
     ns.db.config.routeAhead = math.max(0, math.min(2, math.floor(ns.db.config.routeAhead)))
     if ns.db.config.distanceUnits ~= "yards" and ns.db.config.distanceUnits ~= "metres" then ns.db.config.distanceUnits = "yards" end
-    if ns.db.config.npcMarker ~= "cross" and ns.db.config.npcMarker ~= "skull" then ns.db.config.npcMarker = "cross" end
+    if ns.db.config.npcMarker ~= "cross" and ns.db.config.npcMarker ~= "skull" and ns.db.config.npcMarker ~= "quest" then ns.db.config.npcMarker = "cross" end
 end
 
 function ns.SetOption(key, value)

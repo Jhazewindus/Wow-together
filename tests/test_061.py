@@ -204,7 +204,8 @@ class CooperativePlannerTests(unittest.TestCase):
         c = self.client(count=2)
         c.lua.globals().finished[900], c.lua.globals().finished[901] = True, True
         c.ns.StartPartyRoute(c.ns.LevelingGuideChoices()[1]); run_plan(c)
-        self.assertIsNone(c.ns.routeSelection)
+        self.assertIsNotNone(c.ns.routeSelection)
+        self.assertTrue(c.ns.selectedRoute.complete)
         self.assertIn('already completed', c.ns.partyRouteStatus)
         c.lua.globals().finished[900], c.lua.globals().finished[901] = False, False
         c.lua.globals().C_Timer = None

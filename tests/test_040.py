@@ -131,7 +131,8 @@ class UpdateTests(unittest.TestCase):
         self.assertIsNotNone(c.ns.routeSelection)
         c.receive('1|C|4|1|1|900')
         c.receive('1|K|4|1|1|900')
-        self.assertIsNone(c.ns.selectedRoute)
+        self.assertTrue(c.ns.selectedRoute.complete)
+        self.assertEqual(len(c.ns.selectedRoute.stops), 0)
 
     def test_three_players_only_clear_markers_after_last_completion(self):
         c = route_client()

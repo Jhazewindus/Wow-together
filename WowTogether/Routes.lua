@@ -442,9 +442,10 @@ end
 
 local function routeLegend(provider, map)
     if provider.legend then return provider.legend end
-    local parent = query(map.GetCanvasContainer, map) or map
+    local parent = map
+    local viewport = query(map.GetCanvasContainer, map) or query(map.GetCanvas, map) or map
     local legend = CreateFrame("Frame", nil, parent, "BackdropTemplate")
-    legend:SetPoint("BOTTOMLEFT", 14, 14)
+    legend:SetPoint("TOPLEFT", viewport, "BOTTOMLEFT", 0, -6)
     legend:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8X8"})
     legend:SetBackdropColor(0.035, 0.045, 0.06, 0.45)
     local level = query(parent.GetFrameLevel, parent)
@@ -675,6 +676,17 @@ function ns.ActivateRoute(guide, route)
     ns.AttachRouteProvider()
     ns.DrawRoute()
     if ns.UpdateNPCHints then ns.UpdateNPCHints() end
+    if ns.SaveSelectedGuide then ns.SaveSelectedGuide() end
+end
+
+function ns.CompleteSelectedGuide(guide, message)
+    ns.routeSelection, ns.navigationPreview = guide, nil
+    ns.selectedRoute = {key = guide.key, title = guide.title, mapID = guide.homeMapID or guide.mapID or 0,
+        stops = {}, previewStops = {}, complete = true, remainingSteps = 0}
+    ns.routePaused, ns.routeSignature = message or "Guide complete. Choose another guide when ready.", nil
+    ns.guideAction = ns.routePaused
+    ns.DrawRoute()
+    if ns.SaveSelectedGuide then ns.SaveSelectedGuide() end
 end
 
 local function routeSignature(route)
@@ -711,7 +723,7 @@ function ns.UpdateSelectedRoute(choices)
             if not complete then finished = false; break end
         end
         if finished then
-            ns.ClearRoute(); ns.routeStats.status = "Selected route completed."; ns.guideAction = ns.routeStats.status
+            ns.CompleteSelectedGuide(selection)
             return
         end
     end
@@ -774,7 +786,7 @@ function ns.UpdateSelectedRoute(choices)
             else complete = ns.PartyQuestFinished(record.id) end
             if not complete then finished = false; break end
         end
-        if finished then ns.ClearRoute(); ns.routeStats.status = selection.mode == "current" and "No selected quests remain in party logs." or "Selected route completed."; ns.guideAction = ns.routeStats.status
+        if finished then ns.CompleteSelectedGuide(selection, selection.mode == "current" and "No selected quests remain in party logs." or nil)
         else
             if not waiting and route then
                 ns.routeSelection, ns.selectedRoute = guide, route
@@ -799,6 +811,7 @@ function ns.UpdateSelectedRoute(choices)
 end
 
 function ns.ClearRoute()
+    if ns.ClearSavedGuide then ns.ClearSavedGuide() end
     if ns.CancelGuidePlanning then ns.CancelGuidePlanning() end
     ns.routeSelection = nil
     ns.routeZoneViewPending = nil

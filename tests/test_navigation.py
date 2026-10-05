@@ -147,7 +147,8 @@ class NavigationTests(unittest.TestCase):
         self.assertTrue(c.ns.navigation.IsShown(c.ns.navigation))
         c.receive('1|S|3|1|1|')
         c.receive('1|C|4|1|1|900')
-        self.assertFalse(c.ns.navigation.IsShown(c.ns.navigation))
+        self.assertTrue(c.ns.navigation.IsShown(c.ns.navigation))
+        self.assertTrue(c.ns.selectedRoute.complete)
 
     def test_probe_reports_navigation_capabilities_without_a_waypoint_action(self):
         c = navigator()

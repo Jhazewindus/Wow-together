@@ -1,5 +1,23 @@
 # Wow Together changelog
 
+## 0.6.6
+
+- Resume the selected guide after /reload or login, using fresh quest progress.
+  Preserve the fixed sequence and saved skips; never reopen the map or send a
+  new party invitation just for resuming. Clear route removes its checkpoint.
+- Offer Catch up party for confirmed useful progression gaps in the current
+  zone. Include missing prerequisites and nearby work; keep the current guide
+  until accepted. Friends still choose Follow route or Keep my route.
+- Improve nearby prerequisite hand-in/pickup bundling for every zone guide.
+  Sharing and completion APIs remain separate from pickup eligibility.
+- Keep the arrow and guide controls visible during outside-guide questing,
+  blocked steps and completed routes. Explicit Clear route still closes them.
+- Remove Observed by labels from playing UI. Keep evidence in optional exports.
+  Put smaller enemy markers beside their visible name, with a Quest ! style and
+  a separate nameplate toggle that leaves item tooltip hints enabled.
+- Move route controls below the world map viewport so they do not cover pins.
+  Retest the footer in your beta map layout; walking lines still need terrain.
+
 ## 0.6.5
 
 - Temporarily defer fixed-guide pickups blocked by actual complete NPC offers or

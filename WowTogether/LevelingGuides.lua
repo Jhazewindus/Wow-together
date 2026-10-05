@@ -244,11 +244,12 @@ function ns.InvitedLevelingGuide(invite)
     end
 end
 
-function ns.ZoneGuideForMap(mapID)
+function ns.ZoneGuideForMap(mapID, allLevels)
     ns.ResolveCatalogueMaps(); rebuildIndex()
     local low, high = ns.GuideLevelRange("party")
+    if allLevels then low, high = 1, 255 end
     for _, entry in pairs(entries) do
-        if entry.mode == "zone" then
+        if entry.mode == "zone" and (entry.mapID == mapID or entry.mapID == 0) then
             local choice = buildChoice(entry, low, high)
             if choice and choice.homeMapID == mapID then return choice end
         end

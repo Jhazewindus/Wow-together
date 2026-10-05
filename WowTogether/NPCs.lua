@@ -99,11 +99,24 @@ local function read(fn, ...)
     return okay and ns.Public(value) and value or nil
 end
 
+local function region(value)
+    if not ns.Public(value) then return end
+    local kind = type(value)
+    if kind == "table" or kind == "userdata" then return value end
+end
+
+local function markerAnchor(plate)
+    local unitFrame = region(plate.UnitFrame)
+    if unitFrame then return region(unitFrame.name) or region(unitFrame.healthBar) or unitFrame end
+    return plate
+end
+
 function ns.UpdateNPCHints()
     if ns.RouteInCombat() then ns.npcHintsPending = true; return end
     ns.npcHintsPending, ns.npcHintCount = nil, 0
     for _, hint in pairs(hints) do hide(hint) end
     if not ns.Option("npcHints") then ns.npcHintStatus = "NPC hints disabled in settings."; return end
+    if not ns.Option("nameplateHints") then ns.npcHintStatus = "Nameplate markers disabled; quest-item tooltip hints follow their own setting."; return end
     if not C_NamePlate or type(C_NamePlate.GetNamePlateForUnit) ~= "function" or type(UnitGUID) ~= "function" then
         ns.npcHintStatus = "Nameplate/NPC ID API unavailable; map objective icons still work."; return
     end
@@ -171,8 +184,8 @@ function ns.UpdateNPCHints()
                 hint.questNames:SetText(table.concat(shown, "\n"))
                 hint.icon:Hide(); hint.symbol:Hide()
             else
-                hint:SetSize(18, 18); hint:SetPoint("BOTTOMLEFT", plate, "TOPRIGHT", 3, 0)
-                local icon = ns.StopIcon(target)
+                hint:SetSize(16, 16); hint:SetPoint("LEFT", markerAnchor(plate), "RIGHT", 3, 0)
+                local icon = ns.Option("npcMarker") == "quest" and "Interface\\GossipFrame\\AvailableQuestIcon" or ns.StopIcon(target)
                 hint.icon:SetTexture(icon); hint.icon:SetShown(icon ~= nil)
                 hint.symbol:SetText(ns.StopSymbol(target)); hint.symbol:SetShown(icon == nil)
             end

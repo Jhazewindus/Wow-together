@@ -130,8 +130,7 @@ function ns.LearnedPrerequisiteAllowed(id, profile, key)
     if not rule then return true end
     local completed = ns.CatalogueCompletion(key or ns.self, rule.previousQuest)
     if completed == true then return true end
-    local reason = "Observed by " .. rule.sourceCharacter .. " (tentative): "
-        .. (completed == false and "finish " or "check history for ") .. ns.QuestTitle(rule.previousQuest) .. " first."
+    local reason = (completed == false and "Finish " or "Check history for ") .. ns.QuestTitle(rule.previousQuest) .. " first."
     return completed, reason
 end
 
