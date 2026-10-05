@@ -18,6 +18,7 @@ end
 function ns.Refresh()
     if ns.Render then ns.Render() end
     if ns.RenderTracker then ns.RenderTracker() end
+    if ns.UpdateNavigation then ns.UpdateNavigation() end
     if ns.ScheduleActivitySuggestions then ns.ScheduleActivitySuggestions() end
 end
 
@@ -32,7 +33,7 @@ ns.frame:SetScript("OnEvent", function(_, event, ...)
 end)
 
 function ns.Diagnostics()
-    local lines = {"Wow Together 0.5.0 — beta capability and sync report", ""}
+    local lines = {"Wow Together 0.5.1 — beta capability and sync report", ""}
     local function output(line) lines[#lines + 1] = line end
     local version, build, _, interface = GetBuildInfo()
     local function readable(value)
@@ -61,6 +62,7 @@ function ns.Diagnostics()
         {"C_Map.GetPlayerMapPosition", C_Map and C_Map.GetPlayerMapPosition},
         {"C_Map.GetMapInfo", C_Map and C_Map.GetMapInfo},
         {"C_Map.GetMapWorldSize", C_Map and C_Map.GetMapWorldSize},
+        {"GetPlayerFacing", GetPlayerFacing},
         {"C_Map.GetWorldPosFromMapPos", C_Map and C_Map.GetWorldPosFromMapPos},
         {"C_Map.GetMapLinksForMap", C_Map and C_Map.GetMapLinksForMap},
         {"CreateVector2D", CreateVector2D},
@@ -106,6 +108,7 @@ function ns.Diagnostics()
     output("MapCanvasDataProviderMixin: " .. (type(MapCanvasDataProviderMixin) == "table" and "present" or "missing"))
     output("Presence is not proof of working behavior. No waypoint or protected action was called.")
     ns.SyncDiagnostics(output)
+    ns.NavigationDiagnostics(output)
     ns.ShowDiagnostics(table.concat(lines, "\n"))
 end
 
@@ -124,6 +127,7 @@ ns.On("ADDON_LOADED", function(name)
     ns.InitializeGuide()
     ns.ReadProgress()
     ns.CreateTracker()
+    ns.CreateNavigation()
     if ns.InitializeProfessionGuides then ns.InitializeProfessionGuides() end
     ns.Refresh()
     ns.Print("Loaded. /wt opens the quest view; /wt probe opens diagnostics.")
@@ -150,6 +154,7 @@ SlashCmdList.WOWTOGETHER = function(command)
     elseif command == "sync" then ns.SyncNow(true)
     elseif command == "minimap" then ns.ToggleMinimap()
     elseif command == "tracker" then ns.ToggleTracker()
+    elseif command == "arrow" then ns.ToggleNavigation()
     elseif command == "config" then ns.ToggleSettings()
     elseif command == "route clear" then ns.ClearRoute(); ns.Refresh()
     else ns.ToggleWindow() end

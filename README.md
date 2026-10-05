@@ -5,7 +5,17 @@ comparing progress, and drawing the next stops on the world map.
 Targets **interface 16001**, Lua **5.1**. No service or Battle.net credentials
 are required by the addon.
 
-## Version 0.5.0
+## Version 0.5.1
+
+- **Movable route arrow:** a small transparent compass follows the selected
+  route's current stop. Drag it to move; `/wt arrow` or settings toggles it.
+  It turns relative to your character and shows straight-line yards when public
+  position, map scale and facing are available. In another zone it names the
+  destination zone; pending snapshots or restricted data show a status instead
+  of a stale direction. Reaching a point does not accept or complete a quest.
+  Route lines draw on the **world map only**; the minimap button opens the addon.
+
+The 0.5.0 additions are retained:
 
 - **Local XP circuits:** prefer nearby pickups and objective areas that return
   to the same hub. Collect first, work objectives, then batch turn-ins. Settings
@@ -83,7 +93,7 @@ World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
 `WowTogether.toc` belongs directly inside that folder. Update **every party
-member to 0.5.0**, including all new files, then `/reload`. Restart the client
+member to 0.5.1**, including all new files, then `/reload`. Restart the client
 fully if a new addon folder does not appear in the character-screen addon list.
 The release ZIP includes the complete TOC, every Lua file, data summary,
 instructions, and license. Copy the folder rather than individual changed files.
@@ -99,12 +109,14 @@ Commands:
   to move it; mouse-wheel scroll for more quests and objectives.
 - `/wt config` — open settings, including tracker transparency and opt-in
   acceptance of opened quest dialogs.
+- `/wt arrow` — show or hide the direction arrow for a selected route. Drag
+  the arrow to move it; its position and enabled setting are saved.
 - `/wt route clear` — remove the route overlay; the map legend also has a close
   button. The native user waypoint remains under the player's control.
 
 Drag the bottom-right grip to resize from 760 × 580 to 1280 × 1000. Window size,
 minimap visibility, tracker visibility/position, configuration, recorded dungeon
-entrances, activity notices, and learned NPC encounters are
+entrances, activity notices, arrow position/visibility, and learned NPC encounters are
 saved after `ADDON_LOADED`.
 Encounters are separated by client build. Party snapshots and selected routes
 remain in memory. Never include credentials in the addon or repository.
@@ -287,6 +299,10 @@ addressed in 0.5.0; its actual rendering still needs a beta check. The native
 waypoint action worked. Compatibility never depends on project ID alone.
 New recipe, AH, map-link/world-position, NPC fallback and auto-accept behavior
 remain unverified in the beta. API presence does not establish working behavior.
+The 0.5.1 arrow also needs a beta check of `GetPlayerFacing` and
+`C_Map.GetMapWorldSize`. It deliberately avoids guessing an angle without a
+public position/scale/facing. No continuous facing event exists, so its own
+unprotected frame samples at 10 Hz only while visible with a selected route.
 
 1. Update both clients, `/reload`, sync, and wait for the queue to drain.
 2. In Durotar, click **Show route** for a quest with coordinates. Check numbered
@@ -329,6 +345,12 @@ remain unverified in the beta. API presence does not establish working behavior.
 11. Auto-accept is off initially. Enable it in settings only to test an opened
     quest dialog, then confirm successful acceptance and no blocked-action report.
     Test known nearby questline transitions after party prerequisites complete.
+12. Select **Show route**, close the map, and turn in place. The arrow should
+    rotate relative to your character and distance should decrease as you walk
+    toward the stop. Drag it, reload, and check the position persists. Turn in
+    on one client while a friend still needs the quest: the arrow should continue
+    with the remaining party route. `/wt arrow` hides it. Cross-zone stops show
+    the zone name until you reach that zone; lines remain on the world map only.
 
 The diagnostic probe does not place a waypoint. API presence and self echoes
 do not prove behavior or peer delivery. Enable `/console scriptErrors 1` while
@@ -345,14 +367,16 @@ python3 -m venv /tmp/wow-together-tests
 /tmp/wow-together-tests/bin/python -m unittest discover -s tests -v
 ```
 
-Tests load all 18 Lua files in TOC order under Lua 5.1. They cover sync, history
+Tests load all 19 Lua files in TOC order under Lua 5.1. They cover sync, history
 pairing, names, secrets, throttling, UI controls, ranking, requirements,
 revision-bound destinations, route stages, cross-zone/partial routes, map
 geometry, resizing, party route completion, snapshot repair, tracker scrolling,
 objective counts/revisions/secret values, guarded NPC hints, combat deferral,
 local XP circuits and phase ordering, opt-in acceptance guards, dungeon collection
 and completion, nearby zone transitions, personal recipe/material plans,
-observed AH prices, alternate NPC targets, vendor buy lists, and source parsing.
+observed AH prices, alternate NPC targets, vendor buy lists, source parsing,
+arrow cardinal bearings, physical map scale, restricted position/facing,
+arrival without automation, movement sampling, persistence, and party route updates.
 Synthetic fixtures are not shipped as game data. Mocks do not establish real
 beta rendering or protected-action compatibility.
 

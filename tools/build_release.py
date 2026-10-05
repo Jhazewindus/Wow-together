@@ -40,6 +40,13 @@ does not appear. No Battle.net credentials or web service are needed.
 through all quests/objectives; player names, zones and counts appear together.
 /wt config opens settings: transparent tracker, circuit budgets, class quests,
 NPC hints, map legend, dungeon/zone prompts and opt-in auto-accept.
+/wt arrow toggles the small direction arrow for your selected route. Drag it
+to move it; its position is saved. The arrow turns relative to your character
+and shows straight-line yards when public position, map scale and facing exist.
+Test turning and walking toward a route stop on your beta build. Unknown data
+shows a status. Cross-zone stops name the zone until you enter it.
+Reaching a point does not accept or complete a quest. Follow roads and terrain.
+Route lines draw on the WORLD MAP ONLY; the minimap button opens the addon.
 /wt sync requests fresh party data. Let the send queue drain.
 /wt probe opens diagnostics; Ctrl+C copies the selected text and closes it.
 /wt route clear clears the route overlay. /wt minimap toggles the minimap icon.
@@ -67,7 +74,7 @@ Known vendor-listed quest items have a buy list with your own bag stock.
 Auto-accept is OFF by default. If enabled, only an opened quest-detail dialog
 is attempted outside combat. Verify this action on your beta build.
 
-New recipe/AH, map-link/world-position, NPC fallback and acceptance APIs need
+New arrow facing/scale, recipe/AH, map-link/world-position, NPC fallback and acceptance APIs need
 testing on your beta build; /wt probe reports capabilities. Restricted data
 stays unknown. NPC hints include alternative published drop NPC IDs and hide
 in combat. No raid-target marking.
