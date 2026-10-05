@@ -191,20 +191,30 @@ function ns.RouteStop(record, focusKey)
     local title = ns.QuestTitle(record.id)
     if string.find(title, "(title pending)", 1, true) and record.title ~= "" then title = record.title end
     local npc = record.npc ~= "" and record.npc or (p.name or "")
-    local entityID, action, npcName = p.entityID, p.action, p.npc and p.name or nil
+    local entityID, action, itemName, npcName = p.entityID, p.action, p.itemName, p.npc and p.name or nil
     local candidates = catalog and (p.kind == "a" and catalog.starts or (p.kind == "t" and catalog.ends or catalog.objectives))
     for _, candidate in ipairs(candidates or {}) do
         if candidate.mapID == p.mapID and math.abs(candidate.x - p.x) < 0.04 and math.abs(candidate.y - p.y) < 0.04 then
             entityID, action = entityID or candidate.entityID, action or candidate.action
+            itemName = itemName or candidate.itemName
             if candidate.npc then npcName = candidate.name end
             break
         end
     end
     return {id = record.id, mapID = p.mapID, x = p.x, y = p.y, kind = p.kind, title = title, published = p.published,
-        entityID = entityID, action = action, itemName = p.itemName, npcName = npcName or ((p.kind == "a" or p.kind == "t") and npc ~= "" and npc or nil),
+        entityID = entityID, action = action, itemName = itemName, targetName = p.name or npcName,
+        npcName = npcName or ((p.kind == "a" or p.kind == "t") and npc ~= "" and npc or nil),
         label = p.kind == "t" and ("Turn in " .. title) or (p.kind == "q" and ("Work on " .. title)
             or (npc ~= "" and ("Talk to " .. npc) or ("Check pickup: " .. title))),
         approximate = p.kind == "a" and record.source == "n"}
+end
+
+function ns.PublishedGuideStop(record, point, kind)
+    if not point or not validPoint(point.mapID, point.x, point.y) then return end
+    return {id = record.id, mapID = point.mapID, x = point.x, y = point.y, kind = kind,
+        title = ns.QuestTitle(record.id), label = point.name or record.title, published = true,
+        entityID = point.entityID, action = point.action, itemName = point.itemName,
+        targetName = point.name, npcName = point.npc and point.name or nil}
 end
 
 function ns.QuestRouteStages(record, focusKey)
@@ -218,7 +228,8 @@ function ns.QuestRouteStages(record, focusKey)
         if previous.mapID == point.mapID and math.abs(previous.x - point.x) < 0.00001 and math.abs(previous.y - point.y) < 0.00001 then return end
         result[#result + 1] = {id = record.id, mapID = point.mapID, x = point.x, y = point.y, kind = kind,
             title = ns.QuestTitle(record.id), label = prefix .. point.name, planned = true, published = true,
-            entityID = point.entityID, action = point.action, itemName = point.itemName, npcName = point.npc and point.name or nil}
+            entityID = point.entityID, action = point.action, itemName = point.itemName,
+            targetName = point.name, npcName = point.npc and point.name or nil}
     end
     if first.kind == "a" then
         for _, point in ipairs(quest.objectives or {}) do add(point, "q", "Objective area: ") end
@@ -287,7 +298,9 @@ function ns.BuildGuideRoute(guide, includeOrigin)
     local blocks, missing, focusKey = {}, 0, guide.focusKey or ns.self
     local partial = false
     for _, record in ipairs(guide.records or {guide.target}) do
-        local stages = guide.personal and ns.RouteStages(record, ns.self) or ns.PartyRouteStages(record, focusKey)
+        local stages = {}
+        if guide.personal then stages = ns.RouteStages(record, ns.self)
+        elseif ns.FocusCanStartRecord(record, focusKey) then stages = ns.PartyRouteStages(record, focusKey) end
         if #stages > 0 then
             blocks[#blocks + 1] = stages
             local quest = ns.CatalogueQuest(record.id)
@@ -297,6 +310,7 @@ function ns.BuildGuideRoute(guide, includeOrigin)
     local mapID = blocks[1] and blocks[1][1].mapID or 0
     local otherMaps = 0
     local start = includeOrigin and origin(mapID) or nil
+    local planningOrigin = origin(mapID)
     local tasks = {}
     for _, block in ipairs(blocks) do
         if block[1].mapID ~= mapID then otherMaps = otherMaps + #block
@@ -313,7 +327,7 @@ function ns.BuildGuideRoute(guide, includeOrigin)
     -- Choose among dependency-ready stages. This collects nearby pickups first,
     -- groups objectives, and delays each return until its earlier stages finish.
     while #ordered < MAX_STOPS do
-        local previous, best, cost = ordered[#ordered], nil, nil
+        local previous, best, cost = ordered[#ordered] or planningOrigin, nil, nil
         for index, task in ipairs(tasks) do
             local p = task.stages[task.next]
             if p then
@@ -341,6 +355,9 @@ ns.RouteInCombat = inCombat
 function ns.StopIcon(stop)
     if stop.kind == "a" then return "Interface\\GossipFrame\\AvailableQuestIcon" end
     if stop.kind == "t" then return "Interface\\GossipFrame\\ActiveQuestIcon" end
+    if stop.kind == "f" then return "Interface\\Icons\\Ability_Mount_Wyvern_01" end
+    if stop.kind == "corpse" then return "Interface\\TargetingFrame\\UI-RaidTargetingIcon_8" end
+    if stop.kind == "q" and ns.Option("npcMarker") == "cross" then return "Interface\\RaidFrame\\ReadyCheck-NotReady" end
     if stop.action == "kill" then return "Interface\\TargetingFrame\\UI-RaidTargetingIcon_8" end
     return nil
 end
@@ -411,7 +428,7 @@ function ns.RouteDisplayStops(route)
 end
 
 function ns.ViewRouteZone(provider)
-    local route = ns.selectedRoute
+    local route = ns.RouteForDisplay()
     provider = provider or ns.routeProvider
     if not route or not provider or not provider.owningMap then return end
     if inCombat() then ns.routeZoneViewPending = true; return end
@@ -445,7 +462,7 @@ local function routeLegend(provider, map)
         self.elapsed = self.elapsed + elapsed
         if self.elapsed < 1 then return end
         self.elapsed = 0
-        local route = ns.selectedRoute
+        local route = ns.RouteForDisplay()
         local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
         if not route or mapID ~= route.mapID then return end
         local point = ns.PlayerPoint(mapID)
@@ -481,7 +498,7 @@ function ns.DrawRoute(provider, geometryOnly)
     if inCombat() and (not geometryOnly or not publicOwnedDrawing(provider)) then ns.routeRedrawPending = true; return end
     hideDrawing(provider)
     ns.routeStats.surface, ns.routeStats.geometry = nil, nil
-    local map, route = provider.owningMap, ns.selectedRoute
+    local map, route = provider.owningMap, ns.RouteForDisplay()
     if not map or not route then
         if ns.routePaused then ns.routeStats.status = ns.routePaused end
         return
@@ -639,9 +656,11 @@ function ns.AttachRouteProvider()
 end
 
 function ns.ActivateRoute(guide, route)
+    ns.guideStepHistory, ns.navigationPreview, ns.forceRouteReplan = {}, nil, nil
     ns.routePaused = nil
     ns.routeSelection = guide
     ns.selectedRoute = route or ns.BuildGuideRoute(guide, true)
+    ns.InitializeGuideStepHistory(guide, ns.selectedRoute)
     ns.routeSignature = nil
     ns.AttachRouteProvider()
     ns.DrawRoute()
@@ -674,20 +693,13 @@ end
 function ns.UpdateSelectedRoute(choices)
     local selection = ns.routeSelection
     if not selection then return end
-    local discovery = selection.mode == "circuit" or string.match(selection.key, "^zone%-route:")
-        or string.match(selection.key, "^series:") or string.match(selection.key, "^line:") or string.match(selection.key, "^npc:")
-    if ns.Option("currentQuestsFirst") and discovery and choices and choices[1]
-        and (choices[1].mode == "current" or choices[1].mode == "bundle") then
-        selection = choices[1]
-        ns.routeSelection, ns.routeSignature = selection, nil
-    end
     if selection.mode == "current" and not selection.sharedBy and ns.Option("nearbyPickups") then
-        for _, choice in ipairs(choices or {}) do
+        for _, choice in ipairs(ns.CurrentQuestChoices() or {}) do
             if choice.mode == "bundle" and choice.mapID == selection.mapID then
                 selection = choice; ns.routeSelection, ns.routeSignature = choice, nil; break
             end
         end
-    elseif selection.mode == "bundle" and not selection.sharedBy and not ns.Option("nearbyPickups") then
+    elseif selection.mode == "bundle" and not selection.sharedBy and not selection.baseGuide and not ns.Option("nearbyPickups") then
         -- Turning the setting off also removes planned pickups from an open route.
         local copy = {}
         for key, value in pairs(selection) do copy[key] = value end
@@ -704,26 +716,29 @@ function ns.UpdateSelectedRoute(choices)
             return
         end
     end
-    local guide
+    -- Keep the selected quest set on normal progress/zone updates. A manual
+    -- Scan guide is the explicit place to choose a freshly optimized selection.
+    local guide = selection
     if selection.mode == "dungeon" and selection.dungeon then guide = ns.DungeonGuide(selection.dungeon) end
     local id = tonumber(string.match(selection.key, "^quest:(%d+)$"))
     if id then
         local record = ns.CatalogueRecord(id)
         if record then guide = {key = selection.key, title = selection.title, records = {record}, focusKey = ns.self, personal = selection.personal} end
-    else
-        if not guide then for _, choice in ipairs(choices or {}) do if choice.key == selection.key then guide = choice; break end end end
-        guide = guide or selection
-        if not guide.profilesReady and selection.focusKey then
-            local copy = {}
-            for key, value in pairs(guide) do copy[key] = value end
-            copy.focusKey = selection.focusKey
-            guide = copy
-        end
+    end
+    if not guide.personal then
+        local copy = {}; for key, value in pairs(guide) do copy[key] = value end
+        copy.focusKey = ns.GuideFocus(guide.records); guide = copy
     end
     local old = ns.selectedRoute
     local focus = guide and guide.focusKey or selection.focusKey
     local member = focus ~= ns.self and ns.members[focus]
     local waiting = focus ~= ns.self and (not member or not member.active or member.syncPending)
+    if not guide.personal then
+        for _, person in ipairs(ns.PartyProfiles()) do
+            local peer = ns.members[person.key]
+            if person.key ~= ns.self and peer and peer.active and not person.synced then waiting = true; break end
+        end
+    end
     if selection.mode == "current" or selection.mode == "bundle" then
         for _, record in ipairs(selection.records) do if ns.CurrentQuestPending(record.id) then waiting = true; break end end
         if selection.mode == "bundle" then
@@ -731,13 +746,24 @@ function ns.UpdateSelectedRoute(choices)
         end
     end
     local route = guide and ns.BuildGuideRoute(guide, false)
+    if route and old then route = ns.PinCurrentDestination(old, route) end
     if route and guide and route.mapID ~= guide.mapID then
         local copy = {}; for key, value in pairs(guide) do copy[key] = value end
         copy.mapID, copy.zone = route.mapID, ns.MapName(route.mapID); guide = copy
     end
     if waiting or not route or #route.stops == 0 then
         if not waiting and route and #route.stops == 0 and ns.GuideSelectionHasSkips(selection) then
-            ns.ClearRoute(); ns.guideAction = "All mapped remaining steps were skipped. Reset guide skips in settings to restore them."; return
+            local actualDone = true
+            for _, record in ipairs(selection.records or {}) do
+                if not ns.PartyQuestFinished(record.id) then actualDone = false; break end
+            end
+            if not actualDone then
+                route.mapID = old and old.mapID or selection.mapID or route.mapID
+                ns.selectedRoute, ns.routeSignature = route, nil
+                ns.routePaused = "Remaining guide steps are skipped."
+                ns.guideAction = "All mapped remaining steps were skipped. Scan with Reconsider skips enabled, or reset skips in settings."
+                ns.DrawRoute(); return
+            end
         end
         local finished = not waiting
         for _, record in ipairs(selection.records or {selection.target}) do
@@ -763,6 +789,7 @@ function ns.UpdateSelectedRoute(choices)
     local signature = routeSignature(route)
     if signature == ns.routeSignature then return end
     local before, after = old and old.stops[1], route.stops[1]
+    if before and ns.RememberGuideStep then ns.RememberGuideStep(before, after) end
     ns.routeSelection, ns.selectedRoute, ns.routeSignature, ns.routePaused = guide, route, signature, nil
     ns.DrawRoute()
     ns.guideAction = #route.stops .. " route stop(s): " .. after.label .. "."

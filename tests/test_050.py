@@ -387,7 +387,7 @@ class TargetAndSourceTests(unittest.TestCase):
         c.ns.UpdateNPCHints()
         self.assertEqual(c.ns.npcHintCount, 1)
         self.assertEqual(c.ns.npcHints['nameplate1'].target.label, 'Drop B')
-        self.assertIsNone(c.ns.StopIcon(c.ns.npcHints['nameplate1'].target))
+        self.assertIn('ReadyCheck-NotReady', c.ns.StopIcon(c.ns.npcHints['nameplate1'].target))
         c.ns.SetOption('npcHints', False)
         self.assertFalse(c.ns.npcHints['nameplate1'].IsShown(c.ns.npcHints['nameplate1']))
 

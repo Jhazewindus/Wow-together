@@ -1,15 +1,15 @@
 local addonName, ns = ...
 
 local colors = {
-    background = {0.035, 0.045, 0.06, 0.98},
-    panel = {0.075, 0.09, 0.115, 1},
-    border = {0.19, 0.23, 0.28, 1},
+    background = {0.12, 0.09, 0.055, 0.98},
+    panel = {0.16, 0.115, 0.065, 0.96},
+    border = {0.45, 0.32, 0.16, 1},
     gold = {0.93, 0.73, 0.39, 1},
-    muted = {0.58, 0.65, 0.72, 1},
+    muted = {0.74, 0.66, 0.52, 1},
 }
 
 local function panel(frame, fill, edge)
-    frame:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8X8", edgeFile = "Interface\\Buttons\\WHITE8X8", edgeSize = 1})
+    frame:SetBackdrop({bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background", edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", edgeSize = 12, insets = {left = 3, right = 3, top = 3, bottom = 3}})
     frame:SetBackdropColor(unpack(fill or colors.panel))
     frame:SetBackdropBorderColor(unpack(edge or colors.border))
 end
@@ -123,15 +123,14 @@ function ns.CreateUI()
     ns.ui.party:SetWidth(808)
     ns.ui.party:SetHeight(28)
     ns.ui.party:SetJustifyV("TOP")
-    local filters = {{"guides", "Quest guide"}, {"library", "Library"}, {"all", "All quests"}, {"shared", "Shared"},
-        {"different", "Progress"}, {"dungeons", "Dungeons"}, {"professions", "Professions"}}
-    for index, filter in ipairs(filters) do
-        local key = filter[1]
-        local tab = button(window, filter[2], 148, function() ns.SetFilter(key) end)
-        tab:SetPoint("TOPLEFT", 26 + (index - 1) * 158, -212)
-        tab.filterKey = key
-        ns.ui.filterButtons[key] = tab
-    end
+    local filters = {{"guides", "Leveling guides"}, {"library", "All quests"}, {"all", "Party quests"},
+        {"shared", "Shared quests"}, {"different", "Party progression"}, {"dungeons", "Dungeon guides"},
+        {"professions", "Profession guides"}, {"review", "Quest log review"}}
+    ns.ui.viewChoice = ns.UIDropdown(window, filters, 250, ns.SetFilter)
+    ns.ui.viewChoice:SetPoint("TOPLEFT", 26, -212); ns.ui.viewChoice:SetChoice(ns.filter)
+    ns.ui.viewDescription = label(window, nil, 11, colors.muted)
+    ns.ui.viewDescription:SetPoint("LEFT", ns.ui.viewChoice, "RIGHT", 16, 0)
+    ns.ui.viewDescription:SetText("Choose a guide or explore your party's progress.")
     ns.ui.status = label(window, nil, nil, colors.muted)
     local config = button(window, "Settings", 86, function() ns.ToggleSettings() end)
     config:SetPoint("TOPRIGHT", -48, -17); config:SetHeight(25)
@@ -278,13 +277,7 @@ function ns.Layout()
         end
         ns.ui.libraryCount:SetWidth(width - 154)
     end
-    local tabWidth = (width - 112) / 7
-    for index, key in ipairs({"guides", "library", "all", "shared", "different", "dungeons", "professions"}) do
-        local tab = ns.ui.filterButtons[key]
-        tab:SetWidth(tabWidth)
-        tab:ClearAllPoints()
-        tab:SetPoint("TOPLEFT", 26 + (index - 1) * (tabWidth + 10), -212)
-    end
+    ns.ui.viewDescription:SetWidth(width - 340)
     for _, card in ipairs(ns.ui.cards) do
         card:SetWidth(ns.ui.contentWidth)
         card.title:SetWidth(ns.ui.contentWidth - 130)
@@ -337,7 +330,7 @@ local function makeCard()
     card.mapButton = button(card, "Show route", 140, activate, true)
     card.detailsButton = button(card, "Quest details", 116, function()
         if card.activity and card.activity.dungeon then ns.RecordDungeonEntrance(card.activity.dungeon); return end
-        if card.guide and not card.libraryItem and not card.guide.personal then ns.StartPartyRoute(card.guide); return end
+        if card.guide and not card.libraryItem and not card.guide.personal then ns.RequestStartRoute(card.guide); return end
         local id = card.libraryItem and card.libraryItem.id or (card.guide and card.guide.target.id)
         if id then ns.ShowQuestDetails(id) end
     end, true)
@@ -415,11 +408,10 @@ function ns.Render()
     for _, row in ipairs(rows) do if row.active >= 2 then shared = shared + 1 end end
     for _ in pairs(ns.active or {}) do own = own + 1 end
     ns.ui.metrics[1].value:SetText(synced .. " / " .. (#(ns.partyNames or {}) + 1))
-    local choices = ns.GuideChoices and (ns.filter == "guides" or ns.routeSelection) and ns.GuideChoices() or {}
-    ns.ui.hint:SetText(ns.filter == "guides" and ns.Option("currentQuestsFirst")
-        and (ns.Option("nearbyPickups") and "Nearby turn-ins and current work first; collect eligible quests along the trip.\nSettings controls nearby pickups and the walking detour budget."
-            or "Finish local party work before long delivery trips.\nEnable nearby pickups in settings to bundle quests along this trip.")
-        or "Show route draws numbered stops and lines on your world map.\nUse Quest library to browse zones, search names, and check requirements.")
+    local choices = ns.GuideChoices and ns.filter == "guides" and ns.GuideChoices(true) or {}
+    ns.ui.hint:SetText(ns.filter == "guides"
+        and "Choose a level-appropriate guide; Start route offers optional quest-log detours.\nScan guide recalculates the selected plan. Low-level exceptions explain the useful follow-up."
+        or "Show route draws numbered stops and lines on your world map.\nUse All quests to browse zones, search names, and check requirements.")
     if ns.UpdateSelectedRoute then ns.UpdateSelectedRoute(choices) end
     ns.ui.metrics[2].caption:SetText(ns.filter == "library" and "CATALOGUE QUESTS" or (ns.filter == "guides" and "QUEST GUIDES" or "SHARED ACTIVE"))
     ns.ui.metrics[2].value:SetText(tostring(ns.filter == "library" and ns.catalogue.count or (ns.filter == "guides" and #choices or shared)))
@@ -443,9 +435,7 @@ function ns.Render()
     elseif not ns.syncReady then status = "Sync unavailable; see Diagnostics"
     else status = ns.guideAction or (synced > 1 and "Party progress received" or "Waiting for friends") end
     ns.ui.status:SetText(status)
-    for key, tab in pairs(ns.ui.filterButtons) do
-        tab:SetBackdropBorderColor(unpack(key == ns.filter and colors.gold or colors.border))
-    end
+    ns.ui.viewChoice:SetChoice(ns.filter)
     for _, card in ipairs(ns.ui.cards) do card:Hide() end
     local visible, top = 0, 0
     local display = {}
@@ -458,8 +448,14 @@ function ns.Render()
         for _, chip in ipairs(ns.ui.levelButtons) do chip:SetBackdropBorderColor(unpack(chip.levelKey == ns.libraryLevel and colors.gold or colors.border)) end
     elseif ns.filter == "guides" then
         for index, guide in ipairs(choices) do
-            if index > 12 then break end
+            if index > 9 then break end
             display[#display + 1] = {guide = guide, recommended = index == 1}
+        end
+        -- Keep log-only/local-bundle routes explicitly selectable without
+        -- forcing them to replace the user's chosen leveling guide.
+        for index, guide in ipairs(ns.CurrentQuestChoices() or {}) do
+            if index > 3 then break end
+            display[#display + 1] = {guide = guide, recommended = false}
         end
     elseif ns.filter == "suggestions" then
         for _, suggestion in ipairs(ns.Suggestions()) do
@@ -470,11 +466,21 @@ function ns.Render()
             local dungeon = group
             local activity = {title = group.name, category = "DUNGEON QUEST COLLECTION", dungeon = group,
                 detail = "Quest pickups start at level " .. group.minLevel .. "; listed quest levels " .. group.level .. "–" .. group.maxLevel .. ". " .. #group.ids .. " published quests. View pickups, class restrictions and previous steps before collecting.",
-                action = "View collection plan", click = function() ns.ShowDungeonQuestList(dungeon) end}
+                action = "Start route", click = function()
+                    local guide = ns.DungeonGuide(dungeon)
+                    if guide then ns.RequestStartRoute(guide) else ns.ShowDungeonQuestList(dungeon) end
+                end}
             display[#display + 1] = {activity = activity}
         end
     elseif ns.filter == "professions" then
         for _, activity in ipairs(ns.ProfessionChoices()) do display[#display + 1] = {activity = activity} end
+    elseif ns.filter == "review" then
+        for _, review in ipairs(ns.QuestLogReview()) do
+            local id = review.id
+            display[#display + 1] = {activity = {title = review.title, category = "QUEST LOG REVIEW",
+                detail = "Consider abandoning if you no longer want this quest. " .. review.reason .. " Review the game quest log before deciding; no quest is abandoned automatically.",
+                action = "Review quest", click = function() ns.ShowQuestDetails(id) end}}
+        end
     else
         for _, row in ipairs(rows) do
             local show = ns.filter == "all" or (ns.filter == "shared" and row.active >= 2)
@@ -581,10 +587,11 @@ function ns.Render()
     end
     ns.ui.empty:SetShown(visible == 0)
     ns.ui.empty:SetText(ns.filter == "library" and "No imported quests match this search.\nTry a quest or zone name."
-        or (ns.filter == "guides" and (ns.currentGuideStatus or "No suitable routes with known destinations yet.\nSync party history, browse the Quest library, or talk to a quest giver.")
+        or (ns.filter == "review" and "No unfinished quests need a low-value review.\nReady turn-ins and class/profession quests are kept."
+        or (ns.filter == "guides" and (ns.currentGuideStatus or "No suitable routes with known destinations yet.\nSync party history, browse All quests, or talk to a quest giver.")
         or (ns.filter == "suggestions" and "Sync with a friend to get party suggestions."
         or (#rows == 0 and "Your adventure starts with a quest.\nAccept one, then sync your party."
-        or "No quests in this view yet.\nTry All quests or compare more progress with friends."))))
+        or "No quests in this view yet.\nTry All quests or compare more progress with friends.")))))
     ns.ui.content:SetHeight(math.max(250, top))
 end
 

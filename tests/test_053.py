@@ -285,6 +285,9 @@ class PartyRouteTests(unittest.TestCase):
         card = c.ns.ui.cards[1]
         self.assertEqual(card.detailsButton.caption.text, 'Start route')
         card.detailsButton.OnClick()
+        if c.ns.startGuidePrompt is not None:
+            self.assertTrue(c.ns.startGuidePrompt.IsShown(c.ns.startGuidePrompt))
+            c.ns.startGuidePrompt.selected.OnClick()
         self.assertIn('started for you', c.ns.partyRouteStatus)
         self.assertFalse(any(m.startswith('1|V|') for _, m, _ in c.drain()))
 

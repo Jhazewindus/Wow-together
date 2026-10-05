@@ -47,7 +47,9 @@ function ns.GuideSelectionHasSkips(guide)
 end
 
 function ns.SkipGuide(kind)
-    local stop = ns.selectedRoute and ns.selectedRoute.stops[1]
+    local stop = ns.navigation and ns.navigation.state and ns.navigation.state.stop
+    if ns.navigationPreview or stop and stop.kind == "corpse" or ns.navigation and ns.navigation.state and ns.navigation.state.flight then return end
+    if not stop or stop.kind ~= "f" then stop = ns.selectedRoute and ns.selectedRoute.stops[1] end
     local state = saved()
     if not stop or not state then return end
     if kind == "quest" then state.quests[stop.id] = true
@@ -56,6 +58,7 @@ function ns.SkipGuide(kind)
         state.steps[stop.id][ns.GuideStepKey(stop)] = true
     else return end
     ns.routeSignature = nil
+    ns.navigationPreview = nil
     ns.Refresh()
 end
 
@@ -63,7 +66,7 @@ function ns.ResetGuideSkips()
     local state = saved()
     if not state then return end
     state.quests, state.steps = {}, {}
-    ns.routeSignature = nil
+    ns.routeSignature, ns.forceRouteReplan = nil, true
     ns.guideAction = "Skipped quests and steps restored for this character."
     ns.Refresh()
 end
@@ -71,6 +74,10 @@ end
 function ns.ScanGuideProgress(guide, refresh)
     guide = guide or ns.routeSelection
     if not guide then return end
+    if refresh ~= false and ns.Option("scanSkipped") then
+        local state = saved()
+        for _, record in ipairs(guide.records or {}) do state.quests[record.id], state.steps[record.id] = nil, nil end
+    end
     ns.RouteHistoryScope(guide.records)
     ns.ReadQuests(); ns.ReadGuide()
     local checked, completed, active, total = 0, 0, 0, 0
@@ -91,21 +98,148 @@ function ns.ScanGuideProgress(guide, refresh)
         ns.guideScanStatus = ns.guideScanStatus .. " Friends' history waits for their received snapshots."
     end
     ns.ScheduleSync()
-    if refresh ~= false then ns.Refresh() end
+    if refresh ~= false then
+        local choices
+        if guide.mode == "current" or guide.mode == "bundle" then choices = ns.CurrentQuestChoices()
+        else choices = ns.GuideChoices(true) end
+        local fresh
+        for _, choice in ipairs(type(choices) == "table" and choices or {}) do
+            if choice.key == guide.key then fresh = choice; break end
+        end
+        if guide.baseGuide then fresh = ns.MergeCurrentQuests(guide.baseGuide)
+        elseif (guide.mode == "current" or guide.mode == "bundle") and not fresh then fresh = choices and choices[1] end
+        ns.routeSelection = fresh or guide
+        ns.navigationPreview, ns.routeSignature, ns.forceRouteReplan = nil, nil, true
+        ns.Refresh()
+        ns.guideAction = "Guide replanned using current quests, history and saved skip choices."
+        if ns.navigation then ns.navigation.notice:SetText(ns.guideAction) end
+    end
 end
 
-function ns.ShowGuideScanReport()
-    if not ns.guideScanWindow then
+function ns.InitializeGuideStepHistory(guide, route)
+    local history, current = {}, route and route.stops[1]
+    local function add(record, point, kind)
+        local stop = ns.PublishedGuideStop(record, point, kind)
+        if stop then
+            stop.historyPreview = true
+            history[#history + 1] = stop
+            if #history > 40 then table.remove(history, 1) end
+        end
+    end
+    -- History confirms completed quests and accepted pickups, not the order
+    -- in which a player visited locations. These are read-only previews.
+    for _, record in ipairs(guide.records or {}) do
+        local quest = ns.CatalogueQuest(record.id)
+        if quest and ns.Completed(record.id) == true and not ns.active[record.id] then
+            add(record, quest.starts and quest.starts[1], "a")
+            for _, point in ipairs(quest.objectives or {}) do add(record, point, "q") end
+            add(record, quest.ends and quest.ends[1], "t")
+        end
+    end
+    if current and ns.active[current.id] and current.kind ~= "a" then
+        local record, quest = {id = current.id, title = current.title}, ns.CatalogueQuest(current.id)
+        if quest then add(record, quest.starts and quest.starts[1], "a") end
+    end
+    ns.guideStepHistory = history
+end
+
+function ns.RememberGuideStep(before, after)
+    if not after or before.id == after.id and ns.GuideStepKey(before) == ns.GuideStepKey(after) then return end
+    ns.guideStepHistory = ns.guideStepHistory or {}
+    ns.guideStepHistory[#ns.guideStepHistory + 1] = before
+    if #ns.guideStepHistory > 40 then table.remove(ns.guideStepHistory, 1) end
+    ns.navigationPreview = nil
+end
+
+function ns.PreviewGuideStep(delta)
+    local index = (ns.navigationPreview and ns.navigationPreview.index or 0) + delta
+    local stop
+    if index < 0 then
+        local history = ns.guideStepHistory or {}
+        stop = history[#history + index + 1]
+    elseif index > 0 then stop = ns.selectedRoute and ns.selectedRoute.stops[index + 1] end
+    if index == 0 then ns.navigationPreview = nil
+    elseif stop then ns.navigationPreview = {index = index, stop = stop}
+    else return end
+    ns.UpdateNavigation()
+end
+
+function ns.GuideStepNeeded(stop)
+    if ns.GuideQuestSkipped(stop.id) or #ns.FilterGuideStages({stop}) == 0 then return false end
+    for _, person in ipairs(ns.PartyProfiles()) do
+        local active = person.key == ns.self and ns.active or ns.members[person.key] and ns.members[person.key].active
+        if active and active[stop.id] then
+            local destination = ns.RoutePointForMember(person.key, stop.id)
+            if stop.kind == "q" and not ns.QuestProgressReady(person.key, stop.id)
+                and not (destination and destination.kind == "t")
+                and not (person.key == ns.self and ns.readyToTurnIn[stop.id]) then
+                local progress, matched, unfinished = ns.ProgressForMember(person.key, stop.id), false, false
+                for _, objective in ipairs(progress and progress.objectives or {}) do
+                    if ns.ObjectiveMatchesPoint(objective.text, {name = stop.targetName or stop.npcName, itemName = stop.itemName}) then
+                        matched = true
+                        if not ns.ObjectiveFinished(objective) then unfinished = true end
+                    end
+                end
+                if not matched or unfinished then return true end
+            end
+        end
+    end
+    return false
+end
+
+function ns.PinCurrentDestination(old, route)
+    if ns.forceRouteReplan then ns.forceRouteReplan = nil; return route end
+    local before = old and old.stops[1]
+    if not before or before.kind ~= "q" or not ns.GuideStepNeeded(before) then return route end
+    if route.mapID ~= before.mapID then return old end
+    for index, stop in ipairs(route.stops) do
+        if stop.id == before.id and ns.GuideStepKey(stop) == ns.GuideStepKey(before) then
+            table.remove(route.stops, index); table.insert(route.stops, 1, stop); return route
+        end
+    end
+    -- Keep a committed objective while crossing a zone. A changed POI alone
+    -- does not demonstrate objective completion.
+    return route
+end
+
+function ns.MergeCurrentQuests(guide)
+    local copy, seen, records, pickups = {}, {}, {}, {}
+    for key, value in pairs(guide) do copy[key] = value end
+    for _, record in ipairs(guide.records or {}) do
+        records[#records + 1], seen[record.id], pickups[record.id] = record, true, true
+    end
+    for _, current in ipairs(ns.CurrentQuestChoices() or {}) do
+        for _, record in ipairs(current.records) do
+            if not seen[record.id] then records[#records + 1], seen[record.id] = record, true end
+            if not (current.pickupIDs and current.pickupIDs[record.id]) then pickups[record.id] = nil end
+        end
+    end
+    copy.records, copy.pickupIDs, copy.mode, copy.baseGuide = records, pickups, "bundle", guide
+    copy.mapID = guide.mapID or guide.target and guide.target.mapID or ns.profile.mapID
+    copy.key, copy.title = "with-log:" .. guide.key, guide.title .. " + current quests"
+    return copy
+end
+
+function ns.RequestStartRoute(guide)
+    if not guide then return end
+    if not ns.HasCurrentPartyQuests() or guide.mode == "current" or guide.mode == "bundle" then return ns.StartPartyRoute(guide) end
+    if not ns.startGuidePrompt then
         local frame = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
-        frame:SetSize(360, 170); frame:SetPoint("CENTER"); frame:SetFrameStrata("DIALOG")
+        frame:SetSize(500, 220); frame:SetPoint("CENTER"); frame:SetFrameStrata("DIALOG")
         frame:SetClampedToScreen(true); ns.UIPanel(frame)
         local close = CreateFrame("Button", nil, frame, "UIPanelCloseButton"); close:SetPoint("TOPRIGHT", -4, -4)
-        local title = ns.UILabel(frame, "GameFontNormalLarge", 14)
-        title:SetPoint("TOPLEFT", 18, -20); title:SetText("Guide progression")
-        frame.body = ns.UILabel(frame, nil, 11); frame.body:SetPoint("TOPLEFT", 18, -52)
-        frame.body:SetSize(320, 100); frame.body:SetJustifyV("TOP")
-        ns.guideScanWindow = frame
+        frame.title = ns.UILabel(frame, "GameFontNormalLarge", 16); frame.title:SetPoint("TOPLEFT", 20, -24); frame.title:SetWidth(450)
+        frame.text = ns.UILabel(frame, nil, 12); frame.text:SetPoint("TOPLEFT", 20, -62); frame.text:SetSize(450, 80)
+        frame.selected = ns.UIButton(frame, "Start selected guide", 215, function()
+            local chosen = ns.startGuidePrompt.guide; ns.startGuidePrompt:Hide(); ns.StartPartyRoute(chosen)
+        end, true); frame.selected:SetPoint("BOTTOMLEFT", 20, 24)
+        frame.current = ns.UIButton(frame, "Include current quests", 215, function()
+            local chosen = ns.MergeCurrentQuests(ns.startGuidePrompt.guide); ns.startGuidePrompt:Hide(); ns.StartPartyRoute(chosen)
+        end); frame.current:SetPoint("BOTTOMRIGHT", -20, 24)
+        ns.startGuidePrompt = frame
     end
-    ns.guideScanWindow.body:SetText(ns.guideScanStatus .. "\n\nSkipped steps are personal navigation choices. They do not complete quests or unlock prerequisites.")
-    ns.guideScanWindow:Show()
+    ns.startGuidePrompt.guide = guide
+    ns.startGuidePrompt.title:SetText("Start " .. guide.title)
+    ns.startGuidePrompt.text:SetText("Use this guide's plan, or include quests already in your party's logs?\nIncluding current quests can cause unusual routes and long detours when they are spread across zones.")
+    ns.startGuidePrompt:Show()
 end

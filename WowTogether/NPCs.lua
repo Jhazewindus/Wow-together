@@ -5,6 +5,38 @@ ns.npcHints = hints
 ns.npcHintCount = 0
 ns.npcHintStatus = "NPC hints wait for public nameplate NPC IDs."
 
+function ns.QuestItemTooltip(tooltip, data)
+    if not ns.Option("npcHints") or ns.RouteInCombat() or not ns.Public(data) or type(data) ~= "table"
+        or not ns.Public(data.id) or not ns.GuideInteger(data.id) then return end
+    local titles, seen = {}, {}
+    for _, person in ipairs(ns.PartyProfiles()) do
+        local active = person.key == ns.self and ns.active or ns.members[person.key] and ns.members[person.key].active
+        for id in pairs(active or {}) do
+            local quest = ns.CatalogueQuest(id)
+            for _, item in ipairs(quest and quest.requiredItems or {}) do
+                if item.itemID == data.id then
+                    local finished = false
+                    local progress = ns.ProgressForMember(person.key, id)
+                    for _, objective in ipairs(progress and progress.objectives or {}) do
+                        if ns.ObjectiveMatchesPoint(objective.text, {name = item.name}) and ns.ObjectiveFinished(objective) then finished = true end
+                    end
+                    if not finished and not seen[id] then titles[#titles + 1] = ns.QuestTitle(id); seen[id] = true end
+                end
+            end
+        end
+    end
+    if #titles > 0 and tooltip and type(tooltip.AddLine) == "function" then
+        tooltip:AddLine("× Needed for: " .. table.concat(titles, ", "), 1, 0.76, 0.28, true)
+    end
+end
+
+function ns.InitializeItemHints()
+    local kind = Enum and Enum.TooltipDataType and Enum.TooltipDataType.Item
+    if TooltipDataProcessor and type(TooltipDataProcessor.AddTooltipPostCall) == "function" and kind then
+        TooltipDataProcessor.AddTooltipPostCall(kind, ns.QuestItemTooltip)
+    end
+end
+
 function ns.NPCTargets()
     local targets, known = {}, {}
     local function add(point, id, kind)

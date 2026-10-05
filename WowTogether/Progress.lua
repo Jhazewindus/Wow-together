@@ -224,6 +224,7 @@ end
 
 function ns.ToggleTracker()
     ns.db.trackerVisible = not ns.tracker:IsShown()
+    ns.trackerDismissed = not ns.db.trackerVisible
     ns.tracker:SetShown(ns.db.trackerVisible)
     ns.RenderTracker()
 end
@@ -273,6 +274,16 @@ function ns.CreateTracker()
     frame:SetShown(ns.db.trackerVisible ~= false)
 end
 
+function ns.UpdateTrackerVisibility()
+    if not ns.tracker then return end
+    local grouped, raid = ns.ReadPublic(IsInGroup), ns.ReadPublic(IsInRaid)
+    local party = grouped == true and raid == false
+    if ns.trackerPartyState ~= party then
+        ns.trackerPartyState, ns.trackerDismissed = party, false
+    end
+    if ns.Option("trackerAuto") then ns.tracker:SetShown(party and not ns.trackerDismissed) end
+end
+
 function ns.TrackerDisplayLines()
     local result, y, rows, profiles = {}, 0, ns.TrackerRows(), ns.PartyProfiles()
     local function add(text, x, width, gold, right)
@@ -300,6 +311,7 @@ function ns.TrackerDisplayLines()
 end
 
 function ns.RenderTracker()
+    ns.UpdateTrackerVisibility()
     if not ns.tracker or not ns.tracker:IsShown() then return end
     local frame, used = ns.tracker, 0
     local height = ns.Option("trackerHeight")

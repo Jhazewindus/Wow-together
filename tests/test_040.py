@@ -62,7 +62,9 @@ class UpdateTests(unittest.TestCase):
             ends=[{'mapID': 501, 'x': .21, 'y': .26, 'name': 'Neighbour NPC'}])})
         route = c.ns.BuildGuideRoute(guide(c, (900, 901), key='zone-route:501'), False)
         self.assertEqual([route.stops[i].kind for i in range(1, 7)], ['a', 'a', 'q', 'q', 't', 't'])
-        self.assertEqual([route.stops[i].id for i in range(1, 7)], [900, 901, 900, 901, 901, 900])
+        self.assertEqual(route.stops[1].id, 901)  # The pickup nearest the player's position.
+        for id in (900, 901):
+            self.assertEqual([s.kind for s in route.stops.values() if s.id == id], ['a', 'q', 't'])
 
     def test_hello_retains_progress_and_missing_snapshot_recovery_is_bounded(self):
         c = route_client()

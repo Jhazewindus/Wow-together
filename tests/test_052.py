@@ -44,23 +44,23 @@ class CurrentQuestTests(unittest.TestCase):
         c.ns.catalogue.quests[904] = c.lua.table_from(nearby('Dungeon pickup', categoryPath='dungeons/test-cavern'), recursive=True)
         c.ns.profile.level = 10
         c.ns.activityRevision = 1
+        map_canvas(c); c.ns.ShowGuideOnMap(c.ns.GuideChoices()[1])
         c.ns.ScheduleActivitySuggestions()
         c.drain()
         self.assertIsNone(c.ns.activityPrompt)
+        c.ns.ClearRoute()
         c.ns.SetOption('currentQuestsFirst', False)
         c.drain()
         self.assertTrue(c.ns.activityPrompt.IsShown(c.ns.activityPrompt))
 
-    def test_an_existing_discovery_route_switches_to_current_logs_when_enabled(self):
+    def test_existing_discovery_route_keeps_its_selection_when_legacy_preference_changes(self):
         c = current_client()
         map_canvas(c)
         c.ns.SetOption('currentQuestsFirst', False)
         circuit = next(choice for choice in c.ns.GuideChoices().values() if choice.mode == 'circuit')
         c.ns.ShowGuideOnMap(circuit)
         c.ns.SetOption('currentQuestsFirst', True)
-        self.assertEqual(c.ns.routeSelection.mode, 'current')
-        self.assertEqual(c.ns.selectedRoute.stops[1].kind, 't')
-        self.assertFalse(any(stop.kind == 'a' for stop in c.ns.selectedRoute.stops.values()))
+        self.assertEqual(c.ns.routeSelection.key, circuit.key)
 
     def test_level_three_ready_turn_ins_beat_new_pickup_xp_without_zone_assumptions(self):
         c = current_client()

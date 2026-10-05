@@ -46,6 +46,11 @@ function ns.CatalogueAllowed(id, profile, key)
     local identity, reason = ns.CatalogueIdentityAllowed(id, profile)
     if identity ~= true then return identity, reason end
     key = key or ns.self
+    if key == ns.self and ns.ObservedPickupAvailable then
+        local observed = ns.ObservedPickupAvailable(id)
+        if observed == false then return false, "This quest giver did not offer this quest at your current progress. Recheck after progressing." end
+        if observed == true then return true end
+    end
     if ns.catalogue.detailSource and quest.prerequisitesRead ~= true then
         return nil, "Pickup requirements are missing from the detailed data. Talk to the quest giver to check its offer."
     end
@@ -126,6 +131,7 @@ function ns.CatalogueRecord(id)
         mapID = start and start.mapID or quest.mapID or 0,
         x = start and start.x or 0, y = start and start.y or 0,
         npc = start and start.npc and start.name or "", source = "d", lineID = 0, lineName = "",
+        difficulty = ns.QuestDifficultyLabel and ns.QuestDifficultyLabel(id),
         seriesRoot = quest.seriesRoot, seriesName = quest.seriesName, seriesPosition = quest.seriesPosition}
 end
 

@@ -267,7 +267,7 @@ function ns.CurrentQuestChoices()
         choices[#choices + 1] = group
     end
     table.sort(choices, function(a, b) if a.priority ~= b.priority then return a.priority > b.priority end; return a.key < b.key end)
-    ns.currentGuideStatus = ns.Option("nearbyPickups") and "Current quests first, with eligible nearby pickups." or "Finish our current quests first is on."
+    ns.currentGuideStatus = ns.Option("nearbyPickups") and "Quest-log routes include useful nearby pickups." or "Quest-log routes use accepted quests only."
     return choices
 end
 
@@ -305,6 +305,7 @@ end
 function ns.LevelingQuestEnabled(id)
     return not ns.IsProfessionQuest(id) and not ns.IsDungeonQuest(id) and not ns.IsRepeatableQuest(id) and not ns.GuideQuestSkipped(id)
         and (not ns.IsClassQuest(id) or ns.Option("classQuests"))
+        and ns.LevelingValue(id) ~= false
 end
 
 function ns.IsRepeatableQuest(id)

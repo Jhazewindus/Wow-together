@@ -35,7 +35,7 @@ ns.frame:SetScript("OnEvent", function(_, event, ...)
 end)
 
 function ns.Diagnostics()
-    local lines = {"Wow Together 0.5.7 — beta capability and sync report", ""}
+    local lines = {"Wow Together 0.6.0 — beta capability and sync report", ""}
     local function output(line) lines[#lines + 1] = line end
     local version, build, _, interface = GetBuildInfo()
     local function readable(value)
@@ -78,6 +78,7 @@ function ns.Diagnostics()
         {"C_QuestLog.GetTitleForQuestID", C_QuestLog and C_QuestLog.GetTitleForQuestID},
         {"C_QuestLog.IsComplete", C_QuestLog and C_QuestLog.IsComplete},
         {"C_QuestLog.GetQuestObjectives", C_QuestLog and C_QuestLog.GetQuestObjectives},
+        {"C_QuestLog.IsPushableQuest (sharing only)", C_QuestLog and C_QuestLog.IsPushableQuest},
         {"C_NamePlate.GetNamePlateForUnit", C_NamePlate and C_NamePlate.GetNamePlateForUnit},
         {"C_NamePlate.GetNamePlates", C_NamePlate and C_NamePlate.GetNamePlates},
         {"C_QuestLog.UnitIsRelatedToActiveQuest", C_QuestLog and C_QuestLog.UnitIsRelatedToActiveQuest},
@@ -98,6 +99,16 @@ function ns.Diagnostics()
         {"C_AuctionHouse.GetCommoditySearchResultInfo", C_AuctionHouse and C_AuctionHouse.GetCommoditySearchResultInfo},
         {"UnitGUID", UnitGUID},
         {"C_GossipInfo.GetAvailableQuests", C_GossipInfo and C_GossipInfo.GetAvailableQuests},
+        {"C_GossipInfo.GetActiveQuests", C_GossipInfo and C_GossipInfo.GetActiveQuests},
+        {"C_GossipInfo.SelectAvailableQuest", C_GossipInfo and C_GossipInfo.SelectAvailableQuest},
+        {"C_GossipInfo.SelectActiveQuest", C_GossipInfo and C_GossipInfo.SelectActiveQuest},
+        {"C_TaxiMap.GetAllTaxiNodes", C_TaxiMap and C_TaxiMap.GetAllTaxiNodes},
+        {"C_TaxiMap.GetTaxiMapID", C_TaxiMap and C_TaxiMap.GetTaxiMapID},
+        {"C_Map.GetMapPosFromWorldPos", C_Map and C_Map.GetMapPosFromWorldPos},
+        {"TakeTaxiNode", TakeTaxiNode}, {"UnitOnTaxi", UnitOnTaxi}, {"GetUnitSpeed", GetUnitSpeed},
+        {"GetTime", GetTime}, {"UnitIsGhost", UnitIsGhost},
+        {"C_DeathInfo.GetCorpseMapPosition", C_DeathInfo and C_DeathInfo.GetCorpseMapPosition},
+        {"TooltipDataProcessor.AddTooltipPostCall", TooltipDataProcessor and TooltipDataProcessor.AddTooltipPostCall},
         {"C_Map.SetUserWaypoint", C_Map and C_Map.SetUserWaypoint},
         {"UiMapPoint.CreateFromCoordinates", UiMapPoint and UiMapPoint.CreateFromCoordinates},
         {"issecretvalue", issecretvalue},
@@ -118,6 +129,7 @@ function ns.Diagnostics()
     output("Presence is not proof of working behavior. No waypoint or protected action was called.")
     ns.SyncDiagnostics(output)
     ns.NavigationDiagnostics(output)
+    output("Travel: " .. ns.travelStatus)
     ns.ShowDiagnostics(table.concat(lines, "\n"))
 end
 
@@ -132,6 +144,8 @@ ns.On("ADDON_LOADED", function(name)
     ns.CreateMinimap()
     ns.InitializeSync()
     ns.InitializeGuideControls()
+    ns.InitializeTravel()
+    ns.InitializeItemHints()
     ns.InitializeOffers()
     ns.ReadQuests()
     ns.InitializeGuide()
@@ -150,9 +164,14 @@ ns.On("QUEST_LOG_UPDATE", function()
 end)
 ns.On("ZONE_CHANGED_NEW_AREA", function() ns.ResetZoneConnections(); ns.ReadGuide(); ns.ScheduleSync(); ns.Refresh() end)
 ns.On("PLAYER_LEVEL_UP", function() ns.ScheduleSync() end)
-ns.On("QUEST_TURNED_IN", function() ns.activityRevision = (ns.activityRevision or 0) + 1; ns.ScheduleSync() end)
+ns.On("QUEST_TURNED_IN", function()
+    ns.InvalidateNPCOffers()
+    ns.activityRevision = (ns.activityRevision or 0) + 1; ns.ScheduleSync()
+end)
+ns.On("UPDATE_FACTION", function() ns.InvalidateNPCOffers() end)
 ns.On("GROUP_ROSTER_UPDATE", function()
     ns.UpdateRoster()
+    ns.RenderTracker()
     ns.ScheduleSync()
 end)
 
@@ -168,6 +187,6 @@ SlashCmdList.WOWTOGETHER = function(command)
     elseif command == "config" then ns.ToggleSettings()
     elseif command == "route clear" then ns.ClearRoute(); ns.Refresh()
     elseif command == "guide reset" then ns.ResetGuideSkips()
-    elseif command == "guide scan" then ns.ScanGuideProgress(); ns.ShowGuideScanReport()
+    elseif command == "guide scan" then ns.ScanGuideProgress()
     else ns.ToggleWindow() end
 end

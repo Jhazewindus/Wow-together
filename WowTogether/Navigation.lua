@@ -6,15 +6,52 @@ local function finite(value)
 end
 
 function ns.StopInstruction(stop)
-    if stop.npcName and stop.npcName ~= "" and (stop.kind == "a" or stop.kind == "t" or not stop.action) then
+    if stop.kind == "corpse" then return "Return to your corpse" end
+    if stop.kind == "f" then return stop.label end
+    if stop.npcName and stop.npcName ~= "" and (stop.kind == "a" or stop.kind == "t" or stop.action == "talk") then
         return "Talk to " .. stop.npcName
     end
     if stop.kind == "t" then return "Turn in " .. stop.title end
     if stop.kind == "a" then return "Pick up " .. stop.title end
+    local target = stop.itemName or stop.targetName or stop.npcName
+    local action = stop.action
+    for _, objective in ipairs((ns.ProgressForMember(stop.memberKey or ns.self, stop.id) or {}).objectives or {}) do
+        if target and ns.ObjectiveMatchesPoint(objective.text, {name = target}) then
+            if objective.kind == "monster" then action = "kill"
+            elseif objective.kind == "item" then action = "collect" end
+            target = ns.ObjectiveLabel(objective.text)
+            target = string.gsub(target, "%s+slain$", "")
+            target = string.gsub(target, "%s+killed$", "")
+            target = string.gsub(target, "%s+collected$", "")
+            break
+        end
+    end
+    if action == "kill" then return "Kill " .. (target or stop.title) end
+    if action == "collect" or action == "loot" or action == "item" then return "Pick up " .. (target or stop.title) end
     return stop.label or ("Work on " .. stop.title)
 end
 
+function ns.FormatDistance(value)
+    if ns.Option("distanceUnits") == "metres" then return string.format("%.0f m", value * 0.9144) end
+    return string.format("%.0f yd", value)
+end
+
+local function duration(value)
+    return string.format("%dm %02ds", math.floor(value / 60), math.floor(value % 60))
+end
+
 function ns.RouteContext(stop, mapID)
+    if stop.kind == "notice" then return "Scan can reconsider skipped steps.\nSettings can reset all skips for this character." end
+    if stop.kind == "corpse" then
+        return (stop.approximate and "Recorded death position; check nearby." or "Your quest guide is retained.")
+            .. "\nResume questing after recovering your body."
+    end
+    if stop.flightPlan then
+        local plan = stop.flightPlan
+        return (plan.measured and "Timed flight route: " or "Estimated flight route: ") .. duration(plan.seconds)
+            .. "\nFly to " .. plan.destination.name .. "; saves ~" .. duration(plan.walkingSeconds - plan.seconds) .. "."
+    end
+    if stop.action == "flight-check" then return "Check this nearby flight master.\nUnlock status has not been confirmed." end
     if ns.routePaused then return "Waiting for confirmed party progress.\nYour last route is retained." end
     local reason
     if stop.kind == "t" then reason = "Hand in a completed quest."
@@ -26,15 +63,30 @@ function ns.RouteContext(stop, mapID)
     local zone = ns.MapName(stop.mapID)
     local who = stop.forPlayer and (" • For " .. stop.forPlayer) or ""
     local context = mapID and mapID ~= stop.mapID and ("Travel to " .. zone .. who) or (zone .. who)
+    local useful, exception = ns.LevelingValue(stop.id)
+    if useful == true and exception then reason = exception
+    elseif useful == false then reason = "Quest-log work you chose to keep in this route." end
+    if ns.IsGroupQuest(stop.id) then reason = "Group / elite: bring a party. " .. reason end
     return reason .. "\n" .. context
 end
 
 function ns.NavigationState()
     if not ns.Option("routeArrow") then return {status = "Disabled in settings"} end
     local route = ns.routeSelection and ns.selectedRoute
-    local stop = route and route.stops and route.stops[1]
+    local stop = ns.navigationPreview and ns.navigationPreview.stop or route and route.stops and route.stops[1]
+    if not stop and ns.routeSelection then
+        stop = {kind = "notice", id = 0, title = ns.routeSelection.title, mapID = route and route.mapID or 0,
+            x = 0, y = 0, label = ns.routePaused or "Waiting for the next available guide step."}
+    end
+    stop = ns.CorpseDestination() or ns.TravelDestination(stop)
+    local flight = ns.FlightState()
+    if flight then
+        return {visible = true, stop = stop or {title = "Flight travel", kind = "f", label = "Flying", id = 0, mapID = 0},
+            status = "Flying to " .. flight.name, flight = flight}
+    end
     if not stop then return {status = "No route selected"} end
     local state = {visible = true, stop = stop}
+    if stop.positionUnavailable then state.status = "Corpse position unavailable on this build"; return state end
     if ns.routePaused then state.status = "Waiting for party updates"; return state end
     if ns.navigation and type(ns.navigation.icon.CreateLine) ~= "function" then state.status = "Arrow drawing unavailable"; return state end
     local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
@@ -81,13 +133,19 @@ function ns.UpdateNavigation()
     frame:SetShown(state.visible == true)
     if not state.visible then return end
     frame.title:SetText(state.stop.title)
-    frame.distance:SetText(state.distance and (string.format("%.0f yd", state.distance) .. (state.arrived and " • Here" or "")) or "")
+    local clock = state.flight and (state.flight.remaining and ("~" .. duration(state.flight.remaining) .. " remaining")
+        or state.flight.elapsed and (duration(state.flight.elapsed) .. " flying") or "Flight time unavailable")
+    frame.distance:SetText(clock or (state.distance and (ns.FormatDistance(state.distance) .. (state.arrived and " • Here" or "")) or ""))
     frame.status:SetText(state.angle and ns.StopInstruction(state.stop) or state.status)
     local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
     frame.context:SetText(ns.RouteContext(state.stop, mapID))
     for _, line in ipairs(frame.icon.lines) do line:Hide() end
     frame.symbol:SetText("…"); frame.symbol:SetTextColor(0.96, 0.76, 0.35, 1)
-    frame.symbol:SetShown(state.angle == nil and not state.arrived)
+    frame.symbol:SetShown(state.angle == nil and not state.arrived and not state.flight)
+    frame.step:SetText(state.stop.historyPreview and "History preview • published location" or
+        (ns.navigationPreview and "Preview step • arrows browse; Scan returns to the plan" or "Current guide step"))
+    local editable = not ns.navigationPreview and not state.flight and state.stop.kind ~= "corpse" and state.stop.kind ~= "notice"
+    frame.skipStep:SetEnabled(editable); frame.skipQuest:SetEnabled(editable); frame.scan:SetEnabled(not state.flight)
     if state.arrived then ns.DrawNavigationArrow(math.pi)
     elseif state.angle ~= nil then ns.DrawNavigationArrow(state.angle) end
 end
@@ -101,9 +159,9 @@ function ns.SaveNavigationPosition()
 end
 
 function ns.CreateNavigation()
-    local frame = CreateFrame("Frame", "WowTogetherRouteArrow", UIParent)
+    local frame = CreateFrame("Frame", "WowTogetherRouteArrow", UIParent, "BackdropTemplate")
     ns.navigation = frame
-    frame:SetSize(260, 182); frame:SetPoint("BOTTOM", UIParent, "BOTTOM", 0, 160)
+    frame:SetSize(344, 248); frame:SetPoint("BOTTOM", UIParent, "BOTTOM", 0, 160); ns.UIPanel(frame)
     frame:SetClampedToScreen(true); frame:SetFrameStrata("MEDIUM")
     frame:SetMovable(true); frame:EnableMouse(true); frame:RegisterForDrag("LeftButton")
     frame:SetScript("OnDragStart", frame.StartMoving); frame:SetScript("OnDragStop", ns.SaveNavigationPosition)
@@ -114,25 +172,32 @@ function ns.CreateNavigation()
     end
     frame.title = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
     frame.title:SetFont("Fonts\\FRIZQT__.TTF", 11, "OUTLINE"); frame.title:SetPoint("TOP", 0, -4)
-    frame.title:SetSize(254, 18); frame.title:SetWordWrap(false)
-    frame.icon = CreateFrame("Frame", nil, frame); frame.icon:SetSize(52, 52); frame.icon:SetPoint("TOP", 0, -29)
+    frame.title:SetSize(320, 22); frame.title:SetWordWrap(false)
+    frame.step = ns.UILabel(frame, nil, 10); frame.step:SetPoint("TOP", 0, -30); frame.step:SetSize(320, 18); frame.step:SetJustifyH("CENTER")
+    frame.icon = CreateFrame("Frame", nil, frame); frame.icon:SetSize(52, 52); frame.icon:SetPoint("TOP", 0, -53)
     frame.icon.lines = {}
     frame.symbol = frame.icon:CreateFontString(nil, "OVERLAY", "GameFontNormalLarge")
     frame.symbol:SetFont("Fonts\\FRIZQT__.TTF", 26, "OUTLINE"); frame.symbol:SetPoint("CENTER")
     frame.distance = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-    frame.distance:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE"); frame.distance:SetPoint("BOTTOM", 0, 85)
+    frame.distance:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE"); frame.distance:SetPoint("TOP", 0, -112)
     frame.status = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
-    frame.status:SetFont("Fonts\\FRIZQT__.TTF", 10, "OUTLINE"); frame.status:SetPoint("BOTTOM", 0, 67)
-    frame.status:SetSize(254, 17); frame.status:SetWordWrap(false)
+    frame.status:SetFont("Fonts\\FRIZQT__.TTF", 12, "OUTLINE"); frame.status:SetPoint("TOP", 0, -139)
+    frame.status:SetSize(320, 32); frame.status:SetWordWrap(true); frame.status:SetJustifyV("TOP")
     frame.context = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
-    frame.context:SetFont("Fonts\\FRIZQT__.TTF", 10, "OUTLINE"); frame.context:SetPoint("BOTTOM", 0, 33)
-    frame.context:SetSize(254, 30); frame.context:SetWordWrap(false)
+    frame.context:SetFont("Fonts\\FRIZQT__.TTF", 10, "OUTLINE"); frame.context:SetPoint("TOP", 0, -174)
+    frame.context:SetSize(320, 30); frame.context:SetWordWrap(false)
     frame.skipStep = ns.UIButton(frame, "Skip step", 80, function() ns.SkipGuide("step") end)
-    frame.skipStep:SetHeight(24); frame.skipStep:SetPoint("BOTTOMLEFT", 4, 3)
+    frame.skipStep:SetHeight(24); frame.skipStep:SetPoint("BOTTOMLEFT", 35, 12)
     frame.skipQuest = ns.UIButton(frame, "Skip quest", 80, function() ns.SkipGuide("quest") end)
-    frame.skipQuest:SetHeight(24); frame.skipQuest:SetPoint("BOTTOMLEFT", 90, 3)
-    frame.scan = ns.UIButton(frame, "Scan guide", 80, function() ns.ScanGuideProgress(); ns.ShowGuideScanReport() end)
-    frame.scan:SetHeight(24); frame.scan:SetPoint("BOTTOMLEFT", 176, 3)
+    frame.skipQuest:SetHeight(24); frame.skipQuest:SetPoint("BOTTOMLEFT", 121, 12)
+    frame.scan = ns.UIButton(frame, "Scan guide", 80, function() ns.ScanGuideProgress() end)
+    frame.scan:SetHeight(24); frame.scan:SetPoint("BOTTOMLEFT", 207, 12)
+    frame.back = ns.UIButton(frame, "‹", 24, function() ns.PreviewGuideStep(-1) end)
+    frame.back:SetHeight(24); frame.back:SetPoint("BOTTOMLEFT", 6, 12)
+    frame.next = ns.UIButton(frame, "›", 24, function() ns.PreviewGuideStep(1) end)
+    frame.next:SetHeight(24); frame.next:SetPoint("BOTTOMRIGHT", -6, 12)
+    frame.notice = ns.UILabel(frame, nil, 9); frame.notice:SetPoint("BOTTOM", 0, -18); frame.notice:SetSize(344, 17)
+    frame.notice:SetJustifyH("CENTER")
     frame:SetScript("OnEnter", function(self)
         if not GameTooltip then return end
         GameTooltip:SetOwner(self, "ANCHOR_RIGHT")

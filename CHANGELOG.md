@@ -1,5 +1,23 @@
 # Wow Together changelog
 
+## 0.6.0
+
+- Keep the chosen guide through quest acceptance and zone changes. Scan guide
+  now replans real progress without a report popup; optionally reconsider skips.
+- Filter low-level pickups, explain useful chain/dungeon exceptions and focus
+  party routes on the member behind in known progression.
+- Refresh Classic-style panels with grouped settings and dropdowns. Rename
+  Library to All quests and the old All quests to Party quests.
+- Add a current-quests choice at guide start, previous/next previews, yards or
+  metres, automatic party-panel visibility and dungeon Start route.
+- Distinguish Kill, Pick up and Talk instructions. Add cross markers/item hints,
+  observed NPC pickup availability and opt-in selection of the current NPC quest.
+- Add observed flight-network suggestions, flight clocks and optional flight
+  selection; show corpse directions while retaining the guide. Beta testing is
+  required for the new APIs/actions; unknown data keeps travel manual.
+- Add quest-log review suggestions and expand the friend test checklist.
+  Known repeatable filtering is retained; the reported repeatable was already fixed.
+
 ## 0.5.7
 
 - Keep known repeatable quests out of automatic leveling plans, including

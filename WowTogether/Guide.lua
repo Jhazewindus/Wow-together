@@ -305,10 +305,10 @@ function ns.PartyProfiles()
     return profiles
 end
 
-function ns.GuideChoices()
+function ns.GuideChoices(discoveryOnly)
     ns.currentGuideStatus = nil
-    local current = ns.CurrentQuestChoices and ns.CurrentQuestChoices()
-    if ns.Option("currentQuestsFirst") and current then return current end
+    local current = not discoveryOnly and ns.CurrentQuestChoices and ns.CurrentQuestChoices()
+    if not discoveryOnly and ns.Option("currentQuestsFirst") and current then return current end
     local groups, profiles = {}, ns.PartyProfiles()
     local lowest, highest, lowName, lowKey, ready = nil, nil, nil, ns.self, true
     local factions = {}
@@ -368,7 +368,7 @@ function ns.GuideChoices()
             if as ~= bs then return as > bs end
             return a.id < b.id
         end)
-        group.focusKey = lowKey
+        group.focusKey = ns.GuideFocus(group.records)
         local plan = ns.BuildGuideRoute and ns.BuildGuideRoute(group, false)
         if plan and #plan.stops > 0 then
             local nextID = plan.stops[1].id
@@ -414,6 +414,9 @@ function ns.GuideChoices()
         group.hasPoint = knownStops > 0
         group.knownStops, group.missingStops = knownStops, plan and plan.missing or #group.records
         group.nextStop = plan and plan.stops[1]
+        if ns.IsGroupQuest(target.id) then group.reason = group.reason .. " Group / elite quest: bring a party." end
+        local _, exception = ns.LevelingValue(target.id)
+        if exception then group.reason = group.reason .. " " .. exception end
         if group.nextStop and group.nextStop.kind ~= "a" then group.destination = group.nextStop.label end
         local liveOnly = false
         for _, record in ipairs(group.records) do if not ns.CatalogueQuest(record.id) then liveOnly = true; break end end
@@ -427,7 +430,7 @@ function ns.GuideChoices()
     end)
     -- Discovery stays available, but never outranks confirmed local quest-log
     -- work merely because a remote questline has more stops or listed XP.
-    if current then
+    if current and not discoveryOnly then
         for index = #current, 1, -1 do if current[index].hasPoint then table.insert(choices, 1, current[index]) end end
     end
     return choices

@@ -30,127 +30,79 @@ def main():
             raise ValueError('Missing namespace declaration: ' + name)
     instructions = f'''Wow Together {version} — Forever beta
 
-Copy this complete WowTogether folder to:
+Copy the complete WowTogether folder to:
 World of Warcraft\\_classic_beta_\\Interface\\AddOns\\WowTogether\\
 
 Update EVERY party member to {version}, including ALL {len(names)} Lua files,
-then /reload. Restart the client fully if a new addon folder
-does not appear. No Battle.net credentials or web service are needed.
+then /reload. Restart the client fully if a new addon folder does not appear.
+No Battle.net credentials or external API service are needed.
 
-/wt opens the dashboard; drag the bottom-right grip to resize it.
-/wt tracker toggles the movable party objective overlay. Mouse-wheel scroll
-through all quests/objectives; player names, zones and counts appear together.
-/wt config opens settings: transparent tracker, circuit budgets, class quests,
-NPC hints, map legend, dungeon/zone prompts and opt-in auto-accept/turn-in.
-Finish our current quests first is ON by default. Nearby ready turn-ins come first,
-then eligible nearby pickups, combined objectives and their later returns.
-Long delivery detours wait for local work. Mapped accepted quests stay ahead
-of discovery even when current-quests-first is off.
-Include eligible nearby pickups is also ON by default. The existing trip's
-walking budget limits pickup/return NPCs and known objective areas. Prerequisites,
-faction, level and per-player eligibility still gate new pickups. Unknown
-objective locations are explicitly partial; use the game tracker for them.
-Your completed quest can be handed in while a friend's objectives stay marked.
-Disable nearby pickups for accepted-quests-only plans, or disable current quests
-first to discover new lines. No quest IDs are hardcoded into the bundler.
-Main guide cards offer Start route instead of Quest details. Show route stays
-local; Start route shares up to 20 selected quest IDs with party members.
-Friends choose Follow route or Keep my route. Their current route remains
-until they accept. Nearby-pickup roles are retained, including when a friend
-has already accepted the quest. Explicit Follow route accepts that selection
-even with automatic nearby pickups off. Each client uses its own party stages;
-missing prerequisite/history data waits for sync. Solo Start route stays local.
-The native resize gesture reflows cards without rebuilding plans per pixel.
-/wt arrow toggles the small direction arrow for your selected route. Drag it
-to move it; its position is saved. The arrow turns relative to your character
-and shows straight-line yards when public position, map scale and facing exist.
-The arrow also has Skip step, Skip quest and Scan guide. Skips persist per
-character and do not complete quests, unlock prerequisites or change friends'
-guides. Reset guide skips in settings or /wt guide reset restores them.
-Guide start/Scan guide reads the selected quests, known series and prerequisite
-history (bounded to 512 IDs); unknown results stay unknown. Friends' completion
-waits for their own received snapshots. /wt guide scan opens the scan report.
-Test turning and walking toward a route stop on your beta build. Unknown data
-shows a status. Cross-zone stops name the zone until you enter it.
-Two small context lines explain pickup/objectives/hand-in, the zone and whose
-progress needs the stop. The selected active route can advance to another
-zone when its next destination changes; unrelated zone coordinates never join.
-On arrival it keeps the quest name, points downward, and says Talk to the
-known NPC. Friendly quest-giver nameplates can show quest names and a pointer
-when public NPC IDs are visible; all nameplate hints hide in combat.
-Reaching a point does not accept or complete a quest. Follow roads and terrain.
-Route lines draw on the WORLD MAP ONLY; the minimap button opens the addon.
-Map preview defaults to the current place and two ahead. Use Show full route /
-Focus next steps and the 0/1/2 ahead control on the map overlay. The complete
-plan stays selected; quest progress advances the preview, not arrival alone.
-Consecutive steps at a shared NPC stay grouped. The first leg follows your
-current public position. Viewing another zone keeps the route and shows a
-View route zone button. Controls remain when the text legend is disabled.
-/wt sync requests fresh party data. Let the send queue drain.
-/wt probe opens diagnostics; Ctrl+C copies the selected text and closes it.
-/wt route clear clears the route overlay. /wt minimap toggles the minimap icon.
+/wt opens the Classic-style resizable dashboard. Its dropdown has Leveling guides,
+All quests (formerly Library), Party quests, Shared, Party progress, Dungeon quests,
+Profession guides and Quest log review. All quests searches commit on Enter or pause.
+Use level brackets / Near party to narrow the list.
+/wt config has purpose-based settings pages with dropdowns and help text.
+/wt tracker toggles the movable, scrollable party panel; it opens when joining a
+normal party and hides when solo/in a raid. Closing it lasts for that party session.
+/wt arrow toggles the movable direction panel. Choose yards or metres in settings.
+/wt sync requests fresh snapshots; normal quest/party changes sync automatically.
+/wt probe opens diagnostics; Ctrl+C copies and closes the report.
+/wt route clear clears the map route. /wt minimap toggles its dashboard button.
 
-Check item/kill counts on both clients. Select Show route, finish objectives
-or turn in on only one client, and confirm unfinished friends retain their
-objective/turn-in markers. Complete it on the last player to finish the route.
-Repeat with three players. A pending snapshot keeps the last confirmed route
-dimmed. Each client must select Show route for the route it wants to display.
+Show route is local. Start route invites friends with Follow route / Keep my route.
+Starting a new guide with current quests offers Start selected guide or Include
+current quests, with a warning about detours. Explicit quest-log routes remain
+selectable alongside zone guides. Quest acceptance/zone updates retain the selection.
+Low-level pickups need a known useful later quest/dungeon exception, explained
+under the arrow. Party stages focus on the member behind in confirmed progress.
+Unknown prerequisites/history stay unknown. Active work you choose can remain.
 
-Library searches commit on Enter or after a typing pause. Choose a level
-bracket or Near party; use arrows for larger result sets.
-Known prerequisites (including Vile Familiars variants before Burning Blade
-Medallion), faction, level and identity gate catalogue pickups. Unread or
-ambiguous requirements stay unknown until a live NPC offer confirms them.
-Discovery prefers your current zone and suitable overland neighbours; distant
-or opposing-faction starter zones do not become automatic recommendations.
-Connections are map data, not road pathfinding; verify geography in this beta.
+Left/right arrow buttons preview previous/later steps without changing quest credit.
+History previews use published locations, not a recorded travel timeline.
+Skip step / Skip quest persist for this character and do not change friends' credit.
+Scan guide reads real progress and replans; it does not open a report popup.
+Reconsider skips when scanning is off by default; on clears selected-guide quest skips.
+Reset guide skips or /wt guide reset restores ALL guides' skips for this character.
+/wt guide scan performs the same replan from the command line.
 
-Map drawing uses the visible viewport when GetViewRect is available, clips
-lines to the map, and redraws after pan/zoom/resize. Nearby stops share a pin;
-hover for all steps. The legend distinguishes stops from visible places.
-Combat pan/zoom redraws existing verified unprotected owned overlay frames.
-Protected frames, reparenting and native map/waypoint actions still defer.
-If pins/lines are still absent, copy /wt probe after Show route and include
-Route drawing surface, view geometry, rendered pins/lines and GetViewRect.
-The new rendering path needs testing on your actual beta build.
+Map lines show the current place plus two ahead, or use controls for the full route.
+Shared NPC steps stay grouped. View route zone opens the current destination map.
+Lines use world-map visiting order only; they do not follow roads or draw on the minimap.
+Follow roads/terrain. Pan/zoom redraws verified unprotected addon geometry in combat;
+protected frames and native map actions wait. Actual beta rendering needs testing.
 
-Sync is automatic on party, quest/objective, level and zone changes, batched
-before the paced send queue. Normal play does not require repeated /wt sync.
-Local XP circuits collect nearby quests, visit objectives, then group turn-ins.
-Published XP and walking estimates are approximate; lines do not follow roads.
-The Dungeons tab lists pickup NPCs/levels and missing prerequisites. Collect
-current-zone pickups first, then a known nearby entrance. If no client map link
-locates an entrance, stand outside it and use Record entrance here.
-Professions is personal: open your crafting window and refresh live recipes,
-choose small batches and inspect materials. Public AH prices come only from
-searches you make. No automatic searching, buying or crafting takes place.
-Known vendor-listed quest items have a buy list with your own bag stock.
-Auto-accept is OFF by default. If enabled, only an opened quest-detail dialog
-is attempted outside combat. Verify this action on your beta build.
-Auto-turn-in is also OFF by default. Enable it in /wt config to attempt accepted
-quest dialogs you open outside combat, only when there is no reward choice.
-Reward choices remain manual. Missing/restricted IDs or reward counts stay
-manual. /wt probe reports IsQuestCompletable, CompleteQuest, GetNumQuestChoices
-and GetQuestReward; presence and an attempt do not prove working behavior.
-Test a no-choice turn-in and a choice-reward quest on your actual beta build.
+Open flight-master maps to learn this character's network. Useful known flights
+compare estimated walk/flight/walk costs; timed rides improve their duration.
+Nearby observed unconfirmed paths may get a short check stop. There is no complete
+flight-path database. Select the suggested flight is optional and OFF by default;
+only the open matching source's public reachable slot is requested outside combat.
+While flying, elapsed/approximate remaining time replaces distance. As a ghost,
+corpse directions temporarily replace the guide; missing corpse data is explicit.
 
-New arrow facing/scale, recipe/AH, map-link/world-position, NPC fallback and quest dialog APIs need
-testing on your beta build; /wt probe reports capabilities. Restricted data
-stays unknown. NPC hints include alternative published drop NPC IDs and hide
-in combat. No raid-target marking.
-Known completed objective targets lose their skulls; generic native quest flags
-cannot restore them. Unfinished objectives for other quests/party members remain.
-Known repeatable quests, including Spirit of the Wind, stay in the library but
-are excluded from automatic leveling guides. Source coverage remains partial.
+Kill / Pick up / Talk instructions name known targets. Cross markers (or optional
+kill skulls) and quest-item tooltip hints require public data and hide in combat.
+Finished objective types lose hints unless another unfinished quest/member needs them.
+NPC lists can confirm/block offers in the current progress context; a single dialog
+confirms that quest only. IsPushableQuest is sharing, not pickup eligibility.
+Quest-dialog selection, auto-accept and no-choice auto-turn-in are separate opt-ins,
+all OFF by default. Reward choices stay manual. Presence/attempts do not prove beta
+protected-action behavior. New flight, gossip, item-hook and corpse APIs need testing.
 
-The catalogue contains {coverage['count']:,} listed quests and {coverage['detailed_quests']:,} detailed pages. Locations
-and prerequisites are partial. Route lines show visiting order, not roads.
-Read README.md for coverage, limitations, source notes, and testing steps.
-TESTING.md contains the friend-testing script and copyable report template.
-CHANGELOG.md has the short release history. This release adds saved skips, guide
-progression scans, repeatable filtering, objective-specific skull fixes and
-combat map redraws. The general Vile Familiars prerequisite correction is retained;
-Burning Blade Medallion still requires its completed prerequisite.
+Dungeon Start route collects known eligible pickups then a nearby located entrance.
+Missing prerequisites/coordinates remain explicit; Record entrance here is available.
+Quest log review only suggests reviewing low-value unfinished work; it never abandons.
+Personal professions use your opened recipes/materials, configurable small batches,
+and AH searches YOU perform. No automatic buying, searching or crafting.
+Profession/flight/skip state is not sent to peers.
+
+The partial snapshot has {coverage['count']:,} quest records and
+{coverage['detailed_quests']:,} detailed pages; most objective coordinates are missing.
+Known repeatables remain excluded from automatic leveling. Live offers/history
+are authoritative; published facts can differ from the beta.
+
+Read README.md for full behavior and limits, CHANGELOG.md for this release,
+and TESTING.md for the labeled friend-testing checklist. Host checks alone do not
+establish actual WoW Forever API, protected-action or rendering compatibility.
 '''
     args.output.mkdir(parents=True, exist_ok=True)
     destination = args.output / f'WowTogether-{version}.zip'
