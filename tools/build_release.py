@@ -61,7 +61,9 @@ normal party and hides when solo/in a raid. Closing it lasts for that party sess
 file labeled with your tester name for feedback. Settings → Quest data for testing
 has the recording toggle and Export quest data. The latest 300 local observations
 persist per character: actual NPC offers, acceptance/hand-in, build and relevant
-history/context and manual skips. Skips never imply an unlock or missing offer.
+history/context and manual skips. Observed temporary deferrals/restorations and
+manual skips include exact guide/step context for level-specific tester review.
+Skips never imply an unlock or missing offer.
 Visit the same NPC before/after a hand-in. Exports omit character
 names/chat and are never uploaded automatically.
 One clean full-list/one-hand-in/new-offer pair can create a tentative prerequisite.
@@ -78,8 +80,12 @@ files for review to improve the bundled guides; no automatic upload or sync.
 /wt questlines inspects native questline fields and optional GetQuestLineQuests IDs
 in a copyable window. This is a capability test, not a prerequisite contract.
 The Hunt Continues (750) requires handing in The Hunt Begins (747), from a tester
-report preserved separately from published source facts. Restart the Mulgore guide
-after upgrading to compile the corrected sequence.
+report preserved separately from published source facts. Restart selected guides
+after upgrading to compile improved generic partial-objective ordering.
+Confirmed unavailable pickups temporarily defer their stages while other available
+work continues. Progress and actual NPC offers restore them in the fixed order;
+unknown data and manual skips are separate. A missing offer alone is not shared
+with other Horde characters; clean learned unlock requirements can be reused.
 /wt route clear clears the map route. /wt minimap toggles its dashboard button.
 
 Show route is local. Start route invites friends with Follow route / Keep my route.
@@ -143,6 +149,10 @@ prove absence, and unpublished prerequisites are not guessed from quest IDs.
 
 Dungeon Start route collects known eligible pickups then a nearby located entrance.
 Missing prerequisites/coordinates remain explicit; Record entrance here is available.
+Collection prompts wait for YOUR highest known pickup level for all relevant regular
+quests, with identity/category filters. Unknown requirements prevent a full-level
+claim. These personal routes work without party snapshots; an unmapped collection
+opens its entire quest list. A popup does not silently replace the selected guide.
 Quest log review only suggests reviewing low-value unfinished work; it never abandons.
 Personal professions use your opened recipes/materials, configurable small batches,
 and AH searches YOU perform. No automatic buying, searching or crafting.

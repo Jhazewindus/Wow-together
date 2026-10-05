@@ -1,3 +1,42 @@
+# Follow-up review for 0.6.5
+
+The user reports that The Hunt Continues unlocked at its NPC but did not return
+to their guide, and explicitly confirms they did not press Skip. The supplied
+Mike Codemen diagnostic is 0.6.4/build70205, solo, level2 Horde Hunter/Tauren in
+Mulgore. It confirms quest750 is offered and allowed, selected full Mulgore guide
+has60quests/223steps and176 missing-location steps. It does not identify the
+current arrow's quest. Do not relabel this capture as a friend's report.
+
+Reproducing the full compiled sequence shows 750 retained at step34. A missing
+747 objective gets an arbitrary distant cost, pushing its hand-in and follow-up
+behind unrelated travel. Fix the compiler generically using a published same-quest
+place for ordering only; missing steps keep no fake coordinates. Existing fixed
+order stays stable; restarting compiles the corrected order. No new example-only
+quest gate is needed in this release.
+
+The user then clarifies that confirmed unavailable pickups should automatically
+defer and return, with data saved for learning. Preserve fixed sequence but allow
+its progress pass to bypass known temporarily blocked quests and reconsider them
+on progress/NPC events. Keep manual skips separate. Missing-data uncertainty is
+not negative proof. Record observed deferral/restoration alongside actual offers;
+reuse only clean learned unlock requirements for other matching-build/faction
+characters, using their own progress, not shared permanent skips. Research retains
+300 observations per character; learned patterns are separately stored. Exports
+are manual, never automatically delivered to the developer.
+
+Overlapping priorities: focus personal leveling now, prompt for dungeons at the
+highest known pickup level across the character's relevant regular collection,
+and record exact guide/step/version/level for reviewing independent tester skips.
+Unknown levels/identity prevent a full-collection-level claim; prerequisite checks
+still apply. Party sync need not block a personal collection. Repeated skips do
+not automatically alter a shared baseline; compare labeled exports first.
+
+Mapzeroth's public MIT source uses Dijkstra with a travel graph/transport nodes,
+and coordinate-distance walking costs. It targets Mainline interface120100 and
+modern maps. It cannot be dropped into Forever16001 or assumed mountain-safe.
+No third-party code was imported. Verified Forever roads/terrain remain needed;
+this update does not claim to resolve walking through mountains.
+
 # Follow-up review for 0.6.4
 
 The user reports a fresh Tauren in Mulgore being asked to pick up The Hunt

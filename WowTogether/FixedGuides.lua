@@ -20,12 +20,13 @@ function ns.GuideLocationCoverage(records)
 end
 
 local function stages(record)
-    local quest, result = ns.CatalogueQuest(record.id), {}
+    local quest, result, lastLocated = ns.CatalogueQuest(record.id), {}, nil
     if not quest then return result end
     local function add(point, kind)
         local stop = ns.PublishedGuideStop(record, point, kind)
         if not stop then stop = {id = record.id, kind = kind, title = record.title, unknownLocation = true,
-            mapID = record.mapID, label = "Location not recorded for " .. record.title} end
+            mapID = record.mapID, label = "Location not recorded for " .. record.title,
+            planningAnchor = lastLocated} else lastLocated = stop end
         stop.planned, stop.learnedSource = true, ns.LearnedStepSource(record.id, ns.profile, ns.self)
         result[#result + 1] = stop
     end
@@ -39,7 +40,11 @@ local function stages(record)
 end
 
 local function distance(a, b)
-    if not a or b.unknownLocation then return b.unknownLocation and 12000 or 0 end
+    -- Missing objective geography is a data gap, not a distant destination.
+    -- Use this quest's last published place for ordering only; never give an
+    -- unmapped step fake coordinates or draw its anchor as an objective.
+    if b.unknownLocation then b = b.planningAnchor; if not b then return 12000 end end
+    if not a then return 0 end
     if a.mapID ~= b.mapID then return 15000 end
     return ns.WalkingDistance(b.mapID, a, b) or ns.NormalizedDistance(a, b) * 6000
 end
@@ -138,42 +143,72 @@ end
 function ns.BuildFixedGuideRoute(guide, includeOrigin, cooperative)
     local plan = guide.fixedPlan or ns.GenerateFixedGuide(guide, cooperative)
     local stops, preview, eligibility, mapped, incomplete, unknown, pending, pendingStop = {}, {}, {}, {}, 0, 0, nil, nil
+    local deferred, firstDeferred, firstReason = {}, nil, nil
+    guide.observedDeferrals = guide.observedDeferrals or {}
     for _, stop in ipairs(plan) do
         local person, waiting = remaining(stop)
         if person or waiting then
             incomplete = incomplete + 1
             if stop.unknownLocation then unknown = unknown + 1 end
             local current = copy(stop)
+            local active, allowed, reason, offered
             if person then
                 current.memberKey, current.forPlayer = person.key, person.name
-                local active = person.key == ns.self and ns.active or ns.members[person.key] and ns.members[person.key].active
-                local allowed, reason = ns.CatalogueAllowed(stop.id, person.profile, person.key)
+                active = person.key == ns.self and ns.active or ns.members[person.key] and ns.members[person.key].active
+                allowed, reason = ns.CatalogueAllowed(stop.id, person.profile, person.key)
+                offered = ns.PickupOfferEvidence(person.key, stop.id)
                 if active and active[stop.id] then allowed = true end
-                if allowed == true then eligibility[stop.id] = true end
-                if not pending and #stops == 0 then
-                    if waiting then pending = "Waiting for your party's quest history."
-                    elseif stop.unknownLocation then pending = stop.blockedReason or ("Quest location missing: " .. stop.title .. ". Use the game quest tracker or Skip step.")
-                    elseif stop.kind == "a" and allowed ~= true then pending = reason or "Check this quest's pickup requirements at its NPC."
-                    elseif stop.kind ~= "a" and not (active and active[stop.id]) then pending = "Accept " .. stop.title .. " before this step."
-                    elseif stop.kind == "t" and not ns.QuestProgressReady(person.key, stop.id)
-                        and not (person.key == ns.self and ns.readyToTurnIn[stop.id]) then pending = "Finish " .. stop.title .. " before handing it in." end
+            end
+            if person and not waiting and not (active and active[stop.id]) and allowed == false then
+                -- A temporary pickup gate is not completed credit or a manual
+                -- skip. Retain every stage in the fixed plan and reconsider it
+                -- on ordinary progress/offer updates, before later fixed steps.
+                deferred[stop.id] = true
+                if not firstDeferred then firstDeferred, firstReason = current, reason end
+                if ns.routeSelection == guide and person.key == ns.self and offered == false and not guide.observedDeferrals[stop.id] then
+                    guide.observedDeferrals[stop.id] = true
+                    ns.RecordQuestResearch("defer-pickup", {questID = stop.id, guideKey = guide.key,
+                        stepKey = ns.GuideStepKey(stop), stepKind = stop.kind, guideStep = stop.guideStep})
                 end
-            elseif waiting and not pending and #stops == 0 then pending = "Waiting for your party's quest history." end
-            if pending and not pendingStop then pendingStop = current end
-            if not current.unknownLocation then
-                if not pending then stops[#stops + 1] = current end
-                if eligibility[stop.id] then preview[#preview + 1] = current; mapped[stop.id] = true end
+            else
+                if person then
+                    if ns.routeSelection == guide and person.key == ns.self and offered == true and allowed == true and guide.observedDeferrals[stop.id] then
+                        guide.observedDeferrals[stop.id] = nil
+                        ns.RecordQuestResearch("restore-pickup", {questID = stop.id, guideKey = guide.key,
+                            stepKey = ns.GuideStepKey(stop), stepKind = stop.kind, guideStep = stop.guideStep})
+                    end
+                    if allowed == true then eligibility[stop.id] = true end
+                    if not pending and #stops == 0 then
+                        if waiting then pending = "Waiting for your party's quest history."
+                        elseif stop.unknownLocation then pending = stop.blockedReason or ("Quest location missing: " .. stop.title .. ". Use the game quest tracker or Skip step.")
+                        elseif stop.kind == "a" and allowed ~= true then pending = reason or "Check this quest's pickup requirements at its NPC."
+                        elseif stop.kind ~= "a" and not (active and active[stop.id]) then pending = "Accept " .. stop.title .. " before this step."
+                        elseif stop.kind == "t" and not ns.QuestProgressReady(person.key, stop.id)
+                            and not (person.key == ns.self and ns.readyToTurnIn[stop.id]) then pending = "Finish " .. stop.title .. " before handing it in." end
+                    end
+                elseif waiting and not pending and #stops == 0 then pending = "Waiting for your party's quest history." end
+                if pending and not pendingStop then pendingStop = current end
+                if not current.unknownLocation then
+                    if not pending then stops[#stops + 1] = current end
+                    if eligibility[stop.id] then preview[#preview + 1] = current; mapped[stop.id] = true end
+                end
             end
         end
     end
+    if #stops == 0 and not pending and firstDeferred then
+        pendingStop, pending = firstDeferred, firstReason or "No pickups are currently available. Progress and NPC offers will recheck this guide."
+    end
     local first = stops[1]
     local mapID = first and first.mapID or guide.homeMapID or guide.mapID
-    local count = 0; for _ in pairs(mapped) do count = count + 1 end
+    local count, deferredCount = 0, 0
+    for _ in pairs(mapped) do count = count + 1 end
+    for _ in pairs(deferred) do deferredCount = deferredCount + 1 end
     guide.pendingReason = pending
     return {key = guide.key, title = guide.title, mapID = mapID, stops = stops, previewStops = preview,
         origin = includeOrigin and ns.PlayerPoint(mapID) or nil, missing = unknown, otherMaps = 0,
         fixed = true, guideQuests = #guide.records, totalSteps = #plan, remainingSteps = incomplete,
-        eligibleMappedQuests = count, partial = unknown > 0, pendingReason = pending, pendingStop = pendingStop, focusKey = guide.focusKey}
+        eligibleMappedQuests = count, deferredQuests = deferredCount, partial = unknown > 0,
+        pendingReason = pending, pendingStop = pendingStop, focusKey = guide.focusKey}
 end
 
 function ns.UpdateFixedGuideRoute(guide)

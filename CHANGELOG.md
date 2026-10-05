@@ -1,5 +1,25 @@
 # Wow Together changelog
 
+## 0.6.5
+
+- Temporarily defer fixed-guide pickups blocked by actual complete NPC offers or
+  known level/prerequisite requirements. Keep every stage in the fixed sequence;
+  ordinary progress/NPC events restore eligible quests without a manual Scan.
+  Unknown data remains unknown; manual skips and active quests stay separate.
+- Fix generic ordering with incomplete objective geography. Missing coordinates
+  no longer push hand-ins/follow-ups behind unrelated distant travel. Restart
+  a guide after updating; unknown steps retain explicit missing locations.
+- Record observed automatic deferrals/restorations and precise manual-skip guide,
+  step and level context in local exports. Omit invited-route player identities.
+  Missing offers/skips alone never become shared Horde prerequisites or skips;
+  clean observed unlock patterns retain account-local build/faction reuse.
+- Wait for your own full relevant dungeon collection pickup-level threshold.
+  Exclude incompatible identities, repeatables and professions; explain unknown
+  requirements and prerequisites. Personal collection routes work without party
+  snapshots, and unmapped collections open the entire quest list for review.
+- Keep leveling as the focus. Walking lines remain visiting-order connections;
+  verified roads/terrain are still needed to avoid mountains.
+
 ## 0.6.4
 
 - Reuse ordinary observed prerequisites across classes and races within the same

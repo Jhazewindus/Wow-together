@@ -609,6 +609,7 @@ function ns.SyncDiagnostics(output)
         if route and route.fixed then
             output("Fixed zone guide: " .. route.totalSteps .. " total steps; " .. route.remainingSteps .. " remaining; "
                 .. route.eligibleMappedQuests .. " eligible quests with mapped steps; " .. route.missing .. " missing-location steps.")
+            output("Temporarily deferred pickups: " .. (route.deferredQuests or 0) .. ". Progress and NPC offers recheck them; manual skips remain separate.")
         else
             output("Current trip: " .. (route and route.tripQuests or "legacy") .. " quests; " .. (route and #route.stops or 0)
                 .. " stops; pending records: " .. (route and route.missing or 0))

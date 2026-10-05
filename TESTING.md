@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.6.4**, World of Warcraft: Forever beta, interface **16001**.
+For **0.6.5**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 
@@ -90,11 +90,37 @@ Keep tester names and reports separate; label the main developer's report.
     The fixed sequence must place 747's hand-in before 750's pickup. Hand in 747
     and inspect Grull Hawkwind's actual offers. Record whether 750 now appears;
     the correction is tester-reported, not a newly verified API contract.
+    After handing in 747, 750's pickup should occur directly after it in the
+    newly compiled sequence, rather than behind unrelated far-away travel.
+    Test another partially mapped quest chain too; this is a generic ordering fix.
 15. **Skip versus learning:** with recording on, skip a step/quest. Hover both
     buttons to read the distinction. /wt research should contain a skip-step or
-    skip-quest event, with no invented completion or NPC absence. A skip without
+    skip-quest event with guideKey, stepKey, stepKind, guideStep (fixed guides),
+    level and version, with no invented completion or NPC absence. A skip without
     a later observed unlock must not create a learned prerequisite. Other
     characters must retain their own independent saved skips.
+16. **Automatic deferral and restoration:** choose a planned pickup which is
+    genuinely unavailable. Open its known giver's complete offer list. It should
+    temporarily disappear from current steps, allowing other available work.
+    It must remain in the compiled guide and must not become a manual skip.
+    Complete the actual prerequisite, revisit the giver and confirm its offer.
+    The pickup should return at its original fixed position without Scan.
+    Export /wt research: offers plus defer-pickup/restore-pickup events should be
+    present when observed during this selected guide. A partial single-quest
+    dialog must not establish absence. If nothing is available, retain the guide
+    and explain the blocked requirement. Test reload/export persistence too.
+17. **Personal dungeon threshold:** with dungeon prompts on, inspect its full
+    collection pickup level. Test just below/at that level, solo or with an
+    unsynced/lower-level friend. Prompt only at the full known threshold; opening
+    it must not silently replace your active leveling guide. Review excluded
+    factions/classes/races, repeatables and professions. Unknown levels should
+    be explained rather than treated as ready. Start collection with a known
+    entrance; if all points are missing, review every quest in the list.
+18. **Reusable learning versus skips:** on another matching-build Horde character,
+    reuse a clean learned ordinary unlock pattern using its own hand-in history.
+    A missing-offer observation alone must not apply a shared skip. Send exports
+    labeled by tester and level; repeated manual skips are for baseline review,
+    not an automatic account-wide skip rule. No data is uploaded automatically.
 
 ## Copyable tester report
 
@@ -105,7 +131,7 @@ Addon / client build:
 Level / class / race / faction / zone:
 Party size / selected guide:
 Fixed zone guides / full route / learning settings:
-Checks 1–15: Pass / Fail / Skip (reason)
+Checks 1–18: Pass / Fail / Skip (reason)
 Exact quest name and ID / NPC / current and next step numbers:
 What happened / expected result:
 Was the quest offered? Was its prerequisite handed in?

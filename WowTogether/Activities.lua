@@ -27,6 +27,42 @@ function ns.DungeonGroups()
     return result
 end
 
+local function relevantDungeonQuest(id)
+    if ns.IsRepeatableQuest(id) or ns.IsProfessionQuest(id)
+        or ns.IsClassQuest(id) and not ns.Option("classQuests") then return false end
+    return ns.CatalogueIdentityAllowed(id, ns.profile)
+end
+
+function ns.DungeonCollectionReadiness(group)
+    local result = {count = 0, pickupLevel = 0, maxLevel = 0, unknown = 0, unfinished = 0}
+    for _, id in ipairs(group.ids) do
+        local relevant, quest = relevantDungeonQuest(id), ns.CatalogueQuest(id)
+        if relevant == nil then result.unknown = result.unknown + 1
+        elseif relevant then
+            result.count = result.count + 1
+            if ns.GuideInteger(quest.minLevel, 255) then
+                result.pickupLevel = math.max(result.pickupLevel, quest.minLevel)
+            else result.unknown = result.unknown + 1 end
+            result.maxLevel = math.max(result.maxLevel, quest.level or 0, quest.minLevel or 0)
+            if ns.Completed(id) ~= true and not ns.GuideQuestSkipped(id) then result.unfinished = result.unfinished + 1 end
+        end
+    end
+    local level = ns.profile and ns.profile.level
+    result.levelReady = result.count > 0 and result.unknown == 0
+        and ns.GuideInteger(level, 255) and level >= result.pickupLevel
+    result.noticeKey = "dungeon-all-levels:" .. group.key .. ":" .. result.pickupLevel
+    return result
+end
+
+function ns.DungeonCollectionSummary(group, readiness)
+    local result = readiness or ns.DungeonCollectionReadiness(group)
+    if result.count == 0 then return "No matching regular quests for your character and settings." end
+    if result.unknown > 0 then return "The full collection level is unknown; " .. result.unknown .. " pickup level or identity requirements need checking." end
+    return "Full collection pickup level: " .. result.pickupLevel .. " • " .. result.count .. " regular quests for your character."
+        .. (result.levelReady and " All known pickup-level requirements are met." or " Reach this level before collecting the full set.")
+        .. " Prerequisite hand-ins and NPC offers still need checking."
+end
+
 function ns.CrossMapDistance(a, b)
     if not C_Map or type(C_Map.GetWorldPosFromMapPos) ~= "function" or type(CreateVector2D) ~= "function" then return end
     local ac, ap = ns.ReadPublic(C_Map.GetWorldPosFromMapPos, a.mapID, CreateVector2D(a.x, a.y))
@@ -81,20 +117,18 @@ function ns.RecordDungeonEntrance(group)
 end
 
 function ns.DungeonGuide(group)
-    local records, unlock, level = {}, group.minLevel, ns.profile and ns.profile.level or 0
+    local records, level = {}, ns.profile and ns.profile.level or 0
     for _, id in ipairs(group.ids) do
         local quest = ns.CatalogueQuest(id)
-        if (quest.minLevel or quest.level or 255) <= level
-            and ns.CatalogueIdentityAllowed(id, ns.profile) ~= false
-            and (not ns.IsClassQuest(id) or ns.Option("classQuests"))
-            and not ns.PartyQuestFinished(id) then records[#records + 1] = ns.CatalogueRecord(id) end
+        if (quest.minLevel or quest.level or 255) <= level and relevantDungeonQuest(id) ~= false
+            and ns.Completed(id) ~= true and not ns.GuideQuestSkipped(id) then records[#records + 1] = ns.CatalogueRecord(id) end
     end
     if #records == 0 then return end
     local entrance = ns.DungeonEntrance(group)
-    local guide = {key = "dungeon:" .. group.key, dungeon = group, mode = "dungeon", title = group.name .. " quest collection",
+    local guide = {key = "dungeon:" .. group.key, dungeon = group, mode = "dungeon", personal = true, title = group.name .. " quest collection",
         kind = "Dungeon quests", records = records, target = records[1], focusKey = ns.self, mapID = ns.profile.mapID,
         level = group.level, zone = group.name, profilesReady = true, entrance = entrance,
-        reason = "Quest pickup levels start at " .. unlock .. "; listed quest levels " .. group.level .. "–" .. group.maxLevel .. ". Collect local pickups before entering.",
+        reason = ns.DungeonCollectionSummary(group) .. " Collect local pickups before entering.",
         destination = "Collect first, then go to the dungeon entrance."}
     local route = ns.BuildDungeonRoute(guide, true)
     guide.hasPoint, guide.knownStops, guide.missingStops = #route.stops > 0, #route.stops, route.missing
@@ -112,12 +146,13 @@ function ns.BuildDungeonRoute(guide, includeOrigin)
     local mapID = currentMap
     local allPickups, localPickups = {}, 0
     for _, record in ipairs(guide.records) do
-        local stages = ns.PartyRouteStages(record, guide.focusKey)
+        local stages = guide.personal and ns.RouteStages(record, ns.self) or ns.PartyRouteStages(record, guide.focusKey)
         local first = stages[1]
         if first and first.kind == "a" then
             allPickups[#allPickups + 1] = first
             if first.mapID == currentMap then localPickups = localPickups + 1 end
-        elseif #stages == 0 and not ns.PartyQuestFinished(record.id) then missing = missing + 1 end
+        elseif #stages == 0 and (guide.personal and ns.Completed(record.id) ~= true
+            or not guide.personal and not ns.PartyQuestFinished(record.id)) then missing = missing + 1 end
     end
     -- Finish pickups in the current zone before drawing a nearby entrance map.
     if localPickups == 0 and entrance and entrance.mapID ~= currentMap then
@@ -158,7 +193,7 @@ function ns.ShowDungeonQuests(group)
     ns.ScheduleSync()
     local guide = ns.DungeonGuide(group)
     if guide and guide.hasPoint then ns.ShowGuideOnMap(guide)
-    elseif guide then ns.ShowQuestDetails(guide.target.id)
+    elseif guide then ns.ShowDungeonQuestList(group)
     else ns.guideAction = "No unfinished quests in this dungeon match your current level and faction."; ns.Refresh() end
 end
 
@@ -176,17 +211,19 @@ function ns.ShowDungeonQuestList(group)
         frame.collect = ns.UIButton(frame, "Map nearby pickups, then entrance", 280, function() end, true); frame.collect:SetPoint("BOTTOMLEFT", 22, 20)
         frame.record = ns.UIButton(frame, "Record entrance here", 190, function() end); frame.record:SetPoint("BOTTOMRIGHT", -22, 20)
     end
-    local lines = {"Collect quests locally before entering. Distant city pickups are optional; earlier quest steps may be required.", ""}
+    local lines = {ns.DungeonCollectionSummary(group), "Collect quests locally before entering. Distant city pickups are optional; earlier quest steps may be required.", ""}
     for _, id in ipairs(group.ids) do
-        local quest = ns.CatalogueQuest(id)
-        local start = quest.starts and quest.starts[1]
-        lines[#lines + 1] = quest.title .. " • quest Lv " .. (quest.level or "?") .. " • pickup Lv " .. (quest.minLevel or "?")
-        lines[#lines + 1] = "  " .. (ns.ClassQuestLabel(id) or quest.side or "Faction unknown")
-            .. " • " .. (ns.Completed(id) == true and "Completed" or (ns.active[id] and "In your log" or "Not in your log"))
-        if start then lines[#lines + 1] = "  Pickup: " .. start.name .. " • " .. ns.MapName(start.mapID)
-        else lines[#lines + 1] = "  Pickup location not known yet." end
-        if quest.previousQuest then lines[#lines + 1] = "  Previous step: " .. ns.QuestTitle(quest.previousQuest) end
-        lines[#lines + 1] = ""
+        if relevantDungeonQuest(id) ~= false then
+            local quest = ns.CatalogueQuest(id)
+            local start = quest.starts and quest.starts[1]
+            lines[#lines + 1] = quest.title .. " • quest Lv " .. (quest.level or "?") .. " • pickup Lv " .. (quest.minLevel or "?")
+            lines[#lines + 1] = "  " .. (ns.ClassQuestLabel(id) or quest.side or "Faction unknown")
+                .. " • " .. (ns.Completed(id) == true and "Completed" or (ns.active[id] and "In your log" or "Not in your log"))
+            if start then lines[#lines + 1] = "  Pickup: " .. start.name .. " • " .. ns.MapName(start.mapID)
+            else lines[#lines + 1] = "  Pickup location not known yet." end
+            if quest.previousQuest then lines[#lines + 1] = "  Previous step: " .. ns.QuestTitle(quest.previousQuest) end
+            lines[#lines + 1] = ""
+        end
     end
     lines[#lines + 1] = "For Record entrance here, stand outside the dungeon entrance first. This stores your current position."
     ns.dungeonWindow.title:SetText(group.name .. " quests")
@@ -260,6 +297,8 @@ function ns.ScheduleActivitySuggestions()
     if not ns.Option("dungeonPrompts") and not ns.Option("zonePrompts") then return end
     local parts = {ns.profile and ns.profile.level or 0, ns.profile and ns.profile.mapID or 0, ns.activityRevision or 0,
         tostring(ns.Option("dungeonPrompts")), tostring(ns.Option("zonePrompts")),
+        tostring(ns.Option("classQuests")), tostring(ns.questReady), tostring(ns.catalogue),
+        tostring(ns.profile and ns.profile.faction), tostring(ns.profile and ns.profile.classID), tostring(ns.profile and ns.profile.raceID),
         tostring(ns.routeSelection and ns.routeSelection.mode), tostring(ns.HasCurrentPartyQuests()),
         ns.routeSelection and ns.routeSelection.key or "", ns.selectedRoute and ns.selectedRoute.mapID or 0}
     for _, person in ipairs(ns.PartyProfiles()) do
@@ -275,26 +314,23 @@ function ns.ScheduleActivitySuggestions()
         if ns.RouteInCombat() or ns.routePlanning or (ns.activityPrompt and ns.activityPrompt:IsShown()) then return end
         lastContext = context
         local selection = ns.routeSelection
-        if selection and (selection.mode == "current" or selection.mode == "bundle") and ns.HasCurrentPartyQuests() then return end
-        local lowest
-        for _, person in ipairs(ns.PartyProfiles()) do
-            if not person.synced or not person.profile or person.profile.level <= 0 then return end
-            lowest = math.min(lowest or person.profile.level, person.profile.level)
-        end
-        if ns.Option("dungeonPrompts") then
+        if ns.Option("dungeonPrompts") and ns.questReady then
             for _, group in ipairs(ns.DungeonGroups()) do
-                if lowest >= group.minLevel and lowest <= group.maxLevel + 3 then
-                    local guide = ns.DungeonGuide(group)
-                    local first = guide and guide.nextStop
-                    if first and (first.mapID == ns.profile.mapID or (ns.PlayerPoint(ns.profile.mapID) and ns.CrossMapDistance(ns.PlayerPoint(ns.profile.mapID), first) or math.huge) <= 2500)
-                        and not (ns.db.activityNotices and ns.db.activityNotices[ns.ActivityNoticeKey(guide.key)]) then
-                        ns.ShowActivityPrompt(guide.key, "Collect " .. group.name .. " quests?", guide.reason, function() ns.SetFilter("dungeons"); ns.ShowDungeonQuests(group) end)
-                        return
-                    end
+                local readiness = ns.DungeonCollectionReadiness(group)
+                if readiness.levelReady and ns.profile.level <= readiness.maxLevel + 3 and readiness.unfinished > 0
+                    and not (ns.db.activityNotices and ns.db.activityNotices[ns.ActivityNoticeKey(readiness.noticeKey)]) then
+                    ns.ShowActivityPrompt(readiness.noticeKey, "Collect " .. group.name .. " quests?", ns.DungeonCollectionSummary(group, readiness)
+                        .. " Review the collection plan; distant pickups and missing locations are shown before travelling.",
+                        function() ns.SetFilter("dungeons"); ns.ShowDungeonQuests(group) end)
+                    return
                 end
             end
         end
         if ns.Option("zonePrompts") then
+            if selection and (selection.mode == "current" or selection.mode == "bundle") and ns.HasCurrentPartyQuests() then return end
+            for _, person in ipairs(ns.PartyProfiles()) do
+                if not person.synced or not person.profile or person.profile.level <= 0 then return end
+            end
             local transition = ns.ZoneTransition()
             if transition and transition.fullGuide then
                 ns.ShowActivityPrompt(transition.noticeKey, "Start " .. transition.zone .. " guide?", transition.reason,

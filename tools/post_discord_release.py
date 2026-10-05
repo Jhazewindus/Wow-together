@@ -48,7 +48,7 @@ def prepare(archive):
                + '\n\n**Install:** replace the complete `WowTogether` folder on every party member’s client in '
                '`World of Warcraft\\_classic_beta_\\Interface\\AddOns\\WowTogether\\`, then `/reload`. '
                'Restart the client if the addon folder does not appear.\n\n'
-               '**Testing:** use the attached two-player checklist and report template. '
+               '**Testing:** use the attached leveling checklist and report template. '
                'Host checks do not establish beta API/rendering compatibility.')
     if len(message) > 2000:
         raise ValueError('Message exceeds Discord’s content limit.')

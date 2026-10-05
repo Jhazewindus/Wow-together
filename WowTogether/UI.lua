@@ -490,10 +490,10 @@ function ns.Render()
         for _, group in ipairs(ns.DungeonGroups()) do
             local dungeon = group
             local activity = {title = group.name, category = "DUNGEON QUEST COLLECTION", dungeon = group,
-                detail = "Quest pickups start at level " .. group.minLevel .. "; listed quest levels " .. group.level .. "–" .. group.maxLevel .. ". " .. #group.ids .. " published quests. View pickups, class restrictions and previous steps before collecting.",
+                detail = ns.DungeonCollectionSummary(group),
                 action = "Start route", click = function()
                     local guide = ns.DungeonGuide(dungeon)
-                    if guide then ns.RequestStartRoute(guide) else ns.ShowDungeonQuestList(dungeon) end
+                    if guide and guide.hasPoint then ns.RequestStartRoute(guide) else ns.ShowDungeonQuestList(dungeon) end
                 end}
             display[#display + 1] = {activity = activity}
         end

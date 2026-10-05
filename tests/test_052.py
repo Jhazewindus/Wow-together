@@ -39,19 +39,23 @@ def current_client():
 
 
 class CurrentQuestTests(unittest.TestCase):
-    def test_activity_pickup_prompts_wait_while_current_logs_have_quests(self):
+    def test_dungeon_collection_prompt_does_not_replace_current_log_trip(self):
         c = current_client()
         c.ns.catalogue.quests[904] = c.lua.table_from(nearby('Dungeon pickup', categoryPath='dungeons/test-cavern'), recursive=True)
         c.ns.profile.level = 10
         c.ns.activityRevision = 1
         map_canvas(c); c.ns.ShowGuideOnMap(c.ns.GuideChoices()[1])
+        current_key = c.ns.routeSelection.key
         c.ns.ScheduleActivitySuggestions()
         c.drain()
-        self.assertIsNone(c.ns.activityPrompt)
+        self.assertTrue(c.ns.activityPrompt.IsShown(c.ns.activityPrompt))
+        self.assertEqual(c.ns.routeSelection.key, current_key)
+        self.assertNotEqual(c.ns.routeSelection.mode, 'dungeon')
+        c.ns.activityPrompt.later.OnClick()
         c.ns.ClearRoute()
         c.ns.SetOption('currentQuestsFirst', False)
         c.drain()
-        self.assertTrue(c.ns.activityPrompt.IsShown(c.ns.activityPrompt))
+        self.assertFalse(c.ns.activityPrompt.IsShown(c.ns.activityPrompt))
 
     def test_existing_discovery_route_keeps_its_selection_when_legacy_preference_changes(self):
         c = current_client()

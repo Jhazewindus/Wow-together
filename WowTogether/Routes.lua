@@ -705,7 +705,10 @@ function ns.UpdateSelectedRoute(choices)
     if selection.mode == "dungeon" then
         local finished = true
         for _, record in ipairs(selection.records) do
-            if not ns.PartyQuestFinished(record.id) then finished = false; break end
+            local complete
+            if selection.personal then complete = ns.Completed(record.id) == true and not ns.active[record.id]
+            else complete = ns.PartyQuestFinished(record.id) end
+            if not complete then finished = false; break end
         end
         if finished then
             ns.ClearRoute(); ns.routeStats.status = "Selected route completed."; ns.guideAction = ns.routeStats.status

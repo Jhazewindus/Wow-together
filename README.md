@@ -1,7 +1,7 @@
 # Wow Together
 
 A party quest guide for the **World of Warcraft: Forever beta**. Version
-**0.6.4** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.6.5** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -216,6 +216,16 @@ NPC observations can correct missing pickup gates: a public complete gossip
 or quest-greeting list records what that giver offers for your current quest/level context.
 Absence blocks a pickup only after all known givers were checked. A single
 quest-detail dialog confirms that quest without claiming the list is complete.
+In fixed guides, a confirmed unavailable pickup or known unmet level/prerequisite
+temporarily defers that quest's remaining stages while other available steps continue.
+The compiled order stays intact. Ordinary progress and NPC events reconsider these
+gates; a newly offered eligible quest returns at its original place in that order.
+If every remaining pickup is blocked, the guide stays selected and explains why.
+Missing data stays unknown; it is not an automatic skip. Already active quests
+retain their objective/hand-in steps. Manual skips stay saved until explicitly reset.
+Restart a guide after upgrading to compile improved handling of partial objective
+locations: a missing location no longer counts as a distant travel destination.
+The missing step still has no invented coordinates.
 Progress, level or reputation changes invalidate relevant knowledge; visit
 again to recheck. This cannot discover every hidden prerequisite in advance.
 Every pickup uses known level, faction, class, race and prerequisite rules.
@@ -255,7 +265,10 @@ after a session; export before older observations roll off. Diagnostics shows
 the retained/replaced count. Each friend exports their own character's data;
 the export contains no character names, realms, chat or friends' histories.
 Records are not sent through party sync or uploaded automatically. Manual guide
-skips are recorded separately from NPC offers and quest hand-ins. Disable
+skips and observed automatic pickup deferrals/restorations are recorded separately
+from NPC offers and quest hand-ins. Their guide key, exact step key/kind and fixed
+step number accompany the existing addon/build/level/faction context. Invited route
+keys omit player identities. Disable
 recording to pause collection; previous observations remain exportable.
 Reloads and recording toggles mark a new capture segment so gaps remain visible.
 Visit the same giver before and after hand-in for the strongest comparisons.
@@ -294,6 +307,11 @@ by default. Raw `/wt research` exports always omit names. Each friend exports
 locally and sends a labeled file for review; findings never upload or sync
 automatically and never overwrite the bundled catalogue themselves. Manual
 review of overlapping/contradictory reports is how shared guide data improves.
+Repeated manual skips can support a level-specific baseline review when independent
+testers report the same guide/version/step/faction/level. They do not automatically
+create shared skips or prerequisite rules. Confirmed missing offers are personal
+progress evidence; ordinary learned unlock patterns can apply across matching
+build/faction characters, with each character's own requirements checked.
 Retest capture APIs/events on the beta.
 
 The greeting reader probes GetNumAvailableQuests/GetAvailableQuestInfo and
@@ -318,7 +336,14 @@ of success on the Forever beta.
 **Dungeon quests** offers Start route for collection steps and a known nearby
 entrance. Missing prerequisites and distant pickups are explained. If no client
 map link locates the entrance, stand outside it and use **Record entrance here**.
-Dungeon/next-zone prompts respect a selected quest-log trip.
+The popup uses your character's highest known minimum pickup level across all
+relevant regular quests for that dungeon. Other factions/classes/races, repeatables
+and profession quests do not raise it; matching class quests count when enabled.
+Unknown level/identity data prevents an "all levels met" prompt. Prerequisites and
+actual offers still need checking. The collection route uses your own progress
+and works without received party snapshots. A prompt does not replace an active
+guide until you choose its collection plan. An unmapped collection opens the full
+quest list for review. Next-zone prompts still respect a selected quest-log trip.
 
 **Profession guides** uses recipes from your own opened crafting window,
 small configurable batches and required materials. Public auction prices come
@@ -359,7 +384,7 @@ provided broad inspiration about progress clarity; its code/assets/layouts
 were not copied. This implementation is independent.
 
 Reported beta build **70205** established the earlier sync APIs in user tests.
-**0.6.4 has host validation, not a live-client compatibility certification.**
+**0.6.5 has host validation, not a live-client compatibility certification.**
 Retest UI rendering, optional gossip/flight actions, corpse positions and item
 hooks on the build in front of you. `/wt probe` lists capabilities and runtime
 status. Do not interpret presence as proof that protected actions work.

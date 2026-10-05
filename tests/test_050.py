@@ -133,7 +133,7 @@ class SettingsTests(unittest.TestCase):
 
 
 class DungeonTests(unittest.TestCase):
-    def test_party_level_change_rechecks_dungeon_prompt_without_history_change(self):
+    def test_low_party_level_does_not_block_own_dungeon_prompt(self):
         c = route_client()
         group = dungeon(c)
         c.ns.SetOption('zonePrompts', False)
@@ -142,11 +142,12 @@ class DungeonTests(unittest.TestCase):
         c.receive('1|C|2|1|1|')
         c.receive('1|K|2|1|1|900,901')
         c.drain()
-        self.assertIsNone(c.ns.activityPrompt)
-        c.receive('1|P|10|2|501|Test Coast')
-        c.drain()
         self.assertTrue(c.ns.activityPrompt.IsShown(c.ns.activityPrompt))
         self.assertIn(group.name, c.ns.activityPrompt.title.text)
+        c.ns.activityPrompt.Hide(c.ns.activityPrompt)
+        c.receive('1|P|10|2|501|Test Coast')
+        c.drain()
+        self.assertFalse(c.ns.activityPrompt.IsShown(c.ns.activityPrompt))
 
     def test_collect_current_zone_before_nearby_entrance_zone(self):
         c = solo()
@@ -228,7 +229,7 @@ class DungeonTests(unittest.TestCase):
         c.ns.ScheduleActivitySuggestions()
         c.drain()
         self.assertTrue(c.ns.activityPrompt.IsShown(c.ns.activityPrompt))
-        self.assertTrue(c.ns.db.activityNotices['Alice-TestRealm:dungeon:test-cavern'])
+        self.assertTrue(c.ns.db.activityNotices[c.ns.ActivityNoticeKey(c.ns.DungeonCollectionReadiness(group).noticeKey)])
         self.assertNotEqual(c.ns.ActivityNoticeKey(group.key), 'Bob-TestRealm:' + group.key)
         c.ns.activityPrompt.Hide(c.ns.activityPrompt)
         c.ns.activityRevision = 1

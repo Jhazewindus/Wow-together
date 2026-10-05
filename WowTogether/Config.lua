@@ -19,7 +19,7 @@ local sections = {
         {"fixedZoneGuides", "Follow fixed zone guides", "Generate a complete zone sequence once. Quest progress advances steps without reordering. Turn off for adaptive trips; start a guide again to change its mode."},
         {"nearbyPickups", "Collect useful quests nearby", "Add eligible nearby pickups to a quest-log trip. Level range, prerequisites and walking distance still apply."},
         {"classQuests", "Include class quests", "Class restrictions are shown. Personal profession quests remain in Profession guides."},
-        {"dungeonPrompts", "Suggest dungeon quest collection", "Offer a collection guide when the party reaches the relevant quest levels."},
+        {"dungeonPrompts", "Suggest dungeon quest collection", "Offer a plan when your character meets every known pickup level for the dungeon's relevant regular quests. Prerequisites still apply; party sync is not required."},
         {"zonePrompts", "Suggest the next nearby zone", "Offer a known questline transition after the current work is complete."},
         {"scanSkipped", "Reconsider skips when scanning", "Scan guide clears saved skips for quests in the selected guide before replanning. Leave off to keep skips."},
         {"circuitRadius", "Nearby pickup distance", "Limit how much additional walking a nearby pickup adds to the current trip.", {{0.10, "Stay close"}, {0.16, "Small detours"}, {0.22, "Wider loop"}}}}},

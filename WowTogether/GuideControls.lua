@@ -59,7 +59,9 @@ function ns.SkipGuide(kind)
         state.steps[stop.id] = state.steps[stop.id] or {}
         state.steps[stop.id][ns.GuideStepKey(stop)] = true
     else return end
-    ns.RecordQuestResearch(kind == "quest" and "skip-quest" or "skip-step", {questID = stop.id})
+    ns.RecordQuestResearch(kind == "quest" and "skip-quest" or "skip-step", {questID = stop.id,
+        guideKey = ns.routeSelection and ns.routeSelection.key, stepKey = ns.GuideStepKey(stop),
+        stepKind = stop.stepKind or stop.kind, guideStep = stop.guideStep})
     ns.routeSignature = nil
     ns.navigationPreview = nil
     ns.Refresh()
@@ -235,6 +237,7 @@ end
 
 function ns.RequestStartRoute(guide)
     if not guide then return end
+    if guide.personal then return ns.ShowGuideOnMap(guide) end
     if guide.fixedRoute or not ns.HasCurrentPartyQuests() or guide.mode == "current" or guide.mode == "bundle" then return ns.StartPartyRoute(guide) end
     if not ns.startGuidePrompt then
         local frame = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")

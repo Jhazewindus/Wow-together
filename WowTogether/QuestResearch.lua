@@ -62,6 +62,14 @@ local function snapshot(kind, facts, saved)
         raceID = profile.raceID, mapID = profile.mapID, reputationRevision = saved.reputationRevision,
         questID = facts.questID, npcID = facts.npcID, completeList = facts.complete,
         offered = {}, active = {}, completed = {}, notCompleted = {}, historyUnknown = {}}
+    if kind == "skip-step" or kind == "skip-quest" or kind == "defer-pickup" or kind == "restore-pickup" then
+        result.guideKey, result.stepKey = ns.SafeTitle(facts.guideKey), ns.SafeTitle(facts.stepKey)
+        -- Invited trip keys contain the sender's character name. Raw research
+        -- exports stay anonymous; stable catalogue guide keys remain intact.
+        if result.guideKey and string.find(result.guideKey, "party:", 1, true) then result.guideKey = "party-route" end
+        result.stepKind = ns.SafeTitle(facts.stepKind)
+        if ns.GuideInteger(facts.guideStep) then result.guideStep = facts.guideStep end
+    end
     if kind == "level" and ns.GuideInteger(facts.level, 255) then result.level = facts.level end
     local ids, count = {}, 0
     local function add(id)
