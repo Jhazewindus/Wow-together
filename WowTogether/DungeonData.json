@@ -1,0 +1,1197 @@
+{
+  "schema": 1,
+  "captured": "2026-10-06",
+  "overview": {
+    "url": "https://www.wowhead.com/forever/guide/dungeons-overview-locations-details",
+    "sha256": "47ccd5577125fbe48321d7ba87da10baa72c2e3b27d89466499881528c79a744"
+  },
+  "entrance_source": {
+    "url": "https://github.com/tr0tsky0/Mapzeroth/blob/fd68cfe2153379898680c66a01833846f9933587/Data/Forever/Pois.lua",
+    "commit": "fd68cfe2153379898680c66a01833846f9933587",
+    "sha256": "3dfa6f85e6fbe1c5a01389d4bcf445f4fa63391484647cdec663a849111e977d",
+    "license": "MIT"
+  },
+  "quest_categories": {
+    "blackfathom-deeps": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/blackfathom-deeps",
+      "sha256": "fca897855fcd69c6c7d6e43148c6149be160c85e853ad87ecda508236f387220",
+      "quests": 13
+    },
+    "blackrock-depths": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/blackrock-depths",
+      "sha256": "1ec92649419ea1f13f5655e6a3efa336575faca6f6b52335859ff9023e56cd28",
+      "quests": 43
+    },
+    "blackrock-spire": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/blackrock-spire",
+      "sha256": "ce1e1ad318c192d093e1bb558e569051d4caae92951fdee2f76b51e542150daf",
+      "quests": 37
+    },
+    "city-of-dalaran": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/city-of-dalaran",
+      "sha256": "b877398201df890a33996408532c77c45ae6ccc9e610a67a798baf228ffa23ef",
+      "quests": 8
+    },
+    "dire-maul": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/dire-maul",
+      "sha256": "a77218c456ecb69b9af062ec7766a2461629de39c24f23d954c3017e3d89c551",
+      "quests": 38
+    },
+    "excavation-site-wetlands": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/excavation-site-wetlands",
+      "sha256": "c61601f9b873506b70942846f829de80e8144154a0a6e6d6d77e2f0ed4e7aa08",
+      "quests": 14
+    },
+    "gnomeregan": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/gnomeregan",
+      "sha256": "f72044568bfffea2b20e8f30a1ba1dc1913d1501705b4da81c80420b747ab791",
+      "quests": 28
+    },
+    "maraudon": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/maraudon",
+      "sha256": "3a4d7f93323ad46604c36b2c7d5949eb4e798bb53c90dd8a090e4d50457dbdf4",
+      "quests": 11
+    },
+    "ragefire-chasm": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/ragefire-chasm",
+      "sha256": "246bdef1adc19b73ecb06d7dcea26849c6dbc72a764a5193c27ef2526b88ec60",
+      "quests": 6
+    },
+    "razorfen-downs": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/razorfen-downs",
+      "sha256": "67f36134f18e935044099a0db12e9c8ae5534196d2cbe31e417c2a75d2d1820e",
+      "quests": 7
+    },
+    "razorfen-kraul": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/razorfen-kraul",
+      "sha256": "2b85685c4859de3637f45416d717c823c8ae8346225a597ab9c29c65db4708e7",
+      "quests": 6
+    },
+    "ruins-of-lordaeron": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/ruins-of-lordaeron",
+      "sha256": "13f7f3d35b2f224bba94407396186d05b7d8a78bc98920f7338ccb9fb9ff11f5",
+      "quests": 12
+    },
+    "scarlet-monastery": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/scarlet-monastery",
+      "sha256": "d1bfa074bcbdb03f657e91e72a04b78245bed05092ab44a4a900cfb6e593ae7b",
+      "quests": 8
+    },
+    "scholomance": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/scholomance",
+      "sha256": "c7d80c91ff6d787a69ac59718f39226e3a4594557899a4905c4822f04d1ed5b3",
+      "quests": 12
+    },
+    "shadowfang-keep": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/shadowfang-keep",
+      "sha256": "6e81cdeb65a88de2a70a4cc0ea2369b6fc421cb7653de15b12bc0b8352cf456d",
+      "quests": 3
+    },
+    "stratholme": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/stratholme",
+      "sha256": "07ca3394cbfa335c37c1dcc50b4913d2d821a34ce37a3c01c3202214a08d1034",
+      "quests": 17
+    },
+    "the-deadmines": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/the-deadmines",
+      "sha256": "9af1783f723a24149723fe045a6a414d33bf9a79ef7d4e2a3fe401d5dbd7a1ed",
+      "quests": 5
+    },
+    "the-hall-of-thanes": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/the-hall-of-thanes",
+      "sha256": "fc840b587c2c88d51e5478313a817b6f49c2229b98d0631e78f72c5f06352aaf",
+      "quests": 4
+    },
+    "the-stockade": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/the-stockade",
+      "sha256": "88e7df1cfc9be38901b4211ae161e75657619e0d616e8889f3eab16b3a36357f",
+      "quests": 6
+    },
+    "the-temple-of-atalhakkar": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/the-temple-of-atalhakkar",
+      "sha256": "7a46a90f53b5a8f92040ff3e0fe27c721c0d5f93b5e71c095555b07b3e6d2778",
+      "quests": 10
+    },
+    "uldaman": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/uldaman",
+      "sha256": "3e0f7538351d0b273723ba37f4a398db0a79d6dc3edadabd5b1fa35097ced76b",
+      "quests": 29
+    },
+    "wailing-caverns": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/wailing-caverns",
+      "sha256": "efdee5cb9c3bc450d6ba1a0c62d71f28b996dc57ced5776c682474164ae04e21",
+      "quests": 12
+    },
+    "zulfarrak": {
+      "url": "https://www.wowhead.com/forever/quests/dungeons/zulfarrak",
+      "sha256": "a7955a064f46a06e1d1716f86c7d18f3f3ce2ae19d9ccb6ac1c3ea185a2161c0",
+      "quests": 10
+    }
+  },
+  "classic_complexes": 19,
+  "forever_dungeons": 9,
+  "published_entrance_areas": 23,
+  "unmapped_entrances": [
+    "alcaz-prison",
+    "blackmaw-hold",
+    "kroldok-stronghold",
+    "shapers-terrace",
+    "the-drowned-city"
+  ],
+  "level_conflicts": {
+    "city-of-dalaran": {
+      "chart": [
+        28,
+        33
+      ],
+      "paragraph": [
+        20,
+        35
+      ]
+    },
+    "kroldok-stronghold": {
+      "chart": [
+        40,
+        45
+      ],
+      "paragraph": [
+        40,
+        55
+      ]
+    }
+  },
+  "limitations": [
+    "Dungeon level ranges are recommendations, not minimum entry or quest pickup requirements",
+    "Overview chart/table takes precedence over its conflicting paragraphs; retest beta levels",
+    "Published points mark entrance areas, not collision-safe cave paths or exact portals",
+    "Five new dungeon entrances and quest sets remain unspecified; no coordinates or membership are inferred"
+  ],
+  "dungeons": {
+    "the-hall-of-thanes": {
+      "name": "Hall of Thanes",
+      "era": "Forever",
+      "runLevelLow": 13,
+      "runLevelHigh": 18,
+      "wings": [],
+      "aliases": [
+        "The Hall of Thanes"
+      ],
+      "areaIDs": [],
+      "entrances": [
+        {
+          "mapID": 1455,
+          "x": 0.152,
+          "y": 0.857,
+          "name": "Hall of Thanes entrance area",
+          "sourceID": "INSTANCE_THE_HALL_OF_THANES",
+          "source": "Published Forever entrance area",
+          "published": true,
+          "container": "easternkingdoms.dun_morogh"
+        }
+      ],
+      "questIDs": [
+        96393,
+        96394,
+        96395,
+        96403
+      ],
+      "locationHint": "Ironforge"
+    },
+    "shadowfang-keep": {
+      "name": "Shadowfang Keep",
+      "era": "Classic",
+      "runLevelLow": 22,
+      "runLevelHigh": 30,
+      "wings": [],
+      "aliases": [],
+      "areaIDs": [
+        209
+      ],
+      "entrances": [
+        {
+          "mapID": 1421,
+          "x": 0.447,
+          "y": 0.678,
+          "name": "Shadowfang Keep entrance area",
+          "sourceID": "INSTANCE_SHADOWFANG_KEEP",
+          "source": "Published Forever entrance area",
+          "published": true,
+          "container": "easternkingdoms.silverpine_forest"
+        }
+      ],
+      "questIDs": [
+        1013,
+        1014,
+        1098
+      ]
+    },
+    "scarlet-monastery": {
+      "name": "Scarlet Monastery",
+      "era": "Classic",
+      "runLevelLow": 28,
+      "runLevelHigh": 45,
+      "wings": [
+        {
+          "name": "Scarlet Monastery: Armory",
+          "runLevelLow": 32,
+          "runLevelHigh": 42
+        },
+        {
+          "name": "Scarlet Monastery: Cathedral",
+          "runLevelLow": 35,
+          "runLevelHigh": 45
+        },
+        {
+          "name": "Scarlet Monastery: Graveyard",
+          "runLevelLow": 28,
+          "runLevelHigh": 38
+        },
+        {
+          "name": "Scarlet Monastery: Library",
+          "runLevelLow": 29,
+          "runLevelHigh": 39
+        }
+      ],
+      "aliases": [],
+      "areaIDs": [
+        796
+      ],
+      "entrances": [
+        {
+          "mapID": 1420,
+          "x": 0.85,
+          "y": 0.314,
+          "name": "Scarlet Monastery entrance area",
+          "sourceID": "INSTANCE_SCARLET_MONASTERY",
+          "source": "Published Forever entrance area",
+          "published": true,
+          "container": "easternkingdoms.tirisfal_glades"
+        }
+      ],
+      "questIDs": [
+        1048,
+        1049,
+        1050,
+        1051,
+        1053,
+        1113,
+        1160,
+        96800
+      ]
+    },
+    "zulfarrak": {
+      "name": "Zul'Farrak",
+      "era": "Classic",
+      "runLevelLow": 44,
+      "runLevelHigh": 54,
+      "wings": [],
+      "aliases": [],
+      "areaIDs": [
+        978,
+        1176
+      ],
+      "entrances": [
+        {
+          "mapID": 1446,
+          "x": 0.387,
+          "y": 0.199,
+          "name": "Zul'Farrak entrance area",
+          "sourceID": "INSTANCE_ZULFARRAK",
+          "source": "Published Forever entrance area",
+          "published": true,
+          "container": "kalimdor.tanaris"
+        }
+      ],
+      "questIDs": [
+        2768,
+        2770,
+        2846,
+        2861,
+        2864,
+        2865,
+        2936,
+        2991,
+        3042,
+        3527
+      ]
+    },
+    "shapers-terrace": {
+      "name": "Shaper's Terrace",
+      "era": "Forever",
+      "runLevelLow": 58,
+      "runLevelHigh": 60,
+      "wings": [],
+      "aliases": [],
+      "areaIDs": [],
+      "entrances": [],
+      "questIDs": [],
+      "locationHint": "Un'Goro Crater"
+    },
+    "ragefire-chasm": {
+      "name": "Ragefire Chasm",
+      "era": "Classic",
+      "runLevelLow": 13,
+      "runLevelHigh": 18,
+      "wings": [],
+      "aliases": [],
+      "areaIDs": [
+        2437
+      ],
+      "entrances": [
+        {
+          "mapID": 1454,
+          "x": 0.528,
+          "y": 0.489,
+          "name": "Ragefire Chasm entrance area",
+          "sourceID": "INSTANCE_RAGEFIRE_CHASM",
+          "source": "Published Forever entrance area",
+          "published": true,
+          "container": "kalimdor.durotar"
+        }
+      ],
+      "questIDs": [
+        5722,
+        5723,
+        5724,
+        5725,
+        5728,
+        5761
+      ]
+    },
+    "the-stockade": {
+      "name": "The Stockade",
+      "era": "Classic",
+      "runLevelLow": 22,
+      "runLevelHigh": 30,
+      "wings": [],
+      "aliases": [],
+      "areaIDs": [
+        717
+      ],
+      "entrances": [
+        {
+          "mapID": 1453,
+          "x": 0.5873,
+          "y": 0.7575,
+          "name": "The Stockade entrance area",
+          "sourceID": "INSTANCE_STORMWIND_STOCKADE",
+          "source": "Published Forever entrance area",
+          "published": true,
+          "container": "easternkingdoms.elwynn_forest"
+        }
+      ],
+      "questIDs": [
+        377,
+        378,
+        386,
+        387,
+        388,
+        391
+      ]
+    },
+    "the-drowned-city": {
+      "name": "The Drowned City",
+      "era": "Forever",
+      "runLevelLow": 35,
+      "runLevelHigh": 40,
+      "wings": [],
+      "aliases": [],
+      "areaIDs": [],
+      "entrances": [],
+      "questIDs": [],
+      "locationHint": "Stranglethorn coast"
+    },
+    "uldaman": {
+      "name": "Uldaman",
+      "era": "Classic",
+      "runLevelLow": 42,
+      "runLevelHigh": 52,
+      "wings": [],
+      "aliases": [],
+      "areaIDs": [
+        1337
+      ],
+      "entrances": [
+        {
+          "mapID": 1432,
+          "x": 0.348,
+          "y": 0.855,
+          "name": "Uldaman entrance area",
+          "sourceID": "INSTANCE_ULDAMAN",
+          "source": "Published Forever entrance area",
+          "published": true,
+          "container": "easternkingdoms.loch_modan"
+        }
+      ],
+      "questIDs": [
+        17,
+        704,
+        709,
+        721,
+        722,
+        1139,
+        1360,
+        2198,
+        2199,
+        2200,
+        2201,
+        2202,
+        2204,
+        2240,
+        2278,
+        2279,
+        2280,
+        2283,
+        2284,
+        2318,
+        2338,
+        2339,
+        2340,
+        2341,
+        2342,
+        2361,
+        2398,
+        2418,
+        3375
+      ]
+    },
+    "blackmaw-hold": {
+      "name": "Blackmaw Hold",
+      "era": "Forever",
+      "runLevelLow": 55,
+      "runLevelHigh": 60,
+      "wings": [],
+      "aliases": [],
+      "areaIDs": [],
+      "entrances": [],
+      "questIDs": [],
+      "locationHint": "Northern Azshara"
+    },
+    "ruins-of-lordaeron": {
+      "name": "Ruins of Lordaeron",
+      "era": "Forever",
+      "runLevelLow": 15,
+      "runLevelHigh": 20,
+      "wings": [],
+      "aliases": [],
+      "areaIDs": [],
+      "entrances": [
+        {
+          "mapID": 1458,
+          "x": 0.648,
+          "y": 0.357,
+          "name": "Ruins of Lordaeron entrance area",
+          "sourceID": "INSTANCE_RUINS_OF_LORDAERON",
+          "source": "Published Forever entrance area",
+          "published": true,
+          "container": "easternkingdoms.tirisfal_glades"
+        }
+      ],
+      "questIDs": [
+        92415,
+        92421,
+        92422,
+        95189,
+        95195,
+        95204,
+        95216,
+        95250,
+        97288,
+        97289,
+        97291,
+        97292
+      ],
+      "locationHint": "Lordaeron"
+    },
+    "excavation-site-wetlands": {
+      "name": "Excavation Site: Wetlands",
+      "era": "Forever",
+      "runLevelLow": 24,
+      "runLevelHigh": 29,
+      "wings": [],
+      "aliases": [
+        "Excavation Site Wetlands"
+      ],
+      "areaIDs": [],
+      "entrances": [
+        {
+          "mapID": 1437,
+          "x": 0.385,
+          "y": 0.606,
+          "name": "Excavation Site: Wetlands entrance area",
+          "sourceID": "INSTANCE_EXCAVATION_SITE_WETLANDS",
+          "source": "Published Forever entrance area",
+          "published": true,
+          "container": "easternkingdoms.wetlands"
+        }
+      ],
+      "questIDs": [
+        95646,
+        95647,
+        95663,
+        95664,
+        95682,
+        95697,
+        95737,
+        95772,
+        95795,
+        95809,
+        95810,
+        98815,
+        98823,
+        98824
+      ],
+      "locationHint": "Wetlands"
+    },
+    "maraudon": {
+      "name": "Maraudon",
+      "era": "Classic",
+      "runLevelLow": 45,
+      "runLevelHigh": 57,
+      "wings": [
+        {
+          "name": "Maraudon: Earth Song Falls",
+          "runLevelLow": 48,
+          "runLevelHigh": 57
+        },
+        {
+          "name": "Maraudon: Wicked Grotto",
+          "runLevelLow": 45,
+          "runLevelHigh": 53
+        },
+        {
+          "name": "Maraudon: Foulspore Cavern",
+          "runLevelLow": 45,
+          "runLevelHigh": 53
+        }
+      ],
+      "aliases": [],
+      "areaIDs": [
+        2100
+      ],
+      "entrances": [
+        {
+          "mapID": 1443,
+          "x": 0.291,
+          "y": 0.629,
+          "name": "Maraudon entrance area",
+          "sourceID": "INSTANCE_MARAUDON",
+          "source": "Published Forever entrance area",
+          "published": true,
+          "container": "kalimdor.desolace"
+        }
+      ],
+      "questIDs": [
+        7028,
+        7029,
+        7041,
+        7044,
+        7046,
+        7064,
+        7065,
+        7066,
+        7067,
+        7068,
+        7070
+      ]
+    },
+    "wailing-caverns": {
+      "name": "Wailing Caverns",
+      "era": "Classic",
+      "runLevelLow": 15,
+      "runLevelHigh": 25,
+      "wings": [],
+      "aliases": [],
+      "areaIDs": [
+        718
+      ],
+      "entrances": [
+        {
+          "mapID": 1413,
+          "x": 0.477,
+          "y": 0.35,
+          "name": "Wailing Caverns entrance area",
+          "sourceID": "INSTANCE_WAILING_CAVERNS",
+          "source": "Published Forever entrance area",
+          "published": true,
+          "container": "kalimdor.the_barrens"
+        }
+      ],
+      "questIDs": [
+        914,
+        959,
+        962,
+        999,
+        1486,
+        1487,
+        1489,
+        1490,
+        1491,
+        1500,
+        3366,
+        6981
+      ]
+    },
+    "kroldok-stronghold": {
+      "name": "Krol'dok Stronghold",
+      "era": "Forever",
+      "runLevelLow": 40,
+      "runLevelHigh": 45,
+      "wings": [],
+      "aliases": [],
+      "areaIDs": [],
+      "entrances": [],
+      "questIDs": [],
+      "locationHint": "Riverglades"
+    },
+    "alcaz-prison": {
+      "name": "Alcaz Prison",
+      "era": "Forever",
+      "runLevelLow": 48,
+      "runLevelHigh": 53,
+      "wings": [],
+      "aliases": [],
+      "areaIDs": [],
+      "entrances": [],
+      "questIDs": [],
+      "locationHint": "Alcaz Island, Dustwallow Marsh"
+    },
+    "blackrock-spire": {
+      "name": "Blackrock Spire",
+      "era": "Classic",
+      "runLevelLow": 55,
+      "runLevelHigh": 60,
+      "wings": [
+        {
+          "name": "Blackrock Spire: Lower",
+          "runLevelLow": 55,
+          "runLevelHigh": 60
+        },
+        {
+          "name": "Upper Blackrock Spire",
+          "runLevelLow": 58,
+          "runLevelHigh": 60
+        }
+      ],
+      "aliases": [],
+      "areaIDs": [
+        1583
+      ],
+      "entrances": [
+        {
+          "mapID": 1428,
+          "x": 0.33,
+          "y": 0.252,
+          "name": "Blackrock Spire entrance area",
+          "sourceID": "INSTANCE_BLACKROCK_SPIRE",
+          "source": "Published Forever entrance area",
+          "published": true,
+          "container": "easternkingdoms.blackrock_mountain"
+        }
+      ],
+      "questIDs": [
+        4701,
+        4724,
+        4729,
+        4734,
+        4735,
+        4742,
+        4743,
+        4764,
+        4765,
+        4766,
+        4768,
+        4769,
+        4788,
+        4862,
+        4866,
+        4867,
+        4903,
+        4907,
+        4974,
+        4981,
+        4982,
+        4983,
+        5001,
+        5002,
+        5047,
+        5081,
+        5089,
+        5102,
+        5127,
+        5160,
+        6502,
+        6569,
+        6602,
+        7761,
+        8966,
+        8989,
+        8995
+      ]
+    },
+    "the-deadmines": {
+      "name": "The Deadmines",
+      "era": "Classic",
+      "runLevelLow": 18,
+      "runLevelHigh": 23,
+      "wings": [],
+      "aliases": [],
+      "areaIDs": [
+        1581
+      ],
+      "entrances": [
+        {
+          "mapID": 1436,
+          "x": 0.382,
+          "y": 0.775,
+          "name": "The Deadmines entrance area",
+          "sourceID": "INSTANCE_DEADMINES",
+          "source": "Published Forever entrance area",
+          "published": true,
+          "container": "easternkingdoms.westfall"
+        }
+      ],
+      "questIDs": [
+        166,
+        167,
+        168,
+        214,
+        2040
+      ]
+    },
+    "city-of-dalaran": {
+      "name": "City of Dalaran",
+      "era": "Forever",
+      "runLevelLow": 28,
+      "runLevelHigh": 33,
+      "wings": [],
+      "aliases": [],
+      "areaIDs": [],
+      "entrances": [
+        {
+          "mapID": 1416,
+          "x": 0.166,
+          "y": 0.688,
+          "name": "City of Dalaran entrance area",
+          "sourceID": "INSTANCE_CITY_OF_DALARAN",
+          "source": "Published Forever entrance area",
+          "published": true,
+          "container": "easternkingdoms.alterac_mountains"
+        }
+      ],
+      "questIDs": [
+        92456,
+        92457,
+        92458,
+        92489,
+        96984,
+        96986,
+        96987,
+        96988
+      ],
+      "locationHint": "Dalaran"
+    },
+    "razorfen-downs": {
+      "name": "Razorfen Downs",
+      "era": "Classic",
+      "runLevelLow": 40,
+      "runLevelHigh": 50,
+      "wings": [],
+      "aliases": [],
+      "areaIDs": [
+        722
+      ],
+      "entrances": [
+        {
+          "mapID": 1413,
+          "x": 0.509,
+          "y": 0.929,
+          "name": "Razorfen Downs entrance area",
+          "sourceID": "INSTANCE_RAZORFEN_DOWNS",
+          "source": "Published Forever entrance area",
+          "published": true,
+          "container": "kalimdor.the_barrens"
+        }
+      ],
+      "questIDs": [
+        3341,
+        3523,
+        3525,
+        3636,
+        6521,
+        6522,
+        6626
+      ]
+    },
+    "blackrock-depths": {
+      "name": "Blackrock Depths",
+      "era": "Classic",
+      "runLevelLow": 52,
+      "runLevelHigh": 60,
+      "wings": [],
+      "aliases": [],
+      "areaIDs": [
+        1584
+      ],
+      "entrances": [
+        {
+          "mapID": 1427,
+          "x": 0.271,
+          "y": 0.725,
+          "name": "Blackrock Depths entrance area",
+          "sourceID": "INSTANCE_BLACKROCK_DEPTHS",
+          "source": "Published Forever entrance area",
+          "published": true,
+          "container": "easternkingdoms.blackrock_mountain"
+        }
+      ],
+      "questIDs": [
+        3801,
+        3802,
+        3907,
+        3911,
+        3981,
+        3982,
+        4001,
+        4002,
+        4003,
+        4004,
+        4024,
+        4063,
+        4081,
+        4082,
+        4083,
+        4121,
+        4122,
+        4123,
+        4126,
+        4128,
+        4132,
+        4133,
+        4134,
+        4136,
+        4201,
+        4241,
+        4242,
+        4263,
+        4264,
+        4282,
+        4286,
+        4295,
+        4299,
+        4322,
+        4324,
+        4341,
+        4342,
+        4361,
+        4362,
+        4363,
+        7201,
+        7604,
+        9015
+      ]
+    },
+    "blackfathom-deeps": {
+      "name": "Blackfathom Deeps",
+      "era": "Classic",
+      "runLevelLow": 24,
+      "runLevelHigh": 32,
+      "wings": [],
+      "aliases": [],
+      "areaIDs": [
+        719
+      ],
+      "entrances": [
+        {
+          "mapID": 1439,
+          "x": 0.335,
+          "y": 0.935,
+          "name": "Blackfathom Deeps entrance area",
+          "sourceID": "INSTANCE_BLACKFATHOM_DEEPS",
+          "source": "Published Forever entrance area",
+          "published": true,
+          "container": "kalimdor.darkshore"
+        }
+      ],
+      "questIDs": [
+        971,
+        1198,
+        1199,
+        1200,
+        1275,
+        6561,
+        6562,
+        6563,
+        6564,
+        6565,
+        6921,
+        78916,
+        78917
+      ]
+    },
+    "scholomance": {
+      "name": "Scholomance",
+      "era": "Classic",
+      "runLevelLow": 58,
+      "runLevelHigh": 60,
+      "wings": [],
+      "aliases": [],
+      "areaIDs": [
+        2057
+      ],
+      "entrances": [
+        {
+          "mapID": 1422,
+          "x": 0.69,
+          "y": 0.73,
+          "name": "Scholomance entrance area",
+          "sourceID": "INSTANCE_SCHOLOMANCE",
+          "source": "Published Forever entrance area",
+          "published": true,
+          "container": "easternkingdoms.western_plaguelands"
+        }
+      ],
+      "questIDs": [
+        4771,
+        5341,
+        5343,
+        5382,
+        5384,
+        5466,
+        5515,
+        5529,
+        5531,
+        5582,
+        8969,
+        8992
+      ]
+    },
+    "gnomeregan": {
+      "name": "Gnomeregan",
+      "era": "Classic",
+      "runLevelLow": 29,
+      "runLevelHigh": 38,
+      "wings": [],
+      "aliases": [],
+      "areaIDs": [
+        133
+      ],
+      "entrances": [
+        {
+          "mapID": 1426,
+          "x": 0.177,
+          "y": 0.392,
+          "name": "Gnomeregan entrance area",
+          "sourceID": "INSTANCE_GNOMEREGAN",
+          "source": "Published Forever entrance area",
+          "published": true,
+          "container": "easternkingdoms.dun_morogh"
+        }
+      ],
+      "questIDs": [
+        2841,
+        2842,
+        2843,
+        2904,
+        2922,
+        2923,
+        2924,
+        2925,
+        2926,
+        2927,
+        2928,
+        2929,
+        2930,
+        2931,
+        2945,
+        2947,
+        2949,
+        2951,
+        2952,
+        2953,
+        2962,
+        2971,
+        4601,
+        4602,
+        4603,
+        4604,
+        4605,
+        4606
+      ]
+    },
+    "the-temple-of-atalhakkar": {
+      "name": "Sunken Temple",
+      "era": "Classic",
+      "runLevelLow": 50,
+      "runLevelHigh": 60,
+      "wings": [],
+      "aliases": [
+        "The Temple of Atal'Hakkar",
+        "The Temple Of Atalhakkar"
+      ],
+      "areaIDs": [
+        1417
+      ],
+      "entrances": [
+        {
+          "mapID": 1435,
+          "x": 0.773,
+          "y": 0.359,
+          "name": "Sunken Temple entrance area",
+          "sourceID": "INSTANCE_SUNKEN_TEMPLE",
+          "source": "Published Forever entrance area",
+          "published": true,
+          "container": "easternkingdoms.swamp_of_sorrows"
+        }
+      ],
+      "questIDs": [
+        1445,
+        1446,
+        1475,
+        2868,
+        3373,
+        3380,
+        3446,
+        3447,
+        3528,
+        8733
+      ]
+    },
+    "razorfen-kraul": {
+      "name": "Razorfen Kraul",
+      "era": "Classic",
+      "runLevelLow": 30,
+      "runLevelHigh": 40,
+      "wings": [],
+      "aliases": [],
+      "areaIDs": [
+        491
+      ],
+      "entrances": [
+        {
+          "mapID": 1413,
+          "x": 0.423,
+          "y": 0.899,
+          "name": "Razorfen Kraul entrance area",
+          "sourceID": "INSTANCE_RAZORFEN_KRAUL",
+          "source": "Published Forever entrance area",
+          "published": true,
+          "container": "kalimdor.the_barrens"
+        }
+      ],
+      "questIDs": [
+        1101,
+        1102,
+        1109,
+        1142,
+        1144,
+        1221
+      ]
+    },
+    "stratholme": {
+      "name": "Stratholme",
+      "era": "Classic",
+      "runLevelLow": 58,
+      "runLevelHigh": 60,
+      "wings": [],
+      "aliases": [],
+      "areaIDs": [
+        2017
+      ],
+      "entrances": [
+        {
+          "mapID": 1423,
+          "x": 0.26,
+          "y": 0.105,
+          "name": "Stratholme entrance area",
+          "sourceID": "INSTANCE_STRATHOLME",
+          "source": "Published Forever entrance area",
+          "published": true,
+          "container": "easternkingdoms.eastern_plaguelands"
+        }
+      ],
+      "questIDs": [
+        5122,
+        5125,
+        5212,
+        5213,
+        5214,
+        5243,
+        5251,
+        5262,
+        5263,
+        5282,
+        5463,
+        5848,
+        6163,
+        6201,
+        8945,
+        8968,
+        8991
+      ]
+    },
+    "dire-maul": {
+      "name": "Dire Maul",
+      "era": "Classic",
+      "runLevelLow": 58,
+      "runLevelHigh": 60,
+      "wings": [],
+      "aliases": [],
+      "areaIDs": [
+        2557
+      ],
+      "entrances": [
+        {
+          "mapID": 1444,
+          "x": 0.62,
+          "y": 0.333,
+          "name": "Dire Maul entrance area",
+          "sourceID": "INSTANCE_DIRE_MAUL",
+          "source": "Published Forever entrance area",
+          "published": true,
+          "container": "kalimdor.feralas"
+        }
+      ],
+      "questIDs": [
+        1193,
+        1318,
+        5518,
+        5519,
+        5525,
+        5528,
+        7429,
+        7441,
+        7461,
+        7462,
+        7463,
+        7481,
+        7482,
+        7483,
+        7484,
+        7485,
+        7488,
+        7489,
+        7492,
+        7494,
+        7498,
+        7499,
+        7500,
+        7501,
+        7502,
+        7503,
+        7504,
+        7505,
+        7506,
+        7507,
+        7508,
+        7703,
+        7877,
+        8948,
+        8949,
+        8950,
+        8967,
+        8990
+      ]
+    }
+  }
+}

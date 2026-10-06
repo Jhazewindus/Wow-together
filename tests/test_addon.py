@@ -142,6 +142,7 @@ class Client:
                                  (ROOT / 'WowTogether' / line).read_text(), 'WowTogether', self.ns)
         if not use_catalogue:
             self.ns.catalogue = self.lua.table_from({'count': 0, 'quests': self.lua.table()})
+            self.ns.dungeonData = None  # Synthetic quest fixtures have their own dungeon definitions.
         if saved_variables is not None:
             g.WowTogetherDB = self.lua.table_from(saved_variables, recursive=True)
         self.ns.handlers.ADDON_LOADED('WowTogether')

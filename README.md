@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.8.16** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.17** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -16,10 +16,30 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **49 Lua
+Replace the folder on **every party member's client**, including all **50 Lua
 files** and the **Media folder**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.17 combines the Forever dungeon overview with dungeon quest lists and
+published Forever entrance geography.** All **19 Classic dungeon complexes**
+have entrance areas, including the level ranges for Scarlet Monastery, Maraudon
+and Blackrock Spire wings. The browser also includes the nine new Forever
+dungeons; four have mapped entrance areas, while the remaining five keep their
+broad locations and explicitly unknown coordinates/quest sets. **339** captured
+dungeon quest memberships join the existing catalogue without changing quest
+facts. Duplicate dungeon labels are folded together; a Dungeon tag alone no
+longer creates class, capital or raid cards. Unassigned records stay in All quests.
+
+Dungeon cards distinguish run levels from the level needed to collect your
+character's full quest set. **Quest list** shows known pickups, entrance areas
+and wing ranges; manual entrance recording remains inside that window. Recorded
+entrances take precedence, then public client map links, then published points.
+The entrance remains the collection route's final destination across zones.
+Run ranges never override identity, quest levels, prerequisites or actual offers.
+These are entrance areas, not mapped paths through caves or guaranteed portal
+positions. [DUNGEONS.md](DUNGEONS.md) records coverage, source hashes and two
+conflicting new-dungeon level descriptions; the overview's chart/table is used.
 
 **0.8.16 replaces internal travel-point names with readable directions.**
 Anonymous junctions say, for example, **Go to waypoint — The Barrens (54.0, 26.6)**
@@ -673,8 +693,11 @@ Reward choices remain manual. API presence or an attempted action is not proof
 of success on the Forever beta.
 
 **Dungeon quests** offers Start route for collection steps and a known nearby
-entrance. Missing prerequisites and distant pickups are explained. If no client
-map link locates the entrance, stand outside it and use **Record entrance here**.
+entrance area. Missing prerequisites and distant pickups are explained. Use
+**Quest list** for its details. Entrance locations use your saved recording, a
+public client map link or the published Forever dungeon snapshot, in that order.
+For an unmapped entrance or a correction, stand outside it and use **Record
+entrance here** in the quest-list window.
 The popup uses your character's highest known minimum pickup level across all
 relevant regular quests for that dungeon. Other factions/classes/races, repeatables
 and profession quests do not raise it; matching class quests count when enabled.

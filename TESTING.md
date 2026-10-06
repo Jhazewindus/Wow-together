@@ -1,12 +1,12 @@
 # Wow Together — friend test script
 
-For **0.8.16**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.17**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 49 Lua files** and
+1. Replace the complete WowTogether folder, including **all 50 Lua files** and
    the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    `/reload`; restart fully if a new addon folder does not appear.
@@ -15,6 +15,32 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Combined dungeon data for 0.8.17 — about 5–10 minutes
+
+1. Open **Dungeon guides**. Check Ragefire Chasm, Wailing Caverns and a dungeon
+   on the other continent. Cards should show dungeon run levels and the separate
+   pickup level for your character's full quest set. There should be one card
+   per dungeon complex, rather than Mage, Orgrimmar or duplicate Lordaeron cards.
+2. Open **Quest list**. Check known pickup NPCs, entrance map/coordinates and
+   Scarlet Monastery/Maraudon/Blackrock Spire wing ranges. Wrong-faction quests
+   must stay excluded; class quests follow Include class quests. A run range
+   must not permit a pickup whose own level/prerequisites are unmet.
+3. Start a collection route. Current-zone pickups come first; a known entrance
+   remains its final destination, including across zones. After accepting local
+   pickups, the arrow should say Go to the dungeon entrance/entrance area.
+   Reaching it must not grant quest completion. Distant pickups are still optional
+   and shown as excluded detours, not claimed collected.
+4. Published entrance areas should work without a native map link. Keep your
+   prior manually recorded entrance if you have one. Public native links take
+   precedence over published data. For a correction, stand outside the portal
+   and use **Record entrance here** inside Quest list; verify it persists.
+5. The Hall of Thanes, Ruins of Lordaeron, Excavation Site and City of Dalaran
+   have published areas. The other five new dungeon entries must keep missing
+   coordinates/quest sets explicit. No made-up map marker should appear.
+6. Check published points on the beta and report any wrong map, cave approach
+   or portal location with dungeon name, version/build, screenshot and `/wt probe`.
+   The sources supply entrance areas; this release does not map dungeon interiors.
 
 ## Waypoint directions for 0.8.16 — about 3–5 minutes
 

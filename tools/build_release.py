@@ -295,8 +295,16 @@ protected-action behavior. New flight, gossip, item-hook and corpse APIs need te
 Quest greeting probes must also be retested on Forever. Missing fields cannot
 prove absence, and unpublished prerequisites are not guessed from quest IDs.
 
-Dungeon Start route collects known eligible pickups then a nearby located entrance.
-Missing prerequisites/coordinates remain explicit; Record entrance here is available.
+Dungeon guides combines the Forever overview, 23 bounded quest category lists
+and published Forever entrance areas for all 19 Classic dungeon complexes and
+four new dungeons. All nine new dungeons are listed; the other five keep missing
+coordinates/quest sets explicit. Cards show run levels separately from collection
+pickup levels. Quest list shows pickups, entrance areas and wing ranges; its
+Record entrance here button saves a personal correction. Saved recordings take
+precedence, then public client map links, then published areas. Start route
+collects known eligible local pickups and retains the final entrance across zones.
+Distant pickups remain optional/explained; prerequisites stay checked. Entrance
+areas are not exact portal or cave paths. Read DUNGEONS.md and DungeonData.json.
 Collection prompts wait for YOUR highest known pickup level for all relevant regular
 quests, with identity/category filters. Unknown requirements prevent a full-level
 claim. These personal routes work without party snapshots; an unmapped collection
@@ -335,7 +343,7 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
 '''
     args.output.mkdir(parents=True, exist_ok=True)
     destination = args.output / f'WowTogether-{version}.zip'
-    files = ['WowTogether.toc', *names, 'QuestCatalogue.json', 'QuestCoverage.json', 'GuideAudit.json', 'GuideSourceQueue.json', 'TravelData.json', 'GuideServiceData.json']
+    files = ['WowTogether.toc', *names, 'QuestCatalogue.json', 'QuestCoverage.json', 'GuideAudit.json', 'GuideSourceQueue.json', 'TravelData.json', 'GuideServiceData.json', 'DungeonData.json']
     with zipfile.ZipFile(destination, 'w', zipfile.ZIP_DEFLATED) as archive:
         for name in files:
             archive.write(addon / name, 'WowTogether/' + name)
@@ -343,7 +351,7 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
             archive.write(media / name, 'WowTogether/Media/GuideThemes/' + name)
         for name in ('README.md', 'TESTING.md', 'CHANGELOG.md'):
             archive.write(ROOT / name, 'WowTogether/' + name)
-        for name in ('PERFORMANCE.md', 'TRAVEL_DATA.md', 'THIRD_PARTY_NOTICES.md', 'QUEST_DATA.md',
+        for name in ('PERFORMANCE.md', 'TRAVEL_DATA.md', 'DUNGEONS.md', 'THIRD_PARTY_NOTICES.md', 'QUEST_DATA.md',
                      'LEGACY_DATA_LICENSE.txt', 'LEGACY_DATA_COPYRIGHT.md'):
             if (ROOT / name).exists():
                 archive.write(ROOT / name, 'WowTogether/' + name)
@@ -351,7 +359,7 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
         for name in ('build_quest_dataset.py', 'quest_enrichment.py', 'legacy_quest_facts.py', 'collect_quest_entities.py',
                      'forever_map_geometry.py', 'quest_event_areas.py', 'lua_data_literal.py', 'forever_beta_facts.py',
                      'quest_observation_facts.py', 'capture_quest_pages.py', 'audit_quest_guides.py',
-                     'import_warcraftdb.py', 'import_wowhead.py', 'import_travel_network.py', 'import_guide_services.py',
+                     'import_warcraftdb.py', 'import_wowhead.py', 'import_travel_network.py', 'import_guide_services.py', 'import_dungeons.py',
                      'guide_source_queue.py', 'forever_source_manifest.json', 'quest_corrections.json', 'quest_exclusions.json'):
             archive.write(ROOT / 'tools' / name, 'WowTogether/data-tools/' + name)
         archive.writestr('WowTogether/INSTALL.md', instructions)

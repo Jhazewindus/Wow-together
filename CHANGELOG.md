@@ -1,5 +1,24 @@
 # Wow Together changelog
 
+## 0.8.17
+
+- Combine the supplied Wowhead Forever overview, 23 bounded dungeon quest lists
+  and the attributed Forever geography snapshot. Add all 19 Classic complexes
+  with entrance areas, plus nine Forever dungeon entries; four new entrances
+  are mapped and five remain explicitly unknown. Preserve 339 quest memberships.
+- Show dungeon run ranges, locations, wing ranges and Quest list on dungeon
+  cards/details. Keep collection pickup levels separate; identity, prerequisites,
+  offers and class/repeatable filters still apply. Fold duplicate names together;
+  class/city/raid tags no longer create fake dungeon cards. Keep all quest records.
+- Prefer saved entrance recordings, then public client links, then published
+  points. Keep the entrance as the last collection stop across zones and use
+  travel instructions. Distant pickups remain optional and explained.
+- Add editable DungeonData, source hashes and DUNGEONS.md. Points mark entrance
+  areas; cave/portal positions still need beta testing. Document two conflicting
+  new-dungeon level descriptions; use the overview chart/table consistently.
+- Include 50 Lua files. Add source, membership, native fallback, UI and route
+  regressions; retain fixed leveling-guide order, progress and travel costs.
+
 ## 0.8.16
 
 - Replace anonymous internal junction labels across all guides with readable

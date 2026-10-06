@@ -2,21 +2,48 @@ local addonName, ns = ...
 
 local catalogue, dungeons
 local function titleCase(value) return string.gsub(string.gsub(value, "-", " "), "%f[%a]%l", string.upper) end
+local function dungeonName(value)
+    value = ns.SafeTitle(value)
+    return value and string.gsub(string.lower(value), "[^%w]", "") or ""
+end
 
 function ns.DungeonGroups()
     if catalogue ~= ns.catalogue then
         catalogue, dungeons = ns.catalogue, {}
+        local definitions = ns.dungeonData and ns.dungeonData.dungeons or {}
+        local membership, names, areas = {}, {}, {}
+        ns.dungeonUnassigned = 0
+        for key, info in pairs(definitions) do
+            dungeons[key] = {key = key, name = info.name, ids = {}, minLevel = 255,
+                level = info.runLevelLow, maxLevel = info.runLevelHigh, definition = info}
+            names[dungeonName(info.name)] = key
+            for _, name in ipairs(info.aliases) do names[dungeonName(name)] = key end
+            for _, area in ipairs(info.areaIDs) do areas[area] = key end
+            for _, id in ipairs(info.questIDs) do
+                membership[id] = membership[id] or {}; membership[id][key] = true
+            end
+        end
         for id, quest in pairs(ns.catalogue.quests) do
+            local assigned = membership[id] or {}
             if ns.IsDungeonQuest(id) then
                 local slug = quest.categoryPath and string.match(quest.categoryPath, "^dungeons/(.+)$")
-                local name = slug and titleCase(slug) or ns.CatalogueZone(quest)
-                local key = slug or string.lower(name)
+                local key = slug or areas[quest.areaID] or names[dungeonName(ns.CatalogueZone(quest))]
+                if not key and not ns.dungeonData then key = string.lower(ns.CatalogueZone(quest)) end
+                if key then assigned[key] = true end
+                if not next(assigned) then ns.dungeonUnassigned = ns.dungeonUnassigned + 1 end
+            end
+            for key in pairs(assigned) do
                 local group = dungeons[key]
-                if not group then group = {key = key, name = name, ids = {}, minLevel = 255, level = 255, maxLevel = 0}; dungeons[key] = group end
+                if not group then
+                    group = {key = key, name = titleCase(key), ids = {}, minLevel = 255, level = 255, maxLevel = 0}
+                    dungeons[key] = group
+                end
                 group.ids[#group.ids + 1] = id
                 group.minLevel = math.min(group.minLevel, quest.minLevel or quest.level or 255)
-                group.level = math.min(group.level, quest.level or 255)
-                group.maxLevel = math.max(group.maxLevel, quest.level or 0)
+                if not group.definition then
+                    group.level = math.min(group.level, quest.level or 255)
+                    group.maxLevel = math.max(group.maxLevel, quest.level or 0)
+                end
             end
         end
         for _, group in pairs(dungeons) do table.sort(group.ids) end
@@ -55,12 +82,22 @@ function ns.DungeonCollectionReadiness(group)
 end
 
 function ns.DungeonCollectionSummary(group, readiness)
+    if group.definition and #group.ids == 0 then return "Quest data not captured for this dungeon yet." end
     local result = readiness or ns.DungeonCollectionReadiness(group)
     if result.count == 0 then return "No matching regular quests for your character and settings." end
     if result.unknown > 0 then return "The full collection level is unknown; " .. result.unknown .. " pickup level or identity requirements need checking." end
     return "Full collection pickup level: " .. result.pickupLevel .. " • " .. result.count .. " regular quests for your character."
         .. (result.levelReady and " All known pickup-level requirements are met." or " Reach this level before collecting the full set.")
         .. " Prerequisite hand-ins and NPC offers still need checking."
+end
+
+function ns.DungeonOverviewSummary(group)
+    local info = group.definition
+    if not info then return "" end
+    local place = info.locationHint
+    if info.entrances[1] then place = ns.MapName(info.entrances[1].mapID) end
+    return "Dungeon levels " .. info.runLevelLow .. "–" .. info.runLevelHigh
+        .. (place and (" • " .. place) or "") .. "."
 end
 
 function ns.CrossMapDistance(a, b)
@@ -77,30 +114,42 @@ end
 
 function ns.DungeonEntrance(group)
     local recorded = ns.db.dungeonEntrances and ns.db.dungeonEntrances[group.key]
-    if recorded and ns.GuideInteger(recorded.mapID) and recorded.mapID > 0 and type(recorded.x) == "number" and type(recorded.y) == "number"
-        and recorded.x >= 0 and recorded.x <= 1 and recorded.y >= 0 and recorded.y <= 1 then return recorded end
-    if not C_Map or type(C_Map.GetMapLinksForMap) ~= "function" then return end
+    if ns.ValidTravelPoint(recorded) then return recorded end
+    local published = group.definition and group.definition.entrances or {}
     local maps = {[ns.profile and ns.profile.mapID or 0] = true}
+    for _, point in ipairs(published) do if ns.ValidTravelPoint(point) then maps[point.mapID] = true end end
     for _, id in ipairs(group.ids) do
         local quest = ns.CatalogueQuest(id)
         for _, point in ipairs(quest.starts or {}) do maps[point.mapID] = true end
     end
     local ordered = {}; for id in pairs(maps) do if id > 0 then ordered[#ordered + 1] = id end end; table.sort(ordered)
-    for _, id in ipairs(ordered) do
+    for _, id in ipairs(C_Map and type(C_Map.GetMapLinksForMap) == "function" and ordered or {}) do
         local links = ns.ReadPublic(C_Map.GetMapLinksForMap, id)
         if type(links) == "table" then
             for index, link in ipairs(links) do
                 if index > 100 then break end
                 if ns.Public(link) and type(link) == "table" then
                     local name, position = ns.SafeTitle(link.name), ns.Public(link.position) and link.position
-                    if name and string.lower(name) == string.lower(group.name) and position then
+                    local matches = name and dungeonName(name) == dungeonName(group.name)
+                    for _, alias in ipairs(group.definition and group.definition.aliases or {}) do
+                        if name and dungeonName(name) == dungeonName(alias) then matches = true end
+                    end
+                    if matches and position then
                         local x, y = ns.ReadPublic(position.GetXY, position)
-                        if type(x) == "number" and type(y) == "number" and x >= 0 and x <= 1 and y >= 0 and y <= 1 then
+                        if ns.ValidTravelPoint({mapID = id, x = x, y = y}) then
                             return {mapID = id, x = x, y = y, name = group.name, source = "Client map entrance link"}
                         end
                     end
                 end
             end
+        end
+    end
+    -- A captured entrance area remains usable when the beta has no public map
+    -- link. Return a copy; character recording must not mutate shipped facts.
+    for _, point in ipairs(published) do
+        if ns.ValidTravelPoint(point) then
+            local result = {}; for key, value in pairs(point) do result[key] = value end
+            return result
         end
     end
 end
@@ -173,13 +222,16 @@ function ns.BuildDungeonRoute(guide, includeOrigin)
         end
         last = table.remove(pickups, best); stops[#stops + 1] = last
     end
-    if entrance and entrance.mapID == mapID then
-        stops[#stops + 1] = {id = guide.target.id, mapID = mapID, x = entrance.x, y = entrance.y, kind = "q",
-            label = "After collecting quests: " .. guide.dungeon.name .. " entrance", title = guide.dungeon.name, planned = #stops > 0}
+    if entrance then
+        stops[#stops + 1] = {id = guide.target.id, mapID = entrance.mapID, x = entrance.x, y = entrance.y, kind = "q",
+            action = "travel", dungeonEntrance = true, published = entrance.published,
+            label = "Go to " .. guide.dungeon.name .. (entrance.published and " entrance area" or " entrance"),
+            title = guide.dungeon.name, planned = #stops > 0}
     end
     return {key = guide.key, title = guide.title, mapID = mapID, stops = stops, origin = position, focusKey = guide.focusKey,
-        missing = missing, remote = remote, limited = #pickups, otherMaps = remote,
-        partial = missing > 0 or remote > 0 or not entrance or entrance.mapID ~= mapID}
+        missing = missing, remote = remote, limited = #pickups,
+        otherMaps = remote + (entrance and entrance.mapID ~= mapID and 1 or 0),
+        partial = missing > 0 or remote > 0 or #pickups > 0 or not entrance}
 end
 
 function ns.ShowDungeonQuests(group)
@@ -213,7 +265,15 @@ function ns.ShowDungeonQuestList(group)
         frame.collect = ns.UIButton(frame, "Map nearby pickups, then entrance", 280, function() end, true); frame.collect:SetPoint("BOTTOMLEFT", 22, 20)
         frame.record = ns.UIButton(frame, "Record entrance here", 190, function() end); frame.record:SetPoint("BOTTOMRIGHT", -22, 20)
     end
-    local lines = {ns.DungeonCollectionSummary(group), "Collect quests locally before entering. Distant city pickups are optional; earlier quest steps may be required.", ""}
+    local lines = {ns.DungeonOverviewSummary(group), ns.DungeonCollectionSummary(group),
+        "Collect quests locally before entering. Distant city pickups are optional; earlier quest steps may be required.", ""}
+    local entrance = ns.DungeonEntrance(group)
+    if entrance then lines[#lines + 1] = "Entrance area: " .. ns.MapName(entrance.mapID)
+        .. string.format(" • %.1f, %.1f", entrance.x * 100, entrance.y * 100) end
+    for _, wing in ipairs(group.definition and group.definition.wings or {}) do
+        lines[#lines + 1] = wing.name .. " • levels " .. wing.runLevelLow .. "–" .. wing.runLevelHigh
+    end
+    lines[#lines + 1] = ""
     for _, id in ipairs(group.ids) do
         if relevantDungeonQuest(id) ~= false then
             local quest = ns.CatalogueQuest(id)

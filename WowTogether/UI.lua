@@ -423,7 +423,7 @@ local function makeCard()
     end
     card.mapButton = button(card, "Show route", 128, activate)
     card.detailsButton = button(card, "Quest details", 116, function()
-        if card.activity and card.activity.dungeon then ns.RecordDungeonEntrance(card.activity.dungeon); return end
+        if card.activity and card.activity.dungeon then ns.ShowDungeonQuestList(card.activity.dungeon); return end
         if card.guide and not card.libraryItem and not card.guide.personal then ns.RequestStartRoute(card.guide); return end
         local id = card.libraryItem and card.libraryItem.id or (card.guide and card.guide.target.id)
         if id then ns.ShowQuestDetails(id) end
@@ -577,8 +577,8 @@ function ns.Render(queryContext, routeUpdated)
         for _, group in ipairs(ns.DungeonGroups()) do
             local dungeon = group
             local activity = {title = group.name, category = "DUNGEON QUEST COLLECTION", dungeon = group,
-                detail = ns.DungeonCollectionSummary(group),
-                action = "Start route", click = function()
+                detail = ns.DungeonOverviewSummary(group) .. "\n" .. ns.DungeonCollectionSummary(group),
+                action = #group.ids > 0 and "Start route" or "View details", click = function()
                     local guide = ns.DungeonGuide(dungeon)
                     if guide and guide.hasPoint then ns.RequestStartRoute(guide) else ns.ShowDungeonQuestList(dungeon) end
                 end}
@@ -638,11 +638,12 @@ function ns.Render(queryContext, routeUpdated)
         if activity then
             height = 138
             card.accent:SetColorTexture(unpack(colors.gold)); card.category:SetText(activity.category)
-            card.title:SetText(activity.title); card.count:SetText("")
+            card.title:SetText(activity.title); card.count:SetText(activity.dungeon and activity.dungeon.definition
+                and ("Lv " .. activity.dungeon.definition.runLevelLow .. "–" .. activity.dungeon.definition.runLevelHigh) or "")
             card.reason:Show(); card.reason:SetHeight(46); card.reason:SetText(activity.detail)
             ns.UIHelp(card, activity.title .. "\n" .. activity.detail)
             card.mapButton.caption:SetText(activity.action)
-            if activity.dungeon then card.detailsButton.caption:SetText("Record entrance") end
+            if activity.dungeon then card.detailsButton.caption:SetText("Quest list") end
         elseif libraryItem then
             height = libraryItem.id and 122 or 108
             card.accent:SetColorTexture(unpack(colors.gold))
