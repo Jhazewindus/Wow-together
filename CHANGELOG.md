@@ -1,5 +1,21 @@
 # Wow Together changelog
 
+## 0.8.16
+
+- Replace anonymous internal junction labels across all guides with readable
+  directions, e.g. Go to waypoint — The Barrens (54.0, 26.6). Keep named gates,
+  docks and flight masters. The arrow and map tooltip share the directions;
+  short context describes travel towards the destination, rather than calling
+  every intermediate point a crossing. Coordinates are map percentages.
+- Include the current travel leg, coordinates and final quest/destination in
+  diagnostics for terrain reports. Keep graph points, costs and guide progress.
+  The reported label is confirmed; an actual terrain defect needs live context.
+- Retain the agreed -3/+3 work band with explained useful prerequisites and ready
+  hand-ins. No new automatic/manual skips or stricter level policy are added.
+- Add Lua 5.1 regressions covering all 30 shipped anonymous junctions, the
+  reported point, map/arrow text and travel-only advancement. Beta rendering
+  and terrain paths still need player testing.
+
 ## 0.8.15
 
 - Scan fresh personal quest-log, objective and completion data. Retry briefly

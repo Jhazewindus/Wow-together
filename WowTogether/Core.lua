@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.15"
+ns.VERSION = "0.8.16"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}

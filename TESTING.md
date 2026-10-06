@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.15**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.16**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
@@ -15,6 +15,30 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Waypoint directions for 0.8.16 — about 3–5 minutes
+
+Reports reviewed: Romits flagged `Head to Convergence C1413 540 266` as a
+possible pathing issue; Mikmans reported the same text and requested waypoint
+or place names, plus a strict -3/+3 start. No probe, final destination, version,
+build or character context was available. The main developer's earlier choice
+keeps explained useful prerequisite exceptions. The raw label is confirmed in
+the travel snapshot; a bad terrain path is not yet established.
+
+1. Keep SavedVariables, resume a guide and follow a cross-zone journey. An
+   anonymous junction should read **Go to waypoint — Zone (x, y)**, including
+   **The Barrens (54.0, 26.6)** if that particular point is on the journey.
+   The map marker's tooltip should show the same text. Check another zone too.
+2. Named city gates, docks, crossings and flight masters should retain their
+   names. The context should say where the journey is headed. Reaching a travel
+   waypoint advances directions without marking a quest picked up or completed.
+3. Confirm Scan still uses -3/+3 for ordinary unfinished work. Any lower-level
+   prerequisite must explain its useful unlock; ready hand-ins can remain.
+   This update does not change that policy or create saved skips.
+4. If an arrow or line crosses impassable terrain, capture `/wt probe` while the
+   step is visible, plus the screenshot, current location and intended quest.
+   **Travel leg / Travel goal** now record the exact connection and destination.
+   Lines between travel points are estimates; follow roads and terrain.
 
 ## Scan guide regression for 0.8.15 — about 5–10 minutes
 

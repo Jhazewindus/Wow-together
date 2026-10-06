@@ -283,6 +283,7 @@ function ns.TravelDiagnostics(output)
     output("Flight paths: " .. known .. " known; " .. located .. " with locations; " .. edges .. " observed connections. Personal to this character.")
     output("Flight unlock scan: " .. ns.flightDiscoveryStatus)
     output("Flight map read: " .. ns.flightMapStatus)
+    ns.TravelNetworkDiagnostics(output)
 end
 
 function ns.FindFlightPlan(stop)

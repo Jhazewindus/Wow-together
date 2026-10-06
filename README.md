@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.8.15** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.16** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -20,6 +20,16 @@ Replace the folder on **every party member's client**, including all **49 Lua
 files** and the **Media folder**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.16 replaces internal travel-point names with readable directions.**
+Anonymous junctions say, for example, **Go to waypoint — The Barrens (54.0, 26.6)**
+in the guide panel and map tooltip. Coordinates are map percentages. Known gate,
+dock and flight-master names stay visible. The short explanation identifies the
+destination zone and tells you to follow roads and terrain to the waypoint.
+This applies across the travel network without changing its points, quest order
+or Dijkstra costs. `/wt probe` includes the current leg, coordinates and final
+quest/destination for diagnosing terrain reports. Walking links remain estimates;
+the reported label alone does not establish a wrong path through terrain.
 
 **0.8.15 focuses on Scan guide and personal quest progress.** Scan reads a fresh
 quest log before objectives/history, retries briefly while the client catches up

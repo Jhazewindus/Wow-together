@@ -78,14 +78,33 @@ local function factor(mapID) return ns.travelData and ns.travelData.factors[mapI
 local function allowed(edge, faction)
     return not edge.faction or edge.faction == "Both" or edge.faction == faction
 end
+local function titleWords(value)
+    return string.gsub(value, "(%a)([%w]*)", function(a, b) return string.upper(a) .. b end)
+end
+local function pointLocation(point)
+    local zone = ns.MapName(point.mapID)
+    if zone == "Map " .. point.mapID then
+        local container = ns.SafeTitle(point.container)
+        local area = container and string.match(container, "([^%.]+)$")
+        if area then zone = titleWords(string.gsub(area, "_", " ")) end
+    end
+    return zone .. string.format(" (%.1f, %.1f)", point.x * 100, point.y * 100)
+end
 local function nodeName(id, point)
+    local name = ns.SafeTitle(point.name)
+    -- Anonymous graph junctions are waypoints, not named places. Keep their
+    -- stable IDs in the graph/diagnostics, without exposing them as directions.
+    if string.find(id, "^CONVERGENCE_") and (not name
+        or string.match(name, "^Convergence C%d+ %d+ %d+$")) then
+        return "waypoint — " .. pointLocation(point), true
+    end
     if string.find(id, "^BORDER_") then
         local target = string.match(id, "_TO_(.+)") or id
         target = string.gsub(target, "_%d+$", "")
         target = string.gsub(string.lower(target), "_", " ")
-        return string.gsub(target, "(%a)([%w]*)", function(a, b) return string.upper(a) .. b end) .. " crossing"
+        return titleWords(target) .. " crossing"
     end
-    return point.name or ns.MapName(point.mapID)
+    return name or ns.MapName(point.mapID)
 end
 
 function ns.FindTravelPath(origin, goal, useFlights)
@@ -186,8 +205,9 @@ function ns.FindTravelPath(origin, goal, useFlights)
     local legs = {}
     for index = #reverse, 1, -1 do
         local edge = reverse[index]
+        local name, waypoint = nodeName(edge.to, nodes[edge.to])
         legs[#legs + 1] = {from = nodes[edge.from], to = nodes[edge.to], method = edge.method,
-            fromID = edge.from, toID = edge.to, name = nodeName(edge.to, nodes[edge.to]),
+            fromID = edge.from, toID = edge.to, name = name, waypoint = waypoint,
             seconds = edge.seconds, flight = edge.flight}
     end
     return {legs = legs, seconds = costs.GOAL, cursor = 1, origin = origin, goal = goal}
@@ -223,7 +243,9 @@ function ns.TravelPathSummary(stop)
     end
     if stop.travelLeg then
         return "Travel towards " .. ns.MapName(stop.goal.mapID) .. ".\n"
-            .. (stop.travelLeg.method == "walk" and "Follow roads to the crossing." or "Board the correct transport; waiting time varies.")
+            .. (stop.travelLeg.method == "walk" and (stop.travelLeg.waypoint
+                and "Follow roads and terrain to this waypoint." or "Follow roads and terrain.")
+                or "Board the correct transport; waiting time varies.")
     end
 end
 
@@ -266,7 +288,7 @@ function ns.TravelNetworkDestination(stop)
             local instruction = transport and ((leg.method == "taxi" and "Fly" or leg.method == "ship" and "Take the ship" or
                 leg.method == "zeppelin" and "Take the zeppelin" or leg.method == "tram" and "Take the tram" or "Use the passage") .. " to " .. leg.name)
                 or following and following.flight and ("Walk to " .. following.flight.source.name .. " (flight master)")
-                or "Head to " .. leg.name
+                or (leg.waypoint and "Go to " or "Head to ") .. leg.name
             local result = {id = stop.id, kind = "travel", title = stop.title, mapID = target.mapID, x = target.x, y = target.y,
                 action = "travel", label = instruction, travelLeg = leg, goal = stop, guideStep = stop.guideStep}
             if leg.flight then
@@ -279,6 +301,17 @@ function ns.TravelNetworkDestination(stop)
             ns.travelWaypoint = result
             return result
         end
+    end
+end
+
+function ns.TravelNetworkDiagnostics(output)
+    local stop = ns.travelWaypoint
+    local leg = stop and stop.travelLeg
+    if not leg or not ns.ValidTravelPoint(stop) then return end
+    output("Travel leg: " .. leg.fromID .. " -> " .. leg.toID .. " (" .. leg.method .. "); target " .. pointLocation(stop) .. ".")
+    if ns.ValidTravelPoint(stop.goal) then
+        output("Travel goal: " .. (ns.SafeTitle(stop.goal.title) or "Guide destination")
+            .. " (" .. (stop.goal.id or 0) .. "); " .. pointLocation(stop.goal) .. ".")
     end
 end
 
