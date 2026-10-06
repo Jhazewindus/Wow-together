@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-local ROW_HEIGHT, VIEW_HEIGHT = 58, 464
+local ROW_HEIGHT, VIEW_HEIGHT = 44, 408
 local phases = {a = "Pick up", q = "Objectives", t = "Turn in"}
 local colors = {a = {1, 0.82, 0.3}, q = {0.92, 0.88, 0.76}, t = {0.55, 0.84, 0.58}}
 
@@ -24,14 +24,15 @@ local function create()
     if ns.guideQuestList then return ns.guideQuestList end
     local frame = CreateFrame("Frame", "WowTogetherGuideQuestList", UIParent, "BackdropTemplate")
     ns.guideQuestList = frame
-    frame:SetSize(760, 620); frame:SetPoint("CENTER"); frame:SetClampedToScreen(true)
-    frame:SetFrameStrata("DIALOG"); ns.UIPanel(frame)
+    frame:SetSize(740, 560); frame:SetPoint("CENTER"); frame:SetClampedToScreen(true)
+    frame:SetFrameStrata("DIALOG"); ns.UIPanel(frame, ns.UIColors.background)
     frame:SetMovable(true); frame:EnableMouse(true); frame:RegisterForDrag("LeftButton")
     frame:SetScript("OnDragStart", frame.StartMoving); frame:SetScript("OnDragStop", frame.StopMovingOrSizing)
-    frame.title = ns.UILabel(frame, "GameFontNormalLarge", 19); frame.title:SetPoint("TOPLEFT", 22, -20); frame.title:SetWidth(650)
-    frame.summary = ns.UILabel(frame, nil, 11); frame.summary:SetPoint("TOPLEFT", 22, -55); frame.summary:SetSize(710, 40)
-    frame.scroll = CreateFrame("ScrollFrame", nil, frame); frame.scroll:SetPoint("TOPLEFT", 22, -106); frame.scroll:SetSize(684, VIEW_HEIGHT)
-    frame.content = CreateFrame("Frame", nil, frame.scroll); frame.content:SetSize(684, VIEW_HEIGHT); frame.scroll:SetScrollChild(frame.content)
+    frame.title = ns.UILabel(frame, "GameFontNormalLarge", 18); frame.title:SetPoint("TOPLEFT", 22, -18); frame.title:SetSize(660, 24); frame.title:SetWordWrap(false)
+    frame.summary = ns.UILabel(frame, nil, 11, ns.UIColors.muted); frame.summary:SetPoint("TOPLEFT", 22, -51); frame.summary:SetSize(690, 42)
+    ns.UIClose(frame); ns.UIDivider(frame, -99)
+    frame.scroll = CreateFrame("ScrollFrame", nil, frame); frame.scroll:SetPoint("TOPLEFT", 22, -110); frame.scroll:SetSize(664, VIEW_HEIGHT)
+    frame.content = CreateFrame("Frame", nil, frame.scroll); frame.content:SetSize(664, VIEW_HEIGHT); frame.scroll:SetScrollChild(frame.content)
     frame.slider = CreateFrame("Slider", nil, frame, "UIPanelScrollBarTemplate")
     frame.slider:SetPoint("TOPLEFT", frame.scroll, "TOPRIGHT", 14, -16); frame.slider:SetSize(16, VIEW_HEIGHT - 32)
     frame.slider:SetValueStep(ROW_HEIGHT); frame.slider:SetScript("OnValueChanged", function(_, value)
@@ -44,7 +45,6 @@ local function create()
         frame.offset = math.max(0, math.min(frame.maximum or 0, (frame.offset or 0) - delta * ROW_HEIGHT * 2))
         ns.RenderGuideQuestList()
     end)
-    local close = CreateFrame("Button", nil, frame, "UIPanelCloseButton"); close:SetPoint("TOPRIGHT", -4, -4)
     frame.note = ns.UILabel(frame, nil, 10); frame.note:SetPoint("BOTTOMLEFT", 22, 19)
     frame.note:SetText("Read-only preview • Start route in Leveling guides when you are ready.")
     frame.rows, frame.generation, frame.offset = {}, 0, 0
@@ -65,16 +65,25 @@ function ns.RenderGuideQuestList()
     frame.scroll:SetVerticalScroll(frame.offset); frame.slider:SetMinMaxValues(0, frame.maximum); frame.slider:SetValue(frame.offset)
     frame.slider:SetShown(frame.maximum > 0)
     local first = math.floor(frame.offset / ROW_HEIGHT) + 1
-    for index = first, math.min(#plan, first + 8) do
+    for index = first, math.min(#plan, first + math.ceil(VIEW_HEIGHT / ROW_HEIGHT)) do
         local stop, slot = plan[index], index - first + 1
         local row = frame.rows[slot]
         if not row then
-            row = CreateFrame("Frame", nil, frame.content, "BackdropTemplate"); ns.UIPanel(row)
-            row:SetSize(684, ROW_HEIGHT - 4)
-            row.number = ns.UILabel(row, nil, 12); row.number:SetPoint("TOPLEFT", 10, -10); row.number:SetWidth(38)
-            row.title = ns.UILabel(row, "GameFontNormal", 12); row.title:SetPoint("TOPLEFT", 52, -8); row.title:SetSize(470, 18); row.title:SetWordWrap(false)
-            row.detail = ns.UILabel(row, nil, 10); row.detail:SetPoint("TOPLEFT", 52, -30); row.detail:SetSize(580, 16); row.detail:SetWordWrap(false)
-            row.state = ns.UILabel(row, nil, 10); row.state:SetPoint("TOPRIGHT", -10, -10)
+            row = CreateFrame("Frame", nil, frame.content)
+            row:SetSize(664, ROW_HEIGHT)
+            ns.UIDivider(row, -ROW_HEIGHT + 1)
+            row.number = ns.UILabel(row, nil, 11); row.number:SetPoint("TOPLEFT", 6, -9); row.number:SetWidth(34)
+            row.title = ns.UILabel(row, "GameFontNormal", 12); row.title:SetPoint("TOPLEFT", 48, -7); row.title:SetSize(414, 16); row.title:SetWordWrap(false)
+            row.detail = ns.UILabel(row, nil, 11, ns.UIColors.muted); row.detail:SetPoint("TOPLEFT", 48, -26); row.detail:SetSize(604, 14); row.detail:SetWordWrap(false)
+            row.state = ns.UILabel(row, nil, 10, ns.UIColors.muted); row.state:SetPoint("TOPRIGHT", -6, -9)
+            row.state:SetSize(178, 14); row.state:SetJustifyH("RIGHT"); row.state:SetWordWrap(false)
+            row:EnableMouse(true)
+            row:SetScript("OnEnter", function(self)
+                if not GameTooltip or not self.stop then return end
+                GameTooltip:SetOwner(self, "ANCHOR_RIGHT"); GameTooltip:AddLine(self.title:GetText(), 1, 0.82, 0.3, true)
+                GameTooltip:AddLine(self.detail:GetText(), 1, 1, 1, true); GameTooltip:Show()
+            end)
+            row:SetScript("OnLeave", function() if GameTooltip then GameTooltip:Hide() end end)
             frame.rows[slot] = row
         end
         local color, quest = colors[stop.kind] or colors.q, ns.CatalogueQuest(stop.id)

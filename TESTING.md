@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.3**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.4**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
@@ -15,7 +15,30 @@ The expanded-guide checks below take about **15–25 minutes**.
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
 
-## Focus checks for 0.8.3
+## UI checks for 0.8.4 — about 10 minutes
+
+1. Open `/wt`. Check the compact header, gold accents, readable search hints
+   and guide rows. Resize to the smallest and largest sizes and drag continuously;
+   controls stay inside the window and resizing remains smooth. Try your usual
+   game UI scale. Send a screenshot if text overlaps, cuts off or feels too small.
+2. Switch between Leveling guides, All quests, Dungeon guides and other views.
+   Open the view menu, then the level menu; only one menu stays open. Search by
+   typing/pause and by Enter, change brackets and page through the results.
+3. Hover a long guide row, then Show quest list. Source details remain available
+   on hover. Scroll from first to last step; row numbers, status and instructions
+   align without overlapping. Closing a preview must not start/change a guide.
+4. Start your saved guide. The arrow sits beside its instruction and distance.
+   Test long objectives, a flight countdown, arrival and a zone crossing.
+   Drag the panel; Back/Next, Skip step, Skip quest and Scan still work. Scan
+   keeps the spinner; the selected fixed guide retains its order. Reload and
+   confirm the saved guide, skips and panel position are retained.
+5. Open Settings and browse every category. Labels, dropdowns, checks and help
+   fit; toggles save correctly. Test standalone arrow and the party tracker,
+   including transparency, scrolling and automatic solo/raid hiding.
+6. Diagnostics still copies and closes with Ctrl+C. Report any Lua error with
+   `/wt probe`, your game UI scale, screen resolution and a screenshot.
+
+## Recent automation/guide regression checks
 
 - **Patrick — dialog scope:** enable Accept guide quests only. At an NPC with
   three offered guide quests and an unrelated quest, collect the guide quests;

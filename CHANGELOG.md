@@ -1,5 +1,23 @@
 # Wow Together changelog
 
+## 0.8.4
+
+- Redesign the interface with matte charcoal panels, fine gold borders,
+  Classic headings and clearer body text. Use only built-in game textures/fonts.
+- Replace the large main-window banner and stat boxes with a compact header;
+  bring filters and search together and give more space to the guide list.
+- Reduce guide rows to 122 pixels; remove duplicate zone names and move
+  source coverage counts to hover details. Keep quest counts and XP estimates.
+- Reduce the movable guide panel from 248 to 168 pixels tall. Place the arrow
+  beside the instruction and distance; retain step browsing, skips and Scan.
+- Compact settings, quest-order lists and party progress. Keep longer text
+  available on hover; reuse only visible quest-list rows when scrolling.
+- Style search boxes, dropdown chevrons, close buttons and disabled controls
+  consistently. Opening a dropdown closes the previously open menu.
+- Preserve existing guide order, routing, quest automation, saved positions,
+  party options and smooth resizing. This release changes presentation only;
+  confirm game fonts, clipping and readability on the current beta build.
+
 ## 0.8.3
 
 - Restrict auto-accept to eligible actual NPC offers in the selected guide;

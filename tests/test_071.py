@@ -230,7 +230,9 @@ class GuideBrowseTests(unittest.TestCase):
         c.ns.ShowGuideQuestList(g);frame=c.ns.guideQuestList
         self.assertEqual([(s.id,s.kind,s.mapID,s.x,s.y) for s in frame.plan.values()],expected)
         self.assertIsNone(c.ns.routeSelection)
-        self.assertLessEqual(len(frame.rows),9)
+        # Pool size follows the visible rows plus the partially visible edge,
+        # independent of how compact the presentation is.
+        self.assertLessEqual(len(frame.rows), int(frame.scroll.height / frame.rows[1].height) + 2)
         frame.offset=frame.maximum;c.ns.RenderGuideQuestList()
         self.assertEqual(max(r.step for r in frame.rows.values() if r.IsShown(r)),len(frame.plan))
         c.ns.ActivateRoute(g);c.ns.ShowGuideQuestList(zone(c))

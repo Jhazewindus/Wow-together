@@ -117,31 +117,32 @@ end
 function ns.CreateSettings()
     local frame = CreateFrame("Frame", "WowTogetherSettings", UIParent, "BackdropTemplate")
     ns.settings = frame
-    frame:SetSize(640, 620); frame:SetPoint("CENTER"); frame:SetFrameStrata("DIALOG")
-    frame:SetClampedToScreen(true); ns.UIPanel(frame)
+    frame:SetSize(620, 550); frame:SetPoint("CENTER"); frame:SetFrameStrata("DIALOG")
+    frame:SetClampedToScreen(true); ns.UIPanel(frame, ns.UIColors.background)
     frame:SetMovable(true); frame:EnableMouse(true); frame:RegisterForDrag("LeftButton")
     frame:SetScript("OnDragStart", frame.StartMoving); frame:SetScript("OnDragStop", frame.StopMovingOrSizing)
     local title = ns.UILabel(frame, "GameFontNormalLarge", 20)
-    title:SetPoint("TOPLEFT", 22, -20); title:SetText("Wow Together settings")
-    local close = CreateFrame("Button", nil, frame, "UIPanelCloseButton"); close:SetPoint("TOPRIGHT", -4, -4)
+    title:SetPoint("TOPLEFT", 22, -18); title:SetText("Settings")
+    ns.UIClose(frame); ns.UIDivider(frame, -89)
     frame.checks, frame.dropdowns, frame.pages, frame.values = {}, {}, {}, {}
     local choices = {}
     for _, section in ipairs(sections) do
         choices[#choices + 1] = {section[1], section[2]}
         local page = CreateFrame("Frame", nil, frame)
-        page:SetPoint("TOPLEFT", 22, -105); page:SetSize(596, 440); frame.pages[section[1]] = page
+        page:SetPoint("TOPLEFT", 22, -104); page:SetSize(576, 374); frame.pages[section[1]] = page
+        page.contentHeight = section[1] == "research" and 310 or #section[3] * 52
         for index, entry in ipairs(section[3]) do
-            local key, y = entry[1], -(index - 1) * 60
+            local key, y = entry[1], -(index - 1) * 52
             local caption = ns.UILabel(page, "GameFontNormal", 12)
-            caption:SetPoint("TOPLEFT", 36, y - 3); caption:SetWidth(entry[4] and 300 or 550); caption:SetText(entry[2])
+            caption:SetPoint("TOPLEFT", 32, y - 3); caption:SetSize(entry[4] and 318 or 544, 16); caption:SetWordWrap(false); caption:SetText(entry[2])
             local help = ns.UILabel(page, nil, 10)
-            help:SetPoint("TOPLEFT", 36, y - 23); help:SetSize(530, 30); help:SetText(entry[3]); help:SetTextColor(0.78, 0.69, 0.53, 1)
+            help:SetPoint("TOPLEFT", 32, y - 22); help:SetSize(540, 26); help:SetJustifyV("TOP"); help:SetText(entry[3]); help:SetTextColor(unpack(ns.UIColors.muted))
             if entry[4] then
-                local select = ns.UIDropdown(page, entry[4], 210, function(value) ns.SetOption(key, value) end)
+                local select = ns.UIDropdown(page, entry[4], 200, function(value) ns.SetOption(key, value) end)
                 select:SetPoint("TOPRIGHT", -4, y + 4); frame.dropdowns[key] = select
             else
                 local check = CreateFrame("CheckButton", nil, page, "UICheckButtonTemplate")
-                check:SetSize(26, 26); check:SetPoint("TOPLEFT", 0, y + 3)
+                check:SetSize(24, 24); check:SetPoint("TOPLEFT", 0, y + 2)
                 check:SetScript("OnClick", function(self) ns.SetOption(key, self:GetChecked() == true) end)
                 frame.checks[key] = check
             end
@@ -150,19 +151,19 @@ function ns.CreateSettings()
     end
     local research = frame.pages.research
     local instructions = ns.UILabel(research, nil, 11)
-    instructions:SetPoint("TOPLEFT", 36, -200); instructions:SetSize(520, 80)
+    instructions:SetPoint("TOPLEFT", 32, -180); instructions:SetSize(520, 80)
     instructions:SetText("Visit quest givers before and after turning in a prerequisite.\nExport after your session, then Select all and Ctrl+C. Send the export as a text file, labeled with your tester name.\nLevel/reputation changes are recorded as possible alternative causes.")
     local export = ns.UIButton(research, "Export quest data", 150, ns.ShowQuestResearch)
-    export:SetPoint("TOPLEFT", 36, -295)
+    export:SetPoint("TOPLEFT", 32, -272)
     frame.researchExport = export
     frame.findingsExport = ns.UIButton(research, "Export guide findings", 175, ns.ShowGuideFindings)
-    frame.findingsExport:SetPoint("TOPLEFT", 205, -295)
-    frame.section = ns.UIDropdown(frame, choices, 300, function(key) frame.sectionKey = key; ns.RenderSettings() end)
-    frame.section:SetPoint("TOPLEFT", 22, -58); frame.sectionKey = "play"
+    frame.findingsExport:SetPoint("TOPLEFT", 196, -272)
+    frame.section = ns.UIDropdown(frame, choices, 280, function(key) frame.sectionKey = key; ns.RenderSettings() end)
+    frame.section:SetPoint("TOPLEFT", 22, -51); frame.sectionKey = "play"
     frame.note = ns.UILabel(frame, nil, 11)
-    frame.note:SetPoint("BOTTOMLEFT", 22, 20); frame.note:SetWidth(390); frame.note:SetHeight(40)
+    frame.note:SetPoint("BOTTOMLEFT", 22, 16); frame.note:SetWidth(390); frame.note:SetHeight(28); frame.note:SetTextColor(unpack(ns.UIColors.muted))
     local reset = ns.UIButton(frame, "Reset guide skips", 135, ns.ResetGuideSkips)
-    reset:SetPoint("BOTTOMRIGHT", -22, 22)
+    reset:SetPoint("BOTTOMRIGHT", -22, 18)
     ns.UIHelp(reset, "Clear every saved quest/step skip for this character, across all guides and zones. Quest completion is unchanged.")
     frame:Hide()
     if type(UISpecialFrames) == "table" then table.insert(UISpecialFrames, "WowTogetherSettings") end
@@ -170,6 +171,17 @@ end
 
 function ns.RenderSettings()
     if not ns.settings then return end
+    local page = ns.settings.pages[ns.settings.sectionKey]
+    local height = math.max(240, 104 + page.contentHeight + 64)
+    if ns.settings:GetHeight() ~= height then
+        -- Keep the title in place while switching between short/long pages.
+        local left, top = ns.ReadPublic(ns.settings.GetLeft, ns.settings), ns.ReadPublic(ns.settings.GetTop, ns.settings)
+        if type(left) == "number" and type(top) == "number" then
+            ns.settings:ClearAllPoints(); ns.settings:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", left, top)
+        end
+        ns.settings:SetHeight(height)
+    end
+    page:SetHeight(page.contentHeight)
     for key, check in pairs(ns.settings.checks) do check:SetChecked(ns.Option(key)) end
     for key, control in pairs(ns.settings.dropdowns) do control:SetChoice(ns.Option(key)) end
     for key, page in pairs(ns.settings.pages) do page:SetShown(key == ns.settings.sectionKey) end

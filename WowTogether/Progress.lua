@@ -259,17 +259,17 @@ function ns.CreateTracker()
         and type(saved.x) == "number" and type(saved.y) == "number" then
         frame:ClearAllPoints(); frame:SetPoint(saved.point, UIParent, saved.relative, saved.x, saved.y)
     end
-    local close = CreateFrame("Button", nil, frame, "UIPanelCloseButton")
-    close:SetPoint("TOPRIGHT", 0, 0); close:SetScript("OnClick", ns.ToggleTracker)
-    frame.title = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-    frame.title:SetPoint("TOPLEFT", 12, -10); frame.title:SetText("Together • party progress")
+    local close = ns.UIClose(frame, ns.ToggleTracker)
+    close:SetPoint("TOPRIGHT", -4, -4); close:SetSize(20, 20)
+    frame.title = ns.UILabel(frame, "GameFontNormal", 12, ns.UIColors.gold)
+    frame.title:SetPoint("TOPLEFT", 12, -9); frame.title:SetText("Party progress")
     frame.scroll = CreateFrame("ScrollFrame", nil, frame)
     frame.scroll:SetPoint("TOPLEFT", 4, -32); frame.scroll:SetPoint("BOTTOMRIGHT", -4, 18)
     frame.scroll:EnableMouseWheel(true)
     frame.scroll:SetScript("OnMouseWheel", function(_, delta) ns.ScrollTracker(delta) end)
     frame.content = CreateFrame("Frame", nil, frame.scroll)
     frame.content:SetSize(348, 100); frame.scroll:SetScrollChild(frame.content)
-    frame.footer = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
+    frame.footer = ns.UILabel(frame, nil, 10, ns.UIColors.muted)
     frame.footer:SetPoint("BOTTOMLEFT", 12, 3)
     frame.lines = {}; frame.scrollOffset = 0
     frame:SetShown(ns.db.trackerVisible ~= false)
@@ -292,10 +292,10 @@ function ns.TrackerDisplayLines()
         result[#result + 1] = {text = text, x = x, width = width, gold = gold, right = right, y = y}
     end
     for _, row in ipairs(rows) do
-        add(row.title, 8, 328, true); y = y + 22
+        add(row.title, 8, 328, true); y = y + 20
         if #row.objectives == 0 then add("Objective details pending", 16, 316); y = y + 20 end
         for index, objective in ipairs(row.objectives) do
-            add(ns.ObjectiveLabel(objective.text), 16, 316, true); y = y + 18
+            add(ns.ObjectiveLabel(objective.text), 16, 316, true); y = y + 17
             for _, person in ipairs(profiles) do
                 local zone = person.profile and person.profile.zone or "zone pending"
                 if zone == "" then zone = "zone pending" end
@@ -306,7 +306,7 @@ function ns.TrackerDisplayLines()
             end
             y = y + 4
         end
-        y = y + 12
+        y = y + 8
     end
     if #rows == 0 then add("Accept a quest to start tracking.", 8, 328); y = 30 end
     return result, y, #rows
@@ -318,7 +318,7 @@ function ns.RenderTracker()
     local frame, used = ns.tracker, 0
     local height = ns.Option("trackerHeight")
     frame:SetHeight(height)
-    frame:SetBackdropColor(0.035, 0.045, 0.06, ns.Option("trackerOpacity"))
+    frame:SetBackdropColor(ns.UIColors.background[1], ns.UIColors.background[2], ns.UIColors.background[3], ns.Option("trackerOpacity"))
     local items, contentHeight, count = ns.TrackerDisplayLines()
     local view = height - 50
     frame.scrollMaximum = math.max(0, contentHeight - view)
@@ -332,10 +332,10 @@ function ns.RenderTracker()
             local font = frame.lines[used]
             if not font then font = frame.content:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall"); frame.lines[used] = font end
             font:ClearAllPoints(); font:SetPoint("TOPLEFT", item.x, -item.y)
-            font:SetFont("Fonts\\FRIZQT__.TTF", 11, "OUTLINE")
+            font:SetFont("Fonts\\ARIALN.TTF", 11, "OUTLINE")
             font:SetWidth(item.width); font:SetHeight(16); font:SetWordWrap(false)
             font:SetJustifyH(item.right and "RIGHT" or "LEFT")
-            font:SetTextColor(item.gold and 1 or 0.91, item.gold and 0.82 or 0.93, item.gold and 0.42 or 0.97, 1)
+            font:SetTextColor(unpack(item.gold and ns.UIColors.gold or ns.UIColors.text))
             font:SetText(item.text); font:Show()
         end
     end

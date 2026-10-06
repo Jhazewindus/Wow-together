@@ -72,7 +72,7 @@ function ns.ShowShoppingList(list, title)
         ns.shoppingWindow = frame
         frame:SetSize(600, 440); frame:SetPoint("CENTER"); frame:SetFrameStrata("DIALOG")
         frame:SetClampedToScreen(true); ns.UIPanel(frame)
-        local close = CreateFrame("Button", nil, frame, "UIPanelCloseButton"); close:SetPoint("TOPRIGHT", -4, -4)
+        ns.UIClose(frame)
         frame.title = ns.UILabel(frame, "GameFontNormalLarge", 18); frame.title:SetPoint("TOPLEFT", 22, -22)
         local scroll = CreateFrame("ScrollFrame", nil, frame, "UIPanelScrollFrameTemplate")
         scroll:SetPoint("TOPLEFT", 22, -58); scroll:SetPoint("BOTTOMRIGHT", -38, 50)

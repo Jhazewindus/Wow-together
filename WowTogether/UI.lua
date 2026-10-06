@@ -1,43 +1,97 @@
 local addonName, ns = ...
 
 local colors = {
-    background = {0.12, 0.09, 0.055, 0.98},
-    panel = {0.16, 0.115, 0.065, 0.96},
-    border = {0.45, 0.32, 0.16, 1},
-    gold = {0.93, 0.73, 0.39, 1},
-    muted = {0.74, 0.66, 0.52, 1},
+    background = {0.065, 0.071, 0.075, 0.98},
+    panel = {0.095, 0.102, 0.106, 0.98},
+    border = {0.27, 0.25, 0.21, 1},
+    gold = {0.88, 0.73, 0.46, 1},
+    muted = {0.65, 0.67, 0.66, 1},
+    text = {0.91, 0.90, 0.86, 1},
+    success = {0.48, 0.76, 0.66, 1},
 }
 
 local function panel(frame, fill, edge)
-    frame:SetBackdrop({bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background", edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border", edgeSize = 12, insets = {left = 3, right = 3, top = 3, bottom = 3}})
+    frame:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8X8", edgeFile = "Interface\\Buttons\\WHITE8X8", edgeSize = 1, insets = {left = 1, right = 1, top = 1, bottom = 1}})
     frame:SetBackdropColor(unpack(fill or colors.panel))
     frame:SetBackdropBorderColor(unpack(edge or colors.border))
 end
 
 local function label(parent, style, size, color)
     local text = parent:CreateFontString(nil, "OVERLAY", style or "GameFontHighlightSmall")
-    if size then text:SetFont("Fonts\\FRIZQT__.TTF", size) end
+    local heading = style and string.find(style, "Normal", 1, true)
+    text:SetFont(heading and "Fonts\\FRIZQT__.TTF" or "Fonts\\ARIALN.TTF", size or 12)
     text:SetJustifyH("LEFT")
-    if color then text:SetTextColor(unpack(color)) end
+    text:SetTextColor(unpack(color or colors.text))
     return text
+end
+
+function ns.UIButtonTone(frame, primary)
+    frame.primary = primary == true
+    frame:SetBackdropColor(unpack(frame.primary and {0.20, 0.17, 0.115, 1} or colors.panel))
+    frame:SetBackdropBorderColor(unpack(frame.primary and colors.gold or colors.border))
+    frame.caption:SetTextColor(unpack(frame.primary and colors.gold or colors.text))
 end
 
 local function button(parent, caption, width, callback, primary)
     local frame = CreateFrame("Button", nil, parent, "BackdropTemplate")
-    frame:SetSize(width, 30)
-    panel(frame, primary and {0.24, 0.18, 0.10, 1} or colors.panel, primary and colors.gold or colors.border)
-    frame.caption = label(frame, "GameFontNormal", nil, primary and colors.gold or {0.85, 0.89, 0.92, 1})
-    frame.caption:SetPoint("CENTER")
+    frame:SetSize(width, 26)
+    panel(frame)
+    frame.caption = label(frame, nil, 12)
+    frame.caption:SetPoint("LEFT", 8, 0)
+    frame.caption:SetPoint("RIGHT", -8, 0)
+    frame.caption:SetJustifyH("CENTER")
+    frame.caption:SetWordWrap(false)
     frame.caption:SetText(caption)
+    ns.UIButtonTone(frame, primary)
     frame:SetScript("OnClick", callback)
     frame:SetScript("OnEnter", function(self) self:SetBackdropBorderColor(unpack(colors.gold)) end)
     frame:SetScript("OnLeave", function(self)
-        self:SetBackdropBorderColor(unpack((primary or (self.filterKey and ns.filter == self.filterKey)) and colors.gold or colors.border))
+        self:SetBackdropBorderColor(unpack((self.primary or (self.filterKey and ns.filter == self.filterKey)) and colors.gold or colors.border))
     end)
+    frame:SetScript("OnDisable", function(self) self.caption:SetAlpha(0.4) end)
+    frame:SetScript("OnEnable", function(self) self.caption:SetAlpha(1) end)
     return frame
 end
 
 ns.UIPanel, ns.UILabel, ns.UIButton = panel, label, button
+ns.UIColors = colors
+
+function ns.UIDivider(parent, y)
+    local line = parent:CreateTexture(nil, "ARTWORK")
+    line:SetColorTexture(unpack(colors.border)); line:SetHeight(1)
+    line:SetPoint("TOPLEFT", 1, y); line:SetPoint("TOPRIGHT", -1, y)
+    return line
+end
+
+function ns.UIClose(parent, callback)
+    local close = button(parent, "×", 24, callback or function() parent:Hide() end)
+    close:SetHeight(24); close:SetPoint("TOPRIGHT", -10, -10)
+    ns.UIHelp(close, "Close")
+    return close
+end
+
+local function searchBox(parent, hint)
+    local edit = CreateFrame("EditBox", nil, parent, "BackdropTemplate")
+    panel(edit, colors.background)
+    edit:SetFont("Fonts\\ARIALN.TTF", 12); edit:SetTextColor(unpack(colors.text))
+    edit:SetTextInsets(10, 10, 0, 0); edit:SetAutoFocus(false)
+    edit.placeholder = label(edit, nil, 11, colors.muted)
+    edit.placeholder:SetPoint("LEFT", 10, 0); edit.placeholder:SetPoint("RIGHT", -10, 0)
+    edit.placeholder:SetWordWrap(false); edit.placeholder:SetText(hint)
+    edit:SetScript("OnEditFocusGained", function(self)
+        self.placeholder:Hide(); self:SetBackdropBorderColor(unpack(colors.gold))
+    end)
+    edit:SetScript("OnEditFocusLost", function(self)
+        local value = self:GetText()
+        self.placeholder:SetShown(ns.Public(value) and (value == nil or value == ""))
+        self:SetBackdropBorderColor(unpack(colors.border))
+    end)
+    return edit
+end
+
+local function scrollTop(filter)
+    return filter == "library" and -246 or filter == "guides" and -214 or -150
+end
 
 function ns.ToggleWindow()
     ns.window:SetShown(not ns.window:IsShown())
@@ -57,8 +111,8 @@ function ns.SetFilter(filter)
     end
     for _, control in ipairs(ns.ui.guideControls or {}) do control:SetShown(filter == "guides") end
     ns.ui.scroll:ClearAllPoints()
-    ns.ui.scroll:SetPoint("TOPLEFT", 26, filter == "library" and -350 or (filter == "guides" and -318 or -254))
-    ns.ui.scroll:SetPoint("BOTTOMRIGHT", -44, 106)
+    ns.ui.scroll:SetPoint("TOPLEFT", 26, scrollTop(filter))
+    ns.ui.scroll:SetPoint("BOTTOMRIGHT", -44, 64)
     ns.Refresh()
 end
 
@@ -69,14 +123,14 @@ function ns.CreateUI()
     ns.filter = "guides"
     local saved = ns.db.windowSize
     local width = type(saved) == "table" and type(saved.width) == "number" and math.max(760, math.min(1280, saved.width)) or 860
-    local height = type(saved) == "table" and type(saved.height) == "number" and math.max(580, math.min(1000, saved.height)) or 680
+    local height = type(saved) == "table" and type(saved.height) == "number" and math.max(580, math.min(1000, saved.height)) or 640
     window:SetSize(width, height)
     window:SetResizable(true)
     if type(window.SetResizeBounds) == "function" then window:SetResizeBounds(760, 580, 1280, 1000) end
     window:SetPoint("CENTER")
     window:SetClampedToScreen(true)
     window:SetFrameStrata("HIGH")
-    panel(window, colors.background, {0.38, 0.30, 0.18, 1})
+    panel(window, colors.background)
     window:SetMovable(true)
     window:EnableMouse(true)
     window:RegisterForDrag("LeftButton")
@@ -88,90 +142,91 @@ function ns.CreateUI()
     accent:SetColorTexture(unpack(colors.gold))
     accent:SetPoint("TOPLEFT", 1, -1)
     accent:SetPoint("TOPRIGHT", -1, -1)
-    accent:SetHeight(3)
+    accent:SetHeight(2)
     local icon = window:CreateTexture(nil, "ARTWORK")
     icon:SetTexture("Interface\\Icons\\INV_Misc_Map_01")
-    icon:SetSize(44, 44)
-    icon:SetPoint("TOPLEFT", 26, -26)
+    icon:SetSize(28, 28)
+    icon:SetPoint("TOPLEFT", 26, -19)
     icon:SetTexCoord(0.08, 0.92, 0.08, 0.92)
     local eyebrow = label(window, "GameFontNormalSmall", nil, colors.gold)
-    eyebrow:SetPoint("TOPLEFT", 84, -25)
-    eyebrow:SetText("WOW TOGETHER  /  FOREVER")
-    local title = label(window, "GameFontNormalLarge", 26, {0.96, 0.94, 0.88, 1})
-    title:SetPoint("TOPLEFT", 82, -43)
-    title:SetText("Adventure together")
+    eyebrow:SetPoint("TOPLEFT", 65, -39)
+    eyebrow:SetText("FOREVER  /  YOUR NEXT ADVENTURE")
+    local title = label(window, "GameFontNormalLarge", 20, colors.text)
+    title:SetPoint("TOPLEFT", 64, -16)
+    title:SetText("Wow Together")
     local subtitle = label(window, nil, nil, colors.muted)
     ns.ui.subtitle = subtitle
-    subtitle:SetPoint("TOPLEFT", 26, -87)
+    subtitle:Hide()
     subtitle:SetText("Choose a questline, compare your party, and find the next stop.")
     ns.ui.zone = label(window, "GameFontNormal", nil, colors.gold)
-    ns.ui.zone:SetPoint("TOPRIGHT", -48, -56)
-    ns.ui.zone:SetWidth(220)
+    ns.ui.zone:SetPoint("TOPRIGHT", -154, -22)
+    ns.ui.zone:SetWidth(200)
     ns.ui.zone:SetJustifyH("RIGHT")
-    local close = CreateFrame("Button", nil, window, "UIPanelCloseButton")
-    close:SetPoint("TOPRIGHT", -6, -7)
+    ns.UIClose(window)
+    ns.UIDivider(window, -58)
 
     ns.ui.metrics = {}
     local captions = {"PARTY SYNC", "SHARED ACTIVE", "YOUR QUESTS"}
     for i, caption in ipairs(captions) do
         local metric = CreateFrame("Frame", nil, window, "BackdropTemplate")
-        metric:SetSize(260, 52)
-        metric:SetPoint("TOPLEFT", 26 + (i - 1) * 274, -108)
-        panel(metric)
-        metric.caption = label(metric, "GameFontNormalSmall", nil, colors.muted)
-        metric.caption:SetPoint("TOPLEFT", 14, -8)
+        metric:SetSize(260, 20)
+        metric:SetPoint("TOPLEFT", 26 + (i - 1) * 274, -64)
+        metric.caption = label(metric, nil, 10, colors.muted)
+        metric.caption:SetPoint("LEFT", 0, 0)
         metric.caption:SetText(caption)
-        metric.value = label(metric, "GameFontNormalLarge", 18, colors.gold)
-        metric.value:SetPoint("TOPLEFT", 14, -27)
+        metric.value = label(metric, nil, 12, colors.gold)
+        metric.value:SetPoint("RIGHT", -18, 0)
         ns.ui.metrics[i] = metric
     end
     ns.ui.party = label(window, nil, nil, colors.muted)
-    ns.ui.party:SetPoint("TOPLEFT", 26, -174)
+    ns.ui.party:SetPoint("TOPLEFT", 26, -88)
     ns.ui.party:SetWidth(808)
-    ns.ui.party:SetHeight(28)
+    ns.ui.party:SetHeight(16)
+    ns.ui.party:SetWordWrap(false)
     ns.ui.party:SetJustifyV("TOP")
     local filters = {{"guides", "Leveling guides"}, {"library", "All quests"}, {"all", "Party quests"},
         {"shared", "Shared quests"}, {"different", "Party progression"}, {"dungeons", "Dungeon guides"},
         {"professions", "Profession guides"}, {"review", "Quest log review"}}
-    ns.ui.viewChoice = ns.UIDropdown(window, filters, 250, ns.SetFilter)
-    ns.ui.viewChoice:SetPoint("TOPLEFT", 26, -212); ns.ui.viewChoice:SetChoice(ns.filter)
+    ns.ui.viewChoice = ns.UIDropdown(window, filters, 200, ns.SetFilter)
+    ns.ui.viewChoice:SetPoint("TOPLEFT", 26, -112); ns.ui.viewChoice:SetChoice(ns.filter)
     ns.ui.viewDescription = label(window, nil, 11, colors.muted)
     ns.ui.viewDescription:SetPoint("LEFT", ns.ui.viewChoice, "RIGHT", 16, 0)
     ns.ui.viewDescription:SetText("Choose a guide or explore your party's progress.")
     ns.ui.status = label(window, nil, nil, colors.muted)
     local config = button(window, "Settings", 86, function() ns.ToggleSettings() end)
-    config:SetPoint("TOPRIGHT", -48, -17); config:SetHeight(25)
+    config:SetPoint("TOPRIGHT", -48, -10); config:SetHeight(24)
     ns.ui.status:SetPoint("BOTTOMLEFT", 184, 31)
     ns.ui.status:SetWidth(450)
     ns.ui.status:SetJustifyH("LEFT")
 
     local scroll = CreateFrame("ScrollFrame", nil, window, "UIPanelScrollFrameTemplate")
     ns.ui.scroll = scroll
-    scroll:SetPoint("TOPLEFT", 26, -318)
-    scroll:SetPoint("BOTTOMRIGHT", -44, 106)
+    scroll:SetPoint("TOPLEFT", 26, scrollTop(ns.filter))
+    scroll:SetPoint("BOTTOMRIGHT", -44, 64)
     local content = CreateFrame("Frame", nil, scroll)
     content:SetSize(786, 250)
     scroll:SetScrollChild(content)
     ns.ui.content = content
-    local search = CreateFrame("EditBox", nil, window, "InputBoxTemplate")
+    local search = searchBox(window, "Search quests or zones")
     ns.ui.librarySearch = search
-    search:SetSize(430, 30)
-    search:SetPoint("TOPLEFT", 186, -251)
+    search:SetSize(430, 26)
+    search:SetPoint("TOPLEFT", 186, -146)
     search:SetAutoFocus(false)
     search:SetScript("OnTextChanged", function(self)
         local value = self:GetText()
         if not ns.Public(value) or type(value) ~= "string" then return end
+        self.placeholder:SetShown(value == "")
         ns.QueueLibrarySearch(value)
     end)
     search:SetScript("OnEnterPressed", function(self) ns.ApplyLibrarySearch(); self:ClearFocus() end)
     search:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
     search:Hide()
     ns.ui.libraryBack = button(window, "All zones", 140, function() ns.OpenLibraryZone(nil, nil) end)
-    ns.ui.libraryBack:SetPoint("TOPLEFT", 26, -251)
+    ns.ui.libraryBack:SetPoint("TOPLEFT", 26, -146)
     ns.ui.libraryBack:Hide()
     ns.ui.libraryControls = {search, ns.ui.libraryBack}
     ns.ui.librarySubmit = button(window, "Search", 100, function() ns.ApplyLibrarySearch(); search:ClearFocus() end, true)
-    ns.ui.librarySubmit:SetPoint("TOPRIGHT", -26, -251)
+    ns.ui.librarySubmit:SetPoint("TOPRIGHT", -26, -146)
     ns.ui.libraryControls[#ns.ui.libraryControls + 1] = ns.ui.librarySubmit
     ns.ui.levelButtons = {}
     for _, preset in ipairs({{"all", "All levels"}, {"party", "Near party"}, {"1-10", "1–10"}, {"11-20", "11–20"},
@@ -184,36 +239,36 @@ function ns.CreateUI()
         ns.ui.libraryControls[#ns.ui.libraryControls + 1] = chip
     end
     ns.ui.libraryPrev = button(window, "‹", 36, function() ns.libraryPage = math.max(1, (ns.libraryPage or 1) - 1); ns.ui.scroll:SetVerticalScroll(0); ns.Refresh() end)
-    ns.ui.libraryPrev:SetPoint("TOPLEFT", 26, -316)
+    ns.ui.libraryPrev:SetPoint("TOPLEFT", 26, -214)
     ns.ui.libraryNext = button(window, "›", 36, function() ns.libraryPage = (ns.libraryPage or 1) + 1; ns.ui.scroll:SetVerticalScroll(0); ns.Refresh() end)
-    ns.ui.libraryNext:SetPoint("TOPLEFT", 68, -316)
+    ns.ui.libraryNext:SetPoint("TOPLEFT", 68, -214)
     ns.ui.libraryCount = label(window, nil, 10, colors.muted)
-    ns.ui.libraryCount:SetPoint("TOPLEFT", 118, -325)
+    ns.ui.libraryCount:SetPoint("TOPLEFT", 118, -221)
     for _, control in ipairs({ns.ui.libraryPrev, ns.ui.libraryNext, ns.ui.libraryCount}) do ns.ui.libraryControls[#ns.ui.libraryControls + 1] = control end
     for _, control in ipairs(ns.ui.libraryControls) do control:Hide() end
     ns.ui.guideLevel = ns.UIDropdown(window, {{"party", "My party's bracket"}, {"all", "All levels"},
         {"1-10", "Levels 1–10"}, {"11-20", "Levels 11–20"}, {"21-30", "Levels 21–30"},
         {"31-40", "Levels 31–40"}, {"41-50", "Levels 41–50"}, {"51+", "Levels 51+"}}, 170, ns.SetGuideLevel)
-    ns.ui.guideLevel:SetPoint("TOPLEFT", 26, -251)
+    ns.ui.guideLevel:SetPoint("TOPLEFT", 26, -146)
     ns.ui.guideLevel:SetChoice(ns.guideLevel)
-    local guideSearch = CreateFrame("EditBox", nil, window, "InputBoxTemplate")
+    local guideSearch = searchBox(window, "Search zones, quests or NPCs")
     ns.ui.guideSearch = guideSearch
-    guideSearch:SetSize(400, 30); guideSearch:SetPoint("TOPLEFT", 214, -251)
+    guideSearch:SetSize(400, 26); guideSearch:SetPoint("TOPLEFT", 214, -146)
     guideSearch:SetAutoFocus(false)
     guideSearch:SetScript("OnTextChanged", function(self)
         local value = self:GetText()
-        if ns.Public(value) and type(value) == "string" then ns.QueueGuideSearch(value) end
+        if ns.Public(value) and type(value) == "string" then self.placeholder:SetShown(value == ""); ns.QueueGuideSearch(value) end
     end)
     guideSearch:SetScript("OnEnterPressed", function(self) ns.ApplyGuideSearch(); self:ClearFocus() end)
     guideSearch:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
     ns.ui.guideSubmit = button(window, "Search", 100, function() ns.ApplyGuideSearch(); guideSearch:ClearFocus() end, true)
-    ns.ui.guideSubmit:SetPoint("TOPRIGHT", -26, -251)
+    ns.ui.guideSubmit:SetPoint("TOPRIGHT", -26, -146)
     ns.ui.guidePrev = button(window, "‹", 36, function() ns.guidePage = math.max(1, ns.guidePage - 1); ns.ui.scroll:SetVerticalScroll(0); ns.Refresh() end)
-    ns.ui.guidePrev:SetPoint("TOPLEFT", 26, -286)
+    ns.ui.guidePrev:SetPoint("TOPLEFT", 26, -180)
     ns.ui.guideNext = button(window, "›", 36, function() ns.guidePage = ns.guidePage + 1; ns.ui.scroll:SetVerticalScroll(0); ns.Refresh() end)
-    ns.ui.guideNext:SetPoint("TOPLEFT", 68, -286)
+    ns.ui.guideNext:SetPoint("TOPLEFT", 68, -180)
     ns.ui.guideCount = label(window, nil, 10, colors.muted)
-    ns.ui.guideCount:SetPoint("TOPLEFT", 118, -295)
+    ns.ui.guideCount:SetPoint("TOPLEFT", 118, -187)
     ns.ui.guideControls = {ns.ui.guideLevel, guideSearch, ns.ui.guideSubmit, ns.ui.guidePrev, ns.ui.guideNext, ns.ui.guideCount}
     ns.ui.empty = label(content, "GameFontNormalLarge", nil, colors.muted)
     ns.ui.empty:SetPoint("TOPLEFT", 18, -35)
@@ -221,18 +276,18 @@ function ns.CreateUI()
     ns.ui.empty:SetJustifyH("CENTER")
 
     ns.ui.hint = label(window, nil, nil, colors.muted)
-    ns.ui.hint:SetPoint("BOTTOMLEFT", 26, 65)
+    ns.ui.hint:SetPoint("BOTTOMLEFT", 26, 44)
     ns.ui.hint:SetWidth(808)
-    ns.ui.hint:SetHeight(34)
+    ns.ui.hint:SetHeight(14); ns.ui.hint:SetWordWrap(false)
     ns.ui.hint:SetText("Show route draws numbered stops and lines on your world map.\nUse Quest library to browse zones, search names, and check requirements.")
     local probe = button(window, "Diagnostics", 132, function() ns.Diagnostics() end)
-    probe:SetPoint("BOTTOMLEFT", 26, 22)
+    probe:SetPoint("BOTTOMLEFT", 26, 12)
     local tracker = button(window, "Tracker", 84, function() ns.ToggleTracker() end)
     ns.ui.trackerButton = tracker
-    tracker:SetPoint("BOTTOMLEFT", 168, 22)
+    tracker:SetPoint("BOTTOMLEFT", 168, 12)
     local sync = button(window, "Sync party", 160, function() ns.SyncNow(true) end, true)
     ns.ui.syncButton = sync
-    sync:SetPoint("BOTTOMRIGHT", -26, 22)
+    sync:SetPoint("BOTTOMRIGHT", -26, 12)
     local grip = CreateFrame("Button", nil, window)
     ns.ui.resizeGrip = grip
     grip:SetSize(18, 18)
@@ -288,14 +343,14 @@ function ns.Layout()
     ns.ui.contentWidth = width - 74
     local metricWidth = (width - 80) / 3
     for index, metric in ipairs(ns.ui.metrics) do
-        metric:SetSize(metricWidth, 52)
+        metric:SetSize(metricWidth, 20)
         metric:ClearAllPoints()
-        metric:SetPoint("TOPLEFT", 26 + (index - 1) * (metricWidth + 14), -108)
+        metric:SetPoint("TOPLEFT", 26 + (index - 1) * (metricWidth + 14), -64)
     end
     ns.ui.party:SetWidth(width - 52)
     ns.ui.hint:SetWidth(width - 52)
     ns.ui.status:ClearAllPoints()
-    ns.ui.status:SetPoint("BOTTOMLEFT", 272, 31)
+    ns.ui.status:SetPoint("BOTTOMLEFT", 272, 19)
     ns.ui.status:SetWidth(width - 458)
     ns.ui.status:SetWordWrap(false)
     ns.ui.content:SetWidth(ns.ui.contentWidth)
@@ -307,14 +362,15 @@ function ns.Layout()
         for index, chip in ipairs(ns.ui.levelButtons) do
             chip:SetWidth(chipWidth)
             chip:ClearAllPoints()
-            chip:SetPoint("TOPLEFT", 26 + (index - 1) * (chipWidth + 6), -286)
+            chip:SetPoint("TOPLEFT", 26 + (index - 1) * (chipWidth + 6), -180)
         end
         ns.ui.libraryCount:SetWidth(width - 154)
     end
-    ns.ui.viewDescription:SetWidth(width - 340)
+    ns.ui.viewDescription:SetWidth(width - 292)
+    ns.ui.viewDescription:SetWordWrap(false)
     for _, card in ipairs(ns.ui.cards) do
         card:SetWidth(ns.ui.contentWidth)
-        card.title:SetWidth(ns.ui.contentWidth - 130)
+        card.title:SetWidth(ns.ui.contentWidth - 146)
         card.reason:SetWidth(ns.ui.contentWidth - 24)
         local count = card.memberCount or 0
         local cellWidth = (ns.ui.contentWidth - 24 - math.max(0, count - 1) * 6) / math.max(1, count)
@@ -333,18 +389,20 @@ local function makeCard()
     card.accent = card:CreateTexture(nil, "ARTWORK")
     card.accent:SetPoint("TOPLEFT", 0, 0)
     card.accent:SetPoint("BOTTOMLEFT", 0, 0)
-    card.accent:SetWidth(3)
-    card.category = label(card, "GameFontNormalSmall", 10, colors.muted)
-    card.category:SetPoint("TOPLEFT", 12, -8)
+    card.accent:SetWidth(2)
+    card.category = label(card, nil, 9, colors.muted)
+    card.category:SetPoint("TOPLEFT", 14, -10)
+    card.category:SetHeight(12); card.category:SetWordWrap(false)
     card.title = label(card, "GameFontNormalLarge", 14, {0.94, 0.94, 0.90, 1})
-    card.title:SetPoint("TOPLEFT", 12, -23)
+    card.title:SetPoint("TOPLEFT", 14, -26)
     card.title:SetWidth(660)
-    card.title:SetHeight(32)
+    card.title:SetHeight(18); card.title:SetWordWrap(false)
     card.title:SetJustifyV("TOP")
-    card.count = label(card, "GameFontNormalLarge", 18, colors.gold)
-    card.count:SetPoint("TOPRIGHT", -14, -23)
+    card.count = label(card, nil, 12, colors.gold)
+    card.count:SetPoint("TOPRIGHT", -14, -28)
+    card.count:SetWidth(118); card.count:SetJustifyH("RIGHT"); card.count:SetWordWrap(false)
     card.reason = label(card, nil, 11, colors.muted)
-    card.reason:SetPoint("TOPLEFT", 12, -58)
+    card.reason:SetPoint("TOPLEFT", 14, -51)
     card.reason:SetWidth(760)
     card.reason:SetHeight(56)
     card.reason:SetJustifyV("TOP")
@@ -362,7 +420,7 @@ local function makeCard()
             if card.guide.fullGuide or card.guide.hasPoint then ns.ShowGuideOnMap(card.guide) else ns.ShowQuestDetails(card.guide.target.id) end
         end
     end
-    card.mapButton = button(card, "Show route", 140, activate, true)
+    card.mapButton = button(card, "Show route", 128, activate)
     card.detailsButton = button(card, "Quest details", 116, function()
         if card.activity and card.activity.dungeon then ns.RecordDungeonEntrance(card.activity.dungeon); return end
         if card.guide and not card.libraryItem and not card.guide.personal then ns.RequestStartRoute(card.guide); return end
@@ -372,13 +430,13 @@ local function makeCard()
     card.buyButton = button(card, "Buy list", 96, function()
         if card.guide then ns.ShowShoppingList(ns.QuestShoppingList(card.guide.records), "Your quest buy list") end
     end)
-    card.buyButton:SetPoint("BOTTOMLEFT", 138, 12)
+    card.buyButton:SetPoint("BOTTOMLEFT", 138, 10)
     card.catchupButton = button(card, "Catch up party", 138, function()
         if card.guide then ns.ShowPartyCatchup(card.guide, true) end
     end)
-    card.catchupButton:SetPoint("BOTTOMLEFT", 240, 12)
-    card.detailsButton:SetPoint("BOTTOMLEFT", 12, 12)
-    card.mapButton:SetPoint("BOTTOMRIGHT", -12, 12)
+    card.catchupButton:SetPoint("BOTTOMLEFT", 240, 10)
+    card.detailsButton:SetPoint("BOTTOMLEFT", 14, 10)
+    card.mapButton:SetPoint("BOTTOMRIGHT", -14, 10)
     card:RegisterForClicks("LeftButtonUp")
     card:SetScript("OnClick", activate)
     return card
@@ -392,7 +450,7 @@ local function renderMembers(card, members, top)
         local cell = card.memberCells[index]
         if not cell then
             cell = CreateFrame("Frame", nil, card, "BackdropTemplate")
-            panel(cell, {0.055, 0.07, 0.09, 1})
+            panel(cell, colors.background)
             cell:EnableMouse(true)
             cell.name = label(cell, nil, 11, {0.90, 0.92, 0.94, 1})
             cell.name:SetPoint("TOPLEFT", 7, -5)
@@ -463,8 +521,8 @@ function ns.Render()
     ns.ui.metrics[1].value:SetText(partyEnabled and (synced .. " / " .. (#(ns.partyNames or {}) + 1)) or "SOLO")
     local choices = ns.filter == "guides" and ns.GuideBrowserChoices(nil, queryContext) or {}
     ns.ui.hint:SetText(ns.filter == "guides"
-        and "Choose a zone guide suited to your current level; search by zone, quest or NPC.\nStart route follows its full quest sequence."
-        or "Show route draws numbered stops and lines on your world map.\nUse All quests to browse zones, search names, and check requirements.")
+        and "Start a guide to follow its quest order. Search by zone, quest or NPC."
+        or "Choose a quest to see its route or requirements.")
     if ns.UpdateSelectedRoute then ns.UpdateSelectedRoute(choices, queryContext) end
     ns.ui.metrics[2].caption:SetText(ns.filter == "library" and "CATALOGUE QUESTS" or (ns.filter == "guides" and "QUEST GUIDES" or "SHARED ACTIVE"))
     ns.ui.metrics[2].value:SetText(tostring(ns.filter == "library" and ns.catalogue.count or (ns.filter == "guides" and #choices or shared)))
@@ -559,7 +617,8 @@ function ns.Render()
         card:ClearAllPoints()
         card:SetScript("OnEnter", nil); card:SetScript("OnLeave", nil)
         card:SetPoint("TOPLEFT", 0, -top)
-        card.title:SetWidth(ns.ui.contentWidth - 130)
+        card.title:SetWidth(ns.ui.contentWidth - 146)
+        card.category:SetWidth(ns.ui.contentWidth - 28)
         card.reason:SetWidth(ns.ui.contentWidth - 24)
         for _, cell in ipairs(card.memberCells) do cell:Hide() end
         card.memberCount = 0
@@ -576,20 +635,21 @@ function ns.Render()
         card.mapButton:SetEnabled(true)
         local height
         if activity then
-            height = 180
+            height = 138
             card.accent:SetColorTexture(unpack(colors.gold)); card.category:SetText(activity.category)
             card.title:SetText(activity.title); card.count:SetText("")
-            card.reason:Show(); card.reason:SetHeight(78); card.reason:SetText(activity.detail)
+            card.reason:Show(); card.reason:SetHeight(46); card.reason:SetText(activity.detail)
+            ns.UIHelp(card, activity.title .. "\n" .. activity.detail)
             card.mapButton.caption:SetText(activity.action)
             if activity.dungeon then card.detailsButton.caption:SetText("Record entrance") end
         elseif libraryItem then
-            height = libraryItem.id and 134 or 112
+            height = libraryItem.id and 122 or 108
             card.accent:SetColorTexture(unpack(colors.gold))
             card.category:SetText(libraryItem.id and (ns.ClassQuestLabel(libraryItem.id) or (ns.IsProfessionQuest(libraryItem.id) and "PERSONAL PROFESSION QUEST") or ns.CatalogueZone(libraryItem.quest)) or "EXPLORE A ZONE")
             card.title:SetText(libraryItem.id and libraryItem.quest.title or libraryItem.zone)
             card.count:SetText(libraryItem.id and ("Lv " .. (libraryItem.quest.level or "?")) or tostring(libraryItem.count))
             card.reason:Show()
-            card.reason:SetHeight(height - 103)
+            card.reason:SetHeight(height - 90)
             if libraryItem.id then
                 local quest = libraryItem.quest
                 local _, reason = ns.CatalogueAllowed(libraryItem.id, ns.profile, ns.self, queryContext)
@@ -600,10 +660,12 @@ function ns.Render()
                 card.reason:SetText(libraryItem.count .. " known quests • " .. libraryItem.mapped .. " with published pickup locations")
                 card.mapButton.caption:SetText("Browse quests")
             end
+            ns.UIHelp(card, card.title:GetText() .. "\n" .. card.reason:GetText())
         elseif guide then
-            height = item.recommended and 176 or 160
+            height = 122
             if guide.mode == "bundle" then height = height + 52 end
-            card.accent:SetColorTexture(unpack(item.recommended and colors.gold or colors.border))
+            local selected = ns.routeSelection and ns.routeSelection.key == guide.key
+            card.accent:SetColorTexture(unpack(selected and colors.success or item.recommended and colors.gold or colors.border))
             if guide.mode == "travel" then
                 card.category:SetText("TRAVEL GUIDE")
             elseif ns.filter == "guides" then
@@ -612,9 +674,9 @@ function ns.Render()
                 card.category:SetText(item.recommended and (guide.catchup and "RECOMMENDED / CATCH UP FIRST" or "RECOMMENDED NEXT STEP")
                     or (string.upper(guide.kind) .. " / ALTERNATIVE"))
             end
-            card.title:SetText(guide.title .. (guide.mapID > 0 and (" — " .. guide.zone) or ""))
+            card.title:SetText(guide.title)
             card.count:SetText((guide.fullGuide or guide.mode == "travel") and guide.minLevel and ("Lv " .. (guide.mainLevelLow or guide.minLevel) .. "–" .. (guide.mainLevelHigh or guide.maxLevel)) or (guide.level and ("Quest Lv " .. guide.level) or ""))
-            card.reason:SetHeight(height - 103)
+            card.reason:SetHeight(height - 90)
             local nextTitle = guide.nextStop and guide.nextStop.label or guide.target.title
             local _, requirement = ns.CatalogueAllowed(guide.target.id, ns.profile, ns.self, queryContext)
             local coverage = guide.coverage
@@ -623,9 +685,18 @@ function ns.Render()
                 or (guide.knownStops .. " selected quest(s) have a known pickup location."))
                 or guide.hasPoint and (guide.knownStops .. " mapped stops • Next: " .. nextTitle)
                 or (requirement or "No NPC or objective coordinates are available for this step yet.")
-            local summary = guide.fullGuide and (#guide.records .. " quests • Fixed order with automatic progress.") or guide.reason
-            card.reason:SetText(summary .. "\n" .. detail .. (guide.fullGuide and ("\n" .. ns.GuideXPText(guide, queryContext)) or ""))
-            if guide.fullGuide then ns.GuideXPHelp(card) end
+            local summary = guide.fullGuide and (#guide.records .. " quests • " .. (selected and "Following this guide" or "Fixed quest order")) or guide.reason
+            card.reason:SetText(summary .. "\n" .. (guide.fullGuide and ns.GuideXPText(guide, queryContext) or detail))
+            if guide.fullGuide then
+                ns.GuideXPHelp(card)
+                -- Keep source counts and long descriptions available without
+                -- filling each guide row with diagnostic metadata.
+                local xpHelp = card:GetScript("OnEnter")
+                card:SetScript("OnEnter", function(self)
+                    if xpHelp then xpHelp(self) end
+                    if GameTooltip then GameTooltip:AddLine(guide.title, 1, 1, 1, true); GameTooltip:AddLine(detail, 0.65, 0.67, 0.66, true); GameTooltip:Show() end
+                end)
+            else ns.UIHelp(card, guide.title .. "\n" .. summary .. "\n" .. detail) end
             card.reason:Show()
             card.mapButton.caption:SetText(ns.filter == "guides" and guide.fullGuide and "Show quest list" or (guide.hasPoint and "Show route" or "View details"))
             card.detailsButton.caption:SetText("Start route")
@@ -684,8 +755,7 @@ function ns.ShowDiagnostics(report, caption, onRefresh)
         window.title = title
         title:SetPoint("TOPLEFT", 20, -20)
         title:SetText("Wow Together — Diagnostics")
-        local close = CreateFrame("Button", nil, window, "UIPanelCloseButton")
-        close:SetPoint("TOPRIGHT", -4, -4)
+        ns.UIClose(window)
         local hint = window:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
         hint:SetPoint("TOPLEFT", 20, -48)
         hint:SetText("Select all, then Ctrl+C. The window closes after copying.")

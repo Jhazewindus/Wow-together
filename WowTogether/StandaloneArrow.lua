@@ -8,7 +8,7 @@ function ns.CreateStandaloneArrow()
     if ns.standaloneNavigation then return end
     local frame = CreateFrame("Frame", "WowTogetherStandaloneArrow", UIParent)
     ns.standaloneNavigation = frame
-    frame:SetSize(164, 86); frame:SetPoint("CENTER", UIParent, "CENTER", 0, 110)
+    frame:SetSize(164, 82); frame:SetPoint("CENTER", UIParent, "CENTER", 0, 110)
     frame:SetClampedToScreen(true); frame:SetFrameStrata("MEDIUM")
     frame:SetMovable(true); frame:EnableMouse(true); frame:RegisterForDrag("LeftButton")
     frame:SetScript("OnDragStart", frame.StartMoving)
@@ -24,8 +24,8 @@ function ns.CreateStandaloneArrow()
     end
     frame.icon = CreateFrame("Frame", nil, frame); frame.icon:SetSize(52, 52); frame.icon:SetPoint("TOP", 0, 0); frame.icon.lines = {}
     frame.symbol = ns.UILabel(frame.icon, "GameFontNormalLarge", 24); frame.symbol:SetPoint("CENTER")
-    frame.distance = ns.UILabel(frame, "GameFontNormal", 12); frame.distance:SetPoint("TOP", 0, -55)
-    frame.title = ns.UILabel(frame, "GameFontHighlightSmall", 10); frame.title:SetPoint("TOP", 0, -72); frame.title:SetSize(160, 14); frame.title:SetWordWrap(false)
+    frame.distance = ns.UILabel(frame, nil, 12, ns.UIColors.gold); frame.distance:SetPoint("TOP", 0, -53)
+    frame.title = ns.UILabel(frame, nil, 11); frame.title:SetPoint("TOP", 0, -69); frame.title:SetSize(160, 14); frame.title:SetWordWrap(false)
     frame:SetScript("OnEnter", function(self)
         if not GameTooltip then return end
         GameTooltip:SetOwner(self, "ANCHOR_RIGHT")

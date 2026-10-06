@@ -204,7 +204,7 @@ function ns.ShowDungeonQuestList(group)
         local frame = CreateFrame("Frame", "WowTogetherDungeonQuests", UIParent, "BackdropTemplate")
         ns.dungeonWindow = frame
         frame:SetSize(660, 500); frame:SetPoint("CENTER"); frame:SetFrameStrata("DIALOG"); frame:SetClampedToScreen(true); ns.UIPanel(frame)
-        local close = CreateFrame("Button", nil, frame, "UIPanelCloseButton"); close:SetPoint("TOPRIGHT", -4, -4)
+        ns.UIClose(frame)
         frame.title = ns.UILabel(frame, "GameFontNormalLarge", 20); frame.title:SetPoint("TOPLEFT", 22, -20)
         local scroll = CreateFrame("ScrollFrame", nil, frame, "UIPanelScrollFrameTemplate")
         scroll:SetPoint("TOPLEFT", 22, -58); scroll:SetPoint("BOTTOMRIGHT", -38, 68)

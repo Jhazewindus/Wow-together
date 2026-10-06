@@ -21,6 +21,21 @@ def party_client(name='Alice', peer='Bob', ids=(900,)):
 
 
 class ResizeTests(unittest.TestCase):
+    def test_only_one_owned_menu_remains_open_and_choices_still_apply(self):
+        c = Client(default_guide=True)
+        view, level = c.ns.ui.viewChoice, c.ns.ui.guideLevel
+        view.OnClick()
+        self.assertTrue(view.menu.IsShown(view.menu))
+        level.OnClick()
+        self.assertFalse(view.menu.IsShown(view.menu))
+        self.assertTrue(level.menu.IsShown(level.menu))
+        level.options['11-20'].OnClick()
+        self.assertEqual(c.ns.guideLevel, '11-20')
+        self.assertFalse(level.menu.IsShown(level.menu))
+        c.ns.settings.section.OnClick()
+        view.OnClick()
+        self.assertFalse(c.ns.settings.section.menu.IsShown(c.ns.settings.section.menu))
+
     def test_drag_reflows_geometry_without_rebuilding_plans_per_pixel(self):
         c = Client()
         c.drain()

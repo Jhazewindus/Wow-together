@@ -218,9 +218,9 @@ class GuideControlTests(unittest.TestCase):
         self.assertTrue(c.ns.settings.pages.navigation.IsShown(c.ns.settings.pages.navigation))
         self.assertFalse(c.ns.settings.pages.guides.IsShown(c.ns.settings.pages.guides))
         c.ns.ui.viewChoice.options['library'].OnClick()
-        self.assertEqual(c.ns.ui.viewChoice.caption.text, 'All quests  ▾')
+        self.assertEqual(c.ns.ui.viewChoice.caption.text, 'All quests')
         c.ns.ui.viewChoice.options['all'].OnClick()
-        self.assertEqual(c.ns.ui.viewChoice.caption.text, 'Party quests  ▾')
+        self.assertEqual(c.ns.ui.viewChoice.caption.text, 'Party quests')
 
     def test_tracker_auto_join_solo_and_raid_behavior(self):
         c = solo(); c.ns.RenderTracker()

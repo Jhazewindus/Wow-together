@@ -18,6 +18,7 @@ function IsControlKeyDown() return controlDown end
 DEFAULT_CHAT_FRAME = {AddMessage = function(_, msg) logs[#logs+1] = msg end}
 local methods = {}
 function methods:SetScript(name, callback) self[name] = callback end
+function methods:GetScript(name) return self[name] end
 function methods:CreateFontString() return setmetatable({}, {__index=methods}) end
 function methods:CreateTexture() return setmetatable({}, {__index=methods}) end
 function methods:CreateLine() return setmetatable({}, {__index=methods}) end
