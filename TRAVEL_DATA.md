@@ -1,4 +1,4 @@
-# Travel routing — 0.7.0
+# Travel routing — updated for 0.8.20
 
 Wow Together implements its own Dijkstra search with a binary heap, deterministic
 ties and nonnegative travel-time costs. It finds a path **between quest steps**;
@@ -14,8 +14,13 @@ Forever 0.6.0 at commit `fd68cfe2153379898680c66a01833846f9933587`:
 - Kalimdor, Eastern Kingdoms and Zephras Isle; coverage is partial for new zones.
 - Original node coordinates, container boundaries, directional transport links,
   known faction restrictions and estimated geometry/time costs are retained.
+- 48 settlement footprints bound the source's town/city centers, their scoped
+  service locations and same-map flight points; an estimated 100-yard margin is
+  applied using public physical map sizes. These are approximate occupied areas,
+  not measured guard boundaries. Missing/private scales retain literal bounds.
 - Retail data, service POIs, class spells/items, race portals and unconfirmed
-  flights are excluded. The upstream addon engine, action code and UI are not used.
+  flights are excluded as travel/action nodes. Scoped service coordinates only
+  contribute settlement footprints. The upstream engine, actions and UI are not used.
 
 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) preserves the project's published
 MIT notice. [TravelData.json](WowTogether/TravelData.json) records source revision,
@@ -32,6 +37,22 @@ collision/terrain mesh.** This improves crossing, gate and transport selection;
 walking between these points can still need human road/terrain judgment. Local
 quest-to-quest segments and uncovered areas retain direct directions. More road
 samples are needed to avoid arbitrary mountains within each zone.
+
+Version 0.8.20 uses town/city ownership to repair 26 missing flight-point labels.
+Full ground-segment intersection checks apply to Dijkstra links and local map
+previews, including projected cross-zone lines. Cached points and legacy flight
+approaches/exits use the same ownership/crossing rules. Friendly and neutral
+settlements do not block travel; a neutral town alone does not identify ownership
+of its separate flight masters. Air/boat rides are not ground crossings.
+
+When a walking segment crosses an approximate enemy footprint, the search may
+use another existing published connection. No detour points or road geometry are
+invented. If no bypass is known, hide that ground line and show a caution instead
+of a straight arrow through town. Keep the real quest marker and guide progress.
+Leaving an enemy area and intentionally visiting a real destination inside it
+are permitted; such quest work is never automatically skipped or completed.
+This reduces known hostile-town shortcuts, but does not establish guard-safe or
+terrain-safe routing. Public projected coordinates and current faction are used.
 
 Flight access remains per character. Only links observed as reachable from an
 opened flight map enter the graph; sourced taxi coordinates never unlock flights.

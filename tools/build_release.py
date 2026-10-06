@@ -52,6 +52,13 @@ and the Media folder,
 then /reload. Restart the client fully if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+Ground routes check approximate enemy settlement footprints, including Astranaar.
+Use another published connection when available; otherwise crossing lines are
+hidden and the guide says to go around town. Markers/order/progress/skips remain.
+Friendly flights remain usable; cached enemy points cannot bypass ownership checks.
+Footprints use published occupied locations plus an estimated 100-yard margin,
+not measured guard boundaries, road bypasses or a terrain mesh. Retest in the beta.
+
 Highlight the current guide quest (Arrow and map settings) selects/tracks accepted
 current quests in Blizzard's log for native map highlights. It waits until combat
 ends; it does not open the map or add a user waypoint. Retest native beta behavior.

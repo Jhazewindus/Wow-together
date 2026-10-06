@@ -1,0 +1,15 @@
+{
+  "format": "wow-together-partial-export-review",
+  "schema": 1,
+  "partial": true,
+  "source": "2026-10-06-astranaar-findings-supplied.txt",
+  "sourceSha256": "a65c543c680fa3e0647e53e911f57cb84a8f60b77b590c3f97c8f448c87d716e",
+  "suppliedHeaderAddon": "0.8.19",
+  "recoveredEventCount": 77,
+  "duplicatePrefix": true,
+  "sameEventsAs": "2026-10-06-kadrak-recovered-events.json",
+  "laterEventsUnavailable": true,
+  "newLearnedRules": 0,
+  "reportedSymptom": "Only the map line crossed Astranaar; no named Astranaar waypoint.",
+  "tester": "unlabeled friend"
+}

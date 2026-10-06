@@ -1,12 +1,12 @@
 # Wow Together — friend test script
 
-For **0.8.19**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.20**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 52 Lua files** and
+1. Replace the complete WowTogether folder, including **all 53 Lua files** and
    the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    `/reload`; restart fully if a new addon folder does not appear.
@@ -15,6 +15,31 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Enemy settlements and travel lines — about 10 minutes
+
+1. On Horde, follow an Ashenvale step whose direct map line crosses Astranaar.
+   The crossing ground segment should not draw. Existing quest markers and your
+   selected guide's order/progress/skips must remain. Zoom/pan, change zones,
+   Scan and /reload; capture errors and `/wt probe` Travel leg/goal lines.
+2. When existing published connections permit a bypass, expect travel waypoints
+   through those connections. When none is mapped, expect **Route around
+   Astranaar (Alliance)** and an explanation to follow roads around the town;
+   no straight direction arrow should point through it. Manually go around:
+   normal directions should return after the crossing is no longer ahead.
+3. Test Alliance visiting Astranaar, and Alliance near a Horde settlement.
+   Own-faction and neutral hubs should remain usable. An intentional quest
+   destination inside an enemy location must retain its quest work/marker;
+   neither reaching a travel waypoint nor the caution grants quest completion.
+4. Open a friendly flight master's map with a known reachable route. The graph
+   and legacy flight fallback should still recommend useful friendly flights.
+   An enemy flight point must not become usable from old cached data. Flying
+   over an enemy town is allowed; ground approach/exit checks remain active.
+5. Compare the highlighted area with actual guards and roads. Footprints bound
+   published service/settlement locations with an **estimated 100-yard margin**;
+   they are not measured guard ranges or a terrain mesh. Report missed crossings
+   or overbroad suppression with faction, map coordinates, final quest, screenshot
+   and `/wt probe`. Include the complete export if research data is relevant.
 
 ## Manual quest-item use — about 5 minutes
 

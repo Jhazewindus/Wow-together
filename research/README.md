@@ -101,3 +101,36 @@ and reviewed explicit-alternative fields. This is factual quest data, not copied
 provider/UI/routing code. Do not merge other similarly named quests or bulk import
 unreviewed relationships. Keep the selected quest's real work and completion;
 exclude the unchosen alternative from that player's runnable scope only.
+
+## 2026-10-06 — Astranaar ground-line feedback
+
+The author is an unlabeled friend. The Dutch report says routing went through
+Alliance Astranaar; the follow-up clarifies that **only the map line crossed it**,
+with no named Astranaar waypoint. The current quest/coordinates were not supplied.
+Keep this distinct from missing-pickup and flight-unlock reports.
+
+Raw attachment `2026-10-06-astranaar-findings-supplied.txt` is retained byte-for-byte,
+50,016 bytes, SHA-256
+`a65c543c680fa3e0647e53e911f57cb84a8f60b77b590c3f97c8f448c87d716e`.
+Its header says 0.8.19, but the recoverable 77 whole events are exactly the same
+0.8.12–0.8.14/build-70235 prefix as the earlier Kadrak export. It ends at a 59 KB
+left marker, not valid complete JSON. `2026-10-06-astranaar-review.json` references
+that existing recovered prefix instead of counting the events twice. No exact
+current route, additional unlock rule or new map coordinates are inferred.
+
+Independent review of the pinned Mapzeroth Forever geography found Astranaar's
+taxi point had no faction in our adapted graph, while its town/service metadata
+already said Alliance. Apply the source's known town ownership to 26 missing
+flight-point labels. Derive 48 approximate occupied-location rectangles from
+town/city centers, same-map taxi points and scoped service positions. In-game,
+add an estimated 100-yard margin with public physical map sizes. Astranaar's
+literal source range is x 0.345–0.370, y 0.4801–0.520 on map 1440. These are
+occupied-location bounds, not guard ranges or surveyed roads.
+
+Source: commit `fd68cfe2153379898680c66a01833846f9933587`,
+`Data/Forever/Pois.lua`, SHA-256
+`3dfa6f85e6fbe1c5a01389d4bcf445f4fa63391484647cdec663a849111e977d`.
+See `TRAVEL_DATA.md`, `TravelData.json` and the MIT attribution. Our own segment
+checks reject hostile crossings, including local map previews and flight access.
+Use existing graph alternatives only; retain markers/progress and show a caution
+if no bypass is known. No terrain mesh or new road connections are fabricated.

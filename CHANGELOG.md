@@ -1,5 +1,21 @@
 # Wow Together changelog
 
+## 0.8.20
+
+- Check entire walking segments for crossings through known enemy settlements,
+  including Astranaar. Use another existing graph connection when available;
+  otherwise hide the crossing line and explain that no mapped bypass is known.
+  Keep quest markers, fixed guide order, progress and manual skips.
+- Repair 26 missing flight-point faction labels from the pinned geography source.
+  Apply ownership checks to published points, cached flights and fallback flight
+  approaches/exits. Friendly and neutral places remain usable; flight rides can
+  pass over enemy towns. Intentional quest destinations are not auto-skipped.
+- Add 48 approximate settlement footprints from published occupied locations,
+  with an estimated 100-yard margin. These are not guard boundaries or verified
+  roads; terrain and beta rendering still need player testing.
+- Preserve the supplied partial export without counting its repeated older
+  events twice. Include 53 Lua files and faction/crossing/map regressions.
+
 ## 0.8.19
 
 - Select and track the accepted current guide quest in Blizzard's log for map

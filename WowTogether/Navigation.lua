@@ -50,6 +50,7 @@ local function updateTooltip(frame, opening)
 end
 
 function ns.RouteContext(stop, mapID, facts)
+    if stop.unsafeTransit then return "No mapped bypass is known. Follow roads around the town.\nYour quest and guide step are retained." end
     if stop.confirmation then
         return "Check this NPC's offers; pickup is unconfirmed.\n" .. ns.StopLocationText(stop, mapID)
     end
@@ -143,6 +144,7 @@ function ns.NavigationState()
     end
     if not stop then return {status = "No route selected"} end
     local state = {visible = true, stop = stop}
+    if stop.unsafeTransit then state.status = stop.label; return state end
     if stop.kind == "notice" then state.status = stop.label; return state end
     if stop.positionUnavailable then state.status = "Corpse position unavailable on this build"; return state end
     if ns.routePaused and not (confirmation and not confirmation.unknownLocation) and stop.kind ~= "corpse" then state.status = "Waiting for party updates"; return state end

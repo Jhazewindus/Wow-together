@@ -452,7 +452,7 @@ local function hideDrawing(provider)
     for _, line in ipairs(provider.shadowLines or {}) do line:Hide() end
     for _, line in ipairs(provider.patrolLines or {}) do line:Hide() end
     if provider.legend then provider.legend:Hide() end
-    ns.routeStats.pins, ns.routeStats.lines, ns.routeStats.patrols = 0, 0, 0
+    ns.routeStats.pins, ns.routeStats.lines, ns.routeStats.patrols, ns.routeStats.hostileLines = 0, 0, 0, 0
 end
 
 function ns.RouteSurface(map)
@@ -681,28 +681,34 @@ function ns.DrawRoute(provider, geometryOnly)
         for index in ipairs(displayed) do points[#points + 1] = projected[index] or false end
     end
     local visibleLines = 0
+    local safety, hostileLines = ns.TravelSafetyContext(), 0
     for index = 2, #points do
-      if points[index - 1] and points[index] then
-        local x1, y1 = ns.RouteProject(surface, points[index - 1])
-        local x2, y2 = ns.RouteProject(surface, points[index])
-        x1, y1, x2, y2 = ns.ClipRouteSegment(x1, y1, x2, y2, width, height)
-        if x1 and math.abs(x2 - x1) + math.abs(y2 - y1) >= 0.5 then
-            visibleLines = visibleLines + 1
-            provider.shadowLines = provider.shadowLines or {}
-            local shadow = provider.shadowLines[visibleLines]
-            if not shadow then shadow = overlay:CreateLine(nil, "OVERLAY", nil, 6); provider.shadowLines[visibleLines] = shadow end
-            shadow:SetThickness(4); shadow:SetColorTexture(0.12, 0.085, 0.025, ns.routePaused and 0.45 or 0.85)
-            shadow:SetStartPoint("TOPLEFT", overlay, x1, -y1)
-            shadow:SetEndPoint("TOPLEFT", overlay, x2, -y2); shadow:Show()
-            local line = provider.lines[visibleLines]
-            if not line then line = overlay:CreateLine(nil, "OVERLAY", nil, 7); provider.lines[visibleLines] = line end
-            line:SetThickness(2)
-            line:SetColorTexture(1, 0.82, 0.30, ns.routePaused and 0.45 or 1)
-            line:SetStartPoint("TOPLEFT", overlay, x1, -y1)
-            line:SetEndPoint("TOPLEFT", overlay, x2, -y2)
-            line:Show()
+        if points[index - 1] and points[index] then
+            local hostile = ns.HostileWalkCrossing(points[index - 1], points[index], safety, index == 2, false)
+            if hostile then
+                hostileLines = hostileLines + 1
+            else
+                local x1, y1 = ns.RouteProject(surface, points[index - 1])
+                local x2, y2 = ns.RouteProject(surface, points[index])
+                x1, y1, x2, y2 = ns.ClipRouteSegment(x1, y1, x2, y2, width, height)
+                if x1 and math.abs(x2 - x1) + math.abs(y2 - y1) >= 0.5 then
+                    visibleLines = visibleLines + 1
+                    provider.shadowLines = provider.shadowLines or {}
+                    local shadow = provider.shadowLines[visibleLines]
+                    if not shadow then shadow = overlay:CreateLine(nil, "OVERLAY", nil, 6); provider.shadowLines[visibleLines] = shadow end
+                    shadow:SetThickness(4); shadow:SetColorTexture(0.12, 0.085, 0.025, ns.routePaused and 0.45 or 0.85)
+                    shadow:SetStartPoint("TOPLEFT", overlay, x1, -y1)
+                    shadow:SetEndPoint("TOPLEFT", overlay, x2, -y2); shadow:Show()
+                    local line = provider.lines[visibleLines]
+                    if not line then line = overlay:CreateLine(nil, "OVERLAY", nil, 7); provider.lines[visibleLines] = line end
+                    line:SetThickness(2)
+                    line:SetColorTexture(1, 0.82, 0.30, ns.routePaused and 0.45 or 1)
+                    line:SetStartPoint("TOPLEFT", overlay, x1, -y1)
+                    line:SetEndPoint("TOPLEFT", overlay, x2, -y2)
+                    line:Show()
+                end
+            end
         end
-      end
     end
     local groups, locations = {}, {}
     local waypoint = ns.travelWaypoint
@@ -788,11 +794,13 @@ function ns.DrawRoute(provider, geometryOnly)
         .. ((route.otherMaps or 0) > 0 and " • Other zones" or "")
         .. (missingTravel and ("\nTravel to " .. ns.MapName(displayed[1].mapID) .. "; travel coordinates unavailable here.") or ""))
     ns.routeStats.pins, ns.routeStats.lines = #groups, visibleLines
+    ns.routeStats.hostileLines = hostileLines
     ns.routeStats.status = route.flying and "Flying; ground route lines hidden until landing."
         or route.confirmation and ("Talk to " .. (displayed[1].npcName or "the quest giver") .. " to confirm quest availability.")
         or ns.routePaused and (ns.routePaused .. " Showing the last confirmed route.")
         or missingTravel and ("Cross-zone travel coordinates unavailable on map " .. mapID .. ".")
         or ("Route drawn on map " .. mapID .. ".")
+    if hostileLines > 0 then ns.routeStats.status = ns.routeStats.status .. " " .. hostileLines .. " ground lines hidden across hostile settlements." end
 end
 
 function ns.AttachRouteProvider()

@@ -19,7 +19,7 @@
   "license_revision": "676241e234cbeab5e2066b869b52c235d675a9e0",
   "exclusions": [
     "Retail data",
-    "POI services",
+    "service/action graph nodes",
     "spells/items",
     "race/class portals",
     "unconfirmed flights"
@@ -27,6 +27,9 @@
   "limitations": [
     "Community data, not tested here in the beta client",
     "Walk geometry uses estimated point-to-point distances, not terrain navigation",
-    "Boat waits and loading time are estimates"
-  ]
+    "Boat waits and loading time are estimates",
+    "Settlement footprints bound published occupied locations with an estimated margin, not actual guards or road bypasses"
+  ],
+  "settlement_footprints": 48,
+  "settlement_margin_yards": 100
 }

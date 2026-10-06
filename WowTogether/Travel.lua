@@ -300,7 +300,7 @@ function ns.TravelDiagnostics(output)
     ns.TravelNetworkDiagnostics(output)
 end
 
-function ns.FindFlightPlan(stop)
+function ns.FindFlightPlan(stop, safety)
     if not stop or not ns.Option("suggestFlights") then return end
     local state = flights()
     if not state or not next(state.edges) then return end
@@ -313,9 +313,14 @@ function ns.FindFlightPlan(stop)
     speed = number(running) and running > 0 and running or speed
     speed = number(speed) and speed > 0 and speed or 7
     local best, cost
+    safety = safety or ns.TravelSafetyContext()
     for _, edge in pairs(state.edges) do
         local source, dest = state.nodes[edge.source], state.nodes[edge.destination]
-        if source and dest and source.known and dest.known and source.point and dest.point then
+        if source and dest and source.known and dest.known and source.point and dest.point
+            and ns.TravelNodeAllowed("TAXI_" .. edge.source, source.point, source, safety)
+            and ns.TravelNodeAllowed("TAXI_" .. edge.destination, dest.point, dest, safety)
+            and not ns.HostileWalkCrossing(position, source.point, safety, true, false)
+            and not ns.HostileWalkCrossing(dest.point, stop, safety, false, true) then
             local start, finish, air = distance(a, source.world), distance(dest.world, b), distance(source.world, dest.world)
             if start and finish and air then
                 local timing = state.timings[edge.source .. ":" .. edge.destination]
@@ -338,13 +343,18 @@ function ns.TravelDestination(stop)
     local now = ns.ReadPublic(GetTime)
     now = number(now) and now or nil
     local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
-    local signature = table.concat({stop.id, stop.kind, stop.mapID, stop.x, stop.y, mapID or 0, ns.travelRevision or 0}, ":")
+    local signature = table.concat({stop.id, stop.kind, stop.mapID, stop.x, stop.y, mapID or 0,
+        ns.travelRevision or 0, ns.profile and ns.SafeTitle(ns.profile.faction) or "Unknown"}, ":")
     local cache = ns.flightPlanCache
     if not cache or cache.signature ~= signature or not now or not cache.time or now - cache.time > 1 then
         -- A terminal Dijkstra walking leg returns no intermediate waypoint.
         -- It still is a decision: do not replace it with a second flight solver.
-        cache = {signature = signature, time = now,
-            plan = not ns.HasTravelPathTo(stop) and ns.FindFlightPlan(stop) or nil}
+        cache = {signature = signature, time = now}
+        if not ns.HasTravelPathTo(stop) then
+            local safety = ns.TravelSafetyContext()
+            cache.plan = ns.FindFlightPlan(stop, safety)
+            if not cache.plan then cache.hostile = ns.HostileWalkCrossing(ns.PlayerPoint(mapID), stop, safety, true, true) end
+        end
         ns.flightPlanCache = cache
     end
     local plan = not ns.HasTravelPathTo(stop) and cache.plan or nil
@@ -354,6 +364,14 @@ function ns.TravelDestination(stop)
             targetName = plan.source.name, mapID = p.mapID, x = p.x, y = p.y,
             label = "Fly to " .. plan.destination.name, flightPlan = plan, goal = stop}
         if #ns.FilterGuideStages({flightStop}) > 0 then return flightStop end
+    end
+    if cache.hostile and not ns.HasTravelPathTo(stop) then
+        -- Retain the real quest/marker; do not aim straight through an enemy
+        -- town when the graph has no supported bypass. No invented road points.
+        local caution = {}; for key, value in pairs(stop) do caution[key] = value end
+        caution.kind, caution.unsafeTransit = "travel", cache.hostile
+        caution.label = "Route around " .. cache.hostile.name .. " (" .. cache.hostile.faction .. ")."
+        return caution
     end
     -- Nearby unlock advice lives in the optional GuideTips strip; it must
     -- not replace the current quest instruction or divert a fixed guide.

@@ -112,17 +112,19 @@ function ns.FindTravelPath(origin, goal, useFlights)
     local data, speed, positions = ns.travelData or {nodes = {}, edges = {}, factors = {}}, ns.TravelWalkSpeed(), {}
     local nodes, adjacency = {START = origin, GOAL = goal}, {}
     local faction = ns.profile and ns.profile.faction
+    local safety = ns.TravelSafetyContext()
     local function link(from, to, seconds, method, extra)
         if not nodes[from] or not nodes[to] or not finite(seconds) or seconds < 0 then return end
+        if method == "walk" and ns.HostileWalkCrossing(nodes[from], nodes[to], safety, from == "START", to == "GOAL") then return end
         adjacency[from] = adjacency[from] or {}
         adjacency[from][#adjacency[from] + 1] = {from = from, to = to, seconds = seconds, method = method, flight = extra}
     end
     for id, point in pairs(data.nodes) do
-        if ns.ValidTravelPoint(point) and allowed(point, faction) then nodes[id] = point end
+        if ns.ValidTravelPoint(point) and allowed(point, faction) and ns.TravelNodeAllowed(id, point, nil, safety) then nodes[id] = point end
     end
     local flights = ns.db and ns.db.flights and ns.db.flights[ns.self]
     for id, node in pairs(flights and flights.nodes or {}) do
-        if ns.ValidTravelPoint(node.point) then
+        if ns.ValidTravelPoint(node.point) and ns.TravelNodeAllowed("TAXI_" .. id, node.point, node, safety) then
             local key = "TAXI_" .. id
             local published = nodes[key]
             local source = published and published.mapID ~= node.point.mapID and published or node.point
@@ -310,6 +312,11 @@ function ns.TravelNetworkDestination(stop)
 end
 
 function ns.TravelNetworkDiagnostics(output)
+    output("Settlement travel checks: " .. #(ns.travelData and ns.travelData.settlements or {})
+        .. " published footprints; estimated 100-yard margin. Hostile ground crossings are excluded; roads/guards remain unverified.")
+    if ns.routeStats and (ns.routeStats.hostileLines or 0) > 0 then
+        output("Hostile ground preview lines hidden: " .. ns.routeStats.hostileLines .. ". Quest markers retained.")
+    end
     local stop = ns.travelWaypoint
     local leg = stop and stop.travelLeg
     if not leg or not ns.ValidTravelPoint(stop) then return end

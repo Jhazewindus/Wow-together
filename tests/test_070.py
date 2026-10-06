@@ -68,17 +68,18 @@ class TravelSearchTests(unittest.TestCase):
         c.ns.travelData = c.lua.table_from({'nodes': {}, 'edges': {}, 'factors': {}}, recursive=True)
         state = c.ns.db.flights[c.ns.self]
         c.lua.execute('C_Map.GetPlayerMapPosition=function() return CreateVector2D(.02,.4) end')
-        middle = {'id': 33, 'name': 'Middle', 'point': {'mapID': 501, 'x': .5, 'y': .4}, 'known': True}
-        state.nodes[33] = c.lua.table_from(middle, recursive=True)
+        # A synthetic ID must not reuse real Alliance Stonetalon Peak (33).
+        middle = {'id': 9033, 'name': 'Middle', 'point': {'mapID': 501, 'x': .5, 'y': .4}, 'known': True}
+        state.nodes[9033] = c.lua.table_from(middle, recursive=True)
         state.edges['11:22'] = None
-        state.edges['11:33'] = c.lua.table_from({'source': 11, 'destination': 33})
-        state.edges['33:22'] = c.lua.table_from({'source': 33, 'destination': 22})
-        for key in ('11:33', '33:22'):
+        state.edges['11:9033'] = c.lua.table_from({'source': 11, 'destination': 9033})
+        state.edges['9033:22'] = c.lua.table_from({'source': 9033, 'destination': 22})
+        for key in ('11:9033', '9033:22'):
             state.timings[key] = c.lua.table_from({'mean': 15, 'samples': 1})
         goal = c.ns.selectedRoute.stops[1]
         path = c.ns.FindTravelPath(point(c, 501, .02, .4), goal, True)
-        self.assertEqual([s.toID for s in path.legs.values() if s.method == 'taxi'], ['TAXI_33', 'TAXI_22'])
-        state.nodes[33].known = False
+        self.assertEqual([s.toID for s in path.legs.values() if s.method == 'taxi'], ['TAXI_9033', 'TAXI_22'])
+        state.nodes[9033].known = False
         path = c.ns.FindTravelPath(point(c, 501, .02, .4), goal, True)
         self.assertFalse(any(s.method == 'taxi' for s in path.legs.values()))
 
