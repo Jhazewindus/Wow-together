@@ -34,7 +34,10 @@ function methods:UnregisterEvent(event)
     if self.registeredEvents then self.registeredEvents[event] = nil end
 end
 function methods:CreateFontString() return setmetatable({}, {__index=methods}) end
-function methods:CreateTexture() return setmetatable({}, {__index=methods}) end
+function methods:CreateTexture(_name, layer, _template, sublevel)
+    return setmetatable({drawLayer=layer, drawSublevel=sublevel}, {__index=methods})
+end
+function methods:SetTexCoord(...) self.texCoord = {...} end
 function methods:CreateLine() return setmetatable({}, {__index=methods}) end
 -- The beta EditBox rejects an omitted flags argument. Validate the full
 -- signature instead of allowing the generic no-op to hide startup failures.

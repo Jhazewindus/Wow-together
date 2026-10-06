@@ -370,6 +370,7 @@ function ns.Layout()
     ns.ui.viewDescription:SetWordWrap(false)
     for _, card in ipairs(ns.ui.cards) do
         card:SetWidth(ns.ui.contentWidth)
+        ns.LayoutGuideCardTheme(card)
         card.title:SetWidth(ns.ui.contentWidth - 146)
         card.reason:SetWidth(ns.ui.contentWidth - 24)
         local count = card.memberCount or 0
@@ -721,6 +722,7 @@ function ns.Render()
             renderMembers(card, row.members, suggestion and 118 or 59)
         end
         card:SetSize(ns.ui.contentWidth, height)
+        ns.ApplyGuideCardTheme(card, not libraryItem and guide or nil, activity and activity.dungeon)
         card:Show()
         top = top + height + 8
     end

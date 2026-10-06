@@ -1,5 +1,19 @@
 # Wow Together changelog
 
+## 0.8.12
+
+- Add faint zone-themed landscape backgrounds to guide cards across current
+  zones. Give the Orgrimmar travel guide a settlement theme and dungeon
+  collection cards subdued ruins; keep a quiet fallback for future zones.
+- Fade scenery into charcoal behind the text area, retaining readable labels,
+  buttons and borders. Crop proportionally during resizing and reuse one
+  texture per card. Clear artwork when pooled cards become plain quest rows.
+- Bundle sixteen original generated landscape motifs, their source atlas and
+  provenance. All assets load locally; no in-game downloads or animation.
+- Preserve guide order, pickup requirements, quest credit and party behavior.
+  Add asset-integrity, release-packaging, card-reuse and resize regressions.
+  Install the complete addon, including the new Media folder.
+
 ## 0.8.11
 
 - Show upcoming zone guides in manually selected level brackets and All levels.

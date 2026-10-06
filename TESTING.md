@@ -1,12 +1,13 @@
 # Wow Together — friend test script
 
-For **0.8.11**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.12**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 48 Lua files**, in
+1. Replace the complete WowTogether folder, including **all 49 Lua files** and
+   the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    `/reload`; restart fully if a new addon folder does not appear.
 2. Enable `/console scriptErrors 1`. Record version, build, level, faction, class,
@@ -15,7 +16,28 @@ The expanded-guide checks below take about **15–25 minutes**.
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
 
-## Upcoming-guide browsing for 0.8.11 — about 5–10 minutes
+## Zone-themed card checks for 0.8.12 — about 3–5 minutes
+
+1. Open Leveling guides and select All levels. Compare Durotar, Mulgore,
+   Ashenvale, Tanaris and Winterspring where your faction permits browsing.
+   Cards should show faint canyon, prairie, woodland, desert and snow scenery.
+   The left text area, buttons, level label and gold borders must remain clear.
+2. Browse a zone while standing somewhere else. Its artwork should match the
+   guide, not your current zone. Path to Orgrimmar should show a settlement;
+   dungeon collection cards should show subdued ruins.
+3. Resize the dashboard narrow/wide and scroll its cards. Scenery should crop
+   smoothly within each card without stretching, crossing its border or covering
+   controls. Try your normal UI scale. Hover and click buttons as usual.
+4. Switch between Leveling guides, All quests and ordinary party progress.
+   Reused cards must not retain a previous guide's background on plain quest
+   rows. Start, accept/turn in, Scan, skip and reload: guide order and progress
+   should behave as before, without new chat/party messages from theming.
+5. If artwork is blank or shows a placeholder, verify the complete Media folder
+   was installed and restart the client fully. Send version/build, guide/zone,
+   UI scale, screenshot and the first Lua error if it persists. Host checks
+   verify files and card state; actual beta texture rendering still needs testing.
+
+## Upcoming-guide browsing regression — about 5–10 minutes
 
 1. On a level-12 character, open **Leveling guides**. The default bracket should
    recommend suitable current work. Select **Levels 21–30**: matching future
@@ -45,7 +67,7 @@ The expanded-guide checks below take about **15–25 minutes**.
 
 1. Replace the complete folder and `/reload`, keeping SavedVariables. Confirm
    no unknown INN_INFO event error appears, and `/wt`, the minimap button,
-   Settings and guide controls are available. `/wt probe` must say **0.8.11**.
+   Settings and guide controls are available. `/wt probe` must say **0.8.12**.
 2. The report includes **Unavailable event registrations** and **Inn recording**.
    Rejected optional events should be listed there without stopping loading or
    creating extra chat warnings. Send those lines with the client build if any
@@ -163,7 +185,7 @@ The expanded-guide checks below take about **15–25 minutes**.
    With `/console scriptErrors 1`, confirm there is no SetFont error at startup.
 2. Open `/wt`. Both search boxes, Settings, Tracker and Sync controls should be
    created normally. Type in both search fields, then open `/wt probe` and
-   confirm version **0.8.11** and a populated character/quest report.
+   confirm version **0.8.12** and a populated character/quest report.
    The minimap button should appear unless previously hidden; `/wt minimap`
    toggles it. Left-click should open the dashboard.
 3. Accept or turn in a quest, change zones and `/reload` again. Confirm no

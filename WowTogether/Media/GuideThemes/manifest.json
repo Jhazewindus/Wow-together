@@ -1,0 +1,263 @@
+{
+  "schema": 1,
+  "source": "source-atlas.png",
+  "source_sha256": "077653d47c719e4cc5a9d033917d85d5850eec4c8c7b59a96fa773b7ec44da51",
+  "textures": [
+    {
+      "theme": "woodland",
+      "file": "woodland.tga",
+      "source_bounds": [
+        0,
+        0,
+        627,
+        157
+      ],
+      "size": [
+        512,
+        128
+      ],
+      "max_alpha": 71,
+      "sha256": "ab595b57d6c78ac85f633bc25bae469992bdfb2498dbfb5eb6db194ef3f5c28b"
+    },
+    {
+      "theme": "haunted",
+      "file": "haunted.tga",
+      "source_bounds": [
+        627,
+        0,
+        1254,
+        157
+      ],
+      "size": [
+        512,
+        128
+      ],
+      "max_alpha": 85,
+      "sha256": "3112430125e50f746e774afeb6f3a22af723c753462004ec0042d5e1281e64f3"
+    },
+    {
+      "theme": "prairie",
+      "file": "prairie.tga",
+      "source_bounds": [
+        0,
+        157,
+        627,
+        314
+      ],
+      "size": [
+        512,
+        128
+      ],
+      "max_alpha": 53,
+      "sha256": "d6fe6b52d89c79bfcf970f1df995006700ceddea2aef1601d52d17a669dc4cbb"
+    },
+    {
+      "theme": "canyon",
+      "file": "canyon.tga",
+      "source_bounds": [
+        627,
+        157,
+        1254,
+        314
+      ],
+      "size": [
+        512,
+        128
+      ],
+      "max_alpha": 57,
+      "sha256": "6a3e13f209473be0604d29a4860cfa7bb1d581d77b5d97bdf0f75992e1f1eb7e"
+    },
+    {
+      "theme": "savanna",
+      "file": "savanna.tga",
+      "source_bounds": [
+        0,
+        314,
+        627,
+        470
+      ],
+      "size": [
+        512,
+        128
+      ],
+      "max_alpha": 47,
+      "sha256": "47d1669446075a9f3b5ebea2a6adc41aed91b76c3f350a616a405e62cc73b92a"
+    },
+    {
+      "theme": "desert",
+      "file": "desert.tga",
+      "source_bounds": [
+        627,
+        314,
+        1254,
+        470
+      ],
+      "size": [
+        512,
+        128
+      ],
+      "max_alpha": 46,
+      "sha256": "c0262e2441fad32156c38e2f87cc61e85ebed9cef1749116d2d2bda8c59c76ff"
+    },
+    {
+      "theme": "snow",
+      "file": "snow.tga",
+      "source_bounds": [
+        0,
+        470,
+        627,
+        627
+      ],
+      "size": [
+        512,
+        128
+      ],
+      "max_alpha": 40,
+      "sha256": "5a065e3e093ef61286eaa781c055d52464d3eaf27706ab360d5da0425f3dcd98"
+    },
+    {
+      "theme": "mountains",
+      "file": "mountains.tga",
+      "source_bounds": [
+        627,
+        470,
+        1254,
+        627
+      ],
+      "size": [
+        512,
+        128
+      ],
+      "max_alpha": 69,
+      "sha256": "da20a5f8cb7ecf34685bd1b5155e7947139e134cc478d9c68c829a0fbc284856"
+    },
+    {
+      "theme": "jungle",
+      "file": "jungle.tga",
+      "source_bounds": [
+        0,
+        627,
+        627,
+        784
+      ],
+      "size": [
+        512,
+        128
+      ],
+      "max_alpha": 87,
+      "sha256": "0ab2a0fb6185fa1de121c4ff85bd8de790d63f84562811b3add3a10a5cee8a48"
+    },
+    {
+      "theme": "marsh",
+      "file": "marsh.tga",
+      "source_bounds": [
+        627,
+        627,
+        1254,
+        784
+      ],
+      "size": [
+        512,
+        128
+      ],
+      "max_alpha": 87,
+      "sha256": "ce7a3f60aafdd65a52ef4b32ec71450ed0af4b9b520d694c91aab68f7bdd32b5"
+    },
+    {
+      "theme": "volcanic",
+      "file": "volcanic.tga",
+      "source_bounds": [
+        0,
+        784,
+        627,
+        940
+      ],
+      "size": [
+        512,
+        128
+      ],
+      "max_alpha": 87,
+      "sha256": "36785f4d25517f2e04aa67f40e87a303a8ecfefb853d89b98fb0ab9ca2891163"
+    },
+    {
+      "theme": "blighted",
+      "file": "blighted.tga",
+      "source_bounds": [
+        627,
+        784,
+        1254,
+        940
+      ],
+      "size": [
+        512,
+        128
+      ],
+      "max_alpha": 79,
+      "sha256": "c4ca192d9727a56f755dba88873ae351779df9f29d2f5065ecdd9407a909292c"
+    },
+    {
+      "theme": "farmland",
+      "file": "farmland.tga",
+      "source_bounds": [
+        0,
+        940,
+        627,
+        1097
+      ],
+      "size": [
+        512,
+        128
+      ],
+      "max_alpha": 50,
+      "sha256": "17dd2052a34e01046665c2ef01237da5a1c2277e8d72df66f2dfa0cc5db3eadd"
+    },
+    {
+      "theme": "coast",
+      "file": "coast.tga",
+      "source_bounds": [
+        627,
+        940,
+        1254,
+        1097
+      ],
+      "size": [
+        512,
+        128
+      ],
+      "max_alpha": 61,
+      "sha256": "a2f5b3c6561d968f6ff35d5f9704f8e210c2b75e63e601288f451ef8cad744fa"
+    },
+    {
+      "theme": "settlement",
+      "file": "settlement.tga",
+      "source_bounds": [
+        0,
+        1097,
+        627,
+        1254
+      ],
+      "size": [
+        512,
+        128
+      ],
+      "max_alpha": 54,
+      "sha256": "89f85aaa7dbfdf3152ca8ed3c55cca22edf6b9b774039ae49bad322283e08c87"
+    },
+    {
+      "theme": "ruins",
+      "file": "ruins.tga",
+      "source_bounds": [
+        627,
+        1097,
+        1254,
+        1254
+      ],
+      "size": [
+        512,
+        128
+      ],
+      "max_alpha": 74,
+      "sha256": "a8ddf99dd4ded9b8a1c3610e9c2dab3591106146d57e2969107124a66efbbce2"
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.8.11** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.12** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -16,10 +16,24 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **48 Lua
-files**, then `/reload`. Restart the client fully if a new addon folder does
+Replace the folder on **every party member's client**, including all **49 Lua
+files** and the **Media folder**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.12 adds subtle zone-themed guide cards.** Forests, prairie, canyons,
+deserts, snow and other original landscape motifs fade into the charcoal
+background, keeping the text area dark. Every current zone guide has a matching
+theme; the Orgrimmar travel guide uses a settlement motif and dungeon collection
+cards use ruins. Unknown future zones use a quiet fallback. Scenery crops
+proportionally as the dashboard resizes, with one reused texture per card and
+no animation, polling or in-game downloads. Guide order, eligibility and quest
+progress are unaffected. Install the complete Media folder with this release;
+restart the client if the new artwork remains blank after reload.
+
+These are original generated landscape illustrations, not game screenshots or
+downloaded third-party images. The source atlas and artwork provenance are in
+`Media/GuideThemes/ARTWORK.md`; no third-party CC0 license is claimed for them.
 
 **0.8.11 lets you browse upcoming zone guides.** Choose a future bracket or
 **All levels** in Leveling guides, then use **Show quest list** to preview the
@@ -703,13 +717,15 @@ all current or future beta zones. Unknown locations do not hide the entire guide
 Ambiguous faction, branch, class and race requirements remain unknown until
 live evidence establishes availability.
 
-No quest descriptions, artwork or third-party addon code are included.
+No third-party quest descriptions, game artwork or addon code are included.
+The guide-card landscapes are original generated artwork, with source and
+provenance supplied in the release.
 [QuestTogether's public description](https://www.curseforge.com/wow/addons/questtogether)
 provided broad inspiration about progress clarity; its code/assets/layouts
 were not copied. This implementation is independent.
 
 Reported beta build **70205** established the earlier sync APIs in user tests.
-**0.8.11 has host validation, not a live-client compatibility certification.**
+**0.8.12 has host validation, not a live-client compatibility certification.**
 Retest UI rendering, optional gossip/flight actions, corpse positions and item
 hooks on the build in front of you. `/wt probe` lists capabilities and runtime
 status. Do not interpret presence as proof that protected actions work.
@@ -760,7 +776,7 @@ compiler discards temporary caches when it yields. Guide decisions, prerequisite
 rules, fixed/adaptive order, sync behavior, settings and UI remain the same.
 See PERFORMANCE.md for measured host results and the repeatable benchmark command.
 
-Host checks load all 48 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
+Host checks load all 49 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
 
 ```sh
 python3 -m venv /tmp/wow-together-tests

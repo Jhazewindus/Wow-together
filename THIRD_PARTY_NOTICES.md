@@ -1,5 +1,9 @@
 # Third-party notices
 
+Guide-card landscape artwork is generated specifically for this project;
+no downloaded third-party images are included in that collection. See
+`Media/GuideThemes/ARTWORK.md` for its provenance and source atlas.
+
 Geographic travel facts adapted from [Mapzeroth](https://github.com/tr0tsky0/Mapzeroth),
 Forever 0.6.0 (`fd68cfe2153379898680c66a01833846f9933587`). Its addon engine/UI is not included.
 The project publishes this license:

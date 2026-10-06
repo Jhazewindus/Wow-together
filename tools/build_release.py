@@ -28,18 +28,38 @@ def main():
             raise ValueError('Unexpected addon source path: ' + name)
         if not (addon / name).read_text().startswith('local addonName, ns = ...\n'):
             raise ValueError('Missing namespace declaration: ' + name)
+    media = addon / 'Media' / 'GuideThemes'
+    art = json.loads((media / 'manifest.json').read_text())
+    if art.get('schema') != 1 or art.get('source') != 'source-atlas.png' or len(art.get('textures', [])) != 16:
+        raise ValueError('Incomplete guide-card artwork manifest')
+    if hashlib.sha256((media / art['source']).read_bytes()).hexdigest() != art['source_sha256']:
+        raise ValueError('Guide artwork source checksum mismatch')
+    media_names = ['ARTWORK.md', 'manifest.json', art['source']]
+    for texture in art['textures']:
+        name = texture['file']
+        if not re.fullmatch(r'[a-z-]+\.tga', name) or name in media_names:
+            raise ValueError('Unexpected guide texture path: ' + name)
+        if hashlib.sha256((media / name).read_bytes()).hexdigest() != texture['sha256']:
+            raise ValueError('Guide texture checksum mismatch: ' + name)
+        media_names.append(name)
     instructions = f'''Wow Together {version} — Forever beta
 
 Copy the complete WowTogether folder to:
 World of Warcraft\\_classic_beta_\\Interface\\AddOns\\WowTogether\\
 
-Update EVERY party member to {version}, including ALL {len(names)} Lua files,
+Update EVERY party member to {version}, including ALL {len(names)} Lua files
+and the Media folder,
 then /reload. Restart the client fully if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
 /wt opens the Classic-style resizable dashboard. Its dropdown has Leveling guides,
 All quests (formerly Library), Party quests, Shared, Party progress, Dungeon quests,
 Profession guides and Quest log review. All quests searches commit on Enter or pause.
+Guide cards use original, faint zone-themed landscape backgrounds. The fade is
+baked into local textures; no downloads or animation run in the game. Scenery
+crops proportionally on resize. Dungeon cards use subdued ruins; unknown zones
+have a quiet fallback. The artwork changes appearance only, not guide logic.
+Restart the client fully if new artwork remains blank after reload.
 Use level brackets / Near party to narrow the list.
 Leveling guides has its own bracket dropdown, deferred zone/quest/NPC search
 and pages. The default bracket follows the lowest synced party level. Full zone
@@ -307,6 +327,8 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
     with zipfile.ZipFile(destination, 'w', zipfile.ZIP_DEFLATED) as archive:
         for name in files:
             archive.write(addon / name, 'WowTogether/' + name)
+        for name in media_names:
+            archive.write(media / name, 'WowTogether/Media/GuideThemes/' + name)
         for name in ('README.md', 'TESTING.md', 'CHANGELOG.md'):
             archive.write(ROOT / name, 'WowTogether/' + name)
         for name in ('PERFORMANCE.md', 'TRAVEL_DATA.md', 'THIRD_PARTY_NOTICES.md', 'QUEST_DATA.md',
