@@ -206,11 +206,12 @@ class GuideBrowseTests(unittest.TestCase):
         result = c.ns.BuildFixedGuideRoute(g, False)
         self.assertFalse(any(s.id==900 for s in result.stops.values()))
 
-    def test_selected_bracket_cannot_qualify_through_unrelated_earlier_work(self):
+    def test_selected_future_bracket_previews_without_qualifying_through_earlier_work(self):
         c = guide_client(2)
         catalogue(c,{900:world_quest('Starter',level=12),901:world_quest('Future',level=25,minLevel=20)})
         c.ns.guideLevel='21-30'
-        self.assertEqual(len(c.ns.LevelingGuideChoices()),0)
+        self.assertEqual(len(c.ns.LevelingGuideChoices()),1)
+        self.assertFalse(c.ns.LevelingGuideChoices()[1].levelReady)
         c.ns.profile.level=25
         self.assertEqual(len(c.ns.LevelingGuideChoices()),1)
 

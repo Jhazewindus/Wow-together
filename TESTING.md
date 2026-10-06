@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.10**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.11**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
@@ -15,11 +15,37 @@ The expanded-guide checks below take about **15–25 minutes**.
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
 
-## Beta event startup hotfix for 0.8.10 — about 3–5 minutes
+## Upcoming-guide browsing for 0.8.11 — about 5–10 minutes
+
+1. On a level-12 character, open **Leveling guides**. The default bracket should
+   recommend suitable current work. Select **Levels 21–30**: matching future
+   zones should appear as **Upcoming zone guide**. Starter zones with only a
+   sparse high-level handoff and capital pickup hubs should stay absent.
+2. Search for a future zone or one of its quests/NPCs. Click **Show quest list**:
+   see the full pickup/objective/turn-in order. Your current route, progress,
+   skips and character level must remain unchanged. Try **All levels** too;
+   suitable guides should sort before upcoming guides.
+3. Click **Start route** on an upcoming guide. Check its level warning and
+   current-level recommendation. **Cancel** keeps your route. **Start recommended**
+   starts the named suggestion. If no suitable unfinished guide is known, that
+   button should be disabled rather than inventing a recommendation.
+4. Try **Start anyway**. Existing quest-log choices should still appear when
+   relevant. Locked quests must not become pickup targets or gain completion
+   credit. If all work is too early, the guide panel should wait and explain
+   the level requirement. Scan and `/reload` must preserve its fixed order.
+5. At a suitable level, start the same guide: no early-start warning should
+   appear. Existing pickup, identity, class-checkbox, prerequisite and NPC-offer
+   checks still apply. In a synced party, suitability follows the lowest level;
+   solo mode uses your level. Path to Orgrimmar remains a travel guide.
+6. Report version/build, level, faction/class/race, bracket, search, selected
+   guide, action, screenshot and `/wt probe` for failures. Host previews cannot
+   establish live beta layout or API behavior. Manual installation is unchanged.
+
+## Beta event startup regression — about 3–5 minutes
 
 1. Replace the complete folder and `/reload`, keeping SavedVariables. Confirm
    no unknown INN_INFO event error appears, and `/wt`, the minimap button,
-   Settings and guide controls are available. `/wt probe` must say **0.8.10**.
+   Settings and guide controls are available. `/wt probe` must say **0.8.11**.
 2. The report includes **Unavailable event registrations** and **Inn recording**.
    Rejected optional events should be listed there without stopping loading or
    creating extra chat warnings. Send those lines with the client build if any
@@ -137,7 +163,7 @@ The expanded-guide checks below take about **15–25 minutes**.
    With `/console scriptErrors 1`, confirm there is no SetFont error at startup.
 2. Open `/wt`. Both search boxes, Settings, Tracker and Sync controls should be
    created normally. Type in both search fields, then open `/wt probe` and
-   confirm version **0.8.10** and a populated character/quest report.
+   confirm version **0.8.11** and a populated character/quest report.
    The minimap button should appear unless previously hidden; `/wt minimap`
    toggles it. Left-click should open the dashboard.
 3. Accept or turn in a quest, change zones and `/reload` again. Confirm no

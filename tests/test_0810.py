@@ -37,7 +37,7 @@ class BetaEventStartupTests(unittest.TestCase):
         count = len(c.lua.globals().logs)
         c.ns.Diagnostics()
         report = c.ns.diagnosticsText.text
-        self.assertIn('0.8.10', report)
+        self.assertIn(c.ns.VERSION, report)
         self.assertIn('HEARTHSTONE_BOUND (registration rejected)', report)
         self.assertIn('Inn recording: unavailable; binding event unavailable', report)
         self.assertEqual(len(c.lua.globals().logs), count)

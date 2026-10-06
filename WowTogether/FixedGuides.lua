@@ -253,6 +253,21 @@ function ns.BuildFixedGuideRoute(guide, includeOrigin, cooperative, query)
     if #stops == 0 and not pending and firstDeferred then
         pendingStop, pending = firstDeferred, firstReason or "No pickups are currently available. Progress and NPC offers will recheck this guide."
     end
+    local level = ns.PartyLevelFloor(query)
+    if incomplete == 0 and ns.GuideInteger(guide.earlyStartLevel) and level and level < guide.earlyStartLevel then
+        -- Starting a preview early must not mark level-filtered work complete.
+        -- Keep the selected order without routing to locked NPCs or granting XP.
+        for _, stop in ipairs(plan) do
+            if ns.ClassQuestEnabled(stop.id) and not ns.IsLevelingExcludedQuest(stop.id)
+                and not ns.GuideQuestSkipped(stop.id) and #ns.FilterGuideStages({stop}) > 0 then
+                for _, person in ipairs(query.profiles) do
+                    if ns.CatalogueIdentityAllowed(stop.id, person.profile) ~= false
+                        and (not person.synced or not doneFor(stop, person.key, query)) then incomplete = incomplete + 1; break end
+                end
+            end
+        end
+        if incomplete > 0 then pending = "Guide for later: recommended from level " .. guide.earlyStartLevel .. "; current level " .. level .. "." end
+    end
     local first = stops[1]
     local mapID = first and first.mapID or guide.homeMapID or guide.mapID
     local count, deferredCount = 0, 0

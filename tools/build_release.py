@@ -48,9 +48,13 @@ inside them. Path to Orgrimmar is a personal travel guide for Horde levels 1–6
 search Orgrimmar and Start route. It compares known city gates and uses crossings,
 transports and confirmed flights, resumes after reload, and finishes on city entry.
 No quests or invitations. An unmapped connection is explained; timing and walking
-links are estimates. Explicit quest-log trips are in Party quests. Every zone must contain
-useful work for your actual level, respecting known pickup/prerequisite levels.
-All levels does not bypass this; future quests remain browsable in All quests.
+links are estimates. Explicit quest-log trips are in Party quests. The default
+bracket recommends useful work for your actual lowest level. Manual brackets and
+All levels also show Upcoming zone guides. Show quest list previews their full
+order without changing the running route. Starting too early warns with the
+suggested entry level and a suitable unfinished current-level guide, when known.
+Choose Start recommended / Start anyway / Cancel. An early guide stays selected
+while locked quests wait; pickup restrictions and fixed-order persistence remain.
 Brackets filter browsing; a selected guide keeps later levels and known cross-zone
 steps. Fixed zone guides are ON by default. Loading route appears while the complete
 catalogue sequence is compiled once, independently of location and quest logs.
@@ -178,8 +182,9 @@ Skip quest/step updates the arrow and map immediately, even with the dashboard
 hidden/resizing; manual skips remain personal and never grant completion credit.
 Collector's Edition Welcome! rewards are excluded
 from all leveling guides, but remain in All quests.
-Brackets must match useful work at your actual level in leveling areas, rather
-than sparse later handoffs or capital pickup hubs. Cards show the main quest
+Default recommendations match useful work at your actual level. Manual brackets
+preview matching leveling areas, rather than sparse later handoffs or capital
+pickup hubs. Cards show the main quest
 band derived from catalogue data; missing objective geography remains unknown.
 
 Left/right arrow buttons preview previous/later steps without changing quest credit.

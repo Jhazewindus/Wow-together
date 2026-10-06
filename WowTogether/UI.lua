@@ -562,7 +562,7 @@ function ns.Render()
         local pages = math.max(1, math.ceil(#choices / 12))
         ns.guidePage = math.max(1, math.min(pages, ns.guidePage or 1))
         for index = (ns.guidePage - 1) * 12 + 1, math.min(#choices, ns.guidePage * 12) do
-            display[#display + 1] = {guide = choices[index], recommended = index == 1}
+            display[#display + 1] = {guide = choices[index], recommended = index == 1 and choices[index].levelReady == true}
         end
         local low, high = ns.GuideLevelRange(nil, queryContext)
         ns.ui.guideCount:SetText("Levels " .. low .. "–" .. high .. " • " .. #choices .. " guides • Page " .. ns.guidePage .. " / " .. pages .. " • Enter or pause to search")
@@ -669,7 +669,8 @@ function ns.Render()
             if guide.mode == "travel" then
                 card.category:SetText("TRAVEL GUIDE")
             elseif ns.filter == "guides" then
-                card.category:SetText(item.recommended and "RECOMMENDED ZONE GUIDE" or "ALTERNATIVE ZONE GUIDE")
+                card.category:SetText(guide.upcoming and "UPCOMING ZONE GUIDE" or item.recommended and "RECOMMENDED ZONE GUIDE"
+                    or guide.levelReady and "ALTERNATIVE ZONE GUIDE" or "ZONE GUIDE")
             else
                 card.category:SetText(item.recommended and (guide.catchup and "RECOMMENDED / CATCH UP FIRST" or "RECOMMENDED NEXT STEP")
                     or (string.upper(guide.kind) .. " / ALTERNATIVE"))
@@ -686,7 +687,8 @@ function ns.Render()
                 or guide.hasPoint and (guide.knownStops .. " mapped stops • Next: " .. nextTitle)
                 or (requirement or "No NPC or objective coordinates are available for this step yet.")
             local summary = guide.fullGuide and (#guide.records .. " quests • " .. (selected and "Following this guide" or "Fixed quest order")) or guide.reason
-            card.reason:SetText(summary .. "\n" .. (guide.fullGuide and ns.GuideXPText(guide, queryContext) or detail))
+            card.reason:SetText(summary .. "\n" .. (guide.upcoming and "Preview its quest list now; starting early shows a level warning."
+                or guide.fullGuide and ns.GuideXPText(guide, queryContext) or detail))
             if guide.fullGuide then
                 ns.GuideXPHelp(card)
                 -- Keep source counts and long descriptions available without
@@ -730,7 +732,7 @@ function ns.Render()
     ns.ui.empty:SetShown(visible == 0)
     ns.ui.empty:SetText(ns.filter == "library" and "No imported quests match this search.\nTry a quest or zone name."
         or (ns.filter == "review" and "No unfinished quests need a low-value review.\nReady turn-ins and class/profession quests are kept."
-        or (ns.filter == "guides" and "No leveling areas match this bracket at your current level.\nChoose your level bracket or clear the search. Future quests remain in All quests."
+        or (ns.filter == "guides" and "No zone guides match this bracket and search.\nChoose another bracket or clear the search to browse future guides."
         or (ns.filter == "suggestions" and "Sync with a friend to get party suggestions."
         or (#rows == 0 and "Your adventure starts with a quest.\nAccept one, then sync your party."
         or "No quests in this view yet.\nTry All quests or compare more progress with friends.")))))

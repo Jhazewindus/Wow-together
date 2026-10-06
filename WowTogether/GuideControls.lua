@@ -294,10 +294,46 @@ function ns.MergeCurrentQuests(guide)
     return copy
 end
 
-function ns.RequestStartRoute(guide)
+local function showEarlyGuideWarning(guide, advice)
+    if not ns.earlyGuidePrompt then
+        local frame = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
+        frame:SetSize(540, 242); frame:SetPoint("CENTER"); frame:SetFrameStrata("DIALOG")
+        frame:SetClampedToScreen(true); ns.UIPanel(frame); ns.UIClose(frame)
+        frame.title = ns.UILabel(frame, "GameFontNormalLarge", 16); frame.title:SetPoint("TOPLEFT", 20, -22); frame.title:SetSize(490, 25)
+        frame.text = ns.UILabel(frame, nil, 12); frame.text:SetPoint("TOPLEFT", 20, -62); frame.text:SetSize(500, 104)
+        frame.recommended = ns.UIButton(frame, "Start recommended", 166, function()
+            local chosen = frame.advice.recommendation; frame:Hide()
+            if chosen then ns.RequestStartRoute(chosen) end
+        end, true); frame.recommended:SetPoint("BOTTOMLEFT", 20, 22)
+        frame.anyway = ns.UIButton(frame, "Start anyway", 150, function()
+            local chosen = frame.guide
+            chosen.earlyStartLevel = frame.advice.recommendedLevel
+            frame:Hide(); ns.RequestStartRoute(chosen, true)
+        end); frame.anyway:SetPoint("BOTTOMLEFT", 198, 22)
+        frame.cancel = ns.UIButton(frame, "Cancel", 150, function() frame:Hide() end)
+        frame.cancel:SetPoint("BOTTOMRIGHT", -20, 22)
+        ns.earlyGuidePrompt = frame
+    end
+    local frame = ns.earlyGuidePrompt
+    frame.guide, frame.advice = guide, advice
+    frame.title:SetText("This guide is for later")
+    local suggestion = advice.recommendation and ("Recommended now: " .. advice.recommendation.title .. ".")
+        or "No suitable unfinished zone guide is known for your current context."
+    frame.text:SetText(guide.title .. " • recommended from level " .. advice.recommendedLevel .. ".\n"
+        .. advice.name .. " • level " .. advice.level .. ". " .. suggestion
+        .. "\nYou can preview its quest list or start early; locked quests still wait for their requirements.")
+    frame.recommended:SetEnabled(advice.recommendation ~= nil)
+    if ns.startGuidePrompt then ns.startGuidePrompt:Hide() end
+    frame:Show()
+end
+
+function ns.RequestStartRoute(guide, allowEarly)
     if not guide then return end
+    if ns.earlyGuidePrompt then ns.earlyGuidePrompt:Hide() end
     if guide.mode == "travel" then return ns.ShowGuideOnMap(guide) end
     if guide.personal then return ns.ShowGuideOnMap(guide) end
+    local advice = not allowEarly and ns.GuideEarlyStartAdvice(guide)
+    if advice then showEarlyGuideWarning(guide, advice); return end
     if not ns.HasCurrentPartyQuests() or guide.mode == "current" or guide.mode == "bundle" then return ns.StartPartyRoute(guide) end
     if not ns.startGuidePrompt then
         local frame = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")

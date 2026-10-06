@@ -306,42 +306,102 @@ local function levelPath(id, level, seen, depth, query)
     return true
 end
 
-function ns.GuideLevelSuitable(guide, query)
-    query = query or ns.NewQuestQuery()
-    local level = ns.PartyLevelFloor(query)
-    if not level then return false end
+local function guideAreaMatches(guide)
     if ns.IsCapitalMap(guide.homeMapID) then return false end
     -- Keep useful entry quests just below the main band: the same three-level
     -- difficulty allowance used below still permits a zone transition.
     if guide.mainLevelHigh and (guide.mainLevelHigh + 3 < (guide.rangeLow or 1) or guide.mainLevelLow > (guide.rangeHigh or 255) + 3) then return false end
+    return true
+end
+
+local function guideRecordMatches(guide, record)
+    local quest = ns.CatalogueQuest(record.id)
+    local knownLevel = quest and ((quest.level or 0) > 0 or (quest.minLevel or 0) > 0)
+    local inBracket = quest and (quest.level or 0) >= (guide.rangeLow or 1) and (quest.level or 0) <= (guide.rangeHigh or 255)
+    return ns.ClassQuestEnabled(record.id) and inBracket and knownLevel and localWork(quest, guide.homeMapID)
+        and record.mapID == guide.homeMapID and ns.CatalogueIdentityAllowed(record.id, ns.profile) == true
+end
+
+function ns.GuideBracketMatches(guide)
+    if not guideAreaMatches(guide) then return false end
     for _, record in ipairs(guide.records or {}) do
-        local quest = ns.CatalogueQuest(record.id)
-        local knownLevel = quest and ((quest.level or 0) > 0 or (quest.minLevel or 0) > 0)
-        local inBracket = quest and (quest.level or 0) >= (guide.rangeLow or 1) and (quest.level or 0) <= (guide.rangeHigh or 255)
-        if ns.ClassQuestEnabled(record.id) and inBracket and knownLevel and localWork(quest, guide.homeMapID) and record.mapID == guide.homeMapID and ns.CatalogueIdentityAllowed(record.id, ns.profile) == true
+        if guideRecordMatches(guide, record) then return true end
+    end
+    return false
+end
+
+function ns.GuideLevelSuitable(guide, query, unfinishedOnly)
+    query = query or ns.NewQuestQuery()
+    local level = ns.PartyLevelFloor(query)
+    if not level or not guideAreaMatches(guide) then return false end
+    for _, record in ipairs(guide.records or {}) do
+        if guideRecordMatches(guide, record)
+            and (not unfinishedOnly or not ns.PartyQuestFinished(record.id, query) and not ns.GuideQuestSkipped(record.id))
             and ns.LevelingValue(record.id, query) == true and levelPath(record.id, level, {}, 0, query) then return true end
     end
     return false
 end
 
-function ns.LevelingGuideChoices(ignoreSearch, queryContext)
+function ns.LevelingGuideChoices(ignoreSearch, queryContext, levelFilter)
     ns.ResolveCatalogueMaps(); rebuildIndex()
     queryContext = queryContext or ns.NewQuestQuery()
-    local choices, low, high = {}, ns.GuideLevelRange(nil, queryContext)
+    levelFilter = levelFilter or ns.guideLevel
+    local choices, low, high = {}, ns.GuideLevelRange(levelFilter, queryContext)
     local query = ignoreSearch and "" or string.lower(ns.guideSearch or "")
     for _, entry in pairs(entries) do
         -- Chains remain part of zone planning and saved/shared guides. The
         -- browser offers whole zones rather than duplicate partial-chain cards.
         local choice = entry.mode == "zone" and buildChoice(entry, low, high, queryContext)
-        if choice and ns.GuideLevelSuitable(choice, queryContext)
+        if choice and ns.GuideBracketMatches(choice)
             and (query == "" or string.find(choice.search, query, 1, true)) then choices[#choices + 1] = choice end
     end
+    local level = ns.PartyLevelFloor(queryContext)
+    local visible = {}
+    for _, choice in ipairs(choices) do
+        choice.levelReady = ns.GuideLevelSuitable(choice, queryContext)
+        if levelFilter ~= "party" or choice.levelReady then
+            choice.upcoming = false
+            if not choice.levelReady and level then
+                for _, record in ipairs(choice.records) do
+                    local quest = ns.CatalogueQuest(record.id)
+                    if guideRecordMatches(choice, record) and ((quest.level or 0) > level + 3 or (quest.minLevel or 0) > level) then
+                        choice.upcoming = true; break
+                    end
+                end
+            end
+            visible[#visible + 1] = choice
+        end
+    end
+    choices = visible
     table.sort(choices, function(a, b)
+        if a.levelReady ~= b.levelReady then return a.levelReady end
         if a.priority ~= b.priority then return a.priority > b.priority end
         if a.zone ~= b.zone then return a.zone < b.zone end
         return a.key < b.key
     end)
     return choices
+end
+
+-- Evaluate future difficulty only on Start, not on each browser/arrow refresh.
+-- The hypothetical level belongs to this private query; it grants no pickup,
+-- completion or routing credit to the actual character or party.
+function ns.GuideEarlyStartAdvice(guide, query)
+    if not guide or not guide.fullGuide or not ns.GuideBracketMatches(guide) then return end
+    query = query or ns.NewQuestQuery()
+    local level, key, name = ns.PartyLevelFloor(query)
+    if not level or ns.GuideLevelSuitable(guide, query) then return end
+    local future = ns.NewQuestQuery()
+    local nextLevel
+    for candidate = level + 1, 60 do
+        future.floor, future.values = {candidate, key, name}, {}
+        if ns.GuideLevelSuitable(guide, future) then nextLevel = candidate; break end
+    end
+    if not nextLevel then return end
+    local recommendation
+    for _, choice in ipairs(ns.LevelingGuideChoices(true, query, "party")) do
+        if choice.key ~= guide.key and ns.GuideLevelSuitable(choice, query, true) then recommendation = choice; break end
+    end
+    return {level = level, recommendedLevel = nextLevel, name = name or "You", recommendation = recommendation}
 end
 
 function ns.RebuildLevelingGuide(guide)

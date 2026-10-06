@@ -1,5 +1,21 @@
 # Wow Together changelog
 
+## 0.8.11
+
+- Show upcoming zone guides in manually selected level brackets and All levels.
+  Keep default recommendations suited to the actual lowest player level, and
+  preserve faction/class/race, category and leveling-area filters.
+- Preview any visible guide's complete quest order without replacing the
+  running route. Label upcoming guides clearly and rank suitable guides first.
+- Warn before starting too early, with the suggested entry level and an
+  effective unfinished guide for the current context when one is known.
+  Offer Start recommended, Start anyway and Cancel; retain pickup restrictions.
+- Keep an explicitly started future guide waiting instead of marking its
+  level-filtered work complete. Save its fixed order and early-start state
+  across reload. Retain the existing Include current quests choice.
+- Add browsing, search, warning, prerequisite, reload and shipped-catalogue
+  regression checks. Keep manual installation; no installer is included.
+
 ## 0.8.10
 
 - Fix the startup failure caused by the unsupported INN_INFO event, present

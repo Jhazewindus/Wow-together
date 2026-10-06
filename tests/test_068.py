@@ -58,9 +58,9 @@ class LevelEligibilityTests(unittest.TestCase):
             903:world_quest('Future second','Ashenvale',1440,20,minLevel=20)})
         self.assertEqual([g.zone for g in c.ns.LevelingGuideChoices().values()],['Test Coast'])
         c.ns.guideLevel='all'
-        self.assertEqual([g.zone for g in c.ns.LevelingGuideChoices().values()],['Test Coast'])
+        self.assertEqual([g.zone for g in c.ns.LevelingGuideChoices().values()],['Test Coast','Ashenvale'])
         c.ns.profile.level=20
-        self.assertEqual([g.zone for g in c.ns.LevelingGuideChoices().values()],['Ashenvale'])
+        self.assertEqual([g.zone for g in c.ns.LevelingGuideChoices().values()],['Ashenvale','Test Coast'])
 
     def test_actual_pickup_minimum_and_useful_difficulty_are_both_checked(self):
         for level,minimum in ((13,20),(20,5)):
@@ -74,7 +74,8 @@ class LevelEligibilityTests(unittest.TestCase):
                      901:world_quest('No level data',level=0,minLevel=None)})
         self.assertEqual(len(c.ns.LevelingGuideChoices()),0)
         c.ns.guideLevel='all'
-        self.assertEqual(len(c.ns.LevelingGuideChoices()),0)
+        self.assertEqual(len(c.ns.LevelingGuideChoices()),1)
+        self.assertTrue(c.ns.LevelingGuideChoices()[1].upcoming)
 
     def test_blocked_high_level_parent_cannot_make_child_zone_look_ready(self):
         for minimum in (5,20):
