@@ -7,6 +7,14 @@ Discord channel webhook. Include the full release archive, the changelog and
 the friend-testing checklist in one message. Do not ask for posting permission
 again for ordinary updates to this addon and channel.
 
+The user has also authorized publishing the addon source and release history to
+`Jhazewindus/Wow-together` on GitHub, including future completed updates. Push the
+tested working branch and its annotated release tag, preserving prior history.
+Keep a reviewable pull request for changes destined for `main`; attach any created
+or updated pull request to the chat. Verify the remote branch/tag commit IDs before
+reporting success. Do not force-push, replace existing tags or merge without an
+explicit request. GitHub source publication complements the Discord builds.
+
 For each addon release:
 
 1. Keep Forever interface `16001` and Lua 5.1. Update the version in the TOC and
@@ -22,6 +30,10 @@ For each addon release:
 5. If posting is blocked, finish the complete ZIP and report the specific
    external blocker. Preserve proxy routing and certificate verification.
    Ambiguous failures require checking channel history before retrying.
+6. Commit the tested source and matching release notes, create the annotated
+   version tag, and push the development branch and that tag to GitHub. Update
+   the pull request to describe the final code and validation. Report GitHub
+   and Discord outcomes separately if either destination fails.
 
 Read `DISCORD_WEBHOOK_URL` from the environment. For a webhook supplied in the
 current conversation, `--prompt` permits hidden input without writing it to a
