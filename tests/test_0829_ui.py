@@ -1,4 +1,4 @@
-"""Romits' guide-window resize/close must not change quest guidance."""
+"""Guide resizing preserves guidance; Exit now stops it at the user's request."""
 import unittest
 
 from test_navigation import navigator
@@ -12,7 +12,7 @@ class GuideWindowTests(unittest.TestCase):
         c.lua.globals().resizeNS = c.ns
         c.lua.execute('resizeNS.GenerateFixedGuide=function() error("resize replanned guide") end')
         frame.SetSize(frame, 540, 260); frame.OnSizeChanged(frame)
-        self.assertEqual(frame.title.width, 452)
+        self.assertEqual(frame.title.width, 402)
         self.assertEqual(frame.status.width, 444)
         self.assertEqual(frame.status.height, 120)
         self.assertEqual(frame.tip.width, 540)
@@ -37,19 +37,19 @@ class GuideWindowTests(unittest.TestCase):
         self.assertEqual(c.ns.navigation.height, 230)
         self.assertEqual(c.ns.navigation.point[4], 31)
 
-    def test_close_hides_until_reopened_and_keeps_running_guide(self):
+    def test_exit_stops_guide_and_new_start_reopens_window(self):
         c, _ = scanning_client(); frame = c.ns.navigation
-        guide, stop = c.ns.routeSelection.key, frame.state.stop.id
+        guide, route = c.ns.routeSelection, c.ns.selectedRoute
         frame.close.OnClick(frame.close)
         self.assertFalse(frame.IsShown(frame))
-        self.assertFalse(c.ns.Option('routeArrow'))
+        self.assertTrue(c.ns.Option('routeArrow'))
         c.ns.Refresh(True); c.ns.UpdateNavigation()
         self.assertFalse(frame.IsShown(frame))
-        self.assertEqual(c.ns.routeSelection.key, guide)
-        self.assertEqual(c.ns.selectedRoute.stops[1].id, stop)
-        c.ns.ToggleNavigation()
+        self.assertIsNone(c.ns.routeSelection)
+        self.assertIsNone(c.ns.selectedRoute)
+        c.ns.ActivateRoute(guide, route); c.ns.UpdateNavigation()
         self.assertTrue(frame.IsShown(frame))
-        self.assertEqual(frame.state.stop.id, stop)
+        self.assertEqual(c.ns.routeSelection.key, guide.key)
 
     def test_standalone_arrow_keeps_wide_instruction_layout_after_resize(self):
         c = navigator(); frame = c.ns.navigation
@@ -81,7 +81,7 @@ class GuideWindowTests(unittest.TestCase):
         frame.close.OnClick(frame.close)
         self.assertEqual(frame.width, 450)
         self.assertFalse(frame.IsShown(frame))
-        self.assertIsNotNone(c.ns.routeSelection)
+        self.assertIsNone(c.ns.routeSelection)
 
 
 if __name__ == '__main__':

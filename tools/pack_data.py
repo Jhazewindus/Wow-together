@@ -70,8 +70,11 @@ def quest_code(catalogue, entities, world_checks=None, xp=None):
 
 def dungeon_code(field, name, data, comment):
     packer = Packer()
-    body = 'ns.' + field + ' = ' + encode({k: v for k, v in data.items() if k != 'dungeons'}) + '\n'
+    excluded = ('dungeons', 'items') if field == 'dungeonJournalData' and 'items' in data else ('dungeons',)
+    body = 'ns.' + field + ' = ' + encode({k: v for k, v in data.items() if k not in excluded}) + '\n'
     body += packer.records(name, 'ns.' + field + '.dungeons', data['dungeons'])
+    if 'items' in excluded:
+        body += packer.records('dungeon-loot-items', 'ns.' + field + '.items', data['items'], lazy_rows=True)
     return packer.code(body, comment)
 
 

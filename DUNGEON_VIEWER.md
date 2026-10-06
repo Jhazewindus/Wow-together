@@ -1,4 +1,4 @@
-# Dungeon viewer — 0.8.30 — DUNGEON PREPARATION
+# Dungeon viewer — 0.8.31 — VANILLA LOOT AUDIT
 
 **See dungeon** opens the full journal from the main addon's Dungeon quests cards
 from anywhere. Cards place **Quest list** beside **Start route**; clicking the
@@ -29,13 +29,16 @@ remain readable, followed by native map links and published entrance areas.
 
 Choose floors when multiple maps exist; the selector is hidden otherwise.
 Select an encounter from the paged boss list or its portrait map marker, and
-browse its notable drops. Portrait clicks in Map only open Full view and select
+browse its encounter drops. Trash mobs and treasure containers are listed beneath
+bosses; selecting one opens its own loot without moving the map or creating markers. Portrait clicks in Map only open Full view and select
 the boss and its loot; selecting a mapped boss changes to its floor. A missing
 named portrait uses the client default. Loot has literal name search,
 equipment/other filters, a class dropdown, paging, native item icons, cached client tooltips and
 standard modified-item clicks. Client item requests are bounded to once per
-visible item per viewer session. Common junk/consumables and generic common drops
-are omitted. Boss list order is alphabetical within level, not a walkthrough.
+visible item per viewer session. Shared/world drops, including junk and recipes, are separate from encounter loot.
+Choose Shared / world drops for a boss's other sourced drops. Trash and treasure
+tables include every captured drop row, including common items; equipment/other
+and class filters narrow browsing. Boss list order is alphabetical within level, not a walkthrough.
 
 The class dropdown defaults to your character and retains your choice when you
 switch dungeons. **All classes** shows every listed drop. Known weapon/armor types
@@ -85,41 +88,69 @@ beta work. No network downloads or addon-message transfers occur in game.
 
 ## Source snapshot and actual limits
 
-Captured 6 October 2026:
+Captured and audited 6 October 2026:
 
-- 23 Wowhead **Forever** zone pages and 243 Forever NPC pages. Boss flags are
-  supplemented with a reviewed Classic encounter list; an ID must also appear
-  on the corresponding captured Forever zone page. Only factual names, levels,
-  IDs and drop relationships are extracted. Source scripts, guide prose,
-  screenshots and community maps are not bundled.
-- **19 Classic dungeon complexes**, **243 encounters**, **2,766 notable boss-drop
-  entries** (not distinct items). The same item can appear under several bosses.
-  Loot and NPC entries can be unconfirmed on the database and remain a snapshot,
-  not proof of current beta drops, encounter availability or kill order.
-- **164 named client portrait references** and **19 Classic floor-map reference
-  sets**. Filenames were checked against `wowdev/wow-listfile`, commit
+- Original Vanilla encounter identities are reviewed in `tools/dungeon_encounters.json`.
+  The old zone boss flags selected BFD's Season of Discovery raid NPCs, while
+  omitting some Vanilla encounters. Those flags no longer select the journal.
+- **933 Vanilla NPC tables and 95 treasure-container tables captured without
+  failures**, covering every listed Vanilla NPC/container across all 19 classic
+  dungeon complexes. **415,670 source rows audited**, **5,557 distinct item facts**,
+  **1,214 encounter-drop relationships**, **16,228 other/shared boss relationships**,
+  **532 trash listings with 313,233 relationships**, and **103 container listings
+  with 6,087 relationships**. A source appearing in more than one dungeon has
+  more than one listing; large world-drop pools contain many repeated relationships.
+  Coverage means every row in these source tables is represented, not proof of
+  every item currently obtainable in the Forever beta. Quest rewards, vendor stock,
+  skinning and gathering tables are outside the journal drop tables.
+- Every boss/ordinary-mob/container relationship retains its actual source.
+  Vanilla loot groups alone are not proof of boss-specific loot. Shared ordinary-mob
+  drops, junk and new items without an explicit boss owner stay outside encounter
+  loot. Captured Forever item metadata and explicit specific/new relationships
+  supplement the baseline; **13,127 season-only rows** are excluded. NPC pages can
+  contain historic Classic, Hardcore, Anniversary and SoD samples even under a
+  Forever URL. No historical sample rate is presented as a Forever drop chance.
+- **263 encounter listings across 22 dungeon definitions**. Hall of Thanes has
+  four reported encounters and twelve reported drops; Ruins of Lordaeron and
+  Excavation Site: Wetlands also have explicit community encounter/drop tables.
+  Their matching public NPC/item IDs, names and icons were verified against the
+  page's literal metadata. Comment IDs/authors/dates and page hashes are in
+  `communityReports`; these are reported beta observations, not official or
+  exhaustive loot tables. Missing beta trash tables remain unknown.
+- The remaining **six new dungeon definitions** have no captured encounter/loot
+  tables. Wowhead began returning CloudFront 403s during the NPC audit; bulk
+  captures were stopped. Warcraft DB's public NPC endpoint was checked but has no
+  loot tabs for the tested NPCs; the tested new item endpoint was unavailable.
+  These external gaps prevent a truthful 100% current-Forever claim. No NPC is
+  called a boss just because it is elite and no absent relationship is guessed.
+- Items are shared by ID and decoded only when inspected. Startup host Lua memory
+  is approximately 28.4 MiB after host collection; no forced collection runs in
+  the client. All other quest/guide data compartments and decisions are preserved.
+- **171 client portrait references and 19 Classic reference floor-map sets**.
+  Texture filenames use `wowdev/wow-listfile` commit
   `2ee24a9d0ff98f614997587e32ee6a0074d0de65`, `parts/interface.csv`, SHA-256
   `f41981d597d1826d836909ca270ff699cb0cf169243eab9e959907370e1133f4`.
-  Blizzard texture files are referenced, not redistributed. Missing textures
-  fall back without crashing; a missing map tile hides that whole map.
-- The **nine new Forever dungeons do not have a complete captured boss/loot
-  dataset**. All remain browsable. Matching native journal encounters, portraits
-  and floor maps are used when exposed; missing data is stated. No NPC is called
-  a boss just because it is elite, and no new-dungeon map is substituted with an
-  unrelated outdoor map or loading-screen illustration.
+  Blizzard files are referenced, not redistributed. BFD reference markers now
+  select original encounter IDs; their existing reference positions are retained.
 
-`WowTogether/DungeonJournalData.json` contains per-page URLs, SHA-256s and counts.
-`tools/import_dungeon_journal.py` parses captured literal JSON without running web
-code. To reproduce:
+`DungeonJournalData.json` contains source URLs, SHA-256s, per-dungeon coverage and
+known missing beta sources. Captures stay outside the release. Only facts are
+included; no website scripts, guide prose, community images or addon code are copied.
+
+The reproducible importer uses literal-only parsers (never JavaScript evaluation):
 
 ```sh
-/workspace/.wow-together-tests/bin/python tools/import_dungeon_journal.py \
-  --zones /tmp/wt-0824-zones --bosses /tmp/wt-0824-bosses \
-  --listfile /tmp/wt-0822-interface.csv
+/workspace/.wow-together-tests/bin/python tools/audit_dungeon_loot.py \
+  --zones /tmp/wt-0831-loot/zones --npcs /tmp/wt-0831-loot/npcs \
+  --bosses /tmp/wt-0824-bosses --vanilla /tmp/wt-0831-loot/vanilla \
+  --containers /tmp/wt-0831-loot/containers --listfile /tmp/wt-0822-interface.csv
 ```
 
-The captures are local audit inputs, not distributed web-page copies. The generated
-Lua and provenance manifest are in the release.
+`tools/import_dungeon_journal.py` delegates to this audit and requires the complete
+Vanilla input; the old boss-flag-only importer is removed. `capture_dungeon_loot.py`
+uses bounded workers, proxy/TLS defaults and resumable hashed captures; source
+access denial pauses bulk capture. The capture function can also target the
+public `https://classicdb.ch/?npc=<ID>` and `?object=<ID>` Vanilla tables.
 
 ## Native beta adapter
 
@@ -154,7 +185,7 @@ stay outside the addon and source repository.
 `DungeonMapData.lua/json` adds **158 boss positions** and **414 interior quest
 target positions for 139 quests**, with records for all 28 dungeon definitions.
 All 19 Classic complexes have some reference positions. This is **partial
-coordinate coverage**, not all 243 encounters: `coverage` lists every unresolved
+coordinate coverage**, not all 263 encounter listings: `coverage` lists every unresolved
 boss, including missing event spawns and ambiguous multi-floor locations. The
 nine new Forever dungeons have no verified offline interior coordinates in this
 capture; matching public native encounters/maps can supply live positions.

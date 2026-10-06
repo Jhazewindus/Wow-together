@@ -238,6 +238,7 @@ local function fingerprint(guide)
 end
 
 function ns.PlanLevelingGuide(guide, invite)
+    ns.guideStopped, ns.guideWindowIdle = nil, nil
     if ns.guideScanning and not ns.guideScanning.executing then ns.CancelGuideScan() end
     if not guide then return false end
     ns.CancelGuidePlanning()

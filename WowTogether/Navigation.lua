@@ -118,6 +118,10 @@ end
 
 function ns.NavigationState()
     if not ns.Option("routeArrow") and not ns.Option("standaloneArrow") then return {status = "Disabled in settings"} end
+    if ns.guideStopped and not ns.routeSelection and not ns.routePlanning then
+        return {visible = ns.guideWindowIdle == true, idle = true, status = "Choose a guide to begin.",
+            stop = {id = 0, kind = "notice", title = "No guide selected", mapID = 0}}
+    end
     if ns.guideScanning or ns.routePlanning then
         local scan = ns.guideScanning
         local work = scan or ns.routePlanning
@@ -246,7 +250,7 @@ function ns.UpdateNavigation()
     end
     frame.symbol:SetText("…"); frame.symbol:SetTextColor(0.96, 0.76, 0.35, 1)
     frame.symbol:SetShown(state.angle == nil and not state.arrived and not state.flight)
-    frame.step:SetText(state.stop.kind == "loading" and (state.stop.action == "scan" and "Checking guide progress" or "Preparing route") or state.stop.historyPreview and "Previous step" or
+    frame.step:SetText(state.idle and "" or state.stop.kind == "loading" and (state.stop.action == "scan" and "Checking guide progress" or "Preparing route") or state.stop.historyPreview and "Previous step" or
         (ns.routeSelection and ns.routeSelection.mode == "travel" and "Travel guide • Levels 1–60" or
             ns.navigationPreview and "Step preview" or
             (state.stop.npcVisitPickup and "Collect quests at this NPC" or state.stop.guideStep and ("Zone guide step " .. state.stop.guideStep) or "Current guide step")))
@@ -269,8 +273,10 @@ function ns.UpdateNavigation()
     local editable = not ns.navigationPreview and not state.flight and state.stop.kind ~= "corpse"
         and (state.stop.kind ~= "notice" or state.stop.id > 0) and state.stop.kind ~= "loading"
     local quests = not (ns.routeSelection and ns.routeSelection.mode == "travel")
-    frame.skipStep:SetEnabled(editable and quests); frame.skipQuest:SetEnabled(editable and quests); frame.scan:SetEnabled(not state.flight and state.stop.kind ~= "loading")
-    frame.back:SetEnabled(state.stop.kind ~= "loading"); frame.next:SetEnabled(state.stop.kind ~= "loading")
+    frame.skipStep:SetEnabled(editable and quests); frame.skipQuest:SetEnabled(editable and quests); frame.scan:SetEnabled(not state.idle and not state.flight and state.stop.kind ~= "loading")
+    frame.back:SetEnabled(not state.idle and state.stop.kind ~= "loading"); frame.next:SetEnabled(not state.idle and state.stop.kind ~= "loading")
+    frame.stop:SetEnabled(not state.idle)
+    if state.idle then frame.symbol:Hide(); frame.context:SetText("") end
     if not separate then
         if state.busy then frame.symbol:SetShown(not ns.DrawNavigationSpinner(frame.icon))
         elseif state.arrived then ns.DrawNavigationArrow(math.pi)
@@ -293,7 +299,7 @@ function ns.LayoutNavigation()
     if not finite(width) or not finite(height) then return end
     local left = frame.separateArrow and 14 or 82
     local offset = (width - 360) / 2
-    frame.title:SetWidth(width - 88); frame.step:SetWidth(width - 28)
+    frame.title:SetWidth(width - 138); frame.step:SetWidth(width - 28)
     frame.status:ClearAllPoints(); frame.status:SetPoint("TOPLEFT", left, -52)
     frame.status:SetSize(width - left - 14, math.max(28, height - 140))
     frame.distance:ClearAllPoints(); frame.distance:SetPoint("BOTTOMLEFT", left, 72)
@@ -353,12 +359,18 @@ function ns.CreateNavigation()
     frame.title:SetPoint("TOPLEFT", 14, -10)
     frame.title:SetSize(306, 18); frame.title:SetWordWrap(false)
     frame.background = ns.UIButton(frame, "BG", 22, function() ns.SetOption("guideOpaque", not ns.Option("guideOpaque")) end)
-    frame.background:SetHeight(18); frame.background:SetPoint("TOPRIGHT", -36, -10)
+    frame.background:SetHeight(18); frame.background:SetPoint("TOPRIGHT", -72, -10)
     frame.background.caption:ClearAllPoints(); frame.background.caption:SetPoint("CENTER")
     frame.background.caption:SetSize(18, 14); frame.background.caption:SetFont("Fonts\\ARIALN.TTF", 9, "")
-    frame.close = ns.UIClose(frame, function() ns.SetOption("routeArrow", false) end)
+    frame.stop = ns.UIButton(frame, "ST", 24, function() ns.StopGuide(false) end)
+    frame.stop:SetHeight(18); frame.stop:SetPoint("TOPRIGHT", -42, -10)
+    frame.stop.caption:ClearAllPoints(); frame.stop.caption:SetPoint("CENTER")
+    frame.stop.caption:SetSize(18, 14); frame.stop.caption:SetFont("Fonts\\ARIALN.TTF", 9, "")
+    ns.UIHelp(frame.stop, "Stop guide. Keep this window open.")
+    frame.close = ns.UIClose(frame, function() ns.StopGuide(true) end)
     frame.close:SetSize(20, 18); frame.close:SetPoint("TOPRIGHT", -10, -10)
-    ns.UIHelp(frame.close, "Hide the guide window. Your guide keeps running.")
+    frame.close.caption:ClearAllPoints(); frame.close.caption:SetPoint("CENTER"); frame.close.caption:SetSize(16, 14)
+    ns.UIHelp(frame.close, "Exit guide. Stop and close this window.")
     frame.step = ns.UILabel(frame, nil, 10, ns.UIColors.muted); frame.step:SetPoint("TOPLEFT", 14, -30); frame.step:SetSize(332, 14)
     ns.UIDivider(frame, -48)
     frame.icon = CreateFrame("Frame", nil, frame); frame.icon:SetSize(48, 48); frame.icon:SetPoint("TOPLEFT", 16, -50)

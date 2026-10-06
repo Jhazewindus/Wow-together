@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.30 — DUNGEON PREPARATION** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.31 — VANILLA LOOT AUDIT** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -22,6 +22,16 @@ Replace the folder on **every party member's client**, including all **64 Lua
 files** and the **Media folder**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.31 corrects dungeon loot.** Classic encounters use original Vanilla IDs,
+with captured Forever changes. All 933 published Vanilla NPC tables and 95
+treasure-container tables were audited. Trash mobs and treasures have their own
+loot beneath bosses, without extra map markers. Shared/world drops are separate
+from encounter loot. Hall of Thanes, Ruins of Lordaeron and Excavation Site:
+Wetlands include explicitly reported beta drops; other unpublished Forever loot
+remains unknown. Item facts load on demand. BG changes the guide background;
+ST stops the guide and leaves an empty window, while × / Exit guide stops and
+closes it. Neither leaves a guide running or a saved guide to resume.
 
 **0.8.30 adds dungeon preparation guides.** Start route collects all suitable
 dungeon quests across zones and their necessary prerequisites, then directs you
@@ -42,7 +52,7 @@ Actual beta memory includes client allocations and needs measurement. `/wt probe
 shows loaded records/detail fields by compartment and total memory when the
 client exposes its memory API. See [PERFORMANCE.md](PERFORMANCE.md).
 The guide-step window now has a resize handle and close button. Size/position
-persist; attached panels follow its width. Closing keeps your route running.
+persist; attached panels follow its width. From 0.8.31, closing stops your guide.
 Reopen with `/wt arrow` or Arrow and map → Show the direction arrow.
 Dungeon quest lists refresh your character details and hide incompatible or
 unverified identity requirements. Dungeon Start route starts directly; Quest list

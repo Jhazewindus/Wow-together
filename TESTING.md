@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.30** — **DUNGEON PREPARATION**, World of Warcraft: Forever beta,
+For **0.8.31** — **VANILLA LOOT AUDIT**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
@@ -16,6 +16,25 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Dungeon loot and Stop / Exit — about 10 minutes
+
+- Open BFD. Ghamoo-ra should show Tortoise Armor, Ghamoo-ra's Bind and Spiked
+  Shell Band, with All classes selected. Raid-version Season of Discovery gear
+  must be absent. Recipes and other shared drops belong in Shared / world drops.
+- Click trash mobs beneath the bosses. Check each opens its own loot, name search,
+  equipment/other filters and class filter. The map and floor must not change;
+  no trash portraits should be added to the map. Check treasure-container loot
+  separately, including Chest of The Seven in Blackrock Depths.
+- Check other classic dungeons and the reported Hall of Thanes, Ruins of Lordaeron
+  and Excavation Site: Wetlands drops. Compare any live discrepancy with the exact
+  NPC and item. Reported beta tables are not a completeness guarantee for new dungeons.
+- BG should only change opacity. ST should clear the route/markers, stop all
+  guide work and leave No guide selected with disabled step controls. Exit (×)
+  should stop and close both guide and standalone arrow. Accept/turn in a quest,
+  change zone and reload: the stopped guide must not return. Start another guide:
+  it should reuse the window normally. Test stopping during Scan, Loading route,
+  flight and combat; delayed callbacks must not revive an old guide.
 
 ## Dungeon preparation — about 10 minutes
 
@@ -57,9 +76,9 @@ The expanded-guide checks below take about **15–25 minutes**.
   Report any pause/error with the zone, guide/step or dungeon involved.
 - Drag the guide-step window's bottom-right handle in both directions. Text,
   buttons, nearby objectives, quest-item buttons and tips must fit the width.
-  Reload and confirm size/position survive. Close with ×, accept/complete a quest:
-  the window stays hidden and the guide keeps progressing. Reopen with `/wt arrow`
-  or its setting. Try resizing/closing during combat and with the standalone arrow.
+  Reload and confirm size/position survive. ST keeps an empty window; Exit (×)
+  stops and closes the guide. Starting another guide opens it normally.
+  Try resizing/stopping during combat and with the standalone arrow.
 - As Horde, open Blackfathom Deeps → Quest list: Alliance quests such as Knowledge
   in the Deeps and Twilight Falls must be absent. Repeat on Alliance: Horde quests
   such as Trouble in the Deeps must be absent. Recheck after login/zone loading.

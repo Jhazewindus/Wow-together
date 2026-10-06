@@ -35,27 +35,30 @@ class DungeonViewerTests(unittest.TestCase):
     def test_snapshot_has_attributed_facts_and_no_external_assets(self):
         c=self.client(); data=c.ns.dungeonJournalData
         self.assertEqual(28,len(list(data.dungeons.keys())))
-        self.assertEqual(19,data.counts.dungeonsWithBosses)
-        self.assertGreater(data.counts.lootEntries,2000)
+        self.assertEqual(22,data.counts.dungeonsWithBosses)
+        self.assertGreater(data.counts.lootEntries,1000)
         for key,entry in data.dungeons.items():
             self.assertTrue(c.ns.dungeonData.dungeons[key])
             for boss in entry.bosses.values():
                 self.assertGreater(boss.id,0)
                 if boss.portrait:self.assertTrue(boss.portrait.startswith('Interface\\'))
-                for item in boss.loot.values():
+                for id in boss.dropIDs.values():
+                    item = data['items'][id]
                     self.assertTrue(item.name);self.assertGreater(item.id,0)
                     if item.icon:self.assertTrue(item.icon.startswith('Interface\\Icons\\'))
             for m in entry.maps.values():
                 self.assertEqual(12,len(m.tiles))
                 self.assertTrue(all(p.startswith('Interface\\') for p in m.tiles.values()))
         manifest=json.loads((ROOT/'WowTogether/DungeonJournalData.json').read_text())
-        self.assertEqual(243,len(manifest['bossSources']))
+        self.assertEqual(933,len(manifest['vanillaNPCSources']))
+        self.assertEqual(95,len(manifest['vanillaContainerSources']))
         self.assertTrue(all('sha256' in r for r in manifest['bossSources'].values()))
     def test_opens_from_anywhere_without_starting_or_mutating_quest_route(self):
         c=self.client(); before=c.ns.routeSelection
         c.ns.ShowDungeonViewer('ragefire-chasm');f=c.ns.dungeonViewer
         self.assertTrue(f.IsShown(f));self.assertEqual('Ragefire Chasm',f.title.text)
         self.assertEqual(4,len(f.data.bosses));self.assertEqual(before,c.ns.routeSelection)
+        next(row for row in f.bossRows.values() if row.boss and row.boss.id == 11520).OnClick()
         self.assertTrue(f.lootRows[1].item)
     def test_boss_click_switches_loot_and_quest_list_is_separate(self):
         c=self.client();c.ns.ShowDungeonViewer('ragefire-chasm');f=c.ns.dungeonViewer
@@ -92,6 +95,7 @@ class DungeonViewerTests(unittest.TestCase):
     def test_missing_tile_hides_entire_map_and_keeps_boss_loot(self):
         c=self.client();c.ns.ShowDungeonViewer('ragefire-chasm');f=c.ns.dungeonViewer
         c.lua.execute("getmetatable(CreateFrame('Frame')).__index.SetTexture=function(self,asset) if type(asset)=='string' and asset:find('WorldMap') then return false end; self.texture=asset; return true end")
+        next(row for row in f.bossRows.values() if row.boss and row.boss.id == 11520).OnClick()
         c.ns.RenderDungeonViewer();self.assertTrue(f.empty.IsShown(f.empty));self.assertFalse(f.tiles[1].IsShown(f.tiles[1]));self.assertTrue(f.lootRows[1].item)
     def test_private_bad_map_data_and_portraits_fall_back(self):
         c=self.client(True)

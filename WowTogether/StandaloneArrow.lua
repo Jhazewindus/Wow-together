@@ -56,7 +56,7 @@ function ns.UpdateStandaloneArrow(state)
     local frame = ns.standaloneNavigation
     if not frame then return end
     frame.state = state
-    frame:SetShown(state.visible == true and ns.Option("standaloneArrow"))
+    frame:SetShown(state.visible == true and not state.idle and ns.Option("standaloneArrow"))
     local training = ns.IsClassTrainingStep(state.stop) and not state.flight and not state.busy
         and not ns.navigationPreview and not ns.Option("routeArrow")
     frame.training:SetShown(training == true); frame:SetHeight(training and 130 or 102)

@@ -1,0 +1,1040 @@
+{
+  "schema": 1,
+  "source": "Reviewed Vanilla dungeon encounter identities, cross-checked against Forever zone records. Rare encounters included; SoD raid duplicates excluded.",
+  "dungeons": {
+    "dire-maul": [
+      {
+        "id": 11467,
+        "name": "Tsu'zee"
+      },
+      {
+        "id": 11486,
+        "name": "Prince Tortheldrin"
+      },
+      {
+        "id": 11487,
+        "name": "Magister Kalendris"
+      },
+      {
+        "id": 11488,
+        "name": "Illyanna Ravenoak"
+      },
+      {
+        "id": 11489,
+        "name": "Tendris Warpwood"
+      },
+      {
+        "id": 11490,
+        "name": "Zevrim Thornhoof"
+      },
+      {
+        "id": 11492,
+        "name": "Alzzin the Wildshaper"
+      },
+      {
+        "id": 11496,
+        "name": "Immol'thar"
+      },
+      {
+        "id": 11501,
+        "name": "King Gordok"
+      },
+      {
+        "id": 13280,
+        "name": "Hydrospawn"
+      },
+      {
+        "id": 14321,
+        "name": "Guard Fengus"
+      },
+      {
+        "id": 14322,
+        "name": "Stomper Kreeg"
+      },
+      {
+        "id": 14323,
+        "name": "Guard Slip'kik"
+      },
+      {
+        "id": 14324,
+        "name": "Cho'Rush the Observer"
+      },
+      {
+        "id": 14325,
+        "name": "Captain Kromcrush"
+      },
+      {
+        "id": 14326,
+        "name": "Guard Mol'dar"
+      },
+      {
+        "id": 14327,
+        "name": "Lethtendris"
+      },
+      {
+        "id": 14349,
+        "name": "Pimgib"
+      },
+      {
+        "id": 14354,
+        "name": "Pusillin"
+      },
+      {
+        "id": 14506,
+        "name": "Lord Hel'nurath"
+      },
+      {
+        "id": 16097,
+        "name": "Isalien"
+      }
+    ],
+    "stratholme": [
+      {
+        "id": 10393,
+        "name": "Skul"
+      },
+      {
+        "id": 10435,
+        "name": "Magistrate Barthilas"
+      },
+      {
+        "id": 10436,
+        "name": "Baroness Anastari"
+      },
+      {
+        "id": 10437,
+        "name": "Nerub'enkan"
+      },
+      {
+        "id": 10438,
+        "name": "Maleki the Pallid"
+      },
+      {
+        "id": 10439,
+        "name": "Ramstein the Gorger"
+      },
+      {
+        "id": 10516,
+        "name": "The Unforgiven"
+      },
+      {
+        "id": 10558,
+        "name": "Hearthsinger Forresten"
+      },
+      {
+        "id": 10808,
+        "name": "Timmy the Cruel"
+      },
+      {
+        "id": 10809,
+        "name": "Stonespine"
+      },
+      {
+        "id": 10811,
+        "name": "Archivist Galford"
+      },
+      {
+        "id": 10813,
+        "name": "Balnazzar"
+      },
+      {
+        "id": 10997,
+        "name": "Cannon Master Willey"
+      },
+      {
+        "id": 11032,
+        "name": "Malor the Zealous"
+      },
+      {
+        "id": 11058,
+        "name": "Ezra Grimm"
+      },
+      {
+        "id": 11120,
+        "name": "Crimson Hammersmith"
+      },
+      {
+        "id": 11121,
+        "name": "Black Guard Swordsmith"
+      },
+      {
+        "id": 11143,
+        "name": "Postmaster Malown"
+      },
+      {
+        "id": 16101,
+        "name": "Jarien"
+      },
+      {
+        "id": 16102,
+        "name": "Sothos"
+      },
+      {
+        "id": 10440,
+        "name": "Baron Rivendare"
+      }
+    ],
+    "the-temple-of-atalhakkar": [
+      {
+        "id": 5709,
+        "name": "Shade of Eranikus"
+      },
+      {
+        "id": 5710,
+        "name": "Jammal'an the Prophet"
+      },
+      {
+        "id": 5711,
+        "name": "Ogom the Wretched"
+      },
+      {
+        "id": 5719,
+        "name": "Morphaz"
+      },
+      {
+        "id": 5720,
+        "name": "Weaver"
+      },
+      {
+        "id": 5721,
+        "name": "Dreamscythe"
+      },
+      {
+        "id": 5722,
+        "name": "Hazzas"
+      },
+      {
+        "id": 8443,
+        "name": "Avatar of Hakkar"
+      },
+      {
+        "id": 5712,
+        "name": "Zolo"
+      },
+      {
+        "id": 5713,
+        "name": "Gasher"
+      },
+      {
+        "id": 5714,
+        "name": "Loro"
+      },
+      {
+        "id": 5715,
+        "name": "Hukku"
+      },
+      {
+        "id": 5716,
+        "name": "Zul'Lor"
+      },
+      {
+        "id": 5717,
+        "name": "Mijan"
+      },
+      {
+        "id": 8580,
+        "name": "Atal'alarion"
+      }
+    ],
+    "razorfen-kraul": [
+      {
+        "id": 6168,
+        "name": "Roogug"
+      },
+      {
+        "id": 4424,
+        "name": "Aggem Thorncurse"
+      },
+      {
+        "id": 4428,
+        "name": "Death Speaker Jargba"
+      },
+      {
+        "id": 4420,
+        "name": "Overlord Ramtusk"
+      },
+      {
+        "id": 4425,
+        "name": "Blind Hunter"
+      },
+      {
+        "id": 4842,
+        "name": "Earthcaller Halmgar"
+      },
+      {
+        "id": 4422,
+        "name": "Agathelos the Raging"
+      },
+      {
+        "id": 4421,
+        "name": "Charlga Razorflank"
+      }
+    ],
+    "gnomeregan": [
+      {
+        "id": 6228,
+        "name": "Dark Iron Ambassador"
+      },
+      {
+        "id": 6229,
+        "name": "Crowd Pummeler 9-60"
+      },
+      {
+        "id": 6235,
+        "name": "Electrocutioner 6000"
+      },
+      {
+        "id": 7079,
+        "name": "Viscous Fallout"
+      },
+      {
+        "id": 7361,
+        "name": "Grubbis"
+      },
+      {
+        "id": 7800,
+        "name": "Mekgineer Thermaplugg"
+      }
+    ],
+    "scholomance": [
+      {
+        "id": 10506,
+        "name": "Kirtonos the Herald"
+      },
+      {
+        "id": 10503,
+        "name": "Jandice Barov"
+      },
+      {
+        "id": 11622,
+        "name": "Rattlegore"
+      },
+      {
+        "id": 10433,
+        "name": "Marduk Blackpool"
+      },
+      {
+        "id": 10432,
+        "name": "Vectus"
+      },
+      {
+        "id": 10508,
+        "name": "Ras Frostwhisper"
+      },
+      {
+        "id": 10505,
+        "name": "Instructor Malicia"
+      },
+      {
+        "id": 10507,
+        "name": "The Ravenian"
+      },
+      {
+        "id": 10901,
+        "name": "Lorekeeper Polkelt"
+      },
+      {
+        "id": 10502,
+        "name": "Lady Illucia Barov"
+      },
+      {
+        "id": 10504,
+        "name": "Lord Alexei Barov"
+      },
+      {
+        "id": 14516,
+        "name": "Death Knight Darkreaver"
+      },
+      {
+        "id": 14695,
+        "name": "Lord Blackwood"
+      },
+      {
+        "id": 16118,
+        "name": "Kormok"
+      },
+      {
+        "id": 1853,
+        "name": "Darkmaster Gandling"
+      }
+    ],
+    "blackfathom-deeps": [
+      {
+        "id": 4829,
+        "name": "Aku'mai"
+      },
+      {
+        "id": 4830,
+        "name": "Old Serra'kis"
+      },
+      {
+        "id": 4831,
+        "name": "Lady Sarevess"
+      },
+      {
+        "id": 4832,
+        "name": "Twilight Lord Kelris"
+      },
+      {
+        "id": 4887,
+        "name": "Ghamoo-ra"
+      },
+      {
+        "id": 6243,
+        "name": "Gelihast"
+      },
+      {
+        "id": 12876,
+        "name": "Baron Aquanis"
+      },
+      {
+        "id": 12902,
+        "name": "Lorgus Jett"
+      }
+    ],
+    "blackrock-depths": [
+      {
+        "id": 8923,
+        "name": "Panzor the Invincible"
+      },
+      {
+        "id": 8929,
+        "name": "Princess Moira Bronzebeard"
+      },
+      {
+        "id": 8983,
+        "name": "Golem Lord Argelmach"
+      },
+      {
+        "id": 9016,
+        "name": "Bael'Gar"
+      },
+      {
+        "id": 9017,
+        "name": "Lord Incendius"
+      },
+      {
+        "id": 9018,
+        "name": "High Interrogator Gerstahn"
+      },
+      {
+        "id": 9019,
+        "name": "Emperor Dagran Thaurissan"
+      },
+      {
+        "id": 9024,
+        "name": "Pyromancer Loregrain"
+      },
+      {
+        "id": 9025,
+        "name": "Lord Roccor"
+      },
+      {
+        "id": 9027,
+        "name": "Gorosh the Dervish"
+      },
+      {
+        "id": 9028,
+        "name": "Grizzle"
+      },
+      {
+        "id": 9029,
+        "name": "Eviscerator"
+      },
+      {
+        "id": 9030,
+        "name": "Ok'thor the Breaker"
+      },
+      {
+        "id": 9031,
+        "name": "Anub'shiah"
+      },
+      {
+        "id": 9032,
+        "name": "Hedrum the Creeper"
+      },
+      {
+        "id": 9033,
+        "name": "General Angerforge"
+      },
+      {
+        "id": 9034,
+        "name": "Hate'rel"
+      },
+      {
+        "id": 9035,
+        "name": "Anger'rel"
+      },
+      {
+        "id": 9036,
+        "name": "Vile'rel"
+      },
+      {
+        "id": 9037,
+        "name": "Gloom'rel"
+      },
+      {
+        "id": 9038,
+        "name": "Seeth'rel"
+      },
+      {
+        "id": 9039,
+        "name": "Doom'rel"
+      },
+      {
+        "id": 9040,
+        "name": "Dope'rel"
+      },
+      {
+        "id": 9041,
+        "name": "Warder Stilgiss"
+      },
+      {
+        "id": 9042,
+        "name": "Verek"
+      },
+      {
+        "id": 9056,
+        "name": "Fineous Darkvire"
+      },
+      {
+        "id": 9156,
+        "name": "Ambassador Flamelash"
+      },
+      {
+        "id": 9319,
+        "name": "Houndmaster Grebmar"
+      },
+      {
+        "id": 9437,
+        "name": "Dark Keeper Vorfalk"
+      },
+      {
+        "id": 9438,
+        "name": "Dark Keeper Bethek"
+      },
+      {
+        "id": 9439,
+        "name": "Dark Keeper Uggel"
+      },
+      {
+        "id": 9441,
+        "name": "Dark Keeper Zimrel"
+      },
+      {
+        "id": 9442,
+        "name": "Dark Keeper Ofgut"
+      },
+      {
+        "id": 9443,
+        "name": "Dark Keeper Pelver"
+      },
+      {
+        "id": 9476,
+        "name": "Watchman Doomgrip"
+      },
+      {
+        "id": 9499,
+        "name": "Plugger Spazzring"
+      },
+      {
+        "id": 9502,
+        "name": "Phalanx"
+      },
+      {
+        "id": 9537,
+        "name": "Hurley Blackbreath"
+      },
+      {
+        "id": 9543,
+        "name": "Ribbly Screwspigot"
+      },
+      {
+        "id": 9938,
+        "name": "Magmus"
+      },
+      {
+        "id": 16059,
+        "name": "Theldren"
+      }
+    ],
+    "razorfen-downs": [
+      {
+        "id": 7355,
+        "name": "Tuten'kash"
+      },
+      {
+        "id": 7357,
+        "name": "Mordresh Fire Eye"
+      },
+      {
+        "id": 7354,
+        "name": "Ragglesnout"
+      },
+      {
+        "id": 8567,
+        "name": "Glutton"
+      },
+      {
+        "id": 7358,
+        "name": "Amnennar the Coldbringer"
+      },
+      {
+        "id": 7356,
+        "name": "Plaguemaw the Rotting"
+      },
+      {
+        "id": 14686,
+        "name": "Lady Falther'ess"
+      }
+    ],
+    "the-deadmines": [
+      {
+        "id": 3586,
+        "name": "Miner Johnson"
+      },
+      {
+        "id": 644,
+        "name": "Rhahk'Zor"
+      },
+      {
+        "id": 642,
+        "name": "Sneed's Shredder"
+      },
+      {
+        "id": 643,
+        "name": "Sneed"
+      },
+      {
+        "id": 1763,
+        "name": "Gilnid"
+      },
+      {
+        "id": 646,
+        "name": "Mr. Smite"
+      },
+      {
+        "id": 647,
+        "name": "Captain Greenskin"
+      },
+      {
+        "id": 639,
+        "name": "Edwin VanCleef"
+      },
+      {
+        "id": 645,
+        "name": "Cookie"
+      }
+    ],
+    "blackrock-spire": [
+      {
+        "id": 9196,
+        "name": "Highlord Omokk"
+      },
+      {
+        "id": 9217,
+        "name": "Spirestone Lord Magus"
+      },
+      {
+        "id": 9218,
+        "name": "Spirestone Battle Lord"
+      },
+      {
+        "id": 9219,
+        "name": "Spirestone Butcher"
+      },
+      {
+        "id": 9236,
+        "name": "Shadow Hunter Vosh'gajin"
+      },
+      {
+        "id": 9237,
+        "name": "War Master Voone"
+      },
+      {
+        "id": 9568,
+        "name": "Overlord Wyrmthalak"
+      },
+      {
+        "id": 9596,
+        "name": "Bannok Grimaxe"
+      },
+      {
+        "id": 9718,
+        "name": "Ghok Bashguud"
+      },
+      {
+        "id": 9736,
+        "name": "Quartermaster Zigris"
+      },
+      {
+        "id": 10220,
+        "name": "Halycon"
+      },
+      {
+        "id": 10263,
+        "name": "Burning Felguard"
+      },
+      {
+        "id": 10268,
+        "name": "Gizrul the Slavener"
+      },
+      {
+        "id": 10376,
+        "name": "Crystal Fang"
+      },
+      {
+        "id": 10584,
+        "name": "Urok Doomhowl"
+      },
+      {
+        "id": 10596,
+        "name": "Mother Smolderweb"
+      },
+      {
+        "id": 16080,
+        "name": "Mor Grayhoof"
+      },
+      {
+        "id": 9816,
+        "name": "Pyroguard Emberseer"
+      },
+      {
+        "id": 10264,
+        "name": "Solakar Flamewreath"
+      },
+      {
+        "id": 10339,
+        "name": "Gyth"
+      },
+      {
+        "id": 10363,
+        "name": "General Drakkisath"
+      },
+      {
+        "id": 10429,
+        "name": "Warchief Rend Blackhand"
+      },
+      {
+        "id": 10430,
+        "name": "The Beast"
+      },
+      {
+        "id": 10509,
+        "name": "Jed Runewatcher"
+      },
+      {
+        "id": 16042,
+        "name": "Lord Valthalak"
+      }
+    ],
+    "maraudon": [
+      {
+        "id": 12201,
+        "name": "Princess Theradras"
+      },
+      {
+        "id": 12203,
+        "name": "Landslide"
+      },
+      {
+        "id": 12225,
+        "name": "Celebras the Cursed"
+      },
+      {
+        "id": 12236,
+        "name": "Lord Vyletongue"
+      },
+      {
+        "id": 12237,
+        "name": "Meshlok the Harvester"
+      },
+      {
+        "id": 12258,
+        "name": "Razorlash"
+      },
+      {
+        "id": 13282,
+        "name": "Noxxion"
+      },
+      {
+        "id": 13596,
+        "name": "Rotgrip"
+      },
+      {
+        "id": 13601,
+        "name": "Tinkerer Gizlock"
+      }
+    ],
+    "wailing-caverns": [
+      {
+        "id": 3653,
+        "name": "Kresh"
+      },
+      {
+        "id": 3654,
+        "name": "Mutanus the Devourer"
+      },
+      {
+        "id": 3669,
+        "name": "Lord Cobrahn"
+      },
+      {
+        "id": 3670,
+        "name": "Lord Pythas"
+      },
+      {
+        "id": 3671,
+        "name": "Lady Anacondra"
+      },
+      {
+        "id": 3673,
+        "name": "Lord Serpentis"
+      },
+      {
+        "id": 3674,
+        "name": "Skum"
+      },
+      {
+        "id": 5775,
+        "name": "Verdan the Everliving"
+      },
+      {
+        "id": 5912,
+        "name": "Deviate Faerie Dragon"
+      }
+    ],
+    "uldaman": [
+      {
+        "id": 2748,
+        "name": "Archaedas"
+      },
+      {
+        "id": 4854,
+        "name": "Grimlok"
+      },
+      {
+        "id": 4857,
+        "name": "Stone Keeper"
+      },
+      {
+        "id": 6906,
+        "name": "Baelog"
+      },
+      {
+        "id": 6907,
+        "name": "Eric \"The Swift\""
+      },
+      {
+        "id": 6908,
+        "name": "Olaf"
+      },
+      {
+        "id": 6910,
+        "name": "Revelosh"
+      },
+      {
+        "id": 7023,
+        "name": "Obsidian Sentinel"
+      },
+      {
+        "id": 7206,
+        "name": "Ancient Stone Keeper"
+      },
+      {
+        "id": 7228,
+        "name": "Ironaya"
+      },
+      {
+        "id": 7291,
+        "name": "Galgann Firehammer"
+      }
+    ],
+    "the-stockade": [
+      {
+        "id": 1696,
+        "name": "Targorr the Dread"
+      },
+      {
+        "id": 1666,
+        "name": "Kam Deepfury"
+      },
+      {
+        "id": 1717,
+        "name": "Hamhock"
+      },
+      {
+        "id": 1716,
+        "name": "Bazil Thredd"
+      },
+      {
+        "id": 1663,
+        "name": "Dextren Ward"
+      },
+      {
+        "id": 1720,
+        "name": "Bruegal Ironknuckle"
+      }
+    ],
+    "shadowfang-keep": [
+      {
+        "id": 3872,
+        "name": "Deathsworn Captain"
+      },
+      {
+        "id": 3886,
+        "name": "Razorclaw the Butcher"
+      },
+      {
+        "id": 3887,
+        "name": "Baron Silverlaine"
+      },
+      {
+        "id": 3914,
+        "name": "Rethilgore"
+      },
+      {
+        "id": 3927,
+        "name": "Wolf Master Nandos"
+      },
+      {
+        "id": 4274,
+        "name": "Fenrus the Devourer"
+      },
+      {
+        "id": 4275,
+        "name": "Archmage Arugal"
+      },
+      {
+        "id": 4278,
+        "name": "Commander Springvale"
+      },
+      {
+        "id": 4279,
+        "name": "Odo the Blindwatcher"
+      }
+    ],
+    "scarlet-monastery": [
+      {
+        "id": 3977,
+        "name": "High Inquisitor Whitemane"
+      },
+      {
+        "id": 3983,
+        "name": "Interrogator Vishas"
+      },
+      {
+        "id": 4543,
+        "name": "Bloodmage Thalnos"
+      },
+      {
+        "id": 6488,
+        "name": "Fallen Champion"
+      },
+      {
+        "id": 6489,
+        "name": "Ironspine"
+      },
+      {
+        "id": 6490,
+        "name": "Azshir the Sleepless"
+      },
+      {
+        "id": 14693,
+        "name": "Scorn"
+      },
+      {
+        "id": 3974,
+        "name": "Houndmaster Loksey"
+      },
+      {
+        "id": 6487,
+        "name": "Arcanist Doan"
+      },
+      {
+        "id": 3975,
+        "name": "Herod"
+      },
+      {
+        "id": 4542,
+        "name": "High Inquisitor Fairbanks"
+      },
+      {
+        "id": 3976,
+        "name": "Scarlet Commander Mograine"
+      }
+    ],
+    "ragefire-chasm": [
+      {
+        "id": 11517,
+        "name": "Oggleflint"
+      },
+      {
+        "id": 11520,
+        "name": "Taragaman the Hungerer"
+      },
+      {
+        "id": 11518,
+        "name": "Jergosh the Invoker"
+      },
+      {
+        "id": 11519,
+        "name": "Bazzalan"
+      }
+    ],
+    "zulfarrak": [
+      {
+        "id": 7267,
+        "name": "Chief Ukorz Sandscalp"
+      },
+      {
+        "id": 7271,
+        "name": "Witch Doctor Zum'rah"
+      },
+      {
+        "id": 7272,
+        "name": "Theka the Martyr"
+      },
+      {
+        "id": 7273,
+        "name": "Gahz'rilla"
+      },
+      {
+        "id": 7274,
+        "name": "Sandfury Executioner"
+      },
+      {
+        "id": 7275,
+        "name": "Shadowpriest Sezz'ziz"
+      },
+      {
+        "id": 7795,
+        "name": "Hydromancer Velratha"
+      },
+      {
+        "id": 7796,
+        "name": "Nekrum Gutchewer"
+      },
+      {
+        "id": 7797,
+        "name": "Ruuzlu"
+      },
+      {
+        "id": 8127,
+        "name": "Antu'sul"
+      },
+      {
+        "id": 10080,
+        "name": "Sandarr Dunereaver"
+      },
+      {
+        "id": 10081,
+        "name": "Dustwraith"
+      },
+      {
+        "id": 10082,
+        "name": "Zerillis"
+      }
+    ]
+  }
+}

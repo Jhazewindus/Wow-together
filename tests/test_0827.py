@@ -42,7 +42,9 @@ class DungeonMarkerTests(unittest.TestCase):
         c = self.client(); c.ns.ShowDungeonViewer('maraudon'); f = c.ns.dungeonViewer
         row = next(r for r in f.bossRows.values() if r.boss and r.boss.name == 'Lord Vyletongue')
         row.OnClick(); self.assertEqual(1, f.floor)
-        f.bossPages.next.OnClick()
+        while not any(r.boss and r.boss.name == 'Princess Theradras' for r in f.bossRows.values()):
+            self.assertTrue(f.bossPages.next.enabled)
+            f.bossPages.next.OnClick()
         # Selecting a known boss on the other floor follows the source floor,
         # even when the currently displayed map was selected manually.
         row = next(r for r in f.bossRows.values() if r.boss and r.boss.name == 'Princess Theradras')

@@ -1,5 +1,18 @@
 # Performance maintenance — 0.6.9
 
+## Expanded dungeon loot in 0.8.31
+
+The Vanilla loot audit stores 5,557 item facts once and retains drop relationships
+as ID arrays. Item records load individually; opening dungeon metadata does not
+materialize every NPC's loot. Boss, trash and treasure views reference those shared
+item records. Repacking retains this boundary.
+
+The same Lua 5.1 host fixture retains about 28.4 MiB at startup and 29.7 MiB after
+browsing Ragefire Chasm, Blackfathom Deeps, Blackrock Depths and Hall of Thanes.
+Opening their journal data took about 3, 7, 19 and less than 1 millisecond,
+respectively, on this host. These exclude native client textures, frame memory
+and existing SavedVariables; they are not beta timing or memory guarantees.
+
 ## Data memory in 0.8.29
 
 The reported 80–110 MB prompted a retained-heap audit. In the previous Lua 5.1

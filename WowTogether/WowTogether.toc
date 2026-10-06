@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.30
-## X-ReleaseName: DUNGEON PREPARATION
+## Version: 0.8.31
+## X-ReleaseName: VANILLA LOOT AUDIT
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua

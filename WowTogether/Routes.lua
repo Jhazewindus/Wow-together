@@ -830,6 +830,7 @@ function ns.ActivateRoute(guide, route)
     ns.CancelGuideScan()
     if ns.CancelGuidePlanning then ns.CancelGuidePlanning() end
     ns.ResetTravelPath()
+    ns.guideStopped, ns.guideWindowIdle, ns.routeClearPending = nil, nil, nil
     ns.guideStepHistory, ns.navigationPreview, ns.forceRouteReplan = {}, nil, nil
     ns.routePaused = nil
     ns.routeSelection = guide
@@ -992,18 +993,38 @@ function ns.ClearRoute()
     ns.ResetTravelPath()
     if ns.ClearSavedGuide then ns.ClearSavedGuide() end
     if ns.CancelGuidePlanning then ns.CancelGuidePlanning() end
-    ns.routeSelection = nil
-    ns.routeZoneViewPending = nil
-    if inCombat() then ns.routeClearPending = true; return end
+    ns.pendingGuideMap, ns.pendingPartyRouteStart = nil, nil
+    ns.preparedLevelingRoute, ns.partyRouteHistoryScope = nil, nil
+    ns.routeZoneViewPending, ns.routeRedrawPending = nil, nil
     ns.selectedRoute, ns.routeSelection, ns.routeSignature, ns.routeWaypointPending, ns.routePaused = nil, nil, nil, nil, nil
-    if ns.routeProvider then hideDrawing(ns.routeProvider) end
+    ns.navigationPreview, ns.guideStepHistory, ns.forceRouteReplan = nil, {}, nil
+    -- Cancel the logical guide immediately, including in combat. Only map
+    -- provider cleanup may need to wait for Blizzard's protected canvas.
+    if inCombat() then ns.routeClearPending = true
+    elseif ns.routeProvider then hideDrawing(ns.routeProvider) end
     ns.routeStats.status = "Route cleared."
     ns.guideAction = ns.routeStats.status
     if ns.UpdateNPCHints then ns.UpdateNPCHints() end
 end
 
+function ns.StopGuide(closeWindow)
+    ns.ClearRoute()
+    ns.pendingPartyRouteFollow, ns.pendingPartyRouteInvite, ns.waitingPartyRoute = nil, nil, nil
+    ns.guideStopped, ns.guideWindowIdle = true, not closeWindow
+    ns.partyRouteStatus, ns.guideResumeStatus = "No active guide.", "No saved guide to resume."
+    for _, name in ipairs({"startGuidePrompt", "earlyGuidePrompt", "partyRoutePrompt", "activityPrompt"}) do
+        local frame = ns[name]
+        if frame then frame:Hide() end
+    end
+    ns.UpdateNavigation()
+    ns.Refresh()
+end
+
 function ns.FlushRouteUpdates()
-    if ns.routeClearPending then ns.routeClearPending = nil; ns.ClearRoute() end
+    if ns.routeClearPending then
+        ns.routeClearPending = nil
+        if not ns.selectedRoute and ns.routeProvider then hideDrawing(ns.routeProvider) end
+    end
     if ns.routeRedrawPending then ns.routeRedrawPending = nil; ns.DrawRoute() end
     ns.routeWaypointPending = nil
     if ns.routeZoneViewPending and ns.selectedRoute then

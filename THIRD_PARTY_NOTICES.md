@@ -104,3 +104,12 @@ Map/portrait/icon filenames reference Blizzard client assets checked against the
 public wowdev filename list. Blizzard retains its artwork rights; this project's
 MIT license does not license Blizzard textures or preview images. See
 DUNGEON_VIEWER.md for source versions, scope and beta limitations.
+
+The 0.8.31 loot audit also extracts factual item/NPC/container relationships
+from the public Vanilla tables at `https://classicdb.ch/`. Individual URLs and
+SHA-256s are in `DungeonJournalData.json`. All 933 listed Vanilla NPC tables and
+95 treasure-container tables were captured. Only literal game facts are kept;
+no website JavaScript, guide prose, screenshots or source addon code is bundled.
+Explicit community boss/drop reports on three Wowhead Forever zone pages retain
+their comment IDs, authors, dates and page hashes in the provenance manifest.
+They are reported beta evidence, not official or exhaustive loot guarantees.

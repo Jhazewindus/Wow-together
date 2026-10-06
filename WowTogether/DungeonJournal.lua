@@ -19,6 +19,23 @@ local function matches(key, name)
     return false
 end
 local function copy(value) local out = {}; for k, v in pairs(value) do out[k] = v end; return out end
+local function dropSource(value, kind)
+    local source = copy(value)
+    source.kind = kind
+    -- Shared item facts are decoded once on demand, rather than copied into
+    -- every NPC's loot table during addon startup or opening a map.
+    return setmetatable(source, {__index = function(row, field)
+        local ids = field == "loot" and row.dropIDs or field == "sharedLoot" and row.sharedDropIDs
+        if not ids then return end
+        local result = {}
+        for _, id in ipairs(ids) do
+            local item = ns.dungeonJournalData.items and ns.dungeonJournalData.items[id]
+            if item then result[#result + 1] = item end
+        end
+        rawset(row, field, result)
+        return result
+    end})
+end
 local function validPoint(value)
     return publicTable(value) and number(value.x, 1) and number(value.y, 1)
 end
@@ -70,13 +87,15 @@ function ns.DungeonViewerData(key)
     local stored = ns.dungeonJournalData and ns.dungeonJournalData.dungeons[key]
     local definition = ns.dungeonData and ns.dungeonData.dungeons[key]
     if not stored or not definition then return end
-    local data = {key = key, name = definition.name, definition = definition, bosses = {}, maps = {}}
+    local data = {key = key, name = definition.name, definition = definition, bosses = {}, trash = {}, containers = {}, maps = {}}
     local positions = ns.dungeonMapData and ns.dungeonMapData.dungeons[key]
     local byName = {}
     for index, boss in ipairs(stored.bosses) do
-        data.bosses[index] = copy(boss); byName[nameKey(boss.name)] = data.bosses[index]
+        data.bosses[index] = dropSource(boss, "boss"); byName[nameKey(boss.name)] = data.bosses[index]
         if not ns.GuideInteger(boss.level, 255) or boss.level < 1 then data.bosses[index].level = nil end
     end
+    for index, npc in ipairs(stored.trash or {}) do data.trash[index] = dropSource(npc, "trash") end
+    for index, object in ipairs(stored.containers or {}) do data.containers[index] = dropSource(object, "container") end
     local instanceID = ns.DungeonJournalInstance and ns.DungeonJournalInstance(key)
     if instanceID and type(EJ_GetEncounterInfoByIndex) == "function" then
         for index = 1, 96 do
@@ -85,7 +104,7 @@ function ns.DungeonViewerData(key)
             local boss = byName[nameKey(name)]
             -- New dungeons can expose a journal before public databases do.
             -- Keep native encounter facts, but do not infer their loot tables.
-            if not boss and #stored.bosses == 0 and ns.SafeTitle(name) then
+            if not boss and (#stored.bosses == 0 or definition.era == "Forever") and ns.SafeTitle(name) then
                 boss = {id = id, name = ns.SafeTitle(name), loot = {}, native = true}
                 data.bosses[#data.bosses + 1] = boss; byName[nameKey(name)] = boss
             end
@@ -263,8 +282,10 @@ end
 function ns.DungeonViewerLoot(boss, query, category, class)
     local result = {}
     query = string.lower(ns.SafeTitle(query) or "")
-    for _, item in ipairs(boss and boss.loot or {}) do
-        local matchesCategory = category == "all" or not category
+    local drops = boss and boss.loot
+    if category == "shared" then drops = boss and boss.sharedLoot end
+    for _, item in ipairs(drops or {}) do
+        local matchesCategory = category == "all" or category == "shared" or not category
             or category == "equipment" and (item.classID == 2 or item.classID == 4)
             or category == "other" and item.classID ~= 2 and item.classID ~= 4
         if matchesCategory and ns.DungeonLootClassAllowed(item, class)

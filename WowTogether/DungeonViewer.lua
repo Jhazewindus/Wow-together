@@ -63,7 +63,16 @@ local function layout(frame)
         frame.lootTitle:SetWidth(lootWidth - 24); frame.lootType:SetWidth(lootWidth - 24)
         frame.lootClass:SetWidth(lootWidth - 24); frame.search:SetWidth(lootWidth - 24)
         frame.lootEmpty:SetWidth(lootWidth - 32)
-        frame.bossRowsVisible = math.min(8, math.max(1, math.floor((height - 226) / 52)))
+        local sourceHeight = height - 140
+        frame.bossRowsVisible = math.min(8, math.max(1, math.floor((sourceHeight * .60 - 72) / 52)))
+        local trashTop = 40 + frame.bossRowsVisible * 52 + 36
+        frame.trashRowsVisible = math.min(8, math.max(1, math.floor((sourceHeight - trashTop - 66) / 40)))
+        frame.bossPages:ClearAllPoints(); frame.bossPages:SetPoint("TOPLEFT", 10, -40 - frame.bossRowsVisible * 52 - 4)
+        frame.trashTitle:ClearAllPoints(); frame.trashTitle:SetPoint("TOPLEFT", 12, -trashTop)
+        frame.trashPages:ClearAllPoints(); frame.trashPages:SetPoint("BOTTOM", 0, 10)
+        for index, row in ipairs(frame.trashRows) do
+            row:ClearAllPoints(); row:SetPoint("TOPLEFT", 11, -trashTop - 28 - (index - 1) * 40)
+        end
         frame.lootRowsVisible = math.min(7, math.max(1, math.floor((height - 333) / 47)))
         for _, row in ipairs(frame.lootRows) do row:SetWidth(lootWidth - 24); row.name:SetWidth(lootWidth - 70); row.detail:SetWidth(lootWidth - 70) end
         frame.questList:Show()
@@ -99,12 +108,20 @@ local function selectBoss(id)
     if not frame or not frame.data then return end
     for index, boss in ipairs(frame.data.bosses) do
         if boss.id == id then
-            frame.bossID, frame.lootPage = id, 1
+            frame.bossID, frame.trashID, frame.trashKind, frame.lootPage = id, nil, nil, 1
+            if frame.category == "shared" then frame.category = "all" end
             frame.bossPage = math.floor((index - 1) / frame.bossRowsVisible) + 1
             frame.floor = ns.DungeonBossFloor(frame.data, boss, frame.floor)
             ns.RenderDungeonViewer(); return
         end
     end
+end
+local function selectTrash(source)
+    local frame = ns.dungeonViewer
+    if not frame or not frame.data then return end
+    frame.bossID, frame.trashID, frame.trashKind, frame.lootPage = nil, source.id, source.kind, 1
+    frame.category = "all"
+    ns.RenderDungeonViewer()
 end
 local function create()
     if ns.dungeonViewer then return ns.dungeonViewer end
@@ -140,6 +157,19 @@ local function create()
         function() frame.bossPage = frame.bossPage + 1; ns.RenderDungeonViewer() end)
     frame.bossPanel:EnableMouseWheel(true)
     frame.bossPanel:SetScript("OnMouseWheel", function(_, delta) if ns.Public(delta) and type(delta) == "number" then frame.bossPage = frame.bossPage - delta; ns.RenderDungeonViewer() end end)
+    frame.trashTitle = heading(frame.bossPanel, "Trash & treasures", 12, 12, -280, 176)
+    frame.trashRows = {}
+    for slot = 1, 8 do
+        local row = ns.UIButton(frame.bossPanel, "", 178, function() end)
+        row:SetHeight(36); row.caption:Hide()
+        row.name = heading(row, "", 10, 8, -3, 160); row.name:SetHeight(15)
+        row.detail = ns.UILabel(row, nil, 9, colors.muted); row.detail:SetPoint("BOTTOMLEFT", 8, 3); row.detail:SetSize(160, 12)
+        row:SetScript("OnClick", function() if row.source then selectTrash(row.source) end end)
+        frame.trashRows[slot] = row
+    end
+    frame.trashPage = 1
+    frame.trashPages = paging(frame.bossPanel, function() frame.trashPage = frame.trashPage - 1; ns.RenderDungeonViewer() end,
+        function() frame.trashPage = frame.trashPage + 1; ns.RenderDungeonViewer() end)
     frame.floorMenu = ns.UIDropdown(frame, {{1, "Floor 1"}}, 270, function(index) frame.floor = index; ns.RenderDungeonViewer() end)
     frame.floorMenu:SetPoint("TOPLEFT", 232, -94)
     frame.refresh = ns.UIButton(frame, "Refresh map", 112, function() ns.RefreshDungeonViewer(true) end); frame.refresh:SetPoint("TOPLEFT", 620, -94)
@@ -154,7 +184,7 @@ local function create()
     frame.lootPanel = CreateFrame("Frame", nil, frame, "BackdropTemplate"); ns.UIPanel(frame.lootPanel)
     frame.lootPanel:SetPoint("TOPLEFT", 744, -94); frame.lootPanel:SetSize(316, 510)
     frame.lootTitle = heading(frame.lootPanel, "Boss loot", 13, 12, -10, 292)
-    frame.lootType = ns.UIDropdown(frame.lootPanel, {{"all", "All loot"}, {"equipment", "Equipment"}, {"other", "Quest items & other"}}, 292,
+    frame.lootType = ns.UIDropdown(frame.lootPanel, {{"all", "All loot"}, {"equipment", "Equipment"}, {"other", "Quest items & other"}, {"shared", "Shared / world drops"}}, 292,
         function(value) frame.category, frame.lootPage = value, 1; ns.RenderDungeonViewer() end)
     frame.lootType:SetPoint("TOPLEFT", 12, -39)
     local _, _, class = ns.ReadPublic(UnitClass, "player")
@@ -164,7 +194,7 @@ local function create()
         function(value) frame.class, frame.lootPage = value, 1; ns.RenderDungeonViewer() end)
     frame.lootClass:SetPoint("TOPLEFT", 12, -73)
     ns.UIHelp(frame.lootClass, "Show weapon and armor types usable by this class. Choose All classes for every drop.")
-    frame.search = ns.UIEditBox(frame.lootPanel, "Search this boss's loot", 292)
+    frame.search = ns.UIEditBox(frame.lootPanel, "Search selected source's loot", 292)
     frame.search:SetPoint("TOPLEFT", 12, -107); frame.search:SetScript("OnTextChanged", function(self)
         local value = self:GetText()
         if not ns.Public(value) or type(value) ~= "string" then return end
@@ -403,13 +433,35 @@ function ns.RenderDungeonViewer()
             image(row.icon, value.portrait or bossFallback); ns.UIButtonTone(row, frame.bossID == value.id); ns.UIHelp(row, value.name)
         end
     end
+    local sources = {}
+    for _, value in ipairs(data.trash or {}) do sources[#sources + 1] = value end
+    for _, value in ipairs(data.containers or {}) do sources[#sources + 1] = value end
+    frame.trashTitle:SetText("Trash & treasures • " .. #sources)
+    pages = math.max(1, math.ceil(#sources / frame.trashRowsVisible))
+    frame.trashPage = math.max(1, math.min(pages, frame.trashPage)); setPages(frame.trashPages, frame.trashPage, pages)
+    for slot, row in ipairs(frame.trashRows) do
+        local value = slot <= frame.trashRowsVisible and sources[(frame.trashPage - 1) * frame.trashRowsVisible + slot] or nil
+        row.source = value; row:SetShown(value ~= nil)
+        if value then
+            row.name:SetText(value.name); row.detail:SetText(value.kind == "container" and "Treasure" or "Trash mob")
+            ns.UIButtonTone(row, frame.trashID == value.id and frame.trashKind == value.kind); ns.UIHelp(row, value.name)
+        end
+    end
+    if frame.trashID then
+        for _, value in ipairs(sources) do
+            if value.id == frame.trashID and value.kind == frame.trashKind then boss = value; break end
+        end
+    end
     frame.floor = math.max(1, math.min(math.max(1, #data.maps), frame.floor)); updateFloorMenu(frame)
     local map = data.maps[frame.floor]; drawMap(frame, map)
-    frame.bossName:SetText(boss and boss.name or "Boss information unavailable")
+    frame.bossName:SetText(boss and boss.name or "Select a loot source")
     frame.bossDetail:SetText(boss and ((boss.rare and "Rare • " or "") .. #boss.loot .. " listed drops") or "")
     image(frame.portrait, boss and boss.portrait or bossFallback)
     local loot = ns.DungeonViewerLoot(boss, frame.query, frame.category, frame.class)
-    frame.lootTitle:SetText("Boss loot • " .. #loot); frame.lootType:SetChoice(frame.category); frame.lootClass:SetChoice(frame.class)
+    frame.lootTitle:SetText((frame.category == "shared" and "Shared drops" or boss and boss.kind == "trash" and "Trash loot"
+        or boss and boss.kind == "container" and "Treasure loot" or "Boss loot") .. " • " .. #loot)
+    frame.lootType:SetChoice(frame.category); frame.lootClass:SetChoice(frame.class)
+    frame.lootType.options.shared:SetEnabled(boss ~= nil and boss.kind == "boss")
     pages = math.max(1, math.ceil(#loot / frame.lootRowsVisible)); frame.lootPage = math.max(1, math.min(pages, frame.lootPage)); setPages(frame.lootPages, frame.lootPage, pages)
     for slot, row in ipairs(frame.lootRows) do
         local value = slot <= frame.lootRowsVisible and loot[(frame.lootPage - 1) * frame.lootRowsVisible + slot] or nil
@@ -444,7 +496,7 @@ function ns.ShowDungeonViewer(group, mapOnly)
     if (frame.compact == true) ~= (mapOnly == true) then frame.mode:GetScript("OnClick")() end
     if selected ~= key then
         if ns.dungeonMapQuestWindow then ns.dungeonMapQuestWindow:Hide() end
-        frame.floor, frame.bossPage, frame.lootPage, frame.category, frame.query, frame.bossID = 1, 1, 1, "all", "", nil
+        frame.floor, frame.bossPage, frame.trashPage, frame.lootPage, frame.category, frame.query, frame.bossID, frame.trashID, frame.trashKind = 1, 1, 1, 1, "all", "", nil, nil, nil
         frame.floorMenu.menu:Hide(); frame.lootType.menu:Hide(); frame.lootClass.menu:Hide(); frame.search:SetText("")
     end
     selected, frame.data = key, ns.DungeonViewerData(key)

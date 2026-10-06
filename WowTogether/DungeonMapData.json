@@ -612,5 +612,12 @@
     "No guessed coordinates, ambiguous floor projections, entrance aliases or unrelated outdoor pins.",
     "Quest targets without an interior location remain unmarked; exterior pickups/turn-ins are not interior failures.",
     "Native exact-floor encounter positions override reference positions; reference facts are used only with matching artwork."
-  ]
+  ],
+  "encounterCorrections": {
+    "blackfathom-deeps": {
+      "201722": 4887,
+      "213334": 4829
+    },
+    "reason": "Original Vanilla encounter identities; existing reference coordinates retained."
+  }
 }

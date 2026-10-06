@@ -19,11 +19,12 @@
     },
     "dungeonJournalData": {
       "file": "DungeonJournalData.lua",
-      "sha256": "01d85aeed3bff21100529bb3775df82c3e5a06e3748e1cdd878c24ceb66b974b"
+      "sha256": "d113de074c27e4255b94d74cd839158d83ede608f99ef8c13c53a8cee2381385"
     },
     "dungeonMapData": {
       "file": "DungeonMapData.lua",
-      "sha256": "a2a21b71356381be0c7d5b8fdbaa9c169f41aebfd3f7fa46647b5764fd7d5ff7"
+      "sha256": "8ad9cbfd94f5a674acf7e616565c320b5fde9345c425eaba1cf72dcd20ebc6a5"
     }
-  }
+  },
+  "revision": "0.8.31: audited loot relationships and original Vanilla BFD marker identities; other datasets unchanged."
 }

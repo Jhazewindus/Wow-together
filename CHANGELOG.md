@@ -1,5 +1,26 @@
 # Wow Together changelog
 
+## 0.8.31
+
+**VANILLA LOOT AUDIT**
+
+- Use original Vanilla encounter IDs for classic dungeons. Fix BFD's SoD raid
+  identities and their map-marker clicks; include omitted Vanilla encounters.
+- Audit all 933 listed Vanilla NPC loot tables and 95 treasure-container tables.
+  Keep 5,557 item facts shared and lazy. Preserve captured Forever additions;
+  exclude 13,127 season-only source rows. Source coverage is not a guarantee of
+  current beta drops or measured drop rates.
+- Separate encounter loot from shared/world drops. Add each sourced trash mob
+  and treasure container beneath bosses, with its own loot and existing search /
+  class filters. Keep trash and treasure loot sources off the dungeon map.
+- Include reported boss drops for Hall of Thanes, Ruins of Lordaeron and
+  Excavation Site: Wetlands. Keep unpublished beta loot unknown.
+- BG changes opacity. ST stops the guide and leaves an empty window. Exit (×)
+  stops and closes it. Cancel scans, planning, saved restore and pending combat
+  starts immediately; only protected map cleanup waits for combat to end.
+- Include all 64 Lua files and Media; replace the complete folder, then reload.
+  Host checks verify data and logic; UI and live loot still need beta testing.
+
 ## 0.8.30
 
 **DUNGEON PREPARATION**
