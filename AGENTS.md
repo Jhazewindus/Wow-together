@@ -8,12 +8,13 @@ the friend-testing checklist in one message. Do not ask for posting permission
 again for ordinary updates to this addon and channel.
 
 The user has also authorized publishing the addon source and release history to
-`Jhazewindus/Wow-together` on GitHub, including future completed updates. Push the
-tested working branch and its annotated release tag, preserving prior history.
-Keep a reviewable pull request for changes destined for `main`; attach any created
-or updated pull request to the chat. Verify the remote branch/tag commit IDs before
-reporting success. Do not force-push, replace existing tags or merge without an
-explicit request. GitHub source publication complements the Discord builds.
+`Jhazewindus/Wow-together` on GitHub, including future completed updates. The user
+requires direct pushes to `main` for tested updates. Work on `main` in the existing
+checkout, fetch and incorporate remote changes, then push normally with the
+matching annotated release tag. Do not require pull requests or ask for posting
+permission again; create a pull request only if specifically requested. Preserve
+history: do not force-push or replace existing tags. Verify remote commit/tag IDs
+before reporting success. GitHub source publication complements Discord builds.
 
 For each addon release:
 
@@ -31,8 +32,7 @@ For each addon release:
    external blocker. Preserve proxy routing and certificate verification.
    Ambiguous failures require checking channel history before retrying.
 6. Commit the tested source and matching release notes, create the annotated
-   version tag, and push the development branch and that tag to GitHub. Update
-   the pull request to describe the final code and validation. Report GitHub
+   version tag, and push `main` and that tag directly to GitHub. Report GitHub
    and Discord outcomes separately if either destination fails.
 
 Read `DISCORD_WEBHOOK_URL` from the environment. For a webhook supplied in the
