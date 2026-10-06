@@ -92,6 +92,7 @@ end
 local function scrollTop(filter)
     return filter == "library" and -246 or filter == "guides" and -214 or -150
 end
+ns.UIEditBox = searchBox
 
 function ns.ToggleWindow()
     ns.window:SetShown(not ns.window:IsShown())
@@ -422,6 +423,10 @@ local function makeCard()
         end
     end
     card.mapButton = button(card, "Show route", 128, activate)
+    card.dungeonButton = button(card, "See dungeon", 116, function()
+        if card.activity and card.activity.dungeon then ns.ShowDungeonViewer(card.activity.dungeon) end
+    end, true)
+    card.dungeonButton:SetPoint("BOTTOMLEFT", 14, 10)
     card.detailsButton = button(card, "Quest details", 116, function()
         if card.activity and card.activity.dungeon then ns.ShowDungeonQuestList(card.activity.dungeon); return end
         if card.guide and not card.libraryItem and not card.guide.personal then ns.RequestStartRoute(card.guide); return end
@@ -439,7 +444,9 @@ local function makeCard()
     card.detailsButton:SetPoint("BOTTOMLEFT", 14, 10)
     card.mapButton:SetPoint("BOTTOMRIGHT", -14, 10)
     card:RegisterForClicks("LeftButtonUp")
-    card:SetScript("OnClick", activate)
+    card:SetScript("OnClick", function()
+        if card.activity and card.activity.dungeon then ns.ShowDungeonViewer(card.activity.dungeon) else activate() end
+    end)
     return card
 end
 
@@ -626,9 +633,14 @@ function ns.Render(queryContext, routeUpdated)
         card.guide = guide
         card.libraryItem = libraryItem
         card.activity = activity
+        card.dungeonButton:SetShown(activity ~= nil and activity.dungeon ~= nil)
+        card.detailsButton:ClearAllPoints()
+        card.detailsButton:SetPoint(activity and activity.dungeon and "BOTTOMRIGHT" or "BOTTOMLEFT",
+            activity and activity.dungeon and -150 or 14, 10)
         card.mapButton:SetShown(guide ~= nil or libraryItem ~= nil or activity ~= nil)
         card.detailsButton:SetShown(guide ~= nil or (activity and activity.dungeon) ~= nil)
         card.detailsButton.caption:SetText("Quest details")
+        ns.UIButtonTone(card.detailsButton, true)
         card.detailsButton:SetEnabled(true)
         card.buyButton:SetShown(guide ~= nil and #ns.QuestShoppingList(guide.records, queryContext) > 0)
         card.catchupButton:SetShown(guide ~= nil and guide.mode == "zone" and guide.fullGuide
@@ -643,7 +655,7 @@ function ns.Render(queryContext, routeUpdated)
             card.reason:Show(); card.reason:SetHeight(46); card.reason:SetText(activity.detail)
             ns.UIHelp(card, activity.title .. "\n" .. activity.detail)
             card.mapButton.caption:SetText(activity.action)
-            if activity.dungeon then card.detailsButton.caption:SetText("Quest list") end
+            if activity.dungeon then card.detailsButton.caption:SetText("Quest list"); ns.UIButtonTone(card.detailsButton, false) end
         elseif libraryItem then
             height = libraryItem.id and 122 or 108
             card.accent:SetColorTexture(unpack(colors.gold))

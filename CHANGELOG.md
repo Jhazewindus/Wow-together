@@ -1,5 +1,22 @@
 # Wow Together changelog
 
+## 0.8.24
+
+- Add See dungeon first on Dungeon quests cards; keep Quest list beside Start
+  route. The full journal opens from anywhere without changing a quest route.
+- Add floor images, paged boss/portrait selection, notable loot with item icons,
+  literal search, equipment/other filters, cached native tooltips and modified
+  item clicks. Capture attributed Forever facts: 243 encounters / 2,766 notable
+  drop entries in 19 Classic complexes. Native floor/portrait data takes
+  precedence; unknown boss positions and new-dungeon loot are not invented.
+- Add Map only / Full view, smooth resizing, saved separate sizes/positions and
+  a BG toggle. Share layouts across all dungeons/reloads; keep owned map windows
+  open during combat. Entering a recognized dungeon optionally asks Open map?
+  and opens the compact map. Add a setting to disable that prompt.
+- Reference Blizzard client artwork only; no external art or source scripts in
+  the addon. Include all 59 Lua files and source provenance. Beta API behavior,
+  texture availability and instance matching still need real-client testing.
+
 ## 0.8.23
 
 - Romits: improve untimed flight estimates using native connecting stops when

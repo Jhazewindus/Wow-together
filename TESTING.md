@@ -1,12 +1,12 @@
 # Wow Together — friend test script
 
-For **0.8.23**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.24**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 56 Lua files** and
+1. Replace the complete WowTogether folder, including **all 59 Lua files** and
    the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    `/reload`; restart fully if a new addon folder does not appear.
@@ -15,6 +15,30 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Dungeon atlas — about 10 minutes
+
+1. From outdoors, open Dungeon quests. Expect See dungeon on the left and Quest
+   list beside Start route on the right. See dungeon opens a journal immediately;
+   opening it must not replace, advance or clear your leveling guide.
+2. Try Ragefire Chasm, Wailing Caverns and a multi-floor dungeon. Change floors,
+   click bosses, search loot, use Equipment/Other filters and page long lists.
+   Hover an item for cached client stats and test a Shift-click item link. Newly
+   uncached items may need a moment. Check portraits/icons against actual bosses.
+3. Native numbered boss markers, when provided by the client, select that boss's
+   loot. Old map-image skulls are painted into the image and are not clickable.
+   Missing map tiles must show one clear unavailable state with usable loot.
+   Check new Forever dungeons: incomplete maps/bosses/loot must not be fabricated.
+4. Switch to Map only, move/resize it and toggle BG. Enter combat: it stays open
+   and can still be resized without protected-action errors. Full view restores
+   loot. Change dungeons and /reload: compact/full sizes and positions persist.
+5. Enter a recognized dungeon: expect Open map? once. Decline, then leave/reenter
+   and accept: it opens the compact map. Disable Offer the map when entering a
+   dungeon in settings: manual See dungeon must continue working. Entry in combat
+   should wait until combat ends. Raids must not trigger this popup.
+6. Report dungeon, floor, client build and /wt probe for missing/mismatched assets,
+   markers or items. Classic reference maps can differ from Forever; host previews
+   are not proof of client rendering. Include actual NPC/item IDs where possible.
 
 ## Romits' flight times — about 10–15 minutes
 

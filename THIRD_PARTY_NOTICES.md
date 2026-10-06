@@ -84,3 +84,13 @@ contains factual game data, rather than copied implementation.
 Narrow coordinate observations from public Wowhead Forever comments retain
 quest/comment IDs for attribution in the coverage report. Comment prose and
 artwork are excluded; observations are labeled as needing beta verification.
+
+## Dungeon viewer facts (0.8.24)
+
+DungeonJournalData records factual NPC/item IDs, names, levels and loot relationships
+from captured Wowhead Forever zone/NPC pages; the provenance manifest contains each
+URL and SHA-256. Website scripts, editorial prose and image files are not bundled.
+Map/portrait/icon filenames reference Blizzard client assets checked against the
+public wowdev filename list. Blizzard retains its artwork rights; this project's
+MIT license does not license Blizzard textures or preview images. See
+DUNGEON_VIEWER.md for source versions, scope and beta limitations.

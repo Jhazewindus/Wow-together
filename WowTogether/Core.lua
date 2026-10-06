@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.23"
+ns.VERSION = "0.8.24"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}
@@ -129,6 +129,18 @@ function ns.Diagnostics()
         {"C_Map.GetBestMapForUnit", C_Map and C_Map.GetBestMapForUnit},
         {"C_Map.GetPlayerMapPosition", C_Map and C_Map.GetPlayerMapPosition},
         {"C_Map.GetMapInfo", C_Map and C_Map.GetMapInfo},
+        {"IsInInstance", IsInInstance},
+        {"GetInstanceInfo", GetInstanceInfo},
+        {"EJ_GetInstanceByIndex", EJ_GetInstanceByIndex},
+        {"EJ_GetInstanceInfo", EJ_GetInstanceInfo},
+        {"EJ_GetEncounterInfoByIndex", EJ_GetEncounterInfoByIndex},
+        {"EJ_GetEncounterInfo", EJ_GetEncounterInfo},
+        {"EJ_GetCreatureInfo", EJ_GetCreatureInfo},
+        {"C_EncounterJournal.GetEncountersOnMap", C_EncounterJournal and C_EncounterJournal.GetEncountersOnMap},
+        {"C_Map.GetMapArtLayers", C_Map and C_Map.GetMapArtLayers},
+        {"C_Map.GetMapArtLayerTextures", C_Map and C_Map.GetMapArtLayerTextures},
+        {"C_Map.GetMapGroupID", C_Map and C_Map.GetMapGroupID},
+        {"C_Map.GetMapGroupMembersInfo", C_Map and C_Map.GetMapGroupMembersInfo},
         {"C_Map.GetMapWorldSize", C_Map and C_Map.GetMapWorldSize},
         {"GetPlayerFacing", GetPlayerFacing},
         {"C_Map.GetWorldPosFromMapPos", C_Map and C_Map.GetWorldPosFromMapPos},
@@ -224,6 +236,7 @@ function ns.Diagnostics()
     ns.GuideTipDiagnostics(output)
     ns.ClassTrainingDiagnostics(output)
     ns.DungeonArtworkDiagnostics(output)
+    ns.DungeonViewerDiagnostics(output)
     local low, high = ns.PreferredQuestLevels()
     if low then
         local level, _, name = ns.PartyLevelFloor()
@@ -270,6 +283,7 @@ ns.On("ADDON_LOADED", function(name)
     ns.CreateNavigation()
     ns.InitializeGuidePersistence()
     if ns.InitializeProfessionGuides then ns.InitializeProfessionGuides() end
+    ns.InitializeDungeonViewer()
     ns.Refresh()
     ns.Print("Loaded. /wt opens the quest view; /wt probe opens diagnostics.")
 end)

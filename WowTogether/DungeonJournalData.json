@@ -1,0 +1,1381 @@
+{
+  "schema": 1,
+  "captured": "2026-10-06",
+  "counts": {
+    "dungeons": 28,
+    "dungeonsWithBosses": 19,
+    "bosses": 243,
+    "lootEntries": 2766,
+    "portraits": 164,
+    "mapReferences": 19
+  },
+  "zoneSources": {
+    "the-hall-of-thanes": {
+      "id": 16919,
+      "url": "https://www.wowhead.com/forever/zone=16919",
+      "sha256": "fdd8e8e703088c3affa0d3baa6f1d3107210f46800af50fe366e4e4a9cd51336",
+      "bytes": 68026
+    },
+    "shadowfang-keep": {
+      "id": 209,
+      "url": "https://www.wowhead.com/forever/zone=209",
+      "sha256": "6735811de11afa652ab8699a31d2a79029d7e01a199e00954d159a6b0d051643",
+      "bytes": 256002
+    },
+    "scarlet-monastery": {
+      "id": 796,
+      "url": "https://www.wowhead.com/forever/zone=796",
+      "sha256": "503e9ebc5ee0db8fff9e986d5842fa670304a54d289572eaba3139c735c66f89",
+      "bytes": 299569
+    },
+    "zulfarrak": {
+      "id": 1176,
+      "url": "https://www.wowhead.com/forever/zone=1176",
+      "sha256": "2ec6696ddee9ac1b14026891f227bbd1b6e2a3cbff055dd74695568c7346bdc2",
+      "bytes": 148860
+    },
+    "ragefire-chasm": {
+      "id": 2437,
+      "url": "https://www.wowhead.com/forever/zone=2437",
+      "sha256": "f42811d1cfd5e1f3dde6391b89ceafebe342b10732d983c75f4e5231c766f70a",
+      "bytes": 186631
+    },
+    "the-stockade": {
+      "id": 717,
+      "url": "https://www.wowhead.com/forever/zone=717",
+      "sha256": "edbadd2b72d6040485e6e584f852552297c45649a5f38254e824e33d47a8c865",
+      "bytes": 136668
+    },
+    "uldaman": {
+      "id": 1337,
+      "url": "https://www.wowhead.com/forever/zone=1337",
+      "sha256": "2cca09a02c636380a7f1cc466ad6a839194e5bd78aa99771f1c197b85fa247a5",
+      "bytes": 193812
+    },
+    "ruins-of-lordaeron": {
+      "id": 16611,
+      "url": "https://www.wowhead.com/forever/zone=16611",
+      "sha256": "34dbd7e30de62be037b24928b49a8f655c7edc8a428e7b183fb83e5d31856b50",
+      "bytes": 102796
+    },
+    "excavation-site-wetlands": {
+      "id": 16732,
+      "url": "https://www.wowhead.com/forever/zone=16732",
+      "sha256": "5f08f6b35263033977454c59efa67ea917434855df65c0b06d898f4591aafe72",
+      "bytes": 73166
+    },
+    "maraudon": {
+      "id": 2100,
+      "url": "https://www.wowhead.com/forever/zone=2100",
+      "sha256": "e599c6e3df6d474f81f4b6ae3e3c684bf11deaec0219d70788864ce524544fe0",
+      "bytes": 202186
+    },
+    "wailing-caverns": {
+      "id": 718,
+      "url": "https://www.wowhead.com/forever/zone=718",
+      "sha256": "edc618bcb9a21a9e14c5dea182f80738bd07da620b7255b835bbbcd82250377d",
+      "bytes": 201594
+    },
+    "blackrock-spire": {
+      "id": 1583,
+      "url": "https://www.wowhead.com/forever/zone=1583",
+      "sha256": "6429ee4628943a240855d43e295e06445bd3178f493ad3b6a4776ba2d000ced0",
+      "bytes": 269528
+    },
+    "the-deadmines": {
+      "id": 1581,
+      "url": "https://www.wowhead.com/forever/zone=1581",
+      "sha256": "677e1192ddb9391b77e84381e73ec7d1e95f1c131f57fe67ebd5b2a873b99827",
+      "bytes": 251076
+    },
+    "city-of-dalaran": {
+      "id": 16544,
+      "url": "https://www.wowhead.com/forever/zone=16544",
+      "sha256": "b49c26fd495b19fa27cd6debd30c3a2a6572d66d14fabd49d17ce52a44c07165",
+      "bytes": 47404
+    },
+    "razorfen-downs": {
+      "id": 722,
+      "url": "https://www.wowhead.com/forever/zone=722",
+      "sha256": "5f293808b9c52806b34501ebebec17257b708f3b219dcc22fb8249a90f120489",
+      "bytes": 147724
+    },
+    "blackrock-depths": {
+      "id": 1584,
+      "url": "https://www.wowhead.com/forever/zone=1584",
+      "sha256": "65f15353af52f760a3ab2e65f1149923f7ace1752022403ccf7745f90dc27dfd",
+      "bytes": 339624
+    },
+    "blackfathom-deeps": {
+      "id": 719,
+      "url": "https://www.wowhead.com/forever/zone=719",
+      "sha256": "8a5aae854370220e4f0ce97fcfcc4622e37c479a985817d5282105b7dedd6f9e",
+      "bytes": 184381
+    },
+    "scholomance": {
+      "id": 2057,
+      "url": "https://www.wowhead.com/forever/zone=2057",
+      "sha256": "45ba96b72b5de83447b8c0fdfa772b4f04e9f75862677824e95e2d0722868806",
+      "bytes": 236093
+    },
+    "gnomeregan": {
+      "id": 721,
+      "url": "https://www.wowhead.com/forever/zone=721",
+      "sha256": "55dacb09ee480929084e63af0c5b4738e860ef88b31b03aca9ae8f208f8a5f2c",
+      "bytes": 201047
+    },
+    "the-temple-of-atalhakkar": {
+      "id": 1477,
+      "url": "https://www.wowhead.com/forever/zone=1477",
+      "sha256": "4278716a98ba5e7a8d2365752a4886401fc7ec9a39d9873e2a23ed28083a3e4c",
+      "bytes": 207320
+    },
+    "razorfen-kraul": {
+      "id": 491,
+      "url": "https://www.wowhead.com/forever/zone=491",
+      "sha256": "f5ecbac08aa394e6186b3caf3b20454721f0e89bc97e59af6fcf6deae84491e8",
+      "bytes": 150077
+    },
+    "stratholme": {
+      "id": 2017,
+      "url": "https://www.wowhead.com/forever/zone=2017",
+      "sha256": "9c597967b8bcf2ba5504617f1c68fee7d19a3c775943f2c47d367e6ee819f965",
+      "bytes": 379803
+    },
+    "dire-maul": {
+      "id": 2557,
+      "url": "https://www.wowhead.com/forever/zone=2557",
+      "sha256": "e5b7b406275e3d531f9c837e74cc0ea2392a2e845d5b4a3cefe0499d95627471",
+      "bytes": 232067
+    }
+  },
+  "bossSources": {
+    "639": {
+      "url": "https://www.wowhead.com/forever/npc=639",
+      "sha256": "cd1d132005ab9f0f9319e9a6f743aa1e9d020fe6033d559238219f4511b9e33a",
+      "lootRows": 183
+    },
+    "642": {
+      "url": "https://www.wowhead.com/forever/npc=642",
+      "sha256": "4d7a1cc73f9ec6024857d051c9c2a6f473e2c07f361cee7e6c370f8c67c294bb",
+      "lootRows": 182
+    },
+    "643": {
+      "url": "https://www.wowhead.com/forever/npc=643",
+      "sha256": "7f0d201f540e5d98729277d0309284728913b84288ab3867c5a771b1373ddb25",
+      "lootRows": 193
+    },
+    "644": {
+      "url": "https://www.wowhead.com/forever/npc=644",
+      "sha256": "3bd06d907af4cf17f8bfc09bd1fd0ce73c76fc7b7ffe53cb8ec325a2b5f1080c",
+      "lootRows": 180
+    },
+    "645": {
+      "url": "https://www.wowhead.com/forever/npc=645",
+      "sha256": "c6315520b911ddec75f10671a138180ae4622e1ceed714d25b36df2291d5e98e",
+      "lootRows": 184
+    },
+    "646": {
+      "url": "https://www.wowhead.com/forever/npc=646",
+      "sha256": "9afcd251102fa7638d382849d35b0ee822ebedc597f1d8bcd6feac2d1dd5085c",
+      "lootRows": 183
+    },
+    "647": {
+      "url": "https://www.wowhead.com/forever/npc=647",
+      "sha256": "b39f817f8f057ae45208e0053112111932fffa5c980f6c5a3bf7602f79962852",
+      "lootRows": 185
+    },
+    "1663": {
+      "url": "https://www.wowhead.com/forever/npc=1663",
+      "sha256": "c36bf972995ea45b8e5da6960804f7b4bbda3a3faf920998737722fbc18f38fc",
+      "lootRows": 170
+    },
+    "1666": {
+      "url": "https://www.wowhead.com/forever/npc=1666",
+      "sha256": "c2fd11319bd910f489d032321a47c1181b6d8b22c8e4563d354592b65e0416c9",
+      "lootRows": 177
+    },
+    "1696": {
+      "url": "https://www.wowhead.com/forever/npc=1696",
+      "sha256": "45dc16a33d9ec93ebac4275dd6782a46ce9e45674dc1dbb7a1f4cfc1c2bad0e0",
+      "lootRows": 201
+    },
+    "1716": {
+      "url": "https://www.wowhead.com/forever/npc=1716",
+      "sha256": "a9f995f616bb4397f6da906f960624027af8d852656024ccfc28efb10f655280",
+      "lootRows": 212
+    },
+    "1717": {
+      "url": "https://www.wowhead.com/forever/npc=1717",
+      "sha256": "8f8c68657ade7edba406a14ab50b4a2fe25defdb50633eb2e9a2cb3c9184e2b8",
+      "lootRows": 198
+    },
+    "1720": {
+      "url": "https://www.wowhead.com/forever/npc=1720",
+      "sha256": "26fb022d14b617218ccac060b671a3fdcd53f901b75ed66f18bf65914ed1e571",
+      "lootRows": 48
+    },
+    "1763": {
+      "url": "https://www.wowhead.com/forever/npc=1763",
+      "sha256": "3e2081e8d4bea53f846dc15f89c2db02274db8522b45c797036e047b3e3252a8",
+      "lootRows": 179
+    },
+    "2748": {
+      "url": "https://www.wowhead.com/forever/npc=2748",
+      "sha256": "1639c5bca470183c513ab0ba09fe8393680c4c17eec54f025cecb94d4da54759",
+      "lootRows": 63
+    },
+    "3586": {
+      "url": "https://www.wowhead.com/forever/npc=3586",
+      "sha256": "61c49f6e62190d30ebaf1dd2e01f03852d1141764a7e1cd6e23b8ad38929757d",
+      "lootRows": 95
+    },
+    "3653": {
+      "url": "https://www.wowhead.com/forever/npc=3653",
+      "sha256": "0005f50fd1a5d9e16f78c56e5d731a770a09b70593a5500debc911a7b05ae936",
+      "lootRows": 97
+    },
+    "3654": {
+      "url": "https://www.wowhead.com/forever/npc=3654",
+      "sha256": "6747d9be36fcdcf3922fd0e96b11d8c04c7064482e4be263f7a9c9bcb8a670b3",
+      "lootRows": 176
+    },
+    "3669": {
+      "url": "https://www.wowhead.com/forever/npc=3669",
+      "sha256": "d0be7f6e9c724758da679c46b35b06282bce96c37bb1682312ebafee45747597",
+      "lootRows": 127
+    },
+    "3670": {
+      "url": "https://www.wowhead.com/forever/npc=3670",
+      "sha256": "ec4d7c72d0d6b2e5995db7f364ea0c5dc903d73ec5a56804579d0992858af6a7",
+      "lootRows": 113
+    },
+    "3671": {
+      "url": "https://www.wowhead.com/forever/npc=3671",
+      "sha256": "d290219ee5773340eb15a1c20f3f3a96cf329bb7be06056494f2e3e9d227f0e0",
+      "lootRows": 129
+    },
+    "3673": {
+      "url": "https://www.wowhead.com/forever/npc=3673",
+      "sha256": "a599f4c89173bc97c8f07003fbfc05902e19984bffa2bd9f5971ec71f6cc25f3",
+      "lootRows": 109
+    },
+    "3674": {
+      "url": "https://www.wowhead.com/forever/npc=3674",
+      "sha256": "148e7ae9bd679f41df1a797e6aa62272f9bcde35cbb339d742b462b0b571c4b6",
+      "lootRows": 80
+    },
+    "3872": {
+      "url": "https://www.wowhead.com/forever/npc=3872",
+      "sha256": "a8ebde6f1e834dd24c27767ddab5af76ea4fb052d61c0d929aa6758663f14d03",
+      "lootRows": 88
+    },
+    "3886": {
+      "url": "https://www.wowhead.com/forever/npc=3886",
+      "sha256": "b2de6c14a3a57773ba6de3e597084a7bf41969cee15951fce1c53dfd3edf5b3b",
+      "lootRows": 116
+    },
+    "3887": {
+      "url": "https://www.wowhead.com/forever/npc=3887",
+      "sha256": "d4801f6e7d6383c0e3ac05a283814d61663507ee3fee8d3565c4541fb02e294e",
+      "lootRows": 148
+    },
+    "3914": {
+      "url": "https://www.wowhead.com/forever/npc=3914",
+      "sha256": "543a516674163f875b30976022c186ea88d607a388f62b2ca4bc330a769ee2ae",
+      "lootRows": 143
+    },
+    "3927": {
+      "url": "https://www.wowhead.com/forever/npc=3927",
+      "sha256": "aaefe49e0073d0a0e8e103ecd6883db162c529241557b19e14e9fcd100dab193",
+      "lootRows": 107
+    },
+    "3974": {
+      "url": "https://www.wowhead.com/forever/npc=3974",
+      "sha256": "40bad8fa3482949a1d5271aa2d6b2bc822602c187a774e1af42199a4c1fe38d5",
+      "lootRows": 200
+    },
+    "3975": {
+      "url": "https://www.wowhead.com/forever/npc=3975",
+      "sha256": "e31a8b8b47f94c258eca3e7c1e4693c7d28405d429d643c21b0ab495f13a45a2",
+      "lootRows": 197
+    },
+    "3976": {
+      "url": "https://www.wowhead.com/forever/npc=3976",
+      "sha256": "fc4741154eb5e9228b44c96697dee6e97c85592e8fe4a99306b3066692f6cc2f",
+      "lootRows": 224
+    },
+    "3977": {
+      "url": "https://www.wowhead.com/forever/npc=3977",
+      "sha256": "6c996aa1a952e1691c951cf75b50df9792ad2120851588e9242de4503495fada",
+      "lootRows": 106
+    },
+    "3983": {
+      "url": "https://www.wowhead.com/forever/npc=3983",
+      "sha256": "6f6f452b365ff89f301a560db3924d0e263c5c123ee0a9df3eefcca998167cc9",
+      "lootRows": 234
+    },
+    "4274": {
+      "url": "https://www.wowhead.com/forever/npc=4274",
+      "sha256": "911579d1b7d46a80d5fe823af5ceed275ee3b08ec5a1533b40af43c757399067",
+      "lootRows": 86
+    },
+    "4275": {
+      "url": "https://www.wowhead.com/forever/npc=4275",
+      "sha256": "692ec584d25d82fdda0a60584b6736e7f71b21099d00c14ae5c828f3b9b976dc",
+      "lootRows": 127
+    },
+    "4278": {
+      "url": "https://www.wowhead.com/forever/npc=4278",
+      "sha256": "749700a6af13a74100f2cb0b69c4aeef8b2e6711f1c2393e14ba2d8664bfb308",
+      "lootRows": 148
+    },
+    "4279": {
+      "url": "https://www.wowhead.com/forever/npc=4279",
+      "sha256": "a491c6825940fb5e60552f8a1ebaa0d5d0fe8a7121d4eff2d422f4126b0b82b4",
+      "lootRows": 128
+    },
+    "4420": {
+      "url": "https://www.wowhead.com/forever/npc=4420",
+      "sha256": "2fdcac0eb59ea85eec57772f4b645bf9eaaf80c9ce664de5e995edc78254853a",
+      "lootRows": 141
+    },
+    "4421": {
+      "url": "https://www.wowhead.com/forever/npc=4421",
+      "sha256": "ebabb07bdc3b25e0cd92b7cccfde5ecf981a4c23bff1d715f6f5bf2177f594ce",
+      "lootRows": 147
+    },
+    "4422": {
+      "url": "https://www.wowhead.com/forever/npc=4422",
+      "sha256": "873fecea2ce23898419508de4b653cc88e172943ff983232b262bbfe99c8d588",
+      "lootRows": 99
+    },
+    "4424": {
+      "url": "https://www.wowhead.com/forever/npc=4424",
+      "sha256": "66d5d8962940cd31f6d68edb9a985d51dd767093f7a2c41a931906985187ab7c",
+      "lootRows": 201
+    },
+    "4425": {
+      "url": "https://www.wowhead.com/forever/npc=4425",
+      "sha256": "f174398170a90288ca669f1dc4e7e0e87a9b8b1754080a9a9dfcd9e99db77eb7",
+      "lootRows": 31
+    },
+    "4428": {
+      "url": "https://www.wowhead.com/forever/npc=4428",
+      "sha256": "25fc16916c8f72b4a916414dbd2f9c4dafcc93c3c2c3214a1b7d4c8ae6d95679",
+      "lootRows": 148
+    },
+    "4542": {
+      "url": "https://www.wowhead.com/forever/npc=4542",
+      "sha256": "6e9142493c39d4f1d6c79ca6912d1e92fc30853c0aefd67a2db26aff2aa1b9ab",
+      "lootRows": 183
+    },
+    "4543": {
+      "url": "https://www.wowhead.com/forever/npc=4543",
+      "sha256": "7e60177128bc236e62d175f4f0612774b10db4539d217faa44acc52312c189dc",
+      "lootRows": 206
+    },
+    "4842": {
+      "url": "https://www.wowhead.com/forever/npc=4842",
+      "sha256": "5230099fcc36a7732667fcbe7d4a9e42d623965ed2438f64ed9a32310964ce12",
+      "lootRows": 48
+    },
+    "4854": {
+      "url": "https://www.wowhead.com/forever/npc=4854",
+      "sha256": "53f36be91cadf75c45acd8317c21b953312899b1b7ac8429cc8b7b0e3b1649d8",
+      "lootRows": 77
+    },
+    "4857": {
+      "url": "https://www.wowhead.com/forever/npc=4857",
+      "sha256": "0d7feb1fad7f5b4d266d197375bf85342ef2bdc6469f320bd8709c20c9d08064",
+      "lootRows": 105
+    },
+    "5709": {
+      "url": "https://www.wowhead.com/forever/npc=5709",
+      "sha256": "0d94a3fe407981324637c45576cf79d5da8e5b9ef5496e7e658fc535280512bb",
+      "lootRows": 28
+    },
+    "5710": {
+      "url": "https://www.wowhead.com/forever/npc=5710",
+      "sha256": "94065468c091abd6a41e79907ac7c25bf3d8341bdef9d6d3d6c13579b3feed5a",
+      "lootRows": 46
+    },
+    "5711": {
+      "url": "https://www.wowhead.com/forever/npc=5711",
+      "sha256": "df9f0a4a943ff56dbd112936ceb73ed340af9991572796e9a182c852217cbf13",
+      "lootRows": 45
+    },
+    "5712": {
+      "url": "https://www.wowhead.com/forever/npc=5712",
+      "sha256": "e49350aaec7eac983d947d1c1cb8fb9fc17b15b2b4a7f180b7409810b0d4ad50",
+      "lootRows": 117
+    },
+    "5713": {
+      "url": "https://www.wowhead.com/forever/npc=5713",
+      "sha256": "1a66b14c5cc2e96d1d28b95cf386307f40df4c35ccc33ba2c2574ef4b0e44a40",
+      "lootRows": 129
+    },
+    "5714": {
+      "url": "https://www.wowhead.com/forever/npc=5714",
+      "sha256": "fdd05538bc9b8ff3f483d54a78f3461b1f8c8ca1270ae3433f382fda144fbff9",
+      "lootRows": 143
+    },
+    "5715": {
+      "url": "https://www.wowhead.com/forever/npc=5715",
+      "sha256": "5fb5ce20e1f15dcfb4d9f04e013618097f761d3028bc9858df0583c75e4f5ba4",
+      "lootRows": 113
+    },
+    "5716": {
+      "url": "https://www.wowhead.com/forever/npc=5716",
+      "sha256": "9b7fbf824157b93b1aac59f14f6f8f3f6038caee024d91521346ff066f94589e",
+      "lootRows": 134
+    },
+    "5717": {
+      "url": "https://www.wowhead.com/forever/npc=5717",
+      "sha256": "4570661a730c104d2a67ddec996b7e541aa0afb079d04a559429e54c4f2a9fa3",
+      "lootRows": 119
+    },
+    "5719": {
+      "url": "https://www.wowhead.com/forever/npc=5719",
+      "sha256": "a1bd479757975d082d99ef729070f6712f37db9aa8a213509c3e7628f5854cf8",
+      "lootRows": 41
+    },
+    "5720": {
+      "url": "https://www.wowhead.com/forever/npc=5720",
+      "sha256": "2e592ab97958b7d9b7a72517bc4385554e62e8ff49e00608247c662fe91629b7",
+      "lootRows": 45
+    },
+    "5721": {
+      "url": "https://www.wowhead.com/forever/npc=5721",
+      "sha256": "f53fe5ee9512da16d53a91557aff36b4033f25176341c279ad213e20622bf476",
+      "lootRows": 42
+    },
+    "5722": {
+      "url": "https://www.wowhead.com/forever/npc=5722",
+      "sha256": "5f1ba587ddd463dec9c7b33d975bf2ca9353308e02fe1f4ef76eff6c309a1fd4",
+      "lootRows": 42
+    },
+    "5775": {
+      "url": "https://www.wowhead.com/forever/npc=5775",
+      "sha256": "84e0a738840f11f83011027a0ec912b46a05f7c31a437e175185ae8f93f63ded",
+      "lootRows": 122
+    },
+    "5912": {
+      "url": "https://www.wowhead.com/forever/npc=5912",
+      "sha256": "dc2865c8262e20d2ba655b832fc51c6fb63c43374832b03cab800a86a3722f84",
+      "lootRows": 37
+    },
+    "6168": {
+      "url": "https://www.wowhead.com/forever/npc=6168",
+      "sha256": "debb6de009a30e3de9994aa93c74239d7c85aac7c70153087e999d304b034788",
+      "lootRows": 87
+    },
+    "6228": {
+      "url": "https://www.wowhead.com/forever/npc=6228",
+      "sha256": "720c80d9077bdf2bcfb7dd686a0cdacab5f21bc0f2c6b319da903257dac2a2ea",
+      "lootRows": 53
+    },
+    "6229": {
+      "url": "https://www.wowhead.com/forever/npc=6229",
+      "sha256": "86bfe3dfd84c7fd2bcdd03d37dd2d705f671e6f39e02f94db6038944707ce0fa",
+      "lootRows": 89
+    },
+    "6235": {
+      "url": "https://www.wowhead.com/forever/npc=6235",
+      "sha256": "b0e20275b08bb1b6fdbddeee7511ca8435364f36a6a52c27148ebf4a629a9a2b",
+      "lootRows": 78
+    },
+    "6487": {
+      "url": "https://www.wowhead.com/forever/npc=6487",
+      "sha256": "9311dcf7cf31683eaccf193433a08889f25fc8111e13a18d345e9de8e4e47e8e",
+      "lootRows": 205
+    },
+    "6488": {
+      "url": "https://www.wowhead.com/forever/npc=6488",
+      "sha256": "17914dc0e9b21c74ca9bfce17469c7ec533f2802eeb487f220490008903049ac",
+      "lootRows": 86
+    },
+    "6489": {
+      "url": "https://www.wowhead.com/forever/npc=6489",
+      "sha256": "f2eb1e9af3ab198befbe7c61c9001d96c078b531cbed3a0e415d43a5d67f45b1",
+      "lootRows": 95
+    },
+    "6490": {
+      "url": "https://www.wowhead.com/forever/npc=6490",
+      "sha256": "7892399a550ae8bf8f288cc9712cbab634d14f01b1cd07e5f0a655e9e84cf816",
+      "lootRows": 90
+    },
+    "6906": {
+      "url": "https://www.wowhead.com/forever/npc=6906",
+      "sha256": "1bab6655908fd018820af6e91f3d76cf1e5cd91ad4b51efc520bcdbf967d4dc7",
+      "lootRows": 14
+    },
+    "6907": {
+      "url": "https://www.wowhead.com/forever/npc=6907",
+      "sha256": "24f025e85b334e119606772cc1e834a1999de4e41dc8a334f2e16822647a7951",
+      "lootRows": 18
+    },
+    "6908": {
+      "url": "https://www.wowhead.com/forever/npc=6908",
+      "sha256": "72644af052cbdc49327cdbb15ef0ab4f54b4be40a405b63b2d05b64655d5aba8",
+      "lootRows": 20
+    },
+    "6910": {
+      "url": "https://www.wowhead.com/forever/npc=6910",
+      "sha256": "ba9c2982d4acbf84c399ba13f58e82b2e627918b8abea8b59a7e0d92e98d2e55",
+      "lootRows": 85
+    },
+    "7023": {
+      "url": "https://www.wowhead.com/forever/npc=7023",
+      "sha256": "83a08774231f744fc84bf83f327e525768b0bd714213f32440527971185e19ac",
+      "lootRows": 99
+    },
+    "7079": {
+      "url": "https://www.wowhead.com/forever/npc=7079",
+      "sha256": "926f0c2b8d316fb3e9da093ea2935adb48c026f23339be09e2ef00862995dbb5",
+      "lootRows": 47
+    },
+    "7206": {
+      "url": "https://www.wowhead.com/forever/npc=7206",
+      "sha256": "16bb2635f0e0049ad5d147c4993b5b3324259b0314f61d8b6fdf5ab78e999c22",
+      "lootRows": 56
+    },
+    "7228": {
+      "url": "https://www.wowhead.com/forever/npc=7228",
+      "sha256": "bc32ad38344d10dc14a8c1b3e6849453efeaa5817402f920a46a57a939ecde71",
+      "lootRows": 96
+    },
+    "7267": {
+      "url": "https://www.wowhead.com/forever/npc=7267",
+      "sha256": "014caafe9ee59361eb878c4eee77365e7e1e10c065ee9fdb7e48dbc2b3067a13",
+      "lootRows": 72
+    },
+    "7271": {
+      "url": "https://www.wowhead.com/forever/npc=7271",
+      "sha256": "a3c503fc49e67630659d00354f97dcb91f69a0b0522b81f1241cbf54a6046475",
+      "lootRows": 173
+    },
+    "7272": {
+      "url": "https://www.wowhead.com/forever/npc=7272",
+      "sha256": "66c7238e903fc177f2dfdfa05f363f0a08ac67f1a0ddfdab2c94a4e4c2c4bc38",
+      "lootRows": 144
+    },
+    "7273": {
+      "url": "https://www.wowhead.com/forever/npc=7273",
+      "sha256": "2ac9bcbebcd02fb06c066e5b2cfae7e90694b8689cfe9f722333529cdb989ed9",
+      "lootRows": 45
+    },
+    "7274": {
+      "url": "https://www.wowhead.com/forever/npc=7274",
+      "sha256": "774f14655f1f5795d06fe52a5d40316ba01deb5ea4430a36274b6808467e9f3f",
+      "lootRows": 123
+    },
+    "7275": {
+      "url": "https://www.wowhead.com/forever/npc=7275",
+      "sha256": "7f6b66bf2f8eed9f93f6e440d277a0f6dd4d00e031add5195e113a5b03cb37c9",
+      "lootRows": 88
+    },
+    "7291": {
+      "url": "https://www.wowhead.com/forever/npc=7291",
+      "sha256": "be9be43488a13c00670f6c6e6601675b161f9cc4934f76d35ca772892d9c7f08",
+      "lootRows": 68
+    },
+    "7354": {
+      "url": "https://www.wowhead.com/forever/npc=7354",
+      "sha256": "1f7560e7ee3e894fb8b4530bda402539fbd1d396b672ba118525129aba2e7668",
+      "lootRows": 55
+    },
+    "7355": {
+      "url": "https://www.wowhead.com/forever/npc=7355",
+      "sha256": "4d85263033cfd191a5dde96a74404b2fa10744b99f7ce9a85864de179d081209",
+      "lootRows": 90
+    },
+    "7356": {
+      "url": "https://www.wowhead.com/forever/npc=7356",
+      "sha256": "7f01584f59af9813cf9ed9e24b7168742f0208786a88cea2ac7a20b96d372743",
+      "lootRows": 89
+    },
+    "7357": {
+      "url": "https://www.wowhead.com/forever/npc=7357",
+      "sha256": "fbe313ca0e9f37b8e72f21dba4744fbcbf9b492f091bc8ed454ef0ff79145e9e",
+      "lootRows": 137
+    },
+    "7358": {
+      "url": "https://www.wowhead.com/forever/npc=7358",
+      "sha256": "d5cc4883d28d1ae359fd422da223a184be960fd96c651986056dbf39d64d97c3",
+      "lootRows": 287
+    },
+    "7361": {
+      "url": "https://www.wowhead.com/forever/npc=7361",
+      "sha256": "d5d5f5ec69c8601fb7f4ea9018e83adeb1892ab97a0e043da6e4c5b139a5571c",
+      "lootRows": 109
+    },
+    "7795": {
+      "url": "https://www.wowhead.com/forever/npc=7795",
+      "sha256": "f9d88fdccda8ed1ffd878bd7dc2a3d1c92f5abe21cb2a7b7f4803248ed97223a",
+      "lootRows": 108
+    },
+    "7796": {
+      "url": "https://www.wowhead.com/forever/npc=7796",
+      "sha256": "36257e4e6ce40da3b734bd7fe75394f4d40c441627226a39dd398cea4dcd61f3",
+      "lootRows": 119
+    },
+    "7797": {
+      "url": "https://www.wowhead.com/forever/npc=7797",
+      "sha256": "11272646bbb3421199418e060a679b1b7826c3223cebf55d2f0002ce31911fef",
+      "lootRows": 107
+    },
+    "7800": {
+      "url": "https://www.wowhead.com/forever/npc=7800",
+      "sha256": "1375a5483538a7bdb7cabe6015d2578e18d4ccde8bde5ccaa1cde32021534ef6",
+      "lootRows": 140
+    },
+    "8127": {
+      "url": "https://www.wowhead.com/forever/npc=8127",
+      "sha256": "fd32054cf67025000842cee77dbe6433be608c0d5f02041dbc8f18d041c2bb9f",
+      "lootRows": 69
+    },
+    "8443": {
+      "url": "https://www.wowhead.com/forever/npc=8443",
+      "sha256": "7d774360c0c1d88cc574d60439755ff957320b399afd235028588aee88563896",
+      "lootRows": 5
+    },
+    "8567": {
+      "url": "https://www.wowhead.com/forever/npc=8567",
+      "sha256": "1d9006a5cf547ac60828290db9ae23ba9c35e9d3f1bcf2e4ad9e4265882ea418",
+      "lootRows": 144
+    },
+    "8580": {
+      "url": "https://www.wowhead.com/forever/npc=8580",
+      "sha256": "05c5a862d2775e073a0cb30442c504a95ce9a00ae71992546360b64c144ac13f",
+      "lootRows": 77
+    },
+    "8923": {
+      "url": "https://www.wowhead.com/forever/npc=8923",
+      "sha256": "682faa2eb38a5d0d43cd7c031d4816969079d31a772f7fbf27205df8be196d43",
+      "lootRows": 34
+    },
+    "8929": {
+      "url": "https://www.wowhead.com/forever/npc=8929",
+      "sha256": "425f6e18601afdda55f8095b111c69c915f5a87d59e8760fa47a83ddee28a7d7",
+      "lootRows": 52
+    },
+    "8983": {
+      "url": "https://www.wowhead.com/forever/npc=8983",
+      "sha256": "9accb0a8a810c6c0676bef766d824d87c46adcbf98c768521b5c93cedda3ef6a",
+      "lootRows": 113
+    },
+    "9016": {
+      "url": "https://www.wowhead.com/forever/npc=9016",
+      "sha256": "3e41d62fd9823ee01e355182c2f9fe22a5f92713cb382ec3b85323f678b5c2b6",
+      "lootRows": 74
+    },
+    "9017": {
+      "url": "https://www.wowhead.com/forever/npc=9017",
+      "sha256": "9d75d42de8c139aaed35c6db3969b705c9059b6a5cb93fa7ceff32ebd4edb11e",
+      "lootRows": 90
+    },
+    "9018": {
+      "url": "https://www.wowhead.com/forever/npc=9018",
+      "sha256": "54ff4b96c2c473de73721966984680648a87c83e22d9e59022b527f0436d7336",
+      "lootRows": 88
+    },
+    "9019": {
+      "url": "https://www.wowhead.com/forever/npc=9019",
+      "sha256": "9bda424fadb3129060063914b3efb49d4f43b6735c0e55774b82b52b47e294f5",
+      "lootRows": 103
+    },
+    "9024": {
+      "url": "https://www.wowhead.com/forever/npc=9024",
+      "sha256": "f5e5fea9bb8a078d3177d8f351df11141957e4d646b9d311ac3903cd23ac4b3d",
+      "lootRows": 79
+    },
+    "9025": {
+      "url": "https://www.wowhead.com/forever/npc=9025",
+      "sha256": "cf1a392b1d7ca1095e0bf67a2bb3cb225afb77d29c0ca6a3c2bd312f4e30e9e0",
+      "lootRows": 67
+    },
+    "9027": {
+      "url": "https://www.wowhead.com/forever/npc=9027",
+      "sha256": "588c1b652b11005c4c2d6ad3c2887c7f3e33c75d7c8a3668ff048f280f464f04",
+      "lootRows": 67
+    },
+    "9028": {
+      "url": "https://www.wowhead.com/forever/npc=9028",
+      "sha256": "a9b3ae104958c1b70caf495667635dc01e5f482a3f08f10258a526fb86c2f115",
+      "lootRows": 80
+    },
+    "9029": {
+      "url": "https://www.wowhead.com/forever/npc=9029",
+      "sha256": "a9a15853249533a1e9c2e05488ef5f26c0186439357a1cc52e6c60b4e6b031fb",
+      "lootRows": 73
+    },
+    "9030": {
+      "url": "https://www.wowhead.com/forever/npc=9030",
+      "sha256": "7db6fe5b19c4d8a0e74807dba295ec4240a0ccce1a90e6484dc9d6fe3eef867c",
+      "lootRows": 82
+    },
+    "9031": {
+      "url": "https://www.wowhead.com/forever/npc=9031",
+      "sha256": "90bf187a70afe5998bfcd325f46eb85994ccbb35ec682c3c44b6b0c1260b3577",
+      "lootRows": 60
+    },
+    "9032": {
+      "url": "https://www.wowhead.com/forever/npc=9032",
+      "sha256": "bb8dca43ea1d8bb15ddba2fb668246b55cc5d4668a2c1a464b67e51373e00f12",
+      "lootRows": 57
+    },
+    "9033": {
+      "url": "https://www.wowhead.com/forever/npc=9033",
+      "sha256": "9e420ab05325298fae6b9511e75c6bb996f848c82c3b09f4c04784e8c2d801f1",
+      "lootRows": 137
+    },
+    "9034": {
+      "url": "https://www.wowhead.com/forever/npc=9034",
+      "sha256": "f1d7eb6864cb1383a121ab13dcf63fe550b7c6c228d7dbf2eeb6b3da67c274c8",
+      "lootRows": 0
+    },
+    "9035": {
+      "url": "https://www.wowhead.com/forever/npc=9035",
+      "sha256": "b5b110adc59d91a13b4f68d433392d051c090ba6bc7d7bf5b639506e8f929eb1",
+      "lootRows": 0
+    },
+    "9036": {
+      "url": "https://www.wowhead.com/forever/npc=9036",
+      "sha256": "054bd2f3a4d75d0e45bd4ad86c83d1ce0ee1327be6d4bf714beee3670137896b",
+      "lootRows": 0
+    },
+    "9037": {
+      "url": "https://www.wowhead.com/forever/npc=9037",
+      "sha256": "cbaa78e775558fbee791e401673d51f47d28486f4404e7ea2b6feac2eff8c816",
+      "lootRows": 0
+    },
+    "9038": {
+      "url": "https://www.wowhead.com/forever/npc=9038",
+      "sha256": "55c5227c7bd2e541455a66fceb27014802ef938d93987baacbbaf3192f93cdda",
+      "lootRows": 0
+    },
+    "9039": {
+      "url": "https://www.wowhead.com/forever/npc=9039",
+      "sha256": "8061444b8645a436c0a27c6d141db9fb7687251d2d582ffff0ed82145cf36331",
+      "lootRows": 0
+    },
+    "9040": {
+      "url": "https://www.wowhead.com/forever/npc=9040",
+      "sha256": "96156777a716572b4130065ee3d50290c9eb460f479100ee2edd90f4f774c6ab",
+      "lootRows": 0
+    },
+    "9041": {
+      "url": "https://www.wowhead.com/forever/npc=9041",
+      "sha256": "e24e346474813076effd105d67eba15e02a923434cac061a177768ec2031dd97",
+      "lootRows": 84
+    },
+    "9042": {
+      "url": "https://www.wowhead.com/forever/npc=9042",
+      "sha256": "1f6aa685ddfcaf6de0ec173057c24326e099769af7362bd71048ba1cf765ef2a",
+      "lootRows": 62
+    },
+    "9056": {
+      "url": "https://www.wowhead.com/forever/npc=9056",
+      "sha256": "426a1fb0099dabdaf4eedb89b05a7a7be7133adb5398c3663dc3e1e80764f965",
+      "lootRows": 113
+    },
+    "9156": {
+      "url": "https://www.wowhead.com/forever/npc=9156",
+      "sha256": "45ac4850763862654808613045d4ac60b62ea7701f1a3847ffd36eb07209bacb",
+      "lootRows": 101
+    },
+    "9196": {
+      "url": "https://www.wowhead.com/forever/npc=9196",
+      "sha256": "c37de523663b2b5cd70d938097f32b35b35bfbaa720ae263ae6269dbf73e17be",
+      "lootRows": 116
+    },
+    "9217": {
+      "url": "https://www.wowhead.com/forever/npc=9217",
+      "sha256": "1f042ffa7623df6f8a4b91edd56954ffaef22a0dbe7e0f7c6bd1be5f9f1e9d78",
+      "lootRows": 28
+    },
+    "9218": {
+      "url": "https://www.wowhead.com/forever/npc=9218",
+      "sha256": "3dc455547c0d0c16fc118aefa8c378b533d5b39b3c175c3da9c3c9f57b5a7dbd",
+      "lootRows": 39
+    },
+    "9219": {
+      "url": "https://www.wowhead.com/forever/npc=9219",
+      "sha256": "af758f38c2758e001e938efefaf86d1833bcda1145232f6916a0d1f7331d40f6",
+      "lootRows": 51
+    },
+    "9236": {
+      "url": "https://www.wowhead.com/forever/npc=9236",
+      "sha256": "5095552e5b4e22a522f9129eba257946af42ee35e9b68d81e4f8766b81378227",
+      "lootRows": 110
+    },
+    "9237": {
+      "url": "https://www.wowhead.com/forever/npc=9237",
+      "sha256": "01011e9091e1beaad5adb5c664fe6730f5b803337922d90bd0fe21cb15d513ed",
+      "lootRows": 119
+    },
+    "9319": {
+      "url": "https://www.wowhead.com/forever/npc=9319",
+      "sha256": "02c7499b7ca6ef6541d019d548b5edca0e7e34f28ba287a28c788f008bc48baf",
+      "lootRows": 72
+    },
+    "9437": {
+      "url": "https://www.wowhead.com/forever/npc=9437",
+      "sha256": "6b39ac0dbbb17e350f20104ab2124b405b95ac5fba70158d8bf07cdf7e88dff6",
+      "lootRows": 21
+    },
+    "9438": {
+      "url": "https://www.wowhead.com/forever/npc=9438",
+      "sha256": "e290b3177871c992449a70556c657565d4cbe81b995c7c8c9bc5990d64e0d038",
+      "lootRows": 33
+    },
+    "9439": {
+      "url": "https://www.wowhead.com/forever/npc=9439",
+      "sha256": "a522e50eccb0ccd8643b850f17135e369d0dcdb2f578a521d1488610975e63b5",
+      "lootRows": 23
+    },
+    "9441": {
+      "url": "https://www.wowhead.com/forever/npc=9441",
+      "sha256": "3c2626fe1177630562e411b47247110be5ee2a3e33233ce3045f1aff7207c3f8",
+      "lootRows": 23
+    },
+    "9442": {
+      "url": "https://www.wowhead.com/forever/npc=9442",
+      "sha256": "5d8b962d959c37d5a3834600dea479d1ce53eb9be18679447bccee8eb46ba797",
+      "lootRows": 25
+    },
+    "9443": {
+      "url": "https://www.wowhead.com/forever/npc=9443",
+      "sha256": "7676f512f019c4f8fd4e0f5d82ed804e7e612f6b0442c9c019a4ebeb5a6e9fa9",
+      "lootRows": 25
+    },
+    "9476": {
+      "url": "https://www.wowhead.com/forever/npc=9476",
+      "sha256": "3024e3e779512a3c9981459e2240e9c5d5c8599f188bc8ac0c945160cf0787ae",
+      "lootRows": 95
+    },
+    "9499": {
+      "url": "https://www.wowhead.com/forever/npc=9499",
+      "sha256": "25abad9851ea9c619a482f7d8a6a7b2b8b073dfc6f4307383bc44b36473711ff",
+      "lootRows": 106
+    },
+    "9502": {
+      "url": "https://www.wowhead.com/forever/npc=9502",
+      "sha256": "813db784580f7360bcb2b986054fd3698f0849b82d93606877c781b476a2a9f1",
+      "lootRows": 98
+    },
+    "9537": {
+      "url": "https://www.wowhead.com/forever/npc=9537",
+      "sha256": "bcfda85930ca85c79e1a5038814e3e9d0cd29b7c76487319a79a6a95fc1b7b76",
+      "lootRows": 104
+    },
+    "9543": {
+      "url": "https://www.wowhead.com/forever/npc=9543",
+      "sha256": "3434b77e34939142cd3ae19f6920e5f0a52adec4ce3f2dfecef627ea8a309fd3",
+      "lootRows": 108
+    },
+    "9568": {
+      "url": "https://www.wowhead.com/forever/npc=9568",
+      "sha256": "e3a0e515ca19a67b34a20db381e201af5faa2512cac0df649a0064c49df44f94",
+      "lootRows": 147
+    },
+    "9596": {
+      "url": "https://www.wowhead.com/forever/npc=9596",
+      "sha256": "76cd73bb51e92e9b99fb1d3680897fa4df3a95fdc58287abf38a40e8a48810cc",
+      "lootRows": 31
+    },
+    "9718": {
+      "url": "https://www.wowhead.com/forever/npc=9718",
+      "sha256": "654549779e1615476bd13b21e1277a506e65e1ffd675488373de7d12759935ac",
+      "lootRows": 29
+    },
+    "9736": {
+      "url": "https://www.wowhead.com/forever/npc=9736",
+      "sha256": "95c6c535ea586a2e2774efb671eb1bda6579133e90f3412993b6eaf6833d1e9a",
+      "lootRows": 66
+    },
+    "9938": {
+      "url": "https://www.wowhead.com/forever/npc=9938",
+      "sha256": "720f2f5b4ea779986603c31b9b142c7d8d78f172e33f301ec8b4c3cd554cd750",
+      "lootRows": 140
+    },
+    "10080": {
+      "url": "https://www.wowhead.com/forever/npc=10080",
+      "sha256": "08fdf0a9ff7f1c090eeee6003dfc2a42b1c9ef1b427ddf36b4db45bcf768fcb7",
+      "lootRows": 98
+    },
+    "10081": {
+      "url": "https://www.wowhead.com/forever/npc=10081",
+      "sha256": "64b137a8bb64c30022467b020cf0ae8be568002743f8fd71c5722b200618713f",
+      "lootRows": 135
+    },
+    "10082": {
+      "url": "https://www.wowhead.com/forever/npc=10082",
+      "sha256": "3a67d2a5055914caf0e2052ed1ef61086f71bf7649574fd07c9356d90275d82d",
+      "lootRows": 142
+    },
+    "10220": {
+      "url": "https://www.wowhead.com/forever/npc=10220",
+      "sha256": "40d3abd10866982c3cf9ce92ef9272c4333467f4df69123de01b8749f9fbf5b2",
+      "lootRows": 68
+    },
+    "10263": {
+      "url": "https://www.wowhead.com/forever/npc=10263",
+      "sha256": "fe128ccb47fc472c3f56b5b2c032af6b79ba69e6a03eceb5697c70bbecbc1d49",
+      "lootRows": 83
+    },
+    "10268": {
+      "url": "https://www.wowhead.com/forever/npc=10268",
+      "sha256": "d0f7f0c6cd6e1e4cbb49da5055428f8c2c9f3e68387791a4af37b1fb6a329d8b",
+      "lootRows": 75
+    },
+    "10376": {
+      "url": "https://www.wowhead.com/forever/npc=10376",
+      "sha256": "0794585e64e4673515bbb2b96f738246defeaa5d1de682401db79d46846336d7",
+      "lootRows": 18
+    },
+    "10393": {
+      "url": "https://www.wowhead.com/forever/npc=10393",
+      "sha256": "5c9ed4bea6d12330fef8180ea6db6c53b00ce8c1128c57ba8fd85f0c1ddbae10",
+      "lootRows": 50
+    },
+    "10432": {
+      "url": "https://www.wowhead.com/forever/npc=10432",
+      "sha256": "8afd42ac274e4112118c93e77cdeea355d58dc534a2ac95051d07365458037b8",
+      "lootRows": 131
+    },
+    "10433": {
+      "url": "https://www.wowhead.com/forever/npc=10433",
+      "sha256": "1d2f0b0a43ff6163616eae74ae1bed4d80ca43a2df4fd94fba00461ef8838f9f",
+      "lootRows": 113
+    },
+    "10435": {
+      "url": "https://www.wowhead.com/forever/npc=10435",
+      "sha256": "9a7614d4d6dd11f9187c8f91a6ac18d17d2454ed0d107e88d9d08d1efd978d18",
+      "lootRows": 122
+    },
+    "10436": {
+      "url": "https://www.wowhead.com/forever/npc=10436",
+      "sha256": "248bab7894a264c5177d694094200c6da16de5813927be20cc1576f940961489",
+      "lootRows": 102
+    },
+    "10437": {
+      "url": "https://www.wowhead.com/forever/npc=10437",
+      "sha256": "f8de9d34a93a53d02d6176875022a2de11ef4b152e2bd393fcefd8c57a2fd19c",
+      "lootRows": 91
+    },
+    "10438": {
+      "url": "https://www.wowhead.com/forever/npc=10438",
+      "sha256": "f6860d9280b8ba8710480f6a27d99162b629ed2badb05f5cf6687d8ba5eecb56",
+      "lootRows": 109
+    },
+    "10439": {
+      "url": "https://www.wowhead.com/forever/npc=10439",
+      "sha256": "0d5859363ea5142533fa8031b42abe8fdd780ed6b97dfd00ed380ec505b4dddd",
+      "lootRows": 155
+    },
+    "10440": {
+      "url": "https://www.wowhead.com/forever/npc=10440",
+      "sha256": "b982b521c96f75a2d5677e12f1b8ec9a7ed159d2da9b441fee272b6df3a09e92",
+      "lootRows": 183
+    },
+    "10500": {
+      "url": "https://www.wowhead.com/forever/npc=10500",
+      "sha256": "7a9c589c2cd15309ff7007b2c4e9c02d3b2e661922c92f22f73357a36a1b0023",
+      "lootRows": 276
+    },
+    "10502": {
+      "url": "https://www.wowhead.com/forever/npc=10502",
+      "sha256": "e133dad7cb85d73f4039b7960ecf68f4bcd89b8d9dd714c75ef98ead7f65ac63",
+      "lootRows": 222
+    },
+    "10503": {
+      "url": "https://www.wowhead.com/forever/npc=10503",
+      "sha256": "acc4457bea888ae13f085f51f0ab9ae21ce1799fa4c69e50ad76cdddd2d81d64",
+      "lootRows": 153
+    },
+    "10504": {
+      "url": "https://www.wowhead.com/forever/npc=10504",
+      "sha256": "3ad7988ed7254d3e2036754aae88957cc8f577e3dec47d9a1c67677c1d77e433",
+      "lootRows": 196
+    },
+    "10505": {
+      "url": "https://www.wowhead.com/forever/npc=10505",
+      "sha256": "fba9462851fe55698ae4a8398360e9cac8f5e40c7869cff2b5e020c97339f4d9",
+      "lootRows": 223
+    },
+    "10506": {
+      "url": "https://www.wowhead.com/forever/npc=10506",
+      "sha256": "d7101e83e4ce183ff6efa4b92fee616fdc86e1d91a3242d235c18886080e8c43",
+      "lootRows": 151
+    },
+    "10507": {
+      "url": "https://www.wowhead.com/forever/npc=10507",
+      "sha256": "463d3e183b5dd4877acdd8622671f6b0d3d618ff640508d91849ded71f5e5833",
+      "lootRows": 220
+    },
+    "10508": {
+      "url": "https://www.wowhead.com/forever/npc=10508",
+      "sha256": "1ad36c18c93202971c988d247011f8c9450d1ff75d297de323aaf41d875b6268",
+      "lootRows": 191
+    },
+    "10516": {
+      "url": "https://www.wowhead.com/forever/npc=10516",
+      "sha256": "717e94ed4985de17e65973558a2f9519f42696379f922f8ac1d2c4c57c650f91",
+      "lootRows": 116
+    },
+    "10558": {
+      "url": "https://www.wowhead.com/forever/npc=10558",
+      "sha256": "bfbf7d3e02ca0327e6dd501e17b5f8facb49ff4ea86b371b63fe749684fe839c",
+      "lootRows": 129
+    },
+    "10584": {
+      "url": "https://www.wowhead.com/forever/npc=10584",
+      "sha256": "933f5702bdf1920b37703dcb70c5da66f5ec7a456495eb5d9d6b5001d34b1b03",
+      "lootRows": 82
+    },
+    "10596": {
+      "url": "https://www.wowhead.com/forever/npc=10596",
+      "sha256": "97f0a18ea898fd2c7303c42a50137bedab84e8e77b7abf1d6797ce0a7bd67050",
+      "lootRows": 119
+    },
+    "10808": {
+      "url": "https://www.wowhead.com/forever/npc=10808",
+      "sha256": "c763c1aba3b56e0bf7d77a938e6ae029c1ba6b92b90641cf3488f8db614748ac",
+      "lootRows": 122
+    },
+    "10809": {
+      "url": "https://www.wowhead.com/forever/npc=10809",
+      "sha256": "3941a5aa274ed35dbeb78515e9c9040750028f76b15343f9d4eac22889470366",
+      "lootRows": 27
+    },
+    "10811": {
+      "url": "https://www.wowhead.com/forever/npc=10811",
+      "sha256": "d9bbdba68e7e8bb9a12170d3a1e998fc397824827de1cb6914fbba5c864d39c1",
+      "lootRows": 115
+    },
+    "10813": {
+      "url": "https://www.wowhead.com/forever/npc=10813",
+      "sha256": "aaccb5e7da9334acbfb175fc2afca99f2fa35a3ee96a62c835d7bad585101687",
+      "lootRows": 9
+    },
+    "10901": {
+      "url": "https://www.wowhead.com/forever/npc=10901",
+      "sha256": "89f701612dd635faed4828824315c4896c33effd353f0d16c84bfd6ac48023cf",
+      "lootRows": 226
+    },
+    "10997": {
+      "url": "https://www.wowhead.com/forever/npc=10997",
+      "sha256": "4457084b3558780b182b90088adbd764b821702d38cd57fea17dc41b2378412a",
+      "lootRows": 107
+    },
+    "11032": {
+      "url": "https://www.wowhead.com/forever/npc=11032",
+      "sha256": "b16e0bedbf9505687e038e913fae6689606fe85d34e389b2d43d0cb2aa97b03a",
+      "lootRows": 180
+    },
+    "11058": {
+      "url": "https://www.wowhead.com/forever/npc=11058",
+      "sha256": "ec399e3599709119e3e8f657e5ab342240d29a3a1e8c71e3ce6739142cc91078",
+      "lootRows": 40
+    },
+    "11082": {
+      "url": "https://www.wowhead.com/forever/npc=11082",
+      "sha256": "82379e8b236e6e21d3cd1170c3d29c471b0516fe0bc1e04ed5edd3de0cea36d6",
+      "lootRows": 81
+    },
+    "11120": {
+      "url": "https://www.wowhead.com/forever/npc=11120",
+      "sha256": "14d3b878cfba86903db83ad77b7e007512edc93c51e0d46fd2a94b7a3b85c9f2",
+      "lootRows": 99
+    },
+    "11121": {
+      "url": "https://www.wowhead.com/forever/npc=11121",
+      "sha256": "7ecde54722c97de780f11c898a1503d8ea289d7404b2e26f9639960fb0149a27",
+      "lootRows": 82
+    },
+    "11143": {
+      "url": "https://www.wowhead.com/forever/npc=11143",
+      "sha256": "421a3c9bc0ee3b540d5bb961413d3336d0d40e0b75412cbc1778b0a7c0a800b6",
+      "lootRows": 24
+    },
+    "11467": {
+      "url": "https://www.wowhead.com/forever/npc=11467",
+      "sha256": "7cede0877284d66715ffb874fef8b413aa755e1cd1ebcb096eb19cb260ee3c41",
+      "lootRows": 19
+    },
+    "11486": {
+      "url": "https://www.wowhead.com/forever/npc=11486",
+      "sha256": "8b1d49be7b230275662559dc4eea986f56459ca4bc94f4ca7bddf34ac8a8e542",
+      "lootRows": 47
+    },
+    "11487": {
+      "url": "https://www.wowhead.com/forever/npc=11487",
+      "sha256": "f953421dd61aeabb78bc3d3c8aa59150c0d35e5a29f540be4974e0a9d54bbd99",
+      "lootRows": 53
+    },
+    "11488": {
+      "url": "https://www.wowhead.com/forever/npc=11488",
+      "sha256": "c628a79854fb8ae9cfe64cd06c08a55abb167110b3c1c2eb6218fc56eee58ac8",
+      "lootRows": 47
+    },
+    "11489": {
+      "url": "https://www.wowhead.com/forever/npc=11489",
+      "sha256": "6aa4be05e021c019392d92c49b72d06227b00fef7701e686d40a83ab04d99f6b",
+      "lootRows": 74
+    },
+    "11490": {
+      "url": "https://www.wowhead.com/forever/npc=11490",
+      "sha256": "7a6cba3fa639f4669f3e595cc8baadc3fd72c23a649dd536ab227d2a523f99d9",
+      "lootRows": 124
+    },
+    "11492": {
+      "url": "https://www.wowhead.com/forever/npc=11492",
+      "sha256": "bb99655b752f053cdfe8eb3fc0f4890f2028d5e05f67eea414e23274017773ca",
+      "lootRows": 88
+    },
+    "11496": {
+      "url": "https://www.wowhead.com/forever/npc=11496",
+      "sha256": "4e46f0d59619aed4b0eef80f1218fe31f17a620257a8d43adfb9b5a4fcedad3a",
+      "lootRows": 32
+    },
+    "11501": {
+      "url": "https://www.wowhead.com/forever/npc=11501",
+      "sha256": "3c1cff3d3a36ed1db44d4d797c788b1458ba5350171ca81d19985b114f68895c",
+      "lootRows": 68
+    },
+    "11517": {
+      "url": "https://www.wowhead.com/forever/npc=11517",
+      "sha256": "01bb7d6c56714f8c2a93207f1453b24fe29a5b26311e21e5dd1988436d68f537",
+      "lootRows": 160
+    },
+    "11518": {
+      "url": "https://www.wowhead.com/forever/npc=11518",
+      "sha256": "5b6c8abfd667d02486858395d25d2baa5b4676fb6d4c3d7a4063c4f50c7e87bd",
+      "lootRows": 167
+    },
+    "11519": {
+      "url": "https://www.wowhead.com/forever/npc=11519",
+      "sha256": "21341f9e77547d132db67c5b6276651bfb2cb149a2a837e783e301171ac91a84",
+      "lootRows": 167
+    },
+    "11520": {
+      "url": "https://www.wowhead.com/forever/npc=11520",
+      "sha256": "828fccaa26c687773ff957416153b0928057bd1fd34e545bc574725e2cf272b2",
+      "lootRows": 169
+    },
+    "11622": {
+      "url": "https://www.wowhead.com/forever/npc=11622",
+      "sha256": "40591171ba43178ae655cc084c3d23b389490dd9aee0f7d58ea728b53aaa3cab",
+      "lootRows": 211
+    },
+    "12201": {
+      "url": "https://www.wowhead.com/forever/npc=12201",
+      "sha256": "8d514b2dee58acc390b8cd656049f908a4bb30658e9775f725863ce33cc74a65",
+      "lootRows": 174
+    },
+    "12203": {
+      "url": "https://www.wowhead.com/forever/npc=12203",
+      "sha256": "ca2f99d0ee08b34cabae76640fd4f54e90d1b3bd0e93c29447a85c1230f95f61",
+      "lootRows": 119
+    },
+    "12225": {
+      "url": "https://www.wowhead.com/forever/npc=12225",
+      "sha256": "3f5c9ec9a940b4dd090031c6a5c8fa8a3ae9e50798cc82da6a151cd562d7042f",
+      "lootRows": 62
+    },
+    "12236": {
+      "url": "https://www.wowhead.com/forever/npc=12236",
+      "sha256": "9d686eee3ee6f814102b59b2d27c7fad794533f49e71fc0c613cfbad4c375a98",
+      "lootRows": 67
+    },
+    "12237": {
+      "url": "https://www.wowhead.com/forever/npc=12237",
+      "sha256": "6d347624a566447b3215a73cb13402811b580d80b147b0c0eff3b89207d41854",
+      "lootRows": 57
+    },
+    "12258": {
+      "url": "https://www.wowhead.com/forever/npc=12258",
+      "sha256": "ab9e2f66189eeea93f52949d58f0139ffff3e257f6bd21bcf99f28e18f2fbc68",
+      "lootRows": 55
+    },
+    "13280": {
+      "url": "https://www.wowhead.com/forever/npc=13280",
+      "sha256": "555962b4df4056841452c2e2c538368ed12e61ae8f25318ce55dd2c688d4ce5b",
+      "lootRows": 75
+    },
+    "13282": {
+      "url": "https://www.wowhead.com/forever/npc=13282",
+      "sha256": "3f8ab3c8bd1be05849d99ed686a43163a0bc7191a621b993ece1a88956939fe5",
+      "lootRows": 46
+    },
+    "13596": {
+      "url": "https://www.wowhead.com/forever/npc=13596",
+      "sha256": "79004a40e8b334e7b1872bd85ee39b2275479b865f4a0b012563966beed0088b",
+      "lootRows": 46
+    },
+    "13601": {
+      "url": "https://www.wowhead.com/forever/npc=13601",
+      "sha256": "97889a21c632aad37fd000da90309075d72a46606f456768b76f2e0230287ceb",
+      "lootRows": 85
+    },
+    "14308": {
+      "url": "https://www.wowhead.com/forever/npc=14308",
+      "sha256": "3de47a7669b14be29641e672f56039d63a6be972ce7a2c4e3d6b738391bb9a56",
+      "lootRows": 48
+    },
+    "14321": {
+      "url": "https://www.wowhead.com/forever/npc=14321",
+      "sha256": "5d5d95f52bc3a58952fa983deb3d56ffbd69434ed07ca74b7eea7ba4f570f680",
+      "lootRows": 46
+    },
+    "14322": {
+      "url": "https://www.wowhead.com/forever/npc=14322",
+      "sha256": "2014f49fda6de5ece7ee8ff73b9fe3918a0db242a4a828d63e93a9258d6d1c00",
+      "lootRows": 42
+    },
+    "14323": {
+      "url": "https://www.wowhead.com/forever/npc=14323",
+      "sha256": "1868d0aff5222876dd80fd1de5e921d0f89b51e24fa1d224063bb8725f998c18",
+      "lootRows": 50
+    },
+    "14324": {
+      "url": "https://www.wowhead.com/forever/npc=14324",
+      "sha256": "0e90a956b2642725fc7de1efffef81fc58139ac0d0c68b83d54bdde83d083f3d",
+      "lootRows": 6
+    },
+    "14325": {
+      "url": "https://www.wowhead.com/forever/npc=14325",
+      "sha256": "936ccb4f93f2d20cf291259d6cf2d7165a6fb66f87ff9438e81dc67e3ca557dc",
+      "lootRows": 36
+    },
+    "14326": {
+      "url": "https://www.wowhead.com/forever/npc=14326",
+      "sha256": "38e72d3e347f217d781d12b96e36757464ca626f3e2a555d3ecf94cf9e5ed487",
+      "lootRows": 51
+    },
+    "14327": {
+      "url": "https://www.wowhead.com/forever/npc=14327",
+      "sha256": "e6d4dcf2abfff64e5897a9e5381aee15673ba6a3830af4e36f69cdc21491c710",
+      "lootRows": 65
+    },
+    "14349": {
+      "url": "https://www.wowhead.com/forever/npc=14349",
+      "sha256": "0ab0647b3a2c162db2a99bcc67cfc11ff63975c08a1830151dc12231a96217c6",
+      "lootRows": 65
+    },
+    "14354": {
+      "url": "https://www.wowhead.com/forever/npc=14354",
+      "sha256": "17918bd9a90bd2b60ba743e46ff09c681e15ae7c7084ac7874b905d7e29e23ec",
+      "lootRows": 73
+    },
+    "14506": {
+      "url": "https://www.wowhead.com/forever/npc=14506",
+      "sha256": "ee858c9a7193dc286adc85960c8589e4de0dee82c929c5f9e638633b6531497b",
+      "lootRows": 24
+    },
+    "14516": {
+      "url": "https://www.wowhead.com/forever/npc=14516",
+      "sha256": "dac7a36be401ae028fe5b0003f41af7c5ed3c57c39c64461863cd4a1c8e3a34a",
+      "lootRows": 35
+    },
+    "14686": {
+      "url": "https://www.wowhead.com/forever/npc=14686",
+      "sha256": "066912c1fcfec5aa5ef7c2bd18991e7bd088cbe1e54cca67960f9384c4d6ce23",
+      "lootRows": 10
+    },
+    "14693": {
+      "url": "https://www.wowhead.com/forever/npc=14693",
+      "sha256": "5b2813f629da0f43300e5a800586eaef379fdb8a9a3c5f3d8c1469393912b255",
+      "lootRows": 40
+    },
+    "14695": {
+      "url": "https://www.wowhead.com/forever/npc=14695",
+      "sha256": "ebab0ce71dd7f46cbeedc5f0a4f70e7164e82fdd927236045f1da9b51f56c382",
+      "lootRows": 56
+    },
+    "14861": {
+      "url": "https://www.wowhead.com/forever/npc=14861",
+      "sha256": "feed696c8c31e4a0e51a6f3c2215482b97c4074d0a8c4edf12889263fce8f8f1",
+      "lootRows": 69
+    },
+    "16059": {
+      "url": "https://www.wowhead.com/forever/npc=16059",
+      "sha256": "0a8ba2e648fecdcac456bfee0f3dede305c3c96f9a22352de531cfb9ceba02ca",
+      "lootRows": 1
+    },
+    "16080": {
+      "url": "https://www.wowhead.com/forever/npc=16080",
+      "sha256": "6a7e3ea13dad27415fc0e487bac3e1652cb1b96c48668dba208ea5bd26b1d3f5",
+      "lootRows": 2
+    },
+    "16097": {
+      "url": "https://www.wowhead.com/forever/npc=16097",
+      "sha256": "4a436e00a0e5df94a5f4cb6e86b0a6927614cb157b7e26077867ee876aeef4ab",
+      "lootRows": 2
+    },
+    "16101": {
+      "url": "https://www.wowhead.com/forever/npc=16101",
+      "sha256": "dd84061e0516d796ccaba0734de8c34e2867c04b9a490717ed5bef0d0ef58107",
+      "lootRows": 2
+    },
+    "16102": {
+      "url": "https://www.wowhead.com/forever/npc=16102",
+      "sha256": "cfbf31ccd25d4ac1d48e797e7560251528e3404684c5727c5d25b1f6ca4cdc1f",
+      "lootRows": 2
+    },
+    "16118": {
+      "url": "https://www.wowhead.com/forever/npc=16118",
+      "sha256": "fe16d359926aba5c6c6ca407f2becf8d7b9cbd0a15e017ad972a14ea1d03f7ab",
+      "lootRows": 2
+    },
+    "201722": {
+      "url": "https://www.wowhead.com/forever/npc=201722",
+      "sha256": "03d4c768c9622f0c26e8da1872b6e90162def786d3a9f729e4e61e5657b51616",
+      "lootRows": 36
+    },
+    "202699": {
+      "url": "https://www.wowhead.com/forever/npc=202699",
+      "sha256": "e8415fd2a42bb1abec84f47ab7b7db50b4367dd652afdc34757c2208b5ae8591",
+      "lootRows": 39
+    },
+    "204068": {
+      "url": "https://www.wowhead.com/forever/npc=204068",
+      "sha256": "b9c8fb233f2d00d897b48be92e92e42369452b500badb98cdf555de9c43f120e",
+      "lootRows": 70
+    },
+    "204921": {
+      "url": "https://www.wowhead.com/forever/npc=204921",
+      "sha256": "3fca9982a6518677ffbe5b862a5eb7e513f00d1afeb8315a8ce72aa8a2f3238c",
+      "lootRows": 54
+    },
+    "207356": {
+      "url": "https://www.wowhead.com/forever/npc=207356",
+      "sha256": "8b2c617688bc56d45f9693534d21b9cc2f1a03d11446cce7a170a026728036e5",
+      "lootRows": 38
+    },
+    "209678": {
+      "url": "https://www.wowhead.com/forever/npc=209678",
+      "sha256": "31993e0338313b91e5c48f91d9df3098f6196277086ee49322571d1f16a65c65",
+      "lootRows": 45
+    },
+    "213334": {
+      "url": "https://www.wowhead.com/forever/npc=213334",
+      "sha256": "8b62e6fdc6a903823fbbd462e4105bcf7c2be770fb6423cbe2577238004c107f",
+      "lootRows": 33
+    }
+  },
+  "clientFilenameSource": {
+    "repository": "wowdev/wow-listfile",
+    "commit": "2ee24a9d0ff98f614997587e32ee6a0074d0de65",
+    "sha256": "f41981d597d1826d836909ca270ff699cb0cf169243eab9e959907370e1133f4"
+  },
+  "limitations": [
+    "Boss display order is alphabetical within level, not a walkthrough.",
+    "Notable boss drops only; common junk/consumables and generic world drops omitted.",
+    "Published database facts are a beta snapshot, not proof of current availability.",
+    "Classic client floor images are layout references; current client map data takes precedence.",
+    "No external images, copied guide text or source scripts are bundled."
+  ]
+}

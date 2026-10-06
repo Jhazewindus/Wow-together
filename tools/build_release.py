@@ -91,7 +91,12 @@ artwork, stretched across the full block at a faint 14% opacity. Journal images
 take precedence; 19 Classic and four Forever filenames are published. Remaining
 new dungeons use available journal art or a neutral client background; missing
 textures stay plain. No Blizzard images or external screenshots are bundled.
-See DUNGEON_ARTWORK.md for sources and beta limits. Unknown zones have a quiet
+See DUNGEON_ARTWORK.md for sources and beta limits. See dungeon opens a movable,
+resizable atlas from anywhere: choose floors, click bosses and browse notable loot.
+Map only is a compact gameplay view; it stays open during combat. Entry asks
+Open map? when enabled. Classic floor references may differ from Forever layouts;
+missing boss coordinates and new-dungeon data are never guessed.
+See DUNGEON_VIEWER.md for snapshot coverage and beta tests. Unknown zones have a quiet
 fallback. Artwork changes appearance only, not guide logic.
 Restart the client fully if new artwork remains blank after reload.
 Use level brackets / Near party to narrow the list.
@@ -391,7 +396,7 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
 '''
     args.output.mkdir(parents=True, exist_ok=True)
     destination = args.output / f'WowTogether-{version}.zip'
-    files = ['WowTogether.toc', *names, 'QuestCatalogue.json', 'QuestCoverage.json', 'GuideAudit.json', 'GuideSourceQueue.json', 'TravelData.json', 'GuideServiceData.json', 'DungeonData.json']
+    files = ['WowTogether.toc', *names, 'QuestCatalogue.json', 'QuestCoverage.json', 'GuideAudit.json', 'GuideSourceQueue.json', 'TravelData.json', 'GuideServiceData.json', 'DungeonData.json', 'DungeonJournalData.json']
     with zipfile.ZipFile(destination, 'w', zipfile.ZIP_DEFLATED) as archive:
         for name in files:
             archive.write(addon / name, 'WowTogether/' + name)
@@ -399,7 +404,7 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
             archive.write(media / name, 'WowTogether/Media/GuideThemes/' + name)
         for name in ('README.md', 'TESTING.md', 'CHANGELOG.md'):
             archive.write(ROOT / name, 'WowTogether/' + name)
-        for name in ('PERFORMANCE.md', 'TRAVEL_DATA.md', 'DUNGEONS.md', 'DUNGEON_ARTWORK.md', 'THIRD_PARTY_NOTICES.md', 'QUEST_DATA.md',
+        for name in ('PERFORMANCE.md', 'TRAVEL_DATA.md', 'DUNGEONS.md', 'DUNGEON_ARTWORK.md', 'DUNGEON_VIEWER.md', 'THIRD_PARTY_NOTICES.md', 'QUEST_DATA.md',
                      'LEGACY_DATA_LICENSE.txt', 'LEGACY_DATA_COPYRIGHT.md'):
             if (ROOT / name).exists():
                 archive.write(ROOT / name, 'WowTogether/' + name)
@@ -407,7 +412,7 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
         for name in ('build_quest_dataset.py', 'quest_enrichment.py', 'legacy_quest_facts.py', 'collect_quest_entities.py',
                      'forever_map_geometry.py', 'quest_event_areas.py', 'lua_data_literal.py', 'forever_beta_facts.py',
                      'quest_observation_facts.py', 'capture_quest_pages.py', 'audit_quest_guides.py',
-                     'import_warcraftdb.py', 'import_wowhead.py', 'import_travel_network.py', 'import_guide_services.py', 'import_dungeons.py',
+                     'import_warcraftdb.py', 'import_wowhead.py', 'import_travel_network.py', 'import_guide_services.py', 'import_dungeons.py', 'import_dungeon_journal.py',
                      'guide_source_queue.py', 'forever_source_manifest.json', 'quest_corrections.json', 'quest_exclusions.json'):
             archive.write(ROOT / 'tools' / name, 'WowTogether/data-tools/' + name)
         archive.writestr('WowTogether/INSTALL.md', instructions)

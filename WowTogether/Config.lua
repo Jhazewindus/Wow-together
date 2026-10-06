@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
 local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, classQuests = true,
-    dungeonPrompts = true, zonePrompts = true, trackerOpacity = 0.08,
+    dungeonPrompts = true, dungeonMapPrompt = true, zonePrompts = true, trackerOpacity = 0.08,
     trackerHeight = 350, circuitRadius = 0.16, circuitLimit = 6, mapLegend = true, professionBatch = 5, routeArrow = true,
     currentQuestsFirst = true, nearbyPickups = true, fullRoute = false, routeAhead = 2, autoTurnIn = false,
     scanSkipped = false, distanceUnits = "yards", trackerAuto = true, autoSelectQuests = false,
@@ -27,6 +27,7 @@ local sections = {
         {"classQuests", "Include class quests", "Show or hide eligible class quest steps without changing fixed guide order. Other classes remain excluded."},
         {"classTraining", "Include convenient class training", "Add an optional personal trainer stop near quest visits or before leaving a hub. Even-level reminders; estimated extra walk at most 150 yards. Done training or Skip training resumes quests."},
         {"dungeonPrompts", "Suggest dungeon quest collection", "Offer a plan when your character meets every known pickup level for the dungeon's relevant regular quests. Prerequisites still apply; party sync is not required."},
+        {"dungeonMapPrompt", "Offer the map when entering a dungeon", "Ask Open map? once on entry. Browse maps, bosses and loot from See dungeon anywhere, without starting or changing your quest route."},
         {"zonePrompts", "Suggest the next nearby zone", "Offer a known questline transition or a suitable neighbouring zone when your current guide has no useful work ready. You choose whether to switch."},
         {"scanSkipped", "Reconsider skips when scanning", "A successful Scan guide clears saved skips for quests in the selected guide. Leave off to keep skips; failed or cancelled scans keep them."},
         {"circuitRadius", "Nearby pickup distance", "Limit how much additional walking a nearby pickup adds to the current trip.", {{0.10, "Stay close"}, {0.16, "Small detours"}, {0.22, "Wider loop"}}}}},

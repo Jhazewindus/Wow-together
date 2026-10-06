@@ -25,7 +25,7 @@ local forever = { ["city-of-dalaran"] = "Dalaran", ["excavation-site-wetlands"] 
     ["the-hall-of-thanes"] = "OldIronforge", ["ruins-of-lordaeron"] = "RuinsofLordaeron" }
 local loading = "Interface\\Glues\\LOADINGSCREENS\\Camelot160\\Main\\LoadScreen_Camelot_"
 local neutral = "Interface\\LFGFrame\\UI-LFG-BACKGROUND-DUNGEONWALL"
-local journal, checked, revision, reading, scanned = {}, {}, 0, false, false
+local journal, journalIDs, checked, revision, reading, scanned = {}, {}, {}, 0, false, false
 local buttonBounds = {6 / 256, 168 / 256, 6 / 128, 90 / 128}
 local function normalized(value)
     value = ns.SafeTitle(value)
@@ -64,6 +64,7 @@ local function discover()
     local function finish()
         reading, scanned, revision = false, true, revision + 1
         repaint()
+        if ns.RefreshDungeonViewer then ns.RefreshDungeonViewer(true) end
     end
     local function batch()
         if generation ~= revision then return end
@@ -75,6 +76,7 @@ local function discover()
             end
             local key = names[normalized(name) or ""]
             if key then
+                journalIDs[key] = id
                 local _, _, background = ns.ReadPublic(EJ_GetInstanceInfo, id)
                 local images = {}
                 local backgroundAsset, buttonAsset = texture(background), texture(button)
@@ -149,9 +151,13 @@ function ns.ApplyDungeonCardArtwork(card, group)
 end
 
 function ns.RefreshDungeonArtwork()
-    journal, checked, reading, scanned, revision = {}, {}, false, false, revision + 1
+    journal, journalIDs, checked, reading, scanned, revision = {}, {}, {}, false, false, revision + 1
     repaint()
+    if ns.RefreshDungeonViewer then ns.RefreshDungeonViewer(true) end
 end
+
+function ns.DungeonJournalInstance(key) return journalIDs[key] end
+ns.DiscoverDungeonArtwork = discover
 
 function ns.DungeonArtworkDiagnostics(output)
     local specific, fallback = 0, 0

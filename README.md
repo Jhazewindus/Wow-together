@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.23** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.24** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -18,10 +18,24 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **56 Lua
+Replace the folder on **every party member's client**, including all **59 Lua
 files** and the **Media folder**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.24 adds the Dungeon viewer.** **See dungeon** opens its journal from anywhere.
+Choose floors, click a boss, and browse notable drops with item icons, search,
+filters and cached client tooltips. Dungeon cards keep **Quest list** beside
+**Start route**. Entering a recognized dungeon optionally asks **Open map?** and
+opens a compact movable map. Both views resize and stay open during combat; their
+positions, sizes and BG choice are saved across all dungeons and reloads.
+
+The offline snapshot contains 243 encounters and 2,766 notable drop entries across
+19 Classic complexes, with 164 client portrait references and 19 client map
+reference sets. Current exposed client floors/markers take precedence. Older
+layouts can differ from Forever; unknown boss positions are not guessed. New
+Forever dungeon boss/loot coverage remains incomplete. No external image files
+are bundled. See [DUNGEON_VIEWER.md](DUNGEON_VIEWER.md) for sources and beta limits.
 
 **0.8.23 improves flight timing following Romits' report.** Untimed rides use
 the native flight map's connecting stops when public `GetNumRoutes` and
