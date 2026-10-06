@@ -78,6 +78,13 @@ def dungeon_code(field, name, data, comment):
     return packer.code(body, comment)
 
 
+def elite_spawn_code(data):
+    packer = Packer()
+    body = 'ns.eliteSpawnData = ' + encode({k: v for k, v in data.items() if k != 'npcs'}) + '\n'
+    body += packer.records('elite-spawns', 'ns.eliteSpawnData.npcs', data['npcs'], lazy_rows=True)
+    return packer.code(body, 'Elite target facts; licensed older-world reference positions need beta retesting. See QUEST_DATA.md.')
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--directory', type=Path, default=ROOT / 'WowTogether')
@@ -92,6 +99,9 @@ def main():
     ):
         path = args.directory / file
         path.write_text(dungeon_code(field, name, own_lua(path, field), comment))
+    path = args.directory / 'EliteSpawnData.lua'
+    if path.exists():
+        path.write_text(elite_spawn_code(own_lua(path, 'eliteSpawnData')))
 
 
 if __name__ == '__main__':

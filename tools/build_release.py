@@ -57,9 +57,18 @@ No Battle.net credentials or external API service are needed.
 Database details unpack only when used. Keep DataStore.lua and the complete
 generated data files together. /wt probe reports per-compartment load counts and
 client memory when its API exists. No quest/NPC/loot facts are removed; guide
-order and behavior remain. Retained host Lua memory is about 28.4 MiB at startup,
+order and behavior remain. Retained host Lua memory is about 28.7 MiB at startup,
 versus 52 MiB before compartment loading; actual beta memory needs testing with
 the same saved data. Loot items are shared across sources and load on demand.
+
+Open guide, beside Diagnostics, reopens the small guide window. After Exit it
+opens empty; it never resumes the stopped guide. Selecting Start route loads a
+guide into that same window. Open guide closes the browser to reveal the panel.
+Quest markers -> Show elite target spawns on the map is on by default. The current
+unfinished elite kill/drop objective shows skulls at known possible spawns. They
+clear on completion, skipping, guide changes or stopping, and do not preview future
+hunts. These are possible positions, not live mobs. Older-world points are limited
+to unchanged quest identities; retest positions in the beta. See QUEST_DATA.md.
 
 Leveling guides -> Include convenient class training is on by default.
 Even levels make a personal training check due. A matching friendly trainer must
@@ -420,7 +429,7 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
 '''
     args.output.mkdir(parents=True, exist_ok=True)
     destination = args.output / f'WowTogether-{version}.zip'
-    files = ['WowTogether.toc', *names, 'QuestCatalogue.json', 'QuestCoverage.json', 'GuideAudit.json', 'GuideSourceQueue.json', 'TravelData.json', 'GuideServiceData.json', 'DungeonData.json', 'DungeonJournalData.json', 'DungeonMapData.json']
+    files = ['WowTogether.toc', *names, 'QuestCatalogue.json', 'QuestCoverage.json', 'GuideAudit.json', 'GuideSourceQueue.json', 'TravelData.json', 'GuideServiceData.json', 'DungeonData.json', 'DungeonJournalData.json', 'DungeonMapData.json', 'EliteSpawnData.json']
     with zipfile.ZipFile(destination, 'w', zipfile.ZIP_DEFLATED) as archive:
         for name in files:
             archive.write(addon / name, 'WowTogether/' + name)
@@ -433,7 +442,7 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
             if (ROOT / name).exists():
                 archive.write(ROOT / name, 'WowTogether/' + name)
         archive.write(ROOT / 'LICENSE', 'WowTogether/LICENSE')
-        for name in ('build_quest_dataset.py', 'pack_data.py', 'quest_enrichment.py', 'legacy_quest_facts.py', 'collect_quest_entities.py',
+        for name in ('build_quest_dataset.py', 'build_elite_spawns.py', 'pack_data.py', 'quest_enrichment.py', 'legacy_quest_facts.py', 'collect_quest_entities.py',
                      'forever_map_geometry.py', 'quest_event_areas.py', 'lua_data_literal.py', 'forever_beta_facts.py',
                      'quest_observation_facts.py', 'capture_quest_pages.py', 'audit_quest_guides.py',
                      'import_warcraftdb.py', 'import_wowhead.py', 'import_travel_network.py', 'import_guide_services.py', 'import_dungeons.py', 'import_dungeon_journal.py', 'import_dungeon_positions.py',

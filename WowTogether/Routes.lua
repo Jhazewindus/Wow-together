@@ -447,6 +447,7 @@ end
 function ns.StopSymbol(stop) return stop.kind == "trainer" and "T" or stop.kind == "travel" and "›" or stop.action == "collect" and "*" or "+" end
 
 local function hideDrawing(provider)
+    ns.HideEliteSpawnMarkers(provider)
     for _, pin in ipairs(provider.pins or {}) do pin:Hide() end
     for _, line in ipairs(provider.lines or {}) do line:Hide() end
     for _, line in ipairs(provider.shadowLines or {}) do line:Hide() end
@@ -502,7 +503,9 @@ function ns.RouteDisplayStops(route)
     if ns.Option("fullRoute") then return route.previewStops or route.stops end
     local stops, places, previous = {}, 0, nil
     for _, stop in ipairs(route.stops) do
-        local key = stop.mapID .. ":" .. math.floor(stop.x * 100000) .. ":" .. math.floor(stop.y * 100000)
+        local key = validPoint(stop.mapID, stop.x, stop.y)
+            and (stop.mapID .. ":" .. math.floor(stop.x * 100000) .. ":" .. math.floor(stop.y * 100000))
+            or "unmapped"
         if key ~= previous then places = places + 1 end
         if places > 1 + ns.Option("routeAhead") then break end
         stops[#stops + 1], previous = stop, key
@@ -570,6 +573,7 @@ local function publicOwnedDrawing(provider)
     if not provider.overlay or not provider.legend then return false end
     local frames = {provider.overlay, provider.legend}
     for _, pin in ipairs(provider.pins or {}) do frames[#frames + 1] = pin end
+    for _, pin in ipairs(provider.elitePins or {}) do frames[#frames + 1] = pin end
     for _, frame in ipairs(frames) do
         if ns.ReadPublic(frame.IsProtected, frame) ~= false then return false end
     end
@@ -638,6 +642,11 @@ function ns.DrawRoute(provider, geometryOnly)
         projected[index] = ns.ProjectMapPoint(stop, mapID, projectionContext)
         if projected[index] then hasDisplayedMap = true end
     end
+    if not hasDisplayedMap then
+        for _, point in ipairs(ns.EliteSpawnPoints()) do
+            if ns.ProjectMapPoint(point, mapID, projectionContext) then hasDisplayedMap = true; break end
+        end
+    end
     if mapID ~= route.mapID and not hasDisplayedMap then
         updateLegend(legend, "Next steps are in " .. ns.MapName(route.mapID) .. ".\nTravel coordinates are unavailable here. Use View route zone.")
         ns.routeStats.status = "Viewing another map; next route steps are in " .. ns.MapName(route.mapID) .. "."
@@ -662,6 +671,7 @@ function ns.DrawRoute(provider, geometryOnly)
     overlay:SetFrameStrata(upper[strata] and strata or "HIGH")
     local level = query(surface.parent.GetFrameLevel, surface.parent)
     if type(level) == "number" then overlay:SetFrameLevel(level + 30) end
+    ns.DrawEliteSpawnMarkers(provider, surface, mapID, projectionContext)
     if type(overlay.CreateLine) ~= "function" then ns.routeStats.status = "Route line drawing unavailable."; return end
     if not route.flying then drawPatrols(provider, displayed, surface, mapID, projectionContext) end
     ns.routeStats.surface = surface.mode
@@ -775,6 +785,9 @@ function ns.DrawRoute(provider, geometryOnly)
         local numbers = #group.numbers <= 3 and table.concat(group.numbers, "/")
             or (group.numbers[1] .. "/" .. group.numbers[2] .. "/+" .. (#group.numbers - 2))
         local icon = ns.StopIcon(p)
+        if provider.eliteQuestID == p.id and p.kind == "q" and provider.eliteStepKey == ns.GuideStepKey(p) then
+            icon = "Interface\\TargetingFrame\\UI-RaidTargetingIcon_8"
+        end
         pin.icon:SetTexture(icon); pin.icon:SetShown(icon ~= nil)
         pin.symbol:SetText(ns.StopSymbol(p)); pin.symbol:SetShown(icon == nil)
         pin:SetAlpha(ns.routePaused and not p.confirmation and 0.65 or 1)

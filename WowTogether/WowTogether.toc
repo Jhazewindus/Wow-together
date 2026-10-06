@@ -2,12 +2,13 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.31
-## X-ReleaseName: VANILLA LOOT AUDIT
+## Version: 0.8.32
+## X-ReleaseName: ELITE TARGET SPAWNS
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua
 QuestCatalogue.lua
+EliteSpawnData.lua
 ZoneConnections.lua
 MapProjection.lua
 TravelData.lua
@@ -37,6 +38,7 @@ Guide.lua
 Routes.lua
 PartyRoutes.lua
 GuideText.lua
+EliteSpawns.lua
 QuestConfirmation.lua
 QuestFocus.lua
 QuestItems.lua

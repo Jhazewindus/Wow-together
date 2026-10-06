@@ -52,6 +52,11 @@ LEGACY_DATA_LICENSE.txt for the full upstream license and
 LEGACY_DATA_COPYRIGHT.md for its Blizzard content/copyright notice.
 The original addon code retains the repository's Apache-2.0 license.
 
+Version 0.8.32 also selects outdoor elite-target spawn coordinates from this
+same licensed numeric snapshot. Reviewed Forever map bounds convert reference
+positions only for identity-matched unchanged quests. EliteSpawnData.json records
+source hashes and transformations; no source server/event logic is copied or run.
+
 Version 0.8.27 also selects interior creature/object spawn coordinates from
 this same licensed snapshot. Explicit client floor rectangles transform only
 unambiguous spawns; no source server/event logic is copied or evaluated.

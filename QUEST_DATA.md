@@ -288,6 +288,41 @@ The New Horde (787) is flagged for actual-offer confirmation from the main
 developer's Orc/Troll report. Race eligibility remains unresolved; no guessed
 race mask is bundled. This flagged requirement still counts as an audit gap.
 
+## Current-step elite spawn overlay — 0.8.32
+
+`EliteSpawnData.lua` stores possible locations separately from guide destinations.
+The selected unfinished kill/drop objective determines the target NPC IDs; normal
+NPCs, quest givers, future steps and non-mob objectives are excluded. Known elite,
+rare-elite and world-boss classifications qualify. Unknown classification is used
+only for an explicitly Elite quest. Source locations do not track living mobs,
+patrol positions, spawn conditions, respawn times or walkable access.
+
+The snapshot contains **343 target NPCs**, **261 published points** and **3,181
+older-world reference points**, linked to **431 quests** before guide filters.
+Published quest positions can be representative rather than exhaustive. All
+selected numeric outdoor spawns from the pinned CMaNGOS snapshot above are retained,
+projected through the reviewed Forever map bounds; duplicate coordinates are merged.
+Those references require the exact objective NPC and an identity-matched unchanged
+quest with an older-world factual fallback. New/changed quests use their published
+points only. These counts are source coverage, not verified beta spawn coverage.
+
+`EliteSpawnData.json` records source revisions/checksums, bounds provenance and
+limits. The inert packed records load per NPC on demand. Route order, destinations,
+guide prerequisites, manual skips and ordinary nameplate marker preferences are
+unchanged. The current target's map skulls disappear on completion/skip/guide change;
+synced members still needing that objective keep them visible.
+
+Rebuild with the reviewed numeric snapshot and map-conversion file, using:
+
+```sh
+/workspace/.wow-together-tests/bin/python tools/build_elite_spawns.py \
+  --snapshot /path/to/ClassicDB_1_12_1_z2815.sql.gz \
+  --geometry /path/to/Forever/conversion.json
+```
+
+The compiler checks the pinned snapshot hash. It parses literal spawn facts without
+running SQL, source addon code or server scripts, and does not modify the quest catalogue.
+
 ## Reproduce capture, build and audit
 
 Use `/workspace/.wow-together-tests/bin/python` with pinned Lupa 2.8. Run from

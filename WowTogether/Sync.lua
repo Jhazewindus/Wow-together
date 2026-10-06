@@ -692,6 +692,8 @@ function ns.SyncDiagnostics(output)
     output("Current quests first: " .. safe(ns.Option("currentQuestsFirst")))
     output("Party route: " .. (ns.partyRouteStatus or "No route started."))
     output("Rendered route pins: " .. ns.routeStats.pins .. "; lines: " .. ns.routeStats.lines)
+    output("Elite target spawn skulls: " .. (ns.routeStats.eliteSpawns or 0)
+        .. "; enabled: " .. safe(ns.Option("eliteSpawnHints")))
     for _, person in ipairs(ns.PartyProfiles and ns.PartyProfiles() or {}) do
         local profile = person.profile
         output("Character context for " .. person.name .. ": " .. (profile and ("level " .. profile.level .. ", " .. profile.faction .. ", " .. profile.zone) or "waiting"))

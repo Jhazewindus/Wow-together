@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "captured": "2026-10-06",
+  "counts": {
+    "targets": 343,
+    "publishedPoints": 261,
+    "referencePoints": 3181,
+    "quests": 431
+  },
+  "questCatalogueSHA256": "5511fb5264b955b3b2f504974c3d60e61e6db34d069cce62e172d09088c8ff69",
+  "sources": [
+    {
+      "url": "https://github.com/cmangos/classic-db/blob/ec4f596146be6467ea93c57397858e329e2db852/Full_DB/ClassicDB_1_12_1_z2815.sql.gz",
+      "commit": "ec4f596146be6467ea93c57397858e329e2db852",
+      "sha256": "4f92db520868ab4e566726f68b5b2e380ae781209beaf22237b4f7f04600d0c0"
+    },
+    {
+      "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/conversion.json",
+      "commit": "e0a6eaa86f181ac99262e34126bcd2ed1a1712d6",
+      "report_sha256": "0229566017126c2577e77d2bcc7c9f995648fb27ed32a7918fa44ace0664fb22",
+      "target_build": "1.60.1.69893",
+      "target_tables": {
+        "ui_map_assignment": {
+          "coverage": "ok",
+          "rows": 61,
+          "snapshot_sha256": "850760df9b7dc0286314dafc46388311f9c48befd310aedab7142ab7b7841156"
+        },
+        "ui_map": {
+          "coverage": "ok",
+          "rows": 60,
+          "snapshot_sha256": "e265fc2189a7e46df0f0a2e9ecef23da35be96a66b556536164a834665753747"
+        }
+      },
+      "outdoor_maps": 46,
+      "limitations": [
+        "Map rectangles do not establish current NPC/object spawns or walkable terrain",
+        "New/changed quests cannot reuse older-world facts",
+        "Current beta map bounds must still be checked in the client"
+      ]
+    }
+  ],
+  "limitations": [
+    "Every selected reference spawn is retained; duplicate coordinates are merged.",
+    "Published objective/alternative points can be representative rather than exhaustive.",
+    "Vanilla positions are gated by unchanged quest identity and matching objective NPC IDs.",
+    "Possible locations do not establish current beta spawns, respawn times, patrol position or walkable access."
+  ]
+}

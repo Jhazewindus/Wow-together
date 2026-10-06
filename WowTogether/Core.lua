@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.31"
-ns.RELEASE_NAME = "MEMORY COMPARTMENTS"
+ns.VERSION = "0.8.32"
+ns.RELEASE_NAME = "ELITE TARGET SPAWNS"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}

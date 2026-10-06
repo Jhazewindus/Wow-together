@@ -1,5 +1,25 @@
 # Wow Together changelog
 
+## 0.8.32
+
+**ELITE TARGET SPAWNS**
+
+- Show skulls at known possible spawns for the current unfinished elite kill /
+  drop objective only. Keep future hunts hidden even in full-route preview.
+  Clear on completion, skip, guide switch and stop; synced party objectives stay
+  marked until the last relevant member finishes.
+- Add Show elite target spawns on the map in Quest markers settings, on by
+  default. Keep route order, ordinary nameplate markers and quest destinations.
+  Spawn facts load per target; retain all selected reference points, with older
+  positions limited to unchanged quest identities. Possible locations are not
+  live mobs or guaranteed current-beta positions.
+- Add Open guide beside Diagnostics to reopen the small guide window. After
+  Exit, it opens empty without reviving a stopped guide. Hidden active guides
+  keep their progress; close the browser to reveal the guide. Handle corpse map
+  previews without available coordinates.
+- Include all 66 Lua files and Media; replace the complete folder, then reload.
+  Host checks verify logic; markers and source positions still need beta testing.
+
 ## 0.8.31
 
 **VANILLA LOOT AUDIT**

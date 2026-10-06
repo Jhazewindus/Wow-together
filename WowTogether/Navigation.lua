@@ -225,6 +225,7 @@ function ns.UpdateNavigation()
     if not frame then return end
     local state = ns.NavigationState()
     frame.state = state
+    ns.RefreshEliteSpawnMarkers()
     frame:SetShown(state.visible == true and ns.Option("routeArrow"))
     ns.UpdateStandaloneArrow(state)
     ns.UpdateQuestItemButton(state)
@@ -458,6 +459,17 @@ function ns.CreateNavigation()
 end
 
 function ns.ToggleNavigation() ns.SetOption("routeArrow", not ns.Option("routeArrow")) end
+
+function ns.OpenGuideWindow()
+    if not ns.routeSelection and not ns.routePlanning then
+        ns.guideStopped, ns.guideWindowIdle = true, true
+    end
+    if not ns.navigation then ns.CreateNavigation() end
+    if not ns.Option("routeArrow") then ns.SetOption("routeArrow", true) end
+    ns.UpdateNavigation()
+    ns.navigation:Raise()
+    if ns.window then ns.window:Hide() end
+end
 
 function ns.NavigationDiagnostics(output)
     local state = ns.navigation and ns.navigation.state or ns.NavigationState()

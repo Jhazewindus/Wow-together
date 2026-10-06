@@ -1,13 +1,13 @@
 # Wow Together — friend test script
 
-For **0.8.31** — **VANILLA LOOT AUDIT**, World of Warcraft: Forever beta,
+For **0.8.32** — **ELITE TARGET SPAWNS**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 64 Lua files** and
+1. Replace the complete WowTogether folder, including **all 66 Lua files** and
    the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    `/reload`; restart fully if a new addon folder does not appear.
@@ -16,6 +16,27 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Current elite spawns and reopening the guide — about 5–10 minutes
+
+- On an accepted elite kill/drop objective in the current guide step, open the
+  world map. Known possible target locations should show skulls. Full route must
+  not add skulls for later objectives. Pickups, returns and normal mobs should
+  keep their usual map markers. Report the quest, exact target and any wrong position.
+- Complete one target while another quest objective remains: the finished target's
+  skulls must clear. When synced, finish on one client first; skulls must remain
+  until the last member needing that target finishes. Skip the step/quest, change
+  guides and stop: old skulls must clear without changing the guide's fixed order.
+- Zoom, pan, resize and view another map, including during combat. Skulls should
+  stay anchored and clipped to the map. Ghost directions, flight, Scan guide and
+  previous/next previews must not show hunt skulls. Resume the objective to restore them.
+- Toggle Settings → Quest markers → Show elite target spawns on the map. Only
+  those skulls should change. A missing source location must not create a guessed pin.
+- Exit the guide with ×, then press Open guide beside Diagnostics in the main
+  window. Expect No guide selected; the stopped guide must not resume. Start a
+  new guide. Hide its arrow in settings, then Open guide: expect the same current
+  step, position and size. The browser closes to reveal it. Check these buttons
+  also fit at the minimum main-window size.
 
 ## Dungeon loot and Stop / Exit — about 10 minutes
 

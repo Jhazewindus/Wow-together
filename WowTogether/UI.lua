@@ -283,9 +283,11 @@ function ns.CreateUI()
     ns.ui.hint:SetText("Choose a guide or browse quests.")
     local probe = button(window, "Diagnostics", 132, function() ns.Diagnostics() end)
     probe:SetPoint("BOTTOMLEFT", 26, 12)
+    ns.ui.openGuideButton = button(window, "Open guide", 104, ns.OpenGuideWindow)
+    ns.ui.openGuideButton:SetPoint("BOTTOMLEFT", 168, 12)
     local tracker = button(window, "Tracker", 84, function() ns.ToggleTracker() end)
     ns.ui.trackerButton = tracker
-    tracker:SetPoint("BOTTOMLEFT", 168, 12)
+    tracker:SetPoint("BOTTOMLEFT", 282, 12)
     local sync = button(window, "Sync party", 160, function() ns.SyncNow(true) end, true)
     ns.ui.syncButton = sync
     sync:SetPoint("BOTTOMRIGHT", -26, 12)

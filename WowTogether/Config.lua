@@ -7,7 +7,7 @@ local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, cl
     scanSkipped = false, distanceUnits = "yards", trackerAuto = true, autoSelectQuests = false,
     suggestFlights = true, autoFly = false, nearbyFlights = true, corpseArrow = true, npcMarker = "star", recordQuestData = true,
     useLearnedQuests = true, exportCharacterNames = false, fixedZoneGuides = true,
-    standaloneArrow = false, travelNetwork = true, soloMode = false, questGiverStars = true, patrolHints = true, hearthstoneTips = true,
+    standaloneArrow = false, travelNetwork = true, soloMode = false, questGiverStars = true, patrolHints = true, eliteSpawnHints = true, hearthstoneTips = true,
     guideOpaque = true, highlightGuideQuest = true, classTraining = true}
 
 function ns.Option(key)
@@ -54,6 +54,7 @@ local sections = {
         {"nameplateHints", "Show quest markers beside names", "Turn nameplate markers on or off separately from quest-item tooltip hints. Markers hide during combat."},
         {"questGiverStars", "Star above guide quest givers", "Highlight eligible pickups in your selected guide with a large gold star. Requires visible friendly NPC nameplates; hides during combat."},
         {"patrolHints", "Show quest-giver patrols on the map", "Show a possible patrol path for wandering quest givers."},
+        {"eliteSpawnHints", "Show elite target spawns on the map", "Show skulls at known possible spawns only during the current unfinished elite objective."},
         {"npcMarker", "Objective marker style", "Choose a star, cross, kill skull, or quest ! beside needed enemy names.", {{"star", "Star"}, {"cross", "Cross"}, {"skull", "Skull for kills"}, {"quest", "Quest !"}}}}},
     {"automation", "Quest dialogs", {
         {"autoSelectQuests", "Open guide quests at an NPC", "Open suitable guide quests and ready turn-ins when you talk to an NPC."},

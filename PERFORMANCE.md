@@ -1,5 +1,14 @@
 # Performance maintenance — 0.6.9
 
+## Elite spawn hints in 0.8.32
+
+The separate spawn compartment keeps 343 NPC records inert until a current target
+needs them. It adds about 0.3 MiB to the Lua 5.1 host startup heap (about 28.7 MiB
+total); it does not materialize every spawn or scan the quest catalogue each frame.
+Map buttons are pooled and reused, with the same viewport projection as route
+markers. Hidden-map cleanup runs once and unchanged objectives do not redraw their
+spawn overlay. These host figures exclude native frames/textures and SavedVariables.
+
 ## Expanded dungeon loot in 0.8.31
 
 The Vanilla loot audit stores 5,557 item facts once and retains drop relationships
