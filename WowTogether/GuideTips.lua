@@ -168,9 +168,13 @@ function ns.GuideTipDiagnostics(output)
         .. "; hearthstone " .. (ns.Option("hearthstoneTips") and "on" or "off") .. "; nearby range 150 metres.")
     local value = ns.navigation and ns.navigation.tip and ns.navigation.tip.value
     output("Current optional tip: " .. (value and value.text or "none"))
+    local interaction = ns.handlers.PLAYER_INTERACTION_MANAGER_FRAME_SHOW and "modern binder interaction"
+        or ns.handlers.CONFIRM_BINDER and "binder confirmation" or "unavailable"
+    output("Inn recording: " .. interaction .. "; binding event " .. (ns.handlers.HEARTHSTONE_BOUND and "registered" or "unavailable") .. ".")
 end
 
 function ns.RecordGuideInn()
+    ns.pendingGuideInn = nil
     local state = saved()
     if not state or ns.RouteInCombat() then return end
     local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
@@ -191,7 +195,17 @@ function ns.RecordGuideInn()
     state.revision, ns.pendingGuideInn, cached = state.revision + 1, id, nil
 end
 
-ns.On("INN_INFO", ns.RecordGuideInn)
+-- INN_INFO is not a valid event on the tested Forever client. Modern UI
+-- interaction events identify the binder by enum; use the older confirmation
+-- event only where registration succeeds. Neither binds a hearthstone.
+local interactions = Enum and Enum.PlayerInteractionType
+local binder = interactions and interactions.Binder
+if ns.Public(binder) and type(binder) == "number" then
+    ns.On("PLAYER_INTERACTION_MANAGER_FRAME_SHOW", function(interaction)
+        if ns.Public(interaction) and interaction == binder then ns.RecordGuideInn() end
+    end)
+end
+ns.On("CONFIRM_BINDER", ns.RecordGuideInn)
 ns.On("HEARTHSTONE_BOUND", function()
     local state = saved()
     if not state then return end

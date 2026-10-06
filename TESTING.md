@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.9**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.10**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
@@ -14,6 +14,23 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Beta event startup hotfix for 0.8.10 — about 3–5 minutes
+
+1. Replace the complete folder and `/reload`, keeping SavedVariables. Confirm
+   no unknown INN_INFO event error appears, and `/wt`, the minimap button,
+   Settings and guide controls are available. `/wt probe` must say **0.8.10**.
+2. The report includes **Unavailable event registrations** and **Inn recording**.
+   Rejected optional events should be listed there without stopping loading or
+   creating extra chat warnings. Send those lines with the client build if any
+   event is unavailable; host tests cannot establish beta event support.
+3. Accept/turn in a quest, change zones and `/reload` again. Quest progress,
+   guide selection, class/nearby-pickup settings and saved skips should still work.
+4. At a suitable inn, open the manual home-binding dialog and cancel it. Opening
+   it must not make the addon record a confirmed home. Open it again and confirm
+   manually: advice for the current home should disappear. Test a different inn
+   when practical. Optional recording may be limited if binder events are absent;
+   the addon should continue using a public native home name when available.
 
 ## Optional class quest checks for 0.8.9 — about 5–10 minutes
 
@@ -120,7 +137,7 @@ The expanded-guide checks below take about **15–25 minutes**.
    With `/console scriptErrors 1`, confirm there is no SetFont error at startup.
 2. Open `/wt`. Both search boxes, Settings, Tracker and Sync controls should be
    created normally. Type in both search fields, then open `/wt probe` and
-   confirm version **0.8.9** and a populated character/quest report.
+   confirm version **0.8.10** and a populated character/quest report.
    The minimap button should appear unless previously hidden; `/wt minimap`
    toggles it. Left-click should open the dashboard.
 3. Accept or turn in a quest, change zones and `/reload` again. Confirm no

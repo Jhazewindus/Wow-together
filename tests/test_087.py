@@ -105,7 +105,7 @@ class GuideServiceTipTests(unittest.TestCase):
         self.assertIsNone(c.ns.CurrentGuideTip())
         c.lua.execute('function GetBindLocation() return secret end; clock=3; function UnitGUID() return "Creature-0-1-2-3-500-ABC" end')
         self.assertIsNotNone(c.ns.CurrentGuideTip())
-        c.ns.handlers.INN_INFO()
+        c.ns.handlers.CONFIRM_BINDER()
         self.assertIsNone(c.ns.db.guideServices[c.ns.self].boundInnID)
         c.ns.handlers.HEARTHSTONE_BOUND()
         self.assertEqual(c.ns.db.guideServices[c.ns.self].boundInnID, 'INN_500')
@@ -114,7 +114,7 @@ class GuideServiceTipTests(unittest.TestCase):
     def test_new_inns_can_be_observed_without_requiring_a_zone_specific_rule(self):
         c = tip_client(inn=False)
         c.lua.execute('function UnitGUID() return "Creature-0-1-2-3-700-ABC" end; function GetSubZoneText() return "New hub" end')
-        c.ns.handlers.INN_INFO()
+        c.ns.handlers.CONFIRM_BINDER()
         inn = c.ns.db.guideServices[c.ns.self].inns['observed:501:700']
         self.assertEqual(inn.name, 'New hub')
         self.assertEqual(c.ns.CurrentGuideTip().kind, 'hearth')

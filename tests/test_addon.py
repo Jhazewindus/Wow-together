@@ -19,6 +19,20 @@ DEFAULT_CHAT_FRAME = {AddMessage = function(_, msg) logs[#logs+1] = msg end}
 local methods = {}
 function methods:SetScript(name, callback) self[name] = callback end
 function methods:GetScript(name) return self[name] end
+function methods:RegisterEvent(event)
+    self.registrationAttempts = self.registrationAttempts or {}
+    self.registrationAttempts[event] = (self.registrationAttempts[event] or 0) + 1
+    if event == 'INN_INFO' or unsupportedEvents and unsupportedEvents[event] then
+        error('Attempt to register unknown event "' .. event .. '"')
+    end
+    if rejectedEvents and rejectedEvents[event] then return false end
+    self.registeredEvents = self.registeredEvents or {}
+    self.registeredEvents[event] = true
+    return true
+end
+function methods:UnregisterEvent(event)
+    if self.registeredEvents then self.registeredEvents[event] = nil end
+end
 function methods:CreateFontString() return setmetatable({}, {__index=methods}) end
 function methods:CreateTexture() return setmetatable({}, {__index=methods}) end
 function methods:CreateLine() return setmetatable({}, {__index=methods}) end
@@ -106,7 +120,7 @@ C_QuestLog = {
 '''
 
 class Client:
-    def __init__(self, name='Alice', peer='Bob', quests=(1, 2), completed=(), default_guide=False, use_catalogue=False, saved_variables=None):
+    def __init__(self, name='Alice', peer='Bob', quests=(1, 2), completed=(), default_guide=False, use_catalogue=False, saved_variables=None, before_load=None):
         self.lua = LuaRuntime(unpack_returned_tuples=True)
         self.lua.execute(MOCK)
         g = self.lua.globals()
@@ -115,6 +129,8 @@ class Client:
             g.entries[i] = self.lua.table_from({'questID': quest, 'title': f'Quest {quest}', 'isHeader': False})
         for quest in completed:
             g.finished[quest] = True
+        if before_load:
+            self.lua.execute(before_load)
         self.ns = self.lua.table()
         toc = (ROOT / 'WowTogether/WowTogether.toc').read_text()
         for line in toc.splitlines():

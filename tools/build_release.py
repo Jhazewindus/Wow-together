@@ -83,6 +83,10 @@ Hearthstone tips require upcoming objectives away and multiple hub turn-ins;
 flight tips hide known paths and distinguish Get from Check when unlocks are
 unconfirmed. Hover for the location/reason. Advice never changes the quest order,
 binds a home or unlocks a flight. New inn visits can be recorded per character.
+Unsupported beta events no longer stop addon loading. Inn recording uses supported
+binder interactions, never INN_INFO; home binding remains manual. /wt probe lists
+unavailable event subscriptions and inn recording capabilities. Event handler
+errors remain visible. Keep SavedVariables when replacing the complete folder.
 Play mode → Solo leveling mode stops all party sends/receives, hides party
 controls and uses only your character, even while grouped. Guides, local progress
 and learning continue. Toggle off to request fresh party snapshots.

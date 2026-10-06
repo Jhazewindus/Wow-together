@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.8.9** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.10** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -20,6 +20,18 @@ Replace the folder on **every party member's client**, including all **48 Lua
 files**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.10 fixes the INN_INFO startup error reported on 0.8.8.** The same
+unsupported registration was still in 0.8.9. Inn visits now use the modern
+Binder interaction enum, with the older binder-confirmation event where supported.
+All event registrations check the optional `C_EventUtils.IsEventValid` API and
+handle native registration rejection. Failed subscriptions appear in `/wt probe`
+without interrupting the remaining files or adding chat warnings. This guard
+does not catch event-handler errors or make protected actions safe.
+Opening a binding dialog records a visit; it never sets your home. Confirmed
+bindings use `HEARTHSTONE_BOUND` only if registered, while public
+`GetBindLocation` still hides advice for the current home. Replace the complete
+folder and `/reload`; keep your existing SavedVariables.
 
 **0.8.9 makes Include class quests a live guide filter.** Eligible class quests
 stay in the saved zone sequence; the checkbox shows or hides their steps in the
@@ -681,7 +693,7 @@ provided broad inspiration about progress clarity; its code/assets/layouts
 were not copied. This implementation is independent.
 
 Reported beta build **70205** established the earlier sync APIs in user tests.
-**0.8.9 has host validation, not a live-client compatibility certification.**
+**0.8.10 has host validation, not a live-client compatibility certification.**
 Retest UI rendering, optional gossip/flight actions, corpse positions and item
 hooks on the build in front of you. `/wt probe` lists capabilities and runtime
 status. Do not interpret presence as proof that protected actions work.

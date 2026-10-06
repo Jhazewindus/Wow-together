@@ -1,7 +1,8 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.9"
+ns.VERSION = "0.8.10"
 ns.handlers = {}
+ns.eventFailures = {}
 ns.members = {}
 ns.status = "Waiting for addon initialization."
 ns.frame = CreateFrame("Frame")
@@ -30,8 +31,24 @@ function ns.Refresh()
 end
 
 function ns.On(event, handler)
+    -- Beta builds may omit otherwise documented events. This only catches
+    -- event-registration errors; it does not wrap handlers or protected actions.
+    local validate = C_EventUtils and C_EventUtils.IsEventValid
+    if type(validate) == "function" then
+        local ok, valid = pcall(validate, event)
+        if ok and ns.Public(valid) and valid == false then
+            ns.eventFailures[event] = "unsupported"
+            return false
+        end
+    end
+    local ok, registered = pcall(ns.frame.RegisterEvent, ns.frame, event)
+    if not ok or not ns.Public(registered) or registered ~= true then
+        ns.eventFailures[event] = "registration rejected"
+        return false
+    end
+    ns.eventFailures[event] = nil
     ns.handlers[event] = handler
-    ns.frame:RegisterEvent(event)
+    return true
 end
 
 ns.frame:SetScript("OnEvent", function(_, event, ...)
@@ -132,6 +149,7 @@ function ns.Diagnostics()
         {"loadstring (Lua checks)", loadstring},
         {"setfenv (Lua checks)", setfenv},
         {"C_Timer.After", C_Timer and C_Timer.After},
+        {"C_EventUtils.IsEventValid", C_EventUtils and C_EventUtils.IsEventValid},
         {"WorldMapFrame.GetCanvas", WorldMapFrame and WorldMapFrame.GetCanvas},
         {"WorldMapFrame.GetCanvasContainer", WorldMapFrame and WorldMapFrame.GetCanvasContainer},
         {"WorldMapFrame.GetViewRect", WorldMapFrame and WorldMapFrame.GetViewRect},
@@ -146,6 +164,10 @@ function ns.Diagnostics()
     end
     output("MapCanvasDataProviderMixin: " .. (type(MapCanvasDataProviderMixin) == "table" and "present" or "missing"))
     output("Presence is not proof of working behavior. No waypoint or protected action was called.")
+    local unavailable = {}
+    for event, reason in pairs(ns.eventFailures) do unavailable[#unavailable + 1] = event .. " (" .. reason .. ")" end
+    table.sort(unavailable)
+    output("Unavailable event registrations: " .. (#unavailable > 0 and table.concat(unavailable, ", ") or "none"))
     ns.SyncDiagnostics(output)
     ns.NavigationDiagnostics(output)
     ns.GuideTipDiagnostics(output)

@@ -1,5 +1,20 @@
 # Wow Together changelog
 
+## 0.8.10
+
+- Fix the startup failure caused by the unsupported INN_INFO event, present
+  in 0.8.8 and 0.8.9. Observe binder interactions through the modern enum/event
+  and the older confirmation event only where supported.
+- Validate event support when the native capability API exists; catch rejected
+  registrations so other files and features still initialize. List unavailable
+  subscriptions in diagnostics without chat warnings. Handler errors still surface.
+- Keep hearthstone binding manual. Record a visit separately from a confirmed
+  binding; clear stale candidates when a new visit cannot be read. Native home
+  detection continues when the binding event is unavailable.
+- Reproduce the reported startup failure with a stricter host event mock;
+  add full-load, fallback, registration-result and binder-state regression checks.
+  Verify startup and inn behavior on the current beta client after updating.
+
 ## 0.8.9
 
 - Keep eligible class quests in the full zone-guide sequence. Apply the existing
