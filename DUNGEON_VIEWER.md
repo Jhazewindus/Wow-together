@@ -1,10 +1,11 @@
-# Dungeon viewer — 0.8.24
+# Dungeon viewer — 0.8.25
 
 **See dungeon** opens the full journal from the main addon's Dungeon quests cards
 from anywhere. Cards place **Quest list** beside **Start route**; clicking the
 card opens the viewer. Inspecting a dungeon never starts or alters a quest guide.
 
-Choose floors, select an encounter from the paged boss list or an available
+Choose floors when multiple maps exist; the selector is hidden otherwise.
+Select an encounter from the paged boss list or an available
 numbered map marker, and browse its notable drops. Loot has literal name search,
 equipment/other filters, paging, native item icons, cached client tooltips and
 standard modified-item clicks. Client item requests are bounded to once per

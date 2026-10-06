@@ -1,5 +1,11 @@
 # Wow Together changelog
 
+## 0.8.25
+
+- Hide the dungeon map-level dropdown when only one map, or no verified map, is
+  available. Close any open floor menu when switching to those dungeons; retain
+  the selector for multiple maps in both Full view and Map only.
+
 ## 0.8.24
 
 - Add See dungeon first on Dungeon quests cards; keep Quest list beside Start

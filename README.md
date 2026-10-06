@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.24** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.25** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -24,7 +24,8 @@ not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
 
 **0.8.24 adds the Dungeon viewer.** **See dungeon** opens its journal from anywhere.
-Choose floors, click a boss, and browse notable drops with item icons, search,
+The map-level dropdown appears only when multiple maps are available. Click a
+boss and browse notable drops with item icons, search,
 filters and cached client tooltips. Dungeon cards keep **Quest list** beside
 **Start route**. Entering a recognized dungeon optionally asks **Open map?** and
 opens a compact movable map. Both views resize and stay open during combat; their

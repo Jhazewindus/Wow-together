@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.24**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.25**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
@@ -21,7 +21,10 @@ The expanded-guide checks below take about **15–25 minutes**.
 1. From outdoors, open Dungeon quests. Expect See dungeon on the left and Quest
    list beside Start route on the right. See dungeon opens a journal immediately;
    opening it must not replace, advance or clear your leveling guide.
-2. Try Ragefire Chasm, Wailing Caverns and a multi-floor dungeon. Change floors,
+2. Try Ragefire Chasm, Wailing Caverns and a multi-floor dungeon. The map-level
+   dropdown should appear only for multiple maps, in both Full view and Map only.
+   Open that menu, then switch to a single-map or unmapped dungeon: it must close
+   and disappear. Switching back must restore the selector. Change floors,
    click bosses, search loot, use Equipment/Other filters and page long lists.
    Hover an item for cached client stats and test a Shift-click item link. Newly
    uncached items may need a moment. Check portraits/icons against actual bosses.

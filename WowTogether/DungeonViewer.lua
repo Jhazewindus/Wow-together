@@ -249,7 +249,10 @@ local function updateFloorMenu(frame)
         row.caption:SetText(map.name); row:ClearAllPoints(); row:SetPoint("TOPLEFT", 4, -4 - (index - 1) * 28); row:SetHeight(26); row:Show()
     end
     control.menu:SetHeight(math.max(36, #control.entries * 28 + 8))
-    control:SetEnabled(#control.entries > 0)
+    local multipleMaps = #control.entries > 1
+    control:SetShown(multipleMaps)
+    control:SetEnabled(multipleMaps)
+    if not multipleMaps then control.menu:Hide() end
     if #control.entries == 0 then control.caption:SetText("No verified floor map") else control:SetChoice(frame.floor) end
 end
 local function drawMap(frame, map)

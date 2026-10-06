@@ -92,7 +92,8 @@ take precedence; 19 Classic and four Forever filenames are published. Remaining
 new dungeons use available journal art or a neutral client background; missing
 textures stay plain. No Blizzard images or external screenshots are bundled.
 See DUNGEON_ARTWORK.md for sources and beta limits. See dungeon opens a movable,
-resizable atlas from anywhere: choose floors, click bosses and browse notable loot.
+resizable atlas from anywhere: choose floors when multiple maps exist, click bosses
+and browse notable loot. The floor dropdown stays hidden for single/unmapped dungeons.
 Map only is a compact gameplay view; it stays open during combat. Entry asks
 Open map? when enabled. Classic floor references may differ from Forever layouts;
 missing boss coordinates and new-dungeon data are never guessed.
