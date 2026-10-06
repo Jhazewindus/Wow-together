@@ -178,7 +178,7 @@ class EventAreaTests(unittest.TestCase):
             'action':'use','sourceAction':'use-at','useItemName':'Cleansing Totem'})
         self.assertEqual(c.ns.StopInstruction(stop), 'Use Cleansing Totem at Water Well')
         stop.action='escort';stop.targetName='Guide'
-        self.assertEqual(c.ns.StopInstruction(stop), 'Escort Guide to this destination')
+        self.assertEqual(c.ns.StopInstruction(stop), 'Escort Guide')
 
 
 class BetaFactTests(unittest.TestCase):

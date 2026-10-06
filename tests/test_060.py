@@ -236,7 +236,7 @@ class GuideControlTests(unittest.TestCase):
 
     def test_kill_collection_and_dialogue_have_distinct_instructions(self):
         c = solo()
-        for action, expected in [('kill', 'Kill Boar'), ('collect', 'Pick up Apple'), ('talk', 'Talk to Giver')]:
+        for action, expected in [('kill', 'Kill Boar'), ('collect', 'Collect Apple'), ('talk', 'Speak to Giver')]:
             name = 'Apple' if action == 'collect' else 'Boar'
             stop = c.lua.table_from({'id': 900, 'kind': 'q', 'action': action, 'targetName': name, 'npcName': 'Giver'})
             self.assertEqual(c.ns.StopInstruction(stop), expected)

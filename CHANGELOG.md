@@ -1,5 +1,22 @@
 # Wow Together changelog
 
+## 0.8.5
+
+- Give the guide panel distinct accept, turn-in, kill, gather, loot, buy,
+  interact, escort, heal and quest-item instructions, with named targets.
+- Show remaining quantities and matching objective progress beside distance.
+  Keep separate item goals from the same creature distinct; match named
+  tool-use progress such as Peons Awoken through its recorded objective identity.
+- Add short action hints and known zone/coordinates beneath the arrow;
+  distinguish remote destinations, published patrols and missing locations.
+  Never show a planning anchor as a mapped objective.
+- Add full fact-based instructions, progress and supplied quest items to hover
+  details on guide panels and quest-order rows. Preserve pending-step details
+  alongside the existing blocking reason.
+- Retain compact panel sizes, fixed route order, routing, automation and sync.
+  No new quest locations or unverified landmark descriptions are invented;
+  live beta readability still needs testing.
+
 ## 0.8.4
 
 - Redesign the interface with matte charcoal panels, fine gold borders,

@@ -1,12 +1,12 @@
 # Wow Together — friend test script
 
-For **0.8.4**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.5**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 43 Lua files**, in
+1. Replace the complete WowTogether folder, including **all 44 Lua files**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    `/reload`; restart fully if a new addon folder does not appear.
 2. Enable `/console scriptErrors 1`. Record version, build, level, faction, class,
@@ -15,7 +15,32 @@ The expanded-guide checks below take about **15–25 minutes**.
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
 
-## UI checks for 0.8.4 — about 10 minutes
+## Instruction checks for 0.8.5 — about 10 minutes
+
+1. Start a guide. Pickup says **Accept from [giver]** and turn-in says
+   **Turn in to [receiver]**. The quest name stays above the arrow. Check the
+   short action hint and zone/coordinates below it, then hover for full details.
+2. Test a kill quest, a ground-item quest and a creature-drop quest. Wording
+   distinguishes **Kill**, **Gather** and **Loot**. Kill/loot counts should fall
+   as progress increases; the distance row shows the matching `have/need`.
+3. On Battleboars or another quest with two drops from one creature, collect
+   different amounts of each. Each step must show its own item/count; completing
+   one must not mark the other complete. Unmatched/unknown counts stay absent.
+4. On Lazy Peons, check the Blackjack instruction, Peons Awoken progress and
+   provided-item detail on hover. A tool-use objective must never say Kill.
+   Check a well-cleansing, healing or escort step if available.
+5. Open Show quest list and hover rows, then test the standalone arrow hover.
+   Full action/location text is accessible without expanding the compact panel.
+   Long names must remain readable on hover at your usual UI scale.
+6. Check a remote step and a missing-location step. Known destinations show
+   **Travel to [zone]** and coordinates; missing locations stay unknown, with
+   the game tracker fallback. A locked prerequisite still shows its blocking
+   reason. Scan, progress, skips and reload retain the selected route/order.
+7. If testing in a synced party, verify counts refer to the member named for
+   the step. Send `/wt probe`, quest ID and a screenshot for incorrect wording
+   or clipping. Host tests cannot establish current beta rendering/API behavior.
+
+## UI regression checks — about 10 minutes
 
 1. Open `/wt`. Check the compact header, gold accents, readable search hints
    and guide rows. Resize to the smallest and largest sizes and drag continuously;

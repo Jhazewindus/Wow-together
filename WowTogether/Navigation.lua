@@ -5,57 +5,6 @@ local function finite(value)
         and value > -math.huge and value < math.huge
 end
 
-function ns.StopInstruction(stop)
-    if stop.kind == "travel" then return stop.label end
-    if stop.kind == "corpse" then return "Return to your corpse" end
-    if stop.kind == "f" then return stop.label end
-    if stop.action == "start-item" then
-        if stop.npcName then
-            return (stop.sourceAction == "buy" and "Buy " or "Loot ") .. (stop.itemName or stop.title)
-                .. " from " .. stop.npcName .. "; use it to start the quest"
-        end
-        return "Find " .. (stop.itemName or stop.title) .. " to start " .. stop.title
-    end
-    if stop.npcName and stop.npcName ~= "" and (stop.kind == "a" or stop.kind == "t" or stop.action == "talk") then
-        return "Talk to " .. stop.npcName
-    end
-    if stop.kind == "t" then return "Turn in " .. stop.title end
-    if stop.kind == "a" then return "Pick up " .. stop.title end
-    local target = stop.itemName or stop.targetName or stop.npcName
-    local action, quantity = stop.action, stop.quantity
-    for _, objective in ipairs((ns.ProgressForMember(stop.memberKey or ns.self, stop.id) or {}).objectives or {}) do
-        if target and ns.ObjectiveMatchesPoint(objective.text, {name = target, progressName = stop.progressName}) then
-            if action ~= "use" and action ~= "heal" and action ~= "interact" and action ~= "talk" and action ~= "escort" and action ~= "event" then
-                if objective.kind == "monster" then action = "kill"
-                elseif objective.kind == "item" then action = "collect" end
-            end
-            quantity = objective.need or quantity
-            if action ~= "escort" and action ~= "event" then target = ns.ObjectiveLabel(objective.text) end
-            target = string.gsub(target, "%s+slain$", "")
-            target = string.gsub(target, "%s+killed$", "")
-            target = string.gsub(target, "%s+collected$", "")
-            break
-        end
-    end
-    local count = finite(quantity) and quantity > 1 and (tostring(math.floor(quantity)) .. " × ") or ""
-    if action == "use" then
-        return "Use " .. (stop.useItemName or "the quest item") .. (stop.sourceAction == "use-at" and " at " or " on ")
-            .. count .. (stop.npcName or stop.targetName or stop.title)
-    end
-    if action == "escort" then return "Escort " .. (target or stop.title) .. " to this destination" end
-    if action == "event" then return "Complete " .. stop.title .. " at this location" end
-    if action == "heal" then return "Heal " .. count .. (stop.objectiveLabel or target or stop.title) end
-    if action == "kill" then return "Kill " .. count .. (target or stop.title) end
-    if action == "buy" then return "Buy " .. count .. (target or stop.title) end
-    if action == "interact" then return "Interact with " .. (target or stop.title) end
-    if action == "collect" or action == "loot" or action == "item" or action == "gather" then
-        local source = stop.itemName and stop.npcName and stop.npcName ~= stop.itemName and (" from " .. stop.npcName) or ""
-        return "Pick up " .. count .. (target or stop.title) .. source
-    end
-    if target then return "Complete “" .. target .. "” for " .. stop.title end
-    return stop.label or ("Work on " .. stop.title)
-end
-
 function ns.FormatDistance(value)
     if ns.Option("distanceUnits") == "metres" then return string.format("%.0f m", value * 0.9144) end
     return string.format("%.0f yd", value)
@@ -65,8 +14,7 @@ local function duration(value)
     return string.format("%dm %02ds", math.floor(value / 60), math.floor(value % 60))
 end
 
-function ns.RouteContext(stop, mapID)
-    local title = stop.title or ns.QuestTitle(stop.id)
+function ns.RouteContext(stop, mapID, facts)
     if stop.kind == "loading" then
         return stop.action == "scan" and ("Checking your quests and completion history.\n"
             .. (ns.guideScanning and ns.guideScanning.guide.fixedRoute and "The guide's fixed step order is retained." or "Checking the route for your next steps."))
@@ -81,11 +29,11 @@ function ns.RouteContext(stop, mapID)
         end
         return ns.routePaused or "Reach Orgrimmar.\nTravel guide • Levels 1–60."
     end
-    if stop.kind == "notice" and ns.routeSelection and ns.routeSelection.fullGuide then
+    if stop.kind == "notice" and not stop.sourceStop and ns.routeSelection and ns.routeSelection.fullGuide then
         if ns.selectedRoute and ns.selectedRoute.complete then return "Guide complete.\nChoose another guide or Scan to check progress." end
         return (ns.routeSelection.zone or ns.MapName(ns.routeSelection.homeMapID or ns.routeSelection.mapID or 0)) .. " • Guide retained.\nVisit its quest giver or Scan after progressing."
     end
-    if stop.kind == "notice" then return "Scan can reconsider skipped steps.\nSettings can reset all skips for this character." end
+    if stop.kind == "notice" and not stop.sourceStop then return "Scan can reconsider skipped steps.\nSettings can reset all skips for this character." end
     if stop.kind == "corpse" then
         return (stop.approximate and "Recorded death position; check nearby." or "Your quest guide is retained.")
             .. "\nResume questing after recovering your body."
@@ -99,22 +47,18 @@ function ns.RouteContext(stop, mapID)
     if stop.travelLeg then return "Travel towards " .. ns.MapName(stop.goal.mapID) .. ".\n" .. (stop.travelLeg.method == "walk"
         and "Use the crossing; follow roads and terrain." or "Board the correct transport; waiting time varies.") end
     if stop.action == "flight-check" then return "Check this nearby flight master.\nUnlock status has not been confirmed." end
-    if stop.clientLocation then return "Finish this quest's remaining objectives.\nLocation supplied by your quest tracker." end
-    if ns.routePaused then
+    if ns.routePaused and not stop.sourceStop then
         if ns.routeSelection and ns.routeSelection.fixedRoute then return ns.routePaused end
         return "Waiting for confirmed party progress.\nYour last route is retained."
     end
-    local reason
-    if stop.kind == "t" then reason = "Turn in “" .. title .. "”."
-    elseif stop.kind == "a" then
-        local selected = ns.routeSelection
-        reason = "Accept “" .. title .. "”."
-        if selected and selected.pickupIDs and selected.pickupIDs[stop.id] then reason = reason .. " Nearby pickup." end
-        if stop.action == "start-item" then reason = "Use the item to start “" .. title .. "”." end
-    else reason = "For “" .. title .. "”." end
-    local zone = ns.MapName(stop.mapID)
-    local who = stop.forPlayer and (" • For " .. stop.forPlayer) or ""
-    local context = mapID and mapID ~= stop.mapID and ("Travel to " .. zone .. who) or (zone .. who)
+    facts = facts or ns.GuideStepFacts(stop)
+    stop = facts.stop
+    local reason = ns.GuideStepHint(stop, facts)
+    if stop.unknownLocation then reason = "Exact location missing; use the quest tracker."
+    elseif stop.clientLocation then reason = "Location supplied by your quest tracker." end
+    local forPlayer = ns.SafeTitle(stop.forPlayer)
+    local who = forPlayer and (" • For " .. forPlayer) or ""
+    local context = ns.StopLocationText(stop, mapID) .. who
     local useful, exception = ns.LevelingValue(stop.id)
     if ns.routeSelection and ns.routeSelection.catchupRequired and ns.routeSelection.catchupRequired[stop.id] then
         reason = "Finish this prerequisite to catch your party up."
@@ -139,6 +83,7 @@ function ns.NavigationState()
         local pending = route and route.pendingStop
         stop = {kind = "notice", id = pending and pending.id or 0, title = pending and pending.title or ns.routeSelection.title, mapID = route and route.mapID or 0,
             stepKind = pending and pending.kind, guideStep = pending and pending.guideStep,
+            sourceStop = pending,
             learnedSource = pending and pending.learnedSource,
             x = 0, y = 0, label = ns.routePaused or "Waiting for the next available guide step."}
     end
@@ -170,7 +115,7 @@ function ns.NavigationState()
     local east, north = (destination.x - position.x) * width, (position.y - destination.y) * height
     state.distance = math.sqrt(east * east + north * north)
     if state.distance <= 8 then
-        state.status = ns.StopInstruction(stop); state.arrived = true; return state
+        state.status = ns.GuideStepAction(stop); state.arrived = true; return state
     end
     local facing = ns.ReadPublic(GetPlayerFacing)
     if not finite(facing) then state.status = "Direction unavailable"; return state end
@@ -227,12 +172,15 @@ function ns.UpdateNavigation()
     ns.UpdateStandaloneArrow(state)
     if not state.visible then ns.HideNavigationGeometry(frame.icon); return end
     frame.title:SetText(state.stop.title)
+    local facts = ns.GuideStepFacts(state.stop)
     local clock = state.flight and (state.flight.remaining and state.flight.remaining > 0 and ((state.flight.estimated and "Estimated " or "~") .. duration(state.flight.remaining) .. " remaining")
         or state.flight.elapsed and (duration(state.flight.elapsed) .. " flying") or "Flight time unavailable")
-    frame.distance:SetText(clock or (state.distance and (ns.FormatDistance(state.distance) .. (state.arrived and " • Here" or "")) or ""))
-    frame.status:SetText(state.angle and ns.StopInstruction(state.stop) or state.status)
+    local distance = state.distance and (ns.FormatDistance(state.distance) .. (state.arrived and " • Here" or "")) or ""
+    if facts.progress then distance = distance .. (distance ~= "" and " • " or "") .. facts.progress end
+    frame.distance:SetText(clock or distance)
+    frame.status:SetText(state.angle and ns.GuideStepAction(state.stop, facts) or state.status)
     local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
-    frame.context:SetText(ns.RouteContext(state.stop, mapID))
+    frame.context:SetText(ns.RouteContext(state.stop, mapID, facts))
     ns.HideNavigationGeometry(frame.icon)
     frame.symbol:SetText("…"); frame.symbol:SetTextColor(0.96, 0.76, 0.35, 1)
     frame.symbol:SetShown(state.angle == nil and not state.arrived and not state.flight)
@@ -302,8 +250,8 @@ function ns.CreateNavigation()
     frame:SetScript("OnEnter", function(self)
         if not GameTooltip then return end
         GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-        if self.state and self.state.stop then GameTooltip:AddLine(self.state.stop.title, 1, 0.82, 0.3, true) end
-        if self.status then GameTooltip:AddLine(self.status:GetText() or "", 1, 1, 1, true) end
+        if self.state and self.state.stop then GameTooltip:AddLine(ns.GuideStepDescription(self.state.stop), 1, 1, 1, true) end
+        if self.state and self.state.stop.kind == "notice" then GameTooltip:AddLine(self.state.status, 1, 0.82, 0.3, true) end
         if self.context then GameTooltip:AddLine(self.context:GetText() or "", 0.8, 0.85, 0.9, true) end
         GameTooltip:AddLine("Drag to move • /wt arrow to toggle", 1, 1, 1, true)
         GameTooltip:AddLine("Direction relative to your character; follow roads and terrain.", 0.75, 0.8, 0.85, true)

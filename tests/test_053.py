@@ -327,13 +327,13 @@ class PartyRouteTests(unittest.TestCase):
 
 
 class ArrivalTests(unittest.TestCase):
-    def test_arrival_draws_down_arrow_and_talk_instruction_without_auto_completion(self):
+    def test_arrival_draws_down_arrow_and_accept_instruction_without_auto_completion(self):
         c = navigator(.21, .37)
         stop = c.ns.selectedRoute.stops[1]
         stop.npcName = 'Receiver'
         c.lua.execute('function AcceptQuest() error("unexpected acceptance") end')
         c.ns.UpdateNavigation()
-        self.assertEqual(c.ns.navigation.status.text, 'Talk to Receiver')
+        self.assertEqual(c.ns.navigation.status.text, 'Accept from Receiver')
         self.assertEqual(c.ns.navigation.title.text, stop.title)
         self.assertFalse(c.ns.navigation.symbol.IsShown(c.ns.navigation.symbol))
         line = c.ns.navigation.icon.lines[1]

@@ -225,7 +225,7 @@ function ns.RouteStop(record, focusKey)
             or (npc ~= "" and ("Talk to " .. npc) or ("Check pickup: " .. title))),
         approximate = p.kind == "a" and record.source == "n"}
     for _, key in ipairs({"quantity", "itemID", "objectiveKey", "useItemName", "spellID", "entityType",
-        "legacyStepKey", "sourceAction", "alternativeEntityIDs", "progressName", "objectiveLabel", "quantityUnknown"}) do
+        "legacyStepKey", "sourceAction", "alternativeEntityIDs", "progressName", "objectiveLabel", "quantityUnknown", "sourceZone"}) do
         result[key] = p[key]
         if result[key] == nil then result[key] = facts[key] end
     end
@@ -243,7 +243,8 @@ function ns.PublishedGuideStop(record, point, kind)
         objectiveKey = point.objectiveKey, useItemName = point.useItemName, spellID = point.spellID,
         entityType = point.entityType, worldFallback = point.worldFallback, legacyStepKey = point.legacyStepKey,
         sourceAction = point.sourceAction, alternativeEntityIDs = point.alternativeEntityIDs,
-        progressName = point.progressName, objectiveLabel = point.objectiveLabel, quantityUnknown = point.quantityUnknown}
+        progressName = point.progressName, objectiveLabel = point.objectiveLabel, quantityUnknown = point.quantityUnknown,
+        sourceZone = point.sourceZone}
 end
 
 function ns.ClientObjectiveStop(stop, key)

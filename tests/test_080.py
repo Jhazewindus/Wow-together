@@ -185,7 +185,7 @@ class GuideInstructionTests(unittest.TestCase):
         c=guide_client(1)
         stop=c.lua.table_from({'id':900,'kind':'q','title':'Supplies','quantity':8,'itemName':'Flank',
             'npcName':'Boar','targetName':'Boar','action':'loot'})
-        self.assertEqual(c.ns.StopInstruction(stop),'Pick up 8 × Flank from Boar')
+        self.assertEqual(c.ns.StopInstruction(stop),'Loot 8 × Flank from Boar')
         stop.itemName=None;stop.action='kill'
         self.assertEqual(c.ns.StopInstruction(stop),'Kill 8 × Boar')
         stop.action='use';stop.useItemName='Wake-up Tool'

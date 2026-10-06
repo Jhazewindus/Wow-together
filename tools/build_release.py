@@ -203,8 +203,13 @@ THIRD_PARTY_NOTICES.md for source license, coverage and beta-testing limits.
 Missing-coordinate generation errors are fixed; retired UNUSED/zzOLD entries
 are excluded from leveling guides and ignored in retained fixed steps.
 
-Kill / Pick up / Talk instructions name known targets. Cross markers (or optional
-kill skulls) and quest-item tooltip hints require public data and hide in combat.
+Accept / Turn in / Kill / Gather / Loot / Use instructions name known targets.
+Matching public objective progress shows remaining quantities beside distance.
+The guide panel adds a short action hint and known zone/coordinates; remote steps
+say Travel to. Hover panels or quest-order rows for full instructions and supplied
+quest items. Unknown locations stay explicit; planning anchors never appear as
+real coordinates. Separate drops from the same creature retain their own counts.
+Quest markers and quest-item tooltip hints require public data and hide in combat.
 Finished objective types lose hints unless another unfinished quest/member needs them.
 NPC gossip and quest-greeting lists can confirm/block offers in the current progress context; a single dialog
 confirms that quest only. Every pickup checks known prerequisites before positive

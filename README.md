@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.8.4** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.5** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -16,7 +16,7 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **43 Lua
+Replace the folder on **every party member's client**, including all **44 Lua
 files**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
@@ -28,6 +28,16 @@ Hover over a guide or quest-list row for longer details. Resize the dashboard
 from its bottom-right corner; existing sizes and panel positions are retained.
 The public Zygor, RestedXP and Dugi sites informed the goal of reducing bulk;
 their code, assets and distinctive layouts are not included.
+
+The guide panel names the action and target: accept from a giver, turn in to a
+receiver, kill a creature, gather an object, loot an item, or use a quest tool.
+Matching public objective progress shows the remaining count beside distance.
+The two lines below give a short action hint and the known zone/coordinates;
+remote destinations say **Travel to**. Hover the panel, standalone arrow or
+quest-order row for full instructions, progress and supplied quest-item names.
+Missing objective locations stay explicitly unknown; planning anchors never
+appear as coordinates. Text uses recorded facts, not invented landmarks or
+copied quest descriptions. This does not reorder or change a guide.
 
 | Command | Action |
 | --- | --- |
@@ -623,7 +633,7 @@ provided broad inspiration about progress clarity; its code/assets/layouts
 were not copied. This implementation is independent.
 
 Reported beta build **70205** established the earlier sync APIs in user tests.
-**0.8.4 has host validation, not a live-client compatibility certification.**
+**0.8.5 has host validation, not a live-client compatibility certification.**
 Retest UI rendering, optional gossip/flight actions, corpse positions and item
 hooks on the build in front of you. `/wt probe` lists capabilities and runtime
 status. Do not interpret presence as proof that protected actions work.
@@ -674,7 +684,7 @@ compiler discards temporary caches when it yields. Guide decisions, prerequisite
 rules, fixed/adaptive order, sync behavior, settings and UI remain the same.
 See PERFORMANCE.md for measured host results and the repeatable benchmark command.
 
-Host checks load all 43 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
+Host checks load all 44 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
 
 ```sh
 python3 -m venv /tmp/wow-together-tests

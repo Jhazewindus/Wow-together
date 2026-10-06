@@ -29,7 +29,7 @@ function ns.CreateStandaloneArrow()
     frame:SetScript("OnEnter", function(self)
         if not GameTooltip then return end
         GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-        if self.state and self.state.stop then GameTooltip:AddLine(ns.StopInstruction(self.state.stop), 1, 0.82, 0.3, true) end
+        if self.state and self.state.stop then GameTooltip:AddLine(ns.GuideStepDescription(self.state.stop), 1, 0.82, 0.3, true) end
         GameTooltip:AddLine("Drag to move • Configure in Arrow and map", 1, 1, 1, true); GameTooltip:Show()
     end)
     frame:SetScript("OnLeave", function() if GameTooltip then GameTooltip:Hide() end end)
