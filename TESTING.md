@@ -1,12 +1,12 @@
 # Wow Together — friend test script
 
-For **0.8.20**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.21**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 53 Lua files** and
+1. Replace the complete WowTogether folder, including **all 54 Lua files** and
    the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    `/reload`; restart fully if a new addon folder does not appear.
@@ -15,6 +15,35 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Optional class training — about 10 minutes
+
+1. Enable **Leveling guides → Include convenient class training**. At an even
+   level, approach a friendly trainer for your class while doing a nearby pickup /
+   turn-in or leaving a hub for distant quest work. Expect **Optional class
+   training**, the trainer destination and a **T** map marker. No long detour or
+   interruption of nearby killing/gathering should occur. Locations are published
+   estimates; report incorrect NPCs, faction or training caps with map coordinates.
+2. Train yourself and click **Done training**. Expect the same quest sequence to
+   resume, with no quest completed or skipped. At another reminder, use **Skip
+   training**: only this character's training check is postponed. Neither choice
+   should change a friend's route or buy a skill. An even level does not guarantee
+   that this trainer offers a new skill; the instruction is to check.
+3. `/reload` during a pending visit, then again after Done/Skip. The pending visit
+   or saved choice should survive. The next odd level should not repeat a completed
+   check; the next even level makes another check due when a trainer is convenient.
+   Switching guides must not drag the old guide's trainer visit into the new one.
+4. Turn the training setting off/on. Quests should resume immediately when off;
+   turning it back on can restore a pending visit. **Include class quests** is
+   independent. Test another class/faction and a trainer across a city-map boundary
+   if nearby; missing/private positions or ownership should not invent a visit.
+5. Show only the standalone arrow. During training its compact **Done / Skip**
+   buttons should work; they disappear for ordinary quest steps. With both panels
+   shown, use the guide controls instead. Full-route map previews keep the original
+   quests and their numbers, adding T for the active service visit only.
+6. Check an NPC confirmation, flight, corpse run, scan and combat. These must not
+   create a new training detour; death/flight must retain a previously pending
+   visit. Capture errors and `/wt probe` Class training / Training stop lines.
 
 ## Enemy settlements and travel lines — about 10 minutes
 

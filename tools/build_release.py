@@ -52,6 +52,15 @@ and the Media folder,
 then /reload. Restart the client fully if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+Leveling guides -> Include convenient class training is on by default.
+Even levels make a personal training check due. A matching friendly trainer must
+be within 150 metres, with estimated extra walking at most 150 yards near a quest
+visit or before leaving a hub. Done training / Skip training resumes the same
+quest order and saves your choice until the next even level. Pending visits and
+choices survive reload; no spells are bought or their availability inferred.
+The active map visit is T. Standalone-only arrows provide Done/Skip controls.
+151 published trainer locations cover all nine classes; retest in the beta.
+
 Ground routes check approximate enemy settlement footprints, including Astranaar.
 Use another published connection when available; otherwise crossing lines are
 hidden and the guide says to go around town. Markers/order/progress/skips remain.

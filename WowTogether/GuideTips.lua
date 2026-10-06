@@ -133,6 +133,7 @@ function ns.CurrentGuideTip(state)
     if not saved() or not guide or guide.mode == "travel" or not route or not route.stops or not route.stops[1]
         or ns.navigationPreview or ns.routePaused or ns.guideScanning or ns.routePlanning or ns.RouteInCombat()
         or state and (state.flight or state.stop.kind == "corpse")
+        or state and ns.IsClassTrainingStep(state.stop)
         or ns.ReadPublic(UnitOnTaxi, "player") == true or ns.ReadPublic(UnitIsGhost, "player") == true then return end
     local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
     if not ns.GuideInteger(mapID) then return end

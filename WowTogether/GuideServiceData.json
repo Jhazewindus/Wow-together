@@ -7,9 +7,23 @@
   "inns": 49,
   "taxi_settlement_labels": 36,
   "taxi_faction_labels": 31,
+  "class_trainer_locations": 151,
+  "class_trainer_classes": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    7,
+    8,
+    9,
+    11
+  ],
   "limitations": [
     "Published coordinates need beta verification",
     "Unscoped inns excluded; new inns can be observed in game",
-    "Location data does not establish flight unlocks"
+    "Location data does not establish flight unlocks",
+    "Trainer locations do not establish spell availability or training level caps",
+    "Unknown trainer ownership and non-class training are excluded"
   ]
 }

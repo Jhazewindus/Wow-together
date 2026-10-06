@@ -450,8 +450,20 @@ function ns.RouteForDisplay()
         return display
     end
     local confirmation = ns.CurrentQuestConfirmation()
-    local stop = ns.CorpseDestination() or ns.TravelDestination(confirmation and not confirmation.unknownLocation and confirmation or route.stops[1])
-    if stop and stop.travelLeg and stop.kind ~= "f" and not confirmation then return route end
+    local training = not confirmation and ns.ClassTrainingDestination(route.stops[1])
+    training = training and training.kind == "trainer" and training or nil
+    local display = route
+    if training then
+        display = {}; for key, value in pairs(route) do display[key] = value end
+        display.mapID, display.stops = training.mapID, {training}
+        for _, value in ipairs(route.stops) do display.stops[#display.stops + 1] = value end
+        if route.previewStops then
+            display.previewStops = {training}
+            for _, value in ipairs(route.previewStops) do display.previewStops[#display.previewStops + 1] = value end
+        end
+    end
+    local stop = ns.CorpseDestination() or ns.TravelDestination(confirmation and not confirmation.unknownLocation and confirmation or training or route.stops[1])
+    if stop and stop.travelLeg and stop.kind ~= "f" and not confirmation then return display end
     if stop and (stop.kind == "corpse" or stop.kind == "f") then
         return {mapID = stop.mapID, stops = {stop}, title = stop.title,
             origin = ns.PlayerPoint(stop.mapID), key = route.key, partial = false}
@@ -460,7 +472,7 @@ function ns.RouteForDisplay()
         return {mapID = confirmation.mapID, stops = {confirmation}, title = confirmation.title,
             origin = ns.PlayerPoint(confirmation.mapID), key = route.key, confirmation = true}
     end
-    return route
+    return display
 end
 
 ns.On("TAXIMAP_OPENED", function()

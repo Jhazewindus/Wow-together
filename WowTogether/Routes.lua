@@ -444,7 +444,7 @@ function ns.StopIcon(stop)
     return nil
 end
 
-function ns.StopSymbol(stop) return stop.kind == "travel" and "›" or stop.action == "collect" and "*" or "+" end
+function ns.StopSymbol(stop) return stop.kind == "trainer" and "T" or stop.kind == "travel" and "›" or stop.action == "collect" and "*" or "+" end
 
 local function hideDrawing(provider)
     for _, pin in ipairs(provider.pins or {}) do pin:Hide() end
@@ -732,7 +732,7 @@ function ns.DrawRoute(provider, geometryOnly)
             end
             if not group then group = {point = p, x = x, y = y, stops = {}, numbers = {}}; groups[#groups + 1] = group end
             locations[key] = group
-            group.stops[#group.stops + 1], group.numbers[#group.numbers + 1] = p, tostring(p.guideStep or index)
+            group.stops[#group.stops + 1], group.numbers[#group.numbers + 1] = p, p.kind == "trainer" and "T" or tostring(p.guideStep or index)
         end
     end
     for index, group in ipairs(groups) do

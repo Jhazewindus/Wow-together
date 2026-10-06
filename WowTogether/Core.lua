@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.20"
+ns.VERSION = "0.8.21"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}
@@ -218,6 +218,7 @@ function ns.Diagnostics()
     ns.NavigationDiagnostics(output)
     ns.QuestItemDiagnostics(output)
     ns.GuideTipDiagnostics(output)
+    ns.ClassTrainingDiagnostics(output)
     local low, high = ns.PreferredQuestLevels()
     if low then
         local level, _, name = ns.PartyLevelFloor()
@@ -249,6 +250,7 @@ ns.On("ADDON_LOADED", function(name)
     ns.InitializeGuideControls()
     ns.InitializeTravel()
     ns.InitializeGuideTips()
+    ns.InitializeClassTraining()
     ns.InitializeItemHints()
     ns.InitializeOffers()
     ns.InitializeNPCPickups()
@@ -313,6 +315,8 @@ SlashCmdList.WOWTOGETHER = function(command)
     elseif command == "route clear" then ns.ClearRoute(); ns.Refresh()
     elseif command == "guide reset" then ns.ResetGuideSkips()
     elseif command == "guide scan" then ns.ScanGuideProgress()
+    elseif command == "train done" then ns.FinishClassTraining(true)
+    elseif command == "train skip" then ns.FinishClassTraining(false)
     elseif command == "catchup" then ns.ShowPartyCatchup(nil, true)
     elseif command == "research" then ns.ShowQuestResearch()
     elseif command == "findings" then ns.ShowGuideFindings()

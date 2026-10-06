@@ -51,6 +51,10 @@ end
 
 function ns.RouteContext(stop, mapID, facts)
     if stop.unsafeTransit then return "No mapped bypass is known. Follow roads around the town.\nYour quest and guide step are retained." end
+    if ns.IsClassTrainingStep(stop) then
+        local training = stop.kind == "trainer" and stop or stop.goal
+        return "Optional • level " .. training.trainingLevel .. " training check.\nTrain manually; Done training resumes quests."
+    end
     if stop.confirmation then
         return "Check this NPC's offers; pickup is unconfirmed.\n" .. ns.StopLocationText(stop, mapID)
     end
@@ -136,6 +140,7 @@ function ns.NavigationState()
             learnedSource = pending and pending.learnedSource,
             x = 0, y = 0, label = ns.routePaused or "Waiting for the next available guide step."}
     end
+    if not ns.navigationPreview and not confirmation then stop = ns.ClassTrainingDestination(stop) end
     stop = ns.CorpseDestination() or ns.TravelDestination(stop)
     local flight = ns.FlightState()
     if flight then
@@ -250,6 +255,18 @@ function ns.UpdateNavigation()
         (ns.routeSelection and ns.routeSelection.mode == "travel" and "Travel guide • Levels 1–60" or
             ns.navigationPreview and "Preview step • arrows browse; Scan returns to the plan" or
             (state.stop.npcVisitPickup and "Collect quests at this NPC" or state.stop.guideStep and ("Zone guide step " .. state.stop.guideStep) or "Current guide step")))
+    local training = ns.IsClassTrainingStep(state.stop)
+    if training then frame.step:SetText("Optional class training") end
+    frame.skipStep.caption:SetText(training and "Skip training" or "Skip step")
+    frame.skipQuest.caption:SetText(training and "Done training" or "Skip quest")
+    if frame.trainingLayout ~= training then
+        frame.trainingLayout = training
+        frame.skipStep:SetWidth(training and 84 or 80)
+        frame.skipStep:SetPoint("BOTTOMLEFT", training and 36 or 42, 8)
+        frame.skipQuest:SetWidth(training and 88 or 80)
+        frame.skipQuest:SetPoint("BOTTOMLEFT", training and 124 or 128, 8)
+        frame.scan:SetPoint("BOTTOMLEFT", training and 218 or 214, 8)
+    end
     if facts.lowerLevelPrerequisite and not state.stop.historyPreview and not ns.navigationPreview then
         frame.step:SetText((state.stop.guideStep and ("Step " .. state.stop.guideStep .. " • ") or "")
             .. (facts.lowerLevelClassQuest and "Class progression • Lv " or "Lower-level prerequisite • Lv ") .. facts.lowerLevelPrerequisite)
@@ -327,10 +344,13 @@ function ns.CreateNavigation()
     frame.context:SetSize(332, 26); frame.context:SetWordWrap(false); frame.context:SetJustifyV("TOP")
     frame.skipStep = ns.UIButton(frame, "Skip step", 80, function() ns.SkipGuide("step") end)
     frame.skipStep:SetHeight(24); frame.skipStep:SetPoint("BOTTOMLEFT", 42, 8)
-    frame.skipQuest = ns.UIButton(frame, "Skip quest", 80, function() ns.SkipGuide("quest") end)
+    frame.skipQuest = ns.UIButton(frame, "Skip quest", 80, function()
+        if ns.IsClassTrainingStep(frame.state and frame.state.stop) then ns.FinishClassTraining(true)
+        else ns.SkipGuide("quest") end
+    end)
     frame.skipQuest:SetHeight(24); frame.skipQuest:SetPoint("BOTTOMLEFT", 128, 8)
-    ns.UIHelp(frame.skipStep, "Skip this step for this character. This does not record NPC availability or learn a prerequisite.")
-    ns.UIHelp(frame.skipQuest, "Skip this quest for this character. A missing pickup is learned from actual NPC offers before and after a hand-in, not from this button.")
+    ns.UIHelp(frame.skipStep, "Skip this step for this character. Training stops postpone this reminder until the next even level; they never skip a quest or learn a prerequisite.")
+    ns.UIHelp(frame.skipQuest, "Skip the current quest. During a training stop, Done training records your personal check and resumes quests; no skills are purchased automatically.")
     frame.scan = ns.UIButton(frame, "Scan guide", 96, function() ns.ScanGuideProgress() end)
     frame.scan:SetHeight(24); frame.scan:SetPoint("BOTTOMLEFT", 214, 8)
     frame.back = ns.UIButton(frame, "‹", 24, function() ns.PreviewGuideStep(-1) end)

@@ -8,7 +8,7 @@ local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, cl
     suggestFlights = true, autoFly = false, nearbyFlights = true, corpseArrow = true, npcMarker = "star", recordQuestData = true,
     useLearnedQuests = true, exportCharacterNames = false, fixedZoneGuides = true,
     standaloneArrow = false, travelNetwork = true, soloMode = false, questGiverStars = true, patrolHints = true, hearthstoneTips = true,
-    guideOpaque = true, highlightGuideQuest = true}
+    guideOpaque = true, highlightGuideQuest = true, classTraining = true}
 
 function ns.Option(key)
     local value = ns.db and ns.db.config and ns.db.config[key]
@@ -25,6 +25,7 @@ local sections = {
         {"fixedZoneGuides", "Follow fixed zone guides", "Generate a complete zone sequence once. Quest progress advances steps without reordering. Turn off for adaptive trips; start a guide again to change its mode."},
         {"nearbyPickups", "Collect useful quests nearby", "Group eligible guide pickups within 100 yards of the next pickup. Confirm NPC offers on arrival; preserve objectives, returns, prerequisites and skips."},
         {"classQuests", "Include class quests", "Show or hide eligible class quest steps without changing fixed guide order. Other classes remain excluded."},
+        {"classTraining", "Include convenient class training", "Add an optional personal trainer stop near quest visits or before leaving a hub. Even-level reminders; estimated extra walk at most 150 yards. Done training or Skip training resumes quests."},
         {"dungeonPrompts", "Suggest dungeon quest collection", "Offer a plan when your character meets every known pickup level for the dungeon's relevant regular quests. Prerequisites still apply; party sync is not required."},
         {"zonePrompts", "Suggest the next nearby zone", "Offer a known questline transition or a suitable neighbouring zone when your current guide has no useful work ready. You choose whether to switch."},
         {"scanSkipped", "Reconsider skips when scanning", "A successful Scan guide clears saved skips for quests in the selected guide. Leave off to keep skips; failed or cancelled scans keep them."},

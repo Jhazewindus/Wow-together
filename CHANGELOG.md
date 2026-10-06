@@ -1,5 +1,19 @@
 # Wow Together changelog
 
+## 0.8.21
+
+- Add optional personal class-training steps near quest visits or before leaving
+  a hub. Even levels trigger a check; require a friendly trainer for your class
+  within 150 metres and an estimated extra walk of at most 150 yards. Nearby
+  objectives, NPC checks, flights and corpse travel take priority.
+- Done training / Skip training resumes quests and saves the choice per character
+  until the next even level. Retain pending visits after reload; preserve quest
+  order, progress and skips. Separate Leveling guides toggle defaults on.
+- Import 151 trainer locations for all nine classes from the attributed pinned
+  Forever geography source. Mark active visits with T on the map; provide Done /
+  Skip controls when only the standalone arrow is visible. No automatic purchases
+  or inferred spell availability. Include all 54 Lua files; beta testing required.
+
 ## 0.8.20
 
 - Check entire walking segments for crossings through known enemy settlements,

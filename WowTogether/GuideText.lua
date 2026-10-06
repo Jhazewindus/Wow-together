@@ -65,6 +65,7 @@ end
 function ns.GuideStepAction(stop, facts)
     facts = facts or ns.GuideStepFacts(stop); stop = facts.stop
     if stop.dungeonEntrance then return text(stop.label) or "Go to the dungeon entrance" end
+    if stop.kind == "trainer" then return text(stop.label) or "Check your class trainer" end
     local title, target = text(stop.title) or "this quest", facts.target
     if stop.confirmation then return "Talk to " .. (facts.npc or "the quest giver") end
     if stop.kind == "travel" or stop.kind == "f" then return text(stop.label) or "Travel to the next stop" end
@@ -106,6 +107,7 @@ function ns.GuideStepHint(stop, facts)
     if stop.dungeonEntrance then return stop.published and "Entrance area; follow the approach to the portal."
         or "Collect your dungeon quests before entering." end
     local action = facts.action
+    if stop.kind == "trainer" then return "Optional training check; buy useful class skills manually. Done training or Skip training resumes quests." end
     if stop.confirmation then return stop.confirmationReason or "Check the quest giver's offers before picking this quest up." end
     if stop.kind == "travel" or stop.kind == "f" then return "Follow the travel instructions for this leg." end
     if stop.kind == "corpse" then return "Recover your body to resume the guide." end

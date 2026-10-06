@@ -1,4 +1,4 @@
-# Travel routing — updated for 0.8.20
+# Travel routing — updated for 0.8.21
 
 Wow Together implements its own Dijkstra search with a binary heap, deterministic
 ties and nonnegative travel-time costs. It finds a path **between quest steps**;
@@ -75,9 +75,10 @@ the test Python environment. The adapter verifies the source hash and extracts
 facts only, with no upstream runtime/UI. Inn ownership follows its settlement.
 Neutral towns do not establish flight-master ownership: their separate faction
 masters need native public ownership flags before tips can recommend a visit.
-Unscoped locations are excluded. A public INN_INFO interaction can record a new
-inn for this character; HEARTHSTONE_BOUND records a manual binding. These native
-events and published coordinates still need current beta verification.
+Unscoped locations are excluded. Supported binder interaction events can record
+a new inn for this character; HEARTHSTONE_BOUND records a manual binding. INN_INFO
+is not registered. These native events and published coordinates still need
+current beta verification.
 
 Flight tips require a friendly known location within 150 metres. Published
 coordinates/ownership do not establish unlocks: confirmed unknown-to-character
@@ -86,6 +87,24 @@ require upcoming work away from the hub followed by at least two distinct nearby
 turn-ins among the next 48 guide stops. Tips do not supply travel graph edges,
 change quest order, select flights or bind homes. Disabling/dismissing them does
 not skip any quest. Each type has its own Travel routing toggle.
+
+Version 0.8.21 extracts **151 class-trainer locations**, covering classes
+1/2/3/4/5/7/8/9/11, from that same hash-verified POI snapshot. Explicit NPC faction
+takes precedence over scoped settlement ownership; unknown ownership is excluded.
+NPC IDs and optional settlement labels are retained. Existing quest-entity names
+identify known NPCs; otherwise the label names the trainer's class. Profession,
+pet, demon, weapon and riding trainers are excluded. These are location facts,
+not a spell/rank schedule, proof of accessible terrain or trainer level caps.
+
+The optional personal training step becomes due every even level. It may appear
+near a pickup/return or just before leaving a known hub for distant work. It
+requires public class/faction/position and physical distance within 150 metres,
+with at most 150 game yards of **estimated** extra walking. Hostile settlement
+checks apply; map/world geometry determines distance rather than raw normalized
+coordinates. No new polling loop is added, and failed candidate checks are cached
+briefly. Done/Skip acknowledgements and pending visits are saved per character;
+the original quest plan, skips, credit and party data remain unchanged. Skills
+are bought manually. Full-map preview includes T beside the retained quest stops.
 
 Zone changes and significant detours refresh the travel path while keeping the
 quest step/order. Arrival at a walking waypoint advances only travel directions.

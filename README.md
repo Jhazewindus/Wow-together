@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.8.20** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.21** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -16,10 +16,26 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **53 Lua
+Replace the folder on **every party member's client**, including all **54 Lua
 files** and the **Media folder**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.21 adds optional class-training stops.** Under **Settings → Leveling guides →
+Include convenient class training** (default on), each even level makes a personal
+training check due. It appears near a pickup/return or before leaving a known hub:
+the trainer must be within 150 metres and the estimated added walk at most 150
+yards. Nearby objective work is not interrupted. The same rules apply across
+leveling guides, using your class and known friendly trainer ownership.
+
+Train manually, then choose **Done training** or **Skip training** to resume
+quests. Both save that choice for this character until the next even-level check,
+including after reload. Pending visits are retained with their selected guide.
+The standalone arrow has Done/Skip buttons when the guide panel is hidden.
+Training does not buy spells, reorder quests, change skips or sync service visits
+to friends; its toggle is separate from Include class quests. The 151 attributed
+trainer locations cover all nine supported classes; spell availability and trainer
+rank caps are not inferred. Check locations and actual training in the beta.
 
 **0.8.20 checks walking segments for known enemy settlements.** It repairs
 missing flight-point ownership, including Astranaar, and prevents cached flights

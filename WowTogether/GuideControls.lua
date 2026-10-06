@@ -57,6 +57,7 @@ function ns.SkipGuide(kind)
     if ns.routeSelection and ns.routeSelection.mode == "travel" then return end
     local stop = ns.navigation and ns.navigation.state and ns.navigation.state.stop
     if ns.navigationPreview or stop and stop.kind == "corpse" or ns.navigation and ns.navigation.state and ns.navigation.state.flight then return end
+    if ns.IsClassTrainingStep(stop) then ns.FinishClassTraining(false); return end
     if not stop or stop.kind ~= "f" then stop = ns.selectedRoute and (ns.selectedRoute.pendingStop or ns.selectedRoute.stops[1]) end
     local state = saved()
     if not stop or not state then return end
