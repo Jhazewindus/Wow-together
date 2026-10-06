@@ -96,12 +96,12 @@ class PickupEvidenceTests(unittest.TestCase):
         c.lua.execute("function UnitGUID() return 'Creature-0-1-2-3-123-ABC' end")
         return c
 
-    def test_real_npc_absence_blocks_pickup_until_progress_changes(self):
+    def test_real_npc_absence_requires_a_new_offer_even_after_progress_changes(self):
         c = self.client()
         c.ns.RecordNPCOfferAvailability(c.lua.table_from([{'questID': 901}], recursive=True))
         self.assertFalse(c.ns.CatalogueAllowed(900, c.ns.profile, c.ns.self)[0])
         c.ns.active[901] = 'Intro'
-        self.assertIsNone(c.ns.ObservedPickupAvailable(900))
+        self.assertFalse(c.ns.ObservedPickupAvailable(900))
         c.ns.RecordNPCOfferAvailability(c.lua.table_from([{'questID': 900}], recursive=True))
         self.assertTrue(c.ns.CatalogueAllowed(900, c.ns.profile, c.ns.self))
 

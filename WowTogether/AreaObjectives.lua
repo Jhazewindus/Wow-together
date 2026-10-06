@@ -119,6 +119,11 @@ function ns.UpdateAreaObjectives(state)
     for index = #items + 1, #panel.rows do panel.rows[index]:Hide() end
     panel.items = items
     local anchor = panel:IsShown() and panel or ns.navigation
+    local item = ns.navigation.questItem
+    if item then
+        item:ClearAllPoints(); item:SetPoint("TOPLEFT", anchor, "BOTTOMLEFT", 0, -4)
+        if item:IsShown() then anchor = item end
+    end
     if panel.tipAnchor ~= anchor then
         ns.navigation.tip:ClearAllPoints(); ns.navigation.tip:SetPoint("TOPLEFT", anchor, "BOTTOMLEFT", 0, -4)
         panel.tipAnchor = anchor

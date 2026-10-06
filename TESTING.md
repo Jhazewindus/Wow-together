@@ -1,12 +1,12 @@
 # Wow Together — friend test script
 
-For **0.8.18**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.19**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 50 Lua files** and
+1. Replace the complete WowTogether folder, including **all 52 Lua files** and
    the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    `/reload`; restart fully if a new addon folder does not appear.
@@ -15,6 +15,70 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Manual quest-item use — about 5 minutes
+
+1. Start a guide with an accepted objective that has a native special quest item
+   (for example, Lazy Peons' Foreman's Blackjack if the beta exposes it). Keep the
+   main guide panel visible. Expect its icon/name and **Use item** button; quests
+   without a special item should have no button. Tips/objective lists stay separate.
+2. Select a valid target yourself and click outside combat. Check the native item
+   effect, objective progress, cooldown/error messages and any addon-action failure.
+   Waiting, moving, scanning, accepting or bag updates must never use the item.
+3. Accept/remove another quest so log indices change, then click again. The correct
+   item must still be used. Switch/skip the guide objective and check that its old
+   item disappears. Cached/restricted/missing data must never use another quest item.
+4. In combat the button is disabled; after combat it can be clicked again. It must
+   not replay a blocked click automatically. Browsing earlier steps, flight, corpse
+   travel and route loading should hide it. Capture `/wt probe` and native errors if
+   `UseQuestLogSpecialItem` is missing, blocked, or behaves differently on this build.
+
+## Mikmans' quest highlights and Mulgore pickups — about 10 minutes
+
+1. With an accepted quest as the current objective or turn-in, open Blizzard's
+   quest log/map. It should select that quest and show its native highlights.
+   Skip or finish the step: the next accepted quest becomes selected. A future
+   pickup you have not accepted cannot be selected in the log. The addon should
+   not open the map itself or add a user waypoint pin. Check with arrow panels
+   hidden too. Native highlights require the client to have quest-location data.
+2. Toggle **Arrow and map → Highlight the current guide quest** off. Guide
+   changes should stop selecting native quests; turn it on to follow again.
+   While the guide's current quest stays unchanged, a manual log selection
+   should not be repeatedly overwritten by movement/arrow updates.
+3. Change/skip steps in combat. Native quest selection waits until combat ends
+   and then uses the latest accepted current quest. Capture any Lua/protected-
+   action error and the Native quest highlights/capability lines from /wt probe.
+4. In Mulgore, confirm whether Baine Bloodhoof offers **The High Chieftain** and
+   Brave Wildrunner offers **Our Ancient Enemy**. If absent, the guide must not
+   require their pickup. Complete another quest, change reputation/level and
+   /reload: they must remain pending rather than being recommended again merely
+   because another event occurred. Do not use manual skips for this test.
+5. Once an NPC actually offers a deferred quest, reopen the NPC. Its existing
+   pickup/objective/turn-in stages should return in fixed guide order, without
+   clearing your manual skips or granting completion. Test another unavailable
+   quest outside Mulgore too; the retention logic applies across all guides.
+6. An opened single-quest dialog proves that quest's offer only. It must not
+   imply other quests at that NPC are absent. Accepted quests continue their
+   work/turn-in steps even if they no longer appear in the NPC's available list.
+7. Export before/after NPC observations with **/wt research** when either named
+   quest unlocks. The supplied exports were truncated; save/copy the entire
+   export including its final closing braces. Exact unlocks still need evidence.
+
+## Report to Kadrak alternatives — about 5 minutes
+
+1. Accept Report to Kadrak from Thork at the Crossroads, or from Darn Talongrip
+   in Stonetalon. Follow a guide containing the other pickup: it should not ask
+   you to collect the second version. The accepted quest must still send you
+   to Kadrak. Test the reverse direction on another character if possible.
+2. Turn in the chosen version. The unchosen pickup must stay excluded without
+   pretending its quest ID is completed or saving a manual skip. /reload and
+   Scan should preserve the chosen version's real progress and fixed order.
+3. A separate chain quest with the same title must remain available unless an
+   explicit alternative-ID relationship is documented. Only your own version
+   blocks your alternative; it does not apply your choice to a party member.
+4. If the pickup is still wrong, capture the current step, /wt probe and the
+   quest ID from the native log. The supplied truncated export does not contain
+   the reported Darn visit, so its exact active quest ID remains unconfirmed.
 
 ## Romits' travel and collection reports — about 10–15 minutes
 

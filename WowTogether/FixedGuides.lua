@@ -179,7 +179,8 @@ local function remaining(stop, query, guide)
         or ns.GuideQuestSkipped(stop.id) or #ns.FilterGuideStages({stop}) == 0 then return nil end
     local waiting, chosen, unfinished
     for _, person in ipairs(query.profiles) do
-        if ns.CatalogueIdentityAllowed(stop.id, person.profile) ~= false then
+        if ns.CatalogueIdentityAllowed(stop.id, person.profile) ~= false
+            and not ns.CatalogueAlternativeTaken(stop.id, person.key, query) then
             local keep = ns.LevelingWorkAllowed(stop.id, person.key, query)
                 or guide.catchupRequired and guide.catchupRequired[stop.id]
             -- Keep the compiled order intact. Level-filtered steps receive no
@@ -206,7 +207,8 @@ local function completionProgress(guide, query)
             and not ns.IsRepeatableQuest(record.id) and not ns.IsProfessionQuest(record.id) then
             local applicable, finished, unknown = false, true, false
             for _, person in ipairs(query.profiles) do
-                if ns.CatalogueIdentityAllowed(record.id, person.profile) ~= false then
+                if ns.CatalogueIdentityAllowed(record.id, person.profile) ~= false
+                    and not ns.CatalogueAlternativeTaken(record.id, person.key, query) then
                     applicable = true
                     local active = person.key == ns.self and ns.active or ns.members[person.key] and ns.members[person.key].active
                     local completed = ns.CatalogueCompletion(person.key, record.id, query)

@@ -32,6 +32,21 @@ function ns.CatalogueCompletion(key, id, query)
         and member.historyChecked and member.historyChecked[id] then return false end
 end
 
+-- Only explicitly documented alternatives qualify. Matching titles alone must
+-- never suppress separate chain quests, repeatables or accepted work.
+function ns.CatalogueAlternativeTaken(id, key, query)
+    local quest = ns.CatalogueQuest(id)
+    if not quest or not quest.exclusiveQuests then return end
+    key = key or ns.self
+    local member = key ~= ns.self and ns.members[key]
+    local active = key == ns.self and ns.active or member and member.active
+    if active and active[id] then return end
+    if key ~= ns.self and (not member or member.syncPending or not member.activeRevision) then return end
+    for _, other in ipairs(quest.exclusiveQuests) do
+        if active and active[other] or ns.CatalogueCompletion(key, other, query) == true then return other end
+    end
+end
+
 function ns.CatalogueIdentityAllowed(id, profile)
     local quest = ns.CatalogueQuest(id)
     if not quest then return true end
@@ -130,6 +145,8 @@ function ns.CataloguePickupCheck(id, profile, key, query)
     local identity, reason = ns.CatalogueIdentityAllowed(id, profile)
     if identity == false then return false, reason end
     key = key or ns.self
+    local alternative = ns.CatalogueAlternativeTaken(id, key, query)
+    if alternative then return false, "Already following the alternative " .. ns.QuestTitle(alternative) .. "." end
     -- Neither shareability nor an opened turn-in dialog proves remote pickup.
     -- Actual beta offers can contradict an explicitly marked older-world
     -- fallback gate. Published beta and tester prerequisites remain strict.

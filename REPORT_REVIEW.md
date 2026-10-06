@@ -1,3 +1,94 @@
+# Follow-up review for 0.8.19
+
+Mikmans asks to make the current guide quest active in Blizzard's quest log for
+native map highlights. The accompanying report says Our Ancient Enemy and The
+High Chieftain are repeatedly recommended without NPC offers. The supplied
+probe belongs to Pachu Bloodwind; its author is not explicitly labeled as the
+main developer. It records 0.8.16, client 1.60.1/build 70235/interface 16001,
+level 8 Horde Tauren warrior, solo, with the Mulgore fixed guide plus current
+quests, auto-accept/turn-in on, full preview and standalone arrow. There are
+10 deferred pickups and one manual skip. Keep this separate from older travel
+feedback and do not infer a new party-sync problem.
+
+Both supplied exports are truncated pasted copies: their final markers say
+29 KB left and 23 KB left. Recover only 94 complete, identical event objects,
+deduplicated once; the probe says 127 observations, so later evidence is absent.
+Headers say 0.8.16; events span older addon versions/build 70205 and a final
+partial session on build 70235. Complete offers at NPC 3222 omit quest 99101
+(sequence 63), followed by its automatic deferral (64). Quest 99082 is deferred
+(69); complete Baine Bloodhoof/2993 offers contain 745/746 rather than 99082.
+Neither named quest has a positive offer in the recovered events. This proves
+missing-offer observations, not an exact unlock/prerequisite or a new race gate.
+Acceptance snapshots can briefly omit newly accepted quests before log reads
+catch up; do not learn false unlocks or completion from that timing.
+
+Inspection confirms that InvalidateNPCOffers deletes all giver observations on
+turn-ins/reputation events, while the context changes on active quests/level.
+With no published parent, these new Forever quests become eligible again.
+Retain complete negative snapshots separately, scoped to character/build, while
+fresh positive availability still expires. A new real full/partial offer restores
+its own quest; partial lists do not establish other absences. All alternative
+starters must be checked before declaring absence, and active work bypasses the
+pickup deferral. Keep fixed order and manual skips. Add reviewed offer-required
+flags for the two reported quests, without inventing gates from neighboring IDs.
+
+Use capability-probed native quest selection/tracking for the accepted current
+guide quest, independent of arrow visibility. Match the native quest-log details
+helper when exposed, without opening the map/log. Do not add a user waypoint,
+reselect on movement ticks, select an unaccepted/peer-only quest or act in combat.
+The shared regen handler rechecks the latest target. An opt-out is under Arrow
+and map. Published Mainline API/UI references establish names/signatures only:
+https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Blizzard_APIDocumentationGenerated/QuestLogDocumentation.lua
+https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Blizzard_UIPanels_Game/Mainline/QuestMapFrame.lua
+Native beta behavior still requires the included testing checklist. No conflicts
+with the user's fixed guide, clean UI or removed automatic user-pin preferences.
+
+## Additional report received during 0.8.19 verification
+
+The user adds an unlabeled Dutch report: Darn Talongrip has no Report to Kadrak
+quest, followed by the correction that the character already had that quest.
+Treat this as an accepted/alternative-ID symptom, not proof of a missing Mulgore
+prerequisite or a new learned gate. Its export header says 0.8.17, but the
+recoverable 77 events are 0.8.12–0.8.14, build 70235, Horde Undead priest levels
+21–22 in Stonetalon/Barrens. It ends at a 50 KB left marker. No recovered event
+records Darn/11821, active/completed/offered 6541 or 6542. Preserve the user's
+correction as reported evidence; the capture cannot establish the live quest ID.
+
+Source inspection independently confirms explicit reciprocal exclusiveTo lists
+for 6541 (Thork) and 6542 (Darn), both Report to Kadrak, in the existing pinned
+QuestieDB Forever factual table. Source SHA-256 and commit are retained in the
+reviewed corrections; titles, levels, starters and turn-ins match the shipped
+unchanged records. The pinned generated/beta-review/trace quest deltas do not
+change this pair. We read literal facts only; no provider/other-addon code runs.
+
+Add a generic explicit-alternative check used by pickup eligibility and fixed
+guide applicability/completion counts, with this reviewed pair in the generator
+and catalogue. Do not merge by title, change parent chains or bulk import other
+unreviewed baseline exclusions. An accepted version continues real work; its
+alternative is inapplicable for that player, without completion/skip credit.
+Peers use their own fresh state. If both IDs are genuinely accepted in a changed
+beta, neither real quest is discarded. Exact beta handling remains a checklist
+item. This complements persistent NPC rechecks without changing fixed order.
+
+## Manual quest-item request received during verification
+
+The user explicitly requests `UseQuestLogSpecialItem(questLogIndex)` for quest
+items. Published Blizzard UI definitions show an ordinary objective-item button
+calling that API from its click handler. API presence on Forever still needs a
+capability check and hardware-click test; the host cannot establish native action
+permission or effects. Reference signatures/usage only, not other-addon code:
+https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Blizzard_ObjectiveTracker/Blizzard_ObjectiveTrackerShared.lua
+https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Blizzard_ObjectiveTracker/Blizzard_ObjectiveTrackerShared.xml
+
+Add an owned compact item button for accepted current objective steps. Read
+special item metadata on progress/bag/item-data refresh, never movement ticks.
+Verify the public log entry and resolve its index again on the user's click;
+headers, removals, other quests, stale previews and changed item links cannot
+use a stale index. Missing/restricted APIs/data hide the button. Use is outside
+combat for this beta, never automatic, queued or targeted by the addon. Document
+the limitation, probe capabilities and include native testing instructions.
+No change to pickup eligibility, fixed order or objective completion inference.
+
 # Follow-up review for 0.7.5
 
 The user asks why The Battleboars location could not be found and requests that

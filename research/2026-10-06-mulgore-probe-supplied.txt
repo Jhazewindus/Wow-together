@@ -1,0 +1,206 @@
+Wow Together 0.8.16 — beta capability and sync report
+
+Client 1.60.1, build 70235, interface 16001. Expected beta interface: 16001.
+Project 18, expansion 0; neither alone selects compatibility.
+C_QuestLog.GetNumQuestLogEntries: present
+C_QuestLog.GetInfo: present
+C_QuestLog.IsQuestFlaggedCompleted: present
+C_ChatInfo.IsAddonMessagePrefixRegistered: present
+C_ChatInfo.RegisterAddonMessagePrefix: present
+C_ChatInfo.SendAddonMessage: present
+UnitLevel: present
+UnitXP: present
+UnitXPMax: present
+UnitFactionGroup: present
+UnitName: present
+UnitClass: present
+UnitRace: present
+GetQuestID: present
+GetTitleText: present
+C_Map.GetBestMapForUnit: present
+C_Map.GetPlayerMapPosition: present
+C_Map.GetMapInfo: present
+C_Map.GetMapWorldSize: present
+GetPlayerFacing: present
+C_Map.GetWorldPosFromMapPos: present
+C_Map.GetMapLinksForMap: present
+CreateVector2D: present
+C_Map.CanSetUserWaypointOnMap: present
+C_QuestLine.GetAvailableQuestLines: present
+C_QuestLine.GetQuestLineInfo: present
+C_QuestLine.GetQuestLineQuests: present
+C_QuestLine.RequestQuestLinesForMap: present
+C_QuestLog.GetQuestDifficultyLevel: present
+C_QuestLog.GetQuestsOnMap: present
+C_QuestLog.GetNextWaypoint: present
+C_QuestLog.GetTitleForQuestID: present
+C_QuestLog.IsComplete: present
+C_QuestLog.GetQuestObjectives: present
+IsPushableQuest (sharing only; unused by planner): missing
+C_QuestLog.IsPushableQuest (sharing only; unused by planner): present
+C_NamePlate.GetNamePlateForUnit: present
+C_NamePlate.GetNamePlates: present
+C_QuestLog.UnitIsRelatedToActiveQuest: present
+AcceptQuest: present
+CanAcceptQuest: missing
+IsQuestCompletable (opened turn-in dialog only): present
+CompleteQuest: present
+GetNumQuestChoices: present
+GetQuestReward: present
+C_Item.GetItemInfo: present
+C_Item.GetItemCount: present
+C_Item.RequestLoadItemDataByID: present
+C_TradeSkillUI.GetAllRecipeIDs: present
+C_TradeSkillUI.GetRecipeInfo: present
+C_TradeSkillUI.GetRecipeSchematic: present
+C_TradeSkillUI.GetChildProfessionInfo: present
+C_TradeSkillUI.GetBaseProfessionInfo: present
+C_AuctionHouse.GetCommoditySearchResultInfo: present
+UnitGUID: present
+C_GossipInfo.GetAvailableQuests: present
+C_GossipInfo.GetActiveQuests: present
+C_GossipInfo.SelectAvailableQuest: present
+C_GossipInfo.SelectActiveQuest: present
+GetNumAvailableQuests: present
+GetAvailableQuestInfo: present
+GetAvailableTitle: present
+SelectAvailableQuest: present
+C_TaxiMap.GetAllTaxiNodes: present
+GetTaxiMapID: present
+FlightMapFrame.GetMapID: missing
+C_TaxiMap.GetTaxiNodesForMap: present
+C_Map.GetMapPosFromWorldPos: present
+TakeTaxiNode: present
+UnitOnTaxi: present
+GetUnitSpeed: present
+GetTime: present
+UnitIsGhost: present
+GetBindLocation: present
+GetSubZoneText: present
+C_DeathInfo.GetCorpseMapPosition: present
+TooltipDataProcessor.AddTooltipPostCall: present
+C_Map.SetUserWaypoint: present
+C_Map.GetUserWaypoint: present
+C_Map.ClearUserWaypoint: present
+UiMapPoint.CreateFromCoordinates: present
+issecretvalue: present
+loadstring (Lua checks): present
+setfenv (Lua checks): present
+C_Timer.After: present
+C_EventUtils.IsEventValid: present
+WorldMapFrame.GetCanvas: present
+WorldMapFrame.GetCanvasContainer: present
+WorldMapFrame.GetViewRect: present
+WorldMapFrame.AddDataProvider: present
+WorldMapFrame.GetMapID: present
+Frame.CreateLine: present
+Frame.SetClipsChildren: present
+Frame.SetIgnoreParentAlpha: present
+MapCanvasDataProviderMixin: present
+Presence is not proof of working behavior. No waypoint or protected action was called.
+Unavailable event registrations: none
+
+Sync runtime
+Play mode: Party features enabled
+Player name candidates: Pachu-Bloodwind / Pachu Bloodwind
+Sender matching: qualified name, or unique exact first-name + surname in the current roster
+Grouped: false; raid: false
+Detected party peers: 0
+Quest giver offer API ready: true
+Quest greeting list ready: true; Read 0 public quest(s) from the greeting list.
+Quest IDs currently reported by quest giver: 0
+Pickup rules: known level / faction / class / race / prerequisites, plus actual NPC offers.
+IsPushableQuest is sharing only. IsQuestCompletable is opened-dialog turn-in only. Neither is a pickup gate.
+Guide pickups for Pachu Bloodwind: 9 candidates; 21 blocked; 0 unknown.
+  Thunderhorn Cleansing (758; NPC not checked): Finish a prerequisite first: Thunderhorn Totem.
+  Wildmane Totem (759; NPC not checked): Finish a prerequisite first: Thunderhorn Cleansing.
+  Wildmane Cleansing (760; NPC not checked): Finish a prerequisite first: Wildmane Totem.
+  The Venture Co. (764; NPC not checked): Finish a prerequisite first: The Ravaged Caravan.
+  Supervisor Fizsprocket (765; NPC not checked): Finish a prerequisite first: The Ravaged Caravan.
+  Rite of Wisdom (773; NPC not checked): Finish a prerequisite first: Rite of Vision.
+  Journey into Thunder Bluff (775; NPC not checked): Finish a prerequisite first: Rite of Wisdom.
+  Rites of the Earthmother (776; NPC not checked): Finish a prerequisite first: Journey into Thunder Bluff.
+  The Demon Scarred Cloak (770; NPC not checked): Known requirements met; hidden requirements may still need NPC confirmation.
+  Attack on Camp Narache (781; NPC not checked): Known requirements met; hidden requirements may still need NPC confirmation.
+  A Sacred Burial (833; NPC not checked): Known requirements met; hidden requirements may still need NPC confirmation.
+  Stalk With The Earthmother (76156; NPC not checked): Known requirements met; hidden requirements may still need NPC confirmation.
+Candidates are based on known data; NPC offers are required to confirm hidden requirements.
+Guide quest records known: 61
+Guide read status: no read failures recorded
+Offline catalogue: 5230 quests; captured 2026-10-05
+Route location read status: A read-only quest-location query failed on this build.
+Local quest destinations: 8
+Local objective details: 9; restricted fields: 0
+Objective read status: no read failures recorded
+Peer objective snapshots received: 0
+NPC hints: 0; Public NPC IDs/quest flags; alternative drop sources included. Outside combat only.
+Automatic sync: group / quest / objective / level / zone events; updates batched for 2 seconds.
+Current quests first: true; nearby pickups: true
+Auto-accept enabled: true; last attempted dialog quest: unknown
+Auto turn-in enabled: true; Requested turn-in without a reward choice.
+Map preview: full route
+Guide history: 58/58 checked; 14 completed; 0 active.
+Guide scan: idle
+Profession guides: Open your profession window to load recipe guides. Personal recipe/material data is not sent to peers.
+Map route: Route drawn on map 1412.
+Selected guide: with-log:level-zone:kalimdor/mulgore; quests in scope: 58
+Fixed zone guide: 189 total steps; 106 remaining; 14 eligible quests with mapped steps; 0 missing-location steps.
+Temporarily deferred pickups: 10. Progress and NPC offers recheck them; manual skips remain separate.
+Guide completion: 21/58 quests confirmed finished; 37 unfinished; 1 skipped quests; 0 with unknown history.
+Level/group-filtered unfinished steps: 37
+Trip quest IDs: 
+Route generation: idle
+Route drawing surface: Viewport projection; 697 x 465; view 0.0000,-0.0004 / 1.0000,1.0007
+Current quests first: true
+Party route: No party route has been started.
+Rendered route pins: 19; lines: 27
+Character context for You: level 8, Horde, Mulgore
+  UI map 1412; class 1; race 6
+Quest read ready: true
+Quest log entries: 10
+Local active quest IDs: 8
+Skipped restricted quest entries: 0
+Prefix registration result: Success (0)
+Prefix confirmation: true
+Sync ready: true
+Send attempts: 0; queued: 0
+Throttled attempts: 0; retries scheduled: 0
+Failed transfers: 0; unchanged updates suppressed: 0
+Missing-snapshot recovery requests: 0
+Last send result: none
+Our prefix messages received (including self echoes): 0
+Accepted packets: 0; ignored: 0
+Completed incoming snapshots: 0
+Accepted quest title packets: 0
+Quest names resolved: 247/247
+Status: Waiting for addon initialization.
+
+Recent sync activity (this session)
+Prefix registration: Success (0); ready: true
+
+Run /wt sync on BOTH clients, let the queue drain (retries may take longer), then Refresh this report.
+Send attempts do not prove delivery. Self echoes do not prove peer delivery.
+Personal guide updates: 162 refreshes; 73 overlapping events batched; 0 quest-log retries. Dashboard work is deferred while hidden/resizing.
+Scan guide: fresh quest log, objectives and history; fixed order retained. Useful lower-level prerequisites explain their unlock.
+Navigation arrow: Follow next route stop
+Arrow distance: 80 yards
+Standalone arrow: on
+Travel network: Dijkstra travel directions; walk segments are estimates.
+Route lines draw on the world map; the minimap button opens the addon.
+Guide tips: flight paths on; hearthstone on; nearby range 150 metres.
+Current optional tip: none
+Inn recording: modern binder interaction; binding event registered.
+Leveling quest band: 5–11; lowest synced player: You (level 8).
+Travel: 41 unlocked paths recognized. Open a flight master's map to confirm reachable connections.
+Flight paths: 41 known; 41 with locations; 0 observed connections. Personal to this character.
+Flight unlock scan: 3 map reads; 87 public unlock flags; 0 unknown flags; 41 known paths saved.
+Flight map read: No flight-master map read this session.
+Observed pickup locations: 18 for this build; dialogue positions are approximate.
+NPC visit pickups remaining: 0. Objective order is retained.
+Nearby pickup group: 0 eligible accepts within 100 yards; objective/turn-in order retained.
+Guide restore: Resuming Mulgore leveling guide + current quests using current quest progress.
+Party catch-up: Join a synced party to compare zone progress.
+Quest data recording: on; 127/300 observations; 0 older observations replaced. Export: /wt research.
+Observed quest learning: on; 3 patterns; 0 contradicted/disabled; 0 need review.
+Ordinary patterns match build/faction; class/race are required only for restricted quests or prerequisites.
+A skip is saved for this character; it does not learn an unlock or confirm a missing NPC offer.

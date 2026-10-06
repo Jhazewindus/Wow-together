@@ -1,5 +1,26 @@
 # Wow Together changelog
 
+## 0.8.19
+
+- Select and track the accepted current guide quest in Blizzard's log for map
+  highlights. Default on under Arrow and map; waits until combat ends, follows
+  the latest step, and does not open the map or add a user waypoint.
+- Add a compact Use item button for the current accepted objective's special
+  quest-log item. Manual click outside combat; recheck the quest's log index on
+  each click. No automatic use or targeting. Missing/restricted data hides it.
+- Keep complete NPC absence evidence across other progress and reload, scoped
+  to character/build. Fresh offers restore deferred quests in fixed order;
+  partial dialogs confirm only their own quest. Accepted work and skips remain.
+- Our Ancient Enemy and The High Chieftain require actual NPC offers while their
+  exact Forever unlocks remain unresolved. No prerequisite/race gate is guessed.
+- Add the published Report to Kadrak alternative-ID relationship. An accepted or
+  completed version blocks the other pickup across guides. Keep the accepted
+  turn-in; do not mark the unchosen quest complete or infer aliases from titles.
+- Preserve all supplied raw exports, clearly marked truncated. Recover 94 shared
+  Mulgore events once and 77 separate Kadrak-report events. Add source-validated
+  corrections and Lua 5.1 regressions. Include all 52 Lua files; test native
+  selection/map highlights and quest-item use on the beta client.
+
 ## 0.8.18
 
 - Romits (0.8.16): retain quest markers and full-route previews during flight,

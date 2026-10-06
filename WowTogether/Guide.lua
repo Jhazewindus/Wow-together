@@ -530,6 +530,7 @@ function ns.ShowGuideOnMap(guide)
 end
 
 ns.On("PLAYER_REGEN_ENABLED", function()
+    if ns.UpdateGuideQuestFocus then ns.UpdateGuideQuestFocus() end
     if ns.pendingSavedGuide then ns.RestoreSavedGuide() end
     if ns.ReadProgress then ns.ReadProgress() end
     if ns.db then ns.ScheduleSync() end

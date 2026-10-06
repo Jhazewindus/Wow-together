@@ -11,5 +11,33 @@
     "title": "The New Horde",
     "pickupRequiresOffer": true,
     "source": "Main developer report, Forever beta: recommended to Orc/Troll without an NPC offer, 2026-10-06. Exact race eligibility unresolved; actual offer required."
+  },
+  {
+    "questID": 99082,
+    "title": "The High Chieftain",
+    "pickupRequiresOffer": true,
+    "source": "Supplied Mulgore report, Forever beta, 2026-10-06: repeatedly recommended without an NPC offer. Supplied overlapping partial Mulgore exports confirm absences on build 70205; exact unlock unresolved. Actual NPC offer required."
+  },
+  {
+    "questID": 99101,
+    "title": "Our Ancient Enemy",
+    "pickupRequiresOffer": true,
+    "source": "Supplied Mulgore report, Forever beta, 2026-10-06: repeatedly recommended without an NPC offer. Supplied overlapping partial Mulgore exports confirm absences on build 70205; exact unlock unresolved. Actual NPC offer required."
+  },
+  {
+    "questID": 6541,
+    "title": "Report to Kadrak",
+    "exclusiveQuests": [
+      6542
+    ],
+    "source": "Reviewed explicit exclusiveTo facts: Questie/QuestieDB e0a6eaa86f181ac99262e34126bcd2ed1a1712d6, data/Forever/foreverQuestDB.lua (SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87), unchanged identity/level matches 6541 and 6542. Supplied Report to Kadrak feedback, 2026-10-06."
+  },
+  {
+    "questID": 6542,
+    "title": "Report to Kadrak",
+    "exclusiveQuests": [
+      6541
+    ],
+    "source": "Reviewed explicit exclusiveTo facts: Questie/QuestieDB e0a6eaa86f181ac99262e34126bcd2ed1a1712d6, data/Forever/foreverQuestDB.lua (SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87), unchanged identity/level matches 6541 and 6542. Supplied Report to Kadrak feedback, 2026-10-06."
   }
 ]

@@ -319,3 +319,27 @@ quest capture excludes known failed IDs and does not overwrite generated addon
 files. After capture, rebuild and regenerate both audit reports and the queue.
 Run the offline builder twice with unchanged inputs and compare output checksums.
 The complete editable catalogue, build tools and notices are included in releases.
+
+## Reviewed Mulgore pickup availability — 0.8.19
+
+The supplied report and overlapping partial NPC observations show missing offers
+for Our Ancient Enemy (99101) and The High Chieftain (99082). Both now require an
+actual NPC offer while their exact Forever unlocks are unresolved. The reviewed
+flags live in `tools/quest_corrections.json` and the generated catalogue; their
+published levels, identities, starters and map locations are unchanged. A missing
+offer is not an inferred prerequisite. All guides retain complete NPC absence
+evidence for the observing character/build until an actual offer rechecks it.
+Fresh positive lists are still transient; manual skips and other players'
+eligibility remain separate. Mapping coverage does not change in this release.
+See `research/README.md` for the original truncated inputs and 94-event review.
+
+### Report to Kadrak alternative quest IDs
+
+6541 (Thork) and 6542 (Darn Talongrip) have reciprocal `exclusiveTo` lists in the
+pinned Forever quest fact table. The identity, level and NPC data match our
+unchanged records. Reviewed `exclusiveQuests` fields now prevent duplicate pickup
+when the other version is active or completed. Fixed guides exclude the unchosen
+alternative from that player's applicable scope; they do not grant completion
+or create manual skips. The accepted version always keeps its actual work.
+Only explicit reviewed relationships qualify; matching quest names alone do not.
+Other baseline exclusivity data is not bulk imported by this release.

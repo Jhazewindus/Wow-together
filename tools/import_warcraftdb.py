@@ -22,6 +22,17 @@ def apply_corrections(records):
     applied = []
     corrections = json.loads((ROOT / 'tools' / 'quest_corrections.json').read_text())
     for correction in corrections:
+        if correction.get('exclusiveQuests'):
+            quest = records.get(correction['questID'])
+            alternatives = correction['exclusiveQuests']
+            if quest is None or any(other not in records for other in alternatives): continue
+            if quest['title'] != correction['title'] or any(
+                other == correction['questID'] or records[other]['title'] != correction['title'] for other in alternatives):
+                raise ValueError('Reviewed alternative quest identity changed; review required')
+            quest['exclusiveQuests'] = sorted(set(alternatives))
+            quest['exclusiveQuestSource'] = correction['source']
+            applied.append(correction['questID'])
+            continue
         if correction.get('pickupRequiresOffer'):
             quest = records.get(correction['questID'])
             if quest is None: continue

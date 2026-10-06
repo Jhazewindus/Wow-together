@@ -160,7 +160,7 @@
   "with_series": 938,
   "with_prerequisites": 2465,
   "repeatable_quests": 627,
-  "unverified_prerequisites": 16,
+  "unverified_prerequisites": 18,
   "incomplete_objective_locations": 1353,
   "area_ui_maps": {
     "40": 1436,
@@ -1231,7 +1231,11 @@
   },
   "tester_corrections": [
     750,
-    787
+    787,
+    99082,
+    99101,
+    6541,
+    6542
   ],
   "entities": {
     "npc": 13340,

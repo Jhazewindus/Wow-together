@@ -194,6 +194,7 @@ function ns.InitializeProfessionGuides()
         ns.ScheduleGuideProgress()
     end)
     ns.On("ITEM_DATA_LOAD_RESULT", function(id, success)
+        ns.UpdateGuideQuestItem(); ns.UpdateNavigation()
         if ns.GuideInteger(id) and ns.pendingItems[id] and ns.Public(success) and success == true then
             ns.pendingItems[id] = nil; ns.RefreshShoppingList(); ns.RenderProfessionGuide()
         end

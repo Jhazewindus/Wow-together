@@ -26,6 +26,16 @@ function ns.RecordNPCOfferAvailability(quests, complete)
     end
     local observed, completeList = {}, complete ~= false
     for questID in pairs(offered) do observed[questID] = true end
+    if ns.pickupRechecks then
+        if complete ~= false then
+            local remembered = {}; for questID in pairs(observed) do remembered[questID] = true end
+            ns.pickupRechecks[id] = remembered
+        elseif ns.pickupRechecks[id] then
+            -- An opened quest proves only its own offer. Do not erase absence
+            -- evidence for other quests at the same giver.
+            for questID in pairs(observed) do ns.pickupRechecks[id][questID] = true end
+        end
+    end
     ns.db.offerKnowledge[ns.self] = ns.db.offerKnowledge[ns.self] or {}
     if complete == false then
         local previous = ns.db.offerKnowledge[ns.self][id]
@@ -50,10 +60,13 @@ function ns.ObservedPickupAvailable(id)
     for _, point in ipairs(starts) do
         total = total + 1
         local observed = point.npc and knowledge[point.entityID]
-        if observed and observed.context == offerContext() then
-            if observed.offered[id] then return true end
-            if observed.complete ~= false then checked = checked + 1 end
-        end
+        local fresh = observed and observed.context == offerContext()
+        if fresh and observed.offered[id] then return true end
+        -- Old positives are not current availability. A complete absence
+        -- remains a reason to recheck the giver, even after other progress or
+        -- opening another quest's partial dialog at this same NPC.
+        local previous = ns.pickupRechecks and point.npc and ns.pickupRechecks[point.entityID]
+        if fresh and observed.complete ~= false or previous and not previous[id] then checked = checked + 1 end
     end
     if total > 0 and checked == total then return false end
 end
@@ -198,7 +211,20 @@ end
 
 function ns.InitializeOffers()
     ns.db.offerKnowledge = type(ns.db.offerKnowledge) == "table" and ns.db.offerKnowledge or {}
-    -- Pickup geography survives reload; availability must be observed again.
+    -- Complete negative observations survive progress/reload for this player
+    -- and build. They never become a prerequisite or another player's gate.
+    local _, build = ns.ReadPublic(GetBuildInfo)
+    ns.db.pickupRechecks = type(ns.db.pickupRechecks) == "table" and ns.db.pickupRechecks or {}
+    local remembered = ns.db.pickupRechecks[ns.self]
+    if type(build) == "string" or type(build) == "number" then
+        build = tostring(build)
+        if type(remembered) ~= "table" or remembered.build ~= build or type(remembered.npcs) ~= "table" then
+            remembered = {build = build, npcs = {}}
+            ns.db.pickupRechecks[ns.self] = remembered
+        end
+        ns.pickupRechecks = remembered.npcs
+    else ns.pickupRechecks = {} end
+    -- Fresh positive availability must still be observed again after reload.
     ns.db.offerKnowledge[ns.self] = {}
     ns.gossipReady = C_GossipInfo and type(C_GossipInfo.GetAvailableQuests) == "function" or false
     ns.greetingReady = type(GetNumAvailableQuests) == "function" and type(GetAvailableQuestInfo) == "function"

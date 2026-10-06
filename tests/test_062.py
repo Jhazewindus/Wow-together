@@ -106,7 +106,7 @@ class UniversalPickupTests(unittest.TestCase):
         c.lua.globals().finished[900] = False; c.ns.ForgetQuestCompletion(900)
         self.assertFalse(allowed(c, 901))
 
-    def test_actual_npc_absence_blocks_until_progress_invalidates_it(self):
+    def test_actual_npc_absence_survives_progress_until_a_fresh_offer(self):
         c = client()
         for id in (900, 901): c.ns.catalogue.quests[id].starts[1].entityID = 123
         c.lua.execute("function UnitGUID() return 'Creature-0-1-2-3-123-ABC' end")
@@ -115,9 +115,10 @@ class UniversalPickupTests(unittest.TestCase):
         c.lua.globals().finished[900] = True
         self.assertFalse(allowed(c, 901))
         c.ns.handlers.QUEST_TURNED_IN(900)
-        self.assertTrue(allowed(c, 901))
+        self.assertFalse(allowed(c, 901))
         c.ns.RecordNPCOfferAvailability(c.lua.table_from([{'questID': 901}], recursive=True))
         self.assertTrue(c.ns.PickupOfferEvidence(c.ns.self, 901))
+        self.assertTrue(allowed(c, 901))
 
     def test_turn_in_unlocks_the_retained_full_guide_without_manual_scan(self):
         c = client(); c.ns.ShowGuideOnMap(selected(c)); run_plan(c)

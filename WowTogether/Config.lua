@@ -8,7 +8,7 @@ local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, cl
     suggestFlights = true, autoFly = false, nearbyFlights = true, corpseArrow = true, npcMarker = "star", recordQuestData = true,
     useLearnedQuests = true, exportCharacterNames = false, fixedZoneGuides = true,
     standaloneArrow = false, travelNetwork = true, soloMode = false, questGiverStars = true, patrolHints = true, hearthstoneTips = true,
-    guideOpaque = true}
+    guideOpaque = true, highlightGuideQuest = true}
 
 function ns.Option(key)
     local value = ns.db and ns.db.config and ns.db.config[key]
@@ -30,6 +30,7 @@ local sections = {
         {"scanSkipped", "Reconsider skips when scanning", "A successful Scan guide clears saved skips for quests in the selected guide. Leave off to keep skips; failed or cancelled scans keep them."},
         {"circuitRadius", "Nearby pickup distance", "Limit how much additional walking a nearby pickup adds to the current trip.", {{0.10, "Stay close"}, {0.16, "Small detours"}, {0.22, "Wider loop"}}}}},
     {"navigation", "Arrow and map", {
+        {"highlightGuideQuest", "Highlight the current guide quest", "Select and track the current guide quest in Blizzard's quest log for map highlights. Applies to quests you have accepted; waits until combat ends. Does not open the map or add a user waypoint."},
         {"routeArrow", "Show the direction arrow", "A movable guide panel with the current instruction and step controls."},
         {"guideOpaque", "Opaque guide background", "Use a solid background behind the guide instructions. Turn off for see-through panels; text, arrows and buttons stay fully visible. Also available from the panel's BG button."},
         {"standaloneArrow", "Show a standalone direction arrow", "Move the direction arrow into a separate small panel with distance and travel time. The guide panel keeps its instructions and controls."},

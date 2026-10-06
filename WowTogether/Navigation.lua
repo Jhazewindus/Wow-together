@@ -219,6 +219,7 @@ function ns.UpdateNavigation()
     frame.state = state
     frame:SetShown(state.visible == true and ns.Option("routeArrow"))
     ns.UpdateStandaloneArrow(state)
+    ns.UpdateQuestItemButton(state)
     ns.UpdateAreaObjectives(state)
     ns.UpdateGuideTip(state)
     if not state.visible then ns.HideNavigationGeometry(frame.icon); return end
@@ -281,7 +282,7 @@ function ns.UpdateNavigationBackground()
     local opaque = ns.Option("guideOpaque")
     local color, alpha = ns.UIColors.background, opaque and 1 or 0.18
     -- Fade only the fill, never the text, arrow or child controls.
-    for _, panel in ipairs({frame, frame.tip, frame.work}) do
+    for _, panel in ipairs({frame, frame.tip, frame.work, frame.questItem}) do
         panel:SetBackdropColor(color[1], color[2], color[3], alpha)
     end
     ns.UIButtonTone(frame.background, opaque)
@@ -348,6 +349,7 @@ function ns.CreateNavigation()
     end)
     frame.tip:SetScript("OnLeave", function() if GameTooltip then GameTooltip:Hide() end end)
     frame.tip:Hide()
+    ns.CreateQuestItemButton(frame)
     ns.CreateAreaObjectives(frame)
     ns.UpdateNavigationBackground()
     frame:SetScript("OnEnter", function(self)

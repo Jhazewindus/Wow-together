@@ -52,6 +52,19 @@ and the Media folder,
 then /reload. Restart the client fully if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+Highlight the current guide quest (Arrow and map settings) selects/tracks accepted
+current quests in Blizzard's log for native map highlights. It waits until combat
+ends; it does not open the map or add a user waypoint. Retest native beta behavior.
+Use item appears for a special item on the current accepted guide objective.
+Click outside combat; select any required target yourself. The log index is
+verified again on each click. No automatic use; retest native item behavior.
+Unavailable NPC pickups remain pending across unrelated progress/reload until a
+fresh offer; this evidence is personal/build-scoped, not an inferred prerequisite.
+Our Ancient Enemy and The High Chieftain need actual offers while unlocks remain
+unresolved. Documented Report to Kadrak alternatives no longer request a duplicate
+pickup when one version is active/completed; the chosen turn-in remains.
+Keep fixed order and manual skips. All {len(names)} Lua files are required.
+
 /wt opens the Classic-style resizable dashboard. Its dropdown has Leveling guides,
 All quests (formerly Library), Party quests, Shared, Party progress, Dungeon quests,
 Profession guides and Quest log review. All quests searches commit on Enter or pause.

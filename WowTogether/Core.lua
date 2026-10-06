@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.18"
+ns.VERSION = "0.8.19"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}
@@ -23,6 +23,8 @@ function ns.Refresh(background)
     -- Guide progress belongs to the guide, not to dashboard rendering. Keep it
     -- current with a hidden/resizing window, and share this read pass with UI.
     if ns.UpdateSelectedRoute then ns.UpdateSelectedRoute(nil, query) end
+    if ns.UpdateGuideQuestFocus then ns.UpdateGuideQuestFocus() end
+    if ns.UpdateGuideQuestItem then ns.UpdateGuideQuestItem() end
     if ns.ui and ns.ui.resizing then ns.ui.resizeDirty = true
     elseif ns.Render and (not background or ns.window and ns.window:IsShown()) then ns.Render(query, true) end
     if ns.RenderTracker then ns.RenderTracker() end
@@ -104,6 +106,13 @@ function ns.Diagnostics()
     local probes = {
         {"C_QuestLog.GetNumQuestLogEntries", C_QuestLog and C_QuestLog.GetNumQuestLogEntries},
         {"C_QuestLog.GetInfo", C_QuestLog and C_QuestLog.GetInfo},
+        {"C_QuestLog.SetSelectedQuest", C_QuestLog and C_QuestLog.SetSelectedQuest},
+        {"C_QuestLog.GetSelectedQuest", C_QuestLog and C_QuestLog.GetSelectedQuest},
+        {"C_QuestLog.GetLogIndexForQuestID", C_QuestLog and C_QuestLog.GetLogIndexForQuestID},
+        {"GetQuestLogSpecialItemInfo", GetQuestLogSpecialItemInfo},
+        {"UseQuestLogSpecialItem", UseQuestLogSpecialItem},
+        {"QuestMapFrame_ShowQuestDetails", QuestMapFrame_ShowQuestDetails},
+        {"C_SuperTrack.SetSuperTrackedQuestID", C_SuperTrack and C_SuperTrack.SetSuperTrackedQuestID},
         {"C_QuestLog.IsQuestFlaggedCompleted", C_QuestLog and C_QuestLog.IsQuestFlaggedCompleted},
         {"C_ChatInfo.IsAddonMessagePrefixRegistered", C_ChatInfo and C_ChatInfo.IsAddonMessagePrefixRegistered},
         {"C_ChatInfo.RegisterAddonMessagePrefix", C_ChatInfo and C_ChatInfo.RegisterAddonMessagePrefix},
@@ -207,6 +216,7 @@ function ns.Diagnostics()
         .. ns.guideProgressStats.retries .. " quest-log retries. Dashboard work is deferred while hidden/resizing.")
     output("Scan guide: fresh quest log, objectives and history; fixed order retained. Useful lower-level prerequisites explain their unlock.")
     ns.NavigationDiagnostics(output)
+    ns.QuestItemDiagnostics(output)
     ns.GuideTipDiagnostics(output)
     local low, high = ns.PreferredQuestLevels()
     if low then
@@ -216,6 +226,7 @@ function ns.Diagnostics()
     output("Travel: " .. ns.travelStatus)
     ns.TravelDiagnostics(output)
     ns.NPCPickupDiagnostics(output)
+    ns.GuideQuestFocusDiagnostics(output)
     output("Guide restore: " .. ns.guideResumeStatus)
     output("Party catch-up: " .. ns.partyCatchupStatus)
     ns.ResearchDiagnostics(output)

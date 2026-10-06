@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.8.18** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.19** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -16,10 +16,41 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **50 Lua
+Replace the folder on **every party member's client**, including all **52 Lua
 files** and the **Media folder**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.19 follows the current guide quest in Blizzard's quest log/map.**
+**Arrow and map → Highlight the current guide quest** is on by default. It
+selects and tracks accepted current quests once when the guide target changes,
+waits until combat ends, and keeps working with the arrow panels hidden. It
+does not open the map or add a user waypoint. The beta must expose the native
+selection/tracking APIs, and native highlights require its own location data;
+/wt probe reports capabilities and the current selection status.
+
+The guide shows a compact **Use item** button when the current accepted objective
+has a special quest-log item. Click it outside combat to call
+`UseQuestLogSpecialItem(questLogIndex)`; select any required target yourself.
+The index is verified again on each click, including after log entries shift.
+Progress/bag/item-data changes refresh the button; it never uses items on its own.
+Native targeting, cooldown and item-use behavior still need beta testing;
+missing/restricted item data keeps the button hidden and `/wt probe` reports the
+API capabilities. The button appears with the main guide panel.
+
+Complete NPC offer lists now retain absence evidence for your character and
+build across unrelated progress and reload. Unavailable pickups remain pending
+until the giver actually offers them; they are not completed or manually skipped.
+Fresh offers restore the existing fixed stages. Other characters/builds and
+unchecked alternative givers are not treated as blocked from that observation.
+Our Ancient Enemy and The High Chieftain require actual offers while their exact
+Forever unlocks remain unresolved. No new prerequisite/race restriction is guessed.
+
+The two published Report to Kadrak IDs (Thork/Darn Talongrip) are now recognized
+as mutually exclusive alternatives. Having accepted or completed one prevents
+a duplicate pickup of the other. The chosen quest keeps its work/turn-in; this
+does not grant completion to the unchosen quest. Matching titles alone never
+create this relationship.
 
 **0.8.18 improves travel and item collection progress.** Flight-map destinations
 are stored in their own zones, including repaired saved continent points, so

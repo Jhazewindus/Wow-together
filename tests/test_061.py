@@ -440,7 +440,7 @@ class GreetingTests(unittest.TestCase):
         self.assertFalse(c.ns.ObservedPickupAvailable(900))
         self.assertFalse(c.ns.CatalogueAllowed(900, c.ns.profile, c.ns.self)[0])
         c.ns.active[901] = 'Intro'
-        self.assertIsNone(c.ns.ObservedPickupAvailable(900))
+        self.assertFalse(c.ns.ObservedPickupAvailable(900))
         c.lua.globals().greetingIDs[1] = 900
         c.ns.handlers.QUEST_GREETING()
         self.assertTrue(c.ns.ObservedPickupAvailable(900))
