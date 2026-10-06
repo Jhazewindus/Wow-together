@@ -14,6 +14,27 @@ local function duration(value)
     return string.format("%dm %02ds", math.floor(value / 60), math.floor(value % 60))
 end
 
+local function updateTooltip(frame, opening)
+    if not GameTooltip then return end
+    if not opening and ns.ReadPublic(GameTooltip.IsOwned, GameTooltip, frame) ~= true then return end
+    local state = frame.state
+    local stop = state and state.stop
+    local description = stop and ns.GuideStepDescription(stop) or ""
+    local status = stop and stop.kind == "notice" and state.status or ""
+    local context = frame.context and frame.context:GetText() or ""
+    local previous = frame.tooltipContent
+    if not opening and previous and previous[1] == description and previous[2] == status and previous[3] == context then return end
+    if opening or type(GameTooltip.ClearLines) ~= "function" then GameTooltip:SetOwner(frame, "ANCHOR_RIGHT")
+    else GameTooltip:ClearLines() end
+    frame.tooltipContent = {description, status, context}
+    if description ~= "" then GameTooltip:AddLine(description, 1, 1, 1, true) end
+    if status ~= "" then GameTooltip:AddLine(status, 1, 0.82, 0.3, true) end
+    if context ~= "" then GameTooltip:AddLine(context, 0.8, 0.85, 0.9, true) end
+    GameTooltip:AddLine("Drag to move • /wt arrow to toggle", 1, 1, 1, true)
+    GameTooltip:AddLine("Direction relative to your character; follow roads and terrain.", 0.75, 0.8, 0.85, true)
+    GameTooltip:Show()
+end
+
 function ns.RouteContext(stop, mapID, facts)
     if stop.confirmation then
         return "Check this NPC's offers; pickup is unconfirmed.\n" .. ns.StopLocationText(stop, mapID)
@@ -188,6 +209,7 @@ function ns.UpdateNavigation()
     frame.status:SetText(state.angle and ns.GuideStepAction(state.stop, facts) or state.status)
     local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
     frame.context:SetText(ns.RouteContext(state.stop, mapID, facts))
+    updateTooltip(frame)
     ns.HideNavigationGeometry(frame.icon)
     frame.symbol:SetText("…"); frame.symbol:SetTextColor(0.96, 0.76, 0.35, 1)
     frame.symbol:SetShown(state.angle == nil and not state.arrived and not state.flight)
@@ -274,14 +296,7 @@ function ns.CreateNavigation()
     frame.tip:Hide()
     ns.CreateAreaObjectives(frame)
     frame:SetScript("OnEnter", function(self)
-        if not GameTooltip then return end
-        GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-        if self.state and self.state.stop then GameTooltip:AddLine(ns.GuideStepDescription(self.state.stop), 1, 1, 1, true) end
-        if self.state and self.state.stop.kind == "notice" then GameTooltip:AddLine(self.state.status, 1, 0.82, 0.3, true) end
-        if self.context then GameTooltip:AddLine(self.context:GetText() or "", 0.8, 0.85, 0.9, true) end
-        GameTooltip:AddLine("Drag to move • /wt arrow to toggle", 1, 1, 1, true)
-        GameTooltip:AddLine("Direction relative to your character; follow roads and terrain.", 0.75, 0.8, 0.85, true)
-        GameTooltip:Show()
+        updateTooltip(self, true)
     end)
     frame:SetScript("OnLeave", function() if GameTooltip then GameTooltip:Hide() end end)
     frame.elapsed = 0

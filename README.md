@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.8.12** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.13** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -20,6 +20,19 @@ Replace the folder on **every party member's client**, including all **49 Lua
 files** and the **Media folder**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.13 fixes premature completion across fixed zone guides.** “Guide complete”
+requires confirmed completion of the guide's applicable, enabled quests.
+An empty runnable list caused by the level/group filter, skips, missing steps
+or unknown history leaves the guide waiting instead. Later-level work can return
+as the character or party context changes; fixed order, pickup requirements and
+the close-level filter remain intact. Ready hand-ins still count as unfinished
+until turned in. `/wt probe` now retains completed/unfinished/skipped/unknown
+quest counts and filtered-step counts, including after genuine completion.
+The arrow's hover tooltip follows its current state rather than retaining an
+old loading message. Replace the complete addon folder and Scan the resumed
+guide; keep SavedVariables. A leveling guide can still omit optional, excluded
+or incompatible quests, so this does not certify completion of every zone quest.
 
 **0.8.12 adds subtle zone-themed guide cards.** Forests, prairie, canyons,
 deserts, snow and other original landscape motifs fade into the charcoal
@@ -725,7 +738,7 @@ provided broad inspiration about progress clarity; its code/assets/layouts
 were not copied. This implementation is independent.
 
 Reported beta build **70205** established the earlier sync APIs in user tests.
-**0.8.12 has host validation, not a live-client compatibility certification.**
+**0.8.13 has host validation, not a live-client compatibility certification.**
 Retest UI rendering, optional gossip/flight actions, corpse positions and item
 hooks on the build in front of you. `/wt probe` lists capabilities and runtime
 status. Do not interpret presence as proof that protected actions work.

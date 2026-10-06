@@ -174,33 +174,69 @@ end
 local function remaining(stop, query, guide)
     if not ns.ClassQuestEnabled(stop.id) or ns.IsLevelingExcludedQuest(stop.id)
         or ns.GuideQuestSkipped(stop.id) or #ns.FilterGuideStages({stop}) == 0 then return nil end
-    local waiting, chosen
+    local waiting, chosen, unfinished
     for _, person in ipairs(query.profiles) do
         if ns.CatalogueIdentityAllowed(stop.id, person.profile) ~= false then
-            local active = person.key == ns.self and ns.active or ns.members[person.key] and ns.members[person.key].active
             local keep = ns.LevelingWorkAllowed(stop.id, person.key, query)
                 or guide.catchupRequired and guide.catchupRequired[stop.id]
             -- Keep the compiled order intact. Level-filtered steps receive no
             -- completion/skip credit and can return if party context changes.
-            if keep then
-                if not person.synced then waiting = true
-                elseif not doneFor(stop, person.key, query) then chosen = chosen or person end
+            if not person.synced or not doneFor(stop, person.key, query) then
+                unfinished = true
+                if keep then
+                    if not person.synced then waiting = true
+                    else chosen = chosen or person end
+                end
             end
         end
     end
-    return chosen, waiting
+    return chosen, waiting, unfinished
+end
+
+local function completionProgress(guide, query)
+    -- Empty runnable work is not quest completion. Check the complete scope
+    -- once per quest, including work hidden by level/group filters or skips.
+    -- Disabled optional/class and incompatible identity quests stay outside it.
+    local result = {total = 0, completed = 0, unfinished = 0, skipped = 0, unknown = 0}
+    for _, record in ipairs(guide.records) do
+        if ns.ClassQuestEnabled(record.id) and not ns.IsLevelingExcludedQuest(record.id)
+            and not ns.IsRepeatableQuest(record.id) and not ns.IsProfessionQuest(record.id) then
+            local applicable, finished, unknown = false, true, false
+            for _, person in ipairs(query.profiles) do
+                if ns.CatalogueIdentityAllowed(record.id, person.profile) ~= false then
+                    applicable = true
+                    local active = person.key == ns.self and ns.active or ns.members[person.key] and ns.members[person.key].active
+                    local completed = ns.CatalogueCompletion(person.key, record.id, query)
+                    if not person.synced or active and active[record.id] or completed ~= true then finished = false end
+                    if not person.synced or completed == nil and not (active and active[record.id]) then unknown = true end
+                end
+            end
+            if applicable then
+                result.total = result.total + 1
+                if finished then result.completed = result.completed + 1
+                else
+                    result.unfinished = result.unfinished + 1
+                    if ns.GuideQuestSkipped(record.id) then result.skipped = result.skipped + 1 end
+                    if unknown then result.unknown = result.unknown + 1 end
+                end
+            end
+        end
+    end
+    return result
 end
 
 function ns.BuildFixedGuideRoute(guide, includeOrigin, cooperative, query)
     local plan = guide.fixedPlan or ns.GenerateFixedGuide(guide, cooperative)
     query = query or ns.NewQuestQuery()
     local stops, preview, eligibility, mapped, incomplete, unknown, pending, pendingStop = {}, {}, {}, {}, 0, 0, nil, nil
+    local filteredSteps = 0
     local deferred, firstDeferred, firstReason = {}, nil, nil
     guide.observedDeferrals = guide.observedDeferrals or {}
     for _, stop in ipairs(plan) do
-        local person, waiting = remaining(stop, query, guide)
+        local person, waiting, unfinished = remaining(stop, query, guide)
+        if unfinished then incomplete = incomplete + 1 end
+        if unfinished and not person and not waiting then filteredSteps = filteredSteps + 1 end
         if person or waiting then
-            incomplete = incomplete + 1
             local current = copy(stop)
             current = ns.NPCPickupStop(current) or current
             if current.unknownLocation then unknown = unknown + 1 end
@@ -253,20 +289,19 @@ function ns.BuildFixedGuideRoute(guide, includeOrigin, cooperative, query)
     if #stops == 0 and not pending and firstDeferred then
         pendingStop, pending = firstDeferred, firstReason or "No pickups are currently available. Progress and NPC offers will recheck this guide."
     end
-    local level = ns.PartyLevelFloor(query)
-    if incomplete == 0 and ns.GuideInteger(guide.earlyStartLevel) and level and level < guide.earlyStartLevel then
-        -- Starting a preview early must not mark level-filtered work complete.
-        -- Keep the selected order without routing to locked NPCs or granting XP.
-        for _, stop in ipairs(plan) do
-            if ns.ClassQuestEnabled(stop.id) and not ns.IsLevelingExcludedQuest(stop.id)
-                and not ns.GuideQuestSkipped(stop.id) and #ns.FilterGuideStages({stop}) > 0 then
-                for _, person in ipairs(query.profiles) do
-                    if ns.CatalogueIdentityAllowed(stop.id, person.profile) ~= false
-                        and (not person.synced or not doneFor(stop, person.key, query)) then incomplete = incomplete + 1; break end
-                end
-            end
+    local progress, level = completionProgress(guide, query), ns.PartyLevelFloor(query)
+    if #stops == 0 and not pending then
+        if progress.total == 0 then pending = "No quests in this guide match your character and settings."
+        elseif progress.unfinished > 0 then
+            if filteredSteps > 0 and ns.GuideInteger(guide.earlyStartLevel) and level and level < guide.earlyStartLevel then
+                pending = "Guide for later: recommended from level " .. guide.earlyStartLevel .. "; current level " .. level .. "."
+            elseif filteredSteps > 0 then
+                pending = "Guide paused: unfinished quests are outside your leveling range or need a group."
+            elseif #plan == 0 then pending = "Guide steps are unavailable. Scan guide or choose another guide."
+            elseif ns.GuideSelectionHasSkips(guide) then
+                pending = "Remaining guide steps are skipped. Reset guide skips in Settings to restore them."
+            else pending = "Quest completion is not confirmed. Scan guide to check progress." end
         end
-        if incomplete > 0 then pending = "Guide for later: recommended from level " .. guide.earlyStartLevel .. "; current level " .. level .. "." end
     end
     local first = stops[1]
     local mapID = first and first.mapID or guide.homeMapID or guide.mapID
@@ -277,6 +312,7 @@ function ns.BuildFixedGuideRoute(guide, includeOrigin, cooperative, query)
     local route = {key = guide.key, title = guide.title, mapID = mapID, stops = stops, previewStops = preview,
         origin = includeOrigin and ns.PlayerPoint(mapID) or nil, missing = unknown, otherMaps = 0,
         fixed = true, guideQuests = #guide.records, totalSteps = #plan, remainingSteps = incomplete,
+        completionProgress = progress, filteredSteps = filteredSteps,
         eligibleMappedQuests = count, deferredQuests = deferredCount, partial = unknown > 0,
         pendingReason = pending, pendingStop = pendingStop, focusKey = guide.focusKey}
     return ns.AddNPCVisitPickups(guide, route, query)
@@ -289,7 +325,7 @@ function ns.UpdateFixedGuideRoute(guide, query)
     if before and after then ns.RememberGuideStep(before, after) end
     ns.selectedRoute, ns.routePaused = route, route.pendingReason
     if not before or not after or before.guideStep ~= after.guideStep then ns.navigationPreview = nil end
-    if route.remainingSteps == 0 then
+    if route.completionProgress.total > 0 and route.completionProgress.unfinished == 0 then
         ns.CompleteSelectedGuide(guide); return
     end
     ns.DrawRoute()

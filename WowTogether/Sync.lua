@@ -666,6 +666,12 @@ function ns.SyncDiagnostics(output)
             output("Fixed zone guide: " .. route.totalSteps .. " total steps; " .. route.remainingSteps .. " remaining; "
                 .. route.eligibleMappedQuests .. " eligible quests with mapped steps; " .. route.missing .. " missing-location steps.")
             output("Temporarily deferred pickups: " .. (route.deferredQuests or 0) .. ". Progress and NPC offers recheck them; manual skips remain separate.")
+            local progress = route.completionProgress
+            if progress then
+                output("Guide completion: " .. progress.completed .. "/" .. progress.total .. " quests confirmed finished; "
+                    .. progress.unfinished .. " unfinished; " .. progress.skipped .. " skipped quests; " .. progress.unknown .. " with unknown history.")
+                output("Level/group-filtered unfinished steps: " .. (route.filteredSteps or 0))
+            end
         else
             output("Current trip: " .. (route and route.tripQuests or "legacy") .. " quests; " .. (route and #route.stops or 0)
                 .. " stops; pending records: " .. (route and route.missing or 0))

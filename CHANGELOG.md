@@ -1,5 +1,20 @@
 # Wow Together changelog
 
+## 0.8.13
+
+- Fix false “Guide complete” messages when every runnable fixed-guide step was
+  hidden by the level/group filter. Require actual quest completion across
+  applicable enabled guide quests, independently of route eligibility.
+- Retain filtered unfinished steps in the remaining count and show a paused
+  explanation when no suitable work is available. Keep manual skips distinct
+  from quest completion, and avoid completing empty/incomplete plans or unknown
+  history. Preserve fixed order, close-level filtering and ready hand-ins.
+- Keep completion and route summaries in diagnostics after completion. Report
+  unfinished, skipped and unknown-history quests, plus filtered unfinished steps.
+- Refresh the navigation hover tooltip when its state changes, removing stale
+  loading text. Add regressions using shipped Hillsbrad quests, the reported
+  level-24 solo context, later-level progress, party, skips and reload behavior.
+
 ## 0.8.12
 
 - Add faint zone-themed landscape backgrounds to guide cards across current

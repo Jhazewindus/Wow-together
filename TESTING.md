@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.12**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.13**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
@@ -16,7 +16,35 @@ The expanded-guide checks below take about **15–25 minutes**.
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
 
-## Zone-themed card checks for 0.8.12 — about 3–5 minutes
+## Guide-completion regression for 0.8.13 — about 5–10 minutes
+
+1. Update the complete folder while keeping SavedVariables. `/reload`, resume
+   the affected zone guide and click **Scan guide**. Report the selected guide,
+   version/build, level, faction/class/race, skips and `/wt probe`.
+2. In Hillsbrad at level 24, unfinished **Battle of Hillsbrad** and **Elixir of
+   Agony** level 28 are outside the 21–27 leveling band; this must not complete
+   the guide. **Souvenirs of Death** level 25 should retain its unfinished work
+   when included and unskipped. If still missing, send the probe, quest ID and
+   skip settings; the earlier report did not identify that quest's skip state.
+3. Finish the currently eligible work while later quests remain. Expect a
+   paused explanation, preserved guide controls/order and nonzero unfinished
+   quest counts, rather than “Guide complete.” Later-level work should return
+   at a suitable level. Repeat on another zone guide. Unknown locations or
+   prerequisite gates must keep their existing waiting instructions.
+4. Skip all remaining quests/steps in a small guide: skips must not give quest
+   completion credit or mark it complete. `/reload` must preserve those skips.
+   Reset guide skips only when desired; this restores skips for this character
+   across guides. Ready hand-ins remain until actually turned in.
+5. When all enabled, applicable guide quests really are turned in, completion
+   should appear. Disabled optional class work and incompatible quests do not
+   block that check. Diagnostics should retain the fixed-guide summary and
+   show zero unfinished quests. Enabling remaining own-class work can reopen it.
+6. Hover the arrow while Scan or route generation runs. Keep the pointer there
+   as work finishes: its tooltip must follow the current guide state and stop
+   showing “Loading route.” Check party history/last-member behavior if available.
+   Host checks validate logic, not native beta completion flags or rendering.
+
+## Zone-themed card regression — about 3–5 minutes
 
 1. Open Leveling guides and select All levels. Compare Durotar, Mulgore,
    Ashenvale, Tanaris and Winterspring where your faction permits browsing.
@@ -67,7 +95,7 @@ The expanded-guide checks below take about **15–25 minutes**.
 
 1. Replace the complete folder and `/reload`, keeping SavedVariables. Confirm
    no unknown INN_INFO event error appears, and `/wt`, the minimap button,
-   Settings and guide controls are available. `/wt probe` must say **0.8.12**.
+   Settings and guide controls are available. `/wt probe` must say **0.8.13**.
 2. The report includes **Unavailable event registrations** and **Inn recording**.
    Rejected optional events should be listed there without stopping loading or
    creating extra chat warnings. Send those lines with the client build if any
@@ -185,7 +213,7 @@ The expanded-guide checks below take about **15–25 minutes**.
    With `/console scriptErrors 1`, confirm there is no SetFont error at startup.
 2. Open `/wt`. Both search boxes, Settings, Tracker and Sync controls should be
    created normally. Type in both search fields, then open `/wt probe` and
-   confirm version **0.8.12** and a populated character/quest report.
+   confirm version **0.8.13** and a populated character/quest report.
    The minimap button should appear unless previously hidden; `/wt minimap`
    toggles it. Left-click should open the dashboard.
 3. Accept or turn in a quest, change zones and `/reload` again. Confirm no

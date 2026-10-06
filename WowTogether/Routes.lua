@@ -833,8 +833,11 @@ end
 
 function ns.CompleteSelectedGuide(guide, message)
     ns.routeSelection, ns.navigationPreview = guide, nil
-    ns.selectedRoute = {key = guide.key, title = guide.title, mapID = guide.homeMapID or guide.mapID or 0,
-        stops = {}, previewStops = {}, complete = true, remainingSteps = 0}
+    local route = guide.fixedRoute and ns.selectedRoute and ns.selectedRoute.key == guide.key and ns.selectedRoute
+        or {key = guide.key, title = guide.title, mapID = guide.homeMapID or guide.mapID or 0}
+    route.stops, route.previewStops, route.complete, route.remainingSteps = {}, {}, true, 0
+    route.pendingReason, route.pendingStop = nil, nil
+    ns.selectedRoute = route
     ns.routePaused, ns.routeSignature = message or "Guide complete. Choose another guide when ready.", nil
     ns.guideAction = ns.routePaused
     ns.DrawRoute()
