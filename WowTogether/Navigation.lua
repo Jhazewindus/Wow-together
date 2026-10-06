@@ -239,6 +239,20 @@ function ns.SaveNavigationPosition()
         and finite(x) and finite(y) then ns.db.arrowPosition = {point = point, relative = relative, x = x, y = y} end
 end
 
+function ns.UpdateNavigationBackground()
+    local frame = ns.navigation
+    if not frame then return end
+    local opaque = ns.Option("guideOpaque")
+    local color, alpha = ns.UIColors.background, opaque and 1 or 0.18
+    -- Fade only the fill, never the text, arrow or child controls.
+    for _, panel in ipairs({frame, frame.tip, frame.work}) do
+        panel:SetBackdropColor(color[1], color[2], color[3], alpha)
+    end
+    ns.UIButtonTone(frame.background, opaque)
+    ns.UIHelp(frame.background, opaque and "Guide background: opaque. Click for see-through."
+        or "Guide background: see-through. Click for opaque.")
+end
+
 function ns.CreateNavigation()
     local frame = CreateFrame("Frame", "WowTogetherRouteArrow", UIParent, "BackdropTemplate")
     ns.navigation = frame
@@ -253,7 +267,11 @@ function ns.CreateNavigation()
     end
     frame.title = ns.UILabel(frame, "GameFontNormal", 13, ns.UIColors.gold)
     frame.title:SetPoint("TOPLEFT", 14, -10)
-    frame.title:SetSize(332, 18); frame.title:SetWordWrap(false)
+    frame.title:SetSize(306, 18); frame.title:SetWordWrap(false)
+    frame.background = ns.UIButton(frame, "BG", 22, function() ns.SetOption("guideOpaque", not ns.Option("guideOpaque")) end)
+    frame.background:SetHeight(18); frame.background:SetPoint("TOPRIGHT", -10, -10)
+    frame.background.caption:ClearAllPoints(); frame.background.caption:SetPoint("CENTER")
+    frame.background.caption:SetSize(18, 14); frame.background.caption:SetFont("Fonts\\ARIALN.TTF", 9, "")
     frame.step = ns.UILabel(frame, nil, 10, ns.UIColors.muted); frame.step:SetPoint("TOPLEFT", 14, -30); frame.step:SetSize(332, 14)
     ns.UIDivider(frame, -48)
     frame.icon = CreateFrame("Frame", nil, frame); frame.icon:SetSize(48, 48); frame.icon:SetPoint("TOPLEFT", 16, -50)
@@ -295,6 +313,7 @@ function ns.CreateNavigation()
     frame.tip:SetScript("OnLeave", function() if GameTooltip then GameTooltip:Hide() end end)
     frame.tip:Hide()
     ns.CreateAreaObjectives(frame)
+    ns.UpdateNavigationBackground()
     frame:SetScript("OnEnter", function(self)
         updateTooltip(self, true)
     end)

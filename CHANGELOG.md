@@ -1,5 +1,18 @@
 # Wow Together changelog
 
+## 0.8.14
+
+- Add a small BG button to the guide panel to switch its background between
+  opaque and see-through. Keep arrow, text and controls fully visible, including
+  attached objective/tip panels. Save the choice across reload and expose the
+  same option under Settings → Arrow and map.
+- Keep this appearance toggle independent of guide progress, route drawing,
+  travel calculations and saved skips; it also works during combat.
+- Preserve and review the supplied 23-event Durotar export, retaining event
+  versions/build/sessions. Confirm existing starter-quest giver matches and add
+  replay regressions against unsupported prerequisite learning from stale or
+  inconsistent history. No new prerequisites or coordinates are inferred.
+
 ## 0.8.13
 
 - Fix false “Guide complete” messages when every runnable fixed-guide step was

@@ -7,7 +7,8 @@ local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, cl
     scanSkipped = false, distanceUnits = "yards", trackerAuto = true, autoSelectQuests = false,
     suggestFlights = true, autoFly = false, nearbyFlights = true, corpseArrow = true, npcMarker = "star", recordQuestData = true,
     useLearnedQuests = true, exportCharacterNames = false, fixedZoneGuides = true,
-    standaloneArrow = false, travelNetwork = true, soloMode = false, questGiverStars = true, patrolHints = true, hearthstoneTips = true}
+    standaloneArrow = false, travelNetwork = true, soloMode = false, questGiverStars = true, patrolHints = true, hearthstoneTips = true,
+    guideOpaque = true}
 
 function ns.Option(key)
     local value = ns.db and ns.db.config and ns.db.config[key]
@@ -30,6 +31,7 @@ local sections = {
         {"circuitRadius", "Nearby pickup distance", "Limit how much additional walking a nearby pickup adds to the current trip.", {{0.10, "Stay close"}, {0.16, "Small detours"}, {0.22, "Wider loop"}}}}},
     {"navigation", "Arrow and map", {
         {"routeArrow", "Show the direction arrow", "A movable guide panel with the current instruction and step controls."},
+        {"guideOpaque", "Opaque guide background", "Use a solid background behind the guide instructions. Turn off for see-through panels; text, arrows and buttons stay fully visible. Also available from the panel's BG button."},
         {"standaloneArrow", "Show a standalone direction arrow", "A small separately movable arrow and distance. You can hide the large direction panel and keep this arrow."},
         {"distanceUnits", "Distance units", "Choose how distances appear under the arrow.", {{"yards", "Yards"}, {"metres", "Metres"}}},
         {"mapLegend", "Show route explanation on the map", "Show route status below the world map. Route controls remain available."}}},
@@ -91,6 +93,11 @@ function ns.SetOption(key, value)
     if key == "recordQuestData" and ns.Option(key) ~= value then ns.ResearchCaptureBoundary() end
     ns.db.config[key] = value
     ns.InitializeConfig()
+    if key == "guideOpaque" then
+        ns.UpdateNavigationBackground()
+        if ns.RenderSettings then ns.RenderSettings() end
+        return
+    end
     if key == "soloMode" and changed then ns.ApplyPartyMode() end
     ns.flightPlanCache = nil
     ns.ResetTravelPath()

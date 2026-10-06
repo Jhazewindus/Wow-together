@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.13**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.14**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
@@ -15,6 +15,31 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Guide background regression for 0.8.14 — about 2–3 minutes
+
+1. Start/resume a guide. Click the small **BG** button at the top-right of its
+   arrow/instruction panel: the opaque fill should become see-through. Click
+   again for solid. Hover for help; check long guide titles do not overlap it.
+   Instructions, arrow and buttons should remain fully visible in both modes.
+2. Check Settings → Arrow and map → **Opaque guide background** reflects the
+   button's state. Change the checkbox and check the panel immediately updates.
+   Nearby-objective and travel/inn-tip panels should use the same background.
+3. Leave it see-through, `/reload` and resume: the choice should persist. Change
+   it while in combat and while Scan runs. Progress, guide order, skipped steps,
+   map lines and flight directions should not change from this toggle.
+4. If it clips or fades text, report version/build, UI scale and a screenshot.
+   Host checks cover background-only styling, persistence, both controls and
+   route isolation; actual beta appearance still needs this test.
+
+## Reviewed Durotar research
+
+The supplied export contains 23 observations across addon 0.8.8/0.8.12/0.8.13
+on build 70235. Positive offers already match our starter NPC data. Its stale
+quest history and changing lists do not justify a new prerequisite or coordinate.
+Keep recording before/after NPC offers and export more sessions using `/wt research`
+or Export guide findings. Label each tester separately; research is not uploaded
+automatically. This review does not change leveling order or mapping coverage.
 
 ## Guide-completion regression for 0.8.13 — about 5–10 minutes
 

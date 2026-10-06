@@ -117,6 +117,10 @@ and learning continue. Toggle off to request fresh party snapshots.
 /wt tracker toggles the movable, scrollable party panel; it opens when joining a
 normal party and hides when solo/in a raid. Closing it lasts for that party session.
 /wt arrow toggles the movable direction panel. Choose yards or metres in settings.
+Its small top-right BG button switches the guide background between opaque and
+see-through. Text, arrow and controls stay fully visible. The attached objective
+and tip panels match. The saved choice also appears in Arrow and map settings;
+it changes appearance only, without changing guide steps, skips or travel.
 Arrow and map settings has a separate movable standalone arrow, with its own
 saved position; it can remain visible with the large direction panel hidden.
 Selected guides resume after reload/login; current progress advances their steps.
