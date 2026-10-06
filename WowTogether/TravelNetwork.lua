@@ -158,12 +158,11 @@ function ns.FindTravelPath(origin, goal, useFlights)
         for _, edge in pairs(flights and flights.edges or {}) do
             local source, target = flights.nodes[edge.source], flights.nodes[edge.destination]
             if source and target and source.known == true and target.known == true then
-                local timing = flights.timings[edge.source .. ":" .. edge.destination]
                 local air = ns.TravelPointDistance(nodes["TAXI_" .. edge.source], nodes["TAXI_" .. edge.destination], positions)
                     or ns.TravelPointDistance(source.point, target.point, positions)
-                local duration = timing and timing.mean or air and air / 32 * 1.35
+                local duration, measured, basis = ns.FlightDuration(edge.source, edge.destination, air, positions)
                 if duration then link("TAXI_" .. edge.source, "TAXI_" .. edge.destination, duration + 45, "taxi",
-                    {source = source, destination = target, flightSeconds = duration, measured = timing ~= nil}) end
+                    {source = source, destination = target, flightSeconds = duration, measured = measured, timingBasis = basis}) end
             end
         end
     end

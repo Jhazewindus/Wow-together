@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.22** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.23** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -18,10 +18,34 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **55 Lua
+Replace the folder on **every party member's client**, including all **56 Lua
 files** and the **Media folder**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.23 improves flight timing following Romits' report.** Untimed rides use
+the native flight map's connecting stops when public `GetNumRoutes` and
+`TaxiGetNodeSlot` results are available; otherwise they retain the distance
+estimate. Actual flight paths can curve between those stops, so first trips
+remain clearly labelled estimates. Walking-time calculation is unchanged.
+
+Short, bounded retries handle departure/landing events arriving before the public
+taxi state or position settles, even with both arrow panels disabled. A one-second
+read-only slot snapshot identifies manual flights when the map closes before its
+selection hook runs. A duration
+is saved only after an observed departure and confirmed arrival within 300 yards
+of the selected flight master. Interrupted, stale, unknown-position or untracked
+rides do not become full-trip measurements. Arrival retries preserve the original
+landing time, excluding walking after the ride. Reloading during a ride loses its
+departure capture; that partial ride is not learned.
+
+Validated timings are personal, directional, client-build scoped and matched to
+the native connecting route when available. Both timers and travel planners use
+the same timing source. Older unverified samples remain saved but are excluded
+until a confirmed ride replaces them; after updating, some countdowns will
+therefore say Estimated again. `/wt probe` now includes connecting-route
+capabilities, timing counts, recording status and expected/actual duration.
+See [TRAVEL_DATA.md](TRAVEL_DATA.md) and test native behavior on the current beta.
 
 **0.8.22 adds official Blizzard artwork to Dungeon quests cards.** One faint
 image stretches across the whole card at 14% opacity, leaving the text and

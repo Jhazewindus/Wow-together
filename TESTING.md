@@ -1,12 +1,12 @@
 # Wow Together — friend test script
 
-For **0.8.22**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.23**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 55 Lua files** and
+1. Replace the complete WowTogether folder, including **all 56 Lua files** and
    the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    `/reload`; restart fully if a new addon folder does not appear.
@@ -15,6 +15,32 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Romits' flight times — about 10–15 minutes
+
+1. Open a flight master, choose a known connecting route and record the departure,
+   destination, estimated time and actual duration. First trips may be inaccurate
+   because actual curves remain unknown. `/wt probe` should show native route API
+   capabilities, connecting-route counts and Selected flight's timing basis.
+   Missing/private route data must fall back gracefully without inventing unlocks.
+2. Finish the ride at the selected flight master. Expect **Flight recording:
+   Timed …; arrival confirmed** with actual seconds and previous estimate/timing.
+   Fly that same directed route again on the same build: the countdown should use
+   the measured sample. Both arrow panels must agree. Whole journey/walking time
+   remains separate; flight countdowns must not include later walking.
+3. Hide both arrows and take another normal flight. Restore the panels afterward;
+   a confirmed full ride should still be learned through control events. During
+   a long flight, an overdue estimate should show elapsed time instead of staying
+   at zero. Changing the native connecting route must not reuse a different trip.
+4. Use early landing if available, or report an interrupted ride. It must not
+   replace the full destination's timing. Unknown/private landing positions and
+   stale failed selections must not save a misleading sample. Reload mid-flight
+   shows elapsed time from its new observation and does not learn that partial ride.
+5. Existing unverified durations remain saved but need a new confirmed ride;
+   expect Estimated again after updating. Walking ETA, guide order, skips, flight
+   unlocks and opt-in auto-flight should behave as before. Send version/build,
+   both flight masters, displayed/actual times and `/wt probe` Flight timing /
+   Flight recording lines. Host tests cannot establish beta event timing or ETA.
 
 ## Dungeon artwork — about 5 minutes
 

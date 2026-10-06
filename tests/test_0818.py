@@ -50,7 +50,8 @@ class FlightReportTests(unittest.TestCase):
 
     def test_measured_ride_countdown_is_shared_and_not_whole_journey_time(self):
         c = flight_client(); c.ns.ReadFlightMap()
-        c.ns.db.flights[c.ns.self].timings['11:22'] = c.lua.table_from({'mean': 90, 'samples': 1})
+        c.ns.db.flights[c.ns.self].timings['11:22'] = c.lua.table_from({
+            'mean': 90, 'samples': 1, 'validated': True, 'build': c.ns.flightTimingBuild})
         c.ns.ResetTravelPath(); c.ns.SetOption('standaloneArrow', True)
         c.ns.NoteFlightSelection(54)
         c.lua.execute('flying=true; clock=100'); c.ns.handlers.PLAYER_CONTROL_LOST()

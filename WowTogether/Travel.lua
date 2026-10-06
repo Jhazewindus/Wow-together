@@ -210,24 +210,44 @@ function ns.InitializeTravel()
             or not ns.GuideInteger(timing.samples, 11) or timing.samples < 1 then state.timings[key] = nil end
     end
     if not savedPoint(state.corpse) then state.corpse = nil end
+    local _, build = ns.ReadPublic(GetBuildInfo)
+    ns.flightTimingBuild = ns.SafeTitle(build)
     if type(hooksecurefunc) == "function" and type(TakeTaxiNode) == "function" then
         hooksecurefunc("TakeTaxiNode", function(slot) ns.NoteFlightSelection(slot) end)
     end
 end
 
 function ns.NoteFlightSelection(slot)
-    if not ns.Public(slot) or not ns.GuideInteger(slot) or not ns.flightMapSource then return end
-    for id, info in pairs(ns.visibleFlights or {}) do
+    if not ns.Public(slot) or not ns.GuideInteger(slot) then return end
+    local sourceID, visible, now = ns.flightMapSource, ns.visibleFlights, ns.ReadPublic(GetTime)
+    local closed = ns.recentFlightMap
+    -- Native TakeTaxiNode can close the map before its post-hook runs. This
+    -- snapshot is identification only; it is never used to take a flight.
+    if not sourceID and closed and number(now) and number(closed.time)
+        and now >= closed.time and now - closed.time <= 1 then sourceID, visible = closed.source, closed.visible end
+    if not sourceID then return end
+    for id, info in pairs(visible or {}) do
         if info.slot == slot and info.reachable then
             local node = flights().nodes[id]
-            local timing = flights().timings[ns.flightMapSource .. ":" .. id]
-            local previous = ns.pendingFlight
-            local source = flights().nodes[ns.flightMapSource]
+            local source = flights().nodes[sourceID]
             local air = source and node and distance(source.world, node.world)
-            local expected = timing and timing.mean or previous and previous.source == ns.flightMapSource
-                and previous.destination == id and previous.expected or air and air / 32 * 1.35
-            ns.pendingFlight = {source = ns.flightMapSource, destination = id, name = node.name,
-                expected = expected, estimated = timing == nil}
+            local expected, measured, basis = ns.FlightDuration(sourceID, id, air)
+            local previous = ns.pendingFlight
+            if ns.flightStarted and previous and (previous.source ~= sourceID or previous.destination ~= id
+                or number(now) and number(previous.selectedAt) and now - previous.selectedAt > 30) then
+                -- A missed old landing must not time two rides as one.
+                ns.flightStarted = nil
+            end
+            ns.pendingFlight = {source = sourceID, destination = id, name = node.name,
+                expected = expected, estimated = not measured, basis = basis}
+            ns.PrepareFlightTiming(ns.pendingFlight)
+            ns.recentFlightMap = nil
+            if C_Timer and type(C_Timer.After) == "function" then
+                local selection = ns.pendingFlight
+                C_Timer.After(0.1, function()
+                    if ns.pendingFlight == selection and not ns.flightStarted then ns.ObserveFlightDeparture() end
+                end)
+            end
             return
         end
     end
@@ -259,7 +279,7 @@ function ns.ReadFlightMap(attempt)
         end
         return
     end
-    local current, visible, accepted, restricted = nil, {}, 0, 0
+    local current, visible, slots, accepted, restricted = nil, {}, {}, 0, 0
     local ownMap = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
     local state = flights()
     for index, info in ipairs(nodes) do
@@ -272,6 +292,7 @@ function ns.ReadFlightMap(attempt)
                 if info.state == states.Current then current = id end
                 visible[id] = {slot = ns.GuideInteger(info.slotIndex, 1000) and info.slotIndex or nil,
                     reachable = info.state == states.Reachable, unreachable = number(states.Unreachable) and info.state == states.Unreachable}
+                if visible[id].slot then slots[visible[id].slot] = id end
             end
         else restricted = restricted + 1 end
     end
@@ -280,7 +301,8 @@ function ns.ReadFlightMap(attempt)
     if current then ns.checkedFlightNodes[current] = true end
     if current then
         for id, info in pairs(visible) do
-            if info.reachable then state.edges[current .. ":" .. id] = {source = current, destination = id} end
+            if info.reachable then state.edges[current .. ":" .. id] = {source = current, destination = id,
+                route = info.slot and ns.ReadNativeFlightRoute(info.slot, current, id, slots)} end
             if info.unreachable then state.edges[current .. ":" .. id] = nil end
         end
     end
@@ -297,6 +319,7 @@ function ns.TravelDiagnostics(output)
     output("Flight paths: " .. known .. " known; " .. located .. " with locations; " .. edges .. " observed connections. Personal to this character.")
     output("Flight unlock scan: " .. ns.flightDiscoveryStatus)
     output("Flight map read: " .. ns.flightMapStatus)
+    ns.FlightTimingDiagnostics(output)
     ns.TravelNetworkDiagnostics(output)
 end
 
@@ -312,7 +335,7 @@ function ns.FindFlightPlan(stop, safety)
     local speed, running = ns.ReadPublic(GetUnitSpeed, "player")
     speed = number(running) and running > 0 and running or speed
     speed = number(speed) and speed > 0 and speed or 7
-    local best, cost
+    local best, cost, timingGeometry = nil, nil, {}
     safety = safety or ns.TravelSafetyContext()
     for _, edge in pairs(state.edges) do
         local source, dest = state.nodes[edge.source], state.nodes[edge.destination]
@@ -322,13 +345,12 @@ function ns.FindFlightPlan(stop, safety)
             and not ns.HostileWalkCrossing(position, source.point, safety, true, false)
             and not ns.HostileWalkCrossing(dest.point, stop, safety, false, true) then
             local start, finish, air = distance(a, source.world), distance(dest.world, b), distance(source.world, dest.world)
-            if start and finish and air then
-                local timing = state.timings[edge.source .. ":" .. edge.destination]
-                local duration = timing and timing.mean or air / 32 * 1.35
+            if start and finish and air and air > 0 then
+                local duration, measured, basis = ns.FlightDuration(edge.source, edge.destination, air, timingGeometry)
                 local value = start / speed + duration + finish / speed + 45
                 if value + math.max(30, direct / speed * 0.15) < direct / speed and (not cost or value < cost) then
                     best, cost = {source = source, destination = dest, seconds = value,
-                        flightSeconds = duration, measured = timing ~= nil, walkingSeconds = direct / speed}, value
+                        flightSeconds = duration, measured = measured, timingBasis = basis, walkingSeconds = direct / speed}, value
                 end
             end
         end
@@ -391,16 +413,26 @@ function ns.TrySuggestedFlight()
         or ns.flightAttempt == plan.destination.id then return end
     ns.flightAttempt = plan.destination.id
     ns.pendingFlight = {source = plan.source.id, destination = plan.destination.id,
-        name = plan.destination.name, expected = plan.flightSeconds, estimated = not plan.measured}
+        name = plan.destination.name, expected = plan.flightSeconds, estimated = not plan.measured, basis = plan.timingBasis}
+    ns.PrepareFlightTiming(ns.pendingFlight)
     ns.travelStatus = "Requested flight to " .. plan.destination.name .. "; waiting for actual flight state."
     TakeTaxiNode(target.slot)
 end
 
 function ns.FlightState()
     local flying = ns.ReadPublic(UnitOnTaxi, "player")
-    if flying ~= true then return end
+    if flying ~= true then
+        if flying == false and ns.flightStarted then ns.FinishFlight() end
+        return
+    end
     local now = ns.ReadPublic(GetTime)
-    if not ns.flightStarted and number(now) then ns.flightStarted = now end
+    if not ns.flightStarted and number(now) then
+        local selected = ns.pendingFlight and ns.pendingFlight.selectedAt
+        if number(selected) and (now < selected or now - selected > 30) then ns.pendingFlight = nil end
+        ns.flightStarted = now
+        ns.flightTimingStatus = ns.pendingFlight and ("Timing flight to " .. ns.pendingFlight.name .. ".")
+            or "No selected flight was captured; showing elapsed flight time."
+    end
     local elapsed = number(now) and number(ns.flightStarted) and math.max(0, now - ns.flightStarted) or nil
     local selection = ns.pendingFlight
     ns.travelNetworkStatus = "Flying to " .. (selection and selection.name or "destination") .. "; ground directions resume after landing."
@@ -411,19 +443,32 @@ end
 
 function ns.FinishFlight()
     if ns.ReadPublic(UnitOnTaxi, "player") ~= false then return end
+    if not ns.flightStarted and not ns.pendingFlight then return end
     local now, start, selection = ns.ReadPublic(GetTime), ns.flightStarted, ns.pendingFlight
-    if selection and number(now) and number(start) and now - start > 1 and now - start < 7200 then
-        local key = selection.source .. ":" .. selection.destination
-        local timings = flights().timings
-        local old = timings[key]
-        local samples = math.min(10, old and old.samples or 0)
-        timings[key] = {mean = ((old and old.mean or 0) * samples + now - start) / (samples + 1), samples = samples + 1}
-    end
+    ns.FinishFlightTiming(selection, start, now)
     ns.flightStarted, ns.pendingFlight, ns.flightPlanCache = nil, nil, nil
     ns.travelRevision = (ns.travelRevision or 0) + 1
     ns.ResetTravelPath()
     ns.RefreshTravelDirections()
 end
+
+local function observeControl(starting)
+    if not ns.db then return end
+    local selection, began = ns.pendingFlight, ns.flightStarted
+    local function check(attempt)
+        -- Cancel callbacks when a different ride was selected/finished.
+        if selection ~= ns.pendingFlight or not starting and began ~= ns.flightStarted then return end
+        local flying = ns.ReadPublic(UnitOnTaxi, "player")
+        if starting and flying == true then ns.FlightState(); ns.RefreshTravelDirections(); return end
+        if not starting and flying == false then ns.FinishFlight(); return end
+        if attempt < 20 and (selection or began) and C_Timer and type(C_Timer.After) == "function" then
+            C_Timer.After(0.1, function() check(attempt + 1) end)
+        end
+    end
+    check(0)
+    ns.RefreshTravelDirections()
+end
+function ns.ObserveFlightDeparture() observeControl(true) end
 
 function ns.CorpseDestination()
     if not ns.Option("corpseArrow") or ns.ReadPublic(UnitIsGhost, "player") ~= true then return end
@@ -477,18 +522,20 @@ end
 
 ns.On("TAXIMAP_OPENED", function()
     flightMapGeneration, flightMapOpen = flightMapGeneration + 1, true
+    ns.recentFlightMap = nil
     if ns.db then ns.ReadKnownFlightPaths(); ns.ReadFlightMap() end
 end)
 ns.On("TAXIMAP_CLOSED", function()
     flightMapGeneration, flightMapOpen = flightMapGeneration + 1, false
+    ns.recentFlightMap = {source = ns.flightMapSource, visible = ns.visibleFlights, time = ns.ReadPublic(GetTime)}
     ns.visibleFlights, ns.flightMapSource, ns.flightAttempt = nil, nil, nil
 end)
 ns.On("TAXI_NODE_STATUS_CHANGED", function()
     ns.ScheduleFlightDiscovery()
     if flightMapOpen and ns.db then ns.ReadFlightMap() end
 end)
-ns.On("PLAYER_CONTROL_LOST", function() if ns.db then ns.FlightState(); ns.RefreshTravelDirections() end end)
-ns.On("PLAYER_CONTROL_GAINED", function() if ns.db then ns.FinishFlight() end end)
+ns.On("PLAYER_CONTROL_LOST", function() observeControl(true) end)
+ns.On("PLAYER_CONTROL_GAINED", function() observeControl(false) end)
 ns.On("PLAYER_DEAD", function()
     if ns.db then
         local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")

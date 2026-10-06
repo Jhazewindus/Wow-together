@@ -1,4 +1,4 @@
-# Travel routing — updated for 0.8.21
+# Travel routing — updated for 0.8.23
 
 Wow Together implements its own Dijkstra search with a binary heap, deterministic
 ties and nonnegative travel-time costs. It finds a path **between quest steps**;
@@ -60,6 +60,53 @@ Measured personal flight times replace estimates where available. Saved flight
 points projected onto outer zones retain their city-map identity in the graph,
 so they cannot supply a walking shortcut through city walls. Native reachable
 slot checks and the existing opt-in auto-flight/combat safeguards remain in place.
+
+## Flight duration — 0.8.23
+
+Romits reports reliable walking ETAs and inconsistent flight ETAs, with no exact
+trip or version supplied for this report. Code inspection identified distance-only
+estimates, event-order capture gaps and no destination check on prior samples.
+These are confirmed implementation weaknesses; they do not establish the cause
+of his specific trip. Walking speed/time calculation is unchanged.
+
+Read-only native `GetNumRoutes(slotIndex)` and
+`TaxiGetNodeSlot(slotIndex, routeIndex, isSource)` expose the connecting taxi
+stops used by Blizzard's Forever flight-map renderer. Capture only complete,
+contiguous routes through public visible slots, bounded to 32 legs. No inferred
+route unlocks or intermediate edges are added. Sum connecting-stop geometry
+for untimed flights, retaining the earlier estimated 32 yd/s and 1.35 detour
+factor. Share geometry caches with the graph. This approximates intermediate
+stops, not the actual airborne curves; a missing/private/invalid route uses
+the straight-distance estimate. Both remain labelled estimates.
+
+Source: [Forever UI snapshot a84e2b1b41d3d4137127c07e4da448aa3251d6f1](https://github.com/Gethe/wow-ui-source/tree/a84e2b1b41d3d4137127c07e4da448aa3251d6f1),
+`Interface/AddOns/Blizzard_FlightMap/FM_FlightPathDataProvider.lua`
+(`HighlightRouteToPin` uses GetNumRoutes/TaxiGetNodeSlot; OnClick uses TakeTaxiNode)
+and `Interface/AddOns/Blizzard_UIPanels_Game/Shared/TaxiFrame.lua`. API signatures
+are verified in this source; availability/results on the running beta still need
+the capability probe and tester validation. No Blizzard UI implementation is copied.
+
+An observed selected departure starts the clock. Control-event state lag gets
+up to 20 retries at 0.1 seconds; existing visible navigation updates can also
+notice landing. Recording works with both panels hidden when the native events
+arrive. A one-second read-only visible-slot snapshot handles the native map closing
+before the TakeTaxiNode post-hook; it is never used for automatic flight actions.
+A selected request older than 30 seconds cannot attach to another flight.
+Only a public non-taxi state, duration between 1 second and 2 hours, matching build,
+and landing within an estimated 300-yard tolerance of the selected flight master
+permit a timing sample. Missing/late GPS gets the same bounded retry window, using
+the original landing time so postflight walking is excluded. Early/unknown arrivals
+and death are not measurements. Reload during a ride loses the departure context;
+partial rides are not learned. Samples/flight networks remain personal.
+
+Validated timings include build and directed native route signature. A changed
+build or different/unknown previously captured route uses an estimate until timed.
+Earlier unverified samples are retained for inspection but excluded from planning
+and countdowns, then replaced by the first validated ride. Subsequent matching
+samples update the existing bounded rolling mean. Both route solvers and both
+timer panels share this provider. This improves consistency without promising
+exact first-flight times. `/wt probe` reports capabilities, sample/route counts,
+selected estimate basis and last expected/actual timing.
 
 Costs use current public ground speed, imported walking-distance estimates and
 transport estimates, including their supplied loading allowance (10 seconds per

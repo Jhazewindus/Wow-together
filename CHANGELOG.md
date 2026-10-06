@@ -1,5 +1,20 @@
 # Wow Together changelog
 
+## 0.8.23
+
+- Romits: improve untimed flight estimates using native connecting stops when
+  public route data is available. Keep first rides labelled estimates; curves
+  between stops remain unknown. Preserve the working walking-time calculation.
+- Capture delayed departure/landing state with short bounded retries, including
+  when both arrows are hidden; retain slot identity briefly if the native map
+  closes before the selection hook. Confirm arrival near the selected flight master
+  before saving a duration; exclude interrupted, stale and unconfirmed rides.
+  Position retries retain the original landing time, excluding later walking.
+- Share validated build/route-specific timings between both timers and planners.
+  Keep older unverified samples but re-time them before use. Add recording,
+  route-capability and expected/actual diagnostics. Include all 56 Lua files;
+  native beta behavior still needs testing. Romits' exact failing trip is unknown.
+
 ## 0.8.22
 
 - Give Dungeon quests cards official Blizzard client artwork, stretched across

@@ -251,7 +251,8 @@ def flight_client(include_geography=False):
     function GetUnitSpeed() return 7,7 end
     function UnitOnTaxi() return flying end
     function CreateVector2D(x,y) return {GetXY=function() return x,y end} end
-    C_Map.GetPlayerMapPosition=function() return CreateVector2D(.02,.4) end
+    -- A completed synthetic ride lands at the selected End flight master.
+    C_Map.GetPlayerMapPosition=function() return CreateVector2D(not flying and clock>100 and .9 or .02,.4) end
     C_Map.GetWorldPosFromMapPos=function(map,p) local x,y=p:GetXY(); return 1,CreateVector2D(x*10000,y*10000) end
     C_Map.GetMapWorldSize=function() return 10000,10000 end
     Enum.FlightPathState={Current=60,Reachable=70,Unreachable=80}

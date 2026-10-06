@@ -111,7 +111,8 @@ class SharedTravelTests(unittest.TestCase):
         ''')
         c.ns.travelData.nodes.TAXI_22 = c.lua.table_from({'mapID':1454,'x':.517,'y':.858,'name':'Orgrimmar flight'})
         c.ns.db.config.autoFly = True
-        c.ns.db.flights[c.ns.self].timings['11:22'] = c.lua.table_from({'mean': 15, 'samples': 1})
+        c.ns.db.flights[c.ns.self].timings['11:22'] = c.lua.table_from({
+            'mean': 15, 'samples': 1, 'validated': True, 'build': c.ns.flightTimingBuild})
         c.ns.ReadFlightMap()
         self.assertAlmostEqual(c.ns.selectedRoute.stops[1].x, .517)
         self.assertEqual(c.ns.navigation.state.stop.flightPlan.destination.id, 22)

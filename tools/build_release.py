@@ -373,7 +373,13 @@ Published patrol paths for the next three pickup/hand-in givers draw as thin amb
 search traces. Toggle in Quest markers settings; live NPC positions are unknown.
 Temporary incomplete quest logs retain the last public snapshot. Confirmed ordinary
 quest completions are saved per character/build, separate from skips and peers.
-Flight countdowns label estimated first trips; measured trips use personal timings.
+Flight countdowns label estimated first trips; native connecting stops improve
+estimates when public. Confirmed complete rides supply personal, directed,
+build/route-specific timings to both timers and planners. Short bounded retries
+handle delayed taxi state/GPS; late GPS keeps the original landing time. Interrupted
+or unknown arrivals do not become samples. Older unverified timings remain saved
+but need re-timing; reload during a ride loses its departure context. Walking ETA
+calculation is unchanged. Probe reports timing counts and expected/actual duration.
 Guide info estimates quest XP and finish level from route start. Unobserved XP
 thresholds use a labeled Classic baseline; kills/exploration and party/rested effects
 are excluded. Unknown rewards/thresholds remain explicit. Fixed guide order stays.

@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.22"
+ns.VERSION = "0.8.23"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}
@@ -181,7 +181,8 @@ function ns.Diagnostics()
         {"FlightMapFrame.GetMapID", FlightMapFrame and FlightMapFrame.GetMapID},
         {"C_TaxiMap.GetTaxiNodesForMap", C_TaxiMap and C_TaxiMap.GetTaxiNodesForMap},
         {"C_Map.GetMapPosFromWorldPos", C_Map and C_Map.GetMapPosFromWorldPos},
-        {"TakeTaxiNode", TakeTaxiNode}, {"UnitOnTaxi", UnitOnTaxi}, {"GetUnitSpeed", GetUnitSpeed},
+        {"TakeTaxiNode", TakeTaxiNode}, {"GetNumRoutes", GetNumRoutes}, {"TaxiGetNodeSlot", TaxiGetNodeSlot},
+        {"UnitOnTaxi", UnitOnTaxi}, {"GetUnitSpeed", GetUnitSpeed},
         {"GetTime", GetTime}, {"UnitIsGhost", UnitIsGhost}, {"GetBindLocation", GetBindLocation},
         {"GetSubZoneText", GetSubZoneText},
         {"C_DeathInfo.GetCorpseMapPosition", C_DeathInfo and C_DeathInfo.GetCorpseMapPosition},

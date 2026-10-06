@@ -75,7 +75,8 @@ class TravelSearchTests(unittest.TestCase):
         state.edges['11:9033'] = c.lua.table_from({'source': 11, 'destination': 9033})
         state.edges['9033:22'] = c.lua.table_from({'source': 9033, 'destination': 22})
         for key in ('11:9033', '9033:22'):
-            state.timings[key] = c.lua.table_from({'mean': 15, 'samples': 1})
+            state.timings[key] = c.lua.table_from({
+                'mean': 15, 'samples': 1, 'validated': True, 'build': c.ns.flightTimingBuild})
         goal = c.ns.selectedRoute.stops[1]
         path = c.ns.FindTravelPath(point(c, 501, .02, .4), goal, True)
         self.assertEqual([s.toID for s in path.legs.values() if s.method == 'taxi'], ['TAXI_9033', 'TAXI_22'])
