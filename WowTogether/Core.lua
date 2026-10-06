@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.6"
+ns.VERSION = "0.8.7"
 ns.handlers = {}
 ns.members = {}
 ns.status = "Waiting for addon initialization."
@@ -119,7 +119,8 @@ function ns.Diagnostics()
         {"C_TaxiMap.GetTaxiNodesForMap", C_TaxiMap and C_TaxiMap.GetTaxiNodesForMap},
         {"C_Map.GetMapPosFromWorldPos", C_Map and C_Map.GetMapPosFromWorldPos},
         {"TakeTaxiNode", TakeTaxiNode}, {"UnitOnTaxi", UnitOnTaxi}, {"GetUnitSpeed", GetUnitSpeed},
-        {"GetTime", GetTime}, {"UnitIsGhost", UnitIsGhost},
+        {"GetTime", GetTime}, {"UnitIsGhost", UnitIsGhost}, {"GetBindLocation", GetBindLocation},
+        {"GetSubZoneText", GetSubZoneText},
         {"C_DeathInfo.GetCorpseMapPosition", C_DeathInfo and C_DeathInfo.GetCorpseMapPosition},
         {"TooltipDataProcessor.AddTooltipPostCall", TooltipDataProcessor and TooltipDataProcessor.AddTooltipPostCall},
         {"C_Map.SetUserWaypoint", C_Map and C_Map.SetUserWaypoint},
@@ -144,6 +145,7 @@ function ns.Diagnostics()
     output("Presence is not proof of working behavior. No waypoint or protected action was called.")
     ns.SyncDiagnostics(output)
     ns.NavigationDiagnostics(output)
+    ns.GuideTipDiagnostics(output)
     local low, high = ns.PreferredQuestLevels()
     if low then
         local level, _, name = ns.PartyLevelFloor()
@@ -173,6 +175,7 @@ ns.On("ADDON_LOADED", function(name)
     ns.InitializeGuideXP()
     ns.InitializeGuideControls()
     ns.InitializeTravel()
+    ns.InitializeGuideTips()
     ns.InitializeItemHints()
     ns.InitializeOffers()
     ns.InitializeNPCPickups()

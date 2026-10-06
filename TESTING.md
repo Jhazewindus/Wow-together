@@ -1,12 +1,12 @@
 # Wow Together — friend test script
 
-For **0.8.6**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.7**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 44 Lua files**, in
+1. Replace the complete WowTogether folder, including **all 46 Lua files**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    `/reload`; restart fully if a new addon folder does not appear.
 2. Enable `/console scriptErrors 1`. Record version, build, level, faction, class,
@@ -15,13 +15,36 @@ The expanded-guide checks below take about **15–25 minutes**.
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
 
-## Startup hotfix checks for 0.8.6 — about 3 minutes
+## Optional guide tips checks for 0.8.7 — about 5–10 minutes
+
+1. Start a leveling guide and leave both tip options on under **Travel routing**.
+   Walk within 150 metres of a friendly flight master. The small strip should
+   say **Get flight path** only for a confirmed undiscovered path, or **Check
+   flight path** when unlock status is unknown. Open the flight map: a known
+   path's tip should disappear. The quest title, step and route order stay put.
+2. Move away beyond 150 metres; the strip hides. Test a large and a small zone,
+   Horde/Alliance ownership and a neutral hub. Changing yards/metres changes
+   only the displayed units; the physical trigger distance stays the same.
+3. Near an inn, use a guide with upcoming objectives away from the hub and at
+   least two later turn-ins nearby. **Set hearthstone** should appear with a
+   reason on hover. It should stay absent for a single nearby errand or an
+   existing home. Set your home manually and verify the tip disappears.
+4. Click × on a tip, then `/reload`; dismissed advice stays hidden for this
+   character and no quest/step is skipped. Different characters keep their own
+   unlocks, home and dismissed advice. Disable either option to hide that type.
+5. During combat, a flight, Scan guide, step preview or corpse recovery, tips
+   should hide. Normal questing restores eligible advice. Drag the panel, try
+   your usual UI scale, check hover/close readability and test the standalone
+   arrow hover if enabled. Report version/build, zone, NPC, `/wt probe` and a
+   screenshot for missed tips or clipping. Host tests cannot certify beta APIs.
+
+## Startup hotfix regression checks — about 3 minutes
 
 1. Replace the complete folder and `/reload`, keeping existing SavedVariables.
    With `/console scriptErrors 1`, confirm there is no SetFont error at startup.
 2. Open `/wt`. Both search boxes, Settings, Tracker and Sync controls should be
    created normally. Type in both search fields, then open `/wt probe` and
-   confirm version **0.8.6** and a populated character/quest report.
+   confirm version **0.8.7** and a populated character/quest report.
    The minimap button should appear unless previously hidden; `/wt minimap`
    toggles it. Left-click should open the dashboard.
 3. Accept or turn in a quest, change zones and `/reload` again. Confirm no

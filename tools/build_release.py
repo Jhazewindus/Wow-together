@@ -59,6 +59,12 @@ Turn Follow fixed zone guides off and restart a guide for adaptive trips, which
 hold up to six quests/twenty stops; their full preview is not limited to that trip.
 Optional suitable next-zone prompts offer Start zone guide / Keep my guide.
 /wt config has purpose-based settings pages with dropdowns and help text.
+Travel routing has optional nearby flight-path and useful hearthstone tips.
+A small dismissible strip appears within 150 metres of a friendly service.
+Hearthstone tips require upcoming objectives away and multiple hub turn-ins;
+flight tips hide known paths and distinguish Get from Check when unlocks are
+unconfirmed. Hover for the location/reason. Advice never changes the quest order,
+binds a home or unlocks a flight. New inn visits can be recorded per character.
 Play mode → Solo leveling mode stops all party sends/receives, hides party
 controls and uses only your character, even while grouped. Guides, local progress
 and learning continue. Toggle off to request fresh party snapshots.
@@ -269,7 +275,7 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
 '''
     args.output.mkdir(parents=True, exist_ok=True)
     destination = args.output / f'WowTogether-{version}.zip'
-    files = ['WowTogether.toc', *names, 'QuestCatalogue.json', 'QuestCoverage.json', 'GuideAudit.json', 'GuideSourceQueue.json', 'TravelData.json']
+    files = ['WowTogether.toc', *names, 'QuestCatalogue.json', 'QuestCoverage.json', 'GuideAudit.json', 'GuideSourceQueue.json', 'TravelData.json', 'GuideServiceData.json']
     with zipfile.ZipFile(destination, 'w', zipfile.ZIP_DEFLATED) as archive:
         for name in files:
             archive.write(addon / name, 'WowTogether/' + name)
@@ -283,7 +289,7 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
         for name in ('build_quest_dataset.py', 'quest_enrichment.py', 'legacy_quest_facts.py', 'collect_quest_entities.py',
                      'forever_map_geometry.py', 'quest_event_areas.py', 'lua_data_literal.py', 'forever_beta_facts.py',
                      'quest_observation_facts.py', 'capture_quest_pages.py', 'audit_quest_guides.py',
-                     'import_warcraftdb.py', 'import_wowhead.py', 'import_travel_network.py',
+                     'import_warcraftdb.py', 'import_wowhead.py', 'import_travel_network.py', 'import_guide_services.py',
                      'guide_source_queue.py', 'forever_source_manifest.json', 'quest_corrections.json', 'quest_exclusions.json'):
             archive.write(ROOT / 'tools' / name, 'WowTogether/data-tools/' + name)
         archive.writestr('WowTogether/INSTALL.md', instructions)

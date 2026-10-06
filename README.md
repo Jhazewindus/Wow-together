@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.8.6** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.7** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -16,13 +16,13 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **44 Lua
+Replace the folder on **every party member's client**, including all **46 Lua
 files**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
 
-**0.8.6 fixes the UI startup font error reported on the beta.** Replace the
-complete addon folder and reload; clearing SavedVariables is not required.
+**0.8.7 adds quiet nearby flight-path and useful hearthstone tips.** Replace
+the complete addon folder and reload; clearing SavedVariables is not required.
 
 The compact interface uses matte charcoal panels, subtle gold accents and
 Classic headings. The main window gives most of its space to guide rows; the
@@ -378,9 +378,20 @@ without forgetting an already-known unlock. Unknown reads preserve saved evidenc
 The probe itself does not query a flight map or select a taxi. Missing APIs, public
 positions or current-master data leave connections and flight actions unconfirmed.
 
-Observed nearby flight masters with unconfirmed unlocks can receive a short
-check stop. This is not a complete flight-path database. Unknown reachability,
-missing positions, continent mismatches or unsupported APIs keep travel manual.
+Nearby flight-master advice appears in a small optional strip below the guide
+controls within **150 metres**, using the map's physical scale. Known paths are
+hidden. Confirmed undiscovered paths say **Get flight path**; unknown unlocks say
+**Check flight path**. Faction ownership must be known; no quest step is replaced.
+Hearthstone advice uses 49 sourced inn locations, including Zephras Isle, plus
+inns observed in game. It appears near a friendly inn when upcoming work away
+from the hub returns for at least two distinct quest turn-ins. Current home tips
+are hidden when the bind location or a recorded manual binding identifies it.
+Hover for the reason and location; × saves dismissal for this character.
+Both advice types can be turned off separately under **Travel routing**. This
+logic applies to every guide, while tips require known service geography.
+No automatic hearthstone binding, flight unlock, forced detour or guide reorder.
+Unknown reachability, missing positions, continent mismatches or unsupported
+APIs keep travel manual. Published service coordinates need beta verification.
 **Select the suggested flight** is off by default. If enabled, it requests a
 currently reachable native slot only when you open the matching flight master,
 outside combat. Its protected-action behavior needs testing on your beta build.
@@ -636,7 +647,7 @@ provided broad inspiration about progress clarity; its code/assets/layouts
 were not copied. This implementation is independent.
 
 Reported beta build **70205** established the earlier sync APIs in user tests.
-**0.8.6 has host validation, not a live-client compatibility certification.**
+**0.8.7 has host validation, not a live-client compatibility certification.**
 Retest UI rendering, optional gossip/flight actions, corpse positions and item
 hooks on the build in front of you. `/wt probe` lists capabilities and runtime
 status. Do not interpret presence as proof that protected actions work.
@@ -687,7 +698,7 @@ compiler discards temporary caches when it yields. Guide decisions, prerequisite
 rules, fixed/adaptive order, sync behavior, settings and UI remain the same.
 See PERFORMANCE.md for measured host results and the repeatable benchmark command.
 
-Host checks load all 44 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
+Host checks load all 46 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
 
 ```sh
 python3 -m venv /tmp/wow-together-tests

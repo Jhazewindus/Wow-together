@@ -7,7 +7,7 @@ local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, cl
     scanSkipped = false, distanceUnits = "yards", trackerAuto = true, autoSelectQuests = false,
     suggestFlights = true, autoFly = false, nearbyFlights = true, corpseArrow = true, npcMarker = "star", recordQuestData = true,
     useLearnedQuests = true, exportCharacterNames = false, fixedZoneGuides = true,
-    standaloneArrow = false, travelNetwork = true, soloMode = false, questGiverStars = true, patrolHints = true}
+    standaloneArrow = false, travelNetwork = true, soloMode = false, questGiverStars = true, patrolHints = true, hearthstoneTips = true}
 
 function ns.Option(key)
     local value = ns.db and ns.db.config and ns.db.config[key]
@@ -36,7 +36,8 @@ local sections = {
     {"travel", "Travel routing", {
         {"travelNetwork", "Use travel connections", "Find a short travel path through known zone crossings, city gates and transports. Guide order stays fixed. Walk segments remain estimates."},
         {"suggestFlights", "Suggest faster known flights", "Compare walking with routes learned at flight masters. Timed flights improve travel estimates."},
-        {"nearbyFlights", "Check nearby flight paths", "Add a short visit to an observed flight master when its unlock is not confirmed."},
+        {"nearbyFlights", "Nearby flight-path tips", "Show a quiet tip within 150 metres of a friendly flight master. Known paths are hidden; unknown unlocks say Check. The quest step stays in place."},
+        {"hearthstoneTips", "Useful hearthstone tips", "Suggest a nearby inn when upcoming guide objectives return to that hub for multiple turn-ins. Optional advice within 150 metres; no automatic binding or route changes."},
         {"autoFly", "Select the suggested flight", "Opt-in: when you open the correct flight master's map, request the suggested reachable destination outside combat. Test this on your beta build."},
         {"corpseArrow", "Point to my corpse while dead", "Temporarily replace quest directions while you are a ghost, then resume the guide."}}},
     {"party", "Party progress", {

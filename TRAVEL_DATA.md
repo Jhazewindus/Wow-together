@@ -46,6 +46,26 @@ loading screen). Boat wait/ride times vary. Ordinary travel remains manual: walk
 board the indicated transport and select a flight unless existing auto-flight is
 enabled. There is no auto-walking, portal casting or boat interaction.
 
+Version 0.8.7 adds optional guide advice separate from Dijkstra routing. The
+same pinned `Data/Forever/Pois.lua` supplies 49 scoped inn locations and 36 taxi
+settlement labels. `GuideServiceData.json` records its SHA256 and scope;
+reproduce with `tools/import_guide_services.py /path/to/pinned/Pois.lua` under
+the test Python environment. The adapter verifies the source hash and extracts
+facts only, with no upstream runtime/UI. Inn ownership follows its settlement.
+Neutral towns do not establish flight-master ownership: their separate faction
+masters need native public ownership flags before tips can recommend a visit.
+Unscoped locations are excluded. A public INN_INFO interaction can record a new
+inn for this character; HEARTHSTONE_BOUND records a manual binding. These native
+events and published coordinates still need current beta verification.
+
+Flight tips require a friendly known location within 150 metres. Published
+coordinates/ownership do not establish unlocks: confirmed unknown-to-character
+paths say Get, unconfirmed states say Check, and known paths are hidden. Inn tips
+require upcoming work away from the hub followed by at least two distinct nearby
+turn-ins among the next 48 guide stops. Tips do not supply travel graph edges,
+change quest order, select flights or bind homes. Disabling/dismissing them does
+not skip any quest. Each type has its own Travel routing toggle.
+
 Zone changes and significant detours refresh the travel path while keeping the
 quest step/order. Arrival at a walking waypoint advances only travel directions.
 Reaching a dock does not count as taking its boat; directions remain there until

@@ -51,7 +51,10 @@ quest descriptions or third-party addon engine/UI are included.
 Additional Forever NPC geographic facts come from the same MIT Mapzeroth
 revision cited above (`Data/Forever/Pois.lua`, SHA256
 `3dfa6f85e6fbe1c5a01389d4bcf445f4fa63391484647cdec663a849111e977d`).
-Only NPC IDs and normalized coordinates are read, not the addon engine.
+Only IDs, settlement/faction labels and normalized coordinates are read, not
+the addon engine. Version 0.8.7 also uses these facts for optional service tips;
+GuideServiceData.json records the scope. Neutral settlement ownership is not
+used as proof of a flight master's faction.
 
 ## Published Forever facts
 

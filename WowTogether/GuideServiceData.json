@@ -1,0 +1,15 @@
+{
+  "source": "https://github.com/tr0tsky0/Mapzeroth",
+  "commit": "fd68cfe2153379898680c66a01833846f9933587",
+  "file": "Data/Forever/Pois.lua",
+  "sha256": "3dfa6f85e6fbe1c5a01389d4bcf445f4fa63391484647cdec663a849111e977d",
+  "license": "MIT",
+  "inns": 49,
+  "taxi_settlement_labels": 36,
+  "taxi_faction_labels": 31,
+  "limitations": [
+    "Published coordinates need beta verification",
+    "Unscoped inns excluded; new inns can be observed in game",
+    "Location data does not establish flight unlocks"
+  ]
+}

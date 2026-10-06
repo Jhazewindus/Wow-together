@@ -77,9 +77,17 @@ local function storeNode(info, mapID, ownMap, known, current)
     if not p and published then p = {mapID = published.mapID, x = published.x, y = published.y} end
     if current then p = ns.PlayerPoint(ownMap) or p end
     if p then p = localPoint(ownMap, p) end
+    local confirmed = known ~= nil or old.unlockConfirmed == true
+    local factions = Enum and Enum.FlightPathFaction
+    local faction = old.faction or published and published.faction
+    if factions and ns.Public(info.faction) and type(info.faction) == "number" then
+        if info.faction == factions.Horde then faction = "Horde"
+        elseif info.faction == factions.Alliance then faction = "Alliance"
+        elseif info.faction == factions.Neutral then faction = "Both" end
+    end
     if known == nil then known = old.known == true end
     state.nodes[id] = {id = id, name = name, point = p or old.point,
-        world = p and world(p) or old.world, known = known}
+        world = p and world(p) or old.world, known = known, unlockConfirmed = confirmed, faction = faction}
     if known == false then
         for key, edge in pairs(state.edges) do
             if edge.source == id or edge.destination == id then state.edges[key] = nil end
@@ -332,20 +340,8 @@ function ns.TravelDestination(stop)
             label = "Fly to " .. plan.destination.name, flightPlan = plan, goal = stop}
         if #ns.FilterGuideStages({flightStop}) > 0 then return flightStop end
     end
-    if ns.Option("nearbyFlights") and not (ns.routeSelection and ns.routeSelection.mode == "travel") then
-        local state = flights()
-        local position = ns.PlayerPoint(mapID)
-        for _, node in pairs(state and state.nodes or {}) do
-            local p = node.point
-            if not node.known and p and p.mapID == mapID and ns.NormalizedDistance(position, p) <= 0.012
-                and not (ns.checkedFlightNodes and ns.checkedFlightNodes[node.id]) then
-                local flightStop = {id = stop.id, kind = "f", action = "flight-check", title = "Check flight path: " .. node.name,
-                    npcName = node.name, mapID = p.mapID, x = p.x, y = p.y, label = "Check flight path",
-                    flightNodeID = node.id, goal = stop}
-                if #ns.FilterGuideStages({flightStop}) > 0 then return flightStop end
-            end
-        end
-    end
+    -- Nearby unlock advice lives in the optional GuideTips strip; it must
+    -- not replace the current quest instruction or divert a fixed guide.
     return stop
 end
 

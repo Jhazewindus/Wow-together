@@ -1,5 +1,25 @@
 # Wow Together changelog
 
+## 0.8.7
+
+- Add a small dismissible tip strip below the guide controls, across all guide
+  zones with known services. Keep the current quest, route order and arrow intact.
+- Suggest a friendly flight master within 150 metres using physical map scale.
+  Hide known unlocks; distinguish confirmed undiscovered paths from unknown
+  paths that need checking. Replace the previous forced nearby flight-check stop.
+- Suggest setting a hearthstone at a nearby inn only when upcoming objectives
+  return to that hub for multiple turn-ins. Hide the current home suggestion;
+  record actual inn interactions and confirmed manual bindings per character.
+- Bundle 49 attributed Forever inn locations, including Zephras Isle, and
+  36 taxi settlement labels. Native faction flags settle ownership in neutral
+  towns with separate flight masters. Apply the same logic to every guide; unknown
+  geography stays unknown. Add independent toggles in Travel routing settings.
+- Remember dismissed advice per character, hide tips during combat/flights/
+  scans/previews, and reuse position samples between arrow updates. Tips do not
+  bind hearthstones, unlock flights, skip quests or change travel decisions.
+- Add host regression checks and beta testing steps. Published coordinates,
+  native inn events and the new strip still need testing in the current client.
+
 ## 0.8.6
 
 - Fix the beta startup error in search boxes by supplying an explicit empty
