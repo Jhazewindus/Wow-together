@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.28"
-ns.RELEASE_NAME = "ROYS BIG DUNGEON BANANZA - HOTFIX"
+ns.VERSION = "0.8.29"
+ns.RELEASE_NAME = "MEMORY COMPARTMENTS"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}
@@ -260,6 +260,7 @@ function ns.Diagnostics()
     output("Guide restore: " .. ns.guideResumeStatus)
     output("Party catch-up: " .. ns.partyCatchupStatus)
     ns.ResearchDiagnostics(output)
+    ns.MemoryDiagnostics(output)
     ns.ShowDiagnostics(table.concat(lines, "\n"))
 end
 

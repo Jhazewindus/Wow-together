@@ -60,10 +60,11 @@ local function layout(frame)
         anchor(frame.bossInfo, 232, height - 105, mapWidth, 59); frame.bossInfo:Show()
         frame.bossName:SetWidth(mapWidth - 74); frame.bossDetail:SetWidth(mapWidth - 74)
         anchor(frame.lootPanel, lootX, 94, lootWidth, height - 140)
-        frame.lootTitle:SetWidth(lootWidth - 24); frame.lootType:SetWidth(lootWidth - 24); frame.search:SetWidth(lootWidth - 24)
+        frame.lootTitle:SetWidth(lootWidth - 24); frame.lootType:SetWidth(lootWidth - 24)
+        frame.lootClass:SetWidth(lootWidth - 24); frame.search:SetWidth(lootWidth - 24)
         frame.lootEmpty:SetWidth(lootWidth - 32)
         frame.bossRowsVisible = math.min(8, math.max(1, math.floor((height - 226) / 52)))
-        frame.lootRowsVisible = math.min(7, math.max(1, math.floor((height - 299) / 47)))
+        frame.lootRowsVisible = math.min(7, math.max(1, math.floor((height - 333) / 47)))
         for _, row in ipairs(frame.lootRows) do row:SetWidth(lootWidth - 24); row.name:SetWidth(lootWidth - 70); row.detail:SetWidth(lootWidth - 70) end
         frame.questList:Show()
     end
@@ -100,10 +101,7 @@ local function selectBoss(id)
         if boss.id == id then
             frame.bossID, frame.lootPage = id, 1
             frame.bossPage = math.floor((index - 1) / frame.bossRowsVisible) + 1
-            if boss.mapFloor then frame.floor = boss.mapFloor
-            elseif boss.mapID then
-                for floor, map in ipairs(frame.data.maps) do if map.mapID == boss.mapID then frame.floor = floor; break end end
-            end
+            frame.floor = ns.DungeonBossFloor(frame.data, boss, frame.floor)
             ns.RenderDungeonViewer(); return
         end
     end
@@ -115,7 +113,7 @@ local function create()
     local state = type(ns.db.dungeonViewerUI) == "table" and ns.db.dungeonViewerUI or {}
     frame.fullSize = savedSize(state.fullSize, 940, 500, {1080, 650})
     frame.compactSize = savedSize(state.compactSize, 380, 300, {500, 420})
-    frame:SetSize(unpack(frame.fullSize)); frame:SetPoint("CENTER"); frame:SetFrameStrata("MEDIUM"); frame:SetClampedToScreen(true)
+    frame:SetSize(unpack(frame.fullSize)); frame:SetPoint("CENTER"); frame:SetFrameStrata("DIALOG"); frame:SetToplevel(true); frame:SetClampedToScreen(true)
     local left, top = state.fullLeft or state.left, state.fullTop or state.top
     if coordinate(left) and coordinate(top) then frame:ClearAllPoints(); frame:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", left, top) end
     ns.UIPanel(frame, colors.background); frame:SetMovable(true); frame:EnableMouse(true); frame:RegisterForDrag("LeftButton")
@@ -159,15 +157,22 @@ local function create()
     frame.lootType = ns.UIDropdown(frame.lootPanel, {{"all", "All loot"}, {"equipment", "Equipment"}, {"other", "Quest items & other"}}, 292,
         function(value) frame.category, frame.lootPage = value, 1; ns.RenderDungeonViewer() end)
     frame.lootType:SetPoint("TOPLEFT", 12, -39)
+    local _, _, class = ns.ReadPublic(UnitClass, "player")
+    frame.class = 0
+    for _, entry in ipairs(ns.DungeonLootClasses) do if ns.Public(class) and class == entry[1] then frame.class = class; break end end
+    frame.lootClass = ns.UIDropdown(frame.lootPanel, ns.DungeonLootClasses, 292,
+        function(value) frame.class, frame.lootPage = value, 1; ns.RenderDungeonViewer() end)
+    frame.lootClass:SetPoint("TOPLEFT", 12, -73)
+    ns.UIHelp(frame.lootClass, "Show weapon and armor types usable by this class. Choose All classes for every drop.")
     frame.search = ns.UIEditBox(frame.lootPanel, "Search this boss's loot", 292)
-    frame.search:SetPoint("TOPLEFT", 12, -73); frame.search:SetScript("OnTextChanged", function(self)
+    frame.search:SetPoint("TOPLEFT", 12, -107); frame.search:SetScript("OnTextChanged", function(self)
         local value = self:GetText()
         if not ns.Public(value) or type(value) ~= "string" then return end
         self.placeholder:SetShown(value == ""); frame.query, frame.lootPage = value, 1; if frame:IsShown() then ns.RenderDungeonViewer() end
     end)
     for slot = 1, frame.lootRowsVisible do
         local row = CreateFrame("Button", nil, frame.lootPanel)
-        row:SetPoint("TOPLEFT", 12, -112 - (slot - 1) * 47); row:SetSize(292, 44)
+        row:SetPoint("TOPLEFT", 12, -146 - (slot - 1) * 47); row:SetSize(292, 44)
         row.icon = row:CreateTexture(nil, "ARTWORK"); row.icon:SetPoint("LEFT", 0, 0); row.icon:SetSize(34, 34)
         row.name = heading(row, "", 11, 44, -3, 246); row.name:SetHeight(25); row.name:SetWordWrap(true)
         row.detail = ns.UILabel(row, nil, 9, colors.muted); row.detail:SetPoint("BOTTOMLEFT", 44, 2); row.detail:SetSize(246, 12)
@@ -186,7 +191,7 @@ local function create()
     end
     frame.lootPages = paging(frame.lootPanel, function() frame.lootPage = frame.lootPage - 1; ns.RenderDungeonViewer() end,
         function() frame.lootPage = frame.lootPage + 1; ns.RenderDungeonViewer() end)
-    frame.lootEmpty = ns.UILabel(frame.lootPanel, nil, 12, colors.muted); frame.lootEmpty:SetPoint("TOPLEFT", 16, -150); frame.lootEmpty:SetSize(280, 160)
+    frame.lootEmpty = ns.UILabel(frame.lootPanel, nil, 12, colors.muted); frame.lootEmpty:SetPoint("TOPLEFT", 16, -184); frame.lootEmpty:SetSize(280, 160)
     frame.footer = ns.UILabel(frame, nil, 10, colors.muted); frame.footer:SetPoint("BOTTOMLEFT", 20, 15); frame.footer:SetSize(760, 20)
     frame.questList = ns.UIButton(frame, "Quest list", 96, function()
         for _, group in ipairs(ns.DungeonGroups()) do if group.key == selected then ns.ShowDungeonQuestList(group); return end end
@@ -403,8 +408,8 @@ function ns.RenderDungeonViewer()
     frame.bossName:SetText(boss and boss.name or "Boss information unavailable")
     frame.bossDetail:SetText(boss and ((boss.rare and "Rare • " or "") .. #boss.loot .. " listed drops") or "")
     image(frame.portrait, boss and boss.portrait or bossFallback)
-    local loot = ns.DungeonViewerLoot(boss, frame.query, frame.category)
-    frame.lootTitle:SetText("Boss loot • " .. #loot); frame.lootType:SetChoice(frame.category)
+    local loot = ns.DungeonViewerLoot(boss, frame.query, frame.category, frame.class)
+    frame.lootTitle:SetText("Boss loot • " .. #loot); frame.lootType:SetChoice(frame.category); frame.lootClass:SetChoice(frame.class)
     pages = math.max(1, math.ceil(#loot / frame.lootRowsVisible)); frame.lootPage = math.max(1, math.min(pages, frame.lootPage)); setPages(frame.lootPages, frame.lootPage, pages)
     for slot, row in ipairs(frame.lootRows) do
         local value = slot <= frame.lootRowsVisible and loot[(frame.lootPage - 1) * frame.lootRowsVisible + slot] or nil
@@ -440,11 +445,11 @@ function ns.ShowDungeonViewer(group, mapOnly)
     if selected ~= key then
         if ns.dungeonMapQuestWindow then ns.dungeonMapQuestWindow:Hide() end
         frame.floor, frame.bossPage, frame.lootPage, frame.category, frame.query, frame.bossID = 1, 1, 1, "all", "", nil
-        frame.floorMenu.menu:Hide(); frame.lootType.menu:Hide(); frame.search:SetText("")
+        frame.floorMenu.menu:Hide(); frame.lootType.menu:Hide(); frame.lootClass.menu:Hide(); frame.search:SetText("")
     end
     selected, frame.data = key, ns.DungeonViewerData(key)
     if frame.data and not frame.bossID and frame.data.bosses[1] then frame.bossID = frame.data.bosses[1].id end
-    frame:Show(); ns.RenderDungeonViewer()
+    frame:Show(); frame:Raise(); ns.RenderDungeonViewer()
 end
 function ns.CheckDungeonViewerEntry()
     if not ns.db then return end

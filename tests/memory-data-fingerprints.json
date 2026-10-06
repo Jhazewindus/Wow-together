@@ -1,0 +1,29 @@
+{
+  "baseline": "v0.8.28",
+  "datasets": {
+    "catalogue": {
+      "file": "QuestCatalogue.lua",
+      "sha256": "9eb3b21eec72c2eeaedfea2ee1351d739de2dec39337762de7bfe3f9850426fc"
+    },
+    "questEntities": {
+      "file": "QuestCatalogue.lua",
+      "sha256": "dd0a1aad63912759c4310a146cb06912ae264d050a56f4cae19f95923d4aa7da"
+    },
+    "worldQuestChecks": {
+      "file": "QuestCatalogue.lua",
+      "sha256": "2e92e603b1786e1b8d4ec99717ada05b03a5e2478c127f8e2b80e06ca09f1725"
+    },
+    "xpBaseline": {
+      "file": "QuestCatalogue.lua",
+      "sha256": "b62f5bc722867fbf35bd83caed1ffe62588d9757eff2712c9abe5b1f35ed1e84"
+    },
+    "dungeonJournalData": {
+      "file": "DungeonJournalData.lua",
+      "sha256": "01d85aeed3bff21100529bb3775df82c3e5a06e3748e1cdd878c24ceb66b974b"
+    },
+    "dungeonMapData": {
+      "file": "DungeonMapData.lua",
+      "sha256": "a2a21b71356381be0c7d5b8fdbaa9c169f41aebfd3f7fa46647b5764fd7d5ff7"
+    }
+  }
+}

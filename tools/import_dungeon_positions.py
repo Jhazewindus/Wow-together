@@ -221,7 +221,9 @@ def main():
               "questMarkers": sum(c["questMarkers"] for c in coverage.values()),
               "questsWithInteriorMarkers": sum(c["questsWithInteriorMarkers"] for c in coverage.values())}
     data = {"schema": 1, "captured": "2026-10-06", "counts": counts, "dungeons": result}
-    (ROOT / "WowTogether/DungeonMapData.lua").write_text("local addonName, ns = ...\n\n-- Reference floor facts; native coordinates take precedence. See DUNGEON_VIEWER.md.\nns.dungeonMapData = " + encode(data) + "\n")
+    from pack_data import dungeon_code
+    (ROOT / "WowTogether/DungeonMapData.lua").write_text(dungeon_code('dungeonMapData', 'dungeon-maps', data,
+        'Reference floor facts; native coordinates take precedence. See DUNGEON_VIEWER.md.'))
     manifest = {"schema": 1, "captured": data["captured"], "counts": counts, "sources": sources, "coverage": coverage,
                 "limitations": ["Older Classic layout/spawn references require Forever beta verification.",
                                 "No guessed coordinates, ambiguous floor projections, entrance aliases or unrelated outdoor pins.",

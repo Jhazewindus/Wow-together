@@ -1,13 +1,13 @@
 # Wow Together — friend test script
 
-For **0.8.28** — **ROYS BIG DUNGEON BANANZA - HOTFIX**, World of Warcraft: Forever beta,
+For **0.8.29** — **MEMORY COMPARTMENTS**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 61 Lua files** and
+1. Replace the complete WowTogether folder, including **all 62 Lua files** and
    the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    `/reload`; restart fully if a new addon folder does not appear.
@@ -16,6 +16,42 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Memory compartments — about 5 minutes
+
+- After reload, use `/wt probe` and copy its memory/compartment lines. Record
+  whether the total-memory API is available. Most NPC/item/object records and
+  dungeon detail fields should remain packed until used. Compare with the old
+  version using the same character, saved data and a similar settled session.
+- Browse current/future guides and All quests. Start a guide, check NPC/kill/item
+  instructions, move between zones, scan, skip and accept/turn in. Steps and
+  locations should behave as before; no data should disappear or change order.
+- Open Wailing Caverns, click bosses/loot/quest markers, then a different dungeon.
+  Each opens its own data correctly. Reopening the same dungeon should reuse it;
+  repeated refreshes should not continually unpack new copies of the same fields.
+- Check a patrolling giver and quest item hints. Reload and verify guide restore,
+  learned pickup locations and manual skips. Save another memory report after
+  several minutes; new data use can increase memory, while garbage can fluctuate.
+- Normal gameplay should remain smooth on first lookup as well as later visits.
+  Report any pause/error with the zone, guide/step or dungeon involved.
+- Drag the guide-step window's bottom-right handle in both directions. Text,
+  buttons, nearby objectives, quest-item buttons and tips must fit the width.
+  Reload and confirm size/position survive. Close with ×, accept/complete a quest:
+  the window stays hidden and the guide keeps progressing. Reopen with `/wt arrow`
+  or its setting. Try resizing/closing during combat and with the standalone arrow.
+- As Horde, open Blackfathom Deeps → Quest list: Alliance quests such as Knowledge
+  in the Deeps and Twilight Falls must be absent. Repeat on Alliance: Horde quests
+  such as Trouble in the Deeps must be absent. Recheck after login/zone loading.
+  Start route must start directly without the entrance-recording quest-list
+  popup. Quest list still opens only when chosen. Start an unmapped collection:
+  its guide stays selected and waits for locations instead of showing that popup.
+- Leave the main window open and choose See dungeon: the journal must appear
+  above it. Select bosses on different floors (for example, Maraudon); the floor
+  and map should follow the selected boss. Resize and repeat in Map only/full view.
+- Boss loot defaults to your class. Try another class, All classes, search and
+  equipment/other filters together. Known unusable weapon/armor types should
+  disappear; quest items, shared accessories and unclassified drops stay visible.
+  Switching dungeon keeps your class choice. Check filtering during combat too.
 
 ## Dungeon atlas — about 10 minutes
 

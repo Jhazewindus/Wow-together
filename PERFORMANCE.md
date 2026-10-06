@@ -1,5 +1,64 @@
 # Performance maintenance — 0.6.9
 
+## Data memory in 0.8.29
+
+The reported 80–110 MB prompted a retained-heap audit. In the previous Lua 5.1
+host load, QuestCatalogue.lua alone retains about 45.2 MiB, comprising 5,230
+quests and NPC/object/item data. Dungeon journal/map data adds about 3.2 MiB;
+travel data is about 0.5 MiB. Disk archive size and native texture/frame memory
+are different measurements.
+
+DataStore.lua now keeps nested fields as inert, length-independent token strings
+and decodes a requested field once. Quest scalar metadata stays resident for
+all-zone browsing and eligibility checks. Entity metadata also loads by ID;
+dungeon bosses/loot and floor/quest positions unpack per requested dungeon.
+The versioned compiler shares a string dictionary, preserves numbers/booleans/
+Unicode/empty tables, and removes the packed payload after successful decode.
+No loadstring, downloaded code, HTTP, GC control or new native loading API runs
+in the game. Decoded tables remain stable because runtime map resolution and
+annotations mutate them. Visiting more content therefore grows the loaded data;
+this is demand loading, not an eviction cache or an in-game memory ceiling.
+
+Full materialization of all six datasets matches the previous source exactly.
+Existing guide-list, compiled-order and map-geometry fingerprints match.
+The same solo host fixture, with empty SavedVariables, gives:
+
+| Retained Lua heap after collection | 0.8.28 | 0.8.29 |
+| --- | ---: | ---: |
+| Startup | 51.7 MiB | 25.2 MiB |
+| Guide/library browsing | 54.0 MiB | 28.3 MiB |
+| Compiled Mulgore guide | 55.0 MiB | 29.4 MiB |
+| Wailing Caverns viewer open | 55.2 MiB | 29.7 MiB |
+| Twenty further refresh/browse/viewer passes | 55.2 MiB | 29.7 MiB |
+
+These are external Lua 5.1 heap measurements with mock frames/APIs. They exclude
+native textures/frames, existing account SavedVariables and client attribution;
+they do not predict an exact beta memory/FPS result. No collection is forced in
+game. `/wt probe` capability-checks the client memory API and reports its total
+when available; compartment lines give record/field load counts and remaining
+packed payload bytes, not estimated total memory ownership per feature.
+
+Reproduce with:
+
+```sh
+/workspace/.wow-together-tests/bin/python tools/benchmark_memory.py --baseline-ref v0.8.28 --output /tmp/wow-together-memory.json
+```
+
+`tools/pack_data.py` repacks owned generated datasets deterministically without
+network access or changing provenance manifests. Source importers emit the same
+format; offline audits materialize fields before enumeration. Test file
+`tests/test_0829.py` checks lazy load boundaries, stable mutation, replacements,
+missing keys, codec values, source hashes and guarded diagnostics. The friend
+script covers actual beta memory, first-use pauses, maps, NPCs and guide progress.
+
+The same release incorporates Romits' resizable/closable guide-step window with
+saved geometry and width-matched attached panels. Layout changes do not rebuild
+or scan guides. Dungeon lists refresh character context and require verified
+identity compatibility; explicit collection starts no longer fall back to the
+entrance-recording list when locations are missing. Targeted host tests cover
+Blackfathom factions, stale/private character context, explicit/list/card starts,
+pending unmapped collections, combat-safe owned-window layout and close/reopen.
+
 ## Dungeon refresh hotfix in 0.8.28
 
 The supplied 0.8.27 stack enters the leveling browser through background

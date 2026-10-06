@@ -54,6 +54,12 @@ and the Media folder,
 then /reload. Restart the client fully if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+Database details unpack only when used. Keep DataStore.lua and the complete
+generated data files together. /wt probe reports per-compartment load counts and
+client memory when its API exists. No quest/NPC/loot facts are removed; guide
+order and behavior remain. Retained host Lua memory is about 25 MiB at startup,
+down from 52 MiB; actual beta memory needs testing with the same saved data.
+
 Leveling guides -> Include convenient class training is on by default.
 Even levels make a personal training check due. A matching friendly trainer must
 be within 150 metres, with estimated extra walking at most 150 yards near a quest
@@ -96,6 +102,10 @@ textures stay plain. No Blizzard images or external screenshots are bundled.
 See DUNGEON_ARTWORK.md for sources and beta limits. See dungeon opens a movable,
 resizable atlas from anywhere: choose floors when multiple maps exist, click boss
 portraits to open their loot, and click quest icons for pickups/objectives/turn-ins.
+Selecting a mapped boss follows its floor. The journal opens above the main
+window. Boss loot defaults to your class; its dropdown also offers other classes
+and All classes. Known weapon/armor types filter by usability; shared accessories,
+quest items and unclassified drops remain. This does not rank equipment by stats.
 Quests toggles those markers. The floor dropdown stays hidden for single/unmapped dungeons.
 Map only is a compact gameplay view; it stays open during combat. Entry asks
 Open map? when enabled. Classic floor references may differ from Forever layouts;
@@ -168,6 +178,9 @@ and tip panels match. The saved choice also appears in Arrow and map settings;
 it changes appearance only, without changing guide steps, skips or travel.
 Arrow and map settings has a separate movable standalone arrow, with its own
 saved position; it can remain visible with the large direction panel hidden.
+The guide-step panel's corner handle resizes it and its attached panels; size and
+position persist. The close button hides it while your route continues. Reopen
+with /wt arrow or Show the direction arrow in settings.
 When it is shown, the guide panel keeps instructions/controls without a duplicate
 arrow. A travel timer appears above the standalone arrow: estimated/timed flight
 duration during rides, or approximate walking/mount time to the next waypoint.
@@ -413,7 +426,7 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
             if (ROOT / name).exists():
                 archive.write(ROOT / name, 'WowTogether/' + name)
         archive.write(ROOT / 'LICENSE', 'WowTogether/LICENSE')
-        for name in ('build_quest_dataset.py', 'quest_enrichment.py', 'legacy_quest_facts.py', 'collect_quest_entities.py',
+        for name in ('build_quest_dataset.py', 'pack_data.py', 'quest_enrichment.py', 'legacy_quest_facts.py', 'collect_quest_entities.py',
                      'forever_map_geometry.py', 'quest_event_areas.py', 'lua_data_literal.py', 'forever_beta_facts.py',
                      'quest_observation_facts.py', 'capture_quest_pages.py', 'audit_quest_guides.py',
                      'import_warcraftdb.py', 'import_wowhead.py', 'import_travel_network.py', 'import_guide_services.py', 'import_dungeons.py', 'import_dungeon_journal.py', 'import_dungeon_positions.py',

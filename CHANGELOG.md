@@ -1,5 +1,26 @@
 # Wow Together changelog
 
+## 0.8.29
+
+**MEMORY COMPARTMENTS**
+
+- Load detailed quest fields, NPC/item/object records and dungeon maps/loot on
+  demand. Preserve all 5,230 quests and source facts; decoded tables keep runtime
+  corrections, and their packed copies are released.
+- Reduce retained host Lua memory from 51.7 to 25.2 MiB at startup and 55.2 to
+  29.7 MiB after representative use. Beta memory needs testing. `/wt probe`
+  reports compartment counts and client memory when available; no forced GC.
+- Make the guide-step window resizable/closable with saved geometry and reflowing
+  attached panels. Closing keeps the guide running; reopen with the arrow setting.
+- Refresh/filter dungeon quest lists by verified faction/class/race, including
+  Blackfathom Deeps. Start route starts directly; unmapped collections remain
+  selected instead of opening the entrance-recording list.
+- Boss selection follows its mapped floor; the journal opens above the main
+  window. A class loot dropdown defaults to your class, with All classes available.
+  Known weapon/armor types filter by usability; unclassified drops stay visible.
+- Preserve guide order/progress, skips, eligibility and sync. Include all 62 Lua
+  files; update the complete folder, then reload.
+
 ## 0.8.28
 
 **ROYS BIG DUNGEON BANANZA - HOTFIX**

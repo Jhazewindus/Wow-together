@@ -1,4 +1,4 @@
-# Dungeon viewer — 0.8.28 — ROYS BIG DUNGEON BANANZA - HOTFIX
+# Dungeon viewer — 0.8.29 — MEMORY COMPARTMENTS
 
 **See dungeon** opens the full journal from the main addon's Dungeon quests cards
 from anywhere. Cards place **Quest list** beside **Start route**; clicking the
@@ -9,10 +9,20 @@ Select an encounter from the paged boss list or its portrait map marker, and
 browse its notable drops. Portrait clicks in Map only open Full view and select
 the boss and its loot; selecting a mapped boss changes to its floor. A missing
 named portrait uses the client default. Loot has literal name search,
-equipment/other filters, paging, native item icons, cached client tooltips and
+equipment/other filters, a class dropdown, paging, native item icons, cached client tooltips and
 standard modified-item clicks. Client item requests are bounded to once per
 visible item per viewer session. Common junk/consumables and generic common drops
 are omitted. Boss list order is alphabetical within level, not a walkthrough.
+
+The class dropdown defaults to your character and retains your choice when you
+switch dungeons. **All classes** shows every listed drop. Known weapon/armor types
+filter by supported class proficiencies, including armor available through later
+training. Shared accessories, quest items and unclassified types stay visible.
+This is a type-usability filter, not a spec/stat ranking or a check of trained
+skills, talents or item-specific class restrictions. Retest Forever's class
+proficiencies as the beta changes; All classes remains available for comparison.
+Boss clicks follow the floor containing their mapped point, preferring native
+positions over reference positions. Unknown floor assignments are not guessed.
 
 Quest icons open a separate small, movable action card with the NPC/object,
 quest names and pickup/objective/turn-in instructions. Actual quest relationships
@@ -39,7 +49,8 @@ restores bosses and loot. Both views move and resize using native frame sizing,
 with aspect-correct map tiles and letterboxing. Their sizes and positions are
 saved independently in `WowTogetherDB.dungeonViewerUI` and shared across all
 dungeons. BG toggles the background; artwork and text stay visible. These are
-owned, unprotected frames at MEDIUM strata. Combat does not close the viewer.
+owned, unprotected frames at DIALOG strata, above the HIGH main window; opening
+raises the journal among its peers. Combat does not close the viewer.
 
 Entering a recognized five-player dungeon asks **Open map?** once per entry,
 outside combat. Accepting opens the compact view; declining leaves gameplay and

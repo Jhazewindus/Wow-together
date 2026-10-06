@@ -599,8 +599,8 @@ function ns.Render(queryContext, routeUpdated)
             local activity = {title = group.name, category = "DUNGEON QUEST COLLECTION", dungeon = group,
                 detail = ns.DungeonOverviewSummary(group) .. "\n" .. ns.DungeonCollectionSummary(group),
                 action = #group.ids > 0 and "Start route" or "View details", click = function()
-                    local guide = ns.DungeonGuide(dungeon)
-                    if guide and guide.hasPoint then ns.RequestStartRoute(guide) else ns.ShowDungeonQuestList(dungeon) end
+                    if #dungeon.ids > 0 then ns.ShowDungeonQuests(dungeon, true)
+                    else ns.ShowDungeonViewer(dungeon.key) end
                 end}
             display[#display + 1] = {activity = activity}
         end

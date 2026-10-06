@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.28 — ROYS BIG DUNGEON BANANZA - HOTFIX** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.29 — MEMORY COMPARTMENTS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -18,10 +18,28 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **61 Lua
+Replace the folder on **every party member's client**, including all **62 Lua
 files** and the **Media folder**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.29 reduces database memory.** Quest metadata stays ready for browsing;
+nested locations/requirements unpack on first use. NPC/item/object records and
+dungeon details stay compact until requested. The complete source facts and
+guide decisions are preserved. Retained Lua 5.1 host memory falls from about
+52 to 25 MiB at startup, and 55 to 30 MiB after browsing, a guide and a dungeon.
+Actual beta memory includes client allocations and needs measurement. `/wt probe`
+shows loaded records/detail fields by compartment and total memory when the
+client exposes its memory API. See [PERFORMANCE.md](PERFORMANCE.md).
+The guide-step window now has a resize handle and close button. Size/position
+persist; attached panels follow its width. Closing keeps your route running.
+Reopen with `/wt arrow` or Arrow and map → Show the direction arrow.
+Dungeon quest lists refresh your character details and hide incompatible or
+unverified identity requirements. Dungeon Start route starts directly; Quest list
+remains a separate preview, and missing destinations wait within the chosen route.
+The dungeon journal opens above the main window. Selecting a mapped boss changes
+to its floor. A class dropdown starts on your class and filters known weapon and
+armor types; All classes shows every drop. Unclassified items stay visible.
 
 **0.8.28 fixes background refresh work and shared event subscriptions.** Sync,
 zone entry and objective events keep guide progress current without rebuilding

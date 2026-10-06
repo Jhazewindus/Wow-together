@@ -101,7 +101,9 @@ def main():
         data[key]=entry
     counts={'dungeons':len(data),'dungeonsWithBosses':sum(bool(e['bosses'])for e in data.values()),'bosses':sum(len(e['bosses'])for e in data.values()),'lootEntries':sum(len(b['loot'])for e in data.values()for b in e['bosses']),'portraits':sum('portrait'in b for e in data.values()for b in e['bosses']),'mapReferences':sum(bool(e['maps'])for e in data.values())}
     result={'schema':1,'captured':'2026-10-06','counts':counts,'dungeons':data}
-    (ROOT/'WowTogether/DungeonJournalData.lua').write_text('local addonName, ns = ...\n\n-- Offline Forever facts; no web scripts or images. See DUNGEON_VIEWER.md.\nns.dungeonJournalData = '+encode(result)+'\n')
+    from pack_data import dungeon_code
+    (ROOT/'WowTogether/DungeonJournalData.lua').write_text(dungeon_code('dungeonJournalData', 'dungeon-journal', result,
+        'Offline Forever facts; no web scripts or images. See DUNGEON_VIEWER.md.'))
     manifest={'schema':1,'captured':result['captured'],'counts':counts,'zoneSources':zone_sources,'bossSources':npc_sources,'clientFilenameSource':{'repository':'wowdev/wow-listfile','commit':'2ee24a9d0ff98f614997587e32ee6a0074d0de65','sha256':hashlib.sha256(args.listfile.read_bytes()).hexdigest()},'limitations':['Boss display order is alphabetical within level, not a walkthrough.','Notable boss drops only; common junk/consumables and generic world drops omitted.','Published database facts are a beta snapshot, not proof of current availability.','Classic client floor images are layout references; current client map data takes precedence.','No external images, copied guide text or source scripts are bundled.']}
     (ROOT/'WowTogether/DungeonJournalData.json').write_text(json.dumps(manifest,indent=2)+'\n')
     print(json.dumps(counts))

@@ -198,14 +198,77 @@ function ns.DungeonViewerData(key)
     return data
 end
 
-function ns.DungeonViewerLoot(boss, query, category)
+-- Item type eligibility, independent of spec, stats and skills already trained.
+-- Missing/unrecognized metadata stays visible, including new beta item types.
+ns.DungeonLootClasses = {{0, "All classes"}, {1, "Warrior"}, {2, "Paladin"}, {3, "Hunter"},
+    {4, "Rogue"}, {5, "Priest"}, {7, "Shaman"}, {8, "Mage"}, {9, "Warlock"}, {11, "Druid"}}
+local weapons = {
+    [1] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 10, 13, 15, 16, 18},
+    [2] = {0, 1, 4, 5, 6, 7, 8}, [3] = {0, 1, 2, 3, 6, 7, 8, 10, 13, 15, 16, 18},
+    [4] = {2, 3, 4, 7, 13, 15, 16, 18}, [5] = {4, 10, 15, 19},
+    [7] = {0, 1, 4, 5, 10, 13, 15}, [8] = {7, 10, 15, 19},
+    [9] = {7, 10, 15, 19}, [11] = {4, 5, 10, 13, 15},
+}
+for class, values in pairs(weapons) do
+    local allowed = {}; for _, value in ipairs(values) do allowed[value] = true end
+    weapons[class] = allowed
+end
+local armor = {
+    [2] = {[1]=true, [2]=true, [3]=true, [4]=true, [7]=true, [11]=true}, -- Leather
+    [3] = {[1]=true, [2]=true, [3]=true, [7]=true}, -- Mail, including later training
+    [4] = {[1]=true, [2]=true}, [6] = {[1]=true, [2]=true, [7]=true}, -- Plate/shields
+    [7] = {[2]=true}, [8] = {[11]=true}, [9] = {[7]=true}, -- Librams/idols/totems
+}
+function ns.DungeonLootClassAllowed(item, class)
+    if not ns.GuideInteger(class, 255) or not weapons[class] then return true end
+    if item.classID == 2 and ns.GuideInteger(item.subclass, 20) then
+        local subtype = item.subclass
+        if subtype <= 8 or subtype == 10 or subtype == 13 or subtype == 15
+            or subtype == 16 or subtype == 18 or subtype == 19 then
+            return weapons[class][subtype] == true
+        end
+    elseif item.classID == 4 then
+        -- Cloaks, jewelry and off-hand frills are shared regardless of the
+        -- database's armor subtype; class-specific restrictions need source data.
+        if item.slot == 2 or item.slot == 11 or item.slot == 12 or item.slot == 16 or item.slot == 23 then return true end
+        local allowed = ns.Public(item.subclass) and armor[item.subclass]
+        if allowed then return allowed[class] == true end
+    end
+    return true
+end
+function ns.DungeonBossFloor(data, boss, current)
+    if not data or not boss then return current end
+    local found, native
+    for floor, map in ipairs(data.maps) do
+        for _, point in ipairs(map.bosses or {}) do
+            if point.id == boss.id then
+                if point.native and not native then found, native = floor, true
+                elseif (point.native == true) == (native == true) and (not found or floor == current) then found = floor end
+            end
+        end
+    end
+    if found then return found end
+    if ns.GuideInteger(boss.mapFloor, #data.maps) and boss.mapFloor > 0 then return boss.mapFloor end
+    if ns.GuideInteger(boss.mapID) then
+        for floor, map in ipairs(data.maps) do
+            if map.mapID == boss.mapID then
+                if found then return current end -- Shared map IDs do not identify a floor.
+                found = floor
+            end
+        end
+    end
+    return found or current
+end
+
+function ns.DungeonViewerLoot(boss, query, category, class)
     local result = {}
     query = string.lower(ns.SafeTitle(query) or "")
     for _, item in ipairs(boss and boss.loot or {}) do
         local matchesCategory = category == "all" or not category
             or category == "equipment" and (item.classID == 2 or item.classID == 4)
             or category == "other" and item.classID ~= 2 and item.classID ~= 4
-        if matchesCategory and (query == "" or string.find(string.lower(item.name), query, 1, true)) then result[#result + 1] = item end
+        if matchesCategory and ns.DungeonLootClassAllowed(item, class)
+            and (query == "" or string.find(string.lower(item.name), query, 1, true)) then result[#result + 1] = item end
     end
     return result
 end

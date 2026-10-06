@@ -69,6 +69,17 @@ function ns.CreateAreaObjectives(frame)
     panel:Hide()
 end
 
+function ns.LayoutAreaObjectives(width)
+    local panel = ns.navigation and ns.navigation.work
+    if not panel then return end
+    panel:SetWidth(width)
+    panel.heading:SetWidth(width - (panel.map:IsShown() and 122 or 20))
+    panel.scroll:SetWidth(width - 16); panel.content:SetWidth(width - 20)
+    for _, row in ipairs(panel.rows) do
+        row:SetWidth(width - 22); row.action:SetWidth(width - 88); row.quest:SetWidth(width - 28)
+    end
+end
+
 function ns.UpdateAreaObjectives(state)
     local panel = ns.navigation and ns.navigation.work
     if not panel then return end
@@ -82,11 +93,11 @@ function ns.UpdateAreaObjectives(state)
     panel.map:SetShown(show and confirmation ~= nil)
     panel.scroll:SetShown(#items > 1)
     if confirmation then
-        panel.heading:SetWidth(238)
+        panel.heading:SetWidth(ns.navigation:GetWidth() - 122)
         panel:SetHeight(30); panel.heading:SetText("Confirm with " .. (confirmation.npcName or "quest giver"))
         panel.map:SetEnabled(not ns.RouteInCombat() and not confirmation.unknownLocation)
     elseif #items > 1 then
-        panel.heading:SetWidth(340)
+        panel.heading:SetWidth(ns.navigation:GetWidth() - 20)
         panel.heading:SetText("In this area • " .. #items .. " objectives" .. (#items > 3 and " • Scroll" or ""))
         local height = math.min(3, #items) * 32
         panel:SetHeight(30 + height); panel.scroll:SetHeight(height); panel.content:SetHeight(#items * 32)
@@ -99,11 +110,13 @@ function ns.UpdateAreaObjectives(state)
             for index, item in ipairs(items) do
                 local row = panel.rows[index]
                 if not row then
+                    local width = ns.navigation:GetWidth()
                     row = CreateFrame("Frame", nil, panel.content); row:SetSize(338, 32)
                     row:SetPoint("TOPLEFT", 0, -(index - 1) * 32); row:EnableMouse(true)
                     row.action = ns.UILabel(row, nil, 11); row.action:SetPoint("TOPLEFT", 2, -1); row.action:SetSize(272, 15); row.action:SetWordWrap(false)
                     row.count = ns.UILabel(row, nil, 11, ns.UIColors.gold); row.count:SetPoint("TOPRIGHT", -2, -1); row.count:SetSize(58, 15); row.count:SetJustifyH("RIGHT")
                     row.quest = ns.UILabel(row, nil, 9, ns.UIColors.muted); row.quest:SetPoint("TOPLEFT", 2, -17); row.quest:SetSize(332, 13); row.quest:SetWordWrap(false)
+                    row:SetWidth(width - 22); row.action:SetWidth(width - 88); row.quest:SetWidth(width - 28)
                     row:SetScript("OnEnter", function(self)
                         if not GameTooltip or not self.item then return end
                         GameTooltip:SetOwner(self, "ANCHOR_RIGHT"); GameTooltip:AddLine(ns.GuideStepDescription(self.item.stop), 1, 1, 1, true); GameTooltip:Show()

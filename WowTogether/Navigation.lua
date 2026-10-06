@@ -242,9 +242,7 @@ function ns.UpdateNavigation()
     frame.icon:SetShown(not separate)
     if frame.separateArrow ~= separate then
         frame.separateArrow = separate
-        local left, width = separate and 14 or 82, separate and 332 or 264
-        frame.status:ClearAllPoints(); frame.status:SetPoint("TOPLEFT", left, -52); frame.status:SetSize(width, 28)
-        frame.distance:ClearAllPoints(); frame.distance:SetPoint("TOPLEFT", left, -82); frame.distance:SetSize(width, 14)
+        ns.LayoutNavigation()
     end
     frame.symbol:SetText("…"); frame.symbol:SetTextColor(0.96, 0.76, 0.35, 1)
     frame.symbol:SetShown(state.angle == nil and not state.arrived and not state.flight)
@@ -258,11 +256,7 @@ function ns.UpdateNavigation()
     frame.skipQuest.caption:SetText(training and "Done training" or "Skip quest")
     if frame.trainingLayout ~= training then
         frame.trainingLayout = training
-        frame.skipStep:SetWidth(training and 84 or 80)
-        frame.skipStep:SetPoint("BOTTOMLEFT", training and 36 or 42, 8)
-        frame.skipQuest:SetWidth(training and 88 or 80)
-        frame.skipQuest:SetPoint("BOTTOMLEFT", training and 124 or 128, 8)
-        frame.scan:SetPoint("BOTTOMLEFT", training and 218 or 214, 8)
+        ns.LayoutNavigation()
     end
     if facts.lowerLevelPrerequisite and not state.stop.historyPreview and not ns.navigationPreview then
         frame.step:SetText((state.stop.guideStep and ("Step " .. state.stop.guideStep .. " • ") or "")
@@ -290,6 +284,43 @@ function ns.SaveNavigationPosition()
     local point, _, relative, x, y = frame:GetPoint()
     if ns.Public(point) and ns.Public(relative) and type(point) == "string" and type(relative) == "string"
         and finite(x) and finite(y) then ns.db.arrowPosition = {point = point, relative = relative, x = x, y = y} end
+end
+
+function ns.LayoutNavigation()
+    local frame = ns.navigation
+    if not frame or not frame.layoutReady then return end
+    local width, height = frame:GetWidth(), frame:GetHeight()
+    if not finite(width) or not finite(height) then return end
+    local left = frame.separateArrow and 14 or 82
+    local offset = (width - 360) / 2
+    frame.title:SetWidth(width - 88); frame.step:SetWidth(width - 28)
+    frame.status:ClearAllPoints(); frame.status:SetPoint("TOPLEFT", left, -52)
+    frame.status:SetSize(width - left - 14, math.max(28, height - 140))
+    frame.distance:ClearAllPoints(); frame.distance:SetPoint("BOTTOMLEFT", left, 72)
+    frame.distance:SetWidth(width - left - 14)
+    frame.context:ClearAllPoints(); frame.context:SetPoint("BOTTOMLEFT", 14, 40)
+    frame.context:SetWidth(width - 28)
+    local training = frame.trainingLayout
+    frame.skipStep:SetWidth(training and 84 or 80)
+    frame.skipStep:ClearAllPoints(); frame.skipStep:SetPoint("BOTTOMLEFT", offset + (training and 36 or 42), 8)
+    frame.skipQuest:SetWidth(training and 88 or 80)
+    frame.skipQuest:ClearAllPoints(); frame.skipQuest:SetPoint("BOTTOMLEFT", offset + (training and 124 or 128), 8)
+    frame.scan:ClearAllPoints(); frame.scan:SetPoint("BOTTOMLEFT", offset + (training and 218 or 214), 8)
+    frame.back:ClearAllPoints(); frame.back:SetPoint("BOTTOMLEFT", offset + 12, 8)
+    frame.next:ClearAllPoints(); frame.next:SetPoint("BOTTOMLEFT", offset + 316, 8)
+    frame.tip:SetWidth(width); frame.tip.text:SetWidth(width - 44)
+    frame.questItem:SetWidth(width); frame.questItem.caption:SetWidth(width - 50)
+    ns.LayoutAreaObjectives(width)
+end
+
+function ns.SaveNavigationSize()
+    local frame = ns.navigation
+    frame:StopMovingOrSizing()
+    local width, height = frame:GetWidth(), frame:GetHeight()
+    if finite(width) and finite(height) then
+        ns.db.arrowSize = {width = math.max(360, math.min(720, width)), height = math.max(168, math.min(480, height))}
+    end
+    ns.SaveNavigationPosition()
 end
 
 function ns.UpdateNavigationBackground()
@@ -322,9 +353,12 @@ function ns.CreateNavigation()
     frame.title:SetPoint("TOPLEFT", 14, -10)
     frame.title:SetSize(306, 18); frame.title:SetWordWrap(false)
     frame.background = ns.UIButton(frame, "BG", 22, function() ns.SetOption("guideOpaque", not ns.Option("guideOpaque")) end)
-    frame.background:SetHeight(18); frame.background:SetPoint("TOPRIGHT", -10, -10)
+    frame.background:SetHeight(18); frame.background:SetPoint("TOPRIGHT", -36, -10)
     frame.background.caption:ClearAllPoints(); frame.background.caption:SetPoint("CENTER")
     frame.background.caption:SetSize(18, 14); frame.background.caption:SetFont("Fonts\\ARIALN.TTF", 9, "")
+    frame.close = ns.UIClose(frame, function() ns.SetOption("routeArrow", false) end)
+    frame.close:SetSize(20, 18); frame.close:SetPoint("TOPRIGHT", -10, -10)
+    ns.UIHelp(frame.close, "Hide the guide window. Your guide keeps running.")
     frame.step = ns.UILabel(frame, nil, 10, ns.UIColors.muted); frame.step:SetPoint("TOPLEFT", 14, -30); frame.step:SetSize(332, 14)
     ns.UIDivider(frame, -48)
     frame.icon = CreateFrame("Frame", nil, frame); frame.icon:SetSize(48, 48); frame.icon:SetPoint("TOPLEFT", 16, -50)
@@ -370,6 +404,27 @@ function ns.CreateNavigation()
     frame.tip:Hide()
     ns.CreateQuestItemButton(frame)
     ns.CreateAreaObjectives(frame)
+    frame:SetResizable(true)
+    if type(frame.SetResizeBounds) == "function" then frame:SetResizeBounds(360, 168, 720, 480) end
+    frame.grip = CreateFrame("Button", nil, frame)
+    frame.grip:SetSize(14, 14); frame.grip:SetPoint("BOTTOMRIGHT", -2, 2)
+    frame.grip.icon = frame.grip:CreateTexture(nil, "ARTWORK"); frame.grip.icon:SetAllPoints()
+    frame.grip.icon:SetTexture("Interface\\ChatFrame\\UI-ChatIM-SizeGrabber-Up")
+    frame.grip:SetScript("OnMouseDown", function(_, key) if key == "LeftButton" then frame:StartSizing("BOTTOMRIGHT") end end)
+    frame.grip:SetScript("OnMouseUp", function(_, key) if key == "LeftButton" then ns.SaveNavigationSize() end end)
+    frame:SetScript("OnSizeChanged", function()
+        local width, height = frame:GetWidth(), frame:GetHeight()
+        if not finite(width) or not finite(height) then return end
+        local w, h = math.max(360, math.min(720, width)), math.max(168, math.min(480, height))
+        if w ~= width or h ~= height then frame:SetSize(w, h) end
+        ns.LayoutNavigation()
+    end)
+    local size = ns.db.arrowSize
+    if type(size) == "table" and finite(size.width) and finite(size.height) then
+        frame:SetSize(math.max(360, math.min(720, size.width)), math.max(168, math.min(480, size.height)))
+    end
+    frame.layoutReady = true
+    ns.LayoutNavigation()
     ns.UpdateNavigationBackground()
     frame:SetScript("OnEnter", function(self)
         updateTooltip(self, true)

@@ -22,7 +22,10 @@ def catalogue_queue(path):
     """Prioritize named gaps in new/changed zone quests before common sources."""
     from lupa.lua51 import LuaRuntime
     lua=LuaRuntime();ns=lua.table()
+    loader=Path(__file__).resolve().parents[1]/'WowTogether/DataStore.lua'
+    lua.eval('function(text,ns) assert(loadstring(text))("WowTogether",ns) end')(loader.read_text(),ns)
     lua.eval('function(text,ns) assert(loadstring(text))("WowTogether",ns) end')(path.read_text(),ns)
+    ns.MaterializePackedData()
     priority={}
     def add(ref,rank):
         kind,ident=ref.entityType,ref.entityID

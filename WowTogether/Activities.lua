@@ -234,7 +234,8 @@ function ns.BuildDungeonRoute(guide, includeOrigin)
         partial = missing > 0 or remote > 0 or #pickups > 0 or not entrance}
 end
 
-function ns.ShowDungeonQuests(group)
+function ns.ShowDungeonQuests(group, startDirectly)
+    if startDirectly then ns.ReadProfile() end
     ns.dungeonHistoryScope = {}
     for index, id in ipairs(group.ids) do
         if index > 96 then break end
@@ -246,12 +247,21 @@ function ns.ShowDungeonQuests(group)
     end
     ns.ScheduleSync()
     local guide = ns.DungeonGuide(group)
-    if guide and guide.hasPoint then ns.ShowGuideOnMap(guide)
+    if guide and startDirectly and not guide.hasPoint then
+        if ns.dungeonWindow then ns.dungeonWindow:Hide() end
+        ns.ActivateRoute(guide)
+        ns.Refresh()
+    elseif guide and guide.hasPoint then
+        if ns.dungeonWindow then ns.dungeonWindow:Hide() end
+        ns.RequestStartRoute(guide)
     elseif guide then ns.ShowDungeonQuestList(group)
     else ns.guideAction = "No unfinished quests in this dungeon match your current level and faction."; ns.Refresh() end
 end
 
 function ns.ShowDungeonQuestList(group)
+    -- Viewer/list actions can run before another guide/profile refresh. Never
+    -- present unverified faction/class/race quests as this character's list.
+    ns.ReadProfile()
     if not ns.dungeonWindow then
         local frame = CreateFrame("Frame", "WowTogetherDungeonQuests", UIParent, "BackdropTemplate")
         ns.dungeonWindow = frame
@@ -262,7 +272,7 @@ function ns.ShowDungeonQuestList(group)
         scroll:SetPoint("TOPLEFT", 22, -58); scroll:SetPoint("BOTTOMRIGHT", -38, 68)
         frame.content = CreateFrame("Frame", nil, scroll); frame.content:SetSize(596, 100); scroll:SetScrollChild(frame.content)
         frame.text = ns.UILabel(frame.content, nil, 12); frame.text:SetPoint("TOPLEFT"); frame.text:SetWidth(590)
-        frame.collect = ns.UIButton(frame, "Map nearby pickups, then entrance", 280, function() end, true); frame.collect:SetPoint("BOTTOMLEFT", 22, 20)
+        frame.collect = ns.UIButton(frame, "Start route", 140, function() end, true); frame.collect:SetPoint("BOTTOMLEFT", 22, 20)
         frame.record = ns.UIButton(frame, "Record entrance here", 190, function() end); frame.record:SetPoint("BOTTOMRIGHT", -22, 20)
     end
     local lines = {ns.DungeonOverviewSummary(group), ns.DungeonCollectionSummary(group),
@@ -275,7 +285,7 @@ function ns.ShowDungeonQuestList(group)
     end
     lines[#lines + 1] = ""
     for _, id in ipairs(group.ids) do
-        if relevantDungeonQuest(id) ~= false then
+        if relevantDungeonQuest(id) == true then
             local quest = ns.CatalogueQuest(id)
             local start = quest.starts and quest.starts[1]
             lines[#lines + 1] = quest.title .. " • quest Lv " .. (quest.level or "?") .. " • pickup Lv " .. (quest.minLevel or "?")
@@ -292,7 +302,7 @@ function ns.ShowDungeonQuestList(group)
     ns.dungeonWindow.text:SetText(table.concat(lines, "\n"))
     local height = ns.dungeonWindow.text:GetStringHeight()
     if ns.Public(height) and type(height) == "number" then ns.dungeonWindow.content:SetHeight(math.max(100, height + 12)) end
-    ns.dungeonWindow.collect:SetScript("OnClick", function() ns.ShowDungeonQuests(group) end)
+    ns.dungeonWindow.collect:SetScript("OnClick", function() ns.ShowDungeonQuests(group, true) end)
     ns.dungeonWindow.record:SetScript("OnClick", function() ns.RecordDungeonEntrance(group) end)
     ns.dungeonWindow:Show()
 end
