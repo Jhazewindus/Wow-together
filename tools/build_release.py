@@ -125,6 +125,14 @@ and tip panels match. The saved choice also appears in Arrow and map settings;
 it changes appearance only, without changing guide steps, skips or travel.
 Arrow and map settings has a separate movable standalone arrow, with its own
 saved position; it can remain visible with the large direction panel hidden.
+When it is shown, the guide panel keeps instructions/controls without a duplicate
+arrow. A travel timer appears above the standalone arrow: estimated/timed flight
+duration during rides, or approximate walking/mount time to the next waypoint.
+Flight descriptions separate ride time from the whole journey. Quest map pins
+stay visible in flight; ground lines resume after landing. Collection steps with
+known item IDs/counts advance from personal bag counts on bag updates; kill/use
+steps still require objective progress. Include class quests defaults on for
+new settings, respecting saved opt-outs and excluding incompatible classes.
 Selected guides resume after reload/login; current progress advances their steps.
 Outside-guide questing and completion keep the controls visible; Clear route ends
 the saved selection. Route controls sit below the world map viewport.

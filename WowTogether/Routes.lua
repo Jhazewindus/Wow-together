@@ -297,7 +297,14 @@ end
 
 function ns.RouteStages(record, focusKey)
     if ns.GuideQuestSkipped(record.id) then return {} end
-    return ns.FilterGuideStages(ns.QuestRouteStages(record, focusKey))
+    local result = {}
+    for _, stop in ipairs(ns.FilterGuideStages(ns.QuestRouteStages(record, focusKey))) do
+        local check = {}; for key, value in pairs(stop) do check[key] = value end
+        check.memberKey = focusKey
+        local facts = ns.GuideStepFacts(check)
+        if stop.kind ~= "q" or not facts.inventory or not facts.finished then result[#result + 1] = stop end
+    end
+    return result
 end
 
 function ns.PartyRouteStages(record, preferred, leveling)
@@ -773,7 +780,7 @@ function ns.DrawRoute(provider, geometryOnly)
         pin:Show()
     end
     local missingTravel = displayed[1] and displayed[1].mapID ~= mapID and not projected[1]
-    updateLegend(legend, route.flying and "Wow Together • Flying • Ground directions resume after landing" or
+    updateLegend(legend, route.flying and "Wow Together • Flying • Quest markers retained; ground lines resume after landing" or
         "Wow Together • " .. #displayed .. " stops • " .. #groups .. " visible " .. (#groups == 1 and "place" or "places")
         .. (ns.Option("fullRoute") and " • All eligible mapped quests" or " • Next steps")
         .. (route.confirmation and " • Confirm quest with this NPC" or ns.routePaused and " • Waiting for party updates" or "")

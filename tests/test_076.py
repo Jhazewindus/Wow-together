@@ -120,6 +120,7 @@ class NPCVisitTests(unittest.TestCase):
     def test_repeatables_professions_excluded_quests_class_and_faction_stay_out(self):
         for fields in ({'repeatable':True}, {'categoryPath':'professions/cooking'}, {'levelingExcluded':'edition'}, {'classMask':1}, {'side':'Alliance'}):
             c, g = npc_client()
+            c.ns.SetOption('classQuests', False)
             for key, value in fields.items(): c.ns.catalogue.quests[901][key] = value
             offer(c)
             self.assertNotIn(901, pickup_ids(c), fields)

@@ -116,7 +116,7 @@ class MarkerAndFlightTests(unittest.TestCase):
         c.lua.globals().clock = 110
         self.assertAlmostEqual(c.ns.FlightState().remaining, first.remaining - 10)
         c.ns.UpdateNavigation()
-        self.assertIn('Estimated', c.ns.navigation.distance.text)
+        self.assertIn('Est. flight', c.ns.navigation.distance.text)
         c.lua.globals().flying = False; c.ns.FinishFlight()
         c.ns.NoteFlightSelection(54)
         self.assertFalse(c.ns.pendingFlight.estimated)

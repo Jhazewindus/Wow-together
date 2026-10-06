@@ -1,5 +1,27 @@
 # Wow Together changelog
 
+## 0.8.18
+
+- Romits (0.8.16): retain quest markers and full-route previews during flight,
+  keeping ground lines hidden until landing. Separate ride duration from full
+  journey time; show the same estimated/timed countdown above the standalone
+  arrow and in the guide panel. Overdue estimates show elapsed flight time.
+- Store remote flight-map points in the destination zone and repair saved
+  continent points without adding unlocks/connections. Dijkstra uses localized
+  flight geometry and refreshes travel costs when walking/mount speed changes.
+  Boat/zeppelin instructions name the boarding place with map coordinates.
+- Add walking/mount ETA to the next waypoint. Hide the duplicate guide-panel
+  arrow when the standalone arrow is shown; retain instructions and controls.
+- Advance known item-collection stages from personal bag counts, refreshed on
+  bag events, in fixed/adaptive guides. Fresh Zhevra Carcass now advances to the
+  next Ishamuhale objective without granting quest completion. Never use bag
+  possession to complete kill/use steps or infer another player's progress.
+- Include class quests defaults on for new/unset settings; preserve explicit
+  opt-outs and incompatible-class filters. Keep fixed guide order and skips.
+- Add regressions for flight connections/geography, timing, map visibility,
+  transport directions, arrow layout and collection progression. Joker's cache
+  comment remains a hypothesis; native routes/timing need beta retesting.
+
 ## 0.8.17
 
 - Combine the supplied Wowhead Forever overview, 23 bounded dungeon quest lists

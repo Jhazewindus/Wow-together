@@ -217,6 +217,12 @@ local function fingerprint(guide)
             .. ":" .. tostring(ns.QuestProgressReady(ns.self, record.id))
             .. ":" .. tostring((ns.ObservedPickupAvailable(record.id))) .. ":" .. tostring(ns.offered[record.id])
             .. ":" .. tostring(ns.GuideQuestSkipped(record.id))
+        local quest = ns.CatalogueQuest(record.id)
+        for _, point in ipairs(quest and quest.objectives or {}) do
+            local item = ns.GuideItemProgress({id = record.id, kind = "q", itemID = point.itemID,
+                action = point.action, quantity = point.quantity, quantityUnknown = point.quantityUnknown}, ns.self)
+            if item then values[#values + 1] = "bag:" .. point.itemID .. ":" .. item.have .. ":" .. item.need end
+        end
         local skipped = ns.db.guideSkips and ns.db.guideSkips[ns.self]
         local steps = {}; for key, value in pairs(skipped and skipped.steps[record.id] or {}) do if value == true then steps[#steps + 1] = key end end
         table.sort(steps); values[#values + 1] = table.concat(steps, ",")

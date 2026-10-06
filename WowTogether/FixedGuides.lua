@@ -159,6 +159,9 @@ local function doneFor(stop, key, query)
     if stop.kind == "a" then return active and active[stop.id] ~= nil end
     if stop.kind == "q" then
         if ns.QuestProgressReady(key, stop.id) == true or key == ns.self and ns.readyToTurnIn[stop.id] == true then return true end
+        local itemStop = copy(stop); itemStop.memberKey = key
+        local facts = ns.GuideStepFacts(itemStop)
+        if facts.inventory and facts.finished then return true end
         local progress, matched = ns.ProgressForMember(key, stop.id), false
         for _, objective in ipairs(progress and progress.objectives or {}) do
             if ns.ObjectiveMatchesPoint(objective.text, {name = stop.targetName or stop.npcName, itemName = stop.itemName, progressName = stop.progressName}) then

@@ -140,7 +140,7 @@ class GuideTextTests(unittest.TestCase):
         progress(c, [{'text': 'Boar Flank', 'have': 3, 'need': 8}])
         c.ns.UpdateNavigation()
         self.assertEqual(c.ns.navigation.status.text, 'Loot 5 more Boar Flank')
-        self.assertEqual(c.ns.navigation.distance.text, '100 yd • 3/8')
+        self.assertEqual(c.ns.navigation.distance.text, '100 yd • 3/8 • ~0m 14s travel')
         self.assertEqual(c.ns.navigation.context.text.splitlines(),
                          ['Kill and loot Battleboar.', 'Test Coast • 21.0, 27.0'])
         self.assertEqual(c.ns.selectedRoute.stops[1].x, .21)

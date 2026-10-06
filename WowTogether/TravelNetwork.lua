@@ -157,7 +157,8 @@ function ns.FindTravelPath(origin, goal, useFlights)
             local source, target = flights.nodes[edge.source], flights.nodes[edge.destination]
             if source and target and source.known == true and target.known == true then
                 local timing = flights.timings[edge.source .. ":" .. edge.destination]
-                local air = ns.TravelPointDistance(source.point, target.point, positions)
+                local air = ns.TravelPointDistance(nodes["TAXI_" .. edge.source], nodes["TAXI_" .. edge.destination], positions)
+                    or ns.TravelPointDistance(source.point, target.point, positions)
                 local duration = timing and timing.mean or air and air / 32 * 1.35
                 if duration then link("TAXI_" .. edge.source, "TAXI_" .. edge.destination, duration + 45, "taxi",
                     {source = source, destination = target, flightSeconds = duration, measured = timing ~= nil}) end
@@ -233,13 +234,16 @@ function ns.TravelPathSummary(stop)
     if not ns.HasTravelPathTo(stop.goal or stop) then return end
     local path = ns.travelPath
     if stop.travelLeg and stop.travelLeg.method ~= "walk" and stop.travelLeg.method ~= "taxi" then
-        return "Travel towards " .. ns.MapName(stop.goal.mapID) .. ".\nBoard the correct transport; waiting time varies."
+        local leg = stop.travelLeg
+        local boarding = nodeName(leg.fromID, leg.from)
+        return "Board at " .. boarding .. " — " .. pointLocation(leg.from) .. ".\nWaiting time varies; continue towards " .. ns.MapName(stop.goal.mapID) .. "."
     end
     local flight = nextFlight(path)
     if flight then
         local source, target = flight.flight.source.name, flight.flight.destination.name
         return (stop.kind == "f" and ("Fly to " .. target .. ".") or ("Walk to " .. source .. "; then fly to " .. target .. "."))
-            .. "\nEstimated flight route: " .. string.format("%dm %02ds", math.floor(path.seconds / 60), math.floor(path.seconds % 60)) .. "."
+            .. "\n" .. (flight.flight.measured and "Timed flight: ~" or "Estimated flight: ")
+            .. ns.FormatTravelDuration(flight.flight.flightSeconds) .. "; journey ~" .. ns.FormatTravelDuration(path.seconds) .. "."
     end
     if stop.travelLeg then
         return "Travel towards " .. ns.MapName(stop.goal.mapID) .. ".\n"
@@ -258,7 +262,8 @@ function ns.TravelNetworkDestination(stop)
     local position = ns.GuideInteger(mapID) and ns.PlayerPoint(mapID)
     if not ns.ValidTravelPoint(position) then ns.ResetTravelPath(); return end
     local signature = table.concat({ns.routeSelection and ns.routeSelection.key or "", stop.id or 0, stop.kind or "", stop.mapID,
-        stop.x, stop.y, mapID, ns.travelRevision or 0, tostring(ns.Option("suggestFlights")), ns.profile and ns.profile.faction or "Unknown"}, ":")
+        stop.x, stop.y, mapID, ns.travelRevision or 0, tostring(ns.Option("suggestFlights")), ns.profile and ns.profile.faction or "Unknown",
+        ns.TravelWalkSpeed()}, ":")
     local now = ns.ReadPublic(GetTime)
     local path = ns.travelPath
     local moved = path and (not finite(now) or not ns.travelPathChecked or now - ns.travelPathChecked >= 2)

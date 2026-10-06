@@ -10,8 +10,22 @@ function ns.FormatDistance(value)
     return string.format("%.0f yd", value)
 end
 
-local function duration(value)
+function ns.FormatTravelDuration(value)
     return string.format("%dm %02ds", math.floor(value / 60), math.floor(value % 60))
+end
+
+function ns.NavigationTravelTime(state)
+    local flight = state.flight
+    if flight then
+        if finite(flight.remaining) and flight.remaining > 0 then
+            return (flight.estimated and "Est. flight " or "Flight ~") .. ns.FormatTravelDuration(flight.remaining) .. " left"
+        end
+        if finite(flight.elapsed) then return ns.FormatTravelDuration(flight.elapsed) .. " flying" end
+        return "Flight time unavailable"
+    end
+    if finite(state.walkSeconds) and state.walkSeconds > 0 and not state.arrived then
+        return "~" .. ns.FormatTravelDuration(state.walkSeconds) .. " travel"
+    end
 end
 
 local function updateTooltip(frame, opening)
@@ -64,9 +78,10 @@ function ns.RouteContext(stop, mapID, facts)
     end
     if stop.flightPlan then
         local plan = stop.flightPlan
-        return (plan.measured and "Timed flight route: " or "Estimated flight route: ") .. duration(plan.seconds)
+        return (plan.measured and "Timed flight: ~" or "Estimated flight: ") .. ns.FormatTravelDuration(plan.flightSeconds)
+            .. "; journey ~" .. ns.FormatTravelDuration(plan.seconds)
             .. "\nFly to " .. plan.destination.name .. (plan.walkingSeconds and plan.walkingSeconds > plan.seconds
-                and ("; saves ~" .. duration(plan.walkingSeconds - plan.seconds) .. ".") or ".")
+                and ("; saves ~" .. ns.FormatTravelDuration(plan.walkingSeconds - plan.seconds) .. ".") or ".")
     end
     if stop.travelLeg then return "Travel towards " .. ns.MapName(stop.goal.mapID) .. ".\n" .. (stop.travelLeg.method == "walk"
         and "Use the crossing; follow roads and terrain." or "Board the correct transport; waiting time varies.") end
@@ -147,6 +162,7 @@ function ns.NavigationState()
         or width >= 1000000 or height >= 1000000 then state.status = "Map scale unavailable"; return state end
     local east, north = (destination.x - position.x) * width, (position.y - destination.y) * height
     state.distance = math.sqrt(east * east + north * north)
+    state.walkSeconds = state.distance / ns.TravelWalkSpeed()
     if state.distance <= 8 then
         state.status = ns.GuideStepAction(stop); state.arrived = true; return state
     end
@@ -208,16 +224,23 @@ function ns.UpdateNavigation()
     if not state.visible then ns.HideNavigationGeometry(frame.icon); return end
     frame.title:SetText(state.stop.title)
     local facts = ns.GuideStepFacts(state.stop)
-    local clock = state.flight and (state.flight.remaining and state.flight.remaining > 0 and ((state.flight.estimated and "Estimated " or "~") .. duration(state.flight.remaining) .. " remaining")
-        or state.flight.elapsed and (duration(state.flight.elapsed) .. " flying") or "Flight time unavailable")
+    local clock = ns.NavigationTravelTime(state)
     local distance = state.distance and (ns.FormatDistance(state.distance) .. (state.arrived and " • Here" or "")) or ""
     if facts.progress then distance = distance .. (distance ~= "" and " • " or "") .. facts.progress end
-    frame.distance:SetText(clock or distance)
+    frame.distance:SetText(state.flight and clock or distance .. (clock and (distance ~= "" and " • " or "") .. clock or ""))
     frame.status:SetText(state.angle and ns.GuideStepAction(state.stop, facts) or state.status)
     local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
     frame.context:SetText(ns.RouteContext(state.stop, mapID, facts))
     updateTooltip(frame)
     ns.HideNavigationGeometry(frame.icon)
+    local separate = ns.standaloneNavigation and ns.standaloneNavigation:IsShown()
+    frame.icon:SetShown(not separate)
+    if frame.separateArrow ~= separate then
+        frame.separateArrow = separate
+        local left, width = separate and 14 or 82, separate and 332 or 264
+        frame.status:ClearAllPoints(); frame.status:SetPoint("TOPLEFT", left, -52); frame.status:SetSize(width, 28)
+        frame.distance:ClearAllPoints(); frame.distance:SetPoint("TOPLEFT", left, -82); frame.distance:SetSize(width, 14)
+    end
     frame.symbol:SetText("…"); frame.symbol:SetTextColor(0.96, 0.76, 0.35, 1)
     frame.symbol:SetShown(state.angle == nil and not state.arrived and not state.flight)
     frame.step:SetText(state.stop.kind == "loading" and (state.stop.action == "scan" and "Checking guide progress" or "Generating an efficient trip") or state.stop.historyPreview and "History preview • published location" or
@@ -237,9 +260,11 @@ function ns.UpdateNavigation()
     local quests = not (ns.routeSelection and ns.routeSelection.mode == "travel")
     frame.skipStep:SetEnabled(editable and quests); frame.skipQuest:SetEnabled(editable and quests); frame.scan:SetEnabled(not state.flight and state.stop.kind ~= "loading")
     frame.back:SetEnabled(state.stop.kind ~= "loading"); frame.next:SetEnabled(state.stop.kind ~= "loading")
-    if state.busy then frame.symbol:SetShown(not ns.DrawNavigationSpinner(frame.icon))
-    elseif state.arrived then ns.DrawNavigationArrow(math.pi)
-    elseif state.angle ~= nil then ns.DrawNavigationArrow(state.angle) end
+    if not separate then
+        if state.busy then frame.symbol:SetShown(not ns.DrawNavigationSpinner(frame.icon))
+        elseif state.arrived then ns.DrawNavigationArrow(math.pi)
+        elseif state.angle ~= nil then ns.DrawNavigationArrow(state.angle) end
+    end
 end
 
 function ns.SaveNavigationPosition()

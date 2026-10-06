@@ -112,6 +112,7 @@ class GuideBrowserTests(unittest.TestCase):
         # Optional own-class work stays in the full scope. The checkbox and
         # level band filter executable steps, without erasing instructions.
         self.assertEqual({r.id for r in choices[1].records.values()}, {900, 901, 903, 907})
+        c.ns.SetOption('classQuests', False)
         route = c.ns.BuildGuideRoute(choices[1], False)
         self.assertEqual({s.id for s in route.stops.values()}, {900, 901})
         c.ns.SetOption('classQuests', True)

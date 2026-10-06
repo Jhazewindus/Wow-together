@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, classQuests = false,
+local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, classQuests = true,
     dungeonPrompts = true, zonePrompts = true, trackerOpacity = 0.08,
     trackerHeight = 350, circuitRadius = 0.16, circuitLimit = 6, mapLegend = true, professionBatch = 5, routeArrow = true,
     currentQuestsFirst = true, nearbyPickups = true, fullRoute = false, routeAhead = 2, autoTurnIn = false,
@@ -32,7 +32,7 @@ local sections = {
     {"navigation", "Arrow and map", {
         {"routeArrow", "Show the direction arrow", "A movable guide panel with the current instruction and step controls."},
         {"guideOpaque", "Opaque guide background", "Use a solid background behind the guide instructions. Turn off for see-through panels; text, arrows and buttons stay fully visible. Also available from the panel's BG button."},
-        {"standaloneArrow", "Show a standalone direction arrow", "A small separately movable arrow and distance. You can hide the large direction panel and keep this arrow."},
+        {"standaloneArrow", "Show a standalone direction arrow", "Move the direction arrow into a separate small panel with distance and travel time. The guide panel keeps its instructions and controls."},
         {"distanceUnits", "Distance units", "Choose how distances appear under the arrow.", {{"yards", "Yards"}, {"metres", "Metres"}}},
         {"mapLegend", "Show route explanation on the map", "Show route status below the world map. Route controls remain available."}}},
     {"travel", "Travel routing", {

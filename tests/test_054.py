@@ -83,6 +83,7 @@ class NearbyPickupTests(unittest.TestCase):
 
     def test_close_npc_does_not_justify_distant_work_returns_or_ineligible_quests(self):
         c = local_client()
+        c.ns.SetOption('classQuests', False)
         for id, data in {
             903: nearby('Wrong faction', side='Alliance'),
             904: nearby('Too high', level=30),

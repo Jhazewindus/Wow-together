@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.17**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.18**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
@@ -15,6 +15,41 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Romits' travel and collection reports — about 10–15 minutes
+
+1. Record your version/build, current guide/step, walking/mount speed and travel
+   settings. Enable Suggest faster known flights; open Orgrimmar's flight master
+   with Crossroads unlocked. Capture Flight paths, Flight unlock scan and Flight
+   map read from `/wt probe` while the native map is open. A known route should
+   use the flight if its estimated flight/approach beats walking. If it still
+   suggests walking, include those lines and Travel leg/goal; unlock flags alone
+   do not prove a reachable connection. Do not assume Joker's cache explanation.
+2. Test Crossroads → Camp Taurajo. Before boarding, the description distinguishes
+   flight time from whole-journey time, which includes walking. Enable standalone
+   arrow: the countdown appears above it, matches the guide panel, and decreases
+   during the ride. Untimed flights say Est. flight; after a completed ride,
+   repeat and compare the personally timed estimate with real duration. If an
+   estimate runs out early, elapsed time appears instead of a stuck zero timer.
+3. Open the world map while flying. Selected quest markers remain; Show full
+   route keeps its eligible previews. Ground lines stay hidden during the ride
+   and resume after landing. Guide order and quest completion must not change.
+4. Walk, then mount towards a waypoint. Distance units follow settings and the
+   travel ETA should shorten with faster public running speed. These are next-
+   waypoint estimates; terrain, waiting and stops can make the actual trip longer.
+5. Use a cross-continent guide requiring a boat or zeppelin. At its transport
+   step, confirm the instruction names the boarding place and coordinates,
+   points to the departure location and keeps the correct destination direction.
+6. With both arrow panels enabled, the large panel keeps instructions, progress
+   and step controls, with no duplicate direction arrow. Toggle standalone off:
+   the large arrow returns. Check Scan guide still shows its loading spinner.
+7. On Ishamuhale, loot Fresh Zhevra Carcass while its collection step is current.
+   It should advance to Ishamuhale's Fang after the bag update, without requiring
+   Skip. The quest must remain incomplete. Test another item collection with a
+   partial stack: only the requested count should finish that stage. Merely
+   owning a use-item must not complete its use/kill objective.
+8. A new settings profile should have Include class quests checked. A saved
+   explicit off choice must stay off; other classes' quests remain excluded.
 
 ## Combined dungeon data for 0.8.17 — about 5–10 minutes
 

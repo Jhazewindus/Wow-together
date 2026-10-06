@@ -164,6 +164,20 @@ function ns.ObjectiveFinished(objective)
         and objective.need > 0 and objective.have >= objective.need or false
 end
 
+function ns.GuideItemProgress(stop, key, required)
+    if key ~= ns.self or stop.kind ~= "q" or not ns.active[stop.id]
+        or not ns.GuideInteger(stop.itemID) or stop.itemID <= 0 or stop.quantityUnknown then return end
+    local action = stop.action
+    if action ~= "collect" and action ~= "loot" and action ~= "gather" and action ~= "buy" and action ~= "item" then return end
+    local need = required or stop.quantity
+    if not ns.GuideInteger(need) or need <= 0 then return end
+    -- GetItemCount's default excludes the bank. A tool-use or creature-kill
+    -- step cannot be completed just by owning the item it uses/drops.
+    local have = ns.ItemOwned(stop.itemID)
+    if have == nil then return end
+    return {have = have, need = need, finished = have >= need}
+end
+
 function ns.ObjectiveMatchesPoint(text, point)
     if not ns.Public(text) or type(text) ~= "string" then return false end
     local function normalized(value)

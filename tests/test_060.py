@@ -331,12 +331,12 @@ class TravelTests(unittest.TestCase):
         c = flight_client(); c.ns.ReadFlightMap(); c.ns.NoteFlightSelection(54)
         c.lua.globals().flying = True; c.ns.UpdateNavigation()
         c.lua.globals().clock = 112; c.ns.UpdateNavigation()
-        self.assertIn('Estimated', c.ns.navigation.distance.text)
+        self.assertIn('Est. flight', c.ns.navigation.distance.text)
         self.assertFalse(c.ns.navigation.symbol.IsShown(c.ns.navigation.symbol))
         c.lua.globals().flying = False; c.ns.FinishFlight()
         self.assertEqual(c.ns.db.flights[c.ns.self].timings['11:22'].mean, 12)
         c.ns.NoteFlightSelection(54); c.lua.globals().flying = True; c.ns.UpdateNavigation()
-        self.assertIn('remaining', c.ns.navigation.distance.text)
+        self.assertIn('left', c.ns.navigation.distance.text)
 
     def test_flight_progress_and_character_network_are_not_shared(self):
         c = flight_client(); c.ns.ReadFlightMap()

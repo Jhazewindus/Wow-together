@@ -59,6 +59,7 @@ class FullDungeonCollectionTests(unittest.TestCase):
 
     def test_matching_class_quest_only_counts_when_enabled(self):
         c = solo(); group = collection(c)
+        c.ns.SetOption('classQuests', False)
         q = c.ns.catalogue.quests[901]
         q.classMask = 64
         c.ns.profile.classID = 7

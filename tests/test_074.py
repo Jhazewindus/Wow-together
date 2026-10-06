@@ -84,7 +84,8 @@ class SharedTravelTests(unittest.TestCase):
         c.lua.execute('flying=true')
         c.ns.handlers.PLAYER_CONTROL_LOST()
         self.assertTrue(c.ns.RouteForDisplay().flying)
-        self.assertEqual(c.ns.RouteForDisplay().stops[1].x, .9)
+        self.assertEqual(c.ns.RouteForDisplay().stops[1].x, .95)
+        self.assertEqual(c.ns.RouteForDisplay().stops[1].id, 900)
         self.assertEqual(c.ns.routeStats.lines, 0)
         self.assertIn('Flying', c.ns.navigation.status.text)
         c.lua.execute('flying=false; C_Map.GetPlayerMapPosition=function() return CreateVector2D(.9,.4) end')
@@ -125,17 +126,18 @@ class GuideSpinnerTests(unittest.TestCase):
         c.ns.navigation.scan.OnClick()
         self.assertEqual(c.ns.navigation.state.status, 'Scanning guide…')
         self.assertFalse(c.ns.navigation.scan.enabled)
-        for frame in (c.ns.navigation, c.ns.standaloneNavigation):
+        for frame in (c.ns.standaloneNavigation,):
             self.assertTrue(all(line.IsShown(line) for line in frame.icon.spinnerLines.values()))
             self.assertTrue(all(not line.IsShown(line) for line in frame.icon.lines.values()))
             self.assertFalse(frame.symbol.IsShown(frame.symbol))
-        first = tuple(c.ns.navigation.icon.spinnerLines[1].startPoint.values())
+        self.assertFalse(c.ns.navigation.icon.IsShown(c.ns.navigation.icon))
+        first = tuple(c.ns.standaloneNavigation.icon.spinnerLines[1].startPoint.values())
         c.ns.navigation.OnUpdate(c.ns.navigation, .1)
-        self.assertNotEqual(first, tuple(c.ns.navigation.icon.spinnerLines[1].startPoint.values()))
+        self.assertNotEqual(first, tuple(c.ns.standaloneNavigation.icon.spinnerLines[1].startPoint.values()))
         c.drain()
         self.assertIsNone(c.ns.guideScanning)
         self.assertEqual(order(g), before)
-        for frame in (c.ns.navigation, c.ns.standaloneNavigation):
+        for frame in (c.ns.standaloneNavigation,):
             self.assertTrue(all(not line.IsShown(line) for line in frame.icon.spinnerLines.values()))
             self.assertTrue(any(line.IsShown(line) for line in frame.icon.lines.values()))
 

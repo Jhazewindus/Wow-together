@@ -45,6 +45,7 @@ def dungeon(c, start_map=501, entrance_map=501):
 class CircuitTests(unittest.TestCase):
     def test_local_plan_filters_detours_levels_categories_and_ambiguous_targets(self):
         c = solo()
+        c.ns.SetOption('classQuests', False)
         catalogue(c, {900: nearby(), 901: nearby('Neighbour'),
             902: quest('Far high XP', xp=100000), 903: quest('Other zone', map_id=502, xp=100000),
             904: nearby('Too high', level=25), 905: nearby('Unknown target', objectiveLocationsIncomplete=True),
@@ -82,6 +83,7 @@ class CircuitTests(unittest.TestCase):
 
     def test_personal_profession_quests_never_enter_party_leveling_guides(self):
         c = solo()
+        c.ns.SetOption('classQuests', False)
         catalogue(c, {900: nearby('Cooking', categoryPath='professions/cooking'),
                       901: nearby('Mage', categoryPath='classes/mage')})
         self.assertFalse(c.ns.LevelingQuestEnabled(900))

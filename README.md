@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.8.17** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.18** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -20,6 +20,28 @@ Replace the folder on **every party member's client**, including all **50 Lua
 files** and the **Media folder**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.18 improves travel and item collection progress.** Flight-map destinations
+are stored in their own zones, including repaired saved continent points, so
+known flights join the walking graph correctly. Reachable connections still
+come from your character's native flight-master map; unlock flags alone do not
+create flight links. Open a flight master after updating to confirm its routes.
+The arrow separates estimated/timed **flight duration** from the **whole journey**
+including walking. Actual rides show the same countdown above the standalone
+arrow and in the guide panel; untimed rides are marked estimates, and elapsed
+time replaces an overdue estimate. Completed rides improve personal timings.
+Walking/mount ETAs use public running speed and distance to the next waypoint;
+terrain and stops can add time. Transport steps identify the boarding location
+and coordinates. Quest pins and full-route previews stay visible during flights;
+ground lines resume after landing. Enabling the standalone arrow hides the
+duplicate direction graphic in the guide panel, keeping instructions/controls.
+
+Collection steps with known item IDs/counts now check your bags, including
+Ishamuhale's Fresh Zhevra Carcass, and advance on bag updates. This applies to
+fixed and adaptive guides; it does not complete the quest, a kill/use step, or
+another player's progress. Native objective quantities take precedence over
+older published counts. Include class quests defaults on for new/unset settings;
+saved opt-outs and other-class exclusions remain respected.
 
 **0.8.17 combines the Forever dungeon overview with dungeon quest lists and
 published Forever entrance geography.** All **19 Classic dungeon complexes**

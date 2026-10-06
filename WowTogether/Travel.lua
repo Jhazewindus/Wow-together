@@ -66,6 +66,13 @@ local function changed()
     ns.ResetTravelPath()
 end
 
+local function destinationPoint(p, published)
+    if not p or not published or p.mapID == published.mapID then return p end
+    local projected = localPoint(published.mapID, p)
+    return projected and projected.mapID == published.mapID and projected
+        or {mapID = published.mapID, x = published.x, y = published.y}
+end
+
 local function storeNode(info, mapID, ownMap, known, current)
     if not ns.Public(info) or type(info) ~= "table" or not ns.GuideInteger(info.nodeID) or info.nodeID <= 0 then return end
     local id, state = info.nodeID, flights()
@@ -74,9 +81,13 @@ local function storeNode(info, mapID, ownMap, known, current)
     local name = ns.SafeTitle(info.name) or old.name or published and ns.SafeTitle(published.name)
     if not name then return end
     local p = point(mapID, ns.Public(info.position) and info.position)
+    -- A continent flight-map point belongs to the destination's zone, not
+    -- the zone of the flight master currently being visited. Keep it connected
+    -- to that zone's walking graph; preserve actual client coordinates where
+    -- the public projection succeeds.
+    if not current then p = destinationPoint(p, published) end
     if not p and published then p = {mapID = published.mapID, x = published.x, y = published.y} end
     if current then p = ns.PlayerPoint(ownMap) or p end
-    if p then p = localPoint(ownMap, p) end
     local confirmed = known ~= nil or old.unlockConfirmed == true
     local factions = Enum and Enum.FlightPathFaction
     local faction = old.faction or published and published.faction
@@ -183,6 +194,9 @@ function ns.InitializeTravel()
         else
             node.id, node.known = id, node.known == true
             if not savedPoint(node.point) then node.point = nil end
+            local previous = node.point
+            node.point = destinationPoint(previous, ns.travelData and ns.travelData.nodes["TAXI_" .. id])
+            if previous ~= node.point then node.world = world(node.point) end
             local w = node.world
             if type(w) ~= "table" or not ns.GuideInteger(w.continent) or not number(w.x) or not number(w.y) then node.world = nil end
         end
@@ -411,13 +425,11 @@ function ns.RouteForDisplay()
     if not route then return end
     if ns.ReadPublic(UnitOnTaxi, "player") == true then
         ns.travelWaypoint = nil
-        local selection = ns.pendingFlight
-        local node = selection and flights() and flights().nodes[selection.destination]
-        local p = node and node.point
-        local stop = p and {id = 0, kind = "f", action = "flight", mapID = p.mapID, x = p.x, y = p.y,
-            title = "Flying to " .. node.name, label = "Flying to " .. node.name}
-        return {key = route.key, title = route.title, mapID = p and p.mapID or route.mapID,
-            flying = true, stops = stop and {stop} or {}}
+        -- Keep the same quest steps/full-preview scope during a ride. The map
+        -- renderer suppresses ground lines from the moving flight, not pins.
+        local display = {}; for key, value in pairs(route) do display[key] = value end
+        display.flying = true
+        return display
     end
     local confirmation = ns.CurrentQuestConfirmation()
     local stop = ns.CorpseDestination() or ns.TravelDestination(confirmation and not confirmation.unknownLocation and confirmation or route.stops[1])

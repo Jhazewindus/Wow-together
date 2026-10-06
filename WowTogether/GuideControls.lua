@@ -269,6 +269,9 @@ function ns.GuideStepNeeded(stop)
             if stop.kind == "q" and not ns.QuestProgressReady(person.key, stop.id)
                 and not (destination and destination.kind == "t")
                 and not (person.key == ns.self and ns.readyToTurnIn[stop.id]) then
+                local check = {}; for key, value in pairs(stop) do check[key] = value end
+                check.memberKey = person.key
+                local facts = ns.GuideStepFacts(check)
                 local progress, matched, unfinished = ns.ProgressForMember(person.key, stop.id), false, false
                 for _, objective in ipairs(progress and progress.objectives or {}) do
                     if ns.ObjectiveMatchesPoint(objective.text, {name = stop.targetName or stop.npcName, itemName = stop.itemName}) then
@@ -276,7 +279,7 @@ function ns.GuideStepNeeded(stop)
                         if not ns.ObjectiveFinished(objective) then unfinished = true end
                     end
                 end
-                if not matched or unfinished then return true end
+                if not (facts.inventory and facts.finished) and (not matched or unfinished) then return true end
             end
         end
     end

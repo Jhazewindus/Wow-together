@@ -29,6 +29,9 @@ def identity(c):
 
 def class_client():
     c = guide_client(2); identity(c)
+    # These tests exercise the explicit opt-out -> opt-in transition, rather
+    # than the default (on since 0.8.18).
+    c.ns.SetOption('classQuests', False)
     catalogue(c, {900: world_quest('First', xp=100),
                   901: world_quest('Second', xp=100),
                   902: world_quest('Shaman task', classMask=64, xp=200),
@@ -97,6 +100,7 @@ class OptionalClassGuideTests(unittest.TestCase):
 
     def test_shipped_parchment_enters_durotar_scope_for_an_orc_shaman(self):
         c = Client(quests=(), use_catalogue=True); c.guide_environment(level=3); identity(c)
+        c.ns.SetOption('classQuests', False)
         c.lua.globals().grouped = False; c.ns.UpdateRoster()
         records = c.ns.LevelingGuideRecords('level-zone:kalimdor/durotar')
         self.assertIn(3089, {r.id for r in records.values()})
@@ -355,6 +359,7 @@ class NearbyPickupTests(unittest.TestCase):
 
     def test_manual_skips_and_closed_class_checkbox_cannot_return_through_grouping(self):
         c, g = hub_client(); identity(c)
+        c.ns.SetOption('classQuests', False)
         c.ns.catalogue.quests[901].classMask = 64
         c.ns.db.guideSkips[c.ns.self].quests[902] = True
         route = c.ns.BuildGuideRoute(g, False)

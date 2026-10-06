@@ -187,7 +187,12 @@ function ns.RenderProfessionGuide() if ns.filter == "professions" then ns.Refres
 function ns.InitializeProfessionGuides()
     ns.On("TRADE_SKILL_SHOW", function() ns.ReadProfessionRecipes(); ns.RenderProfessionGuide() end)
     ns.On("TRADE_SKILL_LIST_UPDATE", function() ns.ReadProfessionRecipes(); ns.RenderProfessionGuide() end)
-    ns.On("BAG_UPDATE_DELAYED", function() ns.RefreshShoppingList(); ns.RenderProfessionGuide() end)
+    ns.On("BAG_UPDATE_DELAYED", function()
+        ns.RefreshShoppingList(); ns.RenderProfessionGuide()
+        -- Collection tools/items can change without a quest-log objective
+        -- update (for example, the carcass used to summon Ishamuhale).
+        ns.ScheduleGuideProgress()
+    end)
     ns.On("ITEM_DATA_LOAD_RESULT", function(id, success)
         if ns.GuideInteger(id) and ns.pendingItems[id] and ns.Public(success) and success == true then
             ns.pendingItems[id] = nil; ns.RefreshShoppingList(); ns.RenderProfessionGuide()

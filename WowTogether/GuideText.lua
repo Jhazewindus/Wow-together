@@ -44,6 +44,13 @@ function ns.GuideStepFacts(stop)
             break
         end
     end
+    local bags = ns.GuideItemProgress(stop, stop.memberKey or ns.self, facts.need)
+    if bags then
+        facts.inventory = true
+        if not facts.have or bags.have > facts.have then facts.have = bags.have end
+        facts.need = facts.need or bags.need
+        if bags.finished then facts.finished = true end
+    end
     if not facts.action and facts.npc and facts.item then facts.action = "collect" end
     if facts.have and facts.need and facts.need > 0 then
         facts.remaining = math.max(0, facts.need - facts.have)

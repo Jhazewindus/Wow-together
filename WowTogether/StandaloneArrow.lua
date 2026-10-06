@@ -8,7 +8,7 @@ function ns.CreateStandaloneArrow()
     if ns.standaloneNavigation then return end
     local frame = CreateFrame("Frame", "WowTogetherStandaloneArrow", UIParent)
     ns.standaloneNavigation = frame
-    frame:SetSize(164, 82); frame:SetPoint("CENTER", UIParent, "CENTER", 0, 110)
+    frame:SetSize(180, 102); frame:SetPoint("CENTER", UIParent, "CENTER", 0, 110)
     frame:SetClampedToScreen(true); frame:SetFrameStrata("MEDIUM")
     frame:SetMovable(true); frame:EnableMouse(true); frame:RegisterForDrag("LeftButton")
     frame:SetScript("OnDragStart", frame.StartMoving)
@@ -22,10 +22,12 @@ function ns.CreateStandaloneArrow()
     if type(saved) == "table" and type(saved.point) == "string" and type(saved.relative) == "string" and finite(saved.x) and finite(saved.y) then
         frame:ClearAllPoints(); frame:SetPoint(saved.point, UIParent, saved.relative, saved.x, saved.y)
     end
-    frame.icon = CreateFrame("Frame", nil, frame); frame.icon:SetSize(52, 52); frame.icon:SetPoint("TOP", 0, 0); frame.icon.lines = {}
+    frame.timer = ns.UILabel(frame, nil, 11, ns.UIColors.gold); frame.timer:SetPoint("TOP", 0, 0)
+    frame.timer:SetSize(176, 16); frame.timer:SetWordWrap(false)
+    frame.icon = CreateFrame("Frame", nil, frame); frame.icon:SetSize(52, 52); frame.icon:SetPoint("TOP", 0, -18); frame.icon.lines = {}
     frame.symbol = ns.UILabel(frame.icon, "GameFontNormalLarge", 24); frame.symbol:SetPoint("CENTER")
-    frame.distance = ns.UILabel(frame, nil, 12, ns.UIColors.gold); frame.distance:SetPoint("TOP", 0, -53)
-    frame.title = ns.UILabel(frame, nil, 11); frame.title:SetPoint("TOP", 0, -69); frame.title:SetSize(160, 14); frame.title:SetWordWrap(false)
+    frame.distance = ns.UILabel(frame, nil, 12, ns.UIColors.gold); frame.distance:SetPoint("TOP", 0, -71)
+    frame.title = ns.UILabel(frame, nil, 11); frame.title:SetPoint("TOP", 0, -87); frame.title:SetSize(176, 14); frame.title:SetWordWrap(false)
     frame:SetScript("OnEnter", function(self)
         if not GameTooltip then return end
         GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
@@ -50,6 +52,8 @@ function ns.UpdateStandaloneArrow(state)
     frame:SetShown(state.visible == true and ns.Option("standaloneArrow"))
     ns.HideNavigationGeometry(frame.icon)
     if not frame:IsShown() then return end
+    local clock = ns.NavigationTravelTime(state)
+    frame.timer:SetText(clock or ""); frame.timer:SetShown(clock ~= nil)
     local drawable = type(frame.icon.CreateLine) == "function"
     frame.symbol:SetText(state.flight and "…" or state.arrived and "↓" or "…")
     frame.symbol:SetShown(not drawable or not state.arrived and state.angle == nil)
