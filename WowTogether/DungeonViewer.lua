@@ -47,7 +47,6 @@ local function layout(frame)
         anchor(frame.refresh, width - 124, 86, 112, 26)
         anchor(frame.map, 12, 122, mapWidth, mapHeight)
         frame.mapNote:Hide(); frame.bossInfo:Hide(); frame.questList:Hide()
-        frame.footer:SetWidth(width - 30); frame.footer:SetText("Resize corner • Click bosses for loot in Full view")
     else
         local bossWidth, lootWidth = 200, math.max(270, math.min(350, width * .2926))
         mapWidth, mapHeight = width - bossWidth - lootWidth - 64, height - 317
@@ -56,7 +55,7 @@ local function layout(frame)
         anchor(frame.floorMenu, 232, 94, math.max(150, mapWidth - 124), 26)
         anchor(frame.refresh, 232 + mapWidth - 112, 94, 112, 26)
         anchor(frame.map, 232, 132, mapWidth, mapHeight)
-        anchor(frame.mapNote, 232, height - 173, mapWidth, 58); frame.mapNote:Show()
+        anchor(frame.mapNote, 232, height - 173, mapWidth, 58)
         anchor(frame.bossInfo, 232, height - 105, mapWidth, 59); frame.bossInfo:Show()
         frame.bossName:SetWidth(mapWidth - 74); frame.bossDetail:SetWidth(mapWidth - 74)
         anchor(frame.lootPanel, lootX, 94, lootWidth, height - 140)
@@ -65,9 +64,9 @@ local function layout(frame)
         frame.bossRowsVisible = math.min(8, math.max(1, math.floor((height - 226) / 52)))
         frame.lootRowsVisible = math.min(7, math.max(1, math.floor((height - 299) / 47)))
         for _, row in ipairs(frame.lootRows) do row:SetWidth(lootWidth - 24); row.name:SetWidth(lootWidth - 70); row.detail:SetWidth(lootWidth - 70) end
-        frame.footer:SetWidth(width - 144); frame.footer:SetText("Forever database snapshot • Cached client item stats • Your quest route stays unchanged")
         frame.questList:Show()
     end
+    frame.footer:Hide(); frame.mapNote:Hide()
     frame.bossPanel:SetShown(not frame.compact); frame.lootPanel:SetShown(not frame.compact)
     frame.mode.caption:SetText(frame.compact and "Full view" or "Map only")
     frame.layingOut = nil
@@ -154,7 +153,7 @@ local function create()
     frame.lootPanel = CreateFrame("Frame", nil, frame, "BackdropTemplate"); ns.UIPanel(frame.lootPanel)
     frame.lootPanel:SetPoint("TOPLEFT", 744, -94); frame.lootPanel:SetSize(316, 510)
     frame.lootTitle = heading(frame.lootPanel, "Boss loot", 13, 12, -10, 292)
-    frame.lootType = ns.UIDropdown(frame.lootPanel, {{"all", "All notable loot"}, {"equipment", "Equipment"}, {"other", "Quest items & other"}}, 292,
+    frame.lootType = ns.UIDropdown(frame.lootPanel, {{"all", "All loot"}, {"equipment", "Equipment"}, {"other", "Quest items & other"}}, 292,
         function(value) frame.category, frame.lootPage = value, 1; ns.RenderDungeonViewer() end)
     frame.lootType:SetPoint("TOPLEFT", 12, -39)
     frame.search = ns.UIEditBox(frame.lootPanel, "Search this boss's loot", 292)
@@ -173,7 +172,7 @@ local function create()
             if not row.item or not GameTooltip then return end
             GameTooltip:SetOwner(row, "ANCHOR_RIGHT")
             if row.item.link then GameTooltip:SetHyperlink(row.item.link)
-            else GameTooltip:AddLine(row.item.name, 1, 1, 1); GameTooltip:AddLine("Item " .. row.item.id .. " • Loading client tooltip…", .65, .67, .66) end
+            else GameTooltip:AddLine(row.item.name, 1, 1, 1); GameTooltip:AddLine("Loading item details…", .65, .67, .66) end
             GameTooltip:Show()
         end)
         row:SetScript("OnLeave", function() if GameTooltip then GameTooltip:Hide() end end)
@@ -186,7 +185,6 @@ local function create()
         function() frame.lootPage = frame.lootPage + 1; ns.RenderDungeonViewer() end)
     frame.lootEmpty = ns.UILabel(frame.lootPanel, nil, 12, colors.muted); frame.lootEmpty:SetPoint("TOPLEFT", 16, -150); frame.lootEmpty:SetSize(280, 160)
     frame.footer = ns.UILabel(frame, nil, 10, colors.muted); frame.footer:SetPoint("BOTTOMLEFT", 20, 15); frame.footer:SetSize(760, 20)
-    frame.footer:SetText("Forever database snapshot • Client tooltips show cached stats • No quest route is changed")
     frame.questList = ns.UIButton(frame, "Quest list", 96, function()
         for _, group in ipairs(ns.DungeonGroups()) do if group.key == selected then ns.ShowDungeonQuestList(group); return end end
     end); frame.questList:SetPoint("BOTTOMRIGHT", -20, 12)
@@ -210,7 +208,7 @@ local function create()
         frame.map:SetBackdropColor(colors.panel[1], colors.panel[2], colors.panel[3], frame.transparent and .08 or .98)
         save(frame)
     end); frame.background:SetPoint("TOPRIGHT", -136, -47)
-    ns.UIHelp(frame.background, "Toggle the window background. Map, labels and markers stay visible.")
+    ns.UIHelp(frame.background, "Toggle background opacity.")
     frame:SetResizable(true)
     if type(frame.SetResizeBounds) == "function" then frame:SetResizeBounds(940, 500, 1400, 1000) end
     frame.grip = CreateFrame("Button", nil, frame); frame.grip:SetSize(16, 16); frame.grip:SetPoint("BOTTOMRIGHT", -2, 2)
@@ -253,13 +251,13 @@ local function updateFloorMenu(frame)
     control:SetShown(multipleMaps)
     control:SetEnabled(multipleMaps)
     if not multipleMaps then control.menu:Hide() end
-    if #control.entries == 0 then control.caption:SetText("No verified floor map") else control:SetChoice(frame.floor) end
+    if #control.entries == 0 then control.caption:SetText("Map unavailable") else control:SetChoice(frame.floor) end
 end
 local function drawMap(frame, map)
     for _, tile in ipairs(frame.tiles) do tile:Hide() end
     for _, pin in ipairs(frame.pins) do pin:Hide() end
     frame.empty:Hide()
-    if not map then frame.empty:SetText("No verified interior map yet.\n\nYou can still browse published bosses and loot here."); frame.empty:Show(); return end
+    if not map then frame.empty:SetText("Map unavailable."); frame.empty:Show(); return end
     local columns, rows = math.ceil(map.width / map.tileWidth), math.ceil(map.height / map.tileHeight)
     local scale = math.min(frame.map:GetWidth() / map.width, frame.map:GetHeight() / map.height)
     local ox, oy = (frame.map:GetWidth() - map.width * scale) / 2, (frame.map:GetHeight() - map.height * scale) / 2
@@ -276,7 +274,7 @@ local function drawMap(frame, map)
     -- A partial map is misleading; fall back as a whole when any tile is missing.
     if not loaded then
         for _, tile in ipairs(frame.tiles) do tile:Hide() end
-        frame.empty:SetText("This map's textures are unavailable on your build.\n\nBosses and loot remain available."); frame.empty:Show(); return
+        frame.empty:SetText("Map unavailable."); frame.empty:Show(); return
     end
     for index, position in ipairs(map.bosses or {}) do
         local pin = frame.pins[index]
@@ -301,8 +299,8 @@ function ns.RenderDungeonViewer()
     frame.rendering = true
     local data, boss = frame.data
     frame.title:SetText(data.name)
-    frame.summary:SetText("Lv " .. data.definition.runLevelLow .. "–" .. data.definition.runLevelHigh .. " • " .. #data.bosses
-        .. (frame.compact and " bosses" or " published encounters • Browse from anywhere"))
+    frame.summary:SetText("Lv " .. data.definition.runLevelLow .. "–" .. data.definition.runLevelHigh
+        .. (#data.bosses > 0 and (" • " .. #data.bosses .. " bosses") or ""))
     frame.bossTitle:SetText("Bosses • " .. #data.bosses)
     local pages = math.max(1, math.ceil(#data.bosses / frame.bossRowsVisible))
     frame.bossPage = math.max(1, math.min(pages, frame.bossPage)); setPages(frame.bossPages, frame.bossPage, pages)
@@ -312,17 +310,13 @@ function ns.RenderDungeonViewer()
         row.boss = value; row:SetShown(value ~= nil)
         if value then
             row.name:SetText(value.name); row.detail:SetText((value.rare and "Rare • " or "") .. (value.level and "Lv " .. value.level or ""))
-            image(row.icon, value.portrait or bossFallback); ns.UIButtonTone(row, frame.bossID == value.id); ns.UIHelp(row, value.name .. "\nSelect to see published loot.")
+            image(row.icon, value.portrait or bossFallback); ns.UIButtonTone(row, frame.bossID == value.id); ns.UIHelp(row, value.name)
         end
     end
     frame.floor = math.max(1, math.min(math.max(1, #data.maps), frame.floor)); updateFloorMenu(frame)
     local map = data.maps[frame.floor]; drawMap(frame, map)
-    if frame.compact then frame.footer:SetText(map and (map.reference and "Classic layout reference" or "Client map • Full view opens boss loot") or "Map data unavailable") end
-    frame.mapNote:SetText(map and (map.reference and "Classic client layout reference; Forever changes may differ.\n" or "Current client floor map.\n")
-        .. (#(map.bosses or {}) > 0 and "Click a numbered boss to view loot." or "Boss positions are not exposed for this floor. Use the boss list; no locations are guessed.")
-        or "Interior map data has not been published or exposed by this client.")
-    frame.bossName:SetText(boss and boss.name or "Boss data not yet published")
-    frame.bossDetail:SetText(boss and ((boss.rare and "Rare encounter • " or "") .. #boss.loot .. " notable drops • Database snapshot") or "No encounters are inferred from nearby trash NPCs.")
+    frame.bossName:SetText(boss and boss.name or "Boss information unavailable")
+    frame.bossDetail:SetText(boss and ((boss.rare and "Rare • " or "") .. #boss.loot .. " listed drops") or "")
     image(frame.portrait, boss and boss.portrait or bossFallback)
     local loot = ns.DungeonViewerLoot(boss, frame.query, frame.category)
     frame.lootTitle:SetText("Boss loot • " .. #loot); frame.lootType:SetChoice(frame.category)
@@ -340,7 +334,7 @@ function ns.RenderDungeonViewer()
         end
     end
     frame.lootEmpty:SetShown(#loot == 0)
-    frame.lootEmpty:SetText(boss and (#boss.loot == 0 and "No notable drops published for this encounter yet." or "No items match this filter.") or "Boss and loot data are not available for this dungeon yet.")
+    frame.lootEmpty:SetText(boss and (#boss.loot == 0 and "Loot unavailable." or "No matching items.") or "Loot unavailable.")
     frame.rendering = nil
 end
 function ns.RefreshDungeonViewer(reload)

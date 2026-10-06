@@ -49,7 +49,7 @@ local function create()
         ns.RenderGuideQuestList()
     end)
     frame.note = ns.UILabel(frame, nil, 10); frame.note:SetPoint("BOTTOMLEFT", 22, 19)
-    frame.note:SetText("Read-only preview • Start route in Leveling guides when you are ready.")
+    frame.note:Hide()
     frame.rows, frame.generation, frame.offset = {}, 0, 0
     frame:SetScript("OnHide", function() frame.generation = frame.generation + 1 end)
     frame:Hide()
@@ -68,7 +68,7 @@ function ns.RenderGuideQuestList()
     frame.visiblePlan = plan
     if frame.plan then
         local count = 0; for _ in pairs(quests) do count = count + 1 end
-        frame.summary:SetText(count .. " quests • " .. #plan .. " steps • Pickup → objectives → turn-in in guide order.\n"
+        frame.summary:SetText(count .. " quests • " .. #plan .. " steps\n"
             .. ns.GuideXPText(frame.xpGuide or frame.guide, query))
     end
     frame.maximum = math.max(0, #plan * ROW_HEIGHT - VIEW_HEIGHT)
@@ -119,7 +119,7 @@ function ns.ShowGuideQuestList(guide)
     local generation = frame.generation
     frame.plan, frame.visiblePlan, frame.xpGuide, frame.offset, frame.guide = nil, nil, nil, 0, guide
     frame.title:SetText(guide.zone .. " • Quest order")
-    frame.summary:SetText("Loading the complete guide order…"); frame:Show(); ns.RenderGuideQuestList()
+    frame.summary:SetText("Loading quests…"); frame:Show(); ns.RenderGuideQuestList()
     local current = ns.routeSelection
     local existing = guide.fixedPlan or current and current.key == guide.key and current.fixedPlan
     local copy = {}; for key, value in pairs(guide) do copy[key] = value end
@@ -128,7 +128,7 @@ function ns.ShowGuideQuestList(guide)
         if frame.generation ~= generation or not frame:IsShown() then return end
         local okay, plan = true, existing
         if job then okay, plan = coroutine.resume(job) end
-        if not okay then frame.summary:SetText("Guide preview failed. Check Diagnostics or send a test report."); return end
+        if not okay then frame.summary:SetText("Couldn't load quests. Please try again."); return end
         if job and coroutine.status(job) ~= "dead" then C_Timer.After(0.01, advance); return end
         frame.plan = {}
         for _, stop in ipairs(plan) do
@@ -140,5 +140,5 @@ function ns.ShowGuideQuestList(guide)
     end
     if existing then advance()
     elseif C_Timer and type(C_Timer.After) == "function" then C_Timer.After(0.01, advance)
-    else frame.summary:SetText("Guide preview scheduler unavailable on this build.") end
+    else frame.summary:SetText("Quest list unavailable.") end
 end

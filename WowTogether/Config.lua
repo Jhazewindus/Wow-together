@@ -22,43 +22,43 @@ local sections = {
     {"play", "Play mode", {
         {"soloMode", "Solo leveling mode", "Disable party messages, shared progress, route invitations and catch-up. Guides use only your own progress, even while grouped."}}},
     {"guides", "Leveling guides", {
-        {"fixedZoneGuides", "Follow fixed zone guides", "Generate a complete zone sequence once. Quest progress advances steps without reordering. Turn off for adaptive trips; start a guide again to change its mode."},
-        {"nearbyPickups", "Collect useful quests nearby", "Group eligible guide pickups within 100 yards of the next pickup. Confirm NPC offers on arrival; preserve objectives, returns, prerequisites and skips."},
-        {"classQuests", "Include class quests", "Show or hide eligible class quest steps without changing fixed guide order. Other classes remain excluded."},
-        {"classTraining", "Include convenient class training", "Add an optional personal trainer stop near quest visits or before leaving a hub. Even-level reminders; estimated extra walk at most 150 yards. Done training or Skip training resumes quests."},
-        {"dungeonPrompts", "Suggest dungeon quest collection", "Offer a plan when your character meets every known pickup level for the dungeon's relevant regular quests. Prerequisites still apply; party sync is not required."},
-        {"dungeonMapPrompt", "Offer the map when entering a dungeon", "Ask Open map? once on entry. Browse maps, bosses and loot from See dungeon anywhere, without starting or changing your quest route."},
-        {"zonePrompts", "Suggest the next nearby zone", "Offer a known questline transition or a suitable neighbouring zone when your current guide has no useful work ready. You choose whether to switch."},
+        {"fixedZoneGuides", "Follow fixed zone guides", "Keep a set quest order. Turn off to plan trips around your current quests and location; restart the guide to apply."},
+        {"nearbyPickups", "Collect useful quests nearby", "Collect suitable guide quests within 100 yards of your next pickup."},
+        {"classQuests", "Include class quests", "Include quests for your class in leveling guides."},
+        {"classTraining", "Include convenient class training", "Suggest nearby class training at even levels."},
+        {"dungeonPrompts", "Suggest dungeon quest collection", "Suggest collecting dungeon quests once you meet their pickup levels. Earlier quests may still be required."},
+        {"dungeonMapPrompt", "Offer the map when entering a dungeon", "Ask whether to open the map when you enter a dungeon."},
+        {"zonePrompts", "Suggest the next nearby zone", "Suggest a suitable neighbouring zone when it's time to move on."},
         {"scanSkipped", "Reconsider skips when scanning", "A successful Scan guide clears saved skips for quests in the selected guide. Leave off to keep skips; failed or cancelled scans keep them."},
         {"circuitRadius", "Nearby pickup distance", "Limit how much additional walking a nearby pickup adds to the current trip.", {{0.10, "Stay close"}, {0.16, "Small detours"}, {0.22, "Wider loop"}}}}},
     {"navigation", "Arrow and map", {
-        {"highlightGuideQuest", "Highlight the current guide quest", "Select and track the current guide quest in Blizzard's quest log for map highlights. Applies to quests you have accepted; waits until combat ends. Does not open the map or add a user waypoint."},
+        {"highlightGuideQuest", "Highlight the current guide quest", "Highlight your current accepted quest on the game map after combat."},
         {"routeArrow", "Show the direction arrow", "A movable guide panel with the current instruction and step controls."},
-        {"guideOpaque", "Opaque guide background", "Use a solid background behind the guide instructions. Turn off for see-through panels; text, arrows and buttons stay fully visible. Also available from the panel's BG button."},
-        {"standaloneArrow", "Show a standalone direction arrow", "Move the direction arrow into a separate small panel with distance and travel time. The guide panel keeps its instructions and controls."},
+        {"guideOpaque", "Opaque guide background", "Use a solid background. Turn off for a see-through guide."},
+        {"standaloneArrow", "Show a standalone direction arrow", "Show the arrow, distance and travel time in a separate small panel."},
         {"distanceUnits", "Distance units", "Choose how distances appear under the arrow.", {{"yards", "Yards"}, {"metres", "Metres"}}},
         {"mapLegend", "Show route explanation on the map", "Show route status below the world map. Route controls remain available."}}},
     {"travel", "Travel routing", {
-        {"travelNetwork", "Use travel connections", "Find a short travel path through known zone crossings, city gates and transports. Guide order stays fixed. Walk segments remain estimates."},
-        {"suggestFlights", "Suggest faster known flights", "Compare walking with routes learned at flight masters. Timed flights improve travel estimates."},
-        {"nearbyFlights", "Nearby flight-path tips", "Show a quiet tip within 150 metres of a friendly flight master. Known paths are hidden; unknown unlocks say Check. The quest step stays in place."},
-        {"hearthstoneTips", "Useful hearthstone tips", "Suggest a nearby inn when upcoming guide objectives return to that hub for multiple turn-ins. Optional advice within 150 metres; no automatic binding or route changes."},
-        {"autoFly", "Select the suggested flight", "Opt-in: when you open the correct flight master's map, request the suggested reachable destination outside combat. Test this on your beta build."},
+        {"travelNetwork", "Use travel connections", "Use zone crossings, city gates and transports to reach your destination."},
+        {"suggestFlights", "Suggest faster known flights", "Suggest an unlocked flight when it should be faster than walking."},
+        {"nearbyFlights", "Nearby flight-path tips", "Remind you to check nearby friendly flight masters for new paths."},
+        {"hearthstoneTips", "Useful hearthstone tips", "Suggest a nearby inn when setting your hearthstone could help with later turn-ins."},
+        {"autoFly", "Select the suggested flight", "Take the suggested flight when you open its flight master's map, outside combat."},
         {"corpseArrow", "Point to my corpse while dead", "Temporarily replace quest directions while you are a ghost, then resume the guide."}}},
     {"party", "Party progress", {
         {"trackerAuto", "Show party progress automatically", "Show when joining a party; hide when solo or in a raid. You can close it for the current party session."},
         {"trackerOpacity", "Party panel background", "Choose readability behind quest progress text.", {{0, "Transparent"}, {0.08, "Subtle"}, {0.25, "Dark glass"}, {0.5, "Dark"}}},
         {"trackerHeight", "Party panel size", "How much progress is visible before you scroll.", {{220, "Compact"}, {350, "Comfortable"}, {500, "Tall"}}}}},
     {"markers", "Quest markers", {
-        {"npcHints", "Mark needed quest NPCs and items", "Show a marker beside public quest-related nameplates and a quest-item tooltip hint, outside combat."},
+        {"npcHints", "Mark needed quest NPCs and items", "Mark quest NPCs beside their names and quest items in tooltips, outside combat."},
         {"nameplateHints", "Show quest markers beside names", "Turn nameplate markers on or off separately from quest-item tooltip hints. Markers hide during combat."},
         {"questGiverStars", "Star above guide quest givers", "Highlight eligible pickups in your selected guide with a large gold star. Requires visible friendly NPC nameplates; hides during combat."},
-        {"patrolHints", "Show quest-giver patrols on the map", "Show a thin amber search path for upcoming quest givers with published patrol waypoints. It is a possible patrol path, not their live position."},
+        {"patrolHints", "Show quest-giver patrols on the map", "Show a possible patrol path for wandering quest givers."},
         {"npcMarker", "Objective marker style", "Choose a star, cross, kill skull, or quest ! beside needed enemy names.", {{"star", "Star"}, {"cross", "Cross"}, {"skull", "Skull for kills"}, {"quest", "Quest !"}}}}},
     {"automation", "Quest dialogs", {
-        {"autoSelectQuests", "Open guide quests at an NPC", "Select useful pickups for this guide as the NPC list returns, or the current completed turn-in. Combine with auto-accept to collect a visit; unrelated quests stay manual."},
-        {"autoAccept", "Accept guide quests only", "Opt-in: accept an opened pickup only when it belongs to the selected guide and passes its level, race, prerequisite and skip checks. Other quests stay manual."},
-        {"autoTurnIn", "Turn in quests without a reward choice", "Opt-in: handle completed quest dialogs you open. Item reward choices always remain manual."}}},
+        {"autoSelectQuests", "Open guide quests at an NPC", "Open suitable guide quests and ready turn-ins when you talk to an NPC."},
+        {"autoAccept", "Accept guide quests only", "Automatically accept opened quests from your current guide."},
+        {"autoTurnIn", "Turn in quests without a reward choice", "Turn in completed quests when you open their dialog. Choose item rewards yourself."}}},
     {"research", "Quest data for testing", {
         {"recordQuestData", "Record NPC offers and quest progression", "Save the latest 300 local observations for prerequisite research. Export manually; no chat or automatic uploads."},
         {"useLearnedQuests", "Use observed prerequisite patterns", "Ordinary findings apply across classes/races within a faction and build. Restricted quests keep their class/race scope. Requires an observed unlock; skipping alone teaches no prerequisite."},
@@ -178,6 +178,7 @@ function ns.CreateSettings()
     frame.section:SetPoint("TOPLEFT", 22, -51); frame.sectionKey = "play"
     frame.note = ns.UILabel(frame, nil, 11)
     frame.note:SetPoint("BOTTOMLEFT", 22, 16); frame.note:SetWidth(390); frame.note:SetHeight(28); frame.note:SetTextColor(unpack(ns.UIColors.muted))
+    frame.note:Hide()
     local reset = ns.UIButton(frame, "Reset guide skips", 135, ns.ResetGuideSkips)
     reset:SetPoint("BOTTOMRIGHT", -22, 18)
     ns.UIHelp(reset, "Clear every saved quest/step skip for this character, across all guides and zones. Quest completion is unchanged.")
@@ -202,7 +203,6 @@ function ns.RenderSettings()
     for key, control in pairs(ns.settings.dropdowns) do control:SetChoice(ns.Option(key)) end
     for key, page in pairs(ns.settings.pages) do page:SetShown(key == ns.settings.sectionKey) end
     ns.settings.section:SetChoice(ns.settings.sectionKey)
-    ns.settings.note:SetText(ns.Option("soloMode") and "Solo leveling: party features are disabled.\nQuest progress and saved guides still update." or "Party guides help useful catch-up first.\nChoose quest-log detours when starting a guide.")
 end
 
 function ns.ToggleSettings()

@@ -44,13 +44,12 @@ local function updateTooltip(frame, opening)
     if description ~= "" then GameTooltip:AddLine(description, 1, 1, 1, true) end
     if status ~= "" then GameTooltip:AddLine(status, 1, 0.82, 0.3, true) end
     if context ~= "" then GameTooltip:AddLine(context, 0.8, 0.85, 0.9, true) end
-    GameTooltip:AddLine("Drag to move • /wt arrow to toggle", 1, 1, 1, true)
-    GameTooltip:AddLine("Direction relative to your character; follow roads and terrain.", 0.75, 0.8, 0.85, true)
+    GameTooltip:AddLine("Drag to move.", 1, 1, 1, true)
     GameTooltip:Show()
 end
 
 function ns.RouteContext(stop, mapID, facts)
-    if stop.unsafeTransit then return "No mapped bypass is known. Follow roads around the town.\nYour quest and guide step are retained." end
+    if stop.unsafeTransit then return "No mapped bypass is known. Follow roads around the town." end
     if ns.IsClassTrainingStep(stop) then
         local training = stop.kind == "trainer" and stop or stop.goal
         return "Optional • level " .. training.trainingLevel .. " training check.\nTrain manually; Done training resumes quests."
@@ -59,9 +58,7 @@ function ns.RouteContext(stop, mapID, facts)
         return "Check this NPC's offers; pickup is unconfirmed.\n" .. ns.StopLocationText(stop, mapID)
     end
     if stop.kind == "loading" then
-        return stop.action == "scan" and ("Checking your quests and completion history.\n"
-            .. (ns.guideScanning and ns.guideScanning.guide.fixedRoute and "The guide's fixed step order is retained." or "Checking the route for your next steps."))
-            or "Checking progress and prerequisites.\nComparing nearby pickups, work and returns."
+        return stop.action == "scan" and "Checking quest progress…" or "Preparing your route…"
     end
     local travelSummary = ns.TravelPathSummary(stop)
     if travelSummary then return travelSummary end
@@ -99,7 +96,7 @@ function ns.RouteContext(stop, mapID, facts)
     stop = facts.stop
     local reason = ns.GuideStepHint(stop, facts)
     if stop.unknownLocation then reason = "Exact location missing; use the quest tracker."
-    elseif stop.clientLocation then reason = "Location supplied by your quest tracker." end
+    end
     local forPlayer = ns.SafeTitle(stop.forPlayer)
     local who = forPlayer and (" • For " .. forPlayer) or ""
     local context = ns.StopLocationText(stop, mapID) .. who
@@ -251,9 +248,9 @@ function ns.UpdateNavigation()
     end
     frame.symbol:SetText("…"); frame.symbol:SetTextColor(0.96, 0.76, 0.35, 1)
     frame.symbol:SetShown(state.angle == nil and not state.arrived and not state.flight)
-    frame.step:SetText(state.stop.kind == "loading" and (state.stop.action == "scan" and "Checking guide progress" or "Generating an efficient trip") or state.stop.historyPreview and "History preview • published location" or
+    frame.step:SetText(state.stop.kind == "loading" and (state.stop.action == "scan" and "Checking guide progress" or "Preparing route") or state.stop.historyPreview and "Previous step" or
         (ns.routeSelection and ns.routeSelection.mode == "travel" and "Travel guide • Levels 1–60" or
-            ns.navigationPreview and "Preview step • arrows browse; Scan returns to the plan" or
+            ns.navigationPreview and "Step preview" or
             (state.stop.npcVisitPickup and "Collect quests at this NPC" or state.stop.guideStep and ("Zone guide step " .. state.stop.guideStep) or "Current guide step")))
     local training = ns.IsClassTrainingStep(state.stop)
     if training then frame.step:SetText("Optional class training") end

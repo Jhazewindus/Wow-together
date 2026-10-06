@@ -17,7 +17,7 @@ end
 function ns.ReadProfessionRecipes()
     if ns.RouteInCombat() then return end
     if not C_TradeSkillUI or type(C_TradeSkillUI.GetAllRecipeIDs) ~= "function" or type(C_TradeSkillUI.GetRecipeInfo) ~= "function" then
-        ns.professionStatus = "Recipe data is unavailable in this beta build. Personal profession quests remain available."; return
+        ns.professionStatus = "Recipe guides unavailable."; return
     end
     local info = ns.ReadPublic(C_TradeSkillUI.GetChildProfessionInfo)
     if type(info) ~= "table" or not ns.GuideInteger(info.professionID) or info.professionID <= 0 then
@@ -120,11 +120,11 @@ function ns.ProfessionChoices()
         for _, slug in ipairs(keys) do
             local key = slug
             choices[#choices + 1] = {title = string.gsub(key, "^%l", string.upper) .. " quest guide", category = "PERSONAL / PROFESSION QUESTS",
-                detail = groups[key] .. " published quests. These do not appear in party leveling guides.", action = "Choose guide",
+                detail = groups[key] .. " profession quests", action = "Choose guide",
                 click = function() ns.professionSelection = "quests:" .. key; ns.Refresh() end}
         end
         table.insert(choices, 1, {title = "Your next profession skill points", category = "PERSONAL / GET STARTED",
-            detail = ns.professionStatus .. " AH costs use only public searches you make. No automatic shopping or crafting.",
+            detail = ns.professionStatus,
             action = "Refresh recipes", click = function() ns.ReadProfessionRecipes(); ns.Refresh() end})
     else
         choices[#choices + 1] = {title = "Profession guides", category = "PERSONAL / CHOOSE ANOTHER GUIDE", detail = ns.professionStatus,

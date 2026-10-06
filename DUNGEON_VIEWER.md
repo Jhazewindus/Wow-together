@@ -1,4 +1,4 @@
-# Dungeon viewer — 0.8.25
+# Dungeon viewer — 0.8.26
 
 **See dungeon** opens the full journal from the main addon's Dungeon quests cards
 from anywhere. Cards place **Quest list** beside **Start route**; clicking the
@@ -11,6 +11,10 @@ equipment/other filters, paging, native item icons, cached client tooltips and
 standard modified-item clicks. Client item requests are bounded to once per
 visible item per viewer session. Common junk/consumables and generic common drops
 are omitted. Boss list order is alphabetical within level, not a walkthrough.
+
+Player windows keep labels concise and show brief unavailable states for missing
+maps or loot. Source coverage, native API details and layout limitations belong
+in diagnostics and the source notes below.
 
 **Map only** collapses the journal into a small gameplay window; **Full view**
 restores bosses and loot. Both views move and resize using native frame sizing,

@@ -77,4 +77,12 @@ Use this direction when evaluating features, naming and interface design.
 Keep supporting tools optional and the interface compact and coherent. Prioritize
 reliable, useful guidance for the player's current situation, with clear next
 steps and build-tested behavior. Preserve working guide fundamentals and the
-user's established preferences while developing the wider companion.
+user's established preferences while developing the wider companion. Work toward
+a polished 1.0 release; current updates remain beta releases until that milestone.
+
+Keep player-facing screens concise. Show quest actions, destinations, progress,
+levels and useful choices. Keep developer discussion, API limitations, source
+coverage, raw IDs and chat commands in diagnostics/help/documentation rather than
+routine screens and tooltips. Use brief, honest empty states such as "Map
+unavailable" when content is missing; preserve explanations that help a player
+make a decision, including useful low-level prerequisite exceptions.

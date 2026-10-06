@@ -280,7 +280,7 @@ function ns.CreateUI()
     ns.ui.hint:SetPoint("BOTTOMLEFT", 26, 44)
     ns.ui.hint:SetWidth(808)
     ns.ui.hint:SetHeight(14); ns.ui.hint:SetWordWrap(false)
-    ns.ui.hint:SetText("Show route draws numbered stops and lines on your world map.\nUse Quest library to browse zones, search names, and check requirements.")
+    ns.ui.hint:SetText("Choose a guide or browse quests.")
     local probe = button(window, "Diagnostics", 132, function() ns.Diagnostics() end)
     probe:SetPoint("BOTTOMLEFT", 26, 12)
     local tracker = button(window, "Tracker", 84, function() ns.ToggleTracker() end)
@@ -471,7 +471,6 @@ local function renderMembers(card, members, top)
                 GameTooltip:SetOwner(self, "ANCHOR_TOP")
                 GameTooltip:AddLine(self.fullName, 1, 1, 1)
                 GameTooltip:AddLine(self.description, 0.85, 0.89, 0.92, true)
-                GameTooltip:AddLine("Unfinished history does not confirm level, faction, or prerequisites.", 0.93, 0.73, 0.39, true)
                 GameTooltip:Show()
             end)
             cell:SetScript("OnLeave", function() if GameTooltip then GameTooltip:Hide() end end)
@@ -597,7 +596,7 @@ function ns.Render(queryContext, routeUpdated)
         for _, review in ipairs(ns.QuestLogReview()) do
             local id = review.id
             display[#display + 1] = {activity = {title = review.title, category = "QUEST LOG REVIEW",
-                detail = "Consider abandoning if you no longer want this quest. " .. review.reason .. " Review the game quest log before deciding; no quest is abandoned automatically.",
+                detail = review.reason .. " Consider abandoning it if you no longer want to finish it.",
                 action = "Review quest", click = function() ns.ShowQuestDetails(id) end}}
         end
     else
@@ -667,11 +666,11 @@ function ns.Render(queryContext, routeUpdated)
             if libraryItem.id then
                 local quest = libraryItem.quest
                 local _, reason = ns.CatalogueAllowed(libraryItem.id, ns.profile, ns.self, queryContext)
-                card.reason:SetText("Requires level " .. (quest.minLevel or "unknown") .. " • " .. (quest.side or "Faction not supplied")
-                    .. "\n" .. (reason or (quest.starts and ("Start: " .. quest.starts[1].name) or "Quest giver coordinates are not supplied.")))
+                card.reason:SetText("Requires level " .. (quest.minLevel or "?") .. " • " .. (quest.side or "Faction unknown")
+                    .. "\n" .. (reason or (quest.starts and ("Start: " .. quest.starts[1].name) or "Quest giver location unavailable.")))
                 card.mapButton.caption:SetText(guide.hasPoint and "Show route" or "View details")
             else
-                card.reason:SetText(libraryItem.count .. " known quests • " .. libraryItem.mapped .. " with published pickup locations")
+                card.reason:SetText(libraryItem.count .. " quests")
                 card.mapButton.caption:SetText("Browse quests")
             end
             ns.UIHelp(card, card.title:GetText() .. "\n" .. card.reason:GetText())
@@ -694,24 +693,12 @@ function ns.Render(queryContext, routeUpdated)
             card.reason:SetHeight(height - 90)
             local nextTitle = guide.nextStop and guide.nextStop.label or guide.target.title
             local _, requirement = ns.CatalogueAllowed(guide.target.id, ns.profile, ns.self, queryContext)
-            local coverage = guide.coverage
-            local detail = guide.fullGuide and (coverage and ("Published: " .. coverage.pickups .. "/" .. coverage.quests .. " pickups • "
-                .. coverage.objectives .. "/" .. coverage.quests .. " objectives • " .. coverage.turnins .. "/" .. coverage.quests .. " turn-ins")
-                or (guide.knownStops .. " selected quest(s) have a known pickup location."))
-                or guide.hasPoint and (guide.knownStops .. " mapped stops • Next: " .. nextTitle)
-                or (requirement or "No NPC or objective coordinates are available for this step yet.")
+            local detail = guide.hasPoint and ("Next: " .. nextTitle) or (requirement or "Location unavailable.")
             local summary = guide.fullGuide and (#guide.records .. " quests • " .. (selected and "Following this guide" or "Fixed quest order")) or guide.reason
-            card.reason:SetText(summary .. "\n" .. (guide.upcoming and "Preview its quest list now; starting early shows a level warning."
+            card.reason:SetText(summary .. "\n" .. (guide.upcoming and "For later levels • View the quest list to plan ahead."
                 or guide.fullGuide and ns.GuideXPText(guide, queryContext) or detail))
             if guide.fullGuide then
                 ns.GuideXPHelp(card)
-                -- Keep source counts and long descriptions available without
-                -- filling each guide row with diagnostic metadata.
-                local xpHelp = card:GetScript("OnEnter")
-                card:SetScript("OnEnter", function(self)
-                    if xpHelp then xpHelp(self) end
-                    if GameTooltip then GameTooltip:AddLine(guide.title, 1, 1, 1, true); GameTooltip:AddLine(detail, 0.65, 0.67, 0.66, true); GameTooltip:Show() end
-                end)
             else ns.UIHelp(card, guide.title .. "\n" .. summary .. "\n" .. detail) end
             card.reason:Show()
             card.mapButton.caption:SetText(ns.filter == "guides" and guide.fullGuide and "Show quest list" or (guide.hasPoint and "Show route" or "View details"))
@@ -745,7 +732,7 @@ function ns.Render(queryContext, routeUpdated)
         ns.ui.metrics[2].value:SetText(tostring(visible))
     end
     ns.ui.empty:SetShown(visible == 0)
-    ns.ui.empty:SetText(ns.filter == "library" and "No imported quests match this search.\nTry a quest or zone name."
+    ns.ui.empty:SetText(ns.filter == "library" and "No matching quests.\nTry a quest or zone name."
         or (ns.filter == "review" and "No unfinished quests need a low-value review.\nReady turn-ins and class/profession quests are kept."
         or (ns.filter == "guides" and "No zone guides match this bracket and search.\nChoose another bracket or clear the search to browse future guides."
         or (ns.filter == "suggestions" and "Sync with a friend to get party suggestions."

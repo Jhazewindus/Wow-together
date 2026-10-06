@@ -1,5 +1,16 @@
 # Wow Together changelog
 
+## 0.8.26
+
+- Clean up dungeon windows: remove technical footers and map-position explanations,
+  shorten unavailable messages, and keep boss/loot/level information concise.
+- Remove source-coverage notes from guide cards and map tooltips, shorten preview
+  and loading text, and remove the arrow tooltip's chat command. Keep technical
+  information in diagnostics/docs and preserve useful quest instructions.
+- Shorten settings explanations, profession cards and quest-review text; keep
+  useful restrictions, choices and prerequisite guidance clear.
+- Preserve guide order, progress, map markers, dungeon controls and saved layouts.
+
 ## 0.8.25
 
 - Hide the dungeon map-level dropdown when only one map, or no verified map, is

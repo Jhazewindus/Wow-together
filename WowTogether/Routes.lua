@@ -758,13 +758,11 @@ function ns.DrawRoute(provider, geometryOnly)
                     GameTooltip:AddLine(self.group.numbers[step] .. ". " .. stop.label, 0.96, 0.76, 0.36, true)
                     GameTooltip:AddLine(stop.title, 1, 1, 1, true)
                     if stop.forPlayer then GameTooltip:AddLine("For " .. stop.forPlayer, 0.7, 0.85, 0.9, true) end
-                    if stop.approximate then GameTooltip:AddLine("Approximate NPC encounter location.", 0.7, 0.75, 0.8, true) end
-                    if stop.published then GameTooltip:AddLine("Published Forever location; check against this beta build.", 0.7, 0.75, 0.8, true) end
+                    if stop.approximate then GameTooltip:AddLine("Search nearby.", 0.7, 0.75, 0.8, true) end
                     local entity = stop.entityID and ns.questEntities and ns.questEntities.npc and ns.questEntities.npc[stop.entityID]
                     if (stop.kind == "a" or stop.kind == "t") and entity and entity.patrols and #entity.patrols > 0 then
-                        GameTooltip:AddLine("Patrolling quest giver: search along the thin amber path. Published patrol; live position unknown.", 1, 0.75, 0.3, true)
+                        GameTooltip:AddLine("Patrolling NPC: search along the amber path.", 1, 0.75, 0.3, true)
                     end
-                    if stop.planned then GameTooltip:AddLine("Planned stage after the previous step.", 0.7, 0.75, 0.8, true) end
                 end
                 GameTooltip:Show()
             end)
@@ -786,13 +784,13 @@ function ns.DrawRoute(provider, geometryOnly)
         pin:Show()
     end
     local missingTravel = displayed[1] and displayed[1].mapID ~= mapID and not projected[1]
-    updateLegend(legend, route.flying and "Wow Together • Flying • Quest markers retained; ground lines resume after landing" or
+    updateLegend(legend, route.flying and "Wow Together • Flying" or
         "Wow Together • " .. #displayed .. " stops • " .. #groups .. " visible " .. (#groups == 1 and "place" or "places")
         .. (ns.Option("fullRoute") and " • All eligible mapped quests" or " • Next steps")
         .. (route.confirmation and " • Confirm quest with this NPC" or ns.routePaused and " • Waiting for party updates" or "")
         .. (route.partial and " • Partial route" or "")
         .. ((route.otherMaps or 0) > 0 and " • Other zones" or "")
-        .. (missingTravel and ("\nTravel to " .. ns.MapName(displayed[1].mapID) .. "; travel coordinates unavailable here.") or ""))
+        .. (missingTravel and ("\nTravel to " .. ns.MapName(displayed[1].mapID) .. ".") or ""))
     ns.routeStats.pins, ns.routeStats.lines = #groups, visibleLines
     ns.routeStats.hostileLines = hostileLines
     ns.routeStats.status = route.flying and "Flying; ground route lines hidden until landing."

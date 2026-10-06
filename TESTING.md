@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.25**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.26**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
@@ -39,7 +39,13 @@ The expanded-guide checks below take about **15–25 minutes**.
    and accept: it opens the compact map. Disable Offer the map when entering a
    dungeon in settings: manual See dungeon must continue working. Entry in combat
    should wait until combat ends. Raids must not trigger this popup.
-6. Report dungeon, floor, client build and /wt probe for missing/mismatched assets,
+6. Check that dungeon windows have no technical footers or boss-position notes.
+   Missing maps/loot should show short unavailable messages. Hover guide cards
+   and map markers: retain useful instructions without source/API notes. Guide
+   scans should show short loading text and return to the arrow normally.
+   Check settings, profession guides and quest review for concise labels and
+   explanations; toggles and quest actions must work as before.
+7. Report dungeon, floor, client build and /wt probe for missing/mismatched assets,
    markers or items. Classic reference maps can differ from Forever; host previews
    are not proof of client rendering. Include actual NPC/item IDs where possible.
 
