@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.8.14** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.15** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -20,6 +20,28 @@ Replace the folder on **every party member's client**, including all **49 Lua
 files** and the **Media folder**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.15 focuses on Scan guide and personal quest progress.** Scan reads a fresh
+quest log before objectives/history, retries briefly while the client catches up
+and rechecks if progress changes during a large scan. It advances the retained
+fixed order even with the dashboard hidden or resizing. An unavailable snapshot
+keeps the last valid progress and saved skips; it cannot claim guide completion.
+The arrow shows a loop while scanning, then returns to directions.
+
+The leveling band remains **three levels below to three above** the character
+(or lowest synced party member). Useful lower-level prerequisites stay in the
+guide: the panel labels the exception and names the quest it unlocks, including
+its level or dungeon purpose. For example, at level 21, level-16 Harpy Lieutenants
+can qualify because it unlocks level-20 Serena Bloodfeather. Unrelated low-level
+unfinished work stays excluded, even if accepted. Ready hand-ins are retained.
+
+Quest-update bursts now share a short, 0.1-second personal refresh; the hidden
+dashboard is not rebuilt for those background updates. Party messages retain
+their separate two-second batch. These host checks establish less repeated work,
+not a measured improvement to live beta frame rate. With zone suggestions enabled,
+a suitable adjacent zone can also be offered after leveling when the selected
+guide has no useful work ready. Missing-location/NPC checks keep their place;
+**Start zone guide / Keep my guide** always leaves the decision to the player.
 
 **0.8.14 adds a tiny BG button at the guide panel's top-right.** Switch between
 an opaque background and a see-through fill; instructions, arrow and controls
@@ -389,8 +411,11 @@ prerequisites or change friends' progress. Recording saves these as explicit ski
 events, without inferring NPC absence or a prerequisite. Button tooltips explain
 the distinction. **Scan guide** reads actual quest
 logs, objectives and completion history, then returns to the current fixed step, or rebuilds the useful adaptive plan without a report popup. History scope includes
-known series and prerequisites and is bounded to 512 IDs. Restricted values
-remain unknown; peer history waits for received snapshots.
+known series and prerequisites and is bounded to 512 IDs. Large history scans
+yield between batches and restart at most twice if quest/level events change
+progress during the scan. A log that is temporarily unavailable gets at most
+three short read attempts; if it remains unavailable, retry Scan after loading.
+Restricted values remain unknown; peer history waits for received snapshots.
 There is no extra "Guide replanned" footer below the arrow controls.
 Diagnostics distinguish full guide quest counts, trip quest counts and stops:
 one quest can supply pickup, objective and turn-in stops, so eighteen stops do
@@ -398,7 +423,7 @@ not mean eighteen quests. Completed progress and missing coordinates also
 affect each trip; compare the guide identity and scope before comparing counts.
 
 **Reconsider skips when scanning** is off by default. When enabled, Scan clears
-skips for quests in the selected guide before refreshing progress. A quest shared with
+skips for quests in the selected guide only after a successful fresh scan. A quest shared with
 another guide has the same saved skip. **Reset guide skips** clears every guide's
 skips for this character, across zones; other characters are unaffected.
 

@@ -322,7 +322,11 @@ function ns.SyncNow(force)
     ns.Refresh()
 end
 
-function ns.ScheduleSync()
+function ns.ScheduleSync(localReady)
+    if not localReady then ns.ScheduleGuideProgress() end
+    -- Solo guide updates have their own short event batch; the slower timer is
+    -- for party traffic only and must not hold back personal guide progression.
+    if not ns.syncReady or not inParty() then return end
     if not ns.db or pending or not C_Timer or type(C_Timer.After) ~= "function" then return end
     pending = true
     C_Timer.After(2, function() pending = false; ns.SyncNow(false) end)

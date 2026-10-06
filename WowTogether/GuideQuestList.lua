@@ -7,6 +7,9 @@ local colors = {a = {1, 0.82, 0.3}, q = {0.92, 0.88, 0.76}, t = {0.55, 0.84, 0.5
 local function status(stop, query)
     if ns.GuideQuestSkipped(stop.id) or #ns.FilterGuideStages({stop}) == 0 then return "Skipped" end
     if ns.Completed(stop.id, query) == true then return "Done" end
+    if not ns.LevelingWorkAllowed(stop.id, ns.self, query) then
+        return ns.IsGroupQuest(stop.id) and "Needs a party" or "Outside level range"
+    end
     local active = ns.active and ns.active[stop.id]
     if active then
         if stop.kind == "a" then return "Accepted" end
@@ -90,7 +93,10 @@ function ns.RenderGuideQuestList()
             row:SetScript("OnEnter", function(self)
                 if not GameTooltip or not self.stop then return end
                 GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-                GameTooltip:AddLine(ns.GuideStepDescription(self.stop), 1, 1, 1, true); GameTooltip:Show()
+                GameTooltip:AddLine(ns.GuideStepDescription(self.stop), 1, 1, 1, true)
+                local useful, reason = ns.LevelingValue(self.stop.id)
+                if reason then GameTooltip:AddLine((useful and "Why this quest: " or "Level filter: ") .. reason, 1, 0.82, 0.3, true) end
+                GameTooltip:Show()
             end)
             row:SetScript("OnLeave", function() if GameTooltip then GameTooltip:Hide() end end)
             frame.rows[slot] = row

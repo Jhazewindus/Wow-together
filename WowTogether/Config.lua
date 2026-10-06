@@ -26,8 +26,8 @@ local sections = {
         {"nearbyPickups", "Collect useful quests nearby", "Group eligible guide pickups within 100 yards of the next pickup. Confirm NPC offers on arrival; preserve objectives, returns, prerequisites and skips."},
         {"classQuests", "Include class quests", "Show or hide eligible class quest steps without changing fixed guide order. Other classes remain excluded."},
         {"dungeonPrompts", "Suggest dungeon quest collection", "Offer a plan when your character meets every known pickup level for the dungeon's relevant regular quests. Prerequisites still apply; party sync is not required."},
-        {"zonePrompts", "Suggest the next nearby zone", "Offer a known questline transition after the current work is complete."},
-        {"scanSkipped", "Reconsider skips when scanning", "Scan guide clears saved skips for quests in the selected guide before replanning. Leave off to keep skips."},
+        {"zonePrompts", "Suggest the next nearby zone", "Offer a known questline transition or a suitable neighbouring zone when your current guide has no useful work ready. You choose whether to switch."},
+        {"scanSkipped", "Reconsider skips when scanning", "A successful Scan guide clears saved skips for quests in the selected guide. Leave off to keep skips; failed or cancelled scans keep them."},
         {"circuitRadius", "Nearby pickup distance", "Limit how much additional walking a nearby pickup adds to the current trip.", {{0.10, "Stay close"}, {0.16, "Small detours"}, {0.22, "Wider loop"}}}}},
     {"navigation", "Arrow and map", {
         {"routeArrow", "Show the direction arrow", "A movable guide panel with the current instruction and step controls."},

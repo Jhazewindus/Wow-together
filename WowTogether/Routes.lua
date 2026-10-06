@@ -853,6 +853,7 @@ local function routeSignature(route)
 end
 
 function ns.UpdateSelectedRoute(choices, query)
+    if ns.guideScanning or ns.routePlanning then return end
     local selection = ns.routeSelection
     if not selection then return end
     if selection.mode == "travel" then ns.UpdateTravelGuide(selection); return end

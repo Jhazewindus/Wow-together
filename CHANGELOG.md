@@ -1,5 +1,24 @@
 # Wow Together changelog
 
+## 0.8.15
+
+- Scan fresh personal quest-log, objective and completion data. Retry briefly
+  during loading and recheck changes during large scans. Keep fixed order and
+  preserve skips on failed/cancelled reads; Reconsider skips applies on success.
+- Refresh arrow/map even with the dashboard hidden/resizing. Batch overlapping
+  quest events into a 0.1-second personal update; avoid rebuilding hidden UI.
+  Party messages keep their separate two-second batch and existing protocol.
+- Bridge confirmed accepts/turn-ins while native entries catch up. Keep the last
+  complete public log during incomplete reads; add bounded retries/diagnostics.
+- Keep useful prerequisite exceptions to the -3/+3 level band. Label them and
+  explain the quest they unlock, with its level or dungeon purpose. Filter
+  unrelated unfinished low-level work consistently; retain ready hand-ins.
+- Optionally suggest a suitable adjacent zone after leveling when no useful
+  current work is ready. Keep NPC/location checks; require Start zone guide or
+  Keep my guide. Respect level, identity, pickup and completion requirements.
+- Add Lua 5.1 scan, event-burst, delayed-log, fixed-order and zone regressions.
+  Native beta smoothness, API timing and display still need player testing.
+
 ## 0.8.14
 
 - Add a small BG button to the guide panel to switch its background between

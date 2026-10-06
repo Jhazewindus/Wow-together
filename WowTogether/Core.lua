@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.14"
+ns.VERSION = "0.8.15"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}
@@ -17,10 +17,14 @@ function ns.Print(message)
     end
 end
 
-function ns.Refresh()
+function ns.Refresh(background)
     ns.objectiveDisplayRevision = (ns.objectiveDisplayRevision or 0) + 1
+    local query = ns.NewQuestQuery and ns.NewQuestQuery()
+    -- Guide progress belongs to the guide, not to dashboard rendering. Keep it
+    -- current with a hidden/resizing window, and share this read pass with UI.
+    if ns.UpdateSelectedRoute then ns.UpdateSelectedRoute(nil, query) end
     if ns.ui and ns.ui.resizing then ns.ui.resizeDirty = true
-    elseif ns.Render then ns.Render() end
+    elseif ns.Render and (not background or ns.window and ns.window:IsShown()) then ns.Render(query, true) end
     if ns.RenderTracker then ns.RenderTracker() end
     if ns.RenderGuideQuestList then ns.RenderGuideQuestList() end
     if ns.UpdateNavigation then ns.UpdateNavigation() end
@@ -28,6 +32,35 @@ function ns.Refresh()
     if ns.QueuePartyRouteFollow then ns.QueuePartyRouteFollow() end
     if ns.SchedulePartyCatchup then ns.SchedulePartyCatchup() end
     if ns.SaveSelectedGuide then ns.SaveSelectedGuide() end
+end
+
+local progressPending = false
+ns.guideProgressStats = {updates = 0, coalesced = 0, retries = 0}
+function ns.ScheduleGuideProgress()
+    if not ns.db or not C_Timer or type(C_Timer.After) ~= "function" then return end
+    ns.guideProgressRevision = (ns.guideProgressRevision or 0) + 1
+    if progressPending then ns.guideProgressStats.coalesced = ns.guideProgressStats.coalesced + 1; return end
+    progressPending = true
+    local attempts = 0
+    local function update()
+        -- Clear before running reads/handlers so a surfaced Lua error cannot
+        -- permanently suppress subsequent events. A new event takes precedence
+        -- over this callback's bounded retry.
+        progressPending = false
+        if ns.guideScanning then return end
+        attempts = attempts + 1
+        local ready = ns.ReadQuests()
+        -- Read objectives/destinations only after a complete quest-log snapshot.
+        if ready then ns.ReadGuide() end
+        ns.guideProgressStats.updates = ns.guideProgressStats.updates + 1
+        ns.Refresh(true)
+        if not ready and attempts < 3 and not progressPending then
+            progressPending = true
+            ns.guideProgressStats.retries = ns.guideProgressStats.retries + 1
+            C_Timer.After(0.25 * attempts, update)
+        end
+    end
+    C_Timer.After(0.1, update)
 end
 
 function ns.On(event, handler)
@@ -169,6 +202,10 @@ function ns.Diagnostics()
     table.sort(unavailable)
     output("Unavailable event registrations: " .. (#unavailable > 0 and table.concat(unavailable, ", ") or "none"))
     ns.SyncDiagnostics(output)
+    output("Personal guide updates: " .. ns.guideProgressStats.updates .. " refreshes; "
+        .. ns.guideProgressStats.coalesced .. " overlapping events batched; "
+        .. ns.guideProgressStats.retries .. " quest-log retries. Dashboard work is deferred while hidden/resizing.")
+    output("Scan guide: fresh quest log, objectives and history; fixed order retained. Useful lower-level prerequisites explain their unlock.")
     ns.NavigationDiagnostics(output)
     ns.GuideTipDiagnostics(output)
     local low, high = ns.PreferredQuestLevels()
@@ -218,7 +255,6 @@ end)
 
 ns.On("PLAYER_LOGIN", function() ns.RestoreSavedGuide(); ns.ScheduleFlightDiscovery(); ns.ScheduleSync() end)
 ns.On("QUEST_LOG_UPDATE", function()
-    if ns.db then ns.ReadProgress(); ns.UpdateNPCHints(); ns.Refresh() end
     ns.ScheduleSync()
 end)
 ns.On("ZONE_CHANGED_NEW_AREA", function()
@@ -227,16 +263,20 @@ end)
 ns.On("PLAYER_LEVEL_UP", function(level) ns.ReadGuideXP(); ns.RecordQuestResearch("level", {level = level}); ns.ScheduleSync() end)
 ns.On("QUEST_ACCEPTED", function(_, id)
     ns.ForgetQuestCompletion(id)
+    ns.NoteQuestAccepted(id)
     ns.RecordQuestResearch("accept", {questID = id})
-    ns.RefreshNPCGuideProgress(id)
+    if ns.GuideInteger(id) then ns.offered[id] = nil end
+    ns.autoGossipAttempt, ns.autoAcceptAttempt = nil, nil
     ns.ScheduleSync()
 end)
 ns.On("QUEST_TURNED_IN", function(id)
     ns.RememberQuestCompletion(id)
+    ns.NoteQuestTurnedIn(id)
     ns.RecordQuestResearch("turn-in", {questID = id})
     ns.InvalidateNPCOffers()
     ns.activityRevision = (ns.activityRevision or 0) + 1; ns.ScheduleSync()
 end)
+ns.On("QUEST_REMOVED", function(id) ns.NoteQuestRemoved(id); ns.ScheduleSync() end)
 ns.On("UPDATE_FACTION", function()
     ns.RecordQuestResearch("reputation")
     ns.InvalidateNPCOffers(); ns.ScheduleSync()

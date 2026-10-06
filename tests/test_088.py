@@ -25,9 +25,12 @@ def confirmation_client(mapped=True):
 def area_client(count=3):
     c = route_client()
     c.ns.SetOption('soloMode', True)
-    # Use a supplied immutable objective phase without the dashboard rebuilding
-    # this synthetic single-quest guide from unrelated catalogue fixtures.
+    # Isolate presentation of a supplied objective phase. Route progress now
+    # updates independently of the dashboard; this fixture's generic catalogue
+    # intentionally differs from its detailed phase. Integrated native quest
+    # refresh/compiled-route grouping is exercised separately in test_0815.
     c.ns.Render = None
+    c.ns.UpdateSelectedRoute = None
     c.lua.execute('C_Map.GetMapWorldSize=function() return 1000,1000 end; function GetPlayerFacing() return 0 end')
     data, stops, active, progress = {}, [], {}, {}
     for i in range(count):

@@ -314,7 +314,7 @@ function ns.ScheduleActivitySuggestions()
     pending = true
     C_Timer.After(1, function()
         pending = false
-        if ns.RouteInCombat() or ns.routePlanning or (ns.activityPrompt and ns.activityPrompt:IsShown()) then return end
+        if ns.RouteInCombat() or ns.routePlanning or ns.guideScanning or (ns.activityPrompt and ns.activityPrompt:IsShown()) then return end
         lastContext = context
         local selection = ns.routeSelection
         if ns.Option("dungeonPrompts") and ns.questReady then

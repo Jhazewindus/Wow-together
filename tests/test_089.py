@@ -392,6 +392,7 @@ class NearbyPickupTests(unittest.TestCase):
         for i, id in enumerate((900, 901, 902), start=1):
             c.lua.globals().entries[i] = c.lua.table_from({'questID': id, 'title': 'Hub ' + str(id)})
             c.ns.handlers.QUEST_ACCEPTED(i, id)
+        c.drain()  # Process the coalesced personal quest-log refresh.
         self.assertEqual(steps(c.ns.selectedRoute), [(s.id, s.kind) for s in g.fixedPlan.values() if s.kind != 'a'])
         self.assertEqual(order(g), before)
 

@@ -91,6 +91,8 @@ Progress advances without changing that order, including after abandon or Scan.
 Turn Follow fixed zone guides off and restart a guide for adaptive trips, which
 hold up to six quests/twenty stops; their full preview is not limited to that trip.
 Optional suitable next-zone prompts offer Start zone guide / Keep my guide.
+They can also offer an adjacent suitable zone after leveling when this guide has
+no useful work ready; unresolved NPC/location steps are retained.
 /wt config has purpose-based settings pages with dropdowns and help text.
 Unconfirmed branching prerequisites name the NPC. The current check gets a
 large addon map star, friendly-nameplate confirmation hint and directions to the
@@ -195,7 +197,8 @@ selectable in Party quests. Quest acceptance/zone updates retain the selection.
 Full zone/questline invitations share guide identity and bracket, allowing friends
 to reconstruct the full catalogue scope beyond the twenty transmitted quest IDs.
 Low-level pickups need a known useful later quest/dungeon exception, explained
-under the arrow. Party stages focus on the member behind in confirmed progress.
+under the arrow. Lower-level prerequisites name the useful unlock and its level
+or dungeon purpose. Party stages focus on the member behind in confirmed progress.
 Unknown prerequisites/history stay unknown. Include current quests also filters
 unfinished low-level work; ready hand-ins and useful prerequisites are kept.
 Fixed guides also apply the value filter without rewriting the compiled order.
@@ -215,6 +218,11 @@ Left/right arrow buttons preview previous/later steps without changing quest cre
 History previews use published locations, not a recorded travel timeline.
 Skip step / Skip quest persist for this character and do not change friends' credit.
 Scan guide reads real progress without changing fixed order; adaptive mode replans.
+It reads a fresh quest log before objectives/history, retries temporarily missing
+entries and rechecks large history scans if progress changes. Failed/cancelled
+scans retain saved skips. Reconsider skips clears them only after a successful
+scan. Personal quest events share a short 0.1-second refresh; a hidden/resizing
+dashboard cannot stop guide progress. Party messages keep their two-second batch.
 A rotating loop replaces both arrow displays while scanning/calculating, then
 directions return. History reads yield between batches; changing/clearing a guide
 cancels its pending scan. Flight observations refresh the arrow and map immediately,

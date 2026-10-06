@@ -428,22 +428,64 @@ function ns.InvitedLevelingGuide(invite)
     end
 end
 
-function ns.ZoneGuideForMap(mapID, allLevels)
+function ns.ZoneGuideForMap(mapID, allLevels, query)
     ns.ResolveCatalogueMaps(); rebuildIndex()
     local low, high = ns.GuideLevelRange("party")
     if allLevels then low, high = 1, 255 end
     for _, entry in pairs(entries) do
         if entry.mode == "zone" and (entry.mapID == mapID or entry.mapID == 0) then
-            local choice = buildChoice(entry, low, high)
+            local choice = buildChoice(entry, low, high, query)
             if choice and choice.homeMapID == mapID then return choice end
         end
     end
+end
+
+local function levelReadyNeighbour(guide, route, current)
+    -- A level milestone is a suggestion, never permission to replace useful
+    -- current work, an NPC confirmation, or a missing-location step.
+    if not route or #route.stops > 0 or route.pendingStop
+        or not (route.complete or (route.filteredSteps or 0) > 0) then return end
+    local query, best, score = ns.NewQuestQuery(), nil, nil
+    local level = ns.PartyLevelFloor(query)
+    if not level then return end
+    for _, person in ipairs(query.profiles) do if not person.synced then return end end
+    for mapID in pairs(ns.NearbyZoneMaps(current)) do
+        if mapID ~= current and mapID ~= (guide.homeMapID or guide.mapID) and not ns.IsCapitalMap(mapID) then
+            local candidate = ns.ZoneGuideForMap(mapID, false, query)
+            if candidate and ns.GuideLevelSuitable(candidate, query, true) then
+                for _, record in ipairs(candidate.records) do
+                    if ns.ClassQuestEnabled(record.id) and not ns.GuideQuestSkipped(record.id)
+                        and ns.LevelingValue(record.id, query) == true and not ns.PartyQuestFinished(record.id, query)
+                        and ns.FocusCanStartRecord(record, candidate.focusKey)
+                        and ns.CatalogueAllowed(record.id, ns.profile, ns.self, query) == true then
+                        local quest = ns.CatalogueQuest(record.id)
+                        local point = quest and quest.starts and quest.starts[1]
+                        if point and point.mapID == mapID and ns.DiscoveryZoneAllowed(mapID, point) then
+                            local value = math.abs((record.level or level) - level)
+                            if not score or value < score or value == score and candidate.key < best.key then
+                                best, score = candidate, value
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+    if best then
+        best.transition = true
+        best.noticeKey = "level-ready:" .. guide.key .. ":" .. best.key .. ":" .. best.rangeLow
+        best.reason = "At level " .. level .. ", " .. best.zone .. " has useful quests in your leveling range. "
+            .. "Your current guide has no suitable work ready now. Start this nearby zone, or keep your guide."
+    end
+    return best
 end
 
 function ns.LevelingZoneTransition()
     local guide, route = ns.routeSelection, ns.selectedRoute
     if not guide or not guide.fullGuide then return end
     local home, current = guide.homeMapID or guide.mapID, ns.profile and ns.profile.mapID or 0
+    local levelReady = levelReadyNeighbour(guide, route, current)
+    if levelReady then return levelReady end
     local nextMap = route and route.stops[1] and route.stops[1].mapID
     if current ~= home and nextMap == home then return end
     local destination = nextMap and nextMap ~= home and nextMap or current ~= home and current

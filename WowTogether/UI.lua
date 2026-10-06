@@ -498,7 +498,7 @@ local function renderMembers(card, members, top)
     end
 end
 
-function ns.Render()
+function ns.Render(queryContext, routeUpdated)
     if not ns.ui then return end
     local partyEnabled = ns.PartyFeaturesEnabled()
     if ns.ui.partyMode ~= partyEnabled then
@@ -512,7 +512,7 @@ function ns.Render()
         ns.ui.guideLevel.options.party.caption:SetText(ns.ui.guideLevel.entries[1][2])
         for _, chip in ipairs(ns.ui.levelButtons) do if chip.levelKey == "party" then chip.caption:SetText(partyEnabled and "Near party" or "My level") end end
     end
-    local queryContext = ns.NewQuestQuery()
+    queryContext = queryContext or ns.NewQuestQuery()
     local rows = (ns.filter == "all" or ns.filter == "shared" or ns.filter == "different" or ns.filter == "suggestions") and ns.Rows(queryContext) or {}
     local synced, shared, own = 1, 0, 0
     for _, member in pairs(ns.members) do if member.active and not member.syncPending then synced = synced + 1 end end
@@ -524,7 +524,7 @@ function ns.Render()
     ns.ui.hint:SetText(ns.filter == "guides"
         and "Start a guide to follow its quest order. Search by zone, quest or NPC."
         or "Choose a quest to see its route or requirements.")
-    if ns.UpdateSelectedRoute then ns.UpdateSelectedRoute(choices, queryContext) end
+    if not routeUpdated and ns.UpdateSelectedRoute then ns.UpdateSelectedRoute(choices, queryContext) end
     ns.ui.metrics[2].caption:SetText(ns.filter == "library" and "CATALOGUE QUESTS" or (ns.filter == "guides" and "QUEST GUIDES" or "SHARED ACTIVE"))
     ns.ui.metrics[2].value:SetText(tostring(ns.filter == "library" and ns.catalogue.count or (ns.filter == "guides" and #choices or shared)))
     ns.ui.metrics[3].value:SetText(tostring(own))

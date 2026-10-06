@@ -78,13 +78,14 @@ class NPCVisitTests(unittest.TestCase):
         self.assertEqual(order(g), before)
         self.assertTrue(next(s for s in g.fixedPlan.values() if s.id == 901 and s.kind == 'a').unknownLocation)
 
-    def test_accepting_each_pickup_updates_now_then_restores_original_objective_sequence(self):
+    def test_accepting_each_pickup_updates_after_short_batch_then_restores_original_objective_sequence(self):
         c, g = npc_client(unknown=False)
         before = order(g)
         offer(c)
         for i, id in enumerate((900, 901, 902)):
             c.lua.globals().entries[i+1] = c.lua.table_from({'questID': id, 'title': c.ns.QuestTitle(id)})
             c.ns.handlers.QUEST_ACCEPTED(i+1, id)
+            c.drain()  # Quest events share the personal 0.1-second refresh.
             self.assertNotIn(id, pickup_ids(c))
             self.assertTrue(c.ns.active[id])
             self.assertFalse(c.ns.Completed(id))

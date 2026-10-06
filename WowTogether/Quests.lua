@@ -1,5 +1,22 @@
 local addonName, ns = ...
 
+local acceptedPending, turnedInPending = {}, {}
+local function eventQuest(id)
+    return ns.Public(id) and type(id) == "number" and id > 0 and id <= 2147483647 and id == math.floor(id)
+end
+
+function ns.NoteQuestAccepted(id)
+    if eventQuest(id) then acceptedPending[id], turnedInPending[id] = true, nil end
+end
+
+function ns.NoteQuestTurnedIn(id)
+    if eventQuest(id) then acceptedPending[id], turnedInPending[id] = nil, true end
+end
+
+function ns.NoteQuestRemoved(id)
+    if eventQuest(id) then acceptedPending[id] = nil end
+end
+
 function ns.SafeTitle(title)
     if not ns.Public(title) or type(title) ~= "string" then return nil end
     title = string.gsub(title, "[%c|]", " ")
@@ -46,7 +63,7 @@ end
 function ns.ReadQuests()
     -- Commit a whole public snapshot. Zone loading must not look like every
     -- quest was abandoned when one entry or the log API is temporarily nil.
-    local active, titles, levels, incomplete = {}, {}, {}, false
+    local active, titles, levels, incomplete, lingering = {}, {}, {}, false, {}
     ns.restrictedQuests = 0
     if not C_QuestLog or type(C_QuestLog.GetNumQuestLogEntries) ~= "function"
         or type(C_QuestLog.GetInfo) ~= "function" then
@@ -67,11 +84,14 @@ function ns.ReadQuests()
             local id, header = info.questID, info.isHeader
             if ns.Public(id) and ns.Public(header) and not header
                 and type(id) == "number" and id > 0 then
-                local level = info.level
-                if ns.Public(level) and type(level) == "number" and level > 0 and level <= 255 and level == math.floor(level) then levels[id] = level end
-                local title = ns.SafeTitle(info.title)
-                titles[id] = title
-                active[id] = title or ("Quest " .. id)
+                if turnedInPending[id] then lingering[id] = true
+                else
+                    local level = info.level
+                    if ns.Public(level) and type(level) == "number" and level > 0 and level <= 255 and level == math.floor(level) then levels[id] = level end
+                    local title = ns.SafeTitle(info.title)
+                    titles[id] = title
+                    active[id] = title or ("Quest " .. id)
+                end
             elseif not ns.Public(id) or not ns.Public(header) then
                 ns.restrictedQuests = ns.restrictedQuests + 1
                 incomplete = true
@@ -84,6 +104,11 @@ function ns.ReadQuests()
         end
     end
     if incomplete then ns.questReady = false; ns.status = "Waiting for a complete public quest log."; return false end
+    for id in pairs(acceptedPending) do
+        if not active[id] then ns.questReady = false; ns.status = "Waiting for the accepted quest to appear in the quest log."; return false end
+    end
+    acceptedPending = {}
+    for id in pairs(turnedInPending) do if not lingering[id] then turnedInPending[id] = nil end end
     ns.active, ns.localTitles, ns.questLevels = active, titles, levels
     ns.questReady = true
     return true

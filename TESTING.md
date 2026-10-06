@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.14**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.15**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
@@ -15,6 +15,45 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Scan guide regression for 0.8.15 — about 5–10 minutes
+
+Reports reviewed: the unlabeled level-21 Barrens tester described level-16 work
+and a short stutter after quest changes. Mikmans requested a strict -3/+3 start.
+The main developer chose to keep useful prerequisite exceptions and explain
+them clearly. The unnamed level-16 quest and old version/build were not supplied;
+do not treat the example below as a confirmed diagnosis of that tester's route.
+
+1. Keep SavedVariables and start/resume a fixed guide. Accept a planned quest,
+   update a kill/item objective, abandon a quest if desired, and Scan. The arrow,
+   objective counts and map should reflect the actual log/history without
+   changing the compiled order. Ready hand-ins remain until turned in.
+2. Repeat Scan with the main dashboard closed, then while resizing it. The
+   guide panel must still advance. During Scan, expect the rotating loop and
+   disabled scan button; once done, directions return. Progress changes during
+   a larger scan should be reconsidered. Clearing/switching the guide cancels it.
+3. At level 21, the normal work band is 18–24. Check any recommended level-16
+   quest: the panel should label **Lower-level prerequisite** and name a useful
+   unlock with its level or dungeon purpose. Harpy Lieutenants can qualify
+   through level-20 Serena Bloodfeather; ordinary low-level Stolen Booty cannot.
+   Apply the same check in another zone. Ready low-level returns can stay.
+4. Check `/wt probe`: the leveling band, scan summary and personal-update counts
+   should be present. Note any short freeze after a quest accept/completion,
+   whether the dashboard was visible and which guide/step was active. Event
+   batching is host-tested; report actual beta smoothness separately.
+5. Temporarily unreadable quest logs should show waiting/retry status and retain
+   the guide, rather than claiming completion. Scan retries briefly. If needed,
+   retry after zone loading settles. With **Reconsider skips when scanning** on,
+   only a successful scan clears selected-guide skips; a cancelled scan must not.
+6. With **Suggest the next nearby zone** enabled, level until your selected guide
+   has no useful work ready and a mapped adjacent zone has suitable pickups.
+   Expect **Start zone guide / Keep my guide**. Keep preserves the guide and
+   suppresses that repeated offer; Start selects the full next-zone guide.
+   Current useful work or an unresolved NPC/location step must not be displaced.
+   Higher-level, wrong-faction and remote zones must not be milestone suggestions.
+7. Report first Lua error, version/build, character level, zone, guide, current
+   quest/step, settings and `/wt probe`. Party transport is unchanged; this release
+   focuses on the player's Scan guide, not shared party route synchronization.
 
 ## Guide background regression for 0.8.14 — about 2–3 minutes
 

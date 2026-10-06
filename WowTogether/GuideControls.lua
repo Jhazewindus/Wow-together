@@ -88,6 +88,15 @@ function ns.ResetGuideSkips()
     ns.Refresh()
 end
 
+local function readScanSnapshot(cooperative)
+    for attempt = 1, cooperative and 3 or 1 do
+        if ns.ReadQuests() then ns.ReadGuide(); return true end
+        if cooperative and attempt < 3 then coroutine.yield(0.25 * attempt) end
+    end
+    ns.guideScanStatus = "Guide scan paused: quest log unavailable. Retry Scan when it finishes loading."
+    return false
+end
+
 local function scanGuideProgress(guide, refresh, cooperative)
     guide = guide or ns.routeSelection
     if not guide then return end
@@ -95,20 +104,35 @@ local function scanGuideProgress(guide, refresh, cooperative)
         if ns.selectedRoute then ns.selectedRoute.travelOriginMap = nil end
         ns.ResetTravelPath(); ns.UpdateTravelGuide(guide); ns.Refresh(); return
     end
+    ns.RouteHistoryScope(guide.records)
+    local checked, completed, active, total = 0, 0, 0, 0
+    local stable = false
+    for pass = 1, cooperative and 3 or 1 do
+        if not readScanSnapshot(cooperative) then return false end
+        local revision = ns.guideProgressRevision
+        checked, completed, active, total = 0, 0, 0, 0
+        for id in pairs(ns.partyRouteHistoryScope or {}) do
+            total = total + 1
+            local done = ns.Completed(id)
+            if done ~= nil then checked = checked + 1 end
+            if done == true then completed = completed + 1 end
+            if ns.active[id] then active = active + 1 end
+            if cooperative and total % 40 == 0 then coroutine.yield() end
+        end
+        if revision == ns.guideProgressRevision then
+            if not readScanSnapshot(cooperative) then return false end
+            if revision == ns.guideProgressRevision then stable = true; break end
+        end
+    end
+    if not stable then
+        ns.guideScanStatus = "Quest progress changed during scanning. Retry Scan when updates settle."
+        return false
+    end
+    -- A failed/cancelled read must never erase user skips. Apply this opt-in
+    -- only once there is a complete fresh snapshot and a stable history pass.
     if refresh ~= false and ns.Option("scanSkipped") then
         local state = saved()
         for _, record in ipairs(guide.records or {}) do state.quests[record.id], state.steps[record.id] = nil, nil end
-    end
-    ns.RouteHistoryScope(guide.records)
-    ns.ReadQuests(); ns.ReadGuide()
-    local checked, completed, active, total = 0, 0, 0, 0
-    for id in pairs(ns.partyRouteHistoryScope or {}) do
-        total = total + 1
-        local done = ns.Completed(id)
-        if done ~= nil then checked = checked + 1 end
-        if done == true then completed = completed + 1 end
-        if ns.active[id] then active = active + 1 end
-        if cooperative and total % 40 == 0 then coroutine.yield() end
     end
     ns.guideScanStatus = "Guide history: " .. checked .. "/" .. total .. " checked; " .. completed .. " completed; " .. active .. " active."
     if checked < total then ns.guideScanStatus = ns.guideScanStatus .. " Restricted history stays unknown." end
@@ -119,11 +143,11 @@ local function scanGuideProgress(guide, refresh, cooperative)
         if ns.GuideInteger(mapID) and mapID > 0 then ns.QueueMessage("1|Z|" .. mapID) end
         ns.guideScanStatus = ns.guideScanStatus .. " Friends' history waits for their received snapshots."
     end
-    ns.ScheduleSync()
+    ns.ScheduleSync(true)
     if refresh ~= false then
         if guide.fixedRoute then
             ns.navigationPreview, ns.routeSignature = nil, nil
-            ns.Refresh(); return
+            return true
         end
         if guide.fullGuide and not guide.baseGuide then
             local fresh = ns.RebuildLevelingGuide(guide)
@@ -178,11 +202,11 @@ function ns.ScanGuideProgress(guide, refresh)
             ns.guideScanning = nil
             ns.guideScanStatus = "Guide scan failed; the selected guide is retained."
             ns.guideScanError = ns.Public(detail) and type(detail) == "string" and string.sub(detail, 1, 400) or "Unknown scan failure"
-            ns.Refresh(); ns.UpdateNavigation()
+            ns.Refresh(true); ns.UpdateNavigation()
         elseif coroutine.status(worker) == "dead" then
             ns.guideScanning, ns.guideScanError = nil, nil
-            ns.Refresh(); ns.UpdateNavigation(); ns.DrawRoute(nil, true)
-        else C_Timer.After(0.01, advance) end
+            ns.Refresh(true); ns.UpdateNavigation()
+        else C_Timer.After(type(detail) == "number" and detail or 0.01, advance) end
     end
     C_Timer.After(0.01, advance)
 end

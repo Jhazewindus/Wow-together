@@ -84,10 +84,17 @@ function ns.RouteContext(stop, mapID, facts)
     local who = forPlayer and (" • For " .. forPlayer) or ""
     local context = ns.StopLocationText(stop, mapID) .. who
     local useful, exception = ns.LevelingValue(stop.id)
+    local quest, low = ns.CatalogueQuest(stop.id), ns.PreferredQuestLevels()
+    if useful == true and exception and quest and low and (quest.level or 0) > 0 and quest.level < low then
+        facts.lowerLevelPrerequisite = quest.level
+        facts.lowerLevelClassQuest = ns.IsClassQuest(stop.id)
+        if not facts.lowerLevelClassQuest then exception = "Prerequisite: " .. exception end
+    end
     if ns.routeSelection and ns.routeSelection.catchupRequired and ns.routeSelection.catchupRequired[stop.id] then
         reason = "Finish this prerequisite to catch your party up."
     elseif useful == true and exception then reason = exception
-    elseif useful == false then reason = "Quest-log work you chose to keep in this route." end
+    elseif useful == false then reason = stop.kind == "t" and "Ready for turn-in; collect its reward."
+        or "Quest-log work you chose to keep in this route." end
     if ns.IsGroupQuest(stop.id) then reason = "Group / elite: bring a party. " .. reason end
     return reason .. "\n" .. context
 end
@@ -217,6 +224,10 @@ function ns.UpdateNavigation()
         (ns.routeSelection and ns.routeSelection.mode == "travel" and "Travel guide • Levels 1–60" or
             ns.navigationPreview and "Preview step • arrows browse; Scan returns to the plan" or
             (state.stop.npcVisitPickup and "Collect quests at this NPC" or state.stop.guideStep and ("Zone guide step " .. state.stop.guideStep) or "Current guide step")))
+    if facts.lowerLevelPrerequisite and not state.stop.historyPreview and not ns.navigationPreview then
+        frame.step:SetText((state.stop.guideStep and ("Step " .. state.stop.guideStep .. " • ") or "")
+            .. (facts.lowerLevelClassQuest and "Class progression • Lv " or "Lower-level prerequisite • Lv ") .. facts.lowerLevelPrerequisite)
+    end
     if state.areaObjectives and #state.areaObjectives > 1 then
         frame.title:SetText("Complete nearby objectives")
         frame.step:SetText(#state.areaObjectives .. " tasks • Arrow points to the current objective")
