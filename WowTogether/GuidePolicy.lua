@@ -36,7 +36,7 @@ function ns.GuideFocus(records, query)
             local done, checked, total = 0, 0, 0
             local active = person.key == ns.self and ns.active or ns.members[person.key].active
             for _, record in ipairs(records or {}) do
-                if ns.CatalogueIdentityAllowed(record.id, person.profile) ~= false then
+                if ns.ClassQuestEnabled(record.id) and ns.CatalogueIdentityAllowed(record.id, person.profile) ~= false then
                     total = total + 1
                     local completed = ns.CatalogueCompletion(person.key, record.id, query)
                     if completed ~= nil or active and active[record.id] then checked = checked + 1 end
@@ -113,6 +113,7 @@ function ns.UsefulQuestReason(id, key, level, query)
                 local quest = ns.CatalogueQuest(nextID)
                 local profile = key == ns.self and ns.profile or ns.members[key] and ns.members[key].profile
                 if quest and not ns.IsLevelingExcludedQuest(nextID) and not quest.repeatable and not ns.IsProfessionQuest(nextID)
+                    and ns.ClassQuestEnabled(nextID)
                     and ns.CatalogueIdentityAllowed(nextID, profile) == true
                     and ns.CatalogueCompletion(key, nextID, query) ~= true then
                     local value = quest.level or 0
@@ -162,6 +163,7 @@ end
 -- Being in a quest log is not a reason to bypass the leveling band. Retain a
 -- ready hand-in for that character without sending others to finish old work.
 function ns.LevelingWorkAllowed(id, key, query)
+    if not ns.ClassQuestEnabled(id) then return false end
     if ns.LevelingValue(id, query) ~= false then return true end
     local active = key == ns.self and ns.active or ns.members[key] and ns.members[key].active
     return active and active[id] ~= nil and (ns.QuestProgressReady(key, id) == true

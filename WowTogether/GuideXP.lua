@@ -44,7 +44,7 @@ function ns.GuideXPProjection(guide, query)
         ids[id] = true
         local quest = ns.CatalogueQuest(id)
         if not quest or ns.Completed(id, query) == true or ns.GuideQuestSkipped(id) or ns.IsRepeatableQuest(id)
-            or ns.IsLevelingExcludedQuest(id) or ns.IsProfessionQuest(id) or ns.IsDungeonQuest(id)
+            or ns.IsLevelingExcludedQuest(id) or ns.IsProfessionQuest(id) or ns.IsDungeonQuest(id) or not ns.ClassQuestEnabled(id)
             or ns.IsGroupQuest(id) and #(ns.partyNames or {}) == 0
             or quest.pickupRequiresOffer and ns.PickupOfferEvidence(ns.self, id) ~= true
             or ns.CatalogueIdentityAllowed(id, ns.profile) ~= true

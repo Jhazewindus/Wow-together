@@ -54,6 +54,15 @@ All levels does not bypass this; future quests remain browsable in All quests.
 Brackets filter browsing; a selected guide keeps later levels and known cross-zone
 steps. Fixed zone guides are ON by default. Loading route appears while the complete
 catalogue sequence is compiled once, independently of location and quest logs.
+Include class quests shows or hides eligible class steps in that saved sequence,
+the arrow/map and Show quest list. Toggling does not reorder a fixed guide or
+erase manual skips; known class/race/faction and pickup requirements still apply.
+Older zone checkpoints recover previously omitted optional records once on upgrade.
+Collect useful quests nearby groups eligible planned accepts within 100 yards of
+the next pickup across guides. Only accepts move; objective/return order and the
+saved sequence stay intact. NPC offers refresh availability, not the whole plan;
+unconfirmed pickups still need checking and auto-accept requires a real offer.
+Escorts, prerequisites, skips, identities and physical map/world scale are respected.
 Progress advances without changing that order, including after abandon or Scan.
 Turn Follow fixed zone guides off and restart a guide for adaptive trips, which
 hold up to six quests/twenty stops; their full preview is not limited to that trip.

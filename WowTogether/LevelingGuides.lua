@@ -91,10 +91,13 @@ local function geographic(quest)
         or (category == "" or category == "uncategorized") and ((quest.mapID or 0) > 0 or (quest.areaID or 0) > 0)
 end
 
-local function browseEnabled(id)
+local function recordEnabled(id)
     return not ns.IsLevelingExcludedQuest(id) and not ns.IsProfessionQuest(id) and not ns.IsDungeonQuest(id) and not ns.IsRepeatableQuest(id)
-        and (not ns.IsClassQuest(id) or ns.Option("classQuests"))
         and ns.CatalogueIdentityAllowed(id, ns.profile) ~= false
+end
+
+local function browseEnabled(id)
+    return recordEnabled(id) and ns.ClassQuestEnabled(id)
 end
 
 local function rebuildIndex()
@@ -137,13 +140,31 @@ local function rebuildIndex()
             end
         end
     end
+    -- A class category is not a separate leveling zone. Join its primary
+    -- published pickup to an existing, unambiguous zone; never guess a zone
+    -- from the class name or substitute an alternative starter for the compiler.
+    local byMap, ambiguousMap = {}, {}
+    for _, entry in pairs(entries) do
+        if entry.mode == "zone" and entry.mapID > 0 then
+            if byMap[entry.mapID] and byMap[entry.mapID] ~= entry then ambiguousMap[entry.mapID] = true end
+            byMap[entry.mapID] = entry
+        end
+    end
+    for id, quest in pairs(ns.catalogue and ns.catalogue.quests or {}) do
+        if ns.IsClassQuest(id) and not geographic(quest) then
+            local point = quest.starts and quest.starts[1]
+            local mapID = point and point.mapID
+            local entry = mapID and not ambiguousMap[mapID] and byMap[mapID]
+            if entry then add(entry.key, "zone", entry.title, entry.zone, entry.mapID, id) end
+        end
+    end
     for _, entry in pairs(entries) do table.sort(entry.ids) end
 end
 
 local function addPrerequisites(records, seen, id, depth)
     if depth > 24 or #records >= 512 then return end
     for _, previous in ipairs(ns.CataloguePrerequisiteIDs(id)) do
-        if not seen[previous] and ns.CatalogueQuest(previous) and browseEnabled(previous) then
+        if not seen[previous] and ns.CatalogueQuest(previous) and recordEnabled(previous) then
             seen[previous] = true
             addPrerequisites(records, seen, previous, depth + 1)
             records[#records + 1] = ns.CatalogueRecord(previous)
@@ -152,7 +173,7 @@ local function addPrerequisites(records, seen, id, depth)
 end
 
 local function addChain(records, seen, id)
-    if #records >= 512 or seen[id] or not ns.CatalogueQuest(id) or not browseEnabled(id) then return end
+    if #records >= 512 or seen[id] or not ns.CatalogueQuest(id) or not recordEnabled(id) then return end
     addPrerequisites(records, seen, id, 0)
     records[#records + 1], seen[id] = ns.CatalogueRecord(id), true
     local quest, after = ns.CatalogueQuest(id), false
@@ -160,6 +181,20 @@ local function addChain(records, seen, id)
         if after then addChain(records, seen, nextID) end
         if nextID == id then after = true end
     end
+end
+
+local function entryRecords(entry)
+    local records, seen = {}, {}
+    for _, id in ipairs(entry.ids) do addChain(records, seen, id) end
+    return records
+end
+
+-- The saved zone scope includes optional class work. The checkbox filters its
+-- presentation/progress later, rather than deleting instructions at discovery.
+function ns.LevelingGuideRecords(key)
+    rebuildIndex()
+    local entry = entries[key]
+    return entry and entryRecords(entry)
 end
 
 local function localWork(quest, mapID)
@@ -192,7 +227,7 @@ end
 
 local function buildChoice(entry, low, high, query)
     query = query or ns.NewQuestQuery()
-    local records, seen, relevant, search = {}, {}, 0, {entry.title, entry.zone}
+    local relevant, search = 0, {entry.title, entry.zone}
     local minimum, maximum, located = 255, 0, 0
     for _, id in ipairs(entry.ids) do
         local quest = ns.CatalogueQuest(id)
@@ -212,13 +247,14 @@ local function buildChoice(entry, low, high, query)
     -- A single observed/isolated quest is not a leveling guide. Completed
     -- earlier stages still count as evidence that a real multi-quest plan exists.
     if relevant == 0 then return end
-    for _, id in ipairs(entry.ids) do
-        if browseEnabled(id) then addChain(records, seen, id) end
-    end
-    if #records < 2 then return end
-    local focus = ns.GuideFocus(records, query)
-    local pending, completed = 0, 0
+    local records, enabled = entryRecords(entry), {}
     for _, record in ipairs(records) do
+        if ns.ClassQuestEnabled(record.id) then enabled[#enabled + 1] = record end
+    end
+    if #enabled < 2 then return end
+    local focus = ns.GuideFocus(enabled, query)
+    local pending, completed = 0, 0
+    for _, record in ipairs(enabled) do
         if ns.PartyQuestFinished(record.id, query) then completed = completed + 1 else pending = pending + 1 end
     end
     local level, _, name = ns.PartyLevelFloor(query)
@@ -233,17 +269,17 @@ local function buildChoice(entry, low, high, query)
         kind = entry.mode == "zone" and "Zone guide" or "Questline", records = records, target = records[1],
         mapID = mapID, homeMapID = mapID, focusKey = focus, profilesReady = true, level = level, minLevel = minimum, maxLevel = maximum,
         rangeLow = low, rangeHigh = high, relevant = relevant, completed = completed, pending = pending,
-        knownStops = located, hasPoint = located > 0, fullGuide = true,
+        knownStops = located, hasPoint = located > 0, fullGuide = true, classQuestScope = true,
         search = string.lower(table.concat(search, " ")),
         priority = ns.ZonePreference(mapID) + (entry.mode == "zone" and 30 or 0) + (located > 0 and 10 or 0)}
     guide.mainLevelLow, guide.mainLevelHigh = coreRange(entry)
     guide.fixedRoute = ns.Option("fixedZoneGuides")
-    guide.coverage = ns.GuideLocationCoverage(records)
+    guide.coverage = ns.GuideLocationCoverage(enabled)
     guide.knownStops, guide.hasPoint = guide.coverage.pickups, guide.coverage.pickups > 0
-    guide.reason = relevant .. " quest(s) in levels " .. low .. "–" .. high .. "; " .. #records .. " in the full guide. "
+    guide.reason = relevant .. " quest(s) in levels " .. low .. "–" .. high .. "; " .. #enabled .. " in the full guide. "
         .. (guide.fixedRoute and "Fixed order; progress advances steps without replanning."
             or ("Optimize pickups, nearby objectives and returns for " .. (name or "your character") .. "."))
-    if located < #records then guide.reason = guide.reason .. " Some NPC/objective locations remain unknown." end
+    if located < #enabled then guide.reason = guide.reason .. " Some NPC/objective locations remain unknown." end
     guide.destination = "Generate the route to its first useful, unlocked step."
     return guide
 end
@@ -282,7 +318,7 @@ function ns.GuideLevelSuitable(guide, query)
         local quest = ns.CatalogueQuest(record.id)
         local knownLevel = quest and ((quest.level or 0) > 0 or (quest.minLevel or 0) > 0)
         local inBracket = quest and (quest.level or 0) >= (guide.rangeLow or 1) and (quest.level or 0) <= (guide.rangeHigh or 255)
-        if inBracket and knownLevel and localWork(quest, guide.homeMapID) and record.mapID == guide.homeMapID and ns.CatalogueIdentityAllowed(record.id, ns.profile) == true
+        if ns.ClassQuestEnabled(record.id) and inBracket and knownLevel and localWork(quest, guide.homeMapID) and record.mapID == guide.homeMapID and ns.CatalogueIdentityAllowed(record.id, ns.profile) == true
             and ns.LevelingValue(record.id, query) == true and levelPath(record.id, level, {}, 0, query) then return true end
     end
     return false

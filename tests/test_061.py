@@ -108,8 +108,16 @@ class GuideBrowserTests(unittest.TestCase):
                       907: world_quest('Far higher', level=30)})
         choices = c.ns.LevelingGuideChoices()
         self.assertEqual(len(choices), 1)
-        self.assertEqual({r.id for r in choices[1].records.values()}, {900, 901, 907})
-        self.assertNotIn(907, {s.id for s in c.ns.BuildGuideRoute(choices[1], False).stops.values()})
+        # Optional own-class work stays in the full scope. The checkbox and
+        # level band filter executable steps, without erasing instructions.
+        self.assertEqual({r.id for r in choices[1].records.values()}, {900, 901, 903, 907})
+        route = c.ns.BuildGuideRoute(choices[1], False)
+        self.assertEqual({s.id for s in route.stops.values()}, {900, 901})
+        c.ns.SetOption('classQuests', True)
+        enabled = c.ns.BuildGuideRoute(choices[1], False)
+        # Adaptive guides retain the committed trip; the newly enabled quest
+        # appears in the full eligible preview before the next trip is chosen.
+        self.assertEqual({s.id for s in enabled.previewStops.values()}, {900, 901, 903})
 
     def test_missing_points_do_not_disable_selection_or_invent_coordinates(self):
         c = solo()

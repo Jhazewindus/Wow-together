@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.8**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.9**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
@@ -15,7 +15,52 @@ The expanded-guide checks below take about **15–25 minutes**.
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
 
-## Confirmation and nearby-objective checks for 0.8.8 — about 10 minutes
+## Optional class quest checks for 0.8.9 — about 5–10 minutes
+
+1. Keep **Include class quests** off and start a fixed zone guide with a known
+   quest for your class. Its pickup, objective and turn-in steps must stay out
+   of the arrow, map and **Show quest list**. Normal quests should remain.
+2. Turn the checkbox on while following that guide. Eligible class steps should
+   return at their fixed positions, still respecting levels, prerequisites and
+   actual NPC offers. Turn it off again: they disappear immediately. Try while
+   the dashboard is closed; the arrow and map must still update.
+3. Accept a class quest, then toggle off. Even its ready turn-in should leave
+   the guide; it remains in the game's quest log. Toggle on to restore the next
+   unfinished stage. A disabled prerequisite must never count as completed.
+4. Manually skip a class quest. Toggle off/on and `/reload`: the skip stays and
+   the quest remains uncompleted. Check that other classes and known incompatible
+   faction/race quests never become eligible just because the checkbox is on.
+5. Open **Show quest list** and toggle the setting. Visible counts/rows change;
+   existing step numbers and relative order stay fixed. Reload with the checkbox
+   off, then enable it: optional steps must still be available. A pre-0.8.9 zone
+   checkpoint should rebuild once to recover previously omitted class records.
+6. With auto-accept enabled, talk to a giver offering a class quest from the
+   selected guide. It must stay manual while the checkbox is off; enabling the
+   checkbox permits the normal in-guide acceptance checks. Send version/build,
+   class, race, zone, guide key and `/wt probe` with any failure.
+
+## Nearby pickup checks for 0.8.9 — about 5–10 minutes
+
+1. Enable **Collect useful quests nearby**. Use a guide with several mapped,
+   unlocked pickups within 100 yards of its next pickup. The arrow/map should
+   gather those accepts before leaving the hub. Only selected-guide quests are
+   used; kills, gathers and turn-ins keep their relative order.
+2. Talk to each giver. A complete offer list without a planned quest must defer
+   it; unknown/branching requirements still need confirmation. Auto-accept must
+   require a real offer, and never take unrelated quests just because they are
+   close. Turning in a prerequisite may make its pickup eligible later.
+3. Test a locked quest, a skipped pickup, a disabled class quest, another zone
+   and a pickup beyond 100 yards. None should enter the hub. The radius stays
+   anchored to the first pickup, rather than extending through successive NPCs.
+4. Accept the grouped quests and check that the existing objective/return order
+   resumes. Toggle nearby collection off to follow the original accept order.
+   Scan, `/reload` and NPC dialogue must preserve the saved guide sequence.
+5. Accept an escort. Its immediate work must stay first, even if other guide
+   pickups are offered nearby; auto-accept must not interrupt it. Test a zone
+   guide, an adaptive guide and dungeon collection when suitable. Missing map
+   scale/coordinates must not create a guessed 100-yard group.
+
+## Confirmation and nearby-objective regression checks — about 10 minutes
 
 1. Start a guide with an unconfirmed branching prerequisite. The warning must
    name the known NPC. The arrow should lead there when a location is recorded;
@@ -46,7 +91,7 @@ The expanded-guide checks below take about **15–25 minutes**.
    `/wt probe` for failures. Host checks cannot certify live beta waypoint APIs,
    secret-value behavior, nameplate range or rendering.
 
-## Optional guide tips checks for 0.8.8 — about 5–10 minutes
+## Optional guide tips regression checks — about 5–10 minutes
 
 1. Start a leveling guide and leave both tip options on under **Travel routing**.
    Walk within 150 metres of a friendly flight master. The small strip should
@@ -75,7 +120,7 @@ The expanded-guide checks below take about **15–25 minutes**.
    With `/console scriptErrors 1`, confirm there is no SetFont error at startup.
 2. Open `/wt`. Both search boxes, Settings, Tracker and Sync controls should be
    created normally. Type in both search fields, then open `/wt probe` and
-   confirm version **0.8.8** and a populated character/quest report.
+   confirm version **0.8.9** and a populated character/quest report.
    The minimap button should appear unless previously hidden; `/wt minimap`
    toggles it. Left-click should open the dashboard.
 3. Accept or turn in a quest, change zones and `/reload` again. Confirm no

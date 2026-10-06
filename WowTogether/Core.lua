@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.8"
+ns.VERSION = "0.8.9"
 ns.handlers = {}
 ns.members = {}
 ns.status = "Waiting for addon initialization."

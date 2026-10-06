@@ -300,6 +300,10 @@ function ns.IsClassQuest(id)
         or (quest.categoryPath and string.sub(quest.categoryPath, 1, 8) == "classes/")) or false
 end
 
+function ns.ClassQuestEnabled(id)
+    return not ns.IsClassQuest(id) or ns.Option("classQuests")
+end
+
 function ns.ClassQuestLabel(id)
     if not ns.IsClassQuest(id) then return nil end
     local quest = ns.CatalogueQuest(id)
@@ -317,7 +321,7 @@ end
 
 function ns.LevelingQuestEnabled(id)
     return not ns.IsLevelingExcludedQuest(id) and not ns.IsProfessionQuest(id) and not ns.IsDungeonQuest(id) and not ns.IsRepeatableQuest(id) and not ns.GuideQuestSkipped(id)
-        and (not ns.IsClassQuest(id) or ns.Option("classQuests"))
+        and ns.ClassQuestEnabled(id)
         and ns.LevelingValue(id) ~= false
 end
 

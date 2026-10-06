@@ -356,7 +356,7 @@ local function origin(mapID)
     end
 end
 
-function ns.BuildGuideRoute(guide, includeOrigin, cooperative)
+local function buildGuideRoute(guide, includeOrigin, cooperative)
     if guide.mode == "travel" then return ns.BuildTravelGuideRoute(guide) end
     if guide.fixedRoute then return ns.BuildFixedGuideRoute(guide, includeOrigin, cooperative) end
     if guide.fullGuide and (guide.mode == "zone" or guide.mode == "chain") then return ns.BuildLevelingRoute(guide, includeOrigin, cooperative) end
@@ -413,6 +413,10 @@ function ns.BuildGuideRoute(guide, includeOrigin, cooperative)
     for _, task in ipairs(tasks) do remaining = remaining + math.max(0, #task.stages - task.next + 1) end
     return {key = guide.key, title = guide.title, mapID = mapID, stops = ordered, origin = start,
         missing = missing, otherMaps = otherMaps, limited = remaining, focusKey = focusKey, partial = partial}
+end
+
+function ns.BuildGuideRoute(guide, includeOrigin, cooperative)
+    return ns.GroupNearbyGuidePickups(guide, buildGuideRoute(guide, includeOrigin, cooperative))
 end
 
 local function inCombat()
@@ -929,7 +933,7 @@ function ns.UpdateSelectedRoute(choices, query)
         local finished = not waiting
         for _, record in ipairs(selection.records or {selection.target}) do
             local complete
-            if ns.GuideQuestSkipped(record.id) then complete = true
+            if not ns.ClassQuestEnabled(record.id) or ns.GuideQuestSkipped(record.id) then complete = true
             elseif selection.mode == "bundle" then complete = ns.BundleQuestFinished(selection, record.id)
             elseif selection.mode == "current" then complete = ns.CurrentQuestFinished(record.id)
             elseif selection.personal then complete = ns.Completed(record.id) == true and not ns.active[record.id]

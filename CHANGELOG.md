@@ -1,5 +1,26 @@
 # Wow Together changelog
 
+## 0.8.9
+
+- Keep eligible class quests in the full zone-guide sequence. Apply the existing
+  Include class quests checkbox to runtime steps and the quest-order preview,
+  rather than removing their instructions before compiling the guide. Join
+  class-category quests to known pickup zones with unambiguous map data.
+- Update the arrow and map immediately when toggled, including with a hidden
+  or resizing dashboard. Restore class steps in their original fixed order;
+  preserve manual skips, completion credit and prerequisite gates.
+- Keep known faction, race and class restrictions. Disabled class work cannot
+  bypass the checkbox through accepted quests, ready hand-ins, catch-up or
+  NPC auto-accept. Exclude it from newly calculated XP estimates and discovery.
+- Recover omitted optional class records from older saved zone guides once on
+  upgrade. Add host regression checks and a focused friend-testing checklist.
+- Group currently eligible planned pickups within 100 yards of the next pickup
+  across guides, using physical map/world scale and the existing nearby-pickup
+  toggle. Move only accepts; retain objective/turn-in order and the saved plan.
+- Recheck requirements after NPC dialogue without rebuilding the guide. Keep
+  unavailable/uncertain, skipped, distant and other-zone pickups out of the hub;
+  protect escorts. Auto-accept still requires a real NPC offer.
+
 ## 0.8.8
 
 - Name the giver in branching-prerequisite warnings. Direct the current

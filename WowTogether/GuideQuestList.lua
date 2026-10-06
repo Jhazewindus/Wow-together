@@ -58,7 +58,16 @@ function ns.RenderGuideQuestList()
     if not frame or not frame:IsShown() or frame.rendering then return end
     frame.rendering = true
     for _, row in ipairs(frame.rows) do row:Hide() end
-    local plan, query = frame.plan or {}, ns.NewQuestQuery()
+    local plan, quests, query = {}, {}, ns.NewQuestQuery()
+    for _, stop in ipairs(frame.plan or {}) do
+        if ns.ClassQuestEnabled(stop.id) then plan[#plan + 1], quests[stop.id] = stop, true end
+    end
+    frame.visiblePlan = plan
+    if frame.plan then
+        local count = 0; for _ in pairs(quests) do count = count + 1 end
+        frame.summary:SetText(count .. " quests • " .. #plan .. " steps • Pickup → objectives → turn-in in guide order.\n"
+            .. ns.GuideXPText(frame.xpGuide or frame.guide, query))
+    end
     frame.maximum = math.max(0, #plan * ROW_HEIGHT - VIEW_HEIGHT)
     frame.offset = math.min(frame.offset or 0, frame.maximum)
     frame.content:SetHeight(math.max(VIEW_HEIGHT, #plan * ROW_HEIGHT))
@@ -88,11 +97,11 @@ function ns.RenderGuideQuestList()
         end
         local color, quest = colors[stop.kind] or colors.q, ns.CatalogueQuest(stop.id)
         row:ClearAllPoints(); row:SetPoint("TOPLEFT", 0, -(index - 1) * ROW_HEIGHT)
-        row.number:SetText(index); row.number:SetTextColor(unpack(color))
+        row.number:SetText(stop.guideStep or index); row.number:SetTextColor(unpack(color))
         row.title:SetText((phases[stop.kind] or "Quest") .. " • " .. stop.title); row.title:SetTextColor(unpack(color))
         row.detail:SetText(ns.StopInstruction(stop) .. " • " .. ns.StopLocationText(stop))
         row.state:SetText((quest and quest.level and ("Lv " .. quest.level .. " • ") or "") .. status(stop, query))
-        row.stop, row.step = stop, index; row:Show()
+        row.stop, row.step = stop, stop.guideStep or index; row:Show()
     end
     frame.rendering = nil
 end
@@ -102,7 +111,7 @@ function ns.ShowGuideQuestList(guide)
     local frame = create()
     frame.generation = frame.generation + 1
     local generation = frame.generation
-    frame.plan, frame.offset, frame.guide = nil, 0, guide
+    frame.plan, frame.visiblePlan, frame.xpGuide, frame.offset, frame.guide = nil, nil, nil, 0, guide
     frame.title:SetText(guide.zone .. " • Quest order")
     frame.summary:SetText("Loading the complete guide order…"); frame:Show(); ns.RenderGuideQuestList()
     local current = ns.routeSelection
@@ -116,13 +125,10 @@ function ns.ShowGuideQuestList(guide)
         if not okay then frame.summary:SetText("Guide preview failed. Check Diagnostics or send a test report."); return end
         if job and coroutine.status(job) ~= "dead" then C_Timer.After(0.01, advance); return end
         frame.plan = {}
-        local quests = {}
         for _, stop in ipairs(plan) do
-            if not ns.IsLevelingExcludedQuest(stop.id) then frame.plan[#frame.plan + 1] = stop; quests[stop.id] = true end
+            if not ns.IsLevelingExcludedQuest(stop.id) then frame.plan[#frame.plan + 1] = stop end
         end
-        local count = 0; for _ in pairs(quests) do count = count + 1 end
-        frame.summary:SetText(count .. " quests • " .. #frame.plan .. " steps • Pickup → objectives → turn-in in guide order.\n"
-            .. ns.GuideXPText(current and current.key == guide.key and current or copy))
+        frame.xpGuide = current and current.key == guide.key and current or copy
         ns.GuideXPHelp(frame)
         ns.RenderGuideQuestList()
     end

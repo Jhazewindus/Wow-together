@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.8.8** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.9** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -21,8 +21,22 @@ files**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
 
-**0.8.8 adds named quest-giver confirmation and nearby objective checklists.** Replace
-the complete addon folder and reload; clearing SavedVariables is not required.
+**0.8.9 makes Include class quests a live guide filter.** Eligible class quests
+stay in the saved zone sequence; the checkbox shows or hides their steps in the
+arrow, map and quest-order preview without reordering that sequence. Known class,
+race, faction, level and prerequisite requirements still apply. Existing manual
+skips stay saved. Older zone checkpoints recover omitted class records once on
+upgrade. Replace the complete addon folder and reload; clearing SavedVariables
+is not required.
+
+**Collect useful quests nearby** also groups already planned, currently eligible
+pickups within **100 yards of the next pickup** across guides. Only accept steps
+move to that local visit; objective and turn-in order and the saved guide remain
+intact. Distance uses public map/world scale, never a guessed map percentage.
+NPC dialogue updates availability without recompiling the guide. Known pickup
+requirements must pass; uncertain requirements or confirmed missing offers
+prevent promotion. Actual offers are required for auto-accept. Escorts keep
+their immediate work step.
 
 The compact interface uses matte charcoal panels, subtle gold accents and
 Classic headings. The main window gives most of its space to guide rows; the
@@ -123,7 +137,9 @@ whole zone/questline once from catalogue geography and prerequisite dependencies
 including known cross-zone chain steps. It does not use your location, active
 quests or completion history to choose the order. The arrow shows **Loading
 route…** while generation runs. Progress then advances completed pickups,
-objectives and hand-ins, keeping the same numbered sequence. Abandoning a quest
+objectives and hand-ins, keeping the saved numbered sequence. When nearby pickup
+collection is on, eligible accepts within 100 yards can be gathered at the current
+pickup visit; the remaining objective/hand-in order stays intact. Abandoning a quest
 can restore its pickup instruction, but does not reshuffle the guide. Scan guide
 refreshes progress in that same sequence. During a user scan, a rotating loop
 replaces the direction arrow in both arrow displays. History batches yield to the
@@ -665,7 +681,7 @@ provided broad inspiration about progress clarity; its code/assets/layouts
 were not copied. This implementation is independent.
 
 Reported beta build **70205** established the earlier sync APIs in user tests.
-**0.8.8 has host validation, not a live-client compatibility certification.**
+**0.8.9 has host validation, not a live-client compatibility certification.**
 Retest UI rendering, optional gossip/flight actions, corpse positions and item
 hooks on the build in front of you. `/wt probe` lists capabilities and runtime
 status. Do not interpret presence as proof that protected actions work.

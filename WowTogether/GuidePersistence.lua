@@ -3,7 +3,7 @@ local addonName, ns = ...
 -- Store only guide instructions, never frames, functions or peer quest credit.
 local guideFields = {"key", "title", "zone", "mode", "mapID", "homeMapID", "fullGuide", "fixedRoute", "personal",
     "rangeLow", "rangeHigh", "reason", "kind", "destination", "catchup", "guideKey", "xpStartLevel", "xpStart",
-    "xpFinishLevel", "xpReward", "xpUnknown", "xpBaseline", "xpUnavailable", "xpAssumedStart"}
+    "xpFinishLevel", "xpReward", "xpUnknown", "xpBaseline", "xpUnavailable", "xpAssumedStart", "classQuestScope"}
 local recordFields = {"id", "title", "level", "mapID", "x", "y", "npc", "source", "lineID", "lineName", "seriesRoot", "seriesName"}
 local stepFields = {"id", "kind", "mapID", "x", "y", "title", "label", "entityID", "action", "itemName", "targetName",
     "npcName", "published", "planned", "unknownLocation", "guideStep", "planNeedsReview", "learnedSource", "alternativeCount",
@@ -106,6 +106,15 @@ local function restore(saved, reusePlan, depth)
         guide.records[#guide.records + 1], ids[record.id] = current, true
     end
     guide.target = guide.records[1]
+    if guide.mode == "zone" and guide.fullGuide and not guide.catchup and not guide.classQuestScope then
+        -- Older releases omitted disabled class quests from the checkpoint.
+        -- Restore the full catalogue scope once; later toggles reuse its order.
+        local records = ns.LevelingGuideRecords(guide.key)
+        if records and #records >= 2 then
+            guide.records, guide.target, guide.classQuestScope, reusePlan = records, records[1], true, false
+            ids = {}; for _, record in ipairs(records) do ids[record.id] = true end
+        end
+    end
     guide.pickupIDs, guide.batchIDs, guide.catchupTargets, guide.catchupRequired = {}, {}, {}, {}
     for _, key in ipairs({"pickupIDs", "catchupTargets", "catchupRequired"}) do
         if type(saved[key]) == "table" then for id in pairs(ids) do if saved[key][id] == true then guide[key][id] = true end end end

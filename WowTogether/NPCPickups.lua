@@ -79,7 +79,78 @@ local function usefulPickup(guide, id, query)
     return step
 end
 
+local function escortPickup(stop)
+    local quest = ns.CatalogueQuest(stop.id)
+    if stop.action == "escort" then return true end
+    for _, points in ipairs({quest and quest.objectives or {}, quest and quest.missingRequirements or {}}) do
+        for _, point in ipairs(points) do if point.action == "escort" then return true end end
+    end
+    return false
+end
+
+-- A small runtime pickup visit, not a recompile. Move only already planned,
+-- currently eligible accepts; preserve every objective/turn-in's relative order.
+function ns.GroupNearbyGuidePickups(guide, route, query)
+    if not route or not ns.Option("nearbyPickups") or guide.mode == "travel" then return route end
+    local anchor = route.stops and route.stops[1]
+    if not anchor or anchor.kind ~= "a" or anchor.unknownLocation or anchor.action == "start-item"
+        or not ns.ValidTravelPoint(anchor) or escortPickup(anchor) then
+        route.hubPickupAnchor, route.hubPickupCount = nil, nil
+        return route
+    end
+    if route.hubPickupAnchor == anchor then return route end
+    local key, candidates, metrics = anchor.memberKey or ns.self, {}, {}
+    local member = key ~= ns.self and ns.members[key]
+    local profile = key == ns.self and ns.profile or member and member.profile
+    local active = key == ns.self and ns.active or member and member.active
+    for index = 2, #route.stops do
+        local stop = route.stops[index]
+        if stop.kind == "a" and stop.id ~= anchor.id and (stop.memberKey or ns.self) == key
+            and stop.mapID == anchor.mapID and not stop.unknownLocation and stop.action ~= "start-item"
+            and ns.ValidTravelPoint(stop) and not escortPickup(stop) and ns.ClassQuestEnabled(stop.id)
+            and not ns.GuideQuestSkipped(stop.id) and #ns.FilterGuideStages({stop}) > 0
+            and not (active and active[stop.id]) then
+            local distance = ns.TravelPointDistance(anchor, stop, metrics)
+            if distance and distance <= 100 then
+                query = query or ns.NewQuestQuery()
+                if ns.CatalogueAllowed(stop.id, profile, key, query) == true then
+                    candidates[#candidates + 1] = {stop = stop, distance = distance, index = index}
+                end
+            end
+        end
+    end
+    if #candidates == 0 then return route end
+    query = query or ns.NewQuestQuery()
+    if not ns.ClassQuestEnabled(anchor.id) or ns.CatalogueAllowed(anchor.id, profile, key, query) ~= true then return route end
+    table.sort(candidates, function(a, b)
+        if a.distance ~= b.distance then return a.distance < b.distance end
+        return a.index < b.index
+    end)
+    local pickups, included = {anchor}, {[anchor.id] = true}
+    for _, candidate in ipairs(candidates) do
+        if not included[candidate.stop.id] then
+            pickups[#pickups + 1], included[candidate.stop.id] = candidate.stop, true
+        end
+    end
+    local function regroup(stops)
+        local result = {}; for _, stop in ipairs(pickups) do result[#result + 1] = stop end
+        for _, stop in ipairs(stops or {}) do
+            if stop.kind ~= "a" or not included[stop.id] or (stop.memberKey or ns.self) ~= key then
+                result[#result + 1] = stop
+            end
+        end
+        return result
+    end
+    route.stops = regroup(route.stops)
+    if route.previewStops then route.previewStops = regroup(route.previewStops) end
+    route.hubPickupAnchor, route.hubPickupCount = anchor, #pickups
+    return route
+end
+
 function ns.CanAutoAcceptGuideQuest(id)
+    if not ns.ClassQuestEnabled(id) then return false end
+    local current = ns.selectedRoute and ns.selectedRoute.stops[1]
+    if current and current.kind == "q" and current.action == "escort" then return false end
     local guide = ns.routeSelection
     if not guide or guide.mode == "travel" or ns.routePlanning or ns.guideScanning or ns.routePaused then return false end
     local query = ns.NewQuestQuery()
@@ -113,7 +184,10 @@ function ns.RecordGuideNPCVisit(offered)
 end
 
 function ns.AddNPCVisitPickups(guide, route, query)
-    if not route or not ns.Option("nearbyPickups") or not guide.npcVisitPickupIDs then return route end
+    if not route or not ns.Option("nearbyPickups") then return route end
+    local first = route.stops and route.stops[1] or route.pendingStop
+    if first and first.kind == "q" and first.action == "escort" then return route end
+    if not guide.npcVisitPickupIDs then return ns.GroupNearbyGuidePickups(guide, route, query) end
     query = query or ns.NewQuestQuery()
     local pickups, included = {}, {}
     for _, id in ipairs(guide.npcVisitPickupIDs) do
@@ -124,8 +198,10 @@ function ns.AddNPCVisitPickups(guide, route, query)
             pickups[#pickups + 1], included[id] = current, true
         end
     end
-    if #pickups == 0 then return route end
+    if #pickups == 0 then return ns.GroupNearbyGuidePickups(guide, route, query) end
     table.sort(pickups, function(a, b)
+        local escortA, escortB = escortPickup(a), escortPickup(b)
+        if escortA ~= escortB then return not escortA end
         if a.guideStep and b.guideStep and a.guideStep ~= b.guideStep then return a.guideStep < b.guideStep end
         return a.id < b.id
     end)
@@ -143,7 +219,7 @@ function ns.AddNPCVisitPickups(guide, route, query)
     route.mapID, route.npcVisitCount = pickups[1].mapID, #pickups
     route.pendingReason, route.pendingStop = nil, nil
     guide.pendingReason = nil
-    return route
+    return ns.GroupNearbyGuidePickups(guide, route, query)
 end
 
 function ns.RefreshNPCGuideProgress(id)
@@ -159,6 +235,8 @@ end
 function ns.NPCPickupDiagnostics(output)
     output("Observed pickup locations: " .. locationCount .. " for this build; dialogue positions are approximate.")
     output("NPC visit pickups remaining: " .. (ns.selectedRoute and ns.selectedRoute.npcVisitCount or 0) .. ". Objective order is retained.")
+    output("Nearby pickup group: " .. (ns.selectedRoute and ns.selectedRoute.hubPickupCount or 0)
+        .. " eligible accepts within 100 yards; objective/turn-in order retained.")
 end
 
 function ns.ExportNPCPickupLocations()

@@ -172,7 +172,8 @@ local function doneFor(stop, key, query)
 end
 
 local function remaining(stop, query, guide)
-    if ns.IsLevelingExcludedQuest(stop.id) or ns.GuideQuestSkipped(stop.id) or #ns.FilterGuideStages({stop}) == 0 then return nil end
+    if not ns.ClassQuestEnabled(stop.id) or ns.IsLevelingExcludedQuest(stop.id)
+        or ns.GuideQuestSkipped(stop.id) or #ns.FilterGuideStages({stop}) == 0 then return nil end
     local waiting, chosen
     for _, person in ipairs(query.profiles) do
         if ns.CatalogueIdentityAllowed(stop.id, person.profile) ~= false then

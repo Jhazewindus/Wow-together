@@ -17,9 +17,13 @@ end
 
 local function availableTasks(guide)
     local tasks, missing, complete, live = {}, 0, 0, ns.AllGuideRecords()
-    local focus = ns.GuideFocus(guide.records)
-    guide.focusKey = focus
+    local records = {}
     for _, record in ipairs(guide.records) do
+        if ns.ClassQuestEnabled(record.id) then records[#records + 1] = record end
+    end
+    local focus = ns.GuideFocus(records)
+    guide.focusKey = focus
+    for _, record in ipairs(records) do
         if ns.PartyQuestFinished(record.id) then complete = complete + 1
         elseif not ns.GuideQuestSkipped(record.id) and ns.FocusCanStartRecord(record, focus)
             and (ns.LevelingValue(record.id) ~= false or activeForParty(record.id, true)
@@ -42,7 +46,7 @@ local function availableTasks(guide)
             guide.pendingReason = guide.pendingReason or reason
         end
     end
-    return tasks, missing, complete
+    return tasks, missing, complete, #records
 end
 
 local function chooseBatch(guide, tasks, mapID, position)
@@ -166,7 +170,7 @@ end
 
 function ns.BuildLevelingRoute(guide, includeOrigin, cooperative)
     guide.pendingReason = nil
-    local tasks, missing, complete = availableTasks(guide)
+    local tasks, missing, complete, enabled = availableTasks(guide)
     local mapID = guide.mapID or 0
     local current = ns.profile and ns.profile.mapID or 0
     local hasMap = false
@@ -188,7 +192,7 @@ function ns.BuildLevelingRoute(guide, includeOrigin, cooperative)
     end
     local stops, cost = optimize(localTasks, mapID, position, cooperative)
     if #stops == 0 and not guide.pendingReason then
-        guide.pendingReason = complete == #guide.records and "This guide's selected quests are completed."
+        guide.pendingReason = complete == enabled and "This guide's selected quests are completed."
             or "Visit a quest giver in " .. guide.zone .. "; the next pickup or objective location is not known yet."
     end
     return {key = guide.key, title = guide.title, mapID = mapID, stops = stops, origin = includeOrigin and position or nil,
@@ -206,7 +210,7 @@ end
 
 local function fingerprint(guide)
     if guide.fixedRoute then return "fixed:" .. guide.key end
-    local values = {ns.profile and ns.profile.mapID or 0, ns.profile and ns.profile.level or 0,
+    local values = {tostring(ns.Option("classQuests")), ns.profile and ns.profile.mapID or 0, ns.profile and ns.profile.level or 0,
         ns.db.questLearning and ns.db.questLearning.revision or 0}
     for _, record in ipairs(guide.records) do
         values[#values + 1] = record.id .. ":" .. tostring(ns.active[record.id] ~= nil) .. ":" .. tostring(ns.Completed(record.id))

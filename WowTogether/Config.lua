@@ -22,8 +22,8 @@ local sections = {
         {"soloMode", "Solo leveling mode", "Disable party messages, shared progress, route invitations and catch-up. Guides use only your own progress, even while grouped."}}},
     {"guides", "Leveling guides", {
         {"fixedZoneGuides", "Follow fixed zone guides", "Generate a complete zone sequence once. Quest progress advances steps without reordering. Turn off for adaptive trips; start a guide again to change its mode."},
-        {"nearbyPickups", "Collect useful quests nearby", "Collect useful selected-guide quests offered at an NPC visit; also add nearby pickups to quest-log trips. Level range, prerequisites and skips still apply."},
-        {"classQuests", "Include class quests", "Class restrictions are shown. Personal profession quests remain in Profession guides."},
+        {"nearbyPickups", "Collect useful quests nearby", "Group eligible guide pickups within 100 yards of the next pickup. Confirm NPC offers on arrival; preserve objectives, returns, prerequisites and skips."},
+        {"classQuests", "Include class quests", "Show or hide eligible class quest steps without changing fixed guide order. Other classes remain excluded."},
         {"dungeonPrompts", "Suggest dungeon quest collection", "Offer a plan when your character meets every known pickup level for the dungeon's relevant regular quests. Prerequisites still apply; party sync is not required."},
         {"zonePrompts", "Suggest the next nearby zone", "Offer a known questline transition after the current work is complete."},
         {"scanSkipped", "Reconsider skips when scanning", "Scan guide clears saved skips for quests in the selected guide before replanning. Leave off to keep skips."},
@@ -95,6 +95,11 @@ function ns.SetOption(key, value)
     ns.flightPlanCache = nil
     ns.ResetTravelPath()
     if key == "nearbyPickups" or key == "useLearnedQuests" then ns.forceRouteReplan, ns.routeSignature = true, nil end
+    if key == "classQuests" and changed then
+        ns.navigationPreview, ns.routeSignature, ns.forceRouteReplan = nil, nil, true
+        -- Apply immediately even if the main window is hidden or being resized.
+        ns.UpdateSelectedRoute(nil, ns.NewQuestQuery())
+    end
     if ns.RenderSettings then ns.RenderSettings() end
     if ns.UpdateNPCHints then ns.UpdateNPCHints() end
     if ns.DrawRoute then ns.DrawRoute() end
