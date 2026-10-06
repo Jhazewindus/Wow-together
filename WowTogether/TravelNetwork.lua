@@ -197,7 +197,7 @@ function ns.ResetTravelPath() ns.travelPath, ns.travelPathSignature, ns.travelPa
 
 function ns.HasTravelPathTo(stop)
     local path = ns.travelPath
-    return not ns.navigationPreview and not ns.routePaused
+    return not ns.navigationPreview and (not ns.routePaused or stop and stop.confirmation)
         and (ns.Option("travelNetwork") or ns.routeSelection and ns.routeSelection.mode == "travel")
         and path and stop and path.goal.mapID == stop.mapID and path.goal.x == stop.x and path.goal.y == stop.y
 end
@@ -231,7 +231,7 @@ function ns.TravelNetworkDestination(stop)
     ns.travelWaypoint = nil
     local travelGuide = ns.routeSelection and ns.routeSelection.mode == "travel"
     if not ns.Option("travelNetwork") and not travelGuide or not ns.ValidTravelPoint(stop) or ns.navigationPreview
-        or ns.routePaused or ns.ReadPublic(UnitOnTaxi, "player") == true then return end
+        or ns.routePaused and not stop.confirmation or ns.ReadPublic(UnitOnTaxi, "player") == true then return end
     local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
     local position = ns.GuideInteger(mapID) and ns.PlayerPoint(mapID)
     if not ns.ValidTravelPoint(position) then ns.ResetTravelPath(); return end

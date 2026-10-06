@@ -1,5 +1,24 @@
 # Wow Together changelog
 
+## 0.8.8
+
+- Name the giver in branching-prerequisite warnings. Direct the current
+  confirmation step to its known NPC, with a large addon map star and a
+  friendly-nameplate confirmation hint. Preserve pickup gates and fixed order.
+- Add Map NPC for that confirmation only. It can set a native Blizzard waypoint
+  on supported maps; normal routes still never set one. Clear the owned waypoint
+  after confirmation, protecting a different waypoint placed by the player.
+- Combine nearby accepted kill, gather and loot tasks into a compact scrollable
+  area checklist with independent quest names and live objective counts.
+  Grouping is generic across guides, uses a 250-metre radius around the current
+  objective and respects pickup/turn-in/travel/zone/missing-location barriers.
+- Keep separate drops from the same mob and different members' progress
+  distinct. Completed or skipped tasks leave the list independently. Preserve
+  guide order, individual skip behavior and quest completion credit.
+- Cache the area list between arrow updates and move optional service tips
+  below it. Add host regressions and a beta test checklist; native waypoint
+  behavior and live layout/nameplates require current-client testing.
+
 ## 0.8.7
 
 - Add a small dismissible tip strip below the guide controls, across all guide

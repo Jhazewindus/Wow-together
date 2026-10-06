@@ -104,7 +104,26 @@ function ns.PickupOfferEvidence(key, id)
     end
 end
 
-function ns.CatalogueAllowed(id, profile, key, query)
+function ns.QuestGiverName(id)
+    local quest, names, seen = ns.CatalogueQuest(id), {}, {}
+    local observed = ns.NPCPickupPoint and ns.NPCPickupPoint(id)
+    local function add(point)
+        local name = point and ns.SafeTitle(point.name)
+        if name and point.action ~= "start-item" and (point.npc or point.entityType == "npc") and not seen[name] then
+            names[#names + 1], seen[name] = name, true
+        end
+    end
+    add(observed)
+    if #names == 0 then
+        for _, point in ipairs(quest and quest.starts or {}) do add(point) end
+        for _, point in ipairs(quest and quest.startRefs or {}) do add(point) end
+    end
+    if #names > 0 then return table.concat(names, " or ") end
+end
+
+-- The third result is a machine-readable reason for the confirmation UI.
+-- Existing callers keep the two-result eligibility contract below.
+function ns.CataloguePickupCheck(id, profile, key, query)
     local quest = ns.CatalogueQuest(id)
     if quest and (not profile or not profile.level or profile.level <= 0) then return nil, "Waiting for player level." end
     if quest and quest.minLevel and profile.level < quest.minLevel then return false, "Requires level " .. quest.minLevel .. "." end
@@ -133,9 +152,17 @@ function ns.CatalogueAllowed(id, profile, key, query)
         return nil, "Pickup requirements are missing from the detailed data. Talk to the quest giver to check its offer."
     end
     if quest.prerequisitesUnverified then
-        return nil, "This quest has a branching prerequisite that still needs quest-giver confirmation."
+        local giver = ns.QuestGiverName(id)
+        return nil, "This quest has a branching prerequisite that still needs quest-giver confirmation. "
+            .. (giver and ("Talk to " .. giver .. ".") or "The quest giver's name is not recorded."), "branching-prerequisite"
     end
     return true
+end
+
+function ns.CatalogueAllowed(id, profile, key, query)
+    local allowed, reason = ns.CataloguePickupCheck(id, profile, key, query)
+    if reason then return allowed, reason end
+    return allowed
 end
 
 function ns.CataloguePrerequisiteIDs(id)

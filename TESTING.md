@@ -1,12 +1,12 @@
 # Wow Together — friend test script
 
-For **0.8.7**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.8**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 46 Lua files**, in
+1. Replace the complete WowTogether folder, including **all 48 Lua files**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    `/reload`; restart fully if a new addon folder does not appear.
 2. Enable `/console scriptErrors 1`. Record version, build, level, faction, class,
@@ -15,7 +15,38 @@ The expanded-guide checks below take about **15–25 minutes**.
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
 
-## Optional guide tips checks for 0.8.7 — about 5–10 minutes
+## Confirmation and nearby-objective checks for 0.8.8 — about 10 minutes
+
+1. Start a guide with an unconfirmed branching prerequisite. The warning must
+   name the known NPC. The arrow should lead there when a location is recorded;
+   a large map star and visible friendly-nameplate hint say **Confirm**. An
+   unknown location must stay unknown. Enable friendly NPC nameplates; the
+   existing nameplate/star settings still apply and markers hide in combat.
+2. Click **Map NPC** outside combat. It opens the giver's zone. On maps with
+   working waypoint/readback/clear APIs, it places one Blizzard waypoint; if
+   unsupported, the addon's star still works. Normal guide steps must never
+   create native waypoints. Opening diagnostics also must not create one.
+3. Talk to the giver. An offered quest clears confirmation and becomes a pickup;
+   a complete list without it defers it as before. Accept, skip or change guides
+   and confirm the old native waypoint clears. Place your own different waypoint
+   before progressing: yours must remain. Combat delays cleanup until safe.
+4. Accept at least two nearby kill/gather/loot quests. In their objective phase,
+   **In this area** shows each target, quest and matching count. Finish just one:
+   its row should disappear without completing/skipping the other quests. Check
+   separate drops from one mob, multiple objectives in one quest, and synced
+   friends with different counts. Use **Skip step/quest** and Scan as usual.
+5. Try four or more nearby tasks: scroll the list; none should disappear merely
+   because only three fit. Nearby flight/hearthstone tips sit below the list.
+   Move/scale the panel and confirm labels, counts and hover details remain clear.
+6. Check that pickups, hand-ins, travel, another zone, distant objectives and
+   missing-location steps stay separate. Scan, abandon and reload must preserve
+   the selected fixed guide's order. These are proximity groups, not proof of a
+   walkable path through terrain. Test outside/inside dungeons where applicable.
+7. Report tester name, version/build, zone/guide, quest/NPC name, screenshot and
+   `/wt probe` for failures. Host checks cannot certify live beta waypoint APIs,
+   secret-value behavior, nameplate range or rendering.
+
+## Optional guide tips checks for 0.8.8 — about 5–10 minutes
 
 1. Start a leveling guide and leave both tip options on under **Travel routing**.
    Walk within 150 metres of a friendly flight master. The small strip should
@@ -44,7 +75,7 @@ The expanded-guide checks below take about **15–25 minutes**.
    With `/console scriptErrors 1`, confirm there is no SetFont error at startup.
 2. Open `/wt`. Both search boxes, Settings, Tracker and Sync controls should be
    created normally. Type in both search fields, then open `/wt probe` and
-   confirm version **0.8.7** and a populated character/quest report.
+   confirm version **0.8.8** and a populated character/quest report.
    The minimap button should appear unless previously hidden; `/wt minimap`
    toggles it. Left-click should open the dashboard.
 3. Accept or turn in a quest, change zones and `/reload` again. Confirm no

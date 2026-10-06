@@ -58,6 +58,7 @@ end
 function ns.GuideStepAction(stop, facts)
     facts = facts or ns.GuideStepFacts(stop); stop = facts.stop
     local title, target = text(stop.title) or "this quest", facts.target
+    if stop.confirmation then return "Talk to " .. (facts.npc or "the quest giver") end
     if stop.kind == "travel" or stop.kind == "f" then return text(stop.label) or "Travel to the next stop" end
     if stop.kind == "corpse" then return "Return to your corpse" end
     if stop.kind == "loading" then return stop.action == "scan" and "Scanning guide…" or "Loading route…" end
@@ -95,6 +96,7 @@ end
 function ns.GuideStepHint(stop, facts)
     facts = facts or ns.GuideStepFacts(stop); stop = facts.stop
     local action = facts.action
+    if stop.confirmation then return stop.confirmationReason or "Check the quest giver's offers before picking this quest up." end
     if stop.kind == "travel" or stop.kind == "f" then return "Follow the travel instructions for this leg." end
     if stop.kind == "corpse" then return "Recover your body to resume the guide." end
     if stop.kind == "loading" then return "Checking quest progress and route information." end
@@ -134,6 +136,7 @@ end
 function ns.StopInstruction(stop, facts)
     facts = facts or ns.GuideStepFacts(stop); stop = facts.stop
     local title = text(stop.title) or "this quest"
+    if stop.confirmation then return "Talk to " .. (facts.npc or "the quest giver") .. " to confirm " .. title end
     if stop.kind == "a" and facts.action ~= "start-item" then
         return "Accept " .. title .. (facts.npc and (" from " .. facts.npc) or facts.target and (" at " .. facts.target) or "")
     end

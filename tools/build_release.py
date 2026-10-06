@@ -59,6 +59,15 @@ Turn Follow fixed zone guides off and restart a guide for adaptive trips, which
 hold up to six quests/twenty stops; their full preview is not limited to that trip.
 Optional suitable next-zone prompts offer Start zone guide / Keep my guide.
 /wt config has purpose-based settings pages with dropdowns and help text.
+Unconfirmed branching prerequisites name the NPC. The current check gets a
+large addon map star, friendly-nameplate confirmation hint and directions to the
+known giver. Map NPC opens that zone and optionally sets a native waypoint for
+this check only when its APIs work. Ordinary routes still never set a waypoint.
+Nearby accepted kill/gather/loot work shares an In this area checklist with
+separate quest names and live counts. Scroll beyond three tasks; individual skips
+and fixed order stay intact. Only known destinations within 250 metres in the
+current uninterrupted objective phase group together, respecting pickups,
+turn-ins, travel, zones and missing locations. Terrain access is not inferred.
 Travel routing has optional nearby flight-path and useful hearthstone tips.
 A small dismissible strip appears within 150 metres of a friendly service.
 Hearthstone tips require upcoming objectives away and multiple hub turn-ins;
@@ -187,7 +196,8 @@ Missing/private coordinates or different continents leave gaps and travel text.
 The current travel leg can use Dijkstra crossing/gate/transport directions;
 later quest markers remain visiting previews. Walks are point estimates, not
 collision-safe roads. Transport rides break the walking line. No minimap lines.
-The addon no longer sets extra Blizzard waypoint pins. Numbered route markers
+Normal routes do not set extra Blizzard waypoint pins. Map NPC can set one for
+a branching-prerequisite confirmation only. Numbered route markers
 and the arrow remain; unrelated manual waypoints are untouched. Clear older pins
 manually if one remains from a previous version.
 Follow roads/terrain. Pan/zoom redraws verified unprotected addon geometry in combat;

@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.7"
+ns.VERSION = "0.8.8"
 ns.handlers = {}
 ns.members = {}
 ns.status = "Waiting for addon initialization."
@@ -17,6 +17,7 @@ function ns.Print(message)
 end
 
 function ns.Refresh()
+    ns.objectiveDisplayRevision = (ns.objectiveDisplayRevision or 0) + 1
     if ns.ui and ns.ui.resizing then ns.ui.resizeDirty = true
     elseif ns.Render then ns.Render() end
     if ns.RenderTracker then ns.RenderTracker() end
@@ -124,6 +125,8 @@ function ns.Diagnostics()
         {"C_DeathInfo.GetCorpseMapPosition", C_DeathInfo and C_DeathInfo.GetCorpseMapPosition},
         {"TooltipDataProcessor.AddTooltipPostCall", TooltipDataProcessor and TooltipDataProcessor.AddTooltipPostCall},
         {"C_Map.SetUserWaypoint", C_Map and C_Map.SetUserWaypoint},
+        {"C_Map.GetUserWaypoint", C_Map and C_Map.GetUserWaypoint},
+        {"C_Map.ClearUserWaypoint", C_Map and C_Map.ClearUserWaypoint},
         {"UiMapPoint.CreateFromCoordinates", UiMapPoint and UiMapPoint.CreateFromCoordinates},
         {"issecretvalue", issecretvalue},
         {"loadstring (Lua checks)", loadstring},

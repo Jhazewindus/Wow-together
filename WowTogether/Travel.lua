@@ -418,11 +418,16 @@ function ns.RouteForDisplay()
         return {key = route.key, title = route.title, mapID = p and p.mapID or route.mapID,
             flying = true, stops = stop and {stop} or {}}
     end
-    local stop = ns.CorpseDestination() or ns.TravelDestination(route.stops[1])
-    if stop and stop.travelLeg and stop.kind ~= "f" then return route end
+    local confirmation = ns.CurrentQuestConfirmation()
+    local stop = ns.CorpseDestination() or ns.TravelDestination(confirmation and not confirmation.unknownLocation and confirmation or route.stops[1])
+    if stop and stop.travelLeg and stop.kind ~= "f" and not confirmation then return route end
     if stop and (stop.kind == "corpse" or stop.kind == "f") then
         return {mapID = stop.mapID, stops = {stop}, title = stop.title,
             origin = ns.PlayerPoint(stop.mapID), key = route.key, partial = false}
+    end
+    if confirmation and not confirmation.unknownLocation then
+        return {mapID = confirmation.mapID, stops = {confirmation}, title = confirmation.title,
+            origin = ns.PlayerPoint(confirmation.mapID), key = route.key, confirmation = true}
     end
     return route
 end

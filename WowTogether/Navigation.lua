@@ -15,6 +15,9 @@ local function duration(value)
 end
 
 function ns.RouteContext(stop, mapID, facts)
+    if stop.confirmation then
+        return "Check this NPC's offers; pickup is unconfirmed.\n" .. ns.StopLocationText(stop, mapID)
+    end
     if stop.kind == "loading" then
         return stop.action == "scan" and ("Checking your quests and completion history.\n"
             .. (ns.guideScanning and ns.guideScanning.guide.fixedRoute and "The guide's fixed step order is retained." or "Checking the route for your next steps."))
@@ -78,7 +81,9 @@ function ns.NavigationState()
     end
     if ns.routeSelection and ns.routeSelection.mode == "travel" then ns.UpdateTravelGuide(ns.routeSelection, true) end
     local route = ns.routeSelection and ns.selectedRoute
-    local stop = ns.navigationPreview and ns.navigationPreview.stop or route and route.stops and route.stops[1]
+    local confirmation = ns.CurrentQuestConfirmation()
+    local stop = ns.navigationPreview and ns.navigationPreview.stop or confirmation and not confirmation.unknownLocation and confirmation
+        or route and route.stops and route.stops[1]
     if not stop and ns.routeSelection then
         local pending = route and route.pendingStop
         stop = {kind = "notice", id = pending and pending.id or 0, title = pending and pending.title or ns.routeSelection.title, mapID = route and route.mapID or 0,
@@ -97,7 +102,7 @@ function ns.NavigationState()
     local state = {visible = true, stop = stop}
     if stop.kind == "notice" then state.status = stop.label; return state end
     if stop.positionUnavailable then state.status = "Corpse position unavailable on this build"; return state end
-    if ns.routePaused then state.status = "Waiting for party updates"; return state end
+    if ns.routePaused and not (confirmation and not confirmation.unknownLocation) and stop.kind ~= "corpse" then state.status = "Waiting for party updates"; return state end
     if ns.navigation and type(ns.navigation.icon.CreateLine) ~= "function" then state.status = "Arrow drawing unavailable"; return state end
     local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
     if not ns.GuideInteger(mapID) or mapID <= 0 then state.status = "Position unavailable"; return state end
@@ -170,6 +175,7 @@ function ns.UpdateNavigation()
     frame.state = state
     frame:SetShown(state.visible == true and ns.Option("routeArrow"))
     ns.UpdateStandaloneArrow(state)
+    ns.UpdateAreaObjectives(state)
     ns.UpdateGuideTip(state)
     if not state.visible then ns.HideNavigationGeometry(frame.icon); return end
     frame.title:SetText(state.stop.title)
@@ -189,6 +195,10 @@ function ns.UpdateNavigation()
         (ns.routeSelection and ns.routeSelection.mode == "travel" and "Travel guide • Levels 1–60" or
             ns.navigationPreview and "Preview step • arrows browse; Scan returns to the plan" or
             (state.stop.npcVisitPickup and "Collect quests at this NPC" or state.stop.guideStep and ("Zone guide step " .. state.stop.guideStep) or "Current guide step")))
+    if state.areaObjectives and #state.areaObjectives > 1 then
+        frame.title:SetText("Complete nearby objectives")
+        frame.step:SetText(#state.areaObjectives .. " tasks • Arrow points to the current objective")
+    end
     local editable = not ns.navigationPreview and not state.flight and state.stop.kind ~= "corpse"
         and (state.stop.kind ~= "notice" or state.stop.id > 0) and state.stop.kind ~= "loading"
     local quests = not (ns.routeSelection and ns.routeSelection.mode == "travel")
@@ -262,6 +272,7 @@ function ns.CreateNavigation()
     end)
     frame.tip:SetScript("OnLeave", function() if GameTooltip then GameTooltip:Hide() end end)
     frame.tip:Hide()
+    ns.CreateAreaObjectives(frame)
     frame:SetScript("OnEnter", function(self)
         if not GameTooltip then return end
         GameTooltip:SetOwner(self, "ANCHOR_RIGHT")

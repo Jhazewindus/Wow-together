@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.8.7** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.8** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -16,12 +16,12 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **46 Lua
+Replace the folder on **every party member's client**, including all **48 Lua
 files**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
 
-**0.8.7 adds quiet nearby flight-path and useful hearthstone tips.** Replace
+**0.8.8 adds named quest-giver confirmation and nearby objective checklists.** Replace
 the complete addon folder and reload; clearing SavedVariables is not required.
 
 The compact interface uses matte charcoal panels, subtle gold accents and
@@ -41,6 +41,23 @@ quest-order row for full instructions, progress and supplied quest-item names.
 Missing objective locations stay explicitly unknown; planning anchors never
 appear as coordinates. Text uses recorded facts, not invented landmarks or
 copied quest descriptions. This does not reorder or change a guide.
+
+Unconfirmed branching prerequisites name the quest giver. When it is the current
+pickup step, a large addon map star and friendly-nameplate hint say **Confirm**;
+the arrow leads to the known giver location. **Map NPC** opens that location and,
+if the client exposes the required waypoint APIs, places a Blizzard waypoint for
+this confirmation only. Actual NPC offers still decide pickup availability.
+The addon clears its waypoint when the confirmation ends, preserving a different
+waypoint you place yourself. Missing giver locations remain explicitly unmapped.
+
+Nearby accepted kill/gather/loot objectives share a compact **In this area** list
+under the guide controls, with separate quest names and live counts. Scroll for
+more than three tasks. Groups use known destinations within 250 metres of the
+current objective in its uninterrupted objective phase; pickups, turn-ins,
+travel, other zones and missing locations stop the group. The compiled guide
+order, individual skips and quest credit stay unchanged. This applies to every
+guide using the route system, without quest/zone-specific cases. Straight-line
+proximity cannot prove terrain access or make missing locations known.
 
 | Command | Action |
 | --- | --- |
@@ -311,8 +328,9 @@ Drawing projects onto the public map viewport, clips at its edges and redraws
 after pan, zoom and resize. Existing verified unprotected addon geometry can
 redraw in combat; protected frames and native map/waypoint actions defer.
 **Lines are on the world map only.** The minimap icon opens the addon.
-The addon no longer sets an extra Blizzard user-waypoint pin. Numbered route
-markers and the owned navigation arrow remain; unrelated manual waypoints are
+Normal routes do not set extra Blizzard user-waypoint pins. The explicit **Map
+NPC** button can set one for a branching-prerequisite confirmation only. Numbered
+route markers and the owned navigation arrow remain; unrelated manual waypoints are
 left alone. A pin left from an older release can be removed manually on the map.
 
 Travel directions use the shortest-time point graph described below; local walk
@@ -647,7 +665,7 @@ provided broad inspiration about progress clarity; its code/assets/layouts
 were not copied. This implementation is independent.
 
 Reported beta build **70205** established the earlier sync APIs in user tests.
-**0.8.7 has host validation, not a live-client compatibility certification.**
+**0.8.8 has host validation, not a live-client compatibility certification.**
 Retest UI rendering, optional gossip/flight actions, corpse positions and item
 hooks on the build in front of you. `/wt probe` lists capabilities and runtime
 status. Do not interpret presence as proof that protected actions work.
@@ -698,7 +716,7 @@ compiler discards temporary caches when it yields. Guide decisions, prerequisite
 rules, fixed/adaptive order, sync behavior, settings and UI remain the same.
 See PERFORMANCE.md for measured host results and the repeatable benchmark command.
 
-Host checks load all 46 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
+Host checks load all 48 Lua files in TOC order under Lua 5.1 through `lupa==2.8`:
 
 ```sh
 python3 -m venv /tmp/wow-together-tests

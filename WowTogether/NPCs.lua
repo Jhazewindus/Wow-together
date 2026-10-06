@@ -104,6 +104,11 @@ function ns.NPCTargets()
             end
         end
     end
+    local confirmation = ns.CurrentQuestConfirmation()
+    if confirmation and ns.GuideInteger(confirmation.entityID) and confirmation.entityID > 0 then
+        add({npc = true, entityID = confirmation.entityID, name = confirmation.npcName or "Quest giver"}, confirmation.id, "a")
+        targets[confirmation.entityID].confirmation = true
+    end
     return targets, known
 end
 
@@ -186,6 +191,7 @@ function ns.UpdateNPCHints()
                     if not GameTooltip then return end
                     GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
                     GameTooltip:AddLine(self.target.label, 0.96, 0.76, 0.36)
+                    if self.target.confirmation then GameTooltip:AddLine("Check quest availability here; pickup is unconfirmed.", 1, 0.82, 0.3, true) end
                     for _, title in pairs(self.target.quests) do GameTooltip:AddLine(title, 1, 1, 1, true) end
                     GameTooltip:Show()
                 end)
@@ -203,7 +209,7 @@ function ns.UpdateNPCHints()
                 local titles = {}; for _, title in pairs(target.quests) do titles[#titles + 1] = title end; table.sort(titles)
                 local shown = {}; for index = 1, math.min(2, #titles) do shown[#shown + 1] = titles[index] end
                 if #titles > 2 then shown[2] = shown[2] .. " ( +" .. (#titles - 2) .. " )" end
-                hint.questNames:SetText(table.concat(shown, "\n"))
+                hint.questNames:SetText((target.confirmation and "Confirm: " or "") .. table.concat(shown, "\n"))
                 hint.icon:ClearAllPoints()
                 if star then
                     hint.icon:SetSize(34, 34); hint.icon:SetPoint("TOP", 0, 0)

@@ -422,6 +422,7 @@ end
 ns.RouteInCombat = inCombat
 
 function ns.StopIcon(stop)
+    if stop.confirmation then return "Interface\\TargetingFrame\\UI-RaidTargetingIcon_1" end
     if stop.kind == "a" then return "Interface\\GossipFrame\\AvailableQuestIcon" end
     if stop.kind == "t" then return "Interface\\GossipFrame\\ActiveQuestIcon" end
     if stop.kind == "f" then return "Interface\\Icons\\Ability_Mount_Wyvern_01" end
@@ -754,12 +755,14 @@ function ns.DrawRoute(provider, geometryOnly)
             provider.pins[index] = pin
         end
         pin.stop, pin.group = p, group
+        pin:SetSize(p.confirmation and 30 or 18, p.confirmation and 30 or 18)
+        pin.icon:SetSize(p.confirmation and 28 or 16, p.confirmation and 28 or 16)
         local numbers = #group.numbers <= 3 and table.concat(group.numbers, "/")
             or (group.numbers[1] .. "/" .. group.numbers[2] .. "/+" .. (#group.numbers - 2))
         local icon = ns.StopIcon(p)
         pin.icon:SetTexture(icon); pin.icon:SetShown(icon ~= nil)
         pin.symbol:SetText(ns.StopSymbol(p)); pin.symbol:SetShown(icon == nil)
-        pin:SetAlpha(ns.routePaused and 0.65 or 1)
+        pin:SetAlpha(ns.routePaused and not p.confirmation and 0.65 or 1)
         pin.number:SetText(numbers)
         pin:ClearAllPoints()
         pin:SetPoint("CENTER", overlay, "TOPLEFT", group.x, -group.y)
@@ -769,12 +772,13 @@ function ns.DrawRoute(provider, geometryOnly)
     updateLegend(legend, route.flying and "Wow Together • Flying • Ground directions resume after landing" or
         "Wow Together • " .. #displayed .. " stops • " .. #groups .. " visible " .. (#groups == 1 and "place" or "places")
         .. (ns.Option("fullRoute") and " • All eligible mapped quests" or " • Next steps")
-        .. (ns.routePaused and " • Waiting for party updates" or "")
+        .. (route.confirmation and " • Confirm quest with this NPC" or ns.routePaused and " • Waiting for party updates" or "")
         .. (route.partial and " • Partial route" or "")
         .. ((route.otherMaps or 0) > 0 and " • Other zones" or "")
         .. (missingTravel and ("\nTravel to " .. ns.MapName(displayed[1].mapID) .. "; travel coordinates unavailable here.") or ""))
     ns.routeStats.pins, ns.routeStats.lines = #groups, visibleLines
     ns.routeStats.status = route.flying and "Flying; ground route lines hidden until landing."
+        or route.confirmation and ("Talk to " .. (displayed[1].npcName or "the quest giver") .. " to confirm quest availability.")
         or ns.routePaused and (ns.routePaused .. " Showing the last confirmed route.")
         or missingTravel and ("Cross-zone travel coordinates unavailable on map " .. mapID .. ".")
         or ("Route drawn on map " .. mapID .. ".")
