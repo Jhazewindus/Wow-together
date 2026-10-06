@@ -19,7 +19,7 @@ end
 local function label(parent, style, size, color)
     local text = parent:CreateFontString(nil, "OVERLAY", style or "GameFontHighlightSmall")
     local heading = style and string.find(style, "Normal", 1, true)
-    text:SetFont(heading and "Fonts\\FRIZQT__.TTF" or "Fonts\\ARIALN.TTF", size or 12)
+    text:SetFont(heading and "Fonts\\FRIZQT__.TTF" or "Fonts\\ARIALN.TTF", size or 12, "")
     text:SetJustifyH("LEFT")
     text:SetTextColor(unpack(color or colors.text))
     return text
@@ -73,7 +73,7 @@ end
 local function searchBox(parent, hint)
     local edit = CreateFrame("EditBox", nil, parent, "BackdropTemplate")
     panel(edit, colors.background)
-    edit:SetFont("Fonts\\ARIALN.TTF", 12); edit:SetTextColor(unpack(colors.text))
+    edit:SetFont("Fonts\\ARIALN.TTF", 12, ""); edit:SetTextColor(unpack(colors.text))
     edit:SetTextInsets(10, 10, 0, 0); edit:SetAutoFocus(false)
     edit.placeholder = label(edit, nil, 11, colors.muted)
     edit.placeholder:SetPoint("LEFT", 10, 0); edit.placeholder:SetPoint("RIGHT", -10, 0)

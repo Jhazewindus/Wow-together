@@ -1,5 +1,17 @@
 # Wow Together changelog
 
+## 0.8.6
+
+- Fix the beta startup error in search boxes by supplying an explicit empty
+  font-flags string. Make shared labels use the complete font signature too.
+- Allow initialization to finish before later quest, reputation and zone
+  events use character identity, quest state and tracker controls; restore
+  creation of the minimap button. The reported
+  missing-field errors followed the interrupted UI initialization.
+- Validate font arguments in the host mock and add startup/event regression
+  checks. Preserve the compact UI, guide behavior and saved character data;
+  clearing SavedVariables is not required. Confirm startup on the beta client.
+
 ## 0.8.5
 
 - Give the guide panel distinct accept, turn-in, kill, gather, loot, buy,

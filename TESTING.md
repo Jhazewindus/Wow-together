@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.5**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.6**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
@@ -15,7 +15,23 @@ The expanded-guide checks below take about **15–25 minutes**.
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
 
-## Instruction checks for 0.8.5 — about 10 minutes
+## Startup hotfix checks for 0.8.6 — about 3 minutes
+
+1. Replace the complete folder and `/reload`, keeping existing SavedVariables.
+   With `/console scriptErrors 1`, confirm there is no SetFont error at startup.
+2. Open `/wt`. Both search boxes, Settings, Tracker and Sync controls should be
+   created normally. Type in both search fields, then open `/wt probe` and
+   confirm version **0.8.6** and a populated character/quest report.
+   The minimap button should appear unless previously hidden; `/wt minimap`
+   toggles it. Left-click should open the dashboard.
+3. Accept or turn in a quest, change zones and `/reload` again. Confirm no
+   missing `active`, `trackerButton` or character-table-index errors appear.
+   Existing guide selection, settings and skips should remain available.
+4. Send any remaining first error in full, with version/build and the action
+   that triggered it. Host tests reproduce the font signature but cannot
+   establish live beta rendering or API compatibility.
+
+## Instruction regression checks — about 10 minutes
 
 1. Start a guide. Pickup says **Accept from [giver]** and turn-in says
    **Turn in to [receiver]**. The quest name stays above the arrow. Check the

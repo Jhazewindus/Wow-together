@@ -22,6 +22,15 @@ function methods:GetScript(name) return self[name] end
 function methods:CreateFontString() return setmetatable({}, {__index=methods}) end
 function methods:CreateTexture() return setmetatable({}, {__index=methods}) end
 function methods:CreateLine() return setmetatable({}, {__index=methods}) end
+-- The beta EditBox rejects an omitted flags argument. Validate the full
+-- signature instead of allowing the generic no-op to hide startup failures.
+function methods:SetFont(fontFile, height, flags)
+    assert(type(fontFile)=='string' and fontFile~='', 'font file required')
+    assert(type(height)=='number' and height>0, 'positive font height required')
+    assert(type(flags)=='string', "bad argument #3 to 'SetFont': flags required")
+    self.fontFile, self.fontHeight, self.fontFlags = fontFile, height, flags
+    return true
+end
 -- Mainline SimpleLineAPIDocumentation: relativePoint, relativeTo, offsetX, offsetY.
 -- Line anchors do not have the additional anchor string accepted by SetPoint.
 function methods:SetStartPoint(point, relativeTo, x, y, ...)
