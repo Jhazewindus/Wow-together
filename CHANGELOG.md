@@ -1,5 +1,20 @@
 # Wow Together changelog
 
+## 0.8.28
+
+**ROYS BIG DUNGEON BANANZA - HOTFIX**
+
+- Fix the reported dungeon timeout: background sync, packet sends/receives,
+  roster changes, zone entry and objective events no longer rebuild a closed
+  guide browser. Guide, tracker and arrow progress still update.
+- Batch visible background dashboard refreshes for 0.1 seconds using fresh
+  quest history. Keep explicit UI actions and manual refreshes immediate.
+- Reuse existing event subscriptions when chaining dungeon handlers. Avoid
+  repeated registrations incorrectly disabling viewer updates; keep genuine
+  unsupported-event and handler errors visible.
+- Preserve guide rules, fixed order, skips, dungeon markers, loot and layouts.
+  Include all 61 Lua files; actual beta responsiveness still needs testing.
+
 ## 0.8.27
 
 **ROYS BIG DUNGEON BANANZA**

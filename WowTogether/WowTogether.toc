@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.27
-## X-ReleaseName: ROYS BIG DUNGEON BANANZA
+## Version: 0.8.28
+## X-ReleaseName: ROYS BIG DUNGEON BANANZA - HOTFIX
 ## SavedVariables: WowTogetherDB
 Core.lua
 QuestCatalogue.lua

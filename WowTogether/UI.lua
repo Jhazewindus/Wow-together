@@ -338,6 +338,20 @@ function ns.QueueWindowRender()
     end)
 end
 
+function ns.QueueBackgroundRender()
+    if not ns.ui or ns.ui.backgroundRenderQueued then return end
+    if not C_Timer or type(C_Timer.After) ~= "function" then ns.Render(nil, true); return end
+    ns.ui.backgroundRenderQueued = true
+    C_Timer.After(0.1, function()
+        ns.ui.backgroundRenderQueued = nil
+        if not ns.window or not ns.window:IsShown() then return end
+        if ns.ui.resizing then ns.ui.resizeDirty = true
+        -- Core already updated the guide. This later pass gets fresh history
+        -- and profiles; never retain the previous event's query across a timer.
+        else ns.Render(nil, true) end
+    end)
+end
+
 function ns.Layout()
     if not ns.ui or not ns.ui.metrics then return end
     local width = ns.window:GetWidth() or 860

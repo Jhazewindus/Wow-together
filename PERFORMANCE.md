@@ -1,5 +1,44 @@
 # Performance maintenance — 0.6.9
 
+## Dungeon refresh hotfix in 0.8.28
+
+The supplied 0.8.27 stack enters the leveling browser through background
+`SyncNow(false) -> Refresh -> Render`. Its probe shows a future bracket, four
+waiting peers, Wailing Caverns, level 23 and no public player map ID; window
+visibility is not recorded. Transport refreshes were rendering the dashboard regardless of
+its visibility, including after each outgoing/incoming packet.
+
+The shared transport/roster refreshes, zone entry and objective events now use
+the background path. Guide, tracker, map and arrow progression still update;
+the closed dashboard does not scan its catalogue. Visible background dashboard
+work coalesces for 0.1 seconds, obtains a fresh query after the timer and skips
+the already performed guide update. Explicit actions/manual refreshes retain
+their synchronous behavior; closing/resizing the window defers queued work.
+
+An isolated host replay used the shipped 5,230 quests, a level-23 Horde Priest,
+three accepted Wailing Caverns quests, four waiting peers, map ID 0, future
+bracket 31–40 and the compact map open. Loading the owned v0.8.27 transport code
+and current transport code into separate matching fixtures produced:
+
+| Work across one sync and its send queue | 0.8.27 transport | 0.8.28 transport |
+| --- | ---: | ---: |
+| Hidden guide-browser scans / dashboard renders | 18 | 0 |
+| Catalogue record constructions | 17,964 | 216 |
+| Native completion API reads | 17,913 | 1,263 |
+| Outgoing packets | 15 | 15 |
+
+Both retained `dungeon:wailing-caverns` and the open map. These are Lua 5.1 host
+call counts, not an in-game timing/FPS guarantee. Guide rules, static datasets,
+fixed sequence, skips and transport protocol are unchanged. The shared dispatch
+frame also reuses successful event subscriptions when a viewer listener replaces
+or chains a handler; unsupported first registrations and handler errors remain
+visible. The mock returns false on duplicate native registration to exercise
+the reported five rejected viewer subscriptions.
+
+`tests/test_0828.py` covers the supplied workload, closed/visible dashboards,
+incoming snapshots, fresh batched history, zone/objective events, unchanged
+fixed order, chained progress/marker refresh and solo-mode unsubscription.
+
 ## Later changes in 0.8.3
 
 The measurements below describe the earlier maintenance pass. 0.8.3 expands

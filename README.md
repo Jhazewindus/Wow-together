@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.27 — ROYS BIG DUNGEON BANANZA** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.28 — ROYS BIG DUNGEON BANANZA - HOTFIX** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -23,7 +23,13 @@ files** and the **Media folder**, then `/reload`. Restart the client fully if a 
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
 
-**0.8.27 adds clickable dungeon portrait and quest markers.** Portraits open that
+**0.8.28 fixes background refresh work and shared event subscriptions.** Sync,
+zone entry and objective events keep guide progress current without rebuilding
+a closed dashboard. Visible background refreshes use a short batch with fresh
+history. Existing subscriptions are reused when chaining viewer handlers;
+unsupported events and handler errors remain visible. Retest in the beta.
+
+**Dungeon portrait and quest markers** remain available. Portraits open that
 boss's loot, including from Map only. Quest icons show pickups, objectives and
 turn-ins for the actual NPC/object location; **Quests** hides/shows them.
 Completed quests and incompatible faction/class/race quests are hidden. BFD's

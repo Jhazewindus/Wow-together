@@ -27,6 +27,7 @@ function methods:RegisterEvent(event)
     end
     if rejectedEvents and rejectedEvents[event] then return false end
     self.registeredEvents = self.registeredEvents or {}
+    if self.registeredEvents[event] then return false end
     self.registeredEvents[event] = true
     return true
 end

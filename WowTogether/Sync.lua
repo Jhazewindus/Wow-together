@@ -16,6 +16,10 @@ local pump, transportGeneration, prefixReady = nil, 0, false
 local MAX_PARTS = 64
 ns.syncStats = {sendAttempts = 0, received = 0, accepted = 0, snapshots = 0, titles = 0, ignored = 0, throttled = 0, retries = 0, failures = 0, coalesced = 0, repairs = 0, trace = {}}
 
+-- Transport/roster callbacks keep guide progress current, but only render the
+-- dashboard when it is visible. A hidden guide browser still holds a full
+-- catalogue and must not be rebuilt for every outgoing or incoming packet.
+
 function ns.ResultText(value, enumName)
     if not ns.Public(value) then return "restricted" end
     local label = tostring(value)
@@ -95,7 +99,7 @@ function ns.UpdateRoster()
         if ns.ResetCatchupHistory then ns.ResetCatchupHistory() end
     end
     lastRoster = signature
-    ns.Refresh()
+    ns.Refresh(true)
 end
 
 local function resolveSender(sender)
@@ -143,14 +147,14 @@ local function schedulePump(delay)
 end
 
 pump = function()
-    if #queue == 0 then pumping = false; ns.Refresh(); return end
+    if #queue == 0 then pumping = false; ns.Refresh(true); return end
     if not inParty() then
         queue = {}
         retryCount = 0
         pumping = false
         lastSnapshot, lastCompletion, lastOffers = nil, nil, nil
         if ns.ResetGuideTraffic then ns.ResetGuideTraffic() end
-        ns.Refresh()
+        ns.Refresh(true)
         return
     end
     -- Keep the head until accepted; dropping throttled snapshot parts loses data.
@@ -187,10 +191,10 @@ pump = function()
         pumping = false
         lastSnapshot, lastCompletion, lastOffers = nil, nil, nil
         if ns.ResetGuideTraffic then ns.ResetGuideTraffic() end
-        ns.Refresh()
+        ns.Refresh(true)
         return
     end
-    ns.Refresh()
+    ns.Refresh(true)
     schedulePump(sendDelay)
 end
 
@@ -226,7 +230,7 @@ local function send(kind, ids, sharedRevision)
     local total = math.max(1, math.ceil(#sorted / 18))
     if total > MAX_PARTS or #queue + total > 256 then
         ns.status = "Sync limit reached; try again after the current transfer."
-        ns.Refresh()
+        ns.Refresh(true)
         return
     end
     local transferRevision = sharedRevision
@@ -295,7 +299,7 @@ function ns.SyncNow(force)
     if not ns.db then return end
     trace("Manual/event sync requested")
     ns.UpdateRoster()
-    if not ns.ReadQuests() then ns.Refresh(); return end
+    if not ns.ReadQuests() then ns.Refresh(not force); return end
     if ns.ReadGuide then ns.ReadGuide() end
     if not ns.PartyFeaturesEnabled() then ns.status = "Solo leveling mode. Party features are disabled."
     elseif not ns.syncReady then ns.status = "Party messaging unavailable. Run /wt probe."
@@ -303,7 +307,7 @@ function ns.SyncNow(force)
     else
         if force and #queue > 0 then
             ns.status = "Quest updates are already being sent."
-            ns.Refresh()
+            ns.Refresh(not force)
             return
         end
         ns.status = "Quest progress queued for your party."
@@ -319,7 +323,7 @@ function ns.SyncNow(force)
         if ns.SendRouteLocations then ns.SendRouteLocations(force, lastActiveRevision) end
         if ns.SendCatalogueContext then ns.SendCatalogueContext(force) end
     end
-    ns.Refresh()
+    ns.Refresh(not force)
 end
 
 function ns.ScheduleSync(localReady)
@@ -398,7 +402,7 @@ function ns.Receive(prefix, message, channel, sender)
         repairs[sender] = nil
         replySnapshot()
         repairPeer(sender)
-        ns.Refresh()
+        ns.Refresh(true)
         return
     end
     if string.sub(message, 1, 4) == "1|Q|" then
@@ -410,14 +414,14 @@ function ns.Receive(prefix, message, channel, sender)
         local handled, accepted, reason = ns.ReceiveCatchupHistory(message, sender)
         if handled then
             if accepted then ns.syncStats.accepted = ns.syncStats.accepted + 1 else ignored(reason) end
-            ns.Refresh(); return
+            ns.Refresh(true); return
         end
     end
     if ns.ReceiveCatalogueMessage then
         local handled, accepted, reason = ns.ReceiveCatalogueMessage(message, sender)
         if handled then
             if accepted then ns.syncStats.accepted = ns.syncStats.accepted + 1 else ignored(reason) end
-            ns.Refresh()
+            ns.Refresh(true)
             return
         end
     end
@@ -425,14 +429,14 @@ function ns.Receive(prefix, message, channel, sender)
         local handled, accepted, reason = ns.ReceivePartyRouteMessage(message, sender)
         if handled then
             if accepted then ns.syncStats.accepted = ns.syncStats.accepted + 1 else ignored(reason) end
-            ns.Refresh(); return
+            ns.Refresh(true); return
         end
     end
     if ns.ReceiveRouteMessage then
         local handled, accepted, reason = ns.ReceiveRouteMessage(message, sender)
         if handled then
             if accepted then ns.syncStats.accepted = ns.syncStats.accepted + 1 else ignored(reason) end
-            ns.Refresh()
+            ns.Refresh(true)
             return
         end
     end
@@ -440,14 +444,14 @@ function ns.Receive(prefix, message, channel, sender)
         local handled, accepted, reason = ns.ReceiveProgressMessage(message, sender)
         if handled then
             if accepted then ns.syncStats.accepted = ns.syncStats.accepted + 1 else ignored(reason) end
-            ns.Refresh()
+            ns.Refresh(true)
             return
         end
     end
     if ns.ReceiveGuideMessage then
         local handled, accepted, reason = ns.ReceiveGuideMessage(message, sender)
         if handled then
-            if accepted then ns.syncStats.accepted = ns.syncStats.accepted + 1; ns.Refresh()
+            if accepted then ns.syncStats.accepted = ns.syncStats.accepted + 1; ns.Refresh(true)
             else ignored(reason or "invalid guide metadata") end
             return
         end
@@ -485,7 +489,7 @@ function ns.Receive(prefix, message, channel, sender)
         end
         ns.syncStats.accepted = ns.syncStats.accepted + 1
         ns.syncStats.titles = ns.syncStats.titles + 1
-        ns.Refresh()
+        ns.Refresh(true)
         return
     end
     local kind, rev, part, total, payload = string.match(message, "^1|([SCOK])|(%d+)|(%d+)|(%d+)|(.*)$")
@@ -553,7 +557,7 @@ function ns.Receive(prefix, message, channel, sender)
         ns.members[sender].offerRevision = rev
     end
     if kind == "C" or kind == "K" then repairPeer(sender) end
-    ns.Refresh()
+    ns.Refresh(true)
 end
 
 function ns.InitializeSync(reusePrefix)

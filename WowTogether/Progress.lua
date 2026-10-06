@@ -357,4 +357,4 @@ function ns.RenderTracker()
     frame.footer:SetText(count .. " quests • mouse wheel to scroll")
 end
 
-ns.On("QUEST_WATCH_UPDATE", function() if ns.db then ns.ReadProgress(); ns.ScheduleSync(); ns.Refresh() end end)
+ns.On("QUEST_WATCH_UPDATE", function() if ns.db then ns.ReadProgress(); ns.ScheduleSync(); ns.Refresh(true) end end)

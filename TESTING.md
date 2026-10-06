@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.27** — **ROYS BIG DUNGEON BANANZA**, World of Warcraft: Forever beta,
+For **0.8.28** — **ROYS BIG DUNGEON BANANZA - HOTFIX**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
@@ -18,6 +18,24 @@ The expanded-guide checks below take about **15–25 minutes**.
    optional and off by default. Recording never uploads automatically.
 
 ## Dungeon atlas — about 10 minutes
+
+Hotfix checks — about 5 minutes:
+
+- In Wailing Caverns or another dungeon, close the main window while leaving
+  Map only open. Keep party features on; trigger quest/objective changes and
+  normal sync. The map remains responsive and the selected guide stays selected;
+  no Planner.lua "script ran too long" error should appear. Also try a future
+  bracket or All levels before closing the browser.
+- Repeat with the main guide browser visible: progress and party/status labels
+  update after a short batch. Manual search, filters and guide actions still work.
+- Accept or turn in a relevant quest and check that map markers refresh while
+  guide/arrow progress still updates. Existing event handlers must still run.
+- Check /wt probe: ITEM_DATA_LOAD_RESULT, PLAYER_REGEN_ENABLED, QUEST_LOG_UPDATE,
+  QUEST_TURNED_IN and ZONE_CHANGED_NEW_AREA should not be falsely reported as
+  rejected merely because the dungeon viewer also subscribes. Other genuinely
+  unavailable beta events remain reported.
+- Switch Solo leveling mode on/off and check that party messages stop/resume.
+  Resize/move the dungeon window during combat; positions and layouts remain.
 
 1. From outdoors, open Dungeon quests. Expect See dungeon on the left and Quest
    list beside Start route on the right. See dungeon opens a journal immediately;

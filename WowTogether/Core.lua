@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.27"
-ns.RELEASE_NAME = "ROYS BIG DUNGEON BANANZA"
+ns.VERSION = "0.8.28"
+ns.RELEASE_NAME = "ROYS BIG DUNGEON BANANZA - HOTFIX"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}
@@ -27,7 +27,10 @@ function ns.Refresh(background)
     if ns.UpdateGuideQuestFocus then ns.UpdateGuideQuestFocus() end
     if ns.UpdateGuideQuestItem then ns.UpdateGuideQuestItem() end
     if ns.ui and ns.ui.resizing then ns.ui.resizeDirty = true
-    elseif ns.Render and (not background or ns.window and ns.window:IsShown()) then ns.Render(query, true) end
+    elseif ns.Render and (not background or ns.window and ns.window:IsShown()) then
+        if background and ns.QueueBackgroundRender then ns.QueueBackgroundRender()
+        else ns.Render(query, true) end
+    end
     if ns.RenderTracker then ns.RenderTracker() end
     if ns.RenderGuideQuestList then ns.RenderGuideQuestList() end
     if ns.UpdateNavigation then ns.UpdateNavigation() end
@@ -67,6 +70,13 @@ function ns.ScheduleGuideProgress()
 end
 
 function ns.On(event, handler)
+    -- A successful subscription belongs to this one dispatch frame. Updating
+    -- its handler must not register it again: some builds return false for an
+    -- already registered event. Explicit unsubscription clears the handler.
+    if ns.handlers[event] then
+        ns.handlers[event], ns.eventFailures[event] = handler, nil
+        return true
+    end
     -- Beta builds may omit otherwise documented events. This only catches
     -- event-registration errors; it does not wrap handlers or protected actions.
     local validate = C_EventUtils and C_EventUtils.IsEventValid
@@ -294,7 +304,7 @@ ns.On("QUEST_LOG_UPDATE", function()
     ns.ScheduleSync()
 end)
 ns.On("ZONE_CHANGED_NEW_AREA", function()
-    ns.ResetZoneConnections(); ns.ReadGuide(); ns.ScheduleFlightDiscovery(); ns.ScheduleSync(); ns.Refresh()
+    ns.ResetZoneConnections(); ns.ReadGuide(); ns.ScheduleFlightDiscovery(); ns.ScheduleSync(); ns.Refresh(true)
 end)
 ns.On("PLAYER_LEVEL_UP", function(level) ns.ReadGuideXP(); ns.RecordQuestResearch("level", {level = level}); ns.ScheduleSync() end)
 ns.On("QUEST_ACCEPTED", function(_, id)

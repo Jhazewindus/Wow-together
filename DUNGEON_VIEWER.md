@@ -1,4 +1,4 @@
-# Dungeon viewer — 0.8.27 — ROYS BIG DUNGEON BANANZA
+# Dungeon viewer — 0.8.28 — ROYS BIG DUNGEON BANANZA - HOTFIX
 
 **See dungeon** opens the full journal from the main addon's Dungeon quests cards
 from anywhere. Cards place **Quest list** beside **Start route**; clicking the
@@ -27,6 +27,12 @@ outside 1–255, including Wowhead's 9999 placeholders, are omitted.
 Player windows keep labels concise and show brief unavailable states for missing
 maps or loot. Source coverage, native API details and layout limitations belong
 in diagnostics and the source notes below.
+
+The 0.8.28 hotfix keeps transport and ordinary zone/objective updates out of the
+closed dashboard's catalogue scan. Visible background dashboard work is batched
+for 0.1 seconds with a new query; guide progression still updates separately.
+Viewer listeners reuse the dispatch frame's existing event subscriptions while
+preserving previous handlers. Genuine registration failures remain diagnostic.
 
 **Map only** collapses the journal into a small gameplay window; **Full view**
 restores bosses and loot. Both views move and resize using native frame sizing,
