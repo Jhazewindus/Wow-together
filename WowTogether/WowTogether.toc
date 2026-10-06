@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.29
-## X-ReleaseName: MEMORY COMPARTMENTS
+## Version: 0.8.30
+## X-ReleaseName: DUNGEON PREPARATION
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua
@@ -63,6 +63,8 @@ GuidePersistence.lua
 PartyCatchup.lua
 Shopping.lua
 Activities.lua
+DungeonCollection.lua
+DungeonQuestList.lua
 Professions.lua
 DungeonJournal.lua
 DungeonMapQuests.lua

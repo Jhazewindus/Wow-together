@@ -363,16 +363,20 @@ Dungeon guides combines the Forever overview, 23 bounded quest category lists
 and published Forever entrance areas for all 19 Classic dungeon complexes and
 four new dungeons. All nine new dungeons are listed; the other five keep missing
 coordinates/quest sets explicit. Cards show run levels separately from collection
-pickup levels. Quest list shows pickups, entrance areas and wing ranges; its
-Record entrance here button saves a personal correction. Saved recordings take
-precedence, then public client map links, then published areas. Start route
-collects known eligible local pickups and retains the final entrance across zones.
-Distant pickups remain optional/explained; prerequisites stay checked. Entrance
-areas are not exact portal or cave paths. Read DUNGEONS.md and DungeonData.json.
+pickup levels. Quest list shows compact clickable cards, giver/zone/level/status
+and status filters. Select a quest for its own pickup guide; Start route collects
+all suitable quests across zones and required chains, then heads to the entrance.
+Already accepted quests count as collected. Both reuse the small guide window.
+The Record entrance here button is removed. Previous corrections still take
+precedence, then public client map links and published areas. Scheduled planning
+uses directed travel/known flights and bounded dependency-safe improvements;
+ordinary progress preserves the itinerary. Missing offers/locations wait.
+Entrance areas are not exact portal or cave paths; walk ordering uses estimates
+where the travel graph has gaps. Read DUNGEONS.md and DungeonData.json.
 Collection prompts wait for YOUR highest known pickup level for all relevant regular
 quests, with identity/category filters. Unknown requirements prevent a full-level
 claim. These personal routes work without party snapshots; an unmapped collection
-opens its entire quest list. A popup does not silently replace the selected guide.
+remains selected with its missing offers/locations pending. A popup does not silently replace the selected guide.
 Quest log review only suggests reviewing low-value unfinished work; it never abandons.
 Personal professions use your opened recipes/materials, configurable small batches,
 and AH searches YOU perform. No automatic buying, searching or crafting.

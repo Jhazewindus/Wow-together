@@ -95,8 +95,8 @@ class FullDungeonCollectionTests(unittest.TestCase):
         self.assertEqual(c.ns.routeSelection.key, current_key)
         c.ns.activityPrompt.accept.OnClick()
         self.assertTrue(c.ns.dungeonWindow.IsShown(c.ns.dungeonWindow))
-        self.assertIn('Early pickup', c.ns.dungeonWindow.text.text)
-        self.assertIn('Last pickup', c.ns.dungeonWindow.text.text)
+        self.assertIn('Early pickup', '\n'.join(r.quest.title for r in c.ns.dungeonWindow.visibleQuests.values()))
+        self.assertIn('Last pickup', '\n'.join(r.quest.title for r in c.ns.dungeonWindow.visibleQuests.values()))
         self.assertEqual(c.ns.routeSelection.key, current_key)
 
     def test_unsynced_party_does_not_block_personal_collection_start_or_completion(self):
@@ -108,6 +108,7 @@ class FullDungeonCollectionTests(unittest.TestCase):
         self.assertTrue(plan.personal)
         self.assertEqual([s.kind for s in c.ns.BuildDungeonRoute(plan, True).stops.values()], ['a', 'a', 'q'])
         c.ns.RequestStartRoute(plan)
+        c.drain()
         self.assertEqual(c.ns.routeSelection.key, 'dungeon:test-cavern')
         self.assertFalse(any('|G|' in msg for _, msg, _ in c.drain()))
         c.lua.execute('finished[900]=true; finished[901]=true')

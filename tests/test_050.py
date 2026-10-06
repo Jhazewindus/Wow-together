@@ -154,17 +154,17 @@ class DungeonTests(unittest.TestCase):
         c.drain()
         self.assertFalse(c.ns.activityPrompt.IsShown(c.ns.activityPrompt))
 
-    def test_collect_current_zone_before_nearby_entrance_zone(self):
+    def test_collection_includes_current_and_remote_pickups_before_entrance(self):
         c = solo()
         world_positions(c)
         group = dungeon(c, start_map=502, entrance_map=502)
         plan = c.ns.DungeonGuide(group)
         route = c.ns.BuildDungeonRoute(plan, True)
         self.assertEqual(route.mapID, 501)
-        self.assertEqual([s.id for s in route.stops.values() if not s.dungeonEntrance], [900])
+        self.assertEqual([s.id for s in route.stops.values() if not s.dungeonEntrance], [900, 901])
         self.assertTrue(route.stops[len(route.stops)].dungeonEntrance)
         self.assertEqual(route.stops[len(route.stops)].mapID, 502)
-        self.assertTrue(route.partial)
+        self.assertFalse(route.partial)
         c.lua.execute("entries={{questID=900,title='Accepted',isHeader=false}}")
         c.ns.ReadQuests()
         route = c.ns.BuildDungeonRoute(c.ns.DungeonGuide(group), True)
@@ -181,6 +181,7 @@ class DungeonTests(unittest.TestCase):
         self.assertEqual([s.kind for s in route.stops.values()], ['a', 'a', 'q'])
         self.assertIn('entrance', route.stops[3].label)
         c.ns.ShowGuideOnMap(plan)
+        c.drain()
         c.lua.execute('finished[900]=true; finished[901]=true')
         c.ns.UpdateSelectedRoute(c.lua.table())
         self.assertTrue(c.ns.selectedRoute.complete)
@@ -202,7 +203,7 @@ class DungeonTests(unittest.TestCase):
         point = c.ns.DungeonEntrance(group)
         self.assertEqual(point.source, 'Player-recorded entrance')
 
-    def test_far_or_other_continent_entrance_never_changes_route_map(self):
+    def test_remote_pickup_map_is_selected_without_dropping_it(self):
         for different_continent in (False, True):
             c = solo()
             world_positions(c, different_continent)
@@ -210,8 +211,9 @@ class DungeonTests(unittest.TestCase):
             c.lua.execute("entries={{questID=900,title='Accepted',isHeader=false}}")
             c.ns.ReadQuests()
             route = c.ns.BuildDungeonRoute(c.ns.DungeonGuide(group), True)
-            self.assertEqual(route.mapID, 501)
-            self.assertTrue(route.partial)
+            self.assertEqual(route.mapID, 503)
+            self.assertFalse(route.partial)
+            self.assertEqual(route.stops[1].id, 901)
 
     def test_dungeon_selection_scopes_history_without_all_character_history(self):
         c = solo()

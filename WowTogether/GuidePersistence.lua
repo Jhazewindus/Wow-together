@@ -3,7 +3,7 @@ local addonName, ns = ...
 -- Store only guide instructions, never frames, functions or peer quest credit.
 local guideFields = {"key", "title", "zone", "mode", "mapID", "homeMapID", "fullGuide", "fixedRoute", "personal",
     "rangeLow", "rangeHigh", "reason", "kind", "destination", "catchup", "guideKey", "xpStartLevel", "xpStart",
-    "xpFinishLevel", "xpReward", "xpUnknown", "xpBaseline", "xpUnavailable", "xpAssumedStart", "classQuestScope", "earlyStartLevel"}
+    "xpFinishLevel", "xpReward", "xpUnknown", "xpBaseline", "xpUnavailable", "xpAssumedStart", "classQuestScope", "earlyStartLevel", "dungeonKey", "pickupQuestID"}
 local recordFields = {"id", "title", "level", "mapID", "x", "y", "npc", "source", "lineID", "lineName", "seriesRoot", "seriesName"}
 local stepFields = {"id", "kind", "mapID", "x", "y", "title", "label", "entityID", "action", "itemName", "targetName",
     "npcName", "published", "planned", "unknownLocation", "guideStep", "planNeedsReview", "learnedSource", "alternativeCount",
@@ -147,7 +147,11 @@ local function restore(saved, reusePlan, depth)
     if depth == 0 and saved.baseGuide then guide.baseGuide = restore(saved.baseGuide, reusePlan, 1) end
     if guide.mode == "dungeon" then
         for _, group in ipairs(ns.DungeonGroups()) do
-            if guide.key == "dungeon:" .. group.key then guide.dungeon, guide.entrance = group, ns.DungeonEntrance(group); break end
+            if guide.dungeonKey == group.key or guide.key == "dungeon:" .. group.key then
+                local fresh = ns.DungeonGuide(group, guide.pickupQuestID)
+                if fresh then guide = fresh else guide.dungeon = group end
+                break
+            end
         end
         if not guide.dungeon then return end
     end

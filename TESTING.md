@@ -1,13 +1,13 @@
 # Wow Together — friend test script
 
-For **0.8.29** — **MEMORY COMPARTMENTS**, World of Warcraft: Forever beta,
+For **0.8.30** — **DUNGEON PREPARATION**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 62 Lua files** and
+1. Replace the complete WowTogether folder, including **all 64 Lua files** and
    the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    `/reload`; restart fully if a new addon folder does not appear.
@@ -16,6 +16,27 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Dungeon preparation — about 10 minutes
+
+- Open BFD or Wailing Caverns → Quest list. Check compact quest cards show your
+  faction's quests, NPC, zone, level and status. Test each status filter and
+  scrolling; Record entrance here should be gone.
+- Select one unaccepted quest/card or Route to pickup. The existing small guide
+  window must load that preparation guide and the map must show its pickup route.
+  Accept it: the single-quest guide completes without directing you to its kills.
+- Start route for the dungeon. It should collect every suitable unaccepted quest,
+  including remote city/zone pickups, then lead to the entrance. Already accepted
+  quests must count as collected. Enter the matching dungeon after collection:
+  preparation completes without granting quest credit. Confirm prerequisite pickups/work/returns
+  precede their locked dungeon quest. Actual missing offers stay pending and
+  reappear after unlock; they must not silently count as collected.
+- With known flights, compare collection order to travel links. Loading route
+  appears while planning. Accept/complete a step, change zone and reload: progress
+  and skips remain correct. Switching to a leveling guide must reuse the same
+  small window and cancel old loading work. No unrelated quest autoaccept.
+- Unknown destinations remain pending. Test combat/map deferral and report any
+  unexpected terrain crossing, route omission or delay with /wt probe.
 
 ## Memory compartments — about 5 minutes
 
@@ -322,19 +343,17 @@ Hotfix checks — about 5 minutes:
    on the other continent. Cards should show dungeon run levels and the separate
    pickup level for your character's full quest set. There should be one card
    per dungeon complex, rather than Mage, Orgrimmar or duplicate Lordaeron cards.
-2. Open **Quest list**. Check known pickup NPCs, entrance map/coordinates and
-   Scarlet Monastery/Maraudon/Blackrock Spire wing ranges. Wrong-faction quests
+2. Open **Quest list**. Check pickup NPCs/zones and level/status cards. Wrong-faction quests
    must stay excluded; class quests follow Include class quests. A run range
    must not permit a pickup whose own level/prerequisites are unmet.
-3. Start a collection route. Current-zone pickups come first; a known entrance
-   remains its final destination, including across zones. After accepting local
-   pickups, the arrow should say Go to the dungeon entrance/entrance area.
-   Reaching it must not grant quest completion. Distant pickups are still optional
-   and shown as excluded detours, not claimed collected.
+3. Start a collection route. Suitable local and remote pickups all appear,
+   prerequisites stay ordered, and the entrance is last after the collection.
+   Already accepted quests count as collected. Reaching the entrance must not
+   grant quest completion. Missing required offers/locations stay pending.
 4. Published entrance areas should work without a native map link. Keep your
    prior manually recorded entrance if you have one. Public native links take
-   precedence over published data. For a correction, stand outside the portal
-   and use **Record entrance here** inside Quest list; verify it persists.
+   precedence over published data. Verify Quest list has no Record entrance here
+   button; previously saved entrance corrections should still work.
 5. The Hall of Thanes, Ruins of Lordaeron, Excavation Site and City of Dalaran
    have published areas. The other five new dungeon entries must keep missing
    coordinates/quest sets explicit. No made-up map marker should appear.

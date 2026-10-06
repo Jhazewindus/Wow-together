@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.29"
+ns.VERSION = "0.8.30"
 ns.RELEASE_NAME = "MEMORY COMPARTMENTS"
 ns.handlers = {}
 ns.eventFailures = {}

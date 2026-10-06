@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.29 — MEMORY COMPARTMENTS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.30 — DUNGEON PREPARATION** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -18,10 +18,20 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **62 Lua
+Replace the folder on **every party member's client**, including all **64 Lua
 files** and the **Media folder**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.30 adds dungeon preparation guides.** Start route collects all suitable
+dungeon quests across zones and their necessary prerequisites, then directs you
+to the entrance. Already accepted quests count as collected. Known transport and
+flight links help order the visits; planning yields behind Loading route, and
+normal progress preserves the itinerary. The same small guide window serves
+leveling and dungeon guides. Quest cards show giver, zone, level and status, with
+filters and an individual Route to pickup action. That route ends on acceptance.
+No entrance-recording button is needed. Missing offers or locations remain pending;
+travel estimates are not a guarantee of the shortest terrain-safe path.
 
 **0.8.29 reduces database memory.** Quest metadata stays ready for browsing;
 nested locations/requirements unpack on first use. NPC/item/object records and
@@ -865,12 +875,18 @@ opened quests with no reward choice. All default off and defer in combat.
 Reward choices remain manual. API presence or an attempted action is not proof
 of success on the Forever beta.
 
-**Dungeon quests** offers Start route for collection steps and a known nearby
-entrance area. Missing prerequisites and distant pickups are explained. Use
-**Quest list** for its details. Entrance locations use your saved recording, a
-public client map link or the published Forever dungeon snapshot, in that order.
-For an unmapped entrance or a correction, stand outside it and use **Record
-entrance here** in the quest-list window.
+**Dungeon quests** offers Start route for a personal collection guide across
+zones, including required prerequisite work before the dungeon entrance.
+**Quest list** shows compact clickable quest cards, pickup NPC/zone, level and
+status, and All / To collect / In your log / Completed filters. Selecting a card
+or Route to pickup starts a guide just for that quest and its prerequisites,
+ending after acceptance. Start route covers the full suitable collection.
+Entrance locations use previously saved corrections, public client map links
+or the published Forever dungeon snapshot, in that order. Required missing
+offers/locations wait for confirmation; they are not bypassed. Planning uses
+known directed travel/flight costs, a prerequisite-aware visit order and bounded
+local improvements. This is an efficient heuristic, not a proven global optimum
+or a terrain navigation mesh. Ordinary progress reuses the prepared itinerary.
 The popup uses your character's highest known minimum pickup level across all
 relevant regular quests for that dungeon. Other factions/classes/races, repeatables
 and profession quests do not raise it; matching class quests count when enabled.

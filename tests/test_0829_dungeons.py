@@ -15,7 +15,7 @@ class DungeonActionTests(unittest.TestCase):
         group = c.ns.DungeonGroups()[1]
         c.ns.profile.faction = 'Alliance'  # Deliberately stale cached context.
         c.ns.ShowDungeonQuestList(group)
-        text = c.ns.dungeonWindow.text.text
+        text = '\n'.join(r.quest.title for r in c.ns.dungeonWindow.visibleQuests.values())
         self.assertIn('Horde pickup', text)
         self.assertIn('Neutral pickup', text)
         self.assertNotIn('Alliance pickup', text)
@@ -27,8 +27,8 @@ class DungeonActionTests(unittest.TestCase):
         group = c.ns.DungeonGroups()[1]
         c.lua.execute('function UnitFactionGroup() return secret end')
         c.ns.ShowDungeonQuestList(group)
-        self.assertNotIn('Horde only', c.ns.dungeonWindow.text.text)
-        self.assertNotIn('Alliance only', c.ns.dungeonWindow.text.text)
+        self.assertNotIn('Horde only', '\n'.join(r.quest.title for r in c.ns.dungeonWindow.visibleQuests.values()))
+        self.assertNotIn('Alliance only', '\n'.join(r.quest.title for r in c.ns.dungeonWindow.visibleQuests.values()))
 
     def test_shipped_blackfathom_list_is_faction_specific_for_both_sides(self):
         c = Client(quests=(), use_catalogue=True)
@@ -36,7 +36,7 @@ class DungeonActionTests(unittest.TestCase):
         c.lua.execute("function UnitRace() return 'Orc','Orc',2 end;function UnitClass() return 'Shaman','SHAMAN',7 end")
         group = next(g for g in c.ns.DungeonGroups().values() if g.key == 'blackfathom-deeps')
         c.ns.ShowDungeonQuestList(group)
-        text = c.ns.dungeonWindow.text.text
+        text = '\n'.join(r.quest.title for r in c.ns.dungeonWindow.visibleQuests.values())
         self.assertIn('Trouble in the Deeps', text)
         self.assertNotIn('Knowledge in the Deeps', text)
         self.assertNotIn('Twilight Falls', text)
@@ -44,7 +44,7 @@ class DungeonActionTests(unittest.TestCase):
         self.assertNotIn('Alliance', text)
         c.lua.execute("function UnitFactionGroup() return 'Alliance' end;function UnitRace() return 'Human','Human',1 end")
         c.ns.ShowDungeonQuestList(group)
-        text = c.ns.dungeonWindow.text.text
+        text = '\n'.join(r.quest.title for r in c.ns.dungeonWindow.visibleQuests.values())
         self.assertIn('Knowledge in the Deeps', text)
         self.assertNotIn('Trouble in the Deeps', text)
         self.assertNotIn('Horde', text)
@@ -52,6 +52,7 @@ class DungeonActionTests(unittest.TestCase):
     def test_explicit_start_selects_mapped_dungeon_without_list_or_route_prompt(self):
         c = solo(); map_canvas(c); group = dungeon(c)
         c.ns.ShowDungeonQuests(group, True)
+        c.drain()
         self.assertEqual(c.ns.routeSelection.key, 'dungeon:test-cavern')
         self.assertIsNone(c.ns.dungeonWindow)
         self.assertIsNone(c.ns.startGuidePrompt)
@@ -62,6 +63,7 @@ class DungeonActionTests(unittest.TestCase):
         catalogue(c, {900: quest('Unmapped', starts=[], ends=[], objectives=[], categoryPath='dungeons/test-cavern')})
         group = c.ns.DungeonGroups()[1]
         c.ns.ShowDungeonQuests(group, True)
+        c.drain()
         self.assertEqual(c.ns.routeSelection.key, 'dungeon:test-cavern')
         self.assertIsNone(c.ns.dungeonWindow)
         self.assertFalse(c.ns.selectedRoute.complete)
@@ -71,6 +73,7 @@ class DungeonActionTests(unittest.TestCase):
         c.ns.ShowDungeonQuestList(group)
         self.assertEqual(c.ns.dungeonWindow.collect.caption.text, 'Start route')
         c.ns.dungeonWindow.collect.OnClick(c.ns.dungeonWindow.collect)
+        c.drain()
         self.assertEqual(c.ns.routeSelection.key, 'dungeon:test-cavern')
         self.assertFalse(c.ns.dungeonWindow.IsShown(c.ns.dungeonWindow))
 

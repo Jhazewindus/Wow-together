@@ -1,8 +1,31 @@
-# Dungeon viewer — 0.8.29 — MEMORY COMPARTMENTS
+# Dungeon viewer — 0.8.30 — DUNGEON PREPARATION
 
 **See dungeon** opens the full journal from the main addon's Dungeon quests cards
 from anywhere. Cards place **Quest list** beside **Start route**; clicking the
 card opens the viewer. Inspecting a dungeon never starts or alters a quest guide.
+
+**Quest list** opens compact, scrollable quest cards showing pickup giver/zone,
+quest level and current status. Filter All, To collect, In your log or Completed.
+A card or Route to pickup starts a personal preparation guide for that quest and
+its required prerequisites, ending on acceptance. Start route builds a collection
+guide for all matching quests at the player's pickup level, across every needed
+zone, then directs to the entrance. Both use the same small guide window as
+leveling; opening the list alone does not change a guide.
+
+Required known chains are deduplicated, preserving their accept/objective/return
+order before child pickups. Alternative prerequisites choose one compatible
+branch; uncertain candidates are not treated as proven requirements. Missing
+locations, actual absent offers and incompatible/too-high prerequisites prevent
+a false completed collection. Accepted goal quests count as already collected. Entering the matching dungeon
+after collection completes the preparation guide without awarding quest credit.
+Planning is scheduled; directed Dijkstra travel/known flight costs order visits,
+with bounded dependency-safe relocation improvements. Progress removes finished
+steps from the prepared itinerary; an explicit Scan can replan. Geography gaps
+use distance estimates only for ordering. This is not a global-optimum promise
+or road/terrain coverage for all walks. No NPC offer is inferred from sharing.
+
+Record entrance here is removed from the list. Existing saved entrance corrections
+remain readable, followed by native map links and published entrance areas.
 
 Choose floors when multiple maps exist; the selector is hidden otherwise.
 Select an encounter from the paged boss list or its portrait map marker, and

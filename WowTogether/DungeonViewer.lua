@@ -485,10 +485,11 @@ function ns.InitializeDungeonViewer()
     listen("PLAYER_REGEN_ENABLED", ns.CheckDungeonViewerEntry)
     local pending
     local function updateQuests()
-        local viewer, details = ns.dungeonViewer, ns.dungeonMapQuestWindow
-        if pending or not (viewer and viewer:IsShown() or details and details:IsShown()) then return end
+        local viewer, details, list = ns.dungeonViewer, ns.dungeonMapQuestWindow, ns.dungeonWindow
+        if pending or not (viewer and viewer:IsShown() or details and details:IsShown() or list and list:IsShown()) then return end
         local function refresh()
             pending = nil; ns.RefreshDungeonViewer(); ns.RefreshDungeonMapQuests()
+            if list and list:IsShown() then ns.ReadProfile(); ns.ReadQuests(); ns.RefreshDungeonQuestList() end
         end
         if C_Timer and type(C_Timer.After) == "function" then pending = true; C_Timer.After(.2, refresh) else refresh() end
     end

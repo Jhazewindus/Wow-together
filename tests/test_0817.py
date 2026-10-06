@@ -166,7 +166,7 @@ class EntranceIntegrationTests(unittest.TestCase):
         self.assertTrue(c.ns.selectedRoute.stops[1].dungeonEntrance)
         self.assertFalse(c.ns.Completed(900))
 
-    def test_browser_opens_quest_lists_and_keeps_manual_recording_in_the_details_window(self):
+    def test_browser_opens_clean_quest_cards_without_manual_recording_button(self):
         c = shipped()
         c.ns.SetFilter('dungeons')
         card = c.ns.ui.cards[1]
@@ -175,8 +175,9 @@ class EntranceIntegrationTests(unittest.TestCase):
         self.assertEqual(card.detailsButton.caption.text, 'Quest list')
         card.detailsButton.OnClick(card.detailsButton)
         self.assertTrue(c.ns.dungeonWindow.IsShown(c.ns.dungeonWindow))
-        self.assertIn('Entrance area:', c.ns.dungeonWindow.text.text)
-        self.assertEqual(c.ns.dungeonWindow.record.caption.text, 'Record entrance here')
+        self.assertIn('Dungeon levels', c.ns.dungeonWindow.subtitle.text)
+        self.assertIsNone(c.ns.dungeonWindow.record)
+        self.assertGreater(len(c.ns.dungeonWindow.visibleQuests), 0)
 
 
 if __name__ == '__main__':

@@ -483,13 +483,14 @@ end
 function ns.ShowGuideOnMap(guide)
     local prepared = ns.preparedLevelingRoute and ns.preparedLevelingRoute.guide == guide and ns.preparedLevelingRoute.route
     if guide and guide.fullGuide and not prepared then return ns.PlanLevelingGuide(guide, false) end
+    if guide and guide.mode == "dungeon" and not prepared then return ns.PlanLevelingGuide(guide, false) end
     if guide and not prepared and guide.mode ~= "travel" then ns.ScanGuideProgress(guide, false) end
     -- An explicit local selection replaces an accepted invitation that was
     -- waiting for missing history. Following a ready invitation also passes here.
     ns.waitingPartyRoute = nil
     local route = prepared or guide and ns.BuildGuideRoute(guide, true)
     local first = route and route.stops[1]
-    if not first and not (guide and (guide.fullGuide or guide.mode == "travel")) then
+    if not first and not (guide and (guide.fullGuide or guide.mode == "travel" or guide.mode == "dungeon")) then
         ns.guideAction = guide and ns.GuideSelectionHasSkips(guide)
             and "Remaining guide steps are skipped. Reset guide skips in settings to restore them."
             or "This quest has no available NPC or objective destination yet. View its details in the Quest library."

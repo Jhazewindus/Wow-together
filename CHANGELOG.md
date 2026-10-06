@@ -1,5 +1,25 @@
 # Wow Together changelog
 
+## 0.8.30
+
+**DUNGEON PREPARATION**
+
+- Start route runs a personal Get dungeon quests guide in the existing small
+  guide window. Collect suitable quests across zones, complete required chains,
+  then head to the entrance. Quests already in your log count as collected.
+- Remove the one-zone restriction and 19-pickup cap. Compare known travel links
+  and flights, improve visit order while preserving prerequisites, and schedule
+  planning behind Loading route. Reuse the itinerary during ordinary progress.
+- Select a quest card or Route to pickup for that quest's own preparation guide.
+  It stops after acceptance, without sending you to unrelated quests or the entrance.
+- Replace the text list with compact quest cards, giver/zone/level/status, counts
+  and All / To collect / In your log / Completed filters. Remove Record entrance here.
+- Keep verified identity, actual offers, skips, guide restore and opt-in
+  selected-guide acceptance. Missing facts wait rather than bypass requirements.
+  Switching guides cancels old planning and reuses the same window.
+- Include all 64 Lua files and Media; replace the complete folder, then reload.
+  Host checks verify logic; travel and UI need beta testing.
+
 ## 0.8.29
 
 **MEMORY COMPARTMENTS**

@@ -54,7 +54,7 @@ function ns.DungeonGroups()
     return result
 end
 
-local function relevantDungeonQuest(id)
+function ns.DungeonQuestRelevant(id)
     if ns.IsRepeatableQuest(id) or ns.IsProfessionQuest(id)
         or ns.IsClassQuest(id) and not ns.Option("classQuests") then return false end
     return ns.CatalogueIdentityAllowed(id, ns.profile)
@@ -63,7 +63,7 @@ end
 function ns.DungeonCollectionReadiness(group)
     local result = {count = 0, pickupLevel = 0, maxLevel = 0, unknown = 0, unfinished = 0}
     for _, id in ipairs(group.ids) do
-        local relevant, quest = relevantDungeonQuest(id), ns.CatalogueQuest(id)
+        local relevant, quest = ns.DungeonQuestRelevant(id), ns.CatalogueQuest(id)
         if relevant == nil then result.unknown = result.unknown + 1
         elseif relevant then
             result.count = result.count + 1
@@ -163,148 +163,6 @@ function ns.RecordDungeonEntrance(group)
     ns.activityRevision = (ns.activityRevision or 0) + 1
     ns.guideAction = "Recorded " .. group.name .. " entrance here. Stand outside the entrance when recording."
     ns.Refresh()
-end
-
-function ns.DungeonGuide(group)
-    local records, level = {}, ns.profile and ns.profile.level or 0
-    for _, id in ipairs(group.ids) do
-        local quest = ns.CatalogueQuest(id)
-        if (quest.minLevel or quest.level or 255) <= level and relevantDungeonQuest(id) ~= false
-            and ns.Completed(id) ~= true and not ns.GuideQuestSkipped(id) then records[#records + 1] = ns.CatalogueRecord(id) end
-    end
-    if #records == 0 then return end
-    local entrance = ns.DungeonEntrance(group)
-    local guide = {key = "dungeon:" .. group.key, dungeon = group, mode = "dungeon", personal = true, title = group.name .. " quest collection",
-        kind = "Dungeon quests", records = records, target = records[1], focusKey = ns.self, mapID = ns.profile.mapID,
-        level = group.level, zone = group.name, profilesReady = true, entrance = entrance,
-        reason = ns.DungeonCollectionSummary(group) .. " Collect local pickups before entering.",
-        destination = "Collect first, then go to the dungeon entrance."}
-    local route = ns.BuildDungeonRoute(guide, true)
-    guide.hasPoint, guide.knownStops, guide.missingStops = #route.stops > 0, #route.stops, route.missing
-    guide.nextStop = route.stops[1]
-    if not entrance then guide.reason = guide.reason .. " Entrance not located yet; stand outside it and use Record entrance here." end
-    if route.remote > 0 then guide.reason = guide.reason .. " " .. route.remote .. " distant pickups excluded to avoid a long detour." end
-    if route.missing > 0 then guide.reason = guide.reason .. " " .. route.missing .. " pickups need location/prerequisite checks." end
-    return guide
-end
-
-function ns.BuildDungeonRoute(guide, includeOrigin)
-    local currentMap, stops, missing, remote = ns.profile.mapID, {}, 0, 0
-    local current = ns.PlayerPoint(currentMap)
-    local entrance = guide.entrance
-    local mapID = currentMap
-    local allPickups, localPickups = {}, 0
-    for _, record in ipairs(guide.records) do
-        local stages = guide.personal and ns.RouteStages(record, ns.self) or ns.PartyRouteStages(record, guide.focusKey)
-        local first = stages[1]
-        if first and first.kind == "a" then
-            allPickups[#allPickups + 1] = first
-            if first.mapID == currentMap then localPickups = localPickups + 1 end
-        elseif #stages == 0 and (guide.personal and ns.Completed(record.id) ~= true
-            or not guide.personal and not ns.PartyQuestFinished(record.id)) then missing = missing + 1 end
-    end
-    -- Finish pickups in the current zone before drawing a nearby entrance map.
-    if localPickups == 0 and entrance and entrance.mapID ~= currentMap then
-        local distance = current and ns.CrossMapDistance(current, entrance)
-        if distance and distance <= 2500 then mapID = entrance.mapID end
-    end
-    local pickups = {}
-    for _, point in ipairs(allPickups) do
-        if point.mapID == mapID then pickups[#pickups + 1] = point else remote = remote + 1 end
-    end
-    local position = includeOrigin and ns.PlayerPoint(mapID) or nil
-    local last = position
-    while #pickups > 0 and #stops < 19 do
-        local best, score = 1, math.huge
-        for index, point in ipairs(pickups) do
-            local value = last and ns.NormalizedDistance(last, point) or index
-            if value < score then best, score = index, value end
-        end
-        last = table.remove(pickups, best); stops[#stops + 1] = last
-    end
-    if entrance then
-        stops[#stops + 1] = {id = guide.target.id, mapID = entrance.mapID, x = entrance.x, y = entrance.y, kind = "q",
-            action = "travel", dungeonEntrance = true, published = entrance.published,
-            label = "Go to " .. guide.dungeon.name .. (entrance.published and " entrance area" or " entrance"),
-            title = guide.dungeon.name, planned = #stops > 0}
-    end
-    return {key = guide.key, title = guide.title, mapID = mapID, stops = stops, origin = position, focusKey = guide.focusKey,
-        missing = missing, remote = remote, limited = #pickups,
-        otherMaps = remote + (entrance and entrance.mapID ~= mapID and 1 or 0),
-        partial = missing > 0 or remote > 0 or #pickups > 0 or not entrance}
-end
-
-function ns.ShowDungeonQuests(group, startDirectly)
-    if startDirectly then ns.ReadProfile() end
-    ns.dungeonHistoryScope = {}
-    for index, id in ipairs(group.ids) do
-        if index > 96 then break end
-        ns.dungeonHistoryScope[id] = true
-        local quest = ns.CatalogueQuest(id)
-        if quest.previousQuest then ns.dungeonHistoryScope[quest.previousQuest] = true end
-        for _, previous in ipairs(quest.prerequisiteAll or {}) do ns.dungeonHistoryScope[previous] = true end
-        for _, previous in ipairs(quest.prerequisiteAny or {}) do ns.dungeonHistoryScope[previous] = true end
-    end
-    ns.ScheduleSync()
-    local guide = ns.DungeonGuide(group)
-    if guide and startDirectly and not guide.hasPoint then
-        if ns.dungeonWindow then ns.dungeonWindow:Hide() end
-        ns.ActivateRoute(guide)
-        ns.Refresh()
-    elseif guide and guide.hasPoint then
-        if ns.dungeonWindow then ns.dungeonWindow:Hide() end
-        ns.RequestStartRoute(guide)
-    elseif guide then ns.ShowDungeonQuestList(group)
-    else ns.guideAction = "No unfinished quests in this dungeon match your current level and faction."; ns.Refresh() end
-end
-
-function ns.ShowDungeonQuestList(group)
-    -- Viewer/list actions can run before another guide/profile refresh. Never
-    -- present unverified faction/class/race quests as this character's list.
-    ns.ReadProfile()
-    if not ns.dungeonWindow then
-        local frame = CreateFrame("Frame", "WowTogetherDungeonQuests", UIParent, "BackdropTemplate")
-        ns.dungeonWindow = frame
-        frame:SetSize(660, 500); frame:SetPoint("CENTER"); frame:SetFrameStrata("DIALOG"); frame:SetClampedToScreen(true); ns.UIPanel(frame)
-        ns.UIClose(frame)
-        frame.title = ns.UILabel(frame, "GameFontNormalLarge", 20); frame.title:SetPoint("TOPLEFT", 22, -20)
-        local scroll = CreateFrame("ScrollFrame", nil, frame, "UIPanelScrollFrameTemplate")
-        scroll:SetPoint("TOPLEFT", 22, -58); scroll:SetPoint("BOTTOMRIGHT", -38, 68)
-        frame.content = CreateFrame("Frame", nil, scroll); frame.content:SetSize(596, 100); scroll:SetScrollChild(frame.content)
-        frame.text = ns.UILabel(frame.content, nil, 12); frame.text:SetPoint("TOPLEFT"); frame.text:SetWidth(590)
-        frame.collect = ns.UIButton(frame, "Start route", 140, function() end, true); frame.collect:SetPoint("BOTTOMLEFT", 22, 20)
-        frame.record = ns.UIButton(frame, "Record entrance here", 190, function() end); frame.record:SetPoint("BOTTOMRIGHT", -22, 20)
-    end
-    local lines = {ns.DungeonOverviewSummary(group), ns.DungeonCollectionSummary(group),
-        "Collect quests locally before entering. Distant city pickups are optional; earlier quest steps may be required.", ""}
-    local entrance = ns.DungeonEntrance(group)
-    if entrance then lines[#lines + 1] = "Entrance area: " .. ns.MapName(entrance.mapID)
-        .. string.format(" • %.1f, %.1f", entrance.x * 100, entrance.y * 100) end
-    for _, wing in ipairs(group.definition and group.definition.wings or {}) do
-        lines[#lines + 1] = wing.name .. " • levels " .. wing.runLevelLow .. "–" .. wing.runLevelHigh
-    end
-    lines[#lines + 1] = ""
-    for _, id in ipairs(group.ids) do
-        if relevantDungeonQuest(id) == true then
-            local quest = ns.CatalogueQuest(id)
-            local start = quest.starts and quest.starts[1]
-            lines[#lines + 1] = quest.title .. " • quest Lv " .. (quest.level or "?") .. " • pickup Lv " .. (quest.minLevel or "?")
-            lines[#lines + 1] = "  " .. (ns.ClassQuestLabel(id) or quest.side or "Faction unknown")
-                .. " • " .. (ns.Completed(id) == true and "Completed" or (ns.active[id] and "In your log" or "Not in your log"))
-            if start then lines[#lines + 1] = "  Pickup: " .. start.name .. " • " .. ns.MapName(start.mapID)
-            else lines[#lines + 1] = "  Pickup location not known yet." end
-            if quest.previousQuest then lines[#lines + 1] = "  Previous step: " .. ns.QuestTitle(quest.previousQuest) end
-            lines[#lines + 1] = ""
-        end
-    end
-    lines[#lines + 1] = "For Record entrance here, stand outside the dungeon entrance first. This stores your current position."
-    ns.dungeonWindow.title:SetText(group.name .. " quests")
-    ns.dungeonWindow.text:SetText(table.concat(lines, "\n"))
-    local height = ns.dungeonWindow.text:GetStringHeight()
-    if ns.Public(height) and type(height) == "number" then ns.dungeonWindow.content:SetHeight(math.max(100, height + 12)) end
-    ns.dungeonWindow.collect:SetScript("OnClick", function() ns.ShowDungeonQuests(group, true) end)
-    ns.dungeonWindow.record:SetScript("OnClick", function() ns.RecordDungeonEntrance(group) end)
-    ns.dungeonWindow:Show()
 end
 
 function ns.ZoneTransition()

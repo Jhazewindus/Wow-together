@@ -368,7 +368,7 @@ local function buildGuideRoute(guide, includeOrigin, cooperative)
     if guide.fixedRoute then return ns.BuildFixedGuideRoute(guide, includeOrigin, cooperative) end
     if guide.fullGuide and (guide.mode == "zone" or guide.mode == "chain") then return ns.BuildLevelingRoute(guide, includeOrigin, cooperative) end
     if (guide.mode == "current" or guide.mode == "bundle") and ns.BuildCurrentQuestRoute then return ns.BuildCurrentQuestRoute(guide, includeOrigin) end
-    if guide.mode == "dungeon" and ns.BuildDungeonRoute then return ns.BuildDungeonRoute(guide, includeOrigin) end
+    if guide.mode == "dungeon" and ns.BuildDungeonRoute then return ns.BuildDungeonRoute(guide, includeOrigin, cooperative) end
     if guide.mode == "circuit" and ns.BuildCircuitRoute then return ns.BuildCircuitRoute(guide, includeOrigin) end
     local blocks, missing, focusKey = {}, 0, guide.focusKey or ns.self
     local partial = false
@@ -828,6 +828,7 @@ end
 
 function ns.ActivateRoute(guide, route)
     ns.CancelGuideScan()
+    if ns.CancelGuidePlanning then ns.CancelGuidePlanning() end
     ns.ResetTravelPath()
     ns.guideStepHistory, ns.navigationPreview, ns.forceRouteReplan = {}, nil, nil
     ns.routePaused = nil
@@ -885,10 +886,15 @@ function ns.UpdateSelectedRoute(choices, query)
         selection = copy; ns.routeSelection, ns.routeSignature = copy, nil
     end
     if selection.mode == "dungeon" then
+        if ns.DungeonPreparationArrived(selection) then
+            ns.CompleteSelectedGuide(selection, "Dungeon quests collected. Ready to explore.")
+            return
+        end
         local finished = true
         for _, record in ipairs(selection.records) do
             local complete
-            if selection.personal then complete = ns.Completed(record.id) == true and not ns.active[record.id]
+            if selection.pickupQuestID then complete = ns.active[selection.pickupQuestID] ~= nil or ns.Completed(selection.pickupQuestID) == true
+            elseif selection.personal then complete = ns.Completed(record.id) == true and not ns.active[record.id]
             else complete = ns.PartyQuestFinished(record.id) end
             if not complete then finished = false; break end
         end
@@ -900,7 +906,7 @@ function ns.UpdateSelectedRoute(choices, query)
     -- Keep the selected quest set on normal progress/zone updates. A manual
     -- Scan guide is the explicit place to choose a freshly optimized selection.
     local guide = selection
-    if selection.mode == "dungeon" and selection.dungeon then guide = ns.DungeonGuide(selection.dungeon) end
+    if selection.mode == "dungeon" and selection.dungeon then guide = ns.DungeonGuide(selection.dungeon, selection.pickupQuestID) or selection end
     local id = tonumber(string.match(selection.key, "^quest:(%d+)$"))
     if id then
         local record = ns.CatalogueRecord(id)
@@ -927,7 +933,7 @@ function ns.UpdateSelectedRoute(choices, query)
         end
     end
     local route = guide and ns.BuildGuideRoute(guide, false)
-    if route and old then route = ns.PinCurrentDestination(old, route) end
+    if route and old and selection.mode ~= "dungeon" then route = ns.PinCurrentDestination(old, route) end
     if route then route = ns.AddNPCVisitPickups(guide, route, query) end
     if route and guide and route.mapID ~= guide.mapID then
         local copy = {}; for key, value in pairs(guide) do copy[key] = value end
