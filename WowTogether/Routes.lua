@@ -900,10 +900,7 @@ function ns.UpdateSelectedRoute(choices, query)
         selection = copy; ns.routeSelection, ns.routeSignature = copy, nil
     end
     if selection.mode == "dungeon" then
-        if ns.DungeonPreparationArrived(selection) then
-            ns.CompleteSelectedGuide(selection, "Dungeon quests collected. Ready to explore.")
-            return
-        end
+        ns.AdvanceDungeonGuide(selection)
         local finished = true
         for _, record in ipairs(selection.records) do
             local complete
@@ -920,7 +917,9 @@ function ns.UpdateSelectedRoute(choices, query)
     -- Keep the selected quest set on normal progress/zone updates. A manual
     -- Scan guide is the explicit place to choose a freshly optimized selection.
     local guide = selection
-    if selection.mode == "dungeon" and selection.dungeon then guide = ns.DungeonGuide(selection.dungeon, selection.pickupQuestID) or selection end
+    if selection.mode == "dungeon" and selection.dungeon and not selection.dungeonPhase then
+        guide = ns.DungeonGuide(selection.dungeon, selection.pickupQuestID) or selection
+    end
     local id = tonumber(string.match(selection.key, "^quest:(%d+)$"))
     if id then
         local record = ns.CatalogueRecord(id)
@@ -954,7 +953,7 @@ function ns.UpdateSelectedRoute(choices, query)
         copy.mapID, copy.zone = route.mapID, ns.MapName(route.mapID); guide = copy
     end
     if waiting or not route or #route.stops == 0 then
-        if not waiting and route and #route.stops == 0 and ns.GuideSelectionHasSkips(selection) then
+        if not waiting and route and #route.stops == 0 and selection.mode ~= "dungeon" and ns.GuideSelectionHasSkips(selection) then
             local actualDone = true
             for _, record in ipairs(selection.records or {}) do
                 if not ns.PartyQuestFinished(record.id) then actualDone = false; break end
@@ -983,7 +982,7 @@ function ns.UpdateSelectedRoute(choices, query)
                 ns.routeSelection, ns.selectedRoute = guide, route
             end
             ns.routePaused = waiting and "Waiting for refreshed party quest snapshots."
-                or guide.pendingReason or "Waiting for the next quest destination or prerequisite history."
+                or route and route.pendingReason or guide.pendingReason or "Waiting for the next quest destination or prerequisite history."
             ns.routeSignature = nil
             ns.DrawRoute()
             ns.guideAction = ns.routePaused

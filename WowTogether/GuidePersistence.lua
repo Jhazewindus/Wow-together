@@ -3,13 +3,13 @@ local addonName, ns = ...
 -- Store only guide instructions, never frames, functions or peer quest credit.
 local guideFields = {"key", "title", "zone", "mode", "mapID", "homeMapID", "fullGuide", "fixedRoute", "personal",
     "rangeLow", "rangeHigh", "reason", "kind", "destination", "catchup", "guideKey", "xpStartLevel", "xpStart",
-    "xpFinishLevel", "xpReward", "xpUnknown", "xpBaseline", "xpUnavailable", "xpAssumedStart", "classQuestScope", "earlyStartLevel", "dungeonKey", "pickupQuestID"}
+    "xpFinishLevel", "xpReward", "xpUnknown", "xpBaseline", "xpUnavailable", "xpAssumedStart", "classQuestScope", "earlyStartLevel", "dungeonKey", "pickupQuestID", "dungeonPhase"}
 local recordFields = {"id", "title", "level", "mapID", "x", "y", "npc", "source", "lineID", "lineName", "seriesRoot", "seriesName"}
 local stepFields = {"id", "kind", "mapID", "x", "y", "title", "label", "entityID", "action", "itemName", "targetName",
     "npcName", "published", "planned", "unknownLocation", "guideStep", "planNeedsReview", "learnedSource", "alternativeCount",
     "quantity", "itemID", "objectiveKey", "useItemName", "spellID", "entityType", "worldFallback", "legacyStepKey", "sourceAction",
     "progressName", "objectiveLabel", "quantityUnknown", "sourceZone"}
-local cachedGuide, cachedPlan, cachedBatch, cachedVisit
+local cachedGuide, cachedPlan, cachedBatch, cachedVisit, cachedPhase
 ns.guideResumeStatus = "No saved guide to resume."
 
 local function fields(source, keys)
@@ -54,6 +54,10 @@ local function descriptor(guide, depth)
     for _, key in ipairs({"pickupIDs", "catchupTargets", "catchupRequired"}) do
         for id in pairs(ids) do if guide[key] and guide[key][id] == true then result[key][id] = true end end
     end
+    if guide.mode == "dungeon" and guide.collectionGoals then
+        result.collectionGoals = {}
+        for id in pairs(ids) do if guide.collectionGoals[id] == true then result.collectionGoals[id] = true end end
+    end
     for _, id in ipairs(guide.batchIDs or {}) do if ids[id] then result.batchIDs[#result.batchIDs + 1] = id end end
     for _, id in ipairs(guide.npcVisitPickupIDs or {}) do if ids[id] then result.npcVisitPickupIDs[#result.npcVisitPickupIDs + 1] = id end end
     if guide.fixedPlan then
@@ -79,17 +83,19 @@ end
 function ns.SaveSelectedGuide()
     local guide = ns.routeSelection
     if not ns.db or not ns.db.guideState or not ns.self or not guide then return end
-    if cachedGuide == guide and cachedPlan == guide.fixedPlan and cachedBatch == guide.batchIDs and cachedVisit == guide.npcVisitPickupIDs then return end
+    if cachedGuide == guide and cachedPlan == guide.fixedPlan and cachedBatch == guide.batchIDs and cachedVisit == guide.npcVisitPickupIDs
+        and cachedPhase == guide.dungeonPhase then return end
     local saved = descriptor(guide, 0)
     if not saved then return end
     ns.db.guideState[ns.self] = {schema = 1, addon = ns.VERSION, guide = saved}
     cachedGuide, cachedPlan, cachedBatch = guide, guide.fixedPlan, guide.batchIDs
     cachedVisit = guide.npcVisitPickupIDs
+    cachedPhase = guide.dungeonPhase
 end
 
 function ns.ClearSavedGuide()
     ns.pendingSavedGuide, ns.resumingGuide = nil, nil
-    cachedGuide, cachedPlan, cachedBatch, cachedVisit = nil, nil, nil, nil
+    cachedGuide, cachedPlan, cachedBatch, cachedVisit, cachedPhase = nil, nil, nil, nil, nil
     if ns.db and ns.db.guideState and ns.self then ns.db.guideState[ns.self] = nil end
 end
 
@@ -148,8 +154,18 @@ local function restore(saved, reusePlan, depth)
     if guide.mode == "dungeon" then
         for _, group in ipairs(ns.DungeonGroups()) do
             if guide.dungeonKey == group.key or guide.key == "dungeon:" .. group.key then
-                local fresh = ns.DungeonGuide(group, guide.pickupQuestID)
-                if fresh then guide = fresh else guide.dungeon = group end
+                if guide.dungeonPhase == "run" or guide.dungeonPhase == "return" then
+                    guide.dungeon, guide.collectionGoals = group, {}
+                    for _, id in ipairs(group.ids) do
+                        if ids[id] and type(saved.collectionGoals) == "table" and saved.collectionGoals[id] == true
+                            and ns.DungeonQuestRelevant(id) == true then guide.collectionGoals[id] = true end
+                    end
+                    if not next(guide.collectionGoals) then return end
+                else
+                    guide.dungeonPhase = nil
+                    local fresh = ns.DungeonGuide(group, guide.pickupQuestID)
+                    if fresh then guide = fresh else guide.dungeon = group end
+                end
                 break
             end
         end

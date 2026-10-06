@@ -376,7 +376,12 @@ and published Forever entrance areas for all 19 Classic dungeon complexes and
 four new dungeons. All nine new dungeons are listed; the other five keep missing
 coordinates/quest sets explicit. Cards show run levels separately from collection
 pickup levels. Quest list shows compact clickable cards, giver/zone/level/status
-and status filters. Select a quest for its own pickup guide; Start route collects
+and status filters. Dungeon guides remain open after entry, wait for objectives,
+then route ready quests to their hand-in NPCs. Scan and reload preserve that run.
+Confirmed flight links survive conflicting map discovery flags and use fallback
+distance estimates when native geometry is missing. Directions name the next
+transport before later flights; boarding retains a crossing until arrival.
+Select a quest for its own pickup guide; Start route collects
 all suitable quests across zones and required chains, then heads to the entrance.
 Already accepted quests count as collected. Both reuse the small guide window.
 The Record entrance here button is removed. Previous corrections still take

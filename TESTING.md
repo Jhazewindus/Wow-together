@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.32** — **ELITE TARGET SPAWNS**, World of Warcraft: Forever beta,
+For **0.8.33** — **HANDINS AND TRAVEL CACHE**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
@@ -16,6 +16,27 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Dungeon hand-ins and remembered travel — about 10–15 minutes
+
+- Start a dungeon route, collect its quests and enter. The guide must stay open
+  and wait for objectives. When all objectives are ready, or when leaving with
+  some ready, expect directions to those quests' hand-in NPCs. Unfinished quests
+  remain pending; clear each stop on turn-in. Complete only after the selected
+  quests are turned in. Missing coordinates must stay pending, not finished.
+- Reload inside the dungeon and during hand-ins; Scan too. Keep the phase and
+  original quest set, including manual skips. New unrelated quests must not join
+  the run. Individual Route to pickup still ends on accepting its quest.
+- Open Thunder Bluff's flight menu with Orgrimmar selectable, close it and reload.
+  Resume Hillsbrad travel without reopening that menu. Expect the saved flight
+  to Orgrimmar, then the Tirisfal zeppelin and onward confirmed connections.
+  Compare probes before/after reload; include Flight cache, paths, leg and goal.
+- Directions must name the next transport before a later flight. Board the
+  indicated boat/zeppelin: the arrow must stop pointing back to its dock. Change
+  zones while riding; preserve the crossing until the correct landing. Scan
+  recalculates; Stop/Exit clears it. Report incorrect advances or lost crossings.
+- Test auto-flight off/on. Suggestions use saved connections; automatic selection
+  still requires the open menu's reachable slot. Untimed durations are estimates.
 
 ## Current elite spawns and reopening the guide — about 5–10 minutes
 

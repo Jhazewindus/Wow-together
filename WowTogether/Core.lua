@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.32"
-ns.RELEASE_NAME = "ELITE TARGET SPAWNS"
+ns.VERSION = "0.8.33"
+ns.RELEASE_NAME = "HANDINS AND TRAVEL CACHE"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}

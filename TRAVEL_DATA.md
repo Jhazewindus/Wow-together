@@ -1,4 +1,4 @@
-# Travel routing — updated for 0.8.23
+# Travel routing — updated for 0.8.33
 
 Wow Together implements its own Dijkstra search with a binary heap, deterministic
 ties and nonnegative travel-time costs. It finds a path **between quest steps**;
@@ -62,6 +62,36 @@ so they cannot supply a walking shortcut through city walls. Native reachable
 slot checks and the existing opt-in auto-flight/combat safeguards remain in place.
 
 ## Flight duration — 0.8.23
+
+Version 0.8.33 compares the same level-25 Horde tester's Thunder Bluff probes on
+build 70235. Before opening the menu there were 14 saved connections; afterward
+there were 19 and a Thunder Bluff → Orgrimmar leg. The selected Hillsbrad guide
+also changed from including current quests to its ordinary scope, with a different
+final quest. Counts do not identify which individual cached link was lost. These
+reports establish the difference, not the exact original cause. Confirmed code
+weaknesses are addressed: weaker
+`isUndiscovered` map flags no longer erase menu-confirmed reachable flights, and
+missing live geometry no longer omits a confirmed flight if a duration estimate
+is available. An explicit unreachable result on the source menu can still remove
+that directed connection. Unlocks alone never add edges; automatic selection
+still requires a currently reachable visible slot.
+
+Duration fallback order is current public geometry, saved public same-continent
+world positions, then directed published walking-distance totals between taxi
+nodes. The latter only prices an already confirmed airborne edge; it cannot add
+a flight or ground shortcut. Non-walk links are excluded from that lookup, whose
+graph and maximum eight source rows are bounded and dataset-scoped. Validated
+same-build/route samples retain priority. Arrival validation still uses actual
+native GPS; estimated distances cannot validate a timing sample.
+
+Directions describe the first remaining non-walking connection, including a
+zeppelin before a later Eastern Kingdoms flight. Within 40 estimated yards of
+the boarding point, keep ship/zeppelin/tram directions through movement, zone
+discovery and unavailable GPS, suppressing a bearing back to the dock. This
+does not establish boarding or arrival. Advance only at a public position on the
+destination map within 100 estimated yards. Scan releases/replans the crossing;
+changing/stopping guides clears it. Transport map lines keep a gap. Beta tests
+are still required. Diagnostics report restored connections and ignored conflicts.
 
 Romits reports reliable walking ETAs and inconsistent flight ETAs, with no exact
 trip or version supplied for this report. Code inspection identified distance-only

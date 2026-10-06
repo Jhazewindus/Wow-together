@@ -63,7 +63,9 @@ end
 
 local function changed()
     ns.travelRevision, ns.flightPlanCache = (ns.travelRevision or 0) + 1, nil
-    ns.ResetTravelPath()
+    -- Discovery can run during a boat/zeppelin zone change. Keep the crossing.
+    local path = ns.travelPath
+    if not path or path.transportIndex ~= path.cursor then ns.ResetTravelPath() end
 end
 
 local function destinationPoint(p, published)
@@ -73,7 +75,7 @@ local function destinationPoint(p, published)
         or {mapID = published.mapID, x = published.x, y = published.y}
 end
 
-local function storeNode(info, mapID, ownMap, known, current)
+local function storeNode(info, mapID, ownMap, known, current, reachable)
     if not ns.Public(info) or type(info) ~= "table" or not ns.GuideInteger(info.nodeID) or info.nodeID <= 0 then return end
     local id, state = info.nodeID, flights()
     local old = state.nodes[id] or {}
@@ -96,9 +98,17 @@ local function storeNode(info, mapID, ownMap, known, current)
         elseif info.faction == factions.Alliance then faction = "Alliance"
         elseif info.faction == factions.Neutral then faction = "Both" end
     end
+    -- A confirmed reachable flight is stronger evidence than a later map
+    -- discovery flag. Keep that stronger evidence if the two sources conflict;
+    -- taking a flight still checks the open menu itself.
+    if known == false and old.known == true and old.reachabilityConfirmed == true then
+        known = true
+        ns.flightCacheConflicts = (ns.flightCacheConflicts or 0) + 1
+    end
     if known == nil then known = old.known == true end
     state.nodes[id] = {id = id, name = name, point = p or old.point,
-        world = p and world(p) or old.world, known = known, unlockConfirmed = confirmed, faction = faction}
+        world = p and world(p) or old.world, known = known, unlockConfirmed = confirmed, faction = faction,
+        reachabilityConfirmed = reachable == true or old.reachabilityConfirmed == true}
     if known == false then
         for key, edge in pairs(state.edges) do
             if edge.source == id or edge.destination == id then state.edges[key] = nil end
@@ -196,15 +206,23 @@ function ns.InitializeTravel()
             if not savedPoint(node.point) then node.point = nil end
             local previous = node.point
             node.point = destinationPoint(previous, ns.travelData and ns.travelData.nodes["TAXI_" .. id])
-            if previous ~= node.point then node.world = world(node.point) end
+            if previous ~= node.point then node.world = world(node.point) or node.world end
             local w = node.world
             if type(w) ~= "table" or not ns.GuideInteger(w.continent) or not number(w.x) or not number(w.y) then node.world = nil end
         end
     end
+    local restored = 0
     for key, edge in pairs(state.edges) do
         if type(edge) ~= "table" or not ns.GuideInteger(edge.source) or not ns.GuideInteger(edge.destination)
             or not state.nodes[edge.source] or not state.nodes[edge.destination] then state.edges[key] = nil end
+        if state.edges[key] then
+            restored = restored + 1
+            for _, id in ipairs({edge.source, edge.destination}) do
+                if state.nodes[id].known == true then state.nodes[id].reachabilityConfirmed = true end
+            end
+        end
     end
+    ns.flightCacheRestored, ns.flightCacheConflicts = restored, 0
     for key, timing in pairs(state.timings) do
         if type(timing) ~= "table" or not number(timing.mean) or timing.mean <= 0 or timing.mean >= 7200
             or not ns.GuideInteger(timing.samples, 11) or timing.samples < 1 then state.timings[key] = nil end
@@ -230,8 +248,8 @@ function ns.NoteFlightSelection(slot)
         if info.slot == slot and info.reachable then
             local node = flights().nodes[id]
             local source = flights().nodes[sourceID]
-            local air = source and node and distance(source.world, node.world)
-            local expected, measured, basis = ns.FlightDuration(sourceID, id, air)
+            local air, estimate = ns.FlightPointDistance(source, node, nil, sourceID, id)
+            local expected, measured, basis = ns.FlightDuration(sourceID, id, air, nil, estimate)
             local previous = ns.pendingFlight
             if ns.flightStarted and previous and (previous.source ~= sourceID or previous.destination ~= id
                 or number(now) and number(previous.selectedAt) and now - previous.selectedAt > 30) then
@@ -286,7 +304,7 @@ function ns.ReadFlightMap(attempt)
         if index > 256 then break end
         if ns.Public(info) and type(info) == "table" and ns.GuideInteger(info.nodeID) and number(info.state) then
             local known = (info.state == states.Current or info.state == states.Reachable) and true or nil
-            local id = storeNode(info, mapID, ownMap, known, info.state == states.Current)
+            local id = storeNode(info, mapID, ownMap, known, info.state == states.Current, known == true)
             if id then
                 accepted = accepted + 1
                 if info.state == states.Current then current = id end
@@ -319,6 +337,8 @@ function ns.TravelDiagnostics(output)
     output("Flight paths: " .. known .. " known; " .. located .. " with locations; " .. edges .. " observed connections. Personal to this character.")
     output("Flight unlock scan: " .. ns.flightDiscoveryStatus)
     output("Flight map read: " .. ns.flightMapStatus)
+    output("Flight cache: " .. (ns.flightCacheRestored or 0) .. " connections restored at login; "
+        .. (ns.flightCacheConflicts or 0) .. " conflicting map discovery flags ignored after confirmed reachability.")
     ns.FlightTimingDiagnostics(output)
     ns.TravelNetworkDiagnostics(output)
 end

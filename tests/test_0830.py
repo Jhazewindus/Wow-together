@@ -132,7 +132,7 @@ class DungeonCollectionTests(unittest.TestCase):
         route = c.ns.BuildDungeonRoute(c.ns.DungeonGuide(g), True)
         self.assertEqual(len(route.stops), 1); self.assertTrue(route.stops[1].dungeonEntrance)
 
-    def test_entering_matching_dungeon_completes_preparation_without_quest_credit(self):
+    def test_entering_matching_dungeon_retains_guide_for_the_run_and_handins(self):
         c = solo(); map_canvas(c); g = dungeon(c)
         accept(c, 900, 901)
         c.ns.ShowDungeonQuests(g, True); c.drain()
@@ -141,7 +141,9 @@ class DungeonCollectionTests(unittest.TestCase):
         self.assertFalse(c.ns.selectedRoute.complete)
         c.ns.DungeonEntryKey = c.lua.eval("function() return 'test-cavern' end")
         c.ns.UpdateSelectedRoute(c.lua.table())
-        self.assertTrue(c.ns.selectedRoute.complete)
+        self.assertFalse(c.ns.selectedRoute.complete)
+        self.assertEqual(c.ns.routeSelection.dungeonPhase, 'run')
+        self.assertIn('Finish', c.ns.routePaused)
         self.assertFalse(c.ns.Completed(900)); self.assertFalse(c.ns.Completed(901))
 
     def test_entering_before_quests_are_collected_does_not_claim_finished_preparation(self):

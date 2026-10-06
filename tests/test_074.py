@@ -37,7 +37,7 @@ class SharedTravelTests(unittest.TestCase):
         self.assertEqual(c.ns.navigation.state.stop.flightPlan.destination.id, 22)
         self.assertEqual(c.ns.routeProvider.pins[1].stop.kind, 'f')
         self.assertEqual(c.lua.globals().taken, 54)
-        self.assertIn('fly to End', c.ns.travelNetworkStatus)
+        self.assertIn('Fly from Start to End', c.ns.travelNetworkStatus)
 
     def test_walking_approach_names_the_upcoming_flight(self):
         c = flight_client()

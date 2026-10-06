@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.32 — ELITE TARGET SPAWNS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.33 — HANDINS AND TRAVEL CACHE** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -22,6 +22,17 @@ Replace the folder on **every party member's client**, including all **66 Lua
 files** and the **Media folder**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.33 keeps dungeon guides through the run and hand-ins.** After collecting
+quests and entering, the guide waits for objectives. Ready quests then route to
+their actual turn-in NPCs; unfinished quests stay pending. Scan and reload retain
+that phase and quest set. Individual Route to pickup still ends on acceptance.
+Confirmed flight connections survive weaker conflicting map discovery flags.
+Saved positions or published distances provide estimated flight costs when live
+geometry is missing, without inventing connections. Directions name the next
+transport, including zeppelins before later flights. Boarding retains that leg
+until reaching its destination; Scan can recalculate. Retest remembered flights
+after reload, transport boarding/arrival and dungeon returns in the beta.
 
 **0.8.32 adds current-step elite spawn hints.** Known possible locations for the
 unfinished elite kill/drop target show as skulls on the world map. They clear

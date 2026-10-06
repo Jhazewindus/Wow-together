@@ -1,5 +1,26 @@
 # Wow Together changelog
 
+## 0.8.33
+
+**HANDINS AND TRAVEL CACHE**
+
+- Keep a dungeon guide after entry. Wait for its objectives, then route ready
+  quests to their hand-in NPCs. Unfinished quests and missing turn-in locations
+  stay pending. Preserve phase and goal set through Scan/reload. Individual
+  quest-pickup routes still finish on acceptance.
+- Preserve confirmed flights when weaker map discovery flags conflict. Keep
+  saved world positions when login projection is unavailable. Use saved geometry
+  or published distance estimates to price confirmed flights when live geometry
+  fails; validated flight timings retain priority. Unlocks alone add no flights.
+- Describe the next transport before later flights. At ship/zeppelin/tram boarding
+  points, retain the crossing through movement, zone discovery and unavailable
+  GPS until arrival. Suppress an arrow back to the dock; Scan recalculates it.
+- Add flight-cache restoration/conflict counts to diagnostics. Opening the
+  reported Thunder Bluff menu added five connections and selected Orgrimmar;
+  the exact original loss remains unconfirmed from the two probes alone.
+- Include all 66 Lua files and Media. Host checks cover state and saved data;
+  actual beta flights, transport arrival and dungeon returns need testing.
+
 ## 0.8.32
 
 **ELITE TARGET SPAWNS**

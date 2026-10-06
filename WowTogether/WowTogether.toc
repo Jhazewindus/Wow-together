@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.32
-## X-ReleaseName: ELITE TARGET SPAWNS
+## Version: 0.8.33
+## X-ReleaseName: HANDINS AND TRAVEL CACHE
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua

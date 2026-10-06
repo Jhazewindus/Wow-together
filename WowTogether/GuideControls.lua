@@ -146,6 +146,7 @@ local function scanGuideProgress(guide, refresh, cooperative)
     end
     ns.ScheduleSync(true)
     if refresh ~= false then
+        ns.ResetTravelPath()
         if guide.fixedRoute then
             ns.navigationPreview, ns.routeSignature = nil, nil
             return true

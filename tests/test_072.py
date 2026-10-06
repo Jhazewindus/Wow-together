@@ -135,7 +135,7 @@ class UnlockTests(unittest.TestCase):
         self.assertEqual(c.ns.TransportState().queued, 0)
         self.assertIsNone(c.lua.globals().taken)
 
-    def test_unknown_flags_keep_old_positive_evidence_and_explicit_locked_flag_revokes_edges(self):
+    def test_unknown_or_conflicting_map_flags_keep_menu_confirmed_connections(self):
         c = discovery_client(); c.ns.ReadFlightMap()
         c.lua.globals().mapNodes[2].isUndiscovered = c.lua.globals().secret
         c.ns.ReadKnownFlightPaths()
@@ -144,8 +144,20 @@ class UnlockTests(unittest.TestCase):
         self.assertIsNotNone(state.edges['11:22'])
         c.lua.globals().mapNodes[2].isUndiscovered = True
         c.ns.ReadKnownFlightPaths()
-        self.assertFalse(state.nodes[22].known)
+        self.assertTrue(state.nodes[22].known)
+        self.assertIsNotNone(state.edges['11:22'])
+        c.lua.globals().taxiNodes[2].state = 80
+        c.ns.ReadFlightMap()
         self.assertIsNone(state.edges['11:22'])
+
+    def test_map_only_unlock_can_be_revised_without_menu_confirmation(self):
+        c = discovery_client(); c.ns.ReadKnownFlightPaths()
+        state = c.ns.db.flights[c.ns.self]
+        self.assertTrue(state.nodes[22].known)
+        c.lua.globals().mapNodes[2].isUndiscovered = True
+        c.ns.ReadKnownFlightPaths()
+        self.assertFalse(state.nodes[22].known)
+        self.assertEqual(len(state.edges), 0)
 
     def test_discovered_path_without_coordinates_is_known_but_not_routable(self):
         c = discovery_client()

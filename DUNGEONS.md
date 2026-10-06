@@ -1,4 +1,4 @@
-# Combined dungeon data — 0.8.17
+# Combined dungeon data — updated for 0.8.33
 
 All **19 Classic dungeon complexes** have published entrance areas. The supplied
 Wowhead overview contains **25 Classic range/wing rows**; Scarlet Monastery,
@@ -47,12 +47,21 @@ aliases and checks the published destination map even while the player is away.
 Private/unavailable/invalid native points cannot overwrite published facts.
 Recordings are per character; shipped facts are never mutated by recording.
 
-Current-zone collection visits precede the entrance. Its final stop is retained
-across zones and says Go to the entrance/entrance area. Distant pickups remain
-optional, excluded detours rather than completed work. Normal Dijkstra travel
-and map projection handle the journey; costs, fixed leveling order and quest
-credit are unchanged. Arrival grants no completion. Start route collects quests
-and navigates towards the dungeon; it does not route inside the instance.
+Start route collects suitable dungeon quests across zones and any required
+prerequisite chains, then visits the entrance. Accepted quests count as collected;
+unknown offers/locations remain pending. Dijkstra travel costs help order the
+preparation; normal updates preserve that itinerary. No quest credit is inferred
+from arrival. Individual Route to pickup still ends on accepting that quest.
+
+From 0.8.33, entering the matching dungeon retains the guide in its run phase.
+Wait for the quests' real objective progress. Once all remaining goals are ready,
+or when leaving with some ready, switch to hand-in visits for those quests only,
+using their published or native return destinations. A later ready quest joins
+the remaining hand-ins; unfinished or unmapped returns stay pending. Turn-ins
+are ordered by known travel costs without claiming a global optimum. The guide
+finishes after confirmed turn-ins. It does not supply an interior dungeon route.
+Run/return phase and original goal set persist through Scan and reload; new
+pickups cannot silently expand that run. Manual skips and identity gates remain.
 
 Points identify **entrance areas**, not guaranteed exact portal coordinates.
 Cave passages and mountain interior paths still need current beta observations.

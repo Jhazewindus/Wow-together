@@ -2,7 +2,7 @@ local addonName, ns = ...
 
 -- A personal preparation guide. Dungeon quests need only their pickup;
 -- unfinished prerequisites need their full accept/work/return sequence.
-local costs, costCount, costContext, lastPlan = {}, 0, nil, nil
+local costs, costCount, costContext, lastPlan, lastReturns = {}, 0, nil, nil, nil
 
 local function complete(id) return ns.Completed(id) == true and not ns.active[id] end
 local function pointKey(p)
@@ -107,7 +107,93 @@ end
 
 local function taskKey(stop) return stop.id .. ":" .. ns.GuideStepKey(stop) end
 
+function ns.DungeonRunProgress(guide)
+    local progress = {total = 0, collected = 0, ready = 0, finished = 0, skipped = 0}
+    for id in pairs(guide.collectionGoals or {}) do
+        progress.total = progress.total + 1
+        if complete(id) then progress.finished = progress.finished + 1; progress.collected = progress.collected + 1
+        elseif ns.GuideQuestSkipped(id) then progress.skipped = progress.skipped + 1; progress.collected = progress.collected + 1
+        elseif ns.active[id] then
+            progress.collected = progress.collected + 1
+            if ns.readyToTurnIn[id] or ns.QuestProgressReady(ns.self, id) then progress.ready = progress.ready + 1 end
+        end
+    end
+    return progress
+end
+
+function ns.AdvanceDungeonGuide(guide)
+    if guide.pickupQuestID or not guide.collectionGoals then return end
+    local progress = ns.DungeonRunProgress(guide)
+    local phase = guide.dungeonPhase or "collect"
+    local inside = ns.DungeonEntryKey() == guide.dungeonKey
+    if phase == "collect" and progress.total > 0 and progress.collected == progress.total
+        and (inside or progress.ready > 0 and progress.ready + progress.finished + progress.skipped == progress.total) then
+        phase = "run"
+    end
+    if phase == "run" and progress.ready > 0
+        and (not inside or progress.ready + progress.finished + progress.skipped == progress.total) then phase = "return" end
+    if phase ~= (guide.dungeonPhase or "collect") then
+        guide.dungeonPhase = phase
+        guide.title = guide.dungeon.name .. " quests"
+        ns.routeSignature, ns.routePaused = nil, nil
+        ns.ResetTravelPath()
+        ns.SaveSelectedGuide()
+    end
+end
+
+local function returnRoute(guide, includeOrigin, cooperative)
+    local progress, tasks, pending, missing = ns.DungeonRunProgress(guide), {}, nil, 0
+    if guide.dungeonPhase == "return" then
+        for _, record in ipairs(guide.records) do
+            local id = record.id
+            if guide.collectionGoals[id] and not complete(id) and not ns.GuideQuestSkipped(id) and ns.active[id]
+                and (ns.readyToTurnIn[id] or ns.QuestProgressReady(ns.self, id)) then
+                local stop = ns.RouteStop(record, ns.self)
+                if stop and stop.kind == "t" and #ns.FilterGuideStages({stop}) > 0 then tasks[#tasks + 1] = stop
+                elseif not stop then
+                    missing = missing + 1
+                    pending = pending or {id = id, kind = "t", title = record.title}
+                end
+            end
+        end
+    end
+    table.sort(tasks, function(a, b) return a.id < b.id end)
+    local start, stops, used = ns.PlayerPoint(ns.profile.mapID), {}, {}
+    if lastReturns and lastReturns.key == guide.key and not cooperative and not ns.forceRouteReplan then
+        for _, key in ipairs(lastReturns.steps) do
+            for index, stop in ipairs(tasks) do
+                if not used[index] and taskKey(stop) == key then stops[#stops + 1], used[index] = stop, true; break end
+            end
+        end
+    end
+    while #stops < #tasks do
+        local best, score
+        for index, stop in ipairs(tasks) do
+            if not used[index] then
+                local value = travelCost(stops[#stops] or start, stop, cooperative)
+                if not score or value < score then best, score = index, value end
+            end
+        end
+        stops[#stops + 1], used[best] = tasks[best], true
+    end
+    local keys, otherMaps = {}, 0
+    for _, stop in ipairs(stops) do keys[#keys + 1] = taskKey(stop) end
+    lastReturns = {key = guide.key, steps = keys}
+    local mapID = stops[1] and stops[1].mapID or ns.profile.mapID
+    for _, stop in ipairs(stops) do if stop.mapID ~= mapID then otherMaps = otherMaps + 1 end end
+    local remaining = progress.total - progress.finished - progress.skipped
+    local reason = missing > 0 and ("Turn-in location missing for " .. pending.title .. ". Check the quest log.")
+        or ("Finish " .. remaining .. " quest" .. (remaining == 1 and "" or "s") .. " in " .. guide.dungeon.name
+            .. ". " .. progress.ready .. "/" .. remaining .. " ready to turn in.")
+    return {key = guide.key, title = guide.title, mapID = mapID, stops = stops,
+        origin = includeOrigin and start and start.mapID == mapID and start or nil, focusKey = ns.self,
+        missing = missing, remote = 0, limited = 0, otherMaps = otherMaps, partial = missing > 0,
+        pendingStop = pending, pendingReason = reason, dungeonPhase = guide.dungeonPhase, dungeonProgress = progress}
+end
+
 function ns.BuildDungeonRoute(guide, includeOrigin, cooperative)
+    ns.AdvanceDungeonGuide(guide)
+    if guide.dungeonPhase == "run" or guide.dungeonPhase == "return" then return returnRoute(guide, includeOrigin, cooperative) end
     if not guide.collectionGoals then
         local fresh = guide.dungeon and ns.DungeonGuide(guide.dungeon, guide.pickupQuestID)
         if fresh then guide = fresh

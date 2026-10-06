@@ -33,7 +33,24 @@ function ns.ReadNativeFlightRoute(slot, source, destination, slots)
     if route[#route] == destination then return route end
 end
 
-function ns.FlightDuration(source, destination, air, geometry)
+function ns.FlightPointDistance(source, destination, geometry, sourceID, destinationID)
+    local length = source and destination and ns.TravelPointDistance(source.point, destination.point, geometry)
+    if finite(length) and length > 0 then return length end
+    local a, b = source and source.world, destination and destination.world
+    if ns.Public(a) and ns.Public(b) and type(a) == "table" and type(b) == "table"
+        and ns.GuideInteger(a.continent) and ns.GuideInteger(b.continent) and a.continent == b.continent
+        and finite(a.x) and finite(a.y) and finite(b.x) and finite(b.y) then
+        length = math.sqrt((a.x - b.x)^2 + (a.y - b.y)^2)
+        if length > 0 then return length, "Saved position estimate" end
+    end
+    sourceID, destinationID = sourceID or source and source.id, destinationID or destination and destination.id
+    if ns.GuideInteger(sourceID) and ns.GuideInteger(destinationID) then
+        length = ns.PublishedTravelDistance("TAXI_" .. sourceID, "TAXI_" .. destinationID)
+        if finite(length) and length > 0 then return length, "Published travel distance estimate" end
+    end
+end
+
+function ns.FlightDuration(source, destination, air, geometry, estimate)
     local flights = state()
     local edge = flights and flights.edges[source .. ":" .. destination]
     local timing = flights and flights.timings[source .. ":" .. destination]
@@ -48,13 +65,13 @@ function ns.FlightDuration(source, destination, air, geometry)
         local length = 0
         for index = 2, #edge.route do
             local a, b = flights.nodes[edge.route[index - 1]], flights.nodes[edge.route[index]]
-            local segment = a and b and ns.TravelPointDistance(a.point, b.point, geometry)
+            local segment = ns.FlightPointDistance(a, b, geometry, edge.route[index - 1], edge.route[index])
             if not finite(segment) then length = nil; break end
             length = length + segment
         end
         if length and length > 0 then return length / 32 * 1.35, false, "Connecting-stop estimate" end
     end
-    if finite(air) and air > 0 then return air / 32 * 1.35, false, "Distance estimate" end
+    if finite(air) and air > 0 then return air / 32 * 1.35, false, estimate or "Distance estimate" end
 end
 
 function ns.PrepareFlightTiming(selection)

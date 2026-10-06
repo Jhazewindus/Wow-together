@@ -107,7 +107,8 @@ class TravelSearchTests(unittest.TestCase):
         c.ns.ActivateRoute(guide(c, (900,)), c.lua.table_from({'mapID': 502, 'stops': [stop]}, recursive=True))
         c.lua.execute('playerX=.9'); c.ns.UpdateNavigation()
         state = c.ns.navigation.state
-        self.assertTrue(state.arrived)
+        self.assertTrue(state.stop.transportWaiting)
+        self.assertIsNone(state.angle)
         self.assertIn('Take the ship', state.status)
         self.assertEqual(c.ns.travelPath.cursor, 2)
         line_points = c.ns.TravelLinePoints(point(c, 501, .9), c.ns.selectedRoute.stops[1])

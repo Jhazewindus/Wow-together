@@ -73,7 +73,10 @@ function ns.RouteContext(stop, mapID, facts)
         if ns.selectedRoute and ns.selectedRoute.complete then return "Guide complete.\nChoose another guide or Scan to check progress." end
         return (ns.routeSelection.zone or ns.MapName(ns.routeSelection.homeMapID or ns.routeSelection.mapID or 0)) .. " • Guide retained.\nVisit its quest giver or Scan after progressing."
     end
-    if stop.kind == "notice" and not stop.sourceStop then return "Scan can reconsider skipped steps.\nSettings can reset all skips for this character." end
+    if stop.kind == "notice" and not stop.sourceStop then
+        if ns.routeSelection and ns.routeSelection.mode == "dungeon" then return ns.routePaused or "Finish the dungeon quests." end
+        return "Scan can reconsider skipped steps.\nSettings can reset all skips for this character."
+    end
     if stop.kind == "corpse" then
         return (stop.approximate and "Recorded death position; check nearby." or "Your quest guide is retained.")
             .. "\nResume questing after recovering your body."
@@ -90,6 +93,7 @@ function ns.RouteContext(stop, mapID, facts)
     if stop.action == "flight-check" then return "Check this nearby flight master.\nUnlock status has not been confirmed." end
     if ns.routePaused and not stop.sourceStop then
         if ns.routeSelection and ns.routeSelection.fixedRoute then return ns.routePaused end
+        if ns.routeSelection and ns.routeSelection.mode == "dungeon" then return ns.routePaused end
         return "Waiting for confirmed party progress.\nYour last route is retained."
     end
     facts = facts or ns.GuideStepFacts(stop)
@@ -152,6 +156,7 @@ function ns.NavigationState()
     local state = {visible = true, stop = stop}
     if stop.unsafeTransit then state.status = stop.label; return state end
     if stop.kind == "notice" then state.status = stop.label; return state end
+    if stop.transportWaiting then state.status = stop.label; return state end
     if stop.positionUnavailable then state.status = "Corpse position unavailable on this build"; return state end
     if ns.routePaused and not (confirmation and not confirmation.unknownLocation) and stop.kind ~= "corpse" then state.status = "Waiting for party updates"; return state end
     if ns.navigation and type(ns.navigation.icon.CreateLine) ~= "function" then state.status = "Arrow drawing unavailable"; return state end
