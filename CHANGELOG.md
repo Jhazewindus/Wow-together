@@ -1,5 +1,18 @@
 # Wow Together changelog
 
+## 0.8.22
+
+- Give Dungeon quests cards official Blizzard client artwork, stretched across
+  the entire block at a uniform, faint 14% opacity. Keep labels and controls clear;
+  resize/reuse the same texture and clear it when the card becomes an ordinary row.
+- Read available dungeon-journal images without opening it or changing its tier.
+  Published filenames cover 19 Classic complexes and four Forever dungeons. The
+  other five use native journal art when available, then a neutral client background;
+  missing assets leave a plain card. No external images are bundled or downloaded.
+- Add artwork capabilities/resolution counts to diagnostics and document sources
+  in DUNGEON_ARTWORK.md. Preserve guides, progress and skips. Include all 55 Lua
+  files; actual asset availability and rendering need beta testing.
+
 ## 0.8.21
 
 - Add optional personal class-training steps near quest visits or before leaving

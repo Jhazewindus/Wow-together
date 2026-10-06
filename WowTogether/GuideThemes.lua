@@ -57,6 +57,7 @@ function ns.GuideCardTheme(guide, dungeon)
 end
 
 function ns.LayoutGuideCardTheme(card)
+    if card.dungeonArt and card.dungeonArt.shown then ns.LayoutDungeonCardArtwork(card); return end
     local art = card.zoneArt
     if not art or not art:IsShown() then return end
     local width, height = (card:GetWidth() or 0) - 2, (card:GetHeight() or 0) - 2
@@ -74,6 +75,13 @@ function ns.LayoutGuideCardTheme(card)
 end
 
 function ns.ApplyGuideCardTheme(card, guide, dungeon)
+    local group = dungeon or (ns.Public(guide) and type(guide) == "table" and ns.Public(guide.mode)
+        and guide.mode == "dungeon" and guide.dungeon)
+    if ns.Public(group) and type(group) == "table" then
+        if card.zoneArt then card.zoneArt:Hide() end
+        ns.ApplyDungeonCardArtwork(card, group); return
+    end
+    ns.HideDungeonCardArtwork(card)
     local theme = ns.GuideCardTheme(guide, dungeon)
     if not theme then if card.zoneArt then card.zoneArt:Hide() end; return end
     if not card.zoneArt then

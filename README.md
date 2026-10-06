@@ -1,7 +1,7 @@
 # Wow Together
 
 A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
-**0.8.21** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.22** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -16,10 +16,24 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **54 Lua
+Replace the folder on **every party member's client**, including all **55 Lua
 files** and the **Media folder**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.22 adds official Blizzard artwork to Dungeon quests cards.** One faint
+image stretches across the whole card at 14% opacity, leaving the text and
+controls clear. Native dungeon-journal images take precedence; published client
+references cover all 19 Classic complexes and four Forever dungeons. The five
+remaining Forever dungeons use their journal art when available, otherwise a
+neutral Blizzard dungeon-wall background. Missing assets leave a plain card.
+Artwork resizes with pooled cards and changes neither routes nor quest progress.
+
+The addon references artwork already in the game; no Blizzard images or Wowhead
+screenshots are bundled or downloaded in-game. Filename metadata and API sources
+are documented in [DUNGEON_ARTWORK.md](DUNGEON_ARTWORK.md). Client asset availability
+and actual beta rendering still need testing; `/wt probe` reports capabilities
+and resolved-image counts. Restart fully if newly referenced textures stay blank.
 
 **0.8.21 adds optional class-training stops.** Under **Settings → Leveling guides →
 Include convenient class training** (default on), each even level makes a personal
@@ -180,8 +194,8 @@ or incompatible quests, so this does not certify completion of every zone quest.
 **0.8.12 adds subtle zone-themed guide cards.** Forests, prairie, canyons,
 deserts, snow and other original landscape motifs fade into the charcoal
 background, keeping the text area dark. Every current zone guide has a matching
-theme; the Orgrimmar travel guide uses a settlement motif and dungeon collection
-cards use ruins. Unknown future zones use a quiet fallback. Scenery crops
+theme; the Orgrimmar travel guide uses a settlement motif. Dungeon cards now use
+client artwork as described above. Unknown future zones use a quiet fallback. Scenery crops
 proportionally as the dashboard resizes, with one reused texture per card and
 no animation, polling or in-game downloads. Guide order, eligibility and quest
 progress are unaffected. Install the complete Media folder with this release;

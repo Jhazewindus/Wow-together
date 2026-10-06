@@ -1,5 +1,9 @@
 # Guide-card artwork
 
+This collection decorates zone/travel guide cards. Dungeon cards instead
+reference official artwork already in the Blizzard client; see the release's
+`DUNGEON_ARTWORK.md` for filenames, API sources and missing-image fallbacks.
+
 The sixteen landscape motifs were generated specifically for Wow Together on
 6 October 2026 using OpenAI's image-generation tool. The source request called
 for original generic landscape illustrations, without game screenshots,

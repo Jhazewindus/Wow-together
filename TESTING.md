@@ -1,12 +1,12 @@
 # Wow Together — friend test script
 
-For **0.8.21**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.22**, World of Warcraft: Forever beta, interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 54 Lua files** and
+1. Replace the complete WowTogether folder, including **all 55 Lua files** and
    the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    `/reload`; restart fully if a new addon folder does not appear.
@@ -15,6 +15,28 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Dungeon artwork — about 5 minutes
+
+1. Open **Dungeon quests** and compare Ragefire Chasm, Wailing Caverns and
+   Shadowfang Keep. Each should have its own faint Blizzard illustration across
+   the entire card, including behind the text. Text/buttons must remain readable;
+   no half-card fade, white rectangle or missing-texture square should appear.
+2. Resize narrow/wide, scroll and switch dungeons. Artwork should stretch within
+   the complete card and retain its faint opacity without crossing the border.
+   Test your normal UI scale. Switch to Leveling guides and All quests: ordinary
+   quest rows must not retain a previous dungeon's picture; zone themes stay intact.
+3. Check the four published Forever images: Hall of Thanes, Excavation Site:
+   Wetlands, City of Dalaran and Ruins of Lordaeron. Other new dungeons may use
+   native journal art or a neutral Blizzard background; missing assets stay plain.
+   The filename list documents references, not a guarantee that this build has them.
+4. Browse with/without Blizzard's journal loaded and during combat. The addon
+   must not open/change the journal or reorder, complete or skip quests. No new
+   polling/chat/party messages should appear from artwork. Capture the first Lua
+   error, screenshot and `/wt probe` Dungeon artwork line if an image is wrong.
+5. Restart fully if referenced artwork stays blank. Record client build, dungeon,
+   UI scale and diagnostics. The supplied preview is rendered from addon UI code
+   on the host; it does not establish actual beta texture rendering.
 
 ## Optional class training — about 10 minutes
 
@@ -319,9 +341,9 @@ automatically. This review does not change leveling order or mapping coverage.
    The left text area, buttons, level label and gold borders must remain clear.
 2. Browse a zone while standing somewhere else. Its artwork should match the
    guide, not your current zone. Path to Orgrimmar should show a settlement;
-   dungeon collection cards should show subdued ruins.
+   dungeon collection cards should show faint Blizzard client artwork.
 3. Resize the dashboard narrow/wide and scroll its cards. Scenery should crop
-   smoothly within each card without stretching, crossing its border or covering
+   smoothly within each zone card without stretching, crossing its border or covering
    controls. Try your normal UI scale. Hover and click buttons as usual.
 4. Switch between Leveling guides, All quests and ordinary party progress.
    Reused cards must not retain a previous guide's background on plain quest

@@ -71,7 +71,8 @@ function methods:IsEnabled() return self.enabled ~= false end
 function methods:Hide() self.shown = false end
 function methods:Show() self.shown = true end
 function methods:SetText(text) self.text = text end
-function methods:SetTexture(texture) self.texture = texture end
+function methods:SetTexture(texture) self.texture = texture; return true end
+function methods:SetAlpha(alpha) self.alpha = alpha end
 function methods:GetText() return self.text end
 function methods:SetPoint(...) self.point = {...} end
 function methods:SetSize(width, height) self.width, self.height = width, height end

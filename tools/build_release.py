@@ -86,8 +86,13 @@ All quests (formerly Library), Party quests, Shared, Party progress, Dungeon que
 Profession guides and Quest log review. All quests searches commit on Enter or pause.
 Guide cards use original, faint zone-themed landscape backgrounds. The fade is
 baked into local textures; no downloads or animation run in the game. Scenery
-crops proportionally on resize. Dungeon cards use subdued ruins; unknown zones
-have a quiet fallback. The artwork changes appearance only, not guide logic.
+crops proportionally on resize. Dungeon cards reference official Blizzard client
+artwork, stretched across the full block at a faint 14% opacity. Journal images
+take precedence; 19 Classic and four Forever filenames are published. Remaining
+new dungeons use available journal art or a neutral client background; missing
+textures stay plain. No Blizzard images or external screenshots are bundled.
+See DUNGEON_ARTWORK.md for sources and beta limits. Unknown zones have a quiet
+fallback. Artwork changes appearance only, not guide logic.
 Restart the client fully if new artwork remains blank after reload.
 Use level brackets / Near party to narrow the list.
 Leveling guides has its own bracket dropdown, deferred zone/quest/NPC search
@@ -388,7 +393,7 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
             archive.write(media / name, 'WowTogether/Media/GuideThemes/' + name)
         for name in ('README.md', 'TESTING.md', 'CHANGELOG.md'):
             archive.write(ROOT / name, 'WowTogether/' + name)
-        for name in ('PERFORMANCE.md', 'TRAVEL_DATA.md', 'DUNGEONS.md', 'THIRD_PARTY_NOTICES.md', 'QUEST_DATA.md',
+        for name in ('PERFORMANCE.md', 'TRAVEL_DATA.md', 'DUNGEONS.md', 'DUNGEON_ARTWORK.md', 'THIRD_PARTY_NOTICES.md', 'QUEST_DATA.md',
                      'LEGACY_DATA_LICENSE.txt', 'LEGACY_DATA_COPYRIGHT.md'):
             if (ROOT / name).exists():
                 archive.write(ROOT / name, 'WowTogether/' + name)

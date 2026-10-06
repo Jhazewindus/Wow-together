@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.21"
+ns.VERSION = "0.8.22"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}
@@ -138,6 +138,9 @@ function ns.Diagnostics()
         {"C_QuestLine.GetAvailableQuestLines", C_QuestLine and C_QuestLine.GetAvailableQuestLines},
         {"C_QuestLine.GetQuestLineInfo", C_QuestLine and C_QuestLine.GetQuestLineInfo},
         {"C_QuestLine.GetQuestLineQuests", C_QuestLine and C_QuestLine.GetQuestLineQuests},
+        {"EJ_GetInstanceByIndex", EJ_GetInstanceByIndex},
+        {"EJ_GetInstanceInfo", EJ_GetInstanceInfo},
+        {"C_Texture.GetFilenameFromFileDataID", C_Texture and C_Texture.GetFilenameFromFileDataID},
         {"C_QuestLine.RequestQuestLinesForMap", C_QuestLine and C_QuestLine.RequestQuestLinesForMap},
         {"C_QuestLog.GetQuestDifficultyLevel", C_QuestLog and C_QuestLog.GetQuestDifficultyLevel},
         {"C_QuestLog.GetQuestsOnMap", C_QuestLog and C_QuestLog.GetQuestsOnMap},
@@ -219,6 +222,7 @@ function ns.Diagnostics()
     ns.QuestItemDiagnostics(output)
     ns.GuideTipDiagnostics(output)
     ns.ClassTrainingDiagnostics(output)
+    ns.DungeonArtworkDiagnostics(output)
     local low, high = ns.PreferredQuestLevels()
     if low then
         local level, _, name = ns.PartyLevelFloor()
@@ -235,7 +239,10 @@ function ns.Diagnostics()
 end
 
 ns.On("ADDON_LOADED", function(name)
-    if name ~= addonName then return end
+    if name ~= addonName then
+        if name == "Blizzard_EncounterJournal" and ns.db then ns.RefreshDungeonArtwork() end
+        return
+    end
     if type(WowTogetherDB) ~= "table" then WowTogetherDB = {} end
     WowTogetherDB.version = 1
     ns.db = WowTogetherDB
@@ -266,7 +273,7 @@ ns.On("ADDON_LOADED", function(name)
     ns.Print("Loaded. /wt opens the quest view; /wt probe opens diagnostics.")
 end)
 
-ns.On("PLAYER_LOGIN", function() ns.RestoreSavedGuide(); ns.ScheduleFlightDiscovery(); ns.ScheduleSync() end)
+ns.On("PLAYER_LOGIN", function() ns.RestoreSavedGuide(); ns.RefreshDungeonArtwork(); ns.ScheduleFlightDiscovery(); ns.ScheduleSync() end)
 ns.On("QUEST_LOG_UPDATE", function()
     ns.ScheduleSync()
 end)
