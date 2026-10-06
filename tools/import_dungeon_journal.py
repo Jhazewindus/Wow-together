@@ -63,7 +63,10 @@ def main():
             boss_id=boss['id']; p=args.bosses/(str(boss_id)+'.html')
             if not p.exists():continue
             page=p.read_text(); icon_names=icons(page)
-            record={'id':boss_id,'name':clean(boss['name']),'level':boss.get('maxlevel'),'rare':boss.get('classification') in (2,4),'status':boss.get('envChange',{}).get('status','unconfirmed'),'loot':[]}
+            level=boss.get('maxlevel')
+            # Database boss/unknown-level sentinels (e.g. 9999) are not levels.
+            if not isinstance(level,int) or not 1<=level<=255:level=None
+            record={'id':boss_id,'name':clean(boss['name']),'level':level,'rare':boss.get('classification') in (2,4),'status':boss.get('envChange',{}).get('status','unconfirmed'),'loot':[]}
             head=heads.get(normalize(boss['name']))
             if head:record['portrait']=head
             seen=set()

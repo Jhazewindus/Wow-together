@@ -32,6 +32,8 @@ def prepare(archive):
         if not match:
             raise ValueError('Release version is missing.')
         version = match.group(1)
+        release_name = re.search(r'^## X-ReleaseName: ([A-Za-z0-9 -]{1,80})$', toc, re.M)
+        release_label = version + (' — ' + release_name.group(1) if release_name else '')
         if not re.search(r'^## Interface: 16001$', toc, re.M):
             raise ValueError('Expected Forever beta interface 16001.')
         for name in toc.splitlines():
@@ -43,7 +45,7 @@ def prepare(archive):
                         changelog.decode(), re.M | re.S)
     if not section or ('**' + version + '**') not in testing.decode():
         raise ValueError('Changelog/test checklist do not match the release version.')
-    message = ('**Wow Together ' + version + ' — Forever beta**\n\n'
+    message = ('**Wow Together ' + release_label + ' — Forever beta**\n\n'
                + section.group(1).strip()
                + '\n\n**Install:** replace the complete `WowTogether` folder on every party member’s client in '
                '`World of Warcraft\\_classic_beta_\\Interface\\AddOns\\WowTogether\\`, then `/reload`. '

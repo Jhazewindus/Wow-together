@@ -19,6 +19,7 @@ local function save(frame)
     if frame.compact then frame.compactSize = {frame:GetWidth(), frame:GetHeight()}
     else frame.fullSize = {frame:GetWidth(), frame:GetHeight()} end
     state.fullSize, state.compactSize, state.transparent = frame.fullSize, frame.compactSize, frame.transparent == true
+    state.showQuests = frame.showQuests ~= false
     local left, top = ns.ReadPublic(frame.GetLeft, frame), ns.ReadPublic(frame.GetTop, frame)
     if coordinate(left) and coordinate(top) then
         state.left, state.top = left, top
@@ -39,7 +40,7 @@ local function layout(frame)
     if not frame.layoutReady or frame.layingOut then return end
     frame.layingOut = true
     local width, height = frame:GetWidth(), frame:GetHeight()
-    frame.title:SetWidth(width - 74); frame.summary:SetWidth(width - 216)
+    frame.title:SetWidth(width - 74); frame.summary:SetWidth(width - 284)
     local mapWidth, mapHeight
     if frame.compact then
         mapWidth, mapHeight = width - 24, height - 166
@@ -99,7 +100,8 @@ local function selectBoss(id)
         if boss.id == id then
             frame.bossID, frame.lootPage = id, 1
             frame.bossPage = math.floor((index - 1) / frame.bossRowsVisible) + 1
-            if boss.mapID then
+            if boss.mapFloor then frame.floor = boss.mapFloor
+            elseif boss.mapID then
                 for floor, map in ipairs(frame.data.maps) do if map.mapID == boss.mapID then frame.floor = floor; break end end
             end
             ns.RenderDungeonViewer(); return
@@ -118,13 +120,14 @@ local function create()
     if coordinate(left) and coordinate(top) then frame:ClearAllPoints(); frame:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", left, top) end
     ns.UIPanel(frame, colors.background); frame:SetMovable(true); frame:EnableMouse(true); frame:RegisterForDrag("LeftButton")
     frame:SetScript("OnDragStart", frame.StartMoving); frame:SetScript("OnDragStop", function() frame:StopMovingOrSizing(); save(frame) end)
+    frame:SetScript("OnHide", function() if ns.dungeonMapQuestWindow then ns.dungeonMapQuestWindow:Hide() end end)
     frame.title = heading(frame, "Dungeon atlas", 20, 20, -18, 950)
     frame.summary = ns.UILabel(frame, nil, 11, colors.muted); frame.summary:SetPoint("TOPLEFT", 20, -49); frame.summary:SetSize(960, 20)
     ns.UIClose(frame); ns.UIDivider(frame, -80)
     frame.bossPanel = CreateFrame("Frame", nil, frame, "BackdropTemplate"); ns.UIPanel(frame.bossPanel)
     frame.bossPanel:SetPoint("TOPLEFT", 20, -94); frame.bossPanel:SetSize(200, 510)
     frame.bossTitle = heading(frame.bossPanel, "Bosses", 13, 12, -10, 176)
-    frame.bossRows, frame.lootRows, frame.tiles, frame.pins, frame.itemRequests = {}, {}, {}, {}, {}
+    frame.bossRows, frame.lootRows, frame.tiles, frame.pins, frame.questPins, frame.itemRequests = {}, {}, {}, {}, {}, {}
     frame.bossRowsVisible, frame.lootRowsVisible = 8, 7
     for slot = 1, frame.bossRowsVisible do
         local row = ns.UIButton(frame.bossPanel, "", 178, function() end)
@@ -209,6 +212,13 @@ local function create()
         save(frame)
     end); frame.background:SetPoint("TOPRIGHT", -136, -47)
     ns.UIHelp(frame.background, "Toggle background opacity.")
+    frame.showQuests = state.showQuests ~= false
+    frame.questsToggle = ns.UIButton(frame, "Quests", 60, function()
+        frame.showQuests = not frame.showQuests
+        if not frame.showQuests and ns.dungeonMapQuestWindow then ns.dungeonMapQuestWindow:Hide() end
+        save(frame); ns.RenderDungeonViewer()
+    end); frame.questsToggle:SetPoint("TOPRIGHT", -178, -47)
+    ns.UIHelp(frame.questsToggle, "Show quest pickups, objectives and turn-ins.")
     frame:SetResizable(true)
     if type(frame.SetResizeBounds) == "function" then frame:SetResizeBounds(940, 500, 1400, 1000) end
     frame.grip = CreateFrame("Button", nil, frame); frame.grip:SetSize(16, 16); frame.grip:SetPoint("BOTTOMRIGHT", -2, 2)
@@ -256,6 +266,7 @@ end
 local function drawMap(frame, map)
     for _, tile in ipairs(frame.tiles) do tile:Hide() end
     for _, pin in ipairs(frame.pins) do pin:Hide() end
+    for _, pin in ipairs(frame.questPins) do pin:Hide(); if pin.leader then pin.leader:Hide() end end
     frame.empty:Hide()
     if not map then frame.empty:SetText("Map unavailable."); frame.empty:Show(); return end
     local columns, rows = math.ceil(map.width / map.tileWidth), math.ceil(map.height / map.tileHeight)
@@ -279,7 +290,9 @@ local function drawMap(frame, map)
     for index, position in ipairs(map.bosses or {}) do
         local pin = frame.pins[index]
         if not pin then
-            pin = ns.UIButton(frame.map, "", 26, function() end, true); pin:SetHeight(26)
+            pin = ns.UIButton(frame.map, "", 32, function() end, true); pin:SetHeight(32); pin.caption:Hide()
+            pin.icon = pin:CreateTexture(nil, "ARTWORK"); pin.icon:SetPoint("CENTER"); pin.icon:SetSize(28, 28)
+            pin.icon:SetTexCoord(.25, .75, 0, 1)
             pin:SetFrameLevel(frame.map:GetFrameLevel() + 10); frame.pins[index] = pin
             pin:SetScript("OnClick", function()
                 if frame.compact then frame.mode:GetScript("OnClick")() end
@@ -287,10 +300,81 @@ local function drawMap(frame, map)
             end)
         end
         pin.bossID = position.id
-        local name
-        for bossIndex, boss in ipairs(frame.data.bosses) do if boss.id == position.id then name = boss.name; pin.caption:SetText(bossIndex); break end end
-        ns.UIHelp(pin, name or "Boss"); ns.UIButtonTone(pin, position.id == frame.bossID)
+        local name, portrait
+        for _, boss in ipairs(frame.data.bosses) do if boss.id == position.id then name, portrait = boss.name, boss.portrait; break end end
+        image(pin.icon, portrait or bossFallback)
+        ns.UIHelp(pin, (name or "Boss") .. "\nView loot"); ns.UIButtonTone(pin, position.id == frame.bossID)
         pin:ClearAllPoints(); pin:SetPoint("CENTER", frame.map, "TOPLEFT", ox + position.x * map.width * scale, -oy - position.y * map.height * scale); pin:Show()
+    end
+    if not frame.showQuests then return end
+    local groups = ns.DungeonMapQuestGroups(map)
+    local placed, bossPoints = {}, {}
+    for _, position in ipairs(map.bosses) do
+        bossPoints[#bossPoints + 1] = {x = ox + position.x * map.width * scale, y = -oy - position.y * map.height * scale}
+    end
+    local function free(x, y)
+        for _, point in ipairs(bossPoints) do
+            if math.abs(point.x - x) < 26 and math.abs(point.y - y) < 26 then return false end
+        end
+        for _, point in ipairs(placed) do
+            if math.abs(point.x - x) < 20 and math.abs(point.y - y) < 20 then return false end
+        end
+        return true
+    end
+    local function clamp(x, y)
+        return math.max(ox + 9, math.min(ox + map.width * scale - 9, x)),
+            math.max(-oy - map.height * scale + 9, math.min(-oy - 9, y))
+    end
+    local function placement(targetX, targetY)
+        local x, y = clamp(targetX, targetY)
+        if free(x, y) then return x, y end
+        -- Search around the source point, checking every boss and prior icon
+        -- again after clamping. A one-way shift can cover another boss or hit
+        -- the map edge. The leader always retains the exact source position.
+        for ring = 1, 8 do
+            local bestX, bestY, distance
+            for dx = -ring, ring do
+                for dy = -ring, ring do
+                    if math.abs(dx) == ring or math.abs(dy) == ring then
+                        local cx, cy = clamp(targetX + dx * 27, targetY + dy * 27)
+                        local squared = (cx - targetX) ^ 2 + (cy - targetY) ^ 2
+                        if free(cx, cy) and (not distance or squared < distance) then
+                            bestX, bestY, distance = cx, cy, squared
+                        end
+                    end
+                end
+            end
+            if bestX then return bestX, bestY end
+        end
+        return x, y
+    end
+    for index, group in ipairs(groups) do
+        local pin = frame.questPins[index]
+        if not pin then
+            pin = CreateFrame("Button", nil, frame.map); pin:SetSize(18, 18)
+            pin:SetFrameLevel(frame.map:GetFrameLevel() + 11)
+            pin.icon = pin:CreateTexture(nil, "ARTWORK"); pin.icon:SetAllPoints()
+            if type(frame.map.CreateLine) == "function" then
+                pin.leader = frame.map:CreateLine(nil, "OVERLAY"); pin.leader:SetThickness(1)
+                pin.leader:SetColorTexture(1, .82, .38, .5)
+            end
+            pin:SetScript("OnClick", function() if pin.group then ns.ShowDungeonMapQuests(pin.group, frame.data.key) end end)
+            frame.questPins[index] = pin
+        end
+        pin.group = group
+        local collect = group.quests[1] and string.find(group.quests[1].instruction or "", "^Collect ")
+        image(pin.icon, group.kind == "a" and "Interface\\GossipFrame\\AvailableQuestIcon"
+            or group.kind == "t" and "Interface\\GossipFrame\\ActiveQuestIcon"
+            or collect and "Interface\\Icons\\INV_Misc_Bag_10" or "Interface\\TARGETINGFRAME\\UI-RaidTargetingIcon_8")
+        ns.UIHelp(pin, ns.DungeonMapQuestTooltip(group))
+        local targetX, targetY = ox + group.x * map.width * scale, -oy - group.y * map.height * scale
+        local x, y = placement(targetX, targetY)
+        placed[#placed + 1] = {x = x, y = y}
+        if pin.leader and (math.abs(x - targetX) > 1 or math.abs(y - targetY) > 1) then
+            pin.leader:SetStartPoint("TOPLEFT", frame.map, targetX, targetY)
+            pin.leader:SetEndPoint("TOPLEFT", frame.map, x, y); pin.leader:Show()
+        end
+        pin:ClearAllPoints(); pin:SetPoint("CENTER", frame.map, "TOPLEFT", x, y); pin:Show()
     end
 end
 function ns.RenderDungeonViewer()
@@ -299,6 +383,7 @@ function ns.RenderDungeonViewer()
     frame.rendering = true
     local data, boss = frame.data
     frame.title:SetText(data.name)
+    ns.UIButtonTone(frame.questsToggle, frame.showQuests)
     frame.summary:SetText("Lv " .. data.definition.runLevelLow .. "–" .. data.definition.runLevelHigh
         .. (#data.bosses > 0 and (" • " .. #data.bosses .. " bosses") or ""))
     frame.bossTitle:SetText("Bosses • " .. #data.bosses)
@@ -353,6 +438,7 @@ function ns.ShowDungeonViewer(group, mapOnly)
     local frame = create()
     if (frame.compact == true) ~= (mapOnly == true) then frame.mode:GetScript("OnClick")() end
     if selected ~= key then
+        if ns.dungeonMapQuestWindow then ns.dungeonMapQuestWindow:Hide() end
         frame.floor, frame.bossPage, frame.lootPage, frame.category, frame.query, frame.bossID = 1, 1, 1, "all", "", nil
         frame.floorMenu.menu:Hide(); frame.lootType.menu:Hide(); frame.search:SetText("")
     end
@@ -392,9 +478,23 @@ function ns.InitializeDungeonViewer()
     listen("ZONE_CHANGED_NEW_AREA", ns.CheckDungeonViewerEntry)
     listen("PLAYER_ENTERING_WORLD", ns.CheckDungeonViewerEntry)
     listen("PLAYER_REGEN_ENABLED", ns.CheckDungeonViewerEntry)
+    local pending
+    local function updateQuests()
+        local viewer, details = ns.dungeonViewer, ns.dungeonMapQuestWindow
+        if pending or not (viewer and viewer:IsShown() or details and details:IsShown()) then return end
+        local function refresh()
+            pending = nil; ns.RefreshDungeonViewer(); ns.RefreshDungeonMapQuests()
+        end
+        if C_Timer and type(C_Timer.After) == "function" then pending = true; C_Timer.After(.2, refresh) else refresh() end
+    end
+    listen("QUEST_LOG_UPDATE", updateQuests)
+    listen("QUEST_TURNED_IN", updateQuests)
     ns.CheckDungeonViewerEntry()
 end
 function ns.DungeonViewerDiagnostics(output)
     local counts = ns.dungeonJournalData and ns.dungeonJournalData.counts or {}
     output("Dungeon viewer: " .. (counts.bosses or 0) .. " encounters; " .. (counts.lootEntries or 0) .. " notable boss-drop entries; " .. (counts.mapReferences or 0) .. " client layout references. Native map/portrait availability needs beta testing.")
+    local positions = ns.dungeonMapData and ns.dungeonMapData.counts or {}
+    output("Dungeon reference markers: " .. (positions.mappedBosses or 0) .. " bosses; " .. (positions.questsWithInteriorMarkers or 0)
+        .. " quests with interior positions. Exact matching floor artwork required; native coordinates take precedence.")
 end

@@ -1,12 +1,13 @@
 # Wow Together — friend test script
 
-For **0.8.26**, World of Warcraft: Forever beta, interface **16001**.
+For **0.8.27** — **ROYS BIG DUNGEON BANANZA**, World of Warcraft: Forever beta,
+interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 59 Lua files** and
+1. Replace the complete WowTogether folder, including **all 61 Lua files** and
    the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    `/reload`; restart fully if a new addon folder does not appear.
@@ -28,8 +29,19 @@ The expanded-guide checks below take about **15–25 minutes**.
    click bosses, search loot, use Equipment/Other filters and page long lists.
    Hover an item for cached client stats and test a Shift-click item link. Newly
    uncached items may need a moment. Check portraits/icons against actual bosses.
-3. Native numbered boss markers, when provided by the client, select that boss's
-   loot. Old map-image skulls are painted into the image and are not clickable.
+3. Click portrait markers on RFC/Wailing Caverns and different floors of Maraudon:
+   expect that exact boss's loot, including expanding from Map only. Selecting
+   a mapped boss from the list must switch to its floor. Check positions against
+   actual rooms: older references can differ from Forever. Painted map skulls
+   remain part of the image. In BFD, no boss should display level 9999.
+   Click quest icons: expect the NPC/object name, quest names and appropriate
+   pickup/objective/turn-in actions. RFC should place Maur Grimtotem inside,
+   with his pickup/turn-in quests, and the Heart objective at Taragaman; Rahauro
+   and Neeru must not appear inside RFC. Objectives may preview unaccepted work.
+   Accept/turn in a quest: pickup icons should disappear once accepted, and
+   completed quests should disappear promptly. Test both factions/classes.
+   Toggle Quests off/on; switch dungeons and reload to check the saved choice.
+   Quest cards must remain readable, movable and closeable during combat.
    Missing map tiles must show one clear unavailable state with usable loot.
    Check new Forever dungeons: incomplete maps/bosses/loot must not be fabricated.
 4. Switch to Map only, move/resize it and toggle BG. Enter combat: it stays open

@@ -52,6 +52,16 @@ LEGACY_DATA_LICENSE.txt for the full upstream license and
 LEGACY_DATA_COPYRIGHT.md for its Blizzard content/copyright notice.
 The original addon code retains the repository's Apache-2.0 license.
 
+Version 0.8.27 also selects interior creature/object spawn coordinates from
+this same licensed snapshot. Explicit client floor rectangles transform only
+unambiguous spawns; no source server/event logic is copied or evaluated.
+Factual client encounter positions, map/floor IDs and rectangles come from
+`eXPeRi91/ClientDB-Diff` revision
+`ac1d02cba59374c5d599f78ede0cd3984f4312a1`. CSV URLs/checksums, transformations
+and unresolved positions are documented in DungeonMapData.json and
+DUNGEON_VIEWER.md. The CSV metadata is factual game data, not copied code/art.
+These older Classic references still require Forever beta verification.
+
 Changes: select numeric IDs, short entity/quest names, explicit relations,
 quantities, spawn coordinates and the player XP-per-level baseline (estimate only); retain only identity-matched unchanged quest
 fallbacks; convert proven map points; select actual representative spawns;

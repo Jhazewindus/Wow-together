@@ -19,6 +19,32 @@ local function matches(key, name)
     return false
 end
 local function copy(value) local out = {}; for k, v in pairs(value) do out[k] = v end; return out end
+local function validPoint(value)
+    return publicTable(value) and number(value.x, 1) and number(value.y, 1)
+end
+local function referenceFloor(map, stored, positions, ordinal)
+    local floor = positions and positions.floors[ordinal]
+    if map.reference then return floor end
+    -- Same names do not establish geometry: every file identity and the
+    -- dimensions must agree before old coordinates can join a native floor.
+    for index, value in ipairs(positions and positions.floors or {}) do
+        local original = stored.maps[index]
+        if original and map.width == original.width and map.height == original.height
+            and map.tileWidth == original.tileWidth and map.tileHeight == original.tileHeight
+            and #map.tiles == #value.tiles then
+            local equal = true
+            for tile, asset in ipairs(value.tiles) do if map.tiles[tile] ~= asset then equal = false; break end end
+            if equal then return value end
+        end
+    end
+end
+function ns.DungeonMapQuestVisible(point, query)
+    local id, quest = point.id, ns.CatalogueQuest(point.id)
+    if not quest or ns.IsRetiredQuest(id) or ns.Completed(id, query) == true then return false end
+    if ns.CatalogueIdentityAllowed(id, ns.profile) == false then return false end
+    if ns.ClassQuestEnabled and not ns.ClassQuestEnabled(id) then return false end
+    return not (point.kind == "a" and ns.active and ns.active[id])
+end
 local function imageMap(id, title)
     local layers = C_Map and ns.ReadPublic(C_Map.GetMapArtLayers, id)
     local info = publicTable(layers) and layers[1]
@@ -45,9 +71,11 @@ function ns.DungeonViewerData(key)
     local definition = ns.dungeonData and ns.dungeonData.dungeons[key]
     if not stored or not definition then return end
     local data = {key = key, name = definition.name, definition = definition, bosses = {}, maps = {}}
+    local positions = ns.dungeonMapData and ns.dungeonMapData.dungeons[key]
     local byName = {}
     for index, boss in ipairs(stored.bosses) do
         data.bosses[index] = copy(boss); byName[nameKey(boss.name)] = data.bosses[index]
+        if not ns.GuideInteger(boss.level, 255) or boss.level < 1 then data.bosses[index].level = nil end
     end
     local instanceID = ns.DungeonJournalInstance and ns.DungeonJournalInstance(key)
     if instanceID and type(EJ_GetEncounterInfoByIndex) == "function" then
@@ -125,8 +153,16 @@ function ns.DungeonViewerData(key)
         end
     end
     if #data.maps == 0 then for index, map in ipairs(stored.maps) do data.maps[index] = copy(map) end end
-    for _, map in ipairs(data.maps) do
-        map.bosses = {}
+    for floor, map in ipairs(data.maps) do
+        map.bosses, map.quests = {}, {}
+        local reference = referenceFloor(map, stored, positions, floor)
+        local located = {}
+        if reference then
+            for _, point in ipairs(reference.bosses) do
+                if validPoint(point) then map.bosses[#map.bosses + 1] = copy(point); located[point.id] = #map.bosses end
+            end
+            for _, point in ipairs(reference.quests) do if validPoint(point) then map.quests[#map.quests + 1] = copy(point) end end
+        end
         if map.mapID and C_EncounterJournal then
             local encounters = ns.ReadPublic(C_EncounterJournal.GetEncountersOnMap, map.mapID)
             if publicTable(encounters) then
@@ -135,10 +171,28 @@ function ns.DungeonViewerData(key)
                     if publicTable(info) and ns.GuideInteger(info.encounterID) and number(info.mapX, 1) and number(info.mapY, 1) then
                         local name = ns.ReadPublic(EJ_GetEncounterInfo, info.encounterID)
                         local boss = byName[nameKey(name)]
-                        if boss then map.bosses[#map.bosses + 1] = {id = boss.id, x = info.mapX, y = info.mapY}; boss.mapID = map.mapID end
+                        if boss then
+                            local point = {id = boss.id, x = info.mapX, y = info.mapY, native = true}
+                            local index = located[boss.id]
+                            if index then map.bosses[index] = point else map.bosses[#map.bosses + 1] = point; located[boss.id] = #map.bosses end
+                            for _, target in ipairs(positions and positions.targets or {}) do
+                                if target.entityType == "npc" and ((not boss.native and target.entityID == boss.id)
+                                    or nameKey(target.name) == nameKey(boss.name)) then
+                                    for i = #map.quests, 1, -1 do
+                                        local old = map.quests[i]
+                                        if old.id == target.id and old.kind == target.kind and old.entityID == target.entityID then table.remove(map.quests, i) end
+                                    end
+                                    local questPoint = copy(target); questPoint.x, questPoint.y = point.x, point.y
+                                    map.quests[#map.quests + 1] = questPoint
+                                end
+                            end
+                        end
                     end
                 end
             end
+        end
+        for _, point in ipairs(map.bosses) do
+            for _, boss in ipairs(data.bosses) do if boss.id == point.id then boss.mapID, boss.mapFloor = map.mapID, floor; break end end
         end
     end
     return data

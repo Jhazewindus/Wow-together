@@ -1,0 +1,616 @@
+{
+  "schema": 1,
+  "captured": "2026-10-06",
+  "counts": {
+    "dungeons": 28,
+    "referenceDungeons": 19,
+    "mappedBosses": 158,
+    "questMarkers": 414,
+    "questsWithInteriorMarkers": 139
+  },
+  "sources": [
+    {
+      "url": "https://github.com/eXPeRi91/ClientDB-Diff/blob/ac1d02cba59374c5d599f78ede0cd3984f4312a1/JournalEncounter.csv",
+      "sha256": "18d5d1fa3e04f453d1aa656d151c8494708f815d51b8ec139e54b34b9f6c3354"
+    },
+    {
+      "url": "https://github.com/eXPeRi91/ClientDB-Diff/blob/ac1d02cba59374c5d599f78ede0cd3984f4312a1/DungeonMap.csv",
+      "sha256": "8501cb2f71c8a9d0c48281cc4572e602028c6b7c0887eca4efcaa6e90b42f5fb"
+    },
+    {
+      "url": "https://github.com/eXPeRi91/ClientDB-Diff/blob/ac1d02cba59374c5d599f78ede0cd3984f4312a1/WorldMapArea.csv",
+      "sha256": "426f03ac2248302b2ec6f3c38eb2a386ed953b83056390b2550ee37da4bfcb86"
+    },
+    {
+      "url": "https://github.com/cmangos/classic-db/blob/ec4f596146be6467ea93c57397858e329e2db852/Full_DB/ClassicDB_1_12_1_z2815.sql.gz",
+      "sha256": "4f92db520868ab4e566726f68b5b2e380ae781209beaf22237b4f7f04600d0c0"
+    }
+  ],
+  "coverage": {
+    "excavation-site-wetlands": {
+      "bosses": 0,
+      "mappedBosses": 0,
+      "unmappedBosses": [],
+      "questsWithInteriorMarkers": 0,
+      "questMarkers": 0,
+      "unlocatedTargets": 18
+    },
+    "ragefire-chasm": {
+      "bosses": 4,
+      "mappedBosses": 4,
+      "unmappedBosses": [],
+      "questsWithInteriorMarkers": 6,
+      "questMarkers": 11,
+      "unlocatedTargets": 10
+    },
+    "blackfathom-deeps": {
+      "bosses": 7,
+      "mappedBosses": 2,
+      "unmappedBosses": [
+        {
+          "id": 202699,
+          "name": "Baron Aquanis"
+        },
+        {
+          "id": 204921,
+          "name": "Gelihast"
+        },
+        {
+          "id": 204068,
+          "name": "Lady Sarevess"
+        },
+        {
+          "id": 207356,
+          "name": "Lorgus Jett"
+        },
+        {
+          "id": 209678,
+          "name": "Twilight Lord Kelris"
+        }
+      ],
+      "questsWithInteriorMarkers": 7,
+      "questMarkers": 14,
+      "unlocatedTargets": 31
+    },
+    "razorfen-kraul": {
+      "bosses": 8,
+      "mappedBosses": 8,
+      "unmappedBosses": [],
+      "questsWithInteriorMarkers": 6,
+      "questMarkers": 36,
+      "unlocatedTargets": 11
+    },
+    "blackmaw-hold": {
+      "bosses": 0,
+      "mappedBosses": 0,
+      "unmappedBosses": [],
+      "questsWithInteriorMarkers": 0,
+      "questMarkers": 0,
+      "unlocatedTargets": 0
+    },
+    "razorfen-downs": {
+      "bosses": 7,
+      "mappedBosses": 5,
+      "unmappedBosses": [
+        {
+          "id": 7356,
+          "name": "Plaguemaw the Rotting"
+        },
+        {
+          "id": 7355,
+          "name": "Tuten'kash"
+        }
+      ],
+      "questsWithInteriorMarkers": 4,
+      "questMarkers": 6,
+      "unlocatedTargets": 13
+    },
+    "the-stockade": {
+      "bosses": 6,
+      "mappedBosses": 6,
+      "unmappedBosses": [],
+      "questsWithInteriorMarkers": 6,
+      "questMarkers": 9,
+      "unlocatedTargets": 18
+    },
+    "scholomance": {
+      "bosses": 16,
+      "mappedBosses": 2,
+      "unmappedBosses": [
+        {
+          "id": 10433,
+          "name": "Marduk Blackpool"
+        },
+        {
+          "id": 10505,
+          "name": "Instructor Malicia"
+        },
+        {
+          "id": 10506,
+          "name": "Kirtonos the Herald"
+        },
+        {
+          "id": 16118,
+          "name": "Kormok"
+        },
+        {
+          "id": 10502,
+          "name": "Lady Illucia Barov"
+        },
+        {
+          "id": 10504,
+          "name": "Lord Alexei Barov"
+        },
+        {
+          "id": 14695,
+          "name": "Lord Blackwood"
+        },
+        {
+          "id": 10901,
+          "name": "Lorekeeper Polkelt"
+        },
+        {
+          "id": 10507,
+          "name": "The Ravenian"
+        },
+        {
+          "id": 10432,
+          "name": "Vectus"
+        },
+        {
+          "id": 14861,
+          "name": "Blood Steward of Kirtonos"
+        },
+        {
+          "id": 10500,
+          "name": "Spectral Teacher"
+        },
+        {
+          "id": 14516,
+          "name": "Death Knight Darkreaver"
+        },
+        {
+          "id": 10508,
+          "name": "Ras Frostwhisper"
+        }
+      ],
+      "questsWithInteriorMarkers": 1,
+      "questMarkers": 1,
+      "unlocatedTargets": 45
+    },
+    "zulfarrak": {
+      "bosses": 13,
+      "mappedBosses": 11,
+      "unmappedBosses": [
+        {
+          "id": 7796,
+          "name": "Nekrum Gutchewer"
+        },
+        {
+          "id": 7275,
+          "name": "Shadowpriest Sezz'ziz"
+        }
+      ],
+      "questsWithInteriorMarkers": 6,
+      "questMarkers": 15,
+      "unlocatedTargets": 34
+    },
+    "wailing-caverns": {
+      "bosses": 9,
+      "mappedBosses": 9,
+      "unmappedBosses": [],
+      "questsWithInteriorMarkers": 5,
+      "questMarkers": 24,
+      "unlocatedTargets": 33
+    },
+    "uldaman": {
+      "bosses": 11,
+      "mappedBosses": 10,
+      "unmappedBosses": [
+        {
+          "id": 4857,
+          "name": "Stone Keeper"
+        }
+      ],
+      "questsWithInteriorMarkers": 11,
+      "questMarkers": 20,
+      "unlocatedTargets": 342
+    },
+    "the-temple-of-atalhakkar": {
+      "bosses": 15,
+      "mappedBosses": 6,
+      "unmappedBosses": [
+        {
+          "id": 8580,
+          "name": "Atal'alarion"
+        },
+        {
+          "id": 5713,
+          "name": "Gasher"
+        },
+        {
+          "id": 5714,
+          "name": "Loro"
+        },
+        {
+          "id": 5720,
+          "name": "Weaver"
+        },
+        {
+          "id": 5712,
+          "name": "Zolo"
+        },
+        {
+          "id": 5715,
+          "name": "Hukku"
+        },
+        {
+          "id": 5717,
+          "name": "Mijan"
+        },
+        {
+          "id": 5716,
+          "name": "Zul'Lor"
+        },
+        {
+          "id": 5721,
+          "name": "Dreamscythe"
+        }
+      ],
+      "questsWithInteriorMarkers": 6,
+      "questMarkers": 13,
+      "unlocatedTargets": 29
+    },
+    "the-hall-of-thanes": {
+      "bosses": 0,
+      "mappedBosses": 0,
+      "unmappedBosses": [],
+      "questsWithInteriorMarkers": 0,
+      "questMarkers": 0,
+      "unlocatedTargets": 10
+    },
+    "scarlet-monastery": {
+      "bosses": 12,
+      "mappedBosses": 8,
+      "unmappedBosses": [
+        {
+          "id": 6490,
+          "name": "Azshir the Sleepless"
+        },
+        {
+          "id": 6488,
+          "name": "Fallen Champion"
+        },
+        {
+          "id": 6489,
+          "name": "Ironspine"
+        },
+        {
+          "id": 14693,
+          "name": "Scorn"
+        }
+      ],
+      "questsWithInteriorMarkers": 7,
+      "questMarkers": 43,
+      "unlocatedTargets": 19
+    },
+    "maraudon": {
+      "bosses": 9,
+      "mappedBosses": 8,
+      "unmappedBosses": [
+        {
+          "id": 12237,
+          "name": "Meshlok the Harvester"
+        }
+      ],
+      "questsWithInteriorMarkers": 4,
+      "questMarkers": 23,
+      "unlocatedTargets": 46
+    },
+    "the-drowned-city": {
+      "bosses": 0,
+      "mappedBosses": 0,
+      "unmappedBosses": [],
+      "questsWithInteriorMarkers": 0,
+      "questMarkers": 0,
+      "unlocatedTargets": 0
+    },
+    "kroldok-stronghold": {
+      "bosses": 0,
+      "mappedBosses": 0,
+      "unmappedBosses": [],
+      "questsWithInteriorMarkers": 0,
+      "questMarkers": 0,
+      "unlocatedTargets": 0
+    },
+    "the-deadmines": {
+      "bosses": 9,
+      "mappedBosses": 6,
+      "unmappedBosses": [
+        {
+          "id": 3586,
+          "name": "Miner Johnson"
+        },
+        {
+          "id": 1763,
+          "name": "Gilnid"
+        },
+        {
+          "id": 643,
+          "name": "Sneed"
+        }
+      ],
+      "questsWithInteriorMarkers": 3,
+      "questMarkers": 10,
+      "unlocatedTargets": 21
+    },
+    "city-of-dalaran": {
+      "bosses": 0,
+      "mappedBosses": 0,
+      "unmappedBosses": [],
+      "questsWithInteriorMarkers": 0,
+      "questMarkers": 0,
+      "unlocatedTargets": 6
+    },
+    "stratholme": {
+      "bosses": 22,
+      "mappedBosses": 15,
+      "unmappedBosses": [
+        {
+          "id": 16101,
+          "name": "Jarien"
+        },
+        {
+          "id": 16102,
+          "name": "Sothos"
+        },
+        {
+          "id": 11120,
+          "name": "Crimson Hammersmith"
+        },
+        {
+          "id": 11032,
+          "name": "Malor the Zealous"
+        },
+        {
+          "id": 11143,
+          "name": "Postmaster Malown"
+        },
+        {
+          "id": 11058,
+          "name": "Ezra Grimm"
+        },
+        {
+          "id": 11121,
+          "name": "Black Guard Swordsmith"
+        }
+      ],
+      "questsWithInteriorMarkers": 11,
+      "questMarkers": 36,
+      "unlocatedTargets": 40
+    },
+    "gnomeregan": {
+      "bosses": 6,
+      "mappedBosses": 5,
+      "unmappedBosses": [
+        {
+          "id": 6228,
+          "name": "Dark Iron Ambassador"
+        }
+      ],
+      "questsWithInteriorMarkers": 9,
+      "questMarkers": 19,
+      "unlocatedTargets": 174
+    },
+    "shapers-terrace": {
+      "bosses": 0,
+      "mappedBosses": 0,
+      "unmappedBosses": [],
+      "questsWithInteriorMarkers": 0,
+      "questMarkers": 0,
+      "unlocatedTargets": 0
+    },
+    "blackrock-depths": {
+      "bosses": 41,
+      "mappedBosses": 25,
+      "unmappedBosses": [
+        {
+          "id": 9032,
+          "name": "Hedrum the Creeper"
+        },
+        {
+          "id": 9030,
+          "name": "Ok'thor the Breaker"
+        },
+        {
+          "id": 9031,
+          "name": "Anub'shiah"
+        },
+        {
+          "id": 9029,
+          "name": "Eviscerator"
+        },
+        {
+          "id": 9028,
+          "name": "Grizzle"
+        },
+        {
+          "id": 9438,
+          "name": "Dark Keeper Bethek"
+        },
+        {
+          "id": 9442,
+          "name": "Dark Keeper Ofgut"
+        },
+        {
+          "id": 9443,
+          "name": "Dark Keeper Pelver"
+        },
+        {
+          "id": 9439,
+          "name": "Dark Keeper Uggel"
+        },
+        {
+          "id": 9437,
+          "name": "Dark Keeper Vorfalk"
+        },
+        {
+          "id": 9441,
+          "name": "Dark Keeper Zimrel"
+        },
+        {
+          "id": 9042,
+          "name": "Verek"
+        },
+        {
+          "id": 9476,
+          "name": "Watchman Doomgrip"
+        },
+        {
+          "id": 9027,
+          "name": "Gorosh the Dervish"
+        },
+        {
+          "id": 8923,
+          "name": "Panzor the Invincible"
+        },
+        {
+          "id": 16059,
+          "name": "Theldren"
+        }
+      ],
+      "questsWithInteriorMarkers": 29,
+      "questMarkers": 89,
+      "unlocatedTargets": 227
+    },
+    "shadowfang-keep": {
+      "bosses": 9,
+      "mappedBosses": 3,
+      "unmappedBosses": [
+        {
+          "id": 3914,
+          "name": "Rethilgore"
+        },
+        {
+          "id": 3886,
+          "name": "Razorclaw the Butcher"
+        },
+        {
+          "id": 4279,
+          "name": "Odo the Blindwatcher"
+        },
+        {
+          "id": 3872,
+          "name": "Deathsworn Captain"
+        },
+        {
+          "id": 4274,
+          "name": "Fenrus the Devourer"
+        },
+        {
+          "id": 3927,
+          "name": "Wolf Master Nandos"
+        }
+      ],
+      "questsWithInteriorMarkers": 1,
+      "questMarkers": 1,
+      "unlocatedTargets": 8
+    },
+    "ruins-of-lordaeron": {
+      "bosses": 0,
+      "mappedBosses": 0,
+      "unmappedBosses": [],
+      "questsWithInteriorMarkers": 0,
+      "questMarkers": 0,
+      "unlocatedTargets": 55
+    },
+    "dire-maul": {
+      "bosses": 22,
+      "mappedBosses": 16,
+      "unmappedBosses": [
+        {
+          "id": 16097,
+          "name": "Isalien"
+        },
+        {
+          "id": 14349,
+          "name": "Pimgib"
+        },
+        {
+          "id": 14354,
+          "name": "Pusillin"
+        },
+        {
+          "id": 11467,
+          "name": "Tsu'zee"
+        },
+        {
+          "id": 14308,
+          "name": "Ferra"
+        },
+        {
+          "id": 14506,
+          "name": "Lord Hel'nurath"
+        }
+      ],
+      "questsWithInteriorMarkers": 9,
+      "questMarkers": 24,
+      "unlocatedTargets": 266
+    },
+    "blackrock-spire": {
+      "bosses": 17,
+      "mappedBosses": 9,
+      "unmappedBosses": [
+        {
+          "id": 10263,
+          "name": "Burning Felguard"
+        },
+        {
+          "id": 9219,
+          "name": "Spirestone Butcher"
+        },
+        {
+          "id": 9218,
+          "name": "Spirestone Battle Lord"
+        },
+        {
+          "id": 9217,
+          "name": "Spirestone Lord Magus"
+        },
+        {
+          "id": 9596,
+          "name": "Bannok Grimaxe"
+        },
+        {
+          "id": 9718,
+          "name": "Ghok Bashguud"
+        },
+        {
+          "id": 10376,
+          "name": "Crystal Fang"
+        },
+        {
+          "id": 16080,
+          "name": "Mor Grayhoof"
+        }
+      ],
+      "questsWithInteriorMarkers": 8,
+      "questMarkers": 20,
+      "unlocatedTargets": 149
+    },
+    "alcaz-prison": {
+      "bosses": 0,
+      "mappedBosses": 0,
+      "unmappedBosses": [],
+      "questsWithInteriorMarkers": 0,
+      "questMarkers": 0,
+      "unlocatedTargets": 0
+    }
+  },
+  "limitations": [
+    "Older Classic layout/spawn references require Forever beta verification.",
+    "No guessed coordinates, ambiguous floor projections, entrance aliases or unrelated outdoor pins.",
+    "Quest targets without an interior location remain unmarked; exterior pickups/turn-ins are not interior failures.",
+    "Native exact-floor encounter positions override reference positions; reference facts are used only with matching artwork."
+  ]
+}

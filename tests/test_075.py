@@ -113,7 +113,7 @@ class NativeObjectiveTests(unittest.TestCase):
         self.assertTrue(g.fixedPlan[3].unknownLocation)
         self.assertIsNone(g.fixedPlan[3].x)
         self.assertFalse(c.ns.routePaused)
-        self.assertIn('quest tracker',c.ns.navigation.context.text)
+        self.assertIn('marked area',c.ns.navigation.context.text)
         c.lua.execute('C_QuestLog.GetNextWaypoint=function() return 501,.8,.65 end')
         c.ns.ReadRouteLocations();c.ns.UpdateFixedGuideRoute(g)
         self.assertEqual(c.ns.selectedRoute.stops[1].x,.8)

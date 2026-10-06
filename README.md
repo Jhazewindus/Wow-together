@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.26** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.27 — ROYS BIG DUNGEON BANANZA** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -18,10 +18,20 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **59 Lua
+Replace the folder on **every party member's client**, including all **61 Lua
 files** and the **Media folder**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.27 adds clickable dungeon portrait and quest markers.** Portraits open that
+boss's loot, including from Map only. Quest icons show pickups, objectives and
+turn-ins for the actual NPC/object location; **Quests** hides/shows them.
+Completed quests and incompatible faction/class/race quests are hidden. BFD's
+invalid level-9999 placeholders no longer appear as real boss levels.
+The source snapshot maps **158 bosses and 139 quests** across the 19 Classic
+complexes. Some boss/floor/quest positions and new Forever dungeons remain
+unresolved. Reference points require matching artwork; native exact-floor boss
+positions take precedence. No coordinates or portraits are guessed.
 
 **0.8.26 simplifies player-facing text.** Dungeon windows, settings, profession
 guides, quest previews and map tooltips keep actions and useful information

@@ -1,5 +1,20 @@
 # Wow Together changelog
 
+## 0.8.27
+
+**ROYS BIG DUNGEON BANANZA**
+
+- Add clickable boss portraits on dungeon floors; Map only expands to the
+  selected boss and its loot. Keep saved resizing/positions and combat visibility.
+- Add quest pickups, objectives and turn-ins at known interior NPC/object
+  positions, with concise action cards and a saved Quests toggle. Hide completed
+  or incompatible quests; keep city quest givers outside the interior map.
+- Map 158 bosses / 139 quests across 19 Classic complexes from attributed floor,
+  spawn and Forever quest facts. Native coordinates win; reference points require
+  matching artwork. Ambiguous positions and new-dungeon gaps remain unplaced.
+- Remove invalid level-9999 boss placeholders, including BFD. Include all 61 Lua
+  files; actual Forever textures, coordinates and behavior still need beta testing.
+
 ## 0.8.26
 
 - Clean up dungeon windows: remove technical footers and map-position explanations,

@@ -152,7 +152,7 @@ class GuideControlTests(unittest.TestCase):
         self.assertEqual(c.ns.selectedRoute.stops[1].kind, 'q')
         c.ns.PreviewGuideStep(-1)
         self.assertEqual(c.ns.navigation.state.stop.kind, 'a')
-        self.assertIn('History preview', c.ns.navigation.step.text)
+        self.assertEqual('Previous step', c.ns.navigation.step.text)
         self.assertTrue(c.ns.active[900])
         self.assertFalse(c.ns.Completed(900))
         c.ns.SkipGuide('quest')

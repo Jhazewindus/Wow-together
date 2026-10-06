@@ -22,6 +22,8 @@ def main():
     if not re.search(r'^## Interface: 16001$', toc, re.M):
         raise ValueError('Release must target Forever interface 16001')
     version = re.search(r'^## Version: ([0-9]+\.[0-9]+\.[0-9]+)$', toc, re.M).group(1)
+    release_name = re.search(r'^## X-ReleaseName: ([A-Za-z0-9 -]{1,80})$', toc, re.M)
+    release_label = version + (' — ' + release_name.group(1) if release_name else '')
     names = [line.strip() for line in toc.splitlines() if line.strip() and not line.startswith('#')]
     for name in names:
         if not re.fullmatch(r'[A-Za-z0-9_]+\.lua', name):
@@ -42,7 +44,7 @@ def main():
         if hashlib.sha256((media / name).read_bytes()).hexdigest() != texture['sha256']:
             raise ValueError('Guide texture checksum mismatch: ' + name)
         media_names.append(name)
-    instructions = f'''Wow Together {version} — Forever beta
+    instructions = f'''Wow Together {release_label} — Forever beta
 
 Copy the complete WowTogether folder to:
 World of Warcraft\\_classic_beta_\\Interface\\AddOns\\WowTogether\\
@@ -92,8 +94,9 @@ take precedence; 19 Classic and four Forever filenames are published. Remaining
 new dungeons use available journal art or a neutral client background; missing
 textures stay plain. No Blizzard images or external screenshots are bundled.
 See DUNGEON_ARTWORK.md for sources and beta limits. See dungeon opens a movable,
-resizable atlas from anywhere: choose floors when multiple maps exist, click bosses
-and browse notable loot. The floor dropdown stays hidden for single/unmapped dungeons.
+resizable atlas from anywhere: choose floors when multiple maps exist, click boss
+portraits to open their loot, and click quest icons for pickups/objectives/turn-ins.
+Quests toggles those markers. The floor dropdown stays hidden for single/unmapped dungeons.
 Map only is a compact gameplay view; it stays open during combat. Entry asks
 Open map? when enabled. Classic floor references may differ from Forever layouts;
 missing boss coordinates and new-dungeon data are never guessed.
@@ -397,7 +400,7 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
 '''
     args.output.mkdir(parents=True, exist_ok=True)
     destination = args.output / f'WowTogether-{version}.zip'
-    files = ['WowTogether.toc', *names, 'QuestCatalogue.json', 'QuestCoverage.json', 'GuideAudit.json', 'GuideSourceQueue.json', 'TravelData.json', 'GuideServiceData.json', 'DungeonData.json', 'DungeonJournalData.json']
+    files = ['WowTogether.toc', *names, 'QuestCatalogue.json', 'QuestCoverage.json', 'GuideAudit.json', 'GuideSourceQueue.json', 'TravelData.json', 'GuideServiceData.json', 'DungeonData.json', 'DungeonJournalData.json', 'DungeonMapData.json']
     with zipfile.ZipFile(destination, 'w', zipfile.ZIP_DEFLATED) as archive:
         for name in files:
             archive.write(addon / name, 'WowTogether/' + name)
@@ -413,7 +416,7 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
         for name in ('build_quest_dataset.py', 'quest_enrichment.py', 'legacy_quest_facts.py', 'collect_quest_entities.py',
                      'forever_map_geometry.py', 'quest_event_areas.py', 'lua_data_literal.py', 'forever_beta_facts.py',
                      'quest_observation_facts.py', 'capture_quest_pages.py', 'audit_quest_guides.py',
-                     'import_warcraftdb.py', 'import_wowhead.py', 'import_travel_network.py', 'import_guide_services.py', 'import_dungeons.py', 'import_dungeon_journal.py',
+                     'import_warcraftdb.py', 'import_wowhead.py', 'import_travel_network.py', 'import_guide_services.py', 'import_dungeons.py', 'import_dungeon_journal.py', 'import_dungeon_positions.py',
                      'guide_source_queue.py', 'forever_source_manifest.json', 'quest_corrections.json', 'quest_exclusions.json'):
             archive.write(ROOT / 'tools' / name, 'WowTogether/data-tools/' + name)
         archive.writestr('WowTogether/INSTALL.md', instructions)
