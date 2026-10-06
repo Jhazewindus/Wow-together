@@ -63,3 +63,18 @@ If the user explicitly says more reports are still coming for the batch, collect
 them before implementing fixes. Otherwise continue within the authorized task.
 
 Changes to this review workflow alone do not constitute a new addon release.
+
+## Project direction
+
+Treat WoW Together as a **WoW Forever companion**. This is the user's standing
+product direction from 6 October 2026. Keep the product name **WoW Together**;
+"WoW Forever companion" describes the mindset, not a rename. Keep leveling as
+the backbone, with supporting tools for travel, dungeon preparation, training
+and solo/group play.
+Party quest sync remains one part of that wider companion.
+
+Use this direction when evaluating features, naming and interface design.
+Keep supporting tools optional and the interface compact and coherent. Prioritize
+reliable, useful guidance for the player's current situation, with clear next
+steps and build-tested behavior. Preserve working guide fundamentals and the
+user's established preferences while developing the wider companion.

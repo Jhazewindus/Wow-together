@@ -1,6 +1,8 @@
-# Wow Together
+# WoW Together
 
-A leveling guide with optional party progress for the **World of Warcraft: Forever beta**. Version
+A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
+leveling at its core and optional tools for travel, dungeon preparation and party
+progress. Version
 **0.8.22** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
