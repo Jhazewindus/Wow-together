@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.45"
-ns.RELEASE_NAME = "SMART FLIGHT DISCOVERY"
+ns.VERSION = "0.8.46"
+ns.RELEASE_NAME = "GUIDE REASONS"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}
@@ -267,6 +267,7 @@ function ns.Diagnostics()
         .. ns.guideProgressStats.retries .. " quest-log retries. Dashboard work is deferred while hidden/resizing.")
     output("Scan guide: fresh quest log, objectives and history; fixed order retained. Useful lower-level prerequisites explain their unlock.")
     ns.NavigationDiagnostics(output)
+    ns.GuideReasonDiagnostics(output)
     ns.QuestItemDiagnostics(output)
     ns.GuideTipDiagnostics(output)
     ns.ClassTrainingDiagnostics(output)

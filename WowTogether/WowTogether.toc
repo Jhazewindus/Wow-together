@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.45
-## X-ReleaseName: SMART FLIGHT DISCOVERY
+## Version: 0.8.46
+## X-ReleaseName: GUIDE REASONS
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua
@@ -40,6 +40,7 @@ Guide.lua
 Routes.lua
 PartyRoutes.lua
 GuideText.lua
+GuideReasons.lua
 EliteSpawns.lua
 QuestConfirmation.lua
 QuestFocus.lua

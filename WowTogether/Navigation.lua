@@ -63,7 +63,7 @@ function ns.RouteContext(stop, mapID, facts, travelDistance)
     end
     local travelSummary = ns.TravelPathSummary(stop)
     if stop.flightDiscovery then return travelSummary end
-    local purpose = (travelSummary or stop.goal or stop.flightPlan or stop.travelLeg) and ns.GuideDestinationPurpose(stop)
+    local purpose = (travelSummary or stop.goal or stop.flightPlan or stop.travelLeg) and ns.GuideDestinationPurpose(stop, mapID, travelDistance)
     if travelSummary then return purpose and (purpose .. "\n" .. travelSummary) or travelSummary end
     if ns.routeSelection and ns.routeSelection.mode == "travel" then
         if stop.travelLeg or stop.flightPlan then
@@ -102,28 +102,16 @@ function ns.RouteContext(stop, mapID, facts, travelDistance)
     end
     facts = facts or ns.GuideStepFacts(stop)
     stop = facts.stop
-    local reason = ns.GuideStepHint(stop, facts)
-    if stop.unknownLocation then reason = "Exact location missing; use the quest tracker."
-    end
+    local reason = ns.GuideVisibleReason(stop, mapID, travelDistance)
     local forPlayer = ns.SafeTitle(stop.forPlayer)
     local who = forPlayer and (" • For " .. forPlayer) or ""
     local context = ns.StopLocationText(stop, mapID) .. who
-    if ns.GuideInteger(mapID) and ns.GuideInteger(stop.mapID) and mapID ~= stop.mapID
-        or finite(travelDistance) and travelDistance >= 1000 then
-        reason = ns.GuideDestinationReason(stop) or reason
-    end
     local useful, exception = ns.LevelingValue(stop.id)
     local quest, low = ns.CatalogueQuest(stop.id), ns.PreferredQuestLevels()
     if useful == true and exception and quest and low and (quest.level or 0) > 0 and quest.level < low then
         facts.lowerLevelPrerequisite = quest.level
         facts.lowerLevelClassQuest = ns.IsClassQuest(stop.id)
-        if not facts.lowerLevelClassQuest then exception = "Prerequisite: " .. exception end
     end
-    if ns.routeSelection and ns.routeSelection.catchupRequired and ns.routeSelection.catchupRequired[stop.id] then
-        reason = "Finish this prerequisite to catch your party up."
-    elseif useful == true and exception then reason = exception
-    elseif useful == false then reason = stop.kind == "t" and "Ready for turn-in; collect its reward."
-        or "Quest-log work you chose to keep in this route." end
     local groupWarning = ns.QuestGroupWarning(stop.id)
     if groupWarning then reason = groupWarning .. " " .. reason end
     return reason .. "\n" .. context
@@ -257,6 +245,15 @@ function ns.UpdateNavigation()
     frame.status:SetText(state.angle and ns.GuideStepAction(state.stop, facts) or state.status)
     local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
     frame.context:SetText(ns.RouteContext(state.stop, mapID, facts, state.distance))
+    -- Keep the explanation readable at the player's width. Only grow when
+    -- needed; never resize during a drag or overwrite their saved dimensions.
+    local measured = ns.ReadPublic(frame.context.GetStringHeight, frame.context)
+    local needed = finite(measured) and math.min(110, math.max(26, measured + 2)) or 26
+    if frame.reasonHeight ~= needed then
+        frame.reasonHeight = needed
+        if not frame.sizing and frame:GetHeight() < 142 + needed then frame:SetHeight(142 + needed) end
+        ns.LayoutNavigation()
+    end
     updateTooltip(frame)
     ns.HideNavigationGeometry(frame.icon)
     local separate = ns.standaloneNavigation and ns.standaloneNavigation:IsShown()
@@ -342,7 +339,7 @@ function ns.LayoutNavigation()
     if not finite(width) or not finite(height) then return end
     local left = frame.separateArrow and 14 or 82
     local offset = (width - 360) / 2
-    local contextHeight = math.max(26, math.min(52, height - 142))
+    local contextHeight = math.max(26, math.min(frame.reasonHeight or 52, height - 142))
     frame.title:SetWidth(width - 138); frame.step:SetWidth(width - 28)
     frame.status:ClearAllPoints(); frame.status:SetPoint("TOPLEFT", left, -52)
     frame.status:SetSize(width - left - 14, math.max(28, height - contextHeight - 114))

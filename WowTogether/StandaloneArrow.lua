@@ -28,6 +28,9 @@ function ns.CreateStandaloneArrow()
     frame.symbol = ns.UILabel(frame.icon, "GameFontNormalLarge", 24); frame.symbol:SetPoint("CENTER")
     frame.distance = ns.UILabel(frame, nil, 12, ns.UIColors.gold); frame.distance:SetPoint("TOP", 0, -71)
     frame.title = ns.UILabel(frame, nil, 11); frame.title:SetPoint("TOP", 0, -87); frame.title:SetSize(176, 14); frame.title:SetWordWrap(false)
+    frame.reason = ns.UILabel(frame, nil, 10, ns.UIColors.muted)
+    frame.reason:SetSize(248, 42); frame.reason:SetWordWrap(true); frame.reason:SetJustifyV("TOP")
+    frame.reason:Hide()
     frame.training = CreateFrame("Frame", nil, frame); frame.training:SetSize(176, 24)
     frame.training:SetPoint("TOP", 0, -105)
     frame.training.done = ns.UIButton(frame.training, "Done", 80, function() ns.FinishClassTraining(true) end)
@@ -66,6 +69,20 @@ function ns.CreateStandaloneArrow()
     frame:Hide()
 end
 
+function ns.LayoutStandaloneDetails(frame)
+    local height = frame.training:IsShown() and 130 or 102
+    frame.reason:ClearAllPoints(); frame.reason:SetPoint("TOP", frame, "TOP", 0, -height - 4)
+    if frame.reason:IsShown() then
+        local measured = ns.ReadPublic(frame.reason.GetStringHeight, frame.reason)
+        local lines = finite(measured) and math.max(26, measured + 2) or 42
+        frame.reason:SetHeight(lines); height = height + lines + 4
+    end
+    frame.tip:ClearAllPoints(); frame.tip:SetPoint("TOP", frame, "TOP", 0, -height - 4)
+    if frame.tip:IsShown() then height = height + 56 end
+    frame:SetWidth((frame.reason:IsShown() or frame.tip:IsShown()) and 248 or 180)
+    frame:SetHeight(height)
+end
+
 function ns.UpdateStandaloneArrow(state)
     local frame = ns.standaloneNavigation
     if not frame then return end
@@ -73,7 +90,15 @@ function ns.UpdateStandaloneArrow(state)
     frame:SetShown(state.visible == true and not state.idle and ns.Option("standaloneArrow"))
     local training = ns.IsClassTrainingStep(state.stop) and not state.flight and not state.busy
         and not ns.navigationPreview and not ns.Option("routeArrow")
-    frame.training:SetShown(training == true); frame:SetHeight(training and 130 or 102)
+    frame.training:SetShown(training == true)
+    local showReason = state.visible == true and not state.idle and not state.busy and not ns.Option("routeArrow")
+        and state.stop and state.stop.kind ~= "notice" and not state.stop.flightDiscovery
+    frame.reason:SetShown(showReason == true)
+    if showReason then
+        local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
+        frame.reason:SetText("Why: " .. ns.GuideVisibleReason(state.stop, mapID, state.distance))
+    end
+    ns.LayoutStandaloneDetails(frame)
     ns.HideNavigationGeometry(frame.icon)
     if not frame:IsShown() then return end
     local clock = ns.NavigationTravelTime(state)

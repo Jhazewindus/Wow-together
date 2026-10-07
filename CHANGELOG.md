@@ -1,5 +1,35 @@
 # Wow Together changelog
 
+## 0.8.46
+
+**GUIDE REASONS**
+
+- Share destination reasons across the guide window, standalone arrow and quest
+  list: useful follow-ups, nearby eligible pickups, accepted work, grouped
+  rewards, dungeon preparation and training. Lower-level exceptions name the
+  worthwhile later quest or dungeon benefit.
+- Explain long generic pickups honestly: their level and selected-guide role,
+  with no special unlock claimed. Offer Skip quest when the detour is not worth
+  it. Unverified requirements name the giver; missing coordinates stay explicit.
+- Keep alternative branches optional. Exclude completed, accepted, skipped,
+  disabled-class and incompatible follow-ups from prerequisite benefit claims.
+  Preserve build-scoped learned rules without observer names in routine UI.
+- Show reasons without hovering in the standalone-only layout. Wrap main guide
+  explanations with room to read them; retain saved geometry, advice dismissal,
+  training controls and useful kill/loot/item-use instructions.
+- Use the previewed guide's facts in its quest list. Cache decisions until
+  progress, identity, route, learning settings or destination facts change;
+  query completion only for actual follow-up relations.
+- Audit all 5,230 records, 16,849 source/missing-stage destinations and 13,087
+  compiled steps across 152 faction/level-section guides, including 1,114
+  cross-map transitions. Retain order, prerequisite, escort and distance checks.
+  This is explanation coverage; source-data gaps remain separately reported.
+- Fixed guide order, eligibility, automatic quest actions and progress are
+  retained. Live Forever fonts, rendering, NPC offers and travel need retesting.
+- Validation: 1,266 full-suite host checks and 104 targeted regressions passed;
+  all 76 Lua files compile under Lua 5.1. The catalogue/guide audit passed its
+  existing invariants and new explanation-coverage checks.
+
 ## 0.8.45
 
 **SMART FLIGHT DISCOVERY**

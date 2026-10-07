@@ -219,7 +219,7 @@ function ns.UpdateGuideTip(state)
         standalone.guideTip = value
         standalone.tip:SetShown(value ~= nil and standalone:IsShown() and not ns.Option("routeArrow"))
         if value then standalone.tip.text:SetText(value.text) end
-        standalone:SetHeight((standalone.training:IsShown() and 130 or 102) + (standalone.tip:IsShown() and 56 or 0))
+        ns.LayoutStandaloneDetails(standalone)
     end
 end
 

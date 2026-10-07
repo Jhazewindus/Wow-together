@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.45 — SMART FLIGHT DISCOVERY** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.46 — GUIDE REASONS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -18,10 +18,22 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **75 Lua
+Replace the folder on **every party member's client**, including all **76 Lua
 files** and the **Media folder**, then fully restart the client. Restart if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.46 explains why each destination matters.** The guide window, standalone
+arrow and quest-list previews share reasons based on useful follow-ups, nearby
+eligible pickups, accepted objectives, grouped rewards, dungeon preparation or
+training. Lower-level prerequisites name the worthwhile later quest. A long
+generic pickup says that no special unlock is known and offers Skip quest;
+unverified requirements name the NPC to check. Previews use their own guide's
+facts. Arrow text wraps without changing saved geometry; the standalone-only
+layout shows its reason without a hover. The audit checks all 5,230 records and
+152 compiled guides; explanations do not fill missing map/prerequisite data or
+prove globally optimal travel. Fixed order, eligibility and progress remain
+unchanged. See [GUIDE_REASONS.md](GUIDE_REASONS.md).
 
 **0.8.45 compares nearer unlearned flight masters with the known journey.**
 When a nearby friendly master has a published connection towards your unlocked

@@ -30,7 +30,8 @@ class ResizeTests(unittest.TestCase):
         self.assertTrue(f.sizing)
         c.ns.handlers.GLOBAL_MOUSE_UP('LeftButton')
         self.assertIsNone(f.sizing);self.assertEqual(c.ns.db.arrowSize.width,520)
-        self.assertEqual(f.context.height,52)
+        # The fixture reports 100 px of text; leave room for the full reason.
+        self.assertEqual(f.context.height,102)
 
     def test_reentrant_native_size_callback_clamps_once_without_replanning(self):
         c=navigator();f=c.ns.navigation;c.lua.globals().resizeFrame=f

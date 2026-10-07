@@ -168,84 +168,11 @@ function ns.StopInstruction(stop, facts)
     return instruction
 end
 
-local function destination(stop)
-    local goal = stop
-    for _ = 1, 4 do
-        if goal.goal then goal = goal.goal elseif goal.sourceStop then goal = goal.sourceStop else break end
-    end
-    return goal
-end
-
--- Reasons use the selected guide's real dependencies/visits. Cache per route
--- and destination so arrow ticks do not rescan a full guide's remaining steps.
-local reasonRoute, reasonGuide, reasonCatalogue
-local reasons = {}
-function ns.GuideDestinationReason(stop)
-    local goal = destination(stop)
-    if text(goal.travelReason) then return text(goal.travelReason) end
-    local route, guide = ns.selectedRoute, ns.routeSelection
-    if route ~= reasonRoute or guide ~= reasonGuide or ns.catalogue ~= reasonCatalogue then
-        reasonRoute, reasonGuide, reasonCatalogue, reasons = route, guide, ns.catalogue, {}
-    end
-    if reasons[goal] ~= nil then return reasons[goal] or nil end
-    local reason
-    if goal.dungeonEntrance then
-        reason = "The dungeon quest objectives require a run through " .. (text(goal.title) or "this dungeon") .. "."
-    elseif goal.kind == "trainer" then
-        reason = "Optional training check near your quest route; new class skills may be available."
-    elseif goal.confirmation then
-        reason = "Talk to " .. (text(goal.npcName) or "the quest giver") .. " to check this quest's pickup requirements before continuing."
-    elseif goal.kind == "a" or goal.kind == "q" or goal.kind == "t" then
-        local useful, exception = ns.LevelingValue(goal.id)
-        if guide and guide.catchupRequired and guide.catchupRequired[goal.id] then
-            reason = "This prerequisite helps your party catch up through the quest chain."
-        elseif useful == true and exception then reason = exception end
-        local followup
-        if not reason then
-            local key = goal.memberKey or ns.self
-            local profile = key == ns.self and ns.profile or ns.members[key] and ns.members[key].profile
-            for _, record in ipairs(guide and guide.records or {}) do
-                local quest = ns.CatalogueQuest(record.id)
-                local required = quest and quest.previousQuest == goal.id
-                for _, parent in ipairs(quest and quest.prerequisiteAll or {}) do
-                    if parent == goal.id then required = true end
-                end
-                if required and not ns.GuideQuestSkipped(record.id) and ns.ClassQuestEnabled(record.id)
-                    and ns.CatalogueIdentityAllowed(record.id, profile) ~= false
-                    and ns.CatalogueCompletion(key, record.id) ~= true then
-                    followup = text(quest.title) or text(record.title); break
-                end
-            end
-            if followup then reason = "Required for " .. followup .. " later in this guide." end
-        end
-        if not reason and (goal.kind == "a" or goal.kind == "t") then
-            local found, count, seen = false, 0, {}
-            for _, point in ipairs(route and route.stops or {}) do
-                if not found and point.id == goal.id and point.kind == goal.kind then found = true end
-                if found then
-                    if point.kind ~= goal.kind or point.mapID ~= goal.mapID or point.unknownLocation or goal.unknownLocation then break end
-                    local yards = point.x == goal.x and point.y == goal.y and 0
-                        or ns.WalkingDistance(goal.mapID, goal, point)
-                    if not yards or yards > 100 then break end
-                    if not seen[point.id] then seen[point.id] = true; count = count + 1 end
-                end
-            end
-            if count > 1 then reason = "This visit groups " .. count .. (goal.kind == "a" and " nearby quest pickups before heading out." or " nearby hand-ins to collect their rewards together.") end
-        end
-        if not reason then
-            if goal.kind == "t" then reason = "Return here to collect the reward for " .. (text(goal.title) or "this quest") .. "."
-            elseif goal.kind == "a" then reason = "This pickup is part of your selected guide's fixed quest order."
-            else reason = "The objectives for " .. (text(goal.title) or "this quest") .. " are at this destination." end
-        end
-    end
-    reasons[goal] = reason or false
-    return reason
-end
-
 -- Put the reason for a journey first; the action/giver remain in the tooltip.
 -- Crossing waypoints are directions, never substitute quest objectives.
-function ns.GuideDestinationPurpose(stop)
-    local goal, reason = destination(stop), ns.GuideDestinationReason(stop)
+function ns.GuideDestinationPurpose(stop, mapID, distance, guide, route)
+    local goal, reason = ns.GuideDestination(stop), ns.GuideVisibleReason(stop,
+        mapID or ns.profile and ns.profile.mapID, distance, guide, route)
     if goal.professionStep then return reason and (reason .. "\n" .. (text(goal.description) or "")) or text(goal.description) end
     if goal.dungeonEntrance or goal.kind == "trainer" then return reason end
     if goal.kind ~= "a" and goal.kind ~= "q" and goal.kind ~= "t" then return end
@@ -269,7 +196,7 @@ function ns.StopLocationText(stop, mapID)
     return zone .. " • location not mapped"
 end
 
-function ns.GuideStepDescription(stop, facts)
+function ns.GuideStepDescription(stop, facts, guide, route)
     facts = facts or ns.GuideStepFacts(stop)
     local parts = {text(facts.stop.title) or "Guide step", ns.StopInstruction(stop, facts)}
     local groupWarning = ns.QuestGroupWarning(facts.stop.id)
@@ -278,11 +205,13 @@ function ns.GuideStepDescription(stop, facts)
     if text(facts.stop.forPlayer) then parts[#parts + 1] = "For " .. text(facts.stop.forPlayer) end
     parts[#parts + 1] = ns.GuideStepHint(stop, facts)
     if stop.goal then
-        local purpose = ns.GuideDestinationPurpose(stop)
+        local purpose = ns.GuideDestinationPurpose(stop, nil, nil, guide, route)
         if purpose then parts[#parts + 1] = purpose end
     else
-        local reason = ns.GuideDestinationReason(stop)
+        local decision = ns.GuideDestinationDecision(stop, guide, route)
+        local reason = decision.why
         if reason then parts[#parts + 1] = reason end
+        if decision.caution then parts[#parts + 1] = decision.caution end
     end
     parts[#parts + 1] = ns.StopLocationText(stop)
     local quest = ns.CatalogueQuest(facts.stop.id)

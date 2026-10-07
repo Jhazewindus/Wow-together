@@ -76,6 +76,7 @@ function ns.RenderGuideQuestList()
         if ns.ClassQuestEnabled(stop.id) then plan[#plan + 1], quests[stop.id] = stop, true end
     end
     frame.visiblePlan = plan
+    frame.reasonRoute = {stops = plan}
     if frame.plan then
         local count = 0; for _ in pairs(quests) do count = count + 1 end
         frame.summary:SetText(count .. " quests • " .. #plan .. " steps\n"
@@ -104,9 +105,8 @@ function ns.RenderGuideQuestList()
             row:SetScript("OnEnter", function(self)
                 if not GameTooltip or not self.stop then return end
                 GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-                GameTooltip:AddLine(ns.GuideStepDescription(self.stop), 1, 1, 1, true)
-                local useful, reason = ns.LevelingValue(self.stop.id)
-                if reason then GameTooltip:AddLine((useful and "Why this quest: " or "Level filter: ") .. reason, 1, 0.82, 0.3, true) end
+                GameTooltip:AddLine(ns.GuideStepDescription(self.stop, nil, frame.guide,
+                    frame.reasonRoute), 1, 1, 1, true)
                 GameTooltip:Show()
             end)
             row:SetScript("OnLeave", function() if GameTooltip then GameTooltip:Hide() end end)

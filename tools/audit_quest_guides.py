@@ -24,6 +24,7 @@ def audit():
     c.ns.db.config.soloMode=True
     c.ns.ReadProfile()
     points=0
+    reason_stages=0;reason_codes=collections.Counter();reason_review=set()
     for ident,q in c.ns.catalogue.quests.items():
         assert isinstance(ident,(int,float)) and ident>0,ident
         assert isinstance(q.title,str) and q.title,(ident,'title')
@@ -38,6 +39,26 @@ def audit():
             assert ref.entityType in ('npc','object','item') and ref.entityID>0 \
                 and (ref.quantity and ref.quantity>0 or ref.quantityUnknown==True),(ident,'requirement')
         assert q.previousQuest!=ident,(ident,'self prerequisite')
+        # Check every stage/location, including records outside leveling guides.
+        # This measures explanation coverage, not pickup access or data completeness.
+        record=c.ns.CatalogueRecord(ident)
+        c.ns.profile.level=max(1,min(60,int(q.level or 1)))
+        c.ns.profile.faction=q.side if q.side in ('Horde','Alliance') else 'Horde'
+        selected=c.lua.table_from({'records':[record],'title':'Catalogue audit'},recursive=True)
+        for role,kind in (('starts','a'),('objectives','q'),('ends','t')):
+            locations=list(q[role].values()) if q[role] is not None else []
+            if not locations or kind=='q' and q.objectiveLocationsIncomplete:locations.append(None)
+            for p in locations:
+                stop=c.ns.PublishedGuideStop(record,p,kind) if p is not None else None
+                if stop is None:
+                    stop=c.lua.table_from({'id':ident,'kind':kind,'title':q.title,
+                        'unknownLocation':True,'mapID':q.mapID or 0})
+                route=c.lua.table_from({'stops':[stop]},recursive=True)
+                decision=c.ns.GuideDestinationDecision(stop,selected,route)
+                assert isinstance(decision.why,str) and decision.why.strip(),(ident,kind,'missing reason')
+                assert isinstance(decision.code,str) and decision.code,(ident,kind,'reason code')
+                reason_codes[decision.code]+=1;reason_stages+=1
+                if decision.needsReview:reason_review.add(int(ident))
     guides=[];seen=set()
     for faction,races in (('Horde',(2,6,5,8)),('Alliance',(1,3,4,7))):
         c.ns.profile.faction=faction;c.ns.profile.classID=8
@@ -51,10 +72,18 @@ def audit():
                     seen.add(key)
                     c.ns.GenerateFixedGuide(g,False)
                     plan=list(g.fixedPlan.values())
+                    reason_route=c.lua.table_from({'stops':g.fixedPlan})
+                    guide_reason_codes=collections.Counter();reason_review_steps=0;cross_zone_reason_steps=0
                     positions={(s.id,s.kind):i for i,s in enumerate(plan) if s.kind in ('a','t')}
                     kinds=collections.defaultdict(list)
                     for i,s in enumerate(plan):
                         assert s.guideStep==i+1,(key,'step index')
+                        decision=c.ns.GuideDestinationDecision(s,g,reason_route)
+                        assert decision.why and decision.code,(key,s.id,s.kind,'missing destination reason')
+                        guide_reason_codes[decision.code]+=1
+                        reason_review_steps+=bool(decision.needsReview)
+                        if i>0 and s.mapID>0 and plan[i-1].mapID>0 and s.mapID!=plan[i-1].mapID:
+                            cross_zone_reason_steps+=1
                         kinds[s.id].append(s.kind)
                         if s.kind=='a' and not s.planNeedsReview:
                             q=c.ns.CatalogueQuest(s.id)
@@ -83,10 +112,14 @@ def audit():
                         'unverified_pickup_requirement_quest_ids':unread,
                         'unverified_objective_quantity_quest_ids':unknown_counts,
                         'prerequisite_review_steps':review, 'source_data_gap_free':unknown==0 and review==0 and not unread and not unknown_counts,
+                        'reason_steps_checked':len(plan),'destination_reason_codes':dict(sorted(guide_reason_codes.items())),
+                        'reason_review_steps':reason_review_steps,'cross_zone_reason_steps':cross_zone_reason_steps,
                         'estimated_distance_before':round(g.optimization.before,2),'estimated_distance_after':round(g.optimization.after,2)})
                     print(f'{faction}: {g.zone}: {len(plan)} steps checked',flush=True)
     return {'validation':'Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim',
         'quest_records':c.ns.catalogue.count,'static_points_checked':points,'fixed_zone_guides_checked':len(guides),
+        'catalogue_reason_stages_checked':reason_stages,'catalogue_reason_codes':dict(sorted(reason_codes.items())),
+        'reason_review_quest_ids':sorted(reason_review),
         'source_data_gap_free_guides':sum(g['source_data_gap_free'] for g in guides),
         'guides':sorted(guides,key=lambda g:(g['faction'],g['zone']))}
 

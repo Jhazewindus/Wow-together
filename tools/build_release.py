@@ -505,7 +505,7 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
             archive.write(media / name, 'WowTogether/Media/GuideThemes/' + name)
         for name in ('README.md', 'TESTING.md', 'CHANGELOG.md'):
             archive.write(ROOT / name, 'WowTogether/' + name)
-        for name in ('PERFORMANCE.md', 'PROFESSIONS.md', 'TRAVEL_DATA.md', 'DUNGEONS.md', 'DUNGEON_ARTWORK.md', 'DUNGEON_VIEWER.md', 'THIRD_PARTY_NOTICES.md', 'QUEST_DATA.md',
+        for name in ('PERFORMANCE.md', 'PROFESSIONS.md', 'TRAVEL_DATA.md', 'GUIDE_REASONS.md', 'DUNGEONS.md', 'DUNGEON_ARTWORK.md', 'DUNGEON_VIEWER.md', 'THIRD_PARTY_NOTICES.md', 'QUEST_DATA.md',
                      'LEGACY_DATA_LICENSE.txt', 'LEGACY_DATA_COPYRIGHT.md'):
             if (ROOT / name).exists():
                 archive.write(ROOT / name, 'WowTogether/' + name)

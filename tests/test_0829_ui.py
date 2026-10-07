@@ -14,7 +14,7 @@ class GuideWindowTests(unittest.TestCase):
         frame.SetSize(frame, 540, 260); frame.OnSizeChanged(frame)
         self.assertEqual(frame.title.width, 402)
         self.assertEqual(frame.status.width, 444)
-        self.assertEqual(frame.status.height, 94)
+        self.assertEqual(frame.status.height, frame.height - frame.context.height - 114)
         self.assertEqual(frame.tip.width, 540)
         self.assertEqual(frame.questItem.width, 540)
         self.assertEqual(frame.work.width, 540)
@@ -34,7 +34,8 @@ class GuideWindowTests(unittest.TestCase):
         self.assertEqual(c.ns.db.arrowPosition.x, 31)
         c.ns.CreateNavigation()
         self.assertEqual(c.ns.navigation.width, 520)
-        self.assertEqual(c.ns.navigation.height, 230)
+        self.assertGreaterEqual(c.ns.navigation.height, 230)
+        self.assertEqual(c.ns.db.arrowSize.height, 230)  # Text growth does not overwrite the chosen size.
         self.assertEqual(c.ns.navigation.point[4], 31)
 
     def test_exit_stops_guide_and_new_start_reopens_window(self):
@@ -69,7 +70,8 @@ class GuideWindowTests(unittest.TestCase):
         self.assertEqual((c.ns.navigation.width, c.ns.navigation.height), (360, 480))
         c.ns.db.arrowSize.width = c.lua.globals().secret
         c.ns.CreateNavigation()
-        self.assertEqual((c.ns.navigation.width, c.ns.navigation.height), (360, 168))
+        self.assertEqual(c.ns.navigation.width, 360)
+        self.assertGreaterEqual(c.ns.navigation.height, 168)  # Invalid saved size falls back, then fits text.
         c.ns.navigation.SetSize(c.ns.navigation, 100, 40)
         c.ns.navigation.OnSizeChanged(c.ns.navigation)
         self.assertEqual((c.ns.navigation.width, c.ns.navigation.height), (360, 168))

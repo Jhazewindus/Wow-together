@@ -1,13 +1,13 @@
 # Wow Together — friend test script
 
-For **0.8.45** — **SMART FLIGHT DISCOVERY**, World of Warcraft: Forever beta,
+For **0.8.46** — **GUIDE REASONS**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 75 Lua files** and
+1. Replace the complete WowTogether folder, including **all 76 Lua files** and
    the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    **Fully restart the client for this hotfix**, rather than only `/reload`.
@@ -16,6 +16,32 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Destination reasons — about 5–10 minutes
+
+- Start a zone guide. Pickups, work and returns should explain their benefit in
+  the small guide window. A useful lower-level prerequisite must name the later
+  quest/level or dungeon benefit, rather than merely saying it is in the guide.
+- Check a far pickup and a journey to another zone: its reason should precede
+  the transport directions. A generic leveling detour must admit that no special
+  unlock is known. A return should name the quest whose reward you are collecting.
+  Profession rank travel should explain the cap/goal, without claiming an
+  exclusive trainer. NPC confirmation should name the giver where known.
+- Check consecutive nearby pickups/hand-ins and nearby accepted kill/gather
+  work. Counts must exclude skipped or already accepted pickups, missing NPC
+  offers and finished objectives. The reason must not change guide order or
+  accept extra quests. Completing an objective refreshes the explanation.
+- Enable Standalone arrow and hide the main guide arrow. The reason should be
+  readable beneath it without hovering. Nearby flight/inn advice and training
+  buttons must sit below their respective content, without overlap. Dismiss
+  advice: the quest reason stays. With both windows enabled, show the reason in
+  the main guide window once. Test narrow widths, scaling and longer quest names.
+- Browse another guide's quest list while retaining the current guide. Hovered
+  step reasons must describe the previewed guide, and must not switch the active
+  guide. No observer names or internal reason codes belong in the player view.
+- If wrong, capture the step/quest, current level, guide, destination, screenshot
+  and `/wt probe`. Note whether a known prerequisite, actual offer or reward
+  contradicts the explanation. Native fonts and live beta behavior need testing.
 
 ## Nearer flight-master routing — about 5–10 minutes
 
