@@ -178,7 +178,12 @@ and fixed order stay intact. Only known destinations within 250 metres in the
 current uninterrupted objective phase group together, respecting pickups,
 turn-ins, travel, zones and missing locations. Terrain access is not inferred.
 Travel routing has optional nearby flight-path and useful hearthstone tips.
-A small dismissible strip appears within 150 metres of a friendly service.
+A small dismissible strip appears beneath the guide or standalone arrow.
+Flight discovery checks friendly unlearned masters within 350 metres, or up to
+750 metres ahead with at most 200 metres of estimated extra walking. Hearthstone
+advice retains its 150-metre range. All 71 bundled native-ID taxi locations and
+client observations are considered; known ownership is required. Terrain and
+road access are not inferred from distance estimates.
 Hearthstone tips require upcoming objectives away and multiple hub turn-ins;
 flight tips hide known paths and distinguish Get from Check when unlocks are
 unconfirmed. Hover for the location/reason. Advice never changes the quest order,

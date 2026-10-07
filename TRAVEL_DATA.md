@@ -1,4 +1,4 @@
-# Travel routing — updated for 0.8.33
+# Travel routing — updated for 0.8.43
 
 Wow Together implements its own Dijkstra search with a binary heap, deterministic
 ties and nonnegative travel-time costs. It finds a path **between quest steps**;
@@ -157,13 +157,38 @@ a new inn for this character; HEARTHSTONE_BOUND records a manual binding. INN_IN
 is not registered. These native events and published coordinates still need
 current beta verification.
 
-Flight tips require a friendly known location within 150 metres. Published
+Flight tips require a friendly known location within 350 metres, or up to 750
+metres ahead when its visit adds at most 200 metres of estimated walking to the
+current navigation leg. Inn advice retains its 150-metre range. Published
 coordinates/ownership do not establish unlocks: confirmed unknown-to-character
 paths say Get, unconfirmed states say Check, and known paths are hidden. Inn tips
 require upcoming work away from the hub followed by at least two distinct nearby
 turn-ins among the next 48 guide stops. Tips do not supply travel graph edges,
 change quest order, select flights or bind homes. Disabling/dismissing them does
 not skip any quest. Each type has its own Travel routing toggle.
+
+Version 0.8.43 fixes the settlement-label-only discovery loop: all **71 native-ID
+taxi points** in the existing attributed travel snapshot are considered, plus
+client-observed masters. The remaining published symbolic taxi point has no
+native ID; its unlock cannot be checked, so it stays outside discovery advice.
+This is catalogue coverage, not proof that every Forever flight master is mapped.
+Native public ownership and positions take precedence, with source ownership as
+fallback; missing ownership is never guessed from a neutral settlement. Public
+continent observations can be projected onto the current zone, using the existing
+map/world transform. Private/missing scale/position/faction data cannot produce
+a reminder. Known paths and masters already confirmed current are excluded.
+
+The Stonetalon screenshot places the player at 49.6, 61.0; the published Sun Rock
+taxi is at 45.16, 59.89. The former 150-metre radius can therefore exclude a
+master that looks close on the zone map. Synthetic checks reproduce this with
+an explicit physical scale; no live probe was supplied to establish the exact
+cause/distance on that client. The standalone arrow also previously exposed tips
+only on hover. Both visible layouts now name the stop and explain future travel
+benefit. Opening its native map confirms unlock/reachability as before; discovery
+advice does not add flight edges or change guide steps. Hostile ground crossings
+are excluded using the same approximate footprints as travel routing. A short
+detour uses geometric distances, not certified walkable roads. Cache keys include
+the current leg and travel revision, reusing the existing navigation updates.
 
 Version 0.8.21 extracts **151 class-trainer locations**, covering classes
 1/2/3/4/5/7/8/9/11, from that same hash-verified POI snapshot. Explicit NPC faction

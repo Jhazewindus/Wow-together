@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.42"
+ns.VERSION = "0.8.43"
 ns.RELEASE_NAME = "MARKET SMART"
 ns.handlers = {}
 ns.eventFailures = {}

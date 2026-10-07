@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.42** — **GUIDE POLISH**, World of Warcraft: Forever beta,
+For **0.8.43** — **FLIGHT PATH DISCOVERY**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
@@ -16,6 +16,33 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Nearby flight discovery — about 5–10 minutes
+
+- On a character missing Sun Rock Retreat, start a guide near the screenshot's
+  Stonetalon position (49.6, 61.0). Leave **Nearby flight-path tips** on. A friendly
+  master within 350 metres should show Get flight path if the client's unlock
+  flag confirms it is undiscovered, or Check flight path if that flag is unknown.
+  Knowing Crossroads/other flights must not hide this missing stop. Hover for the
+  location and reason; the current quest/guide sequence must stay unchanged.
+- Test both guide panel and standalone arrow only. Advice is readable under the
+  visible arrow without hovering and appears once when both arrows are on.
+  Dismiss ×: advice disappears, no quest is skipped. Test yards/metres, UI scale,
+  moving/resizing, disable the tip option and re-enable on another character.
+- On an onward leg, a master 350–750 metres away may be suggested if the total
+  detour adds at most 200 metres of estimated walking. A master well behind you,
+  beyond 750 metres, or across a known enemy settlement should not qualify under
+  this wider rule. Distances do not certify roads or terrain access.
+- Open the recommended master's map; the tip should disappear once its current
+  or known state is confirmed. Reload and revisit: confirmed access remains
+  personal. No extra unlocked paths or reachable connections should be invented.
+- Check another zone and faction, including a neutral town with separate faction
+  masters. Only publicly owned friendly masters qualify. Newly observed masters
+  can use public projected positions even without bundled settlement labels.
+- Combat, flying, corpse recovery, guide scanning and step previews hide advice.
+  Normal questing restores it. Capture `/wt probe` with zone, character, settings
+  and screenshot if missed; **Flight discovery advice** reports the catalogue and
+  nearest unlearned candidate. Host checks do not certify beta API results.
 
 ## Responsive windows and guide destinations — about 10 minutes
 
@@ -913,11 +940,13 @@ automatically. This review does not change leveling order or mapping coverage.
 ## Optional guide tips regression checks — about 5–10 minutes
 
 1. Start a leveling guide and leave both tip options on under **Travel routing**.
-   Walk within 150 metres of a friendly flight master. The small strip should
+   Walk within 350 metres of a friendly flight master. The small strip should
    say **Get flight path** only for a confirmed undiscovered path, or **Check
    flight path** when unlock status is unknown. Open the flight map: a known
    path's tip should disappear. The quest title, step and route order stay put.
-2. Move away beyond 150 metres; the strip hides. Test a large and a small zone,
+2. Move away beyond 350 metres and off its onward route; the strip hides unless
+   a master within 750 metres adds at most 200 metres of estimated walking.
+   Test a large and a small zone,
    Horde/Alliance ownership and a neutral hub. Changing yards/metres changes
    only the displayed units; the physical trigger distance stays the same.
 3. Near an inn, use a guide with upcoming objectives away from the hub and at
@@ -929,8 +958,8 @@ automatically. This review does not change leveling order or mapping coverage.
    unlocks, home and dismissed advice. Disable either option to hide that type.
 5. During combat, a flight, Scan guide, step preview or corpse recovery, tips
    should hide. Normal questing restores eligible advice. Drag the panel, try
-   your usual UI scale, check hover/close readability and test the standalone
-   arrow hover if enabled. Report version/build, zone, NPC, `/wt probe` and a
+   your usual UI scale, check hover/close readability and test the visible strip
+   beneath the standalone arrow if enabled. Report version/build, zone, NPC, `/wt probe` and a
    screenshot for missed tips or clipping. Host tests cannot certify beta APIs.
 
 ## Startup hotfix regression checks — about 3 minutes

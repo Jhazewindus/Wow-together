@@ -23,15 +23,16 @@ def tip_client(inn=True, flight=False):
 
 
 class GuideServiceTipTests(unittest.TestCase):
-    def test_flight_range_uses_150_metres_on_small_and_large_maps(self):
+    def test_flight_near_range_uses_350_metres_on_small_and_large_maps(self):
         for width in (1000, 10000):
             c = tip_client(inn=False, flight=True)
             c.lua.globals().mapWidth = width
             c.lua.execute('C_Map.GetMapWorldSize=function() return mapWidth,1000 end')
+            c.ns.selectedRoute.stops[1].x = .21
             point = c.ns.travelData.nodes['TAXI_9000']
-            point.x = .21 + 149.9 / .9144 / width
+            point.x = .21 + 349.9 / .9144 / width
             self.assertIsNotNone(c.ns.CurrentGuideTip())
-            point.x = .21 + 150.1 / .9144 / width
+            point.x = .21 + 350.1 / .9144 / width
             c.lua.globals().clock = 3
             self.assertIsNone(c.ns.CurrentGuideTip())
 
@@ -154,7 +155,7 @@ class GuideServiceTipTests(unittest.TestCase):
         self.assertIsNone(c.ns.CurrentGuideTip())
         c.lua.execute('function UnitIsGhost() return false end')
         c.ns.routeSelection.mode = 'travel'
-        self.assertIsNone(c.ns.CurrentGuideTip())
+        self.assertIsNotNone(c.ns.CurrentGuideTip())
         c.ns.routeSelection.mode = 'zone'
         self.assertIsNotNone(c.ns.CurrentGuideTip())
 

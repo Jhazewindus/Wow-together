@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.42 — GUIDE POLISH** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.43 — FLIGHT PATH DISCOVERY** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -22,6 +22,18 @@ Replace the folder on **every party member's client**, including all **75 Lua
 files** and the **Media folder**, then fully restart the client. Restart if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.43 improves nearby flight-path discovery.** A friendly unlearned master
+within 350 metres gets a reminder beneath the guide window or standalone arrow.
+A master up to 750 metres ahead can also qualify when the current leg adds at
+most 200 metres of estimated extra walking. The reminder names the stop and
+explains the benefit for future trips; hover for coordinates. Discovery checks
+all 71 bundled locations with native taxi IDs, plus client-observed masters,
+instead of only the 36 settlement labels. Your other flights do not unlock this
+one. Public character unlock/ownership observations take priority; uncertain
+unlocks say Check. Opening the flight-master map confirms access. Quest order
+and confirmed travel connections are retained. Locations and live reminder
+behavior still need testing on the current Forever beta.
 
 **0.8.42 polishes guide windows and destination advice.** Smaller guide-start,
 profession-scan, activity and party prompts now resize and remember geometry.
@@ -852,7 +864,10 @@ The probe itself does not query a flight map or select a taxi. Missing APIs, pub
 positions or current-master data leave connections and flight actions unconfirmed.
 
 Nearby flight-master advice appears in a small optional strip below the guide
-controls within **150 metres**, using the map's physical scale. Known paths are
+controls or standalone arrow within **350 metres**, using the map's physical
+scale. Up to **750 metres** qualifies when visiting it adds at most **200 metres**
+of estimated walking to the current leg. Hostile settlement crossings are excluded;
+these are distance estimates, not road/terrain guarantees. Known paths are
 hidden. Confirmed undiscovered paths say **Get flight path**; unknown unlocks say
 **Check flight path**. Faction ownership must be known; no quest step is replaced.
 Hearthstone advice uses 49 sourced inn locations, including Zephras Isle, plus

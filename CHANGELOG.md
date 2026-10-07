@@ -1,5 +1,26 @@
 # Wow Together changelog
 
+## 0.8.43
+
+**FLIGHT PATH DISCOVERY**
+
+- Suggest nearby friendly unlearned flight masters within 350 metres, or up to
+  750 metres ahead when visiting adds at most 200 metres of estimated walking.
+  Exclude known hostile settlement crossings; retain fixed quest order.
+- Check all 71 bundled native-ID taxi locations instead of only 36 settlement
+  labels. Include client-observed masters and project public continent positions
+  into the current zone. Ownership must be known; location never unlocks a flight.
+- Show dismissible discovery advice beneath the standalone arrow as well as the
+  guide panel. Name the stop and explain why learning it helps future trips.
+  Confirmed undiscovered paths say Get; uncertain unlocks say Check. Confirmed
+  known/current masters hide the tip. Flight advice also works in travel guides.
+- Add diagnostic catalogue/range/nearest-master details for missed reminders.
+  Cache by current leg and character travel changes; no extra polling loop.
+- Host checks include the Sun Rock screenshot position with a known Barrens
+  flight, bounded detours, faction/secret values, native-only locations, both
+  arrow layouts and unchanged quest steps/connections. Beta retesting required.
+- Validation: 1,220 host regressions passed; all 75 Lua files compile under Lua 5.1.
+
 ## 0.8.42
 
 **GUIDE POLISH**
