@@ -1,4 +1,4 @@
-"""Crafting batches retain remaining work while actual skill controls progress."""
+"""Craft estimates follow actual skill, including failed gains and bag changes."""
 import unittest
 from test_0836 import crafting
 from test_addon import Client
@@ -31,15 +31,15 @@ def success(c, recipe, sequence, skill=None):
 
 
 class CraftBatchTests(unittest.TestCase):
-    def test_partial_craft_counts_while_guide_requests_more_materials(self):
+    def test_failed_gain_while_gathering_does_not_reduce_the_skill_gap(self):
         c = crafting()
         c.lua.globals().stock[100] = 2
         c.ns.StartProfessionGuide(171, 75)
         self.assertEqual(c.ns.selectedRoute.stops[1].action, 'buy')
         c.lua.globals().stock[100] = 0
         success(c, 1, 1)  # Player crafts the one affordable item without a skill gain.
-        self.assertEqual(c.ns.selectedRoute.crafts, 4)
-        self.assertEqual(c.ns.selectedRoute.materials[1].need, 8)
+        self.assertEqual(c.ns.selectedRoute.crafts, 5)
+        self.assertEqual(c.ns.selectedRoute.materials[1].need, 10)
         self.assertEqual(c.ns.professionData[171].skill, 20)
 
     def test_guide_chooses_quantity_and_retired_settings_cannot_override_it(self):
@@ -53,10 +53,12 @@ class CraftBatchTests(unittest.TestCase):
         self.assertEqual(c.ns.selectedRoute.crafts, 5)
         c.lua.globals().color = 50
         c.ns.handlers.TRADE_SKILL_LIST_UPDATE(); c.drain()
-        self.assertEqual(c.ns.selectedRoute.crafts, 3)
+        self.assertEqual(c.ns.selectedRoute.crafts, 8)
         c.lua.globals().color = 60
         c.ns.handlers.TRADE_SKILL_LIST_UPDATE(); c.drain()
-        self.assertEqual(c.ns.selectedRoute.crafts, 1)
+        self.assertEqual(c.ns.selectedRoute.crafts, 20)
+        saved = c.ns.db.guideState[c.ns.self]
+        self.assertGreaterEqual(saved.guide.professionBatch.total, 20)
         self.assertFalse(c.ns.selectedRoute.complete)
 
     def test_main_menu_has_requested_order_and_switches_views(self):
@@ -123,7 +125,7 @@ class CraftBatchTests(unittest.TestCase):
                 self.assertGreater(initial, 1)
                 success(c, recipe, 1)  # A successful craft with no skill point.
                 self.assertEqual(c.ns.selectedRoute.recipe.id, recipe)
-                self.assertEqual(c.ns.selectedRoute.crafts, initial - 1)
+                self.assertEqual(c.ns.selectedRoute.crafts, initial)
                 self.assertEqual(c.ns.professionData[profession].skill, 11)
                 self.assertFalse(c.ns.selectedRoute.complete)
 
@@ -133,13 +135,15 @@ class CraftBatchTests(unittest.TestCase):
         stock[2934] = 15
         c.ns.StartProfessionGuide(165, 75)
         self.assertEqual(c.ns.selectedRoute.recipe.id, 2881)
-        self.assertEqual(c.ns.selectedRoute.crafts, 5)
+        self.assertEqual(c.ns.selectedRoute.crafts, 14)
         for i in range(1, 6):
             stock[2934], stock[2318] = 15 - i * 3, i
-            success(c, 2881, i, i + 1)
-            if i < 5:
-                self.assertEqual(c.ns.selectedRoute.recipe.id, 2881)
-                self.assertEqual(c.ns.selectedRoute.crafts, 5 - i)
+            # The player manually makes leather, even after fresh leather stock
+            # makes kits the next efficient recommendation.
+            c.lua.globals().pskill = i + 1
+            c.ns.handlers.SKILL_LINES_CHANGED(); c.drain()
+            self.assertEqual(c.ns.selectedRoute.recipe.id, 2152)
+            self.assertEqual(c.ns.selectedRoute.crafts, 14 - i)
         self.assertEqual(c.ns.selectedRoute.recipe.id, 2152)
         for i in range(1, 6):
             stock[2318], stock[2304] = 5 - i, i
@@ -166,11 +170,11 @@ class CraftBatchTests(unittest.TestCase):
         self.assertEqual(c.ns.selectedRoute.crafts, 5)
         for i in range(1, 4):
             stock[2318], stock[2304] = 5 - i, i
-            success(c, 2152, 5 + i, 20 + i // 2)
+            success(c, 2152, 5 + i, 20 + i)
             self.assertEqual(c.ns.selectedRoute.crafts, 5 - i)
             self.assertEqual(len(c.ns.selectedRoute.preparations), 0)
             self.assertEqual(c.ns.selectedRoute.stops[1].action, 'craft')
-        self.assertEqual(c.ns.professionData[165].skill, 21)
+        self.assertEqual(c.ns.professionData[165].skill, 23)
 
     def test_no_skill_gain_does_not_finish_stage_or_goal(self):
         c = crafting(skill=74)
@@ -195,13 +199,13 @@ class CraftBatchTests(unittest.TestCase):
         success(c, 2881, 1, 2)
         for _ in range(4):
             c.ns.handlers.BAG_UPDATE_DELAYED(); c.drain()
-            self.assertEqual(c.ns.selectedRoute.crafts, 4)
-            self.assertEqual(c.ns.selectedRoute.recipe.id, 2881)
+            self.assertEqual(c.ns.selectedRoute.crafts, 13)
+            self.assertEqual(c.ns.selectedRoute.recipe.id, 2152)
         c.ns.ShowProfessionViewer(165); c.drain()
-        self.assertEqual(c.ns.professionViewer.route.crafts, 4)
+        self.assertEqual(c.ns.professionViewer.route.crafts, 13)
         c.ns.ShowProfessionViewer(171); c.drain()
-        self.assertEqual(c.ns.routeSelection.professionBatch.remaining, 4)
-        self.assertEqual(c.ns.selectedRoute.recipe.id, 2881)
+        self.assertEqual(c.ns.routeSelection.professionBatch.remaining, 13)
+        self.assertEqual(c.ns.selectedRoute.recipe.id, 2152)
 
     def test_batch_reloads_remaining_crafts_and_skill(self):
         c = leatherworking()
@@ -212,12 +216,12 @@ class CraftBatchTests(unittest.TestCase):
         success(c, 2881, 1, 3)
         success(c, 2881, 2, 3)
         saved = c.ns.db.guideState[c.ns.self]
-        self.assertEqual(saved.guide.professionBatch.remaining, 3)
+        self.assertEqual(saved.guide.professionBatch.remaining, 12)
         c.ns.routeSelection = None
         c.ns.pendingSavedGuide = saved
         c.ns.RestoreSavedGuide()
-        self.assertEqual(c.ns.selectedRoute.crafts, 3)
-        self.assertEqual(c.ns.selectedRoute.recipe.id, 2881)
+        self.assertEqual(c.ns.selectedRoute.crafts, 12)
+        self.assertEqual(c.ns.selectedRoute.recipe.id, 2152)
         self.assertEqual(c.ns.professionData[165].skill, 3)
 
     def test_malformed_checkpoint_is_ignored(self):

@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.37"
-ns.RELEASE_NAME = "SKILL BY SKILL"
+ns.VERSION = "0.8.38"
+ns.RELEASE_NAME = "SMART SUPPLIES"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}
@@ -188,6 +188,8 @@ function ns.Diagnostics()
         {"C_TradeSkillUI.GetAllRecipeIDs", C_TradeSkillUI and C_TradeSkillUI.GetAllRecipeIDs},
         {"GetProfessions", GetProfessions},
         {"GetProfessionInfo", GetProfessionInfo},
+        {"GetNumTrainerServices", GetNumTrainerServices},
+        {"GetTrainerServiceInfo", GetTrainerServiceInfo},
         {"GetMerchantNumItems", GetMerchantNumItems},
         {"GetMerchantItemInfo", GetMerchantItemInfo},
         {"GetMerchantItemLink", GetMerchantItemLink},
@@ -196,6 +198,13 @@ function ns.Diagnostics()
         {"C_TradeSkillUI.GetChildProfessionInfo", C_TradeSkillUI and C_TradeSkillUI.GetChildProfessionInfo},
         {"C_TradeSkillUI.GetBaseProfessionInfo", C_TradeSkillUI and C_TradeSkillUI.GetBaseProfessionInfo},
         {"C_AuctionHouse.GetCommoditySearchResultInfo", C_AuctionHouse and C_AuctionHouse.GetCommoditySearchResultInfo},
+        {"C_AuctionHouse.SendBrowseQuery", C_AuctionHouse and C_AuctionHouse.SendBrowseQuery},
+        {"C_AuctionHouse.IsThrottledMessageSystemReady", C_AuctionHouse and C_AuctionHouse.IsThrottledMessageSystemReady},
+        {"C_AuctionHouse.GetNumItemSearchResults", C_AuctionHouse and C_AuctionHouse.GetNumItemSearchResults},
+        {"C_AuctionHouse.GetItemSearchResultInfo", C_AuctionHouse and C_AuctionHouse.GetItemSearchResultInfo},
+        {"QueryAuctionItems", QueryAuctionItems},
+        {"CanSendAuctionQuery", CanSendAuctionQuery},
+        {"GetAuctionItemInfo", GetAuctionItemInfo},
         {"UnitGUID", UnitGUID},
         {"C_GossipInfo.GetAvailableQuests", C_GossipInfo and C_GossipInfo.GetAvailableQuests},
         {"C_GossipInfo.GetActiveQuests", C_GossipInfo and C_GossipInfo.GetActiveQuests},

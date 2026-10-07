@@ -1,5 +1,25 @@
 # Wow Together changelog
 
+## 0.8.38
+
+**SMART SUPPLIES**
+
+- Add Next batch / To skill goal material estimates. Subtract bags once and reuse
+  planned intermediates. Yield calculations and label partial data.
+- Add Search AH buttons and a material toolbar. One search per click; require an
+  open AH, cached names, no combat and query capacity. No buying or background scan.
+- Public commodity/item/legacy buyouts provide session prices. New prices can
+  change unfinished work immediately, using actual skill/bags. Unknown prices stay unknown.
+- Estimate crafts to the milestone from the recipe's skill-up chance and points
+  per gain. Remove fixed 1/3/5 limits. Failed gains leave the gap unchanged; actual
+  milestones end steps. Reassess on skill/stock/color changes and resume on reload.
+- Fix premature Expert-trainer detours below the current cap. Explain useful
+  training visits. Remember positive opened-trainer offers by character/build.
+- Exclude explicit level-0/zero-XP entries from every leveling guide, fixing
+  Applejack Still's Elwynn detour. Preserve library facts and fixed-order progress.
+- Include all 72 Lua files and Media. Host checks cover materials, repricing,
+  trainers, craft estimates and Elwynn. Native AH/trainer UI still needs beta tests.
+
 ## 0.8.37
 
 **SKILL BY SKILL**

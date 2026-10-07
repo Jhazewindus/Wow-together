@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.37
-## X-ReleaseName: SKILL BY SKILL
+## Version: 0.8.38
+## X-ReleaseName: SMART SUPPLIES
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua
@@ -70,7 +70,10 @@ DungeonCollection.lua
 DungeonQuestList.lua
 Professions.lua
 ProfessionPlanner.lua
+ProfessionTrainers.lua
+ProfessionShopping.lua
 ProfessionViewer.lua
+AuctionGuide.lua
 DungeonJournal.lua
 DungeonMapQuests.lua
 DungeonViewer.lua

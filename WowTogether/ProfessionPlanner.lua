@@ -137,20 +137,22 @@ function ns.InvalidateProfessionItemName(id) nameCache[id] = nil end
 
 -- Expand intermediate bolts/powders/stones only when their recipe is already
 -- learned or supplied by a trainer. A stock ledger is shared through the tree.
-function ns.ProfessionMaterials(id, recipe, crafts, skill, useStock)
+function ns.ProfessionMaterials(id, recipe, crafts, skill, useStock, sharedLedger)
     local data = index(id)
-    local ledger, rows, preparations, visiting = {}, {}, {}, {}
-    local complete, total = true, 0
+    local ledger, rows, preparations, visiting = sharedLedger or {}, {}, {}, {}
+    local complete, total, incomplete = true, 0, nil
     local function stock(itemID)
-        if ledger[itemID] == nil then ledger[itemID] = useStock and owned(itemID) or 0 end
-        return ledger[itemID]
+        if ledger[itemID] == nil then ledger[itemID] = useStock and (owned(itemID) or false) or 0 end
+        return ledger[itemID] ~= false and ledger[itemID] or nil
     end
     local function record(itemID, quantity, missing)
         local row = rows[itemID]
         if not row then
             local item = data.data.items[itemID]
             row = {itemID = itemID, name = itemName(itemID, item), need = 0,
-                have = useStock and owned(itemID) or 0, source = "Recipe material • vendor, gathering or auction house"}
+                source = "Recipe material • vendor, gathering or auction house"}
+            if useStock then row.have = owned(itemID) else row.have = 0 end
+            if row.have == nil then incomplete = true end
             local vendor = ns.professionVendorQuotes and ns.professionVendorQuotes[itemID]
             if vendor and vendor.npc then row.source = "Vendor: " .. vendor.npc end
             rows[itemID] = row
@@ -188,7 +190,7 @@ function ns.ProfessionMaterials(id, recipe, crafts, skill, useStock)
             if unit then total = total + missing * unit else complete = false end
         end
     end
-    local mats, incomplete
+    local mats
     local info, live = ns.professionData[id], liveRecipe(id, recipe)
     if info and info.live and live and live.learned then
         -- Query schematics only for the profession currently open in the client.
@@ -207,6 +209,45 @@ function ns.ProfessionMaterials(id, recipe, crafts, skill, useStock)
     local list = {}; for _, row in pairs(rows) do list[#list + 1] = row end
     table.sort(list, function(a, b) return a.itemID < b.itemID end)
     return list, complete and not incomplete and math.ceil(total) or nil, preparations, incomplete
+end
+
+-- Carry owned stock and planned outputs through the entire preview. A bolt or
+-- leather made earlier is available to later recipes, rather than bought twice.
+function ns.ProfessionMaterialForecast(id, plan, cooperative)
+    local ledger, merged, incomplete = {}, {}, plan.missing > 0
+    for _, step in ipairs(plan.steps) do
+        local crafts = math.ceil(step.crafts)
+        local list, _, _, unreadable = ns.ProfessionMaterials(id, step.recipe, crafts, step.start, true, ledger)
+        incomplete = incomplete or unreadable
+        for _, row in ipairs(list) do
+            local item = merged[row.itemID]
+            if not item then
+                item = {itemID = row.itemID, name = row.name, need = 0, missing = 0,
+                    have = row.have, source = row.source}; merged[row.itemID] = item
+            end
+            item.need, item.missing = item.need + row.need, item.missing + row.missing
+            if row.have == nil then incomplete = true; item.unreadable = true end
+        end
+        if step.recipe.outputID then
+            local output = step.recipe.outputID
+            if ledger[output] == nil then ledger[output] = owned(output) or false end
+            if ledger[output] == false then incomplete = true end
+            ledger[output] = (ledger[output] or 0) + crafts * (step.recipe.outputQuantity or 1)
+        end
+        if cooperative then coroutine.yield() end
+    end
+    local list, cost, priced = {}, 0, not incomplete
+    for _, row in pairs(merged) do
+        if row.unreadable then row.missing = nil end
+        row.planned = row.have and row.missing and math.max(0, row.need - row.have - row.missing) or nil
+        local unit = price(row.itemID)
+        if row.missing == nil or row.missing > 0 and not unit then priced = false
+        elseif row.missing > 0 then cost = cost + row.missing * unit end
+        list[#list + 1] = row
+    end
+    table.sort(list, function(a, b) return a.itemID < b.itemID end)
+    return {materials = list, estimatedCost = priced and math.ceil(cost) or nil,
+        incomplete = incomplete, start = plan.start, target = plan.target, missing = plan.missing}
 end
 
 local function candidates(id, skill, current)
@@ -274,12 +315,15 @@ function ns.ProfessionGoal(id, value)
     return (saved == 75 or saved == 150 or saved == 225 or saved == 300) and saved or 225
 end
 
-function ns.ProfessionTrainer(id, maximum)
+function ns.ProfessionTrainer(id, maximum, recipeID)
     local facts, profile = ns.ProfessionFacts(id), ns.profile or {}
     local best, bestScore
     local point = ns.PlayerPoint(profile.mapID or 0)
-    for _, trainer in ipairs(facts.trainers) do
-        if (trainer.faction == "Both" or trainer.faction == profile.faction) and trainer.maximum >= maximum then
+    local trainers = {}; for _, trainer in ipairs(facts.trainers) do trainers[#trainers + 1] = trainer end
+    for _, trainer in ipairs(ns.ObservedProfessionTrainers and ns.ObservedProfessionTrainers(id, maximum, recipeID) or {}) do trainers[#trainers + 1] = trainer end
+    for _, trainer in ipairs(trainers) do
+        if (trainer.faction == "Both" or trainer.faction == profile.faction)
+            and (trainer.maximum >= maximum or recipeID and trainer.recipes and trainer.recipes[recipeID]) then
             local distance = point and ns.TravelPointDistance(point, trainer)
             local value = distance or (trainer.mapID == profile.mapID and 10000 or 100000)
             if not distance and trainer.mapID ~= profile.mapID
@@ -317,17 +361,17 @@ end
 local function remainingCrafts(id, recipe, skill, finish)
     local live = liveRecipe(id, recipe)
     local gain = live and live.skillUps and math.max(1, live.skillUps) or 1
-    -- A successful craft need not grant a skill point. Keep batches small and
-    -- recalculate from the observed skill after each one, instead of promising
-    -- that a fixed number of yellow/green crafts reaches the milestone.
+    -- Estimate the work to the milestone from this recipe's current chance,
+    -- rather than a fixed 1/3/5-craft limit. Actual skill ends the step even when
+    -- it reaches the milestone before this estimate is exhausted.
     local chance = ns.ProfessionSkillChance(id, recipe, skill, true)
-    local limit = chance >= 1 and 5 or chance >= 0.5 and 3 or 1
-    return math.min(limit, math.ceil((finish - skill) / gain),
-        string.match(recipe.name, "^Runed .* Rod$") and 1 or 20)
+    return math.min(math.ceil((finish - skill) / (gain * math.max(0.05, chance))),
+        string.match(recipe.name, "^Runed .* Rod$") and 1 or 6000)
 end
 
 local function currentBatch(guide, info)
     local id, batch = guide.professionID, guide.professionBatch
+    local bestRecipe = ns.ProfessionNextRecipe(id, info.skill)
     local recipe = batch and index(id).byID[batch.recipeID]
     if batch and not recipe then
         -- A live-only beta recipe has no bundled thresholds. Resolve it from
@@ -336,13 +380,17 @@ local function currentBatch(guide, info)
             if candidate.id == batch.recipeID then recipe = candidate; break end
         end
     end
-    if batch and recipe and batch.remaining > 0 and info.skill >= batch.startSkill and info.skill < batch.finish
+    if batch and recipe and bestRecipe and bestRecipe.id == recipe.id and batch.remaining > 0
+        and info.skill >= batch.startSkill and info.skill < batch.finish
         and batch.goal == guide.targetSkill and batch.maximum == info.maximum
         and (not excluded[id] or excluded[id].skill ~= info.skill or not excluded[id][recipe.id])
         and ns.ProfessionSkillChance(id, recipe, info.skill, true) > 0 then
-        batch.remaining = math.min(batch.remaining, remainingCrafts(id, recipe, info.skill, batch.finish))
+        -- Failed skill-ups consume materials but do not reduce the skill gap.
+        -- Re-estimate from the actual current skill/color after each update.
+        batch.remaining = remainingCrafts(id, recipe, info.skill, batch.finish)
+        batch.total = math.max(batch.total, batch.remaining)
     else
-        recipe = ns.ProfessionNextRecipe(id, info.skill)
+        recipe = bestRecipe
         batch = nil
         if recipe then
             local finish = milestone(id, recipe, info.skill, math.min(guide.targetSkill, info.maximum))
@@ -406,7 +454,8 @@ function ns.BuildProfessionGuideRoute(guide)
         else
             local trainer = ns.ProfessionTrainer(id, rank.maximum)
             current = stop(id, "train", "Train " .. rank.name .. " " .. facts.name .. (trainer and (" with " .. trainer.name) or ""),
-                "Raise your skill cap to " .. rank.maximum .. ". Buy rank training manually.", trainer)
+                "Your current cap is " .. info.maximum .. ". " .. rank.name .. " raises it to " .. rank.maximum
+                    .. " so you can keep progressing toward skill " .. target .. ".", trainer)
         end
     else
         local recipe, batch = currentBatch(guide, info)
@@ -414,6 +463,9 @@ function ns.BuildProfessionGuideRoute(guide)
         else
             local live = liveRecipe(id, recipe)
             local crafts = batch.remaining
+            local gain = live and live.skillUps and math.max(1, live.skillUps) or 1
+            local chance = ns.ProfessionSkillChance(id, recipe, info.skill, true)
+            route.estimatedCraftsToMilestone = math.ceil((batch.finish - info.skill) / (math.max(0.05, chance) * gain))
             local list, cost, prep, incomplete = ns.ProfessionMaterials(id, recipe, crafts, info.skill, true)
             route.materials, route.recipe, route.crafts, route.preparations = list, recipe, crafts, prep
             route.skillTarget, route.batchTotal = batch.finish, batch.total
@@ -422,14 +474,22 @@ function ns.BuildProfessionGuideRoute(guide)
             if incomplete then
                 current = stop(id, "read", "Check the materials for " .. recipe.name .. " in your profession window", "Refresh when the recipe's material data is ready.")
             elseif not live or not live.learned then
-                local trainingRank
+                -- Learning a recipe below the current cap does not require the
+                -- next rank. Do not send a 146/150 player across the continent
+                -- merely because Expert training is already unlocked at 125.
+                local trainer = ns.ProfessionTrainer(id, info.maximum, nextRecipe.id)
+                local extra = ""
                 for _, rank in ipairs(facts.ranks) do
-                    if rank.maximum > info.maximum and rank.maximum <= 225 and info.skill >= rank.skill
-                        and ns.profile and ns.profile.level >= rank.level then trainingRank = rank; break end
+                    if trainer and rank.maximum > info.maximum and rank.maximum <= target and rank.maximum <= 225
+                        and trainer.maximum >= rank.maximum and info.skill >= rank.skill
+                        and ns.profile and ns.profile.level >= rank.level then
+                        extra = " Also train " .. rank.name .. " here to raise your cap to " .. rank.maximum
+                            .. " and avoid a later training visit."; break
+                    end
                 end
-                local trainer = ns.ProfessionTrainer(id, trainingRank and trainingRank.maximum or info.maximum)
                 current = stop(id, "train", "Learn " .. nextRecipe.name .. (trainer and (" from " .. trainer.name) or " at your trainer"),
-                    "Recipe requires skill " .. nextRecipe.learn .. ". " .. (trainingRank and ("Also train " .. trainingRank.name .. " while here.") or ("Then prepare materials for " .. recipe.name .. ".")), trainer)
+                    "Learn this recipe to work toward skill " .. batch.finish .. "." .. extra
+                        .. " Then prepare materials for " .. recipe.name .. ".", trainer)
             else
                 local missing, summary = false, {}
                 for _, row in ipairs(list) do
@@ -437,9 +497,9 @@ function ns.BuildProfessionGuideRoute(guide)
                 end
                 if missing then current = stop(id, "buy", "Gather or buy materials for " .. recipe.name,
                     table.concat(summary, ", ", 1, math.min(3, #summary)) .. (#summary > 3 and "…" or "") .. "\nMaterials opens your complete buy list.")
-                else current = stop(id, "craft", "Craft " .. amount .. " × " .. nextRecipe.name,
+                else current = stop(id, "craft", "Craft " .. (not prep[1] and "~" or "") .. amount .. " × " .. nextRecipe.name,
                     (prep[1] and ("Prepare materials for " .. recipe.name .. ".") or (workstations[id] or "Craft in your profession window."))
-                    .. " Skill-ups can vary.") end
+                    .. (prep[1] and " Skill-ups can vary." or (" Stop at skill " .. batch.finish .. "; skill-ups vary."))) end
             end
             current.description = "Skill " .. info.skill .. " → " .. batch.finish .. " • Goal " .. target .. ".\n" .. current.description
             current.recipeID = recipe.id
@@ -485,10 +545,20 @@ function ns.RefreshProfessionPlan(id)
     ns.QueueProfessionUpdate(true)
 end
 
+function ns.ProfessionPricesChanged()
+    local guide = ns.routeSelection
+    if guide and guide.mode == "profession" then
+        -- A fresh auction quote is an explicit opportunity to choose a cheaper
+        -- craft now. Actual skill/bags retain everything already made.
+        guide.professionBatch = nil
+    end
+    ns.QueueProfessionUpdate()
+end
+
 function ns.ProfessionGuideAction(kind)
     local guide = ns.routeSelection
     if not guide or guide.mode ~= "profession" then return end
-    if kind == "quest" then ns.ShowShoppingList(ns.selectedRoute.materials or {}, guide.title); return end
+    if kind == "quest" then ns.ShowProfessionShopping(guide.professionID, guide.targetSkill, "batch"); return end
     local info, recipe = ns.professionData[guide.professionID], ns.selectedRoute.recipe
     if info and recipe then
         local state = excluded[guide.professionID]
@@ -560,6 +630,8 @@ function ns.QueueProfessionUpdate(readRecipes)
         ns.professionReadQueued = nil
         if ns.routeSelection and ns.routeSelection.mode == "profession" then ns.UpdateProfessionRoute(ns.routeSelection); ns.UpdateNavigation() end
         if ns.professionViewer and ns.professionViewer:IsShown() then ns.RefreshProfessionViewer() end
+        if ns.RefreshProfessionShopping then ns.RefreshProfessionShopping() end
+        if ns.RefreshAuctionGuideSearch then ns.RefreshAuctionGuideSearch() end
         ns.RenderProfessionGuide()
     end
     if C_Timer and type(C_Timer.After) == "function" then C_Timer.After(0.25, update) else update() end

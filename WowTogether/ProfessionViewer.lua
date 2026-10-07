@@ -35,8 +35,7 @@ local function create()
     frame.start = ns.UIButton(frame, "Start crafting guide", 172, function() ns.StartProfessionGuide(frame.professionID, ns.ProfessionGoal(frame.professionID)) end)
     frame.start:SetPoint("BOTTOMLEFT", 22, 16); ns.UIButtonTone(frame.start, true)
     frame.materials = ns.UIButton(frame, "Materials", 110, function()
-        local route = frame.route
-        ns.ShowShoppingList(route and route.materials or {}, frame.title:GetText() .. " • next batch")
+        ns.ShowProfessionShopping(frame.professionID, ns.ProfessionGoal(frame.professionID), "batch")
     end)
     frame.materials:SetPoint("LEFT", frame.start, "RIGHT", 10, 0)
     frame.refresh = ns.UIButton(frame, "Refresh", 92, function() ns.RefreshProfessionPlan(frame.professionID) end)
@@ -46,7 +45,7 @@ local function create()
     resize:SetScript("OnMouseUp", function() frame:StopMovingOrSizing(); layout(frame) end)
     frame:SetScript("OnSizeChanged", layout); frame:SetScript("OnHide", cancelPreview)
     ns.UIHelp(frame.goal, "Plan towards this profession skill. Character level and available training control rank upgrades.")
-    ns.UIHelp(frame.materials, "Materials for your next crafting batch, after subtracting bag stock. Intermediate items can have their own preparation steps.")
+    ns.UIHelp(frame.materials, "View next-batch materials or an estimate up to your skill goal, after bag stock and planned intermediates.")
     layout(frame)
     return frame
 end

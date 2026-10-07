@@ -409,11 +409,23 @@ Quest log review only suggests reviewing low-value unfinished work; it never aba
 Personal crafting guides use profession skill, opened recipes and bag stock.
 Character level gates rank training; named NPCs, materials and the next craft
 reuse the small guide window. Select a skill goal; keep purchases/crafts manual.
-Skill milestones and remaining batches update after matching public craft casts;
-finished batch work stays deducted through bag updates, previews and reload.
-Actual skill controls progress even when crafts give no point. /wt probe reports
+Craft amounts estimate work to the skill milestone using the recipe's current
+skill-up chance and points per gain. Fresh skill/bag reads update them; failed
+gains do not reduce the skill gap. Actual milestones end steps, even before an
+estimate is exhausted. Profession/goal and milestone resume after reload. /wt probe reports
 craft-event registration and observations; verify delivery on the beta build.
 The guide chooses craft quantities. Personal professions settings are removed.
+Materials offers Next batch / To skill goal with shared stock and planned-output
+accounting. Goal amounts are approximate; buy for the next batch first. Search AH
+buttons and a small AH toolbar search one item per click. Public commodity/item/
+legacy results supply session prices; changed prices immediately reconsider even
+unfinished crafts from actual skill and bags. No background scan or purchases.
+Recipe training below the current cap no longer forces Expert travel. Actual
+positive opened-trainer offerings can override older rank listings for this
+character/build. Training steps explain their skill milestone or cap increase.
+Explicit level-0/zero-XP entries such as Applejack Still stay out of all leveling
+guides, with library facts retained. Full-preview lines show eligible quest order,
+not a terrain path. Retest native AH/trainer behavior on the current beta build.
 See PROFESSIONS.md for sources, estimates and beta limits. Prices come from
 merchant listings and AH searches YOU perform. No automatic buying or searching.
 Profession/flight/skip state is not sent to peers.

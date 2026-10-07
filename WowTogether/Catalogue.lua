@@ -19,6 +19,10 @@ end
 function ns.IsLevelingExcludedQuest(id)
     if ns.IsRetiredQuest(id) then return true end
     local quest = ns.CatalogueQuest(id)
+    -- Explicit zero-level/zero-XP catalogue entries include interactive props
+    -- and test quests. They are searchable facts, not leveling work. Missing
+    -- rewards and ordinary delivery quests must not be mistaken for these.
+    if quest and ns.Public(quest.level) and ns.Public(quest.xp) and quest.level == 0 and quest.xp == 0 then return true end
     local reason = quest and quest.levelingExcluded
     return ns.Public(reason) and (reason == true or type(reason) == "string" and reason ~= "") or false
 end

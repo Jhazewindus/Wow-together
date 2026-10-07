@@ -1,13 +1,13 @@
 # Wow Together — friend test script
 
-For **0.8.37** — **SKILL BY SKILL**, World of Warcraft: Forever beta,
+For **0.8.38** — **SMART SUPPLIES**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 69 Lua files** and
+1. Replace the complete WowTogether folder, including **all 72 Lua files** and
    the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    `/reload`; restart fully if a new addon folder does not appear.
@@ -19,29 +19,61 @@ The expanded-guide checks below take about **15–25 minutes**.
 
 ## Personal crafting guides — about 10–15 minutes
 
+- Materials: switch Next batch / To skill goal. Check approximate amounts and
+  bag deductions. Leather crafted earlier in the path must be reused for kits;
+  stock must not be subtracted twice. Refresh after bag changes. Close/switch
+  while loading; stale results must not replace the current list. Missing data
+  should display a partial estimate, never a guaranteed complete buy list.
+- Open the AH with a crafting guide. Check the small material toolbar beneath
+  it and per-item Search AH buttons. A click should populate native search
+  results for that item. Closed AH, combat, uncached names and throttling must
+  produce a short status without automatic retries or Lua errors. Search several
+  ingredients; new prices should immediately change even an unfinished batch
+  when another eligible recipe is more efficient. Purchases remain manual.
+  Test your beta AH implementation; include new AH probe lines on failure.
+- Leatherworking at 146/150 with goal 225: a craft giving no point must keep
+  working toward 150. Learning Hillman's Shoulders must not force a distant
+  Expert upgrade if a local trainer can teach it. At the cap, rank training must
+  explain why it raises the cap toward the goal. Open Karolek's trainer window:
+  if Expert is actually offered, remember that positive offering and use it
+  instead of the older Thunder Bluff listing. Recheck after reload. Missing or
+  private services must not invent trainer ranks; include trainer probe lines.
+- Hillman's Leather Gloves at 150 toward 155: with one point per skill-up, an
+  orange recipe needs five crafts; a yellow estimate may show about eight.
+  At 153/154 the estimate must shrink and at 155 the step must advance. Failed
+  skill-ups must not reduce the remaining skill gap. Recipe colors/chances and
+  reported points per craft affect the estimate; verify actual beta behavior.
+- Human level 2 in Elwynn: fixed guides and full preview must omit Applejack
+  Still's level-0/zero-XP detour. Brotherhood of Thieves and Rest and Relaxation
+  remain eligible according to their real requirements. Full preview includes
+  later work; Focus next steps narrows the map. Lines show visit order, not a
+  measured walking route. Accept/turn-in/scan must preserve the compiled order.
+
 - Leatherworking: start with scraps, prepare five Light Leather, then craft
   Light Armor Kits. Check actual skill in the crafting window. At skill 11,
   guidance must continue from 11 and show its next milestone, rather than assume
   a different skill. Further crafts can be needed while that recipe is useful.
-- Craft part of a batch: its count and Materials must shrink. A partly consumed
+- Gain part of the milestone: its count and Materials must shrink. A partly consumed
   stock of Light Leather must cover the remaining kits without requesting the
   leather already used for completed kits. Repeat with another profession's
   intermediate. Skill gained by preparation also counts toward the milestone.
-- A successful yellow/green craft giving no skill point reduces the unfinished
-  batch, but must not falsely reach its skill target. At the end of that batch,
-  another small batch may be needed. Grey recipes must trigger reassessment.
-- Open/refresh a preview and reload midway: preserve remaining crafts. Try
-  unrelated spell casts: they must not count as crafting. If counts do not shrink,
+- A successful yellow/green craft giving no skill point must keep the remaining
+  skill gap unchanged and reread materials already consumed. More materials may
+  be needed. Grey recipes must trigger reassessment.
+- Open/refresh a preview and reload midway: resume from actual skill and stock.
+  Unchanged skill/stock must not restart the milestone. Try unrelated spell
+  casts: they must not count as crafting. If counts do not match current skill,
   include `/wt probe` and its Craft batch tracking line, recipe, actual skill and
   materials. Public spell-success event registration/delivery needs beta testing;
-  without matching events, skill and owned stock still limit suggestions but
-  no-skill-up crafts cannot be counted reliably. Test all six crafting professions.
+  without matching events, skill and bag events must still update guidance.
+  Test all six crafting professions.
 - Check fully visible profession logos and unchanged card scenery. Resize and
   switch tabs: no text overlap or lingering profession icon on other cards.
 - Main navigation should show Leveling, Professions, Dungeons, Quest log and
   All quests in that order. Personal professions/batch-size settings are removed;
-  quantities come from the guide. Small batches should reduce near milestones
-  and for less reliable skill-ups. Old saved batch-size settings must not affect
+  quantities come from the recipe and remaining skill gap. Estimates should
+  shrink near milestones and increase for less reliable skill-ups at the same
+  gap. Old saved batch-size settings must not affect
   the new guide. Optional party tracker, sync and catch-up controls still work.
 
 - Open Profession guides. Expect six compact cards, with your learned primary

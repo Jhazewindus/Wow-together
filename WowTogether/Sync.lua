@@ -668,6 +668,11 @@ function ns.SyncDiagnostics(output)
     output("Profession guides: " .. ns.professionStatus .. " Personal recipe/material data is not sent to peers.")
     output("Craft batch tracking: spell-success event " .. (ns.professionCraftEventReady and "registered" or "unavailable")
         .. "; matching public craft casts observed: " .. ns.professionCraftsObserved .. ". Retest event delivery on this beta build.")
+    local quotes, trainers = 0, 0
+    for _ in pairs(ns.marketQuotes or {}) do quotes = quotes + 1 end
+    for _ in pairs(ns.professionSaved and ns.professionSaved.trainers or {}) do trainers = trainers + 1 end
+    output("Crafting market: " .. quotes .. " session quotes; " .. trainers .. " saved trainer observations. Searches require a click; new prices reassess the active batch.")
+    if ns.auctionGuideStatus then output("Auction search: " .. safe(ns.auctionGuideStatus)) end
     output("Map route: " .. ns.routeStats.status)
     local selection, route = ns.routeSelection, ns.selectedRoute
     if selection then

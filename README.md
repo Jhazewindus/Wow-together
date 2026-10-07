@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.37 — SKILL BY SKILL** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.38 — SMART SUPPLIES** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -18,10 +18,28 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **69 Lua
+Replace the folder on **every party member's client**, including all **72 Lua
 files** and the **Media folder**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.38 adds material forecasts and AH shortcuts.** Materials offers Next batch
+and To skill goal. The estimate subtracts bag stock once and reuses planned
+intermediates; yellow/green skill gains can change quantities. Search AH buttons
+and a small auction-house toolbar search one selected material per click. Public
+commodity, item-auction and supported legacy results can supply session prices.
+New prices immediately reconsider even an unfinished batch, using actual skill
+and remaining stock. No buying, background price scan or crafting is automated.
+Craft counts estimate the remaining skill milestone from the recipe's skill-up
+chance and points per gain. Failed gains leave the gap unchanged; actual skill
+ends the step. The former fixed 1/3/5-craft limits are removed.
+Recipe training below the current cap no longer forces an Expert-rank detour.
+Opened trainer offers can override stale rank listings on the same character and
+build; training steps explain the recipe milestone or why the cap must rise.
+Explicit level-0/zero-XP entries such as Applejack Still stay out of leveling
+guides across all zones while remaining in All quests. Full-route map lines show
+quest order, including later eligible work; they are not terrain paths.
+Native AH/trainer behavior still needs beta testing. See [PROFESSIONS.md](PROFESSIONS.md).
 
 **0.8.37 tracks remaining crafting work.** All six crafting guides show actual
 skill and the next milestone. Partial batches count down after matching public
@@ -973,8 +991,8 @@ guide until you choose its collection plan. An unmapped collection opens the ful
 quest list for review. Next-zone prompts still respect a selected quest-log trip.
 
 **Profession guides** uses recipes from your own opened crafting window,
-small configurable batches and required materials. Public auction prices come
-only from searches you make; there is no automatic AH search, buying or crafting.
+skill-based batches and material estimates. Public auction prices come
+only from searches you make; there is no background AH search, buying or crafting.
 Known vendor-listed quest items have a buy list with your own bag counts.
 Profession, flight-network and skip data are personal and are not sent to peers.
 

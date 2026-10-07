@@ -118,7 +118,7 @@ local function restore(saved, reusePlan, depth)
             mode = "profession", professionID = saved.professionID, targetSkill = saved.targetSkill, personal = true, records = {}, focusKey = ns.self}
         local batch = saved.professionBatch
         if type(batch) == "table" and ns.GuideInteger(batch.recipeID) and batch.recipeID > 0
-            and ns.GuideInteger(batch.remaining, 20) and ns.GuideInteger(batch.total, 20) and batch.total > 0
+            and ns.GuideInteger(batch.remaining, 6000) and ns.GuideInteger(batch.total, 6000) and batch.total > 0
             and batch.remaining <= batch.total and ns.GuideInteger(batch.startSkill, 1000)
             and ns.GuideInteger(batch.finish, 1000) and batch.finish > batch.startSkill
             and batch.finish <= saved.targetSkill and batch.goal == saved.targetSkill

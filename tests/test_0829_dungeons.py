@@ -71,19 +71,23 @@ class DungeonActionTests(unittest.TestCase):
     def test_list_start_button_closes_list_and_starts_route_directly(self):
         c = solo(); map_canvas(c); group = dungeon(c)
         c.ns.ShowDungeonQuestList(group)
-        self.assertEqual(c.ns.dungeonWindow.collect.caption.text, 'Start route')
+        self.assertEqual(c.ns.dungeonWindow.collect.caption.text, 'Start quest route')
         c.ns.dungeonWindow.collect.OnClick(c.ns.dungeonWindow.collect)
         c.drain()
         self.assertEqual(c.ns.routeSelection.key, 'dungeon:test-cavern')
         self.assertFalse(c.ns.dungeonWindow.IsShown(c.ns.dungeonWindow))
 
-    def test_dashboard_start_button_uses_direct_start_for_unmapped_routes(self):
+    def test_dashboard_dungeon_card_opens_journal_with_direct_quest_route(self):
         c = solo()
         catalogue(c, {900: quest('Unmapped', starts=[], ends=[], objectives=[], categoryPath='dungeons/test-cavern')})
+        c.ns.dungeonData=c.lua.table_from({'dungeons':{'test-cavern':{'name':'Test Cavern','aliases':[],
+            'areaIDs':[],'questIDs':[900],'entrances':[],'runLevelLow':12,'runLevelHigh':18}}},recursive=True)
         c.ns.SetFilter('dungeons')
         card = c.ns.ui.cards[1]
-        self.assertEqual(card.mapButton.caption.text, 'Start route')
-        card.mapButton.OnClick(card.mapButton)
+        self.assertFalse(card.mapButton.IsShown(card.mapButton))
+        card.OnClick(card)
+        self.assertEqual(c.ns.dungeonViewer.startRoute.caption.text,'Start quest route')
+        c.ns.dungeonViewer.startRoute.OnClick()
         self.assertEqual(c.ns.routeSelection.key, 'dungeon:test-cavern')
         self.assertIsNone(c.ns.dungeonWindow)
 
