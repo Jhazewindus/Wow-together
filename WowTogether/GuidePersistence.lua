@@ -4,7 +4,7 @@ local addonName, ns = ...
 local guideFields = {"key", "title", "zone", "mode", "mapID", "homeMapID", "fullGuide", "fixedRoute", "personal",
     "rangeLow", "rangeHigh", "reason", "kind", "destination", "catchup", "guideKey", "xpStartLevel", "xpStart",
     "xpFinishLevel", "xpReward", "xpUnknown", "xpBaseline", "xpUnavailable", "xpAssumedStart", "classQuestScope", "earlyStartLevel", "dungeonKey", "pickupQuestID", "dungeonPhase",
-    "zoneGuideKey", "sectionLow", "sectionHigh", "minLevel", "maxLevel", "mainLevelLow", "mainLevelHigh"}
+    "zoneGuideKey", "sectionLow", "sectionHigh", "minLevel", "maxLevel", "mainLevelLow", "mainLevelHigh", "professionID", "targetSkill"}
 local recordFields = {"id", "title", "level", "mapID", "x", "y", "npc", "source", "lineID", "lineName", "seriesRoot", "seriesName"}
 local stepFields = {"id", "kind", "mapID", "x", "y", "title", "label", "entityID", "action", "itemName", "targetName",
     "npcName", "published", "planned", "unknownLocation", "guideStep", "planNeedsReview", "learnedSource", "alternativeCount",
@@ -43,7 +43,7 @@ end
 local function descriptor(guide, depth)
     local result = fields(guide, guideFields)
     if not result.key then return end
-    if guide.mode == "travel" then return result end
+    if guide.mode == "travel" or guide.mode == "profession" then return result end
     result.records, result.pickupIDs, result.batchIDs, result.catchupTargets, result.catchupRequired, result.npcVisitPickupIDs = {}, {}, {}, {}, {}, {}
     local ids = {}
     for index, record in ipairs(guide.records or {}) do
@@ -101,6 +101,12 @@ function ns.ClearSavedGuide()
 end
 
 local function restore(saved, reusePlan, depth)
+    if type(saved) == "table" and saved.mode == "profession" then
+        if not ns.GuideInteger(saved.professionID) or not ns.ProfessionFacts(saved.professionID)
+            or not (saved.targetSkill == 75 or saved.targetSkill == 150 or saved.targetSkill == 225 or saved.targetSkill == 300) then return end
+        return {key = "profession:" .. saved.professionID, title = ns.ProfessionFacts(saved.professionID).name .. " crafting guide",
+            mode = "profession", professionID = saved.professionID, targetSkill = saved.targetSkill, personal = true, records = {}, focusKey = ns.self}
+    end
     if type(saved) == "table" and saved.mode == "travel" then return ns.RestoreTravelGuide(saved.key) end
     if type(saved) ~= "table" or type(saved.records) ~= "table" or #saved.records == 0 or #saved.records > 512 then return end
     local guide, ids = fields(saved, guideFields), {}
@@ -187,6 +193,9 @@ function ns.RestoreSavedGuide()
     end
     ns.guideResumeStatus = "Resuming " .. guide.title .. " using current quest progress."
     ns.resumingGuide = guide
+    if guide.mode == "profession" then
+        ns.ReadProfessionSkills(); ns.ActivateRoute(guide); ns.resumingGuide = nil; ns.UpdateNavigation(); return
+    end
     ns.RouteHistoryScope(guide.records)
     ns.ScheduleSync()
     if guide.fullGuide then ns.PlanLevelingGuide(guide, false)

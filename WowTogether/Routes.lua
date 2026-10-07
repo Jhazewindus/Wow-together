@@ -364,6 +364,7 @@ local function origin(mapID)
 end
 
 local function buildGuideRoute(guide, includeOrigin, cooperative)
+    if guide.mode == "profession" then return ns.BuildProfessionGuideRoute(guide) end
     if guide.mode == "travel" then return ns.BuildTravelGuideRoute(guide) end
     if guide.fixedRoute then return ns.BuildFixedGuideRoute(guide, includeOrigin, cooperative) end
     if guide.fullGuide and (guide.mode == "zone" or guide.mode == "chain") then return ns.BuildLevelingRoute(guide, includeOrigin, cooperative) end
@@ -884,6 +885,7 @@ function ns.UpdateSelectedRoute(choices, query)
     if ns.guideScanning or ns.routePlanning then return end
     local selection = ns.routeSelection
     if not selection then return end
+    if selection.mode == "profession" then ns.UpdateProfessionRoute(selection); return end
     if selection.mode == "travel" then ns.UpdateTravelGuide(selection); return end
     if selection.fixedRoute then ns.UpdateFixedGuideRoute(selection, query); return end
     if selection.mode == "current" and not selection.sharedBy and ns.Option("nearbyPickups") then

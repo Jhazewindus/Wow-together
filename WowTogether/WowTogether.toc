@@ -2,11 +2,12 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.35
-## X-ReleaseName: DUNGEON BROWSER
+## Version: 0.8.36
+## X-ReleaseName: CRAFTING COMPANION
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua
+ProfessionData.lua
 QuestCatalogue.lua
 EliteSpawnData.lua
 ZoneConnections.lua
@@ -68,6 +69,8 @@ Activities.lua
 DungeonCollection.lua
 DungeonQuestList.lua
 Professions.lua
+ProfessionPlanner.lua
+ProfessionViewer.lua
 DungeonJournal.lua
 DungeonMapQuests.lua
 DungeonViewer.lua

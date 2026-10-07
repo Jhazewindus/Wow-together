@@ -406,8 +406,11 @@ quests, with identity/category filters. Unknown requirements prevent a full-leve
 claim. These personal routes work without party snapshots; an unmapped collection
 remains selected with its missing offers/locations pending. A popup does not silently replace the selected guide.
 Quest log review only suggests reviewing low-value unfinished work; it never abandons.
-Personal professions use your opened recipes/materials, configurable small batches,
-and AH searches YOU perform. No automatic buying, searching or crafting.
+Personal crafting guides use profession skill, opened recipes and bag stock.
+Character level gates rank training; named NPCs, materials and the next craft
+reuse the small guide window. Select a skill goal; keep purchases/crafts manual.
+See PROFESSIONS.md for sources, estimates and beta limits. Prices come from
+merchant listings and AH searches YOU perform. No automatic buying or searching.
 Profession/flight/skip state is not sent to peers.
 
 The partial snapshot has {coverage['count']:,} quest records and
@@ -445,7 +448,7 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
 '''
     args.output.mkdir(parents=True, exist_ok=True)
     destination = args.output / f'WowTogether-{version}.zip'
-    files = ['WowTogether.toc', *names, 'QuestCatalogue.json', 'QuestCoverage.json', 'GuideAudit.json', 'GuideSourceQueue.json', 'TravelData.json', 'GuideServiceData.json', 'DungeonData.json', 'DungeonJournalData.json', 'DungeonMapData.json', 'EliteSpawnData.json']
+    files = ['WowTogether.toc', *names, 'QuestCatalogue.json', 'QuestCoverage.json', 'GuideAudit.json', 'GuideSourceQueue.json', 'TravelData.json', 'GuideServiceData.json', 'DungeonData.json', 'DungeonJournalData.json', 'DungeonMapData.json', 'EliteSpawnData.json', 'ProfessionData.json']
     with zipfile.ZipFile(destination, 'w', zipfile.ZIP_DEFLATED) as archive:
         for name in files:
             archive.write(addon / name, 'WowTogether/' + name)
@@ -453,7 +456,7 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
             archive.write(media / name, 'WowTogether/Media/GuideThemes/' + name)
         for name in ('README.md', 'TESTING.md', 'CHANGELOG.md'):
             archive.write(ROOT / name, 'WowTogether/' + name)
-        for name in ('PERFORMANCE.md', 'TRAVEL_DATA.md', 'DUNGEONS.md', 'DUNGEON_ARTWORK.md', 'DUNGEON_VIEWER.md', 'THIRD_PARTY_NOTICES.md', 'QUEST_DATA.md',
+        for name in ('PERFORMANCE.md', 'PROFESSIONS.md', 'TRAVEL_DATA.md', 'DUNGEONS.md', 'DUNGEON_ARTWORK.md', 'DUNGEON_VIEWER.md', 'THIRD_PARTY_NOTICES.md', 'QUEST_DATA.md',
                      'LEGACY_DATA_LICENSE.txt', 'LEGACY_DATA_COPYRIGHT.md'):
             if (ROOT / name).exists():
                 archive.write(ROOT / name, 'WowTogether/' + name)
@@ -461,7 +464,7 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
         for name in ('build_quest_dataset.py', 'build_elite_spawns.py', 'pack_data.py', 'quest_enrichment.py', 'legacy_quest_facts.py', 'collect_quest_entities.py',
                      'forever_map_geometry.py', 'quest_event_areas.py', 'lua_data_literal.py', 'forever_beta_facts.py',
                      'quest_observation_facts.py', 'capture_quest_pages.py', 'audit_quest_guides.py',
-                     'import_warcraftdb.py', 'import_wowhead.py', 'import_travel_network.py', 'import_guide_services.py', 'import_dungeons.py', 'import_dungeon_journal.py', 'import_dungeon_positions.py',
+                     'import_professions.py', 'import_warcraftdb.py', 'import_wowhead.py', 'import_travel_network.py', 'import_guide_services.py', 'import_dungeons.py', 'import_dungeon_journal.py', 'import_dungeon_positions.py',
                      'audit_dungeon_loot.py', 'capture_dungeon_loot.py', 'import_vanilla_loot.py', 'dungeon_encounters.json',
                      'guide_source_queue.py', 'forever_source_manifest.json', 'quest_corrections.json', 'quest_exclusions.json'):
             archive.write(ROOT / 'tools' / name, 'WowTogether/data-tools/' + name)

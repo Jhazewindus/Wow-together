@@ -1,5 +1,28 @@
 # Wow Together changelog
 
+## 0.8.36
+
+**CRAFTING COMPANION**
+
+- Add compact cards for six primary crafting professions; learned professions
+  appear first. Preview a skill path and choose a 75/150/225/300 skill goal.
+- Suggest the next craft from profession skill, known recipes, skill-up colors
+  and bag stock. Character level gates rank training. Show a named friendly
+  trainer, next-batch materials and preparation crafts for intermediates.
+- Use our own balanced material/time scoring and yielding future-path preview,
+  informed by 2,009 attributed recipe facts and 150 trainer locations. Live
+  public recipes/materials override reference facts. Unknown prices remain
+  unknown; manual AH results and ordinary merchant listings inform costs.
+- Start personal crafting guidance in the existing small guide window, with
+  Next recipe, Materials and Refresh. Preserve Stop/Exit and reload checkpoints.
+  Keep quest skips, party routes and automatic crafting/purchases separate.
+- Keep details packed until used; batch profession/bag events and cancel stale
+  previews. Preserve existing combat and leveling event handlers.
+- Include all 69 Lua files and Media. Skill-up chances/future craft counts are
+  estimates; a 300 preview does not confirm beta training availability.
+  Host checks cover planning, state, privacy, UI and progression; native APIs
+  and six profession windows still need beta testing.
+
 ## 0.8.35
 
 **DUNGEON BROWSER**

@@ -1,13 +1,13 @@
 # Wow Together — friend test script
 
-For **0.8.35** — **DUNGEON BROWSER**, World of Warcraft: Forever beta,
+For **0.8.36** — **CRAFTING COMPANION**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 66 Lua files** and
+1. Replace the complete WowTogether folder, including **all 69 Lua files** and
    the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    `/reload`; restart fully if a new addon folder does not appear.
@@ -16,6 +16,40 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Personal crafting guides — about 10–15 minutes
+
+- Open Profession guides. Expect six compact cards, with your learned primary
+  professions first and their skill/cap shown. Resize and switch back to
+  leveling/dungeons: preserve their layouts and reset card artwork/buttons.
+- Open one learned profession's crafting window, then choose its card. Confirm
+  skill/cap and next recipe match your skill, not your character level. Preview
+  all four goals; loading must finish without freezes. Closing/switching while
+  loading must not restore an old preview. Check each of the six professions.
+- Start crafting guide. Expect the existing small guide window; no party invite
+  or quest popup. Materials shows the next batch minus bag stock. Buy/gather
+  materials and craft manually. Skill/bag events should update the step; grey
+  recipes must stop being recommended. Newly learned beta recipes should appear
+  when public material data exists.
+- Check an intermediate such as a cloth bolt or powder. Own some finished
+  intermediates and raw materials: subtract each once; show preparation crafts
+  for the remaining intermediate amount. Check tools/rods in the actual recipe.
+- At a rank cap, check named trainer and faction. Below its character-level
+  requirement, wait for the required level. When training becomes available,
+  training should update skill/cap and resume the next batch. NPC coordinates,
+  native profession API fields and beta rank availability need confirmation.
+- Open an ordinary material merchant and manually search the AH. Prices can
+  inform choices; missing prices must stay unknown. Extended-currency listings
+  must not be treated as ordinary gold purchases. No searches/buys/crafts may
+  occur on their own. Buy list quantities must match the current batch.
+- Next recipe tries another craft without changing your actual skill or quest
+  skips. Refresh while the profession window is open; verify current public
+  recipes. Reload: resume profession and goal. Stop/Exit: bag/skill events must
+  leave it stopped. Test entering/leaving combat without breaking quest/map
+  refreshes or displaying an old preview over a new one.
+- Report skill/cap, character level, profession, recommended recipe, known
+  recipe/color, materials owned, goal and `/wt probe` for mismatches. Future
+  paths/counts are estimates. A goal-300 preview is not confirmed beta content.
 
 ## Compact dungeon browser — about 5–10 minutes
 

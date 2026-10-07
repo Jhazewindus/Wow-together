@@ -49,6 +49,7 @@ local function updateTooltip(frame, opening)
 end
 
 function ns.RouteContext(stop, mapID, facts)
+    if stop.professionStep then return stop.description end
     if stop.unsafeTransit then return "No mapped bypass is known. Follow roads around the town." end
     if ns.IsClassTrainingStep(stop) then
         local training = stop.kind == "trainer" and stop or stop.goal
@@ -134,7 +135,8 @@ function ns.NavigationState()
     end
     if ns.routeSelection and ns.routeSelection.mode == "travel" then ns.UpdateTravelGuide(ns.routeSelection, true) end
     local route = ns.routeSelection and ns.selectedRoute
-    local confirmation = ns.CurrentQuestConfirmation()
+    local profession = ns.routeSelection and ns.routeSelection.mode == "profession"
+    local confirmation = not profession and ns.CurrentQuestConfirmation()
     local stop = ns.navigationPreview and ns.navigationPreview.stop or confirmation and not confirmation.unknownLocation and confirmation
         or route and route.stops and route.stops[1]
     if not stop and ns.routeSelection then
@@ -145,7 +147,7 @@ function ns.NavigationState()
             learnedSource = pending and pending.learnedSource,
             x = 0, y = 0, label = ns.routePaused or "Waiting for the next available guide step."}
     end
-    if not ns.navigationPreview and not confirmation then stop = ns.ClassTrainingDestination(stop) end
+    if not profession and not ns.navigationPreview and not confirmation then stop = ns.ClassTrainingDestination(stop) end
     stop = ns.CorpseDestination() or ns.TravelDestination(stop)
     local flight = ns.FlightState()
     if flight then
@@ -154,6 +156,7 @@ function ns.NavigationState()
     end
     if not stop then return {status = "No route selected"} end
     local state = {visible = true, stop = stop}
+    if stop.professionStep and stop.unknownLocation then state.status = stop.label; return state end
     if stop.unsafeTransit then state.status = stop.label; return state end
     if stop.kind == "notice" then state.status = stop.label; return state end
     if stop.transportWaiting then state.status = stop.label; return state end
@@ -281,6 +284,28 @@ function ns.UpdateNavigation()
     local quests = not (ns.routeSelection and ns.routeSelection.mode == "travel")
     frame.skipStep:SetEnabled(editable and quests); frame.skipQuest:SetEnabled(editable and quests); frame.scan:SetEnabled(not state.idle and not state.flight and state.stop.kind ~= "loading")
     frame.back:SetEnabled(not state.idle and state.stop.kind ~= "loading"); frame.next:SetEnabled(not state.idle and state.stop.kind ~= "loading")
+    if ns.routeSelection and ns.routeSelection.mode == "profession" then
+        local route = ns.selectedRoute
+        frame.step:SetText("Personal crafting guide")
+        frame.skipStep.caption:SetText("Next recipe"); frame.skipQuest.caption:SetText("Materials"); frame.scan.caption:SetText("Refresh")
+        frame.skipStep:SetEnabled(editable and route and route.recipe ~= nil)
+        frame.skipQuest:SetEnabled(route and route.materials and #route.materials > 0)
+        frame.back:SetEnabled(false); frame.next:SetEnabled(false)
+        if not frame.professionControls then
+            ns.UIHelp(frame.skipStep, "Try another suitable recipe at your current skill. This does not change your skill or quest skips.")
+            ns.UIHelp(frame.skipQuest, "Open the materials and buy list for this crafting batch.")
+            ns.UIHelp(frame.scan, "Refresh your current profession skill, recipes and materials.")
+            frame.professionControls = true
+        end
+    else
+        frame.scan.caption:SetText("Scan guide")
+        if frame.professionControls then
+            ns.UIHelp(frame.skipStep, "Skip this guide step. Training stops postpone their personal reminder.")
+            ns.UIHelp(frame.skipQuest, "Skip this quest. During training, Done training resumes quests.")
+            ns.UIHelp(frame.scan, "Check current quest progress while keeping the guide order.")
+            frame.professionControls = nil
+        end
+    end
     frame.stop:SetEnabled(not state.idle)
     if state.idle then frame.symbol:Hide(); frame.context:SetText("") end
     if not separate then

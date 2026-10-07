@@ -104,6 +104,7 @@ ns.On("COMMODITY_SEARCH_RESULTS_UPDATED", function(id)
     if type(result) == "table" and ns.GuideInteger(result.unitPrice) and result.unitPrice > 0 and ns.GuideInteger(result.quantity) and result.quantity > 0 then
         ns.marketQuotes[id] = {unitPrice = result.unitPrice, quantity = result.quantity}
         ns.RefreshShoppingList()
+        if ns.QueueProfessionUpdate then ns.QueueProfessionUpdate() end
         if ns.RenderProfessionGuide then ns.RenderProfessionGuide() end
     end
 end)

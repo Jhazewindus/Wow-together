@@ -13,6 +13,7 @@ local function difficultyName(value)
     end
     return "Difficulty unknown"
 end
+ns.ProfessionDifficultyName = difficultyName
 
 function ns.ReadProfessionRecipes()
     if ns.RouteInCombat() then return end
@@ -23,16 +24,27 @@ function ns.ReadProfessionRecipes()
     if type(info) ~= "table" or not ns.GuideInteger(info.professionID) or info.professionID <= 0 then
         info = ns.ReadPublic(C_TradeSkillUI.GetBaseProfessionInfo)
     end
+    if type(info) == "table" and ns.GuideInteger(info.professionID) and ns.ProfessionFacts and not ns.ProfessionFacts(info.professionID) then
+        local base = ns.ReadPublic(C_TradeSkillUI.GetBaseProfessionInfo)
+        if type(base) == "table" and ns.GuideInteger(base.professionID) and ns.ProfessionFacts(base.professionID) then info = base end
+    end
     if type(info) ~= "table" or not ns.GuideInteger(info.professionID) or info.professionID <= 0 then return end
     local name = ns.SafeTitle(info.professionName)
     if not name then return end
     local list = ns.ReadPublic(C_TradeSkillUI.GetAllRecipeIDs)
     if type(list) ~= "table" then return end
-    local recipes, count = {}, 0
+    local recipes, known, count = {}, {}, 0
     for _, id in ipairs(list) do
-        count = count + 1; if count > 400 then break end
+        count = count + 1; if count > 2048 then break end
         if ns.GuideInteger(id) and id > 0 then
             local recipe = ns.ReadPublic(C_TradeSkillUI.GetRecipeInfo, id)
+            if type(recipe) == "table" and ns.Public(recipe.learned) and type(recipe.learned) == "boolean"
+                and ns.SafeTitle(recipe.name) then
+                known[id] = {id = id, name = ns.SafeTitle(recipe.name), learned = recipe.learned,
+                    canSkillUp = ns.Public(recipe.canSkillUp) and type(recipe.canSkillUp) == "boolean" and recipe.canSkillUp,
+                    difficulty = ns.GuideInteger(recipe.relativeDifficulty) and recipe.relativeDifficulty or nil,
+                    skillUps = ns.GuideInteger(recipe.numSkillUps) and recipe.numSkillUps or nil}
+            end
             if type(recipe) == "table" and ns.Public(recipe.learned) and recipe.learned == true
                 and ns.Public(recipe.canSkillUp) and recipe.canSkillUp == true and ns.SafeTitle(recipe.name) then
                 recipes[#recipes + 1] = {id = id, name = ns.SafeTitle(recipe.name),
@@ -41,10 +53,14 @@ function ns.ReadProfessionRecipes()
             end
         end
     end
-    ns.professionData[info.professionID] = {id = info.professionID, name = name, recipes = recipes,
-        skill = ns.GuideInteger(info.skillLevel) and info.skillLevel or nil,
-        maximum = ns.GuideInteger(info.maxSkillLevel) and info.maxSkillLevel or nil}
+    local previous = ns.professionData[info.professionID]
+    local skill = ns.GuideInteger(info.skillLevel) and info.skillLevel or previous and previous.skill
+    ns.professionData[info.professionID] = {id = info.professionID, name = name, recipes = recipes, known = known, live = true, recipeSkill = skill,
+        skill = skill,
+        maximum = ns.GuideInteger(info.maxSkillLevel) and info.maxSkillLevel or previous and previous.maximum}
     ns.professionStatus = #recipes > 0 and "Live recipes loaded. Choose a small batch; refresh after crafting." or "No learned recipes with confirmed skill gains. Check your profession trainer."
+    ns.professionRevision = (ns.professionRevision or 0) + 1
+    if ns.SaveProfessionState then ns.SaveProfessionState(info.professionID) end
 end
 
 function ns.RecipeMaterials(id, crafts)
@@ -185,10 +201,13 @@ end
 function ns.RenderProfessionGuide() if ns.filter == "professions" then ns.Refresh() end end
 
 function ns.InitializeProfessionGuides()
-    ns.On("TRADE_SKILL_SHOW", function() ns.ReadProfessionRecipes(); ns.RenderProfessionGuide() end)
-    ns.On("TRADE_SKILL_LIST_UPDATE", function() ns.ReadProfessionRecipes(); ns.RenderProfessionGuide() end)
+    if ns.InitializeProfessionState then ns.InitializeProfessionState() end
+    ns.On("TRADE_SKILL_SHOW", function() ns.professionWindowOpen = true; ns.QueueProfessionUpdate(true) end)
+    ns.On("TRADE_SKILL_LIST_UPDATE", function() ns.QueueProfessionUpdate(true) end)
+    ns.On("TRADE_SKILL_CLOSE", function() ns.professionWindowOpen = nil end)
+    ns.On("SKILL_LINES_CHANGED", function() ns.QueueProfessionUpdate(true) end)
     ns.On("BAG_UPDATE_DELAYED", function()
-        ns.RefreshShoppingList(); ns.RenderProfessionGuide()
+        ns.RefreshShoppingList(); ns.QueueProfessionUpdate()
         -- Collection tools/items can change without a quest-log objective
         -- update (for example, the carcass used to summon Ishamuhale).
         ns.ScheduleGuideProgress()
@@ -196,6 +215,7 @@ function ns.InitializeProfessionGuides()
     ns.On("ITEM_DATA_LOAD_RESULT", function(id, success)
         ns.UpdateGuideQuestItem(); ns.UpdateNavigation()
         if ns.GuideInteger(id) and ns.pendingItems[id] and ns.Public(success) and success == true then
+            if ns.InvalidateProfessionItemName then ns.InvalidateProfessionItemName(id) end
             ns.pendingItems[id] = nil; ns.RefreshShoppingList(); ns.RenderProfessionGuide()
         end
     end)

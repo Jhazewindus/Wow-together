@@ -362,7 +362,7 @@ function ns.LayoutBrowserCards()
     local tileWidth = (width - (columns - 1) * gap) / columns
     for index = 1, ns.ui.visibleCards or 0 do
         local card = ns.ui.cards[index]
-        local dungeon = card.activity and card.activity.dungeon
+        local dungeon = card.activity and (card.activity.dungeon or card.activity.profession)
         card:ClearAllPoints()
         card.title:ClearAllPoints(); card.title:SetPoint("TOPLEFT", 14, -26)
         card.count:ClearAllPoints(); card.reason:ClearAllPoints()
@@ -569,6 +569,7 @@ function ns.Render(queryContext, routeUpdated)
     ns.ui.hint:SetText(ns.filter == "guides"
         and "Start a guide to follow its quest order. Search by zone, quest or NPC."
         or ns.filter == "dungeons" and "Choose a dungeon to view its map, loot and quests."
+        or ns.filter == "professions" and "Choose a profession to plan crafting, materials and training."
         or "Choose a quest to see its route or requirements.")
     if not routeUpdated and ns.UpdateSelectedRoute then ns.UpdateSelectedRoute(choices, queryContext) end
     ns.ui.metrics[2].caption:SetText(ns.filter == "library" and "CATALOGUE QUESTS" or (ns.filter == "guides" and "QUEST GUIDES" or "SHARED ACTIVE"))
@@ -675,7 +676,7 @@ function ns.Render(queryContext, routeUpdated)
         card.activity = activity
         card.detailsButton:ClearAllPoints()
         card.detailsButton:SetPoint("BOTTOMLEFT", 14, 10)
-        card.mapButton:SetShown(not (activity and activity.dungeon) and (guide ~= nil or libraryItem ~= nil or activity ~= nil))
+        card.mapButton:SetShown(not (activity and (activity.dungeon or activity.profession)) and (guide ~= nil or libraryItem ~= nil or activity ~= nil))
         card.detailsButton:SetShown(guide ~= nil)
         card.detailsButton.caption:SetText("Quest details")
         ns.UIButtonTone(card.detailsButton, true)
@@ -688,12 +689,12 @@ function ns.Render(queryContext, routeUpdated)
         if activity then
             height = 138
             card.accent:SetColorTexture(unpack(colors.gold)); card.category:SetText(activity.category)
-            card.title:SetText(activity.title); card.count:SetText(activity.dungeon and activity.dungeon.definition
+            card.title:SetText(activity.title); card.count:SetText(activity.count or activity.dungeon and activity.dungeon.definition
                 and ("Lv " .. activity.dungeon.definition.runLevelLow .. "–" .. activity.dungeon.definition.runLevelHigh) or "")
             card.reason:Show(); card.reason:SetHeight(46); card.reason:SetText(activity.detail)
             ns.UIHelp(card, activity.title .. "\n" .. activity.detail)
             card.mapButton.caption:SetText(activity.action or "")
-            if activity.dungeon then
+            if activity.dungeon or activity.profession then
                 local enter, leave = card:GetScript("OnEnter"), card:GetScript("OnLeave")
                 card:SetScript("OnEnter", function(self) self:SetBackdropBorderColor(unpack(colors.gold)); if enter then enter(self) end end)
                 card:SetScript("OnLeave", function(self) self:SetBackdropBorderColor(unpack(colors.border)); if leave then leave(self) end end)
@@ -768,6 +769,14 @@ function ns.Render(queryContext, routeUpdated)
         end
         card:SetSize(ns.ui.contentWidth, height)
         ns.ApplyGuideCardTheme(card, not libraryItem and guide or nil, activity and activity.dungeon)
+        if activity and activity.profession then
+            ns.ApplyGuideCardTheme(card, {mode = "crafting"})
+            if not card.professionIcon then
+                card.professionIcon = card:CreateTexture(nil, "ARTWORK"); card.professionIcon:SetSize(80, 80)
+                card.professionIcon:SetPoint("BOTTOMRIGHT", -12, 14); card.professionIcon:SetAlpha(0.08)
+            end
+            card.professionIcon:SetTexture(activity.icon); card.professionIcon:Show()
+        elseif card.professionIcon then card.professionIcon:Hide() end
         card:Show()
         top = top + height + 8
     end

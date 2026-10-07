@@ -1,5 +1,11 @@
 # Third-party notices
 
+Profession recipe, rank and trainer facts are attributed in [PROFESSIONS.md](PROFESSIONS.md)
+and `ProfessionData.json` (source URLs and checksums). The guide algorithms and
+step wording are original; no source guide sequence, website code, prose or
+external profession images are included. Icon paths reference Blizzard assets
+already installed in the game; this project does not redistribute them.
+
 Guide-card landscape artwork is generated specifically for this project;
 no downloaded third-party images are included in that collection. See
 `Media/GuideThemes/ARTWORK.md` for its provenance and source atlas.

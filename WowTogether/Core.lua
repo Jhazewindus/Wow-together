@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.35"
+ns.VERSION = "0.8.36"
 ns.RELEASE_NAME = "DUNGEON BROWSER"
 ns.handlers = {}
 ns.eventFailures = {}
@@ -186,6 +186,11 @@ function ns.Diagnostics()
         {"C_Item.GetItemCount", C_Item and C_Item.GetItemCount},
         {"C_Item.RequestLoadItemDataByID", C_Item and C_Item.RequestLoadItemDataByID},
         {"C_TradeSkillUI.GetAllRecipeIDs", C_TradeSkillUI and C_TradeSkillUI.GetAllRecipeIDs},
+        {"GetProfessions", GetProfessions},
+        {"GetProfessionInfo", GetProfessionInfo},
+        {"GetMerchantNumItems", GetMerchantNumItems},
+        {"GetMerchantItemInfo", GetMerchantItemInfo},
+        {"GetMerchantItemLink", GetMerchantItemLink},
         {"C_TradeSkillUI.GetRecipeInfo", C_TradeSkillUI and C_TradeSkillUI.GetRecipeInfo},
         {"C_TradeSkillUI.GetRecipeSchematic", C_TradeSkillUI and C_TradeSkillUI.GetRecipeSchematic},
         {"C_TradeSkillUI.GetChildProfessionInfo", C_TradeSkillUI and C_TradeSkillUI.GetChildProfessionInfo},
@@ -307,7 +312,10 @@ end)
 ns.On("ZONE_CHANGED_NEW_AREA", function()
     ns.ResetZoneConnections(); ns.ReadGuide(); ns.ScheduleFlightDiscovery(); ns.ScheduleSync(); ns.Refresh(true)
 end)
-ns.On("PLAYER_LEVEL_UP", function(level) ns.ReadGuideXP(); ns.RecordQuestResearch("level", {level = level}); ns.ScheduleSync() end)
+ns.On("PLAYER_LEVEL_UP", function(level)
+    ns.ReadGuideXP(); ns.RecordQuestResearch("level", {level = level}); ns.ScheduleSync()
+    if ns.QueueProfessionUpdate then ns.QueueProfessionUpdate() end
+end)
 ns.On("QUEST_ACCEPTED", function(_, id)
     ns.ForgetQuestCompletion(id)
     ns.NoteQuestAccepted(id)

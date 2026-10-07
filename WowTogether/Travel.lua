@@ -379,6 +379,7 @@ function ns.FindFlightPlan(stop, safety)
 end
 
 function ns.TravelDestination(stop)
+    if stop and stop.professionStep and stop.unknownLocation then ns.travelWaypoint = nil; return stop end
     if not stop or stop.kind == "notice" or ns.navigationPreview then ns.travelWaypoint = nil; return stop end
     local network = ns.TravelNetworkDestination(stop)
     if network and #ns.FilterGuideStages({network}) > 0 then return network end
@@ -514,7 +515,7 @@ function ns.RouteForDisplay()
         display.flying = true
         return display
     end
-    local confirmation = ns.CurrentQuestConfirmation()
+    local confirmation = not (ns.routeSelection and ns.routeSelection.mode == "profession") and ns.CurrentQuestConfirmation()
     local training = not confirmation and ns.ClassTrainingDestination(route.stops[1])
     training = training and training.kind == "trainer" and training or nil
     local display = route

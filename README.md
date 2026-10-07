@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.35 — DUNGEON BROWSER** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.36 — CRAFTING COMPANION** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -18,10 +18,20 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **66 Lua
+Replace the folder on **every party member's client**, including all **69 Lua
 files** and the **Media folder**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.36 adds six personal crafting guides.** Choose Profession guides to see
+compact cards with learned professions first. Preview a skill path, choose a
+goal, then Start crafting guide in the same small window used for quests. Your
+profession skill, learned recipes, bag stock and skill-up colors decide the next
+batch; character level gates rank training. Materials opens a buy list, and
+training steps name a friendly NPC. Guides update after crafting/training and
+resume after reload. Crafts and purchases remain manual. Future paths, skill-up
+chances and costs are estimates; missing prices stay unknown. Open your profession
+window to supply live recipe data. See [PROFESSIONS.md](PROFESSIONS.md).
 
 **0.8.35 makes dungeon browsing compact.** Dungeon cards form two columns at
 normal window sizes and three when wider, with the existing faint artwork,

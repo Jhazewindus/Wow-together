@@ -54,6 +54,7 @@ end
 
 function ns.SkipGuide(kind)
     if ns.guideScanning or ns.routePlanning then return end
+    if ns.routeSelection and ns.routeSelection.mode == "profession" then ns.ProfessionGuideAction(kind); return end
     if ns.routeSelection and ns.routeSelection.mode == "travel" then return end
     local stop = ns.navigation and ns.navigation.state and ns.navigation.state.stop
     if ns.navigationPreview or stop and stop.kind == "corpse" or ns.navigation and ns.navigation.state and ns.navigation.state.flight then return end
@@ -181,6 +182,7 @@ end
 function ns.ScanGuideProgress(guide, refresh)
     guide = guide or ns.routeSelection
     if not guide then return end
+    if guide.mode == "profession" then ns.RefreshProfessionPlan(guide.professionID); return end
     -- Internal history reads stay synchronous. User scans yield to the UI
     -- before reading and between history batches; no timer is saved to disk.
     if refresh == false then return scanGuideProgress(guide, false) end
@@ -250,6 +252,7 @@ end
 
 function ns.PreviewGuideStep(delta)
     if ns.guideScanning or ns.routePlanning then return end
+    if ns.routeSelection and ns.routeSelection.mode == "profession" then return end
     local index = (ns.navigationPreview and ns.navigationPreview.index or 0) + delta
     local stop
     if index < 0 then

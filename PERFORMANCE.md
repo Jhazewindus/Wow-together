@@ -186,3 +186,13 @@ Run tests and benchmark sequentially with the prepared environment:
 
 Keep matching catalogue, settings, fixtures and host conditions when comparing
 releases. Test checklist item 25 covers live beta smoothness and state freshness.
+
+## 0.8.36 crafting compartment
+
+A matching Lua 5.1 host comparison with 0.8.35 measured retained startup heap
+of 26.41 MiB before and 27.00 MiB after (+0.59 MiB).
+The 2,009 recipe facts remain packed by profession until selected. Browsing all
+six cards does not unpack their recipe/material/trainer tables. This is host
+measurement after collection, excluding native frames/textures and saved data;
+it is not a promised beta memory figure. Preview work yields every eight skill
+states; recipe/bag updates coalesce and stock reads are shared within a refresh.

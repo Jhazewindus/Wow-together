@@ -102,6 +102,7 @@ local function convenient(stop, position, class)
 end
 
 function ns.ClassTrainingDestination(stop)
+    if ns.routeSelection and ns.routeSelection.mode == "profession" then return stop end
     if not enabled() or ns.guideScanning or ns.routePlanning or ns.routePaused
         or ns.navigationPreview or ns.ReadPublic(UnitOnTaxi, "player") ~= false
         or ns.ReadPublic(UnitIsGhost, "player") ~= false then return stop end

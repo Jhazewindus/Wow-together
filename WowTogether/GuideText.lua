@@ -64,6 +64,7 @@ end
 
 function ns.GuideStepAction(stop, facts)
     facts = facts or ns.GuideStepFacts(stop); stop = facts.stop
+    if stop.professionStep then return stop.label end
     if stop.dungeonEntrance then return text(stop.label) or "Go to the dungeon entrance" end
     if stop.kind == "trainer" then return text(stop.label) or "Check your class trainer" end
     local title, target = text(stop.title) or "this quest", facts.target
@@ -104,6 +105,7 @@ end
 
 function ns.GuideStepHint(stop, facts)
     facts = facts or ns.GuideStepFacts(stop); stop = facts.stop
+    if stop.professionStep then return stop.description end
     if stop.dungeonEntrance then return stop.published and "Entrance area; follow the approach to the portal."
         or "Collect your dungeon quests before entering." end
     local action = facts.action
