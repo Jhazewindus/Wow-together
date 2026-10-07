@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.44** — **QUEST MARKER HOTFIX**, World of Warcraft: Forever beta,
+For **0.8.45** — **SMART FLIGHT DISCOVERY**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
@@ -16,6 +16,29 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Nearer flight-master routing — about 5–10 minutes
+
+- With Crossroads and an onward destination unlocked, but Ratchet unlearned,
+  start a journey near Barrens 60.3, 38.7. Enable travel routing, flight
+  suggestions and nearby flight-path tips. If its connections save enough time,
+  the arrow should say Visit Ratchet and explain the potential saving. Being
+  closer alone must not select a disconnected or unhelpful master.
+- The map line should lead to the master, with no unconfirmed airborne line or
+  extra Blizzard waypoint. The selected quest and guide sequence stay saved.
+  Check the full guide window and standalone-arrow-only layout.
+- Press Keep walking in the guide window, or × on the standalone check's strip.
+  Resume the known journey immediately; no step/quest skip or completion is saved.
+  Disable Nearby flight-path tips: the ordinary route should be used.
+- Open Ratchet's flight map. The check disappears and actual reachable routes
+  are used; existing auto-flight may act only when enabled and a matching slot
+  is currently reachable. If no useful flight is offered, continue the known
+  fallback. Reopening must not invent a connection or repeat that same check.
+- Test another zone/faction, walking speed or mount, already learned masters,
+  combat and flying. Hostile masters and known hostile settlement crossings
+  must not be proposed. Reference data cannot establish a safe road or actual
+  flight access. Capture `/wt probe`, source/destination, unlocks and screenshot
+  if the decision is wrong; record real travel time when comparing estimates.
 
 ## Active quest-mob stars — about 5–10 minutes
 

@@ -11,7 +11,8 @@
     "Edges.lua": "eaa9e485c58201ce3ad8cca022135e8ba83758f00c59ed93dc62b5532f19d4ae",
     "Geometry.lua": "094adc0df530df37f7ebc89b2ee4748b7a70c4f38a8793b17fd9fb73c16c1350",
     "PathFactors.lua": "710f6cdf644962c7755fea1b8fa2535fea35c728e543fabea0e6f5daf4668f41",
-    "NodeNames_enUS.lua": "f820d4d8b52131e2bace3017cd832896f51b2b7c536c335a8d74ad1254ed5a9a"
+    "NodeNames_enUS.lua": "f820d4d8b52131e2bace3017cd832896f51b2b7c536c335a8d74ad1254ed5a9a",
+    "Flights.lua": "69da48451cef3cbf66c2514984ad89d6484fcc4cf300b11c297968d7996e8111"
   },
   "nodes": 256,
   "directed_edges": 1620,
@@ -22,7 +23,7 @@
     "service/action graph nodes",
     "spells/items",
     "race/class portals",
-    "unconfirmed flights"
+    "unconfirmed executable flights"
   ],
   "limitations": [
     "Community data, not tested here in the beta client",
@@ -31,5 +32,10 @@
     "Settlement footprints bound published occupied locations with an estimated margin, not actual guards or road bypasses"
   ],
   "settlement_footprints": 48,
-  "settlement_margin_yards": 100
+  "settlement_margin_yards": 100,
+  "reference_flight_connections": 266,
+  "ownership_notes": [
+    "Faction-scoped reference links supplement missing taxi ownership",
+    "Ratchet Bragok serves both factions: https://warcraft.wiki.gg/wiki/Bragok"
+  ]
 }

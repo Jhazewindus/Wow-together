@@ -76,6 +76,20 @@ class DiscordReleaseTests(unittest.TestCase):
         self.assertIn('456', receipts)
         self.assertNotIn('synthetic-token', receipts)
 
+    def test_long_notes_keep_complete_preview_bullets_and_exact_full_attachments(self):
+        note = 'First complete change.\n- ' + ('A detailed later change. ' * 150)
+        release(self.archive, note=note)
+        _, message, files, _, _ = prepare(self.archive)
+        self.assertLessEqual(len(message), 2000)
+        self.assertIn('First complete change.', message)
+        self.assertNotIn('A detailed later change.', message)
+        self.assertIn('Full changelog attached.', message)
+        self.assertIn('**Install:**', message)
+        self.assertIn('**Testing:**', message)
+        with zipfile.ZipFile(self.archive) as z:
+            self.assertEqual(files[1][2], z.read('WowTogether/CHANGELOG.md'))
+            self.assertEqual(files[2][2], z.read('WowTogether/TESTING.md'))
+
     def test_changed_contents_under_a_posted_version_require_a_new_version(self):
         transport = Transport()
         post_release(self.archive, WEBHOOK, transport)

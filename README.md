@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.44 — QUEST MARKER HOTFIX** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.45 — SMART FLIGHT DISCOVERY** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -22,6 +22,20 @@ Replace the folder on **every party member's client**, including all **75 Lua
 files** and the **Media folder**, then fully restart the client. Restart if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.45 compares nearer unlearned flight masters with the known journey.**
+When a nearby friendly master has a published connection towards your unlocked
+destinations, compare walking there, connecting flights and travel after landing
+against the current route. Ratchet's neutral ownership is now included. A check
+qualifies only with a meaningful estimated saving and a short fallback detour.
+The arrow says Visit Ratchet and explains the potential saving until you open
+its flight map; only that menu can confirm the flight. Keep walking resumes the
+known route without skipping a quest. Confirmed unreachable connections override
+reference facts. This applies to supported locations across guides, preserves
+their quest sequence, and uses estimates rather than certified road paths.
+The bundle adds 266 directed, faction-scoped reference connections; it never
+unlocks flights or automatically takes an unconfirmed route. Retest the Ratchet
+case on the current beta; see [TRAVEL_DATA.md](TRAVEL_DATA.md).
 
 **0.8.44 tightens active quest-mob stars.** Possible item-drop sources in the
 catalogue are checked against unfinished, readable objectives. A public false

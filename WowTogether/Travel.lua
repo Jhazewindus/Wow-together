@@ -230,6 +230,11 @@ function ns.InitializeTravel()
     if not savedPoint(state.corpse) then state.corpse = nil end
     local _, build = ns.ReadPublic(GetBuildInfo)
     ns.flightTimingBuild = ns.SafeTitle(build)
+    state.unreachable = type(state.unreachable) == "table" and state.unreachable or {}
+    for key, value in pairs(state.unreachable) do
+        if not ns.flightTimingBuild or value ~= ns.flightTimingBuild then state.unreachable[key] = nil end
+    end
+    ns.dismissedFlightChecks, ns.flightDiscoveryCache, ns.activeFlightCheck = {}, nil, nil
     if type(hooksecurefunc) == "function" and type(TakeTaxiNode) == "function" then
         hooksecurefunc("TakeTaxiNode", function(slot) ns.NoteFlightSelection(slot) end)
     end
@@ -319,9 +324,13 @@ function ns.ReadFlightMap(attempt)
     if current then ns.checkedFlightNodes[current] = true end
     if current then
         for id, info in pairs(visible) do
-            if info.reachable then state.edges[current .. ":" .. id] = {source = current, destination = id,
-                route = info.slot and ns.ReadNativeFlightRoute(info.slot, current, id, slots)} end
-            if info.unreachable then state.edges[current .. ":" .. id] = nil end
+            local key = current .. ":" .. id
+            if info.reachable then
+                state.edges[key] = {source = current, destination = id,
+                    route = info.slot and ns.ReadNativeFlightRoute(info.slot, current, id, slots)}
+                state.unreachable[key] = nil
+            end
+            if info.unreachable then state.edges[key] = nil; state.unreachable[key] = ns.flightTimingBuild or true end
         end
     end
     changed()
@@ -340,6 +349,10 @@ function ns.TravelDiagnostics(output)
     output("Flight cache: " .. (ns.flightCacheRestored or 0) .. " connections restored at login; "
         .. (ns.flightCacheConflicts or 0) .. " conflicting map discovery flags ignored after confirmed reachability.")
     ns.FlightTimingDiagnostics(output)
+    local check = ns.activeFlightCheck and ns.activeFlightCheck.flightDiscovery
+    output("Nearer flight-master check: " .. (check and (check.source.name .. " towards " .. check.destination.name
+        .. "; prospective saving " .. math.floor(check.savedSeconds) .. " seconds; fallback detour " .. math.floor(check.extraSeconds) .. " seconds (estimates).")
+        or "No qualifying discovery detour."))
     ns.TravelNetworkDiagnostics(output)
 end
 
@@ -378,10 +391,122 @@ function ns.FindFlightPlan(stop, safety)
     return best
 end
 
+local function discoveryKey(stop, id)
+    return table.concat({ns.routeSelection and ns.routeSelection.key or "", stop.id or 0, stop.kind or "",
+        stop.mapID, stop.x, stop.y, id}, ":")
+end
+
+function ns.FindFlightDiscoveryPlan(origin, goal, baseline)
+    if not baseline or not number(baseline.seconds) then return end
+    -- Navigation retains a path briefly while walking. Compare fresh journeys
+    -- after movement instead of charging the already travelled approach again.
+    local moved = ns.TravelPointDistance(origin, baseline.origin)
+    if not moved or moved > 1 then baseline = ns.FindTravelPath(origin, goal, true) end
+    if not baseline or not number(baseline.seconds) then return end
+    local data, state = ns.travelData, flights()
+    if not data or not state or not ns.SafeTitle(ns.profile and ns.profile.faction) then return end
+    local candidates, seen, geometry, safety = {}, {}, {}, ns.TravelSafetyContext()
+    local knownDeparture
+    for _, leg in ipairs(baseline.legs or {}) do
+        if leg.method ~= "walk" then
+            if leg.flight then knownDeparture = ns.TravelPointDistance(origin, leg.from, geometry) end
+            break
+        end
+    end
+    for _, edge in ipairs(data.flightConnections or {}) do
+        local id = edge.source
+        if not seen[id] then
+            seen[id] = true
+            local node, published = state.nodes[id], data.nodes["TAXI_" .. id]
+            local p = node and node.point or published
+            if ns.ValidTravelPoint(p) and p.mapID ~= origin.mapID then
+                p = ns.ProjectMapPoint(p, origin.mapID, geometry)
+            end
+            if not ns.ValidTravelPoint(p) then p = published end
+            local owner = ns.SafeTitle(node and node.faction) or published and ns.SafeTitle(published.faction)
+            local distance = ns.ValidTravelPoint(p) and p.mapID == origin.mapID and ns.TravelPointDistance(origin, p, geometry)
+            local key = discoveryKey(goal, id)
+            if distance and distance <= 750 / 0.9144 and (not knownDeparture or distance + 30 < knownDeparture)
+                and (owner == ns.profile.faction or owner == "Both")
+                and not (node and ns.Public(node.known) and node.known == true)
+                and not (ns.checkedFlightNodes and ns.checkedFlightNodes[id])
+                and not (ns.dismissedFlightChecks and ns.dismissedFlightChecks[key])
+                and ns.TravelNodeAllowed("TAXI_" .. id, p, node, safety)
+                and not ns.HostileWalkCrossing(origin, p, safety, true, false) then
+                candidates[#candidates + 1] = {id = id, point = p, distance = distance, key = key,
+                    name = ns.SafeTitle(node and node.name) or published and ns.SafeTitle(published.name)}
+            end
+        end
+    end
+    table.sort(candidates, function(a, b) return a.distance < b.distance or a.distance == b.distance and a.id < b.id end)
+    local best
+    for index = 1, math.min(3, #candidates) do
+        local candidate = candidates[index]
+        local prospective = ns.FindTravelPath(origin, goal, true, candidate.id)
+        local first
+        for _, leg in ipairs(prospective and prospective.legs or {}) do
+            if leg.method ~= "walk" then first = leg; break end
+        end
+        if first and first.fromID == "TAXI_" .. candidate.id and first.flight and first.flight.unconfirmed
+            and prospective.seconds + 20 + math.max(30, baseline.seconds * 0.1) < baseline.seconds then
+            local fallback = ns.FindTravelPath(candidate.point, goal, true)
+            local approach = candidate.distance * (data.factors and data.factors[origin.mapID] or 1.25) / ns.TravelWalkSpeed()
+            local extra = fallback and approach + 20 + fallback.seconds - baseline.seconds
+            -- If no useful flight is offered, continuing the known route must
+            -- cost at most 2.5 minutes more. Never create a long discovery trip.
+            if extra and extra <= 150 and (not best or prospective.seconds < best.seconds
+                or prospective.seconds == best.seconds and candidate.id < best.source.id) then
+                best = {source = {id = candidate.id, name = candidate.name, point = candidate.point},
+                    destination = first.flight.destination, key = candidate.key, seconds = prospective.seconds + 20,
+                    savedSeconds = baseline.seconds - prospective.seconds - 20, extraSeconds = math.max(0, extra)}
+            end
+        end
+    end
+    return best
+end
+
+function ns.FlightDiscoveryDestination(stop)
+    if not ns.Option("suggestFlights") or not ns.Option("nearbyFlights") or not ns.HasTravelPathTo(stop)
+        or ns.RouteInCombat() or ns.routePaused or ns.navigationPreview or ns.guideScanning or ns.routePlanning
+        or ns.travelPath and ns.travelPath.transportIndex == ns.travelPath.cursor
+        or stop.kind == "corpse" or ns.IsClassTrainingStep(stop)
+        or ns.routeSelection and ns.routeSelection.mode == "profession"
+        or ns.ReadPublic(UnitOnTaxi, "player") == true then return end
+    local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
+    local position = ns.GuideInteger(mapID) and ns.PlayerPoint(mapID)
+    if not ns.ValidTravelPoint(position) then return end
+    local signature = table.concat({discoveryKey(stop, 0), mapID, ns.travelRevision or 0,
+        ns.profile and ns.profile.faction or "", ns.TravelWalkSpeed()}, ":")
+    local cache = ns.flightDiscoveryCache
+    local moved = cache and ns.TravelPointDistance(position, cache.position)
+    if not cache or cache.signature ~= signature or not moved or moved > 125 then
+        cache = {signature = signature, position = position, plan = ns.FindFlightDiscoveryPlan(position, stop, ns.travelPath)}
+        ns.flightDiscoveryCache = cache
+    end
+    local plan = cache.plan
+    if not plan then return end
+    local node = flights().nodes[plan.source.id]
+    if (node and ns.Public(node.known) and node.known == true) or (ns.checkedFlightNodes and ns.checkedFlightNodes[plan.source.id]) then return end
+    local p = plan.source.point
+    return {id = stop.id, kind = "travel", action = "flight-check", title = stop.title, mapID = p.mapID, x = p.x, y = p.y,
+        label = "Visit " .. plan.source.name .. " flight master", goal = stop, guideStep = stop.guideStep, flightDiscovery = plan}
+end
+
+function ns.DismissFlightCheck(stop)
+    if not stop or not stop.flightDiscovery then return end
+    ns.dismissedFlightChecks = ns.dismissedFlightChecks or {}
+    ns.dismissedFlightChecks[stop.flightDiscovery.key] = true
+    ns.ResetTravelPath()
+    ns.UpdateNavigation(); ns.DrawRoute(nil, true)
+end
+
 function ns.TravelDestination(stop)
+    ns.activeFlightCheck = nil
     if stop and stop.professionStep and stop.unknownLocation then ns.travelWaypoint = nil; return stop end
     if not stop or stop.kind == "notice" or ns.navigationPreview then ns.travelWaypoint = nil; return stop end
     local network = ns.TravelNetworkDestination(stop)
+    local discovery = ns.FlightDiscoveryDestination(stop)
+    if discovery then ns.activeFlightCheck, ns.travelWaypoint = discovery, discovery; return discovery end
     if network and #ns.FilterGuideStages({network}) > 0 then return network end
     local now = ns.ReadPublic(GetTime)
     now = number(now) and now or nil

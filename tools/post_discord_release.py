@@ -45,15 +45,20 @@ def prepare(archive):
                         changelog.decode(), re.M | re.S)
     if not section or ('**' + version + '**') not in testing.decode():
         raise ValueError('Changelog/test checklist do not match the release version.')
-    message = ('**Wow Together ' + release_label + ' — Forever beta**\n\n'
-               + section.group(1).strip()
-               + '\n\n**Install:** replace the complete `WowTogether` folder on every party member’s client in '
+    heading = '**Wow Together ' + release_label + ' — Forever beta**\n\n'
+    notes = section.group(1).strip()
+    footer = ('\n\n**Install:** replace the complete `WowTogether` folder on every party member’s client in '
                '`World of Warcraft\\_classic_beta_\\Interface\\AddOns\\WowTogether\\`, then fully restart the client. '
                'Restart the client if the addon folder does not appear.\n\n'
                '**Testing:** use the attached leveling checklist and report template. '
                'Host checks do not establish beta API/rendering compatibility.')
-    if len(message) > 2000:
-        raise ValueError('Message exceeds Discord’s content limit.')
+    if len(heading + notes + footer) > 2000:
+        attached = '\n\nFull changelog attached.'
+        budget = 2000 - len(heading + attached + footer)
+        # Keep complete bullets instead of cutting a sentence or Markdown link.
+        ends = [m.start() for m in re.finditer(r'\n(?=- )', notes) if m.start() <= budget]
+        notes = (notes[:max(ends)].rstrip() if ends else '') + attached
+    message = heading + notes + footer
     files = [(archive.name, 'application/zip', archive.read_bytes()),
              ('CHANGELOG.md', 'text/markdown', changelog),
              ('TESTING.md', 'text/markdown', testing)]

@@ -62,6 +62,7 @@ function ns.RouteContext(stop, mapID, facts, travelDistance)
         return stop.action == "scan" and "Checking quest progress…" or "Preparing your route…"
     end
     local travelSummary = ns.TravelPathSummary(stop)
+    if stop.flightDiscovery then return travelSummary end
     local purpose = (travelSummary or stop.goal or stop.flightPlan or stop.travelLeg) and ns.GuideDestinationPurpose(stop)
     if travelSummary then return purpose and (purpose .. "\n" .. travelSummary) or travelSummary end
     if ns.routeSelection and ns.routeSelection.mode == "travel" then
@@ -290,6 +291,10 @@ function ns.UpdateNavigation()
         and (state.stop.kind ~= "notice" or state.stop.id > 0) and state.stop.kind ~= "loading"
     local quests = not (ns.routeSelection and ns.routeSelection.mode == "travel")
     frame.skipStep:SetEnabled(editable and quests); frame.skipQuest:SetEnabled(editable and quests); frame.scan:SetEnabled(not state.idle and not state.flight and state.stop.kind ~= "loading")
+    if state.stop.flightDiscovery then
+        frame.skipStep.caption:SetText("Keep walking")
+        frame.skipStep:SetEnabled(editable); frame.skipQuest:SetEnabled(false)
+    end
     frame.back:SetEnabled(not state.idle and state.stop.kind ~= "loading"); frame.next:SetEnabled(not state.idle and state.stop.kind ~= "loading")
     if ns.routeSelection and ns.routeSelection.mode == "profession" then
         local route = ns.selectedRoute

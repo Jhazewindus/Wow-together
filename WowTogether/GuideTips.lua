@@ -178,6 +178,13 @@ function ns.CurrentGuideTip(state)
         or state and (state.flight or state.stop.kind == "corpse")
         or state and ns.IsClassTrainingStep(state.stop)
         or ns.ReadPublic(UnitOnTaxi, "player") == true or ns.ReadPublic(UnitIsGhost, "player") == true then return end
+    if state and state.stop.flightDiscovery then
+        if ns.Option("routeArrow") then return end
+        local plan = state.stop.flightDiscovery
+        return {key = plan.key, flightDiscovery = state.stop,
+            text = "Check " .. plan.source.name .. " flights\nPotential saving ~" .. ns.FormatTravelDuration(plan.savedSeconds),
+            detail = ns.TravelPathSummary(state.stop) .. "\n× keeps the known route; no quest is skipped."}
+    end
     local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
     if not ns.GuideInteger(mapID) then return end
     local now = ns.ReadPublic(GetTime)
@@ -196,6 +203,7 @@ end
 function ns.DismissGuideTip()
     local value = ns.navigation and ns.navigation.tip and ns.navigation.tip.value
     local state = saved()
+    if value and value.flightDiscovery then ns.DismissFlightCheck(value.flightDiscovery); return end
     if state and value then state.dismissed[value.key] = true; cached = nil; ns.UpdateNavigation() end
 end
 

@@ -1,5 +1,31 @@
 # Wow Together changelog
 
+## 0.8.45
+
+**SMART FLIGHT DISCOVERY**
+
+- Compare a nearby unlearned master's connections towards unlocked destinations
+  against the known journey, including walking, connecting flights and landing
+  travel. Require a meaningful estimated saving and a bounded fallback detour.
+- Add 266 directed, faction-scoped reference connections from the existing
+  attributed Forever travel source. Supplement missing flight-master ownership;
+  identify Ratchet's shared master as neutral. Native observations take priority.
+- Make a qualifying check the arrow's next travel stop, with its reason and
+  potential saving. Keep walking resumes the known route without a quest skip.
+  The standalone arrow also exposes the reason and a dismiss button.
+- Price connecting reference flights with one boarding allowance. Cache checks
+  by goal, movement, speed and personal travel changes; examine at most three
+  nearby candidates. Fixed guide order, progress and map quest markers remain.
+- Opening the flight map replaces the check with actual reachable flights.
+  Explicit unreachable results override reference links for this build. Draw
+  only the walk to the check; unconfirmed connections never become flight actions.
+- Host checks cover the Ratchet screenshot geometry, useful/slow/disconnected
+  flights, faction and unlock gates, dismissal, menu confirmation and caching.
+  Walking geometry, reference timings and live beta availability remain estimates.
+- Validation: 1,245 full-suite host regressions passed, followed by 131 travel
+  regressions after the movement-cost refinement. All 75 Lua files compile
+  under Lua 5.1; live Forever flight access and map rendering need retesting.
+
 ## 0.8.44
 
 **QUEST MARKER HOTFIX**

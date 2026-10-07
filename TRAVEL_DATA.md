@@ -1,4 +1,4 @@
-# Travel routing — updated for 0.8.43
+# Travel routing — updated for 0.8.45
 
 Wow Together implements its own Dijkstra search with a binary heap, deterministic
 ties and nonnegative travel-time costs. It finds a path **between quest steps**;
@@ -54,12 +54,62 @@ are permitted; such quest work is never automatically skipped or completed.
 This reduces known hostile-town shortcuts, but does not establish guard-safe or
 terrain-safe routing. Public projected coordinates and current faction are used.
 
-Flight access remains per character. Only links observed as reachable from an
+Executable flight access remains per character. Only links observed as reachable from an
 opened flight map enter the graph; sourced taxi coordinates never unlock flights.
 Measured personal flight times replace estimates where available. Saved flight
 points projected onto outer zones retain their city-map identity in the graph,
 so they cannot supply a walking shortcut through city walls. Native reachable
 slot checks and the existing opt-in auto-flight/combat safeguards remain in place.
+
+## Nearer unlearned flight masters — 0.8.45
+
+The same pinned Forever snapshot's `Flights.lua` contributes **266 directed,
+faction-scoped reference legs**, preserving their supplied estimated flight
+seconds. Its SHA256 is
+`69da48451cef3cbf66c2514984ad89d6484fcc4cf300b11c297968d7996e8111`.
+Only numeric taxi endpoints already in the retained point graph qualify. No
+upstream engine, generator, UI or flight actions are included. Reference links
+also supplement missing master ownership; 61 of 71 native-ID points now have
+published ownership. Ratchet's shared Bragok master is explicitly neutral,
+corroborated by [Bragok's public faction reactions](https://warcraft.wiki.gg/wiki/Bragok).
+Native public ownership takes precedence. Separate faction masters in neutral
+towns are not assumed neutral. The source is a partial reference, not a complete
+or currently beta-verified flight database.
+
+A separate prospective Dijkstra calculation prices a visit to one unlearned
+departure. Every landing/intermediate master must already be unlocked by this
+character; directed faction-compatible reference or confirmed personal links
+must connect them. It prices connecting tickets with one 45-second boarding
+allowance. Personal confirmed durations take priority where available. This
+calculation never alters the executable graph, unlock flags or guide order.
+Native explicit unreachable results exclude the corresponding reference
+connection, persist for this character/build and clear on a reachable reread.
+Changing builds clears those negative reference overrides.
+
+Compare at most three nearest friendly candidates within 750 metres, excluding
+known hostile crossings and masters already visited or dismissed for this goal.
+When the known journey starts with a flight, the candidate must be at least
+30 estimated yards closer than its departure. A check needs more than the
+larger of 30 seconds or 10% of the baseline journey in savings, after a 20-second
+visit allowance. If its menu offers nothing useful, the estimated known-route
+fallback may add at most 150 seconds. Walking uses current speed and existing
+detour factors, not certified roads. Cache by goal, travel revision, faction and
+speed; reconsider after 125 estimated yards of movement, comparing fresh journey
+costs. A held ship/zeppelin crossing cannot be replaced by a discovery check.
+This is a bounded
+comparison, not exhaustive optimization across all unknown masters.
+
+A qualifying visit becomes the transient arrow destination. The text says
+Check flights and gives potential savings; the line draws only the walk to the
+master, never an unconfirmed airborne connection. Keep walking, or the check's
+standalone strip ×, dismisses the visit without a quest/step skip. Opening the
+native map replaces the estimate with actual reachable flights. Existing
+auto-flight still requires a currently reachable visible slot. Fixed quest
+sequence and the actual destination markers are retained. Both flight routing
+and nearby-flight tips must be enabled. Checks pause in combat, flight, corpse
+recovery, scans and previews; profession/trainer guides retain their own travel.
+Host checks reproduce Ratchet 60.3, 38.7 with synthetic physical transforms;
+actual beta connections, timings, map drawing and terrain need tester validation.
 
 ## Flight duration — 0.8.23
 

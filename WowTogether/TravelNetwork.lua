@@ -145,7 +145,7 @@ local function nodeName(id, point)
     return name or ns.MapName(point.mapID)
 end
 
-function ns.FindTravelPath(origin, goal, useFlights)
+function ns.FindTravelPath(origin, goal, useFlights, discoverySource)
     if not ns.ValidTravelPoint(origin) or not ns.ValidTravelPoint(goal) then return end
     local data, speed, positions = ns.travelData or {nodes = {}, edges = {}, factors = {}}, ns.TravelWalkSpeed(), {}
     local nodes, adjacency = {START = origin, GOAL = goal}, {}
@@ -202,6 +202,71 @@ function ns.FindTravelPath(origin, goal, useFlights)
                     {source = source, destination = target, flightSeconds = duration, measured = measured, timingBasis = basis}) end
             end
         end
+        -- A separate prospective calculation may price published connections.
+        -- It never changes character unlocks or the executable graph. Only one
+        -- selected unlearned departure may be used; every landing is unlocked.
+        if discoverySource then
+            local reference = {}
+            for _, edge in pairs(flights and flights.edges or {}) do
+                local source, target = flights.nodes[edge.source], flights.nodes[edge.destination]
+                local from, to = "TAXI_" .. edge.source, "TAXI_" .. edge.destination
+                if nodes[from] and nodes[to] and source and target and ns.Public(source.known) and source.known == true
+                    and ns.Public(target.known) and target.known == true then
+                    local air, estimate = ns.FlightPointDistance(source, target, positions, edge.source, edge.destination)
+                    local duration = ns.FlightDuration(edge.source, edge.destination, air, positions, estimate)
+                    if finite(duration) and duration > 0 then
+                        reference[from] = reference[from] or {}
+                        table.insert(reference[from], {id = to, seconds = duration})
+                    end
+                end
+            end
+            for _, edge in ipairs(data.flightConnections or {}) do
+                local source, target = flights and flights.nodes[edge.source], flights and flights.nodes[edge.destination]
+                local from, to = "TAXI_" .. edge.source, "TAXI_" .. edge.destination
+                local confirmed = flights and flights.edges[edge.source .. ":" .. edge.destination]
+                if nodes[from] and nodes[to] and allowed(edge, faction)
+                    and (edge.source == discoverySource or source and ns.Public(source.known) and source.known == true)
+                    and target and ns.Public(target.known) and target.known == true
+                    and not (flights.unreachable and flights.unreachable[edge.source .. ":" .. edge.destination]) then
+                    local duration = edge.seconds
+                    if confirmed then
+                        local air, estimate = ns.FlightPointDistance(source, target, positions, edge.source, edge.destination)
+                        duration = ns.FlightDuration(edge.source, edge.destination, air, positions, estimate) or duration
+                    end
+                    if finite(duration) and duration > 0 then
+                        reference[from] = reference[from] or {}
+                        table.insert(reference[from], {id = to, seconds = duration})
+                    end
+                end
+            end
+            -- Price a connecting ticket with one boarding allowance, rather
+            -- than charging another check-in at every intermediate master.
+            local start = "TAXI_" .. discoverySource
+            local heap, costs, visited = {}, {[start] = 0}, {}
+            push(heap, {id = start, cost = 0})
+            while #heap > 0 do
+                local item = pop(heap)
+                if not visited[item.id] and item.cost == costs[item.id] then
+                    visited[item.id] = true
+                    for _, edge in ipairs(reference[item.id] or {}) do
+                        local value = item.cost + edge.seconds
+                        if not visited[edge.id] and (not costs[edge.id] or value < costs[edge.id]) then
+                            costs[edge.id] = value; push(heap, {id = edge.id, cost = value})
+                        end
+                    end
+                end
+            end
+            local departure = flights and flights.nodes[discoverySource]
+                or {id = discoverySource, name = nodes[start] and nodes[start].name, point = nodes[start]}
+            for id, duration in pairs(costs) do
+                local targetID = tonumber(string.match(id, "^TAXI_(%d+)$"))
+                local target = flights and flights.nodes[targetID]
+                if id ~= start and target and not (flights.unreachable and flights.unreachable[discoverySource .. ":" .. targetID]) then
+                    link(start, id, duration + 45, "taxi", {source = departure, destination = target,
+                        flightSeconds = duration, measured = false, timingBasis = "Published connection estimate", unconfirmed = true})
+                end
+            end
+        end
     end
     local ids = {}; for id in pairs(nodes) do if id ~= "START" and id ~= "GOAL" then ids[#ids + 1] = id end end; table.sort(ids)
     for _, id in ipairs(ids) do
@@ -252,7 +317,10 @@ function ns.FindTravelPath(origin, goal, useFlights)
     return {legs = legs, seconds = costs.GOAL, cursor = 1, origin = origin, goal = goal}
 end
 
-function ns.ResetTravelPath() ns.travelPath, ns.travelPathSignature, ns.travelPathChecked, ns.travelWaypoint = nil, nil, nil, nil end
+function ns.ResetTravelPath()
+    ns.travelPath, ns.travelPathSignature, ns.travelPathChecked, ns.travelWaypoint = nil, nil, nil, nil
+    ns.flightDiscoveryCache, ns.activeFlightCheck = nil, nil
+end
 
 function ns.HasTravelPathTo(stop)
     local path = ns.travelPath
@@ -274,6 +342,11 @@ end
 
 function ns.TravelPathSummary(stop)
     if ns.ReadPublic(UnitOnTaxi, "player") == true then return end
+    if stop.flightDiscovery then
+        local plan = stop.flightDiscovery
+        return "Check flights at " .. plan.source.name .. " towards " .. plan.destination.name .. ".\n"
+            .. "Potential saving ~" .. ns.FormatTravelDuration(plan.savedSeconds) .. "; confirm at the flight master."
+    end
     if not ns.HasTravelPathTo(stop.goal or stop) then return end
     local path = ns.travelPath
     if stop.travelLeg and stop.travelLeg.method ~= "walk" and stop.travelLeg.method ~= "taxi" then
@@ -383,6 +456,11 @@ function ns.TravelNetworkDiagnostics(output)
 end
 
 function ns.TravelLinePoints(origin, goal)
+    local check = ns.activeFlightCheck
+    if check and check.goal.mapID == goal.mapID and check.goal.x == goal.x and check.goal.y == goal.y then
+        -- Only draw the visit. Reference air links are not confirmed flights.
+        return {origin, check, false}
+    end
     local path = (ns.Option("travelNetwork") or ns.routeSelection and ns.routeSelection.mode == "travel") and ns.travelPath
     if not path or path.goal.mapID ~= goal.mapID or path.goal.x ~= goal.x or path.goal.y ~= goal.y then return end
     local points = path.transportIndex == path.cursor and {false} or {origin}

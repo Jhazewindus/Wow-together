@@ -11,8 +11,9 @@ from lupa.lua51 import LuaRuntime
 ROOT = Path(__file__).resolve().parents[1]
 COMMIT = 'fd68cfe2153379898680c66a01833846f9933587'
 FILES = ['Nodes_Kalimdor.lua', 'Nodes_EasternKingdoms.lua', 'Nodes_ZephrasIsle.lua',
-         'Borders.lua', 'Pois.lua', 'Edges.lua', 'Geometry.lua', 'PathFactors.lua', 'NodeNames_enUS.lua']
+         'Borders.lua', 'Pois.lua', 'Edges.lua', 'Flights.lua', 'Geometry.lua', 'PathFactors.lua', 'NodeNames_enUS.lua']
 POIS_SHA256 = '3dfa6f85e6fbe1c5a01389d4bcf445f4fa63391484647cdec663a849111e977d'
+FLIGHTS_SHA256 = '69da48451cef3cbf66c2514984ad89d6484fcc4cf300b11c297968d7996e8111'
 
 
 def plain(value):
@@ -62,6 +63,41 @@ def settlement_facts(path, nodes):
             'mapID': place['mapID'], 'minX': min(x for x,y in points), 'maxX': max(x for x,y in points),
             'minY': min(y for x,y in points), 'maxY': max(y for x,y in points)})
     return footprints
+
+
+def flight_facts(path, nodes):
+    """Directed, faction-scoped reference links; never character flight unlocks."""
+    data = path.read_bytes()
+    if hashlib.sha256(data).hexdigest() != FLIGHTS_SHA256:
+        raise ValueError('Expected the pinned Forever flight connection facts')
+    lua = LuaRuntime(unpack_returned_tuples=True)
+    ns = lua.table_from({'RULESET': 'forever'})
+    loader = lua.eval('function(text,ns) local f=assert(loadstring(text));setfenv(f,{ipairs=ipairs,table={insert=table.insert}});f("Source",ns)end')
+    loader(data.decode(), ns)
+    connections, owners = [], {}
+    for edge in plain(ns.Edges):
+        requirements = edge.get('requirements', {})
+        owner = requirements.get('faction')
+        if (edge.get('method') != 'taxi' or owner not in ('Alliance', 'Horde', 'Both')
+                or set(requirements) - {'faction'} or not isinstance(edge.get('cost'), (int, float))
+                or edge['cost'] <= 0 or edge['cost'] >= 7200):
+            continue
+        endpoints = [re.fullmatch(r'TAXI_([1-9][0-9]*)', edge.get(key, '')) for key in ('from', 'to')]
+        if not all(endpoints) or any(edge[key] not in nodes for key in ('from', 'to')):
+            continue
+        connections.append({'source': int(endpoints[0][1]), 'destination': int(endpoints[1][1]),
+                            'seconds': edge['cost'], 'faction': owner})
+        for key in ('from', 'to'):
+            owners.setdefault(edge[key], set()).add(owner)
+    for key, factions in owners.items():
+        if not nodes[key].get('faction'):
+            nodes[key]['faction'] = next(iter(factions)) if len(factions) == 1 else 'Both'
+    # Bragok serves both factions at the one Ratchet taxi point. A Horde-only
+    # captured connection list doesn't make the neutral NPC Horde-only.
+    # https://warcraft.wiki.gg/wiki/Bragok (public Friendly reactions to both).
+    if 'TAXI_80' in nodes:
+        nodes['TAXI_80']['faction'] = 'Both'
+    return sorted(connections, key=lambda row: (row['source'], row['destination'], row['faction']))
 
 
 def collect(source):
@@ -136,8 +172,11 @@ def main():
     license_text = args.license_file.read_text()
     if not license_text.startswith('MIT License') or 'Copyright (c) 2026 tr0tsky0' not in license_text:
         raise ValueError('Expected the source project MIT notice')
+    if license_text.rstrip() not in (ROOT / 'THIRD_PARTY_NOTICES.md').read_text():
+        raise ValueError('Retain the source MIT notice in THIRD_PARTY_NOTICES.md before importing')
     nodes, edges, factors, hashes = collect(args.source)
     settlements = settlement_facts(args.source / 'Data/Forever/Pois.lua', nodes)
+    connections = flight_facts(args.source / 'Data/Forever/Flights.lua', nodes)
     lines = ['local addonName, ns = ...', '', '-- Adapted geographic facts from Mapzeroth Forever 0.6.0 (MIT).',
              '-- See TRAVEL_DATA.md and THIRD_PARTY_NOTICES.md. Costs/coordinates need beta retesting.',
              '-- Geometry describes estimated walks between points, not collision-safe road polylines.',
@@ -146,16 +185,19 @@ def main():
     lines += ['    },', '    edges = {']
     lines += ['        ' + encode(edge) + ',' for edge in edges]
     lines += ['    },', '    factors = ' + encode(factors) + ',',
-              '    settlements = ' + encode(settlements) + ',', '}','']
+              '    settlements = ' + encode(settlements) + ',',
+              '    flightConnections = ' + encode(connections) + ',', '}','']
     (ROOT / 'WowTogether/TravelData.lua').write_text('\n'.join(lines))
     metadata = {'source': 'https://github.com/tr0tsky0/Mapzeroth', 'commit': commit, 'tag': '0.6.0',
                 'files_sha256': hashes, 'nodes': len(nodes), 'directed_edges': len(edges),
                 'license': 'MIT', 'license_revision': '676241e234cbeab5e2066b869b52c235d675a9e0',
                 'settlement_footprints': len(settlements), 'settlement_margin_yards': 100,
-                'exclusions': ['Retail data', 'service/action graph nodes', 'spells/items', 'race/class portals', 'unconfirmed flights'],
+                'reference_flight_connections': len(connections),
+                'ownership_notes': ['Faction-scoped reference links supplement missing taxi ownership',
+                                    'Ratchet Bragok serves both factions: https://warcraft.wiki.gg/wiki/Bragok'],
+                'exclusions': ['Retail data', 'service/action graph nodes', 'spells/items', 'race/class portals', 'unconfirmed executable flights'],
                 'limitations': ['Community data, not tested here in the beta client', 'Walk geometry uses estimated point-to-point distances, not terrain navigation', 'Boat waits and loading time are estimates', 'Settlement footprints bound published occupied locations with an estimated margin, not actual guards or road bypasses']}
     (ROOT / 'WowTogether/TravelData.json').write_text(json.dumps(metadata, indent=2) + '\n')
-    (ROOT / 'THIRD_PARTY_NOTICES.md').write_text('# Third-party notices\n\nGeographic travel facts adapted from [Mapzeroth](https://github.com/tr0tsky0/Mapzeroth),\nForever 0.6.0 (`' + commit + '`). Its addon engine/UI is not included.\nThe project publishes this license:\n\n```text\n' + license_text.rstrip() + '\n```\n')
     print(f'Generated {len(nodes)} travel points and {len(edges)} directed links.')
 
 

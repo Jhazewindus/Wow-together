@@ -18,6 +18,11 @@ Wowhead image or screenshot is bundled.
 
 Geographic travel facts adapted from [Mapzeroth](https://github.com/tr0tsky0/Mapzeroth),
 Forever 0.6.0 (`fd68cfe2153379898680c66a01833846f9933587`). Its addon engine/UI is not included.
+Version 0.8.45 also selects directed, faction-scoped single-leg flight connection
+and timing facts from that revision's `Data/Forever/Flights.lua`; source checksum
+and transformations are in TravelData.json and TRAVEL_DATA.md. The upstream
+flight generator and routing code are not included. Ratchet Bragok's neutral
+ownership is corroborated by https://warcraft.wiki.gg/wiki/Bragok.
 The project publishes this license:
 
 ```text

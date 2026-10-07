@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.44"
-ns.RELEASE_NAME = "QUEST MARKER HOTFIX"
+ns.VERSION = "0.8.45"
+ns.RELEASE_NAME = "SMART FLIGHT DISCOVERY"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}

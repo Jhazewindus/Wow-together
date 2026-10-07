@@ -188,6 +188,12 @@ Hearthstone tips require upcoming objectives away and multiple hub turn-ins;
 flight tips hide known paths and distinguish Get from Check when unlocks are
 unconfirmed. Hover for the location/reason. Advice never changes the quest order,
 binds a home or unlocks a flight. New inn visits can be recorded per character.
+A nearer unlearned master may become the next travel stop when its directed
+reference connections towards your unlocked destinations offer a meaningful
+estimated saving and a short fallback detour. The arrow explains Check flights;
+Keep walking (or the standalone strip's close button) resumes the known route
+without skipping a quest. Opening its menu confirms actual flights. Reference
+connections never unlock paths or permit unconfirmed auto-flight actions.
 Unsupported beta events no longer stop addon loading. Inn recording uses supported
 binder interactions, never INN_INFO; home binding remains manual. /wt probe lists
 unavailable event subscriptions and inn recording capabilities. Event handler

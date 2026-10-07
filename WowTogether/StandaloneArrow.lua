@@ -87,5 +87,5 @@ function ns.UpdateStandaloneArrow(state)
         elseif state.angle ~= nil then ns.DrawNavigationArrow(state.angle, frame.icon) end
     end
     frame.distance:SetText(state.flight and "Flying" or state.distance and ns.FormatDistance(state.distance) or state.status)
-    frame.title:SetText(state.stop.title)
+    frame.title:SetText(state.stop.flightDiscovery and ("Visit " .. state.stop.flightDiscovery.source.name) or state.stop.title)
 end
