@@ -151,7 +151,8 @@ function ns.GenerateFixedGuide(guide, cooperative)
     local resetTravel
     local onYield = function() metrics, learned = {}, {}; if resetTravel then resetTravel() end end
     local travelCost; travelCost, resetTravel = ns.NewFixedTravelCost(geometry, cooperative, onYield)
-    guide.optimization = ns.OptimizeFixedPlan(ordered, geometry, cooperative, onYield, travelCost)
+    guide.optimization = ns.OptimizeFixedPlan(ordered, geometry, cooperative, onYield, travelCost,
+        {levelLow = guide.sectionLow or guide.minLevel, levelHigh = guide.sectionHigh or guide.maxLevel})
     for index, stop in ipairs(ordered) do stop.guideStep = index end
     guide.fixedPlan = ordered
     return ordered

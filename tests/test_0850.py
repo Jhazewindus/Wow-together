@@ -60,7 +60,12 @@ class HubFlowTests(unittest.TestCase):
         self.assertIn('XP', decision.why)
 
     def test_more_walking_is_not_justified_by_fewer_held_quests_alone(self):
-        c, plan, distance = hub_fixture(handin_x=.1)
+        c, plan, _ = hub_fixture()
+        # Same future reward hub off the outgoing work leg. Unlike collinear
+        # coordinates, taking one reward early truly adds walking here.
+        for s in plan.values():
+            if s.kind == 't': s.y = .1
+        distance = c.lua.eval('function(a,b) return math.sqrt((a.x-b.x)^2+(a.y-b.y)^2)*1000 end')
         old = sequence(plan)
         result = c.ns.ImproveQuestFlow(plan, distance, False, None)
         self.assertEqual(sequence(plan), old)

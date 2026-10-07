@@ -63,6 +63,9 @@ function ns.NewGuideFlowModel(plan, distance, options)
             unknownRewards = 0, externalPrerequisites = model.external, missingLocations = 0,
             minimumKills = 0, combatXPUnknown = 0, requiredItemsUnknown = 0, finishLevel = model.startLevel,
             uncertainTravelLegs = 0, blockedTravelLegs = 0, difficultyPressure = 0}
+        -- Reward-only progress at each unchanged work action. This measures
+        -- collecting known XP sooner, not extra XP or inferred combat time.
+        result.workRewards, result.rewardXPBeforeWork = {}, 0
         local counts, seen, done, accepted, credits, log, level, xp = {}, {}, {}, {}, {}, model.initialLog, model.startLevel, model.startXP
         for index, stop in ipairs(candidate) do
             local quest = model.quests[stop.id] or {}
@@ -118,6 +121,8 @@ function ns.NewGuideFlowModel(plan, distance, options)
             -- Later pickups cannot receive retroactive credit. This is a lower
             -- bound, never a drop rate or a claim about special beta conditions.
             if stop.kind == "q" then
+                result.workRewards[stop] = result.questXP
+                result.rewardXPBeforeWork = result.rewardXPBeforeWork + result.questXP
                 result.difficultyPressure = result.difficultyPressure + math.max(0, (quest.level or level) - level - 3)
                 if stop.action == "kill" and stop.entityID and not stop.quantityUnknown and type(stop.quantity) == "number" then
                     local mob = stop.entityID
@@ -156,7 +161,7 @@ end
 -- Pull the complete dependency closure of later work into an existing trip.
 -- This can move an unlock turn-in + pickup + cave objectives together even
 -- when they are far apart in the original sequence. All endpoints/work remain.
-function ns.ImproveQuestFlow(plan, distance, cooperative, onYield)
+function ns.ImproveQuestFlow(plan, distance, cooperative, onYield, options)
     local model = ns.NewGuideFlowModel(plan, distance)
     local work, tried, accepted = 0, 0, 0
     local function tick()
@@ -370,6 +375,147 @@ function ns.ImproveQuestFlow(plan, distance, cooperative, onYield)
             end
             if not changed then break end
         end
+    end
+    -- After the existing trip search, collect ready rewards during visits the
+    -- guide already makes. The old hub pass misses equal-travel hand-ins when
+    -- a later busy hub fixes the same peak log and no minimum-level gate changes.
+    -- Search all mapped hand-ins, including ones beyond the trip lookahead;
+    -- only already-finished work can move, never its objectives or pickups.
+    local handins = {}
+    for _, stop in ipairs(plan) do
+        if stop.kind == "t" and not stop.unknownLocation and not stop.planNeedsReview then handins[#handins + 1] = stop end
+    end
+    local regions = {}
+    local function indexVisits()
+        reindex()
+        local region = 0
+        for _, stop in ipairs(plan) do
+            if stop.unknownLocation or stop.planNeedsReview then region = region + 1 end
+            regions[stop] = region
+        end
+        table.sort(handins, function(a, b) return positions[a] < positions[b] end)
+    end
+    local function keepsWorkRewards(value)
+        for stop, reward in pairs(current.workRewards) do
+            if (value.workRewards[stop] or 0) < reward then return false end
+        end
+        return true
+    end
+    -- Earlier leveling can reduce later grey-quest rewards. A generic guide
+    -- must work throughout its bracket, rather than just at its lowest known
+    -- prerequisite level. Lazy state replays avoid work for equivalent visits.
+    local progressModels, progressCurrent
+    local function bracketProgress(proposed)
+        if not options or not options.levelLow or not options.levelHigh then return true end
+        if not progressModels then
+            progressModels, progressCurrent = {}, {}
+            local low, high = math.max(1, options.levelLow), math.min(60, options.levelHigh)
+            local middle = math.floor((low + high) / 2)
+            local cap = ns.xpBaseline and ns.xpBaseline[middle]
+            local states = {{low, 0}, {middle, 0}, {high, 0}, {middle, cap and math.floor(cap / 2) or 0}}
+            local seen = {}
+            for _, state in ipairs(states) do
+                local key = state[1] .. ":" .. state[2]
+                if not seen[key] then
+                    seen[key] = true
+                    -- Geography/kill/log guards already passed above and do
+                    -- not depend on starting XP. Replay only progression here.
+                    local replay = ns.NewGuideFlowModel(plan, nil, {startLevel = state[1], startXP = state[2]})
+                    progressModels[#progressModels + 1] = replay
+                    progressCurrent[#progressCurrent + 1] = replay.evaluate(plan, tick)
+                end
+            end
+        end
+        local values = {}
+        for index, replay in ipairs(progressModels) do
+            local before, after = progressCurrent[index], replay.evaluate(proposed, tick)
+            if not after.valid or after.questXP < before.questXP or after.levelDeficitXP > before.levelDeficitXP
+                or after.missingLevelCurve > before.missingLevelCurve or after.difficultyPressure > before.difficultyPressure then return false end
+            for stop, reward in pairs(before.workRewards) do if after.workRewards[stop] < reward then return false end end
+            values[index] = after
+        end
+        return values
+    end
+    indexVisits()
+    for _ = 1, 2 do
+        local changed = false
+        for first = 1, #plan - 1 do
+            local anchor = plan[first]
+            if not anchor.unknownLocation and not anchor.planNeedsReview and ns.ValidTravelPoint(anchor) then
+                local targets = {}
+                for visitIndex, handin in ipairs(handins) do
+                    local stages = model.stages[handin.id]
+                    if positions[handin] > first + 1 and positions[handin] < #plan
+                        and positions[stages[#stages - 1]] <= first and regions[handin] == regions[anchor]
+                        and regions[stages[#stages - 1]] == regions[anchor]
+                        and model.near(anchor, handin, 100) then
+                        targets[#targets + 1] = handin
+                        if #targets == 24 then break end
+                    end
+                    -- Most entries fail cheap position/region checks. Count
+                    -- four of these probes as one unit; full replays still
+                    -- yield at every 200 actions, as do travel-graph queries.
+                    if visitIndex % 4 == 0 then tick() end
+                end
+                local best, bestMetrics, bestBlock, bestProgress
+                local function consider(group)
+                    local proposed, block, last = candidate(group, first, true)
+                    if not proposed then return end
+                    tried = tried + 1
+                    local estimate = changedCost(proposed)
+                    if estimate > current.distance + 0.001 then return end
+                    if estimate > current.distance - minimumSaving and not hubBenefitPossible(block, first, last) then return end
+                    local value = model.evaluate(proposed, tick)
+                    local reference = bestMetrics or current
+                    local earlier = value.rewardXPBeforeWork > current.rewardXPBeforeWork
+                    local progression = value.peakLog < current.peakLog or value.levelDeficitXP < current.levelDeficitXP
+                        or value.difficultyPressure < current.difficultyPressure or value.questXP > current.questXP
+                    if value.valid and value.peakLog <= current.peakLog
+                        and value.levelDeficitXP <= current.levelDeficitXP and value.missingLevelCurve <= current.missingLevelCurve
+                        and value.questXP >= current.questXP and value.minimumKills <= current.minimumKills
+                        and value.difficultyPressure <= current.difficultyPressure
+                        and value.uncertainTravelLegs <= current.uncertainTravelLegs and value.blockedTravelLegs <= current.blockedTravelLegs
+                        and keepsWorkRewards(value)
+                        and (earlier or progression or value.distance <= current.distance - minimumSaving)
+                        and (value.distance < reference.distance - 0.001
+                            or math.abs(value.distance - reference.distance) <= 0.001
+                                and (value.rewardXPBeforeWork > reference.rewardXPBeforeWork
+                                    or value.rewardXPBeforeWork == reference.rewardXPBeforeWork
+                                        and (value.peakLog < reference.peakLog or value.levelDeficitXP < reference.levelDeficitXP
+                                            or value.difficultyPressure < reference.difficultyPressure or value.questXP > reference.questXP))) then
+                        local progress = bracketProgress(proposed)
+                        if progress then best, bestMetrics, bestBlock, bestProgress = proposed, value, block, progress end
+                    end
+                end
+                -- Compare the whole ready visit as well as individual rewards;
+                -- separate moves can leave a return that the combined visit removes.
+                if #targets > 1 then consider(targets) end
+                for index = 1, math.min(8, #targets) do consider({targets[index]}) end
+                if best then
+                    local ids = {}
+                    for _, handin in ipairs(bestBlock) do
+                        ids[#ids + 1] = handin.id
+                        local quest = model.quests[handin.id]
+                        if bestMetrics.rewardXPBeforeWork > current.rewardXPBeforeWork and type(quest.xp) == "number" and quest.xp > 0 then
+                            handin.flowEarlyReward = true
+                        elseif bestMetrics.peakLog < current.peakLog then handin.flowLogSpace = true end
+                    end
+                    changes[#changes + 1] = {questIDs = ids, nearQuestID = anchor.id,
+                        travelSaved = current.distance - bestMetrics.distance, killsSaved = current.minimumKills - bestMetrics.minimumKills,
+                        actions = #bestBlock, kind = "reward-visit", logPeakReduced = current.peakLog - bestMetrics.peakLog,
+                        levelDeficitReduced = current.levelDeficitXP - bestMetrics.levelDeficitXP,
+                        difficultyReduced = current.difficultyPressure - bestMetrics.difficultyPressure,
+                        rewardXPGained = bestMetrics.questXP - current.questXP,
+                        rewardBeforeWorkGained = bestMetrics.rewardXPBeforeWork - current.rewardXPBeforeWork}
+                    for index, stop in ipairs(best) do plan[index] = stop end
+                    current, accepted, changed = bestMetrics, accepted + 1, true
+                    if type(bestProgress) == "table" then progressCurrent = bestProgress end
+                    indexVisits()
+                end
+                tick()
+            end
+        end
+        if not changed then break end
     end
     return {before = baseline, after = current, candidates = tried, moves = accepted, changes = changes}
 end

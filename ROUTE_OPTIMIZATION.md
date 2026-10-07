@@ -1,4 +1,103 @@
-# Quest-flow optimization — 0.8.52
+# Quest-flow optimization — 0.8.53
+
+## Earlier rewards during existing visits
+
+The target remains **completing the selected zone guide efficiently**. The
+previous hub pass could miss a useful ready hand-in when later pickups fixed
+the same maximum log occupancy and the known XP/minimum-level checks stayed
+equal. The reward was eventually collected, but the player did later work
+without its XP despite an earlier visit to its giver.
+
+After the established objective/hub/trip passes, the compiler now compares
+ready hand-ins within an estimated 100 yards of an existing mapped stop. It
+searches all hand-ins rather than only the next 128 actions. All previous
+stages must already precede that visit; only hand-ins move. Compare the complete
+ready visit (up to 24 rewards) and up to eight individual alternatives, retaining
+the hand-ins' relative order. Two cooperative sweeps are bounded by the guide
+size. First/last actions remain fixed. Unmapped/review regions, prerequisites,
+immediate escorts and actual pickup availability keep their existing rules.
+
+The new replay records known quest rewards collected before **each objective**.
+A candidate cannot give any of those unchanged work actions less previously
+collected quest XP. It must improve earlier collection, an existing progression/
+log measure, or meaningful complete-route travel. Full-route distance cannot
+increase; earlier XP alone never pays for an added detour. Prefer shorter full
+travel, then more reward XP available before work. Keep all existing guards on
+held quests, level shortfalls, difficulty, total quest rewards, required kills
+and uncertain/blocked travel legs. Equivalent visits retain their order.
+
+`rewardXPBeforeWork` is the sum of rewards already collected at the same work
+actions. It measures earlier availability over that fixed work set, **not extra
+XP**, XP/hour or measured fighting time. For example, making 100 reward XP
+available before three more objectives raises the measure by 300 without adding
+300 XP to the player. `workRewards` records the per-action values so an aggregate
+improvement cannot hide a delay at another objective. Also replay the bottom,
+middle and top bracket levels and a half-filled middle-level XP bar. Moving a
+reward forward can level a character and reduce XP on another grey quest; those
+losses reject the proposed visit, even if the lowest starting level passed.
+Cache each state between accepted moves and create those replays only for viable
+visits. Only known quest rewards
+are included; combat, exploration, drop/spawn delays and inventory preparation
+remain unmeasured. Actual starting XP/level can be supplied for replay, but the
+generic fixed guide never assumes the current player's combat history.
+
+The regression fixture keeps all 18 actions and the same full travel/log peak:
+finish two quests → hand in one at the hub → depart for other work → return for
+the other reward. A later independent three-quest loop fixes peak log occupancy
+at three, so the old peak/gate checks see no benefit. Collecting the ready reward
+during the first hub visit gives the intervening objective its XP sooner.
+Separate fixtures cover grouped rewards, a reward more than 128 actions away,
+true off-path detours, unknown rewards, incomplete work, review boundaries,
+different maps, escorts and reload/scan recovery.
+
+The identical-source comparison against **0.8.52** covers all **152 faction/zone/
+level sections**, preserving all **12,985 actions**. It supports **47 earlier-
+reward visits in 32 sections**; the other **120 retain exactly their previous
+order**. No objective work changes order in the added pass. Examples include
+Gold Dust Exchange during the Fargodeep Mine visit in Elwynn, Kolkar Leaders
+during the Centaur Bracers visit in the Barrens, and Souvenirs of Death during
+the Dangerous! visit in Hillsbrad. These depend on compatible progress and
+actual offers; the existing level/identity filters remain.
+All **608 additional bracket/starting-XP replays** retain the reward/progression
+guards. They supplement the compiler's default reward-only starting state;
+actual combat XP and the player's full play history remain unmeasured.
+
+`GuideFlowAudit.json` records source/compiler hashes, complete old/new actions,
+reward XP before each work action and the existing state metrics. Prior releases'
+comparisons remain in their tags. Quest/NPC/transport facts are unchanged. The
+per-move traces include the established candidate passes; `reward-visit`
+identifies the added pass, rather than counting earlier trip changes as new.
+The small guide explains collecting XP while there; saved plans retain that reason.
+Installing a new version rebuilds a saved guide with personal progress/skips;
+ordinary quest updates, scans and same-version reloads retain the chosen order.
+
+Reproduce the identical-source comparison with the 0.8.52 capture, or regenerate
+it from that tag before changing the optimizer:
+
+```sh
+git show v0.8.52:WowTogether/QuestFlow.lua > /tmp/quest-flow-0.8.52.lua
+python tools/audit_quest_flow.py --flow-module /tmp/quest-flow-0.8.52.lua --label 0.8.52 --output baseline.json
+python tools/audit_quest_flow.py --baseline baseline.json --output compared.json --comparison-output comparisons.json
+python tools/audit_quest_guides.py --output guide-audit.json
+```
+
+The source-gap-free gate remains **33 sections**, with **119 still needing
+facts**. Estimated connections are not a terrain mesh or proof of the globally
+fastest route. Personal flight/hearth availability is not invented in the
+generic compiler; live confirmed transport navigation stays separate. Timed beta
+loops must compare the same starting state, every required action and the same
+ending journey.
+
+All 1,360 host tests passed, including 50 targeted checks for these rules and
+fixed-guide recovery. All 81
+Lua files compile under Lua 5.1. Extra state comparisons run only during loading
+and viable reward alternatives. In the cooperative 246-action Durotar fixture
+with mocked 5,000 × 3,500 map geometry, the prior/new compilers needed 2,326/2,392
+resumes. That run used 2.90/3.49 seconds of host CPU; maximum observed resume CPU
+was 44.0/102.6 ms. The search has a loading cost; these host values do not prove
+native responsiveness or a universal frame-time bound. Started plans stay cached.
+
+## Previous overlapping trip pass — 0.8.52
 
 ## Complete overlapping trips
 

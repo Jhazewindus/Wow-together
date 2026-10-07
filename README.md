@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.52 — BETTER QUEST TRIPS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.53 — EARLIER REWARDS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -22,6 +22,20 @@ Replace the folder on **every party member's client**, including all **81 Lua
 files** and the **Media folder**, then fully restart the client. Restart if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.53 collects ready rewards during existing visits.** The compiler considers
+individual and grouped hand-ins within an estimated 100 yards of a planned
+stop, including rewards beyond the old lookahead. Earlier collection matters
+even when the final reward total, log peak and minimum-level shortfall are the
+same. Every objective must retain at least as much previously collected quest
+XP; earlier XP alone cannot justify additional full-route walking. Work stages,
+prerequisites, endpoints and fixed order during play remain. The small guide
+explains collecting XP while you are there, and keeps that reason after reload.
+Bracket replays also reject losses caused by leveling before a later low-level
+reward. The identical-source comparison supports 47 earlier-reward visits in 32 of 152
+sections, preserving all 12,985 actions. Combat XP and live travel times remain
+unmeasured; this is not a guarantee of a level or globally optimal XP/hour.
+See [ROUTE_OPTIMIZATION.md](ROUTE_OPTIMIZATION.md).
 
 **0.8.52 considers overlapping quests as a complete trip.** A single quest move
 can leave the same area needing another visit. The fixed-guide compiler now

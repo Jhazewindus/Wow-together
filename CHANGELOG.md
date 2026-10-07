@@ -1,5 +1,37 @@
 # Wow Together changelog
 
+## 0.8.53
+
+**EARLIER REWARDS**
+
+- Collect ready hand-ins during existing mapped visits, individually or together.
+  Search all hand-ins, including rewards beyond the old trip lookahead. Move
+  only hand-ins whose work already precedes the visit; retain pickup/objective
+  order, prerequisites, escorts, endpoints and unavailable/review boundaries.
+- Compare known quest XP collected before every objective. Earlier rewards can
+  improve the level curve even when final XP, peak log and minimum-level
+  shortfalls stay equal. Do not delay XP before another objective, add walking
+  for earlier rewards alone, or worsen the existing full-route state guards.
+  Also replay the bottom, middle and top bracket levels and a partly filled
+  middle-level XP bar: reject losses from leveling before a later grey quest.
+  Unknown combat/drop XP and timing are not invented.
+- Explain useful earlier hand-ins in the small guide: collect XP while you are
+  there, before the next work. Keep the reason after reload. Started guides
+  retain their order during quest updates and scans; installing this version
+  rebuilds a saved guide under the new rules while applying personal progress.
+- The identical-source comparison retains all 12,985 actions across 152 guide
+  sections and supports 47 earlier-reward visits in 32 sections. The other 120
+  retain their previous order. Quest/NPC/transport source facts are unchanged.
+  GuideFlowAudit.json records full old/new steps and rewards before work;
+  ROUTE_OPTIMIZATION.md explains the estimates and remaining source gaps.
+  All 608 additional bracket/starting-XP replays preserve the reward and
+  progression guards.
+- Validation: all 1,360 host tests passed, including 50 targeted flow/recovery
+  checks; all 81 Lua files compile under Lua 5.1. The source audit checks 11,822
+  points and 16,849 action reasons. Its 33 gap-free sections and 119 sections
+  still needing source facts are unchanged; native terrain, reward scaling and
+  complete-trip timing remain beta-client checks.
+
 ## 0.8.52
 
 **BETTER QUEST TRIPS**

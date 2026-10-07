@@ -6,7 +6,7 @@ local cached
 local goalFields = {"id", "kind", "mapID", "x", "y", "title", "npcName", "action", "itemName", "targetName",
     "unknownLocation", "planNeedsReview", "travelReason", "confirmation", "dungeonEntrance", "professionStep",
     "memberKey", "objectiveKey", "quantity", "quantityUnknown", "useItemName", "flowWithQuestID", "flowUnlockQuestID",
-    "flowRewardFirst", "flowLogSpace"}
+    "flowRewardFirst", "flowLogSpace", "flowEarlyReward"}
 local function unchanged(decision, goal)
     for _, field in ipairs(goalFields) do
         if not ns.Public(goal[field]) or decision.goalFacts[field] ~= goal[field] then return false end
@@ -183,6 +183,9 @@ local function explain(goal, ctx)
     end
     if goal.kind == "t" and goal.flowRewardFirst then
         return result("reward-first", "Collect this reward before the next work; its XP helps with the levels needed later in this guide.", true)
+    end
+    if goal.kind == "t" and goal.flowEarlyReward then
+        return result("early-reward", "Hand this in while you're here to collect XP before your next quest work.", true)
     end
     if goal.kind == "t" and goal.flowLogSpace then
         return result("quest-log-space", "Hand this in during this visit to leave more room for the next quest pickups.", true)

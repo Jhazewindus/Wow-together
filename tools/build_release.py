@@ -55,6 +55,17 @@ then fully restart the client; the release includes taint mitigation (a /reload 
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+0.8.53 EARLIER REWARDS collects ready hand-ins during existing mapped visits.
+Individual and grouped rewards can come before later work even when final XP,
+peak held quests and known minimum-level shortfalls stay equal. Compare the full
+trip: earlier XP alone cannot add walking or delay rewards before another
+objective. Preserve every action, prerequisite, escort and endpoint; started
+guides keep their order. Brief reasons explain collecting XP while you are there.
+Bracket/starting-XP replays reject losses from leveling before later grey quests.
+47 earlier-reward visits improve 32 of 152 sections; all 12,985 actions remain.
+See ROUTE_OPTIMIZATION.md and GuideFlowAudit.json for the estimated comparisons.
+Source facts and their completeness limits are unchanged.
+
 0.8.52 BETTER QUEST TRIPS also compares two or three overlapping later quests
 and their pickup/unlock/work dependencies together. A single move can leave
 another visit necessary; a complete trip can remove that return. All actions

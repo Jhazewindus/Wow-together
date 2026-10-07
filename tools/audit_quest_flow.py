@@ -19,7 +19,22 @@ FIELDS = ('id', 'kind', 'mapID', 'x', 'y', 'action', 'entityID', 'entityType',
           'objectiveKey', 'quantity', 'quantityUnknown', 'unknownLocation', 'planNeedsReview')
 
 
-def describe_actions(stops, ns):
+def compare_replay(model, original, candidate, key):
+    before, after = model.evaluate(original), model.evaluate(candidate)
+    assert after.valid, (key, 'invalid route')
+    for field in ('peakLog', 'levelDeficitXP', 'minimumKills', 'difficultyPressure',
+                  'missingLevelCurve', 'uncertainTravelLegs', 'blockedTravelLegs'):
+        assert after[field] <= before[field], (key, field, 'regression')
+    assert after.questXP >= before.questXP, (key, 'reward XP regression')
+    assert after.rewardXPBeforeWork >= before.rewardXPBeforeWork, (key, 'earlier reward regression')
+    for stop in candidate.values():
+        if stop.kind == 'q':
+            assert after.workRewards[stop] >= before.workRewards[stop], (key, stop.id, 'reward delayed before work')
+    assert after.distance <= before.distance + 0.001, (key, 'complete journey regression')
+    return before, after
+
+
+def describe_actions(stops, ns, rewards=None):
     """Disambiguate repeated work stages in the published old/new evidence."""
     occurrences, result = collections.Counter(), []
     for index, stop in enumerate(stops, 1):
@@ -27,6 +42,8 @@ def describe_actions(stops, ns):
         action = {field: stop[field] for field in FIELDS if stop[field] is not None}
         action.update(step=index, title=ns.CatalogueQuest(stop.id).title,
                       occurrence=occurrences[stop.id, stop.kind])
+        if rewards is not None and stop.kind == 'q':
+            action['quest_reward_xp_before_work'] = rewards[stop]
         result.append(action)
     return result
 
@@ -46,7 +63,7 @@ def capture(baseline=None, flow_module=None, label=None):
                       flow_module.read_text(), 'WowTogether', c.ns)
     result, seen = [], set()
     old_guides = {(g['faction'], g['key']): g for g in baseline['guides']} if baseline else {}
-    comparisons = []
+    comparisons, starting_states_checked = [], 0
     for faction, races in (('Horde', (2, 6, 5, 8)), ('Alliance', (1, 3, 4, 7))):
         c.ns.profile.faction, c.ns.profile.classID = faction, 8
         for race in races:
@@ -96,21 +113,30 @@ def capture(baseline=None, flow_module=None, label=None):
                             candidate.append(source)
                         assert len(candidate)==len(original),(key,'removed stage')
                         model=c.ns.NewGuideFlowModel(original,metric,None)
-                        before=model.evaluate(original)
-                        after=model.evaluate(c.lua.table_from(candidate))
-                        assert after.valid,(key,'invalid route')
-                        for field in ('peakLog','levelDeficitXP','minimumKills','difficultyPressure','uncertainTravelLegs','blockedTravelLegs'):
-                            assert after[field]<=before[field],(key,field,'regression')
-                        assert after.questXP>=before.questXP,(key,'reward XP regression')
-                        assert after.distance<=before.distance+0.001,(key,'complete journey regression')
+                        candidate_table=c.lua.table_from(candidate)
+                        before,after=compare_replay(model,original,candidate_table,key)
+                        low=int(guide.sectionLow or guide.minLevel or model.startLevel)
+                        high=int(guide.sectionHigh or guide.maxLevel or low)
+                        middle=(low+high)//2
+                        cap=c.ns.xpBaseline[middle]
+                        states={(low,0),(middle,0),(high,0),(middle,int(cap//2) if cap else 0)}
+                        state_comparisons=[]
+                        for start_level,start_xp in sorted(states):
+                            options=c.lua.table_from({'startLevel':start_level,'startXP':start_xp})
+                            replay=c.ns.NewGuideFlowModel(original,metric,options)
+                            prior,improved=compare_replay(replay,original,candidate_table,(key,start_level,start_xp))
+                            starting_states_checked+=1
+                            state_comparisons.append({'start_level':start_level,'start_xp':start_xp,
+                                'metrics':{field:{'before':prior[field],'after':improved[field]} for field in
+                                    ('questXP','rewardXPBeforeWork','levelDeficitXP','difficultyPressure')}})
                         encode=lambda values:[f'{int(s.id)}:{s.kind}' for s in values]
                         old_order=encode(original.values());new_order=encode(candidate)
                         if old_order!=new_order:
                             flow=guide.optimization.flow
                             comparisons.append({'faction':faction,'key':guide.key,'zone':guide.zone,
                                 'before':old_order,'after':new_order,
-                                'before_actions': describe_actions(original.values(), c.ns),
-                                'after_actions': describe_actions(candidate, c.ns),
+                                'before_actions': describe_actions(original.values(), c.ns, before.workRewards),
+                                'after_actions': describe_actions(candidate, c.ns, after.workRewards),
                                 'alternatives_evaluated':flow.candidates,'accepted_loop_changes':flow.moves,
                                 'loop_changes':[{'quest_ids':list(change.questIDs.values()),'near_quest_id':change.nearQuestID,
                                     'actions_moved':change.actions,'estimated_travel_units_saved':round(change.travelSaved,2),
@@ -119,17 +145,21 @@ def capture(baseline=None, flow_module=None, label=None):
                                     'log_peak_reduced':change.logPeakReduced or 0,
                                     'reward_only_xp_shortfall_reduced':change.levelDeficitReduced or 0,
                                     'difficulty_pressure_reduced':change.difficultyReduced or 0,
-                                    'estimated_reward_xp_gained':change.rewardXPGained or 0} for change in flow.changes.values()],
+                                    'estimated_reward_xp_gained':change.rewardXPGained or 0,
+                                    'reward_xp_before_work_gained':change.rewardBeforeWorkGained or 0} for change in flow.changes.values()],
                                 'quest_titles':{str(int(s.id)):c.ns.CatalogueQuest(s.id).title for s in candidate},
                                 'actions_preserved':len(candidate),'endpoints_preserved':True,
+                                'starting_state_replays':state_comparisons,
                                 'metrics':{field:{'before':round(before[field],2),'after':round(after[field],2)}
-                                    for field in ('distance','peakLog','levelDeficitXP','minimumKills','difficultyPressure','questXP','uncertainTravelLegs','blockedTravelLegs')},
+                                    for field in ('distance','peakLog','levelDeficitXP','minimumKills','difficultyPressure','questXP','rewardXPBeforeWork','uncertainTravelLegs','blockedTravelLegs')},
                                 'assumptions':['Fixed full-guide scope; no optional quests removed.',
                                     'Published ground/ordinary transport graph, local attachments and uncovered legs are estimates.',
                                     'No personal flight, mount or hearth assumed; live navigation retains confirmed transports.',
                                     'Quest-reward-only Classic XP baseline; combat/exploration XP, drop/spawn delays and inventory costs remain unmeasured.',
                                     'No increased log peak, known level XP shortfall, repeated kill lower bound or uncertain/blocked travel legs.',
-                                    'Equal-travel hub changes require proven log/progression/shared-kill improvement; their objective work stays in order.']})
+                                    'Reward visits move only ready hand-ins; no objective receives less previously collected quest XP.',
+                                    'Reward XP before work is summed over the same objectives: earlier collection, not additional XP or measured time saved.',
+                                    'Equal-travel visits require log/progression/shared-kill or earlier-reward improvement; equivalent visits are retained.']})
                     print(f'{faction}: {guide.key}: {len(stops)} actions', flush=True)
     report = {'schema': 1, 'addon': label or c.ns.VERSION,
             'flow_module_sha256': hashlib.sha256((flow_module or ROOT / 'WowTogether/QuestFlow.lua').read_bytes()).hexdigest(),
@@ -147,8 +177,12 @@ def capture(baseline=None, flow_module=None, label=None):
                               'candidate_flow_sha256':report['flow_module_sha256'],
                               'catalogue_sha256':report['catalogue_sha256'],'travel_sha256':report['travel_sha256'],
                               'guides_compared':len(seen),
+                              'starting_states_checked':starting_states_checked,
                               'actions_preserved':sum(len(g['stops']) for g in result),
-                              'additional_trip_changes':sum(move['kind']=='objective-trip'
+                              'trace_note':'Loop-change traces include established candidate passes; reward-visit identifies the added ready-reward pass.',
+                              'trip_changes_in_candidate_traces':sum(move['kind']=='objective-trip'
+                                  for change in comparisons for move in change['loop_changes']),
+                              'additional_reward_visits':sum(move['kind']=='reward-visit'
                                   for change in comparisons for move in change['loop_changes']),
                               'changed_guides':len(comparisons),'changes':comparisons}
     return report

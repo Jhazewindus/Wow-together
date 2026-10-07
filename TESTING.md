@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.52** — **BETTER QUEST TRIPS**, World of Warcraft: Forever beta,
+For **0.8.53** — **EARLIER REWARDS**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
@@ -19,6 +19,29 @@ The expanded-guide checks below take about **15–25 minutes**.
 4. Installing a new version rebuilds the saved guide with the updated rules,
    applying completed/accepted quests and manual skips. Step numbers may change.
    A reload on the same version should preserve the saved order.
+
+## Earlier rewards at existing visits — about 10 minutes
+
+- Start or resume a newly rebuilt zone guide. When a completed quest's giver
+  is already part of a visit, check that a useful ready hand-in is collected
+  before leaving for later work. Nearby ready rewards can share the visit.
+  The small guide should explain collecting XP while you are there; it must
+  never request a reward before its objective work is actually finished.
+- Examples to check when applicable: Gold Dust Exchange with the Fargodeep
+  Mine visit in Elwynn; Kolkar Leaders near the Centaur Bracers visit in the
+  Barrens; Souvenirs of Death near Dangerous! in Hillsbrad. Personal progress,
+  NPC offers and the existing level filter still control eligible steps.
+- Compare the complete loop, including all hand-ins and the onward journey.
+  Earlier XP by itself must not add a separate detour. Note the level/XP before
+  the next work, repeated visits and full trip duration; host estimates cannot
+  establish actual combat or travel time savings.
+- Near the top of a bracket, also check ready lower-level rewards. Bringing
+  another reward forward must not needlessly delay them until their XP reduces.
+  Record the quest names, levels and actual displayed XP; the comparison uses
+  a Classic reward/level curve and needs Forever client confirmation.
+- Scan, change unrelated quests and reload on the same version. The selected
+  order and short hand-in reasons should remain. Reward choices remain manual;
+  skipped/unavailable quests and immediate escorts keep their existing behavior.
 
 ## Overlapping whole trips — about 10 minutes
 
