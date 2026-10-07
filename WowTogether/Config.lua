@@ -39,7 +39,7 @@ local sections = {
         {"distanceUnits", "Distance units", "Choose how distances appear under the arrow.", {{"yards", "Yards"}, {"metres", "Metres"}}},
         {"mapLegend", "Show route explanation on the map", "Show route status below the world map. Route controls remain available."}}},
     {"travel", "Travel routing", {
-        {"travelNetwork", "Use travel connections", "Use zone crossings, city gates and transports to reach your destination."},
+        {"travelNetwork", "Use travel connections", "Use mapped terrain waypoints, zone crossings, city gates and transports to reach your destination."},
         {"suggestFlights", "Suggest faster known flights", "Suggest an unlocked flight when it should be faster than walking."},
         {"nearbyFlights", "Nearby flight-path tips", "Suggest friendly unlearned flight masters within 350 metres, or a short detour on your current route. Shows beneath either arrow; dismiss without skipping quests."},
         {"hearthstoneTips", "Useful hearthstone tips", "Suggest a nearby inn when setting your hearthstone could help with later turn-ins."},

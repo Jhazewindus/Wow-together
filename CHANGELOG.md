@@ -1,5 +1,31 @@
 # Wow Together changelog
 
+## 0.8.56
+
+**TERRAIN WAYPOINTS**
+
+- Route the live arrow and map line around mapped terrain footprints using
+  intermediate waypoints. Apply barrier checks to graph links, player/goal
+  attachments and direct local shortcuts; distant travel points cannot bypass
+  a known mesa. Keep waypoints stable while walking along a segment, advance
+  only when the next corner is clear, and reattach after an actual detour.
+- Add twelve approximate Thousand Needles mesa outlines reviewed against the
+  Classic zone artwork. Reuse static visibility; read current public coordinates
+  for each calculation. This is initial terrain coverage, not an elevation or
+  collision mesh. Other mountains/approaches still need mapping and ground tests.
+- Hide unrouted preview chords crossing mapped barriers while keeping quest
+  markers. When a mapped mesa's lift/ramp/entrance approach is unknown, show
+  brief advice without a walking arrow through its wall. Local work atop the
+  same mesa still works. Preserve guide order/credit, confirmed personal flights,
+  directed ships/zeppelins and transport line gaps. Legacy flight suggestions
+  cannot bypass the same ground checks.
+- Validation: 209 relevant host checks pass, including 17 new checks for shortest visible bends, stable movement,
+  corner clearance, detours, public/private positions, cross-zone projection,
+  map geometry, barrier endpoints, known flights and directional transports.
+  All 83 Lua files compile under Lua 5.1.
+  Actual silhouettes, approach locations and rendering require Forever beta
+  ground testing; see TESTING.md and TRAVEL_DATA.md.
+
 ## 0.8.55
 
 **SMALL CRAFTING STEPS**

@@ -51,6 +51,11 @@ end
 function ns.RouteContext(stop, mapID, facts, travelDistance)
     if stop.professionStep then return ns.GuideDestinationPurpose(stop) end
     if stop.unsafeTransit then return "No mapped bypass is known. Follow roads around the town." end
+    if stop.unsafeTerrain then
+        local purpose = ns.GuideDestinationPurpose(stop, mapID, travelDistance)
+        return (purpose and (purpose .. "\n") or "") .. (stop.terrainApproach
+            and "Reach the mesa using its lift or ramp." or "Use the entrance or a path around the pinnacle.")
+    end
     if ns.IsClassTrainingStep(stop) then
         local training = stop.kind == "trainer" and stop or stop.goal
         return "Optional • level " .. training.trainingLevel .. " training check.\nTrain manually; Done training resumes quests."
@@ -153,7 +158,7 @@ function ns.NavigationState()
     if not stop then return {status = "No route selected"} end
     local state = {visible = true, stop = stop}
     if stop.professionStep and stop.unknownLocation then state.status = stop.label; return state end
-    if stop.unsafeTransit then state.status = stop.label; return state end
+    if stop.unsafeTransit or stop.unsafeTerrain then state.status = stop.label; return state end
     if stop.kind == "notice" then state.status = stop.label; return state end
     if stop.transportWaiting then state.status = stop.label; return state end
     if stop.positionUnavailable then state.status = "Corpse position unavailable on this build"; return state end

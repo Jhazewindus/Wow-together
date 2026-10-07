@@ -1,4 +1,4 @@
-# Travel routing — updated for 0.8.45
+# Travel routing — updated for 0.8.56
 
 Wow Together implements its own Dijkstra search with a binary heap, deterministic
 ties and nonnegative travel-time costs. It finds a path **between quest steps**;
@@ -35,8 +35,47 @@ The published walking geometry joins points within containers and uses measured
 or estimated detour factors. **It does not contain detailed road polylines or a
 collision/terrain mesh.** This improves crossing, gate and transport selection;
 walking between these points can still need human road/terrain judgment. Local
-quest-to-quest segments and uncovered areas retain direct directions. More road
-samples are needed to avoid arbitrary mountains within each zone.
+quest-to-quest segments in uncovered areas retain direct directions. The separate
+terrain layer below adds waypoint bends where reviewed barriers are known. More
+road/approach samples are needed to cover arbitrary mountains in every zone.
+
+## Mapped terrain waypoints — 0.8.56
+
+Our `TravelTerrain.lua` compiles a small visibility graph around convex,
+approximate barrier footprints. The existing Dijkstra search prices those
+walkable-looking segments using the current public map scale and walking speed.
+Terrain checks apply to published walking links, character/goal attachments and
+local direct shortcuts alike. Only mutually visible corners are joined; a
+distant crossing/flight node cannot bypass a known barrier. Faction/hostile-town
+checks still apply. Flights/transports retain their directed, personal rules and
+are not treated as walking through terrain.
+
+`TravelTerrainData.lua` initially contains **twelve Thousand Needles mesa
+footprints**, manually reviewed against the pre-Cataclysm zone artwork hosted at
+[Wowhead's Classic map reference](https://wow.zamimg.com/images/wow/classic/maps/enus/normal/400.jpg),
+retrieved 7 October 2026. Reference SHA256:
+`f7b8914f33ede9cccd661f8c2a99b4c881bea2f974673b8a3f58437cc731a52d`.
+The image is not bundled. The normalized outlines and small clearance margin are
+estimates of map silhouettes, **not measurements of traversable ground, cliffs,
+heights, tunnels, bridges, guard ranges or a collision/navmesh**. No external
+addon routing code is used. These outlines require beta ground testing and do
+not establish complete Thousand Needles or world terrain coverage.
+
+The live arrow targets the next bend; the map uses the same leg list. Following
+a routed segment does not replace its corner after 175 yards. More than 100
+yards off the active segment triggers a new attachment; corners advance on
+arrival/passing only when the next chord is clear of mapped barriers. Cached
+static visibility is reused, while public coordinate projections remain scoped
+to the current read. Quest order, history and completion credit are untouched.
+
+An endpoint inside a footprint can require an entrance, lift or ramp. A 2D
+silhouette cannot locate that approach: if no connection is known, retain the
+quest marker and show brief approach advice without an arrow through the wall.
+Two endpoints inside the same footprint can still perform local work. Freewind
+Post's lift base/top and elevation remain unmapped; no position is invented.
+Unrouted future ground-preview chords crossing known footprints are hidden;
+quest markers remain. The module supports other zones through additional
+reviewed geography, but unmapped terrain retains the original direct directions.
 
 Version 0.8.20 uses town/city ownership to repair 26 missing flight-point labels.
 Full ground-segment intersection checks apply to Dijkstra links and local map

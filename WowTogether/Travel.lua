@@ -370,13 +370,16 @@ function ns.FindFlightPlan(stop, safety)
     speed = number(speed) and speed > 0 and speed or 7
     local best, cost, timingGeometry = nil, nil, {}
     safety = safety or ns.TravelSafetyContext()
+    local terrain = ns.Option("travelNetwork") and ns.TravelTerrainContext()
     for _, edge in pairs(state.edges) do
         local source, dest = state.nodes[edge.source], state.nodes[edge.destination]
         if source and dest and source.known and dest.known and source.point and dest.point
             and ns.TravelNodeAllowed("TAXI_" .. edge.source, source.point, source, safety)
             and ns.TravelNodeAllowed("TAXI_" .. edge.destination, dest.point, dest, safety)
             and not ns.HostileWalkCrossing(position, source.point, safety, true, false)
-            and not ns.HostileWalkCrossing(dest.point, stop, safety, false, true) then
+            and not ns.HostileWalkCrossing(dest.point, stop, safety, false, true)
+            and not (terrain and ns.TerrainWalkCrossing(position, source.point, terrain))
+            and not (terrain and ns.TerrainWalkCrossing(dest.point, stop, terrain)) then
             local start, finish, air = distance(a, source.world), distance(dest.world, b), distance(source.world, dest.world)
             if start and finish and air and air > 0 then
                 local duration, measured, basis = ns.FlightDuration(edge.source, edge.destination, air, timingGeometry)
@@ -540,6 +543,21 @@ function ns.TravelDestination(stop)
         caution.kind, caution.unsafeTransit = "travel", cache.hostile
         caution.label = "Route around " .. cache.hostile.name .. " (" .. cache.hostile.faction .. ")."
         return caution
+    end
+    if ns.Option("travelNetwork") and not ns.HasTravelPathTo(stop) then
+        local position = ns.PlayerPoint(mapID)
+        local terrain = ns.TerrainWalkCrossing(position, stop)
+        if terrain then
+            -- Keep the real quest marker/credit when a mapped barrier has no
+            -- connected approach. A 2D silhouette cannot invent a lift/ramp.
+            local caution = {}; for key, value in pairs(stop) do caution[key] = value end
+            caution.kind, caution.action, caution.goal, caution.unsafeTerrain = "travel", "travel", stop, terrain
+            caution.terrainApproach = terrain.elevated and (ns.TerrainTravelArea(stop) == terrain
+                or ns.TerrainTravelArea(position) == terrain)
+            caution.label = caution.terrainApproach and "Use the lift or ramp at " .. terrain.name .. "."
+                or "Find a path around " .. terrain.name .. "."
+            return caution
+        end
     end
     -- Nearby unlock advice lives in the optional GuideTips strip; it must
     -- not replace the current quest instruction or divert a fixed guide.

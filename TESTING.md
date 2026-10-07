@@ -1,13 +1,13 @@
 # Wow Together — friend test script
 
-For **0.8.55** — **SMALL CRAFTING STEPS**, World of Warcraft: Forever beta,
+For **0.8.56** — **TERRAIN WAYPOINTS**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 81 Lua files** and
+1. Replace the complete WowTogether folder, including **all 83 Lua files** and
    the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    **Fully restart the client for this hotfix**, rather than only `/reload`.
@@ -19,6 +19,33 @@ The expanded-guide checks below take about **15–25 minutes**.
 4. Installing a new version rebuilds the saved guide with the updated rules,
    applying completed/accepted quests and manual skips. Step numbers may change.
    A reload on the same version should preserve the saved order.
+
+## Terrain waypoints — about 10–15 minutes
+
+- With Use travel connections enabled, follow a Thousand Needles step whose
+  direct line would cross a valley pinnacle. Expect bends around mapped mesa
+  outlines and a › marker at the current waypoint. The arrow and first map
+  segment should target the same bend; only that first segment follows you.
+- Walk more than 175 yards along the displayed segment. It should retain its
+  next waypoint. Pass the bend, then expect the next one. It must not advance
+  the quest, hide a needed NPC or send you through the rock to cut a corner.
+- Take a clear detour, then wait a few seconds: travel should reattach from
+  your new position without reordering the guide. Move/zoom the map, including
+  during combat; lines and markers must track the map correctly.
+- Confirm each tested path on the actual ground. The twelve map-reviewed
+  footprints are approximate, not beta-verified collision geometry. Report the
+  quest/step, map coordinates and a screenshot if a bend clips a rock or sends
+  you onto another obstacle. Other zones and unmapped rocks retain direct lines.
+- Freewind Post destinations need a lift/ramp approach. If no connected
+  approach is mapped, expect brief advice with no arrow through the mesa wall.
+  Once atop it, local NPC directions should resume. Confirm known flights to/
+  from Freewind still work; a sourced flight location must never unlock a path.
+- Full-route/ahead views keep quest markers, but must hide an unrouted preview
+  chord through a mapped barrier. Flying/boat segments must retain their gaps
+  instead of drawing walking lines across the terrain or sea.
+- Toggle Use travel connections off/on. Test an open-ground local step and an
+  ordinary cross-zone guide. Check walking, a personally confirmed flight and
+  a ship/zeppelin; guide progress and transport boarding must still work.
 
 ## Small crafting steps — about 5–10 minutes
 

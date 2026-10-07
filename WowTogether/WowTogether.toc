@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.55
-## X-ReleaseName: SMALL CRAFTING STEPS
+## Version: 0.8.56
+## X-ReleaseName: TERRAIN WAYPOINTS
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua
@@ -19,6 +19,8 @@ DungeonData.lua
 DungeonJournalData.lua
 DungeonMapData.lua
 TravelNetwork.lua
+TravelTerrainData.lua
+TravelTerrain.lua
 Catalogue.lua
 Quests.lua
 GuideXP.lua

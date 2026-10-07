@@ -55,6 +55,17 @@ then fully restart the client; the release includes taint mitigation (a /reload 
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+0.8.56 TERRAIN WAYPOINTS makes the live map line and arrow follow intermediate
+bends around mapped terrain. Initial coverage: twelve approximate Thousand
+Needles mesa footprints reviewed against the Classic map. Following a segment
+retains its next corner; a real detour reattaches travel without changing quest
+order or credit. Known flights and transport gaps remain. Unrouted preview
+chords through mapped barriers are hidden while quest markers stay visible.
+Unknown entrances/lifts/ramps get brief advice instead of a walking arrow through
+the wall. These outlines are not a collision/elevation mesh: other terrain still
+needs mapping, and all new bends need beta ground testing. See TRAVEL_DATA.md and
+the terrain checklist in TESTING.md.
+
 0.8.55 SMALL CRAFTING STEPS separates the next affordable work from the full
 skill-goal forecast. Four Light Leather can immediately become four Light Armor
 Kits; intermediate crafts also use partial stock. Buy/gather estimates target at

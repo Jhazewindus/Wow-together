@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.55 — SMALL CRAFTING STEPS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.56 — TERRAIN WAYPOINTS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -18,12 +18,23 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **81 Lua
+Replace the folder on **every party member's client**, including all **83 Lua
 files** and the **Media folder**, then fully restart the client. Restart if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
 
-**0.8.55 makes crafting affordable one step at a time.** Buy/gather for a small
+**0.8.56 adds terrain waypoints to live travel.** The map line and arrow follow
+intermediate bends around mapped barriers, keeping the next waypoint stable as
+you walk. A real detour reattaches the travel path; quest-guide order and credit
+stay separate. Initial coverage is twelve approximate mesa footprints in Thousand
+Needles, reviewed against the Classic map. This is partial terrain coverage, not
+an elevation/collision mesh. Unmapped areas retain direct directions. An unknown
+approach to a mapped mesa gives lift/ramp advice instead of a straight walking
+arrow through its wall. Preview lines crossing a mapped barrier without a route
+are hidden; quest markers remain. See [travel data](TRAVEL_DATA.md) for provenance
+and [testing](TESTING.md) for the required in-game checks.
+
+Crafting remains affordable one step at a time. Buy/gather for a small
 work step, then craft the portion already covered by your bags: four Light Leather
 can immediately become four Light Armor Kits. Intermediate crafts work the same
 way. Shopping estimates target at most five skill points before the next milestone;

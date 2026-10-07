@@ -455,6 +455,7 @@ local function hideDrawing(provider)
     for _, line in ipairs(provider.patrolLines or {}) do line:Hide() end
     if provider.legend then provider.legend:Hide() end
     ns.routeStats.pins, ns.routeStats.lines, ns.routeStats.patrols, ns.routeStats.hostileLines = 0, 0, 0, 0
+    ns.routeStats.terrainLines = 0
 end
 
 function ns.RouteSurface(map)
@@ -693,11 +694,15 @@ function ns.DrawRoute(provider, geometryOnly)
     end
     local visibleLines = 0
     local safety, hostileLines = ns.TravelSafetyContext(), 0
+    local terrain, terrainLines = ns.Option("travelNetwork") and ns.TravelTerrainContext(), 0
     for index = 2, #points do
         if points[index - 1] and points[index] then
             local hostile = ns.HostileWalkCrossing(points[index - 1], points[index], safety, index == 2, false)
+            local barrier = terrain and ns.TerrainWalkCrossing(points[index - 1], points[index], terrain)
             if hostile then
                 hostileLines = hostileLines + 1
+            elseif barrier then
+                terrainLines = terrainLines + 1
             else
                 local x1, y1 = ns.RouteProject(surface, points[index - 1])
                 local x2, y2 = ns.RouteProject(surface, points[index])
@@ -807,6 +812,7 @@ function ns.DrawRoute(provider, geometryOnly)
         .. (missingTravel and ("\nTravel to " .. ns.MapName(displayed[1].mapID) .. ".") or ""))
     ns.routeStats.pins, ns.routeStats.lines = #groups, visibleLines
     ns.routeStats.hostileLines = hostileLines
+    ns.routeStats.terrainLines = terrainLines
     ns.routeStats.status = route.flying and "Flying; ground route lines hidden until landing."
         or route.confirmation and ("Talk to " .. (displayed[1].npcName or "the quest giver") .. " to confirm quest availability.")
         or ns.routePaused and (ns.routePaused .. " Showing the last confirmed route.")

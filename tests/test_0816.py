@@ -74,6 +74,10 @@ class WaypointDirectionsTests(unittest.TestCase):
 
     def test_every_shipped_anonymous_junction_has_readable_zone_and_percent_coordinates(self):
         c = network_client()
+        # This fixture gives every zone the same artificial world origin and
+        # joins it to a synthetic map by a zero-length walk. Isolate naming
+        # from real barrier geography; terrain projection has its own checks.
+        c.ns.travelTerrainData = c.lua.table_from({'maps': {}}, recursive=True)
         shipped = Client(quests=()).ns.travelData.nodes
         c.lua.execute('C_Map.GetMapInfo=nil')
         points = [(key, p) for key, p in shipped.items() if key.startswith('CONVERGENCE_')]

@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.55"
+ns.VERSION = "0.8.56"
 ns.RELEASE_NAME = "SMALL CRAFTING STEPS"
 ns.handlers = {}
 ns.eventFailures = {}

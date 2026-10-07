@@ -154,6 +154,7 @@ local function pointLocation(point)
 end
 local function nodeName(id, point)
     local name = ns.SafeTitle(point.name)
+    if point.terrain then return name or "Valley waypoint", true end
     -- Anonymous graph junctions are waypoints, not named places. Keep their
     -- stable IDs in the graph/diagnostics, without exposing them as directions.
     if string.find(id, "^CONVERGENCE_") and (not name
@@ -175,14 +176,21 @@ function ns.FindTravelPath(origin, goal, useFlights, discoverySource)
     local nodes, adjacency = {START = origin, GOAL = goal}, {}
     local faction = ns.profile and ns.profile.faction
     local safety = ns.TravelSafetyContext()
-    local function link(from, to, seconds, method, extra)
+    local terrain = ns.TravelTerrainContext()
+    local function link(from, to, seconds, method, extra, terrainVisible)
         if not nodes[from] or not nodes[to] or not finite(seconds) or seconds < 0 then return end
         if method == "walk" and ns.HostileWalkCrossing(nodes[from], nodes[to], safety, from == "START", to == "GOAL") then return end
+        if method == "walk" and not terrainVisible and ns.TerrainWalkCrossing(nodes[from], nodes[to], terrain) then return end
         adjacency[from] = adjacency[from] or {}
         adjacency[from][#adjacency[from] + 1] = {from = from, to = to, seconds = seconds, method = method, flight = extra}
     end
     for id, point in pairs(data.nodes) do
         if ns.ValidTravelPoint(point) and allowed(point, faction) and ns.TravelNodeAllowed(id, point, nil, safety) then nodes[id] = point end
+    end
+    for _, map in pairs(terrain.maps) do
+        for id, point in pairs(map.nodes) do
+            if ns.TravelNodeAllowed(id, point, nil, safety) then nodes[id] = point end
+        end
     end
     local flights = ns.db and ns.db.flights and ns.db.flights[ns.self]
     for id, node in pairs(flights and flights.nodes or {}) do
@@ -214,6 +222,33 @@ function ns.FindTravelPath(origin, goal, useFlights, discoverySource)
                 cost = length and length * (factor(nodes[edge.from].mapID) + factor(nodes[edge.to].mapID)) / 2 / speed
             end
             link(edge.from, edge.to, cost, edge.method)
+        end
+    end
+    -- Only visible ground segments can join a mapped barrier's waypoints.
+    -- This applies to published nodes and character attachments alike: a
+    -- distant border/taxi node must not provide a shortcut through a mesa.
+    for mapID, map in pairs(terrain.maps) do
+        for _, edge in ipairs(map.edges) do
+            local length = ns.TravelPointDistance(nodes[edge.from], nodes[edge.to], positions)
+            local seconds = length and length * factor(mapID) / speed
+            link(edge.from, edge.to, seconds, "walk", nil, true)
+            link(edge.to, edge.from, seconds, "walk", nil, true)
+        end
+        for id, point in pairs(nodes) do
+            if id ~= "START" and id ~= "GOAL" and not point.terrain and point.mapID == mapID then
+                local indoor = point.container and (string.find(point.container, "wizards_sanctum", 1, true)
+                    or string.find(point.container, "blackrock_mountain", 1, true))
+                if not indoor then
+                    for terrainID, corner in pairs(map.nodes) do
+                        if nodes[terrainID] then
+                            local length = ns.TravelPointDistance(point, corner, positions)
+                            local seconds = length and length * factor(mapID) / speed
+                            link(id, terrainID, seconds, "walk")
+                            link(terrainID, id, seconds, "walk")
+                        end
+                    end
+                end
+            end
         end
     end
     if useFlights then
@@ -330,15 +365,16 @@ function ns.FindTravelPath(origin, goal, useFlights, discoverySource)
     if not visited.GOAL then return end
     local reverse, cursor = {}, "GOAL"
     while previous[cursor] do reverse[#reverse + 1] = previous[cursor]; cursor = previous[cursor].from end
-    local legs = {}
+    local legs, hasTerrain = {}, false
     for index = #reverse, 1, -1 do
         local edge = reverse[index]
         local name, waypoint = nodeName(edge.to, nodes[edge.to])
         legs[#legs + 1] = {from = nodes[edge.from], to = nodes[edge.to], method = edge.method,
             fromID = edge.from, toID = edge.to, name = name, waypoint = waypoint,
             seconds = edge.seconds, flight = edge.flight}
+        if edge.method == "walk" and (nodes[edge.from].terrain or nodes[edge.to].terrain) then hasTerrain = true end
     end
-    return {legs = legs, seconds = costs.GOAL, cursor = 1, origin = origin, goal = goal}
+    return {legs = legs, seconds = costs.GOAL, cursor = 1, origin = origin, goal = goal, hasTerrain = hasTerrain}
 end
 
 function ns.ResetTravelPath()
@@ -373,6 +409,9 @@ function ns.TravelPathSummary(stop)
     end
     if not ns.HasTravelPathTo(stop.goal or stop) then return end
     local path = ns.travelPath
+    if stop.travelLeg and stop.travelLeg.method == "walk" and stop.travelLeg.to.terrain then
+        return "Go around " .. stop.travelLeg.to.terrain.name .. ".\nContinue towards your guide destination."
+    end
     if stop.travelLeg and stop.travelLeg.method ~= "walk" and stop.travelLeg.method ~= "taxi" then
         local leg = stop.travelLeg
         local boarding = nodeName(leg.fromID, leg.from)
@@ -413,33 +452,57 @@ function ns.TravelNetworkDestination(stop)
         stop.x, stop.y, mapID or 0, ns.travelRevision or 0, tostring(ns.Option("suggestFlights")), ns.profile and ns.profile.faction or "Unknown",
         ns.TravelWalkSpeed()}, ":")
     local now = ns.ReadPublic(GetTime)
-    local moved = not holding and path and (not finite(now) or not ns.travelPathChecked or now - ns.travelPathChecked >= 2)
-        and ns.TravelPointDistance(position, path.origin)
-    if not holding and (ns.travelPathSignature ~= signature or moved and moved > 175
+    local checkMovement = not holding and path and (not finite(now) or not ns.travelPathChecked or now - ns.travelPathChecked >= 2)
+    local moved = checkMovement and ns.TravelPointDistance(position, path.origin)
+    local detour = moved and moved > 175
+    if checkMovement and path.hasTerrain then
+        local leg = path.legs[path.cursor]
+        local distance = leg and leg.method == "walk" and ns.TravelSegmentDistance(position, leg.from, leg.to)
+        -- Following the same segment is progress, not a reason to replace a
+        -- corner waypoint. Reattach only after a real departure from it.
+        if distance then detour = distance > 100 end
+    end
+    if checkMovement then ns.travelPathChecked = finite(now) and now or nil end
+    if not holding and (ns.travelPathSignature ~= signature or detour
         or not path and (not finite(now) or not ns.travelPathChecked or now - ns.travelPathChecked >= 1)) then
         ns.travelPathSignature = signature
         ns.travelPathChecked = finite(now) and now or nil
         ns.travelPath = ns.FindTravelPath(position, stop, ns.Option("suggestFlights"))
         if ns.travelPath then ns.travelPath.selectionKey = ns.routeSelection and ns.routeSelection.key end
-        ns.travelNetworkStatus = ns.travelPath and "Dijkstra travel directions; walk segments are estimates." or "No connected travel path; direct quest directions retained."
+        ns.travelNetworkStatus = ns.travelPath and (ns.travelPath.hasTerrain
+            and "Dijkstra directions around mapped terrain; footprints are estimates."
+            or "Dijkstra travel directions; walk segments are estimates.") or "No connected travel path; direct quest directions retained."
     end
     path = ns.travelPath
-    if not path then return end
+    if not path then
+        if ns.TerrainWalkCrossing(position, stop) then
+            ns.travelNetworkStatus = "Mapped terrain blocks direct walking; no connected entrance/lift/ramp approach."
+        end
+        return
+    end
     while path.legs[path.cursor] do
         local connection = nextConnection(path)
         ns.travelNetworkStatus = connection and ("Dijkstra next connection: " .. transportAction(connection.method)
             .. " from " .. nodeName(connection.fromID, connection.from) .. " to " .. connection.name .. "; times are estimates.")
-            or "Dijkstra travel directions; walk segments are estimates."
+            or (path.hasTerrain and "Dijkstra directions around mapped terrain; footprints are estimates."
+                or "Dijkstra travel directions; walk segments are estimates.")
         local leg = path.legs[path.cursor]
         local remaining = ns.TravelPointDistance(position, leg.to)
         if leg.toID == "GOAL" then return end
-        if position and position.mapID == leg.to.mapID and remaining and remaining <= (leg.method == "walk" and 20 or 100) then
+        local arrived = remaining and remaining <= (leg.method == "walk" and 20 or 100)
+        local following = path.legs[path.cursor + 1]
+        if leg.to.terrain and position and remaining then
+            local _, along = ns.TravelSegmentDistance(position, leg.from, leg.to)
+            arrived = (arrived or along == 1 and remaining <= 100) and following
+                and not ns.TerrainWalkCrossing(position, following.to)
+                and not ns.HostileWalkCrossing(position, following.to, nil, true, following.toID == "GOAL")
+        end
+        if position and position.mapID == leg.to.mapID and arrived then
             path.transportIndex = nil
             path.cursor = path.cursor + 1
         else
             local transport = leg.method ~= "walk"
             local target = transport and leg.from or leg.to
-            local following = path.legs[path.cursor + 1]
             local instruction = transport and (transportAction(leg.method) .. " to " .. leg.name)
                 or following and following.flight and ("Walk to " .. following.flight.source.name .. " (flight master)")
                 or (leg.waypoint and "Go to " or "Head to ") .. leg.name
@@ -464,10 +527,18 @@ function ns.TravelNetworkDestination(stop)
 end
 
 function ns.TravelNetworkDiagnostics(output)
+    local terrain = ns.TravelTerrainContext()
+    local maps, areas = 0, 0
+    for _, map in pairs(terrain.maps) do maps, areas = maps + 1, areas + #map.areas end
+    output("Mapped terrain: " .. areas .. " approximate barrier footprints in " .. maps
+        .. " zone(s). Waypoints route around known outlines; no collision/elevation mesh.")
     output("Settlement travel checks: " .. #(ns.travelData and ns.travelData.settlements or {})
         .. " published footprints; estimated 100-yard margin. Hostile ground crossings are excluded; roads/guards remain unverified.")
     if ns.routeStats and (ns.routeStats.hostileLines or 0) > 0 then
         output("Hostile ground preview lines hidden: " .. ns.routeStats.hostileLines .. ". Quest markers retained.")
+    end
+    if ns.routeStats and (ns.routeStats.terrainLines or 0) > 0 then
+        output("Unrouted ground preview lines hidden across mapped terrain: " .. ns.routeStats.terrainLines .. ". Quest markers retained.")
     end
     local stop = ns.travelWaypoint
     local leg = stop and stop.travelLeg
