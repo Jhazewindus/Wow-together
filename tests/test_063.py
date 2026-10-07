@@ -150,6 +150,7 @@ class FixedGuideTests(unittest.TestCase):
 
     def test_full_preview_can_draw_remote_map_without_connecting_zone_gaps(self):
         c = guide_client(2)
+        c.ns.catalogue.quests[900].series = c.lua.table_from([900, 901])
         for p in c.ns.catalogue.quests[901].starts.values(): p.mapID = 502
         for p in c.ns.catalogue.quests[901].objectives.values(): p.mapID = 502
         for p in c.ns.catalogue.quests[901].ends.values(): p.mapID = 502

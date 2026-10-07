@@ -313,7 +313,7 @@ class LevelReadyZoneTests(unittest.TestCase):
         c.lua.globals().playerLevel = 21
         c.ns.handlers.PLAYER_LEVEL_UP(21); c.drain()
         c.ns.activityPrompt.accept.OnClick(); run_plan(c); c.drain()
-        self.assertEqual(c.ns.routeSelection.key, 'level-zone:kalimdor/test-hills')
+        self.assertEqual(c.ns.routeSelection.key, 'level-zone:kalimdor/test-hills:levels:21-30')
         self.assertEqual({r.id for r in c.ns.routeSelection.records.values()}, {902, 903})
 
     def test_zone_suggestion_waits_until_scan_finishes(self):

@@ -54,7 +54,7 @@ class LevelBandTests(unittest.TestCase):
     def test_fixed_adaptive_and_current_routes_all_filter_accepted_low_work(self):
         c = leveling_client()
         c.ns.active[855], c.ns.active[901] = 'Centaur Bracers', 'Current work'
-        g = zone(c)
+        g = c.ns.ZoneGuideForMap(501, True)  # Retained full-zone scope spans both brackets.
         included = c.ns.MergeCurrentQuests(g)
         before = order(g) if g.fixedPlan else None
         for route in (c.ns.BuildFixedGuideRoute(g, False),
@@ -71,7 +71,7 @@ class LevelBandTests(unittest.TestCase):
         if before: self.assertEqual(order(g), before)
 
     def test_unaccepted_low_pickup_is_filtered_in_every_leveling_route_mode(self):
-        c = leveling_client(); g = zone(c)
+        c = leveling_client(); g = c.ns.ZoneGuideForMap(501, True)
         retained = guide(c, (855, 901), key='saved-normal-guide')
         retained.mapID = 501
         circuit = guide(c, (855, 901), key='saved-circuit')
@@ -88,7 +88,7 @@ class LevelBandTests(unittest.TestCase):
     def test_ready_old_handins_remain_without_old_objective_steps(self):
         c = leveling_client()
         c.ns.active[855], c.ns.readyToTurnIn[855] = 'Centaur Bracers', True
-        g = c.ns.MergeCurrentQuests(zone(c))
+        g = c.ns.MergeCurrentQuests(c.ns.ZoneGuideForMap(501, True))
         for route in (c.ns.BuildFixedGuideRoute(g, False),
                       c.ns.BuildLevelingRoute(g, False, False),
                       c.ns.BuildCurrentQuestRoute(g, False)):

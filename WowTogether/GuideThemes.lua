@@ -51,7 +51,8 @@ function ns.GuideCardTheme(guide, dungeon)
     local mapID = guide.homeMapID
     if not ns.Public(mapID) or type(mapID) ~= "number" then mapID = guide.mapID end
     if ns.Public(mapID) and type(mapID) == "number" and zoneThemes[mapID] then return zoneThemes[mapID] end
-    local key = guide.key
+    local key = guide.zoneGuideKey
+    if not ns.Public(key) or type(key) ~= "string" then key = guide.key end
     local slug = ns.Public(key) and type(key) == "string" and string.match(key, "([^/:]+)$")
     return aliases[normalized(slug) or ""] or aliases[normalized(guide.zone) or ""] or "ruins"
 end

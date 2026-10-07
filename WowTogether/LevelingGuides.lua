@@ -172,13 +172,18 @@ local function addPrerequisites(records, seen, id, depth)
     end
 end
 
-local function addChain(records, seen, id)
-    if #records >= 512 or seen[id] or not ns.CatalogueQuest(id) or not recordEnabled(id) then return end
+local function addChain(records, seen, id, ceiling)
+    local quest = ns.CatalogueQuest(id)
+    if #records >= 512 or seen[id] or not quest or not recordEnabled(id) then return end
+    -- Nearby continuations can finish a chain across a bracket boundary. Do
+    -- not pull the rest of the zone's higher-level content into this section.
+    if ceiling and ((quest.level or 0) > ceiling or (quest.minLevel or 0) > ceiling) then return end
+    seen[id] = true
     addPrerequisites(records, seen, id, 0)
-    records[#records + 1], seen[id] = ns.CatalogueRecord(id), true
-    local quest, after = ns.CatalogueQuest(id), false
+    records[#records + 1] = ns.CatalogueRecord(id)
+    local after = false
     for _, nextID in ipairs(quest.series or {}) do
-        if after then addChain(records, seen, nextID) end
+        if after then addChain(records, seen, nextID, ceiling) end
         if nextID == id then after = true end
     end
 end
@@ -187,14 +192,6 @@ local function entryRecords(entry)
     local records, seen = {}, {}
     for _, id in ipairs(entry.ids) do addChain(records, seen, id) end
     return records
-end
-
--- The saved zone scope includes optional class work. The checkbox filters its
--- presentation/progress later, rather than deleting instructions at discovery.
-function ns.LevelingGuideRecords(key)
-    rebuildIndex()
-    local entry = entries[key]
-    return entry and entryRecords(entry)
 end
 
 local function localWork(quest, mapID)
@@ -211,6 +208,40 @@ local function localWork(quest, mapID)
     return not mapped
 end
 
+local function sectionIdentity(key)
+    local base, low, high = string.match(key or "", "^(.-):levels:(%d+)%-(%d+)$")
+    if not base then return key end
+    low, high = tonumber(low), tonumber(high)
+    if low < 1 or low > 251 or (low - 1) % 10 ~= 0 or high ~= math.min(low + 9, 255) then return end
+    return base, low, high
+end
+
+local function sectionSeeds(entry, low, high)
+    local ids = {}
+    for _, id in ipairs(entry.ids) do
+        local quest = ns.CatalogueQuest(id)
+        if recordEnabled(id) and (quest.level or 0) >= low and (quest.level or 0) <= high
+            and localWork(quest, entry.mapID) then ids[#ids + 1] = id end
+    end
+    return ids
+end
+
+local function sectionRecords(entry, low, high)
+    local records, seen = {}, {}
+    for _, id in ipairs(sectionSeeds(entry, low, high)) do addChain(records, seen, id, high + 3) end
+    return records
+end
+
+-- Retain optional class instructions in both section and legacy zone scopes.
+-- The checkbox filters presentation/progress, not the saved fixed order.
+function ns.LevelingGuideRecords(key)
+    rebuildIndex()
+    local base, low, high = sectionIdentity(key)
+    local entry = base and entries[base]
+    if not entry then return end
+    return low and sectionRecords(entry, low, high) or entryRecords(entry)
+end
+
 local function coreRange(entry)
     local levels = {}
     for _, id in ipairs(entry.ids) do
@@ -225,19 +256,18 @@ local function coreRange(entry)
     return levels[1 + trim], levels[#levels - trim]
 end
 
-local function buildChoice(entry, low, high, query)
+local function buildChoice(entry, low, high, query, section)
     query = query or ns.NewQuestQuery()
     local relevant, search = 0, {entry.title, entry.zone}
     local minimum, maximum, located = 255, 0, 0
-    for _, id in ipairs(entry.ids) do
+    local seeds = section and sectionSeeds(entry, low, high) or entry.ids
+    for _, id in ipairs(seeds) do
         local quest = ns.CatalogueQuest(id)
         if browseEnabled(id) then
             local level = quest.level or 0
             if level > 0 then minimum, maximum = math.min(minimum, level), math.max(maximum, level) end
             search[#search + 1] = quest.title
             for _, point in ipairs(quest.starts or {}) do search[#search + 1] = point.name or "" end
-            -- Brackets filter guide discovery, not its lifetime. Preserve the
-            -- full chain, including later levels and published cross-zone work.
             if level >= low and level <= high then
                 relevant = relevant + 1
             end
@@ -247,7 +277,7 @@ local function buildChoice(entry, low, high, query)
     -- A single observed/isolated quest is not a leveling guide. Completed
     -- earlier stages still count as evidence that a real multi-quest plan exists.
     if relevant == 0 then return end
-    local records, enabled = entryRecords(entry), {}
+    local records, enabled = section and sectionRecords(entry, low, high) or entryRecords(entry), {}
     for _, record in ipairs(records) do
         if ns.ClassQuestEnabled(record.id) then enabled[#enabled + 1] = record end
     end
@@ -269,14 +299,20 @@ local function buildChoice(entry, low, high, query)
         kind = entry.mode == "zone" and "Zone guide" or "Questline", records = records, target = records[1],
         mapID = mapID, homeMapID = mapID, focusKey = focus, profilesReady = true, level = level, minLevel = minimum, maxLevel = maximum,
         rangeLow = low, rangeHigh = high, relevant = relevant, completed = completed, pending = pending,
-        knownStops = located, hasPoint = located > 0, fullGuide = true, classQuestScope = true,
+        knownStops = located, hasPoint = located > 0, fullGuide = true, classQuestScope = true, enabledCount = #enabled,
         search = string.lower(table.concat(search, " ")),
         priority = ns.ZonePreference(mapID) + (entry.mode == "zone" and 30 or 0) + (located > 0 and 10 or 0)}
-    guide.mainLevelLow, guide.mainLevelHigh = coreRange(entry)
+    if section then
+        guide.zoneGuideKey, guide.sectionLow, guide.sectionHigh = entry.key, low, high
+        guide.key = entry.key .. ":levels:" .. low .. "-" .. high
+        guide.title = entry.title .. " • Levels " .. low .. "–" .. high
+        -- Dependency outliers must not inflate the section's displayed band.
+        guide.mainLevelLow, guide.mainLevelHigh = minimum, maximum
+    else guide.mainLevelLow, guide.mainLevelHigh = coreRange(entry) end
     guide.fixedRoute = ns.Option("fixedZoneGuides")
     guide.coverage = ns.GuideLocationCoverage(enabled)
     guide.knownStops, guide.hasPoint = guide.coverage.pickups, guide.coverage.pickups > 0
-    guide.reason = relevant .. " quest(s) in levels " .. low .. "–" .. high .. "; " .. #enabled .. " in the full guide. "
+    guide.reason = relevant .. " quest(s) in levels " .. low .. "–" .. high .. "; " .. #enabled .. " in this guide. "
         .. (guide.fixedRoute and "Fixed order; progress advances steps without replanning."
             or ("Optimize pickups, nearby objectives and returns for " .. (name or "your character") .. "."))
     if located < #enabled then guide.reason = guide.reason .. " Some NPC/objective locations remain unknown." end
@@ -349,11 +385,19 @@ function ns.LevelingGuideChoices(ignoreSearch, queryContext, levelFilter)
     local choices, low, high = {}, ns.GuideLevelRange(levelFilter, queryContext)
     local query = ignoreSearch and "" or string.lower(ns.guideSearch or "")
     for _, entry in pairs(entries) do
-        -- Chains remain part of zone planning and saved/shared guides. The
-        -- browser offers whole zones rather than duplicate partial-chain cards.
-        local choice = entry.mode == "zone" and buildChoice(entry, low, high, queryContext)
-        if choice and ns.GuideBracketMatches(choice)
-            and (query == "" or string.find(choice.search, query, 1, true)) then choices[#choices + 1] = choice end
+        if entry.mode == "zone" then
+            local bands = {}
+            for _, id in ipairs(entry.ids) do
+                local quest = ns.CatalogueQuest(id)
+                local level = quest.level or 0
+                if level > 0 and level >= low and level <= high then bands[math.floor((level - 1) / 10) * 10 + 1] = true end
+            end
+            for first in pairs(bands) do
+                local choice = buildChoice(entry, first, math.min(first + 9, 255), queryContext, true)
+                if choice and ns.GuideBracketMatches(choice)
+                    and (query == "" or string.find(choice.search, query, 1, true)) then choices[#choices + 1] = choice end
+            end
+        end
     end
     local level = ns.PartyLevelFloor(queryContext)
     local visible = {}
@@ -377,6 +421,7 @@ function ns.LevelingGuideChoices(ignoreSearch, queryContext, levelFilter)
         if a.levelReady ~= b.levelReady then return a.levelReady end
         if a.priority ~= b.priority then return a.priority > b.priority end
         if a.zone ~= b.zone then return a.zone < b.zone end
+        if a.sectionLow ~= b.sectionLow then return a.sectionLow < b.sectionLow end
         return a.key < b.key
     end)
     return choices
@@ -405,24 +450,32 @@ function ns.GuideEarlyStartAdvice(guide, query)
 end
 
 function ns.RebuildLevelingGuide(guide)
-    rebuildIndex()
-    local low, high = ns.GuideLevelRange()
-    local entry = entries[guide.key]
-    return entry and buildChoice(entry, low, high) or guide
+    -- Scanning updates progress, never the saved scope. In particular, legacy
+    -- full-zone guides stay full-zone and browser changes cannot rescope them.
+    local fresh, enabled, query = {}, {}, ns.NewQuestQuery()
+    for key, value in pairs(guide) do fresh[key] = value end
+    for _, record in ipairs(guide.records or {}) do
+        if ns.ClassQuestEnabled(record.id) then enabled[#enabled + 1] = record end
+    end
+    fresh.focusKey = ns.GuideFocus(enabled, query)
+    fresh.level = ns.PartyLevelFloor(query)
+    return fresh
 end
 
 function ns.InvitedLevelingGuide(invite)
     rebuildIndex()
     if invite.guideKey then
-        local entry = entries[invite.guideKey]
+        local base, low, high = sectionIdentity(invite.guideKey)
+        local entry = base and entries[base]
         if not entry or entry.mode ~= invite.mode then return end
-        local guide = buildChoice(entry, invite.rangeLow, invite.rangeHigh)
+        if low and (low ~= invite.rangeLow or high ~= invite.rangeHigh) then return end
+        local guide = buildChoice(entry, invite.rangeLow, invite.rangeHigh, nil, low ~= nil)
         if guide then guide.sharedBy, guide.fixedRoute = invite.sender, invite.fixedRoute == true; return guide end
     end
     for _, entry in pairs(entries) do
         if entry.mode == invite.mode and entry.seen[invite.target] then
             local low, high = ns.GuideLevelRange("party")
-            local guide = buildChoice(entry, low, high)
+            local guide = buildChoice(entry, low, high, nil, true)
             if guide then guide.sharedBy = invite.sender; return guide end
         end
     end
@@ -430,11 +483,11 @@ end
 
 function ns.ZoneGuideForMap(mapID, allLevels, query)
     ns.ResolveCatalogueMaps(); rebuildIndex()
-    local low, high = ns.GuideLevelRange("party")
+    local low, high = ns.GuideLevelRange("party", query)
     if allLevels then low, high = 1, 255 end
     for _, entry in pairs(entries) do
         if entry.mode == "zone" and (entry.mapID == mapID or entry.mapID == 0) then
-            local choice = buildChoice(entry, low, high, query)
+            local choice = buildChoice(entry, low, high, query, not allLevels)
             if choice and choice.homeMapID == mapID then return choice end
         end
     end
@@ -449,10 +502,13 @@ local function levelReadyNeighbour(guide, route, current)
     local level = ns.PartyLevelFloor(query)
     if not level then return end
     for _, person in ipairs(query.profiles) do if not person.synced then return end end
-    for mapID in pairs(ns.NearbyZoneMaps(current)) do
-        if mapID ~= current and mapID ~= (guide.homeMapID or guide.mapID) and not ns.IsCapitalMap(mapID) then
+    local maps = ns.NearbyZoneMaps(current)
+    if guide.sectionLow then maps[current] = true end
+    for mapID in pairs(maps) do
+        if (mapID == current and guide.sectionLow or mapID ~= current and mapID ~= (guide.homeMapID or guide.mapID))
+            and not ns.IsCapitalMap(mapID) then
             local candidate = ns.ZoneGuideForMap(mapID, false, query)
-            if candidate and ns.GuideLevelSuitable(candidate, query, true) then
+            if candidate and candidate.key ~= guide.key and ns.GuideLevelSuitable(candidate, query, true) then
                 for _, record in ipairs(candidate.records) do
                     if ns.ClassQuestEnabled(record.id) and not ns.GuideQuestSkipped(record.id)
                         and ns.LevelingValue(record.id, query) == true and not ns.PartyQuestFinished(record.id, query)
@@ -475,7 +531,7 @@ local function levelReadyNeighbour(guide, route, current)
         best.transition = true
         best.noticeKey = "level-ready:" .. guide.key .. ":" .. best.key .. ":" .. best.rangeLow
         best.reason = "At level " .. level .. ", " .. best.zone .. " has useful quests in your leveling range. "
-            .. "Your current guide has no suitable work ready now. Start this nearby zone, or keep your guide."
+            .. "Your current guide has no suitable work ready now. Start this section, or keep your guide."
     end
     return best
 end
@@ -505,6 +561,6 @@ function ns.LevelingZoneTransition()
     if not ready then return end
     nextGuide.transition = true
     nextGuide.noticeKey = "transition:" .. guide.key .. ":" .. nextGuide.key .. ":" .. nextGuide.rangeLow
-    nextGuide.reason = "Your guide continues toward " .. nextGuide.zone .. ". Your party's level and known quest progress fit its full zone guide. Keep this guide, or start that zone's plan."
+    nextGuide.reason = "Your guide continues toward " .. nextGuide.zone .. ". Your level and known quest progress fit its next section. Keep this guide, or start that zone's plan."
     return nextGuide
 end

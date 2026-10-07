@@ -117,8 +117,7 @@ class GuideCompletionTests(unittest.TestCase):
         c.guide_environment(level=35)
         c.lua.globals().grouped, c.lua.globals().peer = False, None
         c.ns.UpdateRoster(); map_canvas(c); c.ns.guideLevel = 'all'
-        g = next(g for g in c.ns.LevelingGuideChoices().values()
-                 if g.key == 'level-zone:eastern-kingdoms/hillsbrad-foothills')
+        g = c.ns.ZoneGuideForMap(1424, True)  # Retained legacy full-zone scope.
         self.assertTrue(unfinished.issubset({r.id for r in g.records.values()}))
         for r in g.records.values():
             if r.id not in unfinished: c.lua.globals().finished[r.id] = True
@@ -139,8 +138,7 @@ class GuideCompletionTests(unittest.TestCase):
         c.lua.globals().grouped, c.lua.globals().peer = False, None
         c.ns.UpdateRoster(); map_canvas(c)
         c.ns.profile.classID, c.ns.profile.raceID = 7, 96
-        g = next(g for g in c.ns.LevelingGuideChoices().values()
-                 if g.key == 'level-zone:eastern-kingdoms/hillsbrad-foothills')
+        g = c.ns.ZoneGuideForMap(1424, True)  # Retained legacy full-zone scope.
         for r in g.records.values():
             if r.id not in (539, 509, 546): c.lua.globals().finished[r.id] = True
         c.ns.ActivateRoute(g); c.ns.Refresh(); before = order(g)

@@ -176,7 +176,9 @@ class FutureGuideBrowserTests(unittest.TestCase):
         self.assertIn('Ashenvale', guides)
         self.assertTrue(guides['Ashenvale'].upcoming)
         self.assertFalse(guides['Ashenvale'].levelReady)
-        self.assertNotIn('Mulgore', guides)
+        self.assertIn('Mulgore', guides)  # Separate later Forever content, not starter quests.
+        self.assertTrue(guides['Mulgore'].upcoming)
+        self.assertEqual(guides['Mulgore'].sectionLow, 21)
         self.assertNotIn('Orgrimmar', guides)
         self.assertTrue(all(c.ns.GuideBracketMatches(g) for g in guides.values()))
 

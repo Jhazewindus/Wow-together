@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.33 — HANDINS AND TRAVEL CACHE** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.34 — ZONE GUIDE CHAPTERS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -22,6 +22,15 @@ Replace the folder on **every party member's client**, including all **66 Lua
 files** and the **Media folder**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.34 splits zone guides into level sections.** Each newly selected section
+has its own 1–10, 11–20, 21–30 or later quest set, quest list and XP estimate.
+Earlier required quests and nearby linked continuations stay included, with
+useful low-level exceptions explained. All levels lists the separate sections;
+future sections can be previewed, but real pickup rules still apply. Scan, reload
+and movement preserve the selected scope and fixed order. Existing saved
+full-zone guides retain their scope. The next useful section can be suggested
+after current work ends; it never replaces your guide automatically.
 
 **0.8.33 keeps dungeon guides through the run and hand-ins.** After collecting
 quests and entering, the guide waits for objectives. Ready quests then route to
@@ -433,7 +442,7 @@ The toggle persists; turning it off requests fresh party data.
 All quests supports level brackets, Near party and search committed on Enter
 or after a typing pause. It retains manual browsing of known repeatables.
 
-**Leveling guides** lists real zone guides across the
+**Leveling guides** lists real zone-guide sections across the
 catalogue, including remote zones. Its default bracket follows the lowest party
 level (1–10, 11–20, etc.). Choose another bracket or All levels, and search by
 zone, quest or known NPC; Enter or a short pause applies the search. Pages keep
@@ -446,9 +455,10 @@ Manually selected brackets and **All levels** also show upcoming zone guides;
 their **Show quest list** button previews the full order without starting it.
 Known remote-only objectives cannot
 qualify their pickup zone as a leveling area; capitals remain available for
-travel and quest pickups inside guides. A sparse late-level handoff does not
-make a starting zone a level-30 leveling area. Cards show a main quest-level
-band derived from the catalogue, rather than repeating your selected bracket.
+travel and quest pickups inside guides. Empty or isolated single-quest sections
+do not create cards. A starter zone can have a later section when the catalogue
+contains a real higher-level quest set. Cards show the actual quest-level band
+of that section's local quests; earlier prerequisites do not inflate the band.
 Where detailed objective geography is unknown, the published zone category is
 the fallback; the band is an estimate, not an official zone-level declaration.
 Sharing the 11–20 browser bracket does not make level-20 work suitable at
@@ -463,13 +473,17 @@ stay inside the full guide. NPC offers still confirm hidden pickup requirements.
 Suitable cards are **Recommended zone guide** or **Alternative zone guide**;
 future work is labeled **Upcoming zone guide**. All-level browsing ranks suitable
 guides first. A questline is a linked chain within a zone and is
-planned inside its complete zone guide, without a duplicate standalone card.
-Searching for a quest or its NPC still finds the containing zone guide.
+planned inside its zone section, without a duplicate standalone card.
+Searching for a quest or its NPC finds the containing section.
 
-A bracket filters the browser; it does not cut a selected guide down to that
-bracket. **Follow fixed zone guides** is on by default. Start route compiles the
-whole zone/questline once from catalogue geography and prerequisite dependencies,
-including known cross-zone chain steps. It does not use your location, active
+Brackets select actual quest sets for new guides. Earlier required quests are
+retained, including known cross-zone prerequisites. Linked continuations up to
+three quest levels beyond a boundary can finish the current chain; unrelated
+higher-level work belongs to later sections. **All levels** lists these sections
+separately. Existing saved full-zone guides keep their original scope. Changing
+the browser bracket or scanning never changes a running guide's quest set.
+**Follow fixed zone guides** is on by default. Start route compiles the section
+once from catalogue geography and prerequisite dependencies. It does not use your location, active
 quests or completion history to choose the order. The arrow shows **Loading
 route…** while generation runs. Progress then advances completed pickups,
 objectives and hand-ins, keeping the saved numbered sequence. When nearby pickup
@@ -552,8 +566,9 @@ invites friends with **Follow route** / **Keep my route**. Their route stays
 unchanged until they choose to follow. Invitations share selected quest IDs
 and pickup roles, up to 20 IDs; each recipient plans against received party
 progress rather than copying the sender's coordinates or completion flags.
-Full zone/questline invitations also identify the guide and browser bracket,
-so recipients reconstruct its full catalogue scope beyond the twenty packet IDs.
+Zone/questline invitations also identify the selected section and bracket,
+so recipients reconstruct its scope beyond the twenty packet IDs. Older
+full-zone invitations retain their original full-zone scope.
 Update all clients together to use these new invitation modes.
 
 Leveling-guide cards instead have **Show quest list**: a movable, scrollable,

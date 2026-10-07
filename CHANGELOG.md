@@ -1,5 +1,24 @@
 # Wow Together changelog
 
+## 0.8.34
+
+**ZONE GUIDE CHAPTERS**
+
+- Split newly selected zone guides into actual 1–10, 11–20, 21–30 and later
+  quest sets. All levels lists separate sections. Omit empty and isolated
+  single-quest sections; keep useful earlier prerequisites and close-level,
+  linked cross-zone continuations. Later unrelated quests stay in later guides.
+- Match quest lists, counts, quest-level bands and XP estimates to the section.
+  Known later Forever content can have its own section in a starter zone.
+  Preview future sections freely; starting early still warns and waits for real
+  level, identity, prerequisite and NPC-offer requirements.
+- Preserve a section through Scan, quest updates, location changes, reload and
+  route sharing. Keep existing saved full-zone scopes. Offer the next useful
+  local section after current work ends; switching remains optional.
+- Keep fixed order, class-quest filtering, nearby pickup bundling and useful
+  low-level prerequisite explanations. Include all 66 Lua files and Media.
+  Host checks cover logic; retest availability and guide transitions in beta.
+
 ## 0.8.33
 
 **HANDINS AND TRAVEL CACHE**

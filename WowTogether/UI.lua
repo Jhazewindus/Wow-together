@@ -705,12 +705,14 @@ function ns.Render(queryContext, routeUpdated)
                     or (string.upper(guide.kind) .. " / ALTERNATIVE"))
             end
             card.title:SetText(guide.title)
-            card.count:SetText((guide.fullGuide or guide.mode == "travel") and guide.minLevel and ("Lv " .. (guide.mainLevelLow or guide.minLevel) .. "–" .. (guide.mainLevelHigh or guide.maxLevel)) or (guide.level and ("Quest Lv " .. guide.level) or ""))
+            local minimum, maximum = guide.mainLevelLow or guide.minLevel, guide.mainLevelHigh or guide.maxLevel
+            card.count:SetText((guide.fullGuide or guide.mode == "travel") and minimum and ("Lv " .. minimum
+                .. (maximum ~= minimum and ("–" .. maximum) or "")) or (guide.level and ("Quest Lv " .. guide.level) or ""))
             card.reason:SetHeight(height - 90)
             local nextTitle = guide.nextStop and guide.nextStop.label or guide.target.title
             local _, requirement = ns.CatalogueAllowed(guide.target.id, ns.profile, ns.self, queryContext)
             local detail = guide.hasPoint and ("Next: " .. nextTitle) or (requirement or "Location unavailable.")
-            local summary = guide.fullGuide and (#guide.records .. " quests • " .. (selected and "Following this guide" or "Fixed quest order")) or guide.reason
+            local summary = guide.fullGuide and ((guide.enabledCount or #guide.records) .. " quests • " .. (selected and "Following this guide" or "Fixed quest order")) or guide.reason
             card.reason:SetText(summary .. "\n" .. (guide.upcoming and "For later levels • View the quest list to plan ahead."
                 or guide.fullGuide and ns.GuideXPText(guide, queryContext) or detail))
             if guide.fullGuide then

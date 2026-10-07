@@ -71,7 +71,8 @@ class LevelEligibilityTests(unittest.TestCase):
     def test_unknown_level_record_cannot_qualify_an_otherwise_future_zone(self):
         c=guide_client(2)
         catalogue(c,{900:world_quest('Future work',level=20,minLevel=20),
-                     901:world_quest('No level data',level=0,minLevel=None)})
+                     901:world_quest('No level data',level=0,minLevel=None),
+                     902:world_quest('Future work two',level=20,minLevel=20)})
         self.assertEqual(len(c.ns.LevelingGuideChoices()),0)
         c.ns.guideLevel='all'
         self.assertEqual(len(c.ns.LevelingGuideChoices()),1)

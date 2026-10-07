@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.33** — **HANDINS AND TRAVEL CACHE**, World of Warcraft: Forever beta,
+For **0.8.34** — **ZONE GUIDE CHAPTERS**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
@@ -16,6 +16,28 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Zone guide sections — about 10–15 minutes
+
+- Browse each level bracket and All levels. Expect separate zone sections such
+  as Mulgore Levels 1–10 and Levels 21–30, when multiple related quests exist.
+  Starter sections must omit unrelated level-30 quests. Show quest list should
+  show only that section plus required earlier prerequisites and nearby linked
+  continuations. Compare the count, actual quest-level band and XP estimate.
+- At a lower level, preview a future section. Start route must still warn, offer
+  a useful current-level guide when known and wait on locked work if started
+  anyway. A bracket alone must not authorize pickups. No empty or isolated
+  single-quest cards; pickups for remote-only work must not qualify a zone.
+- Start a section, accept/abandon/turn in quests, move, change the browser bracket,
+  Scan and reload. Preserve its quest set and fixed order. Class filtering should
+  hide/show owned class instructions without deleting them. Earlier useful
+  prerequisite exceptions should still explain their unlock.
+- Keep a guide saved from 0.8.33: it should retain its existing full-zone scope.
+  Newly started guides use sections. Test shared sections with all clients on
+  0.8.34. Follow must select the same section; Keep my route must preserve yours.
+- Finish the current section and reach the next bracket with useful local work.
+  Expect an optional next-section suggestion, without replacing your current
+  guide or interrupting an unfinished objective/NPC confirmation.
 
 ## Dungeon hand-ins and remembered travel — about 10–15 minutes
 

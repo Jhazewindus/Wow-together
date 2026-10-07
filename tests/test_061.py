@@ -111,7 +111,7 @@ class GuideBrowserTests(unittest.TestCase):
         self.assertEqual(len(choices), 1)
         # Optional own-class work stays in the full scope. The checkbox and
         # level band filter executable steps, without erasing instructions.
-        self.assertEqual({r.id for r in choices[1].records.values()}, {900, 901, 903, 907})
+        self.assertEqual({r.id for r in choices[1].records.values()}, {900, 901, 903})
         c.ns.SetOption('classQuests', False)
         route = c.ns.BuildGuideRoute(choices[1], False)
         self.assertEqual({s.id for s in route.stops.values()}, {900, 901})
@@ -254,7 +254,7 @@ class CooperativePlannerTests(unittest.TestCase):
         c.ns.StartPartyRoute(g); run_plan(c)
         packets = [message for _, message, _ in c.drain() if message.startswith('1|V|')]
         self.assertEqual(len(packets), 3)
-        self.assertTrue(all(message.endswith('|level-zone:kalimdor/test-coast|11|20') and len(message) <= 255 for message in packets))
+        self.assertTrue(all(message.endswith('|' + g.key + '|11|20') and len(message) <= 255 for message in packets))
         for message in reversed(packets): c.receive(message)
         self.assertEqual(c.ns.partyRoutePrompt.invite.guideKey, g.key)
         received = c.ns.BuildInvitedGuide(c.ns.partyRoutePrompt.invite)
@@ -309,7 +309,7 @@ class CooperativePlannerTests(unittest.TestCase):
         g = c.ns.BuildInvitedGuide(invite)
         self.assertTrue(g.fullGuide)
         self.assertEqual(len(g.records), 26)
-        self.assertEqual(g.key, 'level-zone:kalimdor/test-coast')
+        self.assertEqual(g.key, 'level-zone:kalimdor/test-coast:levels:11-20')
 
     def test_shared_identity_selects_correct_zone_even_with_foreign_prerequisite(self):
         c = self.client(count=2)
@@ -341,7 +341,8 @@ class MultiZoneGuideTests(unittest.TestCase):
         catalogue(c, {900: world_quest('Home intro', level=8, series=[900, 901], seriesRoot=900),
             901: world_quest('Next zone chain', 'Test Hills', 502, 12, previousQuest=900),
             902: world_quest('Next zone work', 'Test Hills', 502, 13),
-            903: world_quest('Later home work', level=18, minLevel=16)})
+            903: world_quest('Later home work', level=18, minLevel=16),
+            904: world_quest('Second home starter', level=8)})
         c.ns.db.config.dungeonPrompts = False
         c.ns.db.config.zonePrompts = True
         return c
@@ -349,16 +350,16 @@ class MultiZoneGuideTests(unittest.TestCase):
     def test_full_guide_keeps_future_and_cross_zone_steps_but_waits_for_unlock(self):
         c = self.client(); c.ns.profile.level = 8; c.lua.globals().playerLevel = 8
         chosen = next(g for g in c.ns.LevelingGuideChoices().values() if g.mode == 'zone' and g.homeMapID == 501)
-        self.assertEqual({r.id for r in chosen.records.values()}, {900, 901, 903})
+        self.assertEqual({r.id for r in chosen.records.values()}, {900, 901, 904})
         route = c.ns.BuildGuideRoute(chosen, False)
-        self.assertEqual({s.id for s in route.stops.values()}, {900})
+        self.assertEqual({s.id for s in route.stops.values()}, {900, 904})
         c.lua.globals().finished[900] = True
         c.ns.profile.level = 12; c.lua.globals().playerLevel = 12
         chosen.batchIDs = None
         route = c.ns.BuildGuideRoute(chosen, False)
         self.assertEqual(route.mapID, 502)
         self.assertEqual({s.id for s in route.stops.values()}, {901})
-        self.assertEqual({r.id for r in chosen.records.values()}, {900, 901, 903})
+        self.assertEqual({r.id for r in chosen.records.values()}, {900, 901, 904})
 
     def test_zone_transition_popup_requires_suitable_work_and_keep_does_not_switch(self):
         c = self.client(); c.ns.profile.level = 8; c.lua.globals().playerLevel = 8
@@ -387,7 +388,7 @@ class MultiZoneGuideTests(unittest.TestCase):
         c.ns.activityPrompt.accept.OnClick()
         self.assertEqual(c.ns.navigation.state.status, 'Loading route…')
         run_plan(c)
-        self.assertEqual(c.ns.routeSelection.key, 'level-zone:kalimdor/test-hills')
+        self.assertEqual(c.ns.routeSelection.key, 'level-zone:kalimdor/test-hills:levels:11-20')
         self.assertGreaterEqual(len(c.ns.routeSelection.records), 3)
 
 

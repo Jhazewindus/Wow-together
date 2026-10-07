@@ -153,13 +153,16 @@ class GuideBrowseTests(unittest.TestCase):
         self.assertFalse(c.ns.GuideQuestSkipped(791))
         c.ns.profile.level = 7
         self.assertTrue(c.ns.LevelingValue(791))
-        self.assertTrue(any(s.id == 791 for s in c.ns.BuildFixedGuideRoute(g, False).previewStops.values()))
+        self.assertFalse(any(s.id == 791 for s in c.ns.BuildFixedGuideRoute(g, False).previewStops.values()))
+        starter = next(g for g in c.ns.LevelingGuideChoices(True, None, '1-10').values() if g.zone == 'Durotar')
+        c.ns.GenerateFixedGuide(starter, False)
+        self.assertTrue(any(s.id == 791 for s in c.ns.BuildFixedGuideRoute(starter, False).previewStops.values()))
 
     def test_fixed_guide_keeps_useful_chains_and_ready_turnins_but_filters_current_old_work(self):
         c = guide_client(2)
         catalogue(c, {900: world_quest('Old work', level=7),
                       901: world_quest('Current work')})
-        g = zone(c); c.ns.GenerateFixedGuide(g, False)
+        g = c.ns.ZoneGuideForMap(501, True); c.ns.GenerateFixedGuide(g, False)
         c.ns.active[900] = 'Old work'
         self.assertFalse(any(s.id == 900 for s in c.ns.BuildFixedGuideRoute(g, False).stops.values()))
         included = c.ns.MergeCurrentQuests(g)
@@ -186,7 +189,7 @@ class GuideBrowseTests(unittest.TestCase):
     def test_adaptive_selected_guide_filters_current_old_work_but_keeps_ready_handins(self):
         c = guide_client(2)
         catalogue(c, {900: world_quest('Old work', level=7), 901: world_quest('Current work')})
-        g = zone(c); c.ns.active[900] = 'Old work'
+        g = c.ns.ZoneGuideForMap(501, True); c.ns.active[900] = 'Old work'
         self.assertFalse(any(s.id == 900 for s in c.ns.BuildLevelingRoute(g, False, False).previewStops.values()))
         included = c.ns.MergeCurrentQuests(g)
         self.assertFalse(any(s.id == 900 for s in c.ns.BuildLevelingRoute(included, False, False).previewStops.values()))
@@ -208,19 +211,21 @@ class GuideBrowseTests(unittest.TestCase):
 
     def test_selected_future_bracket_previews_without_qualifying_through_earlier_work(self):
         c = guide_client(2)
-        catalogue(c,{900:world_quest('Starter',level=12),901:world_quest('Future',level=25,minLevel=20)})
+        catalogue(c,{900:world_quest('Starter',level=12),901:world_quest('Future',level=25,minLevel=20),
+                     902:world_quest('Future two',level=26,minLevel=20)})
         c.ns.guideLevel='21-30'
         self.assertEqual(len(c.ns.LevelingGuideChoices()),1)
         self.assertFalse(c.ns.LevelingGuideChoices()[1].levelReady)
         c.ns.profile.level=25
         self.assertEqual(len(c.ns.LevelingGuideChoices()),1)
 
-    def test_pickup_only_areas_capitals_and_sparse_level_outliers_do_not_qualify(self):
+    def test_pickup_only_areas_capitals_are_hidden_but_real_later_sections_qualify(self):
         c=guide_client(2);c.ns.profile.level=25;c.ns.guideLevel='21-30'
         records={900+i:world_quest('Starter '+str(i),level=5) for i in range(20)}
         records[950]=world_quest('Outlier',level=25,minLevel=20)
         records[951]=world_quest('Outlier two',level=25,minLevel=20)
-        catalogue(c,records);self.assertEqual(len(c.ns.LevelingGuideChoices()),0)
+        catalogue(c,records);self.assertEqual(len(c.ns.LevelingGuideChoices()),1)
+        self.assertEqual({r.id for r in c.ns.LevelingGuideChoices()[1].records.values()}, {950, 951})
         for map_id in (501,1454):
             catalogue(c,{900:world_quest('Pickup one',map_id=map_id,level=25,minLevel=20,objectives=[{'mapID':502,'x':.3,'y':.4,'name':'Remote work'}]),
                          901:world_quest('Pickup two',map_id=map_id,level=25,minLevel=20,objectives=[{'mapID':502,'x':.4,'y':.5,'name':'Remote work'}])})

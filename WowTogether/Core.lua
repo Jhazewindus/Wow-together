@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.33"
-ns.RELEASE_NAME = "HANDINS AND TRAVEL CACHE"
+ns.VERSION = "0.8.34"
+ns.RELEASE_NAME = "ZONE GUIDE CHAPTERS"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}

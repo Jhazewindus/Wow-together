@@ -125,7 +125,7 @@ fallback. Artwork changes appearance only, not guide logic.
 Restart the client fully if new artwork remains blank after reload.
 Use level brackets / Near party to narrow the list.
 Leveling guides has its own bracket dropdown, deferred zone/quest/NPC search
-and pages. The default bracket follows the lowest synced party level. Full zone
+and pages. The default bracket follows the lowest synced party level. Zone sections
 guides appear as Recommended zone guide / Alternative zone guide; questlines stay
 inside them. Path to Orgrimmar is a personal travel guide for Horde levels 1–60:
 search Orgrimmar and Start route. It compares known city gates and uses crossings,
@@ -138,8 +138,14 @@ order without changing the running route. Starting too early warns with the
 suggested entry level and a suitable unfinished current-level guide, when known.
 Choose Start recommended / Start anyway / Cancel. An early guide stays selected
 while locked quests wait; pickup restrictions and fixed-order persistence remain.
-Brackets filter browsing; a selected guide keeps later levels and known cross-zone
-steps. Fixed zone guides are ON by default. Loading route appears while the complete
+Brackets create actual quest sets for newly started zone guides. All levels lists
+the separate sections. Required earlier quests and linked continuations within
+three levels of a boundary remain; unrelated later quests stay in later sections.
+Quest lists, counts, bands and XP estimates use that section's scope. Existing
+saved full-zone guides retain their scope. Scan, reload and changing the browser
+bracket do not change the running scope. The next useful section is an optional
+suggestion after current work ends. Fixed zone guides are ON by default. Loading
+route appears while the complete
 catalogue sequence is compiled once, independently of location and quest logs.
 Include class quests shows or hides eligible class steps in that saved sequence,
 the arrow/map and Show quest list. Toggling does not reorder a fixed guide or
@@ -270,8 +276,9 @@ preview does not start/switch a route; started fixed guides reuse their order.
 Fixed and adaptive guides with current quests offer Start selected guide or Include current quests, with
 a warning about detours. Explicit quest-log routes remain
 selectable in Party quests. Quest acceptance/zone updates retain the selection.
-Full zone/questline invitations share guide identity and bracket, allowing friends
-to reconstruct the full catalogue scope beyond the twenty transmitted quest IDs.
+Zone/questline invitations share section identity and bracket, allowing friends
+to reconstruct its scope beyond the twenty transmitted quest IDs. Legacy
+full-zone invitations retain their original scope. Update every client together.
 Low-level pickups need a known useful later quest/dungeon exception, explained
 under the arrow. Lower-level prerequisites name the useful unlock and its level
 or dungeon purpose. Party stages focus on the member behind in confirmed progress.
@@ -286,9 +293,9 @@ hidden/resizing; manual skips remain personal and never grant completion credit.
 Collector's Edition Welcome! rewards are excluded
 from all leveling guides, but remain in All quests.
 Default recommendations match useful work at your actual level. Manual brackets
-preview matching leveling areas, rather than sparse later handoffs or capital
-pickup hubs. Cards show the main quest
-band derived from catalogue data; missing objective geography remains unknown.
+preview matching leveling sections, rather than isolated quests or capital
+pickup hubs. Cards show the actual local quest band in that section; required
+earlier prerequisites do not inflate it. Missing objective geography stays unknown.
 
 Left/right arrow buttons preview previous/later steps without changing quest credit.
 History previews use published locations, not a recorded travel timeline.

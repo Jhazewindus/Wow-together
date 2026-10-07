@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.33
-## X-ReleaseName: HANDINS AND TRAVEL CACHE
+## Version: 0.8.34
+## X-ReleaseName: ZONE GUIDE CHAPTERS
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua
