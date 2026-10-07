@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.39 — CRAFTING HOTFIX** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.40 — MARKET SMART** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -18,10 +18,19 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **72 Lua
+Replace the folder on **every party member's client**, including all **74 Lua
 files** and the **Media folder**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.40 adds goal-based auction shopping.** The panel sits left of the auction
+house with a scrollable material list, approximate amounts to buy after stock,
+per-item Search buttons and a skill-goal selector. Scan auction house prices the
+selected profession's materials and viable alternatives through a paced queue.
+Prices are saved for this character's realm/faction/build for up to six hours;
+new prices can change current work and the estimated path to the goal. Buying
+intermediates is compared with making them from raw ingredients plus craft time.
+You buy, train and craft yourself. Test the exact-query APIs in the beta.
 
 **0.8.39 refreshes crafting progress.** Starting a guide offers Scan current
 progress: click to open the profession window and refresh skill, learned recipes

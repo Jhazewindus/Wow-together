@@ -424,10 +424,18 @@ estimate is exhausted. Profession/goal and milestone resume after reload. /wt pr
 craft-event registration and observations; verify delivery on the beta build.
 The guide chooses craft quantities. Personal professions settings are removed.
 Materials offers Next batch / To skill goal with shared stock and planned-output
-accounting. Goal amounts are approximate; buy for the next batch first. Search AH
-buttons and a small AH toolbar search one item per click. Public commodity/item/
-legacy results supply session prices; changed prices immediately reconsider even
-unfinished crafts from actual skill and bags. No background scan or purchases.
+accounting. Goal amounts are approximate; buy for the next batch first. The AH
+panel sits to its left with a scrollable Buy list, goal choice and Search buttons.
+Scan auction house explicitly prices this profession's full goal and alternative
+recipe ingredients with paced exact-item queries. One request at a time; respect
+throttling and bound pages/timeouts. Stop, manual search/browse, close or changing
+profession/goal cancels; combat pauses new requests. Purchases/crafts stay manual.
+Quotes save for this character's realm/faction/build for up to six hours. Old,
+private, bid-only and identified owned listings do not supply fresh material
+prices; full empty results clear a stale price. Quantity-weighted books remain
+estimates when supply is partial. Public prices reconsider current work and the
+full goal path; compare preparing intermediates with buying, including craft
+cost/time. Missing beta query support leaves manual Search buttons available.
 Recipe training below the current cap no longer forces Expert travel. Actual
 positive opened-trainer offerings can override older rank listings for this
 character/build. Training steps explain their skill milestone or cap increase.
@@ -435,7 +443,7 @@ Explicit level-0/zero-XP entries such as Applejack Still stay out of all levelin
 guides, with library facts retained. Full-preview lines show eligible quest order,
 not a terrain path. Retest native AH/trainer behavior on the current beta build.
 See PROFESSIONS.md for sources, estimates and beta limits. Prices come from
-merchant listings and AH searches YOU perform. No automatic buying or searching.
+merchant listings and AH searches/scans YOU start. No automatic buying.
 Profession/flight/skip state is not sent to peers.
 Otherwise eligible elite/raid quests stay in fixed and adaptive guides while
 solo. The step explains to bring a party/raid or choose Skip quest; the quest list

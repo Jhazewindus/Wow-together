@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.39"
-ns.RELEASE_NAME = "CRAFTING HOTFIX"
+ns.VERSION = "0.8.40"
+ns.RELEASE_NAME = "MARKET SMART"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}
@@ -199,6 +199,15 @@ function ns.Diagnostics()
         {"C_TradeSkillUI.GetChildProfessionInfo", C_TradeSkillUI and C_TradeSkillUI.GetChildProfessionInfo},
         {"C_TradeSkillUI.GetBaseProfessionInfo", C_TradeSkillUI and C_TradeSkillUI.GetBaseProfessionInfo},
         {"C_AuctionHouse.GetCommoditySearchResultInfo", C_AuctionHouse and C_AuctionHouse.GetCommoditySearchResultInfo},
+        {"C_AuctionHouse.GetNumCommoditySearchResults", C_AuctionHouse and C_AuctionHouse.GetNumCommoditySearchResults},
+        {"C_AuctionHouse.MakeItemKey", C_AuctionHouse and C_AuctionHouse.MakeItemKey},
+        {"C_AuctionHouse.SendSearchQuery", C_AuctionHouse and C_AuctionHouse.SendSearchQuery},
+        {"C_AuctionHouse.HasFullCommoditySearchResults", C_AuctionHouse and C_AuctionHouse.HasFullCommoditySearchResults},
+        {"C_AuctionHouse.HasFullItemSearchResults", C_AuctionHouse and C_AuctionHouse.HasFullItemSearchResults},
+        {"C_AuctionHouse.RequestMoreCommoditySearchResults", C_AuctionHouse and C_AuctionHouse.RequestMoreCommoditySearchResults},
+        {"C_AuctionHouse.RequestMoreItemSearchResults", C_AuctionHouse and C_AuctionHouse.RequestMoreItemSearchResults},
+        {"GetServerTime", GetServerTime},
+        {"GetRealmName", GetRealmName},
         {"C_AuctionHouse.SendBrowseQuery", C_AuctionHouse and C_AuctionHouse.SendBrowseQuery},
         {"C_AuctionHouse.IsThrottledMessageSystemReady", C_AuctionHouse and C_AuctionHouse.IsThrottledMessageSystemReady},
         {"C_AuctionHouse.GetNumItemSearchResults", C_AuctionHouse and C_AuctionHouse.GetNumItemSearchResults},
@@ -310,12 +319,16 @@ ns.On("ADDON_LOADED", function(name)
     ns.CreateNavigation()
     ns.InitializeGuidePersistence()
     if ns.InitializeProfessionGuides then ns.InitializeProfessionGuides() end
+    ns.InitializeAuctionMarket()
     ns.InitializeDungeonViewer()
     ns.Refresh()
     ns.Print("Loaded. /wt opens the quest view; /wt probe opens diagnostics.")
 end)
 
-ns.On("PLAYER_LOGIN", function() ns.RestoreSavedGuide(); ns.RefreshDungeonArtwork(); ns.ScheduleFlightDiscovery(); ns.ScheduleSync() end)
+ns.On("PLAYER_LOGIN", function()
+    ns.ReadProfile(); ns.InitializeAuctionMarket()
+    ns.RestoreSavedGuide(); ns.RefreshDungeonArtwork(); ns.ScheduleFlightDiscovery(); ns.ScheduleSync()
+end)
 ns.On("QUEST_LOG_UPDATE", function()
     ns.ScheduleSync()
 end)

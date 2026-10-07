@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.39
-## X-ReleaseName: CRAFTING HOTFIX
+## Version: 0.8.40
+## X-ReleaseName: MARKET SMART
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua
@@ -73,6 +73,8 @@ ProfessionPlanner.lua
 ProfessionTrainers.lua
 ProfessionShopping.lua
 ProfessionViewer.lua
+AuctionMarket.lua
+AuctionScan.lua
 AuctionGuide.lua
 DungeonJournal.lua
 DungeonMapQuests.lua

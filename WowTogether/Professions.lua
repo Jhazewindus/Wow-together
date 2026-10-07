@@ -92,7 +92,7 @@ function ns.RecipeMaterials(id, crafts)
                         local have = ns.ItemOwned(reagent.itemID)
                         local need = slot.quantityRequired * crafts
                         local missing = have and math.max(0, need - have) or nil
-                        local quote = ns.marketQuotes[reagent.itemID]
+                        local quote = ns.AuctionQuote(reagent.itemID)
                         local price = missing == 0 and 0 or (quote and missing and quote.unitPrice * missing)
                         local owned = missing == 0
                         if not best or (owned and not bestOwned) or (owned == bestOwned and price and (not cost or price < cost)) then
@@ -117,7 +117,7 @@ function ns.RecipeMaterials(id, crafts)
     total = 0
     for id, item in pairs(merged) do
         item.missing = item.have and math.max(0, item.need - item.have) or nil
-        local quote = ns.marketQuotes[id]
+        local quote = ns.AuctionQuote(id)
         if item.missing == 0 then
         elseif quote and item.missing and total then total = total + item.missing * quote.unitPrice
         else total = nil end

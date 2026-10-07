@@ -1,6 +1,6 @@
 # Personal crafting guides
 
-WoW Together 0.8.39 supports Alchemy, Blacksmithing, Enchanting,
+WoW Together 0.8.40 supports Alchemy, Blacksmithing, Enchanting,
 Engineering, Leatherworking and Tailoring. Profession cards use the compact
 browser grid. Learned professions come first when the client identifies them;
 opening the profession window supplies recipes and can identify a profession
@@ -62,7 +62,7 @@ No skills, recipes or purchases are performed automatically.
   amortized across a batch. Bag stock can favor a recipe already affordable.
   This does **not** establish the cheapest gold cost.
 - Manual AH commodity/item-auction results and ordinary merchant listings can provide prices
-  for the session. Missing prices stay unknown; vendor stack prices are divided
+  with a six-hour market-scoped cache. Missing prices stay unknown; vendor stack prices are divided
   by purchase quantity. Extended-currency items are excluded. No auction search,
   buying, crafting or training is automated. Vendor names are retained for the
   material list; there is no complete independent vendor database.
@@ -92,29 +92,61 @@ costs are estimates; actual progress drives completion.
 ## Materials and auction searches
 
 Next batch lists remaining materials for current work. To skill goal estimates
-the chosen preview path, rounds expected crafts up and carries one stock ledger
-through its steps. Earlier planned outputs feed later recipes. Missing intermediate
-materials expand to learnable preparation recipes where no direct purchase price
-is known. Skill-up variance, preparation skill gains and future recipe choices
-can change the totals; buy for the next batch first. Partial paths or unreadable
-bags are labeled incomplete. Goal calculations yield and cancel when superseded.
+the preview path, rounds expected crafts up and carries one stock ledger through
+its steps. Earlier planned outputs feed later recipes. Intermediate purchases
+are compared with known raw ingredient costs plus preparation time. Unknown
+prices retain a reference fallback. Skill-up variance, preparation skill gains
+and future recipe choices can change totals; buy for the next batch first.
+Partial paths or unreadable bags are labelled incomplete. Calculations yield
+and cancel when superseded.
 
-Search AH on a material row or the small AH toolbar sends one search per click.
-The AH must be open, the item name cached, query capacity available and combat
-ended. Capability checks select the exposed UI/API contract rather than project
-ID: modern frame browse helper or legacy exact-name browse. Existing category/
-level filters are cleared for that search. Neither path buys, bids or crafts.
-These native contracts need beta testing; `/wt probe` lists their availability.
+The auction-house panel sits to the left with goal selection, a scrollable item
+list, approximate missing Buy amounts and per-row Search. It uses the active
+crafting guide, or the open profession materials window when no guide is active.
+It temporarily makes space when the normal native placement leaves no room and
+the screen is wide enough; native anchors restore on close, after combat if
+necessary. Small-screen placement/scale needs beta tests.
 
-Quotes use public result data from this session. Commodity unit prices are direct;
-item/legacy buyouts are divided by stack size and rounded up to copper. Bid-only
-and private results are ignored. Only the first 100 item-auction results or first
-50 legacy page listings are examined; no pages are queried automatically. These
-are observed offers, not a guarantee of stock or an all-AH minimum. A new price
-immediately reselects even unfinished active work from actual skill and bags.
-The broader preview also refreshes. Unknown prices retain the material heuristic.
-A full/targeted background scanner is not included; request limits and native
-beta search behavior need validation before adding a throttled scan queue.
+**Scan auction house** explicitly starts a bounded queue for this profession's
+selected goal. It includes viable learnable recipe alternatives and ingredients
+of intermediate preparations: pricing only the old selected path cannot compare
+alternatives. It never scans the whole AH. Modern APIs are capability-probed:
+`MakeItemKey`, `SendSearchQuery`, throttle readiness and item/commodity result
+events. Queries use exact IDs, one pending request, >=1 second pacing, up to
+three result pages per item, a 20-second response timeout and a bounded busy
+wait. Price sorting is used when its enum is exposed. No API success return
+alone proves delivery; match the response to the pending item. Unknown/private
+and timed-out replies don't become zero prices. Missing support leaves manual
+Search buttons available. Native exact-query behavior still needs Forever tests.
+
+Stop scan, closing the AH, native browsing, a manual material search, or changing
+the selected profession/goal cancels further queries. Combat pauses new queries;
+public result reads can finish and queue planning after combat. Closing/switching
+also cancels stale forecasts. Searches and scans never buy, bid, train or craft.
+
+Quotes persist for this character's realm/region/faction/build, expiring after
+six hours. A missing server clock or market identity prevents persistence.
+Initialization waits for known faction, so early login reads don't erase a valid
+cache. Saved quotes are bounded to 256 items, each up to 40 price/quantity tiers.
+Native reads inspect up to 200 result rows; item/legacy buyouts are divided by
+stack size, bid-only and private prices are rejected, and owned/account offers
+are excluded where public ownership data identifies them. Legacy manual searches
+read up to 50 listings. Full empty results invalidate earlier prices. Books
+weight cost by requested quantity when observed supply covers it; otherwise
+price remains an estimate. A saved snapshot isn't a guarantee of availability.
+
+New quotes immediately reconsider unfinished crafts and the full goal preview.
+Fully priced choices/paths take priority over unknown-price heuristics after
+market observations. The balance compares copper/100 with expected crafting
+seconds; cached `C_Spell.GetSpellInfo(...).castTime` supplies craft time, with a
+four-second estimate when absent. Preparation time is included. This is a
+cost/time heuristic with estimated skill-up probabilities, not proof of the
+cheapest possible shopping route or future trainer/recipe availability. Actual
+skill continues to determine milestones and guide progress.
+
+The native API contracts were checked in Blizzard's generated Mainline
+[AuctionHouse documentation](https://github.com/Gethe/wow-ui-source/blob/live/Interface/AddOns/Blizzard_APIDocumentationGenerated/AuctionHouseDocumentation.lua);
+presence and return behavior must still be retested in the current Forever beta.
 
 Recipe training uses the current cap; reaching the skill requirement for a later
 rank alone does not force a distant rank-training detour. If the chosen trainer

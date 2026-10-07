@@ -1,13 +1,13 @@
 # Wow Together — friend test script
 
-For **0.8.39** — **CRAFTING HOTFIX**, World of Warcraft: Forever beta,
+For **0.8.40** — **MARKET SMART**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 72 Lua files** and
+1. Replace the complete WowTogether folder, including **all 74 Lua files** and
    the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    `/reload`; restart fully if a new addon folder does not appear.
@@ -16,6 +16,33 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Goal-based auction shopping — about 10–15 minutes
+
+- Start any of the six crafting guides, select 75/150/225/300, then open the AH.
+  The material panel should sit to its left. If the normal AH is against the
+  screen edge and space allows, move it temporarily to make room; closing the
+  AH restores its position. Check your screen scale and small screens. The list
+  scrolls; each item shows approximate Buy amount after bags/planned intermediates
+  and a Search button. Opening the AH alone must send no searches.
+- Click Scan auction house. Check preparation/progress and Stop scan. It should
+  price materials for the full goal and suitable alternative recipes, then
+  refresh the Buy list and crafting path. Price/availability must match observed
+  offers; partial results and unknown prices remain estimates. No purchase,
+  bid, training or craft should occur. Check the current batch can change when
+  another confirmed, priced recipe becomes more cost/time effective.
+- Try cheaper raw materials versus expensive leather/bolts, then the reverse:
+  choose between preparation and direct buying; never count owned stock twice.
+  Goals/quantities are estimates, including uncertain skill-ups/training data.
+- Per-row Search stops the scan and populates the native search for that item.
+  Native browsing, Stop scan, switching guide/goal and closing the AH cancel
+  pending queries. Combat pauses new requests; resume afterward. Busy server,
+  absent APIs, delayed/empty/private results must not cause a query flood, Lua
+  error, zero-price guess or a stuck guide. Test modern and any exposed legacy UI.
+- `/reload` and reopen the AH: recent prices should show saved and still affect
+  the same character/market. Old prices expire after six hours. Different faction,
+  realm/build must not reuse the cache. Capture new Auction scan/Crafting market
+  and auction capability lines from `/wt probe` if native scanning fails.
 
 ## Crafting hotfix and quest markers — about 5–10 minutes
 

@@ -161,7 +161,7 @@ class AuctionTests(unittest.TestCase):
         c = crafting(); c.ns.StartProfessionGuide(171,75); modern(c)
         self.assertEqual(len(c.lua.globals().ahSearches),0)
         self.assertTrue(c.ns.auctionGuideToolbar.IsShown(c.ns.auctionGuideToolbar))
-        c.ns.auctionGuideToolbar.search.OnClick()
+        c.ns.auctionGuideToolbar.rows[1].search.OnClick()
         self.assertEqual(c.lua.globals().ahSearches[1].name,'Herbs')
         self.assertTrue(c.lua.globals().categories.cleared)
         self.assertEqual(len(c.lua.globals().ahSearches[1].filters),0)

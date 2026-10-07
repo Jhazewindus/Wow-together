@@ -52,7 +52,7 @@ function ns.ShoppingText(list)
     local lines = {}
     for _, item in ipairs(list) do
         local name = ns.ItemName(item.itemID, item.name)
-        local quote = ns.marketQuotes[item.itemID]
+        local quote = ns.AuctionQuote(item.itemID)
         local quantity = item.missing or item.need
         lines[#lines + 1] = name .. " • need " .. item.need .. " • bags " .. (item.have or "unknown")
             .. " • buy " .. (item.missing or "check bags")
@@ -61,7 +61,7 @@ function ns.ShoppingText(list)
         if item.quests then lines[#lines + 1] = "  For: " .. table.concat(item.quests, ", ") end
     end
     if #lines == 0 then lines[1] = "No missing items are known for this plan.\nSome requirements may be unavailable; check the quest or recipe." end
-    lines[#lines + 1] = "\nThis is your own shopping list. AH prices use results you searched this session; listings can change."
+    lines[#lines + 1] = "\nThis is your own shopping list. Saved AH prices expire after 6 hours; listings can change."
     return table.concat(lines, "\n")
 end
 
@@ -144,7 +144,7 @@ function ns.RenderShoppingList()
         row.itemID = item.itemID
         row:SetPoint("TOPLEFT", 0, -(index - 1) * 76)
         row.title:SetText(ns.ItemName(item.itemID, item.name))
-        local quote = ns.marketQuotes[item.itemID]
+        local quote = ns.AuctionQuote(item.itemID)
         row.detail:SetText((context and context.scope == "goal" and "Estimate " or "Need ") .. item.need
             .. " • Bags " .. (item.have or "?") .. (item.planned and item.planned > 0 and " • Make " .. item.planned or "")
             .. " • Buy " .. (item.missing or "check bags")
@@ -156,17 +156,3 @@ function ns.RenderShoppingList()
     frame.status:SetText(ns.auctionGuideStatus or "Open an auction house, then click Search AH.")
     if ns.RefreshAuctionGuideSearch then ns.RefreshAuctionGuideSearch() end
 end
-
-ns.On("COMMODITY_SEARCH_RESULTS_UPDATED", function(id)
-    if not ns.GuideInteger(id) or id <= 0 or not C_AuctionHouse then return end
-    local result = ns.ReadPublic(C_AuctionHouse.GetCommoditySearchResultInfo, id, 1)
-    if type(result) == "table" and ns.GuideInteger(result.unitPrice) and result.unitPrice > 0 and ns.GuideInteger(result.quantity) and result.quantity > 0 then
-        local old = ns.marketQuotes[id]
-        ns.marketQuotes[id] = {unitPrice = result.unitPrice, quantity = result.quantity}
-        ns.RefreshShoppingList()
-        if (not old or old.unitPrice ~= result.unitPrice) and ns.ProfessionPricesChanged then ns.ProfessionPricesChanged()
-        elseif ns.QueueProfessionUpdate then ns.QueueProfessionUpdate() end
-        if ns.RenderProfessionGuide then ns.RenderProfessionGuide() end
-        if ns.RefreshAuctionGuideSearch then ns.RefreshAuctionGuideSearch() end
-    end
-end)

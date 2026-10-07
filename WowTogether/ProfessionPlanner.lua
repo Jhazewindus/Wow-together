@@ -124,10 +124,13 @@ local function owned(id)
     if stockCache[id] == nil then stockCache[id] = ns.ItemOwned(id) or false end
     return stockCache[id] ~= false and stockCache[id] or nil
 end
-local function price(id)
-    local auction, vendor = ns.marketQuotes[id], ns.professionVendorQuotes and ns.professionVendorQuotes[id]
-    if auction and vendor then return math.min(auction.unitPrice, vendor.unitPrice) end
-    return auction and auction.unitPrice or vendor and vendor.unitPrice
+local function price(id, quantity)
+    local auction
+    if ns.AuctionUnitPrice then auction = ns.AuctionUnitPrice(id, quantity)
+    else auction = ns.marketQuotes[id] and ns.marketQuotes[id].unitPrice end
+    local vendor = ns.professionVendorQuotes and ns.professionVendorQuotes[id]
+    if auction and vendor then return math.min(auction, vendor.unitPrice) end
+    return auction or vendor and vendor.unitPrice
 end
 local function itemName(id, item)
     if not nameCache[id] then nameCache[id] = ns.ItemName(id, item and item.name) end
@@ -147,7 +150,7 @@ function ns.ProfessionMaterials(id, recipe, crafts, skill, useStock, sharedLedge
         open = C_TradeSkillUI and ns.ReadPublic(C_TradeSkillUI.GetBaseProfessionInfo)
     end
     local nativeOpen = type(open) == "table" and ns.Public(open.professionID) and open.professionID == id
-    local function reagents(r, quantity)
+    local function reagents(r, quantity, projection)
         local live = liveRecipe(id, r)
         if nativeOpen and live and live.learned then
             local list, _, missing = ns.RecipeMaterials(r.id, quantity)
@@ -155,6 +158,7 @@ function ns.ProfessionMaterials(id, recipe, crafts, skill, useStock, sharedLedge
                 local mats = {}; for _, mat in ipairs(list) do mats[#mats + 1] = {mat.itemID, mat.need} end
                 return mats
             end
+            if projection then return end
             incomplete = true
         end
         local mats = {}; for _, mat in ipairs(r.materials) do mats[#mats + 1] = {mat[1], mat[2] * quantity} end
@@ -163,6 +167,43 @@ function ns.ProfessionMaterials(id, recipe, crafts, skill, useStock, sharedLedge
     local function stock(itemID)
         if ledger[itemID] == nil then ledger[itemID] = useStock and (owned(itemID) or false) or 0 end
         return ledger[itemID] ~= false and ledger[itemID] or nil
+    end
+    local projectionCalls = 0
+    local project
+    project = function(maker, batches, depth, path, available)
+        projectionCalls = projectionCalls + 1
+        if depth > 5 or projectionCalls > 100 then return end
+        local state = {}; for itemID, count in pairs(available) do state[itemID] = count end
+        local cost, seconds = 0, (ns.ProfessionCraftSeconds and ns.ProfessionCraftSeconds(maker) or 4) * batches
+        local mats = reagents(maker, batches, true)
+        if not mats then return end
+        for _, mat in ipairs(mats) do
+            local itemID, quantity = mat[1], mat[2]
+            if state[itemID] == nil then state[itemID] = stock(itemID) or false end
+            if state[itemID] == false then return end
+            local used = math.min(state[itemID], quantity)
+            local missing = quantity - used; state[itemID] = state[itemID] - used
+            if missing > 0 then
+                local direct = price(itemID, missing)
+                local bestCost, bestSeconds, bestState = direct and direct * missing, 0, state
+                if not path[itemID] then
+                    local nextPath = {}; for item, value in pairs(path) do nextPath[item] = value end; nextPath[itemID] = true
+                    for _, nested in ipairs(data.producers[itemID] or {}) do
+                        if allowed(id, nested, skill) and nested.id ~= recipe.id then
+                            local nestedCost, nestedSeconds, nestedState = project(nested, math.ceil(missing / (nested.outputQuantity or 1)), depth + 1, nextPath, state)
+                            if nestedCost and (not bestCost or nestedCost + nestedSeconds * 100 < bestCost + bestSeconds * 100) then
+                                nestedState[itemID] = (nestedState[itemID] or 0)
+                                    + math.ceil(missing / (nested.outputQuantity or 1)) * (nested.outputQuantity or 1) - missing
+                                bestCost, bestSeconds, bestState = nestedCost, nestedSeconds, nestedState
+                            end
+                        end
+                    end
+                end
+                if not bestCost then return end
+                cost, seconds, state = cost + bestCost, seconds + bestSeconds, bestState
+            end
+        end
+        return cost, seconds, state
     end
     local function record(itemID, quantity, missing)
         local row = rows[itemID]
@@ -186,16 +227,23 @@ function ns.ProfessionMaterials(id, recipe, crafts, skill, useStock, sharedLedge
         if have then ledger[itemID] = have - used end
         local missing = quantity - used
         if missing == 0 then record(itemID, quantity, 0); return end
-        local maker
+        local maker, makerScore
+        local direct = price(itemID, missing)
         if depth < 5 and not visiting[itemID] then
             for _, candidate in ipairs(data.producers[itemID] or {}) do
-                if allowed(id, candidate, skill) and candidate.id ~= recipe.id
-                    and (not maker or candidate.learn < maker.learn or candidate.learn == maker.learn and candidate.id < maker.id) then maker = candidate end
+                if allowed(id, candidate, skill) and candidate.id ~= recipe.id then
+                    local cost, seconds = project(candidate, math.ceil(missing / (candidate.outputQuantity or 1)), depth, {[itemID] = true}, ledger)
+                    local value = cost and cost + seconds * 100
+                    if value and (not makerScore or value < makerScore)
+                        or not value and not makerScore and (not maker or candidate.learn < maker.learn or candidate.learn == maker.learn and candidate.id < maker.id) then
+                        maker, makerScore = candidate, value
+                    end
+                end
             end
         end
-        -- An observed direct purchase price leaves this a shopping item; otherwise
-        -- make learnable intermediates from raw stock. No invented vendor prices.
-        if maker and not price(itemID) then
+        -- Compare buying with known raw costs + preparation time. An expensive
+        -- intermediate listing must not force buying when making it is cheaper.
+        if maker and (not direct or makerScore and makerScore < direct * missing) then
             if used > 0 then record(itemID, used, 0) end
             visiting[itemID] = true
             local batches = math.ceil(missing / (maker.outputQuantity or 1))
@@ -205,7 +253,7 @@ function ns.ProfessionMaterials(id, recipe, crafts, skill, useStock, sharedLedge
             ledger[itemID] = (ledger[itemID] or 0) + batches * (maker.outputQuantity or 1) - missing
         else
             record(itemID, quantity, missing)
-            local unit = price(itemID)
+            local unit = price(itemID, missing)
             if unit then total = total + missing * unit else complete = false end
         end
     end
@@ -244,7 +292,7 @@ function ns.ProfessionMaterialForecast(id, plan, cooperative)
     for _, row in pairs(merged) do
         if row.unreadable then row.missing = nil end
         row.planned = row.have and row.missing and math.max(0, row.need - row.have - row.missing) or nil
-        local unit = price(row.itemID)
+        local unit = price(row.itemID, row.missing)
         if row.missing == nil or row.missing > 0 and not unit then priced = false
         elseif row.missing > 0 then cost = cost + row.missing * unit end
         list[#list + 1] = row
@@ -282,6 +330,12 @@ end
 local function resources(list)
     local n = 0; for _, row in ipairs(list) do n = n + row.missing end; return n
 end
+local function craftSeconds(recipe)
+    local spell = C_Spell and ns.ReadPublic(C_Spell.GetSpellInfo, recipe.id)
+    local duration = type(spell) == "table" and spell.castTime
+    return ns.GuideInteger(duration, 600000) and duration > 0 and duration / 1000 or 4
+end
+ns.ProfessionCraftSeconds = craftSeconds
 local function score(id, recipe, skill, current, useStock)
     local chance = ns.ProfessionSkillChance(id, recipe, skill, current)
     if not current then
@@ -290,7 +344,7 @@ local function score(id, recipe, skill, current, useStock)
             local unit = price(mat[1]); quantity = quantity + mat[2]
             if unit then total = total + unit * mat[2] else complete = false end
         end
-        return ((complete and total / 100 or quantity * 10) + 4) / chance, complete
+        return ((complete and total / 100 or quantity * 10) + craftSeconds(recipe)) / chance, complete
     end
     local list, cost, prep = ns.ProfessionMaterials(id, recipe, 1, skill, useStock)
     local live = liveRecipe(id, recipe)
@@ -298,14 +352,63 @@ local function score(id, recipe, skill, current, useStock)
     -- Copper when prices are known; a resource heuristic otherwise. Missing
     -- prices are displayed as unknown, never advertised as zero cost.
     local value = cost and cost / 100 or resources(list) * 10
-    return (value + 4 + #prep * 3 + (live and live.learned and 0 or 8 / 5)) / (chance * gain), cost ~= nil
+    local preparationTime = 0
+    for _, step in ipairs(prep) do preparationTime = preparationTime + step.crafts * craftSeconds(step.recipe) end
+    return (value + craftSeconds(recipe) + preparationTime + (live and live.learned and 0 or 8 / 5)) / (chance * gain), cost ~= nil
+end
+
+-- Price viable alternatives too; pricing only the previously selected path
+-- cannot reveal a cheaper recipe. Only this profession's bounded skill goal.
+function ns.ProfessionMarketItems(id, target, cooperative)
+    local facts, info = ns.ProfessionFacts(id), ns.professionData[id]
+    if not facts or not info or not ns.GuideInteger(info.skill, 300) then return {} end
+    local seen, result = {}, {}
+    local function add(itemID)
+        if ns.GuideInteger(itemID) and itemID > 0 and not seen[itemID] then
+            seen[itemID] = true; result[#result + 1] = itemID
+        end
+    end
+    for number, recipe in ipairs(facts.recipes) do
+        local skill = math.max(info.skill, recipe.learn or 301)
+        if skill < target and ns.ProfessionSkillChance(id, recipe, skill, false) > 0 then
+            for _, mat in ipairs(recipe.materials) do add(mat[1]) end
+            -- A changed learned beta schematic overrides old reagent facts.
+            local live = liveRecipe(id, recipe)
+            if live and live.learned and ns.ProfessionWindowMatches(id) then
+                local rows = ns.RecipeMaterials(recipe.id, 1)
+                for _, row in ipairs(rows) do add(row.itemID) end
+            end
+        end
+        if cooperative and number % 20 == 0 then coroutine.yield() end
+    end
+    -- Ingredients of useful intermediate recipes, including grey ones.
+    local function expand(itemID, depth)
+        if depth >= 5 then return end
+        for _, maker in ipairs(index(id).producers[itemID] or {}) do
+            if allowed(id, maker, math.max(info.skill, maker.learn or 301)) and (maker.learn or 301) < target then
+                for _, mat in ipairs(maker.materials) do
+                    if not seen[mat[1]] then add(mat[1]); expand(mat[1], depth + 1) end
+                end
+            end
+        end
+    end
+    local originals = #result
+    for number = 1, originals do
+        expand(result[number], 0)
+        if cooperative and number % 20 == 0 then coroutine.yield() end
+    end
+    table.sort(result)
+    return result
 end
 
 function ns.ProfessionNextRecipe(id, skill)
-    local best, bestScore
+    local best, bestScore, bestPriced
     for _, recipe in ipairs(candidates(id, skill, true)) do
-        local value = score(id, recipe, skill, true, true)
-        if not best or value < bestScore then best, bestScore = recipe, value end
+        local value, priced = score(id, recipe, skill, true, true)
+        local sameTier = not ns.auctionPriceAssessment or priced == bestPriced
+        if not best or ns.auctionPriceAssessment and priced and not bestPriced or sameTier and value < bestScore then
+            best, bestScore, bestPriced = recipe, value, priced
+        end
     end
     return best
 end
@@ -593,11 +696,15 @@ end
 function ns.PlanProfessionPreview(id, target, cooperative)
     local info, facts = ns.professionData[id], ns.ProfessionFacts(id)
     local start = info and info.skill or 1
-    local distance, choice = {[target] = 0}, {}
+    local distance, choice, prices = {[target] = 0}, {}, {[target] = true}
     for skill = target - 1, start, -1 do
         for _, recipe in ipairs(candidates(id, skill, false)) do
-            local value = score(id, recipe, skill, false, false) + (distance[skill + 1] or 0)
-            if not distance[skill] or value < distance[skill] then distance[skill], choice[skill] = value, recipe end
+            local recipeScore, priced = score(id, recipe, skill, false, false)
+            local value, whole = recipeScore + (distance[skill + 1] or 0), priced and prices[skill + 1] == true
+            local sameTier = not ns.auctionPriceAssessment or whole == prices[skill]
+            if not distance[skill] or ns.auctionPriceAssessment and whole and not prices[skill] or sameTier and value < distance[skill] then
+                distance[skill], choice[skill], prices[skill] = value, recipe, whole
+            end
         end
         if cooperative and skill % 8 == 0 then coroutine.yield() end
     end

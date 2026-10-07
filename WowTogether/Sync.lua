@@ -669,9 +669,12 @@ function ns.SyncDiagnostics(output)
     output("Craft batch tracking: spell-success event " .. (ns.professionCraftEventReady and "registered" or "unavailable")
         .. "; matching public craft casts observed: " .. ns.professionCraftsObserved .. ". Retest event delivery on this beta build.")
     local quotes, trainers = 0, 0
-    for _ in pairs(ns.marketQuotes or {}) do quotes = quotes + 1 end
+    for id in pairs(ns.marketQuotes or {}) do if ns.AuctionUnitPrice(id) then quotes = quotes + 1 end end
     for _ in pairs(ns.professionSaved and ns.professionSaved.trainers or {}) do trainers = trainers + 1 end
-    output("Crafting market: " .. quotes .. " session quotes; " .. trainers .. " saved trainer observations. Searches require a click; new prices reassess the active batch.")
+    output("Crafting market: " .. quotes .. " usable quotes; " .. (ns.auctionMarketRestored or 0) .. " restored; " .. trainers
+        .. " saved trainer observations. Personal realm/faction/build cache; prices expire after 6 hours.")
+    output("Auction scan: " .. (ns.auctionScanStatus or "not started")
+        .. "; paced exact-item queries, up to 3 pages each. Purchases and crafting stay manual.")
     local crafting = ns.routeSelection and ns.routeSelection.mode == "profession" and ns.routeSelection
     if crafting then
         local info, route = ns.professionData[crafting.professionID], ns.selectedRoute

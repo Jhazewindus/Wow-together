@@ -1,5 +1,26 @@
 # Wow Together changelog
 
+## 0.8.40
+
+**MARKET SMART**
+
+- Replace the AH toolbar with a panel on its left: scrollable material rows,
+  approximate Buy amounts after bags/planned outputs, Search buttons and skill goal.
+  Make room when screen space allows; restore the AH's position on close.
+- Add Scan auction house for the chosen profession/goal. Price viable recipe
+  alternatives too, using exact item queries one at a time, at least 1 second
+  apart. Respect throttling; bound pages, waits and retries. Stop on close,
+  manual searches, browsing, guide/goal changes or Stop scan; pause in combat.
+- Save up to 256 price snapshots for this character's realm/faction/build,
+  expiring after 6 hours. Guard public buyouts/quantities; ignore owned, bid-only
+  and private offers. Empty full results clear old prices. Partial books stay estimates.
+- Reassess current crafts and the full goal path from observed prices, skill and
+  stock. Prefer priced paths; compare buying intermediates with raw material
+  cost/preparation time. Use cached native cast times, otherwise a time estimate.
+- Keep purchases, training and crafting manual. Add scan/cache capability probes
+  and host checks. Include all 74 Lua files and Media; retest native auction
+  query behavior, placement and market results on the current beta.
+
 ## 0.8.39
 
 **CRAFTING HOTFIX**
