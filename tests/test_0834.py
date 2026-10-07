@@ -65,7 +65,7 @@ class SectionScopeTests(unittest.TestCase):
         self.assertEqual(len(c.ns.guideQuestList.plan), 6)
         c.ns.SetFilter('guides')
         self.assertIn('2 quests', c.ns.ui.cards[1].reason.text)
-        self.assertEqual(c.ns.ui.cards[1].count.text, 'Lv 12–13')
+        self.assertFalse(c.ns.ui.cards[1].count.IsShown(c.ns.ui.cards[1].count))
 
     def test_empty_and_isolated_sections_do_not_create_guides(self):
         c = browser()

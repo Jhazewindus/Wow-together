@@ -55,7 +55,12 @@ then fully restart the client; the release includes taint mitigation (a /reload 
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
-0.8.50 SMARTER HAND-INS compares complete quest trips inside the fixed-guide compiler:
+0.8.51 CLEAN LEVELING uses compact clickable leveling cards: select a card to
+preview its ordered quests, then Start route in the preview. The bracket stays
+on the left. Supplies and party catch-up are under More when relevant. Browsing
+does not replace a running guide; level and current-quest choices still apply.
+
+The quest-flow improvements from 0.8.50 compare complete trips inside the fixed-guide compiler:
 prerequisite hand-ins, follow-up pickups and overlapping work can share a visit.
 All actions and endpoints remain; started guides keep their order during play.
 Replay rejects worsened log/progression/difficulty/kill pressure. Generic travel
@@ -154,7 +159,7 @@ transports and confirmed flights, resumes after reload, and finishes on city ent
 No quests or invitations. An unmapped connection is explained; timing and walking
 links are estimates. Explicit quest-log trips are in Party quests. The default
 bracket recommends useful work for your actual lowest level. Manual brackets and
-All levels also show Upcoming zone guides. Show quest list previews their full
+All levels also show Upcoming zone guides. Selecting a card previews their full
 order without changing the running route. Starting too early warns with the
 suggested entry level and a suitable unfinished current-level guide, when known.
 Choose Start recommended / Start anyway / Cancel. An early guide stays selected
@@ -169,7 +174,7 @@ suggestion after current work ends. Fixed zone guides are ON by default. Loading
 route appears while the complete
 catalogue sequence is compiled once, independently of location and quest logs.
 Include class quests shows or hides eligible class steps in that saved sequence,
-the arrow/map and Show quest list. Toggling does not reorder a fixed guide or
+the arrow/map and quest preview. Toggling does not reorder a fixed guide or
 erase manual skips; known class/race/faction and pickup requirements still apply.
 Older zone checkpoints recover previously omitted optional records once on upgrade.
 Collect useful quests nearby groups eligible planned accepts within 100 yards of
@@ -302,9 +307,10 @@ with other Horde characters; clean learned unlock requirements can be reused.
 /wt route clear clears the map route. /wt minimap toggles its dashboard button.
 
 Show route is local. Start route invites friends with Follow route / Keep my route.
-Leveling cards instead have Show quest list: the complete scrollable pickup,
+Selecting a leveling card opens the complete scrollable pickup,
 objective and turn-in order, including later steps and current progress. This
 preview does not start/switch a route; started fixed guides reuse their order.
+Use Start route in the preview's footer to begin.
 Fixed and adaptive guides with current quests offer Start selected guide or Include current quests, with
 a warning about detours. Explicit quest-log routes remain
 selectable in Party quests. Quest acceptance/zone updates retain the selection.

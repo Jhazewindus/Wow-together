@@ -367,9 +367,9 @@ function ns.LayoutBrowserCards()
             top = (row + 1) * (tileHeight + gap) - gap
         else
             card:SetPoint("TOPLEFT", 0, -top); card:SetWidth(width)
-            card.title:SetSize(width - 146, 18); card.title:SetWordWrap(false)
+            card.title:SetSize(width - (card.compactGuide and 28 or 146), 18); card.title:SetWordWrap(false)
             card.count:SetPoint("TOPRIGHT", -14, -28); card.count:SetWidth(118); card.count:SetJustifyH("RIGHT")
-            card.reason:SetPoint("TOPLEFT", 14, -51); card.reason:SetWidth(width - 24)
+            card.reason:SetPoint("TOPLEFT", 14, card.compactGuide and -54 or -51); card.reason:SetWidth(width - 24)
             top = top + card:GetHeight() + 8
         end
         card.category:SetWidth(card:GetWidth() - 28)
@@ -457,7 +457,7 @@ local function makeCard()
             else ns.ShowQuestDetails(item.id) end
         elseif card.guide then
             ns.selectedGuide = card.guide.key
-            if ns.filter == "guides" and card.guide.fullGuide then ns.ShowGuideQuestList(card.guide); return end
+            if card.compactGuide then ns.ShowGuideQuestList(card.guide); return end
             if card.guide.fullGuide or card.guide.hasPoint then ns.ShowGuideOnMap(card.guide) else ns.ShowQuestDetails(card.guide.target.id) end
         end
     end
@@ -566,7 +566,7 @@ function ns.Render(queryContext, routeUpdated)
     local choices = ns.filter == "guides" and ns.GuideBrowserChoices(nil, queryContext) or {}
     ns.ui.hint:SetText(ns.filter == "recommended" and "Pick your next adventure, or continue your current guide."
         or ns.filter == "guides"
-        and "Start a guide to follow its quest order. Search by zone, quest or NPC."
+        and "Select a guide to preview its quests."
         or ns.filter == "dungeons" and "Choose a dungeon to view its map, loot and quests."
         or ns.filter == "professions" and "Choose a profession to plan crafting, materials and training."
         or "Choose a quest to see its route or requirements.")
@@ -617,8 +617,7 @@ function ns.Render(queryContext, routeUpdated)
         for index = (ns.guidePage - 1) * 12 + 1, math.min(#choices, ns.guidePage * 12) do
             display[#display + 1] = {guide = choices[index], recommended = index == 1 and choices[index].levelReady == true}
         end
-        local low, high = ns.GuideLevelRange(nil, queryContext)
-        ns.ui.guideCount:SetText("Levels " .. low .. "–" .. high .. " • " .. #choices .. " guides • Page " .. ns.guidePage .. " / " .. pages .. " • Enter or pause to search")
+        ns.ui.guideCount:SetText(#choices .. " guides • " .. ns.guidePage .. " / " .. pages)
         ns.ui.guidePrev:SetEnabled(ns.guidePage > 1); ns.ui.guideNext:SetEnabled(ns.guidePage < pages)
         ns.ui.guideLevel:SetChoice(ns.guideLevel)
     elseif ns.filter == "suggestions" then
@@ -679,6 +678,9 @@ function ns.Render(queryContext, routeUpdated)
         card.guide = guide
         card.libraryItem = libraryItem
         card.activity = activity
+        card.compactGuide = ns.filter == "guides" and guide ~= nil and not libraryItem
+            and (guide.fullGuide == true or guide.mode == "travel")
+        card.count:SetShown(not card.compactGuide)
         card.detailsButton:ClearAllPoints()
         card.detailsButton:SetPoint("BOTTOMLEFT", 14, 10)
         card.mapButton:SetShown(not (activity and (activity.dungeon or activity.profession)) and (guide ~= nil or libraryItem ~= nil or activity ~= nil))
@@ -686,8 +688,8 @@ function ns.Render(queryContext, routeUpdated)
         card.detailsButton.caption:SetText("Quest details")
         ns.UIButtonTone(card.detailsButton, true)
         card.detailsButton:SetEnabled(true)
-        card.buyButton:SetShown(guide ~= nil and #ns.QuestShoppingList(guide.records, queryContext) > 0)
-        card.catchupButton:SetShown(guide ~= nil and guide.mode == "zone" and guide.fullGuide
+        card.buyButton:SetShown(not card.compactGuide and guide ~= nil and #ns.QuestShoppingList(guide.records, queryContext) > 0)
+        card.catchupButton:SetShown(not card.compactGuide and guide ~= nil and guide.mode == "zone" and guide.fullGuide
             and not guide.catchup and partyEnabled and #(ns.partyNames or {}) > 0 and ns.ReadPublic(IsInRaid) ~= true)
         card.mapButton:SetEnabled(true)
         local height
@@ -737,25 +739,35 @@ function ns.Render(queryContext, routeUpdated)
                 card.category:SetText(item.recommended and (guide.catchup and "RECOMMENDED / CATCH UP FIRST" or "RECOMMENDED NEXT STEP")
                     or (string.upper(guide.kind) .. " / ALTERNATIVE"))
             end
-            card.title:SetText(guide.title)
+            card.title:SetText(card.compactGuide and guide.sectionLow and ns.guideLevel ~= "all"
+                and (guide.zone .. " leveling guide") or guide.title)
             local minimum, maximum = guide.mainLevelLow or guide.minLevel, guide.mainLevelHigh or guide.maxLevel
             card.count:SetText((guide.fullGuide or guide.mode == "travel") and minimum and ("Lv " .. minimum
                 .. (maximum ~= minimum and ("–" .. maximum) or "")) or (guide.level and ("Quest Lv " .. guide.level) or ""))
-            card.reason:SetHeight(height - 90)
-            local nextTitle = guide.nextStop and guide.nextStop.label or guide.target.title
-            local _, requirement = ns.CatalogueAllowed(guide.target.id, ns.profile, ns.self, queryContext)
-            local detail = guide.hasPoint and ("Next: " .. nextTitle) or (requirement or "Location unavailable.")
-            local summary = guide.fullGuide and ((guide.enabledCount or #guide.records) .. " quests • " .. (selected and "Following this guide" or "Fixed quest order")) or guide.reason
-            card.reason:SetText(summary .. "\n" .. (guide.upcoming and "For later levels • View the quest list to plan ahead."
-                or guide.fullGuide and ns.GuideXPText(guide, queryContext) or detail))
-            if guide.fullGuide then
-                ns.GuideXPHelp(card)
-            else ns.UIHelp(card, guide.title .. "\n" .. summary .. "\n" .. detail) end
             card.reason:Show()
-            card.mapButton.caption:SetText(ns.filter == "guides" and guide.fullGuide and "Show quest list" or (guide.hasPoint and "Show route" or "View details"))
-            card.detailsButton.caption:SetText("Start route")
-            card.detailsButton:SetShown(not guide.personal or guide.mode == "travel")
-            card.detailsButton:SetEnabled(guide.fullGuide == true or guide.hasPoint == true)
+            if card.compactGuide then
+                height = 84
+                local count = guide.enabledCount or #guide.records
+                card.count:SetText("")
+                card.reason:SetText(guide.mode == "travel" and "Travel guide" or (count .. " quest" .. (count == 1 and "" or "s")))
+                card.reason:SetHeight(16)
+                card.mapButton:Hide(); card.detailsButton:Hide()
+                card:SetScript("OnEnter", function(self) self:SetBackdropBorderColor(unpack(colors.gold)) end)
+                card:SetScript("OnLeave", function(self) self:SetBackdropBorderColor(unpack(colors.border)) end)
+            else
+                card.reason:SetHeight(height - 90)
+                local nextTitle = guide.nextStop and guide.nextStop.label or guide.target.title
+                local _, requirement = ns.CatalogueAllowed(guide.target.id, ns.profile, ns.self, queryContext)
+                local detail = guide.hasPoint and ("Next: " .. nextTitle) or (requirement or "Location unavailable.")
+                local summary = guide.fullGuide and ((guide.enabledCount or #guide.records) .. " quests • " .. (selected and "Following this guide" or "Fixed quest order")) or guide.reason
+                card.reason:SetText(summary .. "\n" .. (guide.fullGuide and ns.GuideXPText(guide, queryContext) or detail))
+                if guide.fullGuide then ns.GuideXPHelp(card)
+                else ns.UIHelp(card, guide.title .. "\n" .. summary .. "\n" .. detail) end
+                card.mapButton.caption:SetText(guide.hasPoint and "Show route" or "View details")
+                card.detailsButton.caption:SetText("Start route")
+                card.detailsButton:SetShown(not guide.personal or guide.mode == "travel")
+                card.detailsButton:SetEnabled(guide.fullGuide == true or guide.hasPoint == true)
+            end
         else
             height = suggestion and 169 or 110
             card.accent:SetColorTexture(unpack(row.active >= 2 and {0.35, 0.77, 0.57, 1} or colors.gold))

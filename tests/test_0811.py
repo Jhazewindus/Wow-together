@@ -34,8 +34,8 @@ class FutureGuideBrowserTests(unittest.TestCase):
         self.assertTrue(g.upcoming)
         self.assertFalse(g.levelReady)
         self.assertEqual(c.ns.ui.cards[1].category.text, 'UPCOMING ZONE GUIDE')
-        self.assertEqual(c.ns.ui.cards[1].mapButton.caption.text, 'Show quest list')
-        self.assertTrue(c.ns.ui.cards[1].detailsButton.IsEnabled(c.ns.ui.cards[1].detailsButton))
+        c.ns.ui.cards[1].OnClick(); c.drain()
+        self.assertTrue(c.ns.guideQuestList.start.IsEnabled(c.ns.guideQuestList.start))
         self.assertIsNone(c.ns.routeSelection)
         self.assertFalse(c.ns.CatalogueAllowed(910, c.ns.profile, c.ns.self)[0])
 
@@ -54,7 +54,7 @@ class FutureGuideBrowserTests(unittest.TestCase):
         c.ns.SetGuideLevel('21-30')
         c.ns.guideSearchDraft = 'Future'; c.ns.ApplyGuideSearch()
         card = c.ns.ui.cards[1]
-        card.mapButton.OnClick(); c.drain()
+        card.OnClick(); c.drain()
         self.assertEqual({s.id for s in c.ns.guideQuestList.plan.values()}, {910, 911})
         for id in (910, 911):
             self.assertEqual([s.kind for s in c.ns.guideQuestList.plan.values() if s.id == id], ['a', 'q', 't'])

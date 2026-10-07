@@ -104,8 +104,11 @@ class DungeonGridTests(unittest.TestCase):
         c.ns.SetFilter('guides')
         self.assertEqual(card.width, c.ns.ui.contentWidth)
         self.assertEqual(card.height, original_height)
-        self.assertTrue(card.detailsButton.IsShown(card.detailsButton))
-        self.assertEqual(card.mapButton.caption.text, 'Show quest list')
+        self.assertFalse(card.detailsButton.IsShown(card.detailsButton))
+        self.assertFalse(card.mapButton.IsShown(card.mapButton))
+        card.OnClick(); c.drain()
+        self.assertIsNotNone(c.ns.guideQuestList.plan)
+        self.assertIsNone(c.ns.routeSelection)
 
 
 class JournalQuestActionsTests(unittest.TestCase):

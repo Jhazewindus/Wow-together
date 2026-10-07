@@ -245,15 +245,15 @@ class GuideBrowseTests(unittest.TestCase):
         self.assertEqual([(s.id,s.kind,s.mapID,s.x,s.y) for s in frame.plan.values()],expected)
         self.assertEqual(order(c.ns.routeSelection),expected)
 
-    def test_preview_loads_cooperatively_cancels_on_close_and_card_button_does_not_start(self):
+    def test_preview_loads_cooperatively_cancels_on_close_and_card_click_does_not_start(self):
         c=guide_client(12);c.ns.SetFilter('guides');c.ns.Refresh()
         card=c.ns.ui.cards[1]
-        self.assertEqual(card.mapButton.caption.text,'Show quest list')
-        self.assertEqual(card.detailsButton.caption.text,'Start route')
-        card.mapButton.OnClick();frame=c.ns.guideQuestList
+        self.assertFalse(card.mapButton.IsShown(card.mapButton))
+        self.assertFalse(card.detailsButton.IsShown(card.detailsButton))
+        card.OnClick();frame=c.ns.guideQuestList
         self.assertIn('Loading',frame.summary.text);frame.Hide(frame);c.drain()
         self.assertIsNone(frame.plan);self.assertIsNone(c.ns.routeSelection)
-        card.mapButton.OnClick();c.drain()
+        card.OnClick();c.drain()
         self.assertIsNotNone(frame.plan);self.assertIsNone(c.ns.routeSelection)
 
     def test_catalogue_regeneration_preserves_bonus_exclusion_and_checks_identity(self):

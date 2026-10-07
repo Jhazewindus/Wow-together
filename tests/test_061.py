@@ -128,14 +128,15 @@ class GuideBrowserTests(unittest.TestCase):
         c.ns.SetFilter('guides')
         card = c.ns.ui.cards[1]
         self.assertFalse(card.guide.hasPoint)
-        self.assertIn('unknown', card.reason.text)
-        card.mapButton.OnClick()
+        self.assertEqual(card.reason.text, '2 quests')
+        card.OnClick()
         self.assertIn('Loading', c.ns.guideQuestList.summary.text)
         self.assertIsNone(c.ns.routeSelection)
         c.drain()
         self.assertEqual(len(c.ns.guideQuestList.plan), 6)
+        self.assertTrue(c.ns.guideQuestList.rows[1].stop.unknownLocation)
         # The list is read-only; Start route still permits an unmapped guide.
-        card.detailsButton.OnClick()
+        c.ns.guideQuestList.start.OnClick()
         self.assertEqual(c.ns.navigation.state.status, 'Loading route…')
         run_plan(c)
         self.assertIsNotNone(c.ns.routeSelection)

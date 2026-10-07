@@ -1,5 +1,25 @@
 # Wow Together changelog
 
+## 0.8.51
+
+**CLEAN LEVELING**
+
+- Make leveling cards shorter and clickable. Keep the title and quest count;
+  remove the right-hand level badge, repeated route/list buttons, XP paragraphs
+  and future-level helper text. Use the left bracket selector; All levels keeps
+  section names in the title so repeated zones remain clear.
+- Open the ordered quest preview before starting. Start route lives in its
+  footer and waits for loading to finish. Closing or switching previews cancels
+  stale work; browsing leaves the running guide in place. Keep the existing
+  early-level warning and choice to include current quests.
+- Move quest supplies and party catch-up into a contextual More menu in the
+  preview. Path to Orgrimmar uses the same click-to-preview/start flow. Keep
+  window resizing and scrolling, and restore other views when reusing cards.
+- Validation: 286 relevant host checks passed for preview/start/cancellation,
+  resizing, future guides, class filters, travel, supplies, party catch-up and
+  other browser views. All 81 Lua files compile under Lua 5.1. Native beta
+  rendering remains a live-client check.
+
 ## 0.8.50
 
 **SMARTER HAND-INS**

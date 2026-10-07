@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.50** — **SMARTER HAND-INS**, World of Warcraft: Forever beta,
+For **0.8.51** — **CLEAN LEVELING**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
@@ -19,6 +19,23 @@ The expanded-guide checks below take about **15–25 minutes**.
 4. Installing a new version rebuilds the saved guide with the updated rules,
    applying completed/accepted quests and manual skips. Step numbers may change.
    A reload on the same version should preserve the saved order.
+
+## Clean leveling browser — about 5 minutes
+
+- In Leveling, choose a bracket on the left. Cards show the title and quest
+  count, with no right-hand level badge or route/list buttons. Hover highlights
+  a card; click opens its ordered quest preview. All levels distinguishes zone
+  sections in their titles. Search, paging and other browser views still work.
+- Click a guide while another is running: its order and progress stay put.
+  Start route becomes available after the preview loads and closes the preview
+  when clicked. Future guides still ask before starting early; the existing
+  Include current quests choice still applies when relevant.
+- Close a loading preview, then open another. Only the latest guide appears;
+  nothing starts from a stale callback. Resize/scroll the preview and check the
+  footer stays clear. Relevant supplies/catch-up actions live under More.
+- Search Path to Orgrimmar on Horde: clicking previews the travel guide;
+  Start route begins navigation. Dungeons, Professions and All quests keep
+  their own layouts and actions after switching tabs.
 
 ## Whole quest trips — about 15–25 minutes
 
@@ -310,7 +327,7 @@ The expanded-guide checks below take about **15–25 minutes**.
   should remain available, with pickup/objective/turn-in steps and a brief party
   explanation. Test another zone's elite quest; both fixed and adaptive guides
   should retain eligible work without marking it skipped or complete.
-- Show quest list: Elite/Raid should appear alongside progress. A too-high-level
+- In the quest preview, Elite/Raid should appear alongside progress. A too-high-level
   elite quest should say Outside level range, rather than implying a missing party.
 - Use Skip quest yourself, then scan/reload: preserve that choice without giving
   completion credit. Reset guide skips restores the quest when otherwise eligible.
@@ -431,7 +448,7 @@ The expanded-guide checks below take about **15–25 minutes**.
 
 - Browse each level bracket and All levels. Expect separate zone sections such
   as Mulgore Levels 1–10 and Levels 21–30, when multiple related quests exist.
-  Starter sections must omit unrelated level-30 quests. Show quest list should
+  Starter sections must omit unrelated level-30 quests. The quest preview should
   show only that section plus required earlier prerequisites and nearby linked
   continuations. Compare the count, actual quest-level band and XP estimate.
 - At a lower level, preview a future section. Start route must still warn, offer
@@ -997,11 +1014,11 @@ automatically. This review does not change leveling order or mapping coverage.
    recommend suitable current work. Select **Levels 21–30**: matching future
    zones should appear as **Upcoming zone guide**. Starter zones with only a
    sparse high-level handoff and capital pickup hubs should stay absent.
-2. Search for a future zone or one of its quests/NPCs. Click **Show quest list**:
+2. Search for a future zone or one of its quests/NPCs. Select its card:
    see the full pickup/objective/turn-in order. Your current route, progress,
    skips and character level must remain unchanged. Try **All levels** too;
    suitable guides should sort before upcoming guides.
-3. Click **Start route** on an upcoming guide. Check its level warning and
+3. Click **Start route** in the upcoming guide's preview. Check its level warning and
    current-level recommendation. **Cancel** keeps your route. **Start recommended**
    starts the named suggestion. If no suitable unfinished guide is known, that
    button should be disabled rather than inventing a recommendation.
@@ -1038,7 +1055,7 @@ automatically. This review does not change leveling order or mapping coverage.
 
 1. Keep **Include class quests** off and start a fixed zone guide with a known
    quest for your class. Its pickup, objective and turn-in steps must stay out
-   of the arrow, map and **Show quest list**. Normal quests should remain.
+   of the arrow, map and quest preview. Normal quests should remain.
 2. Turn the checkbox on while following that guide. Eligible class steps should
    return at their fixed positions, still respecting levels, prerequisites and
    actual NPC offers. Turn it off again: they disappear immediately. Try while
@@ -1049,7 +1066,7 @@ automatically. This review does not change leveling order or mapping coverage.
 4. Manually skip a class quest. Toggle off/on and `/reload`: the skip stays and
    the quest remains uncompleted. Check that other classes and known incompatible
    faction/race quests never become eligible just because the checkbox is on.
-5. Open **Show quest list** and toggle the setting. Visible counts/rows change;
+5. Open the quest preview and toggle the setting. Visible counts/rows change;
    existing step numbers and relative order stay fixed. Reload with the checkbox
    off, then enable it: optional steps must still be available. A pre-0.8.9 zone
    checkpoint should rebuild once to recover previously omitted class records.
@@ -1165,7 +1182,7 @@ automatically. This review does not change leveling order or mapping coverage.
 4. On Lazy Peons, check the Blackjack instruction, Peons Awoken progress and
    provided-item detail on hover. A tool-use objective must never say Kill.
    Check a well-cleansing, healing or escort step if available.
-5. Open Show quest list and hover rows, then test the standalone arrow hover.
+5. Open the quest preview and hover rows, then test the standalone arrow hover.
    Full action/location text is accessible without expanding the compact panel.
    Long names must remain readable on hover at your usual UI scale.
 6. Check a remote step and a missing-location step. Known destinations show
@@ -1185,7 +1202,7 @@ automatically. This review does not change leveling order or mapping coverage.
 2. Switch between Leveling guides, All quests, Dungeon guides and other views.
    Open the view menu, then the level menu; only one menu stays open. Search by
    typing/pause and by Enter, change brackets and page through the results.
-3. Hover a long guide row, then Show quest list. Source details remain available
+3. Open a guide's quest preview. Source details remain available
    on hover. Scroll from first to last step; row numbers, status and instructions
    align without overlapping. Closing a preview must not start/change a guide.
 4. Start your saved guide. The arrow sits beside its instruction and distance.
@@ -1260,7 +1277,7 @@ automatically. This review does not change leveling order or mapping coverage.
 
 - **Zone coverage:** test a starting zone, a middle-level zone and a later zone
   where you have a suitable character. Include both factions across testers.
-  Start the fixed guide and open Show quest list. Record any missing pickup,
+  Start the fixed guide and open its quest preview. Record any missing pickup,
   objective or hand-in location with its quest ID/name and NPC/target name.
   Include /wt probe; native map conversion requires beta testing.
 - **Useful instructions:** Lazy Peons must say to use Foreman's Blackjack on
@@ -1583,7 +1600,7 @@ Neither proves that an arbitrary quest can be picked up remotely.
 31. **Bonus rewards:** browse Welcome! in All quests; it remains searchable. No
     starting-zone guide or retained guide should contain these Collector's Edition
     pickups. Actual unrelated class progression must remain available when enabled.
-32. **Quest list and brackets:** Show quest list opens the complete scrollable
+32. **Quest list and brackets:** selecting a guide card opens the complete scrollable
     pickup/objective/turn-in sequence without changing the current route or map.
     Check its last row and compare a started fixed guide's order. At level 12,
     selecting 21–30 must not recommend Mulgore or a city just because it has a few

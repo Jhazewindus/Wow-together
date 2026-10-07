@@ -1,14 +1,15 @@
 local addonName, ns = ...
 
-local ROW_HEIGHT, VIEW_HEIGHT = 44, 408
+local ROW_HEIGHT, VIEW_HEIGHT = 44, 396
 local phases = {a = "Pick up", q = "Objectives", t = "Turn in"}
 local colors = {a = {1, 0.82, 0.3}, q = {0.92, 0.88, 0.76}, t = {0.55, 0.84, 0.58}}
 
 local function layout(frame)
-    local width, height = frame:GetWidth() - 76, math.max(100, frame:GetHeight() - 152)
+    local width, height = frame:GetWidth() - 76, math.max(100, frame:GetHeight() - 164)
     frame.viewHeight = height
     frame.title:SetWidth(frame:GetWidth() - 80); frame.summary:SetWidth(frame:GetWidth() - 50)
     frame.scroll:SetSize(width, height); frame.content:SetWidth(width); frame.slider:SetHeight(height - 32)
+    frame.empty:SetSize(width - 40, math.max(80, height - 40))
     for _, row in ipairs(frame.rows) do
         row:SetWidth(width); row.title:SetWidth(width - 250); row.detail:SetWidth(width - 60)
     end
@@ -56,6 +57,20 @@ local function create()
         frame.offset = math.max(0, math.min(frame.maximum or 0, (frame.offset or 0) - delta * ROW_HEIGHT * 2))
         ns.RenderGuideQuestList()
     end)
+    frame.empty = ns.UILabel(frame.scroll, nil, 12, ns.UIColors.muted)
+    frame.empty:SetPoint("TOPLEFT", 20, -20); frame.empty:SetWordWrap(true); frame.empty:SetJustifyV("TOP"); frame.empty:Hide()
+    frame.start = ns.UIButton(frame, "Start route", 136, function()
+        if not frame:IsShown() or not frame.plan or not frame.startGuide then return end
+        local guide = frame.startGuide
+        frame:Hide(); ns.RequestStartRoute(guide)
+    end, true)
+    frame.start:SetPoint("BOTTOMRIGHT", -22, 18); frame.start:SetEnabled(false)
+    frame.more = ns.UIDropdown(frame, {{"buy", "Quest supplies"}, {"catchup", "Catch up party"}}, 160, function(value)
+        if not frame.guide then return end
+        if value == "buy" then ns.ShowShoppingList(ns.QuestShoppingList(frame.guide.records), "Your quest buy list")
+        elseif value == "catchup" then ns.ShowPartyCatchup(frame.guide, true) end
+    end)
+    frame.more:SetPoint("BOTTOMLEFT", 22, 18); frame.more.caption:SetText("More"); frame.more:Hide()
     frame.note = ns.UILabel(frame, nil, 10); frame.note:SetPoint("BOTTOMLEFT", 22, 19)
     frame.note:Hide()
     frame.rows, frame.generation, frame.offset = {}, 0, 0
@@ -79,9 +94,13 @@ function ns.RenderGuideQuestList()
     frame.reasonRoute = {stops = plan}
     if frame.plan then
         local count = 0; for _ in pairs(quests) do count = count + 1 end
-        frame.summary:SetText(count .. " quests • " .. #plan .. " steps\n"
-            .. ns.GuideXPText(frame.xpGuide or frame.guide, query))
+        frame.summary:SetText(frame.guide.mode == "travel" and "Travel guide"
+            or (count .. " quests • " .. #plan .. " steps\n" .. ns.GuideXPText(frame.xpGuide or frame.guide, query)))
     end
+    frame.empty:SetShown(frame.plan ~= nil and #plan == 0)
+    frame.empty:SetText(frame.guide.mode == "travel"
+        and ("Travel to " .. frame.guide.zone .. " using your known flight paths and transport connections.")
+        or "No quests to show with your current settings.")
     local viewHeight = frame.viewHeight or VIEW_HEIGHT
     frame.maximum = math.max(0, #plan * ROW_HEIGHT - viewHeight)
     frame.offset = math.min(frame.offset or 0, frame.maximum)
@@ -125,13 +144,19 @@ function ns.RenderGuideQuestList()
 end
 
 function ns.ShowGuideQuestList(guide)
-    if not guide or not guide.fullGuide then return end
+    if not guide or not (guide.fullGuide or guide.mode == "travel") then return end
     local frame = create()
     frame.generation = frame.generation + 1
     local generation = frame.generation
-    frame.plan, frame.visiblePlan, frame.xpGuide, frame.offset, frame.guide = nil, nil, nil, 0, guide
-    frame.title:SetText(guide.zone .. " • Quest order")
+    frame.plan, frame.visiblePlan, frame.xpGuide, frame.offset, frame.guide, frame.startGuide = nil, nil, nil, 0, guide, nil
+    frame.start:SetEnabled(false); frame.more:Hide()
+    frame.title:SetText(guide.title or (guide.zone .. " leveling guide"))
+    frame:SetFrameLevel((ns.window and ns.window:GetFrameLevel() or 0) + 30)
     frame.summary:SetText("Loading quests…"); frame:Show(); ns.RenderGuideQuestList()
+    if guide.mode == "travel" then
+        frame.plan, frame.startGuide = {}, guide
+        frame.start:SetEnabled(true); ns.RenderGuideQuestList(); return
+    end
     local current = ns.routeSelection
     local existing = guide.fixedPlan or current and current.key == guide.key and current.fixedPlan
     local copy = {}; for key, value in pairs(guide) do copy[key] = value end
@@ -147,7 +172,13 @@ function ns.ShowGuideQuestList(guide)
             if not ns.IsLevelingExcludedQuest(stop.id) then frame.plan[#frame.plan + 1] = stop end
         end
         frame.xpGuide = current and current.key == guide.key and current or copy
-        ns.GuideXPHelp(frame)
+        frame.startGuide = frame.xpGuide
+        frame.start:SetEnabled(true)
+        local supplies = #ns.QuestShoppingList(guide.records) > 0
+        local catchup = guide.mode == "zone" and not guide.catchup and ns.PartyFeaturesEnabled()
+            and #(ns.partyNames or {}) > 0 and ns.ReadPublic(IsInRaid) ~= true
+        frame.more:SetVisibleEntries(function(value) return value == "buy" and supplies or value == "catchup" and catchup end)
+        frame.more:SetShown(supplies or catchup)
         ns.RenderGuideQuestList()
     end
     if existing then advance()

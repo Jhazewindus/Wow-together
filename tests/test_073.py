@@ -193,8 +193,11 @@ class CityTravelGuideTests(unittest.TestCase):
         c.ns.SetFilter('guides')
         card = c.ns.ui.cards[1]
         self.assertEqual(card.category.text, 'TRAVEL GUIDE')
-        self.assertEqual(card.count.text, 'Lv 1–60')
-        self.assertTrue(card.detailsButton.IsShown(card.detailsButton))
+        self.assertFalse(card.count.IsShown(card.count))
+        self.assertFalse(card.detailsButton.IsShown(card.detailsButton))
+        card.OnClick()
+        self.assertEqual(c.ns.guideQuestList.guide.key, 'travel:orgrimmar')
+        self.assertIsNone(c.ns.routeSelection)
         for faction in ('Alliance', 'Unknown'):
             c.ns.profile.faction = faction
             self.assertIsNone(c.ns.OrgrimmarTravelGuide())

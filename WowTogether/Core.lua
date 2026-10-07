@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.50"
-ns.RELEASE_NAME = "SMARTER HAND-INS"
+ns.VERSION = "0.8.51"
+ns.RELEASE_NAME = "CLEAN LEVELING"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}

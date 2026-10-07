@@ -93,7 +93,7 @@ class ResizeTests(unittest.TestCase):
         self.assertEqual(len(f.rows),old)
         c.ns.handlers.GLOBAL_MOUSE_UP('LeftButton')
         self.assertGreater(len(f.rows),old)
-        self.assertEqual(f.maximum,40*44-748)
+        self.assertEqual(f.maximum,40*44-f.scroll.height)
 
     def test_short_map_quest_popup_hides_extra_rows_and_pages_to_every_quest(self):
         c=Client(quests=())

@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.50 — SMARTER HAND-INS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.51 — CLEAN LEVELING** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -22,6 +22,14 @@ Replace the folder on **every party member's client**, including all **81 Lua
 files** and the **Media folder**, then fully restart the client. Restart if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.51 gives leveling guides compact, clickable cards.** Each card keeps its
+title and quest count. Select it to preview the ordered quests, then use Start
+route in that window. The bracket stays in the left dropdown; an All levels
+view names sections in their titles so identical zones remain distinguishable.
+Supplies and party catch-up appear under More in the preview when relevant.
+Browsing preserves the running guide; starting keeps the existing level and
+current-quest choices.
 
 **0.8.50 considers useful hand-ins as well as distance.** The existing fixed-guide compiler can
 bring a prerequisite hand-in, follow-up pickup and overlapping objectives into
@@ -513,7 +521,7 @@ downloaded third-party images. The source atlas and artwork provenance are in
 `Media/GuideThemes/ARTWORK.md`; no third-party CC0 license is claimed for them.
 
 **0.8.11 lets you browse upcoming zone guides.** Choose a future bracket or
-**All levels** in Leveling guides, then use **Show quest list** to preview the
+**All levels** in Leveling guides, then select a card to preview the
 complete order without replacing your current route. Starting too early shows
 the suggested entry level and a suitable unfinished guide for your current
 level, when one is known. Choose **Start recommended**, **Start anyway** or
@@ -627,7 +635,7 @@ quest-log trips are in Party quests.
 The default bracket recommends zones containing useful work for the actual
 lowest player level, respecting known pickup minimums and prerequisite levels.
 Manually selected brackets and **All levels** also show upcoming zone guides;
-their **Show quest list** button previews the full order without starting it.
+selecting a card previews the full order without starting it.
 Known remote-only objectives cannot
 qualify their pickup zone as a leveling area; capitals remain available for
 travel and quest pickups inside guides. Empty or isolated single-quest sections
@@ -746,12 +754,13 @@ so recipients reconstruct its scope beyond the twenty packet IDs. Older
 full-zone invitations retain their original full-zone scope.
 Update all clients together to use these new invitation modes.
 
-Leveling-guide cards instead have **Show quest list**: a movable, scrollable,
+Selecting a leveling-guide card opens a movable, scrollable,
 read-only list of every pickup, objective and hand-in in guide order, including
 later locked steps. It shows levels and progress, and labels missing locations.
 Opening it does not start, switch or save a route. A started fixed guide supplies
 its existing sequence. In adaptive mode this is a catalogue-order preview;
-the trip's travel order is calculated when you start.
+the trip's travel order is calculated when you start. Use **Start route** in
+the preview's footer when ready.
 
 When you start a new guide while quests are already in party logs, choose
 **Start selected guide** or **Include current quests**. The popup explains
@@ -1128,7 +1137,7 @@ Known vendor-listed quest items have a buy list with your own bag counts.
 Profession, flight-network and skip data are personal and are not sent to peers.
 
 
-Guide information and **Show quest list** display a quest-XP estimate from your
+The quest preview displays a quest-XP estimate from your
 level when the route starts. Confirmed completions and skips are excluded.
 Observed XP thresholds are saved for this build; remaining thresholds use a
 labeled Classic baseline. Quest rewards can change in Forever. Kills, exploration,
