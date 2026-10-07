@@ -721,6 +721,15 @@ function ns.SyncDiagnostics(output)
                 .. " stops; pending records: " .. (route and route.missing or 0))
         end
         if selection.batchIDs then output("Trip quest IDs: " .. table.concat(selection.batchIDs, ",")) end
+        local flow = selection.optimization and selection.optimization.flow
+        if flow then
+            output("Quest-flow comparison: " .. flow.candidates .. " alternatives; " .. flow.moves .. " accepted loop changes; all actions/endpoints retained.")
+            output("Quest-flow state: log peak " .. flow.before.peakLog .. " -> " .. flow.after.peakLog
+                .. "; XP shortfall " .. flow.before.levelDeficitXP .. " -> " .. flow.after.levelDeficitXP
+                .. " (quest rewards only; kills/exploration unmeasured).")
+            output("Quest-flow travel: published ground/transports + estimated attachments; " .. flow.after.uncertainTravelLegs
+                .. " uncovered legs; " .. flow.after.blockedTravelLegs .. " blocked estimates. Personal travel stays separate.")
+        end
     end
     output("Route generation: " .. (ns.routePlanning and "loading" or ns.routePlanningError or "idle"))
     if ns.routePlanningErrorDetail then output("Route generation error: " .. safe(ns.routePlanningErrorDetail)) end

@@ -1,5 +1,39 @@
 # Wow Together changelog
 
+## 0.8.49
+
+**QUEST FLOW**
+
+- Improve whole quest trips inside the existing fixed-guide compiler. Consider
+  prerequisite work/hand-ins, follow-up pickups and overlapping objectives
+  together, rather than only relocating adjacent steps. Retain every action,
+  each quest's order, immediate escorts and the same start/finish. Ignore tiny
+  estimated savings; a started guide retains its order during questing/scans.
+- Replay the complete candidate's quest state, log peak, known acceptance levels,
+  quest-reward XP and difficulty pressure. Reject increased progression/log
+  shortfalls, reduced reward estimates or increased required kill work. Shared
+  NPC kills give credit only to matching quests already accepted; later pickups
+  receive no retroactive credit. Drop rates/combat XP/timings remain unmeasured.
+- Compare published directed ground/ordinary transport links with faction and
+  hostile-settlement checks. Keep local attachments/uncovered roads estimated;
+  do not assume personal flights, mounts or hearths in generic zone plans.
+  Keep live confirmed flight routing unchanged. Isolate cooperative graph caches
+  from flight-distance queries and yield during graph/state work.
+- Explain useful unlock/overlapping trips in the small guide window when their
+  related quests remain relevant. Keep source commentary and counters in
+  diagnostics. Missing-offer deferrals, manual skips, level/identity filtering,
+  objective item-use and progress recovery remain in place.
+- Save complete old/new sequences and assumptions in GuideFlowAudit.json, with
+  a reproducible same-source comparison tool and ROUTE_OPTIMIZATION.md. Every
+  compiled action is accounted for; mapping/source coverage remains distinct.
+  Strict source audit still identifies 32 gap-free sections and 120 sections
+  needing facts; this release does not claim 100% world mapping or optimal XP/hour.
+- Validation: all 1,321 host regressions passed, including 17 new whole-flow
+  checks; all 81 Lua files compile under Lua 5.1. All 152 sections retain 13,087
+  actions/endpoints; 68 loop improvements are accepted in 38 sections, with
+  state/travel non-regression checks. The cooperative Mulgore host build's
+  largest resume was 8.54 ms; native timing, terrain and APIs need the checklist.
+
 ## 0.8.48
 
 **YOUR NEXT ADVENTURE**

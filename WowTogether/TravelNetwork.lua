@@ -68,42 +68,66 @@ local function pop(heap)
     return first
 end
 
-local referenceData, referenceGraph, referenceRows, referenceCount
-function ns.PublishedTravelDistance(from, to)
+local referenceCache = {}
+function ns.PublishedTravelDistance(from, to, policy)
     local data = ns.travelData
     if not data or not data.nodes[from] or not data.nodes[to] then return end
-    if data ~= referenceData then
-        referenceData, referenceGraph, referenceRows, referenceCount = data, {}, {}, 0
+    local cache = referenceCache
+    if policy then
+        if not policy.lookup then policy.lookup = {} end
+        cache = policy.lookup
+    end
+    if data ~= cache.data then
+        cache.data, cache.graph, cache.rows, cache.count = data, {}, {}, 0
         for _, edge in ipairs(data.edges) do
-            -- Geometry estimates only: never add a flight, ship, teleport or
-            -- a usable ground route from this distance lookup.
+            if policy and policy.tick then policy.tick() end
+            -- Default lookup remains walk-only geometry for flight estimates.
+            -- Fixed-guide policies may price published ordinary transports;
+            -- neither lookup makes a personal flight/hearth usable.
             local distance = finite(edge.distance) and edge.distance
                 or finite(edge.seconds) and edge.seconds == 0 and 0 or nil
-            if edge.method == "walk" and distance and distance >= 0 and data.nodes[edge.from] and data.nodes[edge.to] then
-                referenceGraph[edge.from] = referenceGraph[edge.from] or {}
-                referenceGraph[edge.from][#referenceGraph[edge.from] + 1] = {to = edge.to, distance = distance}
+            local a, b = data.nodes[edge.from], data.nodes[edge.to]
+            local okay = a and b
+            if policy and okay then
+                okay = (not edge.faction or edge.faction == "Both" or edge.faction == policy.faction)
+                    and ns.TravelNodeAllowed(edge.from, a, nil, policy.safety)
+                    and ns.TravelNodeAllowed(edge.to, b, nil, policy.safety)
+                if edge.method == "walk" then
+                    okay = okay and not ns.HostileWalkCrossing(a, b, policy.safety)
+                    if not distance then
+                        local length = ns.TravelPointDistance(a, b, policy.metrics)
+                        distance = length and length * 1.25
+                    end
+                elseif edge.method == "ship" or edge.method == "zeppelin" or edge.method == "tram" or edge.method == "transition" then
+                    distance = finite(edge.seconds) and edge.seconds >= 0 and edge.seconds * 7 or nil
+                else okay = false end
+            end
+            if okay and (policy or edge.method == "walk") and distance and distance >= 0 then
+                cache.graph[edge.from] = cache.graph[edge.from] or {}
+                cache.graph[edge.from][#cache.graph[edge.from] + 1] = {to = edge.to, distance = distance}
             end
         end
     end
-    if not referenceRows[from] then
-        if referenceCount >= 8 then referenceRows, referenceCount = {}, 0 end
+    if not cache.rows[from] then
+        if cache.count >= (policy and 32 or 8) then cache.rows, cache.count = {}, 0 end
         local heap, costs, visited = {}, {[from] = 0}, {}
         push(heap, {id = from, cost = 0})
         while #heap > 0 do
             local item = pop(heap)
             if not visited[item.id] and item.cost == costs[item.id] then
                 visited[item.id] = true
-                for _, edge in ipairs(referenceGraph[item.id] or {}) do
+                for _, edge in ipairs(cache.graph[item.id] or {}) do
                     local value = item.cost + edge.distance
                     if not visited[edge.to] and (not costs[edge.to] or value < costs[edge.to]) then
                         costs[edge.to] = value; push(heap, {id = edge.to, cost = value})
                     end
+                    if policy and policy.tick then policy.tick() end
                 end
             end
         end
-        referenceRows[from], referenceCount = costs, referenceCount + 1
+        cache.rows[from], cache.count = costs, cache.count + 1
     end
-    return referenceRows[from][to]
+    return cache.rows[from][to]
 end
 
 function ns.TravelWalkSpeed()

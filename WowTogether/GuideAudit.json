@@ -5124,7 +5124,13 @@
       },
       "reason_review_steps": 19,
       "cross_zone_reason_steps": 7,
-      "estimated_distance_before": 130103.94,
+      "flow_alternatives_evaluated": 11,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 8,
+      "quest_reward_only_xp_shortfall": 195000,
+      "uncertain_travel_legs": 16,
+      "estimated_distance_before": 129304.85,
       "estimated_distance_after": 129304.85
     },
     {
@@ -5159,8 +5165,14 @@
       },
       "reason_review_steps": 43,
       "cross_zone_reason_steps": 5,
-      "estimated_distance_before": 207071.23,
-      "estimated_distance_after": 195714.76
+      "flow_alternatives_evaluated": 13,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 5,
+      "quest_reward_only_xp_shortfall": 264975,
+      "uncertain_travel_legs": 28,
+      "estimated_distance_before": 197837.72,
+      "estimated_distance_after": 197837.72
     },
     {
       "faction": "Alliance",
@@ -5186,8 +5198,14 @@
       },
       "reason_review_steps": 16,
       "cross_zone_reason_steps": 5,
-      "estimated_distance_before": 97958.06,
-      "estimated_distance_after": 97958.06
+      "flow_alternatives_evaluated": 6,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 2,
+      "quest_reward_only_xp_shortfall": 271250,
+      "uncertain_travel_legs": 9,
+      "estimated_distance_before": 112214.97,
+      "estimated_distance_after": 112214.97
     },
     {
       "faction": "Alliance",
@@ -5216,8 +5234,14 @@
       },
       "reason_review_steps": 27,
       "cross_zone_reason_steps": 2,
-      "estimated_distance_before": 58128.41,
-      "estimated_distance_after": 49498.84
+      "flow_alternatives_evaluated": 5,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 5,
+      "quest_reward_only_xp_shortfall": 132655,
+      "uncertain_travel_legs": 5,
+      "estimated_distance_before": 46671.44,
+      "estimated_distance_after": 46671.44
     },
     {
       "faction": "Alliance",
@@ -5253,8 +5277,14 @@
       },
       "reason_review_steps": 76,
       "cross_zone_reason_steps": 9,
-      "estimated_distance_before": 240850.45,
-      "estimated_distance_after": 227765.51
+      "flow_alternatives_evaluated": 4,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 7,
+      "quest_reward_only_xp_shortfall": 164735,
+      "uncertain_travel_legs": 28,
+      "estimated_distance_before": 241808.08,
+      "estimated_distance_after": 241808.08
     },
     {
       "faction": "Alliance",
@@ -5288,8 +5318,14 @@
       },
       "reason_review_steps": 18,
       "cross_zone_reason_steps": 0,
-      "estimated_distance_before": 70635.51,
-      "estimated_distance_after": 66889.23
+      "flow_alternatives_evaluated": 8,
+      "flow_loop_changes": 1,
+      "flow_state_valid": true,
+      "quest_log_peak": 2,
+      "quest_reward_only_xp_shortfall": 88630,
+      "uncertain_travel_legs": 6,
+      "estimated_distance_before": 82889.63,
+      "estimated_distance_after": 81561.88
     },
     {
       "faction": "Alliance",
@@ -5323,6 +5359,12 @@
       },
       "reason_review_steps": 6,
       "cross_zone_reason_steps": 0,
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 1533500,
+      "uncertain_travel_legs": 3,
       "estimated_distance_before": 36000,
       "estimated_distance_after": 36000
     },
@@ -5354,8 +5396,14 @@
       },
       "reason_review_steps": 10,
       "cross_zone_reason_steps": 0,
-      "estimated_distance_before": 27125.82,
-      "estimated_distance_after": 26447.48
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 2,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 3,
+      "estimated_distance_before": 28165.54,
+      "estimated_distance_after": 28165.54
     },
     {
       "faction": "Alliance",
@@ -5433,8 +5481,14 @@
       },
       "reason_review_steps": 95,
       "cross_zone_reason_steps": 20,
-      "estimated_distance_before": 540549.2,
-      "estimated_distance_after": 540549.2
+      "flow_alternatives_evaluated": 13,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 5,
+      "quest_reward_only_xp_shortfall": 2294150,
+      "uncertain_travel_legs": 60,
+      "estimated_distance_before": 480085.97,
+      "estimated_distance_after": 480085.97
     },
     {
       "faction": "Alliance",
@@ -5469,8 +5523,14 @@
       },
       "reason_review_steps": 43,
       "cross_zone_reason_steps": 17,
-      "estimated_distance_before": 316837.7,
-      "estimated_distance_after": 309298.25
+      "flow_alternatives_evaluated": 3,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 6,
+      "quest_reward_only_xp_shortfall": 435100,
+      "uncertain_travel_legs": 41,
+      "estimated_distance_before": 299103.65,
+      "estimated_distance_after": 299103.65
     },
     {
       "faction": "Alliance",
@@ -5499,8 +5559,14 @@
       },
       "reason_review_steps": 37,
       "cross_zone_reason_steps": 11,
-      "estimated_distance_before": 244505.0,
-      "estimated_distance_after": 229552.07
+      "flow_alternatives_evaluated": 5,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 5,
+      "quest_reward_only_xp_shortfall": 625050,
+      "uncertain_travel_legs": 41,
+      "estimated_distance_before": 236413.88,
+      "estimated_distance_after": 236413.88
     },
     {
       "faction": "Alliance",
@@ -5526,8 +5592,14 @@
       },
       "reason_review_steps": 18,
       "cross_zone_reason_steps": 0,
-      "estimated_distance_before": 5536.24,
-      "estimated_distance_after": 4920.96
+      "flow_alternatives_evaluated": 17,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 5,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 0,
+      "estimated_distance_before": 11318.73,
+      "estimated_distance_after": 11318.73
     },
     {
       "faction": "Alliance",
@@ -5558,8 +5630,14 @@
       },
       "reason_review_steps": 31,
       "cross_zone_reason_steps": 14,
-      "estimated_distance_before": 236348.52,
-      "estimated_distance_after": 235460.15
+      "flow_alternatives_evaluated": 13,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 2410600,
+      "uncertain_travel_legs": 24,
+      "estimated_distance_before": 162069.35,
+      "estimated_distance_after": 162069.35
     },
     {
       "faction": "Alliance",
@@ -5595,8 +5673,14 @@
       },
       "reason_review_steps": 29,
       "cross_zone_reason_steps": 12,
-      "estimated_distance_before": 237196.56,
-      "estimated_distance_after": 234123.57
+      "flow_alternatives_evaluated": 16,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 4,
+      "quest_reward_only_xp_shortfall": 2870700,
+      "uncertain_travel_legs": 30,
+      "estimated_distance_before": 205909.16,
+      "estimated_distance_after": 205909.16
     },
     {
       "faction": "Alliance",
@@ -5625,8 +5709,14 @@
       },
       "reason_review_steps": 11,
       "cross_zone_reason_steps": 4,
-      "estimated_distance_before": 64492.69,
-      "estimated_distance_after": 64106.23
+      "flow_alternatives_evaluated": 5,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 2,
+      "quest_reward_only_xp_shortfall": 26760,
+      "uncertain_travel_legs": 1,
+      "estimated_distance_before": 14287.46,
+      "estimated_distance_after": 14287.46
     },
     {
       "faction": "Alliance",
@@ -5655,14 +5745,21 @@
       "destination_reason_codes": {
         "class-progression": 9,
         "outside-level-range": 126,
-        "prerequisite": 27,
+        "prerequisite": 26,
         "quest-reward": 60,
-        "return-hub": 3
+        "return-hub": 3,
+        "unlock-loop": 1
       },
       "reason_review_steps": 127,
       "cross_zone_reason_steps": 13,
-      "estimated_distance_before": 300373.37,
-      "estimated_distance_after": 272812.57
+      "flow_alternatives_evaluated": 120,
+      "flow_loop_changes": 2,
+      "flow_state_valid": true,
+      "quest_log_peak": 13,
+      "quest_reward_only_xp_shortfall": 51635,
+      "uncertain_travel_legs": 41,
+      "estimated_distance_before": 307532.6,
+      "estimated_distance_after": 306513.86
     },
     {
       "faction": "Alliance",
@@ -5690,8 +5787,14 @@
       },
       "reason_review_steps": 27,
       "cross_zone_reason_steps": 2,
-      "estimated_distance_before": 60170.99,
-      "estimated_distance_after": 59127.17
+      "flow_alternatives_evaluated": 5,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 75900,
+      "uncertain_travel_legs": 6,
+      "estimated_distance_before": 61781.8,
+      "estimated_distance_after": 61781.8
     },
     {
       "faction": "Alliance",
@@ -5716,8 +5819,14 @@
       },
       "reason_review_steps": 19,
       "cross_zone_reason_steps": 3,
-      "estimated_distance_before": 61358.6,
-      "estimated_distance_after": 61358.6
+      "flow_alternatives_evaluated": 7,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 6,
+      "estimated_distance_before": 70130.83,
+      "estimated_distance_after": 70130.83
     },
     {
       "faction": "Alliance",
@@ -5744,6 +5853,12 @@
       },
       "reason_review_steps": 4,
       "cross_zone_reason_steps": 0,
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 2,
       "estimated_distance_before": 0,
       "estimated_distance_after": 0
     },
@@ -5819,8 +5934,14 @@
       },
       "reason_review_steps": 112,
       "cross_zone_reason_steps": 7,
-      "estimated_distance_before": 563503.37,
-      "estimated_distance_after": 540330.51
+      "flow_alternatives_evaluated": 5,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 11,
+      "quest_reward_only_xp_shortfall": 172400,
+      "uncertain_travel_legs": 78,
+      "estimated_distance_before": 564160.74,
+      "estimated_distance_after": 564160.74
     },
     {
       "faction": "Alliance",
@@ -5865,12 +5986,19 @@
       "reason_steps_checked": 53,
       "destination_reason_codes": {
         "outside-level-range": 37,
-        "quest-reward": 16
+        "quest-reward": 15,
+        "unlock-loop": 1
       },
       "reason_review_steps": 50,
       "cross_zone_reason_steps": 2,
-      "estimated_distance_before": 156814.68,
-      "estimated_distance_after": 152237.72
+      "flow_alternatives_evaluated": 3,
+      "flow_loop_changes": 1,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 22,
+      "estimated_distance_before": 162474.78,
+      "estimated_distance_after": 162147.67
     },
     {
       "faction": "Alliance",
@@ -5904,8 +6032,14 @@
       },
       "reason_review_steps": 66,
       "cross_zone_reason_steps": 4,
-      "estimated_distance_before": 108599.77,
-      "estimated_distance_after": 101725.72
+      "flow_alternatives_evaluated": 69,
+      "flow_loop_changes": 1,
+      "flow_state_valid": true,
+      "quest_log_peak": 11,
+      "quest_reward_only_xp_shortfall": 7240,
+      "uncertain_travel_legs": 25,
+      "estimated_distance_before": 106083.94,
+      "estimated_distance_after": 104789.14
     },
     {
       "faction": "Alliance",
@@ -5933,8 +6067,14 @@
       },
       "reason_review_steps": 14,
       "cross_zone_reason_steps": 1,
-      "estimated_distance_before": 38856.2,
-      "estimated_distance_after": 35745.5
+      "flow_alternatives_evaluated": 4,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 12590,
+      "uncertain_travel_legs": 7,
+      "estimated_distance_before": 42959.79,
+      "estimated_distance_after": 42959.79
     },
     {
       "faction": "Alliance",
@@ -5967,8 +6107,14 @@
       },
       "reason_review_steps": 6,
       "cross_zone_reason_steps": 2,
-      "estimated_distance_before": 56548.31,
-      "estimated_distance_after": 56548.31
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 2,
+      "quest_reward_only_xp_shortfall": 8500,
+      "uncertain_travel_legs": 5,
+      "estimated_distance_before": 58552.97,
+      "estimated_distance_after": 58552.97
     },
     {
       "faction": "Alliance",
@@ -5995,8 +6141,14 @@
       },
       "reason_review_steps": 3,
       "cross_zone_reason_steps": 1,
-      "estimated_distance_before": 19565.94,
-      "estimated_distance_after": 19565.94
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 14740,
+      "uncertain_travel_legs": 0,
+      "estimated_distance_before": 24741.01,
+      "estimated_distance_after": 24741.01
     },
     {
       "faction": "Alliance",
@@ -6022,8 +6174,14 @@
       },
       "reason_review_steps": 4,
       "cross_zone_reason_steps": 0,
-      "estimated_distance_before": 12867.93,
-      "estimated_distance_after": 12623.54
+      "flow_alternatives_evaluated": 1,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 2,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 0,
+      "estimated_distance_before": 13351.51,
+      "estimated_distance_after": 13351.51
     },
     {
       "faction": "Alliance",
@@ -6066,8 +6224,14 @@
       },
       "reason_review_steps": 89,
       "cross_zone_reason_steps": 11,
-      "estimated_distance_before": 348769.59,
-      "estimated_distance_after": 309729.28
+      "flow_alternatives_evaluated": 62,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 21,
+      "quest_reward_only_xp_shortfall": 109320,
+      "uncertain_travel_legs": 67,
+      "estimated_distance_before": 278923.09,
+      "estimated_distance_after": 278923.09
     },
     {
       "faction": "Alliance",
@@ -6095,8 +6259,14 @@
       },
       "reason_review_steps": 13,
       "cross_zone_reason_steps": 9,
-      "estimated_distance_before": 202289.52,
-      "estimated_distance_after": 195993.88
+      "flow_alternatives_evaluated": 151,
+      "flow_loop_changes": 1,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 212520,
+      "uncertain_travel_legs": 24,
+      "estimated_distance_before": 171517.11,
+      "estimated_distance_after": 171404.42
     },
     {
       "faction": "Alliance",
@@ -6122,8 +6292,14 @@
       },
       "reason_review_steps": 2,
       "cross_zone_reason_steps": 2,
-      "estimated_distance_before": 30000,
-      "estimated_distance_after": 30000
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 0,
+      "estimated_distance_before": 8934.51,
+      "estimated_distance_after": 8934.51
     },
     {
       "faction": "Alliance",
@@ -6149,8 +6325,14 @@
       },
       "reason_review_steps": 2,
       "cross_zone_reason_steps": 2,
-      "estimated_distance_before": 30000,
-      "estimated_distance_after": 30000
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 0,
+      "estimated_distance_before": 14735.65,
+      "estimated_distance_after": 14735.65
     },
     {
       "faction": "Alliance",
@@ -6201,8 +6383,14 @@
       },
       "reason_review_steps": 63,
       "cross_zone_reason_steps": 12,
-      "estimated_distance_before": 405555.98,
-      "estimated_distance_after": 386482.21
+      "flow_alternatives_evaluated": 55,
+      "flow_loop_changes": 1,
+      "flow_state_valid": true,
+      "quest_log_peak": 5,
+      "quest_reward_only_xp_shortfall": 246155,
+      "uncertain_travel_legs": 30,
+      "estimated_distance_before": 333858.86,
+      "estimated_distance_after": 331703.8
     },
     {
       "faction": "Alliance",
@@ -6273,8 +6461,14 @@
       },
       "reason_review_steps": 126,
       "cross_zone_reason_steps": 30,
-      "estimated_distance_before": 702489.65,
-      "estimated_distance_after": 668691.38
+      "flow_alternatives_evaluated": 8,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 13,
+      "quest_reward_only_xp_shortfall": 2879810,
+      "uncertain_travel_legs": 73,
+      "estimated_distance_before": 652557.18,
+      "estimated_distance_after": 652557.18
     },
     {
       "faction": "Alliance",
@@ -6331,8 +6525,14 @@
       },
       "reason_review_steps": 118,
       "cross_zone_reason_steps": 9,
-      "estimated_distance_before": 309262.3,
-      "estimated_distance_after": 293675.14
+      "flow_alternatives_evaluated": 124,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 20,
+      "quest_reward_only_xp_shortfall": 10935,
+      "uncertain_travel_legs": 74,
+      "estimated_distance_before": 312402.75,
+      "estimated_distance_after": 312402.75
     },
     {
       "faction": "Alliance",
@@ -6369,6 +6569,12 @@
       },
       "reason_review_steps": 15,
       "cross_zone_reason_steps": 0,
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 646100,
+      "uncertain_travel_legs": 10,
       "estimated_distance_before": 99433.66,
       "estimated_distance_after": 99433.66
     },
@@ -6416,8 +6622,14 @@
       },
       "reason_review_steps": 85,
       "cross_zone_reason_steps": 12,
-      "estimated_distance_before": 313609.78,
-      "estimated_distance_after": 274279.27
+      "flow_alternatives_evaluated": 17,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 11,
+      "quest_reward_only_xp_shortfall": 2292340,
+      "uncertain_travel_legs": 47,
+      "estimated_distance_before": 280320.39,
+      "estimated_distance_after": 280320.39
     },
     {
       "faction": "Alliance",
@@ -6453,8 +6665,14 @@
       },
       "reason_review_steps": 72,
       "cross_zone_reason_steps": 10,
-      "estimated_distance_before": 205763.89,
-      "estimated_distance_after": 196912.88
+      "flow_alternatives_evaluated": 27,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 7,
+      "quest_reward_only_xp_shortfall": 692905,
+      "uncertain_travel_legs": 29,
+      "estimated_distance_before": 226702.38,
+      "estimated_distance_after": 226702.38
     },
     {
       "faction": "Alliance",
@@ -6483,8 +6701,14 @@
       },
       "reason_review_steps": 7,
       "cross_zone_reason_steps": 1,
-      "estimated_distance_before": 19147.37,
-      "estimated_distance_after": 19147.37
+      "flow_alternatives_evaluated": 3,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 56700,
+      "uncertain_travel_legs": 5,
+      "estimated_distance_before": 15933.12,
+      "estimated_distance_after": 15933.12
     },
     {
       "faction": "Alliance",
@@ -6512,8 +6736,14 @@
       },
       "reason_review_steps": 17,
       "cross_zone_reason_steps": 3,
-      "estimated_distance_before": 58596.0,
-      "estimated_distance_after": 57689.99
+      "flow_alternatives_evaluated": 12,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 5,
+      "quest_reward_only_xp_shortfall": 190600,
+      "uncertain_travel_legs": 6,
+      "estimated_distance_before": 38673.0,
+      "estimated_distance_after": 38673.0
     },
     {
       "faction": "Alliance",
@@ -6540,8 +6770,14 @@
       },
       "reason_review_steps": 10,
       "cross_zone_reason_steps": 2,
-      "estimated_distance_before": 33768.55,
-      "estimated_distance_after": 33510.4
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 2,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 4,
+      "estimated_distance_before": 23838.06,
+      "estimated_distance_after": 23838.06
     },
     {
       "faction": "Alliance",
@@ -6573,8 +6809,14 @@
       },
       "reason_review_steps": 55,
       "cross_zone_reason_steps": 5,
-      "estimated_distance_before": 236223.58,
-      "estimated_distance_after": 207044.67
+      "flow_alternatives_evaluated": 40,
+      "flow_loop_changes": 3,
+      "flow_state_valid": true,
+      "quest_log_peak": 8,
+      "quest_reward_only_xp_shortfall": 66655,
+      "uncertain_travel_legs": 40,
+      "estimated_distance_before": 226077.37,
+      "estimated_distance_after": 221350.53
     },
     {
       "faction": "Alliance",
@@ -6600,8 +6842,14 @@
       },
       "reason_review_steps": 2,
       "cross_zone_reason_steps": 2,
-      "estimated_distance_before": 30000,
-      "estimated_distance_after": 30000
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 1,
+      "estimated_distance_before": 19490.94,
+      "estimated_distance_after": 19490.94
     },
     {
       "faction": "Alliance",
@@ -6636,8 +6884,14 @@
       },
       "reason_review_steps": 29,
       "cross_zone_reason_steps": 12,
-      "estimated_distance_before": 197543.37,
-      "estimated_distance_after": 197543.37
+      "flow_alternatives_evaluated": 10,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 1746450,
+      "uncertain_travel_legs": 15,
+      "estimated_distance_before": 201023.29,
+      "estimated_distance_after": 201023.29
     },
     {
       "faction": "Alliance",
@@ -6659,14 +6913,21 @@
       "destination_reason_codes": {
         "class-progression": 4,
         "outside-level-range": 33,
-        "prerequisite": 21,
+        "prerequisite": 18,
         "quest-reward": 14,
-        "return-hub": 2
+        "return-hub": 2,
+        "unlock-loop": 3
       },
       "reason_review_steps": 33,
-      "cross_zone_reason_steps": 7,
-      "estimated_distance_before": 160458.5,
-      "estimated_distance_after": 134540.35
+      "cross_zone_reason_steps": 9,
+      "flow_alternatives_evaluated": 29,
+      "flow_loop_changes": 2,
+      "flow_state_valid": true,
+      "quest_log_peak": 6,
+      "quest_reward_only_xp_shortfall": 126770,
+      "uncertain_travel_legs": 11,
+      "estimated_distance_before": 118093.89,
+      "estimated_distance_after": 96679.99
     },
     {
       "faction": "Alliance",
@@ -6699,8 +6960,14 @@
       },
       "reason_review_steps": 39,
       "cross_zone_reason_steps": 6,
-      "estimated_distance_before": 147558.51,
-      "estimated_distance_after": 142094.1
+      "flow_alternatives_evaluated": 4,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 9,
+      "quest_reward_only_xp_shortfall": 111450,
+      "uncertain_travel_legs": 32,
+      "estimated_distance_before": 136372.92,
+      "estimated_distance_after": 136372.92
     },
     {
       "faction": "Alliance",
@@ -6733,6 +7000,12 @@
       },
       "reason_review_steps": 6,
       "cross_zone_reason_steps": 0,
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 26940,
+      "uncertain_travel_legs": 6,
       "estimated_distance_before": 48000,
       "estimated_distance_after": 48000
     },
@@ -6762,8 +7035,14 @@
       },
       "reason_review_steps": 7,
       "cross_zone_reason_steps": 5,
-      "estimated_distance_before": 77274.97,
-      "estimated_distance_after": 77024.36
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 2,
+      "quest_reward_only_xp_shortfall": 1422800,
+      "uncertain_travel_legs": 3,
+      "estimated_distance_before": 63164.24,
+      "estimated_distance_after": 63164.24
     },
     {
       "faction": "Alliance",
@@ -6788,14 +7067,21 @@
       "reason_steps_checked": 94,
       "destination_reason_codes": {
         "outside-level-range": 42,
-        "prerequisite": 35,
+        "prerequisite": 34,
         "quest-reward": 13,
-        "return-hub": 4
+        "return-hub": 4,
+        "unlock-loop": 1
       },
       "reason_review_steps": 42,
       "cross_zone_reason_steps": 9,
-      "estimated_distance_before": 168625.17,
-      "estimated_distance_after": 147083.46
+      "flow_alternatives_evaluated": 56,
+      "flow_loop_changes": 2,
+      "flow_state_valid": true,
+      "quest_log_peak": 10,
+      "quest_reward_only_xp_shortfall": 492050,
+      "uncertain_travel_legs": 12,
+      "estimated_distance_before": 168676.97,
+      "estimated_distance_after": 157472.56
     },
     {
       "faction": "Alliance",
@@ -6821,8 +7107,14 @@
       },
       "reason_review_steps": 14,
       "cross_zone_reason_steps": 2,
-      "estimated_distance_before": 53139.33,
-      "estimated_distance_after": 50435.27
+      "flow_alternatives_evaluated": 8,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 6,
+      "estimated_distance_before": 58589.11,
+      "estimated_distance_after": 58589.11
     },
     {
       "faction": "Alliance",
@@ -6955,8 +7247,14 @@
       },
       "reason_review_steps": 294,
       "cross_zone_reason_steps": 30,
-      "estimated_distance_before": 844297.14,
-      "estimated_distance_after": 838692.72
+      "flow_alternatives_evaluated": 43,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 37,
+      "quest_reward_only_xp_shortfall": 4056360,
+      "uncertain_travel_legs": 206,
+      "estimated_distance_before": 831463.66,
+      "estimated_distance_after": 831463.66
     },
     {
       "faction": "Alliance",
@@ -6992,8 +7290,14 @@
       },
       "reason_review_steps": 35,
       "cross_zone_reason_steps": 17,
-      "estimated_distance_before": 283962.42,
-      "estimated_distance_after": 268379.12
+      "flow_alternatives_evaluated": 7,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 5,
+      "quest_reward_only_xp_shortfall": 124250,
+      "uncertain_travel_legs": 35,
+      "estimated_distance_before": 235645.02,
+      "estimated_distance_after": 235645.02
     },
     {
       "faction": "Alliance",
@@ -7026,6 +7330,12 @@
       },
       "reason_review_steps": 5,
       "cross_zone_reason_steps": 2,
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 65500,
+      "uncertain_travel_legs": 4,
       "estimated_distance_before": 51000,
       "estimated_distance_after": 51000
     },
@@ -7053,6 +7363,12 @@
       },
       "reason_review_steps": 2,
       "cross_zone_reason_steps": 2,
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 2,
       "estimated_distance_before": 30007.3,
       "estimated_distance_after": 30007.3
     },
@@ -7099,14 +7415,21 @@
       "destination_reason_codes": {
         "class-progression": 6,
         "outside-level-range": 109,
-        "prerequisite": 34,
+        "prerequisite": 32,
         "quest-reward": 44,
-        "return-hub": 3
+        "return-hub": 3,
+        "unlock-loop": 2
       },
       "reason_review_steps": 119,
       "cross_zone_reason_steps": 8,
-      "estimated_distance_before": 352354.22,
-      "estimated_distance_after": 320214.99
+      "flow_alternatives_evaluated": 78,
+      "flow_loop_changes": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 11,
+      "quest_reward_only_xp_shortfall": 233410,
+      "uncertain_travel_legs": 41,
+      "estimated_distance_before": 426108.74,
+      "estimated_distance_after": 415401.96
     },
     {
       "faction": "Alliance",
@@ -7156,14 +7479,21 @@
       "reason_steps_checked": 169,
       "destination_reason_codes": {
         "outside-level-range": 90,
-        "prerequisite": 39,
+        "prerequisite": 38,
         "quest-reward": 39,
-        "return-hub": 1
+        "return-hub": 1,
+        "unlock-loop": 1
       },
       "reason_review_steps": 97,
       "cross_zone_reason_steps": 3,
-      "estimated_distance_before": 353992.86,
-      "estimated_distance_after": 329354.83
+      "flow_alternatives_evaluated": 65,
+      "flow_loop_changes": 2,
+      "flow_state_valid": true,
+      "quest_log_peak": 7,
+      "quest_reward_only_xp_shortfall": 1160215,
+      "uncertain_travel_legs": 34,
+      "estimated_distance_before": 422143.91,
+      "estimated_distance_after": 419821.72
     },
     {
       "faction": "Alliance",
@@ -7203,8 +7533,14 @@
       },
       "reason_review_steps": 49,
       "cross_zone_reason_steps": 15,
-      "estimated_distance_before": 265524.79,
-      "estimated_distance_after": 265524.05
+      "flow_alternatives_evaluated": 10,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 2,
+      "quest_reward_only_xp_shortfall": 3062580,
+      "uncertain_travel_legs": 24,
+      "estimated_distance_before": 214354.02,
+      "estimated_distance_after": 214354.02
     },
     {
       "faction": "Alliance",
@@ -7244,8 +7580,14 @@
       },
       "reason_review_steps": 26,
       "cross_zone_reason_steps": 1,
-      "estimated_distance_before": 135530.31,
-      "estimated_distance_after": 130606.34
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 195000,
+      "uncertain_travel_legs": 32,
+      "estimated_distance_before": 131937.13,
+      "estimated_distance_after": 131937.13
     },
     {
       "faction": "Alliance",
@@ -7271,8 +7613,14 @@
       },
       "reason_review_steps": 2,
       "cross_zone_reason_steps": 1,
-      "estimated_distance_before": 41359.75,
-      "estimated_distance_after": 41359.75
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 6,
+      "estimated_distance_before": 28573.69,
+      "estimated_distance_after": 28573.69
     },
     {
       "faction": "Alliance",
@@ -7302,6 +7650,12 @@
       },
       "reason_review_steps": 6,
       "cross_zone_reason_steps": 3,
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 2054900,
+      "uncertain_travel_legs": 5,
       "estimated_distance_before": 45000,
       "estimated_distance_after": 45000
     },
@@ -7337,8 +7691,14 @@
       },
       "reason_review_steps": 69,
       "cross_zone_reason_steps": 10,
-      "estimated_distance_before": 267031.59,
-      "estimated_distance_after": 246446.15
+      "flow_alternatives_evaluated": 15,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 9,
+      "quest_reward_only_xp_shortfall": 619915,
+      "uncertain_travel_legs": 22,
+      "estimated_distance_before": 256168.85,
+      "estimated_distance_after": 256168.85
     },
     {
       "faction": "Alliance",
@@ -7435,8 +7795,14 @@
       },
       "reason_review_steps": 146,
       "cross_zone_reason_steps": 28,
-      "estimated_distance_before": 615408.61,
-      "estimated_distance_after": 612587.77
+      "flow_alternatives_evaluated": 4,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 4,
+      "quest_reward_only_xp_shortfall": 3079090,
+      "uncertain_travel_legs": 79,
+      "estimated_distance_before": 595091.68,
+      "estimated_distance_after": 595091.68
     },
     {
       "faction": "Alliance",
@@ -7460,15 +7826,22 @@
       "destination_reason_codes": {
         "level-work": 6,
         "outside-level-range": 69,
-        "prerequisite": 38,
+        "prerequisite": 37,
         "quest-objective": 8,
         "quest-reward": 34,
-        "return-hub": 2
+        "return-hub": 2,
+        "unlock-loop": 1
       },
       "reason_review_steps": 75,
       "cross_zone_reason_steps": 4,
-      "estimated_distance_before": 116368.17,
-      "estimated_distance_after": 100784.2
+      "flow_alternatives_evaluated": 141,
+      "flow_loop_changes": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 11,
+      "quest_reward_only_xp_shortfall": 2700,
+      "uncertain_travel_legs": 29,
+      "estimated_distance_before": 82094.96,
+      "estimated_distance_after": 80021.36
     },
     {
       "faction": "Alliance",
@@ -7493,14 +7866,21 @@
       "reason_steps_checked": 84,
       "destination_reason_codes": {
         "outside-level-range": 42,
-        "prerequisite": 24,
+        "prerequisite": 23,
         "quest-reward": 17,
-        "return-hub": 1
+        "return-hub": 1,
+        "unlock-loop": 1
       },
       "reason_review_steps": 43,
       "cross_zone_reason_steps": 4,
-      "estimated_distance_before": 76688.9,
-      "estimated_distance_after": 72620.92
+      "flow_alternatives_evaluated": 24,
+      "flow_loop_changes": 1,
+      "flow_state_valid": true,
+      "quest_log_peak": 6,
+      "quest_reward_only_xp_shortfall": 13370,
+      "uncertain_travel_legs": 22,
+      "estimated_distance_before": 82327.17,
+      "estimated_distance_after": 81954.19
     },
     {
       "faction": "Alliance",
@@ -7521,14 +7901,21 @@
       "reason_steps_checked": 43,
       "destination_reason_codes": {
         "outside-level-range": 15,
-        "prerequisite": 21,
+        "prerequisite": 19,
         "quest-reward": 6,
-        "return-hub": 1
+        "return-hub": 1,
+        "unlock-loop": 2
       },
       "reason_review_steps": 15,
       "cross_zone_reason_steps": 0,
-      "estimated_distance_before": 12770.85,
-      "estimated_distance_after": 8211.79
+      "flow_alternatives_evaluated": 26,
+      "flow_loop_changes": 2,
+      "flow_state_valid": true,
+      "quest_log_peak": 5,
+      "quest_reward_only_xp_shortfall": 32060,
+      "uncertain_travel_legs": 0,
+      "estimated_distance_before": 13186.15,
+      "estimated_distance_after": 12099.04
     },
     {
       "faction": "Alliance",
@@ -7554,8 +7941,14 @@
       },
       "reason_review_steps": 14,
       "cross_zone_reason_steps": 5,
-      "estimated_distance_before": 86591.52,
-      "estimated_distance_after": 85575.57
+      "flow_alternatives_evaluated": 1,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 4,
+      "quest_reward_only_xp_shortfall": 65200,
+      "uncertain_travel_legs": 9,
+      "estimated_distance_before": 106287.38,
+      "estimated_distance_after": 106287.38
     },
     {
       "faction": "Alliance",
@@ -7583,8 +7976,14 @@
       },
       "reason_review_steps": 27,
       "cross_zone_reason_steps": 13,
-      "estimated_distance_before": 225196.74,
-      "estimated_distance_after": 224719.17
+      "flow_alternatives_evaluated": 2,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 5,
+      "quest_reward_only_xp_shortfall": 450100,
+      "uncertain_travel_legs": 17,
+      "estimated_distance_before": 203957.28,
+      "estimated_distance_after": 203957.28
     },
     {
       "faction": "Alliance",
@@ -7610,8 +8009,14 @@
       },
       "reason_review_steps": 9,
       "cross_zone_reason_steps": 1,
-      "estimated_distance_before": 23316.2,
-      "estimated_distance_after": 23316.2
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 2,
+      "estimated_distance_before": 23020.38,
+      "estimated_distance_after": 23020.38
     },
     {
       "faction": "Alliance",
@@ -7637,6 +8042,12 @@
       },
       "reason_review_steps": 2,
       "cross_zone_reason_steps": 2,
+      "flow_alternatives_evaluated": 1,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 2,
       "estimated_distance_before": 30007.3,
       "estimated_distance_after": 30007.3
     },
@@ -7669,8 +8080,14 @@
       },
       "reason_review_steps": 11,
       "cross_zone_reason_steps": 5,
-      "estimated_distance_before": 103001.31,
-      "estimated_distance_after": 101979.55
+      "flow_alternatives_evaluated": 3,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 4,
+      "quest_reward_only_xp_shortfall": 222750,
+      "uncertain_travel_legs": 6,
+      "estimated_distance_before": 91500.1,
+      "estimated_distance_after": 91500.1
     },
     {
       "faction": "Alliance",
@@ -7700,8 +8117,14 @@
       },
       "reason_review_steps": 40,
       "cross_zone_reason_steps": 12,
-      "estimated_distance_before": 227404.76,
-      "estimated_distance_after": 211334.42
+      "flow_alternatives_evaluated": 17,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 6,
+      "quest_reward_only_xp_shortfall": 151550,
+      "uncertain_travel_legs": 11,
+      "estimated_distance_before": 170673.76,
+      "estimated_distance_after": 170673.76
     },
     {
       "faction": "Alliance",
@@ -7725,13 +8148,20 @@
       "reason_steps_checked": 87,
       "destination_reason_codes": {
         "outside-level-range": 44,
-        "prerequisite": 21,
-        "quest-reward": 22
+        "prerequisite": 20,
+        "quest-reward": 22,
+        "unlock-loop": 1
       },
       "reason_review_steps": 46,
       "cross_zone_reason_steps": 15,
-      "estimated_distance_before": 247586.47,
-      "estimated_distance_after": 245450.74
+      "flow_alternatives_evaluated": 129,
+      "flow_loop_changes": 1,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 405900,
+      "uncertain_travel_legs": 6,
+      "estimated_distance_before": 187507.52,
+      "estimated_distance_after": 187317.98
     },
     {
       "faction": "Alliance",
@@ -7772,8 +8202,14 @@
       },
       "reason_review_steps": 76,
       "cross_zone_reason_steps": 14,
-      "estimated_distance_before": 354165.76,
-      "estimated_distance_after": 316486.11
+      "flow_alternatives_evaluated": 15,
+      "flow_loop_changes": 1,
+      "flow_state_valid": true,
+      "quest_log_peak": 12,
+      "quest_reward_only_xp_shortfall": 480320,
+      "uncertain_travel_legs": 43,
+      "estimated_distance_before": 316876.64,
+      "estimated_distance_after": 313420.14
     },
     {
       "faction": "Alliance",
@@ -7834,8 +8270,14 @@
       },
       "reason_review_steps": 154,
       "cross_zone_reason_steps": 19,
-      "estimated_distance_before": 425302.24,
-      "estimated_distance_after": 411532.35
+      "flow_alternatives_evaluated": 17,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 7,
+      "quest_reward_only_xp_shortfall": 1226410,
+      "uncertain_travel_legs": 81,
+      "estimated_distance_before": 398502.43,
+      "estimated_distance_after": 398502.43
     },
     {
       "faction": "Alliance",
@@ -7861,8 +8303,14 @@
       },
       "reason_review_steps": 14,
       "cross_zone_reason_steps": 7,
-      "estimated_distance_before": 116871.77,
-      "estimated_distance_after": 115308.39
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 11480,
+      "uncertain_travel_legs": 8,
+      "estimated_distance_before": 95741.28,
+      "estimated_distance_after": 95741.28
     },
     {
       "faction": "Alliance",
@@ -7886,13 +8334,19 @@
       "destination_reason_codes": {
         "outside-level-range": 86,
         "prerequisite": 4,
-        "quest-reward": 35,
-        "return-hub": 2
+        "quest-reward": 34,
+        "return-hub": 3
       },
       "reason_review_steps": 86,
       "cross_zone_reason_steps": 7,
-      "estimated_distance_before": 189281.29,
-      "estimated_distance_after": 172103.32
+      "flow_alternatives_evaluated": 47,
+      "flow_loop_changes": 1,
+      "flow_state_valid": true,
+      "quest_log_peak": 14,
+      "quest_reward_only_xp_shortfall": 59210,
+      "uncertain_travel_legs": 31,
+      "estimated_distance_before": 136738.89,
+      "estimated_distance_after": 136141.87
     },
     {
       "faction": "Alliance",
@@ -7918,8 +8372,14 @@
       },
       "reason_review_steps": 2,
       "cross_zone_reason_steps": 2,
-      "estimated_distance_before": 30000,
-      "estimated_distance_after": 30000
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 0,
+      "estimated_distance_before": 14735.65,
+      "estimated_distance_after": 14735.65
     },
     {
       "faction": "Alliance",
@@ -7960,8 +8420,14 @@
       },
       "reason_review_steps": 90,
       "cross_zone_reason_steps": 8,
-      "estimated_distance_before": 232809.33,
-      "estimated_distance_after": 215018.45
+      "flow_alternatives_evaluated": 71,
+      "flow_loop_changes": 1,
+      "flow_state_valid": true,
+      "quest_log_peak": 10,
+      "quest_reward_only_xp_shortfall": 211540,
+      "uncertain_travel_legs": 41,
+      "estimated_distance_before": 195091.62,
+      "estimated_distance_after": 194844.91
     },
     {
       "faction": "Alliance",
@@ -8006,13 +8472,20 @@
       "reason_steps_checked": 76,
       "destination_reason_codes": {
         "outside-level-range": 42,
-        "prerequisite": 15,
-        "quest-reward": 19
+        "prerequisite": 14,
+        "quest-reward": 19,
+        "unlock-loop": 1
       },
       "reason_review_steps": 47,
       "cross_zone_reason_steps": 6,
-      "estimated_distance_before": 313267.5,
-      "estimated_distance_after": 310268.22
+      "flow_alternatives_evaluated": 16,
+      "flow_loop_changes": 1,
+      "flow_state_valid": true,
+      "quest_log_peak": 8,
+      "quest_reward_only_xp_shortfall": 326555,
+      "uncertain_travel_legs": 30,
+      "estimated_distance_before": 286967.72,
+      "estimated_distance_after": 286282.51
     },
     {
       "faction": "Alliance",
@@ -8053,9 +8526,15 @@
         "return-hub": 2
       },
       "reason_review_steps": 83,
-      "cross_zone_reason_steps": 28,
-      "estimated_distance_before": 490782.2,
-      "estimated_distance_after": 475004.58
+      "cross_zone_reason_steps": 27,
+      "flow_alternatives_evaluated": 33,
+      "flow_loop_changes": 1,
+      "flow_state_valid": true,
+      "quest_log_peak": 9,
+      "quest_reward_only_xp_shortfall": 1945580,
+      "uncertain_travel_legs": 41,
+      "estimated_distance_before": 460551.73,
+      "estimated_distance_after": 453875.67
     },
     {
       "faction": "Alliance",
@@ -8083,13 +8562,19 @@
         "outside-level-range": 75,
         "prerequisite": 21,
         "quest-objective": 12,
-        "quest-reward": 56,
-        "return-hub": 2
+        "quest-reward": 55,
+        "return-hub": 3
       },
       "reason_review_steps": 89,
       "cross_zone_reason_steps": 0,
-      "estimated_distance_before": 46027.48,
-      "estimated_distance_after": 42093.66
+      "flow_alternatives_evaluated": 342,
+      "flow_loop_changes": 5,
+      "flow_state_valid": true,
+      "quest_log_peak": 9,
+      "quest_reward_only_xp_shortfall": 20045,
+      "uncertain_travel_legs": 0,
+      "estimated_distance_before": 57695.19,
+      "estimated_distance_after": 55781.14
     },
     {
       "faction": "Alliance",
@@ -8128,8 +8613,14 @@
       },
       "reason_review_steps": 106,
       "cross_zone_reason_steps": 1,
-      "estimated_distance_before": 121648.94,
-      "estimated_distance_after": 120474.64
+      "flow_alternatives_evaluated": 91,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 10,
+      "quest_reward_only_xp_shortfall": 7860,
+      "uncertain_travel_legs": 7,
+      "estimated_distance_before": 132011.64,
+      "estimated_distance_after": 132011.64
     },
     {
       "faction": "Horde",
@@ -8165,6 +8656,12 @@
       },
       "reason_review_steps": 13,
       "cross_zone_reason_steps": 3,
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 226430,
+      "uncertain_travel_legs": 10,
       "estimated_distance_before": 90722.62,
       "estimated_distance_after": 90722.62
     },
@@ -8206,8 +8703,14 @@
       },
       "reason_review_steps": 49,
       "cross_zone_reason_steps": 6,
-      "estimated_distance_before": 349279.8,
-      "estimated_distance_after": 316219.86
+      "flow_alternatives_evaluated": 21,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 7,
+      "quest_reward_only_xp_shortfall": 303015,
+      "uncertain_travel_legs": 38,
+      "estimated_distance_before": 330283.38,
+      "estimated_distance_after": 330283.38
     },
     {
       "faction": "Horde",
@@ -8233,8 +8736,14 @@
       },
       "reason_review_steps": 20,
       "cross_zone_reason_steps": 6,
-      "estimated_distance_before": 145531.73,
-      "estimated_distance_after": 144829.56
+      "flow_alternatives_evaluated": 18,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 270540,
+      "uncertain_travel_legs": 11,
+      "estimated_distance_before": 162569.49,
+      "estimated_distance_after": 162569.49
     },
     {
       "faction": "Horde",
@@ -8259,8 +8768,14 @@
       },
       "reason_review_steps": 4,
       "cross_zone_reason_steps": 0,
-      "estimated_distance_before": 6717.65,
-      "estimated_distance_after": 6717.65
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 101700,
+      "uncertain_travel_legs": 0,
+      "estimated_distance_before": 7075.87,
+      "estimated_distance_after": 7075.87
     },
     {
       "faction": "Horde",
@@ -8300,8 +8815,14 @@
       },
       "reason_review_steps": 42,
       "cross_zone_reason_steps": 2,
-      "estimated_distance_before": 147878.63,
-      "estimated_distance_after": 135201.29
+      "flow_alternatives_evaluated": 6,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 10,
+      "quest_reward_only_xp_shortfall": 125200,
+      "uncertain_travel_legs": 12,
+      "estimated_distance_before": 163202.48,
+      "estimated_distance_after": 163202.48
     },
     {
       "faction": "Horde",
@@ -8335,6 +8856,12 @@
       },
       "reason_review_steps": 6,
       "cross_zone_reason_steps": 1,
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 1533500,
+      "uncertain_travel_legs": 3,
       "estimated_distance_before": 36000,
       "estimated_distance_after": 36000
     },
@@ -8366,8 +8893,14 @@
       },
       "reason_review_steps": 10,
       "cross_zone_reason_steps": 0,
-      "estimated_distance_before": 27125.82,
-      "estimated_distance_after": 26447.48
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 2,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 3,
+      "estimated_distance_before": 28165.54,
+      "estimated_distance_after": 28165.54
     },
     {
       "faction": "Horde",
@@ -8450,8 +8983,14 @@
       },
       "reason_review_steps": 147,
       "cross_zone_reason_steps": 27,
-      "estimated_distance_before": 684578.69,
-      "estimated_distance_after": 652804.29
+      "flow_alternatives_evaluated": 6,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 5,
+      "quest_reward_only_xp_shortfall": 2333000,
+      "uncertain_travel_legs": 76,
+      "estimated_distance_before": 638976.88,
+      "estimated_distance_after": 638976.88
     },
     {
       "faction": "Horde",
@@ -8486,8 +9025,14 @@
       },
       "reason_review_steps": 30,
       "cross_zone_reason_steps": 15,
-      "estimated_distance_before": 284127.23,
-      "estimated_distance_after": 271268.29
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 5,
+      "quest_reward_only_xp_shortfall": 499350,
+      "uncertain_travel_legs": 24,
+      "estimated_distance_before": 227030.74,
+      "estimated_distance_after": 227030.74
     },
     {
       "faction": "Horde",
@@ -8517,8 +9062,14 @@
       },
       "reason_review_steps": 18,
       "cross_zone_reason_steps": 6,
-      "estimated_distance_before": 177322.51,
-      "estimated_distance_after": 158018.52
+      "flow_alternatives_evaluated": 3,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 4,
+      "quest_reward_only_xp_shortfall": 638050,
+      "uncertain_travel_legs": 17,
+      "estimated_distance_before": 170067.6,
+      "estimated_distance_after": 170067.6
     },
     {
       "faction": "Horde",
@@ -8544,8 +9095,14 @@
       },
       "reason_review_steps": 4,
       "cross_zone_reason_steps": 2,
-      "estimated_distance_before": 36977.24,
-      "estimated_distance_after": 36977.24
+      "flow_alternatives_evaluated": 1,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 2,
+      "quest_reward_only_xp_shortfall": 577700,
+      "uncertain_travel_legs": 3,
+      "estimated_distance_before": 29936.33,
+      "estimated_distance_after": 29936.33
     },
     {
       "faction": "Horde",
@@ -8572,8 +9129,14 @@
       },
       "reason_review_steps": 20,
       "cross_zone_reason_steps": 1,
-      "estimated_distance_before": 22234.66,
-      "estimated_distance_after": 21619.38
+      "flow_alternatives_evaluated": 18,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 5,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 2,
+      "estimated_distance_before": 10390.2,
+      "estimated_distance_after": 10390.2
     },
     {
       "faction": "Horde",
@@ -8604,8 +9167,14 @@
       },
       "reason_review_steps": 68,
       "cross_zone_reason_steps": 17,
-      "estimated_distance_before": 278068.83,
-      "estimated_distance_after": 277938.37
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 2,
+      "quest_reward_only_xp_shortfall": 2410600,
+      "uncertain_travel_legs": 32,
+      "estimated_distance_before": 243178.38,
+      "estimated_distance_after": 243178.38
     },
     {
       "faction": "Horde",
@@ -8641,8 +9210,14 @@
       },
       "reason_review_steps": 27,
       "cross_zone_reason_steps": 10,
-      "estimated_distance_before": 183145.15,
-      "estimated_distance_after": 179035.07
+      "flow_alternatives_evaluated": 12,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 4,
+      "quest_reward_only_xp_shortfall": 2858650,
+      "uncertain_travel_legs": 22,
+      "estimated_distance_before": 159606.4,
+      "estimated_distance_after": 159606.4
     },
     {
       "faction": "Horde",
@@ -8713,8 +9288,14 @@
       },
       "reason_review_steps": 113,
       "cross_zone_reason_steps": 7,
-      "estimated_distance_before": 513554.24,
-      "estimated_distance_after": 490783.79
+      "flow_alternatives_evaluated": 4,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 9,
+      "quest_reward_only_xp_shortfall": 339905,
+      "uncertain_travel_legs": 79,
+      "estimated_distance_before": 503849.54,
+      "estimated_distance_after": 503849.54
     },
     {
       "faction": "Horde",
@@ -8761,8 +9342,14 @@
       },
       "reason_review_steps": 44,
       "cross_zone_reason_steps": 2,
-      "estimated_distance_before": 188231.6,
-      "estimated_distance_after": 188231.6
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 2,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 23,
+      "estimated_distance_before": 202494.85,
+      "estimated_distance_after": 202494.85
     },
     {
       "faction": "Horde",
@@ -8789,8 +9376,14 @@
       },
       "reason_review_steps": 11,
       "cross_zone_reason_steps": 4,
-      "estimated_distance_before": 60191.86,
-      "estimated_distance_after": 60191.86
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 3108900,
+      "uncertain_travel_legs": 4,
+      "estimated_distance_before": 45710.25,
+      "estimated_distance_after": 45710.25
     },
     {
       "faction": "Horde",
@@ -8846,8 +9439,14 @@
       },
       "reason_review_steps": 116,
       "cross_zone_reason_steps": 13,
-      "estimated_distance_before": 280476.06,
-      "estimated_distance_after": 262726.0
+      "flow_alternatives_evaluated": 168,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 20,
+      "quest_reward_only_xp_shortfall": 18605,
+      "uncertain_travel_legs": 61,
+      "estimated_distance_before": 268739.35,
+      "estimated_distance_after": 268739.35
     },
     {
       "faction": "Horde",
@@ -8882,8 +9481,14 @@
       },
       "reason_review_steps": 40,
       "cross_zone_reason_steps": 7,
-      "estimated_distance_before": 143480.25,
-      "estimated_distance_after": 134629.6
+      "flow_alternatives_evaluated": 9,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 7,
+      "quest_reward_only_xp_shortfall": 148745,
+      "uncertain_travel_legs": 19,
+      "estimated_distance_before": 140153.06,
+      "estimated_distance_after": 140153.06
     },
     {
       "faction": "Horde",
@@ -8923,8 +9528,14 @@
       },
       "reason_review_steps": 42,
       "cross_zone_reason_steps": 2,
-      "estimated_distance_before": 54452.3,
-      "estimated_distance_after": 53970.17
+      "flow_alternatives_evaluated": 13,
+      "flow_loop_changes": 1,
+      "flow_state_valid": true,
+      "quest_log_peak": 21,
+      "quest_reward_only_xp_shortfall": 116400,
+      "uncertain_travel_legs": 27,
+      "estimated_distance_before": 60029.73,
+      "estimated_distance_after": 57749.03
     },
     {
       "faction": "Horde",
@@ -8952,8 +9563,14 @@
       },
       "reason_review_steps": 6,
       "cross_zone_reason_steps": 3,
-      "estimated_distance_before": 45043.27,
-      "estimated_distance_after": 45043.27
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 4,
+      "estimated_distance_before": 32644.07,
+      "estimated_distance_after": 32644.07
     },
     {
       "faction": "Horde",
@@ -9003,8 +9620,14 @@
       },
       "reason_review_steps": 60,
       "cross_zone_reason_steps": 14,
-      "estimated_distance_before": 427327.61,
-      "estimated_distance_after": 410569.1
+      "flow_alternatives_evaluated": 49,
+      "flow_loop_changes": 1,
+      "flow_state_valid": true,
+      "quest_log_peak": 7,
+      "quest_reward_only_xp_shortfall": 240290,
+      "uncertain_travel_legs": 32,
+      "estimated_distance_before": 389806.13,
+      "estimated_distance_after": 389066.69
     },
     {
       "faction": "Horde",
@@ -9029,8 +9652,14 @@
       },
       "reason_review_steps": 21,
       "cross_zone_reason_steps": 3,
-      "estimated_distance_before": 57214.13,
-      "estimated_distance_after": 54108.9
+      "flow_alternatives_evaluated": 8,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 214800,
+      "uncertain_travel_legs": 7,
+      "estimated_distance_before": 54563.59,
+      "estimated_distance_after": 54563.59
     },
     {
       "faction": "Horde",
@@ -9058,8 +9687,14 @@
       },
       "reason_review_steps": 21,
       "cross_zone_reason_steps": 13,
-      "estimated_distance_before": 195000,
-      "estimated_distance_after": 195000
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 527400,
+      "uncertain_travel_legs": 13,
+      "estimated_distance_before": 200577.87,
+      "estimated_distance_after": 200577.87
     },
     {
       "faction": "Horde",
@@ -9126,8 +9761,14 @@
       },
       "reason_review_steps": 107,
       "cross_zone_reason_steps": 18,
-      "estimated_distance_before": 540553.87,
-      "estimated_distance_after": 504479.93
+      "flow_alternatives_evaluated": 8,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 14,
+      "quest_reward_only_xp_shortfall": 2861210,
+      "uncertain_travel_legs": 75,
+      "estimated_distance_before": 522041.12,
+      "estimated_distance_after": 522041.12
     },
     {
       "faction": "Horde",
@@ -9164,8 +9805,14 @@
       },
       "reason_review_steps": 15,
       "cross_zone_reason_steps": 0,
-      "estimated_distance_before": 99433.66,
-      "estimated_distance_after": 99433.66
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 646100,
+      "uncertain_travel_legs": 9,
+      "estimated_distance_before": 101594.27,
+      "estimated_distance_after": 101594.27
     },
     {
       "faction": "Horde",
@@ -9210,8 +9857,14 @@
       },
       "reason_review_steps": 72,
       "cross_zone_reason_steps": 9,
-      "estimated_distance_before": 265465.44,
-      "estimated_distance_after": 228469.64
+      "flow_alternatives_evaluated": 30,
+      "flow_loop_changes": 1,
+      "flow_state_valid": true,
+      "quest_log_peak": 9,
+      "quest_reward_only_xp_shortfall": 2293140,
+      "uncertain_travel_legs": 27,
+      "estimated_distance_before": 268892.78,
+      "estimated_distance_after": 268480.24
     },
     {
       "faction": "Horde",
@@ -9243,8 +9896,14 @@
       },
       "reason_review_steps": 53,
       "cross_zone_reason_steps": 5,
-      "estimated_distance_before": 146753.39,
-      "estimated_distance_after": 140078.06
+      "flow_alternatives_evaluated": 29,
+      "flow_loop_changes": 2,
+      "flow_state_valid": true,
+      "quest_log_peak": 9,
+      "quest_reward_only_xp_shortfall": 704250,
+      "uncertain_travel_legs": 22,
+      "estimated_distance_before": 148990.9,
+      "estimated_distance_after": 148311.75
     },
     {
       "faction": "Horde",
@@ -9268,14 +9927,21 @@
       "destination_reason_codes": {
         "class-progression": 4,
         "outside-level-range": 25,
-        "prerequisite": 51,
+        "prerequisite": 49,
         "quest-reward": 10,
-        "return-hub": 1
+        "return-hub": 1,
+        "unlock-loop": 2
       },
       "reason_review_steps": 26,
       "cross_zone_reason_steps": 5,
-      "estimated_distance_before": 120375.48,
-      "estimated_distance_after": 115540.38
+      "flow_alternatives_evaluated": 67,
+      "flow_loop_changes": 2,
+      "flow_state_valid": true,
+      "quest_log_peak": 6,
+      "quest_reward_only_xp_shortfall": 201325,
+      "uncertain_travel_legs": 23,
+      "estimated_distance_before": 132484.86,
+      "estimated_distance_after": 131989.31
     },
     {
       "faction": "Horde",
@@ -9301,8 +9967,14 @@
       },
       "reason_review_steps": 13,
       "cross_zone_reason_steps": 7,
-      "estimated_distance_before": 161988.56,
-      "estimated_distance_after": 159645.01
+      "flow_alternatives_evaluated": 13,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 330800,
+      "uncertain_travel_legs": 20,
+      "estimated_distance_before": 157569.34,
+      "estimated_distance_after": 157569.34
     },
     {
       "faction": "Horde",
@@ -9330,6 +10002,12 @@
       },
       "reason_review_steps": 4,
       "cross_zone_reason_steps": 8,
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 10,
       "estimated_distance_before": 120000,
       "estimated_distance_after": 120000
     },
@@ -9366,8 +10044,14 @@
       },
       "reason_review_steps": 43,
       "cross_zone_reason_steps": 16,
-      "estimated_distance_before": 258355.41,
-      "estimated_distance_after": 258355.41
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 1747010,
+      "uncertain_travel_legs": 18,
+      "estimated_distance_before": 258781.4,
+      "estimated_distance_after": 258781.4
     },
     {
       "faction": "Horde",
@@ -9407,8 +10091,14 @@
       },
       "reason_review_steps": 92,
       "cross_zone_reason_steps": 6,
-      "estimated_distance_before": 156370.14,
-      "estimated_distance_after": 149296.05
+      "flow_alternatives_evaluated": 179,
+      "flow_loop_changes": 1,
+      "flow_state_valid": true,
+      "quest_log_peak": 12,
+      "quest_reward_only_xp_shortfall": 18060,
+      "uncertain_travel_legs": 19,
+      "estimated_distance_before": 165657.71,
+      "estimated_distance_after": 162857.18
     },
     {
       "faction": "Horde",
@@ -9437,8 +10127,14 @@
       },
       "reason_review_steps": 22,
       "cross_zone_reason_steps": 5,
-      "estimated_distance_before": 104107.81,
-      "estimated_distance_after": 100958.23
+      "flow_alternatives_evaluated": 9,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 7,
+      "quest_reward_only_xp_shortfall": 157005,
+      "uncertain_travel_legs": 6,
+      "estimated_distance_before": 80166.97,
+      "estimated_distance_after": 80166.97
     },
     {
       "faction": "Horde",
@@ -9466,8 +10162,14 @@
       },
       "reason_review_steps": 9,
       "cross_zone_reason_steps": 0,
-      "estimated_distance_before": 25989.04,
-      "estimated_distance_after": 25472.58
+      "flow_alternatives_evaluated": 2,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 4,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 2,
+      "estimated_distance_before": 26531.43,
+      "estimated_distance_after": 26531.43
     },
     {
       "faction": "Horde",
@@ -9500,6 +10202,12 @@
       },
       "reason_review_steps": 6,
       "cross_zone_reason_steps": 1,
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 26940,
+      "uncertain_travel_legs": 6,
       "estimated_distance_before": 48000,
       "estimated_distance_after": 48000
     },
@@ -9526,14 +10234,21 @@
       "reason_steps_checked": 70,
       "destination_reason_codes": {
         "outside-level-range": 36,
-        "prerequisite": 20,
+        "prerequisite": 19,
         "quest-reward": 11,
-        "return-hub": 3
+        "return-hub": 3,
+        "unlock-loop": 1
       },
       "reason_review_steps": 36,
       "cross_zone_reason_steps": 4,
-      "estimated_distance_before": 85436.42,
-      "estimated_distance_after": 78808.51
+      "flow_alternatives_evaluated": 58,
+      "flow_loop_changes": 3,
+      "flow_state_valid": true,
+      "quest_log_peak": 8,
+      "quest_reward_only_xp_shortfall": 496010,
+      "uncertain_travel_legs": 9,
+      "estimated_distance_before": 105551.77,
+      "estimated_distance_after": 100332.84
     },
     {
       "faction": "Horde",
@@ -9559,8 +10274,14 @@
       },
       "reason_review_steps": 9,
       "cross_zone_reason_steps": 0,
-      "estimated_distance_before": 11096.95,
-      "estimated_distance_after": 11096.95
+      "flow_alternatives_evaluated": 6,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 4,
+      "estimated_distance_before": 20673.56,
+      "estimated_distance_after": 20673.56
     },
     {
       "faction": "Horde",
@@ -9697,8 +10418,14 @@
       },
       "reason_review_steps": 313,
       "cross_zone_reason_steps": 30,
-      "estimated_distance_before": 894246.09,
-      "estimated_distance_after": 846379.0
+      "flow_alternatives_evaluated": 27,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 42,
+      "quest_reward_only_xp_shortfall": 4064600,
+      "uncertain_travel_legs": 214,
+      "estimated_distance_before": 847169.99,
+      "estimated_distance_after": 847169.99
     },
     {
       "faction": "Horde",
@@ -9724,8 +10451,14 @@
       },
       "reason_review_steps": 10,
       "cross_zone_reason_steps": 2,
-      "estimated_distance_before": 34968.62,
-      "estimated_distance_after": 34064.25
+      "flow_alternatives_evaluated": 2,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 2,
+      "quest_reward_only_xp_shortfall": 22900,
+      "uncertain_travel_legs": 0,
+      "estimated_distance_before": 13388.49,
+      "estimated_distance_after": 13388.49
     },
     {
       "faction": "Horde",
@@ -9748,13 +10481,20 @@
       "reason_steps_checked": 132,
       "destination_reason_codes": {
         "outside-level-range": 32,
-        "prerequisite": 86,
-        "quest-reward": 14
+        "prerequisite": 84,
+        "quest-reward": 14,
+        "unlock-loop": 2
       },
       "reason_review_steps": 32,
       "cross_zone_reason_steps": 6,
-      "estimated_distance_before": 182451.03,
-      "estimated_distance_after": 153409.56
+      "flow_alternatives_evaluated": 89,
+      "flow_loop_changes": 2,
+      "flow_state_valid": true,
+      "quest_log_peak": 6,
+      "quest_reward_only_xp_shortfall": 98495,
+      "uncertain_travel_legs": 20,
+      "estimated_distance_before": 141068.32,
+      "estimated_distance_after": 140475.5
     },
     {
       "faction": "Horde",
@@ -9777,13 +10517,20 @@
       "reason_steps_checked": 55,
       "destination_reason_codes": {
         "outside-level-range": 13,
-        "prerequisite": 36,
-        "quest-reward": 6
+        "prerequisite": 35,
+        "quest-reward": 6,
+        "unlock-loop": 1
       },
       "reason_review_steps": 14,
       "cross_zone_reason_steps": 2,
-      "estimated_distance_before": 62082.28,
-      "estimated_distance_after": 55636.85
+      "flow_alternatives_evaluated": 51,
+      "flow_loop_changes": 1,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 133130,
+      "uncertain_travel_legs": 4,
+      "estimated_distance_before": 64965.63,
+      "estimated_distance_after": 64707.23
     },
     {
       "faction": "Horde",
@@ -9820,8 +10567,14 @@
       },
       "reason_review_steps": 29,
       "cross_zone_reason_steps": 7,
-      "estimated_distance_before": 131259.27,
-      "estimated_distance_after": 126913.43
+      "flow_alternatives_evaluated": 4,
+      "flow_loop_changes": 1,
+      "flow_state_valid": true,
+      "quest_log_peak": 7,
+      "quest_reward_only_xp_shortfall": 123200,
+      "uncertain_travel_legs": 10,
+      "estimated_distance_before": 72163.06,
+      "estimated_distance_after": 60408.98
     },
     {
       "faction": "Horde",
@@ -9851,8 +10604,14 @@
       },
       "reason_review_steps": 49,
       "cross_zone_reason_steps": 11,
-      "estimated_distance_before": 225687.28,
-      "estimated_distance_after": 213806.9
+      "flow_alternatives_evaluated": 5,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 6,
+      "quest_reward_only_xp_shortfall": 165595,
+      "uncertain_travel_legs": 17,
+      "estimated_distance_before": 155870.25,
+      "estimated_distance_after": 155870.25
     },
     {
       "faction": "Horde",
@@ -9885,6 +10644,12 @@
       },
       "reason_review_steps": 5,
       "cross_zone_reason_steps": 2,
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 65500,
+      "uncertain_travel_legs": 4,
       "estimated_distance_before": 51000,
       "estimated_distance_after": 51000
     },
@@ -9912,6 +10677,12 @@
       },
       "reason_review_steps": 2,
       "cross_zone_reason_steps": 2,
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 2,
       "estimated_distance_before": 30007.3,
       "estimated_distance_after": 30007.3
     },
@@ -9966,8 +10737,14 @@
       },
       "reason_review_steps": 107,
       "cross_zone_reason_steps": 6,
-      "estimated_distance_before": 289051.3,
-      "estimated_distance_after": 273330.98
+      "flow_alternatives_evaluated": 65,
+      "flow_loop_changes": 2,
+      "flow_state_valid": true,
+      "quest_log_peak": 10,
+      "quest_reward_only_xp_shortfall": 306355,
+      "uncertain_travel_legs": 29,
+      "estimated_distance_before": 300843.11,
+      "estimated_distance_after": 298229.65
     },
     {
       "faction": "Horde",
@@ -10024,8 +10801,14 @@
       },
       "reason_review_steps": 112,
       "cross_zone_reason_steps": 3,
-      "estimated_distance_before": 353477.19,
-      "estimated_distance_after": 331766.03
+      "flow_alternatives_evaluated": 41,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 9,
+      "quest_reward_only_xp_shortfall": 1161315,
+      "uncertain_travel_legs": 27,
+      "estimated_distance_before": 387899.06,
+      "estimated_distance_after": 387899.06
     },
     {
       "faction": "Horde",
@@ -10065,8 +10848,14 @@
       },
       "reason_review_steps": 78,
       "cross_zone_reason_steps": 15,
-      "estimated_distance_before": 280668.79,
-      "estimated_distance_after": 280668.05
+      "flow_alternatives_evaluated": 1,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 2,
+      "quest_reward_only_xp_shortfall": 3084230,
+      "uncertain_travel_legs": 28,
+      "estimated_distance_before": 262967.05,
+      "estimated_distance_after": 262967.05
     },
     {
       "faction": "Horde",
@@ -10106,8 +10895,14 @@
       },
       "reason_review_steps": 27,
       "cross_zone_reason_steps": 2,
-      "estimated_distance_before": 155219.89,
-      "estimated_distance_after": 146319.19
+      "flow_alternatives_evaluated": 2,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 4,
+      "quest_reward_only_xp_shortfall": 457300,
+      "uncertain_travel_legs": 29,
+      "estimated_distance_before": 152221.66,
+      "estimated_distance_after": 152221.66
     },
     {
       "faction": "Horde",
@@ -10133,7 +10928,13 @@
       },
       "reason_review_steps": 12,
       "cross_zone_reason_steps": 2,
-      "estimated_distance_before": 71278.38,
+      "flow_alternatives_evaluated": 7,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 860150,
+      "uncertain_travel_legs": 15,
+      "estimated_distance_before": 65684.7,
       "estimated_distance_after": 65684.7
     },
     {
@@ -10165,6 +10966,12 @@
       },
       "reason_review_steps": 10,
       "cross_zone_reason_steps": 3,
+      "flow_alternatives_evaluated": 1,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 2416180,
+      "uncertain_travel_legs": 7,
       "estimated_distance_before": 53418.49,
       "estimated_distance_after": 53418.49
     },
@@ -10202,8 +11009,14 @@
       },
       "reason_review_steps": 75,
       "cross_zone_reason_steps": 13,
-      "estimated_distance_before": 309374.65,
-      "estimated_distance_after": 302232.18
+      "flow_alternatives_evaluated": 20,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 8,
+      "quest_reward_only_xp_shortfall": 609235,
+      "uncertain_travel_legs": 29,
+      "estimated_distance_before": 300948.34,
+      "estimated_distance_after": 300948.34
     },
     {
       "faction": "Horde",
@@ -10310,8 +11123,14 @@
       },
       "reason_review_steps": 168,
       "cross_zone_reason_steps": 30,
-      "estimated_distance_before": 685564.51,
-      "estimated_distance_after": 627768.37
+      "flow_alternatives_evaluated": 5,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 4,
+      "quest_reward_only_xp_shortfall": 3050940,
+      "uncertain_travel_legs": 89,
+      "estimated_distance_before": 609185.85,
+      "estimated_distance_after": 609185.85
     },
     {
       "faction": "Horde",
@@ -10338,14 +11157,21 @@
       "reason_steps_checked": 216,
       "destination_reason_codes": {
         "outside-level-range": 86,
-        "prerequisite": 92,
+        "prerequisite": 90,
         "quest-reward": 34,
-        "return-hub": 4
+        "return-hub": 4,
+        "unlock-loop": 2
       },
       "reason_review_steps": 91,
-      "cross_zone_reason_steps": 9,
-      "estimated_distance_before": 232595.82,
-      "estimated_distance_after": 210788.02
+      "cross_zone_reason_steps": 10,
+      "flow_alternatives_evaluated": 170,
+      "flow_loop_changes": 3,
+      "flow_state_valid": true,
+      "quest_log_peak": 15,
+      "quest_reward_only_xp_shortfall": 101030,
+      "uncertain_travel_legs": 10,
+      "estimated_distance_before": 242261.59,
+      "estimated_distance_after": 237828.78
     },
     {
       "faction": "Horde",
@@ -10375,8 +11201,14 @@
       },
       "reason_review_steps": 57,
       "cross_zone_reason_steps": 9,
-      "estimated_distance_before": 223430.78,
-      "estimated_distance_after": 198158.33
+      "flow_alternatives_evaluated": 64,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 10,
+      "quest_reward_only_xp_shortfall": 141875,
+      "uncertain_travel_legs": 15,
+      "estimated_distance_before": 216759.58,
+      "estimated_distance_after": 216759.58
     },
     {
       "faction": "Horde",
@@ -10402,6 +11234,12 @@
       },
       "reason_review_steps": 6,
       "cross_zone_reason_steps": 2,
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 4,
       "estimated_distance_before": 32991.72,
       "estimated_distance_after": 32991.72
     },
@@ -10430,8 +11268,14 @@
       },
       "reason_review_steps": 49,
       "cross_zone_reason_steps": 14,
-      "estimated_distance_before": 279932.64,
-      "estimated_distance_after": 267937.78
+      "flow_alternatives_evaluated": 3,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 11,
+      "quest_reward_only_xp_shortfall": 983000,
+      "uncertain_travel_legs": 35,
+      "estimated_distance_before": 228204.68,
+      "estimated_distance_after": 228204.68
     },
     {
       "faction": "Horde",
@@ -10459,8 +11303,14 @@
       },
       "reason_review_steps": 20,
       "cross_zone_reason_steps": 4,
-      "estimated_distance_before": 66143.48,
-      "estimated_distance_after": 65112.17
+      "flow_alternatives_evaluated": 2,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 623100,
+      "uncertain_travel_legs": 8,
+      "estimated_distance_before": 67171.66,
+      "estimated_distance_after": 67171.66
     },
     {
       "faction": "Horde",
@@ -10486,6 +11336,12 @@
       },
       "reason_review_steps": 2,
       "cross_zone_reason_steps": 2,
+      "flow_alternatives_evaluated": 1,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 2,
       "estimated_distance_before": 30007.3,
       "estimated_distance_after": 30007.3
     },
@@ -10523,8 +11379,14 @@
       },
       "reason_review_steps": 47,
       "cross_zone_reason_steps": 10,
-      "estimated_distance_before": 231358.71,
-      "estimated_distance_after": 222528.43
+      "flow_alternatives_evaluated": 4,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 11,
+      "quest_reward_only_xp_shortfall": 207895,
+      "uncertain_travel_legs": 13,
+      "estimated_distance_before": 217841.63,
+      "estimated_distance_after": 217841.63
     },
     {
       "faction": "Horde",
@@ -10553,8 +11415,14 @@
       },
       "reason_review_steps": 62,
       "cross_zone_reason_steps": 14,
-      "estimated_distance_before": 266014.99,
-      "estimated_distance_after": 250088.92
+      "flow_alternatives_evaluated": 21,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 7,
+      "quest_reward_only_xp_shortfall": 276900,
+      "uncertain_travel_legs": 21,
+      "estimated_distance_before": 231192.3,
+      "estimated_distance_after": 231192.3
     },
     {
       "faction": "Horde",
@@ -10583,8 +11451,14 @@
       },
       "reason_review_steps": 46,
       "cross_zone_reason_steps": 15,
-      "estimated_distance_before": 247586.47,
-      "estimated_distance_after": 245450.74
+      "flow_alternatives_evaluated": 65,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 405900,
+      "uncertain_travel_legs": 10,
+      "estimated_distance_before": 204958.04,
+      "estimated_distance_after": 204958.04
     },
     {
       "faction": "Horde",
@@ -10626,8 +11500,14 @@
       },
       "reason_review_steps": 109,
       "cross_zone_reason_steps": 8,
-      "estimated_distance_before": 206529.93,
-      "estimated_distance_after": 184791.73
+      "flow_alternatives_evaluated": 330,
+      "flow_loop_changes": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 13,
+      "quest_reward_only_xp_shortfall": 18645,
+      "uncertain_travel_legs": 37,
+      "estimated_distance_before": 169592.04,
+      "estimated_distance_after": 164802.42
     },
     {
       "faction": "Horde",
@@ -10665,8 +11545,14 @@
       },
       "reason_review_steps": 70,
       "cross_zone_reason_steps": 8,
-      "estimated_distance_before": 200785.56,
-      "estimated_distance_after": 184674.57
+      "flow_alternatives_evaluated": 42,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 14,
+      "quest_reward_only_xp_shortfall": 30970,
+      "uncertain_travel_legs": 32,
+      "estimated_distance_before": 186269.74,
+      "estimated_distance_after": 186269.74
     },
     {
       "faction": "Horde",
@@ -10691,8 +11577,14 @@
       },
       "reason_review_steps": 4,
       "cross_zone_reason_steps": 3,
-      "estimated_distance_before": 45000,
-      "estimated_distance_after": 45000
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 1,
+      "estimated_distance_before": 24598.77,
+      "estimated_distance_after": 24598.77
     },
     {
       "faction": "Horde",
@@ -10734,8 +11626,14 @@
       },
       "reason_review_steps": 73,
       "cross_zone_reason_steps": 14,
-      "estimated_distance_before": 356265.3,
-      "estimated_distance_after": 316986.27
+      "flow_alternatives_evaluated": 7,
+      "flow_loop_changes": 1,
+      "flow_state_valid": true,
+      "quest_log_peak": 13,
+      "quest_reward_only_xp_shortfall": 474670,
+      "uncertain_travel_legs": 48,
+      "estimated_distance_before": 330865.7,
+      "estimated_distance_after": 327409.2
     },
     {
       "faction": "Horde",
@@ -10798,8 +11696,14 @@
       },
       "reason_review_steps": 155,
       "cross_zone_reason_steps": 31,
-      "estimated_distance_before": 586935.48,
-      "estimated_distance_after": 567361.85
+      "flow_alternatives_evaluated": 44,
+      "flow_loop_changes": 1,
+      "flow_state_valid": true,
+      "quest_log_peak": 7,
+      "quest_reward_only_xp_shortfall": 1240180,
+      "uncertain_travel_legs": 86,
+      "estimated_distance_before": 482124.91,
+      "estimated_distance_after": 480120.32
     },
     {
       "faction": "Horde",
@@ -10825,7 +11729,13 @@
       },
       "reason_review_steps": 17,
       "cross_zone_reason_steps": 0,
-      "estimated_distance_before": 20505.7,
+      "flow_alternatives_evaluated": 2,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 49650,
+      "uncertain_travel_legs": 9,
+      "estimated_distance_before": 20061.7,
       "estimated_distance_after": 20061.7
     },
     {
@@ -10862,8 +11772,14 @@
       },
       "reason_review_steps": 66,
       "cross_zone_reason_steps": 19,
-      "estimated_distance_before": 355721.91,
-      "estimated_distance_after": 349077.28
+      "flow_alternatives_evaluated": 28,
+      "flow_loop_changes": 1,
+      "flow_state_valid": true,
+      "quest_log_peak": 9,
+      "quest_reward_only_xp_shortfall": 1141660,
+      "uncertain_travel_legs": 30,
+      "estimated_distance_before": 354331.05,
+      "estimated_distance_after": 350450.17
     },
     {
       "faction": "Horde",
@@ -10899,8 +11815,14 @@
       },
       "reason_review_steps": 102,
       "cross_zone_reason_steps": 2,
-      "estimated_distance_before": 103302.15,
-      "estimated_distance_after": 91236.91
+      "flow_alternatives_evaluated": 379,
+      "flow_loop_changes": 3,
+      "flow_state_valid": true,
+      "quest_log_peak": 9,
+      "quest_reward_only_xp_shortfall": 9710,
+      "uncertain_travel_legs": 6,
+      "estimated_distance_before": 114418.17,
+      "estimated_distance_after": 113180.13
     },
     {
       "faction": "Horde",
@@ -10939,8 +11861,14 @@
       },
       "reason_review_steps": 104,
       "cross_zone_reason_steps": 1,
-      "estimated_distance_before": 129604.68,
-      "estimated_distance_after": 126399.37
+      "flow_alternatives_evaluated": 80,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 6,
+      "quest_reward_only_xp_shortfall": 9865,
+      "uncertain_travel_legs": 7,
+      "estimated_distance_before": 142047.98,
+      "estimated_distance_after": 142047.98
     }
   ]
 }

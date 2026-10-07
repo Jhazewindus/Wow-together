@@ -63,6 +63,7 @@ local function distance(a, b, metrics)
     if a.mapID ~= b.mapID then return ns.TravelPointDistance(a, b, metrics) or 15000 end
     return ns.WalkingDistance(b.mapID, a, b, metrics) or ns.NormalizedDistance(a, b) * 6000
 end
+ns.FixedGuideGeometry = distance
 
 function ns.GenerateFixedGuide(guide, cooperative)
     local tasks, done, ordered, work = {}, {}, {}, 0
@@ -146,8 +147,11 @@ function ns.GenerateFixedGuide(guide, cooperative)
             end
         end
     end
-    guide.optimization = ns.OptimizeFixedPlan(ordered, function(a, b) return distance(a, b, metrics) end,
-        cooperative, function() metrics, learned = {}, {} end)
+    local geometry = function(a, b) return distance(a, b, metrics) end
+    local resetTravel
+    local onYield = function() metrics, learned = {}, {}; if resetTravel then resetTravel() end end
+    local travelCost; travelCost, resetTravel = ns.NewFixedTravelCost(geometry, cooperative, onYield)
+    guide.optimization = ns.OptimizeFixedPlan(ordered, geometry, cooperative, onYield, travelCost)
     for index, stop in ipairs(ordered) do stop.guideStep = index end
     guide.fixedPlan = ordered
     return ordered

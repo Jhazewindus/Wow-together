@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.48
-## X-ReleaseName: YOUR NEXT ADVENTURE
+## Version: 0.8.49
+## X-ReleaseName: QUEST FLOW
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua
@@ -60,6 +60,8 @@ FlightTimes.lua
 TravelGuides.lua
 LevelingGuides.lua
 WorldQuestLocations.lua
+FixedTravelCost.lua
+QuestFlow.lua
 FixedRouteOptimizer.lua
 GuideOptimizer.lua
 FixedGuides.lua

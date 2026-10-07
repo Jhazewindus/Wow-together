@@ -1,13 +1,13 @@
 # Wow Together — friend test script
 
-For **0.8.48** — **YOUR NEXT ADVENTURE**, World of Warcraft: Forever beta,
+For **0.8.49** — **QUEST FLOW**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 79 Lua files** and
+1. Replace the complete WowTogether folder, including **all 81 Lua files** and
    the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    **Fully restart the client for this hotfix**, rather than only `/reload`.
@@ -16,6 +16,43 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Whole quest trips — about 15–25 minutes
+
+- Start a fresh zone section and check its quest list. Pickups, every distinct
+  kill/gather/use objective and hand-ins remain. A chain's prerequisite must be
+  handed in before its follow-up pickup. Nearby compatible pickups should come
+  before their shared work area; unavailable NPC offers must remain deferred.
+- Test Horde Barrens levels 11–20 if those chains are available: Rilli Greasygob
+  must be handed in before Samophlange Manual. Check that the trip fits nearby
+  work, and read the reason in the guide panel. Test The Longwalkers in Mulgore,
+  or Return to Verner/A Baying of Gnolls and the Redridge Rendezvous/Alther's Mill
+  chain on Alliance. Report the actual sequence and any unnecessary return trip.
+- Accept/abandon an unrelated quest, move around or across a boundary, then use
+  Scan guide. Progress/availability may change, but the selected guide's order
+  must stay fixed. Manual skips survive; an automatically deferred pickup can
+  return after the NPC genuinely offers it. A paused/filtered guide must not be
+  called complete while its applicable quests remain unfinished.
+- Where two quests kill the same mobs, accept both before killing. Both should
+  advance normally. A quest picked up afterward must not be treated as already
+  done. Finished mobs must lose their markers; special items/escorts remain
+  their proper stages. No optional quest is silently deleted by this optimizer.
+- Test near the minimum level and with a nearly full log. The addon must not
+  assert pickup availability below its minimum level, invent space or accept
+  unrelated quests. Finish/turn in current work when needed; keep reward choices
+  manual. Useful low-level exceptions still explain their later unlock.
+- Check a cross-zone trip and a confirmed flight. Generic comparison must not
+  unlock a flight or assume a hearth binding. Live directions should still use
+  your confirmed connection, with quest steps retained during the flight. Avoid
+  hostile settlements; flag any terrain crossing even when the estimate is lower.
+- Route loading should show its calculation state and finish without script
+  timeout. The guide, marker and controls should remain responsive during progress.
+  Capture /wt probe for any failed case: version/build, guide/step, levels, actual
+  NPC offers, active quests, flight network and quest-flow counters are useful.
+- Compare a **whole completed trip** from equivalent states, including the return
+  and onward leg. Do not report a faster prefix as a faster guide. Combat/drop,
+  spawn, inventory and transport wait times need live evidence; host comparisons
+  and source-gap-free status do not prove terrain access or globally optimal time.
 
 ## Recommended home — about 5–10 minutes
 

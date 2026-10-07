@@ -55,6 +55,17 @@ then fully restart the client; the release includes taint mitigation (a /reload 
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+0.8.49 QUEST FLOW compares complete quest trips inside the fixed-guide compiler:
+prerequisite hand-ins, follow-up pickups and overlapping work can share a visit.
+All actions and endpoints remain; started guides keep their order during play.
+Replay rejects worsened log/progression/difficulty/kill pressure. Generic travel
+comparisons use published ground/transports and estimated attachments; personal
+flights/hearths are not assumed. Live confirmed flight routing remains in use.
+All 152 guide sections are compared to 0.8.48; 38 have accepted improvements.
+GuideFlowAudit.json retains old/new evidence; ROUTE_OPTIMIZATION.md explains
+assumptions. This is not proof of optimal XP/hour or complete terrain mapping:
+32 sections meet the source-gap-free gate; 120 still need source facts.
+
 Database details unpack only when used. Keep DataStore.lua and the complete
 generated data files together. /wt probe reports per-compartment load counts and
 client memory when its API exists. No quest/NPC/loot facts are removed; guide
@@ -100,7 +111,7 @@ unresolved. Documented Report to Kadrak alternatives no longer request a duplica
 pickup when one version is active/completed; the chosen turn-in remains.
 Keep fixed order and manual skips. All {len(names)} Lua files are required.
 
-/wt opens the Classic-style resizable dashboard. Its dropdown has Leveling,
+/wt opens the Classic-style resizable dashboard on Recommended. Its dropdown has Recommended, Leveling,
 Professions, Dungeons, Quest log and All quests, in that order. All quests searches
 commit on Enter or pause. Optional party tracker, sync and catch-up controls remain.
 Guide cards use original, faint zone-themed landscape backgrounds. The fade is
@@ -505,7 +516,7 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
 '''
     args.output.mkdir(parents=True, exist_ok=True)
     destination = args.output / f'WowTogether-{version}.zip'
-    files = ['WowTogether.toc', *names, 'QuestCatalogue.json', 'QuestCoverage.json', 'GuideAudit.json', 'GuideSourceQueue.json', 'TravelData.json', 'GuideServiceData.json', 'DungeonData.json', 'DungeonJournalData.json', 'DungeonMapData.json', 'EliteSpawnData.json', 'ProfessionData.json']
+    files = ['WowTogether.toc', *names, 'QuestCatalogue.json', 'QuestCoverage.json', 'GuideAudit.json', 'GuideFlowAudit.json', 'GuideSourceQueue.json', 'TravelData.json', 'GuideServiceData.json', 'DungeonData.json', 'DungeonJournalData.json', 'DungeonMapData.json', 'EliteSpawnData.json', 'ProfessionData.json']
     with zipfile.ZipFile(destination, 'w', zipfile.ZIP_DEFLATED) as archive:
         for name in files:
             archive.write(addon / name, 'WowTogether/' + name)
@@ -513,14 +524,14 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
             archive.write(media / name, 'WowTogether/Media/GuideThemes/' + name)
         for name in ('README.md', 'TESTING.md', 'CHANGELOG.md'):
             archive.write(ROOT / name, 'WowTogether/' + name)
-        for name in ('PERFORMANCE.md', 'RECOMMENDED.md', 'PROFESSIONS.md', 'TRAVEL_DATA.md', 'GUIDE_REASONS.md', 'DUNGEONS.md', 'DUNGEON_ARTWORK.md', 'DUNGEON_VIEWER.md', 'THIRD_PARTY_NOTICES.md', 'QUEST_DATA.md',
+        for name in ('PERFORMANCE.md', 'ROUTE_OPTIMIZATION.md', 'RECOMMENDED.md', 'PROFESSIONS.md', 'TRAVEL_DATA.md', 'GUIDE_REASONS.md', 'DUNGEONS.md', 'DUNGEON_ARTWORK.md', 'DUNGEON_VIEWER.md', 'THIRD_PARTY_NOTICES.md', 'QUEST_DATA.md',
                      'LEGACY_DATA_LICENSE.txt', 'LEGACY_DATA_COPYRIGHT.md'):
             if (ROOT / name).exists():
                 archive.write(ROOT / name, 'WowTogether/' + name)
         archive.write(ROOT / 'LICENSE', 'WowTogether/LICENSE')
         for name in ('build_quest_dataset.py', 'supplement_quest_data.py', 'build_elite_spawns.py', 'pack_data.py', 'quest_enrichment.py', 'legacy_quest_facts.py', 'collect_quest_entities.py',
                      'forever_map_geometry.py', 'quest_event_areas.py', 'lua_data_literal.py', 'forever_beta_facts.py',
-                     'quest_observation_facts.py', 'capture_quest_pages.py', 'audit_quest_guides.py',
+                     'quest_observation_facts.py', 'capture_quest_pages.py', 'audit_quest_guides.py', 'audit_quest_flow.py',
                      'import_professions.py', 'import_warcraftdb.py', 'import_wowhead.py', 'import_travel_network.py', 'import_guide_services.py', 'import_dungeons.py', 'import_dungeon_journal.py', 'import_dungeon_positions.py',
                      'audit_dungeon_loot.py', 'capture_dungeon_loot.py', 'import_vanilla_loot.py', 'dungeon_encounters.json',
                      'guide_source_queue.py', 'forever_source_manifest.json', 'quest_corrections.json', 'quest_exclusions.json'):

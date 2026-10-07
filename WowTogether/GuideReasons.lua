@@ -5,7 +5,7 @@ local addonName, ns = ...
 local cached
 local goalFields = {"id", "kind", "mapID", "x", "y", "title", "npcName", "action", "itemName", "targetName",
     "unknownLocation", "planNeedsReview", "travelReason", "confirmation", "dungeonEntrance", "professionStep",
-    "memberKey", "objectiveKey", "quantity", "quantityUnknown", "useItemName"}
+    "memberKey", "objectiveKey", "quantity", "quantityUnknown", "useItemName", "flowWithQuestID", "flowUnlockQuestID"}
 local function unchanged(decision, goal)
     for _, field in ipairs(goalFields) do
         if not ns.Public(goal[field]) or decision.goalFacts[field] ~= goal[field] then return false end
@@ -126,6 +126,30 @@ local function objectiveVisit(goal, ctx)
     return #ids > 1 and ids or nil
 end
 
+local function flowReason(goal, ctx)
+    local other = ns.CatalogueQuest(goal.flowWithQuestID)
+    local key = goal.memberKey or ns.self
+    local member = key ~= ns.self and ns.members[key]
+    local profile = key == ns.self and ns.profile or member and member.profile
+    if not other or ns.GuideQuestSkipped(goal.flowWithQuestID) or not ns.ClassQuestEnabled(goal.flowWithQuestID)
+        or ns.CatalogueIdentityAllowed(goal.flowWithQuestID, profile) ~= true
+        or ns.CatalogueCompletion(key, goal.flowWithQuestID, ctx.query) == true then return end
+    local title = text(other.title)
+    if not title then return end
+    local child = ns.CatalogueQuest(goal.flowUnlockQuestID)
+    if goal.kind == "t" and child and unfinished(goal.flowUnlockQuestID, key, ctx) then
+        return result("unlock-loop", "This hand-in progresses toward " .. child.title
+            .. "; its work can join " .. title .. " in the same area.", true, {goal.flowUnlockQuestID, goal.flowWithQuestID})
+    end
+    local active = key == ns.self and ns.active or member and member.active
+    if active and active[goal.flowWithQuestID] and ns.QuestProgressReady(key, goal.flowWithQuestID) ~= true then
+        if goal.kind == "a" then return result("pickup-loop", "Pick this up before leaving; its work joins " .. title
+            .. " in the same area.", true, {goal.flowWithQuestID}) end
+        if goal.kind == "q" then return result("shared-loop", "Do this area together with " .. title
+            .. " to avoid a separate trip.", true, {goal.flowWithQuestID}) end
+    end
+end
+
 local function explain(goal, ctx)
     local title, quest, guide = text(goal.title) or "this quest", ns.CatalogueQuest(goal.id), ctx.guide
     if text(goal.travelReason) then return result("planned-purpose", text(goal.travelReason), true) end
@@ -156,6 +180,8 @@ local function explain(goal, ctx)
     if useful == true and exception and not ns.IsClassQuest(goal.id) then
         return result("useful-prerequisite", "Lower-level step: " .. exception, true)
     end
+    local flow = flowReason(goal, ctx)
+    if flow then return flow end
     local nextID, nextTitle, learned, alternative = continuation(goal, ctx)
     if nextID then
         if alternative then return result("chosen-branch", "Chosen branch toward " .. nextTitle .. "; other prerequisites may also work.", true, {nextID}) end

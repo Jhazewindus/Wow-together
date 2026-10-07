@@ -3,7 +3,7 @@ local addonName, ns = ...
 -- Improve the immutable catalogue route, preserving per-quest stages and
 -- hand-in prerequisites. Only shorter, close-level relocations are accepted.
 -- This is a bounded local search, not a claim of a terrain-optimal route.
-function ns.OptimizeFixedPlan(plan, distance, cooperative, onYield)
+function ns.OptimizeFixedPlan(plan, distance, cooperative, onYield, flowDistance)
     local stages, pickups, handins, positions, work = {}, {}, {}, {}, 0
     for index, stop in ipairs(plan) do
         positions[stop] = index
@@ -226,5 +226,10 @@ function ns.OptimizeFixedPlan(plan, distance, cooperative, onYield)
         end
         if not changed then break end
     end
-    return {before = before, after = cost(), moved = moved, bundles = bundles, heuristic = "Dependency-preserving step and bundle search"}
+    local legacyAfter = cost()
+    local flow = ns.ImproveQuestFlow(plan, flowDistance or distance, cooperative, onYield)
+    return {before = flowDistance and flow.before.distance or before,
+        after = flowDistance and flow.after.distance or cost(), legacyBefore = before, legacyAfter = legacyAfter,
+        moved = moved, bundles = bundles, flow = flow,
+        heuristic = "Dependency-preserving step, bundle and quest-flow search"}
 end

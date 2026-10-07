@@ -97,6 +97,11 @@ def audit():
                         assert sequence[0]=='a' and sequence[-1]=='t' and all(k=='q' for k in sequence[1:-1]),(key,id,'stage order')
                         assert not c.ns.IsLevelingExcludedQuest(id) and not c.ns.IsRepeatableQuest(id),(key,id,'excluded quest')
                     assert g.optimization.after<=g.optimization.before+1e-6,(key,'distance regression')
+                    flow=g.optimization.flow
+                    assert flow.after.valid,(key,'quest-flow state')
+                    for field in ('peakLog','levelDeficitXP','minimumKills','difficultyPressure','uncertainTravelLegs','blockedTravelLegs'):
+                        assert flow.after[field]<=flow.before[field],(key,field,'flow regression')
+                    assert flow.after.questXP>=flow.before.questXP,(key,'reward regression')
                     gaps={kind:sorted({int(s.id) for s in plan if s.kind==kind and s.unknownLocation}) for kind in ('a','q','t')}
                     unread=sorted(int(id) for id in kinds if not c.ns.CatalogueQuest(id).prerequisitesRead
                         or c.ns.CatalogueQuest(id).prerequisitesUnverified)
@@ -114,6 +119,9 @@ def audit():
                         'prerequisite_review_steps':review, 'source_data_gap_free':unknown==0 and review==0 and not unread and not unknown_counts,
                         'reason_steps_checked':len(plan),'destination_reason_codes':dict(sorted(guide_reason_codes.items())),
                         'reason_review_steps':reason_review_steps,'cross_zone_reason_steps':cross_zone_reason_steps,
+                        'flow_alternatives_evaluated':flow.candidates,'flow_loop_changes':flow.moves,
+                        'flow_state_valid':bool(flow.after.valid),'quest_log_peak':flow.after.peakLog,
+                        'quest_reward_only_xp_shortfall':flow.after.levelDeficitXP,'uncertain_travel_legs':flow.after.uncertainTravelLegs,
                         'estimated_distance_before':round(g.optimization.before,2),'estimated_distance_after':round(g.optimization.after,2)})
                     print(f'{faction}: {g.zone}: {len(plan)} steps checked',flush=True)
     return {'validation':'Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim',

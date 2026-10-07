@@ -1,5 +1,27 @@
 # Performance maintenance — 0.6.9
 
+## Whole quest-flow compilation in 0.8.49
+
+Dependency-closure candidates use complete-guide state replay and pooled published
+travel rows. Candidate closures are bounded at 24 actions, lookahead at 128,
+eight alternatives per objective and two passes. Cheap changed-edge comparisons
+reject zero/tiny savings before replay. No planner work runs from resize geometry;
+started guide progress still reads its immutable plan.
+
+On this Lua 5.1 host, a mocked 5000×3500 Mulgore build took about 1.0 seconds of
+total resume execution across 1,538 cooperative slices; the largest slice was
+8.54 ms. The existing timer adds scheduling delay between slices. This is a host
+responsiveness check, not a native FPS/loading-time promise. Source compilation
+and initial unpacking do more work than later progress updates.
+
+The ordinary host benchmark measured roughly 954 ms for Mulgore compilation,
+9 ms for progress, 44 ms for browsing and 7 ms for the 240-stop map redraw.
+These include mocked APIs and host load; they do not establish a speedup against
+0.8.48 or predict beta timings. Graph caches are bounded (32 rows for a compile
+policy; eight for existing flight geometry). Generic compile state is released
+after the plan/result, without retaining model closures or personal flight data.
+
+
 ## Elite spawn hints in 0.8.32
 
 The separate spawn compartment keeps 343 NPC records inert until a current target
