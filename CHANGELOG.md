@@ -1,5 +1,25 @@
 # Wow Together changelog
 
+## 0.8.37
+
+**SKILL BY SKILL**
+
+- Use actual profession skill and explicit next milestones in all six crafting
+  guides. Limit batches near recipe unlocks, difficulty changes and rank caps.
+- Count down remaining crafts after matching public craft-success casts. Keep
+  unfinished batches through bag refreshes, previews and reload; prepare only
+  the intermediates needed for remaining crafts. Extra batches start from actual
+  skill when some crafts give no skill-up.
+- Prefer fresh skill-line readings over stale crafting-window skill snapshots.
+  Reassess recipes at milestones, batch completion and loss of skill-up eligibility.
+- Make profession logos fully visible; preserve card backgrounds and layout.
+- Simplify main navigation to Leveling, Professions, Dungeons, Quest log and
+  All quests. Remove Personal professions settings; the guide chooses batch
+  quantities from the next milestone and estimated skill-up reliability.
+- Include all 69 Lua files and Media. Host checks cover Leatherworking at skill
+  11, intermediate consumption, all six professions, failed skill-ups, persistence
+  and existing guide/UI behavior. Verify craft-event delivery on the beta client.
+
 ## 0.8.36
 
 **CRAFTING COMPANION**

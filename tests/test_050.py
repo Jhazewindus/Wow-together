@@ -134,7 +134,7 @@ class SettingsTests(unittest.TestCase):
         c.lua.execute('WowTogetherDB.config.trackerOpacity=0/0; WowTogetherDB.config.professionBatch=math.huge')
         c.ns.InitializeConfig()
         self.assertEqual(c.ns.Option('trackerOpacity'), .08)
-        self.assertEqual(c.ns.Option('professionBatch'), 5)
+        self.assertIsNone(c.ns.Option('professionBatch'))  # Retired; guide quantities are automatic.
 
 
 class DungeonTests(unittest.TestCase):

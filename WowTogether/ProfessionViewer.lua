@@ -84,7 +84,11 @@ function ns.RefreshProfessionViewer(force)
     local info, goal = ns.professionData[id], ns.ProfessionGoal(id)
     frame.title:SetText(facts.name); frame.icon:SetTexture(facts.icon); frame.goal:SetChoice(goal)
     frame.skill:SetText(info and ("Skill " .. (info.skill or "?") .. " / " .. (info.maximum or "?") .. (info.cached and " • Last recorded" or "")) or "Choose a profession to learn")
-    local route = ns.BuildProfessionGuideRoute({key = "profession:" .. id, professionID = id, targetSkill = goal, title = facts.name})
+    local guide = ns.routeSelection
+    local active = guide and guide.mode == "profession" and guide.professionID == id and guide.targetSkill == goal
+    local route
+    if active then ns.UpdateProfessionRoute(guide); route = ns.selectedRoute
+    else route = ns.BuildProfessionGuideRoute({key = "profession:" .. id, professionID = id, targetSkill = goal, title = facts.name}) end
     frame.route = route
     local stop = route.stops[1]
     frame.nextText:SetText(stop.label .. "\n|cffadb4be" .. stop.description .. "|r"

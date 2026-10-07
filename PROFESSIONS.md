@@ -1,6 +1,6 @@
 # Personal crafting guides
 
-WoW Together 0.8.36 starts with Alchemy, Blacksmithing, Enchanting,
+WoW Together 0.8.37 supports Alchemy, Blacksmithing, Enchanting,
 Engineering, Leatherworking and Tailoring. Profession cards use the compact
 browser grid. Learned professions come first when the client identifies them;
 opening the profession window supplies recipes and can identify a profession
@@ -12,7 +12,7 @@ now displays a profession step. It directs learning/rank training to a named
 friendly trainer, shows a next-batch material list and suggests what to craft.
 Next recipe tries another option at the current skill. Materials opens the
 shopping list. Refresh rereads available profession data. Stop and Exit use
-the existing guide behavior; the profession/goal checkpoint resumes on login.
+the existing guide behavior; the profession/goal and unfinished batch resume on login.
 No skills, recipes or purchases are performed automatically.
 
 ## What decides the next craft
@@ -20,6 +20,25 @@ No skills, recipes or purchases are performed automatically.
 - Profession **skill**, not character level, determines eligible recipes.
   Character level gates rank training. Training and recipe acquisition are
   separate steps; reaching a cap does not count as finishing a higher goal.
+- Every active batch has a skill milestone: the next known recipe unlock,
+  difficulty threshold, rank cap or chosen goal. The guide chooses the quantity
+  itself: up to five crafts at an estimated high skill-up chance, three for a
+  moderate chance, one for a low chance; fewer near the milestone. The old
+  Personal professions/batch-size setting is removed. Display actual skill and
+  the milestone during crafting, material
+  gathering and training. Reaching skill 11 after ten successful skill-ups from
+  skill 1 is normal; further crafts remain useful until a later milestone.
+- Matching public player `UNIT_SPELLCAST_SUCCEEDED` casts count down the active
+  recipe's remaining crafts, including successful crafts without a skill gain
+  or crafts made while still gathering the rest of the batch's materials.
+  Bag updates subtract stock from those remaining crafts, keeping partially
+  used intermediates from being requested again. Preparation crafts update stock
+  and actual skill without pretending the final recipe was crafted. Extra batches
+  start from observed skill. Partial batches survive previews, refreshes and reload.
+- Recipes are reassessed at batch completion, milestones, cap/goal changes or
+  loss of skill-up eligibility. Fresh primary skill-line reads take priority over
+  an older recipe-window skill snapshot. Recipe colors stay scoped to their
+  snapshot skill. Explicit Next recipe still changes the active recipe.
 - Public learned recipes, current skill-up colors and material schematics from
   the opened client window take priority over the reference. Stale colors are
   not applied to a newly changed skill. Grey or explicitly non-skill-up recipes
@@ -100,3 +119,9 @@ seventh GetProfessionInfo return; all used public fields are checked. Saved
 skill/recipe IDs are a last-known fallback and colors are never persisted as live
 facts. Retest the native APIs and six professions on the build being played.
 Host Lua 5.1 checks establish algorithms/UI logic, not beta API behavior.
+The documented spell-success event is optional and guarded during registration;
+secret unit/cast/spell fields are ignored. `/wt probe` reports registration and
+matching casts observed. Retest delivery and recipe spell IDs on Forever; without
+matching public events, actual skill and stock still drive the plan, but successful
+crafts that give no skill point cannot be counted reliably. No crafting action is
+performed by the addon.

@@ -8,6 +8,8 @@ local stockCache, nameCache, cachedRevision = {}, {}, nil
 local workstations = {[164] = "Use an anvil and bring a Blacksmith Hammer.",
     [202] = "Check the recipe's tools; some crafts need an anvil.",
     [333] = "Bring the enchanting rod required by this recipe."}
+local lastCraftGUID
+ns.professionCraftsObserved = 0
 
 function ns.ProfessionFacts(id)
     return ns.professionGuideData and ns.professionGuideData.professions[id]
@@ -251,7 +253,7 @@ local function score(id, recipe, skill, current, useStock)
     -- Copper when prices are known; a resource heuristic otherwise. Missing
     -- prices are displayed as unknown, never advertised as zero cost.
     local value = cost and cost / 100 or resources(list) * 10
-    return (value + 4 + #prep * 3 + (live and live.learned and 0 or 8 / ns.Option("professionBatch"))) / (chance * gain), cost ~= nil
+    return (value + 4 + #prep * 3 + (live and live.learned and 0 or 8 / 5)) / (chance * gain), cost ~= nil
 end
 
 function ns.ProfessionNextRecipe(id, skill)
@@ -299,6 +301,87 @@ local function stop(id, action, instruction, description, trainer)
     return s
 end
 
+-- A batch is remaining work, not a new shopping order on every bag event.
+-- Skill milestones limit material commitments; only actual skill ends a stage.
+local function milestone(id, recipe, skill, limit)
+    for _, value in ipairs({recipe.yellow or limit, recipe.green or limit, recipe.grey or limit}) do
+        if value > skill then limit = math.min(limit, value) end
+    end
+    for _, nextRecipe in ipairs(index(id).data.recipes) do
+        if ns.GuideInteger(nextRecipe.learn, 1000) and nextRecipe.learn > skill and nextRecipe.learn < limit
+            and allowed(id, nextRecipe, nextRecipe.learn) then limit = nextRecipe.learn end
+    end
+    return limit
+end
+
+local function remainingCrafts(id, recipe, skill, finish)
+    local live = liveRecipe(id, recipe)
+    local gain = live and live.skillUps and math.max(1, live.skillUps) or 1
+    -- A successful craft need not grant a skill point. Keep batches small and
+    -- recalculate from the observed skill after each one, instead of promising
+    -- that a fixed number of yellow/green crafts reaches the milestone.
+    local chance = ns.ProfessionSkillChance(id, recipe, skill, true)
+    local limit = chance >= 1 and 5 or chance >= 0.5 and 3 or 1
+    return math.min(limit, math.ceil((finish - skill) / gain),
+        string.match(recipe.name, "^Runed .* Rod$") and 1 or 20)
+end
+
+local function currentBatch(guide, info)
+    local id, batch = guide.professionID, guide.professionBatch
+    local recipe = batch and index(id).byID[batch.recipeID]
+    if batch and not recipe then
+        -- A live-only beta recipe has no bundled thresholds. Resolve it from
+        -- this read without storing the entire native recipe in SavedVariables.
+        for _, candidate in ipairs(candidates(id, info.skill, true)) do
+            if candidate.id == batch.recipeID then recipe = candidate; break end
+        end
+    end
+    if batch and recipe and batch.remaining > 0 and info.skill >= batch.startSkill and info.skill < batch.finish
+        and batch.goal == guide.targetSkill and batch.maximum == info.maximum
+        and (not excluded[id] or excluded[id].skill ~= info.skill or not excluded[id][recipe.id])
+        and ns.ProfessionSkillChance(id, recipe, info.skill, true) > 0 then
+        batch.remaining = math.min(batch.remaining, remainingCrafts(id, recipe, info.skill, batch.finish))
+    else
+        recipe = ns.ProfessionNextRecipe(id, info.skill)
+        batch = nil
+        if recipe then
+            local finish = milestone(id, recipe, info.skill, math.min(guide.targetSkill, info.maximum))
+            local crafts = remainingCrafts(id, recipe, info.skill, finish)
+            batch = {recipeID = recipe.id, remaining = crafts, total = crafts, startSkill = info.skill,
+                finish = finish, goal = guide.targetSkill, maximum = info.maximum}
+        end
+        guide.professionBatch = batch
+    end
+    return recipe, batch
+end
+
+function ns.ObserveProfessionCraft(unit, castGUID, spellID)
+    -- This documented spell-success event may contain secret combat values.
+    -- Count only a public player's successful cast of the active craft recipe.
+    if not ns.Public(unit) or unit ~= "player" or not ns.SafeTitle(castGUID)
+        or not ns.GuideInteger(spellID) or spellID <= 0 or castGUID == lastCraftGUID then return end
+    local guide, route = ns.routeSelection, ns.selectedRoute
+    local batch = guide and guide.mode == "profession" and guide.professionBatch
+    local current = route and route.stops[1]
+    if not batch or not current or not route.recipe or route.recipe.id ~= batch.recipeID then return end
+    -- Players may craft the affordable part while the guide still asks for
+    -- the rest of the materials. That work belongs to the same active batch.
+    local matching = spellID == batch.recipeID or current.craftRecipeID == spellID
+    if not matching then
+        for _, prep in ipairs(route.preparations or {}) do
+            if prep.recipe.id == spellID then matching = true; break end
+        end
+    end
+    if not matching then return end
+    lastCraftGUID = castGUID
+    if spellID == batch.recipeID then batch.remaining = math.max(0, batch.remaining - 1) end
+    ns.professionCraftsObserved = ns.professionCraftsObserved + 1
+    -- Preparation crafts alter stock and can themselves raise skill. Let the
+    -- batched fresh skill/bag reads decide how much preparation remains.
+    ns.SaveSelectedGuide()
+    ns.QueueProfessionUpdate(true)
+end
+
 function ns.BuildProfessionGuideRoute(guide)
     if cachedRevision ~= ns.professionRevision then stockCache, cachedRevision = {}, ns.professionRevision end
     local id, target = guide.professionID, guide.targetSkill
@@ -326,16 +409,14 @@ function ns.BuildProfessionGuideRoute(guide)
                 "Raise your skill cap to " .. rank.maximum .. ". Buy rank training manually.", trainer)
         end
     else
-        local recipe = ns.ProfessionNextRecipe(id, info.skill)
+        local recipe, batch = currentBatch(guide, info)
         if not recipe then current = stop(id, "read", "Open your " .. facts.name .. " window or check its trainer", "No suitable skill-up recipe is confirmed. Refresh after training.")
         else
             local live = liveRecipe(id, recipe)
-            local gain = live and live.skillUps and math.max(1, live.skillUps) or 1
-            local crafts = math.min(ns.Option("professionBatch"), math.ceil((target - info.skill) / gain),
-                math.ceil((info.maximum - info.skill) / gain), math.max(1, (recipe.grey or info.skill + 1) - info.skill))
-            if string.match(recipe.name, "^Runed .* Rod$") then crafts = 1 end
+            local crafts = batch.remaining
             local list, cost, prep, incomplete = ns.ProfessionMaterials(id, recipe, crafts, info.skill, true)
             route.materials, route.recipe, route.crafts, route.preparations = list, recipe, crafts, prep
+            route.skillTarget, route.batchTotal = batch.finish, batch.total
             local nextRecipe, amount = recipe, crafts
             if prep[1] then nextRecipe, amount = prep[1].recipe, prep[1].crafts; live = liveRecipe(id, nextRecipe) end
             if incomplete then
@@ -357,24 +438,29 @@ function ns.BuildProfessionGuideRoute(guide)
                 if missing then current = stop(id, "buy", "Gather or buy materials for " .. recipe.name,
                     table.concat(summary, ", ", 1, math.min(3, #summary)) .. (#summary > 3 and "…" or "") .. "\nMaterials opens your complete buy list.")
                 else current = stop(id, "craft", "Craft " .. amount .. " × " .. nextRecipe.name,
-                    (workstations[id] or "Craft in your profession window.") .. "\nSkill " .. info.skill .. " / " .. target .. " • Refreshes as your skill changes.") end
+                    (prep[1] and ("Prepare materials for " .. recipe.name .. ".") or (workstations[id] or "Craft in your profession window."))
+                    .. " Skill-ups can vary.") end
             end
+            current.description = "Skill " .. info.skill .. " → " .. batch.finish .. " • Goal " .. target .. ".\n" .. current.description
             current.recipeID = recipe.id
+            if current.action == "craft" then current.craftRecipeID = nextRecipe.id end
             route.estimatedCost = cost
         end
     end
     route.stops[1], route.mapID = current, current.mapID
+    if current.action == "complete" then guide.professionBatch = nil end
     return route
 end
 
 function ns.UpdateProfessionRoute(guide)
-    local signature = table.concat({guide.key, guide.targetSkill, ns.professionRevision or 0, ns.Option("professionBatch")}, ":")
+    local signature = table.concat({guide.key, guide.targetSkill, ns.professionRevision or 0}, ":")
     if ns.selectedRoute and ns.selectedRoute.professionSignature == signature then return end
     local route = ns.BuildProfessionGuideRoute(guide)
     route.professionSignature = signature
     local previous = ns.selectedRoute and ns.selectedRoute.stops[1]
     ns.selectedRoute, ns.routePaused = route, nil
     ns.guideAction = route.stops[1].label
+    ns.SaveSelectedGuide()
     if not previous or previous.label ~= route.stops[1].label or previous.mapID ~= route.mapID then
         ns.routeSignature = nil; ns.ResetTravelPath(); ns.DrawRoute(nil, true)
     end
@@ -467,12 +553,14 @@ function ns.QueueProfessionUpdate(readRecipes)
         if ns.RouteInCombat() then ns.professionUpdateDeferred = true; return end
         ns.professionRevision = (ns.professionRevision or 0) + 1
         stockCache, cachedRevision = {}, ns.professionRevision
-        ns.ReadProfessionSkills()
         if ns.professionReadQueued and ns.professionWindowOpen then ns.ReadProfessionRecipes() end
+        -- Recipe-window snapshots can lag behind the primary skill line. The
+        -- fresh skill-line read wins; colors retain their own snapshot skill.
+        ns.ReadProfessionSkills()
         ns.professionReadQueued = nil
         if ns.routeSelection and ns.routeSelection.mode == "profession" then ns.UpdateProfessionRoute(ns.routeSelection); ns.UpdateNavigation() end
         if ns.professionViewer and ns.professionViewer:IsShown() then ns.RefreshProfessionViewer() end
-    ns.RenderProfessionGuide()
+        ns.RenderProfessionGuide()
     end
     if C_Timer and type(C_Timer.After) == "function" then C_Timer.After(0.25, update) else update() end
 end

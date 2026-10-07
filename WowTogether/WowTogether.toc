@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.36
-## X-ReleaseName: CRAFTING COMPANION
+## Version: 0.8.37
+## X-ReleaseName: SKILL BY SKILL
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua

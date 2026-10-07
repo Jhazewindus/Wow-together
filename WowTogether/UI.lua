@@ -185,9 +185,8 @@ function ns.CreateUI()
     ns.ui.party:SetHeight(16)
     ns.ui.party:SetWordWrap(false)
     ns.ui.party:SetJustifyV("TOP")
-    local filters = {{"guides", "Leveling guides"}, {"library", "All quests"}, {"all", "Party quests"},
-        {"shared", "Shared quests"}, {"different", "Party progression"}, {"dungeons", "Dungeon guides"},
-        {"professions", "Profession guides"}, {"review", "Quest log review"}}
+    local filters = {{"guides", "Leveling"}, {"professions", "Professions"}, {"dungeons", "Dungeons"},
+        {"review", "Quest log"}, {"library", "All quests"}}
     ns.ui.viewChoice = ns.UIDropdown(window, filters, 200, ns.SetFilter)
     ns.ui.viewChoice:SetPoint("TOPLEFT", 26, -112); ns.ui.viewChoice:SetChoice(ns.filter)
     ns.ui.viewDescription = label(window, nil, 11, colors.muted)
@@ -372,7 +371,7 @@ function ns.LayoutBrowserCards()
             card:SetSize(tileWidth, tileHeight)
             card.title:SetSize(tileWidth - 28, 38); card.title:SetWordWrap(true)
             card.count:SetPoint("TOPLEFT", 14, -72); card.count:SetWidth(tileWidth - 28); card.count:SetJustifyH("LEFT")
-            card.reason:SetPoint("TOPLEFT", 14, -96); card.reason:SetSize(tileWidth - 28, 38)
+            card.reason:SetPoint("TOPLEFT", 14, -96); card.reason:SetSize(tileWidth - (card.activity.profession and 116 or 28), 38)
             top = (row + 1) * (tileHeight + gap) - gap
         else
             card:SetPoint("TOPLEFT", 0, -top); card:SetWidth(width)
@@ -773,7 +772,7 @@ function ns.Render(queryContext, routeUpdated)
             ns.ApplyGuideCardTheme(card, {mode = "crafting"})
             if not card.professionIcon then
                 card.professionIcon = card:CreateTexture(nil, "ARTWORK"); card.professionIcon:SetSize(80, 80)
-                card.professionIcon:SetPoint("BOTTOMRIGHT", -12, 14); card.professionIcon:SetAlpha(0.08)
+                card.professionIcon:SetPoint("BOTTOMRIGHT", -12, 14); card.professionIcon:SetAlpha(1)
             end
             card.professionIcon:SetTexture(activity.icon); card.professionIcon:Show()
         elseif card.professionIcon then card.professionIcon:Hide() end

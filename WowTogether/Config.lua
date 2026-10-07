@@ -2,7 +2,7 @@ local addonName, ns = ...
 
 local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, classQuests = true,
     dungeonPrompts = true, dungeonMapPrompt = true, zonePrompts = true, trackerOpacity = 0.08,
-    trackerHeight = 350, circuitRadius = 0.16, circuitLimit = 6, mapLegend = true, professionBatch = 5, routeArrow = true,
+    trackerHeight = 350, circuitRadius = 0.16, circuitLimit = 6, mapLegend = true, routeArrow = true,
     currentQuestsFirst = true, nearbyPickups = true, fullRoute = false, routeAhead = 2, autoTurnIn = false,
     scanSkipped = false, distanceUnits = "yards", trackerAuto = true, autoSelectQuests = false,
     suggestFlights = true, autoFly = false, nearbyFlights = true, corpseArrow = true, npcMarker = "star", recordQuestData = true,
@@ -63,9 +63,7 @@ local sections = {
     {"research", "Quest data for testing", {
         {"recordQuestData", "Record NPC offers and quest progression", "Save the latest 300 local observations for prerequisite research. Export manually; no chat or automatic uploads."},
         {"useLearnedQuests", "Use observed prerequisite patterns", "Ordinary findings apply across classes/races within a faction and build. Restricted quests keep their class/race scope. Requires an observed unlock; skipping alone teaches no prerequisite."},
-        {"exportCharacterNames", "Include source names in guide findings", "Optional: attribute findings to the character that observed them. Quest data exports always omit character names."}}},
-    {"professions", "Personal professions", {
-        {"professionBatch", "Crafts per suggested batch", "Set the number of crafts used to calculate materials in your personal profession guide.", {{1, "1 craft"}, {5, "5 crafts"}, {10, "10 crafts"}, {20, "20 crafts"}}}}}
+        {"exportCharacterNames", "Include source names in guide findings", "Optional: attribute findings to the character that observed them. Quest data exports always omit character names."}}}
 }
 
 function ns.InitializeConfig()
@@ -76,6 +74,7 @@ function ns.InitializeConfig()
         ns.db.config.starMarkerDefault = true
     end
     ns.db.config.betaPickupCheck = nil -- Retired: this API measures sharing, not pickup eligibility.
+    ns.db.config.professionBatch = nil -- Craft quantities now belong to the guide.
     for key, value in pairs(defaults) do
         local configured = ns.db.config[key]
         if type(configured) ~= type(value) or (type(configured) == "number"
@@ -85,7 +84,6 @@ function ns.InitializeConfig()
     ns.db.config.trackerHeight = math.max(180, math.min(600, ns.db.config.trackerHeight))
     ns.db.config.circuitRadius = math.max(0.08, math.min(0.24, ns.db.config.circuitRadius))
     ns.db.config.circuitLimit = math.max(2, math.min(6, math.floor(ns.db.config.circuitLimit)))
-    ns.db.config.professionBatch = math.max(1, math.min(20, math.floor(ns.db.config.professionBatch)))
     ns.db.config.routeAhead = math.max(0, math.min(2, math.floor(ns.db.config.routeAhead)))
     if ns.db.config.distanceUnits ~= "yards" and ns.db.config.distanceUnits ~= "metres" then ns.db.config.distanceUnits = "yards" end
     if ns.db.config.npcMarker ~= "star" and ns.db.config.npcMarker ~= "cross" and ns.db.config.npcMarker ~= "skull" and ns.db.config.npcMarker ~= "quest" then ns.db.config.npcMarker = "star" end

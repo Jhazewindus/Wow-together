@@ -58,7 +58,7 @@ function ns.ReadProfessionRecipes()
     ns.professionData[info.professionID] = {id = info.professionID, name = name, recipes = recipes, known = known, live = true, recipeSkill = skill,
         skill = skill,
         maximum = ns.GuideInteger(info.maxSkillLevel) and info.maxSkillLevel or previous and previous.maximum}
-    ns.professionStatus = #recipes > 0 and "Live recipes loaded. Choose a small batch; refresh after crafting." or "No learned recipes with confirmed skill gains. Check your profession trainer."
+    ns.professionStatus = #recipes > 0 and "Live recipes loaded. Crafting guidance follows actual skill and remaining batch work." or "No learned recipes with confirmed skill gains. Check your profession trainer."
     ns.professionRevision = (ns.professionRevision or 0) + 1
     if ns.SaveProfessionState then ns.SaveProfessionState(info.professionID) end
 end
@@ -117,7 +117,6 @@ function ns.RecipeMaterials(id, crafts)
 end
 
 function ns.ProfessionChoices()
-    ns.professionBatch = ns.Option("professionBatch")
     local choices = {}
     if not ns.professionSelection then
         for id, info in pairs(ns.professionData) do
@@ -206,6 +205,7 @@ function ns.InitializeProfessionGuides()
     ns.On("TRADE_SKILL_LIST_UPDATE", function() ns.QueueProfessionUpdate(true) end)
     ns.On("TRADE_SKILL_CLOSE", function() ns.professionWindowOpen = nil end)
     ns.On("SKILL_LINES_CHANGED", function() ns.QueueProfessionUpdate(true) end)
+    ns.professionCraftEventReady = ns.On("UNIT_SPELLCAST_SUCCEEDED", ns.ObserveProfessionCraft)
     ns.On("BAG_UPDATE_DELAYED", function()
         ns.RefreshShoppingList(); ns.QueueProfessionUpdate()
         -- Collection tools/items can change without a quest-log objective

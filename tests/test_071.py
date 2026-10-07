@@ -87,7 +87,7 @@ class SoloTests(unittest.TestCase):
         self.assertEqual(c.ns.filter, 'guides')
         for key in ('all', 'shared', 'different'):
             row = c.ns.ui.viewChoice.options[key]
-            self.assertFalse(row.IsShown(row))
+            self.assertIsNone(row)  # Main navigation now contains the five companion views.
             c.ns.SetFilter(key); self.assertEqual(c.ns.filter, 'guides')
         for widget in (c.ns.ui.syncButton, c.ns.ui.trackerButton, c.ns.partyRoutePrompt, c.ns.activityPrompt):
             self.assertFalse(widget.IsShown(widget))

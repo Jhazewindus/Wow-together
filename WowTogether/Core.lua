@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.36"
-ns.RELEASE_NAME = "DUNGEON BROWSER"
+ns.VERSION = "0.8.37"
+ns.RELEASE_NAME = "SKILL BY SKILL"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}

@@ -99,9 +99,9 @@ unresolved. Documented Report to Kadrak alternatives no longer request a duplica
 pickup when one version is active/completed; the chosen turn-in remains.
 Keep fixed order and manual skips. All {len(names)} Lua files are required.
 
-/wt opens the Classic-style resizable dashboard. Its dropdown has Leveling guides,
-All quests (formerly Library), Party quests, Shared, Party progress, Dungeon quests,
-Profession guides and Quest log review. All quests searches commit on Enter or pause.
+/wt opens the Classic-style resizable dashboard. Its dropdown has Leveling,
+Professions, Dungeons, Quest log and All quests, in that order. All quests searches
+commit on Enter or pause. Optional party tracker, sync and catch-up controls remain.
 Guide cards use original, faint zone-themed landscape backgrounds. The fade is
 baked into local textures; no downloads or animation run in the game. Scenery
 crops proportionally on resize. Dungeon cards reference official Blizzard client
@@ -409,6 +409,11 @@ Quest log review only suggests reviewing low-value unfinished work; it never aba
 Personal crafting guides use profession skill, opened recipes and bag stock.
 Character level gates rank training; named NPCs, materials and the next craft
 reuse the small guide window. Select a skill goal; keep purchases/crafts manual.
+Skill milestones and remaining batches update after matching public craft casts;
+finished batch work stays deducted through bag updates, previews and reload.
+Actual skill controls progress even when crafts give no point. /wt probe reports
+craft-event registration and observations; verify delivery on the beta build.
+The guide chooses craft quantities. Personal professions settings are removed.
 See PROFESSIONS.md for sources, estimates and beta limits. Prices come from
 merchant listings and AH searches YOU perform. No automatic buying or searching.
 Profession/flight/skip state is not sent to peers.

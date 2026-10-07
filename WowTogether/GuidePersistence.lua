@@ -10,7 +10,8 @@ local stepFields = {"id", "kind", "mapID", "x", "y", "title", "label", "entityID
     "npcName", "published", "planned", "unknownLocation", "guideStep", "planNeedsReview", "learnedSource", "alternativeCount",
     "quantity", "itemID", "objectiveKey", "useItemName", "spellID", "entityType", "worldFallback", "legacyStepKey", "sourceAction",
     "progressName", "objectiveLabel", "quantityUnknown", "sourceZone"}
-local cachedGuide, cachedPlan, cachedBatch, cachedVisit, cachedPhase
+local cachedGuide, cachedPlan, cachedBatch, cachedVisit, cachedPhase, cachedProfessionBatch
+local professionBatchFields = {"recipeID", "remaining", "total", "startSkill", "finish", "goal", "maximum"}
 ns.guideResumeStatus = "No saved guide to resume."
 
 local function fields(source, keys)
@@ -43,7 +44,11 @@ end
 local function descriptor(guide, depth)
     local result = fields(guide, guideFields)
     if not result.key then return end
-    if guide.mode == "travel" or guide.mode == "profession" then return result end
+    if guide.mode == "profession" then
+        if guide.professionBatch then result.professionBatch = fields(guide.professionBatch, professionBatchFields) end
+        return result
+    end
+    if guide.mode == "travel" then return result end
     result.records, result.pickupIDs, result.batchIDs, result.catchupTargets, result.catchupRequired, result.npcVisitPickupIDs = {}, {}, {}, {}, {}, {}
     local ids = {}
     for index, record in ipairs(guide.records or {}) do
@@ -84,19 +89,24 @@ end
 function ns.SaveSelectedGuide()
     local guide = ns.routeSelection
     if not ns.db or not ns.db.guideState or not ns.self or not guide then return end
+    local batch = guide.mode == "profession" and guide.professionBatch
+    local batchSignature = batch and table.concat({batch.recipeID, batch.remaining, batch.total, batch.startSkill,
+        batch.finish, batch.goal, batch.maximum}, ":")
     if cachedGuide == guide and cachedPlan == guide.fixedPlan and cachedBatch == guide.batchIDs and cachedVisit == guide.npcVisitPickupIDs
-        and cachedPhase == guide.dungeonPhase then return end
+        and cachedPhase == guide.dungeonPhase and cachedProfessionBatch == batchSignature then return end
     local saved = descriptor(guide, 0)
     if not saved then return end
     ns.db.guideState[ns.self] = {schema = 1, addon = ns.VERSION, guide = saved}
     cachedGuide, cachedPlan, cachedBatch = guide, guide.fixedPlan, guide.batchIDs
     cachedVisit = guide.npcVisitPickupIDs
     cachedPhase = guide.dungeonPhase
+    cachedProfessionBatch = batchSignature
 end
 
 function ns.ClearSavedGuide()
     ns.pendingSavedGuide, ns.resumingGuide = nil, nil
     cachedGuide, cachedPlan, cachedBatch, cachedVisit, cachedPhase = nil, nil, nil, nil, nil
+    cachedProfessionBatch = nil
     if ns.db and ns.db.guideState and ns.self then ns.db.guideState[ns.self] = nil end
 end
 
@@ -104,8 +114,18 @@ local function restore(saved, reusePlan, depth)
     if type(saved) == "table" and saved.mode == "profession" then
         if not ns.GuideInteger(saved.professionID) or not ns.ProfessionFacts(saved.professionID)
             or not (saved.targetSkill == 75 or saved.targetSkill == 150 or saved.targetSkill == 225 or saved.targetSkill == 300) then return end
-        return {key = "profession:" .. saved.professionID, title = ns.ProfessionFacts(saved.professionID).name .. " crafting guide",
+        local guide = {key = "profession:" .. saved.professionID, title = ns.ProfessionFacts(saved.professionID).name .. " crafting guide",
             mode = "profession", professionID = saved.professionID, targetSkill = saved.targetSkill, personal = true, records = {}, focusKey = ns.self}
+        local batch = saved.professionBatch
+        if type(batch) == "table" and ns.GuideInteger(batch.recipeID) and batch.recipeID > 0
+            and ns.GuideInteger(batch.remaining, 20) and ns.GuideInteger(batch.total, 20) and batch.total > 0
+            and batch.remaining <= batch.total and ns.GuideInteger(batch.startSkill, 1000)
+            and ns.GuideInteger(batch.finish, 1000) and batch.finish > batch.startSkill
+            and batch.finish <= saved.targetSkill and batch.goal == saved.targetSkill
+            and ns.GuideInteger(batch.maximum, 1000) and batch.finish <= batch.maximum then
+            guide.professionBatch = fields(batch, professionBatchFields)
+        end
+        return guide
     end
     if type(saved) == "table" and saved.mode == "travel" then return ns.RestoreTravelGuide(saved.key) end
     if type(saved) ~= "table" or type(saved.records) ~= "table" or #saved.records == 0 or #saved.records > 512 then return end

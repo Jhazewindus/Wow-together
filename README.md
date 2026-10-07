@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.36 — CRAFTING COMPANION** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.37 — SKILL BY SKILL** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -22,6 +22,16 @@ Replace the folder on **every party member's client**, including all **69 Lua
 files** and the **Media folder**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.37 tracks remaining crafting work.** All six crafting guides show actual
+skill and the next milestone. Partial batches count down after matching public
+craft casts; consumed intermediate materials are deducted from remaining work.
+New batches start from your current skill, including when crafts give no point.
+Fresh skill-line readings take priority over stale crafting-window snapshots.
+Reload preserves the unfinished batch. Profession logos are fully visible on
+the existing cards. The guide chooses batch quantities; the Personal professions
+settings category is removed. Main navigation is Leveling, Professions, Dungeons,
+Quest log and All quests. Native craft-event delivery still needs beta testing.
 
 **0.8.36 adds six personal crafting guides.** Choose Profession guides to see
 compact cards with learned professions first. Preview a skill path, choose a
@@ -449,9 +459,9 @@ proximity cannot prove terrain access or make missing locations known.
 
 ## Choose and start a guide
 
-The dashboard dropdown contains **Leveling guides**, **All quests** (the old
-Library), **Party quests** (the old All quests), **Shared**, **Party progress**,
-**Dungeon quests**, **Profession guides** and **Quest log review**.
+The dashboard dropdown contains **Leveling**, **Professions**, **Dungeons**,
+**Quest log** and **All quests**, in that order. Optional party progress uses
+the Tracker button; sync and guide catch-up controls remain available.
 
 For solo leveling, enable **Settings → Play mode → Solo leveling mode**. This
 stops outgoing and incoming party messages, clears peer snapshots/invitations and

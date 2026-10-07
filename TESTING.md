@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.36** — **CRAFTING COMPANION**, World of Warcraft: Forever beta,
+For **0.8.37** — **SKILL BY SKILL**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
@@ -18,6 +18,31 @@ The expanded-guide checks below take about **15–25 minutes**.
    optional and off by default. Recording never uploads automatically.
 
 ## Personal crafting guides — about 10–15 minutes
+
+- Leatherworking: start with scraps, prepare five Light Leather, then craft
+  Light Armor Kits. Check actual skill in the crafting window. At skill 11,
+  guidance must continue from 11 and show its next milestone, rather than assume
+  a different skill. Further crafts can be needed while that recipe is useful.
+- Craft part of a batch: its count and Materials must shrink. A partly consumed
+  stock of Light Leather must cover the remaining kits without requesting the
+  leather already used for completed kits. Repeat with another profession's
+  intermediate. Skill gained by preparation also counts toward the milestone.
+- A successful yellow/green craft giving no skill point reduces the unfinished
+  batch, but must not falsely reach its skill target. At the end of that batch,
+  another small batch may be needed. Grey recipes must trigger reassessment.
+- Open/refresh a preview and reload midway: preserve remaining crafts. Try
+  unrelated spell casts: they must not count as crafting. If counts do not shrink,
+  include `/wt probe` and its Craft batch tracking line, recipe, actual skill and
+  materials. Public spell-success event registration/delivery needs beta testing;
+  without matching events, skill and owned stock still limit suggestions but
+  no-skill-up crafts cannot be counted reliably. Test all six crafting professions.
+- Check fully visible profession logos and unchanged card scenery. Resize and
+  switch tabs: no text overlap or lingering profession icon on other cards.
+- Main navigation should show Leveling, Professions, Dungeons, Quest log and
+  All quests in that order. Personal professions/batch-size settings are removed;
+  quantities come from the guide. Small batches should reduce near milestones
+  and for less reliable skill-ups. Old saved batch-size settings must not affect
+  the new guide. Optional party tracker, sync and catch-up controls still work.
 
 - Open Profession guides. Expect six compact cards, with your learned primary
   professions first and their skill/cap shown. Resize and switch back to

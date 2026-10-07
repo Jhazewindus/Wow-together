@@ -666,6 +666,8 @@ function ns.SyncDiagnostics(output)
     output("Guide scan: " .. (ns.guideScanning and "calculating" or "idle"))
     if ns.guideScanError then output("Guide scan error: " .. safe(ns.guideScanError)) end
     output("Profession guides: " .. ns.professionStatus .. " Personal recipe/material data is not sent to peers.")
+    output("Craft batch tracking: spell-success event " .. (ns.professionCraftEventReady and "registered" or "unavailable")
+        .. "; matching public craft casts observed: " .. ns.professionCraftsObserved .. ". Retest event delivery on this beta build.")
     output("Map route: " .. ns.routeStats.status)
     local selection, route = ns.routeSelection, ns.selectedRoute
     if selection then
