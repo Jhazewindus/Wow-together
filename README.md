@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.34 — ZONE GUIDE CHAPTERS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.35 — DUNGEON BROWSER** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -22,6 +22,15 @@ Replace the folder on **every party member's client**, including all **66 Lua
 files** and the **Media folder**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.35 makes dungeon browsing compact.** Dungeon cards form two columns at
+normal window sizes and three when wider, with the existing faint artwork,
+level range and short quest summary. Click anywhere on a card to open its
+journal. Quest list and Start quest route sit together there; starting reuses
+the small guide for collection, the run and hand-ins. Browsing never starts or
+replaces a guide. Map only keeps these actions hidden during gameplay. Zone
+guide cards retain their wide layout. Resizing reflows existing cards without
+replanning routes; retest text wrapping and artwork in the beta.
 
 **0.8.34 splits zone guides into level sections.** Each newly selected section
 has its own 1–10, 11–20, 21–30 or later quest set, quest list and XP estimate.
@@ -114,7 +123,7 @@ concise. Technical source notes and API explanations stay in diagnostics and
 documentation. Missing content uses short
 messages such as **Map unavailable**; useful prerequisite explanations remain.
 
-**0.8.24 adds the Dungeon viewer.** **See dungeon** opens its journal from anywhere.
+**0.8.24 adds the Dungeon viewer.** Clicking a dungeon card opens its journal from anywhere.
 The map-level dropdown appears only when multiple maps are available. Click a
 boss and browse notable drops with item icons, search,
 filters and cached client tooltips. Dungeon cards keep **Quest list** beside

@@ -95,8 +95,8 @@ function ns.ShowDungeonQuestList(group)
         frame.scroll:SetPoint("TOPLEFT", 22, -120); frame.scroll:SetPoint("BOTTOMRIGHT", -38, 68)
         frame.content = CreateFrame("Frame", nil, frame.scroll); frame.content:SetSize(600, 100); frame.scroll:SetScrollChild(frame.content)
         frame.empty = ns.UILabel(frame.content, nil, 13, ns.UIColors.muted); frame.empty:SetPoint("TOPLEFT", 14, -24)
-        frame.collect = ns.UIButton(frame, "Start route", 140, function() end, true); frame.collect:SetPoint("BOTTOMLEFT", 22, 20)
-        frame.hint = ns.UILabel(frame, nil, 11, ns.UIColors.muted); frame.hint:SetPoint("BOTTOMLEFT", 180, 28)
+        frame.collect = ns.UIButton(frame, "Start quest route", 156, function() end, true); frame.collect:SetPoint("BOTTOMLEFT", 22, 20)
+        frame.hint = ns.UILabel(frame, nil, 11, ns.UIColors.muted); frame.hint:SetPoint("BOTTOMLEFT", 196, 28)
         frame.hint:SetText("Collect quests and prerequisites, then head to the entrance.")
         if type(UISpecialFrames) == "table" then table.insert(UISpecialFrames, "WowTogetherDungeonQuests") end
     end

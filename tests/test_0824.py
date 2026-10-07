@@ -161,8 +161,8 @@ class DungeonViewerTests(unittest.TestCase):
         c.lua.execute("IsInInstance=function() return true,'party' end;GetInstanceInfo=function()return secret,secret end");c.ns.CheckDungeonViewerEntry();self.assertFalse(c.ns.dungeonEntryPrompt.IsShown(c.ns.dungeonEntryPrompt))
     def test_dungeon_buttons_pool_correctly_and_no_route_is_started_by_card_click(self):
         c=self.client();c.ns.SetFilter('dungeons');card=c.ns.ui.cards[1]
-        self.assertTrue(card.dungeonButton.IsShown(card.dungeonButton));self.assertEqual('Quest list',card.detailsButton.caption.text)
+        self.assertIsNone(card.dungeonButton);self.assertFalse(card.detailsButton.IsShown(card.detailsButton));self.assertFalse(card.mapButton.IsShown(card.mapButton))
         before=c.ns.routeSelection;card.OnClick();self.assertEqual(before,c.ns.routeSelection);self.assertTrue(c.ns.dungeonViewer)
-        c.ns.SetFilter('library');self.assertFalse(card.dungeonButton.IsShown(card.dungeonButton));self.assertEqual('BOTTOMLEFT',card.detailsButton.point[1])
+        c.ns.SetFilter('library');self.assertIsNone(card.dungeonButton);self.assertEqual('BOTTOMLEFT',card.detailsButton.point[1]);self.assertEqual(c.ns.ui.contentWidth,card.width)
 
 if __name__=='__main__':unittest.main()

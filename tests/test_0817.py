@@ -171,9 +171,10 @@ class EntranceIntegrationTests(unittest.TestCase):
         c.ns.SetFilter('dungeons')
         card = c.ns.ui.cards[1]
         self.assertIn('Lv ', card.count.text)
-        self.assertIn('Dungeon levels', card.reason.text)
-        self.assertEqual(card.detailsButton.caption.text, 'Quest list')
-        card.detailsButton.OnClick(card.detailsButton)
+        self.assertIn('quests', card.reason.text)
+        self.assertFalse(card.detailsButton.IsShown(card.detailsButton))
+        card.OnClick()
+        c.ns.dungeonViewer.questList.OnClick()
         self.assertTrue(c.ns.dungeonWindow.IsShown(c.ns.dungeonWindow))
         self.assertIn('Dungeon levels', c.ns.dungeonWindow.subtitle.text)
         self.assertIsNone(c.ns.dungeonWindow.record)

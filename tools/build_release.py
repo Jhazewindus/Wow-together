@@ -109,7 +109,11 @@ artwork, stretched across the full block at a faint 14% opacity. Journal images
 take precedence; 19 Classic and four Forever filenames are published. Remaining
 new dungeons use available journal art or a neutral client background; missing
 textures stay plain. No Blizzard images or external screenshots are bundled.
-See DUNGEON_ARTWORK.md for sources and beta limits. See dungeon opens a movable,
+See DUNGEON_ARTWORK.md for sources and beta limits. Dungeon cards form two columns
+at normal window sizes and three when wider; zone guide cards stay wide.
+Click a dungeon card to open its journal. Quest list and Start quest route sit
+together there; starting reuses collection/run/hand-in guidance. Map only hides
+those actions. Clicking a dungeon card opens a movable,
 resizable atlas from anywhere: choose floors when multiple maps exist, click boss
 portraits to open their loot, and click quest icons for pickups/objectives/turn-ins.
 Selecting a mapped boss follows its floor. The journal opens above the main

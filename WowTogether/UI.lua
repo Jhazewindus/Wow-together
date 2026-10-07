@@ -354,6 +354,47 @@ function ns.QueueBackgroundRender()
     end)
 end
 
+-- Geometry only: resizing must not query quests or rebuild a guide.
+function ns.LayoutBrowserCards()
+    local width, top = ns.ui.contentWidth, 0
+    local columns = width >= 900 and 3 or 2
+    local gap, tileHeight = 12, 150
+    local tileWidth = (width - (columns - 1) * gap) / columns
+    for index = 1, ns.ui.visibleCards or 0 do
+        local card = ns.ui.cards[index]
+        local dungeon = card.activity and card.activity.dungeon
+        card:ClearAllPoints()
+        card.title:ClearAllPoints(); card.title:SetPoint("TOPLEFT", 14, -26)
+        card.count:ClearAllPoints(); card.reason:ClearAllPoints()
+        if dungeon then
+            local row, column = math.floor((index - 1) / columns), (index - 1) % columns
+            card:SetPoint("TOPLEFT", column * (tileWidth + gap), -row * (tileHeight + gap))
+            card:SetSize(tileWidth, tileHeight)
+            card.title:SetSize(tileWidth - 28, 38); card.title:SetWordWrap(true)
+            card.count:SetPoint("TOPLEFT", 14, -72); card.count:SetWidth(tileWidth - 28); card.count:SetJustifyH("LEFT")
+            card.reason:SetPoint("TOPLEFT", 14, -96); card.reason:SetSize(tileWidth - 28, 38)
+            top = (row + 1) * (tileHeight + gap) - gap
+        else
+            card:SetPoint("TOPLEFT", 0, -top); card:SetWidth(width)
+            card.title:SetSize(width - 146, 18); card.title:SetWordWrap(false)
+            card.count:SetPoint("TOPRIGHT", -14, -28); card.count:SetWidth(118); card.count:SetJustifyH("RIGHT")
+            card.reason:SetPoint("TOPLEFT", 14, -51); card.reason:SetWidth(width - 24)
+            top = top + card:GetHeight() + 8
+        end
+        card.category:SetWidth(card:GetWidth() - 28)
+        ns.LayoutGuideCardTheme(card)
+        local count = card.memberCount or 0
+        local cellWidth = (width - 24 - math.max(0, count - 1) * 6) / math.max(1, count)
+        for member = 1, count do
+            local cell = card.memberCells[member]
+            cell:SetWidth(cellWidth); cell:ClearAllPoints()
+            cell:SetPoint("TOPLEFT", 12 + (member - 1) * (cellWidth + 6), -card.memberTop)
+            cell.name:SetWidth(cellWidth - 12); cell.state:SetWidth(cellWidth - 12); cell.history:SetWidth(cellWidth - 12)
+        end
+    end
+    ns.ui.content:SetHeight(math.max(250, top))
+end
+
 function ns.Layout()
     if not ns.ui or not ns.ui.metrics then return end
     local width = ns.window:GetWidth() or 860
@@ -385,20 +426,7 @@ function ns.Layout()
     end
     ns.ui.viewDescription:SetWidth(width - 292)
     ns.ui.viewDescription:SetWordWrap(false)
-    for _, card in ipairs(ns.ui.cards) do
-        card:SetWidth(ns.ui.contentWidth)
-        ns.LayoutGuideCardTheme(card)
-        card.title:SetWidth(ns.ui.contentWidth - 146)
-        card.reason:SetWidth(ns.ui.contentWidth - 24)
-        local count = card.memberCount or 0
-        local cellWidth = (ns.ui.contentWidth - 24 - math.max(0, count - 1) * 6) / math.max(1, count)
-        for index = 1, count do
-            local cell = card.memberCells[index]
-            cell:SetWidth(cellWidth); cell:ClearAllPoints()
-            cell:SetPoint("TOPLEFT", 12 + (index - 1) * (cellWidth + 6), -card.memberTop)
-            cell.name:SetWidth(cellWidth - 12); cell.state:SetWidth(cellWidth - 12); cell.history:SetWidth(cellWidth - 12)
-        end
-    end
+    ns.LayoutBrowserCards()
 end
 
 local function makeCard()
@@ -439,12 +467,7 @@ local function makeCard()
         end
     end
     card.mapButton = button(card, "Show route", 128, activate)
-    card.dungeonButton = button(card, "See dungeon", 116, function()
-        if card.activity and card.activity.dungeon then ns.ShowDungeonViewer(card.activity.dungeon) end
-    end, true)
-    card.dungeonButton:SetPoint("BOTTOMLEFT", 14, 10)
     card.detailsButton = button(card, "Quest details", 116, function()
-        if card.activity and card.activity.dungeon then ns.ShowDungeonQuestList(card.activity.dungeon); return end
         if card.guide and not card.libraryItem and not card.guide.personal then ns.RequestStartRoute(card.guide); return end
         local id = card.libraryItem and card.libraryItem.id or (card.guide and card.guide.target.id)
         if id then ns.ShowQuestDetails(id) end
@@ -545,6 +568,7 @@ function ns.Render(queryContext, routeUpdated)
     local choices = ns.filter == "guides" and ns.GuideBrowserChoices(nil, queryContext) or {}
     ns.ui.hint:SetText(ns.filter == "guides"
         and "Start a guide to follow its quest order. Search by zone, quest or NPC."
+        or ns.filter == "dungeons" and "Choose a dungeon to view its map, loot and quests."
         or "Choose a quest to see its route or requirements.")
     if not routeUpdated and ns.UpdateSelectedRoute then ns.UpdateSelectedRoute(choices, queryContext) end
     ns.ui.metrics[2].caption:SetText(ns.filter == "library" and "CATALOGUE QUESTS" or (ns.filter == "guides" and "QUEST GUIDES" or "SHARED ACTIVE"))
@@ -598,12 +622,12 @@ function ns.Render(queryContext, routeUpdated)
     elseif ns.filter == "dungeons" then
         for _, group in ipairs(ns.DungeonGroups()) do
             local dungeon = group
-            local activity = {title = group.name, category = "DUNGEON QUEST COLLECTION", dungeon = group,
-                detail = ns.DungeonOverviewSummary(group) .. "\n" .. ns.DungeonCollectionSummary(group),
-                action = #group.ids > 0 and "Start route" or "View details", click = function()
-                    if #dungeon.ids > 0 then ns.ShowDungeonQuests(dungeon, true)
-                    else ns.ShowDungeonViewer(dungeon.key) end
-                end}
+            local readiness = ns.DungeonCollectionReadiness(group)
+            local summary = readiness.count == 0 and (#group.ids == 0 and "No quests listed"
+                or readiness.unknown > 0 and "View quest list" or "No matching quests") or (readiness.count .. " quest"
+                .. (readiness.count == 1 and "" or "s") .. (readiness.unknown == 0 and (" • Collect from Lv " .. readiness.pickupLevel) or ""))
+            local activity = {title = group.name, category = "DUNGEON", dungeon = group,
+                detail = summary .. "\nMap, bosses & loot", click = function() ns.ShowDungeonViewer(dungeon) end}
             display[#display + 1] = {activity = activity}
         end
     elseif ns.filter == "professions" then
@@ -639,6 +663,7 @@ function ns.Render(queryContext, routeUpdated)
         if not card then card = makeCard(); ns.ui.cards[visible] = card end
         card:ClearAllPoints()
         card:SetScript("OnEnter", nil); card:SetScript("OnLeave", nil)
+        card:SetBackdropBorderColor(unpack(colors.border))
         card:SetPoint("TOPLEFT", 0, -top)
         card.title:SetWidth(ns.ui.contentWidth - 146)
         card.category:SetWidth(ns.ui.contentWidth - 28)
@@ -648,12 +673,10 @@ function ns.Render(queryContext, routeUpdated)
         card.guide = guide
         card.libraryItem = libraryItem
         card.activity = activity
-        card.dungeonButton:SetShown(activity ~= nil and activity.dungeon ~= nil)
         card.detailsButton:ClearAllPoints()
-        card.detailsButton:SetPoint(activity and activity.dungeon and "BOTTOMRIGHT" or "BOTTOMLEFT",
-            activity and activity.dungeon and -150 or 14, 10)
-        card.mapButton:SetShown(guide ~= nil or libraryItem ~= nil or activity ~= nil)
-        card.detailsButton:SetShown(guide ~= nil or (activity and activity.dungeon) ~= nil)
+        card.detailsButton:SetPoint("BOTTOMLEFT", 14, 10)
+        card.mapButton:SetShown(not (activity and activity.dungeon) and (guide ~= nil or libraryItem ~= nil or activity ~= nil))
+        card.detailsButton:SetShown(guide ~= nil)
         card.detailsButton.caption:SetText("Quest details")
         ns.UIButtonTone(card.detailsButton, true)
         card.detailsButton:SetEnabled(true)
@@ -669,8 +692,12 @@ function ns.Render(queryContext, routeUpdated)
                 and ("Lv " .. activity.dungeon.definition.runLevelLow .. "–" .. activity.dungeon.definition.runLevelHigh) or "")
             card.reason:Show(); card.reason:SetHeight(46); card.reason:SetText(activity.detail)
             ns.UIHelp(card, activity.title .. "\n" .. activity.detail)
-            card.mapButton.caption:SetText(activity.action)
-            if activity.dungeon then card.detailsButton.caption:SetText("Quest list"); ns.UIButtonTone(card.detailsButton, false) end
+            card.mapButton.caption:SetText(activity.action or "")
+            if activity.dungeon then
+                local enter, leave = card:GetScript("OnEnter"), card:GetScript("OnLeave")
+                card:SetScript("OnEnter", function(self) self:SetBackdropBorderColor(unpack(colors.gold)); if enter then enter(self) end end)
+                card:SetScript("OnLeave", function(self) self:SetBackdropBorderColor(unpack(colors.border)); if leave then leave(self) end end)
+            end
         elseif libraryItem then
             height = libraryItem.id and 122 or 108
             card.accent:SetColorTexture(unpack(colors.gold))
@@ -756,7 +783,7 @@ function ns.Render(queryContext, routeUpdated)
         or (ns.filter == "suggestions" and "Sync with a friend to get party suggestions."
         or (#rows == 0 and "Your adventure starts with a quest.\nAccept one, then sync your party."
         or "No quests in this view yet.\nTry All quests or compare more progress with friends.")))))
-    ns.ui.content:SetHeight(math.max(250, top))
+    ns.LayoutBrowserCards()
 end
 
 function ns.ShowDiagnostics(report, caption, onRefresh)

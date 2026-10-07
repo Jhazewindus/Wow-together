@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.34** — **ZONE GUIDE CHAPTERS**, World of Warcraft: Forever beta,
+For **0.8.35** — **DUNGEON BROWSER**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
@@ -16,6 +16,24 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Compact dungeon browser — about 5–10 minutes
+
+- Open Dungeon quests. Expect two cards per row at normal widths and three
+  when wider. Resize smoothly across the change: no overlapping cards or text,
+  clipped names, ghost buttons or blank gaps. Scroll through all dungeons. The
+  faint artwork should fill each card. Zone leveling guides must stay wide.
+- Click anywhere on a dungeon card. Expect its journal above the browser, with
+  Quest list beside Start quest route at the bottom. Opening and switching
+  journals must preserve your current guide. Quest list must match that dungeon
+  and respect your faction/class settings. Switch between these views repeatedly.
+- Start quest route. Reuse the small guide for collecting that dungeon's quests,
+  the run and hand-ins. Also try with accepted quests or ready turn-ins. Starting
+  should be disabled with no matching unfinished, unskipped quests remaining;
+  the journal and quest list should still open for viewing.
+- Switch to Map only: hide both quest actions. Resize/move it, change dungeons
+  and enter combat. Keep its saved geometry and map display. Return to Full view
+  to restore the actions without starting a guide. Report any Lua error.
 
 ## Zone guide sections — about 10–15 minutes
 
@@ -149,7 +167,7 @@ The expanded-guide checks below take about **15–25 minutes**.
   Start route must start directly without the entrance-recording quest-list
   popup. Quest list still opens only when chosen. Start an unmapped collection:
   its guide stays selected and waits for locations instead of showing that popup.
-- Leave the main window open and choose See dungeon: the journal must appear
+- Leave the main window open and click a dungeon card: the journal must appear
   above it. Select bosses on different floors (for example, Maraudon); the floor
   and map should follow the selected boss. Resize and repeat in Map only/full view.
 - Boss loot defaults to your class. Try another class, All classes, search and
@@ -177,8 +195,8 @@ Hotfix checks — about 5 minutes:
 - Switch Solo leveling mode on/off and check that party messages stop/resume.
   Resize/move the dungeon window during combat; positions and layouts remain.
 
-1. From outdoors, open Dungeon quests. Expect See dungeon on the left and Quest
-   list beside Start route on the right. See dungeon opens a journal immediately;
+1. From outdoors, open Dungeon quests. Click a compact dungeon card. Expect Quest
+   list beside Start quest route in its journal. The card opens it immediately;
    opening it must not replace, advance or clear your leveling guide.
 2. Try Ragefire Chasm, Wailing Caverns and a multi-floor dungeon. The map-level
    dropdown should appear only for multiple maps, in both Full view and Map only.
@@ -207,7 +225,7 @@ Hotfix checks — about 5 minutes:
    loot. Change dungeons and /reload: compact/full sizes and positions persist.
 5. Enter a recognized dungeon: expect Open map? once. Decline, then leave/reenter
    and accept: it opens the compact map. Disable Offer the map when entering a
-   dungeon in settings: manual See dungeon must continue working. Entry in combat
+   dungeon in settings: clicking a dungeon card must continue working. Entry in combat
    should wait until combat ends. Raids must not trigger this popup.
 6. Check that dungeon windows have no technical footers or boss-position notes.
    Missing maps/loot should show short unavailable messages. Hover guide cards

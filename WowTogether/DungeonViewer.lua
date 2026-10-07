@@ -3,6 +3,9 @@ local addonName, ns = ...
 local colors, fallback = ns.UIColors, "Interface\\Icons\\INV_Misc_QuestionMark"
 local bossFallback = "Interface\\EncounterJournal\\UI-EJ-BOSS-Default"
 local selected, entered
+local function selectedGroup()
+    for _, group in ipairs(ns.DungeonGroups()) do if group.key == selected then return group end end
+end
 local function coordinate(value)
     return ns.Public(value) and type(value) == "number" and value == value and math.abs(value) < 100000
 end
@@ -47,7 +50,7 @@ local function layout(frame)
         anchor(frame.floorMenu, 12, 86, math.max(130, mapWidth - 124), 26)
         anchor(frame.refresh, width - 124, 86, 112, 26)
         anchor(frame.map, 12, 122, mapWidth, mapHeight)
-        frame.mapNote:Hide(); frame.bossInfo:Hide(); frame.questList:Hide()
+        frame.mapNote:Hide(); frame.bossInfo:Hide(); frame.questList:Hide(); frame.startRoute:Hide()
     else
         local bossWidth, lootWidth = 200, math.max(270, math.min(350, width * .2926))
         mapWidth, mapHeight = width - bossWidth - lootWidth - 64, height - 317
@@ -75,7 +78,7 @@ local function layout(frame)
         end
         frame.lootRowsVisible = math.min(7, math.max(1, math.floor((height - 333) / 47)))
         for _, row in ipairs(frame.lootRows) do row:SetWidth(lootWidth - 24); row.name:SetWidth(lootWidth - 70); row.detail:SetWidth(lootWidth - 70) end
-        frame.questList:Show()
+        frame.questList:Show(); frame.startRoute:Show()
     end
     frame.footer:Hide(); frame.mapNote:Hide()
     frame.bossPanel:SetShown(not frame.compact); frame.lootPanel:SetShown(not frame.compact)
@@ -224,8 +227,14 @@ local function create()
     frame.lootEmpty = ns.UILabel(frame.lootPanel, nil, 12, colors.muted); frame.lootEmpty:SetPoint("TOPLEFT", 16, -184); frame.lootEmpty:SetSize(280, 160)
     frame.footer = ns.UILabel(frame, nil, 10, colors.muted); frame.footer:SetPoint("BOTTOMLEFT", 20, 15); frame.footer:SetSize(760, 20)
     frame.questList = ns.UIButton(frame, "Quest list", 96, function()
-        for _, group in ipairs(ns.DungeonGroups()) do if group.key == selected then ns.ShowDungeonQuestList(group); return end end
-    end); frame.questList:SetPoint("BOTTOMRIGHT", -20, 12)
+        local group = selectedGroup()
+        if group then ns.ShowDungeonQuestList(group) end
+    end); frame.questList:SetPoint("BOTTOMRIGHT", -198, 12)
+    frame.startRoute = ns.UIButton(frame, "Start quest route", 166, function()
+        local group = selectedGroup()
+        if group then ns.ShowDungeonQuests(group, true) end
+    end, true); frame.startRoute:SetPoint("BOTTOMRIGHT", -20, 12)
+    ns.UIHelp(frame.startRoute, "Collect dungeon quests, then follow the guide through the run and hand-ins.")
     frame.mode = ns.UIButton(frame, "Map only", 108, function()
         if frame.compact then frame.compactSize = {frame:GetWidth(), frame:GetHeight()}
         else frame.fullSize = {frame:GetWidth(), frame:GetHeight()} end
@@ -417,6 +426,13 @@ function ns.RenderDungeonViewer()
     if not frame or not frame:IsShown() or not frame.data or frame.rendering then return end
     frame.rendering = true
     local data, boss = frame.data
+    local group, unfinished = selectedGroup(), false
+    for _, id in ipairs(group and group.ids or {}) do
+        if ns.DungeonQuestRelevant(id) == true and not ns.GuideQuestSkipped(id)
+            and (ns.active[id] or ns.Completed(id) ~= true) then unfinished = true; break end
+    end
+    frame.questList:SetEnabled(group ~= nil)
+    frame.startRoute:SetEnabled(unfinished)
     frame.title:SetText(data.name)
     ns.UIButtonTone(frame.questsToggle, frame.showQuests)
     frame.summary:SetText("Lv " .. data.definition.runLevelLow .. "–" .. data.definition.runLevelHigh

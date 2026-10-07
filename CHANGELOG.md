@@ -1,5 +1,22 @@
 # Wow Together changelog
 
+## 0.8.35
+
+**DUNGEON BROWSER**
+
+- Arrange dungeon cards in two columns at normal widths and three when wider.
+  Keep full-card faint artwork, dungeon names, level ranges and concise quest
+  summaries. Reflow during resizing without querying quests or replanning guides.
+  Keep zone leveling guides as wide cards.
+- Make the whole dungeon card open its journal; remove separate See dungeon,
+  quest-list and route buttons from the browser cards. Put Quest list and Start
+  quest route side by side in the journal. Browsing preserves the active guide.
+- Reuse dungeon collection, run and hand-in guidance when starting a quest route.
+  Disable starting when no matching unfinished, unskipped quests remain. Keep
+  journal actions hidden in Map only; preserve saved geometry and combat display.
+- Include all 66 Lua files and Media. Host checks cover layout, pooled cards,
+  resizing, journal selection and route entry; retest beta fonts and artwork.
+
 ## 0.8.34
 
 **ZONE GUIDE CHAPTERS**
