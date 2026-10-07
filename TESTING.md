@@ -1,13 +1,13 @@
 # Wow Together — friend test script
 
-For **0.8.47** — **CRAFT BY CRAFT**, World of Warcraft: Forever beta,
+For **0.8.48** — **YOUR NEXT ADVENTURE**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 77 Lua files** and
+1. Replace the complete WowTogether folder, including **all 79 Lua files** and
    the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    **Fully restart the client for this hotfix**, rather than only `/reload`.
@@ -16,6 +16,29 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Recommended home — about 5–10 minutes
+
+- Open the addon with the minimap button or `/wt`. **Recommended** is selected:
+  one suitable leveling guide and cards only for known crafting professions.
+  Confirm faction, current level, completed/skipped quests and class settings
+  match the leveling suggestion. Read its reason and progress.
+- Pick a future bracket and search in Leveling, close/reopen the addon. Home
+  still recommends current work. Return to Leveling: that bracket/search remains.
+  The dropdown still opens Professions, Dungeons, Quest log and All quests.
+- Preview the recommended quest list, then start the guide. Reopen the addon:
+  **Continue** returns to the guide window with its order and current step kept.
+  Starting a different recommendation requires your click. Repeat with an active
+  crafting batch; Continue retains its remaining work.
+- Check known profession skill/cap and saved goal. Open the crafting window when
+  asked, craft a piece, then check the home card updates to actual skill/action.
+  A reached goal offers View guide; no profession gives a concise empty state.
+- Resize between minimum and wide sizes, scroll when needed and check titles,
+  buttons, progress and profession icons. No route or batch changes on resize.
+  Check all windows still open normally, without font/startup errors.
+- If possible, test a level-60 character, a character whose current zone guide
+  is complete, and solo mode after leaving a party. No fake leveling card or
+  stale party member should appear. Record `/wt probe` and an error if it fails.
 
 ## Recipe shopping and scan recovery — about 5–10 minutes
 

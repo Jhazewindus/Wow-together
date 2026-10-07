@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.47 — CRAFT BY CRAFT** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.48 — YOUR NEXT ADVENTURE** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -18,10 +18,20 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **77 Lua
+Replace the folder on **every party member's client**, including all **79 Lua
 files** and the **Media folder**, then fully restart the client. Restart if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.48 opens on Recommended.** A featured leveling card suggests a suitable
+unfinished zone section, with a short reason and quest progress. Personal cards
+show the crafting professions you know, their current skill, selected goal and
+next action. Continue returns to an active guide without changing its order.
+Browse the other sections from the menu; saved searches and future-level filters
+do not affect the home recommendations. Viewing the screen starts no guide.
+Cards refresh after quest/profession updates; resizing only reflows their geometry.
+The same guide eligibility and crafting planners remain in use. Dailies and mount
+guides can be added later, when supported. See [RECOMMENDED.md](RECOMMENDED.md).
 
 **0.8.47 groups auction shopping by what you will craft.** Expandable recipe
 boxes follow the planned craft order and show approximate crafts, skill range,

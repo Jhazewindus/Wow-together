@@ -95,8 +95,10 @@ end
 ns.UIEditBox = searchBox
 
 function ns.ToggleWindow()
-    ns.window:SetShown(not ns.window:IsShown())
-    ns.Refresh()
+    if ns.window:IsShown() then ns.window:Hide(); return end
+    if ns.ReadProfessionSkills then ns.ReadProfessionSkills() end
+    ns.window:Show()
+    ns.SetFilter("recommended")
 end
 
 function ns.IsPartyView(filter)
@@ -121,7 +123,7 @@ function ns.CreateUI()
     local window = CreateFrame("Frame", "WowTogetherWindow", UIParent, "BackdropTemplate")
     ns.window = window
     ns.ui = {cards = {}, filterButtons = {}}
-    ns.filter = "guides"
+    ns.filter = "recommended"
     local saved = ns.db.windowSize
     local width = type(saved) == "table" and type(saved.width) == "number" and math.max(760, math.min(1280, saved.width)) or 860
     local height = type(saved) == "table" and type(saved.height) == "number" and math.max(580, math.min(1000, saved.height)) or 640
@@ -185,7 +187,7 @@ function ns.CreateUI()
     ns.ui.party:SetHeight(16)
     ns.ui.party:SetWordWrap(false)
     ns.ui.party:SetJustifyV("TOP")
-    local filters = {{"guides", "Leveling"}, {"professions", "Professions"}, {"dungeons", "Dungeons"},
+    local filters = {{"recommended", "Recommended"}, {"guides", "Leveling"}, {"professions", "Professions"}, {"dungeons", "Dungeons"},
         {"review", "Quest log"}, {"library", "All quests"}}
     ns.ui.viewChoice = ns.UIDropdown(window, filters, 200, ns.SetFilter)
     ns.ui.viewChoice:SetPoint("TOPLEFT", 26, -112); ns.ui.viewChoice:SetChoice(ns.filter)
@@ -270,6 +272,7 @@ function ns.CreateUI()
     ns.ui.guideCount = label(window, nil, 10, colors.muted)
     ns.ui.guideCount:SetPoint("TOPLEFT", 118, -187)
     ns.ui.guideControls = {ns.ui.guideLevel, guideSearch, ns.ui.guideSubmit, ns.ui.guidePrev, ns.ui.guideNext, ns.ui.guideCount}
+    for _, control in ipairs(ns.ui.guideControls) do control:Hide() end
     ns.ui.empty = label(content, "GameFontNormalLarge", nil, colors.muted)
     ns.ui.empty:SetPoint("TOPLEFT", 18, -35)
     ns.ui.empty:SetWidth(730)
@@ -343,6 +346,7 @@ end
 
 -- Geometry only: resizing must not query quests or rebuild a guide.
 function ns.LayoutBrowserCards()
+    if ns.filter == "recommended" then ns.LayoutRecommended(); return end
     local width, top = ns.ui.contentWidth, 0
     local columns = width >= 900 and 3 or 2
     local gap, tileHeight = 12, 150
@@ -382,6 +386,13 @@ function ns.LayoutBrowserCards()
     ns.ui.content:SetHeight(math.max(250, top))
 end
 
+local function layoutStatus()
+    local width = ns.window:GetWidth() or 860
+    local left = ns.PartyFeaturesEnabled() and 382 or 282
+    ns.ui.status:ClearAllPoints(); ns.ui.status:SetPoint("BOTTOMLEFT", left, 19)
+    ns.ui.status:SetWidth(width - left - 186); ns.ui.status:SetWordWrap(false)
+end
+
 function ns.Layout()
     if not ns.ui or not ns.ui.metrics then return end
     local width = ns.window:GetWidth() or 860
@@ -394,10 +405,7 @@ function ns.Layout()
     end
     ns.ui.party:SetWidth(width - 52)
     ns.ui.hint:SetWidth(width - 52)
-    ns.ui.status:ClearAllPoints()
-    ns.ui.status:SetPoint("BOTTOMLEFT", 272, 19)
-    ns.ui.status:SetWidth(width - 458)
-    ns.ui.status:SetWordWrap(false)
+    layoutStatus()
     ns.ui.content:SetWidth(ns.ui.contentWidth)
     ns.ui.empty:SetWidth(ns.ui.contentWidth - 36)
     if ns.ui.librarySearch then ns.ui.librarySearch:SetWidth(width - 324) end
@@ -537,6 +545,7 @@ function ns.Render(queryContext, routeUpdated)
         ns.ui.partyMode = partyEnabled
         ns.ui.viewChoice:SetVisibleEntries(function(key) return partyEnabled or not ns.IsPartyView(key) end)
         ns.ui.trackerButton:SetShown(partyEnabled); ns.ui.syncButton:SetShown(partyEnabled)
+        layoutStatus()
         ns.ui.subtitle:SetText(partyEnabled and "Choose a questline, compare your party, and find the next stop."
             or "Follow your leveling guide and find the next stop.")
         ns.ui.viewDescription:SetText(partyEnabled and "Choose a guide or explore your party's progress." or "Choose a solo guide or browse quests.")
@@ -545,6 +554,8 @@ function ns.Render(queryContext, routeUpdated)
         for _, chip in ipairs(ns.ui.levelButtons) do if chip.levelKey == "party" then chip.caption:SetText(partyEnabled and "Near party" or "My level") end end
     end
     queryContext = queryContext or ns.NewQuestQuery()
+    ns.ui.viewDescription:SetText(ns.filter == "recommended" and "Suggestions for your character, ready when you are."
+        or partyEnabled and "Choose a guide or explore your party's progress." or "Choose a solo guide or browse quests.")
     local rows = (ns.filter == "all" or ns.filter == "shared" or ns.filter == "different" or ns.filter == "suggestions") and ns.Rows(queryContext) or {}
     local synced, shared, own = 1, 0, 0
     for _, member in pairs(ns.members) do if member.active and not member.syncPending then synced = synced + 1 end end
@@ -553,7 +564,8 @@ function ns.Render(queryContext, routeUpdated)
     ns.ui.metrics[1].caption:SetText(partyEnabled and "PARTY SYNC" or "PLAY MODE")
     ns.ui.metrics[1].value:SetText(partyEnabled and (synced .. " / " .. (#(ns.partyNames or {}) + 1)) or "SOLO")
     local choices = ns.filter == "guides" and ns.GuideBrowserChoices(nil, queryContext) or {}
-    ns.ui.hint:SetText(ns.filter == "guides"
+    ns.ui.hint:SetText(ns.filter == "recommended" and "Pick your next adventure, or continue your current guide."
+        or ns.filter == "guides"
         and "Start a guide to follow its quest order. Search by zone, quest or NPC."
         or ns.filter == "dungeons" and "Choose a dungeon to view its map, loot and quests."
         or ns.filter == "professions" and "Choose a profession to plan crafting, materials and training."
@@ -563,7 +575,7 @@ function ns.Render(queryContext, routeUpdated)
     ns.ui.metrics[2].value:SetText(tostring(ns.filter == "library" and ns.catalogue.count or (ns.filter == "guides" and #choices or shared)))
     ns.ui.metrics[3].value:SetText(tostring(own))
     local peers = {"You" .. (ns.profile and ns.profile.level > 0 and (" • Lv " .. ns.profile.level) or " • level pending")}
-    for _, name in ipairs(ns.partyNames or {}) do
+    for _, name in ipairs(partyEnabled and ns.partyNames or {}) do
         local member = ns.members[name]
         local profile = member and member.profile
         local syncLabel = member and member.syncPending and " |cffe4b66arefreshing|r" or (member and member.active and " |cff70d6a0synced|r" or " |cffe4b66awaiting|r")
@@ -584,6 +596,12 @@ function ns.Render(queryContext, routeUpdated)
     ns.ui.status:SetText(status)
     ns.ui.viewChoice:SetChoice(ns.filter)
     for _, card in ipairs(ns.ui.cards) do card:Hide() end
+    if ns.ui.home then ns.ui.home:Hide() end
+    if ns.filter == "recommended" then
+        ns.ui.visibleCards = 0; ns.ui.empty:Hide()
+        ns.RenderRecommended(queryContext)
+        return
+    end
     local visible, top = 0, 0
     local display = {}
     if ns.filter == "library" then

@@ -779,6 +779,7 @@ function ns.QueueProfessionUpdate(readRecipes)
         if ns.RefreshProfessionShopping then ns.RefreshProfessionShopping() end
         if ns.RefreshAuctionGuideSearch then ns.RefreshAuctionGuideSearch() end
         ns.RenderProfessionGuide()
+        if ns.filter == "recommended" and ns.window and ns.window:IsShown() then ns.QueueBackgroundRender() end
     end
     if C_Timer and type(C_Timer.After) == "function" then C_Timer.After(0.25, update) else update() end
 end

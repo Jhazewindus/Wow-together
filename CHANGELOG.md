@@ -1,5 +1,32 @@
 # Wow Together changelog
 
+## 0.8.48
+
+**YOUR NEXT ADVENTURE**
+
+- Open on Recommended: a featured leveling-zone guide and smaller cards for
+  the crafting professions the character knows. Show short reasons, current
+  skill, saved skill goal, next crafting action and compatible quest progress.
+  Keep the existing Leveling, Professions, Dungeons, Quest log and All quests
+  browsers in the menu, with saved searches/brackets independent of the home.
+- Continue an active guide without replacing its order or crafting batch.
+  Preview a quest list or profession plan before starting. Recommendations use
+  existing level/identity/progression rules and crafting planners; opening the
+  screen never starts a guide. No suitable guide, unknown character details,
+  level cap and no known crafting profession have concise empty states.
+- Cache read-only cards across geometry updates; quest/profession changes refresh
+  them. Read public profession skill when opening, load detailed profession
+  facts only for known professions, and keep resizing free of planner work.
+  Hide stale party summary entries in solo mode and separate footer controls.
+- Add recommendation providers for future activities without adding placeholder
+  daily/mount guides. Use the approved subtle zone themes and native profession
+  icons. Code-rendered previews use example data; native beta rendering needs
+  the live checklist.
+- Validation: all 1,304 host regressions passed, including 17 new recommendation
+  checks; 140 targeted home/menu/browser/crafting checks passed. All 79 Lua
+  files compile under Lua 5.1. In-client rendering and event delivery remain
+  part of the friend checklist.
+
 ## 0.8.47
 
 **CRAFT BY CRAFT**

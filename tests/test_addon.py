@@ -889,7 +889,7 @@ class AddonTests(unittest.TestCase):
 
     def test_resizing_reflows_cards_and_saves_size(self):
         c = Client(default_guide=True)
-        self.assertEqual(c.ns.filter, 'guides')
+        self.assertEqual(c.ns.filter, 'recommended')
         c.ns.SetFilter('all')
         c.ns.window.SetSize(c.ns.window, 1080, 800)
         c.ns.window.OnSizeChanged(c.ns.window, 1080, 800)

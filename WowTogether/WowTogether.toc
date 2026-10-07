@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.47
-## X-ReleaseName: CRAFT BY CRAFT
+## Version: 0.8.48
+## X-ReleaseName: YOUR NEXT ADVENTURE
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua
@@ -82,3 +82,5 @@ AuctionGuide.lua
 DungeonJournal.lua
 DungeonMapQuests.lua
 DungeonViewer.lua
+Recommended.lua
+RecommendedUI.lua
