@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.57 — TERRAIN-AWARE QUEST FLOW** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.58 — BETTER TRAVEL CONNECTIONS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -23,7 +23,15 @@ files** and the **Media folder**, then fully restart the client. Restart if a ne
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
 
-**0.8.57 also prices mapped terrain when comparing guide order.** Preserve the
+**0.8.58 corrects nearby travel-connection ranking.** Previously, mixing raw
+distance and adjusted cost could discard a nearer connection and call a
+reachable journey unmapped. Corrected comparisons start after established
+quest flow, including useful early rewards. Change order only when the complete
+journey improves without losing progression, actions or recovery. Starting a
+guide still shows Loading route; its order remains fixed during play.
+See [route comparisons](ROUTE_OPTIMIZATION.md) for the old/new evidence.
+
+Mapped terrain also affects guide comparisons. Preserve the
 established pickup/work/hand-in flow first, then compare complete alternatives
 through the same visible waypoint graph as live navigation. A mapped mesa cannot
 become a cheap shortcut through a local estimate, attachment or published walk.

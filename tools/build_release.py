@@ -55,6 +55,13 @@ then fully restart the client; the release includes taint mitigation (a /reload 
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+0.8.58 BETTER TRAVEL CONNECTIONS fixes mixed-scale nearby connection ranking
+that could discard a nearer connected travel point. Compare corrected prices
+after the established full quest flow, retaining early rewards, dependencies,
+every action, onward endpoints and recovery. Started guides stay fixed; personal
+flight/hearth options remain separate. No new roads or NPC positions are claimed.
+See ROUTE_OPTIMIZATION.md, GuideFlowAudit.json and TESTING.md for comparisons.
+
 0.8.57 TERRAIN-AWARE QUEST FLOW uses the mapped terrain waypoint graph when
 comparing complete fixed guides. Keep established pickups/objectives/hand-ins
 first, then accept only a shorter full journey that preserves prerequisites,

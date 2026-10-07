@@ -358,26 +358,31 @@ function ns.ImproveFixedTravelOrder(plan, distance, cooperative, onYield, option
     return result
 end
 
-function ns.OptimizeFixedPlan(plan, distance, cooperative, onYield, flowDistance, flowOptions, terrainDistance)
+function ns.OptimizeFixedPlan(plan, distance, cooperative, onYield, flowDistance, flowOptions, terrainDistance, connectionDistance)
     local legacy = optimizeSteps(plan, distance, cooperative, onYield)
     local flow = ns.ImproveQuestFlow(plan, flowDistance or distance, cooperative, onYield, flowOptions)
     local network = flowDistance and ns.ImproveFixedTravelOrder(plan, flowDistance, cooperative, onYield, flowOptions)
     -- Repricing the original greedy route can discard useful established
     -- reward visits. Start with that full flow, then guard each terrain-aware
     -- change against the same rewards, progression and required action set.
-    local terrain
-    if terrainDistance and flowDistance then
+    local function comparePrices(priorDistance, nextDistance)
+        if not priorDistance or not nextDistance then return end
         local changed = false
         for index = 2, #plan do
-            local old, oldBasis = flowDistance(plan[index - 1], plan[index])
-            local new, newBasis = terrainDistance(plan[index - 1], plan[index])
+            local old, oldBasis = priorDistance(plan[index - 1], plan[index])
+            local new, newBasis = nextDistance(plan[index - 1], plan[index])
             if math.abs(old - new) > 0.001 or oldBasis ~= newBasis then changed = true; break end
         end
-        if changed then terrain = ns.ImproveFixedTravelOrder(plan, terrainDistance, cooperative, onYield, flowOptions) end
+        if changed then return ns.ImproveFixedTravelOrder(plan, nextDistance, cooperative, onYield, flowOptions) end
     end
-    return {before = terrain and terrain.before.distance or flowDistance and flow.before.distance or legacy.before,
-        after = terrain and terrain.after.distance or network and network.after.distance or flow.after.distance,
+    local terrain = comparePrices(flowDistance, terrainDistance)
+    -- Corrected connection prices start from the complete established guide,
+    -- including its terrain-aware reward visits. A better attachment alone
+    -- must not discard rewards or turn the greedy seed into a worse journey.
+    local connections = comparePrices(terrainDistance or flowDistance, connectionDistance)
+    return {before = connections and connections.before.distance or terrain and terrain.before.distance or flowDistance and flow.before.distance or legacy.before,
+        after = connections and connections.after.distance or terrain and terrain.after.distance or network and network.after.distance or flow.after.distance,
         legacyBefore = legacy.before, legacyAfter = legacy.after,
-        moved = legacy.moved, bundles = legacy.bundles, flow = flow, network = network, terrain = terrain,
+        moved = legacy.moved, bundles = legacy.bundles, flow = flow, network = network, terrain = terrain, connections = connections,
         heuristic = "Dependency-preserving step, bundle and quest-flow search"}
 end

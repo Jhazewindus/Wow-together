@@ -724,9 +724,10 @@ function ns.SyncDiagnostics(output)
         local flow = selection.optimization and selection.optimization.flow
         local network = selection.optimization and selection.optimization.network
         local terrain = selection.optimization and selection.optimization.terrain
+        local connections = selection.optimization and selection.optimization.connections
         if flow then
             output("Quest-flow comparison: " .. flow.candidates .. " alternatives; " .. flow.moves .. " accepted loop changes; all actions/endpoints retained.")
-            local after = terrain and terrain.after or network and network.after or flow.after
+            local after = connections and connections.after or terrain and terrain.after or network and network.after or flow.after
             output("Quest-flow state: log peak " .. flow.before.peakLog .. " -> " .. after.peakLog
                 .. "; XP shortfall " .. flow.before.levelDeficitXP .. " -> " .. after.levelDeficitXP
                 .. " (quest rewards only; kills/exploration unmeasured).")
@@ -736,6 +737,8 @@ function ns.SyncDiagnostics(output)
                 .. " accepted changes; mapped changed legs; progression/reward/recovery guards retained.") end
             if terrain then output("Terrain ordering: " .. terrain.candidates .. " alternatives; " .. terrain.moves
                 .. " accepted changes; mapped barriers priced after established quest flow.") end
+            if connections then output("Connection ordering: " .. connections.candidates .. " alternatives; " .. connections.moves
+                .. " accepted changes; corrected nearby connections; full quest-flow guards retained.") end
         end
     end
     output("Route generation: " .. (ns.routePlanning and "loading" or ns.routePlanningError or "idle"))

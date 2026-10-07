@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.57** — **TERRAIN-AWARE QUEST FLOW**, World of Warcraft: Forever beta,
+For **0.8.58** — **BETTER TRAVEL CONNECTIONS**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
@@ -20,6 +20,23 @@ The expanded-guide checks below take about **15–25 minutes**.
    applying completed/accepted quests and manual skips. Step numbers may change.
    A reload on the same version should preserve the saved order.
 
+## Nearby connections and complete quest flow — about 10–15 minutes
+
+- Start a rebuilt guide and inspect its quest list. Compare the complete
+  pickup/work/hand-in trip with 0.8.57 from the same progress. An earlier reward
+  visit must remain useful; changed work cannot lose prerequisite turn-ins or
+  repeat a completed objective. Include `/wt probe` for a bad step; Connection
+  ordering reports the corrected-price comparison separately.
+- Follow a long journey with several nearby travel points. Retain current
+  known flights and directed boats/zeppelins. A published location alone must
+  not unlock a personal flight or create a reverse transport.
+- Scan, skip, accept/abandon an unrelated quest, cross a zone and reload. Keep
+  the fixed guide while actual progress and temporary NPC availability update.
+  A same-version reload must retain its saved order and manual skips.
+- Record Loading route duration and any hitch, plus map/quest coordinates for
+  bad ground directions. This update corrects connection pricing, not missing
+  roads, lift entrances or beta NPC locations.
+
 ## Terrain-aware guide order — about 10–15 minutes
 
 - Start a rebuilt Thousand Needles guide when suitable. Check the complete
@@ -37,7 +54,7 @@ The expanded-guide checks below take about **15–25 minutes**.
   Record Loading route duration and any hitch. Include `/wt probe` for a bad
   step; its Terrain ordering line records the new comparison separately.
 - Test a zone without mapped terrain too. It should retain its established
-  ordering. The existing twelve Thousand Needles footprints are approximate;
+  terrain behavior. The existing twelve Thousand Needles footprints are approximate;
   this update does not map additional mountains or verify beta walkability.
 
 ## Terrain waypoints — about 10–15 minutes

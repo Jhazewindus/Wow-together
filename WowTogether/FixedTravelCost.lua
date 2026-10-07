@@ -37,9 +37,13 @@ function ns.NewFixedTravelCost(fallback, cooperative, onYield, options)
                 and not ns.TerrainWalkCrossing(point, node.point, policy.terrain) then
                 local length = fallback(point, node.point)
                 if length <= 1500 then
+                    local cost = length * 1.25
                     local index = #result + 1
-                    for i, old in ipairs(result) do if length < old.cost then index = i; break end end
-                    table.insert(result, index, {id = node.id, cost = length * 1.25})
+                    -- Retain the established seed's prices only when explicitly
+                    -- requested. Corrected comparisons use one scale throughout.
+                    local rank = options and options.legacyAnchorOrder and length or cost
+                    for i, old in ipairs(result) do if rank < old.cost then index = i; break end end
+                    table.insert(result, index, {id = node.id, cost = cost})
                     if #result > 3 then table.remove(result) end
                 end
             end

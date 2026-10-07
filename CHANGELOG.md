@@ -1,5 +1,34 @@
 # Wow Together changelog
 
+## 0.8.58
+
+**BETTER TRAVEL CONNECTIONS**
+
+- Correct nearby connection ranking in guide-cost comparisons. Mixing raw
+  distance with adjusted cost could discard a nearer connected point and call
+  a reachable leg unmapped. Keep the same bounded search and safety checks;
+  generic compilation still does not assume personal flights or hearths.
+- Compare corrected prices after the complete established quest flow, including
+  its terrain-aware reward visits. Change order only for a shorter full journey
+  that preserves every action, prerequisite, escort, endpoint and recovery
+  boundary. No work loses previously collected rewards; log, level, difficulty
+  and shared-kill guards remain. Started guides keep fixed order.
+- Compare all 152 sections and 12,985 actions with 0.8.57. Published Forever map
+  bounds support 25 guarded changes in 13 sections; 139 retain their order.
+  Barrens 11–20 collects The Forgotten Pools reward earlier and combines nearby
+  work without delaying existing rewards. Durotar, Elwynn and other sections
+  also improve. All 608 additional bracket/starting-XP replays pass.
+- Repeat the comparison without native physical map geometry: 13 changes in
+  seven sections, using explicitly estimated fallback scale. Preserve all
+  actions and 608 state replays there too. Record full named old/new sequences
+  and both geometry modes in GuideFlowAudit.json; Connection ordering appears
+  only in diagnostics. No new world/NPC/road locations are claimed.
+- Validation: 278 related host checks pass, including six new connection,
+  source-name-order, cache, directed-transport and reward-preservation checks.
+  Audit all 152 sections and 11,822 published points; all 83 Lua files compile
+  under Lua 5.1. Source completeness remains 33 sections; 119 need more facts.
+  These are improved estimated journeys, not proven fastest or gap-free routes.
+
 ## 0.8.57
 
 **TERRAIN-AWARE QUEST FLOW**

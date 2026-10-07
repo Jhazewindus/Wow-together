@@ -161,6 +161,7 @@ def capture(baseline=None, flow_module=None, label=None, optimizer_module=None,
                             flow=guide.optimization.flow
                             network=guide.optimization.network
                             terrain=guide.optimization.terrain
+                            connections=guide.optimization.connections
                             def regions(stages):
                                 result, region = {}, 0
                                 for stop in stages:
@@ -188,6 +189,8 @@ def capture(baseline=None, flow_module=None, label=None, optimizer_module=None,
                                 'accepted_network_changes':network.moves if network else 0,
                                 'terrain_alternatives_evaluated':terrain.candidates if terrain else 0,
                                 'accepted_terrain_changes':terrain.moves if terrain else 0,
+                                'connection_alternatives_evaluated':connections.candidates if connections else 0,
+                                'accepted_connection_changes':connections.moves if connections else 0,
                                 'changed_travel_edge_bases':dict(changed_bases),
                                 'network_changes':[{'kind':move.kind,'quest_ids':list(move.questIDs.values()),
                                     'actions_moved':move.actions,'estimated_travel_units_saved':round(move.travelSaved,2),
@@ -197,6 +200,10 @@ def capture(baseline=None, flow_module=None, label=None, optimizer_module=None,
                                     'actions_moved':move.actions,'estimated_travel_units_saved':round(move.travelSaved,2),
                                     'reward_xp_before_work_gained':move.rewardBeforeWorkGained}
                                     for move in terrain.changes.values()] if terrain else [],
+                                'connection_changes':[{'kind':move.kind,'quest_ids':list(move.questIDs.values()),
+                                    'actions_moved':move.actions,'estimated_travel_units_saved':round(move.travelSaved,2),
+                                    'reward_xp_before_work_gained':move.rewardBeforeWorkGained}
+                                    for move in connections.changes.values()] if connections else [],
                                 'loop_changes':[{'quest_ids':list(change.questIDs.values()),'near_quest_id':change.nearQuestID,
                                     'actions_moved':change.actions,'estimated_travel_units_saved':round(change.travelSaved,2),
                                     'minimum_kills_saved':change.killsSaved,
@@ -259,13 +266,14 @@ def capture(baseline=None, flow_module=None, label=None, optimizer_module=None,
                               'guides_compared':len(seen),
                               'starting_states_checked':starting_states_checked,
                               'actions_preserved':sum(len(g['stops']) for g in result),
-                              'trace_note':'Loop/network traces belong to established passes. Terrain changes are added after that full flow; all old/new journeys are repriced with identical current terrain.',
+                              'trace_note':'Loop/network/terrain traces belong to established passes. Connection changes start after that complete flow; all old/new journeys use identical corrected connection prices and terrain.',
                               'trip_changes_in_candidate_traces':sum(move['kind']=='objective-trip'
                                   for change in comparisons for move in change['loop_changes']),
                               'reward_visits_in_candidate_traces':sum(move['kind']=='reward-visit'
                                   for change in comparisons for move in change['loop_changes']),
                               'network_changes_in_candidate_traces':sum(change['accepted_network_changes'] for change in comparisons),
                               'additional_terrain_changes':sum(change['accepted_terrain_changes'] for change in comparisons),
+                              'additional_connection_changes':sum(change['accepted_connection_changes'] for change in comparisons),
                               'changed_guides':len(comparisons),'changes':comparisons}
     return report
 

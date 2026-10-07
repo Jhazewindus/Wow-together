@@ -1,4 +1,112 @@
-# Quest-flow optimization — 0.8.57
+# Quest-flow optimization — 0.8.58
+
+## Correct connection prices after established quest flow
+
+The target remains **completing the selected zone guide efficiently**. The
+existing guide-cost model inflated each attachment by 1.25, but sorted a new
+raw distance against an old inflated cost. Later, farther points could displace
+a nearer one from the three retained connections. In a reproduced case, four
+progressively farther points discarded the only connected departure; a
+reachable directed journey was priced as unmapped. The correction compares
+adjusted costs with adjusted costs. All 24 permutations of the source names
+retain the same nearest connection and cost. The existing radius, three-point
+bound, hostile-settlement and terrain checks remain; this is a bounded estimate,
+not a guarantee that every possible connection is searched.
+
+Applying new prices to the initial greedy flow failed the comparison: Zephras
+Isle delayed useful rewards. Retaining only the earlier no-terrain seed also
+lost an established Thousand Needles reward improvement. The final compiler
+therefore retains the complete 0.8.57 seed, including its terrain-aware flow,
+then reuses the existing guarded step/bundle search with corrected prices.
+The compatibility ranking is confined to constructing that established seed;
+default cost queries and final old/new comparisons use corrected connections.
+No new routing framework or live guide reordering is introduced. If current
+leg prices/bases are unchanged, do not add another search. Graphs and caches
+remain compilation snapshots with bounded entries and cooperative loading.
+
+Every proposed change compares the **whole journey** under identical corrected
+prices, with the same required start/end actions, catalogue, terrain and travel
+facts. Reject changed legs with blocked/unmapped evidence and moves through
+uncertain recovery regions. Preserve prerequisites, within-quest stage order,
+escorts, all pickups/work/hand-ins, reward totals, quest-log peak, acceptance-level
+XP shortfall, combat pressure and required-kill lower bounds. An objective cannot
+lose previously collected quest rewards. Replay bracket bottom/middle/top and
+half-filled middle-level XP. Personal flights, hearths and mounts never enter a
+generic compilation; live navigation still uses confirmed options. Progress,
+NPC deferrals, manual skips, abandoned quests and reload behavior stay separate.
+
+## Full-guide comparison
+
+With checksum-verified published Forever map rectangles, **25 changes improve
+13 of 152 sections**; **139 retain their order**. All **12,985 actions** and
+**608 additional starting-level/XP replays** pass. Changed old/new edges use
+81 network estimates and 49 short local estimates, with no changed blocked or
+unmapped leg. Unchanged unknown legs still need source work; their estimates
+cannot justify a new changed edge.
+
+Examples from the complete named sequences:
+
+- Horde Barrens 11–20 moves The Forgotten Pools turn-in earlier, from step 44
+  to step 23, after its objective. Six supported moves also bring Report to
+  Kadrak's pickup into the earlier visit and keep The Disruption Ends and
+  Supplies for the Crossroads work together after useful rewards. The full
+  estimate improves from 163,431.68 to 159,845.66 comparison units. Final reward
+  XP, peak held quests, required kills and acceptance XP shortfall stay equal;
+  modeled difficulty pressure improves from 32 to 22. Earlier-reward measure
+  improves by 23,040, which represents rewards already received before the same
+  work, not extra XP earned.
+- Horde Durotar 1–10 moves the A Peon's Burden / Legging It bundle after an
+  existing reward visit. Both Legging It kill actions retain their acceptance
+  and hand-in and receive more previously collected rewards. The full estimate
+  saves 200.30 units; progression, final rewards and kill count remain equal.
+- Alliance Elwynn 1–10 moves Princess Must Die! work later within its accepted
+  quest, before the same hand-in, with 715 more known reward XP already received.
+  The full estimate saves 79.38 units; the quest and all other work remain.
+
+Other changed sections are Horde Zephras Isle 1–10, Badlands 31–40, Durotar
+11–20, Stranglethorn 31–40 and 41–50; Alliance Zephras Isle 1–10, Arathi 31–40,
+Dustwallow 31–40, Eastern Plaguelands 51–60 and Wetlands 21–30. Full original and
+candidate actions, stage occurrences, quest titles, individual changes, source
+hashes, geometry provenance, metrics and assumptions are in `GuideFlowAudit.json`.
+The loop/network/terrain traces describe established passes; only connection
+changes are new to this comparison.
+
+A separate capture without native physical geometry also checks all 152 sections,
+12,985 actions and 608 state replays. It supports 13 changes in seven sections
+using the existing normalized fallback estimates. Those results are **not**
+physical yard/time measurements or terrain evidence, and can differ from the
+published-bounds capture. Both complete comparisons are saved; the fallback
+capture is nested under `fallback_geometry_comparison`. Published older-build
+rectangles do not establish current beta roads or actual walkability either.
+
+Units combine estimated ground-distance and ordinary transport weights; they
+are not observed seconds, yards walked or XP/hour. Combat/exploration XP,
+drop/spawn waits, inventory timings and item-preparation costs remain unmeasured.
+No quests are removed to make a shorter prefix appear faster. Source completeness
+remains **33 sections**; **119 still need facts**. Terrain coverage remains twelve
+approximate Thousand Needles footprints. This update adds no NPC, prerequisite,
+road, lift or spawn facts and makes no globally optimal or gap-free claim.
+
+Validation: **278 related host checks**, including six new regressions, pass.
+The source/invariant audit checks **152 sections and 11,822 points**. All **83 Lua
+files** compile under Lua 5.1. Native maps, loading time and complete-trip timing
+need the beta-client checks in `TESTING.md`.
+
+Reproduce with the existing checksum-reviewed map rectangles:
+
+```sh
+git show v0.8.57:WowTogether/FixedGuides.lua > /tmp/fixed-guides-0.8.57.lua
+git show v0.8.57:WowTogether/FixedRouteOptimizer.lua > /tmp/fixed-route-0.8.57.lua
+git show v0.8.57:WowTogether/FixedTravelCost.lua > /tmp/fixed-cost-0.8.57.lua
+python tools/audit_quest_flow.py --optimizer-module /tmp/fixed-route-0.8.57.lua --fixed-guides-module /tmp/fixed-guides-0.8.57.lua --travel-cost-module /tmp/fixed-cost-0.8.57.lua --forever-geometry conversion.json --label 0.8.57 --output baseline.json
+python tools/audit_quest_flow.py --baseline baseline.json --forever-geometry conversion.json --output compared.json --comparison-output comparisons.json
+```
+
+Omit `--forever-geometry` in both commands for the fallback comparison. Prior
+0.8.57 evidence below remains historical; its complete audit is retained in tag
+`v0.8.57` rather than the current comparison JSON.
+
+## Previous iteration — 0.8.57
 
 ## Terrain-aware comparisons after established flow
 
