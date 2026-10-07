@@ -35,7 +35,8 @@ class CraftBatchTests(unittest.TestCase):
         c = crafting()
         c.lua.globals().stock[100] = 2
         c.ns.StartProfessionGuide(171, 75)
-        self.assertEqual(c.ns.selectedRoute.stops[1].action, 'buy')
+        self.assertEqual(c.ns.selectedRoute.stops[1].action, 'craft')
+        self.assertEqual(c.ns.selectedRoute.stops[1].craftQuantity, 1)
         c.lua.globals().stock[100] = 0
         success(c, 1, 1)  # Player crafts the one affordable item without a skill gain.
         self.assertEqual(c.ns.selectedRoute.crafts, 5)

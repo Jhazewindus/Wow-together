@@ -1,5 +1,30 @@
 # Wow Together changelog
 
+## 0.8.55
+
+**SMALL CRAFTING STEPS**
+
+- Craft the affordable portion as soon as bags cover it. Four Light Leather
+  can become four Light Armor Kits without buying the whole milestone first.
+  Check all required reagents together; the scarcest reagent limits the count.
+  Use the same behavior for Alchemy, Blacksmithing, Enchanting, Engineering,
+  Leatherworking and Tailoring, including intermediate preparations.
+- Buy/gather for work toward at most five skill points before the next recipe/
+  color/cap milestone. Estimated craft counts still depend on current skill,
+  recipe color and points per successful gain. Smaller purchases work too.
+  Recheck actual skill and remaining stock after crafting; failed skill-ups do
+  not finish a step. Next-batch Materials follows the current work; the full-goal
+  forecast and auction price scan remain available separately.
+- Remove repeated crafting descriptions from the arrow hover and context.
+  Show the action, current skill/goal and one short instruction. Local crafting
+  no longer says its quest location is missing or asks for the quest tracker.
+  Trainer destinations retain their rank/recipe explanation and coordinates.
+- Validation: 177 relevant host checks pass, including 13 new checks for partial supplies, preparatory work,
+  all six professions, native reagent amounts, shared stock, skill gains,
+  reload, hover updates and trainer-trip explanations. All 81 Lua files compile
+  under Lua 5.1. Native bag/recipe events and visual layout remain Forever
+  beta-client checks.
+
 ## 0.8.54
 
 **BETTER TRAVEL ORDER**

@@ -1,6 +1,6 @@
 # Personal crafting guides
 
-WoW Together 0.8.40 supports Alchemy, Blacksmithing, Enchanting,
+WoW Together 0.8.55 supports Alchemy, Blacksmithing, Enchanting,
 Engineering, Leatherworking and Tailoring. Profession cards use the compact
 browser grid. Learned professions come first when the client identifies them;
 opening the profession window supplies recipes and can identify a profession
@@ -32,14 +32,19 @@ No skills, recipes or purchases are performed automatically.
   Character level gates rank training. Training and recipe acquisition are
   separate steps; reaching a cap does not count as finishing a higher goal.
 - Every active batch has a skill milestone: the next known recipe unlock,
-  difficulty threshold, rank cap or chosen goal. The guide chooses the quantity
-  from the remaining skill gap, this recipe's current estimated skill-up chance
-  and native points per successful skill-up. There is no fixed 1/3/5-craft cap.
-  Craft amounts use `~` for estimates and tell you to stop at the milestone.
+  difficulty threshold, rank cap or chosen goal. Buy/gather work targets at most
+  five skill points before that milestone. The approximate quantity uses this
+  recipe's current estimated skill-up chance and native points per successful
+  skill-up, rather than a fixed craft count. As soon as bags cover some crafts,
+  show that affordable count: four Light Leather can become four Light Armor
+  Kits without buying the rest. The scarcest required reagent limits the count.
+  Preparation crafts also use partial stock; available final ingredients take
+  priority. The full milestone estimate is retained separately. Shopping amounts
+  use `~` for estimates; crafting instructions say when to stop at the skill target.
   Failed skill-ups leave the gap unchanged; fresh skill/color reads recalculate
   the amount. Reaching the milestone ends the step even if estimated crafts
   remain. Personal professions/batch-size settings are removed. Actual skill and
-  the milestone stay visible during crafting, gathering and training.
+  next work target stay visible during crafting, gathering and training.
   Reaching skill 11 after ten successful skill-ups from
   skill 1 is normal; further crafts remain useful until a later milestone.
 - Matching public player `UNIT_SPELLCAST_SUCCEEDED` casts trigger a fresh skill/
@@ -91,7 +96,10 @@ costs are estimates; actual progress drives completion.
 
 ## Materials and auction searches
 
-Next batch lists remaining materials for current work. To skill goal estimates
+Next batch lists remaining materials for current work. When crafting is already
+affordable, it shows the ingredients for that craft portion; otherwise it forecasts
+the small buy/gather step. Smaller purchases can immediately unlock crafting.
+To skill goal estimates
 the preview path, rounds expected crafts up and carries one stock ledger through
 its steps. Earlier planned outputs feed later recipes. Intermediate purchases
 are compared with known raw ingredient costs plus preparation time. Unknown

@@ -16,7 +16,7 @@ function ns.RefreshProfessionShopping()
         local active = guide and guide.mode == "profession" and guide.professionID == id and guide.targetSkill == target
         local route = active and ns.selectedRoute or ns.BuildProfessionGuideRoute({professionID = id,
             key = "profession:" .. id, targetSkill = target, title = ns.ProfessionFacts(id).name})
-        ns.shoppingList = route.materials or {}
+        ns.shoppingList = route.activeMaterials or route.materials or {}
         context.notice = "Next batch • materials still needed after bag stock."
         context.loading = nil; ns.RenderShoppingList(); return
     end

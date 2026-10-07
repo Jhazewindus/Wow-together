@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.54
-## X-ReleaseName: BETTER TRAVEL ORDER
+## Version: 0.8.55
+## X-ReleaseName: SMALL CRAFTING STEPS
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua

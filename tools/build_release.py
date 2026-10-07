@@ -55,6 +55,16 @@ then fully restart the client; the release includes taint mitigation (a /reload 
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+0.8.55 SMALL CRAFTING STEPS separates the next affordable work from the full
+skill-goal forecast. Four Light Leather can immediately become four Light Armor
+Kits; intermediate crafts also use partial stock. Buy/gather estimates target at
+most five skill points before the next milestone, with recipe-specific chances
+and points per gain. Actual skill/stock update the instruction; failed gains do
+not finish work. Materials follows that work; To skill goal and the auction panel
+keep the full forecast. All six crafting guides use the same logic. Hover text
+shows the instruction once, without irrelevant quest-location warnings. Purchases,
+training and crafting remain manual; native recipe/bag events need beta tests.
+
 0.8.54 BETTER TRAVEL ORDER checks step/bundle ordering against published
 connections after the full quest-flow passes. Keep every action, prerequisite,
 escort and onward endpoint; a shorter estimate cannot delay known rewards before

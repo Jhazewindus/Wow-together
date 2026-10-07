@@ -39,7 +39,8 @@ class ProfessionRefreshTests(unittest.TestCase):
         route = c.ns.selectedRoute
         self.assertEqual(route.recipe.name, 'Cured Light Hide')
         self.assertEqual(route.stops[1].action, 'buy')
-        self.assertIn('~19 × Cured Light Hide', route.stops[1].description)
+        self.assertIn('~5 × Cured Light Hide', route.stops[1].description)
+        self.assertEqual({r.itemID:r.need for r in route.activeMaterials.values()}, {783:5, 4289:5})
         self.assertEqual({r.itemID:r.need for r in route.materials.values()}, {783:19, 4289:19})
         c.lua.globals().stock[783] = 19; c.lua.globals().stock[4289] = 19
         c.ns.handlers.BAG_UPDATE_DELAYED(); c.drain()

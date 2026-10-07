@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.54** — **BETTER TRAVEL ORDER**, World of Warcraft: Forever beta,
+For **0.8.55** — **SMALL CRAFTING STEPS**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
@@ -19,6 +19,27 @@ The expanded-guide checks below take about **15–25 minutes**.
 4. Installing a new version rebuilds the saved guide with the updated rules,
    applying completed/accepted quests and manual skips. Step numbers may change.
    A reload on the same version should preserve the saved order.
+
+## Small crafting steps — about 5–10 minutes
+
+- Start Leatherworking with Light Armor Kit useful and learned. With no usable
+  materials, expect a buy/gather step for the next small work batch. Buy just
+  four Light Leather: after the bag update, expect Craft 4 × Light Armor Kit.
+  It must not wait for all materials up to the chosen goal or next milestone.
+- Craft part of that stock, including a craft without a skill gain. The count
+  follows remaining reagents and the skill stays actual. When supplies run out,
+  return to buy/gather; at the skill goal, finish. Try another crafting profession.
+- Cured Light Hide needs both hide and salt: four hides and two salt allow two
+  crafts. Preparation recipes can use partial stock too; available finished
+  ingredients should be used before requiring all later preparation work.
+- Materials → Next batch follows the current work and subtracts owned stock.
+  To skill goal and auction recipe boxes still forecast the longer path. Counts
+  are estimates: yellow/green crafts and multi-point gains change them. Nothing
+  buys or crafts automatically. Open the profession window for live reagents.
+- Hover the guide and standalone arrow: one action, one skill/goal summary and
+  brief advice, with no repeated paragraphs or quest-location warning for local
+  crafting. Keep hovering while buying/crafting; text should update. Trainer
+  steps must still explain the trip and name the trainer. Reload mid-work.
 
 ## Travel ordering — about 10–15 minutes
 

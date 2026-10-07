@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.54 — BETTER TRAVEL ORDER** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.55 — SMALL CRAFTING STEPS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -22,6 +22,16 @@ Replace the folder on **every party member's client**, including all **81 Lua
 files** and the **Media folder**, then fully restart the client. Restart if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.55 makes crafting affordable one step at a time.** Buy/gather for a small
+work step, then craft the portion already covered by your bags: four Light Leather
+can immediately become four Light Armor Kits. Intermediate crafts work the same
+way. Shopping estimates target at most five skill points before the next milestone;
+recipe color and points per gain decide the approximate craft count. Actual skill
+and stock update the instruction, including failed gains. Materials shows this
+work; To skill goal and the auction panel retain the full forecast. Profession
+hover text shows each instruction once, with no irrelevant quest-location warning.
+All six crafting guides use this behavior; purchases and crafting remain manual.
 
 **0.8.54 also checks travel ordering against published connections.** After the
 existing full quest-flow passes, compare step/bundle alternatives while keeping

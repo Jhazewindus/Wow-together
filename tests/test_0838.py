@@ -43,7 +43,7 @@ class ForecastTests(unittest.TestCase):
         c.ns.ReadProfessionRecipes();c.ns.StartProfessionGuide(171,225)
         self.assertEqual(c.ns.selectedRoute.crafts,8)
         self.assertEqual(c.ns.selectedRoute.skillTarget,155)
-        self.assertIn('~8',c.ns.selectedRoute.stops[1].label)
+        self.assertIn('8 ×',c.ns.selectedRoute.stops[1].label)
         self.assertEqual(c.ns.selectedRoute.estimatedCraftsToMilestone,8)
         for i in range(1,4): success(c,1,i,150+i)
         self.assertEqual(c.ns.professionData[171].skill,153)

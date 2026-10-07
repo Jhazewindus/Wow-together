@@ -246,7 +246,7 @@ function ns.GuideDestinationDecision(stop, guide, route)
     end
     decision.needsReview = not decision.specificBenefit or goal.unknownLocation == true or goal.planNeedsReview == true
         or quest and quest.prerequisitesUnverified == true or false
-    if goal.unknownLocation then decision.caution = "Exact destination not mapped; check the quest tracker."
+    if goal.unknownLocation and not goal.professionStep then decision.caution = "Exact destination not mapped; check the quest tracker."
     elseif goal.kind == "a" and quest and (not quest.prerequisitesRead or quest.prerequisitesUnverified or goal.planNeedsReview)
         and ns.PickupOfferEvidence(goal.memberKey or ns.self, goal.id) ~= true then
         decision.caution = "Confirm availability with " .. (text(goal.npcName) or "the quest giver") .. "."

@@ -35,7 +35,7 @@ local function updateTooltip(frame, opening)
     local stop = state and state.stop
     local description = stop and ns.GuideStepDescription(stop) or ""
     local status = stop and stop.kind == "notice" and state.status or ""
-    local context = frame.context and frame.context:GetText() or ""
+    local context = stop and not ns.GuideDestination(stop).professionStep and frame.context and frame.context:GetText() or ""
     local previous = frame.tooltipContent
     if not opening and previous and previous[1] == description and previous[2] == status and previous[3] == context then return end
     if opening or type(GameTooltip.ClearLines) ~= "function" then GameTooltip:SetOwner(frame, "ANCHOR_RIGHT")

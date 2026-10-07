@@ -97,6 +97,14 @@ local function liveRecipe(id, recipe)
     local info = ns.professionData[id]
     return info and info.known and info.known[recipe.id]
 end
+local function nativeProfessionOpen(id)
+    local info = ns.professionData[id]
+    local open = info and info.live and C_TradeSkillUI and ns.ReadPublic(C_TradeSkillUI.GetChildProfessionInfo)
+    if info and info.live and (type(open) ~= "table" or not ns.GuideInteger(open.professionID) or open.professionID <= 0) then
+        open = C_TradeSkillUI and ns.ReadPublic(C_TradeSkillUI.GetBaseProfessionInfo)
+    end
+    return type(open) == "table" and ns.Public(open.professionID) and open.professionID == id
+end
 local function allowed(id, recipe, skill)
     local live = liveRecipe(id, recipe)
     if recipe.faction and (not ns.profile or recipe.faction ~= ns.profile.faction) and not (live and live.learned) then return false end
@@ -144,12 +152,7 @@ function ns.ProfessionMaterials(id, recipe, crafts, skill, useStock, sharedLedge
     local data = index(id)
     local ledger, rows, preparations, visiting = sharedLedger or {}, {}, {}, {}
     local complete, total, incomplete = true, 0, nil
-    local info = ns.professionData[id]
-    local open = info and info.live and C_TradeSkillUI and ns.ReadPublic(C_TradeSkillUI.GetChildProfessionInfo)
-    if info and info.live and (type(open) ~= "table" or not ns.GuideInteger(open.professionID) or open.professionID <= 0) then
-        open = C_TradeSkillUI and ns.ReadPublic(C_TradeSkillUI.GetBaseProfessionInfo)
-    end
-    local nativeOpen = type(open) == "table" and ns.Public(open.professionID) and open.professionID == id
+    local nativeOpen = nativeProfessionOpen(id)
     local function reagents(r, quantity, projection)
         local live = liveRecipe(id, r)
         if nativeOpen and live and live.learned then
@@ -491,6 +494,36 @@ local function remainingCrafts(id, recipe, skill, finish)
         string.match(recipe.name, "^Runed .* Rod$") and 1 or 6000)
 end
 
+-- A milestone is an estimate, not a requirement to buy all of its materials
+-- before crafting. Work toward at most five skill points at a time, and use
+-- whatever affordable portion is already in bags. Native reagents take priority.
+local function craftable(id, recipe, limit)
+    local live = liveRecipe(id, recipe)
+    if not live or not live.learned then return 0 end
+    local list, ignored
+    if nativeProfessionOpen(id) then
+        local incomplete
+        list, ignored, incomplete = ns.RecipeMaterials(recipe.id, 1)
+        if incomplete or #list == 0 then return end
+    else
+        local merged = {}
+        for _, mat in ipairs(recipe.materials) do
+            merged[mat[1]] = (merged[mat[1]] or 0) + mat[2]
+        end
+        list = {}
+        for itemID, need in pairs(merged) do
+            list[#list + 1] = {itemID = itemID, need = need, have = owned(itemID)}
+        end
+    end
+    if #list == 0 then return end
+    local amount = limit
+    for _, row in ipairs(list) do
+        if not row.have or not row.need or row.need <= 0 then return end
+        amount = math.min(amount, math.floor(row.have / row.need))
+    end
+    return amount
+end
+
 local function currentBatch(guide, info)
     local id, batch = guide.professionID, guide.professionBatch
     local bestRecipe = ns.ProfessionNextRecipe(id, info.skill)
@@ -595,9 +628,24 @@ function ns.BuildProfessionGuideRoute(guide)
             local list, cost, prep, incomplete = ns.ProfessionMaterials(id, recipe, crafts, info.skill, true)
             route.materials, route.recipe, route.crafts, route.preparations = list, recipe, crafts, prep
             route.skillTarget, route.batchTotal = batch.finish, batch.total
-            local nextRecipe, amount = recipe, crafts
-            if prep[1] then nextRecipe, amount = prep[1].recipe, prep[1].crafts; live = liveRecipe(id, nextRecipe) end
-            if incomplete then
+            local workTarget = math.min(batch.finish, info.skill + 5)
+            local workCrafts = remainingCrafts(id, recipe, info.skill, workTarget)
+            local workList, workCost, workPrep, workIncomplete = list, cost, prep, incomplete
+            if workCrafts ~= crafts then
+                workList, workCost, workPrep, workIncomplete = ns.ProfessionMaterials(id, recipe, workCrafts, info.skill, true)
+            end
+            local nextRecipe, amount, preparing = recipe, workCrafts, false
+            local available = craftable(id, recipe, workCrafts)
+            if not available or available == 0 then
+                if workPrep[1] then
+                    nextRecipe, amount, preparing = workPrep[1].recipe, workPrep[1].crafts, true
+                    available = craftable(id, nextRecipe, amount)
+                end
+            end
+            live = liveRecipe(id, nextRecipe)
+            route.workTarget, route.workCrafts = workTarget, workCrafts
+            route.activeMaterials = workList
+            if workIncomplete and not (available and available > 0) then
                 current = stop(id, "read", "Check the materials for " .. recipe.name .. " in your profession window", "Refresh when the recipe's material data is ready.")
             elseif not live or not live.learned then
                 if info.recipeRefreshPending or not info.live then
@@ -625,17 +673,24 @@ function ns.BuildProfessionGuideRoute(guide)
                 end
             else
                 local missing, summary = false, {}
-                for _, row in ipairs(list) do
+                for _, row in ipairs(workList) do
                     if row.missing > 0 then missing = true; summary[#summary + 1] = row.missing .. " × " .. row.name end
                 end
-                if missing then current = stop(id, "buy", "Gather or buy materials for " .. recipe.name,
-                    table.concat(summary, ", ", 1, math.min(3, #summary)) .. (#summary > 3 and "…" or "") .. "\nMaterials opens your complete buy list.")
-                else current = stop(id, "craft", "Craft " .. (not prep[1] and "~" or "") .. amount .. " × " .. nextRecipe.name,
-                    (prep[1] and ("Prepare materials for " .. recipe.name .. ".") or (workstations[id] or "Craft in your profession window."))
-                    .. (prep[1] and " Skill-ups can vary." or (" Stop at skill " .. batch.finish .. "; skill-ups vary."))) end
+                if available and available > 0 then
+                    amount = available
+                    route.activeMaterials = ns.ProfessionMaterials(id, nextRecipe, amount, info.skill, true)
+                    current = stop(id, "craft", "Craft " .. amount .. " × " .. nextRecipe.name,
+                        (preparing and ("Prepare materials for " .. recipe.name .. ".") or (workstations[id] or "Use the materials in your bags."))
+                        .. " Check your skill after crafting; stop at skill " .. workTarget .. ".")
+                    current.craftQuantity = amount
+                elseif missing then current = stop(id, "buy", "Gather or buy materials for " .. recipe.name,
+                    "~" .. workCrafts .. " × " .. recipe.name .. ": "
+                    .. table.concat(summary, ", ", 1, math.min(3, #summary)) .. (#summary > 3 and "…" or "")
+                    .. ". Smaller purchases work too.")
+                else current = stop(id, "read", "Check the materials for " .. nextRecipe.name,
+                    "Open your profession window, then Refresh.") end
             end
-            current.description = "Skill " .. info.skill .. " → " .. batch.finish .. " • Goal " .. target .. ".\n"
-                .. "~" .. crafts .. " × " .. recipe.name .. " • stop at skill " .. batch.finish .. ".\n" .. current.description
+            current.description = "Skill " .. info.skill .. " → " .. workTarget .. " • Goal " .. target .. ".\n" .. current.description
             current.recipeID = recipe.id
             if current.action == "craft" then current.craftRecipeID = nextRecipe.id end
             route.estimatedCost = cost

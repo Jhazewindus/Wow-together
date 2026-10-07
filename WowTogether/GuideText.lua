@@ -171,9 +171,9 @@ end
 -- Put the reason for a journey first; the action/giver remain in the tooltip.
 -- Crossing waypoints are directions, never substitute quest objectives.
 function ns.GuideDestinationPurpose(stop, mapID, distance, guide, route)
-    local goal, reason = ns.GuideDestination(stop), ns.GuideVisibleReason(stop,
-        mapID or ns.profile and ns.profile.mapID, distance, guide, route)
-    if goal.professionStep then return reason and (reason .. "\n" .. (text(goal.description) or "")) or text(goal.description) end
+    local goal = ns.GuideDestination(stop)
+    if goal.professionStep then return text(goal.travelReason) or goal.description end
+    local reason = ns.GuideVisibleReason(stop, mapID or ns.profile and ns.profile.mapID, distance, guide, route)
     if goal.dungeonEntrance or goal.kind == "trainer" then return reason end
     if goal.kind ~= "a" and goal.kind ~= "q" and goal.kind ~= "t" then return end
     local instruction = ns.StopInstruction(goal)
@@ -199,6 +199,11 @@ end
 function ns.GuideStepDescription(stop, facts, guide, route)
     facts = facts or ns.GuideStepFacts(stop)
     local parts = {text(facts.stop.title) or "Guide step", ns.StopInstruction(stop, facts)}
+    if facts.stop.professionStep then
+        if facts.stop.description then parts[#parts + 1] = facts.stop.description end
+        if not facts.stop.unknownLocation then parts[#parts + 1] = ns.StopLocationText(facts.stop) end
+        return table.concat(parts, "\n")
+    end
     local groupWarning = ns.QuestGroupWarning(facts.stop.id)
     if groupWarning then parts[#parts + 1] = groupWarning end
     if facts.progress then parts[#parts + 1] = "Progress: " .. facts.progress end
