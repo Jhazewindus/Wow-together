@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.46 — GUIDE REASONS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.47 — CRAFT BY CRAFT** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -18,10 +18,21 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **76 Lua
+Replace the folder on **every party member's client**, including all **77 Lua
 files** and the **Media folder**, then fully restart the client. Restart if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.47 groups auction shopping by what you will craft.** Expandable recipe
+boxes follow the planned craft order and show approximate crafts, skill range,
+preparations, materials to buy and estimated cost. Shop for one part at a time;
+bag stock and earlier outputs are shared across boxes. Search fills a supported
+commodity display's buy quantity once you select the matching material, keeping
+manual edits and native stock limits. Purchases remain manual. Unresolved item
+details, rejected queries and missing auction replies cannot hold the scan
+indefinitely; skipped items appear in its summary and diagnostics. Actual Forever
+quantity controls and the reported 10/40 stall still need in-client retesting.
+See [PROFESSIONS.md](PROFESSIONS.md).
 
 **0.8.46 explains why each destination matters.** The guide window, standalone
 arrow and quest-list previews share reasons based on useful follow-ups, nearby

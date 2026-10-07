@@ -226,9 +226,13 @@ function ns.InitializeProfessionGuides()
     end)
     ns.On("ITEM_DATA_LOAD_RESULT", function(id, success)
         ns.UpdateGuideQuestItem(); ns.UpdateNavigation()
-        if ns.GuideInteger(id) and ns.pendingItems[id] and ns.Public(success) and success == true then
-            if ns.InvalidateProfessionItemName then ns.InvalidateProfessionItemName(id) end
-            ns.pendingItems[id] = nil; ns.RefreshShoppingList(); ns.RenderProfessionGuide()
+        if ns.GuideInteger(id) and ns.pendingItems[id] and ns.Public(success) then
+            ns.pendingItems[id] = nil
+            ns.failedItemLoads[id] = success ~= true or nil
+            if success == true then
+                if ns.InvalidateProfessionItemName then ns.InvalidateProfessionItemName(id) end
+                ns.RefreshShoppingList(); ns.RenderProfessionGuide()
+            end
         end
     end)
 end

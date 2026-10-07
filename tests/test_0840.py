@@ -98,7 +98,12 @@ class AuctionPanelTests(unittest.TestCase):
         self.assertEqual(panel.forecast.target,75)
         for item in panel.materials.values():
             self.assertGreaterEqual(item.missing,0)
-            self.assertIn(str(item.missing), next(r.amount.text for r in panel.rows.values() if r.itemID==item.itemID))
+            # Recipe boxes partition the same total; owned stock is not
+            # deducted again for each recipe that uses this material.
+            rows = [r for r in panel.rows.values() if r.itemID==item.itemID and r.shown]
+            self.assertEqual(sum(r.quantity for r in rows), item.missing)
+            for row in rows:
+                self.assertIn(str(row.quantity), row.amount.text)
 
     def test_native_auction_anchors_are_never_changed_and_own_panel_can_move(self):
         c = market(crafting()); c.ns.StartProfessionGuide(171,75)

@@ -676,6 +676,16 @@ function ns.SyncDiagnostics(output)
         .. " saved trainer observations. Personal realm/faction/build cache; prices expire after 6 hours.")
     output("Auction scan: " .. (ns.auctionScanStatus or "not started")
         .. "; paced exact-item queries, up to 3 pages each. Purchases and crafting stay manual.")
+    local scan = ns.AuctionScanState and ns.AuctionScanState() or ns.auctionScanSummary
+    if scan then
+        output("Auction queue: " .. safe(scan.done or scan.total) .. "/" .. safe(scan.total or scan.items and #scan.items)
+            .. "; current item " .. safe(scan.waiting and scan.waiting.id) .. "; skipped " .. safe(scan.skipped))
+        for _, failure in ipairs(scan.failures or {}) do
+            output("  Auction item " .. safe(failure.itemID) .. ": " .. safe(failure.reason))
+        end
+    end
+    if ns.auctionScanUIError then output("Auction panel refresh error: " .. safe(ns.auctionScanUIError)) end
+    output("Auction quantity: " .. (ns.auctionQuantityStatus or "not requested"))
     local crafting = ns.routeSelection and ns.routeSelection.mode == "profession" and ns.routeSelection
     if crafting then
         local info, route = ns.professionData[crafting.professionID], ns.selectedRoute

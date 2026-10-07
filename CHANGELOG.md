@@ -1,5 +1,34 @@
 # Wow Together changelog
 
+## 0.8.47
+
+**CRAFT BY CRAFT**
+
+- Group auction-house materials into expandable recipe boxes, in planned
+  crafting order. Show approximate crafts, skill range, intermediate
+  preparations and estimated buy cost, so shopping can be funded in parts.
+  Each recipe's Search uses its own missing amount; bag stock and earlier
+  outputs are shared once across the full plan.
+- Fill the public commodity buy quantity once after the player's matching
+  selection, where the native control is supported. Respect manual changes,
+  fresh bag additions, stock limits, combat, guide changes and closing the AH.
+  Item auctions retain manual quantities. No purchase is started or confirmed.
+- Load missing item metadata before exact-ID queries; skip unresolved details
+  after five seconds. Catch rejected item-data requests and auction queries.
+  Install the response watchdog before sending, show a countdown and move past
+  unanswered requests after 20 seconds. Old timers cannot advance newer queries.
+- Report priced/skipped counts and failed item IDs/reasons in diagnostics,
+  without replacing older cached prices with zero. A panel refresh failure
+  cannot disable the scan watchdog. Retain bounded pagination, pacing, manual
+  browsing cancellation and current-guide price reassessment.
+- The reported silent 10/40 stall is not confirmed on a live beta client.
+  Host regressions cover an unresolved tenth item in a 40-item queue; live
+  scanning and native quantity controls need the checklist below.
+- Validation: 1,286 full-suite host checks, 117 auction/UI regressions and
+  197 profession checks passed; all 77 Lua files compile under Lua 5.1.
+  Forecast recipe boxes match aggregate buy totals for all six crafting
+  professions. Partial source paths remain labelled incomplete.
+
 ## 0.8.46
 
 **GUIDE REASONS**

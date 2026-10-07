@@ -266,11 +266,15 @@ end
 -- Carry owned stock and planned outputs through the entire preview. A bolt or
 -- leather made earlier is available to later recipes, rather than bought twice.
 function ns.ProfessionMaterialForecast(id, plan, cooperative)
-    local ledger, merged, incomplete = {}, {}, plan.missing > 0
+    local ledger, merged, groups, incomplete = {}, {}, {}, plan.missing > 0
     for _, step in ipairs(plan.steps) do
         local crafts = math.ceil(step.crafts)
-        local list, _, _, unreadable = ns.ProfessionMaterials(id, step.recipe, crafts, step.start, true, ledger)
+        local list, _, preparations, unreadable = ns.ProfessionMaterials(id, step.recipe, crafts, step.start, true, ledger)
         incomplete = incomplete or unreadable
+        local group = {recipeID = step.recipe.id, name = step.recipe.name, crafts = crafts,
+            start = step.start, finish = step.finish, materials = list, preparations = preparations,
+            incomplete = unreadable, estimatedCost = 0}
+        local groupPriced = not unreadable
         for _, row in ipairs(list) do
             local item = merged[row.itemID]
             if not item then
@@ -279,7 +283,18 @@ function ns.ProfessionMaterialForecast(id, plan, cooperative)
             end
             item.need, item.missing = item.need + row.need, item.missing + row.missing
             if row.have == nil then incomplete = true; item.unreadable = true end
+            -- Keep the SAME ledger pass for recipe boxes and the total. Bags
+            -- and earlier planned outputs must not be spent again per box.
+            row.planned = row.have and math.max(0, row.need - row.have - row.missing) or nil
+            local unit = price(row.itemID, row.missing)
+            if row.have == nil then row.missing = nil; groupPriced = false
+            elseif row.missing > 0 then
+                if unit then group.estimatedCost = group.estimatedCost + row.missing * unit
+                else groupPriced = false end
+            end
         end
+        group.estimatedCost = groupPriced and math.ceil(group.estimatedCost) or nil
+        groups[#groups + 1] = group
         if step.recipe.outputID then
             local output = step.recipe.outputID
             if ledger[output] == nil then ledger[output] = owned(output) or false end
@@ -298,7 +313,7 @@ function ns.ProfessionMaterialForecast(id, plan, cooperative)
         list[#list + 1] = row
     end
     table.sort(list, function(a, b) return a.itemID < b.itemID end)
-    return {materials = list, estimatedCost = priced and math.ceil(cost) or nil,
+    return {materials = list, groups = groups, estimatedCost = priced and math.ceil(cost) or nil,
         incomplete = incomplete, start = plan.start, target = plan.target, missing = plan.missing}
 end
 

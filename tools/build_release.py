@@ -438,6 +438,14 @@ The guide chooses craft quantities. Personal professions settings are removed.
 Materials offers Next batch / To skill goal with shared stock and planned-output
 accounting. Goal amounts are approximate; buy for the next batch first. The AH
 panel sits to its left with a scrollable Buy list, goal choice and Search buttons.
+Expandable recipe boxes show crafts, skill ranges, preparations and estimated
+buy cost in order. Buy for one recipe at a time; bag stock and earlier planned
+outputs are shared across the boxes. Search uses that recipe's missing amount.
+Selecting the matching commodity can fill its native quantity once, respecting
+manual edits and stock limits. Unsupported controls keep manual quantities.
+Unresolved item details are skipped after five seconds; unanswered queries
+advance after 20 seconds. Capture Auction queue and failed IDs in /wt probe if
+the live scan still stops. Purchases are always manual; retest the beta UI.
 Scan auction house explicitly prices this profession's full goal and alternative
 recipe ingredients with paced exact-item queries. One request at a time; respect
 throttling and bound pages/timeouts. Stop, manual search/browse, close or changing

@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-ns.marketQuotes, ns.pendingItems = {}, {}
+ns.marketQuotes, ns.pendingItems, ns.failedItemLoads = {}, {}, {}
 
 local function layout(frame)
     local width = frame:GetWidth()
@@ -13,13 +13,18 @@ local function layout(frame)
 end
 
 function ns.ItemName(id, fallback)
+    if not ns.GuideInteger(id) or id <= 0 then return ns.SafeTitle(fallback) or "Item unavailable" end
     local name
     if C_Item then name = ns.ReadPublic(C_Item.GetItemInfo, id) end
     name = ns.SafeTitle(name)
-    if not name and C_Item and type(C_Item.RequestLoadItemDataByID) == "function" and not ns.pendingItems[id] then
-        ns.pendingItems[id] = true; C_Item.RequestLoadItemDataByID(id)
+    if name then ns.pendingItems[id], ns.failedItemLoads[id] = nil, nil end
+    if not name and C_Item and type(C_Item.RequestLoadItemDataByID) == "function"
+        and not ns.pendingItems[id] and not ns.failedItemLoads[id] then
+        ns.pendingItems[id] = true
+        local okay, result = pcall(C_Item.RequestLoadItemDataByID, id)
+        if not okay or ns.Public(result) and result == false then ns.pendingItems[id], ns.failedItemLoads[id] = nil, true end
     end
-    return name or fallback or ("Item " .. id)
+    return name or ns.SafeTitle(fallback) or "Item details loading"
 end
 
 function ns.ItemOwned(id)
@@ -149,12 +154,12 @@ function ns.RenderShoppingList()
             row.detail = ns.UILabel(row, nil, 11, ns.UIColors.muted); row.detail:SetPoint("TOPLEFT", 0, -24)
             row.detail:SetWidth(466); row.detail:SetHeight(45); row.detail:SetWordWrap(true)
             row.search = ns.UIButton(row, "Search AH", 104, function()
-                if ns.SearchGuideAuctionItem then ns.SearchGuideAuctionItem(row.itemID) end
+                if ns.SearchGuideAuctionItem then ns.SearchGuideAuctionItem(row.itemID, row.quantity) end
             end)
             row.search:SetPoint("TOPRIGHT", -2, -7); ns.UIDivider(row, -74)
             frame.rows[index] = row
         end
-        row.itemID = item.itemID
+        row.itemID, row.quantity = item.itemID, item.missing
         row:SetPoint("TOPLEFT", 0, -(index - 1) * 76)
         row.title:SetText(ns.ItemName(item.itemID, item.name))
         local quote = ns.AuctionQuote(item.itemID)

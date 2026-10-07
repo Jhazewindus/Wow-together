@@ -100,12 +100,29 @@ and future recipe choices can change totals; buy for the next batch first.
 Partial paths or unreadable bags are labelled incomplete. Calculations yield
 and cancel when superseded.
 
-The auction-house panel sits to the left with goal selection, a scrollable item
-list, approximate missing Buy amounts and per-row Search. It uses the active
+The auction-house panel sits to the left with goal selection and expandable
+recipe boxes in planned crafting order. Each shows approximate crafts, skill
+range, required intermediate preparations, missing Buy amounts and estimated
+cost. Per-recipe Search uses that part's amount. Boxes and the aggregate share
+one ledger, so bag stock and earlier planned outputs are not deducted twice.
+These are estimates for sequential crafting, not independently funded plans.
+After buying/crafting, fresh skill and bag reads reassess the remaining work.
+The panel uses the active
 crafting guide, or the open profession materials window when no guide is active.
-It temporarily makes space when the normal native placement leaves no room and
-the screen is wide enough; native anchors restore on close, after combat if
-necessary. Small-screen placement/scale needs beta tests.
+Only the addon's panel is positioned or moved; Blizzard's anchors and parent
+remain untouched. Small-screen placement/scale needs beta tests.
+
+After a material Search, selecting the matching commodity can fill its public
+buy quantity once. The supported native display must be visible, unprotected,
+have loaded results and still have the initial quantity of one. Fresh bag
+additions reduce the request; the native setter enforces available stock.
+Manual quantity edits are retained. The request expires after a minute and
+clears on close, new searches/scans or guide/goal changes. Unsupported controls
+and non-commodity listings keep manual quantities. Nothing buys automatically.
+The public `GetItemID` / `SetQuantitySelected` / `GetQuantitySelected` contract
+was checked against Blizzard's
+[commodity display source](https://github.com/Gethe/wow-ui-source/blob/live/Interface/AddOns/Blizzard_AuctionHouseUI/Shared/Blizzard_AuctionHouseCommoditiesBuyFrame.lua).
+Its presence and behavior still need Forever beta testing.
 
 **Scan auction house** explicitly starts a bounded queue for this profession's
 selected goal. It includes viable learnable recipe alternatives and ingredients
@@ -113,11 +130,17 @@ of intermediate preparations: pricing only the old selected path cannot compare
 alternatives. It never scans the whole AH. Modern APIs are capability-probed:
 `MakeItemKey`, `SendSearchQuery`, throttle readiness and item/commodity result
 events. Queries use exact IDs, one pending request, >=1 second pacing, up to
-three result pages per item, a 20-second response timeout and a bounded busy
+three result pages per item, a five-second metadata wait, a 20-second response
+timeout and a bounded busy
 wait. Price sorting is used when its enum is exposed. No API success return
 alone proves delivery; match the response to the pending item. Unknown/private
 and timed-out replies don't become zero prices. Missing support leaves manual
 Search buttons available. Native exact-query behavior still needs Forever tests.
+Item-name requests and rejected queries are guarded. A response watchdog is
+installed before the query and survives panel refresh errors; item details
+never loaded and silent queries are skipped with a count. Current/failed IDs
+and reasons stay in diagnostics, not the normal shopping UI. A new explicit
+scan can retry unresolved metadata; older cached prices are retained on failure.
 
 Stop scan, closing the AH, native browsing, a manual material search, or changing
 the selected profession/goal cancels further queries. Combat pauses new queries;

@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-local panel, forecast
+local panel, forecast, renderRows
 local function shown(frame) return frame and ns.ReadPublic(frame.IsShown, frame) == true end
 function ns.AuctionHouseVisible()
     return ns.auctionHouseOpen and (shown(AuctionHouseFrame) or shown(AuctionFrame)) or false
@@ -22,13 +22,18 @@ function ns.AuctionGuideContext()
     end
 end
 
-function ns.SearchGuideAuctionItem(id)
+function ns.SearchGuideAuctionItem(id, quantity)
     if not ns.GuideInteger(id) or id <= 0 then return false end
+    ns.ClearGuideAuctionQuantity()
     ns.CancelAuctionScan("Scan stopped for your material search.")
     if ns.RouteInCombat() then status("Search after combat."); return false end
     if not ns.auctionHouseOpen then status("Open an auction house first."); return false end
     local name = C_Item and ns.SafeTitle(ns.ReadPublic(C_Item.GetItemInfo, id))
-    if not name then ns.ItemName(id); status("Item name loading. Try again shortly."); return false end
+    if not name then
+        ns.ItemName(id)
+        status(ns.failedItemLoads[id] and "Item details unavailable. Try another material." or "Item name loading. Try again shortly.")
+        return false
+    end
     if shown(AuctionHouseFrame) and C_AuctionHouse and type(C_AuctionHouse.SendBrowseQuery) == "function"
         and type(AuctionHouseFrame.SendBrowseQuery) == "function" and type(AuctionHouseFrame.SetSearchText) == "function"
         and type(AuctionHouseFrame.GetCategoriesList) == "function" then
@@ -44,7 +49,8 @@ function ns.SearchGuideAuctionItem(id)
         categories:SetSelectedCategory(nil)
         AuctionHouseFrame:SendBrowseQuery(name, nil, nil, {})
         AuctionHouseFrame:SetSearchText(name)
-        status("Searching " .. name .. "."); return true
+        status("Searching " .. name .. (ns.GuideInteger(quantity, 10000000) and quantity > 0 and " • Buy ~" .. quantity or "") .. ".")
+        ns.PrepareGuideAuctionQuantity(id, quantity); return true
     end
     if shown(AuctionFrame) and shown(AuctionFrameBrowse) and BrowseName
         and type(BrowseName.SetText) == "function" and type(QueryAuctionItems) == "function"
@@ -72,7 +78,7 @@ local function create(parent)
     panel:SetScript("OnDragStart", function() panel:StartMoving() end)
     panel:SetScript("OnDragStop", function() panel:StopMovingOrSizing(); panel.placed = true end)
     panel.title = ns.UILabel(panel, nil, 17, ns.UIColors.gold); panel.title:SetPoint("TOPLEFT", 14, -15); panel.title:SetText("Crafting materials")
-    ns.UIClose(panel, function() panel.dismissed = true; panel:Hide(); ns.CancelAuctionScan() end)
+    ns.UIClose(panel, function() panel.dismissed = true; panel:Hide(); ns.CancelAuctionScan(); ns.ClearGuideAuctionQuantity() end)
     panel.scan = ns.UIButton(panel, "Scan auction house", 292, ns.StartAuctionGuideScan)
     panel.scan:SetPoint("TOPLEFT", 14, -46); ns.UIButtonTone(panel.scan, true)
     panel.profession = ns.UILabel(panel, nil, 12); panel.profession:SetPoint("TOPLEFT", 14, -92); panel.profession:SetWidth(145)
@@ -93,29 +99,39 @@ local function create(parent)
     local scroll = CreateFrame("ScrollFrame", nil, panel, "UIPanelScrollFrameTemplate")
     scroll:SetPoint("TOPLEFT", 14, -178); scroll:SetPoint("BOTTOMRIGHT", -32, 44)
     panel.child = CreateFrame("Frame", nil, scroll); panel.child:SetSize(274, 100); scroll:SetScrollChild(panel.child)
-    panel.rows = {}
+    panel.rows, panel.groups, panel.collapsed = {}, {}, {}
     panel.status = ns.UILabel(panel, nil, 10, ns.UIColors.muted)
     panel.status:SetPoint("BOTTOMLEFT", 14, 9); panel.status:SetSize(292, 28); panel.status:SetWordWrap(true)
     ns.UIHelp(panel.scan, "Price materials and suitable recipe alternatives for your skill goal. You choose what to buy.")
     return panel
 end
 
-local function renderRows(list)
+renderRows = function(list, groups, force)
     ns.auctionGuideItems = list
+    if not force and panel.renderedList == list and panel.renderedGroups == groups
+        and panel.renderedRevision == ns.auctionMarketRevision then return end
+    panel.renderedList, panel.renderedGroups, panel.renderedRevision = list, groups, ns.auctionMarketRevision
     for _, row in ipairs(panel.rows) do row:Hide() end
-    for index, item in ipairs(list) do
-        if index > 256 then break end
+    for _, group in ipairs(panel.groups) do group:Hide() end
+    local y, count = 0, 0
+    local function itemRow(item)
+        if count >= 256 then return end
+        count = count + 1
+        local index = count
         local row = panel.rows[index]
         if not row then
-            row = CreateFrame("Frame", nil, panel.child); row:SetSize(274, 78)
-            row.name = ns.UILabel(row, nil, 12, ns.UIColors.gold); row.name:SetPoint("TOPLEFT", 0, -4); row.name:SetSize(181, 30); row.name:SetWordWrap(true)
-            row.amount = ns.UILabel(row, nil, 11); row.amount:SetPoint("TOPLEFT", 0, -35); row.amount:SetWidth(268)
-            row.price = ns.UILabel(row, nil, 10, ns.UIColors.muted); row.price:SetPoint("TOPLEFT", 0, -53); row.price:SetWidth(268)
-            row.search = ns.UIButton(row, "Search", 78, function() ns.SearchGuideAuctionItem(row.itemID) end)
-            row.search:SetPoint("TOPRIGHT", -1, -4); ns.UIDivider(row, -77)
+            row = CreateFrame("Frame", nil, panel.child); row:SetSize(254, 72)
+            row.name = ns.UILabel(row, nil, 12, ns.UIColors.gold); row.name:SetPoint("TOPLEFT", 0, -4); row.name:SetSize(163, 30); row.name:SetWordWrap(true)
+            row.amount = ns.UILabel(row, nil, 11); row.amount:SetPoint("TOPLEFT", 0, -35); row.amount:SetWidth(250)
+            row.price = ns.UILabel(row, nil, 10, ns.UIColors.muted); row.price:SetPoint("TOPLEFT", 0, -53); row.price:SetWidth(250)
+            row.search = ns.UIButton(row, "Search", 78, function() ns.SearchGuideAuctionItem(row.itemID, row.quantity) end)
+            row.search:SetPoint("TOPRIGHT", -1, -4)
             panel.rows[index] = row
         end
-        row.itemID = item.itemID; row:SetPoint("TOPLEFT", 0, -(index - 1) * 78)
+        row.itemID, row.quantity = item.itemID, item.missing
+        row.search:SetEnabled(true)
+        row:ClearAllPoints(); row:SetPoint("TOPLEFT", 10, -y); y = y + 72
+        row:SetFrameLevel(panel.child:GetFrameLevel() + 2)
         row.name:SetText(ns.ItemName(item.itemID, item.name))
         row.amount:SetText("Buy " .. (item.missing and ("~" .. item.missing) or "check bags") .. " • Bags " .. (item.have or "?"))
         local quote = ns.AuctionQuote(item.itemID)
@@ -124,12 +140,54 @@ local function renderRows(list)
             .. (quote.cached and " • saved" or "") .. (complete == false and " • estimate" or "")) or "Price not checked")
         row:Show()
     end
-    panel.child:SetHeight(math.max(100, math.min(#list, 256) * 78))
+    if groups then
+        for index, data in ipairs(groups) do
+            if index > 100 then break end
+            local group = panel.groups[index]
+            if not group then
+                group = CreateFrame("Frame", nil, panel.child, "BackdropTemplate")
+                group:SetWidth(274); ns.UIPanel(group)
+                group:SetFrameLevel(panel.child:GetFrameLevel() + 1)
+                group.toggle = ns.UIButton(group, "", 254, function()
+                    panel.collapsed[group.key] = not panel.collapsed[group.key]
+                    renderRows(panel.materials, panel.forecast.groups, true)
+                end)
+                group.toggle:SetPoint("TOPLEFT", 10, -8); group.toggle:SetHeight(36)
+                group.toggle.caption:SetWordWrap(true)
+                group.detail = ns.UILabel(group, nil, 11); group.detail:SetPoint("TOPLEFT", 10, -50); group.detail:SetWidth(254)
+                group.cost = ns.UILabel(group, nil, 10, ns.UIColors.muted); group.cost:SetPoint("TOPLEFT", 10, -67); group.cost:SetWidth(254)
+                group.prep = ns.UILabel(group, nil, 10, ns.UIColors.muted); group.prep:SetPoint("TOPLEFT", 10, -84); group.prep:SetSize(254, 28); group.prep:SetWordWrap(true)
+                panel.groups[index] = group
+            end
+            group.key = data.recipeID .. ":" .. data.start
+            group.data = data
+            local collapsed = panel.collapsed[group.key] == true
+            local startY = y
+            group:ClearAllPoints(); group:SetPoint("TOPLEFT", 0, -y)
+            group.toggle.caption:SetText((collapsed and "+ " or "− ") .. index .. ". " .. data.name)
+            group.detail:SetText("~" .. data.crafts .. " crafts • Skill " .. data.start .. (data.finish and " → " .. data.finish or ""))
+            group.cost:SetText(data.estimatedCost and (data.estimatedCost == 0 and "Materials covered by bags / earlier crafts"
+                or "Est. buy cost: " .. ns.MoneyText(data.estimatedCost)) or "Buy cost not fully priced")
+            local preparation = {}
+            for _, prep in ipairs(data.preparations) do preparation[#preparation + 1] = "~" .. prep.crafts .. " " .. prep.recipe.name end
+            group.prep:SetText(#preparation > 0 and "Prepare: " .. table.concat(preparation, ", ") or "")
+            group.prep:SetShown(#preparation > 0 and not collapsed)
+            ns.UIHelp(group.toggle, data.name .. "\nBuy for this recipe first; earlier crafts supply later recipes."
+                .. (#preparation > 0 and "\nPrepare: " .. table.concat(preparation, ", ") or ""))
+            y = y + (#preparation > 0 and not collapsed and 116 or 88)
+            if not collapsed then for _, item in ipairs(data.materials) do itemRow(item) end end
+            group:SetHeight(y - startY + 6); group:Show(); y = y + 16
+        end
+    else
+        for _, item in ipairs(list) do itemRow(item) end
+    end
+    panel.child:SetHeight(math.max(100, y))
 end
 
 local function startForecast(id, target, signature)
     local job = {signature = signature}; forecast = job
     panel.planSignature = signature
+    for _, row in ipairs(panel.rows) do row.search:SetEnabled(false) end
     panel.notice:SetText("Estimating materials to skill " .. target .. "…")
     local worker = coroutine.create(function()
         return ns.ProfessionMaterialForecast(id, ns.PlanProfessionPreview(id, target, true), true)
@@ -146,8 +204,8 @@ local function startForecast(id, target, signature)
         end
         if coroutine.status(worker) == "dead" then
             forecast = nil; panel.materials = result.materials; panel.forecast = result
-            renderRows(result.materials)
-            panel.notice:SetText("Skill " .. result.start .. " → " .. target .. " • approximate buy amounts.\n"
+            renderRows(result.materials, result.groups)
+            panel.notice:SetText("Skill " .. result.start .. " → " .. target .. " • buy one recipe at a time.\n"
                 .. (result.estimatedCost and ("Est. materials: " .. ns.MoneyText(result.estimatedCost)) or "Scan for material prices")
                 .. (result.incomplete and " • partial guide" or ""))
         elseif C_Timer and type(C_Timer.After) == "function" then C_Timer.After(0, run)
@@ -178,7 +236,7 @@ function ns.RefreshAuctionGuideSearch()
         local info = ns.professionData[id]
         local signature = table.concat({id,target,info.skill or 1,ns.professionRevision or 0,ns.auctionMarketRevision or 0}, ":")
         if panel.planSignature ~= signature then startForecast(id, target, signature)
-        elseif panel.materials then renderRows(panel.materials) end
+        elseif panel.materials then renderRows(panel.materials, panel.forecast and panel.forecast.groups) end
     else
         forecast, panel.planSignature = nil, nil
         panel.profession:SetText("Shopping list"); panel.notice:SetText("Missing materials after bag stock.")
@@ -194,6 +252,7 @@ ns.On("AUCTION_HOUSE_SHOW", function()
 end)
 ns.On("AUCTION_HOUSE_CLOSED", function()
     ns.auctionHouseOpen = false; forecast = nil
+    ns.ClearGuideAuctionQuantity()
     ns.CancelAuctionScan("Scan stopped: auction house closed.")
     if panel then panel:Hide(); panel.planSignature = nil; panel.goal.menu:Hide() end
 end)
@@ -208,5 +267,8 @@ end)
 local previousItem = ns.handlers.ITEM_DATA_LOAD_RESULT
 ns.On("ITEM_DATA_LOAD_RESULT", function(...)
     if previousItem then previousItem(...) end
-    if ns.auctionHouseOpen then ns.RefreshAuctionGuideSearch() end
+    if ns.auctionHouseOpen then
+        if panel then panel.renderedList = nil end
+        ns.RefreshAuctionGuideSearch()
+    end
 end)

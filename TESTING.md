@@ -1,13 +1,13 @@
 # Wow Together — friend test script
 
-For **0.8.46** — **GUIDE REASONS**, World of Warcraft: Forever beta,
+For **0.8.47** — **CRAFT BY CRAFT**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 76 Lua files** and
+1. Replace the complete WowTogether folder, including **all 77 Lua files** and
    the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    **Fully restart the client for this hotfix**, rather than only `/reload`.
@@ -16,6 +16,29 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Recipe shopping and scan recovery — about 5–10 minutes
+
+- Start a crafting guide and open the auction house. Recipe boxes appear to
+  its left, in crafting order, with crafts/skill ranges, buy amounts and cost.
+  Expand/collapse boxes. Buy just the first recipe's materials, craft some and
+  reopen: remaining amounts should shrink. Shared bag stock is deducted once;
+  earlier intermediate crafts supply later boxes rather than being bought twice.
+- Search a material from a box: it should search by name. Select the matching
+  commodity and wait for its listings. Where supported, quantity fills with
+  that box's Buy amount, clamped to native stock. Edit it: later events must
+  retain your change. Selecting a different item, changing goal, starting a
+  scan or closing the AH must not fill a stale quantity. Non-commodity item
+  purchases keep native manual quantities. No purchase happens automatically.
+- Repeat the reported large scan (about 40 materials), including the former
+  stall at 10/40. Missing names should briefly show Loading material, then
+  skip within five seconds if unresolved. Missing auction replies show a
+  countdown, then advance after 20 seconds. The end shows priced/skipped counts.
+  Test stopping, closing, browsing, goal changes and combat; no requests should
+  flood the server. Prices must not turn into zero on timeout or failed loads.
+- If it still stops, capture a screenshot and `/wt probe`: Auction queue gives
+  the current item, and failed item IDs/reasons are retained for this scan.
+  Include quantity-control failures and any Lua error, version and client build.
 
 ## Destination reasons — about 5–10 minutes
 
