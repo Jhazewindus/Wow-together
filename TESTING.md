@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.51** — **CLEAN LEVELING**, World of Warcraft: Forever beta,
+For **0.8.52** — **BETTER QUEST TRIPS**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
@@ -19,6 +19,22 @@ The expanded-guide checks below take about **15–25 minutes**.
 4. Installing a new version rebuilds the saved guide with the updated rules,
    applying completed/accepted quests and manual skips. Step numbers may change.
    A reload on the same version should preserve the saved order.
+
+## Overlapping whole trips — about 10 minutes
+
+- Check a newly started Durotar 1–10, Barrens 11–20 or Darkshore 11–20 guide
+  when its quests are available. Compatible pickups should precede their shared
+  work trip. A dependency's work and hand-in must still precede its follow-up.
+  The arrow should explain useful shared work or an unlock visit when relevant.
+- Finish the full loop, including its hand-ins and onward travel. Note repeated
+  areas, required items, escorts and quest-log space. Compare from the same
+  starting progress; a shorter prefix alone is not evidence of a better guide.
+- Scan, move, accept/abandon an unrelated quest, complete a partial objective
+  and reload on the same version. Progress should update without reshuffling
+  the selected order. NPC-unavailable pickups stay pending; manual skips remain.
+- Try during combat and with a loading guide. Loading must yield and eventually
+  finish; closing/switching previews must cancel stale work. Record the version,
+  guide, quest names, actual loop duration and any error or hitch.
 
 ## Clean leveling browser — about 5 minutes
 

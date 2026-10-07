@@ -1,5 +1,27 @@
 # Wow Together changelog
 
+## 0.8.52
+
+**BETTER QUEST TRIPS**
+
+- Compare two or three overlapping later quests as one complete trip after the
+  existing objective and hub passes. A move considered alone can leave another
+  return necessary; moving their pickup/unlock/work dependencies together can
+  remove that visit. Retain every action, per-quest order and onward endpoint.
+- Require a full-route benefit without increased held-quest peak, known XP
+  shortfall, difficulty, repeated kills or uncertain/blocked travel. Preserve
+  escorts, item-use stages, actual NPC offers, skips, deferrals and fixed order
+  during play. Loading remains cooperative; existing arrow reasons explain
+  collecting the overlapping work before leaving.
+- The identical-source comparison retains all 12,985 actions across 152 guide
+  sections. Nine additional trip changes improve seven sections; the other
+  145 retain their previous order. Quest/NPC/transport source facts are unchanged.
+  Estimated improvements require whole-loop beta timing; no XP/hour is invented.
+- Validation: all 1,349 host tests passed, including 39 targeted flow/recovery
+  checks; all 81 Lua files compile under Lua 5.1. The source audit checks 11,822
+  points and 16,849 action reasons. Its 33 gap-free sections and 119 sections
+  still needing source facts are unchanged; all route invariants pass.
+
 ## 0.8.51
 
 **CLEAN LEVELING**

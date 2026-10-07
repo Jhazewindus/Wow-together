@@ -183,7 +183,7 @@ function ns.ImproveQuestFlow(plan, distance, cooperative, onYield)
         end
         return value
     end
-    local function candidate(target, after, visitOnly)
+    local function candidate(targets, after, visitOnly)
         local selected, count, failed = {}, 0, false
         local function include(stop)
             local index = stop and positions[stop]
@@ -209,7 +209,7 @@ function ns.ImproveQuestFlow(plan, distance, cooperative, onYield)
             local nextStop = list[model.ordinal[stop] + 1]
             if nextStop and nextStop.action == "escort" then include(nextStop) end
         end
-        include(target)
+        for _, target in ipairs(targets) do include(target) end
         if failed or count == 0 then return end
         -- Unmapped/review steps are recovery boundaries, not permission to
         -- move a known objective across a branch whose access is uncertain.
@@ -252,8 +252,12 @@ function ns.ImproveQuestFlow(plan, distance, cooperative, onYield)
     end
     -- Keep the established objective-loop pass as the baseline. A subsequent
     -- hub pass can improve progression/log space without claiming that equal
-    -- walking distance alone is a faster route.
-    for _, hubPass in ipairs({false, true}) do
+    -- walking distance alone is a faster route. Finally consider a complete
+    -- overlapping trip: moving one of its quests alone can leave the second
+    -- visit necessary, hiding the benefit of moving their dependency closures
+    -- together. Preserve the earlier passes as this pass's baseline.
+    for _, pass in ipairs({"objective", "hub", "trip"}) do
+        local hubPass, tripPass = pass == "hub", pass == "trip"
         for _ = 1, 2 do
             local changed = false
             for first = 2, #plan - 1 do
@@ -262,42 +266,72 @@ function ns.ImproveQuestFlow(plan, distance, cooperative, onYield)
                     and not anchor.unknownLocation and not anchor.planNeedsReview and anchor.action ~= "escort" then
                     local best, bestMetrics, bestBlock
                     local considered = 0
+                    local tripTargets, tripPositions = {}, {}
+                    if tripPass then
+                        for index = first + 2, math.min(#plan - 1, first + 128) do
+                            local target = plan[index]
+                            if target.kind == "q" and target.id ~= anchor.id and target.action ~= "escort"
+                                and not target.unknownLocation and not target.planNeedsReview and model.near(anchor, target, 300) then
+                                tripTargets[#tripTargets + 1] = target
+                                tripPositions[target] = #tripTargets
+                            end
+                            tick()
+                        end
+                    end
                     for index = first + 2, math.min(#plan - 1, first + 128) do
                         local target = plan[index]
                         local sameVisit = hubPass and (target.kind == "a" or target.kind == "t")
                         if (sameVisit or not hubPass and target.kind == "q") and target.id ~= anchor.id and target.action ~= "escort"
-                            and model.near(anchor, target, hubPass and 100 or 300) then
-                            local proposed, block, last = candidate(target, first - 1, hubPass)
-                            if proposed then
-                                tried, considered = tried + 1, considered + 1
-                                local reference = bestMetrics or current
-                                local estimate = changedCost(proposed)
-                                local sharedKills = anchor.action == "kill" and target.action == "kill" and anchor.entityID == target.entityID
-                                    and type(anchor.quantity) == "number" and type(target.quantity) == "number"
-                                    and not anchor.quantityUnknown and not target.quantityUnknown
-                                -- Zero-length and already bundled candidates do
-                                -- not need a full state replay. This keeps large
-                                -- same-hub guides cooperative without timer churn.
-                                local worthwhile = estimate <= current.distance - minimumSaving
-                                    or (sharedKills or hubPass and hubBenefitPossible(block, first - 1, last))
-                                        and estimate <= current.distance + 0.001
-                                local value = worthwhile and (estimate < reference.distance - 0.001 or (sharedKills or hubPass) and estimate <= reference.distance + 0.001)
-                                    and model.evaluate(proposed, tick)
-                                local progression = value and (value.peakLog < current.peakLog
-                                    or value.levelDeficitXP < current.levelDeficitXP or value.difficultyPressure < current.difficultyPressure
-                                    or value.questXP > current.questXP)
-                                if value and value.valid and value.peakLog <= current.peakLog
-                                    and value.levelDeficitXP <= current.levelDeficitXP and value.missingLevelCurve <= current.missingLevelCurve
-                                    and value.questXP >= current.questXP and value.minimumKills <= current.minimumKills
-                                    and value.difficultyPressure <= current.difficultyPressure
-                                    and value.uncertainTravelLegs <= current.uncertainTravelLegs and value.blockedTravelLegs <= current.blockedTravelLegs
-                                    and (value.distance <= current.distance - minimumSaving or value.minimumKills < current.minimumKills
-                                        or hubPass and progression)
-                                    and (value.distance < reference.distance - 0.001
-                                        or math.abs(value.distance - reference.distance) <= 0.001
-                                            and (value.minimumKills < reference.minimumKills or hubPass and progression)) then
-                                    best, bestMetrics, bestBlock = proposed, value, block
+                            and (tripPass and tripPositions[target] or not tripPass and model.near(anchor, target, hubPass and 100 or 300)) then
+                            local alternatives = {{target}}
+                            if tripPass then
+                                alternatives = {}
+                                local group, ids = {target}, {[anchor.id] = true, [target.id] = true}
+                                for otherIndex = tripPositions[target] + 1, #tripTargets do
+                                    local other = tripTargets[otherIndex]
+                                    if not ids[other.id] then
+                                        group[#group + 1], ids[other.id] = other, true
+                                        local targets = {}; for _, point in ipairs(group) do targets[#targets + 1] = point end
+                                        alternatives[#alternatives + 1] = targets
+                                        if #group == 3 then break end
+                                    end
+                                    tick()
                                 end
+                            end
+                            for _, targets in ipairs(alternatives) do
+                                local proposed, block, last = candidate(targets, first - 1, hubPass)
+                                if proposed then
+                                    tried, considered = tried + 1, considered + 1
+                                    local reference = bestMetrics or current
+                                    local estimate = changedCost(proposed)
+                                    local sharedKills = anchor.action == "kill" and target.action == "kill" and anchor.entityID == target.entityID
+                                        and type(anchor.quantity) == "number" and type(target.quantity) == "number"
+                                        and not anchor.quantityUnknown and not target.quantityUnknown
+                                    -- Zero-length and already bundled candidates do
+                                    -- not need a full state replay. This keeps large
+                                    -- same-hub guides cooperative without timer churn.
+                                    local worthwhile = estimate <= current.distance - minimumSaving
+                                        or (sharedKills or hubPass and hubBenefitPossible(block, first - 1, last))
+                                            and estimate <= current.distance + 0.001
+                                    local value = worthwhile and (estimate < reference.distance - 0.001 or (sharedKills or hubPass) and estimate <= reference.distance + 0.001)
+                                        and model.evaluate(proposed, tick)
+                                    local progression = value and (value.peakLog < current.peakLog
+                                        or value.levelDeficitXP < current.levelDeficitXP or value.difficultyPressure < current.difficultyPressure
+                                        or value.questXP > current.questXP)
+                                    if value and value.valid and value.peakLog <= current.peakLog
+                                        and value.levelDeficitXP <= current.levelDeficitXP and value.missingLevelCurve <= current.missingLevelCurve
+                                        and value.questXP >= current.questXP and value.minimumKills <= current.minimumKills
+                                        and value.difficultyPressure <= current.difficultyPressure
+                                        and value.uncertainTravelLegs <= current.uncertainTravelLegs and value.blockedTravelLegs <= current.blockedTravelLegs
+                                        and (value.distance <= current.distance - minimumSaving or value.minimumKills < current.minimumKills
+                                            or hubPass and progression)
+                                        and (value.distance < reference.distance - 0.001
+                                            or math.abs(value.distance - reference.distance) <= 0.001
+                                                and (value.minimumKills < reference.minimumKills or hubPass and progression)) then
+                                        best, bestMetrics, bestBlock = proposed, value, block
+                                    end
+                                end
+                                if considered >= 8 then break end
                             end
                             if considered >= 8 then break end
                         end
@@ -308,7 +342,7 @@ function ns.ImproveQuestFlow(plan, distance, cooperative, onYield)
                         for _, stop in ipairs(bestBlock) do if not seen[stop.id] then ids[#ids + 1], seen[stop.id] = stop.id, true end end
                         changes[#changes + 1] = {questIDs = ids, nearQuestID = anchor.id, travelSaved = current.distance - bestMetrics.distance,
                             killsSaved = current.minimumKills - bestMetrics.minimumKills, actions = #bestBlock,
-                            kind = hubPass and "hub-progression" or "objective-loop", logPeakReduced = current.peakLog - bestMetrics.peakLog,
+                            kind = hubPass and "hub-progression" or tripPass and "objective-trip" or "objective-loop", logPeakReduced = current.peakLog - bestMetrics.peakLog,
                             levelDeficitReduced = current.levelDeficitXP - bestMetrics.levelDeficitXP,
                             difficultyReduced = current.difficultyPressure - bestMetrics.difficultyPressure,
                             rewardXPGained = bestMetrics.questXP - current.questXP}

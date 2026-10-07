@@ -55,6 +55,15 @@ then fully restart the client; the release includes taint mitigation (a /reload 
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+0.8.52 BETTER QUEST TRIPS also compares two or three overlapping later quests
+and their pickup/unlock/work dependencies together. A single move can leave
+another visit necessary; a complete trip can remove that return. All actions
+and onward endpoints remain. Nine additional changes improve seven of 152
+sections without worsening log, known progression, combat or geography guards.
+Started guides keep their order; actual NPC offers still gate pickups. See
+ROUTE_OPTIMIZATION.md and GuideFlowAudit.json for the estimated comparisons.
+Quest/source facts and their completeness limits are unchanged.
+
 0.8.51 CLEAN LEVELING uses compact clickable leveling cards: select a card to
 preview its ordered quests, then Start route in the preview. The bracket stays
 on the left. Supplies and party catch-up are under More when relevant. Browsing
@@ -72,7 +81,8 @@ reload. Explicit NYI/TXT placeholder records stay searchable but leave guides.
 All 152 sections are compared with the 0.8.49 optimizer using identical corrected
 quest scope. 19 additional hub changes improve 13 sections; all 12,985 valid
 actions remain. Removing bogus entries is not counted as a routing gain.
-GuideFlowAudit.json retains old/new evidence; ROUTE_OPTIMIZATION.md explains
+The 0.8.50 release retains that comparison; the latest old/new evidence is in
+GuideFlowAudit.json. ROUTE_OPTIMIZATION.md explains
 assumptions. This is not proof of optimal XP/hour or complete terrain mapping:
 33 sections meet the source-gap-free gate; 119 still need source facts.
 

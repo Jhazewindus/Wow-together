@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.51"
-ns.RELEASE_NAME = "CLEAN LEVELING"
+ns.VERSION = "0.8.52"
+ns.RELEASE_NAME = "BETTER QUEST TRIPS"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}

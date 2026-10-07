@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.51 — CLEAN LEVELING** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.52 — BETTER QUEST TRIPS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -22,6 +22,16 @@ Replace the folder on **every party member's client**, including all **81 Lua
 files** and the **Media folder**, then fully restart the client. Restart if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.52 considers overlapping quests as a complete trip.** A single quest move
+can leave the same area needing another visit. The fixed-guide compiler now
+also compares two or three nearby later quests and their pickup/unlock/work
+dependencies together, retaining the whole guide and its onward endpoint.
+The full-route comparison accepts nine additional changes in seven of 152
+sections without worsening log, known progression, combat or geography guards.
+Started guides keep their order; actual NPC offers and personal progress still
+control which steps are ready. See [ROUTE_OPTIMIZATION.md](ROUTE_OPTIMIZATION.md)
+for the comparisons, bounds and unmeasured assumptions.
 
 **0.8.51 gives leveling guides compact, clickable cards.** Each card keeps its
 title and quest count. Select it to preview the ordered quests, then use Start

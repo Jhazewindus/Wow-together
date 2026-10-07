@@ -19,6 +19,18 @@ FIELDS = ('id', 'kind', 'mapID', 'x', 'y', 'action', 'entityID', 'entityType',
           'objectiveKey', 'quantity', 'quantityUnknown', 'unknownLocation', 'planNeedsReview')
 
 
+def describe_actions(stops, ns):
+    """Disambiguate repeated work stages in the published old/new evidence."""
+    occurrences, result = collections.Counter(), []
+    for index, stop in enumerate(stops, 1):
+        occurrences[stop.id, stop.kind] += 1
+        action = {field: stop[field] for field in FIELDS if stop[field] is not None}
+        action.update(step=index, title=ns.CatalogueQuest(stop.id).title,
+                      occurrence=occurrences[stop.id, stop.kind])
+        result.append(action)
+    return result
+
+
 def capture(baseline=None, flow_module=None, label=None):
     c = Client(quests=(), use_catalogue=True)
     c.guide_environment(level=1)
@@ -60,6 +72,7 @@ def capture(baseline=None, flow_module=None, label=None):
                                    if isinstance(v, (int, float, str, bool))}
                     result.append({'faction': faction, 'race': race, 'key': guide.key,
                                    'zone': guide.zone, 'start_level': guide.sectionLow or guide.minLevel,
+                                   'flow_start_level': model.startLevel,
                                    'compile_ms': round((time.perf_counter() - start) * 1000, 2),
                                    'stops': stops, 'flow': metrics})
                     old = old_guides.get(key)
@@ -96,6 +109,8 @@ def capture(baseline=None, flow_module=None, label=None):
                             flow=guide.optimization.flow
                             comparisons.append({'faction':faction,'key':guide.key,'zone':guide.zone,
                                 'before':old_order,'after':new_order,
+                                'before_actions': describe_actions(original.values(), c.ns),
+                                'after_actions': describe_actions(candidate, c.ns),
                                 'alternatives_evaluated':flow.candidates,'accepted_loop_changes':flow.moves,
                                 'loop_changes':[{'quest_ids':list(change.questIDs.values()),'near_quest_id':change.nearQuestID,
                                     'actions_moved':change.actions,'estimated_travel_units_saved':round(change.travelSaved,2),
@@ -127,10 +142,14 @@ def capture(baseline=None, flow_module=None, label=None):
         assert report['travel_sha256']==baseline['travel_sha256'], 'Travel source changed; an identical-source baseline is required'
         assert seen==set(old_guides), 'Guide scope changed'
         report['comparison']={'baseline_version':baseline['addon'],
+                              'candidate_version':report['addon'],
                               'baseline_flow_sha256':baseline.get('flow_module_sha256'),
                               'candidate_flow_sha256':report['flow_module_sha256'],
                               'catalogue_sha256':report['catalogue_sha256'],'travel_sha256':report['travel_sha256'],
                               'guides_compared':len(seen),
+                              'actions_preserved':sum(len(g['stops']) for g in result),
+                              'additional_trip_changes':sum(move['kind']=='objective-trip'
+                                  for change in comparisons for move in change['loop_changes']),
                               'changed_guides':len(comparisons),'changes':comparisons}
     return report
 

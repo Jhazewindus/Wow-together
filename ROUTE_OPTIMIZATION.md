@@ -1,4 +1,85 @@
-# Quest-flow optimization — 0.8.50
+# Quest-flow optimization — 0.8.52
+
+## Complete overlapping trips
+
+The target remains **completing the selected zone guide efficiently**. Optional
+quests are retained. The compiler now evaluates two or three overlapping later
+quests together after the existing single-objective and hub passes. Moving one
+quest alone can leave another reason to return to that area; a combined move can
+remove the return. The complete dependency closure brings required pickups,
+work and unlock hand-ins with it, in their original per-quest order.
+
+The additional search keeps the existing limits: at most three nearby targets,
+24 dependency actions, eight viable alternatives per anchor, two passes and
+128 actions of lookahead. Each target must be within an estimated 300 yards of
+the anchor. All first/last actions and onward travel remain. Unknown locations
+and prerequisite-review boundaries prevent crossing. Immediate escorts and
+item-use stages retain their order; no item stock or pickup eligibility is
+invented. The same whole-route XP, difficulty, log, combat and geography guards
+apply. Earlier passes remain the baseline for this additional search.
+
+The two-quest regression has an early work visit, a later return for two pickups,
+a second visit to their overlapping area and a separate onward loop. Individual
+moves do not remove the second visit. Moving both closures together reduces the
+complete estimate from 3,800 to 2,000 synthetic reference units, with the same
+maximum three held quests. A three-quest fixture similarly needs the triple
+alternative because each pair leaves the third visit necessary. These figures
+are logic fixtures, not observed beta walking times or XP/hour. A shorter trip
+that increases held-quest pressure or moves needed XP behind a pickup is rejected.
+
+The identical-source comparison against **0.8.51** covers all **152 faction/zone/
+level sections** and retains every one of **12,985 actions**. It accepts **nine
+additional trip changes in seven sections**; the other 145 keep their earlier
+order. Quest/entity/transport source facts are unchanged. `GuideFlowAudit.json`
+records hashes, the old/new complete sequences and disambiguated action details,
+per-move assumptions and state comparisons. Historical 0.8.50 comparisons remain
+in that release tag. Compiler order remains fixed during play; scans, actual NPC
+offers, completion, skips and recovery determine which stages are currently ready.
+
+Examples from the complete comparisons:
+
+- Horde Durotar 1–10 combines Ju-Ju Heaps and Zalazane with Forgotten Loa Idols.
+- Horde Barrens 11–20 combines Fungal Spores and Kolkar Leaders with The Forgotten
+  Pools while retaining their prerequisites and all onward work.
+- Alliance Darkshore 11–20 compares several overlapping beach and woodland trips,
+  bringing their necessary unlock work along instead of optimizing only the
+  attractive objective prefix.
+
+All changed complete routes keep the held-quest peak, reward-only acceptance XP
+shortfall, difficulty pressure and uncertain/blocked leg counts from worsening.
+They preserve estimated quest rewards and the shared-kill lower bound. No
+optional branch is deleted to manufacture a shorter comparison. Generic planning
+still uses published directed ground/ordinary transport links and estimated local
+attachments; personal flights, mounts and hearths are not assumed. Live confirmed
+transport routing is unchanged. Native terrain, combat, drops, failure/recovery
+times and inventory preparation remain unmeasured where the sources lack them.
+
+The source audit checks **5,230 quests**, **11,822 static points** and **16,849
+catalogue action reasons**. **33 sections** pass its strict source-gap-free gate;
+**119 still need facts**. Retaining all compiled actions is not 100% world mapping.
+These are improvements among evaluated alternatives, not a global time optimum
+or a guarantee of reaching a particular character level. Compare timed beta loops
+from equivalent starting progress through the same required ending state.
+
+All **1,349 host tests passed**. The 39 targeted checks cover combined trips, escorts, item-use/unknown drops,
+level rewards, log pressure, recovery boundaries and persisted guide reasons.
+All 81 Lua files compile under Lua 5.1. In one cooperative Durotar fixture with
+246 stages and mocked 5,000 × 3,500 map geometry, the old/new compiler yielded
+2,124/2,325 times and used 2.70/2.87 seconds of host CPU. Maximum observed resume
+CPU was 43.8/40.8 ms in that run. The extra search has a loading cost; started
+guides retain their cached order. These host measurements do not establish beta
+frame rate, terrain or a universal timing bound.
+
+Reproduce the comparison with unchanged source data:
+
+```sh
+git show v0.8.51:WowTogether/QuestFlow.lua > /tmp/quest-flow-0.8.51.lua
+python tools/audit_quest_flow.py --flow-module /tmp/quest-flow-0.8.51.lua --label 0.8.51 --output baseline.json
+python tools/audit_quest_flow.py --baseline baseline.json --output compared.json --comparison-output comparisons.json
+python tools/audit_quest_guides.py --output guide-audit.json
+```
+
+## Previous same-hub pass — 0.8.50
 
 ## Same-hub reward and log-space pass
 
@@ -49,13 +130,13 @@ Hyenas!!!, whose source has no quest giver. It is not the real Thousand Needles
 introduction: Message to Freewind Post (4542) and Pacify the Centaur (4841) remain
 level-25 guide quests. No optional real quest is deleted to manufacture speed.
 
-The new `GuideFlowAudit.json` comparison replays the **0.8.49 QuestFlow.lua**
+The `v0.8.50` tag's `GuideFlowAudit.json` comparison replays the **0.8.49 QuestFlow.lua**
 against the exact same corrected scope as 0.8.50. Its module checksum and the
 unchanged catalogue/travel hashes are recorded in the capture. Quarantining
 editorial placeholders is kept separate from route-improvement claims. All
 152 sections retain the same 12,985 valid actions between those comparisons.
 
-The current comparison accepts **19 additional hub changes in 13 sections**.
+The 0.8.50 comparison accepts **19 additional hub changes in 13 sections**.
 Every changed complete route passes the same action/endpoints, prerequisite,
 log, XP/difficulty, kill and geography guards. Two changes lower the held-quest
 peak and three lower the reward-only XP shortfall. Alliance Westfall 11–20 keeps
