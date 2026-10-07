@@ -307,7 +307,7 @@ class UpdateTests(unittest.TestCase):
         catalogue(c, {900: quest(objectives=[{'mapID': 501, 'x': .6, 'y': .4, 'name': 'Enemy',
                                              'entityID': 111, 'npc': True, 'action': 'kill'}])})
         c.ns.active[900] = 'Kill quest'
-        c.lua.execute('plate=CreateFrame("Frame"); C_NamePlate={GetNamePlateForUnit=function() return plate end}; function UnitGUID() return "Creature-0-1-2-3-111-ABC" end')
+        c.lua.execute('plate=CreateFrame("Frame"); C_NamePlate={GetNamePlateForUnit=function() return plate end}; function UnitGUID() return "Creature-0-1-2-3-111-ABC" end; C_QuestLog.UnitIsRelatedToActiveQuest=function() return true end')
         c.ns.handlers.NAME_PLATE_UNIT_ADDED('nameplate1')
         self.assertEqual(c.ns.npcHintCount, 1)
         self.assertTrue(c.ns.npcHints['nameplate1'].IsShown(c.ns.npcHints['nameplate1']))

@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.43
-## X-ReleaseName: FLIGHT PATH DISCOVERY
+## Version: 0.8.44
+## X-ReleaseName: QUEST MARKER HOTFIX
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua

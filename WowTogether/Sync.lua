@@ -656,6 +656,7 @@ function ns.SyncDiagnostics(output)
     output("Objective read status: " .. (ns.progressReadError or "no read failures recorded"))
     output("Peer objective snapshots received: " .. (ns.syncStats.objectives or 0))
     output("NPC hints: " .. ns.npcHintCount .. "; " .. ns.npcHintStatus)
+    output("Local mob candidates rejected by public native quest flag: " .. (ns.npcNativeRejected or 0))
     output(ns.PartyFeaturesEnabled() and "Automatic sync: group / quest / objective / level / zone events; updates batched for 2 seconds."
         or "Local quest updates: quest / objective / level / zone events; no party messages.")
     output("Current quests first: " .. safe(ns.Option("currentQuestsFirst")) .. "; nearby pickups: " .. safe(ns.Option("nearbyPickups")))

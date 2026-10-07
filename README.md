@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.43 — FLIGHT PATH DISCOVERY** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.44 — QUEST MARKER HOTFIX** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -22,6 +22,18 @@ Replace the folder on **every party member's client**, including all **75 Lua
 files** and the **Media folder**, then fully restart the client. Restart if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.44 tightens active quest-mob stars.** Possible item-drop sources in the
+catalogue are checked against unfinished, readable objectives. A public false
+from the client's active quest-mob flag rejects a local-only mob association.
+An unavailable/restricted flag can retain a matched pending objective; it cannot
+confirm an unmatched source. A native true cannot add unknown or future mobs.
+Completed individual objectives hide their stars while other work remains.
+Synced party needs and friendly pickup/turn-in markers remain separate. These
+rules apply across quests, without changing guides, skips or source data. The
+reported Winter Wolf star's owner remains unconfirmed: our star normally has a
+quest tooltip. Test Settings → Quest markers → Nameplate markers when back online,
+and capture the tooltip plus `/wt probe`. Actual beta flags still need retesting.
 
 **0.8.43 improves nearby flight-path discovery.** A friendly unlearned master
 within 350 metres gets a reminder beneath the guide window or standalone arrow.

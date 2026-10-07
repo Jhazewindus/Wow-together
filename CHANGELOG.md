@@ -1,5 +1,26 @@
 # Wow Together changelog
 
+## 0.8.44
+
+**QUEST MARKER HOTFIX**
+
+- Match possible mob/item-source associations to unfinished readable objectives.
+  Suppress outdated source entries that do not match the active objective list.
+- Respect a public native false for local-only quest mobs. Missing, restricted
+  or failed native reads require a matched pending objective; native true cannot
+  introduce unknown mobs, future objectives or unaccepted quest-start drops.
+- Keep stars for synced unfinished party objectives independently of the local
+  flag, and retain friendly guide pickup/turn-in/confirmation markers. Completing
+  one objective removes its mob stars even while the quest has other work left.
+- Add a diagnostic count of local candidates rejected by the native flag.
+  Preserve out-of-combat reads, marker toggles, fixed guide order and saved skips.
+- Reproduce a Winter Wolf/Stocking Jetsteam source association with a synthetic
+  native false; test changed objectives, item counts, restricted/absent APIs,
+  combat, stale hints and party demand. The tester's exact star remains
+  unconfirmed without a marker-toggle/tooltip check on their beta client.
+- Validation: 243 relevant host regressions passed; all 75 Lua files compile
+  under Lua 5.1. Live beta quest-mob flags and rendering still need retesting.
+
 ## 0.8.43
 
 **FLIGHT PATH DISCOVERY**

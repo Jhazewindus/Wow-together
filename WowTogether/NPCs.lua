@@ -3,6 +3,7 @@ local addonName, ns = ...
 local units, hints = {}, {}
 ns.npcHints = hints
 ns.npcHintCount = 0
+ns.npcNativeRejected = 0
 ns.npcHintStatus = "NPC hints wait for public nameplate NPC IDs."
 
 function ns.QuestItemTooltip(tooltip, data)
@@ -40,12 +41,12 @@ end
 function ns.NPCTargets()
     local targets, known = {}, {}
     local query = ns.NewQuestQuery()
-    local function add(point, id, kind)
+    local function add(point, id, kind, memberKey, matched)
         if not point or not point.npc or not ns.GuideInteger(point.entityID) or point.entityID <= 0 then return end
         if point.alternativeEntityIDs then
             local alternate = {}; for name,value in pairs(point) do alternate[name]=value end
             alternate.alternativeEntityIDs=nil
-            for _, ident in ipairs(point.alternativeEntityIDs) do alternate.entityID=ident; add(alternate,id,kind) end
+            for _, ident in ipairs(point.alternativeEntityIDs) do alternate.entityID=ident; add(alternate,id,kind,memberKey,matched) end
             return
         end
         targets[point.entityID] = targets[point.entityID] or {kind = kind, action = point.action,
@@ -55,6 +56,10 @@ function ns.NPCTargets()
         local priority = {q = 1, a = 2, t = 3}
         if priority[kind] > priority[target.kind] then target.kind, target.action = kind, point.action end
         target.quests[id] = ns.QuestTitle(id)
+        if kind == "q" then
+            if memberKey == ns.self then target.localPending = target.localPending or matched == true
+            elseif memberKey then target.peerObjective = true end
+        end
     end
     for _, person in ipairs(query.profiles) do
         local active = person.key == ns.self and ns.active or (ns.members[person.key] and ns.members[person.key].active)
@@ -70,16 +75,26 @@ function ns.NPCTargets()
                     local ready = (person.key == ns.self and ns.readyToTurnIn[id]) or (point and point.kind == "t") or ns.QuestProgressReady(person.key, id)
                     local points
                     if ready then points = quest.ends else points = quest.npcTargets or quest.objectives end
+                    local progress = ns.ProgressForMember(person.key, id)
+                    local readable = false
+                    for _, objective in ipairs(progress and progress.objectives or {}) do
+                        local label = ns.SafeTitle(objective.text)
+                        if label and label ~= "Objective" and not string.match(label, "^Objective %d+$") then readable = true; break end
+                    end
                     for _, p in ipairs(points or {}) do
                         local matched, allDone = false, true
-                        local progress = ns.ProgressForMember(person.key, id)
                         for _, objective in ipairs(progress and progress.objectives or {}) do
                             if ns.ObjectiveMatchesPoint(objective.text, p) then
                                 matched = true
                                 if not ns.ObjectiveFinished(objective) then allDone = false end
                             end
                         end
-                        if not (matched and allDone) then add(p, id, ready and "t" or "q") end
+                        -- Broad item-source lists describe possible drops, not
+                        -- this character's current objectives. An unmatched
+                        -- readable objective list must not promote a mob.
+                        if ready or (not (matched and allDone) and (matched or not readable)) then
+                            add(p, id, ready and "t" or "q", person.key, matched)
+                        end
                     end
                 end
             end
@@ -138,7 +153,7 @@ end
 
 function ns.UpdateNPCHints()
     if ns.RouteInCombat() then ns.npcHintsPending = true; return end
-    ns.npcHintsPending, ns.npcHintCount = nil, 0
+    ns.npcHintsPending, ns.npcHintCount, ns.npcNativeRejected = nil, 0, 0
     for _, hint in pairs(hints) do hide(hint) end
     if not ns.Option("npcHints") then ns.npcHintStatus = "NPC hints disabled in settings."; return end
     if not ns.Option("nameplateHints") then ns.npcHintStatus = "Nameplate markers disabled; quest-item tooltip hints follow their own setting."; return end
@@ -160,6 +175,17 @@ function ns.UpdateNPCHints()
         local guid = read(UnitGUID, unit)
         local id = type(guid) == "string" and tonumber(string.match(guid, "^Creature%-%d+%-%d+%-%d+%-%d+%-(%d+)%-"))
         local target = id and targets[id]
+        if target and target.kind == "q" and not target.peerObjective then
+            -- This getter describes the local player's active quests. Preserve
+            -- an explicit public false; it vetoes a catalogue drop association.
+            -- Unknown/secret/error results cannot confirm an unmatched source.
+            -- Peer demand is independent of the local player's quest flag.
+            local related = C_QuestLog and ns.ReadPublic(C_QuestLog.UnitIsRelatedToActiveQuest, unit)
+            if related == false or (related ~= true and not target.localPending) then
+                if related == false then ns.npcNativeRejected = ns.npcNativeRejected + 1 end
+                target = nil
+            end
+        end
         local plate = target and read(C_NamePlate.GetNamePlateForUnit, unit)
         if plate then
             local hint = hints[unit]
@@ -225,7 +251,7 @@ function ns.UpdateNPCHints()
             ns.npcHintCount = ns.npcHintCount + 1
         end
     end
-    ns.npcHintStatus = "Active quest NPC IDs; friendly guide pickups and alternative drop sources included. Outside combat only."
+    ns.npcHintStatus = "Unfinished active objectives; public native non-quest flags reject local mobs. Friendly guide givers and peer objectives retained. Outside combat only."
 end
 
 ns.On("NAME_PLATE_UNIT_ADDED", function(unit)

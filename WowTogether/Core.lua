@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.43"
-ns.RELEASE_NAME = "MARKET SMART"
+ns.VERSION = "0.8.44"
+ns.RELEASE_NAME = "QUEST MARKER HOTFIX"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}

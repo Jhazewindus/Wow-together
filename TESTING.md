@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.43** — **FLIGHT PATH DISCOVERY**, World of Warcraft: Forever beta,
+For **0.8.44** — **QUEST MARKER HOTFIX**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
@@ -16,6 +16,30 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Active quest-mob stars — about 5–10 minutes
+
+- On the Dwarf tester, revisit Winter Wolves. Hover directly over a WoW Together
+  star: its tooltip should name the quest. Toggle Settings → Quest markers →
+  Nameplate markers off. Our stars should disappear, while other addons' icons
+  and Blizzard raid marks remain. A star without our tooltip or one that stays
+  when disabled needs a source check; record other addons before attributing it.
+- With Stocking Jetsteam active, verify what mobs the client actually flags for
+  the pending items. A public non-quest flag must reject a local-only mob star,
+  even if the catalogue lists a possible drop. Repeat with another collection
+  and kill quest. Changed readable objectives must not highlight old sources.
+- Complete one item/kill count with another objective still unfinished. Stars
+  for that finished count disappear; needed targets remain. Abandoning the quest
+  removes its stars. Guide order, skips and completion history stay unchanged.
+- Friendly pickup/turn-in/confirmation stars still work. If testing party mode,
+  a mob still needed by a synced friend remains marked despite your completion
+  or local non-quest flag; it clears when nobody has unfinished matching work.
+- Test combat then leave it: no restricted quest-mob query error; hints refresh
+  after combat. Private counters do not imply completion. An unavailable flag
+  may retain a matched public pending objective but cannot confirm unknown work.
+- Capture `/wt probe`, active quest names, marker tooltip and screenshot if wrong.
+  The rejected-candidate count applies to the latest out-of-combat refresh.
+  Host checks cannot establish actual Forever quest-mob flags or source drops.
 
 ## Nearby flight discovery — about 5–10 minutes
 

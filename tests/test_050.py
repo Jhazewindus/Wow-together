@@ -394,6 +394,7 @@ class TargetAndSourceTests(unittest.TestCase):
         plate=CreateFrame('Frame'); plate.namePlateUnitToken='nameplate1'
         C_NamePlate={GetNamePlates=function() return {plate} end,GetNamePlateForUnit=function() return plate end}
         function UnitGUID() return 'Creature-0-1-1-1-200-ABC' end
+        C_QuestLog.UnitIsRelatedToActiveQuest=function() return true end
         ''')
         c.ns.UpdateNPCHints()
         self.assertEqual(c.ns.npcHintCount, 1)
