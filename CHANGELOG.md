@@ -1,5 +1,27 @@
 # Wow Together changelog
 
+## 0.8.42
+
+**GUIDE POLISH**
+
+- Stabilize resizing around a scaled top-left anchor; finish on global mouse
+  release/hide. Reflow smaller choice prompts, quest lists, materials, profession
+  and diagnostics windows; save their geometry. Keep dropdowns above dialogs.
+- Resize guide/dungeon panels through the same helper. Keep compact/full dungeon
+  bounds distinct and do geometry work during drags, content work on release.
+- Put the reason for long/cross-zone/flight/transport trips first in the arrow:
+  skill-cap training, useful prerequisites, grouped visits or the chosen fixed
+  guide. Keep quest/NPC actions and transport details in its tooltip. Larger
+  guide windows give explanations more room; no exclusive unlock is invented.
+- Permit larger same-hub pickup/turn-in bundles in newly compiled fixed guides,
+  preserving stages, prerequisites and escorts. Running fixed order is retained.
+- Review 231 new source captures; add 11 missing mapped points plus item/NPC
+  facts without replacing reviewed locations or identity/prerequisite gates.
+  Audit all 5,230 records, 152 faction/level-section guides and 11,822 points.
+- Handle empty AH listings in materials text. Include all 75 Lua files and the
+  0.8.41 taint mitigations. Fully restart; beta UI/taint retesting remains required.
+- Validation: 1,210 host regressions passed; all 75 Lua files compile under Lua 5.1.
+
 ## 0.8.41
 
 **TAINT HOTFIX**

@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.41
-## X-ReleaseName: TAINT HOTFIX
+## Version: 0.8.42
+## X-ReleaseName: GUIDE POLISH
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua
@@ -27,6 +27,7 @@ DungeonArtwork.lua
 GuideThemes.lua
 UI.lua
 UIControls.lua
+UIResize.lua
 LuaConsole.lua
 Config.lua
 Minimap.lua

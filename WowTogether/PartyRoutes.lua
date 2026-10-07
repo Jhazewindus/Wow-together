@@ -169,6 +169,7 @@ function ns.ShowPartyRouteInvite()
             if request then ns.FollowPartyRoute(request) end
         end, true); frame.follow:SetPoint("BOTTOMLEFT", 22, 18)
         frame.keep = ns.UIButton(frame, "Keep my route", 190, function() ns.waitingPartyRoute = nil; frame:Hide() end); frame.keep:SetPoint("BOTTOMRIGHT", -22, 18)
+        ns.ResizeChoicePopup(frame, "party-invite", {frame.follow, frame.keep}, 500, 210)
     end
     local frame = ns.partyRoutePrompt
     frame.invite = invite; ns.pendingPartyRouteInvite = nil

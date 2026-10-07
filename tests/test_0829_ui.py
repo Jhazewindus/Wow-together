@@ -14,7 +14,7 @@ class GuideWindowTests(unittest.TestCase):
         frame.SetSize(frame, 540, 260); frame.OnSizeChanged(frame)
         self.assertEqual(frame.title.width, 402)
         self.assertEqual(frame.status.width, 444)
-        self.assertEqual(frame.status.height, 120)
+        self.assertEqual(frame.status.height, 94)
         self.assertEqual(frame.tip.width, 540)
         self.assertEqual(frame.questItem.width, 540)
         self.assertEqual(frame.work.width, 540)

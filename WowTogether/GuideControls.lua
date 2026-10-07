@@ -344,6 +344,7 @@ local function showEarlyGuideWarning(guide, advice)
         end); frame.anyway:SetPoint("BOTTOMLEFT", 198, 22)
         frame.cancel = ns.UIButton(frame, "Cancel", 150, function() frame:Hide() end)
         frame.cancel:SetPoint("BOTTOMRIGHT", -20, 22)
+        ns.ResizeChoicePopup(frame, "early-guide", {frame.recommended, frame.anyway, frame.cancel}, 540, 242)
         ns.earlyGuidePrompt = frame
     end
     local frame = ns.earlyGuidePrompt
@@ -380,6 +381,7 @@ function ns.RequestStartRoute(guide, allowEarly)
         frame.current = ns.UIButton(frame, "Include current quests", 215, function()
             local chosen = ns.MergeCurrentQuests(ns.startGuidePrompt.guide); ns.startGuidePrompt:Hide(); ns.StartPartyRoute(chosen)
         end); frame.current:SetPoint("BOTTOMRIGHT", -20, 24)
+        ns.ResizeChoicePopup(frame, "start-guide", {frame.selected, frame.current}, 500, 220)
         ns.startGuidePrompt = frame
     end
     ns.startGuidePrompt.guide = guide

@@ -546,6 +546,7 @@ function ns.BuildProfessionGuideRoute(guide)
     if not info then
         local trainer = ns.ProfessionTrainer(id, 75)
         current = stop(id, "learn", "Learn " .. facts.name .. (trainer and (" from " .. trainer.name) or " from a profession trainer"), "Learn the profession, then open its crafting window.", trainer)
+        current.travelReason = "Learn " .. facts.name .. " before starting its crafting guide."
     elseif not info.skill or not info.maximum then
         current = stop(id, "read", "Open your " .. facts.name .. " window", "Check your current skill and learned recipes.")
     elseif info.skill >= target then
@@ -563,6 +564,9 @@ function ns.BuildProfessionGuideRoute(guide)
             current = stop(id, "train", "Train " .. rank.name .. " " .. facts.name .. (trainer and (" with " .. trainer.name) or ""),
                 "Your current cap is " .. info.maximum .. ". " .. rank.name .. " raises it to " .. rank.maximum
                     .. " so you can keep progressing toward skill " .. target .. ".", trainer)
+            current.travelReason = facts.name .. " is capped at " .. info.maximum .. "; " .. rank.name
+                .. " training raises it to " .. rank.maximum .. " toward your goal of " .. target .. "."
+                .. (trainer and (" " .. trainer.name .. " is a known trainer for this rank.") or "")
         end
     else
         local recipe, batch = currentBatch(guide, info)
@@ -601,6 +605,8 @@ function ns.BuildProfessionGuideRoute(guide)
                     current = stop(id, "train", "Learn " .. nextRecipe.name .. (trainer and (" from " .. trainer.name) or " at your trainer"),
                         "Learn this recipe to work toward skill " .. batch.finish .. "." .. extra
                             .. " Then prepare materials for " .. recipe.name .. ".", trainer)
+                    current.travelReason = nextRecipe.name .. " is needed for this crafting batch toward skill " .. batch.finish
+                        .. "." .. extra .. (trainer and (" " .. trainer.name .. " is the selected known " .. facts.name .. " trainer.") or "")
                 end
             else
                 local missing, summary = false, {}

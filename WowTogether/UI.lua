@@ -297,25 +297,13 @@ function ns.CreateUI()
     local texture = grip:CreateTexture(nil, "ARTWORK")
     texture:SetAllPoints()
     texture:SetTexture("Interface\\ChatFrame\\UI-ChatIM-SizeGrabber-Up")
-    grip:SetScript("OnMouseDown", function(_, mouseButton)
-        if mouseButton ~= "LeftButton" then return end
-        -- A CENTER anchor grows both sides and fights screen clamping. Keep
-        -- the top-left corner fixed for the native bottom-right size gesture.
-        local left, top = ns.ReadPublic(window.GetLeft, window), ns.ReadPublic(window.GetTop, window)
-        if type(left) == "number" and type(top) == "number" then
-            window:ClearAllPoints(); window:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", left, top)
-        end
-        ns.ui.resizing = true
-        window:StartSizing("BOTTOMRIGHT")
-    end)
-    grip:SetScript("OnMouseUp", function() ns.FinishWindowResize() end)
-    window:SetScript("OnSizeChanged", function()
-        -- Only geometry changes during the gesture. Do not rebuild the quest
-        -- catalogue, recommendations, map route or tracker for every pixel.
-        ns.Layout()
-        if not ns.ui.resizing then ns.QueueWindowRender() end
-    end)
-    window:SetScript("OnHide", function() if ns.ui.resizing then ns.FinishWindowResize() end end)
+    local resizeReady = false
+    ns.EnableWindowResize(window, {grip = grip, minWidth = 760, minHeight = 580, maxWidth = 1280, maxHeight = 1000,
+        onBegin = function() ns.ui.resizing = true end, layout = function()
+            ns.Layout(); if resizeReady and not ns.ui.resizing then ns.QueueWindowRender() end
+        end,
+        onFinish = function() ns.FinishWindowResize() end})
+    resizeReady = true
     ns.Layout()
     window:Hide()
 end
@@ -327,7 +315,7 @@ function ns.FinishWindowResize()
     if type(width) == "number" and type(height) == "number" then
         ns.db.windowSize = {width = width, height = height}
     end
-    ns.Layout(); ns.Refresh()
+    ns.Layout(); ns.Render()
 end
 
 function ns.QueueWindowRender()
@@ -857,6 +845,8 @@ function ns.ShowDiagnostics(report, caption, onRefresh)
         refresh:SetPoint("BOTTOMRIGHT", -20, 20)
         refresh:SetText("Refresh")
         refresh:SetScript("OnClick", function() ns.reportRefresh() end)
+        ns.EnableWindowResize(window, {key = "diagnostics", minWidth = 540, minHeight = 380, maxWidth = 1100, maxHeight = 950,
+            layout = function(self) self.title:SetWidth(self:GetWidth() - 70); edit:SetWidth(self:GetWidth() - 85) end})
     end
     ns.diagnosticsGeneration = (ns.diagnosticsGeneration or 0) + 1
     ns.reportRefresh = onRefresh or ns.Diagnostics

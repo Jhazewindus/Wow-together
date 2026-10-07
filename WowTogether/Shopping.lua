@@ -2,6 +2,16 @@ local addonName, ns = ...
 
 ns.marketQuotes, ns.pendingItems = {}, {}
 
+local function layout(frame)
+    local width = frame:GetWidth()
+    frame.title:SetWidth(width - (ns.shoppingContext and 230 or 72))
+    frame.child:SetWidth(width - 60); frame.text:SetWidth(width - 70)
+    frame.notice:SetWidth(width - 44); frame.status:SetWidth(width - 254)
+    for _, row in ipairs(frame.rows) do
+        row:SetWidth(width - 66); row.title:SetWidth(width - 194); row.detail:SetWidth(width - 194)
+    end
+end
+
 function ns.ItemName(id, fallback)
     local name
     if C_Item then name = ns.ReadPublic(C_Item.GetItemInfo, id) end
@@ -57,7 +67,8 @@ function ns.ShoppingText(list)
         lines[#lines + 1] = name .. " • need " .. item.need .. " • bags " .. (item.have or "unknown")
             .. " • buy " .. (item.missing or "check bags")
         lines[#lines + 1] = "  " .. (item.source or "Check vendor / auction availability")
-            .. (quote and (" • observed AH unit price " .. ns.MoneyText(quote.unitPrice) .. " • about " .. ns.MoneyText(quote.unitPrice * quantity)) or " • AH price unknown")
+            .. (quote and quote.unavailable and " • No listings found" or quote and ns.GuideInteger(quote.unitPrice)
+                and (" • observed AH unit price " .. ns.MoneyText(quote.unitPrice) .. " • about " .. ns.MoneyText(quote.unitPrice * quantity)) or " • AH price unknown")
         if item.quests then lines[#lines + 1] = "  For: " .. table.concat(item.quests, ", ") end
     end
     if #lines == 0 then lines[1] = "No missing items are known for this plan.\nSome requirements may be unavailable; check the quest or recipe." end
@@ -100,6 +111,9 @@ function ns.ShowShoppingList(list, title)
             if ns.shoppingContext then ns.shoppingContext.signature = nil end
             if ns.CancelProfessionShopping then ns.CancelProfessionShopping() end
         end)
+        frame:RegisterForDrag("LeftButton"); frame:EnableMouse(true)
+        frame:SetScript("OnDragStart", frame.StartMoving)
+        ns.EnableWindowResize(frame, {key = "shopping", minWidth = 540, minHeight = 360, maxWidth = 1000, maxHeight = 900, layout = layout})
     end
     ns.RefreshShoppingList(); ns.shoppingWindow:Show()
 end
@@ -120,7 +134,6 @@ function ns.RenderShoppingList()
     local frame, context = ns.shoppingWindow, ns.shoppingContext
     if not frame then return end
     frame.title:SetText(ns.shoppingTitle or "Shopping list")
-    frame.title:SetWidth(context and 400 or 580)
     frame.scope:SetShown(context ~= nil)
     if context then frame.scope:SetChoice(context.scope) end
     frame.notice:SetText(context and context.notice or "After bag stock • prices from this session's auction searches.")
@@ -148,11 +161,13 @@ function ns.RenderShoppingList()
         row.detail:SetText((context and context.scope == "goal" and "Estimate " or "Need ") .. item.need
             .. " • Bags " .. (item.have or "?") .. (item.planned and item.planned > 0 and " • Make " .. item.planned or "")
             .. " • Buy " .. (item.missing or "check bags")
-            .. "\n" .. (quote and (ns.MoneyText(quote.unitPrice) .. " each") or "Price not checked")
+            .. "\n" .. (quote and quote.unavailable and "No listings found" or quote and ns.GuideInteger(quote.unitPrice)
+                and (ns.MoneyText(quote.unitPrice) .. " each") or "Price not checked")
             .. " • " .. (item.source or "Vendor / gathering / auction house"))
         row:Show()
     end
     frame.child:SetHeight(math.max(100, #list * 76))
     frame.status:SetText(ns.auctionGuideStatus or "Open an auction house, then click Search AH.")
+    layout(frame)
     if ns.RefreshAuctionGuideSearch then ns.RefreshAuctionGuideSearch() end
 end

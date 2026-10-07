@@ -210,6 +210,7 @@ function ns.ShowActivityPrompt(key, title, text, callback, acceptLabel, declineL
         frame.text = ns.UILabel(frame, nil, 12); frame.text:SetPoint("TOPLEFT", 22, -52); frame.text:SetWidth(436); frame.text:SetHeight(100)
         frame.accept = ns.UIButton(frame, "Show collection plan", 200, function() end, true); frame.accept:SetPoint("BOTTOMLEFT", 22, 18)
         frame.later = ns.UIButton(frame, "Later", 130, function() frame:Hide() end); frame.later:SetPoint("BOTTOMRIGHT", -22, 18)
+        ns.ResizeChoicePopup(frame, "activity", {frame.accept, frame.later}, 480, 210)
     end
     ns.db.activityNotices[key] = true
     ns.activityPrompt.noticeKey = key

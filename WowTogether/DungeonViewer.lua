@@ -2,7 +2,7 @@ local addonName, ns = ...
 
 local colors, fallback = ns.UIColors, "Interface\\Icons\\INV_Misc_QuestionMark"
 local bossFallback = "Interface\\EncounterJournal\\UI-EJ-BOSS-Default"
-local selected, entered
+local selected, entered, drawMap
 local function selectedGroup()
     for _, group in ipairs(ns.DungeonGroups()) do if group.key == selected then return group end end
 end
@@ -10,10 +10,7 @@ local function coordinate(value)
     return ns.Public(value) and type(value) == "number" and value == value and math.abs(value) < 100000
 end
 local function keepPosition(frame)
-    local left, top = ns.ReadPublic(frame.GetLeft, frame), ns.ReadPublic(frame.GetTop, frame)
-    if coordinate(left) and coordinate(top) then
-        frame:ClearAllPoints(); frame:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", left, top)
-    end
+    ns.AnchorWindowTopLeft(frame)
 end
 local function save(frame)
     if not ns.db then return end
@@ -84,7 +81,11 @@ local function layout(frame)
     frame.bossPanel:SetShown(not frame.compact); frame.lootPanel:SetShown(not frame.compact)
     frame.mode.caption:SetText(frame.compact and "Full view" or "Map only")
     frame.layingOut = nil
-    if frame.data then ns.RenderDungeonViewer() end
+    if frame.data then
+        if frame.sizing then
+            if drawMap then drawMap(frame, frame.data.maps[frame.floor]) end
+        else ns.RenderDungeonViewer() end
+    end
 end
 local qualityColors = {[2] = {0.25, 0.80, 0.30, 1}, [3] = {0.35, 0.60, 1, 1}, [4] = {0.72, 0.44, 0.94, 1}, [5] = {1, 0.55, 0.15, 1}}
 local slots = {[1]="Head",[2]="Neck",[3]="Shoulder",[5]="Chest",[6]="Waist",[7]="Legs",[8]="Feet",[9]="Wrist",[10]="Hands",[11]="Finger",[12]="Trinket",[13]="One-hand",[14]="Shield",[15]="Ranged",[16]="Back",[17]="Two-hand",[21]="Main hand",[22]="Off hand",[23]="Held in off hand",[25]="Thrown",[26]="Ranged"}
@@ -241,6 +242,7 @@ local function create()
         save(frame)
         keepPosition(frame)
         frame.compact = not frame.compact
+        frame.resizeConfig.minWidth, frame.resizeConfig.minHeight = frame.compact and 380 or 940, frame.compact and 300 or 500
         if type(frame.SetResizeBounds) == "function" then frame:SetResizeBounds(frame.compact and 380 or 940, frame.compact and 300 or 500, 1400, 1000) end
         local size = frame.compact and (frame.compactSize or {500, 420}) or (frame.fullSize or {1080, 650})
         frame:SetSize(unpack(size))
@@ -268,15 +270,14 @@ local function create()
     frame.grip = CreateFrame("Button", nil, frame); frame.grip:SetSize(16, 16); frame.grip:SetPoint("BOTTOMRIGHT", -2, 2)
     frame.grip.icon = frame.grip:CreateTexture(nil, "ARTWORK"); frame.grip.icon:SetAllPoints()
     frame.grip.icon:SetTexture("Interface\\ChatFrame\\UI-ChatIM-SizeGrabber-Up")
-    frame.grip:SetScript("OnMouseDown", function(_, key) if key == "LeftButton" then frame:StartSizing("BOTTOMRIGHT") end end)
-    frame.grip:SetScript("OnMouseUp", function() frame:StopMovingOrSizing(); layout(frame); save(frame) end)
     frame.transparent = state.transparent == true
     if frame.transparent then
         frame:SetBackdropColor(colors.background[1], colors.background[2], colors.background[3], .08)
         frame.map:SetBackdropColor(colors.panel[1], colors.panel[2], colors.panel[3], .08)
     end
     frame.layoutReady = true
-    frame:SetScript("OnSizeChanged", function() layout(frame) end)
+    ns.EnableWindowResize(frame, {grip = frame.grip, minWidth = 940, minHeight = 500, maxWidth = 1400, maxHeight = 1000,
+        layout = layout, onFinish = save})
     layout(frame)
     frame.floor, frame.bossPage, frame.lootPage, frame.category, frame.query = 1, 1, 1, "all", ""
     frame:Hide()
@@ -307,7 +308,7 @@ local function updateFloorMenu(frame)
     if not multipleMaps then control.menu:Hide() end
     if #control.entries == 0 then control.caption:SetText("Map unavailable") else control:SetChoice(frame.floor) end
 end
-local function drawMap(frame, map)
+drawMap = function(frame, map)
     for _, tile in ipairs(frame.tiles) do tile:Hide() end
     for _, pin in ipairs(frame.pins) do pin:Hide() end
     for _, pin in ipairs(frame.questPins) do pin:Hide(); if pin.leader then pin.leader:Hide() end end

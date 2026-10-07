@@ -51,7 +51,7 @@ World of Warcraft\\_classic_beta_\\Interface\\AddOns\\WowTogether\\
 
 Update EVERY party member to {version}, including ALL {len(names)} Lua files
 and the Media folder,
-then fully restart the client for 0.8.41's taint mitigation (a /reload is insufficient
+then fully restart the client; the release includes taint mitigation (a /reload is insufficient
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
@@ -499,7 +499,7 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
             if (ROOT / name).exists():
                 archive.write(ROOT / name, 'WowTogether/' + name)
         archive.write(ROOT / 'LICENSE', 'WowTogether/LICENSE')
-        for name in ('build_quest_dataset.py', 'build_elite_spawns.py', 'pack_data.py', 'quest_enrichment.py', 'legacy_quest_facts.py', 'collect_quest_entities.py',
+        for name in ('build_quest_dataset.py', 'supplement_quest_data.py', 'build_elite_spawns.py', 'pack_data.py', 'quest_enrichment.py', 'legacy_quest_facts.py', 'collect_quest_entities.py',
                      'forever_map_geometry.py', 'quest_event_areas.py', 'lua_data_literal.py', 'forever_beta_facts.py',
                      'quest_observation_facts.py', 'capture_quest_pages.py', 'audit_quest_guides.py',
                      'import_professions.py', 'import_warcraftdb.py', 'import_wowhead.py', 'import_travel_network.py', 'import_guide_services.py', 'import_dungeons.py', 'import_dungeon_journal.py', 'import_dungeon_positions.py',

@@ -48,21 +48,22 @@ local function updateTooltip(frame, opening)
     GameTooltip:Show()
 end
 
-function ns.RouteContext(stop, mapID, facts)
-    if stop.professionStep then return stop.description end
+function ns.RouteContext(stop, mapID, facts, travelDistance)
+    if stop.professionStep then return ns.GuideDestinationPurpose(stop) end
     if stop.unsafeTransit then return "No mapped bypass is known. Follow roads around the town." end
     if ns.IsClassTrainingStep(stop) then
         local training = stop.kind == "trainer" and stop or stop.goal
         return "Optional • level " .. training.trainingLevel .. " training check.\nTrain manually; Done training resumes quests."
     end
     if stop.confirmation then
-        return "Check this NPC's offers; pickup is unconfirmed.\n" .. ns.StopLocationText(stop, mapID)
+        return ns.GuideDestinationReason(stop) .. "\n" .. ns.StopLocationText(stop, mapID)
     end
     if stop.kind == "loading" then
         return stop.action == "scan" and "Checking quest progress…" or "Preparing your route…"
     end
     local travelSummary = ns.TravelPathSummary(stop)
-    if travelSummary then return travelSummary end
+    local purpose = (travelSummary or stop.goal or stop.flightPlan or stop.travelLeg) and ns.GuideDestinationPurpose(stop)
+    if travelSummary then return purpose and (purpose .. "\n" .. travelSummary) or travelSummary end
     if ns.routeSelection and ns.routeSelection.mode == "travel" then
         if stop.travelLeg or stop.flightPlan then
             return (stop.travelLeg and stop.travelLeg.method == "walk" and "Follow the crossing towards Orgrimmar."
@@ -84,13 +85,14 @@ function ns.RouteContext(stop, mapID, facts)
     end
     if stop.flightPlan then
         local plan = stop.flightPlan
-        return (plan.measured and "Timed flight: ~" or "Estimated flight: ") .. ns.FormatTravelDuration(plan.flightSeconds)
+        return (purpose and (purpose .. "\n") or "") .. (plan.measured and "Timed flight: ~" or "Estimated flight: ") .. ns.FormatTravelDuration(plan.flightSeconds)
             .. "; journey ~" .. ns.FormatTravelDuration(plan.seconds)
             .. "\nFly to " .. plan.destination.name .. (plan.walkingSeconds and plan.walkingSeconds > plan.seconds
                 and ("; saves ~" .. ns.FormatTravelDuration(plan.walkingSeconds - plan.seconds) .. ".") or ".")
     end
-    if stop.travelLeg then return "Travel towards " .. ns.MapName(stop.goal.mapID) .. ".\n" .. (stop.travelLeg.method == "walk"
-        and "Use the crossing; follow roads and terrain." or "Board the correct transport; waiting time varies.") end
+    if stop.travelLeg then return (purpose and (purpose .. "\n") or "") .. "Travel towards " .. ns.MapName(stop.goal.mapID) .. ".\n" .. (stop.travelLeg.method == "walk"
+        and "Use the crossing; follow roads and terrain." or "Board the correct transport; waiting time varies.")
+    end
     if stop.action == "flight-check" then return "Check this nearby flight master.\nUnlock status has not been confirmed." end
     if ns.routePaused and not stop.sourceStop then
         if ns.routeSelection and ns.routeSelection.fixedRoute then return ns.routePaused end
@@ -105,6 +107,10 @@ function ns.RouteContext(stop, mapID, facts)
     local forPlayer = ns.SafeTitle(stop.forPlayer)
     local who = forPlayer and (" • For " .. forPlayer) or ""
     local context = ns.StopLocationText(stop, mapID) .. who
+    if ns.GuideInteger(mapID) and ns.GuideInteger(stop.mapID) and mapID ~= stop.mapID
+        or finite(travelDistance) and travelDistance >= 1000 then
+        reason = ns.GuideDestinationReason(stop) or reason
+    end
     local useful, exception = ns.LevelingValue(stop.id)
     local quest, low = ns.CatalogueQuest(stop.id), ns.PreferredQuestLevels()
     if useful == true and exception and quest and low and (quest.level or 0) > 0 and quest.level < low then
@@ -249,7 +255,7 @@ function ns.UpdateNavigation()
     frame.distance:SetText(state.flight and clock or distance .. (clock and (distance ~= "" and " • " or "") .. clock or ""))
     frame.status:SetText(state.angle and ns.GuideStepAction(state.stop, facts) or state.status)
     local mapID = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
-    frame.context:SetText(ns.RouteContext(state.stop, mapID, facts))
+    frame.context:SetText(ns.RouteContext(state.stop, mapID, facts, state.distance))
     updateTooltip(frame)
     ns.HideNavigationGeometry(frame.icon)
     local separate = ns.standaloneNavigation and ns.standaloneNavigation:IsShown()
@@ -331,13 +337,14 @@ function ns.LayoutNavigation()
     if not finite(width) or not finite(height) then return end
     local left = frame.separateArrow and 14 or 82
     local offset = (width - 360) / 2
+    local contextHeight = math.max(26, math.min(52, height - 142))
     frame.title:SetWidth(width - 138); frame.step:SetWidth(width - 28)
     frame.status:ClearAllPoints(); frame.status:SetPoint("TOPLEFT", left, -52)
-    frame.status:SetSize(width - left - 14, math.max(28, height - 140))
-    frame.distance:ClearAllPoints(); frame.distance:SetPoint("BOTTOMLEFT", left, 72)
+    frame.status:SetSize(width - left - 14, math.max(28, height - contextHeight - 114))
+    frame.distance:ClearAllPoints(); frame.distance:SetPoint("BOTTOMLEFT", left, contextHeight + 46)
     frame.distance:SetWidth(width - left - 14)
     frame.context:ClearAllPoints(); frame.context:SetPoint("BOTTOMLEFT", 14, 40)
-    frame.context:SetWidth(width - 28)
+    frame.context:SetSize(width - 28, contextHeight)
     local training = frame.trainingLayout
     frame.skipStep:SetWidth(training and 84 or 80)
     frame.skipStep:ClearAllPoints(); frame.skipStep:SetPoint("BOTTOMLEFT", offset + (training and 36 or 42), 8)
@@ -416,7 +423,7 @@ function ns.CreateNavigation()
     frame.status:SetSize(264, 28); frame.status:SetWordWrap(true); frame.status:SetJustifyV("TOP")
     frame.context = ns.UILabel(frame, nil, 10, ns.UIColors.muted)
     frame.context:SetPoint("TOPLEFT", 14, -101)
-    frame.context:SetSize(332, 26); frame.context:SetWordWrap(false); frame.context:SetJustifyV("TOP")
+    frame.context:SetSize(332, 26); frame.context:SetWordWrap(true); frame.context:SetJustifyV("TOP")
     frame.skipStep = ns.UIButton(frame, "Skip step", 80, function() ns.SkipGuide("step") end)
     frame.skipStep:SetHeight(24); frame.skipStep:SetPoint("BOTTOMLEFT", 42, 8)
     frame.skipQuest = ns.UIButton(frame, "Skip quest", 80, function()
@@ -448,21 +455,8 @@ function ns.CreateNavigation()
     frame.tip:Hide()
     ns.CreateQuestItemButton(frame)
     ns.CreateAreaObjectives(frame)
-    frame:SetResizable(true)
-    if type(frame.SetResizeBounds) == "function" then frame:SetResizeBounds(360, 168, 720, 480) end
-    frame.grip = CreateFrame("Button", nil, frame)
-    frame.grip:SetSize(14, 14); frame.grip:SetPoint("BOTTOMRIGHT", -2, 2)
-    frame.grip.icon = frame.grip:CreateTexture(nil, "ARTWORK"); frame.grip.icon:SetAllPoints()
-    frame.grip.icon:SetTexture("Interface\\ChatFrame\\UI-ChatIM-SizeGrabber-Up")
-    frame.grip:SetScript("OnMouseDown", function(_, key) if key == "LeftButton" then frame:StartSizing("BOTTOMRIGHT") end end)
-    frame.grip:SetScript("OnMouseUp", function(_, key) if key == "LeftButton" then ns.SaveNavigationSize() end end)
-    frame:SetScript("OnSizeChanged", function()
-        local width, height = frame:GetWidth(), frame:GetHeight()
-        if not finite(width) or not finite(height) then return end
-        local w, h = math.max(360, math.min(720, width)), math.max(168, math.min(480, height))
-        if w ~= width or h ~= height then frame:SetSize(w, h) end
-        ns.LayoutNavigation()
-    end)
+    ns.EnableWindowResize(frame, {minWidth = 360, minHeight = 168, maxWidth = 720, maxHeight = 480,
+        layout = ns.LayoutNavigation, onFinish = ns.SaveNavigationSize})
     local size = ns.db.arrowSize
     if type(size) == "table" and finite(size.width) and finite(size.height) then
         frame:SetSize(math.max(360, math.min(720, size.width)), math.max(168, math.min(480, size.height)))

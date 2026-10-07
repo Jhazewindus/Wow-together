@@ -4,6 +4,16 @@ local ROW_HEIGHT, VIEW_HEIGHT = 44, 408
 local phases = {a = "Pick up", q = "Objectives", t = "Turn in"}
 local colors = {a = {1, 0.82, 0.3}, q = {0.92, 0.88, 0.76}, t = {0.55, 0.84, 0.58}}
 
+local function layout(frame)
+    local width, height = frame:GetWidth() - 76, math.max(100, frame:GetHeight() - 152)
+    frame.viewHeight = height
+    frame.title:SetWidth(frame:GetWidth() - 80); frame.summary:SetWidth(frame:GetWidth() - 50)
+    frame.scroll:SetSize(width, height); frame.content:SetWidth(width); frame.slider:SetHeight(height - 32)
+    for _, row in ipairs(frame.rows) do
+        row:SetWidth(width); row.title:SetWidth(width - 250); row.detail:SetWidth(width - 60)
+    end
+end
+
 local function status(stop, query)
     if ns.GuideQuestSkipped(stop.id) or #ns.FilterGuideStages({stop}) == 0 then return "Skipped" end
     if ns.Completed(stop.id, query) == true then return "Done" end
@@ -50,6 +60,8 @@ local function create()
     frame.note:Hide()
     frame.rows, frame.generation, frame.offset = {}, 0, 0
     frame:SetScript("OnHide", function() frame.generation = frame.generation + 1 end)
+    ns.EnableWindowResize(frame, {key = "guide-quests", minWidth = 560, minHeight = 380, maxWidth = 1200, maxHeight = 1000,
+        layout = layout, onFinish = ns.RenderGuideQuestList})
     frame:Hide()
     return frame
 end
@@ -69,13 +81,14 @@ function ns.RenderGuideQuestList()
         frame.summary:SetText(count .. " quests • " .. #plan .. " steps\n"
             .. ns.GuideXPText(frame.xpGuide or frame.guide, query))
     end
-    frame.maximum = math.max(0, #plan * ROW_HEIGHT - VIEW_HEIGHT)
+    local viewHeight = frame.viewHeight or VIEW_HEIGHT
+    frame.maximum = math.max(0, #plan * ROW_HEIGHT - viewHeight)
     frame.offset = math.min(frame.offset or 0, frame.maximum)
-    frame.content:SetHeight(math.max(VIEW_HEIGHT, #plan * ROW_HEIGHT))
+    frame.content:SetHeight(math.max(viewHeight, #plan * ROW_HEIGHT))
     frame.scroll:SetVerticalScroll(frame.offset); frame.slider:SetMinMaxValues(0, frame.maximum); frame.slider:SetValue(frame.offset)
     frame.slider:SetShown(frame.maximum > 0)
     local first = math.floor(frame.offset / ROW_HEIGHT) + 1
-    for index = first, math.min(#plan, first + math.ceil(VIEW_HEIGHT / ROW_HEIGHT)) do
+    for index = first, math.min(#plan, first + math.ceil(viewHeight / ROW_HEIGHT)) do
         local stop, slot = plan[index], index - first + 1
         local row = frame.rows[slot]
         if not row then
@@ -108,7 +121,7 @@ function ns.RenderGuideQuestList()
             .. (ns.IsGroupQuest(stop.id) and (quest.questType .. " • ") or "") .. status(stop, query))
         row.stop, row.step = stop, stop.guideStep or index; row:Show()
     end
-    frame.rendering = nil
+    layout(frame); frame.rendering = nil
 end
 
 function ns.ShowGuideQuestList(guide)

@@ -1,11 +1,15 @@
 local addonName, ns = ...
 
+function ns.CloseUIMenus()
+    for _, menu in ipairs(ns.uiMenus or {}) do menu:Hide() end
+end
+
 -- Owned menus avoid relying on secure Blizzard menu implementations in beta.
 function ns.UIDropdown(parent, entries, width, callback)
     local control = ns.UIButton(parent, "", width, function() end)
     local menu = CreateFrame("Frame", nil, control, "BackdropTemplate")
     menu:SetPoint("TOPLEFT", control, "BOTTOMLEFT", 0, -2)
-    menu:SetSize(width, #entries * 28 + 8); menu:SetFrameStrata("DIALOG")
+    menu:SetSize(width, #entries * 28 + 8); menu:SetFrameStrata("TOOLTIP"); menu:SetClampedToScreen(true)
     menu:SetFrameLevel(control:GetFrameLevel() + 20); ns.UIPanel(menu)
     control.menu, control.entries, control.options = menu, entries, {}
     for index, entry in ipairs(entries) do
@@ -49,11 +53,20 @@ function ns.UIDropdown(parent, entries, width, callback)
     end
     ns.uiMenus = ns.uiMenus or {}; ns.uiMenus[#ns.uiMenus + 1] = menu
     control:SetScript("OnClick", function()
+        local currentWidth = control:GetWidth() or width
+        menu:SetWidth(currentWidth); control.caption:SetWidth(currentWidth - 34)
+        for _, row in pairs(control.options) do row:SetWidth(currentWidth - 8) end
         local opening = not menu:IsShown()
         for _, other in ipairs(ns.uiMenus) do other:Hide() end
         menu:SetShown(opening)
     end)
     control:SetScript("OnHide", function() menu:Hide() end)
+    control:SetScript("OnSizeChanged", function()
+        local currentWidth = control:GetWidth() or width
+        control.caption:SetWidth(currentWidth - 34); menu:SetWidth(currentWidth)
+        for _, row in pairs(control.options) do row:SetWidth(currentWidth - 8) end
+        menu:Hide()
+    end)
     menu:Hide()
     return control
 end

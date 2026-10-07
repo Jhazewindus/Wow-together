@@ -51,6 +51,7 @@ function ns.OfferProfessionScan(id)
         prompt.scan:SetPoint("BOTTOMLEFT", 20, 18); ns.UIButtonTone(prompt.scan, true)
         prompt.later = ns.UIButton(prompt, "Later", 110, function() prompt:Hide() end)
         prompt.later:SetPoint("BOTTOMRIGHT", -20, 18)
+        ns.ResizeChoicePopup(prompt, "profession-scan", {prompt.scan, prompt.later}, 420, 180)
     end
     prompt.professionID = id
     prompt.title:SetText("Scan " .. facts.name .. " progress")
@@ -66,6 +67,9 @@ local function layout(frame)
     if ns.Public(height) and type(height) == "number" then
         frame.nextText:SetHeight(math.max(80, math.min(height, frame:GetHeight() - 280)))
     end
+    frame.title:SetWidth(width - 106); frame.skill:SetWidth(width - 106)
+    local bodyHeight = frame.body:GetStringHeight()
+    if ns.Public(bodyHeight) and type(bodyHeight) == "number" then frame.child:SetHeight(math.max(120, bodyHeight + 12)) end
 end
 local function create()
     if ns.professionViewer then return ns.professionViewer end
@@ -103,10 +107,8 @@ local function create()
     frame.materials:SetPoint("LEFT", frame.start, "RIGHT", 10, 0)
     frame.refresh = ns.UIButton(frame, "Refresh", 92, function() ns.RefreshProfessionPlan(frame.professionID) end)
     frame.refresh:SetPoint("BOTTOMRIGHT", -30, 16)
-    local resize = ns.UIButton(frame, "↘", 20, function() end); resize:SetPoint("BOTTOMRIGHT", -4, 4)
-    resize:SetScript("OnMouseDown", function() frame:StartSizing("BOTTOMRIGHT") end)
-    resize:SetScript("OnMouseUp", function() frame:StopMovingOrSizing(); layout(frame) end)
-    frame:SetScript("OnSizeChanged", layout); frame:SetScript("OnHide", cancelPreview)
+    frame:SetScript("OnHide", cancelPreview)
+    ns.EnableWindowResize(frame, {key = "profession", minWidth = 540, minHeight = 440, maxWidth = 1000, maxHeight = 900, layout = layout})
     ns.UIHelp(frame.goal, "Plan towards this profession skill. Character level and available training control rank upgrades.")
     ns.UIHelp(frame.materials, "View next-batch materials or an estimate up to your skill goal, after bag stock and planned intermediates.")
     layout(frame)

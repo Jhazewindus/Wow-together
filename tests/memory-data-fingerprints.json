@@ -3,7 +3,7 @@
   "datasets": {
     "catalogue": {
       "file": "QuestCatalogue.lua",
-      "sha256": "9eb3b21eec72c2eeaedfea2ee1351d739de2dec39337762de7bfe3f9850426fc"
+      "sha256": "c252d39f33455584a5cf7080fc5a5b219443bea125c83e8f50207d654bc3d54b"
     },
     "questEntities": {
       "file": "QuestCatalogue.lua",
@@ -26,5 +26,5 @@
       "sha256": "8ad9cbfd94f5a674acf7e616565c320b5fde9345c425eaba1cf72dcd20ebc6a5"
     }
   },
-  "revision": "0.8.31: audited loot relationships and original Vanilla BFD marker identities; other datasets unchanged."
+  "revision": "0.8.31: audited loot relationships and original Vanilla BFD marker identities. 0.8.42: additive source-supplemented quest catalogue; all original quest gates and point fields independently preserved; other datasets unchanged."
 }

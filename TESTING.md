@@ -1,13 +1,13 @@
 # Wow Together — friend test script
 
-For **0.8.41** — **TAINT HOTFIX**, World of Warcraft: Forever beta,
+For **0.8.42** — **GUIDE POLISH**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 74 Lua files** and
+1. Replace the complete WowTogether folder, including **all 75 Lua files** and
    the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    **Fully restart the client for this hotfix**, rather than only `/reload`.
@@ -16,6 +16,32 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Responsive windows and guide destinations — about 10 minutes
+
+- Resize the small guide panel, materials/quest lists and profession viewer.
+  Resize guide-start, future-guide and profession-scan prompts too. The top-left
+  stays fixed at different UI scales; text, lists and choices follow the width.
+  Drag quickly, release outside the grip, close during a drag and reopen. No
+  stuck gesture, runaway resize, accidental guide start or replan should occur.
+- Reopen/reload: popup geometry is retained. Dropdowns stay above their dialog
+  and close while resizing. A taller quest list exposes more rows and keeps its
+  scrollbar inside the view. Diagnostics still copies/closes after Ctrl+C.
+- Resize the dungeon journal, switch Map only / Full view and resize each.
+  Keep the map open in combat; retain its separate compact/full sizes and floors.
+  Test map-quest popups at short/tall heights: paging should expose every row.
+- Follow a long same-zone walk, cross-zone quest, flight or transport: the arrow
+  should explain why that trip is included, before transport details. Verify a
+  capped profession's rank-training reason, known prerequisite and grouped visit.
+  If no special dependency is known, say it follows the selected fixed guide;
+  never claim a trainer is the only option without evidence. Hover for quest/NPC
+  actions and full directions. Keep useful lower-level prerequisite explanations.
+- Start a fresh zone guide to use new compilation/data. Larger nearby pickup or
+  return visits must still respect prerequisites and immediate escorts. Existing
+  saved guides, acceptance, Scan and movement keep their fixed order. Source
+  gaps remain explicit; NPC offers are still required for hidden conditions.
+- No listings found during an AH scan: Materials must say no listings, with no
+  Lua error or zero-price guess. The previous hotfix checks below still apply.
 
 ## Taint hotfix — about 5–10 minutes
 

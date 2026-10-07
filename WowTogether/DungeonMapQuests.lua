@@ -1,6 +1,15 @@
 local addonName, ns = ...
 
 local phases = {a = "Pick up", q = "Objectives", t = "Turn in"}
+local function layout(frame)
+    local width = frame:GetWidth() - 36
+    frame.rowsPerPage = math.max(1, math.min(4, math.floor((frame:GetHeight() - 132) / 64)))
+    frame.title:SetWidth(width - 22); frame.summary:SetWidth(width)
+    for index, row in ipairs(frame.rows) do
+        row:SetWidth(width); row.title:SetWidth(width); row.action:SetWidth(width); row.state:SetWidth(width)
+        if index > frame.rowsPerPage then row:Hide() end
+    end
+end
 local function close(left, right)
     return (left.x - right.x) ^ 2 + (left.y - right.y) ^ 2 < .03 ^ 2
 end
@@ -41,11 +50,12 @@ local function render()
     if not frame or not frame:IsShown() or not frame.group then return end
     local points = {}
     for _, point in ipairs(frame.group.quests) do if ns.DungeonMapQuestVisible(point) then points[#points + 1] = point end end
-    frame.page = math.max(1, math.min(math.max(1, math.ceil(#points / 4)), frame.page))
+    local perPage = frame.rowsPerPage or 4
+    frame.page = math.max(1, math.min(math.max(1, math.ceil(#points / perPage)), frame.page))
     frame.title:SetText(frame.group.name)
     frame.summary:SetText(ns.dungeonData.dungeons[frame.key].name)
     for index, row in ipairs(frame.rows) do
-        local point = points[(frame.page - 1) * 4 + index]
+        local point = (index <= perPage and points[(frame.page - 1) * perPage + index]) or nil
         row:SetShown(point ~= nil)
         if point then
             row.title:SetText(ns.QuestTitle(point.id))
@@ -55,8 +65,7 @@ local function render()
             row.state:SetText(state)
         end
     end
-    local pages = math.max(1, math.ceil(#points / 4))
-    frame:SetHeight(104 + math.max(1, math.min(4, #points)) * 64 + (pages > 1 and 36 or 0))
+    local pages = math.max(1, math.ceil(#points / perPage))
     frame.previous:SetEnabled(frame.page > 1); frame.next:SetEnabled(frame.page < pages)
     frame.previous:SetShown(pages > 1); frame.next:SetShown(pages > 1); frame.pageText:SetShown(pages > 1)
     frame.pageText:SetText(frame.page .. " / " .. pages)
@@ -72,7 +81,7 @@ function ns.ShowDungeonMapQuests(group, key)
     if not ns.dungeonMapQuestWindow then
         local frame = CreateFrame("Frame", "WowTogetherDungeonMapQuests", UIParent, "BackdropTemplate")
         ns.dungeonMapQuestWindow = frame
-        frame:SetSize(380, 388); frame:SetPoint("CENTER", 200, 0)
+        frame:SetSize(380, 132 + math.max(1, math.min(4, #group.quests)) * 64); frame:SetPoint("CENTER", 200, 0)
         frame:SetClampedToScreen(true); frame:SetFrameStrata("DIALOG"); ns.UIPanel(frame, ns.UIColors.background)
         frame:SetMovable(true); frame:EnableMouse(true); frame:RegisterForDrag("LeftButton")
         frame:SetScript("OnDragStart", frame.StartMoving); frame:SetScript("OnDragStop", frame.StopMovingOrSizing)
@@ -92,6 +101,8 @@ function ns.ShowDungeonMapQuests(group, key)
         frame.next = ns.UIButton(frame, "›", 28, function() frame.page = frame.page + 1; render() end); frame.next:SetPoint("BOTTOMRIGHT", -18, 14)
         frame.pageText = ns.UILabel(frame, nil, 10, ns.UIColors.muted); frame.pageText:SetPoint("BOTTOM", 0, 22)
         frame.empty = ns.UILabel(frame, nil, 12, ns.UIColors.muted); frame.empty:SetPoint("TOPLEFT", 18, -92); frame.empty:SetText("No unfinished quests here.")
+        ns.EnableWindowResize(frame, {key = "dungeon-map-quests", minWidth = 340, minHeight = 196, maxWidth = 820, maxHeight = 720,
+            layout = layout, onFinish = render})
         if type(UISpecialFrames) == "table" then table.insert(UISpecialFrames, "WowTogetherDungeonMapQuests") end
     end
     local frame = ns.dungeonMapQuestWindow

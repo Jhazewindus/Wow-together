@@ -1,5 +1,15 @@
 local addonName, ns = ...
 
+local function layout(frame)
+    local width = frame:GetWidth()
+    frame.title:SetWidth(width - 72); frame.subtitle:SetWidth(width - 44)
+    frame.summary:SetWidth(width - 204); frame.hint:SetWidth(width - 224); frame.hint:SetHeight(36); frame.hint:SetWordWrap(true)
+    frame.content:SetWidth(width - 60)
+    for _, row in ipairs(frame.rows) do
+        row:SetWidth(width - 60); row.title:SetWidth(width - 220)
+        row.pickup:SetWidth(width - 125); row.state:SetWidth(width - 255)
+    end
+end
 local function createRow(parent)
     local row = CreateFrame("Button", nil, parent, "BackdropTemplate")
     row:SetSize(600, 94); ns.UIPanel(row)
@@ -71,6 +81,7 @@ function ns.RefreshDungeonQuestList()
     for index = #rows + 1, #frame.rows do frame.rows[index]:Hide() end
     frame.collect:SetEnabled(counts.pending + counts.active > 0)
     frame.collect:SetScript("OnClick", function() ns.ShowDungeonQuests(group, true) end)
+    layout(frame)
 end
 
 function ns.ShowDungeonQuestList(group)
@@ -98,6 +109,7 @@ function ns.ShowDungeonQuestList(group)
         frame.collect = ns.UIButton(frame, "Start quest route", 156, function() end, true); frame.collect:SetPoint("BOTTOMLEFT", 22, 20)
         frame.hint = ns.UILabel(frame, nil, 11, ns.UIColors.muted); frame.hint:SetPoint("BOTTOMLEFT", 196, 28)
         frame.hint:SetText("Collect quests and prerequisites, then head to the entrance.")
+        ns.EnableWindowResize(frame, {key = "dungeon-quests", minWidth = 540, minHeight = 380, maxWidth = 1100, maxHeight = 900, layout = layout})
         if type(UISpecialFrames) == "table" then table.insert(UISpecialFrames, "WowTogetherDungeonQuests") end
     end
     local frame = ns.dungeonWindow

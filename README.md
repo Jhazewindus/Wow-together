@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.41 — TAINT HOTFIX** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.42 — GUIDE POLISH** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -18,10 +18,24 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **74 Lua
-files** and the **Media folder**, then `/reload`. Restart the client fully if a new addon folder does
+Replace the folder on **every party member's client**, including all **75 Lua
+files** and the **Media folder**, then fully restart the client. Restart if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.42 polishes guide windows and destination advice.** Smaller guide-start,
+profession-scan, activity and party prompts now resize and remember geometry.
+Quest lists, materials, the profession viewer and diagnostics reflow their text
+and controls; guide/dungeon resizing uses a stable top-left anchor and ends cleanly
+when the mouse is released outside the grip. Dragging changes geometry; it does
+not replan a guide. The arrow explains why a long trip is needed: a skill cap,
+useful prerequisite, grouped visit or the fixed guide you selected. Hover for
+quest/NPC actions and full transport details without opening the browser.
+Newly compiled guides can combine larger nearby pickup/turn-in visits while
+retaining quest stages, prerequisite hand-ins and escort adjacency. Existing
+fixed guide order stays saved. The source pass reviews all 5,230 records and
+152 faction/level-section guides, and supplements 231 captured pages with 11
+missing mapped points and item/NPC references. Coverage remains partial.
 
 **0.8.41 removes two avoidable taint paths.** Guide changes now select quests
 through the native API without calling Blizzard's Lua quest-details UI helper.

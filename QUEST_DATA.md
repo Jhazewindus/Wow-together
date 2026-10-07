@@ -17,7 +17,7 @@ The category union contains **5,230 quests from 123 leaf lists**. The
 Wowhead root list is truncated at 1,000 and is never treated as a complete index.
 There are **2,232 captured Forever detail pages** and 1,143 Warcraft
 DB detail records. Static pickup / objective-area / hand-in coverage is
-**4,276 / 2,150 / 4,444 quests**.
+**4,281 / 2,151 / 4,449 quests**.
 Runtime named entities: **13,340 NPCs / 6,981 objects /
 3,129 quest-used items**. Unrelated item loot tables are omitted.
 
@@ -25,6 +25,30 @@ Source capture uses normal proxy routing and verified TLS. Individual failed
 IDs remain excluded; renewed denials stop a batch. Successful captures remain
 cached. Downloaded JavaScript, Lua providers and SQL are never executed.
 No source engine, UI, quest prose, artwork or comment prose is bundled.
+
+## 7 October supplemental captures
+
+A normal HTTPS batch captured **231 additional page snapshots** before later
+requests were denied. The offline supplement fills **5 pickup points, 1 objective
+area and 5 hand-in points**, plus missing item requirements and short NPC
+references. These snapshots may overlap older captures, so they are not simply
+added to the distinct detailed-page count. Each source URL/hash is retained in
+QuestCoverage.json; existing mapped coordinates/actions, identity masks and
+reviewed prerequisites take precedence. No downloaded script or quest prose is
+executed/copied. The expanded chapter audit tracks 470 remaining records rather
+than the former full-zone queue of 405; this is a wider audit scope.
+
+Reproduce against the 0.8.41 source files and the captured HTML directory:
+
+```text
+/workspace/.wow-together-tests/bin/python tools/supplement_quest_data.py --directory <baseline-WowTogether> --cache <captured-pages> --output <candidate-directory>
+```
+
+Capture and full rebuilding remain separate from this additive tool. It cannot
+fill facts a page does not publish or certify live NPC availability. Larger
+same-hub pickup/turn-in bundles are allowed only in new fixed compilations when
+all points are within 150 yards, levels are close and dependency/order checks
+pass. Existing running guide order stays saved. Distance scores are estimates.
 
 ## Published Forever database facts
 
@@ -113,18 +137,18 @@ community observations do not establish prerequisites or loot rates.
 
 ## Audit and the remaining completion gate
 
-The Lua 5.1 host audit checked **77 faction-specific guides** and
-**11,811 stored map points**. It verifies finite coordinates, exclusions,
+The Lua 5.1 host audit checked **152 faction/level-section guides** and
+**11,822 stored map points**. It verifies finite coordinates, exclusions,
 repeatable filtering, stage ordering, AND/OR hand-in prerequisites, escort
 adjacency and non-increasing estimated distance. Movement, pickups, abandonment
 and Scan do not reorder a selected fixed guide. This is bounded local search,
 not globally optimal XP or terrain routing.
 
-**5 of 77 guides currently have no audited source gaps.**
+**32 of 152 guide sections currently have no audited source gaps.**
 `--require-complete` exits with status 2 while any guide has missing locations,
 pickup requirements, required quantities or prerequisite review steps. Passing
 route invariants alone must never be presented as 100% guide completion.
-`GuideSourceQueue.json` identifies **405 remaining quest records**, their exact
+`GuideSourceQueue.json` identifies **470 remaining quest records**, their exact
 missing stages/facts and relevant source URLs. It is included in releases.
 
 The environment rules have been applied and initial source reads succeeded.
@@ -184,7 +208,7 @@ remain in the catalogue while excluded from normal leveling.
 | dungeons/uldaman | 29 | 21 | 12 | 23 | 13 |
 | dungeons/wailing-caverns | 12 | 8 | 5 | 9 | 6 |
 | dungeons/zulfarrak | 10 | 10 | 1 | 10 | 3 |
-| eastern-kingdoms/alterac-mountains | 21 | 18 | 10 | 18 | 16 |
+| eastern-kingdoms/alterac-mountains | 21 | 18 | 10 | 19 | 16 |
 | eastern-kingdoms/alterac-valley | 3 | 3 | 0 | 3 | 0 |
 | eastern-kingdoms/anvilmar | 1 | 1 | 1 | 1 | 1 |
 | eastern-kingdoms/arathi-highlands | 54 | 50 | 32 | 50 | 47 |
@@ -209,8 +233,8 @@ remain in the catalogue while excluded from normal leveling.
 | eastern-kingdoms/silverpine-forest | 50 | 50 | 26 | 50 | 50 |
 | eastern-kingdoms/stonewrought-dam | 1 | 1 | 0 | 1 | 1 |
 | eastern-kingdoms/stormwind-city | 88 | 84 | 23 | 87 | 81 |
-| eastern-kingdoms/stranglethorn-vale | 125 | 104 | 79 | 105 | 98 |
-| eastern-kingdoms/swamp-of-sorrows | 28 | 24 | 14 | 23 | 21 |
+| eastern-kingdoms/stranglethorn-vale | 125 | 106 | 79 | 106 | 98 |
+| eastern-kingdoms/swamp-of-sorrows | 28 | 25 | 14 | 24 | 21 |
 | eastern-kingdoms/the-hinterlands | 45 | 45 | 31 | 45 | 43 |
 | eastern-kingdoms/thoradins-wall | 1 | 1 | 0 | 1 | 1 |
 | eastern-kingdoms/tirisfal-glades | 66 | 65 | 44 | 66 | 64 |
@@ -224,7 +248,7 @@ remain in the catalogue while excluded from normal leveling.
 | kalimdor/blackmaw-hold | 7 | 7 | 4 | 7 | 4 |
 | kalimdor/darkshore | 80 | 80 | 53 | 80 | 78 |
 | kalimdor/darnassus | 29 | 28 | 7 | 28 | 20 |
-| kalimdor/desolace | 76 | 60 | 42 | 58 | 52 |
+| kalimdor/desolace | 76 | 62 | 43 | 60 | 54 |
 | kalimdor/durotar | 67 | 61 | 39 | 62 | 56 |
 | kalimdor/dustwallow-marsh | 69 | 55 | 25 | 55 | 53 |
 | kalimdor/felwood | 87 | 83 | 39 | 83 | 43 |

@@ -168,13 +168,33 @@ function ns.OptimizeFixedPlan(plan, distance, cooperative, onYield)
         for first = 2, #plan - 2 do
             local best, saving, stop = nil, 0, plan[first]
             local level = (ns.CatalogueQuest(stop.id) or {}).level or 0
-            for size = 2, math.min(4, #plan - first) do
+            -- Same-hub pickup/hand-in runs can be larger than an escort pair.
+            -- Keep mixed-action bundles bounded at four; larger runs must be
+            -- one visit type with every point within 150 yards of its anchor.
+            local sizes, largeSize = {2, 3, 4}, nil
+            if stop.kind == "a" or stop.kind == "t" then
+                for index = first, math.min(first + 7, #plan - 1) do
+                    local point = plan[index]
+                    local other = (ns.CatalogueQuest(point.id) or {}).level or 0
+                    if point.unknownLocation or point.planNeedsReview or point.mapID ~= stop.mapID
+                        or point.kind ~= stop.kind or math.abs(other - level) > 2
+                        or distance(stop, point) > 150 then break end
+                    if index - first + 1 > 4 then largeSize = index - first + 1 end
+                end
+            end
+            -- Evaluate the largest homogeneous visit once, rather than every
+            -- overlapping prefix. Small mixed/escort bundles retain their search.
+            if largeSize then sizes[#sizes + 1] = largeSize end
+            for _, size in ipairs(sizes) do
+                if size > #plan - first then break end
                 local last, localBundle = first + size - 1, true
                 for index = first, last do
                     local point = plan[index]
                     local other = (ns.CatalogueQuest(point.id) or {}).level or 0
                     if point.unknownLocation or point.planNeedsReview or point.mapID ~= stop.mapID
-                        or math.abs(other - level) > 2 or distance(stop, point) > 300 then localBundle = false; break end
+                        or math.abs(other - level) > 2 or distance(stop, point) > 300
+                        or size > 4 and (stop.kind ~= "a" and stop.kind ~= "t" or point.kind ~= stop.kind
+                            or distance(stop, point) > 150) then localBundle = false; break end
                 end
                 if localBundle then
                     local old = distance(plan[first - 1], stop) + distance(plan[last], plan[last + 1])
