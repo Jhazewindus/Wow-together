@@ -48,7 +48,7 @@ def prepare(archive):
     message = ('**Wow Together ' + release_label + ' — Forever beta**\n\n'
                + section.group(1).strip()
                + '\n\n**Install:** replace the complete `WowTogether` folder on every party member’s client in '
-               '`World of Warcraft\\_classic_beta_\\Interface\\AddOns\\WowTogether\\`, then `/reload`. '
+               '`World of Warcraft\\_classic_beta_\\Interface\\AddOns\\WowTogether\\`, then fully restart the client. '
                'Restart the client if the addon folder does not appear.\n\n'
                '**Testing:** use the attached leveling checklist and report template. '
                'Host checks do not establish beta API/rendering compatibility.')

@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.40
-## X-ReleaseName: MARKET SMART
+## Version: 0.8.41
+## X-ReleaseName: TAINT HOTFIX
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua

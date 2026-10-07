@@ -142,17 +142,15 @@ class QuestFocusTests(unittest.TestCase):
         c.ns.UpdateGuideQuestFocus()
         self.assertEqual(list(c.lua.globals().selections.values()), [900,901])
 
-    def test_native_helper_keeps_displayed_log_details_consistent_and_does_not_open_map(self):
+    def test_native_selection_avoids_blizzard_lua_details_helper_and_does_not_open_map(self):
         c = self.client()
         c.lua.execute('''
-            QuestMapFrame_ShowQuestDetails=function(id)
-                details=id; C_QuestLog.SetSelectedQuest(id)
-            end
+            QuestMapFrame_ShowQuestDetails=function() error('Taint-prone UI helper called') end
             OpenQuestLog=function() error('Should not open quest log') end
             WorldMapFrame.Show=function() error('Should not open world map') end
         ''')
         c.ns.UpdateGuideQuestFocus()
-        self.assertEqual(c.lua.globals().details, 900)
+        self.assertEqual(c.lua.globals().selections[1], 900)
         self.assertEqual(len(c.lua.globals().selections), 1)
 
     def test_disabled_arrow_panels_still_select_but_option_off_does_not(self):

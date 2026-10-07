@@ -1,5 +1,18 @@
 # Wow Together changelog
 
+## 0.8.41
+
+**TAINT HOTFIX**
+
+- Select the current accepted guide quest through the native quest API without
+  calling Blizzard's Lua quest-details UI helper on guide changes.
+- Leave Blizzard auction-window anchors untouched. The materials panel stays
+  beside it and can be dragged; closing it never repositions the native window.
+- Preserve out-of-combat selection/tracking, fixed guides and auction scans.
+  Host checks cover repeated changes, combat deferral and untouched native UI.
+- Fully restart the client after installing. These remove two avoidable taint
+  paths; the reported aura/Edit Mode error still needs a fresh-client beta retest.
+
 ## 0.8.40
 
 **MARKET SMART**

@@ -100,12 +100,16 @@ class AuctionPanelTests(unittest.TestCase):
             self.assertGreaterEqual(item.missing,0)
             self.assertIn(str(item.missing), next(r.amount.text for r in panel.rows.values() if r.itemID==item.itemID))
 
-    def test_native_auction_frame_is_nudged_only_if_needed_then_restored(self):
+    def test_native_auction_anchors_are_never_changed_and_own_panel_can_move(self):
         c = market(crafting()); c.ns.StartProfessionGuide(171,75)
         c.lua.execute('''
         function UIParent:GetWidth() return 1600 end
         function UIParent:GetEffectiveScale() return 1 end
         AuctionHouseFrame=CreateFrame('Frame');AuctionHouseFrame:Show();AuctionHouseFrame:SetSize(800,480)
+        AuctionHouseFrame:SetPoint('TOPLEFT',UIParent,'TOPLEFT',16,-100)
+        function AuctionHouseFrame:ClearAllPoints() error('Native anchors must remain untouched') end
+        function AuctionHouseFrame:SetPoint() error('Native anchors must remain untouched') end
+        function AuctionHouseFrame:SetParent() error('Native parent must remain untouched') end
         function AuctionHouseFrame:GetLeft() return 16 end
         function AuctionHouseFrame:GetTop() return 800 end
         function AuctionHouseFrame:GetEffectiveScale() return 1 end
@@ -114,9 +118,13 @@ class AuctionPanelTests(unittest.TestCase):
         ''')
         c.ns.handlers.AUCTION_HOUSE_SHOW(); c.drain()
         native = c.lua.globals().AuctionHouseFrame
-        self.assertEqual(native.point[3], 'BOTTOMLEFT'); self.assertEqual(native.point[4],338)
+        self.assertEqual(native.point[3], 'TOPLEFT'); self.assertEqual(native.point[4],16)
+        panel = c.ns.auctionGuideToolbar
+        panel.OnDragStart(); panel.SetPoint(panel,'CENTER',c.lua.globals().UIParent,'CENTER',20,30)
+        panel.OnDragStop(); c.ns.RefreshAuctionGuideSearch()
+        self.assertEqual(panel.point[1], 'CENTER')
         c.lua.globals().combat = True; c.ns.handlers.AUCTION_HOUSE_CLOSED()
-        self.assertEqual(native.point[4],338)
+        self.assertEqual(native.point[4],16)
         c.lua.globals().combat = False; c.ns.handlers.PLAYER_REGEN_ENABLED()
         self.assertEqual(native.point[3], 'TOPLEFT'); self.assertEqual(native.point[4],16)
 

@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.40** — **MARKET SMART**, World of Warcraft: Forever beta,
+For **0.8.41** — **TAINT HOTFIX**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
@@ -10,19 +10,32 @@ The expanded-guide checks below take about **15–25 minutes**.
 1. Replace the complete WowTogether folder, including **all 74 Lua files** and
    the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
-   `/reload`; restart fully if a new addon folder does not appear.
+   **Fully restart the client for this hotfix**, rather than only `/reload`.
 2. Enable `/console scriptErrors 1`. Record version, build, level, faction, class,
    race, zone, party size and relevant settings. Update every party member.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
 
+## Taint hotfix — about 5–10 minutes
+
+- Start an accepted leveling quest, progress/skip to another accepted quest and
+  fight while the guide is open. Quest selection/highlights should update after
+  combat without opening or rewriting the quest-details window.
+- Continue ordinary questing, then open Edit Mode, move a layout element and
+  close it. Check for the reported GetAuraDataByIndex taint error. Also test a
+  fresh client without opening the auction house first. Record other addons.
+- Open the AH with a profession guide: Blizzard's window must keep its original
+  position. Drag the materials panel if necessary; price scanning and per-item
+  searches should work. Close/reopen and enter/leave combat without native
+  window movement or errors. Capture `/wt probe` and the full stack on failure.
+
 ## Goal-based auction shopping — about 10–15 minutes
 
 - Start any of the six crafting guides, select 75/150/225/300, then open the AH.
   The material panel should sit to its left. If the normal AH is against the
-  screen edge and space allows, move it temporarily to make room; closing the
-  AH restores its position. Check your screen scale and small screens. The list
+  screen edge, drag the materials panel to make room. Blizzard's window keeps
+  its position when opening and closing the panel. Check your screen scale and small screens. The list
   scrolls; each item shows approximate Buy amount after bags/planned intermediates
   and a Search button. Opening the AH alone must send no searches.
 - Click Scan auction house. Check preparation/progress and Stop scan. It should

@@ -1,6 +1,6 @@
 local addonName, ns = ...
 
-local panel, forecast, nativePosition, restorePending
+local panel, forecast
 local function shown(frame) return frame and ns.ReadPublic(frame.IsShown, frame) == true end
 function ns.AuctionHouseVisible()
     return ns.auctionHouseOpen and (shown(AuctionHouseFrame) or shown(AuctionFrame)) or false
@@ -63,46 +63,14 @@ function ns.SearchGuideAuctionItem(id)
     status("Open the auction Buy / Browse tab to search."); return false
 end
 
--- Make space only when the normal auction placement leaves no room on its
--- left. Remember/restore the native anchors; never move it during combat.
-local function restoreNativePosition()
-    if not nativePosition then return end
-    if ns.RouteInCombat() then restorePending = true; return end
-    local frame = nativePosition.frame
-    frame:ClearAllPoints()
-    for _, point in ipairs(nativePosition.points) do frame:SetPoint(unpack(point, 1, 5)) end
-    nativePosition, restorePending = nil, nil
-end
-local function makeRoom(parent)
-    if nativePosition or ns.RouteInCombat() then return end
-    local left, top = ns.ReadPublic(parent.GetLeft, parent), ns.ReadPublic(parent.GetTop, parent)
-    local width, screen = ns.ReadPublic(parent.GetWidth, parent), ns.ReadPublic(UIParent.GetWidth, UIParent)
-    local scale = ns.ReadPublic(parent.GetEffectiveScale, parent)
-    local uiScale = ns.ReadPublic(UIParent.GetEffectiveScale, UIParent)
-    if not ns.Public(left) or type(left) ~= "number" or not ns.Public(top) or type(top) ~= "number"
-        or not ns.Public(width) or type(width) ~= "number" or not ns.Public(screen) or type(screen) ~= "number"
-        or not ns.Public(scale) or type(scale) ~= "number" or not ns.Public(uiScale) or type(uiScale) ~= "number" or uiScale <= 0 then return end
-    left, top, width = left * scale / uiScale, top * scale / uiScale, width * scale / uiScale
-    local required = 338
-    if left >= required or required + width > screen - 12 then return end
-    local count = ns.ReadPublic(parent.GetNumPoints, parent)
-    if not ns.GuideInteger(count, 10) or count < 1 then return end
-    local points = {}
-    for index = 1, count do
-        local okay, point, relative, relativePoint, x, y = pcall(parent.GetPoint, parent, index)
-        if not okay or not ns.Public(point) or not ns.Public(relative) or not ns.Public(relativePoint)
-            or not ns.Public(x) or not ns.Public(y) then return end
-        points[index] = {point, relative, relativePoint, x, y}
-    end
-    nativePosition = {frame = parent, points = points}
-    parent:ClearAllPoints(); parent:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", required * uiScale / scale, top * uiScale / scale)
-end
-
 local function create(parent)
     if panel then return panel end
-    panel = CreateFrame("Frame", "WowTogetherAuctionMaterials", parent, "BackdropTemplate")
+    panel = CreateFrame("Frame", "WowTogetherAuctionMaterials", UIParent, "BackdropTemplate")
     ns.auctionGuideToolbar = panel
     panel:SetSize(320, 480); ns.UIPanel(panel); panel:SetFrameStrata("DIALOG"); panel:SetClampedToScreen(true)
+    panel:SetMovable(true); panel:EnableMouse(true); panel:RegisterForDrag("LeftButton")
+    panel:SetScript("OnDragStart", function() panel:StartMoving() end)
+    panel:SetScript("OnDragStop", function() panel:StopMovingOrSizing(); panel.placed = true end)
     panel.title = ns.UILabel(panel, nil, 17, ns.UIColors.gold); panel.title:SetPoint("TOPLEFT", 14, -15); panel.title:SetText("Crafting materials")
     ns.UIClose(panel, function() panel.dismissed = true; panel:Hide(); ns.CancelAuctionScan() end)
     panel.scan = ns.UIButton(panel, "Scan auction house", 292, ns.StartAuctionGuideScan)
@@ -197,8 +165,11 @@ function ns.RefreshAuctionGuideSearch()
     if not id and #list == 0 then if panel then panel:Hide() end; return end
     create(parent)
     if panel.dismissed then return end
-    makeRoom(parent)
-    panel:SetParent(parent); panel:ClearAllPoints(); panel:SetPoint("TOPRIGHT", parent, "TOPLEFT", -6, 0)
+    -- Move only our own panel. Changing Blizzard's window anchors from addon
+    -- Lua can taint layouts later, even after the auction house closes.
+    if not panel.placed then
+        panel:ClearAllPoints(); panel:SetPoint("TOPRIGHT", parent, "TOPLEFT", -6, 0)
+    end
     panel:Show(); panel.scan.caption:SetText(ns.AuctionScanState() and "Stop scan" or "Scan auction house")
     panel.scan:SetEnabled(id ~= nil); panel.goal:SetShown(id ~= nil)
     panel.status:SetText(ns.auctionScanStatus or ns.auctionGuideStatus or "Search an item, or scan prices for your goal.")
@@ -225,12 +196,10 @@ ns.On("AUCTION_HOUSE_CLOSED", function()
     ns.auctionHouseOpen = false; forecast = nil
     ns.CancelAuctionScan("Scan stopped: auction house closed.")
     if panel then panel:Hide(); panel.planSignature = nil; panel.goal.menu:Hide() end
-    restoreNativePosition()
 end)
 local previousRegen = ns.handlers.PLAYER_REGEN_ENABLED
 ns.On("PLAYER_REGEN_ENABLED", function(...)
     if previousRegen then previousRegen(...) end
-    if restorePending then restoreNativePosition() end
     if ns.shoppingContext and ns.shoppingWindow and ns.shoppingWindow:IsShown() and not ns.shoppingContext.signature then
         ns.RefreshProfessionShopping()
     end

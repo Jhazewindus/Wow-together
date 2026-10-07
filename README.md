@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.40 — MARKET SMART** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.41 — TAINT HOTFIX** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -22,6 +22,13 @@ Replace the folder on **every party member's client**, including all **74 Lua
 files** and the **Media folder**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.41 removes two avoidable taint paths.** Guide changes now select quests
+through the native API without calling Blizzard's Lua quest-details UI helper.
+The auction materials panel is movable and no longer moves Blizzard's auction
+window. **Fully restart the client after installing this hotfix.** The reported
+aura/Edit Mode error needs a fresh-client beta retest; host checks cannot prove
+that client-side taint is eliminated.
 
 **0.8.40 adds goal-based auction shopping.** The panel sits left of the auction
 house with a scrollable material list, approximate amounts to buy after stock,

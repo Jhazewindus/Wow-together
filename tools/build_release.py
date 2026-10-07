@@ -51,7 +51,8 @@ World of Warcraft\\_classic_beta_\\Interface\\AddOns\\WowTogether\\
 
 Update EVERY party member to {version}, including ALL {len(names)} Lua files
 and the Media folder,
-then /reload. Restart the client fully if a new addon folder does not appear.
+then fully restart the client for 0.8.41's taint mitigation (a /reload is insufficient
+to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
 Database details unpack only when used. Keep DataStore.lua and the complete

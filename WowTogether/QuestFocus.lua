@@ -20,7 +20,6 @@ function ns.UpdateGuideQuestFocus()
         return
     end
     local selectQuest = C_QuestLog and C_QuestLog.SetSelectedQuest
-    local showDetails = QuestMapFrame_ShowQuestDetails
     local trackQuest = C_SuperTrack and C_SuperTrack.SetSuperTrackedQuestID
     if type(selectQuest) ~= "function" and type(trackQuest) ~= "function" then
         ns.guideQuestFocusStatus = "Quest selection/tracking APIs unavailable on this build."
@@ -37,19 +36,17 @@ function ns.UpdateGuideQuestFocus()
     local previous = ns.guideQuestFocusTarget
     local status = "Current guide quest: " .. ns.QuestTitle(id) .. " (" .. id .. ")."
     if previous and previous.id == id and previous.selectQuest == selectQuest
-        and previous.trackQuest == trackQuest and previous.showDetails == showDetails then
+        and previous.trackQuest == trackQuest then
         ns.guideQuestFocusStatus = status
         return
     end
     -- Set before calling native actions: synchronous quest events must not
     -- select recursively. Do not retry failed protected actions with pcall.
-    ns.guideQuestFocusTarget = {id = id, selectQuest = selectQuest, trackQuest = trackQuest, showDetails = showDetails}
+    ns.guideQuestFocusTarget = {id = id, selectQuest = selectQuest, trackQuest = trackQuest}
     if type(selectQuest) == "function" then
-        -- Match a native log click, including its displayed details. Calling
-        -- this helper does not open the map/log window. Direct selection is
-        -- the fallback when the UI helper isn't exposed by the beta.
-        if type(showDetails) == "function" then showDetails(id)
-        else selectQuest(id) end
+        -- The native selection API avoids writing Blizzard's quest-details
+        -- frames from addon Lua. Do not call QuestMapFrame_ShowQuestDetails.
+        selectQuest(id)
     end
     if type(trackQuest) == "function" then trackQuest(id) end
     ns.guideQuestFocusStatus = status
