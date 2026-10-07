@@ -55,6 +55,17 @@ then fully restart the client; the release includes taint mitigation (a /reload 
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+0.8.54 BETTER TRAVEL ORDER checks step/bundle ordering against published
+connections after the full quest-flow passes. Keep every action, prerequisite,
+escort and onward endpoint; a shorter estimate cannot delay known rewards before
+work or worsen progression/log/kill guards. Changed legs need published
+connections or short local estimates; uncertain branches stay recovery points.
+142 travel changes improve 60 of 152 sections; all 12,985 actions remain and
+608 additional starting-level/XP checks pass. Bounded travel caches reduce
+repeated calculations during loading. Started guides retain their order during
+play. See ROUTE_OPTIMIZATION.md and GuideFlowAudit.json for complete comparisons.
+Source coverage is unchanged; native terrain and complete-trip timing need beta tests.
+
 0.8.53 EARLIER REWARDS collects ready hand-ins during existing mapped visits.
 Individual and grouped rewards can come before later work even when final XP,
 peak held quests and known minimum-level shortfalls stay equal. Compare the full

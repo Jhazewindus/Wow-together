@@ -102,6 +102,15 @@ def audit():
                     for field in ('peakLog','levelDeficitXP','minimumKills','difficultyPressure','uncertainTravelLegs','blockedTravelLegs'):
                         assert flow.after[field]<=flow.before[field],(key,field,'flow regression')
                     assert flow.after.questXP>=flow.before.questXP,(key,'reward regression')
+                    network=g.optimization.network
+                    if network:
+                        assert network.after.valid, (key,'network state')
+                        assert network.after.distance<=network.before.distance+1e-6, (key,'network travel regression')
+                        for field in ('peakLog','levelDeficitXP','minimumKills','difficultyPressure','uncertainTravelLegs','blockedTravelLegs'):
+                            assert network.after[field]<=network.before[field], (key,field,'network regression')
+                        assert network.after.questXP>=network.before.questXP,(key,'network reward regression')
+                        for stop,reward in network.before.workRewards.items():
+                            assert network.after.workRewards[stop]>=reward,(key,'network reward delayed')
                     gaps={kind:sorted({int(s.id) for s in plan if s.kind==kind and s.unknownLocation}) for kind in ('a','q','t')}
                     unread=sorted(int(id) for id in kinds if not c.ns.CatalogueQuest(id).prerequisitesRead
                         or c.ns.CatalogueQuest(id).prerequisitesUnverified)

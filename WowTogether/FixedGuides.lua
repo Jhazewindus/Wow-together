@@ -149,7 +149,7 @@ function ns.GenerateFixedGuide(guide, cooperative)
     end
     local geometry = function(a, b) return distance(a, b, metrics) end
     local resetTravel
-    local onYield = function() metrics, learned = {}, {}; if resetTravel then resetTravel() end end
+    local onYield = function() metrics, learned = {}, {}; if resetTravel then resetTravel(true) end end
     local travelCost; travelCost, resetTravel = ns.NewFixedTravelCost(geometry, cooperative, onYield)
     guide.optimization = ns.OptimizeFixedPlan(ordered, geometry, cooperative, onYield, travelCost,
         {levelLow = guide.sectionLow or guide.minLevel, levelHigh = guide.sectionHigh or guide.maxLevel})

@@ -1,5 +1,36 @@
 # Wow Together changelog
 
+## 0.8.54
+
+**BETTER TRAVEL ORDER**
+
+- Compare published travel connections after the existing pickup/work/hand-in
+  flow passes. Reuse the bounded step and bundle search. Accept a change only
+  when the complete guide's estimated travel improves; every changed leg must
+  use a published connection or a short local estimate, with at least one
+  changed connection involving the network. Unmapped shortcuts are rejected.
+- Replay each viable change against all required actions and onward endpoints.
+  Keep prerequisites, escorts, recovery boundaries, quest-log peak, known level
+  shortfalls, required-kill lower bounds and total rewards. Do not delay known
+  reward XP before another objective. Check the bottom/middle/top bracket and
+  a partly filled XP bar, including possible later grey-quest reward losses.
+- The identical-source comparison retains all 12,985 actions in 152 sections:
+  142 travel changes improve 60 sections; the other 92 keep their previous
+  order. All 608 additional starting-level/XP checks pass. GuideFlowAudit.json
+  records complete old/new steps, changed-leg evidence and separate travel
+  traces. Prior trip/reward traces are not counted as new improvements.
+- Keep bounded attachment/leg caches between loading frames instead of
+  recalculating them at every yield. Explicit cache resets remain available.
+  The 246-action Durotar host fixture uses 1,783 loading resumes, compared with
+  2,391 previously; host timings do not guarantee native frame performance.
+  Started guides remain fixed during play, scans and same-version reloads.
+- Quest/NPC/transport facts are unchanged. The source audit still has 33
+  gap-free sections and 119 needing facts. Terrain, drop delays, combat XP and
+  complete-trip timings remain beta-client checks; no XP/hour is invented.
+- Validation: all 1,371 host tests passed, including 61 targeted flow/cache/
+  recovery checks. All 81 Lua files compile under Lua 5.1; the source audit
+  checks 11,822 points and 16,849 action reasons across all 152 sections.
+
 ## 0.8.53
 
 **EARLIER REWARDS**

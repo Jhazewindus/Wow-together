@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.53"
-ns.RELEASE_NAME = "EARLIER REWARDS"
+ns.VERSION = "0.8.54"
+ns.RELEASE_NAME = "BETTER TRAVEL ORDER"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}

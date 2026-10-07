@@ -5,7 +5,7 @@ local addonName, ns = ...
 -- uncovered roads remain estimates; transport weights are published estimates.
 function ns.NewFixedTravelCost(fallback, cooperative, onYield)
     local policy = {faction = ns.profile and ns.profile.faction, safety = ns.TravelSafetyContext(), metrics = {}}
-    local nearest, memo, count = {}, {}, 0
+    local nearest, memo, count, nearestCount = {}, {}, 0, 0
     local work = 0
     local function tick()
         work = work + 1
@@ -37,7 +37,8 @@ function ns.NewFixedTravelCost(fallback, cooperative, onYield)
             end
             tick()
         end
-        nearest[point] = result
+        if nearestCount >= 2048 then nearest, nearestCount = {}, 0 end
+        nearest[point], nearestCount = result, nearestCount + 1
         return result
     end
     local function distance(a, b)
@@ -65,8 +66,13 @@ function ns.NewFixedTravelCost(fallback, cooperative, onYield)
         memo[a] = memo[a] or {}; memo[a][b] = {best, basis}; count = count + 1
         return best, basis
     end
-    local function reset()
-        nearest, memo, count = {}, {}, 0
+    local function reset(checkpoint)
+        -- Published graph/profile/guide points are the compilation snapshot.
+        -- Both caches have fixed limits above, so keep repeated attachments
+        -- and leg costs across loading frames. Explicit reset() still clears
+        -- them; world-projection scratch data is released at each checkpoint.
+        if checkpoint then policy.metrics = {}; return end
+        nearest, memo, count, nearestCount = {}, {}, 0, 0
         policy.metrics = {}
     end
     return distance, reset

@@ -48,7 +48,7 @@ def describe_actions(stops, ns, rewards=None):
     return result
 
 
-def capture(baseline=None, flow_module=None, label=None):
+def capture(baseline=None, flow_module=None, label=None, optimizer_module=None):
     c = Client(quests=(), use_catalogue=True)
     c.guide_environment(level=1)
     c.lua.globals().grouped = False
@@ -61,6 +61,9 @@ def capture(baseline=None, flow_module=None, label=None):
         # This is explicitly supplied project code, never downloaded source.
         c.lua.execute('assert(loadstring(...))(select(2, ...))',
                       flow_module.read_text(), 'WowTogether', c.ns)
+    if optimizer_module:
+        c.lua.execute('assert(loadstring(...))(select(2, ...))',
+                      optimizer_module.read_text(), 'WowTogether', c.ns)
     result, seen = [], set()
     old_guides = {(g['faction'], g['key']): g for g in baseline['guides']} if baseline else {}
     comparisons, starting_states_checked = [], 0
@@ -133,11 +136,37 @@ def capture(baseline=None, flow_module=None, label=None):
                         old_order=encode(original.values());new_order=encode(candidate)
                         if old_order!=new_order:
                             flow=guide.optimization.flow
+                            network=guide.optimization.network
+                            def regions(stages):
+                                result, region = {}, 0
+                                for stop in stages:
+                                    if stop.unknownLocation or stop.planNeedsReview: region += 1
+                                    result[str(stop)] = region
+                                return result
+                            assert regions(original.values()) == regions(candidate), (key, 'recovery boundary crossed')
+                            def edges(stages):
+                                stages = list(stages)
+                                return {(str(a),str(b)):(a,b) for a,b in zip(stages,stages[1:])}
+                            old_edges,new_edges=edges(original.values()),edges(candidate)
+                            changed_bases=collections.Counter()
+                            for source,other in ((old_edges,new_edges),(new_edges,old_edges)):
+                                for edge,(a,b) in source.items():
+                                    if edge not in other:
+                                        _,basis=metric(a,b)
+                                        changed_bases[basis]+=1
+                                        assert basis in ('local-estimate','network-estimate'), (key, 'uncovered changed edge',basis)
                             comparisons.append({'faction':faction,'key':guide.key,'zone':guide.zone,
                                 'before':old_order,'after':new_order,
                                 'before_actions': describe_actions(original.values(), c.ns, before.workRewards),
                                 'after_actions': describe_actions(candidate, c.ns, after.workRewards),
                                 'alternatives_evaluated':flow.candidates,'accepted_loop_changes':flow.moves,
+                                'network_alternatives_evaluated':network.candidates if network else 0,
+                                'accepted_network_changes':network.moves if network else 0,
+                                'changed_travel_edge_bases':dict(changed_bases),
+                                'network_changes':[{'kind':move.kind,'quest_ids':list(move.questIDs.values()),
+                                    'actions_moved':move.actions,'estimated_travel_units_saved':round(move.travelSaved,2),
+                                    'reward_xp_before_work_gained':move.rewardBeforeWorkGained}
+                                    for move in network.changes.values()] if network else [],
                                 'loop_changes':[{'quest_ids':list(change.questIDs.values()),'near_quest_id':change.nearQuestID,
                                     'actions_moved':change.actions,'estimated_travel_units_saved':round(change.travelSaved,2),
                                     'minimum_kills_saved':change.killsSaved,
@@ -163,6 +192,9 @@ def capture(baseline=None, flow_module=None, label=None):
                     print(f'{faction}: {guide.key}: {len(stops)} actions', flush=True)
     report = {'schema': 1, 'addon': label or c.ns.VERSION,
             'flow_module_sha256': hashlib.sha256((flow_module or ROOT / 'WowTogether/QuestFlow.lua').read_bytes()).hexdigest(),
+            'optimizer_module_sha256': hashlib.sha256((optimizer_module or ROOT / 'WowTogether/FixedRouteOptimizer.lua').read_bytes()).hexdigest(),
+            'fixed_guides_sha256': hashlib.sha256((ROOT / 'WowTogether/FixedGuides.lua').read_bytes()).hexdigest(),
+            'fixed_travel_cost_sha256': hashlib.sha256((ROOT / 'WowTogether/FixedTravelCost.lua').read_bytes()).hexdigest(),
             'catalogue_sha256': hashlib.sha256((ROOT / 'WowTogether/QuestCatalogue.lua').read_bytes()).hexdigest(),
             'travel_sha256': hashlib.sha256((ROOT / 'WowTogether/TravelData.lua').read_bytes()).hexdigest(),
             'validation': 'Lua 5.1 host. Complete action sequences; estimated geography, no play-time optimality claim.',
@@ -175,15 +207,22 @@ def capture(baseline=None, flow_module=None, label=None):
                               'candidate_version':report['addon'],
                               'baseline_flow_sha256':baseline.get('flow_module_sha256'),
                               'candidate_flow_sha256':report['flow_module_sha256'],
+                              'baseline_optimizer_sha256':baseline.get('optimizer_module_sha256'),
+                              'candidate_optimizer_sha256':report['optimizer_module_sha256'],
+                              'baseline_fixed_guides_sha256':baseline.get('fixed_guides_sha256'),
+                              'candidate_fixed_guides_sha256':report['fixed_guides_sha256'],
+                              'baseline_fixed_travel_cost_sha256':baseline.get('fixed_travel_cost_sha256'),
+                              'candidate_fixed_travel_cost_sha256':report['fixed_travel_cost_sha256'],
                               'catalogue_sha256':report['catalogue_sha256'],'travel_sha256':report['travel_sha256'],
                               'guides_compared':len(seen),
                               'starting_states_checked':starting_states_checked,
                               'actions_preserved':sum(len(g['stops']) for g in result),
-                              'trace_note':'Loop-change traces include established candidate passes; reward-visit identifies the added ready-reward pass.',
+                              'trace_note':'Loop-change traces belong to established passes. Only network_changes identify this release’s added graph-aware ordering.',
                               'trip_changes_in_candidate_traces':sum(move['kind']=='objective-trip'
                                   for change in comparisons for move in change['loop_changes']),
-                              'additional_reward_visits':sum(move['kind']=='reward-visit'
+                              'reward_visits_in_candidate_traces':sum(move['kind']=='reward-visit'
                                   for change in comparisons for move in change['loop_changes']),
+                              'additional_network_changes':sum(change['accepted_network_changes'] for change in comparisons),
                               'changed_guides':len(comparisons),'changes':comparisons}
     return report
 
@@ -194,10 +233,11 @@ def main():
     parser.add_argument('--baseline', type=Path, help='Compare every action/state with a prior capture of the identical source data.')
     parser.add_argument('--comparison-output', type=Path, help='Also write the compact, fully justified old/new comparison report.')
     parser.add_argument('--flow-module', type=Path, help='Replay a prior project QuestFlow.lua with the current corrected quest scope.')
+    parser.add_argument('--optimizer-module', type=Path, help='Replay a prior project FixedRouteOptimizer.lua for an identical-source baseline.')
     parser.add_argument('--label', help='Label a replay baseline; for example, the prior release with identical scope corrections.')
     args = parser.parse_args()
-    if args.baseline and args.flow_module: parser.error('Use --flow-module for a baseline capture, not the new comparison')
-    result = capture(json.loads(args.baseline.read_text()) if args.baseline else None, args.flow_module, args.label)
+    if args.baseline and (args.flow_module or args.optimizer_module): parser.error('Use prior modules for a baseline capture, not the new comparison')
+    result = capture(json.loads(args.baseline.read_text()) if args.baseline else None, args.flow_module, args.label, args.optimizer_module)
     args.output.write_text(json.dumps(result, indent=2) + '\n')
     print(f"Saved {len(result['guides'])} complete guides to {args.output}", flush=True)
     if args.comparison_output:

@@ -1,6 +1,96 @@
-# Quest-flow optimization — 0.8.53
+# Quest-flow optimization — 0.8.54
 
-## Earlier rewards during existing visits
+## Travel ordering after complete quest flow
+
+The target remains **completing the selected zone guide efficiently**. The
+earlier compiler improves steps/bundles using geometric distance, then checks
+quest trips and ready rewards using the travel graph. This can leave a useful
+travel alternative unexplored. Reuse that bounded step/bundle search after
+the established flow, pricing the complete journey with published directed
+ground and ordinary transport connections. Do not substitute a new router or
+make personal flights/hearths available in a generic plan.
+
+Every candidate must preserve the entire action set and fixed first/last steps.
+Check each relocation before accepting it, rather than accept a whole shorter
+permutation that hides a progression regression. Its complete travel saving
+must reach the larger of 50 estimated units or 0.05% of the phase's original
+journey. Unchanged legs cancel in a cheap first comparison. Both removed and
+added legs need a `network-estimate` or `local-estimate` basis, with a changed
+network leg. Unmapped geometry and blocked crossings cannot justify a move.
+Attachments remain estimates; a published route does not prove its connecting
+terrain is walkable. Short local estimates use the existing 400-yard cutoff.
+
+Replay the viable full candidate, retaining known prerequisites, per-quest
+stage order, immediate escorts and existing hub hand-offs. Unknown-location and
+review steps divide recovery regions: no action may cross one. Do not increase
+the held-quest peak, reward-only minimum-level XP shortfall, combat difficulty
+pressure, repeated-kill lower bound, missing XP curve or uncertain/blocked legs.
+Total known quest rewards cannot decrease, and no unchanged objective may lose
+known rewards previously collected before it. Apply those progression checks
+at the bottom, middle and top of the guide's bracket and with a half-filled
+middle-level XP bar. Cache state results between accepted moves. Costs for
+drops, combat/exploration XP, access waits and inventory remain unknown; they
+are not turned into fabricated seconds or XP/hour.
+
+Search limits remain two single-step sweeps within 24 actions and two small
+bundle sweeps within 32 actions. Mixed bundles contain two to four close-level
+steps; homogeneous nearby pickup/hand-in visits can contain up to eight. This
+is a bounded improvement among evaluated alternatives, not a global optimum.
+The existing full-trip passes still look farther ahead through dependencies.
+Equivalent/uncertain alternatives keep their order. Actual NPC availability,
+personal skips/deferrals and progress remain separate from compilation.
+
+The identical-source comparison with **0.8.53** covers all **152 faction/zone/
+level sections**, preserving all **12,985 actions**. **142 added travel changes
+improve 60 sections**; the other **92 retain exactly their previous order**.
+Examples include Barrens 11–20, Ashenvale 21–30, Thousand Needles 21–30 and
+Stranglethorn 41–50. All **608 additional starting-level/XP replays** pass.
+The complete changed old/new journeys contain **456 changed network legs**
+and **280 changed local legs**, with zero changed unmapped/blocked legs.
+These counts include both removed and added legs; they are not extra visits
+or measured yards/minutes saved. `GuideFlowAudit.json` retains each complete
+old/new action sequence, costs, guards, leg bases and individual network changes.
+Established trip/reward traces are clearly separate from this release's changes.
+
+Loading remains cooperative. Keep the compilation snapshot's bounded 4,096-leg
+and 2,048-attachment caches between loading frames instead of clearing them
+at every yield. Explicit reset clears them; graph/projection scratch data stays
+separate. Discarded proposal replays use weak keys. Purely local guides skip
+the added network search. Started plans remain cached: quest updates/scans/
+same-version reloads do not run a new ordering search. Installing this release
+rebuilds the saved guide with existing personal progress and skips.
+
+The cooperative 246-action Durotar fixture with mocked 5,000 × 3,500 geometry
+used **2,391 / 1,783 resumes** for prior/new compilers. One concurrent host run
+used **1.874 / 2.077 seconds of CPU**, with observed maximum resumes of
+**8.81 / 117.28 ms**. Fewer scheduled loading frames do not establish a native
+frame-time bound; garbage collection and beta APIs need real-client testing.
+The source-gap-free gate stays **33 sections**; **119 still need source facts**.
+No quest/NPC/transport data was changed to manufacture a routing improvement.
+
+All **1,371 host tests** passed, including **61 targeted flow/cache/recovery
+checks**. All **81 Lua files** compile under Lua 5.1. The source audit checks
+**11,822 points** and **16,849 action reasons** across all 152 guide sections.
+
+To reproduce, capture the prior project's own modules against the same source
+facts, then compare every guide and starting state:
+
+```sh
+git show v0.8.53:WowTogether/FixedRouteOptimizer.lua > /tmp/fixed-route-0.8.53.lua
+git show v0.8.53:WowTogether/QuestFlow.lua > /tmp/quest-flow-0.8.53.lua
+python tools/audit_quest_flow.py --optimizer-module /tmp/fixed-route-0.8.53.lua --flow-module /tmp/quest-flow-0.8.53.lua --label 0.8.53 --output baseline.json
+python tools/audit_quest_flow.py --baseline baseline.json --output compared.json --comparison-output comparisons.json
+python tools/audit_quest_guides.py --output guide-audit.json
+```
+
+The replay uses current source scope/cache maintenance with the prior ordering
+modules; synchronous cache maintenance changes no cost/order. The published
+release comparison instead uses the retained original 0.8.53 action/state
+capture, with its compiler hashes verified from that tag. Transport and
+catalogue hashes match exactly. Timed beta comparisons need the same starting
+progress, all required actions and identical onward travel.
+
+## Earlier rewards during existing visits — 0.8.53
 
 The target remains **completing the selected zone guide efficiently**. The
 previous hub pass could miss a useful ready hand-in when later pickups fixed

@@ -1,5 +1,28 @@
 # Performance maintenance — 0.6.9
 
+## Fixed travel comparison in 0.8.54
+
+The added graph-aware step/bundle pass reuses the existing bounded search.
+Cheap changed-edge/recovery checks run before full progression replay. Purely
+local plans skip the pass; bracket replays are constructed only when a viable
+candidate needs them. Weak proposal keys release discarded alternatives.
+
+Fixed compilation keeps at most 4,096 leg costs and 2,048 nearest-attachment
+entries across loading yields instead of dropping both caches every frame.
+The directed graph's existing 32-row bound remains. Explicit reset clears
+costs/attachments, and world-projection scratch data is released at checkpoints.
+These are per-compilation snapshot caches, not a persistent route or a promise
+of a total-addon memory ceiling. Live personal flight routing is unchanged.
+
+In the same 246-action Durotar/5,000×3,500 host fixture, prior/new compilers
+used 2,391/1,783 resumes and 1.874/2.077 CPU seconds. Observed maximum slices
+were 8.81/117.28 ms in that concurrent run; garbage collection and host load
+vary, and these values are not beta frame-time promises. Fewer scheduled
+callbacks help loading delay while the added comparison still costs CPU.
+Started guides keep their compiled order/cache; ordinary progress and scans
+do not repeat the optimization. See ROUTE_OPTIMIZATION.md for the full-route
+guards and comparison evidence.
+
 ## Whole quest-flow compilation in 0.8.49
 
 Dependency-closure candidates use complete-guide state replay and pooled published

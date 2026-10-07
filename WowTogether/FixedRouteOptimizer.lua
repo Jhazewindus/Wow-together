@@ -3,7 +3,7 @@ local addonName, ns = ...
 -- Improve the immutable catalogue route, preserving per-quest stages and
 -- hand-in prerequisites. Only shorter, close-level relocations are accepted.
 -- This is a bounded local search, not a claim of a terrain-optimal route.
-function ns.OptimizeFixedPlan(plan, distance, cooperative, onYield, flowDistance, flowOptions)
+local function optimizeSteps(plan, distance, cooperative, onYield, guard)
     local stages, pickups, handins, positions, work = {}, {}, {}, {}, 0
     for index, stop in ipairs(plan) do
         positions[stop] = index
@@ -60,6 +60,16 @@ function ns.OptimizeFixedPlan(plan, distance, cooperative, onYield, flowDistance
         return value
     end
     local before, moved = cost(), 0
+    local function proposal(first, last, after)
+        if not guard then return true end
+        local result, block = {}, {}
+        for index = first, last do block[#block + 1] = plan[index] end
+        for index, point in ipairs(plan) do
+            if index < first or index > last then result[#result + 1] = point end
+            if index == after then for _, stop in ipairs(block) do result[#result + 1] = stop end end
+        end
+        return guard.check(result) and result
+    end
     local function valid(stop, from, after)
         local target = after < from and after + 1 or after
         local function pos(other)
@@ -100,7 +110,7 @@ function ns.OptimizeFixedPlan(plan, distance, cooperative, onYield, flowDistance
     for _ = 1, 2 do
         local changed = false
         for index = 2, #plan - 1 do
-            local stop, best, saving = plan[index], nil, 0
+            local stop, best, saving, bestPlan = plan[index], nil, 0, nil
             if not stop.planNeedsReview and not stop.unknownLocation then
                 local oldCost = distance(plan[index - 1], stop) + distance(stop, plan[index + 1])
                     - distance(plan[index - 1], plan[index + 1])
@@ -112,7 +122,10 @@ function ns.OptimizeFixedPlan(plan, distance, cooperative, onYield, flowDistance
                         and not anchor.unknownLocation and not nextStop.unknownLocation
                         and math.abs(level - otherLevel) <= 2 and valid(stop, index, after) then
                         local delta = oldCost - distance(anchor, stop) - distance(stop, nextStop) + distance(anchor, nextStop)
-                        if delta > saving + 0.001 then best, saving = after, delta end
+                        if delta > saving + 0.001 then
+                            local proposed = proposal(index, index, after)
+                            if proposed then best, saving, bestPlan = after, delta, proposed end
+                        end
                     end
                     work = work + 1
                     if cooperative and work % 200 == 0 then
@@ -125,6 +138,7 @@ function ns.OptimizeFixedPlan(plan, distance, cooperative, onYield, flowDistance
                 table.insert(plan, best < index and best + 1 or best, stop)
                 for i = math.min(index, best), math.max(index, best) + 1 do if plan[i] then positions[plan[i]] = i end end
                 moved, changed = moved + 1, true
+                if guard then guard.commit(bestPlan, {stop}, "network-step") end
             end
         end
         if not changed then break end
@@ -166,7 +180,7 @@ function ns.OptimizeFixedPlan(plan, distance, cooperative, onYield, flowDistance
     for _ = 1, 2 do
         local changed = false
         for first = 2, #plan - 2 do
-            local best, saving, stop = nil, 0, plan[first]
+            local best, saving, stop, bestPlan = nil, 0, plan[first], nil
             local level = (ns.CatalogueQuest(stop.id) or {}).level or 0
             -- Same-hub pickup/hand-in runs can be larger than an escort pair.
             -- Keep mixed-action bundles bounded at four; larger runs must be
@@ -206,7 +220,10 @@ function ns.OptimizeFixedPlan(plan, distance, cooperative, onYield, flowDistance
                             if not anchor.unknownLocation and not nextStop.unknownLocation and not anchor.planNeedsReview
                                 and not nextStop.planNeedsReview and math.abs(other - level) <= 2 then
                                 local delta = old - distance(anchor, stop) - distance(plan[last], nextStop) + distance(anchor, nextStop)
-                                if delta > saving + 0.001 and validBlock(first, last, after) then best, saving = {last = last, after = after}, delta end
+                                if delta > saving + 0.001 and validBlock(first, last, after) then
+                                    local proposed = proposal(first, last, after)
+                                    if proposed then best, saving, bestPlan = {last = last, after = after}, delta, proposed end
+                                end
                             end
                         end
                         work = work + 1
@@ -222,14 +239,131 @@ function ns.OptimizeFixedPlan(plan, distance, cooperative, onYield, flowDistance
                 for index, point in ipairs(block) do table.insert(plan, target + index - 1, point) end
                 for index, point in ipairs(plan) do positions[point] = index end
                 bundles, changed = bundles + 1, true
+                if guard then guard.commit(bestPlan, block, "network-bundle") end
             end
         end
         if not changed then break end
     end
-    local legacyAfter = cost()
+    return {before = before, after = cost(), moved = moved, bundles = bundles}
+end
+
+-- Compare graph-aware alternatives against the established complete flow.
+-- Reuse the same bounded step/bundle search; no runtime/player transport is
+-- assumed. Changed legs need published connections or short local estimates.
+-- Every accepted move keeps reward/progression/log/kill and recovery guards.
+function ns.ImproveFixedTravelOrder(plan, distance, cooperative, onYield, options)
+    local work, tried = 0, 0
+    local function tick()
+        work = work + 1
+        -- These are cheap region/edge/replay operations. Graph expansion and
+        -- the step search retain their own finer yields; do not schedule a
+        -- timer for every tiny table scan in the additional guard.
+        if cooperative and work % 1000 == 0 then coroutine.yield(); if onYield then onYield() end end
+    end
+    local model = ns.NewGuideFlowModel(plan, distance)
+    local current = model.evaluate(plan, tick)
+    local result = {before = current, after = current, candidates = 0, moves = 0, changes = {}}
+    if not current.valid then return result end
+    local hasNetwork = false
+    for index = 2, #plan do
+        local _, basis = distance(plan[index - 1], plan[index])
+        if basis == "network-estimate" then hasNetwork = true; break end
+        tick()
+    end
+    if not hasNetwork then return result end
+    local minimumSaving = math.max(50, current.distance * 0.0005)
+    local regions, region = {}, 0
+    for _, stop in ipairs(plan) do
+        if stop.unknownLocation or stop.planNeedsReview then region = region + 1 end
+        regions[stop] = region
+    end
+    local function preserves(before, after)
+        if not after.valid or after.questXP < before.questXP then return false end
+        for _, field in ipairs({"peakLog", "levelDeficitXP", "minimumKills", "difficultyPressure",
+            "missingLevelCurve", "uncertainTravelLegs", "blockedTravelLegs"}) do
+            if after[field] > before[field] then return false end
+        end
+        for stop, reward in pairs(before.workRewards) do if after.workRewards[stop] < reward then return false end end
+        return true
+    end
+    local replays, states, pending = nil, nil, setmetatable({}, {__mode = "k"})
+    local guard = {}
+    function guard.check(proposed)
+        tried = tried + 1
+        -- A known point cannot cross an uncertain branch just because the
+        -- candidate's two attachment endpoints happen to be mapped.
+        local nextStop, seenRegion = {}, 0
+        for index, stop in ipairs(proposed) do
+            if stop.unknownLocation or stop.planNeedsReview then seenRegion = seenRegion + 1 end
+            if regions[stop] ~= seenRegion then return false end
+            if index > 1 then nextStop[proposed[index - 1]] = stop end
+            tick()
+        end
+        local estimate, network = current.distance, false
+        for index = 2, #plan do
+            local a, b = plan[index - 1], plan[index]
+            if nextStop[a] ~= b then
+                local old, oldBasis = distance(a, b)
+                local new, newBasis = distance(a, nextStop[a])
+                if (oldBasis ~= "local-estimate" and oldBasis ~= "network-estimate")
+                    or (newBasis ~= "local-estimate" and newBasis ~= "network-estimate") then return false end
+                network = network or oldBasis == "network-estimate" or newBasis == "network-estimate"
+                estimate = estimate - old + new
+            end
+            tick()
+        end
+        if not network or current.distance - estimate < minimumSaving then return false end
+        local value = model.evaluate(proposed, tick)
+        if not preserves(current, value) or current.distance - value.distance < minimumSaving then return false end
+        if not replays then
+            replays, states = {}, {}
+            if options and options.levelLow and options.levelHigh then
+                local low, high = math.max(1, options.levelLow), math.min(60, options.levelHigh)
+                local middle = math.floor((low + high) / 2)
+                local cap = ns.xpBaseline and ns.xpBaseline[middle]
+                local seen = {}
+                for _, state in ipairs({{low, 0}, {middle, 0}, {high, 0}, {middle, cap and math.floor(cap / 2) or 0}}) do
+                    local key = state[1] .. ":" .. state[2]
+                    if not seen[key] then
+                        seen[key] = true
+                        local replay = ns.NewGuideFlowModel(plan, nil, {startLevel = state[1], startXP = state[2]})
+                        replays[#replays + 1], states[#states + 1] = replay, replay.evaluate(plan, tick)
+                    end
+                end
+            end
+        end
+        local progress = {}
+        for index, replay in ipairs(replays) do
+            local value = replay.evaluate(proposed, tick)
+            if not preserves(states[index], value) then return false end
+            progress[index] = value
+        end
+        -- Keep replays for proposals still held by the bounded search. Weak
+        -- keys release discarded alternatives rather than retaining them all.
+        pending[proposed] = {value = value, progress = progress}
+        return true
+    end
+    function guard.commit(proposed, block, kind)
+        local value = pending[proposed]
+        local ids, seen = {}, {}
+        for _, stop in ipairs(block) do if not seen[stop.id] then ids[#ids + 1], seen[stop.id] = stop.id, true end end
+        result.changes[#result.changes + 1] = {kind = kind, questIDs = ids, actions = #block,
+            travelSaved = current.distance - value.value.distance,
+            rewardBeforeWorkGained = value.value.rewardXPBeforeWork - current.rewardXPBeforeWork}
+        current, states, pending = value.value, value.progress, setmetatable({}, {__mode = "k"})
+    end
+    local searched = optimizeSteps(plan, distance, cooperative, onYield, guard)
+    result.after, result.candidates = current, tried
+    result.moves, result.steps, result.bundles = searched.moved + searched.bundles, searched.moved, searched.bundles
+    return result
+end
+
+function ns.OptimizeFixedPlan(plan, distance, cooperative, onYield, flowDistance, flowOptions)
+    local legacy = optimizeSteps(plan, distance, cooperative, onYield)
     local flow = ns.ImproveQuestFlow(plan, flowDistance or distance, cooperative, onYield, flowOptions)
-    return {before = flowDistance and flow.before.distance or before,
-        after = flowDistance and flow.after.distance or cost(), legacyBefore = before, legacyAfter = legacyAfter,
-        moved = moved, bundles = bundles, flow = flow,
+    local network = flowDistance and ns.ImproveFixedTravelOrder(plan, flowDistance, cooperative, onYield, flowOptions)
+    return {before = flowDistance and flow.before.distance or legacy.before,
+        after = network and network.after.distance or flow.after.distance, legacyBefore = legacy.before, legacyAfter = legacy.after,
+        moved = legacy.moved, bundles = legacy.bundles, flow = flow, network = network,
         heuristic = "Dependency-preserving step, bundle and quest-flow search"}
 end

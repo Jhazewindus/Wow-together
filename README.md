@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.53 — EARLIER REWARDS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.54 — BETTER TRAVEL ORDER** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -22,6 +22,17 @@ Replace the folder on **every party member's client**, including all **81 Lua
 files** and the **Media folder**, then fully restart the client. Restart if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.54 also checks travel ordering against published connections.** After the
+existing full quest-flow passes, compare step/bundle alternatives while keeping
+every required action, prerequisite, escort and onward endpoint. A shorter
+estimate cannot delay known rewards before work or worsen progression/log/kill
+guards; uncertain branches remain recovery boundaries. Changed legs need
+published connections or short local estimates. All 152 sections retain their
+12,985 actions; 142 accepted changes improve 60 sections, and 92 stay unchanged.
+Bounded travel caches reduce repeated work during loading. These are estimated
+complete journeys; source coverage and actual terrain/timings still need
+verification. See [ROUTE_OPTIMIZATION.md](ROUTE_OPTIMIZATION.md).
 
 **0.8.53 collects ready rewards during existing visits.** The compiler considers
 individual and grouped hand-ins within an estimated 100 yards of a planned

@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.53** — **EARLIER REWARDS**, World of Warcraft: Forever beta,
+For **0.8.54** — **BETTER TRAVEL ORDER**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
@@ -19,6 +19,27 @@ The expanded-guide checks below take about **15–25 minutes**.
 4. Installing a new version rebuilds the saved guide with the updated rules,
    applying completed/accepted quests and manual skips. Step numbers may change.
    A reload on the same version should preserve the saved order.
+
+## Travel ordering — about 10–15 minutes
+
+- Start or resume a rebuilt guide in the Barrens 11–20, Ashenvale 21–30,
+  Thousand Needles 21–30 or Stranglethorn 41–50 when suitable. Wait for Loading
+  route to finish. Record loading time and any hitch; existing guides should
+  stay responsive to closing/switching/cancelling the preview.
+- Compare the complete pickup/work/hand-in trip with the prior version from
+  the same progress, including its final destination. Record actual travel
+  duration, repeated areas and obstacles. Published connections and local
+  attachments are estimates: flag mountain/guard/transport problems with the
+  step names and location. A shorter map line alone is insufficient evidence.
+- Confirm all required objectives still appear, including item uses and
+  immediate escorts. Follow-ups must wait for their prerequisites. A missing
+  location or uncertain unlock must not be bypassed to shorten the estimate.
+- Check early rewards and quest-log space during the trip. The new travel
+  order must not delay an already planned useful hand-in before other work,
+  add required kills, or force a currently locked pickup.
+- Scan, accept/abandon an unrelated quest, move to another zone and reload on
+  the same version. Keep the selected order while updating completion/availability.
+  `/wt probe` includes Travel ordering comparison counts for investigation.
 
 ## Earlier rewards at existing visits — about 10 minutes
 
