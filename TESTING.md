@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.56** — **TERRAIN WAYPOINTS**, World of Warcraft: Forever beta,
+For **0.8.57** — **TERRAIN-AWARE QUEST FLOW**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
@@ -19,6 +19,26 @@ The expanded-guide checks below take about **15–25 minutes**.
 4. Installing a new version rebuilds the saved guide with the updated rules,
    applying completed/accepted quests and manual skips. Step numbers may change.
    A reload on the same version should preserve the saved order.
+
+## Terrain-aware guide order — about 10–15 minutes
+
+- Start a rebuilt Thousand Needles guide when suitable. Check the complete
+  pickup/work/hand-in trip and final destination against 0.8.56 from the same
+  progress. Any changed order must retain prerequisites, rewards and actual
+  objectives. Record the full trip rather than a shorter first segment.
+- An estimated shortcut through a mapped mesa must not justify moving work
+  ahead of an already useful reward visit. Missing lifts/ramps must keep the
+  quest and its marker; they must not be counted as a free walking connection.
+- Compare arrow and map bends on the actual ground. Ordinary directed boats/
+  zeppelins and personally confirmed flights should still work. Generic guide
+  compilation must not assume a flight just because its location is published.
+- Scan, accept/abandon an unrelated quest, cross a zone and reload. Keep the
+  selected fixed order while completion and temporary availability update.
+  Record Loading route duration and any hitch. Include `/wt probe` for a bad
+  step; its Terrain ordering line records the new comparison separately.
+- Test a zone without mapped terrain too. It should retain its established
+  ordering. The existing twelve Thousand Needles footprints are approximate;
+  this update does not map additional mountains or verify beta walkability.
 
 ## Terrain waypoints — about 10–15 minutes
 

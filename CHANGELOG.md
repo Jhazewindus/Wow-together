@@ -1,5 +1,38 @@
 # Wow Together changelog
 
+## 0.8.57
+
+**TERRAIN-AWARE QUEST FLOW**
+
+- Price guide alternatives through the mapped terrain waypoint graph used by
+  live navigation. Reject crossing local chords, point attachments and walking
+  links. Keep directed ordinary transports; generic guides never assume a
+  personal flight/hearth. Missing lift/ramp approaches remain unresolved.
+- Preserve established pickups/objectives, useful early rewards and onward
+  endpoints before comparing terrain-aware changes. Retain prerequisites,
+  escorts, log/XP/difficulty/kill guards and recovery boundaries. Do not delay
+  known reward XP before work. No live reordering after a guide starts.
+- Compare all 152 sections and 12,985 actions against 0.8.56 with identical
+  published Forever map bounds and source facts. Two guarded changes improve
+  two sections; 150 retain their order. Hypercapacitor Gizmo's work joins a later
+  Thousand Needles visit; The New Frontier's pickup moves within the Moonglade
+  guide's onward journey. All 608 extra bracket/starting-XP replays pass.
+  Without native geometry, all 152 sections retain their previous order.
+- Keep bounded compilation caches and cooperative loading. Terrain comparisons
+  are separate in diagnostics and GuideFlowAudit.json. Default flight-distance
+  lookups and the imported source graph remain separate from terrain pricing.
+- Batch small loading yields within a 3 ms budget and at most 16 resumes per
+  callback, reducing timer-frame overhead. Missing/private/invalid timers keep
+  the previous single-resume behavior. Preserve cancellation and job errors.
+- Validation: 1,417 broad host checks pass; 272 final targeted checks pass,
+  including 20 new checks for visible bends, hidden/zero-cost crossing
+  shortcuts, unknown approaches, map projection, transports, personal flight
+  assumptions, cache isolation, cooperative loading, established rewards,
+  scheduling budgets, cancellation and missing/private timers.
+  All 83 Lua files compile under Lua 5.1. Terrain coverage is still twelve
+  approximate Thousand Needles footprints; 119 guide sections still need source
+  facts. These are estimated improvements, not proven fastest/gap-free routes.
+
 ## 0.8.56
 
 **TERRAIN WAYPOINTS**

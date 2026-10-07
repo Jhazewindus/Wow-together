@@ -723,9 +723,10 @@ function ns.SyncDiagnostics(output)
         if selection.batchIDs then output("Trip quest IDs: " .. table.concat(selection.batchIDs, ",")) end
         local flow = selection.optimization and selection.optimization.flow
         local network = selection.optimization and selection.optimization.network
+        local terrain = selection.optimization and selection.optimization.terrain
         if flow then
             output("Quest-flow comparison: " .. flow.candidates .. " alternatives; " .. flow.moves .. " accepted loop changes; all actions/endpoints retained.")
-            local after = network and network.after or flow.after
+            local after = terrain and terrain.after or network and network.after or flow.after
             output("Quest-flow state: log peak " .. flow.before.peakLog .. " -> " .. after.peakLog
                 .. "; XP shortfall " .. flow.before.levelDeficitXP .. " -> " .. after.levelDeficitXP
                 .. " (quest rewards only; kills/exploration unmeasured).")
@@ -733,6 +734,8 @@ function ns.SyncDiagnostics(output)
                 .. " uncovered legs; " .. after.blockedTravelLegs .. " blocked estimates. Personal travel stays separate.")
             if network then output("Travel ordering: " .. network.candidates .. " alternatives; " .. network.moves
                 .. " accepted changes; mapped changed legs; progression/reward/recovery guards retained.") end
+            if terrain then output("Terrain ordering: " .. terrain.candidates .. " alternatives; " .. terrain.moves
+                .. " accepted changes; mapped barriers priced after established quest flow.") end
         end
     end
     output("Route generation: " .. (ns.routePlanning and "loading" or ns.routePlanningError or "idle"))

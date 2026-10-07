@@ -251,7 +251,21 @@ function ns.PlanLevelingGuide(guide, invite)
     local restarts = 0
     local function advance()
         if generation ~= ns.planningGeneration then return end
-        local okay, result = coroutine.resume(job)
+        -- Fine graph/replay yields should not each cost a timer frame. Keep
+        -- work bounded by both elapsed public CPU time and a resume limit.
+        -- Missing/private/backwards timers retain one resume per callback.
+        local start = ns.ReadPublic(debugprofilestop)
+        local timed = ns.Public(start) and type(start) == "number" and start == start
+            and start >= 0 and start < math.huge
+        local okay, result
+        for _ = 1, 16 do
+            okay, result = coroutine.resume(job)
+            if generation ~= ns.planningGeneration then return end
+            if not okay or coroutine.status(job) == "dead" or not timed then break end
+            local now = ns.ReadPublic(debugprofilestop)
+            if not ns.Public(now) or type(now) ~= "number" or now ~= now or now >= math.huge
+                or now < start or now - start >= 3 then break end
+        end
         if not okay then
             ns.routePlanning = nil
             ns.routePlanningError = "Route generation failed; copy Diagnostics for investigation."

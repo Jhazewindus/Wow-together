@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.56 — TERRAIN WAYPOINTS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.57 — TERRAIN-AWARE QUEST FLOW** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -23,7 +23,17 @@ files** and the **Media folder**, then fully restart the client. Restart if a ne
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
 
-**0.8.56 adds terrain waypoints to live travel.** The map line and arrow follow
+**0.8.57 also prices mapped terrain when comparing guide order.** Preserve the
+established pickup/work/hand-in flow first, then compare complete alternatives
+through the same visible waypoint graph as live navigation. A mapped mesa cannot
+become a cheap shortcut through a local estimate, attachment or published walk.
+Retain every action, prerequisite, endpoint and recovery boundary; no accepted
+change can delay known reward XP before work or worsen log/progression guards.
+Generic guides do not assume personal flights or hearths. Missing approaches
+stay unresolved. Small loading yields share a short budget to avoid stretching
+each tiny operation across another timer frame. See [route comparisons](ROUTE_OPTIMIZATION.md).
+
+The map line and arrow follow
 intermediate bends around mapped barriers, keeping the next waypoint stable as
 you walk. A real detour reattaches the travel path; quest-guide order and credit
 stay separate. Initial coverage is twelve approximate mesa footprints in Thousand

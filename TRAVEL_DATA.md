@@ -39,6 +39,22 @@ quest-to-quest segments in uncovered areas retain direct directions. The separat
 terrain layer below adds waypoint bends where reviewed barriers are known. More
 road/approach samples are needed to cover arbitrary mountains in every zone.
 
+## Terrain-aware fixed-guide comparisons — 0.8.57
+
+Guide comparisons now reuse the mapped visibility points below. Reject walking
+edges and local/graph attachments crossing a known footprint, including projected
+cross-zone segments. Price visible bends with public map distances and the
+existing 1.25 ground estimate factor. Directed ordinary transports retain their
+published costs. No character flight/hearth state enters generic compilation.
+
+Keep the established complete quest flow, then evaluate guarded alternatives
+with the corrected costs. This preserves useful reward visits that a new cost
+model could otherwise discard. Default walk-only flight-distance lookups remain
+separate; terrain nodes are not written into the imported graph. Static geometry
+is shared, while bounded costs and projection scratch belong to the compilation.
+An unknown lift/ramp approach is a blocked estimate, never an invented shortcut.
+See ROUTE_OPTIMIZATION.md for complete same-state comparison evidence.
+
 ## Mapped terrain waypoints — 0.8.56
 
 Our `TravelTerrain.lua` compiles a small visibility graph around convex,

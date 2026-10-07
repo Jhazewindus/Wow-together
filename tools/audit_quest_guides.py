@@ -111,6 +111,15 @@ def audit():
                         assert network.after.questXP>=network.before.questXP,(key,'network reward regression')
                         for stop,reward in network.before.workRewards.items():
                             assert network.after.workRewards[stop]>=reward,(key,'network reward delayed')
+                    terrain=g.optimization.terrain
+                    if terrain:
+                        assert terrain.after.valid, (key,'terrain state')
+                        assert terrain.after.distance<=terrain.before.distance+1e-6, (key,'terrain travel regression')
+                        for field in ('peakLog','levelDeficitXP','minimumKills','difficultyPressure','uncertainTravelLegs','blockedTravelLegs'):
+                            assert terrain.after[field]<=terrain.before[field], (key,field,'terrain regression')
+                        assert terrain.after.questXP>=terrain.before.questXP,(key,'terrain reward regression')
+                        for stop,reward in terrain.before.workRewards.items():
+                            assert terrain.after.workRewards[stop]>=reward,(key,'terrain reward delayed')
                     gaps={kind:sorted({int(s.id) for s in plan if s.kind==kind and s.unknownLocation}) for kind in ('a','q','t')}
                     unread=sorted(int(id) for id in kinds if not c.ns.CatalogueQuest(id).prerequisitesRead
                         or c.ns.CatalogueQuest(id).prerequisitesUnverified)

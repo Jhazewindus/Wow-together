@@ -55,6 +55,18 @@ then fully restart the client; the release includes taint mitigation (a /reload 
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+0.8.57 TERRAIN-AWARE QUEST FLOW uses the mapped terrain waypoint graph when
+comparing complete fixed guides. Keep established pickups/objectives/hand-ins
+first, then accept only a shorter full journey that preserves prerequisites,
+reward timing, log/progression guards and recovery boundaries. A cheap local
+chord, distant attachment or published walk cannot bypass a mapped mesa. Missing
+approaches remain unresolved. Generic guides do not assume personal flights or
+hearths; live travel retains confirmed options. Terrain coverage remains the
+twelve approximate Thousand Needles outlines, requiring beta ground tests.
+See ROUTE_OPTIMIZATION.md and TESTING.md for comparisons and checks.
+Small loading yields now share a short CPU budget; cancellation and errors are
+checked between resumes. Unavailable/private clocks retain single-resume callbacks.
+
 0.8.56 TERRAIN WAYPOINTS makes the live map line and arrow follow intermediate
 bends around mapped terrain. Initial coverage: twelve approximate Thousand
 Needles mesa footprints reviewed against the Classic map. Following a segment

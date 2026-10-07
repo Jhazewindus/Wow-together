@@ -358,12 +358,26 @@ function ns.ImproveFixedTravelOrder(plan, distance, cooperative, onYield, option
     return result
 end
 
-function ns.OptimizeFixedPlan(plan, distance, cooperative, onYield, flowDistance, flowOptions)
+function ns.OptimizeFixedPlan(plan, distance, cooperative, onYield, flowDistance, flowOptions, terrainDistance)
     local legacy = optimizeSteps(plan, distance, cooperative, onYield)
     local flow = ns.ImproveQuestFlow(plan, flowDistance or distance, cooperative, onYield, flowOptions)
     local network = flowDistance and ns.ImproveFixedTravelOrder(plan, flowDistance, cooperative, onYield, flowOptions)
-    return {before = flowDistance and flow.before.distance or legacy.before,
-        after = network and network.after.distance or flow.after.distance, legacyBefore = legacy.before, legacyAfter = legacy.after,
-        moved = legacy.moved, bundles = legacy.bundles, flow = flow, network = network,
+    -- Repricing the original greedy route can discard useful established
+    -- reward visits. Start with that full flow, then guard each terrain-aware
+    -- change against the same rewards, progression and required action set.
+    local terrain
+    if terrainDistance and flowDistance then
+        local changed = false
+        for index = 2, #plan do
+            local old, oldBasis = flowDistance(plan[index - 1], plan[index])
+            local new, newBasis = terrainDistance(plan[index - 1], plan[index])
+            if math.abs(old - new) > 0.001 or oldBasis ~= newBasis then changed = true; break end
+        end
+        if changed then terrain = ns.ImproveFixedTravelOrder(plan, terrainDistance, cooperative, onYield, flowOptions) end
+    end
+    return {before = terrain and terrain.before.distance or flowDistance and flow.before.distance or legacy.before,
+        after = terrain and terrain.after.distance or network and network.after.distance or flow.after.distance,
+        legacyBefore = legacy.before, legacyAfter = legacy.after,
+        moved = legacy.moved, bundles = legacy.bundles, flow = flow, network = network, terrain = terrain,
         heuristic = "Dependency-preserving step, bundle and quest-flow search"}
 end

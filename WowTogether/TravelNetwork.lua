@@ -71,14 +71,21 @@ end
 local referenceCache = {}
 function ns.PublishedTravelDistance(from, to, policy)
     local data = ns.travelData
-    if not data or not data.nodes[from] or not data.nodes[to] then return end
+    local nodes = policy and policy.nodes or data and data.nodes
+    if not data or not nodes or not nodes[from] or not nodes[to] then return end
     local cache = referenceCache
     if policy then
         if not policy.lookup then policy.lookup = {} end
         cache = policy.lookup
     end
-    if data ~= cache.data then
-        cache.data, cache.graph, cache.rows, cache.count = data, {}, {}, 0
+    if data ~= cache.data or nodes ~= cache.nodes then
+        cache.data, cache.nodes, cache.graph, cache.rows, cache.count = data, nodes, {}, {}, 0
+        local function link(a, b, distance)
+            if nodes[a] and nodes[b] and finite(distance) and distance >= 0 then
+                cache.graph[a] = cache.graph[a] or {}
+                cache.graph[a][#cache.graph[a] + 1] = {to = b, distance = distance}
+            end
+        end
         for _, edge in ipairs(data.edges) do
             if policy and policy.tick then policy.tick() end
             -- Default lookup remains walk-only geometry for flight estimates.
@@ -86,7 +93,7 @@ function ns.PublishedTravelDistance(from, to, policy)
             -- neither lookup makes a personal flight/hearth usable.
             local distance = finite(edge.distance) and edge.distance
                 or finite(edge.seconds) and edge.seconds == 0 and 0 or nil
-            local a, b = data.nodes[edge.from], data.nodes[edge.to]
+            local a, b = nodes[edge.from], nodes[edge.to]
             local okay = a and b
             if policy and okay then
                 okay = (not edge.faction or edge.faction == "Both" or edge.faction == policy.faction)
@@ -94,6 +101,7 @@ function ns.PublishedTravelDistance(from, to, policy)
                     and ns.TravelNodeAllowed(edge.to, b, nil, policy.safety)
                 if edge.method == "walk" then
                     okay = okay and not ns.HostileWalkCrossing(a, b, policy.safety)
+                        and not ns.TerrainWalkCrossing(a, b, policy.terrain)
                     if not distance then
                         local length = ns.TravelPointDistance(a, b, policy.metrics)
                         distance = length and length * 1.25
@@ -103,8 +111,36 @@ function ns.PublishedTravelDistance(from, to, policy)
                 else okay = false end
             end
             if okay and (policy or edge.method == "walk") and distance and distance >= 0 then
-                cache.graph[edge.from] = cache.graph[edge.from] or {}
-                cache.graph[edge.from][#cache.graph[edge.from] + 1] = {to = edge.to, distance = distance}
+                link(edge.from, edge.to, distance)
+            end
+        end
+        -- Fixed-guide policies use the live router's existing visibility
+        -- points. This prices mapped detours without importing character
+        -- flights or changing the published/default flight geometry graph.
+        for mapID, map in pairs(policy and policy.terrain and policy.terrain.maps or {}) do
+            for _, edge in ipairs(map.edges) do
+                local a, b = nodes[edge.from], nodes[edge.to]
+                if a and b and not ns.HostileWalkCrossing(a, b, policy.safety) then
+                    local length = ns.TravelPointDistance(a, b, policy.metrics)
+                    link(edge.from, edge.to, length and length * 1.25)
+                    link(edge.to, edge.from, length and length * 1.25)
+                end
+                if policy.tick then policy.tick() end
+            end
+            for id, point in pairs(nodes) do
+                local indoor = point.container and (string.find(point.container, "wizards_sanctum", 1, true)
+                    or string.find(point.container, "blackrock_mountain", 1, true))
+                if not point.terrain and not indoor and point.mapID == mapID then
+                    for corner, target in pairs(map.nodes) do
+                        if nodes[corner] and not ns.HostileWalkCrossing(point, target, policy.safety)
+                            and not ns.TerrainWalkCrossing(point, target, policy.terrain) then
+                            local length = ns.TravelPointDistance(point, target, policy.metrics)
+                            link(id, corner, length and length * 1.25)
+                            link(corner, id, length and length * 1.25)
+                        end
+                        if policy.tick then policy.tick() end
+                    end
+                end
             end
         end
     end

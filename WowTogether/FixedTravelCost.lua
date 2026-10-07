@@ -3,8 +3,10 @@ local addonName, ns = ...
 -- Reuse the published travel graph for complete-guide comparisons. Personal
 -- flights/hearths/mounts never enter a generic plan. Local attachments and
 -- uncovered roads remain estimates; transport weights are published estimates.
-function ns.NewFixedTravelCost(fallback, cooperative, onYield)
-    local policy = {faction = ns.profile and ns.profile.faction, safety = ns.TravelSafetyContext(), metrics = {}}
+function ns.NewFixedTravelCost(fallback, cooperative, onYield, options)
+    local policy = {faction = ns.profile and ns.profile.faction, safety = ns.TravelSafetyContext(),
+        terrain = options and options.terrain == false and {maps = {}, projection = {}}
+            or ns.TravelTerrainContext(), metrics = {}, nodes = {}}
     local nearest, memo, count, nearestCount = {}, {}, 0, 0
     local work = 0
     local function tick()
@@ -13,20 +15,26 @@ function ns.NewFixedTravelCost(fallback, cooperative, onYield)
     end
     policy.tick = tick
     local maps = {}
-    for id, point in pairs(ns.travelData and ns.travelData.nodes or {}) do
-        if ns.ValidTravelPoint(point) and ns.TravelNodeAllowed(id, point, nil, policy.safety)
-            and not (point.container and (string.find(point.container, "wizards_sanctum", 1, true)
-                or string.find(point.container, "blackrock_mountain", 1, true))) then
+    local function add(id, point)
+        if ns.ValidTravelPoint(point) and ns.TravelNodeAllowed(id, point, nil, policy.safety) then
+            policy.nodes[id] = point
+            if point.container and (string.find(point.container, "wizards_sanctum", 1, true)
+                or string.find(point.container, "blackrock_mountain", 1, true)) then return end
             maps[point.mapID] = maps[point.mapID] or {}
             maps[point.mapID][#maps[point.mapID] + 1] = {id = id, point = point}
         end
+    end
+    for id, point in pairs(ns.travelData and ns.travelData.nodes or {}) do add(id, point) end
+    for _, map in pairs(policy.terrain.maps) do
+        for id, point in pairs(map.nodes) do add(id, point) end
     end
     for _, list in pairs(maps) do table.sort(list, function(a, b) return a.id < b.id end) end
     local function anchors(point)
         if nearest[point] then return nearest[point] end
         local result = {}
         for _, node in ipairs(maps[point.mapID] or {}) do
-            if not ns.HostileWalkCrossing(point, node.point, policy.safety, true, false) then
+            if not ns.HostileWalkCrossing(point, node.point, policy.safety, true, false)
+                and not ns.TerrainWalkCrossing(point, node.point, policy.terrain) then
                 local length = fallback(point, node.point)
                 if length <= 1500 then
                     local index = #result + 1
@@ -49,6 +57,7 @@ function ns.NewFixedTravelCost(fallback, cooperative, onYield)
         local sameMap = a.mapID == b.mapID
         local direct = fallback(a, b)
         local blocked = ns.HostileWalkCrossing(a, b, policy.safety, true, true)
+            or ns.TerrainWalkCrossing(a, b, policy.terrain)
         local best, basis
         if sameMap and not blocked and direct <= 400 then best, basis = direct, "local-estimate"
         else
@@ -71,9 +80,12 @@ function ns.NewFixedTravelCost(fallback, cooperative, onYield)
         -- Both caches have fixed limits above, so keep repeated attachments
         -- and leg costs across loading frames. Explicit reset() still clears
         -- them; world-projection scratch data is released at each checkpoint.
-        if checkpoint then policy.metrics = {}; return end
+        if checkpoint then
+            policy.metrics, policy.safety.projection, policy.terrain.projection = {}, {}, {}
+            return
+        end
         nearest, memo, count, nearestCount = {}, {}, 0, 0
-        policy.metrics = {}
+        policy.metrics, policy.safety.projection, policy.terrain.projection = {}, {}, {}
     end
     return distance, reset
 end

@@ -1,4 +1,104 @@
-# Quest-flow optimization — 0.8.54
+# Quest-flow optimization — 0.8.57
+
+## Terrain-aware comparisons after established flow
+
+The target remains **completing the selected zone guide efficiently**. Version
+0.8.56 added visible terrain waypoints to live navigation, but fixed-guide cost
+comparisons could still price a cheap walk through those mapped mesas. The
+compiler now reuses that visibility graph: reject crossing walking edges,
+local chords and point attachments; price the visible bends instead. Directed
+ships/zeppelins/trams keep their source costs. A missing lift/ramp approach is
+blocked rather than given invented coordinates. Generic compilation never
+assumes a personal flight, hearth or mount.
+
+Keep the established geometric, objective-trip, reward-visit and network passes
+as the initial complete plan. Repricing the earlier greedy seed can choose a
+different trip that loses an established useful reward visit; the full-guide
+comparison caught this in Dustwallow Marsh during development. The final pass
+starts **after** established flow and uses the existing guarded step/bundle
+search. Skip that search when the full plan's leg prices/bases are unchanged.
+All comparisons use the same terrain and complete required ending conditions.
+No accepted move delays previously collected quest rewards before an unchanged
+objective or worsens log peak, acceptance-level XP shortfall, combat pressure,
+required-kill lower bounds, reward totals, uncertain/blocked legs or recovery.
+Replay bracket bottom/middle/top and a half-filled middle-level XP bar.
+
+The graph snapshot adds no nodes to the imported source table and does not
+change default flight-distance lookups. Reuse static polygon visibility and
+bounded compilation caches; projection scratch clears at cooperative checkpoints.
+The existing planner scheduler batches up to 16 small coroutine resumes within
+a public `debugprofilestop` budget of 3 ms. A missing, private, invalid or
+backwards timer keeps one resume per callback. No profiling clock is reset.
+Cancellation and job errors are checked between resumes; actual native frame
+cost can still exceed the budget inside one resume and needs beta testing.
+Actual quest progress, unavailable NPC offers, manual skips, abandonment and
+same-version reloads keep their established fixed-order recovery behavior.
+Installing the update rebuilds a saved plan while applying personal progress.
+
+The comparison without native map geometry retains all **152 sections** and
+**12,985 actions**, with **608 additional starting-level/XP replays** and no
+order changes. Lack of physical geometry must not manufacture a precise terrain
+cost or a routing improvement. A second comparison supplies checksum-verified
+published Forever map rectangles to the host. The old modules and candidate
+see identical bounds, catalogue, terrain outlines and travel-source facts.
+Neither test mode establishes current-beta walkability or actual leveling time.
+
+With the published bounds, **two guarded moves improve two sections**; the other
+**150 retain their order**. All **12,985 actions** and **608 bracket/XP replays**
+pass. Horde Thousand Needles 21–30 moves Hypercapacitor Gizmo's work from its
+earlier isolated placement to follow the Arnak Grimtotem work visit, retaining
+the pickup, all objectives and hand-ins. Its complete estimate improves by
+215.13 comparison units, with more known rewards already collected before that
+objective and unchanged final quest XP/log/kill/difficulty measures. Alliance
+Moonglade 51–60 moves The New Frontier's pickup to after the earlier Under the Chitin Was...
+work/hand-in, before The New Frontier's own onward chain. The complete estimate
+improves by 1,774.23 units, with unchanged reward/progression measures. These
+units combine estimated ground distance and ordinary transport weights, not
+observed yards walked, minutes or XP/hour. The changed old/new legs use eight
+network estimates and two local estimates; no changed leg is blocked/unmapped.
+
+The Thousand Needles route still contains twelve blocked estimates and four
+uncovered legs, unchanged by the move. Their unknown costs cancel in this
+comparison and cannot justify a changed leg; they remain actual mapping work.
+Full named old/new sequences, metrics, endpoints and individual terrain changes
+are in `GuideFlowAudit.json`. These are improvements among bounded alternatives,
+not proof of a globally fastest or gap-free guide.
+
+`GuideFlowAudit.json` records the published comparison. Terrain changes are
+separate from established trip/reward/network traces. Synthetic regression
+checks compare visible bends with live routing, reject zero-cost crossing
+walks and hidden attachment shortcuts, retain directed transports, keep
+unknown approaches blocked, and protect established early rewards. Terrain
+coverage remains twelve approximate Thousand Needles footprints: no new road,
+lift, spawn or prerequisite facts were added. The source-gap-free count remains
+33 sections; 119 still require source facts. Combat/exploration XP, drop/spawn
+waits and inventory timings stay unknown rather than becoming invented seconds.
+
+Validation includes 1,417 broad host checks and 272 final targeted checks after
+the scheduler update, including 20 new terrain/loading regressions. All 83 Lua
+files compile under Lua 5.1. Native APIs, actual terrain and full-trip timings
+remain beta-client checks.
+
+The published-bounds 89-action Thousand Needles host fixture used 8,017 raw
+cooperative resumes. Starting that guide with the budgeted scheduler completed
+in 590 timer callbacks in a separate host run. That scheduled run used 1,072 ms
+CPU, with a maximum callback of 29.06 ms; a single resume/collection can exceed
+the scheduler budget. These observations support fewer scheduled frames, not
+an in-game loading duration, FPS guarantee or universal frame-time bound.
+
+Reproduce the published-bounds comparison using the existing reviewed geometry
+report (its source URL/checksum are in `tools/forever_map_geometry.py`):
+
+```sh
+git show v0.8.56:WowTogether/FixedGuides.lua > /tmp/fixed-guides-0.8.56.lua
+git show v0.8.56:WowTogether/FixedRouteOptimizer.lua > /tmp/fixed-route-0.8.56.lua
+git show v0.8.56:WowTogether/FixedTravelCost.lua > /tmp/fixed-cost-0.8.56.lua
+git show v0.8.56:WowTogether/TravelNetwork.lua > /tmp/travel-network-0.8.56.lua
+python tools/audit_quest_flow.py --optimizer-module /tmp/fixed-route-0.8.56.lua --fixed-guides-module /tmp/fixed-guides-0.8.56.lua --travel-cost-module /tmp/fixed-cost-0.8.56.lua --network-module /tmp/travel-network-0.8.56.lua --forever-geometry conversion.json --label 0.8.56 --output baseline.json
+python tools/audit_quest_flow.py --baseline baseline.json --forever-geometry conversion.json --output compared.json --comparison-output comparisons.json
+```
+
+## Previous travel ordering — 0.8.54
 
 ## Travel ordering after complete quest flow
 
