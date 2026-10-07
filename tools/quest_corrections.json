@@ -1,5 +1,12 @@
 [
   {
+    "questID": 99161,
+    "title": "Rime's Wrath",
+    "previousQuest": 99162,
+    "previousTitle": "Treacherous Cold",
+    "source": "Tester report: Forever beta Dun Morogh, 2026-10-07; level-7 Alliance dwarf, build 70245, addon 0.8.42. Treacherous Cold is the prerequisite for Rime's Wrath."
+  },
+  {
     "questID": 750,
     "title": "The Hunt Continues",
     "previousQuest": 747,

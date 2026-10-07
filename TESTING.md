@@ -1,8 +1,9 @@
 # Wow Together — friend test script
 
-For **0.8.58** — **BETTER TRAVEL CONNECTIONS**, World of Warcraft: Forever beta,
+For **0.8.59** — **DUN MOROGH CHAIN FIX**, World of Warcraft: Forever beta,
 interface **16001**.
-Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
+Allow **5–10 minutes for the hotfix**; the wider optional checks take 45–60
+minutes. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
@@ -19,6 +20,21 @@ The expanded-guide checks below take about **15–25 minutes**.
 4. Installing a new version rebuilds the saved guide with the updated rules,
    applying completed/accepted quests and manual skips. Step numbers may change.
    A reload on the same version should preserve the saved order.
+
+## Rime's Wrath prerequisite — about 5–10 minutes
+
+- In Dun Morogh, install the update and resume the 1–10 guide. Its quest list
+  must place all Treacherous Cold objectives and its turn-in before the Rime's
+  Wrath pickup. Step numbers can differ from the old step 74 report.
+- With Treacherous Cold accepted or ready to turn in, Rime's Wrath must not
+  become a recommended pickup. Hand in Treacherous Cold, then check Rime's
+  quest giver again: the pickup should become eligible if no other requirement
+  blocks it. Confirm the actual before/after NPC offers on the beta client.
+- Try another compatible Alliance character if available. The dependency is
+  shared quest data, not specific to the reporting dwarf or their class.
+- Check that completed/active quests and manual skips survive the update and
+  a same-version reload. Do not reset all skips merely to test this correction.
+- Report the quest names, version, level and actual NPC offers for any failure.
 
 ## Nearby connections and complete quest flow — about 10–15 minutes
 

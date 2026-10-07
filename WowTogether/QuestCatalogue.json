@@ -158,7 +158,7 @@
   "with_objectives": 2151,
   "with_turnins": 4449,
   "with_series": 938,
-  "with_prerequisites": 2465,
+  "with_prerequisites": 2466,
   "repeatable_quests": 627,
   "unverified_prerequisites": 18,
   "incomplete_objective_locations": 1353,
@@ -1230,6 +1230,7 @@
     "-1": 947
   },
   "tester_corrections": [
+    99161,
     750,
     787,
     99082,

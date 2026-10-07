@@ -1,5 +1,13 @@
 # Quest-flow optimization — 0.8.58
 
+The 0.8.59 data hotfix adds the tester-reported Treacherous Cold prerequisite
+for Rime's Wrath. Its corrected Dun Morogh guide retains all 151 actions and
+places that hand-in before the follow-up pickup. The optimization comparisons
+below and in GuideFlowAudit.json retain their **0.8.58 source snapshot**; they
+are historical evidence, not a new identical-source comparison of the changed
+catalogue. Use tag v0.8.58 to reproduce these exact counts. The current source/
+invariant audit is GuideAudit.json; the correction's provenance is in QUEST_DATA.md.
+
 ## Correct connection prices after established quest flow
 
 The target remains **completing the selected zone guide efficiently**. The

@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.58 — BETTER TRAVEL CONNECTIONS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.59 — DUN MOROGH CHAIN FIX** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -22,6 +22,12 @@ Replace the folder on **every party member's client**, including all **83 Lua
 files** and the **Media folder**, then fully restart the client. Restart if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.59 fixes the Rime's Wrath prerequisite.** Finish and hand in Treacherous
+Cold first. The shared quest data places that complete work and return before
+Rime's pickup and applies the same gate to fixed and adaptive guides. This is
+a retained tester correction, not a newly verified online fact. Installing
+the update rebuilds a saved guide while keeping your progress and manual skips.
 
 **0.8.58 corrects nearby travel-connection ranking.** Previously, mixing raw
 distance and adjusted cost could discard a nearer connection and call a

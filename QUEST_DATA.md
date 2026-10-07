@@ -6,6 +6,19 @@ simple instructions; source evidence and remaining gaps are recorded here.
 
 ## Captured facts and source precedence
 
+The 0.8.59 correction adds **Treacherous Cold (99162) → Rime's Wrath (99161)**
+from the supplied 0.8.42/build-70245 Dun Morogh tester report. The report identifies
+the missing prerequisite; the uploaded probe supplies level-7 Alliance dwarf
+context but is not a complete before/after NPC observation. Retain this as tester
+provenance in `tools/quest_corrections.json`, not a verified web-source fact.
+The same identity-checked correction is reapplied by future dataset builds.
+Complete and hand in the prerequisite before the follow-up pickup; no location,
+race/class mask or other quest fact changed. This adds one recorded prerequisite,
+bringing the catalogue total to 2,466.
+The corrected full Dun Morogh 1–10 compilation retains all 151 actions and places
+the prerequisite's turn-in before the follow-up pickup. The source/invariant
+audit checks all 152 sections; source mapping completeness does not change.
+
 1. Current Forever quest/entity pages and reviewed tester corrections.
 2. Explicit public Forever beta delta, observation and reviewed factual fields.
 3. Identity-matched published converted-baseline facts; separately attributed

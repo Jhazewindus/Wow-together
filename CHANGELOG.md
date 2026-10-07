@@ -1,5 +1,23 @@
 # Wow Together changelog
 
+## 0.8.59
+
+**DUN MOROGH CHAIN FIX**
+
+- Add the reported missing prerequisite: hand in Treacherous Cold before
+  picking up Rime's Wrath. Fixed guides now place its pickup, all objectives
+  and turn-in before the follow-up; adaptive pickups use the same shared gate.
+  Merely accepting the prerequisite or finishing its objectives does not unlock
+  the next quest. All 151 Dun Morogh 1–10 guide actions remain.
+- Retain the identity-checked correction and tester provenance for future data
+  rebuilds. It applies to compatible characters, rather than only the reporting
+  dwarf/class. Preserve all other quest data, locations and character progress.
+  Installing this version rebuilds saved guide order; manual skips remain saved.
+- Validation: 126 related host checks pass, including six new prerequisite,
+  identity/conflict, cross-character and fixed/adaptive route checks. Audit all
+  152 guide sections and 11,822 source points; all 83 Lua files compile under
+  Lua 5.1. Confirm actual NPC offers with the short beta checklist attached.
+
 ## 0.8.58
 
 **BETTER TRAVEL CONNECTIONS**

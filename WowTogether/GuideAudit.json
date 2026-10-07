@@ -6019,23 +6019,25 @@
       "reason_steps_checked": 151,
       "destination_reason_codes": {
         "class-progression": 3,
+        "early-reward": 2,
         "level-work": 5,
-        "outside-level-range": 57,
-        "prerequisite": 45,
+        "outside-level-range": 53,
+        "prerequisite": 48,
         "quest-objective": 8,
         "quest-reward": 29,
-        "return-hub": 4
+        "return-hub": 1,
+        "unlock-loop": 2
       },
-      "reason_review_steps": 66,
+      "reason_review_steps": 62,
       "cross_zone_reason_steps": 4,
-      "flow_alternatives_evaluated": 109,
-      "flow_loop_changes": 1,
+      "flow_alternatives_evaluated": 126,
+      "flow_loop_changes": 4,
       "flow_state_valid": true,
-      "quest_log_peak": 11,
-      "quest_reward_only_xp_shortfall": 7240,
+      "quest_log_peak": 8,
+      "quest_reward_only_xp_shortfall": 6700,
       "uncertain_travel_legs": 25,
-      "estimated_distance_before": 106083.94,
-      "estimated_distance_after": 104789.14
+      "estimated_distance_before": 114734.59,
+      "estimated_distance_after": 110182.21
     },
     {
       "faction": "Alliance",

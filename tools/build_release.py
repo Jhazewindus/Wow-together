@@ -55,6 +55,12 @@ then fully restart the client; the release includes taint mitigation (a /reload 
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+0.8.59 DUN MOROGH CHAIN FIX adds Treacherous Cold as Rime's Wrath's prerequisite.
+Finish and hand in Treacherous Cold before the follow-up pickup. The shared
+identity-checked tester correction applies to fixed/adaptive guides and future
+data rebuilds. Existing progress/manual skips remain; installing the new version
+rebuilds saved guide order. See TESTING.md for the short before/after NPC check.
+
 0.8.58 BETTER TRAVEL CONNECTIONS fixes mixed-scale nearby connection ranking
 that could discard a nearer connected travel point. Compare corrected prices
 after the established full quest flow, retaining early rewards, dependencies,
