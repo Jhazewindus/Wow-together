@@ -60,6 +60,13 @@ function ns.IsGroupQuest(id)
     return quest and (quest.questType == "Elite" or quest.questType == "Raid") or false
 end
 
+function ns.QuestGroupWarning(id)
+    if not ns.IsGroupQuest(id) then return end
+    local quest = ns.CatalogueQuest(id)
+    if quest.questType == "Raid" then return "Raid quest: bring a raid group, or use Skip quest." end
+    return "Elite quest: bring a party for its objectives, or use Skip quest."
+end
+
 function ns.FocusCanStartRecord(record, key)
     local quest = ns.CatalogueQuest(record.id)
     if not quest then return true end
@@ -133,7 +140,8 @@ local function levelingValue(id, query)
     if not quest then return true end
     local level, key = ns.PartyLevelFloor(query)
     if not level then return nil end
-    if ns.IsGroupQuest(id) and #(ns.partyNames or {}) == 0 then return false, "Group / elite: bring a party." end
+    -- Difficulty informs the player's choice; solo status must not hide work.
+    -- Keep the normal level/identity/prerequisite gates and explicit skips.
     local value = quest.level or 0
     if value == 0 then return true end
     if value > level + 3 then return false, "Above the lowest player's level range." end

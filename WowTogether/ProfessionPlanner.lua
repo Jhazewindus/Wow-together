@@ -141,6 +141,25 @@ function ns.ProfessionMaterials(id, recipe, crafts, skill, useStock, sharedLedge
     local data = index(id)
     local ledger, rows, preparations, visiting = sharedLedger or {}, {}, {}, {}
     local complete, total, incomplete = true, 0, nil
+    local info = ns.professionData[id]
+    local open = info and info.live and C_TradeSkillUI and ns.ReadPublic(C_TradeSkillUI.GetChildProfessionInfo)
+    if info and info.live and (type(open) ~= "table" or not ns.GuideInteger(open.professionID) or open.professionID <= 0) then
+        open = C_TradeSkillUI and ns.ReadPublic(C_TradeSkillUI.GetBaseProfessionInfo)
+    end
+    local nativeOpen = type(open) == "table" and ns.Public(open.professionID) and open.professionID == id
+    local function reagents(r, quantity)
+        local live = liveRecipe(id, r)
+        if nativeOpen and live and live.learned then
+            local list, _, missing = ns.RecipeMaterials(r.id, quantity)
+            if not missing and #list > 0 then
+                local mats = {}; for _, mat in ipairs(list) do mats[#mats + 1] = {mat.itemID, mat.need} end
+                return mats
+            end
+            incomplete = true
+        end
+        local mats = {}; for _, mat in ipairs(r.materials) do mats[#mats + 1] = {mat[1], mat[2] * quantity} end
+        return mats
+    end
     local function stock(itemID)
         if ledger[itemID] == nil then ledger[itemID] = useStock and (owned(itemID) or false) or 0 end
         return ledger[itemID] ~= false and ledger[itemID] or nil
@@ -180,7 +199,7 @@ function ns.ProfessionMaterials(id, recipe, crafts, skill, useStock, sharedLedge
             if used > 0 then record(itemID, used, 0) end
             visiting[itemID] = true
             local batches = math.ceil(missing / (maker.outputQuantity or 1))
-            for _, mat in ipairs(maker.materials) do consume(mat[1], mat[2] * batches, depth + 1) end
+            for _, mat in ipairs(reagents(maker, batches)) do consume(mat[1], mat[2], depth + 1) end
             visiting[itemID] = nil
             preparations[#preparations + 1] = {recipe = maker, crafts = batches}
             ledger[itemID] = (ledger[itemID] or 0) + batches * (maker.outputQuantity or 1) - missing
@@ -190,22 +209,7 @@ function ns.ProfessionMaterials(id, recipe, crafts, skill, useStock, sharedLedge
             if unit then total = total + missing * unit else complete = false end
         end
     end
-    local mats
-    local info, live = ns.professionData[id], liveRecipe(id, recipe)
-    if info and info.live and live and live.learned then
-        -- Query schematics only for the profession currently open in the client.
-        local open = C_TradeSkillUI and ns.ReadPublic(C_TradeSkillUI.GetChildProfessionInfo)
-        if type(open) ~= "table" or not ns.GuideInteger(open.professionID) or open.professionID <= 0 then
-            open = C_TradeSkillUI and ns.ReadPublic(C_TradeSkillUI.GetBaseProfessionInfo)
-        end
-        if type(open) == "table" and ns.Public(open.professionID) and open.professionID == id then
-            local list, _, missing = ns.RecipeMaterials(recipe.id, crafts)
-            if not missing and #list > 0 then mats = {}; for _, mat in ipairs(list) do mats[#mats + 1] = {mat.itemID, mat.need} end
-            else incomplete = true end
-        end
-    end
-    mats = mats or recipe.materials
-    for _, mat in ipairs(mats) do consume(mat[1], mat[2] * (mats == recipe.materials and crafts or 1), 0) end
+    for _, mat in ipairs(reagents(recipe, crafts)) do consume(mat[1], mat[2], 0) end
     local list = {}; for _, row in pairs(rows) do list[#list + 1] = row end
     table.sort(list, function(a, b) return a.itemID < b.itemID end)
     return list, complete and not incomplete and math.ceil(total) or nil, preparations, incomplete
@@ -474,22 +478,27 @@ function ns.BuildProfessionGuideRoute(guide)
             if incomplete then
                 current = stop(id, "read", "Check the materials for " .. recipe.name .. " in your profession window", "Refresh when the recipe's material data is ready.")
             elseif not live or not live.learned then
-                -- Learning a recipe below the current cap does not require the
-                -- next rank. Do not send a 146/150 player across the continent
-                -- merely because Expert training is already unlocked at 125.
-                local trainer = ns.ProfessionTrainer(id, info.maximum, nextRecipe.id)
-                local extra = ""
-                for _, rank in ipairs(facts.ranks) do
-                    if trainer and rank.maximum > info.maximum and rank.maximum <= target and rank.maximum <= 225
-                        and trainer.maximum >= rank.maximum and info.skill >= rank.skill
-                        and ns.profile and ns.profile.level >= rank.level then
-                        extra = " Also train " .. rank.name .. " here to raise your cap to " .. rank.maximum
-                            .. " and avoid a later training visit."; break
+                if info.recipeRefreshPending or not info.live then
+                    current = stop(id, "read", "Open your " .. facts.name .. " window",
+                        "Refresh learned recipes before training " .. nextRecipe.name .. ".")
+                else
+                    -- Learning a recipe below the current cap does not require the
+                    -- next rank. Do not send a 146/150 player across the continent
+                    -- merely because Expert training is already unlocked at 125.
+                    local trainer = ns.ProfessionTrainer(id, info.maximum, nextRecipe.id)
+                    local extra = ""
+                    for _, rank in ipairs(facts.ranks) do
+                        if trainer and rank.maximum > info.maximum and rank.maximum <= target and rank.maximum <= 225
+                            and trainer.maximum >= rank.maximum and info.skill >= rank.skill
+                            and ns.profile and ns.profile.level >= rank.level then
+                            extra = " Also train " .. rank.name .. " here to raise your cap to " .. rank.maximum
+                                .. " and avoid a later training visit."; break
+                        end
                     end
+                    current = stop(id, "train", "Learn " .. nextRecipe.name .. (trainer and (" from " .. trainer.name) or " at your trainer"),
+                        "Learn this recipe to work toward skill " .. batch.finish .. "." .. extra
+                            .. " Then prepare materials for " .. recipe.name .. ".", trainer)
                 end
-                current = stop(id, "train", "Learn " .. nextRecipe.name .. (trainer and (" from " .. trainer.name) or " at your trainer"),
-                    "Learn this recipe to work toward skill " .. batch.finish .. "." .. extra
-                        .. " Then prepare materials for " .. recipe.name .. ".", trainer)
             else
                 local missing, summary = false, {}
                 for _, row in ipairs(list) do
@@ -501,7 +510,8 @@ function ns.BuildProfessionGuideRoute(guide)
                     (prep[1] and ("Prepare materials for " .. recipe.name .. ".") or (workstations[id] or "Craft in your profession window."))
                     .. (prep[1] and " Skill-ups can vary." or (" Stop at skill " .. batch.finish .. "; skill-ups vary."))) end
             end
-            current.description = "Skill " .. info.skill .. " → " .. batch.finish .. " • Goal " .. target .. ".\n" .. current.description
+            current.description = "Skill " .. info.skill .. " → " .. batch.finish .. " • Goal " .. target .. ".\n"
+                .. "~" .. crafts .. " × " .. recipe.name .. " • stop at skill " .. batch.finish .. ".\n" .. current.description
             current.recipeID = recipe.id
             if current.action == "craft" then current.craftRecipeID = nextRecipe.id end
             route.estimatedCost = cost
@@ -529,6 +539,9 @@ end
 function ns.StartProfessionGuide(id, goal)
     local facts = ns.ProfessionFacts(id)
     if not facts then return end
+    ns.ReadProfessionSkills()
+    if ns.ProfessionWindowMatches(id) then ns.ReadProfessionRecipes()
+    elseif ns.professionData[id] then ns.professionData[id].recipeRefreshPending = true end
     excluded[id] = nil
     ns.professionRevision = (ns.professionRevision or 0) + 1
     local guide = {key = "profession:" .. id, title = facts.name .. " crafting guide", mode = "profession",
@@ -538,11 +551,16 @@ function ns.StartProfessionGuide(id, goal)
     ns.UpdateNavigation()
     if ns.window then ns.window:Hide() end
     if ns.professionViewer then ns.professionViewer:Hide() end
+    if ns.professionScanPrompt then ns.professionScanPrompt:Hide() end
+    if not ns.selectedRoute.complete then ns.OfferProfessionScan(id) end
 end
 
 function ns.RefreshProfessionPlan(id)
     if id then excluded[id] = nil end
     ns.QueueProfessionUpdate(true)
+    if id and ns.routeSelection and ns.routeSelection.mode == "profession" and ns.routeSelection.professionID == id then
+        ns.OfferProfessionScan(id)
+    end
 end
 
 function ns.ProfessionPricesChanged()

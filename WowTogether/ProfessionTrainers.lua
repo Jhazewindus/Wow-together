@@ -93,11 +93,15 @@ function ns.ReadProfessionTrainer()
         local total = 0; for _ in pairs(saved.trainers) do total = total + 1 end
         if total < 64 or previous then saved.trainers[key] = row end
     end
-    if next(observed) then ns.QueueProfessionUpdate() end
+    ns.QueueProfessionUpdate(true)
 end
 ns.On("TRAINER_SHOW", function() trainerOpen = true; ns.ReadProfessionTrainer() end)
-ns.On("TRAINER_UPDATE", ns.ReadProfessionTrainer)
-ns.On("TRAINER_CLOSED", function() trainerOpen = false end)
+ns.On("TRAINER_UPDATE", function()
+    for _, info in pairs(ns.professionData) do info.recipeRefreshPending = true end
+    ns.ReadProfessionTrainer()
+    ns.QueueProfessionUpdate(true)
+end)
+ns.On("TRAINER_CLOSED", function() trainerOpen = false; ns.QueueProfessionUpdate(true) end)
 local previousSpell = ns.handlers.SPELL_DATA_LOAD_RESULT
 ns.On("SPELL_DATA_LOAD_RESULT", function(id, success)
     if previousSpell then previousSpell(id, success) end

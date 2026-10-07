@@ -7,9 +7,7 @@ local colors = {a = {1, 0.82, 0.3}, q = {0.92, 0.88, 0.76}, t = {0.55, 0.84, 0.5
 local function status(stop, query)
     if ns.GuideQuestSkipped(stop.id) or #ns.FilterGuideStages({stop}) == 0 then return "Skipped" end
     if ns.Completed(stop.id, query) == true then return "Done" end
-    if not ns.LevelingWorkAllowed(stop.id, ns.self, query) then
-        return ns.IsGroupQuest(stop.id) and "Needs a party" or "Outside level range"
-    end
+    if not ns.LevelingWorkAllowed(stop.id, ns.self, query) then return "Outside level range" end
     local active = ns.active and ns.active[stop.id]
     if active then
         if stop.kind == "a" then return "Accepted" end
@@ -106,7 +104,8 @@ function ns.RenderGuideQuestList()
         row.number:SetText(stop.guideStep or index); row.number:SetTextColor(unpack(color))
         row.title:SetText((phases[stop.kind] or "Quest") .. " • " .. stop.title); row.title:SetTextColor(unpack(color))
         row.detail:SetText(ns.StopInstruction(stop) .. " • " .. ns.StopLocationText(stop))
-        row.state:SetText((quest and quest.level and ("Lv " .. quest.level .. " • ") or "") .. status(stop, query))
+        row.state:SetText((quest and quest.level and ("Lv " .. quest.level .. " • ") or "")
+            .. (ns.IsGroupQuest(stop.id) and (quest.questType .. " • ") or "") .. status(stop, query))
         row.stop, row.step = stop, stop.guideStep or index; row:Show()
     end
     frame.rendering = nil

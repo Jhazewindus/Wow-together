@@ -2,10 +2,70 @@ local addonName, ns = ...
 
 local preview
 local function cancelPreview() preview = nil end
+function ns.ProfessionWindowMatches(id)
+    if not ns.professionWindowOpen or not C_TradeSkillUI then return false end
+    local info = ns.ReadPublic(C_TradeSkillUI.GetChildProfessionInfo)
+    if type(info) ~= "table" or not ns.GuideInteger(info.professionID) or info.professionID <= 0 then
+        info = ns.ReadPublic(C_TradeSkillUI.GetBaseProfessionInfo)
+    end
+    return type(info) == "table" and ns.GuideInteger(info.professionID) and info.professionID == id
+end
+
+function ns.FinishProfessionScan(id)
+    local prompt = ns.professionScanPrompt
+    if prompt and prompt.professionID == id then prompt:Hide() end
+end
+
+function ns.OfferProfessionScan(id)
+    local facts = ns.ProfessionFacts(id)
+    if not facts or not ns.professionData[id] then return end
+    if ns.ProfessionWindowMatches(id) then ns.QueueProfessionUpdate(true); return end
+    local prompt = ns.professionScanPrompt
+    if not prompt then
+        prompt = CreateFrame("Frame", "WowTogetherProfessionScan", UIParent, "BackdropTemplate")
+        ns.professionScanPrompt = prompt
+        prompt:SetSize(420, 180); prompt:SetPoint("CENTER"); prompt:SetFrameStrata("DIALOG")
+        prompt:SetClampedToScreen(true); ns.UIPanel(prompt); ns.UIClose(prompt)
+        prompt.title = ns.UILabel(prompt, nil, 17, ns.UIColors.gold)
+        prompt.title:SetPoint("TOPLEFT", 20, -20)
+        prompt.text = ns.UILabel(prompt, nil, 12)
+        prompt.text:SetPoint("TOPLEFT", 20, -54); prompt.text:SetSize(380, 66); prompt.text:SetWordWrap(true)
+        prompt.scan = ns.UIButton(prompt, "Scan current progress", 178, function()
+            local guide = ns.routeSelection
+            if not guide or guide.mode ~= "profession" or guide.professionID ~= prompt.professionID then prompt:Hide(); return end
+            if ns.RouteInCombat() then prompt.text:SetText("Scan when you are out of combat."); return end
+            local opener = C_TradeSkillUI and C_TradeSkillUI.OpenTradeSkill
+            if type(opener) ~= "function" then
+                prompt.text:SetText("Open your " .. ns.ProfessionFacts(prompt.professionID).name .. " window to scan current progress.")
+                return
+            end
+            -- One manual click. Wait for the real recipe events before reading
+            -- or treating the window as open; pcall isn't a protection bypass.
+            local okay, opened = pcall(opener, prompt.professionID)
+            if okay and ns.Public(opened) and opened == true then
+                prompt.text:SetText("Reading your current skill, recipes and materials…")
+            else
+                prompt.text:SetText("Open your " .. ns.ProfessionFacts(prompt.professionID).name .. " window to scan current progress.")
+            end
+        end)
+        prompt.scan:SetPoint("BOTTOMLEFT", 20, 18); ns.UIButtonTone(prompt.scan, true)
+        prompt.later = ns.UIButton(prompt, "Later", 110, function() prompt:Hide() end)
+        prompt.later:SetPoint("BOTTOMRIGHT", -20, 18)
+    end
+    prompt.professionID = id
+    prompt.title:SetText("Scan " .. facts.name .. " progress")
+    prompt.text:SetText("Open your profession window to check skill, learned recipes and materials before crafting.")
+    prompt:Show(); prompt:Raise()
+end
+
 local function layout(frame)
     local width = frame:GetWidth()
     frame.body:SetWidth(width - 62); frame.child:SetWidth(width - 58)
     frame.nextText:SetWidth(width - 48)
+    local height = frame.nextText:GetStringHeight()
+    if ns.Public(height) and type(height) == "number" then
+        frame.nextText:SetHeight(math.max(80, math.min(height, frame:GetHeight() - 280)))
+    end
 end
 local function create()
     if ns.professionViewer then return ns.professionViewer end
@@ -27,9 +87,12 @@ local function create()
     frame.nextLabel = ns.UILabel(frame, nil, 10, ns.UIColors.gold); frame.nextLabel:SetPoint("TOPLEFT", 22, -79); frame.nextLabel:SetText("YOUR NEXT STEP")
     frame.nextText = ns.UILabel(frame, nil, 13); frame.nextText:SetPoint("TOPLEFT", 22, -114); frame.nextText:SetHeight(80)
     frame.nextText:SetWordWrap(true); frame.nextText:SetJustifyV("TOP")
-    ns.UIDivider(frame, -202)
+    frame.divider = ns.UIDivider(frame, -202)
+    frame.divider:ClearAllPoints()
+    frame.divider:SetPoint("TOPLEFT", frame.nextText, "BOTTOMLEFT", -21, -12)
+    frame.divider:SetPoint("TOPRIGHT", frame.nextText, "BOTTOMRIGHT", 21, -12)
     local scroll = CreateFrame("ScrollFrame", nil, frame, "UIPanelScrollFrameTemplate")
-    scroll:SetPoint("TOPLEFT", 22, -214); scroll:SetPoint("BOTTOMRIGHT", -38, 62)
+    scroll:SetPoint("TOPLEFT", frame.divider, "BOTTOMLEFT", 21, -12); scroll:SetPoint("BOTTOMRIGHT", -38, 62)
     frame.child = CreateFrame("Frame", nil, scroll); frame.child:SetSize(600, 120); scroll:SetScrollChild(frame.child)
     frame.body = ns.UILabel(frame.child, nil, 12); frame.body:SetPoint("TOPLEFT"); frame.body:SetJustifyV("TOP"); frame.body:SetWordWrap(true)
     frame.start = ns.UIButton(frame, "Start crafting guide", 172, function() ns.StartProfessionGuide(frame.professionID, ns.ProfessionGoal(frame.professionID)) end)
@@ -90,8 +153,8 @@ function ns.RefreshProfessionViewer(force)
     else route = ns.BuildProfessionGuideRoute({key = "profession:" .. id, professionID = id, targetSkill = goal, title = facts.name}) end
     frame.route = route
     local stop = route.stops[1]
-    frame.nextText:SetText(stop.label .. "\n|cffadb4be" .. stop.description .. "|r"
-        .. (route.crafts and ("\nNext batch: " .. route.crafts .. " crafts • missing materials: " .. (route.estimatedCost and ns.MoneyText(route.estimatedCost) or "prices not checked")) or ""))
+    frame.nextText:SetText(stop.label .. "\n|cffadb4be" .. stop.description .. "|r")
+    layout(frame)
     frame.materials:SetEnabled(route.materials and #route.materials > 0)
     local signature = table.concat({id, goal, info and info.skill or 1, ns.professionRevision or 0}, ":")
     if not force and signature == frame.planSignature then return end

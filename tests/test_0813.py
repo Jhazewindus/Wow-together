@@ -94,13 +94,14 @@ class GuideCompletionTests(unittest.TestCase):
         self.assertEqual(c.ns.selectedRoute.completionProgress.unknown, 2)
         self.assertIn('steps are unavailable', c.ns.routePaused)
 
-    def test_elite_work_is_waiting_when_solo_and_can_return_in_party(self):
+    def test_elite_work_remains_available_solo_and_in_party_without_reordering(self):
         c = guide_client(2); g = start(c); before = order(g)
         for q in c.ns.catalogue.quests.values(): q.questType = 'Elite'
         c.ns.Refresh()
         self.assertIsNone(c.ns.selectedRoute.complete)
         self.assertEqual(c.ns.selectedRoute.remainingSteps, 6)
-        self.assertIn('need a group', c.ns.routePaused)
+        self.assertIsNone(c.ns.routePaused)
+        self.assertEqual({s.id for s in c.ns.selectedRoute.stops.values()}, {900, 901})
         c.lua.globals().grouped = True
         c.unit_names({'player': ['Alice', 'TestRealm'], 'party1': ['Bob', 'TestRealm']})
         c.receive('1|S|1|1|1|')

@@ -406,6 +406,14 @@ quests, with identity/category filters. Unknown requirements prevent a full-leve
 claim. These personal routes work without party snapshots; an unmapped collection
 remains selected with its missing offers/locations pending. A popup does not silently replace the selected guide.
 Quest log review only suggests reviewing low-value unfinished work; it never abandons.
+Starting a crafting guide offers Scan current progress when its window is closed.
+The manual button attempts to open the profession window, then waits for recipe
+reads. If unsupported, open it yourself. Scan guide refreshes after training;
+Later retains the selected guide. Loading reads retain learned recipes. Current
+client reagent schematics cover intermediate preparations too. Estimates remain
+visible during gathering/training. Native opening still needs beta testing.
+Mob hints require accepted quest objective data; future drop-start quests and
+unidentified generic quest flags do not mark enemies. Friendly giver stars remain.
 Personal crafting guides use profession skill, opened recipes and bag stock.
 Character level gates rank training; named NPCs, materials and the next craft
 reuse the small guide window. Select a skill goal; keep purchases/crafts manual.
@@ -429,6 +437,10 @@ not a terrain path. Retest native AH/trainer behavior on the current beta build.
 See PROFESSIONS.md for sources, estimates and beta limits. Prices come from
 merchant listings and AH searches YOU perform. No automatic buying or searching.
 Profession/flight/skip state is not sent to peers.
+Otherwise eligible elite/raid quests stay in fixed and adaptive guides while
+solo. The step explains to bring a party/raid or choose Skip quest; the quest list
+labels difficulty separately. Level/identity/prerequisite checks and explicit
+skips remain. Scanning never silently skips a quest just for needing a group.
 
 The partial snapshot has {coverage['count']:,} quest records and
 {coverage['detailed_quests']:,} detailed Forever pages; mapped pickup / objective /

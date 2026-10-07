@@ -402,7 +402,7 @@ class TargetAndSourceTests(unittest.TestCase):
         c.ns.SetOption('npcHints', False)
         self.assertFalse(c.ns.npcHints['nameplate1'].IsShown(c.ns.npcHints['nameplate1']))
 
-    def test_client_quest_flag_fallback_requires_public_true(self):
+    def test_generic_client_quest_flag_cannot_establish_an_active_target(self):
         c = solo()
         c.lua.execute('''
         plate=CreateFrame('Frame'); plate.namePlateUnitToken='nameplate1'
@@ -414,8 +414,7 @@ class TargetAndSourceTests(unittest.TestCase):
         self.assertEqual(c.ns.npcHintCount, 0)
         c.lua.execute('C_QuestLog.UnitIsRelatedToActiveQuest=function() return true end')
         c.ns.UpdateNPCHints()
-        self.assertEqual(c.ns.npcHintCount, 1)
-        self.assertEqual(c.ns.npcHints['nameplate1'].target.label, 'Your quest objective')
+        self.assertEqual(c.ns.npcHintCount, 0)
 
     def test_parser_retains_ambiguous_unmapped_npcs_without_inventing_locations_or_kills(self):
         points = [{'point': 'sourcerequirement', 'objective': 0, 'id': i, 'type': 1,

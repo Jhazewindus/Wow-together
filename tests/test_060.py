@@ -47,10 +47,10 @@ class ProgressionTests(unittest.TestCase):
                       901: nearby('Dungeon pickup', level=26, minLevel=20, previousQuest=900, questType='Dungeon')})
         self.assertIn('dungeon quest', c.ns.LevelingValue(900)[1])
 
-    def test_elites_are_labeled_and_automatic_solo_discovery_excludes_them(self):
+    def test_elites_are_labeled_and_solo_discovery_keeps_them(self):
         c = solo()
         catalogue(c, {900: nearby(questType='Elite')})
-        self.assertFalse(c.ns.LevelingQuestEnabled(900))
+        self.assertTrue(c.ns.LevelingQuestEnabled(900))
         self.assertEqual(c.ns.QuestDifficultyLabel(900), 'Group / elite')
         c.lua.globals().grouped = True
         c.unit_names({'player': ['Alice', 'TestRealm'], 'party1': ['Bob', 'TestRealm']})

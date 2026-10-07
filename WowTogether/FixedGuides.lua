@@ -199,7 +199,7 @@ end
 
 local function completionProgress(guide, query)
     -- Empty runnable work is not quest completion. Check the complete scope
-    -- once per quest, including work hidden by level/group filters or skips.
+    -- once per quest, including work hidden by level filters or explicit skips.
     -- Disabled optional/class and incompatible identity quests stay outside it.
     local result = {total = 0, completed = 0, unfinished = 0, skipped = 0, unknown = 0}
     for _, record in ipairs(guide.records) do
@@ -301,7 +301,7 @@ function ns.BuildFixedGuideRoute(guide, includeOrigin, cooperative, query)
             if filteredSteps > 0 and ns.GuideInteger(guide.earlyStartLevel) and level and level < guide.earlyStartLevel then
                 pending = "Guide for later: recommended from level " .. guide.earlyStartLevel .. "; current level " .. level .. "."
             elseif filteredSteps > 0 then
-                pending = "Guide paused: unfinished quests are outside your leveling range or need a group."
+                pending = "Guide paused: unfinished quests are outside your leveling range."
             elseif #plan == 0 then pending = "Guide steps are unavailable. Scan guide or choose another guide."
             elseif ns.GuideSelectionHasSkips(guide) then
                 pending = "Remaining guide steps are skipped. Reset guide skips in Settings to restore them."

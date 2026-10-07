@@ -458,7 +458,8 @@ function ns.GuideChoices(discoveryOnly)
         group.hasPoint = knownStops > 0
         group.knownStops, group.missingStops = knownStops, plan and plan.missing or #group.records
         group.nextStop = plan and plan.stops[1]
-        if ns.IsGroupQuest(target.id) then group.reason = group.reason .. " Group / elite quest: bring a party." end
+        local groupWarning = ns.QuestGroupWarning(target.id)
+        if groupWarning then group.reason = group.reason .. " " .. groupWarning end
         local _, exception = ns.LevelingValue(target.id)
         if exception then group.reason = group.reason .. " " .. exception end
         if group.nextStop and group.nextStop.kind ~= "a" then group.destination = group.nextStop.label end

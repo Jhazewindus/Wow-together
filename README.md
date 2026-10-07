@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.38 — SMART SUPPLIES** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.39 — CRAFTING HOTFIX** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -22,6 +22,15 @@ Replace the folder on **every party member's client**, including all **72 Lua
 files** and the **Media folder**, then `/reload`. Restart the client fully if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.39 refreshes crafting progress.** Starting a guide offers Scan current
+progress: click to open the profession window and refresh skill, learned recipes
+and materials. Scan guide offers it again after training. Empty/partial recipe
+reads retain learned recipes; current client reagents also cover preparation
+crafts. Craft estimates stay visible while gathering or training. Mob hints
+require accepted quest objectives rather than generic quest flags or future
+quest-start drops. Eligible elite/raid quests remain in solo guides with a brief
+group explanation and the choice to Skip quest. Retest the window opener in beta.
 
 **0.8.38 adds material forecasts and AH shortcuts.** Materials offers Next batch
 and To skill goal. The estimate subtracts bag stock once and reuses planned

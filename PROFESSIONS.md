@@ -1,6 +1,6 @@
 # Personal crafting guides
 
-WoW Together 0.8.38 supports Alchemy, Blacksmithing, Enchanting,
+WoW Together 0.8.39 supports Alchemy, Blacksmithing, Enchanting,
 Engineering, Leatherworking and Tailoring. Profession cards use the compact
 browser grid. Learned professions come first when the client identifies them;
 opening the profession window supplies recipes and can identify a profession
@@ -13,6 +13,17 @@ friendly trainer, shows a next-batch material list and suggests what to craft.
 Next recipe tries another option at the current skill. Materials opens the
 shopping list, with Next batch and To skill goal. Refresh rereads available profession data. Stop and Exit use
 the existing guide behavior; the profession/goal and unfinished batch resume on login.
+Starting a guide with its profession window closed offers **Scan current
+progress**. A manual click attempts `C_TradeSkillUI.OpenTradeSkill(skillLineID)`;
+availability is probed and its Forever behavior still needs testing. If it cannot
+open, open the profession window yourself. Recipe events refresh the guide;
+opening is not treated as proof that data loaded. **Later** keeps the guide running
+from available data. **Scan guide** offers another fresh read after training.
+Loading reads retain confirmed learned recipes, and preparation crafts use the
+opened client's reagent schematics too. Gathering/training steps show estimated
+craft counts and the actual skill milestone. `/wt probe` includes learned status,
+refresh state and up to eight material requirement/owned/missing counts.
+
 No skills, recipes or purchases are performed automatically.
 
 ## What decides the next craft

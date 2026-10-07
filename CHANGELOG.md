@@ -1,5 +1,26 @@
 # Wow Together changelog
 
+## 0.8.39
+
+**CRAFTING HOTFIX**
+
+- Starting a crafting guide offers Scan current progress. Its manual button
+  opens the profession window and refreshes skill, learned recipes and materials.
+  Scan guide offers the same refresh; missing beta support asks you to open it.
+- Preserve confirmed learned recipes through empty/partial loading reads.
+  Refresh after training; stale unknown recipes ask for a fresh window read
+  instead of repeatedly sending you back to the trainer.
+- Use current client reagents for preparation recipes as well as final crafts.
+  Show the craft estimate and skill milestone during gathering and training;
+  size the profession next-step area to its text. Add diagnostic material counts.
+- Only mark mobs linked to accepted unfinished quest objectives. Remove generic
+  quest-flag guesses and markers for future drop-start quests; keep giver stars.
+- Keep eligible elite/raid quests visible solo with a party/raid explanation and
+  Skip quest choice. Preserve level, identity, prerequisites and explicit skips.
+- Include all 72 Lua files and Media. Host regressions cover recipe refresh,
+  Cured Light Hide at skill 31, live intermediate reagents, markers and elite
+  guides. Retest the profession-window opener and UI on the current beta.
+
 ## 0.8.38
 
 **SMART SUPPLIES**

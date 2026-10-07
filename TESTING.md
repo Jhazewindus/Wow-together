@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.38** — **SMART SUPPLIES**, World of Warcraft: Forever beta,
+For **0.8.39** — **CRAFTING HOTFIX**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
@@ -16,6 +16,41 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+
+## Crafting hotfix and quest markers — about 5–10 minutes
+
+- Close your profession window and start its guide. Scan current progress should
+  open the correct window only after a click, then close the prompt when recipes
+  are read. Later keeps the guide selected; Scan guide offers a fresh scan.
+  With the window already open, refresh directly without another popup. In
+  combat or without a working opener, ask for a manual refresh without errors.
+- Leatherworking 31, Cured Light Hide learned, Kamari: after training, open the
+  profession window or use Scan current progress. Do not remain stuck at Learn.
+  Gathering should show ~crafts and a skill target, plus missing Light Hide/Salt
+  matching the beta recipe. Supply materials: switch to crafting. Actual skill
+  gains reduce the remaining work; no gain must not falsely finish the step.
+- Check a recipe requiring crafted intermediates: their reagent amounts must
+  match the opened recipe too. Stock is deducted once. Test partial/loading
+  recipe lists without forgetting learned recipes; check the resized next-step
+  text and complete Materials list. Include new crafting probe lines on failure.
+- Only accepted unfinished quest objectives should mark enemies. Future quests
+  begun by drops must not mark mobs early. Accept/abandon and finish one mob
+  objective: update its marker; another unfinished active quest can retain it.
+  Friendly guide pickup stars must continue working. Retest native nameplates.
+
+## Elite and raid quests — about 5 minutes
+
+- Solo in Elwynn, unlock The Big Picture and scan/start its zone guide. The quest
+  should remain available, with pickup/objective/turn-in steps and a brief party
+  explanation. Test another zone's elite quest; both fixed and adaptive guides
+  should retain eligible work without marking it skipped or complete.
+- Show quest list: Elite/Raid should appear alongside progress. A too-high-level
+  elite quest should say Outside level range, rather than implying a missing party.
+- Use Skip quest yourself, then scan/reload: preserve that choice without giving
+  completion credit. Reset guide skips restores the quest when otherwise eligible.
+- Join/leave a party: difficulty alone must not remove the quest. Faction, class,
+  race, level and prerequisite checks must still apply. Verify warning readability
+  in the small guide, standalone arrow and quest tooltip on the current beta.
 
 ## Personal crafting guides — about 10–15 minutes
 

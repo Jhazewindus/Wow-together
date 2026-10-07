@@ -33,13 +33,20 @@ function ns.ReadProfessionRecipes()
     if not name then return end
     local list = ns.ReadPublic(C_TradeSkillUI.GetAllRecipeIDs)
     if type(list) ~= "table" then return end
-    local recipes, known, count = {}, {}, 0
+    local previous = ns.professionData[info.professionID]
+    local recipes, known, count, readCount = {}, {}, 0, 0
+    -- A loading or partial read cannot erase a recipe already confirmed learned.
+    -- Drop old color data; it does not describe the newly read skill snapshot.
+    for id, old in pairs(previous and previous.known or {}) do
+        if old.learned then known[id] = {id = id, name = old.name, learned = true} end
+    end
     for _, id in ipairs(list) do
         count = count + 1; if count > 2048 then break end
         if ns.GuideInteger(id) and id > 0 then
             local recipe = ns.ReadPublic(C_TradeSkillUI.GetRecipeInfo, id)
             if type(recipe) == "table" and ns.Public(recipe.learned) and type(recipe.learned) == "boolean"
                 and ns.SafeTitle(recipe.name) then
+                readCount = readCount + 1
                 known[id] = {id = id, name = ns.SafeTitle(recipe.name), learned = recipe.learned,
                     canSkillUp = ns.Public(recipe.canSkillUp) and type(recipe.canSkillUp) == "boolean" and recipe.canSkillUp,
                     difficulty = ns.GuideInteger(recipe.relativeDifficulty) and recipe.relativeDifficulty or nil,
@@ -53,14 +60,19 @@ function ns.ReadProfessionRecipes()
             end
         end
     end
-    local previous = ns.professionData[info.professionID]
+    if readCount == 0 and previous then
+        ns.professionStatus = "Recipes loading; previous learned recipes retained."
+        return
+    end
     local skill = ns.GuideInteger(info.skillLevel) and info.skillLevel or previous and previous.skill
     ns.professionData[info.professionID] = {id = info.professionID, name = name, recipes = recipes, known = known, live = true, recipeSkill = skill,
+        recipeRefreshPending = previous and previous.recipeRefreshPending and readCount < count or nil,
         skill = skill,
         maximum = ns.GuideInteger(info.maxSkillLevel) and info.maxSkillLevel or previous and previous.maximum}
     ns.professionStatus = #recipes > 0 and "Live recipes loaded. Crafting guidance follows actual skill and remaining batch work." or "No learned recipes with confirmed skill gains. Check your profession trainer."
     ns.professionRevision = (ns.professionRevision or 0) + 1
     if ns.SaveProfessionState then ns.SaveProfessionState(info.professionID) end
+    if readCount == count and ns.FinishProfessionScan then ns.FinishProfessionScan(info.professionID) end
 end
 
 function ns.RecipeMaterials(id, crafts)

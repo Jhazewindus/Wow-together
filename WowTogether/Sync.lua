@@ -672,6 +672,21 @@ function ns.SyncDiagnostics(output)
     for _ in pairs(ns.marketQuotes or {}) do quotes = quotes + 1 end
     for _ in pairs(ns.professionSaved and ns.professionSaved.trainers or {}) do trainers = trainers + 1 end
     output("Crafting market: " .. quotes .. " session quotes; " .. trainers .. " saved trainer observations. Searches require a click; new prices reassess the active batch.")
+    local crafting = ns.routeSelection and ns.routeSelection.mode == "profession" and ns.routeSelection
+    if crafting then
+        local info, route = ns.professionData[crafting.professionID], ns.selectedRoute
+        local recipe = route and route.recipe
+        local live = recipe and info and info.known and info.known[recipe.id]
+        output("Crafting skill: " .. safe(info and info.skill) .. " / " .. safe(info and info.maximum)
+            .. "; milestone " .. safe(route and route.skillTarget) .. "; goal " .. safe(crafting.targetSkill)
+            .. "; estimated crafts " .. safe(route and route.crafts) .. "; recipe " .. safe(recipe and recipe.id)
+            .. "; learned " .. safe(live and live.learned) .. "; recipe refresh pending " .. safe(info and info.recipeRefreshPending))
+        for index, material in ipairs(route and route.materials or {}) do
+            if index > 8 then break end
+            output("  Crafting material " .. safe(material.itemID) .. ": need " .. safe(material.need)
+                .. "; owned " .. safe(material.have) .. "; missing " .. safe(material.missing))
+        end
+    end
     if ns.auctionGuideStatus then output("Auction search: " .. safe(ns.auctionGuideStatus)) end
     output("Map route: " .. ns.routeStats.status)
     local selection, route = ns.routeSelection, ns.selectedRoute

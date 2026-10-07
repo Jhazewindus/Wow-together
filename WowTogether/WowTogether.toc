@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.38
-## X-ReleaseName: SMART SUPPLIES
+## Version: 0.8.39
+## X-ReleaseName: CRAFTING HOTFIX
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua

@@ -96,7 +96,7 @@ function ns.NPCTargets()
                         for _, point in ipairs(quest and quest.starts or {}) do
                             -- An item drop starts this quest; its source mob
                             -- isn't a quest-giver dialogue or a friendly star.
-                            add(point, stop.id, point.action == "start-item" and "q" or "a")
+                            if point.action ~= "start-item" then add(point, stop.id, "a") end
                         end
                         break
                     end
@@ -160,8 +160,6 @@ function ns.UpdateNPCHints()
         local guid = read(UnitGUID, unit)
         local id = type(guid) == "string" and tonumber(string.match(guid, "^Creature%-%d+%-%d+%-%d+%-%d+%-(%d+)%-"))
         local target = id and targets[id]
-        local related = C_QuestLog and read(C_QuestLog.UnitIsRelatedToActiveQuest, unit)
-        if not target and related == true and not (id and known[id]) then target = {kind = "q", label = "Your quest objective", quests = {}} end
         local plate = target and read(C_NamePlate.GetNamePlateForUnit, unit)
         if plate then
             local hint = hints[unit]
@@ -227,7 +225,7 @@ function ns.UpdateNPCHints()
             ns.npcHintCount = ns.npcHintCount + 1
         end
     end
-    ns.npcHintStatus = "Public NPC IDs/quest flags; alternative drop sources included. Outside combat only."
+    ns.npcHintStatus = "Active quest NPC IDs; friendly guide pickups and alternative drop sources included. Outside combat only."
 end
 
 ns.On("NAME_PLATE_UNIT_ADDED", function(unit)

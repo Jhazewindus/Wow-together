@@ -186,6 +186,8 @@ end
 function ns.GuideStepDescription(stop, facts)
     facts = facts or ns.GuideStepFacts(stop)
     local parts = {text(facts.stop.title) or "Guide step", ns.StopInstruction(stop, facts)}
+    local groupWarning = ns.QuestGroupWarning(facts.stop.id)
+    if groupWarning then parts[#parts + 1] = groupWarning end
     if facts.progress then parts[#parts + 1] = "Progress: " .. facts.progress end
     if text(facts.stop.forPlayer) then parts[#parts + 1] = "For " .. text(facts.stop.forPlayer) end
     parts[#parts + 1] = ns.GuideStepHint(stop, facts)

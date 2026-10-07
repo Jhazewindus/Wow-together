@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.38"
-ns.RELEASE_NAME = "SMART SUPPLIES"
+ns.VERSION = "0.8.39"
+ns.RELEASE_NAME = "CRAFTING HOTFIX"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}
@@ -186,6 +186,7 @@ function ns.Diagnostics()
         {"C_Item.GetItemCount", C_Item and C_Item.GetItemCount},
         {"C_Item.RequestLoadItemDataByID", C_Item and C_Item.RequestLoadItemDataByID},
         {"C_TradeSkillUI.GetAllRecipeIDs", C_TradeSkillUI and C_TradeSkillUI.GetAllRecipeIDs},
+        {"C_TradeSkillUI.OpenTradeSkill", C_TradeSkillUI and C_TradeSkillUI.OpenTradeSkill},
         {"GetProfessions", GetProfessions},
         {"GetProfessionInfo", GetProfessionInfo},
         {"GetNumTrainerServices", GetNumTrainerServices},

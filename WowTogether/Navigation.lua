@@ -117,7 +117,8 @@ function ns.RouteContext(stop, mapID, facts)
     elseif useful == true and exception then reason = exception
     elseif useful == false then reason = stop.kind == "t" and "Ready for turn-in; collect its reward."
         or "Quest-log work you chose to keep in this route." end
-    if ns.IsGroupQuest(stop.id) then reason = "Group / elite: bring a party. " .. reason end
+    local groupWarning = ns.QuestGroupWarning(stop.id)
+    if groupWarning then reason = groupWarning .. " " .. reason end
     return reason .. "\n" .. context
 end
 
