@@ -19,7 +19,7 @@ FIELDS = ('id', 'kind', 'mapID', 'x', 'y', 'action', 'entityID', 'entityType',
           'objectiveKey', 'quantity', 'quantityUnknown', 'unknownLocation', 'planNeedsReview')
 
 
-def capture(baseline=None):
+def capture(baseline=None, flow_module=None, label=None):
     c = Client(quests=(), use_catalogue=True)
     c.guide_environment(level=1)
     c.lua.globals().grouped = False
@@ -27,6 +27,11 @@ def capture(baseline=None):
     c.ns.db.config.classQuests = False
     c.ns.db.config.soloMode = True
     c.ns.ReadProfile()
+    if flow_module:
+        # Re-run our prior optimizer against the current corrected quest scope.
+        # This is explicitly supplied project code, never downloaded source.
+        c.lua.execute('assert(loadstring(...))(select(2, ...))',
+                      flow_module.read_text(), 'WowTogether', c.ns)
     result, seen = [], set()
     old_guides = {(g['faction'], g['key']): g for g in baseline['guides']} if baseline else {}
     comparisons = []
@@ -94,7 +99,12 @@ def capture(baseline=None):
                                 'alternatives_evaluated':flow.candidates,'accepted_loop_changes':flow.moves,
                                 'loop_changes':[{'quest_ids':list(change.questIDs.values()),'near_quest_id':change.nearQuestID,
                                     'actions_moved':change.actions,'estimated_travel_units_saved':round(change.travelSaved,2),
-                                    'minimum_kills_saved':change.killsSaved} for change in flow.changes.values()],
+                                    'minimum_kills_saved':change.killsSaved,
+                                    'kind':change.kind or 'objective-loop',
+                                    'log_peak_reduced':change.logPeakReduced or 0,
+                                    'reward_only_xp_shortfall_reduced':change.levelDeficitReduced or 0,
+                                    'difficulty_pressure_reduced':change.difficultyReduced or 0,
+                                    'estimated_reward_xp_gained':change.rewardXPGained or 0} for change in flow.changes.values()],
                                 'quest_titles':{str(int(s.id)):c.ns.CatalogueQuest(s.id).title for s in candidate},
                                 'actions_preserved':len(candidate),'endpoints_preserved':True,
                                 'metrics':{field:{'before':round(before[field],2),'after':round(after[field],2)}
@@ -103,9 +113,11 @@ def capture(baseline=None):
                                     'Published ground/ordinary transport graph, local attachments and uncovered legs are estimates.',
                                     'No personal flight, mount or hearth assumed; live navigation retains confirmed transports.',
                                     'Quest-reward-only Classic XP baseline; combat/exploration XP, drop/spawn delays and inventory costs remain unmeasured.',
-                                    'No increased log peak, known level XP shortfall, repeated kill lower bound or uncertain/blocked travel legs.']})
+                                    'No increased log peak, known level XP shortfall, repeated kill lower bound or uncertain/blocked travel legs.',
+                                    'Equal-travel hub changes require proven log/progression/shared-kill improvement; their objective work stays in order.']})
                     print(f'{faction}: {guide.key}: {len(stops)} actions', flush=True)
-    report = {'schema': 1, 'addon': c.ns.VERSION,
+    report = {'schema': 1, 'addon': label or c.ns.VERSION,
+            'flow_module_sha256': hashlib.sha256((flow_module or ROOT / 'WowTogether/QuestFlow.lua').read_bytes()).hexdigest(),
             'catalogue_sha256': hashlib.sha256((ROOT / 'WowTogether/QuestCatalogue.lua').read_bytes()).hexdigest(),
             'travel_sha256': hashlib.sha256((ROOT / 'WowTogether/TravelData.lua').read_bytes()).hexdigest(),
             'validation': 'Lua 5.1 host. Complete action sequences; estimated geography, no play-time optimality claim.',
@@ -114,7 +126,11 @@ def capture(baseline=None):
         assert report['catalogue_sha256']==baseline['catalogue_sha256'], 'Source changed; an identical-source baseline is required'
         assert report['travel_sha256']==baseline['travel_sha256'], 'Travel source changed; an identical-source baseline is required'
         assert seen==set(old_guides), 'Guide scope changed'
-        report['comparison']={'baseline_version':baseline['addon'],'guides_compared':len(seen),
+        report['comparison']={'baseline_version':baseline['addon'],
+                              'baseline_flow_sha256':baseline.get('flow_module_sha256'),
+                              'candidate_flow_sha256':report['flow_module_sha256'],
+                              'catalogue_sha256':report['catalogue_sha256'],'travel_sha256':report['travel_sha256'],
+                              'guides_compared':len(seen),
                               'changed_guides':len(comparisons),'changes':comparisons}
     return report
 
@@ -124,8 +140,11 @@ def main():
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--baseline', type=Path, help='Compare every action/state with a prior capture of the identical source data.')
     parser.add_argument('--comparison-output', type=Path, help='Also write the compact, fully justified old/new comparison report.')
+    parser.add_argument('--flow-module', type=Path, help='Replay a prior project QuestFlow.lua with the current corrected quest scope.')
+    parser.add_argument('--label', help='Label a replay baseline; for example, the prior release with identical scope corrections.')
     args = parser.parse_args()
-    result = capture(json.loads(args.baseline.read_text()) if args.baseline else None)
+    if args.baseline and args.flow_module: parser.error('Use --flow-module for a baseline capture, not the new comparison')
+    result = capture(json.loads(args.baseline.read_text()) if args.baseline else None, args.flow_module, args.label)
     args.output.write_text(json.dumps(result, indent=2) + '\n')
     print(f"Saved {len(result['guides'])} complete guides to {args.output}", flush=True)
     if args.comparison_output:

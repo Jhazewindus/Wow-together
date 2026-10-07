@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.49
-## X-ReleaseName: QUEST FLOW
+## Version: 0.8.50
+## X-ReleaseName: SMARTER HAND-INS
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua

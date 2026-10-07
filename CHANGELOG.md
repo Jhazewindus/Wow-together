@@ -1,5 +1,37 @@
 # Wow Together changelog
 
+## 0.8.50
+
+**SMARTER HAND-INS**
+
+- Evaluate same-hub pickup/hand-in alternatives after the existing objective-loop
+  optimizer. A ready hand-in can precede new pickups when the complete guide has
+  less quest-log pressure or less known XP/difficulty shortfall at equal travel.
+  Retain all valid actions, prerequisites and endpoints; never add walking just
+  to lower the number of held quests. The added hub pass leaves objective work
+  in order, protects nearby unlock visits ahead of unrelated pickups, and does
+  not reshape a started guide during play.
+- Explain useful reward-first and quest-log visits in the small guide window,
+  and retain those explanations after reload. Preserve actual NPC-offer gates,
+  manual skips, deferrals, abandon recovery, escorts and quest-item stages.
+- Exclude explicit `<NYI>`/`<TXT>` editorial placeholders from leveling guidance,
+  including the unmapped Get those Hyenas!!! entry. Keep their catalogue facts
+  searchable. Real Thousand Needles introductory quests remain suitable at level
+  25; optional/elite/class quests still use their existing rules.
+- Allow complete-route replay to include explicit starting XP and unrelated
+  reserved quest-log slots when those facts are supplied. Unknown capacity,
+  combat/drop XP, inventory preparation and transport timing remain unknown.
+  Avoid equivalent hub-state replays so cooperative loading stays bounded.
+- Compare the new optimizer with the 0.8.49 optimizer using identical corrected
+  quest scope and source data. Record full old/new sequences and log/progression
+  benefits in GuideFlowAudit.json. Removing bogus entries is a scope correction,
+  not evidence of a faster route. See ROUTE_OPTIMIZATION.md for assumptions.
+- Validation: all 1,334 host tests passed, including 35 targeted flow/recovery
+  checks; all 81 Lua files compile under Lua 5.1. The full-route comparison
+  retains 12,985 valid actions across 152 sections and supports 19 additional
+  hub changes in 13 sections. The source audit has 33 gap-free sections; 119
+  still need facts. Beta timing, terrain and API behavior still need live tests.
+
 ## 0.8.49
 
 **QUEST FLOW**

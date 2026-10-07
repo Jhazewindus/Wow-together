@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.49 — QUEST FLOW** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.50 — SMARTER HAND-INS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -23,15 +23,21 @@ files** and the **Media folder**, then fully restart the client. Restart if a ne
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
 
-**0.8.49 compares whole quest trips.** The existing fixed-guide compiler can
+**0.8.50 considers useful hand-ins as well as distance.** The existing fixed-guide compiler can
 bring a prerequisite hand-in, follow-up pickup and overlapping objectives into
 one trip. It retains every action and the same endpoints, rejects increased
 quest-log pressure, known progression/difficulty shortfalls and repeated kill
-work, and ignores tiny estimated savings. Published ground/transport links
+work, and ignores tiny estimated savings. Same-hub hand-ins can also move before
+new pickups when they reduce held quests or known XP shortfalls without adding
+travel. Their objective work stays in place. Explicit `<NYI>`/`<TXT>` placeholders
+stay searchable in All quests but no longer become leveling instructions.
+Published ground/transport links
 inform comparisons without assuming personal flights or hearthstones. Live
 NPC availability, progress, recovery and fixed order during play remain intact.
-Arrow reasons explain useful unlock trips. All 152 guide sections are compared
-against 0.8.48; 38 improve under the stated estimates. This is a bounded search,
+Arrow reasons explain useful unlock, reward and quest-log visits. All 152 guide
+sections are compared against the previous planner with the same valid quest
+scope; removing placeholder records is never counted as a route optimization.
+This is a bounded search,
 not proof of optimal XP/hour or complete world mapping. See
 [ROUTE_OPTIMIZATION.md](ROUTE_OPTIMIZATION.md) for evidence and remaining gaps.
 

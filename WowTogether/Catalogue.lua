@@ -14,6 +14,7 @@ function ns.IsRetiredQuest(id)
     return string.find(title, "^<unused>") ~= nil or string.find(title, "^%(unused%)") ~= nil
         or title == "unused" or string.find(title, "^zzold") ~= nil
         or string.find(title, "%(temp disabled%)") ~= nil
+        or string.find(title, "<%s*nyi%s*>") ~= nil or string.find(title, "<%s*txt%s*>") ~= nil
 end
 
 function ns.IsLevelingExcludedQuest(id)

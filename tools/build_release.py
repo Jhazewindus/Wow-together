@@ -55,16 +55,21 @@ then fully restart the client; the release includes taint mitigation (a /reload 
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
-0.8.49 QUEST FLOW compares complete quest trips inside the fixed-guide compiler:
+0.8.50 SMARTER HAND-INS compares complete quest trips inside the fixed-guide compiler:
 prerequisite hand-ins, follow-up pickups and overlapping work can share a visit.
 All actions and endpoints remain; started guides keep their order during play.
 Replay rejects worsened log/progression/difficulty/kill pressure. Generic travel
 comparisons use published ground/transports and estimated attachments; personal
 flights/hearths are not assumed. Live confirmed flight routing remains in use.
-All 152 guide sections are compared to 0.8.48; 38 have accepted improvements.
+Ready same-hub hand-ins can precede pickups when log/progression improves without
+added travel; their objective work stays in order. Brief arrow reasons survive
+reload. Explicit NYI/TXT placeholder records stay searchable but leave guides.
+All 152 sections are compared with the 0.8.49 optimizer using identical corrected
+quest scope. 19 additional hub changes improve 13 sections; all 12,985 valid
+actions remain. Removing bogus entries is not counted as a routing gain.
 GuideFlowAudit.json retains old/new evidence; ROUTE_OPTIMIZATION.md explains
 assumptions. This is not proof of optimal XP/hour or complete terrain mapping:
-32 sections meet the source-gap-free gate; 120 still need source facts.
+33 sections meet the source-gap-free gate; 119 still need source facts.
 
 Database details unpack only when used. Keep DataStore.lua and the complete
 generated data files together. /wt probe reports per-compartment load counts and

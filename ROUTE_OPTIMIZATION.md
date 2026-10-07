@@ -1,4 +1,107 @@
-# Quest-flow optimization — 0.8.49
+# Quest-flow optimization — 0.8.50
+
+## Same-hub reward and log-space pass
+
+The target remains **completing the selected zone guide efficiently**. A useful
+hand-in is not judged only by the walking distance it saves. After the existing
+objective-loop search, the same compiler evaluates ready hand-ins and pickup
+dependencies within an estimated 100 yards of a hub visit. It retains all valid
+quest actions, per-quest order and first/last positions. The added pass never
+pulls unfinished objective work forward: those stages must already be before
+the proposed visit. Missing geography and prerequisite-review boundaries still
+prevent moves.
+The hub pass also keeps an existing nearby prerequisite hand-in ahead of
+unrelated pickups; pulling a dependency block can still carry its hand-in and
+follow-up together. Small walking savings do not override that unlock visit.
+
+At equal complete-route travel, a changed order needs a measured replay benefit:
+fewer held guide quests, less known acceptance-level XP shortfall, less difficulty
+pressure, higher estimated quest rewards or less shared kill work. Every other
+guard from the objective-loop pass still applies. A lower log peak by itself
+does not justify additional walking. Estimated travel savings still require the
+existing minimum improvement margin; equivalent visits are not reshuffled.
+
+The regression fixture compares pickup A → finish A → pick up B/C → distant B/C
+work → hand in A/B/C with pickup A → finish/hand in A → pick up B/C → distant B/C
+work → hand in B/C. Both retain all actions and endpoints and travel 1,800
+synthetic reference units. The latter reduces peak held quests from three to
+two. When B requires level 2 and A supplies the explicit 100-XP threshold in
+the fixture, taking A's reward first removes that 100-XP shortfall. These are
+logic fixtures, not observed Forever rewards, times or XP/hour.
+
+`NewGuideFlowModel` additionally accepts explicit `startXP` and `initialLog`
+(unrelated held slots) for same-state comparisons. Neither value is invented by
+the generic compiler, which does not assume a native beta log capacity. If a
+known capacity is supplied, reserved unrelated slots count toward overflow and
+remain held at the end. Required-item preparation and combat/drop/spawn timings
+still need data; their unknown flags do not grant eligibility or stock.
+
+The small guide explains useful reward-first/log-space visits and saves those
+facts with its plan. Quest progress, actual NPC offers, skips and reload recovery
+still filter the fixed order rather than reoptimizing it during play.
+
+## Corrected scope and fair comparisons
+
+The audit found explicit `<NYI>`/`<TXT>` placeholder quests that the existing
+UNUSED/disabled filter missed. Those records remain searchable catalogue facts
+but cannot become leveling instructions. This includes quest 4323, Get those
+Hyenas!!!, whose source has no quest giver. It is not the real Thousand Needles
+introduction: Message to Freewind Post (4542) and Pacify the Centaur (4841) remain
+level-25 guide quests. No optional real quest is deleted to manufacture speed.
+
+The new `GuideFlowAudit.json` comparison replays the **0.8.49 QuestFlow.lua**
+against the exact same corrected scope as 0.8.50. Its module checksum and the
+unchanged catalogue/travel hashes are recorded in the capture. Quarantining
+editorial placeholders is kept separate from route-improvement claims. All
+152 sections retain the same 12,985 valid actions between those comparisons.
+
+The current comparison accepts **19 additional hub changes in 13 sections**.
+Every changed complete route passes the same action/endpoints, prerequisite,
+log, XP/difficulty, kill and geography guards. Two changes lower the held-quest
+peak and three lower the reward-only XP shortfall. Alliance Westfall 11–20 keeps
+the same full travel estimate while lowering held-quest peak from 14 to 13.
+Alliance Hinterlands 41–50 lowers that peak from five to four and the reward-only
+XP shortfall from 450,100 to 446,200, with a lower full travel estimate.
+Horde Thousand Needles 21–30 keeps its real introduction and all 89 valid actions;
+its existing route is retained rather than reordered without a supported benefit.
+Old/new named sequences and each accepted move's actual comparison deltas are
+in the report. These are estimated route/replay benefits, not timed beta results.
+
+The strict audit now has **33 source-gap-free sections and 119 still needing
+facts**. The one-section increase comes from excluding an explicitly unimplemented
+record, not acquiring new coordinates. The catalogue's 5,230 records and 11,822
+stored points are unchanged. All 152 sections pass route invariants; that does
+not make the unresolved source facts complete.
+
+Reproduce the fair baseline without changing a checkout:
+
+```sh
+git show v0.8.49:WowTogether/QuestFlow.lua > /tmp/quest-flow-0.8.49.lua
+python tools/audit_quest_flow.py --flow-module /tmp/quest-flow-0.8.49.lua --label '0.8.49 with identical placeholder exclusions' --output baseline.json
+python tools/audit_quest_flow.py --baseline baseline.json --output compared.json --comparison-output comparisons.json
+```
+
+These are improved choices among bounded alternatives. Equal estimated distance
+with fewer held quests is a reliability improvement, not a measured time saving.
+Incomplete source facts, native terrain, combat/drop delays and Forever timing
+still prevent a claim of 100% mapping or globally optimal leveling time.
+
+## Release verification
+
+All **1,334 host tests passed** for the release.
+The 35 targeted checks cover equal-distance rewards/log space, nearby unlock
+priority, genuine Thousand Needles introductions, explicit placeholders, fixed
+order, skips and cooperative recovery. All 81 Lua files compile under Lua 5.1.
+The upgrade fixture rebuilds stale saved coordinates from 0.8.49 while retaining
+completed and accepted quests and manual skips. Same-version reload retains the
+saved plan; installing another version may change step numbers.
+
+The full Mulgore 1–10 guide (200 stages) also compiled cooperatively in the host
+fixture with 5,000 × 3,500 mocked map geometry: 1,902 resumes, at most 6.14 ms
+CPU per resume in that run. This demonstrates yielding in that scenario, not
+actual beta frame rate, terrain accuracy or a universal performance bound.
+
+## Previous objective-loop pass — 0.8.49
 
 The target chosen for this pass is **completing the selected zone guide
 efficiently**. Optional quests are not silently removed to reach a level sooner.
@@ -58,7 +161,7 @@ compilation yields during graph/state work.
 
 ## Old versus new evidence
 
-`WowTogether/GuideFlowAudit.json` records each meaningful changed guide's
+The `v0.8.49` tag's `WowTogether/GuideFlowAudit.json` records each meaningful changed guide's
 complete old/new action sequences, named quests, alternatives evaluated,
 accepted loop changes, assumptions and comparison metrics. Repeated objective
 tokens retain their per-quest occurrence order; map/entity facts are checked

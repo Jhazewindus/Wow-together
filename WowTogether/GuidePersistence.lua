@@ -9,7 +9,8 @@ local recordFields = {"id", "title", "level", "mapID", "x", "y", "npc", "source"
 local stepFields = {"id", "kind", "mapID", "x", "y", "title", "label", "entityID", "action", "itemName", "targetName",
     "npcName", "published", "planned", "unknownLocation", "guideStep", "planNeedsReview", "learnedSource", "alternativeCount",
     "quantity", "itemID", "objectiveKey", "useItemName", "spellID", "entityType", "worldFallback", "legacyStepKey", "sourceAction",
-    "progressName", "objectiveLabel", "quantityUnknown", "sourceZone", "flowWithQuestID", "flowUnlockQuestID"}
+    "progressName", "objectiveLabel", "quantityUnknown", "sourceZone", "flowWithQuestID", "flowUnlockQuestID",
+    "flowRewardFirst", "flowLogSpace"}
 local cachedGuide, cachedPlan, cachedBatch, cachedVisit, cachedPhase, cachedProfessionBatch
 local professionBatchFields = {"recipeID", "remaining", "total", "startSkill", "finish", "goal", "maximum"}
 ns.guideResumeStatus = "No saved guide to resume."

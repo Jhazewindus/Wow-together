@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.49** — **QUEST FLOW**, World of Warcraft: Forever beta,
+For **0.8.50** — **SMARTER HAND-INS**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **45–60 minutes**. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
@@ -16,9 +16,26 @@ The expanded-guide checks below take about **15–25 minutes**.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
    and **Use observed prerequisite patterns** on. Source names in exports are
    optional and off by default. Recording never uploads automatically.
+4. Installing a new version rebuilds the saved guide with the updated rules,
+   applying completed/accepted quests and manual skips. Step numbers may change.
+   A reload on the same version should preserve the saved order.
 
 ## Whole quest trips — about 15–25 minutes
 
+- At a hub, check whether a ready hand-in comes before new pickups. It can
+  reduce the number of held quests or provide XP for later work without adding
+  travel. The guide should briefly explain the benefit. It must not move
+  unfinished objective work ahead merely to manufacture an early hand-in.
+  Reward-choice dialogs remain manual; actual pickup minimum levels still apply.
+  A nearby hand-in that unlocks a follow-up must stay ahead of unrelated pickups;
+  the optimizer must not delay that unlock merely to save a small walking leg.
+- Check Thousand Needles at level 25: Message to Freewind Post stays in the
+  guide before Pacify the Centaur. `<NYI> <TXT> Get those Hyenas!!!` must not
+  become a leveling instruction. Other real/elite quests stay available under
+  their normal filters; explicit placeholder records remain in All quests.
+- Reload after selecting a guide with a useful early hand-in. Its order and
+  short explanation should persist. After completing the hand-in, it must leave
+  the remaining route without losing objective or turn-in stages for other quests.
 - Start a fresh zone section and check its quest list. Pickups, every distinct
   kill/gather/use objective and hand-ins remain. A chain's prerequisite must be
   handed in before its follow-up pickup. Nearby compatible pickups should come

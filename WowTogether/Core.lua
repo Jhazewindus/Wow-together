@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.49"
-ns.RELEASE_NAME = "QUEST FLOW"
+ns.VERSION = "0.8.50"
+ns.RELEASE_NAME = "SMARTER HAND-INS"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}

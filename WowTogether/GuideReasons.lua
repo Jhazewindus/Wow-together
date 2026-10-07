@@ -5,7 +5,8 @@ local addonName, ns = ...
 local cached
 local goalFields = {"id", "kind", "mapID", "x", "y", "title", "npcName", "action", "itemName", "targetName",
     "unknownLocation", "planNeedsReview", "travelReason", "confirmation", "dungeonEntrance", "professionStep",
-    "memberKey", "objectiveKey", "quantity", "quantityUnknown", "useItemName", "flowWithQuestID", "flowUnlockQuestID"}
+    "memberKey", "objectiveKey", "quantity", "quantityUnknown", "useItemName", "flowWithQuestID", "flowUnlockQuestID",
+    "flowRewardFirst", "flowLogSpace"}
 local function unchanged(decision, goal)
     for _, field in ipairs(goalFields) do
         if not ns.Public(goal[field]) or decision.goalFacts[field] ~= goal[field] then return false end
@@ -179,6 +180,12 @@ local function explain(goal, ctx)
     end
     if useful == true and exception and not ns.IsClassQuest(goal.id) then
         return result("useful-prerequisite", "Lower-level step: " .. exception, true)
+    end
+    if goal.kind == "t" and goal.flowRewardFirst then
+        return result("reward-first", "Collect this reward before the next work; its XP helps with the levels needed later in this guide.", true)
+    end
+    if goal.kind == "t" and goal.flowLogSpace then
+        return result("quest-log-space", "Hand this in during this visit to leave more room for the next quest pickups.", true)
     end
     local flow = flowReason(goal, ctx)
     if flow then return flow end

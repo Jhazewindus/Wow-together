@@ -1,6 +1,6 @@
 {
   "source_data_complete": false,
-  "remaining_quest_records": 470,
+  "remaining_quest_records": 453,
   "limitations": [
     "This queue identifies missing facts, not a license to invent them",
     "Source capture must respect access policy and stop after denials",
@@ -318,21 +318,6 @@
         "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=620",
-      "entity_urls": []
-    },
-    {
-      "questID": 636,
-      "title": "Legends of the Earth <NYI>",
-      "guides": [
-        "Alliance / Arathi Highlands",
-        "Horde / Arathi Highlands"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=636",
       "entity_urls": []
     },
     {
@@ -825,96 +810,6 @@
       ]
     },
     {
-      "questID": 1155,
-      "title": "<NYI> <TXT> bug crystal side quest",
-      "guides": [
-        "Alliance / Silithus",
-        "Horde / Silithus"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1155",
-      "entity_urls": []
-    },
-    {
-      "questID": 1157,
-      "title": "<NYI> <TXT> pestlezugg needs items",
-      "guides": [
-        "Alliance / Tanaris",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1157",
-      "entity_urls": []
-    },
-    {
-      "questID": 1158,
-      "title": "<NYI> <TXT> speak to rabine saturna",
-      "guides": [
-        "Alliance / Tanaris",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1158",
-      "entity_urls": []
-    },
-    {
-      "questID": 1161,
-      "title": "<NYI> <TXT> gossip shade of ambermoon",
-      "guides": [
-        "Alliance / Silithus",
-        "Horde / Silithus"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1161",
-      "entity_urls": []
-    },
-    {
-      "questID": 1162,
-      "title": "<NYI> <TXT> speak to hamuul runetotem",
-      "guides": [
-        "Alliance / Silithus",
-        "Horde / Silithus"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1162",
-      "entity_urls": []
-    },
-    {
-      "questID": 1163,
-      "title": "<NYI> <TXT> speak to tyrande whisperwind",
-      "guides": [
-        "Alliance / Silithus",
-        "Horde / Silithus"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1163",
-      "entity_urls": []
-    },
-    {
       "questID": 1203,
       "title": "Jarl Needs a Blade",
       "guides": [
@@ -958,21 +853,6 @@
         "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=1272",
-      "entity_urls": []
-    },
-    {
-      "questID": 1277,
-      "title": "<nyi> <TXT> The Centaur Hoofprints",
-      "guides": [
-        "Alliance / Desolace",
-        "Horde / Desolace"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1277",
       "entity_urls": []
     },
     {
@@ -1969,21 +1849,6 @@
       ]
     },
     {
-      "questID": 3064,
-      "title": "<NYI> <TXT> Pirate Hats",
-      "guides": [
-        "Alliance / Tanaris",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=3064",
-      "entity_urls": []
-    },
-    {
       "questID": 3095,
       "title": "Simple Scroll",
       "guides": [
@@ -2218,22 +2083,6 @@
       ]
     },
     {
-      "questID": 3885,
-      "title": "<NYI> <TXT> The Gadgetzan Run",
-      "guides": [
-        "Alliance / Ungoro Crater",
-        "Horde / Ungoro Crater"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=3885",
-      "entity_urls": []
-    },
-    {
       "questID": 3924,
       "title": "Samophlange Manual",
       "guides": [
@@ -2340,20 +2189,6 @@
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=9117"
       ]
-    },
-    {
-      "questID": 4323,
-      "title": "<NYI> <TXT> Get those Hyenas!!!",
-      "guides": [
-        "Alliance / Thousand Needles",
-        "Horde / Thousand Needles"
-      ],
-      "needs": [
-        "hand-in",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=4323",
-      "entity_urls": []
     },
     {
       "questID": 4450,
@@ -2795,36 +2630,6 @@
       ]
     },
     {
-      "questID": 5207,
-      "title": "<NYI> <TXT> The True Summoner",
-      "guides": [
-        "Alliance / Felwood",
-        "Horde / Felwood"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5207",
-      "entity_urls": []
-    },
-    {
-      "questID": 5208,
-      "title": "<NYI> <TXT> The Blessing of Evil",
-      "guides": [
-        "Alliance / Felwood",
-        "Horde / Felwood"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5208",
-      "entity_urls": []
-    },
-    {
       "questID": 5223,
       "title": "Return to Chillwind Camp",
       "guides": [
@@ -3247,23 +3052,6 @@
       ]
     },
     {
-      "questID": 5532,
-      "title": "<NYI> <TXT> Ring of the Dawn",
-      "guides": [
-        "Alliance / Eastern Plaguelands",
-        "Horde / Eastern Plaguelands"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5532",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=12844"
-      ]
-    },
-    {
       "questID": 5538,
       "title": "Mold Rhymes With...",
       "guides": [
@@ -3667,22 +3455,6 @@
         "https://www.wowhead.com/forever/npc=11878",
         "https://www.wowhead.com/forever/npc=11898"
       ]
-    },
-    {
-      "questID": 6165,
-      "title": "<NYI> <TXT> Archmage Timolain's Remains",
-      "guides": [
-        "Alliance / Western Plaguelands",
-        "Horde / Western Plaguelands"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=6165",
-      "entity_urls": []
     },
     {
       "questID": 6283,
@@ -4427,36 +4199,6 @@
         "https://www.wowhead.com/forever/item=20614",
         "https://www.wowhead.com/forever/npc=14470"
       ]
-    },
-    {
-      "questID": 8444,
-      "title": "<NYI> <TXT> gossip shade of ambermoon",
-      "guides": [
-        "Alliance / Silithus",
-        "Horde / Silithus"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8444",
-      "entity_urls": []
-    },
-    {
-      "questID": 8445,
-      "title": "<NYI> <TXT> gossip shade of ambermoon",
-      "guides": [
-        "Alliance / Silithus",
-        "Horde / Silithus"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8445",
-      "entity_urls": []
     },
     {
       "questID": 8471,
