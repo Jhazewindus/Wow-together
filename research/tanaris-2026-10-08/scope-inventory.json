@@ -1,0 +1,2122 @@
+[
+  {
+    "questID": 10,
+    "title": "The Scrimshank Redemption",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 48,
+    "minLevel": 39,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      82
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 32,
+    "title": "Rise of the Silithid",
+    "categoryPath": "kalimdor/tanaris",
+    "zone": "Tanaris",
+    "level": 48,
+    "minLevel": 39,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "prerequisiteAny": [
+      113
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 82,
+    "title": "Noxious Lair Investigation",
+    "categoryPath": "kalimdor/tanaris",
+    "zone": "Tanaris",
+    "level": 47,
+    "minLevel": 39,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "previousQuest": 992,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 110,
+    "title": "Insect Part Analysis",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 48,
+    "minLevel": 39,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      10
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 113,
+    "title": "Insect Part Analysis",
+    "categoryPath": "kalimdor/tanaris",
+    "zone": "Tanaris",
+    "level": 48,
+    "minLevel": 39,
+    "side": "Both",
+    "classMask": 0,
+    "previousQuest": 110,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 162,
+    "title": "Rise of the Silithid",
+    "categoryPath": "kalimdor/tanaris",
+    "zone": "Tanaris",
+    "level": 49,
+    "minLevel": 39,
+    "side": "Alliance",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "prerequisiteAny": [
+      113
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 232,
+    "title": "Errand for Apothecary Zinge",
+    "categoryPath": "eastern-kingdoms/undercity",
+    "zone": "Undercity",
+    "level": 45,
+    "minLevel": 38,
+    "side": "Horde",
+    "classMask": 0,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 238,
+    "title": "Errand for Apothecary Zinge",
+    "categoryPath": "eastern-kingdoms/undercity",
+    "zone": "Undercity",
+    "level": 45,
+    "minLevel": 38,
+    "side": "Horde",
+    "classMask": 0,
+    "previousQuest": 232,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 243,
+    "title": "Into the Field",
+    "categoryPath": "kalimdor/tanaris",
+    "zone": "Tanaris",
+    "level": 46,
+    "minLevel": 38,
+    "side": "Horde",
+    "classMask": 0,
+    "previousQuest": 238,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 351,
+    "title": "Find OOX-17/TN!",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 48,
+    "minLevel": 43,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 379,
+    "title": "Slake That Thirst",
+    "categoryPath": "kalimdor/tanaris",
+    "zone": "Tanaris",
+    "level": 46,
+    "minLevel": 38,
+    "side": "Horde",
+    "classMask": 0,
+    "previousQuest": 243,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 648,
+    "title": "Rescue OOX-17/TN!",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 48,
+    "minLevel": 43,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      351
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 654,
+    "title": "Tanaris Field Sampling",
+    "categoryPath": "kalimdor/tanaris",
+    "zone": "Tanaris",
+    "level": 46,
+    "minLevel": 38,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "prerequisiteAny": [
+      379
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 841,
+    "title": "Another Power Source?",
+    "categoryPath": "kalimdor/tanaris",
+    "zone": "Tanaris",
+    "level": 46,
+    "minLevel": 38,
+    "side": "Horde",
+    "classMask": 0,
+    "repeatable": true,
+    "prerequisiteAny": [
+      379
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": false,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 864,
+    "title": "Return to Apothecary Zinge",
+    "categoryPath": "eastern-kingdoms/undercity",
+    "zone": "Undercity",
+    "level": 46,
+    "minLevel": 38,
+    "side": "Horde",
+    "classMask": 0,
+    "previousQuest": 654,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 992,
+    "title": "Gadgetzan Water Survey",
+    "categoryPath": "kalimdor/tanaris",
+    "zone": "Tanaris",
+    "level": 46,
+    "minLevel": 38,
+    "side": "Both",
+    "classMask": 0,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 1157,
+    "title": "<NYI> <TXT> pestlezugg needs items",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 57,
+    "minLevel": 54,
+    "side": "Both",
+    "classMask": 0,
+    "prerequisitesRead": true,
+    "compiled_before": false,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 1158,
+    "title": "<NYI> <TXT> speak to rabine saturna",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 58,
+    "minLevel": 54,
+    "side": "Both",
+    "classMask": 0,
+    "prerequisitesRead": true,
+    "compiled_before": false,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 1560,
+    "title": "Tooga's Quest",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 50,
+    "minLevel": 40,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 1690,
+    "title": "Wastewander Justice",
+    "categoryPath": "kalimdor/tanaris",
+    "zone": "Tanaris",
+    "level": 43,
+    "minLevel": 40,
+    "side": "Both",
+    "classMask": 0,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 1691,
+    "title": "More Wastewander Justice",
+    "categoryPath": "kalimdor/tanaris",
+    "zone": "Tanaris",
+    "level": 44,
+    "minLevel": 40,
+    "side": "Both",
+    "classMask": 0,
+    "previousQuest": 1690,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 1707,
+    "title": "Water Pouch Bounty",
+    "categoryPath": "kalimdor/tanaris",
+    "zone": "Tanaris",
+    "level": 44,
+    "minLevel": 40,
+    "side": "Both",
+    "classMask": 0,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 1878,
+    "title": "Water Pouch Bounty",
+    "categoryPath": "kalimdor/tanaris",
+    "zone": "Tanaris",
+    "level": 44,
+    "minLevel": 40,
+    "side": "Both",
+    "classMask": 0,
+    "repeatable": true,
+    "prerequisiteAny": [
+      1707
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": false,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2439,
+    "title": "The Platinum Discs",
+    "categoryPath": "eastern-kingdoms/ironforge",
+    "zone": "Ironforge",
+    "level": 47,
+    "minLevel": 40,
+    "side": "Alliance",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "previousQuest": 2279,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2440,
+    "title": "The Platinum Discs",
+    "categoryPath": "kalimdor/thunder-bluff",
+    "zone": "Thunder Bluff",
+    "level": 47,
+    "minLevel": 40,
+    "side": "Horde",
+    "classMask": 0,
+    "prerequisiteAny": [
+      2280
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2605,
+    "title": "The Thirsty Goblin",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 49,
+    "minLevel": 44,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2606,
+    "title": "In Good Taste",
+    "categoryPath": "kalimdor/tanaris",
+    "zone": "Tanaris",
+    "level": 49,
+    "minLevel": 44,
+    "side": "Both",
+    "classMask": 0,
+    "previousQuest": 2605,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2641,
+    "title": "Sprinkle's Secret Ingredient",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 49,
+    "minLevel": 44,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      2606
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2661,
+    "title": "Delivery for Marin",
+    "categoryPath": "kalimdor/tanaris",
+    "zone": "Tanaris",
+    "level": 49,
+    "minLevel": 44,
+    "side": "Both",
+    "classMask": 0,
+    "prerequisiteAny": [
+      2641
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2662,
+    "title": "Noggenfogger Elixir",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 49,
+    "minLevel": 44,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      2661
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2741,
+    "title": "The Super Egg-O-Matic",
+    "categoryPath": "kalimdor/tanaris",
+    "zone": "Tanaris",
+    "level": 47,
+    "minLevel": 42,
+    "side": "Both",
+    "classMask": 0,
+    "prerequisitesRead": true,
+    "compiled_before": false,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2747,
+    "title": "An Extraordinary Egg",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 42,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "repeatable": true,
+    "prerequisiteAny": [
+      2741
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": false,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2748,
+    "title": "A Fine Egg",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 42,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "repeatable": true,
+    "prerequisiteAny": [
+      2741
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": false,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2749,
+    "title": "An Ordinary Egg",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 42,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "repeatable": true,
+    "prerequisiteAny": [
+      2741
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": false,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2750,
+    "title": "A Bad Egg",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 42,
+    "side": "Both",
+    "classMask": 0,
+    "repeatable": true,
+    "compiled_before": false,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2781,
+    "title": "WANTED: Caliph Scorpidsting",
+    "categoryPath": "kalimdor/tanaris",
+    "zone": "Tanaris",
+    "level": 46,
+    "minLevel": 39,
+    "side": "Both",
+    "classMask": 0,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2862,
+    "title": "War on the Woodpaw",
+    "categoryPath": "kalimdor/feralas",
+    "zone": "Feralas",
+    "level": 42,
+    "minLevel": 39,
+    "side": "Horde",
+    "classMask": 0,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2863,
+    "title": "Alpha Strike",
+    "categoryPath": "kalimdor/feralas",
+    "zone": "Feralas",
+    "level": 43,
+    "minLevel": 39,
+    "side": "Horde",
+    "classMask": 0,
+    "previousQuest": 2862,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2872,
+    "title": "Stoley's Debt",
+    "categoryPath": "kalimdor/tanaris",
+    "zone": "Tanaris",
+    "level": 45,
+    "minLevel": 40,
+    "side": "Both",
+    "classMask": 0,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2873,
+    "title": "Stoley's Shipment",
+    "categoryPath": "kalimdor/tanaris",
+    "zone": "Tanaris",
+    "level": 45,
+    "minLevel": 40,
+    "side": "Both",
+    "classMask": 0,
+    "previousQuest": 2872,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2874,
+    "title": "Deliver to MacKinley",
+    "categoryPath": "kalimdor/tanaris",
+    "zone": "Tanaris",
+    "level": 45,
+    "minLevel": 40,
+    "side": "Both",
+    "classMask": 0,
+    "previousQuest": 2873,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2875,
+    "title": "WANTED: Andre Firebeard",
+    "categoryPath": "kalimdor/tanaris",
+    "zone": "Tanaris",
+    "level": 45,
+    "minLevel": 40,
+    "side": "Both",
+    "classMask": 0,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2876,
+    "title": "Ship Schedules",
+    "categoryPath": "kalimdor/tanaris",
+    "zone": "Tanaris",
+    "level": 45,
+    "minLevel": 40,
+    "side": "Both",
+    "classMask": 0,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2882,
+    "title": "Cuergo's Gold",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 45,
+    "minLevel": 40,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "repeatable": true,
+    "prerequisitesRead": true,
+    "compiled_before": false,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2902,
+    "title": "Woodpaw Investigation",
+    "categoryPath": "kalimdor/feralas",
+    "zone": "Feralas",
+    "level": 43,
+    "minLevel": 39,
+    "side": "Horde",
+    "classMask": 0,
+    "previousQuest": 2863,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2903,
+    "title": "The Battle Plans",
+    "categoryPath": "kalimdor/feralas",
+    "zone": "Feralas",
+    "level": 43,
+    "minLevel": 39,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "previousQuest": 2902,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2946,
+    "title": "Seeing What Happens",
+    "categoryPath": "eastern-kingdoms/ironforge",
+    "zone": "Ironforge",
+    "level": 50,
+    "minLevel": 45,
+    "side": "Alliance",
+    "classMask": 0,
+    "questType": "Elite",
+    "previousQuest": 2963,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2954,
+    "title": "The Stone Watcher",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 50,
+    "minLevel": 45,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "questType": "Elite",
+    "prerequisiteAny": [
+      2946,
+      2966
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2963,
+    "title": "Portents of Uldum",
+    "categoryPath": "eastern-kingdoms/ironforge",
+    "zone": "Ironforge",
+    "level": 50,
+    "minLevel": 45,
+    "side": "Alliance",
+    "classMask": 0,
+    "prerequisiteAny": [
+      2439
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2965,
+    "title": "Portents of Uldum",
+    "categoryPath": "kalimdor/thunder-bluff",
+    "zone": "Thunder Bluff",
+    "level": 50,
+    "minLevel": 45,
+    "side": "Horde",
+    "classMask": 0,
+    "prerequisiteAny": [
+      2440
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 2966,
+    "title": "Seeing What Happens",
+    "categoryPath": "kalimdor/thunder-bluff",
+    "zone": "Thunder Bluff",
+    "level": 50,
+    "minLevel": 45,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "questType": "Elite",
+    "previousQuest": 2965,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 3022,
+    "title": "Handle With Care",
+    "categoryPath": "kalimdor/tanaris",
+    "zone": "Tanaris",
+    "level": 47,
+    "minLevel": 42,
+    "side": "Alliance",
+    "classMask": 0,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 3064,
+    "title": "<NYI> <TXT> Pirate Hats",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 45,
+    "minLevel": 40,
+    "side": "Both",
+    "classMask": 0,
+    "prerequisitesRead": true,
+    "compiled_before": false,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 3161,
+    "title": "Gahz'ridian",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 48,
+    "minLevel": 43,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 3362,
+    "title": "Thistleshrub Valley",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 50,
+    "minLevel": 45,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 3444,
+    "title": "The Stone Circle",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 51,
+    "minLevel": 46,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      3380,
+      3445
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": false,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 3520,
+    "title": "Screecher Spirits",
+    "categoryPath": "kalimdor/tanaris",
+    "zone": "Tanaris",
+    "level": 44,
+    "minLevel": 40,
+    "side": "Both",
+    "classMask": 0,
+    "prerequisitesRead": true,
+    "compiled_before": false,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 4493,
+    "title": "March of the Silithid",
+    "categoryPath": "kalimdor/darnassus",
+    "zone": "Darnassus",
+    "level": 53,
+    "minLevel": 50,
+    "side": "Alliance",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "prerequisiteAny": [
+      162
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 4494,
+    "title": "March of the Silithid",
+    "categoryPath": "kalimdor/orgrimmar",
+    "level": 53,
+    "minLevel": 50,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "prerequisiteAny": [
+      32,
+      7732
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 4496,
+    "title": "Bungle in the Jungle",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 53,
+    "minLevel": 50,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      4493,
+      4494
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 4504,
+    "title": "Super Sticky",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 54,
+    "minLevel": 48,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisitesRead": true,
+    "compiled_before": false,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 4507,
+    "title": "Pawn Captures Queen",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 54,
+    "minLevel": 50,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      4496
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 4508,
+    "title": "Calm Before the Storm",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 54,
+    "minLevel": 50,
+    "side": "Alliance",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "prerequisiteAny": [
+      4507
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 4509,
+    "title": "Calm Before the Storm",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 54,
+    "minLevel": 50,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "prerequisiteAny": [
+      4507
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 5801,
+    "title": "Fire Plume Forged",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 57,
+    "minLevel": 55,
+    "side": "Alliance",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "prerequisiteAny": [
+      5538
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": false,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 5802,
+    "title": "Fire Plume Forged",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 57,
+    "minLevel": 55,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "prerequisiteAny": [
+      5514
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": false,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 5863,
+    "title": "The Dunemaul Compound",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 49,
+    "minLevel": 44,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 7730,
+    "title": "Zukk'ash Infestation",
+    "categoryPath": "kalimdor/feralas",
+    "level": 45,
+    "minLevel": 39,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "prerequisiteAny": [
+      2903
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 7731,
+    "title": "Stinglasher",
+    "categoryPath": "kalimdor/feralas",
+    "level": 47,
+    "minLevel": 39,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "prerequisiteAny": [
+      2903
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 7732,
+    "title": "Zukk'ash Report",
+    "categoryPath": "kalimdor/feralas",
+    "level": 48,
+    "minLevel": 39,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "prerequisiteAll": [
+      7730,
+      7731
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 8181,
+    "title": "Confront Yeh'kinya",
+    "categoryPath": "raids/zulgurub",
+    "level": 58,
+    "minLevel": 40,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "questType": "Raid",
+    "prerequisiteAny": [
+      4788
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 8182,
+    "title": "The Hand of Rastakhan",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 58,
+    "minLevel": 40,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "questType": "Raid",
+    "prerequisiteAny": [
+      8181
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 8286,
+    "title": "What Tomorrow Brings",
+    "categoryPath": "kalimdor/silithus",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8288,
+    "title": "Only One May Rise",
+    "categoryPath": "raids/blackwing-lair",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "questType": "Raid",
+    "prerequisiteAny": [
+      8286
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8301,
+    "title": "The Path of the Righteous",
+    "categoryPath": "kalimdor/silithus",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "questType": "Elite",
+    "prerequisiteAny": [
+      8288
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8303,
+    "title": "Anachronos",
+    "categoryPath": "kalimdor/silithus",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8301
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8305,
+    "title": "Long Forgotten Memories",
+    "categoryPath": "kalimdor/silithus",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8303
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8365,
+    "title": "Pirate Hats Ahoy!",
+    "categoryPath": "kalimdor/tanaris",
+    "zone": "Tanaris",
+    "level": 45,
+    "minLevel": 40,
+    "side": "Both",
+    "classMask": 0,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 8366,
+    "title": "Southsea Shakedown",
+    "categoryPath": "kalimdor/tanaris",
+    "zone": "Tanaris",
+    "level": 45,
+    "minLevel": 40,
+    "side": "Both",
+    "classMask": 0,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 8519,
+    "title": "A Pawn on the Eternal Board",
+    "categoryPath": "kalimdor/silithus",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8305
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8555,
+    "title": "The Charge of the Dragonflights",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8519
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8575,
+    "title": "Azuregos's Magical Ledger",
+    "categoryPath": "kalimdor/azshara",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8555
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8576,
+    "title": "Translating the Ledger",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8575
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8577,
+    "title": "Stewvul, Ex-B.F.F.",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8576
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8578,
+    "title": "Scrying Goggles? No Problem!",
+    "categoryPath": "raids/molten-core",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "questType": "Raid",
+    "prerequisiteAny": [
+      8577
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8584,
+    "title": "Never Ask Me About My Business",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8576
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8585,
+    "title": "The Isle of Dread!",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "questType": "Raid",
+    "prerequisiteAny": [
+      8584
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8586,
+    "title": "Dirge's Kickin' Chimaerok Chops",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8585
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8587,
+    "title": "Return to Narain",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8586
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8597,
+    "title": "Draconic for Dummies",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8576
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8598,
+    "title": "rAnS0m",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8597
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8599,
+    "title": "Love Song for Narain",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8606,
+    "title": "Decoy!",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "questType": "Elite",
+    "prerequisiteAny": [
+      8598
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8620,
+    "title": "The Only Prescription",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "questType": "Raid",
+    "prerequisiteAny": [
+      8606
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8728,
+    "title": "The Good News and The Bad News",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAll": [
+      8578,
+      8587,
+      8620
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8729,
+    "title": "The Wrath of Neptulon",
+    "categoryPath": "kalimdor/azshara",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "questType": "Raid",
+    "prerequisiteAny": [
+      8728
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8730,
+    "title": "Nefarius's Corruption",
+    "categoryPath": "raids/blackwing-lair",
+    "zone": "Blackwing Lair",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "questType": "Raid",
+    "prerequisiteAny": [
+      8555
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8734,
+    "title": "Tyrande and Remulos",
+    "categoryPath": "kalimdor/teldrassil",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8733
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8735,
+    "title": "The Nightmare's Corruption",
+    "categoryPath": "kalimdor/moonglade",
+    "zone": "Moonglade",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "questType": "Raid",
+    "previousQuest": 8734,
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8736,
+    "title": "The Nightmare Manifests",
+    "categoryPath": "kalimdor/moonglade",
+    "zone": "Moonglade",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "questType": "Raid",
+    "prerequisiteAny": [
+      8735
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8741,
+    "title": "The Champion Returns",
+    "categoryPath": "kalimdor/moonglade",
+    "zone": "Moonglade",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "previousQuest": 8736,
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8742,
+    "title": "The Might of Kalimdor",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAll": [
+      8729,
+      8730,
+      8741
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8747,
+    "title": "The Path of the Protector",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8748,
+    "title": "The Path of the Protector",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8747
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8749,
+    "title": "The Path of the Protector",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8748
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8750,
+    "title": "The Path of the Protector",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8749
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8751,
+    "title": "The Protector of Kalimdor",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8750
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8752,
+    "title": "The Path of the Conqueror",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8753,
+    "title": "The Path of the Conqueror",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8752
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8754,
+    "title": "The Path of the Conqueror",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8753
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8755,
+    "title": "The Path of the Conqueror",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8754
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8756,
+    "title": "The Qiraji Conqueror",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8755
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8757,
+    "title": "The Path of the Invoker",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8758,
+    "title": "The Path of the Invoker",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8757
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8759,
+    "title": "The Path of the Invoker",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8758
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8760,
+    "title": "The Path of the Invoker",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8759
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8761,
+    "title": "The Grand Invoker",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8760
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": true
+  },
+  {
+    "questID": 8764,
+    "title": "The Changing of Paths - Protector No More",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "repeatable": true,
+    "prerequisiteAny": [
+      8751
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": false,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 8765,
+    "title": "The Changing of Paths - Invoker No More",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "repeatable": true,
+    "prerequisiteAny": [
+      8761
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": false,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 8766,
+    "title": "The Changing of Paths - Conqueror No More",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 60,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "repeatable": true,
+    "prerequisiteAny": [
+      8756
+    ],
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": false,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 8893,
+    "title": "The Super Egg-O-Matic",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 47,
+    "minLevel": 42,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "repeatable": true,
+    "prerequisiteAny": [
+      2741
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": false,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 8921,
+    "title": "The Ectoplasmic Distiller",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 58,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8922,
+      8923
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": false,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 8922,
+    "title": "A Supernatural Device",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 58,
+    "side": "Alliance",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "prerequisiteAny": [
+      8905,
+      8906,
+      8907,
+      8908,
+      8909,
+      8910,
+      8911,
+      8912
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 8923,
+    "title": "A Supernatural Device",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 58,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "prerequisiteAny": [
+      8913,
+      8914,
+      8915,
+      8916,
+      8917,
+      8918,
+      8919,
+      8920
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": true,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 8924,
+    "title": "Hunting for Ectoplasm",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 58,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8921
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": false,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 8925,
+    "title": "A Portable Power Source",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 58,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "prerequisiteAny": [
+      8924
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": false,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 8928,
+    "title": "A Shifty Merchant",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 58,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "questType": "Elite",
+    "prerequisiteAny": [
+      8925
+    ],
+    "prerequisitesRead": true,
+    "compiled_before": false,
+    "quarantined_endgame": false
+  },
+  {
+    "questID": 9268,
+    "title": "War at Sea",
+    "categoryPath": "kalimdor/tanaris",
+    "level": 60,
+    "minLevel": 40,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "repeatable": true,
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true,
+    "compiled_before": false,
+    "quarantined_endgame": false
+  }
+]

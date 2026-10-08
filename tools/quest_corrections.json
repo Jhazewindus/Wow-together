@@ -1406,5 +1406,509 @@
         "action": "escort"
       }
     }
+  },
+  {
+    "questID": 4508,
+    "title": "Calm Before the Storm",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; exact ID/title/minimum/level match, explicit sourceItemId with existing one-item provided and hand-in facts; 24 hashes verified 2026-10-08. See research/tanaris-2026-10-08. Keep faction and AND/OR actual hand-in dependencies.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 50,
+      "level": 54,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Pestlezugg's Un'Goro Report",
+          "itemID": 11844
+        }
+      ]
+    }
+  },
+  {
+    "questID": 4509,
+    "title": "Calm Before the Storm",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; exact ID/title/minimum/level match, explicit sourceItemId with existing one-item provided and hand-in facts; 24 hashes verified 2026-10-08. See research/tanaris-2026-10-08. Keep faction and AND/OR actual hand-in dependencies.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 50,
+      "level": 54,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Pestlezugg's Un'Goro Report",
+          "itemID": 11844
+        }
+      ]
+    }
+  },
+  {
+    "questID": 7732,
+    "title": "Zukk'ash Report",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; exact ID/title/minimum/level match, explicit sourceItemId with existing one-item provided and hand-in facts; 24 hashes verified 2026-10-08. See research/tanaris-2026-10-08. Keep faction and AND/OR actual hand-in dependencies.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 39,
+      "level": 48,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Camp Mojache Zukk'ash Report",
+          "itemID": 19020
+        }
+      ]
+    }
+  },
+  {
+    "questID": 8922,
+    "title": "A Supernatural Device",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; exact ID/title/minimum/level match, explicit sourceItemId with existing one-item provided and hand-in facts; 24 hashes verified 2026-10-08. See research/tanaris-2026-10-08. Keep faction and AND/OR actual hand-in dependencies.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 58,
+      "level": 60,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Sealed Blood Container",
+          "itemID": 21985
+        }
+      ]
+    }
+  },
+  {
+    "questID": 8923,
+    "title": "A Supernatural Device",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; exact ID/title/minimum/level match, explicit sourceItemId with existing one-item provided and hand-in facts; 24 hashes verified 2026-10-08. See research/tanaris-2026-10-08. Keep faction and AND/OR actual hand-in dependencies.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 58,
+      "level": 60,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Sealed Venom Container",
+          "itemID": 22382
+        }
+      ]
+    }
+  },
+  {
+    "questID": 654,
+    "title": "Tanaris Field Sampling",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; exact identity/levels. Typed objectives require acceptable samples and Field Testing Kit; requiredSourceItems are untested sample IDs without counts. Their prior 999 values are source-input placeholders, not required hand-in counts. Pinned foreverItemDB.lua confirms Alessandro Luca vendor of kit 8523. Keep acquisition work and unknown testing/output positions; retain actual eight acceptable samples and one kit. Verified 24 hashes 2026-10-08; research/tanaris-2026-10-08.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 38,
+      "level": 46,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 8,
+          "name": "Acceptable Basilisk Sample",
+          "itemID": 9440
+        },
+        {
+          "quantity": 8,
+          "name": "Acceptable Hyena Sample",
+          "itemID": 9441
+        },
+        {
+          "quantity": 8,
+          "name": "Acceptable Scorpid Sample",
+          "itemID": 9438
+        },
+        {
+          "buyable": true,
+          "name": "Field Testing Kit",
+          "buyPrice": 1000,
+          "quantity": 1,
+          "itemID": 8523
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 8,
+            "name": "Acceptable Basilisk Sample",
+            "entityID": 9440
+          },
+          {
+            "entityType": "item",
+            "quantity": 8,
+            "name": "Acceptable Hyena Sample",
+            "entityID": 9441
+          },
+          {
+            "entityType": "item",
+            "quantity": 8,
+            "name": "Acceptable Scorpid Sample",
+            "entityID": 9438
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Field Testing Kit",
+            "entityID": 8523
+          },
+          {
+            "entityType": "item",
+            "quantity": 999,
+            "name": "Untested Basilisk Sample",
+            "entityID": 9437
+          },
+          {
+            "entityType": "item",
+            "quantity": 999,
+            "name": "Untested Hyena Sample",
+            "entityID": 9439
+          },
+          {
+            "entityType": "item",
+            "quantity": 999,
+            "name": "Untested Scorpid Sample",
+            "entityID": 9442
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 8,
+            "name": "Acceptable Basilisk Sample",
+            "itemID": 9440
+          },
+          {
+            "quantity": 8,
+            "name": "Acceptable Hyena Sample",
+            "itemID": 9441
+          },
+          {
+            "quantity": 8,
+            "name": "Acceptable Scorpid Sample",
+            "itemID": 9438
+          },
+          {
+            "buyable": true,
+            "name": "Field Testing Kit",
+            "buyPrice": 1000,
+            "quantity": 1,
+            "itemID": 8523
+          },
+          {
+            "quantity": 999,
+            "name": "Untested Basilisk Sample",
+            "itemID": 9437
+          },
+          {
+            "quantity": 999,
+            "name": "Untested Hyena Sample",
+            "itemID": 9439
+          },
+          {
+            "quantity": 999,
+            "name": "Untested Scorpid Sample",
+            "itemID": 9442
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1458,
+            "legacyStepKey": "q:1458:npc:7683",
+            "entityID": 7683,
+            "y": 0.552,
+            "npc": true,
+            "x": 0.5820000000000001,
+            "sourceZone": "Undercity",
+            "objectiveKey": "item:8523",
+            "itemID": 8523,
+            "quantity": 1,
+            "sourceAreaID": 1497,
+            "itemName": "Field Testing Kit",
+            "action": "loot",
+            "name": "Alessandro Luca"
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1446,
+            "legacyStepKey": "q:1446:npc:5419",
+            "entityID": 5419,
+            "name": "Glasshide Basilisk",
+            "npc": true,
+            "x": 0.5791,
+            "y": 0.2415,
+            "objectiveKey": "item:9437",
+            "itemID": 9437,
+            "quantity": 999,
+            "sourceAreaID": 440,
+            "itemName": "Untested Basilisk Sample",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot"
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1446,
+            "legacyStepKey": "q:1446:npc:8208",
+            "entityID": 8208,
+            "name": "Murderous Blisterpaw",
+            "npc": true,
+            "x": 0.5232,
+            "y": 0.3329,
+            "objectiveKey": "item:9439",
+            "itemID": 9439,
+            "quantity": 999,
+            "sourceAreaID": 440,
+            "itemName": "Untested Hyena Sample",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot"
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1446,
+            "legacyStepKey": "q:1446:npc:5422",
+            "entityID": 5422,
+            "name": "Scorpid Hunter",
+            "npc": true,
+            "x": 0.4816,
+            "y": 0.3017,
+            "objectiveKey": "item:9442",
+            "itemID": 9442,
+            "quantity": 999,
+            "sourceAreaID": 440,
+            "itemName": "Untested Scorpid Sample",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Field Testing Kit",
+            "name": "Alessandro Luca",
+            "entityID": 7683,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "Untested Basilisk Sample",
+            "name": "Glasshide Basilisk",
+            "entityID": 5419,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "Untested Hyena Sample",
+            "name": "Murderous Blisterpaw",
+            "entityID": 8208,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "Untested Scorpid Sample",
+            "name": "Scorpid Hunter",
+            "entityID": 5422,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 8,
+            "name": "Acceptable Basilisk Sample",
+            "entityID": 9440
+          },
+          {
+            "entityType": "item",
+            "quantity": 8,
+            "name": "Acceptable Hyena Sample",
+            "entityID": 9441
+          },
+          {
+            "entityType": "item",
+            "quantity": 8,
+            "name": "Acceptable Scorpid Sample",
+            "entityID": 9438
+          }
+        ],
+        "objectiveLocationsIncomplete": true
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 8,
+            "name": "Acceptable Basilisk Sample",
+            "entityID": 9440
+          },
+          {
+            "entityType": "item",
+            "quantity": 8,
+            "name": "Acceptable Hyena Sample",
+            "entityID": 9441
+          },
+          {
+            "entityType": "item",
+            "quantity": 8,
+            "name": "Acceptable Scorpid Sample",
+            "entityID": 9438
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Field Testing Kit",
+            "entityID": 8523
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 8,
+            "name": "Acceptable Basilisk Sample",
+            "itemID": 9440
+          },
+          {
+            "quantity": 8,
+            "name": "Acceptable Hyena Sample",
+            "itemID": 9441
+          },
+          {
+            "quantity": 8,
+            "name": "Acceptable Scorpid Sample",
+            "itemID": 9438
+          },
+          {
+            "buyable": true,
+            "name": "Field Testing Kit",
+            "buyPrice": 1000,
+            "quantity": 1,
+            "itemID": 8523
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1458,
+            "legacyStepKey": "q:1458:npc:7683",
+            "entityID": 7683,
+            "y": 0.552,
+            "npc": true,
+            "x": 0.5820000000000001,
+            "sourceZone": "Undercity",
+            "objectiveKey": "item:8523",
+            "itemID": 8523,
+            "quantity": 1,
+            "sourceAreaID": 1497,
+            "itemName": "Field Testing Kit",
+            "action": "buy",
+            "name": "Alessandro Luca"
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1446,
+            "legacyStepKey": "q:1446:npc:5419",
+            "entityID": 5419,
+            "name": "Glasshide Basilisk",
+            "npc": true,
+            "x": 0.5791,
+            "y": 0.2415,
+            "objectiveKey": "item:9437",
+            "itemID": 9437,
+            "sourceAreaID": 440,
+            "itemName": "Untested Basilisk Sample",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot",
+            "quantityUnknown": true
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1446,
+            "legacyStepKey": "q:1446:npc:8208",
+            "entityID": 8208,
+            "name": "Murderous Blisterpaw",
+            "npc": true,
+            "x": 0.5232,
+            "y": 0.3329,
+            "objectiveKey": "item:9439",
+            "itemID": 9439,
+            "sourceAreaID": 440,
+            "itemName": "Untested Hyena Sample",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot",
+            "quantityUnknown": true
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1446,
+            "legacyStepKey": "q:1446:npc:5422",
+            "entityID": 5422,
+            "name": "Scorpid Hunter",
+            "npc": true,
+            "x": 0.4816,
+            "y": 0.3017,
+            "objectiveKey": "item:9442",
+            "itemID": 9442,
+            "sourceAreaID": 440,
+            "itemName": "Untested Scorpid Sample",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot",
+            "quantityUnknown": true
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Field Testing Kit",
+            "name": "Alessandro Luca",
+            "entityID": 7683,
+            "npc": true,
+            "action": "buy"
+          },
+          {
+            "itemName": "Untested Basilisk Sample",
+            "name": "Glasshide Basilisk",
+            "entityID": 5419,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "Untested Hyena Sample",
+            "name": "Murderous Blisterpaw",
+            "entityID": 8208,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "Untested Scorpid Sample",
+            "name": "Scorpid Hunter",
+            "entityID": 5422,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 8,
+            "name": "Acceptable Basilisk Sample",
+            "entityID": 9440
+          },
+          {
+            "entityType": "item",
+            "quantity": 8,
+            "name": "Acceptable Hyena Sample",
+            "entityID": 9441
+          },
+          {
+            "entityType": "item",
+            "quantity": 8,
+            "name": "Acceptable Scorpid Sample",
+            "entityID": 9438
+          }
+        ],
+        "objectiveLocationsIncomplete": true
+      }
+    }
   }
 ]

@@ -1,0 +1,11 @@
+test_both_factions_keep_whole_chapters_and_saved_mid_zone_order (test_tanaris_coverage.TanarisFactsTests.test_both_factions_keep_whole_chapters_and_saved_mid_zone_order) ... ok
+test_five_supplied_deliveries_keep_native_handins_and_faction_variants (test_tanaris_coverage.TanarisFactsTests.test_five_supplied_deliveries_keep_native_handins_and_faction_variants) ... ok
+test_raid_campaign_quarantine_keeps_catalogue_gaps_and_ordinary_elites (test_tanaris_coverage.TanarisFactsTests.test_raid_campaign_quarantine_keeps_catalogue_gaps_and_ordinary_elites) ... ok
+test_rules_remain_atomic_and_idempotent (test_tanaris_coverage.TanarisFactsTests.test_rules_remain_atomic_and_idempotent) ... ok
+test_testing_inputs_are_not_999_item_turnin_goals (test_tanaris_coverage.TanarisFactsTests.test_testing_inputs_are_not_999_item_turnin_goals) ... ok
+test_unknown_raw_input_inventory_does_not_finish_acceptable_sample_work (test_tanaris_coverage.TanarisFactsTests.test_unknown_raw_input_inventory_does_not_finish_acceptable_sample_work) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 5.436s
+
+OK
