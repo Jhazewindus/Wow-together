@@ -1,0 +1,242 @@
+{
+  "schema": 1,
+  "addon": "0.8.61",
+  "flow_module_sha256": "28d8cf8f6d3bb3e49404bcf6b9608e48f746e16020009a33afe96d5b35420040",
+  "optimizer_module_sha256": "e82d212f751bf1c2297fe317cc47d9de972e895f606e1fb82f49ee8c37cdf088",
+  "fixed_guides_sha256": "3dbb0a137ff628117bc38b75afb25df097ffb6e0113692ffd522dd98eafa43ca",
+  "fixed_travel_cost_sha256": "4f2f5ab93373a0e6abf5b8e2241b4f81265218e671b093de05c89d00dbf4eee9",
+  "travel_network_sha256": "be7e15c2927a3b80429f62b6eb39336b69bf39669af247daa6e38ce97bd62105",
+  "terrain_geometry_sha256": "fb44a466d339d0c0f27258816f1ffb64cd5c5a2e379a72b8574d8f77084a9971",
+  "terrain_data_sha256": "a74342fe846efb3a0530814049514b93d54b0a07cb56fbf6b012e6c7f0dcdec0",
+  "catalogue_sha256": "4d4fe11ea617b6aaddbb49079e4e59a238057c543d4424c79d3abcf8dc178919",
+  "travel_sha256": "1970f9f8d5298253b468a584fb40a72c62a67061c6f193e92de8ebf89d3de686",
+  "geometry_source": null,
+  "validation": "Lua 5.1 host. Complete action sequences; estimated geography, no play-time optimality claim.",
+  "guides": [
+    {
+      "faction": "Horde",
+      "race": 2,
+      "key": "level-zone:eastern-kingdoms/thoradins-wall:levels:31-40",
+      "zone": "Thoradin's Wall",
+      "start_level": 31,
+      "flow_start_level": 14,
+      "compile_ms": 51.12,
+      "stops": [
+        {
+          "id": 79974,
+          "kind": "a",
+          "mapID": 1442,
+          "x": 0.39640000000000003,
+          "y": 0.4986,
+          "entityID": 424012,
+          "entityType": "object"
+        },
+        {
+          "id": 79974,
+          "kind": "q",
+          "mapID": 1432,
+          "x": 0.49420000000000003,
+          "y": 0.1278,
+          "entityID": 424007,
+          "entityType": "object"
+        },
+        {
+          "id": 79974,
+          "kind": "t",
+          "mapID": 1432,
+          "x": 0.49420000000000003,
+          "y": 0.1278,
+          "entityID": 424007,
+          "entityType": "object"
+        },
+        {
+          "id": 79975,
+          "kind": "a",
+          "mapID": 1432,
+          "x": 0.495,
+          "y": 0.128,
+          "entityID": 424007
+        },
+        {
+          "id": 79975,
+          "kind": "q",
+          "mapID": 1417,
+          "x": 0.225,
+          "y": 0.242,
+          "entityID": 406918
+        },
+        {
+          "id": 79975,
+          "kind": "t",
+          "mapID": 1417,
+          "x": 0.225,
+          "y": 0.242,
+          "entityID": 406918
+        },
+        {
+          "id": 79976,
+          "kind": "a",
+          "mapID": 1417,
+          "x": 0.225,
+          "y": 0.242,
+          "entityID": 406918
+        },
+        {
+          "id": 79976,
+          "kind": "q",
+          "mapID": 1417,
+          "x": 0.225,
+          "y": 0.242,
+          "entityID": 424006
+        },
+        {
+          "id": 79976,
+          "kind": "t",
+          "mapID": 1417,
+          "x": 0.225,
+          "y": 0.242,
+          "entityID": 424006
+        }
+      ],
+      "flow": {
+        "uncertainTravelLegs": 2,
+        "blockedTravelLegs": 0,
+        "externalPrerequisites": 0,
+        "logOverflow": 0,
+        "peakLog": 1,
+        "unknownRewards": 0,
+        "finishXP": 7050,
+        "levelDeficitXP": 0,
+        "progressionNeedsReview": false,
+        "valid": true,
+        "logCapacityKnown": false,
+        "combatXPUnknown": 0,
+        "startXP": 0,
+        "finishLog": 0,
+        "distance": 30007.299315036358,
+        "finishLevel": 14,
+        "questXP": 7050,
+        "rewardXPBeforeWork": 7650,
+        "minimumKills": 0,
+        "requiredItemsUnknown": 0,
+        "difficultyPressure": 45,
+        "missingLocations": 0,
+        "missingLevelCurve": 0,
+        "initialLog": 0
+      }
+    },
+    {
+      "faction": "Alliance",
+      "race": 1,
+      "key": "level-zone:eastern-kingdoms/thoradins-wall:levels:31-40",
+      "zone": "Thoradin's Wall",
+      "start_level": 31,
+      "flow_start_level": 14,
+      "compile_ms": 7.34,
+      "stops": [
+        {
+          "id": 79974,
+          "kind": "a",
+          "mapID": 1442,
+          "x": 0.39640000000000003,
+          "y": 0.4986,
+          "entityID": 424012,
+          "entityType": "object"
+        },
+        {
+          "id": 79974,
+          "kind": "q",
+          "mapID": 1432,
+          "x": 0.49420000000000003,
+          "y": 0.1278,
+          "entityID": 424007,
+          "entityType": "object"
+        },
+        {
+          "id": 79974,
+          "kind": "t",
+          "mapID": 1432,
+          "x": 0.49420000000000003,
+          "y": 0.1278,
+          "entityID": 424007,
+          "entityType": "object"
+        },
+        {
+          "id": 79975,
+          "kind": "a",
+          "mapID": 1432,
+          "x": 0.495,
+          "y": 0.128,
+          "entityID": 424007
+        },
+        {
+          "id": 79975,
+          "kind": "q",
+          "mapID": 1417,
+          "x": 0.225,
+          "y": 0.242,
+          "entityID": 406918
+        },
+        {
+          "id": 79975,
+          "kind": "t",
+          "mapID": 1417,
+          "x": 0.225,
+          "y": 0.242,
+          "entityID": 406918
+        },
+        {
+          "id": 79976,
+          "kind": "a",
+          "mapID": 1417,
+          "x": 0.225,
+          "y": 0.242,
+          "entityID": 406918
+        },
+        {
+          "id": 79976,
+          "kind": "q",
+          "mapID": 1417,
+          "x": 0.225,
+          "y": 0.242,
+          "entityID": 424006
+        },
+        {
+          "id": 79976,
+          "kind": "t",
+          "mapID": 1417,
+          "x": 0.225,
+          "y": 0.242,
+          "entityID": 424006
+        }
+      ],
+      "flow": {
+        "uncertainTravelLegs": 2,
+        "blockedTravelLegs": 0,
+        "externalPrerequisites": 0,
+        "logOverflow": 0,
+        "peakLog": 1,
+        "unknownRewards": 0,
+        "finishXP": 7050,
+        "levelDeficitXP": 0,
+        "progressionNeedsReview": false,
+        "valid": true,
+        "logCapacityKnown": false,
+        "combatXPUnknown": 0,
+        "startXP": 0,
+        "finishLog": 0,
+        "distance": 30007.299315036358,
+        "finishLevel": 14,
+        "questXP": 7050,
+        "rewardXPBeforeWork": 7650,
+        "minimumKills": 0,
+        "requiredItemsUnknown": 0,
+        "difficultyPressure": 45,
+        "missingLocations": 0,
+        "missingLevelCurve": 0,
+        "initialLog": 0
+      }
+    }
+  ],
+  "zone": "Thoradin's Wall"
+}

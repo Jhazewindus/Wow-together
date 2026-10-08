@@ -7258,8 +7258,8 @@
       "quest_log_peak": 1,
       "quest_reward_only_xp_shortfall": 0,
       "uncertain_travel_legs": 2,
-      "estimated_distance_before": 30007.3,
-      "estimated_distance_after": 30007.3
+      "estimated_distance_before": 30000,
+      "estimated_distance_after": 30000
     },
     {
       "faction": "Alliance",
@@ -7851,8 +7851,8 @@
       "quest_log_peak": 1,
       "quest_reward_only_xp_shortfall": 0,
       "uncertain_travel_legs": 2,
-      "estimated_distance_before": 30007.3,
-      "estimated_distance_after": 30007.3
+      "estimated_distance_before": 30000.9,
+      "estimated_distance_after": 30000.9
     },
     {
       "faction": "Alliance",
@@ -10364,8 +10364,8 @@
       "quest_log_peak": 1,
       "quest_reward_only_xp_shortfall": 0,
       "uncertain_travel_legs": 2,
-      "estimated_distance_before": 30007.3,
-      "estimated_distance_after": 30007.3
+      "estimated_distance_before": 30000,
+      "estimated_distance_after": 30000
     },
     {
       "faction": "Horde",
@@ -10927,8 +10927,8 @@
       "quest_log_peak": 1,
       "quest_reward_only_xp_shortfall": 0,
       "uncertain_travel_legs": 2,
-      "estimated_distance_before": 30007.3,
-      "estimated_distance_after": 30007.3
+      "estimated_distance_before": 30000.9,
+      "estimated_distance_after": 30000.9
     },
     {
       "faction": "Horde",

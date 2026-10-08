@@ -2155,5 +2155,139 @@
         "objectiveLocationsIncomplete": false
       }
     }
+  },
+  {
+    "questID": 79975,
+    "title": "Eagle's Fist",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/traces/foreverObjectTraces.lua; exact quest/object relations and beta-observation spawns, verified 24 file hashes 2026-10-08. Carved Figurine is area 38/map 1432; Messenger Bag and Hastily Rolled-Up Satchel are area 45/map 1417 (Arathi), not Hillsbrad. Preserve distinct quest IDs, actual prerequisite hand-ins, all nine stages and saved guide keys; no safe approach or new work inferred. research/thoradins-wall-2026-10-08.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 14,
+      "level": 32,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "starts": [
+          {
+            "y": 0.128,
+            "x": 0.495,
+            "name": "Carved Figurine",
+            "entityID": 424007,
+            "mapID": 1432
+          }
+        ],
+        "ends": [
+          {
+            "y": 0.242,
+            "x": 0.225,
+            "name": "Messenger Bag",
+            "entityID": 406918,
+            "mapID": 1417
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "starts": [
+          {
+            "y": 0.1278,
+            "x": 0.49420000000000003,
+            "name": "Carved Figurine",
+            "entityID": 424007,
+            "mapID": 1432,
+            "entityType": "object",
+            "sourceAreaID": 38,
+            "locationSource": "Published Forever beta-observation entity position; research/thoradins-wall-2026-10-08"
+          }
+        ],
+        "ends": [
+          {
+            "y": 0.24230000000000002,
+            "x": 0.2248,
+            "name": "Messenger Bag",
+            "entityID": 406918,
+            "mapID": 1417,
+            "entityType": "object",
+            "sourceAreaID": 45,
+            "locationSource": "Published Forever beta-observation entity position; research/thoradins-wall-2026-10-08",
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 79976,
+    "title": "This Must Be The Place",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/traces/foreverObjectTraces.lua; exact quest/object relations and beta-observation spawns, verified 24 file hashes 2026-10-08. Carved Figurine is area 38/map 1432; Messenger Bag and Hastily Rolled-Up Satchel are area 45/map 1417 (Arathi), not Hillsbrad. Preserve distinct quest IDs, actual prerequisite hand-ins, all nine stages and saved guide keys; no safe approach or new work inferred. research/thoradins-wall-2026-10-08.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 14,
+      "level": 32,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "starts": [
+          {
+            "y": 0.242,
+            "x": 0.225,
+            "name": "Messenger Bag",
+            "entityID": 406918,
+            "mapID": 1417
+          }
+        ],
+        "ends": [
+          {
+            "y": 0.242,
+            "x": 0.225,
+            "name": "Hastily Rolled-Up Satchel",
+            "entityID": 424006,
+            "mapID": 1417
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "starts": [
+          {
+            "y": 0.24230000000000002,
+            "x": 0.2248,
+            "name": "Messenger Bag",
+            "entityID": 406918,
+            "mapID": 1417,
+            "entityType": "object",
+            "sourceAreaID": 45,
+            "locationSource": "Published Forever beta-observation entity position; research/thoradins-wall-2026-10-08"
+          }
+        ],
+        "ends": [
+          {
+            "y": 0.24230000000000002,
+            "x": 0.22469999999999998,
+            "name": "Hastily Rolled-Up Satchel",
+            "entityID": 424006,
+            "mapID": 1417,
+            "entityType": "object",
+            "sourceAreaID": 45,
+            "locationSource": "Published Forever beta-observation entity position; research/thoradins-wall-2026-10-08",
+            "action": "interact"
+          }
+        ]
+      }
+    }
   }
 ]

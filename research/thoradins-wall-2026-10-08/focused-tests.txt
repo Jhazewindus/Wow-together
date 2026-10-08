@@ -1,0 +1,10 @@
+test_corrections_are_atomic_and_reapplication_preserves_newer_facts (test_thoradin_coverage.ThoradinCoverageTests.test_corrections_are_atomic_and_reapplication_preserves_newer_facts) ... ok
+test_faction_class_variants_retain_all_nine_actions_and_saved_key (test_thoradin_coverage.ThoradinCoverageTests.test_faction_class_variants_retain_all_nine_actions_and_saved_key) ... ok
+test_followups_wait_for_actual_handin_not_acceptance_or_ready_flag (test_thoradin_coverage.ThoradinCoverageTests.test_followups_wait_for_actual_handin_not_acceptance_or_ready_flag) ... ok
+test_object_work_uses_concise_interaction_without_fabricated_item_count (test_thoradin_coverage.ThoradinCoverageTests.test_object_work_uses_concise_interaction_without_fabricated_item_count) ... ok
+test_shared_handoffs_use_same_observed_object_and_real_map_frame (test_thoradin_coverage.ThoradinCoverageTests.test_shared_handoffs_use_same_observed_object_and_real_map_frame) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 6.668s
+
+OK

@@ -1,0 +1,18 @@
+{
+  "applied": false,
+  "scope": "Presentation/grouping of quest 79976 as an optional Arathi handoff after the preceding chain hand-in, rather than a separate recommended region.",
+  "evidence": "One direct category quest, two cross-continent dependencies, beta-observation object positions use area 45 / map 1417. Chapter 31-40 and minimum 14 are distinct facts, not suitability proof.",
+  "required_coordination": [
+    "Preserve saved level-zone:eastern-kingdoms/thoradins-wall:levels:31-40 instances and progress when changing guide presentation.",
+    "Avoid automatically sending an Arathi player to Stonetalon/Loch Modan solely to make a region longer.",
+    "Keep accepted unfinished work, class option, faction gates, personal skips and temporary deferrals intact.",
+    "Verify hand-in-only unlocks and any real onward continuation before adding it.",
+    "Review canonical map indexing: Arathi already owns map 1417; assigning a primary map to a separate Wall category can create ambiguity. Stage coordinates already use the supported Arathi frame."
+  ],
+  "runtime_modules_not_edited": [
+    "LevelingGuides.lua",
+    "GuidePersistence.lua",
+    "FixedGuides.lua",
+    "Catalogue.lua"
+  ]
+}

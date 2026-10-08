@@ -1,0 +1,164 @@
+{
+  "79974": {
+    "prerequisitesRead": true,
+    "mapID": 1442,
+    "zone": "Stonetalon Mountains",
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "object",
+        "mapID": 1432,
+        "name": "Carved Figurine",
+        "y": 0.1278,
+        "entityID": 424007,
+        "x": 0.49420000000000003,
+        "locationSource": "Published Forever beta-observation entity position",
+        "sourceAreaID": 38
+      }
+    ],
+    "level": 32,
+    "areaID": 406,
+    "side": "Both",
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "object",
+        "name": "Carved Figurine",
+        "entityID": 424007
+      }
+    ],
+    "xp": 2550,
+    "objectives": {},
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "starts": [
+      {
+        "entityType": "object",
+        "mapID": 1442,
+        "name": "Mound of Dirt",
+        "y": 0.4986,
+        "entityID": 424012,
+        "x": 0.39640000000000003,
+        "locationSource": "Published Forever beta-observation entity position",
+        "sourceAreaID": 406
+      }
+    ],
+    "minLevel": 14,
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Mound of Dirt",
+        "entityID": 424012
+      }
+    ],
+    "foreverStatus": "updated",
+    "title": "Wet Job",
+    "categoryPath": "kalimdor/stonetalon-mountains"
+  },
+  "79975": {
+    "prerequisitesRead": true,
+    "mapID": 1432,
+    "zone": "Stonewrought Dam",
+    "requirements": {},
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.242,
+        "x": 0.225,
+        "name": "Messenger Bag",
+        "entityID": 406918,
+        "mapID": 1417
+      }
+    ],
+    "level": 32,
+    "areaID": 146,
+    "objectives": {},
+    "starts": [
+      {
+        "y": 0.128,
+        "x": 0.495,
+        "name": "Carved Figurine",
+        "entityID": 424007,
+        "mapID": 1432
+      }
+    ],
+    "side": "Both",
+    "previousQuest": 79974,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "object",
+        "name": "Messenger Bag",
+        "entityID": 406918
+      }
+    ],
+    "xp": 2550,
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Carved Figurine",
+        "entityID": 424007
+      }
+    ],
+    "foreverStatus": "updated",
+    "minLevel": 14,
+    "title": "Eagle's Fist",
+    "raceMask": 0,
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/stonewrought-dam"
+  },
+  "79976": {
+    "raceMask": 0,
+    "zone": "Thoradin's Wall",
+    "requirements": {},
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.242,
+        "x": 0.225,
+        "name": "Hastily Rolled-Up Satchel",
+        "entityID": 424006,
+        "mapID": 1417
+      }
+    ],
+    "level": 32,
+    "areaID": 293,
+    "objectives": {},
+    "starts": [
+      {
+        "y": 0.242,
+        "x": 0.225,
+        "name": "Messenger Bag",
+        "entityID": 406918,
+        "mapID": 1417
+      }
+    ],
+    "side": "Both",
+    "previousQuest": 79975,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "object",
+        "name": "Hastily Rolled-Up Satchel",
+        "entityID": 424006
+      }
+    ],
+    "xp": 1950,
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Messenger Bag",
+        "entityID": 406918
+      }
+    ],
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "minLevel": 14,
+    "prerequisitesRead": true,
+    "title": "This Must Be The Place",
+    "foreverStatus": "updated",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/thoradins-wall"
+  }
+}
