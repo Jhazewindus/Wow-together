@@ -1,0 +1,66 @@
+{
+  "zone": "Westfall",
+  "date": "2026-10-09 Europe/Amsterdam",
+  "addon": "0.8.61",
+  "baseline_commit": "2676a4b36bf03712b7184fa72ad5734c274d2342",
+  "main_commit": "09155ca265278572649a3529b8ce7ea1b4eb8431",
+  "changed_quest_ids": [
+    136,
+    138,
+    139,
+    140,
+    92742,
+    92744,
+    92745,
+    92747,
+    92748,
+    92752,
+    92819
+  ],
+  "direct_category_records": 54,
+  "standard_audit_distinct_ids": 45,
+  "all_checked_race_distinct_ids": 73,
+  "standard_actions": {
+    "Horde_11_20": 24,
+    "Alliance_1_10": 26,
+    "Alliance_11_20": 127
+  },
+  "Skyborn_actions": {
+    "Alliance_1_10": 26,
+    "Alliance_11_20": 224
+  },
+  "other_Alliance_races_1_10_actions": 14,
+  "recorded_objective_gaps": {
+    "before": [
+      92749
+    ],
+    "after": [
+      92749,
+      92819
+    ]
+  },
+  "recorded_pickup_handin_uncertain_pickup_quantity_gaps": 0,
+  "global_audit": {
+    "sections": 152,
+    "source_points": 11834,
+    "recorded_gap_free": 33,
+    "unresolved_ordinary_records": 378
+  },
+  "strict_replay_states": 20,
+  "all_actions_and_endpoints_preserved": true,
+  "same_corrected_facts_metrics_unchanged": true,
+  "optimization_gain_claimed": false,
+  "shared_runtime_modules_authored": false,
+  "native_beta_verified": false,
+  "preserved_entity_world_check_xp_data": true,
+  "pinned_source_commit": "e0a6eaa86f181ac99262e34126bcd2ed1a1712d6",
+  "source_hashes_verified": 24,
+  "tests": {
+    "focused": 8,
+    "host": 122,
+    "importer_source": 49,
+    "zone_regressions": 93,
+    "lua51_toc_compile": 86
+  },
+  "full_suite_rerun": false
+}

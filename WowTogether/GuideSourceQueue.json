@@ -1,6 +1,6 @@
 {
   "source_data_complete": false,
-  "remaining_quest_records": 377,
+  "remaining_quest_records": 378,
   "limitations": [
     "This queue identifies missing facts, not a license to invent them",
     "Source capture must respect access policy and stop after denials",
@@ -5079,6 +5079,20 @@
       "quest_url": "https://www.wowhead.com/forever/quest=92818",
       "entity_urls": [
         "https://www.wowhead.com/forever/item=3855"
+      ]
+    },
+    {
+      "questID": 92819,
+      "title": "Destruction in Deadmines",
+      "guides": [
+        "Alliance / Westfall"
+      ],
+      "needs": [
+        "objective area"
+      ],
+      "quest_url": "https://www.wowhead.com/forever/quest=92819",
+      "entity_urls": [
+        "https://www.wowhead.com/forever/npc=253279"
       ]
     },
     {

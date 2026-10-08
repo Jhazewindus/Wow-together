@@ -3793,5 +3793,428 @@
         "objectiveLocationsIncomplete": false
       }
     }
+  },
+  {
+    "questID": 136,
+    "title": "Captain Sander's Hidden Treasure",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverObjectDB.lua; Exact object return relation: interact with the treasure object, not a conversation. Keep all existing actual object points, item-start work, preceding hand-ins and distinct same-title IDs. No count or extra mandatory farm. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 10,
+      "level": 16,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "ends": [
+          {
+            "entityType": "object",
+            "mapID": 1436,
+            "name": "Captain's Footlocker",
+            "y": 0.4775,
+            "entityID": 35,
+            "x": 0.2591,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 40
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "ends": [
+          {
+            "entityType": "object",
+            "mapID": 1436,
+            "name": "Captain's Footlocker",
+            "y": 0.4775,
+            "entityID": 35,
+            "x": 0.2591,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 40,
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 138,
+    "title": "Captain Sander's Hidden Treasure",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverObjectDB.lua; Exact object return relation: interact with the treasure object, not a conversation. Keep all existing actual object points, item-start work, preceding hand-ins and distinct same-title IDs. No count or extra mandatory farm. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 10,
+      "level": 16,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "ends": [
+          {
+            "entityType": "object",
+            "mapID": 1436,
+            "name": "Broken Barrel",
+            "y": 0.4779,
+            "entityID": 36,
+            "x": 0.4052,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 40
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "ends": [
+          {
+            "entityType": "object",
+            "mapID": 1436,
+            "name": "Broken Barrel",
+            "y": 0.4779,
+            "entityID": 36,
+            "x": 0.4052,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 40,
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 139,
+    "title": "Captain Sander's Hidden Treasure",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverObjectDB.lua; Exact object return relation: interact with the treasure object, not a conversation. Keep all existing actual object points, item-start work, preceding hand-ins and distinct same-title IDs. No count or extra mandatory farm. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 10,
+      "level": 16,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "ends": [
+          {
+            "entityType": "object",
+            "mapID": 1436,
+            "name": "Old Jug",
+            "y": 0.1703,
+            "entityID": 34,
+            "x": 0.40630000000000005,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 40
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "ends": [
+          {
+            "entityType": "object",
+            "mapID": 1436,
+            "name": "Old Jug",
+            "y": 0.1703,
+            "entityID": 34,
+            "x": 0.40630000000000005,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 40,
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 140,
+    "title": "Captain Sander's Hidden Treasure",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverObjectDB.lua; Exact object return relation: interact with the treasure object, not a conversation. Keep all existing actual object points, item-start work, preceding hand-ins and distinct same-title IDs. No count or extra mandatory farm. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 10,
+      "level": 16,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "ends": [
+          {
+            "entityType": "object",
+            "mapID": 1436,
+            "name": "Locked Chest",
+            "y": 0.1691,
+            "entityID": 33,
+            "x": 0.2597,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 40
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "ends": [
+          {
+            "entityType": "object",
+            "mapID": 1436,
+            "name": "Locked Chest",
+            "y": 0.1691,
+            "entityID": 33,
+            "x": 0.2597,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 40,
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 92819,
+    "title": "Destruction in Deadmines",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/generated/foreverBaseQuest.lua; Published beta-delta objective is detonator use, not a conversation with Alba. Mark work explicitly unmapped instead of substituting the giver position. Exact use item/target/count and event area remain unknown; do not infer them from earlier explosive or kit items. Keep the mapped pickup/return and all three stages. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 9,
+      "level": 18,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": true
+      }
+    }
+  },
+  {
+    "questID": 92742,
+    "title": "Testing the Wells",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/traces/foreverNpcTraces.lua; exact NPC 253092 Alba Fairmoon quest-start/end joins and beta-observation spawn, area 40 -> map 1436, actual 52.40/52.90 representative. Three observations retained as positions, not a patrol or centroid. Quest 92747 level discrepancy is separate and its existing level 15 remains. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+    "stageCorrection": {
+      "kind": "npc-location",
+      "minLevel": 9,
+      "level": 12,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Jansen Stead Water Sample",
+          "itemID": 254546
+        },
+        {
+          "quantity": 1,
+          "name": "Molsen Farm Water Sample",
+          "itemID": 254547
+        }
+      ],
+      "entityID": 253092,
+      "roles": [
+        "starts",
+        "ends"
+      ],
+      "before": {
+        "mapID": 1436,
+        "x": 0.524,
+        "y": 0.53
+      },
+      "after": {
+        "mapID": 1436,
+        "x": 0.524,
+        "y": 0.529
+      }
+    }
+  },
+  {
+    "questID": 92744,
+    "title": "Murloc Gills",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/traces/foreverNpcTraces.lua; exact NPC 253092 Alba Fairmoon quest-start/end joins and beta-observation spawn, area 40 -> map 1436, actual 52.40/52.90 representative. Three observations retained as positions, not a patrol or centroid. Quest 92747 level discrepancy is separate and its existing level 15 remains. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+    "stageCorrection": {
+      "kind": "npc-location",
+      "minLevel": 9,
+      "level": 12,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 7,
+          "name": "Longshore Murloc Gill",
+          "itemID": 254548
+        }
+      ],
+      "entityID": 253092,
+      "roles": [
+        "starts",
+        "ends"
+      ],
+      "before": {
+        "mapID": 1436,
+        "x": 0.524,
+        "y": 0.53
+      },
+      "after": {
+        "mapID": 1436,
+        "x": 0.524,
+        "y": 0.529
+      }
+    }
+  },
+  {
+    "questID": 92745,
+    "title": "The State of the Mines",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/traces/foreverNpcTraces.lua; exact NPC 253092 Alba Fairmoon quest-start/end joins and beta-observation spawn, area 40 -> map 1436, actual 52.40/52.90 representative. Three observations retained as positions, not a patrol or centroid. Quest 92747 level discrepancy is separate and its existing level 15 remains. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+    "stageCorrection": {
+      "kind": "npc-location",
+      "minLevel": 9,
+      "level": 14,
+      "classMask": 0,
+      "requiredItems": [],
+      "entityID": 253092,
+      "roles": [
+        "starts",
+        "ends"
+      ],
+      "before": {
+        "mapID": 1436,
+        "x": 0.524,
+        "y": 0.53
+      },
+      "after": {
+        "mapID": 1436,
+        "x": 0.524,
+        "y": 0.529
+      }
+    }
+  },
+  {
+    "questID": 92747,
+    "title": "Moonbrook Espionage",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/traces/foreverNpcTraces.lua; exact NPC 253092 Alba Fairmoon quest-start/end joins and beta-observation spawn, area 40 -> map 1436, actual 52.40/52.90 representative. Three observations retained as positions, not a patrol or centroid. Quest 92747 level discrepancy is separate and its existing level 15 remains. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+    "stageCorrection": {
+      "kind": "npc-location",
+      "minLevel": 9,
+      "level": 15,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 8,
+          "name": "Suspicious Industrial Supplies",
+          "itemID": 254676
+        }
+      ],
+      "entityID": 253092,
+      "roles": [
+        "starts",
+        "ends"
+      ],
+      "before": {
+        "mapID": 1436,
+        "x": 0.524,
+        "y": 0.53
+      },
+      "after": {
+        "mapID": 1436,
+        "x": 0.524,
+        "y": 0.529
+      }
+    }
+  },
+  {
+    "questID": 92748,
+    "title": "Explosive Consultation",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/traces/foreverNpcTraces.lua; exact NPC 253092 Alba Fairmoon quest-start/end joins and beta-observation spawn, area 40 -> map 1436, actual 52.40/52.90 representative. Three observations retained as positions, not a patrol or centroid. Quest 92747 level discrepancy is separate and its existing level 15 remains. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+    "stageCorrection": {
+      "kind": "npc-location",
+      "minLevel": 9,
+      "level": 16,
+      "classMask": 0,
+      "requiredItems": [],
+      "entityID": 253092,
+      "roles": [
+        "starts"
+      ],
+      "before": {
+        "mapID": 1436,
+        "x": 0.524,
+        "y": 0.53
+      },
+      "after": {
+        "mapID": 1436,
+        "x": 0.524,
+        "y": 0.529
+      }
+    }
+  },
+  {
+    "questID": 92752,
+    "title": "Explosive Consultation",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/traces/foreverNpcTraces.lua; exact NPC 253092 Alba Fairmoon quest-start/end joins and beta-observation spawn, area 40 -> map 1436, actual 52.40/52.90 representative. Three observations retained as positions, not a patrol or centroid. Quest 92747 level discrepancy is separate and its existing level 15 remains. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+    "stageCorrection": {
+      "kind": "npc-location",
+      "minLevel": 9,
+      "level": 16,
+      "classMask": 0,
+      "requiredItems": [],
+      "entityID": 253092,
+      "roles": [
+        "ends"
+      ],
+      "before": {
+        "mapID": 1436,
+        "x": 0.524,
+        "y": 0.53
+      },
+      "after": {
+        "mapID": 1436,
+        "x": 0.524,
+        "y": 0.529
+      }
+    }
   }
 ]

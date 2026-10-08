@@ -1589,10 +1589,11 @@
       "pickups": 54,
       "objectives": 29,
       "turnins": 54,
-      "complete_locations": 52,
+      "complete_locations": 51,
       "missing_quest_ids": [
         92749,
-        92753
+        92753,
+        92819
       ]
     },
     "eastern-kingdoms/wetlands": {
@@ -13294,6 +13295,10 @@
     }
   },
   "reviewed_stage_corrections": [
+    136,
+    138,
+    139,
+    140,
     592,
     654,
     745,
@@ -13347,6 +13352,13 @@
     79975,
     79976,
     91738,
+    92742,
+    92744,
+    92745,
+    92747,
+    92748,
+    92752,
+    92819,
     95217,
     97331,
     99082,

@@ -1,0 +1,1 @@
+PASS: 86 TOC Lua files compile under Lua 5.1. Interface 16001 retained.

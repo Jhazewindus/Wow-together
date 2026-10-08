@@ -8098,11 +8098,12 @@
       "key": "level-zone:eastern-kingdoms/westfall:levels:11-20",
       "quests": 38,
       "steps": 127,
-      "unknown_location_steps": 1,
+      "unknown_location_steps": 2,
       "missing_location_quest_ids_by_stage": {
         "a": [],
         "q": [
-          92749
+          92749,
+          92819
         ],
         "t": []
       },
@@ -8120,14 +8121,14 @@
       },
       "reason_review_steps": 86,
       "cross_zone_reason_steps": 7,
-      "flow_alternatives_evaluated": 92,
+      "flow_alternatives_evaluated": 86,
       "flow_loop_changes": 2,
       "flow_state_valid": true,
       "quest_log_peak": 13,
       "quest_reward_only_xp_shortfall": 59210,
-      "uncertain_travel_legs": 31,
-      "estimated_distance_before": 136738.89,
-      "estimated_distance_after": 133286.65
+      "uncertain_travel_legs": 33,
+      "estimated_distance_before": 136727.08,
+      "estimated_distance_after": 133274.84
     },
     {
       "faction": "Alliance",
