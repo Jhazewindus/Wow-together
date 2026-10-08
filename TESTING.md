@@ -1,14 +1,14 @@
 # Wow Together — friend test script
 
-For **0.8.60** — **INVENTORY-AWARE SERVICE STOPS**, World of Warcraft: Forever beta,
+For **0.8.61** — **SESSION CHECKPOINTS AND DUNGEON TRACKING**, World of Warcraft: Forever beta,
 interface **16001**.
-Allow **10–15 minutes for the service checks**; the wider optional checks take 45–60
+Allow **10–15 minutes for checkpoint checks**; the wider optional checks take 45–60
 minutes. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 84 Lua files** and
+1. Replace the complete WowTogether folder, including **all 86 Lua files** and
    the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    **Fully restart the client for this update**, rather than only `/reload`.
@@ -21,7 +21,62 @@ The expanded-guide checks below take about **15–25 minutes**.
    applying completed/accepted quests and manual skips. Step numbers may change.
    A reload on the same version should preserve the saved order.
 
-## Inventory-aware service stops — about 10–15 minutes
+## Session checkpoints — about 10–15 minutes
+
+- Start a zone guide. Earn XP and hand in a quest, then open Recommended →
+  Session. Check XP, unique quest hand-ins, played time, level and the next
+  actual quest. Closing the summary must leave the guide running.
+- Press **Save & pause** or **Pause** on the guide window. The arrow/map guide
+  should stop, show Resume, and retain manual skips. The popup shows your
+  completed session. Close the paused guide window: the checkpoint stays saved.
+- While paused, finish another quest or move elsewhere, then reload/log back in.
+  The guide must stay paused. Recommended must offer Resume with the saved
+  title and previous summary. XP/time gained during the break must not count.
+- Resume. Recheck accepted/completed quests and actual crafting skill. Do not
+  repeat completed work or restore a corpse/flight/vendor/preview as a quest.
+  Same-version zone order and manual skips stay unchanged. This begins a new
+  summary; completing unrelated quests while the guide is active counts too.
+- Reload with the guide running. It should resume automatically and continue
+  its summary, excluding time offline. Check an actual level-up: XP should
+  include the remaining XP to the previous threshold plus the new level's XP.
+  Include `/wt probe` if totals are wrong; host tests cannot prove event timing.
+- Press ST or Exit on an **active** guide: discard its resumable guide and keep
+  the latest summary in Recommended → Session. Start another guide: replace the
+  previous checkpoint. Another character's checkpoint/summary must stay separate.
+  ST on a paused guide also discards its checkpoint while keeping the window open.
+- Resume in combat: the checkpoint must remain paused until you click again
+  outside combat. Resuming cannot replace a guide already running or invite
+  party members. Inventory service detours are cleared when pausing a guide.
+- Resize/move the summary and the small guide window; keep title, Pause/Resume,
+  BG, ST and Exit separate. Escape/× on the summary must only close that popup.
+- SavedVariables normally flush on logout/reload. Do not use a forced client
+  crash as a checkpoint test. Record version/build, before/after XP/level,
+  played duration, guide and Pass / Fail / Skip separately for each tester.
+
+## Live dungeon position — about 5 minutes, where supported
+
+- Inside a dungeon, open its map and press **Locate me**. If the client exposes
+  an exact native floor and public player position, check the marker while
+  walking/turning. Record `/wt probe`'s **Dungeon player** line even when no
+  marker appears. A static map alone cannot establish a usable coordinate frame.
+- Resize/move the viewer and switch full/map-only modes. The marker must stay
+  aligned with the artwork and must not select a quest, change guide progress,
+  reload loot or intercept boss/quest clicks while moving.
+- Change floors while following. If native floor data is available, the map
+  should follow it. Click a different floor or boss: keep browsing until you
+  press Locate me. Loot must remain tied to the boss you selected.
+- Turn quest markers off: player tracking should remain available. Enter combat:
+  keep the map open. Missing/restricted position hides only the player marker;
+  unknown facing should show a position dot instead of an invented direction.
+- Leave the instance or view another dungeon: never retain a stale marker.
+  Hide the viewer: stop polling. Missing map tiles must hide the player too.
+- **Important test limit:** HiddenMaps' own description says live tracking works
+  in supported pre-instance areas and its interiors are static. This update
+  cannot prove that Forever supplies interior coordinates. Report unavailable
+  native position as **Skip — client did not expose position**, with the probe,
+  dungeon name/build/floor. Do not claim that a static image is a tracking fix.
+
+## Inventory-aware service stops — optional regression
 
 - Start a leveling guide. In Settings → Bags, repairs and supplies, enable
   vendor advice. Visit a nearby merchant once, close the shop, and stay near

@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.60"
-ns.RELEASE_NAME = "INVENTORY-AWARE SERVICE STOPS"
+ns.VERSION = "0.8.61"
+ns.RELEASE_NAME = "SESSION CHECKPOINTS AND DUNGEON TRACKING"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}
@@ -38,6 +38,7 @@ function ns.Refresh(background)
     if ns.QueuePartyRouteFollow then ns.QueuePartyRouteFollow() end
     if ns.SchedulePartyCatchup then ns.SchedulePartyCatchup() end
     if ns.SaveSelectedGuide then ns.SaveSelectedGuide() end
+    if ns.CaptureSessionCheckpoint then ns.CaptureSessionCheckpoint() end
 end
 
 local progressPending = false
@@ -290,6 +291,7 @@ function ns.Diagnostics()
     ns.NPCPickupDiagnostics(output)
     ns.GuideQuestFocusDiagnostics(output)
     output("Guide restore: " .. ns.guideResumeStatus)
+    if ns.GuideSessionSummaryText then output("Guide session: " .. ns.GuideSessionSummaryText()) end
     output("Party catch-up: " .. ns.partyCatchupStatus)
     ns.ResearchDiagnostics(output)
     ns.MemoryDiagnostics(output)
@@ -330,6 +332,7 @@ ns.On("ADDON_LOADED", function(name)
     ns.InitializeAuctionMarket()
     ns.InitializeDungeonViewer()
     ns.InitializeInventoryServices()
+    ns.InitializeSessionCheckpoints()
     ns.Refresh()
     ns.Print("Loaded. /wt opens the quest view; /wt probe opens diagnostics.")
 end)

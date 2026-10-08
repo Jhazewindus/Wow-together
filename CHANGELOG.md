@@ -1,5 +1,41 @@
 # Wow Together changelog
 
+## 0.8.61
+
+**SESSION CHECKPOINTS AND DUNGEON TRACKING**
+
+- Add **Pause** to the small guide window and **Session** to Recommended.
+  Save & pause stops the guide and keeps a resumable checkpoint. Resume checks
+  current quest/crafting progress and retains same-version fixed order and skips.
+  Paused guides wait for Resume after login; running guides still resume normally.
+- Add a live position/facing marker on exact native dungeon floors when the
+  client supplies public coordinates. Locate me refreshes the map and follows
+  your floor. Boss/floor browsing suspends following; movement repaints only
+  the marker. Missing/private coordinates or reference-only art keep the map
+  static, including in combat. HiddenMaps itself documents static interiors;
+  this is native support, not a claim that Forever exposes every interior.
+- Show a compact personal summary of actual XP, unique quest hand-ins, played
+  time and level change. Normal reloads continue the summary without offline
+  time/XP. Pausing, stopping or changing guides finishes that session. Missing
+  native XP/time stays unavailable or partial; level notifications do not count
+  the previous level's XP twice. No leveling estimates enter these totals.
+- Keep one guide blueprint plus at most two small summaries per character.
+  Stop/Exit still discard an active guide; closing an already-paused window
+  preserves its checkpoint. The latest summary remains accessible in Recommended.
+  Resize/move the summary using the existing window controls. WoW normally
+  flushes SavedVariables on logout/reload; crash recovery is not guaranteed.
+- Include the guide branch's initial Dun Morogh coverage review and scoped audit
+  checks. Review through 8371d24: Durotar/Mulgore and the expanded Dun Morogh
+  source corrections remain drafts. Route comparisons flag delayed rewards,
+  log/XP tradeoffs; class/race eligibility and cross-zone handoffs need review.
+  Preserve those guards and current route fundamentals while those drafts await
+  a coordinated compiler decision.
+- Validation: 273 related host checks pass, including 23 session checkpoint,
+  native-XP, offline-time, crafting, stop/resume and UI checks, plus eight scoped
+  coverage checks, 14 new native tracking checks and 40 dungeon viewer/marker
+  regressions. All 86 Lua files compile under Lua 5.1. Native position/event
+  delivery and live UI/save behavior still require the attached beta checklist.
+
 ## 0.8.60
 
 **INVENTORY-AWARE SERVICE STOPS**

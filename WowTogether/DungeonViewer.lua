@@ -112,6 +112,7 @@ local function selectBoss(id)
     if not frame or not frame.data then return end
     for index, boss in ipairs(frame.data.bosses) do
         if boss.id == id then
+            frame.followPlayer = nil
             frame.bossID, frame.trashID, frame.trashKind, frame.lootPage = id, nil, nil, 1
             if frame.category == "shared" then frame.category = "all" end
             frame.bossPage = math.floor((index - 1) / frame.bossRowsVisible) + 1
@@ -139,7 +140,10 @@ local function create()
     if coordinate(left) and coordinate(top) then frame:ClearAllPoints(); frame:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", left, top) end
     ns.UIPanel(frame, colors.background); frame:SetMovable(true); frame:EnableMouse(true); frame:RegisterForDrag("LeftButton")
     frame:SetScript("OnDragStart", frame.StartMoving); frame:SetScript("OnDragStop", function() frame:StopMovingOrSizing(); save(frame) end)
-    frame:SetScript("OnHide", function() if ns.dungeonMapQuestWindow then ns.dungeonMapQuestWindow:Hide() end end)
+    frame:SetScript("OnHide", function()
+        if ns.dungeonMapQuestWindow then ns.dungeonMapQuestWindow:Hide() end
+        if frame.playerMarker then frame.playerMarker:Hide() end
+    end)
     frame.title = heading(frame, "Dungeon atlas", 20, 20, -18, 950)
     frame.summary = ns.UILabel(frame, nil, 11, colors.muted); frame.summary:SetPoint("TOPLEFT", 20, -49); frame.summary:SetSize(960, 20)
     ns.UIClose(frame); ns.UIDivider(frame, -80)
@@ -174,11 +178,16 @@ local function create()
     frame.trashPage = 1
     frame.trashPages = paging(frame.bossPanel, function() frame.trashPage = frame.trashPage - 1; ns.RenderDungeonViewer() end,
         function() frame.trashPage = frame.trashPage + 1; ns.RenderDungeonViewer() end)
-    frame.floorMenu = ns.UIDropdown(frame, {{1, "Floor 1"}}, 270, function(index) frame.floor = index; ns.RenderDungeonViewer() end)
+    frame.floorMenu = ns.UIDropdown(frame, {{1, "Floor 1"}}, 270, function(index) frame.followPlayer = nil; frame.floor = index; ns.RenderDungeonViewer() end)
     frame.floorMenu:SetPoint("TOPLEFT", 232, -94)
-    frame.refresh = ns.UIButton(frame, "Refresh map", 112, function() ns.RefreshDungeonViewer(true) end); frame.refresh:SetPoint("TOPLEFT", 620, -94)
+    frame.refresh = ns.UIButton(frame, "Locate me", 112, function()
+        ns.RefreshDungeonViewer(true)
+        if ns.LocateDungeonPlayer(frame) then ns.RenderDungeonViewer() end
+    end); frame.refresh:SetPoint("TOPLEFT", 620, -94)
+    ns.UIHelp(frame.refresh, "Refresh the map and follow your current floor when available.")
     frame.map = CreateFrame("Frame", nil, frame, "BackdropTemplate"); ns.UIPanel(frame.map)
     frame.map:SetPoint("TOPLEFT", 232, -132); frame.map:SetSize(500, 333)
+    ns.CreateDungeonPlayer(frame)
     frame.empty = ns.UILabel(frame.map, nil, 13, colors.muted); frame.empty:SetPoint("CENTER"); frame.empty:SetSize(410, 96); frame.empty:SetJustifyH("CENTER")
     frame.mapNote = ns.UILabel(frame, nil, 10, colors.muted); frame.mapNote:SetPoint("TOPLEFT", 232, -477); frame.mapNote:SetSize(500, 58)
     frame.bossInfo = CreateFrame("Frame", nil, frame, "BackdropTemplate"); frame.bossInfo:SetPoint("TOPLEFT", 232, -545); frame.bossInfo:SetSize(500, 59); ns.UIPanel(frame.bossInfo)
@@ -296,7 +305,7 @@ local function updateFloorMenu(frame)
         local row = control.options[index]
         if not row then
             local floor = index
-            row = ns.UIButton(control.menu, map.name, 262, function() control.menu:Hide(); frame.floor = floor; ns.RenderDungeonViewer() end)
+            row = ns.UIButton(control.menu, map.name, 262, function() control.menu:Hide(); frame.followPlayer = nil; frame.floor = floor; ns.RenderDungeonViewer() end)
             control.options[index] = row
         end
         row.caption:SetText(map.name); row:ClearAllPoints(); row:SetPoint("TOPLEFT", 4, -4 - (index - 1) * 28); row:SetHeight(26); row:Show()
@@ -309,6 +318,8 @@ local function updateFloorMenu(frame)
     if #control.entries == 0 then control.caption:SetText("Map unavailable") else control:SetChoice(frame.floor) end
 end
 drawMap = function(frame, map)
+    frame.playerGeometry = nil
+    if frame.playerMarker then frame.playerMarker:Hide() end
     for _, tile in ipairs(frame.tiles) do tile:Hide() end
     for _, pin in ipairs(frame.pins) do pin:Hide() end
     for _, pin in ipairs(frame.questPins) do pin:Hide(); if pin.leader then pin.leader:Hide() end end
@@ -332,6 +343,7 @@ drawMap = function(frame, map)
         for _, tile in ipairs(frame.tiles) do tile:Hide() end
         frame.empty:SetText("Map unavailable."); frame.empty:Show(); return
     end
+    ns.SetDungeonPlayerGeometry(frame, map, ox, oy, scale)
     for index, position in ipairs(map.bosses or {}) do
         local pin = frame.pins[index]
         if not pin then
@@ -517,6 +529,8 @@ function ns.ShowDungeonViewer(group, mapOnly)
         frame.floorMenu.menu:Hide(); frame.lootType.menu:Hide(); frame.lootClass.menu:Hide(); frame.search:SetText("")
     end
     selected, frame.data = key, ns.DungeonViewerData(key)
+    frame.followPlayer = nil
+    ns.LocateDungeonPlayer(frame)
     if frame.data and not frame.bossID and frame.data.bosses[1] then frame.bossID = frame.data.bosses[1].id end
     frame:Show(); frame:Raise(); ns.RenderDungeonViewer()
 end
@@ -572,4 +586,5 @@ function ns.DungeonViewerDiagnostics(output)
     local positions = ns.dungeonMapData and ns.dungeonMapData.counts or {}
     output("Dungeon reference markers: " .. (positions.mappedBosses or 0) .. " bosses; " .. (positions.questsWithInteriorMarkers or 0)
         .. " quests with interior positions. Exact matching floor artwork required; native coordinates take precedence.")
+    output("Dungeon player: " .. ns.dungeonPlayerStatus)
 end

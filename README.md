@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.60 — INVENTORY-AWARE SERVICE STOPS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.61 — SESSION CHECKPOINTS AND DUNGEON TRACKING** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -18,10 +18,37 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **84 Lua
+Replace the folder on **every party member's client**, including all **86 Lua
 files** and the **Media folder**, then fully restart the client. Restart if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.61 adds session checkpoints.** Press **Pause** on the guide window, or
+**Session → Save & pause** on the Recommended screen. The guide stops, stays saved
+and waits for **Resume**, including after login. Resume checks current quest or
+crafting progress; same-version fixed guides retain their order and manual skips.
+The compact summary shows actual XP gained, unique quests handed in and time
+played with that guide active. Pausing, stopping or choosing a different guide
+ends that summary; a normal reload continues it without counting offline time or
+XP. Stop/Exit still discard an active guide; closing an already-paused window
+retains its checkpoint. One resumable guide and the latest two small summaries
+are kept per character. Starting another guide replaces the resumable guide.
+Unknown native XP/time reads are shown as unavailable or partial, never filled
+from the leveling projection. WoW normally writes SavedVariables to disk on
+logout or reload; this cannot guarantee recovery after a client crash.
+
+**0.8.61 also adds native dungeon-player tracking.** The viewer draws your
+position/facing only when the client supplies a public position for the exact
+native floor being displayed. **Locate me** refreshes the map and follows your
+floor; selecting another floor or boss lets you browse without snapping back.
+Movement repaints the marker at most ten times per second, without rebuilding
+loot or quest lists. Missing/restricted coordinates hide the marker and preserve
+the map, including during combat. Reference-only artwork remains static. This
+does not establish interior tracking on the beta: the linked
+[HiddenMaps description](https://www.curseforge.com/wow/addons/hiddenmaps) also
+states that its live tracking supports pre-instance areas, while interiors are
+static. Our implementation uses Blizzard APIs and does not copy its code/assets.
+Open `/wt probe` with the viewer visible to capture the Dungeon player status.
 
 **0.8.60 adds optional inventory-aware vendor visits.** With four or fewer free
 regular bag slots, or an equipped item at 25% durability, the arrow can suggest a

@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.60
-## X-ReleaseName: INVENTORY-AWARE SERVICE STOPS
+## Version: 0.8.61
+## X-ReleaseName: SESSION CHECKPOINTS AND DUNGEON TRACKING
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua
@@ -87,5 +87,7 @@ AuctionGuide.lua
 DungeonJournal.lua
 DungeonMapQuests.lua
 DungeonViewer.lua
+DungeonPlayer.lua
 Recommended.lua
 RecommendedUI.lua
+SessionCheckpoints.lua

@@ -847,6 +847,7 @@ function ns.AttachRouteProvider()
 end
 
 function ns.ActivateRoute(guide, route)
+    if ns.BeginGuideSession then ns.BeginGuideSession(guide) end
     ns.CancelGuideScan()
     if ns.CancelGuidePlanning then ns.CancelGuidePlanning() end
     ns.ResetTravelPath()
@@ -864,6 +865,7 @@ function ns.ActivateRoute(guide, route)
     ns.DrawRoute()
     if ns.UpdateNPCHints then ns.UpdateNPCHints() end
     if ns.SaveSelectedGuide then ns.SaveSelectedGuide() end
+    if ns.CaptureSessionCheckpoint then ns.CaptureSessionCheckpoint() end
 end
 
 function ns.CompleteSelectedGuide(guide, message)
@@ -1008,10 +1010,11 @@ function ns.UpdateSelectedRoute(choices, query)
     if ns.UpdateNPCHints then ns.UpdateNPCHints() end
 end
 
-function ns.ClearRoute()
+function ns.ClearRoute(preserveCheckpoint)
+    if ns.FinishGuideSession then ns.FinishGuideSession() end
     ns.CancelGuideScan()
     ns.ResetTravelPath()
-    if ns.ClearSavedGuide then ns.ClearSavedGuide() end
+    if ns.ClearSavedGuide then ns.ClearSavedGuide(preserveCheckpoint) end
     if ns.CancelGuidePlanning then ns.CancelGuidePlanning() end
     ns.pendingGuideMap, ns.pendingPartyRouteStart = nil, nil
     ns.preparedLevelingRoute, ns.partyRouteHistoryScope = nil, nil
@@ -1027,12 +1030,13 @@ function ns.ClearRoute()
     if ns.UpdateNPCHints then ns.UpdateNPCHints() end
 end
 
-function ns.StopGuide(closeWindow)
+function ns.StopGuide(closeWindow, preserveCheckpoint)
     ns.ClearInventoryService()
-    ns.ClearRoute()
+    ns.ClearRoute(preserveCheckpoint)
     ns.pendingPartyRouteFollow, ns.pendingPartyRouteInvite, ns.waitingPartyRoute = nil, nil, nil
     ns.guideStopped, ns.guideWindowIdle = true, not closeWindow
     ns.partyRouteStatus, ns.guideResumeStatus = "No active guide.", "No saved guide to resume."
+    if preserveCheckpoint then ns.guideResumeStatus = "Guide paused; choose Resume when ready." end
     for _, name in ipairs({"startGuidePrompt", "earlyGuidePrompt", "partyRoutePrompt", "activityPrompt"}) do
         local frame = ns[name]
         if frame then frame:Hide() end
