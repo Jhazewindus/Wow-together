@@ -236,6 +236,7 @@ function ns.GuideDestinationDecision(stop, guide, route)
         decision.estimated = true; return decision
     end
     local goal = ns.GuideDestination(stop)
+    if goal.inventoryService then return result("service", goal.serviceReason, true) end
     local ctx = context(guide or ns.routeSelection, route or ns.selectedRoute)
     if ctx.decisions[goal] and unchanged(ctx.decisions[goal], goal) then return ctx.decisions[goal] end
     local decision = explain(goal, ctx)

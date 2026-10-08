@@ -19,7 +19,7 @@ function ns.EliteSpawnPoints()
         or ns.routePaused or ns.guideScanning or ns.routePlanning or ns.navigationPreview
         or ns.ReadPublic(UnitOnTaxi, "player") == true or ns.ReadPublic(UnitIsGhost, "player") == true
         or stop.travelLeg or stop.dungeonEntrance then return empty end
-    if ns.CurrentQuestConfirmation() or ns.CurrentClassTrainingStop() then return empty end
+    if ns.CurrentQuestConfirmation() or ns.CurrentClassTrainingStop() or ns.CurrentInventoryServiceStop() then return empty end
     local quest = ns.CatalogueQuest(stop.id)
     local facts = ns.GuideStepFacts(stop)
     if not quest or not actions[facts.action] or stop.entityType == "object" or stop.entityType == "item" then return empty end

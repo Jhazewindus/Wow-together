@@ -50,6 +50,10 @@ end
 
 function ns.RouteContext(stop, mapID, facts, travelDistance)
     if stop.professionStep then return ns.GuideDestinationPurpose(stop) end
+    if ns.IsInventoryServiceStep(stop) then
+        local service = ns.GuideDestination(stop)
+        return service.serviceReason .. ".\n" .. service.serviceInstructions
+    end
     if stop.unsafeTransit then return "No mapped bypass is known. Follow roads around the town." end
     if stop.unsafeTerrain then
         local purpose = ns.GuideDestinationPurpose(stop, mapID, travelDistance)
@@ -148,7 +152,10 @@ function ns.NavigationState()
             learnedSource = pending and pending.learnedSource,
             x = 0, y = 0, label = ns.routePaused or "Waiting for the next available guide step."}
     end
-    if not profession and not ns.navigationPreview and not confirmation then stop = ns.ClassTrainingDestination(stop) end
+    if not profession and not ns.navigationPreview then
+        stop = ns.InventoryServiceDestination(stop)
+        if not confirmation and not ns.IsInventoryServiceStep(stop) then stop = ns.ClassTrainingDestination(stop) end
+    end
     stop = ns.CorpseDestination() or ns.TravelDestination(stop)
     local flight = ns.FlightState()
     if flight then
@@ -274,11 +281,13 @@ function ns.UpdateNavigation()
             ns.navigationPreview and "Step preview" or
             (state.stop.npcVisitPickup and "Collect quests at this NPC" or state.stop.guideStep and ("Zone guide step " .. state.stop.guideStep) or "Current guide step")))
     local training = ns.IsClassTrainingStep(state.stop)
+    local service = ns.IsInventoryServiceStep(state.stop)
     if training then frame.step:SetText("Optional class training") end
-    frame.skipStep.caption:SetText(training and "Skip training" or "Skip step")
-    frame.skipQuest.caption:SetText(training and "Done training" or "Skip quest")
-    if frame.trainingLayout ~= training then
-        frame.trainingLayout = training
+    if service then frame.step:SetText("Optional vendor visit") end
+    frame.skipStep.caption:SetText(service and "Skip visit" or training and "Skip training" or "Skip step")
+    frame.skipQuest.caption:SetText(service and "Done" or training and "Done training" or "Skip quest")
+    if frame.trainingLayout ~= (training or service) then
+        frame.trainingLayout = training or service
         ns.LayoutNavigation()
     end
     if facts.lowerLevelPrerequisite and not state.stop.historyPreview and not ns.navigationPreview then
@@ -298,6 +307,19 @@ function ns.UpdateNavigation()
         frame.skipStep:SetEnabled(editable); frame.skipQuest:SetEnabled(false)
     end
     frame.back:SetEnabled(not state.idle and state.stop.kind ~= "loading"); frame.next:SetEnabled(not state.idle and state.stop.kind ~= "loading")
+    if service then
+        frame.skipStep:SetEnabled(editable); frame.skipQuest:SetEnabled(editable)
+        frame.back:SetEnabled(false); frame.next:SetEnabled(false)
+        if not frame.serviceControls then
+            ns.UIHelp(frame.skipStep, "Dismiss this vendor visit and resume your guide. No quest is skipped.")
+            ns.UIHelp(frame.skipQuest, "Finish this vendor visit and resume your guide. Buy, sell and repair manually.")
+            frame.serviceControls = true
+        end
+    elseif frame.serviceControls then
+        frame.serviceControls = nil
+        ns.UIHelp(frame.skipStep, "Skip this guide step. Training stops postpone their personal reminder.")
+        ns.UIHelp(frame.skipQuest, "Skip this quest. During training, Done training resumes quests.")
+    end
     if ns.routeSelection and ns.routeSelection.mode == "profession" then
         local route = ns.selectedRoute
         frame.step:SetText("Personal crafting guide")
@@ -434,7 +456,8 @@ function ns.CreateNavigation()
     frame.skipStep = ns.UIButton(frame, "Skip step", 80, function() ns.SkipGuide("step") end)
     frame.skipStep:SetHeight(24); frame.skipStep:SetPoint("BOTTOMLEFT", 42, 8)
     frame.skipQuest = ns.UIButton(frame, "Skip quest", 80, function()
-        if ns.IsClassTrainingStep(frame.state and frame.state.stop) then ns.FinishClassTraining(true)
+        if ns.IsInventoryServiceStep(frame.state and frame.state.stop) then ns.FinishInventoryService()
+        elseif ns.IsClassTrainingStep(frame.state and frame.state.stop) then ns.FinishClassTraining(true)
         else ns.SkipGuide("quest") end
     end)
     frame.skipQuest:SetHeight(24); frame.skipQuest:SetPoint("BOTTOMLEFT", 128, 8)
@@ -459,6 +482,9 @@ function ns.CreateNavigation()
         GameTooltip:SetOwner(self, "ANCHOR_RIGHT"); GameTooltip:AddLine(self.value.detail, 1, 0.82, 0.3, true); GameTooltip:Show()
     end)
     frame.tip:SetScript("OnLeave", function() if GameTooltip then GameTooltip:Hide() end end)
+    frame.tip:SetScript("OnMouseUp", function(self, button)
+        if button == "LeftButton" then ns.AcceptInventoryServiceTip(self.value) end
+    end)
     frame.tip:Hide()
     ns.CreateQuestItemButton(frame)
     ns.CreateAreaObjectives(frame)

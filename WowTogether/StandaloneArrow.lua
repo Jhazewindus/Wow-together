@@ -33,9 +33,15 @@ function ns.CreateStandaloneArrow()
     frame.reason:Hide()
     frame.training = CreateFrame("Frame", nil, frame); frame.training:SetSize(176, 24)
     frame.training:SetPoint("TOP", 0, -105)
-    frame.training.done = ns.UIButton(frame.training, "Done", 80, function() ns.FinishClassTraining(true) end)
+    frame.training.done = ns.UIButton(frame.training, "Done", 80, function()
+        if ns.IsInventoryServiceStep(frame.state and frame.state.stop) then ns.FinishInventoryService()
+        else ns.FinishClassTraining(true) end
+    end)
     frame.training.done:SetPoint("LEFT"); frame.training.done:SetHeight(22)
-    frame.training.skip = ns.UIButton(frame.training, "Skip", 80, function() ns.FinishClassTraining(false) end)
+    frame.training.skip = ns.UIButton(frame.training, "Skip", 80, function()
+        if ns.IsInventoryServiceStep(frame.state and frame.state.stop) then ns.FinishInventoryService()
+        else ns.FinishClassTraining(false) end
+    end)
     frame.training.skip:SetPoint("RIGHT"); frame.training.skip:SetHeight(22)
     frame.training:Hide()
     frame.tip = CreateFrame("Frame", nil, frame, "BackdropTemplate")
@@ -51,6 +57,9 @@ function ns.CreateStandaloneArrow()
         GameTooltip:AddLine(frame.guideTip.detail, 1, 0.82, 0.3, true); GameTooltip:Show()
     end)
     frame.tip:SetScript("OnLeave", function() if GameTooltip then GameTooltip:Hide() end end)
+    frame.tip:SetScript("OnMouseUp", function(_, button)
+        if button == "LeftButton" then ns.AcceptInventoryServiceTip(frame.guideTip) end
+    end)
     frame.tip:Hide()
     frame:SetScript("OnEnter", function(self)
         if not GameTooltip then return end
@@ -88,7 +97,7 @@ function ns.UpdateStandaloneArrow(state)
     if not frame then return end
     frame.state = state
     frame:SetShown(state.visible == true and not state.idle and ns.Option("standaloneArrow"))
-    local training = ns.IsClassTrainingStep(state.stop) and not state.flight and not state.busy
+    local training = (ns.IsClassTrainingStep(state.stop) or ns.IsInventoryServiceStep(state.stop)) and not state.flight and not state.busy
         and not ns.navigationPreview and not ns.Option("routeArrow")
     frame.training:SetShown(training == true)
     local showReason = state.visible == true and not state.idle and not state.busy and not ns.Option("routeArrow")

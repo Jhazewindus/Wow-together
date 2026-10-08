@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.59 — DUN MOROGH CHAIN FIX** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.60 — INVENTORY-AWARE SERVICE STOPS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -18,10 +18,22 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **83 Lua
+Replace the folder on **every party member's client**, including all **84 Lua
 files** and the **Media folder**, then fully restart the client. Restart if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.60 adds optional inventory-aware vendor visits.** With four or fewer free
+regular bag slots, or an equipped item at 25% durability, the arrow can suggest a
+nearby vendor you have visited. Optional common food/drink reminders show how
+much to buy toward your chosen target. Click the tip to visit, then Done to resume
+your quest guide. Selling, buying and repairing are manual; quest order is retained.
+Settings → **Bags, repairs and supplies** controls this advice and restock amounts.
+Vendor observations are shared across your compatible characters on the same
+realm/build/faction; needs and dismissals stay personal. Locations are approximate
+dialogue positions. Common Classic supplies are counted; custom foods and other
+consumables are not inferred. The short detour is an estimate using existing map
+safety checks. Actual merchant and inventory behavior needs beta testing.
 
 **0.8.59 fixes the Rime's Wrath prerequisite.** Finish and hand in Treacherous
 Cold first. The shared quest data places that complete work and return before

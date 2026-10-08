@@ -55,6 +55,12 @@ then fully restart the client; the release includes taint mitigation (a /reload 
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+0.8.60 INVENTORY-AWARE SERVICE STOPS adds optional nearby vendor advice for
+bags, repairs and common food/drink. Vendors are learned from actual visits;
+click a tip to navigate there, then Done to resume the unchanged quest guide.
+Buying, selling and repairing remain manual. Settings -> Bags, repairs and
+supplies controls the feature and target amount. See TESTING.md for beta checks.
+
 0.8.59 DUN MOROGH CHAIN FIX adds Treacherous Cold as Rime's Wrath's prerequisite.
 Finish and hand in Treacherous Cold before the follow-up pickup. The shared
 identity-checked tester correction applies to fixed/adaptive guides and future

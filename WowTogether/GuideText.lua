@@ -67,6 +67,7 @@ function ns.GuideStepAction(stop, facts)
     if stop.professionStep then return stop.label end
     if stop.dungeonEntrance then return text(stop.label) or "Go to the dungeon entrance" end
     if stop.kind == "trainer" then return text(stop.label) or "Check your class trainer" end
+    if stop.inventoryService then return text(stop.label) or "Visit the vendor" end
     local title, target = text(stop.title) or "this quest", facts.target
     if stop.confirmation then return "Talk to " .. (facts.npc or "the quest giver") end
     if stop.kind == "travel" or stop.kind == "f" then return text(stop.label) or "Travel to the next stop" end
@@ -173,6 +174,7 @@ end
 function ns.GuideDestinationPurpose(stop, mapID, distance, guide, route)
     local goal = ns.GuideDestination(stop)
     if goal.professionStep then return text(goal.travelReason) or goal.description end
+    if goal.inventoryService then return goal.serviceReason .. "\n" .. goal.serviceInstructions end
     local reason = ns.GuideVisibleReason(stop, mapID or ns.profile and ns.profile.mapID, distance, guide, route)
     if goal.dungeonEntrance or goal.kind == "trainer" then return reason end
     if goal.kind ~= "a" and goal.kind ~= "q" and goal.kind ~= "t" then return end
@@ -202,6 +204,12 @@ function ns.GuideStepDescription(stop, facts, guide, route)
     if facts.stop.professionStep then
         if facts.stop.description then parts[#parts + 1] = facts.stop.description end
         if not facts.stop.unknownLocation then parts[#parts + 1] = ns.StopLocationText(facts.stop) end
+        return table.concat(parts, "\n")
+    end
+    if facts.stop.inventoryService then
+        parts[#parts + 1] = facts.stop.serviceReason
+        parts[#parts + 1] = facts.stop.serviceInstructions
+        parts[#parts + 1] = "Done resumes your guide."
         return table.concat(parts, "\n")
     end
     local groupWarning = ns.QuestGroupWarning(facts.stop.id)

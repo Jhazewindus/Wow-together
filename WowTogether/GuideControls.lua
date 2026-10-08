@@ -59,6 +59,7 @@ function ns.SkipGuide(kind)
         if kind == "step" then ns.DismissFlightCheck(stop) end
         return
     end
+    if ns.IsInventoryServiceStep(stop) then ns.FinishInventoryService(); return end
     if ns.routeSelection and ns.routeSelection.mode == "profession" then ns.ProfessionGuideAction(kind); return end
     if ns.routeSelection and ns.routeSelection.mode == "travel" then return end
     if ns.navigationPreview or stop and stop.kind == "corpse" or ns.navigation and ns.navigation.state and ns.navigation.state.flight then return end

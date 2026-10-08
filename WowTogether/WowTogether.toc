@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.59
-## X-ReleaseName: DUN MOROGH CHAIN FIX
+## Version: 0.8.60
+## X-ReleaseName: INVENTORY-AWARE SERVICE STOPS
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua
@@ -51,6 +51,7 @@ AreaObjectives.lua
 Navigation.lua
 GuideTips.lua
 ClassTraining.lua
+InventoryServices.lua
 StandaloneArrow.lua
 Progress.lua
 NPCs.lua

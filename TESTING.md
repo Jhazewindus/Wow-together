@@ -1,17 +1,17 @@
 # Wow Together — friend test script
 
-For **0.8.59** — **DUN MOROGH CHAIN FIX**, World of Warcraft: Forever beta,
+For **0.8.60** — **INVENTORY-AWARE SERVICE STOPS**, World of Warcraft: Forever beta,
 interface **16001**.
-Allow **5–10 minutes for the hotfix**; the wider optional checks take 45–60
+Allow **10–15 minutes for the service checks**; the wider optional checks take 45–60
 minutes. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 83 Lua files** and
+1. Replace the complete WowTogether folder, including **all 84 Lua files** and
    the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
-   **Fully restart the client for this hotfix**, rather than only `/reload`.
+   **Fully restart the client for this update**, rather than only `/reload`.
 2. Enable `/console scriptErrors 1`. Record version, build, level, faction, class,
    race, zone, party size and relevant settings. Update every party member.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**
@@ -21,7 +21,40 @@ The expanded-guide checks below take about **15–25 minutes**.
    applying completed/accepted quests and manual skips. Step numbers may change.
    A reload on the same version should preserve the saved order.
 
-## Rime's Wrath prerequisite — about 5–10 minutes
+## Inventory-aware service stops — about 10–15 minutes
+
+- Start a leveling guide. In Settings → Bags, repairs and supplies, enable
+  vendor advice. Visit a nearby merchant once, close the shop, and stay near
+  your next quest stop. The vendor must be learned from a real visit, not an inn
+  or class trainer's presence. Include `/wt probe` if advice fails to appear.
+- With at most four free **regular** bag slots, check for a compact vendor tip
+  under the guide arrow. Empty specialty-bag slots must not inflate regular
+  capacity. Don't fill bags solely to test this if you need space for quests.
+- If an equipped item is at or below 25% durability, the tip should suggest
+  repairs only at a visited repair merchant. A nonrepair food seller must not
+  claim it can repair equipment. Record the durability and vendor name.
+- Click the tip. The arrow and map should point to that vendor and explain the
+  reason. Sell or repair manually, then press Done; the original quest order,
+  credit and saved skips must remain. Resolving all accepted needs should also
+  return the arrow to quests. Skip visit must never skip a quest.
+- With food/drink advice enabled, carry five or fewer common, usable supplies
+  and visit a vendor that sells them. Check the estimated amount to buy toward
+  a target of 10/20/40. Buy some, then check the remaining amount. Drink advice
+  is for mana classes; old food tiers and custom foods aren't inferred.
+- Dismiss with ×. The same need must stay quiet until repaired/restocked or bag
+  space recovers. Let the need recur later: it should become eligible again.
+  Repeat using only the standalone arrow; its click, Done and Skip must work.
+- Reload during an accepted vendor visit: resume it with the same guide. Stop
+  or change guides: discard that visit. Check another compatible character:
+  vendor knowledge may carry over, while needs and dismissals remain personal.
+- Check combat, death, flying and Scan guide: vendor advice/detours must pause
+  without changing quest order. Turning advice off must leave the normal guide
+  usable. Crafting should continue to use its existing materials instructions.
+- Report version/build, free regular slots, lowest durability, food/drink names,
+  vendor, selected guide and `/wt probe`. Host fixtures cannot prove native beta
+  API delivery, actual merchant stock or a physically walkable detour.
+
+## Rime's Wrath prerequisite — optional regression
 
 - In Dun Morogh, install the update and resume the 1–10 guide. Its quest list
   must place all Treacherous Cold objectives and its turn-in before the Rime's
