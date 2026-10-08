@@ -1,0 +1,81 @@
+{
+  "source": "Inherited pinned Mapzeroth travel facts; see TRAVEL_DATA.md",
+  "travel_data_unchanged": true,
+  "nodes": {
+    "DOCK_RATCHET": {
+      "y": 0.5083,
+      "mapID": 1413,
+      "name": "Ratchet Harbor",
+      "x": 0.6446,
+      "container": "kalimdor.the_barrens"
+    },
+    "ZEPPELIN_GROMGOL_TIRISFAL": {
+      "y": 0.292,
+      "mapID": 1434,
+      "name": "Grom'gol Zeppelin Tower (Undercity)",
+      "x": 0.316,
+      "container": "easternkingdoms.stranglethorn_vale"
+    },
+    "DOCK_BOOTYBAY": {
+      "y": 0.6673,
+      "mapID": 1434,
+      "name": "Booty Bay Harbor",
+      "x": 0.3908,
+      "container": "easternkingdoms.stranglethorn_vale"
+    },
+    "ZEPPELIN_GROMGOL_ORGRIMMAR": {
+      "y": 0.301,
+      "mapID": 1434,
+      "name": "Grom'gol Zeppelin Tower (Orgrimmar)",
+      "x": 0.313,
+      "container": "easternkingdoms.stranglethorn_vale"
+    }
+  },
+  "links": [
+    {
+      "to": "DOCK_RATCHET",
+      "seconds": 260,
+      "method": "ship",
+      "from": "DOCK_BOOTYBAY"
+    },
+    {
+      "to": "DOCK_BOOTYBAY",
+      "seconds": 260,
+      "method": "ship",
+      "from": "DOCK_RATCHET"
+    },
+    {
+      "seconds": 250,
+      "method": "zeppelin",
+      "faction": "Horde",
+      "to": "ZEPPELIN_ORGRIMMAR_GROMGOL",
+      "from": "ZEPPELIN_GROMGOL_ORGRIMMAR"
+    },
+    {
+      "seconds": 240,
+      "method": "zeppelin",
+      "faction": "Horde",
+      "to": "ZEPPELIN_TIRISFAL_GROMGOL",
+      "from": "ZEPPELIN_GROMGOL_TIRISFAL"
+    },
+    {
+      "seconds": 250,
+      "method": "zeppelin",
+      "faction": "Horde",
+      "to": "ZEPPELIN_GROMGOL_ORGRIMMAR",
+      "from": "ZEPPELIN_ORGRIMMAR_GROMGOL"
+    },
+    {
+      "seconds": 240,
+      "method": "zeppelin",
+      "faction": "Horde",
+      "to": "ZEPPELIN_GROMGOL_TIRISFAL",
+      "from": "ZEPPELIN_TIRISFAL_GROMGOL"
+    }
+  ],
+  "limitations": [
+    "Transport links are not walking shortcuts",
+    "Flight-master points do not establish personal flight unlocks",
+    "No surveyed dock/tower approach or native transport timing claim"
+  ]
+}

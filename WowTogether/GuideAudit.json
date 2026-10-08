@@ -1,7 +1,7 @@
 {
   "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
   "quest_records": 5230,
-  "static_points_checked": 11824,
+  "static_points_checked": 11831,
   "fixed_zone_guides_checked": 152,
   "catalogue_reason_stages_checked": 16849,
   "catalogue_reason_codes": {
@@ -5406,7 +5406,7 @@
       "key": "level-zone:kalimdor/azshara:levels:51-60",
       "quests": 38,
       "steps": 127,
-      "unknown_location_steps": 28,
+      "unknown_location_steps": 26,
       "missing_location_quest_ids_by_stage": {
         "a": [
           6821,
@@ -5417,8 +5417,6 @@
           8598
         ],
         "q": [
-          3511,
-          3621,
           6821,
           6822,
           6823,
@@ -5476,12 +5474,12 @@
       },
       "reason_review_steps": 95,
       "cross_zone_reason_steps": 20,
-      "flow_alternatives_evaluated": 23,
+      "flow_alternatives_evaluated": 29,
       "flow_loop_changes": 0,
       "flow_state_valid": true,
       "quest_log_peak": 5,
       "quest_reward_only_xp_shortfall": 2294150,
-      "uncertain_travel_legs": 60,
+      "uncertain_travel_legs": 58,
       "estimated_distance_before": 508582.68,
       "estimated_distance_after": 508582.68
     },
@@ -5602,13 +5600,10 @@
       "key": "level-zone:eastern-kingdoms/blasted-lands:levels:51-60",
       "quests": 23,
       "steps": 76,
-      "unknown_location_steps": 2,
+      "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
-        "q": [
-          3511,
-          3621
-        ],
+        "q": [],
         "t": []
       },
       "unverified_pickup_requirement_quest_ids": [],
@@ -5625,12 +5620,12 @@
       },
       "reason_review_steps": 31,
       "cross_zone_reason_steps": 14,
-      "flow_alternatives_evaluated": 23,
+      "flow_alternatives_evaluated": 30,
       "flow_loop_changes": 0,
       "flow_state_valid": true,
       "quest_log_peak": 3,
       "quest_reward_only_xp_shortfall": 2410600,
-      "uncertain_travel_legs": 24,
+      "uncertain_travel_legs": 22,
       "estimated_distance_before": 162069.35,
       "estimated_distance_after": 162069.35
     },
@@ -7398,32 +7393,25 @@
       "key": "level-zone:eastern-kingdoms/stranglethorn-vale:levels:41-50",
       "quests": 52,
       "steps": 169,
-      "unknown_location_steps": 19,
+      "unknown_location_steps": 12,
       "missing_location_quest_ids_by_stage": {
         "a": [
           614,
           615,
           618,
           620,
-          8552,
-          8553,
-          8554
+          8552
         ],
         "q": [
           615,
           620,
-          8552,
-          8553,
           8554
         ],
         "t": [
           614,
           615,
           618,
-          620,
-          8552,
-          8553,
-          8554
+          620
         ]
       },
       "unverified_pickup_requirement_quest_ids": [
@@ -7432,9 +7420,7 @@
         8553,
         8554
       ],
-      "unverified_objective_quantity_quest_ids": [
-        8551
-      ],
+      "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
       "reason_steps_checked": 169,
@@ -7442,20 +7428,20 @@
         "early-reward": 2,
         "outside-level-range": 90,
         "prerequisite": 38,
-        "quest-reward": 37,
-        "return-hub": 1,
+        "quest-reward": 36,
+        "return-hub": 2,
         "unlock-loop": 1
       },
-      "reason_review_steps": 97,
+      "reason_review_steps": 94,
       "cross_zone_reason_steps": 3,
-      "flow_alternatives_evaluated": 143,
+      "flow_alternatives_evaluated": 147,
       "flow_loop_changes": 4,
       "flow_state_valid": true,
-      "quest_log_peak": 7,
+      "quest_log_peak": 6,
       "quest_reward_only_xp_shortfall": 1160215,
-      "uncertain_travel_legs": 34,
-      "estimated_distance_before": 422143.91,
-      "estimated_distance_after": 416920.92
+      "uncertain_travel_legs": 28,
+      "estimated_distance_before": 326473.48,
+      "estimated_distance_after": 321057.68
     },
     {
       "faction": "Alliance",
@@ -7463,15 +7449,13 @@
       "key": "level-zone:eastern-kingdoms/stranglethorn-vale:levels:51-60",
       "quests": 27,
       "steps": 87,
-      "unknown_location_steps": 6,
+      "unknown_location_steps": 4,
       "missing_location_quest_ids_by_stage": {
         "a": [
           7908
         ],
         "q": [
           1036,
-          3511,
-          3621,
           7908
         ],
         "t": [
@@ -7495,12 +7479,12 @@
       },
       "reason_review_steps": 49,
       "cross_zone_reason_steps": 15,
-      "flow_alternatives_evaluated": 15,
+      "flow_alternatives_evaluated": 22,
       "flow_loop_changes": 0,
       "flow_state_valid": true,
       "quest_log_peak": 2,
       "quest_reward_only_xp_shortfall": 3062580,
-      "uncertain_travel_legs": 24,
+      "uncertain_travel_legs": 22,
       "estimated_distance_before": 214354.02,
       "estimated_distance_after": 214354.02
     },
@@ -8847,7 +8831,7 @@
       "key": "level-zone:kalimdor/azshara:levels:51-60",
       "quests": 51,
       "steps": 169,
-      "unknown_location_steps": 30,
+      "unknown_location_steps": 28,
       "missing_location_quest_ids_by_stage": {
         "a": [
           6821,
@@ -8858,8 +8842,6 @@
           8598
         ],
         "q": [
-          3511,
-          3621,
           6821,
           6822,
           6823,
@@ -8927,7 +8909,7 @@
       "flow_state_valid": true,
       "quest_log_peak": 5,
       "quest_reward_only_xp_shortfall": 2333000,
-      "uncertain_travel_legs": 76,
+      "uncertain_travel_legs": 74,
       "estimated_distance_before": 653205.85,
       "estimated_distance_after": 653205.85
     },
@@ -9083,13 +9065,10 @@
       "key": "level-zone:eastern-kingdoms/blasted-lands:levels:51-60",
       "quests": 22,
       "steps": 73,
-      "unknown_location_steps": 2,
+      "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
-        "q": [
-          3511,
-          3621
-        ],
+        "q": [],
         "t": []
       },
       "unverified_pickup_requirement_quest_ids": [],
@@ -9111,7 +9090,7 @@
       "flow_state_valid": true,
       "quest_log_peak": 2,
       "quest_reward_only_xp_shortfall": 2410600,
-      "uncertain_travel_legs": 32,
+      "uncertain_travel_legs": 30,
       "estimated_distance_before": 243178.38,
       "estimated_distance_after": 243178.38
     },
@@ -10663,32 +10642,25 @@
       "key": "level-zone:eastern-kingdoms/stranglethorn-vale:levels:41-50",
       "quests": 60,
       "steps": 194,
-      "unknown_location_steps": 19,
+      "unknown_location_steps": 12,
       "missing_location_quest_ids_by_stage": {
         "a": [
           614,
           615,
           618,
           620,
-          8552,
-          8553,
-          8554
+          8552
         ],
         "q": [
           615,
           620,
-          8552,
-          8553,
           8554
         ],
         "t": [
           614,
           615,
           618,
-          620,
-          8552,
-          8553,
-          8554
+          620
         ]
       },
       "unverified_pickup_requirement_quest_ids": [
@@ -10697,31 +10669,27 @@
         8553,
         8554
       ],
-      "unverified_objective_quantity_quest_ids": [
-        592,
-        8551
-      ],
+      "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
       "reason_steps_checked": 194,
       "destination_reason_codes": {
-        "early-reward": 1,
         "outside-level-range": 105,
         "prerequisite": 41,
         "quest-reward": 45,
-        "return-hub": 1,
+        "return-hub": 2,
         "reward-first": 1
       },
-      "reason_review_steps": 112,
+      "reason_review_steps": 109,
       "cross_zone_reason_steps": 3,
-      "flow_alternatives_evaluated": 180,
+      "flow_alternatives_evaluated": 151,
       "flow_loop_changes": 2,
       "flow_state_valid": true,
       "quest_log_peak": 9,
       "quest_reward_only_xp_shortfall": 1157715,
-      "uncertain_travel_legs": 27,
-      "estimated_distance_before": 374474.25,
-      "estimated_distance_after": 374474.25
+      "uncertain_travel_legs": 22,
+      "estimated_distance_before": 284778.63,
+      "estimated_distance_after": 284778.63
     },
     {
       "faction": "Horde",
@@ -10729,15 +10697,13 @@
       "key": "level-zone:eastern-kingdoms/stranglethorn-vale:levels:51-60",
       "quests": 26,
       "steps": 84,
-      "unknown_location_steps": 6,
+      "unknown_location_steps": 4,
       "missing_location_quest_ids_by_stage": {
         "a": [
           7908
         ],
         "q": [
           1036,
-          3511,
-          3621,
           7908
         ],
         "t": [
@@ -10766,7 +10732,7 @@
       "flow_state_valid": true,
       "quest_log_peak": 2,
       "quest_reward_only_xp_shortfall": 3084230,
-      "uncertain_travel_legs": 28,
+      "uncertain_travel_legs": 26,
       "estimated_distance_before": 262967.05,
       "estimated_distance_after": 262967.05
     },

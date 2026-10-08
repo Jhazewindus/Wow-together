@@ -1,0 +1,58 @@
+[
+  {
+    "kind": "npc",
+    "entityID": 218229,
+    "url": "https://www.wowhead.com/forever/npc=218229",
+    "captured": "2026-10-08",
+    "status": 403
+  },
+  {
+    "kind": "npc",
+    "entityID": 218230,
+    "url": "https://www.wowhead.com/forever/npc=218230",
+    "captured": "2026-10-08",
+    "status": 403
+  },
+  {
+    "kind": "npc",
+    "entityID": 268992,
+    "url": "https://www.wowhead.com/forever/npc=268992",
+    "captured": "2026-10-08",
+    "status": 403
+  },
+  {
+    "kind": "npc",
+    "entityID": 4631,
+    "url": "https://www.wowhead.com/forever/npc=4631",
+    "captured": "2026-10-08",
+    "status": "not requested after repeated denials"
+  },
+  {
+    "kind": "npc",
+    "entityID": 1493,
+    "url": "https://www.wowhead.com/forever/npc=1493",
+    "captured": "2026-10-08",
+    "status": "not requested after repeated denials"
+  },
+  {
+    "kind": "quest",
+    "entityID": 593,
+    "url": "https://www.wowhead.com/forever/quest=593",
+    "captured": "2026-10-08",
+    "status": "not requested after repeated denials"
+  },
+  {
+    "kind": "quest",
+    "entityID": 619,
+    "url": "https://www.wowhead.com/forever/quest=619",
+    "captured": "2026-10-08",
+    "status": "not requested after repeated denials"
+  },
+  {
+    "kind": "quest",
+    "entityID": 7810,
+    "url": "https://www.wowhead.com/forever/quest=7810",
+    "captured": "2026-10-08",
+    "status": "not requested after repeated denials"
+  }
+]

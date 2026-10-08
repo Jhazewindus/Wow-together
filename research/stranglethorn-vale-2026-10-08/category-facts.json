@@ -1,0 +1,1298 @@
+{
+  "url": "https://www.wowhead.com/forever/quests/eastern-kingdoms/stranglethorn-vale",
+  "captured": "2026-10-08",
+  "status": 200,
+  "sha256": "1584df7f18acb088ee7507b9e76241d76fed6830fd3c2bded88939045bf52c55",
+  "rows": [
+    {
+      "id": 208,
+      "name": "Big Game Hunter",
+      "level": 43,
+      "reqlevel": 28,
+      "reqclass": 0,
+      "side": 3,
+      "type": 1,
+      "xp": 5350
+    },
+    {
+      "id": 613,
+      "name": "Cracking Maury's Foot",
+      "level": 44,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 3,
+      "type": 1,
+      "xp": 4650
+    },
+    {
+      "id": 197,
+      "name": "Raptor Mastery",
+      "level": 43,
+      "reqlevel": 28,
+      "reqclass": 0,
+      "side": 3,
+      "type": 1,
+      "xp": 3600
+    },
+    {
+      "id": 188,
+      "name": "Tiger Mastery",
+      "level": 37,
+      "reqlevel": 28,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 2850
+    },
+    {
+      "id": 193,
+      "name": "Panther Mastery",
+      "level": 40,
+      "reqlevel": 28,
+      "reqclass": 0,
+      "side": 3,
+      "type": 1,
+      "xp": 3150
+    },
+    {
+      "id": 194,
+      "name": "Raptor Mastery",
+      "level": 34,
+      "reqlevel": 28,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 1350
+    },
+    {
+      "id": 185,
+      "name": "Tiger Mastery",
+      "level": 31,
+      "reqlevel": 28,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 1250
+    },
+    {
+      "id": 609,
+      "name": "Voodoo Dues",
+      "level": 44,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 3750
+    },
+    {
+      "id": 606,
+      "name": "Scaring Shaky",
+      "level": 41,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 820
+    },
+    {
+      "id": 202,
+      "name": "Colonel Kurzen",
+      "level": 40,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 1,
+      "type": 1,
+      "xp": 3150
+    },
+    {
+      "id": 600,
+      "name": "Venture Company Mining",
+      "level": 41,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 3300
+    },
+    {
+      "id": 592,
+      "name": "Saving Yenniku",
+      "level": 46,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 2,
+      "type": 0,
+      "xp": 5050
+    },
+    {
+      "id": 338,
+      "name": "The Green Hills of Stranglethorn",
+      "level": 40,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 4700
+    },
+    {
+      "id": 97328,
+      "name": "Anything of Value",
+      "level": 35,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 0,
+      "type": 0,
+      "xp": 2750
+    },
+    {
+      "id": 575,
+      "name": "Supply and Demand",
+      "level": 31,
+      "reqlevel": 26,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 1250
+    },
+    {
+      "id": 196,
+      "name": "Raptor Mastery",
+      "level": 41,
+      "reqlevel": 28,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 2450
+    },
+    {
+      "id": 195,
+      "name": "Raptor Mastery",
+      "level": 36,
+      "reqlevel": 28,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 1400
+    },
+    {
+      "id": 328,
+      "name": "The Hidden Key",
+      "level": 37,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 1,
+      "type": 0,
+      "xp": 1400
+    },
+    {
+      "id": 331,
+      "name": "Report to Doren",
+      "level": 37,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 1,
+      "type": 0,
+      "xp": 2850
+    },
+    {
+      "id": 187,
+      "name": "Tiger Mastery",
+      "level": 35,
+      "reqlevel": 28,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 2050
+    },
+    {
+      "id": 607,
+      "name": "Return to MacKinley",
+      "level": 41,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 2450
+    },
+    {
+      "id": 215,
+      "name": "Jungle Secrets",
+      "level": 33,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 1,
+      "type": 0,
+      "xp": 1300
+    },
+    {
+      "id": 186,
+      "name": "Tiger Mastery",
+      "level": 33,
+      "reqlevel": 28,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 1300
+    },
+    {
+      "id": 582,
+      "name": "Headhunting",
+      "level": 37,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 2,
+      "type": 0,
+      "xp": 2100
+    },
+    {
+      "id": 97048,
+      "name": "Returning to Port",
+      "level": 38,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 0,
+      "type": 0,
+      "xp": 2850
+    },
+    {
+      "id": 200,
+      "name": "Bookie Herod",
+      "level": 35,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 1,
+      "type": 0,
+      "xp": 1350
+    },
+    {
+      "id": 95384,
+      "name": "Partial Mystical Notes",
+      "level": 40,
+      "reqlevel": 32,
+      "reqclass": 0,
+      "side": 0,
+      "type": 0,
+      "xp": 3150
+    },
+    {
+      "id": 201,
+      "name": "Investigate the Camp",
+      "level": 32,
+      "reqlevel": 28,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 255
+    },
+    {
+      "id": 605,
+      "name": "Singing Blue Shards",
+      "level": 35,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 2750
+    },
+    {
+      "id": 97329,
+      "name": "Where's the Key?",
+      "level": 35,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 0,
+      "type": 0,
+      "xp": 2750
+    },
+    {
+      "id": 189,
+      "name": "Bloodscalp Ears",
+      "level": 35,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 2050
+    },
+    {
+      "id": 97331,
+      "name": "Zimmix's Great Escape",
+      "level": 35,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 0,
+      "type": 0,
+      "xp": 2750
+    },
+    {
+      "id": 190,
+      "name": "Panther Mastery",
+      "level": 31,
+      "reqlevel": 28,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 1250
+    },
+    {
+      "id": 9259,
+      "name": "Traitor to the Bloodsail",
+      "level": 60,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 2,
+      "type": 0,
+      "xp": 0
+    },
+    {
+      "id": 97047,
+      "name": "The Cook in the Cage",
+      "level": 38,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 0,
+      "type": 0,
+      "xp": 2850
+    },
+    {
+      "id": 95748,
+      "name": "The Gurubashi Legends of Old",
+      "level": 40,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 2,
+      "type": 0,
+      "xp": 3150
+    },
+    {
+      "id": 192,
+      "name": "Panther Mastery",
+      "level": 38,
+      "reqlevel": 28,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 2150
+    },
+    {
+      "id": 329,
+      "name": "The Spy Revealed!",
+      "level": 37,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 1,
+      "type": 0,
+      "xp": 1400
+    },
+    {
+      "id": 626,
+      "name": "Cortello's Riddle",
+      "level": 51,
+      "reqlevel": 35,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 6100
+    },
+    {
+      "id": 98463,
+      "name": "Talk of the Town",
+      "level": 33,
+      "reqlevel": 28,
+      "reqclass": 0,
+      "side": 1,
+      "type": 0,
+      "xp": 265
+    },
+    {
+      "id": 581,
+      "name": "Hunt for Yenniku",
+      "level": 34,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 2,
+      "type": 0,
+      "xp": 2000
+    },
+    {
+      "id": 583,
+      "name": "Welcome to the Jungle",
+      "level": 30,
+      "reqlevel": 28,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 245
+    },
+    {
+      "id": 598,
+      "name": "Split Bone Necklace",
+      "level": 42,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 2,
+      "type": 0,
+      "xp": 3450
+    },
+    {
+      "id": 191,
+      "name": "Panther Mastery",
+      "level": 33,
+      "reqlevel": 28,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 1300
+    },
+    {
+      "id": 204,
+      "name": "Bad Medicine",
+      "level": 34,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 1,
+      "type": 0,
+      "xp": 2700
+    },
+    {
+      "id": 330,
+      "name": "Patrol Schedules",
+      "level": 37,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 1,
+      "type": 0,
+      "xp": 285
+    },
+    {
+      "id": 596,
+      "name": "Bloody Bone Necklaces",
+      "level": 37,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 2,
+      "type": 0,
+      "xp": 2100
+    },
+    {
+      "id": 629,
+      "name": "The Vile Reef",
+      "level": 37,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 2,
+      "type": 1,
+      "xp": 2850
+    },
+    {
+      "id": 213,
+      "name": "Hostile Takeover",
+      "level": 36,
+      "reqlevel": 31,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 2800
+    },
+    {
+      "id": 95773,
+      "name": "Enemies in the Water",
+      "level": 37,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 2,
+      "type": 0,
+      "xp": 2850
+    },
+    {
+      "id": 574,
+      "name": "Special Forces",
+      "level": 38,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 1,
+      "type": 0,
+      "xp": 2850
+    },
+    {
+      "id": 624,
+      "name": "Cortello's Riddle",
+      "level": 43,
+      "reqlevel": 35,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 3600
+    },
+    {
+      "id": 628,
+      "name": "Excelsior",
+      "level": 38,
+      "reqlevel": 31,
+      "reqclass": 0,
+      "side": 3,
+      "type": 1,
+      "xp": 2850
+    },
+    {
+      "id": 584,
+      "name": "Bloodscalp Clan Heads",
+      "level": 41,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 2,
+      "type": 0,
+      "xp": 3300
+    },
+    {
+      "id": 339,
+      "name": "Chapter I",
+      "level": 40,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 780
+    },
+    {
+      "id": 573,
+      "name": "Mok'thardin's Enchantment",
+      "level": 44,
+      "reqlevel": 33,
+      "reqclass": 0,
+      "side": 2,
+      "type": 0,
+      "xp": 4650
+    },
+    {
+      "id": 576,
+      "name": "Keep An Eye Out",
+      "level": 42,
+      "reqlevel": 37,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 2550
+    },
+    {
+      "id": 577,
+      "name": "Some Assembly Required",
+      "level": 36,
+      "reqlevel": 31,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 1400
+    },
+    {
+      "id": 585,
+      "name": "Speaking with Nezzliok",
+      "level": 40,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 2,
+      "type": 0,
+      "xp": 2350
+    },
+    {
+      "id": 601,
+      "name": "Water Elementals",
+      "level": 37,
+      "reqlevel": 32,
+      "reqclass": 0,
+      "side": 1,
+      "type": 0,
+      "xp": 2850
+    },
+    {
+      "id": 608,
+      "name": "The Bloodsail Buccaneers",
+      "level": 45,
+      "reqlevel": 37,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 4850
+    },
+    {
+      "id": 594,
+      "name": "Message in a Bottle",
+      "level": 45,
+      "reqlevel": 45,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 2900
+    },
+    {
+      "id": 621,
+      "name": "Zanzil's Secret",
+      "level": 44,
+      "reqlevel": 35,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 3750
+    },
+    {
+      "id": 569,
+      "name": "The Defense of Grom'gol",
+      "level": 37,
+      "reqlevel": 33,
+      "reqclass": 0,
+      "side": 2,
+      "type": 0,
+      "xp": 2850
+    },
+    {
+      "id": 587,
+      "name": "Up to Snuff",
+      "level": 41,
+      "reqlevel": 37,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 1650
+    },
+    {
+      "id": 617,
+      "name": "Akiris by the Bundle",
+      "level": 43,
+      "reqlevel": 38,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 3600
+    },
+    {
+      "id": 8552,
+      "name": "The Monogrammed Sash",
+      "level": 50,
+      "reqlevel": 35,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 2350
+    },
+    {
+      "id": 206,
+      "name": "Mai'Zoth",
+      "level": 46,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 1,
+      "type": 1,
+      "xp": 5050
+    },
+    {
+      "id": 205,
+      "name": "Troll Witchery",
+      "level": 40,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 1,
+      "type": 0,
+      "xp": 3150
+    },
+    {
+      "id": 341,
+      "name": "Chapter III",
+      "level": 40,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 780
+    },
+    {
+      "id": 578,
+      "name": "The Stone of the Tides",
+      "level": 37,
+      "reqlevel": 32,
+      "reqclass": 0,
+      "side": 1,
+      "type": 0,
+      "xp": 2850
+    },
+    {
+      "id": 611,
+      "name": "The Curse of the Tides",
+      "level": 40,
+      "reqlevel": 32,
+      "reqclass": 0,
+      "side": 1,
+      "type": 1,
+      "xp": 3150
+    },
+    {
+      "id": 3625,
+      "name": "Enchanted Azsharite Fel Weaponry",
+      "level": 58,
+      "reqlevel": 45,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 620
+    },
+    {
+      "id": 207,
+      "name": "Kurzen's Mystery",
+      "level": 38,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 1,
+      "type": 0,
+      "xp": 3550
+    },
+    {
+      "id": 348,
+      "name": "Stranglethorn Fever",
+      "level": 45,
+      "reqlevel": 40,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 5850
+    },
+    {
+      "id": 4621,
+      "name": "Avast Ye, Admiral!",
+      "level": 60,
+      "reqlevel": 55,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 9950
+    },
+    {
+      "id": 9272,
+      "name": "Dressing the Part",
+      "level": 55,
+      "reqlevel": 49,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 0
+    },
+    {
+      "id": 7810,
+      "name": "Arena Master",
+      "level": 55,
+      "reqlevel": 1,
+      "reqclass": 0,
+      "side": 3,
+      "type": 41,
+      "xp": 560
+    },
+    {
+      "id": 203,
+      "name": "The Second Rebellion",
+      "level": 33,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 1,
+      "type": 0,
+      "xp": 1950
+    },
+    {
+      "id": 342,
+      "name": "Chapter IV",
+      "level": 40,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 780
+    },
+    {
+      "id": 614,
+      "name": "The Captain's Chest",
+      "level": 47,
+      "reqlevel": 35,
+      "reqclass": 0,
+      "side": 3,
+      "type": 1,
+      "xp": 3150
+    },
+    {
+      "id": 7908,
+      "name": "Arena Master",
+      "level": 55,
+      "reqlevel": 1,
+      "reqclass": 0,
+      "side": 0,
+      "type": 41,
+      "xp": 560
+    },
+    {
+      "id": 630,
+      "name": "Message in a Bottle",
+      "level": 51,
+      "reqlevel": 45,
+      "reqclass": 0,
+      "side": 3,
+      "type": 1,
+      "xp": 7350
+    },
+    {
+      "id": 568,
+      "name": "The Defense of Grom'gol",
+      "level": 36,
+      "reqlevel": 33,
+      "reqclass": 0,
+      "side": 2,
+      "type": 0,
+      "xp": 2800
+    },
+    {
+      "id": 602,
+      "name": "Magical Analysis",
+      "level": 37,
+      "reqlevel": 32,
+      "reqclass": 0,
+      "side": 1,
+      "type": 0,
+      "xp": 1400
+    },
+    {
+      "id": 571,
+      "name": "Mok'thardin's Enchantment",
+      "level": 41,
+      "reqlevel": 33,
+      "reqclass": 0,
+      "side": 2,
+      "type": 0,
+      "xp": 2450
+    },
+    {
+      "id": 589,
+      "name": "The Singing Crystals",
+      "level": 45,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 2,
+      "type": 0,
+      "xp": 3900
+    },
+    {
+      "id": 591,
+      "name": "The Mind's Eye",
+      "level": 46,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 2,
+      "type": 1,
+      "xp": 5050
+    },
+    {
+      "id": 593,
+      "name": "Filling the Soul Gem",
+      "level": 46,
+      "reqlevel": 1,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 0
+    },
+    {
+      "id": 595,
+      "name": "The Bloodsail Buccaneers",
+      "level": 41,
+      "reqlevel": 37,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 2450
+    },
+    {
+      "id": 597,
+      "name": "The Bloodsail Buccaneers",
+      "level": 41,
+      "reqlevel": 37,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 2450
+    },
+    {
+      "id": 622,
+      "name": "Return to Corporal Kaleb",
+      "level": 37,
+      "reqlevel": 32,
+      "reqclass": 0,
+      "side": 1,
+      "type": 0,
+      "xp": 2850
+    },
+    {
+      "id": 198,
+      "name": "Supplies to Private Thorsen",
+      "level": 32,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 1,
+      "type": 0,
+      "xp": 640
+    },
+    {
+      "id": 588,
+      "name": "The Fate of Yenniku",
+      "level": 45,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 2,
+      "type": 0,
+      "xp": 390
+    },
+    {
+      "id": 1036,
+      "name": "Avast Ye, Scallywag",
+      "level": 60,
+      "reqlevel": 55,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 660
+    },
+    {
+      "id": 623,
+      "name": "Akiris by the Bundle",
+      "level": 43,
+      "reqlevel": 38,
+      "reqclass": 0,
+      "side": 1,
+      "type": 0,
+      "xp": 2700
+    },
+    {
+      "id": 638,
+      "name": "Trollbane",
+      "level": 37,
+      "reqlevel": 32,
+      "reqclass": 0,
+      "side": 2,
+      "type": 0,
+      "xp": 710
+    },
+    {
+      "id": 209,
+      "name": "Skullsplitter Tusks",
+      "level": 42,
+      "reqlevel": 37,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 3450
+    },
+    {
+      "id": 340,
+      "name": "Chapter II",
+      "level": 40,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 780
+    },
+    {
+      "id": 604,
+      "name": "The Bloodsail Buccaneers",
+      "level": 43,
+      "reqlevel": 37,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 3600
+    },
+    {
+      "id": 625,
+      "name": "Cortello's Riddle",
+      "level": 43,
+      "reqlevel": 35,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 3600
+    },
+    {
+      "id": 586,
+      "name": "Speaking with Gan'zulah",
+      "level": 46,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 2,
+      "type": 0,
+      "xp": 4050
+    },
+    {
+      "id": 8554,
+      "name": "Facing Negolash",
+      "level": 50,
+      "reqlevel": 35,
+      "reqclass": 0,
+      "side": 3,
+      "type": 1,
+      "xp": 7100
+    },
+    {
+      "id": 570,
+      "name": "Mok'thardin's Enchantment",
+      "level": 38,
+      "reqlevel": 33,
+      "reqclass": 0,
+      "side": 2,
+      "type": 0,
+      "xp": 2150
+    },
+    {
+      "id": 9266,
+      "name": "Making Amends",
+      "level": 60,
+      "reqlevel": 40,
+      "reqclass": 0,
+      "side": 2,
+      "type": 0,
+      "xp": 0
+    },
+    {
+      "id": 610,
+      "name": "\"Pretty Boy\" Duncan",
+      "level": 39,
+      "reqlevel": 32,
+      "reqclass": 0,
+      "side": 1,
+      "type": 0,
+      "xp": 2250
+    },
+    {
+      "id": 616,
+      "name": "The Haunted Isle",
+      "level": 37,
+      "reqlevel": 32,
+      "reqclass": 0,
+      "side": 1,
+      "type": 0,
+      "xp": 285
+    },
+    {
+      "id": 210,
+      "name": "Krazek's Cookery",
+      "level": 37,
+      "reqlevel": 32,
+      "reqclass": 0,
+      "side": 1,
+      "type": 0,
+      "xp": 1400
+    },
+    {
+      "id": 572,
+      "name": "Mok'thardin's Enchantment",
+      "level": 41,
+      "reqlevel": 33,
+      "reqclass": 0,
+      "side": 2,
+      "type": 0,
+      "xp": 2450
+    },
+    {
+      "id": 618,
+      "name": "Facing Negolash",
+      "level": 50,
+      "reqlevel": 35,
+      "reqclass": 0,
+      "side": 3,
+      "type": 1,
+      "xp": 7100
+    },
+    {
+      "id": 620,
+      "name": "The Monogrammed Sash",
+      "level": 50,
+      "reqlevel": 35,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 2350
+    },
+    {
+      "id": 580,
+      "name": "Whiskey Slim's Lost Grog",
+      "level": 50,
+      "reqlevel": 40,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 4700
+    },
+    {
+      "id": 8551,
+      "name": "The Captain's Chest",
+      "level": 47,
+      "reqlevel": 35,
+      "reqclass": 0,
+      "side": 3,
+      "type": 1,
+      "xp": 3150
+    },
+    {
+      "id": 95770,
+      "name": "Locating the Lost City",
+      "level": 40,
+      "reqlevel": 30,
+      "reqclass": 0,
+      "side": 2,
+      "type": 0,
+      "xp": 3150
+    },
+    {
+      "id": 615,
+      "name": "The Captain's Cutlass",
+      "level": 50,
+      "reqlevel": 35,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 470
+    },
+    {
+      "id": 349,
+      "name": "Stranglethorn Fever",
+      "level": 35,
+      "reqlevel": 32,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 0
+    },
+    {
+      "id": 599,
+      "name": "The Bloodsail Buccaneers",
+      "level": 41,
+      "reqlevel": 37,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 820
+    },
+    {
+      "id": 619,
+      "name": "Enticing Negolash",
+      "level": 52,
+      "reqlevel": 1,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 0
+    },
+    {
+      "id": 627,
+      "name": "Favor for Krazek",
+      "level": 37,
+      "reqlevel": 32,
+      "reqclass": 0,
+      "side": 1,
+      "type": 0,
+      "xp": 2100
+    },
+    {
+      "id": 603,
+      "name": "Ansirem's Key",
+      "level": 37,
+      "reqlevel": 32,
+      "reqclass": 0,
+      "side": 1,
+      "type": 0,
+      "xp": 1400
+    },
+    {
+      "id": 3626,
+      "name": "Return to the Blasted Lands",
+      "level": 58,
+      "reqlevel": 45,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 1550
+    },
+    {
+      "id": 3721,
+      "name": "An OOX of Your Own",
+      "level": 50,
+      "reqlevel": 40,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 7100
+    },
+    {
+      "id": 1127,
+      "name": "Fool's Stout",
+      "level": 44,
+      "reqlevel": 35,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 0
+    },
+    {
+      "id": 97420,
+      "name": "Reduce, Reuse, Reconcile",
+      "level": 36,
+      "reqlevel": 31,
+      "reqclass": 0,
+      "side": 1,
+      "type": 0,
+      "xp": 2800
+    },
+    {
+      "id": 8553,
+      "name": "The Captain's Cutlass",
+      "level": 50,
+      "reqlevel": 35,
+      "reqclass": 0,
+      "side": 3,
+      "type": 0,
+      "xp": 470
+    },
+    {
+      "id": 797,
+      "name": "<UNUSED>",
+      "level": 1,
+      "reqlevel": 1,
+      "reqclass": 0,
+      "side": 0,
+      "type": 0,
+      "xp": 0
+    },
+    {
+      "id": 796,
+      "name": "<UNUSED>",
+      "level": 1,
+      "reqlevel": 1,
+      "reqclass": 0,
+      "side": 0,
+      "type": 0,
+      "xp": 0
+    },
+    {
+      "id": 799,
+      "name": "<UNUSED>",
+      "level": 1,
+      "reqlevel": 1,
+      "reqclass": 0,
+      "side": 0,
+      "type": 0,
+      "xp": 0
+    },
+    {
+      "id": 798,
+      "name": "<UNUSED>",
+      "level": 1,
+      "reqlevel": 1,
+      "reqclass": 0,
+      "side": 0,
+      "type": 0,
+      "xp": 0
+    }
+  ]
+}

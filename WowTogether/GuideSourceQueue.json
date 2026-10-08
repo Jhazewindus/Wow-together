@@ -1,6 +1,6 @@
 {
   "source_data_complete": false,
-  "remaining_quest_records": 442,
+  "remaining_quest_records": 438,
   "limitations": [
     "This queue identifies missing facts, not a license to invent them",
     "Source capture must respect access policy and stop after denials",
@@ -245,21 +245,6 @@
       "entity_urls": [
         "https://www.wowhead.com/forever/item=3719",
         "https://www.wowhead.com/forever/npc=2438"
-      ]
-    },
-    {
-      "questID": 592,
-      "title": "Saving Yenniku",
-      "guides": [
-        "Horde / Stranglethorn Vale"
-      ],
-      "needs": [
-        "objective quantities"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=592",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=2497",
-        "https://www.wowhead.com/forever/npc=2519"
       ]
     },
     {
@@ -1816,48 +1801,6 @@
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=3381",
       "entity_urls": []
-    },
-    {
-      "questID": 3511,
-      "title": "The Name of the Beast",
-      "guides": [
-        "Alliance / Azshara",
-        "Alliance / Blasted Lands",
-        "Alliance / Stranglethorn Vale",
-        "Horde / Azshara",
-        "Horde / Blasted Lands",
-        "Horde / Stranglethorn Vale"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=3511",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=10610",
-        "https://www.wowhead.com/forever/npc=6134",
-        "https://www.wowhead.com/forever/npc=7783"
-      ]
-    },
-    {
-      "questID": 3621,
-      "title": "The Formation of Felbane",
-      "guides": [
-        "Alliance / Azshara",
-        "Alliance / Blasted Lands",
-        "Alliance / Stranglethorn Vale",
-        "Horde / Azshara",
-        "Horde / Blasted Lands",
-        "Horde / Stranglethorn Vale"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=3621",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=10738",
-        "https://www.wowhead.com/forever/npc=7783",
-        "https://www.wowhead.com/forever/npc=7802"
-      ]
     },
     {
       "questID": 3721,
@@ -4078,21 +4021,6 @@
       ]
     },
     {
-      "questID": 8551,
-      "title": "The Captain's Chest",
-      "guides": [
-        "Alliance / Stranglethorn Vale",
-        "Horde / Stranglethorn Vale"
-      ],
-      "needs": [
-        "objective quantities"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8551",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=2500"
-      ]
-    },
-    {
       "questID": 8552,
       "title": "The Monogrammed Sash",
       "guides": [
@@ -4100,13 +4028,14 @@
         "Horde / Stranglethorn Vale"
       ],
       "needs": [
-        "hand-in",
-        "objective area",
         "pickup",
         "pickup requirements"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=8552",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/item=3985",
+        "https://www.wowhead.com/forever/npc=2500"
+      ]
     },
     {
       "questID": 8553,
@@ -4116,13 +4045,13 @@
         "Horde / Stranglethorn Vale"
       ],
       "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
         "pickup requirements"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=8553",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/npc=2500",
+        "https://www.wowhead.com/forever/npc=2594"
+      ]
     },
     {
       "questID": 8554,
@@ -4132,13 +4061,15 @@
         "Horde / Stranglethorn Vale"
       ],
       "needs": [
-        "hand-in",
         "objective area",
-        "pickup",
         "pickup requirements"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=8554",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/item=3935",
+        "https://www.wowhead.com/forever/npc=2500",
+        "https://www.wowhead.com/forever/npc=2594"
+      ]
     },
     {
       "questID": 8555,
@@ -6802,7 +6733,9 @@
         "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=97331",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/npc=268992"
+      ]
     },
     {
       "questID": 97539,

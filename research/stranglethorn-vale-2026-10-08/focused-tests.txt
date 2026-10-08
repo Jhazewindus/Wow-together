@@ -1,0 +1,15 @@
+test_chest_quantity_and_current_captain_point_keep_elite_work (test_stv_coverage.StranglethornFactsTests.test_chest_quantity_and_current_captain_point_keep_elite_work) ... ok
+test_current_captain_ids_are_distinct_and_old_variants_remain_unmapped (test_stv_coverage.StranglethornFactsTests.test_current_captain_ids_are_distinct_and_old_variants_remain_unmapped) ... ok
+test_green_hills_reward_candidate_is_withheld_without_dropping_pages (test_stv_coverage.StranglethornFactsTests.test_green_hills_reward_candidate_is_withheld_without_dropping_pages) ... ok
+test_negolash_lure_is_not_faked_by_mapping_a_giver_or_spawn (test_stv_coverage.StranglethornFactsTests.test_negolash_lure_is_not_faked_by_mapping_a_giver_or_spawn) ... ok
+test_staging_is_atomic_idempotent_and_rejects_conflicting_new_facts (test_stv_coverage.StranglethornFactsTests.test_staging_is_atomic_idempotent_and_rejects_conflicting_new_facts) ... ok
+test_supplied_cross_zone_deliveries_retain_required_items (test_stv_coverage.StranglethornFactsTests.test_supplied_cross_zone_deliveries_retain_required_items) ... ok
+test_yenniku_uses_the_supplied_gem_without_inventing_a_kill (test_stv_coverage.StranglethornFactsTests.test_yenniku_uses_the_supplied_gem_without_inventing_a_kill) ... ok
+test_class_quest_setting_preserves_ordinary_work_and_identity_gates (test_stv_coverage.StranglethornGuideTests.test_class_quest_setting_preserves_ordinary_work_and_identity_gates) ... ok
+test_faction_chapters_keep_fixed_order_through_mid_quest_progress (test_stv_coverage.StranglethornGuideTests.test_faction_chapters_keep_fixed_order_through_mid_quest_progress) ... ok
+test_named_unknown_escort_stays_adjacent_and_waits_for_actual_parent_handin (test_stv_coverage.StranglethornGuideTests.test_named_unknown_escort_stays_adjacent_and_waits_for_actual_parent_handin) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 13.443s
+
+OK

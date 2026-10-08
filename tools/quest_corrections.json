@@ -832,5 +832,579 @@
       }
     },
     "source": "Reviewed Forever facts: https://www.wowhead.com/forever/quest=91738; captured 2026-10-08; SHA-256 d0fd33c375f675828eaa8a73920f18d05e87cfcba4e200dee9a40c9fa8a37c1b. See research/elwynn-forest-2026-10-08 for pinned field tiers and context. Optional acquisition: https://www.wowhead.com/forever/quest=91736 explicitly rewards item 247824 x1 for item 4536 x4; https://www.wowhead.com/forever/object=562131 maps the exchange. Preserve other item acquisition and actual Sergeant De Vries hand-in; do not force the exchange quest as a prerequisite."
+  },
+  {
+    "questID": 3511,
+    "title": "The Name of the Beast",
+    "source": "Reviewed Forever quest facts: https://www.wowhead.com/forever/quest=3511; captured 2026-10-08; SHA-256 22caab2938af7276279cee30637357bcc65ad5093537a24a4e0cee244d95f2cf. Context, linked entity facts and pinned source tiers: research/stranglethorn-vale-2026-10-08. Preserve existing eligibility and actual hand-ins. Matching pinned sourceItemId and current explicitly provided item; no independent farming objective.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 45,
+      "level": 58,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Hetaera's Blood",
+          "itemID": 10610
+        }
+      ]
+    }
+  },
+  {
+    "questID": 3621,
+    "title": "The Formation of Felbane",
+    "source": "Reviewed Forever quest facts: https://www.wowhead.com/forever/quest=3621; captured 2026-10-08; SHA-256 f506021a16b9b93e8400286cc6af73349a4a238c5a4da3971584dcf295aa5f16. Context, linked entity facts and pinned source tiers: research/stranglethorn-vale-2026-10-08. Preserve existing eligibility and actual hand-ins. Matching pinned sourceItemId and current explicitly provided item; no independent farming objective.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 45,
+      "level": 58,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Shipment to Galvan",
+          "itemID": 10738
+        }
+      ]
+    }
+  },
+  {
+    "questID": 592,
+    "title": "Saving Yenniku",
+    "source": "Reviewed Forever quest facts: https://www.wowhead.com/forever/quest=592; captured 2026-10-08; SHA-256 370bc677248edbc467ad83b11348299f1cde2d6ee19801d422e7770407a58d1e. Context, linked entity facts and pinned source tiers: research/stranglethorn-vale-2026-10-08. Preserve existing eligibility and actual hand-ins. Current item 3912 is explicitly provided for quest 592; use Soul Gem on Yenniku, then obtain the Filled Soul Gem. No kill/loot inference, health threshold or generic creature marker.",
+    "stageCorrection": {
+      "kind": "objective-facts",
+      "minLevel": 30,
+      "level": 46,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "itemID": 3913,
+          "name": "Filled Soul Gem",
+          "quantity": 1
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantityUnknown": true,
+            "action": "collect",
+            "entityID": 3913,
+            "name": "Filled Soul Gem"
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "action": "loot",
+            "entityID": 2530,
+            "npc": true,
+            "y": 0.5820000000000001,
+            "sourceZone": "Stranglethorn Vale",
+            "objectiveKey": "item:3913",
+            "itemID": 3913,
+            "x": 0.39,
+            "sourceAreaID": 33,
+            "quantityUnknown": true,
+            "itemName": "Filled Soul Gem",
+            "name": "Yenniku"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Filled Soul Gem",
+            "name": "Yenniku",
+            "entityID": 2530,
+            "npc": true,
+            "action": "loot"
+          }
+        ]
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "action": "collect",
+            "entityID": 3913,
+            "name": "Filled Soul Gem",
+            "quantity": 1
+          }
+        ],
+        "requiredItems": [
+          {
+            "itemID": 3913,
+            "name": "Filled Soul Gem",
+            "quantity": 1
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "action": "use",
+            "entityID": 2530,
+            "npc": true,
+            "y": 0.5820000000000001,
+            "sourceZone": "Stranglethorn Vale",
+            "objectiveKey": "item:3913",
+            "itemID": 3913,
+            "x": 0.39,
+            "sourceAreaID": 33,
+            "itemName": "Filled Soul Gem",
+            "name": "Yenniku",
+            "quantity": 1,
+            "useItemName": "Soul Gem"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Filled Soul Gem",
+            "name": "Yenniku",
+            "entityID": 2530,
+            "npc": true,
+            "action": "use",
+            "useItemName": "Soul Gem"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 8551,
+    "title": "The Captain's Chest",
+    "source": "Reviewed Forever quest facts: https://www.wowhead.com/forever/quest=8551; captured 2026-10-08; SHA-256 327c6e02e6e5a1b60a7dfdcf0c82032b8a2b9c55747f6b1b9d6a01ff61003fb8. Context, linked entity facts and pinned source tiers: research/stranglethorn-vale-2026-10-08. Preserve existing eligibility and actual hand-ins.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 35,
+      "level": 47,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "itemID": 3932,
+          "name": "Smotts' Chest",
+          "quantity": 1
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantityUnknown": true,
+            "action": "collect",
+            "entityID": 3932,
+            "name": "Smotts' Chest"
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "action": "loot",
+            "entityID": 1492,
+            "npc": true,
+            "y": 0.706,
+            "sourceZone": "Stranglethorn Vale",
+            "objectiveKey": "item:3932",
+            "itemID": 3932,
+            "x": 0.36,
+            "sourceAreaID": 33,
+            "quantityUnknown": true,
+            "itemName": "Smotts' Chest",
+            "name": "Gorlash"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Smotts' Chest",
+            "name": "Gorlash",
+            "entityID": 1492,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "entityID": 2500,
+            "npc": true,
+            "y": 0.7361,
+            "x": 0.2669,
+            "name": "Captain Hecklebury Smotts",
+            "sourceAreaID": 33,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "entityID": 2500,
+            "npc": true,
+            "y": 0.7361,
+            "x": 0.2669,
+            "name": "Captain Hecklebury Smotts",
+            "sourceAreaID": 33,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ]
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "action": "collect",
+            "entityID": 3932,
+            "name": "Smotts' Chest",
+            "quantity": 1
+          }
+        ],
+        "requiredItems": [
+          {
+            "itemID": 3932,
+            "name": "Smotts' Chest",
+            "quantity": 1
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "action": "loot",
+            "entityID": 1492,
+            "npc": true,
+            "y": 0.706,
+            "sourceZone": "Stranglethorn Vale",
+            "objectiveKey": "item:3932",
+            "itemID": 3932,
+            "x": 0.36,
+            "sourceAreaID": 33,
+            "itemName": "Smotts' Chest",
+            "name": "Gorlash",
+            "quantity": 1
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Smotts' Chest",
+            "name": "Gorlash",
+            "entityID": 1492,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "entityID": 2500,
+            "npc": true,
+            "y": 0.734,
+            "x": 0.266,
+            "name": "Captain Hecklebury Smotts",
+            "sourceAreaID": 33,
+            "locationSource": "Reviewed current Forever Captain Hecklebury Smotts representative"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "entityID": 2500,
+            "npc": true,
+            "y": 0.734,
+            "x": 0.266,
+            "name": "Captain Hecklebury Smotts",
+            "sourceAreaID": 33,
+            "locationSource": "Reviewed current Forever Captain Hecklebury Smotts representative"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 8552,
+    "title": "The Monogrammed Sash",
+    "source": "Reviewed Forever quest facts: https://www.wowhead.com/forever/quest=8552; captured 2026-10-08; SHA-256 67e0ec8ccab753687d99955c4bb55228b5e12c19d12812604fc5a704b9d16395. Context, linked entity facts and pinned source tiers: research/stranglethorn-vale-2026-10-08. Preserve existing eligibility and actual hand-ins. Typed NPC starts/ends and item 3985 starts-quest relation confirm these exact IDs; do not transfer facts to 614/615/618/620. Keep additional unlocks uncertain.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 35,
+      "level": 50,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "starts": [],
+        "ends": [],
+        "startRefs": [],
+        "endRefs": [],
+        "providedItems": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "mapID": 1434,
+            "x": 0.266,
+            "y": 0.7340000000000001,
+            "entityType": "npc",
+            "entityID": 2500,
+            "name": "Captain Hecklebury Smotts",
+            "npc": true,
+            "locationSource": "Reviewed current Forever NPC point",
+            "action": "talk"
+          }
+        ],
+        "npcTargets": [],
+        "starts": [],
+        "ends": [
+          {
+            "mapID": 1434,
+            "x": 0.266,
+            "y": 0.7340000000000001,
+            "entityType": "npc",
+            "entityID": 2500,
+            "name": "Captain Hecklebury Smotts",
+            "npc": true,
+            "locationSource": "Reviewed current Forever NPC point"
+          }
+        ],
+        "startRefs": [
+          {
+            "entityType": "item",
+            "entityID": 3985,
+            "name": "Monogrammed Sash"
+          }
+        ],
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "entityID": 2500,
+            "name": "Captain Hecklebury Smotts"
+          }
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 3985,
+            "name": "Monogrammed Sash",
+            "quantity": 1
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": false
+      }
+    }
+  },
+  {
+    "questID": 8553,
+    "title": "The Captain's Cutlass",
+    "source": "Reviewed Forever quest facts: https://www.wowhead.com/forever/quest=8553; captured 2026-10-08; SHA-256 aa149d24cad483e5bf9429e7a8badb5052ebe8151de6ebb3b3fa0031089cebec. Context, linked entity facts and pinned source tiers: research/stranglethorn-vale-2026-10-08. Preserve existing eligibility and actual hand-ins. Typed NPC starts/ends and item 3985 starts-quest relation confirm these exact IDs; do not transfer facts to 614/615/618/620. Keep additional unlocks uncertain.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 35,
+      "level": 50,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "starts": [],
+        "ends": [],
+        "startRefs": [],
+        "endRefs": [],
+        "providedItems": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "mapID": 1434,
+            "x": 0.264,
+            "y": 0.736,
+            "entityType": "npc",
+            "entityID": 2594,
+            "name": "Sprogger",
+            "npc": true,
+            "locationSource": "Reviewed current Forever NPC point",
+            "action": "talk"
+          }
+        ],
+        "npcTargets": [],
+        "starts": [
+          {
+            "mapID": 1434,
+            "x": 0.266,
+            "y": 0.7340000000000001,
+            "entityType": "npc",
+            "entityID": 2500,
+            "name": "Captain Hecklebury Smotts",
+            "npc": true,
+            "locationSource": "Reviewed current Forever NPC point"
+          }
+        ],
+        "ends": [
+          {
+            "mapID": 1434,
+            "x": 0.264,
+            "y": 0.736,
+            "entityType": "npc",
+            "entityID": 2594,
+            "name": "Sprogger",
+            "npc": true,
+            "locationSource": "Reviewed current Forever NPC point"
+          }
+        ],
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "entityID": 2500,
+            "name": "Captain Hecklebury Smotts"
+          }
+        ],
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "entityID": 2594,
+            "name": "Sprogger"
+          }
+        ],
+        "providedItems": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": false
+      }
+    }
+  },
+  {
+    "questID": 8554,
+    "title": "Facing Negolash",
+    "source": "Reviewed Forever quest facts: https://www.wowhead.com/forever/quest=8554; captured 2026-10-08; SHA-256 5c3ed5daaa06d56048940b0b17a1d42db163d29a04e4484c3ef5e7f3e540d302. Context, linked entity facts and pinned source tiers: research/stranglethorn-vale-2026-10-08. Preserve existing eligibility and actual hand-ins. Typed NPC starts/ends and item 3985 starts-quest relation confirm these exact IDs; do not transfer facts to 614/615/618/620. Keep additional unlocks uncertain. Preserve unresolved lifeboat lure setup (10 Barbecued Buzzard Wings and 5 Junglevine Wine). Do not substitute Negolash spawn or a giver point for the full unmapped event.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 35,
+      "level": 50,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "itemID": 3935,
+          "name": "Smotts' Cutlass",
+          "quantity": 1
+        }
+      ],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "starts": [],
+        "ends": [],
+        "startRefs": [],
+        "endRefs": [],
+        "providedItems": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "entityID": 3935,
+            "name": "Smotts' Cutlass",
+            "quantity": 1
+          }
+        ],
+        "requiredItems": [
+          {
+            "itemID": 3935,
+            "name": "Smotts' Cutlass",
+            "quantity": 1
+          }
+        ],
+        "objectives": [],
+        "npcTargets": [],
+        "starts": [
+          {
+            "mapID": 1434,
+            "x": 0.264,
+            "y": 0.736,
+            "entityType": "npc",
+            "entityID": 2594,
+            "name": "Sprogger",
+            "npc": true,
+            "locationSource": "Reviewed current Forever NPC point"
+          }
+        ],
+        "ends": [
+          {
+            "mapID": 1434,
+            "x": 0.266,
+            "y": 0.7340000000000001,
+            "entityType": "npc",
+            "entityID": 2500,
+            "name": "Captain Hecklebury Smotts",
+            "npc": true,
+            "locationSource": "Reviewed current Forever NPC point"
+          }
+        ],
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "entityID": 2594,
+            "name": "Sprogger"
+          }
+        ],
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "entityID": 2500,
+            "name": "Captain Hecklebury Smotts"
+          }
+        ],
+        "providedItems": [],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "entityID": 3935,
+            "name": "Smotts' Cutlass",
+            "quantity": 1
+          }
+        ],
+        "objectiveLocationsIncomplete": true
+      }
+    }
+  },
+  {
+    "questID": 97331,
+    "title": "Zimmix's Great Escape",
+    "source": "Reviewed Forever quest facts: https://www.wowhead.com/forever/quest=97331; captured 2026-10-08; SHA-256 3ce2baae5b5ce7ada152a50f62e1e44a8fb99769fa261ffa973b134dd48994d0. Context, linked entity facts and pinned source tiers: research/stranglethorn-vale-2026-10-08. Preserve existing eligibility and actual hand-ins. Explicit escort objective; current Forever search confirms named NPC 268992. NPC page denied: exact pickup, escort path/end and Wharfmaster hand-in coordinates remain unknown. Preserve 97329 actual hand-in gate and escort adjacency; do not invent a count or map position.",
+    "stageCorrection": {
+      "kind": "unmapped-objective",
+      "minLevel": 30,
+      "level": 35,
+      "classMask": 0,
+      "requiredItems": [],
+      "target": {
+        "entityType": "npc",
+        "entityID": 268992,
+        "name": "Zimmix Sputterspark",
+        "action": "escort"
+      }
+    }
   }
 ]

@@ -82,7 +82,7 @@ def apply_stage_corrections(records):
         requirements = list(quest.get('requirements') or [])
         required = rule['requiredItems']
         allowed_items = [required]
-        if rule['kind'] == 'objective-facts':
+        if rule['kind'] in ('objective-facts', 'stage-facts'):
             allowed_items.append(rule['before']['requiredItems'])
         if {(r['itemID'], r['quantity']) for r in quest.get('requiredItems', [])} not in [
                 {(r['itemID'], r['quantity']) for r in items} for items in allowed_items]:
@@ -119,11 +119,17 @@ def apply_stage_corrections(records):
             if quest.get('worldReferences'):
                 quest['worldReferences']['requirements'] = {}
                 quest['worldReferences']['provided'] = copy.deepcopy(provided)
-        elif rule['kind'] == 'objective-facts':
-            fields = {'requirements', 'requiredItems', 'objectives', 'npcTargets'}
-            if set(rule['before']) != fields or set(rule['after']) != fields or rule['after']['requiredItems'] != required:
+        elif rule['kind'] in ('objective-facts', 'stage-facts'):
+            core = {'requirements', 'requiredItems', 'objectives', 'npcTargets'}
+            allowed = core | {'starts', 'ends', 'startRefs', 'endRefs', 'providedItems',
+                              'missingRequirements', 'objectiveLocationsIncomplete'}
+            fields = set(rule['before'])
+            if not core <= fields or not fields <= allowed or set(rule['after']) != fields or \
+                    (rule['kind'] == 'objective-facts' and fields != core) or rule['after']['requiredItems'] != required:
                 raise ValueError('Unsupported reviewed objective fields: ' + str(ident))
-            actual = {k: quest.get(k) or [] for k in fields}
+            def value(field):
+                return quest.get(field) if field == 'objectiveLocationsIncomplete' else quest.get(field) or []
+            actual = {k: value(k) for k in fields}
             if actual not in (rule['before'], rule['after']):
                 raise ValueError('Reviewed objective facts conflict with new evidence: ' + str(ident))
             if quest.get('worldReferences'):
@@ -132,7 +138,8 @@ def apply_stage_corrections(records):
                     raise ValueError('Reviewed world requirements changed: ' + str(ident))
                 quest['worldReferences']['requirements'] = copy.deepcopy(rule['after']['requirements'])
             for field, value in rule['after'].items():
-                if (quest.get(field) or []) != value:
+                current = quest.get(field) if field == 'objectiveLocationsIncomplete' else quest.get(field) or []
+                if current != value:
                     quest[field] = copy.deepcopy(value)
         elif rule['kind'] == 'item-exchange':
             item, = required
@@ -149,11 +156,11 @@ def apply_stage_corrections(records):
             if quest.get('missingRequirements') and quest['missingRequirements'] != requirements:
                 raise ValueError('Other exchange work remains unresolved: ' + str(ident))
             quest['objectives'] = [copy.deepcopy(point)]
-        elif rule['kind'] == 'unmapped-escort':
+        elif rule['kind'] in ('unmapped-escort', 'unmapped-objective'):
             if requirements or quest.get('objectives'):
                 raise ValueError('Escort correction would replace mapped work: ' + str(ident))
             target = rule['target']
-            if not any(r.get('entityType') == target['entityType'] and r.get('entityID') == target['entityID']
+            if rule['kind'] == 'unmapped-escort' and not any(r.get('entityType') == target['entityType'] and r.get('entityID') == target['entityID']
                        for r in quest.get('startRefs', [])):
                 raise ValueError('Escort starter identity changed: ' + str(ident))
             if quest.get('missingRequirements') and quest['missingRequirements'] != [target]:

@@ -1,0 +1,187 @@
+{
+  "zone": "Stranglethorn Vale",
+  "date": "2026-10-08",
+  "baseline_branch_commit": "c24e97fd29f7f0ec44a87a20d079d2e69eb058c9",
+  "main_commit": "09155ca265278572649a3529b8ce7ea1b4eb8431",
+  "addon_version": "0.8.61",
+  "changed_quest_ids": [
+    592,
+    3511,
+    3621,
+    8551,
+    8552,
+    8553,
+    8554,
+    97331
+  ],
+  "scope": {
+    "quest_ids": 132,
+    "actions": 885,
+    "chapter_actions": {
+      "Horde": [
+        155,
+        194,
+        84
+      ],
+      "Alliance": [
+        196,
+        169,
+        87
+      ]
+    }
+  },
+  "gaps": {
+    "before": {
+      "a": [
+        614,
+        615,
+        618,
+        620,
+        7908,
+        8552,
+        8553,
+        8554,
+        95748,
+        97047,
+        97048,
+        97329,
+        97331
+      ],
+      "q": [
+        338,
+        615,
+        620,
+        1036,
+        1796,
+        3511,
+        3621,
+        7908,
+        8552,
+        8553,
+        8554,
+        97047,
+        97048,
+        97328,
+        97331
+      ],
+      "t": [
+        614,
+        615,
+        618,
+        620,
+        7908,
+        8552,
+        8553,
+        8554,
+        95748,
+        97047,
+        97048,
+        97328,
+        97329,
+        97331
+      ],
+      "pickup": [
+        339,
+        340,
+        341,
+        342,
+        1036,
+        3721,
+        4621,
+        7908,
+        8552,
+        8553,
+        8554,
+        9272
+      ],
+      "quantity": [
+        592,
+        8551
+      ]
+    },
+    "after": {
+      "a": [
+        614,
+        615,
+        618,
+        620,
+        7908,
+        8552,
+        95748,
+        97047,
+        97048,
+        97329,
+        97331
+      ],
+      "q": [
+        338,
+        615,
+        620,
+        1036,
+        1796,
+        7908,
+        8554,
+        97047,
+        97048,
+        97328,
+        97331
+      ],
+      "t": [
+        614,
+        615,
+        618,
+        620,
+        7908,
+        95748,
+        97047,
+        97048,
+        97328,
+        97329,
+        97331
+      ],
+      "pickup": [
+        339,
+        340,
+        341,
+        342,
+        1036,
+        3721,
+        4621,
+        7908,
+        8552,
+        8553,
+        8554,
+        9272
+      ],
+      "quantity": []
+    }
+  },
+  "validation": {
+    "focused": {
+      "tests": 10,
+      "passed": 10
+    },
+    "all_zone_regressions": {
+      "tests": 52,
+      "passed": 52
+    },
+    "transport_class_offer_session": {
+      "tests": 122,
+      "passed": 122
+    },
+    "lua51_toc_files": 86,
+    "full_suite": "Previous Elwynn baseline: 1540/1541, known historical catalogue fingerprint failure. Full combined queued-zone run pending.",
+    "global_audit": {
+      "sections": 152,
+      "source_points": 11831,
+      "remaining_quest_records": 438
+    }
+  },
+  "shared_coordination": [
+    "Horde 41-50 last action changes from unknown 618t to mapped 8552t; strict original-endpoint replay fails all four Horde mid-chapter states.",
+    "Mid-chapter reward timing regresses before five Horde and two Alliance quests; guard remains review-required.",
+    "Green Hills chapter-reward mapping was withheld because chapter hand-ins must precede acquisition work; acceptance and completion dependencies need coordinated shared behavior."
+  ],
+  "native_beta_tested": false,
+  "network": "Initial public captures succeeded. Later three NPC requests returned 403; further Wowhead requests stopped. Retained cached and pinned evidence; no bypass."
+}

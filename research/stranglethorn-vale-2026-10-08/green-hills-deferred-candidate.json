@@ -1,0 +1,108 @@
+{
+  "questID": 338,
+  "candidate_rule": {
+    "questID": 338,
+    "title": "The Green Hills of Stranglethorn",
+    "source": "Reviewed Forever quest facts: https://www.wowhead.com/forever/quest=338; captured 2026-10-08; SHA-256 99995d8bc1154240afea2bb99c08158668e51514c1e1a5f93063616be99e9a88. Context, linked entity facts and pinned source tiers: research/stranglethorn-vale-2026-10-08. Preserve existing eligibility and actual hand-ins. Current chapter quests 339/340/341/342 explicitly reward items 2756/2757/2758/2759 x1, independently confirmed by item reward-from-quest relations. Acquire through actual chapter hand-ins at Barnil, not creature loot; owned chapters remain valid. Do not turn item reward options into forced prerequisites or drop page collection work.",
+    "stageCorrection": {
+      "kind": "item-rewards",
+      "minLevel": 30,
+      "level": 40,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Green Hills of Stranglethorn - Chapter I",
+          "itemID": 2756
+        },
+        {
+          "quantity": 1,
+          "name": "Green Hills of Stranglethorn - Chapter II",
+          "itemID": 2757
+        },
+        {
+          "quantity": 1,
+          "name": "Green Hills of Stranglethorn - Chapter III",
+          "itemID": 2758
+        },
+        {
+          "quantity": 1,
+          "name": "Green Hills of Stranglethorn - Chapter IV",
+          "itemID": 2759
+        }
+      ],
+      "points": [
+        {
+          "mapID": 1434,
+          "x": 0.35600000000000004,
+          "y": 0.10400000000000001,
+          "entityType": "npc",
+          "entityID": 716,
+          "name": "Barnil Stonepot",
+          "npc": true,
+          "locationSource": "Reviewed current Forever NPC point",
+          "action": "item",
+          "itemID": 2756,
+          "quantity": 1,
+          "objectiveKey": "item:2756",
+          "rewardQuestID": 339,
+          "objectiveLabel": "Green Hills of Stranglethorn - Chapter I (reward for handing in Chapter I)",
+          "progressName": "Green Hills of Stranglethorn - Chapter I"
+        },
+        {
+          "mapID": 1434,
+          "x": 0.35600000000000004,
+          "y": 0.10400000000000001,
+          "entityType": "npc",
+          "entityID": 716,
+          "name": "Barnil Stonepot",
+          "npc": true,
+          "locationSource": "Reviewed current Forever NPC point",
+          "action": "item",
+          "itemID": 2757,
+          "quantity": 1,
+          "objectiveKey": "item:2757",
+          "rewardQuestID": 340,
+          "objectiveLabel": "Green Hills of Stranglethorn - Chapter II (reward for handing in Chapter II)",
+          "progressName": "Green Hills of Stranglethorn - Chapter II"
+        },
+        {
+          "mapID": 1434,
+          "x": 0.35600000000000004,
+          "y": 0.10400000000000001,
+          "entityType": "npc",
+          "entityID": 716,
+          "name": "Barnil Stonepot",
+          "npc": true,
+          "locationSource": "Reviewed current Forever NPC point",
+          "action": "item",
+          "itemID": 2758,
+          "quantity": 1,
+          "objectiveKey": "item:2758",
+          "rewardQuestID": 341,
+          "objectiveLabel": "Green Hills of Stranglethorn - Chapter III (reward for handing in Chapter III)",
+          "progressName": "Green Hills of Stranglethorn - Chapter III"
+        },
+        {
+          "mapID": 1434,
+          "x": 0.35600000000000004,
+          "y": 0.10400000000000001,
+          "entityType": "npc",
+          "entityID": 716,
+          "name": "Barnil Stonepot",
+          "npc": true,
+          "locationSource": "Reviewed current Forever NPC point",
+          "action": "item",
+          "itemID": 2759,
+          "quantity": 1,
+          "objectiveKey": "item:2759",
+          "rewardQuestID": 342,
+          "objectiveLabel": "Green Hills of Stranglethorn - Chapter IV (reward for handing in Chapter IV)",
+          "progressName": "Green Hills of Stranglethorn - Chapter IV"
+        }
+      ]
+    }
+  },
+  "applied": false,
+  "reason": "Full fixed preview schedules the four chapter collection stages before hand-ins 339/340/341/342 that award them. Cannot claim a working reward-acquisition route; shared item-reward dependency/acceptance semantics require coordination before applying this mapping."
+}

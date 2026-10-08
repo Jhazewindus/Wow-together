@@ -10,9 +10,9 @@
   "summary": {
     "count": 5230,
     "detailed_quests": 2232,
-    "with_starters": 4281,
-    "with_objectives": 2152,
-    "with_turnins": 4449,
+    "with_starters": 4283,
+    "with_objectives": 2154,
+    "with_turnins": 4452,
     "with_prerequisites": 2466,
     "entities": {
       "npc": 13340,
@@ -1471,9 +1471,9 @@
     },
     "eastern-kingdoms/stranglethorn-vale": {
       "quests": 125,
-      "pickups": 106,
-      "objectives": 79,
-      "turnins": 106,
+      "pickups": 108,
+      "objectives": 81,
+      "turnins": 109,
       "complete_locations": 98,
       "missing_quest_ids": [
         338,
@@ -1664,7 +1664,7 @@
       "pickups": 27,
       "objectives": 12,
       "turnins": 27,
-      "complete_locations": 23,
+      "complete_locations": 25,
       "missing_quest_ids": [
         3381,
         3383,
@@ -1677,10 +1677,8 @@
         3423,
         3424,
         3425,
-        3511,
         3515,
         3529,
-        3621,
         6821,
         6822,
         6823,
@@ -13317,6 +13315,7 @@
     }
   },
   "reviewed_stage_corrections": [
+    592,
     745,
     746,
     758,
@@ -13333,8 +13332,15 @@
     2205,
     3100,
     3102,
+    3511,
+    3621,
+    8551,
+    8552,
+    8553,
+    8554,
     91738,
     95217,
+    97331,
     99082,
     99101,
     99123
