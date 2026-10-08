@@ -4,5 +4,11 @@
     "title": "Welcome!",
     "reason": "Collector's Edition reward",
     "source": "User report, 2026-10-05: Welcome! is a Collector's Edition quest, excluded from starting guides."
+  },
+  {
+    "questIDs": [7962],
+    "title": "Wabbit Pelts",
+    "reason": "Historical testing-only quest",
+    "source": "https://warcraft.wiki.gg/wiki/Wabbit_Pelts?oldid=5772277; testing-only designation, exact external quest ID 7962; current https://www.wowhead.com/forever/quest=7962 captured 2026-10-08 marks unchanged. Retain catalogue facts, exclude ordinary leveling; review if a live Forever offer is documented. See research/elwynn-forest-2026-10-08."
   }
 ]

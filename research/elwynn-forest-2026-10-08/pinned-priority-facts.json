@@ -1,0 +1,616 @@
+{
+  "manifest_commit": "e0a6eaa86f181ac99262e34126bcd2ed1a1712d6",
+  "files_sha256": {
+    "src/corrections/enum/zones.lua": "dd738ec0c1a9785946c5574a5f7cb8d2a64745b099dffccebd00ee8864fbb88a",
+    "src/corrections/enum/quests.lua": "eb15f94f58be894772786706bb9c3db56756df1985d7ab93fc180d7567103ede",
+    "src/corrections/enum/expansions.lua": "362e9d9e62a491d4f1b737ad6b840b278b5c313b4f61cb204921e02d2bfeedca",
+    "support/Forever/Zones/areaIdToUiMapId.lua": "cf9ae6f896e3e2fb1e43352b11596641312d9e61365ca7f281e5af1092185d07",
+    "src/corrections/Forever/generated/foreverBaseQuest.lua": "c92ebcb106f72913e5e666db48539e60d9e77a77c3e08938bf2df682d83dd714",
+    "src/corrections/Forever/traces/foreverQuestTraces.lua": "5b91bce88419b38e320dbaf9207c26a8a6f1b801fcce354dc1b9e7869dd99570",
+    "src/corrections/Forever/foreverQuestFixes.lua": "ba3b37419f27a5a19ec0e38fb944e24ff54ea841de1b2497f261d447f3887a70",
+    "src/corrections/Forever/generated/foreverBaseNpc.lua": "3015c2660d72810e16f28b11d58297bfae37b0843ce35ee6cdd8b7757d47e771",
+    "src/corrections/Forever/traces/foreverNpcTraces.lua": "87acac144d1f78b1173c9710bbaf9d1fc850753d48704143018aa20ed3b98811",
+    "src/corrections/Forever/foreverNPCFixes.lua": "3eda9efb9f719d6754ffd7d6eabae8abe7ff2b4b241f0553c8e19c93f002f828",
+    "src/corrections/Forever/generated/foreverBaseObject.lua": "cc3d0bacbeea23e1efd0b144367eb413f9e8276c65ca0a19d0d0ae328fb3736b",
+    "src/corrections/Forever/traces/foreverObjectTraces.lua": "37b6228caab31daee9a450d4f4833c032ca3232a05649fcfda83b49c8dd33fae",
+    "src/corrections/Forever/foreverObjectFixes.lua": "fac8a095b48a991b847a61aa94b8ff8275d575d5051d01c0370a5ed509a81633",
+    "src/corrections/Forever/generated/foreverBaseItem.lua": "870bb7ab64bec27210c3f9e40fd5bb957c0441aba22d3944a87ddd5c66d0add4",
+    "src/corrections/Forever/traces/foreverItemTraces.lua": "a1c22054bc41bb6db038c9b841ceca8042137b1d2bb2b2c1eabb05c1ddf4acff",
+    "src/corrections/Forever/foreverItemFixes.lua": "f9ea8bf52cd68fc959af8810f846c8023ff4800b24c480c1a776e82db66f27dc",
+    "data/Forever/foreverQuestDB.lua": "d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87",
+    "src/corrections/Forever/legacy/classicQuestFixes.lua": "76cd6a05f035826cabc6180a0ff2a1a37c5e7946c891eb0a06412fab5a4caf2e",
+    "data/Forever/foreverNpcDB.lua": "a8c4169690726323dac3c6441f74f7a4d9cafcc08ec42231d72ff28c9471f0ee",
+    "src/corrections/Forever/legacy/classicNPCFixes.lua": "1de19d17db00581a35d397c7440124aa3f14150d5456c771d2deb3cfba79f031",
+    "data/Forever/foreverObjectDB.lua": "af4536c12c5b1da5fd32cb33be5c9c01d2436f97a5b9f60e2cdd238273b2cc09",
+    "src/corrections/Forever/legacy/classicObjectFixes.lua": "181bea5a5db73f8af1bebe1d8aa835d28e2d4c11adf9ff786c4f54edb3cdc76a",
+    "data/Forever/foreverItemDB.lua": "987d037b6df94d5b0b1dc326a1670581e3abb952736a4ae055fd9f161328b71c",
+    "src/corrections/Forever/legacy/classicItemFixes.lua": "688286a44e5d95045ff943d55ba3a9fccffce7ca4a982fa55a67499b39509b87"
+  },
+  "quests": {
+    "2205": {
+      "name": "Seek out SI: 7",
+      "startedBy": {
+        "1": {
+          "1": 917
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 332
+        }
+      },
+      "requiredLevel": 10,
+      "questLevel": 10,
+      "requiredRaces": 4294967373,
+      "requiredClasses": 8,
+      "sourceItemId": 7674,
+      "exclusiveTo": {},
+      "zoneOrSort": -162,
+      "_identityName": "Seek out SI: 7"
+    },
+    "3100": {
+      "name": "Simple Letter",
+      "startedBy": {
+        "1": {
+          "1": 197
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 911
+        }
+      },
+      "requiredLevel": 1,
+      "questLevel": 1,
+      "requiredRaces": 1,
+      "requiredClasses": 1,
+      "sourceItemId": 9542,
+      "preQuestSingle": {
+        "1": 7
+      },
+      "zoneOrSort": -81
+    },
+    "3102": {
+      "name": "Encrypted Letter",
+      "startedBy": {
+        "1": {
+          "1": 197
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 915
+        }
+      },
+      "requiredLevel": 1,
+      "questLevel": 1,
+      "requiredRaces": 1,
+      "requiredClasses": 8,
+      "sourceItemId": 9555,
+      "preQuestSingle": {
+        "1": 7
+      },
+      "zoneOrSort": -162
+    },
+    "7962": {},
+    "91738": {
+      "_identityName": "An Apple Treat",
+      "name": "An Apple Treat",
+      "startedBy": {
+        "1": {
+          "1": 955
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 955
+        }
+      },
+      "requiredLevel": 7,
+      "questLevel": 10,
+      "requiredRaces": 4294967373,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 247824
+          }
+        }
+      },
+      "zoneOrSort": 12
+    },
+    "91753": {
+      "_identityName": "An Enchanting Lesson",
+      "name": "An Enchanting Lesson",
+      "startedBy": {
+        "1": {
+          "1": 11072
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 11072
+        }
+      },
+      "requiredLevel": 5,
+      "questLevel": 7,
+      "requiredRaces": 4294967373,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 247884
+          }
+        }
+      },
+      "zoneOrSort": 12
+    },
+    "95771": {},
+    "1598": {
+      "name": "The Stolen Tome",
+      "startedBy": {
+        "1": {
+          "1": 459
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 459
+        }
+      },
+      "requiredLevel": 1,
+      "questLevel": 4,
+      "requiredRaces": 4294967373,
+      "requiredClasses": 256,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 6785
+          }
+        }
+      },
+      "zoneOrSort": -61,
+      "questFlags": 8,
+      "_identityName": "The Stolen Tome",
+      "exclusiveTo": {
+        "1": 1599
+      }
+    },
+    "1638": {
+      "name": "A Warrior's Training",
+      "startedBy": {
+        "1": {
+          "1": 913,
+          "2": 5480
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 6089
+        }
+      },
+      "requiredLevel": 10,
+      "questLevel": 10,
+      "requiredRaces": 4294967373,
+      "requiredClasses": 1,
+      "exclusiveTo": {
+        "1": 1678,
+        "2": 1683,
+        "3": 1639
+      },
+      "zoneOrSort": -81,
+      "questFlags": 8,
+      "_identityName": "A Warrior's Training"
+    },
+    "1639": {
+      "name": "Bartleby the Drunk",
+      "startedBy": {
+        "1": {
+          "1": 6089
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 6090
+        }
+      },
+      "requiredLevel": 10,
+      "questLevel": 10,
+      "requiredRaces": 4294967373,
+      "requiredClasses": 1,
+      "preQuestSingle": {},
+      "zoneOrSort": -81,
+      "questFlags": 8,
+      "_identityName": "Bartleby the Drunk",
+      "exclusiveTo": {
+        "1": 1678,
+        "2": 1683
+      }
+    },
+    "1640": {
+      "name": "Beat Bartleby",
+      "startedBy": {
+        "1": {
+          "1": 6090
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 6090
+        }
+      },
+      "requiredLevel": 10,
+      "questLevel": 10,
+      "requiredRaces": 4294967373,
+      "requiredClasses": 1,
+      "preQuestSingle": {
+        "1": 1639,
+        "2": 1678,
+        "3": 1683
+      },
+      "zoneOrSort": -81,
+      "questFlags": 2,
+      "specialFlags": 2,
+      "_identityName": "Beat Bartleby",
+      "objectives": {
+        "1": {
+          "1": {
+            "1": 6090
+          }
+        }
+      }
+    },
+    "1678": {
+      "name": "Vejrek",
+      "startedBy": {
+        "1": {
+          "1": 6114
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 6114
+        }
+      },
+      "requiredLevel": 10,
+      "questLevel": 11,
+      "requiredRaces": 4294967373,
+      "requiredClasses": 1,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 6799
+          }
+        }
+      },
+      "preQuestSingle": {},
+      "zoneOrSort": -81,
+      "questFlags": 8,
+      "_identityName": "Vejrek",
+      "exclusiveTo": {
+        "1": 1639,
+        "2": 1683
+      }
+    },
+    "1683": {
+      "name": "Vorlus Vilehoof",
+      "startedBy": {
+        "1": {
+          "1": 4088
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 4088
+        }
+      },
+      "requiredLevel": 10,
+      "questLevel": 10,
+      "requiredRaces": 4294967373,
+      "requiredClasses": 1,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 6805
+          }
+        }
+      },
+      "preQuestSingle": {},
+      "zoneOrSort": -81,
+      "questFlags": 8,
+      "_identityName": "Vorlus Vilehoof",
+      "exclusiveTo": {
+        "1": 1639,
+        "2": 1678
+      }
+    },
+    "1860": {
+      "name": "Speak with Jennea",
+      "startedBy": {
+        "1": {
+          "1": 328
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 5497
+        }
+      },
+      "requiredLevel": 10,
+      "questLevel": 10,
+      "requiredRaces": 65,
+      "requiredClasses": 128,
+      "exclusiveTo": {
+        "1": 1880
+      },
+      "zoneOrSort": -161,
+      "questFlags": 8,
+      "_identityName": "Speak with Jennea"
+    },
+    "5628": {
+      "name": "Returning Home",
+      "startedBy": {
+        "1": {
+          "1": 377
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 11401
+        }
+      },
+      "requiredLevel": 10,
+      "questLevel": 10,
+      "requiredRaces": 8,
+      "requiredClasses": 16,
+      "exclusiveTo": {
+        "1": 5627,
+        "2": 5629,
+        "3": 5630,
+        "4": 5631,
+        "5": 5632,
+        "6": 5633
+      },
+      "zoneOrSort": -262,
+      "questFlags": 8,
+      "_identityName": "Returning Home (Elwynn Forest)"
+    },
+    "5635": {
+      "name": "Desperate Prayer",
+      "startedBy": {
+        "1": {
+          "1": 377
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 376
+        }
+      },
+      "requiredLevel": 10,
+      "questLevel": 10,
+      "requiredRaces": 5,
+      "requiredClasses": 16,
+      "exclusiveTo": {
+        "1": 5634,
+        "2": 5636,
+        "3": 5637,
+        "4": 5638,
+        "5": 5639,
+        "6": 5640
+      },
+      "zoneOrSort": -262,
+      "questFlags": 8,
+      "_identityName": "Desperate Prayer (Elwynn Forest)"
+    }
+  },
+  "field_source_tiers": {
+    "2205": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "requiredClasses": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "exclusiveTo": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "_identityName": "converted-baseline"
+    },
+    "3100": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "requiredClasses": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "3102": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "requiredClasses": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "7962": {},
+    "91738": {
+      "_identityName": "beta-delta",
+      "name": "beta-delta",
+      "startedBy": "beta-delta",
+      "finishedBy": "beta-delta",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-delta",
+      "requiredRaces": "beta-delta",
+      "objectives": "beta-delta",
+      "zoneOrSort": "beta-delta"
+    },
+    "91753": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "objectives": "beta-observation",
+      "zoneOrSort": "beta-delta"
+    },
+    "95771": {},
+    "1598": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "requiredClasses": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "_identityName": "converted-baseline",
+      "exclusiveTo": "converted-baseline"
+    },
+    "1638": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "requiredClasses": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "exclusiveTo": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "_identityName": "converted-baseline"
+    },
+    "1639": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "requiredClasses": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "_identityName": "converted-baseline",
+      "exclusiveTo": "converted-baseline"
+    },
+    "1640": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "requiredClasses": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "specialFlags": "converted-baseline",
+      "_identityName": "converted-baseline",
+      "objectives": "converted-baseline"
+    },
+    "1678": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "requiredClasses": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "_identityName": "converted-baseline",
+      "exclusiveTo": "converted-baseline"
+    },
+    "1683": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "requiredClasses": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "_identityName": "converted-baseline",
+      "exclusiveTo": "converted-baseline"
+    },
+    "1860": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "requiredClasses": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "exclusiveTo": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "_identityName": "converted-baseline"
+    },
+    "5628": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "requiredClasses": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "exclusiveTo": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "_identityName": "converted-baseline"
+    },
+    "5635": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "requiredClasses": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "exclusiveTo": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "_identityName": "converted-baseline"
+    }
+  }
+}

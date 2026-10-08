@@ -1,6 +1,6 @@
 {
   "source_data_complete": false,
-  "remaining_quest_records": 448,
+  "remaining_quest_records": 442,
   "limitations": [
     "This queue identifies missing facts, not a license to invent them",
     "Source capture must respect access policy and stop after denials",
@@ -1357,27 +1357,12 @@
       ]
     },
     {
-      "questID": 1640,
-      "title": "Beat Bartleby",
-      "guides": [
-        "Alliance / Elwynn Forest"
-      ],
-      "needs": [
-        "objective quantities"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1640",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=6090"
-      ]
-    },
-    {
       "questID": 1678,
       "title": "Vejrek",
       "guides": [
         "Alliance / Elwynn Forest"
       ],
       "needs": [
-        "objective quantities",
         "pickup requirements"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=1678",
@@ -1392,7 +1377,6 @@
         "Alliance / Elwynn Forest"
       ],
       "needs": [
-        "objective quantities",
         "pickup requirements"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=1683",
@@ -1549,22 +1533,6 @@
       "quest_url": "https://www.wowhead.com/forever/quest=2203",
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=6868"
-      ]
-    },
-    {
-      "questID": 2205,
-      "title": "Seek out SI: 7",
-      "guides": [
-        "Alliance / Elwynn Forest"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=2205",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=7674",
-        "https://www.wowhead.com/forever/npc=332",
-        "https://www.wowhead.com/forever/npc=917"
       ]
     },
     {
@@ -1783,38 +1751,6 @@
         "https://www.wowhead.com/forever/item=9546",
         "https://www.wowhead.com/forever/npc=1569",
         "https://www.wowhead.com/forever/npc=2119"
-      ]
-    },
-    {
-      "questID": 3100,
-      "title": "Simple Letter",
-      "guides": [
-        "Alliance / Elwynn Forest"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=3100",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=9542",
-        "https://www.wowhead.com/forever/npc=197",
-        "https://www.wowhead.com/forever/npc=911"
-      ]
-    },
-    {
-      "questID": 3102,
-      "title": "Encrypted Letter",
-      "guides": [
-        "Alliance / Elwynn Forest"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=3102",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=9555",
-        "https://www.wowhead.com/forever/npc=197",
-        "https://www.wowhead.com/forever/npc=915"
       ]
     },
     {
@@ -3791,22 +3727,6 @@
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=7908",
       "entity_urls": []
-    },
-    {
-      "questID": 7962,
-      "title": "Wabbit Pelts",
-      "guides": [
-        "Alliance / Elwynn Forest"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=7962",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=19482"
-      ]
     },
     {
       "questID": 8287,
@@ -6154,21 +6074,6 @@
       "entity_urls": [
         "https://www.wowhead.com/forever/item=270435",
         "https://www.wowhead.com/forever/npc=246378"
-      ]
-    },
-    {
-      "questID": 91738,
-      "title": "An Apple Treat",
-      "guides": [
-        "Alliance / Elwynn Forest"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=91738",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=247824",
-        "https://www.wowhead.com/forever/npc=955"
       ]
     },
     {

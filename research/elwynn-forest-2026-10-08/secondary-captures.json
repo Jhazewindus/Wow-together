@@ -1,0 +1,295 @@
+[
+  {
+    "url": "https://classicdb.ch/?quest=1640",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "bbc6603813bbd4944e3f91c945d0c207f273383ce7554713188031d86c84bab1"
+  },
+  {
+    "url": "https://classicdb.ch/?quest=7962",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "1bf8f6328f1bb79550b3fd511c7bccb652266c5d949d6769c9f4e7fce2fb68f4"
+  },
+  {
+    "url": "https://warcraft.wiki.gg/wiki/Wabbit_Pelts",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "8fed7eae9134906224da5156c3846adfe449e7772cc84df5054cf09ed2279379",
+    "wiki_revision": 5772277,
+    "external_quest_id": 7962,
+    "classification": "testing-only historical content",
+    "current_forever_status": "unchanged",
+    "decision": "exclude ordinary leveling; retain unknown source stages; review upon genuine beta offer"
+  },
+  {
+    "url": "https://warcraft.wiki.gg/wiki/A_Taste_of_Darkness",
+    "captured": "2026-10-08",
+    "status": 404
+  },
+  {
+    "url": "https://us.forums.blizzard.com/en/wow/search.json?q=%22Elwynn%22+%22Forever%22",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "fd178ae638dd8e319af8e59bbbd52c3bd09ba26cc0e0167f10f35fec9dbfd44b",
+    "topics": [
+      {
+        "id": 2372731,
+        "title": "Blizzard, PLEASE Stop Making Forever Look, Sound and Feel Like Retail",
+        "created_at": "2026-10-05T08:56:17.251Z"
+      },
+      {
+        "id": 2368836,
+        "title": "Protection Paladin Reality",
+        "created_at": "2026-10-01T22:26:03.193Z"
+      },
+      {
+        "id": 2369300,
+        "title": "Yall are going to kill this before it even launches",
+        "created_at": "2026-10-02T02:05:23.434Z"
+      },
+      {
+        "id": 2367947,
+        "title": "'Forever' feels like the age of Dinosaurs",
+        "created_at": "2026-10-01T08:04:27.221Z"
+      },
+      {
+        "id": 2375327,
+        "title": "Real talk; I feel like there is a rift between what Devs SAID WoW Forever is, and what it actually is",
+        "created_at": "2026-10-07T20:53:38.552Z"
+      },
+      {
+        "id": 2375119,
+        "title": "In-game mail griefing has broken WoW Forever permanently",
+        "created_at": "2026-10-07T16:40:17.557Z"
+      },
+      {
+        "id": 2375550,
+        "title": "Forever Westfall crashes my PC in 10-15 min",
+        "created_at": "2026-10-08T01:23:07.576Z"
+      },
+      {
+        "id": 2367955,
+        "title": "So when is WoW actually going to be about WoW again?",
+        "created_at": "2026-10-01T08:36:16.309Z"
+      },
+      {
+        "id": 2371839,
+        "title": "Request for memorial",
+        "created_at": "2026-10-04T10:22:06.746Z"
+      },
+      {
+        "id": 2372193,
+        "title": "Why are all these changes being made?",
+        "created_at": "2026-10-04T18:28:28.722Z"
+      },
+      {
+        "id": 2373535,
+        "title": "Why punish completionists?",
+        "created_at": "2026-10-06T00:40:33.538Z"
+      },
+      {
+        "id": 2356918,
+        "title": "WoW Forever needs lvl 20 Mount",
+        "created_at": "2026-09-21T15:36:33.696Z"
+      },
+      {
+        "id": 2375545,
+        "title": "Is WoW Forever trying to be sadistic?",
+        "created_at": "2026-10-08T01:15:17.189Z"
+      },
+      {
+        "id": 2374157,
+        "title": "WoW Forever is NOT Classic and should not be treated as such!",
+        "created_at": "2026-10-06T17:39:11.860Z"
+      },
+      {
+        "id": 2363848,
+        "title": "Horde Forever : The Eternal Zergling Faction",
+        "created_at": "2026-09-27T12:09:33.601Z"
+      },
+      {
+        "id": 2375484,
+        "title": "What if levels are what's holding the journey back?",
+        "created_at": "2026-10-07T23:45:10.074Z"
+      },
+      {
+        "id": 2371756,
+        "title": "Deeprun Tram: Can we fix this?",
+        "created_at": "2026-10-04T07:15:40.090Z"
+      },
+      {
+        "id": 2370799,
+        "title": "WoW: Forever Hunter Proposal \u2014 Let Hunters Become Hunters at Level 6",
+        "created_at": "2026-10-03T07:36:00.813Z"
+      },
+      {
+        "id": 2348207,
+        "title": "Skyborne is awful",
+        "created_at": "2026-09-13T15:34:18.302Z"
+      },
+      {
+        "id": 2370439,
+        "title": "Sell me on Forever",
+        "created_at": "2026-10-03T02:05:53.988Z"
+      },
+      {
+        "id": 2364462,
+        "title": "Is there anything for Horde-focused players to be excited about in Forever?",
+        "created_at": "2026-09-28T00:15:28.692Z"
+      },
+      {
+        "id": 2358607,
+        "title": "Remove Sky Elves pls",
+        "created_at": "2026-09-22T23:57:58.923Z"
+      },
+      {
+        "id": 2364361,
+        "title": "Request to Bring Ibelin's Memorial to WoW Forever in Elwynn",
+        "created_at": "2026-09-27T22:30:16.665Z"
+      },
+      {
+        "id": 2349005,
+        "title": "ZERO scaling? Of any kind? Is that really what's best?",
+        "created_at": "2026-09-14T08:06:25.387Z"
+      },
+      {
+        "id": 2363391,
+        "title": "Feedback on Redoubt Paladin Talent",
+        "created_at": "2026-09-26T21:07:48.067Z"
+      },
+      {
+        "id": 1798178,
+        "title": "There Might be a Cow Level in SoD",
+        "created_at": "2024-02-29T04:36:41.048Z"
+      },
+      {
+        "id": 424503,
+        "title": "Anyone else bored leveling alts?",
+        "created_at": "2020-01-26T04:05:32.770Z"
+      },
+      {
+        "id": 406745,
+        "title": "Duskwood General Thread",
+        "created_at": "2020-01-10T14:35:39.132Z"
+      },
+      {
+        "id": 2362913,
+        "title": "Leveling may actually be too fast",
+        "created_at": "2026-09-26T12:55:14.136Z"
+      },
+      {
+        "id": 234749,
+        "title": "Most beautiful places in WoW",
+        "created_at": "2019-07-26T15:15:42.557Z"
+      },
+      {
+        "id": 5260,
+        "title": "Moon Guard's Inn is still on fire",
+        "created_at": "2018-11-01T21:51:47.000Z"
+      },
+      {
+        "id": 2356513,
+        "title": "Initial Take - Feels Too Much Like Retail",
+        "created_at": "2026-09-21T02:22:32.050Z"
+      },
+      {
+        "id": 2356115,
+        "title": "Can we put the Kyle Questline back into Mulgore?",
+        "created_at": "2026-09-20T17:45:17.587Z"
+      },
+      {
+        "id": 2354845,
+        "title": "Wow Forever Beta XP feels a bit too high",
+        "created_at": "2026-09-19T14:15:09.106Z"
+      },
+      {
+        "id": 902049,
+        "title": "Why I love classic and not retail",
+        "created_at": "2021-03-12T17:48:31.455Z"
+      },
+      {
+        "id": 180028,
+        "title": "Great stress test",
+        "created_at": "2019-05-22T23:44:13.537Z"
+      },
+      {
+        "id": 2360750,
+        "title": "Yo this bet apatch is huge, nice one Blizz",
+        "created_at": "2026-09-24T22:55:25.760Z"
+      },
+      {
+        "id": 2281109,
+        "title": "Exile's Reach or Race starter. Which is your preferred leveling start?",
+        "created_at": "2026-03-27T08:02:21.089Z"
+      },
+      {
+        "id": 2362591,
+        "title": "Can we please talk about the rain?",
+        "created_at": "2026-09-26T02:02:02.602Z"
+      },
+      {
+        "id": 2356302,
+        "title": "Best Forever Starting Areas",
+        "created_at": "2026-09-20T21:13:47.519Z"
+      },
+      {
+        "id": 1912339,
+        "title": "I cried like a baby in Elwynn Forest Yesterday",
+        "created_at": "2024-08-05T15:35:33.521Z"
+      },
+      {
+        "id": 1659668,
+        "title": "Dumb deaths",
+        "created_at": "2023-08-28T08:44:53.419Z"
+      },
+      {
+        "id": 1077058,
+        "title": "10.0 A New Non-Scaling Continent Please",
+        "created_at": "2021-08-26T17:23:10.497Z"
+      },
+      {
+        "id": 2360374,
+        "title": "[Bug] Forever Beta 69977 repeatedly freezes with Error #109 on Windows",
+        "created_at": "2026-09-24T18:40:13.870Z"
+      },
+      {
+        "id": 2358165,
+        "title": "Forever things you'd like to see in Retail",
+        "created_at": "2026-09-22T18:38:16.600Z"
+      },
+      {
+        "id": 2352654,
+        "title": "Forever - Beta",
+        "created_at": "2026-09-17T21:21:36.309Z"
+      },
+      {
+        "id": 2357368,
+        "title": "Forever loop on retrieving character list",
+        "created_at": "2026-09-22T00:12:02.375Z"
+      },
+      {
+        "id": 2353120,
+        "title": "WoW Forever Feedback and Suggestion Thread",
+        "created_at": "2026-09-18T02:39:08.841Z"
+      },
+      {
+        "id": 2357734,
+        "title": "Walking around elwynn rn",
+        "created_at": "2026-09-22T09:14:54.712Z"
+      },
+      {
+        "id": 2366555,
+        "title": "Baseline Overlord, plz",
+        "created_at": "2026-09-29T22:58:44.842Z"
+      }
+    ]
+  },
+  {
+    "url": "https://eu.forums.blizzard.com/en/wow/search.json?q=%22An+Apple+Treat%22",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "5a9d831de446f2af5d05f7602dfcc3c5154215f8c961392f077edcff19f04551",
+    "topics": []
+  }
+]

@@ -18,6 +18,15 @@ def apply(directory):
     path = directory / 'QuestCatalogue.lua'
     catalogue = own_lua(path, 'catalogue')
     before = copy.deepcopy(catalogue['quests'])
+    exclusions = json.loads((Path(__file__).resolve().parent / 'quest_exclusions.json').read_text())
+    for exclusion in exclusions:
+        for ident in exclusion['questIDs']:
+            quest = catalogue['quests'].get(ident)
+            if quest is None:
+                continue
+            if quest['title'] != exclusion['title']:
+                raise ValueError('Guide exclusion quest identity changed; review required')
+            quest['levelingExcluded'] = exclusion['reason']
     apply_corrections(catalogue['quests'])
     stage_changes = apply_stage_corrections(catalogue['quests'])
     changed = sorted(i for i, q in catalogue['quests'].items() if q != before[i])

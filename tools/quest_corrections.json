@@ -433,5 +433,404 @@
       }
     },
     "source": "Reviewed Scarred Crag Boar representative: https://www.wowhead.com/forever/npc=1689; captured 2026-10-08; SHA-256 a3aae7ae7dcdade008917ee4edf1b93e22dd9ae5078374cd6d2945e2c9a683c8. Current item 267416 explicitly drops from NPC 1689. Use an actual published spawn at 73.8,52.6; supersedes the converted-baseline representative. Preserve four hides, twelve Copper Bars and the unmapped Copper Bar requirement. Not a surveyed approach."
+  },
+  {
+    "questID": 2205,
+    "title": "Seek out SI: 7",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 10,
+      "level": 10,
+      "classMask": 8,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Delivery to Mathias",
+          "itemID": 7674
+        }
+      ]
+    },
+    "source": "Reviewed Forever facts: https://www.wowhead.com/forever/quest=2205; captured 2026-10-08; SHA-256 9237bc3d7cf5f07544582c37a2aa57259fb4f91c472a7ab8df04879aca18a935. See research/elwynn-forest-2026-10-08 for pinned field tiers and context. Provided item stays required for hand-in; acceptance supplies it, so no independent farming objective."
+  },
+  {
+    "questID": 3100,
+    "title": "Simple Letter",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 1,
+      "level": 1,
+      "classMask": 1,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Simple Letter",
+          "itemID": 9542
+        }
+      ]
+    },
+    "source": "Reviewed Forever facts: https://www.wowhead.com/forever/quest=3100; captured 2026-10-08; SHA-256 801aa2f1fae55bffe1cc63180ad0aeb2caffe9edae895e609d726b75312da771. See research/elwynn-forest-2026-10-08 for pinned field tiers and context. Provided item stays required for hand-in; acceptance supplies it, so no independent farming objective."
+  },
+  {
+    "questID": 3102,
+    "title": "Encrypted Letter",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 1,
+      "level": 1,
+      "classMask": 8,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Encrypted Letter",
+          "itemID": 9555
+        }
+      ],
+      "destinationLocation": {
+        "entityID": 915,
+        "before": {
+          "mapID": 1429,
+          "x": 0.5031,
+          "y": 0.3992
+        },
+        "after": {
+          "mapID": 1429,
+          "x": 0.504,
+          "y": 0.398
+        }
+      }
+    },
+    "source": "Reviewed Forever facts: https://www.wowhead.com/forever/quest=3102; captured 2026-10-08; SHA-256 3a435acb665478c7e27178eb7f7e7b20acd2a39094e3af889fb70af4f40fc951. See research/elwynn-forest-2026-10-08 for pinned field tiers and context. Provided item stays required for hand-in; acceptance supplies it, so no independent farming objective. Jorik representative: https://www.wowhead.com/forever/npc=915; SHA-256 0424bc58a1113324f12addc5cbc7725e03458fa19f8a589e81523729c4e0410f; published spawn, not surveyed access."
+  },
+  {
+    "questID": 1678,
+    "title": "Vejrek",
+    "stageCorrection": {
+      "kind": "objective-facts",
+      "minLevel": 10,
+      "level": 11,
+      "classMask": 1,
+      "requiredItems": [
+        {
+          "itemID": 6799,
+          "name": "Vejrek's Head",
+          "quantity": 1
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantityUnknown": true,
+            "action": "collect",
+            "entityID": 6799,
+            "name": "Vejrek's Head"
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1426,
+            "action": "loot",
+            "entityID": 6113,
+            "npc": true,
+            "x": 0.2783,
+            "y": 0.5796,
+            "objectiveKey": "item:6799",
+            "itemID": 6799,
+            "quantityUnknown": true,
+            "sourceAreaID": 1,
+            "itemName": "Vejrek's Head",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "name": "Vejrek"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Vejrek's Head",
+            "name": "Vejrek",
+            "entityID": 6113,
+            "npc": true,
+            "action": "loot"
+          }
+        ]
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "action": "collect",
+            "entityID": 6799,
+            "name": "Vejrek's Head",
+            "quantity": 1
+          }
+        ],
+        "requiredItems": [
+          {
+            "itemID": 6799,
+            "name": "Vejrek's Head",
+            "quantity": 1
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1426,
+            "action": "loot",
+            "entityID": 6113,
+            "npc": true,
+            "x": 0.2783,
+            "y": 0.5796,
+            "objectiveKey": "item:6799",
+            "itemID": 6799,
+            "sourceAreaID": 1,
+            "itemName": "Vejrek's Head",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "name": "Vejrek",
+            "quantity": 1
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Vejrek's Head",
+            "name": "Vejrek",
+            "entityID": 6113,
+            "npc": true,
+            "action": "loot"
+          }
+        ]
+      }
+    },
+    "source": "Reviewed Forever facts: https://www.wowhead.com/forever/quest=1678; captured 2026-10-08; SHA-256 bafbdd7aa0715c4aff975be774dd0bee044ca322c771cd1b9455d26a05392559. See research/elwynn-forest-2026-10-08 for pinned field tiers and context. Preserve pickup uncertainty, class/race gates and prerequisite alternatives."
+  },
+  {
+    "questID": 1683,
+    "title": "Vorlus Vilehoof",
+    "stageCorrection": {
+      "kind": "objective-facts",
+      "minLevel": 10,
+      "level": 10,
+      "classMask": 1,
+      "requiredItems": [
+        {
+          "itemID": 6805,
+          "name": "Horn of Vorlus",
+          "quantity": 1
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantityUnknown": true,
+            "action": "collect",
+            "entityID": 6805,
+            "name": "Horn of Vorlus"
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1438,
+            "action": "loot",
+            "entityID": 6128,
+            "npc": true,
+            "y": 0.636,
+            "sourceZone": "Teldrassil",
+            "objectiveKey": "item:6805",
+            "itemID": 6805,
+            "x": 0.47200000000000003,
+            "sourceAreaID": 141,
+            "quantityUnknown": true,
+            "itemName": "Horn of Vorlus",
+            "name": "Vorlus Vilehoof"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Horn of Vorlus",
+            "name": "Vorlus Vilehoof",
+            "entityID": 6128,
+            "npc": true,
+            "action": "loot"
+          }
+        ]
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "action": "collect",
+            "entityID": 6805,
+            "name": "Horn of Vorlus",
+            "quantity": 1
+          }
+        ],
+        "requiredItems": [
+          {
+            "itemID": 6805,
+            "name": "Horn of Vorlus",
+            "quantity": 1
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1438,
+            "action": "loot",
+            "entityID": 6128,
+            "npc": true,
+            "y": 0.636,
+            "sourceZone": "Teldrassil",
+            "objectiveKey": "item:6805",
+            "itemID": 6805,
+            "x": 0.47200000000000003,
+            "sourceAreaID": 141,
+            "itemName": "Horn of Vorlus",
+            "name": "Vorlus Vilehoof",
+            "quantity": 1
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Horn of Vorlus",
+            "name": "Vorlus Vilehoof",
+            "entityID": 6128,
+            "npc": true,
+            "action": "loot"
+          }
+        ]
+      }
+    },
+    "source": "Reviewed Forever facts: https://www.wowhead.com/forever/quest=1683; captured 2026-10-08; SHA-256 3a37f5a4ff50b4b7ff16c08b520671e8e24d900b2e4937c29b581123c47f338d. See research/elwynn-forest-2026-10-08 for pinned field tiers and context. Preserve pickup uncertainty, class/race gates and prerequisite alternatives."
+  },
+  {
+    "questID": 1640,
+    "title": "Beat Bartleby",
+    "stageCorrection": {
+      "kind": "objective-facts",
+      "minLevel": 10,
+      "level": 10,
+      "classMask": 1,
+      "requiredItems": [],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantityUnknown": true,
+            "action": "kill",
+            "entityID": 6090,
+            "name": "Bartleby"
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1453,
+            "action": "kill",
+            "entityID": 6090,
+            "npc": true,
+            "y": 0.5255,
+            "objectiveKey": "npc:6090",
+            "name": "Bartleby",
+            "sourceAreaID": 1519,
+            "x": 0.7676000000000001,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "quantityUnknown": true
+          }
+        ],
+        "npcTargets": [
+          {
+            "entityID": 6090,
+            "npc": true,
+            "action": "kill",
+            "name": "Bartleby"
+          }
+        ]
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantityUnknown": true,
+            "action": "event",
+            "entityID": 6090,
+            "name": "Bartleby"
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1453,
+            "action": "event",
+            "entityID": 6090,
+            "npc": true,
+            "y": 0.5255,
+            "objectiveKey": "npc:6090",
+            "name": "Bartleby",
+            "sourceAreaID": 1519,
+            "x": 0.7676000000000001,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "quantityUnknown": true,
+            "objectiveLabel": "the duel with Bartleby",
+            "progressName": "Bartleby"
+          }
+        ],
+        "npcTargets": [
+          {
+            "entityID": 6090,
+            "npc": true,
+            "action": "event",
+            "name": "Bartleby"
+          }
+        ]
+      }
+    },
+    "source": "Reviewed Forever facts: https://www.wowhead.com/forever/quest=1640; captured 2026-10-08; SHA-256 1bd9c399f7d4ca1b5a457be3c1f5d3f6d5b4c60cfb298eaf65c293697c4aa2e9. See research/elwynn-forest-2026-10-08 for pinned field tiers and context. Preserve pickup uncertainty, class/race gates and prerequisite alternatives. Scripted duel, then talk to Bartleby; unknown objective quantity remains unknown."
+  },
+  {
+    "questID": 91738,
+    "title": "An Apple Treat",
+    "stageCorrection": {
+      "kind": "item-exchange",
+      "minLevel": 7,
+      "level": 10,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Thunder Applejack",
+          "itemID": 247824
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 247824,
+          "name": "Thunder Applejack"
+        }
+      ],
+      "point": {
+        "entityType": "object",
+        "entityID": 562131,
+        "mapID": 1429,
+        "x": 0.245,
+        "y": 0.582,
+        "name": "Applejack Still",
+        "action": "item",
+        "itemID": 247824,
+        "quantity": 1,
+        "objectiveKey": "item:247824",
+        "objectiveLabel": "Thunder Applejack (exchange 4 Shiny Red Apples at Applejack Still)",
+        "progressName": "Thunder Applejack",
+        "locationSource": "Reviewed current Forever Applejack Still object position"
+      }
+    },
+    "source": "Reviewed Forever facts: https://www.wowhead.com/forever/quest=91738; captured 2026-10-08; SHA-256 d0fd33c375f675828eaa8a73920f18d05e87cfcba4e200dee9a40c9fa8a37c1b. See research/elwynn-forest-2026-10-08 for pinned field tiers and context. Optional acquisition: https://www.wowhead.com/forever/quest=91736 explicitly rewards item 247824 x1 for item 4536 x4; https://www.wowhead.com/forever/object=562131 maps the exchange. Preserve other item acquisition and actual Sergeant De Vries hand-in; do not force the exchange quest as a prerequisite."
   }
 ]

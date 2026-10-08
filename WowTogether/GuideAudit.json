@@ -1,7 +1,7 @@
 {
   "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
   "quest_records": 5230,
-  "static_points_checked": 11823,
+  "static_points_checked": 11824,
   "fixed_zone_guides_checked": 152,
   "catalogue_reason_stages_checked": 16849,
   "catalogue_reason_codes": {
@@ -6468,25 +6468,18 @@
       "faction": "Alliance",
       "zone": "Elwynn Forest",
       "key": "level-zone:eastern-kingdoms/elwynn-forest:levels:1-10",
-      "quests": 99,
-      "steps": 304,
-      "unknown_location_steps": 11,
+      "quests": 98,
+      "steps": 301,
+      "unknown_location_steps": 4,
       "missing_location_quest_ids_by_stage": {
         "a": [
-          7962,
           95771
         ],
         "q": [
-          2205,
-          3100,
-          3102,
-          7962,
-          91738,
           91753,
           95771
         ],
         "t": [
-          7962,
           95771
         ]
       },
@@ -6500,34 +6493,29 @@
         5628,
         5635
       ],
-      "unverified_objective_quantity_quest_ids": [
-        1640,
-        1678,
-        1683
-      ],
+      "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
-      "reason_steps_checked": 304,
+      "reason_steps_checked": 301,
       "destination_reason_codes": {
         "class-progression": 56,
-        "early-reward": 3,
-        "level-work": 6,
+        "level-work": 5,
         "outside-level-range": 82,
         "prerequisite": 82,
-        "quest-objective": 6,
+        "quest-objective": 5,
         "quest-reward": 65,
-        "return-hub": 4
+        "return-hub": 6
       },
-      "reason_review_steps": 118,
+      "reason_review_steps": 112,
       "cross_zone_reason_steps": 9,
-      "flow_alternatives_evaluated": 381,
-      "flow_loop_changes": 3,
+      "flow_alternatives_evaluated": 564,
+      "flow_loop_changes": 0,
       "flow_state_valid": true,
-      "quest_log_peak": 20,
-      "quest_reward_only_xp_shortfall": 10935,
-      "uncertain_travel_legs": 74,
-      "estimated_distance_before": 312402.75,
-      "estimated_distance_after": 312402.75
+      "quest_log_peak": 19,
+      "quest_reward_only_xp_shortfall": 11625,
+      "uncertain_travel_legs": 65,
+      "estimated_distance_before": 265450.87,
+      "estimated_distance_after": 265450.87
     },
     {
       "faction": "Alliance",

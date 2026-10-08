@@ -191,3 +191,5 @@ Durotar was rechecked against inherited main 0.8.60 in [the follow-up review](du
 The [Mulgore 0.8.60 follow-up](mulgore-2026-10-08/refresh-0.8.60/README.md) retains the earlier corrections and gaps, rechecks Baine and the Battleboars, and records current/pinned race-mask disagreements for Our Ancient Enemy, Drive Them Out and The High Chieftain.
 
 The [Dun Morogh follow-up](dun-morogh-2026-10-08/refresh-0.8.60/README.md) retains the boar correction and tester gate, rechecks distinct Rime objectives and Winter Wolf relations, and records the later Search for Incendicite pickup/handoff limitation.
+
+The [Elwynn Forest review](elwynn-forest-2026-10-08/README.md) corrects three supplied deliveries, Jorik's representative position, two item counts, Bartleby's duel instruction and Applejack exchange acquisition; it excludes the evidenced Wabbit Pelts testing placeholder. It retains all 301 remaining actions and records unresolved residue/95771 facts, eight uncertain pickup requirements, the Human race-source disagreement, hidden elite Hogger, Warrior branch selection and strict full-route tradeoffs for main-developer review.
