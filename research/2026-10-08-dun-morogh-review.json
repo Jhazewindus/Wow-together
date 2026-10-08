@@ -1,0 +1,154 @@
+{
+  "zone": "Dun Morogh",
+  "reviewed": "2026-10-08",
+  "catalogue_commit": "67ff36412ede50154ec3a8b2aecb148e72ffb568",
+  "source": "https://github.com/Questie/QuestieDB",
+  "source_commit": "e0a6eaa86f181ac99262e34126bcd2ed1a1712d6",
+  "files": [
+    {
+      "path": "data/Forever/foreverQuestDB.lua",
+      "url": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua",
+      "sha256": "d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87"
+    },
+    {
+      "path": "src/corrections/Forever/generated/foreverBaseQuest.lua",
+      "url": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/generated/foreverBaseQuest.lua",
+      "sha256": "c92ebcb106f72913e5e666db48539e60d9e77a77c3e08938bf2df682d83dd714"
+    },
+    {
+      "path": "src/corrections/Forever/generated/foreverBaseItem.lua",
+      "url": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/generated/foreverBaseItem.lua",
+      "sha256": "870bb7ab64bec27210c3f9e40fd5bb957c0441aba22d3944a87ddd5c66d0add4"
+    },
+    {
+      "path": "data/Forever/foreverNpcDB.lua",
+      "url": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverNpcDB.lua",
+      "sha256": "a8c4169690726323dac3c6441f74f7a4d9cafcc08ec42231d72ff28c9471f0ee"
+    }
+  ],
+  "facts": [
+    {
+      "questID": 282,
+      "title": "Senir's Observations",
+      "source_file": "data/Forever/foreverQuestDB.lua",
+      "source_fields": {
+        "name": "Senir's Observations",
+        "requiredLevel": 1,
+        "questLevel": 5,
+        "startedByNPC": 786,
+        "finishedByNPC": 1965,
+        "preQuestSingle": [
+          218
+        ],
+        "sourceItemId": 2619
+      },
+      "decision": "Retain the existing 218 prerequisite and the unverified pickup flag. A matching converted-baseline prerequisite does not prove that all live beta pickup conditions are modeled. Do not merge this quest with quest 420 of the same name."
+    },
+    {
+      "questID": 95217,
+      "title": "The Quarry's Smith",
+      "source_file": "src/corrections/Forever/generated/foreverBaseQuest.lua",
+      "source_fields": {
+        "name": "The Quarry's Smith",
+        "requiredLevel": 7,
+        "questLevel": 10,
+        "startedByNPC": 1698,
+        "finishedByNPC": 1698,
+        "requiredItems": [
+          {
+            "itemID": 2840,
+            "name": "Copper Bar",
+            "quantity": 12
+          },
+          {
+            "itemID": 267416,
+            "name": "Toughened Boar Hide",
+            "quantity": 4
+          }
+        ]
+      },
+      "decision": "Retain the known boar objective and both item quantities. Copper Bars still lack a verified local objective location; neither a smelting assumption nor remote drop alternatives establish a Dun Morogh farming point."
+    },
+    {
+      "itemID": 267416,
+      "name": "Toughened Boar Hide",
+      "source_file": "src/corrections/Forever/generated/foreverBaseItem.lua",
+      "source_fields": {
+        "npcDrops": [
+          1689
+        ],
+        "relatedQuests": [
+          95217
+        ]
+      },
+      "decision": "Explicit drop relation supports the existing Scarred Crag Boar objective."
+    },
+    {
+      "npcID": 1689,
+      "name": "Scarred Crag Boar",
+      "source_file": "data/Forever/foreverNpcDB.lua",
+      "source_fields": {
+        "areaID": 1,
+        "representative_spawn_percent": [
+          70.87,
+          61.35
+        ]
+      },
+      "decision": "Existing map 1426 point (0.7087, 0.6135) is an actual published spawn representative, not a centroid. Converted-baseline coordinates still require current-client verification."
+    },
+    {
+      "questID": 98423,
+      "title": "The Treaty of Understanding",
+      "source_file": "src/corrections/Forever/generated/foreverBaseQuest.lua",
+      "source_fields": {
+        "name": "The Treaty of Understanding",
+        "requiredLevel": 9,
+        "questLevel": 16,
+        "startedByItem": 281030,
+        "finishedByNPC": 2784,
+        "sourceItemId": 281030
+      },
+      "decision": "Retain the item starter and known Magni hand-in. No pickup coordinates are established by these quest fields."
+    },
+    {
+      "itemID": 281030,
+      "name": "Treaty of Understanding",
+      "source_file": "src/corrections/Forever/generated/foreverBaseItem.lua",
+      "source_fields": {
+        "startQuest": 98423,
+        "relatedQuests": [
+          98423
+        ]
+      },
+      "decision": "The selected generated item record supplies no drop or vendor location. This is missing evidence, not proof that the item cannot drop."
+    }
+  ],
+  "remaining_needs": [
+    {
+      "questID": 282,
+      "needs": [
+        "pickup requirements"
+      ],
+      "evidence_needed": "Current beta complete NPC offers and consistent completion/character context before and after the suspected unlock."
+    },
+    {
+      "questID": 95217,
+      "needs": [
+        "objective area"
+      ],
+      "evidence_needed": "An explicit applicable Copper Bar acquisition source and its published local position; preserve the existing boar location."
+    },
+    {
+      "questID": 98423,
+      "needs": [
+        "pickup"
+      ],
+      "evidence_needed": "Explicit Treaty item acquisition relation and location, or a labeled current-beta item pickup observation."
+    }
+  ],
+  "limitations": [
+    "Selected factual fields only; no upstream code or quest prose copied or executed.",
+    "No application data, routing, eligibility, release version or saved player progress changed.",
+    "Invariants passing does not close the three source gaps or establish live beta behavior."
+  ]
+}

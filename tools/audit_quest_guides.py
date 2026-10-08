@@ -15,7 +15,7 @@ sys.path.insert(0,str(ROOT/'tests'))
 from test_addon import Client
 
 
-def audit():
+def audit(zone=None):
     c=Client(quests=(),use_catalogue=True)
     c.guide_environment(level=1)
     c.lua.globals().grouped=False
@@ -23,9 +23,14 @@ def audit():
     c.ns.db.config.classQuests=False
     c.ns.db.config.soloMode=True
     c.ns.ReadProfile()
+    if zone is not None and not any(q.zone == zone for q in c.ns.catalogue.quests.values()):
+        raise ValueError('Unknown catalogue zone: ' + zone)
+    records=0
     points=0
     reason_stages=0;reason_codes=collections.Counter();reason_review=set()
     for ident,q in c.ns.catalogue.quests.items():
+        if zone is not None and q.zone != zone: continue
+        records+=1
         assert isinstance(ident,(int,float)) and ident>0,ident
         assert isinstance(q.title,str) and q.title,(ident,'title')
         for role in ('starts','ends','objectives'):
@@ -67,6 +72,7 @@ def audit():
             for level in (1,4,8,12,18,23,33,43,53,60):
                 c.ns.profile.level=level
                 for g in c.ns.LevelingGuideChoices().values():
+                    if zone is not None and g.zone != zone: continue
                     key=(faction,g.key)
                     if key in seen:continue
                     seen.add(key)
@@ -143,21 +149,30 @@ def audit():
                         'quest_reward_only_xp_shortfall':flow.after.levelDeficitXP,'uncertain_travel_legs':flow.after.uncertainTravelLegs,
                         'estimated_distance_before':round(g.optimization.before,2),'estimated_distance_after':round(g.optimization.after,2)})
                     print(f'{faction}: {g.zone}: {len(plan)} steps checked',flush=True)
-    return {'validation':'Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim',
-        'quest_records':c.ns.catalogue.count,'static_points_checked':points,'fixed_zone_guides_checked':len(guides),
+    result={'validation':'Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim',
+        'quest_records':records,'static_points_checked':points,'fixed_zone_guides_checked':len(guides),
         'catalogue_reason_stages_checked':reason_stages,'catalogue_reason_codes':dict(sorted(reason_codes.items())),
         'reason_review_quest_ids':sorted(reason_review),
         'source_data_gap_free_guides':sum(g['source_data_gap_free'] for g in guides),
         'guides':sorted(guides,key=lambda g:(g['faction'],g['zone']))}
+    if zone is not None:
+        result['scope']={'zone':zone,'catalogue_records':'Exact quest zone; guide dependencies still compile normally'}
+    return result
 
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('--output',type=Path,default=ROOT/'WowTogether/GuideAudit.json')
+    p.add_argument('--output',type=Path)
+    p.add_argument('--zone',help='Audit one exact catalogue zone name, including every discoverable chapter and faction. Requires a separate --output.')
     p.add_argument('--require-complete',action='store_true',help='Fail when any guide still has missing source facts; invariants alone cannot pass this gate.')
-    args=p.parse_args();result=audit()
+    args=p.parse_args()
+    full_output=ROOT/'WowTogether/GuideAudit.json'
+    if args.zone is not None and (args.output is None or args.output.resolve()==full_output.resolve()):
+        p.error('--zone requires a separate --output; preserve the full GuideAudit.json')
+    output=args.output or full_output
+    result=audit(args.zone)
     if result['fixed_zone_guides_checked']==0:raise ValueError('No zone guides were compiled')
-    args.output.write_text(json.dumps(result,indent=2)+'\n')
+    output.write_text(json.dumps(result,indent=2)+'\n')
     print(f"Checked {result['fixed_zone_guides_checked']} guides and {result['static_points_checked']} source points.")
     if args.require_complete and result['source_data_gap_free_guides']!=result['fixed_zone_guides_checked']:
         print(f"INCOMPLETE: {result['fixed_zone_guides_checked']-result['source_data_gap_free_guides']} guides still need source facts.",file=sys.stderr)
