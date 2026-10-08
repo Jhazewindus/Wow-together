@@ -1,0 +1,139 @@
+[
+  {
+    "questID": 2937,
+    "parentID": 2936,
+    "title": "The Spider God",
+    "level": 45,
+    "minLevel": 40,
+    "categoryPath": "dungeons/zulfarrak",
+    "starts": [
+      {
+        "y": 0.746,
+        "mapID": 1411,
+        "name": "Master Gadrin",
+        "entityID": 3188,
+        "npc": true,
+        "x": 0.56
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.746,
+        "mapID": 1411,
+        "name": "Master Gadrin",
+        "entityID": 3188,
+        "npc": true,
+        "x": 0.56
+      }
+    ],
+    "requirements": {},
+    "objectives": [
+      {
+        "y": 0.19879999999999998,
+        "mapID": 1446,
+        "action": "event",
+        "x": 0.3873,
+        "locationSource": "Published Forever converted-baseline event area",
+        "name": "The Spider God"
+      }
+    ],
+    "classMask": 0
+  },
+  {
+    "questID": 2992,
+    "parentID": 2991,
+    "title": "Nekrum's Medallion",
+    "level": 47,
+    "minLevel": 40,
+    "categoryPath": "dungeons/zulfarrak",
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1419,
+        "entityID": 8022,
+        "npc": true,
+        "y": 0.19469999999999998,
+        "x": 0.669,
+        "name": "Thadius Grimshade",
+        "sourceAreaID": 4,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1419,
+        "entityID": 8022,
+        "npc": true,
+        "y": 0.19469999999999998,
+        "x": 0.669,
+        "name": "Thadius Grimshade",
+        "sourceAreaID": 4,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 9471,
+        "name": "Nekrum's Medallion"
+      }
+    ],
+    "objectives": {},
+    "classMask": 0
+  },
+  {
+    "questID": 4787,
+    "parentID": 3527,
+    "title": "The Prophecy of Mosh'aru",
+    "level": 47,
+    "minLevel": 40,
+    "categoryPath": "dungeons/zulfarrak",
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1446,
+        "entityID": 8579,
+        "npc": true,
+        "y": 0.2236,
+        "x": 0.6698999999999999,
+        "name": "Yeh'kinya",
+        "sourceAreaID": 440,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1446,
+        "entityID": 8579,
+        "npc": true,
+        "y": 0.2236,
+        "x": 0.6698999999999999,
+        "name": "Yeh'kinya",
+        "sourceAreaID": 440,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 10660,
+        "name": "First Mosh'aru Tablet"
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 10661,
+        "name": "Second Mosh'aru Tablet"
+      }
+    ],
+    "objectives": {},
+    "classMask": 0
+  }
+]

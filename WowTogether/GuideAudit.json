@@ -1,14 +1,14 @@
 {
   "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
   "quest_records": 5230,
-  "static_points_checked": 11831,
+  "static_points_checked": 11833,
   "fixed_zone_guides_checked": 152,
-  "catalogue_reason_stages_checked": 16849,
+  "catalogue_reason_stages_checked": 16850,
   "catalogue_reason_codes": {
     "class-progression": 1822,
     "level-work": 4459,
     "outside-level-range": 2,
-    "quest-objective": 5222,
+    "quest-objective": 5223,
     "quest-reward": 5313,
     "selected-guide": 31
   },
@@ -7760,12 +7760,10 @@
       "key": "level-zone:eastern-kingdoms/the-hinterlands:levels:41-50",
       "quests": 17,
       "steps": 56,
-      "unknown_location_steps": 2,
+      "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
-        "q": [
-          1452
-        ],
+        "q": [],
         "t": []
       },
       "unverified_pickup_requirement_quest_ids": [],
@@ -7780,15 +7778,15 @@
         "reward-first": 1
       },
       "reason_review_steps": 27,
-      "cross_zone_reason_steps": 13,
+      "cross_zone_reason_steps": 14,
       "flow_alternatives_evaluated": 3,
       "flow_loop_changes": 1,
       "flow_state_valid": true,
       "quest_log_peak": 4,
       "quest_reward_only_xp_shortfall": 446200,
-      "uncertain_travel_legs": 17,
-      "estimated_distance_before": 203989.8,
-      "estimated_distance_after": 203989.8
+      "uncertain_travel_legs": 16,
+      "estimated_distance_before": 219004.31,
+      "estimated_distance_after": 219004.31
     },
     {
       "faction": "Alliance",
@@ -10872,12 +10870,10 @@
       "key": "level-zone:eastern-kingdoms/the-hinterlands:levels:51-60",
       "quests": 7,
       "steps": 25,
-      "unknown_location_steps": 1,
+      "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
-        "q": [
-          2938
-        ],
+        "q": [],
         "t": []
       },
       "unverified_pickup_requirement_quest_ids": [],
@@ -10897,7 +10893,7 @@
       "flow_state_valid": true,
       "quest_log_peak": 3,
       "quest_reward_only_xp_shortfall": 623100,
-      "uncertain_travel_legs": 8,
+      "uncertain_travel_legs": 7,
       "estimated_distance_before": 67171.66,
       "estimated_distance_after": 67171.66
     },

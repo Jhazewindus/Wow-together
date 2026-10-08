@@ -1910,5 +1910,250 @@
         "objectiveLocationsIncomplete": true
       }
     }
+  },
+  {
+    "questID": 2938,
+    "title": "Venom to the Undercity",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; exact identity/levels, explicit sourceItemId 9436 plus existing provided quantity and required hand-in item. Supplied parcel delivery to Faranell; actual 2937 hand-in retained. Verified all 24 file hashes 2026-10-08. See research/hinterlands-2026-10-08.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 40,
+      "level": 55,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Faranell's Parcel",
+          "itemID": 9436
+        }
+      ]
+    }
+  },
+  {
+    "questID": 1452,
+    "title": "Rhapsody's Kalimdor Kocktail",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; unchanged exact identity/title/level/minimum and typed items; existing three-of-each quantities retained. Ironfur Liver 6258 -> Ironfur Bear 5268 from converted literal item facts; Groddoc Liver 6259 -> Groddoc Ape 5260 from beta-delta item facts. Both named actual spawn points on published Feralas area 357 -> map 1444; no centroid, safe road, drop rate or patrol inferred. Original Roc objective preserved. Verified 24 hashes 2026-10-08; source joins and withheld approaches: research/hinterlands-2026-10-08.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 38,
+      "level": 43,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 3,
+          "name": "Roc Gizzard",
+          "itemID": 6257
+        },
+        {
+          "quantity": 3,
+          "name": "Ironfur Liver",
+          "itemID": 6258
+        },
+        {
+          "quantity": 3,
+          "name": "Groddoc Liver",
+          "itemID": 6259
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "name": "Roc Gizzard",
+            "entityID": 6257
+          },
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "name": "Ironfur Liver",
+            "entityID": 6258
+          },
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "name": "Groddoc Liver",
+            "entityID": 6259
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 3,
+            "name": "Roc Gizzard",
+            "itemID": 6257
+          },
+          {
+            "quantity": 3,
+            "name": "Ironfur Liver",
+            "itemID": 6258
+          },
+          {
+            "quantity": 3,
+            "name": "Groddoc Liver",
+            "itemID": 6259
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1446,
+            "legacyStepKey": "q:1446:npc:5428",
+            "entityID": 5428,
+            "name": "Roc",
+            "npc": true,
+            "x": 0.353,
+            "y": 0.2899,
+            "objectiveKey": "item:6257",
+            "itemID": 6257,
+            "quantity": 3,
+            "sourceAreaID": 440,
+            "itemName": "Roc Gizzard",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Roc Gizzard",
+            "name": "Roc",
+            "entityID": 5428,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "name": "Ironfur Liver",
+            "entityID": 6258
+          },
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "name": "Groddoc Liver",
+            "entityID": 6259
+          }
+        ],
+        "objectiveLocationsIncomplete": true
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "name": "Roc Gizzard",
+            "entityID": 6257
+          },
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "name": "Ironfur Liver",
+            "entityID": 6258
+          },
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "name": "Groddoc Liver",
+            "entityID": 6259
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 3,
+            "name": "Roc Gizzard",
+            "itemID": 6257
+          },
+          {
+            "quantity": 3,
+            "name": "Ironfur Liver",
+            "itemID": 6258
+          },
+          {
+            "quantity": 3,
+            "name": "Groddoc Liver",
+            "itemID": 6259
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1446,
+            "legacyStepKey": "q:1446:npc:5428",
+            "entityID": 5428,
+            "name": "Roc",
+            "npc": true,
+            "x": 0.353,
+            "y": 0.2899,
+            "objectiveKey": "item:6257",
+            "itemID": 6257,
+            "quantity": 3,
+            "sourceAreaID": 440,
+            "itemName": "Roc Gizzard",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot"
+          },
+          {
+            "entityType": "npc",
+            "entityID": 5268,
+            "name": "Ironfur Bear",
+            "npc": true,
+            "mapID": 1444,
+            "sourceAreaID": 357,
+            "sourceZone": "Feralas",
+            "x": 0.6128,
+            "y": 0.616,
+            "action": "loot",
+            "itemID": 6258,
+            "itemName": "Ironfur Liver",
+            "quantity": 3,
+            "objectiveKey": "item:6258",
+            "locationSource": "Reviewed published Forever converted-baseline spawn; explicit item drop relation; research/hinterlands-2026-10-08"
+          },
+          {
+            "entityType": "npc",
+            "entityID": 5260,
+            "name": "Groddoc Ape",
+            "npc": true,
+            "mapID": 1444,
+            "sourceAreaID": 357,
+            "sourceZone": "Feralas",
+            "x": 0.612,
+            "y": 0.6139,
+            "action": "loot",
+            "itemID": 6259,
+            "itemName": "Groddoc Liver",
+            "quantity": 3,
+            "objectiveKey": "item:6259",
+            "locationSource": "Reviewed published Forever converted-baseline spawn; explicit item drop relation; research/hinterlands-2026-10-08"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Roc Gizzard",
+            "name": "Roc",
+            "entityID": 5428,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "entityID": 5268,
+            "name": "Ironfur Bear",
+            "npc": true,
+            "action": "loot",
+            "itemName": "Ironfur Liver"
+          },
+          {
+            "entityID": 5260,
+            "name": "Groddoc Ape",
+            "npc": true,
+            "action": "loot",
+            "itemName": "Groddoc Liver"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": false
+      }
+    }
   }
 ]

@@ -1,0 +1,65 @@
+{
+  "zone": "The Hinterlands",
+  "date": "2026-10-08",
+  "baseline_branch_commit": "d97596fb00dde6f091e84bb4e3cbd9d1e0aae1e5",
+  "addon_version": "0.8.61",
+  "changed_quest_ids": [
+    1452,
+    2938
+  ],
+  "scope": {
+    "quest_ids": 50,
+    "actions": 183,
+    "chapter_actions": {
+      "Horde": [
+        93,
+        25
+      ],
+      "Alliance": [
+        56,
+        9
+      ]
+    }
+  },
+  "gaps": {
+    "before": {
+      "pickup": [],
+      "objective": [
+        1452,
+        2938
+      ],
+      "handin": [],
+      "uncertain_pickup": [],
+      "unknown_quantity": []
+    },
+    "after": {
+      "pickup": [],
+      "objective": [],
+      "handin": [],
+      "uncertain_pickup": [],
+      "unknown_quantity": []
+    }
+  },
+  "validation": {
+    "focused_tests": 5,
+    "strict_start_states": 16,
+    "valid_states": 16,
+    "actions_and_endpoints_preserved": true,
+    "optimization_guard": "PASS; same-corrected-facts full orders and metrics unchanged, no optimization gain",
+    "lua51_toc_files": 86,
+    "native_beta_tested": false,
+    "global_audit": {
+      "sections": 152,
+      "source_points": 11833,
+      "gap_free_sections": 33,
+      "ordinary_source_queue_records": 390
+    }
+  },
+  "boundaries": [
+    "Recorded gap-free sections do not certify terrain or complete current beta offers.",
+    "2937 -> 2936, 2992 -> 2991 and 4787 -> 3527 are required Zul\u2019Farrak parent handoffs outside the compiled Hinterlands IDs. Actual hand-in gates are retained; useful dungeon/cross-zone scope needs main-developer coordination.",
+    "Converted-baseline spawn points are distinguishable from current beta observations. No actual safe boat route, drop rate, patrol or lift/ramp inferred.",
+    "Pinned 7816 has empty converted-baseline preQuestSingle, while existing captured/older reviewed record requires 7815; preserve existing gate pending contemporary evidence rather than clearing it by absence."
+  ],
+  "source_access": "All 24 pinned files verified and current/older-world catalogue provenance preserved. New denied-source captures withheld; no repeated requests or bypass."
+}

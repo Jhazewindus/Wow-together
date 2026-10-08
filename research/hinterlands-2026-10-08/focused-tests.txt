@@ -1,0 +1,10 @@
+test_both_factions_preserve_complete_saved_routes_and_escort_adjacency (test_hinterlands_coverage.HinterlandsCoverageTests.test_both_factions_preserve_complete_saved_routes_and_escort_adjacency) ... ok
+test_faction_boundaries_and_ordinary_work_ignore_class_optout (test_hinterlands_coverage.HinterlandsCoverageTests.test_faction_boundaries_and_ordinary_work_ignore_class_optout) ... ok
+test_input_conflicts_are_atomic_and_reapplication_is_idempotent (test_hinterlands_coverage.HinterlandsCoverageTests.test_input_conflicts_are_atomic_and_reapplication_is_idempotent) ... ok
+test_parcel_delivery_keeps_actual_item_and_parent_handin (test_hinterlands_coverage.HinterlandsCoverageTests.test_parcel_delivery_keeps_actual_item_and_parent_handin) ... ok
+test_rhapsody_retains_every_item_goal_and_maps_only_proven_sources (test_hinterlands_coverage.HinterlandsCoverageTests.test_rhapsody_retains_every_item_goal_and_maps_only_proven_sources) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 6.012s
+
+OK

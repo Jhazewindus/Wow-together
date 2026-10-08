@@ -1,6 +1,6 @@
 {
   "source_data_complete": false,
-  "remaining_quest_records": 392,
+  "remaining_quest_records": 390,
   "limitations": [
     "This queue identifies missing facts, not a license to invent them",
     "Source capture must respect access policy and stop after denials",
@@ -1127,22 +1127,6 @@
       ]
     },
     {
-      "questID": 1452,
-      "title": "Rhapsody's Kalimdor Kocktail",
-      "guides": [
-        "Alliance / The Hinterlands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1452",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=6258",
-        "https://www.wowhead.com/forever/item=6259",
-        "https://www.wowhead.com/forever/npc=5634"
-      ]
-    },
-    {
       "questID": 1470,
       "title": "Piercing the Veil",
       "guides": [
@@ -1564,22 +1548,6 @@
       "entity_urls": [
         "https://www.wowhead.com/forever/item=9250",
         "https://www.wowhead.com/forever/npc=7882"
-      ]
-    },
-    {
-      "questID": 2938,
-      "title": "Venom to the Undercity",
-      "guides": [
-        "Horde / The Hinterlands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=2938",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=9436",
-        "https://www.wowhead.com/forever/npc=2055",
-        "https://www.wowhead.com/forever/npc=2216"
       ]
     },
     {

@@ -1,0 +1,32 @@
+[
+  {
+    "itemID": 6258,
+    "npcID": 5268,
+    "item_relation_tier": "converted-baseline",
+    "position_tier": "converted-baseline",
+    "areaID": 357,
+    "mapID": 1444,
+    "actual_published_point": [
+      0.6128,
+      0.616
+    ],
+    "minLevel": 41,
+    "maxLevel": 42,
+    "approach_verified": false
+  },
+  {
+    "itemID": 6259,
+    "npcID": 5260,
+    "item_relation_tier": "beta-delta",
+    "position_tier": "converted-baseline",
+    "areaID": 357,
+    "mapID": 1444,
+    "actual_published_point": [
+      0.612,
+      0.6139
+    ],
+    "minLevel": 42,
+    "maxLevel": 43,
+    "approach_verified": false
+  }
+]

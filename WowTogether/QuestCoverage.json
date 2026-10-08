@@ -1526,11 +1526,8 @@
       "pickups": 45,
       "objectives": 31,
       "turnins": 45,
-      "complete_locations": 43,
-      "missing_quest_ids": [
-        1452,
-        2938
-      ]
+      "complete_locations": 45,
+      "missing_quest_ids": []
     },
     "eastern-kingdoms/thoradins-wall": {
       "quests": 1,
@@ -13317,6 +13314,7 @@
     758,
     759,
     760,
+    1452,
     1518,
     1521,
     1524,
@@ -13326,6 +13324,7 @@
     1678,
     1683,
     2205,
+    2938,
     3100,
     3102,
     3511,
