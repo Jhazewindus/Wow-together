@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-08",
+  "addon_version": "0.8.61",
+  "tested_data_commit": "309dc81b3e83a0b0db42da47ab3493e180ab65a1",
+  "main_commit": "09155ca265278572649a3529b8ce7ea1b4eb8431",
+  "branch": "guides/coverage",
+  "isolated_worktree": "/workspace/Wow-together-guides",
+  "full_suite": {
+    "command": "/workspace/.wow-together-tests/bin/python -m unittest discover -s tests -q",
+    "tests": 1563,
+    "passed": 1562,
+    "failures": 1,
+    "seconds": 540.228,
+    "sole_failure": "test_0829.PackedDataTests.test_all_source_fields_match_pre_packing_fingerprints: catalogue",
+    "historical_fixture_unchanged": true,
+    "baseline_failure_previously_recorded": true
+  },
+  "zone_tests": {
+    "tests": 64,
+    "passed": 64,
+    "included_in_full_run": true
+  },
+  "lua51_toc_files": 86,
+  "interface": 16001,
+  "global_audit": {
+    "sections": 152,
+    "zones": 44,
+    "source_points": 11833,
+    "recorded_gap_free_sections": 33,
+    "ordinary_source_queue_records": 390
+  },
+  "preserved_main_data": {
+    "questEntities": true,
+    "worldQuestChecks": true,
+    "xpBaseline": true
+  },
+  "tested_source_hashes_unchanged": true,
+  "native_beta_tested": false,
+  "pr": "https://github.com/Jhazewindus/Wow-together/pull/2",
+  "status": "Draft; source gaps and shared-code coordination remain; no release or Discord publication."
+}

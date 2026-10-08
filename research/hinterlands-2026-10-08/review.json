@@ -53,6 +53,13 @@
       "source_points": 11833,
       "gap_free_sections": 33,
       "ordinary_source_queue_records": 390
+    },
+    "source_gap_free_chapters": 0,
+    "chapter_prerequisite_review_steps": {
+      "Alliance / 41-50": 12,
+      "Alliance / 51-60": 9,
+      "Horde / 41-50": 3,
+      "Horde / 51-60": 6
     }
   },
   "boundaries": [

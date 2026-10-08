@@ -1,0 +1,11 @@
+{
+  "WowTogether/QuestCatalogue.lua": "4d4fe11ea617b6aaddbb49079e4e59a238057c543d4424c79d3abcf8dc178919",
+  "WowTogether/QuestCatalogue.json": "30180f21b56363fc9a8b8199109fdc0acb17471872eeb34b5020db0805f4cc9d",
+  "WowTogether/QuestCoverage.json": "6259c0d74474524f104ee4f6b04b9a2cab5fff6c8b95e237c530aec3c8e62e5c",
+  "WowTogether/GuideAudit.json": "6befa4179b3b85d37f63c46dc110f032ff2af8be8f885e13c7d5b019a902d445",
+  "WowTogether/GuideSourceQueue.json": "0f23af738dcebfbd9565844574ce7e06fdd7ac88e0ef82adf17873eb35e21625",
+  "tools/quest_corrections.json": "8a1acd5f6be1c225688c83ce22bb471ebea10a6710317e07b20157c2b483851e",
+  "tools/quest_exclusions.json": "e958036638cb111a9c9e39bf6ffac85e6439dcc182d9bc98814c9f469b155338",
+  "tools/import_warcraftdb.py": "a5e31c4801fa25ed1f0f64229cf0101f3259acc50db38ce6ed224be9b6ed938d",
+  "tools/audit_quest_guides.py": "6a3362ad5dadf24658c08f0df33a1a65e80ceccadb91422c163d318f3525c93e"
+}

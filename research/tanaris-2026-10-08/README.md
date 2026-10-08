@@ -108,3 +108,8 @@ leave the 51–60 Azshara, Moonglade and Silithus compilations for both factions
 exact changed rows are retained in global-audit-changes.json. Horde Feralas's
 41–50 row changes only delivery coverage and retains its 112 actions. These
 cross-zone effects must be included in main's review of the data quarantine.
+
+Final [combined host validation](../coverage-integration-2026-10-08/README.md)
+passes 1,562/1,563 tests, including all 64 zone regressions; the sole known
+historical catalogue fingerprint failure remains. Native checklists and
+coordination requirements above remain outstanding.

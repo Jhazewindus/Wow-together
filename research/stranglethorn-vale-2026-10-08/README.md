@@ -97,3 +97,8 @@ observations rather than assuming acceptance is a hand-in.
 7. Check elites/group choices, Warlock class opt-out, unknown offers returning
    after confirmation, personal skips, boat/zeppelin boarding and faction access.
    Deferred or accepted unfinished work must not produce false Guide complete.
+
+Final [combined host validation](../coverage-integration-2026-10-08/README.md)
+passes 1,562/1,563 tests, including all 64 zone regressions; the sole known
+historical catalogue fingerprint failure remains. Native checklists and
+coordination requirements above remain outstanding.

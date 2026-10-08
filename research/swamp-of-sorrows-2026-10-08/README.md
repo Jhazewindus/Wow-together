@@ -73,3 +73,8 @@ class setting; mark Pass / Fail / Skip with offers and completion evidence.
 6. Test Galen escort adjacency/recovery, elite/group choices and Warlock class
    opt-out. Record onward destinations and real travel access instead of assuming
    flight-master proximity means the player's flight connection is unlocked.
+
+Final [combined host validation](../coverage-integration-2026-10-08/README.md)
+passes 1,562/1,563 tests, including all 64 zone regressions; the sole known
+historical catalogue fingerprint failure remains. Native checklists and
+coordination requirements above remain outstanding.

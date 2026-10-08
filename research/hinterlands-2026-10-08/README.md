@@ -106,6 +106,17 @@ class setting. Mark Pass / Fail / Skip with exact IDs and real observations.
    not produce false Guide complete. Verify personal flight/boat access.
 
 The regenerated global audit checks 152 sections / 11,833 source points;
-35 sections have no recorded source gaps and the ordinary queue contains
+33 sections have no recorded source gaps and the ordinary queue contains
 390 unresolved records. These counts do not cover unresolved approaches,
 external dungeon handoffs or native-beta behavior.
+
+Closing the two objective-location gaps does not clear every route review flag.
+All four Hinterlands chapters remain source_data_gap_free=false: Alliance
+41–50/51–60 have 12/9 prerequisite review steps and Horde 41–50/51–60 have 3/6.
+Those flags and the documented external dungeon parents remain available for
+main review; the source audit still reports incomplete sections.
+
+Final [combined host validation](../coverage-integration-2026-10-08/README.md)
+passes 1,562/1,563 tests, including all 64 zone regressions; the sole known
+historical catalogue fingerprint failure remains. Native checklists and
+coordination requirements above remain outstanding.
