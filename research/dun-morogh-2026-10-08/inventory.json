@@ -1,0 +1,3291 @@
+{
+  "scope": "All 55 distinct compiled quest IDs in standard and dwarf templates; source coverage is separate from native beta verification.",
+  "quests": [
+    {
+      "questID": 170,
+      "title": "A New Threat",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 2,
+      "minLevel": 1,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisiteAny": [
+        179
+      ],
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "starts": [
+        {
+          "y": 0.7120000000000001,
+          "mapID": 1426,
+          "name": "Balir Frosthammer",
+          "entityID": 713,
+          "npc": true,
+          "x": 0.29600000000000004
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 707,
+          "mapID": 1426,
+          "entityID": 707,
+          "npc": true,
+          "y": 0.742,
+          "objectiveKey": "npc:707",
+          "name": "Rockjaw Trogg",
+          "x": 0.3,
+          "quantity": 6
+        },
+        {
+          "sourceObjective": 724,
+          "mapID": 1426,
+          "entityID": 724,
+          "npc": true,
+          "y": 0.7440000000000001,
+          "objectiveKey": "npc:724",
+          "name": "Burly Rockjaw Trogg",
+          "x": 0.302,
+          "quantity": 6
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.7120000000000001,
+          "mapID": 1426,
+          "name": "Balir Frosthammer",
+          "entityID": 713,
+          "npc": true,
+          "x": 0.29600000000000004
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 6,
+          "name": "Rockjaw Trogg",
+          "entityID": 707
+        },
+        {
+          "entityType": "npc",
+          "quantity": 6,
+          "name": "Burly Rockjaw Trogg",
+          "entityID": 724
+        }
+      ]
+    },
+    {
+      "questID": 179,
+      "title": "Dwarven Outfitters",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 1,
+      "minLevel": 1,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.7120000000000001,
+          "mapID": 1426,
+          "name": "Sten Stoutarm",
+          "entityID": 658,
+          "npc": true,
+          "x": 0.298
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1426,
+          "legacyStepKey": "q:1426:npc:705",
+          "entityID": 705,
+          "npc": true,
+          "x": 0.294,
+          "y": 0.732,
+          "objectiveKey": "item:750",
+          "itemID": 750,
+          "quantity": 8,
+          "name": "Ragged Young Wolf",
+          "itemName": "Tough Wolf Meat",
+          "alternativeCount": 33,
+          "action": "collect"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.7120000000000001,
+          "mapID": 1426,
+          "name": "Sten Stoutarm",
+          "entityID": 658,
+          "npc": true,
+          "x": 0.298
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 8,
+          "name": "Tough Wolf Meat",
+          "itemID": 750
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "name": "Tough Wolf Meat",
+          "entityID": 750
+        }
+      ]
+    },
+    {
+      "questID": 182,
+      "title": "The Troll Cave",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 4,
+      "minLevel": 1,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.758,
+          "mapID": 1426,
+          "name": "Grelin Whitebeard",
+          "entityID": 786,
+          "npc": true,
+          "x": 0.25
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 706,
+          "mapID": 1426,
+          "action": "kill",
+          "entityID": 706,
+          "npc": true,
+          "y": 0.8079999999999999,
+          "objectiveKey": "npc:706",
+          "name": "Frostmane Troll Whelp",
+          "x": 0.27399999999999997,
+          "quantity": 14
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.758,
+          "mapID": 1426,
+          "name": "Grelin Whitebeard",
+          "entityID": 786,
+          "npc": true,
+          "x": 0.25
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 14,
+          "name": "Frostmane Troll Whelp",
+          "entityID": 706
+        }
+      ]
+    },
+    {
+      "questID": 183,
+      "title": "The Boar Hunter",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 3,
+      "minLevel": 1,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.7140000000000001,
+          "mapID": 1426,
+          "name": "Talin Keeneye",
+          "entityID": 714,
+          "npc": true,
+          "x": 0.226
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 708,
+          "mapID": 1426,
+          "entityID": 708,
+          "npc": true,
+          "y": 0.7,
+          "objectiveKey": "npc:708",
+          "name": "Small Crag Boar",
+          "x": 0.218,
+          "quantity": 12
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.7140000000000001,
+          "mapID": 1426,
+          "name": "Talin Keeneye",
+          "entityID": 714,
+          "npc": true,
+          "x": 0.226
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 12,
+          "name": "Small Crag Boar",
+          "entityID": 708
+        }
+      ]
+    },
+    {
+      "questID": 218,
+      "title": "The Stolen Journal",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 5,
+      "minLevel": 1,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "previousQuest": 182,
+      "starts": [
+        {
+          "y": 0.758,
+          "mapID": 1426,
+          "name": "Grelin Whitebeard",
+          "entityID": 786,
+          "npc": true,
+          "x": 0.25
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1426,
+          "action": "collect",
+          "entityID": 808,
+          "npc": true,
+          "y": 0.7979999999999999,
+          "objectiveKey": "item:2004",
+          "name": "Grik'nir the Cold",
+          "x": 0.304,
+          "quantity": 1,
+          "legacyStepKey": "q:1426:npc:808",
+          "itemName": "Grelin Whitebeard's Journal",
+          "itemID": 2004
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.758,
+          "mapID": 1426,
+          "name": "Grelin Whitebeard",
+          "entityID": 786,
+          "npc": true,
+          "x": 0.25
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Grelin Whitebeard's Journal",
+          "itemID": 2004
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Grelin Whitebeard's Journal",
+          "entityID": 2004
+        }
+      ]
+    },
+    {
+      "questID": 233,
+      "title": "Coldridge Valley Mail Delivery",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 3,
+      "minLevel": 1,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisiteAny": [
+        179
+      ],
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "starts": [
+        {
+          "y": 0.7120000000000001,
+          "mapID": 1426,
+          "name": "Sten Stoutarm",
+          "entityID": 658,
+          "npc": true,
+          "x": 0.298
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.7140000000000001,
+          "mapID": 1426,
+          "name": "Talin Keeneye",
+          "entityID": 714,
+          "npc": true,
+          "x": 0.226
+        }
+      ],
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "A Stack of Letters",
+          "entityID": 2187
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 234,
+      "title": "Coldridge Valley Mail Delivery",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 4,
+      "minLevel": 1,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "previousQuest": 233,
+      "starts": [
+        {
+          "y": 0.7140000000000001,
+          "mapID": 1426,
+          "name": "Talin Keeneye",
+          "entityID": 714,
+          "npc": true,
+          "x": 0.226
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.758,
+          "mapID": 1426,
+          "name": "Grelin Whitebeard",
+          "entityID": 786,
+          "npc": true,
+          "x": 0.25
+        }
+      ],
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "A Letter to Grelin Whitebeard",
+          "entityID": 2188
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 282,
+      "title": "Senir's Observations",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 5,
+      "minLevel": 1,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "previousQuest": 218,
+      "prerequisitesUnverified": true,
+      "starts": [
+        {
+          "y": 0.758,
+          "mapID": 1426,
+          "name": "Grelin Whitebeard",
+          "entityID": 786,
+          "npc": true,
+          "x": 0.25
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.718,
+          "mapID": 1426,
+          "name": "Mountaineer Thalos",
+          "entityID": 1965,
+          "npc": true,
+          "x": 0.33399999999999996
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Grelin's Report",
+          "itemID": 2619
+        }
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Grelin's Report",
+          "entityID": 2619
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 287,
+      "title": "Frostmane Hold",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 9,
+      "minLevel": 7,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "previousQuest": 420,
+      "prerequisiteSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "starts": [
+        {
+          "y": 0.5379999999999999,
+          "mapID": 1426,
+          "name": "Senir Whitebeard",
+          "entityID": 1252,
+          "npc": true,
+          "x": 0.466
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 1123,
+          "mapID": 1426,
+          "action": "kill",
+          "entityID": 1123,
+          "npc": true,
+          "y": 0.508,
+          "objectiveKey": "npc:1123",
+          "name": "Frostmane Headhunter",
+          "x": 0.244,
+          "quantity": 5
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.5379999999999999,
+          "mapID": 1426,
+          "name": "Senir Whitebeard",
+          "entityID": 1252,
+          "npc": true,
+          "x": 0.466
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 5,
+          "name": "Frostmane Headhunter",
+          "entityID": 1123
+        }
+      ]
+    },
+    {
+      "questID": 291,
+      "title": "The Reports",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 10,
+      "minLevel": 1,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "previousQuest": 287,
+      "starts": [
+        {
+          "y": 0.5379999999999999,
+          "mapID": 1426,
+          "name": "Senir Whitebeard",
+          "entityID": 1252,
+          "npc": true,
+          "x": 0.466
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.57,
+          "mapID": 1455,
+          "name": "Senator Barin Redstone",
+          "entityID": 1274,
+          "npc": true,
+          "x": 0.39399999999999996
+        }
+      ],
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Senir's Report",
+          "entityID": 2628
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 310,
+      "title": "Bitter Rivals",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 6,
+      "minLevel": 2,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.456,
+          "mapID": 1426,
+          "name": "Marleth Barleybrew",
+          "entityID": 1375,
+          "npc": true,
+          "x": 0.302
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.527,
+          "x": 0.47700000000000004,
+          "name": "Unguarded Thunder Ale Barrel",
+          "entityID": 270,
+          "mapID": 1426
+        }
+      ],
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Barrel of Barleybrew Scalder",
+          "entityID": 2548
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 311,
+      "title": "Return to Marleth",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 7,
+      "minLevel": 2,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "previousQuest": 310,
+      "starts": [
+        {
+          "y": 0.527,
+          "x": 0.47700000000000004,
+          "name": "Guarded Thunder Ale Barrel",
+          "entityID": 269,
+          "mapID": 1426
+        },
+        {
+          "y": 0.527,
+          "x": 0.47700000000000004,
+          "name": "Unguarded Thunder Ale Barrel",
+          "entityID": 270,
+          "mapID": 1426
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.456,
+          "mapID": 1426,
+          "name": "Marleth Barleybrew",
+          "entityID": 1375,
+          "npc": true,
+          "x": 0.302
+        }
+      ],
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Barrel of Thunder Ale",
+          "entityID": 2666
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 312,
+      "title": "Tundra MacGrann's Stolen Stash",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 12,
+      "minLevel": 7,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.516,
+          "mapID": 1426,
+          "name": "Tundra MacGrann",
+          "entityID": 1266,
+          "npc": true,
+          "x": 0.34600000000000003
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1426,
+          "action": "gather",
+          "entityID": 272,
+          "x": 0.3851,
+          "y": 0.5393,
+          "objectiveKey": "item:2667",
+          "itemID": 2667,
+          "quantity": 1,
+          "sourceAreaID": 1,
+          "itemName": "MacGrann's Dried Meats",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "MacGrann's Meat Locker"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.516,
+          "mapID": 1426,
+          "name": "Tundra MacGrann",
+          "entityID": 1266,
+          "npc": true,
+          "x": 0.34600000000000003
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "MacGrann's Dried Meats",
+          "itemID": 2667
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "MacGrann's Dried Meats",
+          "entityID": 2667
+        }
+      ]
+    },
+    {
+      "questID": 313,
+      "title": "The Grizzled Den",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 7,
+      "minLevel": 4,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.484,
+          "mapID": 1426,
+          "name": "Pilot Stonegear",
+          "entityID": 1377,
+          "npc": true,
+          "x": 0.496
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1426,
+          "legacyStepKey": "q:1426:npc:271530",
+          "entityID": 1135,
+          "npc": true,
+          "x": 0.42200000000000004,
+          "y": 0.526,
+          "objectiveKey": "item:2671",
+          "itemID": 2671,
+          "quantity": 8,
+          "name": "Wendigo",
+          "itemName": "Wendigo Mane",
+          "alternativeCount": 8,
+          "action": "collect"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.484,
+          "mapID": 1426,
+          "name": "Pilot Stonegear",
+          "entityID": 1377,
+          "npc": true,
+          "x": 0.496
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 8,
+          "name": "Wendigo Mane",
+          "itemID": 2671
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "name": "Wendigo Mane",
+          "entityID": 2671
+        }
+      ]
+    },
+    {
+      "questID": 314,
+      "title": "Protecting the Herd",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 12,
+      "minLevel": 6,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.498,
+          "mapID": 1426,
+          "name": "Rudra Amberstill",
+          "entityID": 1265,
+          "npc": true,
+          "x": 0.63
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1426,
+          "action": "collect",
+          "entityID": 1388,
+          "npc": true,
+          "y": 0.47,
+          "objectiveKey": "item:3627",
+          "name": "Vagash",
+          "x": 0.62,
+          "quantity": 1,
+          "legacyStepKey": "q:1426:npc:1388",
+          "itemName": "Fang of Vagash",
+          "itemID": 3627
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.498,
+          "mapID": 1426,
+          "name": "Rudra Amberstill",
+          "entityID": 1265,
+          "npc": true,
+          "x": 0.63
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Fang of Vagash",
+          "itemID": 3627
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Fang of Vagash",
+          "entityID": 3627
+        }
+      ]
+    },
+    {
+      "questID": 315,
+      "title": "The Perfect Stout",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 9,
+      "minLevel": 5,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.45799999999999996,
+          "mapID": 1426,
+          "name": "Rejold Barleybrew",
+          "entityID": 1374,
+          "npc": true,
+          "x": 0.302
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1426,
+          "legacyStepKey": "q:1426:npc:1397",
+          "entityID": 1397,
+          "npc": true,
+          "x": 0.402,
+          "y": 0.428,
+          "objectiveKey": "item:2676",
+          "itemID": 2676,
+          "quantity": 6,
+          "name": "Frostmane Seer",
+          "itemName": "Shimmerweed",
+          "alternativeCount": 2,
+          "action": "collect"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.45799999999999996,
+          "mapID": 1426,
+          "name": "Rejold Barleybrew",
+          "entityID": 1374,
+          "npc": true,
+          "x": 0.302
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 6,
+          "name": "Shimmerweed",
+          "itemID": 2676
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 6,
+          "name": "Shimmerweed",
+          "entityID": 2676
+        }
+      ]
+    },
+    {
+      "questID": 317,
+      "title": "Stocking Jetsteam",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 6,
+      "minLevel": 2,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.484,
+          "mapID": 1426,
+          "name": "Pilot Bellowfiz",
+          "entityID": 1378,
+          "npc": true,
+          "x": 0.494
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1426,
+          "legacyStepKey": "q:1426:npc:1125",
+          "entityID": 1125,
+          "npc": true,
+          "x": 0.48,
+          "y": 0.49200000000000005,
+          "objectiveKey": "item:769",
+          "itemID": 769,
+          "quantity": 4,
+          "name": "Crag Boar",
+          "itemName": "Chunk of Boar Meat",
+          "alternativeCount": 6,
+          "action": "collect"
+        },
+        {
+          "sourceObjective": 1,
+          "mapID": 1426,
+          "legacyStepKey": "q:1426:npc:1128",
+          "entityID": 1128,
+          "npc": true,
+          "x": 0.47600000000000003,
+          "y": 0.504,
+          "objectiveKey": "item:6952",
+          "itemID": 6952,
+          "quantity": 2,
+          "name": "Young Black Bear",
+          "itemName": "Thick Bear Fur",
+          "alternativeCount": 3,
+          "action": "collect"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.484,
+          "mapID": 1426,
+          "name": "Pilot Bellowfiz",
+          "entityID": 1378,
+          "npc": true,
+          "x": 0.494
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 4,
+          "name": "Chunk of Boar Meat",
+          "itemID": 769
+        },
+        {
+          "quantity": 2,
+          "name": "Thick Bear Fur",
+          "itemID": 6952
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 4,
+          "name": "Chunk of Boar Meat",
+          "entityID": 769
+        },
+        {
+          "entityType": "item",
+          "quantity": 2,
+          "name": "Thick Bear Fur",
+          "entityID": 6952
+        }
+      ]
+    },
+    {
+      "questID": 318,
+      "title": "Evershine",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 7,
+      "minLevel": 2,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "previousQuest": 317,
+      "starts": [
+        {
+          "y": 0.484,
+          "mapID": 1426,
+          "name": "Pilot Bellowfiz",
+          "entityID": 1378,
+          "npc": true,
+          "x": 0.494
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.45799999999999996,
+          "mapID": 1426,
+          "name": "Rejold Barleybrew",
+          "entityID": 1374,
+          "npc": true,
+          "x": 0.302
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 319,
+      "title": "A Favor for Evershine",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 8,
+      "minLevel": 2,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "previousQuest": 318,
+      "starts": [
+        {
+          "y": 0.45799999999999996,
+          "mapID": 1426,
+          "name": "Rejold Barleybrew",
+          "entityID": 1374,
+          "npc": true,
+          "x": 0.302
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 1127,
+          "mapID": 1426,
+          "entityID": 1127,
+          "npc": true,
+          "y": 0.47200000000000003,
+          "objectiveKey": "npc:1127",
+          "name": "Elder Crag Boar",
+          "x": 0.406,
+          "quantity": 8
+        },
+        {
+          "sourceObjective": 1196,
+          "mapID": 1426,
+          "action": "kill",
+          "entityID": 1196,
+          "npc": true,
+          "y": 0.428,
+          "objectiveKey": "npc:1196",
+          "name": "Ice Claw Bear",
+          "x": 0.38,
+          "quantity": 6
+        },
+        {
+          "sourceObjective": 1201,
+          "mapID": 1426,
+          "action": "kill",
+          "entityID": 1201,
+          "npc": true,
+          "y": 0.366,
+          "objectiveKey": "npc:1201",
+          "name": "Snow Leopard",
+          "x": 0.794,
+          "quantity": 8
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.45799999999999996,
+          "mapID": 1426,
+          "name": "Rejold Barleybrew",
+          "entityID": 1374,
+          "npc": true,
+          "x": 0.302
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 6,
+          "name": "Ice Claw Bear",
+          "entityID": 1196
+        },
+        {
+          "entityType": "npc",
+          "quantity": 8,
+          "name": "Elder Crag Boar",
+          "entityID": 1127
+        },
+        {
+          "entityType": "npc",
+          "quantity": 8,
+          "name": "Snow Leopard",
+          "entityID": 1201
+        }
+      ]
+    },
+    {
+      "questID": 320,
+      "title": "Return to Bellowfiz",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 8,
+      "minLevel": 2,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "previousQuest": 319,
+      "starts": [
+        {
+          "y": 0.45799999999999996,
+          "mapID": 1426,
+          "name": "Rejold Barleybrew",
+          "entityID": 1374,
+          "npc": true,
+          "x": 0.302
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.484,
+          "mapID": 1426,
+          "name": "Pilot Bellowfiz",
+          "entityID": 1378,
+          "npc": true,
+          "x": 0.494
+        }
+      ],
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Cask of Evershine",
+          "entityID": 2696
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 400,
+      "title": "Tools for Steelgrill",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 5,
+      "minLevel": 2,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.516,
+          "mapID": 1426,
+          "name": "Tharek Blackstone",
+          "entityID": 1872,
+          "npc": true,
+          "x": 0.46
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.49,
+          "mapID": 1426,
+          "name": "Beldin Steelgrill",
+          "entityID": 1376,
+          "npc": true,
+          "x": 0.504
+        }
+      ],
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Steelgrill's Tools",
+          "entityID": 2999
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 412,
+      "title": "Operation Recombobulation",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 10,
+      "minLevel": 7,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.49200000000000005,
+          "mapID": 1426,
+          "name": "Razzle Sprysprocket",
+          "entityID": 1269,
+          "npc": true,
+          "x": 0.45799999999999996
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 1,
+          "mapID": 1426,
+          "legacyStepKey": "q:1426:npc:8503",
+          "entityID": 8503,
+          "npc": true,
+          "x": 0.242,
+          "y": 0.436,
+          "objectiveKey": "item:3084",
+          "itemID": 3084,
+          "quantity": 8,
+          "name": "Gibblewilt",
+          "itemName": "Gyromechanic Gear",
+          "alternativeCount": 2,
+          "action": "collect"
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1426,
+          "action": "loot",
+          "entityID": 8503,
+          "npc": true,
+          "y": 0.436,
+          "sourceZone": "Dun Morogh",
+          "objectiveKey": "item:3083",
+          "itemID": 3083,
+          "x": 0.242,
+          "sourceAreaID": 1,
+          "quantity": 8,
+          "itemName": "Restabilization Cog",
+          "name": "Gibblewilt"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.49200000000000005,
+          "mapID": 1426,
+          "name": "Razzle Sprysprocket",
+          "entityID": 1269,
+          "npc": true,
+          "x": 0.45799999999999996
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 8,
+          "name": "Restabilization Cog",
+          "itemID": 3083
+        },
+        {
+          "quantity": 8,
+          "name": "Gyromechanic Gear",
+          "itemID": 3084
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "name": "Restabilization Cog",
+          "entityID": 3083
+        },
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "name": "Gyromechanic Gear",
+          "entityID": 3084
+        }
+      ]
+    },
+    {
+      "questID": 413,
+      "title": "Shimmer Stout",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 10,
+      "minLevel": 8,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "previousQuest": 415,
+      "starts": [
+        {
+          "y": 0.45799999999999996,
+          "mapID": 1426,
+          "name": "Rejold Barleybrew",
+          "entityID": 1374,
+          "npc": true,
+          "x": 0.302
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.488,
+          "mapID": 1426,
+          "name": "Mountaineer Barleybrew",
+          "entityID": 1959,
+          "npc": true,
+          "x": 0.862
+        }
+      ],
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Barrel of Shimmer Stout",
+          "entityID": 3085
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 414,
+      "title": "Stout to Kadrell",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 10,
+      "minLevel": 8,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "previousQuest": 413,
+      "starts": [
+        {
+          "y": 0.488,
+          "mapID": 1426,
+          "name": "Mountaineer Barleybrew",
+          "entityID": 1959,
+          "npc": true,
+          "x": 0.862
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.496,
+          "mapID": 1432,
+          "name": "Mountaineer Kadrell",
+          "entityID": 1340,
+          "npc": true,
+          "x": 0.32799999999999996
+        }
+      ],
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Cask of Shimmer Stout",
+          "entityID": 3086
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 415,
+      "title": "Rejold's New Brew",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 10,
+      "minLevel": 8,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisiteAny": [
+        315
+      ],
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "starts": [
+        {
+          "y": 0.484,
+          "mapID": 1426,
+          "name": "Pilot Bellowfiz",
+          "entityID": 1378,
+          "npc": true,
+          "x": 0.494
+        },
+        {
+          "y": 0.516,
+          "mapID": 1426,
+          "name": "Tharek Blackstone",
+          "entityID": 1872,
+          "npc": true,
+          "x": 0.46
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.45799999999999996,
+          "mapID": 1426,
+          "name": "Rejold Barleybrew",
+          "entityID": 1374,
+          "npc": true,
+          "x": 0.302
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 417,
+      "title": "A Pilot's Revenge",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 11,
+      "minLevel": 8,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "previousQuest": 419,
+      "starts": [
+        {
+          "y": 0.36200000000000004,
+          "x": 0.797,
+          "name": "A Dwarven Corpse",
+          "entityID": 2059,
+          "mapID": 1426
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1426,
+          "action": "collect",
+          "entityID": 1961,
+          "npc": true,
+          "y": 0.368,
+          "objectiveKey": "item:3183",
+          "name": "Mangeclaw",
+          "x": 0.79,
+          "quantity": 1,
+          "legacyStepKey": "q:1426:npc:1961",
+          "itemName": "Mangy Claw",
+          "itemID": 3183
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.392,
+          "mapID": 1426,
+          "name": "Pilot Hammerfoot",
+          "entityID": 1960,
+          "npc": true,
+          "x": 0.838
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Mangy Claw",
+          "itemID": 3183
+        }
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Hildelve's Journal",
+          "entityID": 3117
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Mangy Claw",
+          "entityID": 3183
+        }
+      ]
+    },
+    {
+      "questID": 419,
+      "title": "The Lost Pilot",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 10,
+      "minLevel": 8,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.392,
+          "mapID": 1426,
+          "name": "Pilot Hammerfoot",
+          "entityID": 1960,
+          "npc": true,
+          "x": 0.838
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.36200000000000004,
+          "x": 0.797,
+          "name": "A Dwarven Corpse",
+          "entityID": 2059,
+          "mapID": 1426
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 420,
+      "title": "Senir's Observations",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 5,
+      "minLevel": 1,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "previousQuest": 282,
+      "starts": [
+        {
+          "y": 0.718,
+          "mapID": 1426,
+          "name": "Mountaineer Thalos",
+          "entityID": 1965,
+          "npc": true,
+          "x": 0.33399999999999996
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.5379999999999999,
+          "mapID": 1426,
+          "name": "Senir Whitebeard",
+          "entityID": 1252,
+          "npc": true,
+          "x": 0.466
+        }
+      ],
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Grelin's Report",
+          "entityID": 2619
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 432,
+      "title": "Those Blasted Troggs!",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 9,
+      "minLevel": 5,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.562,
+          "mapID": 1426,
+          "name": "Foreman Stonebrow",
+          "entityID": 1254,
+          "npc": true,
+          "x": 0.69
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 1115,
+          "mapID": 1426,
+          "action": "kill",
+          "entityID": 1115,
+          "npc": true,
+          "y": 0.56,
+          "objectiveKey": "npc:1115",
+          "name": "Rockjaw Skullthumper",
+          "x": 0.708,
+          "quantity": 6
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.562,
+          "mapID": 1426,
+          "name": "Foreman Stonebrow",
+          "entityID": 1254,
+          "npc": true,
+          "x": 0.69
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 6,
+          "name": "Rockjaw Skullthumper",
+          "entityID": 1115
+        }
+      ]
+    },
+    {
+      "questID": 433,
+      "title": "The Public Servant",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 11,
+      "minLevel": 6,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.56,
+          "mapID": 1426,
+          "name": "Senator Mehr Stonehallow",
+          "entityID": 1977,
+          "npc": true,
+          "x": 0.6859999999999999
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 1117,
+          "mapID": 1426,
+          "action": "kill",
+          "entityID": 1117,
+          "npc": true,
+          "y": 0.56,
+          "objectiveKey": "npc:1117",
+          "name": "Rockjaw Bonesnapper",
+          "x": 0.708,
+          "quantity": 10
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.56,
+          "mapID": 1426,
+          "name": "Senator Mehr Stonehallow",
+          "entityID": 1977,
+          "npc": true,
+          "x": 0.6859999999999999
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "name": "Rockjaw Bonesnapper",
+          "entityID": 1117
+        }
+      ]
+    },
+    {
+      "questID": 2160,
+      "title": "Supplies to Tannok",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 5,
+      "minLevel": 1,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.722,
+          "mapID": 1426,
+          "name": "Hands Springsprocket",
+          "entityID": 6782,
+          "npc": true,
+          "x": 0.33799999999999997
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.522,
+          "mapID": 1426,
+          "name": "Tannok Frosthammer",
+          "entityID": 6806,
+          "npc": true,
+          "x": 0.47200000000000003
+        }
+      ],
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Crate of Inn Supplies",
+          "entityID": 7646
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 3361,
+      "title": "A Refugee's Quandary",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 3,
+      "minLevel": 3,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.6759999999999999,
+          "mapID": 1426,
+          "name": "Felix Whindlebolt",
+          "entityID": 8416,
+          "npc": true,
+          "x": 0.284
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1426,
+          "action": "gather",
+          "entityID": 148499,
+          "x": 0.20879999999999999,
+          "y": 0.7606999999999999,
+          "objectiveKey": "item:10438",
+          "itemID": 10438,
+          "quantity": 1,
+          "sourceAreaID": 1,
+          "itemName": "Felix's Box",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Felix's Box"
+        },
+        {
+          "entityType": "object",
+          "mapID": 1426,
+          "action": "gather",
+          "entityID": 178084,
+          "x": 0.2278,
+          "y": 0.8,
+          "objectiveKey": "item:16313",
+          "itemID": 16313,
+          "quantity": 1,
+          "sourceAreaID": 1,
+          "itemName": "Felix's Chest",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Felix's Chest"
+        },
+        {
+          "entityType": "object",
+          "mapID": 1426,
+          "action": "gather",
+          "entityID": 178085,
+          "x": 0.2633,
+          "y": 0.7928000000000001,
+          "objectiveKey": "item:16314",
+          "itemID": 16314,
+          "quantity": 1,
+          "sourceAreaID": 1,
+          "itemName": "Felix's Bucket of Bolts",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Felix's Bucket of Bolts"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.6759999999999999,
+          "mapID": 1426,
+          "name": "Felix Whindlebolt",
+          "entityID": 8416,
+          "npc": true,
+          "x": 0.284
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Felix's Box",
+          "itemID": 10438
+        },
+        {
+          "quantity": 1,
+          "name": "Felix's Chest",
+          "itemID": 16313
+        },
+        {
+          "quantity": 1,
+          "name": "Felix's Bucket of Bolts",
+          "itemID": 16314
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Felix's Box",
+          "entityID": 10438
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Felix's Chest",
+          "entityID": 16313
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Felix's Bucket of Bolts",
+          "entityID": 16314
+        }
+      ]
+    },
+    {
+      "questID": 3364,
+      "title": "Scalding Mornbrew Delivery",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 5,
+      "minLevel": 4,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.758,
+          "mapID": 1426,
+          "name": "Nori Pridedrift",
+          "entityID": 12738,
+          "npc": true,
+          "x": 0.25
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.664,
+          "mapID": 1426,
+          "name": "Durnan Furcutter",
+          "entityID": 836,
+          "npc": true,
+          "x": 0.28800000000000003
+        }
+      ],
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Durnan's Scalding Mornbrew",
+          "entityID": 10439
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 3365,
+      "title": "Bring Back the Mug",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 5,
+      "minLevel": 4,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisiteAny": [
+        3364
+      ],
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "starts": [
+        {
+          "y": 0.664,
+          "mapID": 1426,
+          "name": "Durnan Furcutter",
+          "entityID": 836,
+          "npc": true,
+          "x": 0.28800000000000003
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.758,
+          "mapID": 1426,
+          "name": "Nori Pridedrift",
+          "entityID": 12738,
+          "npc": true,
+          "x": 0.25
+        }
+      ],
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Nori's Mug",
+          "entityID": 10440
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 5541,
+      "title": "Ammo for Rumbleshot",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 6,
+      "minLevel": 5,
+      "side": "Alliance",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.494,
+          "mapID": 1426,
+          "name": "Loslor Rudge",
+          "entityID": 1694,
+          "npc": true,
+          "x": 0.5
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1426,
+          "action": "gather",
+          "entityID": 176785,
+          "x": 0.4413,
+          "y": 0.5695,
+          "objectiveKey": "item:13850",
+          "itemID": 13850,
+          "quantity": 1,
+          "sourceAreaID": 1,
+          "itemName": "Rumbleshot's Ammo",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Ammo Crate"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.65,
+          "mapID": 1426,
+          "name": "Hegnar Rumbleshot",
+          "entityID": 1243,
+          "npc": true,
+          "x": 0.406
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Rumbleshot's Ammo",
+          "itemID": 13850
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Rumbleshot's Ammo",
+          "entityID": 13850
+        }
+      ]
+    },
+    {
+      "questID": 95041,
+      "title": "Data Hoarders",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 10,
+      "minLevel": 7,
+      "side": "Alliance",
+      "raceMask": 4294967373,
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.43799999999999994,
+          "mapID": 1455,
+          "name": "Jemma Quikswitch",
+          "entityID": 11028,
+          "npc": true,
+          "x": 0.6779999999999999
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1426,
+          "action": "gather",
+          "entityID": 629596,
+          "x": 0.261,
+          "y": 0.42,
+          "objectiveKey": "item:267413",
+          "itemID": 267413,
+          "quantity": 7,
+          "sourceAreaID": 1,
+          "itemName": "Gnomeregan Archival Data",
+          "locationSource": "Published Forever beta-delta entity position",
+          "name": "Snowdrift"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.43799999999999994,
+          "mapID": 1455,
+          "name": "Jemma Quikswitch",
+          "entityID": 11028,
+          "npc": true,
+          "x": 0.6779999999999999
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 7,
+          "name": "Gnomeregan Archival Data",
+          "itemID": 267413
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 7,
+          "action": "collect",
+          "entityID": 267413,
+          "name": "Gnomeregan Archival Data"
+        }
+      ]
+    },
+    {
+      "questID": 95212,
+      "title": "Never Saddle on Quality",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 10,
+      "minLevel": 7,
+      "side": "Alliance",
+      "raceMask": 4294967373,
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.498,
+          "mapID": 1426,
+          "name": "Rudra Amberstill",
+          "entityID": 1265,
+          "npc": true,
+          "x": 0.63
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1426,
+          "action": "loot",
+          "entityID": 260157,
+          "npc": true,
+          "y": 0.5539999999999999,
+          "sourceZone": "Dun Morogh",
+          "objectiveKey": "item:267414",
+          "itemID": 267414,
+          "x": 0.754,
+          "sourceAreaID": 1,
+          "quantity": 6,
+          "itemName": "Pristine Leopard Pelt",
+          "name": "Elder Snow Leopard"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.498,
+          "mapID": 1426,
+          "name": "Rudra Amberstill",
+          "entityID": 1265,
+          "npc": true,
+          "x": 0.63
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 6,
+          "name": "Pristine Leopard Pelt",
+          "itemID": 267414
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 6,
+          "action": "collect",
+          "entityID": 267414,
+          "name": "Pristine Leopard Pelt"
+        }
+      ]
+    },
+    {
+      "questID": 95213,
+      "title": "Stolen Blasting Powder",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 10,
+      "minLevel": 7,
+      "side": "Alliance",
+      "raceMask": 4294967373,
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1426,
+          "action": "start-item",
+          "entityID": 1118,
+          "npc": true,
+          "sourceAction": "loot",
+          "x": 0.68,
+          "itemID": 268548,
+          "y": 0.57,
+          "sourceAreaID": 1,
+          "sourceZone": "Dun Morogh",
+          "itemName": "Empty Powder Keg",
+          "name": "Rockjaw Backbreaker"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1426,
+          "action": "loot",
+          "entityID": 1118,
+          "npc": true,
+          "y": 0.57,
+          "sourceZone": "Dun Morogh",
+          "objectiveKey": "item:268548",
+          "itemID": 268548,
+          "x": 0.68,
+          "sourceAreaID": 1,
+          "quantity": 1,
+          "itemName": "Empty Powder Keg",
+          "name": "Rockjaw Backbreaker"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.5479999999999999,
+          "mapID": 1426,
+          "name": "Quarrymaster Thesten",
+          "entityID": 1256,
+          "npc": true,
+          "x": 0.69
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Empty Powder Keg",
+          "itemID": 268548
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 268548,
+          "name": "Empty Powder Keg"
+        }
+      ]
+    },
+    {
+      "questID": 95214,
+      "title": "Stolen Blasting Powder",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 10,
+      "minLevel": 7,
+      "side": "Alliance",
+      "raceMask": 4294967373,
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.5479999999999999,
+          "mapID": 1426,
+          "name": "Quarrymaster Thesten",
+          "entityID": 1256,
+          "npc": true,
+          "x": 0.69
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1426,
+          "action": "loot",
+          "entityID": 1118,
+          "npc": true,
+          "y": 0.57,
+          "sourceZone": "Dun Morogh",
+          "objectiveKey": "item:267415",
+          "itemID": 267415,
+          "x": 0.68,
+          "sourceAreaID": 1,
+          "quantity": 16,
+          "itemName": "Stolen Blasting Powder",
+          "name": "Rockjaw Backbreaker"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.5479999999999999,
+          "mapID": 1426,
+          "name": "Quarrymaster Thesten",
+          "entityID": 1256,
+          "npc": true,
+          "x": 0.69
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 16,
+          "name": "Stolen Blasting Powder",
+          "itemID": 267415
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 16,
+          "action": "collect",
+          "entityID": 267415,
+          "name": "Stolen Blasting Powder"
+        }
+      ]
+    },
+    {
+      "questID": 95217,
+      "title": "The Quarry's Smith",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 10,
+      "minLevel": 7,
+      "side": "Alliance",
+      "raceMask": 4294967373,
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "classMask": 67,
+      "starts": [
+        {
+          "y": 0.5579999999999999,
+          "mapID": 1426,
+          "name": "Frast Dokner",
+          "entityID": 1698,
+          "npc": true,
+          "x": 0.688
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1426,
+          "action": "loot",
+          "entityID": 1689,
+          "npc": true,
+          "x": 0.738,
+          "y": 0.526,
+          "objectiveKey": "item:267416",
+          "itemID": 267416,
+          "quantity": 4,
+          "sourceAreaID": 1,
+          "itemName": "Toughened Boar Hide",
+          "locationSource": "Reviewed Scarred Crag Boar representative: https://www.wowhead.com/forever/npc=1689; captured 2026-10-08; SHA-256 a3aae7ae7dcdade008917ee4edf1b93e22dd9ae5078374cd6d2945e2c9a683c8. Current item 267416 explicitly drops from NPC 1689. Use an actual published spawn at 73.8,52.6; supersedes the converted-baseline representative. Preserve four hides, twelve Copper Bars and the unmapped Copper Bar requirement. Not a surveyed approach.",
+          "name": "Scarred Crag Boar"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.5579999999999999,
+          "mapID": 1426,
+          "name": "Frast Dokner",
+          "entityID": 1698,
+          "npc": true,
+          "x": 0.688
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 12,
+          "name": "Copper Bar",
+          "itemID": 2840
+        },
+        {
+          "quantity": 4,
+          "name": "Toughened Boar Hide",
+          "itemID": 267416
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 12,
+          "action": "collect",
+          "entityID": 2840,
+          "name": "Copper Bar"
+        },
+        {
+          "entityType": "item",
+          "quantity": 4,
+          "action": "collect",
+          "entityID": 267416,
+          "name": "Toughened Boar Hide"
+        }
+      ],
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 12,
+          "action": "collect",
+          "entityID": 2840,
+          "name": "Copper Bar"
+        }
+      ],
+      "objectiveLocationsIncomplete": true
+    },
+    {
+      "questID": 96390,
+      "title": "Nip 'Em in the Bud",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 13,
+      "minLevel": 9,
+      "side": "Alliance",
+      "raceMask": 4294967373,
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "classMask": 0,
+      "previousQuest": 96392,
+      "starts": [
+        {
+          "y": 0.584,
+          "mapID": 1426,
+          "name": "Earthseer Farsen",
+          "entityID": 264936,
+          "npc": true,
+          "x": 0.648
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1426,
+          "action": "kill",
+          "entityID": 6123,
+          "npc": true,
+          "y": 0.5995,
+          "objectiveKey": "npc:6123",
+          "name": "Dark Iron Spy",
+          "sourceAreaID": 1,
+          "x": 0.7691,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "quantity": 10
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.584,
+          "mapID": 1426,
+          "name": "Earthseer Farsen",
+          "entityID": 264936,
+          "npc": true,
+          "x": 0.648
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "action": "kill",
+          "entityID": 6123,
+          "name": "Dark Iron Spy"
+        }
+      ]
+    },
+    {
+      "questID": 96391,
+      "title": "Underground Map",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 15,
+      "minLevel": 9,
+      "side": "Alliance",
+      "raceMask": 4294967373,
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1426,
+          "action": "start-item",
+          "entityID": 6123,
+          "npc": true,
+          "sourceAction": "loot",
+          "x": 0.7691,
+          "itemID": 274268,
+          "y": 0.5995,
+          "sourceAreaID": 1,
+          "itemName": "Dark Iron Map",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Dark Iron Spy"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.584,
+          "mapID": 1426,
+          "name": "Earthseer Farsen",
+          "entityID": 264936,
+          "npc": true,
+          "x": 0.648
+        }
+      ],
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Dark Iron Map",
+          "entityID": 274268
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 96392,
+      "title": "Farsen's Watch",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 13,
+      "minLevel": 9,
+      "side": "Alliance",
+      "raceMask": 4294967373,
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "classMask": 0,
+      "previousQuest": 96408,
+      "starts": [
+        {
+          "y": 0.584,
+          "mapID": 1426,
+          "name": "Earthseer Farsen",
+          "entityID": 264936,
+          "npc": true,
+          "x": 0.648
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 264936,
+          "mapID": 1426,
+          "entityID": 264936,
+          "npc": true,
+          "y": 0.584,
+          "objectiveKey": "npc:264936",
+          "name": "Earthseer Farsen",
+          "x": 0.648,
+          "quantity": 1
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.584,
+          "mapID": 1426,
+          "name": "Earthseer Farsen",
+          "entityID": 264936,
+          "npc": true,
+          "x": 0.648
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Use Farsen's Farsight",
+          "entityID": 264936
+        }
+      ]
+    },
+    {
+      "questID": 96408,
+      "title": "A Visitor to Dun Morogh",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 13,
+      "minLevel": 9,
+      "side": "Alliance",
+      "raceMask": 4294967373,
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.49,
+          "mapID": 1426,
+          "name": "Beldin Steelgrill",
+          "entityID": 1376,
+          "npc": true,
+          "x": 0.504
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.584,
+          "mapID": 1426,
+          "name": "Earthseer Farsen",
+          "entityID": 264936,
+          "npc": true,
+          "x": 0.648
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 98319,
+      "title": "Secure the Mountain",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 8,
+      "minLevel": 4,
+      "side": "Alliance",
+      "raceMask": 4294967373,
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "classMask": 0,
+      "previousQuest": 98322,
+      "starts": [
+        {
+          "y": 0.57,
+          "mapID": 1426,
+          "name": "Mountaineer Gretchen",
+          "entityID": 271546,
+          "npc": true,
+          "x": 0.44
+        }
+      ],
+      "objectives": [
+        {
+          "y": 0.4955,
+          "mapID": 1426,
+          "action": "event",
+          "x": 0.42869999999999997,
+          "locationSource": "Published Forever beta-observation event area",
+          "name": "Secure the Mountain"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.57,
+          "mapID": 1426,
+          "name": "Mountaineer Gretchen",
+          "entityID": 271546,
+          "npc": true,
+          "x": 0.44
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 98321,
+      "title": "Flintfire's Shipment",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 7,
+      "minLevel": 4,
+      "side": "Alliance",
+      "raceMask": 4294967373,
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.52,
+          "mapID": 1426,
+          "name": "Tognus Flintfire",
+          "entityID": 1241,
+          "npc": true,
+          "x": 0.452
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1426,
+          "action": "gather",
+          "entityID": 672508,
+          "x": 0.429,
+          "y": 0.517,
+          "objectiveKey": "item:280413",
+          "itemID": 280413,
+          "quantity": 8,
+          "sourceAreaID": 1,
+          "itemName": "Flintfire's Shipment",
+          "locationSource": "Published Forever beta-delta entity position",
+          "name": "Flintfire's Shipment"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.52,
+          "mapID": 1426,
+          "name": "Tognus Flintfire",
+          "entityID": 1241,
+          "npc": true,
+          "x": 0.452
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 8,
+          "name": "Flintfire's Shipment",
+          "itemID": 280413
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "action": "collect",
+          "entityID": 280413,
+          "name": "Flintfire's Shipment"
+        }
+      ]
+    },
+    {
+      "questID": 98322,
+      "title": "Secure the Mountain",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 8,
+      "minLevel": 4,
+      "side": "Alliance",
+      "raceMask": 4294967373,
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.5379999999999999,
+          "mapID": 1426,
+          "name": "Senir Whitebeard",
+          "entityID": 1252,
+          "npc": true,
+          "x": 0.466
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.57,
+          "mapID": 1426,
+          "name": "Mountaineer Gretchen",
+          "entityID": 271546,
+          "npc": true,
+          "x": 0.44
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 98323,
+      "title": "Secure the Mountain",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 8,
+      "minLevel": 4,
+      "side": "Alliance",
+      "raceMask": 4294967373,
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "classMask": 0,
+      "previousQuest": 98319,
+      "starts": [
+        {
+          "y": 0.57,
+          "mapID": 1426,
+          "name": "Mountaineer Gretchen",
+          "entityID": 271546,
+          "npc": true,
+          "x": 0.44
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.5379999999999999,
+          "mapID": 1426,
+          "name": "Senir Whitebeard",
+          "entityID": 1252,
+          "npc": true,
+          "x": 0.466
+        }
+      ],
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Mountaineer Gretchen's Report",
+          "entityID": 280430
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 98326,
+      "title": "Frosthowl",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 9,
+      "minLevel": 5,
+      "side": "Alliance",
+      "raceMask": 4294967373,
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.446,
+          "mapID": 1426,
+          "name": "Gretta Ganter",
+          "entityID": 8508,
+          "npc": true,
+          "x": 0.314
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1426,
+          "action": "loot",
+          "entityID": 271587,
+          "npc": true,
+          "y": 0.486,
+          "sourceZone": "Dun Morogh",
+          "objectiveKey": "item:280426",
+          "itemID": 280426,
+          "x": 0.396,
+          "sourceAreaID": 1,
+          "quantity": 1,
+          "itemName": "Sack of Fish",
+          "name": "Frosthowl"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.446,
+          "mapID": 1426,
+          "name": "Gretta Ganter",
+          "entityID": 8508,
+          "npc": true,
+          "x": 0.314
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Sack of Fish",
+          "itemID": 280426
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 280426,
+          "name": "Sack of Fish"
+        }
+      ]
+    },
+    {
+      "questID": 98423,
+      "title": "The Treaty of Understanding",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 16,
+      "minLevel": 9,
+      "side": "Alliance",
+      "raceMask": 4294967373,
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "classMask": 0,
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.5579999999999999,
+          "mapID": 1455,
+          "name": "King Magni Bronzebeard",
+          "entityID": 2784,
+          "npc": true,
+          "x": 0.39399999999999996
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Treaty of Understanding",
+          "itemID": 281030
+        }
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Treaty of Understanding",
+          "entityID": 281030
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 99158,
+      "title": "Dawn in the Mountains",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 8,
+      "minLevel": 5,
+      "side": "Alliance",
+      "raceMask": 4294967373,
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.522,
+          "mapID": 1426,
+          "name": "Maxan Anvol",
+          "entityID": 1226,
+          "npc": true,
+          "x": 0.47200000000000003
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.44799999999999995,
+          "mapID": 1426,
+          "name": "Father Gavin",
+          "entityID": 1253,
+          "npc": true,
+          "x": 0.5760000000000001
+        }
+      ],
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Crate of Candles",
+          "entityID": 286355
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 99159,
+      "title": "Finding Warmth",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 8,
+      "minLevel": 5,
+      "side": "Alliance",
+      "raceMask": 4294967373,
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.44799999999999995,
+          "mapID": 1426,
+          "name": "Father Gavin",
+          "entityID": 1253,
+          "npc": true,
+          "x": 0.5760000000000001
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1426,
+          "action": "gather",
+          "entityID": 694934,
+          "x": 0.555,
+          "y": 0.45799999999999996,
+          "objectiveKey": "item:286339",
+          "itemID": 286339,
+          "quantity": 14,
+          "sourceAreaID": 1,
+          "itemName": "Mostly Dry Firewood",
+          "locationSource": "Published Forever beta-delta entity position",
+          "name": "Fallen Log"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.44799999999999995,
+          "mapID": 1426,
+          "name": "Father Gavin",
+          "entityID": 1253,
+          "npc": true,
+          "x": 0.5760000000000001
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 14,
+          "name": "Mostly Dry Firewood",
+          "itemID": 286339
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 14,
+          "action": "collect",
+          "entityID": 286339,
+          "name": "Mostly Dry Firewood"
+        }
+      ]
+    },
+    {
+      "questID": 99160,
+      "title": "Rime's Wrath",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 8,
+      "minLevel": 5,
+      "side": "Alliance",
+      "raceMask": 4294967373,
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.44799999999999995,
+          "mapID": 1426,
+          "name": "Father Gavin",
+          "entityID": 1253,
+          "npc": true,
+          "x": 0.5760000000000001
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1426,
+          "action": "kill",
+          "entityID": 276003,
+          "npc": true,
+          "sourceZone": "Dun Morogh",
+          "objectiveKey": "npc:276003",
+          "name": "Minor Ice Elemental",
+          "sourceAreaID": 1,
+          "y": 0.446,
+          "x": 0.5539999999999999,
+          "quantity": 10
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.44799999999999995,
+          "mapID": 1426,
+          "name": "Father Gavin",
+          "entityID": 1253,
+          "npc": true,
+          "x": 0.5760000000000001
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "action": "kill",
+          "entityID": 276003,
+          "name": "Minor Ice Elemental"
+        }
+      ]
+    },
+    {
+      "questID": 99161,
+      "title": "Rime's Wrath",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 8,
+      "minLevel": 5,
+      "side": "Alliance",
+      "raceMask": 4294967373,
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "classMask": 0,
+      "previousQuest": 99162,
+      "prerequisiteSource": "Tester report: Forever beta Dun Morogh, 2026-10-07; level-7 Alliance dwarf, build 70245, addon 0.8.42. Treacherous Cold is the prerequisite for Rime's Wrath.",
+      "starts": [
+        {
+          "y": 0.44799999999999995,
+          "mapID": 1426,
+          "name": "Father Gavin",
+          "entityID": 1253,
+          "npc": true,
+          "x": 0.5760000000000001
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1426,
+          "action": "loot",
+          "entityID": 276009,
+          "npc": true,
+          "y": 0.428,
+          "sourceZone": "Dun Morogh",
+          "objectiveKey": "item:286325",
+          "itemID": 286325,
+          "x": 0.574,
+          "sourceAreaID": 1,
+          "quantity": 1,
+          "itemName": "Avala's Core",
+          "name": "Avala"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.44799999999999995,
+          "mapID": 1426,
+          "name": "Father Gavin",
+          "entityID": 1253,
+          "npc": true,
+          "x": 0.5760000000000001
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Avala's Core",
+          "itemID": 286325
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 286325,
+          "name": "Avala's Core"
+        }
+      ]
+    },
+    {
+      "questID": 99162,
+      "title": "Treacherous Cold",
+      "zone": "Dun Morogh",
+      "categoryPath": "eastern-kingdoms/dun-morogh",
+      "level": 8,
+      "minLevel": 5,
+      "side": "Alliance",
+      "raceMask": 4294967373,
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.44799999999999995,
+          "mapID": 1426,
+          "name": "Father Gavin",
+          "entityID": 1253,
+          "npc": true,
+          "x": 0.5760000000000001
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1426,
+          "action": "gather",
+          "entityID": 695222,
+          "x": 0.521,
+          "y": 0.44,
+          "objectiveKey": "item:286358",
+          "itemID": 286358,
+          "quantity": 1,
+          "sourceAreaID": 1,
+          "itemName": "Coalbeard's Rifle",
+          "locationSource": "Published Forever beta-delta entity position",
+          "name": "Coalbeard's Rifle"
+        },
+        {
+          "entityType": "object",
+          "mapID": 1426,
+          "action": "gather",
+          "entityID": 695277,
+          "x": 0.532,
+          "y": 0.5870000000000001,
+          "objectiveKey": "item:286360",
+          "itemID": 286360,
+          "quantity": 1,
+          "sourceAreaID": 1,
+          "itemName": "Stoneanvil's Rifle",
+          "locationSource": "Published Forever beta-delta entity position",
+          "name": "Stoneanvil's Rifle"
+        },
+        {
+          "entityType": "object",
+          "mapID": 1426,
+          "action": "gather",
+          "entityID": 695223,
+          "x": 0.599,
+          "y": 0.501,
+          "objectiveKey": "item:286359",
+          "itemID": 286359,
+          "quantity": 1,
+          "sourceAreaID": 1,
+          "itemName": "Sunhammer's Rifle",
+          "locationSource": "Published Forever beta-delta entity position",
+          "name": "Sunhammer's Rifle"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.44799999999999995,
+          "mapID": 1426,
+          "name": "Father Gavin",
+          "entityID": 1253,
+          "npc": true,
+          "x": 0.5760000000000001
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Stoneanvil's Rifle",
+          "itemID": 286360
+        },
+        {
+          "quantity": 1,
+          "name": "Sunhammer's Rifle",
+          "itemID": 286359
+        },
+        {
+          "quantity": 1,
+          "name": "Coalbeard's Rifle",
+          "itemID": 286358
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 286358,
+          "name": "Coalbeard's Rifle"
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 286360,
+          "name": "Stoneanvil's Rifle"
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 286359,
+          "name": "Sunhammer's Rifle"
+        }
+      ]
+    }
+  ]
+}

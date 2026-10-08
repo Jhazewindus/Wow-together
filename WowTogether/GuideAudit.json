@@ -6021,22 +6021,22 @@
         "early-reward": 2,
         "level-work": 5,
         "outside-level-range": 53,
-        "prerequisite": 48,
+        "prerequisite": 49,
         "quest-objective": 8,
         "quest-reward": 29,
         "return-hub": 1,
-        "unlock-loop": 2
+        "unlock-loop": 1
       },
       "reason_review_steps": 62,
       "cross_zone_reason_steps": 4,
-      "flow_alternatives_evaluated": 126,
-      "flow_loop_changes": 4,
+      "flow_alternatives_evaluated": 128,
+      "flow_loop_changes": 3,
       "flow_state_valid": true,
-      "quest_log_peak": 8,
+      "quest_log_peak": 10,
       "quest_reward_only_xp_shortfall": 6700,
-      "uncertain_travel_legs": 25,
-      "estimated_distance_before": 114734.59,
-      "estimated_distance_after": 110182.21
+      "uncertain_travel_legs": 26,
+      "estimated_distance_before": 109958.19,
+      "estimated_distance_after": 108044.93
     },
     {
       "faction": "Alliance",

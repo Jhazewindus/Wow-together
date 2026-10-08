@@ -5,6 +5,15 @@ sessions and beta builds. These are observations from players, not a complete
 quest database. Only supported corrections enter the shipped catalogue. Raw
 exports are not included in the addon ZIP.
 
+## 2026-10-08 — expanded Dun Morogh review after main 0.8.60
+
+[The full-zone review](dun-morogh-2026-10-08/README.md) captures all 55 compiled
+quest IDs, updates one boar work point from current NPC coordinates, and retains
+both Rime identities, tester provenance and Winter Wolf hint safeguards. The
+three source gaps remain open. Complete standard/dwarf comparisons preserve
+151/30 actions and expose compiler tradeoffs for main-developer review. This
+extends, rather than replaces, the earlier selected-source evidence below.
+
 ## 2026-10-08 — Mulgore prerequisites, NPC locations and race coverage
 
 [The Mulgore review](mulgore-2026-10-08/README.md) retains 74 quest IDs, current

@@ -120,12 +120,15 @@ def apply_stage_corrections(records):
             quest['missingRequirements'] = [copy.deepcopy(target)]
             quest['objectiveLocationsIncomplete'] = True
         elif rule['kind'] == 'npc-location':
-            # Replace only a reviewed representative pickup/hand-in point.
-            # Objective work, offer requirements and unresolved facts survive.
+            # Replace only an identified representative point. Work semantics,
+            # offer requirements and unrelated unresolved facts survive.
             for role in rule['roles']:
-                if role not in ('starts', 'ends'):
+                if role not in ('starts', 'ends', 'objectives'):
                     raise ValueError('Unsupported NPC location role: ' + role)
-                points = [p for p in quest.get(role, []) if p.get('entityID') == rule['entityID']]
+                if role == 'objectives' and not rule.get('objectiveKey'):
+                    raise ValueError('Reviewed work location needs an objective identity')
+                points = [p for p in quest.get(role, []) if p.get('entityID') == rule['entityID']
+                          and (role != 'objectives' or p.get('objectiveKey') == rule['objectiveKey'])]
                 if len(points) != 1 or not points[0].get('npc'):
                     raise ValueError('Reviewed NPC identity changed: ' + str(ident))
                 point = points[0]

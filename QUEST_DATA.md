@@ -20,7 +20,7 @@ a scoped run requires a separate output path. Omit `--zone` for the existing
 full-catalogue audit. Add `--require-complete` to return exit status 2 when source
 gaps remain, even when every invariant passes; the report is still written.
 
-The [8 October Dun Morogh review](research/2026-10-08-dun-morogh-review.json)
+The [initial 8 October Dun Morogh review](research/2026-10-08-dun-morogh-review.json)
 retains selected facts, immutable source URLs/hashes and the evidence still
 needed for quests 282, 95217 and 98423. Both chapters pass their invariants:
 151 actions at levels 1–10 and 30 at levels 11–20, with 164 static points checked.
@@ -29,6 +29,14 @@ chain, Quarry item quantities/boar point and Treaty item starter; they do not
 establish the unresolved pickup conditions, a local Copper Bar objective point,
 or the Treaty pickup location. This review makes no shipped-data or routing
 change and does not certify live beta behavior.
+
+The [expanded Dun Morogh review](research/dun-morogh-2026-10-08/README.md), after
+integrating main 0.8.60, captures all 55 compiled quest IDs and refreshes the
+Quarry's Smith's boar work point from current NPC data. Copper Bars, the Treaty
+pickup and Senir's extra offer conditions remain unresolved. Both Rime identities,
+the tester-sourced hand-in gate and Winter Wolf native-veto rules are retained.
+All 151/30 actions remain, but the shared compiler's travel/reward/log tradeoffs
+require review; this data candidate remains part of the draft PR.
 
 The [8 October Durotar review](research/durotar-2026-10-08/README.md) covers
 103 quest IDs across both chapters. Six supported stage corrections close five

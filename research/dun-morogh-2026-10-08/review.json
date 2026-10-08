@@ -1,0 +1,154 @@
+{
+  "date": "2026-10-08",
+  "baseline": {
+    "main": "eec9b995631b1aa036b03e5935663bcebbb16f10",
+    "branch_before": "713a8840b5f357f7a203411028e95cb13e85bcd6",
+    "version": "0.8.60"
+  },
+  "status": "Data/research draft; main-developer compiler coordination required before merging or claiming optimized routing.",
+  "scope": {
+    "compiled_distinct_ids": 55,
+    "standard_actions": [
+      151,
+      30
+    ],
+    "dwarf_actions": [
+      151,
+      30
+    ],
+    "quest_pages_captured": 57,
+    "zone_list_entries": 60,
+    "entity_pages_reviewed": 11
+  },
+  "corrections": [
+    {
+      "questID": 95217,
+      "entityID": 1689,
+      "objectiveKey": "item:267416",
+      "mapID": 1426,
+      "before": [
+        0.7087,
+        0.6135
+      ],
+      "after": [
+        0.738,
+        0.526
+      ],
+      "retained_quantities": {
+        "267416": 4,
+        "2840": 12
+      },
+      "retained_missing_work": [
+        2840
+      ],
+      "source": "https://www.wowhead.com/forever/npc=1689",
+      "provenance": "../../tools/quest_corrections.json"
+    }
+  ],
+  "before": {
+    "missing_location_quest_ids_by_stage": {
+      "a": [
+        98423
+      ],
+      "q": [
+        95217
+      ],
+      "t": []
+    },
+    "unverified_pickup_requirement_quest_ids": [
+      282
+    ],
+    "unverified_objective_quantity_quest_ids": []
+  },
+  "after": {
+    "missing_location_quest_ids_by_stage": {
+      "a": [
+        98423
+      ],
+      "q": [
+        95217
+      ],
+      "t": []
+    },
+    "unverified_pickup_requirement_quest_ids": [
+      282
+    ],
+    "unverified_objective_quantity_quest_ids": []
+  },
+  "validation": {
+    "changed_quest_ids": [
+      95217
+    ],
+    "changed_fields": [
+      "objectives",
+      "stageCorrectionSource"
+    ],
+    "unchanged_datasets": [
+      "questEntities",
+      "worldQuestChecks",
+      "xpBaseline"
+    ],
+    "rime_records_unchanged": [
+      99160,
+      99161,
+      99162
+    ],
+    "lua51_files_compiled": 84,
+    "interface": 16001,
+    "focused_suite": {
+      "tests": 70,
+      "passed": 70
+    },
+    "updated_existing_zone_suite": {
+      "tests": 8,
+      "passed": 8
+    },
+    "full_suite": {
+      "tests": 1493,
+      "passed": 1492,
+      "failed": 1,
+      "seconds": 450.265,
+      "failure": "test_0829.PackedDataTests.test_all_source_fields_match_pre_packing_fingerprints: catalogue",
+      "baseline": "Historical catalogue assertion also fails on main; fingerprint fixture unchanged.",
+      "initial_run": "The initial full run also found the older zone assertion expecting superseded coordinates; that assertion was updated and its eight-test suite passed before this final full rerun."
+    },
+    "full_audit": {
+      "sections": 152,
+      "static_points": 11823,
+      "gap_free_sections": 33,
+      "changed_entries": [
+        "Alliance/Dun Morogh/1-10"
+      ]
+    },
+    "pinned_source_files_verified": 24,
+    "reapplication": "No changes",
+    "native_beta": "Not run; player checklist required"
+  },
+  "route_review": {
+    "standard": "repriced-flow.json",
+    "dwarf": "repriced-dwarf-flow.json",
+    "passes_optimization_guard": false,
+    "candidate_valid_states": 16,
+    "baseline_valid_under_corrected_facts": true,
+    "endpoints_preserved": true,
+    "identical_order_replay_passed": true,
+    "delayed_work_quest_ids": [
+      319,
+      320,
+      412,
+      413,
+      415,
+      417,
+      419,
+      95212
+    ],
+    "other_chapter": "11-20 unchanged"
+  },
+  "shared_code_handoff": {
+    "authored_runtime_modules": [],
+    "issues": [
+      "Corrected work geography triggers unchanged compiler reordering: log peak 8 to 10, uncertain legs 25 to 26 and reduced reward XP before eight quests. Main developer must decide compiler handling before optimized-guide acceptance."
+    ]
+  },
+  "player_checklist": "README.md#player-checklist"
+}

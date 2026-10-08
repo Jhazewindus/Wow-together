@@ -395,5 +395,43 @@
       }
     },
     "source": "Reviewed Mull Thunderhorn location: https://www.wowhead.com/forever/quest=760; captured 2026-10-08; SHA-256 0199cf5c912e558eebcee3330e98e9cd4254f9712695fbfc102a878edc67497f. Quest start/end mapper selects 48.4,60.4, matching the other current cleansing-chain pages; supersedes converted-baseline representative."
+  },
+  {
+    "questID": 95217,
+    "title": "The Quarry's Smith",
+    "stageCorrection": {
+      "kind": "npc-location",
+      "minLevel": 7,
+      "level": 10,
+      "classMask": 67,
+      "requiredItems": [
+        {
+          "quantity": 12,
+          "name": "Copper Bar",
+          "itemID": 2840
+        },
+        {
+          "quantity": 4,
+          "name": "Toughened Boar Hide",
+          "itemID": 267416
+        }
+      ],
+      "entityID": 1689,
+      "roles": [
+        "objectives"
+      ],
+      "objectiveKey": "item:267416",
+      "before": {
+        "mapID": 1426,
+        "x": 0.7087,
+        "y": 0.6135
+      },
+      "after": {
+        "mapID": 1426,
+        "x": 0.738,
+        "y": 0.526
+      }
+    },
+    "source": "Reviewed Scarred Crag Boar representative: https://www.wowhead.com/forever/npc=1689; captured 2026-10-08; SHA-256 a3aae7ae7dcdade008917ee4edf1b93e22dd9ae5078374cd6d2945e2c9a683c8. Current item 267416 explicitly drops from NPC 1689. Use an actual published spawn at 73.8,52.6; supersedes the converted-baseline representative. Preserve four hides, twelve Copper Bars and the unmapped Copper Bar requirement. Not a surveyed approach."
   }
 ]
