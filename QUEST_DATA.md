@@ -465,3 +465,5 @@ alternative from that player's applicable scope; they do not grant completion
 or create manual skips. The accepted version always keeps its actual work.
 Only explicit reviewed relationships qualify; matching quest names alone do not.
 Other baseline exclusivity data is not bulk imported by this release.
+
+The [Durotar 0.8.60 follow-up](research/durotar-2026-10-08/refresh-0.8.60/README.md) retains all six corrections and refreshes the full audit/route comparison. Current sources do not close further gaps. Main-developer coordination remains necessary for ordinary Vile Familiars class-mask versus class-setting semantics, the omitted Need for a Cure Orgrimmar acquisition handoff and full-route reward timing.

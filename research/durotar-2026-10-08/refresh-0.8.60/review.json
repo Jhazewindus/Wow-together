@@ -1,0 +1,146 @@
+{
+  "date": "2026-10-08",
+  "baseline": {
+    "main": "eec9b995631b1aa036b03e5935663bcebbb16f10",
+    "branch_before": "2aa164c44c7fdc0d3d448c1ff4065aca4b15aac6",
+    "version": "0.8.60"
+  },
+  "status": "Refreshed researched data draft; existing corrections retained. Shared eligibility, handoff coverage and routing decisions remain with main developer.",
+  "shipped_data_changes": [],
+  "previous_correction_commit": "2249deb628be5f076842beed80fb240de910dd3e",
+  "source_review": {
+    "pinned_manifest_commit": "e0a6eaa86f181ac99262e34126bcd2ed1a1712d6",
+    "pinned_files_sha256_verified": 24,
+    "previous_quest_pages_sha256_verified": 103,
+    "fresh_priority_quest_pages": 15,
+    "current_category_entries": 65,
+    "category_only_ids": [
+      926,
+      812,
+      813,
+      5843,
+      807,
+      820,
+      810,
+      814
+    ],
+    "secondary_sources": "Prior same-day forum/comment/reference findings remain in parent review; earlier access denials were not bypassed."
+  },
+  "scope": {
+    "compiled_distinct_ids": 103,
+    "actions": [
+      246,
+      85,
+      13,
+      10
+    ],
+    "all_actions_and_endpoints_preserved": true
+  },
+  "before": {
+    "missing_location_quest_ids_by_stage": {
+      "a": [
+        785
+      ],
+      "q": [
+        785,
+        96873,
+        96874,
+        99123
+      ],
+      "t": [
+        785
+      ]
+    },
+    "unverified_pickup_requirement_quest_ids": [
+      787,
+      788,
+      1470,
+      1485,
+      1505,
+      1516,
+      1519,
+      1859,
+      1884,
+      2380,
+      2983,
+      2985,
+      5654,
+      5660,
+      6067,
+      6069
+    ]
+  },
+  "after": {
+    "missing_location_quest_ids_by_stage": {
+      "a": [
+        785
+      ],
+      "q": [
+        785,
+        96873,
+        96874,
+        99123
+      ],
+      "t": [
+        785
+      ]
+    },
+    "unverified_pickup_requirement_quest_ids": [
+      787,
+      788,
+      1470,
+      1485,
+      1505,
+      1516,
+      1519,
+      1859,
+      1884,
+      2380,
+      2983,
+      2985,
+      5654,
+      5660,
+      6067,
+      6069
+    ]
+  },
+  "route_review": {
+    "passes_optimization_guard": false,
+    "candidate_valid_states": 16,
+    "baseline_valid_under_corrected_facts": true,
+    "comparison": "repriced-flow.json",
+    "baseline_catalogue_commit": "e61c267b22bd3a5946f9e0d1074fa8127b551285",
+    "runtime": "Same current 0.8.60 modules in both captures",
+    "note": "Historical pre-correction order recompiled with current code, then both complete orders repriced with corrected facts. Default host geography only."
+  },
+  "shared_code_handoff": [
+    {
+      "questID": 792,
+      "issue": "Converted-baseline requiredClasses1247 conflicts with current Forever reqclass0 and ordinary-quest setting behavior. Direct mask import hides ordinary quest with Include class quests off. Resolve current beta eligibility and classification before a shared change; no mask or engine change here."
+    },
+    {
+      "questID": 812,
+      "issue": "Durotar pickup omitted because mapped work is only in Orgrimmar under LevelingGuides.lua localWork. Current page813 rewards required antidote but repeatable quests remain excluded. Coordinate useful cross-zone pickup/acquisition handoff without blanket repeatable inclusion."
+    },
+    {
+      "issue": "Existing full-route guards still fail on reward timing and uncertain later-chapter legs; do not claim optimized route."
+    }
+  ],
+  "validation": {
+    "full_suite": {
+      "tests": 1493,
+      "passed": 1492,
+      "failed": 1,
+      "failure": "Known historical test_0829 catalogue fingerprint mismatch; fixture unchanged.",
+      "scope": "Combined guide branch and inherited main0.8.60, run before this documentation-only refresh."
+    },
+    "targeted_durotar_suite": {
+      "tests": 11,
+      "passed": 11
+    },
+    "lua51_files_compiled": 84,
+    "interface": 16001,
+    "native_beta": "Not run; player checklist required"
+  },
+  "player_checklist": "README.md#player-checklist"
+}

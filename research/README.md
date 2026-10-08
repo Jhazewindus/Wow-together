@@ -185,3 +185,5 @@ See `TRAVEL_DATA.md`, `TravelData.json` and the MIT attribution. Our own segment
 checks reject hostile crossings, including local map previews and flight access.
 Use existing graph alternatives only; retain markers/progress and show a caution
 if no bypass is known. No terrain mesh or new road connections are fabricated.
+
+Durotar was rechecked against inherited main 0.8.60 in [the follow-up review](durotar-2026-10-08/refresh-0.8.60/README.md). Its existing corrections and gaps remain; new coordination findings cover ordinary Vile Familiars class eligibility and the omitted Need for a Cure cross-zone acquisition handoff.

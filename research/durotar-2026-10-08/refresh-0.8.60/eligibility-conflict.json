@@ -1,0 +1,10 @@
+{
+  "questID": 792,
+  "current_class_mask": 0,
+  "setting_off_current_enabled": true,
+  "setting_off_imported_mask_enabled": false,
+  "imported_class_mask": 1247,
+  "warlock_mask_bit": 256,
+  "mask_excludes_warlock": true,
+  "identity_runtime_note": "Host has no bit library in this isolated probe; class-mask arithmetic is a literal source comparison, not a native eligibility test."
+}

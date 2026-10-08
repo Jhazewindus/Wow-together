@@ -1,0 +1,438 @@
+{
+  "manifest_commit": "e0a6eaa86f181ac99262e34126bcd2ed1a1712d6",
+  "verified_files": 24,
+  "quests": {
+    "788": {
+      "name": "Cutting Teeth",
+      "startedBy": {
+        "1": {
+          "1": 3143
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 3143
+        }
+      },
+      "requiredLevel": 1,
+      "questLevel": 2,
+      "requiredRaces": 8589934770,
+      "objectives": {
+        "1": {
+          "1": {
+            "1": 3098
+          }
+        }
+      },
+      "zoneOrSort": 363,
+      "questFlags": 8,
+      "_identityName": "Cutting Teeth",
+      "preQuestSingle": {}
+    },
+    "789": {
+      "name": "Sting of the Scorpid",
+      "startedBy": {
+        "1": {
+          "1": 3143
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 3143
+        }
+      },
+      "requiredLevel": 1,
+      "questLevel": 3,
+      "requiredRaces": 8589934770,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 4862
+          }
+        }
+      },
+      "preQuestSingle": {
+        "1": 788
+      },
+      "zoneOrSort": 363,
+      "questFlags": 8
+    },
+    "792": {
+      "name": "Vile Familiars",
+      "startedBy": {
+        "1": {
+          "1": 3145
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 3145
+        }
+      },
+      "requiredLevel": 2,
+      "questLevel": 4,
+      "requiredRaces": 8589934770,
+      "requiredClasses": 1247,
+      "objectives": {
+        "1": {
+          "1": {
+            "1": 3101
+          }
+        }
+      },
+      "zoneOrSort": 363,
+      "questFlags": 8
+    },
+    "794": {
+      "name": "Burning Blade Medallion",
+      "startedBy": {
+        "1": {
+          "1": 3145
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 3145
+        }
+      },
+      "requiredLevel": 1,
+      "questLevel": 5,
+      "requiredRaces": 8589934770,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 4859
+          }
+        }
+      },
+      "preQuestSingle": {
+        "1": 792,
+        "2": 1499
+      },
+      "zoneOrSort": 363,
+      "questFlags": 8
+    },
+    "1499": {
+      "name": "Vile Familiars",
+      "startedBy": {
+        "1": {
+          "1": 5765
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 3145
+        }
+      },
+      "requiredLevel": 1,
+      "questLevel": 4,
+      "requiredRaces": 8589934770,
+      "requiredClasses": 256,
+      "preQuestSingle": {
+        "1": 1470,
+        "2": 1485
+      },
+      "zoneOrSort": -61,
+      "questFlags": 8,
+      "_identityName": "Vile Familiars"
+    },
+    "4402": {
+      "name": "Galgar's Cactus Apple Surprise",
+      "startedBy": {
+        "1": {
+          "1": 9796
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 9796
+        }
+      },
+      "requiredLevel": 1,
+      "questLevel": 3,
+      "requiredRaces": 8589934770,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 11583
+          }
+        }
+      },
+      "preQuestSingle": {
+        "1": 788
+      },
+      "zoneOrSort": 363,
+      "questFlags": 8
+    },
+    "5441": {
+      "name": "Lazy Peons",
+      "startedBy": {
+        "1": {
+          "1": 11378
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 11378
+        }
+      },
+      "requiredLevel": 3,
+      "questLevel": 4,
+      "requiredRaces": 8589934770,
+      "objectives": {
+        "1": {
+          "1": {
+            "1": 10556,
+            "2": null,
+            "3": "action:interact"
+          }
+        }
+      },
+      "sourceItemId": 16114,
+      "zoneOrSort": 363,
+      "_identityName": "Lazy Peons"
+    },
+    "787": {
+      "name": "The New Horde",
+      "startedBy": {
+        "1": {
+          "1": 3144
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 3143
+        }
+      },
+      "requiredLevel": 1,
+      "questLevel": 1,
+      "requiredRaces": 8589934770,
+      "zoneOrSort": 363,
+      "questFlags": 8
+    },
+    "785": {},
+    "96873": {
+      "_identityName": "A Pain in the Neck",
+      "name": "A Pain in the Neck",
+      "startedBy": {
+        "1": {
+          "1": 266881
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 266881
+        }
+      },
+      "requiredLevel": 5,
+      "questLevel": 8,
+      "requiredRaces": 8589934770,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 247884
+          }
+        }
+      },
+      "zoneOrSort": 14
+    },
+    "96874": {
+      "_identityName": "This Is Spinal Axe",
+      "name": "This Is Spinal Axe",
+      "startedBy": {
+        "1": {
+          "1": 10266
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 10266
+        }
+      },
+      "requiredLevel": 6,
+      "questLevel": 10,
+      "requiredRaces": 8589934770,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 275719
+          },
+          "2": {
+            "1": 3470
+          }
+        }
+      },
+      "zoneOrSort": 14
+    },
+    "99123": {
+      "_identityName": "Lost in the Shadows",
+      "name": "Lost in the Shadows",
+      "startedBy": {
+        "1": {
+          "1": 275811
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 3304
+        }
+      },
+      "requiredLevel": 4,
+      "questLevel": 8,
+      "requiredRaces": 8589934770,
+      "zoneOrSort": 14
+    }
+  },
+  "field_source_tiers": {
+    "788": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "_identityName": "converted-baseline",
+      "preQuestSingle": "converted-baseline"
+    },
+    "789": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline"
+    },
+    "792": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "requiredClasses": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline"
+    },
+    "794": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline"
+    },
+    "1499": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "requiredClasses": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "_identityName": "converted-baseline"
+    },
+    "4402": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline"
+    },
+    "5441": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "_identityName": "converted-baseline"
+    },
+    "787": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline"
+    },
+    "785": {},
+    "96873": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "objectives": "beta-observation",
+      "zoneOrSort": "beta-delta"
+    },
+    "96874": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-delta",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "objectives": "beta-delta",
+      "zoneOrSort": "beta-delta"
+    },
+    "99123": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "zoneOrSort": "beta-delta"
+    }
+  }
+}

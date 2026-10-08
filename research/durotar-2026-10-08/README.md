@@ -1,5 +1,7 @@
 # Durotar data review — 8 October 2026
 
+See the [0.8.60 follow-up](refresh-0.8.60/README.md) for refreshed source checks, unchanged gaps and additional shared eligibility/handoff findings.
+
 Baseline refreshed from main `67ff36412ede50154ec3a8b2aecb148e72ffb568`
 (0.8.59), continuing `guides/coverage` after `e61c267`. The global baseline is
 152 sections across 44 areas, with 33 sections having no recorded source gaps.

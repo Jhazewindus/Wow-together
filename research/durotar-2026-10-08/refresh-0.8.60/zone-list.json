@@ -1,0 +1,686 @@
+{
+  "url": "https://www.wowhead.com/forever/quests/kalimdor/durotar",
+  "captured": "2026-10-08",
+  "sha256": "62b53c1acdfec697b800e25947eb2eecfc9d86b477cb73205d3305bd68c0b5f6",
+  "quests": [
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 99052,
+      "level": 12,
+      "name": "Threat from Below",
+      "reqlevel": 10,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 99049,
+      "level": 11,
+      "name": "Threat from Below",
+      "reqlevel": 9,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 96822,
+      "level": 6,
+      "name": "For Honor",
+      "reqlevel": 3,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 96875,
+      "level": 10,
+      "name": "Beasts of Thunder Ridge",
+      "reqlevel": 6,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 96877,
+      "level": 12,
+      "name": "Halikor's Hoof",
+      "reqlevel": 6,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 96873,
+      "level": 8,
+      "name": "A Pain in the Neck",
+      "reqlevel": 5,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 99048,
+      "level": 11,
+      "name": "A Missing Hand",
+      "reqlevel": 9,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 924,
+      "level": 14,
+      "name": "The Demon Seed",
+      "reqlevel": 9,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 99051,
+      "level": 11,
+      "name": "Threat from Below",
+      "reqlevel": 9,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 96876,
+      "level": 8,
+      "name": "Ukor's Lost Pack",
+      "reqlevel": 5,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 827,
+      "level": 12,
+      "name": "Skull Rock",
+      "reqlevel": 4,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 97282,
+      "level": 11,
+      "name": "Stormy Potential",
+      "reqlevel": 7,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 97281,
+      "level": 11,
+      "name": "A Simmering Storm",
+      "reqlevel": 7,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 99123,
+      "level": 8,
+      "name": "Lost in the Shadows",
+      "reqlevel": 4,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 97223,
+      "level": 8,
+      "name": "Bloodtalon Matriarch",
+      "reqlevel": 5,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 96874,
+      "level": 10,
+      "name": "This Is Spinal Axe",
+      "reqlevel": 6,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 830,
+      "level": 7,
+      "name": "The Admiral's Orders",
+      "reqlevel": 1,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 96821,
+      "level": 6,
+      "name": "Legging It",
+      "reqlevel": 1,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 97279,
+      "level": 2,
+      "name": "Wayward Weapons",
+      "reqlevel": 1,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 794,
+      "level": 5,
+      "name": "Burning Blade Medallion",
+      "reqlevel": 1,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 791,
+      "level": 7,
+      "name": "Carry Your Weight",
+      "reqlevel": 4,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 97225,
+      "level": 9,
+      "name": "Forgotten Loa Idols",
+      "reqlevel": 4,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 828,
+      "level": 12,
+      "name": "Margoz",
+      "reqlevel": 4,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 832,
+      "level": 12,
+      "name": "Burning Shadows",
+      "reqlevel": 4,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 829,
+      "level": 12,
+      "name": "Neeru Fireblade",
+      "reqlevel": 4,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 806,
+      "level": 12,
+      "name": "Dark Storms",
+      "reqlevel": 4,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 788,
+      "level": 2,
+      "name": "Cutting Teeth",
+      "reqlevel": 1,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 835,
+      "level": 11,
+      "name": "Securing the Lines",
+      "reqlevel": 7,
+      "side": 3
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 96825,
+      "level": 6,
+      "name": "This Fruit Could Bite Back",
+      "reqlevel": 3,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 926,
+      "level": 14,
+      "name": "Flawed Power Stone",
+      "reqlevel": 1,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 831,
+      "level": 7,
+      "name": "The Admiral's Orders",
+      "reqlevel": 1,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 809,
+      "level": 13,
+      "name": "Ak'Zeloth",
+      "reqlevel": 4,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 825,
+      "level": 8,
+      "name": "From The Wreckage....",
+      "reqlevel": 3,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 816,
+      "level": 11,
+      "name": "Lost But Not Forgotten",
+      "reqlevel": 8,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 812,
+      "level": 9,
+      "name": "Need for a Cure",
+      "reqlevel": 7,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 815,
+      "level": 8,
+      "name": "Break a Few Eggs",
+      "reqlevel": 6,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 6394,
+      "level": 4,
+      "name": "Thazz'ril's Pick",
+      "reqlevel": 3,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 792,
+      "level": 4,
+      "name": "Vile Familiars",
+      "reqlevel": 2,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 818,
+      "level": 7,
+      "name": "A Solvent Spirit",
+      "reqlevel": 5,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 786,
+      "level": 8,
+      "name": "Thwarting Kolkar Aggression",
+      "reqlevel": 5,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 4402,
+      "level": 3,
+      "name": "Galgar's Cactus Apple Surprise",
+      "reqlevel": 1,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 784,
+      "level": 7,
+      "name": "Vanquish the Betrayers",
+      "reqlevel": 3,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 834,
+      "level": 9,
+      "name": "Winds in the Desert",
+      "reqlevel": 7,
+      "side": 3
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 805,
+      "level": 5,
+      "name": "Report to Sen'jin Village",
+      "reqlevel": 1,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 790,
+      "level": 5,
+      "name": "Sarkoth",
+      "reqlevel": 1,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 808,
+      "level": 9,
+      "name": "Minshina's Skull",
+      "reqlevel": 4,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 840,
+      "level": 12,
+      "name": "Conscript of the Horde",
+      "reqlevel": 10,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 789,
+      "level": 3,
+      "name": "Sting of the Scorpid",
+      "reqlevel": 1,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 4641,
+      "level": 1,
+      "name": "Your Place in the World",
+      "reqlevel": 1,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 823,
+      "level": 7,
+      "name": "Report to Orgnil",
+      "reqlevel": 4,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 837,
+      "level": 10,
+      "name": "Encroachment",
+      "reqlevel": 6,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 842,
+      "level": 12,
+      "name": "Crossroads Conscription",
+      "reqlevel": 10,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 826,
+      "level": 10,
+      "name": "Zalazane",
+      "reqlevel": 4,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 804,
+      "level": 5,
+      "name": "Sarkoth",
+      "reqlevel": 1,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 5441,
+      "level": 4,
+      "name": "Lazy Peons",
+      "reqlevel": 3,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 813,
+      "level": 9,
+      "name": "Finding the Antidote",
+      "reqlevel": 7,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 2161,
+      "level": 5,
+      "name": "A Peon's Burden",
+      "reqlevel": 1,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 787,
+      "level": 1,
+      "name": "The New Horde",
+      "reqlevel": 1,
+      "side": 0
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 817,
+      "level": 8,
+      "name": "Practical Prey",
+      "reqlevel": 5,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 785,
+      "level": 8,
+      "name": "A Strategic Alliance",
+      "reqlevel": 5,
+      "side": 0
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 5843,
+      "level": 1,
+      "name": "Welcome!",
+      "reqlevel": 1,
+      "side": 2
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 807,
+      "level": 11,
+      "name": "<UNUSED>",
+      "reqlevel": 4,
+      "side": 0
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 820,
+      "level": 9,
+      "name": "<UNUSED>",
+      "reqlevel": 5,
+      "side": 0
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 810,
+      "level": 5,
+      "name": "<UNUSED>",
+      "reqlevel": 4,
+      "side": 0
+    },
+    {
+      "category": 14,
+      "category2": 1,
+      "id": 814,
+      "level": 6,
+      "name": "<UNUSED>",
+      "reqlevel": 4,
+      "side": 0
+    }
+  ],
+  "category_only_records": [
+    {
+      "questID": 926,
+      "compiled": false,
+      "catalogue_fields": {
+        "level": 14,
+        "title": "Flawed Power Stone",
+        "minLevel": 1,
+        "categoryPath": "kalimdor/durotar"
+      },
+      "reason": "Repeatable; retain existing ordinary-guide exclusion"
+    },
+    {
+      "questID": 812,
+      "compiled": false,
+      "catalogue_fields": {
+        "zone": "Durotar",
+        "level": 9,
+        "title": "Need for a Cure",
+        "minLevel": 7,
+        "categoryPath": "kalimdor/durotar"
+      },
+      "reason": "Remote-only mapped Orgrimmar work excluded by shared localWork rule; useful handoff requires coordinated coverage decision"
+    },
+    {
+      "questID": 813,
+      "compiled": false,
+      "catalogue_fields": {
+        "level": 9,
+        "title": "Finding the Antidote",
+        "minLevel": 7,
+        "categoryPath": "kalimdor/durotar"
+      },
+      "reason": "Repeatable; retain existing ordinary-guide exclusion"
+    },
+    {
+      "questID": 5843,
+      "compiled": false,
+      "catalogue_fields": {
+        "zone": "Durotar",
+        "level": 1,
+        "title": "Welcome!",
+        "minLevel": 1,
+        "levelingExcluded": "Collector's Edition reward",
+        "categoryPath": "kalimdor/durotar"
+      },
+      "reason": "Edition-only"
+    },
+    {
+      "questID": 807,
+      "compiled": false,
+      "catalogue_fields": {
+        "level": 11,
+        "title": "<UNUSED>",
+        "minLevel": 4,
+        "categoryPath": "kalimdor/durotar"
+      },
+      "reason": "Placeholder"
+    },
+    {
+      "questID": 820,
+      "compiled": false,
+      "catalogue_fields": {
+        "level": 9,
+        "minLevel": 5,
+        "title": "<UNUSED>",
+        "categoryPath": "kalimdor/durotar"
+      },
+      "reason": "Placeholder"
+    },
+    {
+      "questID": 810,
+      "compiled": false,
+      "catalogue_fields": {
+        "level": 5,
+        "minLevel": 4,
+        "title": "<UNUSED>",
+        "categoryPath": "kalimdor/durotar"
+      },
+      "reason": "Placeholder"
+    },
+    {
+      "questID": 814,
+      "compiled": false,
+      "catalogue_fields": {
+        "level": 6,
+        "minLevel": 4,
+        "title": "<UNUSED>",
+        "categoryPath": "kalimdor/durotar"
+      },
+      "reason": "Placeholder"
+    }
+  ],
+  "compiled_distinct_ids": 103
+}
