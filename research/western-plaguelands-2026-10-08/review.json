@@ -1,0 +1,88 @@
+{
+  "zone": "Western Plaguelands",
+  "date": "2026-10-08",
+  "addon": "0.8.61",
+  "baseline_commit": "95e18355099d8517802e0eac4a22f6d26d6b227a",
+  "main_commit": "09155ca265278572649a3529b8ce7ea1b4eb8431",
+  "changed_quest_ids": [
+    4986,
+    4987,
+    5051,
+    5149,
+    5223,
+    5232,
+    5234,
+    5236,
+    5464,
+    5465,
+    5514,
+    5538,
+    5861,
+    8416
+  ],
+  "direct_category_records": 92,
+  "compiled_distinct_quest_ids": 96,
+  "full_audit_actions_preserved": {
+    "Horde": 197,
+    "Alliance": 210
+  },
+  "host_identity_variants": {
+    "Horde_warlock": 197,
+    "Alliance_warlock": 204,
+    "Alliance_paladin": 210
+  },
+  "gap_counts_before_after": {
+    "pickup": [
+      1,
+      1
+    ],
+    "objective": [
+      23,
+      11
+    ],
+    "handin": [
+      0,
+      0
+    ],
+    "uncertain_pickup": [
+      16,
+      16
+    ],
+    "unknown_count": [
+      1,
+      1
+    ]
+  },
+  "global_totals": {
+    "sections": 152,
+    "points": 11834,
+    "recorded_gap_free": 33,
+    "unresolved_ordinary_records": 377
+  },
+  "validation": {
+    "focused_tests": 9,
+    "zone_tests": 85,
+    "transport_class_offer_session_tests": 122,
+    "import_source_tests": 49,
+    "lua51_files": 86,
+    "interface": 16001,
+    "strict_candidate_states_valid": 16,
+    "wpl_guard": "REVIEW REQUIRED (individual reward delays and Alliance peak log 7 -> 8)",
+    "epl_guard": "PASS (unchanged complete orders and same-facts metrics)",
+    "native_beta_tested": false,
+    "full_suite": "Previous eight-zone baseline 1562/1563; historical catalogue fingerprint failure unchanged. Relevant targeted checks only for this review."
+  },
+  "remaining_unknowns": [
+    "Scholomance Menethil object pickup; no supported instance coordinate.",
+    "Charm/doll assembly work, chromatic instance materials, mantle-token areas, Scarlet illusion/termite release work.",
+    "Sixteen pickup conditions and Last Barov objective count; explicit rep thresholds retained as source facts.",
+    "Current native beta offers, safe approaches, class/race variants and actual unlocked transports."
+  ],
+  "shared_coordination": [
+    "Empty-prerequisite/optional-breadcrumb published facts conflict with required OR faction introductions; proposal unapplied to preserve existing guide behavior pending optional-handoff representation.",
+    "Alliance quest-log peak increases and rewards arrive later before three Horde / eleven Alliance quest IDs.",
+    "Mold handoffs require 15 gold; generic routine step preparation/cost support is not implemented.",
+    "Scope review for Alliance Last Barov and Ras Frostwhisper introductions/onward chains."
+  ],
+  "shared_runtime_modules_authored": false
+}

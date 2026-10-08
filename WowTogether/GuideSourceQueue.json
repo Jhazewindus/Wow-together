@@ -1,6 +1,6 @@
 {
   "source_data_complete": false,
-  "remaining_quest_records": 388,
+  "remaining_quest_records": 377,
   "limitations": [
     "This queue identifies missing facts, not a license to invent them",
     "Source capture must respect access policy and stop after denials",
@@ -2055,38 +2055,6 @@
       ]
     },
     {
-      "questID": 4986,
-      "title": "Glyphed Oaken Branch",
-      "guides": [
-        "Alliance / Western Plaguelands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=4986",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=12663",
-        "https://www.wowhead.com/forever/npc=4217",
-        "https://www.wowhead.com/forever/npc=10739"
-      ]
-    },
-    {
-      "questID": 4987,
-      "title": "Glyphed Oaken Branch",
-      "guides": [
-        "Horde / Western Plaguelands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=4987",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=12663",
-        "https://www.wowhead.com/forever/npc=5770",
-        "https://www.wowhead.com/forever/npc=10739"
-      ]
-    },
-    {
       "questID": 5050,
       "title": "Good Luck Charm",
       "guides": [
@@ -2334,70 +2302,6 @@
       ]
     },
     {
-      "questID": 5223,
-      "title": "Return to Chillwind Camp",
-      "guides": [
-        "Alliance / Western Plaguelands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5223",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=13192",
-        "https://www.wowhead.com/forever/npc=11053",
-        "https://www.wowhead.com/forever/object=176393"
-      ]
-    },
-    {
-      "questID": 5232,
-      "title": "Return to the Bulwark",
-      "guides": [
-        "Horde / Western Plaguelands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5232",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=13191",
-        "https://www.wowhead.com/forever/npc=11055",
-        "https://www.wowhead.com/forever/object=177289"
-      ]
-    },
-    {
-      "questID": 5234,
-      "title": "Return to the Bulwark",
-      "guides": [
-        "Horde / Western Plaguelands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5234",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=13192",
-        "https://www.wowhead.com/forever/npc=11055",
-        "https://www.wowhead.com/forever/object=176393"
-      ]
-    },
-    {
-      "questID": 5236,
-      "title": "Return to the Bulwark",
-      "guides": [
-        "Horde / Western Plaguelands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5236",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=13193",
-        "https://www.wowhead.com/forever/npc=11055",
-        "https://www.wowhead.com/forever/object=176392"
-      ]
-    },
-    {
       "questID": 5244,
       "title": "The Ruins of Kel'Theril",
       "guides": [
@@ -2598,32 +2502,12 @@
         "Horde / Western Plaguelands"
       ],
       "needs": [
-        "objective area",
         "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=5464",
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=11036",
         "https://www.wowhead.com/forever/object=176631"
-      ]
-    },
-    {
-      "questID": 5465,
-      "title": "Soulbound Keepsake",
-      "guides": [
-        "Alliance / Eastern Plaguelands",
-        "Alliance / Western Plaguelands",
-        "Horde / Eastern Plaguelands",
-        "Horde / Western Plaguelands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5465",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=13624",
-        "https://www.wowhead.com/forever/npc=11036",
-        "https://www.wowhead.com/forever/npc=11286"
       ]
     },
     {
@@ -2691,22 +2575,6 @@
       ]
     },
     {
-      "questID": 5514,
-      "title": "Mold Rhymes With...",
-      "guides": [
-        "Horde / Western Plaguelands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5514",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=14628",
-        "https://www.wowhead.com/forever/npc=5411",
-        "https://www.wowhead.com/forever/npc=11057"
-      ]
-    },
-    {
       "questID": 5517,
       "title": "Chromatic Mantle of the Dawn",
       "guides": [
@@ -2753,22 +2621,6 @@
       "entity_urls": [
         "https://www.wowhead.com/forever/item=12844",
         "https://www.wowhead.com/forever/npc=10856"
-      ]
-    },
-    {
-      "questID": 5538,
-      "title": "Mold Rhymes With...",
-      "guides": [
-        "Alliance / Western Plaguelands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5538",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=14628",
-        "https://www.wowhead.com/forever/npc=5411",
-        "https://www.wowhead.com/forever/npc=11056"
       ]
     },
     {
@@ -2892,25 +2744,6 @@
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=4606",
         "https://www.wowhead.com/forever/npc=11407"
-      ]
-    },
-    {
-      "questID": 5861,
-      "title": "Find Myranda",
-      "guides": [
-        "Alliance / Eastern Plaguelands",
-        "Alliance / Western Plaguelands",
-        "Horde / Eastern Plaguelands",
-        "Horde / Western Plaguelands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5861",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=14872",
-        "https://www.wowhead.com/forever/npc=1855",
-        "https://www.wowhead.com/forever/npc=11872"
       ]
     },
     {
@@ -3750,22 +3583,6 @@
       "quest_url": "https://www.wowhead.com/forever/quest=8352",
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=15306"
-      ]
-    },
-    {
-      "questID": 8416,
-      "title": "Inert Scourgestones",
-      "guides": [
-        "Alliance / Western Plaguelands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8416",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=20612",
-        "https://www.wowhead.com/forever/npc=1854",
-        "https://www.wowhead.com/forever/npc=10838"
       ]
     },
     {

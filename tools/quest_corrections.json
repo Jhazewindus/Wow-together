@@ -3178,5 +3178,620 @@
         ]
       }
     }
+  },
+  {
+    "questID": 4986,
+    "title": "Glyphed Oaken Branch",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied item delivery; retain actual hand-in item/count, faction/class identity and preceding hand-in. No independent work removed. Exact sourceItemId 12663 and giver/receiver joins, verified 24 hashes 2026-10-08; converted-baseline; research/western-plaguelands-2026-10-08.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 51,
+      "level": 56,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Glyphed Oaken Branch",
+          "itemID": 12663
+        }
+      ]
+    }
+  },
+  {
+    "questID": 4987,
+    "title": "Glyphed Oaken Branch",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied item delivery; retain actual hand-in item/count, faction/class identity and preceding hand-in. No independent work removed. Exact sourceItemId 12663 and giver/receiver joins, verified 24 hashes 2026-10-08; converted-baseline; research/western-plaguelands-2026-10-08.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 51,
+      "level": 56,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Glyphed Oaken Branch",
+          "itemID": 12663
+        }
+      ]
+    }
+  },
+  {
+    "questID": 5223,
+    "title": "Return to Chillwind Camp",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied item delivery; retain actual hand-in item/count, faction/class identity and preceding hand-in. No independent work removed. Exact sourceItemId 13192 and giver/receiver joins, verified 24 hashes 2026-10-08; converted-baseline; research/western-plaguelands-2026-10-08.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 50,
+      "level": 55,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Filled Writhing Haunt Bottle",
+          "itemID": 13192
+        }
+      ]
+    }
+  },
+  {
+    "questID": 5232,
+    "title": "Return to the Bulwark",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied item delivery; retain actual hand-in item/count, faction/class identity and preceding hand-in. No independent work removed. Exact sourceItemId 13191 and giver/receiver joins, verified 24 hashes 2026-10-08; converted-baseline; research/western-plaguelands-2026-10-08.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 50,
+      "level": 55,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Filled Dalson's Tears Bottle",
+          "itemID": 13191
+        }
+      ]
+    }
+  },
+  {
+    "questID": 5234,
+    "title": "Return to the Bulwark",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied item delivery; retain actual hand-in item/count, faction/class identity and preceding hand-in. No independent work removed. Exact sourceItemId 13192 and giver/receiver joins, verified 24 hashes 2026-10-08; converted-baseline; research/western-plaguelands-2026-10-08.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 50,
+      "level": 55,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Filled Writhing Haunt Bottle",
+          "itemID": 13192
+        }
+      ]
+    }
+  },
+  {
+    "questID": 5236,
+    "title": "Return to the Bulwark",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied item delivery; retain actual hand-in item/count, faction/class identity and preceding hand-in. No independent work removed. Exact sourceItemId 13193 and giver/receiver joins, verified 24 hashes 2026-10-08; converted-baseline; research/western-plaguelands-2026-10-08.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 50,
+      "level": 58,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Filled Gahrron's Withering Bottle",
+          "itemID": 13193
+        }
+      ]
+    }
+  },
+  {
+    "questID": 5465,
+    "title": "Soulbound Keepsake",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied item delivery; retain actual hand-in item/count, faction/class identity and preceding hand-in. No independent work removed. Exact sourceItemId 13624 and giver/receiver joins, verified 24 hashes 2026-10-08; converted-baseline; research/western-plaguelands-2026-10-08.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 57,
+      "level": 60,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Soulbound Keepsake",
+          "itemID": 13624
+        }
+      ]
+    }
+  },
+  {
+    "questID": 5514,
+    "title": "Mold Rhymes With...",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied item delivery; retain actual hand-in item/count, faction/class identity and preceding hand-in. No independent work removed. This handoff also requires 15 gold; source cost is retained in evidence and player preparation checklist, not repurposed as reward money or invented farming work. Money-aware preparation needs shared-module coordination. Exact sourceItemId 14628 and giver/receiver joins, verified 24 hashes 2026-10-08; converted-baseline; research/western-plaguelands-2026-10-08.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 55,
+      "level": 57,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Imbued Skeletal Fragments",
+          "itemID": 14628
+        }
+      ]
+    }
+  },
+  {
+    "questID": 5538,
+    "title": "Mold Rhymes With...",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied item delivery; retain actual hand-in item/count, faction/class identity and preceding hand-in. No independent work removed. This handoff also requires 15 gold; source cost is retained in evidence and player preparation checklist, not repurposed as reward money or invented farming work. Money-aware preparation needs shared-module coordination. Exact sourceItemId 14628 and giver/receiver joins, verified 24 hashes 2026-10-08; converted-baseline; research/western-plaguelands-2026-10-08.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 55,
+      "level": 57,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Imbued Skeletal Fragments",
+          "itemID": 14628
+        }
+      ]
+    }
+  },
+  {
+    "questID": 5861,
+    "title": "Find Myranda",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied item delivery; retain actual hand-in item/count, faction/class identity and preceding hand-in. No independent work removed. Exact sourceItemId 14872 and giver/receiver joins, verified 24 hashes 2026-10-08; converted-baseline; research/western-plaguelands-2026-10-08.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 52,
+      "level": 60,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Tirion's Gift",
+          "itemID": 14872
+        }
+      ]
+    }
+  },
+  {
+    "questID": 8416,
+    "title": "Inert Scourgestones",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied item delivery; retain actual hand-in item/count, faction/class identity and preceding hand-in. No independent work removed. Exact sourceItemId 20612 and giver/receiver joins, verified 24 hashes 2026-10-08; converted-baseline; research/western-plaguelands-2026-10-08.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 50,
+      "level": 52,
+      "classMask": 2,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Inert Scourgestone",
+          "itemID": 20612
+        }
+      ]
+    }
+  },
+  {
+    "questID": 5051,
+    "title": "Two Halves Become One",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Actual hand-in is the assembled item only; components remain independent work goals at their existing supported areas, not extra hand-in items. Assembly mechanism/work area remains unknown; do not substitute the receiver or force all material stages complete. Exact title/level/minimum, typed objectives/sourceItemId and requiredSourceItems facts; verified 24 hashes 2026-10-08, converted-baseline; research/western-plaguelands-2026-10-08.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 50,
+      "level": 54,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Good Luck Charm",
+          "itemID": 12723
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Good Luck Charm",
+            "entityID": 12723
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Good Luck Other-Half-Charm",
+            "entityID": 12722
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Good Luck Charm",
+            "itemID": 12723
+          },
+          {
+            "quantity": 1,
+            "name": "Good Luck Other-Half-Charm",
+            "itemID": 12722
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 1,
+            "mapID": 1422,
+            "action": "collect",
+            "entityID": 10801,
+            "npc": true,
+            "y": 0.564,
+            "objectiveKey": "item:12722",
+            "name": "Jabbering Ghoul",
+            "x": 0.38,
+            "quantity": 1,
+            "legacyStepKey": "q:1422:npc:10801",
+            "itemName": "Good Luck Other-Half-Charm",
+            "itemID": 12722
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Good Luck Other-Half-Charm",
+            "name": "Jabbering Ghoul",
+            "entityID": 10801,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Good Luck Charm",
+            "entityID": 12723
+          }
+        ],
+        "objectiveLocationsIncomplete": true,
+        "providedItems": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Good Luck Charm",
+            "entityID": 12723
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Good Luck Other-Half-Charm",
+            "entityID": 12722
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Good Luck Charm",
+            "itemID": 12723
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 1,
+            "mapID": 1422,
+            "action": "collect",
+            "entityID": 10801,
+            "npc": true,
+            "y": 0.564,
+            "objectiveKey": "item:12722",
+            "name": "Jabbering Ghoul",
+            "x": 0.38,
+            "quantity": 1,
+            "legacyStepKey": "q:1422:npc:10801",
+            "itemName": "Good Luck Other-Half-Charm",
+            "itemID": 12722
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Good Luck Other-Half-Charm",
+            "name": "Jabbering Ghoul",
+            "entityID": 10801,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Good Luck Charm",
+            "entityID": 12723
+          }
+        ],
+        "objectiveLocationsIncomplete": true,
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 12721,
+            "name": "Good Luck Half-Charm",
+            "quantity": 1
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 5149,
+    "title": "Pamela's Doll",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Actual hand-in is the assembled item only; components remain independent work goals at their existing supported areas, not extra hand-in items. Assembly mechanism/work area remains unknown; do not substitute the receiver or force all material stages complete. Exact title/level/minimum, typed objectives/sourceItemId and requiredSourceItems facts; verified 24 hashes 2026-10-08, converted-baseline; research/western-plaguelands-2026-10-08.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 50,
+      "level": 55,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Pamela's Doll",
+          "itemID": 12885
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Pamela's Doll",
+            "entityID": 12885
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Pamela's Doll's Head",
+            "entityID": 12886
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Pamela's Doll's Left Side",
+            "entityID": 12887
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Pamela's Doll's Right Side",
+            "entityID": 12888
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Pamela's Doll",
+            "itemID": 12885
+          },
+          {
+            "quantity": 1,
+            "name": "Pamela's Doll's Head",
+            "itemID": 12886
+          },
+          {
+            "quantity": 1,
+            "name": "Pamela's Doll's Left Side",
+            "itemID": 12887
+          },
+          {
+            "quantity": 1,
+            "name": "Pamela's Doll's Right Side",
+            "itemID": 12888
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "object",
+            "mapID": 1423,
+            "legacyStepKey": "q:1423:npc:176116",
+            "entityID": 176116,
+            "name": "Pamela's Doll's Head",
+            "x": 0.3407,
+            "y": 0.7728,
+            "objectiveKey": "item:12886",
+            "itemID": 12886,
+            "quantity": 1,
+            "sourceAreaID": 139,
+            "itemName": "Pamela's Doll's Head",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "gather"
+          },
+          {
+            "entityType": "object",
+            "mapID": 1423,
+            "legacyStepKey": "q:1423:npc:176142",
+            "entityID": 176142,
+            "name": "Pamela's Doll's Left Side",
+            "x": 0.3272,
+            "y": 0.7912,
+            "objectiveKey": "item:12887",
+            "itemID": 12887,
+            "quantity": 1,
+            "sourceAreaID": 139,
+            "itemName": "Pamela's Doll's Left Side",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "gather"
+          },
+          {
+            "entityType": "object",
+            "mapID": 1423,
+            "legacyStepKey": "q:1423:npc:176143",
+            "entityID": 176143,
+            "name": "Pamela's Doll's Right Side",
+            "x": 0.331,
+            "y": 0.7967,
+            "objectiveKey": "item:12888",
+            "itemID": 12888,
+            "quantity": 1,
+            "sourceAreaID": 139,
+            "itemName": "Pamela's Doll's Right Side",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "gather"
+          }
+        ],
+        "npcTargets": [],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Pamela's Doll",
+            "entityID": 12885
+          }
+        ],
+        "objectiveLocationsIncomplete": true
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Pamela's Doll",
+            "entityID": 12885
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Pamela's Doll's Head",
+            "entityID": 12886
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Pamela's Doll's Left Side",
+            "entityID": 12887
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Pamela's Doll's Right Side",
+            "entityID": 12888
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Pamela's Doll",
+            "itemID": 12885
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "object",
+            "mapID": 1423,
+            "legacyStepKey": "q:1423:npc:176116",
+            "entityID": 176116,
+            "name": "Pamela's Doll's Head",
+            "x": 0.3407,
+            "y": 0.7728,
+            "objectiveKey": "item:12886",
+            "itemID": 12886,
+            "quantity": 1,
+            "sourceAreaID": 139,
+            "itemName": "Pamela's Doll's Head",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "gather"
+          },
+          {
+            "entityType": "object",
+            "mapID": 1423,
+            "legacyStepKey": "q:1423:npc:176142",
+            "entityID": 176142,
+            "name": "Pamela's Doll's Left Side",
+            "x": 0.3272,
+            "y": 0.7912,
+            "objectiveKey": "item:12887",
+            "itemID": 12887,
+            "quantity": 1,
+            "sourceAreaID": 139,
+            "itemName": "Pamela's Doll's Left Side",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "gather"
+          },
+          {
+            "entityType": "object",
+            "mapID": 1423,
+            "legacyStepKey": "q:1423:npc:176143",
+            "entityID": 176143,
+            "name": "Pamela's Doll's Right Side",
+            "x": 0.331,
+            "y": 0.7967,
+            "objectiveKey": "item:12888",
+            "itemID": 12888,
+            "quantity": 1,
+            "sourceAreaID": 139,
+            "itemName": "Pamela's Doll's Right Side",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "gather"
+          }
+        ],
+        "npcTargets": [],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Pamela's Doll",
+            "entityID": 12885
+          }
+        ],
+        "objectiveLocationsIncomplete": true
+      }
+    }
+  },
+  {
+    "questID": 5464,
+    "title": "Menethil's Gift",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied Soulbound Keepsake delivery to Leonid: map known conversation work at the existing return point. Keep missing Scholomance object pickup explicit; no outdoor or dungeon coordinate invented and no new item count introduced. Exact title/level/minimum, typed objectives/sourceItemId and requiredSourceItems facts; verified 24 hashes 2026-10-08, converted-baseline; research/western-plaguelands-2026-10-08.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 57,
+      "level": 60,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": true
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "y": 0.578,
+            "mapID": 1423,
+            "name": "Leonid Barthalomew the Revered",
+            "entityID": 11036,
+            "npc": true,
+            "x": 0.816,
+            "entityType": "npc",
+            "action": "talk"
+          }
+        ],
+        "npcTargets": [
+          {
+            "entityID": 11036,
+            "name": "Leonid Barthalomew the Revered",
+            "npc": true,
+            "action": "talk"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": false
+      }
+    }
   }
 ]

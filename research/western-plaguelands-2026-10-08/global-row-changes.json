@@ -1,0 +1,329 @@
+[
+  {
+    "faction": "Alliance",
+    "key": "level-zone:eastern-kingdoms/eastern-plaguelands:levels:51-60",
+    "changed_fields": {
+      "unknown_location_steps": {
+        "before": 22,
+        "after": 19
+      },
+      "missing_location_quest_ids_by_stage": {
+        "before": {
+          "a": [
+            5464,
+            8946
+          ],
+          "q": [
+            5149,
+            5206,
+            5247,
+            5252,
+            5253,
+            5464,
+            5465,
+            5513,
+            5517,
+            5861,
+            5862,
+            6026,
+            8946,
+            9121,
+            9122,
+            9123,
+            9141
+          ],
+          "t": []
+        },
+        "after": {
+          "a": [
+            5464,
+            8946
+          ],
+          "q": [
+            5149,
+            5206,
+            5247,
+            5252,
+            5253,
+            5513,
+            5517,
+            5862,
+            6026,
+            8946,
+            9121,
+            9122,
+            9123,
+            9141
+          ],
+          "t": []
+        }
+      },
+      "uncertain_travel_legs": {
+        "before": 70,
+        "after": 65
+      },
+      "estimated_distance_before": {
+        "before": 620020.22,
+        "after": 590030.21
+      },
+      "estimated_distance_after": {
+        "before": 620020.22,
+        "after": 590030.21
+      }
+    }
+  },
+  {
+    "faction": "Alliance",
+    "key": "level-zone:eastern-kingdoms/western-plaguelands:levels:51-60",
+    "changed_fields": {
+      "unknown_location_steps": {
+        "before": 20,
+        "after": 13
+      },
+      "missing_location_quest_ids_by_stage": {
+        "before": {
+          "a": [
+            5464
+          ],
+          "q": [
+            4986,
+            5051,
+            5149,
+            5166,
+            5167,
+            5223,
+            5464,
+            5465,
+            5507,
+            5521,
+            5538,
+            5861,
+            5862,
+            6389,
+            8416
+          ],
+          "t": []
+        },
+        "after": {
+          "a": [
+            5464
+          ],
+          "q": [
+            5051,
+            5149,
+            5166,
+            5167,
+            5507,
+            5521,
+            5862,
+            6389
+          ],
+          "t": []
+        }
+      },
+      "destination_reason_codes": {
+        "before": {
+          "class-progression": 4,
+          "outside-level-range": 128,
+          "prerequisite": 21,
+          "quest-reward": 57
+        },
+        "after": {
+          "class-progression": 4,
+          "early-reward": 1,
+          "outside-level-range": 128,
+          "prerequisite": 21,
+          "quest-reward": 56
+        }
+      },
+      "reason_review_steps": {
+        "before": 151,
+        "after": 150
+      },
+      "flow_alternatives_evaluated": {
+        "before": 30,
+        "after": 84
+      },
+      "flow_loop_changes": {
+        "before": 0,
+        "after": 1
+      },
+      "quest_log_peak": {
+        "before": 7,
+        "after": 8
+      },
+      "uncertain_travel_legs": {
+        "before": 77,
+        "after": 64
+      },
+      "estimated_distance_before": {
+        "before": 368317.72,
+        "after": 335600.3
+      },
+      "estimated_distance_after": {
+        "before": 368317.72,
+        "after": 335534.53
+      }
+    }
+  },
+  {
+    "faction": "Horde",
+    "key": "level-zone:eastern-kingdoms/eastern-plaguelands:levels:51-60",
+    "changed_fields": {
+      "unknown_location_steps": {
+        "before": 20,
+        "after": 17
+      },
+      "missing_location_quest_ids_by_stage": {
+        "before": {
+          "a": [
+            5464,
+            8946
+          ],
+          "q": [
+            5149,
+            5206,
+            5464,
+            5465,
+            5513,
+            5517,
+            5861,
+            5862,
+            6022,
+            6026,
+            6146,
+            8946,
+            9121,
+            9122,
+            9123,
+            9141
+          ],
+          "t": []
+        },
+        "after": {
+          "a": [
+            5464,
+            8946
+          ],
+          "q": [
+            5149,
+            5206,
+            5513,
+            5517,
+            5862,
+            6022,
+            6026,
+            6146,
+            8946,
+            9121,
+            9122,
+            9123,
+            9141
+          ],
+          "t": []
+        }
+      },
+      "uncertain_travel_legs": {
+        "before": 72,
+        "after": 67
+      },
+      "estimated_distance_before": {
+        "before": 489041.12,
+        "after": 459693.6
+      },
+      "estimated_distance_after": {
+        "before": 487340.09,
+        "after": 457992.57
+      }
+    }
+  },
+  {
+    "faction": "Horde",
+    "key": "level-zone:eastern-kingdoms/western-plaguelands:levels:51-60",
+    "changed_fields": {
+      "unknown_location_steps": {
+        "before": 21,
+        "after": 13
+      },
+      "missing_location_quest_ids_by_stage": {
+        "before": {
+          "a": [
+            5464
+          ],
+          "q": [
+            4987,
+            5051,
+            5149,
+            5166,
+            5167,
+            5232,
+            5234,
+            5236,
+            5464,
+            5465,
+            5504,
+            5514,
+            5524,
+            5861,
+            5862,
+            6390
+          ],
+          "t": []
+        },
+        "after": {
+          "a": [
+            5464
+          ],
+          "q": [
+            5051,
+            5149,
+            5166,
+            5167,
+            5504,
+            5524,
+            5862,
+            6390
+          ],
+          "t": []
+        }
+      },
+      "destination_reason_codes": {
+        "before": {
+          "outside-level-range": 129,
+          "prerequisite": 12,
+          "quest-reward": 56
+        },
+        "after": {
+          "early-reward": 1,
+          "outside-level-range": 129,
+          "prerequisite": 12,
+          "quest-reward": 55
+        }
+      },
+      "flow_alternatives_evaluated": {
+        "before": 75,
+        "after": 172
+      },
+      "flow_loop_changes": {
+        "before": 1,
+        "after": 2
+      },
+      "quest_log_peak": {
+        "before": 7,
+        "after": 6
+      },
+      "uncertain_travel_legs": {
+        "before": 83,
+        "after": 71
+      },
+      "estimated_distance_before": {
+        "before": 449137.23,
+        "after": 407747.98
+      },
+      "estimated_distance_after": {
+        "before": 447132.64,
+        "after": 405743.4
+      }
+    }
+  }
+]

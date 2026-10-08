@@ -1,0 +1,54 @@
+{
+  "applied": false,
+  "source_url": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/legacy/classicQuestFixes.lua",
+  "file_sha256": "76cd6a05f035826cabc6180a0ff2a1a37c5e7946c891eb0a06412fab5a4caf2e",
+  "source_tier": "converted-baseline (inherited literal corrections, not beta observation)",
+  "facts": {
+    "5092": {
+      "preQuestSingle": [],
+      "breadcrumbs": [
+        5066,
+        5090,
+        5091
+      ]
+    },
+    "5096": {
+      "preQuestSingle": [],
+      "breadcrumbs": [
+        5093,
+        5094,
+        5095
+      ]
+    },
+    "5149": {
+      "preQuestSingle": [],
+      "breadcrumbs": [
+        5142,
+        5601
+      ]
+    }
+  },
+  "conflict": "Current catalogue promotes six optional faction introduction breadcrumbs into mandatory OR hand-ins for 5092/5096. Published corrections explicitly distinguish them from prerequisites. No current beta offer observation establishes either path.",
+  "proposal": "Remove the asserted mandatory introduction gates after coordinated review, retaining useful introductions as optional handoffs without forcing or dropping their saved-guide progress. Pamela already has no explicit mandatory parent but its pickup uncertainty remains.",
+  "coordination": [
+    "Model optional introduction/handoff facts independently of prerequisite completion; preserve fixed-guide saved keys and useful low-level introductions.",
+    "Verify fresh Alliance/Horde offers without intro hand-ins and negative/positive offer context on the native beta.",
+    "Do not map required reputation, money, disguise or release work as an arbitrary delivery."
+  ],
+  "additional_source_limits": {
+    "mantles": {
+      "factionID": 529,
+      "5504_5507_threshold": 21000,
+      "5521_5524_threshold": 42000,
+      "unmodeled_native_offers": true
+    },
+    "mold_handoffs": {
+      "questIDs": [
+        5514,
+        5538
+      ],
+      "requiredGold": 15,
+      "normal_guide_prep_not_modeled": true
+    }
+  }
+}

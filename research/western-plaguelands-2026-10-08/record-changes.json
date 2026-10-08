@@ -1,0 +1,3512 @@
+{
+  "records": {
+    "4986": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1422,
+        "objectives": {},
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Mulgris Deepriver",
+            "entityID": 10739
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Glyphed Oaken Branch",
+            "entityID": 12663
+          }
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Glyphed Oaken Branch",
+            "entityID": 12663
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Glyphed Oaken Branch",
+            "itemID": 12663
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1422,
+            "entityID": 10739,
+            "npc": true,
+            "sourceZone": "Western Plaguelands",
+            "x": 0.536,
+            "name": "Mulgris Deepriver",
+            "sourceAreaID": 28,
+            "y": 0.6459999999999999
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1457,
+            "name": "Mathrengyl Bearwalker",
+            "y": 0.08,
+            "entityID": 4217,
+            "x": 0.3441,
+            "npc": true,
+            "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+          }
+        ],
+        "title": "Glyphed Oaken Branch",
+        "level": 56,
+        "areaID": 28,
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Glyphed Oaken Branch",
+            "entityID": 12663
+          }
+        ],
+        "side": "Alliance",
+        "prerequisiteAny": [
+          4985
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Mathrengyl Bearwalker",
+            "entityID": 4217
+          }
+        ],
+        "xp": 5800,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 51,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 4294967373,
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Glyphed Oaken Branch",
+              "entityID": 12663
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Mulgris Deepriver",
+              "entityID": 10739
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Mathrengyl Bearwalker",
+              "entityID": 4217
+            }
+          ]
+        },
+        "objectiveLocationsIncomplete": true,
+        "categoryPath": "eastern-kingdoms/western-plaguelands"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1422,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Mulgris Deepriver",
+            "entityID": 10739
+          }
+        ],
+        "requirements": {},
+        "objectives": {},
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Glyphed Oaken Branch",
+            "itemID": 12663
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Glyphed Oaken Branch",
+            "entityID": 12663
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1457,
+            "action": "talk",
+            "entityID": 4217,
+            "npc": true,
+            "y": 0.08,
+            "x": 0.3441,
+            "name": "Mathrengyl Bearwalker",
+            "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1422,
+            "entityID": 10739,
+            "npc": true,
+            "sourceZone": "Western Plaguelands",
+            "x": 0.536,
+            "name": "Mulgris Deepriver",
+            "sourceAreaID": 28,
+            "y": 0.6459999999999999
+          }
+        ],
+        "level": 56,
+        "areaID": 28,
+        "title": "Glyphed Oaken Branch",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 4294967373,
+        "side": "Alliance",
+        "prerequisiteAny": [
+          4985
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Mathrengyl Bearwalker",
+            "entityID": 4217
+          }
+        ],
+        "xp": 5800,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 51,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied item delivery; retain actual hand-in item/count, faction/class identity and preceding hand-in. No independent work removed. Exact sourceItemId 12663 and giver/receiver joins, verified 24 hashes 2026-10-08; converted-baseline; research/western-plaguelands-2026-10-08.",
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Mulgris Deepriver",
+              "entityID": 10739
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Glyphed Oaken Branch",
+              "entityID": 12663
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Mathrengyl Bearwalker",
+              "entityID": 4217
+            }
+          ]
+        },
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "categoryPath": "eastern-kingdoms/western-plaguelands"
+      }
+    },
+    "4987": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1422,
+        "objectives": {},
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Mulgris Deepriver",
+            "entityID": 10739
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Glyphed Oaken Branch",
+            "entityID": 12663
+          }
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Glyphed Oaken Branch",
+            "entityID": 12663
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Glyphed Oaken Branch",
+            "itemID": 12663
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1422,
+            "entityID": 10739,
+            "npc": true,
+            "sourceZone": "Western Plaguelands",
+            "x": 0.536,
+            "name": "Mulgris Deepriver",
+            "sourceAreaID": 28,
+            "y": 0.6459999999999999
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1456,
+            "entityID": 5770,
+            "npc": true,
+            "sourceZone": "Thunder Bluff",
+            "x": 0.754,
+            "name": "Nara Wildmane",
+            "sourceAreaID": 1638,
+            "y": 0.31
+          }
+        ],
+        "title": "Glyphed Oaken Branch",
+        "level": 56,
+        "areaID": 28,
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Glyphed Oaken Branch",
+            "entityID": 12663
+          }
+        ],
+        "side": "Horde",
+        "prerequisiteAny": [
+          4985
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Nara Wildmane",
+            "entityID": 5770
+          }
+        ],
+        "xp": 5800,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          2,
+          5,
+          6,
+          8,
+          96
+        ],
+        "minLevel": 51,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 8589934770,
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Glyphed Oaken Branch",
+              "entityID": 12663
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Mulgris Deepriver",
+              "entityID": 10739
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Nara Wildmane",
+              "entityID": 5770
+            }
+          ]
+        },
+        "objectiveLocationsIncomplete": true,
+        "categoryPath": "eastern-kingdoms/western-plaguelands"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1422,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Mulgris Deepriver",
+            "entityID": 10739
+          }
+        ],
+        "requirements": {},
+        "objectives": {},
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Glyphed Oaken Branch",
+            "itemID": 12663
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Glyphed Oaken Branch",
+            "entityID": 12663
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1456,
+            "action": "talk",
+            "entityID": 5770,
+            "npc": true,
+            "sourceZone": "Thunder Bluff",
+            "x": 0.754,
+            "name": "Nara Wildmane",
+            "sourceAreaID": 1638,
+            "y": 0.31
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1422,
+            "entityID": 10739,
+            "npc": true,
+            "sourceZone": "Western Plaguelands",
+            "x": 0.536,
+            "name": "Mulgris Deepriver",
+            "sourceAreaID": 28,
+            "y": 0.6459999999999999
+          }
+        ],
+        "level": 56,
+        "areaID": 28,
+        "title": "Glyphed Oaken Branch",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 8589934770,
+        "side": "Horde",
+        "prerequisiteAny": [
+          4985
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Nara Wildmane",
+            "entityID": 5770
+          }
+        ],
+        "xp": 5800,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          2,
+          5,
+          6,
+          8,
+          96
+        ],
+        "minLevel": 51,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied item delivery; retain actual hand-in item/count, faction/class identity and preceding hand-in. No independent work removed. Exact sourceItemId 12663 and giver/receiver joins, verified 24 hashes 2026-10-08; converted-baseline; research/western-plaguelands-2026-10-08.",
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Mulgris Deepriver",
+              "entityID": 10739
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Glyphed Oaken Branch",
+              "entityID": 12663
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Nara Wildmane",
+              "entityID": 5770
+            }
+          ]
+        },
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "categoryPath": "eastern-kingdoms/western-plaguelands"
+      }
+    },
+    "5051": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1422,
+        "zone": "Western Plaguelands",
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Good Luck Charm",
+            "entityID": 12723
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Good Luck Other-Half-Charm",
+            "entityID": 12722
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Good Luck Other-Half-Charm",
+            "name": "Jabbering Ghoul",
+            "entityID": 10801,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Good Luck Charm",
+            "itemID": 12723
+          },
+          {
+            "quantity": 1,
+            "name": "Good Luck Other-Half-Charm",
+            "itemID": 12722
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 1,
+            "mapID": 1422,
+            "action": "collect",
+            "entityID": 10801,
+            "npc": true,
+            "y": 0.564,
+            "objectiveKey": "item:12722",
+            "name": "Jabbering Ghoul",
+            "x": 0.38,
+            "quantity": 1,
+            "legacyStepKey": "q:1422:npc:10801",
+            "itemName": "Good Luck Other-Half-Charm",
+            "itemID": 12722
+          }
+        ],
+        "starts": [
+          {
+            "y": 0.54,
+            "mapID": 1422,
+            "name": "Janice Felstone",
+            "entityID": 10778,
+            "npc": true,
+            "x": 0.384
+          }
+        ],
+        "objectiveFactsSource": "Wowhead Forever objective table",
+        "classMask": 0,
+        "ends": [
+          {
+            "y": 0.54,
+            "mapID": 1422,
+            "name": "Janice Felstone",
+            "entityID": 10778,
+            "npc": true,
+            "x": 0.384
+          }
+        ],
+        "level": 54,
+        "areaID": 28,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Janice Felstone",
+            "entityID": 10778
+          }
+        ],
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Good Luck Charm",
+            "entityID": 12723
+          }
+        ],
+        "side": "Both",
+        "previousQuest": 5050,
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Janice Felstone",
+            "entityID": 10778
+          }
+        ],
+        "xp": 5450,
+        "title": "Two Halves Become One",
+        "foreverStatus": "unchanged",
+        "raceMask": 0,
+        "minLevel": 50,
+        "requirementSource": "Wowhead Forever objective table",
+        "objectiveLocationsIncomplete": true,
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Good Luck Charm",
+              "entityID": 12723
+            },
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Good Luck Other-Half-Charm",
+              "entityID": 12722
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Janice Felstone",
+              "entityID": 10778
+            }
+          ],
+          "provided": {},
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Janice Felstone",
+              "entityID": 10778
+            }
+          ]
+        },
+        "locationSource": "Wowhead Forever",
+        "categoryPath": "eastern-kingdoms/western-plaguelands"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "zone": "Western Plaguelands",
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Good Luck Charm",
+            "entityID": 12723
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Good Luck Other-Half-Charm",
+            "entityID": 12722
+          }
+        ],
+        "level": 54,
+        "areaID": 28,
+        "previousQuest": 5050,
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Janice Felstone",
+            "entityID": 10778
+          }
+        ],
+        "xp": 5450,
+        "minLevel": 50,
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Good Luck Charm",
+              "entityID": 12723
+            },
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Good Luck Other-Half-Charm",
+              "entityID": 12722
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Janice Felstone",
+              "entityID": 10778
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Good Luck Half-Charm",
+              "entityID": 12721
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Janice Felstone",
+              "entityID": 10778
+            }
+          ]
+        },
+        "objectiveLocationsIncomplete": true,
+        "categoryPath": "eastern-kingdoms/western-plaguelands",
+        "raceMask": 0,
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Good Luck Charm",
+            "entityID": 12723
+          }
+        ],
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Janice Felstone",
+            "entityID": 10778
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Good Luck Charm",
+            "itemID": 12723
+          }
+        ],
+        "ends": [
+          {
+            "y": 0.54,
+            "mapID": 1422,
+            "name": "Janice Felstone",
+            "entityID": 10778,
+            "npc": true,
+            "x": 0.384
+          }
+        ],
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "side": "Both",
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Actual hand-in is the assembled item only; components remain independent work goals at their existing supported areas, not extra hand-in items. Assembly mechanism/work area remains unknown; do not substitute the receiver or force all material stages complete. Exact title/level/minimum, typed objectives/sourceItemId and requiredSourceItems facts; verified 24 hashes 2026-10-08, converted-baseline; research/western-plaguelands-2026-10-08.",
+        "mapID": 1422,
+        "objectives": [
+          {
+            "sourceObjective": 1,
+            "mapID": 1422,
+            "action": "collect",
+            "entityID": 10801,
+            "npc": true,
+            "y": 0.564,
+            "objectiveKey": "item:12722",
+            "name": "Jabbering Ghoul",
+            "x": 0.38,
+            "quantity": 1,
+            "legacyStepKey": "q:1422:npc:10801",
+            "itemName": "Good Luck Other-Half-Charm",
+            "itemID": 12722
+          }
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Good Luck Half-Charm",
+            "entityID": 12721
+          }
+        ],
+        "foreverStatus": "unchanged",
+        "objectiveFactsSource": "Wowhead Forever objective table",
+        "starts": [
+          {
+            "y": 0.54,
+            "mapID": 1422,
+            "name": "Janice Felstone",
+            "entityID": 10778,
+            "npc": true,
+            "x": 0.384
+          }
+        ],
+        "requirementSource": "Wowhead Forever objective table",
+        "title": "Two Halves Become One",
+        "classMask": 0,
+        "locationSource": "Wowhead Forever",
+        "npcTargets": [
+          {
+            "itemName": "Good Luck Other-Half-Charm",
+            "name": "Jabbering Ghoul",
+            "entityID": 10801,
+            "npc": true,
+            "action": "collect"
+          }
+        ]
+      }
+    },
+    "5149": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1423,
+        "zone": "Eastern Plaguelands",
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Pamela's Doll",
+            "entityID": 12885
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Pamela's Doll's Head",
+            "entityID": 12886
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Pamela's Doll's Left Side",
+            "entityID": 12887
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Pamela's Doll's Right Side",
+            "entityID": 12888
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "object",
+            "mapID": 1423,
+            "legacyStepKey": "q:1423:npc:176116",
+            "entityID": 176116,
+            "name": "Pamela's Doll's Head",
+            "x": 0.3407,
+            "y": 0.7728,
+            "objectiveKey": "item:12886",
+            "itemID": 12886,
+            "quantity": 1,
+            "sourceAreaID": 139,
+            "itemName": "Pamela's Doll's Head",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "gather"
+          },
+          {
+            "entityType": "object",
+            "mapID": 1423,
+            "legacyStepKey": "q:1423:npc:176142",
+            "entityID": 176142,
+            "name": "Pamela's Doll's Left Side",
+            "x": 0.3272,
+            "y": 0.7912,
+            "objectiveKey": "item:12887",
+            "itemID": 12887,
+            "quantity": 1,
+            "sourceAreaID": 139,
+            "itemName": "Pamela's Doll's Left Side",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "gather"
+          },
+          {
+            "entityType": "object",
+            "mapID": 1423,
+            "legacyStepKey": "q:1423:npc:176143",
+            "entityID": 176143,
+            "name": "Pamela's Doll's Right Side",
+            "x": 0.331,
+            "y": 0.7967,
+            "objectiveKey": "item:12888",
+            "itemID": 12888,
+            "quantity": 1,
+            "sourceAreaID": 139,
+            "itemName": "Pamela's Doll's Right Side",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "gather"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Pamela's Doll",
+            "itemID": 12885
+          },
+          {
+            "quantity": 1,
+            "name": "Pamela's Doll's Head",
+            "itemID": 12886
+          },
+          {
+            "quantity": 1,
+            "name": "Pamela's Doll's Left Side",
+            "itemID": 12887
+          },
+          {
+            "quantity": 1,
+            "name": "Pamela's Doll's Right Side",
+            "itemID": 12888
+          }
+        ],
+        "starts": [
+          {
+            "y": 0.9079999999999999,
+            "mapID": 1423,
+            "name": "Pamela Redpath",
+            "entityID": 10926,
+            "npc": true,
+            "x": 0.364
+          }
+        ],
+        "prerequisitesUnverified": true,
+        "objectiveFactsSource": "Wowhead Forever objective table",
+        "classMask": 0,
+        "ends": [
+          {
+            "y": 0.9079999999999999,
+            "mapID": 1423,
+            "name": "Pamela Redpath",
+            "entityID": 10926,
+            "npc": true,
+            "x": 0.364
+          }
+        ],
+        "level": 55,
+        "areaID": 139,
+        "prerequisiteCandidates": [
+          5142,
+          5601
+        ],
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Pamela Redpath",
+            "entityID": 10926
+          }
+        ],
+        "side": "Both",
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Pamela's Doll",
+            "entityID": 12885
+          }
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Pamela Redpath",
+            "entityID": 10926
+          }
+        ],
+        "xp": 2800,
+        "title": "Pamela's Doll",
+        "foreverStatus": "unchanged",
+        "raceMask": 0,
+        "minLevel": 50,
+        "requirementSource": "Wowhead Forever objective table",
+        "objectiveLocationsIncomplete": true,
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Pamela's Doll",
+              "entityID": 12885
+            },
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Pamela's Doll's Head",
+              "entityID": 12886
+            },
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Pamela's Doll's Left Side",
+              "entityID": 12887
+            },
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Pamela's Doll's Right Side",
+              "entityID": 12888
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Pamela Redpath",
+              "entityID": 10926
+            }
+          ],
+          "provided": {},
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Pamela Redpath",
+              "entityID": 10926
+            }
+          ]
+        },
+        "locationSource": "Wowhead Forever",
+        "categoryPath": "eastern-kingdoms/eastern-plaguelands"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1423,
+        "objectives": [
+          {
+            "entityType": "object",
+            "mapID": 1423,
+            "legacyStepKey": "q:1423:npc:176116",
+            "entityID": 176116,
+            "name": "Pamela's Doll's Head",
+            "x": 0.3407,
+            "y": 0.7728,
+            "objectiveKey": "item:12886",
+            "itemID": 12886,
+            "quantity": 1,
+            "sourceAreaID": 139,
+            "itemName": "Pamela's Doll's Head",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "gather"
+          },
+          {
+            "entityType": "object",
+            "mapID": 1423,
+            "legacyStepKey": "q:1423:npc:176142",
+            "entityID": 176142,
+            "name": "Pamela's Doll's Left Side",
+            "x": 0.3272,
+            "y": 0.7912,
+            "objectiveKey": "item:12887",
+            "itemID": 12887,
+            "quantity": 1,
+            "sourceAreaID": 139,
+            "itemName": "Pamela's Doll's Left Side",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "gather"
+          },
+          {
+            "entityType": "object",
+            "mapID": 1423,
+            "legacyStepKey": "q:1423:npc:176143",
+            "entityID": 176143,
+            "name": "Pamela's Doll's Right Side",
+            "x": 0.331,
+            "y": 0.7967,
+            "objectiveKey": "item:12888",
+            "itemID": 12888,
+            "quantity": 1,
+            "sourceAreaID": 139,
+            "itemName": "Pamela's Doll's Right Side",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "gather"
+          }
+        ],
+        "zone": "Eastern Plaguelands",
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Pamela's Doll",
+            "entityID": 12885
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Pamela's Doll's Head",
+            "entityID": 12886
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Pamela's Doll's Left Side",
+            "entityID": 12887
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Pamela's Doll's Right Side",
+            "entityID": 12888
+          }
+        ],
+        "starts": [
+          {
+            "y": 0.9079999999999999,
+            "mapID": 1423,
+            "name": "Pamela Redpath",
+            "entityID": 10926,
+            "npc": true,
+            "x": 0.364
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Pamela's Doll",
+            "itemID": 12885
+          }
+        ],
+        "objectiveFactsSource": "Wowhead Forever objective table",
+        "prerequisitesUnverified": true,
+        "title": "Pamela's Doll",
+        "classMask": 0,
+        "ends": [
+          {
+            "y": 0.9079999999999999,
+            "mapID": 1423,
+            "name": "Pamela Redpath",
+            "entityID": 10926,
+            "npc": true,
+            "x": 0.364
+          }
+        ],
+        "prerequisiteCandidates": [
+          5142,
+          5601
+        ],
+        "level": 55,
+        "areaID": 139,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Pamela Redpath",
+            "entityID": 10926
+          }
+        ],
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Pamela's Doll",
+            "entityID": 12885
+          }
+        ],
+        "side": "Both",
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Pamela Redpath",
+            "entityID": 10926
+          }
+        ],
+        "xp": 2800,
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Actual hand-in is the assembled item only; components remain independent work goals at their existing supported areas, not extra hand-in items. Assembly mechanism/work area remains unknown; do not substitute the receiver or force all material stages complete. Exact title/level/minimum, typed objectives/sourceItemId and requiredSourceItems facts; verified 24 hashes 2026-10-08, converted-baseline; research/western-plaguelands-2026-10-08.",
+        "foreverStatus": "unchanged",
+        "raceMask": 0,
+        "minLevel": 50,
+        "requirementSource": "Wowhead Forever objective table",
+        "objectiveLocationsIncomplete": true,
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Pamela's Doll",
+              "entityID": 12885
+            },
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Pamela's Doll's Head",
+              "entityID": 12886
+            },
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Pamela's Doll's Left Side",
+              "entityID": 12887
+            },
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Pamela's Doll's Right Side",
+              "entityID": 12888
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Pamela Redpath",
+              "entityID": 10926
+            }
+          ],
+          "provided": {},
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Pamela Redpath",
+              "entityID": 10926
+            }
+          ]
+        },
+        "locationSource": "Wowhead Forever",
+        "categoryPath": "eastern-kingdoms/eastern-plaguelands"
+      }
+    },
+    "5223": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1422,
+        "objectives": {},
+        "startRefs": [
+          {
+            "entityType": "object",
+            "name": "Scourge Cauldron",
+            "entityID": 176393
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Filled Writhing Haunt Bottle",
+            "entityID": 13192
+          }
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Filled Writhing Haunt Bottle",
+            "entityID": 13192
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Filled Writhing Haunt Bottle",
+            "itemID": 13192
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "starts": [
+          {
+            "entityType": "object",
+            "mapID": 1422,
+            "name": "Scourge Cauldron",
+            "y": 0.6561,
+            "entityID": 176393,
+            "x": 0.5302,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 28
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1422,
+            "entityID": 11053,
+            "npc": true,
+            "sourceZone": "Western Plaguelands",
+            "x": 0.428,
+            "name": "High Priestess MacDonnell",
+            "sourceAreaID": 28,
+            "y": 0.8440000000000001
+          }
+        ],
+        "title": "Return to Chillwind Camp",
+        "level": 55,
+        "areaID": 28,
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Filled Writhing Haunt Bottle",
+            "entityID": 13192
+          }
+        ],
+        "side": "Alliance",
+        "prerequisiteAny": [
+          5222
+        ],
+        "money": 8500,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "High Priestess MacDonnell",
+            "entityID": 11053
+          }
+        ],
+        "xp": 2800,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 50,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 4294967373,
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Filled Writhing Haunt Bottle",
+              "entityID": 13192
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "object",
+              "name": "Scourge Cauldron",
+              "entityID": 176393
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "High Priestess MacDonnell",
+              "entityID": 11053
+            }
+          ]
+        },
+        "objectiveLocationsIncomplete": true,
+        "categoryPath": "eastern-kingdoms/western-plaguelands"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1422,
+        "startRefs": [
+          {
+            "entityType": "object",
+            "name": "Scourge Cauldron",
+            "entityID": 176393
+          }
+        ],
+        "requirements": {},
+        "objectives": {},
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Filled Writhing Haunt Bottle",
+            "itemID": 13192
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Filled Writhing Haunt Bottle",
+            "entityID": 13192
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1422,
+            "action": "talk",
+            "entityID": 11053,
+            "npc": true,
+            "sourceZone": "Western Plaguelands",
+            "x": 0.428,
+            "name": "High Priestess MacDonnell",
+            "sourceAreaID": 28,
+            "y": 0.8440000000000001
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "object",
+            "mapID": 1422,
+            "name": "Scourge Cauldron",
+            "y": 0.6561,
+            "entityID": 176393,
+            "x": 0.5302,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 28
+          }
+        ],
+        "level": 55,
+        "areaID": 28,
+        "title": "Return to Chillwind Camp",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 4294967373,
+        "side": "Alliance",
+        "prerequisiteAny": [
+          5222
+        ],
+        "money": 8500,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "High Priestess MacDonnell",
+            "entityID": 11053
+          }
+        ],
+        "xp": 2800,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 50,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied item delivery; retain actual hand-in item/count, faction/class identity and preceding hand-in. No independent work removed. Exact sourceItemId 13192 and giver/receiver joins, verified 24 hashes 2026-10-08; converted-baseline; research/western-plaguelands-2026-10-08.",
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "object",
+              "name": "Scourge Cauldron",
+              "entityID": 176393
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Filled Writhing Haunt Bottle",
+              "entityID": 13192
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "High Priestess MacDonnell",
+              "entityID": 11053
+            }
+          ]
+        },
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "categoryPath": "eastern-kingdoms/western-plaguelands"
+      }
+    },
+    "5232": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1422,
+        "objectives": {},
+        "startRefs": [
+          {
+            "entityType": "object",
+            "name": "Scourge Cauldron",
+            "entityID": 177289
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Filled Dalson's Tears Bottle",
+            "entityID": 13191
+          }
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Filled Dalson's Tears Bottle",
+            "entityID": 13191
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Filled Dalson's Tears Bottle",
+            "itemID": 13191
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "starts": [
+          {
+            "entityType": "object",
+            "mapID": 1422,
+            "name": "Scourge Cauldron",
+            "y": 0.519,
+            "entityID": 177289,
+            "x": 0.4618,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 28
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "entityID": 11055,
+            "npc": true,
+            "sourceZone": "Tirisfal Glades",
+            "x": 0.83,
+            "name": "Shadow Priestess Vandis",
+            "sourceAreaID": 85,
+            "y": 0.718
+          }
+        ],
+        "title": "Return to the Bulwark",
+        "level": 55,
+        "areaID": 28,
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Filled Dalson's Tears Bottle",
+            "entityID": 13191
+          }
+        ],
+        "side": "Horde",
+        "prerequisiteAny": [
+          5231
+        ],
+        "money": 8500,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Shadow Priestess Vandis",
+            "entityID": 11055
+          }
+        ],
+        "xp": 2800,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          2,
+          5,
+          6,
+          8,
+          96
+        ],
+        "minLevel": 50,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 8589934770,
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Filled Dalson's Tears Bottle",
+              "entityID": 13191
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "object",
+              "name": "Scourge Cauldron",
+              "entityID": 177289
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Shadow Priestess Vandis",
+              "entityID": 11055
+            }
+          ]
+        },
+        "objectiveLocationsIncomplete": true,
+        "categoryPath": "eastern-kingdoms/western-plaguelands"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1422,
+        "startRefs": [
+          {
+            "entityType": "object",
+            "name": "Scourge Cauldron",
+            "entityID": 177289
+          }
+        ],
+        "requirements": {},
+        "objectives": {},
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Filled Dalson's Tears Bottle",
+            "itemID": 13191
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Filled Dalson's Tears Bottle",
+            "entityID": 13191
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "action": "talk",
+            "entityID": 11055,
+            "npc": true,
+            "sourceZone": "Tirisfal Glades",
+            "x": 0.83,
+            "name": "Shadow Priestess Vandis",
+            "sourceAreaID": 85,
+            "y": 0.718
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "object",
+            "mapID": 1422,
+            "name": "Scourge Cauldron",
+            "y": 0.519,
+            "entityID": 177289,
+            "x": 0.4618,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 28
+          }
+        ],
+        "level": 55,
+        "areaID": 28,
+        "title": "Return to the Bulwark",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 8589934770,
+        "side": "Horde",
+        "prerequisiteAny": [
+          5231
+        ],
+        "money": 8500,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Shadow Priestess Vandis",
+            "entityID": 11055
+          }
+        ],
+        "xp": 2800,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          2,
+          5,
+          6,
+          8,
+          96
+        ],
+        "minLevel": 50,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied item delivery; retain actual hand-in item/count, faction/class identity and preceding hand-in. No independent work removed. Exact sourceItemId 13191 and giver/receiver joins, verified 24 hashes 2026-10-08; converted-baseline; research/western-plaguelands-2026-10-08.",
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "object",
+              "name": "Scourge Cauldron",
+              "entityID": 177289
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Filled Dalson's Tears Bottle",
+              "entityID": 13191
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Shadow Priestess Vandis",
+              "entityID": 11055
+            }
+          ]
+        },
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "categoryPath": "eastern-kingdoms/western-plaguelands"
+      }
+    },
+    "5234": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1422,
+        "objectives": {},
+        "startRefs": [
+          {
+            "entityType": "object",
+            "name": "Scourge Cauldron",
+            "entityID": 176393
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Filled Writhing Haunt Bottle",
+            "entityID": 13192
+          }
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Filled Writhing Haunt Bottle",
+            "entityID": 13192
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Filled Writhing Haunt Bottle",
+            "itemID": 13192
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "starts": [
+          {
+            "entityType": "object",
+            "mapID": 1422,
+            "name": "Scourge Cauldron",
+            "y": 0.6561,
+            "entityID": 176393,
+            "x": 0.5302,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 28
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "entityID": 11055,
+            "npc": true,
+            "sourceZone": "Tirisfal Glades",
+            "x": 0.83,
+            "name": "Shadow Priestess Vandis",
+            "sourceAreaID": 85,
+            "y": 0.718
+          }
+        ],
+        "title": "Return to the Bulwark",
+        "level": 55,
+        "areaID": 28,
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Filled Writhing Haunt Bottle",
+            "entityID": 13192
+          }
+        ],
+        "side": "Horde",
+        "prerequisiteAny": [
+          5233
+        ],
+        "money": 8500,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Shadow Priestess Vandis",
+            "entityID": 11055
+          }
+        ],
+        "xp": 2800,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          2,
+          5,
+          6,
+          8,
+          96
+        ],
+        "minLevel": 50,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 8589934770,
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Filled Writhing Haunt Bottle",
+              "entityID": 13192
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "object",
+              "name": "Scourge Cauldron",
+              "entityID": 176393
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Shadow Priestess Vandis",
+              "entityID": 11055
+            }
+          ]
+        },
+        "objectiveLocationsIncomplete": true,
+        "categoryPath": "eastern-kingdoms/western-plaguelands"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1422,
+        "startRefs": [
+          {
+            "entityType": "object",
+            "name": "Scourge Cauldron",
+            "entityID": 176393
+          }
+        ],
+        "requirements": {},
+        "objectives": {},
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Filled Writhing Haunt Bottle",
+            "itemID": 13192
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Filled Writhing Haunt Bottle",
+            "entityID": 13192
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "action": "talk",
+            "entityID": 11055,
+            "npc": true,
+            "sourceZone": "Tirisfal Glades",
+            "x": 0.83,
+            "name": "Shadow Priestess Vandis",
+            "sourceAreaID": 85,
+            "y": 0.718
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "object",
+            "mapID": 1422,
+            "name": "Scourge Cauldron",
+            "y": 0.6561,
+            "entityID": 176393,
+            "x": 0.5302,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 28
+          }
+        ],
+        "level": 55,
+        "areaID": 28,
+        "title": "Return to the Bulwark",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 8589934770,
+        "side": "Horde",
+        "prerequisiteAny": [
+          5233
+        ],
+        "money": 8500,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Shadow Priestess Vandis",
+            "entityID": 11055
+          }
+        ],
+        "xp": 2800,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          2,
+          5,
+          6,
+          8,
+          96
+        ],
+        "minLevel": 50,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied item delivery; retain actual hand-in item/count, faction/class identity and preceding hand-in. No independent work removed. Exact sourceItemId 13192 and giver/receiver joins, verified 24 hashes 2026-10-08; converted-baseline; research/western-plaguelands-2026-10-08.",
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "object",
+              "name": "Scourge Cauldron",
+              "entityID": 176393
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Filled Writhing Haunt Bottle",
+              "entityID": 13192
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Shadow Priestess Vandis",
+              "entityID": 11055
+            }
+          ]
+        },
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "categoryPath": "eastern-kingdoms/western-plaguelands"
+      }
+    },
+    "5236": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1422,
+        "objectives": {},
+        "startRefs": [
+          {
+            "entityType": "object",
+            "name": "Scourge Cauldron",
+            "entityID": 176392
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Filled Gahrron's Withering Bottle",
+            "entityID": 13193
+          }
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Filled Gahrron's Withering Bottle",
+            "entityID": 13193
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Filled Gahrron's Withering Bottle",
+            "itemID": 13193
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "starts": [
+          {
+            "entityType": "object",
+            "mapID": 1422,
+            "name": "Scourge Cauldron",
+            "y": 0.5847,
+            "entityID": 176392,
+            "x": 0.6254,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 28
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "entityID": 11055,
+            "npc": true,
+            "sourceZone": "Tirisfal Glades",
+            "x": 0.83,
+            "name": "Shadow Priestess Vandis",
+            "sourceAreaID": 85,
+            "y": 0.718
+          }
+        ],
+        "title": "Return to the Bulwark",
+        "level": 58,
+        "areaID": 28,
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Filled Gahrron's Withering Bottle",
+            "entityID": 13193
+          }
+        ],
+        "side": "Horde",
+        "prerequisiteAny": [
+          5235
+        ],
+        "money": 9000,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Shadow Priestess Vandis",
+            "entityID": 11055
+          }
+        ],
+        "xp": 3100,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          2,
+          5,
+          6,
+          8,
+          96
+        ],
+        "minLevel": 50,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 8589934770,
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Filled Gahrron's Withering Bottle",
+              "entityID": 13193
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "object",
+              "name": "Scourge Cauldron",
+              "entityID": 176392
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Shadow Priestess Vandis",
+              "entityID": 11055
+            }
+          ]
+        },
+        "objectiveLocationsIncomplete": true,
+        "categoryPath": "eastern-kingdoms/western-plaguelands"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1422,
+        "startRefs": [
+          {
+            "entityType": "object",
+            "name": "Scourge Cauldron",
+            "entityID": 176392
+          }
+        ],
+        "requirements": {},
+        "objectives": {},
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Filled Gahrron's Withering Bottle",
+            "itemID": 13193
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Filled Gahrron's Withering Bottle",
+            "entityID": 13193
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "action": "talk",
+            "entityID": 11055,
+            "npc": true,
+            "sourceZone": "Tirisfal Glades",
+            "x": 0.83,
+            "name": "Shadow Priestess Vandis",
+            "sourceAreaID": 85,
+            "y": 0.718
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "object",
+            "mapID": 1422,
+            "name": "Scourge Cauldron",
+            "y": 0.5847,
+            "entityID": 176392,
+            "x": 0.6254,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 28
+          }
+        ],
+        "level": 58,
+        "areaID": 28,
+        "title": "Return to the Bulwark",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 8589934770,
+        "side": "Horde",
+        "prerequisiteAny": [
+          5235
+        ],
+        "money": 9000,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Shadow Priestess Vandis",
+            "entityID": 11055
+          }
+        ],
+        "xp": 3100,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          2,
+          5,
+          6,
+          8,
+          96
+        ],
+        "minLevel": 50,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied item delivery; retain actual hand-in item/count, faction/class identity and preceding hand-in. No independent work removed. Exact sourceItemId 13193 and giver/receiver joins, verified 24 hashes 2026-10-08; converted-baseline; research/western-plaguelands-2026-10-08.",
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "object",
+              "name": "Scourge Cauldron",
+              "entityID": 176392
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Filled Gahrron's Withering Bottle",
+              "entityID": 13193
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Shadow Priestess Vandis",
+              "entityID": 11055
+            }
+          ]
+        },
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "categoryPath": "eastern-kingdoms/western-plaguelands"
+      }
+    },
+    "5464": {
+      "before": {
+        "prerequisitesRead": true,
+        "zone": "Eastern Plaguelands",
+        "requirements": {},
+        "level": 60,
+        "areaID": 139,
+        "previousQuest": 5463,
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Leonid Barthalomew the Revered",
+            "entityID": 11036
+          }
+        ],
+        "xp": 8300,
+        "questType": "Elite",
+        "minLevel": 57,
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "object",
+              "name": "Menethil's Gift",
+              "entityID": 176631
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Soulbound Keepsake",
+              "entityID": 13624
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Leonid Barthalomew the Revered",
+              "entityID": 11036
+            }
+          ]
+        },
+        "objectiveLocationsIncomplete": true,
+        "categoryPath": "eastern-kingdoms/eastern-plaguelands",
+        "raceMask": 0,
+        "mapID": 1423,
+        "startRefs": [
+          {
+            "entityType": "object",
+            "name": "Menethil's Gift",
+            "entityID": 176631
+          }
+        ],
+        "seriesRoot": 5461,
+        "requiredItems": {},
+        "ends": [
+          {
+            "y": 0.578,
+            "mapID": 1423,
+            "name": "Leonid Barthalomew the Revered",
+            "entityID": 11036,
+            "npc": true,
+            "x": 0.816
+          }
+        ],
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "side": "Both",
+        "objectives": {},
+        "series": [
+          5461,
+          5462,
+          5463,
+          5464,
+          5465,
+          5466
+        ],
+        "foreverStatus": "unchanged",
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Soulbound Keepsake",
+            "entityID": 13624
+          }
+        ],
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "title": "Menethil's Gift",
+        "classMask": 0,
+        "locationSource": "Wowhead Forever",
+        "seriesPosition": 4
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "zone": "Eastern Plaguelands",
+        "requirements": {},
+        "level": 60,
+        "areaID": 139,
+        "previousQuest": 5463,
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Leonid Barthalomew the Revered",
+            "entityID": 11036
+          }
+        ],
+        "xp": 8300,
+        "questType": "Elite",
+        "minLevel": 57,
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "object",
+              "name": "Menethil's Gift",
+              "entityID": 176631
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Soulbound Keepsake",
+              "entityID": 13624
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Leonid Barthalomew the Revered",
+              "entityID": 11036
+            }
+          ]
+        },
+        "objectiveLocationsIncomplete": false,
+        "categoryPath": "eastern-kingdoms/eastern-plaguelands",
+        "raceMask": 0,
+        "mapID": 1423,
+        "startRefs": [
+          {
+            "entityType": "object",
+            "name": "Menethil's Gift",
+            "entityID": 176631
+          }
+        ],
+        "seriesRoot": 5461,
+        "requiredItems": {},
+        "ends": [
+          {
+            "y": 0.578,
+            "mapID": 1423,
+            "name": "Leonid Barthalomew the Revered",
+            "entityID": 11036,
+            "npc": true,
+            "x": 0.816
+          }
+        ],
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "side": "Both",
+        "title": "Menethil's Gift",
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1423,
+            "action": "talk",
+            "y": 0.578,
+            "entityID": 11036,
+            "x": 0.816,
+            "npc": true,
+            "name": "Leonid Barthalomew the Revered"
+          }
+        ],
+        "series": [
+          5461,
+          5462,
+          5463,
+          5464,
+          5465,
+          5466
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Soulbound Keepsake",
+            "entityID": 13624
+          }
+        ],
+        "foreverStatus": "unchanged",
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied Soulbound Keepsake delivery to Leonid: map known conversation work at the existing return point. Keep missing Scholomance object pickup explicit; no outdoor or dungeon coordinate invented and no new item count introduced. Exact title/level/minimum, typed objectives/sourceItemId and requiredSourceItems facts; verified 24 hashes 2026-10-08, converted-baseline; research/western-plaguelands-2026-10-08.",
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "classMask": 0,
+        "seriesPosition": 4,
+        "locationSource": "Wowhead Forever",
+        "npcTargets": [
+          {
+            "entityID": 11036,
+            "npc": true,
+            "action": "talk",
+            "name": "Leonid Barthalomew the Revered"
+          }
+        ]
+      }
+    },
+    "5465": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1422,
+        "objectives": {},
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Leonid Barthalomew the Revered",
+            "entityID": 11036
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Soulbound Keepsake",
+            "entityID": 13624
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1423,
+            "entityID": 11036,
+            "npc": true,
+            "y": 0.4829,
+            "x": 0.7189,
+            "name": "Leonid Barthalomew the Revered",
+            "sourceAreaID": 139,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Soulbound Keepsake",
+            "itemID": 13624
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "title": "Soulbound Keepsake",
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1422,
+            "entityID": 11286,
+            "npc": true,
+            "sourceZone": "Western Plaguelands",
+            "x": 0.7040000000000001,
+            "name": "Magistrate Marduke",
+            "sourceAreaID": 28,
+            "y": 0.74
+          }
+        ],
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "level": 60,
+        "areaID": 28,
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "prerequisiteAny": [
+          5464
+        ],
+        "side": "Both",
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Soulbound Keepsake",
+            "entityID": 13624
+          }
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Magistrate Marduke",
+            "entityID": 11286
+          }
+        ],
+        "xp": 4950,
+        "questType": "Elite",
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": {},
+        "minLevel": 57,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 0,
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Soulbound Keepsake",
+              "entityID": 13624
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Leonid Barthalomew the Revered",
+              "entityID": 11036
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Magistrate Marduke",
+              "entityID": 11286
+            }
+          ]
+        },
+        "objectiveLocationsIncomplete": true,
+        "categoryPath": "eastern-kingdoms/western-plaguelands"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1422,
+        "objectives": {},
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Leonid Barthalomew the Revered",
+            "entityID": 11036
+          }
+        ],
+        "requirements": {},
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Soulbound Keepsake",
+            "entityID": 13624
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Soulbound Keepsake",
+            "itemID": 13624
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1423,
+            "entityID": 11036,
+            "npc": true,
+            "y": 0.4829,
+            "x": 0.7189,
+            "name": "Leonid Barthalomew the Revered",
+            "sourceAreaID": 139,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1422,
+            "action": "talk",
+            "entityID": 11286,
+            "npc": true,
+            "sourceZone": "Western Plaguelands",
+            "x": 0.7040000000000001,
+            "name": "Magistrate Marduke",
+            "sourceAreaID": 28,
+            "y": 0.74
+          }
+        ],
+        "title": "Soulbound Keepsake",
+        "level": 60,
+        "areaID": 28,
+        "raceMask": 0,
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "side": "Both",
+        "prerequisiteAny": [
+          5464
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Magistrate Marduke",
+            "entityID": 11286
+          }
+        ],
+        "xp": 4950,
+        "questType": "Elite",
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": {},
+        "minLevel": 57,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied item delivery; retain actual hand-in item/count, faction/class identity and preceding hand-in. No independent work removed. Exact sourceItemId 13624 and giver/receiver joins, verified 24 hashes 2026-10-08; converted-baseline; research/western-plaguelands-2026-10-08.",
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Leonid Barthalomew the Revered",
+              "entityID": 11036
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Soulbound Keepsake",
+              "entityID": 13624
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Magistrate Marduke",
+              "entityID": 11286
+            }
+          ]
+        },
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "categoryPath": "eastern-kingdoms/western-plaguelands"
+      }
+    },
+    "5514": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1422,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Apothecary Dithers",
+            "entityID": 11057
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Imbued Skeletal Fragments",
+            "entityID": 14628
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Imbued Skeletal Fragments",
+            "itemID": 14628
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "objectives": {},
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1446,
+            "entityID": 5411,
+            "npc": true,
+            "sourceZone": "Tanaris",
+            "x": 0.514,
+            "name": "Krinkle Goodsteel",
+            "sourceAreaID": 440,
+            "y": 0.28800000000000003
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "entityID": 11057,
+            "npc": true,
+            "sourceZone": "Tirisfal Glades",
+            "x": 0.8320000000000001,
+            "name": "Apothecary Dithers",
+            "sourceAreaID": 85,
+            "y": 0.6920000000000001
+          }
+        ],
+        "level": 57,
+        "areaID": 28,
+        "title": "Mold Rhymes With...",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "side": "Horde",
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Imbued Skeletal Fragments",
+            "entityID": 14628
+          }
+        ],
+        "prerequisiteAny": [
+          964
+        ],
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Krinkle Goodsteel",
+            "entityID": 5411
+          }
+        ],
+        "xp": 600,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          2,
+          5,
+          6,
+          8,
+          96
+        ],
+        "minLevel": 55,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 8589934770,
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Imbued Skeletal Fragments",
+              "entityID": 14628
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Apothecary Dithers",
+              "entityID": 11057
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Krinkle Goodsteel",
+              "entityID": 5411
+            }
+          ]
+        },
+        "objectiveLocationsIncomplete": true,
+        "categoryPath": "eastern-kingdoms/western-plaguelands"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1422,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Apothecary Dithers",
+            "entityID": 11057
+          }
+        ],
+        "requirements": {},
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Imbued Skeletal Fragments",
+            "itemID": 14628
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "objectives": {},
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1446,
+            "action": "talk",
+            "entityID": 5411,
+            "npc": true,
+            "sourceZone": "Tanaris",
+            "x": 0.514,
+            "name": "Krinkle Goodsteel",
+            "sourceAreaID": 440,
+            "y": 0.28800000000000003
+          }
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Imbued Skeletal Fragments",
+            "entityID": 14628
+          }
+        ],
+        "level": 57,
+        "areaID": 28,
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "entityID": 11057,
+            "npc": true,
+            "sourceZone": "Tirisfal Glades",
+            "x": 0.8320000000000001,
+            "name": "Apothecary Dithers",
+            "sourceAreaID": 85,
+            "y": 0.6920000000000001
+          }
+        ],
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "title": "Mold Rhymes With...",
+        "side": "Horde",
+        "raceMask": 8589934770,
+        "prerequisiteAny": [
+          964
+        ],
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Krinkle Goodsteel",
+            "entityID": 5411
+          }
+        ],
+        "xp": 600,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          2,
+          5,
+          6,
+          8,
+          96
+        ],
+        "minLevel": 55,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied item delivery; retain actual hand-in item/count, faction/class identity and preceding hand-in. No independent work removed. This handoff also requires 15 gold; source cost is retained in evidence and player preparation checklist, not repurposed as reward money or invented farming work. Money-aware preparation needs shared-module coordination. Exact sourceItemId 14628 and giver/receiver joins, verified 24 hashes 2026-10-08; converted-baseline; research/western-plaguelands-2026-10-08.",
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Apothecary Dithers",
+              "entityID": 11057
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Imbued Skeletal Fragments",
+              "entityID": 14628
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Krinkle Goodsteel",
+              "entityID": 5411
+            }
+          ]
+        },
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "categoryPath": "eastern-kingdoms/western-plaguelands"
+      }
+    },
+    "5538": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1422,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Alchemist Arbington",
+            "entityID": 11056
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Imbued Skeletal Fragments",
+            "entityID": 14628
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Imbued Skeletal Fragments",
+            "itemID": 14628
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "objectives": {},
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1446,
+            "entityID": 5411,
+            "npc": true,
+            "sourceZone": "Tanaris",
+            "x": 0.514,
+            "name": "Krinkle Goodsteel",
+            "sourceAreaID": 440,
+            "y": 0.28800000000000003
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1422,
+            "entityID": 11056,
+            "npc": true,
+            "y": 0.8377,
+            "x": 0.4266,
+            "name": "Alchemist Arbington",
+            "sourceAreaID": 28,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "level": 57,
+        "areaID": 28,
+        "title": "Mold Rhymes With...",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "side": "Alliance",
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Imbued Skeletal Fragments",
+            "entityID": 14628
+          }
+        ],
+        "prerequisiteAny": [
+          5537
+        ],
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Krinkle Goodsteel",
+            "entityID": 5411
+          }
+        ],
+        "xp": 600,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 55,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 4294967373,
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Imbued Skeletal Fragments",
+              "entityID": 14628
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Alchemist Arbington",
+              "entityID": 11056
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Krinkle Goodsteel",
+              "entityID": 5411
+            }
+          ]
+        },
+        "objectiveLocationsIncomplete": true,
+        "categoryPath": "eastern-kingdoms/western-plaguelands"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1422,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Alchemist Arbington",
+            "entityID": 11056
+          }
+        ],
+        "requirements": {},
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Imbued Skeletal Fragments",
+            "itemID": 14628
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "objectives": {},
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1446,
+            "action": "talk",
+            "entityID": 5411,
+            "npc": true,
+            "sourceZone": "Tanaris",
+            "x": 0.514,
+            "name": "Krinkle Goodsteel",
+            "sourceAreaID": 440,
+            "y": 0.28800000000000003
+          }
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Imbued Skeletal Fragments",
+            "entityID": 14628
+          }
+        ],
+        "level": 57,
+        "areaID": 28,
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1422,
+            "entityID": 11056,
+            "npc": true,
+            "y": 0.8377,
+            "x": 0.4266,
+            "name": "Alchemist Arbington",
+            "sourceAreaID": 28,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "title": "Mold Rhymes With...",
+        "side": "Alliance",
+        "raceMask": 4294967373,
+        "prerequisiteAny": [
+          5537
+        ],
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Krinkle Goodsteel",
+            "entityID": 5411
+          }
+        ],
+        "xp": 600,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 55,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied item delivery; retain actual hand-in item/count, faction/class identity and preceding hand-in. No independent work removed. This handoff also requires 15 gold; source cost is retained in evidence and player preparation checklist, not repurposed as reward money or invented farming work. Money-aware preparation needs shared-module coordination. Exact sourceItemId 14628 and giver/receiver joins, verified 24 hashes 2026-10-08; converted-baseline; research/western-plaguelands-2026-10-08.",
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Alchemist Arbington",
+              "entityID": 11056
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Imbued Skeletal Fragments",
+              "entityID": 14628
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Krinkle Goodsteel",
+              "entityID": 5411
+            }
+          ]
+        },
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "categoryPath": "eastern-kingdoms/western-plaguelands"
+      }
+    },
+    "5861": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1422,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Tirion Fordring",
+            "entityID": 1855
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Tirion's Gift",
+            "entityID": 14872
+          }
+        ],
+        "objectives": {},
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Tirion's Gift",
+            "itemID": 14872
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1423,
+            "entityID": 1855,
+            "npc": true,
+            "y": 0.3557,
+            "x": 0.0516,
+            "name": "Tirion Fordring",
+            "sourceAreaID": 139,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1422,
+            "entityID": 11872,
+            "npc": true,
+            "y": 0.7785,
+            "x": 0.5079,
+            "name": "Myranda the Hag",
+            "sourceAreaID": 28,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "title": "Find Myranda",
+        "level": 60,
+        "areaID": 28,
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Tirion's Gift",
+            "entityID": 14872
+          }
+        ],
+        "side": "Both",
+        "prerequisiteAny": [
+          5848
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Myranda the Hag",
+            "entityID": 11872
+          }
+        ],
+        "xp": 4950,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": {},
+        "minLevel": 52,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 0,
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Tirion's Gift",
+              "entityID": 14872
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Tirion Fordring",
+              "entityID": 1855
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Myranda the Hag",
+              "entityID": 11872
+            }
+          ]
+        },
+        "objectiveLocationsIncomplete": true,
+        "categoryPath": "eastern-kingdoms/western-plaguelands"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1422,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Tirion Fordring",
+            "entityID": 1855
+          }
+        ],
+        "requirements": {},
+        "objectives": {},
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Tirion's Gift",
+            "itemID": 14872
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Tirion's Gift",
+            "entityID": 14872
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1422,
+            "action": "talk",
+            "entityID": 11872,
+            "npc": true,
+            "y": 0.7785,
+            "x": 0.5079,
+            "name": "Myranda the Hag",
+            "sourceAreaID": 28,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1423,
+            "entityID": 1855,
+            "npc": true,
+            "y": 0.3557,
+            "x": 0.0516,
+            "name": "Tirion Fordring",
+            "sourceAreaID": 139,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "level": 60,
+        "areaID": 28,
+        "title": "Find Myranda",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 0,
+        "side": "Both",
+        "prerequisiteAny": [
+          5848
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Myranda the Hag",
+            "entityID": 11872
+          }
+        ],
+        "xp": 4950,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": {},
+        "minLevel": 52,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied item delivery; retain actual hand-in item/count, faction/class identity and preceding hand-in. No independent work removed. Exact sourceItemId 14872 and giver/receiver joins, verified 24 hashes 2026-10-08; converted-baseline; research/western-plaguelands-2026-10-08.",
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Tirion Fordring",
+              "entityID": 1855
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Tirion's Gift",
+              "entityID": 14872
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Myranda the Hag",
+              "entityID": 11872
+            }
+          ]
+        },
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "categoryPath": "eastern-kingdoms/western-plaguelands"
+      }
+    },
+    "8416": {
+      "before": {
+        "prerequisitesRead": true,
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Inert Scourgestone",
+            "entityID": 20612
+          }
+        ],
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "High Priest Thel'danis",
+            "entityID": 1854
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Inert Scourgestone",
+            "entityID": 20612
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Inert Scourgestone",
+            "itemID": 20612
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "classMask": 2,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1422,
+            "entityID": 10838,
+            "npc": true,
+            "sourceZone": "Western Plaguelands",
+            "x": 0.428,
+            "name": "Commander Ashlam Valorfist",
+            "sourceAreaID": 28,
+            "y": 0.84
+          }
+        ],
+        "objectives": {},
+        "level": 52,
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1422,
+            "entityID": 1854,
+            "npc": true,
+            "y": 0.8327,
+            "x": 0.5205,
+            "name": "High Priest Thel'danis",
+            "sourceAreaID": 28,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "title": "Inert Scourgestones",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "side": "Alliance",
+        "prerequisiteAny": [
+          8414
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Commander Ashlam Valorfist",
+            "entityID": 10838
+          }
+        ],
+        "xp": 2550,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          1,
+          3
+        ],
+        "minLevel": 50,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 5,
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Inert Scourgestone",
+              "entityID": 20612
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "High Priest Thel'danis",
+              "entityID": 1854
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Commander Ashlam Valorfist",
+              "entityID": 10838
+            }
+          ]
+        },
+        "objectiveLocationsIncomplete": true,
+        "categoryPath": "classes/paladin"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "High Priest Thel'danis",
+            "entityID": 1854
+          }
+        ],
+        "requirements": {},
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Inert Scourgestone",
+            "itemID": 20612
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "objectives": {},
+        "classMask": 2,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1422,
+            "action": "talk",
+            "entityID": 10838,
+            "npc": true,
+            "sourceZone": "Western Plaguelands",
+            "x": 0.428,
+            "name": "Commander Ashlam Valorfist",
+            "sourceAreaID": 28,
+            "y": 0.84
+          }
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Inert Scourgestone",
+            "entityID": 20612
+          }
+        ],
+        "level": 52,
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1422,
+            "entityID": 1854,
+            "npc": true,
+            "y": 0.8327,
+            "x": 0.5205,
+            "name": "High Priest Thel'danis",
+            "sourceAreaID": 28,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "title": "Inert Scourgestones",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 5,
+        "side": "Alliance",
+        "prerequisiteAny": [
+          8414
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Commander Ashlam Valorfist",
+            "entityID": 10838
+          }
+        ],
+        "xp": 2550,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          1,
+          3
+        ],
+        "minLevel": 50,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied item delivery; retain actual hand-in item/count, faction/class identity and preceding hand-in. No independent work removed. Exact sourceItemId 20612 and giver/receiver joins, verified 24 hashes 2026-10-08; converted-baseline; research/western-plaguelands-2026-10-08.",
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "High Priest Thel'danis",
+              "entityID": 1854
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Inert Scourgestone",
+              "entityID": 20612
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Commander Ashlam Valorfist",
+              "entityID": 10838
+            }
+          ]
+        },
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "categoryPath": "classes/paladin"
+      }
+    }
+  }
+}

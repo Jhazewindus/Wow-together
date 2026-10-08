@@ -1,7 +1,7 @@
 {
   "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
   "quest_records": 5230,
-  "static_points_checked": 11833,
+  "static_points_checked": 11834,
   "fixed_zone_guides_checked": 152,
   "catalogue_reason_stages_checked": 16848,
   "catalogue_reason_codes": {
@@ -6365,7 +6365,7 @@
       "key": "level-zone:eastern-kingdoms/eastern-plaguelands:levels:51-60",
       "quests": 64,
       "steps": 217,
-      "unknown_location_steps": 22,
+      "unknown_location_steps": 19,
       "missing_location_quest_ids_by_stage": {
         "a": [
           5464,
@@ -6377,11 +6377,8 @@
           5247,
           5252,
           5253,
-          5464,
-          5465,
           5513,
           5517,
-          5861,
           5862,
           6026,
           8946,
@@ -6429,9 +6426,9 @@
       "flow_state_valid": true,
       "quest_log_peak": 13,
       "quest_reward_only_xp_shortfall": 2879810,
-      "uncertain_travel_legs": 70,
-      "estimated_distance_before": 620020.22,
-      "estimated_distance_after": 620020.22
+      "uncertain_travel_legs": 65,
+      "estimated_distance_before": 590030.21,
+      "estimated_distance_after": 590030.21
     },
     {
       "faction": "Alliance",
@@ -8011,27 +8008,20 @@
       "key": "level-zone:eastern-kingdoms/western-plaguelands:levels:51-60",
       "quests": 64,
       "steps": 210,
-      "unknown_location_steps": 20,
+      "unknown_location_steps": 13,
       "missing_location_quest_ids_by_stage": {
         "a": [
           5464
         ],
         "q": [
-          4986,
           5051,
           5149,
           5166,
           5167,
-          5223,
-          5464,
-          5465,
           5507,
           5521,
-          5538,
-          5861,
           5862,
-          6389,
-          8416
+          6389
         ],
         "t": []
       },
@@ -8053,20 +8043,21 @@
       "reason_steps_checked": 210,
       "destination_reason_codes": {
         "class-progression": 4,
+        "early-reward": 1,
         "outside-level-range": 128,
         "prerequisite": 21,
-        "quest-reward": 57
+        "quest-reward": 56
       },
-      "reason_review_steps": 151,
+      "reason_review_steps": 150,
       "cross_zone_reason_steps": 19,
-      "flow_alternatives_evaluated": 30,
-      "flow_loop_changes": 0,
+      "flow_alternatives_evaluated": 84,
+      "flow_loop_changes": 1,
       "flow_state_valid": true,
-      "quest_log_peak": 7,
+      "quest_log_peak": 8,
       "quest_reward_only_xp_shortfall": 1226410,
-      "uncertain_travel_legs": 77,
-      "estimated_distance_before": 368317.72,
-      "estimated_distance_after": 368317.72
+      "uncertain_travel_legs": 64,
+      "estimated_distance_before": 335600.3,
+      "estimated_distance_after": 335534.53
     },
     {
       "faction": "Alliance",
@@ -9448,7 +9439,7 @@
       "key": "level-zone:eastern-kingdoms/eastern-plaguelands:levels:51-60",
       "quests": 59,
       "steps": 201,
-      "unknown_location_steps": 20,
+      "unknown_location_steps": 17,
       "missing_location_quest_ids_by_stage": {
         "a": [
           5464,
@@ -9457,11 +9448,8 @@
         "q": [
           5149,
           5206,
-          5464,
-          5465,
           5513,
           5517,
-          5861,
           5862,
           6022,
           6026,
@@ -9508,9 +9496,9 @@
       "flow_state_valid": true,
       "quest_log_peak": 14,
       "quest_reward_only_xp_shortfall": 2861210,
-      "uncertain_travel_legs": 72,
-      "estimated_distance_before": 489041.12,
-      "estimated_distance_after": 487340.09
+      "uncertain_travel_legs": 67,
+      "estimated_distance_before": 459693.6,
+      "estimated_distance_after": 457992.57
     },
     {
       "faction": "Horde",
@@ -11220,26 +11208,18 @@
       "key": "level-zone:eastern-kingdoms/western-plaguelands:levels:51-60",
       "quests": 60,
       "steps": 197,
-      "unknown_location_steps": 21,
+      "unknown_location_steps": 13,
       "missing_location_quest_ids_by_stage": {
         "a": [
           5464
         ],
         "q": [
-          4987,
           5051,
           5149,
           5166,
           5167,
-          5232,
-          5234,
-          5236,
-          5464,
-          5465,
           5504,
-          5514,
           5524,
-          5861,
           5862,
           6390
         ],
@@ -11264,20 +11244,21 @@
       "source_data_gap_free": false,
       "reason_steps_checked": 197,
       "destination_reason_codes": {
+        "early-reward": 1,
         "outside-level-range": 129,
         "prerequisite": 12,
-        "quest-reward": 56
+        "quest-reward": 55
       },
       "reason_review_steps": 152,
       "cross_zone_reason_steps": 31,
-      "flow_alternatives_evaluated": 75,
-      "flow_loop_changes": 1,
+      "flow_alternatives_evaluated": 172,
+      "flow_loop_changes": 2,
       "flow_state_valid": true,
-      "quest_log_peak": 7,
+      "quest_log_peak": 6,
       "quest_reward_only_xp_shortfall": 1240180,
-      "uncertain_travel_legs": 83,
-      "estimated_distance_before": 449137.23,
-      "estimated_distance_after": 447132.64
+      "uncertain_travel_legs": 71,
+      "estimated_distance_before": 407747.98,
+      "estimated_distance_after": 405743.4
     },
     {
       "faction": "Horde",
