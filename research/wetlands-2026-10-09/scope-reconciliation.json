@@ -1,0 +1,20 @@
+{
+  "raw_guard": "Required action scope changed (two newly evidenced action occurrences)",
+  "method": "Keep every old action; add only the actual traversal before its hand-in in each affected chapter. Compare full identical corrected scope, not an optimization gain from missing work.",
+  "additions": [
+    {
+      "key": "level-zone:eastern-kingdoms/wetlands:levels:21-30",
+      "questID": 455,
+      "objectiveKey": "event:455",
+      "inserted_before": "actual 455 hand-in",
+      "old_actions_removed": 0
+    },
+    {
+      "key": "level-zone:eastern-kingdoms/wetlands:levels:31-40",
+      "questID": 455,
+      "objectiveKey": "event:455",
+      "inserted_before": "actual 455 hand-in",
+      "old_actions_removed": 0
+    }
+  ]
+}

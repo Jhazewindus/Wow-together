@@ -1,14 +1,14 @@
 {
   "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
   "quest_records": 5230,
-  "static_points_checked": 11834,
+  "static_points_checked": 11835,
   "fixed_zone_guides_checked": 152,
-  "catalogue_reason_stages_checked": 16848,
+  "catalogue_reason_stages_checked": 16849,
   "catalogue_reason_codes": {
     "class-progression": 1822,
     "level-work": 4459,
     "outside-level-range": 2,
-    "quest-objective": 5221,
+    "quest-objective": 5222,
     "quest-reward": 5313,
     "selected-guide": 31
   },
@@ -8168,7 +8168,7 @@
       "zone": "Wetlands",
       "key": "level-zone:eastern-kingdoms/wetlands:levels:21-30",
       "quests": 53,
-      "steps": 179,
+      "steps": 180,
       "unknown_location_steps": 6,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -8192,32 +8192,32 @@
       ],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
-      "reason_steps_checked": 179,
+      "reason_steps_checked": 180,
       "destination_reason_codes": {
         "class-progression": 8,
         "early-reward": 1,
-        "outside-level-range": 86,
+        "outside-level-range": 87,
         "prerequisite": 46,
         "quest-reward": 37,
         "return-hub": 1
       },
-      "reason_review_steps": 90,
+      "reason_review_steps": 91,
       "cross_zone_reason_steps": 8,
-      "flow_alternatives_evaluated": 104,
+      "flow_alternatives_evaluated": 94,
       "flow_loop_changes": 2,
       "flow_state_valid": true,
       "quest_log_peak": 10,
       "quest_reward_only_xp_shortfall": 211540,
-      "uncertain_travel_legs": 41,
-      "estimated_distance_before": 192303.12,
-      "estimated_distance_after": 192303.12
+      "uncertain_travel_legs": 42,
+      "estimated_distance_before": 195957.74,
+      "estimated_distance_after": 195957.74
     },
     {
       "faction": "Alliance",
       "zone": "Wetlands",
       "key": "level-zone:eastern-kingdoms/wetlands:levels:31-40",
       "quests": 23,
-      "steps": 76,
+      "steps": 77,
       "unknown_location_steps": 15,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -8252,14 +8252,14 @@
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
-      "reason_steps_checked": 76,
+      "reason_steps_checked": 77,
       "destination_reason_codes": {
-        "outside-level-range": 42,
+        "outside-level-range": 43,
         "prerequisite": 14,
         "quest-reward": 19,
         "unlock-loop": 1
       },
-      "reason_review_steps": 47,
+      "reason_review_steps": 48,
       "cross_zone_reason_steps": 6,
       "flow_alternatives_evaluated": 17,
       "flow_loop_changes": 1,
@@ -8267,8 +8267,8 @@
       "quest_log_peak": 8,
       "quest_reward_only_xp_shortfall": 326555,
       "uncertain_travel_legs": 30,
-      "estimated_distance_before": 286967.72,
-      "estimated_distance_after": 286282.51
+      "estimated_distance_before": 288974.71,
+      "estimated_distance_after": 288289.5
     },
     {
       "faction": "Alliance",

@@ -4216,5 +4216,552 @@
         "y": 0.529
       }
     }
+  },
+  {
+    "questID": 281,
+    "title": "Reclaiming Goods",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverObjectDB.lua; Interact with the exact published return object rather than speak to it; keep every mapped point, actual hand-in gate and item relation. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/wetlands-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 20,
+      "level": 25,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [
+          {
+            "y": 0.415,
+            "x": 0.135,
+            "name": "Damaged Crate",
+            "entityID": 261,
+            "mapID": 1437
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [
+          {
+            "y": 0.415,
+            "x": 0.135,
+            "name": "Damaged Crate",
+            "entityID": 261,
+            "mapID": 1437,
+            "entityType": "object",
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 284,
+    "title": "The Search Continues",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverObjectDB.lua; Interact with the exact published return object rather than speak to it; keep every mapped point, actual hand-in gate and item relation. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/wetlands-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 20,
+      "level": 25,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [
+          {
+            "y": 0.381,
+            "x": 0.136,
+            "name": "Sealed Barrel",
+            "entityID": 142151,
+            "mapID": 1437
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [
+          {
+            "y": 0.381,
+            "x": 0.136,
+            "name": "Sealed Barrel",
+            "entityID": 142151,
+            "mapID": 1437,
+            "entityType": "object",
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 285,
+    "title": "Search More Hovels",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverObjectDB.lua; Interact with the exact published return object rather than speak to it; keep every mapped point, actual hand-in gate and item relation. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/wetlands-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 20,
+      "level": 25,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [
+          {
+            "y": 0.349,
+            "x": 0.139,
+            "name": "Half-buried Barrel",
+            "entityID": 259,
+            "mapID": 1437
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [
+          {
+            "y": 0.349,
+            "x": 0.139,
+            "name": "Half-buried Barrel",
+            "entityID": 259,
+            "mapID": 1437,
+            "entityType": "object",
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 631,
+    "title": "The Thandol Span",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverObjectDB.lua; Interact with the exact published return object rather than speak to it; keep every mapped point, actual hand-in gate and item relation. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/wetlands-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 28,
+      "level": 31,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [
+          {
+            "entityType": "object",
+            "mapID": 1437,
+            "name": "Ebenezer Rustlocke's Corpse",
+            "y": 0.0795,
+            "entityID": 2652,
+            "x": 0.5128,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 11
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [
+          {
+            "entityType": "object",
+            "mapID": 1437,
+            "name": "Ebenezer Rustlocke's Corpse",
+            "y": 0.0795,
+            "entityID": 2652,
+            "x": 0.5128,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 11,
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 465,
+    "title": "Nek'rosh's Gambit",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverObjectDB.lua; Use the supplied Dwarven Tinder on the actual Dragonmaw Catapult return object. Do not turn destruction work into a conversation, independent tinder farming or an invented burn count. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/wetlands-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 23,
+      "level": 31,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [
+          {
+            "entityType": "object",
+            "mapID": 1437,
+            "name": "Dragonmaw Catapult",
+            "y": 0.47009999999999996,
+            "entityID": 1609,
+            "x": 0.4746,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 11
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [
+          {
+            "entityType": "object",
+            "mapID": 1437,
+            "name": "Dragonmaw Catapult",
+            "y": 0.47009999999999996,
+            "entityID": 1609,
+            "x": 0.4746,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 11,
+            "action": "use",
+            "useItemName": "Dwarven Tinder",
+            "useItemID": 3339
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 455,
+    "title": "The Algaz Gauntlet",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Retain both counted kill goals and add the separately published Dun Algaz traversal trigger at map 1437 53.72/70.33. No entity or count is invented; current introductory prerequisite is preserved despite the empty converted-baseline gate. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/wetlands-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 19,
+      "level": 21,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantity": 8,
+            "name": "Dragonmaw Scout",
+            "entityID": 2103
+          },
+          {
+            "entityType": "npc",
+            "quantity": 6,
+            "name": "Dragonmaw Grunt",
+            "entityID": 2102
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "sourceObjective": 2102,
+            "mapID": 1437,
+            "action": "kill",
+            "entityID": 2102,
+            "npc": true,
+            "y": 0.698,
+            "objectiveKey": "npc:2102",
+            "name": "Dragonmaw Grunt",
+            "x": 0.5,
+            "quantity": 6
+          },
+          {
+            "sourceObjective": 2103,
+            "mapID": 1437,
+            "action": "kill",
+            "entityID": 2103,
+            "npc": true,
+            "y": 0.7979999999999999,
+            "objectiveKey": "npc:2103",
+            "name": "Dragonmaw Scout",
+            "x": 0.5,
+            "quantity": 8
+          }
+        ],
+        "npcTargets": [
+          {
+            "entityID": 2102,
+            "npc": true,
+            "action": "kill",
+            "name": "Dragonmaw Grunt"
+          },
+          {
+            "entityID": 2103,
+            "npc": true,
+            "action": "kill",
+            "name": "Dragonmaw Scout"
+          }
+        ]
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantity": 8,
+            "name": "Dragonmaw Scout",
+            "entityID": 2103
+          },
+          {
+            "entityType": "npc",
+            "quantity": 6,
+            "name": "Dragonmaw Grunt",
+            "entityID": 2102
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "sourceObjective": 2102,
+            "mapID": 1437,
+            "action": "kill",
+            "entityID": 2102,
+            "npc": true,
+            "y": 0.698,
+            "objectiveKey": "npc:2102",
+            "name": "Dragonmaw Grunt",
+            "x": 0.5,
+            "quantity": 6
+          },
+          {
+            "sourceObjective": 2103,
+            "mapID": 1437,
+            "action": "kill",
+            "entityID": 2103,
+            "npc": true,
+            "y": 0.7979999999999999,
+            "objectiveKey": "npc:2103",
+            "name": "Dragonmaw Scout",
+            "x": 0.5,
+            "quantity": 8
+          },
+          {
+            "mapID": 1437,
+            "x": 0.5372,
+            "y": 0.7033,
+            "name": "Dun Algaz traversal",
+            "action": "event",
+            "locationSource": "Published Forever converted-baseline event area",
+            "objectiveKey": "event:455"
+          }
+        ],
+        "npcTargets": [
+          {
+            "entityID": 2102,
+            "npc": true,
+            "action": "kill",
+            "name": "Dragonmaw Grunt"
+          },
+          {
+            "entityID": 2103,
+            "npc": true,
+            "action": "kill",
+            "name": "Dragonmaw Scout"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 94497,
+    "title": "Call of Water",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/generated/foreverBaseQuest.lua; Retain the explicitly supplied input item separately from the full waterskin objective/output or delivery. No supplied quantity, output quantity, water coordinates or new prerequisite is invented. Class/race gates and unknown filling areas stay unchanged. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/wetlands-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 20,
+      "level": 22,
+      "classMask": 64,
+      "requiredItems": [],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantityUnknown": true,
+            "action": "collect",
+            "entityID": 265734,
+            "name": "Full Brown Waterskin"
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "providedItems": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantityUnknown": true,
+            "action": "collect",
+            "entityID": 265734,
+            "name": "Full Brown Waterskin"
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 265732,
+            "name": "Unfilled Brown Waterskin",
+            "quantityUnknown": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 94499,
+    "title": "Call of Water",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/generated/foreverBaseQuest.lua; Retain the explicitly supplied input item separately from the full waterskin objective/output or delivery. No supplied quantity, output quantity, water coordinates or new prerequisite is invented. Class/race gates and unknown filling areas stay unchanged. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/wetlands-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 20,
+      "level": 22,
+      "classMask": 64,
+      "requiredItems": [],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantityUnknown": true,
+            "action": "collect",
+            "entityID": 265748,
+            "name": "Full Red Waterskin"
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "providedItems": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantityUnknown": true,
+            "action": "collect",
+            "entityID": 265748,
+            "name": "Full Red Waterskin"
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 265747,
+            "name": "Unfilled Red Waterskin",
+            "quantityUnknown": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 94500,
+    "title": "Call of Water",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/generated/foreverBaseQuest.lua; Retain the explicitly supplied input item separately from the full waterskin objective/output or delivery. No supplied quantity, output quantity, water coordinates or new prerequisite is invented. Class/race gates and unknown filling areas stay unchanged. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/wetlands-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 20,
+      "level": 23,
+      "classMask": 64,
+      "requiredItems": [],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantityUnknown": true,
+            "action": "collect",
+            "entityID": 265773,
+            "name": "Full Blue Waterskin"
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "providedItems": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantityUnknown": true,
+            "action": "collect",
+            "entityID": 265773,
+            "name": "Full Blue Waterskin"
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 265772,
+            "name": "Unfilled Blue Waterskin",
+            "quantityUnknown": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 94501,
+    "title": "Call of Water",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/generated/foreverBaseQuest.lua; Retain the explicitly supplied input item separately from the full waterskin objective/output or delivery. No supplied quantity, output quantity, water coordinates or new prerequisite is invented. Class/race gates and unknown filling areas stay unchanged. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/wetlands-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 20,
+      "level": 23,
+      "classMask": 64,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "providedItems": []
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 7810,
+            "name": "Vial of Purest Water",
+            "quantityUnknown": true
+          }
+        ]
+      }
+    }
   }
 ]

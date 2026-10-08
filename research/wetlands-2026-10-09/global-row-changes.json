@@ -1,0 +1,94 @@
+[
+  {
+    "faction": "Alliance",
+    "key": "level-zone:eastern-kingdoms/wetlands:levels:21-30",
+    "changed_fields": {
+      "destination_reason_codes": {
+        "before": {
+          "class-progression": 8,
+          "early-reward": 1,
+          "outside-level-range": 86,
+          "prerequisite": 46,
+          "quest-reward": 37,
+          "return-hub": 1
+        },
+        "after": {
+          "class-progression": 8,
+          "early-reward": 1,
+          "outside-level-range": 87,
+          "prerequisite": 46,
+          "quest-reward": 37,
+          "return-hub": 1
+        }
+      },
+      "estimated_distance_after": {
+        "before": 192303.12,
+        "after": 195957.74
+      },
+      "flow_alternatives_evaluated": {
+        "before": 104,
+        "after": 94
+      },
+      "reason_steps_checked": {
+        "before": 179,
+        "after": 180
+      },
+      "steps": {
+        "before": 179,
+        "after": 180
+      },
+      "estimated_distance_before": {
+        "before": 192303.12,
+        "after": 195957.74
+      },
+      "reason_review_steps": {
+        "before": 90,
+        "after": 91
+      },
+      "uncertain_travel_legs": {
+        "before": 41,
+        "after": 42
+      }
+    }
+  },
+  {
+    "faction": "Alliance",
+    "key": "level-zone:eastern-kingdoms/wetlands:levels:31-40",
+    "changed_fields": {
+      "destination_reason_codes": {
+        "before": {
+          "outside-level-range": 42,
+          "prerequisite": 14,
+          "quest-reward": 19,
+          "unlock-loop": 1
+        },
+        "after": {
+          "outside-level-range": 43,
+          "prerequisite": 14,
+          "quest-reward": 19,
+          "unlock-loop": 1
+        }
+      },
+      "estimated_distance_after": {
+        "before": 286282.51,
+        "after": 288289.5
+      },
+      "reason_steps_checked": {
+        "before": 76,
+        "after": 77
+      },
+      "steps": {
+        "before": 76,
+        "after": 77
+      },
+      "estimated_distance_before": {
+        "before": 286967.72,
+        "after": 288974.71
+      },
+      "reason_review_steps": {
+        "before": 47,
+        "after": 48
+      }
+    }
+  }
+]

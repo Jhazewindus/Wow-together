@@ -1,0 +1,112 @@
+{
+  "applied": false,
+  "source_commit": "e0a6eaa86f181ac99262e34126bcd2ed1a1712d6",
+  "date": "2026-10-09 Europe/Amsterdam",
+  "shared_runtime_modules_authored": false,
+  "water_use_text": [
+    {
+      "questID": 94497,
+      "input_item": 265732,
+      "output_item": 265734,
+      "published_work_context": "below Hervdana cave waterfalls, Wetlands",
+      "exact_work_point": null,
+      "output_quantity": null,
+      "proposal_text": "Fill the Empty Brown Waterskin below the cave waterfalls, then return to Hervdana."
+    },
+    {
+      "questID": 94499,
+      "input_item": 265747,
+      "output_item": 265748,
+      "published_work_context": "Stonewatch Falls by Nightcrawler Murlocs, Redridge",
+      "exact_work_point": null,
+      "output_quantity": null,
+      "proposal_text": "Fill the Empty Red Waterskin at Stonewatch Falls, then return to Hervdana."
+    },
+    {
+      "questID": 94500,
+      "input_item": 265772,
+      "output_item": 265773,
+      "published_work_context": "Astranaar waters, Ashenvale",
+      "exact_work_point": null,
+      "output_quantity": null,
+      "proposal_text": "Fill the Unfilled Blue Waterskin at Astranaar, then return to Hervdana."
+    }
+  ],
+  "water_constraint": "Do not farm empty inputs or substitute the cave NPC for water. Unknown quantities and exact water points remain; no new universal parent gates inferred. Meaningful unlocated use/travel explanations need coordinated shared text support.",
+  "source_gate_conflicts": [
+    {
+      "questID": 455,
+      "current_previousQuest": 468,
+      "converted_preQuestSingle": []
+    },
+    {
+      "questID": 464,
+      "current_previousQuest": 473,
+      "converted_preQuestSingle": []
+    },
+    {
+      "questID": 276,
+      "current_previousQuest": 463,
+      "converted_preQuestSingle": null
+    },
+    {
+      "questID": 484,
+      "current_previousQuest": 469,
+      "converted_preQuestSingle": null,
+      "current_pickup_requirements_unverified": true
+    }
+  ],
+  "gate_constraint": "Preserve current captured chains/uncertainty. Empty/absent converted-baseline fields do not prove present beta offers. Resolve with actual NPC offer/hand-in observations before changing shared eligibility or lifecycle.",
+  "count_conflict": {
+    "questID": 303,
+    "current_Forever_DarkIronDwarf_count": 15,
+    "converted_baseline_prose_count": 10,
+    "current_retained": true
+  },
+  "timer_handoff": {
+    "questID": 647,
+    "published_questFlags": 1,
+    "native_duration_unknown": true,
+    "current_route_timer_constraint_verified": false,
+    "constraint": "Check native timed pickup and direct Southshore delivery before recommending detours. No invented timer duration or coordinated engine change."
+  },
+  "optional_support": {
+    "questID": 378,
+    "catalogue_required_handin": 303,
+    "dungeon_tagged": true,
+    "constraint": "Actual unlock for Stockade quest, not physical instance-access gate. Optional handoff presentation needs coordination."
+  },
+  "ship_constraint": "Keep actual directed Menethil\u2013Theramore and Menethil\u2013Auberdine endpoints/methods. Do not use quest NPC or straight water line as boarding point. Current graph can expose other links; actual beta crossing and safe docks need players.",
+  "route_review": {
+    "scope_additions": "Two occurrences of the actual 455 traversal; no old action removed. Explicit full-scope reconciliation retained.",
+    "chapter21_30_delayed_rewards": [
+      275,
+      295,
+      299,
+      305,
+      471,
+      472,
+      98072
+    ],
+    "uncertain_travel_legs": [
+      41,
+      42
+    ],
+    "shared_optimizer_authored": false
+  },
+  "additional_source_conflicts": {
+    "484": {
+      "current_Forever_quantity": 6,
+      "converted_baseline_prose_quantity": 4,
+      "converted_requiredMinRep": [
+        72,
+        0
+      ],
+      "current_unverified_pickup_retained": true,
+      "current_raceMask": 0,
+      "converted_raceMask": 4294967373,
+      "current_side": "Alliance",
+      "constraint": "Retain current Forever quantity and captured uncertainty; neutral Stormwind reputation condition needs native offer evidence. No race/eligibility change."
+    }
+  }
+}
