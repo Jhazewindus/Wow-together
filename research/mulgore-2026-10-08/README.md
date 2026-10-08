@@ -1,5 +1,7 @@
 # Mulgore quest-data review — 8 October 2026
 
+See the [0.8.60 follow-up](refresh-0.8.60/README.md) for refreshed source/audit checks and the explicit race-source conflict.
+
 Continues `guides/coverage` after `2249deb`, retaining the Dun Morogh and Durotar
 commits. Main remains `67ff36412ede50154ec3a8b2aecb148e72ffb568`, addon 0.8.59.
 The refreshed standard audit matches the queue: chapters 1–10, 11–20 and 21–30;

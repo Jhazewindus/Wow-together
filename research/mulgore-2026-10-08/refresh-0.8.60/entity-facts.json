@@ -1,0 +1,397 @@
+[
+  {
+    "kind": "item",
+    "entityID": 273659,
+    "url": "https://www.wowhead.com/forever/item=273659",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "8aa6521569273a92ab01fe7010af08a6b7a6f5209cd4ef6b56600987c2d231ac",
+    "facts": {
+      "name": "Bloody Parchment",
+      "locations": [],
+      "source": "Wowhead Forever"
+    },
+    "selected_relations": {}
+  },
+  {
+    "kind": "npc",
+    "entityID": 259118,
+    "url": "https://www.wowhead.com/forever/npc=259118",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "a8d127ea1fc700e6cf57dcc7dfca79788b57cddd14e52ea4db2745c77701c39b",
+    "facts": {
+      "name": "Muln Earthfury <Earthen Ring>",
+      "locations": [
+        {
+          "mapID": 1412,
+          "x": 0.33399999999999996,
+          "y": 0.22399999999999998,
+          "sourceAreaID": 215,
+          "sourceZone": "Mulgore"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "classification": 0
+    },
+    "selected_relations": {
+      "starts": {
+        "kind": "quest",
+        "rows": [
+          {
+            "id": 94911,
+            "level": 10,
+            "name": "Child of Nature",
+            "reqlevel": 10,
+            "side": 2
+          },
+          {
+            "id": 96259,
+            "level": 30,
+            "name": "Defending the Dead",
+            "reqlevel": 23,
+            "side": 2
+          },
+          {
+            "id": 96261,
+            "level": 31,
+            "name": "The Broodmother",
+            "reqlevel": 23,
+            "side": 2
+          }
+        ]
+      },
+      "ends": {
+        "kind": "quest",
+        "rows": [
+          {
+            "id": 96259,
+            "level": 30,
+            "name": "Defending the Dead",
+            "reqlevel": 23,
+            "side": 2
+          },
+          {
+            "id": 96261,
+            "level": 31,
+            "name": "The Broodmother",
+            "reqlevel": 23,
+            "side": 2
+          },
+          {
+            "id": 96294,
+            "level": 30,
+            "name": "A Darker Truth",
+            "reqlevel": 23,
+            "side": 2
+          },
+          {
+            "id": 98823,
+            "level": 31,
+            "name": "Earthen Echo",
+            "reqlevel": 24,
+            "side": 2
+          }
+        ]
+      }
+    }
+  },
+  {
+    "kind": "npc",
+    "entityID": 2966,
+    "url": "https://www.wowhead.com/forever/npc=2966",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "f15151ca76869e3d671b1b87967f27b3d97e4c1bd234ca0c6fae8115ed58d562",
+    "facts": {
+      "name": "Battleboar",
+      "locations": [
+        {
+          "mapID": 1412,
+          "x": 0.5539999999999999,
+          "y": 0.846,
+          "sourceAreaID": 215,
+          "sourceZone": "Mulgore"
+        },
+        {
+          "mapID": 1412,
+          "x": 0.532,
+          "y": 0.772,
+          "sourceAreaID": 215,
+          "sourceZone": "Mulgore"
+        },
+        {
+          "mapID": 1412,
+          "x": 0.6,
+          "y": 0.8859999999999999,
+          "sourceAreaID": 215,
+          "sourceZone": "Mulgore"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 3,
+      "maxlevel": 4,
+      "classification": 0
+    },
+    "selected_relations": {
+      "drops": {
+        "kind": "item",
+        "rows": [
+          {
+            "id": 4848,
+            "level": 1,
+            "name": "Battleboar Snout",
+            "count": 28898
+          },
+          {
+            "id": 4849,
+            "level": 1,
+            "name": "Battleboar Flank",
+            "count": 29282
+          }
+        ]
+      }
+    }
+  },
+  {
+    "kind": "npc",
+    "entityID": 2954,
+    "url": "https://www.wowhead.com/forever/npc=2954",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "74d1f57f052e4bd66a4b23ce71f7c617b3dc56608fc5bc948237b4e439d9bee4",
+    "facts": {
+      "name": "Bristleback Battleboar",
+      "locations": [
+        {
+          "mapID": 1412,
+          "x": 0.634,
+          "y": 0.782,
+          "sourceAreaID": 215,
+          "sourceZone": "Mulgore"
+        },
+        {
+          "mapID": 1412,
+          "x": 0.606,
+          "y": 0.81,
+          "sourceAreaID": 215,
+          "sourceZone": "Mulgore"
+        },
+        {
+          "mapID": 1412,
+          "x": 0.596,
+          "y": 0.7859999999999999,
+          "sourceAreaID": 215,
+          "sourceZone": "Mulgore"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 4,
+      "maxlevel": 5,
+      "classification": 0
+    },
+    "selected_relations": {
+      "drops": {
+        "kind": "item",
+        "rows": [
+          {
+            "id": 4848,
+            "level": 1,
+            "name": "Battleboar Snout",
+            "count": 6517
+          },
+          {
+            "id": 4849,
+            "level": 1,
+            "name": "Battleboar Flank",
+            "count": 6554
+          }
+        ]
+      }
+    }
+  },
+  {
+    "kind": "npc",
+    "entityID": 2993,
+    "url": "https://www.wowhead.com/forever/npc=2993",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "736004f5296a3504c91fd66fde4e9e217f093b4410a6a2c154129eaec3c97328",
+    "facts": {
+      "name": "Baine Bloodhoof",
+      "locations": [
+        {
+          "mapID": 1412,
+          "x": 0.474,
+          "y": 0.602,
+          "sourceAreaID": 215,
+          "sourceZone": "Mulgore"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 10,
+      "maxlevel": 10,
+      "classification": 0
+    },
+    "selected_relations": {
+      "starts": {
+        "kind": "quest",
+        "rows": [
+          {
+            "id": 745,
+            "level": 8,
+            "name": "Sharing the Land",
+            "reqlevel": 1,
+            "side": 2
+          },
+          {
+            "id": 746,
+            "level": 8,
+            "name": "Dwarven Digging",
+            "reqlevel": 6,
+            "side": 2
+          },
+          {
+            "id": 767,
+            "level": 6,
+            "name": "Rite of Vision",
+            "reqlevel": 3,
+            "side": 2
+          },
+          {
+            "id": 99080,
+            "level": 9,
+            "name": "Drive Them Out",
+            "race": 48,
+            "reqlevel": 4,
+            "reqrace": 48,
+            "side": 2
+          },
+          {
+            "id": 99082,
+            "level": 9,
+            "name": "The High Chieftain",
+            "race": 32,
+            "reqlevel": 4,
+            "reqrace": 32,
+            "side": 2
+          }
+        ]
+      },
+      "ends": {
+        "kind": "quest",
+        "rows": [
+          {
+            "id": 745,
+            "level": 8,
+            "name": "Sharing the Land",
+            "reqlevel": 1,
+            "side": 2
+          },
+          {
+            "id": 746,
+            "level": 8,
+            "name": "Dwarven Digging",
+            "reqlevel": 6,
+            "side": 2
+          },
+          {
+            "id": 763,
+            "level": 5,
+            "name": "Rites of the Earthmother",
+            "reqlevel": 1,
+            "side": 2
+          },
+          {
+            "id": 99080,
+            "level": 9,
+            "name": "Drive Them Out",
+            "race": 48,
+            "reqlevel": 4,
+            "reqrace": 48,
+            "side": 2
+          },
+          {
+            "id": 99101,
+            "level": 9,
+            "name": "Our Ancient Enemy",
+            "race": 48,
+            "reqlevel": 4,
+            "reqrace": 48,
+            "side": 2
+          }
+        ]
+      }
+    }
+  },
+  {
+    "kind": "npc",
+    "entityID": 3222,
+    "url": "https://www.wowhead.com/forever/npc=3222",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "f389b8e1d7557a0d3019cbcf6fa4d45678789bf14cb77badc555a38404a0e4d8",
+    "facts": {
+      "name": "Brave Wildrunner",
+      "locations": [
+        {
+          "mapID": 1412,
+          "x": 0.466,
+          "y": 0.618,
+          "sourceAreaID": 215,
+          "sourceZone": "Mulgore"
+        },
+        {
+          "mapID": 1412,
+          "x": 0.474,
+          "y": 0.5820000000000001,
+          "sourceAreaID": 215,
+          "sourceZone": "Mulgore"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 14,
+      "maxlevel": 14,
+      "classification": 0
+    },
+    "selected_relations": {
+      "starts": {
+        "kind": "quest",
+        "rows": [
+          {
+            "id": 99079,
+            "level": 9,
+            "name": "Longwalker Malah",
+            "race": 48,
+            "reqlevel": 4,
+            "reqrace": 48,
+            "side": 2
+          },
+          {
+            "id": 99101,
+            "level": 9,
+            "name": "Our Ancient Enemy",
+            "race": 48,
+            "reqlevel": 4,
+            "reqrace": 48,
+            "side": 2
+          }
+        ]
+      },
+      "ends": {
+        "kind": "quest",
+        "rows": [
+          {
+            "id": 99081,
+            "level": 9,
+            "name": "Grim Tidings",
+            "race": 176,
+            "reqlevel": 4,
+            "reqrace": 176,
+            "side": 2
+          }
+        ]
+      }
+    }
+  }
+]

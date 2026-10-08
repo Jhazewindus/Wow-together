@@ -1,0 +1,801 @@
+{
+  "manifest_commit": "e0a6eaa86f181ac99262e34126bcd2ed1a1712d6",
+  "verified_files": 24,
+  "quests": {
+    "747": {
+      "name": "The Hunt Begins",
+      "startedBy": {
+        "1": {
+          "1": 2980
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 2980
+        }
+      },
+      "requiredLevel": 1,
+      "questLevel": 2,
+      "requiredRaces": 8589934770,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 4739
+          },
+          "2": {
+            "1": 4740
+          }
+        }
+      },
+      "zoneOrSort": 220,
+      "questFlags": 8
+    },
+    "750": {
+      "name": "The Hunt Continues",
+      "startedBy": {
+        "1": {
+          "1": 2980
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 2980
+        }
+      },
+      "requiredLevel": 1,
+      "questLevel": 3,
+      "requiredRaces": 8589934770,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 4742
+          }
+        }
+      },
+      "preQuestSingle": {
+        "1": 747
+      },
+      "zoneOrSort": 220,
+      "questFlags": 8
+    },
+    "780": {
+      "name": "The Battleboars",
+      "startedBy": {
+        "1": {
+          "1": 2980
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 2980
+        }
+      },
+      "requiredLevel": 1,
+      "questLevel": 4,
+      "requiredRaces": 8589934770,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 4848
+          },
+          "2": {
+            "1": 4849
+          }
+        }
+      },
+      "preQuestSingle": {
+        "1": 750
+      },
+      "zoneOrSort": 220,
+      "questFlags": 8
+    },
+    "99079": {
+      "_identityName": "Longwalker Malah",
+      "name": "Longwalker Malah",
+      "startedBy": {
+        "1": {
+          "1": 3222
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 275789
+        }
+      },
+      "requiredLevel": 4,
+      "questLevel": 9,
+      "requiredRaces": 8589934770,
+      "zoneOrSort": 215
+    },
+    "99081": {
+      "_identityName": "Grim Tidings",
+      "name": "Grim Tidings",
+      "startedBy": {
+        "1": {
+          "1": 275789
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 3222
+        }
+      },
+      "requiredLevel": 4,
+      "questLevel": 9,
+      "requiredRaces": 8589934770,
+      "sourceItemId": 286104,
+      "zoneOrSort": 215
+    },
+    "99101": {
+      "_identityName": "Our Ancient Enemy",
+      "name": "Our Ancient Enemy",
+      "startedBy": {
+        "1": {
+          "1": 3222
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 2993
+        }
+      },
+      "requiredLevel": 4,
+      "questLevel": 9,
+      "requiredRaces": 8589934770,
+      "sourceItemId": 286104,
+      "zoneOrSort": 215
+    },
+    "99080": {
+      "_identityName": "Drive Them Out",
+      "name": "Drive Them Out",
+      "startedBy": {
+        "1": {
+          "1": 2993
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 2993
+        }
+      },
+      "requiredLevel": 4,
+      "questLevel": 9,
+      "requiredRaces": 8589934770,
+      "zoneOrSort": 215,
+      "objectives": {
+        "1": {
+          "1": {
+            "1": 2967
+          },
+          "2": {
+            "1": 2968
+          }
+        },
+        "2": null,
+        "3": {
+          "1": {
+            "1": 286075
+          }
+        }
+      }
+    },
+    "99082": {
+      "_identityName": "The High Chieftain",
+      "name": "The High Chieftain",
+      "startedBy": {
+        "1": {
+          "1": 2993
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 3057
+        }
+      },
+      "requiredLevel": 4,
+      "questLevel": 9,
+      "requiredRaces": 8589934770,
+      "zoneOrSort": 215
+    },
+    "96294": {},
+    "96261": {},
+    "861": {
+      "name": "The Hunter's Way",
+      "startedBy": {
+        "1": {
+          "1": 3052
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 3441
+        }
+      },
+      "requiredLevel": 10,
+      "questLevel": 10,
+      "requiredRaces": 8589934770,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 5203
+          }
+        }
+      },
+      "zoneOrSort": 215,
+      "questFlags": 8,
+      "_identityName": "The Hunter's Way",
+      "exclusiveTo": {
+        "1": 844
+      }
+    },
+    "1516": {
+      "name": "Call of Earth",
+      "startedBy": {
+        "1": {
+          "1": 5887
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 5887
+        }
+      },
+      "requiredLevel": 4,
+      "questLevel": 4,
+      "requiredRaces": 8589934770,
+      "requiredClasses": 64,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 6640
+          }
+        }
+      },
+      "zoneOrSort": -82,
+      "questFlags": 8,
+      "_identityName": "Call of Earth",
+      "exclusiveTo": {
+        "1": 1519,
+        "2": 92466
+      },
+      "preQuestSingle": {
+        "1": 1516,
+        "2": 1519,
+        "3": 92466
+      }
+    },
+    "1519": {
+      "name": "Call of Earth",
+      "startedBy": {
+        "1": {
+          "1": 5888
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 5888
+        }
+      },
+      "requiredLevel": 4,
+      "questLevel": 4,
+      "requiredRaces": 8589934770,
+      "requiredClasses": 64,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 6634
+          }
+        }
+      },
+      "zoneOrSort": -82,
+      "questFlags": 8,
+      "_identityName": "Call of Earth",
+      "exclusiveTo": {
+        "1": 1516,
+        "2": 92466
+      },
+      "preQuestSingle": {
+        "1": 1516,
+        "2": 1519,
+        "3": 92466
+      }
+    },
+    "2984": {
+      "name": "Call of Fire",
+      "startedBy": {
+        "1": {
+          "1": 3066
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 5907
+        }
+      },
+      "requiredLevel": 10,
+      "questLevel": 10,
+      "requiredRaces": 8589934770,
+      "requiredClasses": 64,
+      "exclusiveTo": {
+        "1": 1522,
+        "2": 1523,
+        "3": 2983
+      },
+      "zoneOrSort": -82,
+      "questFlags": 8,
+      "_identityName": "Call of Fire"
+    },
+    "2986": {
+      "name": "Call of Water",
+      "startedBy": {
+        "1": {
+          "1": 3066
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 5901
+        }
+      },
+      "requiredLevel": 20,
+      "questLevel": 20,
+      "requiredRaces": 8589934770,
+      "requiredClasses": 64,
+      "exclusiveTo": {
+        "1": 1528,
+        "2": 1529,
+        "3": 2985
+      },
+      "zoneOrSort": -82,
+      "questFlags": 8,
+      "_identityName": "Call of Water"
+    },
+    "5655": {
+      "name": "Hex of Weakness",
+      "startedBy": {
+        "1": {
+          "1": 11407
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 6018
+        }
+      },
+      "requiredLevel": 10,
+      "questLevel": 10,
+      "requiredRaces": 128,
+      "requiredClasses": 16,
+      "exclusiveTo": {
+        "1": 5652,
+        "2": 5654,
+        "3": 5656,
+        "4": 5657
+      },
+      "zoneOrSort": -262,
+      "questFlags": 8,
+      "_identityName": "Hex of Weakness (Mulgore)"
+    },
+    "5661": {
+      "name": "Touch of Weakness",
+      "startedBy": {
+        "1": {
+          "1": 11407
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 4606
+        }
+      },
+      "requiredLevel": 10,
+      "questLevel": 10,
+      "requiredRaces": 16,
+      "requiredClasses": 16,
+      "exclusiveTo": {
+        "1": 5658,
+        "2": 5660,
+        "3": 5662,
+        "4": 5663
+      },
+      "zoneOrSort": -262,
+      "questFlags": 8,
+      "_identityName": "Touch of Weakness (Mulgore)"
+    },
+    "5928": {
+      "name": "Heeding the Call",
+      "startedBy": {
+        "1": {
+          "1": 3064
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 3033
+        }
+      },
+      "requiredLevel": 10,
+      "questLevel": 10,
+      "requiredRaces": 32,
+      "requiredClasses": 1024,
+      "exclusiveTo": {
+        "1": 5926,
+        "2": 5927
+      },
+      "zoneOrSort": -263,
+      "questFlags": 8,
+      "_identityName": "Heeding the Call"
+    },
+    "745": {
+      "name": "Sharing the Land",
+      "startedBy": {
+        "1": {
+          "1": 2993
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 2993
+        }
+      },
+      "requiredLevel": 1,
+      "questLevel": 8,
+      "requiredRaces": 8589934770,
+      "objectives": {
+        "1": {
+          "1": {
+            "1": 2949
+          },
+          "2": {
+            "1": 2950
+          },
+          "3": {
+            "1": 2951
+          }
+        }
+      },
+      "zoneOrSort": 215,
+      "questFlags": 8,
+      "_identityName": "Sharing the Land"
+    },
+    "746": {
+      "name": "Dwarven Digging",
+      "startedBy": {
+        "1": {
+          "1": 2993
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 2993
+        }
+      },
+      "requiredLevel": 6,
+      "questLevel": 8,
+      "requiredRaces": 8589934770,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 4703
+          }
+        }
+      },
+      "zoneOrSort": 215,
+      "requiredSourceItems": {
+        "1": 4702
+      },
+      "questFlags": 8
+    },
+    "754": {
+      "name": "Winterhoof Cleansing",
+      "startedBy": {
+        "1": {
+          "1": 2948
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 2948
+        }
+      },
+      "requiredLevel": 4,
+      "questLevel": 6,
+      "requiredRaces": 32,
+      "sourceItemId": 5411,
+      "preQuestSingle": {
+        "1": 748
+      },
+      "zoneOrSort": 215,
+      "questFlags": 2,
+      "specialFlags": 2,
+      "_identityName": "Winterhoof Cleansing",
+      "triggerEnd": {
+        "1": "Cleanse the Winterhoof Water Well",
+        "2": {
+          "215": {
+            "1": {
+              "1": 51.76,
+              "2": 68.43
+            }
+          }
+        }
+      }
+    }
+  },
+  "field_source_tiers": {
+    "747": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline"
+    },
+    "750": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline"
+    },
+    "780": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline"
+    },
+    "99079": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "zoneOrSort": "beta-delta"
+    },
+    "99081": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "sourceItemId": "beta-delta",
+      "zoneOrSort": "beta-delta"
+    },
+    "99101": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "sourceItemId": "beta-delta",
+      "zoneOrSort": "beta-delta"
+    },
+    "99080": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "zoneOrSort": "beta-delta",
+      "objectives": "beta-observation"
+    },
+    "99082": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "zoneOrSort": "beta-delta"
+    },
+    "96294": {},
+    "96261": {},
+    "861": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "_identityName": "converted-baseline",
+      "exclusiveTo": "converted-baseline"
+    },
+    "1516": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "requiredClasses": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "_identityName": "beta-reviewed",
+      "exclusiveTo": "beta-reviewed",
+      "preQuestSingle": "beta-reviewed"
+    },
+    "1519": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "requiredClasses": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "_identityName": "beta-reviewed",
+      "exclusiveTo": "beta-reviewed",
+      "preQuestSingle": "beta-reviewed"
+    },
+    "2984": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "requiredClasses": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "exclusiveTo": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "_identityName": "converted-baseline"
+    },
+    "2986": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "requiredClasses": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "exclusiveTo": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "_identityName": "converted-baseline"
+    },
+    "5655": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "requiredClasses": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "exclusiveTo": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "_identityName": "converted-baseline"
+    },
+    "5661": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "requiredClasses": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "exclusiveTo": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "_identityName": "converted-baseline"
+    },
+    "5928": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "requiredClasses": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "exclusiveTo": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "_identityName": "converted-baseline"
+    },
+    "745": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "beta-delta",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "_identityName": "beta-delta"
+    },
+    "746": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "requiredSourceItems": "converted-baseline",
+      "questFlags": "converted-baseline"
+    },
+    "754": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "specialFlags": "converted-baseline",
+      "_identityName": "converted-baseline",
+      "triggerEnd": "converted-baseline"
+    }
+  },
+  "item_starter": {
+    "_identityName": "Bloody Parchment",
+    "name": "Bloody Parchment"
+  }
+}
