@@ -19,7 +19,7 @@ FIELDS = ('distance', 'peakLog', 'levelDeficitXP', 'questXP', 'rewardXPBeforeWor
 def compare(before, after):
     if before.get('geometry_source') or after.get('geometry_source'):
         raise ValueError('This replay requires both captures to use the default host geometry')
-    for key in ('zone', 'travel_sha256', 'terrain_data_sha256', 'flow_module_sha256',
+    for key in ('zone', 'race_id', 'travel_sha256', 'terrain_data_sha256', 'flow_module_sha256',
                 'optimizer_module_sha256', 'fixed_guides_sha256', 'fixed_travel_cost_sha256',
                 'travel_network_sha256', 'terrain_geometry_sha256'):
         if before.get(key) != after.get(key):
@@ -40,6 +40,8 @@ def compare(before, after):
     result = []
     for key, candidate in current.items():
         original = prior[key]
+        if original['race'] != candidate['race']:
+            raise ValueError('Race scope changed')
         c.ns.profile.faction, c.ns.profile.classID, c.ns.profile.raceID = key[0], 8, original['race']
         counts, tokens, anchors = collections.Counter(), {}, {}
         for point in candidate['stops']:
@@ -75,6 +77,7 @@ def compare(before, after):
             worse = [f for f in FIELDS if (b[f] < a[f] if f in ('questXP', 'rewardXPBeforeWork')
                                           else b[f] > a[f] + .001)]
             comparisons.append({'level': level, 'xp': xp, 'valid': bool(b.valid),
+                                'baseline_valid_under_corrected_facts': bool(a.valid),
                                 'metrics': {f: {'before': a[f], 'after': b[f]} for f in FIELDS},
                                 'regressed_metrics': worse, 'delayed_work_rewards': delayed})
         endpoints = lambda g: [(s['id'], s['kind']) for s in (g['stops'][0], g['stops'][-1])]

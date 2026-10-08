@@ -1,0 +1,501 @@
+{
+  "url": "https://www.wowhead.com/forever/quests/kalimdor/mulgore",
+  "sha256": "2bd99d74f164d8eb42aa9632d480bbf7578b10342a0aec606986a29b8b8e6ddc",
+  "quests": [
+    {
+      "id": 96261,
+      "name": "The Broodmother",
+      "level": 31,
+      "reqlevel": 23,
+      "side": 2,
+      "type": 1
+    },
+    {
+      "id": 98427,
+      "name": "Ceasing Operations",
+      "level": 12,
+      "reqlevel": 5,
+      "side": 2,
+      "type": 1
+    },
+    {
+      "id": 96260,
+      "name": "Stronger than Steel",
+      "level": 30,
+      "reqlevel": 23,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 96259,
+      "name": "Defending the Dead",
+      "level": 30,
+      "reqlevel": 23,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 98424,
+      "name": "Fizsprocket's Notes",
+      "level": 10,
+      "reqlevel": 5,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 96294,
+      "name": "A Darker Truth",
+      "level": 30,
+      "reqlevel": 23,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 96241,
+      "name": "Talkin' bout Toxins, Mon",
+      "level": 30,
+      "reqlevel": 23,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 99411,
+      "name": "Kyle's Gone Missing!",
+      "level": 7,
+      "reqlevel": 5,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 776,
+      "name": "Rites of the Earthmother",
+      "level": 14,
+      "reqlevel": 3,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 95805,
+      "name": "Grace of An'she and Mu'sha",
+      "level": 4,
+      "reqlevel": 1,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 96130,
+      "name": "Chakuyak",
+      "level": 5,
+      "reqlevel": 4,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 76240,
+      "name": "Stalk With The Earthmother",
+      "level": 11,
+      "reqlevel": 4,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 99080,
+      "name": "Drive Them Out",
+      "level": 9,
+      "reqlevel": 4,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 98435,
+      "name": "Thunderhorn's Report",
+      "level": 10,
+      "reqlevel": 4,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 98430,
+      "name": "The Longwalkers",
+      "level": 8,
+      "reqlevel": 1,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 99079,
+      "name": "Longwalker Malah",
+      "level": 9,
+      "reqlevel": 4,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 99081,
+      "name": "Grim Tidings",
+      "level": 9,
+      "reqlevel": 4,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 99082,
+      "name": "The High Chieftain",
+      "level": 9,
+      "reqlevel": 4,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 76156,
+      "name": "Stalk With The Earthmother",
+      "level": 10,
+      "reqlevel": 4,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 772,
+      "name": "Rite of Vision",
+      "level": 7,
+      "reqlevel": 3,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 99196,
+      "name": "A Donation of Wool",
+      "level": 60,
+      "reqlevel": 12,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 99108,
+      "name": "Sparring Match",
+      "level": 6,
+      "reqlevel": 4,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 765,
+      "name": "Supervisor Fizsprocket",
+      "level": 12,
+      "reqlevel": 5,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 781,
+      "name": "Attack on Camp Narache",
+      "level": 4,
+      "reqlevel": 1,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 770,
+      "name": "The Demon Scarred Cloak",
+      "level": 12,
+      "reqlevel": 6,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 752,
+      "name": "A Humble Task",
+      "level": 2,
+      "reqlevel": 1,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 99101,
+      "name": "Our Ancient Enemy",
+      "level": 9,
+      "reqlevel": 4,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 746,
+      "name": "Dwarven Digging",
+      "level": 8,
+      "reqlevel": 6,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 76160,
+      "name": "Stalk With The Earthmother",
+      "level": 11,
+      "reqlevel": 4,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 861,
+      "name": "The Hunter's Way",
+      "level": 10,
+      "reqlevel": 10,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 755,
+      "name": "Rites of the Earthmother",
+      "level": 3,
+      "reqlevel": 1,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 749,
+      "name": "The Ravaged Caravan",
+      "level": 8,
+      "reqlevel": 5,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 773,
+      "name": "Rite of Wisdom",
+      "level": 10,
+      "reqlevel": 3,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 764,
+      "name": "The Venture Co.",
+      "level": 10,
+      "reqlevel": 5,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 757,
+      "name": "Rite of Strength",
+      "level": 4,
+      "reqlevel": 1,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 760,
+      "name": "Wildmane Cleansing",
+      "level": 10,
+      "reqlevel": 4,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 763,
+      "name": "Rites of the Earthmother",
+      "level": 5,
+      "reqlevel": 1,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 745,
+      "name": "Sharing the Land",
+      "level": 8,
+      "reqlevel": 1,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 771,
+      "name": "Rite of Vision",
+      "level": 7,
+      "reqlevel": 3,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 780,
+      "name": "The Battleboars",
+      "level": 4,
+      "reqlevel": 1,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 747,
+      "name": "The Hunt Begins",
+      "level": 2,
+      "reqlevel": 1,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 766,
+      "name": "Mazzranache",
+      "level": 8,
+      "reqlevel": 5,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 854,
+      "name": "Journey to the Crossroads",
+      "level": 12,
+      "reqlevel": 9,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 775,
+      "name": "Journey into Thunder Bluff",
+      "level": 10,
+      "reqlevel": 3,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 758,
+      "name": "Thunderhorn Cleansing",
+      "level": 8,
+      "reqlevel": 4,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 753,
+      "name": "A Humble Task",
+      "level": 3,
+      "reqlevel": 1,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 761,
+      "name": "Swoop Hunting",
+      "level": 6,
+      "reqlevel": 4,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 3376,
+      "name": "Break Sharptusk!",
+      "level": 5,
+      "reqlevel": 3,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 748,
+      "name": "Poison Water",
+      "level": 5,
+      "reqlevel": 4,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 750,
+      "name": "The Hunt Continues",
+      "level": 3,
+      "reqlevel": 1,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 751,
+      "name": "The Ravaged Caravan",
+      "level": 8,
+      "reqlevel": 5,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 743,
+      "name": "Dangers of the Windfury",
+      "level": 8,
+      "reqlevel": 5,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 759,
+      "name": "Wildmane Totem",
+      "level": 10,
+      "reqlevel": 4,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 756,
+      "name": "Thunderhorn Totem",
+      "level": 7,
+      "reqlevel": 4,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 5844,
+      "name": "Welcome!",
+      "level": 1,
+      "reqlevel": 1,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 99197,
+      "name": "A Donation of Silk",
+      "level": 60,
+      "reqlevel": 26,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 767,
+      "name": "Rite of Vision",
+      "level": 6,
+      "reqlevel": 3,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 754,
+      "name": "Winterhoof Cleansing",
+      "level": 6,
+      "reqlevel": 4,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 833,
+      "name": "A Sacred Burial",
+      "level": 10,
+      "reqlevel": 7,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 1656,
+      "name": "A Task Unfinished",
+      "level": 5,
+      "reqlevel": 1,
+      "side": 2,
+      "type": 0
+    },
+    {
+      "id": 774,
+      "name": "<UNUSED>",
+      "level": 4,
+      "reqlevel": 1,
+      "side": 0,
+      "type": 0
+    }
+  ],
+  "not_in_captured_templates": [
+    96261,
+    99196,
+    5844,
+    99197,
+    774
+  ]
+}

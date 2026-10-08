@@ -119,6 +119,21 @@ def apply_stage_corrections(records):
                 raise ValueError('Other unmapped escort work needs review: ' + str(ident))
             quest['missingRequirements'] = [copy.deepcopy(target)]
             quest['objectiveLocationsIncomplete'] = True
+        elif rule['kind'] == 'npc-location':
+            # Replace only a reviewed representative pickup/hand-in point.
+            # Objective work, offer requirements and unresolved facts survive.
+            for role in rule['roles']:
+                if role not in ('starts', 'ends'):
+                    raise ValueError('Unsupported NPC location role: ' + role)
+                points = [p for p in quest.get(role, []) if p.get('entityID') == rule['entityID']]
+                if len(points) != 1 or not points[0].get('npc'):
+                    raise ValueError('Reviewed NPC identity changed: ' + str(ident))
+                point = points[0]
+                location = {k: point.get(k) for k in ('mapID', 'x', 'y')}
+                if location not in (rule['before'], rule['after']):
+                    raise ValueError('Reviewed NPC location conflicts with new evidence: ' + str(ident))
+                point.update(rule['after'])
+                point['locationSource'] = correction['source']
         elif rule['kind'] == 'item-source':
             if {(r.get('entityType'), r.get('entityID'), r.get('quantity')) for r in requirements} != \
                     {('item', r['itemID'], r['quantity']) for r in required}:
@@ -140,7 +155,7 @@ def apply_stage_corrections(records):
             quest['npcTargets'] = targets
         else:
             raise ValueError('Unknown reviewed stage correction: ' + rule['kind'])
-        if rule['kind'] != 'unmapped-escort':
+        if rule['kind'] in ('provided-delivery', 'item-source'):
             quest.pop('missingRequirements', None)
             quest.pop('objectiveLocationsIncomplete', None)
         quest['stageCorrectionSource'] = correction['source']

@@ -10019,22 +10019,23 @@
         "class-progression": 34,
         "early-reward": 2,
         "level-work": 3,
-        "outside-level-range": 66,
-        "prerequisite": 36,
+        "outside-level-range": 64,
+        "prerequisite": 39,
         "quest-objective": 4,
-        "quest-reward": 45,
-        "return-hub": 1
+        "quest-reward": 42,
+        "return-hub": 2,
+        "reward-first": 1
       },
-      "reason_review_steps": 92,
+      "reason_review_steps": 90,
       "cross_zone_reason_steps": 6,
-      "flow_alternatives_evaluated": 353,
+      "flow_alternatives_evaluated": 316,
       "flow_loop_changes": 3,
       "flow_state_valid": true,
       "quest_log_peak": 12,
-      "quest_reward_only_xp_shortfall": 18060,
+      "quest_reward_only_xp_shortfall": 17460,
       "uncertain_travel_legs": 19,
-      "estimated_distance_before": 161620.46,
-      "estimated_distance_after": 161539.15
+      "estimated_distance_before": 163080.14,
+      "estimated_distance_after": 161878.95
     },
     {
       "faction": "Horde",

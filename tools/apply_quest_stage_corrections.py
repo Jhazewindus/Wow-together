@@ -1,22 +1,26 @@
-"""Apply reviewed stage facts to an existing packed catalogue, without recapture.
+"""Apply reviewed quest and stage facts to a packed catalogue, without recapture.
 
 The full dataset builder and supplemental importer apply the same corrections.
 This command preserves unrelated records and source capture provenance.
 """
 import argparse
 import collections
+import copy
 import json
 from pathlib import Path
 
 from build_quest_dataset import own_lua
-from import_warcraftdb import apply_stage_corrections
+from import_warcraftdb import apply_corrections, apply_stage_corrections
 from pack_data import quest_code
 
 
 def apply(directory):
     path = directory / 'QuestCatalogue.lua'
     catalogue = own_lua(path, 'catalogue')
-    changed = apply_stage_corrections(catalogue['quests'])
+    before = copy.deepcopy(catalogue['quests'])
+    apply_corrections(catalogue['quests'])
+    stage_changes = apply_stage_corrections(catalogue['quests'])
+    changed = sorted(i for i, q in catalogue['quests'].items() if q != before[i])
     if not changed:
         return []
     code = quest_code(catalogue, own_lua(path, 'questEntities'),
@@ -28,9 +32,10 @@ def apply(directory):
         metadata[key] = sum(bool(q.get(role)) for q in records.values())
         coverage['summary'][key] = metadata[key]
     metadata['incomplete_objective_locations'] = sum(bool(q.get('objectiveLocationsIncomplete')) for q in records.values())
-    reviewed = sorted(set(metadata.get('reviewed_stage_corrections', [])) | set(changed))
+    reviewed = sorted(set(metadata.get('reviewed_stage_corrections', [])) | set(stage_changes))
     metadata['reviewed_stage_corrections'] = reviewed
     coverage['reviewed_stage_corrections'] = reviewed
+    metadata['reviewed_quest_corrections'] = sorted(set(metadata.get('reviewed_quest_corrections', [])) | set(changed))
     zones = collections.defaultdict(lambda: {'quests': 0, 'pickups': 0, 'objectives': 0,
                                             'turnins': 0, 'complete_locations': 0, 'missing_quest_ids': []})
     for ident, q in sorted(records.items()):

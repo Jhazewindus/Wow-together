@@ -7587,11 +7587,28 @@
     "incomplete_objectives_after": 1353
   },
   "reviewed_stage_corrections": [
+    745,
+    746,
+    758,
+    759,
+    760,
     1518,
     1521,
     1524,
     1525,
     1527,
+    99082,
+    99101,
     99123
+  ],
+  "reviewed_quest_corrections": [
+    745,
+    746,
+    758,
+    759,
+    760,
+    99081,
+    99082,
+    99101
   ]
 }

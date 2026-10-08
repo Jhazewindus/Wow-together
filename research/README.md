@@ -5,6 +5,16 @@ sessions and beta builds. These are observations from players, not a complete
 quest database. Only supported corrections enter the shipped catalogue. Raw
 exports are not included in the addon ZIP.
 
+## 2026-10-08 — Mulgore prerequisites, NPC locations and race coverage
+
+[The Mulgore review](mulgore-2026-10-08/README.md) retains 74 quest IDs, current
+source evidence, standard/Tauren full-route comparisons and a player checklist.
+Three prerequisite links and seven NPC-location records are corrected (eight
+distinct quests). Existing source gaps and actual-offer confirmation remain.
+The old early-chapter orders violate the newly established prerequisites;
+optimization and the suppressed single-quest Broodmother chapter require a
+coordinated shared-engine decision. This remains a data/research draft.
+
 ## 2026-10-08 — Durotar stage facts and compiler handoff
 
 [The Durotar review](durotar-2026-10-08/README.md) retains the full 103-quest

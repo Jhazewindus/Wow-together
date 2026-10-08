@@ -1,0 +1,181 @@
+{
+  "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
+  "quest_records": 40,
+  "static_points_checked": 116,
+  "fixed_zone_guides_checked": 3,
+  "catalogue_reason_stages_checked": 132,
+  "catalogue_reason_codes": {
+    "level-work": 40,
+    "quest-objective": 52,
+    "quest-reward": 40
+  },
+  "reason_review_quest_ids": [
+    745,
+    747,
+    748,
+    750,
+    751,
+    752,
+    753,
+    754,
+    755,
+    756,
+    757,
+    759,
+    761,
+    763,
+    764,
+    765,
+    767,
+    771,
+    772,
+    776,
+    780,
+    781,
+    861,
+    1656,
+    3376,
+    5844,
+    95805,
+    96130,
+    96241,
+    96259,
+    96260,
+    96261,
+    96294,
+    98424,
+    98427,
+    99080,
+    99108,
+    99196,
+    99197,
+    99411
+  ],
+  "source_data_gap_free_guides": 0,
+  "guides": [
+    {
+      "faction": "Horde",
+      "zone": "Mulgore",
+      "key": "level-zone:kalimdor/mulgore:levels:1-10",
+      "quests": 59,
+      "steps": 191,
+      "unknown_location_steps": 0,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        861,
+        1516,
+        1519,
+        2984,
+        5655,
+        5661,
+        5928,
+        99082,
+        99101
+      ],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 191,
+      "destination_reason_codes": {
+        "class-progression": 34,
+        "early-reward": 2,
+        "level-work": 3,
+        "outside-level-range": 64,
+        "prerequisite": 39,
+        "quest-objective": 4,
+        "quest-reward": 42,
+        "return-hub": 2,
+        "reward-first": 1
+      },
+      "reason_review_steps": 90,
+      "cross_zone_reason_steps": 6,
+      "flow_alternatives_evaluated": 316,
+      "flow_loop_changes": 3,
+      "flow_state_valid": true,
+      "quest_log_peak": 12,
+      "quest_reward_only_xp_shortfall": 17460,
+      "uncertain_travel_legs": 19,
+      "estimated_distance_before": 163080.14,
+      "estimated_distance_after": 161878.95
+    },
+    {
+      "faction": "Horde",
+      "zone": "Mulgore",
+      "key": "level-zone:kalimdor/mulgore:levels:11-20",
+      "quests": 21,
+      "steps": 66,
+      "unknown_location_steps": 0,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        2986
+      ],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 66,
+      "destination_reason_codes": {
+        "class-progression": 8,
+        "outside-level-range": 19,
+        "prerequisite": 26,
+        "quest-reward": 13
+      },
+      "reason_review_steps": 22,
+      "cross_zone_reason_steps": 5,
+      "flow_alternatives_evaluated": 10,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 7,
+      "quest_reward_only_xp_shortfall": 157005,
+      "uncertain_travel_legs": 6,
+      "estimated_distance_before": 80072.22,
+      "estimated_distance_after": 80072.22
+    },
+    {
+      "faction": "Horde",
+      "zone": "Mulgore",
+      "key": "level-zone:kalimdor/mulgore:levels:21-30",
+      "quests": 4,
+      "steps": 13,
+      "unknown_location_steps": 1,
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          96294
+        ],
+        "q": [],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 13,
+      "destination_reason_codes": {
+        "outside-level-range": 9,
+        "quest-reward": 3,
+        "return-hub": 1
+      },
+      "reason_review_steps": 9,
+      "cross_zone_reason_steps": 0,
+      "flow_alternatives_evaluated": 2,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 4,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 2,
+      "estimated_distance_before": 26531.43,
+      "estimated_distance_after": 26216.44
+    }
+  ],
+  "scope": {
+    "zone": "Mulgore",
+    "catalogue_records": "Exact quest zone; guide dependencies still compile normally"
+  }
+}

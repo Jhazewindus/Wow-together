@@ -1,0 +1,49 @@
+[
+  {
+    "key": "us-0",
+    "url": "https://us.forums.blizzard.com/en/wow/search.json?q=Forever%20Mulgore",
+    "status": 200,
+    "sha256": "99eace0ea385aca72ca2f92b49b75aa4059089f902be58e4ba7ef17bd4917af3"
+  },
+  {
+    "key": "us-1",
+    "url": "https://us.forums.blizzard.com/en/wow/search.json?q=%22Our%20Ancient%20Enemy%22",
+    "status": 200,
+    "sha256": "bf687c39a63db0958a66755f03a7f4d2adda03288d24d071aa787da9d77b9c6f"
+  },
+  {
+    "key": "us-2",
+    "url": "https://us.forums.blizzard.com/en/wow/search.json?q=%22The%20High%20Chieftain%22",
+    "status": 200,
+    "sha256": "4b28d72c925564eedcdc159435cfe5dea8b3182e1b0b85784162f2ba61503805"
+  },
+  {
+    "key": "us-3",
+    "url": "https://us.forums.blizzard.com/en/wow/search.json?q=%22A%20Darker%20Truth%22",
+    "status": 200,
+    "sha256": "e0a2d9402482ef7f9737a471455e17cbf3fd13a5db7562def4c3c1c613fff052"
+  },
+  {
+    "key": "us-4",
+    "url": "https://us.forums.blizzard.com/en/wow/search.json?q=%22The%20Battleboars%22",
+    "status": 200,
+    "sha256": "c281960664d61fdb43fa3f9ce8bfd4903396efed780a97a743141e534e09eaf0"
+  },
+  {
+    "key": "eu-0",
+    "url": "https://eu.forums.blizzard.com/en/wow/search.json?q=Forever%20Mulgore",
+    "status": 200,
+    "sha256": "342316c37b6a2f5236816c73e8ab69c9242baa9c51b27d370a9da535abce38d6"
+  },
+  {
+    "key": "list",
+    "url": "https://www.wowhead.com/forever/quests/kalimdor/mulgore",
+    "status": 200,
+    "sha256": "2bd99d74f164d8eb42aa9632d480bbf7578b10342a0aec606986a29b8b8e6ddc"
+  },
+  {
+    "key": "wiki",
+    "url": "https://warcraft.wiki.gg/wiki/A_Darker_Truth",
+    "status": 404
+  }
+]

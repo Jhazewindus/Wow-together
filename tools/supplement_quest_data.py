@@ -15,7 +15,7 @@ from build_quest_dataset import own_lua
 from import_wowhead import detail_facts
 from pack_data import quest_code
 from quest_enrichment import enrich, mapper_entities, quest_relations
-from import_warcraftdb import apply_stage_corrections
+from import_warcraftdb import apply_corrections, apply_stage_corrections
 
 ROLES = ('starts', 'ends', 'objectives')
 
@@ -88,12 +88,14 @@ def build(directory, cache, output):
         for ident,value in rows.items():
             target=entities[kind].get(ident)
             if target and not target.get('name') and value['name']:target['name']=value['name']
+    corrections=apply_corrections(records)
     stage_corrections=apply_stage_corrections(records)
     now=datetime.date.today().isoformat()
     report={'captured':now,'pages':len(parsed),'changed_quest_ids':changed,'added_points':dict(added),
         'invalid_quest_ids':invalid,'incomplete_objectives_before':old,
         'incomplete_objectives_after':sum(bool(q.get('objectiveLocationsIncomplete')) for q in records.values()),'evidence':evidence}
     report['reviewed_stage_corrections']=stage_corrections
+    report['reviewed_quest_corrections']=corrections
     catalogue['captured']=now;output.mkdir(parents=True,exist_ok=True)
     (output/'QuestCatalogue.lua').write_text(quest_code(catalogue,entities,checks,xp))
     for key,role in [('with_starters','starts'),('with_objectives','objectives'),('with_turnins','ends')]:metadata[key]=sum(bool(q.get(role)) for q in records.values())

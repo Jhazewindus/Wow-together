@@ -107,7 +107,9 @@ class OfferRecheckTests(unittest.TestCase):
         for id, npc in ((99082, 2993), (99101, 3222)):
             q = c.ns.CatalogueQuest(id)
             self.assertTrue(q.pickupRequiresOffer)
-            self.assertIsNone(q.previousQuest)
+            parent = {99082: 99080, 99101: 99081}[id]
+            self.assertEqual(q.previousQuest, parent)
+            c.lua.globals().finished[parent] = True
             self.assertEqual(q.minLevel, 4)
             self.assertFalse(c.ns.CatalogueAllowed(id, c.ns.profile, c.ns.self)[0])
             c.lua.execute(f"UnitGUID=function() return 'Creature-0-1-2-3-{npc}-ABC' end")

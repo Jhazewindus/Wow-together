@@ -175,5 +175,225 @@
       }
     },
     "source": "Wowhead Forever quest 99123, https://www.wowhead.com/forever/quest=99123 (captured 2026-10-08; SHA-256 809b853bca6444f08455e80d754c60ebf39680b3c961a2e29acdb8289dacb6c7); escort NPC confirmed by official beta notes https://us.forums.blizzard.com/en/wow/t/2360696/1 (post 30185131, updated 2026-10-01). Endpoint/path not published; retain unknown location and native completion."
+  },
+  {
+    "questID": 99081,
+    "title": "Grim Tidings",
+    "previousQuest": 99079,
+    "previousTitle": "Longwalker Malah",
+    "source": "Reviewed linear Forever chain: https://www.wowhead.com/forever/quest=99081; captured 2026-10-08; SHA-256 c12ffa4c40e64b11a281907e602df0ee9ed868e9dc17d032e998faa5b69373ce. Cross-checked all five chain pages. Actual predecessor hand-in required; retain reviewed NPC-offer confirmation and unknown additional availability conditions."
+  },
+  {
+    "questID": 99101,
+    "title": "Our Ancient Enemy",
+    "previousQuest": 99081,
+    "previousTitle": "Grim Tidings",
+    "source": "Reviewed linear Forever chain: https://www.wowhead.com/forever/quest=99101; captured 2026-10-08; SHA-256 3170464de87c9be477497c4264f06d01cb6dc4930114bd203d0deb7fd6976764. Cross-checked all five chain pages. Actual predecessor hand-in required; retain reviewed NPC-offer confirmation and unknown additional availability conditions."
+  },
+  {
+    "questID": 99082,
+    "title": "The High Chieftain",
+    "previousQuest": 99080,
+    "previousTitle": "Drive Them Out",
+    "source": "Reviewed linear Forever chain: https://www.wowhead.com/forever/quest=99082; captured 2026-10-08; SHA-256 90a631482b18ff69253e63d72aa50d39ee7c2a05b9a6974244dba440d1b690c5. Cross-checked all five chain pages. Actual predecessor hand-in required; retain reviewed NPC-offer confirmation and unknown additional availability conditions."
+  },
+  {
+    "questID": 745,
+    "title": "Sharing the Land",
+    "stageCorrection": {
+      "kind": "npc-location",
+      "minLevel": 1,
+      "level": 8,
+      "classMask": 0,
+      "requiredItems": [],
+      "entityID": 2993,
+      "roles": [
+        "starts",
+        "ends"
+      ],
+      "before": {
+        "mapID": 1412,
+        "x": 0.4667,
+        "y": 0.6338
+      },
+      "after": {
+        "mapID": 1412,
+        "x": 0.474,
+        "y": 0.602
+      }
+    },
+    "source": "Reviewed Baine Bloodhoof location: https://www.wowhead.com/forever/npc=2993; captured 2026-10-08; SHA-256 87dba9712f038ef6a02088122d7c3f55b280e499ab0914f18725db12b44f524e. Corresponding Forever quest mapper agrees on 47.4,60.2; supersedes the converted-baseline representative, not a surveyed path or spawn guarantee."
+  },
+  {
+    "questID": 746,
+    "title": "Dwarven Digging",
+    "stageCorrection": {
+      "kind": "npc-location",
+      "minLevel": 6,
+      "level": 8,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 5,
+          "name": "Broken Tools",
+          "itemID": 4703
+        }
+      ],
+      "entityID": 2993,
+      "roles": [
+        "starts",
+        "ends"
+      ],
+      "before": {
+        "mapID": 1412,
+        "x": 0.4667,
+        "y": 0.6338
+      },
+      "after": {
+        "mapID": 1412,
+        "x": 0.474,
+        "y": 0.602
+      }
+    },
+    "source": "Reviewed Baine Bloodhoof location: https://www.wowhead.com/forever/npc=2993; captured 2026-10-08; SHA-256 87dba9712f038ef6a02088122d7c3f55b280e499ab0914f18725db12b44f524e. Corresponding Forever quest mapper agrees on 47.4,60.2; supersedes the converted-baseline representative, not a surveyed path or spawn guarantee."
+  },
+  {
+    "questID": 99082,
+    "title": "The High Chieftain",
+    "stageCorrection": {
+      "kind": "npc-location",
+      "minLevel": 4,
+      "level": 9,
+      "classMask": 0,
+      "requiredItems": [],
+      "entityID": 2993,
+      "roles": [
+        "starts"
+      ],
+      "before": {
+        "mapID": 1412,
+        "x": 0.4667,
+        "y": 0.6338
+      },
+      "after": {
+        "mapID": 1412,
+        "x": 0.474,
+        "y": 0.602
+      }
+    },
+    "source": "Reviewed Baine Bloodhoof location: https://www.wowhead.com/forever/npc=2993; captured 2026-10-08; SHA-256 87dba9712f038ef6a02088122d7c3f55b280e499ab0914f18725db12b44f524e. Corresponding Forever quest mapper agrees on 47.4,60.2; supersedes the converted-baseline representative, not a surveyed path or spawn guarantee."
+  },
+  {
+    "questID": 99101,
+    "title": "Our Ancient Enemy",
+    "stageCorrection": {
+      "kind": "npc-location",
+      "minLevel": 4,
+      "level": 9,
+      "classMask": 0,
+      "requiredItems": [],
+      "entityID": 2993,
+      "roles": [
+        "ends"
+      ],
+      "before": {
+        "mapID": 1412,
+        "x": 0.4667,
+        "y": 0.6338
+      },
+      "after": {
+        "mapID": 1412,
+        "x": 0.474,
+        "y": 0.602
+      }
+    },
+    "source": "Reviewed Baine Bloodhoof location: https://www.wowhead.com/forever/npc=2993; captured 2026-10-08; SHA-256 87dba9712f038ef6a02088122d7c3f55b280e499ab0914f18725db12b44f524e. Corresponding Forever quest mapper agrees on 47.4,60.2; supersedes the converted-baseline representative, not a surveyed path or spawn guarantee."
+  },
+  {
+    "questID": 758,
+    "title": "Thunderhorn Cleansing",
+    "stageCorrection": {
+      "kind": "npc-location",
+      "minLevel": 4,
+      "level": 8,
+      "classMask": 0,
+      "requiredItems": [],
+      "entityID": 2948,
+      "roles": [
+        "starts",
+        "ends"
+      ],
+      "before": {
+        "mapID": 1412,
+        "x": 0.474,
+        "y": 0.634
+      },
+      "after": {
+        "mapID": 1412,
+        "x": 0.484,
+        "y": 0.604
+      }
+    },
+    "source": "Reviewed Mull Thunderhorn location: https://www.wowhead.com/forever/quest=758; captured 2026-10-08; SHA-256 1c6c2f6914b82ff9409e095a7cb92d3b12e7113b761637d00234bdbdd0721916. Quest start/end mapper selects 48.4,60.4, matching the other current cleansing-chain pages; supersedes converted-baseline representative."
+  },
+  {
+    "questID": 759,
+    "title": "Wildmane Totem",
+    "stageCorrection": {
+      "kind": "npc-location",
+      "minLevel": 4,
+      "level": 10,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 8,
+          "name": "Prairie Alpha Tooth",
+          "itemID": 4803
+        }
+      ],
+      "entityID": 2948,
+      "roles": [
+        "starts",
+        "ends"
+      ],
+      "before": {
+        "mapID": 1412,
+        "x": 0.474,
+        "y": 0.634
+      },
+      "after": {
+        "mapID": 1412,
+        "x": 0.484,
+        "y": 0.604
+      }
+    },
+    "source": "Reviewed Mull Thunderhorn location: https://www.wowhead.com/forever/quest=759; captured 2026-10-08; SHA-256 f1a373217e8e83cbdb2dbcebd607e00468592aa01702e7e32a1d0c6ba70f01a2. Quest start/end mapper selects 48.4,60.4, matching the other current cleansing-chain pages; supersedes converted-baseline representative."
+  },
+  {
+    "questID": 760,
+    "title": "Wildmane Cleansing",
+    "stageCorrection": {
+      "kind": "npc-location",
+      "minLevel": 4,
+      "level": 10,
+      "classMask": 0,
+      "requiredItems": [],
+      "entityID": 2948,
+      "roles": [
+        "starts",
+        "ends"
+      ],
+      "before": {
+        "mapID": 1412,
+        "x": 0.474,
+        "y": 0.634
+      },
+      "after": {
+        "mapID": 1412,
+        "x": 0.484,
+        "y": 0.604
+      }
+    },
+    "source": "Reviewed Mull Thunderhorn location: https://www.wowhead.com/forever/quest=760; captured 2026-10-08; SHA-256 0199cf5c912e558eebcee3330e98e9cd4254f9712695fbfc102a878edc67497f. Quest start/end mapper selects 48.4,60.4, matching the other current cleansing-chain pages; supersedes converted-baseline representative."
   }
 ]

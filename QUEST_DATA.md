@@ -38,6 +38,14 @@ reward-timing and uncertain-travel tradeoffs in the unchanged shared compiler;
 the changes remain a review draft pending main-developer coordination. Evidence,
 exact comparison results and the native-beta player checklist accompany the review.
 
+The [8 October Mulgore review](research/mulgore-2026-10-08/README.md) adds three
+published prerequisite links and reconciles Baine/Mull pickup and hand-in
+locations in eight quest records. It retains actual-offer confirmation and all
+existing gap flags. Separate Tauren captures add the race-specific continuations
+omitted by the first-discovered audit template: 74 distinct quests across three
+chapters. The review records route tradeoffs and the shared builder's suppression
+of The Broodmother's single-quest chapter, both requiring main-developer review.
+
 ## Captured facts and source precedence
 
 The 0.8.59 correction adds **Treacherous Cold (99162) → Rime's Wrath (99161)**
