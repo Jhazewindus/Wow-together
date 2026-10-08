@@ -1,0 +1,6 @@
+test_catalogue_spelling_compiles_all_faction_chapters_and_keeps_global_report (test_swamp_coverage.SwampCoverageTests.test_catalogue_spelling_compiles_all_faction_chapters_and_keeps_global_report) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 16.956s
+
+OK

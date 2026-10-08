@@ -1,0 +1,56 @@
+{
+  "zone": "Swamp of Sorrows",
+  "date": "2026-10-08",
+  "baseline_branch_commit": "5119b9af2b0a0026d5709126db37575d32a4b2f7",
+  "addon_version": "0.8.61",
+  "changed_quest_ids": [],
+  "tooling_change": "Match generated guide zone labels case-insensitively while retaining exact catalogue selection. No addon/shared engine edits.",
+  "scope": {
+    "quest_ids": 32,
+    "actions": 180,
+    "chapters": 6,
+    "static_points": 59
+  },
+  "gaps_before_after": {
+    "pickup": [
+      93429,
+      93430,
+      93464
+    ],
+    "objectives": [
+      3374,
+      93176,
+      93429,
+      93464,
+      93585,
+      93663
+    ],
+    "handin": [
+      93429,
+      93430,
+      93464,
+      93585
+    ],
+    "pickup_requirements": [],
+    "unknown_quantities": [
+      3374
+    ]
+  },
+  "validation": {
+    "focused_regressions": 1,
+    "strict_states": 24,
+    "optimization_guard": "PASS unchanged orders and facts; no optimization gain claimed",
+    "full_suite": "Combined queued-zone check pending"
+  },
+  "unresolved": {
+    "3374": "Chained Essence acquisition/count not published in pinned typed data; item-start Oathstone and preceding 3373 retained. Updated Forever identity cannot inherit Classic count/route as current proof.",
+    "93176": "Three specimen acquisition relations/positions missing.",
+    "93429": "New Lost One credit/mechanism and actual giver/return missing; do not infer kill/heal group by name.",
+    "93430": "Actual giver/return and links to 93429 unknown; one lure and mapped fisherman retained.",
+    "93464": "Actual mage giver/destination; series metadata alone does not prove mandatory hand-in dependency.",
+    "93585": "Objective mechanism and return missing; Father Tuttle start only.",
+    "93663": "Courier shipment source missing; Dar/Magtoor points do not prove acquisition."
+  },
+  "source_access": "Pinned 24 file hashes verified. New Wowhead capture withheld after prior repeated denials. ClassicDB 3374 captured as supporting unchanged-world lead only; wiki request returned 403, batch stopped. WarcraftDB/Reddit remain unavailable from prior denials. No bypass or beta terrain claim.",
+  "native_beta_tested": false
+}

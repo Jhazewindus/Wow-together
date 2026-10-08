@@ -1,0 +1,3367 @@
+{
+  "698": {
+    "prerequisitesRead": true,
+    "zone": "Swamp of Sorrows",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 8,
+        "name": "Unprepared Sawtooth Flank",
+        "entityID": 6169
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 40,
+    "areaID": 8,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 0,
+        "itemName": "Unprepared Sawtooth Flank",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Unprepared Sawtooth Flank",
+            "action": "collect",
+            "entityID": 1082,
+            "npc": true,
+            "y": 0.256,
+            "x": 0.64,
+            "name": "Sawtooth Crocolisk",
+            "mapID": 1435
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Unprepared Sawtooth Flank",
+            "action": "collect",
+            "entityID": 1087,
+            "npc": true,
+            "y": 0.262,
+            "x": 0.7959999999999999,
+            "name": "Sawtooth Snapper",
+            "mapID": 1435
+          }
+        ]
+      }
+    ],
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Tok'Kar",
+        "entityID": 5592
+      }
+    ],
+    "xp": 3150,
+    "minLevel": 35,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "name": "Unprepared Sawtooth Flank",
+          "entityID": 6169
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Dar",
+          "entityID": 5591
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Tok'Kar",
+          "entityID": 5592
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows",
+    "raceMask": 0,
+    "mapID": 1435,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Dar",
+        "entityID": 5591
+      }
+    ],
+    "seriesRoot": 698,
+    "requiredItems": [
+      {
+        "quantity": 8,
+        "name": "Unprepared Sawtooth Flank",
+        "itemID": 6169
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.8079999999999999,
+        "mapID": 1435,
+        "name": "Tok'Kar",
+        "entityID": 5592,
+        "npc": true,
+        "x": 0.8140000000000001
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "title": "Lack of Surplus",
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1435,
+        "legacyStepKey": "q:1435:npc:1082",
+        "entityID": 1082,
+        "npc": true,
+        "x": 0.64,
+        "y": 0.256,
+        "objectiveKey": "item:6169",
+        "itemID": 6169,
+        "quantity": 8,
+        "name": "Sawtooth Crocolisk",
+        "itemName": "Unprepared Sawtooth Flank",
+        "alternativeCount": 2,
+        "action": "collect"
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "series": [
+      698,
+      699,
+      1422,
+      1426,
+      1427
+    ],
+    "starts": [
+      {
+        "y": 0.5720000000000001,
+        "mapID": 1435,
+        "name": "Dar",
+        "entityID": 5591,
+        "npc": true,
+        "x": 0.44799999999999995
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Unprepared Sawtooth Flank",
+        "name": "Sawtooth Crocolisk",
+        "entityID": 1082,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Unprepared Sawtooth Flank",
+        "name": "Sawtooth Snapper",
+        "entityID": 1087,
+        "npc": true,
+        "action": "collect"
+      }
+    ]
+  },
+  "699": {
+    "prerequisitesRead": true,
+    "zone": "Swamp of Sorrows",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 6,
+        "name": "Sawtooth Snapper Claw",
+        "entityID": 6168
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 42,
+    "areaID": 8,
+    "seriesPosition": 2,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Tok'Kar",
+        "entityID": 5592
+      }
+    ],
+    "xp": 3450,
+    "minLevel": 35,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 6,
+          "name": "Sawtooth Snapper Claw",
+          "entityID": 6168
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Tok'Kar",
+          "entityID": 5592
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Tok'Kar",
+          "entityID": 5592
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows",
+    "raceMask": 0,
+    "mapID": 1435,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Tok'Kar",
+        "entityID": 5592
+      }
+    ],
+    "seriesRoot": 698,
+    "requiredItems": [
+      {
+        "quantity": 6,
+        "name": "Sawtooth Snapper Claw",
+        "itemID": 6168
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.8079999999999999,
+        "mapID": 1435,
+        "name": "Tok'Kar",
+        "entityID": 5592,
+        "npc": true,
+        "x": 0.8140000000000001
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "title": "Lack of Surplus",
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1435,
+        "action": "collect",
+        "entityID": 1087,
+        "npc": true,
+        "y": 0.262,
+        "objectiveKey": "item:6168",
+        "name": "Sawtooth Snapper",
+        "x": 0.7959999999999999,
+        "quantity": 6,
+        "legacyStepKey": "q:1435:npc:1087",
+        "itemName": "Sawtooth Snapper Claw",
+        "itemID": 6168
+      }
+    ],
+    "series": [
+      698,
+      699,
+      1422,
+      1426,
+      1427
+    ],
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.8079999999999999,
+        "mapID": 1435,
+        "name": "Tok'Kar",
+        "entityID": 5592,
+        "npc": true,
+        "x": 0.8140000000000001
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "previousQuest": 698,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Sawtooth Snapper Claw",
+        "name": "Sawtooth Snapper",
+        "entityID": 1087,
+        "npc": true,
+        "action": "collect"
+      }
+    ]
+  },
+  "1389": {
+    "prerequisitesRead": true,
+    "mapID": 1435,
+    "zone": "Swamp of Sorrows",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 6,
+        "name": "Draenethyst Crystal",
+        "entityID": 6071
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 6,
+        "name": "Draenethyst Crystal",
+        "itemID": 6071
+      }
+    ],
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1435,
+        "action": "gather",
+        "entityID": 22550,
+        "x": 0.5509000000000001,
+        "y": 0.30079999999999996,
+        "objectiveKey": "item:6071",
+        "itemID": 6071,
+        "quantity": 6,
+        "sourceAreaID": 8,
+        "itemName": "Draenethyst Crystal",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Draenethyst Crystals"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "y": 0.314,
+        "mapID": 1435,
+        "name": "Magtoor",
+        "entityID": 1776,
+        "npc": true,
+        "x": 0.26
+      }
+    ],
+    "level": 35,
+    "areaID": 8,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Magtoor",
+        "entityID": 1776
+      }
+    ],
+    "side": "Both",
+    "ends": [
+      {
+        "y": 0.314,
+        "mapID": 1435,
+        "name": "Magtoor",
+        "entityID": 1776,
+        "npc": true,
+        "x": 0.26
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Magtoor",
+        "entityID": 1776
+      }
+    ],
+    "xp": 2750,
+    "foreverStatus": "unchanged",
+    "title": "Draenethyst Crystals",
+    "minLevel": 30,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 6,
+          "name": "Draenethyst Crystal",
+          "entityID": 6071
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Magtoor",
+          "entityID": 1776
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Magtoor",
+          "entityID": 1776
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows"
+  },
+  "1392": {
+    "prerequisitesRead": true,
+    "mapID": 1435,
+    "zone": "Swamp of Sorrows",
+    "requirements": {},
+    "requiredItems": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "objectives": {},
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.314,
+        "mapID": 1435,
+        "name": "Magtoor",
+        "entityID": 1776,
+        "npc": true,
+        "x": 0.26
+      }
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Noboru's Cudgel",
+        "entityID": 6196
+      }
+    ],
+    "level": 39,
+    "areaID": 8,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1435,
+        "action": "start-item",
+        "entityID": 5477,
+        "npc": true,
+        "sourceAction": "loot",
+        "x": 0.5489999999999999,
+        "itemID": 6196,
+        "y": 0.341,
+        "sourceAreaID": 8,
+        "itemName": "Noboru's Cudgel",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Noboru the Cudgel"
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "startRefs": [
+      {
+        "entityType": "item",
+        "name": "Noboru's Cudgel",
+        "entityID": 6196
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Magtoor",
+        "entityID": 1776
+      }
+    ],
+    "xp": 2250,
+    "foreverStatus": "unchanged",
+    "title": "Noboru the Cudgel",
+    "minLevel": 29,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "item",
+          "name": "Noboru's Cudgel",
+          "entityID": 6196
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Noboru's Cudgel",
+          "entityID": 6196
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Magtoor",
+          "entityID": 1776
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows"
+  },
+  "1393": {
+    "prerequisitesRead": true,
+    "mapID": 1435,
+    "zone": "Swamp of Sorrows",
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.39799999999999996,
+        "x": 0.479,
+        "name": "Galen's Strongbox",
+        "entityID": 32569,
+        "mapID": 1435
+      }
+    ],
+    "objectives": [
+      {
+        "y": 0.2955,
+        "mapID": 1435,
+        "action": "escort",
+        "x": 0.5307999999999999,
+        "locationSource": "Published Forever converted-baseline event area",
+        "name": "Galen Goodward"
+      }
+    ],
+    "level": 38,
+    "areaID": 8,
+    "starts": [
+      {
+        "y": 0.182,
+        "mapID": 1435,
+        "name": "Galen Goodward",
+        "entityID": 5391,
+        "npc": true,
+        "x": 0.654
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Galen Goodward",
+        "entityID": 5391
+      }
+    ],
+    "money": 8500,
+    "endRefs": [
+      {
+        "entityType": "object",
+        "name": "Galen's Strongbox",
+        "entityID": 32569
+      }
+    ],
+    "xp": 2850,
+    "foreverStatus": "unchanged",
+    "title": "Galen's Escape",
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Galen Goodward",
+          "entityID": 5391
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "object",
+          "name": "Galen's Strongbox",
+          "entityID": 32569
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows"
+  },
+  "1396": {
+    "prerequisitesRead": true,
+    "mapID": 1435,
+    "zone": "Swamp of Sorrows",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 8,
+        "name": "Young Sawtooth Crocolisk",
+        "entityID": 1084
+      },
+      {
+        "entityType": "npc",
+        "quantity": 10,
+        "name": "Sorrow Spinner",
+        "entityID": 858
+      },
+      {
+        "entityType": "npc",
+        "quantity": 10,
+        "name": "Swamp Jaguar",
+        "entityID": 767
+      }
+    ],
+    "seriesRoot": 1396,
+    "npcTargets": [
+      {
+        "entityID": 767,
+        "npc": true,
+        "action": "kill",
+        "name": "Swamp Jaguar"
+      },
+      {
+        "entityID": 858,
+        "npc": true,
+        "action": "kill",
+        "name": "Sorrow Spinner"
+      },
+      {
+        "entityID": 1084,
+        "npc": true,
+        "action": "kill",
+        "name": "Young Sawtooth Crocolisk"
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 767,
+        "mapID": 1435,
+        "action": "kill",
+        "entityID": 767,
+        "npc": true,
+        "y": 0.39799999999999996,
+        "objectiveKey": "npc:767",
+        "name": "Swamp Jaguar",
+        "x": 0.478,
+        "quantity": 10
+      },
+      {
+        "sourceObjective": 858,
+        "mapID": 1435,
+        "action": "kill",
+        "entityID": 858,
+        "npc": true,
+        "y": 0.38,
+        "objectiveKey": "npc:858",
+        "name": "Sorrow Spinner",
+        "x": 0.22399999999999998,
+        "quantity": 10
+      },
+      {
+        "sourceObjective": 1084,
+        "mapID": 1435,
+        "action": "kill",
+        "entityID": 1084,
+        "npc": true,
+        "y": 0.48,
+        "objectiveKey": "npc:1084",
+        "name": "Young Sawtooth Crocolisk",
+        "x": 0.35,
+        "quantity": 8
+      }
+    ],
+    "series": [
+      1396,
+      1421,
+      1398,
+      1425
+    ],
+    "starts": [
+      {
+        "y": 0.596,
+        "mapID": 1435,
+        "name": "Watcher Biggs",
+        "entityID": 5476,
+        "npc": true,
+        "x": 0.268
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "level": 37,
+    "areaID": 8,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Watcher Biggs",
+        "entityID": 5476
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "ends": [
+      {
+        "y": 0.596,
+        "mapID": 1435,
+        "name": "Watcher Biggs",
+        "entityID": 5476,
+        "npc": true,
+        "x": 0.268
+      }
+    ],
+    "side": "Alliance",
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Watcher Biggs",
+        "entityID": 5476
+      }
+    ],
+    "xp": 2850,
+    "foreverStatus": "unchanged",
+    "title": "Encroaching Wildlife",
+    "minLevel": 30,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 8,
+          "name": "Young Sawtooth Crocolisk",
+          "entityID": 1084
+        },
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "name": "Sorrow Spinner",
+          "entityID": 858
+        },
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "name": "Swamp Jaguar",
+          "entityID": 767
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Watcher Biggs",
+          "entityID": 5476
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Watcher Biggs",
+          "entityID": 5476
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows"
+  },
+  "1398": {
+    "prerequisitesRead": true,
+    "mapID": 1435,
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1435,
+        "action": "gather",
+        "entityID": 24798,
+        "x": 0.8747,
+        "y": 0.7811,
+        "objectiveKey": "item:6146",
+        "itemID": 6146,
+        "quantity": 8,
+        "sourceAreaID": 8,
+        "itemName": "Sundried Driftwood",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Sundried Driftwood"
+      }
+    ],
+    "zone": "Swamp of Sorrows",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 8,
+        "name": "Sundried Driftwood",
+        "entityID": 6146
+      }
+    ],
+    "seriesRoot": 1396,
+    "requiredItems": [
+      {
+        "quantity": 8,
+        "name": "Sundried Driftwood",
+        "itemID": 6146
+      }
+    ],
+    "series": [
+      1396,
+      1421,
+      1398,
+      1425
+    ],
+    "starts": [
+      {
+        "y": 0.596,
+        "mapID": 1435,
+        "name": "Watcher Biggs",
+        "entityID": 5476,
+        "npc": true,
+        "x": 0.268
+      }
+    ],
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 42,
+    "areaID": 8,
+    "ends": [
+      {
+        "y": 0.596,
+        "mapID": 1435,
+        "name": "Watcher Biggs",
+        "entityID": 5476,
+        "npc": true,
+        "x": 0.268
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Watcher Biggs",
+        "entityID": 5476
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 1421,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Watcher Biggs",
+        "entityID": 5476
+      }
+    ],
+    "xp": 3450,
+    "title": "Driftwood",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 3,
+    "minLevel": 30,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "name": "Sundried Driftwood",
+          "entityID": 6146
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Watcher Biggs",
+          "entityID": 5476
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Watcher Biggs",
+          "entityID": 5476
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows"
+  },
+  "1418": {
+    "prerequisitesRead": true,
+    "mapID": 1435,
+    "zone": "Swamp of Sorrows",
+    "requirements": {},
+    "seriesRoot": 1418,
+    "objectives": {},
+    "series": [
+      1418,
+      1420
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.47,
+        "mapID": 1418,
+        "name": "Neeka Bloodscar",
+        "entityID": 5394,
+        "npc": true,
+        "x": 0.064
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.552,
+        "mapID": 1435,
+        "name": "Helgrum the Swift",
+        "entityID": 1442,
+        "npc": true,
+        "x": 0.478
+      }
+    ],
+    "level": 35,
+    "areaID": 8,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Helgrum the Swift",
+        "entityID": 1442
+      }
+    ],
+    "side": "Horde",
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Neeka Bloodscar",
+        "entityID": 5394
+      }
+    ],
+    "xp": 1350,
+    "foreverStatus": "unchanged",
+    "title": "Neeka Bloodscar",
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Helgrum the Swift",
+          "entityID": 1442
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Neeka Bloodscar",
+          "entityID": 5394
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows"
+  },
+  "1420": {
+    "prerequisitesRead": true,
+    "mapID": 1418,
+    "objectives": {},
+    "zone": "Badlands",
+    "requirements": {},
+    "seriesRoot": 1418,
+    "requiredItems": {},
+    "series": [
+      1418,
+      1420
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Neeka's Report",
+        "entityID": 6167
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.47,
+        "mapID": 1418,
+        "name": "Neeka Bloodscar",
+        "entityID": 5394,
+        "npc": true,
+        "x": 0.064
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.552,
+        "mapID": 1435,
+        "name": "Helgrum the Swift",
+        "entityID": 1442,
+        "npc": true,
+        "x": 0.478
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 40,
+    "areaID": 3,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Neeka Bloodscar",
+        "entityID": 5394
+      }
+    ],
+    "side": "Horde",
+    "previousQuest": 1418,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Helgrum the Swift",
+        "entityID": 1442
+      }
+    ],
+    "xp": 2350,
+    "title": "Report to Helgrum",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 2,
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Neeka Bloodscar",
+          "entityID": 5394
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Neeka's Report",
+          "entityID": 6167
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Helgrum the Swift",
+          "entityID": 1442
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/badlands"
+  },
+  "1421": {
+    "prerequisitesRead": true,
+    "mapID": 1435,
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1435,
+        "action": "gather",
+        "entityID": 28024,
+        "x": 0.6446,
+        "y": 0.183,
+        "objectiveKey": "item:6170",
+        "itemID": 6170,
+        "quantity": 1,
+        "sourceAreaID": 8,
+        "itemName": "Wizards' Reagents",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Caravan Chest"
+      }
+    ],
+    "zone": "Swamp of Sorrows",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Wizards' Reagents",
+        "entityID": 6170
+      }
+    ],
+    "seriesRoot": 1396,
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Wizards' Reagents",
+        "itemID": 6170
+      }
+    ],
+    "series": [
+      1396,
+      1421,
+      1398,
+      1425
+    ],
+    "starts": [
+      {
+        "y": 0.596,
+        "mapID": 1435,
+        "name": "Watcher Biggs",
+        "entityID": 5476,
+        "npc": true,
+        "x": 0.268
+      }
+    ],
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 35,
+    "areaID": 8,
+    "ends": [
+      {
+        "y": 0.596,
+        "mapID": 1435,
+        "name": "Watcher Biggs",
+        "entityID": 5476,
+        "npc": true,
+        "x": 0.268
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Watcher Biggs",
+        "entityID": 5476
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 1396,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Watcher Biggs",
+        "entityID": 5476
+      }
+    ],
+    "xp": 2750,
+    "title": "The Lost Caravan",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 2,
+    "minLevel": 30,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Wizards' Reagents",
+          "entityID": 6170
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Watcher Biggs",
+          "entityID": 5476
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Watcher Biggs",
+          "entityID": 5476
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows"
+  },
+  "1422": {
+    "prerequisitesRead": true,
+    "mapID": 1435,
+    "zone": "Swamp of Sorrows",
+    "requirements": {},
+    "seriesRoot": 698,
+    "objectives": {},
+    "series": [
+      698,
+      699,
+      1422,
+      1426,
+      1427
+    ],
+    "starts": [
+      {
+        "y": 0.8079999999999999,
+        "mapID": 1435,
+        "name": "Tok'Kar",
+        "entityID": 5592,
+        "npc": true,
+        "x": 0.8140000000000001
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.804,
+        "mapID": 1435,
+        "name": "Katar",
+        "entityID": 5593,
+        "npc": true,
+        "x": 0.836
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 45,
+    "areaID": 8,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Tok'Kar",
+        "entityID": 5592
+      }
+    ],
+    "side": "Horde",
+    "previousQuest": 699,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Katar",
+        "entityID": 5593
+      }
+    ],
+    "xp": 0,
+    "title": "Threat From the Sea",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 3,
+    "minLevel": 35,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Tok'Kar",
+          "entityID": 5592
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Katar",
+          "entityID": 5593
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows"
+  },
+  "1424": {
+    "prerequisitesRead": true,
+    "mapID": 1435,
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1435,
+        "action": "gather",
+        "entityID": 30854,
+        "x": 0.6544,
+        "y": 0.5534,
+        "objectiveKey": "item:6175",
+        "itemID": 6175,
+        "quantity": 10,
+        "sourceAreaID": 8,
+        "itemName": "Atal'ai Artifact",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Atal'ai Artifact"
+      }
+    ],
+    "zone": "Swamp of Sorrows",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 10,
+        "name": "Atal'ai Artifact",
+        "entityID": 6175
+      }
+    ],
+    "seriesRoot": 1424,
+    "requiredItems": [
+      {
+        "quantity": 10,
+        "name": "Atal'ai Artifact",
+        "itemID": 6175
+      }
+    ],
+    "series": [
+      1424,
+      1429,
+      1444,
+      1445
+    ],
+    "starts": [
+      {
+        "y": 0.55,
+        "mapID": 1435,
+        "name": "Fel'zerul",
+        "entityID": 1443,
+        "npc": true,
+        "x": 0.48
+      }
+    ],
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 43,
+    "areaID": 8,
+    "ends": [
+      {
+        "y": 0.55,
+        "mapID": 1435,
+        "name": "Fel'zerul",
+        "entityID": 1443,
+        "npc": true,
+        "x": 0.48
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Fel'zerul",
+        "entityID": 1443
+      }
+    ],
+    "side": "Horde",
+    "seriesPosition": 1,
+    "money": 12000,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Fel'zerul",
+        "entityID": 1443
+      }
+    ],
+    "xp": 4450,
+    "questType": "Elite",
+    "foreverStatus": "unchanged",
+    "title": "Pool of Tears",
+    "minLevel": 38,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 10,
+          "name": "Atal'ai Artifact",
+          "entityID": 6175
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Fel'zerul",
+          "entityID": 1443
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Fel'zerul",
+          "entityID": 1443
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows"
+  },
+  "1425": {
+    "prerequisitesRead": true,
+    "mapID": 1435,
+    "objectives": {},
+    "zone": "Swamp of Sorrows",
+    "requirements": {},
+    "seriesRoot": 1396,
+    "requiredItems": {},
+    "series": [
+      1396,
+      1421,
+      1398,
+      1425
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Shipment to Nethergarde",
+        "entityID": 6178
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.596,
+        "mapID": 1435,
+        "name": "Watcher Biggs",
+        "entityID": 5476,
+        "npc": true,
+        "x": 0.268
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.212,
+        "mapID": 1419,
+        "name": "Quartermaster Lungertz",
+        "entityID": 5393,
+        "npc": true,
+        "x": 0.664
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 42,
+    "areaID": 8,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Watcher Biggs",
+        "entityID": 5476
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 1398,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Quartermaster Lungertz",
+        "entityID": 5393
+      }
+    ],
+    "xp": 2550,
+    "title": "Deliver the Shipment",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 4,
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Watcher Biggs",
+          "entityID": 5476
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Shipment to Nethergarde",
+          "entityID": 6178
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Quartermaster Lungertz",
+          "entityID": 5393
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows"
+  },
+  "1426": {
+    "prerequisitesRead": true,
+    "mapID": 1435,
+    "npcTargets": [
+      {
+        "entityID": 747,
+        "npc": true,
+        "action": "kill",
+        "name": "Marsh Murloc"
+      },
+      {
+        "entityID": 750,
+        "npc": true,
+        "action": "kill",
+        "name": "Marsh Inkspewer"
+      },
+      {
+        "entityID": 751,
+        "npc": true,
+        "action": "kill",
+        "name": "Marsh Flesheater"
+      }
+    ],
+    "zone": "Swamp of Sorrows",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 10,
+        "name": "Marsh Murloc",
+        "entityID": 747
+      },
+      {
+        "entityType": "npc",
+        "quantity": 10,
+        "name": "Marsh Inkspewer",
+        "entityID": 750
+      },
+      {
+        "entityType": "npc",
+        "quantity": 10,
+        "name": "Marsh Flesheater",
+        "entityID": 751
+      }
+    ],
+    "seriesRoot": 698,
+    "objectives": [
+      {
+        "sourceObjective": 747,
+        "mapID": 1435,
+        "action": "kill",
+        "entityID": 747,
+        "npc": true,
+        "y": 0.846,
+        "objectiveKey": "npc:747",
+        "name": "Marsh Murloc",
+        "x": 0.8440000000000001,
+        "quantity": 10
+      },
+      {
+        "sourceObjective": 750,
+        "mapID": 1435,
+        "action": "kill",
+        "entityID": 750,
+        "npc": true,
+        "y": 0.782,
+        "objectiveKey": "npc:750",
+        "name": "Marsh Inkspewer",
+        "x": 0.66,
+        "quantity": 10
+      },
+      {
+        "sourceObjective": 751,
+        "mapID": 1435,
+        "action": "kill",
+        "entityID": 751,
+        "npc": true,
+        "y": 0.91,
+        "objectiveKey": "npc:751",
+        "name": "Marsh Flesheater",
+        "x": 0.63,
+        "quantity": 10
+      }
+    ],
+    "series": [
+      698,
+      699,
+      1422,
+      1426,
+      1427
+    ],
+    "starts": [
+      {
+        "y": 0.804,
+        "mapID": 1435,
+        "name": "Katar",
+        "entityID": 5593,
+        "npc": true,
+        "x": 0.836
+      }
+    ],
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 43,
+    "areaID": 8,
+    "ends": [
+      {
+        "y": 0.804,
+        "mapID": 1435,
+        "name": "Katar",
+        "entityID": 5593,
+        "npc": true,
+        "x": 0.836
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Katar",
+        "entityID": 5593
+      }
+    ],
+    "side": "Horde",
+    "previousQuest": 1422,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Katar",
+        "entityID": 5593
+      }
+    ],
+    "xp": 4450,
+    "title": "Threat From the Sea",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 4,
+    "minLevel": 35,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "name": "Marsh Murloc",
+          "entityID": 747
+        },
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "name": "Marsh Inkspewer",
+          "entityID": 750
+        },
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "name": "Marsh Flesheater",
+          "entityID": 751
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Katar",
+          "entityID": 5593
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Katar",
+          "entityID": 5593
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows"
+  },
+  "1427": {
+    "prerequisitesRead": true,
+    "mapID": 1435,
+    "zone": "Swamp of Sorrows",
+    "requirements": {},
+    "seriesRoot": 698,
+    "objectives": {},
+    "series": [
+      698,
+      699,
+      1422,
+      1426,
+      1427
+    ],
+    "starts": [
+      {
+        "y": 0.804,
+        "mapID": 1435,
+        "name": "Katar",
+        "entityID": 5593,
+        "npc": true,
+        "x": 0.836
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.8079999999999999,
+        "mapID": 1435,
+        "name": "Tok'Kar",
+        "entityID": 5592,
+        "npc": true,
+        "x": 0.8140000000000001
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 43,
+    "areaID": 8,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Katar",
+        "entityID": 5593
+      }
+    ],
+    "side": "Horde",
+    "previousQuest": 1426,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Tok'Kar",
+        "entityID": 5592
+      }
+    ],
+    "xp": 3600,
+    "title": "Threat From the Sea",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 5,
+    "minLevel": 35,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Katar",
+          "entityID": 5593
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Tok'Kar",
+          "entityID": 5592
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows"
+  },
+  "1428": {
+    "prerequisitesRead": true,
+    "mapID": 1435,
+    "zone": "Swamp of Sorrows",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 10,
+        "name": "Marsh Inkspewer",
+        "entityID": 750
+      },
+      {
+        "entityType": "npc",
+        "quantity": 10,
+        "name": "Marsh Flesheater",
+        "entityID": 751
+      },
+      {
+        "entityType": "npc",
+        "quantity": 10,
+        "name": "Marsh Oracle",
+        "entityID": 752
+      }
+    ],
+    "npcTargets": [
+      {
+        "entityID": 750,
+        "npc": true,
+        "action": "kill",
+        "name": "Marsh Inkspewer"
+      },
+      {
+        "entityID": 751,
+        "npc": true,
+        "action": "kill",
+        "name": "Marsh Flesheater"
+      },
+      {
+        "entityID": 752,
+        "npc": true,
+        "action": "kill",
+        "name": "Marsh Oracle"
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 750,
+        "mapID": 1435,
+        "action": "kill",
+        "entityID": 750,
+        "npc": true,
+        "y": 0.782,
+        "objectiveKey": "npc:750",
+        "name": "Marsh Inkspewer",
+        "x": 0.66,
+        "quantity": 10
+      },
+      {
+        "sourceObjective": 751,
+        "mapID": 1435,
+        "action": "kill",
+        "entityID": 751,
+        "npc": true,
+        "y": 0.91,
+        "objectiveKey": "npc:751",
+        "name": "Marsh Flesheater",
+        "x": 0.63,
+        "quantity": 10
+      },
+      {
+        "sourceObjective": 752,
+        "mapID": 1435,
+        "action": "kill",
+        "entityID": 752,
+        "npc": true,
+        "y": 0.91,
+        "objectiveKey": "npc:752",
+        "name": "Marsh Oracle",
+        "x": 0.63,
+        "quantity": 10
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "starts": [
+      {
+        "y": 0.804,
+        "mapID": 1435,
+        "name": "Katar",
+        "entityID": 5593,
+        "npc": true,
+        "x": 0.836
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "level": 45,
+    "areaID": 8,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Katar",
+        "entityID": 5593
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "ends": [
+      {
+        "y": 0.804,
+        "mapID": 1435,
+        "name": "Katar",
+        "entityID": 5593,
+        "npc": true,
+        "x": 0.836
+      }
+    ],
+    "side": "Horde",
+    "prerequisiteAny": [
+      1427
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Katar",
+        "entityID": 5593
+      }
+    ],
+    "xp": 3900,
+    "foreverStatus": "unchanged",
+    "title": "Continued Threat",
+    "minLevel": 35,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "name": "Marsh Inkspewer",
+          "entityID": 750
+        },
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "name": "Marsh Flesheater",
+          "entityID": 751
+        },
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "name": "Marsh Oracle",
+          "entityID": 752
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Katar",
+          "entityID": 5593
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Katar",
+          "entityID": 5593
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows"
+  },
+  "1429": {
+    "prerequisitesRead": true,
+    "mapID": 1435,
+    "objectives": {},
+    "zone": "Swamp of Sorrows",
+    "requirements": {},
+    "seriesRoot": 1424,
+    "requiredItems": {},
+    "series": [
+      1424,
+      1429,
+      1444,
+      1445
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Bundle of Atal'ai Artifacts",
+        "entityID": 6193
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.55,
+        "mapID": 1435,
+        "name": "Fel'zerul",
+        "entityID": 1443,
+        "npc": true,
+        "x": 0.48
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.752,
+        "mapID": 1425,
+        "name": "Atal'ai Exile",
+        "entityID": 5598,
+        "npc": true,
+        "x": 0.336
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 44,
+    "areaID": 8,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Fel'zerul",
+        "entityID": 1443
+      }
+    ],
+    "side": "Horde",
+    "previousQuest": 1424,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Atal'ai Exile",
+        "entityID": 5598
+      }
+    ],
+    "xp": 3750,
+    "title": "The Atal'ai Exile",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 2,
+    "minLevel": 38,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Fel'zerul",
+          "entityID": 1443
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Bundle of Atal'ai Artifacts",
+          "entityID": 6193
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Atal'ai Exile",
+          "entityID": 5598
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows"
+  },
+  "1430": {
+    "prerequisitesRead": true,
+    "mapID": 1435,
+    "zone": "Swamp of Sorrows",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 10,
+        "name": "Monstrous Crawler Leg",
+        "entityID": 6184
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 10,
+        "name": "Monstrous Crawler Leg",
+        "itemID": 6184
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Monstrous Crawler Leg",
+        "name": "Monstrous Crawler",
+        "entityID": 1088,
+        "npc": true,
+        "action": "collect"
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1435,
+        "action": "collect",
+        "entityID": 1088,
+        "npc": true,
+        "y": 0.34600000000000003,
+        "objectiveKey": "item:6184",
+        "name": "Monstrous Crawler",
+        "x": 0.9259999999999999,
+        "quantity": 10,
+        "legacyStepKey": "q:1435:npc:1088",
+        "itemName": "Monstrous Crawler Leg",
+        "itemID": 6184
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "y": 0.5720000000000001,
+        "mapID": 1435,
+        "name": "Dar",
+        "entityID": 5591,
+        "npc": true,
+        "x": 0.44799999999999995
+      }
+    ],
+    "level": 44,
+    "areaID": 8,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Dar",
+        "entityID": 5591
+      }
+    ],
+    "side": "Horde",
+    "ends": [
+      {
+        "y": 0.5720000000000001,
+        "mapID": 1435,
+        "name": "Dar",
+        "entityID": 5591,
+        "npc": true,
+        "x": 0.44799999999999995
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Dar",
+        "entityID": 5591
+      }
+    ],
+    "xp": 3750,
+    "foreverStatus": "unchanged",
+    "title": "Fresh Meat",
+    "minLevel": 35,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 10,
+          "name": "Monstrous Crawler Leg",
+          "entityID": 6184
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Dar",
+          "entityID": 5591
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Dar",
+          "entityID": 5591
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows"
+  },
+  "1444": {
+    "prerequisitesRead": true,
+    "mapID": 1425,
+    "zone": "The Hinterlands",
+    "requirements": {},
+    "seriesRoot": 1424,
+    "objectives": {},
+    "series": [
+      1424,
+      1429,
+      1444,
+      1445
+    ],
+    "starts": [
+      {
+        "y": 0.752,
+        "mapID": 1425,
+        "name": "Atal'ai Exile",
+        "entityID": 5598,
+        "npc": true,
+        "x": 0.336
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.55,
+        "mapID": 1435,
+        "name": "Fel'zerul",
+        "entityID": 1443,
+        "npc": true,
+        "x": 0.48
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 44,
+    "areaID": 47,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Atal'ai Exile",
+        "entityID": 5598
+      }
+    ],
+    "side": "Horde",
+    "previousQuest": 1429,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Fel'zerul",
+        "entityID": 1443
+      }
+    ],
+    "xp": 3750,
+    "title": "Return to Fel'Zerul",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 3,
+    "minLevel": 38,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Atal'ai Exile",
+          "entityID": 5598
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Fel'zerul",
+          "entityID": 1443
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/the-hinterlands"
+  },
+  "2621": {
+    "prerequisitesRead": true,
+    "mapID": 1419,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Fallen Hero of the Horde",
+        "entityID": 7572
+      }
+    ],
+    "requirements": {},
+    "seriesRoot": 2784,
+    "objectives": {},
+    "series": [
+      2784,
+      2621,
+      2622,
+      2623
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.55,
+        "mapID": 1435,
+        "name": "Dispatch Commander Ruag",
+        "entityID": 7623,
+        "npc": true,
+        "x": 0.478
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.66,
+        "mapID": 1435,
+        "name": "Fallen Hero of the Horde",
+        "entityID": 7572,
+        "npc": true,
+        "x": 0.342
+      }
+    ],
+    "level": 50,
+    "areaID": 4,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "previousQuest": 2784,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Dispatch Commander Ruag",
+        "entityID": 7623
+      }
+    ],
+    "xp": 1200,
+    "title": "The Disgraced One",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 2,
+    "minLevel": 45,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Fallen Hero of the Horde",
+          "entityID": 7572
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Dispatch Commander Ruag",
+          "entityID": 7623
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/blasted-lands"
+  },
+  "2622": {
+    "prerequisitesRead": true,
+    "mapID": 1435,
+    "zone": "Swamp of Sorrows",
+    "requirements": {},
+    "seriesRoot": 2784,
+    "objectives": {},
+    "series": [
+      2784,
+      2621,
+      2622,
+      2623
+    ],
+    "starts": [
+      {
+        "y": 0.55,
+        "mapID": 1435,
+        "name": "Dispatch Commander Ruag",
+        "entityID": 7623,
+        "npc": true,
+        "x": 0.478
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.5720000000000001,
+        "mapID": 1435,
+        "name": "Bengor",
+        "entityID": 7643,
+        "npc": true,
+        "x": 0.45
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 50,
+    "areaID": 8,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Dispatch Commander Ruag",
+        "entityID": 7623
+      }
+    ],
+    "side": "Horde",
+    "previousQuest": 2621,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Bengor",
+        "entityID": 7643
+      }
+    ],
+    "xp": 1200,
+    "title": "The Missing Orders",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 3,
+    "minLevel": 45,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Dispatch Commander Ruag",
+          "entityID": 7623
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Bengor",
+          "entityID": 7643
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows"
+  },
+  "2623": {
+    "prerequisitesRead": true,
+    "mapID": 1435,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Bengor",
+        "entityID": 7643
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 8463,
+        "name": "Warchief's Orders"
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Warchief's Orders",
+        "name": "Swamp Talker",
+        "entityID": 950,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Warchief's Orders",
+        "itemID": 8463
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1435,
+        "action": "loot",
+        "entityID": 950,
+        "npc": true,
+        "x": 0.6679999999999999,
+        "y": 0.764,
+        "objectiveKey": "item:8463",
+        "itemID": 8463,
+        "quantity": 1,
+        "sourceAreaID": 8,
+        "itemName": "Warchief's Orders",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Swamp Talker"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1435,
+        "entityID": 7643,
+        "npc": true,
+        "y": 0.5737,
+        "x": 0.4497,
+        "name": "Bengor",
+        "sourceAreaID": 8,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "level": 55,
+    "areaID": 8,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 8589934770,
+    "side": "Horde",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1435,
+        "entityID": 7572,
+        "npc": true,
+        "sourceZone": "Swamp of Sorrows",
+        "x": 0.342,
+        "name": "Fallen Hero of the Horde",
+        "sourceAreaID": 8,
+        "y": 0.654
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Fallen Hero of the Horde",
+        "entityID": 7572
+      }
+    ],
+    "xp": 5650,
+    "prerequisiteAny": [
+      2622
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 45,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "The Swamp Talker",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 8463,
+          "name": "Warchief's Orders"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Bengor",
+          "entityID": 7643
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Fallen Hero of the Horde",
+          "entityID": 7572
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows"
+  },
+  "2784": {
+    "prerequisitesRead": true,
+    "mapID": 1419,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Fallen Hero of the Horde",
+        "entityID": 7572
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantityUnknown": true,
+        "action": "talk",
+        "entityID": 7572,
+        "name": "Fallen Hero of the Horde"
+      }
+    ],
+    "seriesRoot": 2784,
+    "npcTargets": [
+      {
+        "entityID": 7572,
+        "npc": true,
+        "action": "talk",
+        "name": "Fallen Hero of the Horde"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1435,
+        "action": "talk",
+        "entityID": 7572,
+        "npc": true,
+        "y": 0.6614,
+        "objectiveKey": "npc:7572",
+        "name": "Fallen Hero of the Horde",
+        "sourceAreaID": 8,
+        "x": 0.3429,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantityUnknown": true
+      }
+    ],
+    "series": [
+      2784,
+      2621,
+      2622,
+      2623
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "y": 0.66,
+        "mapID": 1435,
+        "name": "Fallen Hero of the Horde",
+        "entityID": 7572,
+        "npc": true,
+        "x": 0.342
+      }
+    ],
+    "level": 50,
+    "areaID": 4,
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "ends": [
+      {
+        "y": 0.66,
+        "mapID": 1435,
+        "name": "Fallen Hero of the Horde",
+        "entityID": 7572,
+        "npc": true,
+        "x": 0.342
+      }
+    ],
+    "side": "Horde",
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Fallen Hero of the Horde",
+        "entityID": 7572
+      }
+    ],
+    "xp": 470,
+    "foreverStatus": "unchanged",
+    "title": "Fall From Grace",
+    "minLevel": 45,
+    "requirementSource": "Published Forever typed objectives",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantityUnknown": true,
+          "action": "talk",
+          "entityID": 7572,
+          "name": "Fallen Hero of the Horde"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Fallen Hero of the Horde",
+          "entityID": 7572
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Fallen Hero of the Horde",
+          "entityID": 7572
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/blasted-lands"
+  },
+  "3374": {
+    "prerequisitesRead": true,
+    "mapID": 1435,
+    "startRefs": [
+      {
+        "entityType": "item",
+        "name": "Oathstone of Ysera's Dragonflight",
+        "entityID": 10589
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantityUnknown": true,
+        "action": "collect",
+        "entityID": 10455,
+        "name": "Chained Essence of Eranikus"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Oathstone of Ysera's Dragonflight",
+        "itemID": 10589
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": {},
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1435,
+        "entityID": 5353,
+        "npc": true,
+        "sourceZone": "Swamp of Sorrows",
+        "x": 0.136,
+        "name": "Itharius",
+        "sourceAreaID": 8,
+        "y": 0.7140000000000001
+      }
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Oathstone of Ysera's Dragonflight",
+        "entityID": 10589
+      }
+    ],
+    "level": 55,
+    "areaID": 8,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1435,
+        "action": "start-item",
+        "entityID": 5353,
+        "npc": true,
+        "sourceAction": "loot",
+        "x": 0.136,
+        "itemID": 10589,
+        "y": 0.7140000000000001,
+        "sourceAreaID": 8,
+        "sourceZone": "Swamp of Sorrows",
+        "itemName": "Oathstone of Ysera's Dragonflight",
+        "name": "Itharius"
+      }
+    ],
+    "title": "The Essence of Eranikus",
+    "missingRequirements": [
+      {
+        "entityType": "item",
+        "quantityUnknown": true,
+        "action": "collect",
+        "entityID": 10455,
+        "name": "Chained Essence of Eranikus"
+      }
+    ],
+    "side": "Both",
+    "prerequisiteAny": [
+      3373
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Itharius",
+        "entityID": 5353
+      }
+    ],
+    "xp": 560,
+    "foreverStatus": "updated",
+    "allowedRaceIDs": {},
+    "minLevel": 48,
+    "requirementSource": "Published Forever typed objectives",
+    "raceMask": 0,
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "objectiveLocationsIncomplete": true,
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows"
+  },
+  "3512": {
+    "prerequisitesRead": true,
+    "mapID": 1435,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Itharius",
+        "entityID": 5353
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 8588,
+        "npc": true,
+        "y": 0.2743,
+        "x": 0.6781,
+        "name": "Umbranse the Spiritspeaker",
+        "sourceAreaID": 618,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "objectives": {},
+    "level": 55,
+    "areaID": 8,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1435,
+        "entityID": 5353,
+        "npc": true,
+        "sourceZone": "Swamp of Sorrows",
+        "x": 0.136,
+        "name": "Itharius",
+        "sourceAreaID": 8,
+        "y": 0.7140000000000001
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "raceMask": 0,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Umbranse the Spiritspeaker",
+        "entityID": 8588
+      }
+    ],
+    "xp": 4200,
+    "prerequisiteAny": [
+      3374
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 48,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "In Eranikus' Own Words",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Itharius",
+          "entityID": 5353
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Umbranse the Spiritspeaker",
+          "entityID": 8588
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows"
+  },
+  "7562": {
+    "raceMask": 0,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Spackle Thornberry",
+        "entityID": 5520
+      },
+      {
+        "entityType": "npc",
+        "name": "Kurgul",
+        "entityID": 5815
+      },
+      {
+        "entityType": "npc",
+        "name": "Jubahl Corpseseeker",
+        "entityID": 6382
+      },
+      {
+        "entityType": "npc",
+        "name": "Greshka",
+        "entityID": 12807
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 256,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1428,
+        "entityID": 14436,
+        "npc": true,
+        "y": 0.3164,
+        "x": 0.12689999999999999,
+        "name": "Mor'zul Bloodbringer",
+        "sourceAreaID": 46,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "level": 58,
+    "objectives": {},
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1435,
+        "entityID": 12807,
+        "npc": true,
+        "y": 0.5527000000000001,
+        "x": 0.4858,
+        "name": "Greshka",
+        "sourceAreaID": 8,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "side": "Both",
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Mor'zul Bloodbringer",
+        "entityID": 14436
+      }
+    ],
+    "xp": 620,
+    "title": "Mor'zul Bloodbringer",
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "allowedRaceIDs": {},
+    "minLevel": 60,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "prerequisitesRead": true,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Spackle Thornberry",
+          "entityID": 5520
+        },
+        {
+          "entityType": "npc",
+          "name": "Kurgul",
+          "entityID": 5815
+        },
+        {
+          "entityType": "npc",
+          "name": "Jubahl Corpseseeker",
+          "entityID": 6382
+        },
+        {
+          "entityType": "npc",
+          "name": "Greshka",
+          "entityID": 12807
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Mor'zul Bloodbringer",
+          "entityID": 14436
+        }
+      ]
+    },
+    "foreverStatus": "unchanged",
+    "categoryPath": "classes/warlock"
+  },
+  "93176": {
+    "raceMask": 0,
+    "mapID": 1435,
+    "zone": "Swamp of Sorrows",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Arbor Tarantula Specimen",
+        "entityID": 213566
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Hay Weevil Specimen",
+        "entityID": 213568
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Flesh Picker Specimen",
+        "entityID": 213567
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Arbor Tarantula Specimen",
+        "itemID": 213566
+      },
+      {
+        "quantity": 1,
+        "name": "Hay Weevil Specimen",
+        "itemID": 213568
+      },
+      {
+        "quantity": 1,
+        "name": "Flesh Picker Specimen",
+        "itemID": 213567
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.542,
+        "mapID": 1435,
+        "name": "Amaryllis Webb",
+        "entityID": 217412,
+        "npc": true,
+        "x": 0.25
+      }
+    ],
+    "level": 35,
+    "areaID": 8,
+    "objectives": {},
+    "starts": [
+      {
+        "y": 0.542,
+        "mapID": 1435,
+        "name": "Amaryllis Webb",
+        "entityID": 217412,
+        "npc": true,
+        "x": 0.25
+      }
+    ],
+    "missingRequirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Arbor Tarantula Specimen",
+        "entityID": 213566
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Hay Weevil Specimen",
+        "entityID": 213568
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Flesh Picker Specimen",
+        "entityID": 213567
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Amaryllis Webb",
+        "entityID": 217412
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Amaryllis Webb",
+        "entityID": 217412
+      }
+    ],
+    "xp": 3450,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "prerequisitesRead": true,
+    "title": "My Little Friends",
+    "requirementSource": "Wowhead Forever objective table",
+    "minLevel": 25,
+    "objectiveLocationsIncomplete": true,
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows"
+  },
+  "93429": {
+    "raceMask": 0,
+    "mapID": 1435,
+    "zone": "Swamp of Sorrows",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "name": "Lost One Hunter",
+        "entityID": 759
+      },
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "name": "Lost One Seer",
+        "entityID": 761
+      },
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "name": "Lost One",
+        "entityID": 254797
+      }
+    ],
+    "classMask": 0,
+    "level": 35,
+    "areaID": 8,
+    "npcTargets": [
+      {
+        "entityID": 759,
+        "npc": true,
+        "action": "kill",
+        "name": "Lost One Hunter"
+      },
+      {
+        "entityID": 760,
+        "npc": true,
+        "action": "kill",
+        "name": "Lost One Muckdweller"
+      },
+      {
+        "entityID": 761,
+        "npc": true,
+        "action": "kill",
+        "name": "Lost One Seer"
+      },
+      {
+        "entityID": 762,
+        "npc": true,
+        "action": "kill",
+        "name": "Lost One Riftseeker"
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 254797,
+        "mapID": 1435,
+        "action": "kill",
+        "entityID": 759,
+        "npc": true,
+        "y": 0.20800000000000002,
+        "objectiveKey": "npc:759",
+        "name": "Lost One Hunter",
+        "x": 0.648,
+        "quantity": 1
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1435,
+        "action": "kill",
+        "entityID": 761,
+        "npc": true,
+        "sourceZone": "Swamp of Sorrows",
+        "objectiveKey": "npc:761",
+        "name": "Lost One Seer",
+        "sourceAreaID": 8,
+        "y": 0.214,
+        "x": 0.596,
+        "quantity": 1
+      }
+    ],
+    "missingRequirements": [
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "name": "Lost One",
+        "entityID": 254797
+      }
+    ],
+    "startRefs": {},
+    "money": 3500,
+    "endRefs": {},
+    "xp": 2750,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "prerequisitesRead": true,
+    "title": "Blood of My Blood",
+    "requirementSource": "Wowhead Forever objective table",
+    "minLevel": 30,
+    "objectiveLocationsIncomplete": true,
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows"
+  },
+  "93430": {
+    "raceMask": 0,
+    "mapID": 1435,
+    "zone": "Swamp of Sorrows",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Lucky Lure",
+        "entityID": 258530
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Lucky Lure",
+        "itemID": 258530
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 35,
+    "areaID": 8,
+    "npcTargets": [
+      {
+        "itemName": "Lucky Lure",
+        "name": "Lost One Fisherman",
+        "entityID": 757,
+        "npc": true,
+        "action": "collect"
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1435,
+        "action": "collect",
+        "entityID": 757,
+        "npc": true,
+        "y": 0.272,
+        "objectiveKey": "item:258530",
+        "name": "Lost One Fisherman",
+        "x": 0.57,
+        "quantity": 1,
+        "legacyStepKey": "q:1435:npc:757",
+        "itemName": "Lucky Lure",
+        "itemID": 258530
+      }
+    ],
+    "money": 3500,
+    "endRefs": {},
+    "xp": 2750,
+    "startRefs": {},
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "minLevel": 30,
+    "requirementSource": "Wowhead Forever objective table",
+    "prerequisitesRead": true,
+    "title": "Taking the Bait Back",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows"
+  },
+  "93464": {
+    "raceMask": 0,
+    "mapID": 1435,
+    "startRefs": {},
+    "requirements": {},
+    "seriesRoot": 93464,
+    "classMask": 0,
+    "level": 38,
+    "areaID": 8,
+    "seriesPosition": 1,
+    "money": 1100,
+    "endRefs": {},
+    "xp": 710,
+    "objectives": {},
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "title": "The Visiting Mage",
+    "minLevel": 30,
+    "prerequisitesRead": true,
+    "series": [
+      93464,
+      93465
+    ],
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows"
+  },
+  "93585": {
+    "raceMask": 0,
+    "mapID": 1435,
+    "zone": "Swamp of Sorrows",
+    "requirements": {},
+    "classMask": 0,
+    "level": 34,
+    "areaID": 8,
+    "objectives": {},
+    "side": "Alliance",
+    "starts": [
+      {
+        "y": 0.506,
+        "mapID": 1435,
+        "name": "Father Tuttle",
+        "entityID": 255597,
+        "npc": true,
+        "x": 0.22
+      }
+    ],
+    "money": 0,
+    "endRefs": {},
+    "xp": 2700,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Father Tuttle",
+        "entityID": 255597
+      }
+    ],
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "minLevel": 30,
+    "prerequisitesRead": true,
+    "title": "This Light of Mine",
+    "objectiveLocationsIncomplete": true,
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows"
+  },
+  "93663": {
+    "raceMask": 0,
+    "mapID": 1435,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Dar",
+        "entityID": 5591
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Courier's Shipment",
+        "entityID": 260452
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Courier's Shipment",
+        "itemID": 260452
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.314,
+        "mapID": 1435,
+        "name": "Magtoor",
+        "entityID": 1776,
+        "npc": true,
+        "x": 0.26
+      }
+    ],
+    "level": 35,
+    "areaID": 8,
+    "objectives": {},
+    "starts": [
+      {
+        "y": 0.5720000000000001,
+        "mapID": 1435,
+        "name": "Dar",
+        "entityID": 5591,
+        "npc": true,
+        "x": 0.44799999999999995
+      }
+    ],
+    "side": "Horde",
+    "missingRequirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Courier's Shipment",
+        "entityID": 260452
+      }
+    ],
+    "money": 3500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Magtoor",
+        "entityID": 1776
+      }
+    ],
+    "xp": 2750,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "prerequisitesRead": true,
+    "title": "Lost in Transit",
+    "requirementSource": "Wowhead Forever objective table",
+    "minLevel": 30,
+    "objectiveLocationsIncomplete": true,
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows"
+  }
+}

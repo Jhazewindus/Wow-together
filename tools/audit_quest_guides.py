@@ -72,7 +72,9 @@ def audit(zone=None):
             for level in (1,4,8,12,18,23,33,43,53,60):
                 c.ns.profile.level=level
                 for g in c.ns.LevelingGuideChoices().values():
-                    if zone is not None and g.zone != zone: continue
+                    # Generated chapter labels title-case small words; the
+                    # catalogue retains published spelling ("Swamp of Sorrows").
+                    if zone is not None and g.zone.casefold() != zone.casefold(): continue
                     key=(faction,g.key)
                     if key in seen:continue
                     seen.add(key)

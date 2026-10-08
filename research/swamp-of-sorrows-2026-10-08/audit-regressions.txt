@@ -1,0 +1,13 @@
+test_a_scoped_run_cannot_overwrite_the_full_audit (test_zone_coverage.ZoneCoverageTests.test_a_scoped_run_cannot_overwrite_the_full_audit) ... ok
+test_one_zone_compiles_both_chapters_without_claiming_completeness (test_zone_coverage.ZoneCoverageTests.test_one_zone_compiles_both_chapters_without_claiming_completeness) ... ok
+test_quarry_preserves_counts_boar_spawn_and_unmapped_copper (test_zone_coverage.ZoneCoverageTests.test_quarry_preserves_counts_boar_spawn_and_unmapped_copper) ... ok
+test_record_and_point_counts_are_scoped_to_the_selected_zone (test_zone_coverage.ZoneCoverageTests.test_record_and_point_counts_are_scoped_to_the_selected_zone) ... ok
+test_review_sources_match_pinned_hashes_and_all_remaining_needs (test_zone_coverage.ZoneCoverageTests.test_review_sources_match_pinned_hashes_and_all_remaining_needs) ... ok
+test_senir_records_keep_distinct_givers_and_prerequisites (test_zone_coverage.ZoneCoverageTests.test_senir_records_keep_distinct_givers_and_prerequisites) ... ok
+test_treaty_starter_does_not_invent_a_pickup_location (test_zone_coverage.ZoneCoverageTests.test_treaty_starter_does_not_invent_a_pickup_location) ... ok
+test_unknown_zone_fails_without_replacing_an_existing_report (test_zone_coverage.ZoneCoverageTests.test_unknown_zone_fails_without_replacing_an_existing_report) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 17.606s
+
+OK
