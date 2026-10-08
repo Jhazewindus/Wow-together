@@ -1,5 +1,7 @@
 # Dun Morogh follow-up review — 8 October 2026
 
+Main subsequently advanced to 0.8.61; see the [combined integration review](integration-0.8.61/README.md) for inherited session/lifecycle checks and final validation.
+
 The repeated assignment continues `guides/coverage` at `8371d24`, retaining main
 `eec9b99` (0.8.60) and the earlier correction commit `2aa164c`. This follow-up
 changes research/documentation only. Packed quest data is byte-identical to the
@@ -98,7 +100,7 @@ All **55 focused tests** pass and all **84 TOC Lua files** compile under
 Lua 5.1/interface 16001. The refreshed two-section audit passes 164 source points.
 The combined branch's last full run passed 1,492 of 1,493 checks; the sole failure
 is the known historical catalogue fingerprint assertion, with fixture unchanged.
-Subsequent commits changed only research/docs. Host checks do not certify native
+At that baseline, subsequent guide commits had changed only research/docs. Host checks do not certify native
 beta availability, safe terrain or actual quest completion timing.
 
 ## Player checklist
