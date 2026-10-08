@@ -69,8 +69,16 @@ local function createHome()
     home.resume.category:SetPoint("TOPLEFT", 14, -8); home.resume.category:SetText("CONTINUE YOUR GUIDE")
     home.resume.title = heading(home.resume, "", 13)
     home.resume.title:SetPoint("TOPLEFT", 14, -23); home.resume.title:SetHeight(18)
-    home.resume.button = ns.UIButton(home.resume, "Continue", 112, ns.OpenGuideWindow, true)
-    home.resume.button:SetPoint("RIGHT", -14, 0)
+    home.resume.detail = ns.UILabel(home.resume, nil, 10, ns.UIColors.muted)
+    home.resume.detail:SetPoint("TOPLEFT", 14, -46); home.resume.detail:SetHeight(28); home.resume.detail:SetWordWrap(true)
+    home.resume.button = ns.UIButton(home.resume, "Continue", 112, function()
+        if ns.PausedSessionCheckpoint() then ns.ResumeGuideSession()
+        elseif ns.routeSelection then ns.OpenGuideWindow()
+        else ns.SetFilter("guides") end
+    end, true)
+    home.resume.button:SetPoint("TOPRIGHT", -14, -9)
+    home.resume.session = ns.UIButton(home.resume, "Session", 112, ns.ShowSessionCheckpoint)
+    home.resume.session:SetPoint("BOTTOMRIGHT", -14, 9)
     home.leveling = makeCard(home, true)
     home.professionTitle = heading(home, "Your professions", 16, ns.UIColors.text)
     home.browseProfessions = ns.UIButton(home, "Browse professions", 150, function() ns.SetFilter("professions") end)
@@ -104,8 +112,8 @@ function ns.LayoutRecommended()
     local width, top, gap = ns.ui.contentWidth, 32, 12
     home:SetWidth(width); home.title:SetWidth(width - 160)
     if home.resume:IsShown() then
-        home.resume:ClearAllPoints(); home.resume:SetPoint("TOPLEFT", 0, -top); home.resume:SetSize(width, 52)
-        home.resume.title:SetWidth(width - 168); top = top + 64
+        home.resume:ClearAllPoints(); home.resume:SetPoint("TOPLEFT", 0, -top); home.resume:SetSize(width, 82)
+        home.resume.title:SetWidth(width - 168); home.resume.detail:SetWidth(width - 168); top = top + 94
     end
     home.leveling:ClearAllPoints(); home.leveling:SetPoint("TOPLEFT", 0, -top)
     layoutCard(home.leveling, width, 164); top = top + 176
@@ -160,9 +168,7 @@ function ns.RenderRecommended(query)
     home.professionEmpty:SetShown(home.professionCount == 0)
     home.professionEmpty.text:SetText(states.professions or "Browse professions to find a crafting guide.")
     home.moreTitle:SetShown(home.extraCount > 0)
-    local running = ns.routeSelection and ns.selectedRoute and not ns.selectedRoute.complete
-    home.resume:SetShown(running == true)
-    home.resume.title:SetText(running and ns.routeSelection.title or "")
+    ns.UpdateSessionResumeBar()
     ns.ui.metrics[2].caption:SetText("RECOMMENDATIONS"); ns.ui.metrics[2].value:SetText(tostring(#items))
     home:Show(); ns.LayoutRecommended()
 end

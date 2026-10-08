@@ -12,7 +12,7 @@ class GuideWindowTests(unittest.TestCase):
         c.lua.globals().resizeNS = c.ns
         c.lua.execute('resizeNS.GenerateFixedGuide=function() error("resize replanned guide") end')
         frame.SetSize(frame, 540, 260); frame.OnSizeChanged(frame)
-        self.assertEqual(frame.title.width, 402)
+        self.assertEqual(frame.title.width, 354)  # Reserve space for Pause beside BG/ST/Exit.
         self.assertEqual(frame.status.width, 444)
         self.assertEqual(frame.status.height, frame.height - frame.context.height - 114)
         self.assertEqual(frame.tip.width, 540)

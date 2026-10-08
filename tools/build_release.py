@@ -55,6 +55,18 @@ then fully restart the client; the release includes taint mitigation (a /reload 
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+0.8.61 SESSION CHECKPOINTS AND DUNGEON TRACKING adds Pause on the guide window and Session on the
+Recommended screen. Save & pause stops the guide while keeping one checkpoint;
+Resume checks current progress and keeps same-version fixed order/manual skips.
+The summary records actual XP, unique quest hand-ins and played time with the
+guide active. Reload continues it without offline time/XP. Stop/Exit discard an
+active guide; closing an already-paused window keeps it saved. WoW flushes saved
+data on logout/reload; recovery after a client crash is not guaranteed.
+Dungeon maps now show a live position/facing marker only on matching native floors
+with public player coordinates. Locate me follows your floor; manual boss/floor
+browsing remains available. Reference maps and unsupported interior coordinates
+stay static. See TESTING.md for the beta positioning checks and current limits.
+
 0.8.60 INVENTORY-AWARE SERVICE STOPS adds optional nearby vendor advice for
 bags, repairs and common food/drink. Vendors are learned from actual visits;
 click a tip to navigate there, then Done to resume the unchanged quest guide.

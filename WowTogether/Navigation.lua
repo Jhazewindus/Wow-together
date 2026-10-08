@@ -129,8 +129,9 @@ end
 function ns.NavigationState()
     if not ns.Option("routeArrow") and not ns.Option("standaloneArrow") then return {status = "Disabled in settings"} end
     if ns.guideStopped and not ns.routeSelection and not ns.routePlanning then
-        return {visible = ns.guideWindowIdle == true, idle = true, status = "Choose a guide to begin.",
-            stop = {id = 0, kind = "notice", title = "No guide selected", mapID = 0}}
+        local saved = ns.PausedSessionCheckpoint and ns.PausedSessionCheckpoint()
+        return {visible = ns.guideWindowIdle == true, idle = true, status = saved and "Session saved. Resume when ready." or "Choose a guide to begin.",
+            stop = {id = 0, kind = "notice", title = saved and saved.guide.title or "No guide selected", mapID = 0}}
     end
     if ns.guideScanning or ns.routePlanning then
         local scan = ns.guideScanning
@@ -342,7 +343,12 @@ function ns.UpdateNavigation()
             frame.professionControls = nil
         end
     end
-    frame.stop:SetEnabled(not state.idle)
+    local paused = ns.PausedSessionCheckpoint and ns.PausedSessionCheckpoint()
+    frame.stop:SetEnabled(not state.idle or paused ~= nil)
+    frame.pause.caption:SetText(paused and "Resume" or "Pause")
+    frame.pause:SetEnabled(paused ~= nil or not state.idle and not state.busy)
+    ns.UIHelp(frame.pause, paused and "Resume your saved guide using current progress." or "Save your guide, pause it and see your session summary.")
+    ns.UIHelp(frame.close, paused and "Close this window. Your paused guide stays saved." or "Exit guide. Stop and close this window.")
     if state.idle then frame.symbol:Hide(); frame.context:SetText("") end
     if not separate then
         if state.busy then frame.symbol:SetShown(not ns.DrawNavigationSpinner(frame.icon))
@@ -367,7 +373,7 @@ function ns.LayoutNavigation()
     local left = frame.separateArrow and 14 or 82
     local offset = (width - 360) / 2
     local contextHeight = math.max(26, math.min(frame.reasonHeight or 52, height - 142))
-    frame.title:SetWidth(width - 138); frame.step:SetWidth(width - 28)
+    frame.title:SetWidth(width - 186); frame.step:SetWidth(width - 28)
     frame.status:ClearAllPoints(); frame.status:SetPoint("TOPLEFT", left, -52)
     frame.status:SetSize(width - left - 14, math.max(28, height - contextHeight - 114))
     frame.distance:ClearAllPoints(); frame.distance:SetPoint("BOTTOMLEFT", left, contextHeight + 46)
@@ -426,6 +432,12 @@ function ns.CreateNavigation()
     frame.title = ns.UILabel(frame, "GameFontNormal", 13, ns.UIColors.gold)
     frame.title:SetPoint("TOPLEFT", 14, -10)
     frame.title:SetSize(306, 18); frame.title:SetWordWrap(false)
+    frame.pause = ns.UIButton(frame, "Pause", 42, function()
+        if ns.PausedSessionCheckpoint() then ns.ResumeGuideSession() else ns.PauseGuideSession() end
+    end)
+    frame.pause:SetHeight(18); frame.pause:SetPoint("TOPRIGHT", -102, -10)
+    frame.pause.caption:ClearAllPoints(); frame.pause.caption:SetPoint("CENTER")
+    frame.pause.caption:SetSize(40, 14); frame.pause.caption:SetFont("Fonts\\ARIALN.TTF", 9, "")
     frame.background = ns.UIButton(frame, "BG", 22, function() ns.SetOption("guideOpaque", not ns.Option("guideOpaque")) end)
     frame.background:SetHeight(18); frame.background:SetPoint("TOPRIGHT", -72, -10)
     frame.background.caption:ClearAllPoints(); frame.background.caption:SetPoint("CENTER")
@@ -435,7 +447,7 @@ function ns.CreateNavigation()
     frame.stop.caption:ClearAllPoints(); frame.stop.caption:SetPoint("CENTER")
     frame.stop.caption:SetSize(18, 14); frame.stop.caption:SetFont("Fonts\\ARIALN.TTF", 9, "")
     ns.UIHelp(frame.stop, "Stop guide. Keep this window open.")
-    frame.close = ns.UIClose(frame, function() ns.StopGuide(true) end)
+    frame.close = ns.UIClose(frame, function() ns.StopGuide(true, ns.PausedSessionCheckpoint() ~= nil) end)
     frame.close:SetSize(20, 18); frame.close:SetPoint("TOPRIGHT", -10, -10)
     frame.close.caption:ClearAllPoints(); frame.close.caption:SetPoint("CENTER"); frame.close.caption:SetSize(16, 14)
     ns.UIHelp(frame.close, "Exit guide. Stop and close this window.")

@@ -82,8 +82,11 @@ function ns.InitializeGuidePersistence()
     if type(ns.db.guideState) ~= "table" then ns.db.guideState = {} end
     local saved = ns.db.guideState[ns.self]
     if type(saved) == "table" and saved.schema == 1 and type(saved.guide) == "table" then
-        ns.pendingSavedGuide = saved
-        ns.guideResumeStatus = "Saved guide will resume after login."
+        if saved.paused == true then ns.guideResumeStatus = "Guide paused; choose Resume when ready."
+        else
+            ns.pendingSavedGuide = saved
+            ns.guideResumeStatus = "Saved guide will resume after login."
+        end
     end
 end
 
@@ -97,18 +100,21 @@ function ns.SaveSelectedGuide()
         and cachedPhase == guide.dungeonPhase and cachedProfessionBatch == batchSignature then return end
     local saved = descriptor(guide, 0)
     if not saved then return end
-    ns.db.guideState[ns.self] = {schema = 1, addon = ns.VERSION, guide = saved}
+    local entry = ns.db.guideState[ns.self]
+    local previous = type(entry) == "table" and entry or nil
+    ns.db.guideState[ns.self] = {schema = 1, addon = ns.VERSION, guide = saved,
+        checkpoint = previous and type(previous.guide) == "table" and previous.guide.key == guide.key and previous.checkpoint or nil}
     cachedGuide, cachedPlan, cachedBatch = guide, guide.fixedPlan, guide.batchIDs
     cachedVisit = guide.npcVisitPickupIDs
     cachedPhase = guide.dungeonPhase
     cachedProfessionBatch = batchSignature
 end
 
-function ns.ClearSavedGuide()
+function ns.ClearSavedGuide(preserveCheckpoint)
     ns.pendingSavedGuide, ns.resumingGuide = nil, nil
     cachedGuide, cachedPlan, cachedBatch, cachedVisit, cachedPhase = nil, nil, nil, nil, nil
     cachedProfessionBatch = nil
-    if ns.db and ns.db.guideState and ns.self then ns.db.guideState[ns.self] = nil end
+    if not preserveCheckpoint and ns.db and ns.db.guideState and ns.self then ns.db.guideState[ns.self] = nil end
 end
 
 local function restore(saved, reusePlan, depth)
