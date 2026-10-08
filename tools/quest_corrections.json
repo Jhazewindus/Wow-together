@@ -4763,5 +4763,1050 @@
         ]
       }
     }
+  },
+  {
+    "questID": 4861,
+    "title": "Enraged Wildkin",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Interact with the actual published return object; keep current coordinates and actual preceding hand-ins. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/winterspring-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 53,
+      "level": 59,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [
+          {
+            "entityType": "object",
+            "mapID": 1452,
+            "name": "Damaged Crate",
+            "y": 0.5979,
+            "entityID": 175587,
+            "x": 0.5899,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 618
+          }
+        ],
+        "providedItems": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [
+          {
+            "entityType": "object",
+            "mapID": 1452,
+            "name": "Damaged Crate",
+            "y": 0.5979,
+            "entityID": 175587,
+            "x": 0.5899,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 618,
+            "action": "interact"
+          }
+        ],
+        "providedItems": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      }
+    }
+  },
+  {
+    "questID": 4863,
+    "title": "Enraged Wildkin",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Interact with the actual published return object; keep current coordinates and actual preceding hand-ins. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/winterspring-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 53,
+      "level": 59,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [
+          {
+            "entityType": "object",
+            "mapID": 1452,
+            "name": "Jaron's Wagon",
+            "y": 0.6068,
+            "entityID": 175586,
+            "x": 0.6144,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 618
+          }
+        ],
+        "providedItems": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [
+          {
+            "entityType": "object",
+            "mapID": 1452,
+            "name": "Jaron's Wagon",
+            "y": 0.6068,
+            "entityID": 175586,
+            "x": 0.6144,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 618,
+            "action": "interact"
+          }
+        ],
+        "providedItems": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      }
+    }
+  },
+  {
+    "questID": 5084,
+    "title": "Falling to Corruption",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Interact with the actual published return object; keep current coordinates and actual preceding hand-ins. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/winterspring-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 52,
+      "level": 56,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [
+          {
+            "y": 0.059000000000000004,
+            "x": 0.602,
+            "name": "Deadwood Cauldron",
+            "entityID": 176091,
+            "mapID": 1448
+          }
+        ],
+        "providedItems": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [
+          {
+            "y": 0.059000000000000004,
+            "x": 0.602,
+            "name": "Deadwood Cauldron",
+            "entityID": 176091,
+            "mapID": 1448,
+            "entityType": "object",
+            "action": "interact"
+          }
+        ],
+        "providedItems": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      }
+    }
+  },
+  {
+    "questID": 4882,
+    "title": "Guarding Secrets",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied delivery or already-held item starter: keep actual hand-in item and initial loot-start acquisition, remove only redundant post-acceptance farming. Preserve exact-ID faction/parent links and destination. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/winterspring-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 52,
+      "level": 59,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Blue-feathered Necklace",
+          "itemID": 12558
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Blue-feathered Necklace",
+            "entityID": 12558
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Blue-feathered Necklace",
+            "itemID": 12558
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1452,
+            "action": "loot",
+            "entityID": 7452,
+            "npc": true,
+            "x": 0.5865,
+            "y": 0.6031,
+            "objectiveKey": "item:12558",
+            "itemID": 12558,
+            "quantity": 1,
+            "sourceAreaID": 618,
+            "itemName": "Blue-feathered Necklace",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "name": "Crazed Owlbeast"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Blue-feathered Necklace",
+            "name": "Crazed Owlbeast",
+            "entityID": 7452,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1448,
+            "entityID": 10306,
+            "npc": true,
+            "y": 0.5279,
+            "x": 0.34729999999999994,
+            "name": "Trull Failbane",
+            "sourceAreaID": 361,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "providedItems": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Blue-feathered Necklace",
+            "itemID": 12558
+          }
+        ],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1448,
+            "entityID": 10306,
+            "npc": true,
+            "y": 0.5279,
+            "x": 0.34729999999999994,
+            "name": "Trull Failbane",
+            "sourceAreaID": 361,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "talk"
+          }
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 12558,
+            "name": "Blue-feathered Necklace",
+            "quantity": 1
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      }
+    }
+  },
+  {
+    "questID": 4883,
+    "title": "Guarding Secrets",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied delivery or already-held item starter: keep actual hand-in item and initial loot-start acquisition, remove only redundant post-acceptance farming. Preserve exact-ID faction/parent links and destination. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/winterspring-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 52,
+      "level": 59,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Blue-feathered Necklace",
+          "itemID": 12558
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Blue-feathered Necklace",
+            "entityID": 12558
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Blue-feathered Necklace",
+            "itemID": 12558
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1452,
+            "action": "loot",
+            "entityID": 7452,
+            "npc": true,
+            "x": 0.5865,
+            "y": 0.6031,
+            "objectiveKey": "item:12558",
+            "itemID": 12558,
+            "quantity": 1,
+            "sourceAreaID": 618,
+            "itemName": "Blue-feathered Necklace",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "name": "Crazed Owlbeast"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Blue-feathered Necklace",
+            "name": "Crazed Owlbeast",
+            "entityID": 7452,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1456,
+            "entityID": 5770,
+            "npc": true,
+            "sourceZone": "Thunder Bluff",
+            "x": 0.754,
+            "name": "Nara Wildmane",
+            "sourceAreaID": 1638,
+            "y": 0.31
+          }
+        ],
+        "providedItems": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Blue-feathered Necklace",
+            "itemID": 12558
+          }
+        ],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1456,
+            "entityID": 5770,
+            "npc": true,
+            "sourceZone": "Thunder Bluff",
+            "x": 0.754,
+            "name": "Nara Wildmane",
+            "sourceAreaID": 1638,
+            "y": 0.31,
+            "action": "talk"
+          }
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 12558,
+            "name": "Blue-feathered Necklace",
+            "quantity": 1
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      }
+    }
+  },
+  {
+    "questID": 5123,
+    "title": "The Final Piece",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied delivery or already-held item starter: keep actual hand-in item and initial loot-start acquisition, remove only redundant post-acceptance farming. Preserve exact-ID faction/parent links and destination. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/winterspring-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 52,
+      "level": 59,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Crudely-written Log",
+          "itemID": 12842
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Crudely-written Log",
+            "entityID": 12842
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Crudely-written Log",
+            "itemID": 12842
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1452,
+            "action": "loot",
+            "entityID": 10738,
+            "npc": true,
+            "x": 0.6956,
+            "y": 0.3831,
+            "objectiveKey": "item:12842",
+            "itemID": 12842,
+            "quantity": 1,
+            "sourceAreaID": 618,
+            "itemName": "Crudely-written Log",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "name": "High Chief Winterfall"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Crudely-written Log",
+            "name": "High Chief Winterfall",
+            "entityID": 10738,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1452,
+            "entityID": 9298,
+            "npc": true,
+            "y": 0.45159999999999995,
+            "x": 0.3127,
+            "name": "Donova Snowden",
+            "sourceAreaID": 618,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "providedItems": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Crudely-written Log",
+            "itemID": 12842
+          }
+        ],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1452,
+            "entityID": 9298,
+            "npc": true,
+            "y": 0.45159999999999995,
+            "x": 0.3127,
+            "name": "Donova Snowden",
+            "sourceAreaID": 618,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "talk"
+          }
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 12842,
+            "name": "Crudely-written Log",
+            "quantity": 1
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      }
+    }
+  },
+  {
+    "questID": 5128,
+    "title": "Words of the High Chief",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied delivery or already-held item starter: keep actual hand-in item and initial loot-start acquisition, remove only redundant post-acceptance farming. Preserve exact-ID faction/parent links and destination. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/winterspring-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 52,
+      "level": 59,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Crudely-written Log",
+          "itemID": 12842
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Crudely-written Log",
+            "entityID": 12842
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Crudely-written Log",
+            "itemID": 12842
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1452,
+            "action": "loot",
+            "entityID": 10738,
+            "npc": true,
+            "x": 0.6956,
+            "y": 0.3831,
+            "objectiveKey": "item:12842",
+            "itemID": 12842,
+            "quantity": 1,
+            "sourceAreaID": 618,
+            "itemName": "Crudely-written Log",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "name": "High Chief Winterfall"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Crudely-written Log",
+            "name": "High Chief Winterfall",
+            "entityID": 10738,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1448,
+            "entityID": 10920,
+            "npc": true,
+            "y": 0.8175,
+            "x": 0.5114,
+            "name": "Kelek Skykeeper",
+            "sourceAreaID": 361,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "providedItems": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Crudely-written Log",
+            "itemID": 12842
+          }
+        ],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1448,
+            "entityID": 10920,
+            "npc": true,
+            "y": 0.8175,
+            "x": 0.5114,
+            "name": "Kelek Skykeeper",
+            "sourceAreaID": 361,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "talk"
+          }
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 12842,
+            "name": "Crudely-written Log",
+            "quantity": 1
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      }
+    }
+  },
+  {
+    "questID": 5252,
+    "title": "Remorseful Highborne",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied delivery or already-held item starter: keep actual hand-in item and initial loot-start acquisition, remove only redundant post-acceptance farming. Preserve exact-ID faction/parent links and destination. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/winterspring-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 53,
+      "level": 58,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Crystal of Zin-Malor",
+          "itemID": 13347
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Crystal of Zin-Malor",
+            "entityID": 13347
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Crystal of Zin-Malor",
+            "itemID": 13347
+          }
+        ],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1452,
+            "entityID": 11079,
+            "npc": true,
+            "y": 0.3039,
+            "x": 0.5196999999999999,
+            "name": "Wynd Nightchaser",
+            "sourceAreaID": 618,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Crystal of Zin-Malor",
+            "entityID": 13347
+          }
+        ],
+        "objectiveLocationsIncomplete": true
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Crystal of Zin-Malor",
+            "itemID": 13347
+          }
+        ],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1452,
+            "entityID": 11079,
+            "npc": true,
+            "y": 0.3039,
+            "x": 0.5196999999999999,
+            "name": "Wynd Nightchaser",
+            "sourceAreaID": 618,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "talk"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      }
+    }
+  },
+  {
+    "questID": 5253,
+    "title": "The Crystal of Zin-Malor",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied delivery or already-held item starter: keep actual hand-in item and initial loot-start acquisition, remove only redundant post-acceptance farming. Preserve exact-ID faction/parent links and destination. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/winterspring-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 53,
+      "level": 58,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Crystal of Zin-Malor",
+          "itemID": 13347
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Crystal of Zin-Malor",
+            "entityID": 13347
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Crystal of Zin-Malor",
+            "itemID": 13347
+          }
+        ],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1457,
+            "entityID": 3516,
+            "npc": true,
+            "sourceZone": "Darnassus",
+            "x": 0.344,
+            "name": "Arch Druid Fandral Staghelm",
+            "sourceAreaID": 1657,
+            "y": 0.086
+          }
+        ],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Crystal of Zin-Malor",
+            "entityID": 13347
+          }
+        ],
+        "objectiveLocationsIncomplete": true
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Crystal of Zin-Malor",
+            "itemID": 13347
+          }
+        ],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1457,
+            "entityID": 3516,
+            "npc": true,
+            "sourceZone": "Darnassus",
+            "x": 0.344,
+            "name": "Arch Druid Fandral Staghelm",
+            "sourceAreaID": 1657,
+            "y": 0.086,
+            "action": "talk"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      }
+    }
+  },
+  {
+    "questID": 5163,
+    "title": "Are We There, Yeti?",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Retain explicitly supplied mechanical yeti without fabricating a supplied count. Keep all three mapped use targets, count one per target, existing spell/action, cross-zone trips and hand-ins. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/winterspring-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 52,
+      "level": 58,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "action": "use",
+            "entityID": 10978,
+            "name": "Legacki",
+            "useItemName": "Umi's Mechanical Yeti",
+            "spellID": 17166
+          },
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "action": "use",
+            "entityID": 7583,
+            "name": "Sprinkle",
+            "useItemName": "Umi's Mechanical Yeti",
+            "spellID": 17166
+          },
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "action": "use",
+            "entityID": 10977,
+            "name": "Quixxil",
+            "useItemName": "Umi's Mechanical Yeti",
+            "spellID": 17166
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1452,
+            "action": "use",
+            "entityID": 10978,
+            "npc": true,
+            "x": 0.6154,
+            "y": 0.3861,
+            "objectiveKey": "npc:10978",
+            "name": "Legacki",
+            "useItemName": "Umi's Mechanical Yeti",
+            "sourceAreaID": 618,
+            "quantity": 1,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "spellID": 17166
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1446,
+            "action": "use",
+            "entityID": 7583,
+            "npc": true,
+            "y": 0.268,
+            "sourceZone": "Tanaris",
+            "objectiveKey": "npc:7583",
+            "name": "Sprinkle",
+            "x": 0.51,
+            "sourceAreaID": 440,
+            "useItemName": "Umi's Mechanical Yeti",
+            "quantity": 1,
+            "spellID": 17166
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1449,
+            "action": "use",
+            "entityID": 10977,
+            "npc": true,
+            "x": 0.4366,
+            "y": 0.09369999999999999,
+            "objectiveKey": "npc:10977",
+            "name": "Quixxil",
+            "useItemName": "Umi's Mechanical Yeti",
+            "sourceAreaID": 490,
+            "quantity": 1,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "spellID": 17166
+          }
+        ],
+        "npcTargets": [
+          {
+            "entityID": 10978,
+            "npc": true,
+            "action": "use",
+            "name": "Legacki"
+          },
+          {
+            "entityID": 7583,
+            "npc": true,
+            "action": "use",
+            "name": "Sprinkle"
+          },
+          {
+            "entityID": 10977,
+            "npc": true,
+            "action": "use",
+            "name": "Quixxil"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1452,
+            "entityID": 10305,
+            "npc": true,
+            "sourceZone": "Winterspring",
+            "x": 0.608,
+            "name": "Umi Rumplesnicker",
+            "sourceAreaID": 618,
+            "y": 0.376
+          }
+        ],
+        "providedItems": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "action": "use",
+            "entityID": 10978,
+            "name": "Legacki",
+            "useItemName": "Umi's Mechanical Yeti",
+            "spellID": 17166
+          },
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "action": "use",
+            "entityID": 7583,
+            "name": "Sprinkle",
+            "useItemName": "Umi's Mechanical Yeti",
+            "spellID": 17166
+          },
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "action": "use",
+            "entityID": 10977,
+            "name": "Quixxil",
+            "useItemName": "Umi's Mechanical Yeti",
+            "spellID": 17166
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1452,
+            "action": "use",
+            "entityID": 10978,
+            "npc": true,
+            "x": 0.6154,
+            "y": 0.3861,
+            "objectiveKey": "npc:10978",
+            "name": "Legacki",
+            "useItemName": "Umi's Mechanical Yeti",
+            "sourceAreaID": 618,
+            "quantity": 1,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "spellID": 17166
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1446,
+            "action": "use",
+            "entityID": 7583,
+            "npc": true,
+            "y": 0.268,
+            "sourceZone": "Tanaris",
+            "objectiveKey": "npc:7583",
+            "name": "Sprinkle",
+            "x": 0.51,
+            "sourceAreaID": 440,
+            "useItemName": "Umi's Mechanical Yeti",
+            "quantity": 1,
+            "spellID": 17166
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1449,
+            "action": "use",
+            "entityID": 10977,
+            "npc": true,
+            "x": 0.4366,
+            "y": 0.09369999999999999,
+            "objectiveKey": "npc:10977",
+            "name": "Quixxil",
+            "useItemName": "Umi's Mechanical Yeti",
+            "sourceAreaID": 490,
+            "quantity": 1,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "spellID": 17166
+          }
+        ],
+        "npcTargets": [
+          {
+            "entityID": 10978,
+            "npc": true,
+            "action": "use",
+            "name": "Legacki"
+          },
+          {
+            "entityID": 7583,
+            "npc": true,
+            "action": "use",
+            "name": "Sprinkle"
+          },
+          {
+            "entityID": 10977,
+            "npc": true,
+            "action": "use",
+            "name": "Quixxil"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1452,
+            "entityID": 10305,
+            "npc": true,
+            "sourceZone": "Winterspring",
+            "x": 0.608,
+            "name": "Umi Rumplesnicker",
+            "sourceAreaID": 618,
+            "y": 0.376
+          }
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 12928,
+            "name": "Umi's Mechanical Yeti",
+            "quantityUnknown": true
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      }
+    }
   }
 ]

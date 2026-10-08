@@ -1,0 +1,40 @@
+{
+  "applied": false,
+  "date": "2026-10-09 Europe/Amsterdam",
+  "shared_runtime_modules_authored": false,
+  "access": {
+    "source_area": 618,
+    "Timbermaw_reputation_faction": 576,
+    "constraint": "Check actual Timbermaw Hold passage/access and reputation at both entrances before recommending travel. Graph border nodes are not safe tunnel roads. Preserve public personal flight connection requirements."
+  },
+  "remaining_unknowns": {
+    "975": "Cache/trinket/event work lacks a mapped source trigger; keep unknown despite known Mauari pickup/return.",
+    "8471": "Published reputation objective faction 576 / 0 remains unmodeled; item starter acquisition retained. Needs coordinated reputation/offer support and native evidence.",
+    "5247": "Remaining Enchanted Thorium acquisition area unknown; crafting/trade may be optional acquisition, not a profession-only gate.",
+    "5124": "Excluded ordinary Blacksmithing-only record retains unmapped material requirements, rank 275 and actual Hot Fiery Death parent.",
+    "8798": "Excluded Engineering-only record retains rank 250 and actual Yeti parent; do not exclude ordinary 5163."
+  },
+  "uncertain_pickups_retained": [
+    5244,
+    5249,
+    5250
+  ],
+  "mechanics_to_verify": {
+    "5056": "Shy-Rotam summons, item preparation and elite approach; do not treat one mapped kill point as full ritual.",
+    "4901": "Altar guardian event, adjacency/native completion; mapped event area does not prove safe access.",
+    "5163": "Supplied mechanical yeti and three exact use targets/cross-zone returns; tool supply count remains unknown."
+  },
+  "source_tiers": "Converted-baseline matched quest identity, retained current captured geometry and real hand-in links; no new native beta claims.",
+  "routes": {
+    "Winterspring_Alliance_delayed_rewards": [
+      5247,
+      5248,
+      5252
+    ],
+    "Eastern_Alliance_delayed_rewards": [
+      5249
+    ],
+    "ordinary_profession_scope_removed_occurrences": 24,
+    "constraint": "Quarantine and elimination of false farms are source/scope corrections, not free optimization gains. No shared optimizer change."
+  }
+}

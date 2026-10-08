@@ -1,6 +1,6 @@
 {
   "source_data_complete": false,
-  "remaining_quest_records": 378,
+  "remaining_quest_records": 373,
   "limitations": [
     "This queue identifies missing facts, not a license to invent them",
     "Source capture must respect access policy and stop after denials",
@@ -2178,39 +2178,6 @@
       ]
     },
     {
-      "questID": 5124,
-      "title": "Fiery Plate Gauntlets",
-      "guides": [
-        "Alliance / Winterspring",
-        "Horde / Winterspring"
-      ],
-      "needs": [
-        "objective area",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5124",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=12655",
-        "https://www.wowhead.com/forever/item=12812",
-        "https://www.wowhead.com/forever/npc=10637"
-      ]
-    },
-    {
-      "questID": 5126,
-      "title": "Lorax's Tale",
-      "guides": [
-        "Alliance / Winterspring",
-        "Horde / Winterspring"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5126",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=10918"
-      ]
-    },
-    {
       "questID": 5142,
       "title": "Little Pamela",
       "guides": [
@@ -2365,40 +2332,6 @@
       "quest_url": "https://www.wowhead.com/forever/quest=5250",
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=7907",
-        "https://www.wowhead.com/forever/npc=11079"
-      ]
-    },
-    {
-      "questID": 5252,
-      "title": "Remorseful Highborne",
-      "guides": [
-        "Alliance / Eastern Plaguelands",
-        "Alliance / Winterspring"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5252",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=13347",
-        "https://www.wowhead.com/forever/npc=10684",
-        "https://www.wowhead.com/forever/npc=11079"
-      ]
-    },
-    {
-      "questID": 5253,
-      "title": "The Crystal of Zin-Malor",
-      "guides": [
-        "Alliance / Eastern Plaguelands",
-        "Alliance / Winterspring"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5253",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=13347",
-        "https://www.wowhead.com/forever/npc=3516",
         "https://www.wowhead.com/forever/npc=11079"
       ]
     },
@@ -4203,21 +4136,6 @@
       "quest_url": "https://www.wowhead.com/forever/quest=8745",
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=15693"
-      ]
-    },
-    {
-      "questID": 8798,
-      "title": "A Yeti of Your Own",
-      "guides": [
-        "Alliance / Winterspring",
-        "Horde / Winterspring"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8798",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=10305"
       ]
     },
     {

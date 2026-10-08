@@ -1,0 +1,283 @@
+[
+  {
+    "faction": "Alliance",
+    "key": "level-zone:eastern-kingdoms/eastern-plaguelands:levels:51-60",
+    "changed_fields": {
+      "unknown_location_steps": {
+        "before": 19,
+        "after": 17
+      },
+      "missing_location_quest_ids_by_stage": {
+        "before": {
+          "a": [
+            5464,
+            8946
+          ],
+          "q": [
+            5149,
+            5206,
+            5247,
+            5252,
+            5253,
+            5513,
+            5517,
+            5862,
+            6026,
+            8946,
+            9121,
+            9122,
+            9123,
+            9141
+          ],
+          "t": []
+        },
+        "after": {
+          "a": [
+            5464,
+            8946
+          ],
+          "q": [
+            5149,
+            5206,
+            5247,
+            5513,
+            5517,
+            5862,
+            6026,
+            8946,
+            9121,
+            9122,
+            9123,
+            9141
+          ],
+          "t": []
+        }
+      },
+      "flow_alternatives_evaluated": {
+        "before": 68,
+        "after": 72
+      },
+      "uncertain_travel_legs": {
+        "before": 65,
+        "after": 61
+      },
+      "estimated_distance_before": {
+        "before": 590030.21,
+        "after": 591273.7
+      },
+      "estimated_distance_after": {
+        "before": 590030.21,
+        "after": 591273.7
+      }
+    }
+  },
+  {
+    "faction": "Alliance",
+    "key": "level-zone:kalimdor/winterspring:levels:51-60",
+    "changed_fields": {
+      "quests": {
+        "before": 47,
+        "after": 44
+      },
+      "steps": {
+        "before": 154,
+        "after": 142
+      },
+      "unknown_location_steps": {
+        "before": 8,
+        "after": 4
+      },
+      "missing_location_quest_ids_by_stage": {
+        "before": {
+          "a": [],
+          "q": [
+            975,
+            5124,
+            5247,
+            5252,
+            5253,
+            8471
+          ],
+          "t": []
+        },
+        "after": {
+          "a": [],
+          "q": [
+            975,
+            5247,
+            8471
+          ],
+          "t": []
+        }
+      },
+      "unverified_pickup_requirement_quest_ids": {
+        "before": [
+          5124,
+          5126,
+          5244,
+          5249,
+          5250,
+          8798
+        ],
+        "after": [
+          5244,
+          5249,
+          5250
+        ]
+      },
+      "prerequisite_review_steps": {
+        "before": 9,
+        "after": 3
+      },
+      "reason_steps_checked": {
+        "before": 154,
+        "after": 142
+      },
+      "destination_reason_codes": {
+        "before": {
+          "class-progression": 2,
+          "outside-level-range": 72,
+          "prerequisite": 48,
+          "quest-reward": 30,
+          "return-hub": 2
+        },
+        "after": {
+          "outside-level-range": 65,
+          "prerequisite": 48,
+          "quest-reward": 27,
+          "return-hub": 2
+        }
+      },
+      "reason_review_steps": {
+        "before": 83,
+        "after": 71
+      },
+      "cross_zone_reason_steps": {
+        "before": 27,
+        "after": 24
+      },
+      "flow_alternatives_evaluated": {
+        "before": 39,
+        "after": 24
+      },
+      "flow_loop_changes": {
+        "before": 1,
+        "after": 0
+      },
+      "quest_reward_only_xp_shortfall": {
+        "before": 1945580,
+        "after": 1954540
+      },
+      "uncertain_travel_legs": {
+        "before": 41,
+        "after": 30
+      },
+      "estimated_distance_before": {
+        "before": 460551.73,
+        "after": 397383.01
+      },
+      "estimated_distance_after": {
+        "before": 451362.08,
+        "after": 394869.43
+      }
+    }
+  },
+  {
+    "faction": "Horde",
+    "key": "level-zone:kalimdor/winterspring:levels:51-60",
+    "changed_fields": {
+      "quests": {
+        "before": 40,
+        "after": 37
+      },
+      "steps": {
+        "before": 128,
+        "after": 116
+      },
+      "unknown_location_steps": {
+        "before": 4,
+        "after": 2
+      },
+      "missing_location_quest_ids_by_stage": {
+        "before": {
+          "a": [],
+          "q": [
+            975,
+            5124,
+            8471
+          ],
+          "t": []
+        },
+        "after": {
+          "a": [],
+          "q": [
+            975,
+            8471
+          ],
+          "t": []
+        }
+      },
+      "unverified_pickup_requirement_quest_ids": {
+        "before": [
+          5124,
+          5126,
+          8798
+        ],
+        "after": []
+      },
+      "prerequisite_review_steps": {
+        "before": 9,
+        "after": 3
+      },
+      "reason_steps_checked": {
+        "before": 128,
+        "after": 116
+      },
+      "destination_reason_codes": {
+        "before": {
+          "class-progression": 2,
+          "early-reward": 1,
+          "outside-level-range": 60,
+          "prerequisite": 38,
+          "quest-reward": 26,
+          "return-hub": 1
+        },
+        "after": {
+          "early-reward": 1,
+          "outside-level-range": 53,
+          "prerequisite": 38,
+          "quest-reward": 23,
+          "return-hub": 1
+        }
+      },
+      "reason_review_steps": {
+        "before": 66,
+        "after": 54
+      },
+      "cross_zone_reason_steps": {
+        "before": 19,
+        "after": 16
+      },
+      "flow_alternatives_evaluated": {
+        "before": 53,
+        "after": 44
+      },
+      "quest_reward_only_xp_shortfall": {
+        "before": 1141660,
+        "after": 1150620
+      },
+      "uncertain_travel_legs": {
+        "before": 30,
+        "after": 23
+      },
+      "estimated_distance_before": {
+        "before": 354331.05,
+        "after": 303603.46
+      },
+      "estimated_distance_after": {
+        "before": 347973.72,
+        "after": 297246.12
+      }
+    }
+  }
+]

@@ -1,7 +1,7 @@
 {
   "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
   "quest_records": 5230,
-  "static_points_checked": 11835,
+  "static_points_checked": 11831,
   "fixed_zone_guides_checked": 152,
   "catalogue_reason_stages_checked": 16849,
   "catalogue_reason_codes": {
@@ -6365,7 +6365,7 @@
       "key": "level-zone:eastern-kingdoms/eastern-plaguelands:levels:51-60",
       "quests": 64,
       "steps": 217,
-      "unknown_location_steps": 19,
+      "unknown_location_steps": 17,
       "missing_location_quest_ids_by_stage": {
         "a": [
           5464,
@@ -6375,8 +6375,6 @@
           5149,
           5206,
           5247,
-          5252,
-          5253,
           5513,
           5517,
           5862,
@@ -6421,14 +6419,14 @@
       },
       "reason_review_steps": 123,
       "cross_zone_reason_steps": 30,
-      "flow_alternatives_evaluated": 68,
+      "flow_alternatives_evaluated": 72,
       "flow_loop_changes": 0,
       "flow_state_valid": true,
       "quest_log_peak": 13,
       "quest_reward_only_xp_shortfall": 2879810,
-      "uncertain_travel_legs": 65,
-      "estimated_distance_before": 590030.21,
-      "estimated_distance_after": 590030.21
+      "uncertain_travel_legs": 61,
+      "estimated_distance_before": 591273.7,
+      "estimated_distance_after": 591273.7
     },
     {
       "faction": "Alliance",
@@ -8274,50 +8272,43 @@
       "faction": "Alliance",
       "zone": "Winterspring",
       "key": "level-zone:kalimdor/winterspring:levels:51-60",
-      "quests": 47,
-      "steps": 154,
-      "unknown_location_steps": 8,
+      "quests": 44,
+      "steps": 142,
+      "unknown_location_steps": 4,
       "missing_location_quest_ids_by_stage": {
         "a": [],
         "q": [
           975,
-          5124,
           5247,
-          5252,
-          5253,
           8471
         ],
         "t": []
       },
       "unverified_pickup_requirement_quest_ids": [
-        5124,
-        5126,
         5244,
         5249,
-        5250,
-        8798
+        5250
       ],
       "unverified_objective_quantity_quest_ids": [],
-      "prerequisite_review_steps": 9,
+      "prerequisite_review_steps": 3,
       "source_data_gap_free": false,
-      "reason_steps_checked": 154,
+      "reason_steps_checked": 142,
       "destination_reason_codes": {
-        "class-progression": 2,
-        "outside-level-range": 72,
+        "outside-level-range": 65,
         "prerequisite": 48,
-        "quest-reward": 30,
+        "quest-reward": 27,
         "return-hub": 2
       },
-      "reason_review_steps": 83,
-      "cross_zone_reason_steps": 27,
-      "flow_alternatives_evaluated": 39,
-      "flow_loop_changes": 1,
+      "reason_review_steps": 71,
+      "cross_zone_reason_steps": 24,
+      "flow_alternatives_evaluated": 24,
+      "flow_loop_changes": 0,
       "flow_state_valid": true,
       "quest_log_peak": 9,
-      "quest_reward_only_xp_shortfall": 1945580,
-      "uncertain_travel_legs": 41,
-      "estimated_distance_before": 460551.73,
-      "estimated_distance_after": 451362.08
+      "quest_reward_only_xp_shortfall": 1954540,
+      "uncertain_travel_legs": 30,
+      "estimated_distance_before": 397383.01,
+      "estimated_distance_after": 394869.43
     },
     {
       "faction": "Alliance",
@@ -11298,45 +11289,39 @@
       "faction": "Horde",
       "zone": "Winterspring",
       "key": "level-zone:kalimdor/winterspring:levels:51-60",
-      "quests": 40,
-      "steps": 128,
-      "unknown_location_steps": 4,
+      "quests": 37,
+      "steps": 116,
+      "unknown_location_steps": 2,
       "missing_location_quest_ids_by_stage": {
         "a": [],
         "q": [
           975,
-          5124,
           8471
         ],
         "t": []
       },
-      "unverified_pickup_requirement_quest_ids": [
-        5124,
-        5126,
-        8798
-      ],
+      "unverified_pickup_requirement_quest_ids": [],
       "unverified_objective_quantity_quest_ids": [],
-      "prerequisite_review_steps": 9,
+      "prerequisite_review_steps": 3,
       "source_data_gap_free": false,
-      "reason_steps_checked": 128,
+      "reason_steps_checked": 116,
       "destination_reason_codes": {
-        "class-progression": 2,
         "early-reward": 1,
-        "outside-level-range": 60,
+        "outside-level-range": 53,
         "prerequisite": 38,
-        "quest-reward": 26,
+        "quest-reward": 23,
         "return-hub": 1
       },
-      "reason_review_steps": 66,
-      "cross_zone_reason_steps": 19,
-      "flow_alternatives_evaluated": 53,
+      "reason_review_steps": 54,
+      "cross_zone_reason_steps": 16,
+      "flow_alternatives_evaluated": 44,
       "flow_loop_changes": 2,
       "flow_state_valid": true,
       "quest_log_peak": 9,
-      "quest_reward_only_xp_shortfall": 1141660,
-      "uncertain_travel_legs": 30,
-      "estimated_distance_before": 354331.05,
-      "estimated_distance_after": 347973.72
+      "quest_reward_only_xp_shortfall": 1150620,
+      "uncertain_travel_legs": 23,
+      "estimated_distance_before": 303603.46,
+      "estimated_distance_after": 297246.12
     },
     {
       "faction": "Horde",

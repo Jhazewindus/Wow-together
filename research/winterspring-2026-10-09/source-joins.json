@@ -1,0 +1,227 @@
+{
+  "joins": [
+    {
+      "questID": 4861,
+      "origins": {
+        "name": "converted-baseline",
+        "startedBy": "converted-baseline",
+        "finishedBy": "converted-baseline",
+        "requiredLevel": "converted-baseline",
+        "questLevel": "converted-baseline",
+        "requiredRaces": "converted-baseline",
+        "objectivesText": "converted-baseline",
+        "zoneOrSort": "converted-baseline",
+        "questFlags": "converted-baseline",
+        "_identityName": "converted-baseline"
+      },
+      "decision": "Interact with the actual published return object; keep current coordinates and actual preceding hand-ins.",
+      "native_beta_verified": false
+    },
+    {
+      "questID": 4863,
+      "origins": {
+        "name": "converted-baseline",
+        "startedBy": "converted-baseline",
+        "finishedBy": "converted-baseline",
+        "requiredLevel": "converted-baseline",
+        "questLevel": "converted-baseline",
+        "requiredRaces": "converted-baseline",
+        "objectivesText": "converted-baseline",
+        "preQuestSingle": "converted-baseline",
+        "zoneOrSort": "converted-baseline",
+        "questFlags": "converted-baseline"
+      },
+      "decision": "Interact with the actual published return object; keep current coordinates and actual preceding hand-ins.",
+      "native_beta_verified": false
+    },
+    {
+      "questID": 5084,
+      "origins": {
+        "name": "converted-baseline",
+        "startedBy": "converted-baseline",
+        "finishedBy": "converted-baseline",
+        "requiredLevel": "converted-baseline",
+        "questLevel": "converted-baseline",
+        "requiredRaces": "converted-baseline",
+        "objectivesText": "converted-baseline",
+        "preQuestSingle": "converted-baseline",
+        "zoneOrSort": "converted-baseline",
+        "questFlags": "converted-baseline"
+      },
+      "decision": "Interact with the actual published return object; keep current coordinates and actual preceding hand-ins.",
+      "native_beta_verified": false
+    },
+    {
+      "questID": 4882,
+      "origins": {
+        "name": "converted-baseline",
+        "startedBy": "converted-baseline",
+        "finishedBy": "converted-baseline",
+        "requiredLevel": "converted-baseline",
+        "questLevel": "converted-baseline",
+        "requiredRaces": "converted-baseline",
+        "objectivesText": "converted-baseline",
+        "sourceItemId": "converted-baseline",
+        "zoneOrSort": "converted-baseline",
+        "_identityName": "converted-baseline",
+        "preQuestSingle": "converted-baseline"
+      },
+      "decision": "Supplied delivery or already-held item starter: keep actual hand-in item and initial loot-start acquisition, remove only redundant post-acceptance farming. Preserve exact-ID faction/parent links and destination.",
+      "native_beta_verified": false
+    },
+    {
+      "questID": 4883,
+      "origins": {
+        "name": "converted-baseline",
+        "startedBy": "converted-baseline",
+        "finishedBy": "converted-baseline",
+        "requiredLevel": "converted-baseline",
+        "questLevel": "converted-baseline",
+        "requiredRaces": "converted-baseline",
+        "objectivesText": "converted-baseline",
+        "sourceItemId": "converted-baseline",
+        "preQuestSingle": "converted-baseline",
+        "zoneOrSort": "converted-baseline"
+      },
+      "decision": "Supplied delivery or already-held item starter: keep actual hand-in item and initial loot-start acquisition, remove only redundant post-acceptance farming. Preserve exact-ID faction/parent links and destination.",
+      "native_beta_verified": false
+    },
+    {
+      "questID": 5123,
+      "origins": {
+        "name": "converted-baseline",
+        "startedBy": "converted-baseline",
+        "finishedBy": "converted-baseline",
+        "requiredLevel": "converted-baseline",
+        "questLevel": "converted-baseline",
+        "requiredRaces": "converted-baseline",
+        "objectivesText": "converted-baseline",
+        "sourceItemId": "converted-baseline",
+        "preQuestSingle": "converted-baseline",
+        "zoneOrSort": "converted-baseline",
+        "_identityName": "converted-baseline"
+      },
+      "decision": "Supplied delivery or already-held item starter: keep actual hand-in item and initial loot-start acquisition, remove only redundant post-acceptance farming. Preserve exact-ID faction/parent links and destination.",
+      "native_beta_verified": false
+    },
+    {
+      "questID": 5128,
+      "origins": {
+        "name": "converted-baseline",
+        "startedBy": "converted-baseline",
+        "finishedBy": "converted-baseline",
+        "requiredLevel": "converted-baseline",
+        "questLevel": "converted-baseline",
+        "requiredRaces": "converted-baseline",
+        "objectivesText": "converted-baseline",
+        "sourceItemId": "converted-baseline",
+        "preQuestSingle": "converted-baseline",
+        "zoneOrSort": "converted-baseline"
+      },
+      "decision": "Supplied delivery or already-held item starter: keep actual hand-in item and initial loot-start acquisition, remove only redundant post-acceptance farming. Preserve exact-ID faction/parent links and destination.",
+      "native_beta_verified": false
+    },
+    {
+      "questID": 5252,
+      "origins": {
+        "name": "converted-baseline",
+        "startedBy": "converted-baseline",
+        "finishedBy": "converted-baseline",
+        "requiredLevel": "converted-baseline",
+        "questLevel": "converted-baseline",
+        "requiredRaces": "converted-baseline",
+        "objectivesText": "converted-baseline",
+        "sourceItemId": "converted-baseline",
+        "preQuestSingle": "converted-baseline",
+        "zoneOrSort": "converted-baseline"
+      },
+      "decision": "Supplied delivery or already-held item starter: keep actual hand-in item and initial loot-start acquisition, remove only redundant post-acceptance farming. Preserve exact-ID faction/parent links and destination.",
+      "native_beta_verified": false
+    },
+    {
+      "questID": 5253,
+      "origins": {
+        "name": "converted-baseline",
+        "startedBy": "converted-baseline",
+        "finishedBy": "converted-baseline",
+        "requiredLevel": "converted-baseline",
+        "questLevel": "converted-baseline",
+        "requiredRaces": "converted-baseline",
+        "objectivesText": "converted-baseline",
+        "sourceItemId": "converted-baseline",
+        "preQuestSingle": "converted-baseline",
+        "zoneOrSort": "converted-baseline"
+      },
+      "decision": "Supplied delivery or already-held item starter: keep actual hand-in item and initial loot-start acquisition, remove only redundant post-acceptance farming. Preserve exact-ID faction/parent links and destination.",
+      "native_beta_verified": false
+    },
+    {
+      "questID": 5163,
+      "origins": {
+        "name": "converted-baseline",
+        "startedBy": "converted-baseline",
+        "finishedBy": "converted-baseline",
+        "requiredLevel": "converted-baseline",
+        "questLevel": "converted-baseline",
+        "requiredRaces": "converted-baseline",
+        "objectivesText": "converted-baseline",
+        "objectives": "converted-baseline",
+        "sourceItemId": "converted-baseline",
+        "preQuestSingle": "converted-baseline",
+        "zoneOrSort": "converted-baseline",
+        "_identityName": "converted-baseline"
+      },
+      "decision": "Retain explicitly supplied mechanical yeti without fabricating a supplied count. Keep all three mapped use targets, count one per target, existing spell/action, cross-zone trips and hand-ins.",
+      "native_beta_verified": false
+    }
+  ],
+  "excluded_profession_ids": [
+    5124,
+    5126,
+    8798
+  ],
+  "required_skills": {
+    "5124": {
+      "1": 164,
+      "2": 275
+    },
+    "5126": {
+      "1": 164,
+      "2": 285
+    },
+    "8798": {
+      "1": 202,
+      "2": 250
+    }
+  },
+  "manifest": {
+    "source": "https://github.com/Questie/QuestieDB",
+    "commit": "e0a6eaa86f181ac99262e34126bcd2ed1a1712d6",
+    "files_sha256": {
+      "src/corrections/enum/zones.lua": "dd738ec0c1a9785946c5574a5f7cb8d2a64745b099dffccebd00ee8864fbb88a",
+      "src/corrections/enum/quests.lua": "eb15f94f58be894772786706bb9c3db56756df1985d7ab93fc180d7567103ede",
+      "src/corrections/enum/expansions.lua": "362e9d9e62a491d4f1b737ad6b840b278b5c313b4f61cb204921e02d2bfeedca",
+      "support/Forever/Zones/areaIdToUiMapId.lua": "cf9ae6f896e3e2fb1e43352b11596641312d9e61365ca7f281e5af1092185d07",
+      "src/corrections/Forever/generated/foreverBaseQuest.lua": "c92ebcb106f72913e5e666db48539e60d9e77a77c3e08938bf2df682d83dd714",
+      "src/corrections/Forever/traces/foreverQuestTraces.lua": "5b91bce88419b38e320dbaf9207c26a8a6f1b801fcce354dc1b9e7869dd99570",
+      "src/corrections/Forever/foreverQuestFixes.lua": "ba3b37419f27a5a19ec0e38fb944e24ff54ea841de1b2497f261d447f3887a70",
+      "src/corrections/Forever/generated/foreverBaseNpc.lua": "3015c2660d72810e16f28b11d58297bfae37b0843ce35ee6cdd8b7757d47e771",
+      "src/corrections/Forever/traces/foreverNpcTraces.lua": "87acac144d1f78b1173c9710bbaf9d1fc850753d48704143018aa20ed3b98811",
+      "src/corrections/Forever/foreverNPCFixes.lua": "3eda9efb9f719d6754ffd7d6eabae8abe7ff2b4b241f0553c8e19c93f002f828",
+      "src/corrections/Forever/generated/foreverBaseObject.lua": "cc3d0bacbeea23e1efd0b144367eb413f9e8276c65ca0a19d0d0ae328fb3736b",
+      "src/corrections/Forever/traces/foreverObjectTraces.lua": "37b6228caab31daee9a450d4f4833c032ca3232a05649fcfda83b49c8dd33fae",
+      "src/corrections/Forever/foreverObjectFixes.lua": "fac8a095b48a991b847a61aa94b8ff8275d575d5051d01c0370a5ed509a81633",
+      "src/corrections/Forever/generated/foreverBaseItem.lua": "870bb7ab64bec27210c3f9e40fd5bb957c0441aba22d3944a87ddd5c66d0add4",
+      "src/corrections/Forever/traces/foreverItemTraces.lua": "a1c22054bc41bb6db038c9b841ceca8042137b1d2bb2b2c1eabb05c1ddf4acff",
+      "src/corrections/Forever/foreverItemFixes.lua": "f9ea8bf52cd68fc959af8810f846c8023ff4800b24c480c1a776e82db66f27dc",
+      "data/Forever/foreverQuestDB.lua": "d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87",
+      "src/corrections/Forever/legacy/classicQuestFixes.lua": "76cd6a05f035826cabc6180a0ff2a1a37c5e7946c891eb0a06412fab5a4caf2e",
+      "data/Forever/foreverNpcDB.lua": "a8c4169690726323dac3c6441f74f7a4d9cafcc08ec42231d72ff28c9471f0ee",
+      "src/corrections/Forever/legacy/classicNPCFixes.lua": "1de19d17db00581a35d397c7440124aa3f14150d5456c771d2deb3cfba79f031",
+      "data/Forever/foreverObjectDB.lua": "af4536c12c5b1da5fd32cb33be5c9c01d2436f97a5b9f60e2cdd238273b2cc09",
+      "src/corrections/Forever/legacy/classicObjectFixes.lua": "181bea5a5db73f8af1bebe1d8aa835d28e2d4c11adf9ff786c4f54edb3cdc76a",
+      "data/Forever/foreverItemDB.lua": "987d037b6df94d5b0b1dc326a1670581e3abb952736a4ae055fd9f161328b71c",
+      "src/corrections/Forever/legacy/classicItemFixes.lua": "688286a44e5d95045ff943d55ba3a9fccffce7ca4a982fa55a67499b39509b87"
+    }
+  }
+}

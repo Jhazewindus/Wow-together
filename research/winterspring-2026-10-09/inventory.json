@@ -1,0 +1,6509 @@
+{
+  "969": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Witch Doctor Mau'ari",
+        "entityID": 10307
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 4,
+        "action": "collect",
+        "entityID": 12334,
+        "name": "Frostmaul Shards"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 4,
+        "name": "Frostmaul Shards",
+        "itemID": 12334
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1452,
+        "action": "gather",
+        "entityID": 175324,
+        "x": 0.5914,
+        "y": 0.67,
+        "objectiveKey": "item:12334",
+        "itemID": 12334,
+        "quantity": 4,
+        "sourceAreaID": 618,
+        "itemName": "Frostmaul Shards",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Frostmaul Shards"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 10307,
+        "npc": true,
+        "sourceZone": "Winterspring",
+        "x": 0.618,
+        "name": "Witch Doctor Mau'ari",
+        "sourceAreaID": 618,
+        "y": 0.382
+      }
+    ],
+    "level": 60,
+    "areaID": 618,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "side": "Both",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 10307,
+        "npc": true,
+        "sourceZone": "Winterspring",
+        "x": 0.618,
+        "name": "Witch Doctor Mau'ari",
+        "sourceAreaID": 618,
+        "y": 0.382
+      }
+    ],
+    "money": 9000,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Witch Doctor Mau'ari",
+        "entityID": 10307
+      }
+    ],
+    "xp": 6600,
+    "questType": "Elite",
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 55,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Luck Be With You",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 4,
+          "action": "collect",
+          "entityID": 12334,
+          "name": "Frostmaul Shards"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Witch Doctor Mau'ari",
+          "entityID": 10307
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Witch Doctor Mau'ari",
+          "entityID": 10307
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "974": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Krakle",
+        "entityID": 10302
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "object",
+        "quantityUnknown": true,
+        "action": "event",
+        "entityID": 148503,
+        "name": "Fire Plume Ridge Hot Spot"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1449,
+        "action": "interact",
+        "entityID": 148503,
+        "y": 0.45640000000000003,
+        "objectiveKey": "object:148503",
+        "name": "Fire Plume Ridge Hot Spot",
+        "sourceAreaID": 490,
+        "x": 0.49689999999999995,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantityUnknown": true
+      }
+    ],
+    "level": 55,
+    "areaID": 490,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 10302,
+        "npc": true,
+        "y": 0.5044,
+        "x": 0.3093,
+        "name": "Krakle",
+        "sourceAreaID": 490,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "raceMask": 0,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Krakle",
+        "entityID": 10302
+      }
+    ],
+    "xp": 5650,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 10302,
+        "npc": true,
+        "y": 0.5044,
+        "x": 0.3093,
+        "name": "Krakle",
+        "sourceAreaID": 490,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 51,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Finding the Source",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantityUnknown": true,
+          "action": "event",
+          "entityID": 148503,
+          "name": "Fire Plume Ridge Hot Spot"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Krakle",
+          "entityID": 10302
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Krakle",
+          "entityID": 10302
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "975": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "objectives": {},
+    "zone": "Winterspring",
+    "requirements": {},
+    "seriesRoot": 969,
+    "series": [
+      969,
+      975
+    ],
+    "starts": [
+      {
+        "y": 0.382,
+        "mapID": 1452,
+        "name": "Witch Doctor Mau'ari",
+        "entityID": 10307,
+        "npc": true,
+        "x": 0.618
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Cache of Mau'ari",
+    "classMask": 0,
+    "otherLocationsIncomplete": true,
+    "ends": [
+      {
+        "y": 0.382,
+        "mapID": 1452,
+        "name": "Witch Doctor Mau'ari",
+        "entityID": 10307,
+        "npc": true,
+        "x": 0.618
+      }
+    ],
+    "level": 60,
+    "areaID": 618,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Witch Doctor Mau'ari",
+        "entityID": 10307
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "previousQuest": 969,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Witch Doctor Mau'ari",
+        "entityID": 10307
+      }
+    ],
+    "xp": 0,
+    "seriesPosition": 2,
+    "foreverStatus": "unchanged",
+    "raceMask": 0,
+    "minLevel": 55,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "objectiveLocationsIncomplete": true,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Witch Doctor Mau'ari",
+          "entityID": 10307
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Witch Doctor Mau'ari",
+          "entityID": 10307
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "977": {
+    "prerequisitesRead": true,
+    "zone": "Winterspring",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 2,
+        "name": "Pristine Yeti Horn",
+        "entityID": 12367
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 58,
+    "areaID": 618,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 0,
+        "itemName": "Pristine Yeti Horn",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Pristine Yeti Horn",
+            "action": "collect",
+            "entityID": 7459,
+            "npc": true,
+            "y": 0.396,
+            "x": 0.716,
+            "name": "Ice Thistle Matriarch",
+            "mapID": 1452
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Pristine Yeti Horn",
+            "action": "collect",
+            "entityID": 7460,
+            "npc": true,
+            "y": 0.396,
+            "x": 0.716,
+            "name": "Ice Thistle Patriarch",
+            "mapID": 1452
+          }
+        ]
+      }
+    ],
+    "seriesPosition": 2,
+    "money": 9000,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Umi Rumplesnicker",
+        "entityID": 10305
+      }
+    ],
+    "xp": 4650,
+    "minLevel": 52,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 2,
+          "name": "Pristine Yeti Horn",
+          "entityID": 12367
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Umi Rumplesnicker",
+          "entityID": 10305
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Umi Rumplesnicker",
+          "entityID": 10305
+        }
+      ]
+    },
+    "categoryPath": "kalimdor/winterspring",
+    "raceMask": 0,
+    "mapID": 1452,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Umi Rumplesnicker",
+        "entityID": 10305
+      }
+    ],
+    "seriesRoot": 3783,
+    "requiredItems": [
+      {
+        "quantity": 2,
+        "name": "Pristine Yeti Horn",
+        "itemID": 12367
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.376,
+        "mapID": 1452,
+        "name": "Umi Rumplesnicker",
+        "entityID": 10305,
+        "npc": true,
+        "x": 0.608
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "title": "Are We There, Yeti?",
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1452,
+        "legacyStepKey": "q:1452:npc:7459",
+        "entityID": 7459,
+        "npc": true,
+        "x": 0.716,
+        "y": 0.396,
+        "objectiveKey": "item:12367",
+        "itemID": 12367,
+        "quantity": 2,
+        "name": "Ice Thistle Matriarch",
+        "itemName": "Pristine Yeti Horn",
+        "alternativeCount": 2,
+        "action": "collect"
+      }
+    ],
+    "series": [
+      3783,
+      977,
+      5163
+    ],
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.376,
+        "mapID": 1452,
+        "name": "Umi Rumplesnicker",
+        "entityID": 10305,
+        "npc": true,
+        "x": 0.608
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "previousQuest": 3783,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Pristine Yeti Horn",
+        "name": "Ice Thistle Matriarch",
+        "entityID": 7459,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Pristine Yeti Horn",
+        "name": "Ice Thistle Patriarch",
+        "entityID": 7460,
+        "npc": true,
+        "action": "collect"
+      }
+    ]
+  },
+  "978": {
+    "prerequisitesRead": true,
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 10,
+        "name": "Moontouched Feather",
+        "entityID": 12383
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "otherLocationsIncomplete": false,
+    "level": 55,
+    "areaID": 702,
+    "seriesPosition": 1,
+    "money": 8500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Erelas Ambersky",
+        "entityID": 7916
+      }
+    ],
+    "xp": 5650,
+    "minLevel": 52,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 10,
+          "name": "Moontouched Feather",
+          "entityID": 12383
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Erelas Ambersky",
+          "entityID": 7916
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Erelas Ambersky",
+          "entityID": 7916
+        }
+      ]
+    },
+    "categoryPath": "kalimdor/ruttheran-village",
+    "raceMask": 0,
+    "mapID": 1438,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Erelas Ambersky",
+        "entityID": 7916
+      }
+    ],
+    "seriesRoot": 978,
+    "requiredItems": [
+      {
+        "quantity": 10,
+        "name": "Moontouched Feather",
+        "itemID": 12383
+      }
+    ],
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "ends": [
+      {
+        "y": 0.92,
+        "mapID": 1438,
+        "name": "Erelas Ambersky",
+        "entityID": 7916,
+        "npc": true,
+        "x": 0.5539999999999999
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1452,
+        "action": "gather",
+        "entityID": 175407,
+        "x": 0.2938,
+        "y": 0.4667,
+        "objectiveKey": "item:12383",
+        "itemID": 12383,
+        "quantity": 10,
+        "sourceAreaID": 618,
+        "itemName": "Moontouched Feather",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Moontouched Feather"
+      }
+    ],
+    "series": [
+      978,
+      979
+    ],
+    "foreverStatus": "unchanged",
+    "classMask": 0,
+    "starts": [
+      {
+        "y": 0.92,
+        "mapID": 1438,
+        "name": "Erelas Ambersky",
+        "entityID": 7916,
+        "npc": true,
+        "x": 0.5539999999999999
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "prerequisiteAny": [
+      3661
+    ],
+    "locationSource": "Wowhead Forever",
+    "title": "Moontouched Wildkin"
+  },
+  "979": {
+    "prerequisitesRead": true,
+    "mapID": 1438,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Erelas Ambersky",
+        "entityID": 7916
+      }
+    ],
+    "requirements": {},
+    "seriesRoot": 978,
+    "objectives": {},
+    "series": [
+      978,
+      979
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.594,
+        "mapID": 1452,
+        "name": "Ranshalla",
+        "entityID": 10300,
+        "npc": true,
+        "x": 0.63
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.92,
+        "mapID": 1438,
+        "name": "Erelas Ambersky",
+        "entityID": 7916,
+        "npc": true,
+        "x": 0.5539999999999999
+      }
+    ],
+    "level": 57,
+    "areaID": 702,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "previousQuest": 978,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Ranshalla",
+        "entityID": 10300
+      }
+    ],
+    "xp": 3000,
+    "title": "Find Ranshalla",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 2,
+    "minLevel": 52,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Erelas Ambersky",
+          "entityID": 7916
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Ranshalla",
+          "entityID": 10300
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/ruttheran-village"
+  },
+  "980": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Krakle",
+        "entityID": 10302
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 9298,
+        "npc": true,
+        "sourceZone": "Winterspring",
+        "x": 0.312,
+        "name": "Donova Snowden",
+        "sourceAreaID": 618,
+        "y": 0.452
+      }
+    ],
+    "objectives": {},
+    "level": 55,
+    "areaID": 490,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 10302,
+        "npc": true,
+        "y": 0.5044,
+        "x": 0.3093,
+        "name": "Krakle",
+        "sourceAreaID": 490,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "raceMask": 0,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Donova Snowden",
+        "entityID": 9298
+      }
+    ],
+    "xp": 2800,
+    "prerequisiteAny": [
+      974
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 51,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "The New Springs",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Krakle",
+          "entityID": 10302
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Donova Snowden",
+          "entityID": 9298
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "3661": {
+    "prerequisitesRead": true,
+    "mapID": 1438,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Erelas Ambersky",
+        "entityID": 7916
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 15,
+        "name": "Wildkin Feather",
+        "entityID": 10819
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 15,
+        "name": "Wildkin Feather",
+        "itemID": 10819
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1425,
+        "action": "gather",
+        "entityID": 153239,
+        "x": 0.1575,
+        "y": 0.5253,
+        "objectiveKey": "item:10819",
+        "itemID": 10819,
+        "quantity": 15,
+        "sourceAreaID": 47,
+        "itemName": "Wildkin Feather",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Wildkin Feather"
+      }
+    ],
+    "level": 47,
+    "areaID": 702,
+    "starts": [
+      {
+        "y": 0.92,
+        "mapID": 1438,
+        "name": "Erelas Ambersky",
+        "entityID": 7916,
+        "npc": true,
+        "x": 0.5539999999999999
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "side": "Alliance",
+    "ends": [
+      {
+        "y": 0.92,
+        "mapID": 1438,
+        "name": "Erelas Ambersky",
+        "entityID": 7916,
+        "npc": true,
+        "x": 0.5539999999999999
+      }
+    ],
+    "money": 13500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Erelas Ambersky",
+        "entityID": 7916
+      }
+    ],
+    "xp": 4200,
+    "foreverStatus": "unchanged",
+    "title": "Favored of Elune?",
+    "minLevel": 42,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 15,
+          "name": "Wildkin Feather",
+          "entityID": 10819
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Erelas Ambersky",
+          "entityID": 7916
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Erelas Ambersky",
+          "entityID": 7916
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/ruttheran-village"
+  },
+  "3783": {
+    "prerequisitesRead": true,
+    "zone": "Winterspring",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 10,
+        "name": "Thick Yeti Fur",
+        "entityID": 12366
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 56,
+    "areaID": 618,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 0,
+        "itemName": "Thick Yeti Fur",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Thick Yeti Fur",
+            "action": "collect",
+            "entityID": 7457,
+            "npc": true,
+            "y": 0.442,
+            "x": 0.466,
+            "name": "Rogue Ice Thistle",
+            "mapID": 1452
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Thick Yeti Fur",
+            "action": "collect",
+            "entityID": 7458,
+            "npc": true,
+            "y": 0.4,
+            "x": 0.6920000000000001,
+            "name": "Ice Thistle Yeti",
+            "mapID": 1452
+          }
+        ]
+      }
+    ],
+    "seriesPosition": 1,
+    "money": 8500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Umi Rumplesnicker",
+        "entityID": 10305
+      }
+    ],
+    "xp": 4350,
+    "minLevel": 52,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 10,
+          "name": "Thick Yeti Fur",
+          "entityID": 12366
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Umi Rumplesnicker",
+          "entityID": 10305
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Umi Rumplesnicker",
+          "entityID": 10305
+        }
+      ]
+    },
+    "categoryPath": "kalimdor/winterspring",
+    "raceMask": 0,
+    "mapID": 1452,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Umi Rumplesnicker",
+        "entityID": 10305
+      }
+    ],
+    "seriesRoot": 3783,
+    "requiredItems": [
+      {
+        "quantity": 10,
+        "name": "Thick Yeti Fur",
+        "itemID": 12366
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.376,
+        "mapID": 1452,
+        "name": "Umi Rumplesnicker",
+        "entityID": 10305,
+        "npc": true,
+        "x": 0.608
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "title": "Are We There, Yeti?",
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1452,
+        "legacyStepKey": "q:1452:npc:7458",
+        "entityID": 7458,
+        "npc": true,
+        "x": 0.6920000000000001,
+        "y": 0.4,
+        "objectiveKey": "item:12366",
+        "itemID": 12366,
+        "quantity": 10,
+        "name": "Ice Thistle Yeti",
+        "itemName": "Thick Yeti Fur",
+        "alternativeCount": 2,
+        "action": "collect"
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "series": [
+      3783,
+      977,
+      5163
+    ],
+    "starts": [
+      {
+        "y": 0.376,
+        "mapID": 1452,
+        "name": "Umi Rumplesnicker",
+        "entityID": 10305,
+        "npc": true,
+        "x": 0.608
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Thick Yeti Fur",
+        "name": "Rogue Ice Thistle",
+        "entityID": 7457,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Thick Yeti Fur",
+        "name": "Ice Thistle Yeti",
+        "entityID": 7458,
+        "npc": true,
+        "action": "collect"
+      }
+    ]
+  },
+  "4505": {
+    "prerequisitesRead": true,
+    "mapID": 1448,
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1448,
+        "action": "gather",
+        "entityID": 148501,
+        "x": 0.3232,
+        "y": 0.6656,
+        "objectiveKey": "item:12567",
+        "itemID": 12567,
+        "quantity": 1,
+        "sourceAreaID": 361,
+        "itemName": "Filled Flasket",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Corrupted Moonwell Spell Focus (DND)"
+      }
+    ],
+    "zone": "Felwood",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Filled Flasket",
+        "entityID": 12567
+      }
+    ],
+    "seriesRoot": 6605,
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Filled Flasket",
+        "itemID": 12567
+      }
+    ],
+    "series": [
+      6605,
+      4505
+    ],
+    "starts": [
+      {
+        "y": 0.524,
+        "mapID": 1448,
+        "name": "Winna Hazzard",
+        "entityID": 9996,
+        "npc": true,
+        "x": 0.342
+      }
+    ],
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 54,
+    "areaID": 361,
+    "ends": [
+      {
+        "y": 0.524,
+        "mapID": 1448,
+        "name": "Winna Hazzard",
+        "entityID": 9996,
+        "npc": true,
+        "x": 0.342
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Winna Hazzard",
+        "entityID": 9996
+      }
+    ],
+    "side": "Horde",
+    "previousQuest": 6605,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Winna Hazzard",
+        "entityID": 9996
+      }
+    ],
+    "xp": 5450,
+    "title": "Well of Corruption",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 2,
+    "minLevel": 49,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Filled Flasket",
+          "entityID": 12567
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Winna Hazzard",
+          "entityID": 9996
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Winna Hazzard",
+          "entityID": 9996
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/felwood"
+  },
+  "4521": {
+    "prerequisitesRead": true,
+    "mapID": 1448,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Trull Failbane",
+        "entityID": 10306
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 15,
+        "action": "kill",
+        "entityID": 7451,
+        "name": "Raging Owlbeast"
+      },
+      {
+        "entityType": "npc",
+        "quantity": 15,
+        "action": "kill",
+        "entityID": 7450,
+        "name": "Ragged Owlbeast"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "npcTargets": [
+      {
+        "entityID": 7451,
+        "npc": true,
+        "action": "kill",
+        "name": "Raging Owlbeast"
+      },
+      {
+        "entityID": 7450,
+        "npc": true,
+        "action": "kill",
+        "name": "Ragged Owlbeast"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "action": "kill",
+        "entityID": 7451,
+        "npc": true,
+        "y": 0.2847,
+        "objectiveKey": "npc:7451",
+        "name": "Raging Owlbeast",
+        "sourceAreaID": 618,
+        "x": 0.5607,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantity": 15
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "action": "kill",
+        "entityID": 7450,
+        "npc": true,
+        "y": 0.45030000000000003,
+        "objectiveKey": "npc:7450",
+        "name": "Ragged Owlbeast",
+        "sourceAreaID": 618,
+        "x": 0.2899,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantity": 15
+      }
+    ],
+    "level": 56,
+    "areaID": 361,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1448,
+        "entityID": 10306,
+        "npc": true,
+        "y": 0.5279,
+        "x": 0.34729999999999994,
+        "name": "Trull Failbane",
+        "sourceAreaID": 361,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "raceMask": 8589934770,
+    "money": 8500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Trull Failbane",
+        "entityID": 10306
+      }
+    ],
+    "xp": 5800,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1448,
+        "entityID": 10306,
+        "npc": true,
+        "y": 0.5279,
+        "x": 0.34729999999999994,
+        "name": "Trull Failbane",
+        "sourceAreaID": 361,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 52,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Wild Guardians",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 15,
+          "action": "kill",
+          "entityID": 7451,
+          "name": "Raging Owlbeast"
+        },
+        {
+          "entityType": "npc",
+          "quantity": 15,
+          "action": "kill",
+          "entityID": 7450,
+          "name": "Ragged Owlbeast"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Trull Failbane",
+          "entityID": 10306
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Trull Failbane",
+          "entityID": 10306
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/felwood"
+  },
+  "4726": {
+    "prerequisitesRead": true,
+    "zone": "Burning Steppes",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 8,
+        "name": "Broodling Essence",
+        "entityID": 12283
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 52,
+    "areaID": 46,
+    "seriesPosition": 1,
+    "money": 7500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Tinkee Steamboil",
+        "entityID": 10267
+      }
+    ],
+    "xp": 5100,
+    "minLevel": 50,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "name": "Broodling Essence",
+          "entityID": 12283
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Tinkee Steamboil",
+          "entityID": 10267
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Draco-Incarcinatrix 900",
+          "entityID": 12284
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Tinkee Steamboil",
+          "entityID": 10267
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/burning-steppes",
+    "raceMask": 0,
+    "mapID": 1428,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Tinkee Steamboil",
+        "entityID": 10267
+      }
+    ],
+    "seriesRoot": 4726,
+    "requiredItems": [
+      {
+        "quantity": 8,
+        "name": "Broodling Essence",
+        "itemID": 12283
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.23800000000000002,
+        "mapID": 1428,
+        "name": "Tinkee Steamboil",
+        "entityID": 10267,
+        "npc": true,
+        "x": 0.652
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1428,
+        "action": "gather",
+        "entityID": 175264,
+        "x": 0.7318000000000001,
+        "y": 0.2712,
+        "objectiveKey": "item:12283",
+        "itemID": 12283,
+        "quantity": 8,
+        "sourceAreaID": 46,
+        "itemName": "Broodling Essence",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Broodling Essence"
+      }
+    ],
+    "series": [
+      4726,
+      4808,
+      4809,
+      4810
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Draco-Incarcinatrix 900",
+        "entityID": 12284
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "starts": [
+      {
+        "y": 0.23800000000000002,
+        "mapID": 1428,
+        "name": "Tinkee Steamboil",
+        "entityID": 10267,
+        "npc": true,
+        "x": 0.652
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "title": "Broodling Essence",
+    "classMask": 0,
+    "locationSource": "Wowhead Forever",
+    "objectiveFactsSource": "Wowhead Forever objective table"
+  },
+  "4741": {
+    "prerequisitesRead": true,
+    "mapID": 1448,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Trull Failbane",
+        "entityID": 10306
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 13,
+        "action": "kill",
+        "entityID": 7453,
+        "name": "Moontouched Owlbeast"
+      }
+    ],
+    "npcTargets": [
+      {
+        "entityID": 7453,
+        "npc": true,
+        "action": "kill",
+        "name": "Moontouched Owlbeast"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "action": "kill",
+        "entityID": 7453,
+        "npc": true,
+        "y": 0.5965,
+        "objectiveKey": "npc:7453",
+        "name": "Moontouched Owlbeast",
+        "sourceAreaID": 618,
+        "x": 0.5911,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantity": 13
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1448,
+        "entityID": 10306,
+        "npc": true,
+        "y": 0.5279,
+        "x": 0.34729999999999994,
+        "name": "Trull Failbane",
+        "sourceAreaID": 361,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "level": 58,
+    "areaID": 361,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 8589934770,
+    "side": "Horde",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1448,
+        "entityID": 10306,
+        "npc": true,
+        "y": 0.5279,
+        "x": 0.34729999999999994,
+        "name": "Trull Failbane",
+        "sourceAreaID": 361,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "money": 9000,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Trull Failbane",
+        "entityID": 10306
+      }
+    ],
+    "xp": 6200,
+    "prerequisiteAny": [
+      4521
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 52,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Wild Guardians",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 13,
+          "action": "kill",
+          "entityID": 7453,
+          "name": "Moontouched Owlbeast"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Trull Failbane",
+          "entityID": 10306
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Trull Failbane",
+          "entityID": 10306
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/felwood"
+  },
+  "4808": {
+    "prerequisitesRead": true,
+    "zone": "Burning Steppes",
+    "requirements": {},
+    "level": 54,
+    "areaID": 46,
+    "previousQuest": 4726,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Felnok Steelspring",
+        "entityID": 10468
+      }
+    ],
+    "xp": 2700,
+    "minLevel": 50,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Tinkee Steamboil",
+          "entityID": 10267
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Tinkee's Letter",
+          "entityID": 12438
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Felnok Steelspring",
+          "entityID": 10468
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/burning-steppes",
+    "raceMask": 0,
+    "mapID": 1428,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Tinkee Steamboil",
+        "entityID": 10267
+      }
+    ],
+    "seriesRoot": 4726,
+    "requiredItems": {},
+    "ends": [
+      {
+        "y": 0.386,
+        "mapID": 1452,
+        "name": "Felnok Steelspring",
+        "entityID": 10468,
+        "npc": true,
+        "x": 0.616
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "objectives": {},
+    "series": [
+      4726,
+      4808,
+      4809,
+      4810
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Tinkee's Letter",
+        "entityID": 12438
+      }
+    ],
+    "seriesPosition": 2,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "starts": [
+      {
+        "y": 0.23800000000000002,
+        "mapID": 1428,
+        "name": "Tinkee Steamboil",
+        "entityID": 10267,
+        "npc": true,
+        "x": 0.652
+      }
+    ],
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "classMask": 0,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "locationSource": "Wowhead Forever",
+    "title": "Felnok Steelspring"
+  },
+  "4809": {
+    "prerequisitesRead": true,
+    "zone": "Winterspring",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 8,
+        "name": "Uncracked Chillwind Horn",
+        "entityID": 12444
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 54,
+    "areaID": 618,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 0,
+        "itemName": "Uncracked Chillwind Horn",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Uncracked Chillwind Horn",
+            "action": "collect",
+            "entityID": 7447,
+            "npc": true,
+            "y": 0.386,
+            "x": 0.512,
+            "name": "Fledgling Chillwind",
+            "mapID": 1452
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Uncracked Chillwind Horn",
+            "action": "collect",
+            "entityID": 7448,
+            "npc": true,
+            "y": 0.34600000000000003,
+            "x": 0.626,
+            "name": "Chillwind Chimaera",
+            "mapID": 1452
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Uncracked Chillwind Horn",
+            "action": "collect",
+            "entityID": 7449,
+            "npc": true,
+            "y": 0.17,
+            "x": 0.598,
+            "name": "Chillwind Ravager",
+            "mapID": 1452
+          }
+        ]
+      }
+    ],
+    "seriesPosition": 3,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Felnok Steelspring",
+        "entityID": 10468
+      }
+    ],
+    "xp": 5450,
+    "minLevel": 50,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "name": "Uncracked Chillwind Horn",
+          "entityID": 12444
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Felnok Steelspring",
+          "entityID": 10468
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Felnok Steelspring",
+          "entityID": 10468
+        }
+      ]
+    },
+    "categoryPath": "kalimdor/winterspring",
+    "raceMask": 0,
+    "mapID": 1452,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Felnok Steelspring",
+        "entityID": 10468
+      }
+    ],
+    "seriesRoot": 4726,
+    "requiredItems": [
+      {
+        "quantity": 8,
+        "name": "Uncracked Chillwind Horn",
+        "itemID": 12444
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.386,
+        "mapID": 1452,
+        "name": "Felnok Steelspring",
+        "entityID": 10468,
+        "npc": true,
+        "x": 0.616
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "title": "Chillwind Horns",
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1452,
+        "legacyStepKey": "q:1452:npc:7448",
+        "entityID": 7448,
+        "npc": true,
+        "x": 0.626,
+        "y": 0.34600000000000003,
+        "objectiveKey": "item:12444",
+        "itemID": 12444,
+        "quantity": 8,
+        "name": "Chillwind Chimaera",
+        "itemName": "Uncracked Chillwind Horn",
+        "alternativeCount": 3,
+        "action": "collect"
+      }
+    ],
+    "series": [
+      4726,
+      4808,
+      4809,
+      4810
+    ],
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.386,
+        "mapID": 1452,
+        "name": "Felnok Steelspring",
+        "entityID": 10468,
+        "npc": true,
+        "x": 0.616
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "previousQuest": 4808,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Uncracked Chillwind Horn",
+        "name": "Fledgling Chillwind",
+        "entityID": 7447,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Uncracked Chillwind Horn",
+        "name": "Chillwind Chimaera",
+        "entityID": 7448,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Uncracked Chillwind Horn",
+        "name": "Chillwind Ravager",
+        "entityID": 7449,
+        "npc": true,
+        "action": "collect"
+      }
+    ]
+  },
+  "4810": {
+    "prerequisitesRead": true,
+    "zone": "Winterspring",
+    "requirements": {},
+    "level": 54,
+    "areaID": 618,
+    "previousQuest": 4809,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Tinkee Steamboil",
+        "entityID": 10267
+      }
+    ],
+    "xp": 2700,
+    "minLevel": 50,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Felnok Steelspring",
+          "entityID": 10468
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Felnok's Package",
+          "entityID": 12445
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Tinkee Steamboil",
+          "entityID": 10267
+        }
+      ]
+    },
+    "categoryPath": "kalimdor/winterspring",
+    "raceMask": 0,
+    "mapID": 1452,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Felnok Steelspring",
+        "entityID": 10468
+      }
+    ],
+    "seriesRoot": 4726,
+    "requiredItems": {},
+    "ends": [
+      {
+        "y": 0.23800000000000002,
+        "mapID": 1428,
+        "name": "Tinkee Steamboil",
+        "entityID": 10267,
+        "npc": true,
+        "x": 0.652
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "objectives": {},
+    "series": [
+      4726,
+      4808,
+      4809,
+      4810
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Felnok's Package",
+        "entityID": 12445
+      }
+    ],
+    "seriesPosition": 4,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "starts": [
+      {
+        "y": 0.386,
+        "mapID": 1452,
+        "name": "Felnok Steelspring",
+        "entityID": 10468,
+        "npc": true,
+        "x": 0.616
+      }
+    ],
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "classMask": 0,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "locationSource": "Wowhead Forever",
+    "title": "Return to Tinkee"
+  },
+  "4842": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "zone": "Winterspring",
+    "requirements": {},
+    "seriesRoot": 974,
+    "objectives": [
+      {
+        "y": 0.7425,
+        "mapID": 1452,
+        "action": "event",
+        "x": 0.5982,
+        "locationSource": "Published Forever converted-baseline event area",
+        "name": "Strange Sources"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "series": [
+      974,
+      980,
+      4842
+    ],
+    "starts": [
+      {
+        "y": 0.452,
+        "mapID": 1452,
+        "name": "Donova Snowden",
+        "entityID": 9298,
+        "npc": true,
+        "x": 0.312
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.452,
+        "mapID": 1452,
+        "name": "Donova Snowden",
+        "entityID": 9298,
+        "npc": true,
+        "x": 0.312
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 56,
+    "areaID": 618,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Donova Snowden",
+        "entityID": 9298
+      }
+    ],
+    "side": "Both",
+    "previousQuest": 980,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Donova Snowden",
+        "entityID": 9298
+      }
+    ],
+    "xp": 5800,
+    "title": "Strange Sources",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 3,
+    "minLevel": 51,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Donova Snowden",
+          "entityID": 9298
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Donova Snowden",
+          "entityID": 9298
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "4861": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Jaron Stoneshaper",
+        "entityID": 10301
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "object",
+        "mapID": 1452,
+        "name": "Damaged Crate",
+        "y": 0.5979,
+        "entityID": 175587,
+        "x": 0.5899,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "sourceAreaID": 618
+      }
+    ],
+    "level": 59,
+    "areaID": 618,
+    "objectives": {},
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 10301,
+        "npc": true,
+        "sourceZone": "Winterspring",
+        "x": 0.52,
+        "name": "Jaron Stoneshaper",
+        "sourceAreaID": 618,
+        "y": 0.304
+      }
+    ],
+    "side": "Alliance",
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "object",
+        "name": "Damaged Crate",
+        "entityID": 175587
+      }
+    ],
+    "xp": 3200,
+    "raceMask": 4294967373,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 53,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Enraged Wildkin",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Jaron Stoneshaper",
+          "entityID": 10301
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "object",
+          "name": "Damaged Crate",
+          "entityID": 175587
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "4863": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Damaged Crate",
+        "entityID": 175587
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "object",
+        "mapID": 1452,
+        "name": "Jaron's Wagon",
+        "y": 0.6068,
+        "entityID": 175586,
+        "x": 0.6144,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "sourceAreaID": 618
+      }
+    ],
+    "objectives": {},
+    "level": 59,
+    "areaID": 618,
+    "starts": [
+      {
+        "entityType": "object",
+        "mapID": 1452,
+        "name": "Damaged Crate",
+        "y": 0.5979,
+        "entityID": 175587,
+        "x": 0.5899,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "sourceAreaID": 618
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "raceMask": 4294967373,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "object",
+        "name": "Jaron's Wagon",
+        "entityID": 175586
+      }
+    ],
+    "xp": 3200,
+    "prerequisiteAny": [
+      4861
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 53,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Enraged Wildkin",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "object",
+          "name": "Damaged Crate",
+          "entityID": 175587
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "object",
+          "name": "Jaron's Wagon",
+          "entityID": 175586
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "4864": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Jaron's Wagon",
+        "entityID": 175586
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 12525,
+        "name": "Jaron's Supplies"
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 12524,
+        "name": "Blue-feathered Amulet"
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Blue-feathered Amulet",
+        "name": "Moontouched Owlbeast",
+        "entityID": 7453,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Jaron's Supplies",
+        "itemID": 12525
+      },
+      {
+        "quantity": 1,
+        "name": "Blue-feathered Amulet",
+        "itemID": 12524
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1452,
+        "action": "gather",
+        "entityID": 175628,
+        "x": 0.6141,
+        "y": 0.6073,
+        "objectiveKey": "item:12525",
+        "itemID": 12525,
+        "quantity": 1,
+        "sourceAreaID": 618,
+        "itemName": "Jaron's Supplies",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Jaron's Supplies"
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "action": "loot",
+        "entityID": 7453,
+        "npc": true,
+        "x": 0.5922,
+        "y": 0.6026,
+        "objectiveKey": "item:12524",
+        "itemID": 12524,
+        "quantity": 1,
+        "sourceAreaID": 618,
+        "itemName": "Blue-feathered Amulet",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Moontouched Owlbeast"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "object",
+        "mapID": 1452,
+        "name": "Jaron's Wagon",
+        "y": 0.6068,
+        "entityID": 175586,
+        "x": 0.6144,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "sourceAreaID": 618
+      }
+    ],
+    "level": 59,
+    "areaID": 618,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 4294967373,
+    "side": "Alliance",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 10301,
+        "npc": true,
+        "y": 0.3043,
+        "x": 0.5214,
+        "name": "Jaron Stoneshaper",
+        "sourceAreaID": 618,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "money": 9000,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Jaron Stoneshaper",
+        "entityID": 10301
+      }
+    ],
+    "xp": 6400,
+    "prerequisiteAny": [
+      4863
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 53,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Enraged Wildkin",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 12525,
+          "name": "Jaron's Supplies"
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 12524,
+          "name": "Blue-feathered Amulet"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "object",
+          "name": "Jaron's Wagon",
+          "entityID": 175586
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Jaron Stoneshaper",
+          "entityID": 10301
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "4882": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "startRefs": [
+      {
+        "entityType": "item",
+        "name": "Blue-feathered Necklace",
+        "entityID": 12558
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Blue-feathered Necklace",
+        "entityID": 12558
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Blue-feathered Necklace",
+        "name": "Crazed Owlbeast",
+        "entityID": 7452,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Blue-feathered Necklace",
+        "itemID": 12558
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "action": "loot",
+        "entityID": 7452,
+        "npc": true,
+        "x": 0.5865,
+        "y": 0.6031,
+        "objectiveKey": "item:12558",
+        "itemID": 12558,
+        "quantity": 1,
+        "sourceAreaID": 618,
+        "itemName": "Blue-feathered Necklace",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Crazed Owlbeast"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "action": "start-item",
+        "entityID": 7452,
+        "npc": true,
+        "sourceAction": "loot",
+        "x": 0.5865,
+        "itemID": 12558,
+        "y": 0.6031,
+        "sourceAreaID": 618,
+        "itemName": "Blue-feathered Necklace",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Crazed Owlbeast"
+      }
+    ],
+    "level": 59,
+    "areaID": 618,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 8589934770,
+    "side": "Horde",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1448,
+        "entityID": 10306,
+        "npc": true,
+        "y": 0.5279,
+        "x": 0.34729999999999994,
+        "name": "Trull Failbane",
+        "sourceAreaID": 361,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Trull Failbane",
+        "entityID": 10306
+      }
+    ],
+    "xp": 3200,
+    "prerequisiteAny": [
+      4741
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 52,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Guarding Secrets",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Blue-feathered Necklace",
+          "entityID": 12558
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "item",
+          "name": "Blue-feathered Necklace",
+          "entityID": 12558
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Trull Failbane",
+          "entityID": 10306
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "4883": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Trull Failbane",
+        "entityID": 10306
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Blue-feathered Necklace",
+        "entityID": 12558
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Blue-feathered Necklace",
+        "name": "Crazed Owlbeast",
+        "entityID": 7452,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Blue-feathered Necklace",
+        "itemID": 12558
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "action": "loot",
+        "entityID": 7452,
+        "npc": true,
+        "x": 0.5865,
+        "y": 0.6031,
+        "objectiveKey": "item:12558",
+        "itemID": 12558,
+        "quantity": 1,
+        "sourceAreaID": 618,
+        "itemName": "Blue-feathered Necklace",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Crazed Owlbeast"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1448,
+        "entityID": 10306,
+        "npc": true,
+        "y": 0.5279,
+        "x": 0.34729999999999994,
+        "name": "Trull Failbane",
+        "sourceAreaID": 361,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "level": 59,
+    "areaID": 618,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 8589934770,
+    "side": "Horde",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1456,
+        "entityID": 5770,
+        "npc": true,
+        "sourceZone": "Thunder Bluff",
+        "x": 0.754,
+        "name": "Nara Wildmane",
+        "sourceAreaID": 1638,
+        "y": 0.31
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Nara Wildmane",
+        "entityID": 5770
+      }
+    ],
+    "xp": 6400,
+    "prerequisiteAny": [
+      4882
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 52,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Guarding Secrets",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Blue-feathered Necklace",
+          "entityID": 12558
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Trull Failbane",
+          "entityID": 10306
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Nara Wildmane",
+          "entityID": 5770
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "4901": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Ranshalla",
+        "entityID": 10300
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1438,
+        "entityID": 7916,
+        "npc": true,
+        "sourceZone": "Teldrassil",
+        "x": 0.5539999999999999,
+        "name": "Erelas Ambersky",
+        "sourceAreaID": 141,
+        "y": 0.92
+      }
+    ],
+    "objectives": [
+      {
+        "y": 0.6373,
+        "mapID": 1452,
+        "action": "event",
+        "x": 0.6485,
+        "locationSource": "Published Forever converted-baseline event area",
+        "name": "Guardians of the Altar"
+      }
+    ],
+    "level": 59,
+    "areaID": 618,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 10300,
+        "npc": true,
+        "y": 0.5948,
+        "x": 0.6307,
+        "name": "Ranshalla",
+        "sourceAreaID": 618,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "raceMask": 4294967373,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Erelas Ambersky",
+        "entityID": 7916
+      }
+    ],
+    "xp": 4800,
+    "prerequisiteAny": [
+      979
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 52,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Guardians of the Altar",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Ranshalla",
+          "entityID": 10300
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Erelas Ambersky",
+          "entityID": 7916
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "4902": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Erelas Ambersky",
+        "entityID": 7916
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.08800000000000001,
+        "mapID": 1457,
+        "name": "Arch Druid Fandral Staghelm",
+        "entityID": 3516,
+        "npc": true,
+        "x": 0.348
+      }
+    ],
+    "objectives": {},
+    "level": 57,
+    "areaID": 618,
+    "starts": [
+      {
+        "y": 0.92,
+        "mapID": 1438,
+        "name": "Erelas Ambersky",
+        "entityID": 7916,
+        "npc": true,
+        "x": 0.5539999999999999
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "prerequisiteAny": [
+      4901
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Arch Druid Fandral Staghelm",
+        "entityID": 3516
+      }
+    ],
+    "xp": 6000,
+    "foreverStatus": "unchanged",
+    "title": "Wildkin of Elune",
+    "minLevel": 52,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Erelas Ambersky",
+          "entityID": 7916
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Arch Druid Fandral Staghelm",
+          "entityID": 3516
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "5054": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "npcTargets": [
+      {
+        "entityID": 10806,
+        "npc": true,
+        "action": "kill",
+        "name": "Ursius"
+      }
+    ],
+    "zone": "Winterspring",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "name": "Ursius",
+        "entityID": 10806
+      }
+    ],
+    "seriesRoot": 5054,
+    "objectives": [
+      {
+        "sourceObjective": 10806,
+        "mapID": 1452,
+        "action": "kill",
+        "entityID": 10806,
+        "npc": true,
+        "y": 0.25,
+        "objectiveKey": "npc:10806",
+        "name": "Ursius",
+        "x": 0.64,
+        "quantity": 1
+      }
+    ],
+    "series": [
+      5054,
+      5055,
+      5056
+    ],
+    "starts": [
+      {
+        "y": 0.384,
+        "mapID": 1452,
+        "name": "Storm Shadowhoof",
+        "entityID": 10303,
+        "npc": true,
+        "x": 0.618
+      }
+    ],
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 56,
+    "areaID": 618,
+    "ends": [
+      {
+        "y": 0.384,
+        "mapID": 1452,
+        "name": "Storm Shadowhoof",
+        "entityID": 10303,
+        "npc": true,
+        "x": 0.618
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Storm Shadowhoof",
+        "entityID": 10303
+      }
+    ],
+    "side": "Horde",
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Storm Shadowhoof",
+        "entityID": 10303
+      }
+    ],
+    "xp": 5800,
+    "questType": "Elite",
+    "foreverStatus": "unchanged",
+    "title": "Ursius of the Shardtooth",
+    "minLevel": 53,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Ursius",
+          "entityID": 10806
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Storm Shadowhoof",
+          "entityID": 10303
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Storm Shadowhoof",
+          "entityID": 10303
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "5055": {
+    "prerequisitesRead": true,
+    "zone": "Winterspring",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "name": "Brumeran",
+        "entityID": 10807
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 58,
+    "areaID": 618,
+    "seriesPosition": 2,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Storm Shadowhoof",
+        "entityID": 10303
+      }
+    ],
+    "xp": 6200,
+    "questType": "Elite",
+    "minLevel": 53,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Brumeran",
+          "entityID": 10807
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Storm Shadowhoof",
+          "entityID": 10303
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Storm Shadowhoof",
+          "entityID": 10303
+        }
+      ]
+    },
+    "categoryPath": "kalimdor/winterspring",
+    "raceMask": 0,
+    "mapID": 1452,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Storm Shadowhoof",
+        "entityID": 10303
+      }
+    ],
+    "seriesRoot": 5054,
+    "ends": [
+      {
+        "y": 0.384,
+        "mapID": 1452,
+        "name": "Storm Shadowhoof",
+        "entityID": 10303,
+        "npc": true,
+        "x": 0.618
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "previousQuest": 5054,
+    "objectives": [
+      {
+        "sourceObjective": 10807,
+        "mapID": 1452,
+        "action": "kill",
+        "entityID": 10807,
+        "npc": true,
+        "y": 0.562,
+        "objectiveKey": "npc:10807",
+        "name": "Brumeran",
+        "x": 0.612,
+        "quantity": 1
+      }
+    ],
+    "series": [
+      5054,
+      5055,
+      5056
+    ],
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.384,
+        "mapID": 1452,
+        "name": "Storm Shadowhoof",
+        "entityID": 10303,
+        "npc": true,
+        "x": 0.618
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "title": "Brumeran of the Chillwind",
+    "classMask": 0,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "entityID": 10807,
+        "npc": true,
+        "action": "kill",
+        "name": "Brumeran"
+      }
+    ]
+  },
+  "5056": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Storm Shadowhoof",
+        "entityID": 10303
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "action": "kill",
+        "entityID": 10737,
+        "name": "Shy-Rotam"
+      }
+    ],
+    "npcTargets": [
+      {
+        "entityID": 10737,
+        "npc": true,
+        "action": "kill",
+        "name": "Shy-Rotam"
+      }
+    ],
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "action": "kill",
+        "entityID": 10737,
+        "npc": true,
+        "y": 0.098,
+        "objectiveKey": "npc:10737",
+        "name": "Shy-Rotam",
+        "sourceAreaID": 618,
+        "x": 0.49810000000000004,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantity": 1
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 10303,
+        "npc": true,
+        "sourceZone": "Winterspring",
+        "x": 0.618,
+        "name": "Storm Shadowhoof",
+        "sourceAreaID": 618,
+        "y": 0.384
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 60,
+    "areaID": 618,
+    "raceMask": 8589934770,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "prerequisiteAny": [
+      5055
+    ],
+    "side": "Horde",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 10303,
+        "npc": true,
+        "sourceZone": "Winterspring",
+        "x": 0.618,
+        "name": "Storm Shadowhoof",
+        "sourceAreaID": 618,
+        "y": 0.384
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Storm Shadowhoof",
+        "entityID": 10303
+      }
+    ],
+    "xp": 8300,
+    "questType": "Elite",
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 53,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Shy-Rotam",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "action": "kill",
+          "entityID": 10737,
+          "name": "Shy-Rotam"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Storm Shadowhoof",
+          "entityID": 10303
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Storm Shadowhoof",
+          "entityID": 10303
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "5057": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Storm Shadowhoof",
+        "entityID": 10303
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 10303,
+        "npc": true,
+        "sourceZone": "Winterspring",
+        "x": 0.618,
+        "name": "Storm Shadowhoof",
+        "sourceAreaID": 618,
+        "y": 0.384
+      }
+    ],
+    "objectives": {},
+    "level": 60,
+    "areaID": 618,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 10303,
+        "npc": true,
+        "sourceZone": "Winterspring",
+        "x": 0.618,
+        "name": "Storm Shadowhoof",
+        "sourceAreaID": 618,
+        "y": 0.384
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "raceMask": 8589934770,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Storm Shadowhoof",
+        "entityID": 10303
+      }
+    ],
+    "xp": 3300,
+    "prerequisiteAny": [
+      5056
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 53,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Past Endeavors",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Storm Shadowhoof",
+          "entityID": 10303
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Storm Shadowhoof",
+          "entityID": 10303
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "5082": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "npcTargets": [
+      {
+        "entityID": 7440,
+        "npc": true,
+        "action": "kill",
+        "name": "Winterfall Den Watcher"
+      },
+      {
+        "entityID": 7441,
+        "npc": true,
+        "action": "kill",
+        "name": "Winterfall Totemic"
+      },
+      {
+        "entityID": 7442,
+        "npc": true,
+        "action": "kill",
+        "name": "Winterfall Pathfinder"
+      }
+    ],
+    "zone": "Winterspring",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 8,
+        "name": "Winterfall Pathfinder",
+        "entityID": 7442
+      },
+      {
+        "entityType": "npc",
+        "quantity": 8,
+        "name": "Winterfall Den Watcher",
+        "entityID": 7440
+      },
+      {
+        "entityType": "npc",
+        "quantity": 8,
+        "name": "Winterfall Totemic",
+        "entityID": 7441
+      }
+    ],
+    "seriesRoot": 6603,
+    "objectives": [
+      {
+        "sourceObjective": 7440,
+        "mapID": 1452,
+        "action": "kill",
+        "entityID": 7440,
+        "npc": true,
+        "y": 0.358,
+        "objectiveKey": "npc:7440",
+        "name": "Winterfall Den Watcher",
+        "x": 0.6659999999999999,
+        "quantity": 8
+      },
+      {
+        "sourceObjective": 7441,
+        "mapID": 1452,
+        "action": "kill",
+        "entityID": 7441,
+        "npc": true,
+        "y": 0.428,
+        "objectiveKey": "npc:7441",
+        "name": "Winterfall Totemic",
+        "x": 0.414,
+        "quantity": 8
+      },
+      {
+        "sourceObjective": 7442,
+        "mapID": 1452,
+        "action": "kill",
+        "entityID": 7442,
+        "npc": true,
+        "y": 0.37,
+        "objectiveKey": "npc:7442",
+        "name": "Winterfall Pathfinder",
+        "x": 0.34600000000000003,
+        "quantity": 8
+      }
+    ],
+    "series": [
+      6603,
+      5082
+    ],
+    "starts": [
+      {
+        "y": 0.452,
+        "mapID": 1452,
+        "name": "Donova Snowden",
+        "entityID": 9298,
+        "npc": true,
+        "x": 0.312
+      }
+    ],
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 56,
+    "areaID": 618,
+    "ends": [
+      {
+        "y": 0.452,
+        "mapID": 1452,
+        "name": "Donova Snowden",
+        "entityID": 9298,
+        "npc": true,
+        "x": 0.312
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Donova Snowden",
+        "entityID": 9298
+      }
+    ],
+    "side": "Both",
+    "previousQuest": 6603,
+    "money": 8500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Donova Snowden",
+        "entityID": 9298
+      }
+    ],
+    "xp": 5800,
+    "title": "Threat of the Winterfall",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 2,
+    "minLevel": 52,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 8,
+          "name": "Winterfall Pathfinder",
+          "entityID": 7442
+        },
+        {
+          "entityType": "npc",
+          "quantity": 8,
+          "name": "Winterfall Den Watcher",
+          "entityID": 7440
+        },
+        {
+          "entityType": "npc",
+          "quantity": 8,
+          "name": "Winterfall Totemic",
+          "entityID": 7441
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Donova Snowden",
+          "entityID": 9298
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Donova Snowden",
+          "entityID": 9298
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "5083": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "objectives": {},
+    "zone": "Winterspring",
+    "requirements": {},
+    "seriesRoot": 5083,
+    "requiredItems": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "series": [
+      5083,
+      5084,
+      5085,
+      5086,
+      5087,
+      5121
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Empty Firewater Flask",
+        "entityID": 12771
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.452,
+        "mapID": 1452,
+        "name": "Donova Snowden",
+        "entityID": 9298,
+        "npc": true,
+        "x": 0.312
+      }
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "action": "start-item",
+        "entityID": 10916,
+        "npc": true,
+        "sourceAction": "loot",
+        "x": 0.326,
+        "itemID": 12771,
+        "y": 0.42200000000000004,
+        "sourceAreaID": 618,
+        "sourceZone": "Winterspring",
+        "itemName": "Empty Firewater Flask",
+        "name": "Winterfall Runner"
+      }
+    ],
+    "level": 56,
+    "areaID": 618,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "item",
+        "name": "Empty Firewater Flask",
+        "entityID": 12771
+      }
+    ],
+    "side": "Both",
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Donova Snowden",
+        "entityID": 9298
+      }
+    ],
+    "xp": 2900,
+    "foreverStatus": "unchanged",
+    "title": "Winterfall Firewater",
+    "minLevel": 52,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "item",
+          "name": "Empty Firewater Flask",
+          "entityID": 12771
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Empty Firewater Flask",
+          "entityID": 12771
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Donova Snowden",
+          "entityID": 9298
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "5084": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "zone": "Winterspring",
+    "requirements": {},
+    "seriesRoot": 5083,
+    "objectives": {},
+    "series": [
+      5083,
+      5084,
+      5085,
+      5086,
+      5087,
+      5121
+    ],
+    "starts": [
+      {
+        "y": 0.452,
+        "mapID": 1452,
+        "name": "Donova Snowden",
+        "entityID": 9298,
+        "npc": true,
+        "x": 0.312
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.059000000000000004,
+        "x": 0.602,
+        "name": "Deadwood Cauldron",
+        "entityID": 176091,
+        "mapID": 1448
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 56,
+    "areaID": 618,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Donova Snowden",
+        "entityID": 9298
+      }
+    ],
+    "side": "Both",
+    "previousQuest": 5083,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "object",
+        "name": "Deadwood Cauldron",
+        "entityID": 176091
+      }
+    ],
+    "xp": 4350,
+    "title": "Falling to Corruption",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 2,
+    "minLevel": 52,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Donova Snowden",
+          "entityID": 9298
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "object",
+          "name": "Deadwood Cauldron",
+          "entityID": 176091
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "5085": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "objectives": {},
+    "zone": "Winterspring",
+    "requirements": {},
+    "seriesRoot": 5083,
+    "requiredItems": {},
+    "series": [
+      5083,
+      5084,
+      5085,
+      5086,
+      5087,
+      5121
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Flask of Mystery Goo",
+        "entityID": 12813
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.059000000000000004,
+        "x": 0.602,
+        "name": "Deadwood Cauldron",
+        "entityID": 176091,
+        "mapID": 1448
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.452,
+        "mapID": 1452,
+        "name": "Donova Snowden",
+        "entityID": 9298,
+        "npc": true,
+        "x": 0.312
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 56,
+    "areaID": 618,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Deadwood Cauldron",
+        "entityID": 176091
+      }
+    ],
+    "side": "Both",
+    "previousQuest": 5084,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Donova Snowden",
+        "entityID": 9298
+      }
+    ],
+    "xp": 4350,
+    "title": "Mystery Goo",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 3,
+    "minLevel": 52,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "object",
+          "name": "Deadwood Cauldron",
+          "entityID": 176091
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Flask of Mystery Goo",
+          "entityID": 12813
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Donova Snowden",
+          "entityID": 9298
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "5086": {
+    "prerequisitesRead": true,
+    "zone": "Winterspring",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 3,
+        "name": "Toxic Horror Droplet",
+        "entityID": 12822
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 56,
+    "areaID": 618,
+    "seriesPosition": 4,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Donova Snowden",
+        "entityID": 9298
+      }
+    ],
+    "xp": 5800,
+    "minLevel": 52,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 3,
+          "name": "Toxic Horror Droplet",
+          "entityID": 12822
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Donova Snowden",
+          "entityID": 9298
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Donova Snowden",
+          "entityID": 9298
+        }
+      ]
+    },
+    "categoryPath": "kalimdor/winterspring",
+    "raceMask": 0,
+    "mapID": 1452,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Donova Snowden",
+        "entityID": 9298
+      }
+    ],
+    "seriesRoot": 5083,
+    "requiredItems": [
+      {
+        "quantity": 3,
+        "name": "Toxic Horror Droplet",
+        "itemID": 12822
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.452,
+        "mapID": 1452,
+        "name": "Donova Snowden",
+        "entityID": 9298,
+        "npc": true,
+        "x": 0.312
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "title": "Toxic Horrors",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1448,
+        "action": "loot",
+        "entityID": 7132,
+        "npc": true,
+        "x": 0.4891,
+        "y": 0.2466,
+        "objectiveKey": "item:12822",
+        "itemID": 12822,
+        "quantity": 3,
+        "sourceAreaID": 361,
+        "itemName": "Toxic Horror Droplet",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Toxic Horror"
+      }
+    ],
+    "series": [
+      5083,
+      5084,
+      5085,
+      5086,
+      5087,
+      5121
+    ],
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.452,
+        "mapID": 1452,
+        "name": "Donova Snowden",
+        "entityID": 9298,
+        "npc": true,
+        "x": 0.312
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "previousQuest": 5085,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Toxic Horror Droplet",
+        "name": "Toxic Horror",
+        "entityID": 7132,
+        "npc": true,
+        "action": "loot"
+      }
+    ]
+  },
+  "5087": {
+    "prerequisitesRead": true,
+    "zone": "Winterspring",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Winterfall Crate",
+        "entityID": 12829
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 57,
+    "areaID": 618,
+    "seriesPosition": 5,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Donova Snowden",
+        "entityID": 9298
+      }
+    ],
+    "xp": 6000,
+    "minLevel": 52,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Winterfall Crate",
+          "entityID": 12829
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Donova Snowden",
+          "entityID": 9298
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Donova Snowden",
+          "entityID": 9298
+        }
+      ]
+    },
+    "categoryPath": "kalimdor/winterspring",
+    "raceMask": 0,
+    "mapID": 1452,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Donova Snowden",
+        "entityID": 9298
+      }
+    ],
+    "seriesRoot": 5083,
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Winterfall Crate",
+        "itemID": 12829
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.452,
+        "mapID": 1452,
+        "name": "Donova Snowden",
+        "entityID": 9298,
+        "npc": true,
+        "x": 0.312
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "title": "Winterfall Runners",
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1452,
+        "action": "collect",
+        "entityID": 10916,
+        "npc": true,
+        "y": 0.34600000000000003,
+        "objectiveKey": "item:12829",
+        "name": "Winterfall Runner",
+        "x": 0.28,
+        "quantity": 1,
+        "legacyStepKey": "q:1452:npc:10916",
+        "itemName": "Winterfall Crate",
+        "itemID": 12829
+      }
+    ],
+    "series": [
+      5083,
+      5084,
+      5085,
+      5086,
+      5087,
+      5121
+    ],
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.452,
+        "mapID": 1452,
+        "name": "Donova Snowden",
+        "entityID": 9298,
+        "npc": true,
+        "x": 0.312
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "previousQuest": 5086,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Winterfall Crate",
+        "name": "Winterfall Runner",
+        "entityID": 10916,
+        "npc": true,
+        "action": "collect"
+      }
+    ]
+  },
+  "5121": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Donova Snowden",
+        "entityID": 9298
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "action": "kill",
+        "entityID": 10738,
+        "name": "High Chief Winterfall"
+      }
+    ],
+    "npcTargets": [
+      {
+        "entityID": 10738,
+        "npc": true,
+        "action": "kill",
+        "name": "High Chief Winterfall"
+      }
+    ],
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "action": "kill",
+        "entityID": 10738,
+        "npc": true,
+        "y": 0.3831,
+        "objectiveKey": "npc:10738",
+        "name": "High Chief Winterfall",
+        "sourceAreaID": 618,
+        "x": 0.6956,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantity": 1
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 9298,
+        "npc": true,
+        "sourceZone": "Winterspring",
+        "x": 0.312,
+        "name": "Donova Snowden",
+        "sourceAreaID": 618,
+        "y": 0.452
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 59,
+    "areaID": 618,
+    "raceMask": 0,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "prerequisiteAny": [
+      5087
+    ],
+    "side": "Both",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 9298,
+        "npc": true,
+        "sourceZone": "Winterspring",
+        "x": 0.312,
+        "name": "Donova Snowden",
+        "sourceAreaID": 618,
+        "y": 0.452
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Donova Snowden",
+        "entityID": 9298
+      }
+    ],
+    "xp": 6400,
+    "questType": "Elite",
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 52,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "High Chief Winterfall",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "action": "kill",
+          "entityID": 10738,
+          "name": "High Chief Winterfall"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Donova Snowden",
+          "entityID": 9298
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Donova Snowden",
+          "entityID": 9298
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "5123": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "startRefs": [
+      {
+        "entityType": "item",
+        "name": "Crudely-written Log",
+        "entityID": 12842
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Crudely-written Log",
+        "entityID": 12842
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Crudely-written Log",
+        "name": "High Chief Winterfall",
+        "entityID": 10738,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Crudely-written Log",
+        "itemID": 12842
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "action": "loot",
+        "entityID": 10738,
+        "npc": true,
+        "x": 0.6956,
+        "y": 0.3831,
+        "objectiveKey": "item:12842",
+        "itemID": 12842,
+        "quantity": 1,
+        "sourceAreaID": 618,
+        "itemName": "Crudely-written Log",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "High Chief Winterfall"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "action": "start-item",
+        "entityID": 10738,
+        "npc": true,
+        "sourceAction": "loot",
+        "x": 0.6956,
+        "itemID": 12842,
+        "y": 0.3831,
+        "sourceAreaID": 618,
+        "itemName": "Crudely-written Log",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "High Chief Winterfall"
+      }
+    ],
+    "level": 59,
+    "areaID": 618,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "side": "Both",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 9298,
+        "npc": true,
+        "y": 0.45159999999999995,
+        "x": 0.3127,
+        "name": "Donova Snowden",
+        "sourceAreaID": 618,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Donova Snowden",
+        "entityID": 9298
+      }
+    ],
+    "xp": 3200,
+    "prerequisiteAny": [
+      5087
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 52,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "The Final Piece",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Crudely-written Log",
+          "entityID": 12842
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "item",
+          "name": "Crudely-written Log",
+          "entityID": 12842
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Donova Snowden",
+          "entityID": 9298
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "5128": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Donova Snowden",
+        "entityID": 9298
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Crudely-written Log",
+        "entityID": 12842
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Crudely-written Log",
+        "name": "High Chief Winterfall",
+        "entityID": 10738,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Crudely-written Log",
+        "itemID": 12842
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "action": "loot",
+        "entityID": 10738,
+        "npc": true,
+        "x": 0.6956,
+        "y": 0.3831,
+        "objectiveKey": "item:12842",
+        "itemID": 12842,
+        "quantity": 1,
+        "sourceAreaID": 618,
+        "itemName": "Crudely-written Log",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "High Chief Winterfall"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 9298,
+        "npc": true,
+        "sourceZone": "Winterspring",
+        "x": 0.312,
+        "name": "Donova Snowden",
+        "sourceAreaID": 618,
+        "y": 0.452
+      }
+    ],
+    "level": 59,
+    "areaID": 618,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "side": "Both",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1448,
+        "entityID": 10920,
+        "npc": true,
+        "y": 0.8175,
+        "x": 0.5114,
+        "name": "Kelek Skykeeper",
+        "sourceAreaID": 361,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Kelek Skykeeper",
+        "entityID": 10920
+      }
+    ],
+    "xp": 6400,
+    "prerequisiteAny": [
+      5123
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 52,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Words of the High Chief",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Crudely-written Log",
+          "entityID": 12842
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Donova Snowden",
+          "entityID": 9298
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Kelek Skykeeper",
+          "entityID": 10920
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "5161": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Haleh",
+        "entityID": 10929
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 10929,
+        "npc": true,
+        "sourceZone": "Winterspring",
+        "x": 0.544,
+        "name": "Haleh",
+        "sourceAreaID": 618,
+        "y": 0.512
+      }
+    ],
+    "objectives": {},
+    "level": 60,
+    "areaID": 618,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 10929,
+        "npc": true,
+        "sourceZone": "Winterspring",
+        "x": 0.544,
+        "name": "Haleh",
+        "sourceAreaID": 618,
+        "y": 0.512
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "raceMask": 0,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Haleh",
+        "entityID": 10929
+      }
+    ],
+    "xp": 660,
+    "prerequisiteAny": [
+      5160
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 57,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Wrath of the Blue Flight",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Haleh",
+          "entityID": 10929
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Haleh",
+          "entityID": 10929
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "5163": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Umi Rumplesnicker",
+        "entityID": 10305
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "action": "use",
+        "entityID": 10978,
+        "name": "Legacki",
+        "useItemName": "Umi's Mechanical Yeti",
+        "spellID": 17166
+      },
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "action": "use",
+        "entityID": 7583,
+        "name": "Sprinkle",
+        "useItemName": "Umi's Mechanical Yeti",
+        "spellID": 17166
+      },
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "action": "use",
+        "entityID": 10977,
+        "name": "Quixxil",
+        "useItemName": "Umi's Mechanical Yeti",
+        "spellID": 17166
+      }
+    ],
+    "npcTargets": [
+      {
+        "entityID": 10978,
+        "npc": true,
+        "action": "use",
+        "name": "Legacki"
+      },
+      {
+        "entityID": 7583,
+        "npc": true,
+        "action": "use",
+        "name": "Sprinkle"
+      },
+      {
+        "entityID": 10977,
+        "npc": true,
+        "action": "use",
+        "name": "Quixxil"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "action": "use",
+        "entityID": 10978,
+        "npc": true,
+        "x": 0.6154,
+        "y": 0.3861,
+        "objectiveKey": "npc:10978",
+        "name": "Legacki",
+        "useItemName": "Umi's Mechanical Yeti",
+        "sourceAreaID": 618,
+        "quantity": 1,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "spellID": 17166
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1446,
+        "action": "use",
+        "entityID": 7583,
+        "npc": true,
+        "y": 0.268,
+        "sourceZone": "Tanaris",
+        "objectiveKey": "npc:7583",
+        "name": "Sprinkle",
+        "x": 0.51,
+        "sourceAreaID": 440,
+        "useItemName": "Umi's Mechanical Yeti",
+        "quantity": 1,
+        "spellID": 17166
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "action": "use",
+        "entityID": 10977,
+        "npc": true,
+        "x": 0.4366,
+        "y": 0.09369999999999999,
+        "objectiveKey": "npc:10977",
+        "name": "Quixxil",
+        "useItemName": "Umi's Mechanical Yeti",
+        "sourceAreaID": 490,
+        "quantity": 1,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "spellID": 17166
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 10305,
+        "npc": true,
+        "sourceZone": "Winterspring",
+        "x": 0.608,
+        "name": "Umi Rumplesnicker",
+        "sourceAreaID": 618,
+        "y": 0.376
+      }
+    ],
+    "level": 58,
+    "areaID": 618,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "side": "Both",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 10305,
+        "npc": true,
+        "sourceZone": "Winterspring",
+        "x": 0.608,
+        "name": "Umi Rumplesnicker",
+        "sourceAreaID": 618,
+        "y": 0.376
+      }
+    ],
+    "money": 9000,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Umi Rumplesnicker",
+        "entityID": 10305
+      }
+    ],
+    "xp": 7750,
+    "prerequisiteAny": [
+      977
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 52,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Are We There, Yeti?",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "action": "use",
+          "entityID": 10978,
+          "name": "Legacki",
+          "useItemName": "Umi's Mechanical Yeti",
+          "spellID": 17166
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "action": "use",
+          "entityID": 7583,
+          "name": "Sprinkle",
+          "useItemName": "Umi's Mechanical Yeti",
+          "spellID": 17166
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "action": "use",
+          "entityID": 10977,
+          "name": "Quixxil",
+          "useItemName": "Umi's Mechanical Yeti",
+          "spellID": 17166
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Umi Rumplesnicker",
+          "entityID": 10305
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Umi Rumplesnicker",
+          "entityID": 10305
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "5244": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "zone": "Winterspring",
+    "requirements": {},
+    "objectives": {},
+    "prerequisitesUnverified": true,
+    "starts": [
+      {
+        "y": 0.302,
+        "mapID": 1452,
+        "name": "Wynd Nightchaser",
+        "entityID": 11079,
+        "npc": true,
+        "x": 0.52
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.304,
+        "mapID": 1452,
+        "name": "Jaron Stoneshaper",
+        "entityID": 10301,
+        "npc": true,
+        "x": 0.52
+      }
+    ],
+    "title": "The Ruins of Kel'Theril",
+    "level": 56,
+    "areaID": 618,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Wynd Nightchaser",
+        "entityID": 11079
+      }
+    ],
+    "side": "Alliance",
+    "prerequisiteCandidates": [
+      5249,
+      5250
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Jaron Stoneshaper",
+        "entityID": 10301
+      }
+    ],
+    "xp": 580,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 53,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 4294967373,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Wynd Nightchaser",
+          "entityID": 11079
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Jaron Stoneshaper",
+          "entityID": 10301
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "5245": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "zone": "Winterspring",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "First Relic Fragment",
+        "entityID": 12896
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Second Relic Fragment",
+        "entityID": 12897
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Third Relic Fragment",
+        "entityID": 12898
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Fourth Relic Fragment",
+        "entityID": 12899
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "First Relic Fragment",
+        "itemID": 12896
+      },
+      {
+        "quantity": 1,
+        "name": "Second Relic Fragment",
+        "itemID": 12897
+      },
+      {
+        "quantity": 1,
+        "name": "Third Relic Fragment",
+        "itemID": 12898
+      },
+      {
+        "quantity": 1,
+        "name": "Fourth Relic Fragment",
+        "itemID": 12899
+      }
+    ],
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1452,
+        "action": "gather",
+        "entityID": 175888,
+        "x": 0.5514,
+        "y": 0.42979999999999996,
+        "objectiveKey": "item:12896",
+        "itemID": 12896,
+        "quantity": 1,
+        "sourceAreaID": 618,
+        "itemName": "First Relic Fragment",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Highborne Relic Fragment"
+      },
+      {
+        "entityType": "object",
+        "mapID": 1452,
+        "action": "gather",
+        "entityID": 175891,
+        "x": 0.5088,
+        "y": 0.4171,
+        "objectiveKey": "item:12897",
+        "itemID": 12897,
+        "quantity": 1,
+        "sourceAreaID": 618,
+        "itemName": "Second Relic Fragment",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Highborne Relic Fragment"
+      },
+      {
+        "entityType": "object",
+        "mapID": 1452,
+        "action": "gather",
+        "entityID": 175892,
+        "x": 0.5331,
+        "y": 0.43439999999999995,
+        "objectiveKey": "item:12898",
+        "itemID": 12898,
+        "quantity": 1,
+        "sourceAreaID": 618,
+        "itemName": "Third Relic Fragment",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Highborne Relic Fragment"
+      },
+      {
+        "entityType": "object",
+        "mapID": 1452,
+        "action": "gather",
+        "entityID": 175893,
+        "x": 0.5242,
+        "y": 0.415,
+        "objectiveKey": "item:12899",
+        "itemID": 12899,
+        "quantity": 1,
+        "sourceAreaID": 618,
+        "itemName": "Fourth Relic Fragment",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Highborne Relic Fragment"
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.304,
+        "mapID": 1452,
+        "name": "Jaron Stoneshaper",
+        "entityID": 10301,
+        "npc": true,
+        "x": 0.52
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "level": 56,
+    "areaID": 618,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Jaron Stoneshaper",
+        "entityID": 10301
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "ends": [
+      {
+        "y": 0.22,
+        "mapID": 1423,
+        "name": "Aurora Skycaller",
+        "entityID": 10304,
+        "npc": true,
+        "x": 0.534
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 5244,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Aurora Skycaller",
+        "entityID": 10304
+      }
+    ],
+    "xp": 5800,
+    "foreverStatus": "unchanged",
+    "title": "Troubled Spirits of Kel'Theril",
+    "minLevel": 53,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "First Relic Fragment",
+          "entityID": 12896
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Second Relic Fragment",
+          "entityID": 12897
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Third Relic Fragment",
+          "entityID": 12898
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Fourth Relic Fragment",
+          "entityID": 12899
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Jaron Stoneshaper",
+          "entityID": 10301
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Aurora Skycaller",
+          "entityID": 10304
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "5246": {
+    "prerequisitesRead": true,
+    "mapID": 1423,
+    "zone": "Eastern Plaguelands",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Sacred Highborne Writings",
+        "entityID": 13313
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Sacred Highborne Writings",
+        "itemID": 13313
+      }
+    ],
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1447,
+        "action": "gather",
+        "entityID": 176356,
+        "x": 0.41509999999999997,
+        "y": 0.5254,
+        "objectiveKey": "item:13313",
+        "itemID": 13313,
+        "quantity": 1,
+        "sourceAreaID": 16,
+        "itemName": "Sacred Highborne Writings",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Sacred Highborne Writings"
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.22,
+        "mapID": 1423,
+        "name": "Aurora Skycaller",
+        "entityID": 10304,
+        "npc": true,
+        "x": 0.534
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "level": 56,
+    "areaID": 139,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Aurora Skycaller",
+        "entityID": 10304
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "ends": [
+      {
+        "y": 0.22,
+        "mapID": 1423,
+        "name": "Aurora Skycaller",
+        "entityID": 10304,
+        "npc": true,
+        "x": 0.534
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 5245,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Aurora Skycaller",
+        "entityID": 10304
+      }
+    ],
+    "xp": 5800,
+    "foreverStatus": "unchanged",
+    "title": "Fragments of the Past",
+    "minLevel": 53,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Sacred Highborne Writings",
+          "entityID": 13313
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Aurora Skycaller",
+          "entityID": 10304
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Aurora Skycaller",
+          "entityID": 10304
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/eastern-plaguelands"
+  },
+  "5247": {
+    "prerequisitesRead": true,
+    "mapID": 1423,
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1444,
+        "legacyStepKey": "q:1444:npc:178224",
+        "entityID": 178224,
+        "name": "Dire Pool",
+        "x": 0.5893999999999999,
+        "y": 0.35969999999999996,
+        "objectiveKey": "item:16973",
+        "itemID": 16973,
+        "quantity": 1,
+        "sourceAreaID": 357,
+        "itemName": "Vial of Dire Water",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "action": "gather"
+      }
+    ],
+    "zone": "Eastern Plaguelands",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Enchanted Thorium Bar",
+        "entityID": 12655
+      },
+      {
+        "entityType": "item",
+        "quantity": 5,
+        "name": "Crystal Restore",
+        "entityID": 11562
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Vial of Dire Water",
+        "entityID": 16973
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.22,
+        "mapID": 1423,
+        "name": "Aurora Skycaller",
+        "entityID": 10304,
+        "npc": true,
+        "x": 0.534
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Enchanted Thorium Bar",
+        "itemID": 12655
+      },
+      {
+        "quantity": 5,
+        "name": "Crystal Restore",
+        "itemID": 11562
+      },
+      {
+        "quantity": 1,
+        "name": "Vial of Dire Water",
+        "itemID": 16973
+      }
+    ],
+    "raceMask": 4294967373,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "title": "Fragments of the Past",
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.22,
+        "mapID": 1423,
+        "name": "Aurora Skycaller",
+        "entityID": 10304,
+        "npc": true,
+        "x": 0.534
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Aurora Skycaller",
+        "entityID": 10304
+      }
+    ],
+    "level": 57,
+    "areaID": 139,
+    "missingRequirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Enchanted Thorium Bar",
+        "entityID": 12655
+      },
+      {
+        "entityType": "item",
+        "quantity": 5,
+        "name": "Crystal Restore",
+        "entityID": 11562
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "previousQuest": 5246,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Aurora Skycaller",
+        "entityID": 10304
+      }
+    ],
+    "xp": 6000,
+    "questType": "Elite",
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 53,
+    "requirementSource": "Wowhead Forever objective table",
+    "objectiveLocationsIncomplete": true,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Enchanted Thorium Bar",
+          "entityID": 12655
+        },
+        {
+          "entityType": "item",
+          "quantity": 5,
+          "name": "Crystal Restore",
+          "entityID": 11562
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Vial of Dire Water",
+          "entityID": 16973
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Aurora Skycaller",
+          "entityID": 10304
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Aurora Skycaller",
+          "entityID": 10304
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/eastern-plaguelands"
+  },
+  "5248": {
+    "prerequisitesRead": true,
+    "zone": "Eastern Plaguelands",
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "level": 58,
+    "areaID": 139,
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Remorseful Highborne",
+        "entityID": 10684
+      }
+    ],
+    "xp": 4650,
+    "minLevel": 53,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Aurora Skycaller",
+          "entityID": 10304
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Crystal of Zin-Malor",
+          "entityID": 13347
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Remorseful Highborne",
+          "entityID": 10684
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/eastern-plaguelands",
+    "raceMask": 4294967373,
+    "mapID": 1423,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Aurora Skycaller",
+        "entityID": 10304
+      }
+    ],
+    "seriesRoot": 5248,
+    "requiredItems": {},
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "ends": [
+      {
+        "y": 0.444,
+        "mapID": 1452,
+        "name": "Remorseful Highborne",
+        "entityID": 10684,
+        "npc": true,
+        "x": 0.562
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "objectives": {},
+    "series": [
+      5248,
+      5252,
+      5253
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Crystal of Zin-Malor",
+        "entityID": 13347
+      }
+    ],
+    "title": "Tormented By the Past",
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "starts": [
+      {
+        "y": 0.22,
+        "mapID": 1423,
+        "name": "Aurora Skycaller",
+        "entityID": 10304,
+        "npc": true,
+        "x": 0.534
+      }
+    ],
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "classMask": 0,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "locationSource": "Wowhead Forever",
+    "prerequisiteAny": [
+      5247
+    ]
+  },
+  "5249": {
+    "prerequisitesRead": true,
+    "mapID": 1448,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Ivy Leafrunner",
+        "entityID": 10924
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisitesUnverified": true,
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 11079,
+        "npc": true,
+        "y": 0.3039,
+        "x": 0.5196999999999999,
+        "name": "Wynd Nightchaser",
+        "sourceAreaID": 618,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "level": 56,
+    "areaID": 361,
+    "objectives": {},
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1448,
+        "entityID": 10924,
+        "npc": true,
+        "y": 0.8158,
+        "x": 0.5096,
+        "name": "Ivy Leafrunner",
+        "sourceAreaID": 361,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "side": "Alliance",
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Wynd Nightchaser",
+        "entityID": 11079
+      }
+    ],
+    "xp": 580,
+    "raceMask": 4294967373,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 53,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "To Winterspring!",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Ivy Leafrunner",
+          "entityID": 10924
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Wynd Nightchaser",
+          "entityID": 11079
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/felwood"
+  },
+  "5250": {
+    "prerequisitesRead": true,
+    "mapID": 1438,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Daryn Lightwind",
+        "entityID": 7907
+      }
+    ],
+    "requirements": {},
+    "prerequisitesUnverified": true,
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.302,
+        "mapID": 1452,
+        "name": "Wynd Nightchaser",
+        "entityID": 11079,
+        "npc": true,
+        "x": 0.52
+      }
+    ],
+    "level": 56,
+    "areaID": 702,
+    "objectives": {},
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "starts": [
+      {
+        "y": 0.922,
+        "mapID": 1438,
+        "name": "Daryn Lightwind",
+        "entityID": 7907,
+        "npc": true,
+        "x": 0.5539999999999999
+      }
+    ],
+    "side": "Alliance",
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Wynd Nightchaser",
+        "entityID": 11079
+      }
+    ],
+    "xp": 580,
+    "foreverStatus": "unchanged",
+    "title": "Starfall",
+    "minLevel": 53,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Daryn Lightwind",
+          "entityID": 7907
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Wynd Nightchaser",
+          "entityID": 11079
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/ruttheran-village"
+  },
+  "5252": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "objectives": {},
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Remorseful Highborne",
+        "entityID": 10684
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Crystal of Zin-Malor",
+        "entityID": 13347
+      }
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Crystal of Zin-Malor",
+        "entityID": 13347
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Crystal of Zin-Malor",
+        "itemID": 13347
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 10684,
+        "npc": true,
+        "y": 0.4436,
+        "x": 0.5614,
+        "name": "Remorseful Highborne",
+        "sourceAreaID": 618,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 11079,
+        "npc": true,
+        "y": 0.3039,
+        "x": 0.5196999999999999,
+        "name": "Wynd Nightchaser",
+        "sourceAreaID": 618,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "title": "Remorseful Highborne",
+    "level": 58,
+    "areaID": 618,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "missingRequirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Crystal of Zin-Malor",
+        "entityID": 13347
+      }
+    ],
+    "side": "Alliance",
+    "prerequisiteAny": [
+      5248
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Wynd Nightchaser",
+        "entityID": 11079
+      }
+    ],
+    "xp": 4650,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 53,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 4294967373,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Crystal of Zin-Malor",
+          "entityID": 13347
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Remorseful Highborne",
+          "entityID": 10684
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Wynd Nightchaser",
+          "entityID": 11079
+        }
+      ]
+    },
+    "objectiveLocationsIncomplete": true,
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "5253": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "objectives": {},
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Wynd Nightchaser",
+        "entityID": 11079
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Crystal of Zin-Malor",
+        "entityID": 13347
+      }
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Crystal of Zin-Malor",
+        "entityID": 13347
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Crystal of Zin-Malor",
+        "itemID": 13347
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 11079,
+        "npc": true,
+        "y": 0.3039,
+        "x": 0.5196999999999999,
+        "name": "Wynd Nightchaser",
+        "sourceAreaID": 618,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1457,
+        "entityID": 3516,
+        "npc": true,
+        "sourceZone": "Darnassus",
+        "x": 0.344,
+        "name": "Arch Druid Fandral Staghelm",
+        "sourceAreaID": 1657,
+        "y": 0.086
+      }
+    ],
+    "title": "The Crystal of Zin-Malor",
+    "level": 58,
+    "areaID": 618,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "missingRequirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Crystal of Zin-Malor",
+        "entityID": 13347
+      }
+    ],
+    "side": "Alliance",
+    "prerequisiteAny": [
+      5252
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Arch Druid Fandral Staghelm",
+        "entityID": 3516
+      }
+    ],
+    "xp": 6200,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 53,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 4294967373,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Crystal of Zin-Malor",
+          "entityID": 13347
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Wynd Nightchaser",
+          "entityID": 11079
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Arch Druid Fandral Staghelm",
+          "entityID": 3516
+        }
+      ]
+    },
+    "objectiveLocationsIncomplete": true,
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "6028": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "zone": "Winterspring",
+    "requirements": {},
+    "requiredItems": {},
+    "objectives": {},
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.836,
+        "mapID": 1422,
+        "name": "Argent Officer Pureheart",
+        "entityID": 10840,
+        "npc": true,
+        "x": 0.43
+      }
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Everlook Report",
+        "entityID": 15788
+      }
+    ],
+    "level": 52,
+    "areaID": 618,
+    "starts": [
+      {
+        "y": 0.38799999999999996,
+        "mapID": 1452,
+        "name": "Gregor Greystone",
+        "entityID": 10431,
+        "npc": true,
+        "x": 0.612
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Gregor Greystone",
+        "entityID": 10431
+      }
+    ],
+    "money": 4000,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Argent Officer Pureheart",
+        "entityID": 10840
+      }
+    ],
+    "xp": 2550,
+    "foreverStatus": "unchanged",
+    "title": "The Everlook Report",
+    "minLevel": 50,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Gregor Greystone",
+          "entityID": 10431
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Everlook Report",
+          "entityID": 15788
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Argent Officer Pureheart",
+          "entityID": 10840
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "6029": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "zone": "Winterspring",
+    "requirements": {},
+    "requiredItems": {},
+    "objectives": {},
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.684,
+        "mapID": 1420,
+        "name": "Argent Officer Garush",
+        "entityID": 10839,
+        "npc": true,
+        "x": 0.8320000000000001
+      }
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Everlook Report",
+        "entityID": 15788
+      }
+    ],
+    "level": 52,
+    "areaID": 618,
+    "starts": [
+      {
+        "y": 0.38799999999999996,
+        "mapID": 1452,
+        "name": "Gregor Greystone",
+        "entityID": 10431,
+        "npc": true,
+        "x": 0.612
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Gregor Greystone",
+        "entityID": 10431
+      }
+    ],
+    "money": 4000,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Argent Officer Garush",
+        "entityID": 10839
+      }
+    ],
+    "xp": 2550,
+    "foreverStatus": "unchanged",
+    "title": "The Everlook Report",
+    "minLevel": 50,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Gregor Greystone",
+          "entityID": 10431
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Everlook Report",
+          "entityID": 15788
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Argent Officer Garush",
+          "entityID": 10839
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "6030": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "zone": "Winterspring",
+    "requirements": {},
+    "requiredItems": {},
+    "objectives": {},
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.598,
+        "mapID": 1423,
+        "name": "Duke Nicholas Zverenhoff",
+        "entityID": 11039,
+        "npc": true,
+        "x": 0.8140000000000001
+      }
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Studies in Spirit Speaking",
+        "entityID": 15790
+      }
+    ],
+    "level": 52,
+    "areaID": 618,
+    "starts": [
+      {
+        "y": 0.38799999999999996,
+        "mapID": 1452,
+        "name": "Gregor Greystone",
+        "entityID": 10431,
+        "npc": true,
+        "x": 0.612
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Gregor Greystone",
+        "entityID": 10431
+      }
+    ],
+    "money": 4000,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Duke Nicholas Zverenhoff",
+        "entityID": 11039
+      }
+    ],
+    "xp": 2550,
+    "foreverStatus": "unchanged",
+    "title": "Duke Nicholas Zverenhoff",
+    "minLevel": 50,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Gregor Greystone",
+          "entityID": 10431
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Studies in Spirit Speaking",
+          "entityID": 15790
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Duke Nicholas Zverenhoff",
+          "entityID": 11039
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "6603": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "zone": "Winterspring",
+    "requirements": {},
+    "seriesRoot": 6603,
+    "objectives": {},
+    "series": [
+      6603,
+      5082
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.452,
+        "mapID": 1452,
+        "name": "Donova Snowden",
+        "entityID": 9298,
+        "npc": true,
+        "x": 0.312
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.384,
+        "mapID": 1452,
+        "name": "Meggi Peppinrocker",
+        "entityID": 11754,
+        "npc": true,
+        "x": 0.614
+      }
+    ],
+    "level": 56,
+    "areaID": 618,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Meggi Peppinrocker",
+        "entityID": 11754
+      }
+    ],
+    "side": "Both",
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Donova Snowden",
+        "entityID": 9298
+      }
+    ],
+    "xp": 580,
+    "foreverStatus": "unchanged",
+    "title": "Trouble in Winterspring!",
+    "minLevel": 52,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Meggi Peppinrocker",
+          "entityID": 11754
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Donova Snowden",
+          "entityID": 9298
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "6604": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Harlo Wigglesworth",
+        "entityID": 11755
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 10301,
+        "npc": true,
+        "y": 0.3043,
+        "x": 0.5214,
+        "name": "Jaron Stoneshaper",
+        "sourceAreaID": 618,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "level": 59,
+    "areaID": 618,
+    "objectives": {},
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 11755,
+        "npc": true,
+        "sourceZone": "Winterspring",
+        "x": 0.61,
+        "name": "Harlo Wigglesworth",
+        "sourceAreaID": 618,
+        "y": 0.384
+      }
+    ],
+    "side": "Alliance",
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Jaron Stoneshaper",
+        "entityID": 10301
+      }
+    ],
+    "xp": 640,
+    "raceMask": 4294967373,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 53,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Enraged Wildkin",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Harlo Wigglesworth",
+          "entityID": 11755
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Jaron Stoneshaper",
+          "entityID": 10301
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "6605": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "zone": "Winterspring",
+    "requirements": {},
+    "seriesRoot": 6605,
+    "objectives": {},
+    "series": [
+      6605,
+      4505
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.524,
+        "mapID": 1448,
+        "name": "Winna Hazzard",
+        "entityID": 9996,
+        "npc": true,
+        "x": 0.342
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.384,
+        "mapID": 1452,
+        "name": "Harlo Wigglesworth",
+        "entityID": 11755,
+        "npc": true,
+        "x": 0.61
+      }
+    ],
+    "level": 54,
+    "areaID": 618,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Harlo Wigglesworth",
+        "entityID": 11755
+      }
+    ],
+    "side": "Horde",
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Winna Hazzard",
+        "entityID": 9996
+      }
+    ],
+    "xp": 540,
+    "foreverStatus": "unchanged",
+    "title": "A Strange One",
+    "minLevel": 49,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Harlo Wigglesworth",
+          "entityID": 11755
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Winna Hazzard",
+          "entityID": 9996
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "6606": {
+    "raceMask": 0,
+    "mapID": 1452,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Harlo Wigglesworth",
+        "entityID": 11755
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 10307,
+        "npc": true,
+        "sourceZone": "Winterspring",
+        "x": 0.618,
+        "name": "Witch Doctor Mau'ari",
+        "sourceAreaID": 618,
+        "y": 0.382
+      }
+    ],
+    "level": 60,
+    "areaID": 618,
+    "side": "Horde",
+    "objectives": {},
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Witch Doctor Mau'ari",
+        "entityID": 10307
+      }
+    ],
+    "xp": 660,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 11755,
+        "npc": true,
+        "sourceZone": "Winterspring",
+        "x": 0.61,
+        "name": "Harlo Wigglesworth",
+        "sourceAreaID": 618,
+        "y": 0.384
+      }
+    ],
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "allowedRaceIDs": {},
+    "minLevel": 55,
+    "prerequisitesRead": true,
+    "title": "A Little Luck",
+    "foreverStatus": "updated",
+    "categoryPath": "kalimdor/winterspring"
+  },
+  "8471": {
+    "prerequisitesRead": true,
+    "mapID": 1452,
+    "startRefs": [
+      {
+        "entityType": "item",
+        "name": "Winterfall Ritual Totem",
+        "entityID": 20742
+      }
+    ],
+    "requirements": {},
+    "requiredItems": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "objectives": {},
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Winterfall Ritual Totem",
+        "entityID": 20742
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.027999999999999997,
+        "mapID": 1448,
+        "name": "Kernda",
+        "entityID": 11558,
+        "npc": true,
+        "x": 0.654
+      }
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1448,
+        "action": "start-item",
+        "entityID": 10916,
+        "npc": true,
+        "sourceAction": "loot",
+        "x": 0.616,
+        "itemID": 20742,
+        "y": 0.062,
+        "sourceAreaID": 361,
+        "sourceZone": "Felwood",
+        "itemName": "Winterfall Ritual Totem",
+        "name": "Winterfall Runner"
+      }
+    ],
+    "level": 56,
+    "areaID": 618,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Winterfall Ritual Totem",
+    "side": "Both",
+    "money": 17000,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Kernda",
+        "entityID": 11558
+      }
+    ],
+    "xp": 5800,
+    "unmodeledObjectiveKinds": true,
+    "foreverStatus": "unchanged",
+    "raceMask": 0,
+    "minLevel": 50,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "objectiveLocationsIncomplete": true,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "item",
+          "name": "Winterfall Ritual Totem",
+          "entityID": 20742
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Winterfall Ritual Totem",
+          "entityID": 20742
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Kernda",
+          "entityID": 11558
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/winterspring"
+  }
+}

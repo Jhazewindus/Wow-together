@@ -301,5 +301,29 @@
     "title": "The Grand Invoker",
     "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
     "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      5124
+    ],
+    "title": "Fiery Plate Gauntlets",
+    "reason": "Blacksmithing-only quest (skill 275)",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; exact title/level/minimum identity and explicit requiredSkill 164/275. Exclude from ordinary leveling only; retain catalogue, actual dependencies and unresolved gaps. Reviewed 2026-10-09 Europe/Amsterdam; research/winterspring-2026-10-09."
+  },
+  {
+    "questIDs": [
+      5126
+    ],
+    "title": "Lorax's Tale",
+    "reason": "Blacksmithing-only quest (skill 285)",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; exact title/level/minimum identity and explicit requiredSkill 164/285. Exclude from ordinary leveling only; retain catalogue, actual dependencies and unresolved gaps. Reviewed 2026-10-09 Europe/Amsterdam; research/winterspring-2026-10-09."
+  },
+  {
+    "questIDs": [
+      8798
+    ],
+    "title": "A Yeti of Your Own",
+    "reason": "Engineering-only quest (skill 250)",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; exact title/level/minimum identity and explicit requiredSkill 202/250. Exclude from ordinary leveling only; retain catalogue, actual dependencies and unresolved gaps. Reviewed 2026-10-09 Europe/Amsterdam; research/winterspring-2026-10-09."
   }
 ]
