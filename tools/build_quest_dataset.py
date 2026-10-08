@@ -13,7 +13,7 @@ import re
 import subprocess
 
 from lupa.lua51 import LuaRuntime
-from import_warcraftdb import ROOT, BASE, apply_corrections, normalize
+from import_warcraftdb import ROOT, BASE, apply_corrections, apply_stage_corrections, normalize
 from import_wowhead import base_facts, detail_facts, json_after, list_rows
 from quest_enrichment import enrich, entity_facts, mapper_entities, quest_relations, warcraftdb_objective_facts, warcraftdb_map_facts
 from legacy_quest_facts import COMMIT, SOURCE, calibrate, indexed, mapped_locations, matches, read_snapshot, requirements, world_locations
@@ -288,6 +288,7 @@ def build(args):
         legacy_stats['published_event_areas'] = apply_event_areas(records, rows, ambiguous, eligible,
             legacy['quests'], legacy['item'], area_maps)
     corrections=apply_corrections(records)
+    stage_corrections=apply_stage_corrections(records)
     # Importing a whole factual item database must not make the game load
     # thousands of unrelated loot tables. Retain every item used by a quest,
     # including starters/provided items and all of their actual source facts.
@@ -319,7 +320,7 @@ def build(args):
         repeatable_quests=sum(q.get('repeatable') is True for q in records.values()),area_ui_maps=area_maps,
         entities={k:len(v) for k,v in runtime_entities.items()},source_entities={k:len(v) for k,v in entities.items()},additional_map_joins=joins,legacy_fallback=legacy_stats,
         forever_npc_geography=poi_source,forever_beta_facts=beta_source,community_coordinate_facts=community_source,
-        warcraftdb_native_maps=native_maps,tester_corrections=corrections)
+        warcraftdb_native_maps=native_maps,tester_corrections=corrections,reviewed_stage_corrections=stage_corrections)
     (output/'QuestCatalogue.json').write_text(json.dumps(summary,indent=2)+'\n')
     coverage=collections.defaultdict(lambda: {'quests':0,'pickups':0,'objectives':0,'turnins':0,'complete_locations':0,'missing_quest_ids':[]})
     for ident,quest in sorted(records.items()):

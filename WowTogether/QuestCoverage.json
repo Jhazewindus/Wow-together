@@ -344,16 +344,11 @@
       "pickups": 70,
       "objectives": 19,
       "turnins": 69,
-      "complete_locations": 53,
+      "complete_locations": 58,
       "missing_quest_ids": [
         96,
         220,
         987,
-        1518,
-        1521,
-        1524,
-        1525,
-        1527,
         1537,
         7668,
         8258,
@@ -13324,5 +13319,13 @@
         "sha256": "d43c1ef557bb7e9985315482949da600a14e35ecd8f5d61ebacd71db6dad9735"
       }
     }
-  }
+  },
+  "reviewed_stage_corrections": [
+    1518,
+    1521,
+    1524,
+    1525,
+    1527,
+    99123
+  ]
 }

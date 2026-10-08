@@ -46,5 +46,134 @@
       6541
     ],
     "source": "Reviewed explicit exclusiveTo facts: Questie/QuestieDB e0a6eaa86f181ac99262e34126bcd2ed1a1712d6, data/Forever/foreverQuestDB.lua (SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87), unchanged identity/level matches 6541 and 6542. Supplied Report to Kadrak feedback, 2026-10-06."
+  },
+  {
+    "questID": 1518,
+    "title": "Call of Earth",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 4,
+      "level": 4,
+      "classMask": 64,
+      "requiredItems": [
+        {
+          "itemID": 6656,
+          "name": "Rough Quartz",
+          "quantity": 1
+        }
+      ]
+    },
+    "source": "Reviewed supplied delivery item: https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87; sourceItemId 6656, no independent objective. Reviewed 2026-10-08; retain hand-in item and current identity gates."
+  },
+  {
+    "questID": 1521,
+    "title": "Call of Earth",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 4,
+      "level": 4,
+      "classMask": 64,
+      "requiredItems": [
+        {
+          "itemID": 6656,
+          "name": "Rough Quartz",
+          "quantity": 1
+        }
+      ]
+    },
+    "source": "Reviewed supplied delivery item: https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87; sourceItemId 6656, no independent objective. Reviewed 2026-10-08; retain hand-in item and current identity gates."
+  },
+  {
+    "questID": 1524,
+    "title": "Call of Fire",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 10,
+      "level": 11,
+      "classMask": 64,
+      "requiredItems": [
+        {
+          "itemID": 6653,
+          "name": "Torch of the Dormant Flame",
+          "quantity": 1
+        }
+      ]
+    },
+    "source": "Reviewed supplied delivery item: https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87; sourceItemId 6653, no independent objective. Reviewed 2026-10-08; retain hand-in item and current identity gates."
+  },
+  {
+    "questID": 1527,
+    "title": "Call of Fire",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 10,
+      "level": 13,
+      "classMask": 64,
+      "requiredItems": [
+        {
+          "itemID": 6654,
+          "name": "Torch of the Eternal Flame",
+          "quantity": 1
+        }
+      ]
+    },
+    "source": "Reviewed supplied delivery item: https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87; sourceItemId 6654, no independent objective. Reviewed 2026-10-08; retain hand-in item and current identity gates."
+  },
+  {
+    "questID": 1525,
+    "title": "Call of Fire",
+    "stageCorrection": {
+      "kind": "item-source",
+      "minLevel": 10,
+      "level": 12,
+      "classMask": 64,
+      "requiredItems": [
+        {
+          "itemID": 5026,
+          "name": "Fire Tar",
+          "quantity": 1
+        },
+        {
+          "itemID": 6652,
+          "name": "Reagent Pouch",
+          "quantity": 1
+        }
+      ],
+      "point": {
+        "entityType": "npc",
+        "entityID": 3199,
+        "name": "Burning Blade Cultist",
+        "npc": true,
+        "mapID": 1411,
+        "sourceAreaID": 14,
+        "x": 0.518,
+        "y": 0.258,
+        "action": "loot",
+        "itemID": 6652,
+        "itemName": "Reagent Pouch",
+        "quantity": 1,
+        "objectiveKey": "item:6652",
+        "locationSource": "Wowhead Forever NPC 3199; captured 2026-10-08"
+      }
+    },
+    "source": "Reviewed Reagent Pouch drop: https://www.wowhead.com/forever/quest=1525; NPC position: https://www.wowhead.com/forever/npc=3199 (captured 2026-10-08; SHA-256 ff0c9fd9103396db49e6f4da23460c27f8318b8bddec50c724a2971d8ce83906). Drop relation independently matches pinned Forever item 6652. Actual published spawn, not a surveyed cave approach."
+  },
+  {
+    "questID": 99123,
+    "title": "Lost in the Shadows",
+    "stageCorrection": {
+      "kind": "unmapped-escort",
+      "minLevel": 4,
+      "level": 8,
+      "classMask": 0,
+      "requiredItems": [],
+      "target": {
+        "entityType": "npc",
+        "entityID": 275811,
+        "name": "Pal'juh",
+        "action": "escort"
+      }
+    },
+    "source": "Wowhead Forever quest 99123, https://www.wowhead.com/forever/quest=99123 (captured 2026-10-08; SHA-256 809b853bca6444f08455e80d754c60ebf39680b3c961a2e29acdb8289dacb6c7); escort NPC confirmed by official beta notes https://us.forums.blizzard.com/en/wow/t/2360696/1 (post 30185131, updated 2026-10-01). Endpoint/path not published; retain unknown location and native completion."
   }
 ]

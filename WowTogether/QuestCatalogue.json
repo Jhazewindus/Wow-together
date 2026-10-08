@@ -161,7 +161,7 @@
   "with_prerequisites": 2466,
   "repeatable_quests": 627,
   "unverified_prerequisites": 18,
-  "incomplete_objective_locations": 1353,
+  "incomplete_objective_locations": 1348,
   "area_ui_maps": {
     "40": 1436,
     "17": 1413,
@@ -7585,5 +7585,13 @@
     "invalid_quest_ids": [],
     "incomplete_objectives_before": 1353,
     "incomplete_objectives_after": 1353
-  }
+  },
+  "reviewed_stage_corrections": [
+    1518,
+    1521,
+    1524,
+    1525,
+    1527,
+    99123
+  ]
 }

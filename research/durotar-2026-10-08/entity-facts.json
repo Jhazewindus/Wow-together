@@ -1,0 +1,201 @@
+[
+  {
+    "kind": "item",
+    "entityID": 247884,
+    "url": "https://www.wowhead.com/forever/item=247884",
+    "status": 200,
+    "sha256": "7743c501f9e0be79b2e10ad702660cfcc1da8b5a4a46b67c56c325926288ab79",
+    "facts": {
+      "name": "Luminous Residue",
+      "locations": [],
+      "source": "Wowhead Forever"
+    }
+  },
+  {
+    "kind": "item",
+    "entityID": 3470,
+    "url": "https://www.wowhead.com/forever/item=3470",
+    "status": 200,
+    "sha256": "8fd5d790d62d63924a7a2026f9b4f2b804b13ec06e1fcd2b94398a12dd28ee9c",
+    "facts": {
+      "name": "Rough Grinding Stone",
+      "locations": [],
+      "source": "Wowhead Forever"
+    }
+  },
+  {
+    "kind": "npc",
+    "entityID": 275811,
+    "url": "https://www.wowhead.com/forever/npc=275811",
+    "status": 200,
+    "sha256": "0753c599fb567e17af194505604db3770cd7397b559a1c326095264fa78703e9",
+    "facts": {
+      "name": "Pal'juh <Shadow Hunter Trainee>",
+      "locations": [
+        {
+          "mapID": 1411,
+          "x": 0.486,
+          "y": 0.7959999999999999,
+          "sourceAreaID": 14,
+          "sourceZone": "Durotar"
+        },
+        {
+          "mapID": 1411,
+          "x": 0.466,
+          "y": 0.802,
+          "sourceAreaID": 14,
+          "sourceZone": "Durotar"
+        },
+        {
+          "mapID": 1411,
+          "x": 0.516,
+          "y": 0.7929999999999999,
+          "sourceAreaID": 14,
+          "sourceZone": "Durotar"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 7,
+      "maxlevel": 7,
+      "classification": 0
+    }
+  },
+  {
+    "kind": "npc",
+    "entityID": 3304,
+    "url": "https://www.wowhead.com/forever/npc=3304",
+    "status": 200,
+    "sha256": "68dde8a7dddfca6f957fd3c1cd27e10cfa257e74c28c265d0fb3e93777892490",
+    "facts": {
+      "name": "Master Vornal",
+      "locations": [
+        {
+          "mapID": 1411,
+          "x": 0.5579999999999999,
+          "y": 0.7440000000000001,
+          "sourceAreaID": 14,
+          "sourceZone": "Durotar"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 11,
+      "maxlevel": 11,
+      "classification": 0
+    }
+  },
+  {
+    "kind": "npc",
+    "entityID": 3144,
+    "url": "https://www.wowhead.com/forever/npc=3144",
+    "status": 200,
+    "sha256": "dc357ba36ef7705f47b0fbb3806a11c4e16296ecfae857cacffc94ef977b6a37",
+    "facts": {
+      "name": "Eitrigg",
+      "locations": [
+        {
+          "mapID": 1454,
+          "x": 0.34600000000000003,
+          "y": 0.386,
+          "sourceAreaID": 1637,
+          "sourceZone": "Orgrimmar"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 20,
+      "maxlevel": 20,
+      "classification": 0
+    }
+  },
+  {
+    "kind": "npc",
+    "entityID": 3143,
+    "url": "https://www.wowhead.com/forever/npc=3143",
+    "status": 200,
+    "sha256": "109e88a083fe3ad80fdaab1969fb5bd0ac19b83129bef018ac075b165220c7dd",
+    "facts": {
+      "name": "Gornek",
+      "locations": [
+        {
+          "mapID": 1411,
+          "x": 0.42,
+          "y": 0.684,
+          "sourceAreaID": 14,
+          "sourceZone": "Durotar"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 5,
+      "maxlevel": 5,
+      "classification": 0
+    }
+  },
+  {
+    "kind": "npc",
+    "entityID": 266881,
+    "url": "https://www.wowhead.com/forever/npc=266881",
+    "status": 200,
+    "sha256": "9751d3055bea9e7c5f2ad89e513de8f8bcefb05002d1ba6ec234cc0dacbc49a4",
+    "facts": {
+      "name": "Pa'zula <Journeyman Enchanter>",
+      "locations": [
+        {
+          "mapID": 1411,
+          "x": 0.564,
+          "y": 0.736,
+          "sourceAreaID": 14,
+          "sourceZone": "Durotar"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 25,
+      "maxlevel": 25,
+      "classification": 0
+    }
+  },
+  {
+    "kind": "npc",
+    "entityID": 10266,
+    "url": "https://www.wowhead.com/forever/npc=10266",
+    "status": 200,
+    "sha256": "2bc7f99485baa242a95b3e12c7be6ea480e6508362a308cf06f27ae8ea7111a0",
+    "facts": {
+      "name": "Ug'thok <Journeyman Blacksmith>",
+      "locations": [
+        {
+          "mapID": 1454,
+          "x": 0.804,
+          "y": 0.23399999999999999,
+          "sourceAreaID": 1637,
+          "sourceZone": "Orgrimmar"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 25,
+      "maxlevel": 25,
+      "classification": 0
+    }
+  },
+  {
+    "kind": "npc",
+    "entityID": 3199,
+    "url": "https://www.wowhead.com/forever/npc=3199",
+    "status": 200,
+    "sha256": "ff0c9fd9103396db49e6f4da23460c27f8318b8bddec50c724a2971d8ce83906",
+    "facts": {
+      "name": "Burning Blade Cultist",
+      "locations": [
+        {
+          "mapID": 1411,
+          "x": 0.518,
+          "y": 0.258,
+          "sourceAreaID": 14,
+          "sourceZone": "Durotar"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 10,
+      "maxlevel": 11,
+      "classification": 0
+    }
+  }
+]

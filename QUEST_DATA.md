@@ -30,6 +30,14 @@ establish the unresolved pickup conditions, a local Copper Bar objective point,
 or the Treaty pickup location. This review makes no shipped-data or routing
 change and does not certify live beta behavior.
 
+The [8 October Durotar review](research/durotar-2026-10-08/README.md) covers
+103 quest IDs across both chapters. Six supported stage corrections close five
+objective-location gaps, retaining all 354 audited actions. Four objective gaps
+and 16 unverified pickup requirements remain. The full-route comparison exposes
+reward-timing and uncertain-travel tradeoffs in the unchanged shared compiler;
+the changes remain a review draft pending main-developer coordination. Evidence,
+exact comparison results and the native-beta player checklist accompany the review.
+
 ## Captured facts and source precedence
 
 The 0.8.59 correction adds **Treacherous Cold (99162) → Rime's Wrath (99161)**

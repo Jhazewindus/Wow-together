@@ -1,6 +1,6 @@
 {
   "source_data_complete": false,
-  "remaining_quest_records": 453,
+  "remaining_quest_records": 448,
   "limitations": [
     "This queue identifies missing facts, not a license to invent them",
     "Source capture must respect access policy and stop after denials",
@@ -1296,22 +1296,6 @@
       ]
     },
     {
-      "questID": 1518,
-      "title": "Call of Earth",
-      "guides": [
-        "Horde / Durotar"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1518",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=6656",
-        "https://www.wowhead.com/forever/npc=5887",
-        "https://www.wowhead.com/forever/npc=5891"
-      ]
-    },
-    {
       "questID": 1519,
       "title": "Call of Earth",
       "guides": [
@@ -1325,69 +1309,6 @@
       "quest_url": "https://www.wowhead.com/forever/quest=1519",
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=5888"
-      ]
-    },
-    {
-      "questID": 1521,
-      "title": "Call of Earth",
-      "guides": [
-        "Horde / Durotar"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1521",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=6656",
-        "https://www.wowhead.com/forever/npc=5888",
-        "https://www.wowhead.com/forever/npc=5891"
-      ]
-    },
-    {
-      "questID": 1524,
-      "title": "Call of Fire",
-      "guides": [
-        "Horde / Durotar"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1524",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=6653",
-        "https://www.wowhead.com/forever/npc=5900",
-        "https://www.wowhead.com/forever/npc=5907"
-      ]
-    },
-    {
-      "questID": 1525,
-      "title": "Call of Fire",
-      "guides": [
-        "Horde / Durotar"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1525",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=6652",
-        "https://www.wowhead.com/forever/npc=5900"
-      ]
-    },
-    {
-      "questID": 1527,
-      "title": "Call of Fire",
-      "guides": [
-        "Horde / Durotar"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1527",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=6654",
-        "https://www.wowhead.com/forever/npc=5907",
-        "https://www.wowhead.com/forever/object=61934"
       ]
     },
     {

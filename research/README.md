@@ -5,6 +5,14 @@ sessions and beta builds. These are observations from players, not a complete
 quest database. Only supported corrections enter the shipped catalogue. Raw
 exports are not included in the addon ZIP.
 
+## 2026-10-08 — Durotar stage facts and compiler handoff
+
+[The Durotar review](durotar-2026-10-08/README.md) retains the full 103-quest
+inventory, source evidence, six supported stage corrections, before/after audits,
+full-route comparisons and a player checklist. Five objective gaps close; four
+remain. The optimization guard reports shared-compiler tradeoffs, so this is a
+data/research draft requiring main-developer review before merge.
+
 ## 2026-10-08 — Dun Morogh source coverage review
 
 [The structured review](2026-10-08-dun-morogh-review.json) records selected public

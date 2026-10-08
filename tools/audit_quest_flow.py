@@ -50,7 +50,7 @@ def describe_actions(stops, ns, rewards=None):
 
 
 def capture(baseline=None, flow_module=None, label=None, optimizer_module=None,
-            travel_cost_module=None, network_module=None, fixed_guides_module=None, geometry=None):
+            travel_cost_module=None, network_module=None, fixed_guides_module=None, geometry=None, zone=None):
     c = Client(quests=(), use_catalogue=True)
     c.guide_environment(level=1)
     geometry_source = None
@@ -97,6 +97,8 @@ def capture(baseline=None, flow_module=None, label=None, optimizer_module=None,
             for level in (1, 4, 8, 12, 18, 23, 33, 43, 53, 60):
                 c.ns.profile.level = level
                 for guide in c.ns.LevelingGuideChoices().values():
+                    if zone is not None and guide.zone != zone:
+                        continue
                     key = (faction, guide.key)
                     if key in seen:
                         continue
@@ -275,12 +277,19 @@ def capture(baseline=None, flow_module=None, label=None, optimizer_module=None,
                               'additional_terrain_changes':sum(change['accepted_terrain_changes'] for change in comparisons),
                               'additional_connection_changes':sum(change['accepted_connection_changes'] for change in comparisons),
                               'changed_guides':len(comparisons),'changes':comparisons}
+    if not result:
+        raise ValueError('No guides in the selected scope: ' + str(zone))
+    if zone is not None:
+        report['zone'] = zone
+    if baseline:
+        assert baseline.get('zone') == zone, 'Zone scope changed'
     return report
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--zone', help='Capture only this exact zone, retaining all its chapters and factions.')
     parser.add_argument('--baseline', type=Path, help='Compare every action/state with a prior capture of the identical source data.')
     parser.add_argument('--comparison-output', type=Path, help='Also write the compact, fully justified old/new comparison report.')
     parser.add_argument('--flow-module', type=Path, help='Replay a prior project QuestFlow.lua with the current corrected quest scope.')
@@ -294,7 +303,7 @@ def main():
     if args.baseline and any((args.flow_module,args.optimizer_module,args.travel_cost_module,args.network_module,args.fixed_guides_module)):
         parser.error('Use prior modules for a baseline capture, not the new comparison')
     result = capture(json.loads(args.baseline.read_text()) if args.baseline else None, args.flow_module, args.label,
-        args.optimizer_module,args.travel_cost_module,args.network_module,args.fixed_guides_module,args.forever_geometry)
+        args.optimizer_module,args.travel_cost_module,args.network_module,args.fixed_guides_module,args.forever_geometry,args.zone)
     args.output.write_text(json.dumps(result, indent=2) + '\n')
     print(f"Saved {len(result['guides'])} complete guides to {args.output}", flush=True)
     if args.comparison_output:

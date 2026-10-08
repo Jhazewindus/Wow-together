@@ -1,7 +1,7 @@
 {
   "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
   "quest_records": 5230,
-  "static_points_checked": 11822,
+  "static_points_checked": 11823,
   "fixed_zone_guides_checked": 152,
   "catalogue_reason_stages_checked": 16849,
   "catalogue_reason_codes": {
@@ -1396,7 +1396,6 @@
     1522,
     1523,
     1524,
-    1525,
     1527,
     1528,
     1529,
@@ -9340,15 +9339,13 @@
       "key": "level-zone:kalimdor/durotar:levels:1-10",
       "quests": 77,
       "steps": 246,
-      "unknown_location_steps": 8,
+      "unknown_location_steps": 6,
       "missing_location_quest_ids_by_stage": {
         "a": [
           785
         ],
         "q": [
           785,
-          1518,
-          1521,
           96873,
           96874,
           99123
@@ -9387,16 +9384,16 @@
         "quest-reward": 68,
         "return-hub": 1
       },
-      "reason_review_steps": 116,
+      "reason_review_steps": 114,
       "cross_zone_reason_steps": 13,
-      "flow_alternatives_evaluated": 739,
+      "flow_alternatives_evaluated": 834,
       "flow_loop_changes": 2,
       "flow_state_valid": true,
       "quest_log_peak": 20,
       "quest_reward_only_xp_shortfall": 18605,
-      "uncertain_travel_legs": 59,
-      "estimated_distance_before": 264651.87,
-      "estimated_distance_after": 264651.87
+      "uncertain_travel_legs": 56,
+      "estimated_distance_before": 263498.05,
+      "estimated_distance_after": 263498.05
     },
     {
       "faction": "Horde",
@@ -9404,14 +9401,10 @@
       "key": "level-zone:kalimdor/durotar:levels:11-20",
       "quests": 27,
       "steps": 85,
-      "unknown_location_steps": 3,
+      "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
-        "q": [
-          1524,
-          1525,
-          1527
-        ],
+        "q": [],
         "t": []
       },
       "unverified_pickup_requirement_quest_ids": [
@@ -9429,16 +9422,16 @@
         "quest-reward": 20,
         "return-hub": 1
       },
-      "reason_review_steps": 40,
-      "cross_zone_reason_steps": 7,
-      "flow_alternatives_evaluated": 21,
+      "reason_review_steps": 37,
+      "cross_zone_reason_steps": 8,
+      "flow_alternatives_evaluated": 27,
       "flow_loop_changes": 0,
       "flow_state_valid": true,
       "quest_log_peak": 7,
       "quest_reward_only_xp_shortfall": 148745,
-      "uncertain_travel_legs": 19,
-      "estimated_distance_before": 135513.05,
-      "estimated_distance_after": 135513.05
+      "uncertain_travel_legs": 15,
+      "estimated_distance_before": 132826.05,
+      "estimated_distance_after": 132826.05
     },
     {
       "faction": "Horde",

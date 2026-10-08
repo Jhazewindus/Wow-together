@@ -1,0 +1,255 @@
+{
+  "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
+  "quest_records": 54,
+  "static_points_checked": 160,
+  "fixed_zone_guides_checked": 4,
+  "catalogue_reason_stages_checked": 179,
+  "catalogue_reason_codes": {
+    "level-work": 54,
+    "quest-objective": 71,
+    "quest-reward": 54
+  },
+  "reason_review_quest_ids": [
+    784,
+    786,
+    788,
+    789,
+    790,
+    791,
+    792,
+    794,
+    804,
+    805,
+    806,
+    808,
+    812,
+    815,
+    816,
+    817,
+    818,
+    823,
+    825,
+    826,
+    827,
+    828,
+    829,
+    830,
+    831,
+    832,
+    834,
+    835,
+    837,
+    840,
+    924,
+    2161,
+    4402,
+    4641,
+    5441,
+    5843,
+    6394,
+    96821,
+    96822,
+    96825,
+    96873,
+    96874,
+    96875,
+    96876,
+    97223,
+    97225,
+    97279,
+    97281,
+    97282,
+    99048,
+    99049,
+    99051,
+    99052,
+    99123
+  ],
+  "source_data_gap_free_guides": 1,
+  "guides": [
+    {
+      "faction": "Alliance",
+      "zone": "Durotar",
+      "key": "level-zone:kalimdor/durotar:levels:1-10",
+      "quests": 4,
+      "steps": 13,
+      "unknown_location_steps": 3,
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          785
+        ],
+        "q": [
+          785
+        ],
+        "t": [
+          785
+        ]
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 13,
+      "destination_reason_codes": {
+        "class-progression": 2,
+        "outside-level-range": 5,
+        "prerequisite": 3,
+        "quest-reward": 3
+      },
+      "reason_review_steps": 6,
+      "cross_zone_reason_steps": 2,
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 2,
+      "quest_reward_only_xp_shortfall": 8500,
+      "uncertain_travel_legs": 5,
+      "estimated_distance_before": 58552.97,
+      "estimated_distance_after": 58552.97
+    },
+    {
+      "faction": "Alliance",
+      "zone": "Durotar",
+      "key": "level-zone:kalimdor/durotar:levels:11-20",
+      "quests": 3,
+      "steps": 10,
+      "unknown_location_steps": 0,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": true,
+      "reason_steps_checked": 10,
+      "destination_reason_codes": {
+        "class-progression": 2,
+        "outside-level-range": 3,
+        "prerequisite": 3,
+        "quest-reward": 2
+      },
+      "reason_review_steps": 3,
+      "cross_zone_reason_steps": 1,
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 14740,
+      "uncertain_travel_legs": 0,
+      "estimated_distance_before": 24741.01,
+      "estimated_distance_after": 24741.01
+    },
+    {
+      "faction": "Horde",
+      "zone": "Durotar",
+      "key": "level-zone:kalimdor/durotar:levels:1-10",
+      "quests": 77,
+      "steps": 246,
+      "unknown_location_steps": 8,
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          785
+        ],
+        "q": [
+          785,
+          1518,
+          1521,
+          96873,
+          96874,
+          99123
+        ],
+        "t": [
+          785
+        ]
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        787,
+        788,
+        1470,
+        1485,
+        1505,
+        1516,
+        1519,
+        1859,
+        1884,
+        2983,
+        5654,
+        5660,
+        6067,
+        6069
+      ],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 246,
+      "destination_reason_codes": {
+        "class-progression": 74,
+        "early-reward": 1,
+        "level-work": 8,
+        "outside-level-range": 63,
+        "prerequisite": 23,
+        "quest-objective": 8,
+        "quest-reward": 68,
+        "return-hub": 1
+      },
+      "reason_review_steps": 116,
+      "cross_zone_reason_steps": 13,
+      "flow_alternatives_evaluated": 739,
+      "flow_loop_changes": 2,
+      "flow_state_valid": true,
+      "quest_log_peak": 20,
+      "quest_reward_only_xp_shortfall": 18605,
+      "uncertain_travel_legs": 59,
+      "estimated_distance_before": 264651.87,
+      "estimated_distance_after": 264651.87
+    },
+    {
+      "faction": "Horde",
+      "zone": "Durotar",
+      "key": "level-zone:kalimdor/durotar:levels:11-20",
+      "quests": 27,
+      "steps": 85,
+      "unknown_location_steps": 3,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [
+          1524,
+          1525,
+          1527
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        2380,
+        2985
+      ],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 85,
+      "destination_reason_codes": {
+        "class-progression": 15,
+        "outside-level-range": 31,
+        "prerequisite": 18,
+        "quest-reward": 20,
+        "return-hub": 1
+      },
+      "reason_review_steps": 40,
+      "cross_zone_reason_steps": 7,
+      "flow_alternatives_evaluated": 21,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 7,
+      "quest_reward_only_xp_shortfall": 148745,
+      "uncertain_travel_legs": 19,
+      "estimated_distance_before": 135513.05,
+      "estimated_distance_after": 135513.05
+    }
+  ],
+  "scope": {
+    "zone": "Durotar",
+    "catalogue_records": "Exact quest zone; guide dependencies still compile normally"
+  }
+}
