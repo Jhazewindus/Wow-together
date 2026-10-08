@@ -16,6 +16,31 @@ permission again; create a pull request only if specifically requested. Preserve
 history: do not force-push or replace existing tags. Verify remote commit/tag IDs
 before reporting success. GitHub source publication complements Discord builds.
 
+## Include the quest-guide agent's work before releases
+
+Before every addon release, check `origin/guides/coverage` for new quest-guide
+commits as well as checking `origin/main`. The checkout may fetch only `main`;
+explicitly fetch the guide branch with
+`git fetch origin main refs/heads/guides/coverage:refs/remotes/origin/guides/coverage`
+or retain an equivalent fetch mapping. Check at the start of an update and again
+before the final build/publication.
+
+Review the guide commits not yet in `main`, including their source evidence,
+data changes, generated outputs and tests. Incorporate completed, relevant
+changes into the release on `main`; do not silently omit ready guide updates.
+Preserve both agents' work when resolving ordinary merge conflicts. Ask the
+user before resolving contradictory product choices or changing established
+guide fundamentals. Do not blindly merge experimental/unrelated branches or
+unfinished work. Explain any deferred guide commits and the concrete reason.
+
+Test the combined code and quest data after integration, then finalize the
+version, changelog, test checklist and ZIP. If more guide commits arrive before
+publication, review them and repeat affected integration/checks before building
+the final archive. Record integrated guide work in the release notes. Push the
+tested combined `main` and annotated tag to GitHub, verify their remote IDs,
+then publish that same release's ZIP and matching docs to Discord. A workflow
+instruction change alone does not require an addon version or Discord release.
+
 For each addon release:
 
 1. Keep Forever interface `16001` and Lua 5.1. Update the version in the TOC and
