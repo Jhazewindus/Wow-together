@@ -189,3 +189,5 @@ if no bypass is known. No terrain mesh or new road connections are fabricated.
 Durotar was rechecked against inherited main 0.8.60 in [the follow-up review](durotar-2026-10-08/refresh-0.8.60/README.md). Its existing corrections and gaps remain; new coordination findings cover ordinary Vile Familiars class eligibility and the omitted Need for a Cure cross-zone acquisition handoff.
 
 The [Mulgore 0.8.60 follow-up](mulgore-2026-10-08/refresh-0.8.60/README.md) retains the earlier corrections and gaps, rechecks Baine and the Battleboars, and records current/pinned race-mask disagreements for Our Ancient Enemy, Drive Them Out and The High Chieftain.
+
+The [Dun Morogh follow-up](dun-morogh-2026-10-08/refresh-0.8.60/README.md) retains the boar correction and tester gate, rechecks distinct Rime objectives and Winter Wolf relations, and records the later Search for Incendicite pickup/handoff limitation.

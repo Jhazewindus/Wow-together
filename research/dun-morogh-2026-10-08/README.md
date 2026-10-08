@@ -1,5 +1,7 @@
 # Dun Morogh full-zone review — 8 October 2026
 
+See the [follow-up review](refresh-0.8.60/README.md) for refreshed priority sources, marker/gate checks and the later Wetlands handoff decision.
+
 This expands the earlier [selected-source review](../2026-10-08-dun-morogh-review.json).
 The queued 0.8.59 baseline was refreshed after merging main `eec9b99` (0.8.60)
 into `guides/coverage`, producing baseline merge `713a884`. Earlier guide commits

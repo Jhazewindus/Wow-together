@@ -1,0 +1,920 @@
+{
+  "manifest_commit": "e0a6eaa86f181ac99262e34126bcd2ed1a1712d6",
+  "files_sha256": {
+    "src/corrections/enum/zones.lua": "dd738ec0c1a9785946c5574a5f7cb8d2a64745b099dffccebd00ee8864fbb88a",
+    "src/corrections/enum/quests.lua": "eb15f94f58be894772786706bb9c3db56756df1985d7ab93fc180d7567103ede",
+    "src/corrections/enum/expansions.lua": "362e9d9e62a491d4f1b737ad6b840b278b5c313b4f61cb204921e02d2bfeedca",
+    "support/Forever/Zones/areaIdToUiMapId.lua": "cf9ae6f896e3e2fb1e43352b11596641312d9e61365ca7f281e5af1092185d07",
+    "src/corrections/Forever/generated/foreverBaseQuest.lua": "c92ebcb106f72913e5e666db48539e60d9e77a77c3e08938bf2df682d83dd714",
+    "src/corrections/Forever/traces/foreverQuestTraces.lua": "5b91bce88419b38e320dbaf9207c26a8a6f1b801fcce354dc1b9e7869dd99570",
+    "src/corrections/Forever/foreverQuestFixes.lua": "ba3b37419f27a5a19ec0e38fb944e24ff54ea841de1b2497f261d447f3887a70",
+    "src/corrections/Forever/generated/foreverBaseNpc.lua": "3015c2660d72810e16f28b11d58297bfae37b0843ce35ee6cdd8b7757d47e771",
+    "src/corrections/Forever/traces/foreverNpcTraces.lua": "87acac144d1f78b1173c9710bbaf9d1fc850753d48704143018aa20ed3b98811",
+    "src/corrections/Forever/foreverNPCFixes.lua": "3eda9efb9f719d6754ffd7d6eabae8abe7ff2b4b241f0553c8e19c93f002f828",
+    "src/corrections/Forever/generated/foreverBaseObject.lua": "cc3d0bacbeea23e1efd0b144367eb413f9e8276c65ca0a19d0d0ae328fb3736b",
+    "src/corrections/Forever/traces/foreverObjectTraces.lua": "37b6228caab31daee9a450d4f4833c032ca3232a05649fcfda83b49c8dd33fae",
+    "src/corrections/Forever/foreverObjectFixes.lua": "fac8a095b48a991b847a61aa94b8ff8275d575d5051d01c0370a5ed509a81633",
+    "src/corrections/Forever/generated/foreverBaseItem.lua": "870bb7ab64bec27210c3f9e40fd5bb957c0441aba22d3944a87ddd5c66d0add4",
+    "src/corrections/Forever/traces/foreverItemTraces.lua": "a1c22054bc41bb6db038c9b841ceca8042137b1d2bb2b2c1eabb05c1ddf4acff",
+    "src/corrections/Forever/foreverItemFixes.lua": "f9ea8bf52cd68fc959af8810f846c8023ff4800b24c480c1a776e82db66f27dc",
+    "data/Forever/foreverQuestDB.lua": "d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87",
+    "src/corrections/Forever/legacy/classicQuestFixes.lua": "76cd6a05f035826cabc6180a0ff2a1a37c5e7946c891eb0a06412fab5a4caf2e",
+    "data/Forever/foreverNpcDB.lua": "a8c4169690726323dac3c6441f74f7a4d9cafcc08ec42231d72ff28c9471f0ee",
+    "src/corrections/Forever/legacy/classicNPCFixes.lua": "1de19d17db00581a35d397c7440124aa3f14150d5456c771d2deb3cfba79f031",
+    "data/Forever/foreverObjectDB.lua": "af4536c12c5b1da5fd32cb33be5c9c01d2436f97a5b9f60e2cdd238273b2cc09",
+    "src/corrections/Forever/legacy/classicObjectFixes.lua": "181bea5a5db73f8af1bebe1d8aa835d28e2d4c11adf9ff786c4f54edb3cdc76a",
+    "data/Forever/foreverItemDB.lua": "987d037b6df94d5b0b1dc326a1670581e3abb952736a4ae055fd9f161328b71c",
+    "src/corrections/Forever/legacy/classicItemFixes.lua": "688286a44e5d95045ff943d55ba3a9fccffce7ca4a982fa55a67499b39509b87"
+  },
+  "quests": {
+    "99160": {
+      "_identityName": "Rime's Wrath",
+      "name": "Rime's Wrath",
+      "startedBy": {
+        "1": {
+          "1": 1253
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 1253
+        }
+      },
+      "requiredLevel": 5,
+      "questLevel": 8,
+      "requiredRaces": 4294967373,
+      "objectives": {
+        "1": {
+          "1": {
+            "1": 276003
+          }
+        }
+      },
+      "zoneOrSort": 1
+    },
+    "99161": {
+      "_identityName": "Rime's Wrath",
+      "name": "Rime's Wrath",
+      "startedBy": {
+        "1": {
+          "1": 1253
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 1253
+        }
+      },
+      "requiredLevel": 5,
+      "questLevel": 8,
+      "requiredRaces": 4294967373,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 286325
+          }
+        }
+      },
+      "zoneOrSort": 1
+    },
+    "99162": {
+      "_identityName": "Treacherous Cold",
+      "name": "Treacherous Cold",
+      "startedBy": {
+        "1": {
+          "1": 1253
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 1253
+        }
+      },
+      "requiredLevel": 5,
+      "questLevel": 8,
+      "requiredRaces": 4294967373,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 286358
+          },
+          "2": {
+            "1": 286360
+          },
+          "3": {
+            "1": 286359
+          }
+        }
+      },
+      "zoneOrSort": 1
+    },
+    "317": {
+      "name": "Stocking Jetsteam",
+      "startedBy": {
+        "1": {
+          "1": 1378
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 1378
+        }
+      },
+      "requiredLevel": 2,
+      "questLevel": 6,
+      "requiredRaces": 4294967373,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 769
+          },
+          "2": {
+            "1": 6952
+          }
+        }
+      },
+      "zoneOrSort": 1,
+      "questFlags": 8
+    },
+    "95217": {
+      "_identityName": "The Quarry's Smith",
+      "name": "The Quarry's Smith",
+      "startedBy": {
+        "1": {
+          "1": 1698
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 1698
+        }
+      },
+      "requiredLevel": 7,
+      "questLevel": 10,
+      "requiredRaces": 4294967373,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 2840
+          },
+          "2": {
+            "1": 267416
+          }
+        }
+      },
+      "zoneOrSort": 1
+    },
+    "98423": {
+      "_identityName": "The Treaty of Understanding",
+      "name": "The Treaty of Understanding",
+      "startedBy": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": 281030
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 2784
+        }
+      },
+      "requiredLevel": 9,
+      "questLevel": 16,
+      "requiredRaces": 4294967373,
+      "sourceItemId": 281030,
+      "zoneOrSort": 1
+    },
+    "282": {
+      "name": "Senir's Observations",
+      "startedBy": {
+        "1": {
+          "1": 786
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 1965
+        }
+      },
+      "requiredLevel": 1,
+      "questLevel": 5,
+      "requiredRaces": 4294967373,
+      "sourceItemId": 2619,
+      "preQuestSingle": {
+        "1": 218
+      },
+      "zoneOrSort": 132,
+      "_identityName": "Senir's Observations",
+      "exclusiveTo": {
+        "1": 287
+      }
+    },
+    "218": {
+      "name": "The Stolen Journal",
+      "startedBy": {
+        "1": {
+          "1": 786
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 786
+        }
+      },
+      "requiredLevel": 1,
+      "questLevel": 5,
+      "requiredRaces": 4294967373,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 2004
+          }
+        }
+      },
+      "preQuestSingle": {
+        "1": 182
+      },
+      "zoneOrSort": 132,
+      "questFlags": 8
+    },
+    "420": {
+      "name": "Senir's Observations",
+      "startedBy": {
+        "1": {
+          "1": 1965
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 1252
+        }
+      },
+      "requiredLevel": 1,
+      "questLevel": 5,
+      "requiredRaces": 4294967373,
+      "sourceItemId": 2619,
+      "preQuestSingle": {
+        "1": 282
+      },
+      "zoneOrSort": 132
+    },
+    "179": {
+      "name": "Dwarven Outfitters",
+      "startedBy": {
+        "1": {
+          "1": 658
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 658
+        }
+      },
+      "requiredLevel": 1,
+      "questLevel": 1,
+      "requiredRaces": 4294967373,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 750
+          }
+        }
+      },
+      "zoneOrSort": 132,
+      "questFlags": 8
+    },
+    "170": {
+      "name": "A New Threat",
+      "startedBy": {
+        "1": {
+          "1": 713
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 713
+        }
+      },
+      "requiredLevel": 1,
+      "questLevel": 2,
+      "requiredRaces": 4294967373,
+      "objectives": {
+        "1": {
+          "1": {
+            "1": 707
+          },
+          "2": {
+            "1": 724
+          }
+        }
+      },
+      "preQuestSingle": {
+        "1": 179
+      },
+      "zoneOrSort": 132,
+      "questFlags": 8
+    },
+    "233": {
+      "name": "Coldridge Valley Mail Delivery",
+      "startedBy": {
+        "1": {
+          "1": 658
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 714
+        }
+      },
+      "requiredLevel": 1,
+      "questLevel": 3,
+      "requiredRaces": 4294967373,
+      "sourceItemId": 2187,
+      "preQuestSingle": {
+        "1": 179
+      },
+      "zoneOrSort": 132
+    },
+    "234": {
+      "name": "Coldridge Valley Mail Delivery",
+      "startedBy": {
+        "1": {
+          "1": 714
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 786
+        }
+      },
+      "requiredLevel": 1,
+      "questLevel": 4,
+      "requiredRaces": 4294967373,
+      "sourceItemId": 2188,
+      "preQuestSingle": {
+        "1": 233
+      },
+      "zoneOrSort": 132
+    },
+    "3361": {
+      "name": "A Refugee's Quandary",
+      "startedBy": {
+        "1": {
+          "1": 8416
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 8416
+        }
+      },
+      "requiredLevel": 3,
+      "questLevel": 3,
+      "requiredRaces": 4294967373,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 10438
+          },
+          "2": {
+            "1": 16313
+          },
+          "3": {
+            "1": 16314
+          }
+        }
+      },
+      "zoneOrSort": 132,
+      "questFlags": 8
+    },
+    "96390": {
+      "_identityName": "Nip 'Em in the Bud",
+      "name": "Nip 'Em in the Bud",
+      "startedBy": {
+        "1": {
+          "1": 264936
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 264936
+        }
+      },
+      "requiredLevel": 9,
+      "questLevel": 13,
+      "requiredRaces": 4294967373,
+      "objectives": {
+        "1": {
+          "1": {
+            "1": 6123
+          }
+        }
+      },
+      "zoneOrSort": 1
+    },
+    "96391": {
+      "_identityName": "Underground Map",
+      "name": "Underground Map",
+      "startedBy": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": 274268
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 264936
+        }
+      },
+      "requiredLevel": 9,
+      "questLevel": 15,
+      "requiredRaces": 4294967373,
+      "sourceItemId": 274268,
+      "zoneOrSort": 1
+    },
+    "96392": {
+      "_identityName": "Farsen's Watch",
+      "name": "Farsen's Watch",
+      "startedBy": {
+        "1": {
+          "1": 264936
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 264936
+        }
+      },
+      "requiredLevel": 9,
+      "questLevel": 13,
+      "requiredRaces": 4294967373,
+      "zoneOrSort": 1
+    },
+    "95212": {
+      "_identityName": "Never Saddle on Quality",
+      "name": "Never Saddle on Quality",
+      "startedBy": {
+        "1": {
+          "1": 1265
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 1265
+        }
+      },
+      "requiredLevel": 7,
+      "questLevel": 10,
+      "requiredRaces": 4294967373,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 267414
+          }
+        }
+      },
+      "zoneOrSort": 1
+    },
+    "95213": {
+      "_identityName": "Stolen Blasting Powder",
+      "name": "Stolen Blasting Powder",
+      "startedBy": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": 268548
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 1256
+        }
+      },
+      "requiredLevel": 7,
+      "questLevel": 10,
+      "requiredRaces": 4294967373,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 268548
+          }
+        }
+      },
+      "zoneOrSort": 1
+    },
+    "95214": {
+      "_identityName": "Stolen Blasting Powder",
+      "name": "Stolen Blasting Powder",
+      "startedBy": {
+        "1": {
+          "1": 1256
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 1256
+        }
+      },
+      "requiredLevel": 7,
+      "questLevel": 10,
+      "requiredRaces": 4294967373,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 267415
+          }
+        }
+      },
+      "zoneOrSort": 1
+    },
+    "466": {
+      "name": "Search for Incendicite",
+      "startedBy": {
+        "1": {
+          "1": 1377
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 1377
+        }
+      },
+      "requiredLevel": 20,
+      "questLevel": 22,
+      "requiredRaces": 4294967373,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 3340
+          }
+        }
+      },
+      "preQuestSingle": {},
+      "zoneOrSort": 1,
+      "questFlags": 8,
+      "_identityName": "Search for Incendicite"
+    },
+    "467": {
+      "name": "Stonegear's Search",
+      "startedBy": {
+        "1": {
+          "1": 1340,
+          "2": 2092
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 1377
+        }
+      },
+      "requiredLevel": 20,
+      "questLevel": 23,
+      "requiredRaces": 4294967373,
+      "zoneOrSort": 1,
+      "questFlags": 8,
+      "_identityName": "Stonegear's Search"
+    }
+  },
+  "field_source_tiers": {
+    "99160": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "objectives": "beta-observation",
+      "zoneOrSort": "beta-delta"
+    },
+    "99161": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "objectives": "beta-observation",
+      "zoneOrSort": "beta-delta"
+    },
+    "99162": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "objectives": "beta-observation",
+      "zoneOrSort": "beta-delta"
+    },
+    "317": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline"
+    },
+    "95217": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "objectives": "beta-delta",
+      "zoneOrSort": "beta-delta"
+    },
+    "98423": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-delta",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "sourceItemId": "beta-delta",
+      "zoneOrSort": "beta-delta"
+    },
+    "282": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "_identityName": "converted-baseline",
+      "exclusiveTo": "converted-baseline"
+    },
+    "218": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline"
+    },
+    "420": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "179": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline"
+    },
+    "170": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline"
+    },
+    "233": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "234": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "3361": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline"
+    },
+    "96390": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "objectives": "beta-observation",
+      "zoneOrSort": "beta-delta"
+    },
+    "96391": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-delta",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "sourceItemId": "beta-delta",
+      "zoneOrSort": "beta-delta"
+    },
+    "96392": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "zoneOrSort": "beta-delta"
+    },
+    "95212": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "objectives": "beta-observation",
+      "zoneOrSort": "beta-delta"
+    },
+    "95213": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-delta",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "objectives": "beta-observation",
+      "zoneOrSort": "beta-delta"
+    },
+    "95214": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "objectives": "beta-observation",
+      "zoneOrSort": "beta-delta"
+    },
+    "466": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "_identityName": "converted-baseline"
+    },
+    "467": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "_identityName": "converted-baseline"
+    }
+  },
+  "items": {
+    "281030": {
+      "_identityName": "Treaty of Understanding",
+      "name": "Treaty of Understanding",
+      "startQuest": 98423
+    },
+    "2840": {
+      "name": "Copper Bar",
+      "itemDrops": {
+        "1": 17727
+      },
+      "_identityName": "Copper Bar"
+    },
+    "267416": {
+      "_identityName": "Toughened Boar Hide",
+      "name": "Toughened Boar Hide",
+      "npcDrops": {
+        "1": 1689
+      }
+    },
+    "769": {
+      "name": "Chunk of Boar Meat",
+      "npcDrops": {
+        "1": 113,
+        "2": 119,
+        "3": 157,
+        "4": 330,
+        "5": 390,
+        "6": 454,
+        "7": 524,
+        "8": 547,
+        "9": 1125,
+        "10": 1126,
+        "11": 1127,
+        "12": 1190,
+        "13": 1191,
+        "14": 1192,
+        "15": 1689,
+        "16": 1985,
+        "17": 3098,
+        "18": 3099,
+        "19": 3100,
+        "20": 3225
+      },
+      "_identityName": "Chunk of Boar Meat"
+    }
+  }
+}
