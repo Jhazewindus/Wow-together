@@ -659,8 +659,11 @@ function ns.RouteForDisplay()
         return display
     end
     local confirmation = not (ns.routeSelection and ns.routeSelection.mode == "profession") and ns.CurrentQuestConfirmation()
-    local training = not confirmation and ns.ClassTrainingDestination(route.stops[1])
-    training = training and training.kind == "trainer" and training or nil
+    local service = ns.InventoryServiceDestination(route.stops[1])
+    service = ns.IsInventoryServiceStep(service) and service or nil
+    if service then confirmation = nil end
+    local training = service or not confirmation and ns.ClassTrainingDestination(route.stops[1])
+    training = training and (training.kind == "trainer" or training.inventoryService) and training or nil
     local display = route
     if training then
         display = {}; for key, value in pairs(route) do display[key] = value end

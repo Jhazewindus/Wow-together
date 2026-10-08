@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.59"
-ns.RELEASE_NAME = "SMALL CRAFTING STEPS"
+ns.VERSION = "0.8.60"
+ns.RELEASE_NAME = "INVENTORY-AWARE SERVICE STOPS"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}
@@ -194,6 +194,12 @@ function ns.Diagnostics()
         {"GetMerchantNumItems", GetMerchantNumItems},
         {"GetMerchantItemInfo", GetMerchantItemInfo},
         {"GetMerchantItemLink", GetMerchantItemLink},
+        {"C_MerchantFrame.GetItemInfo", C_MerchantFrame and C_MerchantFrame.GetItemInfo},
+        {"C_Container.GetContainerNumSlots", C_Container and C_Container.GetContainerNumSlots},
+        {"C_Container.GetContainerNumFreeSlots", C_Container and C_Container.GetContainerNumFreeSlots},
+        {"C_Container.GetContainerItemInfo", C_Container and C_Container.GetContainerItemInfo},
+        {"GetInventoryItemDurability", GetInventoryItemDurability},
+        {"CanMerchantRepair", CanMerchantRepair},
         {"C_TradeSkillUI.GetRecipeInfo", C_TradeSkillUI and C_TradeSkillUI.GetRecipeInfo},
         {"C_TradeSkillUI.GetRecipeSchematic", C_TradeSkillUI and C_TradeSkillUI.GetRecipeSchematic},
         {"C_TradeSkillUI.GetChildProfessionInfo", C_TradeSkillUI and C_TradeSkillUI.GetChildProfessionInfo},
@@ -271,6 +277,7 @@ function ns.Diagnostics()
     ns.QuestItemDiagnostics(output)
     ns.GuideTipDiagnostics(output)
     ns.ClassTrainingDiagnostics(output)
+    ns.InventoryServiceDiagnostics(output)
     ns.DungeonArtworkDiagnostics(output)
     ns.DungeonViewerDiagnostics(output)
     local low, high = ns.PreferredQuestLevels()
@@ -322,6 +329,7 @@ ns.On("ADDON_LOADED", function(name)
     if ns.InitializeProfessionGuides then ns.InitializeProfessionGuides() end
     ns.InitializeAuctionMarket()
     ns.InitializeDungeonViewer()
+    ns.InitializeInventoryServices()
     ns.Refresh()
     ns.Print("Loaded. /wt opens the quest view; /wt probe opens diagnostics.")
 end)

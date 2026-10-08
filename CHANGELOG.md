@@ -1,5 +1,33 @@
 # Wow Together changelog
 
+## 0.8.60
+
+**INVENTORY-AWARE SERVICE STOPS**
+
+- Add optional nearby vendor advice when four or fewer regular bag slots remain,
+  or an equipped item reaches 25% durability. Optional food/drink advice tracks
+  common level-appropriate supplies; mana classes get drink reminders. Choose
+  a restock target of 10, 20 or 40 in Settings → Bags, repairs and supplies.
+- Learn vendor locations, repair capability and common supply stock from actual
+  merchant visits. Reuse those observations for compatible characters on the
+  same realm/build/faction. Inn/trainer locations never imply vendor services.
+  New characters need a vendor visit before that location can be suggested.
+- Show a compact tip beneath either arrow. Click to visit: the arrow and map
+  temporarily point to the vendor, with the reason and estimated amounts to buy.
+  Done or Skip visit resumes the unchanged quest plan; resolving the recorded
+  needs also resumes it. Purchases, sales and repairs remain manual.
+- Dismiss a need until it recovers; keep character dismissals separate from
+  quest skips and research. Save accepted visits across reloads, and clear them
+  when stopping or switching guides. Suspend detours during combat, flights,
+  ghost travel, previews and loading. Crafting retains its own material guide.
+- Limit advice to nearby vendors with a short estimated detour and existing
+  hostile-crossing checks. Inventory reads are event-batched, never performed
+  by the movement repaint. Turning the feature off stops its inventory reads.
+- Validation: 230 host checks pass, including 29 dedicated inventory, compatibility,
+  manual-transaction, UI/map and unchanged-progress checks. All 84 Lua files
+  compile under Lua 5.1. Native merchant/bag API behavior and actual paths still
+  require the attached beta checklist.
+
 ## 0.8.59
 
 **DUN MOROGH CHAIN FIX**

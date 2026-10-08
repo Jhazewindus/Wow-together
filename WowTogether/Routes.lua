@@ -1028,6 +1028,7 @@ function ns.ClearRoute()
 end
 
 function ns.StopGuide(closeWindow)
+    ns.ClearInventoryService()
     ns.ClearRoute()
     ns.pendingPartyRouteFollow, ns.pendingPartyRouteInvite, ns.waitingPartyRoute = nil, nil, nil
     ns.guideStopped, ns.guideWindowIdle = true, not closeWindow

@@ -8,7 +8,8 @@ local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, cl
     suggestFlights = true, autoFly = false, nearbyFlights = true, corpseArrow = true, npcMarker = "star", recordQuestData = true,
     useLearnedQuests = true, exportCharacterNames = false, fixedZoneGuides = true,
     standaloneArrow = false, travelNetwork = true, soloMode = false, questGiverStars = true, patrolHints = true, eliteSpawnHints = true, hearthstoneTips = true,
-    guideOpaque = true, highlightGuideQuest = true, classTraining = true}
+    guideOpaque = true, highlightGuideQuest = true, classTraining = true,
+    inventoryServices = true, restockSupplies = true, supplyTarget = 20}
 
 function ns.Option(key)
     local value = ns.db and ns.db.config and ns.db.config[key]
@@ -45,6 +46,10 @@ local sections = {
         {"hearthstoneTips", "Useful hearthstone tips", "Suggest a nearby inn when setting your hearthstone could help with later turn-ins."},
         {"autoFly", "Select the suggested flight", "Take the suggested flight when you open its flight master's map, outside combat."},
         {"corpseArrow", "Point to my corpse while dead", "Temporarily replace quest directions while you are a ghost, then resume the guide."}}},
+    {"services", "Bags, repairs and supplies", {
+        {"inventoryServices", "Suggest nearby vendor visits", "Optional advice at 4 or fewer free bag slots, or equipment at 25% durability. Click the tip to visit; Done resumes quests. Vendors are learned when you visit them."},
+        {"restockSupplies", "Include food and drink", "Suggest common level-appropriate supplies when 5 or fewer remain. Drink is suggested for mana classes. Buy manually; other consumables are not counted."},
+        {"supplyTarget", "Restock amount", "How much food or drink to carry after a suggested vendor visit.", {{10, "10 of each"}, {20, "20 of each"}, {40, "40 of each"}}}}},
     {"party", "Party progress", {
         {"trackerAuto", "Show party progress automatically", "Show when joining a party; hide when solo or in a raid. You can close it for the current party session."},
         {"trackerOpacity", "Party panel background", "Choose readability behind quest progress text.", {{0, "Transparent"}, {0.08, "Subtle"}, {0.25, "Dark glass"}, {0.5, "Dark"}}},
@@ -87,6 +92,7 @@ function ns.InitializeConfig()
     ns.db.config.routeAhead = math.max(0, math.min(2, math.floor(ns.db.config.routeAhead)))
     if ns.db.config.distanceUnits ~= "yards" and ns.db.config.distanceUnits ~= "metres" then ns.db.config.distanceUnits = "yards" end
     if ns.db.config.npcMarker ~= "star" and ns.db.config.npcMarker ~= "cross" and ns.db.config.npcMarker ~= "skull" and ns.db.config.npcMarker ~= "quest" then ns.db.config.npcMarker = "star" end
+    if ns.db.config.supplyTarget ~= 10 and ns.db.config.supplyTarget ~= 20 and ns.db.config.supplyTarget ~= 40 then ns.db.config.supplyTarget = 20 end
 end
 
 function ns.SetOption(key, value)
@@ -101,6 +107,8 @@ function ns.SetOption(key, value)
         return
     end
     if key == "soloMode" and changed then ns.ApplyPartyMode() end
+    if key == "inventoryServices" and not value then ns.ClearInventoryService() end
+    if key == "inventoryServices" and value or key == "restockSupplies" or key == "supplyTarget" then ns.QueueServiceInventory() end
     ns.flightPlanCache = nil
     ns.ResetTravelPath()
     if key == "nearbyPickups" or key == "useLearnedQuests" then ns.forceRouteReplan, ns.routeSignature = true, nil end

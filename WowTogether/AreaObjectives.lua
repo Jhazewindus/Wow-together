@@ -87,6 +87,7 @@ function ns.UpdateAreaObjectives(state)
     ns.ClearConfirmationWaypoint(confirmation)
     local show = state.visible and ns.Option("routeArrow") and not state.flight and state.stop.kind ~= "corpse"
         and state.stop.kind ~= "f" and not state.stop.travelLeg and not state.busy
+        and not ns.IsInventoryServiceStep(state.stop)
     local items = show and not confirmation and ns.AreaObjectives(state.stop) or {}
     state.areaObjectives = items
     panel:SetShown(show and (confirmation ~= nil or #items > 1))
