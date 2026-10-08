@@ -1,0 +1,185 @@
+[
+  {
+    "faction": "Alliance",
+    "key": "level-zone:kalimdor/ungoro-crater:levels:51-60",
+    "changed_fields": {
+      "steps": {
+        "before": 139,
+        "after": 138
+      },
+      "unknown_location_steps": {
+        "before": 6,
+        "after": 5
+      },
+      "missing_location_quest_ids_by_stage": {
+        "before": {
+          "a": [],
+          "q": [
+            3845,
+            4084,
+            4321,
+            4492,
+            9051
+          ],
+          "t": []
+        },
+        "after": {
+          "a": [],
+          "q": [
+            3845,
+            4321,
+            9051
+          ],
+          "t": []
+        }
+      },
+      "unverified_objective_quantity_quest_ids": {
+        "before": [],
+        "after": [
+          9051
+        ]
+      },
+      "reason_steps_checked": {
+        "before": 139,
+        "after": 138
+      },
+      "destination_reason_codes": {
+        "before": {
+          "class-progression": 6,
+          "early-reward": 1,
+          "outside-level-range": 69,
+          "prerequisite": 33,
+          "quest-reward": 26,
+          "return-hub": 4
+        },
+        "after": {
+          "class-progression": 6,
+          "early-reward": 1,
+          "outside-level-range": 68,
+          "prerequisite": 33,
+          "quest-reward": 27,
+          "return-hub": 3
+        }
+      },
+      "flow_alternatives_evaluated": {
+        "before": 38,
+        "after": 32
+      },
+      "quest_log_peak": {
+        "before": 12,
+        "after": 13
+      },
+      "quest_reward_only_xp_shortfall": {
+        "before": 480320,
+        "after": 515500
+      },
+      "uncertain_travel_legs": {
+        "before": 41,
+        "after": 37
+      },
+      "estimated_distance_before": {
+        "before": 282464.2,
+        "after": 290524.34
+      },
+      "estimated_distance_after": {
+        "before": 282464.2,
+        "after": 290524.34
+      }
+    }
+  },
+  {
+    "faction": "Horde",
+    "key": "level-zone:kalimdor/ungoro-crater:levels:51-60",
+    "changed_fields": {
+      "steps": {
+        "before": 142,
+        "after": 141
+      },
+      "unknown_location_steps": {
+        "before": 7,
+        "after": 6
+      },
+      "missing_location_quest_ids_by_stage": {
+        "before": {
+          "a": [],
+          "q": [
+            3845,
+            4084,
+            4146,
+            4321,
+            4492,
+            9051
+          ],
+          "t": []
+        },
+        "after": {
+          "a": [],
+          "q": [
+            3845,
+            4146,
+            4321,
+            9051
+          ],
+          "t": []
+        }
+      },
+      "unverified_objective_quantity_quest_ids": {
+        "before": [],
+        "after": [
+          9051
+        ]
+      },
+      "reason_steps_checked": {
+        "before": 142,
+        "after": 141
+      },
+      "destination_reason_codes": {
+        "before": {
+          "class-progression": 6,
+          "early-reward": 1,
+          "outside-level-range": 67,
+          "prerequisite": 39,
+          "quest-reward": 25,
+          "return-hub": 4
+        },
+        "after": {
+          "class-progression": 6,
+          "early-reward": 1,
+          "outside-level-range": 66,
+          "prerequisite": 39,
+          "quest-log-space": 1,
+          "quest-reward": 25,
+          "return-hub": 3
+        }
+      },
+      "flow_alternatives_evaluated": {
+        "before": 40,
+        "after": 68
+      },
+      "flow_loop_changes": {
+        "before": 2,
+        "after": 5
+      },
+      "quest_log_peak": {
+        "before": 12,
+        "after": 11
+      },
+      "quest_reward_only_xp_shortfall": {
+        "before": 480320,
+        "after": 469020
+      },
+      "uncertain_travel_legs": {
+        "before": 47,
+        "after": 44
+      },
+      "estimated_distance_before": {
+        "before": 305203.12,
+        "after": 294712.49
+      },
+      "estimated_distance_after": {
+        "before": 305203.12,
+        "after": 294712.49
+      }
+    }
+  }
+]

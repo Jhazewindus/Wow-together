@@ -1,6 +1,6 @@
 {
   "source_data_complete": false,
-  "remaining_quest_records": 390,
+  "remaining_quest_records": 388,
   "limitations": [
     "This queue identifies missing facts, not a license to invent them",
     "Source capture must respect access policy and stop after denials",
@@ -1846,6 +1846,7 @@
       "entity_urls": [
         "https://www.wowhead.com/forever/item=11104",
         "https://www.wowhead.com/forever/item=11105",
+        "https://www.wowhead.com/forever/item=11106",
         "https://www.wowhead.com/forever/npc=8737",
         "https://www.wowhead.com/forever/object=161504"
       ]
@@ -1893,22 +1894,6 @@
       "quest_url": "https://www.wowhead.com/forever/quest=4023",
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=9459"
-      ]
-    },
-    {
-      "questID": 4084,
-      "title": "Silver Heart",
-      "guides": [
-        "Alliance / Ungoro Crater",
-        "Horde / Ungoro Crater"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=4084",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=11173",
-        "https://www.wowhead.com/forever/npc=9116"
       ]
     },
     {
@@ -1973,23 +1958,6 @@
         "https://www.wowhead.com/forever/item=11723",
         "https://www.wowhead.com/forever/npc=5411",
         "https://www.wowhead.com/forever/object=173265"
-      ]
-    },
-    {
-      "questID": 4492,
-      "title": "Lost!",
-      "guides": [
-        "Alliance / Ungoro Crater",
-        "Horde / Ungoro Crater"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=4492",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=15722",
-        "https://www.wowhead.com/forever/npc=9997",
-        "https://www.wowhead.com/forever/npc=9999"
       ]
     },
     {
@@ -4560,7 +4528,8 @@
         "Horde / Ungoro Crater"
       ],
       "needs": [
-        "objective area"
+        "objective area",
+        "objective quantities"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=9051",
       "entity_urls": [

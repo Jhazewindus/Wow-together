@@ -122,7 +122,7 @@ def apply_stage_corrections(records):
         elif rule['kind'] in ('objective-facts', 'stage-facts'):
             core = {'requirements', 'requiredItems', 'objectives', 'npcTargets'}
             allowed = core | {'starts', 'ends', 'startRefs', 'endRefs', 'providedItems',
-                              'missingRequirements', 'objectiveLocationsIncomplete'}
+                              'missingRequirements', 'objectiveLocationsIncomplete', 'objectiveAlternatives'}
             fields = set(rule['before'])
             if not core <= fields or not fields <= allowed or set(rule['after']) != fields or \
                     (rule['kind'] == 'objective-facts' and fields != core) or rule['after']['requiredItems'] != required:
@@ -136,7 +136,14 @@ def apply_stage_corrections(records):
                 refs = quest['worldReferences'].get('requirements') or []
                 if refs not in (rule['before']['requirements'], rule['after']['requirements']):
                     raise ValueError('Reviewed world requirements changed: ' + str(ident))
-                quest['worldReferences']['requirements'] = copy.deepcopy(rule['after']['requirements'])
+                if refs != rule['after']['requirements']:
+                    quest['worldReferences']['requirements'] = copy.deepcopy(rule['after']['requirements'])
+                if 'providedItems' in fields:
+                    provided = quest['worldReferences'].get('provided') or []
+                    if provided not in (rule['before']['providedItems'], rule['after']['providedItems']):
+                        raise ValueError('Reviewed supplied items changed: ' + str(ident))
+                    if provided != rule['after']['providedItems']:
+                        quest['worldReferences']['provided'] = copy.deepcopy(rule['after']['providedItems'])
             for field, value in rule['after'].items():
                 current = quest.get(field) if field == 'objectiveLocationsIncomplete' else quest.get(field) or []
                 if current != value:

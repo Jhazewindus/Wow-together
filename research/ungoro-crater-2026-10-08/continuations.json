@@ -1,0 +1,801 @@
+{
+  "direct_category_ids": [
+    974,
+    980,
+    3844,
+    3845,
+    3881,
+    3882,
+    3883,
+    3884,
+    3885,
+    3908,
+    3909,
+    3912,
+    3913,
+    3914,
+    3941,
+    3942,
+    3961,
+    3962,
+    4005,
+    4084,
+    4141,
+    4142,
+    4143,
+    4144,
+    4145,
+    4146,
+    4147,
+    4148,
+    4243,
+    4244,
+    4245,
+    4284,
+    4285,
+    4287,
+    4288,
+    4289,
+    4290,
+    4291,
+    4292,
+    4301,
+    4321,
+    4381,
+    4382,
+    4383,
+    4384,
+    4385,
+    4386,
+    4491,
+    4492,
+    4501,
+    4502,
+    4503,
+    5150
+  ],
+  "compiled_scope_ids": [
+    974,
+    980,
+    3844,
+    3845,
+    3881,
+    3882,
+    3883,
+    3908,
+    3909,
+    3912,
+    3913,
+    3914,
+    3941,
+    3942,
+    3961,
+    3962,
+    4005,
+    4084,
+    4141,
+    4142,
+    4144,
+    4145,
+    4146,
+    4147,
+    4243,
+    4244,
+    4245,
+    4284,
+    4285,
+    4287,
+    4288,
+    4289,
+    4290,
+    4291,
+    4292,
+    4301,
+    4321,
+    4491,
+    4492,
+    4501,
+    4502,
+    4503,
+    9051,
+    9052
+  ],
+  "related_catalogue_records": {
+    "4284": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Crystals of Power",
+      "level": 53,
+      "minLevel": 47
+    },
+    "4285": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        4284
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "The Northern Pylon",
+      "level": 53,
+      "minLevel": 47
+    },
+    "4381": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        4321
+      ],
+      "levelingExcluded": null,
+      "repeatable": true,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Crystal Restore",
+      "level": 53,
+      "minLevel": 47
+    },
+    "980": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        974
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "The New Springs",
+      "level": 55,
+      "minLevel": 51
+    },
+    "4288": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        4284
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "The Western Pylon",
+      "level": 53,
+      "minLevel": 47
+    },
+    "4384": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        4321
+      ],
+      "levelingExcluded": null,
+      "repeatable": true,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Crystal Yield",
+      "level": 53,
+      "minLevel": 47
+    },
+    "4289": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "The Apes of Un'Goro",
+      "level": 55,
+      "minLevel": 47
+    },
+    "4321": {
+      "previousQuest": null,
+      "prerequisiteAll": [
+        4285,
+        4287,
+        4288
+      ],
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Making Sense of It",
+      "level": 53,
+      "minLevel": 47
+    },
+    "4385": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        4321
+      ],
+      "levelingExcluded": null,
+      "repeatable": true,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Crystal Charge",
+      "level": 53,
+      "minLevel": 47
+    },
+    "4290": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "The Fare of Lar'korwi",
+      "level": 53,
+      "minLevel": 48
+    },
+    "4386": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        4321
+      ],
+      "levelingExcluded": null,
+      "repeatable": true,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Crystal Spire",
+      "level": 53,
+      "minLevel": 47
+    },
+    "4292": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        4291
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "The Bait for Lar'korwi",
+      "level": 56,
+      "minLevel": 48
+    },
+    "3844": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "It's a Secret to Everybody",
+      "level": 52,
+      "minLevel": 47
+    },
+    "3908": {
+      "previousQuest": 3845,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "It's a Secret to Everybody",
+      "level": 52,
+      "minLevel": 47
+    },
+    "4084": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        3942
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Silver Heart",
+      "level": 54,
+      "minLevel": 47
+    },
+    "3845": {
+      "previousQuest": 3844,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "It's a Secret to Everybody",
+      "level": 52,
+      "minLevel": 47
+    },
+    "3909": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        3908
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "The Videre Elixir",
+      "level": 52,
+      "minLevel": 47
+    },
+    "3941": {
+      "previousQuest": 3914,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "A Gnome's Assistance",
+      "level": 52,
+      "minLevel": 47
+    },
+    "4005": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        4084
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Aquementas",
+      "level": 54,
+      "minLevel": 47
+    },
+    "4842": {
+      "previousQuest": 980,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/winterspring",
+      "title": "Strange Sources",
+      "level": 56,
+      "minLevel": 51
+    },
+    "3942": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        3941
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Linken's Memory",
+      "level": 54,
+      "minLevel": 47
+    },
+    "4492": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Lost!",
+      "level": 55,
+      "minLevel": 50
+    },
+    "4141": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Muigin and Larion",
+      "level": 52,
+      "minLevel": 47
+    },
+    "4301": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        4289
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "The Mighty U'cha",
+      "level": 55,
+      "minLevel": 50
+    },
+    "974": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Finding the Source",
+      "level": 55,
+      "minLevel": 51
+    },
+    "3912": {
+      "previousQuest": 3909,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Meet at the Grave",
+      "level": 52,
+      "minLevel": 47
+    },
+    "4144": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        4143
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Bloodpetal Sprouts",
+      "level": 53,
+      "minLevel": 47
+    },
+    "4145": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Larion and Muigin",
+      "level": 52,
+      "minLevel": 47
+    },
+    "3881": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Expedition Salvation",
+      "level": 53,
+      "minLevel": 48
+    },
+    "3913": {
+      "previousQuest": 3912,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "A Grave Situation",
+      "level": 52,
+      "minLevel": 47
+    },
+    "3961": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        4005
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Linken's Adventure",
+      "level": 54,
+      "minLevel": 47
+    },
+    "4146": {
+      "previousQuest": 4147,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Zapper Fuel",
+      "level": 52,
+      "minLevel": 47
+    },
+    "3882": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Roll the Bones",
+      "level": 51,
+      "minLevel": 49
+    },
+    "3914": {
+      "previousQuest": 3913,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Linken's Sword",
+      "level": 52,
+      "minLevel": 47
+    },
+    "3962": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        3961
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "It's Dangerous to Go Alone",
+      "level": 56,
+      "minLevel": 47
+    },
+    "4148": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        4146
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Bloodpetal Zapper",
+      "level": 53,
+      "minLevel": 47
+    },
+    "4244": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        4243
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Chasing A-Me 01",
+      "level": 53,
+      "minLevel": 48
+    },
+    "4245": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        4244
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Chasing A-Me 01",
+      "level": 53,
+      "minLevel": 48
+    },
+    "4501": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Beware of Pterrordax",
+      "level": 55,
+      "minLevel": 49
+    },
+    "3883": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Alien Ecology",
+      "level": 52,
+      "minLevel": 48
+    },
+    "9053": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        9051
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "classes/druid",
+      "title": "A Better Ingredient",
+      "level": 52,
+      "minLevel": 50
+    },
+    "9052": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "classes/druid",
+      "title": "Bloodpetal Poison",
+      "level": 52,
+      "minLevel": 50
+    },
+    "9051": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        9052
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "classes/druid",
+      "title": "Toxic Test",
+      "level": 52,
+      "minLevel": 50
+    },
+    "4502": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Volcanic Activity",
+      "level": 55,
+      "minLevel": 49
+    },
+    "3884": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Williden's Journal",
+      "level": 50,
+      "minLevel": 48
+    },
+    "4382": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        4321
+      ],
+      "levelingExcluded": null,
+      "repeatable": true,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Crystal Force",
+      "level": 53,
+      "minLevel": 47
+    },
+    "4503": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Shizzle's Flyer",
+      "level": 51,
+      "minLevel": 49
+    },
+    "5150": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": true,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Dadanga is Hungry!",
+      "level": 55,
+      "minLevel": 47
+    },
+    "3885": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "<NYI> <TXT> The Gadgetzan Run",
+      "level": 55,
+      "minLevel": 50
+    },
+    "4491": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        4492
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "A Little Help From My Friends",
+      "level": 55,
+      "minLevel": 50
+    },
+    "4383": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        4321
+      ],
+      "levelingExcluded": null,
+      "repeatable": true,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Crystal Ward",
+      "level": 53,
+      "minLevel": 47
+    },
+    "4291": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        4290
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "The Scent of Lar'korwi",
+      "level": 53,
+      "minLevel": 48
+    },
+    "4287": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        4284
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "The Eastern Pylon",
+      "level": 53,
+      "minLevel": 47
+    },
+    "4243": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Chasing A-Me 01",
+      "level": 53,
+      "minLevel": 48
+    },
+    "4147": {
+      "previousQuest": 4145,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Marvon's Workshop",
+      "level": 52,
+      "minLevel": 47
+    },
+    "4143": {
+      "previousQuest": 4142,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "Haze of Evil",
+      "level": 52,
+      "minLevel": 47
+    },
+    "4142": {
+      "previousQuest": 4141,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "categoryPath": "kalimdor/ungoro-crater",
+      "title": "A Visit to Gregan",
+      "level": 52,
+      "minLevel": 47
+    }
+  },
+  "uncompiled_direct_ids": [
+    3884,
+    3885,
+    4143,
+    4148,
+    4381,
+    4382,
+    4383,
+    4384,
+    4385,
+    4386,
+    5150
+  ]
+}

@@ -74,7 +74,8 @@ def audit(zone=None):
                 for g in c.ns.LevelingGuideChoices().values():
                     # Generated chapter labels title-case small words; the
                     # catalogue retains published spelling ("Swamp of Sorrows").
-                    if zone is not None and g.zone.casefold() != zone.casefold(): continue
+                    # Generated "Ungoro Crater" also omits the catalogue apostrophe.
+                    if zone is not None and g.zone.casefold().replace("'", "") != zone.casefold().replace("'", ""): continue
                     key=(faction,g.key)
                     if key in seen:continue
                     seen.add(key)

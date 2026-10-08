@@ -1,0 +1,6098 @@
+{
+  "974": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Krakle",
+        "entityID": 10302
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "object",
+        "quantityUnknown": true,
+        "action": "event",
+        "entityID": 148503,
+        "name": "Fire Plume Ridge Hot Spot"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1449,
+        "action": "interact",
+        "entityID": 148503,
+        "y": 0.45640000000000003,
+        "objectiveKey": "object:148503",
+        "name": "Fire Plume Ridge Hot Spot",
+        "sourceAreaID": 490,
+        "x": 0.49689999999999995,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantityUnknown": true
+      }
+    ],
+    "level": 55,
+    "areaID": 490,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 10302,
+        "npc": true,
+        "y": 0.5044,
+        "x": 0.3093,
+        "name": "Krakle",
+        "sourceAreaID": 490,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "raceMask": 0,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Krakle",
+        "entityID": 10302
+      }
+    ],
+    "xp": 5650,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 10302,
+        "npc": true,
+        "y": 0.5044,
+        "x": 0.3093,
+        "name": "Krakle",
+        "sourceAreaID": 490,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 51,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Finding the Source",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantityUnknown": true,
+          "action": "event",
+          "entityID": 148503,
+          "name": "Fire Plume Ridge Hot Spot"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Krakle",
+          "entityID": 10302
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Krakle",
+          "entityID": 10302
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "980": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Krakle",
+        "entityID": 10302
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "entityID": 9298,
+        "npc": true,
+        "sourceZone": "Winterspring",
+        "x": 0.312,
+        "name": "Donova Snowden",
+        "sourceAreaID": 618,
+        "y": 0.452
+      }
+    ],
+    "objectives": {},
+    "level": 55,
+    "areaID": 490,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 10302,
+        "npc": true,
+        "y": 0.5044,
+        "x": 0.3093,
+        "name": "Krakle",
+        "sourceAreaID": 490,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "raceMask": 0,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Donova Snowden",
+        "entityID": 9298
+      }
+    ],
+    "xp": 2800,
+    "prerequisiteAny": [
+      974
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 51,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "The New Springs",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Krakle",
+          "entityID": 10302
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Donova Snowden",
+          "entityID": 9298
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "3844": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "zone": "Un'Goro Crater",
+    "requirements": {},
+    "seriesRoot": 3844,
+    "objectives": {},
+    "series": [
+      3844,
+      3845,
+      3908
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.69,
+        "x": 0.631,
+        "name": "A Small Pack",
+        "entityID": 161504,
+        "mapID": 1449
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.685,
+        "x": 0.631,
+        "name": "A Wrecked Raft",
+        "entityID": 161505,
+        "mapID": 1449
+      }
+    ],
+    "level": 52,
+    "areaID": 490,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "A Wrecked Raft",
+        "entityID": 161505
+      }
+    ],
+    "side": "Both",
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "object",
+        "name": "A Small Pack",
+        "entityID": 161504
+      }
+    ],
+    "xp": 1250,
+    "foreverStatus": "unchanged",
+    "title": "It's a Secret to Everybody",
+    "minLevel": 47,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "object",
+          "name": "A Wrecked Raft",
+          "entityID": 161505
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "object",
+          "name": "A Small Pack",
+          "entityID": 161504
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "3845": {
+    "prerequisitesRead": true,
+    "zone": "Un'Goro Crater",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Large Compass",
+        "entityID": 11104
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Curled Map Parchment",
+        "entityID": 11105
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Lion-headed Key",
+        "entityID": 11106
+      }
+    ],
+    "level": 52,
+    "areaID": 490,
+    "seriesPosition": 2,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Linken",
+        "entityID": 8737
+      }
+    ],
+    "xp": 5100,
+    "minLevel": 47,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Large Compass",
+          "entityID": 11104
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Curled Map Parchment",
+          "entityID": 11105
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Lion-headed Key",
+          "entityID": 11106
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "object",
+          "name": "A Small Pack",
+          "entityID": 161504
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Linken",
+          "entityID": 8737
+        }
+      ]
+    },
+    "objectiveLocationsIncomplete": true,
+    "categoryPath": "kalimdor/ungoro-crater",
+    "raceMask": 0,
+    "missingRequirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Large Compass",
+        "entityID": 11104
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Curled Map Parchment",
+        "entityID": 11105
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "A Small Pack",
+        "entityID": 161504
+      }
+    ],
+    "seriesRoot": 3844,
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Large Compass",
+        "itemID": 11104
+      },
+      {
+        "quantity": 1,
+        "name": "Curled Map Parchment",
+        "itemID": 11105
+      },
+      {
+        "quantity": 1,
+        "name": "Lion-headed Key",
+        "itemID": 11106
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.08199999999999999,
+        "mapID": 1449,
+        "name": "Linken",
+        "entityID": 8737,
+        "npc": true,
+        "x": 0.446
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "previousQuest": 3844,
+    "objectives": [
+      {
+        "sourceObjective": 2,
+        "mapID": 1449,
+        "action": "collect",
+        "entityID": 10583,
+        "npc": true,
+        "y": 0.057999999999999996,
+        "objectiveKey": "item:11106",
+        "name": "Gryfe",
+        "x": 0.452,
+        "quantity": 1,
+        "legacyStepKey": "q:1449:npc:10583",
+        "itemName": "Lion-headed Key",
+        "itemID": 11106
+      }
+    ],
+    "mapID": 1449,
+    "series": [
+      3844,
+      3845,
+      3908
+    ],
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.69,
+        "x": 0.631,
+        "name": "A Small Pack",
+        "entityID": 161504,
+        "mapID": 1449
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "title": "It's a Secret to Everybody",
+    "classMask": 0,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Lion-headed Key",
+        "name": "Gryfe",
+        "entityID": 10583,
+        "npc": true,
+        "action": "collect"
+      }
+    ]
+  },
+  "3881": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "zone": "Un'Goro Crater",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Crate of Foodstuffs",
+        "entityID": 11113
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Research Equipment",
+        "entityID": 11112
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Crate of Foodstuffs",
+        "itemID": 11113
+      },
+      {
+        "quantity": 1,
+        "name": "Research Equipment",
+        "itemID": 11112
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Research Equipment",
+        "name": "Simone the Inconspicuous",
+        "entityID": 14527,
+        "npc": true,
+        "action": "collect"
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 1,
+        "mapID": 1449,
+        "legacyStepKey": "q:1449:npc:161521",
+        "entityID": 161521,
+        "x": 0.385,
+        "y": 0.66,
+        "objectiveKey": "item:11112",
+        "itemID": 11112,
+        "quantity": 1,
+        "name": "Research Equipment",
+        "itemName": "Research Equipment",
+        "alternativeCount": 2,
+        "action": "collect"
+      },
+      {
+        "entityType": "object",
+        "mapID": 1449,
+        "action": "gather",
+        "entityID": 161526,
+        "x": 0.6854,
+        "y": 0.3654,
+        "objectiveKey": "item:11113",
+        "itemID": 11113,
+        "quantity": 1,
+        "sourceAreaID": 490,
+        "itemName": "Crate of Foodstuffs",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Crate of Foodstuffs"
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.07200000000000001,
+        "mapID": 1449,
+        "name": "Williden Marshal",
+        "entityID": 9270,
+        "npc": true,
+        "x": 0.43799999999999994
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "level": 53,
+    "areaID": 490,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 1,
+        "itemName": "Research Equipment",
+        "locations": [
+          {
+            "sourceObjective": 1,
+            "itemName": "Research Equipment",
+            "action": "collect",
+            "entityID": 14527,
+            "npc": true,
+            "y": 0.8079999999999999,
+            "x": 0.494,
+            "name": "Simone the Inconspicuous",
+            "mapID": 1449
+          },
+          {
+            "sourceObjective": 1,
+            "mapID": 1449,
+            "action": "collect",
+            "y": 0.66,
+            "entityID": 161521,
+            "x": 0.385,
+            "name": "Research Equipment",
+            "itemName": "Research Equipment"
+          }
+        ]
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Williden Marshal",
+        "entityID": 9270
+      }
+    ],
+    "side": "Both",
+    "ends": [
+      {
+        "y": 0.07200000000000001,
+        "mapID": 1449,
+        "name": "Williden Marshal",
+        "entityID": 9270,
+        "npc": true,
+        "x": 0.43799999999999994
+      }
+    ],
+    "money": 4000,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Williden Marshal",
+        "entityID": 9270
+      }
+    ],
+    "xp": 5250,
+    "foreverStatus": "unchanged",
+    "title": "Expedition Salvation",
+    "minLevel": 48,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Crate of Foodstuffs",
+          "entityID": 11113
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Research Equipment",
+          "entityID": 11112
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Williden Marshal",
+          "entityID": 9270
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Williden Marshal",
+          "entityID": 9270
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "3882": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "zone": "Un'Goro Crater",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 8,
+        "name": "Dinosaur Bone",
+        "entityID": 11114
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Dinosaur Bone",
+        "name": "Stegodon",
+        "entityID": 6501,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Dinosaur Bone",
+        "name": "Plated Stegodon",
+        "entityID": 6502,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Dinosaur Bone",
+        "name": "Spiked Stegodon",
+        "entityID": 6503,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Dinosaur Bone",
+        "name": "Thunderstomp Stegodon",
+        "entityID": 6504,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Dinosaur Bone",
+        "name": "Young Diemetradon",
+        "entityID": 9162,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Dinosaur Bone",
+        "name": "Diemetradon",
+        "entityID": 9163,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Dinosaur Bone",
+        "name": "Elder Diemetradon",
+        "entityID": 9164,
+        "npc": true,
+        "action": "collect"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 8,
+        "name": "Dinosaur Bone",
+        "itemID": 11114
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1449,
+        "legacyStepKey": "q:1449:npc:9164",
+        "entityID": 9164,
+        "npc": true,
+        "x": 0.382,
+        "y": 0.23,
+        "objectiveKey": "item:11114",
+        "itemID": 11114,
+        "quantity": 8,
+        "name": "Elder Diemetradon",
+        "itemName": "Dinosaur Bone",
+        "alternativeCount": 8,
+        "action": "collect"
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.07400000000000001,
+        "mapID": 1449,
+        "name": "Spark Nilminer",
+        "entityID": 9272,
+        "npc": true,
+        "x": 0.436
+      }
+    ],
+    "title": "Roll the Bones",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "level": 51,
+    "areaID": 490,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 0,
+        "itemName": "Dinosaur Bone",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Dinosaur Bone",
+            "action": "collect",
+            "entityID": 6501,
+            "npc": true,
+            "y": 0.5920000000000001,
+            "x": 0.28800000000000003,
+            "name": "Stegodon",
+            "mapID": 1449
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Dinosaur Bone",
+            "action": "collect",
+            "entityID": 6502,
+            "npc": true,
+            "y": 0.594,
+            "x": 0.26,
+            "name": "Plated Stegodon",
+            "mapID": 1449
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Dinosaur Bone",
+            "action": "collect",
+            "entityID": 6503,
+            "npc": true,
+            "y": 0.536,
+            "x": 0.258,
+            "name": "Spiked Stegodon",
+            "mapID": 1449
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Dinosaur Bone",
+            "action": "collect",
+            "entityID": 6504,
+            "npc": true,
+            "y": 0.61,
+            "x": 0.29600000000000004,
+            "name": "Thunderstomp Stegodon",
+            "mapID": 1449
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Dinosaur Bone",
+            "action": "collect",
+            "entityID": 9162,
+            "npc": true,
+            "y": 0.28,
+            "x": 0.7,
+            "name": "Young Diemetradon",
+            "mapID": 1449
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Dinosaur Bone",
+            "action": "collect",
+            "entityID": 9163,
+            "npc": true,
+            "y": 0.71,
+            "x": 0.504,
+            "name": "Diemetradon",
+            "mapID": 1449
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Dinosaur Bone",
+            "action": "collect",
+            "entityID": 9164,
+            "npc": true,
+            "y": 0.23,
+            "x": 0.382,
+            "name": "Elder Diemetradon",
+            "mapID": 1449
+          },
+          {
+            "sourceObjective": 0,
+            "mapID": 1449,
+            "action": "collect",
+            "y": 0.778,
+            "entityID": 161527,
+            "x": 0.312,
+            "name": "Dinosaur Bone",
+            "itemName": "Dinosaur Bone"
+          }
+        ]
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Spark Nilminer",
+        "entityID": 9272
+      }
+    ],
+    "side": "Both",
+    "ends": [
+      {
+        "y": 0.07400000000000001,
+        "mapID": 1449,
+        "name": "Spark Nilminer",
+        "entityID": 9272,
+        "npc": true,
+        "x": 0.436
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Spark Nilminer",
+        "entityID": 9272
+      }
+    ],
+    "xp": 4900,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 49,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "name": "Dinosaur Bone",
+          "entityID": 11114
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Spark Nilminer",
+          "entityID": 9272
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Spark Nilminer",
+          "entityID": 9272
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "3883": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "zone": "Un'Goro Crater",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Hive Wall Sample",
+        "entityID": 11131
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Hive Wall Sample",
+        "itemID": 11131
+      }
+    ],
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1449,
+        "action": "gather",
+        "entityID": 174793,
+        "x": 0.4869,
+        "y": 0.8532,
+        "objectiveKey": "item:11131",
+        "itemID": 11131,
+        "quantity": 1,
+        "sourceAreaID": 490,
+        "itemName": "Hive Wall Sample",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Gorishi Hive Hatchery"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "y": 0.07200000000000001,
+        "mapID": 1449,
+        "name": "Hol'anyee Marshal",
+        "entityID": 9271,
+        "npc": true,
+        "x": 0.43799999999999994
+      }
+    ],
+    "level": 52,
+    "areaID": 490,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Hol'anyee Marshal",
+        "entityID": 9271
+      }
+    ],
+    "side": "Both",
+    "ends": [
+      {
+        "y": 0.07200000000000001,
+        "mapID": 1449,
+        "name": "Hol'anyee Marshal",
+        "entityID": 9271,
+        "npc": true,
+        "x": 0.43799999999999994
+      }
+    ],
+    "money": 4000,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Hol'anyee Marshal",
+        "entityID": 9271
+      }
+    ],
+    "xp": 5100,
+    "foreverStatus": "unchanged",
+    "title": "Alien Ecology",
+    "minLevel": 48,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Hive Wall Sample",
+          "entityID": 11131
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Hol'anyee Marshal",
+          "entityID": 9271
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Hol'anyee Marshal",
+          "entityID": 9271
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "3908": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "objectives": {},
+    "zone": "Un'Goro Crater",
+    "requirements": {},
+    "seriesRoot": 3844,
+    "requiredItems": {},
+    "series": [
+      3844,
+      3845,
+      3908
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Linken's Training Sword",
+        "entityID": 11133
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.08199999999999999,
+        "mapID": 1449,
+        "name": "Linken",
+        "entityID": 8737,
+        "npc": true,
+        "x": 0.446
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.452,
+        "mapID": 1452,
+        "name": "Donova Snowden",
+        "entityID": 9298,
+        "npc": true,
+        "x": 0.312
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 52,
+    "areaID": 490,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Linken",
+        "entityID": 8737
+      }
+    ],
+    "side": "Both",
+    "previousQuest": 3845,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Donova Snowden",
+        "entityID": 9298
+      }
+    ],
+    "xp": 5100,
+    "title": "It's a Secret to Everybody",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 3,
+    "minLevel": 47,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Linken",
+          "entityID": 8737
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Linken's Training Sword",
+          "entityID": 11133
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Donova Snowden",
+          "entityID": 9298
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "3909": {
+    "prerequisitesRead": true,
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Videre Elixir",
+        "entityID": 11243
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Evoroot",
+        "entityID": 11242
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "otherLocationsIncomplete": false,
+    "level": 52,
+    "areaID": 490,
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Donova Snowden",
+        "entityID": 9298
+      }
+    ],
+    "xp": 5100,
+    "minLevel": 47,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Videre Elixir",
+          "entityID": 11243
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Evoroot",
+          "entityID": 11242
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Donova Snowden",
+          "entityID": 9298
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Donova Snowden",
+          "entityID": 9298
+        }
+      ]
+    },
+    "categoryPath": "kalimdor/ungoro-crater",
+    "raceMask": 0,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Donova Snowden",
+        "entityID": 9298
+      }
+    ],
+    "seriesRoot": 3909,
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Videre Elixir",
+        "itemID": 11243
+      },
+      {
+        "quantity": 1,
+        "name": "Evoroot",
+        "itemID": 11242
+      }
+    ],
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "ends": [
+      {
+        "y": 0.452,
+        "mapID": 1452,
+        "name": "Donova Snowden",
+        "entityID": 9298,
+        "npc": true,
+        "x": 0.312
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "title": "The Videre Elixir",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1444,
+        "action": "loot",
+        "entityID": 7775,
+        "npc": true,
+        "y": 0.254,
+        "sourceZone": "Feralas",
+        "objectiveKey": "item:11243",
+        "itemID": 11243,
+        "x": 0.45,
+        "sourceAreaID": 357,
+        "quantity": 1,
+        "itemName": "Videre Elixir",
+        "name": "Gregan Brewspewer"
+      },
+      {
+        "entityType": "object",
+        "mapID": 1444,
+        "action": "gather",
+        "entityID": 164798,
+        "x": 0.446,
+        "y": 0.1018,
+        "objectiveKey": "item:11242",
+        "itemID": 11242,
+        "quantity": 1,
+        "sourceAreaID": 357,
+        "itemName": "Evoroot",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Evoroot"
+      }
+    ],
+    "series": [
+      3909,
+      3912,
+      3913,
+      3914,
+      3941
+    ],
+    "foreverStatus": "unchanged",
+    "classMask": 0,
+    "starts": [
+      {
+        "y": 0.452,
+        "mapID": 1452,
+        "name": "Donova Snowden",
+        "entityID": 9298,
+        "npc": true,
+        "x": 0.312
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "prerequisiteAny": [
+      3908
+    ],
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Videre Elixir",
+        "name": "Gregan Brewspewer",
+        "entityID": 7775,
+        "npc": true,
+        "action": "loot"
+      }
+    ]
+  },
+  "3912": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Donova Snowden",
+        "entityID": 9298
+      }
+    ],
+    "requirements": {},
+    "seriesRoot": 3909,
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Linken's Tempered Sword",
+        "itemID": 11136
+      }
+    ],
+    "objectives": {},
+    "series": [
+      3909,
+      3912,
+      3913,
+      3914,
+      3941
+    ],
+    "starts": [
+      {
+        "y": 0.452,
+        "mapID": 1452,
+        "name": "Donova Snowden",
+        "entityID": 9298,
+        "npc": true,
+        "x": 0.312
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 52,
+    "areaID": 490,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "ends": [
+      {
+        "y": 0.23199999999999998,
+        "mapID": 1446,
+        "name": "Gaeriyan",
+        "entityID": 9299,
+        "npc": true,
+        "x": 0.54
+      },
+      {
+        "y": 0.23199999999999998,
+        "mapID": 1446,
+        "name": "Gaeriyan",
+        "entityID": 208518,
+        "npc": true,
+        "x": 0.54
+      }
+    ],
+    "side": "Both",
+    "previousQuest": 3909,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Gaeriyan",
+        "entityID": 9299
+      },
+      {
+        "entityType": "npc",
+        "name": "Gaeriyan",
+        "entityID": 208518
+      }
+    ],
+    "xp": 5100,
+    "title": "Meet at the Grave",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 2,
+    "minLevel": 47,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Donova Snowden",
+          "entityID": 9298
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Gaeriyan",
+          "entityID": 9299
+        },
+        {
+          "entityType": "npc",
+          "name": "Gaeriyan",
+          "entityID": 208518
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "3913": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Gaeriyan",
+        "entityID": 9299
+      },
+      {
+        "entityType": "npc",
+        "name": "Gaeriyan",
+        "entityID": 208518
+      }
+    ],
+    "requirements": {},
+    "seriesRoot": 3909,
+    "requiredItems": {},
+    "objectives": {},
+    "series": [
+      3909,
+      3912,
+      3913,
+      3914,
+      3941
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Linken's Tempered Sword",
+        "entityID": 11136
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.29,
+        "x": 0.539,
+        "name": "A Conspicuous Gravestone",
+        "entityID": 148504,
+        "mapID": 1446
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.23199999999999998,
+        "mapID": 1446,
+        "name": "Gaeriyan",
+        "entityID": 9299,
+        "npc": true,
+        "x": 0.54
+      },
+      {
+        "y": 0.23199999999999998,
+        "mapID": 1446,
+        "name": "Gaeriyan",
+        "entityID": 208518,
+        "npc": true,
+        "x": 0.54
+      }
+    ],
+    "level": 52,
+    "areaID": 490,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "previousQuest": 3912,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "object",
+        "name": "A Conspicuous Gravestone",
+        "entityID": 148504
+      }
+    ],
+    "xp": 2550,
+    "title": "A Grave Situation",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 3,
+    "minLevel": 47,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Gaeriyan",
+          "entityID": 9299
+        },
+        {
+          "entityType": "npc",
+          "name": "Gaeriyan",
+          "entityID": 208518
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Linken's Tempered Sword",
+          "entityID": 11136
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "object",
+          "name": "A Conspicuous Gravestone",
+          "entityID": 148504
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "3914": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "objectives": {},
+    "zone": "Un'Goro Crater",
+    "requirements": {},
+    "seriesRoot": 3909,
+    "requiredItems": {},
+    "series": [
+      3909,
+      3912,
+      3913,
+      3914,
+      3941
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Linken's Superior Sword",
+        "entityID": 11162
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.29,
+        "x": 0.539,
+        "name": "A Conspicuous Gravestone",
+        "entityID": 148504,
+        "mapID": 1446
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.08199999999999999,
+        "mapID": 1449,
+        "name": "Linken",
+        "entityID": 8737,
+        "npc": true,
+        "x": 0.446
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 52,
+    "areaID": 490,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "A Conspicuous Gravestone",
+        "entityID": 148504
+      }
+    ],
+    "side": "Both",
+    "previousQuest": 3913,
+    "money": 7500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Linken",
+        "entityID": 8737
+      }
+    ],
+    "xp": 5100,
+    "title": "Linken's Sword",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 4,
+    "minLevel": 47,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "object",
+          "name": "A Conspicuous Gravestone",
+          "entityID": 148504
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Linken's Superior Sword",
+          "entityID": 11162
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Linken",
+          "entityID": 8737
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "3941": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "zone": "Un'Goro Crater",
+    "requirements": {},
+    "seriesRoot": 3909,
+    "objectives": {},
+    "series": [
+      3909,
+      3912,
+      3913,
+      3914,
+      3941
+    ],
+    "starts": [
+      {
+        "y": 0.08199999999999999,
+        "mapID": 1449,
+        "name": "Linken",
+        "entityID": 8737,
+        "npc": true,
+        "x": 0.446
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.026000000000000002,
+        "mapID": 1449,
+        "name": "J.D. Collie",
+        "entityID": 9117,
+        "npc": true,
+        "x": 0.418
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 52,
+    "areaID": 490,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Linken",
+        "entityID": 8737
+      }
+    ],
+    "side": "Both",
+    "previousQuest": 3914,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "J.D. Collie",
+        "entityID": 9117
+      }
+    ],
+    "xp": 1250,
+    "title": "A Gnome's Assistance",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 5,
+    "minLevel": 47,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Linken",
+          "entityID": 8737
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "J.D. Collie",
+          "entityID": 9117
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "3942": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "J.D. Collie",
+        "entityID": 9117
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1448,
+        "entityID": 9116,
+        "npc": true,
+        "sourceZone": "Felwood",
+        "x": 0.512,
+        "name": "Eridan Bluewind",
+        "sourceAreaID": 361,
+        "y": 0.8140000000000001
+      }
+    ],
+    "objectives": {},
+    "level": 54,
+    "areaID": 490,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9117,
+        "npc": true,
+        "sourceZone": "Un'Goro Crater",
+        "x": 0.418,
+        "name": "J.D. Collie",
+        "sourceAreaID": 490,
+        "y": 0.024
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "raceMask": 0,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Eridan Bluewind",
+        "entityID": 9116
+      }
+    ],
+    "xp": 5450,
+    "prerequisiteAny": [
+      3941
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 47,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Linken's Memory",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "J.D. Collie",
+          "entityID": 9117
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Eridan Bluewind",
+          "entityID": 9116
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "3961": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "J.D. Collie",
+        "entityID": 9117
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Silver Totem of Aquementas",
+        "entityID": 11522
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Silver Totem of Aquementas",
+        "name": "Aquementas",
+        "entityID": 9453,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Silver Totem of Aquementas",
+        "itemID": 11522
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1446,
+        "action": "loot",
+        "entityID": 9453,
+        "npc": true,
+        "x": 0.7040000000000001,
+        "y": 0.499,
+        "objectiveKey": "item:11522",
+        "itemID": 11522,
+        "quantity": 1,
+        "sourceAreaID": 440,
+        "itemName": "Silver Totem of Aquementas",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Aquementas"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9117,
+        "npc": true,
+        "sourceZone": "Un'Goro Crater",
+        "x": 0.418,
+        "name": "J.D. Collie",
+        "sourceAreaID": 490,
+        "y": 0.024
+      }
+    ],
+    "level": 54,
+    "areaID": 490,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "side": "Both",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 8737,
+        "npc": true,
+        "y": 0.081,
+        "x": 0.44659999999999994,
+        "name": "Linken",
+        "sourceAreaID": 490,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Linken",
+        "entityID": 8737
+      }
+    ],
+    "xp": 2700,
+    "prerequisiteAny": [
+      4005
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 47,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Linken's Adventure",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Silver Totem of Aquementas",
+          "entityID": 11522
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "J.D. Collie",
+          "entityID": 9117
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Linken",
+          "entityID": 8737
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "3962": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "npcTargets": [
+      {
+        "entityID": 9376,
+        "npc": true,
+        "action": "kill",
+        "name": "Blazerunner"
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Linken",
+        "entityID": 8737
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "action": "kill",
+        "entityID": 9376,
+        "name": "Blazerunner"
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 11179,
+        "name": "Golden Flame"
+      }
+    ],
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "action": "kill",
+        "entityID": 9376,
+        "npc": true,
+        "y": 0.49329999999999996,
+        "objectiveKey": "npc:9376",
+        "name": "Blazerunner",
+        "sourceAreaID": 490,
+        "x": 0.4941,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantity": 1
+      },
+      {
+        "entityType": "object",
+        "mapID": 1449,
+        "action": "gather",
+        "entityID": 164910,
+        "x": 0.5028,
+        "y": 0.4997,
+        "objectiveKey": "item:11179",
+        "itemID": 11179,
+        "quantity": 1,
+        "sourceAreaID": 490,
+        "itemName": "Golden Flame",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Ornate Chest"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Golden Flame",
+        "itemID": 11179
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 8737,
+        "npc": true,
+        "sourceZone": "Un'Goro Crater",
+        "x": 0.446,
+        "name": "Linken",
+        "sourceAreaID": 490,
+        "y": 0.08199999999999999
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 56,
+    "areaID": 490,
+    "raceMask": 0,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "prerequisiteAny": [
+      3961
+    ],
+    "side": "Both",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 8737,
+        "npc": true,
+        "sourceZone": "Un'Goro Crater",
+        "x": 0.446,
+        "name": "Linken",
+        "sourceAreaID": 490,
+        "y": 0.08199999999999999
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Linken",
+        "entityID": 8737
+      }
+    ],
+    "xp": 7300,
+    "questType": "Elite",
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 47,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "It's Dangerous to Go Alone",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "action": "kill",
+          "entityID": 9376,
+          "name": "Blazerunner"
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 11179,
+          "name": "Golden Flame"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Linken",
+          "entityID": 8737
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Linken",
+          "entityID": 8737
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "4005": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Eridan Bluewind",
+        "entityID": 9116
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 11522,
+        "name": "Silver Totem of Aquementas"
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Silver Totem of Aquementas",
+        "name": "Aquementas",
+        "entityID": 9453,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Silver Totem of Aquementas",
+        "itemID": 11522
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1446,
+        "action": "loot",
+        "entityID": 9453,
+        "npc": true,
+        "x": 0.7040000000000001,
+        "y": 0.499,
+        "objectiveKey": "item:11522",
+        "itemID": 11522,
+        "quantity": 1,
+        "sourceAreaID": 440,
+        "itemName": "Silver Totem of Aquementas",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Aquementas"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1448,
+        "entityID": 9116,
+        "npc": true,
+        "sourceZone": "Felwood",
+        "x": 0.512,
+        "name": "Eridan Bluewind",
+        "sourceAreaID": 361,
+        "y": 0.8140000000000001
+      }
+    ],
+    "level": 54,
+    "areaID": 490,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "side": "Both",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9117,
+        "npc": true,
+        "sourceZone": "Un'Goro Crater",
+        "x": 0.418,
+        "name": "J.D. Collie",
+        "sourceAreaID": 490,
+        "y": 0.024
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "J.D. Collie",
+        "entityID": 9117
+      }
+    ],
+    "xp": 5450,
+    "prerequisiteAny": [
+      4084
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 47,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Aquementas",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 11522,
+          "name": "Silver Totem of Aquementas"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Eridan Bluewind",
+          "entityID": 9116
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "J.D. Collie",
+          "entityID": 9117
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "4084": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Eridan Bluewind",
+        "entityID": 9116
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 11,
+        "action": "collect",
+        "entityID": 11172,
+        "name": "Silvery Claws"
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 11173,
+        "name": "Irontree Heart"
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Silvery Claws",
+        "name": "Felpaw Wolf",
+        "entityID": 8959,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 11,
+        "name": "Silvery Claws",
+        "itemID": 11172
+      },
+      {
+        "quantity": 1,
+        "name": "Irontree Heart",
+        "itemID": 11173
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1448,
+        "legacyStepKey": "q:1448:npc:8959",
+        "entityID": 8959,
+        "name": "Felpaw Wolf",
+        "npc": true,
+        "x": 0.5337,
+        "y": 0.848,
+        "objectiveKey": "item:11172",
+        "itemID": 11172,
+        "quantity": 11,
+        "sourceAreaID": 361,
+        "itemName": "Silvery Claws",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "action": "loot"
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1448,
+        "entityID": 9116,
+        "npc": true,
+        "sourceZone": "Felwood",
+        "x": 0.512,
+        "name": "Eridan Bluewind",
+        "sourceAreaID": 361,
+        "y": 0.8140000000000001
+      }
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1448,
+        "entityID": 9116,
+        "npc": true,
+        "sourceZone": "Felwood",
+        "x": 0.512,
+        "name": "Eridan Bluewind",
+        "sourceAreaID": 361,
+        "y": 0.8140000000000001
+      }
+    ],
+    "level": 54,
+    "areaID": 490,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 1,
+        "itemName": "Irontree Heart",
+        "locations": [
+          {
+            "sourceObjective": 1,
+            "itemName": "Irontree Heart",
+            "action": "collect",
+            "entityID": 7138,
+            "npc": true,
+            "y": 0.146,
+            "x": 0.494,
+            "name": "Irontree Wanderer",
+            "mapID": 1448
+          },
+          {
+            "sourceObjective": 1,
+            "itemName": "Irontree Heart",
+            "action": "collect",
+            "entityID": 7139,
+            "npc": true,
+            "y": 0.298,
+            "x": 0.486,
+            "name": "Irontree Stomper",
+            "mapID": 1448
+          }
+        ]
+      },
+      {
+        "sourceObjective": 0,
+        "itemName": "Silvery Claws",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Silvery Claws",
+            "action": "collect",
+            "entityID": 8956,
+            "npc": true,
+            "y": 0.852,
+            "x": 0.45799999999999996,
+            "name": "Angerclaw Bear",
+            "mapID": 1448
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Silvery Claws",
+            "action": "collect",
+            "entityID": 8957,
+            "npc": true,
+            "y": 0.10400000000000001,
+            "x": 0.5579999999999999,
+            "name": "Angerclaw Grizzly",
+            "mapID": 1448
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Silvery Claws",
+            "action": "collect",
+            "entityID": 8958,
+            "npc": true,
+            "y": 0.386,
+            "x": 0.478,
+            "name": "Angerclaw Mauler",
+            "mapID": 1448
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Silvery Claws",
+            "action": "collect",
+            "entityID": 8959,
+            "npc": true,
+            "y": 0.8740000000000001,
+            "x": 0.504,
+            "name": "Felpaw Wolf",
+            "mapID": 1448
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Silvery Claws",
+            "action": "collect",
+            "entityID": 8960,
+            "npc": true,
+            "y": 0.336,
+            "x": 0.4,
+            "name": "Felpaw Scavenger",
+            "mapID": 1448
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Silvery Claws",
+            "action": "collect",
+            "entityID": 8961,
+            "npc": true,
+            "y": 0.10400000000000001,
+            "x": 0.5579999999999999,
+            "name": "Felpaw Ravager",
+            "mapID": 1448
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Silvery Claws",
+            "action": "collect",
+            "entityID": 14339,
+            "npc": true,
+            "y": 0.772,
+            "x": 0.498,
+            "name": "Death Howl",
+            "mapID": 1448
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Silvery Claws",
+            "action": "collect",
+            "entityID": 14344,
+            "npc": true,
+            "y": 0.79,
+            "x": 0.406,
+            "name": "Mongress",
+            "mapID": 1448
+          }
+        ]
+      }
+    ],
+    "title": "Silver Heart",
+    "missingRequirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 11173,
+        "name": "Irontree Heart"
+      }
+    ],
+    "side": "Both",
+    "prerequisiteAny": [
+      3942
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Eridan Bluewind",
+        "entityID": 9116
+      }
+    ],
+    "xp": 5450,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 47,
+    "requirementSource": "Published Forever typed objectives",
+    "raceMask": 0,
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "objectiveLocationsIncomplete": true,
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "4141": {
+    "prerequisitesRead": true,
+    "zone": "Un'Goro Crater",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 15,
+        "name": "Bloodpetal",
+        "entityID": 11316
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 52,
+    "areaID": 490,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 0,
+        "itemName": "Bloodpetal",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Bloodpetal",
+            "action": "collect",
+            "entityID": 6509,
+            "npc": true,
+            "y": 0.29600000000000004,
+            "x": 0.684,
+            "name": "Bloodpetal Lasher",
+            "mapID": 1449
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Bloodpetal",
+            "action": "collect",
+            "entityID": 6510,
+            "npc": true,
+            "y": 0.15,
+            "x": 0.532,
+            "name": "Bloodpetal Flayer",
+            "mapID": 1449
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Bloodpetal",
+            "action": "collect",
+            "entityID": 6511,
+            "npc": true,
+            "y": 0.294,
+            "x": 0.6859999999999999,
+            "name": "Bloodpetal Thresher",
+            "mapID": 1449
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Bloodpetal",
+            "action": "collect",
+            "entityID": 6512,
+            "npc": true,
+            "y": 0.23,
+            "x": 0.358,
+            "name": "Bloodpetal Trapper",
+            "mapID": 1449
+          }
+        ]
+      }
+    ],
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Muigin",
+        "entityID": 9119
+      }
+    ],
+    "xp": 5100,
+    "minLevel": 47,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 15,
+          "name": "Bloodpetal",
+          "entityID": 11316
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Muigin",
+          "entityID": 9119
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Muigin",
+          "entityID": 9119
+        }
+      ]
+    },
+    "categoryPath": "kalimdor/ungoro-crater",
+    "raceMask": 0,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Muigin",
+        "entityID": 9119
+      }
+    ],
+    "seriesRoot": 4141,
+    "requiredItems": [
+      {
+        "quantity": 15,
+        "name": "Bloodpetal",
+        "itemID": 11316
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.096,
+        "mapID": 1449,
+        "name": "Muigin",
+        "entityID": 9119,
+        "npc": true,
+        "x": 0.43
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "title": "Muigin and Larion",
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1449,
+        "legacyStepKey": "q:1449:npc:6510",
+        "entityID": 6510,
+        "npc": true,
+        "x": 0.532,
+        "y": 0.15,
+        "objectiveKey": "item:11316",
+        "itemID": 11316,
+        "quantity": 15,
+        "name": "Bloodpetal Flayer",
+        "itemName": "Bloodpetal",
+        "alternativeCount": 4,
+        "action": "collect"
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "series": [
+      4141,
+      4142,
+      4143
+    ],
+    "starts": [
+      {
+        "y": 0.096,
+        "mapID": 1449,
+        "name": "Muigin",
+        "entityID": 9119,
+        "npc": true,
+        "x": 0.43
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Bloodpetal",
+        "name": "Bloodpetal Lasher",
+        "entityID": 6509,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Bloodpetal",
+        "name": "Bloodpetal Flayer",
+        "entityID": 6510,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Bloodpetal",
+        "name": "Bloodpetal Thresher",
+        "entityID": 6511,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Bloodpetal",
+        "name": "Bloodpetal Trapper",
+        "entityID": 6512,
+        "npc": true,
+        "action": "collect"
+      }
+    ]
+  },
+  "4142": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "objectives": {},
+    "zone": "Un'Goro Crater",
+    "requirements": {},
+    "seriesRoot": 4141,
+    "requiredItems": {},
+    "series": [
+      4141,
+      4142,
+      4143
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Bloodpetal",
+        "entityID": 11316
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.096,
+        "mapID": 1449,
+        "name": "Muigin",
+        "entityID": 9119,
+        "npc": true,
+        "x": 0.43
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.254,
+        "mapID": 1444,
+        "name": "Gregan Brewspewer",
+        "entityID": 7775,
+        "npc": true,
+        "x": 0.45
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 52,
+    "areaID": 490,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Muigin",
+        "entityID": 9119
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 4141,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Gregan Brewspewer",
+        "entityID": 7775
+      }
+    ],
+    "xp": 3800,
+    "title": "A Visit to Gregan",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 2,
+    "minLevel": 47,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Muigin",
+          "entityID": 9119
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Bloodpetal",
+          "entityID": 11316
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Gregan Brewspewer",
+          "entityID": 7775
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "4144": {
+    "prerequisitesRead": true,
+    "zone": "Un'Goro Crater",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 3,
+        "name": "Bloodpetal Sprout",
+        "entityID": 11315
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "otherLocationsIncomplete": false,
+    "level": 53,
+    "areaID": 490,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 0,
+        "itemName": "Bloodpetal Sprout",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Bloodpetal Sprout",
+            "action": "collect",
+            "entityID": 6560,
+            "npc": true,
+            "y": 0.6679999999999999,
+            "x": 0.7440000000000001,
+            "name": "Stone Guardian",
+            "mapID": 1449
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Bloodpetal Sprout",
+            "action": "collect",
+            "entityID": 6584,
+            "npc": true,
+            "y": 0.35200000000000004,
+            "x": 0.312,
+            "name": "King Mosh",
+            "mapID": 1449
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Bloodpetal Sprout",
+            "action": "collect",
+            "entityID": 14527,
+            "npc": true,
+            "y": 0.8079999999999999,
+            "x": 0.494,
+            "name": "Simone the Inconspicuous",
+            "mapID": 1449
+          },
+          {
+            "sourceObjective": 0,
+            "mapID": 1449,
+            "action": "collect",
+            "y": 0.18100000000000002,
+            "entityID": 164958,
+            "x": 0.599,
+            "name": "Bloodpetal Sprout",
+            "itemName": "Bloodpetal Sprout"
+          }
+        ]
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Muigin",
+        "entityID": 9119
+      }
+    ],
+    "xp": 3950,
+    "minLevel": 47,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 3,
+          "name": "Bloodpetal Sprout",
+          "entityID": 11315
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Muigin",
+          "entityID": 9119
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Muigin",
+          "entityID": 9119
+        }
+      ]
+    },
+    "categoryPath": "kalimdor/ungoro-crater",
+    "raceMask": 0,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Muigin",
+        "entityID": 9119
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 3,
+        "name": "Bloodpetal Sprout",
+        "itemID": 11315
+      }
+    ],
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "ends": [
+      {
+        "y": 0.096,
+        "mapID": 1449,
+        "name": "Muigin",
+        "entityID": 9119,
+        "npc": true,
+        "x": 0.43
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "title": "Bloodpetal Sprouts",
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1449,
+        "legacyStepKey": "q:1449:npc:164958",
+        "entityID": 164958,
+        "x": 0.599,
+        "y": 0.18100000000000002,
+        "objectiveKey": "item:11315",
+        "itemID": 11315,
+        "quantity": 3,
+        "name": "Bloodpetal Sprout",
+        "itemName": "Bloodpetal Sprout",
+        "alternativeCount": 4,
+        "action": "collect"
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.096,
+        "mapID": 1449,
+        "name": "Muigin",
+        "entityID": 9119,
+        "npc": true,
+        "x": 0.43
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "prerequisiteAny": [
+      4143
+    ],
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Bloodpetal Sprout",
+        "name": "Stone Guardian",
+        "entityID": 6560,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Bloodpetal Sprout",
+        "name": "King Mosh",
+        "entityID": 6584,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Bloodpetal Sprout",
+        "name": "Simone the Inconspicuous",
+        "entityID": 14527,
+        "npc": true,
+        "action": "collect"
+      }
+    ]
+  },
+  "4145": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "zone": "Un'Goro Crater",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 5,
+        "name": "Bloodpetal Lasher",
+        "entityID": 6509
+      },
+      {
+        "entityType": "npc",
+        "quantity": 5,
+        "name": "Bloodpetal Trapper",
+        "entityID": 6512
+      },
+      {
+        "entityType": "npc",
+        "quantity": 5,
+        "name": "Bloodpetal Flayer",
+        "entityID": 6510
+      },
+      {
+        "entityType": "npc",
+        "quantity": 5,
+        "name": "Bloodpetal Thresher",
+        "entityID": 6511
+      }
+    ],
+    "seriesRoot": 4145,
+    "npcTargets": [
+      {
+        "entityID": 6509,
+        "name": "Bloodpetal Lasher",
+        "npc": true
+      },
+      {
+        "entityID": 6510,
+        "name": "Bloodpetal Flayer",
+        "npc": true
+      },
+      {
+        "entityID": 6511,
+        "name": "Bloodpetal Thresher",
+        "npc": true
+      },
+      {
+        "entityID": 6512,
+        "name": "Bloodpetal Trapper",
+        "npc": true
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 6509,
+        "mapID": 1449,
+        "entityID": 6509,
+        "npc": true,
+        "y": 0.29600000000000004,
+        "objectiveKey": "npc:6509",
+        "name": "Bloodpetal Lasher",
+        "x": 0.684,
+        "quantity": 5
+      },
+      {
+        "sourceObjective": 6510,
+        "mapID": 1449,
+        "entityID": 6510,
+        "npc": true,
+        "y": 0.15,
+        "objectiveKey": "npc:6510",
+        "name": "Bloodpetal Flayer",
+        "x": 0.532,
+        "quantity": 5
+      },
+      {
+        "sourceObjective": 6511,
+        "mapID": 1449,
+        "entityID": 6511,
+        "npc": true,
+        "y": 0.294,
+        "objectiveKey": "npc:6511",
+        "name": "Bloodpetal Thresher",
+        "x": 0.6859999999999999,
+        "quantity": 5
+      },
+      {
+        "sourceObjective": 6512,
+        "mapID": 1449,
+        "entityID": 6512,
+        "npc": true,
+        "y": 0.23,
+        "objectiveKey": "npc:6512",
+        "name": "Bloodpetal Trapper",
+        "x": 0.358,
+        "quantity": 5
+      }
+    ],
+    "series": [
+      4145,
+      4147,
+      4146
+    ],
+    "starts": [
+      {
+        "y": 0.086,
+        "mapID": 1449,
+        "name": "Larion",
+        "entityID": 9118,
+        "npc": true,
+        "x": 0.456
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "level": 52,
+    "areaID": 490,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Larion",
+        "entityID": 9118
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "ends": [
+      {
+        "y": 0.086,
+        "mapID": 1449,
+        "name": "Larion",
+        "entityID": 9118,
+        "npc": true,
+        "x": 0.456
+      }
+    ],
+    "side": "Horde",
+    "seriesPosition": 1,
+    "money": 7500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Larion",
+        "entityID": 9118
+      }
+    ],
+    "xp": 5100,
+    "foreverStatus": "unchanged",
+    "title": "Larion and Muigin",
+    "minLevel": 47,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 5,
+          "name": "Bloodpetal Lasher",
+          "entityID": 6509
+        },
+        {
+          "entityType": "npc",
+          "quantity": 5,
+          "name": "Bloodpetal Trapper",
+          "entityID": 6512
+        },
+        {
+          "entityType": "npc",
+          "quantity": 5,
+          "name": "Bloodpetal Flayer",
+          "entityID": 6510
+        },
+        {
+          "entityType": "npc",
+          "quantity": 5,
+          "name": "Bloodpetal Thresher",
+          "entityID": 6511
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Larion",
+          "entityID": 9118
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Larion",
+          "entityID": 9118
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "4146": {
+    "prerequisitesRead": true,
+    "zone": "Un'Goro Crater",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 5,
+        "name": "Atal'ai Haze",
+        "entityID": 11318
+      }
+    ],
+    "level": 52,
+    "areaID": 490,
+    "previousQuest": 4147,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Larion",
+        "entityID": 9118
+      }
+    ],
+    "xp": 5100,
+    "questType": "Elite",
+    "minLevel": 47,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 5,
+          "name": "Atal'ai Haze",
+          "entityID": 11318
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Liv Rizzlefix",
+          "entityID": 8496
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Unloaded Zapper",
+          "entityID": 11319
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Larion",
+          "entityID": 9118
+        }
+      ]
+    },
+    "objectiveLocationsIncomplete": true,
+    "categoryPath": "kalimdor/ungoro-crater",
+    "raceMask": 0,
+    "missingRequirements": [
+      {
+        "entityType": "item",
+        "quantity": 5,
+        "name": "Atal'ai Haze",
+        "entityID": 11318
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Liv Rizzlefix",
+        "entityID": 8496
+      }
+    ],
+    "seriesRoot": 4145,
+    "requiredItems": [
+      {
+        "quantity": 5,
+        "name": "Atal'ai Haze",
+        "itemID": 11318
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.086,
+        "mapID": 1449,
+        "name": "Larion",
+        "entityID": 9118,
+        "npc": true,
+        "x": 0.456
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "objectives": {},
+    "series": [
+      4145,
+      4147,
+      4146
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Unloaded Zapper",
+        "entityID": 11319
+      }
+    ],
+    "mapID": 1449,
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.386,
+        "mapID": 1413,
+        "name": "Liv Rizzlefix",
+        "entityID": 8496,
+        "npc": true,
+        "x": 0.624
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "title": "Zapper Fuel",
+    "classMask": 0,
+    "locationSource": "Wowhead Forever",
+    "seriesPosition": 3
+  },
+  "4147": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "zone": "Un'Goro Crater",
+    "requirements": {},
+    "seriesRoot": 4145,
+    "objectives": {},
+    "series": [
+      4145,
+      4147,
+      4146
+    ],
+    "starts": [
+      {
+        "y": 0.086,
+        "mapID": 1449,
+        "name": "Larion",
+        "entityID": 9118,
+        "npc": true,
+        "x": 0.456
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.386,
+        "mapID": 1413,
+        "name": "Liv Rizzlefix",
+        "entityID": 8496,
+        "npc": true,
+        "x": 0.624
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 52,
+    "areaID": 490,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Larion",
+        "entityID": 9118
+      }
+    ],
+    "side": "Horde",
+    "previousQuest": 4145,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Liv Rizzlefix",
+        "entityID": 8496
+      }
+    ],
+    "xp": 2550,
+    "title": "Marvon's Workshop",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 2,
+    "minLevel": 47,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Larion",
+          "entityID": 9118
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Liv Rizzlefix",
+          "entityID": 8496
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "4243": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "zone": "Un'Goro Crater",
+    "requirements": {},
+    "seriesRoot": 4243,
+    "objectives": {},
+    "series": [
+      4243,
+      4244
+    ],
+    "starts": [
+      {
+        "y": 0.134,
+        "mapID": 1449,
+        "name": "Karna Remtravel",
+        "entityID": 9618,
+        "npc": true,
+        "x": 0.46399999999999997
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.168,
+        "mapID": 1449,
+        "name": "A-Me 01",
+        "entityID": 9623,
+        "npc": true,
+        "x": 0.6759999999999999
+      }
+    ],
+    "title": "Chasing A-Me 01",
+    "level": 53,
+    "areaID": 490,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Karna Remtravel",
+        "entityID": 9618
+      }
+    ],
+    "side": "Both",
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "A-Me 01",
+        "entityID": 9623
+      }
+    ],
+    "xp": 2650,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 48,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Karna Remtravel",
+          "entityID": 9618
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "A-Me 01",
+          "entityID": 9623
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "4244": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "A-Me 01",
+        "entityID": 9623
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 10561,
+        "name": "Mithril Casing"
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Mithril Casing",
+        "name": "7:XT",
+        "entityID": 14224,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Mithril Casing",
+        "itemID": 10561
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1418,
+        "action": "loot",
+        "entityID": 14224,
+        "npc": true,
+        "x": 0.0274,
+        "y": 0.8029999999999999,
+        "objectiveKey": "item:10561",
+        "itemID": 10561,
+        "quantity": 1,
+        "sourceAreaID": 3,
+        "itemName": "Mithril Casing",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "7:XT"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9623,
+        "npc": true,
+        "sourceZone": "Un'Goro Crater",
+        "x": 0.596,
+        "name": "A-Me 01",
+        "sourceAreaID": 490,
+        "y": 0.17
+      }
+    ],
+    "level": 53,
+    "areaID": 490,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "side": "Both",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9623,
+        "npc": true,
+        "sourceZone": "Un'Goro Crater",
+        "x": 0.596,
+        "name": "A-Me 01",
+        "sourceAreaID": 490,
+        "y": 0.17
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "A-Me 01",
+        "entityID": 9623
+      }
+    ],
+    "xp": 3950,
+    "prerequisiteAny": [
+      4243
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 48,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Chasing A-Me 01",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 10561,
+          "name": "Mithril Casing"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "A-Me 01",
+          "entityID": 9623
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "A-Me 01",
+          "entityID": 9623
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "4245": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "A-Me 01",
+        "entityID": 9623
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9618,
+        "npc": true,
+        "sourceZone": "Un'Goro Crater",
+        "x": 0.46399999999999997,
+        "name": "Karna Remtravel",
+        "sourceAreaID": 490,
+        "y": 0.134
+      }
+    ],
+    "objectives": [
+      {
+        "y": 0.1378,
+        "mapID": 1449,
+        "action": "escort",
+        "x": 0.4643,
+        "locationSource": "Published Forever converted-baseline event area",
+        "name": "A-Me 01"
+      }
+    ],
+    "level": 53,
+    "areaID": 490,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9623,
+        "npc": true,
+        "sourceZone": "Un'Goro Crater",
+        "x": 0.596,
+        "name": "A-Me 01",
+        "sourceAreaID": 490,
+        "y": 0.17
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "raceMask": 0,
+    "money": 16000,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Karna Remtravel",
+        "entityID": 9618
+      }
+    ],
+    "xp": 6550,
+    "prerequisiteAny": [
+      4244
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 48,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Chasing A-Me 01",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "A-Me 01",
+          "entityID": 9623
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Karna Remtravel",
+          "entityID": 9618
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "4284": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "J.D. Collie",
+        "entityID": 9117
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 7,
+        "action": "collect",
+        "entityID": 11186,
+        "name": "Red Power Crystal"
+      },
+      {
+        "entityType": "item",
+        "quantity": 7,
+        "action": "collect",
+        "entityID": 11188,
+        "name": "Yellow Power Crystal"
+      },
+      {
+        "entityType": "item",
+        "quantity": 7,
+        "action": "collect",
+        "entityID": 11185,
+        "name": "Green Power Crystal"
+      },
+      {
+        "entityType": "item",
+        "quantity": 7,
+        "action": "collect",
+        "entityID": 11184,
+        "name": "Blue Power Crystal"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 7,
+        "name": "Red Power Crystal",
+        "itemID": 11186
+      },
+      {
+        "quantity": 7,
+        "name": "Yellow Power Crystal",
+        "itemID": 11188
+      },
+      {
+        "quantity": 7,
+        "name": "Green Power Crystal",
+        "itemID": 11185
+      },
+      {
+        "quantity": 7,
+        "name": "Blue Power Crystal",
+        "itemID": 11184
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1449,
+        "action": "gather",
+        "entityID": 164660,
+        "x": 0.46799999999999997,
+        "y": 0.149,
+        "objectiveKey": "item:11186",
+        "itemID": 11186,
+        "quantity": 7,
+        "sourceAreaID": 490,
+        "itemName": "Red Power Crystal",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Red Power Crystal"
+      },
+      {
+        "entityType": "object",
+        "mapID": 1449,
+        "action": "gather",
+        "entityID": 164661,
+        "x": 0.46799999999999997,
+        "y": 0.149,
+        "objectiveKey": "item:11188",
+        "itemID": 11188,
+        "quantity": 7,
+        "sourceAreaID": 490,
+        "itemName": "Yellow Power Crystal",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Yellow Power Crystal"
+      },
+      {
+        "entityType": "object",
+        "mapID": 1449,
+        "action": "gather",
+        "entityID": 164659,
+        "x": 0.46799999999999997,
+        "y": 0.149,
+        "objectiveKey": "item:11185",
+        "itemID": 11185,
+        "quantity": 7,
+        "sourceAreaID": 490,
+        "itemName": "Green Power Crystal",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Green Power Crystal"
+      },
+      {
+        "entityType": "object",
+        "mapID": 1449,
+        "action": "gather",
+        "entityID": 164658,
+        "x": 0.46799999999999997,
+        "y": 0.149,
+        "objectiveKey": "item:11184",
+        "itemID": 11184,
+        "quantity": 7,
+        "sourceAreaID": 490,
+        "itemName": "Blue Power Crystal",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Blue Power Crystal"
+      }
+    ],
+    "level": 53,
+    "areaID": 490,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9117,
+        "npc": true,
+        "sourceZone": "Un'Goro Crater",
+        "x": 0.418,
+        "name": "J.D. Collie",
+        "sourceAreaID": 490,
+        "y": 0.024
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "raceMask": 0,
+    "money": 8000,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "J.D. Collie",
+        "entityID": 9117
+      }
+    ],
+    "xp": 5250,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9117,
+        "npc": true,
+        "sourceZone": "Un'Goro Crater",
+        "x": 0.418,
+        "name": "J.D. Collie",
+        "sourceAreaID": 490,
+        "y": 0.024
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 47,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Crystals of Power",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 7,
+          "action": "collect",
+          "entityID": 11186,
+          "name": "Red Power Crystal"
+        },
+        {
+          "entityType": "item",
+          "quantity": 7,
+          "action": "collect",
+          "entityID": 11188,
+          "name": "Yellow Power Crystal"
+        },
+        {
+          "entityType": "item",
+          "quantity": 7,
+          "action": "collect",
+          "entityID": 11185,
+          "name": "Green Power Crystal"
+        },
+        {
+          "entityType": "item",
+          "quantity": 7,
+          "action": "collect",
+          "entityID": 11184,
+          "name": "Blue Power Crystal"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "J.D. Collie",
+          "entityID": 9117
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "J.D. Collie",
+          "entityID": 9117
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "4285": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "J.D. Collie",
+        "entityID": 9117
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "object",
+        "quantityUnknown": true,
+        "action": "interact",
+        "entityID": 164955,
+        "name": "Northern Crystal Pylon"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1449,
+        "action": "interact",
+        "entityID": 164955,
+        "y": 0.12539999999999998,
+        "objectiveKey": "object:164955",
+        "name": "Northern Crystal Pylon",
+        "sourceAreaID": 490,
+        "x": 0.5652,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantityUnknown": true
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9117,
+        "npc": true,
+        "sourceZone": "Un'Goro Crater",
+        "x": 0.418,
+        "name": "J.D. Collie",
+        "sourceAreaID": 490,
+        "y": 0.024
+      }
+    ],
+    "level": 53,
+    "areaID": 490,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "side": "Both",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9117,
+        "npc": true,
+        "sourceZone": "Un'Goro Crater",
+        "x": 0.418,
+        "name": "J.D. Collie",
+        "sourceAreaID": 490,
+        "y": 0.024
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "J.D. Collie",
+        "entityID": 9117
+      }
+    ],
+    "xp": 3950,
+    "prerequisiteAny": [
+      4284
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 47,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "The Northern Pylon",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantityUnknown": true,
+          "action": "interact",
+          "entityID": 164955,
+          "name": "Northern Crystal Pylon"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "J.D. Collie",
+          "entityID": 9117
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "J.D. Collie",
+          "entityID": 9117
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "4287": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "J.D. Collie",
+        "entityID": 9117
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "object",
+        "quantityUnknown": true,
+        "action": "interact",
+        "entityID": 164957,
+        "name": "Eastern Crystal Pylon"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1449,
+        "action": "interact",
+        "entityID": 164957,
+        "y": 0.49979999999999997,
+        "objectiveKey": "object:164957",
+        "name": "Eastern Crystal Pylon",
+        "sourceAreaID": 490,
+        "x": 0.7716,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantityUnknown": true
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9117,
+        "npc": true,
+        "sourceZone": "Un'Goro Crater",
+        "x": 0.418,
+        "name": "J.D. Collie",
+        "sourceAreaID": 490,
+        "y": 0.024
+      }
+    ],
+    "level": 53,
+    "areaID": 490,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "side": "Both",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9117,
+        "npc": true,
+        "sourceZone": "Un'Goro Crater",
+        "x": 0.418,
+        "name": "J.D. Collie",
+        "sourceAreaID": 490,
+        "y": 0.024
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "J.D. Collie",
+        "entityID": 9117
+      }
+    ],
+    "xp": 3950,
+    "prerequisiteAny": [
+      4284
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 47,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "The Eastern Pylon",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantityUnknown": true,
+          "action": "interact",
+          "entityID": 164957,
+          "name": "Eastern Crystal Pylon"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "J.D. Collie",
+          "entityID": 9117
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "J.D. Collie",
+          "entityID": 9117
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "4288": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "J.D. Collie",
+        "entityID": 9117
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "object",
+        "quantityUnknown": true,
+        "action": "interact",
+        "entityID": 164956,
+        "name": "Western Crystal Pylon"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1449,
+        "action": "interact",
+        "entityID": 164956,
+        "y": 0.5919,
+        "objectiveKey": "object:164956",
+        "name": "Western Crystal Pylon",
+        "sourceAreaID": 490,
+        "x": 0.2386,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantityUnknown": true
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9117,
+        "npc": true,
+        "sourceZone": "Un'Goro Crater",
+        "x": 0.418,
+        "name": "J.D. Collie",
+        "sourceAreaID": 490,
+        "y": 0.024
+      }
+    ],
+    "level": 53,
+    "areaID": 490,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "side": "Both",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9117,
+        "npc": true,
+        "sourceZone": "Un'Goro Crater",
+        "x": 0.418,
+        "name": "J.D. Collie",
+        "sourceAreaID": 490,
+        "y": 0.024
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "J.D. Collie",
+        "entityID": 9117
+      }
+    ],
+    "xp": 3950,
+    "prerequisiteAny": [
+      4284
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 47,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "The Western Pylon",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantityUnknown": true,
+          "action": "interact",
+          "entityID": 164956,
+          "name": "Western Crystal Pylon"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "J.D. Collie",
+          "entityID": 9117
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "J.D. Collie",
+          "entityID": 9117
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "4289": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Torwa Pathfinder",
+        "entityID": 9619
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 2,
+        "action": "collect",
+        "entityID": 11478,
+        "name": "Un'Goro Gorilla Pelt"
+      },
+      {
+        "entityType": "item",
+        "quantity": 2,
+        "action": "collect",
+        "entityID": 11479,
+        "name": "Un'Goro Stomper Pelt"
+      },
+      {
+        "entityType": "item",
+        "quantity": 2,
+        "action": "collect",
+        "entityID": 11480,
+        "name": "Un'Goro Thunderer Pelt"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 2,
+        "name": "Un'Goro Gorilla Pelt",
+        "itemID": 11478
+      },
+      {
+        "quantity": 2,
+        "name": "Un'Goro Stomper Pelt",
+        "itemID": 11479
+      },
+      {
+        "quantity": 2,
+        "name": "Un'Goro Thunderer Pelt",
+        "itemID": 11480
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "npcTargets": [
+      {
+        "itemName": "Un'Goro Gorilla Pelt",
+        "name": "Un'Goro Gorilla",
+        "entityID": 6514,
+        "npc": true,
+        "action": "loot"
+      },
+      {
+        "itemName": "Un'Goro Stomper Pelt",
+        "name": "Un'Goro Stomper",
+        "entityID": 6513,
+        "npc": true,
+        "action": "loot"
+      },
+      {
+        "itemName": "Un'Goro Thunderer Pelt",
+        "name": "Un'Goro Thunderer",
+        "entityID": 6516,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "action": "loot",
+        "entityID": 6514,
+        "npc": true,
+        "x": 0.6585,
+        "y": 0.1562,
+        "objectiveKey": "item:11478",
+        "itemID": 11478,
+        "quantity": 2,
+        "sourceAreaID": 490,
+        "itemName": "Un'Goro Gorilla Pelt",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Un'Goro Gorilla"
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "action": "loot",
+        "entityID": 6513,
+        "npc": true,
+        "x": 0.6585,
+        "y": 0.1562,
+        "objectiveKey": "item:11479",
+        "itemID": 11479,
+        "quantity": 2,
+        "sourceAreaID": 490,
+        "itemName": "Un'Goro Stomper Pelt",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Un'Goro Stomper"
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "action": "loot",
+        "entityID": 6516,
+        "npc": true,
+        "x": 0.6585,
+        "y": 0.1562,
+        "objectiveKey": "item:11480",
+        "itemID": 11480,
+        "quantity": 2,
+        "sourceAreaID": 490,
+        "itemName": "Un'Goro Thunderer Pelt",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Un'Goro Thunderer"
+      }
+    ],
+    "level": 55,
+    "areaID": 490,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9619,
+        "npc": true,
+        "y": 0.7595999999999999,
+        "x": 0.7164,
+        "name": "Torwa Pathfinder",
+        "sourceAreaID": 490,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "raceMask": 0,
+    "money": 8500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Torwa Pathfinder",
+        "entityID": 9619
+      }
+    ],
+    "xp": 5650,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9619,
+        "npc": true,
+        "y": 0.7595999999999999,
+        "x": 0.7164,
+        "name": "Torwa Pathfinder",
+        "sourceAreaID": 490,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 47,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "The Apes of Un'Goro",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 2,
+          "action": "collect",
+          "entityID": 11478,
+          "name": "Un'Goro Gorilla Pelt"
+        },
+        {
+          "entityType": "item",
+          "quantity": 2,
+          "action": "collect",
+          "entityID": 11479,
+          "name": "Un'Goro Stomper Pelt"
+        },
+        {
+          "entityType": "item",
+          "quantity": 2,
+          "action": "collect",
+          "entityID": 11480,
+          "name": "Un'Goro Thunderer Pelt"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Torwa Pathfinder",
+          "entityID": 9619
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Torwa Pathfinder",
+          "entityID": 9619
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "4290": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Torwa Pathfinder",
+        "entityID": 9619
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 11504,
+        "name": "Piece of Threshadon Carcass"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Piece of Threshadon Carcass",
+        "itemID": 11504
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1449,
+        "action": "gather",
+        "entityID": 166863,
+        "x": 0.6873999999999999,
+        "y": 0.5671,
+        "objectiveKey": "item:11504",
+        "itemID": 11504,
+        "quantity": 1,
+        "sourceAreaID": 490,
+        "itemName": "Piece of Threshadon Carcass",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Fresh Threshadon Carcass"
+      }
+    ],
+    "level": 53,
+    "areaID": 490,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9619,
+        "npc": true,
+        "y": 0.7595999999999999,
+        "x": 0.7164,
+        "name": "Torwa Pathfinder",
+        "sourceAreaID": 490,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "raceMask": 0,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Torwa Pathfinder",
+        "entityID": 9619
+      }
+    ],
+    "xp": 5250,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9619,
+        "npc": true,
+        "y": 0.7595999999999999,
+        "x": 0.7164,
+        "name": "Torwa Pathfinder",
+        "sourceAreaID": 490,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 48,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "The Fare of Lar'korwi",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 11504,
+          "name": "Piece of Threshadon Carcass"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Torwa Pathfinder",
+          "entityID": 9619
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Torwa Pathfinder",
+          "entityID": 9619
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "4291": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Torwa Pathfinder",
+        "entityID": 9619
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 2,
+        "action": "collect",
+        "entityID": 11509,
+        "name": "Ravasaur Pheromone Gland"
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Ravasaur Pheromone Gland",
+        "name": "Lar'korwi Mate",
+        "entityID": 9683,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 2,
+        "name": "Ravasaur Pheromone Gland",
+        "itemID": 11509
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "action": "loot",
+        "entityID": 9683,
+        "npc": true,
+        "x": 0.63,
+        "y": 0.77,
+        "objectiveKey": "item:11509",
+        "itemID": 11509,
+        "quantity": 2,
+        "sourceAreaID": 490,
+        "itemName": "Ravasaur Pheromone Gland",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Lar'korwi Mate"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9619,
+        "npc": true,
+        "y": 0.7595999999999999,
+        "x": 0.7164,
+        "name": "Torwa Pathfinder",
+        "sourceAreaID": 490,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "level": 53,
+    "areaID": 490,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "side": "Both",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9619,
+        "npc": true,
+        "y": 0.7595999999999999,
+        "x": 0.7164,
+        "name": "Torwa Pathfinder",
+        "sourceAreaID": 490,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Torwa Pathfinder",
+        "entityID": 9619
+      }
+    ],
+    "xp": 5250,
+    "prerequisiteAny": [
+      4290
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 48,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "The Scent of Lar'korwi",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 2,
+          "action": "collect",
+          "entityID": 11509,
+          "name": "Ravasaur Pheromone Gland"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Torwa Pathfinder",
+          "entityID": 9619
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Torwa Pathfinder",
+          "entityID": 9619
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "4292": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Torwa Pathfinder",
+        "entityID": 9619
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 11510,
+        "name": "Lar'korwi's Head"
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Lar'korwi's Head",
+        "name": "Lar'korwi",
+        "entityID": 9684,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Lar'korwi's Head",
+        "itemID": 11510
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "action": "loot",
+        "entityID": 9684,
+        "npc": true,
+        "x": 0.7965000000000001,
+        "y": 0.49829999999999997,
+        "objectiveKey": "item:11510",
+        "itemID": 11510,
+        "quantity": 1,
+        "sourceAreaID": 490,
+        "itemName": "Lar'korwi's Head",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Lar'korwi"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9619,
+        "npc": true,
+        "y": 0.7595999999999999,
+        "x": 0.7164,
+        "name": "Torwa Pathfinder",
+        "sourceAreaID": 490,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "level": 56,
+    "areaID": 490,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "side": "Both",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9619,
+        "npc": true,
+        "y": 0.7595999999999999,
+        "x": 0.7164,
+        "name": "Torwa Pathfinder",
+        "sourceAreaID": 490,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Torwa Pathfinder",
+        "entityID": 9619
+      }
+    ],
+    "xp": 7300,
+    "prerequisiteAny": [
+      4291
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 48,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "The Bait for Lar'korwi",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 11510,
+          "name": "Lar'korwi's Head"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Torwa Pathfinder",
+          "entityID": 9619
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Torwa Pathfinder",
+          "entityID": 9619
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "4301": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Torwa Pathfinder",
+        "entityID": 9619
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 11476,
+        "name": "U'cha's Pelt"
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "U'cha's Pelt",
+        "name": "U'cha",
+        "entityID": 9622,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "U'cha's Pelt",
+        "itemID": 11476
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "action": "loot",
+        "entityID": 9622,
+        "npc": true,
+        "x": 0.6814,
+        "y": 0.12560000000000002,
+        "objectiveKey": "item:11476",
+        "itemID": 11476,
+        "quantity": 1,
+        "sourceAreaID": 490,
+        "itemName": "U'cha's Pelt",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "U'cha"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9619,
+        "npc": true,
+        "y": 0.7595999999999999,
+        "x": 0.7164,
+        "name": "Torwa Pathfinder",
+        "sourceAreaID": 490,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "level": 55,
+    "areaID": 490,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "side": "Both",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9619,
+        "npc": true,
+        "y": 0.7595999999999999,
+        "x": 0.7164,
+        "name": "Torwa Pathfinder",
+        "sourceAreaID": 490,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Torwa Pathfinder",
+        "entityID": 9619
+      }
+    ],
+    "xp": 5650,
+    "prerequisiteAny": [
+      4289
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 50,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "The Mighty U'cha",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 11476,
+          "name": "U'cha's Pelt"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Torwa Pathfinder",
+          "entityID": 9619
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Torwa Pathfinder",
+          "entityID": 9619
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "4321": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "J.D. Collie",
+        "entityID": 9117
+      }
+    ],
+    "requirements": {},
+    "objectives": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9117,
+        "npc": true,
+        "sourceZone": "Un'Goro Crater",
+        "x": 0.418,
+        "name": "J.D. Collie",
+        "sourceAreaID": 490,
+        "y": 0.024
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": true,
+    "title": "Making Sense of It",
+    "level": 53,
+    "areaID": 490,
+    "prerequisiteAll": [
+      4285,
+      4287,
+      4288
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9117,
+        "npc": true,
+        "sourceZone": "Un'Goro Crater",
+        "x": 0.418,
+        "name": "J.D. Collie",
+        "sourceAreaID": 490,
+        "y": 0.024
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "J.D. Collie",
+        "entityID": 9117
+      }
+    ],
+    "xp": 530,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 47,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "J.D. Collie",
+          "entityID": 9117
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "J.D. Collie",
+          "entityID": 9117
+        }
+      ]
+    },
+    "objectiveLocationsIncomplete": true,
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "4491": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Ringo",
+        "entityID": 9999
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9997,
+        "npc": true,
+        "y": 0.085,
+        "x": 0.4362,
+        "name": "Spraggle Frock",
+        "sourceAreaID": 490,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "objectives": [
+      {
+        "sourceAction": "use-at",
+        "mapID": 1449,
+        "action": "use",
+        "y": 0.08289999999999999,
+        "x": 0.4371,
+        "useItemName": "Spraggle's Canteen",
+        "locationSource": "Published Forever converted-baseline event area",
+        "name": "A Little Help From My Friends"
+      }
+    ],
+    "level": 55,
+    "areaID": 490,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9999,
+        "npc": true,
+        "y": 0.4985,
+        "x": 0.519,
+        "name": "Ringo",
+        "sourceAreaID": 490,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "raceMask": 0,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Spraggle Frock",
+        "entityID": 9997
+      }
+    ],
+    "xp": 5650,
+    "prerequisiteAny": [
+      4492
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 50,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "A Little Help From My Friends",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Ringo",
+          "entityID": 9999
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Spraggle Frock",
+          "entityID": 9997
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "4492": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Spraggle Frock",
+        "entityID": 9997
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Spraggle's Canteen",
+        "entityID": 15722
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Spraggle's Canteen",
+        "itemID": 15722
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "objectives": [
+      {
+        "y": 0.08289999999999999,
+        "mapID": 1449,
+        "action": "event",
+        "x": 0.4371,
+        "locationSource": "Published Forever converted-baseline event area",
+        "name": "Lost!"
+      }
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Spraggle's Canteen",
+        "entityID": 15722
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9999,
+        "npc": true,
+        "y": 0.4985,
+        "x": 0.519,
+        "name": "Ringo",
+        "sourceAreaID": 490,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9997,
+        "npc": true,
+        "y": 0.085,
+        "x": 0.4362,
+        "name": "Spraggle Frock",
+        "sourceAreaID": 490,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "level": 55,
+    "areaID": 490,
+    "title": "Lost!",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "missingRequirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Spraggle's Canteen",
+        "entityID": 15722
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Ringo",
+        "entityID": 9999
+      }
+    ],
+    "xp": 2800,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 50,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Spraggle's Canteen",
+          "entityID": 15722
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Spraggle Frock",
+          "entityID": 9997
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Ringo",
+          "entityID": 9999
+        }
+      ]
+    },
+    "objectiveLocationsIncomplete": true,
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "4501": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Beware of Pterrordax",
+        "entityID": 174682
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 10,
+        "action": "kill",
+        "entityID": 9166,
+        "name": "Pterrordax"
+      },
+      {
+        "entityType": "npc",
+        "quantity": 15,
+        "action": "kill",
+        "entityID": 9167,
+        "name": "Frenzied Pterrordax"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "npcTargets": [
+      {
+        "entityID": 9166,
+        "npc": true,
+        "action": "kill",
+        "name": "Pterrordax"
+      },
+      {
+        "entityID": 9167,
+        "npc": true,
+        "action": "kill",
+        "name": "Frenzied Pterrordax"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "action": "kill",
+        "entityID": 9166,
+        "npc": true,
+        "sourceZone": "Un'Goro Crater",
+        "objectiveKey": "npc:9166",
+        "name": "Pterrordax",
+        "sourceAreaID": 490,
+        "y": 0.114,
+        "x": 0.564,
+        "quantity": 10
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "action": "kill",
+        "entityID": 9167,
+        "npc": true,
+        "y": 0.198,
+        "objectiveKey": "npc:9167",
+        "name": "Frenzied Pterrordax",
+        "sourceAreaID": 490,
+        "x": 0.39399999999999996,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantity": 15
+      }
+    ],
+    "level": 55,
+    "areaID": 490,
+    "starts": [
+      {
+        "entityType": "object",
+        "mapID": 1449,
+        "name": "Beware of Pterrordax",
+        "y": 0.08439999999999999,
+        "entityID": 174682,
+        "x": 0.4353,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "sourceAreaID": 490
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "raceMask": 0,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Spraggle Frock",
+        "entityID": 9997
+      }
+    ],
+    "xp": 5650,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9997,
+        "npc": true,
+        "y": 0.085,
+        "x": 0.4362,
+        "name": "Spraggle Frock",
+        "sourceAreaID": 490,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 49,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Beware of Pterrordax",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "action": "kill",
+          "entityID": 9166,
+          "name": "Pterrordax"
+        },
+        {
+          "entityType": "npc",
+          "quantity": 15,
+          "action": "kill",
+          "entityID": 9167,
+          "name": "Frenzied Pterrordax"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "object",
+          "name": "Beware of Pterrordax",
+          "entityID": 174682
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Spraggle Frock",
+          "entityID": 9997
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "4502": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Liv Rizzlefix",
+        "entityID": 8496
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 9,
+        "action": "collect",
+        "entityID": 11829,
+        "name": "Un'Goro Ash"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 9,
+        "name": "Un'Goro Ash",
+        "itemID": 11829
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "npcTargets": [
+      {
+        "itemName": "Un'Goro Ash",
+        "name": "Scorching Elemental",
+        "entityID": 6520,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "action": "loot",
+        "entityID": 6520,
+        "npc": true,
+        "x": 0.4683,
+        "y": 0.4543,
+        "objectiveKey": "item:11829",
+        "itemID": 11829,
+        "quantity": 9,
+        "sourceAreaID": 490,
+        "itemName": "Un'Goro Ash",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Scorching Elemental"
+      }
+    ],
+    "level": 55,
+    "areaID": 490,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1413,
+        "entityID": 8496,
+        "npc": true,
+        "sourceZone": "The Barrens",
+        "x": 0.624,
+        "name": "Liv Rizzlefix",
+        "sourceAreaID": 17,
+        "y": 0.386
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "raceMask": 0,
+    "money": 8500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Liv Rizzlefix",
+        "entityID": 8496
+      }
+    ],
+    "xp": 5650,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1413,
+        "entityID": 8496,
+        "npc": true,
+        "sourceZone": "The Barrens",
+        "x": 0.624,
+        "name": "Liv Rizzlefix",
+        "sourceAreaID": 17,
+        "y": 0.386
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 49,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Volcanic Activity",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 9,
+          "action": "collect",
+          "entityID": 11829,
+          "name": "Un'Goro Ash"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Liv Rizzlefix",
+          "entityID": 8496
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Liv Rizzlefix",
+          "entityID": 8496
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "4503": {
+    "prerequisitesRead": true,
+    "mapID": 1449,
+    "zone": "Un'Goro Crater",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 8,
+        "name": "Webbed Diemetradon Scale",
+        "entityID": 11830
+      },
+      {
+        "entityType": "item",
+        "quantity": 8,
+        "name": "Webbed Pterrordax Scale",
+        "entityID": 11831
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 8,
+        "name": "Webbed Diemetradon Scale",
+        "itemID": 11830
+      },
+      {
+        "quantity": 8,
+        "name": "Webbed Pterrordax Scale",
+        "itemID": 11831
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Webbed Diemetradon Scale",
+        "name": "Young Diemetradon",
+        "entityID": 9162,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Webbed Diemetradon Scale",
+        "name": "Diemetradon",
+        "entityID": 9163,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Webbed Diemetradon Scale",
+        "name": "Elder Diemetradon",
+        "entityID": 9164,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Webbed Pterrordax Scale",
+        "name": "Fledgling Pterrordax",
+        "entityID": 9165,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Webbed Pterrordax Scale",
+        "name": "Pterrordax",
+        "entityID": 9166,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Webbed Pterrordax Scale",
+        "name": "Frenzied Pterrordax",
+        "entityID": 9167,
+        "npc": true,
+        "action": "collect"
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1449,
+        "legacyStepKey": "q:1449:npc:9164",
+        "entityID": 9163,
+        "npc": true,
+        "x": 0.504,
+        "y": 0.71,
+        "objectiveKey": "item:11830",
+        "itemID": 11830,
+        "quantity": 8,
+        "name": "Diemetradon",
+        "itemName": "Webbed Diemetradon Scale",
+        "alternativeCount": 3,
+        "action": "collect"
+      },
+      {
+        "sourceObjective": 1,
+        "mapID": 1449,
+        "legacyStepKey": "q:1449:npc:9166",
+        "entityID": 9166,
+        "npc": true,
+        "x": 0.5720000000000001,
+        "y": 0.102,
+        "objectiveKey": "item:11831",
+        "itemID": 11831,
+        "quantity": 8,
+        "name": "Pterrordax",
+        "itemName": "Webbed Pterrordax Scale",
+        "alternativeCount": 3,
+        "action": "collect"
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.114,
+        "mapID": 1449,
+        "name": "Shizzle",
+        "entityID": 9998,
+        "npc": true,
+        "x": 0.442
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "level": 51,
+    "areaID": 490,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 0,
+        "itemName": "Webbed Diemetradon Scale",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Webbed Diemetradon Scale",
+            "action": "collect",
+            "entityID": 9162,
+            "npc": true,
+            "y": 0.28,
+            "x": 0.7,
+            "name": "Young Diemetradon",
+            "mapID": 1449
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Webbed Diemetradon Scale",
+            "action": "collect",
+            "entityID": 9163,
+            "npc": true,
+            "y": 0.71,
+            "x": 0.504,
+            "name": "Diemetradon",
+            "mapID": 1449
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Webbed Diemetradon Scale",
+            "action": "collect",
+            "entityID": 9164,
+            "npc": true,
+            "y": 0.23,
+            "x": 0.382,
+            "name": "Elder Diemetradon",
+            "mapID": 1449
+          }
+        ]
+      },
+      {
+        "sourceObjective": 1,
+        "itemName": "Webbed Pterrordax Scale",
+        "locations": [
+          {
+            "sourceObjective": 1,
+            "itemName": "Webbed Pterrordax Scale",
+            "action": "collect",
+            "entityID": 9165,
+            "npc": true,
+            "y": 0.598,
+            "x": 0.772,
+            "name": "Fledgling Pterrordax",
+            "mapID": 1449
+          },
+          {
+            "sourceObjective": 1,
+            "itemName": "Webbed Pterrordax Scale",
+            "action": "collect",
+            "entityID": 9166,
+            "npc": true,
+            "y": 0.102,
+            "x": 0.5720000000000001,
+            "name": "Pterrordax",
+            "mapID": 1449
+          },
+          {
+            "sourceObjective": 1,
+            "itemName": "Webbed Pterrordax Scale",
+            "action": "collect",
+            "entityID": 9167,
+            "npc": true,
+            "y": 0.59,
+            "x": 0.23800000000000002,
+            "name": "Frenzied Pterrordax",
+            "mapID": 1449
+          }
+        ]
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Shizzle",
+        "entityID": 9998
+      }
+    ],
+    "side": "Both",
+    "ends": [
+      {
+        "y": 0.114,
+        "mapID": 1449,
+        "name": "Shizzle",
+        "entityID": 9998,
+        "npc": true,
+        "x": 0.442
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Shizzle",
+        "entityID": 9998
+      }
+    ],
+    "xp": 4900,
+    "foreverStatus": "unchanged",
+    "title": "Shizzle's Flyer",
+    "minLevel": 49,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "name": "Webbed Diemetradon Scale",
+          "entityID": 11830
+        },
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "name": "Webbed Pterrordax Scale",
+          "entityID": 11831
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Shizzle",
+          "entityID": 9998
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Shizzle",
+          "entityID": 9998
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/ungoro-crater"
+  },
+  "9051": {
+    "prerequisitesRead": true,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Torwa Pathfinder",
+        "entityID": 9619
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantityUnknown": true,
+        "action": "interact",
+        "entityID": 6498,
+        "name": "Devilsaur",
+        "alternativeEntityIDs": [
+          6498,
+          6499,
+          6500
+        ]
+      }
+    ],
+    "npcTargets": [
+      {
+        "action": "interact",
+        "entityID": 6499,
+        "alternativeEntityIDs": [
+          6498,
+          6499,
+          6500
+        ],
+        "npc": true,
+        "name": "Ironhide Devilsaur"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "action": "interact",
+        "alternativeEntityIDs": [
+          6498,
+          6499,
+          6500
+        ],
+        "npc": true,
+        "y": 0.6175,
+        "objectiveKey": "npc:6498",
+        "name": "Ironhide Devilsaur",
+        "x": 0.5729,
+        "sourceAreaID": 490,
+        "quantityUnknown": true,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "entityID": 6499
+      }
+    ],
+    "classMask": 1024,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9619,
+        "npc": true,
+        "y": 0.7595999999999999,
+        "x": 0.7164,
+        "name": "Torwa Pathfinder",
+        "sourceAreaID": 490,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "level": 52,
+    "raceMask": 0,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "prerequisiteAny": [
+      9052
+    ],
+    "side": "Both",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9619,
+        "npc": true,
+        "y": 0.7595999999999999,
+        "x": 0.7164,
+        "name": "Torwa Pathfinder",
+        "sourceAreaID": 490,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Torwa Pathfinder",
+        "entityID": 9619
+      }
+    ],
+    "xp": 5100,
+    "questType": "Elite",
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 50,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Toxic Test",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantityUnknown": true,
+          "action": "interact",
+          "entityID": 6498,
+          "name": "Devilsaur",
+          "alternativeEntityIDs": [
+            6498,
+            6499,
+            6500
+          ]
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Torwa Pathfinder",
+          "entityID": 9619
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Torwa Pathfinder",
+          "entityID": 9619
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "classes/druid"
+  },
+  "9052": {
+    "prerequisitesRead": true,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Torwa Pathfinder",
+        "entityID": 9619
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 8,
+        "action": "collect",
+        "entityID": 22435,
+        "name": "Gorishi Sting"
+      },
+      {
+        "entityType": "item",
+        "quantity": 8,
+        "action": "collect",
+        "entityID": 22434,
+        "name": "Bloodcap"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 8,
+        "name": "Gorishi Sting",
+        "itemID": 22435
+      },
+      {
+        "quantity": 8,
+        "name": "Bloodcap",
+        "itemID": 22434
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 1024,
+    "otherLocationsIncomplete": false,
+    "npcTargets": [
+      {
+        "itemName": "Gorishi Sting",
+        "name": "Gorishi Wasp",
+        "entityID": 6551,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "level": 52,
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "action": "loot",
+        "entityID": 6551,
+        "npc": true,
+        "x": 0.5146000000000001,
+        "y": 0.7544,
+        "objectiveKey": "item:22435",
+        "itemID": 22435,
+        "quantity": 8,
+        "sourceAreaID": 490,
+        "itemName": "Gorishi Sting",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Gorishi Wasp"
+      },
+      {
+        "entityType": "object",
+        "mapID": 1449,
+        "action": "gather",
+        "entityID": 164958,
+        "x": 0.7181000000000001,
+        "y": 0.574,
+        "objectiveKey": "item:22434",
+        "itemID": 22434,
+        "quantity": 8,
+        "sourceAreaID": 490,
+        "itemName": "Bloodcap",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Bloodpetal Sprout"
+      }
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9619,
+        "npc": true,
+        "y": 0.7595999999999999,
+        "x": 0.7164,
+        "name": "Torwa Pathfinder",
+        "sourceAreaID": 490,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "title": "Bloodpetal Poison",
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Torwa Pathfinder",
+        "entityID": 9619
+      }
+    ],
+    "xp": 5100,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1449,
+        "entityID": 9619,
+        "npc": true,
+        "y": 0.7595999999999999,
+        "x": 0.7164,
+        "name": "Torwa Pathfinder",
+        "sourceAreaID": 490,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "allowedRaceIDs": {},
+    "minLevel": 50,
+    "requirementSource": "Published Forever typed objectives",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "action": "collect",
+          "entityID": 22435,
+          "name": "Gorishi Sting"
+        },
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "action": "collect",
+          "entityID": 22434,
+          "name": "Bloodcap"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Torwa Pathfinder",
+          "entityID": 9619
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Torwa Pathfinder",
+          "entityID": 9619
+        }
+      ]
+    },
+    "foreverStatus": "unchanged",
+    "categoryPath": "classes/druid"
+  }
+}

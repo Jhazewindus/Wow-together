@@ -1,0 +1,1661 @@
+{
+  "records": {
+    "3845": {
+      "before": {
+        "prerequisitesRead": true,
+        "zone": "Un'Goro Crater",
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Large Compass",
+            "entityID": 11104
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Curled Map Parchment",
+            "entityID": 11105
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Lion-headed Key",
+            "entityID": 11106
+          }
+        ],
+        "level": 52,
+        "areaID": 490,
+        "seriesPosition": 2,
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Linken",
+            "entityID": 8737
+          }
+        ],
+        "xp": 5100,
+        "minLevel": 47,
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Large Compass",
+              "entityID": 11104
+            },
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Curled Map Parchment",
+              "entityID": 11105
+            },
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Lion-headed Key",
+              "entityID": 11106
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "object",
+              "name": "A Small Pack",
+              "entityID": 161504
+            }
+          ],
+          "provided": {},
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Linken",
+              "entityID": 8737
+            }
+          ]
+        },
+        "objectiveLocationsIncomplete": true,
+        "categoryPath": "kalimdor/ungoro-crater",
+        "raceMask": 0,
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Large Compass",
+            "entityID": 11104
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Curled Map Parchment",
+            "entityID": 11105
+          }
+        ],
+        "startRefs": [
+          {
+            "entityType": "object",
+            "name": "A Small Pack",
+            "entityID": 161504
+          }
+        ],
+        "seriesRoot": 3844,
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Large Compass",
+            "itemID": 11104
+          },
+          {
+            "quantity": 1,
+            "name": "Curled Map Parchment",
+            "itemID": 11105
+          },
+          {
+            "quantity": 1,
+            "name": "Lion-headed Key",
+            "itemID": 11106
+          }
+        ],
+        "ends": [
+          {
+            "y": 0.08199999999999999,
+            "mapID": 1449,
+            "name": "Linken",
+            "entityID": 8737,
+            "npc": true,
+            "x": 0.446
+          }
+        ],
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "side": "Both",
+        "previousQuest": 3844,
+        "objectives": [
+          {
+            "sourceObjective": 2,
+            "mapID": 1449,
+            "action": "collect",
+            "entityID": 10583,
+            "npc": true,
+            "y": 0.057999999999999996,
+            "objectiveKey": "item:11106",
+            "name": "Gryfe",
+            "x": 0.452,
+            "quantity": 1,
+            "legacyStepKey": "q:1449:npc:10583",
+            "itemName": "Lion-headed Key",
+            "itemID": 11106
+          }
+        ],
+        "mapID": 1449,
+        "series": [
+          3844,
+          3845,
+          3908
+        ],
+        "foreverStatus": "unchanged",
+        "objectiveFactsSource": "Wowhead Forever objective table",
+        "starts": [
+          {
+            "y": 0.69,
+            "x": 0.631,
+            "name": "A Small Pack",
+            "entityID": 161504,
+            "mapID": 1449
+          }
+        ],
+        "requirementSource": "Wowhead Forever objective table",
+        "title": "It's a Secret to Everybody",
+        "classMask": 0,
+        "locationSource": "Wowhead Forever",
+        "npcTargets": [
+          {
+            "itemName": "Lion-headed Key",
+            "name": "Gryfe",
+            "entityID": 10583,
+            "npc": true,
+            "action": "collect"
+          }
+        ]
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "zone": "Un'Goro Crater",
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Large Compass",
+            "entityID": 11104
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Curled Map Parchment",
+            "entityID": 11105
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Lion-headed Key",
+            "entityID": 11106
+          }
+        ],
+        "level": 52,
+        "areaID": 490,
+        "seriesPosition": 2,
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Linken",
+            "entityID": 8737
+          }
+        ],
+        "xp": 5100,
+        "minLevel": 47,
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Large Compass",
+              "entityID": 11104
+            },
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Curled Map Parchment",
+              "entityID": 11105
+            },
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Lion-headed Key",
+              "entityID": 11106
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "object",
+              "name": "A Small Pack",
+              "entityID": 161504
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "A Small Pack",
+              "entityID": 11107
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Linken",
+              "entityID": 8737
+            }
+          ]
+        },
+        "objectiveLocationsIncomplete": true,
+        "categoryPath": "kalimdor/ungoro-crater",
+        "raceMask": 0,
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Large Compass",
+            "entityID": 11104
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Curled Map Parchment",
+            "entityID": 11105
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Lion-headed Key",
+            "entityID": 11106
+          }
+        ],
+        "startRefs": [
+          {
+            "entityType": "object",
+            "name": "A Small Pack",
+            "entityID": 161504
+          }
+        ],
+        "seriesRoot": 3844,
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Large Compass",
+            "itemID": 11104
+          },
+          {
+            "quantity": 1,
+            "name": "Curled Map Parchment",
+            "itemID": 11105
+          },
+          {
+            "quantity": 1,
+            "name": "Lion-headed Key",
+            "itemID": 11106
+          }
+        ],
+        "ends": [
+          {
+            "y": 0.08199999999999999,
+            "mapID": 1449,
+            "name": "Linken",
+            "entityID": 8737,
+            "npc": true,
+            "x": 0.446
+          }
+        ],
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "previousQuest": 3844,
+        "side": "Both",
+        "objectives": {},
+        "series": [
+          3844,
+          3845,
+          3908
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "A Small Pack",
+            "entityID": 11107
+          }
+        ],
+        "mapID": 1449,
+        "title": "It's a Secret to Everybody",
+        "foreverStatus": "unchanged",
+        "objectiveFactsSource": "Wowhead Forever objective table",
+        "starts": [
+          {
+            "y": 0.69,
+            "x": 0.631,
+            "name": "A Small Pack",
+            "entityID": 161504,
+            "mapID": 1449
+          }
+        ],
+        "requirementSource": "Wowhead Forever objective table",
+        "classMask": 0,
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverItemDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverNpcDB.lua; Exact itemDrops joins: all three required items 11104/11105/11106 come from supplied container 11107. Remove unsupported Lion-headed Key collection from flight master Gryfe 10583; retain all three actual hand-in quantities and unknown unpack/work area. No invented object interaction location. Verified all 24 source hashes 2026-10-08; converted-baseline exact identities and levels; research/ungoro-crater-2026-10-08.",
+        "locationSource": "Wowhead Forever",
+        "npcTargets": {}
+      }
+    },
+    "4084": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1449,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Eridan Bluewind",
+            "entityID": 9116
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 11,
+            "action": "collect",
+            "entityID": 11172,
+            "name": "Silvery Claws"
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 11173,
+            "name": "Irontree Heart"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Silvery Claws",
+            "name": "Felpaw Wolf",
+            "entityID": 8959,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 11,
+            "name": "Silvery Claws",
+            "itemID": 11172
+          },
+          {
+            "quantity": 1,
+            "name": "Irontree Heart",
+            "itemID": 11173
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1448,
+            "legacyStepKey": "q:1448:npc:8959",
+            "entityID": 8959,
+            "name": "Felpaw Wolf",
+            "npc": true,
+            "x": 0.5337,
+            "y": 0.848,
+            "objectiveKey": "item:11172",
+            "itemID": 11172,
+            "quantity": 11,
+            "sourceAreaID": 361,
+            "itemName": "Silvery Claws",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot"
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1448,
+            "entityID": 9116,
+            "npc": true,
+            "sourceZone": "Felwood",
+            "x": 0.512,
+            "name": "Eridan Bluewind",
+            "sourceAreaID": 361,
+            "y": 0.8140000000000001
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1448,
+            "entityID": 9116,
+            "npc": true,
+            "sourceZone": "Felwood",
+            "x": 0.512,
+            "name": "Eridan Bluewind",
+            "sourceAreaID": 361,
+            "y": 0.8140000000000001
+          }
+        ],
+        "level": 54,
+        "areaID": 490,
+        "objectiveAlternatives": [
+          {
+            "sourceObjective": 1,
+            "itemName": "Irontree Heart",
+            "locations": [
+              {
+                "sourceObjective": 1,
+                "itemName": "Irontree Heart",
+                "action": "collect",
+                "entityID": 7138,
+                "npc": true,
+                "y": 0.146,
+                "x": 0.494,
+                "name": "Irontree Wanderer",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 1,
+                "itemName": "Irontree Heart",
+                "action": "collect",
+                "entityID": 7139,
+                "npc": true,
+                "y": 0.298,
+                "x": 0.486,
+                "name": "Irontree Stomper",
+                "mapID": 1448
+              }
+            ]
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Silvery Claws",
+            "locations": [
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 8956,
+                "npc": true,
+                "y": 0.852,
+                "x": 0.45799999999999996,
+                "name": "Angerclaw Bear",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 8957,
+                "npc": true,
+                "y": 0.10400000000000001,
+                "x": 0.5579999999999999,
+                "name": "Angerclaw Grizzly",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 8958,
+                "npc": true,
+                "y": 0.386,
+                "x": 0.478,
+                "name": "Angerclaw Mauler",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 8959,
+                "npc": true,
+                "y": 0.8740000000000001,
+                "x": 0.504,
+                "name": "Felpaw Wolf",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 8960,
+                "npc": true,
+                "y": 0.336,
+                "x": 0.4,
+                "name": "Felpaw Scavenger",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 8961,
+                "npc": true,
+                "y": 0.10400000000000001,
+                "x": 0.5579999999999999,
+                "name": "Felpaw Ravager",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 14339,
+                "npc": true,
+                "y": 0.772,
+                "x": 0.498,
+                "name": "Death Howl",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 14344,
+                "npc": true,
+                "y": 0.79,
+                "x": 0.406,
+                "name": "Mongress",
+                "mapID": 1448
+              }
+            ]
+          }
+        ],
+        "title": "Silver Heart",
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 11173,
+            "name": "Irontree Heart"
+          }
+        ],
+        "side": "Both",
+        "prerequisiteAny": [
+          3942
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Eridan Bluewind",
+            "entityID": 9116
+          }
+        ],
+        "xp": 5450,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": {},
+        "minLevel": 47,
+        "requirementSource": "Published Forever typed objectives",
+        "raceMask": 0,
+        "objectiveFactsSource": "Published Forever typed objectives",
+        "objectiveLocationsIncomplete": true,
+        "categoryPath": "kalimdor/ungoro-crater"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1449,
+        "npcTargets": [
+          {
+            "itemName": "Silvery Claws",
+            "name": "Felpaw Wolf",
+            "entityID": 8959,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "Irontree Heart",
+            "name": "Irontree Stomper",
+            "entityID": 7139,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Eridan Bluewind",
+            "entityID": 9116
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 11,
+            "action": "collect",
+            "entityID": 11172,
+            "name": "Silvery Claws"
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 11173,
+            "name": "Irontree Heart"
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1448,
+            "legacyStepKey": "q:1448:npc:8959",
+            "entityID": 8959,
+            "name": "Felpaw Wolf",
+            "npc": true,
+            "x": 0.5337,
+            "y": 0.848,
+            "objectiveKey": "item:11172",
+            "itemID": 11172,
+            "quantity": 11,
+            "sourceAreaID": 361,
+            "itemName": "Silvery Claws",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot"
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1448,
+            "action": "loot",
+            "entityID": 7139,
+            "y": 0.2984,
+            "npc": true,
+            "x": 0.4851,
+            "sourceZone": "Felwood",
+            "objectiveKey": "item:11173",
+            "itemID": 11173,
+            "quantity": 1,
+            "sourceAreaID": 361,
+            "itemName": "Irontree Heart",
+            "locationSource": "Published Forever converted-baseline spawn and typed drop join; research/ungoro-crater-2026-10-08",
+            "name": "Irontree Stomper"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 11,
+            "name": "Silvery Claws",
+            "itemID": 11172
+          },
+          {
+            "quantity": 1,
+            "name": "Irontree Heart",
+            "itemID": 11173
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1448,
+            "entityID": 9116,
+            "npc": true,
+            "sourceZone": "Felwood",
+            "x": 0.512,
+            "name": "Eridan Bluewind",
+            "sourceAreaID": 361,
+            "y": 0.8140000000000001
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1448,
+            "entityID": 9116,
+            "npc": true,
+            "sourceZone": "Felwood",
+            "x": 0.512,
+            "name": "Eridan Bluewind",
+            "sourceAreaID": 361,
+            "y": 0.8140000000000001
+          }
+        ],
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverItemDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverNpcDB.lua; Map one actual Irontree Stomper spawn in Felwood as representative work for one Irontree Heart; preserve eleven Silvery Claws and its existing work. Both Wanderer 7138 and Stomper 7139 are explicit drop alternatives, not separate mandatory farms; reconcile their alternative anchors to actual published spawns. No centroid or route/entrance inferred. Verified all 24 source hashes 2026-10-08; converted-baseline exact identities and levels; research/ungoro-crater-2026-10-08.",
+        "level": 54,
+        "areaID": 490,
+        "objectiveAlternatives": [
+          {
+            "sourceObjective": 1,
+            "itemName": "Irontree Heart",
+            "locations": [
+              {
+                "entityType": "npc",
+                "mapID": 1448,
+                "action": "loot",
+                "y": 0.204,
+                "entityID": 7138,
+                "x": 0.48700000000000004,
+                "npc": true,
+                "sourceObjective": 1,
+                "sourceZone": "Felwood",
+                "objectiveKey": "item:11173",
+                "itemID": 11173,
+                "quantity": 1,
+                "sourceAreaID": 361,
+                "itemName": "Irontree Heart",
+                "locationSource": "Published Forever converted-baseline spawn and typed drop join; research/ungoro-crater-2026-10-08",
+                "name": "Irontree Wanderer"
+              },
+              {
+                "entityType": "npc",
+                "mapID": 1448,
+                "action": "loot",
+                "y": 0.2115,
+                "entityID": 7139,
+                "x": 0.4852,
+                "npc": true,
+                "sourceObjective": 1,
+                "sourceZone": "Felwood",
+                "objectiveKey": "item:11173",
+                "itemID": 11173,
+                "quantity": 1,
+                "sourceAreaID": 361,
+                "itemName": "Irontree Heart",
+                "locationSource": "Published Forever converted-baseline spawn and typed drop join; research/ungoro-crater-2026-10-08",
+                "name": "Irontree Stomper"
+              }
+            ]
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Silvery Claws",
+            "locations": [
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 8956,
+                "npc": true,
+                "y": 0.852,
+                "x": 0.45799999999999996,
+                "name": "Angerclaw Bear",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 8957,
+                "npc": true,
+                "y": 0.10400000000000001,
+                "x": 0.5579999999999999,
+                "name": "Angerclaw Grizzly",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 8958,
+                "npc": true,
+                "y": 0.386,
+                "x": 0.478,
+                "name": "Angerclaw Mauler",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 8959,
+                "npc": true,
+                "y": 0.8740000000000001,
+                "x": 0.504,
+                "name": "Felpaw Wolf",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 8960,
+                "npc": true,
+                "y": 0.336,
+                "x": 0.4,
+                "name": "Felpaw Scavenger",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 8961,
+                "npc": true,
+                "y": 0.10400000000000001,
+                "x": 0.5579999999999999,
+                "name": "Felpaw Ravager",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 14339,
+                "npc": true,
+                "y": 0.772,
+                "x": 0.498,
+                "name": "Death Howl",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 14344,
+                "npc": true,
+                "y": 0.79,
+                "x": 0.406,
+                "name": "Mongress",
+                "mapID": 1448
+              }
+            ]
+          }
+        ],
+        "prerequisiteAny": [
+          3942
+        ],
+        "side": "Both",
+        "missingRequirements": {},
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Eridan Bluewind",
+            "entityID": 9116
+          }
+        ],
+        "xp": 5450,
+        "title": "Silver Heart",
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": {},
+        "minLevel": 47,
+        "requirementSource": "Published Forever typed objectives",
+        "raceMask": 0,
+        "objectiveFactsSource": "Published Forever typed objectives",
+        "objectiveLocationsIncomplete": false,
+        "categoryPath": "kalimdor/ungoro-crater"
+      }
+    },
+    "4491": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1449,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Ringo",
+            "entityID": 9999
+          }
+        ],
+        "requirements": {},
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1449,
+            "entityID": 9997,
+            "npc": true,
+            "y": 0.085,
+            "x": 0.4362,
+            "name": "Spraggle Frock",
+            "sourceAreaID": 490,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "objectives": [
+          {
+            "sourceAction": "use-at",
+            "mapID": 1449,
+            "action": "use",
+            "y": 0.08289999999999999,
+            "x": 0.4371,
+            "useItemName": "Spraggle's Canteen",
+            "locationSource": "Published Forever converted-baseline event area",
+            "name": "A Little Help From My Friends"
+          }
+        ],
+        "level": 55,
+        "areaID": 490,
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1449,
+            "entityID": 9999,
+            "npc": true,
+            "y": 0.4985,
+            "x": 0.519,
+            "name": "Ringo",
+            "sourceAreaID": 490,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "side": "Both",
+        "raceMask": 0,
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Spraggle Frock",
+            "entityID": 9997
+          }
+        ],
+        "xp": 5650,
+        "prerequisiteAny": [
+          4492
+        ],
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": {},
+        "minLevel": 50,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "title": "A Little Help From My Friends",
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Ringo",
+              "entityID": 9999
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Spraggle Frock",
+              "entityID": 9997
+            }
+          ]
+        },
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "categoryPath": "kalimdor/ungoro-crater"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1449,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Ringo",
+            "entityID": 9999
+          }
+        ],
+        "requirements": {},
+        "npcTargets": [
+          {
+            "entityID": 9999,
+            "npc": true,
+            "action": "escort",
+            "name": "Ringo"
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1449,
+            "action": "escort",
+            "entityID": 9999,
+            "npc": true,
+            "y": 0.4985,
+            "objectiveKey": "event:4491",
+            "name": "Ringo",
+            "sourceAreaID": 490,
+            "x": 0.519,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "useItemName": "Spraggle's Canteen"
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Spraggle's Canteen",
+            "entityID": 11804
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1449,
+            "entityID": 9997,
+            "npc": true,
+            "y": 0.085,
+            "x": 0.4362,
+            "name": "Spraggle Frock",
+            "sourceAreaID": 490,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1449,
+            "entityID": 9999,
+            "npc": true,
+            "y": 0.4985,
+            "x": 0.519,
+            "name": "Ringo",
+            "sourceAreaID": 490,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "level": 55,
+        "areaID": 490,
+        "title": "A Little Help From My Friends",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 0,
+        "side": "Both",
+        "prerequisiteAny": [
+          4492
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Spraggle Frock",
+            "entityID": 9997
+          }
+        ],
+        "xp": 5650,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": {},
+        "minLevel": 50,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; exact 4491 Ringo -> Spraggle giver/return and explicit escort trigger; supplied canteen 11804 is distinct from Lost! canteen 15722. Start the escort at Ringo, keep acceptance/work adjacency and destination/actual 4492 hand-in. Original short Escort Ringo instruction; no safe terrain or count inferred. Verified 24 hashes 2026-10-08, converted-baseline; research/ungoro-crater-2026-10-08.",
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Ringo",
+              "entityID": 9999
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Spraggle's Canteen",
+              "entityID": 11804
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Spraggle Frock",
+              "entityID": 9997
+            }
+          ]
+        },
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "categoryPath": "kalimdor/ungoro-crater"
+      }
+    },
+    "4492": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1449,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Spraggle Frock",
+            "entityID": 9997
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Spraggle's Canteen",
+            "entityID": 15722
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Spraggle's Canteen",
+            "itemID": 15722
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "objectives": [
+          {
+            "y": 0.08289999999999999,
+            "mapID": 1449,
+            "action": "event",
+            "x": 0.4371,
+            "locationSource": "Published Forever converted-baseline event area",
+            "name": "Lost!"
+          }
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Spraggle's Canteen",
+            "entityID": 15722
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1449,
+            "entityID": 9999,
+            "npc": true,
+            "y": 0.4985,
+            "x": 0.519,
+            "name": "Ringo",
+            "sourceAreaID": 490,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1449,
+            "entityID": 9997,
+            "npc": true,
+            "y": 0.085,
+            "x": 0.4362,
+            "name": "Spraggle Frock",
+            "sourceAreaID": 490,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "level": 55,
+        "areaID": 490,
+        "title": "Lost!",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "side": "Both",
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Spraggle's Canteen",
+            "entityID": 15722
+          }
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Ringo",
+            "entityID": 9999
+          }
+        ],
+        "xp": 2800,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": {},
+        "minLevel": 50,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 0,
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Spraggle's Canteen",
+              "entityID": 15722
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Spraggle Frock",
+              "entityID": 9997
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Ringo",
+              "entityID": 9999
+            }
+          ]
+        },
+        "objectiveLocationsIncomplete": true,
+        "categoryPath": "kalimdor/ungoro-crater"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1449,
+        "npcTargets": [
+          {
+            "entityID": 9999,
+            "npc": true,
+            "action": "talk",
+            "name": "Ringo"
+          }
+        ],
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Spraggle Frock",
+            "entityID": 9997
+          }
+        ],
+        "requirements": {},
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1449,
+            "action": "talk",
+            "entityID": 9999,
+            "npc": true,
+            "y": 0.4985,
+            "objectiveKey": "npc:9999",
+            "name": "Ringo",
+            "sourceAreaID": 490,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "x": 0.519
+          }
+        ],
+        "requiredItems": {},
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Spraggle's Canteen",
+            "entityID": 15722
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1449,
+            "entityID": 9997,
+            "npc": true,
+            "y": 0.085,
+            "x": 0.4362,
+            "name": "Spraggle Frock",
+            "sourceAreaID": 490,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1449,
+            "entityID": 9999,
+            "npc": true,
+            "y": 0.4985,
+            "x": 0.519,
+            "name": "Ringo",
+            "sourceAreaID": 490,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverItemDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverNpcDB.lua; Exact giver/receiver and supplied canteen 15722: Lost! finds Ringo at Fire Plume Ridge and ends at Ringo; the canteen is not a farm or required hand-in item. Replace conflicting inherited Marshal's Refuge escort trigger with the actual receiver/work point. The separately gated 4491 escort remains untouched; its event behavior still needs native verification. Verified all 24 source hashes 2026-10-08; converted-baseline exact identities and levels; research/ungoro-crater-2026-10-08.",
+        "level": 55,
+        "areaID": 490,
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "side": "Both",
+        "missingRequirements": {},
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Ringo",
+            "entityID": 9999
+          }
+        ],
+        "xp": 2800,
+        "title": "Lost!",
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": {},
+        "minLevel": 50,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 0,
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Spraggle Frock",
+              "entityID": 9997
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Ringo",
+              "entityID": 9999
+            }
+          ]
+        },
+        "objectiveLocationsIncomplete": false,
+        "categoryPath": "kalimdor/ungoro-crater"
+      }
+    },
+    "9051": {
+      "before": {
+        "prerequisitesRead": true,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Torwa Pathfinder",
+            "entityID": 9619
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantityUnknown": true,
+            "action": "interact",
+            "entityID": 6498,
+            "name": "Devilsaur",
+            "alternativeEntityIDs": [
+              6498,
+              6499,
+              6500
+            ]
+          }
+        ],
+        "npcTargets": [
+          {
+            "action": "interact",
+            "entityID": 6499,
+            "alternativeEntityIDs": [
+              6498,
+              6499,
+              6500
+            ],
+            "npc": true,
+            "name": "Ironhide Devilsaur"
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1449,
+            "action": "interact",
+            "alternativeEntityIDs": [
+              6498,
+              6499,
+              6500
+            ],
+            "npc": true,
+            "y": 0.6175,
+            "objectiveKey": "npc:6498",
+            "name": "Ironhide Devilsaur",
+            "x": 0.5729,
+            "sourceAreaID": 490,
+            "quantityUnknown": true,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "entityID": 6499
+          }
+        ],
+        "classMask": 1024,
+        "otherLocationsIncomplete": false,
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1449,
+            "entityID": 9619,
+            "npc": true,
+            "y": 0.7595999999999999,
+            "x": 0.7164,
+            "name": "Torwa Pathfinder",
+            "sourceAreaID": 490,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "level": 52,
+        "raceMask": 0,
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "prerequisiteAny": [
+          9052
+        ],
+        "side": "Both",
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1449,
+            "entityID": 9619,
+            "npc": true,
+            "y": 0.7595999999999999,
+            "x": 0.7164,
+            "name": "Torwa Pathfinder",
+            "sourceAreaID": 490,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Torwa Pathfinder",
+            "entityID": 9619
+          }
+        ],
+        "xp": 5100,
+        "questType": "Elite",
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": {},
+        "minLevel": 50,
+        "requirementSource": "Published Forever typed objectives",
+        "title": "Toxic Test",
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "npc",
+              "quantityUnknown": true,
+              "action": "interact",
+              "entityID": 6498,
+              "name": "Devilsaur",
+              "alternativeEntityIDs": [
+                6498,
+                6499,
+                6500
+              ]
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Torwa Pathfinder",
+              "entityID": 9619
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Torwa Pathfinder",
+              "entityID": 9619
+            }
+          ]
+        },
+        "objectiveFactsSource": "Published Forever typed objectives",
+        "categoryPath": "classes/druid"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "npcTargets": [
+          {
+            "action": "use",
+            "entityID": 6499,
+            "alternativeEntityIDs": [
+              6498,
+              6499,
+              6500
+            ],
+            "npc": true,
+            "name": "Ironhide Devilsaur"
+          }
+        ],
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Torwa Pathfinder",
+            "entityID": 9619
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantityUnknown": true,
+            "action": "use",
+            "entityID": 6498,
+            "name": "Devilsaur",
+            "useItemName": "Devilsaur Barb",
+            "alternativeEntityIDs": [
+              6498,
+              6499,
+              6500
+            ]
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1449,
+            "action": "use",
+            "alternativeEntityIDs": [
+              6498,
+              6499,
+              6500
+            ],
+            "npc": true,
+            "x": 0.5729,
+            "y": 0.6175,
+            "objectiveKey": "npc:6498",
+            "name": "Ironhide Devilsaur",
+            "useItemName": "Devilsaur Barb",
+            "sourceAreaID": 490,
+            "quantityUnknown": true,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "entityID": 6499
+          }
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Devilsaur Barb",
+            "entityID": 22432
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1449,
+            "entityID": 9619,
+            "npc": true,
+            "y": 0.7595999999999999,
+            "x": 0.7164,
+            "name": "Torwa Pathfinder",
+            "sourceAreaID": 490,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "classMask": 1024,
+        "otherLocationsIncomplete": false,
+        "title": "Toxic Test",
+        "level": 52,
+        "raceMask": 0,
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1449,
+            "entityID": 9619,
+            "npc": true,
+            "y": 0.7595999999999999,
+            "x": 0.7164,
+            "name": "Torwa Pathfinder",
+            "sourceAreaID": 490,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "side": "Both",
+        "prerequisiteAny": [
+          9052
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Torwa Pathfinder",
+            "entityID": 9619
+          }
+        ],
+        "xp": 5100,
+        "questType": "Elite",
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": {},
+        "minLevel": 50,
+        "requirementSource": "Published Forever typed objectives",
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverItemDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverNpcDB.lua; Exact supplied item 22432 (Devilsaur Barb) and typed Devilsaur alternatives 6498/6499/6500: use the supplied tool on the representative Ironhide Devilsaur, not a generic interaction or kill. Retain quantityUnknown (no invented count), elite status, class mask 1024 and actual 9052 hand-in prerequisite. Unknown objective verification remains visible. Verified all 24 source hashes 2026-10-08; converted-baseline exact identities and levels; research/ungoro-crater-2026-10-08.",
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "npc",
+              "quantityUnknown": true,
+              "action": "use",
+              "entityID": 6498,
+              "name": "Devilsaur",
+              "useItemName": "Devilsaur Barb",
+              "alternativeEntityIDs": [
+                6498,
+                6499,
+                6500
+              ]
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Torwa Pathfinder",
+              "entityID": 9619
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Devilsaur Barb",
+              "entityID": 22432
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Torwa Pathfinder",
+              "entityID": 9619
+            }
+          ]
+        },
+        "objectiveFactsSource": "Published Forever typed objectives",
+        "categoryPath": "classes/druid"
+      }
+    }
+  }
+}

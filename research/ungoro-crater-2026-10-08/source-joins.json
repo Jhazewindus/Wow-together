@@ -1,0 +1,32 @@
+[
+  {
+    "questID": 3845,
+    "decision": "Exact itemDrops joins: all three required items 11104/11105/11106 come from supplied container 11107. Remove unsupported Lion-headed Key collection from flight master Gryfe 10583; retain all three actual hand-in quantities and unknown unpack/work area. No invented object interaction location.",
+    "tier": "converted-baseline",
+    "native_build_verified": false
+  },
+  {
+    "questID": 4084,
+    "decision": "Map one actual Irontree Stomper spawn in Felwood as representative work for one Irontree Heart; preserve eleven Silvery Claws and its existing work. Both Wanderer 7138 and Stomper 7139 are explicit drop alternatives, not separate mandatory farms; reconcile their alternative anchors to actual published spawns. No centroid or route/entrance inferred.",
+    "tier": "converted-baseline",
+    "native_build_verified": false
+  },
+  {
+    "questID": 4492,
+    "decision": "Exact giver/receiver and supplied canteen 15722: Lost! finds Ringo at Fire Plume Ridge and ends at Ringo; the canteen is not a farm or required hand-in item. Replace conflicting inherited Marshal's Refuge escort trigger with the actual receiver/work point. The separately gated 4491 escort remains untouched; its event behavior still needs native verification.",
+    "tier": "converted-baseline",
+    "native_build_verified": false
+  },
+  {
+    "questID": 9051,
+    "decision": "Exact supplied item 22432 (Devilsaur Barb) and typed Devilsaur alternatives 6498/6499/6500: use the supplied tool on the representative Ironhide Devilsaur, not a generic interaction or kill. Retain quantityUnknown (no invented count), elite status, class mask 1024 and actual 9052 hand-in prerequisite. Unknown objective verification remains visible.",
+    "tier": "converted-baseline",
+    "native_build_verified": false
+  },
+  {
+    "questID": 4491,
+    "decision": "Explicit Ringo escort starts at Ringo; supplied escort canteen 11804 differs from 15722 supplied by Lost!; actual escort endpoint and return remain at Spraggle. No safe approach inferred.",
+    "tier": "converted-baseline",
+    "native_build_verified": false
+  }
+]

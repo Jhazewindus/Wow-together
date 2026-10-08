@@ -2289,5 +2289,894 @@
         ]
       }
     }
+  },
+  {
+    "questID": 3845,
+    "title": "It's a Secret to Everybody",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverItemDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverNpcDB.lua; Exact itemDrops joins: all three required items 11104/11105/11106 come from supplied container 11107. Remove unsupported Lion-headed Key collection from flight master Gryfe 10583; retain all three actual hand-in quantities and unknown unpack/work area. No invented object interaction location. Verified all 24 source hashes 2026-10-08; converted-baseline exact identities and levels; research/ungoro-crater-2026-10-08.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 47,
+      "level": 52,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Large Compass",
+          "itemID": 11104
+        },
+        {
+          "quantity": 1,
+          "name": "Curled Map Parchment",
+          "itemID": 11105
+        },
+        {
+          "quantity": 1,
+          "name": "Lion-headed Key",
+          "itemID": 11106
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Large Compass",
+            "entityID": 11104
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Curled Map Parchment",
+            "entityID": 11105
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Lion-headed Key",
+            "entityID": 11106
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Large Compass",
+            "itemID": 11104
+          },
+          {
+            "quantity": 1,
+            "name": "Curled Map Parchment",
+            "itemID": 11105
+          },
+          {
+            "quantity": 1,
+            "name": "Lion-headed Key",
+            "itemID": 11106
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 2,
+            "mapID": 1449,
+            "action": "collect",
+            "entityID": 10583,
+            "npc": true,
+            "y": 0.057999999999999996,
+            "objectiveKey": "item:11106",
+            "name": "Gryfe",
+            "x": 0.452,
+            "quantity": 1,
+            "legacyStepKey": "q:1449:npc:10583",
+            "itemName": "Lion-headed Key",
+            "itemID": 11106
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Lion-headed Key",
+            "name": "Gryfe",
+            "entityID": 10583,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Large Compass",
+            "entityID": 11104
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Curled Map Parchment",
+            "entityID": 11105
+          }
+        ],
+        "objectiveLocationsIncomplete": true,
+        "providedItems": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Large Compass",
+            "entityID": 11104
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Curled Map Parchment",
+            "entityID": 11105
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Lion-headed Key",
+            "entityID": 11106
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Large Compass",
+            "itemID": 11104
+          },
+          {
+            "quantity": 1,
+            "name": "Curled Map Parchment",
+            "itemID": 11105
+          },
+          {
+            "quantity": 1,
+            "name": "Lion-headed Key",
+            "itemID": 11106
+          }
+        ],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Large Compass",
+            "entityID": 11104
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Curled Map Parchment",
+            "entityID": 11105
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Lion-headed Key",
+            "entityID": 11106
+          }
+        ],
+        "objectiveLocationsIncomplete": true,
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 11107,
+            "name": "A Small Pack",
+            "quantity": 1
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 4084,
+    "title": "Silver Heart",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverItemDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverNpcDB.lua; Map one actual Irontree Stomper spawn in Felwood as representative work for one Irontree Heart; preserve eleven Silvery Claws and its existing work. Both Wanderer 7138 and Stomper 7139 are explicit drop alternatives, not separate mandatory farms; reconcile their alternative anchors to actual published spawns. No centroid or route/entrance inferred. Verified all 24 source hashes 2026-10-08; converted-baseline exact identities and levels; research/ungoro-crater-2026-10-08.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 47,
+      "level": 54,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 11,
+          "name": "Silvery Claws",
+          "itemID": 11172
+        },
+        {
+          "quantity": 1,
+          "name": "Irontree Heart",
+          "itemID": 11173
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 11,
+            "action": "collect",
+            "entityID": 11172,
+            "name": "Silvery Claws"
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 11173,
+            "name": "Irontree Heart"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 11,
+            "name": "Silvery Claws",
+            "itemID": 11172
+          },
+          {
+            "quantity": 1,
+            "name": "Irontree Heart",
+            "itemID": 11173
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1448,
+            "legacyStepKey": "q:1448:npc:8959",
+            "entityID": 8959,
+            "name": "Felpaw Wolf",
+            "npc": true,
+            "x": 0.5337,
+            "y": 0.848,
+            "objectiveKey": "item:11172",
+            "itemID": 11172,
+            "quantity": 11,
+            "sourceAreaID": 361,
+            "itemName": "Silvery Claws",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Silvery Claws",
+            "name": "Felpaw Wolf",
+            "entityID": 8959,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 11173,
+            "name": "Irontree Heart"
+          }
+        ],
+        "objectiveLocationsIncomplete": true,
+        "objectiveAlternatives": [
+          {
+            "sourceObjective": 1,
+            "itemName": "Irontree Heart",
+            "locations": [
+              {
+                "sourceObjective": 1,
+                "itemName": "Irontree Heart",
+                "action": "collect",
+                "entityID": 7138,
+                "npc": true,
+                "y": 0.146,
+                "x": 0.494,
+                "name": "Irontree Wanderer",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 1,
+                "itemName": "Irontree Heart",
+                "action": "collect",
+                "entityID": 7139,
+                "npc": true,
+                "y": 0.298,
+                "x": 0.486,
+                "name": "Irontree Stomper",
+                "mapID": 1448
+              }
+            ]
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Silvery Claws",
+            "locations": [
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 8956,
+                "npc": true,
+                "y": 0.852,
+                "x": 0.45799999999999996,
+                "name": "Angerclaw Bear",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 8957,
+                "npc": true,
+                "y": 0.10400000000000001,
+                "x": 0.5579999999999999,
+                "name": "Angerclaw Grizzly",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 8958,
+                "npc": true,
+                "y": 0.386,
+                "x": 0.478,
+                "name": "Angerclaw Mauler",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 8959,
+                "npc": true,
+                "y": 0.8740000000000001,
+                "x": 0.504,
+                "name": "Felpaw Wolf",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 8960,
+                "npc": true,
+                "y": 0.336,
+                "x": 0.4,
+                "name": "Felpaw Scavenger",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 8961,
+                "npc": true,
+                "y": 0.10400000000000001,
+                "x": 0.5579999999999999,
+                "name": "Felpaw Ravager",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 14339,
+                "npc": true,
+                "y": 0.772,
+                "x": 0.498,
+                "name": "Death Howl",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 14344,
+                "npc": true,
+                "y": 0.79,
+                "x": 0.406,
+                "name": "Mongress",
+                "mapID": 1448
+              }
+            ]
+          }
+        ]
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 11,
+            "action": "collect",
+            "entityID": 11172,
+            "name": "Silvery Claws"
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 11173,
+            "name": "Irontree Heart"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 11,
+            "name": "Silvery Claws",
+            "itemID": 11172
+          },
+          {
+            "quantity": 1,
+            "name": "Irontree Heart",
+            "itemID": 11173
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1448,
+            "legacyStepKey": "q:1448:npc:8959",
+            "entityID": 8959,
+            "name": "Felpaw Wolf",
+            "npc": true,
+            "x": 0.5337,
+            "y": 0.848,
+            "objectiveKey": "item:11172",
+            "itemID": 11172,
+            "quantity": 11,
+            "sourceAreaID": 361,
+            "itemName": "Silvery Claws",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot"
+          },
+          {
+            "entityType": "npc",
+            "entityID": 7139,
+            "name": "Irontree Stomper",
+            "npc": true,
+            "mapID": 1448,
+            "sourceAreaID": 361,
+            "sourceZone": "Felwood",
+            "x": 0.4851,
+            "y": 0.2984,
+            "action": "loot",
+            "itemID": 11173,
+            "itemName": "Irontree Heart",
+            "quantity": 1,
+            "objectiveKey": "item:11173",
+            "locationSource": "Published Forever converted-baseline spawn and typed drop join; research/ungoro-crater-2026-10-08"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Silvery Claws",
+            "name": "Felpaw Wolf",
+            "entityID": 8959,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "entityID": 7139,
+            "name": "Irontree Stomper",
+            "npc": true,
+            "action": "loot",
+            "itemName": "Irontree Heart"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": false,
+        "objectiveAlternatives": [
+          {
+            "sourceObjective": 1,
+            "itemName": "Irontree Heart",
+            "locations": [
+              {
+                "sourceObjective": 1,
+                "itemName": "Irontree Heart",
+                "action": "loot",
+                "entityID": 7138,
+                "npc": true,
+                "y": 0.204,
+                "x": 0.48700000000000004,
+                "name": "Irontree Wanderer",
+                "mapID": 1448,
+                "entityType": "npc",
+                "sourceAreaID": 361,
+                "sourceZone": "Felwood",
+                "itemID": 11173,
+                "quantity": 1,
+                "objectiveKey": "item:11173",
+                "locationSource": "Published Forever converted-baseline spawn and typed drop join; research/ungoro-crater-2026-10-08"
+              },
+              {
+                "sourceObjective": 1,
+                "itemName": "Irontree Heart",
+                "action": "loot",
+                "entityID": 7139,
+                "npc": true,
+                "y": 0.2115,
+                "x": 0.4852,
+                "name": "Irontree Stomper",
+                "mapID": 1448,
+                "entityType": "npc",
+                "sourceAreaID": 361,
+                "sourceZone": "Felwood",
+                "itemID": 11173,
+                "quantity": 1,
+                "objectiveKey": "item:11173",
+                "locationSource": "Published Forever converted-baseline spawn and typed drop join; research/ungoro-crater-2026-10-08"
+              }
+            ]
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Silvery Claws",
+            "locations": [
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 8956,
+                "npc": true,
+                "y": 0.852,
+                "x": 0.45799999999999996,
+                "name": "Angerclaw Bear",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 8957,
+                "npc": true,
+                "y": 0.10400000000000001,
+                "x": 0.5579999999999999,
+                "name": "Angerclaw Grizzly",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 8958,
+                "npc": true,
+                "y": 0.386,
+                "x": 0.478,
+                "name": "Angerclaw Mauler",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 8959,
+                "npc": true,
+                "y": 0.8740000000000001,
+                "x": 0.504,
+                "name": "Felpaw Wolf",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 8960,
+                "npc": true,
+                "y": 0.336,
+                "x": 0.4,
+                "name": "Felpaw Scavenger",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 8961,
+                "npc": true,
+                "y": 0.10400000000000001,
+                "x": 0.5579999999999999,
+                "name": "Felpaw Ravager",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 14339,
+                "npc": true,
+                "y": 0.772,
+                "x": 0.498,
+                "name": "Death Howl",
+                "mapID": 1448
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Silvery Claws",
+                "action": "collect",
+                "entityID": 14344,
+                "npc": true,
+                "y": 0.79,
+                "x": 0.406,
+                "name": "Mongress",
+                "mapID": 1448
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 4492,
+    "title": "Lost!",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverItemDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverNpcDB.lua; Exact giver/receiver and supplied canteen 15722: Lost! finds Ringo at Fire Plume Ridge and ends at Ringo; the canteen is not a farm or required hand-in item. Replace conflicting inherited Marshal's Refuge escort trigger with the actual receiver/work point. The separately gated 4491 escort remains untouched; its event behavior still needs native verification. Verified all 24 source hashes 2026-10-08; converted-baseline exact identities and levels; research/ungoro-crater-2026-10-08.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 50,
+      "level": 55,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Spraggle's Canteen",
+            "entityID": 15722
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Spraggle's Canteen",
+            "itemID": 15722
+          }
+        ],
+        "objectives": [
+          {
+            "y": 0.08289999999999999,
+            "mapID": 1449,
+            "action": "event",
+            "x": 0.4371,
+            "locationSource": "Published Forever converted-baseline event area",
+            "name": "Lost!"
+          }
+        ],
+        "npcTargets": [],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Spraggle's Canteen",
+            "entityID": 15722
+          }
+        ],
+        "objectiveLocationsIncomplete": true
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1449,
+            "entityID": 9999,
+            "npc": true,
+            "y": 0.4985,
+            "x": 0.519,
+            "name": "Ringo",
+            "sourceAreaID": 490,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "talk",
+            "objectiveKey": "npc:9999"
+          }
+        ],
+        "npcTargets": [
+          {
+            "entityID": 9999,
+            "name": "Ringo",
+            "npc": true,
+            "action": "talk"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": false
+      }
+    }
+  },
+  {
+    "questID": 9051,
+    "title": "Toxic Test",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverItemDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverNpcDB.lua; Exact supplied item 22432 (Devilsaur Barb) and typed Devilsaur alternatives 6498/6499/6500: use the supplied tool on the representative Ironhide Devilsaur, not a generic interaction or kill. Retain quantityUnknown (no invented count), elite status, class mask 1024 and actual 9052 hand-in prerequisite. Unknown objective verification remains visible. Verified all 24 source hashes 2026-10-08; converted-baseline exact identities and levels; research/ungoro-crater-2026-10-08.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 50,
+      "level": 52,
+      "classMask": 1024,
+      "requiredItems": [],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantityUnknown": true,
+            "action": "interact",
+            "entityID": 6498,
+            "name": "Devilsaur",
+            "alternativeEntityIDs": [
+              6498,
+              6499,
+              6500
+            ]
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1449,
+            "action": "interact",
+            "alternativeEntityIDs": [
+              6498,
+              6499,
+              6500
+            ],
+            "npc": true,
+            "y": 0.6175,
+            "objectiveKey": "npc:6498",
+            "name": "Ironhide Devilsaur",
+            "x": 0.5729,
+            "sourceAreaID": 490,
+            "quantityUnknown": true,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "entityID": 6499
+          }
+        ],
+        "npcTargets": [
+          {
+            "action": "interact",
+            "entityID": 6499,
+            "alternativeEntityIDs": [
+              6498,
+              6499,
+              6500
+            ],
+            "npc": true,
+            "name": "Ironhide Devilsaur"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "providedItems": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantityUnknown": true,
+            "action": "use",
+            "entityID": 6498,
+            "name": "Devilsaur",
+            "alternativeEntityIDs": [
+              6498,
+              6499,
+              6500
+            ],
+            "useItemName": "Devilsaur Barb"
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1449,
+            "action": "use",
+            "alternativeEntityIDs": [
+              6498,
+              6499,
+              6500
+            ],
+            "npc": true,
+            "y": 0.6175,
+            "objectiveKey": "npc:6498",
+            "name": "Ironhide Devilsaur",
+            "x": 0.5729,
+            "sourceAreaID": 490,
+            "quantityUnknown": true,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "entityID": 6499,
+            "useItemName": "Devilsaur Barb"
+          }
+        ],
+        "npcTargets": [
+          {
+            "action": "use",
+            "entityID": 6499,
+            "alternativeEntityIDs": [
+              6498,
+              6499,
+              6500
+            ],
+            "npc": true,
+            "name": "Ironhide Devilsaur"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 22432,
+            "name": "Devilsaur Barb",
+            "quantity": 1
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 4491,
+    "title": "A Little Help From My Friends",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; exact 4491 Ringo -> Spraggle giver/return and explicit escort trigger; supplied canteen 11804 is distinct from Lost! canteen 15722. Start the escort at Ringo, keep acceptance/work adjacency and destination/actual 4492 hand-in. Original short Escort Ringo instruction; no safe terrain or count inferred. Verified 24 hashes 2026-10-08, converted-baseline; research/ungoro-crater-2026-10-08.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 50,
+      "level": 55,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "sourceAction": "use-at",
+            "mapID": 1449,
+            "action": "use",
+            "y": 0.08289999999999999,
+            "x": 0.4371,
+            "useItemName": "Spraggle's Canteen",
+            "locationSource": "Published Forever converted-baseline event area",
+            "name": "A Little Help From My Friends"
+          }
+        ],
+        "npcTargets": [],
+        "providedItems": []
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1449,
+            "entityID": 9999,
+            "npc": true,
+            "y": 0.4985,
+            "x": 0.519,
+            "name": "Ringo",
+            "sourceAreaID": 490,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "escort",
+            "objectiveKey": "event:4491",
+            "useItemName": "Spraggle's Canteen"
+          }
+        ],
+        "npcTargets": [
+          {
+            "entityID": 9999,
+            "name": "Ringo",
+            "npc": true,
+            "action": "escort"
+          }
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 11804,
+            "name": "Spraggle's Canteen",
+            "quantity": 1
+          }
+        ]
+      }
+    }
   }
 ]

@@ -11,7 +11,7 @@
     "count": 5230,
     "detailed_quests": 2232,
     "with_starters": 4283,
-    "with_objectives": 2154,
+    "with_objectives": 2153,
     "with_turnins": 4452,
     "with_prerequisites": 2466,
     "entities": {
@@ -2190,17 +2190,15 @@
     "kalimdor/ungoro-crater": {
       "quests": 53,
       "pickups": 52,
-      "objectives": 37,
+      "objectives": 36,
       "turnins": 52,
-      "complete_locations": 46,
+      "complete_locations": 48,
       "missing_quest_ids": [
         3845,
         3885,
-        4084,
         4143,
         4146,
-        4321,
-        4492
+        4321
       ]
     },
     "kalimdor/winterspring": {
@@ -13329,6 +13327,10 @@
     3102,
     3511,
     3621,
+    3845,
+    4084,
+    4491,
+    4492,
     4508,
     4509,
     7732,
@@ -13338,6 +13340,7 @@
     8554,
     8922,
     8923,
+    9051,
     79975,
     79976,
     91738,
