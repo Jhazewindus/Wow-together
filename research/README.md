@@ -5,6 +5,30 @@ sessions and beta builds. These are observations from players, not a complete
 quest database. Only supported corrections enter the shipped catalogue. Raw
 exports are not included in the addon ZIP.
 
+## 2026-10-08 — Dun Morogh source coverage review
+
+[The structured review](2026-10-08-dun-morogh-review.json) records selected public
+facts from four files at the repository's pinned QuestieDB revision. Downloaded
+file hashes matched `tools/forever_source_manifest.json`. Only factual IDs,
+short names, quantities and one existing representative spawn are retained;
+upstream code and quest prose are excluded. This is independent source research,
+not a new player report or a live beta observation.
+
+The three open records remain open:
+
+| Quest | Supported facts retained | Evidence still needed |
+| --- | --- | --- |
+| 282 — Senir's Observations | Predecessor 218; Grelin → Thalos; distinct from quest 420 | Current-beta offer/character/completion evidence for unresolved pickup conditions |
+| 95217 — The Quarry's Smith | 12 Copper Bars, 4 Toughened Boar Hides; explicit hide drop from Scarred Crag Boar at a published spawn | An applicable local Copper Bar acquisition source and position |
+| 98423 — The Treaty of Understanding | Item 281030 starts the quest; Magni receives it in Ironforge | Explicit item acquisition relation and position |
+
+No gap is closed by assuming a familiar quest chain is exhaustive, choosing a
+remote item drop as a local farming point, or inventing an item pickup NPC.
+The existing Treacherous Cold → Rime's Wrath tester correction remains intact.
+`tests/test_zone_coverage.py` exercises the scoped audit, keeps the global report
+safe, and guards these supported facts and unresolved boundaries. Use the
+`--zone` workflow in `QUEST_DATA.md` for the next supported correction.
+
 ## 2026-10-06 — Durotar, anonymous Orc rogue
 
 Source: the friend's export supplied in this chat, without a character/tester

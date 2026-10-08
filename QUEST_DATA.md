@@ -4,6 +4,32 @@ This is an expanded **partial** Forever dataset. A quest name is not a mapped
 quest, a confirmed NPC offer or proof of an optimal guide. The playing UI keeps
 simple instructions; source evidence and remaining gaps are recorded here.
 
+## Review one zone at a time
+
+Run the same source-point, prerequisite ordering, objective-stage and route-flow
+invariants for a single exact zone name, without replacing the full audit:
+
+```sh
+/workspace/.wow-together-tests/bin/python tools/audit_quest_guides.py --zone "Dun Morogh" --output /tmp/dun-morogh-audit.json
+```
+
+The scoped report counts only catalogue records whose `zone` matches. Every
+discoverable faction/chapter of that zone is compiled normally, including its
+cross-zone destinations and prerequisite dependencies. An unknown zone fails;
+a scoped run requires a separate output path. Omit `--zone` for the existing
+full-catalogue audit. Add `--require-complete` to return exit status 2 when source
+gaps remain, even when every invariant passes; the report is still written.
+
+The [8 October Dun Morogh review](research/2026-10-08-dun-morogh-review.json)
+retains selected facts, immutable source URLs/hashes and the evidence still
+needed for quests 282, 95217 and 98423. Both chapters pass their invariants:
+151 actions at levels 1–10 and 30 at levels 11–20, with 164 static points checked.
+Both chapters remain incomplete. Published facts confirm the existing Senir
+chain, Quarry item quantities/boar point and Treaty item starter; they do not
+establish the unresolved pickup conditions, a local Copper Bar objective point,
+or the Treaty pickup location. This review makes no shipped-data or routing
+change and does not certify live beta behavior.
+
 ## Captured facts and source precedence
 
 The 0.8.59 correction adds **Treacherous Cold (99162) → Rime's Wrath (99161)**
