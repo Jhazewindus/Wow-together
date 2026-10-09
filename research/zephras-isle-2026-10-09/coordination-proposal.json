@@ -1,0 +1,28 @@
+{
+  "applied": false,
+  "shared_runtime_modules_authored": false,
+  "racial_abilities": {
+    "92597": "Read Ley Line at object450002, race95",
+    "92598": "Skysight at object450001, race96",
+    "current_display": "Existing useItemName named-tool field carries the ability name without creating an item entity/ID/required inventory. Main action text now names the actual ability.",
+    "UI_followup": "Generic use hint still calls a named ability an item; coordinate explicit ability/tool wording support with main UI developer."
+  },
+  "unresolved_records": [
+    94901,
+    94902
+  ],
+  "uncertain_pickup_union": [
+    1516,
+    1519,
+    92464,
+    92466,
+    92595,
+    92596,
+    94484,
+    94493
+  ],
+  "native_access_unknown": "Current common/neutral masks and faction templates do not establish physical island access for every race. Never blanket-gate all island quests to races95/96 without offer/access evidence.",
+  "travel_unknown": "Docks, convergence points and directed graph edges retain attribution but do not verify ship boarding/arrival, safe paths or exit permissions. Physical geometry report absent from retained source cache.",
+  "class_settings": "Existing Shaman controls, OR alternatives and exact racial masks preserved.",
+  "source_tiers": "Published Forever beta observation/reviewed typed fields; current capture facts retained. No native test claimed."
+}

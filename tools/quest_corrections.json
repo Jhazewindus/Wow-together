@@ -8505,5 +8505,145 @@
         ]
       }
     }
+  },
+  {
+    "questID": 92597,
+    "title": "Reading the Ley Lines",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Use the exact published racial ability at the existing mapped object with the existing named-tool display field. No item entity, supplied inventory, spell ID or count is invented. Preserve race 95, unknown count and actual previous hand-ins; generic item tooltip wording remains a coordinated UI follow-up. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/zephras-isle-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 2,
+      "level": 4,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "object",
+            "quantityUnknown": true,
+            "action": "interact",
+            "entityID": 450002,
+            "name": "Ley Line"
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "entityType": "object",
+            "mapID": 2521,
+            "action": "interact",
+            "entityID": 450002,
+            "y": 0.1787,
+            "objectiveKey": "object:450002",
+            "name": "Ley Line",
+            "sourceAreaID": 16593,
+            "x": 0.4629,
+            "locationSource": "Published Forever beta-reviewed entity position",
+            "quantityUnknown": true
+          }
+        ],
+        "npcTargets": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "object",
+            "quantityUnknown": true,
+            "action": "use",
+            "entityID": 450002,
+            "name": "Ley Line"
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "entityType": "object",
+            "mapID": 2521,
+            "action": "use",
+            "entityID": 450002,
+            "y": 0.1787,
+            "objectiveKey": "object:450002",
+            "name": "Ley Line",
+            "sourceAreaID": 16593,
+            "x": 0.4629,
+            "locationSource": "Published Forever beta-reviewed entity position",
+            "quantityUnknown": true,
+            "sourceAction": "use-at",
+            "useItemName": "Read Ley Line"
+          }
+        ],
+        "npcTargets": []
+      }
+    }
+  },
+  {
+    "questID": 92598,
+    "title": "The Gift of Skysight",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Use the exact published racial ability at the existing mapped object with the existing named-tool display field. No item entity, supplied inventory, spell ID or count is invented. Preserve race 96, unknown count and actual previous hand-ins; generic item tooltip wording remains a coordinated UI follow-up. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/zephras-isle-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 2,
+      "level": 4,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "object",
+            "quantityUnknown": true,
+            "action": "interact",
+            "entityID": 450001,
+            "name": "Elemental Convergence"
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "entityType": "object",
+            "mapID": 2521,
+            "action": "interact",
+            "entityID": 450001,
+            "y": 0.20620000000000002,
+            "objectiveKey": "object:450001",
+            "name": "Elemental Convergence",
+            "sourceAreaID": 16593,
+            "x": 0.4828,
+            "locationSource": "Published Forever beta-reviewed entity position",
+            "quantityUnknown": true
+          }
+        ],
+        "npcTargets": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "object",
+            "quantityUnknown": true,
+            "action": "use",
+            "entityID": 450001,
+            "name": "Elemental Convergence"
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "entityType": "object",
+            "mapID": 2521,
+            "action": "use",
+            "entityID": 450001,
+            "y": 0.20620000000000002,
+            "objectiveKey": "object:450001",
+            "name": "Elemental Convergence",
+            "sourceAreaID": 16593,
+            "x": 0.4828,
+            "locationSource": "Published Forever beta-reviewed entity position",
+            "quantityUnknown": true,
+            "sourceAction": "use-at",
+            "useItemName": "Skysight"
+          }
+        ],
+        "npcTargets": []
+      }
+    }
   }
 ]

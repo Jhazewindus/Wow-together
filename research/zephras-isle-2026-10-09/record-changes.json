@@ -1,0 +1,368 @@
+{
+  "92597": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 2521,
+      "zone": "Zephras Isle",
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantityUnknown": true,
+          "action": "interact",
+          "entityID": 450002,
+          "name": "Ley Line"
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published Forever beta prerequisites",
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 2521,
+          "action": "interact",
+          "entityID": 450002,
+          "y": 0.1787,
+          "objectiveKey": "object:450002",
+          "name": "Ley Line",
+          "sourceAreaID": 16593,
+          "x": 0.4629,
+          "locationSource": "Published Forever beta-reviewed entity position",
+          "quantityUnknown": true
+        }
+      ],
+      "level": 4,
+      "areaID": 16593,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 2521,
+          "entityID": 251371,
+          "npc": true,
+          "y": 0.2487,
+          "x": 0.43320000000000003,
+          "name": "Falorne Fallwind",
+          "sourceAreaID": 16593,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "prerequisiteAny": [
+        92461
+      ],
+      "side": "Alliance",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 2521,
+          "entityID": 251371,
+          "npc": true,
+          "y": 0.2487,
+          "x": 0.43320000000000003,
+          "name": "Falorne Fallwind",
+          "sourceAreaID": 16593,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Falorne Fallwind",
+          "entityID": 251371
+        }
+      ],
+      "xp": 180,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Falorne Fallwind",
+          "entityID": 251371
+        }
+      ],
+      "foreverStatus": "new",
+      "allowedRaceIDs": [
+        95
+      ],
+      "minLevel": 2,
+      "requirementSource": "Published Forever typed objectives",
+      "title": "Reading the Ley Lines",
+      "raceMask": 4294967296,
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "uncategorized"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 2521,
+      "zone": "Zephras Isle",
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantityUnknown": true,
+          "action": "use",
+          "entityID": 450002,
+          "name": "Ley Line"
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published Forever beta prerequisites",
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 2521,
+          "action": "use",
+          "entityID": 450002,
+          "useItemName": "Read Ley Line",
+          "sourceAction": "use-at",
+          "objectiveKey": "object:450002",
+          "name": "Ley Line",
+          "y": 0.1787,
+          "sourceAreaID": 16593,
+          "x": 0.4629,
+          "locationSource": "Published Forever beta-reviewed entity position",
+          "quantityUnknown": true
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 2521,
+          "entityID": 251371,
+          "npc": true,
+          "y": 0.2487,
+          "x": 0.43320000000000003,
+          "name": "Falorne Fallwind",
+          "sourceAreaID": 16593,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "level": 4,
+      "areaID": 16593,
+      "title": "Reading the Ley Lines",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Falorne Fallwind",
+          "entityID": 251371
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 2521,
+          "entityID": 251371,
+          "npc": true,
+          "y": 0.2487,
+          "x": 0.43320000000000003,
+          "name": "Falorne Fallwind",
+          "sourceAreaID": 16593,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "side": "Alliance",
+      "prerequisiteAny": [
+        92461
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Falorne Fallwind",
+          "entityID": 251371
+        }
+      ],
+      "xp": 180,
+      "foreverStatus": "new",
+      "allowedRaceIDs": [
+        95
+      ],
+      "minLevel": 2,
+      "requirementSource": "Published Forever typed objectives",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Use the exact published racial ability at the existing mapped object with the existing named-tool display field. No item entity, supplied inventory, spell ID or count is invented. Preserve race 95, unknown count and actual previous hand-ins; generic item tooltip wording remains a coordinated UI follow-up. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/zephras-isle-2026-10-09.",
+      "raceMask": 4294967296,
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "uncategorized"
+    }
+  },
+  "92598": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 2521,
+      "zone": "Zephras Isle",
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantityUnknown": true,
+          "action": "interact",
+          "entityID": 450001,
+          "name": "Elemental Convergence"
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "level": 4,
+      "areaID": 16593,
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 2521,
+          "action": "interact",
+          "entityID": 450001,
+          "y": 0.20620000000000002,
+          "objectiveKey": "object:450001",
+          "name": "Elemental Convergence",
+          "sourceAreaID": 16593,
+          "x": 0.4828,
+          "locationSource": "Published Forever beta-reviewed entity position",
+          "quantityUnknown": true
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 2521,
+          "entityID": 251487,
+          "npc": true,
+          "y": 0.24359999999999998,
+          "x": 0.4265,
+          "name": "Ventaari Brightwish",
+          "sourceAreaID": 16593,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "side": "Horde",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 2521,
+          "entityID": 251487,
+          "npc": true,
+          "y": 0.24359999999999998,
+          "x": 0.4265,
+          "name": "Ventaari Brightwish",
+          "sourceAreaID": 16593,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Ventaari Brightwish",
+          "entityID": 251487
+        }
+      ],
+      "xp": 180,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Ventaari Brightwish",
+          "entityID": 251487
+        }
+      ],
+      "foreverStatus": "new",
+      "allowedRaceIDs": [
+        96
+      ],
+      "minLevel": 2,
+      "requirementSource": "Published Forever typed objectives",
+      "title": "The Gift of Skysight",
+      "raceMask": 8589934592,
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "uncategorized"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 2521,
+      "zone": "Zephras Isle",
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantityUnknown": true,
+          "action": "use",
+          "entityID": 450001,
+          "name": "Elemental Convergence"
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 2521,
+          "action": "use",
+          "entityID": 450001,
+          "useItemName": "Skysight",
+          "sourceAction": "use-at",
+          "objectiveKey": "object:450001",
+          "name": "Elemental Convergence",
+          "y": 0.20620000000000002,
+          "sourceAreaID": 16593,
+          "x": 0.4828,
+          "locationSource": "Published Forever beta-reviewed entity position",
+          "quantityUnknown": true
+        }
+      ],
+      "level": 4,
+      "areaID": 16593,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 2521,
+          "entityID": 251487,
+          "npc": true,
+          "y": 0.24359999999999998,
+          "x": 0.4265,
+          "name": "Ventaari Brightwish",
+          "sourceAreaID": 16593,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "title": "The Gift of Skysight",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Ventaari Brightwish",
+          "entityID": 251487
+        }
+      ],
+      "side": "Horde",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 2521,
+          "entityID": 251487,
+          "npc": true,
+          "y": 0.24359999999999998,
+          "x": 0.4265,
+          "name": "Ventaari Brightwish",
+          "sourceAreaID": 16593,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Ventaari Brightwish",
+          "entityID": 251487
+        }
+      ],
+      "xp": 180,
+      "foreverStatus": "new",
+      "allowedRaceIDs": [
+        96
+      ],
+      "minLevel": 2,
+      "requirementSource": "Published Forever typed objectives",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Use the exact published racial ability at the existing mapped object with the existing named-tool display field. No item entity, supplied inventory, spell ID or count is invented. Preserve race 96, unknown count and actual previous hand-ins; generic item tooltip wording remains a coordinated UI follow-up. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/zephras-isle-2026-10-09.",
+      "raceMask": 8589934592,
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "uncategorized"
+    }
+  }
+}
