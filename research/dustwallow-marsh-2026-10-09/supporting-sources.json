@@ -1,0 +1,34 @@
+[
+  {
+    "questID": 4976,
+    "url": "https://classicdb.ch/?quest=4976",
+    "http_status": 200,
+    "sha256": "011e7d4e8ab41e9f951890898b2665b12de69baba9160670e9a806bdd993d7ff",
+    "access_date": "2026-10-09 Europe/Amsterdam",
+    "scope": "Supporting unchanged delivery/acquisition or tool mechanics only; no beta terrain, hidden offer or supplied-count proof. Raw prose omitted."
+  },
+  {
+    "questID": 6601,
+    "url": "https://classicdb.ch/?quest=6601",
+    "http_status": 200,
+    "sha256": "17e306e8d866a87be3aeeb80e39655d2796de26589035eb6d0712a6fc331d918",
+    "access_date": "2026-10-09 Europe/Amsterdam",
+    "scope": "Supporting unchanged delivery/acquisition or tool mechanics only; no beta terrain, hidden offer or supplied-count proof. Raw prose omitted."
+  },
+  {
+    "questID": 4962,
+    "url": "https://classicdb.ch/?quest=4962",
+    "http_status": 200,
+    "sha256": "ff6dd949f3a9281dcd3a7ec49799bb0aef5f08d38a084e441ae1e22eb0574647",
+    "access_date": "2026-10-09 Europe/Amsterdam",
+    "scope": "Supporting unchanged delivery/acquisition or tool mechanics only; no beta terrain, hidden offer or supplied-count proof. Raw prose omitted."
+  },
+  {
+    "questID": 1203,
+    "url": "https://classicdb.ch/?quest=1203",
+    "http_status": 200,
+    "sha256": "2401a76f757372c389ebbb53ab036f9ee4013bcb243906c03feadabd3235fa18",
+    "access_date": "2026-10-09 Europe/Amsterdam",
+    "scope": "Supporting unchanged delivery/acquisition or tool mechanics only; no beta terrain, hidden offer or supplied-count proof. Raw prose omitted."
+  }
+]

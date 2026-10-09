@@ -1,0 +1,76 @@
+{
+  "zone": "Wetlands",
+  "date": "2026-10-09 Europe/Amsterdam",
+  "addon": "0.8.61",
+  "baseline_commit": "6176f648facb16ea453e6a8a9a38416b588fa194",
+  "main_commit": "09155ca265278572649a3529b8ce7ea1b4eb8431",
+  "changed_quest_ids": [
+    281,
+    284,
+    285,
+    455,
+    465,
+    631,
+    94497,
+    94499,
+    94500,
+    94501
+  ],
+  "direct_category_records": 66,
+  "compiled_distinct_ids": 73,
+  "actions_before": [
+    6,
+    179,
+    76
+  ],
+  "actions_after": [
+    6,
+    180,
+    77
+  ],
+  "new_required_action": "Separately evidenced Dun Algaz traversal appears in two chapters; no old actions removed",
+  "source_gaps_before_after": {
+    "pickup": [
+      5,
+      5
+    ],
+    "objective": [
+      11,
+      11
+    ],
+    "handin": [
+      5,
+      5
+    ],
+    "uncertain_pickup": [
+      6,
+      6
+    ],
+    "uncertain_quantity": [
+      3,
+      3
+    ]
+  },
+  "strict_replay_states": 12,
+  "all_candidate_and_reconciled_old_states_valid": true,
+  "all_endpoints_preserved": true,
+  "guard": "REVIEW REQUIRED",
+  "global_audit": {
+    "sections": 152,
+    "static_points": 11835,
+    "recorded_gap_free": 33,
+    "unresolved_ordinary_records": 378
+  },
+  "tests": {
+    "focused": 9,
+    "zone_regressions": 102,
+    "host": 122,
+    "importer_source": 49,
+    "lua51_toc_compile": 86
+  },
+  "source_hashes_verified": 24,
+  "entity_world_checks_xp_data_preserved": true,
+  "shared_runtime_modules_authored": false,
+  "native_beta_verified": false,
+  "full_suite_rerun": false
+}

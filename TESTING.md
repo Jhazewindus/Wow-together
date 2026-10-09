@@ -1,8 +1,8 @@
 # Wow Together — friend test script
 
-For **0.8.61** — **SESSION CHECKPOINTS AND DUNGEON TRACKING**, World of Warcraft: Forever beta,
+For **0.8.62** — **REVIEWED ZONE UPDATES**, World of Warcraft: Forever beta,
 interface **16001**.
-Allow **10–15 minutes for checkpoint checks**; the wider optional checks take 45–60
+Allow **15–25 minutes for the updated quest checks**; the wider optional checks take 45–60
 minutes. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The expanded-guide checks below take about **15–25 minutes**.
@@ -21,7 +21,55 @@ The expanded-guide checks below take about **15–25 minutes**.
    applying completed/accepted quests and manual skips. Step numbers may change.
    A reload on the same version should preserve the saved order.
 
-## Session checkpoints — about 10–15 minutes
+## Reviewed zone updates — test your current zone
+
+- **Barrens:** Samophlange console/valves should say Interact; each nest should
+  name Sunscale Feather. Ishamuhale's carcass and manual pages/cover remain
+  preparation work, with only the actual output requested at return. Missing
+  bait/assembly/peak placement locations must remain honest gaps.
+- **Hillsbrad:** Crown of Will shows all three head sources in Alterac and keeps
+  its elite warning. Bartolo's cloak must not send you to the flight master for
+  cloth. Helcular names the supplied rod at each flame; proclamation/rug/grave
+  steps use the appropriate object action. Accepted, deferred and future work
+  must not falsely complete the guide.
+- **Hinterlands:** Rhapsody names both Feralas liver sources and retains three
+  of each item. Venom to the Undercity delivers the supplied parcel to Faranell
+  without asking you to farm it. Actual dungeon-parent hand-ins still gate work.
+- **Westfall:** Captain Sander's treasure steps interact with the correct objects;
+  Alba uses the reviewed hub position. Deadmines detonator work stays unmapped
+  rather than sending you to the giver as the objective. Check Skyborn handoffs
+  and ordinary/class settings without inventing profession requirements.
+- **Thoradin's Wall:** the messenger bag and satchel use the Arathi map; all
+  nine chain actions and actual predecessor hand-ins remain.
+- **Zephras Isle:** use Read Ley Line / Skysight at the named object on the
+  appropriate race. Neither instruction should require an invented inventory
+  item. Missing quest stages remain visible gaps.
+- **Starting zones:** test Durotar, Mulgore, Dun Morogh, Elwynn, Teldrassil and
+  Tirisfal with your actual class/race. Supplied deliveries must not become farms;
+  known parents must be handed in before their successors. Keep real class quests
+  controlled by the class checkbox. Report conflicting NPC offers.
+- **Duskwood / Dustwallow:** grave/object pickups should say Interact and retain
+  the faction's correct return NPC. Supplied orb, ring and amulet deliveries must
+  not require another farm. Dustwallow gossip placeholders and Cooking-only work
+  stay outside ordinary leveling. Unknown reports remain visible gaps.
+- **Other reviewed zones:** Stranglethorn, Tanaris, Un'Goro, Western Plaguelands,
+  Wetlands, Winterspring and Thousand Needles retain real work, preparation items,
+  elite warnings and actual parent hand-ins. Supplied items must not create
+  duplicate acquisition trips. Raid/profession exclusions must not hide elites.
+  Swamp of Sorrows has a refreshed audit without invented new quest positions.
+- **Route safeguards:** a close hand-in must not be delayed merely to make a
+  shorter loop if that removes previously earned quest XP before later work.
+  Verify useful nearby work is still bundled, prerequisites precede pickups and
+  escort work follows acceptance. Scan/reload must not reshuffle a running guide.
+- In every affected guide, Scan, reload, pause/resume and enter another zone.
+  Completed/accepted work and personal skips must persist. Temporary absences
+  return after a confirmed offer. Installing this version rebuilds saved plans;
+  subsequent same-version reloads preserve their order.
+- Report native offers, item consumption, coordinates and safe approaches with
+  quest ID, race/class/faction, level and build. Host source checks cannot certify
+  actual beta behavior or walkable terrain. Unresolved proposals remain research.
+
+## Session checkpoints — optional regression
 
 - Start a zone guide. Earn XP and hand in a quest, then open Recommended →
   Session. Check XP, unique quest hand-ins, played time, level and the next

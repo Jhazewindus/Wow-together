@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.61 — SESSION CHECKPOINTS AND DUNGEON TRACKING** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.62 — REVIEWED ZONE UPDATES** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -22,6 +22,19 @@ Replace the folder on **every party member's client**, including all **86 Lua
 files** and the **Media folder**, then fully restart the client. Restart if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.62 integrates the reviewed leveling updates from 22 zones**, including
+starting zones, Barrens, Hillsbrad, Duskwood and Dustwallow. The update changes 201 quest records and corrects
+supplied deliveries, drops, object actions, prerequisites and mapped NPC points.
+Testing placeholders, explicit profession quests and raid campaigns stay out of
+ordinary leveling; elite quests and the class-quest option remain available.
+
+The first route optimization pass now checks the complete journey before moving
+steps. A shorter path must preserve known hand-in prerequisites, collected XP
+before every objective, quest-log pressure and level/difficulty checks, including
+several starting states within the chapter. Fixed order and progress controls
+remain. Conflicting race rules and missing terrain/quest facts are not guessed.
+See [the release review](research/release-0.8.62-2026-10-09/README.md).
 
 **0.8.61 adds session checkpoints.** Press **Pause** on the guide window, or
 **Session → Save & pause** on the Recommended screen. The guide stops, stays saved

@@ -1,0 +1,401 @@
+{
+  "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
+  "quest_records": 36,
+  "static_points_checked": 103,
+  "fixed_zone_guides_checked": 6,
+  "catalogue_reason_stages_checked": 121,
+  "catalogue_reason_codes": {
+    "level-work": 36,
+    "quest-objective": 49,
+    "quest-reward": 36
+  },
+  "reason_review_quest_ids": [
+    185,
+    186,
+    187,
+    188,
+    189,
+    190,
+    191,
+    193,
+    194,
+    198,
+    200,
+    201,
+    203,
+    204,
+    208,
+    210,
+    215,
+    328,
+    329,
+    338,
+    339,
+    340,
+    341,
+    342,
+    349,
+    575,
+    581,
+    583,
+    602,
+    605,
+    607,
+    622,
+    623,
+    1036,
+    97047,
+    98463
+  ],
+  "source_data_gap_free_guides": 0,
+  "guides": [
+    {
+      "faction": "Alliance",
+      "zone": "Stranglethorn Vale",
+      "key": "level-zone:eastern-kingdoms/stranglethorn-vale:levels:31-40",
+      "quests": 58,
+      "steps": 196,
+      "unknown_location_steps": 18,
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          97047,
+          97048,
+          97329,
+          97331
+        ],
+        "q": [
+          338,
+          1796,
+          97047,
+          97048,
+          97328,
+          97331
+        ],
+        "t": [
+          97047,
+          97048,
+          97328,
+          97329,
+          97331
+        ]
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        339,
+        340,
+        341,
+        342
+      ],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 196,
+      "destination_reason_codes": {
+        "class-progression": 6,
+        "outside-level-range": 109,
+        "prerequisite": 32,
+        "quest-reward": 44,
+        "return-hub": 3,
+        "unlock-loop": 2
+      },
+      "reason_review_steps": 119,
+      "cross_zone_reason_steps": 8,
+      "flow_alternatives_evaluated": 148,
+      "flow_loop_changes": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 11,
+      "quest_reward_only_xp_shortfall": 233410,
+      "uncertain_travel_legs": 41,
+      "estimated_distance_before": 409335.26,
+      "estimated_distance_after": 409335.26
+    },
+    {
+      "faction": "Alliance",
+      "zone": "Stranglethorn Vale",
+      "key": "level-zone:eastern-kingdoms/stranglethorn-vale:levels:41-50",
+      "quests": 52,
+      "steps": 169,
+      "unknown_location_steps": 19,
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          614,
+          615,
+          618,
+          620,
+          8552,
+          8553,
+          8554
+        ],
+        "q": [
+          615,
+          620,
+          8552,
+          8553,
+          8554
+        ],
+        "t": [
+          614,
+          615,
+          618,
+          620,
+          8552,
+          8553,
+          8554
+        ]
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        3721,
+        8552,
+        8553,
+        8554
+      ],
+      "unverified_objective_quantity_quest_ids": [
+        8551
+      ],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 169,
+      "destination_reason_codes": {
+        "early-reward": 2,
+        "outside-level-range": 90,
+        "prerequisite": 38,
+        "quest-reward": 37,
+        "return-hub": 1,
+        "unlock-loop": 1
+      },
+      "reason_review_steps": 97,
+      "cross_zone_reason_steps": 3,
+      "flow_alternatives_evaluated": 143,
+      "flow_loop_changes": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 7,
+      "quest_reward_only_xp_shortfall": 1160215,
+      "uncertain_travel_legs": 34,
+      "estimated_distance_before": 422143.91,
+      "estimated_distance_after": 416920.92
+    },
+    {
+      "faction": "Alliance",
+      "zone": "Stranglethorn Vale",
+      "key": "level-zone:eastern-kingdoms/stranglethorn-vale:levels:51-60",
+      "quests": 27,
+      "steps": 87,
+      "unknown_location_steps": 6,
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          7908
+        ],
+        "q": [
+          1036,
+          3511,
+          3621,
+          7908
+        ],
+        "t": [
+          7908
+        ]
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        1036,
+        4621,
+        7908,
+        9272
+      ],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 87,
+      "destination_reason_codes": {
+        "outside-level-range": 45,
+        "prerequisite": 21,
+        "quest-reward": 21
+      },
+      "reason_review_steps": 49,
+      "cross_zone_reason_steps": 15,
+      "flow_alternatives_evaluated": 15,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 2,
+      "quest_reward_only_xp_shortfall": 3062580,
+      "uncertain_travel_legs": 24,
+      "estimated_distance_before": 214354.02,
+      "estimated_distance_after": 214354.02
+    },
+    {
+      "faction": "Horde",
+      "zone": "Stranglethorn Vale",
+      "key": "level-zone:eastern-kingdoms/stranglethorn-vale:levels:31-40",
+      "quests": 45,
+      "steps": 155,
+      "unknown_location_steps": 20,
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          95748,
+          97047,
+          97048,
+          97329,
+          97331
+        ],
+        "q": [
+          338,
+          1796,
+          97047,
+          97048,
+          97328,
+          97331
+        ],
+        "t": [
+          95748,
+          97047,
+          97048,
+          97328,
+          97329,
+          97331
+        ]
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        339,
+        340,
+        341,
+        342
+      ],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 155,
+      "destination_reason_codes": {
+        "class-progression": 6,
+        "outside-level-range": 96,
+        "prerequisite": 12,
+        "quest-reward": 36,
+        "return-hub": 5
+      },
+      "reason_review_steps": 107,
+      "cross_zone_reason_steps": 6,
+      "flow_alternatives_evaluated": 175,
+      "flow_loop_changes": 3,
+      "flow_state_valid": true,
+      "quest_log_peak": 10,
+      "quest_reward_only_xp_shortfall": 306355,
+      "uncertain_travel_legs": 29,
+      "estimated_distance_before": 291220.63,
+      "estimated_distance_after": 289949.04
+    },
+    {
+      "faction": "Horde",
+      "zone": "Stranglethorn Vale",
+      "key": "level-zone:eastern-kingdoms/stranglethorn-vale:levels:41-50",
+      "quests": 60,
+      "steps": 194,
+      "unknown_location_steps": 19,
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          614,
+          615,
+          618,
+          620,
+          8552,
+          8553,
+          8554
+        ],
+        "q": [
+          615,
+          620,
+          8552,
+          8553,
+          8554
+        ],
+        "t": [
+          614,
+          615,
+          618,
+          620,
+          8552,
+          8553,
+          8554
+        ]
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        3721,
+        8552,
+        8553,
+        8554
+      ],
+      "unverified_objective_quantity_quest_ids": [
+        592,
+        8551
+      ],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 194,
+      "destination_reason_codes": {
+        "early-reward": 1,
+        "outside-level-range": 105,
+        "prerequisite": 41,
+        "quest-reward": 45,
+        "return-hub": 1,
+        "reward-first": 1
+      },
+      "reason_review_steps": 112,
+      "cross_zone_reason_steps": 3,
+      "flow_alternatives_evaluated": 180,
+      "flow_loop_changes": 2,
+      "flow_state_valid": true,
+      "quest_log_peak": 9,
+      "quest_reward_only_xp_shortfall": 1157715,
+      "uncertain_travel_legs": 27,
+      "estimated_distance_before": 374474.25,
+      "estimated_distance_after": 374474.25
+    },
+    {
+      "faction": "Horde",
+      "zone": "Stranglethorn Vale",
+      "key": "level-zone:eastern-kingdoms/stranglethorn-vale:levels:51-60",
+      "quests": 26,
+      "steps": 84,
+      "unknown_location_steps": 6,
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          7908
+        ],
+        "q": [
+          1036,
+          3511,
+          3621,
+          7908
+        ],
+        "t": [
+          7908
+        ]
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        1036,
+        4621,
+        7908,
+        9272
+      ],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 53,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 84,
+      "destination_reason_codes": {
+        "outside-level-range": 45,
+        "prerequisite": 18,
+        "quest-reward": 21
+      },
+      "reason_review_steps": 78,
+      "cross_zone_reason_steps": 15,
+      "flow_alternatives_evaluated": 1,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 2,
+      "quest_reward_only_xp_shortfall": 3084230,
+      "uncertain_travel_legs": 28,
+      "estimated_distance_before": 262967.05,
+      "estimated_distance_after": 262967.05
+    }
+  ],
+  "scope": {
+    "zone": "Stranglethorn Vale",
+    "catalogue_records": "Exact quest zone; guide dependencies still compile normally"
+  }
+}

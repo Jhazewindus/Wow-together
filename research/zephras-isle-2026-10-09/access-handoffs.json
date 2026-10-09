@@ -1,0 +1,1831 @@
+{
+  "nodes": {
+    "CONVERGENCE_C2521_341_598": {
+      "y": 0.5983,
+      "mapID": 2521,
+      "name": "Convergence C2521 341 598",
+      "x": 0.3407,
+      "container": "zephras_isle.zephras_isle"
+    },
+    "CONVERGENCE_C2521_359_337": {
+      "y": 0.3368,
+      "mapID": 2521,
+      "name": "Convergence C2521 359 337",
+      "x": 0.3593,
+      "container": "zephras_isle.zephras_isle"
+    },
+    "CONVERGENCE_C2521_484_203": {
+      "y": 0.2031,
+      "mapID": 2521,
+      "name": "Convergence C2521 484 203",
+      "x": 0.4844,
+      "container": "zephras_isle.zephras_isle"
+    },
+    "CONVERGENCE_C2521_684_660": {
+      "y": 0.6604,
+      "mapID": 2521,
+      "name": "Convergence C2521 684 660",
+      "x": 0.6836,
+      "container": "zephras_isle.zephras_isle"
+    },
+    "DOCK_VALANAAR": {
+      "y": 0.8078,
+      "mapID": 2521,
+      "name": "Valanaar Harbor",
+      "x": 0.5791,
+      "container": "zephras_isle.zephras_isle"
+    },
+    "CONVERGENCE_C2521_700_614": {
+      "y": 0.6141,
+      "mapID": 2521,
+      "name": "Convergence C2521 700 614",
+      "x": 0.7004,
+      "container": "zephras_isle.zephras_isle"
+    },
+    "CONVERGENCE_C2521_466_382": {
+      "y": 0.3824,
+      "mapID": 2521,
+      "name": "Convergence C2521 466 382",
+      "x": 0.4659,
+      "container": "zephras_isle.zephras_isle"
+    },
+    "CONVERGENCE_C2521_675_505": {
+      "y": 0.5054,
+      "mapID": 2521,
+      "name": "Convergence C2521 675 505",
+      "x": 0.6751,
+      "container": "zephras_isle.zephras_isle"
+    },
+    "CONVERGENCE_C2521_648_380": {
+      "y": 0.3802,
+      "mapID": 2521,
+      "name": "Convergence C2521 648 380",
+      "x": 0.6485,
+      "container": "zephras_isle.zephras_isle"
+    },
+    "CONVERGENCE_C2521_591_798": {
+      "y": 0.7981,
+      "mapID": 2521,
+      "name": "Convergence C2521 591 798",
+      "x": 0.5914,
+      "container": "zephras_isle.zephras_isle"
+    },
+    "CONVERGENCE_C2521_528_575": {
+      "y": 0.5752,
+      "mapID": 2521,
+      "name": "Convergence C2521 528 575",
+      "x": 0.5285,
+      "container": "zephras_isle.zephras_isle"
+    },
+    "CONVERGENCE_C2521_484_806": {
+      "y": 0.8064,
+      "mapID": 2521,
+      "name": "Convergence C2521 484 806",
+      "x": 0.4839,
+      "container": "zephras_isle.zephras_isle"
+    },
+    "CONVERGENCE_C2521_476_695": {
+      "y": 0.6954,
+      "mapID": 2521,
+      "name": "Convergence C2521 476 695",
+      "x": 0.4764,
+      "container": "zephras_isle.zephras_isle"
+    },
+    "CONVERGENCE_C2521_616_515": {
+      "y": 0.5153,
+      "mapID": 2521,
+      "name": "Convergence C2521 616 515",
+      "x": 0.6159,
+      "container": "zephras_isle.zephras_isle"
+    },
+    "CONVERGENCE_C2521_485_558": {
+      "y": 0.5581,
+      "mapID": 2521,
+      "name": "Convergence C2521 485 558",
+      "x": 0.485,
+      "container": "zephras_isle.zephras_isle"
+    },
+    "DOCK_ZEPHRAS_ALLIANCE": {
+      "y": 0.8341,
+      "mapID": 2521,
+      "name": "Zephras Isle Airship Dock (Dalaran)",
+      "x": 0.6581,
+      "container": "zephras_isle.zephras_isle"
+    },
+    "CONVERGENCE_C2521_679_749": {
+      "y": 0.7494,
+      "mapID": 2521,
+      "name": "Convergence C2521 679 749",
+      "x": 0.6789,
+      "container": "zephras_isle.zephras_isle"
+    }
+  },
+  "directed_edges": [
+    {
+      "to": "CONVERGENCE_C2521_359_337",
+      "distance": 1121.52,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_341_598"
+    },
+    {
+      "to": "CONVERGENCE_C2521_466_382",
+      "distance": 1220.31,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_341_598"
+    },
+    {
+      "to": "CONVERGENCE_C2521_476_695",
+      "distance": 961.77,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_341_598"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_203",
+      "distance": 1919.75,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_341_598"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_806",
+      "distance": 1275.42,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_341_598"
+    },
+    {
+      "to": "CONVERGENCE_C2521_485_558",
+      "distance": 938.85,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_341_598"
+    },
+    {
+      "to": "CONVERGENCE_C2521_528_575",
+      "distance": 1205.37,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_341_598"
+    },
+    {
+      "to": "CONVERGENCE_C2521_591_798",
+      "distance": 1816,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_341_598"
+    },
+    {
+      "to": "CONVERGENCE_C2521_616_515",
+      "distance": 1795.65,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_341_598"
+    },
+    {
+      "to": "CONVERGENCE_C2521_648_380",
+      "distance": 2177.59,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_341_598"
+    },
+    {
+      "to": "CONVERGENCE_C2521_675_505",
+      "distance": 2175.49,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_341_598"
+    },
+    {
+      "to": "CONVERGENCE_C2521_679_749",
+      "distance": 2257.35,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_341_598"
+    },
+    {
+      "to": "CONVERGENCE_C2521_684_660",
+      "distance": 2209.42,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_341_598"
+    },
+    {
+      "to": "CONVERGENCE_C2521_700_614",
+      "distance": 2301.94,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_341_598"
+    },
+    {
+      "to": "DOCK_VALANAAR",
+      "distance": 1767.45,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_341_598"
+    },
+    {
+      "to": "DOCK_ZEPHRAS_ALLIANCE",
+      "distance": 2265.75,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_341_598"
+    },
+    {
+      "to": "CONVERGENCE_C2521_341_598",
+      "distance": 1121.52,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_359_337"
+    },
+    {
+      "to": "CONVERGENCE_C2521_466_382",
+      "distance": 709.09,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_359_337"
+    },
+    {
+      "to": "CONVERGENCE_C2521_476_695",
+      "distance": 1702.88,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_359_337"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_203",
+      "distance": 982.6,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_359_337"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_806",
+      "distance": 2155.43,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_359_337"
+    },
+    {
+      "to": "CONVERGENCE_C2521_485_558",
+      "distance": 1239.85,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_359_337"
+    },
+    {
+      "to": "CONVERGENCE_C2521_528_575",
+      "distance": 1484.96,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_359_337"
+    },
+    {
+      "to": "CONVERGENCE_C2521_591_798",
+      "distance": 2464.64,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_359_337"
+    },
+    {
+      "to": "CONVERGENCE_C2521_616_515",
+      "distance": 1809.36,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_359_337"
+    },
+    {
+      "to": "CONVERGENCE_C2521_648_380",
+      "distance": 1859.21,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_359_337"
+    },
+    {
+      "to": "CONVERGENCE_C2521_675_505",
+      "distance": 2144.27,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_359_337"
+    },
+    {
+      "to": "CONVERGENCE_C2521_679_749",
+      "distance": 2697.37,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_359_337"
+    },
+    {
+      "to": "CONVERGENCE_C2521_684_660",
+      "distance": 2491.59,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_359_337"
+    },
+    {
+      "to": "CONVERGENCE_C2521_700_614",
+      "distance": 2481.83,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_359_337"
+    },
+    {
+      "to": "DOCK_VALANAAR",
+      "distance": 2451.83,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_359_337"
+    },
+    {
+      "to": "DOCK_ZEPHRAS_ALLIANCE",
+      "distance": 2855.01,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_359_337"
+    },
+    {
+      "to": "CONVERGENCE_C2521_341_598",
+      "distance": 1220.31,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_466_382"
+    },
+    {
+      "to": "CONVERGENCE_C2521_359_337",
+      "distance": 709.09,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_466_382"
+    },
+    {
+      "to": "CONVERGENCE_C2521_476_695",
+      "distance": 1336.5,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_466_382"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_203",
+      "distance": 773.74,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_466_382"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_806",
+      "distance": 1811.85,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_466_382"
+    },
+    {
+      "to": "CONVERGENCE_C2521_485_558",
+      "distance": 759.18,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_466_382"
+    },
+    {
+      "to": "CONVERGENCE_C2521_528_575",
+      "distance": 914.54,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_466_382"
+    },
+    {
+      "to": "CONVERGENCE_C2521_591_798",
+      "distance": 1946.09,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_466_382"
+    },
+    {
+      "to": "CONVERGENCE_C2521_616_515",
+      "distance": 1114.41,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_466_382"
+    },
+    {
+      "to": "CONVERGENCE_C2521_648_380",
+      "distance": 1168.11,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_466_382"
+    },
+    {
+      "to": "CONVERGENCE_C2521_675_505",
+      "distance": 1437.36,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_466_382"
+    },
+    {
+      "to": "CONVERGENCE_C2521_679_749",
+      "distance": 2075.1,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_466_382"
+    },
+    {
+      "to": "CONVERGENCE_C2521_684_660",
+      "distance": 1828.9,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_466_382"
+    },
+    {
+      "to": "CONVERGENCE_C2521_700_614",
+      "distance": 1796.26,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_466_382"
+    },
+    {
+      "to": "DOCK_VALANAAR",
+      "distance": 1953.33,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_466_382"
+    },
+    {
+      "to": "DOCK_ZEPHRAS_ALLIANCE",
+      "distance": 2285.23,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_466_382"
+    },
+    {
+      "to": "CONVERGENCE_C2521_341_598",
+      "distance": 961.77,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_476_695"
+    },
+    {
+      "to": "CONVERGENCE_C2521_359_337",
+      "distance": 1702.88,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_476_695"
+    },
+    {
+      "to": "CONVERGENCE_C2521_466_382",
+      "distance": 1336.5,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_476_695"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_203",
+      "distance": 2100.08,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_476_695"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_806",
+      "distance": 475.79,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_476_695"
+    },
+    {
+      "to": "CONVERGENCE_C2521_485_558",
+      "distance": 588.11,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_476_695"
+    },
+    {
+      "to": "CONVERGENCE_C2521_528_575",
+      "distance": 611.42,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_476_695"
+    },
+    {
+      "to": "CONVERGENCE_C2521_591_798",
+      "distance": 856.15,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_476_695"
+    },
+    {
+      "to": "CONVERGENCE_C2521_616_515",
+      "distance": 1177.38,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_476_695"
+    },
+    {
+      "to": "CONVERGENCE_C2521_648_380",
+      "distance": 1737.48,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_476_695"
+    },
+    {
+      "to": "CONVERGENCE_C2521_675_505",
+      "distance": 1507.36,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_476_695"
+    },
+    {
+      "to": "CONVERGENCE_C2521_679_749",
+      "distance": 1315.68,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_476_695"
+    },
+    {
+      "to": "CONVERGENCE_C2521_684_660",
+      "distance": 1333.81,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_476_695"
+    },
+    {
+      "to": "CONVERGENCE_C2521_700_614",
+      "distance": 1474.25,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_476_695"
+    },
+    {
+      "to": "DOCK_VALANAAR",
+      "distance": 813.24,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_476_695"
+    },
+    {
+      "to": "DOCK_ZEPHRAS_ALLIANCE",
+      "distance": 1304.16,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_476_695"
+    },
+    {
+      "to": "CONVERGENCE_C2521_341_598",
+      "distance": 1919.75,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_203"
+    },
+    {
+      "to": "CONVERGENCE_C2521_359_337",
+      "distance": 982.6,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_203"
+    },
+    {
+      "to": "CONVERGENCE_C2521_466_382",
+      "distance": 773.74,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_203"
+    },
+    {
+      "to": "CONVERGENCE_C2521_476_695",
+      "distance": 2100.08,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_203"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_806",
+      "distance": 2572.83,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_203"
+    },
+    {
+      "to": "CONVERGENCE_C2521_485_558",
+      "distance": 1513.93,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_203"
+    },
+    {
+      "to": "CONVERGENCE_C2521_528_575",
+      "distance": 1611.73,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_203"
+    },
+    {
+      "to": "CONVERGENCE_C2521_591_798",
+      "distance": 2628.12,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_203"
+    },
+    {
+      "to": "CONVERGENCE_C2521_616_515",
+      "distance": 1574.88,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_203"
+    },
+    {
+      "to": "CONVERGENCE_C2521_648_380",
+      "distance": 1293.19,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_203"
+    },
+    {
+      "to": "CONVERGENCE_C2521_675_505",
+      "distance": 1774.86,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_203"
+    },
+    {
+      "to": "CONVERGENCE_C2521_679_749",
+      "distance": 2641.16,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_203"
+    },
+    {
+      "to": "CONVERGENCE_C2521_684_660",
+      "distance": 2329.59,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_203"
+    },
+    {
+      "to": "CONVERGENCE_C2521_700_614",
+      "distance": 2231.88,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_203"
+    },
+    {
+      "to": "DOCK_VALANAAR",
+      "distance": 2648.99,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_203"
+    },
+    {
+      "to": "DOCK_ZEPHRAS_ALLIANCE",
+      "distance": 2911.33,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_203"
+    },
+    {
+      "to": "CONVERGENCE_C2521_341_598",
+      "distance": 1275.42,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_806"
+    },
+    {
+      "to": "CONVERGENCE_C2521_359_337",
+      "distance": 2155.43,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_806"
+    },
+    {
+      "to": "CONVERGENCE_C2521_466_382",
+      "distance": 1811.85,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_806"
+    },
+    {
+      "to": "CONVERGENCE_C2521_476_695",
+      "distance": 475.79,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_806"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_203",
+      "distance": 2572.83,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_806"
+    },
+    {
+      "to": "CONVERGENCE_C2521_485_558",
+      "distance": 1058.92,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_806"
+    },
+    {
+      "to": "CONVERGENCE_C2521_528_575",
+      "distance": 1026.42,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_806"
+    },
+    {
+      "to": "CONVERGENCE_C2521_591_798",
+      "distance": 688.57,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_806"
+    },
+    {
+      "to": "CONVERGENCE_C2521_616_515",
+      "distance": 1501.37,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_806"
+    },
+    {
+      "to": "CONVERGENCE_C2521_648_380",
+      "distance": 2100.52,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_806"
+    },
+    {
+      "to": "CONVERGENCE_C2521_675_505",
+      "distance": 1773.04,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_806"
+    },
+    {
+      "to": "CONVERGENCE_C2521_679_749",
+      "distance": 1270.85,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_806"
+    },
+    {
+      "to": "CONVERGENCE_C2521_684_660",
+      "distance": 1421.11,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_806"
+    },
+    {
+      "to": "CONVERGENCE_C2521_700_614",
+      "distance": 1609.52,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_806"
+    },
+    {
+      "to": "DOCK_VALANAAR",
+      "distance": 609.01,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_806"
+    },
+    {
+      "to": "DOCK_ZEPHRAS_ALLIANCE",
+      "distance": 1120.58,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_484_806"
+    },
+    {
+      "to": "CONVERGENCE_C2521_341_598",
+      "distance": 938.85,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_485_558"
+    },
+    {
+      "to": "CONVERGENCE_C2521_359_337",
+      "distance": 1239.85,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_485_558"
+    },
+    {
+      "to": "CONVERGENCE_C2521_466_382",
+      "distance": 759.18,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_485_558"
+    },
+    {
+      "to": "CONVERGENCE_C2521_476_695",
+      "distance": 588.11,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_485_558"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_203",
+      "distance": 1513.93,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_485_558"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_806",
+      "distance": 1058.92,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_485_558"
+    },
+    {
+      "to": "CONVERGENCE_C2521_528_575",
+      "distance": 287.66,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_485_558"
+    },
+    {
+      "to": "CONVERGENCE_C2521_591_798",
+      "distance": 1229.15,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_485_558"
+    },
+    {
+      "to": "CONVERGENCE_C2521_616_515",
+      "distance": 857.01,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_485_558"
+    },
+    {
+      "to": "CONVERGENCE_C2521_648_380",
+      "distance": 1292.08,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_485_558"
+    },
+    {
+      "to": "CONVERGENCE_C2521_675_505",
+      "distance": 1236.64,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_485_558"
+    },
+    {
+      "to": "CONVERGENCE_C2521_679_749",
+      "distance": 1484.6,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_485_558"
+    },
+    {
+      "to": "CONVERGENCE_C2521_684_660",
+      "distance": 1343.24,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_485_558"
+    },
+    {
+      "to": "CONVERGENCE_C2521_700_614",
+      "distance": 1398.43,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_485_558"
+    },
+    {
+      "to": "DOCK_VALANAAR",
+      "distance": 1223.23,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_485_558"
+    },
+    {
+      "to": "DOCK_ZEPHRAS_ALLIANCE",
+      "distance": 1616.01,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_485_558"
+    },
+    {
+      "to": "CONVERGENCE_C2521_341_598",
+      "distance": 1205.37,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_528_575"
+    },
+    {
+      "to": "CONVERGENCE_C2521_359_337",
+      "distance": 1484.96,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_528_575"
+    },
+    {
+      "to": "CONVERGENCE_C2521_466_382",
+      "distance": 914.54,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_528_575"
+    },
+    {
+      "to": "CONVERGENCE_C2521_476_695",
+      "distance": 611.42,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_528_575"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_203",
+      "distance": 1611.73,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_528_575"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_806",
+      "distance": 1026.42,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_528_575"
+    },
+    {
+      "to": "CONVERGENCE_C2521_485_558",
+      "distance": 287.66,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_528_575"
+    },
+    {
+      "to": "CONVERGENCE_C2521_591_798",
+      "distance": 1032.23,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_528_575"
+    },
+    {
+      "to": "CONVERGENCE_C2521_616_515",
+      "distance": 614.68,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_528_575"
+    },
+    {
+      "to": "CONVERGENCE_C2521_648_380",
+      "distance": 1131.72,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_528_575"
+    },
+    {
+      "to": "CONVERGENCE_C2521_675_505",
+      "distance": 983.89,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_528_575"
+    },
+    {
+      "to": "CONVERGENCE_C2521_679_749",
+      "distance": 1215.53,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_528_575"
+    },
+    {
+      "to": "CONVERGENCE_C2521_684_660",
+      "distance": 1056.59,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_528_575"
+    },
+    {
+      "to": "CONVERGENCE_C2521_700_614",
+      "distance": 1112.07,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_528_575"
+    },
+    {
+      "to": "DOCK_VALANAAR",
+      "distance": 1043.42,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_528_575"
+    },
+    {
+      "to": "DOCK_ZEPHRAS_ALLIANCE",
+      "distance": 1380.7,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_528_575"
+    },
+    {
+      "to": "CONVERGENCE_C2521_341_598",
+      "distance": 1816,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_591_798"
+    },
+    {
+      "to": "CONVERGENCE_C2521_359_337",
+      "distance": 2464.64,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_591_798"
+    },
+    {
+      "to": "CONVERGENCE_C2521_466_382",
+      "distance": 1946.09,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_591_798"
+    },
+    {
+      "to": "CONVERGENCE_C2521_476_695",
+      "distance": 856.15,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_591_798"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_203",
+      "distance": 2628.12,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_591_798"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_806",
+      "distance": 688.57,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_591_798"
+    },
+    {
+      "to": "CONVERGENCE_C2521_485_558",
+      "distance": 1229.15,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_591_798"
+    },
+    {
+      "to": "CONVERGENCE_C2521_528_575",
+      "distance": 1032.23,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_591_798"
+    },
+    {
+      "to": "CONVERGENCE_C2521_616_515",
+      "distance": 1216.16,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_591_798"
+    },
+    {
+      "to": "CONVERGENCE_C2521_648_380",
+      "distance": 1819.21,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_591_798"
+    },
+    {
+      "to": "CONVERGENCE_C2521_675_505",
+      "distance": 1358.23,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_591_798"
+    },
+    {
+      "to": "CONVERGENCE_C2521_679_749",
+      "distance": 597.01,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_591_798"
+    },
+    {
+      "to": "CONVERGENCE_C2521_684_660",
+      "distance": 832.28,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_591_798"
+    },
+    {
+      "to": "CONVERGENCE_C2521_700_614",
+      "distance": 1049.71,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_591_798"
+    },
+    {
+      "to": "DOCK_VALANAAR",
+      "distance": 88.89,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_591_798"
+    },
+    {
+      "to": "DOCK_ZEPHRAS_ALLIANCE",
+      "distance": 453.45,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_591_798"
+    },
+    {
+      "to": "CONVERGENCE_C2521_341_598",
+      "distance": 1795.65,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_616_515"
+    },
+    {
+      "to": "CONVERGENCE_C2521_359_337",
+      "distance": 1809.36,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_616_515"
+    },
+    {
+      "to": "CONVERGENCE_C2521_466_382",
+      "distance": 1114.41,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_616_515"
+    },
+    {
+      "to": "CONVERGENCE_C2521_476_695",
+      "distance": 1177.38,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_616_515"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_203",
+      "distance": 1574.88,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_616_515"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_806",
+      "distance": 1501.37,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_616_515"
+    },
+    {
+      "to": "CONVERGENCE_C2521_485_558",
+      "distance": 857.01,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_616_515"
+    },
+    {
+      "to": "CONVERGENCE_C2521_528_575",
+      "distance": 614.68,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_616_515"
+    },
+    {
+      "to": "CONVERGENCE_C2521_591_798",
+      "distance": 1216.16,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_616_515"
+    },
+    {
+      "to": "CONVERGENCE_C2521_648_380",
+      "distance": 612.72,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_616_515"
+    },
+    {
+      "to": "CONVERGENCE_C2521_675_505",
+      "distance": 381.04,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_616_515"
+    },
+    {
+      "to": "CONVERGENCE_C2521_679_749",
+      "distance": 1076.61,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_616_515"
+    },
+    {
+      "to": "CONVERGENCE_C2521_684_660",
+      "distance": 755.28,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_616_515"
+    },
+    {
+      "to": "CONVERGENCE_C2521_700_614",
+      "distance": 685.35,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_616_515"
+    },
+    {
+      "to": "DOCK_VALANAAR",
+      "distance": 1269.41,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_616_515"
+    },
+    {
+      "to": "DOCK_ZEPHRAS_ALLIANCE",
+      "distance": 1386.09,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_616_515"
+    },
+    {
+      "to": "CONVERGENCE_C2521_341_598",
+      "distance": 2177.59,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_648_380"
+    },
+    {
+      "to": "CONVERGENCE_C2521_359_337",
+      "distance": 1859.21,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_648_380"
+    },
+    {
+      "to": "CONVERGENCE_C2521_466_382",
+      "distance": 1168.11,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_648_380"
+    },
+    {
+      "to": "CONVERGENCE_C2521_476_695",
+      "distance": 1737.48,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_648_380"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_203",
+      "distance": 1293.19,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_648_380"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_806",
+      "distance": 2100.52,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_648_380"
+    },
+    {
+      "to": "CONVERGENCE_C2521_485_558",
+      "distance": 1292.08,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_648_380"
+    },
+    {
+      "to": "CONVERGENCE_C2521_528_575",
+      "distance": 1131.72,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_648_380"
+    },
+    {
+      "to": "CONVERGENCE_C2521_591_798",
+      "distance": 1819.21,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_648_380"
+    },
+    {
+      "to": "CONVERGENCE_C2521_616_515",
+      "distance": 612.72,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_648_380"
+    },
+    {
+      "to": "CONVERGENCE_C2521_675_505",
+      "distance": 560.38,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_648_380"
+    },
+    {
+      "to": "CONVERGENCE_C2521_679_749",
+      "distance": 1586.45,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_648_380"
+    },
+    {
+      "to": "CONVERGENCE_C2521_684_660",
+      "distance": 1215.85,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_648_380"
+    },
+    {
+      "to": "CONVERGENCE_C2521_700_614",
+      "distance": 1051.28,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_648_380"
+    },
+    {
+      "to": "DOCK_VALANAAR",
+      "distance": 1876.8,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_648_380"
+    },
+    {
+      "to": "DOCK_ZEPHRAS_ALLIANCE",
+      "distance": 1936.67,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_648_380"
+    },
+    {
+      "to": "CONVERGENCE_C2521_341_598",
+      "distance": 2175.49,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_675_505"
+    },
+    {
+      "to": "CONVERGENCE_C2521_359_337",
+      "distance": 2144.27,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_675_505"
+    },
+    {
+      "to": "CONVERGENCE_C2521_466_382",
+      "distance": 1437.36,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_675_505"
+    },
+    {
+      "to": "CONVERGENCE_C2521_476_695",
+      "distance": 1507.36,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_675_505"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_203",
+      "distance": 1774.86,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_675_505"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_806",
+      "distance": 1773.04,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_675_505"
+    },
+    {
+      "to": "CONVERGENCE_C2521_485_558",
+      "distance": 1236.64,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_675_505"
+    },
+    {
+      "to": "CONVERGENCE_C2521_528_575",
+      "distance": 983.89,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_675_505"
+    },
+    {
+      "to": "CONVERGENCE_C2521_591_798",
+      "distance": 1358.23,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_675_505"
+    },
+    {
+      "to": "CONVERGENCE_C2521_616_515",
+      "distance": 381.04,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_675_505"
+    },
+    {
+      "to": "CONVERGENCE_C2521_648_380",
+      "distance": 560.38,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_675_505"
+    },
+    {
+      "to": "CONVERGENCE_C2521_679_749",
+      "distance": 1040.84,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_675_505"
+    },
+    {
+      "to": "CONVERGENCE_C2521_684_660",
+      "distance": 663.24,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_675_505"
+    },
+    {
+      "to": "CONVERGENCE_C2521_700_614",
+      "distance": 491,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_675_505"
+    },
+    {
+      "to": "DOCK_VALANAAR",
+      "distance": 1428.36,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_675_505"
+    },
+    {
+      "to": "DOCK_ZEPHRAS_ALLIANCE",
+      "distance": 1405.98,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_675_505"
+    },
+    {
+      "to": "CONVERGENCE_C2521_341_598",
+      "distance": 2257.35,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_679_749"
+    },
+    {
+      "to": "CONVERGENCE_C2521_359_337",
+      "distance": 2697.37,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_679_749"
+    },
+    {
+      "to": "CONVERGENCE_C2521_466_382",
+      "distance": 2075.1,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_679_749"
+    },
+    {
+      "to": "CONVERGENCE_C2521_476_695",
+      "distance": 1315.68,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_679_749"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_203",
+      "distance": 2641.16,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_679_749"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_806",
+      "distance": 1270.85,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_679_749"
+    },
+    {
+      "to": "CONVERGENCE_C2521_485_558",
+      "distance": 1484.6,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_679_749"
+    },
+    {
+      "to": "CONVERGENCE_C2521_528_575",
+      "distance": 1215.53,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_679_749"
+    },
+    {
+      "to": "CONVERGENCE_C2521_591_798",
+      "distance": 597.01,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_679_749"
+    },
+    {
+      "to": "CONVERGENCE_C2521_616_515",
+      "distance": 1076.61,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_679_749"
+    },
+    {
+      "to": "CONVERGENCE_C2521_648_380",
+      "distance": 1586.45,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_679_749"
+    },
+    {
+      "to": "CONVERGENCE_C2521_675_505",
+      "distance": 1040.84,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_679_749"
+    },
+    {
+      "to": "CONVERGENCE_C2521_684_660",
+      "distance": 380.74,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_679_749"
+    },
+    {
+      "to": "CONVERGENCE_C2521_700_614",
+      "distance": 593.16,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_679_749"
+    },
+    {
+      "to": "DOCK_VALANAAR",
+      "distance": 685.27,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_679_749"
+    },
+    {
+      "to": "DOCK_ZEPHRAS_ALLIANCE",
+      "distance": 384.94,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_679_749"
+    },
+    {
+      "to": "CONVERGENCE_C2521_341_598",
+      "distance": 2209.42,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_684_660"
+    },
+    {
+      "to": "CONVERGENCE_C2521_359_337",
+      "distance": 2491.59,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_684_660"
+    },
+    {
+      "to": "CONVERGENCE_C2521_466_382",
+      "distance": 1828.9,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_684_660"
+    },
+    {
+      "to": "CONVERGENCE_C2521_476_695",
+      "distance": 1333.81,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_684_660"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_203",
+      "distance": 2329.59,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_684_660"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_806",
+      "distance": 1421.11,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_684_660"
+    },
+    {
+      "to": "CONVERGENCE_C2521_485_558",
+      "distance": 1343.24,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_684_660"
+    },
+    {
+      "to": "CONVERGENCE_C2521_528_575",
+      "distance": 1056.59,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_684_660"
+    },
+    {
+      "to": "CONVERGENCE_C2521_591_798",
+      "distance": 832.28,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_684_660"
+    },
+    {
+      "to": "CONVERGENCE_C2521_616_515",
+      "distance": 755.28,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_684_660"
+    },
+    {
+      "to": "CONVERGENCE_C2521_648_380",
+      "distance": 1215.85,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_684_660"
+    },
+    {
+      "to": "CONVERGENCE_C2521_675_505",
+      "distance": 663.24,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_684_660"
+    },
+    {
+      "to": "CONVERGENCE_C2521_679_749",
+      "distance": 380.74,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_684_660"
+    },
+    {
+      "to": "CONVERGENCE_C2521_700_614",
+      "distance": 224.8,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_684_660"
+    },
+    {
+      "to": "DOCK_VALANAAR",
+      "distance": 917.6,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_684_660"
+    },
+    {
+      "to": "DOCK_ZEPHRAS_ALLIANCE",
+      "distance": 758.51,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_684_660"
+    },
+    {
+      "to": "CONVERGENCE_C2521_341_598",
+      "distance": 2301.94,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_700_614"
+    },
+    {
+      "to": "CONVERGENCE_C2521_359_337",
+      "distance": 2481.83,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_700_614"
+    },
+    {
+      "to": "CONVERGENCE_C2521_466_382",
+      "distance": 1796.26,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_700_614"
+    },
+    {
+      "to": "CONVERGENCE_C2521_476_695",
+      "distance": 1474.25,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_700_614"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_203",
+      "distance": 2231.88,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_700_614"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_806",
+      "distance": 1609.52,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_700_614"
+    },
+    {
+      "to": "CONVERGENCE_C2521_485_558",
+      "distance": 1398.43,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_700_614"
+    },
+    {
+      "to": "CONVERGENCE_C2521_528_575",
+      "distance": 1112.07,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_700_614"
+    },
+    {
+      "to": "CONVERGENCE_C2521_591_798",
+      "distance": 1049.71,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_700_614"
+    },
+    {
+      "to": "CONVERGENCE_C2521_616_515",
+      "distance": 685.35,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_700_614"
+    },
+    {
+      "to": "CONVERGENCE_C2521_648_380",
+      "distance": 1051.28,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_700_614"
+    },
+    {
+      "to": "CONVERGENCE_C2521_675_505",
+      "distance": 491,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_700_614"
+    },
+    {
+      "to": "CONVERGENCE_C2521_679_749",
+      "distance": 593.16,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_700_614"
+    },
+    {
+      "to": "CONVERGENCE_C2521_684_660",
+      "distance": 224.8,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_700_614"
+    },
+    {
+      "to": "DOCK_VALANAAR",
+      "distance": 1133.33,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_700_614"
+    },
+    {
+      "to": "DOCK_ZEPHRAS_ALLIANCE",
+      "distance": 976.45,
+      "method": "walk",
+      "from": "CONVERGENCE_C2521_700_614"
+    },
+    {
+      "seconds": 290,
+      "method": "ship",
+      "faction": "Alliance",
+      "to": "DOCK_ZEPHRAS_ALLIANCE",
+      "from": "DOCK_DALARAN"
+    },
+    {
+      "seconds": 310,
+      "method": "ship",
+      "faction": "Horde",
+      "to": "DOCK_VALANAAR",
+      "from": "DOCK_SKYWATCHER"
+    },
+    {
+      "to": "CONVERGENCE_C2521_341_598",
+      "distance": 1767.45,
+      "method": "walk",
+      "from": "DOCK_VALANAAR"
+    },
+    {
+      "to": "CONVERGENCE_C2521_359_337",
+      "distance": 2451.83,
+      "method": "walk",
+      "from": "DOCK_VALANAAR"
+    },
+    {
+      "to": "CONVERGENCE_C2521_466_382",
+      "distance": 1953.33,
+      "method": "walk",
+      "from": "DOCK_VALANAAR"
+    },
+    {
+      "to": "CONVERGENCE_C2521_476_695",
+      "distance": 813.24,
+      "method": "walk",
+      "from": "DOCK_VALANAAR"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_203",
+      "distance": 2648.99,
+      "method": "walk",
+      "from": "DOCK_VALANAAR"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_806",
+      "distance": 609.01,
+      "method": "walk",
+      "from": "DOCK_VALANAAR"
+    },
+    {
+      "to": "CONVERGENCE_C2521_485_558",
+      "distance": 1223.23,
+      "method": "walk",
+      "from": "DOCK_VALANAAR"
+    },
+    {
+      "to": "CONVERGENCE_C2521_528_575",
+      "distance": 1043.42,
+      "method": "walk",
+      "from": "DOCK_VALANAAR"
+    },
+    {
+      "to": "CONVERGENCE_C2521_591_798",
+      "distance": 88.89,
+      "method": "walk",
+      "from": "DOCK_VALANAAR"
+    },
+    {
+      "to": "CONVERGENCE_C2521_616_515",
+      "distance": 1269.41,
+      "method": "walk",
+      "from": "DOCK_VALANAAR"
+    },
+    {
+      "to": "CONVERGENCE_C2521_648_380",
+      "distance": 1876.8,
+      "method": "walk",
+      "from": "DOCK_VALANAAR"
+    },
+    {
+      "to": "CONVERGENCE_C2521_675_505",
+      "distance": 1428.36,
+      "method": "walk",
+      "from": "DOCK_VALANAAR"
+    },
+    {
+      "to": "CONVERGENCE_C2521_679_749",
+      "distance": 685.27,
+      "method": "walk",
+      "from": "DOCK_VALANAAR"
+    },
+    {
+      "to": "CONVERGENCE_C2521_684_660",
+      "distance": 917.6,
+      "method": "walk",
+      "from": "DOCK_VALANAAR"
+    },
+    {
+      "to": "CONVERGENCE_C2521_700_614",
+      "distance": 1133.33,
+      "method": "walk",
+      "from": "DOCK_VALANAAR"
+    },
+    {
+      "seconds": 310,
+      "method": "ship",
+      "faction": "Horde",
+      "to": "DOCK_SKYWATCHER",
+      "from": "DOCK_VALANAAR"
+    },
+    {
+      "to": "DOCK_ZEPHRAS_ALLIANCE",
+      "distance": 517.65,
+      "method": "walk",
+      "from": "DOCK_VALANAAR"
+    },
+    {
+      "to": "CONVERGENCE_C2521_341_598",
+      "distance": 2265.75,
+      "method": "walk",
+      "from": "DOCK_ZEPHRAS_ALLIANCE"
+    },
+    {
+      "to": "CONVERGENCE_C2521_359_337",
+      "distance": 2855.01,
+      "method": "walk",
+      "from": "DOCK_ZEPHRAS_ALLIANCE"
+    },
+    {
+      "to": "CONVERGENCE_C2521_466_382",
+      "distance": 2285.23,
+      "method": "walk",
+      "from": "DOCK_ZEPHRAS_ALLIANCE"
+    },
+    {
+      "to": "CONVERGENCE_C2521_476_695",
+      "distance": 1304.16,
+      "method": "walk",
+      "from": "DOCK_ZEPHRAS_ALLIANCE"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_203",
+      "distance": 2911.33,
+      "method": "walk",
+      "from": "DOCK_ZEPHRAS_ALLIANCE"
+    },
+    {
+      "to": "CONVERGENCE_C2521_484_806",
+      "distance": 1120.58,
+      "method": "walk",
+      "from": "DOCK_ZEPHRAS_ALLIANCE"
+    },
+    {
+      "to": "CONVERGENCE_C2521_485_558",
+      "distance": 1616.01,
+      "method": "walk",
+      "from": "DOCK_ZEPHRAS_ALLIANCE"
+    },
+    {
+      "to": "CONVERGENCE_C2521_528_575",
+      "distance": 1380.7,
+      "method": "walk",
+      "from": "DOCK_ZEPHRAS_ALLIANCE"
+    },
+    {
+      "to": "CONVERGENCE_C2521_591_798",
+      "distance": 453.45,
+      "method": "walk",
+      "from": "DOCK_ZEPHRAS_ALLIANCE"
+    },
+    {
+      "to": "CONVERGENCE_C2521_616_515",
+      "distance": 1386.09,
+      "method": "walk",
+      "from": "DOCK_ZEPHRAS_ALLIANCE"
+    },
+    {
+      "to": "CONVERGENCE_C2521_648_380",
+      "distance": 1936.67,
+      "method": "walk",
+      "from": "DOCK_ZEPHRAS_ALLIANCE"
+    },
+    {
+      "to": "CONVERGENCE_C2521_675_505",
+      "distance": 1405.98,
+      "method": "walk",
+      "from": "DOCK_ZEPHRAS_ALLIANCE"
+    },
+    {
+      "to": "CONVERGENCE_C2521_679_749",
+      "distance": 384.94,
+      "method": "walk",
+      "from": "DOCK_ZEPHRAS_ALLIANCE"
+    },
+    {
+      "to": "CONVERGENCE_C2521_684_660",
+      "distance": 758.51,
+      "method": "walk",
+      "from": "DOCK_ZEPHRAS_ALLIANCE"
+    },
+    {
+      "to": "CONVERGENCE_C2521_700_614",
+      "distance": 976.45,
+      "method": "walk",
+      "from": "DOCK_ZEPHRAS_ALLIANCE"
+    },
+    {
+      "seconds": 290,
+      "method": "ship",
+      "faction": "Alliance",
+      "to": "DOCK_DALARAN",
+      "from": "DOCK_ZEPHRAS_ALLIANCE"
+    },
+    {
+      "to": "DOCK_VALANAAR",
+      "distance": 517.65,
+      "method": "walk",
+      "from": "DOCK_ZEPHRAS_ALLIANCE"
+    }
+  ],
+  "travel_source_metadata": {
+    "source": "https://github.com/tr0tsky0/Mapzeroth",
+    "commit": "fd68cfe2153379898680c66a01833846f9933587",
+    "tag": "0.6.0",
+    "files_sha256": {
+      "Nodes_Kalimdor.lua": "58ad7e27da5391459bc1a9730e1910d6d99cdacc70fbac83ceef9ccc15146a2e",
+      "Nodes_EasternKingdoms.lua": "5e2136a3f0947d0728d1a212898eac239fe4ee652f9b9c9f673eb306e66b28fa",
+      "Nodes_ZephrasIsle.lua": "8cb0c47aa624b98f5a995ffdf5150fd0b1819bb9606636c004bb1fa85ad15f14",
+      "Borders.lua": "ccf3b0fefc42f580bd20e0a0d82ec1eb4ae93edeb4b23c719aab9326e8eac7be",
+      "Pois.lua": "3dfa6f85e6fbe1c5a01389d4bcf445f4fa63391484647cdec663a849111e977d",
+      "Edges.lua": "eaa9e485c58201ce3ad8cca022135e8ba83758f00c59ed93dc62b5532f19d4ae",
+      "Geometry.lua": "094adc0df530df37f7ebc89b2ee4748b7a70c4f38a8793b17fd9fb73c16c1350",
+      "PathFactors.lua": "710f6cdf644962c7755fea1b8fa2535fea35c728e543fabea0e6f5daf4668f41",
+      "NodeNames_enUS.lua": "f820d4d8b52131e2bace3017cd832896f51b2b7c536c335a8d74ad1254ed5a9a",
+      "Flights.lua": "69da48451cef3cbf66c2514984ad89d6484fcc4cf300b11c297968d7996e8111"
+    },
+    "nodes": 256,
+    "directed_edges": 1620,
+    "license": "MIT",
+    "license_revision": "676241e234cbeab5e2066b869b52c235d675a9e0",
+    "exclusions": [
+      "Retail data",
+      "service/action graph nodes",
+      "spells/items",
+      "race/class portals",
+      "unconfirmed executable flights"
+    ],
+    "limitations": [
+      "Community data, not tested here in the beta client",
+      "Walk geometry uses estimated point-to-point distances, not terrain navigation",
+      "Boat waits and loading time are estimates",
+      "Settlement footprints bound published occupied locations with an estimated margin, not actual guards or road bypasses"
+    ],
+    "settlement_footprints": 48,
+    "settlement_margin_yards": 100,
+    "reference_flight_connections": 266,
+    "ownership_notes": [
+      "Faction-scoped reference links supplement missing taxi ownership",
+      "Ratchet Bragok serves both factions: https://warcraft.wiki.gg/wiki/Bragok"
+    ]
+  },
+  "published_area_to_map": {
+    "16593": 2521
+  },
+  "physical_geometry_note": "Pinned conversion report is not available in the retained 24-file fact cache; no newly verified physical bounds or terrain paths asserted. Host comparisons use default estimated geometry.",
+  "native_access_or_exit_verified": false
+}

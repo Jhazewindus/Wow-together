@@ -1,0 +1,1569 @@
+[
+  {
+    "questID": 185,
+    "title": "Tiger Mastery",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 31,
+    "minLevel": 28,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      583
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 186,
+    "title": "Tiger Mastery",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 33,
+    "minLevel": 28,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 185,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 187,
+    "title": "Tiger Mastery",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 35,
+    "minLevel": 28,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 186,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 188,
+    "title": "Tiger Mastery",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 37,
+    "minLevel": 28,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 187,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 189,
+    "title": "Bloodscalp Ears",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 35,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 190,
+    "title": "Panther Mastery",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 31,
+    "minLevel": 28,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      583
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 191,
+    "title": "Panther Mastery",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 33,
+    "minLevel": 28,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 190,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 192,
+    "title": "Panther Mastery",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 38,
+    "minLevel": 28,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      191
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 193,
+    "title": "Panther Mastery",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 40,
+    "minLevel": 28,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      192
+    ],
+    "prerequisitesRead": true,
+    "questType": "Elite"
+  },
+  {
+    "questID": 194,
+    "title": "Raptor Mastery",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 34,
+    "minLevel": 28,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      583
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 195,
+    "title": "Raptor Mastery",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 36,
+    "minLevel": 28,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      194
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 196,
+    "title": "Raptor Mastery",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 41,
+    "minLevel": 28,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      195
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 197,
+    "title": "Raptor Mastery",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 43,
+    "minLevel": 28,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      196
+    ],
+    "prerequisitesRead": true,
+    "questType": "Elite"
+  },
+  {
+    "questID": 198,
+    "title": "Supplies to Private Thorsen",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 32,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 200,
+    "title": "Bookie Herod",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 35,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 215,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 201,
+    "title": "Investigate the Camp",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 32,
+    "minLevel": 28,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 202,
+    "title": "Colonel Kurzen",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 40,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "prerequisiteAny": [
+      574
+    ],
+    "prerequisitesRead": true,
+    "questType": "Elite"
+  },
+  {
+    "questID": 203,
+    "title": "The Second Rebellion",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 33,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 204,
+    "title": "Bad Medicine",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 34,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 205,
+    "title": "Troll Witchery",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 40,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "prerequisiteAny": [
+      207
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 206,
+    "title": "Mai'Zoth",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 46,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "prerequisitesRead": true,
+    "questType": "Elite"
+  },
+  {
+    "questID": 207,
+    "title": "Kurzen's Mystery",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 38,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 208,
+    "title": "Big Game Hunter",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 43,
+    "minLevel": 28,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true,
+    "questType": "Elite"
+  },
+  {
+    "questID": 209,
+    "title": "Skullsplitter Tusks",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 42,
+    "minLevel": 37,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      189
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 210,
+    "title": "Krazek's Cookery",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 37,
+    "minLevel": 32,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 213,
+    "title": "Hostile Takeover",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 36,
+    "minLevel": 31,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 215,
+    "title": "Jungle Secrets",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 33,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 328,
+    "title": "The Hidden Key",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 37,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 200,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 329,
+    "title": "The Spy Revealed!",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 37,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 328,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 330,
+    "title": "Patrol Schedules",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 37,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "prerequisiteAny": [
+      329
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 331,
+    "title": "Report to Doren",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 37,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "prerequisiteAny": [
+      330
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 338,
+    "title": "The Green Hills of Stranglethorn",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 40,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      583
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 339,
+    "title": "Chapter I",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 40,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 340,
+    "title": "Chapter II",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 40,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 341,
+    "title": "Chapter III",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 40,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 342,
+    "title": "Chapter IV",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 40,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 348,
+    "title": "Stranglethorn Fever",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 45,
+    "minLevel": 40,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 568,
+    "title": "The Defense of Grom'gol",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 36,
+    "minLevel": 33,
+    "classMask": 0,
+    "raceMask": 8589934770,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 569,
+    "title": "The Defense of Grom'gol",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 37,
+    "minLevel": 33,
+    "classMask": 0,
+    "raceMask": 8589934770,
+    "prerequisiteAny": [
+      568
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 570,
+    "title": "Mok'thardin's Enchantment",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 38,
+    "minLevel": 33,
+    "classMask": 0,
+    "raceMask": 8589934770,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 571,
+    "title": "Mok'thardin's Enchantment",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 41,
+    "minLevel": 33,
+    "classMask": 0,
+    "raceMask": 8589934770,
+    "prerequisiteAny": [
+      572
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 572,
+    "title": "Mok'thardin's Enchantment",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 41,
+    "minLevel": 33,
+    "classMask": 0,
+    "raceMask": 8589934770,
+    "prerequisiteAny": [
+      570
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 573,
+    "title": "Mok'thardin's Enchantment",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 44,
+    "minLevel": 33,
+    "classMask": 0,
+    "raceMask": 8589934770,
+    "prerequisiteAny": [
+      571
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 574,
+    "title": "Special Forces",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 38,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 575,
+    "title": "Supply and Demand",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 31,
+    "minLevel": 26,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 576,
+    "title": "Keep An Eye Out",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 42,
+    "minLevel": 37,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      597
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 577,
+    "title": "Some Assembly Required",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 36,
+    "minLevel": 31,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      575
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 578,
+    "title": "The Stone of the Tides",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 37,
+    "minLevel": 32,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "prerequisiteAny": [
+      616
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 581,
+    "title": "Hunt for Yenniku",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 34,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 582,
+    "title": "Headhunting",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 37,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 8589934770,
+    "prerequisiteAny": [
+      581
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 583,
+    "title": "Welcome to the Jungle",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 30,
+    "minLevel": 28,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 584,
+    "title": "Bloodscalp Clan Heads",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 41,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 8589934770,
+    "prerequisiteAny": [
+      582
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 585,
+    "title": "Speaking with Nezzliok",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 40,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 8589934770,
+    "prerequisiteAny": [
+      584
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 586,
+    "title": "Speaking with Gan'zulah",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 46,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 8589934770,
+    "prerequisiteAny": [
+      584
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 587,
+    "title": "Up to Snuff",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 41,
+    "minLevel": 37,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      597
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 588,
+    "title": "The Fate of Yenniku",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 45,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 8589934770,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 589,
+    "title": "The Singing Crystals",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 45,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 8589934770,
+    "prerequisiteAny": [
+      588
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 591,
+    "title": "The Mind's Eye",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 46,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 8589934770,
+    "prerequisiteAny": [
+      589
+    ],
+    "prerequisitesRead": true,
+    "questType": "Elite"
+  },
+  {
+    "questID": 592,
+    "title": "Saving Yenniku",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 46,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 8589934770,
+    "prerequisiteAny": [
+      591
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 594,
+    "title": "Message in a Bottle",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 45,
+    "minLevel": 45,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 595,
+    "title": "The Bloodsail Buccaneers",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 41,
+    "minLevel": 37,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 596,
+    "title": "Bloody Bone Necklaces",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 37,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 8589934770,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 597,
+    "title": "The Bloodsail Buccaneers",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 41,
+    "minLevel": 37,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      595
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 598,
+    "title": "Split Bone Necklace",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 42,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 8589934770,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 599,
+    "title": "The Bloodsail Buccaneers",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 41,
+    "minLevel": 37,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      597
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 600,
+    "title": "Venture Company Mining",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 41,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      605
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 601,
+    "title": "Water Elementals",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 37,
+    "minLevel": 32,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "prerequisiteAny": [
+      578
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 602,
+    "title": "Magical Analysis",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 37,
+    "minLevel": 32,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 601,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 603,
+    "title": "Ansirem's Key",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 37,
+    "minLevel": 32,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "prerequisiteAny": [
+      602
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 604,
+    "title": "The Bloodsail Buccaneers",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 43,
+    "minLevel": 37,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      599
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 605,
+    "title": "Singing Blue Shards",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 35,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 606,
+    "title": "Scaring Shaky",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 41,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 607,
+    "title": "Return to MacKinley",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 41,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 606,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 608,
+    "title": "The Bloodsail Buccaneers",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 45,
+    "minLevel": 37,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      604
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 609,
+    "title": "Voodoo Dues",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 44,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      607
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 610,
+    "title": "\"Pretty Boy\" Duncan",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 39,
+    "minLevel": 32,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "prerequisiteAny": [
+      603
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 611,
+    "title": "The Curse of the Tides",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 40,
+    "minLevel": 32,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "prerequisiteAny": [
+      610
+    ],
+    "prerequisitesRead": true,
+    "questType": "Elite"
+  },
+  {
+    "questID": 613,
+    "title": "Cracking Maury's Foot",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 44,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      609
+    ],
+    "prerequisitesRead": true,
+    "questType": "Elite"
+  },
+  {
+    "questID": 614,
+    "title": "The Captain's Chest",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 47,
+    "minLevel": 35,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true,
+    "questType": "Elite"
+  },
+  {
+    "questID": 615,
+    "title": "The Captain's Cutlass",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 50,
+    "minLevel": 35,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 616,
+    "title": "The Haunted Isle",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 37,
+    "minLevel": 32,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 617,
+    "title": "Akiris by the Bundle",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 43,
+    "minLevel": 38,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 618,
+    "title": "Facing Negolash",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 50,
+    "minLevel": 35,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true,
+    "questType": "Elite"
+  },
+  {
+    "questID": 620,
+    "title": "The Monogrammed Sash",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 50,
+    "minLevel": 35,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 621,
+    "title": "Zanzil's Secret",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 44,
+    "minLevel": 35,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 622,
+    "title": "Return to Corporal Kaleb",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 37,
+    "minLevel": 32,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 627,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 623,
+    "title": "Akiris by the Bundle",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 43,
+    "minLevel": 38,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      617
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 624,
+    "title": "Cortello's Riddle",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 43,
+    "minLevel": 35,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 625,
+    "title": "Cortello's Riddle",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 43,
+    "minLevel": 35,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      624
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 626,
+    "title": "Cortello's Riddle",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 51,
+    "minLevel": 35,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      625
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 627,
+    "title": "Favor for Krazek",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 37,
+    "minLevel": 32,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "prerequisiteAny": [
+      210
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 628,
+    "title": "Excelsior",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 38,
+    "minLevel": 31,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      577
+    ],
+    "prerequisitesRead": true,
+    "questType": "Elite"
+  },
+  {
+    "questID": 629,
+    "title": "The Vile Reef",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 37,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 8589934770,
+    "prerequisitesRead": true,
+    "questType": "Elite"
+  },
+  {
+    "questID": 630,
+    "title": "Message in a Bottle",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 51,
+    "minLevel": 45,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      594
+    ],
+    "prerequisitesRead": true,
+    "questType": "Elite"
+  },
+  {
+    "questID": 638,
+    "title": "Trollbane",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 37,
+    "minLevel": 32,
+    "classMask": 0,
+    "raceMask": 8589934770,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 1036,
+    "title": "Avast Ye, Scallywag",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 60,
+    "minLevel": 55,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 1796,
+    "title": "Components for the Enchanted Gold Bloodrobe",
+    "categoryPath": "classes/warlock",
+    "level": 31,
+    "minLevel": 31,
+    "classMask": 256,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 2681,
+    "title": "The Stones That Bind Us",
+    "categoryPath": "eastern-kingdoms/blasted-lands",
+    "zone": "Blasted Lands",
+    "level": 57,
+    "minLevel": 45,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 2801,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 2701,
+    "title": "Heroes of Old",
+    "categoryPath": "eastern-kingdoms/blasted-lands",
+    "level": 57,
+    "minLevel": 45,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 2702,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 2702,
+    "title": "Heroes of Old",
+    "categoryPath": "eastern-kingdoms/blasted-lands",
+    "level": 57,
+    "minLevel": 45,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 2681,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 2721,
+    "title": "Kirith",
+    "categoryPath": "eastern-kingdoms/blasted-lands",
+    "zone": "Blasted Lands",
+    "level": 58,
+    "minLevel": 45,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      2701
+    ],
+    "prerequisitesRead": true,
+    "questType": "Elite"
+  },
+  {
+    "questID": 2743,
+    "title": "The Cover of Darkness",
+    "categoryPath": "eastern-kingdoms/blasted-lands",
+    "zone": "Blasted Lands",
+    "level": 60,
+    "minLevel": 45,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 2721,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 2744,
+    "title": "The Demon Hunter",
+    "categoryPath": "eastern-kingdoms/blasted-lands",
+    "level": 60,
+    "minLevel": 45,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 2743,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 2783,
+    "title": "Petty Squabbles",
+    "categoryPath": "eastern-kingdoms/blasted-lands",
+    "zone": "Blasted Lands",
+    "level": 57,
+    "minLevel": 50,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 2801,
+    "title": "A Tale of Sorrow",
+    "categoryPath": "eastern-kingdoms/blasted-lands",
+    "level": 57,
+    "minLevel": 45,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 2783,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 3141,
+    "title": "Loramus",
+    "categoryPath": "kalimdor/azshara",
+    "level": 57,
+    "minLevel": 45,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      2744
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 3508,
+    "title": "Breaking the Ward",
+    "categoryPath": "kalimdor/azshara",
+    "level": 58,
+    "minLevel": 45,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      3141
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 3509,
+    "title": "The Name of the Beast",
+    "categoryPath": "kalimdor/azshara",
+    "level": 58,
+    "minLevel": 45,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      3508
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 3510,
+    "title": "The Name of the Beast",
+    "categoryPath": "kalimdor/azshara",
+    "level": 58,
+    "minLevel": 45,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      3509
+    ],
+    "prerequisitesRead": true,
+    "questType": "Elite"
+  },
+  {
+    "questID": 3511,
+    "title": "The Name of the Beast",
+    "categoryPath": "kalimdor/azshara",
+    "level": 58,
+    "minLevel": 45,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      3510
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 3602,
+    "title": "Azsharite",
+    "categoryPath": "kalimdor/azshara",
+    "level": 58,
+    "minLevel": 45,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      3511
+    ],
+    "prerequisitesRead": true,
+    "questType": "Elite"
+  },
+  {
+    "questID": 3621,
+    "title": "The Formation of Felbane",
+    "categoryPath": "kalimdor/azshara",
+    "level": 58,
+    "minLevel": 45,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      3602
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 3625,
+    "title": "Enchanted Azsharite Fel Weaponry",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 58,
+    "minLevel": 45,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      3621
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 3626,
+    "title": "Return to the Blasted Lands",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 58,
+    "minLevel": 45,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      3625
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 3721,
+    "title": "An OOX of Your Own",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 50,
+    "minLevel": 40,
+    "classMask": 0
+  },
+  {
+    "questID": 4621,
+    "title": "Avast Ye, Admiral!",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 60,
+    "minLevel": 55,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 4781,
+    "title": "Components for the Enchanted Gold Bloodrobe",
+    "categoryPath": "classes/warlock",
+    "level": 34,
+    "minLevel": 31,
+    "classMask": 256,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      1796
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 4782,
+    "title": "Components for the Enchanted Gold Bloodrobe",
+    "categoryPath": "classes/warlock",
+    "level": 34,
+    "minLevel": 31,
+    "classMask": 256,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      4781
+    ],
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 7810,
+    "title": "Arena Master",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 55,
+    "minLevel": 1,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true,
+    "questType": "PvP"
+  },
+  {
+    "questID": 7908,
+    "title": "Arena Master",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 55,
+    "minLevel": 1,
+    "classMask": 0,
+    "questType": "PvP"
+  },
+  {
+    "questID": 8551,
+    "title": "The Captain's Chest",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 47,
+    "minLevel": 35,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true,
+    "questType": "Elite"
+  },
+  {
+    "questID": 8552,
+    "title": "The Monogrammed Sash",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 50,
+    "minLevel": 35,
+    "classMask": 0
+  },
+  {
+    "questID": 8553,
+    "title": "The Captain's Cutlass",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 50,
+    "minLevel": 35,
+    "classMask": 0
+  },
+  {
+    "questID": 8554,
+    "title": "Facing Negolash",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 50,
+    "minLevel": 35,
+    "classMask": 0,
+    "questType": "Elite"
+  },
+  {
+    "questID": 9272,
+    "title": "Dressing the Part",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 55,
+    "minLevel": 49,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesUnverified": true,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 95748,
+    "title": "The Gurubashi Legends of Old",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 40,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 97047,
+    "title": "The Cook in the Cage",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 38,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 97048,
+    "title": "Returning to Port",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 38,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 97328,
+    "title": "Anything of Value",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 35,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 97329,
+    "title": "Where's the Key?",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 35,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 97331,
+    "title": "Zimmix's Great Escape",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "level": 35,
+    "minLevel": 30,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 97329,
+    "prerequisitesRead": true
+  },
+  {
+    "questID": 98463,
+    "title": "Talk of the Town",
+    "categoryPath": "eastern-kingdoms/stranglethorn-vale",
+    "zone": "Stranglethorn Vale",
+    "level": 33,
+    "minLevel": 28,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisitesRead": true
+  }
+]

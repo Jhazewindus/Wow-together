@@ -1,0 +1,220 @@
+{
+  "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
+  "quest_records": 59,
+  "static_points_checked": 166,
+  "fixed_zone_guides_checked": 3,
+  "catalogue_reason_stages_checked": 200,
+  "catalogue_reason_codes": {
+    "level-work": 59,
+    "quest-objective": 82,
+    "quest-reward": 59
+  },
+  "reason_review_quest_ids": [
+    275,
+    276,
+    277,
+    279,
+    281,
+    284,
+    285,
+    286,
+    288,
+    289,
+    290,
+    292,
+    293,
+    294,
+    295,
+    296,
+    299,
+    303,
+    304,
+    305,
+    306,
+    455,
+    462,
+    463,
+    464,
+    465,
+    468,
+    469,
+    470,
+    471,
+    472,
+    474,
+    484,
+    631,
+    632,
+    633,
+    1132,
+    87318,
+    88756,
+    98072,
+    98189,
+    98197,
+    98208,
+    98209,
+    98216,
+    98221,
+    98223,
+    98230,
+    98240,
+    98245,
+    98246,
+    98282,
+    98283,
+    98291,
+    98293,
+    98297,
+    98310,
+    98459,
+    98461
+  ],
+  "source_data_gap_free_guides": 1,
+  "guides": [
+    {
+      "faction": "Alliance",
+      "zone": "Wetlands",
+      "key": "level-zone:eastern-kingdoms/wetlands:levels:11-20",
+      "quests": 2,
+      "steps": 6,
+      "unknown_location_steps": 0,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": true,
+      "reason_steps_checked": 6,
+      "destination_reason_codes": {
+        "outside-level-range": 2,
+        "prerequisite": 3,
+        "quest-reward": 1
+      },
+      "reason_review_steps": 2,
+      "cross_zone_reason_steps": 2,
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 0,
+      "estimated_distance_before": 14735.65,
+      "estimated_distance_after": 14735.65
+    },
+    {
+      "faction": "Alliance",
+      "zone": "Wetlands",
+      "key": "level-zone:eastern-kingdoms/wetlands:levels:21-30",
+      "quests": 53,
+      "steps": 179,
+      "unknown_location_steps": 6,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [
+          94497,
+          94499,
+          94500,
+          98208,
+          98246,
+          98293
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        484
+      ],
+      "unverified_objective_quantity_quest_ids": [
+        94497,
+        94499,
+        94500
+      ],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 179,
+      "destination_reason_codes": {
+        "class-progression": 8,
+        "early-reward": 1,
+        "outside-level-range": 86,
+        "prerequisite": 46,
+        "quest-reward": 37,
+        "return-hub": 1
+      },
+      "reason_review_steps": 90,
+      "cross_zone_reason_steps": 8,
+      "flow_alternatives_evaluated": 104,
+      "flow_loop_changes": 2,
+      "flow_state_valid": true,
+      "quest_log_peak": 10,
+      "quest_reward_only_xp_shortfall": 211540,
+      "uncertain_travel_legs": 41,
+      "estimated_distance_before": 192303.12,
+      "estimated_distance_after": 192303.12
+    },
+    {
+      "faction": "Alliance",
+      "zone": "Wetlands",
+      "key": "level-zone:eastern-kingdoms/wetlands:levels:31-40",
+      "quests": 23,
+      "steps": 76,
+      "unknown_location_steps": 15,
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          87318,
+          87491,
+          88756,
+          88757,
+          88758
+        ],
+        "q": [
+          87318,
+          87491,
+          88756,
+          88757,
+          88758
+        ],
+        "t": [
+          87318,
+          87491,
+          88756,
+          88757,
+          88758
+        ]
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        87318,
+        87491,
+        88756,
+        88757,
+        88758
+      ],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 76,
+      "destination_reason_codes": {
+        "outside-level-range": 42,
+        "prerequisite": 14,
+        "quest-reward": 19,
+        "unlock-loop": 1
+      },
+      "reason_review_steps": 47,
+      "cross_zone_reason_steps": 6,
+      "flow_alternatives_evaluated": 17,
+      "flow_loop_changes": 1,
+      "flow_state_valid": true,
+      "quest_log_peak": 8,
+      "quest_reward_only_xp_shortfall": 326555,
+      "uncertain_travel_legs": 30,
+      "estimated_distance_before": 286967.72,
+      "estimated_distance_after": 286282.51
+    }
+  ],
+  "scope": {
+    "zone": "Wetlands",
+    "catalogue_records": "Exact quest zone; guide dependencies still compile normally"
+  }
+}

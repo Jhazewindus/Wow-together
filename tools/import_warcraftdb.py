@@ -5,6 +5,7 @@ Missing source fields stay unknown. NPC positions are not inferred from prose.
 """
 import argparse
 import concurrent.futures
+import copy
 import datetime
 import json
 import re
@@ -22,6 +23,8 @@ def apply_corrections(records):
     applied = []
     corrections = json.loads((ROOT / 'tools' / 'quest_corrections.json').read_text())
     for correction in corrections:
+        if correction.get('stageCorrection'):
+            continue  # Stage facts apply after enrichment, not as eligibility rules.
         if correction.get('exclusiveQuests'):
             quest = records.get(correction['questID'])
             alternatives = correction['exclusiveQuests']
@@ -55,6 +58,169 @@ def apply_corrections(records):
         quest['prerequisiteSource'] = correction['source']
         applied.append(quest_id)
     return applied
+
+
+def apply_stage_corrections(records):
+    """Apply reviewed stage facts last; conflicting new facts require review.
+
+    Keep delivery items in hand-in requirements, but never send players to farm
+    an item supplied on acceptance. Location additions preserve existing work.
+    Validate all affected records before committing any mutations.
+    """
+    pending = {}
+    corrections = json.loads((ROOT / 'tools' / 'quest_corrections.json').read_text())
+    for correction in corrections:
+        rule = correction.get('stageCorrection')
+        ident = correction['questID']
+        if not rule or ident not in records:
+            continue
+        quest = copy.deepcopy(records[ident])
+        expected = (correction['title'], rule['minLevel'], rule['level'], rule['classMask'])
+        actual = tuple(quest.get(k) for k in ('title', 'minLevel', 'level', 'classMask'))
+        if actual != expected or quest.get('unmodeledObjectiveKinds') or quest.get('otherLocationsIncomplete'):
+            raise ValueError('Reviewed stage identity or objective semantics changed: ' + str(ident))
+        requirements = list(quest.get('requirements') or [])
+        required = rule['requiredItems']
+        allowed_items = [required]
+        if rule['kind'] in ('objective-facts', 'stage-facts'):
+            allowed_items.append(rule['before']['requiredItems'])
+        if {(r['itemID'], r['quantity']) for r in quest.get('requiredItems', [])} not in [
+                {(r['itemID'], r['quantity']) for r in items} for items in allowed_items]:
+            raise ValueError('Reviewed hand-in items changed: ' + str(ident))
+        if rule['kind'] == 'provided-delivery':
+            item, = required
+            supplied = {'entityType': 'item', 'entityID': item['itemID'],
+                        'name': item['name'], 'quantity': item['quantity']}
+            if quest.get('objectives') or any(r.get('entityType') != 'item' or
+                    r.get('entityID') != item['itemID'] or r.get('quantity') != item['quantity']
+                    for r in requirements):
+                raise ValueError('Delivery correction would remove independent work: ' + str(ident))
+            provided = list(quest.get('providedItems') or [])
+            if not requirements and supplied not in provided:
+                raise ValueError('Delivery evidence no longer matches: ' + str(ident))
+            if any(r.get('entityID') == item['itemID'] and r != supplied for r in provided):
+                raise ValueError('Conflicting provided item: ' + str(ident))
+            if supplied not in provided:
+                provided.append(supplied)
+            if not quest.get('ends') or any(p.get('action') not in (None, 'talk') for p in quest['ends']):
+                raise ValueError('Delivery destination semantics changed: ' + str(ident))
+            for point in quest['ends']:
+                point['action'] = 'talk'
+            destination = rule.get('destinationLocation')
+            if destination:
+                points = [p for p in quest['ends'] if p.get('entityID') == destination['entityID']]
+                if len(points) != 1 or {k: points[0].get(k) for k in ('mapID', 'x', 'y')} not in (
+                        destination['before'], destination['after']):
+                    raise ValueError('Reviewed delivery destination changed: ' + str(ident))
+                points[0].update(destination['after'])
+                points[0]['locationSource'] = correction['source']
+            quest['providedItems'] = provided
+            quest['requirements'] = {}
+            if quest.get('worldReferences'):
+                quest['worldReferences']['requirements'] = {}
+                quest['worldReferences']['provided'] = copy.deepcopy(provided)
+        elif rule['kind'] in ('objective-facts', 'stage-facts'):
+            core = {'requirements', 'requiredItems', 'objectives', 'npcTargets'}
+            allowed = core | {'starts', 'ends', 'startRefs', 'endRefs', 'providedItems',
+                              'missingRequirements', 'objectiveLocationsIncomplete', 'objectiveAlternatives'}
+            fields = set(rule['before'])
+            if not core <= fields or not fields <= allowed or set(rule['after']) != fields or \
+                    (rule['kind'] == 'objective-facts' and fields != core) or rule['after']['requiredItems'] != required:
+                raise ValueError('Unsupported reviewed objective fields: ' + str(ident))
+            def value(field):
+                return quest.get(field) if field == 'objectiveLocationsIncomplete' else quest.get(field) or []
+            actual = {k: value(k) for k in fields}
+            if actual not in (rule['before'], rule['after']):
+                raise ValueError('Reviewed objective facts conflict with new evidence: ' + str(ident))
+            if quest.get('worldReferences'):
+                refs = quest['worldReferences'].get('requirements') or []
+                if refs not in (rule['before']['requirements'], rule['after']['requirements']):
+                    raise ValueError('Reviewed world requirements changed: ' + str(ident))
+                if refs != rule['after']['requirements']:
+                    quest['worldReferences']['requirements'] = copy.deepcopy(rule['after']['requirements'])
+                if 'providedItems' in fields:
+                    provided = quest['worldReferences'].get('provided') or []
+                    if provided not in (rule['before']['providedItems'], rule['after']['providedItems']):
+                        raise ValueError('Reviewed supplied items changed: ' + str(ident))
+                    if provided != rule['after']['providedItems']:
+                        quest['worldReferences']['provided'] = copy.deepcopy(rule['after']['providedItems'])
+            for field, value in rule['after'].items():
+                current = quest.get(field) if field == 'objectiveLocationsIncomplete' else quest.get(field) or []
+                if current != value:
+                    quest[field] = copy.deepcopy(value)
+        elif rule['kind'] == 'item-exchange':
+            item, = required
+            if requirements != rule['requirements'] or len(requirements) != 1 or (
+                    requirements[0].get('entityType'), requirements[0].get('entityID'), requirements[0].get('quantity')) != (
+                        'item', item['itemID'], item['quantity']):
+                raise ValueError('Reviewed exchange requirement changed: ' + str(ident))
+            point = rule['point']
+            if point.get('entityType') != 'object' or point.get('action') != 'item' or (
+                    point.get('itemID'), point.get('quantity')) != (item['itemID'], item['quantity']):
+                raise ValueError('Unsupported reviewed exchange semantics: ' + str(ident))
+            if quest.get('objectives') and quest['objectives'] != [point]:
+                raise ValueError('Reviewed exchange conflicts with existing work: ' + str(ident))
+            if quest.get('missingRequirements') and quest['missingRequirements'] != requirements:
+                raise ValueError('Other exchange work remains unresolved: ' + str(ident))
+            quest['objectives'] = [copy.deepcopy(point)]
+        elif rule['kind'] in ('unmapped-escort', 'unmapped-objective'):
+            if requirements or quest.get('objectives'):
+                raise ValueError('Escort correction would replace mapped work: ' + str(ident))
+            target = rule['target']
+            if rule['kind'] == 'unmapped-escort' and not any(r.get('entityType') == target['entityType'] and r.get('entityID') == target['entityID']
+                       for r in quest.get('startRefs', [])):
+                raise ValueError('Escort starter identity changed: ' + str(ident))
+            if quest.get('missingRequirements') and quest['missingRequirements'] != [target]:
+                raise ValueError('Other unmapped escort work needs review: ' + str(ident))
+            quest['missingRequirements'] = [copy.deepcopy(target)]
+            quest['objectiveLocationsIncomplete'] = True
+        elif rule['kind'] == 'npc-location':
+            # Replace only an identified representative point. Work semantics,
+            # offer requirements and unrelated unresolved facts survive.
+            for role in rule['roles']:
+                if role not in ('starts', 'ends', 'objectives'):
+                    raise ValueError('Unsupported NPC location role: ' + role)
+                if role == 'objectives' and not rule.get('objectiveKey'):
+                    raise ValueError('Reviewed work location needs an objective identity')
+                points = [p for p in quest.get(role, []) if p.get('entityID') == rule['entityID']
+                          and (role != 'objectives' or p.get('objectiveKey') == rule['objectiveKey'])]
+                if len(points) != 1 or not points[0].get('npc'):
+                    raise ValueError('Reviewed NPC identity changed: ' + str(ident))
+                point = points[0]
+                location = {k: point.get(k) for k in ('mapID', 'x', 'y')}
+                if location not in (rule['before'], rule['after']):
+                    raise ValueError('Reviewed NPC location conflicts with new evidence: ' + str(ident))
+                point.update(rule['after'])
+                point['locationSource'] = correction['source']
+        elif rule['kind'] == 'item-source':
+            if {(r.get('entityType'), r.get('entityID'), r.get('quantity')) for r in requirements} != \
+                    {('item', r['itemID'], r['quantity']) for r in required}:
+                raise ValueError('Reviewed objective requirements changed: ' + str(ident))
+            point = rule['point']
+            points = list(quest.get('objectives') or [])
+            matches = [p for p in points if p.get('itemID') == point['itemID']]
+            if matches and matches != [point]:
+                raise ValueError('Reviewed source conflicts with an existing objective: ' + str(ident))
+            if not matches:
+                points.append(copy.deepcopy(point))
+            if {p.get('itemID') for p in points} != {r['itemID'] for r in required}:
+                raise ValueError('Other objective locations remain unresolved: ' + str(ident))
+            quest['objectives'] = points
+            target = {k: point[k] for k in ('entityID', 'name', 'npc', 'action', 'itemName')}
+            targets = list(quest.get('npcTargets') or [])
+            if target not in targets:
+                targets.append(target)
+            quest['npcTargets'] = targets
+        else:
+            raise ValueError('Unknown reviewed stage correction: ' + rule['kind'])
+        if rule['kind'] in ('provided-delivery', 'item-source', 'item-exchange'):
+            quest.pop('missingRequirements', None)
+            quest.pop('objectiveLocationsIncomplete', None)
+        quest['stageCorrectionSource'] = correction['source']
+        if quest != records[ident]:
+            pending[ident] = quest
+    records.update(pending)
+    return sorted(pending)
 
 
 def number(value, maximum=2147483647):

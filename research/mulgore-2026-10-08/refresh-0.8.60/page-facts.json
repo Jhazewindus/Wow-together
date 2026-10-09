@@ -1,0 +1,1575 @@
+[
+  {
+    "questID": 1516,
+    "url": "https://www.wowhead.com/forever/quest=1516",
+    "captured_at_utc": "2026-10-08T15:10:11.276326+00:00",
+    "sha256": "f43e6ffa28c4aaed371452c2e077675f12b59197fa3cdfd00042f1b5c71a43a8",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 5887,
+          "name": "Canaga Earthcaller"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 5887,
+          "name": "Canaga Earthcaller"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 6640,
+          "name": "Felstalker Hoof",
+          "quantity": 2
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "start",
+        "name": "Canaga Earthcaller",
+        "coord": [
+          42.4,
+          69
+        ],
+        "id": 5887
+      },
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "end",
+        "name": "Canaga Earthcaller",
+        "coord": [
+          42.4,
+          69
+        ],
+        "id": 5887
+      },
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Felstalker",
+        "coord": [
+          45.2,
+          55
+        ],
+        "id": 3102
+      }
+    ],
+    "identity": {
+      "name_enus": "Call of Earth",
+      "_side": 2,
+      "reqclass": 64,
+      "reqrace": 162
+    }
+  },
+  {
+    "questID": 1519,
+    "url": "https://www.wowhead.com/forever/quest=1519",
+    "captured_at_utc": "2026-10-08T15:10:11.278152+00:00",
+    "sha256": "822f688adb527021c824ded3a0b758312d96ba064973fcb22587565abfde7e98",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 5888,
+          "name": "Seer Ravenfeather"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 5888,
+          "name": "Seer Ravenfeather"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 6634,
+          "name": "Ritual Salve",
+          "quantity": 2
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "start",
+        "name": "Seer Ravenfeather",
+        "coord": [
+          44.8,
+          76.2
+        ],
+        "id": 5888
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "end",
+        "name": "Seer Ravenfeather",
+        "coord": [
+          44.8,
+          76.2
+        ],
+        "id": 5888
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Bristleback Shaman",
+        "coord": [
+          64.6,
+          77.8
+        ],
+        "id": 2953
+      }
+    ],
+    "identity": {
+      "name_enus": "Call of Earth",
+      "_side": 2,
+      "reqclass": 64,
+      "reqrace": 34
+    }
+  },
+  {
+    "questID": 2984,
+    "url": "https://www.wowhead.com/forever/quest=2984",
+    "captured_at_utc": "2026-10-08T15:10:11.278783+00:00",
+    "sha256": "84aec13ac179ce0d3545883446b67a7ae55c40e2382d0c7393f41249c9543380",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 3066,
+          "name": "Narm Skychaser"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 5907,
+          "name": "Kranal Fiss"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "start",
+        "name": "Narm Skychaser",
+        "coord": [
+          48.4,
+          59.2
+        ],
+        "id": 3066
+      },
+      {
+        "sourceAreaID": 17,
+        "type": 1,
+        "point": "end",
+        "name": "Kranal Fiss",
+        "coord": [
+          55.8,
+          20
+        ],
+        "id": 5907
+      }
+    ],
+    "identity": {
+      "name_enus": "Call of Fire",
+      "_side": 2,
+      "reqclass": 64,
+      "reqrace": 162
+    }
+  },
+  {
+    "questID": 2986,
+    "url": "https://www.wowhead.com/forever/quest=2986",
+    "captured_at_utc": "2026-10-08T15:10:11.279543+00:00",
+    "sha256": "5262a80eb157f0ba66e920038cb22cb94a19b4229cc19e7374e9b92b8ae67daa",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 3066,
+          "name": "Narm Skychaser"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 5901,
+          "name": "Islen Waterseer"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "start",
+        "name": "Narm Skychaser",
+        "coord": [
+          48.4,
+          59.2
+        ],
+        "id": 3066
+      },
+      {
+        "sourceAreaID": 17,
+        "type": 1,
+        "point": "end",
+        "name": "Islen Waterseer",
+        "coord": [
+          65.8,
+          43.8
+        ],
+        "id": 5901
+      }
+    ],
+    "identity": {
+      "name_enus": "Call of Water",
+      "_side": 2,
+      "reqclass": 64,
+      "reqrace": 0
+    }
+  },
+  {
+    "questID": 5655,
+    "url": "https://www.wowhead.com/forever/quest=5655",
+    "captured_at_utc": "2026-10-08T15:10:11.280233+00:00",
+    "sha256": "39755d747c9755b2e582297da1e8450cd1d44743334fbc17cc21379d55cc2d55",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 11407,
+          "name": "Var'jun"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 6018,
+          "name": "Ur'kyo"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "start",
+        "name": "Var'jun",
+        "coord": [
+          47,
+          58.8
+        ],
+        "id": 11407
+      },
+      {
+        "sourceAreaID": 1637,
+        "type": 1,
+        "point": "end",
+        "name": "Ur'kyo",
+        "coord": [
+          35.6,
+          87.6
+        ],
+        "id": 6018
+      }
+    ],
+    "identity": {
+      "name_enus": "Hex of Weakness",
+      "_side": 2,
+      "reqclass": 16,
+      "reqrace": 128
+    }
+  },
+  {
+    "questID": 5661,
+    "url": "https://www.wowhead.com/forever/quest=5661",
+    "captured_at_utc": "2026-10-08T15:10:11.280579+00:00",
+    "sha256": "974d194c9d4a9ae663a90fe1d8beb5b2160152a1cd1afee936ee017194f007a2",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 11407,
+          "name": "Var'jun"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 4606,
+          "name": "Aelthalyste"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "start",
+        "name": "Var'jun",
+        "coord": [
+          47,
+          58.8
+        ],
+        "id": 11407
+      },
+      {
+        "sourceAreaID": 1497,
+        "type": 1,
+        "point": "end",
+        "name": "Aelthalyste",
+        "coord": [
+          49.2,
+          18.2
+        ],
+        "id": 4606
+      }
+    ],
+    "identity": {
+      "name_enus": "Touch of Weakness",
+      "_side": 2,
+      "reqclass": 16,
+      "reqrace": 16
+    }
+  },
+  {
+    "questID": 5928,
+    "url": "https://www.wowhead.com/forever/quest=5928",
+    "captured_at_utc": "2026-10-08T15:10:11.281238+00:00",
+    "sha256": "ef05c35f309d9a9c925155dfeea663a9faeaaf6f8a20b851fb303731ba811f85",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 3064,
+          "name": "Gennia Runetotem"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 3033,
+          "name": "Turak Runetotem"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "start",
+        "name": "Gennia Runetotem",
+        "coord": [
+          48.4,
+          59.6
+        ],
+        "id": 3064
+      },
+      {
+        "sourceAreaID": 1638,
+        "type": 1,
+        "point": "end",
+        "name": "Turak Runetotem",
+        "coord": [
+          76.4,
+          27.6
+        ],
+        "id": 3033
+      }
+    ],
+    "identity": {
+      "name_enus": "Heeding the Call",
+      "_side": 2,
+      "reqclass": 1024,
+      "reqrace": 32
+    }
+  },
+  {
+    "questID": 745,
+    "url": "https://www.wowhead.com/forever/quest=745",
+    "captured_at_utc": "2026-10-08T15:10:11.282225+00:00",
+    "sha256": "2f1fb91b529259c7ca08d8dd199ef105eb1e395936119528a9fde5e064aaf32e",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 2993,
+          "name": "Baine Bloodhoof"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 2993,
+          "name": "Baine Bloodhoof"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "entityID": 2949,
+          "name": "Palemane Tanner",
+          "quantity": 10
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2950,
+          "name": "Palemane Skinner",
+          "quantity": 8
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2951,
+          "name": "Palemane Poacher",
+          "quantity": 5
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "start",
+        "name": "Baine Bloodhoof",
+        "coord": [
+          47.4,
+          60.2
+        ],
+        "id": 2993
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "end",
+        "name": "Baine Bloodhoof",
+        "coord": [
+          47.4,
+          60.2
+        ],
+        "id": 2993
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "requirement",
+        "name": "Palemane Tanner",
+        "coord": [
+          52.6,
+          72.2
+        ],
+        "id": 2949
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "requirement",
+        "name": "Palemane Skinner",
+        "coord": [
+          53.2,
+          71.8
+        ],
+        "id": 2950
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "requirement",
+        "name": "Palemane Poacher",
+        "coord": [
+          30.8,
+          60.4
+        ],
+        "id": 2951
+      }
+    ],
+    "identity": {
+      "name_enus": "Sharing the Land",
+      "_side": 2,
+      "reqclass": 0,
+      "reqrace": 0
+    }
+  },
+  {
+    "questID": 746,
+    "url": "https://www.wowhead.com/forever/quest=746",
+    "captured_at_utc": "2026-10-08T15:10:11.284617+00:00",
+    "sha256": "8db47f8e22ea2d44bf9c558a20199157fe27dc1cc1d989fc942aca5e301e55e3",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 2993,
+          "name": "Baine Bloodhoof"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 2993,
+          "name": "Baine Bloodhoof"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 4703,
+          "name": "Broken Tools",
+          "quantity": 5
+        },
+        {
+          "entityType": "item",
+          "entityID": 4702,
+          "name": "Prospector's Pick",
+          "quantity": 5
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "start",
+        "name": "Baine Bloodhoof",
+        "coord": [
+          47.4,
+          60.2
+        ],
+        "id": 2993
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "end",
+        "name": "Baine Bloodhoof",
+        "coord": [
+          47.4,
+          60.2
+        ],
+        "id": 2993
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Elder Plainstrider",
+        "coord": [
+          68.2,
+          59.8
+        ],
+        "id": 2957
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Prairie Stalker",
+        "coord": [
+          38.8,
+          37.2
+        ],
+        "id": 2959
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Prairie Wolf Alpha",
+        "coord": [
+          61.2,
+          66.5
+        ],
+        "id": 2960
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Windfury Matriarch",
+        "coord": [
+          32.4,
+          27.6
+        ],
+        "id": 2965
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Swoop",
+        "coord": [
+          43.2,
+          49.2
+        ],
+        "id": 2970
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Kodo Calf",
+        "coord": [
+          48.2,
+          69.4
+        ],
+        "id": 2972
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Venture Co. Worker",
+        "coord": [
+          61.6,
+          46.6
+        ],
+        "id": 2978
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Venture Co. Supervisor",
+        "coord": [
+          61.4,
+          47.2
+        ],
+        "id": 2979
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Bael'dun Digger",
+        "coord": [
+          32.2,
+          48.8
+        ],
+        "id": 2989
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Bael'dun Appraiser",
+        "coord": [
+          31.4,
+          49.8
+        ],
+        "id": 2990
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Flatland Cougar",
+        "coord": [
+          40.8,
+          44
+        ],
+        "id": 3035
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Bristleback Interloper",
+        "coord": [
+          61.6,
+          22.6
+        ],
+        "id": 3232
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Flatland Prowler",
+        "coord": [
+          52.6,
+          12.8
+        ],
+        "id": 3566
+      }
+    ],
+    "identity": {
+      "name_enus": "Dwarven Digging",
+      "_side": 2,
+      "reqclass": 0,
+      "reqrace": 0
+    }
+  },
+  {
+    "questID": 747,
+    "url": "https://www.wowhead.com/forever/quest=747",
+    "captured_at_utc": "2026-10-08T15:10:11.285403+00:00",
+    "sha256": "5bf1c0f11aae4e42b639955c85b999f050e88c2481f7b9ae1ecd6008334b4946",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 2980,
+          "name": "Grull Hawkwind"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 2980,
+          "name": "Grull Hawkwind"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 4739,
+          "name": "Plainstrider Meat",
+          "quantity": 7
+        },
+        {
+          "entityType": "item",
+          "entityID": 4740,
+          "name": "Plainstrider Feather",
+          "quantity": 7
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "start",
+        "name": "Grull Hawkwind",
+        "coord": [
+          44.8,
+          77.2
+        ],
+        "id": 2980
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "end",
+        "name": "Grull Hawkwind",
+        "coord": [
+          44.8,
+          77.2
+        ],
+        "id": 2980
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Plainstrider",
+        "coord": [
+          46.2,
+          77.8
+        ],
+        "id": 2955
+      }
+    ],
+    "identity": {
+      "name_enus": "The Hunt Begins",
+      "_side": 2,
+      "reqclass": 0,
+      "reqrace": 0
+    }
+  },
+  {
+    "questID": 750,
+    "url": "https://www.wowhead.com/forever/quest=750",
+    "captured_at_utc": "2026-10-08T15:10:11.286396+00:00",
+    "sha256": "a22eb09152af0a315a1ab1c094aff8b830db0cc6ad34a889384c2c4d9621fc4d",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 2980,
+          "name": "Grull Hawkwind"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 2980,
+          "name": "Grull Hawkwind"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 4742,
+          "name": "Mountain Cougar Pelt",
+          "quantity": 10
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "start",
+        "name": "Grull Hawkwind",
+        "coord": [
+          44.8,
+          77.2
+        ],
+        "id": 2980
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "end",
+        "name": "Grull Hawkwind",
+        "coord": [
+          44.8,
+          77.2
+        ],
+        "id": 2980
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Mountain Cougar",
+        "coord": [
+          43.6,
+          90.4
+        ],
+        "id": 2961
+      }
+    ],
+    "identity": {
+      "name_enus": "The Hunt Continues",
+      "_side": 2,
+      "reqclass": 0,
+      "reqrace": 0
+    }
+  },
+  {
+    "questID": 754,
+    "url": "https://www.wowhead.com/forever/quest=754",
+    "captured_at_utc": "2026-10-08T15:10:11.286958+00:00",
+    "sha256": "fecc501c489f8b5e965ad56ecde0a6c91751d2047c6d5b74ab0ce6e83d8e67fa",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 2948,
+          "name": "Mull Thunderhorn"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 2948,
+          "name": "Mull Thunderhorn"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "start",
+        "name": "Mull Thunderhorn",
+        "coord": [
+          48.4,
+          60.4
+        ],
+        "id": 2948
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "end",
+        "name": "Mull Thunderhorn",
+        "coord": [
+          48.4,
+          60.4
+        ],
+        "id": 2948
+      }
+    ],
+    "identity": {
+      "name_enus": "Winterhoof Cleansing",
+      "_side": 2,
+      "reqclass": 0,
+      "reqrace": 32
+    }
+  },
+  {
+    "questID": 780,
+    "url": "https://www.wowhead.com/forever/quest=780",
+    "captured_at_utc": "2026-10-08T15:10:11.287519+00:00",
+    "sha256": "76d34700ce2db3d95b1f5f7fef1204834a21606ecedc823927bee2e7f13782cd",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 2980,
+          "name": "Grull Hawkwind"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 2980,
+          "name": "Grull Hawkwind"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 4848,
+          "name": "Battleboar Snout",
+          "quantity": 8
+        },
+        {
+          "entityType": "item",
+          "entityID": 4849,
+          "name": "Battleboar Flank",
+          "quantity": 8
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {
+      "previousQuest": 750
+    },
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "start",
+        "name": "Grull Hawkwind",
+        "coord": [
+          44.8,
+          77.2
+        ],
+        "id": 2980
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "end",
+        "name": "Grull Hawkwind",
+        "coord": [
+          44.8,
+          77.2
+        ],
+        "id": 2980
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Bristleback Battleboar",
+        "coord": [
+          63.4,
+          78.2
+        ],
+        "id": 2954
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Battleboar",
+        "coord": [
+          57.6,
+          85.2
+        ],
+        "id": 2966
+      }
+    ],
+    "identity": {
+      "name_enus": "The Battleboars",
+      "_side": 2,
+      "reqclass": 0,
+      "reqrace": 0
+    }
+  },
+  {
+    "questID": 861,
+    "url": "https://www.wowhead.com/forever/quest=861",
+    "captured_at_utc": "2026-10-08T15:10:11.288136+00:00",
+    "sha256": "6545f0aa6f491242b269de934ce3eee6f51fd4e58938758f7685e9e14155ad25",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 3052,
+          "name": "Skorn Whitecloud"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 3441,
+          "name": "Melor Stonehoof"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 5203,
+          "name": "Flatland Prowler Claw",
+          "quantity": 4
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "start",
+        "name": "Skorn Whitecloud",
+        "coord": [
+          46.8,
+          60.2
+        ],
+        "id": 3052
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Flatland Prowler",
+        "coord": [
+          52.6,
+          12.8
+        ],
+        "id": 3566
+      },
+      {
+        "sourceAreaID": 1638,
+        "type": 1,
+        "point": "end",
+        "name": "Melor Stonehoof",
+        "coord": [
+          61.4,
+          80.6
+        ],
+        "id": 3441
+      }
+    ],
+    "identity": {}
+  },
+  {
+    "questID": 96261,
+    "url": "https://www.wowhead.com/forever/quest=96261",
+    "captured_at_utc": "2026-10-08T15:10:11.288552+00:00",
+    "sha256": "3905d3fe42ec61d3ec47b34473e3db0da27723e46943ab7807015f53f63efe9c",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 259118,
+          "name": "Muln Earthfury"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 259118,
+          "name": "Muln Earthfury"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "entityID": 264082,
+          "name": "Broodmother Valraxx",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "start",
+        "name": "Muln Earthfury",
+        "coord": [
+          33.4,
+          22.4
+        ],
+        "id": 259118
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "end",
+        "name": "Muln Earthfury",
+        "coord": [
+          33.4,
+          22.4
+        ],
+        "id": 259118
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "requirement",
+        "name": "Broodmother Valraxx",
+        "coord": [
+          33.6,
+          6.8
+        ],
+        "id": 264082
+      }
+    ],
+    "identity": {
+      "name_enus": "The Broodmother",
+      "_side": 2,
+      "reqclass": 0,
+      "reqrace": 0
+    }
+  },
+  {
+    "questID": 96294,
+    "url": "https://www.wowhead.com/forever/quest=96294",
+    "captured_at_utc": "2026-10-08T15:10:11.288827+00:00",
+    "sha256": "6404d231a7a0069afb8f2066ab7b32bfc897918b96f30585e7a32aecfdcca593",
+    "relations": {
+      "starts": [],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 259118,
+          "name": "Muln Earthfury"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 273659,
+          "name": "Bloody Parchment",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "end",
+        "name": "Muln Earthfury",
+        "coord": [
+          33.4,
+          22.4
+        ],
+        "id": 259118
+      }
+    ],
+    "identity": {
+      "name_enus": "A Darker Truth",
+      "_side": 2,
+      "reqclass": 0,
+      "reqrace": 0
+    }
+  },
+  {
+    "questID": 99079,
+    "url": "https://www.wowhead.com/forever/quest=99079",
+    "captured_at_utc": "2026-10-08T15:10:11.289515+00:00",
+    "sha256": "976bd8c16087125cb43cb9984b263ab1bf02f90e2ffb7a199024047b11d06233",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 3222,
+          "name": "Brave Wildrunner"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 275789,
+          "name": "Malah Longwind"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "start",
+        "name": "Brave Wildrunner",
+        "coord": [
+          46.6,
+          63
+        ],
+        "id": 3222
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "end",
+        "name": "Malah Longwind",
+        "coord": [
+          57.6,
+          63.2
+        ],
+        "id": 275789
+      }
+    ],
+    "identity": {
+      "name_enus": "Longwalker Malah",
+      "_side": 2,
+      "reqclass": 0,
+      "reqrace": 48
+    }
+  },
+  {
+    "questID": 99080,
+    "url": "https://www.wowhead.com/forever/quest=99080",
+    "captured_at_utc": "2026-10-08T15:10:11.289952+00:00",
+    "sha256": "c5ddccde16a4b54ddf05d9d4dcb5904b9bdb3611e691604bcf82d2b225ba1042",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 2993,
+          "name": "Baine Bloodhoof"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 2993,
+          "name": "Baine Bloodhoof"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "entityID": 2967,
+          "name": "Galak Centaur",
+          "quantity": 6
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2968,
+          "name": "Galak Outrunner",
+          "quantity": 4
+        },
+        {
+          "entityType": "item",
+          "entityID": 286075,
+          "name": "Herak's Head",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {
+      "previousQuest": 99101
+    },
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "start",
+        "name": "Baine Bloodhoof",
+        "coord": [
+          47.4,
+          60.2
+        ],
+        "id": 2993
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "end",
+        "name": "Baine Bloodhoof",
+        "coord": [
+          47.4,
+          60.2
+        ],
+        "id": 2993
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "requirement",
+        "name": "Galak Centaur",
+        "coord": [
+          59.6,
+          60.2
+        ],
+        "id": 2967
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "requirement",
+        "name": "Galak Outrunner",
+        "coord": [
+          61,
+          62.1
+        ],
+        "id": 2968
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Herak the Pillager",
+        "coord": [
+          60.4,
+          59.8
+        ],
+        "id": 275767
+      }
+    ],
+    "identity": {
+      "name_enus": "Drive Them Out",
+      "_side": 2,
+      "reqclass": 0,
+      "reqrace": 48
+    }
+  },
+  {
+    "questID": 99081,
+    "url": "https://www.wowhead.com/forever/quest=99081",
+    "captured_at_utc": "2026-10-08T15:10:11.290321+00:00",
+    "sha256": "0b8b7eb1ee492da310195f7df8e96ea57b013ac74b0e481fad7395aab95f1ecb",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 275789,
+          "name": "Malah Longwind"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 3222,
+          "name": "Brave Wildrunner"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 286104,
+          "name": "Longwalker Malah's Report",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {
+      "previousQuest": 99079
+    },
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "start",
+        "name": "Malah Longwind",
+        "coord": [
+          57.6,
+          63.2
+        ],
+        "id": 275789
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "end",
+        "name": "Brave Wildrunner",
+        "coord": [
+          46.6,
+          63
+        ],
+        "id": 3222
+      }
+    ],
+    "identity": {
+      "name_enus": "Grim Tidings",
+      "_side": 2,
+      "reqclass": 0,
+      "reqrace": 176
+    }
+  },
+  {
+    "questID": 99082,
+    "url": "https://www.wowhead.com/forever/quest=99082",
+    "captured_at_utc": "2026-10-08T15:10:11.290652+00:00",
+    "sha256": "191cabbafc8fb10fccc515be3ca04fd25fe6f7c470e26f404809f63d15a4b27b",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 2993,
+          "name": "Baine Bloodhoof"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 3057,
+          "name": "Cairne Bloodhoof"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_fields": {
+      "previousQuest": 99080
+    },
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "start",
+        "name": "Baine Bloodhoof",
+        "coord": [
+          47.4,
+          60.2
+        ],
+        "id": 2993
+      },
+      {
+        "sourceAreaID": 1638,
+        "type": 1,
+        "point": "end",
+        "name": "Cairne Bloodhoof",
+        "coord": [
+          59.8,
+          51.6
+        ],
+        "id": 3057
+      }
+    ],
+    "identity": {
+      "name_enus": "The High Chieftain",
+      "_side": 2,
+      "reqclass": 0,
+      "reqrace": 32
+    }
+  },
+  {
+    "questID": 99101,
+    "url": "https://www.wowhead.com/forever/quest=99101",
+    "captured_at_utc": "2026-10-08T15:10:11.291185+00:00",
+    "sha256": "01d50e75a5d8a71e367ec240b50dfc4cc3d265aae72dbd2317e24b5c024020b4",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 3222,
+          "name": "Brave Wildrunner"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 2993,
+          "name": "Baine Bloodhoof"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 286104,
+          "name": "Longwalker Malah's Report",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_fields": {
+      "previousQuest": 99081
+    },
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "start",
+        "name": "Brave Wildrunner",
+        "coord": [
+          46.6,
+          63
+        ],
+        "id": 3222
+      },
+      {
+        "sourceAreaID": 215,
+        "type": 1,
+        "point": "end",
+        "name": "Baine Bloodhoof",
+        "coord": [
+          47.4,
+          60.2
+        ],
+        "id": 2993
+      }
+    ],
+    "identity": {
+      "name_enus": "Our Ancient Enemy",
+      "_side": 2,
+      "reqclass": 0,
+      "reqrace": 48
+    }
+  }
+]

@@ -1,0 +1,150 @@
+{
+  "raw_guard": "Required action removed; raw rejection retained.",
+  "method": "Exclude only four exact-title change-to-gossip placeholders from both complete ordinary scopes. Every other action retained, including unknown Vimes report and Jarl sword. Supplied-delivery work occurrences become recipient conversations. No shortened prefix.",
+  "classified_placeholder_actions_removed": [
+    {
+      "faction": "Horde",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+      "questID": 1263,
+      "kind": "a"
+    },
+    {
+      "faction": "Horde",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+      "questID": 1272,
+      "kind": "a"
+    },
+    {
+      "faction": "Horde",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+      "questID": 1281,
+      "kind": "a"
+    },
+    {
+      "faction": "Horde",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+      "questID": 1283,
+      "kind": "a"
+    },
+    {
+      "faction": "Horde",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+      "questID": 1263,
+      "kind": "q"
+    },
+    {
+      "faction": "Horde",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+      "questID": 1263,
+      "kind": "t"
+    },
+    {
+      "faction": "Horde",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+      "questID": 1272,
+      "kind": "q"
+    },
+    {
+      "faction": "Horde",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+      "questID": 1272,
+      "kind": "t"
+    },
+    {
+      "faction": "Horde",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+      "questID": 1281,
+      "kind": "q"
+    },
+    {
+      "faction": "Horde",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+      "questID": 1281,
+      "kind": "t"
+    },
+    {
+      "faction": "Horde",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+      "questID": 1283,
+      "kind": "q"
+    },
+    {
+      "faction": "Horde",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+      "questID": 1283,
+      "kind": "t"
+    },
+    {
+      "faction": "Alliance",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+      "questID": 1263,
+      "kind": "a"
+    },
+    {
+      "faction": "Alliance",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+      "questID": 1272,
+      "kind": "a"
+    },
+    {
+      "faction": "Alliance",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+      "questID": 1281,
+      "kind": "a"
+    },
+    {
+      "faction": "Alliance",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+      "questID": 1283,
+      "kind": "a"
+    },
+    {
+      "faction": "Alliance",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+      "questID": 1263,
+      "kind": "q"
+    },
+    {
+      "faction": "Alliance",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+      "questID": 1263,
+      "kind": "t"
+    },
+    {
+      "faction": "Alliance",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+      "questID": 1272,
+      "kind": "q"
+    },
+    {
+      "faction": "Alliance",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+      "questID": 1272,
+      "kind": "t"
+    },
+    {
+      "faction": "Alliance",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+      "questID": 1281,
+      "kind": "q"
+    },
+    {
+      "faction": "Alliance",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+      "questID": 1281,
+      "kind": "t"
+    },
+    {
+      "faction": "Alliance",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+      "questID": 1283,
+      "kind": "q"
+    },
+    {
+      "faction": "Alliance",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+      "questID": 1283,
+      "kind": "t"
+    }
+  ]
+}

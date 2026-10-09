@@ -1,0 +1,54 @@
+[
+  {
+    "questID": 225,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline"
+    },
+    "decision": "Interact with the actual Weathered Grave starter/return object. Preserve captured location, Sarah's supplied ring and actual parent hand-in; no extra grave farming goal.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 231,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "decision": "Interact with the actual Weathered Grave starter/return object. Preserve captured location, Sarah's supplied ring and actual parent hand-in; no extra grave farming goal.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 1383,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "_identityName": "converted-baseline"
+    },
+    "decision": "Join Mire Lord Fungus to Mire Lord in Swamp of Sorrows and Deepstrider Tumor to the actual elite Deepstrider Searcher drop in Desolace. Published point is a search representative, not a guaranteed stationary spawn or safe approach. Giant 4686 is an alternative drop, not an extra mandatory kill. Preserve Shadow Panther capture, 5/1/1 hand-in, elite warning, 1372 hand-in and Faustin return.",
+    "native_beta_verified": false
+  }
+]

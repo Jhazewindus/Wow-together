@@ -1,0 +1,88 @@
+{
+  "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
+  "quest_records": 1,
+  "static_points_checked": 2,
+  "fixed_zone_guides_checked": 2,
+  "catalogue_reason_stages_checked": 3,
+  "catalogue_reason_codes": {
+    "level-work": 1,
+    "quest-objective": 1,
+    "quest-reward": 1
+  },
+  "reason_review_quest_ids": [
+    79976
+  ],
+  "source_data_gap_free_guides": 2,
+  "guides": [
+    {
+      "faction": "Alliance",
+      "zone": "Thoradin's Wall",
+      "key": "level-zone:eastern-kingdoms/thoradins-wall:levels:31-40",
+      "quests": 3,
+      "steps": 9,
+      "unknown_location_steps": 0,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": true,
+      "reason_steps_checked": 9,
+      "destination_reason_codes": {
+        "outside-level-range": 2,
+        "prerequisite": 6,
+        "quest-reward": 1
+      },
+      "reason_review_steps": 2,
+      "cross_zone_reason_steps": 2,
+      "flow_alternatives_evaluated": 1,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 2,
+      "estimated_distance_before": 30007.3,
+      "estimated_distance_after": 30007.3
+    },
+    {
+      "faction": "Horde",
+      "zone": "Thoradin's Wall",
+      "key": "level-zone:eastern-kingdoms/thoradins-wall:levels:31-40",
+      "quests": 3,
+      "steps": 9,
+      "unknown_location_steps": 0,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": true,
+      "reason_steps_checked": 9,
+      "destination_reason_codes": {
+        "outside-level-range": 2,
+        "prerequisite": 6,
+        "quest-reward": 1
+      },
+      "reason_review_steps": 2,
+      "cross_zone_reason_steps": 2,
+      "flow_alternatives_evaluated": 1,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 2,
+      "estimated_distance_before": 30007.3,
+      "estimated_distance_after": 30007.3
+    }
+  ],
+  "scope": {
+    "zone": "Thoradin's Wall",
+    "catalogue_records": "Exact quest zone; guide dependencies still compile normally"
+  }
+}

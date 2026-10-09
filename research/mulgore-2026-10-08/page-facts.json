@@ -1,0 +1,2668 @@
+[
+  {
+    "questID": 1516,
+    "url": "https://www.wowhead.com/forever/quest=1516",
+    "status": 200,
+    "captured": "2026-10-08",
+    "sha256": "02f5623651bc35890d88fd49a97088415dfea8b5f78efde64e1cf45c453bd67f",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 5887,
+          "name": "Canaga Earthcaller"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 5887,
+          "name": "Canaga Earthcaller"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 6640,
+          "name": "Felstalker Hoof",
+          "quantity": 2
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "id": 5887,
+        "type": 1,
+        "point": "start",
+        "name": "Canaga Earthcaller",
+        "coord": [
+          42.4,
+          69
+        ],
+        "sourceAreaID": 14
+      },
+      {
+        "id": 5887,
+        "type": 1,
+        "point": "end",
+        "name": "Canaga Earthcaller",
+        "coord": [
+          42.4,
+          69
+        ],
+        "sourceAreaID": 14
+      },
+      {
+        "id": 3102,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Felstalker",
+        "coord": [
+          45.2,
+          55
+        ],
+        "objective": 0,
+        "item": "Felstalker Hoof",
+        "sourceAreaID": 14
+      }
+    ],
+    "comments": [
+      {
+        "commentID": 42243,
+        "date": "2007-02-25T16:54:46-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2950951,
+        "date": "2005-09-10T18:29:01-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2950953,
+        "date": "2006-07-11T22:25:36-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2950954,
+        "date": "2006-01-16T06:23:47-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2950955,
+        "date": "2005-08-22T13:49:17-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2950956,
+        "date": "2007-01-14T19:50:01-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2950957,
+        "date": "2005-12-19T06:20:26-06:00",
+        "dataTree": 1
+      }
+    ]
+  },
+  {
+    "questID": 1519,
+    "url": "https://www.wowhead.com/forever/quest=1519",
+    "status": 200,
+    "captured": "2026-10-08",
+    "sha256": "19da7d31f0404dce81dde6ac6a6d4d7fcb0126d88563127e51c041df2e2a02d1",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 5888,
+          "name": "Seer Ravenfeather"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 5888,
+          "name": "Seer Ravenfeather"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 6634,
+          "name": "Ritual Salve",
+          "quantity": 2
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "id": 5888,
+        "type": 1,
+        "point": "start",
+        "name": "Seer Ravenfeather",
+        "coord": [
+          44.8,
+          76.2
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 5888,
+        "type": 1,
+        "point": "end",
+        "name": "Seer Ravenfeather",
+        "coord": [
+          44.8,
+          76.2
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2953,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Bristleback Shaman",
+        "coord": [
+          64.6,
+          77.8
+        ],
+        "objective": 0,
+        "item": "Ritual Salve",
+        "sourceAreaID": 215
+      }
+    ],
+    "comments": [
+      {
+        "commentID": 30950,
+        "date": "2007-02-05T00:33:52-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 69423,
+        "date": "2007-04-19T01:19:13-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2779892,
+        "date": "2005-11-14T23:26:08-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2779927,
+        "date": "2006-01-26T23:26:08-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2779938,
+        "date": "2006-01-26T23:26:08-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2779950,
+        "date": "2006-01-26T23:26:08-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2779964,
+        "date": "2006-01-26T23:26:08-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2779976,
+        "date": "2006-03-04T11:26:08-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2779991,
+        "date": "2006-05-16T11:26:08-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2780015,
+        "date": "2006-05-16T11:26:08-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2780026,
+        "date": "2006-06-21T23:26:08-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2780040,
+        "date": "2006-07-28T11:26:08-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2780066,
+        "date": "2006-09-02T23:26:08-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2780099,
+        "date": "2006-12-21T11:26:08-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2780138,
+        "date": "2006-12-21T11:26:08-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2780148,
+        "date": "2007-01-26T23:26:08-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2780161,
+        "date": "2007-03-04T11:26:08-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2780172,
+        "date": "2007-04-09T23:26:08-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2780182,
+        "date": "2007-05-16T11:26:08-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2780206,
+        "date": "2007-05-16T11:26:08-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2951003,
+        "date": "2004-12-06T02:41:25-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2951004,
+        "date": "2006-04-18T19:08:30-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2951005,
+        "date": "2007-04-13T12:59:19-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2951006,
+        "date": "2007-04-01T21:28:00-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2951007,
+        "date": "2006-04-29T12:35:35-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2951009,
+        "date": "2007-01-02T03:24:41-06:00",
+        "dataTree": 1
+      }
+    ]
+  },
+  {
+    "questID": 2984,
+    "url": "https://www.wowhead.com/forever/quest=2984",
+    "status": 200,
+    "captured": "2026-10-08",
+    "sha256": "f86898067e7483a9e956bad93f0d29a86e926a9521193e9a5b110068cbb4950d",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 3066,
+          "name": "Narm Skychaser"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 5907,
+          "name": "Kranal Fiss"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "id": 3066,
+        "type": 1,
+        "point": "start",
+        "name": "Narm Skychaser",
+        "coord": [
+          48.4,
+          59.2
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 5907,
+        "type": 1,
+        "point": "end",
+        "name": "Kranal Fiss",
+        "coord": [
+          55.8,
+          20
+        ],
+        "sourceAreaID": 17
+      }
+    ],
+    "comments": [
+      {
+        "commentID": 2794314,
+        "date": "2005-10-09T16:58:21-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2794333,
+        "date": "2005-10-09T16:58:21-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2794342,
+        "date": "2005-10-09T16:58:21-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2794350,
+        "date": "2005-10-09T16:58:21-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2794360,
+        "date": "2005-10-09T16:58:21-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2794377,
+        "date": "2005-10-09T16:58:21-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2794386,
+        "date": "2005-10-09T16:58:21-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2794394,
+        "date": "2005-10-09T16:58:21-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2794404,
+        "date": "2005-10-09T16:58:21-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2794411,
+        "date": "2005-10-09T16:58:21-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2794420,
+        "date": "2005-12-21T16:58:21-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2794443,
+        "date": "2006-04-10T04:58:21-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2794459,
+        "date": "2006-04-10T04:58:21-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2794468,
+        "date": "2006-05-16T16:58:21-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2794478,
+        "date": "2006-05-16T16:58:21-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2794496,
+        "date": "2006-07-28T16:58:21-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2794539,
+        "date": "2006-10-09T16:58:21-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2794549,
+        "date": "2006-10-09T16:58:21-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2957547,
+        "date": "2006-03-25T13:39:14-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2957548,
+        "date": "2004-12-08T18:45:13-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2957549,
+        "date": "2005-08-08T12:47:12-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2957550,
+        "date": "2005-11-14T07:36:41-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2957551,
+        "date": "2006-12-22T12:36:48-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2957552,
+        "date": "2006-08-31T16:59:59-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2957553,
+        "date": "2005-02-24T21:54:22-06:00",
+        "dataTree": 1
+      }
+    ]
+  },
+  {
+    "questID": 2986,
+    "url": "https://www.wowhead.com/forever/quest=2986",
+    "status": 200,
+    "captured": "2026-10-08",
+    "sha256": "3f7d05a1515ef9522201e01ae6c03be2b6bff65f1b63613a487173c8a30160de",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 3066,
+          "name": "Narm Skychaser"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 5901,
+          "name": "Islen Waterseer"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "id": 3066,
+        "type": 1,
+        "point": "start",
+        "name": "Narm Skychaser",
+        "coord": [
+          48.4,
+          59.2
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 5901,
+        "type": 1,
+        "point": "end",
+        "name": "Islen Waterseer",
+        "coord": [
+          65.8,
+          43.8
+        ],
+        "sourceAreaID": 17
+      }
+    ],
+    "comments": [
+      {
+        "commentID": 58677,
+        "date": "2007-03-28T15:04:11-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 65101,
+        "date": "2007-04-10T16:05:01-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2957568,
+        "date": "2006-03-31T00:51:04-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2957569,
+        "date": "2007-02-25T03:47:55-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2957571,
+        "date": "2007-01-14T07:05:36-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2957573,
+        "date": "2007-03-02T12:07:51-06:00",
+        "dataTree": 1
+      }
+    ]
+  },
+  {
+    "questID": 5655,
+    "url": "https://www.wowhead.com/forever/quest=5655",
+    "status": 200,
+    "captured": "2026-10-08",
+    "sha256": "e1ee3315a23ac1f7f3331f0b941f3ef5d359090f12968e5b1b40a6466949709a",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 11407,
+          "name": "Var'jun"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 6018,
+          "name": "Ur'kyo"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "id": 11407,
+        "type": 1,
+        "point": "start",
+        "name": "Var'jun",
+        "coord": [
+          47,
+          58.8
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 6018,
+        "type": 1,
+        "point": "end",
+        "name": "Ur'kyo",
+        "coord": [
+          35.6,
+          87.6
+        ],
+        "sourceAreaID": 1637
+      }
+    ],
+    "comments": []
+  },
+  {
+    "questID": 5661,
+    "url": "https://www.wowhead.com/forever/quest=5661",
+    "status": 200,
+    "captured": "2026-10-08",
+    "sha256": "ed87c1b9c759bdf0f1a4fdfd07f33888093cdf1fa3aaecf9689e152164677a61",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 11407,
+          "name": "Var'jun"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 4606,
+          "name": "Aelthalyste"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "id": 11407,
+        "type": 1,
+        "point": "start",
+        "name": "Var'jun",
+        "coord": [
+          47,
+          58.8
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 4606,
+        "type": 1,
+        "point": "end",
+        "name": "Aelthalyste",
+        "coord": [
+          49.2,
+          18.2
+        ],
+        "sourceAreaID": 1497
+      }
+    ],
+    "comments": [
+      {
+        "commentID": 2756986,
+        "date": "2005-10-09T17:02:50-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2757009,
+        "date": "2005-10-09T17:02:50-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2757022,
+        "date": "2005-10-09T17:02:50-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2757046,
+        "date": "2005-11-15T05:02:50-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2757056,
+        "date": "2006-01-27T05:02:50-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2757067,
+        "date": "2006-03-04T17:02:50-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2757106,
+        "date": "2006-05-16T17:02:50-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 3150381,
+        "date": "2019-08-29T04:27:24-05:00",
+        "dataTree": 4
+      }
+    ]
+  },
+  {
+    "questID": 5928,
+    "url": "https://www.wowhead.com/forever/quest=5928",
+    "status": 200,
+    "captured": "2026-10-08",
+    "sha256": "a9f496ec3410ced9111bcb86ee240f5853737dde0f127e24b383baed5b462a73",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 3064,
+          "name": "Gennia Runetotem"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 3033,
+          "name": "Turak Runetotem"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "id": 3064,
+        "type": 1,
+        "point": "start",
+        "name": "Gennia Runetotem",
+        "coord": [
+          48.4,
+          59.6
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 3033,
+        "type": 1,
+        "point": "end",
+        "name": "Turak Runetotem",
+        "coord": [
+          76.4,
+          27.6
+        ],
+        "sourceAreaID": 1638
+      }
+    ],
+    "comments": [
+      {
+        "commentID": 2739240,
+        "date": "2007-04-08T11:48:42-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 3149905,
+        "date": "2019-08-26T22:29:24-05:00",
+        "dataTree": 4
+      }
+    ]
+  },
+  {
+    "questID": 745,
+    "url": "https://www.wowhead.com/forever/quest=745",
+    "status": 200,
+    "captured": "2026-10-08",
+    "sha256": "e0a6bd2fef2fd4af9de3235156bf6850d64d9e5ebaa53717f536c5b4665f5b14",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 2993,
+          "name": "Baine Bloodhoof"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 2993,
+          "name": "Baine Bloodhoof"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "entityID": 2949,
+          "name": "Palemane Tanner",
+          "quantity": 10
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2950,
+          "name": "Palemane Skinner",
+          "quantity": 8
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2951,
+          "name": "Palemane Poacher",
+          "quantity": 5
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "id": 2993,
+        "type": 1,
+        "point": "start",
+        "name": "Baine Bloodhoof",
+        "coord": [
+          47.4,
+          60.2
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2993,
+        "type": 1,
+        "point": "end",
+        "name": "Baine Bloodhoof",
+        "coord": [
+          47.4,
+          60.2
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2949,
+        "type": 1,
+        "point": "requirement",
+        "name": "Palemane Tanner",
+        "coord": [
+          52.6,
+          72.2
+        ],
+        "objective": 2949,
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2950,
+        "type": 1,
+        "point": "requirement",
+        "name": "Palemane Skinner",
+        "coord": [
+          53.2,
+          71.8
+        ],
+        "objective": 2950,
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2951,
+        "type": 1,
+        "point": "requirement",
+        "name": "Palemane Poacher",
+        "coord": [
+          30.8,
+          60.4
+        ],
+        "objective": 2951,
+        "sourceAreaID": 215
+      }
+    ],
+    "comments": [
+      {
+        "commentID": 41153,
+        "date": "2007-02-23T15:10:09-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 44991,
+        "date": "2007-03-02T07:54:31-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 78892,
+        "date": "2007-05-06T23:13:42-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940850,
+        "date": "2005-12-27T06:01:01-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940851,
+        "date": "2007-03-10T15:02:09-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940852,
+        "date": "2007-05-18T19:19:31-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940855,
+        "date": "2007-01-05T17:02:53-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940857,
+        "date": "2006-01-25T04:57:24-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940858,
+        "date": "2006-11-10T18:41:28-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940859,
+        "date": "2006-11-10T06:46:26-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940861,
+        "date": "2005-12-31T18:24:14-06:00",
+        "dataTree": 1
+      }
+    ]
+  },
+  {
+    "questID": 746,
+    "url": "https://www.wowhead.com/forever/quest=746",
+    "status": 200,
+    "captured": "2026-10-08",
+    "sha256": "e8d42048a32f9cd03c720abf87b5d57963ced7c3e35fedd1e92602931adaf342",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 2993,
+          "name": "Baine Bloodhoof"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 2993,
+          "name": "Baine Bloodhoof"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 4703,
+          "name": "Broken Tools",
+          "quantity": 5
+        },
+        {
+          "entityType": "item",
+          "entityID": 4702,
+          "name": "Prospector's Pick",
+          "quantity": 5
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "id": 2993,
+        "type": 1,
+        "point": "start",
+        "name": "Baine Bloodhoof",
+        "coord": [
+          47.4,
+          60.2
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2993,
+        "type": 1,
+        "point": "end",
+        "name": "Baine Bloodhoof",
+        "coord": [
+          47.4,
+          60.2
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2957,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Elder Plainstrider",
+        "coord": [
+          68.2,
+          59.8
+        ],
+        "objective": 1,
+        "item": "Prospector's Pick",
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2959,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Prairie Stalker",
+        "coord": [
+          38.8,
+          37.2
+        ],
+        "objective": 1,
+        "item": "Prospector's Pick",
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2960,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Prairie Wolf Alpha",
+        "coord": [
+          61.2,
+          66.5
+        ],
+        "objective": 1,
+        "item": "Prospector's Pick",
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2965,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Windfury Matriarch",
+        "coord": [
+          32.4,
+          27.6
+        ],
+        "objective": 1,
+        "item": "Prospector's Pick",
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2970,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Swoop",
+        "coord": [
+          43.2,
+          49.2
+        ],
+        "objective": 1,
+        "item": "Prospector's Pick",
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2972,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Kodo Calf",
+        "coord": [
+          48.2,
+          69.4
+        ],
+        "objective": 1,
+        "item": "Prospector's Pick",
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2978,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Venture Co. Worker",
+        "coord": [
+          61.6,
+          46.6
+        ],
+        "objective": 1,
+        "item": "Prospector's Pick",
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2979,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Venture Co. Supervisor",
+        "coord": [
+          61.4,
+          47.2
+        ],
+        "objective": 1,
+        "item": "Prospector's Pick",
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2989,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Bael'dun Digger",
+        "coord": [
+          32.2,
+          48.8
+        ],
+        "objective": 1,
+        "item": "Prospector's Pick",
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2990,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Bael'dun Appraiser",
+        "coord": [
+          31.4,
+          49.8
+        ],
+        "objective": 1,
+        "item": "Prospector's Pick",
+        "sourceAreaID": 215
+      },
+      {
+        "id": 3035,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Flatland Cougar",
+        "coord": [
+          40.8,
+          44
+        ],
+        "objective": 1,
+        "item": "Prospector's Pick",
+        "sourceAreaID": 215
+      },
+      {
+        "id": 3232,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Bristleback Interloper",
+        "coord": [
+          61.6,
+          22.6
+        ],
+        "objective": 1,
+        "item": "Prospector's Pick",
+        "sourceAreaID": 215
+      },
+      {
+        "id": 3566,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Flatland Prowler",
+        "coord": [
+          52.6,
+          12.8
+        ],
+        "objective": 1,
+        "item": "Prospector's Pick",
+        "sourceAreaID": 215
+      }
+    ],
+    "comments": [
+      {
+        "commentID": 41152,
+        "date": "2007-02-23T15:03:33-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 65666,
+        "date": "2007-04-11T17:58:20-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 70688,
+        "date": "2007-04-21T21:05:39-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2766079,
+        "date": "2005-10-27T13:18:50-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2766090,
+        "date": "2005-10-27T13:18:50-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2766113,
+        "date": "2005-10-27T13:18:50-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2766127,
+        "date": "2006-02-14T01:18:50-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2766139,
+        "date": "2006-03-22T13:18:50-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2766153,
+        "date": "2006-03-22T13:18:50-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2766168,
+        "date": "2007-02-14T01:18:50-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2766181,
+        "date": "2007-04-28T01:18:50-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2766195,
+        "date": "2007-04-28T01:18:50-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940864,
+        "date": "2005-03-07T05:14:20-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940865,
+        "date": "2006-10-29T11:24:56-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940866,
+        "date": "2006-10-03T04:18:26-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940867,
+        "date": "2007-02-01T05:40:15-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940868,
+        "date": "2005-01-26T19:49:10-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940869,
+        "date": "2006-02-22T14:21:15-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940872,
+        "date": "2006-02-03T19:00:38-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940873,
+        "date": "2006-02-01T16:04:54-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940875,
+        "date": "2005-02-27T15:36:25-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940876,
+        "date": "2005-04-28T03:55:45-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940877,
+        "date": "2005-07-24T20:20:18-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940878,
+        "date": "2006-05-20T14:31:30-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940879,
+        "date": "2005-03-27T14:09:21-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940880,
+        "date": "2007-03-23T18:03:12-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940881,
+        "date": "2005-01-25T08:22:38-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940882,
+        "date": "2006-12-24T22:24:57-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 3150068,
+        "date": "2019-08-27T20:57:14-05:00",
+        "dataTree": 4
+      }
+    ]
+  },
+  {
+    "questID": 747,
+    "url": "https://www.wowhead.com/forever/quest=747",
+    "status": 200,
+    "captured": "2026-10-08",
+    "sha256": "891822d281e4f4b87b16bf9dbafb0a3717c2f6eac19cca393f72cca2cdfea10e",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 2980,
+          "name": "Grull Hawkwind"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 2980,
+          "name": "Grull Hawkwind"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 4739,
+          "name": "Plainstrider Meat",
+          "quantity": 7
+        },
+        {
+          "entityType": "item",
+          "entityID": 4740,
+          "name": "Plainstrider Feather",
+          "quantity": 7
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "id": 2980,
+        "type": 1,
+        "point": "start",
+        "name": "Grull Hawkwind",
+        "coord": [
+          44.8,
+          77.2
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2980,
+        "type": 1,
+        "point": "end",
+        "name": "Grull Hawkwind",
+        "coord": [
+          44.8,
+          77.2
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2955,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Plainstrider",
+        "coord": [
+          46.2,
+          77.8
+        ],
+        "objective": 1,
+        "item": "Plainstrider Feather",
+        "sourceAreaID": 215
+      }
+    ],
+    "comments": [
+      {
+        "commentID": 2940884,
+        "date": "2006-01-02T20:23:37-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 3152916,
+        "date": "2019-09-07T01:40:48-05:00",
+        "dataTree": 4
+      }
+    ]
+  },
+  {
+    "questID": 750,
+    "url": "https://www.wowhead.com/forever/quest=750",
+    "status": 200,
+    "captured": "2026-10-08",
+    "sha256": "8d552415ca563ec9515de00834d015715f0c893623ec0fac02d962eae3d4ce13",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 2980,
+          "name": "Grull Hawkwind"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 2980,
+          "name": "Grull Hawkwind"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 4742,
+          "name": "Mountain Cougar Pelt",
+          "quantity": 10
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "id": 2980,
+        "type": 1,
+        "point": "start",
+        "name": "Grull Hawkwind",
+        "coord": [
+          44.8,
+          77.2
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2980,
+        "type": 1,
+        "point": "end",
+        "name": "Grull Hawkwind",
+        "coord": [
+          44.8,
+          77.2
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2961,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Mountain Cougar",
+        "coord": [
+          43.6,
+          90.4
+        ],
+        "objective": 0,
+        "item": "Mountain Cougar Pelt",
+        "sourceAreaID": 215
+      }
+    ],
+    "comments": [
+      {
+        "commentID": 33382,
+        "date": "2007-02-10T00:21:24-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 71651,
+        "date": "2007-04-23T14:07:02-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2776978,
+        "date": "2006-03-24T05:19:52-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2776987,
+        "date": "2007-04-20T18:46:16-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940897,
+        "date": "2006-03-22T00:34:45-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940898,
+        "date": "2006-12-17T03:30:59-06:00",
+        "dataTree": 1
+      }
+    ]
+  },
+  {
+    "questID": 758,
+    "url": "https://www.wowhead.com/forever/quest=758",
+    "status": 200,
+    "captured": "2026-10-08",
+    "sha256": "1c6c2f6914b82ff9409e095a7cb92d3b12e7113b761637d00234bdbdd0721916",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 2948,
+          "name": "Mull Thunderhorn"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 2948,
+          "name": "Mull Thunderhorn"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "id": 2948,
+        "type": 1,
+        "point": "start",
+        "name": "Mull Thunderhorn",
+        "coord": [
+          48.4,
+          60.4
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2948,
+        "type": 1,
+        "point": "end",
+        "name": "Mull Thunderhorn",
+        "coord": [
+          48.4,
+          60.4
+        ],
+        "sourceAreaID": 215
+      }
+    ],
+    "comments": [
+      {
+        "commentID": 49719,
+        "date": "2007-03-11T19:19:55-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 81066,
+        "date": "2007-05-10T19:21:02-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2759737,
+        "date": "2007-01-16T17:38:55-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940937,
+        "date": "2005-09-20T02:34:36-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940939,
+        "date": "2005-04-28T02:39:38-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940940,
+        "date": "2005-04-07T02:33:47-05:00",
+        "dataTree": 1
+      }
+    ]
+  },
+  {
+    "questID": 759,
+    "url": "https://www.wowhead.com/forever/quest=759",
+    "status": 200,
+    "captured": "2026-10-08",
+    "sha256": "f1a373217e8e83cbdb2dbcebd607e00468592aa01702e7e32a1d0c6ba70f01a2",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 2948,
+          "name": "Mull Thunderhorn"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 2948,
+          "name": "Mull Thunderhorn"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 4803,
+          "name": "Prairie Alpha Tooth",
+          "quantity": 8
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "id": 2948,
+        "type": 1,
+        "point": "start",
+        "name": "Mull Thunderhorn",
+        "coord": [
+          48.4,
+          60.4
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2948,
+        "type": 1,
+        "point": "end",
+        "name": "Mull Thunderhorn",
+        "coord": [
+          48.4,
+          60.4
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2960,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Prairie Wolf Alpha",
+        "coord": [
+          61.2,
+          66.5
+        ],
+        "objective": 0,
+        "item": "Prairie Alpha Tooth",
+        "sourceAreaID": 215
+      }
+    ],
+    "comments": [
+      {
+        "commentID": 81072,
+        "date": "2007-05-10T19:26:47-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2782428,
+        "date": "2005-11-13T07:48:20-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2782463,
+        "date": "2006-01-25T07:48:20-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2782476,
+        "date": "2006-03-02T19:48:20-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2782488,
+        "date": "2006-04-08T07:48:20-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2782499,
+        "date": "2006-06-20T07:48:20-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2782522,
+        "date": "2006-07-26T19:48:20-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2782533,
+        "date": "2006-07-26T19:48:20-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2782544,
+        "date": "2006-07-26T19:48:20-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2782564,
+        "date": "2006-09-01T07:48:20-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2782577,
+        "date": "2006-10-07T19:48:20-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2782586,
+        "date": "2006-10-07T19:48:20-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2782598,
+        "date": "2006-10-07T19:48:20-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2782612,
+        "date": "2006-12-19T19:48:20-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940941,
+        "date": "2007-01-17T16:51:46-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940943,
+        "date": "2007-04-21T03:44:14-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940944,
+        "date": "2005-07-25T03:52:13-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940946,
+        "date": "2006-06-01T22:22:25-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940948,
+        "date": "2007-02-18T09:06:37-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940949,
+        "date": "2005-12-01T04:37:28-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940950,
+        "date": "2006-03-12T22:13:04-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 3150147,
+        "date": "2019-08-28T08:34:59-05:00",
+        "dataTree": 4
+      }
+    ]
+  },
+  {
+    "questID": 760,
+    "url": "https://www.wowhead.com/forever/quest=760",
+    "status": 200,
+    "captured": "2026-10-08",
+    "sha256": "0199cf5c912e558eebcee3330e98e9cd4254f9712695fbfc102a878edc67497f",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 2948,
+          "name": "Mull Thunderhorn"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 2948,
+          "name": "Mull Thunderhorn"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "id": 2948,
+        "type": 1,
+        "point": "start",
+        "name": "Mull Thunderhorn",
+        "coord": [
+          48.4,
+          60.4
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2948,
+        "type": 1,
+        "point": "end",
+        "name": "Mull Thunderhorn",
+        "coord": [
+          48.4,
+          60.4
+        ],
+        "sourceAreaID": 215
+      }
+    ],
+    "comments": [
+      {
+        "commentID": 29307,
+        "date": "2007-02-02T06:20:19-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 81068,
+        "date": "2007-05-10T19:22:39-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2753643,
+        "date": "2006-05-20T07:36:39-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2753656,
+        "date": "2006-05-20T07:36:39-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2753666,
+        "date": "2006-09-06T19:36:39-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2753681,
+        "date": "2007-04-13T19:36:39-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2753707,
+        "date": "2007-05-20T07:36:39-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2753716,
+        "date": "2007-05-20T07:36:39-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940951,
+        "date": "2006-12-16T03:26:18-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2940953,
+        "date": "2006-04-09T23:36:20-05:00",
+        "dataTree": 1
+      }
+    ]
+  },
+  {
+    "questID": 780,
+    "url": "https://www.wowhead.com/forever/quest=780",
+    "status": 200,
+    "captured": "2026-10-08",
+    "sha256": "cf4ad830dfd25aceaf93c5c9fa2e4143d3d0377ffa08c811949e5b8ffb499e2b",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 2980,
+          "name": "Grull Hawkwind"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 2980,
+          "name": "Grull Hawkwind"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 4848,
+          "name": "Battleboar Snout",
+          "quantity": 8
+        },
+        {
+          "entityType": "item",
+          "entityID": 4849,
+          "name": "Battleboar Flank",
+          "quantity": 8
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {
+      "previousQuest": 750
+    },
+    "mapper_representatives": [
+      {
+        "id": 2980,
+        "type": 1,
+        "point": "start",
+        "name": "Grull Hawkwind",
+        "coord": [
+          44.8,
+          77.2
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2980,
+        "type": 1,
+        "point": "end",
+        "name": "Grull Hawkwind",
+        "coord": [
+          44.8,
+          77.2
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2954,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Bristleback Battleboar",
+        "coord": [
+          63.4,
+          78.2
+        ],
+        "objective": 1,
+        "item": "Battleboar Flank",
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2966,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Battleboar",
+        "coord": [
+          57.6,
+          85.2
+        ],
+        "objective": 1,
+        "item": "Battleboar Flank",
+        "sourceAreaID": 215
+      }
+    ],
+    "comments": [
+      {
+        "commentID": 30946,
+        "date": "2007-02-05T00:30:11-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2741482,
+        "date": "2005-10-29T07:07:52-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2941187,
+        "date": "2006-03-16T08:49:48-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 3153016,
+        "date": "2019-09-07T09:48:38-05:00",
+        "dataTree": 4
+      }
+    ]
+  },
+  {
+    "questID": 854,
+    "url": "https://www.wowhead.com/forever/quest=854",
+    "status": 200,
+    "captured": "2026-10-08",
+    "sha256": "55935e6ba332a8cc00a37124849a4a7cf13f45a8efebc1b0d5c618bc41aaa7f1",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 3418,
+          "name": "Kirge Sternhorn"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 3429,
+          "name": "Thork"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "id": 3418,
+        "type": 1,
+        "point": "start",
+        "name": "Kirge Sternhorn",
+        "coord": [
+          44.8,
+          58.6
+        ],
+        "sourceAreaID": 17
+      },
+      {
+        "id": 3429,
+        "type": 1,
+        "point": "end",
+        "name": "Thork",
+        "coord": [
+          51.4,
+          30.8
+        ],
+        "sourceAreaID": 17
+      }
+    ],
+    "comments": [
+      {
+        "commentID": 2743345,
+        "date": "2005-10-23T20:58:20-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2743358,
+        "date": "2005-10-23T20:58:20-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2743369,
+        "date": "2005-10-23T20:58:20-05:00",
+        "dataTree": 1
+      }
+    ]
+  },
+  {
+    "questID": 861,
+    "url": "https://www.wowhead.com/forever/quest=861",
+    "status": 200,
+    "captured": "2026-10-08",
+    "sha256": "7497744c328f3aa214fb605115fb753953da02d386321875589f0df4a7025563",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 3052,
+          "name": "Skorn Whitecloud"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 3441,
+          "name": "Melor Stonehoof"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 5203,
+          "name": "Flatland Prowler Claw",
+          "quantity": 4
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "id": 3052,
+        "type": 1,
+        "point": "start",
+        "name": "Skorn Whitecloud",
+        "coord": [
+          46.8,
+          60.2
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 3566,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Flatland Prowler",
+        "coord": [
+          52.6,
+          12.8
+        ],
+        "objective": 0,
+        "item": "Flatland Prowler Claw",
+        "sourceAreaID": 215
+      },
+      {
+        "id": 3441,
+        "type": 1,
+        "point": "end",
+        "name": "Melor Stonehoof",
+        "coord": [
+          61.4,
+          80.6
+        ],
+        "sourceAreaID": 1638
+      }
+    ],
+    "comments": [
+      {
+        "commentID": 71316,
+        "date": "2007-04-22T23:32:05-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2762922,
+        "date": "2005-10-07T21:35:03-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2762937,
+        "date": "2005-10-07T21:35:03-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2762947,
+        "date": "2005-10-07T21:35:03-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2762959,
+        "date": "2005-11-13T09:35:03-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2762971,
+        "date": "2006-03-02T21:35:03-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2762983,
+        "date": "2007-04-08T09:35:03-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2942066,
+        "date": "2005-04-29T06:29:59-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2942067,
+        "date": "2007-01-09T16:07:05-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2942068,
+        "date": "2006-11-15T17:58:04-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2942069,
+        "date": "2007-02-22T01:55:06-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2942070,
+        "date": "2005-12-30T13:24:07-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2942071,
+        "date": "2006-08-17T03:34:49-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2942073,
+        "date": "2006-02-18T09:52:02-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2942074,
+        "date": "2007-05-15T02:53:01-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2942075,
+        "date": "2005-04-23T11:08:25-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2942076,
+        "date": "2006-02-12T00:49:06-06:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 2942077,
+        "date": "2007-03-15T19:49:43-05:00",
+        "dataTree": 1
+      },
+      {
+        "commentID": 3151042,
+        "date": "2019-08-31T14:32:48-05:00",
+        "dataTree": 4
+      },
+      {
+        "commentID": 3151286,
+        "date": "2019-09-01T09:48:37-05:00",
+        "dataTree": 4
+      }
+    ]
+  },
+  {
+    "questID": 96261,
+    "url": "https://www.wowhead.com/forever/quest=96261",
+    "status": 200,
+    "captured": "2026-10-08",
+    "sha256": "1594273b5742e0cc6bc08d750de62fe3e4aec5fb2765a4cae8987ad060593b18",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 259118,
+          "name": "Muln Earthfury"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 259118,
+          "name": "Muln Earthfury"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "entityID": 264082,
+          "name": "Broodmother Valraxx",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "id": 259118,
+        "type": 1,
+        "point": "start",
+        "name": "Muln Earthfury",
+        "coord": [
+          33.4,
+          22.4
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 259118,
+        "type": 1,
+        "point": "end",
+        "name": "Muln Earthfury",
+        "coord": [
+          33.4,
+          22.4
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 264082,
+        "type": 1,
+        "point": "requirement",
+        "name": "Broodmother Valraxx",
+        "coord": [
+          33.6,
+          6.8
+        ],
+        "objective": 264082,
+        "sourceAreaID": 215
+      }
+    ],
+    "comments": []
+  },
+  {
+    "questID": 96294,
+    "url": "https://www.wowhead.com/forever/quest=96294",
+    "status": 200,
+    "captured": "2026-10-08",
+    "sha256": "876d101187b741644cef670b80bdae27ac47a28b43466b2680c54e7436cab440",
+    "relations": {
+      "starts": [],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 259118,
+          "name": "Muln Earthfury"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 273659,
+          "name": "Bloody Parchment",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "id": 259118,
+        "type": 1,
+        "point": "end",
+        "name": "Muln Earthfury",
+        "coord": [
+          33.4,
+          22.4
+        ],
+        "sourceAreaID": 215
+      }
+    ],
+    "comments": []
+  },
+  {
+    "questID": 99079,
+    "url": "https://www.wowhead.com/forever/quest=99079",
+    "status": 200,
+    "captured": "2026-10-08",
+    "sha256": "516b0bcce0e8bcc79b530fd90a11ed5b6b2ecb9157acc36328fc9c84ad4b65a4",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 3222,
+          "name": "Brave Wildrunner"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 275789,
+          "name": "Malah Longwind"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "id": 3222,
+        "type": 1,
+        "point": "start",
+        "name": "Brave Wildrunner",
+        "coord": [
+          46.6,
+          63
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 275789,
+        "type": 1,
+        "point": "end",
+        "name": "Malah Longwind",
+        "coord": [
+          57.6,
+          63.2
+        ],
+        "sourceAreaID": 215
+      }
+    ],
+    "comments": []
+  },
+  {
+    "questID": 99080,
+    "url": "https://www.wowhead.com/forever/quest=99080",
+    "status": 200,
+    "captured": "2026-10-08",
+    "sha256": "382b934d289af78ca669fc08bed19fa1793033ddb0ddfb269981fb87780f0979",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 2993,
+          "name": "Baine Bloodhoof"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 2993,
+          "name": "Baine Bloodhoof"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "entityID": 2967,
+          "name": "Galak Centaur",
+          "quantity": 6
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2968,
+          "name": "Galak Outrunner",
+          "quantity": 4
+        },
+        {
+          "entityType": "item",
+          "entityID": 286075,
+          "name": "Herak's Head",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {
+      "previousQuest": 99101
+    },
+    "mapper_representatives": [
+      {
+        "id": 2993,
+        "type": 1,
+        "point": "start",
+        "name": "Baine Bloodhoof",
+        "coord": [
+          47.4,
+          60.2
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2993,
+        "type": 1,
+        "point": "end",
+        "name": "Baine Bloodhoof",
+        "coord": [
+          47.4,
+          60.2
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2967,
+        "type": 1,
+        "point": "requirement",
+        "name": "Galak Centaur",
+        "coord": [
+          59.6,
+          60.2
+        ],
+        "objective": 2967,
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2968,
+        "type": 1,
+        "point": "requirement",
+        "name": "Galak Outrunner",
+        "coord": [
+          61,
+          62.1
+        ],
+        "objective": 2968,
+        "sourceAreaID": 215
+      },
+      {
+        "id": 275767,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Herak the Pillager",
+        "coord": [
+          60.4,
+          59.8
+        ],
+        "objective": 2,
+        "item": "Herak's Head",
+        "sourceAreaID": 215
+      }
+    ],
+    "comments": []
+  },
+  {
+    "questID": 99081,
+    "url": "https://www.wowhead.com/forever/quest=99081",
+    "status": 200,
+    "captured": "2026-10-08",
+    "sha256": "c12ffa4c40e64b11a281907e602df0ee9ed868e9dc17d032e998faa5b69373ce",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 275789,
+          "name": "Malah Longwind"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 3222,
+          "name": "Brave Wildrunner"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 286104,
+          "name": "Longwalker Malah's Report",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {
+      "previousQuest": 99079
+    },
+    "mapper_representatives": [
+      {
+        "id": 275789,
+        "type": 1,
+        "point": "start",
+        "name": "Malah Longwind",
+        "coord": [
+          57.6,
+          63.2
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 3222,
+        "type": 1,
+        "point": "end",
+        "name": "Brave Wildrunner",
+        "coord": [
+          46.6,
+          63
+        ],
+        "sourceAreaID": 215
+      }
+    ],
+    "comments": []
+  },
+  {
+    "questID": 99082,
+    "url": "https://www.wowhead.com/forever/quest=99082",
+    "status": 200,
+    "captured": "2026-10-08",
+    "sha256": "90a631482b18ff69253e63d72aa50d39ee7c2a05b9a6974244dba440d1b690c5",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 2993,
+          "name": "Baine Bloodhoof"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 3057,
+          "name": "Cairne Bloodhoof"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_fields": {
+      "previousQuest": 99080
+    },
+    "mapper_representatives": [
+      {
+        "id": 2993,
+        "type": 1,
+        "point": "start",
+        "name": "Baine Bloodhoof",
+        "coord": [
+          47.4,
+          60.2
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 3057,
+        "type": 1,
+        "point": "end",
+        "name": "Cairne Bloodhoof",
+        "coord": [
+          59.8,
+          51.6
+        ],
+        "sourceAreaID": 1638
+      }
+    ],
+    "comments": []
+  },
+  {
+    "questID": 99101,
+    "url": "https://www.wowhead.com/forever/quest=99101",
+    "status": 200,
+    "captured": "2026-10-08",
+    "sha256": "3170464de87c9be477497c4264f06d01cb6dc4930114bd203d0deb7fd6976764",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 3222,
+          "name": "Brave Wildrunner"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 2993,
+          "name": "Baine Bloodhoof"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 286104,
+          "name": "Longwalker Malah's Report",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_fields": {
+      "previousQuest": 99081
+    },
+    "mapper_representatives": [
+      {
+        "id": 3222,
+        "type": 1,
+        "point": "start",
+        "name": "Brave Wildrunner",
+        "coord": [
+          46.6,
+          63
+        ],
+        "sourceAreaID": 215
+      },
+      {
+        "id": 2993,
+        "type": 1,
+        "point": "end",
+        "name": "Baine Bloodhoof",
+        "coord": [
+          47.4,
+          60.2
+        ],
+        "sourceAreaID": 215
+      }
+    ],
+    "comments": []
+  }
+]

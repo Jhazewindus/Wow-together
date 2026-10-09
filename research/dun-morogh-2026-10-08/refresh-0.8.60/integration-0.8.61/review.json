@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-08",
+  "main": "09155ca265278572649a3529b8ce7ea1b4eb8431",
+  "merge": "04676466c9de74ffbe097832ab86508e29d66a90",
+  "version": "0.8.61",
+  "integration": "Inherited main session-checkpoint/dungeon-player changes; no guide-agent runtime edits or release publication.",
+  "merge_resolution": "Retain guide branch evidence docs and researched boar coordinates in older same-file test; main runtime/tests preserved.",
+  "quest_data_changed": false,
+  "scope": {
+    "standard_actions": [
+      151,
+      30
+    ],
+    "dwarf_actions": [
+      151,
+      30
+    ],
+    "source_gaps": {
+      "pickup": 1,
+      "objective": 1,
+      "handin": 0,
+      "unverified_pickup": 1
+    }
+  },
+  "validation": {
+    "focused_tests": {
+      "tests": 92,
+      "passed": 92,
+      "modules": [
+        "test_dun_morogh_coverage",
+        "test_0844",
+        "test_zone_coverage",
+        "test_0819",
+        "test_0861",
+        "test_dungeon_player"
+      ]
+    },
+    "lua51_files_compiled": 86,
+    "interface": 16001,
+    "scoped_audit": {
+      "guides": 2,
+      "source_points": 164,
+      "passed": true
+    },
+    "full_suite": {
+      "tests": 1530,
+      "passed": 1529,
+      "failed": 1,
+      "seconds": 470.143,
+      "failure": "test_0829.PackedDataTests.test_all_source_fields_match_pre_packing_fingerprints: catalogue",
+      "baseline": "Known historical failure; main catalogue unchanged from prior baseline and fingerprint fixture unchanged."
+    },
+    "global_audit": {
+      "guides": 152,
+      "source_points": 11823,
+      "gap_free_sections": 33,
+      "passed": true,
+      "identical_to_generated_audit": true
+    },
+    "native_beta": "Not run; player checklist required",
+    "stage_sequence_and_facts_identical_across_main_integration": [
+      "flow-0.8.61.json",
+      "dwarf-flow-0.8.61.json"
+    ]
+  },
+  "route_review": {
+    "passes_optimization_guard": false,
+    "candidate_valid_states": 16,
+    "baseline_valid_under_corrected_facts": true,
+    "actions_and_endpoints_preserved": true,
+    "metrics": "Unchanged from parent follow-up; strict guards still require review."
+  },
+  "player_checklist": "README.md"
+}

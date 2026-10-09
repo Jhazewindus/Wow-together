@@ -1,0 +1,245 @@
+[
+  {
+    "questID": 4986,
+    "kind": "supplied-delivery",
+    "itemID": 12663,
+    "quantity": 1,
+    "quest_tier": "converted-baseline",
+    "source_start": {
+      "1": {
+        "1": 10739
+      }
+    },
+    "source_return": {
+      "1": {
+        "1": 4217
+      }
+    },
+    "native_build_verified": false,
+    "additional_requirement": null
+  },
+  {
+    "questID": 4987,
+    "kind": "supplied-delivery",
+    "itemID": 12663,
+    "quantity": 1,
+    "quest_tier": "converted-baseline",
+    "source_start": {
+      "1": {
+        "1": 10739
+      }
+    },
+    "source_return": {
+      "1": {
+        "1": 5770
+      }
+    },
+    "native_build_verified": false,
+    "additional_requirement": null
+  },
+  {
+    "questID": 5223,
+    "kind": "supplied-delivery",
+    "itemID": 13192,
+    "quantity": 1,
+    "quest_tier": "converted-baseline",
+    "source_start": {
+      "1": null,
+      "2": {
+        "1": 176393
+      }
+    },
+    "source_return": {
+      "1": {
+        "1": 11053
+      }
+    },
+    "native_build_verified": false,
+    "additional_requirement": null
+  },
+  {
+    "questID": 5232,
+    "kind": "supplied-delivery",
+    "itemID": 13191,
+    "quantity": 1,
+    "quest_tier": "converted-baseline",
+    "source_start": {
+      "1": null,
+      "2": {
+        "1": 177289
+      }
+    },
+    "source_return": {
+      "1": {
+        "1": 11055
+      }
+    },
+    "native_build_verified": false,
+    "additional_requirement": null
+  },
+  {
+    "questID": 5234,
+    "kind": "supplied-delivery",
+    "itemID": 13192,
+    "quantity": 1,
+    "quest_tier": "converted-baseline",
+    "source_start": {
+      "1": null,
+      "2": {
+        "1": 176393
+      }
+    },
+    "source_return": {
+      "1": {
+        "1": 11055
+      }
+    },
+    "native_build_verified": false,
+    "additional_requirement": null
+  },
+  {
+    "questID": 5236,
+    "kind": "supplied-delivery",
+    "itemID": 13193,
+    "quantity": 1,
+    "quest_tier": "converted-baseline",
+    "source_start": {
+      "1": null,
+      "2": {
+        "1": 176392
+      }
+    },
+    "source_return": {
+      "1": {
+        "1": 11055
+      }
+    },
+    "native_build_verified": false,
+    "additional_requirement": null
+  },
+  {
+    "questID": 5465,
+    "kind": "supplied-delivery",
+    "itemID": 13624,
+    "quantity": 1,
+    "quest_tier": "converted-baseline",
+    "source_start": {
+      "1": {
+        "1": 11036
+      }
+    },
+    "source_return": {
+      "1": {
+        "1": 11286
+      }
+    },
+    "native_build_verified": false,
+    "additional_requirement": null
+  },
+  {
+    "questID": 5514,
+    "kind": "supplied-delivery",
+    "itemID": 14628,
+    "quantity": 1,
+    "quest_tier": "converted-baseline",
+    "source_start": {
+      "1": {
+        "1": 11057
+      }
+    },
+    "source_return": {
+      "1": {
+        "1": 5411
+      }
+    },
+    "native_build_verified": false,
+    "additional_requirement": {
+      "requiredGold": 15,
+      "source": "Published objective factual amount"
+    }
+  },
+  {
+    "questID": 5538,
+    "kind": "supplied-delivery",
+    "itemID": 14628,
+    "quantity": 1,
+    "quest_tier": "converted-baseline",
+    "source_start": {
+      "1": {
+        "1": 11056
+      }
+    },
+    "source_return": {
+      "1": {
+        "1": 5411
+      }
+    },
+    "native_build_verified": false,
+    "additional_requirement": {
+      "requiredGold": 15,
+      "source": "Published objective factual amount"
+    }
+  },
+  {
+    "questID": 5861,
+    "kind": "supplied-delivery",
+    "itemID": 14872,
+    "quantity": 1,
+    "quest_tier": "converted-baseline",
+    "source_start": {
+      "1": {
+        "1": 1855
+      }
+    },
+    "source_return": {
+      "1": {
+        "1": 11872
+      }
+    },
+    "native_build_verified": false,
+    "additional_requirement": null
+  },
+  {
+    "questID": 8416,
+    "kind": "supplied-delivery",
+    "itemID": 20612,
+    "quantity": 1,
+    "quest_tier": "converted-baseline",
+    "source_start": {
+      "1": {
+        "1": 1854
+      }
+    },
+    "source_return": {
+      "1": {
+        "1": 10838
+      }
+    },
+    "native_build_verified": false,
+    "additional_requirement": null
+  },
+  {
+    "questID": 5051,
+    "kind": "stage-facts",
+    "decision": "Actual hand-in is the assembled item only; components remain independent work goals at their existing supported areas, not extra hand-in items. Assembly mechanism/work area remains unknown; do not substitute the receiver or force all material stages complete.",
+    "tier": "converted-baseline",
+    "native_build_verified": false,
+    "work_preserved": true
+  },
+  {
+    "questID": 5149,
+    "kind": "stage-facts",
+    "decision": "Actual hand-in is the assembled item only; components remain independent work goals at their existing supported areas, not extra hand-in items. Assembly mechanism/work area remains unknown; do not substitute the receiver or force all material stages complete.",
+    "tier": "converted-baseline",
+    "native_build_verified": false,
+    "work_preserved": true
+  },
+  {
+    "questID": 5464,
+    "kind": "stage-facts",
+    "decision": "Supplied Soulbound Keepsake delivery to Leonid: map known conversation work at the existing return point. Keep missing Scholomance object pickup explicit; no outdoor or dungeon coordinate invented and no new item count introduced.",
+    "tier": "converted-baseline",
+    "native_build_verified": false,
+    "work_preserved": true
+  }
+]

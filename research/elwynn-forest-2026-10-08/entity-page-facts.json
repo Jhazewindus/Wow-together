@@ -1,0 +1,6988 @@
+[
+  {
+    "kind": "item",
+    "entityID": 4536,
+    "url": "https://www.wowhead.com/forever/item=4536",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "1031c8098aad6e7b681a26b494bcb307f7a7e8dd69c92b4e498e952fc398c31c",
+    "facts": {
+      "name": "Shiny Red Apple",
+      "locations": [
+        {
+          "mapID": 1426,
+          "x": 0.72,
+          "y": 0.58,
+          "sourceAreaID": 1,
+          "sourceZone": "Dun Morogh"
+        },
+        {
+          "mapID": 1426,
+          "x": 0.35200000000000004,
+          "y": 0.40399999999999997,
+          "sourceAreaID": 1,
+          "sourceZone": "Dun Morogh"
+        },
+        {
+          "mapID": 1426,
+          "x": 0.466,
+          "y": 0.5379999999999999,
+          "sourceAreaID": 1,
+          "sourceZone": "Dun Morogh"
+        },
+        {
+          "mapID": 1426,
+          "x": 0.532,
+          "y": 0.35200000000000004,
+          "sourceAreaID": 1,
+          "sourceZone": "Dun Morogh"
+        },
+        {
+          "mapID": 1426,
+          "x": 0.674,
+          "y": 0.534,
+          "sourceAreaID": 1,
+          "sourceZone": "Dun Morogh"
+        },
+        {
+          "mapID": 1431,
+          "x": 0.252,
+          "y": 0.264,
+          "sourceAreaID": 10,
+          "sourceZone": "Duskwood"
+        },
+        {
+          "mapID": 1437,
+          "x": 0.484,
+          "y": 0.5660000000000001,
+          "sourceAreaID": 11,
+          "sourceZone": "Wetlands"
+        },
+        {
+          "mapID": 1437,
+          "x": 0.382,
+          "y": 0.51,
+          "sourceAreaID": 11,
+          "sourceZone": "Wetlands"
+        },
+        {
+          "mapID": 1437,
+          "x": 0.5379999999999999,
+          "y": 0.46399999999999997,
+          "sourceAreaID": 11,
+          "sourceZone": "Wetlands"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.426,
+          "y": 0.6559999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.332,
+          "y": 0.506,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.264,
+          "y": 0.838,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.32,
+          "y": 0.49200000000000005,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.608,
+          "y": 0.5579999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1411,
+          "x": 0.456,
+          "y": 0.128,
+          "sourceAreaID": 14,
+          "sourceZone": "Durotar"
+        },
+        {
+          "mapID": 1445,
+          "x": 0.682,
+          "y": 0.474,
+          "sourceAreaID": 15,
+          "sourceZone": "Dustwallow Marsh"
+        },
+        {
+          "mapID": 1413,
+          "x": 0.496,
+          "y": 0.294,
+          "sourceAreaID": 17,
+          "sourceZone": "The Barrens"
+        },
+        {
+          "mapID": 1434,
+          "x": 0.314,
+          "y": 0.29600000000000004,
+          "sourceAreaID": 33,
+          "sourceZone": "Stranglethorn Vale"
+        },
+        {
+          "mapID": 1416,
+          "x": 0.20800000000000002,
+          "y": 0.746,
+          "sourceAreaID": 36,
+          "sourceZone": "Alterac Mountains"
+        },
+        {
+          "mapID": 1432,
+          "x": 0.32799999999999996,
+          "y": 0.516,
+          "sourceAreaID": 38,
+          "sourceZone": "Loch Modan"
+        },
+        {
+          "mapID": 1432,
+          "x": 0.35200000000000004,
+          "y": 0.46799999999999997,
+          "sourceAreaID": 38,
+          "sourceZone": "Loch Modan"
+        },
+        {
+          "mapID": 1432,
+          "x": 0.282,
+          "y": 0.652,
+          "sourceAreaID": 38,
+          "sourceZone": "Loch Modan"
+        },
+        {
+          "mapID": 1432,
+          "x": 0.262,
+          "y": 0.188,
+          "sourceAreaID": 38,
+          "sourceZone": "Loch Modan"
+        },
+        {
+          "mapID": 1432,
+          "x": 0.44,
+          "y": 0.128,
+          "sourceAreaID": 38,
+          "sourceZone": "Loch Modan"
+        },
+        {
+          "mapID": 1432,
+          "x": 0.278,
+          "y": 0.51,
+          "sourceAreaID": 38,
+          "sourceZone": "Loch Modan"
+        },
+        {
+          "mapID": 1432,
+          "x": 0.22399999999999998,
+          "y": 0.7020000000000001,
+          "sourceAreaID": 38,
+          "sourceZone": "Loch Modan"
+        },
+        {
+          "mapID": 1432,
+          "x": 0.312,
+          "y": 0.7040000000000001,
+          "sourceAreaID": 38,
+          "sourceZone": "Loch Modan"
+        },
+        {
+          "mapID": 1432,
+          "x": 0.408,
+          "y": 0.38799999999999996,
+          "sourceAreaID": 38,
+          "sourceZone": "Loch Modan"
+        },
+        {
+          "mapID": 1432,
+          "x": 0.59,
+          "y": 0.154,
+          "sourceAreaID": 38,
+          "sourceZone": "Loch Modan"
+        },
+        {
+          "mapID": 1432,
+          "x": 0.636,
+          "y": 0.486,
+          "sourceAreaID": 38,
+          "sourceZone": "Loch Modan"
+        },
+        {
+          "mapID": 1432,
+          "x": 0.652,
+          "y": 0.652,
+          "sourceAreaID": 38,
+          "sourceZone": "Loch Modan"
+        },
+        {
+          "mapID": 1436,
+          "x": 0.522,
+          "y": 0.528,
+          "sourceAreaID": 40,
+          "sourceZone": "Westfall"
+        },
+        {
+          "mapID": 1433,
+          "x": 0.266,
+          "y": 0.434,
+          "sourceAreaID": 44,
+          "sourceZone": "Redridge Mountains"
+        },
+        {
+          "mapID": 1425,
+          "x": 0.778,
+          "y": 0.78,
+          "sourceAreaID": 47,
+          "sourceZone": "The Hinterlands"
+        },
+        {
+          "mapID": 1420,
+          "x": 0.608,
+          "y": 0.53,
+          "sourceAreaID": 85,
+          "sourceZone": "Tirisfal Glades"
+        },
+        {
+          "mapID": 1420,
+          "x": 0.62,
+          "y": 0.638,
+          "sourceAreaID": 85,
+          "sourceZone": "Tirisfal Glades"
+        },
+        {
+          "mapID": 1420,
+          "x": 0.59,
+          "y": 0.514,
+          "sourceAreaID": 85,
+          "sourceZone": "Tirisfal Glades"
+        },
+        {
+          "mapID": 1421,
+          "x": 0.452,
+          "y": 0.41600000000000004,
+          "sourceAreaID": 130,
+          "sourceZone": "Silverpine Forest"
+        },
+        {
+          "mapID": 1421,
+          "x": 0.47600000000000003,
+          "y": 0.396,
+          "sourceAreaID": 130,
+          "sourceZone": "Silverpine Forest"
+        },
+        {
+          "mapID": 1421,
+          "x": 0.45,
+          "y": 0.6779999999999999,
+          "sourceAreaID": 130,
+          "sourceZone": "Silverpine Forest"
+        },
+        {
+          "mapID": 1421,
+          "x": 0.45,
+          "y": 0.21,
+          "sourceAreaID": 130,
+          "sourceZone": "Silverpine Forest"
+        },
+        {
+          "mapID": 1421,
+          "x": 0.484,
+          "y": 0.706,
+          "sourceAreaID": 130,
+          "sourceZone": "Silverpine Forest"
+        },
+        {
+          "mapID": 1421,
+          "x": 0.5379999999999999,
+          "y": 0.6759999999999999,
+          "sourceAreaID": 130,
+          "sourceZone": "Silverpine Forest"
+        },
+        {
+          "mapID": 1423,
+          "x": 0.9520000000000001,
+          "y": 0.7879999999999999,
+          "sourceAreaID": 139,
+          "sourceZone": "Eastern Plaguelands"
+        },
+        {
+          "mapID": 1438,
+          "x": 0.5720000000000001,
+          "y": 0.612,
+          "sourceAreaID": 141,
+          "sourceZone": "Teldrassil"
+        },
+        {
+          "mapID": 1439,
+          "x": 0.37,
+          "y": 0.434,
+          "sourceAreaID": 148,
+          "sourceZone": "Darkshore"
+        },
+        {
+          "mapID": 1412,
+          "x": 0.45399999999999996,
+          "y": 0.618,
+          "sourceAreaID": 215,
+          "sourceZone": "Mulgore"
+        },
+        {
+          "mapID": 1412,
+          "x": 0.462,
+          "y": 0.5820000000000001,
+          "sourceAreaID": 215,
+          "sourceZone": "Mulgore"
+        },
+        {
+          "mapID": 1424,
+          "x": 0.49,
+          "y": 0.55,
+          "sourceAreaID": 267,
+          "sourceZone": "Hillsbrad Foothills"
+        },
+        {
+          "mapID": 1440,
+          "x": 0.366,
+          "y": 0.498,
+          "sourceAreaID": 331,
+          "sourceZone": "Ashenvale"
+        },
+        {
+          "mapID": 1444,
+          "x": 0.31,
+          "y": 0.434,
+          "sourceAreaID": 357,
+          "sourceZone": "Feralas"
+        },
+        {
+          "mapID": 1441,
+          "x": 0.7340000000000001,
+          "y": 0.636,
+          "sourceAreaID": 400,
+          "sourceZone": "Thousand Needles"
+        },
+        {
+          "mapID": 1443,
+          "x": 0.262,
+          "y": 0.698,
+          "sourceAreaID": 405,
+          "sourceZone": "Desolace"
+        },
+        {
+          "mapID": 1458,
+          "x": 0.648,
+          "y": 0.494,
+          "sourceAreaID": 1497,
+          "sourceZone": "Undercity"
+        },
+        {
+          "mapID": 1458,
+          "x": 0.642,
+          "y": 0.506,
+          "sourceAreaID": 1497,
+          "sourceZone": "Undercity"
+        },
+        {
+          "mapID": 1453,
+          "x": 0.754,
+          "y": 0.37200000000000005,
+          "sourceAreaID": 1519,
+          "sourceZone": "Stormwind City"
+        },
+        {
+          "mapID": 1453,
+          "x": 0.784,
+          "y": 0.53,
+          "sourceAreaID": 1519,
+          "sourceZone": "Stormwind City"
+        },
+        {
+          "mapID": 1455,
+          "x": 0.6,
+          "y": 0.37799999999999995,
+          "sourceAreaID": 1537,
+          "sourceZone": "Ironforge"
+        },
+        {
+          "mapID": 1455,
+          "x": 0.588,
+          "y": 0.37200000000000005,
+          "sourceAreaID": 1537,
+          "sourceZone": "Ironforge"
+        },
+        {
+          "mapID": 1454,
+          "x": 0.57,
+          "y": 0.58,
+          "sourceAreaID": 1637,
+          "sourceZone": "Orgrimmar"
+        },
+        {
+          "mapID": 1454,
+          "x": 0.608,
+          "y": 0.456,
+          "sourceAreaID": 1637,
+          "sourceZone": "Orgrimmar"
+        },
+        {
+          "mapID": 1454,
+          "x": 0.604,
+          "y": 0.52,
+          "sourceAreaID": 1637,
+          "sourceZone": "Orgrimmar"
+        },
+        {
+          "mapID": 1454,
+          "x": 0.562,
+          "y": 0.37200000000000005,
+          "sourceAreaID": 1637,
+          "sourceZone": "Orgrimmar"
+        },
+        {
+          "mapID": 1456,
+          "x": 0.51,
+          "y": 0.522,
+          "sourceAreaID": 1638,
+          "sourceZone": "Thunder Bluff"
+        },
+        {
+          "mapID": 1457,
+          "x": 0.484,
+          "y": 0.214,
+          "sourceAreaID": 1657,
+          "sourceZone": "Darnassus"
+        },
+        {
+          "mapID": 2548,
+          "x": 0.634,
+          "y": 0.826,
+          "sourceAreaID": 16591,
+          "sourceZone": "Riverglades"
+        },
+        {
+          "mapID": 2521,
+          "x": 0.606,
+          "y": 0.726,
+          "sourceAreaID": 16593,
+          "sourceZone": "Zephras Isle"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 6,
+          "name": "Kobold Vermin",
+          "action": "loot",
+          "minlevel": 1,
+          "maxlevel": 2,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 30,
+          "name": "Forest Spider",
+          "action": "loot",
+          "minlevel": 5,
+          "maxlevel": 6,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 38,
+          "name": "Defias Thug",
+          "action": "loot",
+          "minlevel": 3,
+          "maxlevel": 4,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 40,
+          "name": "Kobold Miner",
+          "action": "loot",
+          "minlevel": 6,
+          "maxlevel": 7,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 43,
+          "name": "Mine Spider",
+          "action": "loot",
+          "minlevel": 7,
+          "maxlevel": 9,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 46,
+          "name": "Murloc Forager",
+          "action": "loot",
+          "minlevel": 9,
+          "maxlevel": 10,
+          "areas": [
+            12,
+            10
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 60,
+          "name": "Ruklar the Trapper",
+          "action": "loot",
+          "minlevel": 8,
+          "maxlevel": 8,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 69,
+          "name": "Timber Wolf",
+          "action": "loot",
+          "minlevel": 2,
+          "maxlevel": 2,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 79,
+          "name": "Narg the Taskmaster",
+          "action": "loot",
+          "minlevel": 10,
+          "maxlevel": 10,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 80,
+          "name": "Kobold Laborer",
+          "action": "loot",
+          "minlevel": 3,
+          "maxlevel": 4,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 94,
+          "name": "Defias Cutpurse",
+          "action": "loot",
+          "minlevel": 5,
+          "maxlevel": 6,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 95,
+          "name": "Defias Smuggler",
+          "action": "loot",
+          "minlevel": 11,
+          "maxlevel": 12,
+          "areas": [
+            40
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 97,
+          "name": "Riverpaw Runt",
+          "action": "loot",
+          "minlevel": 8,
+          "maxlevel": 9,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 113,
+          "name": "Stonetusk Boar",
+          "action": "loot",
+          "minlevel": 5,
+          "maxlevel": 6,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 116,
+          "name": "Defias Bandit",
+          "action": "loot",
+          "minlevel": 8,
+          "maxlevel": 9,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 118,
+          "name": "Prowler",
+          "action": "loot",
+          "minlevel": 9,
+          "maxlevel": 10,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 119,
+          "name": "Longsnout",
+          "action": "loot",
+          "minlevel": 10,
+          "maxlevel": 11,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 126,
+          "name": "Murloc Coastrunner",
+          "action": "loot",
+          "minlevel": 12,
+          "maxlevel": 13,
+          "areas": [
+            40,
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 157,
+          "name": "Goretusk",
+          "action": "loot",
+          "minlevel": 14,
+          "maxlevel": 15,
+          "areas": [
+            40
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 199,
+          "name": "Young Fleshripper",
+          "action": "loot",
+          "minlevel": 10,
+          "maxlevel": 11,
+          "areas": [
+            40
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 257,
+          "name": "Kobold Worker",
+          "action": "loot",
+          "minlevel": 3,
+          "maxlevel": 3,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 285,
+          "name": "Murloc",
+          "action": "loot",
+          "minlevel": 6,
+          "maxlevel": 7,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 299,
+          "name": "Young Wolf",
+          "action": "loot",
+          "minlevel": 1,
+          "maxlevel": 1,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 327,
+          "name": "Goldtooth",
+          "action": "loot",
+          "minlevel": 8,
+          "maxlevel": 8,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 330,
+          "name": "Princess",
+          "action": "loot",
+          "minlevel": 9,
+          "maxlevel": 9,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 390,
+          "name": "Porcine Entourage",
+          "action": "loot",
+          "minlevel": 7,
+          "maxlevel": 7,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 448,
+          "name": "Hogger",
+          "action": "loot",
+          "minlevel": 11,
+          "maxlevel": 11,
+          "areas": [
+            12,
+            10,
+            40
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 454,
+          "name": "Young Goretusk",
+          "action": "loot",
+          "minlevel": 12,
+          "maxlevel": 13,
+          "areas": [
+            40
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 471,
+          "name": "Mother Fang",
+          "action": "loot",
+          "minlevel": 7,
+          "maxlevel": 10,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 473,
+          "name": "Morgan the Collector",
+          "action": "loot",
+          "minlevel": 10,
+          "maxlevel": 10,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 474,
+          "name": "Defias Rogue Wizard",
+          "action": "loot",
+          "minlevel": 9,
+          "maxlevel": 10,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 475,
+          "name": "Kobold Tunneler",
+          "action": "loot",
+          "minlevel": 5,
+          "maxlevel": 6,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 476,
+          "name": "Kobold Geomancer",
+          "action": "loot",
+          "minlevel": 7,
+          "maxlevel": 8,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 478,
+          "name": "Riverpaw Outrunner",
+          "action": "loot",
+          "minlevel": 9,
+          "maxlevel": 10,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 480,
+          "name": "Rusty Harvest Golem",
+          "action": "loot",
+          "minlevel": 9,
+          "maxlevel": 10,
+          "areas": [
+            40
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 500,
+          "name": "Riverpaw Scout",
+          "action": "loot",
+          "minlevel": 12,
+          "maxlevel": 13,
+          "areas": [
+            40
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 504,
+          "name": "Defias Trapper",
+          "action": "loot",
+          "minlevel": 12,
+          "maxlevel": 13,
+          "areas": [
+            40
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 524,
+          "name": "Rockhide Boar",
+          "action": "loot",
+          "minlevel": 7,
+          "maxlevel": 8,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 525,
+          "name": "Mangy Wolf",
+          "action": "loot",
+          "minlevel": 5,
+          "maxlevel": 6,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 705,
+          "name": "Ragged Young Wolf",
+          "action": "loot",
+          "minlevel": 1,
+          "maxlevel": 1,
+          "areas": [
+            1
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 706,
+          "name": "Frostmane Troll Whelp",
+          "action": "loot",
+          "minlevel": 3,
+          "maxlevel": 4,
+          "areas": [
+            1
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 724,
+          "name": "Burly Rockjaw Trogg",
+          "action": "loot",
+          "minlevel": 2,
+          "maxlevel": 2,
+          "areas": [
+            1
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 732,
+          "name": "Murloc Lurker",
+          "action": "loot",
+          "minlevel": 9,
+          "maxlevel": 10,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 735,
+          "name": "Murloc Streamrunner",
+          "action": "loot",
+          "minlevel": 6,
+          "maxlevel": 7,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 822,
+          "name": "Young Forest Bear",
+          "action": "loot",
+          "minlevel": 8,
+          "maxlevel": 9,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 834,
+          "name": "Coyote",
+          "action": "loot",
+          "minlevel": 10,
+          "maxlevel": 11,
+          "areas": [
+            40
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 880,
+          "name": "Erlan Drudgemoor",
+          "action": "loot",
+          "minlevel": 8,
+          "maxlevel": 8,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1115,
+          "name": "Rockjaw Skullthumper",
+          "action": "loot",
+          "minlevel": 8,
+          "maxlevel": 9,
+          "areas": [
+            1
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1117,
+          "name": "Rockjaw Bonesnapper",
+          "action": "loot",
+          "minlevel": 9,
+          "maxlevel": 10,
+          "areas": [
+            1
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1123,
+          "name": "Frostmane Headhunter",
+          "action": "loot",
+          "minlevel": 8,
+          "maxlevel": 9,
+          "areas": [
+            1
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1124,
+          "name": "Frostmane Shadowcaster",
+          "action": "loot",
+          "minlevel": 9,
+          "maxlevel": 10,
+          "areas": [
+            1
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1125,
+          "name": "Crag Boar",
+          "action": "loot",
+          "minlevel": 5,
+          "maxlevel": 6,
+          "areas": [
+            1
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1126,
+          "name": "Large Crag Boar",
+          "action": "loot",
+          "minlevel": 6,
+          "maxlevel": 7,
+          "areas": [
+            1
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1127,
+          "name": "Elder Crag Boar",
+          "action": "loot",
+          "minlevel": 7,
+          "maxlevel": 8,
+          "areas": [
+            1
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1128,
+          "name": "Young Black Bear",
+          "action": "loot",
+          "minlevel": 5,
+          "maxlevel": 6,
+          "areas": [
+            1
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1131,
+          "name": "Winter Wolf",
+          "action": "loot",
+          "minlevel": 7,
+          "maxlevel": 8,
+          "areas": [
+            1
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1135,
+          "name": "Wendigo",
+          "action": "loot",
+          "minlevel": 6,
+          "maxlevel": 7,
+          "areas": [
+            1
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1138,
+          "name": "Snow Tracker Wolf",
+          "action": "loot",
+          "minlevel": 6,
+          "maxlevel": 7,
+          "areas": [
+            1
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1161,
+          "name": "Stonesplinter Trogg",
+          "action": "loot",
+          "minlevel": 11,
+          "maxlevel": 12,
+          "areas": [
+            38
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1162,
+          "name": "Stonesplinter Scout",
+          "action": "loot",
+          "minlevel": 11,
+          "maxlevel": 12,
+          "areas": [
+            38
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1172,
+          "name": "Tunnel Rat Vermin",
+          "action": "loot",
+          "minlevel": 10,
+          "maxlevel": 11,
+          "areas": [
+            38
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1174,
+          "name": "Tunnel Rat Geomancer",
+          "action": "loot",
+          "minlevel": 12,
+          "maxlevel": 13,
+          "areas": [
+            38
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1175,
+          "name": "Tunnel Rat Digger",
+          "action": "loot",
+          "minlevel": 12,
+          "maxlevel": 13,
+          "areas": [
+            38
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1190,
+          "name": "Mountain Boar",
+          "action": "loot",
+          "minlevel": 10,
+          "maxlevel": 11,
+          "areas": [
+            38
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1196,
+          "name": "Ice Claw Bear",
+          "action": "loot",
+          "minlevel": 7,
+          "maxlevel": 8,
+          "areas": [
+            1
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1201,
+          "name": "Snow Leopard",
+          "action": "loot",
+          "minlevel": 7,
+          "maxlevel": 8,
+          "areas": [
+            1
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1211,
+          "name": "Leper Gnome",
+          "action": "loot",
+          "minlevel": 8,
+          "maxlevel": 10,
+          "areas": [
+            1
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1397,
+          "name": "Frostmane Seer",
+          "action": "loot",
+          "minlevel": 8,
+          "maxlevel": 9,
+          "areas": [
+            1
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1506,
+          "name": "Scarlet Convert",
+          "action": "loot",
+          "minlevel": 3,
+          "maxlevel": 3,
+          "areas": [
+            85
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1520,
+          "name": "Rattlecage Soldier",
+          "action": "loot",
+          "minlevel": 6,
+          "maxlevel": 7,
+          "areas": [
+            85
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1522,
+          "name": "Darkeye Bonecaster",
+          "action": "loot",
+          "minlevel": 7,
+          "maxlevel": 8,
+          "areas": [
+            85
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1525,
+          "name": "Rotting Dead",
+          "action": "loot",
+          "minlevel": 5,
+          "maxlevel": 6,
+          "areas": [
+            85
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1526,
+          "name": "Ravaged Corpse",
+          "action": "loot",
+          "minlevel": 6,
+          "maxlevel": 7,
+          "areas": [
+            85
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1529,
+          "name": "Bleeding Horror",
+          "action": "loot",
+          "minlevel": 9,
+          "maxlevel": 10,
+          "areas": [
+            85
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1532,
+          "name": "Wandering Spirit",
+          "action": "loot",
+          "minlevel": 10,
+          "maxlevel": 11,
+          "areas": [
+            85
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1534,
+          "name": "Wailing Ancestor",
+          "action": "loot",
+          "minlevel": 9,
+          "maxlevel": 10,
+          "areas": [
+            85
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1535,
+          "name": "Scarlet Warrior",
+          "action": "loot",
+          "minlevel": 6,
+          "maxlevel": 7,
+          "areas": [
+            85
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1536,
+          "name": "Scarlet Missionary",
+          "action": "loot",
+          "minlevel": 7,
+          "maxlevel": 8,
+          "areas": [
+            85
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1543,
+          "name": "Vile Fin Puddlejumper",
+          "action": "loot",
+          "minlevel": 7,
+          "maxlevel": 8,
+          "areas": [
+            85
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1547,
+          "name": "Decrepit Darkhound",
+          "action": "loot",
+          "minlevel": 5,
+          "maxlevel": 6,
+          "areas": [
+            85
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1548,
+          "name": "Cursed Darkhound",
+          "action": "loot",
+          "minlevel": 7,
+          "maxlevel": 8,
+          "areas": [
+            85,
+            1497
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1553,
+          "name": "Greater Duskbat",
+          "action": "loot",
+          "minlevel": 6,
+          "maxlevel": 7,
+          "areas": [
+            85
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1554,
+          "name": "Vampiric Duskbat",
+          "action": "loot",
+          "minlevel": 8,
+          "maxlevel": 9,
+          "areas": [
+            85
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1555,
+          "name": "Vicious Night Web Spider",
+          "action": "loot",
+          "minlevel": 9,
+          "maxlevel": 10,
+          "areas": [
+            85
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1674,
+          "name": "Rot Hide Gnoll",
+          "action": "loot",
+          "minlevel": 6,
+          "maxlevel": 7,
+          "areas": [
+            85
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1922,
+          "name": "Gray Forest Wolf",
+          "action": "loot",
+          "minlevel": 7,
+          "maxlevel": 8,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1934,
+          "name": "Tirisfal Farmer",
+          "action": "loot",
+          "minlevel": 6,
+          "maxlevel": 7,
+          "areas": [
+            85
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1935,
+          "name": "Tirisfal Farmhand",
+          "action": "loot",
+          "minlevel": 5,
+          "maxlevel": 6,
+          "areas": [
+            85
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1936,
+          "name": "Farmer Solliden",
+          "action": "loot",
+          "minlevel": 8,
+          "maxlevel": 8,
+          "areas": [
+            85
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1941,
+          "name": "Rot Hide Graverobber",
+          "action": "loot",
+          "minlevel": 6,
+          "maxlevel": 7,
+          "areas": [
+            85
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1984,
+          "name": "Young Thistle Boar",
+          "action": "loot",
+          "minlevel": 1,
+          "maxlevel": 2,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1985,
+          "name": "Thistle Boar",
+          "action": "loot",
+          "minlevel": 2,
+          "maxlevel": 3,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1986,
+          "name": "Webwood Spider",
+          "action": "loot",
+          "minlevel": 3,
+          "maxlevel": 4,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1993,
+          "name": "Greenpaw",
+          "action": "loot",
+          "minlevel": 10,
+          "maxlevel": 10,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1995,
+          "name": "Strigid Owl",
+          "action": "loot",
+          "minlevel": 5,
+          "maxlevel": 6,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1996,
+          "name": "Strigid Screecher",
+          "action": "loot",
+          "minlevel": 7,
+          "maxlevel": 8,
+          "areas": [
+            141,
+            1657
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1997,
+          "name": "Strigid Hunter",
+          "action": "loot",
+          "minlevel": 8,
+          "maxlevel": 9,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1998,
+          "name": "Webwood Lurker",
+          "action": "loot",
+          "minlevel": 5,
+          "maxlevel": 6,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1999,
+          "name": "Webwood Venomfang",
+          "action": "loot",
+          "minlevel": 7,
+          "maxlevel": 8,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2000,
+          "name": "Webwood Silkspinner",
+          "action": "loot",
+          "minlevel": 8,
+          "maxlevel": 9,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2001,
+          "name": "Giant Webwood Spider",
+          "action": "loot",
+          "minlevel": 10,
+          "maxlevel": 11,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2003,
+          "name": "Shadow Sprite",
+          "action": "loot",
+          "minlevel": 5,
+          "maxlevel": 6,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2004,
+          "name": "Dark Sprite",
+          "action": "loot",
+          "minlevel": 6,
+          "maxlevel": 7,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2005,
+          "name": "Vicious Grell",
+          "action": "loot",
+          "minlevel": 7,
+          "maxlevel": 7,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2006,
+          "name": "Gnarlpine Ursa",
+          "action": "loot",
+          "minlevel": 5,
+          "maxlevel": 6,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2007,
+          "name": "Gnarlpine Gardener",
+          "action": "loot",
+          "minlevel": 5,
+          "maxlevel": 6,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2008,
+          "name": "Gnarlpine Warrior",
+          "action": "loot",
+          "minlevel": 6,
+          "maxlevel": 7,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2009,
+          "name": "Gnarlpine Shaman",
+          "action": "loot",
+          "minlevel": 7,
+          "maxlevel": 8,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2010,
+          "name": "Gnarlpine Defender",
+          "action": "loot",
+          "minlevel": 7,
+          "maxlevel": 8,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2011,
+          "name": "Gnarlpine Augur",
+          "action": "loot",
+          "minlevel": 8,
+          "maxlevel": 9,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2012,
+          "name": "Gnarlpine Pathfinder",
+          "action": "loot",
+          "minlevel": 9,
+          "maxlevel": 10,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2013,
+          "name": "Gnarlpine Avenger",
+          "action": "loot",
+          "minlevel": 9,
+          "maxlevel": 10,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2014,
+          "name": "Gnarlpine Totemic",
+          "action": "loot",
+          "minlevel": 10,
+          "maxlevel": 11,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2015,
+          "name": "Bloodfeather Harpy",
+          "action": "loot",
+          "minlevel": 8,
+          "maxlevel": 9,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2017,
+          "name": "Bloodfeather Rogue",
+          "action": "loot",
+          "minlevel": 8,
+          "maxlevel": 9,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2018,
+          "name": "Bloodfeather Sorceress",
+          "action": "loot",
+          "minlevel": 9,
+          "maxlevel": 9,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2019,
+          "name": "Bloodfeather Fury",
+          "action": "loot",
+          "minlevel": 9,
+          "maxlevel": 10,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2020,
+          "name": "Bloodfeather Wind Witch",
+          "action": "loot",
+          "minlevel": 9,
+          "maxlevel": 10,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2021,
+          "name": "Bloodfeather Matriarch",
+          "action": "loot",
+          "minlevel": 11,
+          "maxlevel": 11,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2022,
+          "name": "Timberling",
+          "action": "loot",
+          "minlevel": 5,
+          "maxlevel": 6,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2027,
+          "name": "Timberling Trampler",
+          "action": "loot",
+          "minlevel": 8,
+          "maxlevel": 9,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2029,
+          "name": "Timberling Mire Beast",
+          "action": "loot",
+          "minlevel": 9,
+          "maxlevel": 10,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2030,
+          "name": "Elder Timberling",
+          "action": "loot",
+          "minlevel": 10,
+          "maxlevel": 11,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2032,
+          "name": "Mangy Nightsaber",
+          "action": "loot",
+          "minlevel": 2,
+          "maxlevel": 2,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2033,
+          "name": "Elder Nightsaber",
+          "action": "loot",
+          "minlevel": 8,
+          "maxlevel": 9,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2034,
+          "name": "Feral Nightsaber",
+          "action": "loot",
+          "minlevel": 10,
+          "maxlevel": 11,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2039,
+          "name": "Ursal the Mauler",
+          "action": "loot",
+          "minlevel": 12,
+          "maxlevel": 12,
+          "areas": [
+            141
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2042,
+          "name": "Nightsaber",
+          "action": "loot",
+          "minlevel": 5,
+          "maxlevel": 6,
+          "areas": [
+            141
+          ]
+        }
+      ]
+    },
+    "relations": {
+      "dropped-by": {
+        "template": "npc",
+        "rows": [
+          {
+            "id": 6,
+            "name": "Kobold Vermin",
+            "count": 16454,
+            "classification": 0
+          },
+          {
+            "id": 30,
+            "name": "Forest Spider",
+            "count": 44,
+            "classification": 0
+          },
+          {
+            "id": 38,
+            "name": "Defias Thug",
+            "count": 103,
+            "classification": 0
+          },
+          {
+            "id": 40,
+            "name": "Kobold Miner",
+            "count": 13849,
+            "classification": 0
+          },
+          {
+            "id": 43,
+            "name": "Mine Spider",
+            "count": 21,
+            "classification": 1
+          },
+          {
+            "id": 46,
+            "name": "Murloc Forager",
+            "count": 83,
+            "classification": 0
+          },
+          {
+            "id": 60,
+            "name": "Ruklar the Trapper",
+            "count": 50,
+            "classification": 0
+          },
+          {
+            "id": 69,
+            "name": "Timber Wolf",
+            "count": 11,
+            "classification": 0
+          },
+          {
+            "id": 79,
+            "name": "Narg the Taskmaster",
+            "count": 89,
+            "classification": 4
+          },
+          {
+            "id": 80,
+            "name": "Kobold Laborer",
+            "count": 17127,
+            "classification": 0
+          },
+          {
+            "id": 94,
+            "name": "Defias Cutpurse",
+            "count": 21,
+            "classification": 0
+          },
+          {
+            "id": 95,
+            "name": "Defias Smuggler",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 97,
+            "name": "Riverpaw Runt",
+            "count": 20,
+            "classification": 0
+          },
+          {
+            "id": 113,
+            "name": "Stonetusk Boar",
+            "count": 149,
+            "classification": 0
+          },
+          {
+            "id": 116,
+            "name": "Defias Bandit",
+            "count": 103,
+            "classification": 0
+          },
+          {
+            "id": 118,
+            "name": "Prowler",
+            "count": 70,
+            "classification": 0
+          },
+          {
+            "id": 119,
+            "name": "Longsnout",
+            "count": 4,
+            "classification": 0
+          },
+          {
+            "id": 126,
+            "name": "Murloc Coastrunner",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 157,
+            "name": "Goretusk",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 199,
+            "name": "Young Fleshripper",
+            "count": 6,
+            "classification": 0
+          },
+          {
+            "id": 257,
+            "name": "Kobold Worker",
+            "count": 19036,
+            "classification": 0
+          },
+          {
+            "id": 285,
+            "name": "Murloc",
+            "count": 23,
+            "classification": 0
+          },
+          {
+            "id": 299,
+            "name": "Young Wolf",
+            "count": 8,
+            "classification": 0
+          },
+          {
+            "id": 327,
+            "name": "Goldtooth",
+            "count": 983,
+            "classification": 0
+          },
+          {
+            "id": 330,
+            "name": "Princess",
+            "count": 6,
+            "classification": 0
+          },
+          {
+            "id": 390,
+            "name": "Porcine Entourage",
+            "count": 5,
+            "classification": 0
+          },
+          {
+            "id": 448,
+            "name": "Hogger",
+            "count": 4,
+            "classification": 1
+          },
+          {
+            "id": 454,
+            "name": "Young Goretusk",
+            "count": 4,
+            "classification": 0
+          },
+          {
+            "id": 471,
+            "name": "Mother Fang",
+            "count": 2,
+            "classification": 1
+          },
+          {
+            "id": 473,
+            "name": "Morgan the Collector",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 474,
+            "name": "Defias Rogue Wizard",
+            "count": 16,
+            "classification": 0
+          },
+          {
+            "id": 475,
+            "name": "Kobold Tunneler",
+            "count": 19990,
+            "classification": 0
+          },
+          {
+            "id": 476,
+            "name": "Kobold Geomancer",
+            "count": 2033,
+            "classification": 0
+          },
+          {
+            "id": 478,
+            "name": "Riverpaw Outrunner",
+            "count": 101,
+            "classification": 0
+          },
+          {
+            "id": 480,
+            "name": "Rusty Harvest Golem",
+            "count": 12,
+            "classification": 0
+          },
+          {
+            "id": 500,
+            "name": "Riverpaw Scout",
+            "count": 4,
+            "classification": 0
+          },
+          {
+            "id": 504,
+            "name": "Defias Trapper",
+            "count": 13,
+            "classification": 0
+          },
+          {
+            "id": 524,
+            "name": "Rockhide Boar",
+            "count": 80,
+            "classification": 0
+          },
+          {
+            "id": 525,
+            "name": "Mangy Wolf",
+            "count": 99,
+            "classification": 0
+          },
+          {
+            "id": 705,
+            "name": "Ragged Young Wolf",
+            "count": 3,
+            "classification": 0
+          },
+          {
+            "id": 706,
+            "name": "Frostmane Troll Whelp",
+            "count": 25,
+            "classification": 0
+          },
+          {
+            "id": 724,
+            "name": "Burly Rockjaw Trogg",
+            "count": 21,
+            "classification": 0
+          },
+          {
+            "id": 732,
+            "name": "Murloc Lurker",
+            "count": 55,
+            "classification": 0
+          },
+          {
+            "id": 735,
+            "name": "Murloc Streamrunner",
+            "count": 27,
+            "classification": 0
+          },
+          {
+            "id": 822,
+            "name": "Young Forest Bear",
+            "count": 71,
+            "classification": 0
+          },
+          {
+            "id": 834,
+            "name": "Coyote",
+            "count": 4,
+            "classification": 0
+          },
+          {
+            "id": 880,
+            "name": "Erlan Drudgemoor",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 1115,
+            "name": "Rockjaw Skullthumper",
+            "count": 8,
+            "classification": 0
+          },
+          {
+            "id": 1117,
+            "name": "Rockjaw Bonesnapper",
+            "count": 17,
+            "classification": 0
+          },
+          {
+            "id": 1123,
+            "name": "Frostmane Headhunter",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 1124,
+            "name": "Frostmane Shadowcaster",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 1125,
+            "name": "Crag Boar",
+            "count": 4,
+            "classification": 0
+          },
+          {
+            "id": 1126,
+            "name": "Large Crag Boar",
+            "count": 3,
+            "classification": 0
+          },
+          {
+            "id": 1127,
+            "name": "Elder Crag Boar",
+            "count": 4,
+            "classification": 0
+          },
+          {
+            "id": 1128,
+            "name": "Young Black Bear",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 1131,
+            "name": "Winter Wolf",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 1135,
+            "name": "Wendigo",
+            "count": 7,
+            "classification": 0
+          },
+          {
+            "id": 1138,
+            "name": "Snow Tracker Wolf",
+            "count": 4,
+            "classification": 0
+          },
+          {
+            "id": 1161,
+            "name": "Stonesplinter Trogg",
+            "count": 5,
+            "classification": 0
+          },
+          {
+            "id": 1162,
+            "name": "Stonesplinter Scout",
+            "count": 5,
+            "classification": 0
+          },
+          {
+            "id": 1172,
+            "name": "Tunnel Rat Vermin",
+            "count": 8,
+            "classification": 0
+          },
+          {
+            "id": 1174,
+            "name": "Tunnel Rat Geomancer",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 1175,
+            "name": "Tunnel Rat Digger",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 1190,
+            "name": "Mountain Boar",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 1196,
+            "name": "Ice Claw Bear",
+            "count": 9,
+            "classification": 0
+          },
+          {
+            "id": 1201,
+            "name": "Snow Leopard",
+            "count": 5,
+            "classification": 0
+          },
+          {
+            "id": 1211,
+            "name": "Leper Gnome",
+            "count": 11,
+            "classification": 0
+          },
+          {
+            "id": 1397,
+            "name": "Frostmane Seer",
+            "count": 4,
+            "classification": 0
+          },
+          {
+            "id": 1506,
+            "name": "Scarlet Convert",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 1520,
+            "name": "Rattlecage Soldier",
+            "count": 6,
+            "classification": 0
+          },
+          {
+            "id": 1522,
+            "name": "Darkeye Bonecaster",
+            "count": 11,
+            "classification": 0
+          },
+          {
+            "id": 1525,
+            "name": "Rotting Dead",
+            "count": 4,
+            "classification": 0
+          },
+          {
+            "id": 1526,
+            "name": "Ravaged Corpse",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 1529,
+            "name": "Bleeding Horror",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 1532,
+            "name": "Wandering Spirit",
+            "count": 4,
+            "classification": 0
+          },
+          {
+            "id": 1534,
+            "name": "Wailing Ancestor",
+            "count": 3,
+            "classification": 0
+          },
+          {
+            "id": 1535,
+            "name": "Scarlet Warrior",
+            "count": 6,
+            "classification": 0
+          },
+          {
+            "id": 1536,
+            "name": "Scarlet Missionary",
+            "count": 4,
+            "classification": 0
+          },
+          {
+            "id": 1543,
+            "name": "Vile Fin Puddlejumper",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 1547,
+            "name": "Decrepit Darkhound",
+            "count": 10,
+            "classification": 0
+          },
+          {
+            "id": 1548,
+            "name": "Cursed Darkhound",
+            "count": 5,
+            "classification": 0
+          },
+          {
+            "id": 1553,
+            "name": "Greater Duskbat",
+            "count": 12,
+            "classification": 0
+          },
+          {
+            "id": 1554,
+            "name": "Vampiric Duskbat",
+            "count": 4,
+            "classification": 0
+          },
+          {
+            "id": 1555,
+            "name": "Vicious Night Web Spider",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 1674,
+            "name": "Rot Hide Gnoll",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 1922,
+            "name": "Gray Forest Wolf",
+            "count": 76,
+            "classification": 0
+          },
+          {
+            "id": 1934,
+            "name": "Tirisfal Farmer",
+            "count": 6449,
+            "classification": 0
+          },
+          {
+            "id": 1935,
+            "name": "Tirisfal Farmhand",
+            "count": 7,
+            "classification": 0
+          },
+          {
+            "id": 1936,
+            "name": "Farmer Solliden",
+            "count": 282,
+            "classification": 4
+          },
+          {
+            "id": 1941,
+            "name": "Rot Hide Graverobber",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 1984,
+            "name": "Young Thistle Boar",
+            "count": 3,
+            "classification": 0
+          },
+          {
+            "id": 1985,
+            "name": "Thistle Boar",
+            "count": 9,
+            "classification": 0
+          },
+          {
+            "id": 1986,
+            "name": "Webwood Spider",
+            "count": 4,
+            "classification": 0
+          },
+          {
+            "id": 1993,
+            "name": "Greenpaw",
+            "count": 153,
+            "classification": 0
+          },
+          {
+            "id": 1995,
+            "name": "Strigid Owl",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 1996,
+            "name": "Strigid Screecher",
+            "count": 8,
+            "classification": 0
+          },
+          {
+            "id": 1997,
+            "name": "Strigid Hunter",
+            "count": 3,
+            "classification": 0
+          },
+          {
+            "id": 1998,
+            "name": "Webwood Lurker",
+            "count": 23,
+            "classification": 0
+          },
+          {
+            "id": 1999,
+            "name": "Webwood Venomfang",
+            "count": 6,
+            "classification": 0
+          },
+          {
+            "id": 2000,
+            "name": "Webwood Silkspinner",
+            "count": 5,
+            "classification": 0
+          },
+          {
+            "id": 2001,
+            "name": "Giant Webwood Spider",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 2003,
+            "name": "Shadow Sprite",
+            "count": 6,
+            "classification": 0
+          },
+          {
+            "id": 2004,
+            "name": "Dark Sprite",
+            "count": 3,
+            "classification": 0
+          },
+          {
+            "id": 2005,
+            "name": "Vicious Grell",
+            "count": 4,
+            "classification": 0
+          },
+          {
+            "id": 2006,
+            "name": "Gnarlpine Ursa",
+            "count": 766,
+            "classification": 0
+          },
+          {
+            "id": 2007,
+            "name": "Gnarlpine Gardener",
+            "count": 674,
+            "classification": 0
+          },
+          {
+            "id": 2008,
+            "name": "Gnarlpine Warrior",
+            "count": 3086,
+            "classification": 0
+          },
+          {
+            "id": 2009,
+            "name": "Gnarlpine Shaman",
+            "count": 6230,
+            "classification": 0
+          },
+          {
+            "id": 2010,
+            "name": "Gnarlpine Defender",
+            "count": 6763,
+            "classification": 0
+          },
+          {
+            "id": 2011,
+            "name": "Gnarlpine Augur",
+            "count": 2783,
+            "classification": 0
+          },
+          {
+            "id": 2012,
+            "name": "Gnarlpine Pathfinder",
+            "count": 1015,
+            "classification": 0
+          },
+          {
+            "id": 2013,
+            "name": "Gnarlpine Avenger",
+            "count": 1054,
+            "classification": 0
+          },
+          {
+            "id": 2014,
+            "name": "Gnarlpine Totemic",
+            "count": 89,
+            "classification": 0
+          },
+          {
+            "id": 2015,
+            "name": "Bloodfeather Harpy",
+            "count": 7,
+            "classification": 0
+          },
+          {
+            "id": 2017,
+            "name": "Bloodfeather Rogue",
+            "count": 3,
+            "classification": 0
+          },
+          {
+            "id": 2018,
+            "name": "Bloodfeather Sorceress",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 2019,
+            "name": "Bloodfeather Fury",
+            "count": 4,
+            "classification": 0
+          },
+          {
+            "id": 2020,
+            "name": "Bloodfeather Wind Witch",
+            "count": 13,
+            "classification": 0
+          },
+          {
+            "id": 2021,
+            "name": "Bloodfeather Matriarch",
+            "count": 3,
+            "classification": 0
+          },
+          {
+            "id": 2022,
+            "name": "Timberling",
+            "count": 5,
+            "classification": 0
+          },
+          {
+            "id": 2027,
+            "name": "Timberling Trampler",
+            "count": 9,
+            "classification": 0
+          },
+          {
+            "id": 2029,
+            "name": "Timberling Mire Beast",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 2030,
+            "name": "Elder Timberling",
+            "count": 6,
+            "classification": 0
+          },
+          {
+            "id": 2032,
+            "name": "Mangy Nightsaber",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 2033,
+            "name": "Elder Nightsaber",
+            "count": 12,
+            "classification": 0
+          },
+          {
+            "id": 2034,
+            "name": "Feral Nightsaber",
+            "count": 4,
+            "classification": 0
+          },
+          {
+            "id": 2039,
+            "name": "Ursal the Mauler",
+            "count": 216,
+            "classification": 0
+          },
+          {
+            "id": 2042,
+            "name": "Nightsaber",
+            "count": 23,
+            "classification": 0
+          },
+          {
+            "id": 2043,
+            "name": "Nightsaber Stalker",
+            "count": 21,
+            "classification": 0
+          },
+          {
+            "id": 2152,
+            "name": "Gnarlpine Ambusher",
+            "count": 2892,
+            "classification": 0
+          },
+          {
+            "id": 2162,
+            "name": "Agal",
+            "count": 65,
+            "classification": 0
+          },
+          {
+            "id": 2185,
+            "name": "Darkshore Thresher",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 2231,
+            "name": "Pygmy Tide Crawler",
+            "count": 3,
+            "classification": 0
+          },
+          {
+            "id": 2234,
+            "name": "Young Reef Crawler",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 2949,
+            "name": "Palemane Tanner",
+            "count": 5,
+            "classification": 0
+          },
+          {
+            "id": 2950,
+            "name": "Palemane Skinner",
+            "count": 8,
+            "classification": 0
+          },
+          {
+            "id": 2951,
+            "name": "Palemane Poacher",
+            "count": 6,
+            "classification": 0
+          },
+          {
+            "id": 2952,
+            "name": "Bristleback Quilboar",
+            "count": 11160,
+            "classification": 0
+          },
+          {
+            "id": 2953,
+            "name": "Bristleback Shaman",
+            "count": 1939,
+            "classification": 0
+          },
+          {
+            "id": 2956,
+            "name": "Adult Plainstrider",
+            "count": 6,
+            "classification": 0
+          },
+          {
+            "id": 2958,
+            "name": "Prairie Wolf",
+            "count": 28,
+            "classification": 0
+          },
+          {
+            "id": 2959,
+            "name": "Prairie Stalker",
+            "count": 22,
+            "classification": 0
+          },
+          {
+            "id": 2960,
+            "name": "Prairie Wolf Alpha",
+            "count": 18,
+            "classification": 0
+          },
+          {
+            "id": 2962,
+            "name": "Windfury Harpy",
+            "count": 3,
+            "classification": 0
+          },
+          {
+            "id": 2964,
+            "name": "Windfury Sorceress",
+            "count": 7,
+            "classification": 0
+          },
+          {
+            "id": 2965,
+            "name": "Windfury Matriarch",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 2969,
+            "name": "Wiry Swoop",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 2975,
+            "name": "Venture Co. Hireling",
+            "count": 4,
+            "classification": 0
+          },
+          {
+            "id": 2977,
+            "name": "Venture Co. Taskmaster",
+            "count": 5,
+            "classification": 0
+          },
+          {
+            "id": 2978,
+            "name": "Venture Co. Worker",
+            "count": 10,
+            "classification": 0
+          },
+          {
+            "id": 2979,
+            "name": "Venture Co. Supervisor",
+            "count": 3,
+            "classification": 0
+          },
+          {
+            "id": 2989,
+            "name": "Bael'dun Digger",
+            "count": 5,
+            "classification": 0
+          },
+          {
+            "id": 3035,
+            "name": "Flatland Cougar",
+            "count": 31,
+            "classification": 0
+          },
+          {
+            "id": 3099,
+            "name": "Dire Mottled Boar",
+            "count": 3,
+            "classification": 0
+          },
+          {
+            "id": 3100,
+            "name": "Elder Mottled Boar",
+            "count": 7,
+            "classification": 0
+          },
+          {
+            "id": 3103,
+            "name": "Makrura Clacker",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 3107,
+            "name": "Surf Crawler",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 3110,
+            "name": "Dreadmaw Crocolisk",
+            "count": 19,
+            "classification": 0
+          },
+          {
+            "id": 3111,
+            "name": "Razormane Quilboar",
+            "count": 3333,
+            "classification": 0
+          },
+          {
+            "id": 3112,
+            "name": "Razormane Scout",
+            "count": 3162,
+            "classification": 0
+          },
+          {
+            "id": 3113,
+            "name": "Razormane Dustrunner",
+            "count": 2866,
+            "classification": 0
+          },
+          {
+            "id": 3114,
+            "name": "Razormane Battleguard",
+            "count": 2686,
+            "classification": 0
+          },
+          {
+            "id": 3115,
+            "name": "Dustwind Harpy",
+            "count": 16,
+            "classification": 0
+          },
+          {
+            "id": 3116,
+            "name": "Dustwind Pillager",
+            "count": 5,
+            "classification": 0
+          },
+          {
+            "id": 3117,
+            "name": "Dustwind Savage",
+            "count": 6,
+            "classification": 0
+          },
+          {
+            "id": 3118,
+            "name": "Dustwind Storm Witch",
+            "count": 6,
+            "classification": 0
+          },
+          {
+            "id": 3121,
+            "name": "Durotar Tiger",
+            "count": 3,
+            "classification": 0
+          },
+          {
+            "id": 3122,
+            "name": "Bloodtalon Taillasher",
+            "count": 8,
+            "classification": 0
+          },
+          {
+            "id": 3123,
+            "name": "Bloodtalon Scythemaw",
+            "count": 4,
+            "classification": 0
+          },
+          {
+            "id": 3125,
+            "name": "Clattering Scorpid",
+            "count": 3,
+            "classification": 0
+          },
+          {
+            "id": 3126,
+            "name": "Armored Scorpid",
+            "count": 6,
+            "classification": 0
+          },
+          {
+            "id": 3127,
+            "name": "Venomtail Scorpid",
+            "count": 12,
+            "classification": 0
+          },
+          {
+            "id": 3128,
+            "name": "Kul Tiras Sailor",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 3129,
+            "name": "Kul Tiras Marine",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 3131,
+            "name": "Lightning Hide",
+            "count": 3,
+            "classification": 0
+          },
+          {
+            "id": 3192,
+            "name": "Lieutenant Benedict",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 3197,
+            "name": "Burning Blade Fanatic",
+            "count": 19,
+            "classification": 0
+          },
+          {
+            "id": 3198,
+            "name": "Burning Blade Apprentice",
+            "count": 6,
+            "classification": 0
+          },
+          {
+            "id": 3206,
+            "name": "Voodoo Troll",
+            "count": 3,
+            "classification": 0
+          },
+          {
+            "id": 3229,
+            "name": "\"Squealer\" Thornmantle",
+            "count": 354,
+            "classification": 0
+          },
+          {
+            "id": 3232,
+            "name": "Bristleback Interloper",
+            "count": 2093,
+            "classification": 0
+          },
+          {
+            "id": 3242,
+            "name": "Zhevra Runner",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 3244,
+            "name": "Greater Plainstrider",
+            "count": 4,
+            "classification": 0
+          },
+          {
+            "id": 3246,
+            "name": "Fleeting Plainstrider",
+            "count": 3,
+            "classification": 0
+          },
+          {
+            "id": 3566,
+            "name": "Flatland Prowler",
+            "count": 16,
+            "classification": 0
+          },
+          {
+            "id": 3569,
+            "name": "Bogling",
+            "count": 7,
+            "classification": 0
+          },
+          {
+            "id": 5824,
+            "name": "Captain Flat Tusk",
+            "count": -1,
+            "classification": 2
+          },
+          {
+            "id": 5826,
+            "name": "Geolord Mottle",
+            "count": 95,
+            "classification": 4
+          },
+          {
+            "id": 5893,
+            "name": "Minor Manifestation of Fire",
+            "count": 5,
+            "classification": 0
+          },
+          {
+            "id": 6093,
+            "name": "Dead-Tooth Jack",
+            "count": 2,
+            "classification": 0
+          },
+          {
+            "id": 6927,
+            "name": "Defias Dockworker",
+            "count": 3,
+            "classification": 0
+          },
+          {
+            "id": 7234,
+            "name": "Ferocitas the Dream Eater",
+            "count": 404,
+            "classification": 0
+          },
+          {
+            "id": 7235,
+            "name": "Gnarlpine Mystic",
+            "count": 2251,
+            "classification": 0
+          },
+          {
+            "id": 7318,
+            "name": "Rageclaw",
+            "count": 415,
+            "classification": 0
+          },
+          {
+            "id": 8554,
+            "name": "Chief Sharptusk Thornmantle",
+            "count": 531,
+            "classification": 0
+          },
+          {
+            "id": 10159,
+            "name": "Young Moonkin",
+            "count": 4,
+            "classification": 0
+          },
+          {
+            "id": 14428,
+            "name": "Uruson",
+            "count": 164,
+            "classification": 4
+          },
+          {
+            "id": 248362,
+            "name": "Shinyfinder Narf",
+            "count": 115,
+            "classification": 1
+          },
+          {
+            "id": 248464,
+            "name": "Nimsy",
+            "count": 24,
+            "classification": 1
+          },
+          {
+            "id": 248474,
+            "name": "Geosculptor Yip",
+            "count": 54,
+            "classification": 1
+          }
+        ]
+      },
+      "reward-from-q": {
+        "template": "quest",
+        "rows": [
+          {
+            "id": 16,
+            "name": "Give Gerard a Drink",
+            "level": 1
+          }
+        ]
+      },
+      "sold-by": {
+        "template": "npc",
+        "rows": [
+          {
+            "id": 66,
+            "name": "Tharynn Bouden",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 734,
+            "name": "Corporal Bluth",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 894,
+            "name": "Homer Stonefield",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 1250,
+            "name": "Drake Lindgren",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 1286,
+            "name": "Edna Mullby",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 1671,
+            "name": "Lamar Veisilli",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 1692,
+            "name": "Golorn Frostbeard",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 2118,
+            "name": "Abigail Shiel",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 2381,
+            "name": "Micha Yance",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 2397,
+            "name": "Derak Nightfall",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 2664,
+            "name": "Kelsey Yance",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 3017,
+            "name": "Nan Mistrunner",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 3027,
+            "name": "Naal Mistrunner",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 3081,
+            "name": "Wunna Darkmane",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 3085,
+            "name": "Gloria Femmel",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 3168,
+            "name": "Flakk",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 3187,
+            "name": "Tai'tasi",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 3342,
+            "name": "Shan'ti",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 3367,
+            "name": "Felika",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 3400,
+            "name": "Xen'to",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 3614,
+            "name": "Narret Shadowgrove",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 3934,
+            "name": "Innkeeper Boorand Plainswind",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 3961,
+            "name": "Maliynn",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 4191,
+            "name": "Allyndia",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 4223,
+            "name": "Fyldan",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 4255,
+            "name": "Brogus Thunderbrew",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 4265,
+            "name": "Nyoma",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 4553,
+            "name": "Ronald Burch",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 4561,
+            "name": "Daniel Bartlett",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 4775,
+            "name": "Felicia Doan",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 4891,
+            "name": "Dwane Wertle",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 5160,
+            "name": "Emrul Riknussun",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 5483,
+            "name": "Erika Tate",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 5814,
+            "name": "Innkeeper Thulbek",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 5817,
+            "name": "Shimra",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 6735,
+            "name": "Innkeeper Saelienne",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 7714,
+            "name": "Innkeeper Byula",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 7736,
+            "name": "Innkeeper Shyria",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 7978,
+            "name": "Bimble Longberry",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 8307,
+            "name": "Tarban Hearthgrain",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 8363,
+            "name": "Shadi Mistrunner",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 8934,
+            "name": "Christopher Hewen",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 12033,
+            "name": "Wulan",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 12096,
+            "name": "Stormpike Quartermaster",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 12097,
+            "name": "Frostwolf Quartermaster",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 12785,
+            "name": "Sergeant Major Clate",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 12794,
+            "name": "Stone Guard Zarg",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 14738,
+            "name": "Otho Moji'ko",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 29547,
+            "name": "Applebough",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 241019,
+            "name": "Johnny",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 241664,
+            "name": "Malorie",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 242498,
+            "name": "Reagent Bot",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 248198,
+            "name": "Aza'bek",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 251905,
+            "name": "Zerril Softbreeze",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 252080,
+            "name": "Stefan Cotter",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 252083,
+            "name": "Derek Odds",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 254695,
+            "name": "Repair Bot",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 256731,
+            "name": "Kalsey Sanden",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 257006,
+            "name": "Nyalah Brightfire",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 259863,
+            "name": "Cassandra Wheeler",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 259962,
+            "name": "Fimbo Greasemitz",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 265730,
+            "name": "Ajay Green",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 267000,
+            "name": "Paige",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 268663,
+            "name": "Penny Pinderton",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 270780,
+            "name": "Qujo",
+            "stack": 5,
+            "classification": 0
+          },
+          {
+            "id": 272646,
+            "name": "Miranda Turner",
+            "stack": 5,
+            "classification": 0
+          }
+        ]
+      },
+      "objective-of": {
+        "template": "quest",
+        "rows": [
+          {
+            "id": 91736,
+            "name": "Applejack Still"
+          }
+        ]
+      }
+    },
+    "comments": [
+      {
+        "id": 2721325,
+        "date": "2007-04-19T05:05:19-05:00"
+      },
+      {
+        "id": 2721326,
+        "date": "2007-04-19T05:05:19-05:00"
+      },
+      {
+        "id": 2721328,
+        "date": "2007-05-13T17:34:07-05:00"
+      },
+      {
+        "id": 3018945,
+        "date": "2006-08-07T15:43:50-05:00"
+      },
+      {
+        "id": 3018947,
+        "date": "2007-05-01T18:00:07-05:00"
+      },
+      {
+        "id": 3018948,
+        "date": "2005-05-13T21:24:44-05:00"
+      },
+      {
+        "id": 3018949,
+        "date": "2006-04-19T19:40:34-05:00"
+      },
+      {
+        "id": 3018952,
+        "date": "2006-10-24T16:26:03-05:00"
+      },
+      {
+        "id": 3164666,
+        "date": "2019-10-16T17:38:10-05:00"
+      },
+      {
+        "id": 3178456,
+        "date": "2019-12-26T07:51:41-06:00"
+      }
+    ]
+  },
+  {
+    "kind": "item",
+    "entityID": 6799,
+    "url": "https://www.wowhead.com/forever/item=6799",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "5bd9efe7717d999719be2c4120cd38004aa57c6ac1287b07be547f2f49c0e57c",
+    "facts": {
+      "name": "Vejrek's Head",
+      "locations": [],
+      "source": "Wowhead Forever",
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 6113,
+          "name": "Vejrek",
+          "action": "loot",
+          "minlevel": 11,
+          "maxlevel": 11,
+          "areas": [
+            1
+          ]
+        }
+      ]
+    },
+    "relations": {
+      "dropped-by": {
+        "template": "npc",
+        "rows": [
+          {
+            "id": 6113,
+            "name": "Vejrek",
+            "count": 1,
+            "classification": 0
+          }
+        ]
+      },
+      "objective-of": {
+        "template": "quest",
+        "rows": [
+          {
+            "id": 1678,
+            "name": "Vejrek",
+            "level": 11
+          }
+        ]
+      }
+    },
+    "comments": []
+  },
+  {
+    "kind": "item",
+    "entityID": 6805,
+    "url": "https://www.wowhead.com/forever/item=6805",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "6a0b23940b11a4bb7707089cc7648985f4f8a7ea8260030976db86a42c37743a",
+    "facts": {
+      "name": "Horn of Vorlus",
+      "locations": [],
+      "source": "Wowhead Forever",
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 6128,
+          "name": "Vorlus Vilehoof",
+          "action": "loot",
+          "minlevel": 10,
+          "maxlevel": 10,
+          "areas": [
+            141
+          ]
+        }
+      ]
+    },
+    "relations": {
+      "dropped-by": {
+        "template": "npc",
+        "rows": [
+          {
+            "id": 6128,
+            "name": "Vorlus Vilehoof",
+            "count": 2,
+            "classification": 0
+          }
+        ]
+      },
+      "objective-of": {
+        "template": "quest",
+        "rows": [
+          {
+            "id": 1683,
+            "name": "Vorlus Vilehoof",
+            "level": 10
+          }
+        ]
+      }
+    },
+    "comments": [
+      {
+        "id": 2697070,
+        "date": "2007-05-01T02:21:51-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "item",
+    "entityID": 7674,
+    "url": "https://www.wowhead.com/forever/item=7674",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "d92e93aade4fc4cb7f01f05163c018c1e8804e15a5f0a2b577b6b3e305a9e1e7",
+    "facts": {
+      "name": "Delivery to Mathias",
+      "locations": [],
+      "source": "Wowhead Forever"
+    },
+    "relations": {
+      "objective-of": {
+        "template": "quest",
+        "rows": [
+          {
+            "id": 2205,
+            "name": "Seek out SI: 7",
+            "level": 10
+          }
+        ]
+      }
+    },
+    "comments": [
+      {
+        "id": 2655786,
+        "date": "2005-02-08T00:00:14-06:00"
+      }
+    ]
+  },
+  {
+    "kind": "item",
+    "entityID": 9542,
+    "url": "https://www.wowhead.com/forever/item=9542",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "d85303ae2a62553b57c4191a713b603633cfdd53dd8224231d40ca7e9600e689",
+    "facts": {
+      "name": "Simple Letter",
+      "locations": [],
+      "source": "Wowhead Forever"
+    },
+    "relations": {
+      "objective-of": {
+        "template": "quest",
+        "rows": [
+          {
+            "id": 3100,
+            "name": "Simple Letter",
+            "level": 1
+          }
+        ]
+      }
+    },
+    "comments": []
+  },
+  {
+    "kind": "item",
+    "entityID": 9555,
+    "url": "https://www.wowhead.com/forever/item=9555",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "c5c1fe752b400f1848680884778067e9c4ccb6a7e1196f80ebe59f84415c5813",
+    "facts": {
+      "name": "Encrypted Letter",
+      "locations": [],
+      "source": "Wowhead Forever"
+    },
+    "relations": {
+      "objective-of": {
+        "template": "quest",
+        "rows": [
+          {
+            "id": 3102,
+            "name": "Encrypted Letter",
+            "level": 1
+          }
+        ]
+      }
+    },
+    "comments": []
+  },
+  {
+    "kind": "item",
+    "entityID": 19482,
+    "url": "https://www.wowhead.com/forever/item=19482",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "6db153e66ff5bd8177246090b08bf9df71c2beb64aa5017e80380ce89ef32715",
+    "facts": {
+      "name": "LeCraft Rabbit Pelt",
+      "locations": [],
+      "source": "Wowhead Forever"
+    },
+    "relations": {
+      "objective-of": {
+        "template": "quest",
+        "rows": [
+          {
+            "id": 7962,
+            "name": "Wabbit Pelts",
+            "level": 1
+          }
+        ]
+      }
+    },
+    "comments": []
+  },
+  {
+    "kind": "item",
+    "entityID": 247824,
+    "url": "https://www.wowhead.com/forever/item=247824",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "99d600e559ddd64991dee06c69ebb7a2f929b0f2c630baed65cf5f645303d4ea",
+    "facts": {
+      "name": "Thunder Applejack",
+      "locations": [],
+      "source": "Wowhead Forever"
+    },
+    "relations": {
+      "reward-from-q": {
+        "template": "quest",
+        "rows": [
+          {
+            "id": 91736,
+            "name": "Applejack Still"
+          }
+        ]
+      },
+      "objective-of": {
+        "template": "quest",
+        "rows": [
+          {
+            "id": 91738,
+            "name": "An Apple Treat",
+            "level": 10
+          }
+        ]
+      }
+    },
+    "comments": [
+      {
+        "id": 6426928,
+        "date": "2026-09-18T10:40:24-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "item",
+    "entityID": 247884,
+    "url": "https://www.wowhead.com/forever/item=247884",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "b53cb5ff40e5ff1eb4af215d89380d11265500e828354b0cee4482c92dcab2a0",
+    "facts": {
+      "name": "Luminous Residue",
+      "locations": [],
+      "source": "Wowhead Forever"
+    },
+    "relations": {
+      "objective-of": {
+        "template": "quest",
+        "rows": [
+          {
+            "id": 91753,
+            "name": "An Enchanting Lesson",
+            "level": 7
+          },
+          {
+            "id": 96873,
+            "name": "A Pain in the Neck",
+            "level": 8
+          }
+        ]
+      }
+    },
+    "comments": [
+      {
+        "id": 6430653,
+        "date": "2026-09-20T11:42:35-05:00"
+      },
+      {
+        "id": 6444317,
+        "date": "2026-10-07T20:32:03-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 6,
+    "url": "https://www.wowhead.com/forever/npc=6",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "6cd65e76099a033f58b17aabacd6ca5161d07dc99c4ef4ccb3870c034627f7c9",
+    "facts": {
+      "name": "Kobold Vermin",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.49,
+          "y": 0.364,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.512,
+          "y": 0.374,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 1,
+      "maxlevel": 2,
+      "classification": 0
+    },
+    "relations": {
+      "objective-of": {
+        "template": "quest",
+        "rows": [
+          {
+            "id": 7,
+            "name": "Kobold Camp Cleanup",
+            "level": 2
+          }
+        ]
+      }
+    },
+    "comments": [
+      {
+        "id": 2892429,
+        "date": "2006-12-28T03:27:02-06:00"
+      },
+      {
+        "id": 3150828,
+        "date": "2019-08-30T17:35:17-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 38,
+    "url": "https://www.wowhead.com/forever/npc=38",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "d078ec4131f69c4206921da2e8fdba6126fad55656f09e0d8029065647468fbf",
+    "facts": {
+      "name": "Defias Thug",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.544,
+          "y": 0.45799999999999996,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.532,
+          "y": 0.506,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 3,
+      "maxlevel": 4,
+      "classification": 0
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 2892449,
+        "date": "2005-05-31T14:44:19-05:00"
+      },
+      {
+        "id": 2892450,
+        "date": "2005-05-27T13:29:53-05:00"
+      },
+      {
+        "id": 2892451,
+        "date": "2005-08-01T23:11:23-05:00"
+      },
+      {
+        "id": 2892452,
+        "date": "2005-06-01T13:19:31-05:00"
+      },
+      {
+        "id": 2892453,
+        "date": "2005-05-27T13:36:19-05:00"
+      },
+      {
+        "id": 2892454,
+        "date": "2005-05-27T04:06:58-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 40,
+    "url": "https://www.wowhead.com/forever/npc=40",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "0c2943bf516d5f135e458aaf618a765c78b83ada49595e054382bdc94d30928b",
+    "facts": {
+      "name": "Kobold Miner",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.614,
+          "y": 0.52,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.408,
+          "y": 0.8059999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.41,
+          "y": 0.782,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.39399999999999996,
+          "y": 0.802,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.604,
+          "y": 0.498,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.39799999999999996,
+          "y": 0.7879999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 6,
+      "maxlevel": 7,
+      "classification": 0
+    },
+    "relations": {},
+    "comments": []
+  },
+  {
+    "kind": "npc",
+    "entityID": 80,
+    "url": "https://www.wowhead.com/forever/npc=80",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "d0d3ca072a7d5a5f9ad6f4540a5128c1d319dc8bc7a7a0c40446d8ab55593917",
+    "facts": {
+      "name": "Kobold Laborer",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.486,
+          "y": 0.278,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.478,
+          "y": 0.312,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.502,
+          "y": 0.262,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 3,
+      "maxlevel": 4,
+      "classification": 0
+    },
+    "relations": {
+      "objective-of": {
+        "template": "quest",
+        "rows": [
+          {
+            "id": 21,
+            "name": "Skirmish at Echo Ridge",
+            "level": 5
+          }
+        ]
+      }
+    },
+    "comments": [
+      {
+        "id": 2815619,
+        "date": "2006-10-01T02:25:42-05:00"
+      },
+      {
+        "id": 2815631,
+        "date": "2007-05-20T10:35:18-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 103,
+    "url": "https://www.wowhead.com/forever/npc=103",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "c637fd5705b3d8a47486d6b882ab4f776b1bd8b0def0dec4525bc7ac458a4c8b",
+    "facts": {
+      "name": "Garrick Padfoot",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.574,
+          "y": 0.48200000000000004,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 5,
+      "maxlevel": 5,
+      "classification": 0
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 2800745,
+        "date": "2006-01-31T00:05:42-06:00"
+      },
+      {
+        "id": 2892528,
+        "date": "2007-04-02T12:49:16-05:00"
+      },
+      {
+        "id": 2892529,
+        "date": "2005-05-29T21:36:56-05:00"
+      },
+      {
+        "id": 2892530,
+        "date": "2005-06-13T04:24:26-05:00"
+      },
+      {
+        "id": 2892531,
+        "date": "2005-05-28T01:11:04-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 113,
+    "url": "https://www.wowhead.com/forever/npc=113",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "a5c72bdc1473edd6b2b696d1e07b34d0e3557244560a5e35f559c74cc7890273",
+    "facts": {
+      "name": "Stonetusk Boar",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.418,
+          "y": 0.866,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.33399999999999996,
+          "y": 0.8540000000000001,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.424,
+          "y": 0.73,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.41,
+          "y": 0.6940000000000001,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.39,
+          "y": 0.762,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.42200000000000004,
+          "y": 0.9079999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 5,
+      "maxlevel": 6,
+      "classification": 0
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 3143020,
+        "date": "2019-07-25T22:11:58-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 116,
+    "url": "https://www.wowhead.com/forever/npc=116",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "12110617ded770fe534b88ea58dbfc00dd6e71a628d0f9594ed895aa0426ddf5",
+    "facts": {
+      "name": "Defias Bandit",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.48,
+          "y": 0.8270000000000001,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.708,
+          "y": 0.782,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.46399999999999997,
+          "y": 0.75,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.682,
+          "y": 0.774,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.266,
+          "y": 0.584,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.526,
+          "y": 0.5920000000000001,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.306,
+          "y": 0.584,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.31,
+          "y": 0.654,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.6779999999999999,
+          "y": 0.8059999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.892,
+          "y": 0.79,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.706,
+          "y": 0.8059999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.504,
+          "y": 0.8320000000000001,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.902,
+          "y": 0.7879999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 8,
+      "maxlevel": 9,
+      "classification": 0
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 2828759,
+        "date": "2005-01-04T17:05:03-06:00"
+      },
+      {
+        "id": 2828770,
+        "date": "2005-04-24T05:05:03-05:00"
+      },
+      {
+        "id": 2892536,
+        "date": "2005-12-23T19:02:14-06:00"
+      },
+      {
+        "id": 2892537,
+        "date": "2005-08-01T23:14:38-05:00"
+      },
+      {
+        "id": 2892538,
+        "date": "2005-06-25T05:22:02-05:00"
+      },
+      {
+        "id": 2892539,
+        "date": "2005-12-23T19:02:04-06:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 118,
+    "url": "https://www.wowhead.com/forever/npc=118",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "235160d5dfcc69fe36500f92544ca5fc7a9584ec871588fb1672b34cf3ef6e95",
+    "facts": {
+      "name": "Prowler",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.856,
+          "y": 0.636,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.872,
+          "y": 0.758,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.764,
+          "y": 0.632,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.77,
+          "y": 0.762,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.816,
+          "y": 0.59,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.818,
+          "y": 0.83,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.79,
+          "y": 0.8240000000000001,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.6609999999999999,
+          "y": 0.441,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.7020000000000001,
+          "y": 0.418,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.79,
+          "y": 0.594,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.8,
+          "y": 0.41200000000000003,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 9,
+      "maxlevel": 10,
+      "classification": 0
+    },
+    "relations": {
+      "objective-of": {
+        "template": "quest",
+        "rows": [
+          {
+            "id": 52,
+            "name": "Protect the Frontier",
+            "level": 10
+          }
+        ]
+      }
+    },
+    "comments": [
+      {
+        "id": 2892540,
+        "date": "2005-09-05T00:20:09-05:00"
+      },
+      {
+        "id": 2892541,
+        "date": "2005-11-15T23:50:37-06:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 197,
+    "url": "https://www.wowhead.com/forever/npc=197",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "87c27626a71e0564d13f69b57016f400e941016878d2fd9fcfbb45a8914d0f61",
+    "facts": {
+      "name": "Marshal McBride",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.488,
+          "y": 0.414,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 20,
+      "maxlevel": 20,
+      "classification": 0
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 2892563,
+        "date": "2007-04-29T20:15:15-05:00"
+      },
+      {
+        "id": 2892566,
+        "date": "2007-03-12T13:53:25-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 240,
+    "url": "https://www.wowhead.com/forever/npc=240",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "26514fe4b47140519a7fa6add623e56bef76d75ba46b98440ea8f44b40e111a6",
+    "facts": {
+      "name": "Marshal Dughan",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.42200000000000004,
+          "y": 0.6579999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 25,
+      "maxlevel": 25,
+      "classification": 0
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 2892592,
+        "date": "2006-02-24T11:06:50-06:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 241,
+    "url": "https://www.wowhead.com/forever/npc=241",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "752809caaa4c665e74db230a78e87fdf309087025f2ddc9dcfd6b22905a5f53f",
+    "facts": {
+      "name": "Remy \"Two Times\"",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.42,
+          "y": 0.6759999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 5,
+      "maxlevel": 5,
+      "classification": 0
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 2892594,
+        "date": "2006-04-30T08:23:18-05:00"
+      },
+      {
+        "id": 2892595,
+        "date": "2006-04-30T08:22:23-05:00"
+      },
+      {
+        "id": 2892596,
+        "date": "2006-04-30T01:29:57-05:00"
+      },
+      {
+        "id": 2892597,
+        "date": "2006-02-24T10:32:05-06:00"
+      },
+      {
+        "id": 3170658,
+        "date": "2019-11-10T05:46:08-06:00"
+      },
+      {
+        "id": 3201066,
+        "date": "2020-04-20T06:28:12-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 253,
+    "url": "https://www.wowhead.com/forever/npc=253",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "35df2ea08c6cf6a2b30531903ae39738102aecd5fb8838eff7f004e250171fc2",
+    "facts": {
+      "name": "William Pestle",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.43200000000000005,
+          "y": 0.6579999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 6,
+      "maxlevel": 6,
+      "classification": 0
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 2892603,
+        "date": "2006-11-22T09:51:30-06:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 257,
+    "url": "https://www.wowhead.com/forever/npc=257",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "e6349df0d54f2d3dee6621a36404e28e7ea4abebd4dc366248a0cec8232b7fe2",
+    "facts": {
+      "name": "Kobold Worker",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.47200000000000003,
+          "y": 0.34,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.51,
+          "y": 0.35600000000000004,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 3,
+      "maxlevel": 3,
+      "classification": 0
+    },
+    "relations": {
+      "objective-of": {
+        "template": "quest",
+        "rows": [
+          {
+            "id": 15,
+            "name": "Investigate Echo Ridge",
+            "level": 3
+          }
+        ]
+      }
+    },
+    "comments": []
+  },
+  {
+    "kind": "npc",
+    "entityID": 261,
+    "url": "https://www.wowhead.com/forever/npc=261",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "d449650e365154fc3123957812ee7c271f263f9b1a3b307e0c60b16d53581674",
+    "facts": {
+      "name": "Guard Thomas",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.74,
+          "y": 0.722,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 30,
+      "maxlevel": 30,
+      "classification": 0
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 2892604,
+        "date": "2006-02-24T11:16:31-06:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 285,
+    "url": "https://www.wowhead.com/forever/npc=285",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "bd72af432b49e810837ab4a122cfc4874479cd47f6f1050a577da894e672c3a4",
+    "facts": {
+      "name": "Murloc",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.534,
+          "y": 0.6659999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.496,
+          "y": 0.664,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 6,
+      "maxlevel": 7,
+      "classification": 0
+    },
+    "relations": {
+      "objective-of": {
+        "template": "quest",
+        "rows": [
+          {
+            "id": 99128,
+            "name": "Slimy Menace",
+            "level": 7
+          }
+        ]
+      }
+    },
+    "comments": [
+      {
+        "id": 2839234,
+        "date": "2005-02-27T06:11:22-06:00"
+      },
+      {
+        "id": 2839247,
+        "date": "2005-08-28T18:11:22-05:00"
+      },
+      {
+        "id": 2839261,
+        "date": "2006-04-04T18:11:22-05:00"
+      },
+      {
+        "id": 2839313,
+        "date": "2006-04-04T18:11:22-05:00"
+      },
+      {
+        "id": 2839326,
+        "date": "2006-05-11T06:11:22-05:00"
+      },
+      {
+        "id": 2839339,
+        "date": "2006-05-11T06:11:22-05:00"
+      },
+      {
+        "id": 2839350,
+        "date": "2006-05-11T06:11:22-05:00"
+      },
+      {
+        "id": 2839363,
+        "date": "2006-06-16T18:11:22-05:00"
+      },
+      {
+        "id": 2839376,
+        "date": "2006-10-04T06:11:22-05:00"
+      },
+      {
+        "id": 2839388,
+        "date": "2006-11-09T18:11:22-06:00"
+      },
+      {
+        "id": 2839400,
+        "date": "2006-11-09T18:11:22-06:00"
+      },
+      {
+        "id": 2839413,
+        "date": "2006-12-16T06:11:22-06:00"
+      },
+      {
+        "id": 2839425,
+        "date": "2006-12-16T06:11:22-06:00"
+      },
+      {
+        "id": 2839436,
+        "date": "2006-12-16T06:11:22-06:00"
+      },
+      {
+        "id": 2839446,
+        "date": "2007-04-04T18:11:22-05:00"
+      },
+      {
+        "id": 2839455,
+        "date": "2007-04-04T18:11:22-05:00"
+      },
+      {
+        "id": 2839468,
+        "date": "2007-04-17T02:49:46-05:00"
+      },
+      {
+        "id": 2839480,
+        "date": "2007-04-17T02:49:46-05:00"
+      },
+      {
+        "id": 2839492,
+        "date": "2007-04-23T04:44:58-05:00"
+      },
+      {
+        "id": 2839504,
+        "date": "2007-05-08T09:32:58-05:00"
+      },
+      {
+        "id": 2839516,
+        "date": "2007-05-14T11:28:10-05:00"
+      },
+      {
+        "id": 2839528,
+        "date": "2007-05-20T13:23:22-05:00"
+      },
+      {
+        "id": 2892634,
+        "date": "2006-11-11T13:50:44-06:00"
+      },
+      {
+        "id": 2892635,
+        "date": "2005-11-15T20:19:00-06:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 299,
+    "url": "https://www.wowhead.com/forever/npc=299",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "1b73a9c059c01f5cda16446cb3869f337f1421ad64bbd2cf56df515e0cee9f6e",
+    "facts": {
+      "name": "Young Wolf",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.484,
+          "y": 0.37799999999999995,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.47,
+          "y": 0.434,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.52,
+          "y": 0.41600000000000004,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.414,
+          "y": 0.58,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.426,
+          "y": 0.624,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 1,
+      "maxlevel": 1,
+      "classification": 0
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 2827644,
+        "date": "2006-05-24T13:43:45-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 327,
+    "url": "https://www.wowhead.com/forever/npc=327",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "629057417a8e3dfed2989791dc12535cad751e59e1d9a497423870d0289ceaec",
+    "facts": {
+      "name": "Goldtooth",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.414,
+          "y": 0.78,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 8,
+      "maxlevel": 8,
+      "classification": 0
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 2808694,
+        "date": "2005-03-11T05:02:40-06:00"
+      },
+      {
+        "id": 2808755,
+        "date": "2006-09-09T17:02:40-05:00"
+      },
+      {
+        "id": 2808778,
+        "date": "2007-04-22T23:45:52-05:00"
+      },
+      {
+        "id": 2892693,
+        "date": "2004-09-03T10:13:43-05:00"
+      },
+      {
+        "id": 3152338,
+        "date": "2019-09-05T01:21:30-05:00"
+      },
+      {
+        "id": 3371691,
+        "date": "2021-03-30T16:32:39-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 332,
+    "url": "https://www.wowhead.com/forever/npc=332",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "4501d98f2dd3f42d524adea14a4d411735fda324e391d6a944356177fc6000d9",
+    "facts": {
+      "name": "Master Mathias Shaw <Leader of SI:7>",
+      "locations": [
+        {
+          "mapID": 1453,
+          "x": 0.758,
+          "y": 0.598,
+          "sourceAreaID": 1519,
+          "sourceZone": "Stormwind City"
+        },
+        {
+          "mapID": 1453,
+          "x": 0.784,
+          "y": 0.706,
+          "sourceAreaID": 1519,
+          "sourceZone": "Stormwind City"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 62,
+      "maxlevel": 62,
+      "classification": 0
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 1968,
+        "date": "2006-10-16T16:39:31-05:00"
+      },
+      {
+        "id": 15876,
+        "date": "2006-12-15T13:01:46-06:00"
+      },
+      {
+        "id": 18039,
+        "date": "2006-12-26T16:09:16-06:00"
+      },
+      {
+        "id": 2839822,
+        "date": "2004-11-21T17:02:55-06:00"
+      },
+      {
+        "id": 2839875,
+        "date": "2004-12-28T05:02:55-06:00"
+      },
+      {
+        "id": 2839888,
+        "date": "2005-02-02T17:02:55-06:00"
+      },
+      {
+        "id": 2892700,
+        "date": "2005-09-19T16:56:13-05:00"
+      },
+      {
+        "id": 2892701,
+        "date": "2005-03-09T12:43:43-06:00"
+      },
+      {
+        "id": 2892703,
+        "date": "2005-10-23T14:16:06-05:00"
+      },
+      {
+        "id": 2892704,
+        "date": "2007-02-01T07:19:45-06:00"
+      },
+      {
+        "id": 2892705,
+        "date": "2004-12-03T10:51:07-06:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 448,
+    "url": "https://www.wowhead.com/forever/npc=448",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "6cd323933fe407624fd7ebbd5377f9192467e449f319758ee94bc5771c2dc632",
+    "facts": {
+      "name": "Hogger",
+      "locations": [
+        {
+          "mapID": 1426,
+          "x": 0.29600000000000004,
+          "y": 0.7140000000000001,
+          "sourceAreaID": 1,
+          "sourceZone": "Dun Morogh"
+        },
+        {
+          "mapID": 1426,
+          "x": 0.34,
+          "y": 0.716,
+          "sourceAreaID": 1,
+          "sourceZone": "Dun Morogh"
+        },
+        {
+          "mapID": 1431,
+          "x": 0.126,
+          "y": 0.242,
+          "sourceAreaID": 10,
+          "sourceZone": "Duskwood"
+        },
+        {
+          "mapID": 1431,
+          "x": 0.07400000000000001,
+          "y": 0.29,
+          "sourceAreaID": 10,
+          "sourceZone": "Duskwood"
+        },
+        {
+          "mapID": 1431,
+          "x": 0.11,
+          "y": 0.304,
+          "sourceAreaID": 10,
+          "sourceZone": "Duskwood"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.27,
+          "y": 0.9259999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.264,
+          "y": 0.872,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1411,
+          "x": 0.442,
+          "y": 0.6779999999999999,
+          "sourceAreaID": 14,
+          "sourceZone": "Durotar"
+        },
+        {
+          "mapID": 1436,
+          "x": 0.644,
+          "y": 0.262,
+          "sourceAreaID": 40,
+          "sourceZone": "Westfall"
+        },
+        {
+          "mapID": 1436,
+          "x": 0.63,
+          "y": 0.3,
+          "sourceAreaID": 40,
+          "sourceZone": "Westfall"
+        },
+        {
+          "mapID": 1420,
+          "x": 0.608,
+          "y": 0.584,
+          "sourceAreaID": 85,
+          "sourceZone": "Tirisfal Glades"
+        },
+        {
+          "mapID": 1420,
+          "x": 0.382,
+          "y": 0.568,
+          "sourceAreaID": 85,
+          "sourceZone": "Tirisfal Glades"
+        },
+        {
+          "mapID": 1438,
+          "x": 0.594,
+          "y": 0.434,
+          "sourceAreaID": 141,
+          "sourceZone": "Teldrassil"
+        },
+        {
+          "mapID": 1438,
+          "x": 0.6,
+          "y": 0.428,
+          "sourceAreaID": 141,
+          "sourceZone": "Teldrassil"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 11,
+      "maxlevel": 11,
+      "classification": 1
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 4479,
+        "date": "2006-11-25T20:11:41-06:00"
+      },
+      {
+        "id": 5975,
+        "date": "2006-12-05T09:43:59-06:00"
+      },
+      {
+        "id": 7076,
+        "date": "2006-12-06T06:59:17-06:00"
+      },
+      {
+        "id": 8761,
+        "date": "2006-12-07T15:28:40-06:00"
+      },
+      {
+        "id": 11684,
+        "date": "2006-12-08T19:41:18-06:00"
+      },
+      {
+        "id": 11687,
+        "date": "2006-12-08T19:48:03-06:00"
+      },
+      {
+        "id": 11703,
+        "date": "2006-12-08T20:09:36-06:00"
+      },
+      {
+        "id": 11717,
+        "date": "2006-12-08T20:35:03-06:00"
+      },
+      {
+        "id": 17990,
+        "date": "2006-12-26T02:24:57-06:00"
+      },
+      {
+        "id": 67901,
+        "date": "2007-04-16T00:57:29-05:00"
+      },
+      {
+        "id": 80601,
+        "date": "2007-05-09T21:57:03-05:00"
+      },
+      {
+        "id": 2832895,
+        "date": "2007-04-23T23:04:58-05:00"
+      },
+      {
+        "id": 2892843,
+        "date": "2006-05-01T02:16:49-05:00"
+      },
+      {
+        "id": 2892844,
+        "date": "2007-03-18T21:17:40-05:00"
+      },
+      {
+        "id": 2892845,
+        "date": "2006-10-20T07:33:24-05:00"
+      },
+      {
+        "id": 2892846,
+        "date": "2007-02-20T03:01:31-06:00"
+      },
+      {
+        "id": 2892847,
+        "date": "2007-02-20T23:14:27-06:00"
+      },
+      {
+        "id": 2892849,
+        "date": "2005-03-24T19:15:06-06:00"
+      },
+      {
+        "id": 2892850,
+        "date": "2006-12-03T03:17:33-06:00"
+      },
+      {
+        "id": 2892854,
+        "date": "2006-04-27T19:24:01-05:00"
+      },
+      {
+        "id": 2892858,
+        "date": "2006-10-09T16:57:38-05:00"
+      },
+      {
+        "id": 2892859,
+        "date": "2007-02-01T11:37:10-06:00"
+      },
+      {
+        "id": 2892860,
+        "date": "2005-08-31T19:20:36-05:00"
+      },
+      {
+        "id": 2892861,
+        "date": "2006-01-15T19:32:52-06:00"
+      },
+      {
+        "id": 2892862,
+        "date": "2006-06-14T06:30:15-05:00"
+      },
+      {
+        "id": 2892863,
+        "date": "2006-10-24T06:05:02-05:00"
+      },
+      {
+        "id": 2892864,
+        "date": "2006-10-24T06:06:54-05:00"
+      },
+      {
+        "id": 2892868,
+        "date": "2006-12-06T20:08:55-06:00"
+      },
+      {
+        "id": 2892870,
+        "date": "2006-04-10T19:52:33-05:00"
+      },
+      {
+        "id": 2892872,
+        "date": "2006-10-19T10:39:19-05:00"
+      },
+      {
+        "id": 2892873,
+        "date": "2006-03-16T19:47:56-06:00"
+      },
+      {
+        "id": 2892875,
+        "date": "2006-12-16T10:50:26-06:00"
+      },
+      {
+        "id": 2892876,
+        "date": "2006-04-25T21:15:39-05:00"
+      },
+      {
+        "id": 2892877,
+        "date": "2007-05-15T22:36:38-05:00"
+      },
+      {
+        "id": 2892878,
+        "date": "2005-10-04T15:59:33-05:00"
+      },
+      {
+        "id": 2892879,
+        "date": "2006-07-08T05:19:40-05:00"
+      },
+      {
+        "id": 2892884,
+        "date": "2006-04-18T10:26:09-05:00"
+      },
+      {
+        "id": 2892885,
+        "date": "2006-05-03T13:36:12-05:00"
+      },
+      {
+        "id": 2892886,
+        "date": "2006-10-22T15:55:57-05:00"
+      },
+      {
+        "id": 2892887,
+        "date": "2006-04-24T02:16:36-05:00"
+      },
+      {
+        "id": 2892888,
+        "date": "2005-12-29T06:38:35-06:00"
+      },
+      {
+        "id": 2892890,
+        "date": "2006-10-17T08:30:00-05:00"
+      },
+      {
+        "id": 2892891,
+        "date": "2006-10-28T11:11:58-05:00"
+      },
+      {
+        "id": 2892892,
+        "date": "2007-04-27T16:31:21-05:00"
+      },
+      {
+        "id": 3210065,
+        "date": "2020-06-01T05:06:18-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 471,
+    "url": "https://www.wowhead.com/forever/npc=471",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "4da5d6e6ae3f58583cae78ba8cf698b02fe68f94c5fc7e5554752878e8804487",
+    "facts": {
+      "name": "Mother Fang",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.614,
+          "y": 0.474,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 7,
+      "maxlevel": 10,
+      "classification": 1
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 2834599,
+        "date": "2004-10-10T04:27:25-05:00"
+      },
+      {
+        "id": 2834633,
+        "date": "2006-01-27T16:27:25-06:00"
+      },
+      {
+        "id": 2834645,
+        "date": "2006-01-27T16:27:25-06:00"
+      },
+      {
+        "id": 2834690,
+        "date": "2006-04-10T16:27:25-05:00"
+      },
+      {
+        "id": 2834706,
+        "date": "2006-04-10T16:27:25-05:00"
+      },
+      {
+        "id": 2834717,
+        "date": "2006-05-17T04:27:25-05:00"
+      },
+      {
+        "id": 2834731,
+        "date": "2006-06-22T16:27:25-05:00"
+      },
+      {
+        "id": 2834743,
+        "date": "2006-09-03T16:27:25-05:00"
+      },
+      {
+        "id": 2834756,
+        "date": "2006-10-10T04:27:25-05:00"
+      },
+      {
+        "id": 2834768,
+        "date": "2007-03-05T04:27:25-06:00"
+      },
+      {
+        "id": 2834783,
+        "date": "2007-03-05T04:27:25-06:00"
+      },
+      {
+        "id": 2834795,
+        "date": "2007-04-10T16:27:25-05:00"
+      },
+      {
+        "id": 2834808,
+        "date": "2007-05-17T04:27:25-05:00"
+      },
+      {
+        "id": 2834822,
+        "date": "2007-05-17T04:27:25-05:00"
+      },
+      {
+        "id": 2893007,
+        "date": "2005-04-18T01:48:47-05:00"
+      },
+      {
+        "id": 2893008,
+        "date": "2005-06-01T15:21:18-05:00"
+      },
+      {
+        "id": 2893009,
+        "date": "2006-04-27T03:01:16-05:00"
+      },
+      {
+        "id": 2893010,
+        "date": "2007-03-23T04:41:37-05:00"
+      },
+      {
+        "id": 2893011,
+        "date": "2005-10-12T00:33:31-05:00"
+      },
+      {
+        "id": 2893012,
+        "date": "2006-06-28T23:17:40-05:00"
+      },
+      {
+        "id": 2893013,
+        "date": "2006-10-11T22:55:30-05:00"
+      },
+      {
+        "id": 2893014,
+        "date": "2005-04-03T23:28:41-05:00"
+      },
+      {
+        "id": 2893015,
+        "date": "2006-04-28T06:34:13-05:00"
+      },
+      {
+        "id": 2893016,
+        "date": "2005-10-05T05:08:23-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 473,
+    "url": "https://www.wowhead.com/forever/npc=473",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "89e1456d4d2abcf0a1cc6845777586d06463358d1e0f3d3a50815db09139fd59",
+    "facts": {
+      "name": "Morgan the Collector",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.7040000000000001,
+          "y": 0.794,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.71,
+          "y": 0.8059999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.69,
+          "y": 0.785,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 10,
+      "maxlevel": 10,
+      "classification": 0
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 78532,
+        "date": "2007-05-06T06:40:16-05:00"
+      },
+      {
+        "id": 2825849,
+        "date": "2005-05-03T07:13:39-05:00"
+      },
+      {
+        "id": 2825870,
+        "date": "2005-11-01T19:13:39-06:00"
+      },
+      {
+        "id": 2825885,
+        "date": "2006-03-27T19:13:39-06:00"
+      },
+      {
+        "id": 2893023,
+        "date": "2007-03-24T08:21:20-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 474,
+    "url": "https://www.wowhead.com/forever/npc=474",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "8892bcb3116e09760fbb5a6fe487e038755cdc69d6821a5ad4eb3f33fbc0f91a",
+    "facts": {
+      "name": "Defias Rogue Wizard",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.7440000000000001,
+          "y": 0.536,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.746,
+          "y": 0.49200000000000005,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.284,
+          "y": 0.594,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.28800000000000003,
+          "y": 0.622,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.524,
+          "y": 0.59,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.504,
+          "y": 0.83,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 9,
+      "maxlevel": 10,
+      "classification": 0
+    },
+    "relations": {
+      "objective-of": {
+        "template": "quest",
+        "rows": [
+          {
+            "id": 91724,
+            "name": "Delicate Instruments",
+            "level": 10
+          }
+        ]
+      }
+    },
+    "comments": [
+      {
+        "id": 2842070,
+        "date": "2005-01-30T07:59:47-06:00"
+      },
+      {
+        "id": 2893024,
+        "date": "2006-03-26T19:48:55-06:00"
+      },
+      {
+        "id": 2893025,
+        "date": "2006-05-20T18:09:36-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 476,
+    "url": "https://www.wowhead.com/forever/npc=476",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "c97dbe1c2e1143dd21714bff471098d75264ef96470497b832d0cf925632bf80",
+    "facts": {
+      "name": "Kobold Geomancer",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.622,
+          "y": 0.5539999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.607,
+          "y": 0.496,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 7,
+      "maxlevel": 8,
+      "classification": 0
+    },
+    "relations": {
+      "objective-of": {
+        "template": "quest",
+        "rows": [
+          {
+            "id": 91723,
+            "name": "Delicate Instruments",
+            "level": 10
+          }
+        ]
+      }
+    },
+    "comments": []
+  },
+  {
+    "kind": "npc",
+    "entityID": 478,
+    "url": "https://www.wowhead.com/forever/npc=478",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "de10d10861fd8e6cc379989e27901ccb9c38c75cee0c276f8dee9e8a5d1a47e9",
+    "facts": {
+      "name": "Riverpaw Outrunner",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.27,
+          "y": 0.856,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.262,
+          "y": 0.9259999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.688,
+          "y": 0.424,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.706,
+          "y": 0.37799999999999995,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.682,
+          "y": 0.377,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.6859999999999999,
+          "y": 0.546,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.27399999999999997,
+          "y": 0.7979999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.773,
+          "y": 0.40700000000000003,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 9,
+      "maxlevel": 10,
+      "classification": 0
+    },
+    "relations": {},
+    "comments": []
+  },
+  {
+    "kind": "npc",
+    "entityID": 525,
+    "url": "https://www.wowhead.com/forever/npc=525",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "d2cd2e43750451ee5063838ded159c303450f12de551fd35dba0eb4fc3dcfc93",
+    "facts": {
+      "name": "Mangy Wolf",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.34600000000000003,
+          "y": 0.654,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.528,
+          "y": 0.626,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.47200000000000003,
+          "y": 0.6679999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.266,
+          "y": 0.752,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.444,
+          "y": 0.574,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.344,
+          "y": 0.736,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.332,
+          "y": 0.574,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.526,
+          "y": 0.7120000000000001,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.564,
+          "y": 0.59,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.28600000000000003,
+          "y": 0.682,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 5,
+      "maxlevel": 6,
+      "classification": 0
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 2893257,
+        "date": "2005-04-02T15:04:33-06:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 735,
+    "url": "https://www.wowhead.com/forever/npc=735",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "8d6bc05ae23cb07c0271d5315d08f8c0bfefe83e85a525de56f601f8574063fd",
+    "facts": {
+      "name": "Murloc Streamrunner",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.526,
+          "y": 0.6559999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.494,
+          "y": 0.664,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 6,
+      "maxlevel": 7,
+      "classification": 0
+    },
+    "relations": {
+      "objective-of": {
+        "template": "quest",
+        "rows": [
+          {
+            "id": 99128,
+            "name": "Slimy Menace",
+            "level": 7
+          }
+        ]
+      }
+    },
+    "comments": []
+  },
+  {
+    "kind": "npc",
+    "entityID": 822,
+    "url": "https://www.wowhead.com/forever/npc=822",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "2ec4da52fdc5cfa2edec5d1ad2510a4e0cf5d27eeb823c5538f343842f8c6b13",
+    "facts": {
+      "name": "Young Forest Bear",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.8740000000000001,
+          "y": 0.6559999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.634,
+          "y": 0.768,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.782,
+          "y": 0.616,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.258,
+          "y": 0.8440000000000001,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.768,
+          "y": 0.7659999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.45799999999999996,
+          "y": 0.8540000000000001,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.818,
+          "y": 0.59,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.384,
+          "y": 0.894,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.446,
+          "y": 0.778,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.856,
+          "y": 0.77,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.254,
+          "y": 0.9079999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.648,
+          "y": 0.634,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.228,
+          "y": 0.7559999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.502,
+          "y": 0.738,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.7340000000000001,
+          "y": 0.804,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.532,
+          "y": 0.84,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 8,
+      "maxlevel": 9,
+      "classification": 0
+    },
+    "relations": {
+      "objective-of": {
+        "template": "quest",
+        "rows": [
+          {
+            "id": 52,
+            "name": "Protect the Frontier",
+            "level": 10
+          }
+        ]
+      }
+    },
+    "comments": [
+      {
+        "id": 2894236,
+        "date": "2005-09-15T03:11:47-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 823,
+    "url": "https://www.wowhead.com/forever/npc=823",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "41a0c9ab49a1b26b611e1262a600663dfbe68023e2a4cebece2a6fe23ef0934b",
+    "facts": {
+      "name": "Deputy Willem",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.48200000000000004,
+          "y": 0.428,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 1,
+      "maxlevel": 18,
+      "classification": 0
+    },
+    "relations": {},
+    "comments": []
+  },
+  {
+    "kind": "npc",
+    "entityID": 911,
+    "url": "https://www.wowhead.com/forever/npc=911",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "2b2670420ef7bef3c57b0842f40f6cbe24e5d20faaaa6afb632f77acf6327037",
+    "facts": {
+      "name": "Llane Beshere <Warrior Trainer>",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.502,
+          "y": 0.42200000000000004,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 5,
+      "maxlevel": 5,
+      "classification": 0
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 3146816,
+        "date": "2019-08-11T19:28:27-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 915,
+    "url": "https://www.wowhead.com/forever/npc=915",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "0424bc58a1113324f12addc5cbc7725e03458fa19f8a589e81523729c4e0410f",
+    "facts": {
+      "name": "Jorik Kerridan <Rogue Trainer>",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.504,
+          "y": 0.39799999999999996,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.506,
+          "y": 0.4,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 5,
+      "maxlevel": 5,
+      "classification": 0
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 3146823,
+        "date": "2019-08-11T20:22:32-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 917,
+    "url": "https://www.wowhead.com/forever/npc=917",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "00f334ac7c60c611dda3075bbc13816b7c55e6fab63ae3b9fa977a646718d740",
+    "facts": {
+      "name": "Keryn Sylvius <Rogue Trainer>",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.43799999999999994,
+          "y": 0.6579999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 11,
+      "maxlevel": 11,
+      "classification": 0
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 3146680,
+        "date": "2019-08-11T08:18:45-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 955,
+    "url": "https://www.wowhead.com/forever/npc=955",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "44a108976fa60e0f1d0b76433694d0ec93bf09308874a1bb79ef45e1314eb165",
+    "facts": {
+      "name": "Sergeant De Vries <Morale Officer>",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.24,
+          "y": 0.73,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 10,
+      "maxlevel": 10,
+      "classification": 0
+    },
+    "relations": {},
+    "comments": []
+  },
+  {
+    "kind": "npc",
+    "entityID": 1922,
+    "url": "https://www.wowhead.com/forever/npc=1922",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "a07e8c7abdd087f5d72f19cf1dcda090e749ca024b69f0e90d6cd4a1c541ffbf",
+    "facts": {
+      "name": "Gray Forest Wolf",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.652,
+          "y": 0.644,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.7340000000000001,
+          "y": 0.636,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.594,
+          "y": 0.6559999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.662,
+          "y": 0.584,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.612,
+          "y": 0.706,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 7,
+      "maxlevel": 8,
+      "classification": 0
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 2896006,
+        "date": "2005-09-15T03:09:16-05:00"
+      },
+      {
+        "id": 2896007,
+        "date": "2006-05-10T06:30:58-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 6090,
+    "url": "https://www.wowhead.com/forever/npc=6090",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "75649ec151c1a607f8bb5cfa6d3ff80e944c5d7c3029568ba4965cf19d7e8f4b",
+    "facts": {
+      "name": "Bartleby <Drunk>",
+      "locations": [
+        {
+          "mapID": 1453,
+          "x": 0.738,
+          "y": 0.366,
+          "sourceAreaID": 1519,
+          "sourceZone": "Stormwind City"
+        },
+        {
+          "mapID": 1453,
+          "x": 0.768,
+          "y": 0.528,
+          "sourceAreaID": 1519,
+          "sourceZone": "Stormwind City"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 10,
+      "maxlevel": 10,
+      "classification": 0
+    },
+    "relations": {},
+    "comments": []
+  },
+  {
+    "kind": "npc",
+    "entityID": 6113,
+    "url": "https://www.wowhead.com/forever/npc=6113",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "a6cbe26efbb7559ea6d420d728e7dc9bfbcdedc4d6125b029f8c808f4597491b",
+    "facts": {
+      "name": "Vejrek",
+      "locations": [
+        {
+          "mapID": 1426,
+          "x": 0.27399999999999997,
+          "y": 0.5760000000000001,
+          "sourceAreaID": 1,
+          "sourceZone": "Dun Morogh"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 11,
+      "maxlevel": 11,
+      "classification": 0
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 2810652,
+        "date": "2006-02-09T23:20:53-06:00"
+      },
+      {
+        "id": 2810661,
+        "date": "2006-04-23T23:20:53-05:00"
+      },
+      {
+        "id": 2810674,
+        "date": "2006-04-23T23:20:53-05:00"
+      },
+      {
+        "id": 2810696,
+        "date": "2006-04-23T23:20:53-05:00"
+      },
+      {
+        "id": 2810707,
+        "date": "2007-02-09T23:20:53-06:00"
+      },
+      {
+        "id": 2810717,
+        "date": "2007-03-18T11:20:53-05:00"
+      },
+      {
+        "id": 2810729,
+        "date": "2007-05-03T07:01:41-05:00"
+      },
+      {
+        "id": 2904636,
+        "date": "2006-11-12T02:47:47-06:00"
+      },
+      {
+        "id": 2904637,
+        "date": "2006-05-14T03:01:53-05:00"
+      },
+      {
+        "id": 2904638,
+        "date": "2006-09-09T20:19:24-05:00"
+      },
+      {
+        "id": 2904639,
+        "date": "2006-04-14T17:34:14-05:00"
+      },
+      {
+        "id": 2904640,
+        "date": "2006-11-12T02:51:22-06:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 6128,
+    "url": "https://www.wowhead.com/forever/npc=6128",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "69d66b76afb4bddd3c982349b4eb11f0b54a409d01ea53c8d9d376590a8e5861",
+    "facts": {
+      "name": "Vorlus Vilehoof",
+      "locations": [
+        {
+          "mapID": 1438,
+          "x": 0.47200000000000003,
+          "y": 0.636,
+          "sourceAreaID": 141,
+          "sourceZone": "Teldrassil"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 10,
+      "maxlevel": 10,
+      "classification": 0
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 29044,
+        "date": "2007-02-01T16:56:36-06:00"
+      },
+      {
+        "id": 67819,
+        "date": "2007-04-15T20:35:34-05:00"
+      },
+      {
+        "id": 2836651,
+        "date": "2006-03-27T21:14:39-06:00"
+      },
+      {
+        "id": 2836665,
+        "date": "2006-08-20T21:14:39-05:00"
+      },
+      {
+        "id": 2836677,
+        "date": "2007-04-12T06:50:39-05:00"
+      },
+      {
+        "id": 3206730,
+        "date": "2020-05-15T19:11:16-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 11072,
+    "url": "https://www.wowhead.com/forever/npc=11072",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "060bb2725dd9b21516858c6b30acaf9b95ed0725c1ff799c8494fb778707add3",
+    "facts": {
+      "name": "Kitta Firewind <Artisan Enchanter>",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.648,
+          "y": 0.7040000000000001,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 44,
+      "maxlevel": 44,
+      "classification": 0
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 2842700,
+        "date": "2005-07-31T10:58:35-05:00"
+      },
+      {
+        "id": 2842721,
+        "date": "2006-06-24T22:58:35-05:00"
+      },
+      {
+        "id": 2842735,
+        "date": "2006-10-12T10:58:35-05:00"
+      },
+      {
+        "id": 2911961,
+        "date": "2005-08-01T07:24:23-05:00"
+      },
+      {
+        "id": 2911962,
+        "date": "2007-05-15T02:25:06-05:00"
+      },
+      {
+        "id": 2911963,
+        "date": "2005-08-06T16:22:40-05:00"
+      },
+      {
+        "id": 2911964,
+        "date": "2006-05-11T08:03:09-05:00"
+      },
+      {
+        "id": 2911966,
+        "date": "2006-02-16T00:59:59-06:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 12423,
+    "url": "https://www.wowhead.com/forever/npc=12423",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "c06226725bed18425ed0a93eccc426652d088417f4d06305e5180dc2ad10356f",
+    "facts": {
+      "name": "Guard Roberts",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.48,
+          "y": 0.6759999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 7,
+      "maxlevel": 7,
+      "classification": 0
+    },
+    "relations": {
+      "objective-of": {
+        "template": "quest",
+        "rows": [
+          {
+            "id": 5624,
+            "name": "Garments of the Light",
+            "level": 4
+          }
+        ]
+      }
+    },
+    "comments": [
+      {
+        "id": 2843097,
+        "date": "2006-03-06T09:02:20-06:00"
+      },
+      {
+        "id": 2843114,
+        "date": "2006-06-23T21:02:20-05:00"
+      },
+      {
+        "id": 2843127,
+        "date": "2007-05-18T09:02:20-05:00"
+      },
+      {
+        "id": 2914625,
+        "date": "2005-10-08T11:08:07-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 248278,
+    "url": "https://www.wowhead.com/forever/npc=248278",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "a63b178a3f36c47062c2f03085399b3584584ca40c3499a361552cc747091337",
+    "facts": {
+      "name": "Croaky",
+      "locations": [
+        {
+          "mapID": 1431,
+          "x": 0.732,
+          "y": 0.14400000000000002,
+          "sourceAreaID": 10,
+          "sourceZone": "Duskwood"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.764,
+          "y": 0.86,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 11,
+      "maxlevel": 11,
+      "classification": 1
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 6436572,
+        "date": "2026-09-26T15:10:23-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 248362,
+    "url": "https://www.wowhead.com/forever/npc=248362",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "d4c7ee0ef7242c8144d41e5c044af1681c7c681bb24b5e18798c45ba75d8671d",
+    "facts": {
+      "name": "Shinyfinder Narf",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.49,
+          "y": 0.28800000000000003,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 3,
+      "maxlevel": 3,
+      "classification": 1
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 6438733,
+        "date": "2026-09-30T12:52:46-05:00"
+      },
+      {
+        "id": 6442128,
+        "date": "2026-10-07T06:59:10-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "npc",
+    "entityID": 248464,
+    "url": "https://www.wowhead.com/forever/npc=248464",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "03ce7f61ee9209a7e21c77536b032f61ced3612839440a95714f8ab05fae3b07",
+    "facts": {
+      "name": "Nimsy <Apprentice Geosculptor>",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.39,
+          "y": 0.8079999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.408,
+          "y": 0.8059999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.397,
+          "y": 0.7929999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.41600000000000004,
+          "y": 0.7979999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 6,
+      "maxlevel": 6,
+      "classification": 1
+    },
+    "relations": {},
+    "comments": []
+  },
+  {
+    "kind": "npc",
+    "entityID": 248474,
+    "url": "https://www.wowhead.com/forever/npc=248474",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "c98786073191be2f8d11c93b270881b824a0bd75338fbfeb3681e4989258edaa",
+    "facts": {
+      "name": "Geosculptor Yip",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.614,
+          "y": 0.48200000000000004,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.609,
+          "y": 0.512,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 7,
+      "maxlevel": 7,
+      "classification": 1
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 6436348,
+        "date": "2026-09-26T07:59:39-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "entityID": 83763,
+    "url": "https://www.wowhead.com/forever/object=83763",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "d19ae0d09406ce0ad71873245d85f737a1e9d56c1265508499ab80095e0bced3",
+    "facts": {
+      "name": "Stolen Books",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.5670000000000001,
+          "y": 0.44,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever"
+    },
+    "relations": {},
+    "comments": [
+      {
+        "id": 2883009,
+        "date": "2006-10-22T10:13:08-05:00"
+      }
+    ]
+  },
+  {
+    "kind": "object",
+    "entityID": 85563,
+    "url": "https://www.wowhead.com/forever/object=85563",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "2d3742bf344590b5d14fbbd1cad50974c7e69ae219e8a22556169e3f59640392",
+    "facts": {
+      "name": "Dead-tooth's Strongbox",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.893,
+          "y": 0.79,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever"
+    },
+    "relations": {},
+    "comments": []
+  },
+  {
+    "kind": "object",
+    "entityID": 161557,
+    "url": "https://www.wowhead.com/forever/object=161557",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "e811b53aa87390cc77208f763cfb32f0d4a2afc699a0b21c60cd36592a4347c7",
+    "facts": {
+      "name": "Milly's Harvest",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.54,
+          "y": 0.488,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.539,
+          "y": 0.504,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever"
+    },
+    "relations": {},
+    "comments": []
+  },
+  {
+    "kind": "object",
+    "entityID": 176793,
+    "url": "https://www.wowhead.com/forever/object=176793",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "7a145923d198bf496ddf410707f714ad7c329cdda5f2e2922bbbca3bd2c19842",
+    "facts": {
+      "name": "Bundle of Wood",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.82,
+          "y": 0.609,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.784,
+          "y": 0.624,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.805,
+          "y": 0.5529999999999999,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.799,
+          "y": 0.5670000000000001,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever"
+    },
+    "relations": {},
+    "comments": []
+  },
+  {
+    "kind": "object",
+    "entityID": 561159,
+    "url": "https://www.wowhead.com/forever/object=561159",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "d61dfc376528708b4eb73f45308aa3fbbb08d8a394158d101ce051ded4475764",
+    "facts": {
+      "name": "Stolen Enchanting Supplies",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.674,
+          "y": 0.42700000000000005,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.6779999999999999,
+          "y": 0.392,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.688,
+          "y": 0.51,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever"
+    },
+    "relations": {},
+    "comments": []
+  },
+  {
+    "kind": "object",
+    "entityID": 562103,
+    "url": "https://www.wowhead.com/forever/object=562103",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "725a8c3048e8f404ae9c790c7087a5b28656a663fa468dcfa4991c0a838fe48b",
+    "facts": {
+      "name": "Waterlogged Saw",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.742,
+          "y": 0.763,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever"
+    },
+    "relations": {},
+    "comments": []
+  },
+  {
+    "kind": "object",
+    "entityID": 562105,
+    "url": "https://www.wowhead.com/forever/object=562105",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "6649a6a06f502ed83a7685af89a6502f43496245e5091d931f081d8b6627ed06",
+    "facts": {
+      "name": "Waterlogged Axe",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.767,
+          "y": 0.8240000000000001,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever"
+    },
+    "relations": {},
+    "comments": []
+  },
+  {
+    "kind": "object",
+    "entityID": 562106,
+    "url": "https://www.wowhead.com/forever/object=562106",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "6114dbf74c24ad7dfd4525bbab76614e50f2dd30c915a32bb5566cab34b19c86",
+    "facts": {
+      "name": "Waterlogged Toolbox",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.775,
+          "y": 0.868,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever"
+    },
+    "relations": {},
+    "comments": []
+  },
+  {
+    "kind": "object",
+    "entityID": 562114,
+    "url": "https://www.wowhead.com/forever/object=562114",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "149a61f9bb85b32677f84ecb74d93aa2420c3acd8eb55bf5ac893eb3b1dcd3ca",
+    "facts": {
+      "name": "Mining Tools",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.615,
+          "y": 0.515,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever"
+    },
+    "relations": {},
+    "comments": []
+  },
+  {
+    "kind": "object",
+    "entityID": 562131,
+    "url": "https://www.wowhead.com/forever/object=562131",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "76f93ef3d4deabeb2f19bcaddf2355a0d454218c52ca3ee418b3dc95debba65c",
+    "facts": {
+      "name": "Applejack Still",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.245,
+          "y": 0.5820000000000001,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever"
+    },
+    "relations": {},
+    "comments": []
+  },
+  {
+    "kind": "object",
+    "entityID": 694772,
+    "url": "https://www.wowhead.com/forever/object=694772",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "80bd5d38cae40f3110233dbd2dcb90f52a63b17581764e9c882598b146d04032",
+    "facts": {
+      "name": "Fishing Trap",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.488,
+          "y": 0.66,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.485,
+          "y": 0.594,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever"
+    },
+    "relations": {},
+    "comments": []
+  },
+  {
+    "kind": "object",
+    "entityID": 694785,
+    "url": "https://www.wowhead.com/forever/object=694785",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "24d393e7bb5462f0d7e5f9165c7a5939c877337956faa5aa65fa216b53542d83",
+    "facts": {
+      "name": "Junk Pile",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.556,
+          "y": 0.67,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever"
+    },
+    "relations": {},
+    "comments": []
+  },
+  {
+    "kind": "object",
+    "entityID": 694855,
+    "url": "https://www.wowhead.com/forever/object=694855",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "24ba829c3173288b629eaa86ff8846dde873d386521b0a6dd736385df9d411ff",
+    "facts": {
+      "name": "Overgrown Duskweed",
+      "locations": [
+        {
+          "mapID": 1429,
+          "x": 0.413,
+          "y": 0.8690000000000001,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        },
+        {
+          "mapID": 1429,
+          "x": 0.33399999999999996,
+          "y": 0.8540000000000001,
+          "sourceAreaID": 12,
+          "sourceZone": "Elwynn Forest"
+        }
+      ],
+      "source": "Wowhead Forever"
+    },
+    "relations": {},
+    "comments": []
+  }
+]

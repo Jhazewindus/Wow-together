@@ -1,0 +1,2338 @@
+{
+  "records": {
+    "136": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1436,
+        "zone": "Westfall",
+        "requirements": {},
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "object",
+            "mapID": 1436,
+            "name": "Captain's Footlocker",
+            "y": 0.4775,
+            "entityID": 35,
+            "x": 0.2591,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 40
+          }
+        ],
+        "objectives": {},
+        "level": 16,
+        "areaID": 40,
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1436,
+            "action": "start-item",
+            "entityID": 126,
+            "npc": true,
+            "sourceAction": "loot",
+            "x": 0.42200000000000004,
+            "itemID": 1357,
+            "y": 0.114,
+            "sourceAreaID": 40,
+            "sourceZone": "Westfall",
+            "itemName": "Captain Sander's Treasure Map",
+            "name": "Murloc Coastrunner"
+          }
+        ],
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "side": "Both",
+        "raceMask": 0,
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "object",
+            "name": "Captain's Footlocker",
+            "entityID": 35
+          }
+        ],
+        "xp": 580,
+        "startRefs": [
+          {
+            "entityType": "item",
+            "name": "Captain Sander's Treasure Map",
+            "entityID": 1357
+          }
+        ],
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": {},
+        "minLevel": 10,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "title": "Captain Sander's Hidden Treasure",
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "item",
+              "name": "Captain Sander's Treasure Map",
+              "entityID": 1357
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "object",
+              "name": "Captain's Footlocker",
+              "entityID": 35
+            }
+          ]
+        },
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "categoryPath": "eastern-kingdoms/westfall"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1436,
+        "zone": "Westfall",
+        "requirements": {},
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "objectives": {},
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "object",
+            "mapID": 1436,
+            "action": "interact",
+            "entityID": 35,
+            "y": 0.4775,
+            "x": 0.2591,
+            "name": "Captain's Footlocker",
+            "sourceAreaID": 40,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1436,
+            "action": "start-item",
+            "entityID": 126,
+            "npc": true,
+            "sourceAction": "loot",
+            "x": 0.42200000000000004,
+            "itemID": 1357,
+            "y": 0.114,
+            "sourceAreaID": 40,
+            "sourceZone": "Westfall",
+            "itemName": "Captain Sander's Treasure Map",
+            "name": "Murloc Coastrunner"
+          }
+        ],
+        "level": 16,
+        "areaID": 40,
+        "title": "Captain Sander's Hidden Treasure",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 0,
+        "side": "Both",
+        "startRefs": [
+          {
+            "entityType": "item",
+            "name": "Captain Sander's Treasure Map",
+            "entityID": 1357
+          }
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "object",
+            "name": "Captain's Footlocker",
+            "entityID": 35
+          }
+        ],
+        "xp": 580,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": {},
+        "minLevel": 10,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverObjectDB.lua; Exact object return relation: interact with the treasure object, not a conversation. Keep all existing actual object points, item-start work, preceding hand-ins and distinct same-title IDs. No count or extra mandatory farm. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "item",
+              "name": "Captain Sander's Treasure Map",
+              "entityID": 1357
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "object",
+              "name": "Captain's Footlocker",
+              "entityID": 35
+            }
+          ]
+        },
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "categoryPath": "eastern-kingdoms/westfall"
+      }
+    },
+    "138": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1436,
+        "zone": "Westfall",
+        "requirements": {},
+        "objectives": {},
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "providedItems": [
+          {
+            "entityType": "item",
+            "name": "A Clue to Sander's Treasure",
+            "entityID": 1358
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "object",
+            "mapID": 1436,
+            "name": "Broken Barrel",
+            "y": 0.4779,
+            "entityID": 36,
+            "x": 0.4052,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 40
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "object",
+            "mapID": 1436,
+            "name": "Captain's Footlocker",
+            "y": 0.4775,
+            "entityID": 35,
+            "x": 0.2591,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 40
+          }
+        ],
+        "level": 16,
+        "areaID": 40,
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 0,
+        "side": "Both",
+        "prerequisiteAny": [
+          136
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "object",
+            "name": "Broken Barrel",
+            "entityID": 36
+          }
+        ],
+        "xp": 580,
+        "startRefs": [
+          {
+            "entityType": "object",
+            "name": "Captain's Footlocker",
+            "entityID": 35
+          }
+        ],
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": {},
+        "minLevel": 10,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "title": "Captain Sander's Hidden Treasure",
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "object",
+              "name": "Captain's Footlocker",
+              "entityID": 35
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "name": "A Clue to Sander's Treasure",
+              "entityID": 1358
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "object",
+              "name": "Broken Barrel",
+              "entityID": 36
+            }
+          ]
+        },
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "categoryPath": "eastern-kingdoms/westfall"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1436,
+        "zone": "Westfall",
+        "requirements": {},
+        "objectives": {},
+        "providedItems": [
+          {
+            "entityType": "item",
+            "name": "A Clue to Sander's Treasure",
+            "entityID": 1358
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "starts": [
+          {
+            "entityType": "object",
+            "mapID": 1436,
+            "name": "Captain's Footlocker",
+            "y": 0.4775,
+            "entityID": 35,
+            "x": 0.2591,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 40
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "object",
+            "mapID": 1436,
+            "action": "interact",
+            "entityID": 36,
+            "y": 0.4779,
+            "x": 0.4052,
+            "name": "Broken Barrel",
+            "sourceAreaID": 40,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "title": "Captain Sander's Hidden Treasure",
+        "level": 16,
+        "areaID": 40,
+        "raceMask": 0,
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "startRefs": [
+          {
+            "entityType": "object",
+            "name": "Captain's Footlocker",
+            "entityID": 35
+          }
+        ],
+        "side": "Both",
+        "prerequisiteAny": [
+          136
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "object",
+            "name": "Broken Barrel",
+            "entityID": 36
+          }
+        ],
+        "xp": 580,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": {},
+        "minLevel": 10,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverObjectDB.lua; Exact object return relation: interact with the treasure object, not a conversation. Keep all existing actual object points, item-start work, preceding hand-ins and distinct same-title IDs. No count or extra mandatory farm. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "object",
+              "name": "Captain's Footlocker",
+              "entityID": 35
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "name": "A Clue to Sander's Treasure",
+              "entityID": 1358
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "object",
+              "name": "Broken Barrel",
+              "entityID": 36
+            }
+          ]
+        },
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "categoryPath": "eastern-kingdoms/westfall"
+      }
+    },
+    "139": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1436,
+        "zone": "Westfall",
+        "requirements": {},
+        "objectives": {},
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "providedItems": [
+          {
+            "entityType": "item",
+            "name": "Another Clue to Sander's Treasure",
+            "entityID": 1361
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "object",
+            "mapID": 1436,
+            "name": "Old Jug",
+            "y": 0.1703,
+            "entityID": 34,
+            "x": 0.40630000000000005,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 40
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "object",
+            "mapID": 1436,
+            "name": "Broken Barrel",
+            "y": 0.4779,
+            "entityID": 36,
+            "x": 0.4052,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 40
+          }
+        ],
+        "level": 16,
+        "areaID": 40,
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 0,
+        "side": "Both",
+        "prerequisiteAny": [
+          138
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "object",
+            "name": "Old Jug",
+            "entityID": 34
+          }
+        ],
+        "xp": 580,
+        "startRefs": [
+          {
+            "entityType": "object",
+            "name": "Broken Barrel",
+            "entityID": 36
+          }
+        ],
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": {},
+        "minLevel": 10,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "title": "Captain Sander's Hidden Treasure",
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "object",
+              "name": "Broken Barrel",
+              "entityID": 36
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "name": "Another Clue to Sander's Treasure",
+              "entityID": 1361
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "object",
+              "name": "Old Jug",
+              "entityID": 34
+            }
+          ]
+        },
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "categoryPath": "eastern-kingdoms/westfall"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1436,
+        "zone": "Westfall",
+        "requirements": {},
+        "objectives": {},
+        "providedItems": [
+          {
+            "entityType": "item",
+            "name": "Another Clue to Sander's Treasure",
+            "entityID": 1361
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "starts": [
+          {
+            "entityType": "object",
+            "mapID": 1436,
+            "name": "Broken Barrel",
+            "y": 0.4779,
+            "entityID": 36,
+            "x": 0.4052,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 40
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "object",
+            "mapID": 1436,
+            "action": "interact",
+            "entityID": 34,
+            "y": 0.1703,
+            "x": 0.40630000000000005,
+            "name": "Old Jug",
+            "sourceAreaID": 40,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "title": "Captain Sander's Hidden Treasure",
+        "level": 16,
+        "areaID": 40,
+        "raceMask": 0,
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "startRefs": [
+          {
+            "entityType": "object",
+            "name": "Broken Barrel",
+            "entityID": 36
+          }
+        ],
+        "side": "Both",
+        "prerequisiteAny": [
+          138
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "object",
+            "name": "Old Jug",
+            "entityID": 34
+          }
+        ],
+        "xp": 580,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": {},
+        "minLevel": 10,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverObjectDB.lua; Exact object return relation: interact with the treasure object, not a conversation. Keep all existing actual object points, item-start work, preceding hand-ins and distinct same-title IDs. No count or extra mandatory farm. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "object",
+              "name": "Broken Barrel",
+              "entityID": 36
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "name": "Another Clue to Sander's Treasure",
+              "entityID": 1361
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "object",
+              "name": "Old Jug",
+              "entityID": 34
+            }
+          ]
+        },
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "categoryPath": "eastern-kingdoms/westfall"
+      }
+    },
+    "140": {
+      "before": {
+        "raceMask": 0,
+        "mapID": 1436,
+        "startRefs": [
+          {
+            "entityType": "object",
+            "name": "Old Jug",
+            "entityID": 34
+          }
+        ],
+        "requirements": {},
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "object",
+            "mapID": 1436,
+            "name": "Locked Chest",
+            "y": 0.1691,
+            "entityID": 33,
+            "x": 0.2597,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 40
+          }
+        ],
+        "level": 16,
+        "areaID": 40,
+        "objectives": {},
+        "side": "Both",
+        "starts": [
+          {
+            "entityType": "object",
+            "mapID": 1436,
+            "name": "Old Jug",
+            "y": 0.1703,
+            "entityID": 34,
+            "x": 0.40630000000000005,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 40
+          }
+        ],
+        "money": 800,
+        "endRefs": [
+          {
+            "entityType": "object",
+            "name": "Locked Chest",
+            "entityID": 33
+          }
+        ],
+        "xp": 1150,
+        "prerequisiteAny": [
+          139
+        ],
+        "objectiveFactsSource": "Published Forever quest/entity relations",
+        "allowedRaceIDs": {},
+        "minLevel": 10,
+        "prerequisitesRead": true,
+        "title": "Captain Sander's Hidden Treasure",
+        "foreverStatus": "updated",
+        "categoryPath": "eastern-kingdoms/westfall"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1436,
+        "startRefs": [
+          {
+            "entityType": "object",
+            "name": "Old Jug",
+            "entityID": 34
+          }
+        ],
+        "requirements": {},
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "object",
+            "mapID": 1436,
+            "action": "interact",
+            "entityID": 33,
+            "y": 0.1691,
+            "x": 0.2597,
+            "name": "Locked Chest",
+            "sourceAreaID": 40,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "level": 16,
+        "areaID": 40,
+        "objectives": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "mapID": 1436,
+            "name": "Old Jug",
+            "y": 0.1703,
+            "entityID": 34,
+            "x": 0.40630000000000005,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 40
+          }
+        ],
+        "side": "Both",
+        "money": 800,
+        "endRefs": [
+          {
+            "entityType": "object",
+            "name": "Locked Chest",
+            "entityID": 33
+          }
+        ],
+        "xp": 1150,
+        "prerequisiteAny": [
+          139
+        ],
+        "foreverStatus": "updated",
+        "allowedRaceIDs": {},
+        "minLevel": 10,
+        "title": "Captain Sander's Hidden Treasure",
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverObjectDB.lua; Exact object return relation: interact with the treasure object, not a conversation. Keep all existing actual object points, item-start work, preceding hand-ins and distinct same-title IDs. No count or extra mandatory farm. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+        "raceMask": 0,
+        "objectiveFactsSource": "Published Forever quest/entity relations",
+        "categoryPath": "eastern-kingdoms/westfall"
+      }
+    },
+    "92742": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1436,
+        "zone": "Westfall",
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 254546,
+            "name": "Jansen Stead Water Sample"
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 254547,
+            "name": "Molsen Farm Water Sample"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Jansen Stead Water Sample",
+            "itemID": 254546
+          },
+          {
+            "quantity": 1,
+            "name": "Molsen Farm Water Sample",
+            "itemID": 254547
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "objectives": [
+          {
+            "entityType": "item",
+            "mapID": 1436,
+            "legacyStepKey": "q:1436:npc:254546",
+            "entityID": 254546,
+            "x": 0.5661909432649058,
+            "y": 0.18685981228303267,
+            "objectiveKey": "item:254546",
+            "itemID": 254546,
+            "quantity": 1,
+            "name": "Jansen Stead Water Sample",
+            "itemName": "Jansen Stead Water Sample",
+            "locationSource": "Warcraft DB Forever native quest map",
+            "action": "collect"
+          },
+          {
+            "entityType": "item",
+            "mapID": 1436,
+            "legacyStepKey": "q:1436:npc:254547",
+            "entityID": 254547,
+            "x": 0.46076246220360384,
+            "y": 0.38143402048600705,
+            "objectiveKey": "item:254547",
+            "itemID": 254547,
+            "quantity": 1,
+            "name": "Molsen Farm Water Sample",
+            "itemName": "Molsen Farm Water Sample",
+            "locationSource": "Warcraft DB Forever native quest map",
+            "action": "collect"
+          }
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Well Water Sample Kit",
+            "entityID": 254545
+          }
+        ],
+        "classMask": 0,
+        "otherLocationsIncomplete": false,
+        "starts": [
+          {
+            "y": 0.53,
+            "mapID": 1436,
+            "name": "Alba Fairmoon",
+            "entityID": 253092,
+            "npc": true,
+            "x": 0.524
+          }
+        ],
+        "level": 12,
+        "areaID": 40,
+        "raceMask": 4294967373,
+        "ends": [
+          {
+            "y": 0.53,
+            "mapID": 1436,
+            "name": "Alba Fairmoon",
+            "entityID": 253092,
+            "npc": true,
+            "x": 0.524
+          }
+        ],
+        "side": "Alliance",
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Alba Fairmoon",
+            "entityID": 253092
+          }
+        ],
+        "money": 250,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Alba Fairmoon",
+            "entityID": 253092
+          }
+        ],
+        "xp": 455,
+        "title": "Testing the Wells",
+        "foreverStatus": "new",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 9,
+        "requirementSource": "Published Forever typed objectives",
+        "objectiveFactsSource": "Published Forever typed objectives",
+        "nativeMapSource": "Warcraft DB Forever native quest map",
+        "locationSource": "Wowhead Forever",
+        "categoryPath": "eastern-kingdoms/westfall"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1436,
+        "zone": "Westfall",
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 254546,
+            "name": "Jansen Stead Water Sample"
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 254547,
+            "name": "Molsen Farm Water Sample"
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "item",
+            "mapID": 1436,
+            "legacyStepKey": "q:1436:npc:254546",
+            "entityID": 254546,
+            "x": 0.5661909432649058,
+            "y": 0.18685981228303267,
+            "objectiveKey": "item:254546",
+            "itemID": 254546,
+            "quantity": 1,
+            "name": "Jansen Stead Water Sample",
+            "itemName": "Jansen Stead Water Sample",
+            "locationSource": "Warcraft DB Forever native quest map",
+            "action": "collect"
+          },
+          {
+            "entityType": "item",
+            "mapID": 1436,
+            "legacyStepKey": "q:1436:npc:254547",
+            "entityID": 254547,
+            "x": 0.46076246220360384,
+            "y": 0.38143402048600705,
+            "objectiveKey": "item:254547",
+            "itemID": 254547,
+            "quantity": 1,
+            "name": "Molsen Farm Water Sample",
+            "itemName": "Molsen Farm Water Sample",
+            "locationSource": "Warcraft DB Forever native quest map",
+            "action": "collect"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Jansen Stead Water Sample",
+            "itemID": 254546
+          },
+          {
+            "quantity": 1,
+            "name": "Molsen Farm Water Sample",
+            "itemID": 254547
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Well Water Sample Kit",
+            "entityID": 254545
+          }
+        ],
+        "starts": [
+          {
+            "y": 0.529,
+            "mapID": 1436,
+            "name": "Alba Fairmoon",
+            "entityID": 253092,
+            "x": 0.524,
+            "locationSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/traces/foreverNpcTraces.lua; exact NPC 253092 Alba Fairmoon quest-start/end joins and beta-observation spawn, area 40 -> map 1436, actual 52.40/52.90 representative. Three observations retained as positions, not a patrol or centroid. Quest 92747 level discrepancy is separate and its existing level 15 remains. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+            "npc": true
+          }
+        ],
+        "classMask": 0,
+        "otherLocationsIncomplete": false,
+        "raceMask": 4294967373,
+        "level": 12,
+        "areaID": 40,
+        "title": "Testing the Wells",
+        "ends": [
+          {
+            "y": 0.529,
+            "mapID": 1436,
+            "name": "Alba Fairmoon",
+            "entityID": 253092,
+            "x": 0.524,
+            "locationSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/traces/foreverNpcTraces.lua; exact NPC 253092 Alba Fairmoon quest-start/end joins and beta-observation spawn, area 40 -> map 1436, actual 52.40/52.90 representative. Three observations retained as positions, not a patrol or centroid. Quest 92747 level discrepancy is separate and its existing level 15 remains. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+            "npc": true
+          }
+        ],
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Alba Fairmoon",
+            "entityID": 253092
+          }
+        ],
+        "side": "Alliance",
+        "money": 250,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Alba Fairmoon",
+            "entityID": 253092
+          }
+        ],
+        "xp": 455,
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/traces/foreverNpcTraces.lua; exact NPC 253092 Alba Fairmoon quest-start/end joins and beta-observation spawn, area 40 -> map 1436, actual 52.40/52.90 representative. Three observations retained as positions, not a patrol or centroid. Quest 92747 level discrepancy is separate and its existing level 15 remains. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+        "foreverStatus": "new",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 9,
+        "requirementSource": "Published Forever typed objectives",
+        "objectiveFactsSource": "Published Forever typed objectives",
+        "nativeMapSource": "Warcraft DB Forever native quest map",
+        "locationSource": "Wowhead Forever",
+        "categoryPath": "eastern-kingdoms/westfall"
+      }
+    },
+    "92744": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1436,
+        "zone": "Westfall",
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 7,
+            "action": "collect",
+            "entityID": 254548,
+            "name": "Longshore Murloc Gill"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Longshore Murloc Gill",
+            "name": "Murloc Coastrunner",
+            "entityID": 126,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Longshore Murloc Gill",
+            "name": "Murloc Tidehunter",
+            "entityID": 127,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Longshore Murloc Gill",
+            "name": "Murloc Warrior",
+            "entityID": 171,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Longshore Murloc Gill",
+            "name": "Murloc Minor Oracle",
+            "entityID": 456,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Longshore Murloc Gill",
+            "name": "Murloc Hunter",
+            "entityID": 458,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Longshore Murloc Gill",
+            "name": "Murloc Netter",
+            "entityID": 513,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Longshore Murloc Gill",
+            "name": "Murloc Raider",
+            "entityID": 515,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Longshore Murloc Gill",
+            "name": "Murloc Oracle",
+            "entityID": 517,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Longshore Murloc Gill",
+            "name": "Murloc Oracle",
+            "entityID": 517,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 7,
+            "name": "Longshore Murloc Gill",
+            "itemID": 254548
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1436,
+            "action": "loot",
+            "entityID": 517,
+            "npc": true,
+            "y": 0.564,
+            "sourceZone": "Westfall",
+            "objectiveKey": "item:254548",
+            "itemID": 254548,
+            "x": 0.272,
+            "sourceAreaID": 40,
+            "quantity": 7,
+            "itemName": "Longshore Murloc Gill",
+            "name": "Murloc Oracle"
+          }
+        ],
+        "starts": [
+          {
+            "y": 0.53,
+            "mapID": 1436,
+            "name": "Alba Fairmoon",
+            "entityID": 253092,
+            "npc": true,
+            "x": 0.524
+          }
+        ],
+        "classMask": 0,
+        "otherLocationsIncomplete": false,
+        "shareable": true,
+        "level": 12,
+        "areaID": 40,
+        "objectiveAlternatives": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Longshore Murloc Gill",
+            "locations": [
+              {
+                "sourceObjective": 0,
+                "itemName": "Longshore Murloc Gill",
+                "action": "collect",
+                "entityID": 126,
+                "npc": true,
+                "y": 0.092,
+                "x": 0.561,
+                "name": "Murloc Coastrunner",
+                "mapID": 1436
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Longshore Murloc Gill",
+                "action": "collect",
+                "entityID": 127,
+                "npc": true,
+                "y": 0.848,
+                "x": 0.33799999999999997,
+                "name": "Murloc Tidehunter",
+                "mapID": 1436
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Longshore Murloc Gill",
+                "action": "collect",
+                "entityID": 171,
+                "npc": true,
+                "y": 0.504,
+                "x": 0.26,
+                "name": "Murloc Warrior",
+                "mapID": 1436
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Longshore Murloc Gill",
+                "action": "collect",
+                "entityID": 456,
+                "npc": true,
+                "y": 0.09,
+                "x": 0.428,
+                "name": "Murloc Minor Oracle",
+                "mapID": 1436
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Longshore Murloc Gill",
+                "action": "collect",
+                "entityID": 458,
+                "npc": true,
+                "y": 0.35,
+                "x": 0.276,
+                "name": "Murloc Hunter",
+                "mapID": 1436
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Longshore Murloc Gill",
+                "action": "collect",
+                "entityID": 513,
+                "npc": true,
+                "y": 0.25,
+                "x": 0.322,
+                "name": "Murloc Netter",
+                "mapID": 1436
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Longshore Murloc Gill",
+                "action": "collect",
+                "entityID": 515,
+                "npc": true,
+                "y": 0.102,
+                "x": 0.552,
+                "name": "Murloc Raider",
+                "mapID": 1436
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Longshore Murloc Gill",
+                "action": "collect",
+                "entityID": 517,
+                "npc": true,
+                "y": 0.846,
+                "x": 0.33799999999999997,
+                "name": "Murloc Oracle",
+                "mapID": 1436
+              }
+            ]
+          }
+        ],
+        "ends": [
+          {
+            "y": 0.53,
+            "mapID": 1436,
+            "name": "Alba Fairmoon",
+            "entityID": 253092,
+            "npc": true,
+            "x": 0.524
+          }
+        ],
+        "side": "Alliance",
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Alba Fairmoon",
+            "entityID": 253092
+          }
+        ],
+        "money": 250,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Alba Fairmoon",
+            "entityID": 253092
+          }
+        ],
+        "xp": 455,
+        "title": "Murloc Gills",
+        "foreverStatus": "new",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 9,
+        "requirementSource": "Published Forever typed objectives",
+        "raceMask": 4294967373,
+        "objectiveFactsSource": "Published Forever typed objectives",
+        "locationSource": "Wowhead Forever",
+        "categoryPath": "eastern-kingdoms/westfall"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1436,
+        "npcTargets": [
+          {
+            "itemName": "Longshore Murloc Gill",
+            "name": "Murloc Coastrunner",
+            "entityID": 126,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Longshore Murloc Gill",
+            "name": "Murloc Tidehunter",
+            "entityID": 127,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Longshore Murloc Gill",
+            "name": "Murloc Warrior",
+            "entityID": 171,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Longshore Murloc Gill",
+            "name": "Murloc Minor Oracle",
+            "entityID": 456,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Longshore Murloc Gill",
+            "name": "Murloc Hunter",
+            "entityID": 458,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Longshore Murloc Gill",
+            "name": "Murloc Netter",
+            "entityID": 513,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Longshore Murloc Gill",
+            "name": "Murloc Raider",
+            "entityID": 515,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Longshore Murloc Gill",
+            "name": "Murloc Oracle",
+            "entityID": 517,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Longshore Murloc Gill",
+            "name": "Murloc Oracle",
+            "entityID": 517,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "zone": "Westfall",
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 7,
+            "action": "collect",
+            "entityID": 254548,
+            "name": "Longshore Murloc Gill"
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1436,
+            "action": "loot",
+            "entityID": 517,
+            "npc": true,
+            "y": 0.564,
+            "sourceZone": "Westfall",
+            "objectiveKey": "item:254548",
+            "itemID": 254548,
+            "x": 0.272,
+            "sourceAreaID": 40,
+            "quantity": 7,
+            "itemName": "Longshore Murloc Gill",
+            "name": "Murloc Oracle"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 7,
+            "name": "Longshore Murloc Gill",
+            "itemID": 254548
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "starts": [
+          {
+            "y": 0.529,
+            "mapID": 1436,
+            "name": "Alba Fairmoon",
+            "entityID": 253092,
+            "x": 0.524,
+            "locationSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/traces/foreverNpcTraces.lua; exact NPC 253092 Alba Fairmoon quest-start/end joins and beta-observation spawn, area 40 -> map 1436, actual 52.40/52.90 representative. Three observations retained as positions, not a patrol or centroid. Quest 92747 level discrepancy is separate and its existing level 15 remains. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+            "npc": true
+          }
+        ],
+        "shareable": true,
+        "classMask": 0,
+        "otherLocationsIncomplete": false,
+        "title": "Murloc Gills",
+        "level": 12,
+        "areaID": 40,
+        "objectiveAlternatives": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Longshore Murloc Gill",
+            "locations": [
+              {
+                "sourceObjective": 0,
+                "itemName": "Longshore Murloc Gill",
+                "action": "collect",
+                "entityID": 126,
+                "npc": true,
+                "y": 0.092,
+                "x": 0.561,
+                "name": "Murloc Coastrunner",
+                "mapID": 1436
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Longshore Murloc Gill",
+                "action": "collect",
+                "entityID": 127,
+                "npc": true,
+                "y": 0.848,
+                "x": 0.33799999999999997,
+                "name": "Murloc Tidehunter",
+                "mapID": 1436
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Longshore Murloc Gill",
+                "action": "collect",
+                "entityID": 171,
+                "npc": true,
+                "y": 0.504,
+                "x": 0.26,
+                "name": "Murloc Warrior",
+                "mapID": 1436
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Longshore Murloc Gill",
+                "action": "collect",
+                "entityID": 456,
+                "npc": true,
+                "y": 0.09,
+                "x": 0.428,
+                "name": "Murloc Minor Oracle",
+                "mapID": 1436
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Longshore Murloc Gill",
+                "action": "collect",
+                "entityID": 458,
+                "npc": true,
+                "y": 0.35,
+                "x": 0.276,
+                "name": "Murloc Hunter",
+                "mapID": 1436
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Longshore Murloc Gill",
+                "action": "collect",
+                "entityID": 513,
+                "npc": true,
+                "y": 0.25,
+                "x": 0.322,
+                "name": "Murloc Netter",
+                "mapID": 1436
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Longshore Murloc Gill",
+                "action": "collect",
+                "entityID": 515,
+                "npc": true,
+                "y": 0.102,
+                "x": 0.552,
+                "name": "Murloc Raider",
+                "mapID": 1436
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Longshore Murloc Gill",
+                "action": "collect",
+                "entityID": 517,
+                "npc": true,
+                "y": 0.846,
+                "x": 0.33799999999999997,
+                "name": "Murloc Oracle",
+                "mapID": 1436
+              }
+            ]
+          }
+        ],
+        "ends": [
+          {
+            "y": 0.529,
+            "mapID": 1436,
+            "name": "Alba Fairmoon",
+            "entityID": 253092,
+            "x": 0.524,
+            "locationSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/traces/foreverNpcTraces.lua; exact NPC 253092 Alba Fairmoon quest-start/end joins and beta-observation spawn, area 40 -> map 1436, actual 52.40/52.90 representative. Three observations retained as positions, not a patrol or centroid. Quest 92747 level discrepancy is separate and its existing level 15 remains. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+            "npc": true
+          }
+        ],
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Alba Fairmoon",
+            "entityID": 253092
+          }
+        ],
+        "side": "Alliance",
+        "money": 250,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Alba Fairmoon",
+            "entityID": 253092
+          }
+        ],
+        "xp": 455,
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/traces/foreverNpcTraces.lua; exact NPC 253092 Alba Fairmoon quest-start/end joins and beta-observation spawn, area 40 -> map 1436, actual 52.40/52.90 representative. Three observations retained as positions, not a patrol or centroid. Quest 92747 level discrepancy is separate and its existing level 15 remains. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+        "foreverStatus": "new",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 9,
+        "requirementSource": "Published Forever typed objectives",
+        "raceMask": 4294967373,
+        "objectiveFactsSource": "Published Forever typed objectives",
+        "locationSource": "Wowhead Forever",
+        "categoryPath": "eastern-kingdoms/westfall"
+      }
+    },
+    "92745": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1436,
+        "zone": "Westfall",
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantity": 4,
+            "action": "kill",
+            "entityID": 1236,
+            "name": "Kobold Digger"
+          },
+          {
+            "entityType": "npc",
+            "quantity": 6,
+            "action": "kill",
+            "entityID": 1426,
+            "name": "Riverpaw Miner"
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "npcTargets": [
+          {
+            "entityID": 1236,
+            "npc": true,
+            "action": "kill",
+            "name": "Kobold Digger"
+          },
+          {
+            "entityID": 1426,
+            "npc": true,
+            "action": "kill",
+            "name": "Riverpaw Miner"
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1436,
+            "action": "kill",
+            "entityID": 1236,
+            "npc": true,
+            "sourceZone": "Westfall",
+            "objectiveKey": "npc:1236",
+            "name": "Kobold Digger",
+            "sourceAreaID": 40,
+            "y": 0.22399999999999998,
+            "x": 0.44799999999999995,
+            "quantity": 4
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1436,
+            "action": "kill",
+            "entityID": 1426,
+            "npc": true,
+            "y": 0.4755,
+            "objectiveKey": "npc:1426",
+            "name": "Riverpaw Miner",
+            "sourceAreaID": 40,
+            "x": 0.30260000000000004,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "quantity": 6
+          }
+        ],
+        "classMask": 0,
+        "otherLocationsIncomplete": false,
+        "starts": [
+          {
+            "y": 0.53,
+            "mapID": 1436,
+            "name": "Alba Fairmoon",
+            "entityID": 253092,
+            "npc": true,
+            "x": 0.524
+          }
+        ],
+        "level": 14,
+        "areaID": 40,
+        "shareable": true,
+        "ends": [
+          {
+            "y": 0.53,
+            "mapID": 1436,
+            "name": "Alba Fairmoon",
+            "entityID": 253092,
+            "npc": true,
+            "x": 0.524
+          }
+        ],
+        "side": "Alliance",
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Alba Fairmoon",
+            "entityID": 253092
+          }
+        ],
+        "money": 300,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Alba Fairmoon",
+            "entityID": 253092
+          }
+        ],
+        "xp": 490,
+        "title": "The State of the Mines",
+        "foreverStatus": "new",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 9,
+        "requirementSource": "Published Forever typed objectives",
+        "raceMask": 4294967373,
+        "objectiveFactsSource": "Published Forever typed objectives",
+        "locationSource": "Wowhead Forever",
+        "categoryPath": "eastern-kingdoms/westfall"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1436,
+        "zone": "Westfall",
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantity": 4,
+            "action": "kill",
+            "entityID": 1236,
+            "name": "Kobold Digger"
+          },
+          {
+            "entityType": "npc",
+            "quantity": 6,
+            "action": "kill",
+            "entityID": 1426,
+            "name": "Riverpaw Miner"
+          }
+        ],
+        "npcTargets": [
+          {
+            "entityID": 1236,
+            "npc": true,
+            "action": "kill",
+            "name": "Kobold Digger"
+          },
+          {
+            "entityID": 1426,
+            "npc": true,
+            "action": "kill",
+            "name": "Riverpaw Miner"
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1436,
+            "action": "kill",
+            "entityID": 1236,
+            "npc": true,
+            "sourceZone": "Westfall",
+            "objectiveKey": "npc:1236",
+            "name": "Kobold Digger",
+            "sourceAreaID": 40,
+            "y": 0.22399999999999998,
+            "x": 0.44799999999999995,
+            "quantity": 4
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1436,
+            "action": "kill",
+            "entityID": 1426,
+            "npc": true,
+            "y": 0.4755,
+            "objectiveKey": "npc:1426",
+            "name": "Riverpaw Miner",
+            "sourceAreaID": 40,
+            "x": 0.30260000000000004,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "quantity": 6
+          }
+        ],
+        "starts": [
+          {
+            "y": 0.529,
+            "mapID": 1436,
+            "name": "Alba Fairmoon",
+            "entityID": 253092,
+            "x": 0.524,
+            "locationSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/traces/foreverNpcTraces.lua; exact NPC 253092 Alba Fairmoon quest-start/end joins and beta-observation spawn, area 40 -> map 1436, actual 52.40/52.90 representative. Three observations retained as positions, not a patrol or centroid. Quest 92747 level discrepancy is separate and its existing level 15 remains. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+            "npc": true
+          }
+        ],
+        "classMask": 0,
+        "otherLocationsIncomplete": false,
+        "shareable": true,
+        "level": 14,
+        "areaID": 40,
+        "title": "The State of the Mines",
+        "ends": [
+          {
+            "y": 0.529,
+            "mapID": 1436,
+            "name": "Alba Fairmoon",
+            "entityID": 253092,
+            "x": 0.524,
+            "locationSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/traces/foreverNpcTraces.lua; exact NPC 253092 Alba Fairmoon quest-start/end joins and beta-observation spawn, area 40 -> map 1436, actual 52.40/52.90 representative. Three observations retained as positions, not a patrol or centroid. Quest 92747 level discrepancy is separate and its existing level 15 remains. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+            "npc": true
+          }
+        ],
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Alba Fairmoon",
+            "entityID": 253092
+          }
+        ],
+        "side": "Alliance",
+        "money": 300,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Alba Fairmoon",
+            "entityID": 253092
+          }
+        ],
+        "xp": 490,
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/traces/foreverNpcTraces.lua; exact NPC 253092 Alba Fairmoon quest-start/end joins and beta-observation spawn, area 40 -> map 1436, actual 52.40/52.90 representative. Three observations retained as positions, not a patrol or centroid. Quest 92747 level discrepancy is separate and its existing level 15 remains. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+        "foreverStatus": "new",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 9,
+        "requirementSource": "Published Forever typed objectives",
+        "raceMask": 4294967373,
+        "objectiveFactsSource": "Published Forever typed objectives",
+        "locationSource": "Wowhead Forever",
+        "categoryPath": "eastern-kingdoms/westfall"
+      }
+    },
+    "92747": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1436,
+        "zone": "Westfall",
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 8,
+            "action": "collect",
+            "entityID": 254676,
+            "name": "Suspicious Industrial Supplies"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 8,
+            "name": "Suspicious Industrial Supplies",
+            "itemID": 254676
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "objectives": [
+          {
+            "entityType": "object",
+            "mapID": 1436,
+            "action": "gather",
+            "entityID": 581777,
+            "x": 0.425,
+            "y": 0.687,
+            "objectiveKey": "item:254676",
+            "itemID": 254676,
+            "quantity": 8,
+            "sourceAreaID": 40,
+            "itemName": "Suspicious Industrial Supplies",
+            "locationSource": "Published Forever beta-delta entity position",
+            "name": "Suspicious Crate"
+          }
+        ],
+        "classMask": 0,
+        "otherLocationsIncomplete": false,
+        "starts": [
+          {
+            "y": 0.53,
+            "mapID": 1436,
+            "name": "Alba Fairmoon",
+            "entityID": 253092,
+            "npc": true,
+            "x": 0.524
+          }
+        ],
+        "level": 15,
+        "areaID": 40,
+        "shareable": true,
+        "ends": [
+          {
+            "y": 0.53,
+            "mapID": 1436,
+            "name": "Alba Fairmoon",
+            "entityID": 253092,
+            "npc": true,
+            "x": 0.524
+          }
+        ],
+        "side": "Alliance",
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Alba Fairmoon",
+            "entityID": 253092
+          }
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Alba Fairmoon",
+            "entityID": 253092
+          }
+        ],
+        "xp": 540,
+        "title": "Moonbrook Espionage",
+        "foreverStatus": "new",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 9,
+        "requirementSource": "Published Forever typed objectives",
+        "raceMask": 4294967373,
+        "objectiveFactsSource": "Published Forever typed objectives",
+        "locationSource": "Wowhead Forever",
+        "categoryPath": "eastern-kingdoms/westfall"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1436,
+        "zone": "Westfall",
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 8,
+            "action": "collect",
+            "entityID": 254676,
+            "name": "Suspicious Industrial Supplies"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 8,
+            "name": "Suspicious Industrial Supplies",
+            "itemID": 254676
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "objectives": [
+          {
+            "entityType": "object",
+            "mapID": 1436,
+            "action": "gather",
+            "entityID": 581777,
+            "x": 0.425,
+            "y": 0.687,
+            "objectiveKey": "item:254676",
+            "itemID": 254676,
+            "quantity": 8,
+            "sourceAreaID": 40,
+            "itemName": "Suspicious Industrial Supplies",
+            "locationSource": "Published Forever beta-delta entity position",
+            "name": "Suspicious Crate"
+          }
+        ],
+        "starts": [
+          {
+            "y": 0.529,
+            "mapID": 1436,
+            "name": "Alba Fairmoon",
+            "entityID": 253092,
+            "x": 0.524,
+            "locationSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/traces/foreverNpcTraces.lua; exact NPC 253092 Alba Fairmoon quest-start/end joins and beta-observation spawn, area 40 -> map 1436, actual 52.40/52.90 representative. Three observations retained as positions, not a patrol or centroid. Quest 92747 level discrepancy is separate and its existing level 15 remains. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+            "npc": true
+          }
+        ],
+        "classMask": 0,
+        "otherLocationsIncomplete": false,
+        "shareable": true,
+        "level": 15,
+        "areaID": 40,
+        "title": "Moonbrook Espionage",
+        "ends": [
+          {
+            "y": 0.529,
+            "mapID": 1436,
+            "name": "Alba Fairmoon",
+            "entityID": 253092,
+            "x": 0.524,
+            "locationSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/traces/foreverNpcTraces.lua; exact NPC 253092 Alba Fairmoon quest-start/end joins and beta-observation spawn, area 40 -> map 1436, actual 52.40/52.90 representative. Three observations retained as positions, not a patrol or centroid. Quest 92747 level discrepancy is separate and its existing level 15 remains. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+            "npc": true
+          }
+        ],
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Alba Fairmoon",
+            "entityID": 253092
+          }
+        ],
+        "side": "Alliance",
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Alba Fairmoon",
+            "entityID": 253092
+          }
+        ],
+        "xp": 540,
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/traces/foreverNpcTraces.lua; exact NPC 253092 Alba Fairmoon quest-start/end joins and beta-observation spawn, area 40 -> map 1436, actual 52.40/52.90 representative. Three observations retained as positions, not a patrol or centroid. Quest 92747 level discrepancy is separate and its existing level 15 remains. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+        "foreverStatus": "new",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 9,
+        "requirementSource": "Published Forever typed objectives",
+        "raceMask": 4294967373,
+        "objectiveFactsSource": "Published Forever typed objectives",
+        "locationSource": "Wowhead Forever",
+        "categoryPath": "eastern-kingdoms/westfall"
+      }
+    },
+    "92748": {
+      "before": {
+        "raceMask": 4294967373,
+        "mapID": 1436,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Alba Fairmoon",
+            "entityID": 253092
+          }
+        ],
+        "requirements": {},
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1453,
+            "entityID": 11026,
+            "npc": true,
+            "sourceZone": "Stormwind City",
+            "x": 0.5479999999999999,
+            "name": "Sprite Jumpsprocket",
+            "sourceAreaID": 1519,
+            "y": 0.08800000000000001
+          }
+        ],
+        "level": 16,
+        "areaID": 40,
+        "side": "Alliance",
+        "objectives": {},
+        "money": 400,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Sprite Jumpsprocket",
+            "entityID": 11026
+          }
+        ],
+        "xp": 580,
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1436,
+            "entityID": 253092,
+            "npc": true,
+            "sourceZone": "Westfall",
+            "x": 0.524,
+            "name": "Alba Fairmoon",
+            "sourceAreaID": 40,
+            "y": 0.53
+          }
+        ],
+        "objectiveFactsSource": "Published Forever quest/entity relations",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 9,
+        "prerequisitesRead": true,
+        "title": "Explosive Consultation",
+        "foreverStatus": "new",
+        "categoryPath": "eastern-kingdoms/westfall"
+      },
+      "after": {
+        "raceMask": 4294967373,
+        "mapID": 1436,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Alba Fairmoon",
+            "entityID": 253092
+          }
+        ],
+        "requirements": {},
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1453,
+            "entityID": 11026,
+            "npc": true,
+            "sourceZone": "Stormwind City",
+            "x": 0.5479999999999999,
+            "name": "Sprite Jumpsprocket",
+            "sourceAreaID": 1519,
+            "y": 0.08800000000000001
+          }
+        ],
+        "level": 16,
+        "areaID": 40,
+        "objectives": {},
+        "side": "Alliance",
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1436,
+            "entityID": 253092,
+            "npc": true,
+            "sourceZone": "Westfall",
+            "x": 0.524,
+            "name": "Alba Fairmoon",
+            "sourceAreaID": 40,
+            "locationSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/traces/foreverNpcTraces.lua; exact NPC 253092 Alba Fairmoon quest-start/end joins and beta-observation spawn, area 40 -> map 1436, actual 52.40/52.90 representative. Three observations retained as positions, not a patrol or centroid. Quest 92747 level discrepancy is separate and its existing level 15 remains. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+            "y": 0.529
+          }
+        ],
+        "money": 400,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Sprite Jumpsprocket",
+            "entityID": 11026
+          }
+        ],
+        "xp": 580,
+        "objectiveFactsSource": "Published Forever quest/entity relations",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 9,
+        "prerequisitesRead": true,
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/traces/foreverNpcTraces.lua; exact NPC 253092 Alba Fairmoon quest-start/end joins and beta-observation spawn, area 40 -> map 1436, actual 52.40/52.90 representative. Three observations retained as positions, not a patrol or centroid. Quest 92747 level discrepancy is separate and its existing level 15 remains. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+        "title": "Explosive Consultation",
+        "foreverStatus": "new",
+        "categoryPath": "eastern-kingdoms/westfall"
+      }
+    },
+    "92752": {
+      "before": {
+        "raceMask": 4294967373,
+        "mapID": 1436,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Sprite Jumpsprocket",
+            "entityID": 11026
+          }
+        ],
+        "requirements": {},
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1436,
+            "entityID": 253092,
+            "npc": true,
+            "sourceZone": "Westfall",
+            "x": 0.524,
+            "name": "Alba Fairmoon",
+            "sourceAreaID": 40,
+            "y": 0.53
+          }
+        ],
+        "level": 16,
+        "areaID": 40,
+        "side": "Alliance",
+        "objectives": {},
+        "money": 400,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Alba Fairmoon",
+            "entityID": 253092
+          }
+        ],
+        "xp": 580,
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1453,
+            "entityID": 11026,
+            "npc": true,
+            "sourceZone": "Stormwind City",
+            "x": 0.5479999999999999,
+            "name": "Sprite Jumpsprocket",
+            "sourceAreaID": 1519,
+            "y": 0.08800000000000001
+          }
+        ],
+        "objectiveFactsSource": "Published Forever quest/entity relations",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 9,
+        "prerequisitesRead": true,
+        "title": "Explosive Consultation",
+        "foreverStatus": "new",
+        "categoryPath": "eastern-kingdoms/westfall"
+      },
+      "after": {
+        "raceMask": 4294967373,
+        "mapID": 1436,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Sprite Jumpsprocket",
+            "entityID": 11026
+          }
+        ],
+        "requirements": {},
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1436,
+            "entityID": 253092,
+            "npc": true,
+            "sourceZone": "Westfall",
+            "x": 0.524,
+            "name": "Alba Fairmoon",
+            "sourceAreaID": 40,
+            "locationSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/traces/foreverNpcTraces.lua; exact NPC 253092 Alba Fairmoon quest-start/end joins and beta-observation spawn, area 40 -> map 1436, actual 52.40/52.90 representative. Three observations retained as positions, not a patrol or centroid. Quest 92747 level discrepancy is separate and its existing level 15 remains. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+            "y": 0.529
+          }
+        ],
+        "level": 16,
+        "areaID": 40,
+        "objectives": {},
+        "side": "Alliance",
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1453,
+            "entityID": 11026,
+            "npc": true,
+            "sourceZone": "Stormwind City",
+            "x": 0.5479999999999999,
+            "name": "Sprite Jumpsprocket",
+            "sourceAreaID": 1519,
+            "y": 0.08800000000000001
+          }
+        ],
+        "money": 400,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Alba Fairmoon",
+            "entityID": 253092
+          }
+        ],
+        "xp": 580,
+        "objectiveFactsSource": "Published Forever quest/entity relations",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 9,
+        "prerequisitesRead": true,
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/traces/foreverNpcTraces.lua; exact NPC 253092 Alba Fairmoon quest-start/end joins and beta-observation spawn, area 40 -> map 1436, actual 52.40/52.90 representative. Three observations retained as positions, not a patrol or centroid. Quest 92747 level discrepancy is separate and its existing level 15 remains. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+        "title": "Explosive Consultation",
+        "foreverStatus": "new",
+        "categoryPath": "eastern-kingdoms/westfall"
+      }
+    },
+    "92819": {
+      "before": {
+        "raceMask": 4294967373,
+        "mapID": 1436,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Alba Fairmoon",
+            "entityID": 253279
+          }
+        ],
+        "requirements": {},
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1436,
+            "entityID": 253279,
+            "npc": true,
+            "y": 0.8355,
+            "x": 0.38689999999999997,
+            "name": "Alba Fairmoon",
+            "sourceAreaID": 40,
+            "locationSource": "Published Forever beta-observation entity position"
+          }
+        ],
+        "level": 18,
+        "areaID": 40,
+        "side": "Alliance",
+        "objectives": {},
+        "money": 500,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Alba Fairmoon",
+            "entityID": 253279
+          }
+        ],
+        "xp": 680,
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1436,
+            "entityID": 253279,
+            "npc": true,
+            "y": 0.8355,
+            "x": 0.38689999999999997,
+            "name": "Alba Fairmoon",
+            "sourceAreaID": 40,
+            "locationSource": "Published Forever beta-observation entity position"
+          }
+        ],
+        "objectiveFactsSource": "Published Forever quest/entity relations",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 9,
+        "prerequisitesRead": true,
+        "title": "Destruction in Deadmines",
+        "foreverStatus": "new",
+        "categoryPath": "eastern-kingdoms/westfall"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1436,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Alba Fairmoon",
+            "entityID": 253279
+          }
+        ],
+        "requirements": {},
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1436,
+            "entityID": 253279,
+            "npc": true,
+            "y": 0.8355,
+            "x": 0.38689999999999997,
+            "name": "Alba Fairmoon",
+            "sourceAreaID": 40,
+            "locationSource": "Published Forever beta-observation entity position"
+          }
+        ],
+        "level": 18,
+        "areaID": 40,
+        "objectives": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1436,
+            "entityID": 253279,
+            "npc": true,
+            "y": 0.8355,
+            "x": 0.38689999999999997,
+            "name": "Alba Fairmoon",
+            "sourceAreaID": 40,
+            "locationSource": "Published Forever beta-observation entity position"
+          }
+        ],
+        "side": "Alliance",
+        "title": "Destruction in Deadmines",
+        "money": 500,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Alba Fairmoon",
+            "entityID": 253279
+          }
+        ],
+        "xp": 680,
+        "foreverStatus": "new",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 9,
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/generated/foreverBaseQuest.lua; Published beta-delta objective is detonator use, not a conversation with Alba. Mark work explicitly unmapped instead of substituting the giver position. Exact use item/target/count and event area remain unknown; do not infer them from earlier explosive or kit items. Keep the mapped pickup/return and all three stages. Verified 24 hashes 2026-10-09 (Europe/Amsterdam); research/westfall-2026-10-09.",
+        "raceMask": 4294967373,
+        "objectiveFactsSource": "Published Forever quest/entity relations",
+        "objectiveLocationsIncomplete": true,
+        "categoryPath": "eastern-kingdoms/westfall"
+      }
+    }
+  }
+}

@@ -1,0 +1,179 @@
+{
+  "zone": "Elwynn Forest",
+  "date": "2026-10-08",
+  "addon_version": "0.8.61",
+  "baseline_branch_commit": "7e244207c2928491d99f46ee45a508ef99fdda5b",
+  "main_commit": "09155ca265278572649a3529b8ce7ea1b4eb8431",
+  "changed_quest_ids": [
+    1640,
+    1678,
+    1683,
+    2205,
+    3100,
+    3102,
+    7962,
+    91738
+  ],
+  "original_scope": {
+    "quests": 99,
+    "actions": 304
+  },
+  "candidate_scope": {
+    "quests": 98,
+    "actions": 301
+  },
+  "excluded_scope": [
+    {
+      "questID": 7962,
+      "actions": 3,
+      "reason": "Historical testing-only content; retained catalogue source gaps"
+    }
+  ],
+  "gaps": {
+    "before": {
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          7962,
+          95771
+        ],
+        "q": [
+          2205,
+          3100,
+          3102,
+          7962,
+          91738,
+          91753,
+          95771
+        ],
+        "t": [
+          7962,
+          95771
+        ]
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        1598,
+        1638,
+        1639,
+        1678,
+        1683,
+        1860,
+        5628,
+        5635
+      ],
+      "unverified_objective_quantity_quest_ids": [
+        1640,
+        1678,
+        1683
+      ]
+    },
+    "after": {
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          95771
+        ],
+        "q": [
+          91753,
+          95771
+        ],
+        "t": [
+          95771
+        ]
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        1598,
+        1638,
+        1639,
+        1678,
+        1683,
+        1860,
+        5628,
+        5635
+      ],
+      "unverified_objective_quantity_quest_ids": []
+    }
+  },
+  "event_quantity_note": "1640 retains quantityUnknown; event objectives are not counted by the audit as unknown kill/collect quantities. No numeric count is inferred.",
+  "preserved_other_data": {
+    "questEntities": true,
+    "worldQuestChecks": true,
+    "xpBaseline": true
+  },
+  "catalogue_sha256": "4c98b2ab24e8c41e68472d2b194138f68251c402cb9edf6676ed9891e218fada",
+  "complete_route": {
+    "actions_preserved": 301,
+    "endpoints_preserved": true,
+    "states_checked": 4,
+    "all_candidate_and_baseline_states_valid": true,
+    "passes_optimization_guard": false,
+    "metrics_at_bracket_start": {
+      "distance": {
+        "before": 272010.794632702,
+        "after": 265450.86655680847
+      },
+      "peakLog": {
+        "before": 19,
+        "after": 19
+      },
+      "levelDeficitXP": {
+        "before": 11625,
+        "after": 11625
+      },
+      "questXP": {
+        "before": 41100,
+        "after": 41100
+      },
+      "rewardXPBeforeWork": {
+        "before": 1567310,
+        "after": 1590880
+      },
+      "uncertainTravelLegs": {
+        "before": 62,
+        "after": 65
+      },
+      "difficultyPressure": {
+        "before": 0,
+        "after": 0
+      },
+      "blockedTravelLegs": {
+        "before": 0,
+        "after": 0
+      }
+    },
+    "delayed_rewards_before_quest_ids": [
+      11,
+      15,
+      18,
+      21,
+      37,
+      239,
+      1598,
+      91743,
+      91745,
+      91752
+    ]
+  },
+  "shared_coordination": [
+    "Hogger 176 hidden by chapter builder minimum; retain true elite/minimum/level facts and add warning/personal choice through coordinated shared change",
+    "Warrior alternative selection and current Defensive Stance continuations need beta confirmation; no shared eligibility or routing edit",
+    "Uncertain travel legs and individual reward timing regress despite lower estimated full travel",
+    "91753 current/pinned Human race eligibility disagreement; retain task-priority pinned gate pending actual beta offers"
+  ],
+  "host_validation": {
+    "focused_elwynn_tests": 11,
+    "focused_passed": 11,
+    "lua51_interface16001_files_compiled": 86,
+    "global_sections": 152,
+    "global_static_points": 11824,
+    "global_gap_free_sections": 33,
+    "source_queue_records": 442,
+    "full_suite": "completed; one known baseline catalogue fingerprint failure",
+    "full_suite_tests": 1541,
+    "full_suite_passed": 1540,
+    "full_suite_failed": 1,
+    "full_suite_seconds": 480.586,
+    "known_failure": "test_0829.PackedDataTests.test_all_source_fields_match_pre_packing_fingerprints (catalogue)",
+    "fingerprint_fixture_changed": false
+  },
+  "native_beta_tested": false,
+  "release_published": false
+}

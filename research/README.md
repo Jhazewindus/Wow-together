@@ -5,6 +5,33 @@ sessions and beta builds. These are observations from players, not a complete
 quest database. Only supported corrections enter the shipped catalogue. Raw
 exports are not included in the addon ZIP.
 
+## 2026-10-08 — expanded Dun Morogh review after main 0.8.60
+
+[The full-zone review](dun-morogh-2026-10-08/README.md) captures all 55 compiled
+quest IDs, updates one boar work point from current NPC coordinates, and retains
+both Rime identities, tester provenance and Winter Wolf hint safeguards. The
+three source gaps remain open. Complete standard/dwarf comparisons preserve
+151/30 actions and expose compiler tradeoffs for main-developer review. This
+extends, rather than replaces, the earlier selected-source evidence below.
+
+## 2026-10-08 — Mulgore prerequisites, NPC locations and race coverage
+
+[The Mulgore review](mulgore-2026-10-08/README.md) retains 74 quest IDs, current
+source evidence, standard/Tauren full-route comparisons and a player checklist.
+Three prerequisite links and seven NPC-location records are corrected (eight
+distinct quests). Existing source gaps and actual-offer confirmation remain.
+The old early-chapter orders violate the newly established prerequisites;
+optimization and the suppressed single-quest Broodmother chapter require a
+coordinated shared-engine decision. This remains a data/research draft.
+
+## 2026-10-08 — Durotar stage facts and compiler handoff
+
+[The Durotar review](durotar-2026-10-08/README.md) retains the full 103-quest
+inventory, source evidence, six supported stage corrections, before/after audits,
+full-route comparisons and a player checklist. Five objective gaps close; four
+remain. The optimization guard reports shared-compiler tradeoffs, so this is a
+data/research draft requiring main-developer review before merge.
+
 ## 2026-10-08 — Dun Morogh source coverage review
 
 [The structured review](2026-10-08-dun-morogh-review.json) records selected public
@@ -158,3 +185,47 @@ See `TRAVEL_DATA.md`, `TravelData.json` and the MIT attribution. Our own segment
 checks reject hostile crossings, including local map previews and flight access.
 Use existing graph alternatives only; retain markers/progress and show a caution
 if no bypass is known. No terrain mesh or new road connections are fabricated.
+
+Durotar was rechecked against inherited main 0.8.60 in [the follow-up review](durotar-2026-10-08/refresh-0.8.60/README.md). Its existing corrections and gaps remain; new coordination findings cover ordinary Vile Familiars class eligibility and the omitted Need for a Cure cross-zone acquisition handoff.
+
+The [Mulgore 0.8.60 follow-up](mulgore-2026-10-08/refresh-0.8.60/README.md) retains the earlier corrections and gaps, rechecks Baine and the Battleboars, and records current/pinned race-mask disagreements for Our Ancient Enemy, Drive Them Out and The High Chieftain.
+
+The [Dun Morogh follow-up](dun-morogh-2026-10-08/refresh-0.8.60/README.md) retains the boar correction and tester gate, rechecks distinct Rime objectives and Winter Wolf relations, and records the later Search for Incendicite pickup/handoff limitation.
+
+The [Elwynn Forest review](elwynn-forest-2026-10-08/README.md) corrects three supplied deliveries, Jorik's representative position, two item counts, Bartleby's duel instruction and Applejack exchange acquisition; it excludes the evidenced Wabbit Pelts testing placeholder. It retains all 301 remaining actions and records unresolved residue/95771 facts, eight uncertain pickup requirements, the Human race-source disagreement, hidden elite Hogger, Warrior branch selection and strict full-route tradeoffs for main-developer review.
+
+The [Stranglethorn Vale review](stranglethorn-vale-2026-10-08/README.md) corrects eight records, retains all 132 IDs / 885 actions, closes supported conversation and quantity gaps, and leaves item/event acquisition unknown. Full-route evidence records a changed Horde endpoint and delayed rewards; Green Hills chapter-reward mapping remains withheld pending coordinated completion dependencies.
+
+The [Swamp of Sorrows review](swamp-of-sorrows-2026-10-08/README.md) preserves 32 quest IDs / 180 actions and all source gaps after checking pinned facts. It repairs the audit tool's catalogue/chapter capitalization mismatch, validates six chapters and retains a native player checklist. Contemporary acquisition/event facts remain unavailable; no coordinates or counts are invented.
+
+The [Tanaris review](tanaris-2026-10-08/README.md) corrects five supplied deliveries and field-sampling input/count semantics. It quarantines 43 evidenced level-60 scepter/reputation records while preserving their catalogue facts and unresolved gaps. The whole ordinary scope retains 60 IDs / 338 actions; same-scope comparisons expose a Horde travel/reward regression requiring shared-compiler review.
+
+The [Hinterlands review](hinterlands-2026-10-08/README.md) corrects the supplied venom parcel and maps Rhapsody's two missing liver drops to actual published Feralas points. All 50 IDs / 183 actions and all 16 strict replay states survive; recorded objective gaps 2 → 0. Elevation/approach uncertainty and three external Zul'Farrak prerequisite handoffs remain explicit coordination/player-check items.
+
+[Final combined guide validation](coverage-integration-2026-10-08/README.md): 1,562/1,563 host tests pass, including all 64 zone regressions; the sole historical catalogue fingerprint assertion remains. All 152 sections / 11,833 source points are checked, with 33 recorded gap-free sections and 390 unresolved ordinary records. No native beta or complete-terrain claim.
+
+The [Thoradin's Wall review](thoradins-wall-2026-10-08/README.md) reconciles two records' object handoffs using published beta-observation positions in Loch Modan and Arathi. Both factions retain the full three-quest/nine-action chain, actual hand-in gates and saved guide key; zero recorded gaps stay zero. Treating the single local category as optional Arathi support remains a concrete, unapplied lifecycle/presentation proposal.
+
+The [Un'Goro Crater review](ungoro-crater-2026-10-08/README.md) corrects five records: container contents, a supported Felwood heart farm with alternatives, Lost!/Ringo escort separation and Devilsaur Barb use. The full 44-ID scope retains 141 Horde / 138 Alliance actions after removing only false canteen farming. Objective gaps fall 6 → 4; an existing unknown item-use count becomes explicit. Complete-route evidence records delayed rewards, an Alliance log-peak increase and omitted dungeon handoffs requiring shared-builder coordination. All 76 zone regressions pass; current source queue has 388 unresolved ordinary records.
+
+The [Western Plaguelands review](western-plaguelands-2026-10-08/README.md) corrects fourteen records: supplied branches/bottles and other handoffs, actual assembled-item hand-ins, and Menethil's known delivery. Retain 96 IDs / 407 audit actions; objective gaps 23 → 11. Published optional introductions conflict with current required gates; the coordination proposal is unapplied. Eight Western replay states retain all actions/endpoints but expose delayed rewards and an Alliance log-peak increase; eight neighbouring Eastern replays preserve unchanged same-facts metrics. All 85 zone regressions pass; current source queue has 377 unresolved ordinary records.
+
+The [Westfall review](westfall-2026-10-09/README.md) corrects eleven records: treasure-object interactions, actual Alba hub positions and explicit unknown detonator work. Standard full scope retains 45 IDs / 177 actions; separate Skyborn scope retains 26/224 actions and its actual cross-zone hand-in chain. Recorded objective gaps increase 1 → 2 by exposing a false conversation mapping. Twenty strict complete-route states pass with unchanged same-facts metrics. Dungeon handoffs, unlocated acquisition/use instructions, coarse Odd Child geography and optional Sweet Amber support remain documented. All 93 zone regressions pass; source queue has 378 unresolved ordinary records.
+
+The [Wetlands review](wetlands-2026-10-09/README.md) corrects ten records: crate/barrel/corpse interactions, supplied tinder use, separate Algaz traversal and distinct Call of Water inputs. All 73 compiled IDs remain; 6/179/76 actions become 6/180/77 by adding actual traversal work. Recorded 5/11/5 source gaps remain. Twelve reconciled full-scope states preserve endpoints and valid orders, but delayed rewards and an uncertain-travel increase keep the guard REVIEW REQUIRED. Explicit ship endpoints, source conflicts and native player checklist accompany the review. All 102 zone regressions pass; global audit checks 11,835 points and source queue retains 378 unresolved ordinary records.
+
+The [Winterspring review](winterspring-2026-10-09/README.md) corrects ten stage records: object investigations, item-start and supplied deliveries, and the mechanical-yeti input. Three explicitly profession-only records leave ordinary scope while catalogue facts/gaps remain. All remaining 56 IDs / 116 Horde / 142 Alliance actions survive; objective-gap union 6 → 3 represents two crystal closures and one profession gap excluded, not solved. Eight Winterspring and eight affected Eastern states preserve valid complete orders/endpoints but expose Alliance reward delays requiring review. All 109 zone regressions pass; global audit checks 11,831 points and source queue has 373 unresolved ordinary records.
+
+The [Teldrassil review](teldrassil-2026-10-09/README.md) corrects thirteen records: supplied deliveries, distinct moonwell input/use/output stages, planter interaction and Ferocitas container hand-in semantics. Both Alliance chapters retain all 61 compiled IDs / 241 actions. Existing Crown pickup/return and jewel-opening gaps remain; newly identified Ban'ethil escape work raises the distinct gap union two to three. Eight complete same-facts states preserve actions/endpoints, but 1–10 log peak, uncertain travel and reward delays require review. All 115 zone regressions pass; native cave/escort/transport checks remain pending.
+
+The [Tirisfal Glades review](tirisfal-glades-2026-10-09/README.md) corrects ten records: supplied class scroll/residue delivery, actual Rudolph head drop, termite input/use/return, burial input and six-victim interactions. All 96 compiled IDs remain; one explicit Discipline unknown-work placeholder raises actions 222/170/6 to 223/170/6. Two source gaps close and three event/choice/escort gaps become visible. Six class pickup conditions and two counts remain unverified. Marla's acquisition-before-burial order and Discipline's five-of-many target model are concrete shared-code review blockers. Full Tirisfal route guards require review; affected Western Plaguelands eight-state replay passes unchanged metrics.
+
+The [Zephras Isle review](zephras-isle-2026-10-09/README.md) corrects two racial-use instructions without inventing items, spell IDs or counts. Standard and Skyborn/Ironborn captures retain 132 compiled IDs across all faction/race branches; 32 same-facts states preserve complete actions/endpoints and unchanged metrics. Two all-stage quest gaps and eight uncertain pickup IDs remain. Island access/transport and generic ability tooltip wording require native/coordinated review. All 126 zone regressions pass.
+
+## Main release integration
+
+[0.8.62](release-0.8.62-2026-10-09/README.md) integrates all reviewed zone facts
+and adds complete-journey safeguards to the initial geometric optimization.
+[Dustwallow Marsh](dustwallow-marsh-2026-10-09/README.md) includes faction object
+pickups, supplied deliveries and explicit gossip-placeholder exclusions. Original
+source comparisons and unresolved coordination proposals remain available.

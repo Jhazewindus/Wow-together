@@ -1,0 +1,7626 @@
+{
+  "495": {
+    "prerequisitesRead": true,
+    "mapID": 1458,
+    "zone": "Undercity",
+    "requirements": {},
+    "seriesRoot": 495,
+    "objectives": {},
+    "series": [
+      495,
+      518,
+      519,
+      520,
+      521
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.20600000000000002,
+        "mapID": 1424,
+        "name": "Melisara",
+        "entityID": 2278,
+        "npc": true,
+        "x": 0.626
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.9359999999999999,
+        "mapID": 1458,
+        "name": "Sharlindra",
+        "entityID": 2227,
+        "npc": true,
+        "x": 0.574
+      }
+    ],
+    "level": 39,
+    "areaID": 1497,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Sharlindra",
+        "entityID": 2227
+      }
+    ],
+    "side": "Horde",
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Melisara",
+        "entityID": 2278
+      }
+    ],
+    "xp": 300,
+    "foreverStatus": "unchanged",
+    "title": "The Crown of Will",
+    "minLevel": 34,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Sharlindra",
+          "entityID": 2227
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Melisara",
+          "entityID": 2278
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/undercity"
+  },
+  "496": {
+    "prerequisitesRead": true,
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 10,
+        "name": "Gray Bear Tongue",
+        "entityID": 3476
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Creeper Ichor",
+        "entityID": 3477
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 22,
+    "areaID": 267,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 1,
+        "itemName": "Creeper Ichor",
+        "locations": [
+          {
+            "sourceObjective": 1,
+            "itemName": "Creeper Ichor",
+            "action": "collect",
+            "entityID": 2348,
+            "npc": true,
+            "y": 0.654,
+            "x": 0.682,
+            "name": "Elder Moss Creeper",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 1,
+            "itemName": "Creeper Ichor",
+            "action": "collect",
+            "entityID": 2349,
+            "npc": true,
+            "y": 0.187,
+            "x": 0.33299999999999996,
+            "name": "Giant Moss Creeper",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 1,
+            "itemName": "Creeper Ichor",
+            "action": "collect",
+            "entityID": 2350,
+            "npc": true,
+            "y": 0.244,
+            "x": 0.5760000000000001,
+            "name": "Forest Moss Creeper",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 1,
+            "itemName": "Creeper Ichor",
+            "action": "collect",
+            "entityID": 14279,
+            "npc": true,
+            "y": 0.64,
+            "x": 0.282,
+            "name": "Creepthess",
+            "mapID": 1424
+          }
+        ]
+      },
+      {
+        "sourceObjective": 0,
+        "itemName": "Gray Bear Tongue",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Gray Bear Tongue",
+            "action": "collect",
+            "entityID": 2351,
+            "npc": true,
+            "y": 0.366,
+            "x": 0.598,
+            "name": "Gray Bear",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Gray Bear Tongue",
+            "action": "collect",
+            "entityID": 2354,
+            "npc": true,
+            "y": 0.424,
+            "x": 0.45,
+            "name": "Vicious Gray Bear",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Gray Bear Tongue",
+            "action": "collect",
+            "entityID": 2356,
+            "npc": true,
+            "y": 0.28,
+            "x": 0.736,
+            "name": "Elder Gray Bear",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Gray Bear Tongue",
+            "action": "collect",
+            "entityID": 14280,
+            "npc": true,
+            "y": 0.28,
+            "x": 0.718,
+            "name": "Big Samras",
+            "mapID": 1424
+          }
+        ]
+      }
+    ],
+    "seriesPosition": 1,
+    "money": 150,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Apothecary Lydon",
+        "entityID": 2216
+      }
+    ],
+    "xp": 175,
+    "minLevel": 19,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 10,
+          "name": "Gray Bear Tongue",
+          "entityID": 3476
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Creeper Ichor",
+          "entityID": 3477
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Apothecary Lydon",
+          "entityID": 2216
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Apothecary Lydon",
+          "entityID": 2216
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills",
+    "raceMask": 0,
+    "mapID": 1424,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Apothecary Lydon",
+        "entityID": 2216
+      }
+    ],
+    "seriesRoot": 496,
+    "requiredItems": [
+      {
+        "quantity": 10,
+        "name": "Gray Bear Tongue",
+        "itemID": 3476
+      },
+      {
+        "quantity": 1,
+        "name": "Creeper Ichor",
+        "itemID": 3477
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.192,
+        "mapID": 1424,
+        "name": "Apothecary Lydon",
+        "entityID": 2216,
+        "npc": true,
+        "x": 0.614
+      }
+    ],
+    "shareable": true,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "title": "Elixir of Suffering",
+    "objectives": [
+      {
+        "sourceObjective": 1,
+        "mapID": 1424,
+        "legacyStepKey": "q:1424:npc:2350",
+        "entityID": 2350,
+        "npc": true,
+        "x": 0.5760000000000001,
+        "y": 0.244,
+        "objectiveKey": "item:3477",
+        "itemID": 3477,
+        "quantity": 1,
+        "name": "Forest Moss Creeper",
+        "itemName": "Creeper Ichor",
+        "alternativeCount": 4,
+        "action": "collect"
+      },
+      {
+        "sourceObjective": 0,
+        "mapID": 1424,
+        "legacyStepKey": "q:1424:npc:14280",
+        "entityID": 2351,
+        "npc": true,
+        "x": 0.598,
+        "y": 0.366,
+        "objectiveKey": "item:3476",
+        "itemID": 3476,
+        "quantity": 10,
+        "name": "Gray Bear",
+        "itemName": "Gray Bear Tongue",
+        "alternativeCount": 4,
+        "action": "collect"
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "series": [
+      496,
+      499
+    ],
+    "starts": [
+      {
+        "y": 0.192,
+        "mapID": 1424,
+        "name": "Apothecary Lydon",
+        "entityID": 2216,
+        "npc": true,
+        "x": 0.614
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Creeper Ichor",
+        "name": "Elder Moss Creeper",
+        "entityID": 2348,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Creeper Ichor",
+        "name": "Giant Moss Creeper",
+        "entityID": 2349,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Creeper Ichor",
+        "name": "Forest Moss Creeper",
+        "entityID": 2350,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Gray Bear Tongue",
+        "name": "Gray Bear",
+        "entityID": 2351,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Gray Bear Tongue",
+        "name": "Vicious Gray Bear",
+        "entityID": 2354,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Gray Bear Tongue",
+        "name": "Elder Gray Bear",
+        "entityID": 2356,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Creeper Ichor",
+        "name": "Creepthess",
+        "entityID": 14279,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Gray Bear Tongue",
+        "name": "Big Samras",
+        "entityID": 14280,
+        "npc": true,
+        "action": "collect"
+      }
+    ]
+  },
+  "498": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "object",
+        "quantity": 1,
+        "action": "use",
+        "entityID": 1721,
+        "name": "Rescue Drull",
+        "spellID": 3366
+      },
+      {
+        "entityType": "object",
+        "quantity": 1,
+        "action": "use",
+        "entityID": 1722,
+        "name": "Rescue Tog'thar",
+        "spellID": 3366
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Dull Iron Key",
+        "entityID": 3467
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Burnished Gold Key",
+        "entityID": 3499
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Dull Iron Key",
+        "name": "Jailor Eston",
+        "entityID": 2427,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Burnished Gold Key",
+        "name": "Jailor Marlgen",
+        "entityID": 2428,
+        "npc": true,
+        "action": "collect"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Dull Iron Key",
+        "itemID": 3467
+      },
+      {
+        "quantity": 1,
+        "name": "Burnished Gold Key",
+        "itemID": 3499
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1424,
+        "action": "use",
+        "entityID": 1721,
+        "y": 0.41600000000000004,
+        "objectiveKey": "object:1721",
+        "name": "Locked ball and chain",
+        "x": 0.753,
+        "quantity": 1,
+        "spellID": 3366
+      },
+      {
+        "sourceObjective": 1,
+        "mapID": 1424,
+        "action": "use",
+        "entityID": 1722,
+        "y": 0.39899999999999997,
+        "objectiveKey": "object:1722",
+        "name": "Locked ball and chain",
+        "x": 0.797,
+        "quantity": 1,
+        "spellID": 3366
+      },
+      {
+        "sourceObjective": 2,
+        "mapID": 1424,
+        "action": "collect",
+        "entityID": 2427,
+        "npc": true,
+        "y": 0.42,
+        "objectiveKey": "item:3467",
+        "name": "Jailor Eston",
+        "x": 0.754,
+        "quantity": 1,
+        "legacyStepKey": "q:1424:npc:2427",
+        "itemName": "Dull Iron Key",
+        "itemID": 3467
+      },
+      {
+        "sourceObjective": 3,
+        "mapID": 1424,
+        "action": "collect",
+        "entityID": 2428,
+        "npc": true,
+        "y": 0.406,
+        "objectiveKey": "item:3499",
+        "name": "Jailor Marlgen",
+        "x": 0.792,
+        "quantity": 1,
+        "legacyStepKey": "q:1424:npc:2428",
+        "itemName": "Burnished Gold Key",
+        "itemID": 3499
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.20600000000000002,
+        "mapID": 1424,
+        "name": "Krusk",
+        "entityID": 2229,
+        "npc": true,
+        "x": 0.632
+      }
+    ],
+    "shareable": true,
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "level": 22,
+    "areaID": 267,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "ends": [
+      {
+        "y": 0.20600000000000002,
+        "mapID": 1424,
+        "name": "Krusk",
+        "entityID": 2229,
+        "npc": true,
+        "x": 0.632
+      }
+    ],
+    "side": "Horde",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Krusk",
+        "entityID": 2229
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Krusk",
+        "entityID": 2229
+      }
+    ],
+    "xp": 2200,
+    "title": "The Rescue",
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 17,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 8589934770,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "action": "use",
+          "entityID": 1721,
+          "name": "Rescue Drull",
+          "spellID": 3366
+        },
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "action": "use",
+          "entityID": 1722,
+          "name": "Rescue Tog'thar",
+          "spellID": 3366
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Dull Iron Key",
+          "entityID": 3467
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Burnished Gold Key",
+          "entityID": 3499
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Krusk",
+          "entityID": 2229
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Krusk",
+          "entityID": 2229
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "499": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "objectives": {},
+    "zone": "Hillsbrad Foothills",
+    "requirements": {},
+    "seriesRoot": 496,
+    "requiredItems": {},
+    "series": [
+      496,
+      499
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Elixir of Suffering",
+        "entityID": 3495
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.192,
+        "mapID": 1424,
+        "name": "Apothecary Lydon",
+        "entityID": 2216,
+        "npc": true,
+        "x": 0.614
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.192,
+        "mapID": 1424,
+        "name": "Umpi",
+        "entityID": 2230,
+        "npc": true,
+        "x": 0.614
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 22,
+    "areaID": 267,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Apothecary Lydon",
+        "entityID": 2216
+      }
+    ],
+    "side": "Horde",
+    "previousQuest": 496,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Umpi",
+        "entityID": 2230
+      }
+    ],
+    "xp": 1750,
+    "title": "Elixir of Suffering",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 2,
+    "minLevel": 19,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Apothecary Lydon",
+          "entityID": 2216
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Elixir of Suffering",
+          "entityID": 3495
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Umpi",
+          "entityID": 2230
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "501": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "npcTargets": [
+      {
+        "itemName": "Mountain Lion Blood",
+        "name": "Starving Mountain Lion",
+        "entityID": 2384,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Mountain Lion Blood",
+        "name": "Feral Mountain Lion",
+        "entityID": 2385,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Mountain Lion Blood",
+        "name": "Mountain Lion",
+        "entityID": 2406,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Mountain Lion Blood",
+        "name": "Hulking Mountain Lion",
+        "entityID": 2407,
+        "npc": true,
+        "action": "collect"
+      }
+    ],
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 10,
+        "name": "Mountain Lion Blood",
+        "entityID": 3496
+      }
+    ],
+    "seriesRoot": 501,
+    "requiredItems": [
+      {
+        "quantity": 10,
+        "name": "Mountain Lion Blood",
+        "itemID": 3496
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1424,
+        "legacyStepKey": "q:1424:npc:2384",
+        "entityID": 2406,
+        "npc": true,
+        "x": 0.386,
+        "y": 0.23399999999999999,
+        "objectiveKey": "item:3496",
+        "itemID": 3496,
+        "quantity": 10,
+        "name": "Mountain Lion",
+        "itemName": "Mountain Lion Blood",
+        "alternativeCount": 4,
+        "action": "collect"
+      }
+    ],
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.192,
+        "mapID": 1424,
+        "name": "Apothecary Lydon",
+        "entityID": 2216,
+        "npc": true,
+        "x": 0.614
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 24,
+    "areaID": 267,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 0,
+        "itemName": "Mountain Lion Blood",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Mountain Lion Blood",
+            "action": "collect",
+            "entityID": 2384,
+            "npc": true,
+            "y": 0.28800000000000003,
+            "x": 0.5479999999999999,
+            "name": "Starving Mountain Lion",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Mountain Lion Blood",
+            "action": "collect",
+            "entityID": 2385,
+            "npc": true,
+            "y": 0.654,
+            "x": 0.682,
+            "name": "Feral Mountain Lion",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Mountain Lion Blood",
+            "action": "collect",
+            "entityID": 2406,
+            "npc": true,
+            "y": 0.23399999999999999,
+            "x": 0.386,
+            "name": "Mountain Lion",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Mountain Lion Blood",
+            "action": "collect",
+            "entityID": 2407,
+            "npc": true,
+            "y": 0.245,
+            "x": 0.447,
+            "name": "Hulking Mountain Lion",
+            "mapID": 1424
+          }
+        ]
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.192,
+        "mapID": 1424,
+        "name": "Apothecary Lydon",
+        "entityID": 2216,
+        "npc": true,
+        "x": 0.614
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Apothecary Lydon",
+        "entityID": 2216
+      }
+    ],
+    "side": "Horde",
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Apothecary Lydon",
+        "entityID": 2216
+      }
+    ],
+    "xp": 1950,
+    "title": "Elixir of Pain",
+    "foreverStatus": "updated",
+    "shareable": true,
+    "minLevel": 21,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "series": [
+      501,
+      502
+    ],
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "502": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "objectives": {},
+    "zone": "Hillsbrad Foothills",
+    "requirements": {},
+    "seriesRoot": 501,
+    "requiredItems": {},
+    "series": [
+      501,
+      502
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Elixir of Pain",
+        "entityID": 3497
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.192,
+        "mapID": 1424,
+        "name": "Apothecary Lydon",
+        "entityID": 2216,
+        "npc": true,
+        "x": 0.614
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.354,
+        "mapID": 1424,
+        "name": "Stanley",
+        "entityID": 2274,
+        "npc": true,
+        "x": 0.326
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 24,
+    "areaID": 267,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Apothecary Lydon",
+        "entityID": 2216
+      }
+    ],
+    "side": "Horde",
+    "previousQuest": 501,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Stanley",
+        "entityID": 2274
+      }
+    ],
+    "xp": 1450,
+    "title": "Elixir of Pain",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 2,
+    "minLevel": 21,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Apothecary Lydon",
+          "entityID": 2216
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Elixir of Pain",
+          "entityID": 3497
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Stanley",
+          "entityID": 2274
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "503": {
+    "prerequisitesRead": true,
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Rusted Iron Key",
+        "entityID": 3704
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 36,
+    "areaID": 267,
+    "seriesPosition": 2,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Gol'dir",
+        "entityID": 2316
+      }
+    ],
+    "xp": 2800,
+    "minLevel": 29,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Rusted Iron Key",
+          "entityID": 3704
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Krusk",
+          "entityID": 2229
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Gol'dir",
+          "entityID": 2316
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills",
+    "raceMask": 0,
+    "mapID": 1424,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Krusk",
+        "entityID": 2229
+      }
+    ],
+    "seriesRoot": 533,
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Rusted Iron Key",
+        "itemID": 3704
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.43799999999999994,
+        "mapID": 1416,
+        "name": "Gol'dir",
+        "entityID": 2316,
+        "npc": true,
+        "x": 0.6
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "title": "Gol'dir",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1416,
+        "action": "loot",
+        "entityID": 2431,
+        "npc": true,
+        "x": 0.61,
+        "y": 0.434,
+        "objectiveKey": "item:3704",
+        "itemID": 3704,
+        "quantity": 1,
+        "sourceAreaID": 36,
+        "itemName": "Rusted Iron Key",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Jailor Borhuin"
+      }
+    ],
+    "series": [
+      533,
+      503,
+      506,
+      507,
+      508
+    ],
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.20600000000000002,
+        "mapID": 1424,
+        "name": "Krusk",
+        "entityID": 2229,
+        "npc": true,
+        "x": 0.632
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "previousQuest": 533,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Rusted Iron Key",
+        "name": "Jailor Borhuin",
+        "entityID": 2431,
+        "npc": true,
+        "action": "loot"
+      }
+    ]
+  },
+  "506": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "zone": "Hillsbrad Foothills",
+    "requirements": {},
+    "seriesRoot": 533,
+    "objectives": {},
+    "series": [
+      533,
+      503,
+      506,
+      507,
+      508
+    ],
+    "starts": [
+      {
+        "y": 0.43799999999999994,
+        "mapID": 1416,
+        "name": "Gol'dir",
+        "entityID": 2316,
+        "npc": true,
+        "x": 0.6
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.20600000000000002,
+        "mapID": 1424,
+        "name": "Krusk",
+        "entityID": 2229,
+        "npc": true,
+        "x": 0.632
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 36,
+    "areaID": 267,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Gol'dir",
+        "entityID": 2316
+      }
+    ],
+    "side": "Horde",
+    "previousQuest": 503,
+    "money": 3000,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Krusk",
+        "entityID": 2229
+      }
+    ],
+    "xp": 2100,
+    "title": "Blackmoore's Legacy",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 3,
+    "minLevel": 29,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Gol'dir",
+          "entityID": 2316
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Krusk",
+          "entityID": 2229
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "507": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "npcTargets": [
+      {
+        "entityID": 2423,
+        "npc": true,
+        "action": "kill",
+        "name": "Lord Aliden Perenolde"
+      }
+    ],
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "name": "Lord Aliden Perenolde",
+        "entityID": 2423
+      }
+    ],
+    "seriesRoot": 533,
+    "objectives": [
+      {
+        "sourceObjective": 2423,
+        "mapID": 1416,
+        "action": "kill",
+        "entityID": 2423,
+        "npc": true,
+        "y": 0.152,
+        "objectiveKey": "npc:2423",
+        "name": "Lord Aliden Perenolde",
+        "x": 0.39399999999999996,
+        "quantity": 1
+      }
+    ],
+    "series": [
+      533,
+      503,
+      506,
+      507,
+      508
+    ],
+    "starts": [
+      {
+        "y": 0.20600000000000002,
+        "mapID": 1424,
+        "name": "Krusk",
+        "entityID": 2229,
+        "npc": true,
+        "x": 0.632
+      }
+    ],
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 42,
+    "areaID": 267,
+    "ends": [
+      {
+        "y": 0.14400000000000002,
+        "mapID": 1416,
+        "name": "Elysa",
+        "entityID": 2317,
+        "npc": true,
+        "x": 0.392
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Krusk",
+        "entityID": 2229
+      }
+    ],
+    "side": "Horde",
+    "previousQuest": 506,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Elysa",
+        "entityID": 2317
+      }
+    ],
+    "xp": 4300,
+    "title": "Lord Aliden Perenolde",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 4,
+    "minLevel": 29,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Lord Aliden Perenolde",
+          "entityID": 2423
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Krusk",
+          "entityID": 2229
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Elysa",
+          "entityID": 2317
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "508": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "objectives": {},
+    "zone": "Hillsbrad Foothills",
+    "requirements": {},
+    "seriesRoot": 533,
+    "requiredItems": {},
+    "series": [
+      533,
+      503,
+      506,
+      507,
+      508
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Taretha's Necklace",
+        "entityID": 3498
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.14400000000000002,
+        "mapID": 1416,
+        "name": "Elysa",
+        "entityID": 2317,
+        "npc": true,
+        "x": 0.392
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.20600000000000002,
+        "mapID": 1424,
+        "name": "Krusk",
+        "entityID": 2229,
+        "npc": true,
+        "x": 0.632
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 40,
+    "areaID": 267,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Elysa",
+        "entityID": 2317
+      }
+    ],
+    "side": "Horde",
+    "previousQuest": 507,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Krusk",
+        "entityID": 2229
+      }
+    ],
+    "xp": 3900,
+    "title": "Taretha's Gift",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 5,
+    "minLevel": 29,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Elysa",
+          "entityID": 2317
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Taretha's Necklace",
+          "entityID": 3498
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Krusk",
+          "entityID": 2229
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "509": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1424,
+        "action": "gather",
+        "entityID": 1723,
+        "x": 0.6395000000000001,
+        "y": 0.5972,
+        "objectiveKey": "item:3502",
+        "itemID": 3502,
+        "quantity": 6,
+        "sourceAreaID": 267,
+        "itemName": "Mudsnout Blossoms",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Mudsnout Blossom"
+      }
+    ],
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 6,
+        "name": "Mudsnout Blossoms",
+        "entityID": 3502
+      }
+    ],
+    "seriesRoot": 509,
+    "requiredItems": [
+      {
+        "quantity": 6,
+        "name": "Mudsnout Blossoms",
+        "itemID": 3502
+      }
+    ],
+    "series": [
+      509,
+      513,
+      515,
+      517,
+      524
+    ],
+    "starts": [
+      {
+        "y": 0.192,
+        "mapID": 1424,
+        "name": "Apothecary Lydon",
+        "entityID": 2216,
+        "npc": true,
+        "x": 0.614
+      }
+    ],
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 28,
+    "areaID": 267,
+    "ends": [
+      {
+        "y": 0.192,
+        "mapID": 1424,
+        "name": "Apothecary Lydon",
+        "entityID": 2216,
+        "npc": true,
+        "x": 0.614
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Apothecary Lydon",
+        "entityID": 2216
+      }
+    ],
+    "side": "Horde",
+    "seriesPosition": 1,
+    "money": 2500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Apothecary Lydon",
+        "entityID": 2216
+      }
+    ],
+    "xp": 2300,
+    "title": "Elixir of Agony",
+    "foreverStatus": "unchanged",
+    "shareable": true,
+    "minLevel": 24,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 6,
+          "name": "Mudsnout Blossoms",
+          "entityID": 3502
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Apothecary Lydon",
+          "entityID": 2216
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Apothecary Lydon",
+          "entityID": 2216
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "513": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "objectives": {},
+    "zone": "Hillsbrad Foothills",
+    "requirements": {},
+    "seriesRoot": 509,
+    "requiredItems": {},
+    "series": [
+      509,
+      513,
+      515,
+      517,
+      524
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Mudsnout Composite",
+        "entityID": 3506
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.192,
+        "mapID": 1424,
+        "name": "Apothecary Lydon",
+        "entityID": 2216,
+        "npc": true,
+        "x": 0.614
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.6940000000000001,
+        "mapID": 1458,
+        "name": "Master Apothecary Faranell",
+        "entityID": 2055,
+        "npc": true,
+        "x": 0.484
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 28,
+    "areaID": 267,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Apothecary Lydon",
+        "entityID": 2216
+      }
+    ],
+    "side": "Horde",
+    "previousQuest": 509,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Master Apothecary Faranell",
+        "entityID": 2055
+      }
+    ],
+    "xp": 1150,
+    "title": "Elixir of Agony",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 2,
+    "minLevel": 24,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Apothecary Lydon",
+          "entityID": 2216
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Mudsnout Composite",
+          "entityID": 3506
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Master Apothecary Faranell",
+          "entityID": 2055
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "515": {
+    "prerequisitesRead": true,
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Lesser Troll's Blood Elixir",
+        "entityID": 3388
+      },
+      {
+        "entityType": "item",
+        "quantity": 5,
+        "name": "Daggerspine Scale",
+        "entityID": 3509
+      },
+      {
+        "entityType": "item",
+        "quantity": 5,
+        "name": "Torn Fin Eye",
+        "entityID": 3510
+      }
+    ],
+    "level": 30,
+    "areaID": 267,
+    "seriesPosition": 3,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Apothecary Lydon",
+        "entityID": 2216
+      }
+    ],
+    "xp": 3050,
+    "minLevel": 24,
+    "series": [
+      509,
+      513,
+      515,
+      517,
+      524
+    ],
+    "objectiveLocationsIncomplete": true,
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills",
+    "raceMask": 0,
+    "missingRequirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Lesser Troll's Blood Elixir",
+        "entityID": 3388
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Master Apothecary Faranell",
+        "entityID": 2055
+      }
+    ],
+    "seriesRoot": 509,
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Lesser Troll's Blood Elixir",
+        "itemID": 3388
+      },
+      {
+        "quantity": 5,
+        "name": "Daggerspine Scale",
+        "itemID": 3509
+      },
+      {
+        "quantity": 5,
+        "name": "Torn Fin Eye",
+        "itemID": 3510
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.192,
+        "mapID": 1424,
+        "name": "Apothecary Lydon",
+        "entityID": 2216,
+        "npc": true,
+        "x": 0.614
+      }
+    ],
+    "side": "Horde",
+    "previousQuest": 513,
+    "mapID": 1424,
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1424,
+        "legacyStepKey": "q:1424:npc:2368",
+        "entityID": 2368,
+        "name": "Daggerspine Shorestalker",
+        "npc": true,
+        "x": 0.6188,
+        "y": 0.762,
+        "objectiveKey": "item:3509",
+        "itemID": 3509,
+        "quantity": 5,
+        "sourceAreaID": 267,
+        "itemName": "Daggerspine Scale",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "action": "loot"
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1424,
+        "legacyStepKey": "q:1424:npc:2374",
+        "entityID": 2374,
+        "name": "Torn Fin Muckdweller",
+        "npc": true,
+        "x": 0.2347,
+        "y": 0.6478,
+        "objectiveKey": "item:3510",
+        "itemID": 3510,
+        "quantity": 5,
+        "sourceAreaID": 267,
+        "itemName": "Torn Fin Eye",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "action": "loot"
+      }
+    ],
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "foreverStatus": "updated",
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Mudsnout Mixture",
+        "entityID": 3508
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.6940000000000001,
+        "mapID": 1458,
+        "name": "Master Apothecary Faranell",
+        "entityID": 2055,
+        "npc": true,
+        "x": 0.484
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "title": "Elixir of Agony",
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Daggerspine Scale",
+        "name": "Daggerspine Shorestalker",
+        "entityID": 2368,
+        "npc": true,
+        "action": "loot"
+      },
+      {
+        "itemName": "Torn Fin Eye",
+        "name": "Torn Fin Muckdweller",
+        "entityID": 2374,
+        "npc": true,
+        "action": "loot"
+      }
+    ]
+  },
+  "517": {
+    "prerequisitesRead": true,
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Keg of Shindigger Stout",
+        "entityID": 3517
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 30,
+    "areaID": 267,
+    "previousQuest": 515,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Apothecary Lydon",
+        "entityID": 2216
+      }
+    ],
+    "xp": 1200,
+    "questType": "Elite",
+    "minLevel": 24,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Keg of Shindigger Stout",
+          "entityID": 3517
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Apothecary Lydon",
+          "entityID": 2216
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Apothecary Lydon",
+          "entityID": 2216
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills",
+    "raceMask": 8589934770,
+    "mapID": 1424,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Apothecary Lydon",
+        "entityID": 2216
+      }
+    ],
+    "seriesRoot": 509,
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Keg of Shindigger Stout",
+        "itemID": 3517
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.192,
+        "mapID": 1424,
+        "name": "Apothecary Lydon",
+        "entityID": 2216,
+        "npc": true,
+        "x": 0.614
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1424,
+        "action": "gather",
+        "entityID": 1727,
+        "x": 0.7243999999999999,
+        "y": 0.7979,
+        "objectiveKey": "item:3517",
+        "itemID": 3517,
+        "quantity": 1,
+        "sourceAreaID": 267,
+        "itemName": "Keg of Shindigger Stout",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Keg of Shindigger Stout"
+      }
+    ],
+    "series": [
+      509,
+      513,
+      515,
+      517,
+      524
+    ],
+    "seriesPosition": 4,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "starts": [
+      {
+        "y": 0.192,
+        "mapID": 1424,
+        "name": "Apothecary Lydon",
+        "entityID": 2216,
+        "npc": true,
+        "x": 0.614
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "title": "Elixir of Agony",
+    "locationSource": "Wowhead Forever",
+    "classMask": 0
+  },
+  "518": {
+    "prerequisitesRead": true,
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 14,
+        "name": "Crushridge Mauler",
+        "entityID": 2254
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 39,
+    "areaID": 267,
+    "seriesPosition": 2,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Melisara",
+        "entityID": 2278
+      }
+    ],
+    "xp": 2250,
+    "questType": "Elite",
+    "minLevel": 34,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 14,
+          "name": "Crushridge Mauler",
+          "entityID": 2254
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Melisara",
+          "entityID": 2278
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Melisara",
+          "entityID": 2278
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills",
+    "raceMask": 0,
+    "mapID": 1424,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Melisara",
+        "entityID": 2278
+      }
+    ],
+    "seriesRoot": 495,
+    "ends": [
+      {
+        "y": 0.20600000000000002,
+        "mapID": 1424,
+        "name": "Melisara",
+        "entityID": 2278,
+        "npc": true,
+        "x": 0.626
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "previousQuest": 495,
+    "objectives": [
+      {
+        "sourceObjective": 2254,
+        "mapID": 1416,
+        "action": "kill",
+        "entityID": 2254,
+        "npc": true,
+        "y": 0.466,
+        "objectiveKey": "npc:2254",
+        "name": "Crushridge Mauler",
+        "x": 0.44,
+        "quantity": 14
+      }
+    ],
+    "series": [
+      495,
+      518,
+      519,
+      520,
+      521
+    ],
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.20600000000000002,
+        "mapID": 1424,
+        "name": "Melisara",
+        "entityID": 2278,
+        "npc": true,
+        "x": 0.626
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "title": "The Crown of Will",
+    "classMask": 0,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "entityID": 2254,
+        "npc": true,
+        "action": "kill",
+        "name": "Crushridge Mauler"
+      }
+    ]
+  },
+  "519": {
+    "prerequisitesRead": true,
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Targ's Head",
+        "entityID": 3550
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Muckrake's Head",
+        "entityID": 3551
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Glommus's Head",
+        "entityID": 3552
+      }
+    ],
+    "level": 41,
+    "areaID": 267,
+    "previousQuest": 518,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Melisara",
+        "entityID": 2278
+      }
+    ],
+    "xp": 3300,
+    "questType": "Elite",
+    "minLevel": 34,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Targ's Head",
+          "entityID": 3550
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Muckrake's Head",
+          "entityID": 3551
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Glommus's Head",
+          "entityID": 3552
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Melisara",
+          "entityID": 2278
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Melisara",
+          "entityID": 2278
+        }
+      ]
+    },
+    "objectiveLocationsIncomplete": true,
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills",
+    "raceMask": 0,
+    "missingRequirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Muckrake's Head",
+        "entityID": 3551
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Glommus's Head",
+        "entityID": 3552
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Melisara",
+        "entityID": 2278
+      }
+    ],
+    "seriesRoot": 495,
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Targ's Head",
+        "itemID": 3550
+      },
+      {
+        "quantity": 1,
+        "name": "Muckrake's Head",
+        "itemID": 3551
+      },
+      {
+        "quantity": 1,
+        "name": "Glommus's Head",
+        "itemID": 3552
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.20600000000000002,
+        "mapID": 1424,
+        "name": "Melisara",
+        "entityID": 2278,
+        "npc": true,
+        "x": 0.626
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "seriesPosition": 3,
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1416,
+        "legacyStepKey": "q:1416:npc:2420",
+        "entityID": 2420,
+        "name": "Targ",
+        "npc": true,
+        "x": 0.3957,
+        "y": 0.5289,
+        "objectiveKey": "item:3550",
+        "itemID": 3550,
+        "quantity": 1,
+        "sourceAreaID": 36,
+        "itemName": "Targ's Head",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "action": "loot"
+      }
+    ],
+    "series": [
+      495,
+      518,
+      519,
+      520,
+      521
+    ],
+    "mapID": 1424,
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.20600000000000002,
+        "mapID": 1424,
+        "name": "Melisara",
+        "entityID": 2278,
+        "npc": true,
+        "x": 0.626
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "title": "The Crown of Will",
+    "classMask": 0,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Targ's Head",
+        "name": "Targ",
+        "entityID": 2420,
+        "npc": true,
+        "action": "loot"
+      }
+    ]
+  },
+  "520": {
+    "prerequisitesRead": true,
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Mug'thol's Head",
+        "entityID": 3553
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Crown of Will",
+        "entityID": 3554
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 43,
+    "areaID": 267,
+    "seriesPosition": 4,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Melisara",
+        "entityID": 2278
+      }
+    ],
+    "xp": 4450,
+    "questType": "Elite",
+    "minLevel": 34,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Mug'thol's Head",
+          "entityID": 3553
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Crown of Will",
+          "entityID": 3554
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Melisara",
+          "entityID": 2278
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Melisara",
+          "entityID": 2278
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills",
+    "raceMask": 0,
+    "mapID": 1424,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Melisara",
+        "entityID": 2278
+      }
+    ],
+    "seriesRoot": 495,
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Mug'thol's Head",
+        "itemID": 3553
+      },
+      {
+        "quantity": 1,
+        "name": "Crown of Will",
+        "itemID": 3554
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.20600000000000002,
+        "mapID": 1424,
+        "name": "Melisara",
+        "entityID": 2278,
+        "npc": true,
+        "x": 0.626
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "previousQuest": 519,
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1416,
+        "action": "loot",
+        "entityID": 2257,
+        "npc": true,
+        "x": 0.3568,
+        "y": 0.5425,
+        "objectiveKey": "item:3553",
+        "itemID": 3553,
+        "quantity": 1,
+        "sourceAreaID": 36,
+        "itemName": "Mug'thol's Head",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Mug'thol"
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1416,
+        "action": "loot",
+        "entityID": 2257,
+        "npc": true,
+        "x": 0.3568,
+        "y": 0.5425,
+        "objectiveKey": "item:3554",
+        "itemID": 3554,
+        "quantity": 1,
+        "sourceAreaID": 36,
+        "itemName": "Crown of Will",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Mug'thol"
+      }
+    ],
+    "series": [
+      495,
+      518,
+      519,
+      520,
+      521
+    ],
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.20600000000000002,
+        "mapID": 1424,
+        "name": "Melisara",
+        "entityID": 2278,
+        "npc": true,
+        "x": 0.626
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "title": "The Crown of Will",
+    "classMask": 0,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Mug'thol's Head",
+        "name": "Mug'thol",
+        "entityID": 2257,
+        "npc": true,
+        "action": "loot"
+      },
+      {
+        "itemName": "Crown of Will",
+        "name": "Mug'thol",
+        "entityID": 2257,
+        "npc": true,
+        "action": "loot"
+      }
+    ]
+  },
+  "521": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "objectives": {},
+    "zone": "Hillsbrad Foothills",
+    "requirements": {},
+    "seriesRoot": 495,
+    "requiredItems": {},
+    "series": [
+      495,
+      518,
+      519,
+      520,
+      521
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Crown of Will",
+        "entityID": 3554
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.20600000000000002,
+        "mapID": 1424,
+        "name": "Melisara",
+        "entityID": 2278,
+        "npc": true,
+        "x": 0.626
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.9359999999999999,
+        "mapID": 1458,
+        "name": "Sharlindra",
+        "entityID": 2227,
+        "npc": true,
+        "x": 0.574
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 43,
+    "areaID": 267,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Melisara",
+        "entityID": 2278
+      }
+    ],
+    "side": "Horde",
+    "previousQuest": 520,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Sharlindra",
+        "entityID": 2227
+      }
+    ],
+    "xp": 3600,
+    "title": "The Crown of Will",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 5,
+    "minLevel": 34,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Melisara",
+          "entityID": 2278
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Crown of Will",
+          "entityID": 3554
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Sharlindra",
+          "entityID": 2227
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "524": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "objectives": {},
+    "zone": "Hillsbrad Foothills",
+    "requirements": {},
+    "seriesRoot": 509,
+    "requiredItems": {},
+    "series": [
+      509,
+      513,
+      515,
+      517,
+      524
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Tainted Keg",
+        "entityID": 3520
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.192,
+        "mapID": 1424,
+        "name": "Apothecary Lydon",
+        "entityID": 2216,
+        "npc": true,
+        "x": 0.614
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.188,
+        "x": 0.628,
+        "name": "Dusty Rug",
+        "entityID": 1728,
+        "mapID": 1424
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 30,
+    "areaID": 267,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Apothecary Lydon",
+        "entityID": 2216
+      }
+    ],
+    "side": "Horde",
+    "previousQuest": 517,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "object",
+        "name": "Dusty Rug",
+        "entityID": 1728
+      }
+    ],
+    "xp": 3650,
+    "title": "Elixir of Agony",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 5,
+    "minLevel": 24,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Apothecary Lydon",
+          "entityID": 2216
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Tainted Keg",
+          "entityID": 3520
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "object",
+          "name": "Dusty Rug",
+          "entityID": 1728
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "527": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "npcTargets": [
+      {
+        "entityID": 232,
+        "npc": true,
+        "action": "kill",
+        "name": "Farmer Ray"
+      },
+      {
+        "entityID": 2266,
+        "npc": true,
+        "action": "kill",
+        "name": "Hillsbrad Farmer"
+      },
+      {
+        "entityID": 2360,
+        "npc": true,
+        "action": "kill",
+        "name": "Hillsbrad Farmhand"
+      },
+      {
+        "entityID": 2403,
+        "npc": true,
+        "action": "kill",
+        "name": "Farmer Getz"
+      }
+    ],
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 6,
+        "name": "Hillsbrad Farmer",
+        "entityID": 2266
+      },
+      {
+        "entityType": "npc",
+        "quantity": 6,
+        "name": "Hillsbrad Farmhand",
+        "entityID": 2360
+      },
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "name": "Farmer Ray",
+        "entityID": 232
+      },
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "name": "Farmer Getz",
+        "entityID": 2403
+      }
+    ],
+    "seriesRoot": 527,
+    "objectives": [
+      {
+        "sourceObjective": 232,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 232,
+        "npc": true,
+        "y": 0.35,
+        "objectiveKey": "npc:232",
+        "name": "Farmer Ray",
+        "x": 0.33,
+        "quantity": 1
+      },
+      {
+        "sourceObjective": 2266,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 2266,
+        "npc": true,
+        "y": 0.348,
+        "objectiveKey": "npc:2266",
+        "name": "Hillsbrad Farmer",
+        "x": 0.33,
+        "quantity": 6
+      },
+      {
+        "sourceObjective": 2360,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 2360,
+        "npc": true,
+        "y": 0.39399999999999996,
+        "objectiveKey": "npc:2360",
+        "name": "Hillsbrad Farmhand",
+        "x": 0.366,
+        "quantity": 6
+      },
+      {
+        "sourceObjective": 2403,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 2403,
+        "npc": true,
+        "y": 0.38,
+        "objectiveKey": "npc:2403",
+        "name": "Farmer Getz",
+        "x": 0.35200000000000004,
+        "quantity": 1
+      }
+    ],
+    "series": [
+      527,
+      528,
+      529,
+      532,
+      539,
+      541,
+      550
+    ],
+    "starts": [
+      {
+        "y": 0.20199999999999999,
+        "mapID": 1424,
+        "name": "High Executor Darthalia",
+        "entityID": 2215,
+        "npc": true,
+        "x": 0.622
+      }
+    ],
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 24,
+    "areaID": 267,
+    "ends": [
+      {
+        "y": 0.20199999999999999,
+        "mapID": 1424,
+        "name": "High Executor Darthalia",
+        "entityID": 2215,
+        "npc": true,
+        "x": 0.622
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "High Executor Darthalia",
+        "entityID": 2215
+      }
+    ],
+    "side": "Horde",
+    "seriesPosition": 1,
+    "money": 1700,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "High Executor Darthalia",
+        "entityID": 2215
+      }
+    ],
+    "xp": 1950,
+    "title": "Battle of Hillsbrad",
+    "foreverStatus": "unchanged",
+    "shareable": true,
+    "minLevel": 19,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 6,
+          "name": "Hillsbrad Farmer",
+          "entityID": 2266
+        },
+        {
+          "entityType": "npc",
+          "quantity": 6,
+          "name": "Hillsbrad Farmhand",
+          "entityID": 2360
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Farmer Ray",
+          "entityID": 232
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Farmer Getz",
+          "entityID": 2403
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "High Executor Darthalia",
+          "entityID": 2215
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "High Executor Darthalia",
+          "entityID": 2215
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "528": {
+    "prerequisitesRead": true,
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 15,
+        "name": "Hillsbrad Peasant",
+        "entityID": 2267
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 25,
+    "areaID": 267,
+    "seriesPosition": 2,
+    "money": 1800,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "High Executor Darthalia",
+        "entityID": 2215
+      }
+    ],
+    "xp": 2000,
+    "minLevel": 19,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 15,
+          "name": "Hillsbrad Peasant",
+          "entityID": 2267
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "High Executor Darthalia",
+          "entityID": 2215
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "High Executor Darthalia",
+          "entityID": 2215
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills",
+    "raceMask": 0,
+    "mapID": 1424,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "High Executor Darthalia",
+        "entityID": 2215
+      }
+    ],
+    "seriesRoot": 527,
+    "ends": [
+      {
+        "y": 0.20199999999999999,
+        "mapID": 1424,
+        "name": "High Executor Darthalia",
+        "entityID": 2215,
+        "npc": true,
+        "x": 0.622
+      }
+    ],
+    "shareable": true,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "previousQuest": 527,
+    "objectives": [
+      {
+        "sourceObjective": 2267,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 2267,
+        "npc": true,
+        "y": 0.428,
+        "objectiveKey": "npc:2267",
+        "name": "Hillsbrad Peasant",
+        "x": 0.3,
+        "quantity": 15
+      }
+    ],
+    "series": [
+      527,
+      528,
+      529,
+      532,
+      539,
+      541,
+      550
+    ],
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.20199999999999999,
+        "mapID": 1424,
+        "name": "High Executor Darthalia",
+        "entityID": 2215,
+        "npc": true,
+        "x": 0.622
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "title": "Battle of Hillsbrad",
+    "classMask": 0,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "entityID": 2267,
+        "npc": true,
+        "action": "kill",
+        "name": "Hillsbrad Peasant"
+      }
+    ]
+  },
+  "529": {
+    "prerequisitesRead": true,
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "name": "Blacksmith Verringtan",
+        "entityID": 2404
+      },
+      {
+        "entityType": "npc",
+        "quantity": 4,
+        "name": "Hillsbrad Apprentice Blacksmith",
+        "entityID": 2265
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Shipment of Iron",
+        "entityID": 3564
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 26,
+    "areaID": 267,
+    "seriesPosition": 3,
+    "money": 2000,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "High Executor Darthalia",
+        "entityID": 2215
+      }
+    ],
+    "xp": 2100,
+    "minLevel": 19,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Blacksmith Verringtan",
+          "entityID": 2404
+        },
+        {
+          "entityType": "npc",
+          "quantity": 4,
+          "name": "Hillsbrad Apprentice Blacksmith",
+          "entityID": 2265
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Shipment of Iron",
+          "entityID": 3564
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "High Executor Darthalia",
+          "entityID": 2215
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "High Executor Darthalia",
+          "entityID": 2215
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills",
+    "raceMask": 0,
+    "mapID": 1424,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "High Executor Darthalia",
+        "entityID": 2215
+      }
+    ],
+    "seriesRoot": 527,
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Shipment of Iron",
+        "itemID": 3564
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.20199999999999999,
+        "mapID": 1424,
+        "name": "High Executor Darthalia",
+        "entityID": 2215,
+        "npc": true,
+        "x": 0.622
+      }
+    ],
+    "shareable": true,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "previousQuest": 528,
+    "objectives": [
+      {
+        "sourceObjective": 2265,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 2265,
+        "npc": true,
+        "y": 0.456,
+        "objectiveKey": "npc:2265",
+        "name": "Hillsbrad Apprentice Blacksmith",
+        "x": 0.32,
+        "quantity": 4
+      },
+      {
+        "sourceObjective": 2404,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 2404,
+        "npc": true,
+        "y": 0.452,
+        "objectiveKey": "npc:2404",
+        "name": "Blacksmith Verringtan",
+        "x": 0.322,
+        "quantity": 1
+      },
+      {
+        "entityType": "object",
+        "mapID": 1424,
+        "action": "gather",
+        "entityID": 1736,
+        "x": 0.3201,
+        "y": 0.4545,
+        "objectiveKey": "item:3564",
+        "itemID": 3564,
+        "quantity": 1,
+        "sourceAreaID": 267,
+        "itemName": "Shipment of Iron",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Shipment of Iron"
+      }
+    ],
+    "series": [
+      527,
+      528,
+      529,
+      532,
+      539,
+      541,
+      550
+    ],
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.20199999999999999,
+        "mapID": 1424,
+        "name": "High Executor Darthalia",
+        "entityID": 2215,
+        "npc": true,
+        "x": 0.622
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "title": "Battle of Hillsbrad",
+    "classMask": 0,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "entityID": 2265,
+        "npc": true,
+        "action": "kill",
+        "name": "Hillsbrad Apprentice Blacksmith"
+      },
+      {
+        "entityID": 2404,
+        "npc": true,
+        "action": "kill",
+        "name": "Blacksmith Verringtan"
+      }
+    ]
+  },
+  "532": {
+    "prerequisitesRead": true,
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "name": "Magistrate Burnside",
+        "entityID": 2335
+      },
+      {
+        "entityType": "npc",
+        "quantity": 5,
+        "name": "Hillsbrad Councilman",
+        "entityID": 2387
+      },
+      {
+        "entityType": "object",
+        "quantity": 1,
+        "name": "Hillsbrad Proclamation destroyed",
+        "entityID": 1761
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Hillsbrad Town Registry",
+        "entityID": 3657
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 26,
+    "areaID": 267,
+    "seriesPosition": 4,
+    "money": 2000,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "High Executor Darthalia",
+        "entityID": 2215
+      }
+    ],
+    "xp": 2100,
+    "minLevel": 19,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Magistrate Burnside",
+          "entityID": 2335
+        },
+        {
+          "entityType": "npc",
+          "quantity": 5,
+          "name": "Hillsbrad Councilman",
+          "entityID": 2387
+        },
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "name": "Hillsbrad Proclamation destroyed",
+          "entityID": 1761
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Hillsbrad Town Registry",
+          "entityID": 3657
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "High Executor Darthalia",
+          "entityID": 2215
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "High Executor Darthalia",
+          "entityID": 2215
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills",
+    "raceMask": 0,
+    "mapID": 1424,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "High Executor Darthalia",
+        "entityID": 2215
+      }
+    ],
+    "seriesRoot": 527,
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Hillsbrad Town Registry",
+        "itemID": 3657
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.20199999999999999,
+        "mapID": 1424,
+        "name": "High Executor Darthalia",
+        "entityID": 2215,
+        "npc": true,
+        "x": 0.622
+      }
+    ],
+    "shareable": true,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "previousQuest": 529,
+    "objectives": [
+      {
+        "sourceObjective": 2335,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 2335,
+        "npc": true,
+        "y": 0.41600000000000004,
+        "objectiveKey": "npc:2335",
+        "name": "Magistrate Burnside",
+        "x": 0.29600000000000004,
+        "quantity": 1
+      },
+      {
+        "sourceObjective": 2387,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 2387,
+        "npc": true,
+        "y": 0.428,
+        "objectiveKey": "npc:2387",
+        "name": "Hillsbrad Councilman",
+        "x": 0.3,
+        "quantity": 5
+      },
+      {
+        "sourceObjective": 2,
+        "objectiveKey": "object:1761",
+        "name": "Hillsbrad Proclamation",
+        "y": 0.41700000000000004,
+        "entityID": 1761,
+        "x": 0.29600000000000004,
+        "quantity": 1,
+        "mapID": 1424
+      },
+      {
+        "entityType": "object",
+        "mapID": 1424,
+        "action": "gather",
+        "entityID": 1759,
+        "x": 0.2952,
+        "y": 0.4153,
+        "objectiveKey": "item:3657",
+        "itemID": 3657,
+        "quantity": 1,
+        "sourceAreaID": 267,
+        "itemName": "Hillsbrad Town Registry",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Hillsbrad Town Registry"
+      }
+    ],
+    "series": [
+      527,
+      528,
+      529,
+      532,
+      539,
+      541,
+      550
+    ],
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.20199999999999999,
+        "mapID": 1424,
+        "name": "High Executor Darthalia",
+        "entityID": 2215,
+        "npc": true,
+        "x": 0.622
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "title": "Battle of Hillsbrad",
+    "classMask": 0,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "entityID": 2335,
+        "npc": true,
+        "action": "kill",
+        "name": "Magistrate Burnside"
+      },
+      {
+        "entityID": 2387,
+        "npc": true,
+        "action": "kill",
+        "name": "Hillsbrad Councilman"
+      }
+    ]
+  },
+  "533": {
+    "prerequisitesRead": true,
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Syndicate Missive",
+        "entityID": 3601
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "otherLocationsIncomplete": false,
+    "level": 34,
+    "areaID": 267,
+    "seriesPosition": 1,
+    "money": 3500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Krusk",
+        "entityID": 2229
+      }
+    ],
+    "xp": 2700,
+    "minLevel": 29,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Syndicate Missive",
+          "entityID": 3601
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Krusk",
+          "entityID": 2229
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Krusk",
+          "entityID": 2229
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills",
+    "raceMask": 0,
+    "mapID": 1424,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Krusk",
+        "entityID": 2229
+      }
+    ],
+    "seriesRoot": 533,
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Syndicate Missive",
+        "itemID": 3601
+      }
+    ],
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "ends": [
+      {
+        "y": 0.20600000000000002,
+        "mapID": 1424,
+        "name": "Krusk",
+        "entityID": 2229,
+        "npc": true,
+        "x": 0.632
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "title": "Infiltration",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1416,
+        "action": "loot",
+        "entityID": 2240,
+        "npc": true,
+        "y": 0.792,
+        "sourceZone": "Alterac Mountains",
+        "objectiveKey": "item:3601",
+        "itemID": 3601,
+        "x": 0.47600000000000003,
+        "sourceAreaID": 36,
+        "quantity": 1,
+        "itemName": "Syndicate Missive",
+        "name": "Syndicate Footpad"
+      }
+    ],
+    "series": [
+      533,
+      503,
+      506,
+      507,
+      508
+    ],
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.20600000000000002,
+        "mapID": 1424,
+        "name": "Krusk",
+        "entityID": 2229,
+        "npc": true,
+        "x": 0.632
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "prerequisiteAny": [
+      498
+    ],
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Syndicate Missive",
+        "name": "Syndicate Footpad",
+        "entityID": 2240,
+        "npc": true,
+        "action": "loot"
+      }
+    ]
+  },
+  "536": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "npcTargets": [
+      {
+        "entityID": 2376,
+        "npc": true,
+        "action": "kill",
+        "name": "Torn Fin Oracle"
+      },
+      {
+        "entityID": 2377,
+        "npc": true,
+        "action": "kill",
+        "name": "Torn Fin Tidehunter"
+      }
+    ],
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 10,
+        "name": "Torn Fin Tidehunter",
+        "entityID": 2377
+      },
+      {
+        "entityType": "npc",
+        "quantity": 10,
+        "name": "Torn Fin Oracle",
+        "entityID": 2376
+      }
+    ],
+    "seriesRoot": 536,
+    "objectives": [
+      {
+        "sourceObjective": 2376,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 2376,
+        "npc": true,
+        "y": 0.63,
+        "objectiveKey": "npc:2376",
+        "name": "Torn Fin Oracle",
+        "x": 0.462,
+        "quantity": 10
+      },
+      {
+        "sourceObjective": 2377,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 2377,
+        "npc": true,
+        "y": 0.642,
+        "objectiveKey": "npc:2377",
+        "name": "Torn Fin Tidehunter",
+        "x": 0.488,
+        "quantity": 10
+      }
+    ],
+    "series": [
+      536,
+      559,
+      560,
+      561,
+      562,
+      563
+    ],
+    "starts": [
+      {
+        "y": 0.584,
+        "mapID": 1424,
+        "name": "Lieutenant Farren Orinelle",
+        "entityID": 2228,
+        "npc": true,
+        "x": 0.514
+      }
+    ],
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 30,
+    "areaID": 267,
+    "ends": [
+      {
+        "y": 0.584,
+        "mapID": 1424,
+        "name": "Lieutenant Farren Orinelle",
+        "entityID": 2228,
+        "npc": true,
+        "x": 0.514
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Lieutenant Farren Orinelle",
+        "entityID": 2228
+      }
+    ],
+    "side": "Alliance",
+    "seriesPosition": 1,
+    "money": 2100,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Lieutenant Farren Orinelle",
+        "entityID": 2228
+      }
+    ],
+    "xp": 1850,
+    "title": "Down the Coast",
+    "foreverStatus": "unchanged",
+    "shareable": true,
+    "minLevel": 25,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "name": "Torn Fin Tidehunter",
+          "entityID": 2377
+        },
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "name": "Torn Fin Oracle",
+          "entityID": 2376
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Lieutenant Farren Orinelle",
+          "entityID": 2228
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Lieutenant Farren Orinelle",
+          "entityID": 2228
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "539": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "npcTargets": [
+      {
+        "entityID": 2269,
+        "npc": true,
+        "action": "kill",
+        "name": "Hillsbrad Miner"
+      },
+      {
+        "entityID": 2305,
+        "npc": true,
+        "action": "kill",
+        "name": "Foreman Bonds"
+      }
+    ],
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "name": "Foreman Bonds",
+        "entityID": 2305
+      },
+      {
+        "entityType": "npc",
+        "quantity": 10,
+        "name": "Hillsbrad Miner",
+        "entityID": 2269
+      }
+    ],
+    "seriesRoot": 527,
+    "objectives": [
+      {
+        "sourceObjective": 2269,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 2269,
+        "npc": true,
+        "y": 0.58,
+        "objectiveKey": "npc:2269",
+        "name": "Hillsbrad Miner",
+        "x": 0.27399999999999997,
+        "quantity": 10
+      },
+      {
+        "sourceObjective": 2305,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 2305,
+        "npc": true,
+        "y": 0.562,
+        "objectiveKey": "npc:2305",
+        "name": "Foreman Bonds",
+        "x": 0.31,
+        "quantity": 1
+      }
+    ],
+    "series": [
+      527,
+      528,
+      529,
+      532,
+      539,
+      541,
+      550
+    ],
+    "starts": [
+      {
+        "y": 0.20199999999999999,
+        "mapID": 1424,
+        "name": "High Executor Darthalia",
+        "entityID": 2215,
+        "npc": true,
+        "x": 0.622
+      }
+    ],
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 28,
+    "areaID": 267,
+    "ends": [
+      {
+        "y": 0.20199999999999999,
+        "mapID": 1424,
+        "name": "High Executor Darthalia",
+        "entityID": 2215,
+        "npc": true,
+        "x": 0.622
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "High Executor Darthalia",
+        "entityID": 2215
+      }
+    ],
+    "side": "Horde",
+    "previousQuest": 532,
+    "money": 2500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "High Executor Darthalia",
+        "entityID": 2215
+      }
+    ],
+    "xp": 2300,
+    "title": "Battle of Hillsbrad",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 5,
+    "minLevel": 19,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Foreman Bonds",
+          "entityID": 2305
+        },
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "name": "Hillsbrad Miner",
+          "entityID": 2269
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "High Executor Darthalia",
+          "entityID": 2215
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "High Executor Darthalia",
+          "entityID": 2215
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "541": {
+    "prerequisitesRead": true,
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 10,
+        "name": "Dun Garok Mountaineer",
+        "entityID": 2344
+      },
+      {
+        "entityType": "npc",
+        "quantity": 8,
+        "name": "Dun Garok Rifleman",
+        "entityID": 2345
+      },
+      {
+        "entityType": "npc",
+        "quantity": 4,
+        "name": "Dun Garok Priest",
+        "entityID": 2346
+      },
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "name": "Captain Ironhill",
+        "entityID": 2304
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 30,
+    "areaID": 267,
+    "previousQuest": 539,
+    "money": 2500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "High Executor Darthalia",
+        "entityID": 2215
+      }
+    ],
+    "xp": 2450,
+    "questType": "Elite",
+    "minLevel": 19,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "name": "Dun Garok Mountaineer",
+          "entityID": 2344
+        },
+        {
+          "entityType": "npc",
+          "quantity": 8,
+          "name": "Dun Garok Rifleman",
+          "entityID": 2345
+        },
+        {
+          "entityType": "npc",
+          "quantity": 4,
+          "name": "Dun Garok Priest",
+          "entityID": 2346
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Captain Ironhill",
+          "entityID": 2304
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "High Executor Darthalia",
+          "entityID": 2215
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "High Executor Darthalia",
+          "entityID": 2215
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills",
+    "raceMask": 8589934770,
+    "mapID": 1424,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "High Executor Darthalia",
+        "entityID": 2215
+      }
+    ],
+    "seriesRoot": 527,
+    "ends": [
+      {
+        "y": 0.20199999999999999,
+        "mapID": 1424,
+        "name": "High Executor Darthalia",
+        "entityID": 2215,
+        "npc": true,
+        "x": 0.622
+      }
+    ],
+    "shareable": true,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "classMask": 0,
+    "objectives": [
+      {
+        "sourceObjective": 2304,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 2304,
+        "npc": true,
+        "y": 0.8,
+        "objectiveKey": "npc:2304",
+        "name": "Captain Ironhill",
+        "x": 0.726,
+        "quantity": 1
+      },
+      {
+        "sourceObjective": 2344,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 2344,
+        "npc": true,
+        "y": 0.7979999999999999,
+        "objectiveKey": "npc:2344",
+        "name": "Dun Garok Mountaineer",
+        "x": 0.706,
+        "quantity": 10
+      },
+      {
+        "sourceObjective": 2345,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 2345,
+        "npc": true,
+        "y": 0.804,
+        "objectiveKey": "npc:2345",
+        "name": "Dun Garok Rifleman",
+        "x": 0.71,
+        "quantity": 8
+      },
+      {
+        "sourceObjective": 2346,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 2346,
+        "npc": true,
+        "y": 0.7859999999999999,
+        "objectiveKey": "npc:2346",
+        "name": "Dun Garok Priest",
+        "x": 0.71,
+        "quantity": 4
+      }
+    ],
+    "series": [
+      527,
+      528,
+      529,
+      532,
+      539,
+      541,
+      550
+    ],
+    "seriesPosition": 6,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "starts": [
+      {
+        "y": 0.20199999999999999,
+        "mapID": 1424,
+        "name": "High Executor Darthalia",
+        "entityID": 2215,
+        "npc": true,
+        "x": 0.622
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "title": "Battle of Hillsbrad",
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "entityID": 2304,
+        "npc": true,
+        "action": "kill",
+        "name": "Captain Ironhill"
+      },
+      {
+        "entityID": 2344,
+        "npc": true,
+        "action": "kill",
+        "name": "Dun Garok Mountaineer"
+      },
+      {
+        "entityID": 2345,
+        "npc": true,
+        "action": "kill",
+        "name": "Dun Garok Rifleman"
+      },
+      {
+        "entityID": 2346,
+        "npc": true,
+        "action": "kill",
+        "name": "Dun Garok Priest"
+      }
+    ]
+  },
+  "546": {
+    "prerequisitesRead": true,
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 30,
+        "name": "Hillsbrad Human Skull",
+        "entityID": 3692
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "otherLocationsIncomplete": false,
+    "level": 25,
+    "areaID": 267,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 0,
+        "itemName": "Hillsbrad Human Skull",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Hillsbrad Human Skull",
+            "action": "collect",
+            "entityID": 232,
+            "npc": true,
+            "y": 0.35,
+            "x": 0.33,
+            "name": "Farmer Ray",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "mapID": 1424,
+            "action": "collect",
+            "y": 0.41700000000000004,
+            "entityID": 1761,
+            "x": 0.29600000000000004,
+            "name": "Hillsbrad Proclamation",
+            "itemName": "Hillsbrad Human Skull"
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hillsbrad Human Skull",
+            "action": "collect",
+            "entityID": 2244,
+            "npc": true,
+            "y": 0.414,
+            "x": 0.7879999999999999,
+            "name": "Syndicate Shadow Mage",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hillsbrad Human Skull",
+            "action": "collect",
+            "entityID": 2260,
+            "npc": true,
+            "y": 0.408,
+            "x": 0.752,
+            "name": "Syndicate Rogue",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hillsbrad Human Skull",
+            "action": "collect",
+            "entityID": 2261,
+            "npc": true,
+            "y": 0.44,
+            "x": 0.81,
+            "name": "Syndicate Watchman",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hillsbrad Human Skull",
+            "action": "collect",
+            "entityID": 2264,
+            "npc": true,
+            "y": 0.444,
+            "x": 0.364,
+            "name": "Hillsbrad Tailor",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hillsbrad Human Skull",
+            "action": "collect",
+            "entityID": 2265,
+            "npc": true,
+            "y": 0.456,
+            "x": 0.32,
+            "name": "Hillsbrad Apprentice Blacksmith",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hillsbrad Human Skull",
+            "action": "collect",
+            "entityID": 2266,
+            "npc": true,
+            "y": 0.348,
+            "x": 0.33,
+            "name": "Hillsbrad Farmer",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hillsbrad Human Skull",
+            "action": "collect",
+            "entityID": 2267,
+            "npc": true,
+            "y": 0.428,
+            "x": 0.3,
+            "name": "Hillsbrad Peasant",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hillsbrad Human Skull",
+            "action": "collect",
+            "entityID": 2268,
+            "npc": true,
+            "y": 0.42200000000000004,
+            "x": 0.302,
+            "name": "Hillsbrad Footman",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hillsbrad Human Skull",
+            "action": "collect",
+            "entityID": 2269,
+            "npc": true,
+            "y": 0.58,
+            "x": 0.27399999999999997,
+            "name": "Hillsbrad Miner",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hillsbrad Human Skull",
+            "action": "collect",
+            "entityID": 2270,
+            "npc": true,
+            "y": 0.5920000000000001,
+            "x": 0.27399999999999997,
+            "name": "Hillsbrad Sentry",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hillsbrad Human Skull",
+            "action": "collect",
+            "entityID": 2305,
+            "npc": true,
+            "y": 0.562,
+            "x": 0.31,
+            "name": "Foreman Bonds",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hillsbrad Human Skull",
+            "action": "collect",
+            "entityID": 2335,
+            "npc": true,
+            "y": 0.41600000000000004,
+            "x": 0.29600000000000004,
+            "name": "Magistrate Burnside",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hillsbrad Human Skull",
+            "action": "collect",
+            "entityID": 2360,
+            "npc": true,
+            "y": 0.39399999999999996,
+            "x": 0.366,
+            "name": "Hillsbrad Farmhand",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hillsbrad Human Skull",
+            "action": "collect",
+            "entityID": 2387,
+            "npc": true,
+            "y": 0.428,
+            "x": 0.3,
+            "name": "Hillsbrad Councilman",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hillsbrad Human Skull",
+            "action": "collect",
+            "entityID": 2403,
+            "npc": true,
+            "y": 0.38,
+            "x": 0.35200000000000004,
+            "name": "Farmer Getz",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hillsbrad Human Skull",
+            "action": "collect",
+            "entityID": 2404,
+            "npc": true,
+            "y": 0.452,
+            "x": 0.322,
+            "name": "Blacksmith Verringtan",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hillsbrad Human Skull",
+            "action": "collect",
+            "entityID": 2427,
+            "npc": true,
+            "y": 0.42,
+            "x": 0.754,
+            "name": "Jailor Eston",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hillsbrad Human Skull",
+            "action": "collect",
+            "entityID": 2428,
+            "npc": true,
+            "y": 0.406,
+            "x": 0.792,
+            "name": "Jailor Marlgen",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hillsbrad Human Skull",
+            "action": "collect",
+            "entityID": 2436,
+            "npc": true,
+            "y": 0.5479999999999999,
+            "x": 0.498,
+            "name": "Farmer Kent",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hillsbrad Human Skull",
+            "action": "collect",
+            "entityID": 2448,
+            "npc": true,
+            "y": 0.428,
+            "x": 0.3,
+            "name": "Clerk Horrace Whitesteed",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hillsbrad Human Skull",
+            "action": "collect",
+            "entityID": 2449,
+            "npc": true,
+            "y": 0.42,
+            "x": 0.318,
+            "name": "Citizen Wilkes",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hillsbrad Human Skull",
+            "action": "collect",
+            "entityID": 2450,
+            "npc": true,
+            "y": 0.534,
+            "x": 0.312,
+            "name": "Miner Hackett",
+            "mapID": 1424
+          }
+        ]
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Deathguard Samsa",
+        "entityID": 2418
+      }
+    ],
+    "xp": 2550,
+    "minLevel": 20,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 30,
+          "name": "Hillsbrad Human Skull",
+          "entityID": 3692
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Deathguard Samsa",
+          "entityID": 2418
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Deathguard Samsa",
+          "entityID": 2418
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills",
+    "raceMask": 8589934770,
+    "mapID": 1424,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Deathguard Samsa",
+        "entityID": 2418
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 30,
+        "name": "Hillsbrad Human Skull",
+        "itemID": 3692
+      }
+    ],
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "prerequisiteAny": [
+      527
+    ],
+    "ends": [
+      {
+        "y": 0.198,
+        "mapID": 1424,
+        "name": "Deathguard Samsa",
+        "entityID": 2418,
+        "npc": true,
+        "x": 0.62
+      }
+    ],
+    "shareable": true,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "title": "Souvenirs of Death",
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1424,
+        "legacyStepKey": "q:1424:npc:2260",
+        "entityID": 2260,
+        "npc": true,
+        "x": 0.752,
+        "y": 0.408,
+        "objectiveKey": "item:3692",
+        "itemID": 3692,
+        "quantity": 30,
+        "name": "Syndicate Rogue",
+        "itemName": "Hillsbrad Human Skull",
+        "alternativeCount": 27,
+        "action": "collect"
+      }
+    ],
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "starts": [
+      {
+        "y": 0.198,
+        "mapID": 1424,
+        "name": "Deathguard Samsa",
+        "entityID": 2418,
+        "npc": true,
+        "x": 0.62
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Hillsbrad Human Skull",
+        "name": "Farmer Ray",
+        "entityID": 232,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hillsbrad Human Skull",
+        "name": "Syndicate Shadow Mage",
+        "entityID": 2244,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hillsbrad Human Skull",
+        "name": "Syndicate Rogue",
+        "entityID": 2260,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hillsbrad Human Skull",
+        "name": "Syndicate Watchman",
+        "entityID": 2261,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hillsbrad Human Skull",
+        "name": "Hillsbrad Tailor",
+        "entityID": 2264,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hillsbrad Human Skull",
+        "name": "Hillsbrad Apprentice Blacksmith",
+        "entityID": 2265,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hillsbrad Human Skull",
+        "name": "Hillsbrad Farmer",
+        "entityID": 2266,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hillsbrad Human Skull",
+        "name": "Hillsbrad Peasant",
+        "entityID": 2267,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hillsbrad Human Skull",
+        "name": "Hillsbrad Footman",
+        "entityID": 2268,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hillsbrad Human Skull",
+        "name": "Hillsbrad Miner",
+        "entityID": 2269,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hillsbrad Human Skull",
+        "name": "Hillsbrad Sentry",
+        "entityID": 2270,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hillsbrad Human Skull",
+        "name": "Foreman Bonds",
+        "entityID": 2305,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hillsbrad Human Skull",
+        "name": "Magistrate Burnside",
+        "entityID": 2335,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hillsbrad Human Skull",
+        "name": "Hillsbrad Farmhand",
+        "entityID": 2360,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hillsbrad Human Skull",
+        "name": "Hillsbrad Councilman",
+        "entityID": 2387,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hillsbrad Human Skull",
+        "name": "Farmer Getz",
+        "entityID": 2403,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hillsbrad Human Skull",
+        "name": "Blacksmith Verringtan",
+        "entityID": 2404,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hillsbrad Human Skull",
+        "name": "Jailor Eston",
+        "entityID": 2427,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hillsbrad Human Skull",
+        "name": "Jailor Marlgen",
+        "entityID": 2428,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hillsbrad Human Skull",
+        "name": "Farmer Kent",
+        "entityID": 2436,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hillsbrad Human Skull",
+        "name": "Clerk Horrace Whitesteed",
+        "entityID": 2448,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hillsbrad Human Skull",
+        "name": "Citizen Wilkes",
+        "entityID": 2449,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hillsbrad Human Skull",
+        "name": "Miner Hackett",
+        "entityID": 2450,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hillsbrad Human Skull",
+        "name": "Farmer Kalaba",
+        "entityID": 2451,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hillsbrad Human Skull",
+        "name": "Hillsbrad Foreman",
+        "entityID": 2503,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hillsbrad Human Skull",
+        "name": "Lord Tomas",
+        "entityID": 266216,
+        "npc": true,
+        "action": "collect"
+      }
+    ]
+  },
+  "547": {
+    "prerequisitesRead": true,
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Humbert's Sword",
+        "entityID": 3693
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 30,
+    "areaID": 267,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 0,
+        "itemName": "Humbert's Sword",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Humbert's Sword",
+            "action": "collect",
+            "entityID": 2344,
+            "npc": true,
+            "y": 0.7979999999999999,
+            "x": 0.706,
+            "name": "Dun Garok Mountaineer",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Humbert's Sword",
+            "action": "collect",
+            "entityID": 2345,
+            "npc": true,
+            "y": 0.804,
+            "x": 0.71,
+            "name": "Dun Garok Rifleman",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Humbert's Sword",
+            "action": "collect",
+            "entityID": 2346,
+            "npc": true,
+            "y": 0.7859999999999999,
+            "x": 0.71,
+            "name": "Dun Garok Priest",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Humbert's Sword",
+            "action": "collect",
+            "entityID": 14275,
+            "npc": true,
+            "y": 0.8079999999999999,
+            "x": 0.732,
+            "name": "Tamra Stormpike",
+            "mapID": 1424
+          }
+        ]
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Deathguard Humbert",
+        "entityID": 2419
+      }
+    ],
+    "xp": 3050,
+    "questType": "Elite",
+    "minLevel": 26,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Humbert's Sword",
+          "entityID": 3693
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Deathguard Humbert",
+          "entityID": 2419
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Deathguard Humbert",
+          "entityID": 2419
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills",
+    "raceMask": 8589934770,
+    "mapID": 1424,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Deathguard Humbert",
+        "entityID": 2419
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Humbert's Sword",
+        "itemID": 3693
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.20199999999999999,
+        "mapID": 1424,
+        "name": "Deathguard Humbert",
+        "entityID": 2419,
+        "npc": true,
+        "x": 0.626
+      }
+    ],
+    "shareable": true,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "classMask": 0,
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1424,
+        "legacyStepKey": "q:1424:npc:2346",
+        "entityID": 2346,
+        "npc": true,
+        "x": 0.71,
+        "y": 0.7859999999999999,
+        "objectiveKey": "item:3693",
+        "itemID": 3693,
+        "quantity": 1,
+        "name": "Dun Garok Priest",
+        "itemName": "Humbert's Sword",
+        "alternativeCount": 4,
+        "action": "collect"
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "starts": [
+      {
+        "y": 0.20199999999999999,
+        "mapID": 1424,
+        "name": "Deathguard Humbert",
+        "entityID": 2419,
+        "npc": true,
+        "x": 0.626
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "title": "Humbert's Sword",
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Humbert's Sword",
+        "name": "Dun Garok Mountaineer",
+        "entityID": 2344,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Humbert's Sword",
+        "name": "Dun Garok Rifleman",
+        "entityID": 2345,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Humbert's Sword",
+        "name": "Dun Garok Priest",
+        "entityID": 2346,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Humbert's Sword",
+        "name": "Tamra Stormpike",
+        "entityID": 14275,
+        "npc": true,
+        "action": "collect"
+      }
+    ]
+  },
+  "549": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 10,
+        "name": "Syndicate Rogue",
+        "entityID": 2260
+      },
+      {
+        "entityType": "npc",
+        "quantity": 10,
+        "name": "Syndicate Watchman",
+        "entityID": 2261
+      }
+    ],
+    "npcTargets": [
+      {
+        "entityID": 2260,
+        "npc": true,
+        "action": "kill",
+        "name": "Syndicate Rogue"
+      },
+      {
+        "entityID": 2261,
+        "npc": true,
+        "action": "kill",
+        "name": "Syndicate Watchman"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectives": [
+      {
+        "sourceObjective": 2260,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 2260,
+        "npc": true,
+        "y": 0.408,
+        "objectiveKey": "npc:2260",
+        "name": "Syndicate Rogue",
+        "x": 0.752,
+        "quantity": 10
+      },
+      {
+        "sourceObjective": 2261,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 2261,
+        "npc": true,
+        "y": 0.44,
+        "objectiveKey": "npc:2261",
+        "name": "Syndicate Watchman",
+        "x": 0.81,
+        "quantity": 10
+      }
+    ],
+    "level": 22,
+    "areaID": 267,
+    "starts": [
+      {
+        "y": 0.207,
+        "x": 0.626,
+        "name": "WANTED",
+        "entityID": 1763,
+        "mapID": 1424
+      },
+      {
+        "y": 0.207,
+        "x": 0.626,
+        "name": "WANTED",
+        "entityID": 556670,
+        "mapID": 1424
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.20199999999999999,
+        "mapID": 1424,
+        "name": "High Executor Darthalia",
+        "entityID": 2215,
+        "npc": true,
+        "x": 0.622
+      }
+    ],
+    "side": "Horde",
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "WANTED",
+        "entityID": 1763
+      },
+      {
+        "entityType": "object",
+        "name": "WANTED",
+        "entityID": 556670
+      }
+    ],
+    "money": 1400,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "High Executor Darthalia",
+        "entityID": 2215
+      }
+    ],
+    "xp": 1750,
+    "title": "WANTED: Syndicate Personnel",
+    "foreverStatus": "updated",
+    "shareable": true,
+    "minLevel": 17,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "550": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "objectives": {},
+    "zone": "Hillsbrad Foothills",
+    "requirements": {},
+    "seriesRoot": 527,
+    "requiredItems": {},
+    "series": [
+      527,
+      528,
+      529,
+      532,
+      539,
+      541,
+      550
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Darthalia's Sealed Commendation",
+        "entityID": 3701
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.20199999999999999,
+        "mapID": 1424,
+        "name": "High Executor Darthalia",
+        "entityID": 2215,
+        "npc": true,
+        "x": 0.622
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.9259999999999999,
+        "mapID": 1458,
+        "name": "Varimathras",
+        "entityID": 2425,
+        "npc": true,
+        "x": 0.562
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 32,
+    "areaID": 267,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "High Executor Darthalia",
+        "entityID": 2215
+      }
+    ],
+    "side": "Horde",
+    "previousQuest": 541,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Varimathras",
+        "entityID": 2425
+      }
+    ],
+    "xp": 2550,
+    "title": "Battle of Hillsbrad",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 7,
+    "minLevel": 19,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "High Executor Darthalia",
+          "entityID": 2215
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Darthalia's Sealed Commendation",
+          "entityID": 3701
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Varimathras",
+          "entityID": 2425
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "552": {
+    "prerequisitesRead": true,
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Helcular's Rod",
+        "entityID": 3708
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 33,
+    "areaID": 267,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 0,
+        "itemName": "Helcular's Rod",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Helcular's Rod",
+            "action": "collect",
+            "entityID": 2248,
+            "npc": true,
+            "y": 0.278,
+            "x": 0.444,
+            "name": "Cave Yeti",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Helcular's Rod",
+            "action": "collect",
+            "entityID": 2249,
+            "npc": true,
+            "y": 0.284,
+            "x": 0.44799999999999995,
+            "name": "Ferocious Yeti",
+            "mapID": 1424
+          }
+        ]
+      }
+    ],
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Novice Thaivand",
+        "entityID": 2429
+      }
+    ],
+    "xp": 2650,
+    "minLevel": 29,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Helcular's Rod",
+          "entityID": 3708
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Novice Thaivand",
+          "entityID": 2429
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Novice Thaivand",
+          "entityID": 2429
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills",
+    "raceMask": 0,
+    "mapID": 1424,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Novice Thaivand",
+        "entityID": 2429
+      }
+    ],
+    "seriesRoot": 552,
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Helcular's Rod",
+        "itemID": 3708
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.196,
+        "mapID": 1424,
+        "name": "Novice Thaivand",
+        "entityID": 2429,
+        "npc": true,
+        "x": 0.638
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "title": "Helcular's Revenge",
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1424,
+        "legacyStepKey": "q:1424:npc:2249",
+        "entityID": 2249,
+        "npc": true,
+        "x": 0.44799999999999995,
+        "y": 0.284,
+        "objectiveKey": "item:3708",
+        "itemID": 3708,
+        "quantity": 1,
+        "name": "Ferocious Yeti",
+        "itemName": "Helcular's Rod",
+        "alternativeCount": 2,
+        "action": "collect"
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "series": [
+      552,
+      553
+    ],
+    "starts": [
+      {
+        "y": 0.196,
+        "mapID": 1424,
+        "name": "Novice Thaivand",
+        "entityID": 2429,
+        "npc": true,
+        "x": 0.638
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Helcular's Rod",
+        "name": "Cave Yeti",
+        "entityID": 2248,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Helcular's Rod",
+        "name": "Ferocious Yeti",
+        "entityID": 2249,
+        "npc": true,
+        "action": "collect"
+      }
+    ]
+  },
+  "553": {
+    "prerequisitesRead": true,
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "object",
+        "quantity": 1,
+        "name": "Flame of Azel charged",
+        "entityID": 1768
+      },
+      {
+        "entityType": "object",
+        "quantity": 1,
+        "name": "Flame of Veraz charged",
+        "entityID": 1769
+      },
+      {
+        "entityType": "object",
+        "quantity": 1,
+        "name": "Flame of Uzel charged",
+        "entityID": 1770
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 33,
+    "areaID": 267,
+    "previousQuest": 552,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "object",
+        "name": "Helcular's Grave",
+        "entityID": 1767
+      }
+    ],
+    "xp": 3300,
+    "minLevel": 29,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "name": "Flame of Azel charged",
+          "entityID": 1768
+        },
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "name": "Flame of Veraz charged",
+          "entityID": 1769
+        },
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "name": "Flame of Uzel charged",
+          "entityID": 1770
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Novice Thaivand",
+          "entityID": 2429
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Rod of Helcular",
+          "entityID": 3710
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "object",
+          "name": "Helcular's Grave",
+          "entityID": 1767
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills",
+    "raceMask": 8589934770,
+    "mapID": 1424,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Novice Thaivand",
+        "entityID": 2429
+      }
+    ],
+    "seriesRoot": 552,
+    "requiredItems": {},
+    "ends": [
+      {
+        "y": 0.5329999999999999,
+        "x": 0.528,
+        "name": "Helcular's Grave",
+        "entityID": 1767,
+        "mapID": 1424
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "objectiveKey": "object:1768",
+        "name": "Flame of Azel",
+        "y": 0.281,
+        "entityID": 1768,
+        "x": 0.44,
+        "quantity": 1,
+        "mapID": 1424
+      },
+      {
+        "sourceObjective": 1,
+        "objectiveKey": "object:1769",
+        "name": "Flame of Veraz",
+        "y": 0.264,
+        "entityID": 1769,
+        "x": 0.442,
+        "quantity": 1,
+        "mapID": 1424
+      },
+      {
+        "sourceObjective": 2,
+        "objectiveKey": "object:1770",
+        "name": "Flame of Uzel",
+        "y": 0.6709999999999999,
+        "entityID": 1770,
+        "x": 0.375,
+        "quantity": 1,
+        "mapID": 1416
+      }
+    ],
+    "series": [
+      552,
+      553
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Rod of Helcular",
+        "entityID": 3710
+      }
+    ],
+    "seriesPosition": 2,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "starts": [
+      {
+        "y": 0.196,
+        "mapID": 1424,
+        "name": "Novice Thaivand",
+        "entityID": 2429,
+        "npc": true,
+        "x": 0.638
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "locationSource": "Wowhead Forever",
+    "title": "Helcular's Revenge"
+  },
+  "555": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 10,
+        "name": "Turtle Meat",
+        "entityID": 3712
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Soothing Spices",
+        "entityID": 3713
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 10,
+        "name": "Turtle Meat",
+        "itemID": 3712
+      },
+      {
+        "buyable": true,
+        "name": "Soothing Spices",
+        "buyPrice": 160,
+        "quantity": 1,
+        "itemID": 3713
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Turtle Meat",
+        "name": "Snapjaw",
+        "entityID": 2408,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Soothing Spices",
+        "name": "Micha Yance",
+        "entityID": 2381,
+        "npc": true,
+        "action": "buy"
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1424,
+        "action": "collect",
+        "entityID": 2408,
+        "npc": true,
+        "y": 0.38,
+        "objectiveKey": "item:3712",
+        "name": "Snapjaw",
+        "x": 0.6579999999999999,
+        "quantity": 10,
+        "legacyStepKey": "q:1424:npc:2408",
+        "itemName": "Turtle Meat",
+        "itemID": 3712
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1424,
+        "action": "buy",
+        "entityID": 2381,
+        "npc": true,
+        "x": 0.4894,
+        "y": 0.5503,
+        "objectiveKey": "item:3713",
+        "itemID": 3713,
+        "quantity": 1,
+        "sourceAreaID": 267,
+        "itemName": "Soothing Spices",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Micha Yance"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "y": 0.586,
+        "mapID": 1424,
+        "name": "Chef Jessen",
+        "entityID": 2430,
+        "npc": true,
+        "x": 0.518
+      }
+    ],
+    "level": 31,
+    "areaID": 267,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Chef Jessen",
+        "entityID": 2430
+      }
+    ],
+    "side": "Alliance",
+    "ends": [
+      {
+        "y": 0.586,
+        "mapID": 1424,
+        "name": "Chef Jessen",
+        "entityID": 2430,
+        "npc": true,
+        "x": 0.518
+      }
+    ],
+    "money": 3000,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Chef Jessen",
+        "entityID": 2430
+      }
+    ],
+    "xp": 2500,
+    "foreverStatus": "unchanged",
+    "title": "Soothing Turtle Bisque",
+    "minLevel": 28,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 10,
+          "name": "Turtle Meat",
+          "entityID": 3712
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Soothing Spices",
+          "entityID": 3713
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Chef Jessen",
+          "entityID": 2430
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Chef Jessen",
+          "entityID": 2430
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "559": {
+    "prerequisitesRead": true,
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 10,
+        "name": "Murloc Head",
+        "entityID": 3716
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 32,
+    "areaID": 267,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 0,
+        "itemName": "Murloc Head",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Murloc Head",
+            "action": "collect",
+            "entityID": 2374,
+            "npc": true,
+            "y": 0.696,
+            "x": 0.332,
+            "name": "Torn Fin Muckdweller",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Murloc Head",
+            "action": "collect",
+            "entityID": 2375,
+            "npc": true,
+            "y": 0.7,
+            "x": 0.348,
+            "name": "Torn Fin Coastrunner",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Murloc Head",
+            "action": "collect",
+            "entityID": 2376,
+            "npc": true,
+            "y": 0.63,
+            "x": 0.462,
+            "name": "Torn Fin Oracle",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Murloc Head",
+            "action": "collect",
+            "entityID": 2377,
+            "npc": true,
+            "y": 0.642,
+            "x": 0.488,
+            "name": "Torn Fin Tidehunter",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Murloc Head",
+            "action": "collect",
+            "entityID": 14276,
+            "npc": true,
+            "y": 0.708,
+            "x": 0.258,
+            "name": "Scargil",
+            "mapID": 1424
+          }
+        ]
+      }
+    ],
+    "seriesPosition": 2,
+    "money": 3000,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Lieutenant Farren Orinelle",
+        "entityID": 2228
+      }
+    ],
+    "xp": 2550,
+    "minLevel": 25,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 10,
+          "name": "Murloc Head",
+          "entityID": 3716
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Lieutenant Farren Orinelle",
+          "entityID": 2228
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Lieutenant Farren Orinelle",
+          "entityID": 2228
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills",
+    "raceMask": 0,
+    "mapID": 1424,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Lieutenant Farren Orinelle",
+        "entityID": 2228
+      }
+    ],
+    "seriesRoot": 536,
+    "requiredItems": [
+      {
+        "quantity": 10,
+        "name": "Murloc Head",
+        "itemID": 3716
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.584,
+        "mapID": 1424,
+        "name": "Lieutenant Farren Orinelle",
+        "entityID": 2228,
+        "npc": true,
+        "x": 0.514
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "title": "Farren's Proof",
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1424,
+        "legacyStepKey": "q:1424:npc:2377",
+        "entityID": 2377,
+        "npc": true,
+        "x": 0.488,
+        "y": 0.642,
+        "objectiveKey": "item:3716",
+        "itemID": 3716,
+        "quantity": 10,
+        "name": "Torn Fin Tidehunter",
+        "itemName": "Murloc Head",
+        "alternativeCount": 5,
+        "action": "collect"
+      }
+    ],
+    "series": [
+      536,
+      559,
+      560,
+      561,
+      562,
+      563
+    ],
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.584,
+        "mapID": 1424,
+        "name": "Lieutenant Farren Orinelle",
+        "entityID": 2228,
+        "npc": true,
+        "x": 0.514
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "previousQuest": 536,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Murloc Head",
+        "name": "Torn Fin Muckdweller",
+        "entityID": 2374,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Murloc Head",
+        "name": "Torn Fin Coastrunner",
+        "entityID": 2375,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Murloc Head",
+        "name": "Torn Fin Oracle",
+        "entityID": 2376,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Murloc Head",
+        "name": "Torn Fin Tidehunter",
+        "entityID": 2377,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Murloc Head",
+        "name": "Scargil",
+        "entityID": 14276,
+        "npc": true,
+        "action": "collect"
+      }
+    ]
+  },
+  "560": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "objectives": {},
+    "zone": "Hillsbrad Foothills",
+    "requirements": {},
+    "seriesRoot": 536,
+    "requiredItems": {},
+    "series": [
+      536,
+      559,
+      560,
+      561,
+      562,
+      563
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Sack of Murloc Heads",
+        "entityID": 3717
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.584,
+        "mapID": 1424,
+        "name": "Lieutenant Farren Orinelle",
+        "entityID": 2228,
+        "npc": true,
+        "x": 0.514
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.586,
+        "mapID": 1424,
+        "name": "Marshal Redpath",
+        "entityID": 2263,
+        "npc": true,
+        "x": 0.494
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 32,
+    "areaID": 267,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Lieutenant Farren Orinelle",
+        "entityID": 2228
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 559,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Marshal Redpath",
+        "entityID": 2263
+      }
+    ],
+    "xp": 255,
+    "title": "Farren's Proof",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 3,
+    "minLevel": 25,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Lieutenant Farren Orinelle",
+          "entityID": 2228
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Sack of Murloc Heads",
+          "entityID": 3717
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Marshal Redpath",
+          "entityID": 2263
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "561": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "zone": "Hillsbrad Foothills",
+    "requirements": {},
+    "seriesRoot": 536,
+    "objectives": {},
+    "series": [
+      536,
+      559,
+      560,
+      561,
+      562,
+      563
+    ],
+    "starts": [
+      {
+        "y": 0.586,
+        "mapID": 1424,
+        "name": "Marshal Redpath",
+        "entityID": 2263,
+        "npc": true,
+        "x": 0.494
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.584,
+        "mapID": 1424,
+        "name": "Lieutenant Farren Orinelle",
+        "entityID": 2228,
+        "npc": true,
+        "x": 0.514
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 32,
+    "areaID": 267,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Marshal Redpath",
+        "entityID": 2263
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 560,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Lieutenant Farren Orinelle",
+        "entityID": 2228
+      }
+    ],
+    "xp": 255,
+    "title": "Farren's Proof",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 4,
+    "minLevel": 25,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Marshal Redpath",
+          "entityID": 2263
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Lieutenant Farren Orinelle",
+          "entityID": 2228
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "562": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "npcTargets": [
+      {
+        "entityID": 2369,
+        "npc": true,
+        "action": "kill",
+        "name": "Daggerspine Shorehunter"
+      },
+      {
+        "entityID": 2371,
+        "npc": true,
+        "action": "kill",
+        "name": "Daggerspine Siren"
+      }
+    ],
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 10,
+        "name": "Daggerspine Shorehunter",
+        "entityID": 2369
+      },
+      {
+        "entityType": "npc",
+        "quantity": 10,
+        "name": "Daggerspine Siren",
+        "entityID": 2371
+      }
+    ],
+    "seriesRoot": 536,
+    "objectives": [
+      {
+        "sourceObjective": 2369,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 2369,
+        "npc": true,
+        "y": 0.644,
+        "objectiveKey": "npc:2369",
+        "name": "Daggerspine Shorehunter",
+        "x": 0.55,
+        "quantity": 10
+      },
+      {
+        "sourceObjective": 2371,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 2371,
+        "npc": true,
+        "y": 0.624,
+        "objectiveKey": "npc:2371",
+        "name": "Daggerspine Siren",
+        "x": 0.542,
+        "quantity": 10
+      }
+    ],
+    "series": [
+      536,
+      559,
+      560,
+      561,
+      562,
+      563
+    ],
+    "starts": [
+      {
+        "y": 0.584,
+        "mapID": 1424,
+        "name": "Lieutenant Farren Orinelle",
+        "entityID": 2228,
+        "npc": true,
+        "x": 0.514
+      }
+    ],
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 32,
+    "areaID": 267,
+    "ends": [
+      {
+        "y": 0.584,
+        "mapID": 1424,
+        "name": "Lieutenant Farren Orinelle",
+        "entityID": 2228,
+        "npc": true,
+        "x": 0.514
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Lieutenant Farren Orinelle",
+        "entityID": 2228
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 561,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Lieutenant Farren Orinelle",
+        "entityID": 2228
+      }
+    ],
+    "xp": 1950,
+    "title": "Stormwind Ho!",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 5,
+    "minLevel": 25,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "name": "Daggerspine Shorehunter",
+          "entityID": 2369
+        },
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "name": "Daggerspine Siren",
+          "entityID": 2371
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Lieutenant Farren Orinelle",
+          "entityID": 2228
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Lieutenant Farren Orinelle",
+          "entityID": 2228
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "563": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "objectives": {},
+    "zone": "Hillsbrad Foothills",
+    "requirements": {},
+    "seriesRoot": 536,
+    "requiredItems": {},
+    "series": [
+      536,
+      559,
+      560,
+      561,
+      562,
+      563
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Farren's Report",
+        "entityID": 3721
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.584,
+        "mapID": 1424,
+        "name": "Lieutenant Farren Orinelle",
+        "entityID": 2228,
+        "npc": true,
+        "x": 0.514
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.16,
+        "mapID": 1453,
+        "name": "Major Samuelson",
+        "entityID": 2439,
+        "npc": true,
+        "x": 0.726
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 32,
+    "areaID": 267,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Lieutenant Farren Orinelle",
+        "entityID": 2228
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 562,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Major Samuelson",
+        "entityID": 2439
+      }
+    ],
+    "xp": 3200,
+    "title": "Reassignment",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 6,
+    "minLevel": 25,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Lieutenant Farren Orinelle",
+          "entityID": 2228
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Farren's Report",
+          "entityID": 3721
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Major Samuelson",
+          "entityID": 2439
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "564": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 8,
+        "name": "Mountain Lion",
+        "entityID": 2406
+      },
+      {
+        "entityType": "npc",
+        "quantity": 10,
+        "name": "Hulking Mountain Lion",
+        "entityID": 2407
+      }
+    ],
+    "npcTargets": [
+      {
+        "entityID": 2406,
+        "npc": true,
+        "action": "kill",
+        "name": "Mountain Lion"
+      },
+      {
+        "entityID": 2407,
+        "npc": true,
+        "action": "kill",
+        "name": "Hulking Mountain Lion"
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 2406,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 2406,
+        "npc": true,
+        "y": 0.23399999999999999,
+        "objectiveKey": "npc:2406",
+        "name": "Mountain Lion",
+        "x": 0.386,
+        "quantity": 8
+      },
+      {
+        "sourceObjective": 2407,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 2407,
+        "npc": true,
+        "y": 0.245,
+        "objectiveKey": "npc:2407",
+        "name": "Hulking Mountain Lion",
+        "x": 0.447,
+        "quantity": 10
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "y": 0.56,
+        "mapID": 1424,
+        "name": "Darren Malvew",
+        "entityID": 2382,
+        "npc": true,
+        "x": 0.524
+      }
+    ],
+    "level": 34,
+    "areaID": 267,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Darren Malvew",
+        "entityID": 2382
+      }
+    ],
+    "side": "Alliance",
+    "ends": [
+      {
+        "y": 0.56,
+        "mapID": 1424,
+        "name": "Darren Malvew",
+        "entityID": 2382,
+        "npc": true,
+        "x": 0.524
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Darren Malvew",
+        "entityID": 2382
+      }
+    ],
+    "xp": 2700,
+    "foreverStatus": "unchanged",
+    "title": "Costly Menace",
+    "minLevel": 30,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 8,
+          "name": "Mountain Lion",
+          "entityID": 2406
+        },
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "name": "Hulking Mountain Lion",
+          "entityID": 2407
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Darren Malvew",
+          "entityID": 2382
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Darren Malvew",
+          "entityID": 2382
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "565": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Bolt of Woolen Cloth",
+        "entityID": 2997
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Fine Thread",
+        "entityID": 2321
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Hillman's Cloak",
+        "entityID": 3719
+      },
+      {
+        "entityType": "item",
+        "quantity": 10,
+        "name": "Yeti Fur",
+        "entityID": 3720
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Yeti Fur",
+        "name": "Cave Yeti",
+        "entityID": 2248,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Yeti Fur",
+        "name": "Ferocious Yeti",
+        "entityID": 2249,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Bolt of Woolen Cloth",
+        "name": "Darla Harris",
+        "entityID": 2432,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Fine Thread",
+        "name": "Micha Yance",
+        "entityID": 2381,
+        "npc": true,
+        "action": "buy"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Bolt of Woolen Cloth",
+        "itemID": 2997
+      },
+      {
+        "buyable": true,
+        "name": "Fine Thread",
+        "buyPrice": 100,
+        "quantity": 1,
+        "itemID": 2321
+      },
+      {
+        "quantity": 1,
+        "name": "Hillman's Cloak",
+        "itemID": 3719
+      },
+      {
+        "quantity": 10,
+        "name": "Yeti Fur",
+        "itemID": 3720
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 3,
+        "mapID": 1424,
+        "legacyStepKey": "q:1424:npc:2249",
+        "entityID": 2249,
+        "npc": true,
+        "x": 0.44799999999999995,
+        "y": 0.284,
+        "objectiveKey": "item:3720",
+        "itemID": 3720,
+        "quantity": 10,
+        "name": "Ferocious Yeti",
+        "itemName": "Yeti Fur",
+        "alternativeCount": 2,
+        "action": "collect"
+      },
+      {
+        "sourceObjective": 0,
+        "mapID": 1424,
+        "legacyStepKey": "q:1424:npc:2432",
+        "entityID": 2432,
+        "npc": true,
+        "x": 0.494,
+        "y": 0.522,
+        "objectiveKey": "item:2997",
+        "itemID": 2997,
+        "quantity": 1,
+        "name": "Darla Harris",
+        "itemName": "Bolt of Woolen Cloth",
+        "alternativeCount": 6,
+        "action": "collect"
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1424,
+        "legacyStepKey": "q:1424:npc:2381",
+        "entityID": 2381,
+        "name": "Micha Yance",
+        "npc": true,
+        "x": 0.4894,
+        "y": 0.5503,
+        "objectiveKey": "item:2321",
+        "itemID": 2321,
+        "quantity": 1,
+        "sourceAreaID": 267,
+        "itemName": "Fine Thread",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "action": "buy"
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.556,
+        "mapID": 1424,
+        "name": "Bartolo Ginsetti",
+        "entityID": 2438,
+        "npc": true,
+        "x": 0.494
+      }
+    ],
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.556,
+        "mapID": 1424,
+        "name": "Bartolo Ginsetti",
+        "entityID": 2438,
+        "npc": true,
+        "x": 0.494
+      }
+    ],
+    "level": 34,
+    "areaID": 267,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 3,
+        "itemName": "Yeti Fur",
+        "locations": [
+          {
+            "sourceObjective": 3,
+            "itemName": "Yeti Fur",
+            "action": "collect",
+            "entityID": 2248,
+            "npc": true,
+            "y": 0.278,
+            "x": 0.444,
+            "name": "Cave Yeti",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 3,
+            "itemName": "Yeti Fur",
+            "action": "collect",
+            "entityID": 2249,
+            "npc": true,
+            "y": 0.284,
+            "x": 0.44799999999999995,
+            "name": "Ferocious Yeti",
+            "mapID": 1424
+          }
+        ]
+      },
+      {
+        "sourceObjective": 0,
+        "itemName": "Bolt of Woolen Cloth",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Bolt of Woolen Cloth",
+            "action": "collect",
+            "entityID": 2432,
+            "npc": true,
+            "y": 0.522,
+            "x": 0.494,
+            "name": "Darla Harris",
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 0,
+            "mapID": 1424,
+            "action": "collect",
+            "y": 0.389,
+            "entityID": 2850,
+            "x": 0.773,
+            "name": "Solid Chest",
+            "itemName": "Bolt of Woolen Cloth"
+          },
+          {
+            "sourceObjective": 0,
+            "mapID": 1424,
+            "action": "collect",
+            "y": 0.605,
+            "entityID": 2852,
+            "x": 0.6629999999999999,
+            "name": "Solid Chest",
+            "itemName": "Bolt of Woolen Cloth"
+          },
+          {
+            "sourceObjective": 0,
+            "mapID": 1424,
+            "action": "collect",
+            "y": 0.281,
+            "entityID": 2855,
+            "x": 0.44,
+            "name": "Solid Chest",
+            "itemName": "Bolt of Woolen Cloth"
+          },
+          {
+            "sourceObjective": 0,
+            "mapID": 1424,
+            "action": "collect",
+            "y": 0.374,
+            "entityID": 3715,
+            "x": 0.35200000000000004,
+            "name": "Alliance Chest",
+            "itemName": "Bolt of Woolen Cloth"
+          },
+          {
+            "sourceObjective": 0,
+            "mapID": 1424,
+            "action": "collect",
+            "y": 0.562,
+            "entityID": 4096,
+            "x": 0.312,
+            "name": "Alliance Chest",
+            "itemName": "Bolt of Woolen Cloth"
+          }
+        ]
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Bartolo Ginsetti",
+        "entityID": 2438
+      }
+    ],
+    "side": "Alliance",
+    "missingRequirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Hillman's Cloak",
+        "entityID": 3719
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Bartolo Ginsetti",
+        "entityID": 2438
+      }
+    ],
+    "xp": 2700,
+    "title": "Bartolo's Yeti Fur Cloak",
+    "foreverStatus": "unchanged",
+    "raceMask": 0,
+    "minLevel": 29,
+    "requirementSource": "Wowhead Forever objective table",
+    "objectiveLocationsIncomplete": true,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Bolt of Woolen Cloth",
+          "entityID": 2997
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Fine Thread",
+          "entityID": 2321
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Hillman's Cloak",
+          "entityID": 3719
+        },
+        {
+          "entityType": "item",
+          "quantity": 10,
+          "name": "Yeti Fur",
+          "entityID": 3720
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Bartolo Ginsetti",
+          "entityID": 2438
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Bartolo Ginsetti",
+          "entityID": 2438
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "567": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "name": "Clerk Horrace Whitesteed",
+        "entityID": 2448
+      },
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "name": "Citizen Wilkes",
+        "entityID": 2449
+      },
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "name": "Miner Hackett",
+        "entityID": 2450
+      },
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "name": "Farmer Kalaba",
+        "entityID": 2451
+      }
+    ],
+    "npcTargets": [
+      {
+        "entityID": 2448,
+        "npc": true,
+        "action": "kill",
+        "name": "Clerk Horrace Whitesteed"
+      },
+      {
+        "entityID": 2449,
+        "npc": true,
+        "action": "kill",
+        "name": "Citizen Wilkes"
+      },
+      {
+        "entityID": 2450,
+        "npc": true,
+        "action": "kill",
+        "name": "Miner Hackett"
+      },
+      {
+        "entityID": 2451,
+        "npc": true,
+        "action": "kill",
+        "name": "Farmer Kalaba"
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 2448,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 2448,
+        "npc": true,
+        "y": 0.428,
+        "objectiveKey": "npc:2448",
+        "name": "Clerk Horrace Whitesteed",
+        "x": 0.3,
+        "quantity": 1
+      },
+      {
+        "sourceObjective": 2449,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 2449,
+        "npc": true,
+        "y": 0.42,
+        "objectiveKey": "npc:2449",
+        "name": "Citizen Wilkes",
+        "x": 0.318,
+        "quantity": 1
+      },
+      {
+        "sourceObjective": 2450,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 2450,
+        "npc": true,
+        "y": 0.534,
+        "objectiveKey": "npc:2450",
+        "name": "Miner Hackett",
+        "x": 0.312,
+        "quantity": 1
+      },
+      {
+        "sourceObjective": 2451,
+        "mapID": 1424,
+        "action": "kill",
+        "entityID": 2451,
+        "npc": true,
+        "y": 0.462,
+        "objectiveKey": "npc:2451",
+        "name": "Farmer Kalaba",
+        "x": 0.358,
+        "quantity": 1
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.19699999999999998,
+        "x": 0.625,
+        "name": "Dangerous!",
+        "entityID": 2008,
+        "mapID": 1424
+      },
+      {
+        "y": 0.19699999999999998,
+        "x": 0.625,
+        "name": "Dangerous!",
+        "entityID": 556669,
+        "mapID": 1424
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "level": 28,
+    "areaID": 267,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "ends": [
+      {
+        "y": 0.20199999999999999,
+        "mapID": 1424,
+        "name": "High Executor Darthalia",
+        "entityID": 2215,
+        "npc": true,
+        "x": 0.622
+      }
+    ],
+    "side": "Horde",
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Dangerous!",
+        "entityID": 2008
+      },
+      {
+        "entityType": "object",
+        "name": "Dangerous!",
+        "entityID": 556669
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "High Executor Darthalia",
+        "entityID": 2215
+      }
+    ],
+    "xp": 2300,
+    "title": "Dangerous!",
+    "foreverStatus": "unchanged",
+    "shareable": true,
+    "minLevel": 19,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Clerk Horrace Whitesteed",
+          "entityID": 2448
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Citizen Wilkes",
+          "entityID": 2449
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Miner Hackett",
+          "entityID": 2450
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Farmer Kalaba",
+          "entityID": 2451
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "object",
+          "name": "Dangerous!",
+          "entityID": 2008
+        },
+        {
+          "entityType": "object",
+          "name": "Dangerous!",
+          "entityID": 556669
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "High Executor Darthalia",
+          "entityID": 2215
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "657": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Quae",
+        "entityID": 2712
+      }
+    ],
+    "requirements": {},
+    "seriesRoot": 659,
+    "objectives": {},
+    "series": [
+      659,
+      658,
+      657
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.5379999999999999,
+        "mapID": 1417,
+        "name": "Kinelory",
+        "entityID": 2713,
+        "npc": true,
+        "x": 0.602
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.5379999999999999,
+        "mapID": 1417,
+        "name": "Quae",
+        "entityID": 2712,
+        "npc": true,
+        "x": 0.602
+      }
+    ],
+    "level": 36,
+    "areaID": 267,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "previousQuest": 658,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Kinelory",
+        "entityID": 2713
+      }
+    ],
+    "xp": 0,
+    "title": "Hints of a New Plague?",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 3,
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Quae",
+          "entityID": 2712
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Kinelory",
+          "entityID": 2713
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "658": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "npcTargets": [
+      {
+        "itemName": "Sealed Folder",
+        "name": "Forsaken Courier",
+        "entityID": 2714,
+        "npc": true,
+        "action": "collect"
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Quae",
+        "entityID": 2712
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Sealed Folder",
+        "entityID": 4482
+      }
+    ],
+    "seriesRoot": 659,
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Sealed Folder",
+        "itemID": 4482
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1417,
+        "action": "collect",
+        "entityID": 2714,
+        "npc": true,
+        "y": 0.59,
+        "objectiveKey": "item:4482",
+        "name": "Forsaken Courier",
+        "x": 0.606,
+        "quantity": 1,
+        "legacyStepKey": "q:1417:npc:2714",
+        "itemName": "Sealed Folder",
+        "itemID": 4482
+      }
+    ],
+    "series": [
+      659,
+      658,
+      657
+    ],
+    "starts": [
+      {
+        "y": 0.5379999999999999,
+        "mapID": 1417,
+        "name": "Quae",
+        "entityID": 2712,
+        "npc": true,
+        "x": 0.602
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "level": 36,
+    "areaID": 267,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "ends": [
+      {
+        "y": 0.5379999999999999,
+        "mapID": 1417,
+        "name": "Quae",
+        "entityID": 2712,
+        "npc": true,
+        "x": 0.602
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 659,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Quae",
+        "entityID": 2712
+      }
+    ],
+    "xp": 2800,
+    "title": "Hints of a New Plague?",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 2,
+    "minLevel": 30,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Sealed Folder",
+          "entityID": 4482
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Quae",
+          "entityID": 2712
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Quae",
+          "entityID": 2712
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "659": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "zone": "Hillsbrad Foothills",
+    "requirements": {},
+    "seriesRoot": 659,
+    "objectives": {},
+    "series": [
+      659,
+      658,
+      657
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.5379999999999999,
+        "mapID": 1417,
+        "name": "Quae",
+        "entityID": 2712,
+        "npc": true,
+        "x": 0.602
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.588,
+        "mapID": 1424,
+        "name": "Phin Odelic",
+        "entityID": 2711,
+        "npc": true,
+        "x": 0.502
+      }
+    ],
+    "level": 33,
+    "areaID": 267,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Phin Odelic",
+        "entityID": 2711
+      }
+    ],
+    "side": "Alliance",
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Quae",
+        "entityID": 2712
+      }
+    ],
+    "xp": 1300,
+    "foreverStatus": "unchanged",
+    "title": "Hints of a New Plague?",
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Phin Odelic",
+          "entityID": 2711
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Quae",
+          "entityID": 2712
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "660": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Kinelory",
+        "entityID": 2713
+      }
+    ],
+    "requirements": {},
+    "seriesRoot": 660,
+    "objectives": [
+      {
+        "y": 0.5383,
+        "mapID": 1417,
+        "action": "event",
+        "x": 0.601,
+        "locationSource": "Published Forever converted-baseline event area",
+        "name": "Hints of a New Plague?"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "series": [
+      660,
+      661
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.5379999999999999,
+        "mapID": 1417,
+        "name": "Quae",
+        "entityID": 2712,
+        "npc": true,
+        "x": 0.602
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.5379999999999999,
+        "mapID": 1417,
+        "name": "Kinelory",
+        "entityID": 2713,
+        "npc": true,
+        "x": 0.602
+      }
+    ],
+    "level": 37,
+    "areaID": 267,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "prerequisiteAny": [
+      657
+    ],
+    "side": "Alliance",
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Quae",
+        "entityID": 2712
+      }
+    ],
+    "xp": 2850,
+    "foreverStatus": "unchanged",
+    "title": "Hints of a New Plague?",
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Kinelory",
+          "entityID": 2713
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Quae",
+          "entityID": 2712
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "661": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "zone": "Hillsbrad Foothills",
+    "requirements": {},
+    "seriesRoot": 660,
+    "objectives": {},
+    "series": [
+      660,
+      661
+    ],
+    "starts": [
+      {
+        "y": 0.5379999999999999,
+        "mapID": 1417,
+        "name": "Quae",
+        "entityID": 2712,
+        "npc": true,
+        "x": 0.602
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.588,
+        "mapID": 1424,
+        "name": "Phin Odelic",
+        "entityID": 2711,
+        "npc": true,
+        "x": 0.502
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 37,
+    "areaID": 267,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Quae",
+        "entityID": 2712
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 660,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Phin Odelic",
+        "entityID": 2711
+      }
+    ],
+    "xp": 3550,
+    "title": "Hints of a New Plague?",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 2,
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Quae",
+          "entityID": 2712
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Phin Odelic",
+          "entityID": 2711
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "95125": {
+    "raceMask": 16,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Ott",
+        "entityID": 3539
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 2,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1424,
+        "entityID": 3539,
+        "npc": true,
+        "y": 0.2618,
+        "x": 0.6043,
+        "name": "Ott",
+        "sourceAreaID": 267,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "level": 25,
+    "side": "Horde",
+    "objectives": {},
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Ott",
+        "entityID": 3539
+      }
+    ],
+    "xp": 1000,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1424,
+        "entityID": 3539,
+        "npc": true,
+        "y": 0.2618,
+        "x": 0.6043,
+        "name": "Ott",
+        "sourceAreaID": 267,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "allowedRaceIDs": [
+      5
+    ],
+    "minLevel": 20,
+    "prerequisitesRead": true,
+    "foreverStatus": "new",
+    "title": "Ott's Masterwork",
+    "categoryPath": "classes/paladin"
+  },
+  "95126": {
+    "raceMask": 16,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Ott",
+        "entityID": 3539
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 2,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1421,
+        "entityID": 248840,
+        "npc": true,
+        "y": 0.41,
+        "x": 0.434,
+        "name": "Trevan Rol",
+        "sourceAreaID": 130,
+        "locationSource": "Published Forever beta-delta entity position"
+      }
+    ],
+    "level": 25,
+    "side": "Horde",
+    "objectives": {},
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Trevan Rol",
+        "entityID": 248840
+      }
+    ],
+    "xp": 1000,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1424,
+        "entityID": 3539,
+        "npc": true,
+        "y": 0.2618,
+        "x": 0.6043,
+        "name": "Ott",
+        "sourceAreaID": 267,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "allowedRaceIDs": [
+      5
+    ],
+    "minLevel": 20,
+    "prerequisitesRead": true,
+    "foreverStatus": "new",
+    "title": "The Moonsilver Blade",
+    "categoryPath": "classes/paladin"
+  },
+  "98059": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "name": "Sealed Company Request delivered to Hillsbrad council",
+        "entityID": 270424
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.502,
+        "mapID": 1424,
+        "name": "Captain McManus",
+        "entityID": 251493,
+        "npc": true,
+        "x": 0.46399999999999997
+      }
+    ],
+    "level": 27,
+    "areaID": 267,
+    "objectives": {},
+    "starts": [
+      {
+        "y": 0.502,
+        "mapID": 1424,
+        "name": "Captain McManus",
+        "entityID": 251493,
+        "npc": true,
+        "x": 0.46399999999999997
+      }
+    ],
+    "missingRequirements": [
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "name": "Sealed Company Request delivered to Hillsbrad council",
+        "entityID": 270424
+      }
+    ],
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain McManus",
+        "entityID": 251493
+      }
+    ],
+    "money": 2200,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain McManus",
+        "entityID": 251493
+      }
+    ],
+    "xp": 2200,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "title": "Hillsbrad's Hoard",
+    "minLevel": 23,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "objectiveLocationsIncomplete": true,
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  },
+  "98071": {
+    "prerequisitesRead": true,
+    "mapID": 1424,
+    "zone": "Hillsbrad Foothills",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "name": "Fallrook Varietal delivered to Dun Garok",
+        "entityID": 270426
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Sack of Homebrew Hops",
+        "entityID": 279389
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Sack of Homebrew Hops",
+        "itemID": 279389
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.586,
+        "mapID": 1424,
+        "name": "Brewmeister Bilger",
+        "entityID": 2705,
+        "npc": true,
+        "x": 0.52
+      }
+    ],
+    "objectives": {},
+    "level": 27,
+    "areaID": 267,
+    "providedItems": [
+      {
+        "entityType": "item",
+        "name": "Case of Fallrook Varietal",
+        "entityID": 279390
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.586,
+        "mapID": 1424,
+        "name": "Brewmeister Bilger",
+        "entityID": 2705,
+        "npc": true,
+        "x": 0.52
+      }
+    ],
+    "missingRequirements": [
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "name": "Fallrook Varietal delivered to Dun Garok",
+        "entityID": 270426
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Sack of Homebrew Hops",
+        "entityID": 279389
+      }
+    ],
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Brewmeister Bilger",
+        "entityID": 2705
+      }
+    ],
+    "money": 1100,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Brewmeister Bilger",
+        "entityID": 2705
+      }
+    ],
+    "xp": 2200,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "title": "Brewer's Trade",
+    "minLevel": 23,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "objectiveLocationsIncomplete": true,
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+  }
+}

@@ -1,8 +1,369 @@
 [
   {
-    "questIDs": [5805, 5841, 5842, 5843, 5844, 5847, 92454],
+    "questIDs": [
+      5805,
+      5841,
+      5842,
+      5843,
+      5844,
+      5847,
+      92454
+    ],
     "title": "Welcome!",
     "reason": "Collector's Edition reward",
     "source": "User report, 2026-10-05: Welcome! is a Collector's Edition quest, excluded from starting guides."
+  },
+  {
+    "questIDs": [
+      7962
+    ],
+    "title": "Wabbit Pelts",
+    "reason": "Historical testing-only quest",
+    "source": "https://warcraft.wiki.gg/wiki/Wabbit_Pelts?oldid=5772277; testing-only designation, exact external quest ID 7962; current https://www.wowhead.com/forever/quest=7962 captured 2026-10-08 marks unchanged. Retain catalogue facts, exclude ordinary leveling; review if a live Forever offer is documented. See research/elwynn-forest-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8286
+    ],
+    "title": "What Tomorrow Brings",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8288
+    ],
+    "title": "Only One May Rise",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8301
+    ],
+    "title": "The Path of the Righteous",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8303
+    ],
+    "title": "Anachronos",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8305
+    ],
+    "title": "Long Forgotten Memories",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8519
+    ],
+    "title": "A Pawn on the Eternal Board",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8555
+    ],
+    "title": "The Charge of the Dragonflights",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8575
+    ],
+    "title": "Azuregos's Magical Ledger",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8576
+    ],
+    "title": "Translating the Ledger",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8577
+    ],
+    "title": "Stewvul, Ex-B.F.F.",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8578
+    ],
+    "title": "Scrying Goggles? No Problem!",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8584
+    ],
+    "title": "Never Ask Me About My Business",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8585
+    ],
+    "title": "The Isle of Dread!",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8586
+    ],
+    "title": "Dirge's Kickin' Chimaerok Chops",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8587
+    ],
+    "title": "Return to Narain",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8597
+    ],
+    "title": "Draconic for Dummies",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8598
+    ],
+    "title": "rAnS0m",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8599
+    ],
+    "title": "Love Song for Narain",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8606
+    ],
+    "title": "Decoy!",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8620
+    ],
+    "title": "The Only Prescription",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8728
+    ],
+    "title": "The Good News and The Bad News",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8729
+    ],
+    "title": "The Wrath of Neptulon",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8730
+    ],
+    "title": "Nefarius's Corruption",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8734
+    ],
+    "title": "Tyrande and Remulos",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8735
+    ],
+    "title": "The Nightmare's Corruption",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8736
+    ],
+    "title": "The Nightmare Manifests",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8741
+    ],
+    "title": "The Champion Returns",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8742
+    ],
+    "title": "The Might of Kalimdor",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8747,
+      8748,
+      8749,
+      8750
+    ],
+    "title": "The Path of the Protector",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8751
+    ],
+    "title": "The Protector of Kalimdor",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8752,
+      8753,
+      8754,
+      8755
+    ],
+    "title": "The Path of the Conqueror",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8756
+    ],
+    "title": "The Qiraji Conqueror",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8757,
+      8758,
+      8759,
+      8760
+    ],
+    "title": "The Path of the Invoker",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      8761
+    ],
+    "title": "The Grand Invoker",
+    "reason": "Level-60 Ahn\u2019Qiraj raid campaign or Brood of Nozdormu reward",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; explicit level/minimum 60 plus RAID flag, campaign prerequisite links or Brood of Nozdormu reputation 910 reward thresholds. Introduction 8286 leads to raid head quest 8288. Quarantine ordinary leveling only; retain catalogue, actual prerequisites and source gaps. Reviewed 2026-10-08: research/tanaris-2026-10-08."
+  },
+  {
+    "questIDs": [
+      5124
+    ],
+    "title": "Fiery Plate Gauntlets",
+    "reason": "Blacksmithing-only quest (skill 275)",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; exact title/level/minimum identity and explicit requiredSkill 164/275. Exclude from ordinary leveling only; retain catalogue, actual dependencies and unresolved gaps. Reviewed 2026-10-09 Europe/Amsterdam; research/winterspring-2026-10-09."
+  },
+  {
+    "questIDs": [
+      5126
+    ],
+    "title": "Lorax's Tale",
+    "reason": "Blacksmithing-only quest (skill 285)",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; exact title/level/minimum identity and explicit requiredSkill 164/285. Exclude from ordinary leveling only; retain catalogue, actual dependencies and unresolved gaps. Reviewed 2026-10-09 Europe/Amsterdam; research/winterspring-2026-10-09."
+  },
+  {
+    "questIDs": [
+      8798
+    ],
+    "title": "A Yeti of Your Own",
+    "reason": "Engineering-only quest (skill 250)",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; exact title/level/minimum identity and explicit requiredSkill 202/250. Exclude from ordinary leveling only; retain catalogue, actual dependencies and unresolved gaps. Reviewed 2026-10-09 Europe/Amsterdam; research/winterspring-2026-10-09."
+  },
+  {
+    "questIDs": [
+      90
+    ],
+    "title": "Seasoned Wolf Kabobs",
+    "reason": "Cooking-only quest (skill 50)",
+    "source": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; exact title/level/minimum identity and requiredSkill 185/50, converted-baseline. Exclude ordinary leveling only; retain catalogue and unresolved capture conflict over second seasoning objective. Native beta Cooking offer remains unverified. Reviewed 2026-10-09 Europe/Amsterdam; research/duskwood-2026-10-09."
+  },
+  {
+    "questIDs": [
+      1263
+    ],
+    "title": "The Burning Inn <CHANGE TO GOSSIP>",
+    "reason": "Unfinished change-to-gossip placeholder",
+    "source": "https://www.wowhead.com/forever/quest=1263; existing captured exact title explicitly marks CHANGE TO/INTO GOSSIP, with no starter/return/objective. Published pinned quest entry absent. Exclude placeholder from ordinary leveling; preserve catalogue and unknown locations. No inference that real Smiling Jim, Reethe or Shady Rest quest requires this record. Reviewed 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09."
+  },
+  {
+    "questIDs": [
+      1272
+    ],
+    "title": "Finding Reethe <CHANGE INTO GOSSIP>",
+    "reason": "Unfinished change-to-gossip placeholder",
+    "source": "https://www.wowhead.com/forever/quest=1272; existing captured exact title explicitly marks CHANGE TO/INTO GOSSIP, with no starter/return/objective. Published pinned quest entry absent. Exclude placeholder from ordinary leveling; preserve catalogue and unknown locations. No inference that real Smiling Jim, Reethe or Shady Rest quest requires this record. Reviewed 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09."
+  },
+  {
+    "questIDs": [
+      1281
+    ],
+    "title": "Jim's Song <CHANGE TO GOSSIP>",
+    "reason": "Unfinished change-to-gossip placeholder",
+    "source": "https://www.wowhead.com/forever/quest=1281; existing captured exact title explicitly marks CHANGE TO/INTO GOSSIP, with no starter/return/objective. Published pinned quest entry absent. Exclude placeholder from ordinary leveling; preserve catalogue and unknown locations. No inference that real Smiling Jim, Reethe or Shady Rest quest requires this record. Reviewed 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09."
+  },
+  {
+    "questIDs": [
+      1283
+    ],
+    "title": "Fire at the Shady Rest <CHANGE TO GOSSIP>",
+    "reason": "Unfinished change-to-gossip placeholder",
+    "source": "https://www.wowhead.com/forever/quest=1283; existing captured exact title explicitly marks CHANGE TO/INTO GOSSIP, with no starter/return/objective. Published pinned quest entry absent. Exclude placeholder from ordinary leveling; preserve catalogue and unknown locations. No inference that real Smiling Jim, Reethe or Shady Rest quest requires this record. Reviewed 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09."
   }
 ]

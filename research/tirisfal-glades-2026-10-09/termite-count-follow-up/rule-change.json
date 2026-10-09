@@ -1,0 +1,98 @@
+{
+  "questID": 5901,
+  "previous_after": {
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 100,
+        "action": "collect",
+        "entityID": 15043,
+        "name": "Plagueland Termites"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 100,
+        "name": "Plagueland Termites",
+        "itemID": 15043
+      }
+    ],
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1423,
+        "action": "use",
+        "entityID": 177464,
+        "x": 0.18,
+        "y": 0.2257,
+        "objectiveKey": "item:15043",
+        "itemID": 15043,
+        "quantity": 100,
+        "sourceAreaID": 139,
+        "itemName": "Plagueland Termites",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Large Termite Mound",
+        "useItemName": "Empty Termite Jar",
+        "useItemID": 15042
+      }
+    ],
+    "npcTargets": [],
+    "missingRequirements": [],
+    "objectiveLocationsIncomplete": null,
+    "providedItems": [
+      {
+        "entityType": "item",
+        "entityID": 15042,
+        "name": "Empty Termite Jar",
+        "quantityUnknown": true
+      }
+    ]
+  },
+  "corrected_after": {
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 100,
+        "action": "collect",
+        "entityID": 15043,
+        "name": "Plagueland Termites"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 100,
+        "name": "Plagueland Termites",
+        "itemID": 15043
+      }
+    ],
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1423,
+        "action": "gather",
+        "entityID": 177464,
+        "x": 0.18,
+        "y": 0.2257,
+        "objectiveKey": "item:15043",
+        "itemID": 15043,
+        "quantity": 100,
+        "sourceAreaID": 139,
+        "itemName": "Plagueland Termites",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Large Termite Mound"
+      }
+    ],
+    "npcTargets": [],
+    "missingRequirements": [],
+    "objectiveLocationsIncomplete": null,
+    "providedItems": [
+      {
+        "entityType": "item",
+        "entityID": 15042,
+        "name": "Empty Termite Jar",
+        "quantityUnknown": true
+      }
+    ]
+  },
+  "reason": "Output count100 is termites, not item-use target count."
+}

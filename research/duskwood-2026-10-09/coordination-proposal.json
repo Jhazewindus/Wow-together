@@ -1,0 +1,33 @@
+{
+  "applied": false,
+  "shared_runtime_modules_authored": false,
+  "request": "Review Alliance21-30 reward ordering and pre-existing peak-log21 before changing shared engine. Native offer checks for Cooking90 and class returns/count conflict before merge.",
+  "delayed_work_rewards": [
+    {
+      "questID": 101,
+      "objectiveKey": "item:1129",
+      "before": 12285,
+      "after": 7655
+    },
+    {
+      "questID": 101,
+      "objectiveKey": "item:2378",
+      "before": 12285,
+      "after": 9140
+    },
+    {
+      "questID": 154,
+      "objectiveKey": null,
+      "before": 10640,
+      "after": 10590
+    }
+  ],
+  "unresolved": {
+    "98447": "actual pickup/return and investigation interaction unknown",
+    "81733-81740": "actual item drop/use locations absent",
+    "322_526": "alternate parent conflicts",
+    "79362_79363": "typed return versus captured/prose; Enchanter2 vs7",
+    "terrain": "crypt/cave/coffin entrances unmeasured; Deepstrider search points not guaranteed stationary targets"
+  },
+  "route_result": "24 valid strict states;20 guard PASS,4 REVIEW reward timing; all endpoints and reconciled full ordinary scopes preserved"
+}

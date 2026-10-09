@@ -1,0 +1,9 @@
+{
+  "WowTogether/QuestCatalogue.lua": "d45f3802ad3c567aecf150611cfd699de00a51430c123eda2ddadff335461131",
+  "WowTogether/QuestCatalogue.json": "dbb6a3e43ed4510bfb6f1bce17f8271d689b5668a653ea472f53a6cd88c526b8",
+  "WowTogether/GuideAudit.json": "25e9649ca78be5573ffa563c9cbc9b8627473c43fd88086e92db323c7fba4551",
+  "WowTogether/QuestCoverage.json": "0240aa328cfd687c3df7539e8638c00e0af2d40ca2bae1f93d29e60e3940b8dc",
+  "WowTogether/GuideSourceQueue.json": "ce3808b5388412851b5c07b17efb5e3bc4bab5f4e7be8430ec9691f54e1f6324",
+  "tools/quest_corrections.json": "183dc6c225b415ba4b3fb4e8e643949fb8c8dae8ceadbd9608afbf1da2e5f52b",
+  "tests/test_wpl_coverage.py": "f82e1647c00a7eb8e1b74d07d8fcc6313ee9a7175f3b2405d403370dc7a14d2a"
+}

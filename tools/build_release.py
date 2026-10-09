@@ -55,6 +55,14 @@ then fully restart the client; the release includes taint mitigation (a /reload 
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+0.8.62 REVIEWED ZONE UPDATES integrates the leveling research from 22 zones,
+including the starting areas, Barrens, Duskwood, Dustwallow and later zones.
+Drops, supplied items, object actions, prerequisites and NPC positions are
+corrected. The first route optimization pass now protects full-guide reward
+timing, quest-log pressure, progression and unresolved recovery boundaries.
+Fixed guide order and player progress remain; conflicting facts stay explicit.
+See TESTING.md for checks relevant to your current zone.
+
 0.8.61 SESSION CHECKPOINTS AND DUNGEON TRACKING adds Pause on the guide window and Session on the
 Recommended screen. Save & pause stops the guide while keeping one checkpoint;
 Resume checks current progress and keeps same-version fixed order/manual skips.

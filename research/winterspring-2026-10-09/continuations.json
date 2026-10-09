@@ -1,0 +1,1655 @@
+{
+  "direct_ids": [
+    969,
+    975,
+    977,
+    3783,
+    4801,
+    4802,
+    4803,
+    4804,
+    4805,
+    4806,
+    4807,
+    4809,
+    4810,
+    4842,
+    4861,
+    4863,
+    4864,
+    4882,
+    4883,
+    4901,
+    4902,
+    4970,
+    5054,
+    5055,
+    5056,
+    5057,
+    5063,
+    5067,
+    5068,
+    5082,
+    5083,
+    5084,
+    5085,
+    5086,
+    5087,
+    5121,
+    5123,
+    5124,
+    5126,
+    5128,
+    5161,
+    5163,
+    5201,
+    5244,
+    5245,
+    5252,
+    5253,
+    5981,
+    6028,
+    6029,
+    6030,
+    6603,
+    6604,
+    6605,
+    6606,
+    8471,
+    8798
+  ],
+  "compiled_ids": [
+    969,
+    974,
+    975,
+    977,
+    978,
+    979,
+    980,
+    3661,
+    3783,
+    4505,
+    4521,
+    4726,
+    4741,
+    4808,
+    4809,
+    4810,
+    4842,
+    4861,
+    4863,
+    4864,
+    4882,
+    4883,
+    4901,
+    4902,
+    5054,
+    5055,
+    5056,
+    5057,
+    5082,
+    5083,
+    5084,
+    5085,
+    5086,
+    5087,
+    5121,
+    5123,
+    5128,
+    5161,
+    5163,
+    5244,
+    5245,
+    5246,
+    5247,
+    5248,
+    5249,
+    5250,
+    5252,
+    5253,
+    6028,
+    6029,
+    6030,
+    6603,
+    6604,
+    6605,
+    6606,
+    8471
+  ],
+  "uncompiled_direct_ids": [
+    4801,
+    4802,
+    4803,
+    4804,
+    4805,
+    4806,
+    4807,
+    4970,
+    5063,
+    5067,
+    5068,
+    5124,
+    5126,
+    5201,
+    5981,
+    8798
+  ],
+  "related_catalogue_records": {
+    "4506": {
+      "prerequisitesRead": true,
+      "mapID": 1448,
+      "zone": "Felwood",
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "objectives": [
+        {
+          "y": 0.5232,
+          "mapID": 1448,
+          "action": "event",
+          "x": 0.34259999999999996,
+          "locationSource": "Published Forever converted-baseline event area",
+          "name": "Corrupted Sabers"
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.524,
+          "mapID": 1448,
+          "name": "Winna Hazzard",
+          "entityID": 9996,
+          "npc": true,
+          "x": 0.342
+        }
+      ],
+      "starts": [
+        {
+          "y": 0.524,
+          "mapID": 1448,
+          "name": "Winna Hazzard",
+          "entityID": 9996,
+          "npc": true,
+          "x": 0.342
+        }
+      ],
+      "level": 54,
+      "areaID": 361,
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Winna Hazzard",
+          "entityID": 9996
+        }
+      ],
+      "side": "Horde",
+      "prerequisiteAny": [
+        4505
+      ],
+      "money": 6000,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Winna Hazzard",
+          "entityID": 9996
+        }
+      ],
+      "xp": 5450,
+      "foreverStatus": "unchanged",
+      "title": "Corrupted Sabers",
+      "minLevel": 49,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Winna Hazzard",
+            "entityID": 9996
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Winna Hazzard",
+            "entityID": 9996
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/felwood"
+    },
+    "4721": {
+      "prerequisitesRead": true,
+      "mapID": 1448,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Trull Failbane",
+          "entityID": 10306
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "action": "kill",
+          "entityID": 7454,
+          "name": "Berserk Owlbeast"
+        }
+      ],
+      "npcTargets": [
+        {
+          "entityID": 7454,
+          "npc": true,
+          "action": "kill",
+          "name": "Berserk Owlbeast"
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "action": "kill",
+          "entityID": 7454,
+          "npc": true,
+          "y": 0.5939,
+          "objectiveKey": "npc:7454",
+          "name": "Berserk Owlbeast",
+          "sourceAreaID": 618,
+          "x": 0.583,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "quantity": 10
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1448,
+          "entityID": 10306,
+          "npc": true,
+          "y": 0.5279,
+          "x": 0.34729999999999994,
+          "name": "Trull Failbane",
+          "sourceAreaID": 361,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "level": 59,
+      "areaID": 361,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 8589934770,
+      "side": "Horde",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1448,
+          "entityID": 10306,
+          "npc": true,
+          "y": 0.5279,
+          "x": 0.34729999999999994,
+          "name": "Trull Failbane",
+          "sourceAreaID": 361,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "money": 18000,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Trull Failbane",
+          "entityID": 10306
+        }
+      ],
+      "xp": 6400,
+      "prerequisiteAny": [
+        4741
+      ],
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 52,
+      "requirementSource": "Published Forever typed objectives",
+      "title": "Wild Guardians",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantity": 10,
+            "action": "kill",
+            "entityID": 7454,
+            "name": "Berserk Owlbeast"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Trull Failbane",
+            "entityID": 10306
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Trull Failbane",
+            "entityID": 10306
+          }
+        ]
+      },
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "kalimdor/felwood"
+    },
+    "4734": {
+      "prerequisitesRead": true,
+      "missingRequirements": [
+        {
+          "entityType": "object",
+          "quantityUnknown": true,
+          "action": "interact",
+          "entityID": 175124,
+          "name": "Rookery Egg"
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Tinkee Steamboil",
+          "entityID": 10267
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantityUnknown": true,
+          "action": "interact",
+          "entityID": 175124,
+          "name": "Rookery Egg"
+        }
+      ],
+      "objectives": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1428,
+          "entityID": 10267,
+          "npc": true,
+          "sourceZone": "Burning Steppes",
+          "x": 0.652,
+          "name": "Tinkee Steamboil",
+          "sourceAreaID": 46,
+          "y": 0.23800000000000002
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1428,
+          "entityID": 10267,
+          "npc": true,
+          "sourceZone": "Burning Steppes",
+          "x": 0.652,
+          "name": "Tinkee Steamboil",
+          "sourceAreaID": 46,
+          "y": 0.23800000000000002
+        }
+      ],
+      "title": "Egg Freezing",
+      "level": 60,
+      "areaID": 1583,
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Both",
+      "prerequisiteAny": [
+        4810
+      ],
+      "money": 18000,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Tinkee Steamboil",
+          "entityID": 10267
+        }
+      ],
+      "xp": 8300,
+      "questType": "Raid",
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "minLevel": 57,
+      "requirementSource": "Published Forever typed objectives",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "object",
+            "quantityUnknown": true,
+            "action": "interact",
+            "entityID": 175124,
+            "name": "Rookery Egg"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Tinkee Steamboil",
+            "entityID": 10267
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Tinkee Steamboil",
+            "entityID": 10267
+          }
+        ]
+      },
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "dungeons/blackrock-spire"
+    },
+    "4801": {
+      "prerequisitesRead": true,
+      "mapID": 1452,
+      "npcTargets": [
+        {
+          "itemName": "Frostsaber E'ko",
+          "name": "Frostsaber",
+          "entityID": 7431,
+          "npc": true,
+          "action": "loot"
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Witch Doctor Mau'ari",
+          "entityID": 10307
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 3,
+          "action": "collect",
+          "entityID": 12430,
+          "name": "Frostsaber E'ko"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "action": "loot",
+          "entityID": 7431,
+          "npc": true,
+          "x": 0.507,
+          "y": 0.2141,
+          "objectiveKey": "item:12430",
+          "itemID": 12430,
+          "quantity": 3,
+          "sourceAreaID": 618,
+          "itemName": "Frostsaber E'ko",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Frostsaber"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 3,
+          "name": "Frostsaber E'ko",
+          "itemID": 12430
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "entityID": 10307,
+          "npc": true,
+          "sourceZone": "Winterspring",
+          "x": 0.618,
+          "name": "Witch Doctor Mau'ari",
+          "sourceAreaID": 618,
+          "y": 0.382
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "level": 60,
+      "areaID": 618,
+      "repeatable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "side": "Both",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "entityID": 10307,
+          "npc": true,
+          "sourceZone": "Winterspring",
+          "x": 0.618,
+          "name": "Witch Doctor Mau'ari",
+          "sourceAreaID": 618,
+          "y": 0.382
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Witch Doctor Mau'ari",
+          "entityID": 10307
+        }
+      ],
+      "xp": 0,
+      "prerequisiteAny": [
+        975
+      ],
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "minLevel": 55,
+      "requirementSource": "Published Forever typed objectives",
+      "title": "Frostsaber E'ko",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "action": "collect",
+            "entityID": 12430,
+            "name": "Frostsaber E'ko"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Witch Doctor Mau'ari",
+            "entityID": 10307
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Witch Doctor Mau'ari",
+            "entityID": 10307
+          }
+        ]
+      },
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "kalimdor/winterspring"
+    },
+    "4802": {
+      "prerequisitesRead": true,
+      "mapID": 1452,
+      "npcTargets": [
+        {
+          "itemName": "Winterfall E'ko",
+          "name": "Winterfall Ursa",
+          "entityID": 7438,
+          "npc": true,
+          "action": "loot"
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Witch Doctor Mau'ari",
+          "entityID": 10307
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 3,
+          "action": "collect",
+          "entityID": 12431,
+          "name": "Winterfall E'ko"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "action": "loot",
+          "entityID": 7438,
+          "npc": true,
+          "x": 0.6664,
+          "y": 0.3886,
+          "objectiveKey": "item:12431",
+          "itemID": 12431,
+          "quantity": 3,
+          "sourceAreaID": 618,
+          "itemName": "Winterfall E'ko",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Winterfall Ursa"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 3,
+          "name": "Winterfall E'ko",
+          "itemID": 12431
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "entityID": 10307,
+          "npc": true,
+          "sourceZone": "Winterspring",
+          "x": 0.618,
+          "name": "Witch Doctor Mau'ari",
+          "sourceAreaID": 618,
+          "y": 0.382
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "level": 60,
+      "areaID": 618,
+      "repeatable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "side": "Both",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "entityID": 10307,
+          "npc": true,
+          "sourceZone": "Winterspring",
+          "x": 0.618,
+          "name": "Witch Doctor Mau'ari",
+          "sourceAreaID": 618,
+          "y": 0.382
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Witch Doctor Mau'ari",
+          "entityID": 10307
+        }
+      ],
+      "xp": 0,
+      "prerequisiteAny": [
+        975
+      ],
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "minLevel": 55,
+      "requirementSource": "Published Forever typed objectives",
+      "title": "Winterfall E'ko",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "action": "collect",
+            "entityID": 12431,
+            "name": "Winterfall E'ko"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Witch Doctor Mau'ari",
+            "entityID": 10307
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Witch Doctor Mau'ari",
+            "entityID": 10307
+          }
+        ]
+      },
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "kalimdor/winterspring"
+    },
+    "4803": {
+      "prerequisitesRead": true,
+      "mapID": 1452,
+      "npcTargets": [
+        {
+          "itemName": "Shardtooth E'ko",
+          "name": "Shardtooth Mauler",
+          "entityID": 7443,
+          "npc": true,
+          "action": "loot"
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Witch Doctor Mau'ari",
+          "entityID": 10307
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 3,
+          "action": "collect",
+          "entityID": 12432,
+          "name": "Shardtooth E'ko"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "action": "loot",
+          "entityID": 7443,
+          "npc": true,
+          "x": 0.5589999999999999,
+          "y": 0.3834,
+          "objectiveKey": "item:12432",
+          "itemID": 12432,
+          "quantity": 3,
+          "sourceAreaID": 618,
+          "itemName": "Shardtooth E'ko",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Shardtooth Mauler"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 3,
+          "name": "Shardtooth E'ko",
+          "itemID": 12432
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "entityID": 10307,
+          "npc": true,
+          "sourceZone": "Winterspring",
+          "x": 0.618,
+          "name": "Witch Doctor Mau'ari",
+          "sourceAreaID": 618,
+          "y": 0.382
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "level": 60,
+      "areaID": 618,
+      "repeatable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "side": "Both",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "entityID": 10307,
+          "npc": true,
+          "sourceZone": "Winterspring",
+          "x": 0.618,
+          "name": "Witch Doctor Mau'ari",
+          "sourceAreaID": 618,
+          "y": 0.382
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Witch Doctor Mau'ari",
+          "entityID": 10307
+        }
+      ],
+      "xp": 0,
+      "prerequisiteAny": [
+        975
+      ],
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "minLevel": 55,
+      "requirementSource": "Published Forever typed objectives",
+      "title": "Shardtooth E'ko",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "action": "collect",
+            "entityID": 12432,
+            "name": "Shardtooth E'ko"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Witch Doctor Mau'ari",
+            "entityID": 10307
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Witch Doctor Mau'ari",
+            "entityID": 10307
+          }
+        ]
+      },
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "kalimdor/winterspring"
+    },
+    "4804": {
+      "prerequisitesRead": true,
+      "mapID": 1452,
+      "npcTargets": [
+        {
+          "itemName": "Chillwind E'ko",
+          "name": "Chillwind Chimaera",
+          "entityID": 7448,
+          "npc": true,
+          "action": "loot"
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Witch Doctor Mau'ari",
+          "entityID": 10307
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 3,
+          "action": "collect",
+          "entityID": 12434,
+          "name": "Chillwind E'ko"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "action": "loot",
+          "entityID": 7448,
+          "npc": true,
+          "y": 0.38,
+          "sourceZone": "Winterspring",
+          "objectiveKey": "item:12434",
+          "itemID": 12434,
+          "x": 0.56,
+          "sourceAreaID": 618,
+          "quantity": 3,
+          "itemName": "Chillwind E'ko",
+          "name": "Chillwind Chimaera"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 3,
+          "name": "Chillwind E'ko",
+          "itemID": 12434
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "entityID": 10307,
+          "npc": true,
+          "sourceZone": "Winterspring",
+          "x": 0.618,
+          "name": "Witch Doctor Mau'ari",
+          "sourceAreaID": 618,
+          "y": 0.382
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "level": 60,
+      "areaID": 618,
+      "repeatable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "side": "Both",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "entityID": 10307,
+          "npc": true,
+          "sourceZone": "Winterspring",
+          "x": 0.618,
+          "name": "Witch Doctor Mau'ari",
+          "sourceAreaID": 618,
+          "y": 0.382
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Witch Doctor Mau'ari",
+          "entityID": 10307
+        }
+      ],
+      "xp": 0,
+      "prerequisiteAny": [
+        975
+      ],
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "minLevel": 55,
+      "requirementSource": "Published Forever typed objectives",
+      "title": "Chillwind E'ko",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "action": "collect",
+            "entityID": 12434,
+            "name": "Chillwind E'ko"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Witch Doctor Mau'ari",
+            "entityID": 10307
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Witch Doctor Mau'ari",
+            "entityID": 10307
+          }
+        ]
+      },
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "kalimdor/winterspring"
+    },
+    "4805": {
+      "prerequisitesRead": true,
+      "mapID": 1452,
+      "npcTargets": [
+        {
+          "itemName": "Ice Thistle E'ko",
+          "name": "Ice Thistle Yeti",
+          "entityID": 7458,
+          "npc": true,
+          "action": "loot"
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Witch Doctor Mau'ari",
+          "entityID": 10307
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 3,
+          "action": "collect",
+          "entityID": 12435,
+          "name": "Ice Thistle E'ko"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "action": "loot",
+          "entityID": 7458,
+          "npc": true,
+          "x": 0.6405,
+          "y": 0.3983,
+          "objectiveKey": "item:12435",
+          "itemID": 12435,
+          "quantity": 3,
+          "sourceAreaID": 618,
+          "itemName": "Ice Thistle E'ko",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Ice Thistle Yeti"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 3,
+          "name": "Ice Thistle E'ko",
+          "itemID": 12435
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "entityID": 10307,
+          "npc": true,
+          "sourceZone": "Winterspring",
+          "x": 0.618,
+          "name": "Witch Doctor Mau'ari",
+          "sourceAreaID": 618,
+          "y": 0.382
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "level": 60,
+      "areaID": 618,
+      "repeatable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "side": "Both",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "entityID": 10307,
+          "npc": true,
+          "sourceZone": "Winterspring",
+          "x": 0.618,
+          "name": "Witch Doctor Mau'ari",
+          "sourceAreaID": 618,
+          "y": 0.382
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Witch Doctor Mau'ari",
+          "entityID": 10307
+        }
+      ],
+      "xp": 0,
+      "prerequisiteAny": [
+        975
+      ],
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "minLevel": 55,
+      "requirementSource": "Published Forever typed objectives",
+      "title": "Ice Thistle E'ko",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "action": "collect",
+            "entityID": 12435,
+            "name": "Ice Thistle E'ko"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Witch Doctor Mau'ari",
+            "entityID": 10307
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Witch Doctor Mau'ari",
+            "entityID": 10307
+          }
+        ]
+      },
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "kalimdor/winterspring"
+    },
+    "4806": {
+      "prerequisitesRead": true,
+      "mapID": 1452,
+      "npcTargets": [
+        {
+          "itemName": "Frostmaul E'ko",
+          "name": "Frostmaul Preserver",
+          "entityID": 7429,
+          "npc": true,
+          "action": "loot"
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Witch Doctor Mau'ari",
+          "entityID": 10307
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 3,
+          "action": "collect",
+          "entityID": 12436,
+          "name": "Frostmaul E'ko"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "action": "loot",
+          "entityID": 7429,
+          "npc": true,
+          "x": 0.583,
+          "y": 0.6747,
+          "objectiveKey": "item:12436",
+          "itemID": 12436,
+          "quantity": 3,
+          "sourceAreaID": 618,
+          "itemName": "Frostmaul E'ko",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Frostmaul Preserver"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 3,
+          "name": "Frostmaul E'ko",
+          "itemID": 12436
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "entityID": 10307,
+          "npc": true,
+          "sourceZone": "Winterspring",
+          "x": 0.618,
+          "name": "Witch Doctor Mau'ari",
+          "sourceAreaID": 618,
+          "y": 0.382
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "level": 60,
+      "areaID": 618,
+      "repeatable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "side": "Both",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "entityID": 10307,
+          "npc": true,
+          "sourceZone": "Winterspring",
+          "x": 0.618,
+          "name": "Witch Doctor Mau'ari",
+          "sourceAreaID": 618,
+          "y": 0.382
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Witch Doctor Mau'ari",
+          "entityID": 10307
+        }
+      ],
+      "xp": 0,
+      "prerequisiteAny": [
+        975
+      ],
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "minLevel": 55,
+      "requirementSource": "Published Forever typed objectives",
+      "title": "Frostmaul E'ko",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "action": "collect",
+            "entityID": 12436,
+            "name": "Frostmaul E'ko"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Witch Doctor Mau'ari",
+            "entityID": 10307
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Witch Doctor Mau'ari",
+            "entityID": 10307
+          }
+        ]
+      },
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "kalimdor/winterspring"
+    },
+    "4807": {
+      "prerequisitesRead": true,
+      "mapID": 1452,
+      "npcTargets": [
+        {
+          "itemName": "Wildkin E'ko",
+          "name": "Raging Owlbeast",
+          "entityID": 7451,
+          "npc": true,
+          "action": "loot"
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Witch Doctor Mau'ari",
+          "entityID": 10307
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 3,
+          "action": "collect",
+          "entityID": 12433,
+          "name": "Wildkin E'ko"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "action": "loot",
+          "entityID": 7451,
+          "npc": true,
+          "x": 0.6036,
+          "y": 0.3329,
+          "objectiveKey": "item:12433",
+          "itemID": 12433,
+          "quantity": 3,
+          "sourceAreaID": 618,
+          "itemName": "Wildkin E'ko",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Raging Owlbeast"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 3,
+          "name": "Wildkin E'ko",
+          "itemID": 12433
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "entityID": 10307,
+          "npc": true,
+          "sourceZone": "Winterspring",
+          "x": 0.618,
+          "name": "Witch Doctor Mau'ari",
+          "sourceAreaID": 618,
+          "y": 0.382
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "level": 60,
+      "areaID": 618,
+      "repeatable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "side": "Both",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "entityID": 10307,
+          "npc": true,
+          "sourceZone": "Winterspring",
+          "x": 0.618,
+          "name": "Witch Doctor Mau'ari",
+          "sourceAreaID": 618,
+          "y": 0.382
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Witch Doctor Mau'ari",
+          "entityID": 10307
+        }
+      ],
+      "xp": 0,
+      "prerequisiteAny": [
+        975
+      ],
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "minLevel": 55,
+      "requirementSource": "Published Forever typed objectives",
+      "title": "Wildkin E'ko",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "action": "collect",
+            "entityID": 12433,
+            "name": "Wildkin E'ko"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Witch Doctor Mau'ari",
+            "entityID": 10307
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Witch Doctor Mau'ari",
+            "entityID": 10307
+          }
+        ]
+      },
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "kalimdor/winterspring"
+    },
+    "4907": {
+      "prerequisitesRead": true,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Felnok Steelspring",
+          "entityID": 10468
+        }
+      ],
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "objectives": {},
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1428,
+          "entityID": 10267,
+          "npc": true,
+          "sourceZone": "Burning Steppes",
+          "x": 0.652,
+          "name": "Tinkee Steamboil",
+          "sourceAreaID": 46,
+          "y": 0.23800000000000002
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "entityID": 10468,
+          "npc": true,
+          "sourceZone": "Winterspring",
+          "x": 0.614,
+          "name": "Felnok Steelspring",
+          "sourceAreaID": 618,
+          "y": 0.384
+        }
+      ],
+      "level": 60,
+      "areaID": 1583,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "side": "Both",
+      "prerequisiteAny": [
+        4810
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Tinkee Steamboil",
+          "entityID": 10267
+        }
+      ],
+      "xp": 660,
+      "questType": "Raid",
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "minLevel": 57,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "title": "Tinkee Steamboil",
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Felnok Steelspring",
+            "entityID": 10468
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Tinkee Steamboil",
+            "entityID": 10267
+          }
+        ]
+      },
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "categoryPath": "dungeons/blackrock-spire"
+    },
+    "5162": {
+      "prerequisitesRead": true,
+      "mapID": 1422,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Haleh",
+          "entityID": 10929
+        }
+      ],
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "objectives": {},
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1422,
+          "entityID": 10976,
+          "npc": true,
+          "y": 0.6678000000000001,
+          "x": 0.3937,
+          "name": "Jeziba",
+          "sourceAreaID": 28,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "entityID": 10929,
+          "npc": true,
+          "sourceZone": "Winterspring",
+          "x": 0.544,
+          "name": "Haleh",
+          "sourceAreaID": 618,
+          "y": 0.512
+        }
+      ],
+      "level": 60,
+      "areaID": 28,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "side": "Both",
+      "prerequisiteAny": [
+        5161
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Jeziba",
+          "entityID": 10976
+        }
+      ],
+      "xp": 6600,
+      "questType": "Elite",
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "minLevel": 57,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "title": "Wrath of the Blue Flight",
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Haleh",
+            "entityID": 10929
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Jeziba",
+            "entityID": 10976
+          }
+        ]
+      },
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "categoryPath": "eastern-kingdoms/western-plaguelands"
+    },
+    "8798": {
+      "prerequisitesRead": true,
+      "mapID": 1452,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Umi Rumplesnicker",
+          "entityID": 10305
+        }
+      ],
+      "requirements": {},
+      "objectives": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "entityID": 10305,
+          "npc": true,
+          "sourceZone": "Winterspring",
+          "x": 0.608,
+          "name": "Umi Rumplesnicker",
+          "sourceAreaID": 618,
+          "y": 0.376
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "entityID": 10305,
+          "npc": true,
+          "sourceZone": "Winterspring",
+          "x": 0.608,
+          "name": "Umi Rumplesnicker",
+          "sourceAreaID": 618,
+          "y": 0.376
+        }
+      ],
+      "raceMask": 0,
+      "level": 60,
+      "areaID": 618,
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Both",
+      "prerequisiteAny": [
+        5163
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Umi Rumplesnicker",
+          "entityID": 10305
+        }
+      ],
+      "xp": 0,
+      "title": "A Yeti of Your Own",
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "minLevel": 55,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "prerequisitesUnverified": true,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Umi Rumplesnicker",
+            "entityID": 10305
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Umi Rumplesnicker",
+            "entityID": 10305
+          }
+        ]
+      },
+      "levelingExcluded": "Engineering-only quest (skill 250)",
+      "categoryPath": "kalimdor/winterspring"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "applied": false,
+  "shared_runtime_modules_authored": false,
+  "different_title_exclusive_alternatives": {
+    "questIDs": [
+      1120,
+      1121
+    ],
+    "published_exclusiveTo": {
+      "1120": [
+        1121
+      ],
+      "1121": [
+        1120
+      ]
+    },
+    "existing_prior_handin": [
+      1119
+    ],
+    "problem": "apply_corrections validates exclusiveQuests only when alternative titles match. stage-facts does not allow exclusiveQuests. Existing source scope still includes both mutually exclusive branches, and uncertain offer flags remain. Coordinate generalized guarded data support/compiler branch selection before imposing new eligibility or dropping required route actions."
+  },
+  "intro_conflict": {
+    "questID": 4841,
+    "current_parent": 4542,
+    "published_preQuestSingle": [],
+    "decision": "Keep established useful Message to Freewind hand-in prerequisite and chapter-boundary exception. Explicit empty published parent conflicts with captured choice; do not silently remove universal gate without actual beta offer/hand-in observation."
+  },
+  "handin_conflicts": {
+    "5088": "Typed source goals contain fire and skin; source prose/supporting Classic goal also names return powder. Preserve current one skin and supplied one powder, do not assume consumption or add a new numeric hand-in. Native return requirement required.",
+    "5151": "Typed source goal names gizmo; prose/supporting Classic goal also names returning Panther Cage Key. Preserve current gizmo count and add explicit supply/use; native key consumption/return requirement remains unresolved, not a claim the key is consumed.",
+    "1150": "Captured Forever-derived requirements include Flank5845; published typed unchanged quest and supporting unchanged reference identify only claw5843. User requested published facts as primary source; remove modeled extra hand-in, but raw Forever page unavailable. Native actual item/return observation required before merge; do not call this a verified beta removal."
+  },
+  "unknown_beta_records": {
+    "98069": "Item279383 identity only; no actual npc/object drops or quest entry. Eight supplies remain unmapped.",
+    "98156": "Item279481 identity only; no published quest/start/drop relation. Keep unknown pickup/acquisition, capturedStormwind return and current98155 parent; no giver-as-start substitution."
+  },
+  "quantity_unknowns": {
+    "4966": "Protection/ambush kill count unknown; do not turn observation into arbitrary one kill.",
+    "5088": "Typed fire objective count unknown; quantityUnknown retained.",
+    "1150_5151": "Preparation interaction counts unknown on mapped points; source audit only reports requirement-level quantity flags, so absence from its quantity list is not verification."
+  },
+  "terrain": "Five source graph nodes/26 incident directed edges and twelve approximate mesa footprints provide no Freewind lift base/top/elevation or measured safe canyon/mesa approaches. No new route edge, flight unlock or silhouette shortcut.",
+  "route_review": "24 strict corrected-scope states; every action retained. Only Alliance21\u201330 passes strict optimization guard. Horde21\u201330 distance494983\u2192529623/blocked17\u219219; Horde31\u201340 level31 XP deficit34500\u219243850/blocked3\u21924; both41\u201350 peak3\u21924 and delayed rewards; Alliance31\u201340 endpoint1117 hand-in\u21921186 hand-in, so four states fail the pinned-endpoint guard. Current candidate orders validate under their own endpoint model; no internal prerequisite/escort failure asserted. Main-developer route/endpoint review required before merge."
+}

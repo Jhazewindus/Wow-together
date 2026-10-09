@@ -1,0 +1,8 @@
+{
+  "questID": 5901,
+  "action": "Use Empty Termite Jar on Large Termite Mound",
+  "instruction": "Use Empty Termite Jar on 100 \u00d7 Large Termite Mound",
+  "hint": "Use the item on 100 targets in total.",
+  "output_count": 100,
+  "target_count": null
+}

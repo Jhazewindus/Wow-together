@@ -1,0 +1,88 @@
+{
+  "policy": "Comments are dated research leads, not universal prerequisites or surveyed paths. Bodies and guide directions are not copied.",
+  "quests": [
+    {
+      "questID": 76160,
+      "recent_comments": [
+        {
+          "commentID": 6441224,
+          "date": "2026-10-05T11:42:03-05:00",
+          "dataTree": 16
+        }
+      ]
+    },
+    {
+      "questID": 765,
+      "recent_comments": [
+        {
+          "commentID": 6429837,
+          "date": "2026-09-19T17:01:18-05:00",
+          "dataTree": 16
+        }
+      ]
+    },
+    {
+      "questID": 96130,
+      "recent_comments": [
+        {
+          "commentID": 6440877,
+          "date": "2026-10-04T12:25:45-05:00",
+          "dataTree": 16
+        }
+      ]
+    },
+    {
+      "questID": 98424,
+      "recent_comments": [
+        {
+          "commentID": 6434560,
+          "date": "2026-09-23T22:08:14-05:00",
+          "dataTree": 16
+        },
+        {
+          "commentID": 6435381,
+          "date": "2026-09-25T01:26:59-05:00",
+          "dataTree": 16
+        }
+      ]
+    },
+    {
+      "questID": 98427,
+      "recent_comments": [
+        {
+          "commentID": 6433700,
+          "date": "2026-09-22T18:22:25-05:00",
+          "dataTree": 16
+        },
+        {
+          "commentID": 6434483,
+          "date": "2026-09-23T19:42:32-05:00",
+          "dataTree": 16
+        },
+        {
+          "commentID": 6435480,
+          "date": "2026-09-25T07:12:08-05:00",
+          "dataTree": 16
+        }
+      ]
+    },
+    {
+      "questID": 98430,
+      "recent_comments": [
+        {
+          "commentID": 6438696,
+          "date": "2026-09-30T10:52:44-05:00",
+          "dataTree": 16
+        }
+      ]
+    }
+  ],
+  "decisions": {
+    "98427": "Two current comments (6433700 and 6434483) disagree on mine turns; no route polyline imported. Elite/group work remains visible.",
+    "98424": "Comments 6434560 and 6435381 support existing note-object work within Venture Co. Mine, not distant zones implied by item titles.",
+    "780": "Recent quest mapper confirms retained Battleboar point; old comments about the ravine/tunnel are not native Forever approach proof.",
+    "96294": "No comments or typed item-drop/starter relation establish a pickup.",
+    "99082": "Current explicit linear chain supports the known parent; additional offer conditions remain unknown.",
+    "99101": "Current explicit linear chain supports the known parent; additional offer conditions remain unknown."
+  }
+}

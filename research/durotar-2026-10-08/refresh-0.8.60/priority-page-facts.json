@@ -1,0 +1,892 @@
+[
+  {
+    "questID": 1499,
+    "url": "https://www.wowhead.com/forever/quest=1499",
+    "captured_at_utc": "2026-10-08T14:57:14.136055+00:00",
+    "sha256": "e8e33542efadfe635b2d40d2cfc15a0ae7338a1bf5054d0575539a77b3ee8656",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 5765,
+          "name": "Ruzan"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 3145,
+          "name": "Zureetha Fargaze"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_fields": {
+      "previousQuest": 1485
+    },
+    "identity": {
+      "name_enus": "Vile Familiars",
+      "_side": 2,
+      "reqclass": 256,
+      "reqrace": 146
+    },
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "start",
+        "name": "Ruzan",
+        "coord": [
+          42.6,
+          69
+        ],
+        "id": 5765
+      },
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "end",
+        "name": "Zureetha Fargaze",
+        "coord": [
+          42.8,
+          69
+        ],
+        "id": 3145
+      }
+    ]
+  },
+  {
+    "questID": 4402,
+    "url": "https://www.wowhead.com/forever/quest=4402",
+    "captured_at_utc": "2026-10-08T14:57:14.137649+00:00",
+    "sha256": "1a61ad95c8f657ca4aa26862408fd3308e2f6f78889f9497b432415f9563c723",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 9796,
+          "name": "Galgar"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 9796,
+          "name": "Galgar"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 11583,
+          "name": "Cactus Apple",
+          "quantity": 10
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "identity": {
+      "name_enus": "Galgar's Cactus Apple Surprise",
+      "_side": 2,
+      "reqclass": 0,
+      "reqrace": 0
+    },
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "start",
+        "name": "Galgar",
+        "coord": [
+          42.6,
+          67.2
+        ],
+        "id": 9796
+      },
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "end",
+        "name": "Galgar",
+        "coord": [
+          42.6,
+          67.2
+        ],
+        "id": 9796
+      }
+    ]
+  },
+  {
+    "questID": 5441,
+    "url": "https://www.wowhead.com/forever/quest=5441",
+    "captured_at_utc": "2026-10-08T14:57:14.138451+00:00",
+    "sha256": "7b1725fea2ce2f7c43821082dea3afdaff357cf2a053be71cbaab531bae3e9b1",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 11378,
+          "name": "Foreman Thazz'ril"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 11378,
+          "name": "Foreman Thazz'ril"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "entityID": 10556,
+          "name": "Peons Awoken",
+          "quantity": 5,
+          "action": "use",
+          "useItemName": "Foreman's Blackjack"
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 16114,
+          "name": "Foreman's Blackjack",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_fields": {},
+    "identity": {
+      "name_enus": "Lazy Peons",
+      "_side": 2,
+      "reqclass": 0,
+      "reqrace": 0
+    },
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "start",
+        "name": "Foreman Thazz'ril",
+        "coord": [
+          44.6,
+          68.6
+        ],
+        "id": 11378
+      },
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "end",
+        "name": "Foreman Thazz'ril",
+        "coord": [
+          44.6,
+          68.6
+        ],
+        "id": 11378
+      },
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "requirement",
+        "name": "Lazy Peon",
+        "coord": [
+          44.8,
+          69
+        ],
+        "id": 10556
+      }
+    ]
+  },
+  {
+    "questID": 785,
+    "url": "https://www.wowhead.com/forever/quest=785",
+    "captured_at_utc": "2026-10-08T14:57:14.139140+00:00",
+    "sha256": "3fc122ba561851ef46e3aca20fbd607775871e87b0b1c2320fcf87adc35dff9f",
+    "relations": {
+      "starts": [],
+      "ends": [],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "identity": {
+      "name_enus": "A Strategic Alliance",
+      "_side": 0,
+      "reqclass": 0,
+      "reqrace": 0
+    },
+    "mapper_representatives": []
+  },
+  {
+    "questID": 787,
+    "url": "https://www.wowhead.com/forever/quest=787",
+    "captured_at_utc": "2026-10-08T14:57:14.139501+00:00",
+    "sha256": "63133852b4fc08b08294781eaedda05eabbea99a7d26dd91c6a293371563c231",
+    "relations": {
+      "starts": [],
+      "ends": [],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "identity": {},
+    "mapper_representatives": []
+  },
+  {
+    "questID": 788,
+    "url": "https://www.wowhead.com/forever/quest=788",
+    "captured_at_utc": "2026-10-08T14:57:14.139885+00:00",
+    "sha256": "714d1c24446688f425096250949e85160aa2c833c5b0b46dc70dc67b0a4b806c",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 3143,
+          "name": "Gornek"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 3143,
+          "name": "Gornek"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "entityID": 3098,
+          "name": "Mottled Boar",
+          "quantity": 10
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {
+      "prerequisiteCandidates": [
+        787,
+        4641
+      ],
+      "prerequisitesUnverified": true
+    },
+    "identity": {
+      "name_enus": "Cutting Teeth",
+      "_side": 2,
+      "reqclass": 0,
+      "reqrace": 0
+    },
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "start",
+        "name": "Gornek",
+        "coord": [
+          42,
+          68.4
+        ],
+        "id": 3143
+      },
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "end",
+        "name": "Gornek",
+        "coord": [
+          42,
+          68.4
+        ],
+        "id": 3143
+      },
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "requirement",
+        "name": "Mottled Boar",
+        "coord": [
+          43.8,
+          66.2
+        ],
+        "id": 3098
+      }
+    ]
+  },
+  {
+    "questID": 789,
+    "url": "https://www.wowhead.com/forever/quest=789",
+    "captured_at_utc": "2026-10-08T14:57:14.140295+00:00",
+    "sha256": "f791f641f6c6446c5a8efabec0aeeccb338e619d7ba38e334dddfd38450b01e1",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 3143,
+          "name": "Gornek"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 3143,
+          "name": "Gornek"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 4862,
+          "name": "Scorpid Worker Tail",
+          "quantity": 10
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "identity": {
+      "name_enus": "Sting of the Scorpid",
+      "_side": 2,
+      "reqclass": 0,
+      "reqrace": 0
+    },
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "start",
+        "name": "Gornek",
+        "coord": [
+          42,
+          68.4
+        ],
+        "id": 3143
+      },
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "end",
+        "name": "Gornek",
+        "coord": [
+          42,
+          68.4
+        ],
+        "id": 3143
+      },
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Scorpid Worker",
+        "coord": [
+          40.6,
+          65.6
+        ],
+        "id": 3124
+      },
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Sarkoth",
+        "coord": [
+          40.6,
+          66.2
+        ],
+        "id": 3281
+      }
+    ]
+  },
+  {
+    "questID": 792,
+    "url": "https://www.wowhead.com/forever/quest=792",
+    "captured_at_utc": "2026-10-08T14:57:14.140781+00:00",
+    "sha256": "3a7cc3d009a43505da5570cd73d9b6b205853c3bce0c474d2fb21e5a7ead7a41",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 3145,
+          "name": "Zureetha Fargaze"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 3145,
+          "name": "Zureetha Fargaze"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "entityID": 3101,
+          "name": "Vile Familiar",
+          "quantity": 12
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {
+      "previousQuest": 1485
+    },
+    "identity": {
+      "name_enus": "Vile Familiars",
+      "_side": 2,
+      "reqclass": 0,
+      "reqrace": 0
+    },
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "start",
+        "name": "Zureetha Fargaze",
+        "coord": [
+          42.8,
+          69
+        ],
+        "id": 3145
+      },
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "end",
+        "name": "Zureetha Fargaze",
+        "coord": [
+          42.8,
+          69
+        ],
+        "id": 3145
+      },
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "requirement",
+        "name": "Vile Familiar",
+        "coord": [
+          45.2,
+          55
+        ],
+        "id": 3101
+      }
+    ]
+  },
+  {
+    "questID": 794,
+    "url": "https://www.wowhead.com/forever/quest=794",
+    "captured_at_utc": "2026-10-08T14:57:14.141397+00:00",
+    "sha256": "bec42a424f7628416fe5906403fb9f96997311376830a6db4bd3a88c35f3aaf1",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 3145,
+          "name": "Zureetha Fargaze"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 3145,
+          "name": "Zureetha Fargaze"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 4859,
+          "name": "Burning Blade Medallion",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {
+      "prerequisiteAny": [
+        792,
+        1499
+      ],
+      "prerequisiteSource": "Wowhead Forever series variants"
+    },
+    "identity": {
+      "name_enus": "Burning Blade Medallion",
+      "_side": 2,
+      "reqclass": 0,
+      "reqrace": 0
+    },
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "start",
+        "name": "Zureetha Fargaze",
+        "coord": [
+          42.8,
+          69
+        ],
+        "id": 3145
+      },
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "end",
+        "name": "Zureetha Fargaze",
+        "coord": [
+          42.8,
+          69
+        ],
+        "id": 3145
+      },
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Yarrog Baneshadow",
+        "coord": [
+          42.6,
+          52.8
+        ],
+        "id": 3183
+      }
+    ]
+  },
+  {
+    "questID": 96873,
+    "url": "https://www.wowhead.com/forever/quest=96873",
+    "captured_at_utc": "2026-10-08T14:57:14.141979+00:00",
+    "sha256": "b6fa01910738cf8524af1df590a5c1c4deb32a344705640dcf2652f535355383",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 266881,
+          "name": "Pa'zula"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 266881,
+          "name": "Pa'zula"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 247884,
+          "name": "Luminous Residue",
+          "quantity": 3
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "identity": {
+      "name_enus": "A Pain in the Neck",
+      "_side": 2,
+      "reqclass": 0,
+      "reqrace": 146
+    },
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "start",
+        "name": "Pa'zula",
+        "coord": [
+          56.6,
+          73.6
+        ],
+        "id": 266881
+      },
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "end",
+        "name": "Pa'zula",
+        "coord": [
+          56.6,
+          73.6
+        ],
+        "id": 266881
+      }
+    ]
+  },
+  {
+    "questID": 96874,
+    "url": "https://www.wowhead.com/forever/quest=96874",
+    "captured_at_utc": "2026-10-08T14:57:14.142390+00:00",
+    "sha256": "d6ccd79de8923485b1ea9782c8beaa52699207c8e514a427c17db6847c656ab6",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 10266,
+          "name": "Ug'thok"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 10266,
+          "name": "Ug'thok"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 275719,
+          "name": "Weathered Spine",
+          "quantity": 5
+        },
+        {
+          "entityType": "item",
+          "entityID": 3470,
+          "name": "Rough Grinding Stone",
+          "quantity": 5
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "identity": {
+      "name_enus": "This Is Spinal Axe",
+      "_side": 2,
+      "reqclass": 0,
+      "reqrace": 0
+    },
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 1637,
+        "type": 1,
+        "point": "start",
+        "name": "Ug'thok",
+        "coord": [
+          80.6,
+          23.4
+        ],
+        "id": 10266
+      },
+      {
+        "sourceAreaID": 1637,
+        "type": 1,
+        "point": "end",
+        "name": "Ug'thok",
+        "coord": [
+          80.6,
+          23.4
+        ],
+        "id": 10266
+      },
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Thunder Lizard",
+        "coord": [
+          40.5,
+          29.2
+        ],
+        "id": 3130
+      },
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Lightning Hide",
+        "coord": [
+          43.6,
+          24
+        ],
+        "id": 3131
+      }
+    ]
+  },
+  {
+    "questID": 99123,
+    "url": "https://www.wowhead.com/forever/quest=99123",
+    "captured_at_utc": "2026-10-08T14:57:14.142743+00:00",
+    "sha256": "9cac7286a172f1d0346a7ab1c77af2a336f25106dd2e416a5e17eae8a2a98e4b",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 275811,
+          "name": "Pal'juh"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 3304,
+          "name": "Master Vornal"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "identity": {
+      "name_enus": "Lost in the Shadows",
+      "_side": 2,
+      "reqclass": 0,
+      "reqrace": 0
+    },
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "start",
+        "name": "Pal'juh",
+        "coord": [
+          46.2,
+          78.6
+        ],
+        "id": 275811
+      },
+      {
+        "sourceAreaID": 14,
+        "type": 1,
+        "point": "end",
+        "name": "Master Vornal",
+        "coord": [
+          55.8,
+          74.4
+        ],
+        "id": 3304
+      }
+    ]
+  },
+  {
+    "questID": 812,
+    "url": "https://www.wowhead.com/forever/quest=812",
+    "captured_at_utc": "2026-10-08T15:02:42.081334+00:00",
+    "sha256": "42612fae8580ecf7f1fed433a5fb8150413f81923ec3e7c2752c68cc3b7c8d67",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 3190,
+          "name": "Rhinag"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 3190,
+          "name": "Rhinag"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 4904,
+          "name": "Venomtail Antidote",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "metadata": {
+      "level": 9,
+      "name": "Need for a Cure",
+      "reqlevel": 7,
+      "side": 2,
+      "xp": 980
+    }
+  },
+  {
+    "questID": 813,
+    "url": "https://www.wowhead.com/forever/quest=813",
+    "captured_at_utc": "2026-10-08T15:02:42.083049+00:00",
+    "sha256": "b4ad76e9ecb32b44c5952dc00526a4c52735ce3a416f9cd87c4bb70676d2feaf",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 3189,
+          "name": "Kor'ghan"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 3189,
+          "name": "Kor'ghan"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 4886,
+          "name": "Venomtail Poison Sac",
+          "quantity": 4
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "metadata": {
+      "itemrewards": [
+        [
+          4904,
+          1
+        ]
+      ],
+      "level": 9,
+      "name": "Finding the Antidote",
+      "reqlevel": 7,
+      "side": 2
+    }
+  },
+  {
+    "questID": 926,
+    "url": "https://www.wowhead.com/forever/quest=926",
+    "captured_at_utc": "2026-10-08T15:02:42.083472+00:00",
+    "sha256": "2d0ce0a47bf624a92bafad11fdfe58f620591981f4934b0d12b0c717b05fc00f",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "object",
+          "entityID": 5621,
+          "name": "Flawed Power Stones"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "object",
+          "entityID": 5619,
+          "name": "Flawed Power Stone"
+        },
+        {
+          "entityType": "object",
+          "entityID": 5620,
+          "name": "Flawed Power Stones"
+        },
+        {
+          "entityType": "object",
+          "entityID": 5621,
+          "name": "Flawed Power Stones"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "metadata": {
+      "itemrewards": [
+        [
+          4986,
+          1
+        ]
+      ],
+      "level": 14,
+      "name": "Flawed Power Stone",
+      "reqlevel": 1,
+      "side": 2
+    }
+  }
+]

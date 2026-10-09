@@ -72,7 +72,10 @@ def audit(zone=None):
             for level in (1,4,8,12,18,23,33,43,53,60):
                 c.ns.profile.level=level
                 for g in c.ns.LevelingGuideChoices().values():
-                    if zone is not None and g.zone != zone: continue
+                    # Generated chapter labels title-case small words; the
+                    # catalogue retains published spelling ("Swamp of Sorrows").
+                    # Generated "Ungoro Crater" also omits the catalogue apostrophe.
+                    if zone is not None and g.zone.casefold().replace("'", "") != zone.casefold().replace("'", ""): continue
                     key=(faction,g.key)
                     if key in seen:continue
                     seen.add(key)
@@ -103,6 +106,15 @@ def audit(zone=None):
                         assert sequence[0]=='a' and sequence[-1]=='t' and all(k=='q' for k in sequence[1:-1]),(key,id,'stage order')
                         assert not c.ns.IsLevelingExcludedQuest(id) and not c.ns.IsRepeatableQuest(id),(key,id,'excluded quest')
                     assert g.optimization.after<=g.optimization.before+1e-6,(key,'distance regression')
+                    geometric=g.optimization.geometricGuard
+                    if geometric:
+                        assert geometric.after.valid,(key,'geometry state')
+                        assert geometric.after.distance<=geometric.before.distance+.001,(key,'geometry travel regression')
+                        for field in ('peakLog','levelDeficitXP','minimumKills','difficultyPressure','missingLevelCurve','uncertainTravelLegs','blockedTravelLegs'):
+                            assert geometric.after[field]<=geometric.before[field],(key,field,'geometry regression')
+                        assert geometric.after.questXP>=geometric.before.questXP,(key,'geometry reward regression')
+                        for stop,reward in geometric.before.workRewards.items():
+                            assert geometric.after.workRewards[stop]>=reward,(key,'geometry reward delayed')
                     flow=g.optimization.flow
                     assert flow.after.valid,(key,'quest-flow state')
                     for field in ('peakLog','levelDeficitXP','minimumKills','difficultyPressure','uncertainTravelLegs','blockedTravelLegs'):
@@ -145,6 +157,8 @@ def audit(zone=None):
                         'reason_steps_checked':len(plan),'destination_reason_codes':dict(sorted(guide_reason_codes.items())),
                         'reason_review_steps':reason_review_steps,'cross_zone_reason_steps':cross_zone_reason_steps,
                         'flow_alternatives_evaluated':flow.candidates,'flow_loop_changes':flow.moves,
+                        'geometric_guard_rejections':geometric.rejected if geometric else 0,
+                        'geometric_bracket_replays':geometric.replayStates if geometric else 0,
                         'flow_state_valid':bool(flow.after.valid),'quest_log_peak':flow.after.peakLog,
                         'quest_reward_only_xp_shortfall':flow.after.levelDeficitXP,'uncertain_travel_legs':flow.after.uncertainTravelLegs,
                         'estimated_distance_before':round(g.optimization.before,2),'estimated_distance_after':round(g.optimization.after,2)})

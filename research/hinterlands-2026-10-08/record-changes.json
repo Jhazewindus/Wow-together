@@ -1,0 +1,661 @@
+{
+  "records": {
+    "1452": {
+      "before": {
+        "prerequisitesRead": true,
+        "zone": "The Hinterlands",
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "name": "Roc Gizzard",
+            "entityID": 6257
+          },
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "name": "Ironfur Liver",
+            "entityID": 6258
+          },
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "name": "Groddoc Liver",
+            "entityID": 6259
+          }
+        ],
+        "level": 43,
+        "areaID": 47,
+        "seriesPosition": 5,
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Rhapsody Shindigger",
+            "entityID": 5634
+          }
+        ],
+        "xp": 3600,
+        "minLevel": 38,
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "item",
+              "quantity": 3,
+              "name": "Roc Gizzard",
+              "entityID": 6257
+            },
+            {
+              "entityType": "item",
+              "quantity": 3,
+              "name": "Ironfur Liver",
+              "entityID": 6258
+            },
+            {
+              "entityType": "item",
+              "quantity": 3,
+              "name": "Groddoc Liver",
+              "entityID": 6259
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Rhapsody Shindigger",
+              "entityID": 5634
+            }
+          ],
+          "provided": {},
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Rhapsody Shindigger",
+              "entityID": 5634
+            }
+          ]
+        },
+        "objectiveLocationsIncomplete": true,
+        "categoryPath": "eastern-kingdoms/the-hinterlands",
+        "raceMask": 4294967373,
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "name": "Ironfur Liver",
+            "entityID": 6258
+          },
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "name": "Groddoc Liver",
+            "entityID": 6259
+          }
+        ],
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Rhapsody Shindigger",
+            "entityID": 5634
+          }
+        ],
+        "seriesRoot": 1448,
+        "requiredItems": [
+          {
+            "quantity": 3,
+            "name": "Roc Gizzard",
+            "itemID": 6257
+          },
+          {
+            "quantity": 3,
+            "name": "Ironfur Liver",
+            "itemID": 6258
+          },
+          {
+            "quantity": 3,
+            "name": "Groddoc Liver",
+            "itemID": 6259
+          }
+        ],
+        "ends": [
+          {
+            "y": 0.484,
+            "mapID": 1425,
+            "name": "Rhapsody Shindigger",
+            "entityID": 5634,
+            "npc": true,
+            "x": 0.268
+          }
+        ],
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "side": "Alliance",
+        "previousQuest": 1451,
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1446,
+            "legacyStepKey": "q:1446:npc:5428",
+            "entityID": 5428,
+            "name": "Roc",
+            "npc": true,
+            "x": 0.353,
+            "y": 0.2899,
+            "objectiveKey": "item:6257",
+            "itemID": 6257,
+            "quantity": 3,
+            "sourceAreaID": 440,
+            "itemName": "Roc Gizzard",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot"
+          }
+        ],
+        "series": [
+          1448,
+          1449,
+          1450,
+          1451,
+          1452
+        ],
+        "mapID": 1425,
+        "objectiveFactsSource": "Wowhead Forever objective table",
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "starts": [
+          {
+            "y": 0.484,
+            "mapID": 1425,
+            "name": "Rhapsody Shindigger",
+            "entityID": 5634,
+            "npc": true,
+            "x": 0.268
+          }
+        ],
+        "requirementSource": "Wowhead Forever objective table",
+        "title": "Rhapsody's Kalimdor Kocktail",
+        "classMask": 0,
+        "locationSource": "Wowhead Forever",
+        "npcTargets": [
+          {
+            "itemName": "Roc Gizzard",
+            "name": "Roc",
+            "entityID": 5428,
+            "npc": true,
+            "action": "loot"
+          }
+        ]
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "zone": "The Hinterlands",
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "name": "Roc Gizzard",
+            "entityID": 6257
+          },
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "name": "Ironfur Liver",
+            "entityID": 6258
+          },
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "name": "Groddoc Liver",
+            "entityID": 6259
+          }
+        ],
+        "level": 43,
+        "areaID": 47,
+        "seriesPosition": 5,
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Rhapsody Shindigger",
+            "entityID": 5634
+          }
+        ],
+        "xp": 3600,
+        "minLevel": 38,
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "item",
+              "quantity": 3,
+              "name": "Roc Gizzard",
+              "entityID": 6257
+            },
+            {
+              "entityType": "item",
+              "quantity": 3,
+              "name": "Ironfur Liver",
+              "entityID": 6258
+            },
+            {
+              "entityType": "item",
+              "quantity": 3,
+              "name": "Groddoc Liver",
+              "entityID": 6259
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Rhapsody Shindigger",
+              "entityID": 5634
+            }
+          ],
+          "provided": {},
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Rhapsody Shindigger",
+              "entityID": 5634
+            }
+          ]
+        },
+        "objectiveLocationsIncomplete": false,
+        "categoryPath": "eastern-kingdoms/the-hinterlands",
+        "raceMask": 4294967373,
+        "missingRequirements": {},
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Rhapsody Shindigger",
+            "entityID": 5634
+          }
+        ],
+        "seriesRoot": 1448,
+        "requiredItems": [
+          {
+            "quantity": 3,
+            "name": "Roc Gizzard",
+            "itemID": 6257
+          },
+          {
+            "quantity": 3,
+            "name": "Ironfur Liver",
+            "itemID": 6258
+          },
+          {
+            "quantity": 3,
+            "name": "Groddoc Liver",
+            "itemID": 6259
+          }
+        ],
+        "ends": [
+          {
+            "y": 0.484,
+            "mapID": 1425,
+            "name": "Rhapsody Shindigger",
+            "entityID": 5634,
+            "npc": true,
+            "x": 0.268
+          }
+        ],
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "previousQuest": 1451,
+        "side": "Alliance",
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1446,
+            "legacyStepKey": "q:1446:npc:5428",
+            "entityID": 5428,
+            "name": "Roc",
+            "npc": true,
+            "x": 0.353,
+            "y": 0.2899,
+            "objectiveKey": "item:6257",
+            "itemID": 6257,
+            "quantity": 3,
+            "sourceAreaID": 440,
+            "itemName": "Roc Gizzard",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot"
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1444,
+            "action": "loot",
+            "entityID": 5268,
+            "y": 0.616,
+            "npc": true,
+            "x": 0.6128,
+            "sourceZone": "Feralas",
+            "objectiveKey": "item:6258",
+            "itemID": 6258,
+            "quantity": 3,
+            "sourceAreaID": 357,
+            "itemName": "Ironfur Liver",
+            "locationSource": "Reviewed published Forever converted-baseline spawn; explicit item drop relation; research/hinterlands-2026-10-08",
+            "name": "Ironfur Bear"
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1444,
+            "action": "loot",
+            "entityID": 5260,
+            "y": 0.6139,
+            "npc": true,
+            "x": 0.612,
+            "sourceZone": "Feralas",
+            "objectiveKey": "item:6259",
+            "itemID": 6259,
+            "quantity": 3,
+            "sourceAreaID": 357,
+            "itemName": "Groddoc Liver",
+            "locationSource": "Reviewed published Forever converted-baseline spawn; explicit item drop relation; research/hinterlands-2026-10-08",
+            "name": "Groddoc Ape"
+          }
+        ],
+        "series": [
+          1448,
+          1449,
+          1450,
+          1451,
+          1452
+        ],
+        "title": "Rhapsody's Kalimdor Kocktail",
+        "mapID": 1425,
+        "objectiveFactsSource": "Wowhead Forever objective table",
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "starts": [
+          {
+            "y": 0.484,
+            "mapID": 1425,
+            "name": "Rhapsody Shindigger",
+            "entityID": 5634,
+            "npc": true,
+            "x": 0.268
+          }
+        ],
+        "requirementSource": "Wowhead Forever objective table",
+        "classMask": 0,
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; unchanged exact identity/title/level/minimum and typed items; existing three-of-each quantities retained. Ironfur Liver 6258 -> Ironfur Bear 5268 from converted literal item facts; Groddoc Liver 6259 -> Groddoc Ape 5260 from beta-delta item facts. Both named actual spawn points on published Feralas area 357 -> map 1444; no centroid, safe road, drop rate or patrol inferred. Original Roc objective preserved. Verified 24 hashes 2026-10-08; source joins and withheld approaches: research/hinterlands-2026-10-08.",
+        "locationSource": "Wowhead Forever",
+        "npcTargets": [
+          {
+            "itemName": "Roc Gizzard",
+            "name": "Roc",
+            "entityID": 5428,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "Ironfur Liver",
+            "name": "Ironfur Bear",
+            "entityID": 5268,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "Groddoc Liver",
+            "name": "Groddoc Ape",
+            "entityID": 5260,
+            "npc": true,
+            "action": "loot"
+          }
+        ]
+      }
+    },
+    "2938": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1425,
+        "objectives": {},
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Apothecary Lydon",
+            "entityID": 2216
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Faranell's Parcel",
+            "entityID": 9436
+          }
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Faranell's Parcel",
+            "entityID": 9436
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Faranell's Parcel",
+            "itemID": 9436
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1424,
+            "entityID": 2216,
+            "npc": true,
+            "sourceZone": "Hillsbrad Foothills",
+            "x": 0.614,
+            "name": "Apothecary Lydon",
+            "sourceAreaID": 267,
+            "y": 0.192
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1458,
+            "entityID": 2055,
+            "npc": true,
+            "sourceZone": "Undercity",
+            "x": 0.484,
+            "name": "Master Apothecary Faranell",
+            "sourceAreaID": 1497,
+            "y": 0.6940000000000001
+          }
+        ],
+        "title": "Venom to the Undercity",
+        "level": 55,
+        "areaID": 47,
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Faranell's Parcel",
+            "entityID": 9436
+          }
+        ],
+        "side": "Horde",
+        "prerequisiteAny": [
+          2937
+        ],
+        "money": 25000,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Master Apothecary Faranell",
+            "entityID": 2055
+          }
+        ],
+        "xp": 8450,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          2,
+          5,
+          6,
+          8,
+          96
+        ],
+        "minLevel": 40,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 8589934770,
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Faranell's Parcel",
+              "entityID": 9436
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Apothecary Lydon",
+              "entityID": 2216
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Master Apothecary Faranell",
+              "entityID": 2055
+            }
+          ]
+        },
+        "objectiveLocationsIncomplete": true,
+        "categoryPath": "eastern-kingdoms/the-hinterlands"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1425,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Apothecary Lydon",
+            "entityID": 2216
+          }
+        ],
+        "requirements": {},
+        "objectives": {},
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Faranell's Parcel",
+            "itemID": 9436
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Faranell's Parcel",
+            "entityID": 9436
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1458,
+            "action": "talk",
+            "entityID": 2055,
+            "npc": true,
+            "sourceZone": "Undercity",
+            "x": 0.484,
+            "name": "Master Apothecary Faranell",
+            "sourceAreaID": 1497,
+            "y": 0.6940000000000001
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1424,
+            "entityID": 2216,
+            "npc": true,
+            "sourceZone": "Hillsbrad Foothills",
+            "x": 0.614,
+            "name": "Apothecary Lydon",
+            "sourceAreaID": 267,
+            "y": 0.192
+          }
+        ],
+        "level": 55,
+        "areaID": 47,
+        "title": "Venom to the Undercity",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 8589934770,
+        "side": "Horde",
+        "prerequisiteAny": [
+          2937
+        ],
+        "money": 25000,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Master Apothecary Faranell",
+            "entityID": 2055
+          }
+        ],
+        "xp": 8450,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          2,
+          5,
+          6,
+          8,
+          96
+        ],
+        "minLevel": 40,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; exact identity/levels, explicit sourceItemId 9436 plus existing provided quantity and required hand-in item. Supplied parcel delivery to Faranell; actual 2937 hand-in retained. Verified all 24 file hashes 2026-10-08. See research/hinterlands-2026-10-08.",
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Apothecary Lydon",
+              "entityID": 2216
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Faranell's Parcel",
+              "entityID": 9436
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Master Apothecary Faranell",
+              "entityID": 2055
+            }
+          ]
+        },
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "categoryPath": "eastern-kingdoms/the-hinterlands"
+      }
+    }
+  }
+}

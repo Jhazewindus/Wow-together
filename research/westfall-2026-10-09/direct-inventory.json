@@ -1,0 +1,7416 @@
+{
+  "9": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 20,
+        "name": "Harvest Watcher",
+        "entityID": 114
+      }
+    ],
+    "npcTargets": [
+      {
+        "entityID": 114,
+        "npc": true,
+        "action": "kill",
+        "name": "Harvest Watcher"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectives": [
+      {
+        "sourceObjective": 114,
+        "mapID": 1436,
+        "action": "kill",
+        "entityID": 114,
+        "npc": true,
+        "y": 0.308,
+        "objectiveKey": "npc:114",
+        "name": "Harvest Watcher",
+        "x": 0.542,
+        "quantity": 20
+      }
+    ],
+    "level": 15,
+    "areaID": 40,
+    "starts": [
+      {
+        "y": 0.312,
+        "mapID": 1436,
+        "name": "Farmer Saldean",
+        "entityID": 233,
+        "npc": true,
+        "x": 0.56
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.312,
+        "mapID": 1436,
+        "name": "Farmer Saldean",
+        "entityID": 233,
+        "npc": true,
+        "x": 0.56
+      }
+    ],
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Farmer Saldean",
+        "entityID": 233
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Farmer Saldean",
+        "entityID": 233
+      }
+    ],
+    "xp": 1050,
+    "title": "The Killing Fields",
+    "foreverStatus": "updated",
+    "shareable": true,
+    "minLevel": 8,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "12": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "npcTargets": [
+      {
+        "entityID": 95,
+        "npc": true,
+        "action": "kill",
+        "name": "Defias Smuggler"
+      },
+      {
+        "entityID": 504,
+        "npc": true,
+        "action": "kill",
+        "name": "Defias Trapper"
+      }
+    ],
+    "zone": "Westfall",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 15,
+        "name": "Defias Trapper",
+        "entityID": 504
+      },
+      {
+        "entityType": "npc",
+        "quantity": 15,
+        "name": "Defias Smuggler",
+        "entityID": 95
+      }
+    ],
+    "seriesRoot": 12,
+    "objectives": [
+      {
+        "sourceObjective": 95,
+        "mapID": 1436,
+        "action": "kill",
+        "entityID": 95,
+        "npc": true,
+        "y": 0.268,
+        "objectiveKey": "npc:95",
+        "name": "Defias Smuggler",
+        "x": 0.46,
+        "quantity": 15
+      },
+      {
+        "sourceObjective": 504,
+        "mapID": 1436,
+        "action": "kill",
+        "entityID": 504,
+        "npc": true,
+        "y": 0.266,
+        "objectiveKey": "npc:504",
+        "name": "Defias Trapper",
+        "x": 0.439,
+        "quantity": 15
+      }
+    ],
+    "series": [
+      12,
+      13,
+      14
+    ],
+    "starts": [
+      {
+        "y": 0.47600000000000003,
+        "mapID": 1436,
+        "name": "Gryan Stoutmantle",
+        "entityID": 234,
+        "npc": true,
+        "x": 0.562
+      }
+    ],
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 12,
+    "areaID": 40,
+    "ends": [
+      {
+        "y": 0.47600000000000003,
+        "mapID": 1436,
+        "name": "Gryan Stoutmantle",
+        "entityID": 234,
+        "npc": true,
+        "x": 0.562
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Gryan Stoutmantle",
+        "entityID": 234
+      }
+    ],
+    "side": "Alliance",
+    "seriesPosition": 1,
+    "money": 500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Gryan Stoutmantle",
+        "entityID": 234
+      }
+    ],
+    "xp": 910,
+    "title": "The People's Militia",
+    "foreverStatus": "unchanged",
+    "shareable": true,
+    "minLevel": 9,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 15,
+          "name": "Defias Trapper",
+          "entityID": 504
+        },
+        {
+          "entityType": "npc",
+          "quantity": 15,
+          "name": "Defias Smuggler",
+          "entityID": 95
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Gryan Stoutmantle",
+          "entityID": 234
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Gryan Stoutmantle",
+          "entityID": 234
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "13": {
+    "prerequisitesRead": true,
+    "zone": "Westfall",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 15,
+        "name": "Defias Pillager",
+        "entityID": 589
+      },
+      {
+        "entityType": "npc",
+        "quantity": 15,
+        "name": "Defias Looter",
+        "entityID": 590
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 14,
+    "areaID": 40,
+    "seriesPosition": 2,
+    "money": 600,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Gryan Stoutmantle",
+        "entityID": 234
+      }
+    ],
+    "xp": 980,
+    "minLevel": 9,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 15,
+          "name": "Defias Pillager",
+          "entityID": 589
+        },
+        {
+          "entityType": "npc",
+          "quantity": 15,
+          "name": "Defias Looter",
+          "entityID": 590
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Gryan Stoutmantle",
+          "entityID": 234
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Gryan Stoutmantle",
+          "entityID": 234
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/westfall",
+    "raceMask": 0,
+    "mapID": 1436,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Gryan Stoutmantle",
+        "entityID": 234
+      }
+    ],
+    "seriesRoot": 12,
+    "ends": [
+      {
+        "y": 0.47600000000000003,
+        "mapID": 1436,
+        "name": "Gryan Stoutmantle",
+        "entityID": 234,
+        "npc": true,
+        "x": 0.562
+      }
+    ],
+    "shareable": true,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "previousQuest": 12,
+    "objectives": [
+      {
+        "sourceObjective": 589,
+        "mapID": 1436,
+        "action": "kill",
+        "entityID": 589,
+        "npc": true,
+        "y": 0.682,
+        "objectiveKey": "npc:589",
+        "name": "Defias Pillager",
+        "x": 0.428,
+        "quantity": 15
+      },
+      {
+        "sourceObjective": 590,
+        "mapID": 1436,
+        "action": "kill",
+        "entityID": 590,
+        "npc": true,
+        "y": 0.5489999999999999,
+        "objectiveKey": "npc:590",
+        "name": "Defias Looter",
+        "x": 0.368,
+        "quantity": 15
+      }
+    ],
+    "series": [
+      12,
+      13,
+      14
+    ],
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.47600000000000003,
+        "mapID": 1436,
+        "name": "Gryan Stoutmantle",
+        "entityID": 234,
+        "npc": true,
+        "x": 0.562
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "title": "The People's Militia",
+    "classMask": 0,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "entityID": 589,
+        "npc": true,
+        "action": "kill",
+        "name": "Defias Pillager"
+      },
+      {
+        "entityID": 590,
+        "npc": true,
+        "action": "kill",
+        "name": "Defias Looter"
+      }
+    ]
+  },
+  "14": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 15,
+        "action": "kill",
+        "entityID": 122,
+        "name": "Defias Highwayman"
+      },
+      {
+        "entityType": "npc",
+        "quantity": 5,
+        "action": "kill",
+        "entityID": 121,
+        "name": "Defias Pathstalker"
+      },
+      {
+        "entityType": "npc",
+        "quantity": 5,
+        "action": "kill",
+        "entityID": 449,
+        "name": "Defias Knuckleduster"
+      }
+    ],
+    "npcTargets": [
+      {
+        "entityID": 122,
+        "npc": true,
+        "action": "kill",
+        "name": "Defias Highwayman"
+      },
+      {
+        "entityID": 121,
+        "npc": true,
+        "action": "kill",
+        "name": "Defias Pathstalker"
+      },
+      {
+        "entityID": 449,
+        "npc": true,
+        "action": "kill",
+        "name": "Defias Knuckleduster"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "action": "kill",
+        "entityID": 122,
+        "npc": true,
+        "y": 0.5822999999999999,
+        "objectiveKey": "npc:122",
+        "name": "Defias Highwayman",
+        "sourceAreaID": 40,
+        "x": 0.6076,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantity": 15
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "action": "kill",
+        "entityID": 121,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "objectiveKey": "npc:121",
+        "name": "Defias Pathstalker",
+        "sourceAreaID": 40,
+        "y": 0.574,
+        "x": 0.384,
+        "quantity": 5
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "action": "kill",
+        "entityID": 449,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "objectiveKey": "npc:449",
+        "name": "Defias Knuckleduster",
+        "sourceAreaID": 40,
+        "y": 0.586,
+        "x": 0.604,
+        "quantity": 5
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 234,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "x": 0.562,
+        "name": "Gryan Stoutmantle",
+        "sourceAreaID": 40,
+        "y": 0.474
+      }
+    ],
+    "level": 17,
+    "areaID": 40,
+    "title": "The People's Militia",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Gryan Stoutmantle",
+        "entityID": 234
+      }
+    ],
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 234,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "x": 0.562,
+        "name": "Gryan Stoutmantle",
+        "sourceAreaID": 40,
+        "y": 0.474
+      }
+    ],
+    "side": "Alliance",
+    "prerequisiteAny": [
+      13
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Gryan Stoutmantle",
+        "entityID": 234
+      }
+    ],
+    "xp": 1600,
+    "foreverStatus": "updated",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 9,
+    "requirementSource": "Warcraft DB Forever structured objectives",
+    "shareable": true,
+    "raceMask": 4294967373,
+    "objectiveFactsSource": "Warcraft DB Forever structured objectives",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "22": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 8,
+        "name": "Goretusk Liver",
+        "entityID": 723
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Goretusk Liver",
+        "name": "Defias Smuggler",
+        "entityID": 95,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Goretusk Liver",
+        "name": "Goretusk",
+        "entityID": 157,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Goretusk Liver",
+        "name": "Young Goretusk",
+        "entityID": 454,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Goretusk Liver",
+        "name": "Great Goretusk",
+        "entityID": 547,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Goretusk Liver",
+        "name": "Sand Crawler",
+        "entityID": 830,
+        "npc": true,
+        "action": "collect"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 8,
+        "name": "Goretusk Liver",
+        "itemID": 723
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1436,
+        "legacyStepKey": "q:1436:npc:454",
+        "entityID": 157,
+        "npc": true,
+        "x": 0.349,
+        "y": 0.578,
+        "objectiveKey": "item:723",
+        "itemID": 723,
+        "quantity": 8,
+        "name": "Goretusk",
+        "itemName": "Goretusk Liver",
+        "alternativeCount": 5,
+        "action": "collect"
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.306,
+        "mapID": 1436,
+        "name": "Salma Saldean",
+        "entityID": 235,
+        "npc": true,
+        "x": 0.564
+      }
+    ],
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 12,
+    "areaID": 40,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 0,
+        "itemName": "Goretusk Liver",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Goretusk Liver",
+            "action": "collect",
+            "entityID": 95,
+            "npc": true,
+            "y": 0.268,
+            "x": 0.46,
+            "name": "Defias Smuggler",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Goretusk Liver",
+            "action": "collect",
+            "entityID": 157,
+            "npc": true,
+            "y": 0.578,
+            "x": 0.349,
+            "name": "Goretusk",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Goretusk Liver",
+            "action": "collect",
+            "entityID": 454,
+            "npc": true,
+            "y": 0.264,
+            "x": 0.542,
+            "name": "Young Goretusk",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Goretusk Liver",
+            "action": "collect",
+            "entityID": 547,
+            "npc": true,
+            "y": 0.516,
+            "x": 0.623,
+            "name": "Great Goretusk",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Goretusk Liver",
+            "action": "collect",
+            "entityID": 830,
+            "npc": true,
+            "y": 0.10400000000000001,
+            "x": 0.514,
+            "name": "Sand Crawler",
+            "mapID": 1436
+          }
+        ]
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "ends": [
+      {
+        "y": 0.306,
+        "mapID": 1436,
+        "name": "Salma Saldean",
+        "entityID": 235,
+        "npc": true,
+        "x": 0.564
+      }
+    ],
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Salma Saldean",
+        "entityID": 235
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Salma Saldean",
+        "entityID": 235
+      }
+    ],
+    "xp": 910,
+    "title": "Goretusk Liver Pie",
+    "foreverStatus": "unchanged",
+    "shareable": true,
+    "minLevel": 9,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "name": "Goretusk Liver",
+          "entityID": 723
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Salma Saldean",
+          "entityID": 235
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Salma Saldean",
+          "entityID": 235
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "36": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": {},
+    "requiredItems": {},
+    "objectives": {},
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.306,
+        "mapID": 1436,
+        "name": "Salma Saldean",
+        "entityID": 235,
+        "npc": true,
+        "x": 0.564
+      }
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Verna's Westfall Stew Recipe",
+        "entityID": 2832
+      }
+    ],
+    "level": 10,
+    "areaID": 40,
+    "starts": [
+      {
+        "y": 0.19399999999999998,
+        "mapID": 1436,
+        "name": "Verna Furlbrow",
+        "entityID": 238,
+        "npc": true,
+        "x": 0.6
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Verna Furlbrow",
+        "entityID": 238
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Salma Saldean",
+        "entityID": 235
+      }
+    ],
+    "xp": 420,
+    "foreverStatus": "unchanged",
+    "title": "Westfall Stew",
+    "minLevel": 9,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Verna Furlbrow",
+          "entityID": 238
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Verna's Westfall Stew Recipe",
+          "entityID": 2832
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Salma Saldean",
+          "entityID": 235
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "38": {
+    "prerequisitesRead": true,
+    "zone": "Westfall",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 3,
+        "name": "Stringy Vulture Meat",
+        "entityID": 729
+      },
+      {
+        "entityType": "item",
+        "quantity": 3,
+        "name": "Murloc Eye",
+        "entityID": 730
+      },
+      {
+        "entityType": "item",
+        "quantity": 3,
+        "name": "Goretusk Snout",
+        "entityID": 731
+      },
+      {
+        "entityType": "item",
+        "quantity": 3,
+        "name": "Okra",
+        "entityID": 732
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "otherLocationsIncomplete": false,
+    "level": 13,
+    "areaID": 40,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 3,
+        "itemName": "Okra",
+        "locations": [
+          {
+            "sourceObjective": 3,
+            "itemName": "Okra",
+            "action": "collect",
+            "entityID": 36,
+            "npc": true,
+            "y": 0.35,
+            "x": 0.564,
+            "name": "Harvest Golem",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 3,
+            "itemName": "Okra",
+            "action": "collect",
+            "entityID": 114,
+            "npc": true,
+            "y": 0.308,
+            "x": 0.542,
+            "name": "Harvest Watcher",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 3,
+            "itemName": "Okra",
+            "action": "collect",
+            "entityID": 115,
+            "npc": true,
+            "y": 0.594,
+            "x": 0.611,
+            "name": "Harvest Reaper",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 3,
+            "itemName": "Okra",
+            "action": "collect",
+            "entityID": 480,
+            "npc": true,
+            "y": 0.20600000000000002,
+            "x": 0.574,
+            "name": "Rusty Harvest Golem",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 3,
+            "itemName": "Okra",
+            "action": "collect",
+            "entityID": 504,
+            "npc": true,
+            "y": 0.266,
+            "x": 0.439,
+            "name": "Defias Trapper",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 3,
+            "itemName": "Okra",
+            "action": "collect",
+            "entityID": 573,
+            "npc": true,
+            "y": 0.326,
+            "x": 0.436,
+            "name": "Foe Reaper 4000",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 3,
+            "itemName": "Okra",
+            "action": "collect",
+            "entityID": 830,
+            "npc": true,
+            "y": 0.10400000000000001,
+            "x": 0.514,
+            "name": "Sand Crawler",
+            "mapID": 1436
+          }
+        ]
+      },
+      {
+        "sourceObjective": 0,
+        "itemName": "Stringy Vulture Meat",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Stringy Vulture Meat",
+            "action": "collect",
+            "entityID": 95,
+            "npc": true,
+            "y": 0.268,
+            "x": 0.46,
+            "name": "Defias Smuggler",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Stringy Vulture Meat",
+            "action": "collect",
+            "entityID": 154,
+            "npc": true,
+            "y": 0.596,
+            "x": 0.583,
+            "name": "Greater Fleshripper",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Stringy Vulture Meat",
+            "action": "collect",
+            "entityID": 199,
+            "npc": true,
+            "y": 0.27399999999999997,
+            "x": 0.63,
+            "name": "Young Fleshripper",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Stringy Vulture Meat",
+            "action": "collect",
+            "entityID": 462,
+            "npc": true,
+            "y": 0.604,
+            "x": 0.434,
+            "name": "Vultros",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Stringy Vulture Meat",
+            "action": "collect",
+            "entityID": 1109,
+            "npc": true,
+            "y": 0.43,
+            "x": 0.39799999999999996,
+            "name": "Fleshripper",
+            "mapID": 1436
+          }
+        ]
+      },
+      {
+        "sourceObjective": 1,
+        "itemName": "Murloc Eye",
+        "locations": [
+          {
+            "sourceObjective": 1,
+            "itemName": "Murloc Eye",
+            "action": "collect",
+            "entityID": 126,
+            "npc": true,
+            "y": 0.092,
+            "x": 0.561,
+            "name": "Murloc Coastrunner",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 1,
+            "itemName": "Murloc Eye",
+            "action": "collect",
+            "entityID": 127,
+            "npc": true,
+            "y": 0.848,
+            "x": 0.33799999999999997,
+            "name": "Murloc Tidehunter",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 1,
+            "itemName": "Murloc Eye",
+            "action": "collect",
+            "entityID": 171,
+            "npc": true,
+            "y": 0.504,
+            "x": 0.26,
+            "name": "Murloc Warrior",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 1,
+            "itemName": "Murloc Eye",
+            "action": "collect",
+            "entityID": 391,
+            "npc": true,
+            "y": 0.838,
+            "x": 0.34,
+            "name": "Old Murk-Eye",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 1,
+            "itemName": "Murloc Eye",
+            "action": "collect",
+            "entityID": 456,
+            "npc": true,
+            "y": 0.09,
+            "x": 0.428,
+            "name": "Murloc Minor Oracle",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 1,
+            "itemName": "Murloc Eye",
+            "action": "collect",
+            "entityID": 458,
+            "npc": true,
+            "y": 0.35,
+            "x": 0.276,
+            "name": "Murloc Hunter",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 1,
+            "itemName": "Murloc Eye",
+            "action": "collect",
+            "entityID": 513,
+            "npc": true,
+            "y": 0.25,
+            "x": 0.322,
+            "name": "Murloc Netter",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 1,
+            "itemName": "Murloc Eye",
+            "action": "collect",
+            "entityID": 515,
+            "npc": true,
+            "y": 0.102,
+            "x": 0.552,
+            "name": "Murloc Raider",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 1,
+            "itemName": "Murloc Eye",
+            "action": "collect",
+            "entityID": 517,
+            "npc": true,
+            "y": 0.846,
+            "x": 0.33799999999999997,
+            "name": "Murloc Oracle",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 1,
+            "itemName": "Murloc Eye",
+            "action": "collect",
+            "entityID": 519,
+            "npc": true,
+            "y": 0.10400000000000001,
+            "x": 0.542,
+            "name": "Slark",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 1,
+            "itemName": "Murloc Eye",
+            "action": "collect",
+            "entityID": 520,
+            "npc": true,
+            "y": 0.83,
+            "x": 0.324,
+            "name": "Brack",
+            "mapID": 1436
+          }
+        ]
+      },
+      {
+        "sourceObjective": 2,
+        "itemName": "Goretusk Snout",
+        "locations": [
+          {
+            "sourceObjective": 2,
+            "itemName": "Goretusk Snout",
+            "action": "collect",
+            "entityID": 157,
+            "npc": true,
+            "y": 0.578,
+            "x": 0.349,
+            "name": "Goretusk",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 2,
+            "itemName": "Goretusk Snout",
+            "action": "collect",
+            "entityID": 454,
+            "npc": true,
+            "y": 0.264,
+            "x": 0.542,
+            "name": "Young Goretusk",
+            "mapID": 1436
+          }
+        ]
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Salma Saldean",
+        "entityID": 235
+      }
+    ],
+    "xp": 910,
+    "minLevel": 9,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 3,
+          "name": "Stringy Vulture Meat",
+          "entityID": 729
+        },
+        {
+          "entityType": "item",
+          "quantity": 3,
+          "name": "Murloc Eye",
+          "entityID": 730
+        },
+        {
+          "entityType": "item",
+          "quantity": 3,
+          "name": "Goretusk Snout",
+          "entityID": 731
+        },
+        {
+          "entityType": "item",
+          "quantity": 3,
+          "name": "Okra",
+          "entityID": 732
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Salma Saldean",
+          "entityID": 235
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Salma Saldean",
+          "entityID": 235
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/westfall",
+    "raceMask": 0,
+    "mapID": 1436,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Salma Saldean",
+        "entityID": 235
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 3,
+        "name": "Stringy Vulture Meat",
+        "itemID": 729
+      },
+      {
+        "quantity": 3,
+        "name": "Murloc Eye",
+        "itemID": 730
+      },
+      {
+        "quantity": 3,
+        "name": "Goretusk Snout",
+        "itemID": 731
+      },
+      {
+        "quantity": 3,
+        "name": "Okra",
+        "itemID": 732
+      }
+    ],
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "prerequisiteAny": [
+      36
+    ],
+    "ends": [
+      {
+        "y": 0.306,
+        "mapID": 1436,
+        "name": "Salma Saldean",
+        "entityID": 235,
+        "npc": true,
+        "x": 0.564
+      }
+    ],
+    "shareable": true,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "title": "Westfall Stew",
+    "objectives": [
+      {
+        "sourceObjective": 3,
+        "mapID": 1436,
+        "legacyStepKey": "q:1436:npc:114",
+        "entityID": 114,
+        "npc": true,
+        "x": 0.542,
+        "y": 0.308,
+        "objectiveKey": "item:732",
+        "itemID": 732,
+        "quantity": 3,
+        "name": "Harvest Watcher",
+        "itemName": "Okra",
+        "alternativeCount": 7,
+        "action": "collect"
+      },
+      {
+        "sourceObjective": 0,
+        "mapID": 1436,
+        "legacyStepKey": "q:1436:npc:199",
+        "entityID": 199,
+        "npc": true,
+        "x": 0.63,
+        "y": 0.27399999999999997,
+        "objectiveKey": "item:729",
+        "itemID": 729,
+        "quantity": 3,
+        "name": "Young Fleshripper",
+        "itemName": "Stringy Vulture Meat",
+        "alternativeCount": 5,
+        "action": "collect"
+      },
+      {
+        "sourceObjective": 1,
+        "mapID": 1436,
+        "legacyStepKey": "q:1436:npc:519",
+        "entityID": 519,
+        "npc": true,
+        "x": 0.542,
+        "y": 0.10400000000000001,
+        "objectiveKey": "item:730",
+        "itemID": 730,
+        "quantity": 3,
+        "name": "Slark",
+        "itemName": "Murloc Eye",
+        "alternativeCount": 11,
+        "action": "collect"
+      },
+      {
+        "sourceObjective": 2,
+        "mapID": 1436,
+        "legacyStepKey": "q:1436:npc:454",
+        "entityID": 157,
+        "npc": true,
+        "x": 0.349,
+        "y": 0.578,
+        "objectiveKey": "item:731",
+        "itemID": 731,
+        "quantity": 3,
+        "name": "Goretusk",
+        "itemName": "Goretusk Snout",
+        "alternativeCount": 2,
+        "action": "collect"
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.306,
+        "mapID": 1436,
+        "name": "Salma Saldean",
+        "entityID": 235,
+        "npc": true,
+        "x": 0.564
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Okra",
+        "name": "Harvest Golem",
+        "entityID": 36,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Stringy Vulture Meat",
+        "name": "Defias Smuggler",
+        "entityID": 95,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Okra",
+        "name": "Harvest Watcher",
+        "entityID": 114,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Okra",
+        "name": "Harvest Reaper",
+        "entityID": 115,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Murloc Eye",
+        "name": "Murloc Coastrunner",
+        "entityID": 126,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Murloc Eye",
+        "name": "Murloc Tidehunter",
+        "entityID": 127,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Stringy Vulture Meat",
+        "name": "Greater Fleshripper",
+        "entityID": 154,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Goretusk Snout",
+        "name": "Goretusk",
+        "entityID": 157,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Murloc Eye",
+        "name": "Murloc Warrior",
+        "entityID": 171,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Stringy Vulture Meat",
+        "name": "Young Fleshripper",
+        "entityID": 199,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Murloc Eye",
+        "name": "Old Murk-Eye",
+        "entityID": 391,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Goretusk Snout",
+        "name": "Young Goretusk",
+        "entityID": 454,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Murloc Eye",
+        "name": "Murloc Minor Oracle",
+        "entityID": 456,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Murloc Eye",
+        "name": "Murloc Hunter",
+        "entityID": 458,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Stringy Vulture Meat",
+        "name": "Vultros",
+        "entityID": 462,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Okra",
+        "name": "Rusty Harvest Golem",
+        "entityID": 480,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Okra",
+        "name": "Defias Trapper",
+        "entityID": 504,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Murloc Eye",
+        "name": "Murloc Netter",
+        "entityID": 513,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Murloc Eye",
+        "name": "Murloc Raider",
+        "entityID": 515,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Murloc Eye",
+        "name": "Murloc Oracle",
+        "entityID": 517,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Murloc Eye",
+        "name": "Slark",
+        "entityID": 519,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Murloc Eye",
+        "name": "Brack",
+        "entityID": 520,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Okra",
+        "name": "Foe Reaper 4000",
+        "entityID": 573,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Okra",
+        "name": "Sand Crawler",
+        "entityID": 830,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Stringy Vulture Meat",
+        "name": "Fleshripper",
+        "entityID": 1109,
+        "npc": true,
+        "action": "collect"
+      }
+    ]
+  },
+  "48": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Grimbooze Thunderbrew",
+        "entityID": 239
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 737,
+        "name": "Holy Spring Water"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Holy Spring Water",
+        "itemID": 737
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1434,
+        "action": "gather",
+        "entityID": 759,
+        "x": 0.2896,
+        "y": 0.6193,
+        "objectiveKey": "item:737",
+        "itemID": 737,
+        "quantity": 1,
+        "sourceAreaID": 33,
+        "itemName": "Holy Spring Water",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "The Holy Spring"
+      }
+    ],
+    "level": 44,
+    "areaID": 40,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 239,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "x": 0.446,
+        "name": "Grimbooze Thunderbrew",
+        "sourceAreaID": 40,
+        "y": 0.802
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "raceMask": 4294967373,
+    "money": 6500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Grimbooze Thunderbrew",
+        "entityID": 239
+      }
+    ],
+    "xp": 3750,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 239,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "x": 0.446,
+        "name": "Grimbooze Thunderbrew",
+        "sourceAreaID": 40,
+        "y": 0.802
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 40,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Sweet Amber",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 737,
+          "name": "Holy Spring Water"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Grimbooze Thunderbrew",
+          "entityID": 239
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Grimbooze Thunderbrew",
+          "entityID": 239
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "49": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Grimbooze Thunderbrew",
+        "entityID": 239
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 738,
+        "name": "Sack of Barley"
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 739,
+        "name": "Sack of Corn"
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 740,
+        "name": "Sack of Rye"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Sack of Barley",
+        "itemID": 738
+      },
+      {
+        "quantity": 1,
+        "name": "Sack of Corn",
+        "itemID": 739
+      },
+      {
+        "quantity": 1,
+        "name": "Sack of Rye",
+        "itemID": 740
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1435,
+        "action": "gather",
+        "entityID": 50936,
+        "x": 0.6254,
+        "y": 0.2311,
+        "objectiveKey": "item:738",
+        "itemID": 738,
+        "quantity": 1,
+        "sourceAreaID": 8,
+        "itemName": "Sack of Barley",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Sack of Barley"
+      },
+      {
+        "entityType": "object",
+        "mapID": 1446,
+        "action": "gather",
+        "entityID": 50935,
+        "x": 0.6574,
+        "y": 0.36729999999999996,
+        "objectiveKey": "item:739",
+        "itemID": 739,
+        "quantity": 1,
+        "sourceAreaID": 440,
+        "itemName": "Sack of Corn",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Sack of Corn"
+      },
+      {
+        "entityType": "object",
+        "mapID": 1425,
+        "action": "gather",
+        "entityID": 50937,
+        "x": 0.3998,
+        "y": 0.6626000000000001,
+        "objectiveKey": "item:740",
+        "itemID": 740,
+        "quantity": 1,
+        "sourceAreaID": 47,
+        "itemName": "Sack of Rye",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Sack of Rye"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 239,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "x": 0.446,
+        "name": "Grimbooze Thunderbrew",
+        "sourceAreaID": 40,
+        "y": 0.802
+      }
+    ],
+    "level": 44,
+    "areaID": 40,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 4294967373,
+    "side": "Alliance",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 239,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "x": 0.446,
+        "name": "Grimbooze Thunderbrew",
+        "sourceAreaID": 40,
+        "y": 0.802
+      }
+    ],
+    "money": 12500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Grimbooze Thunderbrew",
+        "entityID": 239
+      }
+    ],
+    "xp": 4650,
+    "prerequisiteAny": [
+      48
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 40,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Sweet Amber",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 738,
+          "name": "Sack of Barley"
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 739,
+          "name": "Sack of Corn"
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 740,
+          "name": "Sack of Rye"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Grimbooze Thunderbrew",
+          "entityID": 239
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Grimbooze Thunderbrew",
+          "entityID": 239
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "50": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Grimbooze Thunderbrew",
+        "entityID": 239
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 6037,
+        "name": "Truesilver Bar"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Truesilver Bar",
+        "itemID": 6037
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1418,
+        "action": "gather",
+        "entityID": 4149,
+        "x": 0.0797,
+        "y": 0.8573000000000001,
+        "objectiveKey": "item:6037",
+        "itemID": 6037,
+        "quantity": 1,
+        "sourceAreaID": 3,
+        "itemName": "Truesilver Bar",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Solid Chest"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 239,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "x": 0.446,
+        "name": "Grimbooze Thunderbrew",
+        "sourceAreaID": 40,
+        "y": 0.802
+      }
+    ],
+    "level": 44,
+    "areaID": 40,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 4294967373,
+    "side": "Alliance",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 239,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "x": 0.446,
+        "name": "Grimbooze Thunderbrew",
+        "sourceAreaID": 40,
+        "y": 0.802
+      }
+    ],
+    "money": 12500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Grimbooze Thunderbrew",
+        "entityID": 239
+      }
+    ],
+    "xp": 4650,
+    "prerequisiteAny": [
+      49
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 40,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Sweet Amber",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 6037,
+          "name": "Truesilver Bar"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Grimbooze Thunderbrew",
+          "entityID": 239
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Grimbooze Thunderbrew",
+          "entityID": 239
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "51": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Grimbooze Thunderbrew",
+        "entityID": 239
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 742,
+        "name": "A Sycamore Branch"
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "A Sycamore Branch",
+        "name": "Cursed Sycamore",
+        "entityID": 5881,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "A Sycamore Branch",
+        "itemID": 742
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1444,
+        "action": "loot",
+        "entityID": 5881,
+        "npc": true,
+        "x": 0.5682,
+        "y": 0.7486,
+        "objectiveKey": "item:742",
+        "itemID": 742,
+        "quantity": 1,
+        "sourceAreaID": 357,
+        "itemName": "A Sycamore Branch",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Cursed Sycamore"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 239,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "x": 0.446,
+        "name": "Grimbooze Thunderbrew",
+        "sourceAreaID": 40,
+        "y": 0.802
+      }
+    ],
+    "level": 44,
+    "areaID": 40,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 4294967373,
+    "side": "Alliance",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 239,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "x": 0.446,
+        "name": "Grimbooze Thunderbrew",
+        "sourceAreaID": 40,
+        "y": 0.802
+      }
+    ],
+    "money": 12500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Grimbooze Thunderbrew",
+        "entityID": 239
+      }
+    ],
+    "xp": 4650,
+    "prerequisiteAny": [
+      50
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 40,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Sweet Amber",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 742,
+          "name": "A Sycamore Branch"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Grimbooze Thunderbrew",
+          "entityID": 239
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Grimbooze Thunderbrew",
+          "entityID": 239
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "53": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Grimbooze Thunderbrew",
+        "entityID": 239
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 743,
+        "name": "Bundle of Charred Oak"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Bundle of Charred Oak",
+        "itemID": 743
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1427,
+        "action": "gather",
+        "entityID": 50982,
+        "x": 0.5449,
+        "y": 0.5047,
+        "objectiveKey": "item:743",
+        "itemID": 743,
+        "quantity": 1,
+        "sourceAreaID": 51,
+        "itemName": "Bundle of Charred Oak",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "The Charred Oak"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 239,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "x": 0.446,
+        "name": "Grimbooze Thunderbrew",
+        "sourceAreaID": 40,
+        "y": 0.802
+      }
+    ],
+    "level": 44,
+    "areaID": 40,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 4294967373,
+    "side": "Alliance",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 239,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "x": 0.446,
+        "name": "Grimbooze Thunderbrew",
+        "sourceAreaID": 40,
+        "y": 0.802
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Grimbooze Thunderbrew",
+        "entityID": 239
+      }
+    ],
+    "xp": 5600,
+    "prerequisiteAny": [
+      51
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 40,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Sweet Amber",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 743,
+          "name": "Bundle of Charred Oak"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Grimbooze Thunderbrew",
+          "entityID": 239
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Grimbooze Thunderbrew",
+          "entityID": 239
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "64": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Furlbrow's Pocket Watch",
+        "entityID": 841
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Furlbrow's Pocket Watch",
+        "itemID": 841
+      }
+    ],
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1436,
+        "action": "gather",
+        "entityID": 290,
+        "y": 0.193,
+        "sourceZone": "Westfall",
+        "objectiveKey": "item:841",
+        "itemID": 841,
+        "x": 0.495,
+        "sourceAreaID": 40,
+        "quantity": 1,
+        "itemName": "Furlbrow's Pocket Watch",
+        "name": "Furlbrow's Wardrobe"
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.19399999999999998,
+        "mapID": 1436,
+        "name": "Farmer Furlbrow",
+        "entityID": 237,
+        "npc": true,
+        "x": 0.6
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "level": 12,
+    "areaID": 40,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "ends": [
+      {
+        "y": 0.19399999999999998,
+        "mapID": 1436,
+        "name": "Farmer Furlbrow",
+        "entityID": 237,
+        "npc": true,
+        "x": 0.6
+      }
+    ],
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Farmer Furlbrow",
+        "entityID": 237
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Farmer Furlbrow",
+        "entityID": 237
+      }
+    ],
+    "xp": 910,
+    "title": "The Forgotten Heirloom",
+    "foreverStatus": "unchanged",
+    "shareable": true,
+    "minLevel": 9,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Furlbrow's Pocket Watch",
+          "entityID": 841
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Farmer Furlbrow",
+          "entityID": 237
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Farmer Furlbrow",
+          "entityID": 237
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "65": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "objectives": {},
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1433,
+        "entityID": 266,
+        "npc": true,
+        "y": 0.4535,
+        "x": 0.2139,
+        "name": "Wiley the Black",
+        "sourceAreaID": 44,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 234,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "x": 0.562,
+        "name": "Gryan Stoutmantle",
+        "sourceAreaID": 40,
+        "y": 0.474
+      }
+    ],
+    "level": 18,
+    "areaID": 40,
+    "title": "The Defias Brotherhood",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 4294967373,
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Gryan Stoutmantle",
+        "entityID": 234
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Wiley the Black",
+        "entityID": 266
+      }
+    ],
+    "xp": 1350,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 14,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "shareable": true,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Gryan Stoutmantle",
+          "entityID": 234
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Wiley the Black",
+          "entityID": 266
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "102": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 8,
+        "name": "Gnoll Paw",
+        "entityID": 725
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Gnoll Paw",
+        "name": "Riverpaw Taskmaster",
+        "entityID": 98,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Gnoll Paw",
+        "name": "Riverpaw Gnoll",
+        "entityID": 117,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Gnoll Paw",
+        "name": "Riverpaw Mongrel",
+        "entityID": 123,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Gnoll Paw",
+        "name": "Riverpaw Brute",
+        "entityID": 124,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Gnoll Paw",
+        "name": "Riverpaw Overseer",
+        "entityID": 125,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Gnoll Paw",
+        "name": "Riverpaw Bandit",
+        "entityID": 452,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Gnoll Paw",
+        "name": "Riverpaw Mystic",
+        "entityID": 453,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Gnoll Paw",
+        "name": "Riverpaw Scout",
+        "entityID": 500,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Gnoll Paw",
+        "name": "Riverpaw Herbalist",
+        "entityID": 501,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Gnoll Paw",
+        "name": "Sergeant Brashclaw",
+        "entityID": 506,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Gnoll Paw",
+        "name": "Riverpaw Shaman",
+        "entityID": 1065,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Gnoll Paw",
+        "name": "Riverpaw Miner",
+        "entityID": 1426,
+        "npc": true,
+        "action": "collect"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 8,
+        "name": "Gnoll Paw",
+        "itemID": 725
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1436,
+        "legacyStepKey": "q:1436:npc:452",
+        "entityID": 452,
+        "npc": true,
+        "x": 0.488,
+        "y": 0.608,
+        "objectiveKey": "item:725",
+        "itemID": 725,
+        "quantity": 8,
+        "name": "Riverpaw Bandit",
+        "itemName": "Gnoll Paw",
+        "alternativeCount": 12,
+        "action": "collect"
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.47600000000000003,
+        "mapID": 1436,
+        "name": "Captain Danuvin",
+        "entityID": 821,
+        "npc": true,
+        "x": 0.564
+      }
+    ],
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 14,
+    "areaID": 40,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 0,
+        "itemName": "Gnoll Paw",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Gnoll Paw",
+            "action": "collect",
+            "entityID": 98,
+            "npc": true,
+            "y": 0.74,
+            "x": 0.564,
+            "name": "Riverpaw Taskmaster",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Gnoll Paw",
+            "action": "collect",
+            "entityID": 117,
+            "npc": true,
+            "y": 0.14400000000000002,
+            "x": 0.57,
+            "name": "Riverpaw Gnoll",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Gnoll Paw",
+            "action": "collect",
+            "entityID": 123,
+            "npc": true,
+            "y": 0.282,
+            "x": 0.382,
+            "name": "Riverpaw Mongrel",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Gnoll Paw",
+            "action": "collect",
+            "entityID": 124,
+            "npc": true,
+            "y": 0.496,
+            "x": 0.28800000000000003,
+            "name": "Riverpaw Brute",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Gnoll Paw",
+            "action": "collect",
+            "entityID": 125,
+            "npc": true,
+            "y": 0.7759999999999999,
+            "x": 0.608,
+            "name": "Riverpaw Overseer",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Gnoll Paw",
+            "action": "collect",
+            "entityID": 452,
+            "npc": true,
+            "y": 0.608,
+            "x": 0.488,
+            "name": "Riverpaw Bandit",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Gnoll Paw",
+            "action": "collect",
+            "entityID": 453,
+            "npc": true,
+            "y": 0.72,
+            "x": 0.616,
+            "name": "Riverpaw Mystic",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Gnoll Paw",
+            "action": "collect",
+            "entityID": 500,
+            "npc": true,
+            "y": 0.13,
+            "x": 0.452,
+            "name": "Riverpaw Scout",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Gnoll Paw",
+            "action": "collect",
+            "entityID": 501,
+            "npc": true,
+            "y": 0.504,
+            "x": 0.294,
+            "name": "Riverpaw Herbalist",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Gnoll Paw",
+            "action": "collect",
+            "entityID": 506,
+            "npc": true,
+            "y": 0.318,
+            "x": 0.37,
+            "name": "Sergeant Brashclaw",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Gnoll Paw",
+            "action": "collect",
+            "entityID": 1065,
+            "npc": true,
+            "y": 0.20600000000000002,
+            "x": 0.418,
+            "name": "Riverpaw Shaman",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Gnoll Paw",
+            "action": "collect",
+            "entityID": 1426,
+            "npc": true,
+            "y": 0.474,
+            "x": 0.3,
+            "name": "Riverpaw Miner",
+            "mapID": 1436
+          }
+        ]
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "ends": [
+      {
+        "y": 0.47600000000000003,
+        "mapID": 1436,
+        "name": "Captain Danuvin",
+        "entityID": 821,
+        "npc": true,
+        "x": 0.564
+      }
+    ],
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Danuvin",
+        "entityID": 821
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Danuvin",
+        "entityID": 821
+      }
+    ],
+    "xp": 980,
+    "title": "Patrolling Westfall",
+    "foreverStatus": "unchanged",
+    "shareable": true,
+    "minLevel": 8,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "name": "Gnoll Paw",
+          "entityID": 725
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Captain Danuvin",
+          "entityID": 821
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Captain Danuvin",
+          "entityID": 821
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "103": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 5,
+        "action": "collect",
+        "entityID": 814,
+        "name": "Flask of Oil"
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Flask of Oil",
+        "name": "Harvest Golem",
+        "entityID": 36,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 5,
+        "name": "Flask of Oil",
+        "itemID": 814
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "action": "loot",
+        "entityID": 36,
+        "npc": true,
+        "y": 0.67,
+        "sourceZone": "Westfall",
+        "objectiveKey": "item:814",
+        "itemID": 814,
+        "x": 0.46399999999999997,
+        "sourceAreaID": 40,
+        "quantity": 5,
+        "itemName": "Flask of Oil",
+        "name": "Harvest Golem"
+      }
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 392,
+        "npc": true,
+        "y": 0.8602,
+        "x": 0.30010000000000003,
+        "name": "Captain Grayson",
+        "sourceAreaID": 40,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "title": "Keeper of the Flame",
+    "level": 16,
+    "areaID": 40,
+    "raceMask": 0,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Grayson",
+        "entityID": 392
+      }
+    ],
+    "side": "Both",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 392,
+        "npc": true,
+        "y": 0.8602,
+        "x": 0.30010000000000003,
+        "name": "Captain Grayson",
+        "sourceAreaID": 40,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "money": 600,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Grayson",
+        "entityID": 392
+      }
+    ],
+    "xp": 1150,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 10,
+    "requirementSource": "Warcraft DB Forever structured objectives",
+    "shareable": true,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 5,
+          "action": "collect",
+          "entityID": 814,
+          "name": "Flask of Oil"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Captain Grayson",
+          "entityID": 392
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Captain Grayson",
+          "entityID": 392
+        }
+      ]
+    },
+    "objectiveFactsSource": "Warcraft DB Forever structured objectives",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "104": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 3636,
+        "name": "Scale of Old Murk-Eye"
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Scale of Old Murk-Eye",
+        "name": "Old Murk-Eye",
+        "entityID": 391,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Scale of Old Murk-Eye",
+        "itemID": 3636
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "action": "loot",
+        "entityID": 391,
+        "npc": true,
+        "y": 0.83,
+        "sourceZone": "Westfall",
+        "objectiveKey": "item:3636",
+        "itemID": 3636,
+        "x": 0.32799999999999996,
+        "sourceAreaID": 40,
+        "quantity": 1,
+        "itemName": "Scale of Old Murk-Eye",
+        "name": "Old Murk-Eye"
+      }
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 392,
+        "npc": true,
+        "y": 0.8602,
+        "x": 0.30010000000000003,
+        "name": "Captain Grayson",
+        "sourceAreaID": 40,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "title": "The Coastal Menace",
+    "level": 20,
+    "areaID": 40,
+    "raceMask": 0,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Grayson",
+        "entityID": 392
+      }
+    ],
+    "side": "Both",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 392,
+        "npc": true,
+        "y": 0.8602,
+        "x": 0.30010000000000003,
+        "name": "Captain Grayson",
+        "sourceAreaID": 40,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Grayson",
+        "entityID": 392
+      }
+    ],
+    "xp": 1550,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 15,
+    "requirementSource": "Warcraft DB Forever structured objectives",
+    "shareable": true,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 3636,
+          "name": "Scale of Old Murk-Eye"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Captain Grayson",
+          "entityID": 392
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Captain Grayson",
+          "entityID": 392
+        }
+      ]
+    },
+    "objectiveFactsSource": "Warcraft DB Forever structured objectives",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "117": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 5,
+        "name": "Hops",
+        "entityID": 1274
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 5,
+        "name": "Hops",
+        "itemID": 1274
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Hops",
+        "name": "Harvest Golem",
+        "entityID": 36,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hops",
+        "name": "Harvest Watcher",
+        "entityID": 114,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hops",
+        "name": "Harvest Reaper",
+        "entityID": 115,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hops",
+        "name": "Rusty Harvest Golem",
+        "entityID": 480,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hops",
+        "name": "Foe Reaper 4000",
+        "entityID": 573,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hops",
+        "name": "Sand Crawler",
+        "entityID": 830,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hops",
+        "name": "Coyote Packleader",
+        "entityID": 833,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Hops",
+        "name": "Coyote",
+        "entityID": 834,
+        "npc": true,
+        "action": "collect"
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1436,
+        "legacyStepKey": "q:1436:npc:115",
+        "entityID": 115,
+        "npc": true,
+        "x": 0.611,
+        "y": 0.594,
+        "objectiveKey": "item:1274",
+        "itemID": 1274,
+        "quantity": 5,
+        "name": "Harvest Reaper",
+        "itemName": "Hops",
+        "alternativeCount": 8,
+        "action": "collect"
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.802,
+        "mapID": 1436,
+        "name": "Grimbooze Thunderbrew",
+        "entityID": 239,
+        "npc": true,
+        "x": 0.446
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 15,
+    "areaID": 40,
+    "repeatable": true,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 0,
+        "itemName": "Hops",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Hops",
+            "action": "collect",
+            "entityID": 36,
+            "npc": true,
+            "y": 0.35,
+            "x": 0.564,
+            "name": "Harvest Golem",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hops",
+            "action": "collect",
+            "entityID": 114,
+            "npc": true,
+            "y": 0.308,
+            "x": 0.542,
+            "name": "Harvest Watcher",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hops",
+            "action": "collect",
+            "entityID": 115,
+            "npc": true,
+            "y": 0.594,
+            "x": 0.611,
+            "name": "Harvest Reaper",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hops",
+            "action": "collect",
+            "entityID": 480,
+            "npc": true,
+            "y": 0.20600000000000002,
+            "x": 0.574,
+            "name": "Rusty Harvest Golem",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hops",
+            "action": "collect",
+            "entityID": 573,
+            "npc": true,
+            "y": 0.326,
+            "x": 0.436,
+            "name": "Foe Reaper 4000",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hops",
+            "action": "collect",
+            "entityID": 830,
+            "npc": true,
+            "y": 0.10400000000000001,
+            "x": 0.514,
+            "name": "Sand Crawler",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hops",
+            "action": "collect",
+            "entityID": 833,
+            "npc": true,
+            "y": 0.43,
+            "x": 0.34600000000000003,
+            "name": "Coyote Packleader",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Hops",
+            "action": "collect",
+            "entityID": 834,
+            "npc": true,
+            "y": 0.466,
+            "x": 0.514,
+            "name": "Coyote",
+            "mapID": 1436
+          }
+        ]
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.802,
+        "mapID": 1436,
+        "name": "Grimbooze Thunderbrew",
+        "entityID": 239,
+        "npc": true,
+        "x": 0.446
+      }
+    ],
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Grimbooze Thunderbrew",
+        "entityID": 239
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Grimbooze Thunderbrew",
+        "entityID": 239
+      }
+    ],
+    "xp": 0,
+    "title": "Thunderbrew",
+    "foreverStatus": "unchanged",
+    "shareable": true,
+    "minLevel": 0,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "132": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": {},
+    "objectives": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "providedItems": [
+      {
+        "entityType": "item",
+        "name": "Wiley's Note",
+        "entityID": 1327
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 234,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "x": 0.562,
+        "name": "Gryan Stoutmantle",
+        "sourceAreaID": 40,
+        "y": 0.474
+      }
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1433,
+        "entityID": 266,
+        "npc": true,
+        "y": 0.4535,
+        "x": 0.2139,
+        "name": "Wiley the Black",
+        "sourceAreaID": 44,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "level": 18,
+    "areaID": 40,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 4294967373,
+    "side": "Alliance",
+    "prerequisiteAny": [
+      65
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Gryan Stoutmantle",
+        "entityID": 234
+      }
+    ],
+    "xp": 680,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Wiley the Black",
+        "entityID": 266
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 14,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "The Defias Brotherhood",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Wiley the Black",
+          "entityID": 266
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "name": "Wiley's Note",
+          "entityID": 1327
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Gryan Stoutmantle",
+          "entityID": 234
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "135": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": {},
+    "objectives": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "providedItems": [
+      {
+        "entityType": "item",
+        "name": "Wiley's Note",
+        "entityID": 1327
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1453,
+        "entityID": 332,
+        "npc": true,
+        "sourceZone": "Stormwind City",
+        "x": 0.758,
+        "name": "Master Mathias Shaw",
+        "sourceAreaID": 1519,
+        "y": 0.598
+      }
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 234,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "x": 0.562,
+        "name": "Gryan Stoutmantle",
+        "sourceAreaID": 40,
+        "y": 0.474
+      }
+    ],
+    "level": 18,
+    "areaID": 40,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 4294967373,
+    "side": "Alliance",
+    "prerequisiteAny": [
+      132
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Master Mathias Shaw",
+        "entityID": 332
+      }
+    ],
+    "xp": 680,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Gryan Stoutmantle",
+        "entityID": 234
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 14,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "The Defias Brotherhood",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Gryan Stoutmantle",
+          "entityID": 234
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "name": "Wiley's Note",
+          "entityID": 1327
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Master Mathias Shaw",
+          "entityID": 332
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "136": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "object",
+        "mapID": 1436,
+        "name": "Captain's Footlocker",
+        "y": 0.4775,
+        "entityID": 35,
+        "x": 0.2591,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "sourceAreaID": 40
+      }
+    ],
+    "objectives": {},
+    "level": 16,
+    "areaID": 40,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "action": "start-item",
+        "entityID": 126,
+        "npc": true,
+        "sourceAction": "loot",
+        "x": 0.42200000000000004,
+        "itemID": 1357,
+        "y": 0.114,
+        "sourceAreaID": 40,
+        "sourceZone": "Westfall",
+        "itemName": "Captain Sander's Treasure Map",
+        "name": "Murloc Coastrunner"
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "raceMask": 0,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "object",
+        "name": "Captain's Footlocker",
+        "entityID": 35
+      }
+    ],
+    "xp": 580,
+    "startRefs": [
+      {
+        "entityType": "item",
+        "name": "Captain Sander's Treasure Map",
+        "entityID": 1357
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 10,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Captain Sander's Hidden Treasure",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "item",
+          "name": "Captain Sander's Treasure Map",
+          "entityID": 1357
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "object",
+          "name": "Captain's Footlocker",
+          "entityID": 35
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "138": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": {},
+    "objectives": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "providedItems": [
+      {
+        "entityType": "item",
+        "name": "A Clue to Sander's Treasure",
+        "entityID": 1358
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "object",
+        "mapID": 1436,
+        "name": "Broken Barrel",
+        "y": 0.4779,
+        "entityID": 36,
+        "x": 0.4052,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "sourceAreaID": 40
+      }
+    ],
+    "starts": [
+      {
+        "entityType": "object",
+        "mapID": 1436,
+        "name": "Captain's Footlocker",
+        "y": 0.4775,
+        "entityID": 35,
+        "x": 0.2591,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "sourceAreaID": 40
+      }
+    ],
+    "level": 16,
+    "areaID": 40,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "side": "Both",
+    "prerequisiteAny": [
+      136
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "object",
+        "name": "Broken Barrel",
+        "entityID": 36
+      }
+    ],
+    "xp": 580,
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Captain's Footlocker",
+        "entityID": 35
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 10,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Captain Sander's Hidden Treasure",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "object",
+          "name": "Captain's Footlocker",
+          "entityID": 35
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "name": "A Clue to Sander's Treasure",
+          "entityID": 1358
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "object",
+          "name": "Broken Barrel",
+          "entityID": 36
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "139": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": {},
+    "objectives": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "providedItems": [
+      {
+        "entityType": "item",
+        "name": "Another Clue to Sander's Treasure",
+        "entityID": 1361
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "object",
+        "mapID": 1436,
+        "name": "Old Jug",
+        "y": 0.1703,
+        "entityID": 34,
+        "x": 0.40630000000000005,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "sourceAreaID": 40
+      }
+    ],
+    "starts": [
+      {
+        "entityType": "object",
+        "mapID": 1436,
+        "name": "Broken Barrel",
+        "y": 0.4779,
+        "entityID": 36,
+        "x": 0.4052,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "sourceAreaID": 40
+      }
+    ],
+    "level": 16,
+    "areaID": 40,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "side": "Both",
+    "prerequisiteAny": [
+      138
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "object",
+        "name": "Old Jug",
+        "entityID": 34
+      }
+    ],
+    "xp": 580,
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Broken Barrel",
+        "entityID": 36
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 10,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Captain Sander's Hidden Treasure",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "object",
+          "name": "Broken Barrel",
+          "entityID": 36
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "name": "Another Clue to Sander's Treasure",
+          "entityID": 1361
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "object",
+          "name": "Old Jug",
+          "entityID": 34
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "140": {
+    "raceMask": 0,
+    "mapID": 1436,
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Old Jug",
+        "entityID": 34
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "object",
+        "mapID": 1436,
+        "name": "Locked Chest",
+        "y": 0.1691,
+        "entityID": 33,
+        "x": 0.2597,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "sourceAreaID": 40
+      }
+    ],
+    "level": 16,
+    "areaID": 40,
+    "objectives": {},
+    "side": "Both",
+    "starts": [
+      {
+        "entityType": "object",
+        "mapID": 1436,
+        "name": "Old Jug",
+        "y": 0.1703,
+        "entityID": 34,
+        "x": 0.40630000000000005,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "sourceAreaID": 40
+      }
+    ],
+    "money": 800,
+    "endRefs": [
+      {
+        "entityType": "object",
+        "name": "Locked Chest",
+        "entityID": 33
+      }
+    ],
+    "xp": 1150,
+    "prerequisiteAny": [
+      139
+    ],
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "allowedRaceIDs": {},
+    "minLevel": 10,
+    "prerequisitesRead": true,
+    "title": "Captain Sander's Hidden Treasure",
+    "foreverStatus": "updated",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "141": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": {},
+    "objectives": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "providedItems": [
+      {
+        "entityType": "item",
+        "name": "Shaw's Report",
+        "entityID": 1353
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 234,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "x": 0.562,
+        "name": "Gryan Stoutmantle",
+        "sourceAreaID": 40,
+        "y": 0.474
+      }
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1453,
+        "entityID": 332,
+        "npc": true,
+        "sourceZone": "Stormwind City",
+        "x": 0.758,
+        "name": "Master Mathias Shaw",
+        "sourceAreaID": 1519,
+        "y": 0.598
+      }
+    ],
+    "level": 18,
+    "areaID": 40,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 4294967373,
+    "side": "Alliance",
+    "prerequisiteAny": [
+      135
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Gryan Stoutmantle",
+        "entityID": 234
+      }
+    ],
+    "xp": 340,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Master Mathias Shaw",
+        "entityID": 332
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 14,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "The Defias Brotherhood",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Master Mathias Shaw",
+          "entityID": 332
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "name": "Shaw's Report",
+          "entityID": 1353
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Gryan Stoutmantle",
+          "entityID": 234
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "142": {
+    "prerequisitesRead": true,
+    "zone": "Westfall",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 1381,
+        "name": "A Mysterious Message"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "otherLocationsIncomplete": false,
+    "level": 18,
+    "areaID": 40,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Gryan Stoutmantle",
+        "entityID": 234
+      }
+    ],
+    "xp": 1350,
+    "minLevel": 14,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 1381,
+          "name": "A Mysterious Message"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Gryan Stoutmantle",
+          "entityID": 234
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Gryan Stoutmantle",
+          "entityID": 234
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/westfall",
+    "raceMask": 4294967373,
+    "mapID": 1436,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Gryan Stoutmantle",
+        "entityID": 234
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "A Mysterious Message",
+        "itemID": 1381
+      }
+    ],
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 234,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "x": 0.562,
+        "name": "Gryan Stoutmantle",
+        "sourceAreaID": 40,
+        "y": 0.474
+      }
+    ],
+    "shareable": true,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "foreverStatus": "unchanged",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "action": "loot",
+        "entityID": 550,
+        "npc": true,
+        "x": 0.451,
+        "y": 0.6933,
+        "objectiveKey": "item:1381",
+        "itemID": 1381,
+        "quantity": 1,
+        "sourceAreaID": 40,
+        "itemName": "A Mysterious Message",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Defias Messenger"
+      }
+    ],
+    "objectiveFactsSource": "Warcraft DB Forever structured objectives",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 234,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "x": 0.562,
+        "name": "Gryan Stoutmantle",
+        "sourceAreaID": 40,
+        "y": 0.474
+      }
+    ],
+    "requirementSource": "Warcraft DB Forever structured objectives",
+    "title": "The Defias Brotherhood",
+    "classMask": 0,
+    "prerequisiteAny": [
+      141
+    ],
+    "npcTargets": [
+      {
+        "itemName": "A Mysterious Message",
+        "name": "Defias Messenger",
+        "entityID": 550,
+        "npc": true,
+        "action": "loot"
+      }
+    ]
+  },
+  "151": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 8,
+        "name": "Handful of Oats",
+        "entityID": 1528
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 8,
+        "name": "Handful of Oats",
+        "itemID": 1528
+      }
+    ],
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1436,
+        "action": "gather",
+        "entityID": 2724,
+        "x": 0.5619,
+        "y": 0.1778,
+        "objectiveKey": "item:1528",
+        "itemID": 1528,
+        "quantity": 8,
+        "sourceAreaID": 40,
+        "itemName": "Handful of Oats",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Sack of Oats"
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.19399999999999998,
+        "mapID": 1436,
+        "name": "Verna Furlbrow",
+        "entityID": 238,
+        "npc": true,
+        "x": 0.6
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "level": 14,
+    "areaID": 40,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "ends": [
+      {
+        "y": 0.19399999999999998,
+        "mapID": 1436,
+        "name": "Verna Furlbrow",
+        "entityID": 238,
+        "npc": true,
+        "x": 0.6
+      }
+    ],
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Verna Furlbrow",
+        "entityID": 238
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Verna Furlbrow",
+        "entityID": 238
+      }
+    ],
+    "xp": 1250,
+    "title": "Poor Old Blanchy",
+    "foreverStatus": "unchanged",
+    "shareable": true,
+    "minLevel": 9,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "name": "Handful of Oats",
+          "entityID": 1528
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Verna Furlbrow",
+          "entityID": 238
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Verna Furlbrow",
+          "entityID": 238
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "152": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 7,
+        "action": "kill",
+        "entityID": 126,
+        "name": "Murloc Coastrunner"
+      },
+      {
+        "entityType": "npc",
+        "quantity": 7,
+        "action": "kill",
+        "entityID": 171,
+        "name": "Murloc Warrior"
+      },
+      {
+        "entityType": "npc",
+        "quantity": 7,
+        "action": "kill",
+        "entityID": 127,
+        "name": "Murloc Tidehunter"
+      },
+      {
+        "entityType": "npc",
+        "quantity": 7,
+        "action": "kill",
+        "entityID": 517,
+        "name": "Murloc Oracle"
+      }
+    ],
+    "npcTargets": [
+      {
+        "entityID": 126,
+        "npc": true,
+        "action": "kill",
+        "name": "Murloc Coastrunner"
+      },
+      {
+        "entityID": 171,
+        "npc": true,
+        "action": "kill",
+        "name": "Murloc Warrior"
+      },
+      {
+        "entityID": 127,
+        "npc": true,
+        "action": "kill",
+        "name": "Murloc Tidehunter"
+      },
+      {
+        "entityID": 517,
+        "npc": true,
+        "action": "kill",
+        "name": "Murloc Oracle"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "action": "kill",
+        "entityID": 126,
+        "npc": true,
+        "y": 0.1234,
+        "objectiveKey": "npc:126",
+        "name": "Murloc Coastrunner",
+        "sourceAreaID": 40,
+        "x": 0.42479999999999996,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantity": 7
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "action": "kill",
+        "entityID": 171,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "objectiveKey": "npc:171",
+        "name": "Murloc Warrior",
+        "sourceAreaID": 40,
+        "y": 0.504,
+        "x": 0.26,
+        "quantity": 7
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "action": "kill",
+        "entityID": 127,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "objectiveKey": "npc:127",
+        "name": "Murloc Tidehunter",
+        "sourceAreaID": 40,
+        "y": 0.84,
+        "x": 0.342,
+        "quantity": 7
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "action": "kill",
+        "entityID": 517,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "objectiveKey": "npc:517",
+        "name": "Murloc Oracle",
+        "sourceAreaID": 40,
+        "y": 0.846,
+        "x": 0.33799999999999997,
+        "quantity": 7
+      }
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 392,
+        "npc": true,
+        "y": 0.8602,
+        "x": 0.30010000000000003,
+        "name": "Captain Grayson",
+        "sourceAreaID": 40,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "title": "The Coast Isn't Clear",
+    "level": 19,
+    "areaID": 40,
+    "raceMask": 0,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Grayson",
+        "entityID": 392
+      }
+    ],
+    "side": "Both",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 392,
+        "npc": true,
+        "y": 0.8602,
+        "x": 0.30010000000000003,
+        "name": "Captain Grayson",
+        "sourceAreaID": 40,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "money": 1100,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Grayson",
+        "entityID": 392
+      }
+    ],
+    "xp": 1450,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 10,
+    "requirementSource": "Warcraft DB Forever structured objectives",
+    "shareable": true,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 7,
+          "action": "kill",
+          "entityID": 126,
+          "name": "Murloc Coastrunner"
+        },
+        {
+          "entityType": "npc",
+          "quantity": 7,
+          "action": "kill",
+          "entityID": 171,
+          "name": "Murloc Warrior"
+        },
+        {
+          "entityType": "npc",
+          "quantity": 7,
+          "action": "kill",
+          "entityID": 127,
+          "name": "Murloc Tidehunter"
+        },
+        {
+          "entityType": "npc",
+          "quantity": 7,
+          "action": "kill",
+          "entityID": 517,
+          "name": "Murloc Oracle"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Captain Grayson",
+          "entityID": 392
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Captain Grayson",
+          "entityID": 392
+        }
+      ]
+    },
+    "objectiveFactsSource": "Warcraft DB Forever structured objectives",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "153": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 15,
+        "name": "Red Leather Bandana",
+        "entityID": 829
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Red Leather Bandana",
+        "name": "Defias Smuggler",
+        "entityID": 95,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Red Leather Bandana",
+        "name": "Defias Pathstalker",
+        "entityID": 121,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Red Leather Bandana",
+        "name": "Defias Highwayman",
+        "entityID": 122,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Red Leather Bandana",
+        "name": "Defias Knuckleduster",
+        "entityID": 449,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Red Leather Bandana",
+        "name": "Defias Renegade Mage",
+        "entityID": 450,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Red Leather Bandana",
+        "name": "Defias Footpad",
+        "entityID": 481,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Red Leather Bandana",
+        "name": "Benny Blaanco",
+        "entityID": 502,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Red Leather Bandana",
+        "name": "Defias Trapper",
+        "entityID": 504,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Red Leather Bandana",
+        "name": "Defias Pillager",
+        "entityID": 589,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Red Leather Bandana",
+        "name": "Defias Looter",
+        "entityID": 590,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Red Leather Bandana",
+        "name": "Coyote",
+        "entityID": 834,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Red Leather Bandana",
+        "name": "Defias Raider",
+        "entityID": 6180,
+        "npc": true,
+        "action": "collect"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 15,
+        "name": "Red Leather Bandana",
+        "itemID": 829
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1436,
+        "legacyStepKey": "q:1436:npc:834",
+        "entityID": 834,
+        "npc": true,
+        "x": 0.514,
+        "y": 0.466,
+        "objectiveKey": "item:829",
+        "itemID": 829,
+        "quantity": 15,
+        "name": "Coyote",
+        "itemName": "Red Leather Bandana",
+        "alternativeCount": 13,
+        "action": "collect"
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.528,
+        "mapID": 1436,
+        "name": "Scout Galiaan",
+        "entityID": 878,
+        "npc": true,
+        "x": 0.54
+      }
+    ],
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 15,
+    "areaID": 40,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 0,
+        "itemName": "Red Leather Bandana",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Red Leather Bandana",
+            "action": "collect",
+            "entityID": 95,
+            "npc": true,
+            "y": 0.268,
+            "x": 0.46,
+            "name": "Defias Smuggler",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Red Leather Bandana",
+            "action": "collect",
+            "entityID": 121,
+            "npc": true,
+            "y": 0.7879999999999999,
+            "x": 0.462,
+            "name": "Defias Pathstalker",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Red Leather Bandana",
+            "action": "collect",
+            "entityID": 122,
+            "npc": true,
+            "y": 0.782,
+            "x": 0.524,
+            "name": "Defias Highwayman",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "mapID": 1436,
+            "action": "collect",
+            "y": 0.192,
+            "entityID": 290,
+            "x": 0.494,
+            "name": "Furlbrow's Wardrobe",
+            "itemName": "Red Leather Bandana"
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Red Leather Bandana",
+            "action": "collect",
+            "entityID": 449,
+            "npc": true,
+            "y": 0.7879999999999999,
+            "x": 0.494,
+            "name": "Defias Knuckleduster",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Red Leather Bandana",
+            "action": "collect",
+            "entityID": 450,
+            "npc": true,
+            "y": 0.7879999999999999,
+            "x": 0.53,
+            "name": "Defias Renegade Mage",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Red Leather Bandana",
+            "action": "collect",
+            "entityID": 481,
+            "npc": true,
+            "y": 0.19,
+            "x": 0.568,
+            "name": "Defias Footpad",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Red Leather Bandana",
+            "action": "collect",
+            "entityID": 502,
+            "npc": true,
+            "y": 0.192,
+            "x": 0.494,
+            "name": "Benny Blaanco",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Red Leather Bandana",
+            "action": "collect",
+            "entityID": 504,
+            "npc": true,
+            "y": 0.266,
+            "x": 0.439,
+            "name": "Defias Trapper",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Red Leather Bandana",
+            "action": "collect",
+            "entityID": 589,
+            "npc": true,
+            "y": 0.682,
+            "x": 0.428,
+            "name": "Defias Pillager",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Red Leather Bandana",
+            "action": "collect",
+            "entityID": 590,
+            "npc": true,
+            "y": 0.5489999999999999,
+            "x": 0.368,
+            "name": "Defias Looter",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Red Leather Bandana",
+            "action": "collect",
+            "entityID": 834,
+            "npc": true,
+            "y": 0.466,
+            "x": 0.514,
+            "name": "Coyote",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Red Leather Bandana",
+            "action": "collect",
+            "entityID": 6180,
+            "npc": true,
+            "y": 0.8859999999999999,
+            "x": 0.42200000000000004,
+            "name": "Defias Raider",
+            "mapID": 1436
+          }
+        ]
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "ends": [
+      {
+        "y": 0.528,
+        "mapID": 1436,
+        "name": "Scout Galiaan",
+        "entityID": 878,
+        "npc": true,
+        "x": 0.54
+      }
+    ],
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Scout Galiaan",
+        "entityID": 878
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Scout Galiaan",
+        "entityID": 878
+      }
+    ],
+    "xp": 1050,
+    "title": "Red Leather Bandanas",
+    "foreverStatus": "unchanged",
+    "shareable": true,
+    "minLevel": 10,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 15,
+          "name": "Red Leather Bandana",
+          "entityID": 829
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Scout Galiaan",
+          "entityID": 878
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Scout Galiaan",
+          "entityID": 878
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "155": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "The Defias Traitor",
+        "entityID": 467
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 234,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "x": 0.562,
+        "name": "Gryan Stoutmantle",
+        "sourceAreaID": 40,
+        "y": 0.474
+      }
+    ],
+    "objectives": [
+      {
+        "y": 0.7153,
+        "mapID": 1436,
+        "action": "escort",
+        "x": 0.4255,
+        "locationSource": "Published Forever converted-baseline event area",
+        "name": "The Defias Traitor"
+      }
+    ],
+    "level": 18,
+    "areaID": 40,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 467,
+        "npc": true,
+        "y": 0.475,
+        "x": 0.5568,
+        "name": "The Defias Traitor",
+        "sourceAreaID": 40,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "raceMask": 4294967373,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Gryan Stoutmantle",
+        "entityID": 234
+      }
+    ],
+    "xp": 1700,
+    "prerequisiteAny": [
+      142
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 14,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "The Defias Brotherhood",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "The Defias Traitor",
+          "entityID": 467
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Gryan Stoutmantle",
+          "entityID": 234
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "184": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": {},
+    "requiredItems": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "objectives": {},
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.19399999999999998,
+        "mapID": 1436,
+        "name": "Farmer Furlbrow",
+        "entityID": 237,
+        "npc": true,
+        "x": 0.6
+      }
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Furlbrow's Deed",
+        "entityID": 1971
+      }
+    ],
+    "level": 9,
+    "areaID": 40,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1429,
+        "action": "start-item",
+        "entityID": 116,
+        "npc": true,
+        "sourceAction": "loot",
+        "x": 0.2622,
+        "itemID": 1972,
+        "y": 0.5871999999999999,
+        "sourceAreaID": 12,
+        "itemName": "Westfall Deed",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Defias Bandit"
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "item",
+        "name": "Westfall Deed",
+        "entityID": 1972
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Farmer Furlbrow",
+        "entityID": 237
+      }
+    ],
+    "xp": 590,
+    "foreverStatus": "unchanged",
+    "title": "Furlbrow's Deed",
+    "minLevel": 8,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "item",
+          "name": "Westfall Deed",
+          "entityID": 1972
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Furlbrow's Deed",
+          "entityID": 1971
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Farmer Furlbrow",
+          "entityID": 237
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "6181": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": {},
+    "seriesRoot": 6181,
+    "requiredItems": {},
+    "objectives": {},
+    "series": [
+      6181,
+      6281,
+      6261,
+      6285
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Lewis' Note",
+        "entityID": 15998
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.526,
+        "mapID": 1436,
+        "name": "Thor",
+        "entityID": 523,
+        "npc": true,
+        "x": 0.564
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.47200000000000003,
+        "mapID": 1436,
+        "name": "Quartermaster Lewis",
+        "entityID": 491,
+        "npc": true,
+        "x": 0.568
+      }
+    ],
+    "level": 10,
+    "areaID": 40,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Quartermaster Lewis",
+        "entityID": 491
+      }
+    ],
+    "side": "Alliance",
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Thor",
+        "entityID": 523
+      }
+    ],
+    "xp": 210,
+    "foreverStatus": "unchanged",
+    "title": "A Swift Message",
+    "minLevel": 10,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 1,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Quartermaster Lewis",
+          "entityID": 491
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Lewis' Note",
+          "entityID": 15998
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Thor",
+          "entityID": 523
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "6261": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "objectives": {},
+    "zone": "Westfall",
+    "requirements": {},
+    "seriesRoot": 6181,
+    "requiredItems": {},
+    "series": [
+      6181,
+      6281,
+      6261,
+      6285
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Osric's Crate",
+        "entityID": 16115
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.474,
+        "mapID": 1453,
+        "name": "Osric Strang",
+        "entityID": 1323,
+        "npc": true,
+        "x": 0.742
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.624,
+        "mapID": 1453,
+        "name": "Dungar Longdrink",
+        "entityID": 352,
+        "npc": true,
+        "x": 0.662
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 10,
+    "areaID": 40,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Osric Strang",
+        "entityID": 1323
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 6281,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Dungar Longdrink",
+        "entityID": 352
+      }
+    ],
+    "xp": 210,
+    "title": "Dungar Longdrink",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 3,
+    "minLevel": 10,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 1,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Osric Strang",
+          "entityID": 1323
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Osric's Crate",
+          "entityID": 16115
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Dungar Longdrink",
+          "entityID": 352
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "6281": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "objectives": {},
+    "zone": "Westfall",
+    "requirements": {},
+    "seriesRoot": 6181,
+    "requiredItems": {},
+    "series": [
+      6181,
+      6281,
+      6261,
+      6285
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Lewis' Note",
+        "entityID": 15998
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.526,
+        "mapID": 1436,
+        "name": "Thor",
+        "entityID": 523,
+        "npc": true,
+        "x": 0.564
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.474,
+        "mapID": 1453,
+        "name": "Osric Strang",
+        "entityID": 1323,
+        "npc": true,
+        "x": 0.742
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 10,
+    "areaID": 40,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Thor",
+        "entityID": 523
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 6181,
+    "money": 175,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Osric Strang",
+        "entityID": 1323
+      }
+    ],
+    "xp": 420,
+    "title": "Continue to Stormwind",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 2,
+    "minLevel": 10,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 1,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Thor",
+          "entityID": 523
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Lewis' Note",
+          "entityID": 15998
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Osric Strang",
+          "entityID": 1323
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "6285": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "objectives": {},
+    "zone": "Westfall",
+    "requirements": {},
+    "seriesRoot": 6181,
+    "requiredItems": {},
+    "series": [
+      6181,
+      6281,
+      6261,
+      6285
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Osric's Crate",
+        "entityID": 16115
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.624,
+        "mapID": 1453,
+        "name": "Dungar Longdrink",
+        "entityID": 352,
+        "npc": true,
+        "x": 0.662
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.47200000000000003,
+        "mapID": 1436,
+        "name": "Quartermaster Lewis",
+        "entityID": 491,
+        "npc": true,
+        "x": 0.568
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 10,
+    "areaID": 40,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Dungar Longdrink",
+        "entityID": 352
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 6261,
+    "money": 350,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Quartermaster Lewis",
+        "entityID": 491
+      }
+    ],
+    "xp": 1050,
+    "title": "Return to Lewis",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 4,
+    "minLevel": 10,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 1,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Dungar Longdrink",
+          "entityID": 352
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Osric's Crate",
+          "entityID": 16115
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Quartermaster Lewis",
+          "entityID": 491
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "79008": {
+    "raceMask": 4294967373,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "object",
+        "mapID": 1436,
+        "name": "Burned-Out Remains",
+        "y": 0.507,
+        "entityID": 415106,
+        "x": 0.375,
+        "sourceZone": "Westfall",
+        "sourceAreaID": 40
+      }
+    ],
+    "level": 22,
+    "areaID": 40,
+    "objectives": {},
+    "side": "Alliance",
+    "starts": [
+      {
+        "entityType": "object",
+        "mapID": 1436,
+        "name": "Burned-Out Remains",
+        "y": 0.5079,
+        "entityID": 415107,
+        "x": 0.3737,
+        "locationSource": "Published Forever beta-observation entity position",
+        "sourceAreaID": 40
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "object",
+        "name": "Burned-Out Remains",
+        "entityID": 415106
+      },
+      {
+        "entityType": "object",
+        "name": "Nailed Plank",
+        "entityID": 417072
+      }
+    ],
+    "xp": 1750,
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Burned-Out Remains",
+        "entityID": 415107
+      }
+    ],
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 14,
+    "prerequisitesRead": true,
+    "title": "... and that note you found",
+    "foreverStatus": "updated",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "92109": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Odd Child",
+        "entityID": 249713
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 5,
+        "action": "collect",
+        "entityID": 3371,
+        "name": "Empty Vial"
+      },
+      {
+        "entityType": "item",
+        "quantity": 5,
+        "action": "collect",
+        "entityID": 2447,
+        "name": "Peacebloom"
+      },
+      {
+        "entityType": "item",
+        "quantity": 5,
+        "action": "collect",
+        "entityID": 765,
+        "name": "Silverleaf"
+      }
+    ],
+    "seriesRoot": 92109,
+    "requiredItems": [
+      {
+        "buyable": true,
+        "name": "Empty Vial",
+        "buyPrice": 20,
+        "quantity": 5,
+        "itemID": 3371
+      },
+      {
+        "buyable": true,
+        "name": "Peacebloom",
+        "buyPrice": 40,
+        "quantity": 5,
+        "itemID": 2447
+      },
+      {
+        "buyable": true,
+        "name": "Silverleaf",
+        "buyPrice": 40,
+        "quantity": 5,
+        "itemID": 765
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "npcTargets": [
+      {
+        "itemName": "Empty Vial",
+        "name": "Gina MacGregor",
+        "entityID": 843,
+        "npc": true,
+        "action": "buy"
+      }
+    ],
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "action": "buy",
+        "entityID": 843,
+        "npc": true,
+        "x": 0.5764,
+        "y": 0.5405,
+        "objectiveKey": "item:3371",
+        "itemID": 3371,
+        "quantity": 5,
+        "sourceAreaID": 40,
+        "itemName": "Empty Vial",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Gina MacGregor"
+      },
+      {
+        "entityType": "object",
+        "mapID": 1436,
+        "action": "gather",
+        "entityID": 1618,
+        "x": 0.3095,
+        "y": 0.3751,
+        "objectiveKey": "item:2447",
+        "itemID": 2447,
+        "quantity": 5,
+        "sourceAreaID": 40,
+        "itemName": "Peacebloom",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Peacebloom"
+      },
+      {
+        "entityType": "object",
+        "mapID": 1436,
+        "action": "gather",
+        "entityID": 1617,
+        "x": 0.2928,
+        "y": 0.6144,
+        "objectiveKey": "item:765",
+        "itemID": 765,
+        "quantity": 5,
+        "sourceAreaID": 40,
+        "itemName": "Silverleaf",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Silverleaf"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "level": 10,
+    "areaID": 40,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1415,
+        "entityID": 249713,
+        "npc": true,
+        "sourceZone": "Eastern Kingdoms",
+        "x": 0.41200000000000003,
+        "name": "Odd Child",
+        "sourceAreaID": -3,
+        "y": 0.79
+      }
+    ],
+    "title": "My First Alchemy Set",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1415,
+        "entityID": 249713,
+        "npc": true,
+        "sourceZone": "Eastern Kingdoms",
+        "x": 0.41200000000000003,
+        "name": "Odd Child",
+        "sourceAreaID": -3,
+        "y": 0.79
+      }
+    ],
+    "side": "Alliance",
+    "seriesPosition": 1,
+    "money": 175,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Odd Child",
+        "entityID": 249713
+      }
+    ],
+    "xp": 420,
+    "foreverStatus": "new",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 10,
+    "requirementSource": "Published Forever typed objectives",
+    "raceMask": 4294967373,
+    "series": [
+      92109,
+      92110
+    ],
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "92110": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "npcTargets": [
+      {
+        "itemName": "Murloc Eye",
+        "name": "Murloc Coastrunner",
+        "entityID": 126,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Odd Child",
+        "entityID": 249713
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 3,
+        "action": "collect",
+        "entityID": 730,
+        "name": "Murloc Eye"
+      }
+    ],
+    "seriesRoot": 92109,
+    "requiredItems": [
+      {
+        "quantity": 3,
+        "name": "Murloc Eye",
+        "itemID": 730
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "action": "loot",
+        "entityID": 126,
+        "npc": true,
+        "y": 0.114,
+        "sourceZone": "Westfall",
+        "objectiveKey": "item:730",
+        "itemID": 730,
+        "x": 0.42200000000000004,
+        "sourceAreaID": 40,
+        "quantity": 3,
+        "itemName": "Murloc Eye",
+        "name": "Murloc Coastrunner"
+      }
+    ],
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1415,
+        "entityID": 249713,
+        "npc": true,
+        "sourceZone": "Eastern Kingdoms",
+        "x": 0.41200000000000003,
+        "name": "Odd Child",
+        "sourceAreaID": -3,
+        "y": 0.79
+      }
+    ],
+    "level": 10,
+    "areaID": 40,
+    "seriesPosition": 2,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1415,
+        "entityID": 249713,
+        "npc": true,
+        "sourceZone": "Eastern Kingdoms",
+        "x": 0.41200000000000003,
+        "name": "Odd Child",
+        "sourceAreaID": -3,
+        "y": 0.79
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 92109,
+    "money": 175,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Odd Child",
+        "entityID": 249713
+      }
+    ],
+    "xp": 420,
+    "title": "My First Real Potion",
+    "foreverStatus": "new",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 10,
+    "requirementSource": "Published Forever typed objectives",
+    "raceMask": 4294967373,
+    "series": [
+      92109,
+      92110
+    ],
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "92742": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 254546,
+        "name": "Jansen Stead Water Sample"
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 254547,
+        "name": "Molsen Farm Water Sample"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Jansen Stead Water Sample",
+        "itemID": 254546
+      },
+      {
+        "quantity": 1,
+        "name": "Molsen Farm Water Sample",
+        "itemID": 254547
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "objectives": [
+      {
+        "entityType": "item",
+        "mapID": 1436,
+        "legacyStepKey": "q:1436:npc:254546",
+        "entityID": 254546,
+        "x": 0.5661909432649058,
+        "y": 0.18685981228303267,
+        "objectiveKey": "item:254546",
+        "itemID": 254546,
+        "quantity": 1,
+        "name": "Jansen Stead Water Sample",
+        "itemName": "Jansen Stead Water Sample",
+        "locationSource": "Warcraft DB Forever native quest map",
+        "action": "collect"
+      },
+      {
+        "entityType": "item",
+        "mapID": 1436,
+        "legacyStepKey": "q:1436:npc:254547",
+        "entityID": 254547,
+        "x": 0.46076246220360384,
+        "y": 0.38143402048600705,
+        "objectiveKey": "item:254547",
+        "itemID": 254547,
+        "quantity": 1,
+        "name": "Molsen Farm Water Sample",
+        "itemName": "Molsen Farm Water Sample",
+        "locationSource": "Warcraft DB Forever native quest map",
+        "action": "collect"
+      }
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Well Water Sample Kit",
+        "entityID": 254545
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "y": 0.53,
+        "mapID": 1436,
+        "name": "Alba Fairmoon",
+        "entityID": 253092,
+        "npc": true,
+        "x": 0.524
+      }
+    ],
+    "level": 12,
+    "areaID": 40,
+    "raceMask": 4294967373,
+    "ends": [
+      {
+        "y": 0.53,
+        "mapID": 1436,
+        "name": "Alba Fairmoon",
+        "entityID": 253092,
+        "npc": true,
+        "x": 0.524
+      }
+    ],
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Alba Fairmoon",
+        "entityID": 253092
+      }
+    ],
+    "money": 250,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Alba Fairmoon",
+        "entityID": 253092
+      }
+    ],
+    "xp": 455,
+    "title": "Testing the Wells",
+    "foreverStatus": "new",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 9,
+    "requirementSource": "Published Forever typed objectives",
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "nativeMapSource": "Warcraft DB Forever native quest map",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "92744": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 7,
+        "action": "collect",
+        "entityID": 254548,
+        "name": "Longshore Murloc Gill"
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Longshore Murloc Gill",
+        "name": "Murloc Coastrunner",
+        "entityID": 126,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Longshore Murloc Gill",
+        "name": "Murloc Tidehunter",
+        "entityID": 127,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Longshore Murloc Gill",
+        "name": "Murloc Warrior",
+        "entityID": 171,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Longshore Murloc Gill",
+        "name": "Murloc Minor Oracle",
+        "entityID": 456,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Longshore Murloc Gill",
+        "name": "Murloc Hunter",
+        "entityID": 458,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Longshore Murloc Gill",
+        "name": "Murloc Netter",
+        "entityID": 513,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Longshore Murloc Gill",
+        "name": "Murloc Raider",
+        "entityID": 515,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Longshore Murloc Gill",
+        "name": "Murloc Oracle",
+        "entityID": 517,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Longshore Murloc Gill",
+        "name": "Murloc Oracle",
+        "entityID": 517,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 7,
+        "name": "Longshore Murloc Gill",
+        "itemID": 254548
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "action": "loot",
+        "entityID": 517,
+        "npc": true,
+        "y": 0.564,
+        "sourceZone": "Westfall",
+        "objectiveKey": "item:254548",
+        "itemID": 254548,
+        "x": 0.272,
+        "sourceAreaID": 40,
+        "quantity": 7,
+        "itemName": "Longshore Murloc Gill",
+        "name": "Murloc Oracle"
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.53,
+        "mapID": 1436,
+        "name": "Alba Fairmoon",
+        "entityID": 253092,
+        "npc": true,
+        "x": 0.524
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "shareable": true,
+    "level": 12,
+    "areaID": 40,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 0,
+        "itemName": "Longshore Murloc Gill",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Longshore Murloc Gill",
+            "action": "collect",
+            "entityID": 126,
+            "npc": true,
+            "y": 0.092,
+            "x": 0.561,
+            "name": "Murloc Coastrunner",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Longshore Murloc Gill",
+            "action": "collect",
+            "entityID": 127,
+            "npc": true,
+            "y": 0.848,
+            "x": 0.33799999999999997,
+            "name": "Murloc Tidehunter",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Longshore Murloc Gill",
+            "action": "collect",
+            "entityID": 171,
+            "npc": true,
+            "y": 0.504,
+            "x": 0.26,
+            "name": "Murloc Warrior",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Longshore Murloc Gill",
+            "action": "collect",
+            "entityID": 456,
+            "npc": true,
+            "y": 0.09,
+            "x": 0.428,
+            "name": "Murloc Minor Oracle",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Longshore Murloc Gill",
+            "action": "collect",
+            "entityID": 458,
+            "npc": true,
+            "y": 0.35,
+            "x": 0.276,
+            "name": "Murloc Hunter",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Longshore Murloc Gill",
+            "action": "collect",
+            "entityID": 513,
+            "npc": true,
+            "y": 0.25,
+            "x": 0.322,
+            "name": "Murloc Netter",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Longshore Murloc Gill",
+            "action": "collect",
+            "entityID": 515,
+            "npc": true,
+            "y": 0.102,
+            "x": 0.552,
+            "name": "Murloc Raider",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Longshore Murloc Gill",
+            "action": "collect",
+            "entityID": 517,
+            "npc": true,
+            "y": 0.846,
+            "x": 0.33799999999999997,
+            "name": "Murloc Oracle",
+            "mapID": 1436
+          }
+        ]
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.53,
+        "mapID": 1436,
+        "name": "Alba Fairmoon",
+        "entityID": 253092,
+        "npc": true,
+        "x": 0.524
+      }
+    ],
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Alba Fairmoon",
+        "entityID": 253092
+      }
+    ],
+    "money": 250,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Alba Fairmoon",
+        "entityID": 253092
+      }
+    ],
+    "xp": 455,
+    "title": "Murloc Gills",
+    "foreverStatus": "new",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 9,
+    "requirementSource": "Published Forever typed objectives",
+    "raceMask": 4294967373,
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "92745": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 4,
+        "action": "kill",
+        "entityID": 1236,
+        "name": "Kobold Digger"
+      },
+      {
+        "entityType": "npc",
+        "quantity": 6,
+        "action": "kill",
+        "entityID": 1426,
+        "name": "Riverpaw Miner"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "npcTargets": [
+      {
+        "entityID": 1236,
+        "npc": true,
+        "action": "kill",
+        "name": "Kobold Digger"
+      },
+      {
+        "entityID": 1426,
+        "npc": true,
+        "action": "kill",
+        "name": "Riverpaw Miner"
+      }
+    ],
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "action": "kill",
+        "entityID": 1236,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "objectiveKey": "npc:1236",
+        "name": "Kobold Digger",
+        "sourceAreaID": 40,
+        "y": 0.22399999999999998,
+        "x": 0.44799999999999995,
+        "quantity": 4
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "action": "kill",
+        "entityID": 1426,
+        "npc": true,
+        "y": 0.4755,
+        "objectiveKey": "npc:1426",
+        "name": "Riverpaw Miner",
+        "sourceAreaID": 40,
+        "x": 0.30260000000000004,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantity": 6
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "y": 0.53,
+        "mapID": 1436,
+        "name": "Alba Fairmoon",
+        "entityID": 253092,
+        "npc": true,
+        "x": 0.524
+      }
+    ],
+    "level": 14,
+    "areaID": 40,
+    "shareable": true,
+    "ends": [
+      {
+        "y": 0.53,
+        "mapID": 1436,
+        "name": "Alba Fairmoon",
+        "entityID": 253092,
+        "npc": true,
+        "x": 0.524
+      }
+    ],
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Alba Fairmoon",
+        "entityID": 253092
+      }
+    ],
+    "money": 300,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Alba Fairmoon",
+        "entityID": 253092
+      }
+    ],
+    "xp": 490,
+    "title": "The State of the Mines",
+    "foreverStatus": "new",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 9,
+    "requirementSource": "Published Forever typed objectives",
+    "raceMask": 4294967373,
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "92747": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 8,
+        "action": "collect",
+        "entityID": 254676,
+        "name": "Suspicious Industrial Supplies"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 8,
+        "name": "Suspicious Industrial Supplies",
+        "itemID": 254676
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1436,
+        "action": "gather",
+        "entityID": 581777,
+        "x": 0.425,
+        "y": 0.687,
+        "objectiveKey": "item:254676",
+        "itemID": 254676,
+        "quantity": 8,
+        "sourceAreaID": 40,
+        "itemName": "Suspicious Industrial Supplies",
+        "locationSource": "Published Forever beta-delta entity position",
+        "name": "Suspicious Crate"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "y": 0.53,
+        "mapID": 1436,
+        "name": "Alba Fairmoon",
+        "entityID": 253092,
+        "npc": true,
+        "x": 0.524
+      }
+    ],
+    "level": 15,
+    "areaID": 40,
+    "shareable": true,
+    "ends": [
+      {
+        "y": 0.53,
+        "mapID": 1436,
+        "name": "Alba Fairmoon",
+        "entityID": 253092,
+        "npc": true,
+        "x": 0.524
+      }
+    ],
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Alba Fairmoon",
+        "entityID": 253092
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Alba Fairmoon",
+        "entityID": 253092
+      }
+    ],
+    "xp": 540,
+    "title": "Moonbrook Espionage",
+    "foreverStatus": "new",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 9,
+    "requirementSource": "Published Forever typed objectives",
+    "raceMask": 4294967373,
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "92748": {
+    "raceMask": 4294967373,
+    "mapID": 1436,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Alba Fairmoon",
+        "entityID": 253092
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1453,
+        "entityID": 11026,
+        "npc": true,
+        "sourceZone": "Stormwind City",
+        "x": 0.5479999999999999,
+        "name": "Sprite Jumpsprocket",
+        "sourceAreaID": 1519,
+        "y": 0.08800000000000001
+      }
+    ],
+    "level": 16,
+    "areaID": 40,
+    "side": "Alliance",
+    "objectives": {},
+    "money": 400,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Sprite Jumpsprocket",
+        "entityID": 11026
+      }
+    ],
+    "xp": 580,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 253092,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "x": 0.524,
+        "name": "Alba Fairmoon",
+        "sourceAreaID": 40,
+        "y": 0.53
+      }
+    ],
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 9,
+    "prerequisitesRead": true,
+    "title": "Explosive Consultation",
+    "foreverStatus": "new",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "92749": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 10,
+        "action": "collect",
+        "entityID": 4365,
+        "name": "Coarse Dynamite"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 10,
+        "name": "Coarse Dynamite",
+        "itemID": 4365
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "objectives": {},
+    "starts": [
+      {
+        "y": 0.08,
+        "mapID": 1453,
+        "name": "Sprite Jumpsprocket",
+        "entityID": 11026,
+        "npc": true,
+        "x": 0.546
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.08,
+        "mapID": 1453,
+        "name": "Sprite Jumpsprocket",
+        "entityID": 11026,
+        "npc": true,
+        "x": 0.546
+      }
+    ],
+    "raceMask": 4294967373,
+    "level": 16,
+    "areaID": 40,
+    "title": "A Dynamite Plan",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Sprite Jumpsprocket",
+        "entityID": 11026
+      }
+    ],
+    "missingRequirements": [
+      {
+        "entityType": "item",
+        "quantity": 10,
+        "action": "collect",
+        "entityID": 4365,
+        "name": "Coarse Dynamite"
+      }
+    ],
+    "side": "Alliance",
+    "money": 400,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Sprite Jumpsprocket",
+        "entityID": 11026
+      }
+    ],
+    "xp": 580,
+    "shareable": true,
+    "foreverStatus": "new",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 9,
+    "requirementSource": "Published Forever typed objectives",
+    "objectiveLocationsIncomplete": true,
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "92750": {
+    "raceMask": 4294967373,
+    "mapID": 1436,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Sprite Jumpsprocket",
+        "entityID": 11026
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1453,
+        "entityID": 1325,
+        "npc": true,
+        "y": 0.7006999999999999,
+        "x": 0.8028,
+        "name": "Jasper Fel",
+        "sourceAreaID": 1519,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "level": 16,
+    "areaID": 40,
+    "side": "Alliance",
+    "objectives": {},
+    "money": 400,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Jasper Fel",
+        "entityID": 1325
+      }
+    ],
+    "xp": 580,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1453,
+        "entityID": 11026,
+        "npc": true,
+        "sourceZone": "Stormwind City",
+        "x": 0.5479999999999999,
+        "name": "Sprite Jumpsprocket",
+        "sourceAreaID": 1519,
+        "y": 0.08800000000000001
+      }
+    ],
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 9,
+    "prerequisitesRead": true,
+    "title": "Detonation at a Distance",
+    "foreverStatus": "new",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "92751": {
+    "raceMask": 4294967373,
+    "mapID": 1436,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Jasper Fel",
+        "entityID": 1325
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1453,
+        "name": "Sprite Jumpsprocket",
+        "y": 0.3203,
+        "entityID": 11026,
+        "x": 0.6208,
+        "npc": true,
+        "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+      }
+    ],
+    "level": 16,
+    "areaID": 40,
+    "side": "Alliance",
+    "objectives": {},
+    "money": 400,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Sprite Jumpsprocket",
+        "entityID": 11026
+      }
+    ],
+    "xp": 580,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1453,
+        "entityID": 1325,
+        "npc": true,
+        "y": 0.7006999999999999,
+        "x": 0.8028,
+        "name": "Jasper Fel",
+        "sourceAreaID": 1519,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 9,
+    "prerequisitesRead": true,
+    "title": "Detonation at a Distance",
+    "foreverStatus": "new",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "92752": {
+    "raceMask": 4294967373,
+    "mapID": 1436,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Sprite Jumpsprocket",
+        "entityID": 11026
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 253092,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "x": 0.524,
+        "name": "Alba Fairmoon",
+        "sourceAreaID": 40,
+        "y": 0.53
+      }
+    ],
+    "level": 16,
+    "areaID": 40,
+    "side": "Alliance",
+    "objectives": {},
+    "money": 400,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Alba Fairmoon",
+        "entityID": 253092
+      }
+    ],
+    "xp": 580,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1453,
+        "entityID": 11026,
+        "npc": true,
+        "sourceZone": "Stormwind City",
+        "x": 0.5479999999999999,
+        "name": "Sprite Jumpsprocket",
+        "sourceAreaID": 1519,
+        "y": 0.08800000000000001
+      }
+    ],
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 9,
+    "prerequisitesRead": true,
+    "title": "Explosive Consultation",
+    "foreverStatus": "new",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "92753": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "action": "kill",
+        "entityID": 253370,
+        "name": "Explosives placed"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "objectives": {},
+    "providedItems": [
+      {
+        "entityType": "item",
+        "name": "Extra-Destructive Explosives",
+        "entityID": 254553
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 253279,
+        "npc": true,
+        "y": 0.8355,
+        "x": 0.38689999999999997,
+        "name": "Alba Fairmoon",
+        "sourceAreaID": 40,
+        "locationSource": "Published Forever beta-observation entity position"
+      }
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 253092,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "x": 0.524,
+        "name": "Alba Fairmoon",
+        "sourceAreaID": 40,
+        "y": 0.53
+      }
+    ],
+    "level": 18,
+    "areaID": 40,
+    "title": "Destruction in Deadmines",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Alba Fairmoon",
+        "entityID": 253092
+      }
+    ],
+    "side": "Alliance",
+    "missingRequirements": [
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "action": "kill",
+        "entityID": 253370,
+        "name": "Explosives placed"
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Alba Fairmoon",
+        "entityID": 253279
+      }
+    ],
+    "xp": 1350,
+    "questType": "Dungeon",
+    "foreverStatus": "new",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 9,
+    "requirementSource": "Warcraft DB Forever structured objectives",
+    "raceMask": 4294967373,
+    "objectiveFactsSource": "Warcraft DB Forever structured objectives",
+    "objectiveLocationsIncomplete": true,
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "92819": {
+    "raceMask": 4294967373,
+    "mapID": 1436,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Alba Fairmoon",
+        "entityID": 253279
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 253279,
+        "npc": true,
+        "y": 0.8355,
+        "x": 0.38689999999999997,
+        "name": "Alba Fairmoon",
+        "sourceAreaID": 40,
+        "locationSource": "Published Forever beta-observation entity position"
+      }
+    ],
+    "level": 18,
+    "areaID": 40,
+    "side": "Alliance",
+    "objectives": {},
+    "money": 500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Alba Fairmoon",
+        "entityID": 253279
+      }
+    ],
+    "xp": 680,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 253279,
+        "npc": true,
+        "y": 0.8355,
+        "x": 0.38689999999999997,
+        "name": "Alba Fairmoon",
+        "sourceAreaID": 40,
+        "locationSource": "Published Forever beta-observation entity position"
+      }
+    ],
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 9,
+    "prerequisitesRead": true,
+    "title": "Destruction in Deadmines",
+    "foreverStatus": "new",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "92909": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 14,
+        "action": "collect",
+        "entityID": 255007,
+        "name": "Golem Isospring"
+      },
+      {
+        "entityType": "item",
+        "quantity": 5,
+        "action": "collect",
+        "entityID": 255010,
+        "name": "Harvester Gyrostabilizer"
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Harvester Gyrostabilizer",
+        "name": "Harvest Golem",
+        "entityID": 36,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Harvester Gyrostabilizer",
+        "name": "Harvest Watcher",
+        "entityID": 114,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Harvester Gyrostabilizer",
+        "name": "Harvest Reaper",
+        "entityID": 115,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Golem Isospring",
+        "name": "Rusty Harvest Golem",
+        "entityID": 480,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Golem Isospring",
+        "name": "Decrepit Harvester",
+        "entityID": 276061,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Golem Isospring",
+        "name": "Harvest Watcher",
+        "entityID": 114,
+        "npc": true,
+        "action": "loot"
+      },
+      {
+        "itemName": "Harvester Gyrostabilizer",
+        "name": "Harvest Watcher",
+        "entityID": 114,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 14,
+        "name": "Golem Isospring",
+        "itemID": 255007
+      },
+      {
+        "quantity": 5,
+        "name": "Harvester Gyrostabilizer",
+        "itemID": 255010
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "action": "loot",
+        "entityID": 114,
+        "npc": true,
+        "x": 0.5435,
+        "y": 0.32189999999999996,
+        "objectiveKey": "item:255007",
+        "itemID": 255007,
+        "quantity": 14,
+        "sourceAreaID": 40,
+        "itemName": "Golem Isospring",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Harvest Watcher"
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "action": "loot",
+        "entityID": 114,
+        "npc": true,
+        "x": 0.5435,
+        "y": 0.32189999999999996,
+        "objectiveKey": "item:255010",
+        "itemID": 255010,
+        "quantity": 5,
+        "sourceAreaID": 40,
+        "itemName": "Harvester Gyrostabilizer",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Harvest Watcher"
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.322,
+        "mapID": 1436,
+        "name": "Ozwin Ironsprocket",
+        "entityID": 253395,
+        "npc": true,
+        "x": 0.516
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "shareable": true,
+    "level": 15,
+    "areaID": 40,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 1,
+        "itemName": "Harvester Gyrostabilizer",
+        "locations": [
+          {
+            "sourceObjective": 1,
+            "itemName": "Harvester Gyrostabilizer",
+            "action": "collect",
+            "entityID": 36,
+            "npc": true,
+            "y": 0.35,
+            "x": 0.564,
+            "name": "Harvest Golem",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 1,
+            "itemName": "Harvester Gyrostabilizer",
+            "action": "collect",
+            "entityID": 114,
+            "npc": true,
+            "y": 0.308,
+            "x": 0.542,
+            "name": "Harvest Watcher",
+            "mapID": 1436
+          },
+          {
+            "sourceObjective": 1,
+            "itemName": "Harvester Gyrostabilizer",
+            "action": "collect",
+            "entityID": 115,
+            "npc": true,
+            "y": 0.594,
+            "x": 0.611,
+            "name": "Harvest Reaper",
+            "mapID": 1436
+          }
+        ]
+      },
+      {
+        "sourceObjective": 0,
+        "itemName": "Golem Isospring",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Golem Isospring",
+            "action": "collect",
+            "entityID": 276061,
+            "npc": true,
+            "y": 0.57,
+            "x": 0.532,
+            "name": "Decrepit Harvester",
+            "mapID": 1420
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Golem Isospring",
+            "action": "collect",
+            "entityID": 480,
+            "npc": true,
+            "y": 0.20600000000000002,
+            "x": 0.574,
+            "name": "Rusty Harvest Golem",
+            "mapID": 1436
+          }
+        ]
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.322,
+        "mapID": 1436,
+        "name": "Ozwin Ironsprocket",
+        "entityID": 253395,
+        "npc": true,
+        "x": 0.516
+      }
+    ],
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Ozwin Ironsprocket",
+        "entityID": 253395
+      }
+    ],
+    "money": 500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Ozwin Ironsprocket",
+        "entityID": 253395
+      }
+    ],
+    "xp": 800,
+    "title": "Harvesting the Harvesters",
+    "foreverStatus": "new",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 8,
+    "requirementSource": "Published Forever typed objectives",
+    "raceMask": 4294967373,
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "92910": {
+    "raceMask": 4294967373,
+    "mapID": 1436,
+    "startRefs": [
+      {
+        "entityType": "item",
+        "name": "Precessive Autocognition Assembly",
+        "entityID": 255155
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 253395,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "x": 0.514,
+        "name": "Ozwin Ironsprocket",
+        "sourceAreaID": 40,
+        "y": 0.322
+      }
+    ],
+    "level": 15,
+    "areaID": 40,
+    "side": "Alliance",
+    "objectives": {},
+    "money": 500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Ozwin Ironsprocket",
+        "entityID": 253395
+      }
+    ],
+    "xp": 800,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "action": "start-item",
+        "entityID": 36,
+        "npc": true,
+        "sourceAction": "loot",
+        "x": 0.324,
+        "itemID": 255155,
+        "y": 0.364,
+        "sourceAreaID": 40,
+        "sourceZone": "Westfall",
+        "itemName": "Precessive Autocognition Assembly",
+        "name": "Harvest Golem"
+      }
+    ],
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 8,
+    "prerequisitesRead": true,
+    "title": "Harvesting the Harvesters",
+    "foreverStatus": "new",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "92911": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 8,
+        "action": "collect",
+        "entityID": 255007,
+        "name": "Golem Isospring"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 8,
+        "name": "Golem Isospring",
+        "itemID": 255007
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "npcTargets": [
+      {
+        "itemName": "Golem Isospring",
+        "name": "Harvest Golem",
+        "entityID": 36,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "level": 15,
+    "areaID": 40,
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "action": "loot",
+        "entityID": 36,
+        "npc": true,
+        "x": 0.4874,
+        "y": 0.3234,
+        "objectiveKey": "item:255007",
+        "itemID": 255007,
+        "quantity": 8,
+        "sourceAreaID": 40,
+        "itemName": "Golem Isospring",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Harvest Golem"
+      }
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 253395,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "x": 0.514,
+        "name": "Ozwin Ironsprocket",
+        "sourceAreaID": 40,
+        "y": 0.322
+      }
+    ],
+    "side": "Alliance",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 253395,
+        "npc": true,
+        "sourceZone": "Westfall",
+        "x": 0.514,
+        "name": "Ozwin Ironsprocket",
+        "sourceAreaID": 40,
+        "y": 0.322
+      }
+    ],
+    "money": 500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Ozwin Ironsprocket",
+        "entityID": 253395
+      }
+    ],
+    "xp": 800,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Ozwin Ironsprocket",
+        "entityID": 253395
+      }
+    ],
+    "foreverStatus": "new",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 8,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Harvesting the Harvesters",
+    "raceMask": 4294967373,
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "93928": {
+    "raceMask": 4294967373,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1434,
+        "entityID": 715,
+        "npc": true,
+        "sourceZone": "Stranglethorn Vale",
+        "x": 0.35600000000000004,
+        "name": "Hemet Nesingwary",
+        "sourceAreaID": 33,
+        "y": 0.10800000000000001
+      }
+    ],
+    "level": 15,
+    "areaID": 40,
+    "objectives": {},
+    "side": "Alliance",
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1436,
+        "entityID": 6271,
+        "npc": true,
+        "y": 0.7178,
+        "x": 0.3251,
+        "name": "Mouse",
+        "sourceAreaID": 40,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Hemet Nesingwary",
+        "entityID": 715
+      }
+    ],
+    "xp": 105,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Mouse",
+        "entityID": 6271
+      }
+    ],
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 15,
+    "prerequisitesRead": true,
+    "title": "Of Mice and Milk",
+    "foreverStatus": "new",
+    "categoryPath": "eastern-kingdoms/westfall"
+  },
+  "98021": {
+    "prerequisitesRead": true,
+    "mapID": 1436,
+    "zone": "Westfall",
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published Forever beta prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.47600000000000003,
+        "mapID": 1436,
+        "name": "Gryan Stoutmantle",
+        "entityID": 234,
+        "npc": true,
+        "x": 0.562
+      }
+    ],
+    "objectives": {},
+    "level": 13,
+    "areaID": 40,
+    "starts": [
+      {
+        "y": 0.18,
+        "mapID": 1453,
+        "name": "Highlord Bolvar Fordragon",
+        "entityID": 1748,
+        "npc": true,
+        "x": 0.78
+      }
+    ],
+    "title": "Journey to Sentinel Hill",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Highlord Bolvar Fordragon",
+        "entityID": 1748
+      }
+    ],
+    "side": "Alliance",
+    "prerequisiteAny": [
+      94947
+    ],
+    "money": 300,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Gryan Stoutmantle",
+        "entityID": 234
+      }
+    ],
+    "xp": 455,
+    "foreverStatus": "new",
+    "allowedRaceIDs": [
+      95
+    ],
+    "minLevel": 7,
+    "shareable": true,
+    "raceMask": 4294967296,
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/westfall"
+  }
+}

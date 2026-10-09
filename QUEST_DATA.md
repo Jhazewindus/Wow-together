@@ -20,7 +20,7 @@ a scoped run requires a separate output path. Omit `--zone` for the existing
 full-catalogue audit. Add `--require-complete` to return exit status 2 when source
 gaps remain, even when every invariant passes; the report is still written.
 
-The [8 October Dun Morogh review](research/2026-10-08-dun-morogh-review.json)
+The [initial 8 October Dun Morogh review](research/2026-10-08-dun-morogh-review.json)
 retains selected facts, immutable source URLs/hashes and the evidence still
 needed for quests 282, 95217 and 98423. Both chapters pass their invariants:
 151 actions at levels 1–10 and 30 at levels 11–20, with 164 static points checked.
@@ -29,6 +29,30 @@ chain, Quarry item quantities/boar point and Treaty item starter; they do not
 establish the unresolved pickup conditions, a local Copper Bar objective point,
 or the Treaty pickup location. This review makes no shipped-data or routing
 change and does not certify live beta behavior.
+
+The [expanded Dun Morogh review](research/dun-morogh-2026-10-08/README.md), after
+integrating main 0.8.60, captures all 55 compiled quest IDs and refreshes the
+Quarry's Smith's boar work point from current NPC data. Copper Bars, the Treaty
+pickup and Senir's extra offer conditions remain unresolved. Both Rime identities,
+the tester-sourced hand-in gate and Winter Wolf native-veto rules are retained.
+All 151/30 actions remain, but the shared compiler's travel/reward/log tradeoffs
+require review; this data candidate remains part of the draft PR.
+
+The [8 October Durotar review](research/durotar-2026-10-08/README.md) covers
+103 quest IDs across both chapters. Six supported stage corrections close five
+objective-location gaps, retaining all 354 audited actions. Four objective gaps
+and 16 unverified pickup requirements remain. The full-route comparison exposes
+reward-timing and uncertain-travel tradeoffs in the unchanged shared compiler;
+the changes remain a review draft pending main-developer coordination. Evidence,
+exact comparison results and the native-beta player checklist accompany the review.
+
+The [8 October Mulgore review](research/mulgore-2026-10-08/README.md) adds three
+published prerequisite links and reconciles Baine/Mull pickup and hand-in
+locations in eight quest records. It retains actual-offer confirmation and all
+existing gap flags. Separate Tauren captures add the race-specific continuations
+omitted by the first-discovered audit template: 74 distinct quests across three
+chapters. The review records route tradeoffs and the shared builder's suppression
+of The Broodmother's single-quest chapter, both requiring main-developer review.
 
 ## Captured facts and source precedence
 
@@ -441,3 +465,20 @@ alternative from that player's applicable scope; they do not grant completion
 or create manual skips. The accepted version always keeps its actual work.
 Only explicit reviewed relationships qualify; matching quest names alone do not.
 Other baseline exclusivity data is not bulk imported by this release.
+
+The [Durotar 0.8.60 follow-up](research/durotar-2026-10-08/refresh-0.8.60/README.md) retains all six corrections and refreshes the full audit/route comparison. Current sources do not close further gaps. Main-developer coordination remains necessary for ordinary Vile Familiars class-mask versus class-setting semantics, the omitted Need for a Cure Orgrimmar acquisition handoff and full-route reward timing.
+
+The [Mulgore 0.8.60 follow-up](research/mulgore-2026-10-08/refresh-0.8.60/README.md) refreshes the complete standard/Tauren scope and source checks without further packed-data changes. Current Wowhead race masks conflict with pinned Questie beta facts for 99101/99080/99082; existing gates and offer checks remain pending build-specific confirmation. Broodmother visibility and full-route tradeoffs still require main-developer coordination.
+
+The [Dun Morogh follow-up](research/dun-morogh-2026-10-08/refresh-0.8.60/README.md) refreshes source checks and the complete standard/dwarf captures without further packed-data changes. The tester hand-in gate, distinct Rime identities and accepted unfinished-objective marker rules remain intact. Copper/Treaty/Senir gaps, existing routing tradeoffs and later Wetlands pickup inclusion remain explicit review items.
+
+Main 0.8.61 was subsequently integrated on the guide branch; [combined validation](research/dun-morogh-2026-10-08/refresh-0.8.60/integration-0.8.61/README.md) preserves the Dun Morogh action set, facts and marker safeguards alongside inherited session-checkpoint behavior.
+
+## Release 0.8.62 integration
+
+The complete reviewed guide-branch data is integrated, including Duskwood and
+Dustwallow. The geometric optimizer now uses full-journey progression/reward/log
+guards before moving a step; the per-zone source reviews keep their original
+tradeoff reports instead of claiming all routes are globally optimal. Final
+validation, exact source changes and limitations are recorded in
+[the release review](research/release-0.8.62-2026-10-09/README.md).

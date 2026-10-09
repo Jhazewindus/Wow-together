@@ -1,0 +1,7820 @@
+{
+  "275": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 12,
+        "name": "Fen Creeper",
+        "entityID": 1040
+      }
+    ],
+    "seriesRoot": 463,
+    "npcTargets": [
+      {
+        "entityID": 1040,
+        "npc": true,
+        "action": "kill",
+        "name": "Fen Creeper"
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 1040,
+        "mapID": 1437,
+        "action": "kill",
+        "entityID": 1040,
+        "npc": true,
+        "y": 0.316,
+        "objectiveKey": "npc:1040",
+        "name": "Fen Creeper",
+        "x": 0.23399999999999999,
+        "quantity": 12
+      }
+    ],
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.40399999999999997,
+        "mapID": 1437,
+        "name": "Rethiel the Greenwarden",
+        "entityID": 1244,
+        "npc": true,
+        "x": 0.562
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "title": "Blisters on the Land",
+    "level": 26,
+    "areaID": 11,
+    "ends": [
+      {
+        "y": 0.40399999999999997,
+        "mapID": 1437,
+        "name": "Rethiel the Greenwarden",
+        "entityID": 1244,
+        "npc": true,
+        "x": 0.562
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Rethiel the Greenwarden",
+        "entityID": 1244
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 277,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Rethiel the Greenwarden",
+        "entityID": 1244
+      }
+    ],
+    "xp": 2650,
+    "shareable": true,
+    "foreverStatus": "updated",
+    "seriesPosition": 4,
+    "minLevel": 20,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "series": [
+      463,
+      276,
+      277,
+      275
+    ],
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "276": {
+    "prerequisitesRead": true,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 15,
+        "name": "Mosshide Gnoll",
+        "entityID": 1007
+      },
+      {
+        "entityType": "npc",
+        "quantity": 10,
+        "name": "Mosshide Mongrel",
+        "entityID": 1008
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 21,
+    "areaID": 11,
+    "seriesPosition": 2,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Rethiel the Greenwarden",
+        "entityID": 1244
+      }
+    ],
+    "xp": 1250,
+    "minLevel": 20,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 15,
+          "name": "Mosshide Gnoll",
+          "entityID": 1007
+        },
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "name": "Mosshide Mongrel",
+          "entityID": 1008
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Rethiel the Greenwarden",
+          "entityID": 1244
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Rethiel the Greenwarden",
+          "entityID": 1244
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/wetlands",
+    "raceMask": 0,
+    "mapID": 1437,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Rethiel the Greenwarden",
+        "entityID": 1244
+      }
+    ],
+    "seriesRoot": 463,
+    "ends": [
+      {
+        "y": 0.40399999999999997,
+        "mapID": 1437,
+        "name": "Rethiel the Greenwarden",
+        "entityID": 1244,
+        "npc": true,
+        "x": 0.562
+      }
+    ],
+    "shareable": true,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "previousQuest": 463,
+    "objectives": [
+      {
+        "sourceObjective": 1007,
+        "mapID": 1437,
+        "action": "kill",
+        "entityID": 1007,
+        "npc": true,
+        "y": 0.632,
+        "objectiveKey": "npc:1007",
+        "name": "Mosshide Gnoll",
+        "x": 0.644,
+        "quantity": 15
+      },
+      {
+        "sourceObjective": 1008,
+        "mapID": 1437,
+        "action": "kill",
+        "entityID": 1008,
+        "npc": true,
+        "y": 0.6940000000000001,
+        "objectiveKey": "npc:1008",
+        "name": "Mosshide Mongrel",
+        "x": 0.626,
+        "quantity": 10
+      }
+    ],
+    "series": [
+      463,
+      276,
+      277,
+      275
+    ],
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.40399999999999997,
+        "mapID": 1437,
+        "name": "Rethiel the Greenwarden",
+        "entityID": 1244,
+        "npc": true,
+        "x": 0.562
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "title": "Tramping Paws",
+    "classMask": 0,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "entityID": 1007,
+        "npc": true,
+        "action": "kill",
+        "name": "Mosshide Gnoll"
+      },
+      {
+        "entityID": 1008,
+        "npc": true,
+        "action": "kill",
+        "name": "Mosshide Mongrel"
+      }
+    ]
+  },
+  "277": {
+    "prerequisitesRead": true,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 9,
+        "name": "Crude Flint",
+        "entityID": 2611
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 23,
+    "areaID": 11,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 0,
+        "itemName": "Crude Flint",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Crude Flint",
+            "action": "collect",
+            "entityID": 1009,
+            "npc": true,
+            "y": 0.6920000000000001,
+            "x": 0.626,
+            "name": "Mosshide Mistweaver",
+            "mapID": 1437
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Crude Flint",
+            "action": "collect",
+            "entityID": 1010,
+            "npc": true,
+            "y": 0.58,
+            "x": 0.61,
+            "name": "Mosshide Fenrunner",
+            "mapID": 1437
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Crude Flint",
+            "action": "collect",
+            "entityID": 1011,
+            "npc": true,
+            "y": 0.32,
+            "x": 0.354,
+            "name": "Mosshide Trapper",
+            "mapID": 1437
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Crude Flint",
+            "action": "collect",
+            "entityID": 1012,
+            "npc": true,
+            "y": 0.306,
+            "x": 0.38799999999999996,
+            "name": "Mosshide Brute",
+            "mapID": 1437
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Crude Flint",
+            "action": "collect",
+            "entityID": 1013,
+            "npc": true,
+            "y": 0.324,
+            "x": 0.313,
+            "name": "Mosshide Mystic",
+            "mapID": 1437
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Crude Flint",
+            "action": "collect",
+            "entityID": 1014,
+            "npc": true,
+            "y": 0.32299999999999995,
+            "x": 0.314,
+            "name": "Mosshide Alpha",
+            "mapID": 1437
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Crude Flint",
+            "action": "collect",
+            "entityID": 14425,
+            "npc": true,
+            "y": 0.308,
+            "x": 0.302,
+            "name": "Gnawbone",
+            "mapID": 1437
+          }
+        ]
+      }
+    ],
+    "seriesPosition": 3,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Rethiel the Greenwarden",
+        "entityID": 1244
+      }
+    ],
+    "xp": 1850,
+    "minLevel": 20,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 9,
+          "name": "Crude Flint",
+          "entityID": 2611
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Rethiel the Greenwarden",
+          "entityID": 1244
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Rethiel the Greenwarden",
+          "entityID": 1244
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/wetlands",
+    "raceMask": 0,
+    "mapID": 1437,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Rethiel the Greenwarden",
+        "entityID": 1244
+      }
+    ],
+    "seriesRoot": 463,
+    "requiredItems": [
+      {
+        "quantity": 9,
+        "name": "Crude Flint",
+        "itemID": 2611
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.40399999999999997,
+        "mapID": 1437,
+        "name": "Rethiel the Greenwarden",
+        "entityID": 1244,
+        "npc": true,
+        "x": 0.562
+      }
+    ],
+    "shareable": true,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "previousQuest": 276,
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1437,
+        "legacyStepKey": "q:1437:npc:1010",
+        "entityID": 1010,
+        "npc": true,
+        "x": 0.61,
+        "y": 0.58,
+        "objectiveKey": "item:2611",
+        "itemID": 2611,
+        "quantity": 9,
+        "name": "Mosshide Fenrunner",
+        "itemName": "Crude Flint",
+        "alternativeCount": 7,
+        "action": "collect"
+      }
+    ],
+    "series": [
+      463,
+      276,
+      277,
+      275
+    ],
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.40399999999999997,
+        "mapID": 1437,
+        "name": "Rethiel the Greenwarden",
+        "entityID": 1244,
+        "npc": true,
+        "x": 0.562
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "title": "Fire Taboo",
+    "classMask": 0,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Crude Flint",
+        "name": "Mosshide Mistweaver",
+        "entityID": 1009,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Crude Flint",
+        "name": "Mosshide Fenrunner",
+        "entityID": 1010,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Crude Flint",
+        "name": "Mosshide Trapper",
+        "entityID": 1011,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Crude Flint",
+        "name": "Mosshide Brute",
+        "entityID": 1012,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Crude Flint",
+        "name": "Mosshide Mystic",
+        "entityID": 1013,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Crude Flint",
+        "name": "Mosshide Alpha",
+        "entityID": 1014,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Crude Flint",
+        "name": "Gnawbone",
+        "entityID": 14425,
+        "npc": true,
+        "action": "collect"
+      }
+    ]
+  },
+  "279": {
+    "prerequisitesRead": true,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 12,
+        "name": "Bluegill Murloc",
+        "entityID": 1024
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Gobbler's Head",
+        "entityID": 3618
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 22,
+    "areaID": 11,
+    "seriesPosition": 1,
+    "money": 1400,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Karl Boran",
+        "entityID": 1242
+      }
+    ],
+    "xp": 1750,
+    "minLevel": 20,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 12,
+          "name": "Bluegill Murloc",
+          "entityID": 1024
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Gobbler's Head",
+          "entityID": 3618
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Karl Boran",
+          "entityID": 1242
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Karl Boran",
+          "entityID": 1242
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/wetlands",
+    "raceMask": 0,
+    "mapID": 1437,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Karl Boran",
+        "entityID": 1242
+      }
+    ],
+    "seriesRoot": 279,
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Gobbler's Head",
+        "itemID": 3618
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.586,
+        "mapID": 1437,
+        "name": "Karl Boran",
+        "entityID": 1242,
+        "npc": true,
+        "x": 0.084
+      }
+    ],
+    "shareable": true,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "title": "Claws from the Deep",
+    "objectives": [
+      {
+        "sourceObjective": 1024,
+        "mapID": 1437,
+        "action": "kill",
+        "entityID": 1024,
+        "npc": true,
+        "y": 0.38,
+        "objectiveKey": "npc:1024",
+        "name": "Bluegill Murloc",
+        "x": 0.136,
+        "quantity": 12
+      },
+      {
+        "sourceObjective": 1,
+        "mapID": 1437,
+        "action": "collect",
+        "entityID": 1259,
+        "npc": true,
+        "y": 0.4,
+        "objectiveKey": "item:3618",
+        "name": "Gobbler",
+        "x": 0.16399999999999998,
+        "quantity": 1,
+        "legacyStepKey": "q:1437:npc:1259",
+        "itemName": "Gobbler's Head",
+        "itemID": 3618
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "series": [
+      279,
+      281,
+      284,
+      285,
+      286,
+      98189,
+      98190,
+      98191
+    ],
+    "starts": [
+      {
+        "y": 0.586,
+        "mapID": 1437,
+        "name": "Karl Boran",
+        "entityID": 1242,
+        "npc": true,
+        "x": 0.084
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "entityID": 1024,
+        "npc": true,
+        "action": "kill",
+        "name": "Bluegill Murloc"
+      },
+      {
+        "itemName": "Gobbler's Head",
+        "name": "Gobbler",
+        "entityID": 1259,
+        "npc": true,
+        "action": "collect"
+      }
+    ]
+  },
+  "281": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": {},
+    "seriesRoot": 279,
+    "objectives": {},
+    "series": [
+      279,
+      281,
+      284,
+      285,
+      286,
+      98189,
+      98190,
+      98191
+    ],
+    "starts": [
+      {
+        "y": 0.586,
+        "mapID": 1437,
+        "name": "Karl Boran",
+        "entityID": 1242,
+        "npc": true,
+        "x": 0.084
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.415,
+        "x": 0.135,
+        "name": "Damaged Crate",
+        "entityID": 261,
+        "mapID": 1437
+      }
+    ],
+    "title": "Reclaiming Goods",
+    "level": 25,
+    "areaID": 11,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Karl Boran",
+        "entityID": 1242
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "previousQuest": 279,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "object",
+        "name": "Damaged Crate",
+        "entityID": 261
+      }
+    ],
+    "xp": 510,
+    "shareable": true,
+    "foreverStatus": "unchanged",
+    "seriesPosition": 2,
+    "minLevel": 20,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Karl Boran",
+          "entityID": 1242
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "object",
+          "name": "Damaged Crate",
+          "entityID": 261
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "284": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": {},
+    "seriesRoot": 279,
+    "objectives": {},
+    "series": [
+      279,
+      281,
+      284,
+      285,
+      286,
+      98189,
+      98190,
+      98191
+    ],
+    "starts": [
+      {
+        "y": 0.415,
+        "x": 0.135,
+        "name": "Damaged Crate",
+        "entityID": 261,
+        "mapID": 1437
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.381,
+        "x": 0.136,
+        "name": "Sealed Barrel",
+        "entityID": 142151,
+        "mapID": 1437
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 25,
+    "areaID": 11,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Damaged Crate",
+        "entityID": 261
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 281,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "object",
+        "name": "Sealed Barrel",
+        "entityID": 142151
+      }
+    ],
+    "xp": 510,
+    "title": "The Search Continues",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 3,
+    "minLevel": 20,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "object",
+          "name": "Damaged Crate",
+          "entityID": 261
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "object",
+          "name": "Sealed Barrel",
+          "entityID": 142151
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "285": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": {},
+    "seriesRoot": 279,
+    "objectives": {},
+    "series": [
+      279,
+      281,
+      284,
+      285,
+      286,
+      98189,
+      98190,
+      98191
+    ],
+    "starts": [
+      {
+        "y": 0.381,
+        "x": 0.136,
+        "name": "Sealed Barrel",
+        "entityID": 142151,
+        "mapID": 1437
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.349,
+        "x": 0.139,
+        "name": "Half-buried Barrel",
+        "entityID": 259,
+        "mapID": 1437
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 25,
+    "areaID": 11,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Sealed Barrel",
+        "entityID": 142151
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 284,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "object",
+        "name": "Half-buried Barrel",
+        "entityID": 259
+      }
+    ],
+    "xp": 1000,
+    "title": "Search More Hovels",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 4,
+    "minLevel": 20,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "object",
+          "name": "Sealed Barrel",
+          "entityID": 142151
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "object",
+          "name": "Half-buried Barrel",
+          "entityID": 259
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "286": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "objectives": {},
+    "zone": "Wetlands",
+    "requirements": {},
+    "seriesRoot": 279,
+    "requiredItems": {},
+    "series": [
+      279,
+      281,
+      284,
+      285,
+      286,
+      98189,
+      98190,
+      98191
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Menethil Statuette",
+        "entityID": 2625
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.349,
+        "x": 0.139,
+        "name": "Half-buried Barrel",
+        "entityID": 259,
+        "mapID": 1437
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.586,
+        "mapID": 1437,
+        "name": "Karl Boran",
+        "entityID": 1242,
+        "npc": true,
+        "x": 0.084
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 25,
+    "areaID": 11,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Half-buried Barrel",
+        "entityID": 259
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 285,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Karl Boran",
+        "entityID": 1242
+      }
+    ],
+    "xp": 1500,
+    "title": "Return the Statuette",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 5,
+    "minLevel": 20,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "object",
+          "name": "Half-buried Barrel",
+          "entityID": 259
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Menethil Statuette",
+          "entityID": 2625
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Karl Boran",
+          "entityID": 1242
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "288": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 2594,
+        "name": "Flagon of Dwarven Honeymead"
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Flagon of Dwarven Honeymead",
+        "name": "Innkeeper Helbrek",
+        "entityID": 1464,
+        "npc": true,
+        "action": "buy"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "buyable": true,
+        "itemID": 2594,
+        "name": "Flagon of Dwarven Honeymead"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "itemName": "Flagon of Dwarven Honeymead",
+        "action": "buy",
+        "entityID": 1464,
+        "npc": true,
+        "y": 0.608,
+        "objectiveKey": "item:2594",
+        "itemID": 2594,
+        "x": 0.106,
+        "quantity": 1,
+        "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)",
+        "name": "Innkeeper Helbrek",
+        "mapID": 1437
+      }
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 1239,
+        "npc": true,
+        "sourceZone": "Wetlands",
+        "x": 0.10800000000000001,
+        "name": "First Mate Fitzsimmons",
+        "sourceAreaID": 11,
+        "y": 0.594
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "title": "The Third Fleet",
+    "level": 27,
+    "areaID": 11,
+    "raceMask": 4294967373,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "First Mate Fitzsimmons",
+        "entityID": 1239
+      }
+    ],
+    "side": "Alliance",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 1239,
+        "npc": true,
+        "sourceZone": "Wetlands",
+        "x": 0.10800000000000001,
+        "name": "First Mate Fitzsimmons",
+        "sourceAreaID": 11,
+        "y": 0.594
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "First Mate Fitzsimmons",
+        "entityID": 1239
+      }
+    ],
+    "xp": 220,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 22,
+    "requirementSource": "Warcraft DB Forever structured objectives",
+    "shareable": true,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 2594,
+          "name": "Flagon of Dwarven Honeymead"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "First Mate Fitzsimmons",
+          "entityID": 1239
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "First Mate Fitzsimmons",
+          "entityID": 1239
+        }
+      ]
+    },
+    "objectiveFactsSource": "Warcraft DB Forever structured objectives",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "289": {
+    "prerequisitesRead": true,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 13,
+        "action": "kill",
+        "entityID": 1157,
+        "name": "Cursed Sailor"
+      },
+      {
+        "entityType": "npc",
+        "quantity": 5,
+        "action": "kill",
+        "entityID": 1158,
+        "name": "Cursed Marine"
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 3619,
+        "name": "Snellig's Snuffbox"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "otherLocationsIncomplete": false,
+    "level": 29,
+    "areaID": 11,
+    "money": 1900,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "First Mate Fitzsimmons",
+        "entityID": 1239
+      }
+    ],
+    "xp": 1750,
+    "minLevel": 22,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 13,
+          "action": "kill",
+          "entityID": 1157,
+          "name": "Cursed Sailor"
+        },
+        {
+          "entityType": "npc",
+          "quantity": 5,
+          "action": "kill",
+          "entityID": 1158,
+          "name": "Cursed Marine"
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 3619,
+          "name": "Snellig's Snuffbox"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "First Mate Fitzsimmons",
+          "entityID": 1239
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "First Mate Fitzsimmons",
+          "entityID": 1239
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/wetlands",
+    "raceMask": 4294967373,
+    "mapID": 1437,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "First Mate Fitzsimmons",
+        "entityID": 1239
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Snellig's Snuffbox",
+        "itemID": 3619
+      }
+    ],
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 1239,
+        "npc": true,
+        "sourceZone": "Wetlands",
+        "x": 0.10800000000000001,
+        "name": "First Mate Fitzsimmons",
+        "sourceAreaID": 11,
+        "y": 0.594
+      }
+    ],
+    "shareable": true,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "foreverStatus": "unchanged",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "action": "kill",
+        "entityID": 1157,
+        "npc": true,
+        "y": 0.30469999999999997,
+        "objectiveKey": "npc:1157",
+        "name": "Cursed Sailor",
+        "sourceAreaID": 11,
+        "x": 0.1393,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantity": 13
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "action": "kill",
+        "entityID": 1158,
+        "npc": true,
+        "y": 0.3095,
+        "objectiveKey": "npc:1158",
+        "name": "Cursed Marine",
+        "sourceAreaID": 11,
+        "x": 0.1352,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantity": 5
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "action": "loot",
+        "entityID": 1159,
+        "npc": true,
+        "x": 0.1379,
+        "y": 0.3018,
+        "objectiveKey": "item:3619",
+        "itemID": 3619,
+        "quantity": 1,
+        "sourceAreaID": 11,
+        "itemName": "Snellig's Snuffbox",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "First Mate Snellig"
+      }
+    ],
+    "objectiveFactsSource": "Warcraft DB Forever structured objectives",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 1239,
+        "npc": true,
+        "sourceZone": "Wetlands",
+        "x": 0.10800000000000001,
+        "name": "First Mate Fitzsimmons",
+        "sourceAreaID": 11,
+        "y": 0.594
+      }
+    ],
+    "requirementSource": "Warcraft DB Forever structured objectives",
+    "title": "The Cursed Crew",
+    "classMask": 0,
+    "prerequisiteAny": [
+      288
+    ],
+    "npcTargets": [
+      {
+        "entityID": 1157,
+        "npc": true,
+        "action": "kill",
+        "name": "Cursed Sailor"
+      },
+      {
+        "entityID": 1158,
+        "npc": true,
+        "action": "kill",
+        "name": "Cursed Marine"
+      },
+      {
+        "itemName": "Snellig's Snuffbox",
+        "name": "First Mate Snellig",
+        "entityID": 1159,
+        "npc": true,
+        "action": "loot"
+      }
+    ]
+  },
+  "290": {
+    "prerequisitesRead": true,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 2629,
+        "name": "Intrepid Strongbox Key"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "otherLocationsIncomplete": false,
+    "level": 30,
+    "areaID": 11,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "object",
+        "name": "Intrepid's Locked Strongbox",
+        "entityID": 112948
+      }
+    ],
+    "xp": 1200,
+    "minLevel": 22,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 2629,
+          "name": "Intrepid Strongbox Key"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "First Mate Fitzsimmons",
+          "entityID": 1239
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "object",
+          "name": "Intrepid's Locked Strongbox",
+          "entityID": 112948
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/wetlands",
+    "raceMask": 4294967373,
+    "mapID": 1437,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "First Mate Fitzsimmons",
+        "entityID": 1239
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Intrepid Strongbox Key",
+        "itemID": 2629
+      }
+    ],
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "ends": [
+      {
+        "entityType": "object",
+        "mapID": 1437,
+        "name": "Intrepid's Locked Strongbox",
+        "y": 0.2404,
+        "entityID": 112948,
+        "x": 0.1438,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "sourceAreaID": 11
+      }
+    ],
+    "shareable": true,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "foreverStatus": "unchanged",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "action": "loot",
+        "entityID": 1160,
+        "npc": true,
+        "x": 0.1545,
+        "y": 0.2361,
+        "objectiveKey": "item:2629",
+        "itemID": 2629,
+        "quantity": 1,
+        "sourceAreaID": 11,
+        "itemName": "Intrepid Strongbox Key",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Captain Halyndor"
+      }
+    ],
+    "objectiveFactsSource": "Warcraft DB Forever structured objectives",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 1239,
+        "npc": true,
+        "sourceZone": "Wetlands",
+        "x": 0.10800000000000001,
+        "name": "First Mate Fitzsimmons",
+        "sourceAreaID": 11,
+        "y": 0.594
+      }
+    ],
+    "requirementSource": "Warcraft DB Forever structured objectives",
+    "title": "Lifting the Curse",
+    "classMask": 0,
+    "prerequisiteAny": [
+      289
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Intrepid Strongbox Key",
+        "name": "Captain Halyndor",
+        "entityID": 1160,
+        "npc": true,
+        "action": "loot"
+      }
+    ]
+  },
+  "292": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": {},
+    "objectives": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "providedItems": [
+      {
+        "entityType": "item",
+        "name": "Cursed Eye of Paleth",
+        "entityID": 2944
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 1217,
+        "npc": true,
+        "sourceZone": "Wetlands",
+        "x": 0.106,
+        "name": "Glorin Steelbrow",
+        "sourceAreaID": 11,
+        "y": 0.604
+      }
+    ],
+    "starts": [
+      {
+        "entityType": "object",
+        "mapID": 1437,
+        "name": "Intrepid's Locked Strongbox",
+        "y": 0.2404,
+        "entityID": 112948,
+        "x": 0.1438,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "sourceAreaID": 11
+      }
+    ],
+    "level": 30,
+    "areaID": 11,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 4294967373,
+    "side": "Alliance",
+    "prerequisiteAny": [
+      290
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Glorin Steelbrow",
+        "entityID": 1217
+      }
+    ],
+    "xp": 1200,
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Intrepid's Locked Strongbox",
+        "entityID": 112948
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 22,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "The Eye of Paleth",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "object",
+          "name": "Intrepid's Locked Strongbox",
+          "entityID": 112948
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "name": "Cursed Eye of Paleth",
+          "entityID": 2944
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Glorin Steelbrow",
+          "entityID": 1217
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "293": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": {},
+    "objectives": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "providedItems": [
+      {
+        "entityType": "item",
+        "name": "Cursed Eye of Paleth",
+        "entityID": 2944
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1453,
+        "entityID": 1284,
+        "npc": true,
+        "y": 0.4547,
+        "x": 0.5031,
+        "name": "Archbishop Benedictus",
+        "sourceAreaID": 1519,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 1217,
+        "npc": true,
+        "y": 0.6059,
+        "x": 0.1058,
+        "name": "Glorin Steelbrow",
+        "sourceAreaID": 11,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "level": 30,
+    "areaID": 11,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 4294967373,
+    "side": "Alliance",
+    "prerequisiteAny": [
+      292
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Archbishop Benedictus",
+        "entityID": 1284
+      }
+    ],
+    "xp": 2450,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Glorin Steelbrow",
+        "entityID": 1217
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 22,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Cleansing the Eye",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Glorin Steelbrow",
+          "entityID": 1217
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "name": "Cursed Eye of Paleth",
+          "entityID": 2944
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Archbishop Benedictus",
+          "entityID": 1284
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "294": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "npcTargets": [
+      {
+        "entityID": 1020,
+        "npc": true,
+        "action": "kill",
+        "name": "Mottled Raptor"
+      },
+      {
+        "entityID": 1021,
+        "npc": true,
+        "action": "kill",
+        "name": "Mottled Screecher"
+      }
+    ],
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 10,
+        "name": "Mottled Raptor",
+        "entityID": 1020
+      },
+      {
+        "entityType": "npc",
+        "quantity": 10,
+        "name": "Mottled Screecher",
+        "entityID": 1021
+      }
+    ],
+    "seriesRoot": 294,
+    "objectives": [
+      {
+        "sourceObjective": 1020,
+        "mapID": 1437,
+        "action": "kill",
+        "entityID": 1020,
+        "npc": true,
+        "y": 0.434,
+        "objectiveKey": "npc:1020",
+        "name": "Mottled Raptor",
+        "x": 0.37,
+        "quantity": 10
+      },
+      {
+        "sourceObjective": 1021,
+        "mapID": 1437,
+        "action": "kill",
+        "entityID": 1021,
+        "npc": true,
+        "y": 0.532,
+        "objectiveKey": "npc:1021",
+        "name": "Mottled Screecher",
+        "x": 0.242,
+        "quantity": 10
+      }
+    ],
+    "series": [
+      294,
+      295,
+      296
+    ],
+    "starts": [
+      {
+        "y": 0.512,
+        "mapID": 1437,
+        "name": "Ormer Ironbraid",
+        "entityID": 1078,
+        "npc": true,
+        "x": 0.38
+      }
+    ],
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 24,
+    "areaID": 11,
+    "ends": [
+      {
+        "y": 0.512,
+        "mapID": 1437,
+        "name": "Ormer Ironbraid",
+        "entityID": 1078,
+        "npc": true,
+        "x": 0.38
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Ormer Ironbraid",
+        "entityID": 1078
+      }
+    ],
+    "side": "Alliance",
+    "seriesPosition": 1,
+    "money": 1700,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Ormer Ironbraid",
+        "entityID": 1078
+      }
+    ],
+    "xp": 1950,
+    "title": "Ormer's Revenge",
+    "foreverStatus": "unchanged",
+    "shareable": true,
+    "minLevel": 22,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "name": "Mottled Raptor",
+          "entityID": 1020
+        },
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "name": "Mottled Screecher",
+          "entityID": 1021
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Ormer Ironbraid",
+          "entityID": 1078
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Ormer Ironbraid",
+          "entityID": 1078
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "295": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "npcTargets": [
+      {
+        "entityID": 1022,
+        "npc": true,
+        "action": "kill",
+        "name": "Mottled Scytheclaw"
+      },
+      {
+        "entityID": 1023,
+        "npc": true,
+        "action": "kill",
+        "name": "Mottled Razormaw"
+      }
+    ],
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 10,
+        "action": "kill",
+        "entityID": 1022,
+        "name": "Mottled Scytheclaw"
+      },
+      {
+        "entityType": "npc",
+        "quantity": 10,
+        "action": "kill",
+        "entityID": 1023,
+        "name": "Mottled Razormaw"
+      }
+    ],
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "action": "kill",
+        "entityID": 1022,
+        "npc": true,
+        "y": 0.5091,
+        "objectiveKey": "npc:1022",
+        "name": "Mottled Scytheclaw",
+        "sourceAreaID": 11,
+        "x": 0.3444,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantity": 10
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "action": "kill",
+        "entityID": 1023,
+        "npc": true,
+        "sourceZone": "Wetlands",
+        "objectiveKey": "npc:1023",
+        "name": "Mottled Razormaw",
+        "sourceAreaID": 11,
+        "y": 0.506,
+        "x": 0.344,
+        "quantity": 10
+      }
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 1078,
+        "npc": true,
+        "y": 0.5089,
+        "x": 0.3818,
+        "name": "Ormer Ironbraid",
+        "sourceAreaID": 11,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "title": "Ormer's Revenge",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "raceMask": 4294967373,
+    "level": 27,
+    "areaID": 11,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Ormer Ironbraid",
+        "entityID": 1078
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 1078,
+        "npc": true,
+        "y": 0.5089,
+        "x": 0.3818,
+        "name": "Ormer Ironbraid",
+        "sourceAreaID": 11,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "side": "Alliance",
+    "prerequisiteAny": [
+      294
+    ],
+    "money": 2200,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Ormer Ironbraid",
+        "entityID": 1078
+      }
+    ],
+    "xp": 2200,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 22,
+    "requirementSource": "Warcraft DB Forever structured objectives",
+    "shareable": true,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "action": "kill",
+          "entityID": 1022,
+          "name": "Mottled Scytheclaw"
+        },
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "action": "kill",
+          "entityID": 1023,
+          "name": "Mottled Razormaw"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Ormer Ironbraid",
+          "entityID": 1078
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Ormer Ironbraid",
+          "entityID": 1078
+        }
+      ]
+    },
+    "objectiveFactsSource": "Warcraft DB Forever structured objectives",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "296": {
+    "prerequisitesRead": true,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 3638,
+        "name": "Sarltooth's Talon"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "otherLocationsIncomplete": false,
+    "level": 29,
+    "areaID": 11,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Ormer Ironbraid",
+        "entityID": 1078
+      }
+    ],
+    "xp": 2950,
+    "minLevel": 22,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 3638,
+          "name": "Sarltooth's Talon"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Ormer Ironbraid",
+          "entityID": 1078
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Ormer Ironbraid",
+          "entityID": 1078
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/wetlands",
+    "raceMask": 4294967373,
+    "mapID": 1437,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Ormer Ironbraid",
+        "entityID": 1078
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Sarltooth's Talon",
+        "itemID": 3638
+      }
+    ],
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 1078,
+        "npc": true,
+        "y": 0.5089,
+        "x": 0.3818,
+        "name": "Ormer Ironbraid",
+        "sourceAreaID": 11,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "shareable": true,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "foreverStatus": "unchanged",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "action": "loot",
+        "entityID": 1353,
+        "npc": true,
+        "x": 0.3326,
+        "y": 0.5151,
+        "objectiveKey": "item:3638",
+        "itemID": 3638,
+        "quantity": 1,
+        "sourceAreaID": 11,
+        "itemName": "Sarltooth's Talon",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Sarltooth"
+      }
+    ],
+    "objectiveFactsSource": "Warcraft DB Forever structured objectives",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 1078,
+        "npc": true,
+        "y": 0.5089,
+        "x": 0.3818,
+        "name": "Ormer Ironbraid",
+        "sourceAreaID": 11,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "requirementSource": "Warcraft DB Forever structured objectives",
+    "title": "Ormer's Revenge",
+    "classMask": 0,
+    "prerequisiteAny": [
+      295
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Sarltooth's Talon",
+        "name": "Sarltooth",
+        "entityID": 1353,
+        "npc": true,
+        "action": "loot"
+      }
+    ]
+  },
+  "299": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 2658,
+        "name": "Ados Fragment"
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 2659,
+        "name": "Modr Fragment"
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 2660,
+        "name": "Golm Fragment"
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 2661,
+        "name": "Neru Fragment"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Ados Fragment",
+        "itemID": 2658
+      },
+      {
+        "quantity": 1,
+        "name": "Modr Fragment",
+        "itemID": 2659
+      },
+      {
+        "quantity": 1,
+        "name": "Golm Fragment",
+        "itemID": 2660
+      },
+      {
+        "quantity": 1,
+        "name": "Neru Fragment",
+        "itemID": 2661
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1437,
+        "action": "gather",
+        "entityID": 35252,
+        "x": 0.342,
+        "y": 0.508,
+        "objectiveKey": "item:2658",
+        "itemID": 2658,
+        "quantity": 1,
+        "sourceAreaID": 11,
+        "itemName": "Ados Fragment",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Ancient Relic"
+      },
+      {
+        "entityType": "object",
+        "mapID": 1437,
+        "action": "gather",
+        "entityID": 334,
+        "x": 0.342,
+        "y": 0.508,
+        "objectiveKey": "item:2659",
+        "itemID": 2659,
+        "quantity": 1,
+        "sourceAreaID": 11,
+        "itemName": "Modr Fragment",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Ancient Relic"
+      },
+      {
+        "entityType": "object",
+        "mapID": 1437,
+        "action": "gather",
+        "entityID": 333,
+        "x": 0.342,
+        "y": 0.508,
+        "objectiveKey": "item:2660",
+        "itemID": 2660,
+        "quantity": 1,
+        "sourceAreaID": 11,
+        "itemName": "Golm Fragment",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Ancient Relic"
+      },
+      {
+        "entityType": "object",
+        "mapID": 1437,
+        "action": "gather",
+        "entityID": 331,
+        "x": 0.342,
+        "y": 0.508,
+        "objectiveKey": "item:2661",
+        "itemID": 2661,
+        "quantity": 1,
+        "sourceAreaID": 11,
+        "itemName": "Neru Fragment",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Loose Soil"
+      }
+    ],
+    "level": 27,
+    "areaID": 11,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 1077,
+        "npc": true,
+        "sourceZone": "Wetlands",
+        "x": 0.38799999999999996,
+        "name": "Prospector Whelgar",
+        "sourceAreaID": 11,
+        "y": 0.522
+      }
+    ],
+    "title": "Uncovering the Past",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Prospector Whelgar",
+        "entityID": 1077
+      }
+    ],
+    "side": "Alliance",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 1077,
+        "npc": true,
+        "sourceZone": "Wetlands",
+        "x": 0.38799999999999996,
+        "name": "Prospector Whelgar",
+        "sourceAreaID": 11,
+        "y": 0.522
+      }
+    ],
+    "money": 2200,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Prospector Whelgar",
+        "entityID": 1077
+      }
+    ],
+    "xp": 2200,
+    "foreverStatus": "updated",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 22,
+    "requirementSource": "Warcraft DB Forever structured objectives",
+    "shareable": true,
+    "raceMask": 4294967373,
+    "objectiveFactsSource": "Warcraft DB Forever structured objectives",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "303": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 15,
+        "action": "kill",
+        "entityID": 1051,
+        "name": "Dark Iron Dwarf"
+      },
+      {
+        "entityType": "npc",
+        "quantity": 5,
+        "action": "kill",
+        "entityID": 1053,
+        "name": "Dark Iron Tunneler"
+      },
+      {
+        "entityType": "npc",
+        "quantity": 5,
+        "action": "kill",
+        "entityID": 1052,
+        "name": "Dark Iron Saboteur"
+      },
+      {
+        "entityType": "npc",
+        "quantity": 5,
+        "action": "kill",
+        "entityID": 1054,
+        "name": "Dark Iron Demolitionist"
+      }
+    ],
+    "npcTargets": [
+      {
+        "entityID": 1051,
+        "npc": true,
+        "action": "kill",
+        "name": "Dark Iron Dwarf"
+      },
+      {
+        "entityID": 1053,
+        "npc": true,
+        "action": "kill",
+        "name": "Dark Iron Tunneler"
+      },
+      {
+        "entityID": 1052,
+        "npc": true,
+        "action": "kill",
+        "name": "Dark Iron Saboteur"
+      },
+      {
+        "entityID": 1054,
+        "npc": true,
+        "action": "kill",
+        "name": "Dark Iron Demolitionist"
+      }
+    ],
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "action": "kill",
+        "entityID": 1051,
+        "npc": true,
+        "y": 0.1661,
+        "objectiveKey": "npc:1051",
+        "name": "Dark Iron Dwarf",
+        "sourceAreaID": 11,
+        "x": 0.48009999999999997,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantity": 15
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "action": "kill",
+        "entityID": 1053,
+        "npc": true,
+        "y": 0.1659,
+        "objectiveKey": "npc:1053",
+        "name": "Dark Iron Tunneler",
+        "sourceAreaID": 11,
+        "x": 0.46259999999999996,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantity": 5
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "action": "kill",
+        "entityID": 1052,
+        "npc": true,
+        "y": 0.171,
+        "objectiveKey": "npc:1052",
+        "name": "Dark Iron Saboteur",
+        "sourceAreaID": 11,
+        "x": 0.4706,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantity": 5
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "action": "kill",
+        "entityID": 1054,
+        "npc": true,
+        "y": 0.1863,
+        "objectiveKey": "npc:1054",
+        "name": "Dark Iron Demolitionist",
+        "sourceAreaID": 11,
+        "x": 0.4669,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantity": 5
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 1074,
+        "npc": true,
+        "y": 0.18230000000000002,
+        "x": 0.49670000000000003,
+        "name": "Motley Garmason",
+        "sourceAreaID": 11,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "title": "The Dark Iron War",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "raceMask": 4294967373,
+    "level": 30,
+    "areaID": 11,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 1074,
+        "npc": true,
+        "y": 0.18230000000000002,
+        "x": 0.49670000000000003,
+        "name": "Motley Garmason",
+        "sourceAreaID": 11,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Motley Garmason",
+        "entityID": 1074
+      }
+    ],
+    "money": 2500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Motley Garmason",
+        "entityID": 1074
+      }
+    ],
+    "xp": 2450,
+    "questType": "Elite",
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 25,
+    "requirementSource": "Warcraft DB Forever structured objectives",
+    "shareable": true,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 15,
+          "action": "kill",
+          "entityID": 1051,
+          "name": "Dark Iron Dwarf"
+        },
+        {
+          "entityType": "npc",
+          "quantity": 5,
+          "action": "kill",
+          "entityID": 1053,
+          "name": "Dark Iron Tunneler"
+        },
+        {
+          "entityType": "npc",
+          "quantity": 5,
+          "action": "kill",
+          "entityID": 1052,
+          "name": "Dark Iron Saboteur"
+        },
+        {
+          "entityType": "npc",
+          "quantity": 5,
+          "action": "kill",
+          "entityID": 1054,
+          "name": "Dark Iron Demolitionist"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Motley Garmason",
+          "entityID": 1074
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Motley Garmason",
+          "entityID": 1074
+        }
+      ]
+    },
+    "objectiveFactsSource": "Warcraft DB Forever structured objectives",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "304": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "npcTargets": [
+      {
+        "itemName": "Ear of Balgaras",
+        "name": "Balgaras the Foul",
+        "entityID": 1364,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 3639,
+        "name": "Ear of Balgaras"
+      }
+    ],
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "action": "loot",
+        "entityID": 1364,
+        "npc": true,
+        "x": 0.47,
+        "y": 0.17,
+        "objectiveKey": "item:3639",
+        "itemID": 3639,
+        "quantity": 1,
+        "sourceAreaID": 11,
+        "itemName": "Ear of Balgaras",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Balgaras the Foul"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Ear of Balgaras",
+        "itemID": 3639
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 1071,
+        "npc": true,
+        "sourceZone": "Wetlands",
+        "x": 0.498,
+        "name": "Longbraid the Grim",
+        "sourceAreaID": 11,
+        "y": 0.182
+      }
+    ],
+    "title": "A Grim Task",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "raceMask": 4294967373,
+    "level": 34,
+    "areaID": 11,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 1071,
+        "npc": true,
+        "sourceZone": "Wetlands",
+        "x": 0.498,
+        "name": "Longbraid the Grim",
+        "sourceAreaID": 11,
+        "y": 0.182
+      }
+    ],
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Longbraid the Grim",
+        "entityID": 1071
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Longbraid the Grim",
+        "entityID": 1071
+      }
+    ],
+    "xp": 3350,
+    "questType": "Elite",
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 26,
+    "requirementSource": "Warcraft DB Forever structured objectives",
+    "shareable": true,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 3639,
+          "name": "Ear of Balgaras"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Longbraid the Grim",
+          "entityID": 1071
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Longbraid the Grim",
+          "entityID": 1071
+        }
+      ]
+    },
+    "objectiveFactsSource": "Warcraft DB Forever structured objectives",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "305": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": {},
+    "seriesRoot": 305,
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.522,
+        "mapID": 1437,
+        "name": "Merrin Rockweaver",
+        "entityID": 1076,
+        "npc": true,
+        "x": 0.38799999999999996
+      }
+    ],
+    "objectives": {},
+    "level": 24,
+    "areaID": 11,
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "starts": [
+      {
+        "y": 0.522,
+        "mapID": 1437,
+        "name": "Tarrel Rockweaver",
+        "entityID": 2096,
+        "npc": true,
+        "x": 0.114
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Tarrel Rockweaver",
+        "entityID": 2096
+      }
+    ],
+    "side": "Alliance",
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Merrin Rockweaver",
+        "entityID": 1076
+      }
+    ],
+    "xp": 970,
+    "foreverStatus": "updated",
+    "title": "In Search of the Excavation Team",
+    "minLevel": 21,
+    "shareable": true,
+    "raceMask": 0,
+    "series": [
+      305,
+      306
+    ],
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "306": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "objectives": {},
+    "zone": "Wetlands",
+    "requirements": {},
+    "seriesRoot": 305,
+    "requiredItems": {},
+    "series": [
+      305,
+      306
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Merrin's Letter",
+        "entityID": 2639
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.522,
+        "mapID": 1437,
+        "name": "Merrin Rockweaver",
+        "entityID": 1076,
+        "npc": true,
+        "x": 0.38799999999999996
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.522,
+        "mapID": 1437,
+        "name": "Tarrel Rockweaver",
+        "entityID": 2096,
+        "npc": true,
+        "x": 0.114
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 24,
+    "areaID": 11,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Merrin Rockweaver",
+        "entityID": 1076
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 305,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Tarrel Rockweaver",
+        "entityID": 2096
+      }
+    ],
+    "xp": 485,
+    "title": "In Search of The Excavation Team",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 2,
+    "minLevel": 21,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Merrin Rockweaver",
+          "entityID": 1076
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Merrin's Letter",
+          "entityID": 2639
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Tarrel Rockweaver",
+          "entityID": 2096
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "455": {
+    "prerequisitesRead": true,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 8,
+        "name": "Dragonmaw Scout",
+        "entityID": 2103
+      },
+      {
+        "entityType": "npc",
+        "quantity": 6,
+        "name": "Dragonmaw Grunt",
+        "entityID": 2102
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 21,
+    "areaID": 11,
+    "seriesPosition": 2,
+    "money": 1000,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Valstag Ironjaw",
+        "entityID": 2086
+      }
+    ],
+    "xp": 1250,
+    "minLevel": 19,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 8,
+          "name": "Dragonmaw Scout",
+          "entityID": 2103
+        },
+        {
+          "entityType": "npc",
+          "quantity": 6,
+          "name": "Dragonmaw Grunt",
+          "entityID": 2102
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Mountaineer Rockgar",
+          "entityID": 1342
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Valstag Ironjaw",
+          "entityID": 2086
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/wetlands",
+    "raceMask": 0,
+    "mapID": 1437,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Mountaineer Rockgar",
+        "entityID": 1342
+      }
+    ],
+    "seriesRoot": 468,
+    "ends": [
+      {
+        "y": 0.568,
+        "mapID": 1437,
+        "name": "Valstag Ironjaw",
+        "entityID": 2086,
+        "npc": true,
+        "x": 0.1
+      }
+    ],
+    "shareable": true,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "previousQuest": 468,
+    "objectives": [
+      {
+        "sourceObjective": 2102,
+        "mapID": 1437,
+        "action": "kill",
+        "entityID": 2102,
+        "npc": true,
+        "y": 0.698,
+        "objectiveKey": "npc:2102",
+        "name": "Dragonmaw Grunt",
+        "x": 0.5,
+        "quantity": 6
+      },
+      {
+        "sourceObjective": 2103,
+        "mapID": 1437,
+        "action": "kill",
+        "entityID": 2103,
+        "npc": true,
+        "y": 0.7979999999999999,
+        "objectiveKey": "npc:2103",
+        "name": "Dragonmaw Scout",
+        "x": 0.5,
+        "quantity": 8
+      }
+    ],
+    "series": [
+      468,
+      455
+    ],
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.10400000000000001,
+        "mapID": 1432,
+        "name": "Mountaineer Rockgar",
+        "entityID": 1342,
+        "npc": true,
+        "x": 0.254
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "title": "The Algaz Gauntlet",
+    "classMask": 0,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "entityID": 2102,
+        "npc": true,
+        "action": "kill",
+        "name": "Dragonmaw Grunt"
+      },
+      {
+        "entityID": 2103,
+        "npc": true,
+        "action": "kill",
+        "name": "Dragonmaw Scout"
+      }
+    ]
+  },
+  "463": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": {},
+    "seriesRoot": 463,
+    "objectives": {},
+    "series": [
+      463,
+      276,
+      277,
+      275
+    ],
+    "starts": [
+      {
+        "y": 0.596,
+        "mapID": 1437,
+        "name": "First Mate Fitzsimmons",
+        "entityID": 1239,
+        "npc": true,
+        "x": 0.10800000000000001
+      }
+    ],
+    "shareable": true,
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.40399999999999997,
+        "mapID": 1437,
+        "name": "Rethiel the Greenwarden",
+        "entityID": 1244,
+        "npc": true,
+        "x": 0.562
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 21,
+    "areaID": 11,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "First Mate Fitzsimmons",
+        "entityID": 1239
+      }
+    ],
+    "side": "Alliance",
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Rethiel the Greenwarden",
+        "entityID": 1244
+      }
+    ],
+    "xp": 830,
+    "title": "The Greenwarden",
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 20,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 4294967373,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "First Mate Fitzsimmons",
+          "entityID": 1239
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Rethiel the Greenwarden",
+          "entityID": 1244
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "464": {
+    "prerequisitesRead": true,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 8,
+        "action": "collect",
+        "entityID": 3337,
+        "name": "Dragonmaw War Banner"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "otherLocationsIncomplete": false,
+    "level": 28,
+    "areaID": 11,
+    "previousQuest": 473,
+    "money": 2500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Stoutfist",
+        "entityID": 2104
+      }
+    ],
+    "xp": 2300,
+    "minLevel": 23,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "action": "collect",
+          "entityID": 3337,
+          "name": "Dragonmaw War Banner"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Captain Stoutfist",
+          "entityID": 2104
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Captain Stoutfist",
+          "entityID": 2104
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/wetlands",
+    "raceMask": 4294967373,
+    "mapID": 1437,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Stoutfist",
+        "entityID": 2104
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 8,
+        "name": "Dragonmaw War Banner",
+        "itemID": 3337
+      }
+    ],
+    "prerequisiteSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 2104,
+        "npc": true,
+        "sourceZone": "Wetlands",
+        "x": 0.098,
+        "name": "Captain Stoutfist",
+        "sourceAreaID": 11,
+        "y": 0.574
+      }
+    ],
+    "shareable": true,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Warcraft DB Forever structured objectives",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 2104,
+        "npc": true,
+        "sourceZone": "Wetlands",
+        "x": 0.098,
+        "name": "Captain Stoutfist",
+        "sourceAreaID": 11,
+        "y": 0.574
+      }
+    ],
+    "requirementSource": "Warcraft DB Forever structured objectives",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "action": "loot",
+        "entityID": 1035,
+        "npc": true,
+        "x": 0.3823,
+        "y": 0.4585,
+        "objectiveKey": "item:3337",
+        "itemID": 3337,
+        "quantity": 8,
+        "sourceAreaID": 11,
+        "itemName": "Dragonmaw War Banner",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Dragonmaw Swamprunner"
+      }
+    ],
+    "title": "War Banners",
+    "classMask": 0,
+    "npcTargets": [
+      {
+        "itemName": "Dragonmaw War Banner",
+        "name": "Dragonmaw Swamprunner",
+        "entityID": 1035,
+        "npc": true,
+        "action": "loot"
+      }
+    ]
+  },
+  "465": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": {},
+    "objectives": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "providedItems": [
+      {
+        "entityType": "item",
+        "name": "Dwarven Tinder",
+        "entityID": 3339
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "object",
+        "mapID": 1437,
+        "name": "Dragonmaw Catapult",
+        "y": 0.47009999999999996,
+        "entityID": 1609,
+        "x": 0.4746,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "sourceAreaID": 11
+      }
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 2104,
+        "npc": true,
+        "sourceZone": "Wetlands",
+        "x": 0.098,
+        "name": "Captain Stoutfist",
+        "sourceAreaID": 11,
+        "y": 0.574
+      }
+    ],
+    "level": 31,
+    "areaID": 11,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 4294967373,
+    "side": "Alliance",
+    "prerequisiteAny": [
+      464
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "object",
+        "name": "Dragonmaw Catapult",
+        "entityID": 1609
+      }
+    ],
+    "xp": 1900,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Stoutfist",
+        "entityID": 2104
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 23,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Nek'rosh's Gambit",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Captain Stoutfist",
+          "entityID": 2104
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "name": "Dwarven Tinder",
+          "entityID": 3339
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "object",
+          "name": "Dragonmaw Catapult",
+          "entityID": 1609
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "468": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": {},
+    "seriesRoot": 468,
+    "objectives": {},
+    "series": [
+      468,
+      455
+    ],
+    "starts": [
+      {
+        "y": 0.496,
+        "mapID": 1432,
+        "name": "Mountaineer Kadrell",
+        "entityID": 1340,
+        "npc": true,
+        "x": 0.32799999999999996
+      }
+    ],
+    "shareable": true,
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.10400000000000001,
+        "mapID": 1432,
+        "name": "Mountaineer Rockgar",
+        "entityID": 1342,
+        "npc": true,
+        "x": 0.254
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 21,
+    "areaID": 11,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Mountaineer Kadrell",
+        "entityID": 1340
+      }
+    ],
+    "side": "Alliance",
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Mountaineer Rockgar",
+        "entityID": 1342
+      }
+    ],
+    "xp": 165,
+    "title": "Report to Mountaineer Rockgar",
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 19,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 4294967373,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Mountaineer Kadrell",
+          "entityID": 1340
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Mountaineer Rockgar",
+          "entityID": 1342
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "469": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": {},
+    "seriesRoot": 469,
+    "requiredItems": {},
+    "objectives": {},
+    "series": [
+      469,
+      484,
+      471
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Bundle of Crocolisk Skins",
+        "entityID": 3347
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.556,
+        "mapID": 1437,
+        "name": "James Halloran",
+        "entityID": 2094,
+        "npc": true,
+        "x": 0.086
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.39399999999999996,
+        "mapID": 1437,
+        "name": "Einar Stonegrip",
+        "entityID": 2093,
+        "npc": true,
+        "x": 0.498
+      }
+    ],
+    "level": 21,
+    "areaID": 11,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Einar Stonegrip",
+        "entityID": 2093
+      }
+    ],
+    "side": "Alliance",
+    "seriesPosition": 1,
+    "money": 700,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "James Halloran",
+        "entityID": 2094
+      }
+    ],
+    "xp": 830,
+    "foreverStatus": "unchanged",
+    "title": "Daily Delivery",
+    "minLevel": 18,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Einar Stonegrip",
+          "entityID": 2093
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Bundle of Crocolisk Skins",
+          "entityID": 3347
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "James Halloran",
+          "entityID": 2094
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "470": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Sida's Bag",
+        "entityID": 3349
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Sida's Bag",
+        "name": "Crimson Ooze",
+        "entityID": 1031,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Sida's Bag",
+        "name": "Black Ooze",
+        "entityID": 1032,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Sida's Bag",
+        "name": "Monstrous Ooze",
+        "entityID": 1033,
+        "npc": true,
+        "action": "collect"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Sida's Bag",
+        "itemID": 3349
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1437,
+        "legacyStepKey": "q:1437:npc:1032",
+        "entityID": 1032,
+        "npc": true,
+        "x": 0.442,
+        "y": 0.254,
+        "objectiveKey": "item:3349",
+        "itemID": 3349,
+        "quantity": 1,
+        "name": "Black Ooze",
+        "itemName": "Sida's Bag",
+        "alternativeCount": 3,
+        "action": "collect"
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.58,
+        "mapID": 1437,
+        "name": "Sida",
+        "entityID": 2111,
+        "npc": true,
+        "x": 0.11800000000000001
+      }
+    ],
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 24,
+    "areaID": 11,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 0,
+        "itemName": "Sida's Bag",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Sida's Bag",
+            "action": "collect",
+            "entityID": 1031,
+            "npc": true,
+            "y": 0.248,
+            "x": 0.444,
+            "name": "Crimson Ooze",
+            "mapID": 1437
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Sida's Bag",
+            "action": "collect",
+            "entityID": 1032,
+            "npc": true,
+            "y": 0.254,
+            "x": 0.442,
+            "name": "Black Ooze",
+            "mapID": 1437
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Sida's Bag",
+            "action": "collect",
+            "entityID": 1033,
+            "npc": true,
+            "y": 0.242,
+            "x": 0.44,
+            "name": "Monstrous Ooze",
+            "mapID": 1437
+          }
+        ]
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "ends": [
+      {
+        "y": 0.58,
+        "mapID": 1437,
+        "name": "Sida",
+        "entityID": 2111,
+        "npc": true,
+        "x": 0.11800000000000001
+      }
+    ],
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Sida",
+        "entityID": 2111
+      }
+    ],
+    "money": 3500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Sida",
+        "entityID": 2111
+      }
+    ],
+    "xp": 2400,
+    "title": "Digging Through the Ooze",
+    "foreverStatus": "unchanged",
+    "shareable": true,
+    "minLevel": 19,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Sida's Bag",
+          "entityID": 3349
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Sida",
+          "entityID": 2111
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Sida",
+          "entityID": 2111
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "471": {
+    "prerequisitesRead": true,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 6,
+        "action": "collect",
+        "entityID": 3348,
+        "name": "Giant Crocolisk Skin"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "otherLocationsIncomplete": false,
+    "level": 26,
+    "areaID": 11,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "James Halloran",
+        "entityID": 2094
+      }
+    ],
+    "xp": 2100,
+    "minLevel": 18,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 6,
+          "action": "collect",
+          "entityID": 3348,
+          "name": "Giant Crocolisk Skin"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "James Halloran",
+          "entityID": 2094
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "James Halloran",
+          "entityID": 2094
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/wetlands",
+    "raceMask": 4294967373,
+    "mapID": 1437,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "James Halloran",
+        "entityID": 2094
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 6,
+        "name": "Giant Crocolisk Skin",
+        "itemID": 3348
+      }
+    ],
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 2094,
+        "npc": true,
+        "sourceZone": "Wetlands",
+        "x": 0.084,
+        "name": "James Halloran",
+        "sourceAreaID": 11,
+        "y": 0.5579999999999999
+      }
+    ],
+    "shareable": true,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "foreverStatus": "unchanged",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "action": "loot",
+        "entityID": 2089,
+        "npc": true,
+        "x": 0.1698,
+        "y": 0.2686,
+        "objectiveKey": "item:3348",
+        "itemID": 3348,
+        "quantity": 6,
+        "sourceAreaID": 11,
+        "itemName": "Giant Crocolisk Skin",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Giant Wetlands Crocolisk"
+      }
+    ],
+    "objectiveFactsSource": "Warcraft DB Forever structured objectives",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 2094,
+        "npc": true,
+        "sourceZone": "Wetlands",
+        "x": 0.084,
+        "name": "James Halloran",
+        "sourceAreaID": 11,
+        "y": 0.5579999999999999
+      }
+    ],
+    "requirementSource": "Warcraft DB Forever structured objectives",
+    "title": "Apprentice's Duties",
+    "classMask": 0,
+    "prerequisiteAny": [
+      484
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Giant Crocolisk Skin",
+        "name": "Giant Wetlands Crocolisk",
+        "entityID": 2089,
+        "npc": true,
+        "action": "loot"
+      }
+    ]
+  },
+  "472": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": {},
+    "objectives": {},
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.182,
+        "mapID": 1437,
+        "name": "Longbraid the Grim",
+        "entityID": 1071,
+        "npc": true,
+        "x": 0.498
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.5579999999999999,
+        "mapID": 1437,
+        "name": "Harlo Barnaby",
+        "entityID": 2097,
+        "npc": true,
+        "x": 0.10800000000000001
+      }
+    ],
+    "level": 25,
+    "areaID": 11,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Harlo Barnaby",
+        "entityID": 2097
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Longbraid the Grim",
+        "entityID": 1071
+      }
+    ],
+    "xp": 1000,
+    "title": "Fall of Dun Modr",
+    "foreverStatus": "unchanged",
+    "shareable": true,
+    "minLevel": 25,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Harlo Barnaby",
+          "entityID": 2097
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Longbraid the Grim",
+          "entityID": 1071
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "473": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Valstag Ironjaw",
+        "entityID": 2086
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 2104,
+        "npc": true,
+        "sourceZone": "Wetlands",
+        "x": 0.098,
+        "name": "Captain Stoutfist",
+        "sourceAreaID": 11,
+        "y": 0.574
+      }
+    ],
+    "objectives": {},
+    "level": 28,
+    "areaID": 11,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 2086,
+        "npc": true,
+        "sourceZone": "Wetlands",
+        "x": 0.1,
+        "name": "Valstag Ironjaw",
+        "sourceAreaID": 11,
+        "y": 0.568
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "raceMask": 4294967373,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Stoutfist",
+        "entityID": 2104
+      }
+    ],
+    "xp": 230,
+    "prerequisiteAny": [
+      455
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 23,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Report to Captain Stoutfist",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Valstag Ironjaw",
+          "entityID": 2086
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Captain Stoutfist",
+          "entityID": 2104
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "474": {
+    "prerequisitesRead": true,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 3625,
+        "name": "Nek'rosh's Head"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "otherLocationsIncomplete": false,
+    "level": 32,
+    "areaID": 11,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Stoutfist",
+        "entityID": 2104
+      }
+    ],
+    "xp": 2550,
+    "questType": "Elite",
+    "minLevel": 23,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 3625,
+          "name": "Nek'rosh's Head"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "object",
+          "name": "Dragonmaw Catapult",
+          "entityID": 1609
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Captain Stoutfist",
+          "entityID": 2104
+        }
+      ]
+    },
+    "categoryPath": "eastern-kingdoms/wetlands",
+    "raceMask": 4294967373,
+    "mapID": 1437,
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Dragonmaw Catapult",
+        "entityID": 1609
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Nek'rosh's Head",
+        "itemID": 3625
+      }
+    ],
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "prerequisiteAny": [
+      465
+    ],
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 2104,
+        "npc": true,
+        "y": 0.5749,
+        "x": 0.0986,
+        "name": "Captain Stoutfist",
+        "sourceAreaID": 11,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "shareable": true,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "foreverStatus": "unchanged",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "action": "loot",
+        "entityID": 2091,
+        "npc": true,
+        "x": 0.5351,
+        "y": 0.5467,
+        "objectiveKey": "item:3625",
+        "itemID": 3625,
+        "quantity": 1,
+        "sourceAreaID": 11,
+        "itemName": "Nek'rosh's Head",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Chieftain Nek'rosh"
+      }
+    ],
+    "objectiveFactsSource": "Warcraft DB Forever structured objectives",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "starts": [
+      {
+        "entityType": "object",
+        "mapID": 1437,
+        "name": "Dragonmaw Catapult",
+        "y": 0.47009999999999996,
+        "entityID": 1609,
+        "x": 0.4746,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "sourceAreaID": 11
+      }
+    ],
+    "requirementSource": "Warcraft DB Forever structured objectives",
+    "title": "Defeat Nek'rosh",
+    "classMask": 0,
+    "npcTargets": [
+      {
+        "itemName": "Nek'rosh's Head",
+        "name": "Chieftain Nek'rosh",
+        "entityID": 2091,
+        "npc": true,
+        "action": "loot"
+      }
+    ]
+  },
+  "484": {
+    "prerequisitesRead": true,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 6,
+        "name": "Young Crocolisk Skin",
+        "entityID": 3397
+      }
+    ],
+    "prerequisitesUnverified": true,
+    "otherLocationsIncomplete": false,
+    "level": 22,
+    "areaID": 11,
+    "seriesPosition": 2,
+    "money": 1400,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "James Halloran",
+        "entityID": 2094
+      }
+    ],
+    "xp": 1750,
+    "minLevel": 18,
+    "series": [
+      469,
+      484,
+      471
+    ],
+    "categoryPath": "eastern-kingdoms/wetlands",
+    "raceMask": 0,
+    "mapID": 1437,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "James Halloran",
+        "entityID": 2094
+      }
+    ],
+    "seriesRoot": 469,
+    "requiredItems": [
+      {
+        "quantity": 6,
+        "name": "Young Crocolisk Skin",
+        "itemID": 3397
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.556,
+        "mapID": 1437,
+        "name": "James Halloran",
+        "entityID": 2094,
+        "npc": true,
+        "x": 0.086
+      }
+    ],
+    "shareable": true,
+    "side": "Alliance",
+    "previousQuest": 469,
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1437,
+        "action": "collect",
+        "entityID": 1417,
+        "npc": true,
+        "y": 0.38,
+        "objectiveKey": "item:3397",
+        "name": "Young Wetlands Crocolisk",
+        "x": 0.536,
+        "quantity": 6,
+        "legacyStepKey": "q:1437:npc:1417",
+        "itemName": "Young Crocolisk Skin",
+        "itemID": 3397
+      }
+    ],
+    "foreverStatus": "updated",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.556,
+        "mapID": 1437,
+        "name": "James Halloran",
+        "entityID": 2094,
+        "npc": true,
+        "x": 0.086
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "title": "Young Crocolisk Skins",
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Young Crocolisk Skin",
+        "name": "Young Wetlands Crocolisk",
+        "entityID": 1417,
+        "npc": true,
+        "action": "collect"
+      }
+    ]
+  },
+  "631": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "objectives": {},
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 1075,
+        "npc": true,
+        "y": 0.18239999999999998,
+        "x": 0.499,
+        "name": "Rhag Garmason",
+        "sourceAreaID": 11,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "object",
+        "mapID": 1437,
+        "name": "Ebenezer Rustlocke's Corpse",
+        "y": 0.0795,
+        "entityID": 2652,
+        "x": 0.5128,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "sourceAreaID": 11
+      }
+    ],
+    "title": "The Thandol Span",
+    "level": 31,
+    "areaID": 11,
+    "raceMask": 4294967373,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Rhag Garmason",
+        "entityID": 1075
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "object",
+        "name": "Ebenezer Rustlocke's Corpse",
+        "entityID": 2652
+      }
+    ],
+    "xp": 2500,
+    "questType": "Elite",
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 28,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "shareable": true,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Rhag Garmason",
+          "entityID": 1075
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "object",
+          "name": "Ebenezer Rustlocke's Corpse",
+          "entityID": 2652
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "632": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": {},
+    "objectives": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "providedItems": [
+      {
+        "entityType": "item",
+        "name": "Deepfury's Orders",
+        "entityID": 4429
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 1075,
+        "npc": true,
+        "y": 0.18239999999999998,
+        "x": 0.499,
+        "name": "Rhag Garmason",
+        "sourceAreaID": 11,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "starts": [
+      {
+        "entityType": "object",
+        "mapID": 1437,
+        "name": "Ebenezer Rustlocke's Corpse",
+        "y": 0.0795,
+        "entityID": 2652,
+        "x": 0.5128,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "sourceAreaID": 11
+      }
+    ],
+    "level": 31,
+    "areaID": 11,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 4294967373,
+    "side": "Alliance",
+    "prerequisiteAny": [
+      631
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Rhag Garmason",
+        "entityID": 1075
+      }
+    ],
+    "xp": 2500,
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Ebenezer Rustlocke's Corpse",
+        "entityID": 2652
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 28,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "The Thandol Span",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "object",
+          "name": "Ebenezer Rustlocke's Corpse",
+          "entityID": 2652
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "name": "Deepfury's Orders",
+          "entityID": 4429
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Rhag Garmason",
+          "entityID": 1075
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "633": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "object",
+        "quantity": 1,
+        "action": "interact",
+        "entityID": 2704,
+        "name": "Cache of Explosives Destroyed"
+      }
+    ],
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1417,
+        "action": "interact",
+        "entityID": 2704,
+        "y": 0.8805,
+        "objectiveKey": "object:2704",
+        "name": "Cache of Explosives Destroyed",
+        "sourceAreaID": 45,
+        "x": 0.4879,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantity": 1
+      }
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 1075,
+        "npc": true,
+        "y": 0.18239999999999998,
+        "x": 0.499,
+        "name": "Rhag Garmason",
+        "sourceAreaID": 11,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "title": "The Thandol Span",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "raceMask": 4294967373,
+    "level": 31,
+    "areaID": 11,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Rhag Garmason",
+        "entityID": 1075
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 1075,
+        "npc": true,
+        "y": 0.18239999999999998,
+        "x": 0.499,
+        "name": "Rhag Garmason",
+        "sourceAreaID": 11,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "side": "Alliance",
+    "prerequisiteAny": [
+      632
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Rhag Garmason",
+        "entityID": 1075
+      }
+    ],
+    "xp": 2500,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 28,
+    "requirementSource": "Warcraft DB Forever structured objectives",
+    "shareable": true,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "action": "interact",
+          "entityID": 2704,
+          "name": "Cache of Explosives Destroyed"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Rhag Garmason",
+          "entityID": 1075
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Rhag Garmason",
+          "entityID": 1075
+        }
+      ]
+    },
+    "objectiveFactsSource": "Warcraft DB Forever structured objectives",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "634": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Rhag Garmason",
+        "entityID": 1075
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1417,
+        "entityID": 2700,
+        "npc": true,
+        "sourceZone": "Arathi Highlands",
+        "x": 0.45799999999999996,
+        "name": "Captain Nials",
+        "sourceAreaID": 45,
+        "y": 0.474
+      }
+    ],
+    "objectives": {},
+    "level": 31,
+    "areaID": 11,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 1075,
+        "npc": true,
+        "y": 0.18239999999999998,
+        "x": 0.499,
+        "name": "Rhag Garmason",
+        "sourceAreaID": 11,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "raceMask": 4294967373,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Nials",
+        "entityID": 2700
+      }
+    ],
+    "xp": 1250,
+    "prerequisiteAny": [
+      633
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 28,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Plea To The Alliance",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Rhag Garmason",
+          "entityID": 1075
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Captain Nials",
+          "entityID": 2700
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "647": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Foggy MacKreel",
+        "entityID": 2696
+      }
+    ],
+    "requirements": {},
+    "requiredItems": {},
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.586,
+        "mapID": 1424,
+        "name": "Brewmeister Bilger",
+        "entityID": 2705,
+        "npc": true,
+        "x": 0.52
+      }
+    ],
+    "objectives": {},
+    "level": 30,
+    "areaID": 11,
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "MacKreel's Moonshine",
+        "entityID": 4441
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "starts": [
+      {
+        "y": 0.9259999999999999,
+        "mapID": 1417,
+        "name": "Foggy MacKreel",
+        "entityID": 2696,
+        "npc": true,
+        "x": 0.43200000000000005
+      }
+    ],
+    "side": "Alliance",
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "money": 5500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Brewmeister Bilger",
+        "entityID": 2705
+      }
+    ],
+    "xp": 3050,
+    "foreverStatus": "unchanged",
+    "title": "MacKreel's Moonshine",
+    "minLevel": 28,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Foggy MacKreel",
+          "entityID": 2696
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "MacKreel's Moonshine",
+          "entityID": 4441
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Brewmeister Bilger",
+          "entityID": 2705
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "1132": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": {},
+    "seriesRoot": 1132,
+    "objectives": {},
+    "series": [
+      1132,
+      1133
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.452,
+        "mapID": 1445,
+        "name": "Fiora Longears",
+        "entityID": 4456,
+        "npc": true,
+        "x": 0.664
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.578,
+        "mapID": 1437,
+        "name": "Red Jack Flint",
+        "entityID": 4455,
+        "npc": true,
+        "x": 0.098
+      }
+    ],
+    "level": 20,
+    "areaID": 11,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Red Jack Flint",
+        "entityID": 4455
+      }
+    ],
+    "side": "Alliance",
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Fiora Longears",
+        "entityID": 4456
+      }
+    ],
+    "xp": 780,
+    "foreverStatus": "unchanged",
+    "title": "Fiora Longears",
+    "minLevel": 18,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Red Jack Flint",
+          "entityID": 4455
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Fiora Longears",
+          "entityID": 4456
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "1133": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "zone": "Dustwallow Marsh",
+    "requirements": {},
+    "seriesRoot": 1132,
+    "objectives": {},
+    "series": [
+      1132,
+      1133
+    ],
+    "starts": [
+      {
+        "y": 0.452,
+        "mapID": 1445,
+        "name": "Fiora Longears",
+        "entityID": 4456,
+        "npc": true,
+        "x": 0.664
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.488,
+        "mapID": 1440,
+        "name": "Shindrell Swiftfire",
+        "entityID": 3845,
+        "npc": true,
+        "x": 0.34600000000000003
+      }
+    ],
+    "title": "Journey to Astranaar",
+    "level": 20,
+    "areaID": 15,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Fiora Longears",
+        "entityID": 4456
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "previousQuest": 1132,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Shindrell Swiftfire",
+        "entityID": 3845
+      }
+    ],
+    "xp": 0,
+    "shareable": true,
+    "foreverStatus": "unchanged",
+    "seriesPosition": 2,
+    "minLevel": 18,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Fiora Longears",
+          "entityID": 4456
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Shindrell Swiftfire",
+          "entityID": 3845
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1302": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Vincent Hyal",
+        "entityID": 5082
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 5083,
+        "npc": true,
+        "y": 0.4824,
+        "x": 0.6788,
+        "name": "Clerk Lendry",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "level": 35,
+    "areaID": 11,
+    "objectives": {},
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 5082,
+        "npc": true,
+        "sourceZone": "Wetlands",
+        "x": 0.106,
+        "name": "Vincent Hyal",
+        "sourceAreaID": 11,
+        "y": 0.606
+      }
+    ],
+    "side": "Alliance",
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Clerk Lendry",
+        "entityID": 5083
+      }
+    ],
+    "xp": 690,
+    "raceMask": 4294967373,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "James Hyal",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Vincent Hyal",
+          "entityID": 5082
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Clerk Lendry",
+          "entityID": 5083
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "87318": {
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": {},
+    "classMask": 0,
+    "level": 33,
+    "areaID": 11,
+    "money": 0,
+    "endRefs": {},
+    "xp": 2650,
+    "questType": "Elite",
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "objectives": {},
+    "minLevel": 28,
+    "startRefs": {},
+    "title": "Hearts of the Lost",
+    "shareable": true,
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "87491": {
+    "mapID": 1437,
+    "startRefs": {},
+    "requirements": {},
+    "classMask": 0,
+    "level": 32,
+    "areaID": 11,
+    "side": "Alliance",
+    "money": 3000,
+    "endRefs": {},
+    "xp": 2550,
+    "questType": "Elite",
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "minLevel": 27,
+    "objectives": {},
+    "title": "Spark of Freedom",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "88756": {
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 3,
+        "action": "collect",
+        "entityID": 280806,
+        "name": "Stolen Explosives"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 3,
+        "name": "Stolen Explosives",
+        "itemID": 280806
+      }
+    ],
+    "classMask": 0,
+    "level": 32,
+    "areaID": 11,
+    "objectives": {},
+    "missingRequirements": [
+      {
+        "entityType": "item",
+        "quantity": 3,
+        "action": "collect",
+        "entityID": 280806,
+        "name": "Stolen Explosives"
+      }
+    ],
+    "side": "Alliance",
+    "startRefs": {},
+    "money": 3000,
+    "endRefs": {},
+    "xp": 2550,
+    "questType": "Elite",
+    "objectiveFactsSource": "Warcraft DB Forever structured objectives",
+    "minLevel": 27,
+    "requirementSource": "Warcraft DB Forever structured objectives",
+    "shareable": true,
+    "title": "Bring Back a Bang",
+    "objectiveLocationsIncomplete": true,
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "88757": {
+    "mapID": 1437,
+    "startRefs": {},
+    "requirements": {},
+    "classMask": 0,
+    "level": 33,
+    "areaID": 11,
+    "side": "Alliance",
+    "money": 0,
+    "endRefs": {},
+    "xp": 2650,
+    "questType": "Elite",
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "minLevel": 28,
+    "objectives": {},
+    "title": "Accessories of the Lost",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "88758": {
+    "mapID": 1437,
+    "startRefs": {},
+    "requirements": {},
+    "classMask": 0,
+    "level": 33,
+    "areaID": 11,
+    "side": "Alliance",
+    "money": 0,
+    "endRefs": {},
+    "xp": 2650,
+    "questType": "Elite",
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "minLevel": 28,
+    "objectives": {},
+    "title": "Sentiments of the Lost",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "94497": {
+    "raceMask": 4294967373,
+    "missingRequirements": [
+      {
+        "entityType": "item",
+        "quantityUnknown": true,
+        "action": "collect",
+        "entityID": 265734,
+        "name": "Full Brown Waterskin"
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Hervdana Saegrund",
+        "entityID": 258203
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantityUnknown": true,
+        "action": "collect",
+        "entityID": 265734,
+        "name": "Full Brown Waterskin"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 64,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 258203,
+        "npc": true,
+        "y": 0.7643000000000001,
+        "x": 0.6573,
+        "name": "Hervdana Saegrund",
+        "sourceAreaID": 11,
+        "locationSource": "Published Forever beta-observation entity position"
+      }
+    ],
+    "level": 22,
+    "objectives": {},
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 258203,
+        "npc": true,
+        "y": 0.7643000000000001,
+        "x": 0.6573,
+        "name": "Hervdana Saegrund",
+        "sourceAreaID": 11,
+        "locationSource": "Published Forever beta-observation entity position"
+      }
+    ],
+    "side": "Alliance",
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Hervdana Saegrund",
+        "entityID": 258203
+      }
+    ],
+    "xp": 870,
+    "prerequisitesRead": true,
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "title": "Call of Water",
+    "requirementSource": "Published Forever typed objectives",
+    "minLevel": 20,
+    "foreverStatus": "new",
+    "objectiveLocationsIncomplete": true,
+    "categoryPath": "classes/shaman"
+  },
+  "94499": {
+    "raceMask": 4294967373,
+    "missingRequirements": [
+      {
+        "entityType": "item",
+        "quantityUnknown": true,
+        "action": "collect",
+        "entityID": 265748,
+        "name": "Full Red Waterskin"
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Hervdana Saegrund",
+        "entityID": 258203
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantityUnknown": true,
+        "action": "collect",
+        "entityID": 265748,
+        "name": "Full Red Waterskin"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 64,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 258203,
+        "npc": true,
+        "y": 0.7643000000000001,
+        "x": 0.6573,
+        "name": "Hervdana Saegrund",
+        "sourceAreaID": 11,
+        "locationSource": "Published Forever beta-observation entity position"
+      }
+    ],
+    "level": 22,
+    "objectives": {},
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 258203,
+        "npc": true,
+        "y": 0.7643000000000001,
+        "x": 0.6573,
+        "name": "Hervdana Saegrund",
+        "sourceAreaID": 11,
+        "locationSource": "Published Forever beta-observation entity position"
+      }
+    ],
+    "side": "Alliance",
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Hervdana Saegrund",
+        "entityID": 258203
+      }
+    ],
+    "xp": 1300,
+    "prerequisitesRead": true,
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "title": "Call of Water",
+    "requirementSource": "Published Forever typed objectives",
+    "minLevel": 20,
+    "foreverStatus": "new",
+    "objectiveLocationsIncomplete": true,
+    "categoryPath": "classes/shaman"
+  },
+  "94500": {
+    "raceMask": 4294967373,
+    "missingRequirements": [
+      {
+        "entityType": "item",
+        "quantityUnknown": true,
+        "action": "collect",
+        "entityID": 265773,
+        "name": "Full Blue Waterskin"
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Hervdana Saegrund",
+        "entityID": 258203
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantityUnknown": true,
+        "action": "collect",
+        "entityID": 265773,
+        "name": "Full Blue Waterskin"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 64,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 258203,
+        "npc": true,
+        "y": 0.7643000000000001,
+        "x": 0.6573,
+        "name": "Hervdana Saegrund",
+        "sourceAreaID": 11,
+        "locationSource": "Published Forever beta-observation entity position"
+      }
+    ],
+    "level": 23,
+    "objectives": {},
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 258203,
+        "npc": true,
+        "y": 0.7643000000000001,
+        "x": 0.6573,
+        "name": "Hervdana Saegrund",
+        "sourceAreaID": 11,
+        "locationSource": "Published Forever beta-observation entity position"
+      }
+    ],
+    "side": "Alliance",
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Hervdana Saegrund",
+        "entityID": 258203
+      }
+    ],
+    "xp": 1400,
+    "prerequisitesRead": true,
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "title": "Call of Water",
+    "requirementSource": "Published Forever typed objectives",
+    "minLevel": 20,
+    "foreverStatus": "new",
+    "objectiveLocationsIncomplete": true,
+    "categoryPath": "classes/shaman"
+  },
+  "94501": {
+    "raceMask": 4294967373,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Hervdana Saegrund",
+        "entityID": 258203
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 64,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1432,
+        "entityID": 258043,
+        "npc": true,
+        "y": 0.18899999999999997,
+        "x": 0.4178,
+        "name": "Norric Lochthane",
+        "sourceAreaID": 38,
+        "locationSource": "Published Forever beta-observation entity position"
+      }
+    ],
+    "level": 23,
+    "side": "Alliance",
+    "objectives": {},
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Norric Lochthane",
+        "entityID": 258043
+      }
+    ],
+    "xp": 460,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "entityID": 258203,
+        "npc": true,
+        "y": 0.7643000000000001,
+        "x": 0.6573,
+        "name": "Hervdana Saegrund",
+        "sourceAreaID": 11,
+        "locationSource": "Published Forever beta-observation entity position"
+      }
+    ],
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 20,
+    "prerequisitesRead": true,
+    "foreverStatus": "new",
+    "title": "Call of Water",
+    "categoryPath": "classes/shaman"
+  },
+  "98072": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 8,
+        "name": "Pristine Crimson Scale",
+        "entityID": 279385
+      }
+    ],
+    "seriesRoot": 98072,
+    "requiredItems": [
+      {
+        "quantity": 8,
+        "name": "Pristine Crimson Scale",
+        "itemID": 279385
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Pristine Crimson Scale",
+        "name": "Red Whelp",
+        "entityID": 1042,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Pristine Crimson Scale",
+        "name": "Lost Whelp",
+        "entityID": 1043,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Pristine Crimson Scale",
+        "name": "Flamesnorting Whelp",
+        "entityID": 1044,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Pristine Crimson Scale",
+        "name": "Crimson Whelp",
+        "entityID": 1069,
+        "npc": true,
+        "action": "collect"
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1437,
+        "legacyStepKey": "q:1437:npc:1042",
+        "entityID": 1042,
+        "npc": true,
+        "x": 0.584,
+        "y": 0.39399999999999996,
+        "objectiveKey": "item:279385",
+        "itemID": 279385,
+        "quantity": 8,
+        "name": "Red Whelp",
+        "itemName": "Pristine Crimson Scale",
+        "alternativeCount": 4,
+        "action": "collect"
+      }
+    ],
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "y": 0.556,
+        "mapID": 1437,
+        "name": "James Halloran",
+        "entityID": 2094,
+        "npc": true,
+        "x": 0.086
+      }
+    ],
+    "level": 27,
+    "areaID": 11,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 0,
+        "itemName": "Pristine Crimson Scale",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Pristine Crimson Scale",
+            "action": "collect",
+            "entityID": 1042,
+            "npc": true,
+            "y": 0.39399999999999996,
+            "x": 0.584,
+            "name": "Red Whelp",
+            "mapID": 1437
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Pristine Crimson Scale",
+            "action": "collect",
+            "entityID": 1043,
+            "npc": true,
+            "y": 0.40399999999999997,
+            "x": 0.622,
+            "name": "Lost Whelp",
+            "mapID": 1437
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Pristine Crimson Scale",
+            "action": "collect",
+            "entityID": 1044,
+            "npc": true,
+            "y": 0.43,
+            "x": 0.6779999999999999,
+            "name": "Flamesnorting Whelp",
+            "mapID": 1437
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Pristine Crimson Scale",
+            "action": "collect",
+            "entityID": 1069,
+            "npc": true,
+            "y": 0.312,
+            "x": 0.618,
+            "name": "Crimson Whelp",
+            "mapID": 1437
+          }
+        ]
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.556,
+        "mapID": 1437,
+        "name": "James Halloran",
+        "entityID": 2094,
+        "npc": true,
+        "x": 0.086
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "James Halloran",
+        "entityID": 2094
+      }
+    ],
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "James Halloran",
+        "entityID": 2094
+      }
+    ],
+    "xp": 2200,
+    "title": "Crocs of the Sky",
+    "foreverStatus": "new",
+    "shareable": true,
+    "minLevel": 19,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "series": [
+      98072,
+      98240,
+      98245
+    ],
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "98189": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": {},
+    "seriesRoot": 279,
+    "requiredItems": {},
+    "objectives": {},
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.574,
+        "mapID": 1437,
+        "name": "Captain Stoutfist",
+        "entityID": 2104,
+        "npc": true,
+        "x": 0.098
+      }
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Menethil Statuette",
+        "entityID": 279589
+      }
+    ],
+    "level": 25,
+    "areaID": 11,
+    "starts": [
+      {
+        "y": 0.586,
+        "mapID": 1437,
+        "name": "Karl Boran",
+        "entityID": 1242,
+        "npc": true,
+        "x": 0.084
+      }
+    ],
+    "title": "Return the Statuette",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Karl Boran",
+        "entityID": 1242
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 286,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Stoutfist",
+        "entityID": 2104
+      }
+    ],
+    "xp": 200,
+    "foreverStatus": "new",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 20,
+    "seriesPosition": 6,
+    "raceMask": 4294967373,
+    "series": [
+      279,
+      281,
+      284,
+      285,
+      286,
+      98189,
+      98190,
+      98191
+    ],
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "98190": {
+    "prerequisitesRead": true,
+    "mapID": 1453,
+    "zone": "Stormwind City",
+    "requirements": {},
+    "seriesRoot": 279,
+    "requiredItems": {},
+    "objectives": {},
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.18,
+        "mapID": 1453,
+        "name": "Highlord Bolvar Fordragon",
+        "entityID": 1748,
+        "npc": true,
+        "x": 0.78
+      }
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Menethil Statuette",
+        "entityID": 279595
+      }
+    ],
+    "level": 25,
+    "areaID": 1519,
+    "starts": [
+      {
+        "y": 0.574,
+        "mapID": 1437,
+        "name": "Captain Stoutfist",
+        "entityID": 2104,
+        "npc": true,
+        "x": 0.098
+      }
+    ],
+    "title": "A Friend of the Family",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Stoutfist",
+        "entityID": 2104
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 98189,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Highlord Bolvar Fordragon",
+        "entityID": 1748
+      }
+    ],
+    "xp": 0,
+    "foreverStatus": "new",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 20,
+    "seriesPosition": 7,
+    "raceMask": 4294967373,
+    "series": [
+      279,
+      281,
+      284,
+      285,
+      286,
+      98189,
+      98190,
+      98191
+    ],
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/stormwind-city"
+  },
+  "98191": {
+    "prerequisitesRead": true,
+    "mapID": 1453,
+    "zone": "Stormwind City",
+    "requirements": {},
+    "seriesRoot": 279,
+    "requiredItems": {},
+    "objectives": {},
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.33,
+        "mapID": 1453,
+        "name": "Lord Grayson Shadowbreaker",
+        "entityID": 928,
+        "npc": true,
+        "x": 0.37200000000000005
+      }
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Menethil Statuette",
+        "entityID": 279598
+      }
+    ],
+    "level": 25,
+    "areaID": 1519,
+    "starts": [
+      {
+        "y": 0.18,
+        "mapID": 1453,
+        "name": "Highlord Bolvar Fordragon",
+        "entityID": 1748,
+        "npc": true,
+        "x": 0.78
+      }
+    ],
+    "title": "A Friend of the Family",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Highlord Bolvar Fordragon",
+        "entityID": 1748
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 98190,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Lord Grayson Shadowbreaker",
+        "entityID": 928
+      }
+    ],
+    "xp": 200,
+    "foreverStatus": "new",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 20,
+    "seriesPosition": 8,
+    "raceMask": 4294967373,
+    "series": [
+      279,
+      281,
+      284,
+      285,
+      286,
+      98189,
+      98190,
+      98191
+    ],
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/stormwind-city"
+  },
+  "98197": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 6,
+        "action": "collect",
+        "entityID": 279821,
+        "name": "Khaz Modan Timber"
+      },
+      {
+        "entityType": "item",
+        "quantity": 30,
+        "action": "collect",
+        "entityID": 279822,
+        "name": "Khaz Modan Iron"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 6,
+        "name": "Khaz Modan Timber",
+        "itemID": 279821
+      },
+      {
+        "quantity": 30,
+        "name": "Khaz Modan Iron",
+        "itemID": 279822
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1437,
+        "action": "gather",
+        "entityID": 670773,
+        "x": 0.057,
+        "y": 0.5529999999999999,
+        "objectiveKey": "item:279821",
+        "itemID": 279821,
+        "quantity": 6,
+        "sourceAreaID": 11,
+        "itemName": "Khaz Modan Timber",
+        "locationSource": "Published Forever beta-delta entity position",
+        "name": "Khaz Modan Timber"
+      },
+      {
+        "entityType": "object",
+        "mapID": 1437,
+        "action": "gather",
+        "entityID": 670774,
+        "x": 0.14,
+        "y": 0.527,
+        "objectiveKey": "item:279822",
+        "itemID": 279822,
+        "quantity": 30,
+        "sourceAreaID": 11,
+        "itemName": "Khaz Modan Iron",
+        "locationSource": "Published Forever beta-delta entity position",
+        "name": "Khaz Modan Iron"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "y": 0.568,
+        "mapID": 1437,
+        "name": "Valstag Ironjaw",
+        "entityID": 2086,
+        "npc": true,
+        "x": 0.1
+      }
+    ],
+    "level": 22,
+    "areaID": 11,
+    "shareable": true,
+    "ends": [
+      {
+        "y": 0.568,
+        "mapID": 1437,
+        "name": "Valstag Ironjaw",
+        "entityID": 2086,
+        "npc": true,
+        "x": 0.1
+      }
+    ],
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Valstag Ironjaw",
+        "entityID": 2086
+      }
+    ],
+    "money": 1400,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Valstag Ironjaw",
+        "entityID": 2086
+      }
+    ],
+    "xp": 1750,
+    "title": "Spoils of War",
+    "foreverStatus": "new",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 18,
+    "requirementSource": "Published Forever typed objectives",
+    "raceMask": 4294967373,
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "98208": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Nord'el",
+        "entityID": 279915
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Nord'el",
+        "itemID": 279915
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.5579999999999999,
+        "mapID": 1437,
+        "name": "Sylessa Duskwhisper",
+        "entityID": 270844,
+        "npc": true,
+        "x": 0.08
+      }
+    ],
+    "objectives": {},
+    "level": 29,
+    "areaID": 11,
+    "starts": [
+      {
+        "y": 0.5579999999999999,
+        "mapID": 1437,
+        "name": "Sylessa Duskwhisper",
+        "entityID": 270844,
+        "npc": true,
+        "x": 0.08
+      }
+    ],
+    "title": "Bloom of the Heavens",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Sylessa Duskwhisper",
+        "entityID": 270844
+      }
+    ],
+    "missingRequirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Nord'el",
+        "entityID": 279915
+      }
+    ],
+    "money": 2500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Sylessa Duskwhisper",
+        "entityID": 270844
+      }
+    ],
+    "xp": 2350,
+    "shareable": true,
+    "foreverStatus": "new",
+    "raceMask": 0,
+    "minLevel": 22,
+    "requirementSource": "Wowhead Forever objective table",
+    "objectiveLocationsIncomplete": true,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "98209": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": {},
+    "seriesRoot": 98208,
+    "requiredItems": {},
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.402,
+        "mapID": 1439,
+        "name": "Thundris Windweaver",
+        "entityID": 3649,
+        "npc": true,
+        "x": 0.374
+      }
+    ],
+    "level": 29,
+    "areaID": 11,
+    "objectives": {},
+    "raceMask": 0,
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Nord'el",
+        "entityID": 279924
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.5579999999999999,
+        "mapID": 1437,
+        "name": "Sylessa Duskwhisper",
+        "entityID": 270844,
+        "npc": true,
+        "x": 0.08
+      }
+    ],
+    "previousQuest": 98208,
+    "money": 1300,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Thundris Windweaver",
+        "entityID": 3649
+      }
+    ],
+    "xp": 1200,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Sylessa Duskwhisper",
+        "entityID": 270844
+      }
+    ],
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "minLevel": 22,
+    "title": "Bloom of the Heavens",
+    "seriesPosition": 2,
+    "series": [
+      98208,
+      98209
+    ],
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "98216": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Titanic Keystone",
+        "entityID": 279993
+      }
+    ],
+    "seriesRoot": 299,
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Titanic Keystone",
+        "itemID": 279993
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Titanic Keystone",
+        "name": "Goaz Warder",
+        "entityID": 270892,
+        "npc": true,
+        "action": "collect"
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1437,
+        "action": "collect",
+        "entityID": 270892,
+        "npc": true,
+        "y": 0.526,
+        "objectiveKey": "item:279993",
+        "name": "Goaz Warder",
+        "x": 0.35,
+        "quantity": 1,
+        "legacyStepKey": "q:1437:npc:270892",
+        "itemName": "Titanic Keystone",
+        "itemID": 279993
+      }
+    ],
+    "raceMask": 0,
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "y": 0.522,
+        "mapID": 1437,
+        "name": "Prospector Whelgar",
+        "entityID": 1077,
+        "npc": true,
+        "x": 0.38799999999999996
+      }
+    ],
+    "level": 31,
+    "areaID": 11,
+    "ends": [
+      {
+        "y": 0.522,
+        "mapID": 1437,
+        "name": "Prospector Whelgar",
+        "entityID": 1077,
+        "npc": true,
+        "x": 0.38799999999999996
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Prospector Whelgar",
+        "entityID": 1077
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 299,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Prospector Whelgar",
+        "entityID": 1077
+      }
+    ],
+    "xp": 3150,
+    "questType": "Elite",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "title": "Understanding Our Present",
+    "minLevel": 23,
+    "requirementSource": "Wowhead Forever objective table",
+    "seriesPosition": 2,
+    "series": [
+      299,
+      98216
+    ],
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "98221": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "object",
+        "quantity": 1,
+        "name": "Attack Plan: Menethil Harbor destroyed",
+        "entityID": 671481
+      },
+      {
+        "entityType": "object",
+        "quantity": 1,
+        "name": "Attack Plan: Thelsamar destroyed",
+        "entityID": 671486
+      },
+      {
+        "entityType": "object",
+        "quantity": 1,
+        "name": "Attack Plan: Southshore destroyed",
+        "entityID": 671483
+      },
+      {
+        "entityType": "object",
+        "quantity": 1,
+        "name": "Attack Plan: Ironforge destroyed",
+        "entityID": 671487
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "objectiveKey": "object:671481",
+        "name": "Attack Plan: Menethil Harbor",
+        "y": 0.42700000000000005,
+        "entityID": 671481,
+        "x": 0.45399999999999996,
+        "quantity": 1,
+        "mapID": 1437
+      },
+      {
+        "sourceObjective": 2,
+        "objectiveKey": "object:671483",
+        "name": "Attack Plan: Southshore",
+        "y": 0.456,
+        "entityID": 671483,
+        "x": 0.45299999999999996,
+        "quantity": 1,
+        "mapID": 1437
+      },
+      {
+        "sourceObjective": 1,
+        "objectiveKey": "object:671486",
+        "name": "Attack Plan: Thelsamar",
+        "y": 0.46799999999999997,
+        "entityID": 671486,
+        "x": 0.493,
+        "quantity": 1,
+        "mapID": 1437
+      },
+      {
+        "sourceObjective": 3,
+        "objectiveKey": "object:671487",
+        "name": "Attack Plan: Ironforge",
+        "y": 0.461,
+        "entityID": 671487,
+        "x": 0.386,
+        "quantity": 1,
+        "mapID": 1437
+      }
+    ],
+    "level": 28,
+    "areaID": 11,
+    "starts": [
+      {
+        "y": 0.574,
+        "mapID": 1437,
+        "name": "Captain Stoutfist",
+        "entityID": 2104,
+        "npc": true,
+        "x": 0.098
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Stoutfist",
+        "entityID": 2104
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.574,
+        "mapID": 1437,
+        "name": "Captain Stoutfist",
+        "entityID": 2104,
+        "npc": true,
+        "x": 0.098
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 473,
+    "money": 2500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Stoutfist",
+        "entityID": 2104
+      }
+    ],
+    "xp": 2300,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "title": "From the Ashes",
+    "minLevel": 23,
+    "requirementSource": "Wowhead Forever objective table",
+    "shareable": true,
+    "raceMask": 0,
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "98223": {
+    "raceMask": 0,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": {},
+    "requiredItems": {},
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.574,
+        "mapID": 1437,
+        "name": "Captain Stoutfist",
+        "entityID": 2104,
+        "npc": true,
+        "x": 0.098
+      }
+    ],
+    "level": 31,
+    "areaID": 11,
+    "objectives": {},
+    "side": "Alliance",
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Tattered Spellbook",
+        "entityID": 280042
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Stoutfist",
+        "entityID": 2104
+      }
+    ],
+    "xp": 1250,
+    "starts": [
+      {
+        "y": 0.545,
+        "x": 0.535,
+        "name": "Tattered Spellbook",
+        "entityID": 671518,
+        "mapID": 1437
+      }
+    ],
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Tattered Spellbook",
+        "entityID": 671518
+      }
+    ],
+    "minLevel": 23,
+    "prerequisitesRead": true,
+    "title": "Old Habits",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "98230": {
+    "raceMask": 0,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": {},
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.42,
+        "mapID": 1437,
+        "name": "Howin Kindfeather",
+        "entityID": 270637,
+        "npc": true,
+        "x": 0.494
+      }
+    ],
+    "level": 29,
+    "areaID": 11,
+    "objectives": {},
+    "side": "Alliance",
+    "starts": [
+      {
+        "y": 0.574,
+        "mapID": 1437,
+        "name": "Captain Stoutfist",
+        "entityID": 2104,
+        "npc": true,
+        "x": 0.098
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Howin Kindfeather",
+        "entityID": 270637
+      }
+    ],
+    "xp": 1200,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Stoutfist",
+        "entityID": 2104
+      }
+    ],
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "minLevel": 22,
+    "prerequisitesRead": true,
+    "title": "This Land Was Their Land",
+    "shareable": true,
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "98240": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": {},
+    "seriesRoot": 98072,
+    "requiredItems": {},
+    "objectives": {},
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.42,
+        "mapID": 1437,
+        "name": "Howin Kindfeather",
+        "entityID": 270637,
+        "npc": true,
+        "x": 0.494
+      }
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Crimson Crate",
+        "entityID": 280099
+      }
+    ],
+    "level": 29,
+    "areaID": 11,
+    "starts": [
+      {
+        "y": 0.556,
+        "mapID": 1437,
+        "name": "James Halloran",
+        "entityID": 2094,
+        "npc": true,
+        "x": 0.086
+      }
+    ],
+    "title": "Crimson Crate Delivery",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "James Halloran",
+        "entityID": 2094
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 98072,
+    "money": 5000,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Howin Kindfeather",
+        "entityID": 270637
+      }
+    ],
+    "xp": 1200,
+    "foreverStatus": "new",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 19,
+    "seriesPosition": 2,
+    "raceMask": 4294967373,
+    "series": [
+      98072,
+      98240,
+      98245
+    ],
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "98245": {
+    "prerequisitesRead": true,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 10,
+        "action": "collect",
+        "entityID": 280103,
+        "name": "Razormaw Incisor"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "otherLocationsIncomplete": false,
+    "level": 29,
+    "areaID": 11,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 0,
+        "itemName": "Razormaw Incisor",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Razormaw Incisor",
+            "action": "collect",
+            "entityID": 1018,
+            "npc": true,
+            "y": 0.281,
+            "x": 0.6940000000000001,
+            "name": "Highland Razormaw",
+            "mapID": 1437
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Razormaw Incisor",
+            "action": "collect",
+            "entityID": 1019,
+            "npc": true,
+            "y": 0.33,
+            "x": 0.687,
+            "name": "Elder Razormaw",
+            "mapID": 1437
+          }
+        ]
+      }
+    ],
+    "previousQuest": 98240,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Howin Kindfeather",
+        "entityID": 270637
+      }
+    ],
+    "xp": 2350,
+    "minLevel": 21,
+    "series": [
+      98072,
+      98240,
+      98245
+    ],
+    "categoryPath": "eastern-kingdoms/wetlands",
+    "raceMask": 4294967373,
+    "mapID": 1437,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Howin Kindfeather",
+        "entityID": 270637
+      }
+    ],
+    "seriesRoot": 98072,
+    "requiredItems": [
+      {
+        "quantity": 10,
+        "name": "Razormaw Incisor",
+        "itemID": 280103
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.42,
+        "mapID": 1437,
+        "name": "Howin Kindfeather",
+        "entityID": 270637,
+        "npc": true,
+        "x": 0.494
+      }
+    ],
+    "shareable": true,
+    "side": "Alliance",
+    "foreverStatus": "new",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "action": "loot",
+        "entityID": 1018,
+        "npc": true,
+        "x": 0.6840999999999999,
+        "y": 0.33130000000000004,
+        "objectiveKey": "item:280103",
+        "itemID": 280103,
+        "quantity": 10,
+        "sourceAreaID": 11,
+        "itemName": "Razormaw Incisor",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Highland Razormaw"
+      }
+    ],
+    "seriesPosition": 3,
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "starts": [
+      {
+        "y": 0.42,
+        "mapID": 1437,
+        "name": "Howin Kindfeather",
+        "entityID": 270637,
+        "npc": true,
+        "x": 0.494
+      }
+    ],
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Razormaw Needling",
+    "classMask": 0,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Razormaw Incisor",
+        "name": "Highland Razormaw",
+        "entityID": 1018,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Razormaw Incisor",
+        "name": "Elder Razormaw",
+        "entityID": 1019,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Razormaw Incisor",
+        "name": "Highland Razormaw",
+        "entityID": 1018,
+        "npc": true,
+        "action": "loot"
+      }
+    ]
+  },
+  "98246": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 12,
+        "action": "collect",
+        "entityID": 280132,
+        "name": "Perfect Razormaw Egg"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 12,
+        "name": "Perfect Razormaw Egg",
+        "itemID": 280132
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "objectives": {},
+    "starts": [
+      {
+        "y": 0.42,
+        "mapID": 1437,
+        "name": "Howin Kindfeather",
+        "entityID": 270637,
+        "npc": true,
+        "x": 0.494
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.42,
+        "mapID": 1437,
+        "name": "Howin Kindfeather",
+        "entityID": 270637,
+        "npc": true,
+        "x": 0.494
+      }
+    ],
+    "raceMask": 4294967373,
+    "level": 29,
+    "areaID": 11,
+    "title": "Trying Times",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Howin Kindfeather",
+        "entityID": 270637
+      }
+    ],
+    "missingRequirements": [
+      {
+        "entityType": "item",
+        "quantity": 12,
+        "action": "collect",
+        "entityID": 280132,
+        "name": "Perfect Razormaw Egg"
+      }
+    ],
+    "side": "Alliance",
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Howin Kindfeather",
+        "entityID": 270637
+      }
+    ],
+    "xp": 2350,
+    "shareable": true,
+    "foreverStatus": "new",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 21,
+    "requirementSource": "Published Forever typed objectives",
+    "objectiveLocationsIncomplete": true,
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "98282": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 280319,
+        "name": "Unruptured Stalker Gland"
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Unruptured Stalker Gland",
+        "name": "Leech Stalker",
+        "entityID": 1111,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Unruptured Stalker Gland",
+        "name": "Cave Stalker",
+        "entityID": 4040,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Unruptured Stalker Gland",
+        "name": "Leech Stalker",
+        "entityID": 1111,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Unruptured Stalker Gland",
+        "itemID": 280319
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "action": "loot",
+        "entityID": 1111,
+        "npc": true,
+        "x": 0.462,
+        "y": 0.5939,
+        "objectiveKey": "item:280319",
+        "itemID": 280319,
+        "quantity": 1,
+        "sourceAreaID": 11,
+        "itemName": "Unruptured Stalker Gland",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Leech Stalker"
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.586,
+        "mapID": 1437,
+        "name": "Caitlin Grassman",
+        "entityID": 1480,
+        "npc": true,
+        "x": 0.11800000000000001
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "shareable": true,
+    "level": 22,
+    "areaID": 11,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 0,
+        "itemName": "Unruptured Stalker Gland",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Unruptured Stalker Gland",
+            "action": "collect",
+            "entityID": 1111,
+            "npc": true,
+            "y": 0.622,
+            "x": 0.462,
+            "name": "Leech Stalker",
+            "mapID": 1437
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Unruptured Stalker Gland",
+            "action": "collect",
+            "entityID": 4040,
+            "npc": true,
+            "y": 0.628,
+            "x": 0.502,
+            "name": "Cave Stalker",
+            "mapID": 1437
+          }
+        ]
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.586,
+        "mapID": 1437,
+        "name": "Caitlin Grassman",
+        "entityID": 1480,
+        "npc": true,
+        "x": 0.11800000000000001
+      }
+    ],
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Caitlin Grassman",
+        "entityID": 1480
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Caitlin Grassman",
+        "entityID": 1480
+      }
+    ],
+    "xp": 1750,
+    "title": "Alchemical Hazards",
+    "foreverStatus": "new",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 20,
+    "requirementSource": "Published Forever typed objectives",
+    "raceMask": 4294967373,
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "98283": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Malignant Rotclaw Flesh",
+        "entityID": 280331
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Carnage's Head",
+        "entityID": 280330
+      }
+    ],
+    "seriesRoot": 463,
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Malignant Rotclaw Flesh",
+        "itemID": 280331
+      },
+      {
+        "quantity": 1,
+        "name": "Carnage's Head",
+        "itemID": 280330
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Malignant Rotclaw Flesh",
+        "name": "Maddened Rotclaw",
+        "entityID": 271334,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Carnage's Head",
+        "name": "Carnage",
+        "entityID": 271336,
+        "npc": true,
+        "action": "collect"
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1437,
+        "action": "collect",
+        "entityID": 271334,
+        "npc": true,
+        "y": 0.364,
+        "objectiveKey": "item:280331",
+        "name": "Maddened Rotclaw",
+        "x": 0.606,
+        "quantity": 1,
+        "legacyStepKey": "q:1437:npc:271334",
+        "itemName": "Malignant Rotclaw Flesh",
+        "itemID": 280331
+      },
+      {
+        "sourceObjective": 1,
+        "mapID": 1437,
+        "action": "collect",
+        "entityID": 271336,
+        "npc": true,
+        "y": 0.28300000000000003,
+        "objectiveKey": "item:280330",
+        "name": "Carnage",
+        "x": 0.69,
+        "quantity": 1,
+        "legacyStepKey": "q:1437:npc:271336",
+        "itemName": "Carnage's Head",
+        "itemID": 280330
+      }
+    ],
+    "raceMask": 0,
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "y": 0.40399999999999997,
+        "mapID": 1437,
+        "name": "Rethiel the Greenwarden",
+        "entityID": 1244,
+        "npc": true,
+        "x": 0.562
+      }
+    ],
+    "level": 30,
+    "areaID": 11,
+    "title": "Carnage",
+    "ends": [
+      {
+        "y": 0.40399999999999997,
+        "mapID": 1437,
+        "name": "Rethiel the Greenwarden",
+        "entityID": 1244,
+        "npc": true,
+        "x": 0.562
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Rethiel the Greenwarden",
+        "entityID": 1244
+      }
+    ],
+    "previousQuest": 275,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Rethiel the Greenwarden",
+        "entityID": 1244
+      }
+    ],
+    "xp": 3050,
+    "questType": "Elite",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "shareable": true,
+    "minLevel": 22,
+    "requirementSource": "Wowhead Forever objective table",
+    "seriesPosition": 5,
+    "series": [
+      463,
+      276,
+      277,
+      275,
+      98283
+    ],
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "98291": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 8,
+        "name": "Dragonmaw Reclaimer",
+        "entityID": 271351
+      },
+      {
+        "entityType": "npc",
+        "quantity": 5,
+        "name": "Dragonmaw Soulbinder",
+        "entityID": 271348
+      },
+      {
+        "entityType": "npc",
+        "quantity": 3,
+        "name": "Dragonmaw Infiltrator",
+        "entityID": 271346
+      }
+    ],
+    "npcTargets": [
+      {
+        "entityID": 271346,
+        "npc": true,
+        "action": "kill",
+        "name": "Dragonmaw Infiltrator"
+      },
+      {
+        "entityID": 271348,
+        "npc": true,
+        "action": "kill",
+        "name": "Dragonmaw Soulbinder"
+      },
+      {
+        "entityID": 271351,
+        "npc": true,
+        "action": "kill",
+        "name": "Dragonmaw Reclaimer"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectives": [
+      {
+        "sourceObjective": 271346,
+        "mapID": 1437,
+        "action": "kill",
+        "entityID": 271346,
+        "npc": true,
+        "y": 0.486,
+        "objectiveKey": "npc:271346",
+        "name": "Dragonmaw Infiltrator",
+        "x": 0.72,
+        "quantity": 3
+      },
+      {
+        "sourceObjective": 271348,
+        "mapID": 1437,
+        "action": "kill",
+        "entityID": 271348,
+        "npc": true,
+        "y": 0.45399999999999996,
+        "objectiveKey": "npc:271348",
+        "name": "Dragonmaw Soulbinder",
+        "x": 0.588,
+        "quantity": 5
+      },
+      {
+        "sourceObjective": 271351,
+        "mapID": 1437,
+        "action": "kill",
+        "entityID": 271351,
+        "npc": true,
+        "y": 0.433,
+        "objectiveKey": "npc:271351",
+        "name": "Dragonmaw Reclaimer",
+        "x": 0.5529999999999999,
+        "quantity": 8
+      }
+    ],
+    "level": 30,
+    "areaID": 11,
+    "starts": [
+      {
+        "y": 0.42,
+        "mapID": 1437,
+        "name": "Howin Kindfeather",
+        "entityID": 270637,
+        "npc": true,
+        "x": 0.494
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.42,
+        "mapID": 1437,
+        "name": "Howin Kindfeather",
+        "entityID": 270637,
+        "npc": true,
+        "x": 0.494
+      }
+    ],
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Howin Kindfeather",
+        "entityID": 270637
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Howin Kindfeather",
+        "entityID": 270637
+      }
+    ],
+    "xp": 3050,
+    "questType": "Elite",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "title": "Death to the Dragonmaw",
+    "minLevel": 22,
+    "requirementSource": "Wowhead Forever objective table",
+    "shareable": true,
+    "raceMask": 0,
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "98293": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 30,
+        "action": "collect",
+        "entityID": 280369,
+        "name": "Dragonmaw Armaments"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 30,
+        "name": "Dragonmaw Armaments",
+        "itemID": 280369
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "objectives": {},
+    "starts": [
+      {
+        "y": 0.451,
+        "x": 0.588,
+        "name": "Dragonmaw Armaments",
+        "entityID": 672330,
+        "mapID": 1437
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.574,
+        "mapID": 1437,
+        "name": "Captain Stoutfist",
+        "entityID": 2104,
+        "npc": true,
+        "x": 0.098
+      }
+    ],
+    "raceMask": 4294967373,
+    "level": 30,
+    "areaID": 11,
+    "title": "Forced Disarmament",
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Dragonmaw Armaments",
+        "entityID": 672330
+      }
+    ],
+    "missingRequirements": [
+      {
+        "entityType": "item",
+        "quantity": 30,
+        "action": "collect",
+        "entityID": 280369,
+        "name": "Dragonmaw Armaments"
+      }
+    ],
+    "side": "Alliance",
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Stoutfist",
+        "entityID": 2104
+      }
+    ],
+    "xp": 3050,
+    "questType": "Elite",
+    "foreverStatus": "new",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 22,
+    "requirementSource": "Published Forever typed objectives",
+    "objectiveLocationsIncomplete": true,
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "98297": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 1,
+        "name": "Subdued Dragonspawn",
+        "entityID": 271373
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "npcTargets": [
+      {
+        "entityID": 271373,
+        "name": "Subdued Dragonspawn",
+        "npc": true
+      }
+    ],
+    "level": 34,
+    "areaID": 11,
+    "objectives": [
+      {
+        "sourceObjective": 271373,
+        "mapID": 1437,
+        "entityID": 271373,
+        "npc": true,
+        "y": 0.452,
+        "objectiveKey": "npc:271373",
+        "name": "Subdued Dragonspawn",
+        "x": 0.772,
+        "quantity": 1
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.42,
+        "mapID": 1437,
+        "name": "Howin Kindfeather",
+        "entityID": 270637,
+        "npc": true,
+        "x": 0.494
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Howin Kindfeather",
+        "entityID": 270637
+      }
+    ],
+    "side": "Alliance",
+    "ends": [
+      {
+        "y": 0.42,
+        "mapID": 1437,
+        "name": "Howin Kindfeather",
+        "entityID": 270637,
+        "npc": true,
+        "x": 0.494
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Howin Kindfeather",
+        "entityID": 270637
+      }
+    ],
+    "xp": 2700,
+    "questType": "Elite",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "minLevel": 24,
+    "requirementSource": "Wowhead Forever objective table",
+    "title": "Stopping the Cycle",
+    "shareable": true,
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "98310": {
+    "prerequisitesRead": true,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Heart of Ados",
+        "entityID": 280395
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Heart of Modr",
+        "entityID": 280396
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Heart of Golm",
+        "entityID": 280397
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Heart of Neru",
+        "entityID": 280398
+      }
+    ],
+    "seriesRoot": 299,
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Heart of Ados",
+        "itemID": 280395
+      },
+      {
+        "quantity": 1,
+        "name": "Heart of Modr",
+        "itemID": 280396
+      },
+      {
+        "quantity": 1,
+        "name": "Heart of Golm",
+        "itemID": 280397
+      },
+      {
+        "quantity": 1,
+        "name": "Heart of Neru",
+        "itemID": 280398
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Heart of Ados",
+        "name": "Ados",
+        "entityID": 271338,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Heart of Neru",
+        "name": "Neru",
+        "entityID": 271458,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Heart of Modr",
+        "name": "Modr",
+        "entityID": 271460,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Heart of Golm",
+        "name": "Golm",
+        "entityID": 271462,
+        "npc": true,
+        "action": "collect"
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1437,
+        "action": "collect",
+        "entityID": 271338,
+        "npc": true,
+        "y": 0.46799999999999997,
+        "objectiveKey": "item:280395",
+        "name": "Ados",
+        "x": 0.774,
+        "quantity": 1,
+        "legacyStepKey": "q:1437:npc:271338",
+        "itemName": "Heart of Ados",
+        "itemID": 280395
+      },
+      {
+        "sourceObjective": 3,
+        "mapID": 1437,
+        "action": "collect",
+        "entityID": 271458,
+        "npc": true,
+        "y": 0.221,
+        "objectiveKey": "item:280398",
+        "name": "Neru",
+        "x": 0.602,
+        "quantity": 1,
+        "legacyStepKey": "q:1437:npc:271458",
+        "itemName": "Heart of Neru",
+        "itemID": 280398
+      },
+      {
+        "sourceObjective": 1,
+        "mapID": 1437,
+        "action": "collect",
+        "entityID": 271460,
+        "npc": true,
+        "y": 0.18899999999999997,
+        "objectiveKey": "item:280396",
+        "name": "Modr",
+        "x": 0.506,
+        "quantity": 1,
+        "legacyStepKey": "q:1437:npc:271460",
+        "itemName": "Heart of Modr",
+        "itemID": 280396
+      },
+      {
+        "sourceObjective": 2,
+        "mapID": 1437,
+        "action": "collect",
+        "entityID": 271462,
+        "npc": true,
+        "y": 0.716,
+        "objectiveKey": "item:280397",
+        "name": "Golm",
+        "x": 0.6759999999999999,
+        "quantity": 1,
+        "legacyStepKey": "q:1437:npc:271462",
+        "itemName": "Heart of Golm",
+        "itemID": 280397
+      }
+    ],
+    "raceMask": 0,
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "y": 0.522,
+        "mapID": 1437,
+        "name": "Prospector Whelgar",
+        "entityID": 1077,
+        "npc": true,
+        "x": 0.38799999999999996
+      }
+    ],
+    "level": 32,
+    "areaID": 11,
+    "ends": [
+      {
+        "y": 0.522,
+        "mapID": 1437,
+        "name": "Prospector Whelgar",
+        "entityID": 1077,
+        "npc": true,
+        "x": 0.38799999999999996
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Prospector Whelgar",
+        "entityID": 1077
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 98216,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Prospector Whelgar",
+        "entityID": 1077
+      }
+    ],
+    "xp": 3200,
+    "questType": "Elite",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "title": "Gleaning Our Future",
+    "minLevel": 24,
+    "requirementSource": "Wowhead Forever objective table",
+    "seriesPosition": 3,
+    "series": [
+      299,
+      98216,
+      98310,
+      98313
+    ],
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "98313": {
+    "prerequisitesRead": true,
+    "mapID": 1455,
+    "zone": "Ironforge",
+    "requirements": {},
+    "seriesRoot": 299,
+    "requiredItems": {},
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.11800000000000001,
+        "mapID": 1455,
+        "name": "Historian Karnik",
+        "entityID": 2916,
+        "npc": true,
+        "x": 0.772
+      }
+    ],
+    "level": 32,
+    "areaID": 1537,
+    "objectives": {},
+    "raceMask": 0,
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Whelgar Relic Package",
+        "entityID": 280403
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.522,
+        "mapID": 1437,
+        "name": "Prospector Whelgar",
+        "entityID": 1077,
+        "npc": true,
+        "x": 0.38799999999999996
+      }
+    ],
+    "previousQuest": 98310,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Historian Karnik",
+        "entityID": 2916
+      }
+    ],
+    "xp": 0,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Prospector Whelgar",
+        "entityID": 1077
+      }
+    ],
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "minLevel": 24,
+    "title": "For Further Study",
+    "seriesPosition": 4,
+    "series": [
+      299,
+      98216,
+      98310,
+      98313
+    ],
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/ironforge"
+  },
+  "98459": {
+    "raceMask": 4294967373,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": {},
+    "requiredItems": {},
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.598,
+        "mapID": 1437,
+        "name": "Bart Tidewater",
+        "entityID": 1481,
+        "npc": true,
+        "x": 0.08800000000000001
+      }
+    ],
+    "level": 21,
+    "areaID": 11,
+    "objectives": {},
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Tom's Gift",
+        "entityID": 281240
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.664,
+        "mapID": 1424,
+        "name": "Tom \"Half-fish\" Wilson",
+        "entityID": 254078,
+        "npc": true,
+        "x": 0.512
+      }
+    ],
+    "side": "Alliance",
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Bart Tidewater",
+        "entityID": 1481
+      }
+    ],
+    "xp": 165,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Tom \"Half-fish\" Wilson",
+        "entityID": 254078
+      }
+    ],
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 18,
+    "prerequisitesRead": true,
+    "title": "A Lack of Virtue",
+    "foreverStatus": "new",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  },
+  "98461": {
+    "raceMask": 4294967373,
+    "mapID": 1437,
+    "zone": "Wetlands",
+    "requirements": {},
+    "requiredItems": {},
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.522,
+        "mapID": 1437,
+        "name": "Tarrel Rockweaver",
+        "entityID": 2096,
+        "npc": true,
+        "x": 0.114
+      }
+    ],
+    "level": 21,
+    "areaID": 11,
+    "objectives": {},
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Hollee's Note",
+        "entityID": 281243
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.418,
+        "mapID": 1439,
+        "name": "Archaeologist Hollee",
+        "entityID": 2913,
+        "npc": true,
+        "x": 0.374
+      }
+    ],
+    "side": "Alliance",
+    "money": 125,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Tarrel Rockweaver",
+        "entityID": 2096
+      }
+    ],
+    "xp": 165,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Archaeologist Hollee",
+        "entityID": 2913
+      }
+    ],
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 18,
+    "prerequisitesRead": true,
+    "title": "Unrequited Love",
+    "foreverStatus": "new",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "eastern-kingdoms/wetlands"
+  }
+}

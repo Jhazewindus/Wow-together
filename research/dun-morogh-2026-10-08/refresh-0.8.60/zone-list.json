@@ -1,0 +1,487 @@
+{
+  "url": "https://www.wowhead.com/forever/quests/eastern-kingdoms/dun-morogh",
+  "captured": "2026-10-08",
+  "sha256": "9441c04af0130af79f960432aac8bf3b8b474c2dd94c96fb54b835f6e7843ab6",
+  "quests": [
+    {
+      "id": 98326,
+      "level": 9,
+      "name": "Frosthowl",
+      "reqlevel": 5,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 96391,
+      "level": 15,
+      "name": "Underground Map",
+      "reqlevel": 9,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 98319,
+      "level": 8,
+      "name": "Secure the Mountain",
+      "reqlevel": 4,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 99162,
+      "level": 8,
+      "name": "Treacherous Cold",
+      "reqlevel": 5,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 98423,
+      "level": 16,
+      "name": "The Treaty of Understanding",
+      "reqlevel": 9,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 98323,
+      "level": 8,
+      "name": "Secure the Mountain",
+      "reqlevel": 4,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 98322,
+      "level": 8,
+      "name": "Secure the Mountain",
+      "reqlevel": 4,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 96408,
+      "level": 13,
+      "name": "A Visitor to Dun Morogh",
+      "reqlevel": 9,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 466,
+      "level": 22,
+      "name": "Search for Incendicite",
+      "reqlevel": 20,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 96390,
+      "level": 13,
+      "name": "Nip 'Em in the Bud",
+      "reqlevel": 9,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 95214,
+      "level": 10,
+      "name": "Stolen Blasting Powder",
+      "reqlevel": 7,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 96392,
+      "level": 13,
+      "name": "Farsen's Watch",
+      "reqlevel": 9,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 95217,
+      "level": 10,
+      "name": "The Quarry's Smith",
+      "reqlevel": 7,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 95041,
+      "level": 10,
+      "name": "Data Hoarders",
+      "reqlevel": 7,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 287,
+      "level": 9,
+      "name": "Frostmane Hold",
+      "reqlevel": 7,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 99158,
+      "level": 8,
+      "name": "Dawn in the Mountains",
+      "reqlevel": 5,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 467,
+      "level": 23,
+      "name": "Stonegear's Search",
+      "reqlevel": 20,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 95212,
+      "level": 10,
+      "name": "Never Saddle on Quality",
+      "reqlevel": 7,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 314,
+      "level": 12,
+      "name": "Protecting the Herd",
+      "reqlevel": 6,
+      "side": 1,
+      "type": 1
+    },
+    {
+      "id": 99159,
+      "level": 8,
+      "name": "Finding Warmth",
+      "reqlevel": 5,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 99161,
+      "level": 8,
+      "name": "Rime's Wrath",
+      "reqlevel": 5,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 98321,
+      "level": 7,
+      "name": "Flintfire's Shipment",
+      "reqlevel": 4,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 95213,
+      "level": 10,
+      "name": "Stolen Blasting Powder",
+      "reqlevel": 7,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 218,
+      "level": 5,
+      "name": "The Stolen Journal",
+      "reqlevel": 1,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 315,
+      "level": 9,
+      "name": "The Perfect Stout",
+      "reqlevel": 5,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 417,
+      "level": 11,
+      "name": "A Pilot's Revenge",
+      "reqlevel": 8,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 312,
+      "level": 12,
+      "name": "Tundra MacGrann's Stolen Stash",
+      "reqlevel": 7,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 179,
+      "level": 1,
+      "name": "Dwarven Outfitters",
+      "reqlevel": 1,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 317,
+      "level": 6,
+      "name": "Stocking Jetsteam",
+      "reqlevel": 2,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 419,
+      "level": 10,
+      "name": "The Lost Pilot",
+      "reqlevel": 8,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 99160,
+      "level": 8,
+      "name": "Rime's Wrath",
+      "reqlevel": 5,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 310,
+      "level": 6,
+      "name": "Bitter Rivals",
+      "reqlevel": 2,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 234,
+      "level": 4,
+      "name": "Coldridge Valley Mail Delivery",
+      "reqlevel": 1,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 3361,
+      "level": 3,
+      "name": "A Refugee's Quandary",
+      "reqlevel": 3,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 233,
+      "level": 3,
+      "name": "Coldridge Valley Mail Delivery",
+      "reqlevel": 1,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 313,
+      "level": 7,
+      "name": "The Grizzled Den",
+      "reqlevel": 4,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 412,
+      "level": 10,
+      "name": "Operation Recombobulation",
+      "reqlevel": 7,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 182,
+      "level": 4,
+      "name": "The Troll Cave",
+      "reqlevel": 1,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 291,
+      "level": 10,
+      "name": "The Reports",
+      "reqlevel": 1,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 5541,
+      "level": 6,
+      "name": "Ammo for Rumbleshot",
+      "reqlevel": 5,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 319,
+      "level": 8,
+      "name": "A Favor for Evershine",
+      "reqlevel": 2,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 170,
+      "level": 2,
+      "name": "A New Threat",
+      "reqlevel": 1,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 183,
+      "level": 3,
+      "name": "The Boar Hunter",
+      "reqlevel": 1,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 320,
+      "level": 8,
+      "name": "Return to Bellowfiz",
+      "reqlevel": 2,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 282,
+      "level": 5,
+      "name": "Senir's Observations",
+      "reqlevel": 1,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 420,
+      "level": 5,
+      "name": "Senir's Observations",
+      "reqlevel": 1,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 318,
+      "level": 7,
+      "name": "Evershine",
+      "reqlevel": 2,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 413,
+      "level": 10,
+      "name": "Shimmer Stout",
+      "reqlevel": 8,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 400,
+      "level": 5,
+      "name": "Tools for Steelgrill",
+      "reqlevel": 2,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 432,
+      "level": 9,
+      "name": "Those Blasted Troggs!",
+      "reqlevel": 5,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 415,
+      "level": 10,
+      "name": "Rejold's New Brew",
+      "reqlevel": 8,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 311,
+      "level": 7,
+      "name": "Return to Marleth",
+      "reqlevel": 2,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 308,
+      "level": 7,
+      "name": "Distracting Jarven",
+      "reqlevel": 1,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 433,
+      "level": 11,
+      "name": "The Public Servant",
+      "reqlevel": 6,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 414,
+      "level": 10,
+      "name": "Stout to Kadrell",
+      "reqlevel": 8,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 2160,
+      "level": 5,
+      "name": "Supplies to Tannok",
+      "reqlevel": 1,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 3364,
+      "level": 5,
+      "name": "Scalding Mornbrew Delivery",
+      "reqlevel": 4,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 403,
+      "level": 1,
+      "name": "Guarded Thunderbrew Barrel",
+      "reqlevel": 1,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 5841,
+      "level": 1,
+      "name": "Welcome!",
+      "reqlevel": 1,
+      "side": 1,
+      "type": 0
+    },
+    {
+      "id": 3365,
+      "level": 5,
+      "name": "Bring Back the Mug",
+      "reqlevel": 4,
+      "side": 1,
+      "type": 0
+    }
+  ]
+}

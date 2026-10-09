@@ -1,0 +1,85 @@
+{
+  "applied": false,
+  "source_commit": "e0a6eaa86f181ac99262e34126bcd2ed1a1712d6",
+  "research_date": "2026-10-09 Europe/Amsterdam",
+  "acquisition_goal": {
+    "questID": 92749,
+    "itemID": 4365,
+    "quantity": 10,
+    "source_tier": "beta-observation acquisition mechanisms; existing explicit quantity retained",
+    "mechanisms": [
+      "crafting",
+      "trading",
+      "auction_house"
+    ],
+    "mapped_work_area": null,
+    "proposal_text": "Obtain 10 Coarse Dynamite by crafting, trade or the auction house.",
+    "constraint": "Do not replace the unknown work area with Sprite, a vendor or a guessed auctioneer; engineering is an optional acquisition path, not an evidenced quest-eligibility gate."
+  },
+  "use_goal": {
+    "questID": 92819,
+    "mechanism": "detonator use",
+    "source_tier": "beta-delta",
+    "mapped_work_area": null,
+    "typed_item_target_and_count": null,
+    "constraint": "Generic unknown work retained. Meaningful unlocated item-use instructions without invented entity IDs need shared goal/text support."
+  },
+  "deadmines_handoff": {
+    "confirmed_catalogue_gate": {
+      "questID": 166,
+      "actual_parent_handin": 155
+    },
+    "not_a_dungeon_access_gate": true,
+    "beta_branch": {
+      "questIDs": [
+        92748,
+        92749,
+        92750,
+        92751,
+        92752,
+        92753,
+        92819
+      ],
+      "inferred_universal_parent_links": false
+    },
+    "constraint": "Expose useful optional dungeon preparation through coordinated scope/lifecycle support, retaining known actual hand-in gates. Chapter minimums do not certify level-9 dungeon suitability."
+  },
+  "unresolved_source_differences": {
+    "92747_level": {
+      "catalogue": 15,
+      "published_beta_observation": 16,
+      "changed": false
+    },
+    "odd_child_position": {
+      "npcID": 249713,
+      "catalogue_mapID": 1415,
+      "sourceAreaID": -3,
+      "catalogue_x": 0.412,
+      "catalogue_y": 0.79,
+      "published_zone_spawn_present": false,
+      "published_context": "Moonbrook barn, Westfall",
+      "changed": false,
+      "constraint": "Retain current published continent anchor, do not invent precise zone coordinates or a safe barn approach."
+    }
+  },
+  "shared_runtime_modules_authored": false,
+  "higher_level_scope": {
+    "questIDs": [
+      48,
+      49,
+      50,
+      51,
+      53
+    ],
+    "level": 44,
+    "minLevel": 40,
+    "current_behavior": "All known work maps are outside Westfall; sectionSeeds/localWork do not offer a Westfall 41\u201350 chapter. Catalogue and actual hand-in chain retained. Optional cross-zone chain presentation requires coordination."
+  },
+  "race_scope": {
+    "raceID": 95,
+    "questID": 98021,
+    "actual_parent_handin": 94947,
+    "chapter_11_20_actions": 224,
+    "shared_audit_limitation": "Standard audit profiles omit Skyborn; separate complete race captures/replays retained. No runtime or audit tool changes."
+  }
+}

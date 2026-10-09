@@ -1,0 +1,827 @@
+[
+  {
+    "questID": 77,
+    "title": "A Sticky Situation",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "zone": "The Hinterlands",
+    "level": 48,
+    "minLevel": 42,
+    "side": "Horde",
+    "classMask": 0,
+    "previousQuest": 650,
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 485,
+    "title": "Find OOX-09/HL!",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "zone": "The Hinterlands",
+    "level": 48,
+    "minLevel": 43,
+    "side": "Both",
+    "classMask": 0,
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 649,
+    "title": "Ripple Recovery",
+    "categoryPath": "kalimdor/orgrimmar",
+    "level": 48,
+    "minLevel": 42,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 650,
+    "title": "Ripple Recovery",
+    "categoryPath": "kalimdor/orgrimmar",
+    "level": 48,
+    "minLevel": 42,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "prerequisiteAny": [
+      649
+    ],
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 836,
+    "title": "Rescue OOX-09/HL!",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "zone": "The Hinterlands",
+    "level": 48,
+    "minLevel": 43,
+    "side": "Both",
+    "classMask": 0,
+    "previousQuest": 485,
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 1424,
+    "title": "Pool of Tears",
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows",
+    "zone": "Swamp of Sorrows",
+    "level": 43,
+    "minLevel": 38,
+    "side": "Horde",
+    "classMask": 0,
+    "questType": "Elite",
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 1429,
+    "title": "The Atal'ai Exile",
+    "categoryPath": "eastern-kingdoms/swamp-of-sorrows",
+    "zone": "Swamp of Sorrows",
+    "level": 44,
+    "minLevel": 38,
+    "side": "Horde",
+    "classMask": 0,
+    "previousQuest": 1424,
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 1444,
+    "title": "Return to Fel'Zerul",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "zone": "The Hinterlands",
+    "level": 44,
+    "minLevel": 38,
+    "side": "Horde",
+    "classMask": 0,
+    "previousQuest": 1429,
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 1448,
+    "title": "In Search of The Temple",
+    "categoryPath": "eastern-kingdoms/stormwind-city",
+    "zone": "Stormwind City",
+    "level": 43,
+    "minLevel": 38,
+    "side": "Alliance",
+    "classMask": 0,
+    "questType": "Elite",
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 1449,
+    "title": "To The Hinterlands",
+    "categoryPath": "eastern-kingdoms/stormwind-city",
+    "zone": "Stormwind City",
+    "level": 43,
+    "minLevel": 38,
+    "side": "Alliance",
+    "classMask": 0,
+    "previousQuest": 1448,
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 1450,
+    "title": "Gryphon Master Talonaxe",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "zone": "The Hinterlands",
+    "level": 43,
+    "minLevel": 38,
+    "side": "Alliance",
+    "classMask": 0,
+    "previousQuest": 1449,
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 1451,
+    "title": "Rhapsody Shindigger",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "zone": "The Hinterlands",
+    "level": 43,
+    "minLevel": 38,
+    "side": "Alliance",
+    "classMask": 0,
+    "previousQuest": 1450,
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 1452,
+    "title": "Rhapsody's Kalimdor Kocktail",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "zone": "The Hinterlands",
+    "level": 43,
+    "minLevel": 38,
+    "side": "Alliance",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "previousQuest": 1451,
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 1469,
+    "title": "Rhapsody's Tale",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "zone": "The Hinterlands",
+    "level": 43,
+    "minLevel": 38,
+    "side": "Alliance",
+    "classMask": 0,
+    "prerequisiteAny": [
+      1452
+    ],
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 2742,
+    "title": "Rin'ji is Trapped!",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "zone": "The Hinterlands",
+    "level": 47,
+    "minLevel": 42,
+    "side": "Horde",
+    "classMask": 0,
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 2782,
+    "title": "Rin'ji's Secret",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "zone": "The Hinterlands",
+    "level": 47,
+    "minLevel": 42,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "previousQuest": 2742,
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 2877,
+    "title": "Skulk Rock Clean-up",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "zone": "The Hinterlands",
+    "level": 48,
+    "minLevel": 40,
+    "side": "Alliance",
+    "classMask": 0,
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 2880,
+    "title": "Troll Necklace Bounty",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "zone": "The Hinterlands",
+    "level": 45,
+    "minLevel": 40,
+    "side": "Alliance",
+    "classMask": 0,
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 2881,
+    "title": "Troll Necklace Bounty",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "zone": "The Hinterlands",
+    "level": 45,
+    "minLevel": 40,
+    "side": "Alliance",
+    "classMask": 0,
+    "repeatable": true,
+    "prerequisiteAny": [
+      2880
+    ],
+    "prerequisitesRead": true,
+    "compiled": false
+  },
+  {
+    "questID": 2932,
+    "title": "Grim Message",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "level": 42,
+    "minLevel": 35,
+    "side": "Horde",
+    "classMask": 0,
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 2933,
+    "title": "Venom Bottles",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "zone": "The Hinterlands",
+    "level": 43,
+    "minLevel": 40,
+    "side": "Horde",
+    "classMask": 0,
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 2934,
+    "title": "Undamaged Venom Sac",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "level": 45,
+    "minLevel": 40,
+    "side": "Horde",
+    "classMask": 0,
+    "previousQuest": 2933,
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 2935,
+    "title": "Consult Master Gadrin",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "level": 45,
+    "minLevel": 40,
+    "side": "Horde",
+    "classMask": 0,
+    "questType": "Elite",
+    "previousQuest": 2934,
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 2937,
+    "title": "Summoning Shadra",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "level": 55,
+    "minLevel": 40,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "questType": "Elite",
+    "prerequisiteAny": [
+      2936
+    ],
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 2938,
+    "title": "Venom to the Undercity",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "level": 55,
+    "minLevel": 40,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "prerequisiteAny": [
+      2937
+    ],
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 2988,
+    "title": "Witherbark Cages",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "zone": "The Hinterlands",
+    "level": 45,
+    "minLevel": 40,
+    "side": "Alliance",
+    "classMask": 0,
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 2989,
+    "title": "The Altar of Zul",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "zone": "The Hinterlands",
+    "level": 48,
+    "minLevel": 40,
+    "side": "Alliance",
+    "classMask": 0,
+    "previousQuest": 2988,
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 2990,
+    "title": "Thadius Grimshade",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "zone": "The Hinterlands",
+    "level": 47,
+    "minLevel": 40,
+    "side": "Alliance",
+    "classMask": 0,
+    "previousQuest": 2989,
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 2992,
+    "title": "The Divination",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "level": 47,
+    "minLevel": 40,
+    "side": "Alliance",
+    "classMask": 0,
+    "previousQuest": 2991,
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 2993,
+    "title": "Return to the Hinterlands",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "zone": "The Hinterlands",
+    "level": 47,
+    "minLevel": 40,
+    "side": "Alliance",
+    "classMask": 0,
+    "questType": "Elite",
+    "previousQuest": 2992,
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 2994,
+    "title": "Saving Sharpbeak",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "level": 51,
+    "minLevel": 40,
+    "side": "Alliance",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "questType": "Elite",
+    "prerequisiteAny": [
+      2993
+    ],
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 4787,
+    "title": "The Ancient Egg",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "level": 50,
+    "minLevel": 40,
+    "side": "Both",
+    "classMask": 0,
+    "allowedRaceIDs": {},
+    "questType": "Elite",
+    "prerequisiteAny": [
+      3527
+    ],
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 7815,
+    "title": "Snapjaws, Mon!",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "level": 50,
+    "minLevel": 44,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 7816,
+    "title": "Gammerita, Mon!",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "zone": "The Hinterlands",
+    "level": 48,
+    "minLevel": 44,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "questType": "Elite",
+    "previousQuest": 7815,
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 7828,
+    "title": "Stalking the Stalkers",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "zone": "The Hinterlands",
+    "level": 48,
+    "minLevel": 44,
+    "side": "Horde",
+    "classMask": 0,
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 7829,
+    "title": "Hunt the Savages",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "level": 48,
+    "minLevel": 44,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 7830,
+    "title": "Avenging the Fallen",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "level": 48,
+    "minLevel": 44,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 7839,
+    "title": "Vilebranch Hooligans",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "level": 48,
+    "minLevel": 44,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 7840,
+    "title": "Lard Lost His Lunch",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "level": 49,
+    "minLevel": 44,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 7841,
+    "title": "Message to the Wildhammer",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "level": 48,
+    "minLevel": 44,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "questType": "PvP",
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 7842,
+    "title": "Another Message to the Wildhammer",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "level": 48,
+    "minLevel": 44,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "questType": "PvP",
+    "prerequisiteAny": [
+      7841
+    ],
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 7843,
+    "title": "The Final Message to the Wildhammer",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "level": 50,
+    "minLevel": 44,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "questType": "PvP",
+    "prerequisiteAny": [
+      7842
+    ],
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 7844,
+    "title": "Cannibalistic Cousins",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "level": 48,
+    "minLevel": 44,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 7845,
+    "title": "Kidnapped Elder Torntusk!",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "level": 51,
+    "minLevel": 46,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "questType": "Elite",
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 7846,
+    "title": "Recover the Key!",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "level": 51,
+    "minLevel": 46,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "questType": "Elite",
+    "prerequisiteAny": [
+      7845
+    ],
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 7847,
+    "title": "Return to Primal Torntusk",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "level": 51,
+    "minLevel": 46,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "questType": "Elite",
+    "prerequisiteAny": [
+      7846
+    ],
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 7849,
+    "title": "Separation Anxiety",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "level": 50,
+    "minLevel": 46,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "questType": "Elite",
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 7850,
+    "title": "Dark Vessels",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "level": 50,
+    "minLevel": 46,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "questType": "Elite",
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 7861,
+    "title": "Wanted: Vile Priestess Hexx and Her Minions",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "level": 51,
+    "minLevel": 46,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "questType": "Elite",
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 7862,
+    "title": "Job Opening: Guard Captain of Revantusk Village",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "level": 51,
+    "minLevel": 46,
+    "side": "Horde",
+    "classMask": 0,
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "questType": "Elite",
+    "prerequisitesRead": true,
+    "compiled": true
+  },
+  {
+    "questID": 8273,
+    "title": "Oran's Gratitude",
+    "categoryPath": "eastern-kingdoms/the-hinterlands",
+    "level": 47,
+    "minLevel": 42,
+    "side": "Horde",
+    "classMask": 0,
+    "prerequisiteAny": [
+      2782
+    ],
+    "prerequisitesRead": true,
+    "compiled": true
+  }
+]

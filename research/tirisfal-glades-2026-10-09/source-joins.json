@@ -1,0 +1,173 @@
+[
+  {
+    "questID": 3095,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "requiredClasses": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "decision": "Supplied trainer scroll/already-held residue starter: preserve actual hand-in item, class/race gate, prior hand-in and initial loot acquisition; remove only redundant post-acceptance farming/missing acquisition.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 91317,
+    "origins": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "requiredClasses": "beta-delta",
+      "objectivesText": "beta-observation",
+      "zoneOrSort": "beta-delta",
+      "objectives": "beta-observation"
+    },
+    "decision": "Join actual head item drop to Rudolph Gelhardt and one published spawn, not the giver or another Tarnished mob. Preserve eight Drudges, six Zealots, one head and Undead Paladin gates. Maps the existing unknown head-acquisition occurrence; no action is added.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 95328,
+    "origins": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-delta",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "objectives": "beta-observation",
+      "zoneOrSort": "beta-delta"
+    },
+    "decision": "Supplied trainer scroll/already-held residue starter: preserve actual hand-in item, class/race gate, prior hand-in and initial loot acquisition; remove only redundant post-acceptance farming/missing acquisition.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 5901,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "decision": "Use the explicitly supplied empty jar at the mapped termite mound; preserve 100 termites, real hand-in and cross-zone destination. Supplied count remains unknown.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 5902,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "decision": "Interact with the actual Northridge termite-barrel return object, retaining supplied barrel and completed gathering parent. No separate barrel farming or invented placement count.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 6395,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "requiredSourceItems": "converted-baseline",
+      "questFlags": "converted-baseline"
+    },
+    "decision": "Remains are burial input, not an additional hand-in item. Preserve Samuel acquisition and counted grave interaction. Acquisition-before-burial stage ordering requires shared dependency review and native validation.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 98389,
+    "origins": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "zoneOrSort": "beta-delta"
+    },
+    "decision": "Published goal frees six Webbed Victims; interact rather than infer killing a friendly victim from a bare NPC point. Preserve six-count area and return.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 99144,
+    "origins": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "zoneOrSort": "beta-delta"
+    },
+    "decision": "Published beta observation requires escape/observed-conversation work. No path or event trigger is published; expose missing objective rather than assert conversation-only completion or borrow giver coordinates.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 96896,
+    "origins": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "zoneOrSort": "beta-delta"
+    },
+    "decision": "Published beta observation requires escape/observed-conversation work. No path or event trigger is published; expose missing objective rather than assert conversation-only completion or borrow giver coordinates.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 99134,
+    "origins": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "sourceItemId": "beta-delta",
+      "zoneOrSort": "beta-delta"
+    },
+    "decision": "Retain published supplied motivator and expose unmodeled five-of-many punishment mechanics. Existing target/count conflicts are retained for coordination, not silently rewritten as a new eligibility/completion rule.",
+    "native_beta_verified": false
+  }
+]

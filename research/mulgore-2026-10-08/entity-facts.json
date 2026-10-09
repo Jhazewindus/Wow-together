@@ -1,0 +1,168 @@
+[
+  {
+    "kind": "item",
+    "entityID": 273659,
+    "url": "https://www.wowhead.com/forever/item=273659",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "85a2b53ceae00bc7feb00bfebc200abf9a042f4f8f50841bf84bdb506f1090bd",
+    "facts": {
+      "name": "Bloody Parchment",
+      "locations": [],
+      "source": "Wowhead Forever"
+    }
+  },
+  {
+    "kind": "npc",
+    "entityID": 259118,
+    "url": "https://www.wowhead.com/forever/npc=259118",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "0161f234d3fa9bfa03d48dafbc61bf959ced5953c1028d0cbf539cb4e62c4e44",
+    "facts": {
+      "name": "Muln Earthfury <Earthen Ring>",
+      "locations": [
+        {
+          "mapID": 1412,
+          "x": 0.33399999999999996,
+          "y": 0.22399999999999998,
+          "sourceAreaID": 215,
+          "sourceZone": "Mulgore"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "classification": 0
+    }
+  },
+  {
+    "kind": "npc",
+    "entityID": 2966,
+    "url": "https://www.wowhead.com/forever/npc=2966",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "dc629ac08a530c447ab4f6834d585d6dd16e5c7d4461d9a0389db728a081526f",
+    "facts": {
+      "name": "Battleboar",
+      "locations": [
+        {
+          "mapID": 1412,
+          "x": 0.5539999999999999,
+          "y": 0.846,
+          "sourceAreaID": 215,
+          "sourceZone": "Mulgore"
+        },
+        {
+          "mapID": 1412,
+          "x": 0.532,
+          "y": 0.772,
+          "sourceAreaID": 215,
+          "sourceZone": "Mulgore"
+        },
+        {
+          "mapID": 1412,
+          "x": 0.6,
+          "y": 0.8859999999999999,
+          "sourceAreaID": 215,
+          "sourceZone": "Mulgore"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 3,
+      "maxlevel": 4,
+      "classification": 0
+    }
+  },
+  {
+    "kind": "npc",
+    "entityID": 2954,
+    "url": "https://www.wowhead.com/forever/npc=2954",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "c304b9bdf6386b6016f38a3b2f3697c458509475e87abea39a3340ce079e7f46",
+    "facts": {
+      "name": "Bristleback Battleboar",
+      "locations": [
+        {
+          "mapID": 1412,
+          "x": 0.634,
+          "y": 0.782,
+          "sourceAreaID": 215,
+          "sourceZone": "Mulgore"
+        },
+        {
+          "mapID": 1412,
+          "x": 0.606,
+          "y": 0.81,
+          "sourceAreaID": 215,
+          "sourceZone": "Mulgore"
+        },
+        {
+          "mapID": 1412,
+          "x": 0.596,
+          "y": 0.7859999999999999,
+          "sourceAreaID": 215,
+          "sourceZone": "Mulgore"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 4,
+      "maxlevel": 5,
+      "classification": 0
+    }
+  },
+  {
+    "kind": "npc",
+    "entityID": 2993,
+    "url": "https://www.wowhead.com/forever/npc=2993",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "87dba9712f038ef6a02088122d7c3f55b280e499ab0914f18725db12b44f524e",
+    "facts": {
+      "name": "Baine Bloodhoof",
+      "locations": [
+        {
+          "mapID": 1412,
+          "x": 0.474,
+          "y": 0.602,
+          "sourceAreaID": 215,
+          "sourceZone": "Mulgore"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 10,
+      "maxlevel": 10,
+      "classification": 0
+    }
+  },
+  {
+    "kind": "npc",
+    "entityID": 3222,
+    "url": "https://www.wowhead.com/forever/npc=3222",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "2949606c4bd52f7c31238a7e48f823e66a70a06f2b88f6c8c9f895774079441c",
+    "facts": {
+      "name": "Brave Wildrunner",
+      "locations": [
+        {
+          "mapID": 1412,
+          "x": 0.466,
+          "y": 0.618,
+          "sourceAreaID": 215,
+          "sourceZone": "Mulgore"
+        },
+        {
+          "mapID": 1412,
+          "x": 0.474,
+          "y": 0.5820000000000001,
+          "sourceAreaID": 215,
+          "sourceZone": "Mulgore"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 14,
+      "maxlevel": 14,
+      "classification": 0
+    }
+  }
+]

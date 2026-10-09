@@ -1,0 +1,67 @@
+{
+  "zone": "Teldrassil",
+  "date": "2026-10-09 Europe/Amsterdam",
+  "addon": "0.8.61",
+  "baseline_commit": "828b1bd560031f8d811367be1f277c37008ad980",
+  "main_commit": "09155ca265278572649a3529b8ce7ea1b4eb8431",
+  "stage_corrected_ids": [
+    921,
+    922,
+    927,
+    929,
+    933,
+    934,
+    941,
+    2459,
+    7383,
+    98046,
+    98065,
+    99053,
+    99073
+  ],
+  "direct_category_records": 62,
+  "compiled_ids": 61,
+  "actions_before": [
+    157,
+    84
+  ],
+  "actions_after": [
+    157,
+    84
+  ],
+  "gap_ids_before": [
+    934,
+    2459
+  ],
+  "gap_ids_after": [
+    934,
+    2459,
+    99053
+  ],
+  "closed_gaps": [],
+  "newly_exposed_gaps": [
+    99053
+  ],
+  "strict_states": 8,
+  "all_orders_valid": true,
+  "all_endpoints_preserved": true,
+  "guard": "REVIEW REQUIRED: 1\u201310 log peak, uncertain travel and reward timing",
+  "tests": {
+    "zone": 115,
+    "focused": 6,
+    "host": 122,
+    "importer": 49,
+    "Lua51_compile": 86
+  },
+  "global_audit": {
+    "sections": 152,
+    "points": 11829,
+    "recorded_gap_free": 33,
+    "unresolved_ordinary_records": 374
+  },
+  "source_hashes_verified": 24,
+  "entity_world_completion_xp_preserved": true,
+  "shared_runtime_modules_authored": false,
+  "native_beta_verified": false,
+  "full_suite_rerun": false
+}

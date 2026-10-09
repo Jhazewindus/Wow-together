@@ -1,0 +1,11 @@
+{
+  "WowTogether/QuestCatalogue.lua": "a15b41752d80eddbafd7265e1547916e69f45386116f2457578a8f549c9c82bf",
+  "WowTogether/QuestCatalogue.json": "9184a06c194c80e437f7088767e7b151380ba00e5b785015aa6e46ee13f6df18",
+  "WowTogether/GuideAudit.json": "cecf56e17e6804f717e5bb3e31eb72cb345bca2bad86fe2a3d3a1088c7f59764",
+  "WowTogether/QuestCoverage.json": "55372a1b5dffbc8799de577742ef496635ea48b4d55004af5df136beda5e8ac6",
+  "WowTogether/GuideSourceQueue.json": "050c0556ce64bd80abf8ae5f750c6f73790466a25dc52c4e17b9536990af90f4",
+  "tools/quest_corrections.json": "23903c953b5008913e592bdd088866b2ee5717a7e375e7b498bc5e42b4a114e6",
+  "tools/import_warcraftdb.py": "53723b38e167850053664d8590dca257e615c97043e5cd75942da75f95fbf0ab",
+  "tools/audit_quest_guides.py": "bcad79ec8bca96e8c22c6134165ee1ca0cef49d6e80538a5f55c1331f9d48c03",
+  "tests/test_ungoro_coverage.py": "28a930f2340b3be0cc87fc74b947d68f5471013463556ba379e188261de45e30"
+}

@@ -1,0 +1,82 @@
+{
+  "zone": "Un'Goro Crater",
+  "date": "2026-10-08",
+  "addon": "0.8.61",
+  "baseline_commit": "fd6ed983154b62a28a8b44524c5cb0eac0e58153",
+  "main_commit": "09155ca265278572649a3529b8ce7ea1b4eb8431",
+  "changed_quest_ids": [
+    3845,
+    4084,
+    4491,
+    4492,
+    9051
+  ],
+  "direct_category_records": 53,
+  "compiled_distinct_quest_ids": 44,
+  "quest_ids_each_faction": 41,
+  "actions_before_after": {
+    "Horde": [
+      142,
+      141
+    ],
+    "Alliance": [
+      139,
+      138
+    ]
+  },
+  "recorded_gap_quest_counts_before_after": {
+    "pickup": [
+      0,
+      0
+    ],
+    "objective": [
+      6,
+      4
+    ],
+    "handin": [
+      0,
+      0
+    ],
+    "uncertain_pickup": [
+      0,
+      0
+    ],
+    "unknown_use_quantity": [
+      0,
+      1
+    ]
+  },
+  "global_totals": {
+    "sections": 152,
+    "points": 11833,
+    "recorded_gap_free": 33,
+    "unresolved_ordinary_records": 388
+  },
+  "validation": {
+    "focused_tests": 7,
+    "zone_tests": 76,
+    "transport_class_offer_session_tests": 122,
+    "import_source_tests": 49,
+    "lua51_files": 86,
+    "interface": 16001,
+    "strict_candidate_states_valid": 8,
+    "optimization_guard": "REVIEW REQUIRED",
+    "old_orders_valid_under_corrected_escort_facts": false,
+    "native_beta_tested": false,
+    "full_suite": "Previous eight-zone combined baseline 1562/1563; historical catalogue fingerprint fixture failure unchanged. No new full-suite claim.",
+    "test_run_note": "Initial all-zone run 75/76: global audit regenerated concurrently with scoped-report immutability check. Re-run after all report writes; scoped test also passes separately."
+  },
+  "remaining_unknowns": [
+    "3845 container-opening work location; three actual required contents retained.",
+    "4146 Sunken Temple mob work: all three published points are (-1,-1).",
+    "4321 native talk/event timing after all three actual pylon hand-ins.",
+    "9051 real item-use objective quantity/completion and current beta offers.",
+    "Safe cave/ridge/pylon/escort approaches, native transport and player-unlocked connections."
+  ],
+  "shared_coordination": [
+    "4143 dungeon parent handoff omitted while 4144 retains actual required hand-in; 4148 dungeon-tagged continuation omitted.",
+    "Strict route guard: delayed rewards, Horde aggregate pre-work reward decrease and Alliance log peak 12 -> 13.",
+    "Review optional item-start/lower-level Williden journal and onward 4842/9053 handoffs without unsupported exceptions or fake dependency completion."
+  ],
+  "shared_runtime_modules_authored": false
+}

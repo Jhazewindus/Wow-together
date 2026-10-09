@@ -84,8 +84,8 @@ class ZoneCoverageTests(unittest.TestCase):
         point, = quest['objectives']
         self.assertEqual((point['entityID'], point['itemID'], point['action']), (1689, 267416, 'loot'))
         self.assertEqual(point['mapID'], 1426)
-        self.assertAlmostEqual(point['x'], .7087)
-        self.assertAlmostEqual(point['y'], .6135)
+        self.assertAlmostEqual(point['x'], .738)
+        self.assertAlmostEqual(point['y'], .526)
         self.assertTrue(quest['objectiveLocationsIncomplete'])
         self.assertEqual([r['entityID'] for r in quest['missingRequirements']], [2840])
 

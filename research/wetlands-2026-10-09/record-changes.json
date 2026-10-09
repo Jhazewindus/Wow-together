@@ -1,0 +1,1899 @@
+{
+  "281": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1437,
+      "zone": "Wetlands",
+      "requirements": {},
+      "seriesRoot": 279,
+      "objectives": {},
+      "series": [
+        279,
+        281,
+        284,
+        285,
+        286,
+        98189,
+        98190,
+        98191
+      ],
+      "starts": [
+        {
+          "y": 0.586,
+          "mapID": 1437,
+          "name": "Karl Boran",
+          "entityID": 1242,
+          "npc": true,
+          "x": 0.084
+        }
+      ],
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.415,
+          "x": 0.135,
+          "name": "Damaged Crate",
+          "entityID": 261,
+          "mapID": 1437
+        }
+      ],
+      "title": "Reclaiming Goods",
+      "level": 25,
+      "areaID": 11,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Karl Boran",
+          "entityID": 1242
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Alliance",
+      "previousQuest": 279,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Damaged Crate",
+          "entityID": 261
+        }
+      ],
+      "xp": 510,
+      "shareable": true,
+      "foreverStatus": "unchanged",
+      "seriesPosition": 2,
+      "minLevel": 20,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Karl Boran",
+            "entityID": 1242
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "Damaged Crate",
+            "entityID": 261
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/wetlands"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1437,
+      "objectives": {},
+      "zone": "Wetlands",
+      "requirements": {},
+      "seriesRoot": 279,
+      "series": [
+        279,
+        281,
+        284,
+        285,
+        286,
+        98189,
+        98190,
+        98191
+      ],
+      "starts": [
+        {
+          "y": 0.586,
+          "mapID": 1437,
+          "name": "Karl Boran",
+          "entityID": 1242,
+          "npc": true,
+          "x": 0.084
+        }
+      ],
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "title": "Reclaiming Goods",
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "object",
+          "mapID": 1437,
+          "action": "interact",
+          "entityID": 261,
+          "y": 0.415,
+          "x": 0.135,
+          "name": "Damaged Crate"
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Karl Boran",
+          "entityID": 1242
+        }
+      ],
+      "level": 25,
+      "areaID": 11,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverObjectDB.lua; Interact with the exact published return object rather than speak to it; keep every mapped point, actual hand-in gate and item relation. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/wetlands-2026-10-09.",
+      "side": "Alliance",
+      "previousQuest": 279,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Damaged Crate",
+          "entityID": 261
+        }
+      ],
+      "xp": 510,
+      "shareable": true,
+      "foreverStatus": "unchanged",
+      "seriesPosition": 2,
+      "minLevel": 20,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Karl Boran",
+            "entityID": 1242
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "Damaged Crate",
+            "entityID": 261
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/wetlands"
+    }
+  },
+  "284": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1437,
+      "zone": "Wetlands",
+      "requirements": {},
+      "seriesRoot": 279,
+      "objectives": {},
+      "series": [
+        279,
+        281,
+        284,
+        285,
+        286,
+        98189,
+        98190,
+        98191
+      ],
+      "starts": [
+        {
+          "y": 0.415,
+          "x": 0.135,
+          "name": "Damaged Crate",
+          "entityID": 261,
+          "mapID": 1437
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.381,
+          "x": 0.136,
+          "name": "Sealed Barrel",
+          "entityID": 142151,
+          "mapID": 1437
+        }
+      ],
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "level": 25,
+      "areaID": 11,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Damaged Crate",
+          "entityID": 261
+        }
+      ],
+      "side": "Alliance",
+      "previousQuest": 281,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Sealed Barrel",
+          "entityID": 142151
+        }
+      ],
+      "xp": 510,
+      "title": "The Search Continues",
+      "foreverStatus": "unchanged",
+      "seriesPosition": 3,
+      "minLevel": 20,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Damaged Crate",
+            "entityID": 261
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "Sealed Barrel",
+            "entityID": 142151
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/wetlands"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1437,
+      "zone": "Wetlands",
+      "requirements": {},
+      "seriesRoot": 279,
+      "objectives": {},
+      "series": [
+        279,
+        281,
+        284,
+        285,
+        286,
+        98189,
+        98190,
+        98191
+      ],
+      "starts": [
+        {
+          "y": 0.415,
+          "x": 0.135,
+          "name": "Damaged Crate",
+          "entityID": 261,
+          "mapID": 1437
+        }
+      ],
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "object",
+          "mapID": 1437,
+          "action": "interact",
+          "entityID": 142151,
+          "y": 0.381,
+          "x": 0.136,
+          "name": "Sealed Barrel"
+        }
+      ],
+      "title": "The Search Continues",
+      "level": 25,
+      "areaID": 11,
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Damaged Crate",
+          "entityID": 261
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Alliance",
+      "previousQuest": 281,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Sealed Barrel",
+          "entityID": 142151
+        }
+      ],
+      "xp": 510,
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverObjectDB.lua; Interact with the exact published return object rather than speak to it; keep every mapped point, actual hand-in gate and item relation. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/wetlands-2026-10-09.",
+      "foreverStatus": "unchanged",
+      "seriesPosition": 3,
+      "minLevel": 20,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Damaged Crate",
+            "entityID": 261
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "Sealed Barrel",
+            "entityID": 142151
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/wetlands"
+    }
+  },
+  "285": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1437,
+      "zone": "Wetlands",
+      "requirements": {},
+      "seriesRoot": 279,
+      "objectives": {},
+      "series": [
+        279,
+        281,
+        284,
+        285,
+        286,
+        98189,
+        98190,
+        98191
+      ],
+      "starts": [
+        {
+          "y": 0.381,
+          "x": 0.136,
+          "name": "Sealed Barrel",
+          "entityID": 142151,
+          "mapID": 1437
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.349,
+          "x": 0.139,
+          "name": "Half-buried Barrel",
+          "entityID": 259,
+          "mapID": 1437
+        }
+      ],
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "level": 25,
+      "areaID": 11,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Sealed Barrel",
+          "entityID": 142151
+        }
+      ],
+      "side": "Alliance",
+      "previousQuest": 284,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Half-buried Barrel",
+          "entityID": 259
+        }
+      ],
+      "xp": 1000,
+      "title": "Search More Hovels",
+      "foreverStatus": "unchanged",
+      "seriesPosition": 4,
+      "minLevel": 20,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Sealed Barrel",
+            "entityID": 142151
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "Half-buried Barrel",
+            "entityID": 259
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/wetlands"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1437,
+      "zone": "Wetlands",
+      "requirements": {},
+      "seriesRoot": 279,
+      "objectives": {},
+      "series": [
+        279,
+        281,
+        284,
+        285,
+        286,
+        98189,
+        98190,
+        98191
+      ],
+      "starts": [
+        {
+          "y": 0.381,
+          "x": 0.136,
+          "name": "Sealed Barrel",
+          "entityID": 142151,
+          "mapID": 1437
+        }
+      ],
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "object",
+          "mapID": 1437,
+          "action": "interact",
+          "entityID": 259,
+          "y": 0.349,
+          "x": 0.139,
+          "name": "Half-buried Barrel"
+        }
+      ],
+      "title": "Search More Hovels",
+      "level": 25,
+      "areaID": 11,
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Sealed Barrel",
+          "entityID": 142151
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Alliance",
+      "previousQuest": 284,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Half-buried Barrel",
+          "entityID": 259
+        }
+      ],
+      "xp": 1000,
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverObjectDB.lua; Interact with the exact published return object rather than speak to it; keep every mapped point, actual hand-in gate and item relation. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/wetlands-2026-10-09.",
+      "foreverStatus": "unchanged",
+      "seriesPosition": 4,
+      "minLevel": 20,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Sealed Barrel",
+            "entityID": 142151
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "Half-buried Barrel",
+            "entityID": 259
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/wetlands"
+    }
+  },
+  "455": {
+    "before": {
+      "prerequisitesRead": true,
+      "zone": "Wetlands",
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 8,
+          "name": "Dragonmaw Scout",
+          "entityID": 2103
+        },
+        {
+          "entityType": "npc",
+          "quantity": 6,
+          "name": "Dragonmaw Grunt",
+          "entityID": 2102
+        }
+      ],
+      "otherLocationsIncomplete": false,
+      "level": 21,
+      "areaID": 11,
+      "seriesPosition": 2,
+      "money": 1000,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Valstag Ironjaw",
+          "entityID": 2086
+        }
+      ],
+      "xp": 1250,
+      "minLevel": 19,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantity": 8,
+            "name": "Dragonmaw Scout",
+            "entityID": 2103
+          },
+          {
+            "entityType": "npc",
+            "quantity": 6,
+            "name": "Dragonmaw Grunt",
+            "entityID": 2102
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Mountaineer Rockgar",
+            "entityID": 1342
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Valstag Ironjaw",
+            "entityID": 2086
+          }
+        ]
+      },
+      "categoryPath": "eastern-kingdoms/wetlands",
+      "raceMask": 0,
+      "mapID": 1437,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mountaineer Rockgar",
+          "entityID": 1342
+        }
+      ],
+      "seriesRoot": 468,
+      "ends": [
+        {
+          "y": 0.568,
+          "mapID": 1437,
+          "name": "Valstag Ironjaw",
+          "entityID": 2086,
+          "npc": true,
+          "x": 0.1
+        }
+      ],
+      "shareable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Alliance",
+      "previousQuest": 468,
+      "objectives": [
+        {
+          "sourceObjective": 2102,
+          "mapID": 1437,
+          "action": "kill",
+          "entityID": 2102,
+          "npc": true,
+          "y": 0.698,
+          "objectiveKey": "npc:2102",
+          "name": "Dragonmaw Grunt",
+          "x": 0.5,
+          "quantity": 6
+        },
+        {
+          "sourceObjective": 2103,
+          "mapID": 1437,
+          "action": "kill",
+          "entityID": 2103,
+          "npc": true,
+          "y": 0.7979999999999999,
+          "objectiveKey": "npc:2103",
+          "name": "Dragonmaw Scout",
+          "x": 0.5,
+          "quantity": 8
+        }
+      ],
+      "series": [
+        468,
+        455
+      ],
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.10400000000000001,
+          "mapID": 1432,
+          "name": "Mountaineer Rockgar",
+          "entityID": 1342,
+          "npc": true,
+          "x": 0.254
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "title": "The Algaz Gauntlet",
+      "classMask": 0,
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "entityID": 2102,
+          "npc": true,
+          "action": "kill",
+          "name": "Dragonmaw Grunt"
+        },
+        {
+          "entityID": 2103,
+          "npc": true,
+          "action": "kill",
+          "name": "Dragonmaw Scout"
+        }
+      ]
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "zone": "Wetlands",
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 8,
+          "name": "Dragonmaw Scout",
+          "entityID": 2103
+        },
+        {
+          "entityType": "npc",
+          "quantity": 6,
+          "name": "Dragonmaw Grunt",
+          "entityID": 2102
+        }
+      ],
+      "otherLocationsIncomplete": false,
+      "level": 21,
+      "areaID": 11,
+      "seriesPosition": 2,
+      "money": 1000,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Valstag Ironjaw",
+          "entityID": 2086
+        }
+      ],
+      "xp": 1250,
+      "minLevel": 19,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantity": 8,
+            "name": "Dragonmaw Scout",
+            "entityID": 2103
+          },
+          {
+            "entityType": "npc",
+            "quantity": 6,
+            "name": "Dragonmaw Grunt",
+            "entityID": 2102
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Mountaineer Rockgar",
+            "entityID": 1342
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Valstag Ironjaw",
+            "entityID": 2086
+          }
+        ]
+      },
+      "categoryPath": "eastern-kingdoms/wetlands",
+      "raceMask": 0,
+      "mapID": 1437,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mountaineer Rockgar",
+          "entityID": 1342
+        }
+      ],
+      "seriesRoot": 468,
+      "ends": [
+        {
+          "y": 0.568,
+          "mapID": 1437,
+          "name": "Valstag Ironjaw",
+          "entityID": 2086,
+          "npc": true,
+          "x": 0.1
+        }
+      ],
+      "shareable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Alliance",
+      "previousQuest": 468,
+      "objectives": [
+        {
+          "sourceObjective": 2102,
+          "mapID": 1437,
+          "action": "kill",
+          "entityID": 2102,
+          "npc": true,
+          "y": 0.698,
+          "objectiveKey": "npc:2102",
+          "name": "Dragonmaw Grunt",
+          "x": 0.5,
+          "quantity": 6
+        },
+        {
+          "sourceObjective": 2103,
+          "mapID": 1437,
+          "action": "kill",
+          "entityID": 2103,
+          "npc": true,
+          "y": 0.7979999999999999,
+          "objectiveKey": "npc:2103",
+          "name": "Dragonmaw Scout",
+          "x": 0.5,
+          "quantity": 8
+        },
+        {
+          "y": 0.7033,
+          "mapID": 1437,
+          "action": "event",
+          "x": 0.5372,
+          "objectiveKey": "event:455",
+          "locationSource": "Published Forever converted-baseline event area",
+          "name": "Dun Algaz traversal"
+        }
+      ],
+      "series": [
+        468,
+        455
+      ],
+      "title": "The Algaz Gauntlet",
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.10400000000000001,
+          "mapID": 1432,
+          "name": "Mountaineer Rockgar",
+          "entityID": 1342,
+          "npc": true,
+          "x": 0.254
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "classMask": 0,
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Retain both counted kill goals and add the separately published Dun Algaz traversal trigger at map 1437 53.72/70.33. No entity or count is invented; current introductory prerequisite is preserved despite the empty converted-baseline gate. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/wetlands-2026-10-09.",
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "entityID": 2102,
+          "npc": true,
+          "action": "kill",
+          "name": "Dragonmaw Grunt"
+        },
+        {
+          "entityID": 2103,
+          "npc": true,
+          "action": "kill",
+          "name": "Dragonmaw Scout"
+        }
+      ]
+    }
+  },
+  "465": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1437,
+      "zone": "Wetlands",
+      "requirements": {},
+      "objectives": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "providedItems": [
+        {
+          "entityType": "item",
+          "name": "Dwarven Tinder",
+          "entityID": 3339
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "object",
+          "mapID": 1437,
+          "name": "Dragonmaw Catapult",
+          "y": 0.47009999999999996,
+          "entityID": 1609,
+          "x": 0.4746,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "sourceAreaID": 11
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1437,
+          "entityID": 2104,
+          "npc": true,
+          "sourceZone": "Wetlands",
+          "x": 0.098,
+          "name": "Captain Stoutfist",
+          "sourceAreaID": 11,
+          "y": 0.574
+        }
+      ],
+      "level": 31,
+      "areaID": 11,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 4294967373,
+      "side": "Alliance",
+      "prerequisiteAny": [
+        464
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Dragonmaw Catapult",
+          "entityID": 1609
+        }
+      ],
+      "xp": 1900,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Captain Stoutfist",
+          "entityID": 2104
+        }
+      ],
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 23,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "title": "Nek'rosh's Gambit",
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Captain Stoutfist",
+            "entityID": 2104
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "name": "Dwarven Tinder",
+            "entityID": 3339
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "Dragonmaw Catapult",
+            "entityID": 1609
+          }
+        ]
+      },
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "categoryPath": "eastern-kingdoms/wetlands"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1437,
+      "zone": "Wetlands",
+      "requirements": {},
+      "objectives": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "name": "Dwarven Tinder",
+          "entityID": 3339
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1437,
+          "entityID": 2104,
+          "npc": true,
+          "sourceZone": "Wetlands",
+          "x": 0.098,
+          "name": "Captain Stoutfist",
+          "sourceAreaID": 11,
+          "y": 0.574
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "object",
+          "mapID": 1437,
+          "action": "use",
+          "entityID": 1609,
+          "useItemName": "Dwarven Tinder",
+          "y": 0.47009999999999996,
+          "x": 0.4746,
+          "name": "Dragonmaw Catapult",
+          "sourceAreaID": 11,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "useItemID": 3339
+        }
+      ],
+      "title": "Nek'rosh's Gambit",
+      "level": 31,
+      "areaID": 11,
+      "raceMask": 4294967373,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Captain Stoutfist",
+          "entityID": 2104
+        }
+      ],
+      "side": "Alliance",
+      "prerequisiteAny": [
+        464
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Dragonmaw Catapult",
+          "entityID": 1609
+        }
+      ],
+      "xp": 1900,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 23,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverObjectDB.lua; Use the supplied Dwarven Tinder on the actual Dragonmaw Catapult return object. Do not turn destruction work into a conversation, independent tinder farming or an invented burn count. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/wetlands-2026-10-09.",
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Captain Stoutfist",
+            "entityID": 2104
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "name": "Dwarven Tinder",
+            "entityID": 3339
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "Dragonmaw Catapult",
+            "entityID": 1609
+          }
+        ]
+      },
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "categoryPath": "eastern-kingdoms/wetlands"
+    }
+  },
+  "631": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1437,
+      "zone": "Wetlands",
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "objectives": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1437,
+          "entityID": 1075,
+          "npc": true,
+          "y": 0.18239999999999998,
+          "x": 0.499,
+          "name": "Rhag Garmason",
+          "sourceAreaID": 11,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "object",
+          "mapID": 1437,
+          "name": "Ebenezer Rustlocke's Corpse",
+          "y": 0.0795,
+          "entityID": 2652,
+          "x": 0.5128,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "sourceAreaID": 11
+        }
+      ],
+      "title": "The Thandol Span",
+      "level": 31,
+      "areaID": 11,
+      "raceMask": 4294967373,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Alliance",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Rhag Garmason",
+          "entityID": 1075
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Ebenezer Rustlocke's Corpse",
+          "entityID": 2652
+        }
+      ],
+      "xp": 2500,
+      "questType": "Elite",
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 28,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "shareable": true,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Rhag Garmason",
+            "entityID": 1075
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "Ebenezer Rustlocke's Corpse",
+            "entityID": 2652
+          }
+        ]
+      },
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "categoryPath": "eastern-kingdoms/wetlands"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1437,
+      "zone": "Wetlands",
+      "requirements": {},
+      "objectives": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1437,
+          "entityID": 1075,
+          "npc": true,
+          "y": 0.18239999999999998,
+          "x": 0.499,
+          "name": "Rhag Garmason",
+          "sourceAreaID": 11,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverObjectDB.lua; Interact with the exact published return object rather than speak to it; keep every mapped point, actual hand-in gate and item relation. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/wetlands-2026-10-09.",
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "object",
+          "mapID": 1437,
+          "action": "interact",
+          "entityID": 2652,
+          "y": 0.0795,
+          "x": 0.5128,
+          "name": "Ebenezer Rustlocke's Corpse",
+          "sourceAreaID": 11,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "raceMask": 4294967373,
+      "level": 31,
+      "areaID": 11,
+      "title": "The Thandol Span",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Rhag Garmason",
+          "entityID": 1075
+        }
+      ],
+      "side": "Alliance",
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Ebenezer Rustlocke's Corpse",
+          "entityID": 2652
+        }
+      ],
+      "xp": 2500,
+      "questType": "Elite",
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 28,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "shareable": true,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Rhag Garmason",
+            "entityID": 1075
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "Ebenezer Rustlocke's Corpse",
+            "entityID": 2652
+          }
+        ]
+      },
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "categoryPath": "eastern-kingdoms/wetlands"
+    }
+  },
+  "94497": {
+    "before": {
+      "raceMask": 4294967373,
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "action": "collect",
+          "entityID": 265734,
+          "name": "Full Brown Waterskin"
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Hervdana Saegrund",
+          "entityID": 258203
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "action": "collect",
+          "entityID": 265734,
+          "name": "Full Brown Waterskin"
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 64,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1437,
+          "entityID": 258203,
+          "npc": true,
+          "y": 0.7643000000000001,
+          "x": 0.6573,
+          "name": "Hervdana Saegrund",
+          "sourceAreaID": 11,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "level": 22,
+      "objectives": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1437,
+          "entityID": 258203,
+          "npc": true,
+          "y": 0.7643000000000001,
+          "x": 0.6573,
+          "name": "Hervdana Saegrund",
+          "sourceAreaID": 11,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "side": "Alliance",
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Hervdana Saegrund",
+          "entityID": 258203
+        }
+      ],
+      "xp": 870,
+      "prerequisitesRead": true,
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "title": "Call of Water",
+      "requirementSource": "Published Forever typed objectives",
+      "minLevel": 20,
+      "foreverStatus": "new",
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "classes/shaman"
+    },
+    "after": {
+      "raceMask": 4294967373,
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "action": "collect",
+          "entityID": 265734,
+          "name": "Full Brown Waterskin"
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Hervdana Saegrund",
+          "entityID": 258203
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "action": "collect",
+          "entityID": 265734,
+          "name": "Full Brown Waterskin"
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 64,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1437,
+          "entityID": 258203,
+          "npc": true,
+          "y": 0.7643000000000001,
+          "x": 0.6573,
+          "name": "Hervdana Saegrund",
+          "sourceAreaID": 11,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "level": 22,
+      "objectives": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "name": "Unfilled Brown Waterskin",
+          "entityID": 265732
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1437,
+          "entityID": 258203,
+          "npc": true,
+          "y": 0.7643000000000001,
+          "x": 0.6573,
+          "name": "Hervdana Saegrund",
+          "sourceAreaID": 11,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "minLevel": 20,
+      "side": "Alliance",
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Hervdana Saegrund",
+          "entityID": 258203
+        }
+      ],
+      "xp": 870,
+      "prerequisitesRead": true,
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/generated/foreverBaseQuest.lua; Retain the explicitly supplied input item separately from the full waterskin objective/output or delivery. No supplied quantity, output quantity, water coordinates or new prerequisite is invented. Class/race gates and unknown filling areas stay unchanged. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/wetlands-2026-10-09.",
+      "requirementSource": "Published Forever typed objectives",
+      "title": "Call of Water",
+      "foreverStatus": "new",
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "classes/shaman"
+    }
+  },
+  "94499": {
+    "before": {
+      "raceMask": 4294967373,
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "action": "collect",
+          "entityID": 265748,
+          "name": "Full Red Waterskin"
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Hervdana Saegrund",
+          "entityID": 258203
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "action": "collect",
+          "entityID": 265748,
+          "name": "Full Red Waterskin"
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 64,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1437,
+          "entityID": 258203,
+          "npc": true,
+          "y": 0.7643000000000001,
+          "x": 0.6573,
+          "name": "Hervdana Saegrund",
+          "sourceAreaID": 11,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "level": 22,
+      "objectives": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1437,
+          "entityID": 258203,
+          "npc": true,
+          "y": 0.7643000000000001,
+          "x": 0.6573,
+          "name": "Hervdana Saegrund",
+          "sourceAreaID": 11,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "side": "Alliance",
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Hervdana Saegrund",
+          "entityID": 258203
+        }
+      ],
+      "xp": 1300,
+      "prerequisitesRead": true,
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "title": "Call of Water",
+      "requirementSource": "Published Forever typed objectives",
+      "minLevel": 20,
+      "foreverStatus": "new",
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "classes/shaman"
+    },
+    "after": {
+      "raceMask": 4294967373,
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "action": "collect",
+          "entityID": 265748,
+          "name": "Full Red Waterskin"
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Hervdana Saegrund",
+          "entityID": 258203
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "action": "collect",
+          "entityID": 265748,
+          "name": "Full Red Waterskin"
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 64,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1437,
+          "entityID": 258203,
+          "npc": true,
+          "y": 0.7643000000000001,
+          "x": 0.6573,
+          "name": "Hervdana Saegrund",
+          "sourceAreaID": 11,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "level": 22,
+      "objectives": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "name": "Unfilled Red Waterskin",
+          "entityID": 265747
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1437,
+          "entityID": 258203,
+          "npc": true,
+          "y": 0.7643000000000001,
+          "x": 0.6573,
+          "name": "Hervdana Saegrund",
+          "sourceAreaID": 11,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "minLevel": 20,
+      "side": "Alliance",
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Hervdana Saegrund",
+          "entityID": 258203
+        }
+      ],
+      "xp": 1300,
+      "prerequisitesRead": true,
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/generated/foreverBaseQuest.lua; Retain the explicitly supplied input item separately from the full waterskin objective/output or delivery. No supplied quantity, output quantity, water coordinates or new prerequisite is invented. Class/race gates and unknown filling areas stay unchanged. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/wetlands-2026-10-09.",
+      "requirementSource": "Published Forever typed objectives",
+      "title": "Call of Water",
+      "foreverStatus": "new",
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "classes/shaman"
+    }
+  },
+  "94500": {
+    "before": {
+      "raceMask": 4294967373,
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "action": "collect",
+          "entityID": 265773,
+          "name": "Full Blue Waterskin"
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Hervdana Saegrund",
+          "entityID": 258203
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "action": "collect",
+          "entityID": 265773,
+          "name": "Full Blue Waterskin"
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 64,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1437,
+          "entityID": 258203,
+          "npc": true,
+          "y": 0.7643000000000001,
+          "x": 0.6573,
+          "name": "Hervdana Saegrund",
+          "sourceAreaID": 11,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "level": 23,
+      "objectives": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1437,
+          "entityID": 258203,
+          "npc": true,
+          "y": 0.7643000000000001,
+          "x": 0.6573,
+          "name": "Hervdana Saegrund",
+          "sourceAreaID": 11,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "side": "Alliance",
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Hervdana Saegrund",
+          "entityID": 258203
+        }
+      ],
+      "xp": 1400,
+      "prerequisitesRead": true,
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "title": "Call of Water",
+      "requirementSource": "Published Forever typed objectives",
+      "minLevel": 20,
+      "foreverStatus": "new",
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "classes/shaman"
+    },
+    "after": {
+      "raceMask": 4294967373,
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "action": "collect",
+          "entityID": 265773,
+          "name": "Full Blue Waterskin"
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Hervdana Saegrund",
+          "entityID": 258203
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "action": "collect",
+          "entityID": 265773,
+          "name": "Full Blue Waterskin"
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 64,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1437,
+          "entityID": 258203,
+          "npc": true,
+          "y": 0.7643000000000001,
+          "x": 0.6573,
+          "name": "Hervdana Saegrund",
+          "sourceAreaID": 11,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "level": 23,
+      "objectives": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "name": "Unfilled Blue Waterskin",
+          "entityID": 265772
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1437,
+          "entityID": 258203,
+          "npc": true,
+          "y": 0.7643000000000001,
+          "x": 0.6573,
+          "name": "Hervdana Saegrund",
+          "sourceAreaID": 11,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "minLevel": 20,
+      "side": "Alliance",
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Hervdana Saegrund",
+          "entityID": 258203
+        }
+      ],
+      "xp": 1400,
+      "prerequisitesRead": true,
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/generated/foreverBaseQuest.lua; Retain the explicitly supplied input item separately from the full waterskin objective/output or delivery. No supplied quantity, output quantity, water coordinates or new prerequisite is invented. Class/race gates and unknown filling areas stay unchanged. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/wetlands-2026-10-09.",
+      "requirementSource": "Published Forever typed objectives",
+      "title": "Call of Water",
+      "foreverStatus": "new",
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "classes/shaman"
+    }
+  },
+  "94501": {
+    "before": {
+      "raceMask": 4294967373,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Hervdana Saegrund",
+          "entityID": 258203
+        }
+      ],
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 64,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1432,
+          "entityID": 258043,
+          "npc": true,
+          "y": 0.18899999999999997,
+          "x": 0.4178,
+          "name": "Norric Lochthane",
+          "sourceAreaID": 38,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "level": 23,
+      "side": "Alliance",
+      "objectives": {},
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Norric Lochthane",
+          "entityID": 258043
+        }
+      ],
+      "xp": 460,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1437,
+          "entityID": 258203,
+          "npc": true,
+          "y": 0.7643000000000001,
+          "x": 0.6573,
+          "name": "Hervdana Saegrund",
+          "sourceAreaID": 11,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 20,
+      "prerequisitesRead": true,
+      "foreverStatus": "new",
+      "title": "Call of Water",
+      "categoryPath": "classes/shaman"
+    },
+    "after": {
+      "raceMask": 4294967373,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Hervdana Saegrund",
+          "entityID": 258203
+        }
+      ],
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 64,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1432,
+          "entityID": 258043,
+          "npc": true,
+          "y": 0.18899999999999997,
+          "x": 0.4178,
+          "name": "Norric Lochthane",
+          "sourceAreaID": 38,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "level": 23,
+      "objectives": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "name": "Vial of Purest Water",
+          "entityID": 7810
+        }
+      ],
+      "side": "Alliance",
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1437,
+          "entityID": 258203,
+          "npc": true,
+          "y": 0.7643000000000001,
+          "x": 0.6573,
+          "name": "Hervdana Saegrund",
+          "sourceAreaID": 11,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Norric Lochthane",
+          "entityID": 258043
+        }
+      ],
+      "xp": 460,
+      "prerequisitesRead": true,
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 20,
+      "title": "Call of Water",
+      "foreverStatus": "new",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/generated/foreverBaseQuest.lua; Retain the explicitly supplied input item separately from the full waterskin objective/output or delivery. No supplied quantity, output quantity, water coordinates or new prerequisite is invented. Class/race gates and unknown filling areas stay unchanged. Verified 24 pinned hashes 2026-10-09 Europe/Amsterdam; research/wetlands-2026-10-09.",
+      "categoryPath": "classes/shaman"
+    }
+  }
+}

@@ -1,0 +1,1241 @@
+{
+  "baseline_commit": "c24e97fd29f7f0ec44a87a20d079d2e69eb058c9",
+  "changed_quest_ids": [
+    592,
+    3511,
+    3621,
+    8551,
+    8552,
+    8553,
+    8554,
+    97331
+  ],
+  "records": {
+    "592": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1434,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Kin'weelay",
+            "entityID": 2519
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantityUnknown": true,
+            "action": "collect",
+            "entityID": 3913,
+            "name": "Filled Soul Gem"
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "classMask": 0,
+        "otherLocationsIncomplete": false,
+        "npcTargets": [
+          {
+            "itemName": "Filled Soul Gem",
+            "name": "Yenniku",
+            "entityID": 2530,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "level": 46,
+        "areaID": 33,
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "action": "loot",
+            "entityID": 2530,
+            "npc": true,
+            "y": 0.5820000000000001,
+            "sourceZone": "Stranglethorn Vale",
+            "objectiveKey": "item:3913",
+            "itemID": 3913,
+            "x": 0.39,
+            "sourceAreaID": 33,
+            "quantityUnknown": true,
+            "itemName": "Filled Soul Gem",
+            "name": "Yenniku"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "entityID": 2519,
+            "npc": true,
+            "sourceZone": "Stranglethorn Vale",
+            "x": 0.322,
+            "name": "Kin'weelay",
+            "sourceAreaID": 33,
+            "y": 0.278
+          }
+        ],
+        "side": "Horde",
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "entityID": 2497,
+            "npc": true,
+            "sourceZone": "Stranglethorn Vale",
+            "x": 0.322,
+            "name": "Nimboya",
+            "sourceAreaID": 33,
+            "y": 0.278
+          }
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Nimboya",
+            "entityID": 2497
+          }
+        ],
+        "xp": 5050,
+        "prerequisiteAny": [
+          591
+        ],
+        "foreverStatus": "updated",
+        "allowedRaceIDs": [
+          2,
+          5,
+          6,
+          8,
+          96
+        ],
+        "minLevel": 30,
+        "requirementSource": "Published Forever typed objectives",
+        "title": "Saving Yenniku",
+        "raceMask": 8589934770,
+        "objectiveFactsSource": "Published Forever typed objectives",
+        "categoryPath": "eastern-kingdoms/stranglethorn-vale"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1434,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Kin'weelay",
+            "entityID": 2519
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 3913,
+            "name": "Filled Soul Gem"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Filled Soul Gem",
+            "itemID": 3913
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "npcTargets": [
+          {
+            "itemName": "Filled Soul Gem",
+            "name": "Yenniku",
+            "entityID": 2530,
+            "useItemName": "Soul Gem",
+            "npc": true,
+            "action": "use"
+          }
+        ],
+        "classMask": 0,
+        "otherLocationsIncomplete": false,
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "action": "use",
+            "entityID": 2530,
+            "y": 0.5820000000000001,
+            "npc": true,
+            "x": 0.39,
+            "sourceZone": "Stranglethorn Vale",
+            "objectiveKey": "item:3913",
+            "itemID": 3913,
+            "useItemName": "Soul Gem",
+            "sourceAreaID": 33,
+            "quantity": 1,
+            "itemName": "Filled Soul Gem",
+            "name": "Yenniku"
+          }
+        ],
+        "level": 46,
+        "areaID": 33,
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "entityID": 2519,
+            "npc": true,
+            "sourceZone": "Stranglethorn Vale",
+            "x": 0.322,
+            "name": "Kin'weelay",
+            "sourceAreaID": 33,
+            "y": 0.278
+          }
+        ],
+        "title": "Saving Yenniku",
+        "prerequisiteAny": [
+          591
+        ],
+        "side": "Horde",
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "entityID": 2497,
+            "npc": true,
+            "sourceZone": "Stranglethorn Vale",
+            "x": 0.322,
+            "name": "Nimboya",
+            "sourceAreaID": 33,
+            "y": 0.278
+          }
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Nimboya",
+            "entityID": 2497
+          }
+        ],
+        "xp": 5050,
+        "foreverStatus": "updated",
+        "allowedRaceIDs": [
+          2,
+          5,
+          6,
+          8,
+          96
+        ],
+        "minLevel": 30,
+        "requirementSource": "Published Forever typed objectives",
+        "stageCorrectionSource": "Reviewed Forever quest facts: https://www.wowhead.com/forever/quest=592; captured 2026-10-08; SHA-256 370bc677248edbc467ad83b11348299f1cde2d6ee19801d422e7770407a58d1e. Context, linked entity facts and pinned source tiers: research/stranglethorn-vale-2026-10-08. Preserve existing eligibility and actual hand-ins. Current item 3912 is explicitly provided for quest 592; use Soul Gem on Yenniku, then obtain the Filled Soul Gem. No kill/loot inference, health threshold or generic creature marker.",
+        "raceMask": 8589934770,
+        "objectiveFactsSource": "Published Forever typed objectives",
+        "categoryPath": "eastern-kingdoms/stranglethorn-vale"
+      }
+    },
+    "3621": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1447,
+        "objectives": {},
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Loramus Thalipedes",
+            "entityID": 7783
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Shipment to Galvan",
+            "entityID": 10738
+          }
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Shipment to Galvan",
+            "entityID": 10738
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Shipment to Galvan",
+            "itemID": 10738
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1447,
+            "entityID": 7783,
+            "npc": true,
+            "sourceZone": "Azshara",
+            "x": 0.608,
+            "name": "Loramus Thalipedes",
+            "sourceAreaID": 16,
+            "y": 0.664
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "entityID": 7802,
+            "npc": true,
+            "sourceZone": "Stranglethorn Vale",
+            "x": 0.504,
+            "name": "Galvan the Ancient",
+            "sourceAreaID": 33,
+            "y": 0.204
+          }
+        ],
+        "title": "The Formation of Felbane",
+        "level": 58,
+        "areaID": 16,
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Shipment to Galvan",
+            "entityID": 10738
+          }
+        ],
+        "side": "Both",
+        "prerequisiteAny": [
+          3602
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Galvan the Ancient",
+            "entityID": 7802
+          }
+        ],
+        "xp": 4650,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": {},
+        "minLevel": 45,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 0,
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Shipment to Galvan",
+              "entityID": 10738
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Loramus Thalipedes",
+              "entityID": 7783
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Galvan the Ancient",
+              "entityID": 7802
+            }
+          ]
+        },
+        "objectiveLocationsIncomplete": true,
+        "categoryPath": "kalimdor/azshara"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1447,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Loramus Thalipedes",
+            "entityID": 7783
+          }
+        ],
+        "requirements": {},
+        "objectives": {},
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Shipment to Galvan",
+            "itemID": 10738
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Shipment to Galvan",
+            "entityID": 10738
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "action": "talk",
+            "entityID": 7802,
+            "npc": true,
+            "sourceZone": "Stranglethorn Vale",
+            "x": 0.504,
+            "name": "Galvan the Ancient",
+            "sourceAreaID": 33,
+            "y": 0.204
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1447,
+            "entityID": 7783,
+            "npc": true,
+            "sourceZone": "Azshara",
+            "x": 0.608,
+            "name": "Loramus Thalipedes",
+            "sourceAreaID": 16,
+            "y": 0.664
+          }
+        ],
+        "level": 58,
+        "areaID": 16,
+        "title": "The Formation of Felbane",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 0,
+        "side": "Both",
+        "prerequisiteAny": [
+          3602
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Galvan the Ancient",
+            "entityID": 7802
+          }
+        ],
+        "xp": 4650,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": {},
+        "minLevel": 45,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "stageCorrectionSource": "Reviewed Forever quest facts: https://www.wowhead.com/forever/quest=3621; captured 2026-10-08; SHA-256 f506021a16b9b93e8400286cc6af73349a4a238c5a4da3971584dcf295aa5f16. Context, linked entity facts and pinned source tiers: research/stranglethorn-vale-2026-10-08. Preserve existing eligibility and actual hand-ins. Matching pinned sourceItemId and current explicitly provided item; no independent farming objective.",
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Loramus Thalipedes",
+              "entityID": 7783
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Shipment to Galvan",
+              "entityID": 10738
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Galvan the Ancient",
+              "entityID": 7802
+            }
+          ]
+        },
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "categoryPath": "kalimdor/azshara"
+      }
+    },
+    "3511": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1447,
+        "objectives": {},
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Lord Arkkoroc",
+            "entityID": 6134
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Hetaera's Blood",
+            "entityID": 10610
+          }
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Hetaera's Blood",
+            "entityID": 10610
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Hetaera's Blood",
+            "itemID": 10610
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1447,
+            "entityID": 6134,
+            "npc": true,
+            "y": 0.4279,
+            "x": 0.7713,
+            "name": "Lord Arkkoroc",
+            "sourceAreaID": 16,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1447,
+            "entityID": 7783,
+            "npc": true,
+            "y": 0.6635,
+            "x": 0.6082,
+            "name": "Loramus Thalipedes",
+            "sourceAreaID": 16,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "title": "The Name of the Beast",
+        "level": 58,
+        "areaID": 16,
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Hetaera's Blood",
+            "entityID": 10610
+          }
+        ],
+        "side": "Both",
+        "prerequisiteAny": [
+          3510
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Loramus Thalipedes",
+            "entityID": 7783
+          }
+        ],
+        "xp": 3100,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": {},
+        "minLevel": 45,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 0,
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Hetaera's Blood",
+              "entityID": 10610
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Lord Arkkoroc",
+              "entityID": 6134
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Loramus Thalipedes",
+              "entityID": 7783
+            }
+          ]
+        },
+        "objectiveLocationsIncomplete": true,
+        "categoryPath": "kalimdor/azshara"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1447,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Lord Arkkoroc",
+            "entityID": 6134
+          }
+        ],
+        "requirements": {},
+        "objectives": {},
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Hetaera's Blood",
+            "itemID": 10610
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Hetaera's Blood",
+            "entityID": 10610
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1447,
+            "action": "talk",
+            "entityID": 7783,
+            "npc": true,
+            "y": 0.6635,
+            "x": 0.6082,
+            "name": "Loramus Thalipedes",
+            "sourceAreaID": 16,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1447,
+            "entityID": 6134,
+            "npc": true,
+            "y": 0.4279,
+            "x": 0.7713,
+            "name": "Lord Arkkoroc",
+            "sourceAreaID": 16,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "level": 58,
+        "areaID": 16,
+        "title": "The Name of the Beast",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 0,
+        "side": "Both",
+        "prerequisiteAny": [
+          3510
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Loramus Thalipedes",
+            "entityID": 7783
+          }
+        ],
+        "xp": 3100,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": {},
+        "minLevel": 45,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "stageCorrectionSource": "Reviewed Forever quest facts: https://www.wowhead.com/forever/quest=3511; captured 2026-10-08; SHA-256 22caab2938af7276279cee30637357bcc65ad5093537a24a4e0cee244d95f2cf. Context, linked entity facts and pinned source tiers: research/stranglethorn-vale-2026-10-08. Preserve existing eligibility and actual hand-ins. Matching pinned sourceItemId and current explicitly provided item; no independent farming objective.",
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Lord Arkkoroc",
+              "entityID": 6134
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Hetaera's Blood",
+              "entityID": 10610
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Loramus Thalipedes",
+              "entityID": 7783
+            }
+          ]
+        },
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "categoryPath": "kalimdor/azshara"
+      }
+    },
+    "97331": {
+      "before": {
+        "raceMask": 0,
+        "mapID": 1434,
+        "startRefs": {},
+        "requirements": {},
+        "seriesRoot": 97329,
+        "classMask": 0,
+        "level": 35,
+        "areaID": 33,
+        "objectives": {},
+        "seriesPosition": 2,
+        "money": 3500,
+        "endRefs": {},
+        "xp": 2750,
+        "previousQuest": 97329,
+        "objectiveFactsSource": "Published Forever quest/entity relations",
+        "minLevel": 30,
+        "prerequisitesRead": true,
+        "title": "Zimmix's Great Escape",
+        "series": [
+          97329,
+          97331
+        ],
+        "locationSource": "Wowhead Forever",
+        "categoryPath": "eastern-kingdoms/stranglethorn-vale"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1434,
+        "startRefs": {},
+        "requirements": {},
+        "seriesRoot": 97329,
+        "classMask": 0,
+        "level": 35,
+        "areaID": 33,
+        "objectives": {},
+        "objectiveLocationsIncomplete": true,
+        "missingRequirements": [
+          {
+            "entityID": 268992,
+            "name": "Zimmix Sputterspark",
+            "action": "escort",
+            "entityType": "npc"
+          }
+        ],
+        "previousQuest": 97329,
+        "money": 3500,
+        "endRefs": {},
+        "xp": 2750,
+        "title": "Zimmix's Great Escape",
+        "objectiveFactsSource": "Published Forever quest/entity relations",
+        "stageCorrectionSource": "Reviewed Forever quest facts: https://www.wowhead.com/forever/quest=97331; captured 2026-10-08; SHA-256 3ce2baae5b5ce7ada152a50f62e1e44a8fb99769fa261ffa973b134dd48994d0. Context, linked entity facts and pinned source tiers: research/stranglethorn-vale-2026-10-08. Preserve existing eligibility and actual hand-ins. Explicit escort objective; current Forever search confirms named NPC 268992. NPC page denied: exact pickup, escort path/end and Wharfmaster hand-in coordinates remain unknown. Preserve 97329 actual hand-in gate and escort adjacency; do not invent a count or map position.",
+        "minLevel": 30,
+        "seriesPosition": 2,
+        "raceMask": 0,
+        "series": [
+          97329,
+          97331
+        ],
+        "locationSource": "Wowhead Forever",
+        "categoryPath": "eastern-kingdoms/stranglethorn-vale"
+      }
+    },
+    "8551": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1434,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Captain Hecklebury Smotts",
+            "entityID": 2500
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantityUnknown": true,
+            "action": "collect",
+            "entityID": 3932,
+            "name": "Smotts' Chest"
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "classMask": 0,
+        "otherLocationsIncomplete": false,
+        "npcTargets": [
+          {
+            "itemName": "Smotts' Chest",
+            "name": "Gorlash",
+            "entityID": 1492,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "level": 47,
+        "areaID": 33,
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "action": "loot",
+            "entityID": 1492,
+            "npc": true,
+            "y": 0.706,
+            "sourceZone": "Stranglethorn Vale",
+            "objectiveKey": "item:3932",
+            "itemID": 3932,
+            "x": 0.36,
+            "sourceAreaID": 33,
+            "quantityUnknown": true,
+            "itemName": "Smotts' Chest",
+            "name": "Gorlash"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "entityID": 2500,
+            "npc": true,
+            "y": 0.7361,
+            "x": 0.2669,
+            "name": "Captain Hecklebury Smotts",
+            "sourceAreaID": 33,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "side": "Both",
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "entityID": 2500,
+            "npc": true,
+            "y": 0.7361,
+            "x": 0.2669,
+            "name": "Captain Hecklebury Smotts",
+            "sourceAreaID": 33,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Captain Hecklebury Smotts",
+            "entityID": 2500
+          }
+        ],
+        "xp": 3150,
+        "questType": "Elite",
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": {},
+        "minLevel": 35,
+        "requirementSource": "Published Forever typed objectives",
+        "title": "The Captain's Chest",
+        "raceMask": 0,
+        "objectiveFactsSource": "Published Forever typed objectives",
+        "categoryPath": "eastern-kingdoms/stranglethorn-vale"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1434,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Captain Hecklebury Smotts",
+            "entityID": 2500
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 3932,
+            "name": "Smotts' Chest"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Smotts' Chest",
+            "itemID": 3932
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "npcTargets": [
+          {
+            "itemName": "Smotts' Chest",
+            "name": "Gorlash",
+            "entityID": 1492,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "classMask": 0,
+        "otherLocationsIncomplete": false,
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "action": "loot",
+            "entityID": 1492,
+            "npc": true,
+            "y": 0.706,
+            "sourceZone": "Stranglethorn Vale",
+            "objectiveKey": "item:3932",
+            "itemID": 3932,
+            "x": 0.36,
+            "sourceAreaID": 33,
+            "quantity": 1,
+            "itemName": "Smotts' Chest",
+            "name": "Gorlash"
+          }
+        ],
+        "level": 47,
+        "areaID": 33,
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "entityID": 2500,
+            "npc": true,
+            "y": 0.734,
+            "x": 0.266,
+            "name": "Captain Hecklebury Smotts",
+            "sourceAreaID": 33,
+            "locationSource": "Reviewed current Forever Captain Hecklebury Smotts representative"
+          }
+        ],
+        "title": "The Captain's Chest",
+        "side": "Both",
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "entityID": 2500,
+            "npc": true,
+            "y": 0.734,
+            "x": 0.266,
+            "name": "Captain Hecklebury Smotts",
+            "sourceAreaID": 33,
+            "locationSource": "Reviewed current Forever Captain Hecklebury Smotts representative"
+          }
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Captain Hecklebury Smotts",
+            "entityID": 2500
+          }
+        ],
+        "xp": 3150,
+        "questType": "Elite",
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": {},
+        "minLevel": 35,
+        "requirementSource": "Published Forever typed objectives",
+        "stageCorrectionSource": "Reviewed Forever quest facts: https://www.wowhead.com/forever/quest=8551; captured 2026-10-08; SHA-256 327c6e02e6e5a1b60a7dfdcf0c82032b8a2b9c55747f6b1b9d6a01ff61003fb8. Context, linked entity facts and pinned source tiers: research/stranglethorn-vale-2026-10-08. Preserve existing eligibility and actual hand-ins.",
+        "raceMask": 0,
+        "objectiveFactsSource": "Published Forever typed objectives",
+        "categoryPath": "eastern-kingdoms/stranglethorn-vale"
+      }
+    },
+    "8552": {
+      "before": {
+        "mapID": 1434,
+        "startRefs": {},
+        "requirements": {},
+        "classMask": 0,
+        "level": 50,
+        "areaID": 33,
+        "side": "Both",
+        "money": 0,
+        "endRefs": {},
+        "xp": 2350,
+        "objectiveFactsSource": "Published Forever quest/entity relations",
+        "minLevel": 35,
+        "objectives": {},
+        "foreverStatus": "unchanged",
+        "title": "The Monogrammed Sash",
+        "categoryPath": "eastern-kingdoms/stranglethorn-vale"
+      },
+      "after": {
+        "mapID": 1434,
+        "startRefs": [
+          {
+            "entityType": "item",
+            "name": "Monogrammed Sash",
+            "entityID": 3985
+          }
+        ],
+        "requirements": {},
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "name": "Captain Hecklebury Smotts",
+            "y": 0.7340000000000001,
+            "entityID": 2500,
+            "x": 0.266,
+            "locationSource": "Reviewed current Forever NPC point",
+            "npc": true
+          }
+        ],
+        "level": 50,
+        "areaID": 33,
+        "side": "Both",
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "action": "talk",
+            "entityID": 2500,
+            "npc": true,
+            "y": 0.7340000000000001,
+            "x": 0.266,
+            "name": "Captain Hecklebury Smotts",
+            "locationSource": "Reviewed current Forever NPC point"
+          }
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Captain Hecklebury Smotts",
+            "entityID": 2500
+          }
+        ],
+        "xp": 2350,
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Monogrammed Sash",
+            "entityID": 3985
+          }
+        ],
+        "objectiveFactsSource": "Published Forever quest/entity relations",
+        "minLevel": 35,
+        "title": "The Monogrammed Sash",
+        "stageCorrectionSource": "Reviewed Forever quest facts: https://www.wowhead.com/forever/quest=8552; captured 2026-10-08; SHA-256 67e0ec8ccab753687d99955c4bb55228b5e12c19d12812604fc5a704b9d16395. Context, linked entity facts and pinned source tiers: research/stranglethorn-vale-2026-10-08. Preserve existing eligibility and actual hand-ins. Typed NPC starts/ends and item 3985 starts-quest relation confirm these exact IDs; do not transfer facts to 614/615/618/620. Keep additional unlocks uncertain.",
+        "foreverStatus": "unchanged",
+        "objectiveLocationsIncomplete": false,
+        "categoryPath": "eastern-kingdoms/stranglethorn-vale"
+      }
+    },
+    "8553": {
+      "before": {
+        "mapID": 1434,
+        "startRefs": {},
+        "requirements": {},
+        "classMask": 0,
+        "level": 50,
+        "areaID": 33,
+        "side": "Both",
+        "money": 0,
+        "endRefs": {},
+        "xp": 470,
+        "objectiveFactsSource": "Published Forever quest/entity relations",
+        "minLevel": 35,
+        "objectives": {},
+        "foreverStatus": "unchanged",
+        "title": "The Captain's Cutlass",
+        "categoryPath": "eastern-kingdoms/stranglethorn-vale"
+      },
+      "after": {
+        "mapID": 1434,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Captain Hecklebury Smotts",
+            "entityID": 2500
+          }
+        ],
+        "requirements": {},
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "name": "Sprogger",
+            "y": 0.736,
+            "entityID": 2594,
+            "x": 0.264,
+            "locationSource": "Reviewed current Forever NPC point",
+            "npc": true
+          }
+        ],
+        "level": 50,
+        "areaID": 33,
+        "side": "Both",
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "action": "talk",
+            "entityID": 2594,
+            "npc": true,
+            "y": 0.736,
+            "x": 0.264,
+            "name": "Sprogger",
+            "locationSource": "Reviewed current Forever NPC point"
+          }
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Sprogger",
+            "entityID": 2594
+          }
+        ],
+        "xp": 470,
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "name": "Captain Hecklebury Smotts",
+            "y": 0.7340000000000001,
+            "entityID": 2500,
+            "x": 0.266,
+            "locationSource": "Reviewed current Forever NPC point",
+            "npc": true
+          }
+        ],
+        "objectiveFactsSource": "Published Forever quest/entity relations",
+        "minLevel": 35,
+        "title": "The Captain's Cutlass",
+        "stageCorrectionSource": "Reviewed Forever quest facts: https://www.wowhead.com/forever/quest=8553; captured 2026-10-08; SHA-256 aa149d24cad483e5bf9429e7a8badb5052ebe8151de6ebb3b3fa0031089cebec. Context, linked entity facts and pinned source tiers: research/stranglethorn-vale-2026-10-08. Preserve existing eligibility and actual hand-ins. Typed NPC starts/ends and item 3985 starts-quest relation confirm these exact IDs; do not transfer facts to 614/615/618/620. Keep additional unlocks uncertain.",
+        "foreverStatus": "unchanged",
+        "objectiveLocationsIncomplete": false,
+        "categoryPath": "eastern-kingdoms/stranglethorn-vale"
+      }
+    },
+    "8554": {
+      "before": {
+        "mapID": 1434,
+        "startRefs": {},
+        "requirements": {},
+        "classMask": 0,
+        "level": 50,
+        "areaID": 33,
+        "side": "Both",
+        "money": 0,
+        "endRefs": {},
+        "xp": 7100,
+        "questType": "Elite",
+        "objectiveFactsSource": "Published Forever quest/entity relations",
+        "minLevel": 35,
+        "objectives": {},
+        "foreverStatus": "unchanged",
+        "title": "Facing Negolash",
+        "categoryPath": "eastern-kingdoms/stranglethorn-vale"
+      },
+      "after": {
+        "mapID": 1434,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Sprogger",
+            "entityID": 2594
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Smotts' Cutlass",
+            "entityID": 3935
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Smotts' Cutlass",
+            "itemID": 3935
+          }
+        ],
+        "classMask": 0,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "name": "Captain Hecklebury Smotts",
+            "y": 0.7340000000000001,
+            "entityID": 2500,
+            "x": 0.266,
+            "locationSource": "Reviewed current Forever NPC point",
+            "npc": true
+          }
+        ],
+        "level": 50,
+        "areaID": 33,
+        "objectives": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "name": "Sprogger",
+            "y": 0.736,
+            "entityID": 2594,
+            "x": 0.264,
+            "locationSource": "Reviewed current Forever NPC point",
+            "npc": true
+          }
+        ],
+        "side": "Both",
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Smotts' Cutlass",
+            "entityID": 3935
+          }
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Captain Hecklebury Smotts",
+            "entityID": 2500
+          }
+        ],
+        "xp": 7100,
+        "questType": "Elite",
+        "objectiveFactsSource": "Published Forever quest/entity relations",
+        "minLevel": 35,
+        "stageCorrectionSource": "Reviewed Forever quest facts: https://www.wowhead.com/forever/quest=8554; captured 2026-10-08; SHA-256 5c3ed5daaa06d56048940b0b17a1d42db163d29a04e4484c3ef5e7f3e540d302. Context, linked entity facts and pinned source tiers: research/stranglethorn-vale-2026-10-08. Preserve existing eligibility and actual hand-ins. Typed NPC starts/ends and item 3985 starts-quest relation confirm these exact IDs; do not transfer facts to 614/615/618/620. Keep additional unlocks uncertain. Preserve unresolved lifeboat lure setup (10 Barbecued Buzzard Wings and 5 Junglevine Wine). Do not substitute Negolash spawn or a giver point for the full unmapped event.",
+        "title": "Facing Negolash",
+        "foreverStatus": "unchanged",
+        "objectiveLocationsIncomplete": true,
+        "categoryPath": "eastern-kingdoms/stranglethorn-vale"
+      }
+    }
+  }
+}

@@ -1,0 +1,188 @@
+{
+  "before": {
+    "static_points_checked": 11831,
+    "source_data_gap_free_guides": 34
+  },
+  "after": {
+    "static_points_checked": 11833,
+    "source_data_gap_free_guides": 35
+  },
+  "changed_rows": [
+    {
+      "faction": "Alliance",
+      "key": "level-zone:eastern-kingdoms/duskwood:levels:21-30",
+      "before": {
+        "faction": "Alliance",
+        "zone": "Duskwood",
+        "key": "level-zone:eastern-kingdoms/duskwood:levels:21-30",
+        "quests": 80,
+        "steps": 253,
+        "unknown_location_steps": 10,
+        "missing_location_quest_ids_by_stage": {
+          "a": [
+            98447
+          ],
+          "q": [
+            81733,
+            81734,
+            81735,
+            81736,
+            81737,
+            81738,
+            81739,
+            81740
+          ],
+          "t": [
+            98447
+          ]
+        },
+        "unverified_pickup_requirement_quest_ids": [
+          90,
+          322
+        ],
+        "unverified_objective_quantity_quest_ids": [],
+        "prerequisite_review_steps": 0,
+        "source_data_gap_free": false,
+        "reason_steps_checked": 253,
+        "destination_reason_codes": {
+          "outside-level-range": 84,
+          "prerequisite": 131,
+          "quest-reward": 29,
+          "return-hub": 9
+        },
+        "reason_review_steps": 89,
+        "cross_zone_reason_steps": 11,
+        "flow_alternatives_evaluated": 222,
+        "flow_loop_changes": 0,
+        "flow_state_valid": true,
+        "quest_log_peak": 21,
+        "quest_reward_only_xp_shortfall": 109320,
+        "uncertain_travel_legs": 67,
+        "estimated_distance_before": 278923.09,
+        "estimated_distance_after": 275348.1
+      },
+      "after": {
+        "faction": "Alliance",
+        "zone": "Duskwood",
+        "key": "level-zone:eastern-kingdoms/duskwood:levels:21-30",
+        "quests": 79,
+        "steps": 250,
+        "unknown_location_steps": 10,
+        "missing_location_quest_ids_by_stage": {
+          "a": [
+            98447
+          ],
+          "q": [
+            81733,
+            81734,
+            81735,
+            81736,
+            81737,
+            81738,
+            81739,
+            81740
+          ],
+          "t": [
+            98447
+          ]
+        },
+        "unverified_pickup_requirement_quest_ids": [
+          322
+        ],
+        "unverified_objective_quantity_quest_ids": [],
+        "prerequisite_review_steps": 0,
+        "source_data_gap_free": false,
+        "reason_steps_checked": 250,
+        "destination_reason_codes": {
+          "outside-level-range": 82,
+          "prerequisite": 131,
+          "quest-reward": 28,
+          "return-hub": 9
+        },
+        "reason_review_steps": 86,
+        "cross_zone_reason_steps": 11,
+        "flow_alternatives_evaluated": 221,
+        "flow_loop_changes": 0,
+        "flow_state_valid": true,
+        "quest_log_peak": 21,
+        "quest_reward_only_xp_shortfall": 111320,
+        "uncertain_travel_legs": 67,
+        "estimated_distance_before": 271458.31,
+        "estimated_distance_after": 269612.05
+      }
+    },
+    {
+      "faction": "Horde",
+      "key": "level-zone:eastern-kingdoms/duskwood:levels:41-50",
+      "before": {
+        "faction": "Horde",
+        "zone": "Duskwood",
+        "key": "level-zone:eastern-kingdoms/duskwood:levels:41-50",
+        "quests": 4,
+        "steps": 14,
+        "unknown_location_steps": 2,
+        "missing_location_quest_ids_by_stage": {
+          "a": [],
+          "q": [
+            1383
+          ],
+          "t": []
+        },
+        "unverified_pickup_requirement_quest_ids": [],
+        "unverified_objective_quantity_quest_ids": [],
+        "prerequisite_review_steps": 0,
+        "source_data_gap_free": false,
+        "reason_steps_checked": 14,
+        "destination_reason_codes": {
+          "outside-level-range": 6,
+          "prerequisite": 6,
+          "quest-reward": 2
+        },
+        "reason_review_steps": 6,
+        "cross_zone_reason_steps": 3,
+        "flow_alternatives_evaluated": 0,
+        "flow_loop_changes": 0,
+        "flow_state_valid": true,
+        "quest_log_peak": 1,
+        "quest_reward_only_xp_shortfall": 0,
+        "uncertain_travel_legs": 4,
+        "estimated_distance_before": 32644.07,
+        "estimated_distance_after": 32644.07
+      },
+      "after": {
+        "faction": "Horde",
+        "zone": "Duskwood",
+        "key": "level-zone:eastern-kingdoms/duskwood:levels:41-50",
+        "quests": 4,
+        "steps": 14,
+        "unknown_location_steps": 0,
+        "missing_location_quest_ids_by_stage": {
+          "a": [],
+          "q": [],
+          "t": []
+        },
+        "unverified_pickup_requirement_quest_ids": [],
+        "unverified_objective_quantity_quest_ids": [],
+        "prerequisite_review_steps": 0,
+        "source_data_gap_free": true,
+        "reason_steps_checked": 14,
+        "destination_reason_codes": {
+          "outside-level-range": 6,
+          "prerequisite": 6,
+          "quest-reward": 2
+        },
+        "reason_review_steps": 6,
+        "cross_zone_reason_steps": 4,
+        "flow_alternatives_evaluated": 1,
+        "flow_loop_changes": 0,
+        "flow_state_valid": true,
+        "quest_log_peak": 1,
+        "quest_reward_only_xp_shortfall": 0,
+        "uncertain_travel_legs": 4,
+        "estimated_distance_before": 53599.23,
+        "estimated_distance_after": 53599.23
+      }
+    }
+  ],
+  "unrelated_rows_changed": 0
+}

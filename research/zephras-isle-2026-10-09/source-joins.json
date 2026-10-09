@@ -1,0 +1,37 @@
+[
+  {
+    "questID": 92597,
+    "origins": {
+      "_identityName": "beta-reviewed",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "zoneOrSort": "beta-delta",
+      "preQuestSingle": "beta-reviewed",
+      "objectives": "beta-reviewed"
+    },
+    "decision": "Use the exact published racial ability at the existing mapped object with the existing named-tool display field. No item entity, supplied inventory, spell ID or count is invented. Preserve race 95, unknown count and actual previous hand-ins; generic item tooltip wording remains a coordinated UI follow-up.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 92598,
+    "origins": {
+      "_identityName": "beta-reviewed",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "zoneOrSort": "beta-delta",
+      "objectives": "beta-reviewed"
+    },
+    "decision": "Use the exact published racial ability at the existing mapped object with the existing named-tool display field. No item entity, supplied inventory, spell ID or count is invented. Preserve race 96, unknown count and actual previous hand-ins; generic item tooltip wording remains a coordinated UI follow-up.",
+    "native_beta_verified": false
+  }
+]

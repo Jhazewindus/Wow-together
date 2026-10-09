@@ -1,0 +1,2421 @@
+{
+  "1219": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1445,
+      "zone": "Dustwallow Marsh",
+      "requirements": {},
+      "seriesRoot": 1219,
+      "requiredItems": {},
+      "objectives": {},
+      "series": [
+        1219,
+        1220
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Spy's Report",
+          "entityID": 5917
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.47,
+          "mapID": 1445,
+          "name": "Theramore Lieutenant",
+          "entityID": 4947,
+          "npc": true,
+          "x": 0.65
+        }
+      ],
+      "starts": [
+        {
+          "y": 0.26,
+          "x": 0.5539999999999999,
+          "name": "Loose Dirt",
+          "entityID": 20985,
+          "mapID": 1445
+        }
+      ],
+      "level": 35,
+      "areaID": 15,
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Loose Dirt",
+          "entityID": 20985
+        }
+      ],
+      "side": "Alliance",
+      "seriesPosition": 1,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Theramore Lieutenant",
+          "entityID": 4947
+        }
+      ],
+      "xp": 690,
+      "foreverStatus": "unchanged",
+      "title": "The Orc Report",
+      "minLevel": 30,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Loose Dirt",
+            "entityID": 20985
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Spy's Report",
+            "entityID": 5917
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Theramore Lieutenant",
+            "entityID": 4947
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/dustwallow-marsh"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1445,
+      "objectives": {},
+      "zone": "Dustwallow Marsh",
+      "requirements": {},
+      "seriesRoot": 1219,
+      "requiredItems": {},
+      "series": [
+        1219,
+        1220
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Spy's Report",
+          "entityID": 5917
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "object",
+          "mapID": 1445,
+          "action": "interact",
+          "entityID": 20985,
+          "y": 0.26,
+          "x": 0.5539999999999999,
+          "name": "Loose Dirt"
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.47,
+          "mapID": 1445,
+          "name": "Theramore Lieutenant",
+          "entityID": 4947,
+          "npc": true,
+          "x": 0.65
+        }
+      ],
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "level": 35,
+      "areaID": 15,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Loose Dirt",
+          "entityID": 20985
+        }
+      ],
+      "side": "Alliance",
+      "seriesPosition": 1,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Theramore Lieutenant",
+          "entityID": 4947
+        }
+      ],
+      "xp": 690,
+      "title": "The Orc Report",
+      "foreverStatus": "unchanged",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09.",
+      "minLevel": 30,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Loose Dirt",
+            "entityID": 20985
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Spy's Report",
+            "entityID": 5917
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Theramore Lieutenant",
+            "entityID": 4947
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/dustwallow-marsh"
+    }
+  },
+  "1238": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1445,
+      "zone": "Dustwallow Marsh",
+      "requirements": {},
+      "requiredItems": {},
+      "objectives": {},
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.306,
+          "mapID": 1445,
+          "name": "Nazeer Bloodpike",
+          "entityID": 4791,
+          "npc": true,
+          "x": 0.35200000000000004
+        }
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Spy's Report",
+          "entityID": 5917
+        }
+      ],
+      "level": 35,
+      "areaID": 15,
+      "starts": [
+        {
+          "y": 0.26,
+          "x": 0.5539999999999999,
+          "name": "Loose Dirt",
+          "entityID": 20985,
+          "mapID": 1445
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Loose Dirt",
+          "entityID": 20985
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Nazeer Bloodpike",
+          "entityID": 4791
+        }
+      ],
+      "xp": 2050,
+      "foreverStatus": "unchanged",
+      "title": "The Lost Report",
+      "minLevel": 30,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Loose Dirt",
+            "entityID": 20985
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Spy's Report",
+            "entityID": 5917
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Nazeer Bloodpike",
+            "entityID": 4791
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/dustwallow-marsh"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1445,
+      "zone": "Dustwallow Marsh",
+      "requirements": {},
+      "requiredItems": {},
+      "objectives": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Spy's Report",
+          "entityID": 5917
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.306,
+          "mapID": 1445,
+          "name": "Nazeer Bloodpike",
+          "entityID": 4791,
+          "npc": true,
+          "x": 0.35200000000000004
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "object",
+          "mapID": 1445,
+          "action": "interact",
+          "entityID": 20985,
+          "y": 0.26,
+          "x": 0.5539999999999999,
+          "name": "Loose Dirt"
+        }
+      ],
+      "level": 35,
+      "areaID": 15,
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Loose Dirt",
+          "entityID": 20985
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Nazeer Bloodpike",
+          "entityID": 4791
+        }
+      ],
+      "xp": 2050,
+      "title": "The Lost Report",
+      "foreverStatus": "unchanged",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09.",
+      "minLevel": 30,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Loose Dirt",
+            "entityID": 20985
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Spy's Report",
+            "entityID": 5917
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Nazeer Bloodpike",
+            "entityID": 4791
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/dustwallow-marsh"
+    }
+  },
+  "1239": {
+    "before": {
+      "prerequisitesRead": true,
+      "zone": "Dustwallow Marsh",
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "level": 35,
+      "areaID": 15,
+      "seriesPosition": 1,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Nazeer Bloodpike",
+          "entityID": 4791
+        }
+      ],
+      "xp": 2050,
+      "minLevel": 30,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Loose Dirt",
+            "entityID": 20985
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Defiant Orc Head",
+            "entityID": 5918
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Nazeer Bloodpike",
+            "entityID": 4791
+          }
+        ]
+      },
+      "categoryPath": "kalimdor/dustwallow-marsh",
+      "raceMask": 0,
+      "mapID": 1445,
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Loose Dirt",
+          "entityID": 20985
+        }
+      ],
+      "seriesRoot": 1239,
+      "requiredItems": {},
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "ends": [
+        {
+          "y": 0.306,
+          "mapID": 1445,
+          "name": "Nazeer Bloodpike",
+          "entityID": 4791,
+          "npc": true,
+          "x": 0.35200000000000004
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "objectives": {},
+      "series": [
+        1239,
+        1240
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Defiant Orc Head",
+          "entityID": 5918
+        }
+      ],
+      "foreverStatus": "unchanged",
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.26,
+          "x": 0.5539999999999999,
+          "name": "Loose Dirt",
+          "entityID": 20985,
+          "mapID": 1445
+        }
+      ],
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "prerequisiteAny": [
+        1238
+      ],
+      "locationSource": "Wowhead Forever",
+      "title": "The Severed Head"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "zone": "Dustwallow Marsh",
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "level": 35,
+      "areaID": 15,
+      "seriesPosition": 1,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Nazeer Bloodpike",
+          "entityID": 4791
+        }
+      ],
+      "xp": 2050,
+      "minLevel": 30,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Loose Dirt",
+            "entityID": 20985
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Defiant Orc Head",
+            "entityID": 5918
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Nazeer Bloodpike",
+            "entityID": 4791
+          }
+        ]
+      },
+      "categoryPath": "kalimdor/dustwallow-marsh",
+      "raceMask": 0,
+      "mapID": 1445,
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Loose Dirt",
+          "entityID": 20985
+        }
+      ],
+      "seriesRoot": 1239,
+      "requiredItems": {},
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "prerequisiteAny": [
+        1238
+      ],
+      "ends": [
+        {
+          "y": 0.306,
+          "mapID": 1445,
+          "name": "Nazeer Bloodpike",
+          "entityID": 4791,
+          "npc": true,
+          "x": 0.35200000000000004
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "objectives": {},
+      "series": [
+        1239,
+        1240
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Defiant Orc Head",
+          "entityID": 5918
+        }
+      ],
+      "classMask": 0,
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "starts": [
+        {
+          "entityType": "object",
+          "mapID": 1445,
+          "action": "interact",
+          "entityID": 20985,
+          "y": 0.26,
+          "x": 0.5539999999999999,
+          "name": "Loose Dirt"
+        }
+      ],
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "title": "The Severed Head",
+      "locationSource": "Wowhead Forever",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09."
+    }
+  },
+  "1251": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1445,
+      "zone": "Dustwallow Marsh",
+      "requirements": {},
+      "seriesRoot": 1251,
+      "requiredItems": {},
+      "objectives": {},
+      "series": [
+        1251,
+        1321,
+        1322,
+        1323
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Blackened Iron Shield",
+          "entityID": 5919
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.318,
+          "mapID": 1445,
+          "name": "Krog",
+          "entityID": 4926,
+          "npc": true,
+          "x": 0.364
+        }
+      ],
+      "starts": [
+        {
+          "y": 0.485,
+          "x": 0.29600000000000004,
+          "name": "Black Shield",
+          "entityID": 20992,
+          "mapID": 1445
+        }
+      ],
+      "level": 35,
+      "areaID": 15,
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Black Shield",
+          "entityID": 20992
+        }
+      ],
+      "side": "Horde",
+      "seriesPosition": 1,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Krog",
+          "entityID": 4926
+        }
+      ],
+      "xp": 690,
+      "foreverStatus": "unchanged",
+      "title": "The Black Shield",
+      "minLevel": 30,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Black Shield",
+            "entityID": 20992
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Blackened Iron Shield",
+            "entityID": 5919
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Krog",
+            "entityID": 4926
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/dustwallow-marsh"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1445,
+      "objectives": {},
+      "zone": "Dustwallow Marsh",
+      "requirements": {},
+      "seriesRoot": 1251,
+      "requiredItems": {},
+      "series": [
+        1251,
+        1321,
+        1322,
+        1323
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Blackened Iron Shield",
+          "entityID": 5919
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "object",
+          "mapID": 1445,
+          "action": "interact",
+          "entityID": 20992,
+          "y": 0.485,
+          "x": 0.29600000000000004,
+          "name": "Black Shield"
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.318,
+          "mapID": 1445,
+          "name": "Krog",
+          "entityID": 4926,
+          "npc": true,
+          "x": 0.364
+        }
+      ],
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "level": 35,
+      "areaID": 15,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Black Shield",
+          "entityID": 20992
+        }
+      ],
+      "side": "Horde",
+      "seriesPosition": 1,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Krog",
+          "entityID": 4926
+        }
+      ],
+      "xp": 690,
+      "title": "The Black Shield",
+      "foreverStatus": "unchanged",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09.",
+      "minLevel": 30,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Black Shield",
+            "entityID": 20992
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Blackened Iron Shield",
+            "entityID": 5919
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Krog",
+            "entityID": 4926
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/dustwallow-marsh"
+    }
+  },
+  "1252": {
+    "before": {
+      "prerequisitesRead": true,
+      "zone": "Dustwallow Marsh",
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "level": 40,
+      "areaID": 15,
+      "seriesPosition": 1,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Captain Garran Vimes",
+          "entityID": 4944
+        }
+      ],
+      "xp": 780,
+      "minLevel": 30,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Theramore Guard Badge",
+            "entityID": 21042
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Reethe's Badge",
+            "entityID": 5950
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Captain Garran Vimes",
+            "entityID": 4944
+          }
+        ]
+      },
+      "categoryPath": "kalimdor/dustwallow-marsh",
+      "raceMask": 0,
+      "mapID": 1445,
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Theramore Guard Badge",
+          "entityID": 21042
+        }
+      ],
+      "seriesRoot": 1252,
+      "requiredItems": {},
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "ends": [
+        {
+          "y": 0.486,
+          "mapID": 1445,
+          "name": "Captain Garran Vimes",
+          "entityID": 4944,
+          "npc": true,
+          "x": 0.682
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Alliance",
+      "objectives": {},
+      "series": [
+        1252,
+        1259,
+        1285,
+        1286,
+        1287
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Reethe's Badge",
+          "entityID": 5950
+        }
+      ],
+      "foreverStatus": "unchanged",
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.48200000000000004,
+          "x": 0.298,
+          "name": "Theramore Guard Badge",
+          "entityID": 21042,
+          "mapID": 1445
+        }
+      ],
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "prerequisiteAny": [
+        1302,
+        1282
+      ],
+      "locationSource": "Wowhead Forever",
+      "title": "Lieutenant Paval Reethe"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "zone": "Dustwallow Marsh",
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "level": 40,
+      "areaID": 15,
+      "seriesPosition": 1,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Captain Garran Vimes",
+          "entityID": 4944
+        }
+      ],
+      "xp": 780,
+      "minLevel": 30,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Theramore Guard Badge",
+            "entityID": 21042
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Reethe's Badge",
+            "entityID": 5950
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Captain Garran Vimes",
+            "entityID": 4944
+          }
+        ]
+      },
+      "categoryPath": "kalimdor/dustwallow-marsh",
+      "raceMask": 0,
+      "mapID": 1445,
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Theramore Guard Badge",
+          "entityID": 21042
+        }
+      ],
+      "seriesRoot": 1252,
+      "requiredItems": {},
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "prerequisiteAny": [
+        1302,
+        1282
+      ],
+      "ends": [
+        {
+          "y": 0.486,
+          "mapID": 1445,
+          "name": "Captain Garran Vimes",
+          "entityID": 4944,
+          "npc": true,
+          "x": 0.682
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Alliance",
+      "objectives": {},
+      "series": [
+        1252,
+        1259,
+        1285,
+        1286,
+        1287
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Reethe's Badge",
+          "entityID": 5950
+        }
+      ],
+      "classMask": 0,
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "starts": [
+        {
+          "entityType": "object",
+          "mapID": 1445,
+          "action": "interact",
+          "entityID": 21042,
+          "y": 0.48200000000000004,
+          "x": 0.298,
+          "name": "Theramore Guard Badge"
+        }
+      ],
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "title": "Lieutenant Paval Reethe",
+      "locationSource": "Wowhead Forever",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09."
+    }
+  },
+  "1253": {
+    "before": {
+      "prerequisitesRead": true,
+      "zone": "Dustwallow Marsh",
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "level": 35,
+      "areaID": 15,
+      "seriesPosition": 1,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Captain Garran Vimes",
+          "entityID": 4944
+        }
+      ],
+      "xp": 690,
+      "minLevel": 30,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Black Shield",
+            "entityID": 20992
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Blackened Iron Shield",
+            "entityID": 5919
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Captain Garran Vimes",
+            "entityID": 4944
+          }
+        ]
+      },
+      "categoryPath": "kalimdor/dustwallow-marsh",
+      "raceMask": 0,
+      "mapID": 1445,
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Black Shield",
+          "entityID": 20992
+        }
+      ],
+      "seriesRoot": 1253,
+      "requiredItems": {},
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "ends": [
+        {
+          "y": 0.486,
+          "mapID": 1445,
+          "name": "Captain Garran Vimes",
+          "entityID": 4944,
+          "npc": true,
+          "x": 0.682
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Alliance",
+      "objectives": {},
+      "series": [
+        1253,
+        1319,
+        1320
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Blackened Iron Shield",
+          "entityID": 5919
+        }
+      ],
+      "foreverStatus": "unchanged",
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.485,
+          "x": 0.29600000000000004,
+          "name": "Black Shield",
+          "entityID": 20992,
+          "mapID": 1445
+        }
+      ],
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "prerequisiteAny": [
+        1302,
+        1282
+      ],
+      "locationSource": "Wowhead Forever",
+      "title": "The Black Shield"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "zone": "Dustwallow Marsh",
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "level": 35,
+      "areaID": 15,
+      "seriesPosition": 1,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Captain Garran Vimes",
+          "entityID": 4944
+        }
+      ],
+      "xp": 690,
+      "minLevel": 30,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Black Shield",
+            "entityID": 20992
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Blackened Iron Shield",
+            "entityID": 5919
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Captain Garran Vimes",
+            "entityID": 4944
+          }
+        ]
+      },
+      "categoryPath": "kalimdor/dustwallow-marsh",
+      "raceMask": 0,
+      "mapID": 1445,
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Black Shield",
+          "entityID": 20992
+        }
+      ],
+      "seriesRoot": 1253,
+      "requiredItems": {},
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "prerequisiteAny": [
+        1302,
+        1282
+      ],
+      "ends": [
+        {
+          "y": 0.486,
+          "mapID": 1445,
+          "name": "Captain Garran Vimes",
+          "entityID": 4944,
+          "npc": true,
+          "x": 0.682
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Alliance",
+      "objectives": {},
+      "series": [
+        1253,
+        1319,
+        1320
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Blackened Iron Shield",
+          "entityID": 5919
+        }
+      ],
+      "classMask": 0,
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "starts": [
+        {
+          "entityType": "object",
+          "mapID": 1445,
+          "action": "interact",
+          "entityID": 20992,
+          "y": 0.485,
+          "x": 0.29600000000000004,
+          "name": "Black Shield"
+        }
+      ],
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "title": "The Black Shield",
+      "locationSource": "Wowhead Forever",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09."
+    }
+  },
+  "1263": {
+    "before": {
+      "raceMask": 0,
+      "mapID": 1445,
+      "startRefs": {},
+      "requirements": {},
+      "classMask": 0,
+      "level": 35,
+      "areaID": 15,
+      "side": "Both",
+      "money": 0,
+      "endRefs": {},
+      "xp": 0,
+      "objectives": {},
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "prerequisitesRead": true,
+      "minLevel": 30,
+      "title": "The Burning Inn <CHANGE TO GOSSIP>",
+      "foreverStatus": "unchanged",
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/dustwallow-marsh"
+    },
+    "after": {
+      "raceMask": 0,
+      "mapID": 1445,
+      "startRefs": {},
+      "requirements": {},
+      "classMask": 0,
+      "level": 35,
+      "areaID": 15,
+      "side": "Both",
+      "objectives": {},
+      "money": 0,
+      "endRefs": {},
+      "xp": 0,
+      "foreverStatus": "unchanged",
+      "prerequisitesRead": true,
+      "minLevel": 30,
+      "title": "The Burning Inn <CHANGE TO GOSSIP>",
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "levelingExcluded": "Unfinished change-to-gossip placeholder",
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/dustwallow-marsh"
+    }
+  },
+  "1268": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1445,
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Hoofprints",
+          "entityID": 21015
+        },
+        {
+          "entityType": "object",
+          "name": "Hoofprints",
+          "entityID": 21016
+        }
+      ],
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1445,
+          "entityID": 4926,
+          "npc": true,
+          "y": 0.3188,
+          "x": 0.3642,
+          "name": "Krog",
+          "sourceAreaID": 15,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "level": 35,
+      "areaID": 15,
+      "objectives": {},
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "starts": [
+        {
+          "entityType": "object",
+          "mapID": 1445,
+          "name": "Hoofprints",
+          "y": 0.4764,
+          "entityID": 21015,
+          "x": 0.297,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "sourceAreaID": 15
+        }
+      ],
+      "side": "Horde",
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Krog",
+          "entityID": 4926
+        }
+      ],
+      "xp": 1350,
+      "raceMask": 8589934770,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 30,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "title": "Suspicious Hoofprints",
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Hoofprints",
+            "entityID": 21015
+          },
+          {
+            "entityType": "object",
+            "name": "Hoofprints",
+            "entityID": 21016
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Krog",
+            "entityID": 4926
+          }
+        ]
+      },
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "categoryPath": "kalimdor/dustwallow-marsh"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1445,
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Hoofprints",
+          "entityID": 21015
+        },
+        {
+          "entityType": "object",
+          "name": "Hoofprints",
+          "entityID": 21016
+        }
+      ],
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1445,
+          "entityID": 4926,
+          "npc": true,
+          "y": 0.3188,
+          "x": 0.3642,
+          "name": "Krog",
+          "sourceAreaID": 15,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "level": 35,
+      "areaID": 15,
+      "starts": [
+        {
+          "entityType": "object",
+          "mapID": 1445,
+          "action": "interact",
+          "entityID": 21015,
+          "y": 0.4764,
+          "x": 0.297,
+          "name": "Hoofprints",
+          "sourceAreaID": 15,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "title": "Suspicious Hoofprints",
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Krog",
+          "entityID": 4926
+        }
+      ],
+      "xp": 1350,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 30,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09.",
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Hoofprints",
+            "entityID": 21015
+          },
+          {
+            "entityType": "object",
+            "name": "Hoofprints",
+            "entityID": 21016
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Krog",
+            "entityID": 4926
+          }
+        ]
+      },
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "categoryPath": "kalimdor/dustwallow-marsh"
+    }
+  },
+  "1269": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1445,
+      "zone": "Dustwallow Marsh",
+      "requirements": {},
+      "requiredItems": {},
+      "objectives": {},
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.318,
+          "mapID": 1445,
+          "name": "Krog",
+          "entityID": 4926,
+          "npc": true,
+          "x": 0.364
+        }
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Reethe's Badge",
+          "entityID": 5950
+        }
+      ],
+      "level": 37,
+      "areaID": 15,
+      "starts": [
+        {
+          "y": 0.48200000000000004,
+          "x": 0.298,
+          "name": "Theramore Guard Badge",
+          "entityID": 21042,
+          "mapID": 1445
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Theramore Guard Badge",
+          "entityID": 21042
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Krog",
+          "entityID": 4926
+        }
+      ],
+      "xp": 710,
+      "foreverStatus": "unchanged",
+      "title": "Lieutenant Paval Reethe",
+      "minLevel": 30,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Theramore Guard Badge",
+            "entityID": 21042
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Reethe's Badge",
+            "entityID": 5950
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Krog",
+            "entityID": 4926
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/dustwallow-marsh"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1445,
+      "zone": "Dustwallow Marsh",
+      "requirements": {},
+      "requiredItems": {},
+      "objectives": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Reethe's Badge",
+          "entityID": 5950
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.318,
+          "mapID": 1445,
+          "name": "Krog",
+          "entityID": 4926,
+          "npc": true,
+          "x": 0.364
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "object",
+          "mapID": 1445,
+          "action": "interact",
+          "entityID": 21042,
+          "y": 0.48200000000000004,
+          "x": 0.298,
+          "name": "Theramore Guard Badge"
+        }
+      ],
+      "level": 37,
+      "areaID": 15,
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Theramore Guard Badge",
+          "entityID": 21042
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Krog",
+          "entityID": 4926
+        }
+      ],
+      "xp": 710,
+      "title": "Lieutenant Paval Reethe",
+      "foreverStatus": "unchanged",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09.",
+      "minLevel": 30,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Theramore Guard Badge",
+            "entityID": 21042
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Reethe's Badge",
+            "entityID": 5950
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Krog",
+            "entityID": 4926
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/dustwallow-marsh"
+    }
+  },
+  "1272": {
+    "before": {
+      "raceMask": 0,
+      "mapID": 1445,
+      "startRefs": {},
+      "requirements": {},
+      "classMask": 0,
+      "level": 37,
+      "areaID": 15,
+      "side": "Both",
+      "money": 0,
+      "endRefs": {},
+      "xp": 0,
+      "objectives": {},
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "prerequisitesRead": true,
+      "minLevel": 30,
+      "title": "Finding Reethe <CHANGE INTO GOSSIP>",
+      "foreverStatus": "unchanged",
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/dustwallow-marsh"
+    },
+    "after": {
+      "raceMask": 0,
+      "mapID": 1445,
+      "startRefs": {},
+      "requirements": {},
+      "classMask": 0,
+      "level": 37,
+      "areaID": 15,
+      "side": "Both",
+      "objectives": {},
+      "money": 0,
+      "endRefs": {},
+      "xp": 0,
+      "foreverStatus": "unchanged",
+      "prerequisitesRead": true,
+      "minLevel": 30,
+      "title": "Finding Reethe <CHANGE INTO GOSSIP>",
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "levelingExcluded": "Unfinished change-to-gossip placeholder",
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/dustwallow-marsh"
+    }
+  },
+  "1281": {
+    "before": {
+      "raceMask": 0,
+      "mapID": 1445,
+      "startRefs": {},
+      "requirements": {},
+      "classMask": 0,
+      "level": 35,
+      "areaID": 15,
+      "side": "Both",
+      "money": 0,
+      "endRefs": {},
+      "xp": 0,
+      "objectives": {},
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "prerequisitesRead": true,
+      "minLevel": 30,
+      "title": "Jim's Song <CHANGE TO GOSSIP>",
+      "foreverStatus": "unchanged",
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/dustwallow-marsh"
+    },
+    "after": {
+      "raceMask": 0,
+      "mapID": 1445,
+      "startRefs": {},
+      "requirements": {},
+      "classMask": 0,
+      "level": 35,
+      "areaID": 15,
+      "side": "Both",
+      "objectives": {},
+      "money": 0,
+      "endRefs": {},
+      "xp": 0,
+      "foreverStatus": "unchanged",
+      "prerequisitesRead": true,
+      "minLevel": 30,
+      "title": "Jim's Song <CHANGE TO GOSSIP>",
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "levelingExcluded": "Unfinished change-to-gossip placeholder",
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/dustwallow-marsh"
+    }
+  },
+  "1283": {
+    "before": {
+      "raceMask": 0,
+      "mapID": 1445,
+      "startRefs": {},
+      "requirements": {},
+      "classMask": 0,
+      "level": 35,
+      "areaID": 15,
+      "side": "Both",
+      "money": 0,
+      "endRefs": {},
+      "xp": 0,
+      "objectives": {},
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "prerequisitesRead": true,
+      "minLevel": 30,
+      "title": "Fire at the Shady Rest <CHANGE TO GOSSIP>",
+      "foreverStatus": "unchanged",
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/dustwallow-marsh"
+    },
+    "after": {
+      "raceMask": 0,
+      "mapID": 1445,
+      "startRefs": {},
+      "requirements": {},
+      "classMask": 0,
+      "level": 35,
+      "areaID": 15,
+      "side": "Both",
+      "objectives": {},
+      "money": 0,
+      "endRefs": {},
+      "xp": 0,
+      "foreverStatus": "unchanged",
+      "prerequisitesRead": true,
+      "minLevel": 30,
+      "title": "Fire at the Shady Rest <CHANGE TO GOSSIP>",
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "levelingExcluded": "Unfinished change-to-gossip placeholder",
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/dustwallow-marsh"
+    }
+  },
+  "1284": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1445,
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Hoofprints",
+          "entityID": 21015
+        },
+        {
+          "entityType": "object",
+          "name": "Hoofprints",
+          "entityID": 21016
+        }
+      ],
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1445,
+          "entityID": 4944,
+          "npc": true,
+          "sourceZone": "Dustwallow Marsh",
+          "x": 0.682,
+          "name": "Captain Garran Vimes",
+          "sourceAreaID": 15,
+          "y": 0.484
+        }
+      ],
+      "objectives": {},
+      "level": 35,
+      "areaID": 15,
+      "starts": [
+        {
+          "entityType": "object",
+          "mapID": 1445,
+          "name": "Hoofprints",
+          "y": 0.4764,
+          "entityID": 21015,
+          "x": 0.297,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "sourceAreaID": 15
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Alliance",
+      "raceMask": 4294967373,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Captain Garran Vimes",
+          "entityID": 4944
+        }
+      ],
+      "xp": 1350,
+      "prerequisiteAny": [
+        1282,
+        1302
+      ],
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 30,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "title": "Suspicious Hoofprints",
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Hoofprints",
+            "entityID": 21015
+          },
+          {
+            "entityType": "object",
+            "name": "Hoofprints",
+            "entityID": 21016
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Captain Garran Vimes",
+            "entityID": 4944
+          }
+        ]
+      },
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "categoryPath": "kalimdor/dustwallow-marsh"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1445,
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Hoofprints",
+          "entityID": 21015
+        },
+        {
+          "entityType": "object",
+          "name": "Hoofprints",
+          "entityID": 21016
+        }
+      ],
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "objectives": {},
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1445,
+          "entityID": 4944,
+          "npc": true,
+          "sourceZone": "Dustwallow Marsh",
+          "x": 0.682,
+          "name": "Captain Garran Vimes",
+          "sourceAreaID": 15,
+          "y": 0.484
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "object",
+          "mapID": 1445,
+          "action": "interact",
+          "entityID": 21015,
+          "y": 0.4764,
+          "x": 0.297,
+          "name": "Hoofprints",
+          "sourceAreaID": 15,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "level": 35,
+      "areaID": 15,
+      "title": "Suspicious Hoofprints",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 4294967373,
+      "side": "Alliance",
+      "prerequisiteAny": [
+        1282,
+        1302
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Captain Garran Vimes",
+          "entityID": 4944
+        }
+      ],
+      "xp": 1350,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 30,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09.",
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Hoofprints",
+            "entityID": 21015
+          },
+          {
+            "entityType": "object",
+            "name": "Hoofprints",
+            "entityID": 21016
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Captain Garran Vimes",
+            "entityID": 4944
+          }
+        ]
+      },
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "categoryPath": "kalimdor/dustwallow-marsh"
+    }
+  },
+  "4976": {
+    "before": {
+      "prerequisitesRead": true,
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Cleansed Infernal Orb",
+          "entityID": 12642
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Tabetha",
+          "entityID": 6546
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Cleansed Infernal Orb",
+          "entityID": 12642
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Cleansed Infernal Orb",
+          "itemID": 12642
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "classMask": 256,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "entityID": 6266,
+          "npc": true,
+          "y": 0.35450000000000004,
+          "x": 0.6251,
+          "name": "Menara Voidrender",
+          "sourceAreaID": 17,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "level": 40,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1445,
+          "entityID": 6546,
+          "npc": true,
+          "y": 0.5709000000000001,
+          "x": 0.4606,
+          "name": "Tabetha",
+          "sourceAreaID": 15,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "title": "Returning the Cleansed Orb",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Both",
+      "prerequisiteAny": [
+        4961
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Menara Voidrender",
+          "entityID": 6266
+        }
+      ],
+      "xp": 1550,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "minLevel": 35,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Cleansed Infernal Orb",
+            "entityID": 12642
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Tabetha",
+            "entityID": 6546
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Menara Voidrender",
+            "entityID": 6266
+          }
+        ]
+      },
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "classes/warlock"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "missingRequirements": {},
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Tabetha",
+          "entityID": 6546
+        }
+      ],
+      "requirements": {},
+      "objectives": {},
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Cleansed Infernal Orb",
+          "itemID": 12642
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Cleansed Infernal Orb",
+          "entityID": 12642
+        }
+      ],
+      "classMask": 256,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "action": "talk",
+          "entityID": 6266,
+          "npc": true,
+          "y": 0.35450000000000004,
+          "x": 0.6251,
+          "name": "Menara Voidrender",
+          "sourceAreaID": 17,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1445,
+          "entityID": 6546,
+          "npc": true,
+          "y": 0.5709000000000001,
+          "x": 0.4606,
+          "name": "Tabetha",
+          "sourceAreaID": 15,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "level": 40,
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Actual supplied delivery, not a second post-acceptance farm. Preserve output count, earlier parent hand-in, class/faction scope and real remote recipient; Rexxar patrol remains a search area. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09.",
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Both",
+      "prerequisiteAny": [
+        4961
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Menara Voidrender",
+          "entityID": 6266
+        }
+      ],
+      "xp": 1550,
+      "title": "Returning the Cleansed Orb",
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "minLevel": 35,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Tabetha",
+            "entityID": 6546
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Cleansed Infernal Orb",
+            "entityID": 12642
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Menara Voidrender",
+            "entityID": 6266
+          }
+        ]
+      },
+      "categoryPath": "classes/warlock"
+    }
+  },
+  "6601": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1445,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Emberstrife",
+          "entityID": 10321
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Dull Drakefire Amulet",
+          "entityID": 16888
+        }
+      ],
+      "objectives": {},
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Dull Drakefire Amulet",
+          "itemID": 16888
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1445,
+          "entityID": 10321,
+          "npc": true,
+          "y": 0.8772,
+          "x": 0.5666,
+          "name": "Emberstrife",
+          "sourceAreaID": 15,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1442,
+          "patrol": true,
+          "entityID": 10182,
+          "npc": true,
+          "y": 0.7798999999999999,
+          "x": 0.29719999999999996,
+          "name": "Rexxar",
+          "sourceAreaID": 406,
+          "locationSource": "Published Forever converted-baseline patrol waypoints"
+        }
+      ],
+      "title": "Ascension...",
+      "level": 60,
+      "areaID": 15,
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Dull Drakefire Amulet",
+          "entityID": 16888
+        }
+      ],
+      "side": "Horde",
+      "prerequisiteAny": [
+        6585
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Rexxar",
+          "entityID": 10182
+        }
+      ],
+      "xp": 4950,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 55,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 8589934770,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Dull Drakefire Amulet",
+            "entityID": 16888
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Emberstrife",
+            "entityID": 10321
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Rexxar",
+            "entityID": 10182
+          }
+        ]
+      },
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "kalimdor/dustwallow-marsh"
+    },
+    "after": {
+      "raceMask": 8589934770,
+      "missingRequirements": {},
+      "objectives": {},
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Emberstrife",
+          "entityID": 10321
+        }
+      ],
+      "requirements": {},
+      "prerequisitesRead": true,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Dull Drakefire Amulet",
+          "itemID": 16888
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "mapID": 1445,
+      "prerequisiteAny": [
+        6585
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1442,
+          "patrol": true,
+          "entityID": 10182,
+          "npc": true,
+          "y": 0.7798999999999999,
+          "x": 0.29719999999999996,
+          "name": "Rexxar",
+          "sourceAreaID": 406,
+          "locationSource": "Published Forever converted-baseline patrol waypoints",
+          "action": "talk"
+        }
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Dull Drakefire Amulet",
+          "entityID": 16888
+        }
+      ],
+      "level": 60,
+      "areaID": 15,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1445,
+          "entityID": 10321,
+          "npc": true,
+          "y": 0.8772,
+          "x": 0.5666,
+          "name": "Emberstrife",
+          "sourceAreaID": 15,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Actual supplied delivery, not a second post-acceptance farm. Preserve output count, earlier parent hand-in, class/faction scope and real remote recipient; Rexxar patrol remains a search area. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09.",
+      "side": "Horde",
+      "classMask": 0,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Rexxar",
+          "entityID": 10182
+        }
+      ],
+      "xp": 4950,
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 55,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Emberstrife",
+            "entityID": 10321
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Dull Drakefire Amulet",
+            "entityID": 16888
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Rexxar",
+            "entityID": 10182
+          }
+        ]
+      },
+      "title": "Ascension...",
+      "categoryPath": "kalimdor/dustwallow-marsh"
+    }
+  }
+}

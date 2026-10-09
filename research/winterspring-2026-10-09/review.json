@@ -1,0 +1,84 @@
+{
+  "zone": "Winterspring",
+  "date": "2026-10-09 Europe/Amsterdam",
+  "addon": "0.8.61",
+  "baseline_commit": "bb61c3ce86e8f4e7522c94b92f33b2c11628679a",
+  "main_commit": "09155ca265278572649a3529b8ce7ea1b4eb8431",
+  "stage_corrected_ids": [
+    4861,
+    4863,
+    4882,
+    4883,
+    5084,
+    5123,
+    5128,
+    5163,
+    5252,
+    5253
+  ],
+  "ordinary_excluded_profession_ids": [
+    5124,
+    5126,
+    8798
+  ],
+  "direct_category_records": 57,
+  "ordinary_compiled_ids": 56,
+  "actions_before": {
+    "Horde": 128,
+    "Alliance": 154
+  },
+  "actions_after": {
+    "Horde": 116,
+    "Alliance": 142
+  },
+  "gap_ids_before": [
+    975,
+    5124,
+    5247,
+    5252,
+    5253,
+    8471
+  ],
+  "ordinary_gap_ids_after": [
+    975,
+    5247,
+    8471
+  ],
+  "actual_closed_gap_ids": [
+    5252,
+    5253
+  ],
+  "excluded_gap_ids_retained_in_catalogue": [
+    5124
+  ],
+  "uncertain_pickups_after": [
+    5244,
+    5249,
+    5250
+  ],
+  "strict_states": {
+    "Winterspring": 8,
+    "Eastern_Plaguelands": 8
+  },
+  "all_candidate_and_same_scope_old_states_valid": true,
+  "all_endpoints_preserved": true,
+  "guard": "REVIEW REQUIRED (Alliance rewards)",
+  "global_audit": {
+    "sections": 152,
+    "points": 11831,
+    "recorded_gap_free": 33,
+    "unresolved_ordinary_records": 373
+  },
+  "tests": {
+    "focused": 7,
+    "zone": 109,
+    "host": 122,
+    "importer": 49,
+    "lua51_compile": 86
+  },
+  "source_hashes_verified": 24,
+  "entity_world_completion_xp_preserved": true,
+  "shared_runtime_modules_authored": false,
+  "full_suite_rerun": false,
+  "native_beta_verified": false
+}

@@ -1,0 +1,79 @@
+{
+  "zone": "Thoradin's Wall",
+  "date": "2026-10-08",
+  "baseline_branch_commit": "aa24964ec55f97e7dface1725abb55fe79ba6668",
+  "main_commit": "09155ca265278572649a3529b8ce7ea1b4eb8431",
+  "addon_version": "0.8.61",
+  "changed_quest_ids": [
+    79975,
+    79976
+  ],
+  "scope": {
+    "direct_category_ids": [
+      79976
+    ],
+    "complete_chain_ids": [
+      79974,
+      79975,
+      79976
+    ],
+    "chapters": [
+      "31-40"
+    ],
+    "actions_each_faction": 9,
+    "minimum_level_retained": 14,
+    "quest_level_retained": 32
+  },
+  "gap_counts_before_after": {
+    "pickup": 0,
+    "objective": 0,
+    "handin": 0,
+    "uncertain_pickup": 0,
+    "unknown_quantities": 0
+  },
+  "validation": {
+    "focused_tests": 5,
+    "host_tests": 122,
+    "strict_states": 8,
+    "optimization_guard": "PASS: same corrected facts retain all actions, endpoints and metrics. No optimization gain claimed.",
+    "source_gap_free_chapters": 2,
+    "lua51_toc_files": 86,
+    "native_beta_tested": false,
+    "full_suite": "Previous combined baseline 1562/1563, known historical catalogue fingerprint failure. Relevant targeted checks run for these point changes; no new full-suite claim.",
+    "global_audit": {
+      "fixed_zone_guides_checked": 152,
+      "static_points_checked": 11833,
+      "source_data_gap_free_guides": 33,
+      "ordinary_source_queue_records": 390
+    },
+    "zone_regressions": {
+      "tests": 69,
+      "passed": 69,
+      "seconds": 98.193
+    }
+  },
+  "remaining_unknowns": [
+    "Current native beta offers/interactions and object availability.",
+    "Safe cross-continent arrival and actual wall/ground approach; locations do not prove a road or personally unlocked transport.",
+    "Source actor/build context and restrictions not established beyond retained catalogue identity fields.",
+    "No explicit onward child of 79976 in available catalogue or pinned object starts; do not invent a continuation."
+  ],
+  "shared_coordination": {
+    "applied": false,
+    "scope": "Presentation/grouping of quest 79976 as an optional Arathi handoff after the preceding chain hand-in, rather than a separate recommended region.",
+    "evidence": "One direct category quest, two cross-continent dependencies, beta-observation object positions use area 45 / map 1417. Chapter 31-40 and minimum 14 are distinct facts, not suitability proof.",
+    "required_coordination": [
+      "Preserve saved level-zone:eastern-kingdoms/thoradins-wall:levels:31-40 instances and progress when changing guide presentation.",
+      "Avoid automatically sending an Arathi player to Stonetalon/Loch Modan solely to make a region longer.",
+      "Keep accepted unfinished work, class option, faction gates, personal skips and temporary deferrals intact.",
+      "Verify hand-in-only unlocks and any real onward continuation before adding it.",
+      "Review canonical map indexing: Arathi already owns map 1417; assigning a primary map to a separate Wall category can create ambiguity. Stage coordinates already use the supported Arathi frame."
+    ],
+    "runtime_modules_not_edited": [
+      "LevelingGuides.lua",
+      "GuidePersistence.lua",
+      "FixedGuides.lua",
+      "Catalogue.lua"
+    ]
+  }
+}

@@ -1,0 +1,555 @@
+{
+  "date": "2026-10-08",
+  "timezone": "Europe/Amsterdam",
+  "baseline": {
+    "commit": "67ff36412ede50154ec3a8b2aecb148e72ffb568",
+    "version": "0.8.59",
+    "guides": 152,
+    "areas": 44,
+    "gap_free_guides": 33
+  },
+  "status": "Data research draft; unresolved source gaps and compiler tradeoffs require main-developer review.",
+  "scope": {
+    "distinct_quests": 103,
+    "complete_actions": 354,
+    "inventory": "inventory.json"
+  },
+  "source_manifest": {
+    "path": "../../tools/forever_source_manifest.json",
+    "commit": "e0a6eaa86f181ac99262e34126bcd2ed1a1712d6",
+    "all_file_hashes_verified": 24
+  },
+  "changed_facts": [
+    {
+      "questID": 1518,
+      "decision": "Retain supplied item as a hand-in requirement; remove the spurious farming requirement; retain all three guide actions.",
+      "evidence": [
+        {
+          "url": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua",
+          "sha256": "d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87",
+          "fields": {
+            "questID": 1518,
+            "name": "Call of Earth",
+            "requiredLevel": 4,
+            "questLevel": 4,
+            "requiredClasses": 64,
+            "sourceItemId": 6656,
+            "objectives": null
+          }
+        },
+        {
+          "questID": 1518,
+          "url": "https://www.wowhead.com/forever/quest=1518",
+          "sha256": "507c0436c8e6a5497119953a9907de147a9e89c26492f7ec5c66c32f076ce405",
+          "captured": "2026-10-08",
+          "relations": {
+            "starts": [
+              {
+                "entityType": "npc",
+                "entityID": 5891,
+                "name": "Minor Manifestation of Earth"
+              }
+            ],
+            "ends": [
+              {
+                "entityType": "npc",
+                "entityID": 5887,
+                "name": "Canaga Earthcaller"
+              }
+            ],
+            "requirements": [],
+            "provided": [
+              {
+                "entityType": "item",
+                "entityID": 6656,
+                "name": "Rough Quartz",
+                "quantity": 1
+              }
+            ]
+          },
+          "current_comment_ids": []
+        }
+      ]
+    },
+    {
+      "questID": 1521,
+      "decision": "Retain supplied item as a hand-in requirement; remove the spurious farming requirement; retain all three guide actions.",
+      "evidence": [
+        {
+          "url": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua",
+          "sha256": "d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87",
+          "fields": {
+            "questID": 1521,
+            "name": "Call of Earth",
+            "requiredLevel": 4,
+            "questLevel": 4,
+            "requiredClasses": 64,
+            "sourceItemId": 6656,
+            "objectives": null
+          }
+        },
+        {
+          "questID": 1521,
+          "url": "https://www.wowhead.com/forever/quest=1521",
+          "sha256": "629bc9c9f60a895622d078102726775831fa27ef0ced6f4b1ff5c60749e6755f",
+          "captured": "2026-10-08",
+          "relations": {
+            "starts": [
+              {
+                "entityType": "npc",
+                "entityID": 5891,
+                "name": "Minor Manifestation of Earth"
+              }
+            ],
+            "ends": [
+              {
+                "entityType": "npc",
+                "entityID": 5888,
+                "name": "Seer Ravenfeather"
+              }
+            ],
+            "requirements": [],
+            "provided": [
+              {
+                "entityType": "item",
+                "entityID": 6656,
+                "name": "Rough Quartz",
+                "quantity": 1
+              }
+            ]
+          },
+          "current_comment_ids": []
+        }
+      ]
+    },
+    {
+      "questID": 1524,
+      "decision": "Retain supplied item as a hand-in requirement; remove the spurious farming requirement; retain all three guide actions.",
+      "evidence": [
+        {
+          "url": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua",
+          "sha256": "d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87",
+          "fields": {
+            "questID": 1524,
+            "name": "Call of Fire",
+            "requiredLevel": 10,
+            "questLevel": 11,
+            "requiredClasses": 64,
+            "sourceItemId": 6653,
+            "objectives": null
+          }
+        },
+        {
+          "questID": 1524,
+          "url": "https://www.wowhead.com/forever/quest=1524",
+          "sha256": "1c572321f109bf813e51e0d8c57de7d26b693741843fb6a200582f94974a11d4",
+          "captured": "2026-10-08",
+          "relations": {
+            "starts": [
+              {
+                "entityType": "npc",
+                "entityID": 5907,
+                "name": "Kranal Fiss"
+              }
+            ],
+            "ends": [
+              {
+                "entityType": "npc",
+                "entityID": 5900,
+                "name": "Telf Joolam"
+              }
+            ],
+            "requirements": [],
+            "provided": [
+              {
+                "entityType": "item",
+                "entityID": 6653,
+                "name": "Torch of the Dormant Flame",
+                "quantity": 1
+              }
+            ]
+          },
+          "current_comment_ids": []
+        }
+      ]
+    },
+    {
+      "questID": 1527,
+      "decision": "Retain supplied item as a hand-in requirement; remove the spurious farming requirement; retain all three guide actions.",
+      "evidence": [
+        {
+          "url": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua",
+          "sha256": "d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87",
+          "fields": {
+            "questID": 1527,
+            "name": "Call of Fire",
+            "requiredLevel": 10,
+            "questLevel": 13,
+            "requiredClasses": 64,
+            "sourceItemId": 6654,
+            "objectives": null
+          }
+        },
+        {
+          "questID": 1527,
+          "url": "https://www.wowhead.com/forever/quest=1527",
+          "sha256": "e96affc9b3e291bfbbcc27b71d90505072b579b8eea933cabfa7e994e87113ea",
+          "captured": "2026-10-08",
+          "relations": {
+            "starts": [
+              {
+                "entityType": "object",
+                "entityID": 61934,
+                "name": "Brazier of the Dormant Flame"
+              }
+            ],
+            "ends": [
+              {
+                "entityType": "npc",
+                "entityID": 5907,
+                "name": "Kranal Fiss"
+              }
+            ],
+            "requirements": [],
+            "provided": [
+              {
+                "entityType": "item",
+                "entityID": 6654,
+                "name": "Torch of the Eternal Flame",
+                "quantity": 1
+              }
+            ]
+          },
+          "current_comment_ids": []
+        }
+      ]
+    },
+    {
+      "questID": 1525,
+      "decision": "Add one known item-source work point; retain Fire Tar, both hand-in items and all identity/prerequisite fields.",
+      "evidence": [
+        {
+          "url": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua",
+          "sha256": "d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87",
+          "fields": {
+            "questID": 1525,
+            "name": "Call of Fire",
+            "requiredLevel": 10,
+            "questLevel": 12,
+            "requiredClasses": 64,
+            "objectiveItemIDs": [
+              5026,
+              6652
+            ]
+          }
+        },
+        {
+          "url": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverItemDB.lua",
+          "sha256": "987d037b6df94d5b0b1dc326a1670581e3abb952736a4ae055fd9f161328b71c",
+          "fields": {
+            "itemID": 6652,
+            "npcDrops": [
+              3199
+            ]
+          }
+        },
+        {
+          "questID": 1525,
+          "url": "https://www.wowhead.com/forever/quest=1525",
+          "sha256": "e0d51ccb317bc5875fd75e64c4527f2d7a0322bd2cf9fda2ddf90b1204265fe6",
+          "captured": "2026-10-08",
+          "relations": {
+            "starts": [
+              {
+                "entityType": "npc",
+                "entityID": 5900,
+                "name": "Telf Joolam"
+              }
+            ],
+            "ends": [
+              {
+                "entityType": "npc",
+                "entityID": 5900,
+                "name": "Telf Joolam"
+              }
+            ],
+            "requirements": [
+              {
+                "entityType": "item",
+                "entityID": 5026,
+                "name": "Fire Tar",
+                "quantity": 1
+              },
+              {
+                "entityType": "item",
+                "entityID": 6652,
+                "name": "Reagent Pouch",
+                "quantity": 1
+              }
+            ],
+            "provided": []
+          },
+          "current_comment_ids": [
+            6430512
+          ]
+        },
+        {
+          "kind": "npc",
+          "entityID": 3199,
+          "url": "https://www.wowhead.com/forever/npc=3199",
+          "status": 200,
+          "sha256": "ff0c9fd9103396db49e6f4da23460c27f8318b8bddec50c724a2971d8ce83906",
+          "facts": {
+            "name": "Burning Blade Cultist",
+            "locations": [
+              {
+                "mapID": 1411,
+                "x": 0.518,
+                "y": 0.258,
+                "sourceAreaID": 14,
+                "sourceZone": "Durotar"
+              }
+            ],
+            "source": "Wowhead Forever",
+            "minlevel": 10,
+            "maxlevel": 11,
+            "classification": 0
+          }
+        }
+      ]
+    },
+    {
+      "questID": 99123,
+      "decision": "Name the escort target; retain unknown endpoint, quantity and native completion.",
+      "evidence": [
+        {
+          "questID": 99123,
+          "url": "https://www.wowhead.com/forever/quest=99123",
+          "sha256": "809b853bca6444f08455e80d754c60ebf39680b3c961a2e29acdb8289dacb6c7",
+          "captured": "2026-10-08",
+          "relations": {
+            "starts": [
+              {
+                "entityType": "npc",
+                "entityID": 275811,
+                "name": "Pal'juh"
+              }
+            ],
+            "ends": [
+              {
+                "entityType": "npc",
+                "entityID": 3304,
+                "name": "Master Vornal"
+              }
+            ],
+            "requirements": [],
+            "provided": []
+          },
+          "current_comment_ids": []
+        },
+        {
+          "url": "https://us.forums.blizzard.com/en/wow/t/2360696/1",
+          "postID": 30185131,
+          "updated": "2026-10-01T23:00:31.411Z",
+          "captured": "2026-10-08",
+          "sha256": "c7e9fa57c07d3fb25287c10ce137ed17ed85bbc03a383e220ddd5269332c7ecb",
+          "fact": "Official beta notes confirm an escort NPC for Lost in the Shadows; no path or endpoint."
+        }
+      ]
+    }
+  ],
+  "before": {
+    "missing_location_quest_ids_by_stage": {
+      "a": [
+        785
+      ],
+      "q": [
+        785,
+        1518,
+        1521,
+        1524,
+        1525,
+        1527,
+        96873,
+        96874,
+        99123
+      ],
+      "t": [
+        785
+      ]
+    },
+    "unverified_pickup_requirement_quest_ids": [
+      787,
+      788,
+      1470,
+      1485,
+      1505,
+      1516,
+      1519,
+      1859,
+      1884,
+      2380,
+      2983,
+      2985,
+      5654,
+      5660,
+      6067,
+      6069
+    ],
+    "unverified_objective_quantity_quest_ids": []
+  },
+  "after": {
+    "missing_location_quest_ids_by_stage": {
+      "a": [
+        785
+      ],
+      "q": [
+        785,
+        96873,
+        96874,
+        99123
+      ],
+      "t": [
+        785
+      ]
+    },
+    "unverified_pickup_requirement_quest_ids": [
+      787,
+      788,
+      1470,
+      1485,
+      1505,
+      1516,
+      1519,
+      1859,
+      1884,
+      2380,
+      2983,
+      2985,
+      5654,
+      5660,
+      6067,
+      6069
+    ],
+    "unverified_objective_quantity_quest_ids": []
+  },
+  "validation": {
+    "changed_quest_ids": [
+      1518,
+      1521,
+      1524,
+      1525,
+      1527,
+      99123
+    ],
+    "changed_fields": {
+      "1527": [
+        "ends",
+        "missingRequirements",
+        "objectiveLocationsIncomplete",
+        "providedItems",
+        "requirements",
+        "stageCorrectionSource",
+        "worldReferences"
+      ],
+      "1521": [
+        "ends",
+        "missingRequirements",
+        "objectiveLocationsIncomplete",
+        "providedItems",
+        "requirements",
+        "stageCorrectionSource",
+        "worldReferences"
+      ],
+      "1524": [
+        "ends",
+        "missingRequirements",
+        "objectiveLocationsIncomplete",
+        "providedItems",
+        "requirements",
+        "stageCorrectionSource",
+        "worldReferences"
+      ],
+      "99123": [
+        "missingRequirements",
+        "stageCorrectionSource"
+      ],
+      "1525": [
+        "missingRequirements",
+        "npcTargets",
+        "objectiveLocationsIncomplete",
+        "objectives",
+        "stageCorrectionSource"
+      ],
+      "1518": [
+        "ends",
+        "missingRequirements",
+        "objectiveLocationsIncomplete",
+        "providedItems",
+        "requirements",
+        "stageCorrectionSource",
+        "worldReferences"
+      ]
+    },
+    "quest_records": 5230,
+    "unchanged_datasets": [
+      "questEntities",
+      "worldQuestChecks",
+      "xpBaseline"
+    ],
+    "lua51_toc_files_compiled": 83,
+    "interface": 16001,
+    "final_targeted_tests": {
+      "passed": 226,
+      "failed": 0,
+      "modules": [
+        "test_durotar_coverage",
+        "test_zone_coverage",
+        "test_0814",
+        "test_089",
+        "test_063",
+        "test_065",
+        "test_066",
+        "test_082",
+        "test_0840",
+        "test_0854",
+        "test_0859",
+        "test_importers",
+        "test_routes"
+      ]
+    },
+    "earlier_full_suite": {
+      "passed": 1450,
+      "failed": 1,
+      "timing": "Before final escort, delivery wording and current NPC-coordinate refinements; final targeted suite covers these changes.",
+      "failure": "test_0829.PackedDataTests.test_all_source_fields_match_pre_packing_fingerprints: catalogue",
+      "baseline_main": "1432 pass, same historical catalogue fingerprint test fails; fixture was not changed."
+    },
+    "full_guide_audit": {
+      "guides": 152,
+      "gap_free_guides": 33,
+      "static_points": 11823,
+      "passed_invariants": true
+    },
+    "stage_correction_reapplication": "No changes",
+    "native_beta": "Not run; player checklist required"
+  },
+  "compiler_review": {
+    "report": "repriced-flow.json",
+    "passes_optimization_guard": false,
+    "identity_replay_passed": true,
+    "decision": "Coordinate shared compiler behavior before merge; no shared runtime code changed."
+  },
+  "source_conflicts": [
+    "Current Shaman race masks differ between sources; no blanket race restriction inferred or changed.",
+    "Comment 6436200 lacks enough completion/build context to exclude Orc/Troll/Tauren from The New Horde.",
+    "96874 profession claim is explicitly a guess; 96873 profession observation lacks full build/character context. Both remain research leads.",
+    "785 older delivery reference does not establish current starter or availability.",
+    "Current Cultist page supplies the selected spawn; neither it nor pinned spawn samples establish cave approach."
+  ],
+  "unavailable_sources": {
+    "WarcraftDB": "Access denied; no facts imported",
+    "Reddit": "HTTP 403; no facts imported"
+  },
+  "player_checklist": "README.md#player-checklist-for-the-main-developers-test-build"
+}

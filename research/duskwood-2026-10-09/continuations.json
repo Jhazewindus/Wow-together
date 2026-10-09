@@ -1,0 +1,417 @@
+{
+  "direct_ids": [
+    5,
+    55,
+    56,
+    57,
+    58,
+    66,
+    67,
+    68,
+    69,
+    70,
+    72,
+    74,
+    75,
+    78,
+    79,
+    80,
+    90,
+    93,
+    95,
+    97,
+    98,
+    101,
+    133,
+    134,
+    148,
+    149,
+    154,
+    156,
+    157,
+    158,
+    159,
+    160,
+    163,
+    164,
+    165,
+    173,
+    174,
+    175,
+    177,
+    181,
+    221,
+    222,
+    223,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230,
+    231,
+    240,
+    245,
+    251,
+    252,
+    253,
+    254,
+    262,
+    265,
+    266,
+    268,
+    269,
+    270,
+    321,
+    322,
+    323,
+    324,
+    325,
+    337,
+    401,
+    453,
+    526,
+    1372,
+    1383,
+    1388,
+    1391,
+    1395,
+    79362,
+    79363,
+    81730,
+    81731,
+    81732,
+    81733,
+    81734,
+    81735,
+    81736,
+    81737,
+    81738,
+    81739,
+    81740,
+    81741,
+    81742,
+    81743,
+    81744,
+    81745,
+    81746,
+    81747,
+    96137,
+    96138,
+    96139,
+    98447
+  ],
+  "compiled_ids": [
+    5,
+    55,
+    56,
+    57,
+    58,
+    66,
+    67,
+    68,
+    69,
+    70,
+    72,
+    74,
+    75,
+    78,
+    79,
+    80,
+    93,
+    95,
+    97,
+    98,
+    101,
+    133,
+    134,
+    148,
+    149,
+    154,
+    156,
+    157,
+    158,
+    159,
+    160,
+    163,
+    164,
+    165,
+    173,
+    174,
+    175,
+    177,
+    181,
+    221,
+    222,
+    223,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230,
+    231,
+    240,
+    245,
+    251,
+    252,
+    253,
+    262,
+    265,
+    266,
+    268,
+    269,
+    270,
+    321,
+    322,
+    323,
+    324,
+    325,
+    337,
+    401,
+    453,
+    1372,
+    1383,
+    1388,
+    1391,
+    1395,
+    1477,
+    79362,
+    79363,
+    81730,
+    81731,
+    81732,
+    81733,
+    81734,
+    81735,
+    81736,
+    81737,
+    81738,
+    81739,
+    81740,
+    81741,
+    81742,
+    81743,
+    81744,
+    81745,
+    81746,
+    81747,
+    96137,
+    96138,
+    96139,
+    98447
+  ],
+  "uncompiled_direct_ids": [
+    90,
+    254,
+    526
+  ],
+  "related_catalogue_records": {
+    "526": {
+      "prerequisitesRead": true,
+      "mapID": 1431,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Glorin Steelbrow",
+          "entityID": 1217
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 5,
+          "name": "Lightforge Ingot",
+          "entityID": 2702
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 5,
+          "name": "Lightforge Ingot",
+          "itemID": 2702
+        }
+      ],
+      "npcTargets": [
+        {
+          "itemName": "Lightforge Ingot",
+          "name": "Bluegill Raider",
+          "entityID": 1418,
+          "npc": true,
+          "action": "collect"
+        }
+      ],
+      "prerequisitesUnverified": true,
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1437,
+          "action": "collect",
+          "entityID": 1418,
+          "npc": true,
+          "y": 0.642,
+          "objectiveKey": "item:2702",
+          "name": "Bluegill Raider",
+          "x": 0.11800000000000001,
+          "quantity": 5,
+          "legacyStepKey": "q:1437:npc:1418",
+          "itemName": "Lightforge Ingot",
+          "itemID": 2702
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "starts": [
+        {
+          "y": 0.604,
+          "mapID": 1437,
+          "name": "Glorin Steelbrow",
+          "entityID": 1217,
+          "npc": true,
+          "x": 0.106
+        }
+      ],
+      "level": 29,
+      "areaID": 10,
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "ends": [
+        {
+          "y": 0.604,
+          "mapID": 1437,
+          "name": "Glorin Steelbrow",
+          "entityID": 1217,
+          "npc": true,
+          "x": 0.106
+        }
+      ],
+      "side": "Alliance",
+      "previousQuest": 321,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Glorin Steelbrow",
+          "entityID": 1217
+        }
+      ],
+      "xp": 1750,
+      "foreverStatus": "unchanged",
+      "title": "Lightforge Ingots",
+      "minLevel": 20,
+      "requirementSource": "Wowhead Forever objective table",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 5,
+            "name": "Lightforge Ingot",
+            "entityID": 2702
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Glorin Steelbrow",
+            "entityID": 1217
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Glorin Steelbrow",
+            "entityID": 1217
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/duskwood"
+    },
+    "538": {
+      "prerequisitesRead": true,
+      "mapID": 1453,
+      "zone": "Stormwind City",
+      "requirements": {},
+      "seriesRoot": 337,
+      "objectives": {},
+      "series": [
+        337,
+        538,
+        540,
+        542
+      ],
+      "starts": [
+        {
+          "y": 0.076,
+          "mapID": 1453,
+          "name": "Milton Sheaf",
+          "entityID": 1440,
+          "npc": true,
+          "x": 0.74
+        }
+      ],
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.57,
+          "mapID": 1424,
+          "name": "Loremaster Dibbs",
+          "entityID": 2277,
+          "npc": true,
+          "x": 0.504
+        }
+      ],
+      "title": "Southshore",
+      "level": 38,
+      "areaID": 1519,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Milton Sheaf",
+          "entityID": 1440
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Alliance",
+      "previousQuest": 337,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Loremaster Dibbs",
+          "entityID": 2277
+        }
+      ],
+      "xp": 710,
+      "shareable": true,
+      "foreverStatus": "unchanged",
+      "seriesPosition": 2,
+      "minLevel": 20,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Milton Sheaf",
+            "entityID": 1440
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Loremaster Dibbs",
+            "entityID": 2277
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/stormwind-city"
+    }
+  }
+}

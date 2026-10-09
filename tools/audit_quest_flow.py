@@ -50,8 +50,12 @@ def describe_actions(stops, ns, rewards=None):
 
 
 def capture(baseline=None, flow_module=None, label=None, optimizer_module=None,
-            travel_cost_module=None, network_module=None, fixed_guides_module=None, geometry=None):
+            travel_cost_module=None, network_module=None, fixed_guides_module=None, geometry=None, zone=None,
+            race_id=None, catalogue=None):
     c = Client(quests=(), use_catalogue=True)
+    if catalogue:
+        # Explicit local project data for historical source comparisons.
+        c.lua.execute('assert(loadstring(...))(select(2, ...))', catalogue.read_text(), 'WowTogether', c.ns)
     c.guide_environment(level=1)
     geometry_source = None
     if geometry:
@@ -93,10 +97,14 @@ def capture(baseline=None, flow_module=None, label=None, optimizer_module=None,
     for faction, races in (('Horde', (2, 6, 5, 8)), ('Alliance', (1, 3, 4, 7))):
         c.ns.profile.faction, c.ns.profile.classID = faction, 8
         for race in races:
+            if race_id is not None and race != race_id:
+                continue
             c.ns.profile.raceID = race
             for level in (1, 4, 8, 12, 18, 23, 33, 43, 53, 60):
                 c.ns.profile.level = level
                 for guide in c.ns.LevelingGuideChoices().values():
+                    if zone is not None and guide.zone != zone:
+                        continue
                     key = (faction, guide.key)
                     if key in seen:
                         continue
@@ -235,7 +243,7 @@ def capture(baseline=None, flow_module=None, label=None, optimizer_module=None,
             'travel_network_sha256': hashlib.sha256((network_module or ROOT / 'WowTogether/TravelNetwork.lua').read_bytes()).hexdigest(),
             'terrain_geometry_sha256': hashlib.sha256((ROOT / 'WowTogether/TravelTerrain.lua').read_bytes()).hexdigest(),
             'terrain_data_sha256': hashlib.sha256((ROOT / 'WowTogether/TravelTerrainData.lua').read_bytes()).hexdigest(),
-            'catalogue_sha256': hashlib.sha256((ROOT / 'WowTogether/QuestCatalogue.lua').read_bytes()).hexdigest(),
+            'catalogue_sha256': hashlib.sha256((catalogue or ROOT / 'WowTogether/QuestCatalogue.lua').read_bytes()).hexdigest(),
             'travel_sha256': hashlib.sha256((ROOT / 'WowTogether/TravelData.lua').read_bytes()).hexdigest(),
             'geometry_source': geometry_source,
             'validation': 'Lua 5.1 host. Complete action sequences; estimated geography, no play-time optimality claim.',
@@ -275,12 +283,24 @@ def capture(baseline=None, flow_module=None, label=None, optimizer_module=None,
                               'additional_terrain_changes':sum(change['accepted_terrain_changes'] for change in comparisons),
                               'additional_connection_changes':sum(change['accepted_connection_changes'] for change in comparisons),
                               'changed_guides':len(comparisons),'changes':comparisons}
+    if not result:
+        raise ValueError('No guides in the selected scope: ' + str(zone))
+    if zone is not None:
+        report['zone'] = zone
+    if race_id is not None:
+        report['race_id'] = race_id
+    if baseline:
+        assert baseline.get('zone') == zone, 'Zone scope changed'
+        assert baseline.get('race_id') == race_id, 'Race scope changed'
     return report
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--zone', help='Capture only this exact zone, retaining all its chapters and factions.')
+    parser.add_argument('--race-id', type=int, choices=(1, 2, 3, 4, 5, 6, 7, 8), help='Capture a specific race instead of the first discovered template.')
+    parser.add_argument('--catalogue', type=Path, help='Explicit local project catalogue for a historical data capture.')
     parser.add_argument('--baseline', type=Path, help='Compare every action/state with a prior capture of the identical source data.')
     parser.add_argument('--comparison-output', type=Path, help='Also write the compact, fully justified old/new comparison report.')
     parser.add_argument('--flow-module', type=Path, help='Replay a prior project QuestFlow.lua with the current corrected quest scope.')
@@ -294,7 +314,8 @@ def main():
     if args.baseline and any((args.flow_module,args.optimizer_module,args.travel_cost_module,args.network_module,args.fixed_guides_module)):
         parser.error('Use prior modules for a baseline capture, not the new comparison')
     result = capture(json.loads(args.baseline.read_text()) if args.baseline else None, args.flow_module, args.label,
-        args.optimizer_module,args.travel_cost_module,args.network_module,args.fixed_guides_module,args.forever_geometry)
+        args.optimizer_module,args.travel_cost_module,args.network_module,args.fixed_guides_module,args.forever_geometry,args.zone,
+        args.race_id,args.catalogue)
     args.output.write_text(json.dumps(result, indent=2) + '\n')
     print(f"Saved {len(result['guides'])} complete guides to {args.output}", flush=True)
     if args.comparison_output:

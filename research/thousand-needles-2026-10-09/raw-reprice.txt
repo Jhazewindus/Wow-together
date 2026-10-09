@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/workspace/Wow-together-guides/tools/reprice_quest_stage_routes.py", line 99, in <module>
+    report = compare(json.loads(args.before.read_text()), json.loads(args.after.read_text()))
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspace/Wow-together-guides/tools/reprice_quest_stage_routes.py", line 63, in compare
+    raise ValueError('Required action scope changed')
+ValueError: Required action scope changed

@@ -1,0 +1,1647 @@
+{
+  "baseline_commit": "7e244207c2928491d99f46ee45a508ef99fdda5b",
+  "main_commit": "09155ca265278572649a3529b8ce7ea1b4eb8431",
+  "changed_quest_ids": [
+    1640,
+    1678,
+    1683,
+    2205,
+    3100,
+    3102,
+    7962,
+    91738
+  ],
+  "records": {
+    "7962": {
+      "before": {
+        "raceMask": 0,
+        "mapID": 1429,
+        "startRefs": {},
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "name": "LeCraft Rabbit Pelt",
+            "entityID": 19482
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 3,
+            "name": "LeCraft Rabbit Pelt",
+            "itemID": 19482
+          }
+        ],
+        "classMask": 0,
+        "level": 1,
+        "areaID": 12,
+        "objectives": {},
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "name": "LeCraft Rabbit Pelt",
+            "entityID": 19482
+          }
+        ],
+        "money": 30,
+        "endRefs": {},
+        "xp": 100,
+        "prerequisitesRead": true,
+        "objectiveFactsSource": "Wowhead Forever objective table",
+        "title": "Wabbit Pelts",
+        "minLevel": 1,
+        "requirementSource": "Wowhead Forever objective table",
+        "objectiveLocationsIncomplete": true,
+        "foreverStatus": "unchanged",
+        "locationSource": "Wowhead Forever",
+        "categoryPath": "eastern-kingdoms/elwynn-forest"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1429,
+        "startRefs": {},
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "name": "LeCraft Rabbit Pelt",
+            "entityID": 19482
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 3,
+            "name": "LeCraft Rabbit Pelt",
+            "itemID": 19482
+          }
+        ],
+        "classMask": 0,
+        "level": 1,
+        "areaID": 12,
+        "objectives": {},
+        "title": "Wabbit Pelts",
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "name": "LeCraft Rabbit Pelt",
+            "entityID": 19482
+          }
+        ],
+        "money": 30,
+        "endRefs": {},
+        "xp": 100,
+        "objectiveLocationsIncomplete": true,
+        "foreverStatus": "unchanged",
+        "raceMask": 0,
+        "minLevel": 1,
+        "requirementSource": "Wowhead Forever objective table",
+        "objectiveFactsSource": "Wowhead Forever objective table",
+        "levelingExcluded": "Historical testing-only quest",
+        "locationSource": "Wowhead Forever",
+        "categoryPath": "eastern-kingdoms/elwynn-forest"
+      }
+    },
+    "3102": {
+      "before": {
+        "prerequisitesRead": true,
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Encrypted Letter",
+            "entityID": 9555
+          }
+        ],
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Marshal McBride",
+            "entityID": 197
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Encrypted Letter",
+            "entityID": 9555
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Encrypted Letter",
+            "itemID": 9555
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "classMask": 8,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1429,
+            "entityID": 915,
+            "npc": true,
+            "y": 0.3992,
+            "x": 0.5031,
+            "name": "Jorik Kerridan",
+            "sourceAreaID": 12,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "objectives": {},
+        "level": 1,
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1429,
+            "entityID": 197,
+            "npc": true,
+            "sourceZone": "Elwynn Forest",
+            "x": 0.488,
+            "name": "Marshal McBride",
+            "sourceAreaID": 12,
+            "y": 0.414
+          }
+        ],
+        "title": "Encrypted Letter",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "side": "Alliance",
+        "prerequisiteAny": [
+          7
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Jorik Kerridan",
+            "entityID": 915
+          }
+        ],
+        "xp": 40,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          1
+        ],
+        "minLevel": 1,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 1,
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Encrypted Letter",
+              "entityID": 9555
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Marshal McBride",
+              "entityID": 197
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Jorik Kerridan",
+              "entityID": 915
+            }
+          ]
+        },
+        "objectiveLocationsIncomplete": true,
+        "categoryPath": "classes/rogue"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Marshal McBride",
+            "entityID": 197
+          }
+        ],
+        "requirements": {},
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Encrypted Letter",
+            "itemID": 9555
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "objectives": {},
+        "classMask": 8,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1429,
+            "action": "talk",
+            "entityID": 915,
+            "npc": true,
+            "y": 0.398,
+            "x": 0.504,
+            "name": "Jorik Kerridan",
+            "sourceAreaID": 12,
+            "locationSource": "Reviewed Forever facts: https://www.wowhead.com/forever/quest=3102; captured 2026-10-08; SHA-256 3a435acb665478c7e27178eb7f7e7b20acd2a39094e3af889fb70af4f40fc951. See research/elwynn-forest-2026-10-08 for pinned field tiers and context. Provided item stays required for hand-in; acceptance supplies it, so no independent farming objective. Jorik representative: https://www.wowhead.com/forever/npc=915; SHA-256 0424bc58a1113324f12addc5cbc7725e03458fa19f8a589e81523729c4e0410f; published spawn, not surveyed access."
+          }
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Encrypted Letter",
+            "entityID": 9555
+          }
+        ],
+        "level": 1,
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1429,
+            "entityID": 197,
+            "npc": true,
+            "sourceZone": "Elwynn Forest",
+            "x": 0.488,
+            "name": "Marshal McBride",
+            "sourceAreaID": 12,
+            "y": 0.414
+          }
+        ],
+        "title": "Encrypted Letter",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 1,
+        "side": "Alliance",
+        "prerequisiteAny": [
+          7
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Jorik Kerridan",
+            "entityID": 915
+          }
+        ],
+        "xp": 40,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          1
+        ],
+        "minLevel": 1,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "stageCorrectionSource": "Reviewed Forever facts: https://www.wowhead.com/forever/quest=3102; captured 2026-10-08; SHA-256 3a435acb665478c7e27178eb7f7e7b20acd2a39094e3af889fb70af4f40fc951. See research/elwynn-forest-2026-10-08 for pinned field tiers and context. Provided item stays required for hand-in; acceptance supplies it, so no independent farming objective. Jorik representative: https://www.wowhead.com/forever/npc=915; SHA-256 0424bc58a1113324f12addc5cbc7725e03458fa19f8a589e81523729c4e0410f; published spawn, not surveyed access.",
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Marshal McBride",
+              "entityID": 197
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Encrypted Letter",
+              "entityID": 9555
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Jorik Kerridan",
+              "entityID": 915
+            }
+          ]
+        },
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "categoryPath": "classes/rogue"
+      }
+    },
+    "1640": {
+      "before": {
+        "prerequisitesRead": true,
+        "zone": "Warrior",
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantityUnknown": true,
+            "action": "kill",
+            "entityID": 6090,
+            "name": "Bartleby"
+          }
+        ],
+        "npcTargets": [
+          {
+            "entityID": 6090,
+            "npc": true,
+            "action": "kill",
+            "name": "Bartleby"
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1453,
+            "action": "kill",
+            "entityID": 6090,
+            "npc": true,
+            "y": 0.5255,
+            "objectiveKey": "npc:6090",
+            "name": "Bartleby",
+            "sourceAreaID": 1519,
+            "x": 0.7676000000000001,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "quantityUnknown": true
+          }
+        ],
+        "classMask": 1,
+        "otherLocationsIncomplete": false,
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1453,
+            "entityID": 6090,
+            "npc": true,
+            "y": 0.5255,
+            "x": 0.7676000000000001,
+            "name": "Bartleby",
+            "sourceAreaID": 1519,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "level": 10,
+        "raceMask": 4294967373,
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "prerequisiteAny": [
+          1639,
+          1678,
+          1683
+        ],
+        "side": "Alliance",
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1453,
+            "entityID": 6090,
+            "npc": true,
+            "y": 0.5255,
+            "x": 0.7676000000000001,
+            "name": "Bartleby",
+            "sourceAreaID": 1519,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Bartleby",
+            "entityID": 6090
+          }
+        ],
+        "xp": 210,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Bartleby",
+            "entityID": 6090
+          }
+        ],
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 10,
+        "requirementSource": "Published Forever typed objectives",
+        "title": "Beat Bartleby",
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "npc",
+              "quantityUnknown": true,
+              "action": "kill",
+              "entityID": 6090,
+              "name": "Bartleby"
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Bartleby",
+              "entityID": 6090
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Bartleby",
+              "entityID": 6090
+            }
+          ]
+        },
+        "objectiveFactsSource": "Published Forever typed objectives",
+        "categoryPath": "classes/warrior"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "npcTargets": [
+          {
+            "entityID": 6090,
+            "npc": true,
+            "action": "event",
+            "name": "Bartleby"
+          }
+        ],
+        "zone": "Warrior",
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantityUnknown": true,
+            "action": "event",
+            "entityID": 6090,
+            "name": "Bartleby"
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1453,
+            "action": "event",
+            "entityID": 6090,
+            "npc": true,
+            "x": 0.7676000000000001,
+            "y": 0.5255,
+            "objectiveKey": "npc:6090",
+            "name": "Bartleby",
+            "progressName": "Bartleby",
+            "sourceAreaID": 1519,
+            "quantityUnknown": true,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "objectiveLabel": "the duel with Bartleby"
+          }
+        ],
+        "requiredItems": {},
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1453,
+            "entityID": 6090,
+            "npc": true,
+            "y": 0.5255,
+            "x": 0.7676000000000001,
+            "name": "Bartleby",
+            "sourceAreaID": 1519,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "classMask": 1,
+        "otherLocationsIncomplete": false,
+        "title": "Beat Bartleby",
+        "level": 10,
+        "raceMask": 4294967373,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Bartleby",
+            "entityID": 6090
+          }
+        ],
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1453,
+            "entityID": 6090,
+            "npc": true,
+            "y": 0.5255,
+            "x": 0.7676000000000001,
+            "name": "Bartleby",
+            "sourceAreaID": 1519,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "side": "Alliance",
+        "prerequisiteAny": [
+          1639,
+          1678,
+          1683
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Bartleby",
+            "entityID": 6090
+          }
+        ],
+        "xp": 210,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 10,
+        "requirementSource": "Published Forever typed objectives",
+        "stageCorrectionSource": "Reviewed Forever facts: https://www.wowhead.com/forever/quest=1640; captured 2026-10-08; SHA-256 1bd9c399f7d4ca1b5a457be3c1f5d3f6d5b4c60cfb298eaf65c293697c4aa2e9. See research/elwynn-forest-2026-10-08 for pinned field tiers and context. Preserve pickup uncertainty, class/race gates and prerequisite alternatives. Scripted duel, then talk to Bartleby; unknown objective quantity remains unknown.",
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "npc",
+              "quantityUnknown": true,
+              "action": "event",
+              "entityID": 6090,
+              "name": "Bartleby"
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Bartleby",
+              "entityID": 6090
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Bartleby",
+              "entityID": 6090
+            }
+          ]
+        },
+        "objectiveFactsSource": "Published Forever typed objectives",
+        "categoryPath": "classes/warrior"
+      }
+    },
+    "1683": {
+      "before": {
+        "raceMask": 4294967373,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Elanaria",
+            "entityID": 4088
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantityUnknown": true,
+            "action": "collect",
+            "entityID": 6805,
+            "name": "Horn of Vorlus"
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisitesUnverified": true,
+        "classMask": 1,
+        "otherLocationsIncomplete": false,
+        "level": 10,
+        "npcTargets": [
+          {
+            "itemName": "Horn of Vorlus",
+            "name": "Vorlus Vilehoof",
+            "entityID": 6128,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1438,
+            "action": "loot",
+            "entityID": 6128,
+            "npc": true,
+            "y": 0.636,
+            "sourceZone": "Teldrassil",
+            "objectiveKey": "item:6805",
+            "itemID": 6805,
+            "x": 0.47200000000000003,
+            "sourceAreaID": 141,
+            "quantityUnknown": true,
+            "itemName": "Horn of Vorlus",
+            "name": "Vorlus Vilehoof"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1457,
+            "entityID": 4088,
+            "npc": true,
+            "y": 0.3461,
+            "x": 0.573,
+            "name": "Elanaria",
+            "sourceAreaID": 1657,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "side": "Alliance",
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Elanaria",
+            "entityID": 4088
+          }
+        ],
+        "xp": 840,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1457,
+            "entityID": 4088,
+            "npc": true,
+            "y": 0.3461,
+            "x": 0.573,
+            "name": "Elanaria",
+            "sourceAreaID": 1657,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "objectiveFactsSource": "Published Forever typed objectives",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 10,
+        "requirementSource": "Published Forever typed objectives",
+        "prerequisitesRead": true,
+        "title": "Vorlus Vilehoof",
+        "foreverStatus": "updated",
+        "categoryPath": "classes/warrior"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Elanaria",
+            "entityID": 4088
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 6805,
+            "name": "Horn of Vorlus"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Horn of Vorlus",
+            "itemID": 6805
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisitesUnverified": true,
+        "classMask": 1,
+        "otherLocationsIncomplete": false,
+        "level": 10,
+        "npcTargets": [
+          {
+            "itemName": "Horn of Vorlus",
+            "name": "Vorlus Vilehoof",
+            "entityID": 6128,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1438,
+            "action": "loot",
+            "entityID": 6128,
+            "npc": true,
+            "y": 0.636,
+            "sourceZone": "Teldrassil",
+            "objectiveKey": "item:6805",
+            "itemID": 6805,
+            "x": 0.47200000000000003,
+            "sourceAreaID": 141,
+            "quantity": 1,
+            "itemName": "Horn of Vorlus",
+            "name": "Vorlus Vilehoof"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1457,
+            "entityID": 4088,
+            "npc": true,
+            "y": 0.3461,
+            "x": 0.573,
+            "name": "Elanaria",
+            "sourceAreaID": 1657,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "title": "Vorlus Vilehoof",
+        "side": "Alliance",
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1457,
+            "entityID": 4088,
+            "npc": true,
+            "y": 0.3461,
+            "x": 0.573,
+            "name": "Elanaria",
+            "sourceAreaID": 1657,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Elanaria",
+            "entityID": 4088
+          }
+        ],
+        "xp": 840,
+        "foreverStatus": "updated",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 10,
+        "requirementSource": "Published Forever typed objectives",
+        "stageCorrectionSource": "Reviewed Forever facts: https://www.wowhead.com/forever/quest=1683; captured 2026-10-08; SHA-256 3a37f5a4ff50b4b7ff16c08b520671e8e24d900b2e4937c29b581123c47f338d. See research/elwynn-forest-2026-10-08 for pinned field tiers and context. Preserve pickup uncertainty, class/race gates and prerequisite alternatives.",
+        "raceMask": 4294967373,
+        "objectiveFactsSource": "Published Forever typed objectives",
+        "categoryPath": "classes/warrior"
+      }
+    },
+    "91738": {
+      "before": {
+        "prerequisitesRead": true,
+        "mapID": 1429,
+        "zone": "Elwynn Forest",
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 247824,
+            "name": "Thunder Applejack"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Thunder Applejack",
+            "itemID": 247824
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "objectives": {},
+        "classMask": 0,
+        "ends": [
+          {
+            "y": 0.73,
+            "mapID": 1429,
+            "name": "Sergeant De Vries",
+            "entityID": 955,
+            "npc": true,
+            "x": 0.24
+          }
+        ],
+        "starts": [
+          {
+            "y": 0.73,
+            "mapID": 1429,
+            "name": "Sergeant De Vries",
+            "entityID": 955,
+            "npc": true,
+            "x": 0.24
+          }
+        ],
+        "level": 10,
+        "areaID": 12,
+        "raceMask": 4294967373,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Sergeant De Vries",
+            "entityID": 955
+          }
+        ],
+        "side": "Alliance",
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 247824,
+            "name": "Thunder Applejack"
+          }
+        ],
+        "money": 250,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Sergeant De Vries",
+            "entityID": 955
+          }
+        ],
+        "xp": 630,
+        "title": "An Apple Treat",
+        "foreverStatus": "new",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 7,
+        "requirementSource": "Published Forever typed objectives",
+        "objectiveLocationsIncomplete": true,
+        "objectiveFactsSource": "Published Forever typed objectives",
+        "locationSource": "Wowhead Forever",
+        "categoryPath": "eastern-kingdoms/elwynn-forest"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "mapID": 1429,
+        "zone": "Elwynn Forest",
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 247824,
+            "name": "Thunder Applejack"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Thunder Applejack",
+            "itemID": 247824
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "classMask": 0,
+        "ends": [
+          {
+            "y": 0.73,
+            "mapID": 1429,
+            "name": "Sergeant De Vries",
+            "entityID": 955,
+            "npc": true,
+            "x": 0.24
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "object",
+            "mapID": 1429,
+            "action": "item",
+            "entityID": 562131,
+            "x": 0.245,
+            "y": 0.582,
+            "objectiveKey": "item:247824",
+            "itemID": 247824,
+            "progressName": "Thunder Applejack",
+            "quantity": 1,
+            "objectiveLabel": "Thunder Applejack (exchange 4 Shiny Red Apples at Applejack Still)",
+            "locationSource": "Reviewed current Forever Applejack Still object position",
+            "name": "Applejack Still"
+          }
+        ],
+        "level": 10,
+        "areaID": 12,
+        "starts": [
+          {
+            "y": 0.73,
+            "mapID": 1429,
+            "name": "Sergeant De Vries",
+            "entityID": 955,
+            "npc": true,
+            "x": 0.24
+          }
+        ],
+        "stageCorrectionSource": "Reviewed Forever facts: https://www.wowhead.com/forever/quest=91738; captured 2026-10-08; SHA-256 d0fd33c375f675828eaa8a73920f18d05e87cfcba4e200dee9a40c9fa8a37c1b. See research/elwynn-forest-2026-10-08 for pinned field tiers and context. Optional acquisition: https://www.wowhead.com/forever/quest=91736 explicitly rewards item 247824 x1 for item 4536 x4; https://www.wowhead.com/forever/object=562131 maps the exchange. Preserve other item acquisition and actual Sergeant De Vries hand-in; do not force the exchange quest as a prerequisite.",
+        "side": "Alliance",
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Sergeant De Vries",
+            "entityID": 955
+          }
+        ],
+        "money": 250,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Sergeant De Vries",
+            "entityID": 955
+          }
+        ],
+        "xp": 630,
+        "title": "An Apple Treat",
+        "foreverStatus": "new",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 7,
+        "requirementSource": "Published Forever typed objectives",
+        "raceMask": 4294967373,
+        "objectiveFactsSource": "Published Forever typed objectives",
+        "locationSource": "Wowhead Forever",
+        "categoryPath": "eastern-kingdoms/elwynn-forest"
+      }
+    },
+    "1678": {
+      "before": {
+        "raceMask": 4294967373,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Muren Stormpike",
+            "entityID": 6114
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantityUnknown": true,
+            "action": "collect",
+            "entityID": 6799,
+            "name": "Vejrek's Head"
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisitesUnverified": true,
+        "classMask": 1,
+        "otherLocationsIncomplete": false,
+        "level": 11,
+        "npcTargets": [
+          {
+            "itemName": "Vejrek's Head",
+            "name": "Vejrek",
+            "entityID": 6113,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1426,
+            "action": "loot",
+            "entityID": 6113,
+            "npc": true,
+            "x": 0.2783,
+            "y": 0.5796,
+            "objectiveKey": "item:6799",
+            "itemID": 6799,
+            "quantityUnknown": true,
+            "sourceAreaID": 1,
+            "itemName": "Vejrek's Head",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "name": "Vejrek"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1455,
+            "entityID": 6114,
+            "npc": true,
+            "y": 0.9027,
+            "x": 0.7077,
+            "name": "Muren Stormpike",
+            "sourceAreaID": 1537,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "side": "Alliance",
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Muren Stormpike",
+            "entityID": 6114
+          }
+        ],
+        "xp": 1100,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1455,
+            "entityID": 6114,
+            "npc": true,
+            "y": 0.9027,
+            "x": 0.7077,
+            "name": "Muren Stormpike",
+            "sourceAreaID": 1537,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "objectiveFactsSource": "Published Forever typed objectives",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 10,
+        "requirementSource": "Published Forever typed objectives",
+        "prerequisitesRead": true,
+        "title": "Vejrek",
+        "foreverStatus": "updated",
+        "categoryPath": "classes/warrior"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Muren Stormpike",
+            "entityID": 6114
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 6799,
+            "name": "Vejrek's Head"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Vejrek's Head",
+            "itemID": 6799
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisitesUnverified": true,
+        "classMask": 1,
+        "otherLocationsIncomplete": false,
+        "level": 11,
+        "npcTargets": [
+          {
+            "itemName": "Vejrek's Head",
+            "name": "Vejrek",
+            "entityID": 6113,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1426,
+            "action": "loot",
+            "entityID": 6113,
+            "npc": true,
+            "x": 0.2783,
+            "y": 0.5796,
+            "objectiveKey": "item:6799",
+            "itemID": 6799,
+            "quantity": 1,
+            "sourceAreaID": 1,
+            "itemName": "Vejrek's Head",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "name": "Vejrek"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1455,
+            "entityID": 6114,
+            "npc": true,
+            "y": 0.9027,
+            "x": 0.7077,
+            "name": "Muren Stormpike",
+            "sourceAreaID": 1537,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "title": "Vejrek",
+        "side": "Alliance",
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1455,
+            "entityID": 6114,
+            "npc": true,
+            "y": 0.9027,
+            "x": 0.7077,
+            "name": "Muren Stormpike",
+            "sourceAreaID": 1537,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Muren Stormpike",
+            "entityID": 6114
+          }
+        ],
+        "xp": 1100,
+        "foreverStatus": "updated",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 10,
+        "requirementSource": "Published Forever typed objectives",
+        "stageCorrectionSource": "Reviewed Forever facts: https://www.wowhead.com/forever/quest=1678; captured 2026-10-08; SHA-256 bafbdd7aa0715c4aff975be774dd0bee044ca322c771cd1b9455d26a05392559. See research/elwynn-forest-2026-10-08 for pinned field tiers and context. Preserve pickup uncertainty, class/race gates and prerequisite alternatives.",
+        "raceMask": 4294967373,
+        "objectiveFactsSource": "Published Forever typed objectives",
+        "categoryPath": "classes/warrior"
+      }
+    },
+    "3100": {
+      "before": {
+        "prerequisitesRead": true,
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Simple Letter",
+            "entityID": 9542
+          }
+        ],
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Marshal McBride",
+            "entityID": 197
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Simple Letter",
+            "entityID": 9542
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Simple Letter",
+            "itemID": 9542
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "classMask": 1,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1429,
+            "name": "Llane Beshere",
+            "y": 0.422,
+            "entityID": 911,
+            "x": 0.502,
+            "npc": true,
+            "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+          }
+        ],
+        "objectives": {},
+        "level": 1,
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1429,
+            "entityID": 197,
+            "npc": true,
+            "sourceZone": "Elwynn Forest",
+            "x": 0.488,
+            "name": "Marshal McBride",
+            "sourceAreaID": 12,
+            "y": 0.414
+          }
+        ],
+        "title": "Simple Letter",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "side": "Alliance",
+        "prerequisiteAny": [
+          7
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Llane Beshere",
+            "entityID": 911
+          }
+        ],
+        "xp": 40,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          1
+        ],
+        "minLevel": 1,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 1,
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Simple Letter",
+              "entityID": 9542
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Marshal McBride",
+              "entityID": 197
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Llane Beshere",
+              "entityID": 911
+            }
+          ]
+        },
+        "objectiveLocationsIncomplete": true,
+        "categoryPath": "classes/warrior"
+      },
+      "after": {
+        "prerequisitesRead": true,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Marshal McBride",
+            "entityID": 197
+          }
+        ],
+        "requirements": {},
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Simple Letter",
+            "itemID": 9542
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "prerequisiteSource": "Published converted-baseline prerequisites",
+        "objectives": {},
+        "classMask": 1,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1429,
+            "action": "talk",
+            "entityID": 911,
+            "npc": true,
+            "y": 0.422,
+            "x": 0.502,
+            "name": "Llane Beshere",
+            "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+          }
+        ],
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Simple Letter",
+            "entityID": 9542
+          }
+        ],
+        "level": 1,
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1429,
+            "entityID": 197,
+            "npc": true,
+            "sourceZone": "Elwynn Forest",
+            "x": 0.488,
+            "name": "Marshal McBride",
+            "sourceAreaID": 12,
+            "y": 0.414
+          }
+        ],
+        "title": "Simple Letter",
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 1,
+        "side": "Alliance",
+        "prerequisiteAny": [
+          7
+        ],
+        "money": 0,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Llane Beshere",
+            "entityID": 911
+          }
+        ],
+        "xp": 40,
+        "foreverStatus": "unchanged",
+        "allowedRaceIDs": [
+          1
+        ],
+        "minLevel": 1,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "stageCorrectionSource": "Reviewed Forever facts: https://www.wowhead.com/forever/quest=3100; captured 2026-10-08; SHA-256 801aa2f1fae55bffe1cc63180ad0aeb2caffe9edae895e609d726b75312da771. See research/elwynn-forest-2026-10-08 for pinned field tiers and context. Provided item stays required for hand-in; acceptance supplies it, so no independent farming objective.",
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Marshal McBride",
+              "entityID": 197
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Simple Letter",
+              "entityID": 9542
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Llane Beshere",
+              "entityID": 911
+            }
+          ]
+        },
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "categoryPath": "classes/warrior"
+      }
+    },
+    "2205": {
+      "before": {
+        "prerequisitesRead": true,
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Delivery to Mathias",
+            "entityID": 7674
+          }
+        ],
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Keryn Sylvius",
+            "entityID": 917
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Delivery to Mathias",
+            "entityID": 7674
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Delivery to Mathias",
+            "itemID": 7674
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "classMask": 8,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1453,
+            "entityID": 332,
+            "npc": true,
+            "sourceZone": "Stormwind City",
+            "x": 0.758,
+            "name": "Master Mathias Shaw",
+            "sourceAreaID": 1519,
+            "y": 0.598
+          }
+        ],
+        "level": 10,
+        "objectives": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1429,
+            "name": "Keryn Sylvius",
+            "y": 0.658,
+            "entityID": 917,
+            "x": 0.438,
+            "npc": true,
+            "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+          }
+        ],
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "raceMask": 4294967373,
+        "side": "Alliance",
+        "foreverStatus": "unchanged",
+        "money": 85,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Master Mathias Shaw",
+            "entityID": 332
+          }
+        ],
+        "xp": 210,
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 10,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "title": "Seek out SI: 7",
+        "worldReferences": {
+          "requirements": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Delivery to Mathias",
+              "entityID": 7674
+            }
+          ],
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Keryn Sylvius",
+              "entityID": 917
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Master Mathias Shaw",
+              "entityID": 332
+            }
+          ]
+        },
+        "objectiveLocationsIncomplete": true,
+        "categoryPath": "classes/rogue"
+      },
+      "after": {
+        "raceMask": 4294967373,
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "name": "Keryn Sylvius",
+            "entityID": 917
+          }
+        ],
+        "requirements": {},
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Delivery to Mathias",
+            "itemID": 7674
+          }
+        ],
+        "betaFactsSource": "https://github.com/Questie/QuestieDB",
+        "classMask": 8,
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1453,
+            "action": "talk",
+            "entityID": 332,
+            "npc": true,
+            "sourceZone": "Stormwind City",
+            "x": 0.758,
+            "name": "Master Mathias Shaw",
+            "sourceAreaID": 1519,
+            "y": 0.598
+          }
+        ],
+        "objectives": {},
+        "level": 10,
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Delivery to Mathias",
+            "entityID": 7674
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1429,
+            "name": "Keryn Sylvius",
+            "y": 0.658,
+            "entityID": 917,
+            "x": 0.438,
+            "npc": true,
+            "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+          }
+        ],
+        "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "prerequisitesRead": true,
+        "side": "Alliance",
+        "stageCorrectionSource": "Reviewed Forever facts: https://www.wowhead.com/forever/quest=2205; captured 2026-10-08; SHA-256 9237bc3d7cf5f07544582c37a2aa57259fb4f91c472a7ab8df04879aca18a935. See research/elwynn-forest-2026-10-08 for pinned field tiers and context. Provided item stays required for hand-in; acceptance supplies it, so no independent farming objective.",
+        "money": 85,
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "name": "Master Mathias Shaw",
+            "entityID": 332
+          }
+        ],
+        "xp": 210,
+        "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "allowedRaceIDs": [
+          1,
+          3,
+          4,
+          7,
+          95
+        ],
+        "minLevel": 10,
+        "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+        "title": "Seek out SI: 7",
+        "worldReferences": {
+          "requirements": {},
+          "starts": [
+            {
+              "entityType": "npc",
+              "name": "Keryn Sylvius",
+              "entityID": 917
+            }
+          ],
+          "provided": [
+            {
+              "entityType": "item",
+              "quantity": 1,
+              "name": "Delivery to Mathias",
+              "entityID": 7674
+            }
+          ],
+          "ends": [
+            {
+              "entityType": "npc",
+              "name": "Master Mathias Shaw",
+              "entityID": 332
+            }
+          ]
+        },
+        "foreverStatus": "unchanged",
+        "categoryPath": "classes/rogue"
+      }
+    }
+  }
+}

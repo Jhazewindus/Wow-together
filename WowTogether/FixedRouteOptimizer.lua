@@ -358,8 +358,80 @@ function ns.ImproveFixedTravelOrder(plan, distance, cooperative, onYield, option
     return result
 end
 
+-- Geometry is only a proposal generator. Corrected NPC/object points must not
+-- let this first pass delay rewards or grow the log before the later guards
+-- begin. Evaluate the entire journey with the same current facts and prices.
+function ns.ImproveFixedGeometry(plan, geometry, cost, cooperative, onYield, options)
+    cost = cost or geometry
+    local model = ns.NewGuideFlowModel(plan, cost)
+    local current = model.evaluate(plan)
+    local initial, work = current, 0
+    local regions, region = {}, 0
+    for _, stop in ipairs(plan) do
+        if stop.unknownLocation or stop.planNeedsReview then region = region + 1 end
+        regions[stop] = region
+    end
+    local function tick()
+        work = work + 1
+        if cooperative and work % 1000 == 0 then coroutine.yield(); if onYield then onYield() end end
+    end
+    local function preserves(before, after)
+        if not after.valid or after.distance > before.distance + .001 or after.questXP < before.questXP then return false end
+        for _, field in ipairs({"peakLog", "levelDeficitXP", "minimumKills", "difficultyPressure",
+            "missingLevelCurve", "uncertainTravelLegs", "blockedTravelLegs"}) do
+            if after[field] > before[field] then return false end
+        end
+        for stop, reward in pairs(before.workRewards) do if after.workRewards[stop] < reward then return false end end
+        return true
+    end
+    local replays, states = {}, {}
+    if options and options.levelLow and options.levelHigh then
+        local low, high = math.max(1, options.levelLow), math.min(60, options.levelHigh)
+        local middle = math.floor((low + high) / 2)
+        local cap, seen = ns.xpBaseline and ns.xpBaseline[middle], {}
+        for _, state in ipairs({{low, 0}, {middle, 0}, {high, 0}, {middle, cap and math.floor(cap / 2) or 0}}) do
+            local key = state[1] .. ":" .. state[2]
+            if not seen[key] then
+                seen[key] = true
+                local replay = ns.NewGuideFlowModel(plan, nil, {startLevel = state[1], startXP = state[2]})
+                replays[#replays + 1], states[#states + 1] = replay, replay.evaluate(plan, tick)
+            end
+        end
+    end
+    local pending, rejected = setmetatable({}, {__mode = "k"}), 0
+    local guard = {}
+    function guard.check(proposed)
+        local nextRegion = 0
+        for _, stop in ipairs(proposed) do
+            if stop.unknownLocation or stop.planNeedsReview then nextRegion = nextRegion + 1 end
+            if regions[stop] ~= nextRegion then rejected = rejected + 1; return false end
+            tick()
+        end
+        local value = model.evaluate(proposed, tick)
+        if not preserves(current, value) then rejected = rejected + 1; return false end
+        local progress = {}
+        for index, replay in ipairs(replays) do
+            local nextValue = replay.evaluate(proposed, tick)
+            if not preserves(states[index], nextValue) then rejected = rejected + 1; return false end
+            progress[index] = nextValue
+        end
+        pending[proposed] = {value, progress}
+        return true
+    end
+    function guard.commit(proposed)
+        current, states = pending[proposed][1], pending[proposed][2]
+        pending = setmetatable({}, {__mode = "k"})
+    end
+    local before = 0
+    for index = 2, #plan do before = before + geometry(plan[index - 1], plan[index]); tick() end
+    local result = current.valid and optimizeSteps(plan, geometry, cooperative, onYield, guard)
+        or {before = before, after = before, moved = 0, bundles = 0}
+    result.protection = {before = initial, after = current, rejected = rejected, replayStates = #states}
+    return result
+end
+
 function ns.OptimizeFixedPlan(plan, distance, cooperative, onYield, flowDistance, flowOptions, terrainDistance, connectionDistance)
-    local legacy = optimizeSteps(plan, distance, cooperative, onYield)
+    local legacy = ns.ImproveFixedGeometry(plan, distance, flowDistance, cooperative, onYield, flowOptions)
     local flow = ns.ImproveQuestFlow(plan, flowDistance or distance, cooperative, onYield, flowOptions)
     local network = flowDistance and ns.ImproveFixedTravelOrder(plan, flowDistance, cooperative, onYield, flowOptions)
     -- Repricing the original greedy route can discard useful established
@@ -383,6 +455,7 @@ function ns.OptimizeFixedPlan(plan, distance, cooperative, onYield, flowDistance
     return {before = connections and connections.before.distance or terrain and terrain.before.distance or flowDistance and flow.before.distance or legacy.before,
         after = connections and connections.after.distance or terrain and terrain.after.distance or network and network.after.distance or flow.after.distance,
         legacyBefore = legacy.before, legacyAfter = legacy.after,
-        moved = legacy.moved, bundles = legacy.bundles, flow = flow, network = network, terrain = terrain, connections = connections,
+        moved = legacy.moved, bundles = legacy.bundles, geometricGuard = legacy.protection,
+        flow = flow, network = network, terrain = terrain, connections = connections,
         heuristic = "Dependency-preserving step, bundle and quest-flow search"}
 end

@@ -1,0 +1,15 @@
+[
+  {
+    "url": "https://classicdb.ch/?quest=3374",
+    "captured": "2026-10-08",
+    "role": "Supporting older-world lead, not authority for changed beta data",
+    "status": 200,
+    "sha256": "2ef84cee31c07915adf7e576f4b1a5d442a99bba41944294d824d24f55893a0d"
+  },
+  {
+    "url": "https://warcraft.wiki.gg/wiki/Quest:The_Essence_of_Eranikus_(2)",
+    "captured": "2026-10-08",
+    "role": "Supporting older-world lead, not authority for changed beta data",
+    "status": 403
+  }
+]

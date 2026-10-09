@@ -1,0 +1,2036 @@
+[
+  {
+    "questID": 170,
+    "url": "https://www.wowhead.com/forever/quest=170",
+    "captured_at_utc": "2026-10-08T15:18:50.117420+00:00",
+    "sha256": "857483c7c3afaf03890777a45ade10f393774b8e72578c4c43a522676ed70ae8",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 713,
+          "name": "Balir Frosthammer"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 713,
+          "name": "Balir Frosthammer"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "entityID": 707,
+          "name": "Rockjaw Trogg",
+          "quantity": 6
+        },
+        {
+          "entityType": "npc",
+          "entityID": 724,
+          "name": "Burly Rockjaw Trogg",
+          "quantity": 6
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "start",
+        "name": "Balir Frosthammer",
+        "coord": [
+          29.6,
+          71.2
+        ],
+        "id": 713
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "end",
+        "name": "Balir Frosthammer",
+        "coord": [
+          29.6,
+          71.2
+        ],
+        "id": 713
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "requirement",
+        "name": "Rockjaw Trogg",
+        "coord": [
+          30,
+          74.2
+        ],
+        "id": 707
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "requirement",
+        "name": "Burly Rockjaw Trogg",
+        "coord": [
+          30.2,
+          74.4
+        ],
+        "id": 724
+      }
+    ],
+    "identity": {
+      "name_enus": "A New Threat",
+      "_side": 1,
+      "reqclass": 0,
+      "reqrace": 0
+    }
+  },
+  {
+    "questID": 179,
+    "url": "https://www.wowhead.com/forever/quest=179",
+    "captured_at_utc": "2026-10-08T15:18:50.119494+00:00",
+    "sha256": "825ab7258e209c8f119c4b65fa643c335fec40bf2d8a9c93876ea7c6a5cd7f20",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 658,
+          "name": "Sten Stoutarm"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 658,
+          "name": "Sten Stoutarm"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 750,
+          "name": "Tough Wolf Meat",
+          "quantity": 8
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "start",
+        "name": "Sten Stoutarm",
+        "coord": [
+          29.8,
+          71.2
+        ],
+        "id": 658
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "end",
+        "name": "Sten Stoutarm",
+        "coord": [
+          29.8,
+          71.2
+        ],
+        "id": 658
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Hogger",
+        "coord": [
+          33.2,
+          71.8
+        ],
+        "id": 448
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Ragged Timber Wolf",
+        "coord": [
+          29.8,
+          74.6
+        ],
+        "id": 704
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Ragged Young Wolf",
+        "coord": [
+          29.4,
+          73.2
+        ],
+        "id": 705
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Frostmane Troll Whelp",
+        "coord": [
+          27.4,
+          80.8
+        ],
+        "id": 706
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Rockjaw Trogg",
+        "coord": [
+          30,
+          74.2
+        ],
+        "id": 707
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Small Crag Boar",
+        "coord": [
+          21.8,
+          70
+        ],
+        "id": 708
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Burly Rockjaw Trogg",
+        "coord": [
+          30.2,
+          74.4
+        ],
+        "id": 724
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Grik'nir the Cold",
+        "coord": [
+          30.4,
+          79.8
+        ],
+        "id": 808
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Frostmane Novice",
+        "coord": [
+          30.4,
+          79.4
+        ],
+        "id": 946
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Rockjaw Skullthumper",
+        "coord": [
+          70.8,
+          56
+        ],
+        "id": 1115
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Rockjaw Bonesnapper",
+        "coord": [
+          70.8,
+          56
+        ],
+        "id": 1117
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Frostmane Troll",
+        "coord": [
+          25.4,
+          50
+        ],
+        "id": 1120
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Frostmane Snowstrider",
+        "coord": [
+          41,
+          36.4
+        ],
+        "id": 1121
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Frostmane Hideskinner",
+        "coord": [
+          22.8,
+          52
+        ],
+        "id": 1122
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Frostmane Headhunter",
+        "coord": [
+          24.4,
+          50.8
+        ],
+        "id": 1123
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Frostmane Shadowcaster",
+        "coord": [
+          23.2,
+          52.4
+        ],
+        "id": 1124
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Crag Boar",
+        "coord": [
+          48,
+          49.2
+        ],
+        "id": 1125
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Large Crag Boar",
+        "coord": [
+          41.8,
+          47
+        ],
+        "id": 1126
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Elder Crag Boar",
+        "coord": [
+          40.6,
+          47.2
+        ],
+        "id": 1127
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Young Black Bear",
+        "coord": [
+          47.6,
+          50.4
+        ],
+        "id": 1128
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Winter Wolf",
+        "coord": [
+          43.2,
+          47
+        ],
+        "id": 1131
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Young Wendigo",
+        "coord": [
+          42.4,
+          55
+        ],
+        "id": 1134
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Wendigo",
+        "coord": [
+          42.2,
+          52.6
+        ],
+        "id": 1135
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Snow Tracker Wolf",
+        "coord": [
+          43.2,
+          47
+        ],
+        "id": 1138
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Ice Claw Bear",
+        "coord": [
+          38,
+          42.8
+        ],
+        "id": 1196
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Juvenile Snow Leopard",
+        "coord": [
+          36.8,
+          60.8
+        ],
+        "id": 1199
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Snow Leopard",
+        "coord": [
+          79.4,
+          36.6
+        ],
+        "id": 1201
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Leper Gnome",
+        "coord": [
+          24.4,
+          39.8
+        ],
+        "id": 1211
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Vagash",
+        "coord": [
+          62,
+          47
+        ],
+        "id": 1388
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Frostmane Seer",
+        "coord": [
+          40.2,
+          42.8
+        ],
+        "id": 1397
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Scarred Crag Boar",
+        "coord": [
+          81.4,
+          53
+        ],
+        "id": 1689
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Rockjaw Raider",
+        "coord": [
+          34.4,
+          70.8
+        ],
+        "id": 1718
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Mangeclaw",
+        "coord": [
+          79,
+          36.8
+        ],
+        "id": 1961
+      }
+    ],
+    "identity": {
+      "name_enus": "Dwarven Outfitters",
+      "_side": 1,
+      "reqclass": 0,
+      "reqrace": 0
+    }
+  },
+  {
+    "questID": 218,
+    "url": "https://www.wowhead.com/forever/quest=218",
+    "captured_at_utc": "2026-10-08T15:18:50.120200+00:00",
+    "sha256": "3fc269b80e181d2e38a6f1f5f4697541e81282e602c46496454932c900c4e740",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 786,
+          "name": "Grelin Whitebeard"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 786,
+          "name": "Grelin Whitebeard"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 2004,
+          "name": "Grelin Whitebeard's Journal",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {
+      "previousQuest": 182
+    },
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "start",
+        "name": "Grelin Whitebeard",
+        "coord": [
+          25,
+          75.8
+        ],
+        "id": 786
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "end",
+        "name": "Grelin Whitebeard",
+        "coord": [
+          25,
+          75.8
+        ],
+        "id": 786
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Grik'nir the Cold",
+        "coord": [
+          30.4,
+          79.8
+        ],
+        "id": 808
+      }
+    ],
+    "identity": {
+      "name_enus": "The Stolen Journal",
+      "_side": 1,
+      "reqclass": 0,
+      "reqrace": 0
+    }
+  },
+  {
+    "questID": 233,
+    "url": "https://www.wowhead.com/forever/quest=233",
+    "captured_at_utc": "2026-10-08T15:18:50.121156+00:00",
+    "sha256": "13d7092ededd7d719b24ce465cd2444c354ca8bc80d850e3ac9b859a52ad554a",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 658,
+          "name": "Sten Stoutarm"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 714,
+          "name": "Talin Keeneye"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 2187,
+          "name": "A Stack of Letters",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "start",
+        "name": "Sten Stoutarm",
+        "coord": [
+          29.8,
+          71.2
+        ],
+        "id": 658
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "end",
+        "name": "Talin Keeneye",
+        "coord": [
+          22.6,
+          71.4
+        ],
+        "id": 714
+      }
+    ],
+    "identity": {
+      "name_enus": "Coldridge Valley Mail Delivery",
+      "_side": 1,
+      "reqclass": 0,
+      "reqrace": 0
+    }
+  },
+  {
+    "questID": 234,
+    "url": "https://www.wowhead.com/forever/quest=234",
+    "captured_at_utc": "2026-10-08T15:18:50.121665+00:00",
+    "sha256": "5ee021e8f06e95cd2c1fab10aadb6ded15879003c01439b3560bf295d698f5c6",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 714,
+          "name": "Talin Keeneye"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 786,
+          "name": "Grelin Whitebeard"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 2188,
+          "name": "A Letter to Grelin Whitebeard",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_fields": {
+      "previousQuest": 233
+    },
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "start",
+        "name": "Talin Keeneye",
+        "coord": [
+          22.6,
+          71.4
+        ],
+        "id": 714
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "end",
+        "name": "Grelin Whitebeard",
+        "coord": [
+          25,
+          75.8
+        ],
+        "id": 786
+      }
+    ],
+    "identity": {
+      "name_enus": "Coldridge Valley Mail Delivery",
+      "_side": 1,
+      "reqclass": 0,
+      "reqrace": 0
+    }
+  },
+  {
+    "questID": 282,
+    "url": "https://www.wowhead.com/forever/quest=282",
+    "captured_at_utc": "2026-10-08T15:18:50.122217+00:00",
+    "sha256": "84a039e91cdb3c14a956bcf5200aee0f24a5277483a329c1c833c07ee6e720e7",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 786,
+          "name": "Grelin Whitebeard"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 1965,
+          "name": "Mountaineer Thalos"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 2619,
+          "name": "Grelin's Report",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_fields": {
+      "previousQuest": 218
+    },
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "start",
+        "name": "Grelin Whitebeard",
+        "coord": [
+          25,
+          75.8
+        ],
+        "id": 786
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "end",
+        "name": "Mountaineer Thalos",
+        "coord": [
+          33.4,
+          71.8
+        ],
+        "id": 1965
+      }
+    ],
+    "identity": {
+      "name_enus": "Senir's Observations",
+      "_side": 1,
+      "reqclass": 0,
+      "reqrace": 0
+    }
+  },
+  {
+    "questID": 317,
+    "url": "https://www.wowhead.com/forever/quest=317",
+    "captured_at_utc": "2026-10-08T15:18:50.123227+00:00",
+    "sha256": "55746cec234c9db2138ad456d9f64459c9d6f356119a3c309069bb687b500050",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 1378,
+          "name": "Pilot Bellowfiz"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 1378,
+          "name": "Pilot Bellowfiz"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 769,
+          "name": "Chunk of Boar Meat",
+          "quantity": 4
+        },
+        {
+          "entityType": "item",
+          "entityID": 6952,
+          "name": "Thick Bear Fur",
+          "quantity": 2
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "start",
+        "name": "Pilot Bellowfiz",
+        "coord": [
+          49.4,
+          48.4
+        ],
+        "id": 1378
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "end",
+        "name": "Pilot Bellowfiz",
+        "coord": [
+          49.4,
+          48.4
+        ],
+        "id": 1378
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Crag Boar",
+        "coord": [
+          48,
+          49.2
+        ],
+        "id": 1125
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Large Crag Boar",
+        "coord": [
+          41.8,
+          47
+        ],
+        "id": 1126
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Elder Crag Boar",
+        "coord": [
+          40.6,
+          47.2
+        ],
+        "id": 1127
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Young Black Bear",
+        "coord": [
+          47.6,
+          50.4
+        ],
+        "id": 1128
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Black Bear",
+        "coord": [
+          65.4,
+          12.8
+        ],
+        "id": 1129
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Winter Wolf",
+        "coord": [
+          43.2,
+          47
+        ],
+        "id": 1131
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Ice Claw Bear",
+        "coord": [
+          38,
+          42.8
+        ],
+        "id": 1196
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Scarred Crag Boar",
+        "coord": [
+          81.4,
+          53
+        ],
+        "id": 1689
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Fyodi",
+        "coord": [
+          29.2,
+          38.8
+        ],
+        "id": 208638
+      }
+    ],
+    "identity": {
+      "name_enus": "Stocking Jetsteam",
+      "_side": 1,
+      "reqclass": 0,
+      "reqrace": 0
+    }
+  },
+  {
+    "questID": 3361,
+    "url": "https://www.wowhead.com/forever/quest=3361",
+    "captured_at_utc": "2026-10-08T15:18:50.123963+00:00",
+    "sha256": "2510a1be0de241af70de50b2506644f6842dc507e6c001cf117394c4200789a2",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 8416,
+          "name": "Felix Whindlebolt"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 8416,
+          "name": "Felix Whindlebolt"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 10438,
+          "name": "Felix's Box",
+          "quantity": 1
+        },
+        {
+          "entityType": "item",
+          "entityID": 16313,
+          "name": "Felix's Chest",
+          "quantity": 1
+        },
+        {
+          "entityType": "item",
+          "entityID": 16314,
+          "name": "Felix's Bucket of Bolts",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "start",
+        "name": "Felix Whindlebolt",
+        "coord": [
+          28.4,
+          67.6
+        ],
+        "id": 8416
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "end",
+        "name": "Felix Whindlebolt",
+        "coord": [
+          28.4,
+          67.6
+        ],
+        "id": 8416
+      }
+    ],
+    "identity": {
+      "name_enus": "A Refugee's Quandary",
+      "_side": 1,
+      "reqclass": 0,
+      "reqrace": 0
+    }
+  },
+  {
+    "questID": 420,
+    "url": "https://www.wowhead.com/forever/quest=420",
+    "captured_at_utc": "2026-10-08T15:18:50.124591+00:00",
+    "sha256": "a0b9386a2a948bf0d511b4722b8e86ba9ded7bebd6f3d5b5cf54bf608cb8d11a",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 1965,
+          "name": "Mountaineer Thalos"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 1252,
+          "name": "Senir Whitebeard"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 2619,
+          "name": "Grelin's Report",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_fields": {
+      "previousQuest": 282
+    },
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "start",
+        "name": "Mountaineer Thalos",
+        "coord": [
+          33.4,
+          71.8
+        ],
+        "id": 1965
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "end",
+        "name": "Senir Whitebeard",
+        "coord": [
+          46.6,
+          53.8
+        ],
+        "id": 1252
+      }
+    ],
+    "identity": {
+      "name_enus": "Senir's Observations",
+      "_side": 1,
+      "reqclass": 0,
+      "reqrace": 0
+    }
+  },
+  {
+    "questID": 466,
+    "url": "https://www.wowhead.com/forever/quest=466",
+    "captured_at_utc": "2026-10-08T15:18:50.125593+00:00",
+    "sha256": "ac937c32e1daa68ec27be6de0911e41a554cd5464a027d1438a468443657df87",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 1377,
+          "name": "Pilot Stonegear"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 1377,
+          "name": "Pilot Stonegear"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 3340,
+          "name": "Incendicite Ore",
+          "quantity": 6
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {
+      "previousQuest": 467
+    },
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "start",
+        "name": "Pilot Stonegear",
+        "coord": [
+          49.6,
+          48.4
+        ],
+        "id": 1377
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "end",
+        "name": "Pilot Stonegear",
+        "coord": [
+          49.6,
+          48.4
+        ],
+        "id": 1377
+      }
+    ],
+    "identity": {
+      "name_enus": "Search for Incendicite",
+      "_side": 1,
+      "reqclass": 0,
+      "reqrace": 0
+    }
+  },
+  {
+    "questID": 467,
+    "url": "https://www.wowhead.com/forever/quest=467",
+    "captured_at_utc": "2026-10-08T15:18:50.126252+00:00",
+    "sha256": "13b6fe49a08c1d48b02800d45084a707dda12335104be1d66d8ffee1389478ee",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 1340,
+          "name": "Mountaineer Kadrell"
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2092,
+          "name": "Pilot Longbeard"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 1377,
+          "name": "Pilot Stonegear"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 38,
+        "type": 1,
+        "point": "start",
+        "name": "Mountaineer Kadrell",
+        "coord": [
+          32.8,
+          49.6
+        ],
+        "id": 1340
+      },
+      {
+        "sourceAreaID": 1537,
+        "type": 1,
+        "point": "start",
+        "name": "Pilot Longbeard",
+        "coord": [
+          72.4,
+          93.6
+        ],
+        "id": 2092
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "end",
+        "name": "Pilot Stonegear",
+        "coord": [
+          49.6,
+          48.4
+        ],
+        "id": 1377
+      }
+    ],
+    "identity": {
+      "name_enus": "Stonegear's Search",
+      "_side": 1,
+      "reqclass": 0,
+      "reqrace": 0
+    }
+  },
+  {
+    "questID": 95212,
+    "url": "https://www.wowhead.com/forever/quest=95212",
+    "captured_at_utc": "2026-10-08T15:18:50.126683+00:00",
+    "sha256": "e125e46d4d124a9c92a52b3a869edf1b839a1c3661f6fa8b325fb75bd4905e12",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 1265,
+          "name": "Rudra Amberstill"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 1265,
+          "name": "Rudra Amberstill"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 267414,
+          "name": "Pristine Leopard Pelt",
+          "quantity": 6
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "start",
+        "name": "Rudra Amberstill",
+        "coord": [
+          63,
+          49.8
+        ],
+        "id": 1265
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "end",
+        "name": "Rudra Amberstill",
+        "coord": [
+          63,
+          49.8
+        ],
+        "id": 1265
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Elder Snow Leopard",
+        "coord": [
+          72.2,
+          59.2
+        ],
+        "id": 260157
+      }
+    ],
+    "identity": {}
+  },
+  {
+    "questID": 95213,
+    "url": "https://www.wowhead.com/forever/quest=95213",
+    "captured_at_utc": "2026-10-08T15:18:50.127095+00:00",
+    "sha256": "a6b7290a086bea020128eb82603797783e67842118cdf365b7aaa28116d511d1",
+    "relations": {
+      "starts": [],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 1256,
+          "name": "Quarrymaster Thesten"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 268548,
+          "name": "Empty Powder Keg",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "end",
+        "name": "Quarrymaster Thesten",
+        "coord": [
+          69,
+          54.8
+        ],
+        "id": 1256
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Rockjaw Ambusher",
+        "coord": [
+          73.8,
+          51.2
+        ],
+        "id": 1116
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Rockjaw Backbreaker",
+        "coord": [
+          79,
+          54.1
+        ],
+        "id": 1118
+      }
+    ],
+    "identity": {
+      "name_enus": "Stolen Blasting Powder",
+      "_side": 1,
+      "reqclass": 0,
+      "reqrace": 0
+    }
+  },
+  {
+    "questID": 95214,
+    "url": "https://www.wowhead.com/forever/quest=95214",
+    "captured_at_utc": "2026-10-08T15:18:50.127437+00:00",
+    "sha256": "892bbf67e127a1177d9ecc44f6932bb3f534885c788fdbe8c26fb79f108424bc",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 1256,
+          "name": "Quarrymaster Thesten"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 1256,
+          "name": "Quarrymaster Thesten"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 267415,
+          "name": "Stolen Blasting Powder",
+          "quantity": 16
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "start",
+        "name": "Quarrymaster Thesten",
+        "coord": [
+          69,
+          54.8
+        ],
+        "id": 1256
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "end",
+        "name": "Quarrymaster Thesten",
+        "coord": [
+          69,
+          54.8
+        ],
+        "id": 1256
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Rockjaw Ambusher",
+        "coord": [
+          73.8,
+          51.2
+        ],
+        "id": 1116
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Rockjaw Backbreaker",
+        "coord": [
+          79,
+          54.1
+        ],
+        "id": 1118
+      }
+    ],
+    "identity": {}
+  },
+  {
+    "questID": 95217,
+    "url": "https://www.wowhead.com/forever/quest=95217",
+    "captured_at_utc": "2026-10-08T15:18:50.127818+00:00",
+    "sha256": "fb01541f59bced0e9b39504935828eaf92b1fca55859132f95e2579c467ea71c",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 1698,
+          "name": "Frast Dokner"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 1698,
+          "name": "Frast Dokner"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 2840,
+          "name": "Copper Bar",
+          "quantity": 12
+        },
+        {
+          "entityType": "item",
+          "entityID": 267416,
+          "name": "Toughened Boar Hide",
+          "quantity": 4
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "start",
+        "name": "Frast Dokner",
+        "coord": [
+          68.8,
+          55.8
+        ],
+        "id": 1698
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "end",
+        "name": "Frast Dokner",
+        "coord": [
+          68.8,
+          55.8
+        ],
+        "id": 1698
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Scarred Crag Boar",
+        "coord": [
+          81.4,
+          53
+        ],
+        "id": 1689
+      },
+      {
+        "sourceAreaID": 17,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Fel Interloper",
+        "coord": [
+          56,
+          24.8
+        ],
+        "id": 223340
+      },
+      {
+        "sourceAreaID": 17,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Fel Interloper",
+        "coord": [
+          50.2,
+          80.6
+        ],
+        "id": 223542
+      },
+      {
+        "sourceAreaID": 40,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Fel Interloper",
+        "coord": [
+          32.2,
+          80.2
+        ],
+        "id": 223340
+      },
+      {
+        "sourceAreaID": 130,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Fel Interloper",
+        "coord": [
+          38.8,
+          23.4
+        ],
+        "id": 223340
+      },
+      {
+        "sourceAreaID": 44,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Fel Interloper",
+        "coord": [
+          29.8,
+          30
+        ],
+        "id": 223542
+      },
+      {
+        "sourceAreaID": 331,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Fel Interloper",
+        "coord": [
+          77.2,
+          73.2
+        ],
+        "id": 223542
+      }
+    ],
+    "identity": {
+      "name_enus": "The Quarry's Smith",
+      "_side": 1,
+      "reqclass": 67,
+      "reqrace": 4294967364
+    }
+  },
+  {
+    "questID": 96390,
+    "url": "https://www.wowhead.com/forever/quest=96390",
+    "captured_at_utc": "2026-10-08T15:18:50.128460+00:00",
+    "sha256": "c3608d1539bd218395403c27f11cca06ce5a63c270b35e5364588e2fcea44f79",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 264936,
+          "name": "Earthseer Farsen"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 264936,
+          "name": "Earthseer Farsen"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "entityID": 6123,
+          "name": "Dark Iron Spy",
+          "quantity": 10
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {
+      "previousQuest": 96392
+    },
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "start",
+        "name": "Earthseer Farsen",
+        "coord": [
+          64.8,
+          58.4
+        ],
+        "id": 264936
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "end",
+        "name": "Earthseer Farsen",
+        "coord": [
+          64.8,
+          58.4
+        ],
+        "id": 264936
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "requirement",
+        "name": "Dark Iron Spy",
+        "coord": [
+          77.8,
+          62.4
+        ],
+        "id": 6123
+      }
+    ],
+    "identity": {
+      "name_enus": "Nip 'Em in the Bud",
+      "_side": 1,
+      "reqclass": 0,
+      "reqrace": 4294967372
+    }
+  },
+  {
+    "questID": 96391,
+    "url": "https://www.wowhead.com/forever/quest=96391",
+    "captured_at_utc": "2026-10-08T15:18:50.129013+00:00",
+    "sha256": "dfc2e59086be371b927111150ae87f7eb64ae54175b66b2bbed3ff39fca70bab",
+    "relations": {
+      "starts": [],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 264936,
+          "name": "Earthseer Farsen"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 274268,
+          "name": "Dark Iron Map",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "end",
+        "name": "Earthseer Farsen",
+        "coord": [
+          64.8,
+          58.4
+        ],
+        "id": 264936
+      }
+    ],
+    "identity": {
+      "name_enus": "Underground Map",
+      "_side": 1,
+      "reqclass": 0,
+      "reqrace": 0
+    }
+  },
+  {
+    "questID": 96392,
+    "url": "https://www.wowhead.com/forever/quest=96392",
+    "captured_at_utc": "2026-10-08T15:18:50.129495+00:00",
+    "sha256": "1ad342ca61c5487317b6b52838ca993196d3ab7a911739d8ebf3e3a97e5733f1",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 264936,
+          "name": "Earthseer Farsen"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 264936,
+          "name": "Earthseer Farsen"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "entityID": 264936,
+          "name": "Use Farsen's Farsight",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {
+      "previousQuest": 96408
+    },
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "start",
+        "name": "Earthseer Farsen",
+        "coord": [
+          64.8,
+          58.4
+        ],
+        "id": 264936
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "end",
+        "name": "Earthseer Farsen",
+        "coord": [
+          64.8,
+          58.4
+        ],
+        "id": 264936
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "requirement",
+        "name": "Earthseer Farsen",
+        "coord": [
+          64.8,
+          58.4
+        ],
+        "id": 264936
+      }
+    ],
+    "identity": {}
+  },
+  {
+    "questID": 98423,
+    "url": "https://www.wowhead.com/forever/quest=98423",
+    "captured_at_utc": "2026-10-08T15:18:50.129897+00:00",
+    "sha256": "7b3aaafd04525e9e48ac5e7131cca0ecfdb8948558c871ac0ccd4aaf8d4c6726",
+    "relations": {
+      "starts": [],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 2784,
+          "name": "King Magni Bronzebeard"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 281030,
+          "name": "Treaty of Understanding",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 1537,
+        "type": 1,
+        "point": "end",
+        "name": "King Magni Bronzebeard",
+        "coord": [
+          39.4,
+          55.8
+        ],
+        "id": 2784
+      }
+    ],
+    "identity": {
+      "name_enus": "The Treaty of Understanding",
+      "_side": 1,
+      "reqclass": 0,
+      "reqrace": 0
+    }
+  },
+  {
+    "questID": 99160,
+    "url": "https://www.wowhead.com/forever/quest=99160",
+    "captured_at_utc": "2026-10-08T15:18:50.130436+00:00",
+    "sha256": "c9841a1be09e050b891fb6fbeaaa3072ab95fd5114069868216b70f2a49595c8",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 1253,
+          "name": "Father Gavin"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 1253,
+          "name": "Father Gavin"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "entityID": 276003,
+          "name": "Minor Ice Elemental",
+          "quantity": 10
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "start",
+        "name": "Father Gavin",
+        "coord": [
+          57.6,
+          44.8
+        ],
+        "id": 1253
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "end",
+        "name": "Father Gavin",
+        "coord": [
+          57.6,
+          44.8
+        ],
+        "id": 1253
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "requirement",
+        "name": "Minor Ice Elemental",
+        "coord": [
+          56.2,
+          46
+        ],
+        "id": 276003
+      }
+    ],
+    "identity": {
+      "name_enus": "Rime's Wrath",
+      "_side": 1,
+      "reqclass": 0,
+      "reqrace": 4294967364
+    }
+  },
+  {
+    "questID": 99161,
+    "url": "https://www.wowhead.com/forever/quest=99161",
+    "captured_at_utc": "2026-10-08T15:18:50.130773+00:00",
+    "sha256": "69305064d8ff6fb943ea30e40bde1569bd9dbe5fb54183e79775427fbc9587e5",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 1253,
+          "name": "Father Gavin"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 1253,
+          "name": "Father Gavin"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 286325,
+          "name": "Avala's Core",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "start",
+        "name": "Father Gavin",
+        "coord": [
+          57.6,
+          44.8
+        ],
+        "id": 1253
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "end",
+        "name": "Father Gavin",
+        "coord": [
+          57.6,
+          44.8
+        ],
+        "id": 1253
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "sourcerequirement",
+        "name": "Avala",
+        "coord": [
+          58.2,
+          42
+        ],
+        "id": 276009
+      }
+    ],
+    "identity": {
+      "name_enus": "Rime's Wrath",
+      "_side": 1,
+      "reqclass": 0,
+      "reqrace": 4294967364
+    }
+  },
+  {
+    "questID": 99162,
+    "url": "https://www.wowhead.com/forever/quest=99162",
+    "captured_at_utc": "2026-10-08T15:18:50.131323+00:00",
+    "sha256": "ca100ac8382827c161ef90e80b5d177d9d94418139f734703c16711acf0b4733",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 1253,
+          "name": "Father Gavin"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 1253,
+          "name": "Father Gavin"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 286360,
+          "name": "Stoneanvil's Rifle",
+          "quantity": 1
+        },
+        {
+          "entityType": "item",
+          "entityID": 286359,
+          "name": "Sunhammer's Rifle",
+          "quantity": 1
+        },
+        {
+          "entityType": "item",
+          "entityID": 286358,
+          "name": "Coalbeard's Rifle",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_fields": {},
+    "mapper_representatives": [
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "start",
+        "name": "Father Gavin",
+        "coord": [
+          57.6,
+          44.8
+        ],
+        "id": 1253
+      },
+      {
+        "sourceAreaID": 1,
+        "type": 1,
+        "point": "end",
+        "name": "Father Gavin",
+        "coord": [
+          57.6,
+          44.8
+        ],
+        "id": 1253
+      }
+    ],
+    "identity": {
+      "name_enus": "Treacherous Cold",
+      "_side": 1,
+      "reqclass": 0,
+      "reqrace": 4294967364
+    }
+  }
+]

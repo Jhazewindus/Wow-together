@@ -1,0 +1,290 @@
+{
+  "5901": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1420,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mickey Levine",
+          "entityID": 11615
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 100,
+          "action": "collect",
+          "entityID": 15043,
+          "name": "Plagueland Termites"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 100,
+          "name": "Plagueland Termites",
+          "itemID": 15043
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1423,
+          "action": "use",
+          "entityID": 177464,
+          "useItemID": 15042,
+          "useItemName": "Empty Termite Jar",
+          "x": 0.18,
+          "y": 0.2257,
+          "objectiveKey": "item:15043",
+          "itemID": 15043,
+          "quantity": 100,
+          "sourceAreaID": 139,
+          "itemName": "Plagueland Termites",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Large Termite Mound"
+        }
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "name": "Empty Termite Jar",
+          "entityID": 15042
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 11615,
+          "npc": true,
+          "y": 0.7234,
+          "x": 0.8329000000000001,
+          "name": "Mickey Levine",
+          "sourceAreaID": 85,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "level": 55,
+      "areaID": 85,
+      "title": "A Plague Upon Thee",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 8589934770,
+      "side": "Horde",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 11615,
+          "npc": true,
+          "y": 0.7234,
+          "x": 0.8329000000000001,
+          "name": "Mickey Levine",
+          "sourceAreaID": 85,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "money": 8500,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mickey Levine",
+          "entityID": 11615
+        }
+      ],
+      "xp": 5650,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 48,
+      "requirementSource": "Published Forever typed objectives",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Use the explicitly supplied empty jar at the mapped termite mound; preserve 100 termites, real hand-in and cross-zone destination. Supplied count remains unknown. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09.",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 100,
+            "action": "collect",
+            "entityID": 15043,
+            "name": "Plagueland Termites"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Mickey Levine",
+            "entityID": 11615
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantityUnknown": true,
+            "name": "Empty Termite Jar",
+            "entityID": 15042
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Mickey Levine",
+            "entityID": 11615
+          }
+        ]
+      },
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "eastern-kingdoms/tirisfal-glades"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1420,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mickey Levine",
+          "entityID": 11615
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 100,
+          "action": "collect",
+          "entityID": 15043,
+          "name": "Plagueland Termites"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 100,
+          "name": "Plagueland Termites",
+          "itemID": 15043
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1423,
+          "action": "gather",
+          "entityID": 177464,
+          "x": 0.18,
+          "y": 0.2257,
+          "objectiveKey": "item:15043",
+          "itemID": 15043,
+          "quantity": 100,
+          "sourceAreaID": 139,
+          "itemName": "Plagueland Termites",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Large Termite Mound"
+        }
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "name": "Empty Termite Jar",
+          "entityID": 15042
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 11615,
+          "npc": true,
+          "y": 0.7234,
+          "x": 0.8329000000000001,
+          "name": "Mickey Levine",
+          "sourceAreaID": 85,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "level": 55,
+      "areaID": 85,
+      "title": "A Plague Upon Thee",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 8589934770,
+      "side": "Horde",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 11615,
+          "npc": true,
+          "y": 0.7234,
+          "x": 0.8329000000000001,
+          "name": "Mickey Levine",
+          "sourceAreaID": 85,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "money": 8500,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mickey Levine",
+          "entityID": 11615
+        }
+      ],
+      "xp": 5650,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 48,
+      "requirementSource": "Published Forever typed objectives",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Keep explicitly supplied empty jar with unknown supply count, actual 100-termite output and existing mound/gather instruction. Generic use text incorrectly turns output count into a 100-target requirement, so retain working gather behavior pending coordinated input/output tool-text support. Verified pinned facts; research/tirisfal-glades-2026-10-09/termite-count-follow-up.",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 100,
+            "action": "collect",
+            "entityID": 15043,
+            "name": "Plagueland Termites"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Mickey Levine",
+            "entityID": 11615
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantityUnknown": true,
+            "name": "Empty Termite Jar",
+            "entityID": 15042
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Mickey Levine",
+            "entityID": 11615
+          }
+        ]
+      },
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "eastern-kingdoms/tirisfal-glades"
+    }
+  }
+}

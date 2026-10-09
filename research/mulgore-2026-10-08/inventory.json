@@ -1,0 +1,4530 @@
+{
+  "scope": "Union of original and Tauren templates; class templates are not a recommendation for every actor. Retained data, not independent beta verification.",
+  "quests": [
+    {
+      "questID": 743,
+      "title": "Dangers of the Windfury",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 8,
+      "minLevel": 5,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 2985,
+          "npc": true,
+          "y": 0.6494,
+          "x": 0.4654,
+          "name": "Ruul Eagletalon",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "loot",
+          "entityID": 2962,
+          "npc": true,
+          "x": 0.5905,
+          "y": 0.7268000000000001,
+          "objectiveKey": "item:4751",
+          "itemID": 4751,
+          "quantity": 8,
+          "sourceAreaID": 215,
+          "itemName": "Windfury Talon",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Windfury Harpy"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 2985,
+          "npc": true,
+          "y": 0.6494,
+          "x": 0.4654,
+          "name": "Ruul Eagletalon",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 8,
+          "name": "Windfury Talon",
+          "itemID": 4751
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "action": "collect",
+          "entityID": 4751,
+          "name": "Windfury Talon"
+        }
+      ]
+    },
+    {
+      "questID": 745,
+      "title": "Sharing the Land",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 8,
+      "minLevel": 1,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 2993,
+          "npc": true,
+          "y": 0.602,
+          "x": 0.474,
+          "name": "Baine Bloodhoof",
+          "sourceAreaID": 215,
+          "locationSource": "Reviewed Baine Bloodhoof location: https://www.wowhead.com/forever/npc=2993; captured 2026-10-08; SHA-256 87dba9712f038ef6a02088122d7c3f55b280e499ab0914f18725db12b44f524e. Corresponding Forever quest mapper agrees on 47.4,60.2; supersedes the converted-baseline representative, not a surveyed path or spawn guarantee."
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "kill",
+          "entityID": 2949,
+          "npc": true,
+          "y": 0.7306999999999999,
+          "objectiveKey": "npc:2949",
+          "name": "Palemane Tanner",
+          "sourceAreaID": 215,
+          "x": 0.47369999999999995,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "quantity": 10
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "kill",
+          "entityID": 2950,
+          "npc": true,
+          "y": 0.7334,
+          "objectiveKey": "npc:2950",
+          "name": "Palemane Skinner",
+          "sourceAreaID": 215,
+          "x": 0.4728,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "quantity": 8
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 2993,
+          "npc": true,
+          "y": 0.602,
+          "x": 0.474,
+          "name": "Baine Bloodhoof",
+          "sourceAreaID": 215,
+          "locationSource": "Reviewed Baine Bloodhoof location: https://www.wowhead.com/forever/npc=2993; captured 2026-10-08; SHA-256 87dba9712f038ef6a02088122d7c3f55b280e499ab0914f18725db12b44f524e. Corresponding Forever quest mapper agrees on 47.4,60.2; supersedes the converted-baseline representative, not a surveyed path or spawn guarantee."
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "action": "kill",
+          "entityID": 2949,
+          "name": "Palemane Tanner"
+        },
+        {
+          "entityType": "npc",
+          "quantity": 8,
+          "action": "kill",
+          "entityID": 2950,
+          "name": "Palemane Skinner"
+        }
+      ]
+    },
+    {
+      "questID": 746,
+      "title": "Dwarven Digging",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 8,
+      "minLevel": 6,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 2993,
+          "npc": true,
+          "y": 0.602,
+          "x": 0.474,
+          "name": "Baine Bloodhoof",
+          "sourceAreaID": 215,
+          "locationSource": "Reviewed Baine Bloodhoof location: https://www.wowhead.com/forever/npc=2993; captured 2026-10-08; SHA-256 87dba9712f038ef6a02088122d7c3f55b280e499ab0914f18725db12b44f524e. Corresponding Forever quest mapper agrees on 47.4,60.2; supersedes the converted-baseline representative, not a surveyed path or spawn guarantee."
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1412,
+          "action": "gather",
+          "entityID": 17190,
+          "x": 0.331,
+          "y": 0.5479999999999999,
+          "objectiveKey": "item:4703",
+          "itemID": 4703,
+          "quantity": 5,
+          "sourceAreaID": 215,
+          "itemName": "Broken Tools",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Forge"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 2993,
+          "npc": true,
+          "y": 0.602,
+          "x": 0.474,
+          "name": "Baine Bloodhoof",
+          "sourceAreaID": 215,
+          "locationSource": "Reviewed Baine Bloodhoof location: https://www.wowhead.com/forever/npc=2993; captured 2026-10-08; SHA-256 87dba9712f038ef6a02088122d7c3f55b280e499ab0914f18725db12b44f524e. Corresponding Forever quest mapper agrees on 47.4,60.2; supersedes the converted-baseline representative, not a surveyed path or spawn guarantee."
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 5,
+          "name": "Broken Tools",
+          "itemID": 4703
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 5,
+          "action": "collect",
+          "entityID": 4703,
+          "name": "Broken Tools"
+        }
+      ]
+    },
+    {
+      "questID": 747,
+      "title": "The Hunt Begins",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 2,
+      "minLevel": 1,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.772,
+          "mapID": 1412,
+          "name": "Grull Hawkwind",
+          "entityID": 2980,
+          "npc": true,
+          "x": 0.44799999999999995
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 1,
+          "mapID": 1412,
+          "action": "collect",
+          "entityID": 2955,
+          "npc": true,
+          "y": 0.778,
+          "objectiveKey": "item:4740",
+          "name": "Plainstrider",
+          "x": 0.462,
+          "quantity": 7,
+          "legacyStepKey": "q:1412:npc:2955",
+          "itemName": "Plainstrider Feather",
+          "itemID": 4740
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "loot",
+          "entityID": 2955,
+          "npc": true,
+          "y": 0.778,
+          "sourceZone": "Mulgore",
+          "objectiveKey": "item:4739",
+          "itemID": 4739,
+          "x": 0.462,
+          "sourceAreaID": 215,
+          "quantity": 7,
+          "itemName": "Plainstrider Meat",
+          "name": "Plainstrider"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.772,
+          "mapID": 1412,
+          "name": "Grull Hawkwind",
+          "entityID": 2980,
+          "npc": true,
+          "x": 0.44799999999999995
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 7,
+          "name": "Plainstrider Meat",
+          "itemID": 4739
+        },
+        {
+          "quantity": 7,
+          "name": "Plainstrider Feather",
+          "itemID": 4740
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 7,
+          "name": "Plainstrider Meat",
+          "entityID": 4739
+        },
+        {
+          "entityType": "item",
+          "quantity": 7,
+          "name": "Plainstrider Feather",
+          "entityID": 4740
+        }
+      ]
+    },
+    {
+      "questID": 748,
+      "title": "Poison Water",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 5,
+      "minLevel": 4,
+      "side": "Horde",
+      "raceMask": 32,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.604,
+          "mapID": 1412,
+          "name": "Mull Thunderhorn",
+          "entityID": 2948,
+          "npc": true,
+          "x": 0.484
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 1,
+          "mapID": 1412,
+          "legacyStepKey": "q:1412:npc:2956",
+          "entityID": 2956,
+          "npc": true,
+          "x": 0.524,
+          "y": 0.654,
+          "objectiveKey": "item:4759",
+          "itemID": 4759,
+          "quantity": 4,
+          "name": "Adult Plainstrider",
+          "itemName": "Plainstrider Talon",
+          "alternativeCount": 3,
+          "action": "collect"
+        },
+        {
+          "sourceObjective": 0,
+          "mapID": 1412,
+          "legacyStepKey": "q:1412:npc:2958",
+          "entityID": 2958,
+          "npc": true,
+          "x": 0.532,
+          "y": 0.632,
+          "objectiveKey": "item:4758",
+          "itemID": 4758,
+          "quantity": 6,
+          "name": "Prairie Wolf",
+          "itemName": "Prairie Wolf Paw",
+          "alternativeCount": 4,
+          "action": "collect"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.604,
+          "mapID": 1412,
+          "name": "Mull Thunderhorn",
+          "entityID": 2948,
+          "npc": true,
+          "x": 0.484
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 6,
+          "name": "Prairie Wolf Paw",
+          "itemID": 4758
+        },
+        {
+          "quantity": 4,
+          "name": "Plainstrider Talon",
+          "itemID": 4759
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 6,
+          "name": "Prairie Wolf Paw",
+          "entityID": 4758
+        },
+        {
+          "entityType": "item",
+          "quantity": 4,
+          "name": "Plainstrider Talon",
+          "entityID": 4759
+        }
+      ]
+    },
+    {
+      "questID": 749,
+      "title": "The Ravaged Caravan",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 8,
+      "minLevel": 5,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 2988,
+          "npc": true,
+          "sourceZone": "Mulgore",
+          "x": 0.518,
+          "name": "Morin Cloudstalker",
+          "sourceAreaID": 215,
+          "y": 0.594
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "object",
+          "mapID": 1412,
+          "name": "Sealed Supply Crate",
+          "y": 0.535,
+          "entityID": 2908,
+          "x": 0.519,
+          "sourceZone": "Mulgore",
+          "sourceAreaID": 215
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 750,
+      "title": "The Hunt Continues",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 3,
+      "minLevel": 1,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "previousQuest": 747,
+      "starts": [
+        {
+          "y": 0.772,
+          "mapID": 1412,
+          "name": "Grull Hawkwind",
+          "entityID": 2980,
+          "npc": true,
+          "x": 0.44799999999999995
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1412,
+          "action": "collect",
+          "entityID": 2961,
+          "npc": true,
+          "y": 0.904,
+          "objectiveKey": "item:4742",
+          "name": "Mountain Cougar",
+          "x": 0.436,
+          "quantity": 10,
+          "legacyStepKey": "q:1412:npc:2961",
+          "itemName": "Mountain Cougar Pelt",
+          "itemID": 4742
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.772,
+          "mapID": 1412,
+          "name": "Grull Hawkwind",
+          "entityID": 2980,
+          "npc": true,
+          "x": 0.44799999999999995
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 10,
+          "name": "Mountain Cougar Pelt",
+          "itemID": 4742
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 10,
+          "name": "Mountain Cougar Pelt",
+          "entityID": 4742
+        }
+      ]
+    },
+    {
+      "questID": 751,
+      "title": "The Ravaged Caravan",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 8,
+      "minLevel": 5,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "previousQuest": 749,
+      "starts": [
+        {
+          "y": 0.483,
+          "x": 0.5379999999999999,
+          "name": "Sealed Supply Crate",
+          "entityID": 2908,
+          "mapID": 1412
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.602,
+          "mapID": 1412,
+          "name": "Morin Cloudstalker",
+          "entityID": 2988,
+          "npc": true,
+          "x": 0.53
+        }
+      ],
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Venture Co. Documents",
+          "entityID": 4834
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 752,
+      "title": "A Humble Task",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 2,
+      "minLevel": 1,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.76,
+          "mapID": 1412,
+          "name": "Chief Hawkwind",
+          "entityID": 2981,
+          "npc": true,
+          "x": 0.442
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.81,
+          "mapID": 1412,
+          "name": "Greatmother Hawkwind",
+          "entityID": 2991,
+          "npc": true,
+          "x": 0.5
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 753,
+      "title": "A Humble Task",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 3,
+      "minLevel": 1,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "previousQuest": 752,
+      "starts": [
+        {
+          "y": 0.81,
+          "mapID": 1412,
+          "name": "Greatmother Hawkwind",
+          "entityID": 2991,
+          "npc": true,
+          "x": 0.5
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1412,
+          "action": "gather",
+          "entityID": 2907,
+          "x": 0.4891,
+          "y": 0.8117,
+          "objectiveKey": "item:4755",
+          "itemID": 4755,
+          "quantity": 1,
+          "sourceAreaID": 215,
+          "itemName": "Water Pitcher",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Water Pitcher"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.76,
+          "mapID": 1412,
+          "name": "Chief Hawkwind",
+          "entityID": 2981,
+          "npc": true,
+          "x": 0.442
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Water Pitcher",
+          "itemID": 4755
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Water Pitcher",
+          "entityID": 4755
+        }
+      ]
+    },
+    {
+      "questID": 754,
+      "title": "Winterhoof Cleansing",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 6,
+      "minLevel": 4,
+      "side": "Horde",
+      "raceMask": 32,
+      "classMask": 0,
+      "prerequisiteAny": [
+        748
+      ],
+      "starts": [
+        {
+          "y": 0.604,
+          "mapID": 1412,
+          "name": "Mull Thunderhorn",
+          "entityID": 2948,
+          "npc": true,
+          "x": 0.484
+        }
+      ],
+      "objectives": [
+        {
+          "sourceAction": "use-at",
+          "mapID": 1412,
+          "action": "use",
+          "y": 0.6843,
+          "x": 0.5176,
+          "useItemName": "Winterhoof Cleansing Totem",
+          "locationSource": "Published Forever converted-baseline event area",
+          "name": "Winterhoof Cleansing"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.604,
+          "mapID": 1412,
+          "name": "Mull Thunderhorn",
+          "entityID": 2948,
+          "npc": true,
+          "x": 0.484
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 755,
+      "title": "Rites of the Earthmother",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 3,
+      "minLevel": 1,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "previousQuest": 753,
+      "starts": [
+        {
+          "y": 0.76,
+          "mapID": 1412,
+          "name": "Chief Hawkwind",
+          "entityID": 2981,
+          "npc": true,
+          "x": 0.442
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.92,
+          "mapID": 1412,
+          "name": "Seer Graytongue",
+          "entityID": 2982,
+          "npc": true,
+          "x": 0.426
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 756,
+      "title": "Thunderhorn Totem",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 7,
+      "minLevel": 4,
+      "side": "Horde",
+      "raceMask": 32,
+      "classMask": 0,
+      "prerequisiteAny": [
+        754
+      ],
+      "starts": [
+        {
+          "y": 0.604,
+          "mapID": 1412,
+          "name": "Mull Thunderhorn",
+          "entityID": 2948,
+          "npc": true,
+          "x": 0.484
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1412,
+          "action": "collect",
+          "entityID": 2959,
+          "npc": true,
+          "y": 0.37200000000000005,
+          "objectiveKey": "item:4801",
+          "name": "Prairie Stalker",
+          "x": 0.38799999999999996,
+          "quantity": 6,
+          "legacyStepKey": "q:1412:npc:2959",
+          "itemName": "Stalker Claws",
+          "itemID": 4801
+        },
+        {
+          "sourceObjective": 1,
+          "mapID": 1412,
+          "action": "collect",
+          "entityID": 3035,
+          "npc": true,
+          "y": 0.44,
+          "objectiveKey": "item:4802",
+          "name": "Flatland Cougar",
+          "x": 0.408,
+          "quantity": 6,
+          "legacyStepKey": "q:1412:npc:3035",
+          "itemName": "Cougar Claws",
+          "itemID": 4802
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.604,
+          "mapID": 1412,
+          "name": "Mull Thunderhorn",
+          "entityID": 2948,
+          "npc": true,
+          "x": 0.484
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 6,
+          "name": "Stalker Claws",
+          "itemID": 4801
+        },
+        {
+          "quantity": 6,
+          "name": "Cougar Claws",
+          "itemID": 4802
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 6,
+          "name": "Stalker Claws",
+          "entityID": 4801
+        },
+        {
+          "entityType": "item",
+          "quantity": 6,
+          "name": "Cougar Claws",
+          "entityID": 4802
+        }
+      ]
+    },
+    {
+      "questID": 757,
+      "title": "Rite of Strength",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 4,
+      "minLevel": 1,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "previousQuest": 755,
+      "starts": [
+        {
+          "y": 0.92,
+          "mapID": 1412,
+          "name": "Seer Graytongue",
+          "entityID": 2982,
+          "npc": true,
+          "x": 0.426
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1412,
+          "legacyStepKey": "q:1412:npc:2952",
+          "entityID": 2952,
+          "npc": true,
+          "x": 0.642,
+          "y": 0.78,
+          "objectiveKey": "item:4770",
+          "itemID": 4770,
+          "quantity": 12,
+          "name": "Bristleback Quilboar",
+          "itemName": "Bristleback Belt",
+          "alternativeCount": 2,
+          "action": "collect"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.76,
+          "mapID": 1412,
+          "name": "Chief Hawkwind",
+          "entityID": 2981,
+          "npc": true,
+          "x": 0.442
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 12,
+          "name": "Bristleback Belt",
+          "itemID": 4770
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 12,
+          "name": "Bristleback Belt",
+          "entityID": 4770
+        }
+      ]
+    },
+    {
+      "questID": 758,
+      "title": "Thunderhorn Cleansing",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 8,
+      "minLevel": 4,
+      "side": "Horde",
+      "raceMask": 32,
+      "allowedRaceIDs": [
+        6
+      ],
+      "classMask": 0,
+      "prerequisiteAny": [
+        756
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 2948,
+          "npc": true,
+          "sourceZone": "Mulgore",
+          "x": 0.484,
+          "name": "Mull Thunderhorn",
+          "sourceAreaID": 215,
+          "locationSource": "Reviewed Mull Thunderhorn location: https://www.wowhead.com/forever/quest=758; captured 2026-10-08; SHA-256 1c6c2f6914b82ff9409e095a7cb92d3b12e7113b761637d00234bdbdd0721916. Quest start/end mapper selects 48.4,60.4, matching the other current cleansing-chain pages; supersedes converted-baseline representative.",
+          "y": 0.604
+        }
+      ],
+      "objectives": [
+        {
+          "sourceAction": "use-at",
+          "mapID": 1412,
+          "action": "use",
+          "y": 0.5111,
+          "x": 0.44170000000000004,
+          "useItemName": "Thunderhorn Cleansing Totem",
+          "locationSource": "Published Forever converted-baseline event area",
+          "name": "Thunderhorn Cleansing"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 2948,
+          "npc": true,
+          "sourceZone": "Mulgore",
+          "x": 0.484,
+          "name": "Mull Thunderhorn",
+          "sourceAreaID": 215,
+          "locationSource": "Reviewed Mull Thunderhorn location: https://www.wowhead.com/forever/quest=758; captured 2026-10-08; SHA-256 1c6c2f6914b82ff9409e095a7cb92d3b12e7113b761637d00234bdbdd0721916. Quest start/end mapper selects 48.4,60.4, matching the other current cleansing-chain pages; supersedes converted-baseline representative.",
+          "y": 0.604
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 759,
+      "title": "Wildmane Totem",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 10,
+      "minLevel": 4,
+      "side": "Horde",
+      "raceMask": 32,
+      "allowedRaceIDs": [
+        6
+      ],
+      "classMask": 0,
+      "prerequisiteAny": [
+        758
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 2948,
+          "npc": true,
+          "sourceZone": "Mulgore",
+          "x": 0.484,
+          "name": "Mull Thunderhorn",
+          "sourceAreaID": 215,
+          "locationSource": "Reviewed Mull Thunderhorn location: https://www.wowhead.com/forever/quest=759; captured 2026-10-08; SHA-256 f1a373217e8e83cbdb2dbcebd607e00468592aa01702e7e32a1d0c6ba70f01a2. Quest start/end mapper selects 48.4,60.4, matching the other current cleansing-chain pages; supersedes converted-baseline representative.",
+          "y": 0.604
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "loot",
+          "entityID": 2960,
+          "npc": true,
+          "y": 0.644,
+          "sourceZone": "Mulgore",
+          "objectiveKey": "item:4803",
+          "itemID": 4803,
+          "x": 0.59,
+          "sourceAreaID": 215,
+          "quantity": 8,
+          "itemName": "Prairie Alpha Tooth",
+          "name": "Prairie Wolf Alpha"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 2948,
+          "npc": true,
+          "sourceZone": "Mulgore",
+          "x": 0.484,
+          "name": "Mull Thunderhorn",
+          "sourceAreaID": 215,
+          "locationSource": "Reviewed Mull Thunderhorn location: https://www.wowhead.com/forever/quest=759; captured 2026-10-08; SHA-256 f1a373217e8e83cbdb2dbcebd607e00468592aa01702e7e32a1d0c6ba70f01a2. Quest start/end mapper selects 48.4,60.4, matching the other current cleansing-chain pages; supersedes converted-baseline representative.",
+          "y": 0.604
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 8,
+          "name": "Prairie Alpha Tooth",
+          "itemID": 4803
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "action": "collect",
+          "entityID": 4803,
+          "name": "Prairie Alpha Tooth"
+        }
+      ]
+    },
+    {
+      "questID": 760,
+      "title": "Wildmane Cleansing",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 10,
+      "minLevel": 4,
+      "side": "Horde",
+      "raceMask": 32,
+      "allowedRaceIDs": [
+        6
+      ],
+      "classMask": 0,
+      "prerequisiteAny": [
+        759
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 2948,
+          "npc": true,
+          "sourceZone": "Mulgore",
+          "x": 0.484,
+          "name": "Mull Thunderhorn",
+          "sourceAreaID": 215,
+          "locationSource": "Reviewed Mull Thunderhorn location: https://www.wowhead.com/forever/quest=760; captured 2026-10-08; SHA-256 0199cf5c912e558eebcee3330e98e9cd4254f9712695fbfc102a878edc67497f. Quest start/end mapper selects 48.4,60.4, matching the other current cleansing-chain pages; supersedes converted-baseline representative.",
+          "y": 0.604
+        }
+      ],
+      "objectives": [
+        {
+          "sourceAction": "use-at",
+          "mapID": 1412,
+          "action": "use",
+          "y": 0.2498,
+          "x": 0.42700000000000005,
+          "useItemName": "Wildmane Cleansing Totem",
+          "locationSource": "Published Forever converted-baseline event area",
+          "name": "Wildmane Cleansing"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 2948,
+          "npc": true,
+          "sourceZone": "Mulgore",
+          "x": 0.484,
+          "name": "Mull Thunderhorn",
+          "sourceAreaID": 215,
+          "locationSource": "Reviewed Mull Thunderhorn location: https://www.wowhead.com/forever/quest=760; captured 2026-10-08; SHA-256 0199cf5c912e558eebcee3330e98e9cd4254f9712695fbfc102a878edc67497f. Quest start/end mapper selects 48.4,60.4, matching the other current cleansing-chain pages; supersedes converted-baseline representative.",
+          "y": 0.604
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 761,
+      "title": "Swoop Hunting",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 6,
+      "minLevel": 4,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.594,
+          "mapID": 1412,
+          "name": "Harken Windtotem",
+          "entityID": 2947,
+          "npc": true,
+          "x": 0.486
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1412,
+          "legacyStepKey": "q:1412:npc:2969",
+          "entityID": 2970,
+          "npc": true,
+          "x": 0.43200000000000005,
+          "y": 0.49200000000000005,
+          "objectiveKey": "item:4769",
+          "itemID": 4769,
+          "quantity": 8,
+          "name": "Swoop",
+          "itemName": "Trophy Swoop Quill",
+          "alternativeCount": 3,
+          "action": "collect"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.594,
+          "mapID": 1412,
+          "name": "Harken Windtotem",
+          "entityID": 2947,
+          "npc": true,
+          "x": 0.486
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 8,
+          "name": "Trophy Swoop Quill",
+          "itemID": 4769
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "name": "Trophy Swoop Quill",
+          "entityID": 4769
+        }
+      ]
+    },
+    {
+      "questID": 763,
+      "title": "Rites of the Earthmother",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 5,
+      "minLevel": 1,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "previousQuest": 757,
+      "starts": [
+        {
+          "y": 0.76,
+          "mapID": 1412,
+          "name": "Chief Hawkwind",
+          "entityID": 2981,
+          "npc": true,
+          "x": 0.442
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.602,
+          "mapID": 1412,
+          "name": "Baine Bloodhoof",
+          "entityID": 2993,
+          "npc": true,
+          "x": 0.474
+        }
+      ],
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Totem of Hawkwind",
+          "entityID": 4783
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 764,
+      "title": "The Venture Co.",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 10,
+      "minLevel": 5,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "prerequisiteAny": [
+        751
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 2988,
+          "npc": true,
+          "sourceZone": "Mulgore",
+          "x": 0.518,
+          "name": "Morin Cloudstalker",
+          "sourceAreaID": 215,
+          "y": 0.594
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "kill",
+          "entityID": 2978,
+          "npc": true,
+          "y": 0.5288,
+          "objectiveKey": "npc:2978",
+          "name": "Venture Co. Worker",
+          "sourceAreaID": 215,
+          "x": 0.5801,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "quantity": 14
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "kill",
+          "entityID": 2979,
+          "npc": true,
+          "y": 0.5217,
+          "objectiveKey": "npc:2979",
+          "name": "Venture Co. Supervisor",
+          "sourceAreaID": 215,
+          "x": 0.585,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "quantity": 6
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 2988,
+          "npc": true,
+          "sourceZone": "Mulgore",
+          "x": 0.518,
+          "name": "Morin Cloudstalker",
+          "sourceAreaID": 215,
+          "y": 0.594
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 14,
+          "action": "kill",
+          "entityID": 2978,
+          "name": "Venture Co. Worker"
+        },
+        {
+          "entityType": "npc",
+          "quantity": 6,
+          "action": "kill",
+          "entityID": 2979,
+          "name": "Venture Co. Supervisor"
+        }
+      ]
+    },
+    {
+      "questID": 765,
+      "title": "Supervisor Fizsprocket",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 12,
+      "minLevel": 5,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "prerequisiteAny": [
+        751
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 2988,
+          "npc": true,
+          "sourceZone": "Mulgore",
+          "x": 0.518,
+          "name": "Morin Cloudstalker",
+          "sourceAreaID": 215,
+          "y": 0.594
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "loot",
+          "entityID": 3051,
+          "npc": true,
+          "x": 0.6119,
+          "y": 0.4932,
+          "objectiveKey": "item:4819",
+          "itemID": 4819,
+          "quantity": 1,
+          "sourceAreaID": 215,
+          "itemName": "Fizsprocket's Clipboard",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Supervisor Fizsprocket"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 2988,
+          "npc": true,
+          "sourceZone": "Mulgore",
+          "x": 0.518,
+          "name": "Morin Cloudstalker",
+          "sourceAreaID": 215,
+          "y": 0.594
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Fizsprocket's Clipboard",
+          "itemID": 4819
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 4819,
+          "name": "Fizsprocket's Clipboard"
+        }
+      ]
+    },
+    {
+      "questID": 766,
+      "title": "Mazzranache",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 8,
+      "minLevel": 5,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 3055,
+          "npc": true,
+          "y": 0.608,
+          "x": 0.4623,
+          "name": "Maur Raincaller",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "loot",
+          "entityID": 2958,
+          "npc": true,
+          "x": 0.4107,
+          "y": 0.5821999999999999,
+          "objectiveKey": "item:4804",
+          "itemID": 4804,
+          "quantity": 1,
+          "sourceAreaID": 215,
+          "itemName": "Prairie Wolf Heart",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Prairie Wolf"
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "loot",
+          "entityID": 3035,
+          "npc": true,
+          "x": 0.4472,
+          "y": 0.5271,
+          "objectiveKey": "item:4805",
+          "itemID": 4805,
+          "quantity": 1,
+          "sourceAreaID": 215,
+          "itemName": "Flatland Cougar Femur",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Flatland Cougar"
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "loot",
+          "entityID": 2956,
+          "npc": true,
+          "x": 0.43479999999999996,
+          "y": 0.5607,
+          "objectiveKey": "item:4806",
+          "itemID": 4806,
+          "quantity": 1,
+          "sourceAreaID": 215,
+          "itemName": "Plainstrider Scale",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Adult Plainstrider"
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "loot",
+          "entityID": 2970,
+          "npc": true,
+          "x": 0.45530000000000004,
+          "y": 0.5461,
+          "objectiveKey": "item:4807",
+          "itemID": 4807,
+          "quantity": 1,
+          "sourceAreaID": 215,
+          "itemName": "Swoop Gizzard",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Swoop"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 3055,
+          "npc": true,
+          "y": 0.608,
+          "x": 0.4623,
+          "name": "Maur Raincaller",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Prairie Wolf Heart",
+          "itemID": 4804
+        },
+        {
+          "quantity": 1,
+          "name": "Flatland Cougar Femur",
+          "itemID": 4805
+        },
+        {
+          "quantity": 1,
+          "name": "Plainstrider Scale",
+          "itemID": 4806
+        },
+        {
+          "quantity": 1,
+          "name": "Swoop Gizzard",
+          "itemID": 4807
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 4804,
+          "name": "Prairie Wolf Heart"
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 4805,
+          "name": "Flatland Cougar Femur"
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 4806,
+          "name": "Plainstrider Scale"
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 4807,
+          "name": "Swoop Gizzard"
+        }
+      ]
+    },
+    {
+      "questID": 767,
+      "title": "Rite of Vision",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 6,
+      "minLevel": 3,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "previousQuest": 763,
+      "starts": [
+        {
+          "y": 0.602,
+          "mapID": 1412,
+          "name": "Baine Bloodhoof",
+          "entityID": 2993,
+          "npc": true,
+          "x": 0.474
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.5760000000000001,
+          "mapID": 1412,
+          "name": "Zarlman Two-Moons",
+          "entityID": 3054,
+          "npc": true,
+          "x": 0.478
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 770,
+      "title": "The Demon Scarred Cloak",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 12,
+      "minLevel": 6,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "start-item",
+          "entityID": 3056,
+          "npc": true,
+          "sourceAction": "loot",
+          "x": 0.34700000000000003,
+          "itemID": 4854,
+          "y": 0.3423,
+          "sourceAreaID": 215,
+          "itemName": "Demon Scarred Cloak",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Ghost Howl"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 3052,
+          "npc": true,
+          "sourceZone": "Mulgore",
+          "x": 0.46799999999999997,
+          "name": "Skorn Whitecloud",
+          "sourceAreaID": 215,
+          "y": 0.602
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 771,
+      "title": "Rite of Vision",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 7,
+      "minLevel": 3,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "previousQuest": 767,
+      "starts": [
+        {
+          "y": 0.5760000000000001,
+          "mapID": 1412,
+          "name": "Zarlman Two-Moons",
+          "entityID": 3054,
+          "npc": true,
+          "x": 0.478
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1412,
+          "action": "gather",
+          "entityID": 2910,
+          "x": 0.43810000000000004,
+          "y": 0.508,
+          "objectiveKey": "item:4808",
+          "itemID": 4808,
+          "quantity": 2,
+          "sourceAreaID": 215,
+          "itemName": "Well Stone",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Well Stone"
+        },
+        {
+          "entityType": "object",
+          "mapID": 1412,
+          "action": "gather",
+          "entityID": 2912,
+          "x": 0.44310000000000005,
+          "y": 0.5406,
+          "objectiveKey": "item:4809",
+          "itemID": 4809,
+          "quantity": 2,
+          "sourceAreaID": 215,
+          "itemName": "Ambercorn",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Ambercorn"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.5760000000000001,
+          "mapID": 1412,
+          "name": "Zarlman Two-Moons",
+          "entityID": 3054,
+          "npc": true,
+          "x": 0.478
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 2,
+          "name": "Well Stone",
+          "itemID": 4808
+        },
+        {
+          "quantity": 2,
+          "name": "Ambercorn",
+          "itemID": 4809
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 2,
+          "name": "Well Stone",
+          "entityID": 4808
+        },
+        {
+          "entityType": "item",
+          "quantity": 2,
+          "name": "Ambercorn",
+          "entityID": 4809
+        }
+      ]
+    },
+    {
+      "questID": 772,
+      "title": "Rite of Vision",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 7,
+      "minLevel": 3,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "prerequisiteAny": [
+        771
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 3054,
+          "npc": true,
+          "sourceZone": "Mulgore",
+          "x": 0.46799999999999997,
+          "name": "Zarlman Two-Moons",
+          "sourceAreaID": 215,
+          "y": 0.612
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 2984,
+          "npc": true,
+          "y": 0.4329,
+          "x": 0.3431,
+          "name": "Seer Wiserunner",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "name": "Water of the Seers",
+          "entityID": 4823
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 773,
+      "title": "Rite of Wisdom",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 10,
+      "minLevel": 3,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "prerequisiteAny": [
+        772
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 2984,
+          "npc": true,
+          "y": 0.4329,
+          "x": 0.3431,
+          "name": "Seer Wiserunner",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 2994,
+          "npc": true,
+          "y": 0.307,
+          "x": 0.5831000000000001,
+          "name": "Ancestral Spirit",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 775,
+      "title": "Journey into Thunder Bluff",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 10,
+      "minLevel": 3,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "prerequisiteAny": [
+        773
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 2994,
+          "npc": true,
+          "y": 0.307,
+          "x": 0.5831000000000001,
+          "name": "Ancestral Spirit",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1456,
+          "entityID": 3057,
+          "npc": true,
+          "sourceZone": "Thunder Bluff",
+          "x": 0.594,
+          "name": "Cairne Bloodhoof",
+          "sourceAreaID": 1638,
+          "y": 0.514
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 776,
+      "title": "Rites of the Earthmother",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 14,
+      "minLevel": 3,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "prerequisiteAny": [
+        775
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1456,
+          "entityID": 3057,
+          "npc": true,
+          "sourceZone": "Thunder Bluff",
+          "x": 0.594,
+          "name": "Cairne Bloodhoof",
+          "sourceAreaID": 1638,
+          "y": 0.514
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "loot",
+          "entityID": 3058,
+          "npc": true,
+          "x": 0.5125,
+          "y": 0.2482,
+          "objectiveKey": "item:4841",
+          "itemID": 4841,
+          "quantity": 1,
+          "sourceAreaID": 215,
+          "itemName": "Horn of Arra'chea",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Arra'chea"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1456,
+          "entityID": 3057,
+          "npc": true,
+          "sourceZone": "Thunder Bluff",
+          "x": 0.594,
+          "name": "Cairne Bloodhoof",
+          "sourceAreaID": 1638,
+          "y": 0.514
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Horn of Arra'chea",
+          "itemID": 4841
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 4841,
+          "name": "Horn of Arra'chea"
+        }
+      ]
+    },
+    {
+      "questID": 780,
+      "title": "The Battleboars",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 4,
+      "minLevel": 1,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "previousQuest": 750,
+      "starts": [
+        {
+          "y": 0.772,
+          "mapID": 1412,
+          "name": "Grull Hawkwind",
+          "entityID": 2980,
+          "npc": true,
+          "x": 0.44799999999999995
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 1,
+          "mapID": 1412,
+          "legacyStepKey": "q:1412:npc:2966",
+          "entityID": 2966,
+          "npc": true,
+          "x": 0.5760000000000001,
+          "y": 0.852,
+          "objectiveKey": "item:4849",
+          "itemID": 4849,
+          "quantity": 8,
+          "name": "Battleboar",
+          "itemName": "Battleboar Flank",
+          "alternativeCount": 2,
+          "action": "collect"
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "loot",
+          "entityID": 2966,
+          "npc": true,
+          "x": 0.5760000000000001,
+          "y": 0.852,
+          "objectiveKey": "item:4848",
+          "itemID": 4848,
+          "quantity": 8,
+          "sourceAreaID": 215,
+          "itemName": "Battleboar Snout",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Battleboar"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.772,
+          "mapID": 1412,
+          "name": "Grull Hawkwind",
+          "entityID": 2980,
+          "npc": true,
+          "x": 0.44799999999999995
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 8,
+          "name": "Battleboar Snout",
+          "itemID": 4848
+        },
+        {
+          "quantity": 8,
+          "name": "Battleboar Flank",
+          "itemID": 4849
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "name": "Battleboar Snout",
+          "entityID": 4848
+        },
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "name": "Battleboar Flank",
+          "entityID": 4849
+        }
+      ]
+    },
+    {
+      "questID": 781,
+      "title": "Attack on Camp Narache",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 4,
+      "minLevel": 1,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "entityType": "object",
+          "mapID": 1412,
+          "action": "start-item",
+          "entityID": 3076,
+          "sourceAction": "gather",
+          "x": 0.598,
+          "itemID": 4851,
+          "y": 0.8220000000000001,
+          "sourceAreaID": 215,
+          "itemName": "Dirt-stained Map",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Dirt-stained Map"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.76,
+          "mapID": 1412,
+          "name": "Chief Hawkwind",
+          "entityID": 2981,
+          "npc": true,
+          "x": 0.442
+        }
+      ],
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Bristleback Attack Plans",
+          "entityID": 4850
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 833,
+      "title": "A Sacred Burial",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 10,
+      "minLevel": 7,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 3233,
+          "npc": true,
+          "y": 0.3455,
+          "x": 0.5698,
+          "name": "Lorekeeper Raintotem",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "kill",
+          "entityID": 3232,
+          "npc": true,
+          "y": 0.314,
+          "objectiveKey": "npc:3232",
+          "name": "Bristleback Interloper",
+          "sourceAreaID": 215,
+          "x": 0.5821000000000001,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "quantity": 8
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 3233,
+          "npc": true,
+          "y": 0.3455,
+          "x": 0.5698,
+          "name": "Lorekeeper Raintotem",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 8,
+          "action": "kill",
+          "entityID": 3232,
+          "name": "Bristleback Interloper"
+        }
+      ]
+    },
+    {
+      "questID": 854,
+      "title": "Journey to the Crossroads",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 12,
+      "minLevel": 9,
+      "side": "Horde",
+      "raceMask": 32,
+      "allowedRaceIDs": [
+        6
+      ],
+      "classMask": 0,
+      "prerequisitesUnverified": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "entityID": 3418,
+          "npc": true,
+          "y": 0.5861,
+          "x": 0.44880000000000003,
+          "name": "Kirge Sternhorn",
+          "sourceAreaID": 17,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "entityID": 3429,
+          "npc": true,
+          "y": 0.30870000000000003,
+          "x": 0.515,
+          "name": "Thork",
+          "sourceAreaID": 17,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 861,
+      "title": "The Hunter's Way",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 10,
+      "minLevel": 10,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "prerequisitesUnverified": true,
+      "starts": [
+        {
+          "y": 0.602,
+          "mapID": 1412,
+          "name": "Skorn Whitecloud",
+          "entityID": 3052,
+          "npc": true,
+          "x": 0.46799999999999997
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1412,
+          "action": "collect",
+          "entityID": 3566,
+          "npc": true,
+          "y": 0.128,
+          "objectiveKey": "item:5203",
+          "name": "Flatland Prowler",
+          "x": 0.526,
+          "quantity": 4,
+          "legacyStepKey": "q:1412:npc:3566",
+          "itemName": "Flatland Prowler Claw",
+          "itemID": 5203
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.8059999999999999,
+          "mapID": 1456,
+          "name": "Melor Stonehoof",
+          "entityID": 3441,
+          "npc": true,
+          "x": 0.614
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 4,
+          "name": "Flatland Prowler Claw",
+          "itemID": 5203
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 4,
+          "name": "Flatland Prowler Claw",
+          "entityID": 5203
+        }
+      ]
+    },
+    {
+      "questID": 1516,
+      "title": "Call of Earth",
+      "categoryPath": "classes/shaman",
+      "level": 4,
+      "minLevel": 4,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 64,
+      "prerequisitesUnverified": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 5887,
+          "npc": true,
+          "y": 0.6917,
+          "x": 0.424,
+          "name": "Canaga Earthcaller",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "action": "loot",
+          "entityID": 3102,
+          "npc": true,
+          "x": 0.4429,
+          "y": 0.5418999999999999,
+          "objectiveKey": "item:6640",
+          "itemID": 6640,
+          "quantity": 2,
+          "sourceAreaID": 14,
+          "itemName": "Felstalker Hoof",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Felstalker"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 5887,
+          "npc": true,
+          "y": 0.6917,
+          "x": 0.424,
+          "name": "Canaga Earthcaller",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 2,
+          "name": "Felstalker Hoof",
+          "itemID": 6640
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 2,
+          "action": "collect",
+          "entityID": 6640,
+          "name": "Felstalker Hoof"
+        }
+      ]
+    },
+    {
+      "questID": 1519,
+      "title": "Call of Earth",
+      "categoryPath": "classes/shaman",
+      "level": 4,
+      "minLevel": 4,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 64,
+      "prerequisitesUnverified": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 5888,
+          "npc": true,
+          "y": 0.7676999999999999,
+          "x": 0.4435,
+          "name": "Seer Ravenfeather",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "loot",
+          "entityID": 2953,
+          "npc": true,
+          "x": 0.5717,
+          "y": 0.7664,
+          "objectiveKey": "item:6634",
+          "itemID": 6634,
+          "quantity": 2,
+          "sourceAreaID": 215,
+          "itemName": "Ritual Salve",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Bristleback Shaman"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 5888,
+          "npc": true,
+          "y": 0.7676999999999999,
+          "x": 0.4435,
+          "name": "Seer Ravenfeather",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 2,
+          "name": "Ritual Salve",
+          "itemID": 6634
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 2,
+          "action": "collect",
+          "entityID": 6634,
+          "name": "Ritual Salve"
+        }
+      ]
+    },
+    {
+      "questID": 1520,
+      "title": "Call of Earth",
+      "categoryPath": "classes/shaman",
+      "level": 4,
+      "minLevel": 4,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 64,
+      "prerequisiteAny": [
+        1516,
+        1519
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 5888,
+          "npc": true,
+          "y": 0.7676999999999999,
+          "x": 0.4435,
+          "name": "Seer Ravenfeather",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 5891,
+          "npc": true,
+          "y": 0.804,
+          "x": 0.5199,
+          "name": "Minor Manifestation of Earth",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 1656,
+      "title": "A Task Unfinished",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 5,
+      "minLevel": 1,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.816,
+          "mapID": 1412,
+          "name": "Antur Fallow",
+          "entityID": 6775,
+          "npc": true,
+          "x": 0.386
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.61,
+          "mapID": 1412,
+          "name": "Innkeeper Kauth",
+          "entityID": 6747,
+          "npc": true,
+          "x": 0.466
+        }
+      ],
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Bundle of Furs",
+          "entityID": 7626
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 2984,
+      "title": "Call of Fire",
+      "zone": "Shaman",
+      "categoryPath": "classes/shaman",
+      "level": 10,
+      "minLevel": 10,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 64,
+      "prerequisitesUnverified": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 3066,
+          "npc": true,
+          "y": 0.6254,
+          "x": 0.474,
+          "name": "Narm Skychaser",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "entityID": 5907,
+          "npc": true,
+          "y": 0.1989,
+          "x": 0.5603,
+          "name": "Kranal Fiss",
+          "sourceAreaID": 17,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 2986,
+      "title": "Call of Water",
+      "categoryPath": "classes/shaman",
+      "level": 20,
+      "minLevel": 20,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 64,
+      "prerequisitesUnverified": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 3066,
+          "npc": true,
+          "y": 0.6254,
+          "x": 0.474,
+          "name": "Narm Skychaser",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "entityID": 5901,
+          "npc": true,
+          "sourceZone": "The Barrens",
+          "x": 0.6579999999999999,
+          "name": "Islen Waterseer",
+          "sourceAreaID": 17,
+          "y": 0.43799999999999994
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 3091,
+      "title": "Simple Note",
+      "categoryPath": "classes/warrior",
+      "level": 1,
+      "minLevel": 1,
+      "side": "Horde",
+      "raceMask": 32,
+      "classMask": 1,
+      "prerequisiteAny": [
+        747
+      ],
+      "starts": [
+        {
+          "y": 0.772,
+          "mapID": 1412,
+          "name": "Grull Hawkwind",
+          "entityID": 2980,
+          "npc": true,
+          "x": 0.44799999999999995
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.76,
+          "mapID": 1412,
+          "name": "Harutt Thunderhorn",
+          "entityID": 3059,
+          "npc": true,
+          "x": 0.44
+        }
+      ],
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Simple Note",
+          "entityID": 9547
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 3092,
+      "title": "Etched Note",
+      "categoryPath": "classes/hunter",
+      "level": 1,
+      "minLevel": 1,
+      "side": "Horde",
+      "raceMask": 32,
+      "classMask": 4,
+      "prerequisiteAny": [
+        747
+      ],
+      "starts": [
+        {
+          "y": 0.772,
+          "mapID": 1412,
+          "name": "Grull Hawkwind",
+          "entityID": 2980,
+          "npc": true,
+          "x": 0.44799999999999995
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.758,
+          "mapID": 1412,
+          "name": "Lanka Farshot",
+          "entityID": 3061,
+          "npc": true,
+          "x": 0.442
+        }
+      ],
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Etched Note",
+          "entityID": 9565
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 3093,
+      "title": "Rune-Inscribed Note",
+      "categoryPath": "classes/shaman",
+      "level": 1,
+      "minLevel": 1,
+      "side": "Horde",
+      "raceMask": 32,
+      "classMask": 64,
+      "prerequisiteAny": [
+        747
+      ],
+      "starts": [
+        {
+          "y": 0.772,
+          "mapID": 1412,
+          "name": "Grull Hawkwind",
+          "entityID": 2980,
+          "npc": true,
+          "x": 0.44799999999999995
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.76,
+          "mapID": 1412,
+          "name": "Meela Dawnstrider",
+          "entityID": 3062,
+          "npc": true,
+          "x": 0.45
+        }
+      ],
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Rune-Inscribed Note",
+          "entityID": 9552
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 3094,
+      "title": "Verdant Note",
+      "categoryPath": "classes/druid",
+      "level": 1,
+      "minLevel": 1,
+      "side": "Horde",
+      "raceMask": 32,
+      "classMask": 1024,
+      "prerequisiteAny": [
+        747
+      ],
+      "starts": [
+        {
+          "y": 0.772,
+          "mapID": 1412,
+          "name": "Grull Hawkwind",
+          "entityID": 2980,
+          "npc": true,
+          "x": 0.44799999999999995
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.76,
+          "mapID": 1412,
+          "name": "Gart Mistrunner",
+          "entityID": 3060,
+          "npc": true,
+          "x": 0.45
+        }
+      ],
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Verdant Note",
+          "entityID": 9581
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 3376,
+      "title": "Break Sharptusk!",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 5,
+      "minLevel": 3,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.7659999999999999,
+          "mapID": 1412,
+          "name": "Brave Windfeather",
+          "entityID": 3209,
+          "npc": true,
+          "x": 0.44799999999999995
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1412,
+          "action": "collect",
+          "entityID": 8554,
+          "npc": true,
+          "y": 0.78,
+          "objectiveKey": "item:10459",
+          "name": "Chief Sharptusk Thornmantle",
+          "x": 0.642,
+          "quantity": 1,
+          "legacyStepKey": "q:1412:npc:8554",
+          "itemName": "Chief Sharptusk Thornmantle's Head",
+          "itemID": 10459
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.7659999999999999,
+          "mapID": 1412,
+          "name": "Brave Windfeather",
+          "entityID": 3209,
+          "npc": true,
+          "x": 0.44799999999999995
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Chief Sharptusk Thornmantle's Head",
+          "itemID": 10459
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Chief Sharptusk Thornmantle's Head",
+          "entityID": 10459
+        }
+      ]
+    },
+    {
+      "questID": 5655,
+      "title": "Hex of Weakness",
+      "categoryPath": "classes/priest",
+      "level": 10,
+      "minLevel": 10,
+      "side": "Horde",
+      "raceMask": 128,
+      "allowedRaceIDs": [
+        8
+      ],
+      "classMask": 16,
+      "prerequisitesUnverified": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 11407,
+          "npc": true,
+          "y": 0.6227,
+          "x": 0.462,
+          "name": "Var'jun",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1454,
+          "name": "Ur'kyo",
+          "y": 0.8749,
+          "entityID": 6018,
+          "x": 0.3554,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 5661,
+      "title": "Touch of Weakness",
+      "categoryPath": "classes/priest",
+      "level": 10,
+      "minLevel": 10,
+      "side": "Horde",
+      "raceMask": 16,
+      "allowedRaceIDs": [
+        5
+      ],
+      "classMask": 16,
+      "prerequisitesUnverified": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 11407,
+          "npc": true,
+          "y": 0.6227,
+          "x": 0.462,
+          "name": "Var'jun",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1458,
+          "name": "Aelthalyste",
+          "y": 0.1765,
+          "entityID": 4606,
+          "x": 0.4862,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 5928,
+      "title": "Heeding the Call",
+      "categoryPath": "classes/druid",
+      "level": 10,
+      "minLevel": 10,
+      "side": "Horde",
+      "raceMask": 32,
+      "allowedRaceIDs": [
+        6
+      ],
+      "classMask": 1024,
+      "prerequisitesUnverified": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 3064,
+          "npc": true,
+          "y": 0.6295000000000001,
+          "x": 0.47479999999999994,
+          "name": "Gennia Runetotem",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1456,
+          "entityID": 3033,
+          "npc": true,
+          "y": 0.2722,
+          "x": 0.7648,
+          "name": "Turak Runetotem",
+          "sourceAreaID": 1638,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 6061,
+      "title": "Taming the Beast",
+      "categoryPath": "classes/hunter",
+      "level": 10,
+      "minLevel": 10,
+      "side": "Horde",
+      "raceMask": 32,
+      "allowedRaceIDs": [
+        6
+      ],
+      "classMask": 4,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 3065,
+          "npc": true,
+          "y": 0.5965,
+          "x": 0.4693,
+          "name": "Yaw Sharpmane",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "interact",
+          "entityID": 2956,
+          "npc": true,
+          "y": 0.5607,
+          "objectiveKey": "npc:2956",
+          "name": "Adult Plainstrider",
+          "sourceAreaID": 215,
+          "x": 0.43479999999999996,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "quantityUnknown": true
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 3065,
+          "npc": true,
+          "y": 0.5965,
+          "x": 0.4693,
+          "name": "Yaw Sharpmane",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantityUnknown": true,
+          "action": "interact",
+          "entityID": 2956,
+          "name": "Adult Plainstrider"
+        }
+      ]
+    },
+    {
+      "questID": 6087,
+      "title": "Taming the Beast",
+      "categoryPath": "classes/hunter",
+      "level": 10,
+      "minLevel": 10,
+      "side": "Horde",
+      "raceMask": 32,
+      "allowedRaceIDs": [
+        6
+      ],
+      "classMask": 4,
+      "prerequisiteAny": [
+        6061
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 3065,
+          "npc": true,
+          "y": 0.5965,
+          "x": 0.4693,
+          "name": "Yaw Sharpmane",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "interact",
+          "entityID": 2959,
+          "npc": true,
+          "y": 0.5316,
+          "objectiveKey": "npc:2959",
+          "name": "Prairie Stalker",
+          "sourceAreaID": 215,
+          "x": 0.4586,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "quantityUnknown": true
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 3065,
+          "npc": true,
+          "y": 0.5965,
+          "x": 0.4693,
+          "name": "Yaw Sharpmane",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantityUnknown": true,
+          "action": "interact",
+          "entityID": 2959,
+          "name": "Prairie Stalker"
+        }
+      ]
+    },
+    {
+      "questID": 6088,
+      "title": "Taming the Beast",
+      "categoryPath": "classes/hunter",
+      "level": 10,
+      "minLevel": 10,
+      "side": "Horde",
+      "raceMask": 32,
+      "allowedRaceIDs": [
+        6
+      ],
+      "classMask": 4,
+      "prerequisiteAny": [
+        6087
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 3065,
+          "npc": true,
+          "y": 0.5965,
+          "x": 0.4693,
+          "name": "Yaw Sharpmane",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "interact",
+          "entityID": 2970,
+          "npc": true,
+          "y": 0.5461,
+          "objectiveKey": "npc:2970",
+          "name": "Swoop",
+          "sourceAreaID": 215,
+          "x": 0.45530000000000004,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "quantityUnknown": true
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 3065,
+          "npc": true,
+          "y": 0.5965,
+          "x": 0.4693,
+          "name": "Yaw Sharpmane",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantityUnknown": true,
+          "action": "interact",
+          "entityID": 2970,
+          "name": "Swoop"
+        }
+      ]
+    },
+    {
+      "questID": 6089,
+      "title": "Training the Beast",
+      "categoryPath": "classes/hunter",
+      "level": 10,
+      "minLevel": 10,
+      "side": "Horde",
+      "raceMask": 32,
+      "allowedRaceIDs": [
+        6
+      ],
+      "classMask": 4,
+      "prerequisiteAny": [
+        6088
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 3065,
+          "npc": true,
+          "y": 0.5965,
+          "x": 0.4693,
+          "name": "Yaw Sharpmane",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1456,
+          "entityID": 3039,
+          "npc": true,
+          "y": 0.8979,
+          "x": 0.573,
+          "name": "Holt Thunderhorn",
+          "sourceAreaID": 1638,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 6126,
+      "title": "Lessons Anew",
+      "categoryPath": "classes/druid",
+      "level": 14,
+      "minLevel": 14,
+      "side": "Horde",
+      "raceMask": 32,
+      "allowedRaceIDs": [
+        6
+      ],
+      "classMask": 1024,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "name": "Hana Lighthoof",
+          "y": 0.22,
+          "entityID": 262560,
+          "x": 0.334,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1450,
+          "entityID": 11802,
+          "npc": true,
+          "y": 0.3064,
+          "x": 0.5621,
+          "name": "Dendrite Starblaze",
+          "sourceAreaID": 493,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 76156,
+      "title": "Stalk With The Earthmother",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 10,
+      "minLevel": 4,
+      "side": "Horde",
+      "raceMask": 162,
+      "allowedRaceIDs": [
+        2,
+        6,
+        8
+      ],
+      "classMask": 1089,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1456,
+          "entityID": 205729,
+          "npc": true,
+          "y": 0.6585,
+          "x": 0.396,
+          "name": "Boarton Shadetotem",
+          "sourceAreaID": 1638,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1456,
+          "entityID": 205729,
+          "npc": true,
+          "y": 0.6585,
+          "x": 0.396,
+          "name": "Boarton Shadetotem",
+          "sourceAreaID": 1638,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 76160,
+      "title": "Stalk With The Earthmother",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 11,
+      "minLevel": 4,
+      "side": "Horde",
+      "raceMask": 162,
+      "allowedRaceIDs": [
+        2,
+        6,
+        8
+      ],
+      "classMask": 1089,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1456,
+          "entityID": 205729,
+          "npc": true,
+          "y": 0.6585,
+          "x": 0.396,
+          "name": "Boarton Shadetotem",
+          "sourceAreaID": 1638,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1456,
+          "entityID": 205729,
+          "npc": true,
+          "y": 0.6585,
+          "x": 0.396,
+          "name": "Boarton Shadetotem",
+          "sourceAreaID": 1638,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 76240,
+      "title": "Stalk With The Earthmother",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 11,
+      "minLevel": 4,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 64,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1456,
+          "entityID": 205729,
+          "npc": true,
+          "y": 0.6585,
+          "x": 0.396,
+          "name": "Boarton Shadetotem",
+          "sourceAreaID": 1638,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1456,
+          "entityID": 205729,
+          "npc": true,
+          "y": 0.6585,
+          "x": 0.396,
+          "name": "Boarton Shadetotem",
+          "sourceAreaID": 1638,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 94911,
+      "title": "Child of Nature",
+      "categoryPath": "classes/druid",
+      "level": 10,
+      "minLevel": 10,
+      "side": "Horde",
+      "raceMask": 8589934592,
+      "allowedRaceIDs": [
+        96
+      ],
+      "classMask": 1024,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 259118,
+          "npc": true,
+          "sourceZone": "Mulgore",
+          "x": 0.33399999999999996,
+          "name": "Muln Earthfury",
+          "sourceAreaID": 215,
+          "y": 0.22399999999999998
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1456,
+          "entityID": 3033,
+          "npc": true,
+          "y": 0.2722,
+          "x": 0.7648,
+          "name": "Turak Runetotem",
+          "sourceAreaID": 1638,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 95805,
+      "title": "Grace of An'she and Mu'sha",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 4,
+      "minLevel": 1,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.92,
+          "mapID": 1412,
+          "name": "Seer Graytongue",
+          "entityID": 2982,
+          "npc": true,
+          "x": 0.426
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.887,
+          "x": 0.5660000000000001,
+          "name": "Ritual Fire",
+          "entityID": 660739,
+          "mapID": 1412
+        }
+      ],
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Pouch of Smoldering Incense",
+          "entityID": 277199
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 96130,
+      "title": "Chakuyak",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 5,
+      "minLevel": 4,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.596,
+          "mapID": 1412,
+          "name": "Yaw Sharpmane",
+          "entityID": 3065,
+          "npc": true,
+          "x": 0.46799999999999997
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "loot",
+          "entityID": 268558,
+          "npc": true,
+          "y": 0.652,
+          "sourceZone": "Mulgore",
+          "objectiveKey": "item:270302",
+          "itemID": 270302,
+          "x": 0.39799999999999996,
+          "sourceAreaID": 215,
+          "quantity": 1,
+          "itemName": "Chakuyak's Pelt",
+          "name": "Chakuyak"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.596,
+          "mapID": 1412,
+          "name": "Yaw Sharpmane",
+          "entityID": 3065,
+          "npc": true,
+          "x": 0.46799999999999997
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Chakuyak's Pelt",
+          "itemID": 270302
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 270302,
+          "name": "Chakuyak's Pelt"
+        }
+      ]
+    },
+    {
+      "questID": 96241,
+      "title": "Talkin' bout Toxins, Mon",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 30,
+      "minLevel": 23,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.20600000000000002,
+          "mapID": 1412,
+          "name": "Mazu'kon",
+          "entityID": 264074,
+          "npc": true,
+          "x": 0.324
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1412,
+          "action": "collect",
+          "entityID": 264096,
+          "npc": true,
+          "y": 0.08800000000000001,
+          "objectiveKey": "item:273001",
+          "name": "Gnawed Corpse",
+          "x": 0.32799999999999996,
+          "quantity": 5,
+          "legacyStepKey": "q:1412:npc:264096",
+          "itemName": "Gloomrise Toxin Sample",
+          "itemID": 273001
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.20600000000000002,
+          "mapID": 1412,
+          "name": "Mazu'kon",
+          "entityID": 264074,
+          "npc": true,
+          "x": 0.324
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 5,
+          "name": "Gloomrise Toxin Sample",
+          "itemID": 273001
+        }
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Toxin Extractor",
+          "entityID": 273015
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 5,
+          "name": "Gloomrise Toxin Sample",
+          "entityID": 273001
+        }
+      ]
+    },
+    {
+      "questID": 96259,
+      "title": "Defending the Dead",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 30,
+      "minLevel": 23,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.22399999999999998,
+          "mapID": 1412,
+          "name": "Muln Earthfury",
+          "entityID": 259118,
+          "npc": true,
+          "x": 0.33399999999999996
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 264079,
+          "mapID": 1412,
+          "action": "kill",
+          "entityID": 264079,
+          "npc": true,
+          "y": 0.10800000000000001,
+          "objectiveKey": "npc:264079",
+          "name": "Gloomrise Hatchling",
+          "x": 0.33,
+          "quantity": 10
+        },
+        {
+          "sourceObjective": 264083,
+          "mapID": 1412,
+          "action": "kill",
+          "entityID": 264083,
+          "npc": true,
+          "y": 0.102,
+          "objectiveKey": "npc:264083",
+          "name": "Gloomrise Soldier",
+          "x": 0.34,
+          "quantity": 5
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.22399999999999998,
+          "mapID": 1412,
+          "name": "Muln Earthfury",
+          "entityID": 259118,
+          "npc": true,
+          "x": 0.33399999999999996
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "name": "Gloomrise Hatchling",
+          "entityID": 264079
+        },
+        {
+          "entityType": "npc",
+          "quantity": 5,
+          "name": "Gloomrise Soldier",
+          "entityID": 264083
+        }
+      ]
+    },
+    {
+      "questID": 96260,
+      "title": "Stronger than Steel",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 30,
+      "minLevel": 23,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.2,
+          "mapID": 1412,
+          "name": "Yorn Grimtotem",
+          "entityID": 264072,
+          "npc": true,
+          "x": 0.324
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1412,
+          "action": "collect",
+          "entityID": 264081,
+          "npc": true,
+          "y": 0.092,
+          "objectiveKey": "item:273181",
+          "name": "Gloomrise Spinner",
+          "x": 0.33399999999999996,
+          "quantity": 3,
+          "legacyStepKey": "q:1412:npc:264081",
+          "itemName": "Crystalline Silk",
+          "itemID": 273181
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.2,
+          "mapID": 1412,
+          "name": "Yorn Grimtotem",
+          "entityID": 264072,
+          "npc": true,
+          "x": 0.324
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 3,
+          "name": "Crystalline Silk",
+          "itemID": 273181
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 3,
+          "name": "Crystalline Silk",
+          "entityID": 273181
+        }
+      ]
+    },
+    {
+      "questID": 96294,
+      "title": "A Darker Truth",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 30,
+      "minLevel": 23,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.22399999999999998,
+          "mapID": 1412,
+          "name": "Muln Earthfury",
+          "entityID": 259118,
+          "npc": true,
+          "x": 0.33399999999999996
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Bloody Parchment",
+          "itemID": 273659
+        }
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Bloody Parchment",
+          "entityID": 273659
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 98424,
+      "title": "Fizsprocket's Notes",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 10,
+      "minLevel": 5,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "start-item",
+          "entityID": 3051,
+          "npc": true,
+          "sourceAction": "loot",
+          "x": 0.6119,
+          "itemID": 281031,
+          "y": 0.4932,
+          "sourceAreaID": 215,
+          "itemName": "Mulgore Expansion Plans",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Supervisor Fizsprocket"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "item",
+          "mapID": 1412,
+          "action": "collect",
+          "entityID": 281035,
+          "quantity": 1,
+          "x": 0.586,
+          "itemName": "Shredder Operation Instructions",
+          "y": 0.473,
+          "objectiveKey": "item:281035",
+          "itemID": 281035,
+          "observationQuestID": 98424,
+          "sourceAreaID": 215,
+          "observationCommentID": 6435381,
+          "locationSource": "Community Forever coordinate observation; beta verification needed",
+          "name": "Shredder Operation Instructions"
+        },
+        {
+          "entityType": "item",
+          "mapID": 1412,
+          "action": "collect",
+          "entityID": 281036,
+          "quantity": 1,
+          "x": 0.617,
+          "itemName": "Barrens Operations Best Practices",
+          "y": 0.473,
+          "objectiveKey": "item:281036",
+          "itemID": 281036,
+          "observationQuestID": 98424,
+          "sourceAreaID": 215,
+          "observationCommentID": 6435381,
+          "locationSource": "Community Forever coordinate observation; beta verification needed",
+          "name": "Barrens Operations Best Practices"
+        },
+        {
+          "entityType": "item",
+          "mapID": 1412,
+          "action": "collect",
+          "entityID": 281037,
+          "quantity": 1,
+          "x": 0.59,
+          "itemName": "One \"Gerenzo\", of Stonetalon",
+          "y": 0.46399999999999997,
+          "objectiveKey": "item:281037",
+          "itemID": 281037,
+          "observationQuestID": 98424,
+          "sourceAreaID": 215,
+          "observationCommentID": 6435381,
+          "locationSource": "Community Forever coordinate observation; beta verification needed",
+          "name": "One \"Gerenzo\", of Stonetalon"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.602,
+          "mapID": 1412,
+          "name": "Morin Cloudstalker",
+          "entityID": 2988,
+          "npc": true,
+          "x": 0.53
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Shredder Operation Instructions",
+          "itemID": 281035
+        },
+        {
+          "quantity": 1,
+          "name": "Barrens Operations Best Practices",
+          "itemID": 281036
+        },
+        {
+          "quantity": 1,
+          "name": "One \"Gerenzo\", of Stonetalon",
+          "itemID": 281037
+        },
+        {
+          "quantity": 1,
+          "name": "Mulgore Expansion Plans",
+          "itemID": 281031
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 281035,
+          "name": "Shredder Operation Instructions"
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 281036,
+          "name": "Barrens Operations Best Practices"
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 281037,
+          "name": "One \"Gerenzo\", of Stonetalon"
+        }
+      ]
+    },
+    {
+      "questID": 98427,
+      "title": "Ceasing Operations",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 12,
+      "minLevel": 5,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "previousQuest": 98424,
+      "starts": [
+        {
+          "y": 0.602,
+          "mapID": 1412,
+          "name": "Morin Cloudstalker",
+          "entityID": 2988,
+          "npc": true,
+          "x": 0.53
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "loot",
+          "entityID": 272173,
+          "npc": true,
+          "x": 0.5679,
+          "y": 0.43229999999999996,
+          "objectiveKey": "item:281048",
+          "itemID": 281048,
+          "quantity": 1,
+          "sourceAreaID": 215,
+          "itemName": "Clearcutter Key",
+          "locationSource": "Published Forever beta-observation entity position",
+          "name": "Venture Co. Clearclutter"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.602,
+          "mapID": 1412,
+          "name": "Morin Cloudstalker",
+          "entityID": 2988,
+          "npc": true,
+          "x": 0.53
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Clearcutter Key",
+          "itemID": 281048
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 281048,
+          "name": "Clearcutter Key"
+        }
+      ]
+    },
+    {
+      "questID": 98430,
+      "title": "The Longwalkers",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 8,
+      "minLevel": 1,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 272203,
+          "npc": true,
+          "y": 0.6593000000000001,
+          "x": 0.331,
+          "name": "Perith Stormhoof",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "objectives": [
+        {
+          "y": 0.6462,
+          "mapID": 1412,
+          "action": "event",
+          "x": 0.37189999999999995,
+          "locationSource": "Published Forever beta-reviewed event area",
+          "name": "The Longwalkers"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1456,
+          "entityID": 3057,
+          "npc": true,
+          "sourceZone": "Thunder Bluff",
+          "x": 0.594,
+          "name": "Cairne Bloodhoof",
+          "sourceAreaID": 1638,
+          "y": 0.514
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 98435,
+      "title": "Thunderhorn's Report",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 10,
+      "minLevel": 4,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 2948,
+          "npc": true,
+          "sourceZone": "Mulgore",
+          "x": 0.474,
+          "name": "Mull Thunderhorn",
+          "sourceAreaID": 215,
+          "y": 0.634
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1456,
+          "entityID": 5769,
+          "npc": true,
+          "sourceZone": "Thunder Bluff",
+          "x": 0.7859999999999999,
+          "name": "Arch Druid Hamuul Runetotem",
+          "sourceAreaID": 1638,
+          "y": 0.284
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 99079,
+      "title": "Longwalker Malah",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 9,
+      "minLevel": 4,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 3222,
+          "npc": true,
+          "y": 0.6383,
+          "x": 0.4668,
+          "name": "Brave Wildrunner",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 275789,
+          "npc": true,
+          "y": 0.6318,
+          "x": 0.5757,
+          "name": "Malah Longwind",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 99080,
+      "title": "Drive Them Out",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 9,
+      "minLevel": 4,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "previousQuest": 99101,
+      "starts": [
+        {
+          "y": 0.602,
+          "mapID": 1412,
+          "name": "Baine Bloodhoof",
+          "entityID": 2993,
+          "npc": true,
+          "x": 0.474
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "kill",
+          "entityID": 2967,
+          "npc": true,
+          "sourceZone": "Mulgore",
+          "objectiveKey": "npc:2967",
+          "name": "Galak Centaur",
+          "sourceAreaID": 215,
+          "y": 0.584,
+          "x": 0.58,
+          "quantity": 6
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "kill",
+          "entityID": 2968,
+          "npc": true,
+          "sourceZone": "Mulgore",
+          "objectiveKey": "npc:2968",
+          "name": "Galak Outrunner",
+          "sourceAreaID": 215,
+          "y": 0.602,
+          "x": 0.5920000000000001,
+          "quantity": 4
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "loot",
+          "entityID": 275767,
+          "npc": true,
+          "x": 0.6028,
+          "y": 0.604,
+          "objectiveKey": "item:286075",
+          "itemID": 286075,
+          "quantity": 1,
+          "sourceAreaID": 215,
+          "itemName": "Herak's Head",
+          "locationSource": "Published Forever beta-observation entity position",
+          "name": "Herak the Pillager"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.602,
+          "mapID": 1412,
+          "name": "Baine Bloodhoof",
+          "entityID": 2993,
+          "npc": true,
+          "x": 0.474
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Herak's Head",
+          "itemID": 286075
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 6,
+          "action": "kill",
+          "entityID": 2967,
+          "name": "Galak Centaur"
+        },
+        {
+          "entityType": "npc",
+          "quantity": 4,
+          "action": "kill",
+          "entityID": 2968,
+          "name": "Galak Outrunner"
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 286075,
+          "name": "Herak's Head"
+        }
+      ]
+    },
+    {
+      "questID": 99081,
+      "title": "Grim Tidings",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 9,
+      "minLevel": 4,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "previousQuest": 99079,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 275789,
+          "npc": true,
+          "y": 0.6318,
+          "x": 0.5757,
+          "name": "Malah Longwind",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 3222,
+          "npc": true,
+          "y": 0.6383,
+          "x": 0.4668,
+          "name": "Brave Wildrunner",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 99082,
+      "title": "The High Chieftain",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 9,
+      "minLevel": 4,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "previousQuest": 99080,
+      "pickupRequiresOffer": true,
+      "prerequisitesUnverified": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 2993,
+          "npc": true,
+          "y": 0.602,
+          "x": 0.474,
+          "name": "Baine Bloodhoof",
+          "sourceAreaID": 215,
+          "locationSource": "Reviewed Baine Bloodhoof location: https://www.wowhead.com/forever/npc=2993; captured 2026-10-08; SHA-256 87dba9712f038ef6a02088122d7c3f55b280e499ab0914f18725db12b44f524e. Corresponding Forever quest mapper agrees on 47.4,60.2; supersedes the converted-baseline representative, not a surveyed path or spawn guarantee."
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1456,
+          "entityID": 3057,
+          "npc": true,
+          "sourceZone": "Thunder Bluff",
+          "x": 0.594,
+          "name": "Cairne Bloodhoof",
+          "sourceAreaID": 1638,
+          "y": 0.514
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 99101,
+      "title": "Our Ancient Enemy",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 9,
+      "minLevel": 4,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "previousQuest": 99081,
+      "pickupRequiresOffer": true,
+      "prerequisitesUnverified": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 3222,
+          "npc": true,
+          "y": 0.6383,
+          "x": 0.4668,
+          "name": "Brave Wildrunner",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 2993,
+          "npc": true,
+          "y": 0.602,
+          "x": 0.474,
+          "name": "Baine Bloodhoof",
+          "sourceAreaID": 215,
+          "locationSource": "Reviewed Baine Bloodhoof location: https://www.wowhead.com/forever/npc=2993; captured 2026-10-08; SHA-256 87dba9712f038ef6a02088122d7c3f55b280e499ab0914f18725db12b44f524e. Corresponding Forever quest mapper agrees on 47.4,60.2; supersedes the converted-baseline representative, not a surveyed path or spawn guarantee."
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 99108,
+      "title": "Sparring Match",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 6,
+      "minLevel": 4,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.604,
+          "mapID": 1412,
+          "name": "Krang Stonehoof",
+          "entityID": 3063,
+          "npc": true,
+          "x": 0.494
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.604,
+          "mapID": 1412,
+          "name": "Krang Stonehoof",
+          "entityID": 3063,
+          "npc": true,
+          "x": 0.494
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 99411,
+      "title": "Kyle's Gone Missing!",
+      "zone": "Mulgore",
+      "categoryPath": "kalimdor/mulgore",
+      "level": 7,
+      "minLevel": 5,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "classMask": 0,
+      "starts": [
+        {
+          "y": 0.5760000000000001,
+          "mapID": 1412,
+          "name": "Ahab Wheathoof",
+          "entityID": 277182,
+          "npc": true,
+          "x": 0.47200000000000003
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "interact",
+          "entityID": 277154,
+          "npc": true,
+          "sourceZone": "Mulgore",
+          "objectiveKey": "npc:277154",
+          "name": "Kyle the Frenzied",
+          "sourceAreaID": 215,
+          "y": 0.634,
+          "x": 0.46799999999999997,
+          "quantity": 1
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.5760000000000001,
+          "mapID": 1412,
+          "name": "Ahab Wheathoof",
+          "entityID": 277182,
+          "npc": true,
+          "x": 0.47200000000000003
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Tender Strider Meat",
+          "itemID": 287505
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "action": "interact",
+          "entityID": 277154,
+          "name": "Kyle the Frenzied"
+        }
+      ]
+    }
+  ]
+}

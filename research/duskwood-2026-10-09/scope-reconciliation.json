@@ -1,0 +1,24 @@
+{
+  "raw_guard": "Required action removed: quest 90. Raw failure retained.",
+  "method": "Exclude only evidenced Cooking-50 quest 90 from both full scopes. Every other required action retained. Compare complete ordinary leveling, not shortened prefix. Mapped 1383 loot replaces two existing unknown work occurrences, no extra mandatory alternative kill.",
+  "classified_profession_actions_removed": [
+    {
+      "faction": "Alliance",
+      "key": "level-zone:eastern-kingdoms/duskwood:levels:21-30",
+      "questID": 90,
+      "kind": "a"
+    },
+    {
+      "faction": "Alliance",
+      "key": "level-zone:eastern-kingdoms/duskwood:levels:21-30",
+      "questID": 90,
+      "kind": "q"
+    },
+    {
+      "faction": "Alliance",
+      "key": "level-zone:eastern-kingdoms/duskwood:levels:21-30",
+      "questID": 90,
+      "kind": "t"
+    }
+  ]
+}

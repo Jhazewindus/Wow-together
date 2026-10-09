@@ -1,0 +1,743 @@
+{
+  "direct_ids": [
+    456,
+    457,
+    458,
+    459,
+    475,
+    476,
+    483,
+    486,
+    487,
+    488,
+    489,
+    490,
+    916,
+    917,
+    918,
+    919,
+    920,
+    921,
+    922,
+    923,
+    927,
+    928,
+    929,
+    930,
+    931,
+    932,
+    933,
+    934,
+    935,
+    937,
+    938,
+    940,
+    941,
+    997,
+    2159,
+    2399,
+    2438,
+    2459,
+    2498,
+    2499,
+    2541,
+    2561,
+    3519,
+    3521,
+    3522,
+    4495,
+    5842,
+    7383,
+    8734,
+    87288,
+    97236,
+    97977,
+    98046,
+    98065,
+    98392,
+    98398,
+    98403,
+    99046,
+    99047,
+    99050,
+    99053,
+    99073
+  ],
+  "compiled_ids": [
+    456,
+    457,
+    458,
+    459,
+    475,
+    476,
+    483,
+    486,
+    487,
+    488,
+    489,
+    490,
+    916,
+    917,
+    918,
+    919,
+    920,
+    921,
+    922,
+    923,
+    927,
+    928,
+    929,
+    930,
+    931,
+    932,
+    933,
+    934,
+    935,
+    937,
+    938,
+    940,
+    941,
+    952,
+    997,
+    2159,
+    2399,
+    2438,
+    2459,
+    2498,
+    2499,
+    2541,
+    2561,
+    3519,
+    3521,
+    3522,
+    4495,
+    7383,
+    87288,
+    97236,
+    97977,
+    98046,
+    98065,
+    98392,
+    98398,
+    98403,
+    99046,
+    99047,
+    99050,
+    99053,
+    99073
+  ],
+  "uncompiled_direct_ids": [
+    5842,
+    8734
+  ],
+  "related_catalogue_records": {
+    "3116": {
+      "prerequisitesRead": true,
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Simple Sigil",
+          "entityID": 9545
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Conservator Ilthalaine",
+          "entityID": 2079
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Simple Sigil",
+          "entityID": 9545
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Simple Sigil",
+          "itemID": 9545
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "classMask": 1,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "name": "Alyissia",
+          "y": 0.3853,
+          "entityID": 3593,
+          "x": 0.5953,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "objectives": {},
+      "level": 1,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "entityID": 2079,
+          "npc": true,
+          "sourceZone": "Teldrassil",
+          "x": 0.586,
+          "name": "Conservator Ilthalaine",
+          "sourceAreaID": 141,
+          "y": 0.442
+        }
+      ],
+      "title": "Simple Sigil",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Alliance",
+      "prerequisiteAny": [
+        456
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Alyissia",
+          "entityID": 3593
+        }
+      ],
+      "xp": 40,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        4
+      ],
+      "minLevel": 1,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 8,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Simple Sigil",
+            "entityID": 9545
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Conservator Ilthalaine",
+            "entityID": 2079
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Alyissia",
+            "entityID": 3593
+          }
+        ]
+      },
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "classes/warrior"
+    },
+    "3117": {
+      "prerequisitesRead": true,
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Etched Sigil",
+          "entityID": 9567
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Conservator Ilthalaine",
+          "entityID": 2079
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Etched Sigil",
+          "entityID": 9567
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Etched Sigil",
+          "itemID": 9567
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "classMask": 4,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "name": "Ayanna Everstride",
+          "y": 0.4053,
+          "entityID": 3596,
+          "x": 0.5853,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "objectives": {},
+      "level": 1,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "entityID": 2079,
+          "npc": true,
+          "sourceZone": "Teldrassil",
+          "x": 0.586,
+          "name": "Conservator Ilthalaine",
+          "sourceAreaID": 141,
+          "y": 0.442
+        }
+      ],
+      "title": "Etched Sigil",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Alliance",
+      "prerequisiteAny": [
+        456
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Ayanna Everstride",
+          "entityID": 3596
+        }
+      ],
+      "xp": 40,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        4
+      ],
+      "minLevel": 1,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 8,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Etched Sigil",
+            "entityID": 9567
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Conservator Ilthalaine",
+            "entityID": 2079
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Ayanna Everstride",
+            "entityID": 3596
+          }
+        ]
+      },
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "classes/hunter"
+    },
+    "3118": {
+      "prerequisitesRead": true,
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Encrypted Sigil",
+          "entityID": 9551
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Conservator Ilthalaine",
+          "entityID": 2079
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Encrypted Sigil",
+          "entityID": 9551
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Encrypted Sigil",
+          "itemID": 9551
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "classMask": 8,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "name": "Frahun Shadewhisper",
+          "y": 0.387,
+          "entityID": 3594,
+          "x": 0.595,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "objectives": {},
+      "level": 1,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "entityID": 2079,
+          "npc": true,
+          "sourceZone": "Teldrassil",
+          "x": 0.586,
+          "name": "Conservator Ilthalaine",
+          "sourceAreaID": 141,
+          "y": 0.442
+        }
+      ],
+      "title": "Encrypted Sigil",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Alliance",
+      "prerequisiteAny": [
+        456
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Frahun Shadewhisper",
+          "entityID": 3594
+        }
+      ],
+      "xp": 40,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        4
+      ],
+      "minLevel": 1,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 8,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Encrypted Sigil",
+            "entityID": 9551
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Conservator Ilthalaine",
+            "entityID": 2079
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Frahun Shadewhisper",
+            "entityID": 3594
+          }
+        ]
+      },
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "classes/rogue"
+    },
+    "3119": {
+      "prerequisitesRead": true,
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Hallowed Sigil",
+          "entityID": 9557
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Conservator Ilthalaine",
+          "entityID": 2079
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Hallowed Sigil",
+          "entityID": 9557
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Hallowed Sigil",
+          "itemID": 9557
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "classMask": 16,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "name": "Shanda",
+          "y": 0.405,
+          "entityID": 3595,
+          "x": 0.592,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "objectives": {},
+      "level": 1,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "entityID": 2079,
+          "npc": true,
+          "sourceZone": "Teldrassil",
+          "x": 0.586,
+          "name": "Conservator Ilthalaine",
+          "sourceAreaID": 141,
+          "y": 0.442
+        }
+      ],
+      "title": "Hallowed Sigil",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Alliance",
+      "prerequisiteAny": [
+        456
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Shanda",
+          "entityID": 3595
+        }
+      ],
+      "xp": 40,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        4
+      ],
+      "minLevel": 1,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 8,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Hallowed Sigil",
+            "entityID": 9557
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Conservator Ilthalaine",
+            "entityID": 2079
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Shanda",
+            "entityID": 3595
+          }
+        ]
+      },
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "classes/priest"
+    },
+    "3120": {
+      "prerequisitesRead": true,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Conservator Ilthalaine",
+          "entityID": 2079
+        }
+      ],
+      "requirements": {},
+      "requiredItems": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "classMask": 1024,
+      "ends": [
+        {
+          "y": 0.40399999999999997,
+          "mapID": 1438,
+          "name": "Mardant Strongoak",
+          "entityID": 3597,
+          "npc": true,
+          "x": 0.586
+        }
+      ],
+      "objectives": {},
+      "level": 1,
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Verdant Sigil",
+          "entityID": 9580
+        }
+      ],
+      "starts": [
+        {
+          "y": 0.442,
+          "mapID": 1438,
+          "name": "Conservator Ilthalaine",
+          "entityID": 2079,
+          "npc": true,
+          "x": 0.586
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Alliance",
+      "prerequisiteAny": [
+        456
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mardant Strongoak",
+          "entityID": 3597
+        }
+      ],
+      "xp": 40,
+      "foreverStatus": "unchanged",
+      "title": "Verdant Sigil",
+      "minLevel": 1,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 8,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Conservator Ilthalaine",
+            "entityID": 2079
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Verdant Sigil",
+            "entityID": 9580
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Mardant Strongoak",
+            "entityID": 3597
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "classes/druid"
+    },
+    "96630": {
+      "raceMask": 4294967373,
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Lost Journal",
+          "entityID": 654846
+        }
+      ],
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published Forever beta prerequisites",
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "entityID": 265811,
+          "npc": true,
+          "y": 0.5661999999999999,
+          "x": 0.5764,
+          "name": "Lyreena Duskblade",
+          "sourceAreaID": 141,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "level": 6,
+      "objectives": {},
+      "starts": [
+        {
+          "entityType": "object",
+          "mapID": 1438,
+          "name": "Lost Journal",
+          "y": 0.39490000000000003,
+          "entityID": 654846,
+          "x": 0.591,
+          "locationSource": "Published Forever beta-observation entity position",
+          "sourceAreaID": 141
+        }
+      ],
+      "side": "Alliance",
+      "prerequisitesRead": true,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Lyreena Duskblade",
+          "entityID": 265811
+        }
+      ],
+      "xp": 405,
+      "prerequisiteAny": [
+        921
+      ],
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 4,
+      "title": "The Adventurer",
+      "foreverStatus": "new",
+      "prerequisitesUnverified": true,
+      "categoryPath": "uncategorized"
+    }
+  }
+}

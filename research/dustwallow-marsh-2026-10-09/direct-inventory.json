@@ -1,0 +1,6531 @@
+{
+  "1": {
+    "raceMask": 0,
+    "mapID": 1445,
+    "startRefs": {},
+    "requirements": {},
+    "classMask": 0,
+    "level": 4,
+    "areaID": 15,
+    "money": 0,
+    "endRefs": {},
+    "xp": 540,
+    "objectives": {},
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "prerequisitesRead": true,
+    "minLevel": 1,
+    "title": "The \"Chow\" Quest (123)aa",
+    "foreverStatus": "unchanged",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1133": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "zone": "Dustwallow Marsh",
+    "requirements": {},
+    "seriesRoot": 1132,
+    "objectives": {},
+    "series": [
+      1132,
+      1133
+    ],
+    "starts": [
+      {
+        "y": 0.452,
+        "mapID": 1445,
+        "name": "Fiora Longears",
+        "entityID": 4456,
+        "npc": true,
+        "x": 0.664
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.488,
+        "mapID": 1440,
+        "name": "Shindrell Swiftfire",
+        "entityID": 3845,
+        "npc": true,
+        "x": 0.34600000000000003
+      }
+    ],
+    "title": "Journey to Astranaar",
+    "level": 20,
+    "areaID": 15,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Fiora Longears",
+        "entityID": 4456
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "previousQuest": 1132,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Shindrell Swiftfire",
+        "entityID": 3845
+      }
+    ],
+    "xp": 0,
+    "shareable": true,
+    "foreverStatus": "unchanged",
+    "seriesPosition": 2,
+    "minLevel": 18,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Fiora Longears",
+          "entityID": 4456
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Shindrell Swiftfire",
+          "entityID": 3845
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1135": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "zone": "Dustwallow Marsh",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 10,
+        "name": "Highperch Venom Sac",
+        "entityID": 5809
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 10,
+        "name": "Highperch Venom Sac",
+        "itemID": 5809
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Highperch Venom Sac",
+        "name": "Highperch Wyvern",
+        "entityID": 4107,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1441,
+        "action": "loot",
+        "entityID": 4107,
+        "npc": true,
+        "x": 0.09210000000000002,
+        "y": 0.344,
+        "objectiveKey": "item:5809",
+        "itemID": 5809,
+        "quantity": 10,
+        "sourceAreaID": 400,
+        "itemName": "Highperch Venom Sac",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Highperch Wyvern"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "y": 0.452,
+        "mapID": 1445,
+        "name": "Fiora Longears",
+        "entityID": 4456,
+        "npc": true,
+        "x": 0.664
+      }
+    ],
+    "level": 30,
+    "areaID": 15,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Fiora Longears",
+        "entityID": 4456
+      }
+    ],
+    "side": "Alliance",
+    "ends": [
+      {
+        "y": 0.452,
+        "mapID": 1445,
+        "name": "Fiora Longears",
+        "entityID": 4456,
+        "npc": true,
+        "x": 0.664
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Fiora Longears",
+        "entityID": 4456
+      }
+    ],
+    "xp": 3650,
+    "foreverStatus": "unchanged",
+    "title": "Highperch Venom",
+    "minLevel": 25,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 10,
+          "name": "Highperch Venom Sac",
+          "entityID": 5809
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Fiora Longears",
+          "entityID": 4456
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Fiora Longears",
+          "entityID": 4456
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1166": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Overlord Mok'Morokk",
+        "entityID": 4500
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 5834,
+        "name": "Mok'Morokk's Snuff"
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 5835,
+        "name": "Mok'Morokk's Grog"
+      },
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 5836,
+        "name": "Mok'Morokk's Strongbox"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Mok'Morokk's Snuff",
+        "itemID": 5834
+      },
+      {
+        "quantity": 1,
+        "name": "Mok'Morokk's Grog",
+        "itemID": 5835
+      },
+      {
+        "quantity": 1,
+        "name": "Mok'Morokk's Strongbox",
+        "itemID": 5836
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1445,
+        "action": "gather",
+        "entityID": 19904,
+        "x": 0.44530000000000003,
+        "y": 0.6604000000000001,
+        "objectiveKey": "item:5834",
+        "itemID": 5834,
+        "quantity": 1,
+        "sourceAreaID": 15,
+        "itemName": "Mok'Morokk's Snuff",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Mok'Morokk's Snuff"
+      },
+      {
+        "entityType": "object",
+        "mapID": 1445,
+        "action": "gather",
+        "entityID": 19905,
+        "x": 0.38659999999999994,
+        "y": 0.6557,
+        "objectiveKey": "item:5835",
+        "itemID": 5835,
+        "quantity": 1,
+        "sourceAreaID": 15,
+        "itemName": "Mok'Morokk's Grog",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Mok'Morokk's Grog"
+      },
+      {
+        "entityType": "object",
+        "mapID": 1445,
+        "action": "gather",
+        "entityID": 19906,
+        "x": 0.3664,
+        "y": 0.6957,
+        "objectiveKey": "item:5836",
+        "itemID": 5836,
+        "quantity": 1,
+        "sourceAreaID": 15,
+        "itemName": "Mok'Morokk's Strongbox",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Mok'Morokk's Strongbox"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4500,
+        "npc": true,
+        "y": 0.3141,
+        "x": 0.3629,
+        "name": "Overlord Mok'Morokk",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "level": 43,
+    "areaID": 15,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 8589934770,
+    "side": "Horde",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4500,
+        "npc": true,
+        "y": 0.3141,
+        "x": 0.3629,
+        "name": "Overlord Mok'Morokk",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Overlord Mok'Morokk",
+        "entityID": 4500
+      }
+    ],
+    "xp": 4450,
+    "questType": "Elite",
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 38,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Overlord Mok'Morokk's Concern",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 5834,
+          "name": "Mok'Morokk's Snuff"
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 5835,
+          "name": "Mok'Morokk's Grog"
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 5836,
+          "name": "Mok'Morokk's Strongbox"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Overlord Mok'Morokk",
+          "entityID": 4500
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Overlord Mok'Morokk",
+          "entityID": 4500
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1168": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Tharg",
+        "entityID": 4502
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 10,
+        "action": "kill",
+        "entityID": 4329,
+        "name": "Firemane Scout"
+      },
+      {
+        "entityType": "npc",
+        "quantity": 10,
+        "action": "kill",
+        "entityID": 4331,
+        "name": "Firemane Ash Tail"
+      },
+      {
+        "entityType": "npc",
+        "quantity": 5,
+        "action": "kill",
+        "entityID": 4328,
+        "name": "Firemane Scalebane"
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "npcTargets": [
+      {
+        "entityID": 4329,
+        "npc": true,
+        "action": "kill",
+        "name": "Firemane Scout"
+      },
+      {
+        "entityID": 4331,
+        "npc": true,
+        "action": "kill",
+        "name": "Firemane Ash Tail"
+      },
+      {
+        "entityID": 4328,
+        "npc": true,
+        "action": "kill",
+        "name": "Firemane Scalebane"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "action": "kill",
+        "entityID": 4329,
+        "npc": true,
+        "y": 0.6679999999999999,
+        "objectiveKey": "npc:4329",
+        "name": "Firemane Scout",
+        "sourceAreaID": 15,
+        "x": 0.382,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantity": 10
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "action": "kill",
+        "entityID": 4331,
+        "npc": true,
+        "y": 0.6679999999999999,
+        "objectiveKey": "npc:4331",
+        "name": "Firemane Ash Tail",
+        "sourceAreaID": 15,
+        "x": 0.382,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantity": 10
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "action": "kill",
+        "entityID": 4328,
+        "npc": true,
+        "y": 0.6823,
+        "objectiveKey": "npc:4328",
+        "name": "Firemane Scalebane",
+        "sourceAreaID": 15,
+        "x": 0.37810000000000005,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantity": 5
+      }
+    ],
+    "level": 43,
+    "areaID": 15,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4502,
+        "npc": true,
+        "y": 0.3139,
+        "x": 0.3737,
+        "name": "Tharg",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "raceMask": 8589934770,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Tharg",
+        "entityID": 4502
+      }
+    ],
+    "xp": 3600,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4502,
+        "npc": true,
+        "y": 0.3139,
+        "x": 0.3737,
+        "name": "Tharg",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 38,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Army of the Black Dragon",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "action": "kill",
+          "entityID": 4329,
+          "name": "Firemane Scout"
+        },
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "action": "kill",
+          "entityID": 4331,
+          "name": "Firemane Ash Tail"
+        },
+        {
+          "entityType": "npc",
+          "quantity": 5,
+          "action": "kill",
+          "entityID": 4328,
+          "name": "Firemane Scalebane"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Tharg",
+          "entityID": 4502
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Tharg",
+          "entityID": 4502
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1169": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Draz'Zilb",
+        "entityID": 4501
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 15,
+        "action": "collect",
+        "entityID": 5840,
+        "name": "Searing Tongue"
+      },
+      {
+        "entityType": "item",
+        "quantity": 15,
+        "action": "collect",
+        "entityID": 5841,
+        "name": "Searing Heart"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 15,
+        "name": "Searing Tongue",
+        "itemID": 5840
+      },
+      {
+        "quantity": 15,
+        "name": "Searing Heart",
+        "itemID": 5841
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "npcTargets": [
+      {
+        "itemName": "Searing Tongue",
+        "name": "Searing Hatchling",
+        "entityID": 4323,
+        "npc": true,
+        "action": "loot"
+      },
+      {
+        "itemName": "Searing Heart",
+        "name": "Searing Hatchling",
+        "entityID": 4323,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "action": "loot",
+        "entityID": 4323,
+        "npc": true,
+        "x": 0.45,
+        "y": 0.674,
+        "objectiveKey": "item:5840",
+        "itemID": 5840,
+        "quantity": 15,
+        "sourceAreaID": 15,
+        "itemName": "Searing Tongue",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Searing Hatchling"
+      },
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "action": "loot",
+        "entityID": 4323,
+        "npc": true,
+        "x": 0.45,
+        "y": 0.674,
+        "objectiveKey": "item:5841",
+        "itemID": 5841,
+        "quantity": 15,
+        "sourceAreaID": 15,
+        "itemName": "Searing Heart",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Searing Hatchling"
+      }
+    ],
+    "level": 43,
+    "areaID": 15,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4501,
+        "npc": true,
+        "y": 0.3309,
+        "x": 0.3715,
+        "name": "Draz'Zilb",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "raceMask": 8589934770,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Draz'Zilb",
+        "entityID": 4501
+      }
+    ],
+    "xp": 5350,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4501,
+        "npc": true,
+        "y": 0.3309,
+        "x": 0.3715,
+        "name": "Draz'Zilb",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 38,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Identifying the Brood",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 15,
+          "action": "collect",
+          "entityID": 5840,
+          "name": "Searing Tongue"
+        },
+        {
+          "entityType": "item",
+          "quantity": 15,
+          "action": "collect",
+          "entityID": 5841,
+          "name": "Searing Heart"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Draz'Zilb",
+          "entityID": 4501
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Draz'Zilb",
+          "entityID": 4501
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1170": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Draz'Zilb",
+        "entityID": 4501
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4500,
+        "npc": true,
+        "y": 0.3141,
+        "x": 0.3629,
+        "name": "Overlord Mok'Morokk",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "objectives": {},
+    "level": 43,
+    "areaID": 15,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4501,
+        "npc": true,
+        "y": 0.3309,
+        "x": 0.3715,
+        "name": "Draz'Zilb",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "raceMask": 8589934770,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Overlord Mok'Morokk",
+        "entityID": 4500
+      }
+    ],
+    "xp": 360,
+    "prerequisiteAny": [
+      1169
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 38,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "The Brood of Onyxia",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Draz'Zilb",
+          "entityID": 4501
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Overlord Mok'Morokk",
+          "entityID": 4500
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1171": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Overlord Mok'Morokk",
+        "entityID": 4500
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4501,
+        "npc": true,
+        "y": 0.3309,
+        "x": 0.3715,
+        "name": "Draz'Zilb",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "objectives": {},
+    "level": 43,
+    "areaID": 15,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4500,
+        "npc": true,
+        "y": 0.3141,
+        "x": 0.3629,
+        "name": "Overlord Mok'Morokk",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "raceMask": 8589934770,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Draz'Zilb",
+        "entityID": 4501
+      }
+    ],
+    "xp": 360,
+    "prerequisiteAny": [
+      1170
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 38,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "The Brood of Onyxia",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Overlord Mok'Morokk",
+          "entityID": 4500
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Draz'Zilb",
+          "entityID": 4501
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1172": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Draz'Zilb",
+        "entityID": 4501
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "object",
+        "quantity": 5,
+        "action": "interact",
+        "entityID": 20359,
+        "name": "Egg of Onyxia"
+      }
+    ],
+    "objectives": [
+      {
+        "entityType": "object",
+        "mapID": 1445,
+        "action": "interact",
+        "entityID": 20359,
+        "y": 0.7595999999999999,
+        "objectiveKey": "object:20359",
+        "name": "Egg of Onyxia",
+        "sourceAreaID": 15,
+        "x": 0.4838,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "quantity": 5
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4501,
+        "npc": true,
+        "y": 0.3309,
+        "x": 0.3715,
+        "name": "Draz'Zilb",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 45,
+    "areaID": 15,
+    "raceMask": 8589934770,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "prerequisiteAny": [
+      1171
+    ],
+    "side": "Horde",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4501,
+        "npc": true,
+        "y": 0.3309,
+        "x": 0.3715,
+        "name": "Draz'Zilb",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Draz'Zilb",
+        "entityID": 4501
+      }
+    ],
+    "xp": 4850,
+    "questType": "Elite",
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 38,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "The Brood of Onyxia",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantity": 5,
+          "action": "interact",
+          "entityID": 20359,
+          "name": "Egg of Onyxia"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Draz'Zilb",
+          "entityID": 4501
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Draz'Zilb",
+          "entityID": 4501
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1173": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Overlord Mok'Morokk",
+        "entityID": 4500
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "y": 0.3143,
+        "mapID": 1445,
+        "action": "event",
+        "x": 0.3641,
+        "locationSource": "Published Forever converted-baseline event area",
+        "name": "Challenge Overlord Mok'Morokk"
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4501,
+        "npc": true,
+        "y": 0.3309,
+        "x": 0.3715,
+        "name": "Draz'Zilb",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4500,
+        "npc": true,
+        "y": 0.3141,
+        "x": 0.3629,
+        "name": "Overlord Mok'Morokk",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "level": 45,
+    "areaID": 15,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 8589934770,
+    "side": "Horde",
+    "prerequisiteAny": [
+      1172
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Draz'Zilb",
+        "entityID": 4501
+      }
+    ],
+    "xp": 4850,
+    "questType": "Elite",
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 38,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Challenge Overlord Mok'Morokk",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Overlord Mok'Morokk",
+          "entityID": 4500
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Draz'Zilb",
+          "entityID": 4501
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1177": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Mudcrush Durtfeet",
+        "entityID": 4503
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 12,
+        "action": "collect",
+        "entityID": 5847,
+        "name": "Mirefin Head"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 12,
+        "name": "Mirefin Head",
+        "itemID": 5847
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "npcTargets": [
+      {
+        "itemName": "Mirefin Head",
+        "name": "Mirefin Puddlejumper",
+        "entityID": 4358,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "action": "loot",
+        "entityID": 4358,
+        "npc": true,
+        "x": 0.57,
+        "y": 0.212,
+        "objectiveKey": "item:5847",
+        "itemID": 5847,
+        "quantity": 12,
+        "sourceAreaID": 15,
+        "itemName": "Mirefin Head",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Mirefin Puddlejumper"
+      }
+    ],
+    "level": 36,
+    "areaID": 15,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4503,
+        "npc": true,
+        "y": 0.3826,
+        "x": 0.3515,
+        "name": "Mudcrush Durtfeet",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "raceMask": 0,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Mudcrush Durtfeet",
+        "entityID": 4503
+      }
+    ],
+    "xp": 2800,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4503,
+        "npc": true,
+        "y": 0.3826,
+        "x": 0.3515,
+        "name": "Mudcrush Durtfeet",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 32,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Hungry!",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 12,
+          "action": "collect",
+          "entityID": 5847,
+          "name": "Mirefin Head"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Mudcrush Durtfeet",
+          "entityID": 4503
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Mudcrush Durtfeet",
+          "entityID": 4503
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1201": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "zone": "Dustwallow Marsh",
+    "requirements": [
+      {
+        "entityType": "npc",
+        "quantity": 9,
+        "name": "Theramore Infiltrator",
+        "entityID": 4834
+      }
+    ],
+    "seriesRoot": 1201,
+    "npcTargets": [
+      {
+        "entityID": 4834,
+        "npc": true,
+        "action": "kill",
+        "name": "Theramore Infiltrator"
+      }
+    ],
+    "objectives": [
+      {
+        "sourceObjective": 4834,
+        "mapID": 1445,
+        "action": "kill",
+        "entityID": 4834,
+        "npc": true,
+        "y": 0.23800000000000002,
+        "objectiveKey": "npc:4834",
+        "name": "Theramore Infiltrator",
+        "x": 0.396,
+        "quantity": 9
+      }
+    ],
+    "series": [
+      1201,
+      1202
+    ],
+    "starts": [
+      {
+        "y": 0.306,
+        "mapID": 1445,
+        "name": "Nazeer Bloodpike",
+        "entityID": 4791,
+        "npc": true,
+        "x": 0.35200000000000004
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "level": 35,
+    "areaID": 15,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Nazeer Bloodpike",
+        "entityID": 4791
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "ends": [
+      {
+        "y": 0.306,
+        "mapID": 1445,
+        "name": "Nazeer Bloodpike",
+        "entityID": 4791,
+        "npc": true,
+        "x": 0.35200000000000004
+      }
+    ],
+    "side": "Horde",
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Nazeer Bloodpike",
+        "entityID": 4791
+      }
+    ],
+    "xp": 2750,
+    "foreverStatus": "unchanged",
+    "title": "Theramore Spies",
+    "minLevel": 30,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 9,
+          "name": "Theramore Infiltrator",
+          "entityID": 4834
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Nazeer Bloodpike",
+          "entityID": 4791
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Nazeer Bloodpike",
+          "entityID": 4791
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1202": {
+    "prerequisitesRead": true,
+    "zone": "Dustwallow Marsh",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Captain's Documents",
+        "entityID": 5882
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 35,
+    "areaID": 15,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 0,
+        "itemName": "Captain's Documents",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "mapID": 1436,
+            "action": "collect",
+            "y": 0.478,
+            "entityID": 20925,
+            "x": 0.26,
+            "name": "Captain's Footlocker",
+            "itemName": "Captain's Documents"
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Captain's Documents",
+            "action": "collect",
+            "entityID": 5434,
+            "npc": true,
+            "y": 0.512,
+            "x": 0.7140000000000001,
+            "name": "Coral Shark",
+            "mapID": 1445
+          },
+          {
+            "sourceObjective": 0,
+            "mapID": 1445,
+            "action": "collect",
+            "y": 0.511,
+            "entityID": 20925,
+            "x": 0.715,
+            "name": "Captain's Footlocker",
+            "itemName": "Captain's Documents"
+          }
+        ]
+      }
+    ],
+    "seriesPosition": 2,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Nazeer Bloodpike",
+        "entityID": 4791
+      }
+    ],
+    "xp": 2750,
+    "minLevel": 30,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Captain's Documents",
+          "entityID": 5882
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Nazeer Bloodpike",
+          "entityID": 4791
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Nazeer Bloodpike",
+          "entityID": 4791
+        }
+      ]
+    },
+    "categoryPath": "kalimdor/dustwallow-marsh",
+    "raceMask": 0,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Nazeer Bloodpike",
+        "entityID": 4791
+      }
+    ],
+    "seriesRoot": 1201,
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Captain's Documents",
+        "itemID": 5882
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.306,
+        "mapID": 1445,
+        "name": "Nazeer Bloodpike",
+        "entityID": 4791,
+        "npc": true,
+        "x": 0.35200000000000004
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "title": "The Theramore Docks",
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1445,
+        "legacyStepKey": "q:1445:npc:5434",
+        "entityID": 5434,
+        "npc": true,
+        "x": 0.7140000000000001,
+        "y": 0.512,
+        "objectiveKey": "item:5882",
+        "itemID": 5882,
+        "quantity": 1,
+        "name": "Coral Shark",
+        "itemName": "Captain's Documents",
+        "alternativeCount": 3,
+        "action": "collect"
+      }
+    ],
+    "series": [
+      1201,
+      1202
+    ],
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.306,
+        "mapID": 1445,
+        "name": "Nazeer Bloodpike",
+        "entityID": 4791,
+        "npc": true,
+        "x": 0.35200000000000004
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "previousQuest": 1201,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Captain's Documents",
+        "name": "Coral Shark",
+        "entityID": 5434,
+        "npc": true,
+        "action": "collect"
+      }
+    ]
+  },
+  "1203": {
+    "prerequisitesRead": true,
+    "zone": "Dustwallow Marsh",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Moonsteel Broadsword",
+        "entityID": 3853
+      }
+    ],
+    "level": 35,
+    "areaID": 15,
+    "seriesPosition": 3,
+    "money": 3500,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "\"Swamp Eye\" Jarl",
+        "entityID": 4792
+      }
+    ],
+    "xp": 3450,
+    "minLevel": 30,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Moonsteel Broadsword",
+          "entityID": 3853
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "\"Swamp Eye\" Jarl",
+          "entityID": 4792
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "\"Swamp Eye\" Jarl",
+          "entityID": 4792
+        }
+      ]
+    },
+    "objectiveLocationsIncomplete": true,
+    "categoryPath": "kalimdor/dustwallow-marsh",
+    "raceMask": 0,
+    "missingRequirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Moonsteel Broadsword",
+        "entityID": 3853
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "\"Swamp Eye\" Jarl",
+        "entityID": 4792
+      }
+    ],
+    "seriesRoot": 1218,
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Moonsteel Broadsword",
+        "itemID": 3853
+      }
+    ],
+    "ends": [
+      {
+        "y": 0.262,
+        "mapID": 1445,
+        "name": "\"Swamp Eye\" Jarl",
+        "entityID": 4792,
+        "npc": true,
+        "x": 0.5539999999999999
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "objectives": {},
+    "mapID": 1445,
+    "series": [
+      1218,
+      1206,
+      1203
+    ],
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.262,
+        "mapID": 1445,
+        "name": "\"Swamp Eye\" Jarl",
+        "entityID": 4792,
+        "npc": true,
+        "x": 0.5539999999999999
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "title": "Jarl Needs a Blade",
+    "classMask": 0,
+    "locationSource": "Wowhead Forever",
+    "previousQuest": 1206
+  },
+  "1204": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Morgan Stern",
+        "entityID": 4794
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 8,
+        "action": "collect",
+        "entityID": 5883,
+        "name": "Forked Mudrock Tongue"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 8,
+        "name": "Forked Mudrock Tongue",
+        "itemID": 5883
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "npcTargets": [
+      {
+        "itemName": "Forked Mudrock Tongue",
+        "name": "Mudrock Tortoise",
+        "entityID": 4396,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "action": "loot",
+        "entityID": 4396,
+        "npc": true,
+        "x": 0.648,
+        "y": 0.418,
+        "objectiveKey": "item:5883",
+        "itemID": 5883,
+        "quantity": 8,
+        "sourceAreaID": 15,
+        "itemName": "Forked Mudrock Tongue",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Mudrock Tortoise"
+      }
+    ],
+    "level": 38,
+    "areaID": 15,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4794,
+        "npc": true,
+        "y": 0.4547,
+        "x": 0.6634,
+        "name": "Morgan Stern",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "raceMask": 4294967373,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Morgan Stern",
+        "entityID": 4794
+      }
+    ],
+    "xp": 2850,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4794,
+        "npc": true,
+        "y": 0.4547,
+        "x": 0.6634,
+        "name": "Morgan Stern",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 33,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Mudrock Soup and Bugs",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "action": "collect",
+          "entityID": 5883,
+          "name": "Forked Mudrock Tongue"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Morgan Stern",
+          "entityID": 4794
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Morgan Stern",
+          "entityID": 4794
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1205": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Melor Stonehoof",
+        "entityID": 3441
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 5945,
+        "name": "Deadmire's Tooth"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Deadmire's Tooth",
+        "itemID": 5945
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "npcTargets": [
+      {
+        "itemName": "Deadmire's Tooth",
+        "name": "Deadmire",
+        "entityID": 4841,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "action": "loot",
+        "entityID": 4841,
+        "npc": true,
+        "x": 0.502,
+        "y": 0.527,
+        "objectiveKey": "item:5945",
+        "itemID": 5945,
+        "quantity": 1,
+        "sourceAreaID": 15,
+        "itemName": "Deadmire's Tooth",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Deadmire"
+      }
+    ],
+    "level": 45,
+    "areaID": 15,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1456,
+        "entityID": 3441,
+        "npc": true,
+        "sourceZone": "Thunder Bluff",
+        "x": 0.614,
+        "name": "Melor Stonehoof",
+        "sourceAreaID": 1638,
+        "y": 0.804
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "raceMask": 8589934770,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Melor Stonehoof",
+        "entityID": 3441
+      }
+    ],
+    "xp": 3900,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1456,
+        "entityID": 3441,
+        "npc": true,
+        "sourceZone": "Thunder Bluff",
+        "x": 0.614,
+        "name": "Melor Stonehoof",
+        "sourceAreaID": 1638,
+        "y": 0.804
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 35,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Deadmire",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 5945,
+          "name": "Deadmire's Tooth"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Melor Stonehoof",
+          "entityID": 3441
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Melor Stonehoof",
+          "entityID": 3441
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1206": {
+    "prerequisitesRead": true,
+    "zone": "Dustwallow Marsh",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 40,
+        "name": "Unpopped Darkmist Eye",
+        "entityID": 5884
+      }
+    ],
+    "otherLocationsIncomplete": false,
+    "level": 35,
+    "areaID": 15,
+    "objectiveAlternatives": [
+      {
+        "sourceObjective": 0,
+        "itemName": "Unpopped Darkmist Eye",
+        "locations": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Unpopped Darkmist Eye",
+            "action": "collect",
+            "entityID": 4376,
+            "npc": true,
+            "y": 0.226,
+            "x": 0.342,
+            "name": "Darkmist Spider",
+            "mapID": 1445
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Unpopped Darkmist Eye",
+            "action": "collect",
+            "entityID": 4377,
+            "npc": true,
+            "y": 0.226,
+            "x": 0.33,
+            "name": "Darkmist Lurker",
+            "mapID": 1445
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Unpopped Darkmist Eye",
+            "action": "collect",
+            "entityID": 4378,
+            "npc": true,
+            "y": 0.228,
+            "x": 0.348,
+            "name": "Darkmist Recluse",
+            "mapID": 1445
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Unpopped Darkmist Eye",
+            "action": "collect",
+            "entityID": 4379,
+            "npc": true,
+            "y": 0.226,
+            "x": 0.33,
+            "name": "Darkmist Silkspinner",
+            "mapID": 1445
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Unpopped Darkmist Eye",
+            "action": "collect",
+            "entityID": 4380,
+            "npc": true,
+            "y": 0.204,
+            "x": 0.31,
+            "name": "Darkmist Widow",
+            "mapID": 1445
+          }
+        ]
+      }
+    ],
+    "seriesPosition": 2,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "\"Swamp Eye\" Jarl",
+        "entityID": 4792
+      }
+    ],
+    "xp": 2750,
+    "minLevel": 30,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 40,
+          "name": "Unpopped Darkmist Eye",
+          "entityID": 5884
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "\"Swamp Eye\" Jarl",
+          "entityID": 4792
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "\"Swamp Eye\" Jarl",
+          "entityID": 4792
+        }
+      ]
+    },
+    "categoryPath": "kalimdor/dustwallow-marsh",
+    "raceMask": 0,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "\"Swamp Eye\" Jarl",
+        "entityID": 4792
+      }
+    ],
+    "seriesRoot": 1218,
+    "requiredItems": [
+      {
+        "quantity": 40,
+        "name": "Unpopped Darkmist Eye",
+        "itemID": 5884
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.262,
+        "mapID": 1445,
+        "name": "\"Swamp Eye\" Jarl",
+        "entityID": 4792,
+        "npc": true,
+        "x": 0.5539999999999999
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Both",
+    "title": "Jarl Needs Eyes",
+    "objectives": [
+      {
+        "sourceObjective": 0,
+        "mapID": 1445,
+        "legacyStepKey": "q:1445:npc:4378",
+        "entityID": 4378,
+        "npc": true,
+        "x": 0.348,
+        "y": 0.228,
+        "objectiveKey": "item:5884",
+        "itemID": 5884,
+        "quantity": 40,
+        "name": "Darkmist Recluse",
+        "itemName": "Unpopped Darkmist Eye",
+        "alternativeCount": 5,
+        "action": "collect"
+      }
+    ],
+    "series": [
+      1218,
+      1206,
+      1203
+    ],
+    "foreverStatus": "unchanged",
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "starts": [
+      {
+        "y": 0.262,
+        "mapID": 1445,
+        "name": "\"Swamp Eye\" Jarl",
+        "entityID": 4792,
+        "npc": true,
+        "x": 0.5539999999999999
+      }
+    ],
+    "requirementSource": "Wowhead Forever objective table",
+    "previousQuest": 1218,
+    "locationSource": "Wowhead Forever",
+    "npcTargets": [
+      {
+        "itemName": "Unpopped Darkmist Eye",
+        "name": "Darkmist Spider",
+        "entityID": 4376,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Unpopped Darkmist Eye",
+        "name": "Darkmist Lurker",
+        "entityID": 4377,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Unpopped Darkmist Eye",
+        "name": "Darkmist Recluse",
+        "entityID": 4378,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Unpopped Darkmist Eye",
+        "name": "Darkmist Silkspinner",
+        "entityID": 4379,
+        "npc": true,
+        "action": "collect"
+      },
+      {
+        "itemName": "Unpopped Darkmist Eye",
+        "name": "Darkmist Widow",
+        "entityID": 4380,
+        "npc": true,
+        "action": "collect"
+      }
+    ]
+  },
+  "1218": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "npcTargets": [
+      {
+        "itemName": "Soothing Spices",
+        "name": "Helenia Olden",
+        "entityID": 4897,
+        "npc": true,
+        "action": "buy"
+      }
+    ],
+    "zone": "Dustwallow Marsh",
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 3,
+        "name": "Soothing Spices",
+        "entityID": 3713
+      }
+    ],
+    "seriesRoot": 1218,
+    "requiredItems": [
+      {
+        "buyable": true,
+        "name": "Soothing Spices",
+        "buyPrice": 160,
+        "quantity": 3,
+        "itemID": 3713
+      }
+    ],
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "action": "buy",
+        "entityID": 4897,
+        "npc": true,
+        "x": 0.6644,
+        "y": 0.5146000000000001,
+        "objectiveKey": "item:3713",
+        "itemID": 3713,
+        "quantity": 3,
+        "sourceAreaID": 15,
+        "itemName": "Soothing Spices",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Helenia Olden"
+      }
+    ],
+    "series": [
+      1218,
+      1206,
+      1203
+    ],
+    "starts": [
+      {
+        "y": 0.262,
+        "mapID": 1445,
+        "name": "\"Swamp Eye\" Jarl",
+        "entityID": 4792,
+        "npc": true,
+        "x": 0.5539999999999999
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "objectiveFactsSource": "Wowhead Forever objective table",
+    "level": 35,
+    "areaID": 15,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "\"Swamp Eye\" Jarl",
+        "entityID": 4792
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "ends": [
+      {
+        "y": 0.262,
+        "mapID": 1445,
+        "name": "\"Swamp Eye\" Jarl",
+        "entityID": 4792,
+        "npc": true,
+        "x": 0.5539999999999999
+      }
+    ],
+    "side": "Both",
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "\"Swamp Eye\" Jarl",
+        "entityID": 4792
+      }
+    ],
+    "xp": 1350,
+    "foreverStatus": "unchanged",
+    "title": "Soothing Spices",
+    "minLevel": 30,
+    "requirementSource": "Wowhead Forever objective table",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 3,
+          "name": "Soothing Spices",
+          "entityID": 3713
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "\"Swamp Eye\" Jarl",
+          "entityID": 4792
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "\"Swamp Eye\" Jarl",
+          "entityID": 4792
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1219": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "zone": "Dustwallow Marsh",
+    "requirements": {},
+    "seriesRoot": 1219,
+    "requiredItems": {},
+    "objectives": {},
+    "series": [
+      1219,
+      1220
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Spy's Report",
+        "entityID": 5917
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.47,
+        "mapID": 1445,
+        "name": "Theramore Lieutenant",
+        "entityID": 4947,
+        "npc": true,
+        "x": 0.65
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.26,
+        "x": 0.5539999999999999,
+        "name": "Loose Dirt",
+        "entityID": 20985,
+        "mapID": 1445
+      }
+    ],
+    "level": 35,
+    "areaID": 15,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Loose Dirt",
+        "entityID": 20985
+      }
+    ],
+    "side": "Alliance",
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Theramore Lieutenant",
+        "entityID": 4947
+      }
+    ],
+    "xp": 690,
+    "foreverStatus": "unchanged",
+    "title": "The Orc Report",
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "object",
+          "name": "Loose Dirt",
+          "entityID": 20985
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Spy's Report",
+          "entityID": 5917
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Theramore Lieutenant",
+          "entityID": 4947
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1220": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "objectives": {},
+    "zone": "Dustwallow Marsh",
+    "requirements": {},
+    "seriesRoot": 1219,
+    "requiredItems": {},
+    "series": [
+      1219,
+      1220
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Spy's Report",
+        "entityID": 5917
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.47,
+        "mapID": 1445,
+        "name": "Theramore Lieutenant",
+        "entityID": 4947,
+        "npc": true,
+        "x": 0.65
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.486,
+        "mapID": 1445,
+        "name": "Captain Garran Vimes",
+        "entityID": 4944,
+        "npc": true,
+        "x": 0.682
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 35,
+    "areaID": 15,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Theramore Lieutenant",
+        "entityID": 4947
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 1219,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Garran Vimes",
+        "entityID": 4944
+      }
+    ],
+    "xp": 2750,
+    "title": "Captain Vimes",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 2,
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Theramore Lieutenant",
+          "entityID": 4947
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Spy's Report",
+          "entityID": 5917
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Captain Garran Vimes",
+          "entityID": 4944
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1222": {
+    "raceMask": 4294967373,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "\"Stinky\" Ignatz",
+        "entityID": 4880
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4794,
+        "npc": true,
+        "y": 0.4547,
+        "x": 0.6634,
+        "name": "Morgan Stern",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "level": 37,
+    "areaID": 15,
+    "side": "Alliance",
+    "objectives": [
+      {
+        "y": 0.2458,
+        "mapID": 1445,
+        "action": "escort",
+        "x": 0.48869999999999997,
+        "locationSource": "Published Forever converted-baseline event area",
+        "name": "\"Stinky\" Ignatz"
+      }
+    ],
+    "money": 4000,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Morgan Stern",
+        "entityID": 4794
+      }
+    ],
+    "xp": 2850,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4880,
+        "npc": true,
+        "y": 0.1752,
+        "x": 0.46880000000000005,
+        "name": "\"Stinky\" Ignatz",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 30,
+    "prerequisitesRead": true,
+    "title": "Stinky's Escape",
+    "foreverStatus": "updated",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1238": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "zone": "Dustwallow Marsh",
+    "requirements": {},
+    "requiredItems": {},
+    "objectives": {},
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.306,
+        "mapID": 1445,
+        "name": "Nazeer Bloodpike",
+        "entityID": 4791,
+        "npc": true,
+        "x": 0.35200000000000004
+      }
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Spy's Report",
+        "entityID": 5917
+      }
+    ],
+    "level": 35,
+    "areaID": 15,
+    "starts": [
+      {
+        "y": 0.26,
+        "x": 0.5539999999999999,
+        "name": "Loose Dirt",
+        "entityID": 20985,
+        "mapID": 1445
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Loose Dirt",
+        "entityID": 20985
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Nazeer Bloodpike",
+        "entityID": 4791
+      }
+    ],
+    "xp": 2050,
+    "foreverStatus": "unchanged",
+    "title": "The Lost Report",
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "object",
+          "name": "Loose Dirt",
+          "entityID": 20985
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Spy's Report",
+          "entityID": 5917
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Nazeer Bloodpike",
+          "entityID": 4791
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1239": {
+    "prerequisitesRead": true,
+    "zone": "Dustwallow Marsh",
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "level": 35,
+    "areaID": 15,
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Nazeer Bloodpike",
+        "entityID": 4791
+      }
+    ],
+    "xp": 2050,
+    "minLevel": 30,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "object",
+          "name": "Loose Dirt",
+          "entityID": 20985
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Defiant Orc Head",
+          "entityID": 5918
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Nazeer Bloodpike",
+          "entityID": 4791
+        }
+      ]
+    },
+    "categoryPath": "kalimdor/dustwallow-marsh",
+    "raceMask": 0,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Loose Dirt",
+        "entityID": 20985
+      }
+    ],
+    "seriesRoot": 1239,
+    "requiredItems": {},
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "ends": [
+      {
+        "y": 0.306,
+        "mapID": 1445,
+        "name": "Nazeer Bloodpike",
+        "entityID": 4791,
+        "npc": true,
+        "x": 0.35200000000000004
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "objectives": {},
+    "series": [
+      1239,
+      1240
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Defiant Orc Head",
+        "entityID": 5918
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "classMask": 0,
+    "starts": [
+      {
+        "y": 0.26,
+        "x": 0.5539999999999999,
+        "name": "Loose Dirt",
+        "entityID": 20985,
+        "mapID": 1445
+      }
+    ],
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "prerequisiteAny": [
+      1238
+    ],
+    "locationSource": "Wowhead Forever",
+    "title": "The Severed Head"
+  },
+  "1240": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "objectives": {},
+    "zone": "Dustwallow Marsh",
+    "requirements": {},
+    "seriesRoot": 1239,
+    "requiredItems": {},
+    "series": [
+      1239,
+      1240
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Defiant Orc Head",
+        "entityID": 5918
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.306,
+        "mapID": 1445,
+        "name": "Nazeer Bloodpike",
+        "entityID": 4791,
+        "npc": true,
+        "x": 0.35200000000000004
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.278,
+        "mapID": 1434,
+        "name": "Kin'weelay",
+        "entityID": 2519,
+        "npc": true,
+        "x": 0.322
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 35,
+    "areaID": 15,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Nazeer Bloodpike",
+        "entityID": 4791
+      }
+    ],
+    "side": "Horde",
+    "previousQuest": 1239,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Kin'weelay",
+        "entityID": 2519
+      }
+    ],
+    "xp": 2750,
+    "title": "The Troll Witchdoctor",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 2,
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Nazeer Bloodpike",
+          "entityID": 4791
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Defiant Orc Head",
+          "entityID": 5918
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Kin'weelay",
+          "entityID": 2519
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1251": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "zone": "Dustwallow Marsh",
+    "requirements": {},
+    "seriesRoot": 1251,
+    "requiredItems": {},
+    "objectives": {},
+    "series": [
+      1251,
+      1321,
+      1322,
+      1323
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Blackened Iron Shield",
+        "entityID": 5919
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.318,
+        "mapID": 1445,
+        "name": "Krog",
+        "entityID": 4926,
+        "npc": true,
+        "x": 0.364
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.485,
+        "x": 0.29600000000000004,
+        "name": "Black Shield",
+        "entityID": 20992,
+        "mapID": 1445
+      }
+    ],
+    "level": 35,
+    "areaID": 15,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Black Shield",
+        "entityID": 20992
+      }
+    ],
+    "side": "Horde",
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Krog",
+        "entityID": 4926
+      }
+    ],
+    "xp": 690,
+    "foreverStatus": "unchanged",
+    "title": "The Black Shield",
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "object",
+          "name": "Black Shield",
+          "entityID": 20992
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Blackened Iron Shield",
+          "entityID": 5919
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Krog",
+          "entityID": 4926
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1252": {
+    "prerequisitesRead": true,
+    "zone": "Dustwallow Marsh",
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "level": 40,
+    "areaID": 15,
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Garran Vimes",
+        "entityID": 4944
+      }
+    ],
+    "xp": 780,
+    "minLevel": 30,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "object",
+          "name": "Theramore Guard Badge",
+          "entityID": 21042
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Reethe's Badge",
+          "entityID": 5950
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Captain Garran Vimes",
+          "entityID": 4944
+        }
+      ]
+    },
+    "categoryPath": "kalimdor/dustwallow-marsh",
+    "raceMask": 0,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Theramore Guard Badge",
+        "entityID": 21042
+      }
+    ],
+    "seriesRoot": 1252,
+    "requiredItems": {},
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "ends": [
+      {
+        "y": 0.486,
+        "mapID": 1445,
+        "name": "Captain Garran Vimes",
+        "entityID": 4944,
+        "npc": true,
+        "x": 0.682
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "objectives": {},
+    "series": [
+      1252,
+      1259,
+      1285,
+      1286,
+      1287
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Reethe's Badge",
+        "entityID": 5950
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "classMask": 0,
+    "starts": [
+      {
+        "y": 0.48200000000000004,
+        "x": 0.298,
+        "name": "Theramore Guard Badge",
+        "entityID": 21042,
+        "mapID": 1445
+      }
+    ],
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "prerequisiteAny": [
+      1302,
+      1282
+    ],
+    "locationSource": "Wowhead Forever",
+    "title": "Lieutenant Paval Reethe"
+  },
+  "1253": {
+    "prerequisitesRead": true,
+    "zone": "Dustwallow Marsh",
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "level": 35,
+    "areaID": 15,
+    "seriesPosition": 1,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Garran Vimes",
+        "entityID": 4944
+      }
+    ],
+    "xp": 690,
+    "minLevel": 30,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "object",
+          "name": "Black Shield",
+          "entityID": 20992
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Blackened Iron Shield",
+          "entityID": 5919
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Captain Garran Vimes",
+          "entityID": 4944
+        }
+      ]
+    },
+    "categoryPath": "kalimdor/dustwallow-marsh",
+    "raceMask": 0,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Black Shield",
+        "entityID": 20992
+      }
+    ],
+    "seriesRoot": 1253,
+    "requiredItems": {},
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "ends": [
+      {
+        "y": 0.486,
+        "mapID": 1445,
+        "name": "Captain Garran Vimes",
+        "entityID": 4944,
+        "npc": true,
+        "x": 0.682
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "objectives": {},
+    "series": [
+      1253,
+      1319,
+      1320
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Blackened Iron Shield",
+        "entityID": 5919
+      }
+    ],
+    "foreverStatus": "unchanged",
+    "classMask": 0,
+    "starts": [
+      {
+        "y": 0.485,
+        "x": 0.29600000000000004,
+        "name": "Black Shield",
+        "entityID": 20992,
+        "mapID": 1445
+      }
+    ],
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "prerequisiteAny": [
+      1302,
+      1282
+    ],
+    "locationSource": "Wowhead Forever",
+    "title": "The Black Shield"
+  },
+  "1258": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Morgan Stern",
+        "entityID": 4794
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 12,
+        "action": "collect",
+        "entityID": 5938,
+        "name": "Pristine Crawler Leg"
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Pristine Crawler Leg",
+        "name": "Silt Crawler",
+        "entityID": 922,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 12,
+        "name": "Pristine Crawler Leg",
+        "itemID": 5938
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1435,
+        "action": "loot",
+        "entityID": 922,
+        "npc": true,
+        "x": 0.7748999999999999,
+        "y": 0.052199999999999996,
+        "objectiveKey": "item:5938",
+        "itemID": 5938,
+        "quantity": 12,
+        "sourceAreaID": 8,
+        "itemName": "Pristine Crawler Leg",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Silt Crawler"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4794,
+        "npc": true,
+        "y": 0.4547,
+        "x": 0.6634,
+        "name": "Morgan Stern",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "level": 40,
+    "areaID": 15,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 4294967373,
+    "side": "Alliance",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4794,
+        "npc": true,
+        "y": 0.4547,
+        "x": 0.6634,
+        "name": "Morgan Stern",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Morgan Stern",
+        "entityID": 4794
+      }
+    ],
+    "xp": 3150,
+    "prerequisiteAny": [
+      1204
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 33,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "... and Bugs",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 12,
+          "action": "collect",
+          "entityID": 5938,
+          "name": "Pristine Crawler Leg"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Morgan Stern",
+          "entityID": 4794
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Morgan Stern",
+          "entityID": 4794
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1259": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Garran Vimes",
+        "entityID": 4944
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4948,
+        "npc": true,
+        "y": 0.48109999999999997,
+        "x": 0.6805,
+        "name": "Adjutant Tesoran",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "objectives": {},
+    "level": 40,
+    "areaID": 15,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4944,
+        "npc": true,
+        "sourceZone": "Dustwallow Marsh",
+        "x": 0.682,
+        "name": "Captain Garran Vimes",
+        "sourceAreaID": 15,
+        "y": 0.484
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "raceMask": 4294967373,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Adjutant Tesoran",
+        "entityID": 4948
+      }
+    ],
+    "xp": 315,
+    "prerequisiteAny": [
+      1252
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Lieutenant Paval Reethe",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Captain Garran Vimes",
+          "entityID": 4944
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Adjutant Tesoran",
+          "entityID": 4948
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1260": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Angus Stern",
+        "entityID": 1141
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4794,
+        "npc": true,
+        "y": 0.4547,
+        "x": 0.6634,
+        "name": "Morgan Stern",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "level": 38,
+    "areaID": 15,
+    "objectives": {},
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1453,
+        "entityID": 1141,
+        "npc": true,
+        "sourceZone": "Stormwind City",
+        "x": 0.414,
+        "name": "Angus Stern",
+        "sourceAreaID": 1519,
+        "y": 0.892
+      }
+    ],
+    "side": "Alliance",
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Morgan Stern",
+        "entityID": 4794
+      }
+    ],
+    "xp": 710,
+    "raceMask": 4294967373,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 33,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Morgan Stern",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Angus Stern",
+          "entityID": 1141
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Morgan Stern",
+          "entityID": 4794
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1261": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Bubbling Cauldron",
+        "entityID": 2076
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 5942,
+        "name": "Jeweled Pendant"
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Jeweled Pendant",
+        "name": "Muckshell Clacker",
+        "entityID": 4401,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Jeweled Pendant",
+        "itemID": 5942
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "action": "loot",
+        "entityID": 4401,
+        "npc": true,
+        "x": 0.4928,
+        "y": 0.3726,
+        "objectiveKey": "item:5942",
+        "itemID": 5942,
+        "quantity": 1,
+        "sourceAreaID": 15,
+        "itemName": "Jeweled Pendant",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Muckshell Clacker"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "object",
+        "mapID": 1434,
+        "name": "Bubbling Cauldron",
+        "y": 0.276,
+        "entityID": 2076,
+        "x": 0.3222,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "sourceAreaID": 33
+      }
+    ],
+    "level": 40,
+    "areaID": 15,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 8589934770,
+    "side": "Horde",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4791,
+        "npc": true,
+        "sourceZone": "Dustwallow Marsh",
+        "x": 0.35200000000000004,
+        "name": "Nazeer Bloodpike",
+        "sourceAreaID": 15,
+        "y": 0.306
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Nazeer Bloodpike",
+        "entityID": 4791
+      }
+    ],
+    "xp": 3150,
+    "prerequisiteAny": [
+      1240
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 30,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "Marg Speaks",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 5942,
+          "name": "Jeweled Pendant"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "object",
+          "name": "Bubbling Cauldron",
+          "entityID": 2076
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Nazeer Bloodpike",
+          "entityID": 4791
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1262": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Nazeer Bloodpike",
+        "entityID": 4791
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Jeweled Pendant",
+        "entityID": 5942
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Jeweled Pendant",
+        "name": "Muckshell Clacker",
+        "entityID": 4401,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Jeweled Pendant",
+        "itemID": 5942
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "action": "loot",
+        "entityID": 4401,
+        "npc": true,
+        "x": 0.4928,
+        "y": 0.3726,
+        "objectiveKey": "item:5942",
+        "itemID": 5942,
+        "quantity": 1,
+        "sourceAreaID": 15,
+        "itemName": "Jeweled Pendant",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Muckshell Clacker"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4791,
+        "npc": true,
+        "sourceZone": "Dustwallow Marsh",
+        "x": 0.35200000000000004,
+        "name": "Nazeer Bloodpike",
+        "sourceAreaID": 15,
+        "y": 0.306
+      }
+    ],
+    "level": 40,
+    "areaID": 15,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 8589934770,
+    "side": "Horde",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1454,
+        "entityID": 4047,
+        "npc": true,
+        "y": 0.384,
+        "x": 0.3893,
+        "name": "Zor Lonetree",
+        "sourceAreaID": 1637,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Zor Lonetree",
+        "entityID": 4047
+      }
+    ],
+    "xp": 3150,
+    "prerequisiteAny": [
+      1261
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Report to Zor",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Jeweled Pendant",
+          "entityID": 5942
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Nazeer Bloodpike",
+          "entityID": 4791
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Zor Lonetree",
+          "entityID": 4047
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1263": {
+    "raceMask": 0,
+    "mapID": 1445,
+    "startRefs": {},
+    "requirements": {},
+    "classMask": 0,
+    "level": 35,
+    "areaID": 15,
+    "side": "Both",
+    "money": 0,
+    "endRefs": {},
+    "xp": 0,
+    "objectives": {},
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "prerequisitesRead": true,
+    "minLevel": 30,
+    "title": "The Burning Inn <CHANGE TO GOSSIP>",
+    "foreverStatus": "unchanged",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1268": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Hoofprints",
+        "entityID": 21015
+      },
+      {
+        "entityType": "object",
+        "name": "Hoofprints",
+        "entityID": 21016
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4926,
+        "npc": true,
+        "y": 0.3188,
+        "x": 0.3642,
+        "name": "Krog",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "level": 35,
+    "areaID": 15,
+    "objectives": {},
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "starts": [
+      {
+        "entityType": "object",
+        "mapID": 1445,
+        "name": "Hoofprints",
+        "y": 0.4764,
+        "entityID": 21015,
+        "x": 0.297,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "sourceAreaID": 15
+      }
+    ],
+    "side": "Horde",
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Krog",
+        "entityID": 4926
+      }
+    ],
+    "xp": 1350,
+    "raceMask": 8589934770,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Suspicious Hoofprints",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "object",
+          "name": "Hoofprints",
+          "entityID": 21015
+        },
+        {
+          "entityType": "object",
+          "name": "Hoofprints",
+          "entityID": 21016
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Krog",
+          "entityID": 4926
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1269": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "zone": "Dustwallow Marsh",
+    "requirements": {},
+    "requiredItems": {},
+    "objectives": {},
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.318,
+        "mapID": 1445,
+        "name": "Krog",
+        "entityID": 4926,
+        "npc": true,
+        "x": 0.364
+      }
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Reethe's Badge",
+        "entityID": 5950
+      }
+    ],
+    "level": 37,
+    "areaID": 15,
+    "starts": [
+      {
+        "y": 0.48200000000000004,
+        "x": 0.298,
+        "name": "Theramore Guard Badge",
+        "entityID": 21042,
+        "mapID": 1445
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Theramore Guard Badge",
+        "entityID": 21042
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Krog",
+        "entityID": 4926
+      }
+    ],
+    "xp": 710,
+    "foreverStatus": "unchanged",
+    "title": "Lieutenant Paval Reethe",
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "object",
+          "name": "Theramore Guard Badge",
+          "entityID": 21042
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Reethe's Badge",
+          "entityID": 5950
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Krog",
+          "entityID": 4926
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1270": {
+    "raceMask": 8589934770,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "\"Stinky\" Ignatz",
+        "entityID": 4880
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1413,
+        "entityID": 3446,
+        "npc": true,
+        "y": 0.3762,
+        "x": 0.6236999999999999,
+        "name": "Mebok Mizzyrix",
+        "sourceAreaID": 17,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "level": 37,
+    "areaID": 15,
+    "side": "Horde",
+    "objectives": [
+      {
+        "y": 0.2458,
+        "mapID": 1445,
+        "action": "escort",
+        "x": 0.48869999999999997,
+        "locationSource": "Published Forever converted-baseline event area",
+        "name": "\"Stinky\" Ignatz"
+      }
+    ],
+    "money": 4000,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Mebok Mizzyrix",
+        "entityID": 3446
+      }
+    ],
+    "xp": 2850,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4880,
+        "npc": true,
+        "y": 0.1752,
+        "x": 0.46880000000000005,
+        "name": "\"Stinky\" Ignatz",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 30,
+    "prerequisitesRead": true,
+    "title": "Stinky's Escape",
+    "foreverStatus": "updated",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1271": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Angus Stern",
+        "entityID": 1141
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1453,
+        "entityID": 1141,
+        "npc": true,
+        "sourceZone": "Stormwind City",
+        "x": 0.414,
+        "name": "Angus Stern",
+        "sourceAreaID": 1519,
+        "y": 0.892
+      }
+    ],
+    "objectives": {},
+    "level": 37,
+    "areaID": 15,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1453,
+        "entityID": 1141,
+        "npc": true,
+        "sourceZone": "Stormwind City",
+        "x": 0.414,
+        "name": "Angus Stern",
+        "sourceAreaID": 1519,
+        "y": 0.892
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "raceMask": 4294967373,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Angus Stern",
+        "entityID": 1141
+      }
+    ],
+    "xp": 0,
+    "prerequisiteAny": [
+      1222
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Feast at the Blue Recluse",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Angus Stern",
+          "entityID": 1141
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Angus Stern",
+          "entityID": 1141
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1272": {
+    "raceMask": 0,
+    "mapID": 1445,
+    "startRefs": {},
+    "requirements": {},
+    "classMask": 0,
+    "level": 37,
+    "areaID": 15,
+    "side": "Both",
+    "money": 0,
+    "endRefs": {},
+    "xp": 0,
+    "objectives": {},
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "prerequisitesRead": true,
+    "minLevel": 30,
+    "title": "Finding Reethe <CHANGE INTO GOSSIP>",
+    "foreverStatus": "unchanged",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1273": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Ogron",
+        "entityID": 4983
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4926,
+        "npc": true,
+        "y": 0.3188,
+        "x": 0.3642,
+        "name": "Krog",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "objectives": [
+      {
+        "y": 0.3807,
+        "mapID": 1445,
+        "action": "event",
+        "x": 0.42469999999999997,
+        "locationSource": "Published Forever converted-baseline event area",
+        "name": "Questioning Reethe"
+      }
+    ],
+    "level": 37,
+    "areaID": 15,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4983,
+        "npc": true,
+        "y": 0.3669,
+        "x": 0.4096,
+        "name": "Ogron",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "raceMask": 8589934770,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Krog",
+        "entityID": 4926
+      }
+    ],
+    "xp": 3550,
+    "prerequisiteAny": [
+      1269
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Questioning Reethe",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Ogron",
+          "entityID": 4983
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Krog",
+          "entityID": 4926
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1276": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "zone": "Dustwallow Marsh",
+    "requirements": {},
+    "objectives": {},
+    "requiredItems": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Blackened Iron Shield",
+        "entityID": 5919
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.804,
+        "mapID": 1456,
+        "name": "Mosarn",
+        "entityID": 4943,
+        "npc": true,
+        "x": 0.542
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.318,
+        "mapID": 1445,
+        "name": "Krog",
+        "entityID": 4926,
+        "npc": true,
+        "x": 0.364
+      }
+    ],
+    "level": 37,
+    "areaID": 15,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Krog",
+        "entityID": 4926
+      }
+    ],
+    "side": "Horde",
+    "prerequisiteAny": [
+      1273
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Mosarn",
+        "entityID": 4943
+      }
+    ],
+    "xp": 1400,
+    "foreverStatus": "unchanged",
+    "title": "The Black Shield",
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Krog",
+          "entityID": 4926
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Blackened Iron Shield",
+          "entityID": 5919
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Mosarn",
+          "entityID": 4943
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1280": {
+    "raceMask": 0,
+    "mapID": 1445,
+    "startRefs": {},
+    "requirements": {},
+    "classMask": 0,
+    "level": 0,
+    "areaID": 15,
+    "money": 0,
+    "endRefs": {},
+    "xp": 0,
+    "objectives": {},
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "prerequisitesRead": true,
+    "minLevel": 0,
+    "title": "<nyi> <TXT>The Centaur Hoofprints",
+    "foreverStatus": "unchanged",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1281": {
+    "raceMask": 0,
+    "mapID": 1445,
+    "startRefs": {},
+    "requirements": {},
+    "classMask": 0,
+    "level": 35,
+    "areaID": 15,
+    "side": "Both",
+    "money": 0,
+    "endRefs": {},
+    "xp": 0,
+    "objectives": {},
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "prerequisitesRead": true,
+    "minLevel": 30,
+    "title": "Jim's Song <CHANGE TO GOSSIP>",
+    "foreverStatus": "unchanged",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1282": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "zone": "Dustwallow Marsh",
+    "requirements": {},
+    "prerequisitesUnverified": true,
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.486,
+        "mapID": 1445,
+        "name": "Captain Garran Vimes",
+        "entityID": 4944,
+        "npc": true,
+        "x": 0.682
+      }
+    ],
+    "objectives": {},
+    "level": 35,
+    "areaID": 15,
+    "starts": [
+      {
+        "y": 0.46,
+        "mapID": 1445,
+        "name": "Guard Byron",
+        "entityID": 4921,
+        "npc": true,
+        "x": 0.66
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Guard Byron",
+        "entityID": 4921
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Garran Vimes",
+        "entityID": 4944
+      }
+    ],
+    "xp": 275,
+    "foreverStatus": "unchanged",
+    "title": "They Call Him Smiling Jim",
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Guard Byron",
+          "entityID": 4921
+        }
+      ],
+      "provided": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Captain Garran Vimes",
+          "entityID": 4944
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1283": {
+    "raceMask": 0,
+    "mapID": 1445,
+    "startRefs": {},
+    "requirements": {},
+    "classMask": 0,
+    "level": 35,
+    "areaID": 15,
+    "side": "Both",
+    "money": 0,
+    "endRefs": {},
+    "xp": 0,
+    "objectives": {},
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "prerequisitesRead": true,
+    "minLevel": 30,
+    "title": "Fire at the Shady Rest <CHANGE TO GOSSIP>",
+    "foreverStatus": "unchanged",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1284": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "object",
+        "name": "Hoofprints",
+        "entityID": 21015
+      },
+      {
+        "entityType": "object",
+        "name": "Hoofprints",
+        "entityID": 21016
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4944,
+        "npc": true,
+        "sourceZone": "Dustwallow Marsh",
+        "x": 0.682,
+        "name": "Captain Garran Vimes",
+        "sourceAreaID": 15,
+        "y": 0.484
+      }
+    ],
+    "objectives": {},
+    "level": 35,
+    "areaID": 15,
+    "starts": [
+      {
+        "entityType": "object",
+        "mapID": 1445,
+        "name": "Hoofprints",
+        "y": 0.4764,
+        "entityID": 21015,
+        "x": 0.297,
+        "locationSource": "Published Forever converted-baseline entity position",
+        "sourceAreaID": 15
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "raceMask": 4294967373,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Garran Vimes",
+        "entityID": 4944
+      }
+    ],
+    "xp": 1350,
+    "prerequisiteAny": [
+      1282,
+      1302
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Suspicious Hoofprints",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "object",
+          "name": "Hoofprints",
+          "entityID": 21015
+        },
+        {
+          "entityType": "object",
+          "name": "Hoofprints",
+          "entityID": 21016
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Captain Garran Vimes",
+          "entityID": 4944
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1285": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Adjutant Tesoran",
+        "entityID": 4948
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4944,
+        "npc": true,
+        "sourceZone": "Dustwallow Marsh",
+        "x": 0.682,
+        "name": "Captain Garran Vimes",
+        "sourceAreaID": 15,
+        "y": 0.484
+      }
+    ],
+    "objectives": {},
+    "level": 38,
+    "areaID": 15,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4948,
+        "npc": true,
+        "y": 0.48109999999999997,
+        "x": 0.6805,
+        "name": "Adjutant Tesoran",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "raceMask": 4294967373,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Garran Vimes",
+        "entityID": 4944
+      }
+    ],
+    "xp": 285,
+    "prerequisiteAny": [
+      1259
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Daelin's Men",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Adjutant Tesoran",
+          "entityID": 4948
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Captain Garran Vimes",
+          "entityID": 4944
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1286": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Garran Vimes",
+        "entityID": 4944
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 5089,
+        "npc": true,
+        "y": 0.5431,
+        "x": 0.36090000000000005,
+        "name": "Balos Jacken",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "objectives": {},
+    "level": 38,
+    "areaID": 15,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4944,
+        "npc": true,
+        "sourceZone": "Dustwallow Marsh",
+        "x": 0.682,
+        "name": "Captain Garran Vimes",
+        "sourceAreaID": 15,
+        "y": 0.484
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "raceMask": 4294967373,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Balos Jacken",
+        "entityID": 5089
+      }
+    ],
+    "xp": 2850,
+    "prerequisiteAny": [
+      1285
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "The Deserters",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Captain Garran Vimes",
+          "entityID": 4944
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Balos Jacken",
+          "entityID": 5089
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1287": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Balos Jacken",
+        "entityID": 5089
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4944,
+        "npc": true,
+        "y": 0.48619999999999997,
+        "x": 0.6820999999999999,
+        "name": "Captain Garran Vimes",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "objectives": {},
+    "level": 38,
+    "areaID": 15,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 5089,
+        "npc": true,
+        "y": 0.5431,
+        "x": 0.36090000000000005,
+        "name": "Balos Jacken",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "raceMask": 4294967373,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Garran Vimes",
+        "entityID": 4944
+      }
+    ],
+    "xp": 2850,
+    "prerequisiteAny": [
+      1286
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "The Deserters",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Balos Jacken",
+          "entityID": 5089
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Captain Garran Vimes",
+          "entityID": 4944
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1288": {
+    "raceMask": 0,
+    "mapID": 1445,
+    "startRefs": {},
+    "requirements": {},
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Vimes's Report",
+        "itemID": 6075
+      }
+    ],
+    "classMask": 0,
+    "level": 38,
+    "areaID": 15,
+    "side": "Both",
+    "objectives": {},
+    "money": 0,
+    "endRefs": {},
+    "xp": 285,
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Vimes's Report",
+        "entityID": 6075
+      }
+    ],
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "prerequisitesRead": true,
+    "minLevel": 30,
+    "title": "Vimes's Report",
+    "foreverStatus": "unchanged",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1292": {
+    "raceMask": 0,
+    "mapID": 1445,
+    "startRefs": {},
+    "requirements": {},
+    "classMask": 0,
+    "level": 0,
+    "areaID": 15,
+    "money": 0,
+    "endRefs": {},
+    "xp": 0,
+    "objectives": {},
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "prerequisitesRead": true,
+    "minLevel": 0,
+    "title": "<nyi><TXT> Centaur Hoofprints",
+    "foreverStatus": "unchanged",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1293": {
+    "raceMask": 0,
+    "mapID": 1445,
+    "startRefs": {},
+    "requirements": {},
+    "classMask": 0,
+    "level": 0,
+    "areaID": 15,
+    "money": 0,
+    "endRefs": {},
+    "xp": 0,
+    "objectives": {},
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "prerequisitesRead": true,
+    "minLevel": 0,
+    "title": "<nyi> <TXT> Centaur Hoofprints",
+    "foreverStatus": "unchanged",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1294": {
+    "raceMask": 0,
+    "mapID": 1445,
+    "startRefs": {},
+    "requirements": {},
+    "classMask": 0,
+    "level": 0,
+    "areaID": 15,
+    "money": 0,
+    "endRefs": {},
+    "xp": 0,
+    "objectives": {},
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "prerequisitesRead": true,
+    "minLevel": 0,
+    "title": "<nyi> <TXT>Centaur Sympathies",
+    "foreverStatus": "unchanged",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1295": {
+    "raceMask": 0,
+    "mapID": 1445,
+    "startRefs": {},
+    "requirements": {},
+    "classMask": 0,
+    "level": 0,
+    "areaID": 15,
+    "money": 0,
+    "endRefs": {},
+    "xp": 0,
+    "objectives": {},
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "prerequisitesRead": true,
+    "minLevel": 0,
+    "title": "<nyi> <TXT> Course of Action",
+    "foreverStatus": "unchanged",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1296": {
+    "raceMask": 0,
+    "mapID": 1445,
+    "startRefs": {},
+    "requirements": {},
+    "classMask": 0,
+    "level": 0,
+    "areaID": 15,
+    "money": 0,
+    "endRefs": {},
+    "xp": 0,
+    "objectives": {},
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "prerequisitesRead": true,
+    "minLevel": 0,
+    "title": "<nyi> <TXT> Course of Action",
+    "foreverStatus": "unchanged",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1297": {
+    "raceMask": 0,
+    "mapID": 1445,
+    "startRefs": {},
+    "requirements": {},
+    "classMask": 0,
+    "level": 0,
+    "areaID": 15,
+    "money": 0,
+    "endRefs": {},
+    "xp": 0,
+    "objectives": {},
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "prerequisitesRead": true,
+    "minLevel": 0,
+    "title": "<nyi> <TXT> Course of Action",
+    "foreverStatus": "unchanged",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1319": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "objectives": {},
+    "zone": "Dustwallow Marsh",
+    "requirements": {},
+    "seriesRoot": 1253,
+    "requiredItems": {},
+    "series": [
+      1253,
+      1319,
+      1320
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Blackened Iron Shield",
+        "entityID": 5919
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.486,
+        "mapID": 1445,
+        "name": "Captain Garran Vimes",
+        "entityID": 4944,
+        "npc": true,
+        "x": 0.682
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.504,
+        "mapID": 1445,
+        "name": "Caz Twosprocket",
+        "entityID": 4941,
+        "npc": true,
+        "x": 0.6459999999999999
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 35,
+    "areaID": 15,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Garran Vimes",
+        "entityID": 4944
+      }
+    ],
+    "side": "Alliance",
+    "previousQuest": 1253,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Caz Twosprocket",
+        "entityID": 4941
+      }
+    ],
+    "xp": 275,
+    "title": "The Black Shield",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 2,
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Captain Garran Vimes",
+          "entityID": 4944
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Blackened Iron Shield",
+          "entityID": 5919
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Caz Twosprocket",
+          "entityID": 4941
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1320": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Caz Twosprocket",
+        "entityID": 4941
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4944,
+        "npc": true,
+        "y": 0.48619999999999997,
+        "x": 0.6820999999999999,
+        "name": "Captain Garran Vimes",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "objectives": {},
+    "level": 35,
+    "areaID": 15,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4941,
+        "npc": true,
+        "sourceZone": "Dustwallow Marsh",
+        "x": 0.6459999999999999,
+        "name": "Caz Twosprocket",
+        "sourceAreaID": 15,
+        "y": 0.504
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Alliance",
+    "raceMask": 4294967373,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Captain Garran Vimes",
+        "entityID": 4944
+      }
+    ],
+    "xp": 1350,
+    "prerequisiteAny": [
+      1319
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      1,
+      3,
+      4,
+      7,
+      95
+    ],
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "The Black Shield",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Caz Twosprocket",
+          "entityID": 4941
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Captain Garran Vimes",
+          "entityID": 4944
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1321": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "objectives": {},
+    "zone": "Dustwallow Marsh",
+    "requirements": {},
+    "seriesRoot": 1251,
+    "requiredItems": {},
+    "series": [
+      1251,
+      1321,
+      1322,
+      1323
+    ],
+    "providedItems": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Blackened Iron Shield",
+        "entityID": 5919
+      }
+    ],
+    "starts": [
+      {
+        "y": 0.318,
+        "mapID": 1445,
+        "name": "Krog",
+        "entityID": 4926,
+        "npc": true,
+        "x": 0.364
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "y": 0.308,
+        "mapID": 1445,
+        "name": "Do'gol",
+        "entityID": 5087,
+        "npc": true,
+        "x": 0.364
+      }
+    ],
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "level": 35,
+    "areaID": 15,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Krog",
+        "entityID": 4926
+      }
+    ],
+    "side": "Horde",
+    "previousQuest": 1251,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Do'gol",
+        "entityID": 5087
+      }
+    ],
+    "xp": 275,
+    "title": "The Black Shield",
+    "foreverStatus": "unchanged",
+    "seriesPosition": 2,
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 0,
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Krog",
+          "entityID": 4926
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Blackened Iron Shield",
+          "entityID": 5919
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Do'gol",
+          "entityID": 5087
+        }
+      ]
+    },
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1322": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Do'gol",
+        "entityID": 5087
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 6,
+        "action": "collect",
+        "entityID": 5959,
+        "name": "Acidic Venom Sac"
+      }
+    ],
+    "npcTargets": [
+      {
+        "itemName": "Acidic Venom Sac",
+        "name": "Darkfang Venomspitter",
+        "entityID": 4414,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 6,
+        "name": "Acidic Venom Sac",
+        "itemID": 5959
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "action": "loot",
+        "entityID": 4414,
+        "npc": true,
+        "x": 0.37729999999999997,
+        "y": 0.2768,
+        "objectiveKey": "item:5959",
+        "itemID": 5959,
+        "quantity": 6,
+        "sourceAreaID": 15,
+        "itemName": "Acidic Venom Sac",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Darkfang Venomspitter"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 5087,
+        "npc": true,
+        "sourceZone": "Dustwallow Marsh",
+        "x": 0.364,
+        "name": "Do'gol",
+        "sourceAreaID": 15,
+        "y": 0.308
+      }
+    ],
+    "level": 37,
+    "areaID": 15,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 8589934770,
+    "side": "Horde",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 5087,
+        "npc": true,
+        "sourceZone": "Dustwallow Marsh",
+        "x": 0.364,
+        "name": "Do'gol",
+        "sourceAreaID": 15,
+        "y": 0.308
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Do'gol",
+        "entityID": 5087
+      }
+    ],
+    "xp": 2850,
+    "prerequisiteAny": [
+      1321
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 30,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "The Black Shield",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 6,
+          "action": "collect",
+          "entityID": 5959,
+          "name": "Acidic Venom Sac"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Do'gol",
+          "entityID": 5087
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Do'gol",
+          "entityID": 5087
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "1323": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Do'gol",
+        "entityID": 5087
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 4926,
+        "npc": true,
+        "sourceZone": "Dustwallow Marsh",
+        "x": 0.364,
+        "name": "Krog",
+        "sourceAreaID": 15,
+        "y": 0.318
+      }
+    ],
+    "objectives": {},
+    "level": 37,
+    "areaID": 15,
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 5087,
+        "npc": true,
+        "sourceZone": "Dustwallow Marsh",
+        "x": 0.364,
+        "name": "Do'gol",
+        "sourceAreaID": 15,
+        "y": 0.308
+      }
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "side": "Horde",
+    "raceMask": 8589934770,
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Krog",
+        "entityID": 4926
+      }
+    ],
+    "xp": 1400,
+    "prerequisiteAny": [
+      1322
+    ],
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 30,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "The Black Shield",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Do'gol",
+          "entityID": 5087
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Krog",
+          "entityID": 4926
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "6570": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Myranda the Hag",
+        "entityID": 11872
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "objectives": {},
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 10321,
+        "npc": true,
+        "y": 0.8772,
+        "x": 0.5666,
+        "name": "Emberstrife",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1422,
+        "entityID": 11872,
+        "npc": true,
+        "y": 0.7785,
+        "x": 0.5079,
+        "name": "Myranda the Hag",
+        "sourceAreaID": 28,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "level": 60,
+    "areaID": 15,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 8589934770,
+    "side": "Horde",
+    "prerequisiteAny": [
+      6569
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Emberstrife",
+        "entityID": 10321
+      }
+    ],
+    "xp": 4950,
+    "questType": "Elite",
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 55,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "title": "Emberstrife",
+    "worldReferences": {
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Myranda the Hag",
+          "entityID": 11872
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Emberstrife",
+          "entityID": 10321
+        }
+      ]
+    },
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "6582": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "npcTargets": [
+      {
+        "itemName": "The Skull of Scryer",
+        "name": "Scryer",
+        "entityID": 10664,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Emberstrife",
+        "entityID": 10321
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 16869,
+        "name": "The Skull of Scryer"
+      }
+    ],
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1452,
+        "action": "loot",
+        "entityID": 10664,
+        "npc": true,
+        "x": 0.5271,
+        "y": 0.5589,
+        "objectiveKey": "item:16869",
+        "itemID": 16869,
+        "quantity": 1,
+        "sourceAreaID": 618,
+        "itemName": "The Skull of Scryer",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Scryer"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "The Skull of Scryer",
+        "itemID": 16869
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 10321,
+        "npc": true,
+        "y": 0.8772,
+        "x": 0.5666,
+        "name": "Emberstrife",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 60,
+    "areaID": 15,
+    "raceMask": 8589934770,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "prerequisiteAny": [
+      6570
+    ],
+    "side": "Both",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 10321,
+        "npc": true,
+        "y": 0.8772,
+        "x": 0.5666,
+        "name": "Emberstrife",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Emberstrife",
+        "entityID": 10321
+      }
+    ],
+    "xp": 6600,
+    "questType": "Raid",
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 55,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "The Test of Skulls, Scryer",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 16869,
+          "name": "The Skull of Scryer"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Emberstrife",
+          "entityID": 10321
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Emberstrife",
+          "entityID": 10321
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "6583": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "npcTargets": [
+      {
+        "itemName": "The Skull of Somnus",
+        "name": "Somnus",
+        "entityID": 12900,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Emberstrife",
+        "entityID": 10321
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 16870,
+        "name": "The Skull of Somnus"
+      }
+    ],
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1435,
+        "action": "loot",
+        "entityID": 12900,
+        "npc": true,
+        "x": 0.76,
+        "y": 0.6659999999999999,
+        "objectiveKey": "item:16870",
+        "itemID": 16870,
+        "quantity": 1,
+        "sourceAreaID": 8,
+        "itemName": "The Skull of Somnus",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Somnus"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "The Skull of Somnus",
+        "itemID": 16870
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 10321,
+        "npc": true,
+        "y": 0.8772,
+        "x": 0.5666,
+        "name": "Emberstrife",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 60,
+    "areaID": 15,
+    "raceMask": 8589934770,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "prerequisiteAny": [
+      6570
+    ],
+    "side": "Both",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 10321,
+        "npc": true,
+        "y": 0.8772,
+        "x": 0.5666,
+        "name": "Emberstrife",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Emberstrife",
+        "entityID": 10321
+      }
+    ],
+    "xp": 6600,
+    "questType": "Raid",
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 55,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "The Test of Skulls, Somnus",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 16870,
+          "name": "The Skull of Somnus"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Emberstrife",
+          "entityID": 10321
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Emberstrife",
+          "entityID": 10321
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "6584": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "npcTargets": [
+      {
+        "itemName": "The Skull of Chronalis",
+        "name": "Chronalis",
+        "entityID": 8197,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Emberstrife",
+        "entityID": 10321
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 16871,
+        "name": "The Skull of Chronalis"
+      }
+    ],
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1446,
+        "action": "loot",
+        "entityID": 8197,
+        "npc": true,
+        "x": 0.6416,
+        "y": 0.4849,
+        "objectiveKey": "item:16871",
+        "itemID": 16871,
+        "quantity": 1,
+        "sourceAreaID": 440,
+        "itemName": "The Skull of Chronalis",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Chronalis"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "The Skull of Chronalis",
+        "itemID": 16871
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 10321,
+        "npc": true,
+        "y": 0.8772,
+        "x": 0.5666,
+        "name": "Emberstrife",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 60,
+    "areaID": 15,
+    "raceMask": 8589934770,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "prerequisiteAny": [
+      6570
+    ],
+    "side": "Both",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 10321,
+        "npc": true,
+        "y": 0.8772,
+        "x": 0.5666,
+        "name": "Emberstrife",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Emberstrife",
+        "entityID": 10321
+      }
+    ],
+    "xp": 6600,
+    "questType": "Raid",
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 55,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "The Test of Skulls, Chronalis",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 16871,
+          "name": "The Skull of Chronalis"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Emberstrife",
+          "entityID": 10321
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Emberstrife",
+          "entityID": 10321
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "6585": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "npcTargets": [
+      {
+        "itemName": "The Skull of Axtroz",
+        "name": "Axtroz",
+        "entityID": 12899,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Emberstrife",
+        "entityID": 10321
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "action": "collect",
+        "entityID": 16872,
+        "name": "The Skull of Axtroz"
+      }
+    ],
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1437,
+        "action": "loot",
+        "entityID": 12899,
+        "npc": true,
+        "x": 0.8181999999999999,
+        "y": 0.4824,
+        "objectiveKey": "item:16872",
+        "itemID": 16872,
+        "quantity": 1,
+        "sourceAreaID": 11,
+        "itemName": "The Skull of Axtroz",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Axtroz"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "The Skull of Axtroz",
+        "itemID": 16872
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 10321,
+        "npc": true,
+        "y": 0.8772,
+        "x": 0.5666,
+        "name": "Emberstrife",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 60,
+    "areaID": 15,
+    "prerequisiteAll": [
+      6582,
+      6583,
+      6584
+    ],
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 8589934770,
+    "side": "Both",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 10321,
+        "npc": true,
+        "y": 0.8772,
+        "x": 0.5666,
+        "name": "Emberstrife",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Emberstrife",
+        "entityID": 10321
+      }
+    ],
+    "xp": 6600,
+    "questType": "Raid",
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 55,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "The Test of Skulls, Axtroz",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 16872,
+          "name": "The Skull of Axtroz"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Emberstrife",
+          "entityID": 10321
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Emberstrife",
+          "entityID": 10321
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "6601": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Emberstrife",
+        "entityID": 10321
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Dull Drakefire Amulet",
+        "entityID": 16888
+      }
+    ],
+    "objectives": {},
+    "requiredItems": [
+      {
+        "quantity": 1,
+        "name": "Dull Drakefire Amulet",
+        "itemID": 16888
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "entityID": 10321,
+        "npc": true,
+        "y": 0.8772,
+        "x": 0.5666,
+        "name": "Emberstrife",
+        "sourceAreaID": 15,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1442,
+        "patrol": true,
+        "entityID": 10182,
+        "npc": true,
+        "y": 0.7798999999999999,
+        "x": 0.29719999999999996,
+        "name": "Rexxar",
+        "sourceAreaID": 406,
+        "locationSource": "Published Forever converted-baseline patrol waypoints"
+      }
+    ],
+    "title": "Ascension...",
+    "level": 60,
+    "areaID": 15,
+    "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "missingRequirements": [
+      {
+        "entityType": "item",
+        "quantity": 1,
+        "name": "Dull Drakefire Amulet",
+        "entityID": 16888
+      }
+    ],
+    "side": "Horde",
+    "prerequisiteAny": [
+      6585
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Rexxar",
+        "entityID": 10182
+      }
+    ],
+    "xp": 4950,
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 55,
+    "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "raceMask": 8589934770,
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Dull Drakefire Amulet",
+          "entityID": 16888
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Emberstrife",
+          "entityID": 10321
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Rexxar",
+          "entityID": 10182
+        }
+      ]
+    },
+    "objectiveLocationsIncomplete": true,
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "7541": {
+    "raceMask": 8589934770,
+    "mapID": 1445,
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Zor Lonetree",
+        "entityID": 4047
+      }
+    ],
+    "requirements": {},
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "classMask": 0,
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1454,
+        "entityID": 4047,
+        "npc": true,
+        "y": 0.384,
+        "x": 0.3893,
+        "name": "Zor Lonetree",
+        "sourceAreaID": 1637,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "level": 40,
+    "areaID": 15,
+    "objectives": {},
+    "side": "Horde",
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1454,
+        "entityID": 4047,
+        "npc": true,
+        "y": 0.384,
+        "x": 0.3893,
+        "name": "Zor Lonetree",
+        "sourceAreaID": 1637,
+        "locationSource": "Published Forever converted-baseline entity position"
+      }
+    ],
+    "money": 15000,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Zor Lonetree",
+        "entityID": 4047
+      }
+    ],
+    "xp": 1550,
+    "prerequisiteAny": [
+      1262
+    ],
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "allowedRaceIDs": [
+      2,
+      5,
+      6,
+      8,
+      96
+    ],
+    "minLevel": 30,
+    "prerequisitesRead": true,
+    "title": "Service to the Horde",
+    "foreverStatus": "unchanged",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "8970": {
+    "prerequisitesRead": true,
+    "mapID": 1445,
+    "npcTargets": [
+      {
+        "itemName": "Bloodkelp",
+        "name": "Strashaz Warrior",
+        "entityID": 4364,
+        "npc": true,
+        "action": "loot"
+      }
+    ],
+    "startRefs": [
+      {
+        "entityType": "npc",
+        "name": "Bodley",
+        "entityID": 16033
+      }
+    ],
+    "requirements": [
+      {
+        "entityType": "item",
+        "quantity": 20,
+        "action": "collect",
+        "entityID": 22094,
+        "name": "Bloodkelp"
+      }
+    ],
+    "objectives": [
+      {
+        "entityType": "npc",
+        "mapID": 1445,
+        "action": "loot",
+        "entityID": 4364,
+        "npc": true,
+        "x": 0.7479,
+        "y": 0.1512,
+        "objectiveKey": "item:22094",
+        "itemID": 22094,
+        "quantity": 20,
+        "sourceAreaID": 15,
+        "itemName": "Bloodkelp",
+        "locationSource": "Published Forever converted-baseline entity position",
+        "name": "Strashaz Warrior"
+      }
+    ],
+    "requiredItems": [
+      {
+        "quantity": 20,
+        "name": "Bloodkelp",
+        "itemID": 22094
+      }
+    ],
+    "betaFactsSource": "https://github.com/Questie/QuestieDB",
+    "prerequisiteSource": "Published converted-baseline prerequisites",
+    "starts": [
+      {
+        "entityType": "npc",
+        "mapID": 1427,
+        "name": "Bodley",
+        "y": 0.96457,
+        "entityID": 16033,
+        "x": 0.39875,
+        "locationSource": "Older-world fallback; published Forever 1.60.1.69893 map bounds",
+        "npc": true
+      }
+    ],
+    "classMask": 0,
+    "otherLocationsIncomplete": false,
+    "level": 60,
+    "areaID": 15,
+    "raceMask": 0,
+    "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+    "prerequisiteAny": [
+      8966,
+      8967,
+      8968,
+      8969
+    ],
+    "side": "Both",
+    "ends": [
+      {
+        "entityType": "npc",
+        "mapID": 1427,
+        "name": "Bodley",
+        "y": 0.96457,
+        "entityID": 16033,
+        "x": 0.39875,
+        "locationSource": "Older-world fallback; published Forever 1.60.1.69893 map bounds",
+        "npc": true
+      }
+    ],
+    "money": 0,
+    "endRefs": [
+      {
+        "entityType": "npc",
+        "name": "Bodley",
+        "entityID": 16033
+      }
+    ],
+    "xp": 6600,
+    "questType": "Elite",
+    "foreverStatus": "unchanged",
+    "allowedRaceIDs": {},
+    "minLevel": 58,
+    "requirementSource": "Published Forever typed objectives",
+    "title": "I See Alcaz Island In Your Future...",
+    "worldReferences": {
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 20,
+          "action": "collect",
+          "entityID": 22094,
+          "name": "Bloodkelp"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "name": "Bodley",
+          "entityID": 16033
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "name": "Bodley",
+          "entityID": 16033
+        }
+      ]
+    },
+    "objectiveFactsSource": "Published Forever typed objectives",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  },
+  "9065": {
+    "raceMask": 0,
+    "mapID": 1445,
+    "startRefs": {},
+    "requirements": {},
+    "classMask": 0,
+    "level": 4,
+    "areaID": 15,
+    "money": 225,
+    "endRefs": {},
+    "xp": 540,
+    "objectives": {},
+    "objectiveFactsSource": "Published Forever quest/entity relations",
+    "prerequisitesRead": true,
+    "minLevel": 1,
+    "title": "The \"Chow\" Quest (123)aa",
+    "foreverStatus": "updated",
+    "locationSource": "Wowhead Forever",
+    "categoryPath": "kalimdor/dustwallow-marsh"
+  }
+}

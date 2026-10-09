@@ -1,0 +1,201 @@
+{
+  "nodes": {
+    "BORDER_THOUSAND_NEEDLES_TO_FERALAS": {
+      "y": 0.135,
+      "mapID": 1441,
+      "name": "Border Thousand Needles To Feralas",
+      "x": 0.066,
+      "container": "kalimdor.thousand_needles"
+    },
+    "CONVERGENCE_C1441_422_495": {
+      "y": 0.4947,
+      "mapID": 1441,
+      "name": "Convergence C1441 422 495",
+      "x": 0.4219,
+      "container": "kalimdor.thousand_needles"
+    },
+    "TAXI_30": {
+      "y": 0.4913,
+      "mapID": 1441,
+      "name": "Freewind Post",
+      "faction": "Horde",
+      "x": 0.4502,
+      "container": "kalimdor.thousand_needles"
+    },
+    "BORDER_THOUSAND_NEEDLES_TO_TANARIS": {
+      "y": 0.958,
+      "mapID": 1441,
+      "name": "Border Thousand Needles To Tanaris",
+      "x": 0.75,
+      "container": "kalimdor.thousand_needles"
+    },
+    "BORDER_THOUSAND_NEEDLES_TO_THE_BARRENS": {
+      "y": 0.223,
+      "mapID": 1441,
+      "name": "Border Thousand Needles To The Barrens",
+      "x": 0.319,
+      "container": "kalimdor.thousand_needles"
+    }
+  },
+  "incident_directed_edges": [
+    {
+      "to": "BORDER_THOUSAND_NEEDLES_TO_FERALAS",
+      "seconds": 0,
+      "method": "walk",
+      "from": "BORDER_FERALAS_TO_THOUSAND_NEEDLES"
+    },
+    {
+      "to": "BORDER_THOUSAND_NEEDLES_TO_TANARIS",
+      "seconds": 0,
+      "method": "walk",
+      "from": "BORDER_TANARIS_TO_THOUSAND_NEEDLES"
+    },
+    {
+      "to": "BORDER_THOUSAND_NEEDLES_TO_THE_BARRENS",
+      "seconds": 0,
+      "method": "walk",
+      "from": "BORDER_THE_BARRENS_TO_THOUSAND_NEEDLES"
+    },
+    {
+      "to": "BORDER_FERALAS_TO_THOUSAND_NEEDLES",
+      "seconds": 0,
+      "method": "walk",
+      "from": "BORDER_THOUSAND_NEEDLES_TO_FERALAS"
+    },
+    {
+      "to": "BORDER_THOUSAND_NEEDLES_TO_TANARIS",
+      "distance": 4436.93,
+      "method": "walk",
+      "from": "BORDER_THOUSAND_NEEDLES_TO_FERALAS"
+    },
+    {
+      "to": "BORDER_THOUSAND_NEEDLES_TO_THE_BARRENS",
+      "distance": 1314.15,
+      "method": "walk",
+      "from": "BORDER_THOUSAND_NEEDLES_TO_FERALAS"
+    },
+    {
+      "to": "CONVERGENCE_C1441_422_495",
+      "distance": 2171.49,
+      "method": "walk",
+      "from": "BORDER_THOUSAND_NEEDLES_TO_FERALAS"
+    },
+    {
+      "to": "TAXI_30",
+      "distance": 2285.6,
+      "method": "walk",
+      "from": "BORDER_THOUSAND_NEEDLES_TO_FERALAS"
+    },
+    {
+      "to": "BORDER_TANARIS_TO_THOUSAND_NEEDLES",
+      "seconds": 0,
+      "method": "walk",
+      "from": "BORDER_THOUSAND_NEEDLES_TO_TANARIS"
+    },
+    {
+      "to": "BORDER_THOUSAND_NEEDLES_TO_FERALAS",
+      "distance": 4436.93,
+      "method": "walk",
+      "from": "BORDER_THOUSAND_NEEDLES_TO_TANARIS"
+    },
+    {
+      "to": "BORDER_THOUSAND_NEEDLES_TO_THE_BARRENS",
+      "distance": 3302.06,
+      "method": "walk",
+      "from": "BORDER_THOUSAND_NEEDLES_TO_TANARIS"
+    },
+    {
+      "to": "CONVERGENCE_C1441_422_495",
+      "distance": 2280.08,
+      "method": "walk",
+      "from": "BORDER_THOUSAND_NEEDLES_TO_TANARIS"
+    },
+    {
+      "to": "TAXI_30",
+      "distance": 2186.27,
+      "method": "walk",
+      "from": "BORDER_THOUSAND_NEEDLES_TO_TANARIS"
+    },
+    {
+      "to": "BORDER_THE_BARRENS_TO_THOUSAND_NEEDLES",
+      "seconds": 0,
+      "method": "walk",
+      "from": "BORDER_THOUSAND_NEEDLES_TO_THE_BARRENS"
+    },
+    {
+      "to": "BORDER_THOUSAND_NEEDLES_TO_FERALAS",
+      "distance": 1314.15,
+      "method": "walk",
+      "from": "BORDER_THOUSAND_NEEDLES_TO_THE_BARRENS"
+    },
+    {
+      "to": "BORDER_THOUSAND_NEEDLES_TO_TANARIS",
+      "distance": 3302.06,
+      "method": "walk",
+      "from": "BORDER_THOUSAND_NEEDLES_TO_THE_BARRENS"
+    },
+    {
+      "to": "CONVERGENCE_C1441_422_495",
+      "distance": 1054.11,
+      "method": "walk",
+      "from": "BORDER_THOUSAND_NEEDLES_TO_THE_BARRENS"
+    },
+    {
+      "to": "TAXI_30",
+      "distance": 1122.44,
+      "method": "walk",
+      "from": "BORDER_THOUSAND_NEEDLES_TO_THE_BARRENS"
+    },
+    {
+      "to": "BORDER_THOUSAND_NEEDLES_TO_FERALAS",
+      "distance": 2171.49,
+      "method": "walk",
+      "from": "CONVERGENCE_C1441_422_495"
+    },
+    {
+      "to": "BORDER_THOUSAND_NEEDLES_TO_TANARIS",
+      "distance": 2280.08,
+      "method": "walk",
+      "from": "CONVERGENCE_C1441_422_495"
+    },
+    {
+      "to": "BORDER_THOUSAND_NEEDLES_TO_THE_BARRENS",
+      "distance": 1054.11,
+      "method": "walk",
+      "from": "CONVERGENCE_C1441_422_495"
+    },
+    {
+      "to": "TAXI_30",
+      "distance": 143.66,
+      "method": "walk",
+      "from": "CONVERGENCE_C1441_422_495"
+    },
+    {
+      "to": "BORDER_THOUSAND_NEEDLES_TO_FERALAS",
+      "distance": 2285.6,
+      "method": "walk",
+      "from": "TAXI_30"
+    },
+    {
+      "to": "BORDER_THOUSAND_NEEDLES_TO_TANARIS",
+      "distance": 2186.27,
+      "method": "walk",
+      "from": "TAXI_30"
+    },
+    {
+      "to": "BORDER_THOUSAND_NEEDLES_TO_THE_BARRENS",
+      "distance": 1122.44,
+      "method": "walk",
+      "from": "TAXI_30"
+    },
+    {
+      "to": "CONVERGENCE_C1441_422_495",
+      "distance": 143.66,
+      "method": "walk",
+      "from": "TAXI_30"
+    }
+  ],
+  "terrain_sha256": "a74342fe846efb3a0530814049514b93d54b0a07cb56fbf6b012e6c7f0dcdec0",
+  "travel_sha256": "1970f9f8d5298253b468a584fb40a72c62a67061c6f193e92de8ebf89d3de686",
+  "limitations": "Existing graph/transit and twelve approximate footprints only. No Freewind lift base/top/elevation/road approach supplied. No changes applied."
+}

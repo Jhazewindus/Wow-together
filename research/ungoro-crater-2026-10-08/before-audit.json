@@ -1,0 +1,125 @@
+{
+  "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
+  "quest_records": 19,
+  "static_points_checked": 52,
+  "fixed_zone_guides_checked": 2,
+  "catalogue_reason_stages_checked": 63,
+  "catalogue_reason_codes": {
+    "level-work": 19,
+    "quest-objective": 25,
+    "quest-reward": 19
+  },
+  "reason_review_quest_ids": [
+    3844,
+    3845,
+    3881,
+    3882,
+    3883,
+    3884,
+    3908,
+    3914,
+    3941,
+    4141,
+    4142,
+    4143,
+    4144,
+    4145,
+    4146,
+    4147,
+    4148,
+    4243,
+    4503
+  ],
+  "source_data_gap_free_guides": 0,
+  "guides": [
+    {
+      "faction": "Alliance",
+      "zone": "Ungoro Crater",
+      "key": "level-zone:kalimdor/ungoro-crater:levels:51-60",
+      "quests": 41,
+      "steps": 139,
+      "unknown_location_steps": 6,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [
+          3845,
+          4084,
+          4321,
+          4492,
+          9051
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 3,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 139,
+      "destination_reason_codes": {
+        "class-progression": 6,
+        "early-reward": 1,
+        "outside-level-range": 69,
+        "prerequisite": 33,
+        "quest-reward": 26,
+        "return-hub": 4
+      },
+      "reason_review_steps": 73,
+      "cross_zone_reason_steps": 14,
+      "flow_alternatives_evaluated": 38,
+      "flow_loop_changes": 2,
+      "flow_state_valid": true,
+      "quest_log_peak": 12,
+      "quest_reward_only_xp_shortfall": 480320,
+      "uncertain_travel_legs": 41,
+      "estimated_distance_before": 282464.2,
+      "estimated_distance_after": 282464.2
+    },
+    {
+      "faction": "Horde",
+      "zone": "Ungoro Crater",
+      "key": "level-zone:kalimdor/ungoro-crater:levels:51-60",
+      "quests": 41,
+      "steps": 142,
+      "unknown_location_steps": 7,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [
+          3845,
+          4084,
+          4146,
+          4321,
+          4492,
+          9051
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 142,
+      "destination_reason_codes": {
+        "class-progression": 6,
+        "early-reward": 1,
+        "outside-level-range": 67,
+        "prerequisite": 39,
+        "quest-reward": 25,
+        "return-hub": 4
+      },
+      "reason_review_steps": 70,
+      "cross_zone_reason_steps": 14,
+      "flow_alternatives_evaluated": 40,
+      "flow_loop_changes": 2,
+      "flow_state_valid": true,
+      "quest_log_peak": 12,
+      "quest_reward_only_xp_shortfall": 480320,
+      "uncertain_travel_legs": 47,
+      "estimated_distance_before": 305203.12,
+      "estimated_distance_after": 305203.12
+    }
+  ],
+  "scope": {
+    "zone": "Un'Goro Crater",
+    "catalogue_records": "Exact quest zone; guide dependencies still compile normally"
+  }
+}

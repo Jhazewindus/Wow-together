@@ -1,0 +1,149 @@
+.....................................................F...F....F.........F....F....F........F......F.......F..............
+======================================================================
+FAIL: test_rules_remain_atomic_and_idempotent (test_tanaris_coverage.TanarisFactsTests.test_rules_remain_atomic_and_idempotent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Wow-together-guides/tests/test_tanaris_coverage.py", line 69, in test_rules_remain_atomic_and_idempotent
+    q=copy.deepcopy(self.quests);self.assertEqual(apply_stage_corrections(q),[])
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [91317] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+91317
+
+- [91317]
++ []
+
+======================================================================
+FAIL: test_fixed_orders_and_atomic_guard_preserve_progress (test_teldrassil_coverage.TeldrassilCoverageTests.test_fixed_orders_and_atomic_guard_preserve_progress)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Wow-together-guides/tests/test_teldrassil_coverage.py", line 41, in test_fixed_orders_and_atomic_guard_preserve_progress
+    q=copy.deepcopy(self.q);self.assertEqual(apply_stage_corrections(q),[]);q[921]['requiredItems'][0]['quantity']=2;old=copy.deepcopy(q)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [91317] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+91317
+
+- [91317]
++ []
+
+======================================================================
+FAIL: test_corrections_are_atomic_and_reapplication_preserves_newer_facts (test_thoradin_coverage.ThoradinCoverageTests.test_corrections_are_atomic_and_reapplication_preserves_newer_facts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Wow-together-guides/tests/test_thoradin_coverage.py", line 72, in test_corrections_are_atomic_and_reapplication_preserves_newer_facts
+    rows=copy.deepcopy(self.quests);self.assertEqual(apply_stage_corrections(rows),[])
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [91317] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+91317
+
+- [91317]
++ []
+
+======================================================================
+FAIL: test_unknown_mechanics_pickups_quantities_and_atomic_guard_remain (test_tirisfal_coverage.TirisfalCoverageTests.test_unknown_mechanics_pickups_quantities_and_atomic_guard_remain)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Wow-together-guides/tests/test_tirisfal_coverage.py", line 36, in test_unknown_mechanics_pickups_quantities_and_atomic_guard_remain
+    q=copy.deepcopy(self.q);self.assertEqual(apply_stage_corrections(q),[]);q[91317]['requiredItems'][0]['quantity']=2;old=copy.deepcopy(q)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [91317] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+91317
+
+- [91317]
++ []
+
+======================================================================
+FAIL: test_reviewed_alternatives_and_supplied_items_are_atomic_and_idempotent (test_ungoro_coverage.UngoroCoverageTests.test_reviewed_alternatives_and_supplied_items_are_atomic_and_idempotent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Wow-together-guides/tests/test_ungoro_coverage.py", line 103, in test_reviewed_alternatives_and_supplied_items_are_atomic_and_idempotent
+    q=copy.deepcopy(self.quests);self.assertEqual(apply_stage_corrections(q),[])
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [91317] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+91317
+
+- [91317]
++ []
+
+======================================================================
+FAIL: test_corrections_are_atomic_and_repeat_without_mutating_world_checks (test_westfall_coverage.WestfallCoverageTests.test_corrections_are_atomic_and_repeat_without_mutating_world_checks)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Wow-together-guides/tests/test_westfall_coverage.py", line 89, in test_corrections_are_atomic_and_repeat_without_mutating_world_checks
+    q=copy.deepcopy(self.quests);self.assertEqual(apply_stage_corrections(q),[])
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [91317] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+91317
+
+- [91317]
++ []
+
+======================================================================
+FAIL: test_corrections_are_idempotent_and_fail_atomically_on_conflicts (test_wetlands_coverage.WetlandsCoverageTests.test_corrections_are_idempotent_and_fail_atomically_on_conflicts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Wow-together-guides/tests/test_wetlands_coverage.py", line 117, in test_corrections_are_idempotent_and_fail_atomically_on_conflicts
+    q=copy.deepcopy(self.quests);self.assertEqual(apply_stage_corrections(q),[])
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [91317] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+91317
+
+- [91317]
++ []
+
+======================================================================
+FAIL: test_fixed_order_and_atomic_reapplication_preserve_user_progress (test_winterspring_coverage.WinterspringCoverageTests.test_fixed_order_and_atomic_reapplication_preserve_user_progress)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Wow-together-guides/tests/test_winterspring_coverage.py", line 80, in test_fixed_order_and_atomic_reapplication_preserve_user_progress
+    q=copy.deepcopy(self.q);self.assertEqual(apply_stage_corrections(q),[])
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [91317] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+91317
+
+- [91317]
++ []
+
+======================================================================
+FAIL: test_corrections_are_idempotent_and_conflicts_leave_all_records_untouched (test_wpl_coverage.WplCoverageTests.test_corrections_are_idempotent_and_conflicts_leave_all_records_untouched)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Wow-together-guides/tests/test_wpl_coverage.py", line 102, in test_corrections_are_idempotent_and_conflicts_leave_all_records_untouched
+    q=copy.deepcopy(self.quests);self.assertEqual(apply_stage_corrections(q),[])
+                                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Lists differ: [91317] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+91317
+
+- [91317]
++ []
+
+----------------------------------------------------------------------
+Ran 121 tests in 154.556s
+
+FAILED (failures=9)

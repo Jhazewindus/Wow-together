@@ -1,0 +1,400 @@
+{
+  "date": "2026-10-08",
+  "baseline": {
+    "main": "67ff36412ede50154ec3a8b2aecb148e72ffb568",
+    "branch_before": "2249deb628be5f076842beed80fb240de910dd3e",
+    "version": "0.8.59"
+  },
+  "status": "Data/research draft; main-developer coordination needed for full-route optimization and isolated elite section.",
+  "source_manifest": {
+    "file": "../../tools/forever_source_manifest.json",
+    "commit": "e0a6eaa86f181ac99262e34126bcd2ed1a1712d6",
+    "verified_files": 24
+  },
+  "scope": {
+    "compiled_distinct_ids": 74,
+    "standard_actions": [
+      191,
+      66,
+      13
+    ],
+    "tauren_actions": [
+      200,
+      69,
+      13
+    ],
+    "quest_pages_captured": 75,
+    "zone_list_entries": 61,
+    "excluded_isolated_elite": 96261,
+    "inventory": "inventory.json"
+  },
+  "corrections": [
+    {
+      "questID": 99081,
+      "title": "Grim Tidings",
+      "previousQuest": 99079,
+      "previousTitle": "Longwalker Malah",
+      "source": "Reviewed linear Forever chain: https://www.wowhead.com/forever/quest=99081; captured 2026-10-08; SHA-256 c12ffa4c40e64b11a281907e602df0ee9ed868e9dc17d032e998faa5b69373ce. Cross-checked all five chain pages. Actual predecessor hand-in required; retain reviewed NPC-offer confirmation and unknown additional availability conditions."
+    },
+    {
+      "questID": 99101,
+      "title": "Our Ancient Enemy",
+      "previousQuest": 99081,
+      "previousTitle": "Grim Tidings",
+      "source": "Reviewed linear Forever chain: https://www.wowhead.com/forever/quest=99101; captured 2026-10-08; SHA-256 3170464de87c9be477497c4264f06d01cb6dc4930114bd203d0deb7fd6976764. Cross-checked all five chain pages. Actual predecessor hand-in required; retain reviewed NPC-offer confirmation and unknown additional availability conditions."
+    },
+    {
+      "questID": 99082,
+      "title": "The High Chieftain",
+      "previousQuest": 99080,
+      "previousTitle": "Drive Them Out",
+      "source": "Reviewed linear Forever chain: https://www.wowhead.com/forever/quest=99082; captured 2026-10-08; SHA-256 90a631482b18ff69253e63d72aa50d39ee7c2a05b9a6974244dba440d1b690c5. Cross-checked all five chain pages. Actual predecessor hand-in required; retain reviewed NPC-offer confirmation and unknown additional availability conditions."
+    },
+    {
+      "questID": 745,
+      "title": "Sharing the Land",
+      "stageCorrection": {
+        "kind": "npc-location",
+        "minLevel": 1,
+        "level": 8,
+        "classMask": 0,
+        "requiredItems": [],
+        "entityID": 2993,
+        "roles": [
+          "starts",
+          "ends"
+        ],
+        "before": {
+          "mapID": 1412,
+          "x": 0.4667,
+          "y": 0.6338
+        },
+        "after": {
+          "mapID": 1412,
+          "x": 0.474,
+          "y": 0.602
+        }
+      },
+      "source": "Reviewed Baine Bloodhoof location: https://www.wowhead.com/forever/npc=2993; captured 2026-10-08; SHA-256 87dba9712f038ef6a02088122d7c3f55b280e499ab0914f18725db12b44f524e. Corresponding Forever quest mapper agrees on 47.4,60.2; supersedes the converted-baseline representative, not a surveyed path or spawn guarantee."
+    },
+    {
+      "questID": 746,
+      "title": "Dwarven Digging",
+      "stageCorrection": {
+        "kind": "npc-location",
+        "minLevel": 6,
+        "level": 8,
+        "classMask": 0,
+        "requiredItems": [
+          {
+            "quantity": 5,
+            "name": "Broken Tools",
+            "itemID": 4703
+          }
+        ],
+        "entityID": 2993,
+        "roles": [
+          "starts",
+          "ends"
+        ],
+        "before": {
+          "mapID": 1412,
+          "x": 0.4667,
+          "y": 0.6338
+        },
+        "after": {
+          "mapID": 1412,
+          "x": 0.474,
+          "y": 0.602
+        }
+      },
+      "source": "Reviewed Baine Bloodhoof location: https://www.wowhead.com/forever/npc=2993; captured 2026-10-08; SHA-256 87dba9712f038ef6a02088122d7c3f55b280e499ab0914f18725db12b44f524e. Corresponding Forever quest mapper agrees on 47.4,60.2; supersedes the converted-baseline representative, not a surveyed path or spawn guarantee."
+    },
+    {
+      "questID": 99082,
+      "title": "The High Chieftain",
+      "stageCorrection": {
+        "kind": "npc-location",
+        "minLevel": 4,
+        "level": 9,
+        "classMask": 0,
+        "requiredItems": [],
+        "entityID": 2993,
+        "roles": [
+          "starts"
+        ],
+        "before": {
+          "mapID": 1412,
+          "x": 0.4667,
+          "y": 0.6338
+        },
+        "after": {
+          "mapID": 1412,
+          "x": 0.474,
+          "y": 0.602
+        }
+      },
+      "source": "Reviewed Baine Bloodhoof location: https://www.wowhead.com/forever/npc=2993; captured 2026-10-08; SHA-256 87dba9712f038ef6a02088122d7c3f55b280e499ab0914f18725db12b44f524e. Corresponding Forever quest mapper agrees on 47.4,60.2; supersedes the converted-baseline representative, not a surveyed path or spawn guarantee."
+    },
+    {
+      "questID": 99101,
+      "title": "Our Ancient Enemy",
+      "stageCorrection": {
+        "kind": "npc-location",
+        "minLevel": 4,
+        "level": 9,
+        "classMask": 0,
+        "requiredItems": [],
+        "entityID": 2993,
+        "roles": [
+          "ends"
+        ],
+        "before": {
+          "mapID": 1412,
+          "x": 0.4667,
+          "y": 0.6338
+        },
+        "after": {
+          "mapID": 1412,
+          "x": 0.474,
+          "y": 0.602
+        }
+      },
+      "source": "Reviewed Baine Bloodhoof location: https://www.wowhead.com/forever/npc=2993; captured 2026-10-08; SHA-256 87dba9712f038ef6a02088122d7c3f55b280e499ab0914f18725db12b44f524e. Corresponding Forever quest mapper agrees on 47.4,60.2; supersedes the converted-baseline representative, not a surveyed path or spawn guarantee."
+    },
+    {
+      "questID": 758,
+      "title": "Thunderhorn Cleansing",
+      "stageCorrection": {
+        "kind": "npc-location",
+        "minLevel": 4,
+        "level": 8,
+        "classMask": 0,
+        "requiredItems": [],
+        "entityID": 2948,
+        "roles": [
+          "starts",
+          "ends"
+        ],
+        "before": {
+          "mapID": 1412,
+          "x": 0.474,
+          "y": 0.634
+        },
+        "after": {
+          "mapID": 1412,
+          "x": 0.484,
+          "y": 0.604
+        }
+      },
+      "source": "Reviewed Mull Thunderhorn location: https://www.wowhead.com/forever/quest=758; captured 2026-10-08; SHA-256 1c6c2f6914b82ff9409e095a7cb92d3b12e7113b761637d00234bdbdd0721916. Quest start/end mapper selects 48.4,60.4, matching the other current cleansing-chain pages; supersedes converted-baseline representative."
+    },
+    {
+      "questID": 759,
+      "title": "Wildmane Totem",
+      "stageCorrection": {
+        "kind": "npc-location",
+        "minLevel": 4,
+        "level": 10,
+        "classMask": 0,
+        "requiredItems": [
+          {
+            "quantity": 8,
+            "name": "Prairie Alpha Tooth",
+            "itemID": 4803
+          }
+        ],
+        "entityID": 2948,
+        "roles": [
+          "starts",
+          "ends"
+        ],
+        "before": {
+          "mapID": 1412,
+          "x": 0.474,
+          "y": 0.634
+        },
+        "after": {
+          "mapID": 1412,
+          "x": 0.484,
+          "y": 0.604
+        }
+      },
+      "source": "Reviewed Mull Thunderhorn location: https://www.wowhead.com/forever/quest=759; captured 2026-10-08; SHA-256 f1a373217e8e83cbdb2dbcebd607e00468592aa01702e7e32a1d0c6ba70f01a2. Quest start/end mapper selects 48.4,60.4, matching the other current cleansing-chain pages; supersedes converted-baseline representative."
+    },
+    {
+      "questID": 760,
+      "title": "Wildmane Cleansing",
+      "stageCorrection": {
+        "kind": "npc-location",
+        "minLevel": 4,
+        "level": 10,
+        "classMask": 0,
+        "requiredItems": [],
+        "entityID": 2948,
+        "roles": [
+          "starts",
+          "ends"
+        ],
+        "before": {
+          "mapID": 1412,
+          "x": 0.474,
+          "y": 0.634
+        },
+        "after": {
+          "mapID": 1412,
+          "x": 0.484,
+          "y": 0.604
+        }
+      },
+      "source": "Reviewed Mull Thunderhorn location: https://www.wowhead.com/forever/quest=760; captured 2026-10-08; SHA-256 0199cf5c912e558eebcee3330e98e9cd4254f9712695fbfc102a878edc67497f. Quest start/end mapper selects 48.4,60.4, matching the other current cleansing-chain pages; supersedes converted-baseline representative."
+    }
+  ],
+  "before": {
+    "missing_location_quest_ids_by_stage": {
+      "a": [
+        96294
+      ],
+      "q": [],
+      "t": []
+    },
+    "unverified_pickup_requirement_quest_ids": [
+      861,
+      1516,
+      1519,
+      2984,
+      2986,
+      5655,
+      5661,
+      5928,
+      99082,
+      99101
+    ],
+    "unverified_objective_quantity_quest_ids": []
+  },
+  "after": {
+    "missing_location_quest_ids_by_stage": {
+      "a": [
+        96294
+      ],
+      "q": [],
+      "t": []
+    },
+    "unverified_pickup_requirement_quest_ids": [
+      861,
+      1516,
+      1519,
+      2984,
+      2986,
+      5655,
+      5661,
+      5928,
+      99082,
+      99101
+    ],
+    "unverified_objective_quantity_quest_ids": []
+  },
+  "additional_tauren_unverified_pickup_requirements": [
+    854
+  ],
+  "validation": {
+    "changed_quest_ids": [
+      745,
+      746,
+      758,
+      759,
+      760,
+      99081,
+      99082,
+      99101
+    ],
+    "changed_fields": {
+      "745": [
+        "ends",
+        "stageCorrectionSource",
+        "starts"
+      ],
+      "746": [
+        "ends",
+        "stageCorrectionSource",
+        "starts"
+      ],
+      "758": [
+        "ends",
+        "stageCorrectionSource",
+        "starts"
+      ],
+      "759": [
+        "ends",
+        "stageCorrectionSource",
+        "starts"
+      ],
+      "760": [
+        "ends",
+        "stageCorrectionSource",
+        "starts"
+      ],
+      "99081": [
+        "prerequisiteSource",
+        "previousQuest"
+      ],
+      "99082": [
+        "prerequisiteSource",
+        "previousQuest",
+        "stageCorrectionSource",
+        "starts"
+      ],
+      "99101": [
+        "ends",
+        "prerequisiteSource",
+        "previousQuest",
+        "stageCorrectionSource"
+      ]
+    },
+    "unchanged_datasets": [
+      "questEntities",
+      "worldQuestChecks",
+      "xpBaseline"
+    ],
+    "lua51_files_compiled": 83,
+    "interface": 16001,
+    "full_suite": {
+      "tests": 1459,
+      "passed": 1458,
+      "failed": 1,
+      "failure": "test_0829.PackedDataTests.test_all_source_fields_match_pre_packing_fingerprints: catalogue",
+      "baseline": "Same historical catalogue assertion fails on main; no fingerprint fixture changed."
+    },
+    "initial_focused_suite": {
+      "tests": 98,
+      "passed": 98
+    },
+    "full_audit": {
+      "sections": 152,
+      "static_points": 11823,
+      "gap_free_sections": 33,
+      "changed_entries": [
+        "Horde/Mulgore/1-10"
+      ]
+    },
+    "identical_order_replay_passed": true,
+    "reapplication": "No changes",
+    "native_beta": "Not run; player checklist required"
+  },
+  "route_review": {
+    "standard": "repriced-flow.json",
+    "tauren": "repriced-tauren-flow.json",
+    "passes_optimization_guard": false,
+    "candidate_valid_states": 24,
+    "baseline_note": "1-10 old orders violate corrected prerequisite facts; old distances do not describe valid completed routes.",
+    "other_chapters": "Unchanged metrics and order"
+  },
+  "shared_code_handoff": {
+    "modules_changed": [],
+    "issues": [
+      "Further optimization requires valid corrected prerequisites while preserving full scope and early rewards.",
+      "LevelingGuides.lua buildChoice suppresses fewer than two enabled records; elite Broodmother 96261 has no visible 31-40 section. Preserve level31/min23 facts; coordinate a shared visibility decision."
+    ]
+  },
+  "player_checklist": "README.md#player-checklist"
+}

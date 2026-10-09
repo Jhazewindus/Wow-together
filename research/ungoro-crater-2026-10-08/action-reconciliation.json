@@ -1,0 +1,33 @@
+{
+  "no_optimization_gain_claimed": true,
+  "removed_false_work_stages": [
+    {
+      "faction": "Horde",
+      "removed_stage": {
+        "id": 4492,
+        "kind": "q",
+        "mapID": 1449,
+        "entityID": 15722,
+        "entityType": "item",
+        "objectiveKey": "item:15722",
+        "quantity": 1,
+        "unknownLocation": true
+      },
+      "reason": "Supplied canteen falsely treated as a separate farm"
+    },
+    {
+      "faction": "Alliance",
+      "removed_stage": {
+        "id": 4492,
+        "kind": "q",
+        "mapID": 1449,
+        "entityID": 15722,
+        "entityType": "item",
+        "objectiveKey": "item:15722",
+        "quantity": 1,
+        "unknownLocation": true
+      },
+      "reason": "Supplied canteen falsely treated as a separate farm"
+    }
+  ]
+}

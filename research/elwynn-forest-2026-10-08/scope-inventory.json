@@ -1,0 +1,1567 @@
+[
+  {
+    "questID": 6,
+    "title": "Bounty on Garrick Padfoot",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 5,
+    "minLevel": 2,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "prerequisiteAny": [
+      18
+    ],
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 7,
+    "title": "Kobold Camp Cleanup",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 2,
+    "minLevel": 1,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 783,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 11,
+    "title": "Riverpaw Gnoll Bounty",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 10,
+    "minLevel": 6,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 239,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 15,
+    "title": "Investigate Echo Ridge",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 3,
+    "minLevel": 1,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      7
+    ],
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 18,
+    "title": "Brotherhood of Thieves",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 4,
+    "minLevel": 2,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      783
+    ],
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 21,
+    "title": "Skirmish at Echo Ridge",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 5,
+    "minLevel": 1,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 15,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 33,
+    "title": "Wolves Across the Border",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 2,
+    "minLevel": 1,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 5261,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 35,
+    "title": "Further Concerns",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 10,
+    "minLevel": 7,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 40,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 37,
+    "title": "Find the Lost Guards",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 10,
+    "minLevel": 7,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 35,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 39,
+    "title": "Deliver Thomas' Report",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 10,
+    "minLevel": 7,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 71,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 40,
+    "title": "A Fishy Peril",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 10,
+    "minLevel": 7,
+    "classMask": 0,
+    "raceMask": 0,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 45,
+    "title": "Discover Rolf's Fate",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 10,
+    "minLevel": 7,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 37,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 46,
+    "title": "Bounty on Murlocs",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 10,
+    "minLevel": 7,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      39
+    ],
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 47,
+    "title": "Gold Dust Exchange",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 7,
+    "minLevel": 4,
+    "classMask": 0,
+    "raceMask": 0,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 52,
+    "title": "Protect the Frontier",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 10,
+    "minLevel": 7,
+    "classMask": 0,
+    "raceMask": 0,
+    "stage_counts": {
+      "a": 1,
+      "q": 2,
+      "t": 1
+    }
+  },
+  {
+    "questID": 54,
+    "title": "Report to Goldshire",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 5,
+    "minLevel": 1,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      21
+    ],
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 59,
+    "title": "Cloth and Leather Armor",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 10,
+    "minLevel": 7,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 39,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 60,
+    "title": "Kobold Candles",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 7,
+    "minLevel": 3,
+    "classMask": 0,
+    "raceMask": 0,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 61,
+    "title": "Shipment to Stormwind",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 7,
+    "minLevel": 3,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 60,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 62,
+    "title": "The Fargodeep Mine",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 7,
+    "minLevel": 4,
+    "classMask": 0,
+    "raceMask": 0,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 71,
+    "title": "Report to Thomas",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 10,
+    "minLevel": 7,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 45,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 76,
+    "title": "The Jasperlode Mine",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 10,
+    "minLevel": 4,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 62,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 83,
+    "title": "Red Linen Goods",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 9,
+    "minLevel": 4,
+    "classMask": 0,
+    "raceMask": 0,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 84,
+    "title": "Back to Billy",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 6,
+    "minLevel": 5,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 86,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 85,
+    "title": "Lost Necklace",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 6,
+    "minLevel": 5,
+    "classMask": 0,
+    "raceMask": 0,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 86,
+    "title": "Pie for Billy",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 6,
+    "minLevel": 5,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 85,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 87,
+    "title": "Goldtooth",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 8,
+    "minLevel": 5,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 84,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 88,
+    "title": "Princess Must Die!",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 9,
+    "minLevel": 6,
+    "classMask": 0,
+    "raceMask": 0,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 106,
+    "title": "Young Lovers",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 6,
+    "minLevel": 5,
+    "classMask": 0,
+    "raceMask": 0,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 107,
+    "title": "Note to William",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 6,
+    "minLevel": 5,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 111,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 109,
+    "title": "Report to Gryan Stoutmantle",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 10,
+    "minLevel": 9,
+    "classMask": 0,
+    "raceMask": 0,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 111,
+    "title": "Speak with Gramma",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 6,
+    "minLevel": 5,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 106,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 112,
+    "title": "Collecting Kelp",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 7,
+    "minLevel": 5,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 107,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 114,
+    "title": "The Escape",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 7,
+    "minLevel": 5,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      112
+    ],
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 123,
+    "title": "The Collector",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 10,
+    "minLevel": 7,
+    "classMask": 0,
+    "raceMask": 0,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 147,
+    "title": "Manhunt",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 10,
+    "minLevel": 7,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      123
+    ],
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 239,
+    "title": "Westbrook Garrison Needs Help!",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 10,
+    "minLevel": 6,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      76
+    ],
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 783,
+    "title": "A Threat Within",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 1,
+    "minLevel": 1,
+    "classMask": 0,
+    "raceMask": 0,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 1598,
+    "title": "The Stolen Tome",
+    "categoryPath": "classes/warlock",
+    "zone": "Warlock",
+    "level": 4,
+    "minLevel": 1,
+    "classMask": 256,
+    "raceMask": 4294967373,
+    "prerequisitesUnverified": true,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 1638,
+    "title": "A Warrior's Training",
+    "categoryPath": "classes/warrior",
+    "zone": "Warrior",
+    "level": 10,
+    "minLevel": 10,
+    "classMask": 1,
+    "raceMask": 4294967373,
+    "prerequisitesUnverified": true,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 1639,
+    "title": "Bartleby the Drunk",
+    "categoryPath": "classes/warrior",
+    "zone": "Warrior",
+    "level": 10,
+    "minLevel": 10,
+    "classMask": 1,
+    "raceMask": 4294967373,
+    "prerequisitesUnverified": true,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 1640,
+    "title": "Beat Bartleby",
+    "categoryPath": "classes/warrior",
+    "zone": "Warrior",
+    "level": 10,
+    "minLevel": 10,
+    "classMask": 1,
+    "raceMask": 4294967373,
+    "prerequisiteAny": [
+      1639,
+      1678,
+      1683
+    ],
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 1665,
+    "title": "Bartleby's Mug",
+    "categoryPath": "classes/warrior",
+    "zone": "Warrior",
+    "level": 10,
+    "minLevel": 10,
+    "classMask": 1,
+    "raceMask": 4294967373,
+    "prerequisiteAny": [
+      1640
+    ],
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 1666,
+    "title": "Marshal Haggard",
+    "categoryPath": "classes/warrior",
+    "zone": "Warrior",
+    "level": 10,
+    "minLevel": 10,
+    "classMask": 1,
+    "raceMask": 4294967373,
+    "prerequisiteAny": [
+      1665
+    ],
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 1667,
+    "title": "Dead-tooth Jack",
+    "categoryPath": "classes/warrior",
+    "zone": "Warrior",
+    "level": 10,
+    "minLevel": 10,
+    "classMask": 1,
+    "raceMask": 4294967373,
+    "prerequisiteAny": [
+      1666
+    ],
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 1678,
+    "title": "Vejrek",
+    "categoryPath": "classes/warrior",
+    "level": 11,
+    "minLevel": 10,
+    "classMask": 1,
+    "raceMask": 4294967373,
+    "prerequisitesUnverified": true,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 1683,
+    "title": "Vorlus Vilehoof",
+    "categoryPath": "classes/warrior",
+    "level": 10,
+    "minLevel": 10,
+    "classMask": 1,
+    "raceMask": 4294967373,
+    "prerequisitesUnverified": true,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 1685,
+    "title": "Gakin's Summons",
+    "categoryPath": "classes/warlock",
+    "zone": "Warlock",
+    "level": 10,
+    "minLevel": 10,
+    "classMask": 256,
+    "raceMask": 4294967373,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 1860,
+    "title": "Speak with Jennea",
+    "categoryPath": "classes/mage",
+    "level": 10,
+    "minLevel": 10,
+    "classMask": 128,
+    "raceMask": 65,
+    "prerequisitesUnverified": true,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 2158,
+    "title": "Rest and Relaxation",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 5,
+    "minLevel": 1,
+    "classMask": 0,
+    "raceMask": 0,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 2205,
+    "title": "Seek out SI: 7",
+    "categoryPath": "classes/rogue",
+    "level": 10,
+    "minLevel": 10,
+    "classMask": 8,
+    "raceMask": 4294967373,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 3100,
+    "title": "Simple Letter",
+    "categoryPath": "classes/warrior",
+    "level": 1,
+    "minLevel": 1,
+    "classMask": 1,
+    "raceMask": 1,
+    "prerequisiteAny": [
+      7
+    ],
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 3101,
+    "title": "Consecrated Letter",
+    "categoryPath": "classes/paladin",
+    "level": 1,
+    "minLevel": 1,
+    "classMask": 2,
+    "raceMask": 1,
+    "prerequisiteAny": [
+      7
+    ],
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 3102,
+    "title": "Encrypted Letter",
+    "categoryPath": "classes/rogue",
+    "level": 1,
+    "minLevel": 1,
+    "classMask": 8,
+    "raceMask": 1,
+    "prerequisiteAny": [
+      7
+    ],
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 3103,
+    "title": "Hallowed Letter",
+    "categoryPath": "classes/priest",
+    "level": 1,
+    "minLevel": 1,
+    "classMask": 16,
+    "raceMask": 1,
+    "prerequisiteAny": [
+      7
+    ],
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 3104,
+    "title": "Glyphic Letter",
+    "categoryPath": "classes/mage",
+    "zone": "Mage",
+    "level": 1,
+    "minLevel": 1,
+    "classMask": 128,
+    "raceMask": 1,
+    "prerequisiteAny": [
+      7
+    ],
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 3105,
+    "title": "Tainted Letter",
+    "categoryPath": "classes/warlock",
+    "zone": "Warlock",
+    "level": 1,
+    "minLevel": 1,
+    "classMask": 256,
+    "raceMask": 65,
+    "prerequisiteAny": [
+      7
+    ],
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 3903,
+    "title": "Milly Osworth",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 4,
+    "minLevel": 2,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "prerequisiteAny": [
+      18
+    ],
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 3904,
+    "title": "Milly's Harvest",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 4,
+    "minLevel": 2,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 3903,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 3905,
+    "title": "Grape Manifest",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 4,
+    "minLevel": 2,
+    "classMask": 0,
+    "raceMask": 0,
+    "previousQuest": 3904,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 5261,
+    "title": "Eagan Peltskinner",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 2,
+    "minLevel": 1,
+    "classMask": 0,
+    "raceMask": 0,
+    "prerequisiteAny": [
+      783
+    ],
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 5545,
+    "title": "A Bundle of Trouble",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 9,
+    "minLevel": 5,
+    "classMask": 0,
+    "raceMask": 0,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 5623,
+    "title": "In Favor of the Light",
+    "categoryPath": "classes/priest",
+    "zone": "Priest",
+    "level": 4,
+    "minLevel": 5,
+    "classMask": 16,
+    "raceMask": 1,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 5624,
+    "title": "Garments of the Light",
+    "categoryPath": "classes/priest",
+    "level": 4,
+    "minLevel": 5,
+    "classMask": 16,
+    "raceMask": 1,
+    "previousQuest": 5623,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 5628,
+    "title": "Returning Home",
+    "categoryPath": "classes/priest",
+    "level": 10,
+    "minLevel": 10,
+    "classMask": 16,
+    "raceMask": 8,
+    "prerequisitesUnverified": true,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 5635,
+    "title": "Desperate Prayer",
+    "categoryPath": "classes/priest",
+    "level": 10,
+    "minLevel": 10,
+    "classMask": 16,
+    "raceMask": 5,
+    "prerequisitesUnverified": true,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 7962,
+    "title": "Wabbit Pelts",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "level": 1,
+    "minLevel": 1,
+    "classMask": 0,
+    "raceMask": 0,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 91723,
+    "title": "Delicate Instruments",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 10,
+    "minLevel": 7,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 91724,
+    "title": "Delicate Instruments",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 10,
+    "minLevel": 7,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 91725,
+    "title": "Stolen Enchanting Supplies",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 10,
+    "minLevel": 7,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 91732,
+    "title": "Good Steel",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 10,
+    "minLevel": 7,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 91733,
+    "title": "Downstream",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 10,
+    "minLevel": 7,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "stage_counts": {
+      "a": 1,
+      "q": 3,
+      "t": 1
+    }
+  },
+  {
+    "questID": 91738,
+    "title": "An Apple Treat",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 10,
+    "minLevel": 7,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 91740,
+    "title": "Croaky's Head",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 10,
+    "minLevel": 7,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 91741,
+    "title": "Nibbled-On Book",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 2,
+    "minLevel": 1,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 91743,
+    "title": "Rascally Rodents",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 2,
+    "minLevel": 1,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "previousQuest": 91741,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 91745,
+    "title": "Mining Consultant",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 3,
+    "minLevel": 1,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "previousQuest": 91743,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 91746,
+    "title": "Elmpaw's Head",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 10,
+    "minLevel": 7,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 91751,
+    "title": "Rough Wolf Pelts",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 7,
+    "minLevel": 5,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 91752,
+    "title": "The Big Picture",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 3,
+    "minLevel": 1,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "previousQuest": 91745,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 91753,
+    "title": "An Enchanting Lesson",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 7,
+    "minLevel": 5,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 91758,
+    "title": "Follow That Kobold!",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 4,
+    "minLevel": 1,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "previousQuest": 91752,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 91772,
+    "title": "Shhh! We're Hunting Kobolds",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 4,
+    "minLevel": 1,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "previousQuest": 91758,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 91775,
+    "title": "Book Return",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 6,
+    "minLevel": 1,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "previousQuest": 91772,
+    "stage_counts": {
+      "a": 1,
+      "q": 2,
+      "t": 1
+    }
+  },
+  {
+    "questID": 91777,
+    "title": "Rare Books",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 7,
+    "minLevel": 1,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "previousQuest": 91775,
+    "stage_counts": {
+      "a": 1,
+      "q": 2,
+      "t": 1
+    }
+  },
+  {
+    "questID": 92124,
+    "title": "Book Inventory",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 2,
+    "minLevel": 1,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 92479,
+    "title": "A Scribbled Letter",
+    "categoryPath": "classes/warrior",
+    "level": 1,
+    "minLevel": 1,
+    "classMask": 1,
+    "raceMask": 1,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 94774,
+    "title": "Divine Grace",
+    "categoryPath": "classes/priest",
+    "zone": "Priest",
+    "level": 10,
+    "minLevel": 10,
+    "classMask": 16,
+    "raceMask": 1,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 94792,
+    "title": "Taming the Beast",
+    "categoryPath": "classes/hunter",
+    "level": 10,
+    "minLevel": 10,
+    "classMask": 4,
+    "raceMask": 4294967373,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 94793,
+    "title": "Training the Beast",
+    "categoryPath": "classes/hunter",
+    "level": 10,
+    "minLevel": 10,
+    "classMask": 4,
+    "raceMask": 4294967373,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 94863,
+    "title": "Taming the Beast",
+    "categoryPath": "classes/hunter",
+    "level": 10,
+    "minLevel": 10,
+    "classMask": 4,
+    "raceMask": 4294967373,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 94864,
+    "title": "Taming the Beast",
+    "categoryPath": "classes/hunter",
+    "level": 10,
+    "minLevel": 10,
+    "classMask": 4,
+    "raceMask": 4294967373,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 95771,
+    "title": "A Taste of Darkness",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "level": 10,
+    "minLevel": 6,
+    "classMask": 0,
+    "raceMask": 0,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 99127,
+    "title": "A Net Disaster",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 7,
+    "minLevel": 4,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 99128,
+    "title": "Slimy Menace",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 7,
+    "minLevel": 4,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "stage_counts": {
+      "a": 1,
+      "q": 2,
+      "t": 1
+    }
+  },
+  {
+    "questID": 99129,
+    "title": "A Man About a Murloc",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 7,
+    "minLevel": 4,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 99130,
+    "title": "An Enticing Offer",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 7,
+    "minLevel": 4,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "stage_counts": {
+      "a": 1,
+      "q": 2,
+      "t": 1
+    }
+  },
+  {
+    "questID": 99131,
+    "title": "Baited for Success",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 7,
+    "minLevel": 4,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  },
+  {
+    "questID": 99143,
+    "title": "Bottles and Baubles",
+    "categoryPath": "eastern-kingdoms/elwynn-forest",
+    "zone": "Elwynn Forest",
+    "level": 7,
+    "minLevel": 4,
+    "classMask": 0,
+    "raceMask": 4294967373,
+    "stage_counts": {
+      "a": 1,
+      "q": 1,
+      "t": 1
+    }
+  }
+]

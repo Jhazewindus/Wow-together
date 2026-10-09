@@ -1,0 +1,772 @@
+{
+  "direct_ids": [
+    92454,
+    92460,
+    92461,
+    92462,
+    92463,
+    92464,
+    92465,
+    92466,
+    92467,
+    92468,
+    92469,
+    92470,
+    92471,
+    92472,
+    92473,
+    92474,
+    92480,
+    92514,
+    92515,
+    92516,
+    92517,
+    92528,
+    92529,
+    92544,
+    92550,
+    92551,
+    92553,
+    92579,
+    92595,
+    92596,
+    92597,
+    92598,
+    92640,
+    92642,
+    92643,
+    92644,
+    92645,
+    92646,
+    92679,
+    92682,
+    92683,
+    92684,
+    92685,
+    92693,
+    92698,
+    92699,
+    92700,
+    92701,
+    92703,
+    92708,
+    92709,
+    92727,
+    92741,
+    92834,
+    92840,
+    92849,
+    92850,
+    92860,
+    92871,
+    92880,
+    92881,
+    92947,
+    93036,
+    93065,
+    93089,
+    93090,
+    93159,
+    93160,
+    93165,
+    93172,
+    93173,
+    93317,
+    93318,
+    93319,
+    93320,
+    93459,
+    93461,
+    93552,
+    93735,
+    93736,
+    93737,
+    93738,
+    93740,
+    93746,
+    93835,
+    93836,
+    93926,
+    93927,
+    93948,
+    93949,
+    93951,
+    93958,
+    94369,
+    94411,
+    94413,
+    94414,
+    94484,
+    94485,
+    94486,
+    94487,
+    94488,
+    94489,
+    94490,
+    94491,
+    94493,
+    94559,
+    94568,
+    94896,
+    94897,
+    94898,
+    94901,
+    94902,
+    94946,
+    95349,
+    98512,
+    99260
+  ],
+  "compiled_ids": [
+    1516,
+    1519,
+    92460,
+    92461,
+    92462,
+    92463,
+    92464,
+    92465,
+    92466,
+    92467,
+    92468,
+    92469,
+    92470,
+    92471,
+    92472,
+    92473,
+    92474,
+    92481,
+    92482,
+    92483,
+    92484,
+    92485,
+    92514,
+    92515,
+    92516,
+    92517,
+    92528,
+    92529,
+    92532,
+    92544,
+    92550,
+    92551,
+    92553,
+    92579,
+    92595,
+    92596,
+    92597,
+    92598,
+    92640,
+    92642,
+    92643,
+    92644,
+    92645,
+    92646,
+    92679,
+    92682,
+    92683,
+    92684,
+    92685,
+    92693,
+    92698,
+    92699,
+    92700,
+    92701,
+    92703,
+    92708,
+    92709,
+    92727,
+    92741,
+    92834,
+    92840,
+    92849,
+    92850,
+    92860,
+    92871,
+    92880,
+    92881,
+    92947,
+    93036,
+    93065,
+    93089,
+    93090,
+    93159,
+    93160,
+    93165,
+    93172,
+    93317,
+    93318,
+    93319,
+    93320,
+    93461,
+    93552,
+    93735,
+    93736,
+    93737,
+    93738,
+    93740,
+    93746,
+    93791,
+    93797,
+    93835,
+    93836,
+    93926,
+    93927,
+    93948,
+    93949,
+    93951,
+    93958,
+    94003,
+    94006,
+    94007,
+    94013,
+    94050,
+    94369,
+    94411,
+    94413,
+    94414,
+    94484,
+    94485,
+    94486,
+    94487,
+    94488,
+    94489,
+    94490,
+    94491,
+    94493,
+    94568,
+    94638,
+    94896,
+    94897,
+    94901,
+    94902,
+    94946,
+    94978,
+    94979,
+    95349,
+    97243,
+    97244,
+    97245,
+    97257,
+    98512,
+    99260
+  ],
+  "uncompiled_direct_ids": [
+    92454,
+    92480,
+    93173,
+    93459,
+    94559,
+    94898
+  ],
+  "related_catalogue_records": {
+    "1517": {
+      "prerequisitesRead": true,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Canaga Earthcaller",
+          "entityID": 5887
+        }
+      ],
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "classMask": 64,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 5891,
+          "npc": true,
+          "y": 0.762,
+          "x": 0.4403,
+          "name": "Minor Manifestation of Earth",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "level": 4,
+      "objectives": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 5887,
+          "npc": true,
+          "y": 0.6917,
+          "x": 0.424,
+          "name": "Canaga Earthcaller",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "title": "Call of Earth",
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Minor Manifestation of Earth",
+          "entityID": 5891
+        }
+      ],
+      "xp": 270,
+      "prerequisiteAny": [
+        1516,
+        1519
+      ],
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 4,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 8589934770,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Canaga Earthcaller",
+            "entityID": 5887
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Minor Manifestation of Earth",
+            "entityID": 5891
+          }
+        ]
+      },
+      "foreverStatus": "unchanged",
+      "categoryPath": "classes/shaman"
+    },
+    "1520": {
+      "prerequisitesRead": true,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Seer Ravenfeather",
+          "entityID": 5888
+        }
+      ],
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "classMask": 64,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 5891,
+          "npc": true,
+          "y": 0.804,
+          "x": 0.5199,
+          "name": "Minor Manifestation of Earth",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "level": 4,
+      "objectives": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 5888,
+          "npc": true,
+          "y": 0.7676999999999999,
+          "x": 0.4435,
+          "name": "Seer Ravenfeather",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "title": "Call of Earth",
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Minor Manifestation of Earth",
+          "entityID": 5891
+        }
+      ],
+      "xp": 180,
+      "prerequisiteAny": [
+        1516,
+        1519
+      ],
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 4,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 8589934770,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Seer Ravenfeather",
+            "entityID": 5888
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Minor Manifestation of Earth",
+            "entityID": 5891
+          }
+        ]
+      },
+      "foreverStatus": "unchanged",
+      "categoryPath": "classes/shaman"
+    },
+    "93459": {
+      "prerequisitesRead": true,
+      "mapID": 2521,
+      "zone": "Zephras Isle",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 5,
+          "action": "collect",
+          "entityID": 258771,
+          "name": "Al'Alketh Cultist's Ear"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 5,
+          "name": "Al'Alketh Cultist's Ear",
+          "itemID": 258771
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published Forever beta prerequisites",
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "npcTargets": [
+        {
+          "itemName": "Al'Alketh Cultist's Ear",
+          "name": "Al'Aketh Footsoldier",
+          "entityID": 252665,
+          "npc": true,
+          "action": "loot"
+        }
+      ],
+      "level": 13,
+      "areaID": 16593,
+      "repeatable": true,
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 2521,
+          "action": "loot",
+          "entityID": 252665,
+          "npc": true,
+          "x": 0.6363,
+          "y": 0.3728,
+          "objectiveKey": "item:258771",
+          "itemID": 258771,
+          "quantity": 5,
+          "sourceAreaID": 16593,
+          "itemName": "Al'Alketh Cultist's Ear",
+          "locationSource": "Published Forever beta-observation entity position",
+          "name": "Al'Aketh Footsoldier"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 2521,
+          "entityID": 254151,
+          "npc": true,
+          "y": 0.35869999999999996,
+          "x": 0.6377,
+          "name": "Vayn Moongaze",
+          "sourceAreaID": 16593,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "side": "Both",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 2521,
+          "entityID": 254151,
+          "npc": true,
+          "y": 0.35869999999999996,
+          "x": 0.6377,
+          "name": "Vayn Moongaze",
+          "sourceAreaID": 16593,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Vayn Moongaze",
+          "entityID": 254151
+        }
+      ],
+      "xp": 0,
+      "prerequisiteAny": [
+        93165
+      ],
+      "foreverStatus": "new",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Vayn Moongaze",
+          "entityID": 254151
+        }
+      ],
+      "minLevel": 8,
+      "requirementSource": "Published Forever typed objectives",
+      "title": "More Al'Aketh Ears",
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "uncategorized"
+    },
+    "94947": {
+      "prerequisitesRead": true,
+      "mapID": 1453,
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1416,
+          "action": "interact",
+          "entityID": 631299,
+          "y": 0.5621,
+          "objectiveKey": "object:631299",
+          "name": "Skyborne Portal to Stormwind",
+          "sourceAreaID": 36,
+          "x": 0.1204,
+          "locationSource": "Published Forever beta-reviewed entity position",
+          "quantityUnknown": true
+        }
+      ],
+      "zone": "Stormwind City",
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantityUnknown": true,
+          "action": "interact",
+          "entityID": 631299,
+          "name": "Skyborne Portal to Stormwind"
+        }
+      ],
+      "seriesRoot": 93835,
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "starts": [
+        {
+          "y": 0.562,
+          "mapID": 1416,
+          "name": "Denaaris Stargale",
+          "entityID": 259084,
+          "npc": true,
+          "x": 0.124
+        }
+      ],
+      "seriesPosition": 5,
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "title": "Welcome to Azeroth",
+      "level": 13,
+      "areaID": 1519,
+      "ends": [
+        {
+          "y": 0.18,
+          "mapID": 1453,
+          "name": "Highlord Bolvar Fordragon",
+          "entityID": 1748,
+          "npc": true,
+          "x": 0.78
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Denaaris Stargale",
+          "entityID": 259084
+        }
+      ],
+      "side": "Alliance",
+      "previousQuest": 94946,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Highlord Bolvar Fordragon",
+          "entityID": 1748
+        }
+      ],
+      "xp": 680,
+      "shareable": true,
+      "foreverStatus": "new",
+      "allowedRaceIDs": [
+        95
+      ],
+      "minLevel": 7,
+      "requirementSource": "Published Forever typed objectives",
+      "raceMask": 4294967296,
+      "series": [
+        93835,
+        94369,
+        93089,
+        94946,
+        94947,
+        93963
+      ],
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/stormwind-city"
+    },
+    "95350": {
+      "prerequisitesRead": true,
+      "mapID": 1454,
+      "zone": "Orgrimmar",
+      "requirements": {},
+      "seriesRoot": 92646,
+      "objectives": {},
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.37799999999999995,
+          "mapID": 1454,
+          "name": "Thrall",
+          "entityID": 4949,
+          "npc": true,
+          "x": 0.32
+        }
+      ],
+      "starts": [
+        {
+          "y": 0.22399999999999998,
+          "mapID": 1412,
+          "name": "Alaana Stormwalker",
+          "entityID": 259119,
+          "npc": true,
+          "x": 0.33399999999999996
+        }
+      ],
+      "level": 13,
+      "areaID": 1637,
+      "shareable": true,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Alaana Stormwalker",
+          "entityID": 259119
+        }
+      ],
+      "side": "Horde",
+      "previousQuest": 95349,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Thrall",
+          "entityID": 4949
+        }
+      ],
+      "xp": 680,
+      "title": "Welcome to Azeroth",
+      "foreverStatus": "new",
+      "allowedRaceIDs": [
+        96
+      ],
+      "minLevel": 7,
+      "seriesPosition": 5,
+      "raceMask": 8589934592,
+      "series": [
+        92646,
+        93836,
+        93090,
+        95349,
+        95350,
+        93739
+      ],
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/orgrimmar"
+    },
+    "96638": {
+      "prerequisitesRead": true,
+      "zone": "Camping",
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published Forever beta prerequisites",
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 2521,
+          "entityID": 263664,
+          "npc": true,
+          "y": 0.44789999999999996,
+          "x": 0.41700000000000004,
+          "name": "Raan Wildwind",
+          "sourceAreaID": 16593,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "level": 6,
+      "objectives": {},
+      "side": "Both",
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 2521,
+          "entityID": 251366,
+          "npc": true,
+          "y": 0.2366,
+          "x": 0.4274,
+          "name": "Aetheen of the Gales",
+          "sourceAreaID": 16593,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Raan Wildwind",
+          "entityID": 263664
+        }
+      ],
+      "xp": 405,
+      "prerequisiteAny": [
+        92470
+      ],
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Aetheen of the Gales",
+          "entityID": 251366
+        }
+      ],
+      "minLevel": 4,
+      "title": "The Adventurer",
+      "foreverStatus": "new",
+      "prerequisitesUnverified": true,
+      "categoryPath": "uncategorized"
+    }
+  }
+}

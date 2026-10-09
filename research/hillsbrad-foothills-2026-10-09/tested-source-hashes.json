@@ -1,0 +1,6 @@
+{
+  "WowTogether/QuestCatalogue.lua": "9157e34bfb55f691b50eaa8515c24de5e96bc47e7bd52f5e2bc648b8459ec60f",
+  "tools/quest_corrections.json": "83fd8503c6ff7fcb7ff7bc06c8e51906adab41590bc32a9b14e1cfdbe4ba1de8",
+  "tests/test_barrens_coverage.py": "aafa8d2e31c14e1549223baff7a28653566ccd5a1a8b4f56eaa2580a543c55bf",
+  "tests/test_hillsbrad_coverage.py": "01c21364f111ddbb2845b277b1699c90d5ff81b066d2aeb41b2615b5dba3ffb0"
+}

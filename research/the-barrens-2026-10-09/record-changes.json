@@ -1,0 +1,2335 @@
+{
+  "882": {
+    "before": {
+      "prerequisitesRead": true,
+      "zone": "The Barrens",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Ishamuhale's Fang",
+          "entityID": 5101
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Fresh Zhevra Carcass",
+          "entityID": 10338
+        }
+      ],
+      "otherLocationsIncomplete": false,
+      "level": 19,
+      "areaID": 17,
+      "objectiveAlternatives": [
+        {
+          "sourceObjective": 1,
+          "itemName": "Fresh Zhevra Carcass",
+          "locations": [
+            {
+              "sourceObjective": 1,
+              "itemName": "Fresh Zhevra Carcass",
+              "action": "collect",
+              "entityID": 3242,
+              "npc": true,
+              "y": 0.33,
+              "x": 0.5379999999999999,
+              "name": "Zhevra Runner",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 1,
+              "itemName": "Fresh Zhevra Carcass",
+              "action": "collect",
+              "entityID": 3426,
+              "npc": true,
+              "y": 0.28,
+              "x": 0.368,
+              "name": "Zhevra Charger",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 1,
+              "itemName": "Fresh Zhevra Carcass",
+              "action": "collect",
+              "entityID": 3466,
+              "npc": true,
+              "y": 0.68,
+              "x": 0.45799999999999996,
+              "name": "Zhevra Courser",
+              "mapID": 1413
+            }
+          ]
+        }
+      ],
+      "seriesPosition": 8,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Jorn Skyseer",
+          "entityID": 3387
+        }
+      ],
+      "xp": 1800,
+      "minLevel": 10,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Ishamuhale's Fang",
+            "entityID": 5101
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Fresh Zhevra Carcass",
+            "entityID": 10338
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Jorn Skyseer",
+            "entityID": 3387
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Jorn Skyseer",
+            "entityID": 3387
+          }
+        ]
+      },
+      "categoryPath": "kalimdor/the-barrens",
+      "raceMask": 0,
+      "mapID": 1413,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Jorn Skyseer",
+          "entityID": 3387
+        }
+      ],
+      "seriesRoot": 860,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Ishamuhale's Fang",
+          "itemID": 5101
+        },
+        {
+          "quantity": 1,
+          "name": "Fresh Zhevra Carcass",
+          "itemID": 10338
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.59,
+          "mapID": 1413,
+          "name": "Jorn Skyseer",
+          "entityID": 3387,
+          "npc": true,
+          "x": 0.44799999999999995
+        }
+      ],
+      "shareable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "previousQuest": 3261,
+      "objectives": [
+        {
+          "sourceObjective": 1,
+          "mapID": 1413,
+          "legacyStepKey": "q:1413:npc:3466",
+          "entityID": 3466,
+          "npc": true,
+          "x": 0.45799999999999996,
+          "y": 0.68,
+          "objectiveKey": "item:10338",
+          "itemID": 10338,
+          "quantity": 1,
+          "name": "Zhevra Courser",
+          "itemName": "Fresh Zhevra Carcass",
+          "alternativeCount": 3,
+          "action": "collect"
+        },
+        {
+          "sourceObjective": 0,
+          "mapID": 1413,
+          "action": "collect",
+          "entityID": 3257,
+          "npc": true,
+          "y": 0.304,
+          "objectiveKey": "item:5101",
+          "name": "Ishamuhale",
+          "x": 0.598,
+          "quantity": 1,
+          "legacyStepKey": "q:1413:npc:3257",
+          "itemName": "Ishamuhale's Fang",
+          "itemID": 5101
+        }
+      ],
+      "series": [
+        860,
+        844,
+        845,
+        903,
+        881,
+        905,
+        3261,
+        882,
+        907,
+        913,
+        874,
+        873
+      ],
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.59,
+          "mapID": 1413,
+          "name": "Jorn Skyseer",
+          "entityID": 3387,
+          "npc": true,
+          "x": 0.44799999999999995
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "title": "Ishamuhale",
+      "classMask": 0,
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "itemName": "Fresh Zhevra Carcass",
+          "name": "Zhevra Runner",
+          "entityID": 3242,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Ishamuhale's Fang",
+          "name": "Ishamuhale",
+          "entityID": 3257,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Fresh Zhevra Carcass",
+          "name": "Zhevra Charger",
+          "entityID": 3426,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Fresh Zhevra Carcass",
+          "name": "Zhevra Courser",
+          "entityID": 3466,
+          "npc": true,
+          "action": "collect"
+        }
+      ]
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "zone": "The Barrens",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Ishamuhale's Fang",
+          "entityID": 5101
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Fresh Zhevra Carcass",
+          "entityID": 10338
+        }
+      ],
+      "otherLocationsIncomplete": false,
+      "level": 19,
+      "areaID": 17,
+      "objectiveAlternatives": [
+        {
+          "sourceObjective": 1,
+          "itemName": "Fresh Zhevra Carcass",
+          "locations": [
+            {
+              "sourceObjective": 1,
+              "itemName": "Fresh Zhevra Carcass",
+              "action": "collect",
+              "entityID": 3242,
+              "npc": true,
+              "y": 0.33,
+              "x": 0.5379999999999999,
+              "name": "Zhevra Runner",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 1,
+              "itemName": "Fresh Zhevra Carcass",
+              "action": "collect",
+              "entityID": 3426,
+              "npc": true,
+              "y": 0.28,
+              "x": 0.368,
+              "name": "Zhevra Charger",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 1,
+              "itemName": "Fresh Zhevra Carcass",
+              "action": "collect",
+              "entityID": 3466,
+              "npc": true,
+              "y": 0.68,
+              "x": 0.45799999999999996,
+              "name": "Zhevra Courser",
+              "mapID": 1413
+            }
+          ]
+        }
+      ],
+      "seriesPosition": 8,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Jorn Skyseer",
+          "entityID": 3387
+        }
+      ],
+      "xp": 1800,
+      "minLevel": 10,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Ishamuhale's Fang",
+            "entityID": 5101
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Fresh Zhevra Carcass",
+            "entityID": 10338
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Jorn Skyseer",
+            "entityID": 3387
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Jorn Skyseer",
+            "entityID": 3387
+          }
+        ]
+      },
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "kalimdor/the-barrens",
+      "raceMask": 0,
+      "mapID": 1413,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Jorn Skyseer",
+          "entityID": 3387
+        }
+      ],
+      "seriesRoot": 860,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Ishamuhale's Fang",
+          "itemID": 5101
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.59,
+          "mapID": 1413,
+          "name": "Jorn Skyseer",
+          "entityID": 3387,
+          "npc": true,
+          "x": 0.44799999999999995
+        }
+      ],
+      "shareable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "foreverStatus": "unchanged",
+      "objectives": [
+        {
+          "sourceObjective": 1,
+          "mapID": 1413,
+          "legacyStepKey": "q:1413:npc:3466",
+          "entityID": 3466,
+          "npc": true,
+          "x": 0.45799999999999996,
+          "y": 0.68,
+          "objectiveKey": "item:10338",
+          "itemID": 10338,
+          "quantity": 1,
+          "name": "Zhevra Courser",
+          "itemName": "Fresh Zhevra Carcass",
+          "alternativeCount": 3,
+          "action": "collect"
+        },
+        {
+          "sourceObjective": 0,
+          "mapID": 1413,
+          "action": "collect",
+          "entityID": 3257,
+          "npc": true,
+          "y": 0.304,
+          "objectiveKey": "item:5101",
+          "name": "Ishamuhale",
+          "x": 0.598,
+          "quantity": 1,
+          "legacyStepKey": "q:1413:npc:3257",
+          "itemName": "Ishamuhale's Fang",
+          "itemID": 5101
+        }
+      ],
+      "series": [
+        860,
+        844,
+        845,
+        903,
+        881,
+        905,
+        3261,
+        882,
+        907,
+        913,
+        874,
+        873
+      ],
+      "classMask": 0,
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Retain mapped acquisition inputs, distinct farming areas and actual assembled/output hand-in only; do not require consumed preparation components at return. Carcass bait at dead tree is supported by unchanged vanilla identity, but its beta use trigger/point is unknown; expose preparation gap rather than substitute Ishamuhale NPC coordinates. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/the-barrens-2026-10-09. Supporting unchanged mechanics: https://classicdb.ch/?quest=882; accessed 2026-10-09; not beta position evidence.",
+      "starts": [
+        {
+          "y": 0.59,
+          "mapID": 1413,
+          "name": "Jorn Skyseer",
+          "entityID": 3387,
+          "npc": true,
+          "x": 0.44799999999999995
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "title": "Ishamuhale",
+      "previousQuest": 3261,
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "itemName": "Fresh Zhevra Carcass",
+          "name": "Zhevra Runner",
+          "entityID": 3242,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Ishamuhale's Fang",
+          "name": "Ishamuhale",
+          "entityID": 3257,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Fresh Zhevra Carcass",
+          "name": "Zhevra Charger",
+          "entityID": 3426,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Fresh Zhevra Carcass",
+          "name": "Zhevra Courser",
+          "entityID": 3466,
+          "npc": true,
+          "action": "collect"
+        }
+      ]
+    }
+  },
+  "894": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1413,
+      "zone": "The Barrens",
+      "requirements": {},
+      "seriesRoot": 894,
+      "requiredItems": {},
+      "objectives": {},
+      "series": [
+        894,
+        900,
+        901,
+        902
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "name": "Control Console Operating Manual",
+          "entityID": 5088
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.11699999999999999,
+          "x": 0.524,
+          "name": "Control Console",
+          "entityID": 4141,
+          "mapID": 1413
+        }
+      ],
+      "starts": [
+        {
+          "y": 0.37200000000000005,
+          "mapID": 1413,
+          "name": "Sputtervalve",
+          "entityID": 3442,
+          "npc": true,
+          "x": 0.63
+        }
+      ],
+      "level": 14,
+      "areaID": 17,
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Sputtervalve",
+          "entityID": 3442
+        }
+      ],
+      "side": "Both",
+      "seriesPosition": 1,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Control Console",
+          "entityID": 4141
+        }
+      ],
+      "xp": 740,
+      "foreverStatus": "unchanged",
+      "title": "Samophlange",
+      "minLevel": 10,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Sputtervalve",
+            "entityID": 3442
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "name": "Control Console Operating Manual",
+            "entityID": 5088
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "Control Console",
+            "entityID": 4141
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/the-barrens"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1413,
+      "objectives": {},
+      "zone": "The Barrens",
+      "requirements": {},
+      "seriesRoot": 894,
+      "requiredItems": {},
+      "series": [
+        894,
+        900,
+        901,
+        902
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "name": "Control Console Operating Manual",
+          "entityID": 5088
+        }
+      ],
+      "starts": [
+        {
+          "y": 0.37200000000000005,
+          "mapID": 1413,
+          "name": "Sputtervalve",
+          "entityID": 3442,
+          "npc": true,
+          "x": 0.63
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "object",
+          "mapID": 1413,
+          "action": "interact",
+          "entityID": 4141,
+          "y": 0.11699999999999999,
+          "x": 0.524,
+          "name": "Control Console"
+        }
+      ],
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "level": 14,
+      "areaID": 17,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Sputtervalve",
+          "entityID": 3442
+        }
+      ],
+      "side": "Both",
+      "seriesPosition": 1,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Control Console",
+          "entityID": 4141
+        }
+      ],
+      "xp": 740,
+      "title": "Samophlange",
+      "foreverStatus": "unchanged",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Interact with the published actual console/valves or return object. Preserve all existing points, real predecessor hand-ins, multiple item/object starts and key acquisition/count. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/the-barrens-2026-10-09.",
+      "minLevel": 10,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Sputtervalve",
+            "entityID": 3442
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "name": "Control Console Operating Manual",
+            "entityID": 5088
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "Control Console",
+            "entityID": 4141
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/the-barrens"
+    }
+  },
+  "900": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1413,
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "objectiveKey": "object:4072",
+          "name": "Main Control Valve",
+          "y": 0.11599999999999999,
+          "entityID": 4072,
+          "x": 0.523,
+          "quantity": 1,
+          "mapID": 1413
+        },
+        {
+          "sourceObjective": 2,
+          "objectiveKey": "object:61935",
+          "name": "Regulator Valve",
+          "y": 0.114,
+          "entityID": 61935,
+          "x": 0.523,
+          "quantity": 1,
+          "mapID": 1413
+        },
+        {
+          "sourceObjective": 1,
+          "objectiveKey": "object:61936",
+          "name": "Fuel Control Valve",
+          "y": 0.114,
+          "entityID": 61936,
+          "x": 0.524,
+          "quantity": 1,
+          "mapID": 1413
+        }
+      ],
+      "zone": "The Barrens",
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "name": "Shut off Main Control Valve",
+          "entityID": 4072
+        },
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "name": "Shut off Fuel Control Valve",
+          "entityID": 61936
+        },
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "name": "Shut off Regulator Valve",
+          "entityID": 61935
+        }
+      ],
+      "seriesRoot": 894,
+      "series": [
+        894,
+        900,
+        901,
+        902
+      ],
+      "starts": [
+        {
+          "y": 0.11699999999999999,
+          "x": 0.524,
+          "name": "Control Console",
+          "entityID": 4141,
+          "mapID": 1413
+        }
+      ],
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "title": "Samophlange",
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "ends": [
+        {
+          "y": 0.11699999999999999,
+          "x": 0.524,
+          "name": "Control Console",
+          "entityID": 4141,
+          "mapID": 1413
+        }
+      ],
+      "level": 14,
+      "areaID": 17,
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Control Console",
+          "entityID": 4141
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Both",
+      "previousQuest": 894,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Control Console",
+          "entityID": 4141
+        }
+      ],
+      "xp": 490,
+      "shareable": true,
+      "foreverStatus": "unchanged",
+      "seriesPosition": 2,
+      "minLevel": 10,
+      "requirementSource": "Wowhead Forever objective table",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Shut off Main Control Valve",
+            "entityID": 4072
+          },
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Shut off Fuel Control Valve",
+            "entityID": 61936
+          },
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Shut off Regulator Valve",
+            "entityID": 61935
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Control Console",
+            "entityID": 4141
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "Control Console",
+            "entityID": 4141
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/the-barrens"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "zone": "The Barrens",
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "action": "interact",
+          "entityID": 4072,
+          "name": "Shut off Main Control Valve"
+        },
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "action": "interact",
+          "entityID": 61936,
+          "name": "Shut off Fuel Control Valve"
+        },
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "action": "interact",
+          "entityID": 61935,
+          "name": "Shut off Regulator Valve"
+        }
+      ],
+      "otherLocationsIncomplete": false,
+      "level": 14,
+      "areaID": 17,
+      "seriesPosition": 2,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Control Console",
+          "entityID": 4141
+        }
+      ],
+      "xp": 490,
+      "minLevel": 10,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "action": "interact",
+            "entityID": 4072,
+            "name": "Shut off Main Control Valve"
+          },
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "action": "interact",
+            "entityID": 61936,
+            "name": "Shut off Fuel Control Valve"
+          },
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "action": "interact",
+            "entityID": 61935,
+            "name": "Shut off Regulator Valve"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Control Console",
+            "entityID": 4141
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "Control Console",
+            "entityID": 4141
+          }
+        ]
+      },
+      "categoryPath": "kalimdor/the-barrens",
+      "raceMask": 0,
+      "mapID": 1413,
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Control Console",
+          "entityID": 4141
+        }
+      ],
+      "seriesRoot": 894,
+      "ends": [
+        {
+          "entityType": "object",
+          "mapID": 1413,
+          "action": "interact",
+          "entityID": 4141,
+          "y": 0.11699999999999999,
+          "x": 0.524,
+          "name": "Control Console"
+        }
+      ],
+      "shareable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Both",
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1413,
+          "action": "interact",
+          "entityID": 4072,
+          "y": 0.11599999999999999,
+          "objectiveKey": "object:4072",
+          "name": "Main Control Valve",
+          "x": 0.523,
+          "entityType": "object",
+          "quantity": 1
+        },
+        {
+          "sourceObjective": 2,
+          "mapID": 1413,
+          "action": "interact",
+          "entityID": 61935,
+          "y": 0.114,
+          "objectiveKey": "object:61935",
+          "name": "Regulator Valve",
+          "x": 0.523,
+          "entityType": "object",
+          "quantity": 1
+        },
+        {
+          "sourceObjective": 1,
+          "mapID": 1413,
+          "action": "interact",
+          "entityID": 61936,
+          "y": 0.114,
+          "objectiveKey": "object:61936",
+          "name": "Fuel Control Valve",
+          "x": 0.524,
+          "entityType": "object",
+          "quantity": 1
+        }
+      ],
+      "series": [
+        894,
+        900,
+        901,
+        902
+      ],
+      "title": "Samophlange",
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "entityType": "object",
+          "mapID": 1413,
+          "action": "interact",
+          "entityID": 4141,
+          "y": 0.11699999999999999,
+          "x": 0.524,
+          "name": "Control Console"
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "classMask": 0,
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Interact with the published actual console/valves or return object. Preserve all existing points, real predecessor hand-ins, multiple item/object starts and key acquisition/count. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/the-barrens-2026-10-09.",
+      "locationSource": "Wowhead Forever",
+      "previousQuest": 894
+    }
+  },
+  "901": {
+    "before": {
+      "prerequisitesRead": true,
+      "zone": "The Barrens",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Console Key",
+          "entityID": 5089
+        }
+      ],
+      "otherLocationsIncomplete": false,
+      "level": 14,
+      "areaID": 17,
+      "seriesPosition": 3,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Control Console",
+          "entityID": 4141
+        }
+      ],
+      "xp": 740,
+      "minLevel": 10,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Console Key",
+            "entityID": 5089
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Control Console",
+            "entityID": 4141
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "Control Console",
+            "entityID": 4141
+          }
+        ]
+      },
+      "categoryPath": "kalimdor/the-barrens",
+      "raceMask": 0,
+      "mapID": 1413,
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Control Console",
+          "entityID": 4141
+        }
+      ],
+      "seriesRoot": 894,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Console Key",
+          "itemID": 5089
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.11699999999999999,
+          "x": 0.524,
+          "name": "Control Console",
+          "entityID": 4141,
+          "mapID": 1413
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Both",
+      "title": "Samophlange",
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1413,
+          "action": "collect",
+          "entityID": 3471,
+          "npc": true,
+          "y": 0.10400000000000001,
+          "objectiveKey": "item:5089",
+          "name": "Tinkerer Sniggles",
+          "x": 0.528,
+          "quantity": 1,
+          "legacyStepKey": "q:1413:npc:3471",
+          "itemName": "Console Key",
+          "itemID": 5089
+        }
+      ],
+      "series": [
+        894,
+        900,
+        901,
+        902
+      ],
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.11699999999999999,
+          "x": 0.524,
+          "name": "Control Console",
+          "entityID": 4141,
+          "mapID": 1413
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "classMask": 0,
+      "previousQuest": 900,
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "itemName": "Console Key",
+          "name": "Tinkerer Sniggles",
+          "entityID": 3471,
+          "npc": true,
+          "action": "collect"
+        }
+      ]
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "zone": "The Barrens",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Console Key",
+          "entityID": 5089
+        }
+      ],
+      "otherLocationsIncomplete": false,
+      "level": 14,
+      "areaID": 17,
+      "seriesPosition": 3,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Control Console",
+          "entityID": 4141
+        }
+      ],
+      "xp": 740,
+      "minLevel": 10,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Console Key",
+            "entityID": 5089
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Control Console",
+            "entityID": 4141
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "Control Console",
+            "entityID": 4141
+          }
+        ]
+      },
+      "categoryPath": "kalimdor/the-barrens",
+      "raceMask": 0,
+      "mapID": 1413,
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Control Console",
+          "entityID": 4141
+        }
+      ],
+      "seriesRoot": 894,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Console Key",
+          "itemID": 5089
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "object",
+          "mapID": 1413,
+          "action": "interact",
+          "entityID": 4141,
+          "y": 0.11699999999999999,
+          "x": 0.524,
+          "name": "Control Console"
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Both",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Interact with the published actual console/valves or return object. Preserve all existing points, real predecessor hand-ins, multiple item/object starts and key acquisition/count. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/the-barrens-2026-10-09.",
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1413,
+          "action": "collect",
+          "entityID": 3471,
+          "npc": true,
+          "y": 0.10400000000000001,
+          "objectiveKey": "item:5089",
+          "name": "Tinkerer Sniggles",
+          "x": 0.528,
+          "quantity": 1,
+          "legacyStepKey": "q:1413:npc:3471",
+          "itemName": "Console Key",
+          "itemID": 5089
+        }
+      ],
+      "series": [
+        894,
+        900,
+        901,
+        902
+      ],
+      "title": "Samophlange",
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "entityType": "object",
+          "mapID": 1413,
+          "action": "interact",
+          "entityID": 4141,
+          "y": 0.11699999999999999,
+          "x": 0.524,
+          "name": "Control Console"
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "classMask": 0,
+      "previousQuest": 900,
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "itemName": "Console Key",
+          "name": "Tinkerer Sniggles",
+          "entityID": 3471,
+          "npc": true,
+          "action": "collect"
+        }
+      ]
+    }
+  },
+  "905": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1413,
+      "zone": "The Barrens",
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "name": "Visit Blue Raptor Nest",
+          "entityID": 6907
+        },
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "name": "Visit Yellow Raptor Nest",
+          "entityID": 6908
+        },
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "name": "Visit Red Raptor Nest",
+          "entityID": 6906
+        }
+      ],
+      "seriesRoot": 860,
+      "objectives": [
+        {
+          "sourceObjective": 2,
+          "objectiveKey": "object:6906",
+          "name": "Red Raptor Nest",
+          "y": 0.465,
+          "entityID": 6906,
+          "x": 0.525,
+          "quantity": 1,
+          "mapID": 1413
+        },
+        {
+          "sourceObjective": 0,
+          "objectiveKey": "object:6907",
+          "name": "Blue Raptor Nest",
+          "y": 0.461,
+          "entityID": 6907,
+          "x": 0.526,
+          "quantity": 1,
+          "mapID": 1413
+        },
+        {
+          "sourceObjective": 1,
+          "objectiveKey": "object:6908",
+          "name": "Yellow Raptor Nest",
+          "y": 0.465,
+          "entityID": 6908,
+          "x": 0.52,
+          "quantity": 1,
+          "mapID": 1413
+        }
+      ],
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.31,
+          "mapID": 1413,
+          "name": "Sergra Darkthorn",
+          "entityID": 3338,
+          "npc": true,
+          "x": 0.522
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "title": "The Angry Scytheclaws",
+      "level": 17,
+      "areaID": 17,
+      "ends": [
+        {
+          "y": 0.31,
+          "mapID": 1413,
+          "name": "Sergra Darkthorn",
+          "entityID": 3338,
+          "npc": true,
+          "x": 0.522
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Sergra Darkthorn",
+          "entityID": 3338
+        }
+      ],
+      "side": "Horde",
+      "previousQuest": 881,
+      "money": 900,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Sergra Darkthorn",
+          "entityID": 3338
+        }
+      ],
+      "xp": 1250,
+      "shareable": true,
+      "foreverStatus": "updated",
+      "seriesPosition": 6,
+      "minLevel": 10,
+      "requirementSource": "Wowhead Forever objective table",
+      "raceMask": 0,
+      "series": [
+        860,
+        844,
+        845,
+        903,
+        881,
+        905,
+        3261,
+        882,
+        907,
+        913,
+        874,
+        873
+      ],
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/the-barrens"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1413,
+      "zone": "The Barrens",
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "action": "use",
+          "entityID": 6907,
+          "name": "Visit Blue Raptor Nest"
+        },
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "action": "use",
+          "entityID": 6908,
+          "name": "Visit Yellow Raptor Nest"
+        },
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "action": "use",
+          "entityID": 6906,
+          "name": "Visit Red Raptor Nest"
+        }
+      ],
+      "seriesRoot": 860,
+      "objectives": [
+        {
+          "sourceObjective": 2,
+          "mapID": 1413,
+          "action": "use",
+          "entityID": 6906,
+          "useItemName": "Sunscale Feather",
+          "y": 0.465,
+          "objectiveKey": "object:6906",
+          "name": "Red Raptor Nest",
+          "useItemID": 5165,
+          "x": 0.525,
+          "entityType": "object",
+          "quantity": 1
+        },
+        {
+          "sourceObjective": 0,
+          "mapID": 1413,
+          "action": "use",
+          "entityID": 6907,
+          "useItemName": "Sunscale Feather",
+          "y": 0.461,
+          "objectiveKey": "object:6907",
+          "name": "Blue Raptor Nest",
+          "useItemID": 5165,
+          "x": 0.526,
+          "entityType": "object",
+          "quantity": 1
+        },
+        {
+          "sourceObjective": 1,
+          "mapID": 1413,
+          "action": "use",
+          "entityID": 6908,
+          "useItemName": "Sunscale Feather",
+          "y": 0.465,
+          "objectiveKey": "object:6908",
+          "name": "Yellow Raptor Nest",
+          "useItemID": 5165,
+          "x": 0.52,
+          "entityType": "object",
+          "quantity": 1
+        }
+      ],
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.31,
+          "mapID": 1413,
+          "name": "Sergra Darkthorn",
+          "entityID": 3338,
+          "npc": true,
+          "x": 0.522
+        }
+      ],
+      "title": "The Angry Scytheclaws",
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "ends": [
+        {
+          "y": 0.31,
+          "mapID": 1413,
+          "name": "Sergra Darkthorn",
+          "entityID": 3338,
+          "npc": true,
+          "x": 0.522
+        }
+      ],
+      "level": 17,
+      "areaID": 17,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Sergra Darkthorn",
+          "entityID": 3338
+        }
+      ],
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Use the actual raptor feather on each counted nest, rather than generic conversation. Preserve three separate one-target objectives and parent hand-in; feathers are acquired input, not supplied or extra hand-in. No unsupported inventory count or new farming point. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/the-barrens-2026-10-09. Supporting unchanged mechanics: https://classicdb.ch/?quest=905; accessed 2026-10-09; not beta position evidence.",
+      "side": "Horde",
+      "previousQuest": 881,
+      "money": 900,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Sergra Darkthorn",
+          "entityID": 3338
+        }
+      ],
+      "xp": 1250,
+      "shareable": true,
+      "foreverStatus": "updated",
+      "seriesPosition": 6,
+      "minLevel": 10,
+      "requirementSource": "Wowhead Forever objective table",
+      "raceMask": 0,
+      "series": [
+        860,
+        844,
+        845,
+        903,
+        881,
+        905,
+        3261,
+        882,
+        907,
+        913,
+        874,
+        873
+      ],
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/the-barrens"
+    }
+  },
+  "3924": {
+    "before": {
+      "prerequisitesRead": true,
+      "zone": "The Barrens",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Samophlange Manual",
+          "entityID": 11149
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Samophlange Manual Cover",
+          "entityID": 11147
+        },
+        {
+          "entityType": "item",
+          "quantity": 5,
+          "name": "Samophlange Manual Page",
+          "entityID": 11148
+        }
+      ],
+      "level": 19,
+      "areaID": 17,
+      "seriesPosition": 2,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Rilli Greasygob",
+          "entityID": 9317
+        }
+      ],
+      "xp": 1800,
+      "minLevel": 10,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Samophlange Manual",
+            "entityID": 11149
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Samophlange Manual Cover",
+            "entityID": 11147
+          },
+          {
+            "entityType": "item",
+            "quantity": 5,
+            "name": "Samophlange Manual Page",
+            "entityID": 11148
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Rilli Greasygob",
+            "entityID": 9317
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Rilli Greasygob",
+            "entityID": 9317
+          }
+        ]
+      },
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "kalimdor/the-barrens",
+      "raceMask": 0,
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Samophlange Manual",
+          "entityID": 11149
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Rilli Greasygob",
+          "entityID": 9317
+        }
+      ],
+      "seriesRoot": 3923,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Samophlange Manual",
+          "itemID": 11149
+        },
+        {
+          "quantity": 1,
+          "name": "Samophlange Manual Cover",
+          "itemID": 11147
+        },
+        {
+          "quantity": 5,
+          "name": "Samophlange Manual Page",
+          "itemID": 11148
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.24600000000000002,
+          "mapID": 1454,
+          "name": "Rilli Greasygob",
+          "entityID": 9317,
+          "npc": true,
+          "x": 0.762
+        }
+      ],
+      "shareable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "previousQuest": 3923,
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "legacyStepKey": "q:1413:npc:9336",
+          "entityID": 9336,
+          "y": 0.034,
+          "npc": true,
+          "x": 0.598,
+          "sourceZone": "The Barrens",
+          "objectiveKey": "item:11147",
+          "itemID": 11147,
+          "quantity": 1,
+          "sourceAreaID": 17,
+          "itemName": "Samophlange Manual Cover",
+          "action": "loot",
+          "name": "Boss Copperplug"
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "legacyStepKey": "q:1413:npc:3283",
+          "entityID": 3283,
+          "y": 0.23800000000000002,
+          "npc": true,
+          "x": 0.258,
+          "sourceZone": "The Barrens",
+          "objectiveKey": "item:11148",
+          "itemID": 11148,
+          "quantity": 5,
+          "sourceAreaID": 17,
+          "itemName": "Samophlange Manual Page",
+          "action": "loot",
+          "name": "Venture Co. Enforcer"
+        }
+      ],
+      "series": [
+        3923,
+        3924
+      ],
+      "mapID": 1413,
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.24600000000000002,
+          "mapID": 1454,
+          "name": "Rilli Greasygob",
+          "entityID": 9317,
+          "npc": true,
+          "x": 0.762
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "title": "Samophlange Manual",
+      "classMask": 0,
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "itemName": "Samophlange Manual Cover",
+          "name": "Boss Copperplug",
+          "entityID": 9336,
+          "npc": true,
+          "action": "loot"
+        },
+        {
+          "itemName": "Samophlange Manual Page",
+          "name": "Venture Co. Enforcer",
+          "entityID": 3283,
+          "npc": true,
+          "action": "loot"
+        }
+      ]
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "zone": "The Barrens",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Samophlange Manual",
+          "entityID": 11149
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Samophlange Manual Cover",
+          "entityID": 11147
+        },
+        {
+          "entityType": "item",
+          "quantity": 5,
+          "name": "Samophlange Manual Page",
+          "entityID": 11148
+        }
+      ],
+      "level": 19,
+      "areaID": 17,
+      "seriesPosition": 2,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Rilli Greasygob",
+          "entityID": 9317
+        }
+      ],
+      "xp": 1800,
+      "minLevel": 10,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Samophlange Manual",
+            "entityID": 11149
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Samophlange Manual Cover",
+            "entityID": 11147
+          },
+          {
+            "entityType": "item",
+            "quantity": 5,
+            "name": "Samophlange Manual Page",
+            "entityID": 11148
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Rilli Greasygob",
+            "entityID": 9317
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Rilli Greasygob",
+            "entityID": 9317
+          }
+        ]
+      },
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "kalimdor/the-barrens",
+      "raceMask": 0,
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Samophlange Manual",
+          "entityID": 11149
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Rilli Greasygob",
+          "entityID": 9317
+        }
+      ],
+      "seriesRoot": 3923,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Samophlange Manual",
+          "itemID": 11149
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.24600000000000002,
+          "mapID": 1454,
+          "name": "Rilli Greasygob",
+          "entityID": 9317,
+          "npc": true,
+          "x": 0.762
+        }
+      ],
+      "shareable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "previousQuest": 3923,
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "legacyStepKey": "q:1413:npc:9336",
+          "entityID": 9336,
+          "y": 0.034,
+          "npc": true,
+          "x": 0.598,
+          "sourceZone": "The Barrens",
+          "objectiveKey": "item:11147",
+          "itemID": 11147,
+          "quantity": 1,
+          "sourceAreaID": 17,
+          "itemName": "Samophlange Manual Cover",
+          "action": "loot",
+          "name": "Boss Copperplug"
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "legacyStepKey": "q:1413:npc:3283",
+          "entityID": 3283,
+          "y": 0.23800000000000002,
+          "npc": true,
+          "x": 0.258,
+          "sourceZone": "The Barrens",
+          "objectiveKey": "item:11148",
+          "itemID": 11148,
+          "quantity": 5,
+          "sourceAreaID": 17,
+          "itemName": "Samophlange Manual Page",
+          "action": "loot",
+          "name": "Venture Co. Enforcer"
+        }
+      ],
+      "series": [
+        3923,
+        3924
+      ],
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Retain mapped acquisition inputs, distinct farming areas and actual assembled/output hand-in only; do not require consumed preparation components at return. Five pages and cover remain acquisition goals; manual assembly stays explicitly unmapped. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/the-barrens-2026-10-09.",
+      "mapID": 1413,
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.24600000000000002,
+          "mapID": 1454,
+          "name": "Rilli Greasygob",
+          "entityID": 9317,
+          "npc": true,
+          "x": 0.762
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "classMask": 0,
+      "title": "Samophlange Manual",
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "itemName": "Samophlange Manual Cover",
+          "name": "Boss Copperplug",
+          "entityID": 9336,
+          "npc": true,
+          "action": "loot"
+        },
+        {
+          "itemName": "Samophlange Manual Page",
+          "name": "Venture Co. Enforcer",
+          "entityID": 3283,
+          "npc": true,
+          "action": "loot"
+        }
+      ]
+    }
+  },
+  "79192": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1413,
+      "zone": "The Barrens",
+      "requirements": {},
+      "prerequisiteSource": "Wowhead Forever series variants",
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.526,
+          "x": 0.408,
+          "name": "Pocket Litter",
+          "entityID": 424005,
+          "mapID": 1442
+        }
+      ],
+      "level": 24,
+      "areaID": 17,
+      "objectives": {},
+      "starts": [
+        {
+          "y": 0.7390000000000001,
+          "x": 0.46399999999999997,
+          "name": "Burned-Out Remains",
+          "entityID": 415106,
+          "mapID": 1413
+        },
+        {
+          "y": 0.738,
+          "x": 0.46399999999999997,
+          "name": "Nailed Plank",
+          "entityID": 417072,
+          "mapID": 1413
+        },
+        {
+          "y": 0.507,
+          "x": 0.375,
+          "name": "Burned-Out Remains",
+          "entityID": 415106,
+          "mapID": 1436
+        },
+        {
+          "y": 0.507,
+          "x": 0.375,
+          "name": "Burned-Out Remains",
+          "entityID": 415107,
+          "mapID": 1436
+        },
+        {
+          "y": 0.508,
+          "x": 0.375,
+          "name": "Nailed Plank",
+          "entityID": 424010,
+          "mapID": 1436
+        }
+      ],
+      "side": "Both",
+      "prerequisiteAny": [
+        79007,
+        79008
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Pocket Litter",
+          "entityID": 424005
+        }
+      ],
+      "xp": 1950,
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Burned-Out Remains",
+          "entityID": 415106
+        },
+        {
+          "entityType": "object",
+          "name": "Burned-Out Remains",
+          "entityID": 415107
+        },
+        {
+          "entityType": "object",
+          "name": "Nailed Plank",
+          "entityID": 417072
+        },
+        {
+          "entityType": "object",
+          "name": "Nailed Plank",
+          "entityID": 424010
+        }
+      ],
+      "foreverStatus": "updated",
+      "minLevel": 14,
+      "title": "Stepping Stones",
+      "raceMask": 0,
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/the-barrens"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1413,
+      "zone": "The Barrens",
+      "requirements": {},
+      "prerequisiteSource": "Wowhead Forever series variants",
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "object",
+          "mapID": 1442,
+          "action": "interact",
+          "entityID": 424005,
+          "y": 0.526,
+          "x": 0.408,
+          "name": "Pocket Litter"
+        }
+      ],
+      "level": 24,
+      "areaID": 17,
+      "objectives": {},
+      "starts": [
+        {
+          "y": 0.7390000000000001,
+          "x": 0.46399999999999997,
+          "name": "Burned-Out Remains",
+          "entityID": 415106,
+          "mapID": 1413
+        },
+        {
+          "y": 0.738,
+          "x": 0.46399999999999997,
+          "name": "Nailed Plank",
+          "entityID": 417072,
+          "mapID": 1413
+        },
+        {
+          "y": 0.507,
+          "x": 0.375,
+          "name": "Burned-Out Remains",
+          "entityID": 415106,
+          "mapID": 1436
+        },
+        {
+          "y": 0.507,
+          "x": 0.375,
+          "name": "Burned-Out Remains",
+          "entityID": 415107,
+          "mapID": 1436
+        },
+        {
+          "y": 0.508,
+          "x": 0.375,
+          "name": "Nailed Plank",
+          "entityID": 424010,
+          "mapID": 1436
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Burned-Out Remains",
+          "entityID": 415106
+        },
+        {
+          "entityType": "object",
+          "name": "Burned-Out Remains",
+          "entityID": 415107
+        },
+        {
+          "entityType": "object",
+          "name": "Nailed Plank",
+          "entityID": 417072
+        },
+        {
+          "entityType": "object",
+          "name": "Nailed Plank",
+          "entityID": 424010
+        }
+      ],
+      "side": "Both",
+      "prerequisiteAny": [
+        79007,
+        79008
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Pocket Litter",
+          "entityID": 424005
+        }
+      ],
+      "xp": 1950,
+      "foreverStatus": "updated",
+      "title": "Stepping Stones",
+      "minLevel": 14,
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Interact with the published actual console/valves or return object. Preserve all existing points, real predecessor hand-ins, multiple item/object starts and key acquisition/count. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/the-barrens-2026-10-09.",
+      "raceMask": 0,
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/the-barrens"
+    }
+  },
+  "98095": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1413,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Deathstalker Masoj",
+          "entityID": 270438
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Western vial placed",
+          "entityID": 270575
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Northern vial placed",
+          "entityID": 270574
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Southern vial placed",
+          "entityID": 270573
+        }
+      ],
+      "seriesRoot": 98094,
+      "objectives": {},
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.5379999999999999,
+          "mapID": 1424,
+          "name": "Deathstalker Masoj",
+          "entityID": 270438,
+          "npc": true,
+          "x": 0.64
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.5379999999999999,
+          "mapID": 1424,
+          "name": "Deathstalker Masoj",
+          "entityID": 270438,
+          "npc": true,
+          "x": 0.64
+        }
+      ],
+      "raceMask": 8589934770,
+      "level": 25,
+      "areaID": 17,
+      "title": "Valuable Vantages",
+      "missingRequirements": [
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Western vial placed",
+          "entityID": 270575
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Northern vial placed",
+          "entityID": 270574
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Southern vial placed",
+          "entityID": 270573
+        }
+      ],
+      "side": "Horde",
+      "previousQuest": 98094,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Deathstalker Masoj",
+          "entityID": 270438
+        }
+      ],
+      "xp": 2000,
+      "seriesPosition": 2,
+      "foreverStatus": "new",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 19,
+      "requirementSource": "Wowhead Forever objective table",
+      "objectiveLocationsIncomplete": true,
+      "series": [
+        98094,
+        98095
+      ],
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/the-barrens"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1413,
+      "objectives": {},
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Deathstalker Masoj",
+          "entityID": 270438
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Western vial placed",
+          "entityID": 270575
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Northern vial placed",
+          "entityID": 270574
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Southern vial placed",
+          "entityID": 270573
+        }
+      ],
+      "seriesRoot": 98094,
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "name": "Apothecary Vials",
+          "entityID": 279395
+        }
+      ],
+      "starts": [
+        {
+          "y": 0.5379999999999999,
+          "mapID": 1424,
+          "name": "Deathstalker Masoj",
+          "entityID": 270438,
+          "npc": true,
+          "x": 0.64
+        }
+      ],
+      "raceMask": 8589934770,
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.5379999999999999,
+          "mapID": 1424,
+          "name": "Deathstalker Masoj",
+          "entityID": 270438,
+          "npc": true,
+          "x": 0.64
+        }
+      ],
+      "title": "Valuable Vantages",
+      "level": 25,
+      "areaID": 17,
+      "missingRequirements": [
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Western vial placed",
+          "entityID": 270575
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Northern vial placed",
+          "entityID": 270574
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Southern vial placed",
+          "entityID": 270573
+        }
+      ],
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Retain explicitly supplied Apothecary Vials with unknown supplied count, three counted placements and actual Hillsbrad giver/return. Peak placement points remain unknown; category and prerequisite unchanged. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/the-barrens-2026-10-09.",
+      "side": "Horde",
+      "previousQuest": 98094,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Deathstalker Masoj",
+          "entityID": 270438
+        }
+      ],
+      "xp": 2000,
+      "seriesPosition": 2,
+      "foreverStatus": "new",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 19,
+      "requirementSource": "Wowhead Forever objective table",
+      "objectiveLocationsIncomplete": true,
+      "series": [
+        98094,
+        98095
+      ],
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/the-barrens"
+    }
+  }
+}

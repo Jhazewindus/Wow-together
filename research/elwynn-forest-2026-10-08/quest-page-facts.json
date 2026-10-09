@@ -1,0 +1,8479 @@
+[
+  {
+    "questID": 6,
+    "url": "https://www.wowhead.com/forever/quest=6",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "cee03e78c52ff3d21e963958c50619e9e23ef0f84569a2613fc38caf76e3f3f9",
+    "metadata": {
+      "id": 6,
+      "level": 5,
+      "name": "Bounty on Garrick Padfoot",
+      "reqlevel": 2,
+      "side": 1,
+      "xp": 335
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {},
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 823,
+          "name": "Deputy Willem"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 823,
+          "name": "Deputy Willem"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 182,
+          "name": "Garrick's Head",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 13657,
+        "date": "2006-12-11T18:56:55-06:00"
+      },
+      {
+        "id": 18124,
+        "date": "2006-12-27T17:15:18-06:00"
+      },
+      {
+        "id": 2767192,
+        "date": "2005-10-05T23:42:29-05:00"
+      },
+      {
+        "id": 2767203,
+        "date": "2006-06-18T11:42:29-05:00"
+      },
+      {
+        "id": 2767215,
+        "date": "2006-10-05T23:42:29-05:00"
+      },
+      {
+        "id": 2928011,
+        "date": "2006-01-31T16:39:17-06:00"
+      },
+      {
+        "id": 2928012,
+        "date": "2005-03-16T09:51:29-06:00"
+      },
+      {
+        "id": 2928013,
+        "date": "2006-04-12T07:48:16-05:00"
+      },
+      {
+        "id": 2928015,
+        "date": "2006-06-01T03:23:54-05:00"
+      },
+      {
+        "id": 2928016,
+        "date": "2006-10-03T15:29:45-05:00"
+      },
+      {
+        "id": 2928017,
+        "date": "2007-02-25T19:57:10-06:00"
+      },
+      {
+        "id": 2928018,
+        "date": "2005-05-03T10:45:29-05:00"
+      },
+      {
+        "id": 2928023,
+        "date": "2006-09-27T10:54:38-05:00"
+      },
+      {
+        "id": 3149916,
+        "date": "2019-08-27T02:39:40-05:00"
+      },
+      {
+        "id": 3153909,
+        "date": "2019-09-10T18:01:45-05:00"
+      },
+      {
+        "id": 3159809,
+        "date": "2019-09-29T07:39:42-05:00"
+      },
+      {
+        "id": 3172415,
+        "date": "2019-11-18T16:26:11-06:00"
+      }
+    ]
+  },
+  {
+    "questID": 7,
+    "url": "https://www.wowhead.com/forever/quest=7",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "69f37ef263827311b2f754d4c410e9dc389f6906d47090b8376edae8b8a5b31d",
+    "metadata": {
+      "id": 7,
+      "level": 2,
+      "name": "Kobold Camp Cleanup",
+      "reqlevel": 1,
+      "side": 1,
+      "xp": 170
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 197,
+          "name": "Marshal McBride"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 197,
+          "name": "Marshal McBride"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "entityID": 6,
+          "name": "Kobold Vermin",
+          "quantity": 10
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 783
+    },
+    "comments": [
+      {
+        "id": 19403,
+        "date": "2007-01-05T00:06:28-06:00"
+      },
+      {
+        "id": 22842,
+        "date": "2007-01-22T14:45:42-06:00"
+      },
+      {
+        "id": 2772462,
+        "date": "2006-01-12T20:10:06-06:00"
+      },
+      {
+        "id": 2772491,
+        "date": "2007-01-12T20:10:06-06:00"
+      },
+      {
+        "id": 2772509,
+        "date": "2007-03-27T00:29:18-05:00"
+      },
+      {
+        "id": 2928024,
+        "date": "2005-03-16T09:45:14-06:00"
+      },
+      {
+        "id": 2928026,
+        "date": "2005-12-23T01:14:44-06:00"
+      },
+      {
+        "id": 2928027,
+        "date": "2006-04-12T07:38:59-05:00"
+      },
+      {
+        "id": 2928028,
+        "date": "2006-02-03T16:21:19-06:00"
+      },
+      {
+        "id": 2928029,
+        "date": "2006-03-28T03:41:34-06:00"
+      },
+      {
+        "id": 2928030,
+        "date": "2006-06-01T02:58:30-05:00"
+      },
+      {
+        "id": 3159785,
+        "date": "2019-09-29T06:26:40-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 11,
+    "url": "https://www.wowhead.com/forever/quest=11",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "af0057c8943bfea60c5ef4d945935132099e7dd469d66aba1fb3c8355acbc92c",
+    "metadata": {
+      "id": 11,
+      "level": 10,
+      "name": "Riverpaw Gnoll Bounty",
+      "reqlevel": 6,
+      "side": 1,
+      "xp": 840
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 963,
+          "name": "Deputy Rainer"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 963,
+          "name": "Deputy Rainer"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 782,
+          "name": "Painted Gnoll Armband",
+          "quantity": 8
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 239
+    },
+    "comments": [
+      {
+        "id": 2723361,
+        "date": "2005-11-02T17:19:42-06:00"
+      },
+      {
+        "id": 2723374,
+        "date": "2006-01-14T17:19:42-06:00"
+      },
+      {
+        "id": 2723387,
+        "date": "2006-06-09T17:19:42-05:00"
+      },
+      {
+        "id": 2723401,
+        "date": "2006-07-16T05:19:42-05:00"
+      },
+      {
+        "id": 2723425,
+        "date": "2006-07-16T05:19:42-05:00"
+      },
+      {
+        "id": 2723463,
+        "date": "2006-07-16T05:19:42-05:00"
+      },
+      {
+        "id": 2723477,
+        "date": "2006-07-16T05:19:42-05:00"
+      },
+      {
+        "id": 2723491,
+        "date": "2006-09-27T05:19:42-05:00"
+      },
+      {
+        "id": 2723502,
+        "date": "2006-09-27T05:19:42-05:00"
+      },
+      {
+        "id": 2723513,
+        "date": "2006-11-02T17:19:42-06:00"
+      },
+      {
+        "id": 2723525,
+        "date": "2006-12-09T05:19:42-06:00"
+      },
+      {
+        "id": 2723541,
+        "date": "2007-01-14T17:19:42-06:00"
+      },
+      {
+        "id": 2723567,
+        "date": "2007-03-28T17:19:42-05:00"
+      },
+      {
+        "id": 2928144,
+        "date": "2006-11-23T00:52:22-06:00"
+      },
+      {
+        "id": 2928145,
+        "date": "2007-03-31T05:08:42-05:00"
+      },
+      {
+        "id": 2928147,
+        "date": "2005-03-05T16:16:59-06:00"
+      },
+      {
+        "id": 2928148,
+        "date": "2006-10-10T01:37:09-05:00"
+      },
+      {
+        "id": 2928150,
+        "date": "2005-02-09T15:47:11-06:00"
+      },
+      {
+        "id": 2928151,
+        "date": "2004-12-13T00:53:31-06:00"
+      },
+      {
+        "id": 3151711,
+        "date": "2019-09-02T21:06:01-05:00"
+      },
+      {
+        "id": 3164370,
+        "date": "2019-10-15T12:59:30-05:00"
+      },
+      {
+        "id": 3186817,
+        "date": "2020-01-28T04:33:45-06:00"
+      },
+      {
+        "id": 3214632,
+        "date": "2020-06-28T02:08:01-05:00"
+      },
+      {
+        "id": 3372756,
+        "date": "2021-04-01T16:55:11-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 15,
+    "url": "https://www.wowhead.com/forever/quest=15",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "a541241bbb2629c28a33ccce0bc2a5dcbd43af531d2bb40568965f67c945ebea",
+    "metadata": {
+      "id": 15,
+      "level": 3,
+      "name": "Investigate Echo Ridge",
+      "reqlevel": 1,
+      "side": 1,
+      "xp": 250
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 197,
+          "name": "Marshal McBride"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 197,
+          "name": "Marshal McBride"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "entityID": 257,
+          "name": "Kobold Worker",
+          "quantity": 10
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 18120,
+        "date": "2006-12-27T17:00:27-06:00"
+      },
+      {
+        "id": 42462,
+        "date": "2007-02-26T02:22:26-06:00"
+      },
+      {
+        "id": 44042,
+        "date": "2007-02-28T14:37:16-06:00"
+      },
+      {
+        "id": 2928183,
+        "date": "2005-12-23T01:43:47-06:00"
+      },
+      {
+        "id": 2928185,
+        "date": "2005-03-16T09:46:54-06:00"
+      },
+      {
+        "id": 2928186,
+        "date": "2006-02-04T08:23:33-06:00"
+      },
+      {
+        "id": 3159789,
+        "date": "2019-09-29T06:43:34-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 18,
+    "url": "https://www.wowhead.com/forever/quest=18",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "fa0cdad4868b9b053ce22db9851b3f31d340bd453b10cd57cf47d49d72f670c1",
+    "metadata": {
+      "id": 18,
+      "level": 4,
+      "name": "Brotherhood of Thieves",
+      "reqlevel": 2,
+      "side": 1,
+      "xp": 355
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 823,
+          "name": "Deputy Willem"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 823,
+          "name": "Deputy Willem"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 752,
+          "name": "Red Burlap Bandana",
+          "quantity": 12
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 18122,
+        "date": "2006-12-27T17:09:05-06:00"
+      },
+      {
+        "id": 2928197,
+        "date": "2005-03-16T09:47:21-06:00"
+      },
+      {
+        "id": 2928198,
+        "date": "2007-04-06T02:25:44-05:00"
+      },
+      {
+        "id": 3159807,
+        "date": "2019-09-29T07:35:30-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 21,
+    "url": "https://www.wowhead.com/forever/quest=21",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "a37b940be8667d63ff65392a6aff723166b763bb4f0214d498e82b671bb6a161",
+    "metadata": {
+      "id": 21,
+      "level": 5,
+      "name": "Skirmish at Echo Ridge",
+      "reqlevel": 1,
+      "side": 1,
+      "xp": 450
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 197,
+          "name": "Marshal McBride"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 197,
+          "name": "Marshal McBride"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "entityID": 80,
+          "name": "Kobold Laborer",
+          "quantity": 12
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 15
+    },
+    "comments": [
+      {
+        "id": 18121,
+        "date": "2006-12-27T17:03:45-06:00"
+      },
+      {
+        "id": 44046,
+        "date": "2007-02-28T14:43:32-06:00"
+      },
+      {
+        "id": 2756604,
+        "date": "2005-10-31T08:51:23-06:00"
+      },
+      {
+        "id": 2756619,
+        "date": "2006-01-12T08:51:23-06:00"
+      },
+      {
+        "id": 2928242,
+        "date": "2005-03-16T09:52:02-06:00"
+      },
+      {
+        "id": 2928243,
+        "date": "2006-12-05T00:52:58-06:00"
+      },
+      {
+        "id": 2928244,
+        "date": "2006-06-01T03:06:20-05:00"
+      },
+      {
+        "id": 3159793,
+        "date": "2019-09-29T06:54:34-05:00"
+      },
+      {
+        "id": 5176614,
+        "date": "2021-05-14T11:21:23-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 33,
+    "url": "https://www.wowhead.com/forever/quest=33",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "97078d6c95a81cc9e90ebd4a8ff5e60ef0a34962248c9c815fa7c7195ec79f4d",
+    "metadata": {
+      "id": 33,
+      "level": 2,
+      "name": "Wolves Across the Border",
+      "reqlevel": 1,
+      "side": 1,
+      "xp": 170
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 196,
+          "name": "Eagan Peltskinner"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 196,
+          "name": "Eagan Peltskinner"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 750,
+          "name": "Tough Wolf Meat",
+          "quantity": 8
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 5261
+    },
+    "comments": [
+      {
+        "id": 2729332,
+        "date": "2006-03-31T22:42:03-06:00"
+      },
+      {
+        "id": 2729352,
+        "date": "2006-08-24T22:42:03-05:00"
+      },
+      {
+        "id": 2729365,
+        "date": "2006-08-24T22:42:03-05:00"
+      },
+      {
+        "id": 2729379,
+        "date": "2007-02-23T10:42:03-06:00"
+      },
+      {
+        "id": 2928565,
+        "date": "2005-03-16T09:46:21-06:00"
+      },
+      {
+        "id": 3159786,
+        "date": "2019-09-29T06:36:57-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 35,
+    "url": "https://www.wowhead.com/forever/quest=35",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "4818635626fd9cee41d9539076d4e54232bb0ae3db11bb3e870211c647e60737",
+    "metadata": {
+      "id": 35,
+      "level": 10,
+      "name": "Further Concerns",
+      "reqlevel": 7,
+      "side": 1,
+      "xp": 420
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 240,
+          "name": "Marshal Dughan"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 261,
+          "name": "Guard Thomas"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 40
+    },
+    "comments": [
+      {
+        "id": 8484,
+        "date": "2006-12-07T13:16:03-06:00"
+      },
+      {
+        "id": 8491,
+        "date": "2006-12-07T13:21:11-06:00"
+      },
+      {
+        "id": 18131,
+        "date": "2006-12-27T17:42:59-06:00"
+      },
+      {
+        "id": 49649,
+        "date": "2007-03-11T17:05:02-05:00"
+      },
+      {
+        "id": 54290,
+        "date": "2007-03-20T13:01:25-05:00"
+      },
+      {
+        "id": 2737690,
+        "date": "2006-01-13T19:10:08-06:00"
+      },
+      {
+        "id": 2737700,
+        "date": "2007-04-06T02:50:56-05:00"
+      },
+      {
+        "id": 2928588,
+        "date": "2006-01-02T00:50:13-06:00"
+      },
+      {
+        "id": 2928590,
+        "date": "2006-02-24T11:09:46-06:00"
+      },
+      {
+        "id": 2928591,
+        "date": "2006-06-01T02:18:08-05:00"
+      },
+      {
+        "id": 2928592,
+        "date": "2005-12-13T11:58:14-06:00"
+      },
+      {
+        "id": 2928593,
+        "date": "2006-07-20T14:02:13-05:00"
+      },
+      {
+        "id": 3164372,
+        "date": "2019-10-15T13:03:54-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 37,
+    "url": "https://www.wowhead.com/forever/quest=37",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "08c0d4ed2c7198b2a1e6b4f54be415ca0c6c3200f142056b1ea451d38bad50b2",
+    "metadata": {
+      "id": 37,
+      "level": 10,
+      "name": "Find the Lost Guards",
+      "reqlevel": 7,
+      "side": 1,
+      "xp": 210
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 261,
+          "name": "Guard Thomas"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "object",
+          "entityID": 55,
+          "name": "A half-eaten body"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 35
+    },
+    "comments": [
+      {
+        "id": 3208,
+        "date": "2006-11-08T16:26:34-06:00"
+      },
+      {
+        "id": 27223,
+        "date": "2007-01-29T15:30:48-06:00"
+      },
+      {
+        "id": 47979,
+        "date": "2007-03-08T00:38:21-06:00"
+      },
+      {
+        "id": 49570,
+        "date": "2007-03-11T14:38:52-05:00"
+      },
+      {
+        "id": 49651,
+        "date": "2007-03-11T17:06:16-05:00"
+      },
+      {
+        "id": 66368,
+        "date": "2007-04-13T01:34:41-05:00"
+      },
+      {
+        "id": 69436,
+        "date": "2007-04-19T02:05:07-05:00"
+      },
+      {
+        "id": 72237,
+        "date": "2007-04-24T16:01:13-05:00"
+      },
+      {
+        "id": 2791672,
+        "date": "2005-10-08T09:10:23-05:00"
+      },
+      {
+        "id": 2791699,
+        "date": "2005-10-08T09:10:23-05:00"
+      },
+      {
+        "id": 2791710,
+        "date": "2005-10-08T09:10:23-05:00"
+      },
+      {
+        "id": 2791736,
+        "date": "2005-11-13T21:10:23-06:00"
+      },
+      {
+        "id": 2791748,
+        "date": "2006-06-20T21:10:23-05:00"
+      },
+      {
+        "id": 2791757,
+        "date": "2006-09-01T21:10:23-05:00"
+      },
+      {
+        "id": 2791771,
+        "date": "2006-12-20T09:10:23-06:00"
+      },
+      {
+        "id": 2791785,
+        "date": "2007-01-25T21:10:23-06:00"
+      },
+      {
+        "id": 2791799,
+        "date": "2007-05-15T09:10:23-05:00"
+      },
+      {
+        "id": 2791813,
+        "date": "2007-05-15T09:10:23-05:00"
+      },
+      {
+        "id": 2791826,
+        "date": "2007-05-21T15:53:35-05:00"
+      },
+      {
+        "id": 2928597,
+        "date": "2005-05-28T17:52:46-05:00"
+      },
+      {
+        "id": 2928598,
+        "date": "2006-07-04T09:06:40-05:00"
+      },
+      {
+        "id": 2928599,
+        "date": "2006-02-24T11:21:33-06:00"
+      },
+      {
+        "id": 2928600,
+        "date": "2006-03-06T12:21:55-06:00"
+      },
+      {
+        "id": 2928601,
+        "date": "2006-12-01T02:33:02-06:00"
+      },
+      {
+        "id": 2928602,
+        "date": "2005-05-26T22:08:33-05:00"
+      },
+      {
+        "id": 2928603,
+        "date": "2006-11-18T07:05:47-06:00"
+      },
+      {
+        "id": 2928605,
+        "date": "2005-01-11T05:36:34-06:00"
+      },
+      {
+        "id": 2928606,
+        "date": "2005-03-23T05:54:54-06:00"
+      },
+      {
+        "id": 2928607,
+        "date": "2005-04-27T01:26:53-05:00"
+      },
+      {
+        "id": 2928608,
+        "date": "2005-12-26T12:20:10-06:00"
+      },
+      {
+        "id": 2928612,
+        "date": "2005-05-11T22:54:12-05:00"
+      },
+      {
+        "id": 2928613,
+        "date": "2007-01-23T14:21:32-06:00"
+      },
+      {
+        "id": 2928614,
+        "date": "2004-09-07T16:53:30-05:00"
+      },
+      {
+        "id": 2928617,
+        "date": "2006-01-02T00:56:49-06:00"
+      },
+      {
+        "id": 2928618,
+        "date": "2006-01-03T04:43:02-06:00"
+      },
+      {
+        "id": 2928619,
+        "date": "2005-05-26T18:29:28-05:00"
+      },
+      {
+        "id": 2928620,
+        "date": "2006-06-01T02:20:25-05:00"
+      },
+      {
+        "id": 2928622,
+        "date": "2005-02-27T08:21:56-06:00"
+      },
+      {
+        "id": 2928623,
+        "date": "2006-04-29T23:52:03-05:00"
+      },
+      {
+        "id": 2928624,
+        "date": "2006-06-27T02:00:02-05:00"
+      },
+      {
+        "id": 2928625,
+        "date": "2005-05-17T10:34:00-05:00"
+      },
+      {
+        "id": 2928626,
+        "date": "2005-09-08T07:08:07-05:00"
+      },
+      {
+        "id": 3164378,
+        "date": "2019-10-15T13:12:19-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 39,
+    "url": "https://www.wowhead.com/forever/quest=39",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "3be6f4b6328dbfc14fbddbc68cc34fdd1e0b1886971f617ed994ce6fa1c0c338",
+    "metadata": {
+      "id": 39,
+      "level": 10,
+      "name": "Deliver Thomas' Report",
+      "reqlevel": 7,
+      "side": 1,
+      "xp": 1050
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 261,
+          "name": "Guard Thomas"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 240,
+          "name": "Marshal Dughan"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 71
+    },
+    "comments": [
+      {
+        "id": 49655,
+        "date": "2007-03-11T17:09:49-05:00"
+      },
+      {
+        "id": 2736741,
+        "date": "2007-01-20T21:38:32-06:00"
+      },
+      {
+        "id": 2736753,
+        "date": "2007-04-25T09:09:44-05:00"
+      },
+      {
+        "id": 2928644,
+        "date": "2006-06-01T02:44:40-05:00"
+      },
+      {
+        "id": 2928645,
+        "date": "2006-02-24T11:35:06-06:00"
+      },
+      {
+        "id": 2928646,
+        "date": "2006-01-02T01:09:21-06:00"
+      },
+      {
+        "id": 3166383,
+        "date": "2019-10-23T10:00:53-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 40,
+    "url": "https://www.wowhead.com/forever/quest=40",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "7e391230d589f9a66a1ebe277aff44b2445c91dec60cd8afd0e9e51e34894477",
+    "metadata": {
+      "id": 40,
+      "level": 10,
+      "name": "A Fishy Peril",
+      "reqlevel": 7,
+      "side": 1,
+      "xp": 85
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 241,
+          "name": "Remy \"Two Times\""
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 240,
+          "name": "Marshal Dughan"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 8473,
+        "date": "2006-12-07T13:09:54-06:00"
+      },
+      {
+        "id": 49643,
+        "date": "2007-03-11T16:58:16-05:00"
+      },
+      {
+        "id": 2780217,
+        "date": "2006-12-08T07:10:58-06:00"
+      },
+      {
+        "id": 2928647,
+        "date": "2006-02-24T10:29:24-06:00"
+      },
+      {
+        "id": 2928649,
+        "date": "2006-01-02T00:45:47-06:00"
+      },
+      {
+        "id": 2928650,
+        "date": "2006-06-01T02:13:02-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 45,
+    "url": "https://www.wowhead.com/forever/quest=45",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "094c8c706af61ac281555166387af6b3cd256ca313ee0905fbbafc6c567a8606",
+    "metadata": {
+      "id": 45,
+      "level": 10,
+      "name": "Discover Rolf's Fate",
+      "reqlevel": 7,
+      "side": 1,
+      "xp": 420
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "object",
+          "entityID": 55,
+          "name": "A half-eaten body"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "object",
+          "entityID": 56,
+          "name": "Rolf's corpse"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 37
+    },
+    "comments": [
+      {
+        "id": 12871,
+        "date": "2006-12-10T16:56:28-06:00"
+      },
+      {
+        "id": 18132,
+        "date": "2006-12-27T17:58:58-06:00"
+      },
+      {
+        "id": 36261,
+        "date": "2007-02-15T05:15:14-06:00"
+      },
+      {
+        "id": 49652,
+        "date": "2007-03-11T17:07:15-05:00"
+      },
+      {
+        "id": 71969,
+        "date": "2007-04-24T03:23:23-05:00"
+      },
+      {
+        "id": 86390,
+        "date": "2007-05-20T17:23:53-05:00"
+      },
+      {
+        "id": 2747271,
+        "date": "2005-10-01T02:19:20-05:00"
+      },
+      {
+        "id": 2747285,
+        "date": "2005-10-01T02:19:20-05:00"
+      },
+      {
+        "id": 2747309,
+        "date": "2005-12-13T02:19:20-06:00"
+      },
+      {
+        "id": 2747324,
+        "date": "2006-04-01T14:19:20-06:00"
+      },
+      {
+        "id": 2747338,
+        "date": "2006-04-01T14:19:20-06:00"
+      },
+      {
+        "id": 2747366,
+        "date": "2006-10-01T02:19:20-05:00"
+      },
+      {
+        "id": 2747379,
+        "date": "2006-10-01T02:19:20-05:00"
+      },
+      {
+        "id": 2747403,
+        "date": "2006-12-13T02:19:20-06:00"
+      },
+      {
+        "id": 2747417,
+        "date": "2007-01-18T14:19:20-06:00"
+      },
+      {
+        "id": 2747440,
+        "date": "2007-02-24T02:19:20-06:00"
+      },
+      {
+        "id": 2747452,
+        "date": "2007-04-26T02:48:08-05:00"
+      },
+      {
+        "id": 2747465,
+        "date": "2007-05-08T06:38:32-05:00"
+      },
+      {
+        "id": 2928651,
+        "date": "2006-02-24T11:25:26-06:00"
+      },
+      {
+        "id": 2928652,
+        "date": "2007-05-08T12:28:25-05:00"
+      },
+      {
+        "id": 2928654,
+        "date": "2007-04-25T06:07:14-05:00"
+      },
+      {
+        "id": 2928655,
+        "date": "2006-09-09T02:45:49-05:00"
+      },
+      {
+        "id": 2928656,
+        "date": "2007-02-06T17:53:04-06:00"
+      },
+      {
+        "id": 2928657,
+        "date": "2005-01-12T21:49:17-06:00"
+      },
+      {
+        "id": 2928658,
+        "date": "2006-01-02T01:01:44-06:00"
+      },
+      {
+        "id": 2928659,
+        "date": "2004-12-09T03:18:56-06:00"
+      },
+      {
+        "id": 2928660,
+        "date": "2005-02-14T04:59:17-06:00"
+      },
+      {
+        "id": 2928661,
+        "date": "2006-11-03T08:25:55-06:00"
+      },
+      {
+        "id": 2928664,
+        "date": "2004-11-25T17:44:27-06:00"
+      },
+      {
+        "id": 2928665,
+        "date": "2006-07-04T09:15:09-05:00"
+      },
+      {
+        "id": 2928666,
+        "date": "2006-07-07T09:57:08-05:00"
+      },
+      {
+        "id": 2928667,
+        "date": "2004-12-20T02:23:30-06:00"
+      },
+      {
+        "id": 3164380,
+        "date": "2019-10-15T13:15:45-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 46,
+    "url": "https://www.wowhead.com/forever/quest=46",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "3705a21529fb80a227b19bccad6e172b2b6adb424c70814f38323e50c29697cf",
+    "metadata": {
+      "id": 46,
+      "level": 10,
+      "name": "Bounty on Murlocs",
+      "reqlevel": 7,
+      "side": 1,
+      "xp": 840
+    },
+    "forever_status": "updated",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 261,
+          "name": "Guard Thomas"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 261,
+          "name": "Guard Thomas"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 780,
+          "name": "Torn Murloc Fin",
+          "quantity": 8
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 14719,
+        "date": "2006-12-13T07:13:01-06:00"
+      },
+      {
+        "id": 18141,
+        "date": "2006-12-27T18:19:52-06:00"
+      },
+      {
+        "id": 2730284,
+        "date": "2005-10-17T03:39:24-05:00"
+      },
+      {
+        "id": 2730307,
+        "date": "2006-06-29T15:39:24-05:00"
+      },
+      {
+        "id": 2730321,
+        "date": "2006-06-29T15:39:24-05:00"
+      },
+      {
+        "id": 2928669,
+        "date": "2005-04-16T21:45:53-05:00"
+      },
+      {
+        "id": 2928670,
+        "date": "2005-12-16T11:38:37-06:00"
+      },
+      {
+        "id": 2928671,
+        "date": "2007-04-29T17:51:59-05:00"
+      },
+      {
+        "id": 2928673,
+        "date": "2006-06-01T03:27:26-05:00"
+      },
+      {
+        "id": 2928674,
+        "date": "2006-10-06T18:08:52-05:00"
+      },
+      {
+        "id": 2928677,
+        "date": "2007-03-17T08:59:43-05:00"
+      },
+      {
+        "id": 3166392,
+        "date": "2019-10-23T10:30:13-05:00"
+      },
+      {
+        "id": 3174743,
+        "date": "2019-12-03T00:47:56-06:00"
+      },
+      {
+        "id": 3214814,
+        "date": "2020-06-28T21:24:49-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 47,
+    "url": "https://www.wowhead.com/forever/quest=47",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "615dcac5ed58ac60314d16cae219d0aaa4419b99a0965508febca5a7cb36eb4d",
+    "metadata": {
+      "id": 47,
+      "itemrewards": [
+        [
+          1191,
+          1
+        ]
+      ],
+      "level": 7,
+      "name": "Gold Dust Exchange",
+      "reqlevel": 4,
+      "side": 1,
+      "xp": 630
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 241,
+          "name": "Remy \"Two Times\""
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 241,
+          "name": "Remy \"Two Times\""
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 773,
+          "name": "Gold Dust",
+          "quantity": 10
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 12880,
+        "date": "2006-12-10T17:01:46-06:00"
+      },
+      {
+        "id": 12887,
+        "date": "2006-12-10T17:05:44-06:00"
+      },
+      {
+        "id": 13288,
+        "date": "2006-12-11T07:26:47-06:00"
+      },
+      {
+        "id": 18128,
+        "date": "2006-12-27T17:38:25-06:00"
+      },
+      {
+        "id": 2753021,
+        "date": "2006-10-09T03:07:47-05:00"
+      },
+      {
+        "id": 2753037,
+        "date": "2007-01-26T15:07:47-06:00"
+      },
+      {
+        "id": 2928679,
+        "date": "2006-06-30T09:12:03-05:00"
+      },
+      {
+        "id": 3164033,
+        "date": "2019-10-14T09:25:19-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 52,
+    "url": "https://www.wowhead.com/forever/quest=52",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "9594db622be5114d76a366c89390870be29cc929a2ebca49c60d4d2fdebc1abd",
+    "metadata": {
+      "id": 52,
+      "itemrewards": [
+        [
+          858,
+          2
+        ]
+      ],
+      "level": 10,
+      "name": "Protect the Frontier",
+      "reqlevel": 7,
+      "side": 1,
+      "xp": 630
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 261,
+          "name": "Guard Thomas"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 261,
+          "name": "Guard Thomas"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "entityID": 118,
+          "name": "Prowler",
+          "quantity": 8
+        },
+        {
+          "entityType": "npc",
+          "entityID": 822,
+          "name": "Young Forest Bear",
+          "quantity": 5
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 14723,
+        "date": "2006-12-13T07:28:36-06:00"
+      },
+      {
+        "id": 18134,
+        "date": "2006-12-27T18:03:55-06:00"
+      },
+      {
+        "id": 49653,
+        "date": "2007-03-11T17:08:25-05:00"
+      },
+      {
+        "id": 58959,
+        "date": "2007-03-29T06:07:04-05:00"
+      },
+      {
+        "id": 81363,
+        "date": "2007-05-11T11:24:52-05:00"
+      },
+      {
+        "id": 86816,
+        "date": "2007-05-21T11:23:15-05:00"
+      },
+      {
+        "id": 2755362,
+        "date": "2005-11-19T01:05:17-06:00"
+      },
+      {
+        "id": 2755375,
+        "date": "2006-09-07T01:05:17-05:00"
+      },
+      {
+        "id": 2755387,
+        "date": "2006-10-13T13:05:17-05:00"
+      },
+      {
+        "id": 2755398,
+        "date": "2007-05-08T13:34:05-05:00"
+      },
+      {
+        "id": 2928746,
+        "date": "2006-11-04T20:08:22-06:00"
+      },
+      {
+        "id": 2928749,
+        "date": "2006-09-05T19:31:20-05:00"
+      },
+      {
+        "id": 2928750,
+        "date": "2007-03-19T03:40:44-05:00"
+      },
+      {
+        "id": 3164375,
+        "date": "2019-10-15T13:08:07-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 54,
+    "url": "https://www.wowhead.com/forever/quest=54",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "79f360434dac74df67e12e16e998ca9f20d60dc8c24f514605425c48edf01e0d",
+    "metadata": {
+      "id": 54,
+      "itemrewards": [
+        [
+          6078,
+          1
+        ]
+      ],
+      "level": 5,
+      "name": "Report to Goldshire",
+      "reqlevel": 1,
+      "side": 1,
+      "xp": 225
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 197,
+          "name": "Marshal McBride"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 240,
+          "name": "Marshal Dughan"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 745,
+          "name": "Marshal McBride's Documents",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 2770530,
+        "date": "2007-01-18T06:18:13-06:00"
+      },
+      {
+        "id": 2928766,
+        "date": "2005-03-16T09:52:49-06:00"
+      },
+      {
+        "id": 2928768,
+        "date": "2006-06-01T03:13:56-05:00"
+      },
+      {
+        "id": 3159878,
+        "date": "2019-09-29T12:16:46-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 59,
+    "url": "https://www.wowhead.com/forever/quest=59",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "b52f64fd9a795a747f5f5a40edb3c70e17c96265c801cc65855b408b57bc9c5b",
+    "metadata": {
+      "id": 59,
+      "level": 10,
+      "name": "Cloth and Leather Armor",
+      "reqlevel": 7,
+      "side": 1,
+      "xp": 210
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 240,
+          "name": "Marshal Dughan"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 278,
+          "name": "Sara Timberlain"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 748,
+          "name": "Stormwind Armor Marker",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_display": {
+      "previousQuest": 39
+    },
+    "comments": [
+      {
+        "id": 2773472,
+        "date": "2006-05-06T01:21:18-05:00"
+      },
+      {
+        "id": 2773481,
+        "date": "2006-05-06T01:21:18-05:00"
+      },
+      {
+        "id": 2773493,
+        "date": "2006-06-11T13:21:18-05:00"
+      },
+      {
+        "id": 2773529,
+        "date": "2006-12-11T01:21:18-06:00"
+      },
+      {
+        "id": 2773541,
+        "date": "2007-04-27T02:47:42-05:00"
+      },
+      {
+        "id": 2928865,
+        "date": "2006-08-09T18:52:13-05:00"
+      },
+      {
+        "id": 2928866,
+        "date": "2006-06-01T02:48:32-05:00"
+      },
+      {
+        "id": 2928867,
+        "date": "2006-11-23T16:51:36-06:00"
+      },
+      {
+        "id": 2928869,
+        "date": "2005-11-28T07:19:24-06:00"
+      },
+      {
+        "id": 2928870,
+        "date": "2007-02-06T23:56:06-06:00"
+      },
+      {
+        "id": 2928871,
+        "date": "2006-02-24T11:38:58-06:00"
+      },
+      {
+        "id": 2928872,
+        "date": "2006-01-02T01:12:55-06:00"
+      },
+      {
+        "id": 3164860,
+        "date": "2019-10-17T17:44:53-05:00"
+      },
+      {
+        "id": 3166384,
+        "date": "2019-10-23T10:06:58-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 60,
+    "url": "https://www.wowhead.com/forever/quest=60",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "276217da75e8cb814e7a0f877d54980e69b4846a37d29f8a69d1a58a03747a57",
+    "metadata": {
+      "id": 60,
+      "itemrewards": [
+        [
+          1434,
+          5
+        ]
+      ],
+      "level": 7,
+      "name": "Kobold Candles",
+      "reqlevel": 3,
+      "side": 1,
+      "xp": 475
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 253,
+          "name": "William Pestle"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 253,
+          "name": "William Pestle"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 772,
+          "name": "Large Candle",
+          "quantity": 8
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 9471,
+        "date": "2006-12-07T19:37:25-06:00"
+      },
+      {
+        "id": 2725884,
+        "date": "2006-04-07T13:56:21-05:00"
+      },
+      {
+        "id": 2725897,
+        "date": "2006-10-07T01:56:21-05:00"
+      },
+      {
+        "id": 2928874,
+        "date": "2007-03-17T20:27:12-05:00"
+      },
+      {
+        "id": 3164030,
+        "date": "2019-10-14T09:12:32-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 61,
+    "url": "https://www.wowhead.com/forever/quest=61",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "572945d7a27f3accdeec15eed2b80a76ea79134d3fbe18d7968c024e23fafb09",
+    "metadata": {
+      "id": 61,
+      "level": 7,
+      "name": "Shipment to Stormwind",
+      "reqlevel": 3,
+      "side": 1,
+      "xp": 790
+    },
+    "forever_status": "updated",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 253,
+          "name": "William Pestle"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 279,
+          "name": "Morgan Pestle"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 957,
+          "name": "William's Shipment",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_display": {
+      "previousQuest": 60
+    },
+    "comments": [
+      {
+        "id": 18160,
+        "date": "2006-12-27T19:21:22-06:00"
+      },
+      {
+        "id": 2778055,
+        "date": "2005-10-19T06:52:12-05:00"
+      },
+      {
+        "id": 2778067,
+        "date": "2005-10-19T06:52:12-05:00"
+      },
+      {
+        "id": 2928876,
+        "date": "2006-10-29T23:23:35-06:00"
+      },
+      {
+        "id": 3164076,
+        "date": "2019-10-14T12:11:20-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 62,
+    "url": "https://www.wowhead.com/forever/quest=62",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "f4ec6d3c8c32624f5d2f4c608ef39a89a5846dafb26df6c38b37c9bb24c92305",
+    "metadata": {
+      "id": 62,
+      "level": 7,
+      "name": "The Fargodeep Mine",
+      "reqlevel": 4,
+      "side": 1,
+      "xp": 475
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 240,
+          "name": "Marshal Dughan"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 240,
+          "name": "Marshal Dughan"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 14064,
+        "date": "2006-12-12T11:55:41-06:00"
+      },
+      {
+        "id": 18129,
+        "date": "2006-12-27T17:38:58-06:00"
+      },
+      {
+        "id": 49645,
+        "date": "2007-03-11T17:00:45-05:00"
+      },
+      {
+        "id": 2731032,
+        "date": "2007-03-05T22:00:38-06:00"
+      },
+      {
+        "id": 2731043,
+        "date": "2007-04-11T10:00:38-05:00"
+      },
+      {
+        "id": 2928877,
+        "date": "2006-09-04T23:10:54-05:00"
+      },
+      {
+        "id": 2928878,
+        "date": "2006-07-07T20:45:30-05:00"
+      },
+      {
+        "id": 2928879,
+        "date": "2006-07-19T20:20:49-05:00"
+      },
+      {
+        "id": 2928881,
+        "date": "2006-08-31T21:22:44-05:00"
+      },
+      {
+        "id": 2928882,
+        "date": "2006-06-01T03:15:43-05:00"
+      },
+      {
+        "id": 2928883,
+        "date": "2006-07-10T00:50:19-05:00"
+      },
+      {
+        "id": 3164031,
+        "date": "2019-10-14T09:15:06-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 71,
+    "url": "https://www.wowhead.com/forever/quest=71",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "64825fac893eddb80918cb57e44dbbaeb4f9f2d3b062084b4765c043df84dd52",
+    "metadata": {
+      "id": 71,
+      "level": 10,
+      "name": "Report to Thomas",
+      "reqlevel": 7,
+      "side": 1,
+      "xp": 210
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "object",
+          "entityID": 56,
+          "name": "Rolf's corpse"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 261,
+          "name": "Guard Thomas"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 735,
+          "name": "Rolf and Malakai's Medallions",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_display": {
+      "previousQuest": 45
+    },
+    "comments": [
+      {
+        "id": 2724374,
+        "date": "2006-01-16T13:21:58-06:00"
+      },
+      {
+        "id": 2724389,
+        "date": "2007-04-27T02:48:22-05:00"
+      },
+      {
+        "id": 2929052,
+        "date": "2006-06-01T02:38:21-05:00"
+      },
+      {
+        "id": 2929053,
+        "date": "2006-01-02T01:03:06-06:00"
+      },
+      {
+        "id": 3164391,
+        "date": "2019-10-15T13:50:55-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 76,
+    "url": "https://www.wowhead.com/forever/quest=76",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "5bdfc7ba70c9278607c5a41f2d735a9aba6f62283851bc864120bd36f60316b4",
+    "metadata": {
+      "id": 76,
+      "level": 10,
+      "name": "The Jasperlode Mine",
+      "reqlevel": 4,
+      "side": 1,
+      "xp": 840
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 240,
+          "name": "Marshal Dughan"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 240,
+          "name": "Marshal Dughan"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 62
+    },
+    "comments": [
+      {
+        "id": 18159,
+        "date": "2006-12-27T19:19:31-06:00"
+      },
+      {
+        "id": 49647,
+        "date": "2007-03-11T17:03:52-05:00"
+      },
+      {
+        "id": 62480,
+        "date": "2007-04-05T10:28:30-05:00"
+      },
+      {
+        "id": 2766758,
+        "date": "2006-07-09T21:05:32-05:00"
+      },
+      {
+        "id": 2766771,
+        "date": "2006-08-15T09:05:32-05:00"
+      },
+      {
+        "id": 2766787,
+        "date": "2006-08-15T09:05:32-05:00"
+      },
+      {
+        "id": 2766801,
+        "date": "2006-09-20T21:05:32-05:00"
+      },
+      {
+        "id": 2766813,
+        "date": "2007-01-08T09:05:32-06:00"
+      },
+      {
+        "id": 2766826,
+        "date": "2007-02-13T21:05:32-06:00"
+      },
+      {
+        "id": 2766840,
+        "date": "2007-02-13T21:05:32-06:00"
+      },
+      {
+        "id": 2766854,
+        "date": "2007-02-13T21:05:32-06:00"
+      },
+      {
+        "id": 2766867,
+        "date": "2007-03-22T09:05:32-05:00"
+      },
+      {
+        "id": 2766879,
+        "date": "2007-05-01T02:22:20-05:00"
+      },
+      {
+        "id": 2766905,
+        "date": "2007-05-10T05:15:08-05:00"
+      },
+      {
+        "id": 2929104,
+        "date": "2006-05-26T03:17:20-05:00"
+      },
+      {
+        "id": 2929105,
+        "date": "2005-07-22T00:57:14-05:00"
+      },
+      {
+        "id": 2929106,
+        "date": "2006-06-01T03:19:47-05:00"
+      },
+      {
+        "id": 2929110,
+        "date": "2005-12-13T11:50:06-06:00"
+      },
+      {
+        "id": 2929111,
+        "date": "2004-11-25T02:40:41-06:00"
+      },
+      {
+        "id": 2929112,
+        "date": "2005-08-29T21:29:52-05:00"
+      },
+      {
+        "id": 2929113,
+        "date": "2006-12-07T05:04:46-06:00"
+      },
+      {
+        "id": 2929114,
+        "date": "2007-03-20T02:07:59-05:00"
+      },
+      {
+        "id": 2929115,
+        "date": "2005-05-07T02:18:17-05:00"
+      },
+      {
+        "id": 3164061,
+        "date": "2019-10-14T11:34:43-05:00"
+      },
+      {
+        "id": 3246332,
+        "date": "2020-11-07T07:30:36-06:00"
+      }
+    ]
+  },
+  {
+    "questID": 83,
+    "url": "https://www.wowhead.com/forever/quest=83",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "9ef97056bab02b3e75c13febdea935cdcf315136d224905a90ed917d04f49765",
+    "metadata": {
+      "id": 83,
+      "itemrewards": [
+        [
+          2575,
+          1
+        ],
+        [
+          983,
+          1
+        ]
+      ],
+      "level": 9,
+      "name": "Red Linen Goods",
+      "reqlevel": 4,
+      "side": 1,
+      "xp": 780
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 278,
+          "name": "Sara Timberlain"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 278,
+          "name": "Sara Timberlain"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 1019,
+          "name": "Red Linen Bandana",
+          "quantity": 6
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 18137,
+        "date": "2006-12-27T18:07:25-06:00"
+      },
+      {
+        "id": 41750,
+        "date": "2007-02-24T19:25:37-06:00"
+      },
+      {
+        "id": 86944,
+        "date": "2007-05-21T15:49:38-05:00"
+      },
+      {
+        "id": 2760621,
+        "date": "2006-02-08T21:41:30-06:00"
+      },
+      {
+        "id": 2760635,
+        "date": "2006-03-17T09:41:30-06:00"
+      },
+      {
+        "id": 2760647,
+        "date": "2006-05-29T09:41:30-05:00"
+      },
+      {
+        "id": 2760660,
+        "date": "2006-05-29T09:41:30-05:00"
+      },
+      {
+        "id": 2760698,
+        "date": "2007-02-08T21:41:30-06:00"
+      },
+      {
+        "id": 2760711,
+        "date": "2007-03-17T09:41:30-05:00"
+      },
+      {
+        "id": 2929205,
+        "date": "2004-09-09T16:22:39-05:00"
+      },
+      {
+        "id": 2929209,
+        "date": "2005-07-12T08:11:59-05:00"
+      },
+      {
+        "id": 2929210,
+        "date": "2007-04-29T17:42:42-05:00"
+      },
+      {
+        "id": 2929211,
+        "date": "2005-03-18T06:57:06-06:00"
+      },
+      {
+        "id": 2929212,
+        "date": "2007-03-16T21:35:53-05:00"
+      },
+      {
+        "id": 2929213,
+        "date": "2005-04-01T23:47:23-06:00"
+      },
+      {
+        "id": 3166382,
+        "date": "2019-10-23T09:57:25-05:00"
+      },
+      {
+        "id": 3198261,
+        "date": "2020-04-07T02:50:42-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 84,
+    "url": "https://www.wowhead.com/forever/quest=84",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "9d32959ef9a1db75873ac51a83763be6f1331aa78b8621ba1dc3a1333f43a988",
+    "metadata": {
+      "id": 84,
+      "level": 6,
+      "name": "Back to Billy",
+      "reqlevel": 5,
+      "side": 1,
+      "xp": 135
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 246,
+          "name": "\"Auntie\" Bernice Stonefield"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 247,
+          "name": "Billy Maclure"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 962,
+          "name": "Pork Belly Pie",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_display": {
+      "previousQuest": 86
+    },
+    "comments": [
+      {
+        "id": 2745866,
+        "date": "2005-12-16T13:25:53-06:00"
+      },
+      {
+        "id": 3164080,
+        "date": "2019-10-14T12:31:32-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 85,
+    "url": "https://www.wowhead.com/forever/quest=85",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "68b7501121032fc4e8a0c717825cada575f846328be65ce60a6fa75b73a13cf5",
+    "metadata": {
+      "id": 85,
+      "level": 6,
+      "name": "Lost Necklace",
+      "reqlevel": 5,
+      "side": 1,
+      "xp": 135
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 246,
+          "name": "\"Auntie\" Bernice Stonefield"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 247,
+          "name": "Billy Maclure"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 13974,
+        "date": "2006-12-12T10:00:38-06:00"
+      },
+      {
+        "id": 49638,
+        "date": "2007-03-11T16:53:56-05:00"
+      },
+      {
+        "id": 2929216,
+        "date": "2005-09-05T06:39:29-05:00"
+      },
+      {
+        "id": 2929217,
+        "date": "2007-04-06T13:45:31-05:00"
+      },
+      {
+        "id": 2929218,
+        "date": "2005-10-02T20:14:40-05:00"
+      },
+      {
+        "id": 2929219,
+        "date": "2006-09-15T01:46:19-05:00"
+      },
+      {
+        "id": 3164078,
+        "date": "2019-10-14T12:19:11-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 86,
+    "url": "https://www.wowhead.com/forever/quest=86",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "4d845d354fc97092470ff7f5a14afac617b175fed1b485d92f1058ccde4201a3",
+    "metadata": {
+      "id": 86,
+      "level": 6,
+      "name": "Pie for Billy",
+      "reqlevel": 5,
+      "side": 1,
+      "xp": 405
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 247,
+          "name": "Billy Maclure"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 246,
+          "name": "\"Auntie\" Bernice Stonefield"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 769,
+          "name": "Chunk of Boar Meat",
+          "quantity": 4
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 85
+    },
+    "comments": [
+      {
+        "id": 2929220,
+        "date": "2006-08-20T01:51:58-05:00"
+      },
+      {
+        "id": 2929221,
+        "date": "2005-12-16T23:40:04-06:00"
+      },
+      {
+        "id": 2929222,
+        "date": "2007-02-20T01:37:38-06:00"
+      },
+      {
+        "id": 3164079,
+        "date": "2019-10-14T12:26:24-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 87,
+    "url": "https://www.wowhead.com/forever/quest=87",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "0e9eb250609de0f406a7689e1188678c362d007b1d65fd5dd406376eb0c48be0",
+    "metadata": {
+      "id": 87,
+      "itemrewards": [
+        [
+          1359,
+          1
+        ]
+      ],
+      "level": 8,
+      "name": "Goldtooth",
+      "reqlevel": 5,
+      "side": 1,
+      "xp": 880
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 247,
+          "name": "Billy Maclure"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 246,
+          "name": "\"Auntie\" Bernice Stonefield"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 981,
+          "name": "Bernice's Necklace",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 84
+    },
+    "comments": [
+      {
+        "id": 12876,
+        "date": "2006-12-10T17:00:11-06:00"
+      },
+      {
+        "id": 12894,
+        "date": "2006-12-10T17:14:04-06:00"
+      },
+      {
+        "id": 18147,
+        "date": "2006-12-27T18:40:14-06:00"
+      },
+      {
+        "id": 71338,
+        "date": "2007-04-23T00:33:54-05:00"
+      },
+      {
+        "id": 83155,
+        "date": "2007-05-14T21:40:09-05:00"
+      },
+      {
+        "id": 2742082,
+        "date": "2005-10-25T16:06:59-05:00"
+      },
+      {
+        "id": 2742096,
+        "date": "2006-04-26T04:06:59-05:00"
+      },
+      {
+        "id": 2742195,
+        "date": "2006-09-19T04:06:59-05:00"
+      },
+      {
+        "id": 2742208,
+        "date": "2006-10-25T16:06:59-05:00"
+      },
+      {
+        "id": 2742220,
+        "date": "2006-10-25T16:06:59-05:00"
+      },
+      {
+        "id": 2742228,
+        "date": "2007-01-06T16:06:59-06:00"
+      },
+      {
+        "id": 2742254,
+        "date": "2007-02-12T04:06:59-06:00"
+      },
+      {
+        "id": 2929223,
+        "date": "2004-12-04T07:24:34-06:00"
+      },
+      {
+        "id": 2929225,
+        "date": "2006-06-12T01:28:24-05:00"
+      },
+      {
+        "id": 2929226,
+        "date": "2006-11-12T17:08:18-06:00"
+      },
+      {
+        "id": 2929227,
+        "date": "2005-09-05T07:09:41-05:00"
+      },
+      {
+        "id": 2929228,
+        "date": "2006-06-15T02:16:28-05:00"
+      },
+      {
+        "id": 2929230,
+        "date": "2006-12-23T18:49:08-06:00"
+      },
+      {
+        "id": 2929234,
+        "date": "2006-02-07T07:39:01-06:00"
+      },
+      {
+        "id": 3164112,
+        "date": "2019-10-14T14:36:50-05:00"
+      },
+      {
+        "id": 3194458,
+        "date": "2020-03-13T19:01:05-05:00"
+      },
+      {
+        "id": 3304718,
+        "date": "2021-02-27T23:41:28-06:00"
+      },
+      {
+        "id": 6436586,
+        "date": "2026-09-26T15:35:12-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 88,
+    "url": "https://www.wowhead.com/forever/quest=88",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "b8ac1c277d8f81fb4d6ec7ba2614b428c08179f610dd5593585b247dd7001a57",
+    "metadata": {
+      "id": 88,
+      "level": 9,
+      "name": "Princess Must Die!",
+      "reqlevel": 6,
+      "side": 1,
+      "xp": 780
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 244,
+          "name": "Ma Stonefield"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 244,
+          "name": "Ma Stonefield"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 1006,
+          "name": "Brass Collar",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 18153,
+        "date": "2006-12-27T18:55:37-06:00"
+      },
+      {
+        "id": 38447,
+        "date": "2007-02-19T00:45:03-06:00"
+      },
+      {
+        "id": 86169,
+        "date": "2007-05-20T09:23:30-05:00"
+      },
+      {
+        "id": 2744751,
+        "date": "2006-07-26T13:26:11-05:00"
+      },
+      {
+        "id": 2744775,
+        "date": "2006-07-26T13:26:11-05:00"
+      },
+      {
+        "id": 2744788,
+        "date": "2006-07-26T13:26:11-05:00"
+      },
+      {
+        "id": 2744800,
+        "date": "2006-07-26T13:26:11-05:00"
+      },
+      {
+        "id": 2744809,
+        "date": "2006-07-26T13:26:11-05:00"
+      },
+      {
+        "id": 2744820,
+        "date": "2006-10-07T13:26:11-05:00"
+      },
+      {
+        "id": 2744833,
+        "date": "2007-03-02T13:26:11-06:00"
+      },
+      {
+        "id": 2744847,
+        "date": "2007-04-23T11:02:11-05:00"
+      },
+      {
+        "id": 2744857,
+        "date": "2007-04-23T11:02:11-05:00"
+      },
+      {
+        "id": 2744869,
+        "date": "2007-05-02T13:54:59-05:00"
+      },
+      {
+        "id": 2744882,
+        "date": "2007-05-17T18:42:59-05:00"
+      },
+      {
+        "id": 2929235,
+        "date": "2006-03-14T08:34:23-06:00"
+      },
+      {
+        "id": 2929236,
+        "date": "2005-07-16T18:33:32-05:00"
+      },
+      {
+        "id": 2929237,
+        "date": "2005-07-20T19:08:32-05:00"
+      },
+      {
+        "id": 2929238,
+        "date": "2005-11-26T06:47:44-06:00"
+      },
+      {
+        "id": 2929239,
+        "date": "2007-05-18T09:58:40-05:00"
+      },
+      {
+        "id": 2929240,
+        "date": "2004-12-23T23:55:57-06:00"
+      },
+      {
+        "id": 2929241,
+        "date": "2005-01-05T18:42:41-06:00"
+      },
+      {
+        "id": 2929242,
+        "date": "2006-09-30T20:26:32-05:00"
+      },
+      {
+        "id": 2929243,
+        "date": "2004-12-29T08:00:30-06:00"
+      },
+      {
+        "id": 2929244,
+        "date": "2007-03-22T15:41:30-05:00"
+      },
+      {
+        "id": 2929246,
+        "date": "2004-12-01T14:55:01-06:00"
+      },
+      {
+        "id": 2929247,
+        "date": "2005-06-20T23:15:11-05:00"
+      },
+      {
+        "id": 2929248,
+        "date": "2006-11-03T20:34:43-06:00"
+      },
+      {
+        "id": 2929249,
+        "date": "2005-06-01T07:14:15-05:00"
+      },
+      {
+        "id": 2929250,
+        "date": "2005-02-08T18:59:03-06:00"
+      },
+      {
+        "id": 2929251,
+        "date": "2005-04-22T16:51:22-05:00"
+      },
+      {
+        "id": 2929252,
+        "date": "2007-05-11T02:54:08-05:00"
+      },
+      {
+        "id": 3162488,
+        "date": "2019-10-08T05:43:19-05:00"
+      },
+      {
+        "id": 3164367,
+        "date": "2019-10-15T12:53:38-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 106,
+    "url": "https://www.wowhead.com/forever/quest=106",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "b60080516fc1aaa534e1a3a5806c03b14a232db7a64c52e7800197575ed24c0d",
+    "metadata": {
+      "id": 106,
+      "level": 6,
+      "name": "Young Lovers",
+      "reqlevel": 5,
+      "side": 1,
+      "xp": 135
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 251,
+          "name": "Maybell Maclure"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 252,
+          "name": "Tommy Joe Stonefield"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 1208,
+          "name": "Maybell's Love Letter",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 52953,
+        "date": "2007-03-18T01:02:19-05:00"
+      },
+      {
+        "id": 2782776,
+        "date": "2005-10-01T02:14:49-05:00"
+      },
+      {
+        "id": 2782814,
+        "date": "2006-07-20T02:14:49-05:00"
+      },
+      {
+        "id": 2782828,
+        "date": "2006-10-01T02:14:49-05:00"
+      },
+      {
+        "id": 2929576,
+        "date": "2005-09-24T14:28:35-05:00"
+      },
+      {
+        "id": 2929577,
+        "date": "2006-01-15T13:32:16-06:00"
+      },
+      {
+        "id": 3164086,
+        "date": "2019-10-14T12:45:27-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 107,
+    "url": "https://www.wowhead.com/forever/quest=107",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "7c404e02aa0c95e191b7404c3827f36ac9afca62d5509f9b75fabd7705d91e32",
+    "metadata": {
+      "id": 107,
+      "level": 6,
+      "name": "Note to William",
+      "reqlevel": 5,
+      "side": 1,
+      "xp": 135
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 248,
+          "name": "Gramma Stonefield"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 253,
+          "name": "William Pestle"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 1252,
+          "name": "Gramma Stonefield's Note",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_display": {
+      "previousQuest": 111
+    },
+    "comments": [
+      {
+        "id": 54047,
+        "date": "2007-03-20T03:59:22-05:00"
+      },
+      {
+        "id": 2758981,
+        "date": "2005-09-29T03:21:29-05:00"
+      },
+      {
+        "id": 2758995,
+        "date": "2006-03-30T15:21:29-06:00"
+      },
+      {
+        "id": 2929578,
+        "date": "2007-04-04T11:21:39-05:00"
+      },
+      {
+        "id": 2929579,
+        "date": "2006-10-31T08:32:54-06:00"
+      },
+      {
+        "id": 2929580,
+        "date": "2006-07-25T15:33:54-05:00"
+      },
+      {
+        "id": 2929581,
+        "date": "2007-04-04T13:48:58-05:00"
+      },
+      {
+        "id": 3164103,
+        "date": "2019-10-14T14:24:21-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 109,
+    "url": "https://www.wowhead.com/forever/quest=109",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "3f5b222975cd3dd69109125dd66a7cafb68dafe3dd031aadf04d1b5ee911df01",
+    "metadata": {
+      "id": 109,
+      "level": 10,
+      "name": "Report to Gryan Stoutmantle",
+      "reqlevel": 9,
+      "side": 1,
+      "xp": 630
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 233,
+          "name": "Farmer Saldean"
+        },
+        {
+          "entityType": "npc",
+          "entityID": 237,
+          "name": "Farmer Furlbrow"
+        },
+        {
+          "entityType": "npc",
+          "entityID": 240,
+          "name": "Marshal Dughan"
+        },
+        {
+          "entityType": "npc",
+          "entityID": 261,
+          "name": "Guard Thomas"
+        },
+        {
+          "entityType": "npc",
+          "entityID": 294,
+          "name": "Marshal Haggard"
+        },
+        {
+          "entityType": "npc",
+          "entityID": 963,
+          "name": "Deputy Rainer"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 234,
+          "name": "Gryan Stoutmantle"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 18156,
+        "date": "2006-12-27T19:03:27-06:00"
+      },
+      {
+        "id": 2762515,
+        "date": "2006-03-15T19:25:26-06:00"
+      },
+      {
+        "id": 2762530,
+        "date": "2006-09-14T07:25:26-05:00"
+      },
+      {
+        "id": 2762543,
+        "date": "2006-09-14T07:25:26-05:00"
+      },
+      {
+        "id": 2762556,
+        "date": "2006-09-14T07:25:26-05:00"
+      },
+      {
+        "id": 2762569,
+        "date": "2007-01-01T19:25:26-06:00"
+      },
+      {
+        "id": 2762583,
+        "date": "2007-02-07T07:25:26-06:00"
+      },
+      {
+        "id": 2929585,
+        "date": "2006-11-05T00:20:41-06:00"
+      },
+      {
+        "id": 3216557,
+        "date": "2020-07-09T01:07:00-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 111,
+    "url": "https://www.wowhead.com/forever/quest=111",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "e8a3359845b1ca847d5e9f0da2a82a724da3326f98fdd7cda8e5964ca727754d",
+    "metadata": {
+      "id": 111,
+      "level": 6,
+      "name": "Speak with Gramma",
+      "reqlevel": 5,
+      "side": 1,
+      "xp": 135
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 252,
+          "name": "Tommy Joe Stonefield"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 248,
+          "name": "Gramma Stonefield"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 106
+    },
+    "comments": [
+      {
+        "id": 49641,
+        "date": "2007-03-11T16:56:56-05:00"
+      },
+      {
+        "id": 2730132,
+        "date": "2005-09-25T14:58:25-05:00"
+      },
+      {
+        "id": 2730147,
+        "date": "2006-02-18T14:58:25-06:00"
+      },
+      {
+        "id": 2730160,
+        "date": "2006-09-25T14:58:25-05:00"
+      },
+      {
+        "id": 2929586,
+        "date": "2007-04-04T11:17:49-05:00"
+      },
+      {
+        "id": 3164097,
+        "date": "2019-10-14T14:05:57-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 112,
+    "url": "https://www.wowhead.com/forever/quest=112",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "ca52732c5bc87c91bc3f2c3f0dca52b568369ba53555f1deb3a97e0d16581ed4",
+    "metadata": {
+      "id": 112,
+      "level": 7,
+      "name": "Collecting Kelp",
+      "reqlevel": 5,
+      "side": 1,
+      "xp": 315
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 253,
+          "name": "William Pestle"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 253,
+          "name": "William Pestle"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 1256,
+          "name": "Crystal Kelp Frond",
+          "quantity": 4
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 107
+    },
+    "comments": [
+      {
+        "id": 5067,
+        "date": "2006-11-29T00:08:29-06:00"
+      },
+      {
+        "id": 18150,
+        "date": "2006-12-27T18:51:52-06:00"
+      },
+      {
+        "id": 2725737,
+        "date": "2005-09-28T17:23:05-05:00"
+      },
+      {
+        "id": 2725747,
+        "date": "2005-11-04T05:23:05-06:00"
+      },
+      {
+        "id": 2725758,
+        "date": "2007-04-08T13:03:53-05:00"
+      },
+      {
+        "id": 2725783,
+        "date": "2007-05-15T00:35:05-05:00"
+      },
+      {
+        "id": 2929587,
+        "date": "2007-01-12T03:22:41-06:00"
+      },
+      {
+        "id": 2929588,
+        "date": "2006-01-21T02:39:55-06:00"
+      },
+      {
+        "id": 3164109,
+        "date": "2019-10-14T14:27:27-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 114,
+    "url": "https://www.wowhead.com/forever/quest=114",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "cc9af4c0ce67f3b1b33466f76ab04c037fd0990623e115f470ba4c15979f2483",
+    "metadata": {
+      "id": 114,
+      "itemrewards": [
+        [
+          118,
+          5
+        ]
+      ],
+      "level": 7,
+      "name": "The Escape",
+      "reqlevel": 5,
+      "side": 1,
+      "xp": 790
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 253,
+          "name": "William Pestle"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 251,
+          "name": "Maybell Maclure"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 1257,
+          "name": "Invisibility Liquor",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 18152,
+        "date": "2006-12-27T18:54:24-06:00"
+      },
+      {
+        "id": 2780680,
+        "date": "2005-10-26T10:57:20-05:00"
+      },
+      {
+        "id": 2780696,
+        "date": "2005-10-26T10:57:20-05:00"
+      },
+      {
+        "id": 2780706,
+        "date": "2006-09-19T22:57:20-05:00"
+      },
+      {
+        "id": 2780718,
+        "date": "2007-03-21T10:57:20-05:00"
+      },
+      {
+        "id": 2929589,
+        "date": "2005-01-22T00:28:01-06:00"
+      },
+      {
+        "id": 2929590,
+        "date": "2004-11-12T16:08:14-06:00"
+      },
+      {
+        "id": 2929591,
+        "date": "2007-04-11T11:37:28-05:00"
+      },
+      {
+        "id": 3164110,
+        "date": "2019-10-14T14:30:32-05:00"
+      },
+      {
+        "id": 6435077,
+        "date": "2026-09-24T17:25:16-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 123,
+    "url": "https://www.wowhead.com/forever/quest=123",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "0f56cbb05ae4e58fd6cf19e511905ce157c802578eb848301cf198daf47f9a8a",
+    "metadata": {
+      "id": 123,
+      "level": 10,
+      "name": "The Collector",
+      "reqlevel": 7,
+      "side": 1,
+      "xp": 210
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 240,
+          "name": "Marshal Dughan"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 2223,
+          "name": "The Collector's Schedule",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 61425,
+        "date": "2007-04-03T05:46:52-05:00"
+      },
+      {
+        "id": 2730804,
+        "date": "2005-09-25T16:46:49-05:00"
+      },
+      {
+        "id": 2730830,
+        "date": "2005-09-25T16:46:49-05:00"
+      },
+      {
+        "id": 2730905,
+        "date": "2005-09-25T16:46:49-05:00"
+      },
+      {
+        "id": 2730918,
+        "date": "2005-09-25T16:46:49-05:00"
+      },
+      {
+        "id": 2730929,
+        "date": "2005-09-25T16:46:49-05:00"
+      },
+      {
+        "id": 2730939,
+        "date": "2005-09-25T16:46:49-05:00"
+      },
+      {
+        "id": 2730951,
+        "date": "2005-09-25T16:46:49-05:00"
+      },
+      {
+        "id": 2730963,
+        "date": "2005-09-25T16:46:49-05:00"
+      },
+      {
+        "id": 2731001,
+        "date": "2005-11-01T04:46:49-06:00"
+      },
+      {
+        "id": 2731013,
+        "date": "2005-12-07T16:46:49-06:00"
+      },
+      {
+        "id": 2731025,
+        "date": "2005-12-07T16:46:49-06:00"
+      },
+      {
+        "id": 2731039,
+        "date": "2006-01-13T04:46:49-06:00"
+      },
+      {
+        "id": 2731051,
+        "date": "2006-05-02T16:46:49-05:00"
+      },
+      {
+        "id": 2731060,
+        "date": "2006-06-08T04:46:49-05:00"
+      },
+      {
+        "id": 2731076,
+        "date": "2006-06-08T04:46:49-05:00"
+      },
+      {
+        "id": 2731088,
+        "date": "2006-06-08T04:46:49-05:00"
+      },
+      {
+        "id": 2731105,
+        "date": "2006-07-14T16:46:49-05:00"
+      },
+      {
+        "id": 2731118,
+        "date": "2006-12-07T16:46:49-06:00"
+      },
+      {
+        "id": 2731133,
+        "date": "2007-01-13T04:46:49-06:00"
+      },
+      {
+        "id": 2731146,
+        "date": "2007-03-09T03:20:25-06:00"
+      },
+      {
+        "id": 2731157,
+        "date": "2007-03-18T06:13:13-05:00"
+      },
+      {
+        "id": 2731167,
+        "date": "2007-04-11T13:54:01-05:00"
+      },
+      {
+        "id": 2731182,
+        "date": "2007-05-11T23:30:01-05:00"
+      },
+      {
+        "id": 2929682,
+        "date": "2006-02-03T10:45:29-06:00"
+      },
+      {
+        "id": 2929684,
+        "date": "2006-06-21T15:02:35-05:00"
+      },
+      {
+        "id": 2929685,
+        "date": "2006-06-27T14:18:11-05:00"
+      },
+      {
+        "id": 2929688,
+        "date": "2005-06-14T15:55:05-05:00"
+      },
+      {
+        "id": 2929689,
+        "date": "2004-11-15T20:42:49-06:00"
+      },
+      {
+        "id": 2929690,
+        "date": "2006-01-17T22:05:24-06:00"
+      },
+      {
+        "id": 2929691,
+        "date": "2005-09-16T11:46:32-05:00"
+      },
+      {
+        "id": 2929692,
+        "date": "2006-06-21T15:00:41-05:00"
+      },
+      {
+        "id": 2929694,
+        "date": "2005-05-28T14:01:09-05:00"
+      },
+      {
+        "id": 3172884,
+        "date": "2019-11-21T17:27:45-06:00"
+      },
+      {
+        "id": 3188328,
+        "date": "2020-02-04T15:22:21-06:00"
+      }
+    ]
+  },
+  {
+    "questID": 147,
+    "url": "https://www.wowhead.com/forever/quest=147",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "94c2466b79d8a388f12962d7c780768e95476f25dd878472e8263d39f45ff10e",
+    "metadata": {
+      "id": 147,
+      "level": 10,
+      "name": "Manhunt",
+      "reqlevel": 7,
+      "side": 1,
+      "xp": 840
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 240,
+          "name": "Marshal Dughan"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 240,
+          "name": "Marshal Dughan"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 2239,
+          "name": "The Collector's Ring",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 19356,
+        "date": "2007-01-04T15:50:52-06:00"
+      },
+      {
+        "id": 74715,
+        "date": "2007-04-29T02:35:25-05:00"
+      },
+      {
+        "id": 2763222,
+        "date": "2005-10-23T18:00:48-05:00"
+      },
+      {
+        "id": 2763235,
+        "date": "2005-10-23T18:00:48-05:00"
+      },
+      {
+        "id": 2763251,
+        "date": "2006-07-06T06:00:48-05:00"
+      },
+      {
+        "id": 2763293,
+        "date": "2006-07-06T06:00:48-05:00"
+      },
+      {
+        "id": 2763307,
+        "date": "2006-07-06T06:00:48-05:00"
+      },
+      {
+        "id": 2763319,
+        "date": "2006-08-11T18:00:48-05:00"
+      },
+      {
+        "id": 2763334,
+        "date": "2007-01-04T18:00:48-06:00"
+      },
+      {
+        "id": 2763347,
+        "date": "2007-01-04T18:00:48-06:00"
+      },
+      {
+        "id": 2763363,
+        "date": "2007-03-15T21:51:12-05:00"
+      },
+      {
+        "id": 2763379,
+        "date": "2007-04-18T08:24:48-05:00"
+      },
+      {
+        "id": 2763394,
+        "date": "2007-04-21T09:22:24-05:00"
+      },
+      {
+        "id": 2929997,
+        "date": "2004-11-15T20:39:55-06:00"
+      },
+      {
+        "id": 2929998,
+        "date": "2005-12-25T12:13:11-06:00"
+      },
+      {
+        "id": 2929999,
+        "date": "2006-01-08T21:42:09-06:00"
+      },
+      {
+        "id": 2930001,
+        "date": "2005-07-14T16:43:52-05:00"
+      },
+      {
+        "id": 2930002,
+        "date": "2006-06-29T15:52:51-05:00"
+      },
+      {
+        "id": 2930003,
+        "date": "2007-03-14T22:39:42-05:00"
+      },
+      {
+        "id": 2930004,
+        "date": "2007-04-20T00:50:42-05:00"
+      },
+      {
+        "id": 2930006,
+        "date": "2006-07-15T17:49:15-05:00"
+      },
+      {
+        "id": 2930007,
+        "date": "2007-04-13T05:53:17-05:00"
+      },
+      {
+        "id": 2930008,
+        "date": "2004-11-28T10:34:19-06:00"
+      },
+      {
+        "id": 2930009,
+        "date": "2006-02-26T21:10:03-06:00"
+      }
+    ]
+  },
+  {
+    "questID": 176,
+    "url": "https://www.wowhead.com/forever/quest=176",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "359bc667ecce5eef73177bdd9874ff73518098040ab1e1d4d160fd839041af98",
+    "metadata": {
+      "id": 176,
+      "level": 11,
+      "name": "WANTED: \"Hogger\"",
+      "reqlevel": 5,
+      "side": 1,
+      "xp": 880
+    },
+    "forever_status": "updated",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "object",
+          "entityID": 68,
+          "name": "Wanted Poster"
+        },
+        {
+          "entityType": "object",
+          "entityID": 156561,
+          "name": "Wanted Poster"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 240,
+          "name": "Marshal Dughan"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 1931,
+          "name": "Huge Gnoll Claw",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 4572,
+        "date": "2006-11-26T05:21:11-06:00"
+      },
+      {
+        "id": 4573,
+        "date": "2006-11-26T05:31:07-06:00"
+      },
+      {
+        "id": 15050,
+        "date": "2006-12-13T17:10:00-06:00"
+      },
+      {
+        "id": 19962,
+        "date": "2007-01-09T19:35:01-06:00"
+      },
+      {
+        "id": 27073,
+        "date": "2007-01-29T11:00:38-06:00"
+      },
+      {
+        "id": 48396,
+        "date": "2007-03-08T19:37:57-06:00"
+      },
+      {
+        "id": 49566,
+        "date": "2007-03-11T14:27:18-05:00"
+      },
+      {
+        "id": 67541,
+        "date": "2007-04-15T06:12:46-05:00"
+      },
+      {
+        "id": 2756670,
+        "date": "2005-10-08T00:25:35-05:00"
+      },
+      {
+        "id": 2756682,
+        "date": "2005-10-08T00:25:35-05:00"
+      },
+      {
+        "id": 2756709,
+        "date": "2006-01-25T12:25:35-06:00"
+      },
+      {
+        "id": 2756722,
+        "date": "2006-03-03T00:25:35-06:00"
+      },
+      {
+        "id": 2756737,
+        "date": "2006-07-27T00:25:35-05:00"
+      },
+      {
+        "id": 2756747,
+        "date": "2006-12-20T00:25:35-06:00"
+      },
+      {
+        "id": 2756761,
+        "date": "2006-12-20T00:25:35-06:00"
+      },
+      {
+        "id": 2756777,
+        "date": "2007-04-08T12:25:35-05:00"
+      },
+      {
+        "id": 2756790,
+        "date": "2007-04-02T15:18:23-05:00"
+      },
+      {
+        "id": 2756804,
+        "date": "2007-04-14T19:08:47-05:00"
+      },
+      {
+        "id": 2756816,
+        "date": "2007-04-23T22:01:35-05:00"
+      },
+      {
+        "id": 2756831,
+        "date": "2007-05-03T00:54:23-05:00"
+      },
+      {
+        "id": 2930406,
+        "date": "2006-02-15T22:18:34-06:00"
+      },
+      {
+        "id": 2930407,
+        "date": "2006-04-19T07:11:59-05:00"
+      },
+      {
+        "id": 2930408,
+        "date": "2007-04-03T16:44:45-05:00"
+      },
+      {
+        "id": 2930410,
+        "date": "2005-05-23T03:51:09-05:00"
+      },
+      {
+        "id": 2930411,
+        "date": "2006-04-18T03:04:46-05:00"
+      },
+      {
+        "id": 2930412,
+        "date": "2006-06-10T17:23:14-05:00"
+      },
+      {
+        "id": 2930413,
+        "date": "2006-06-17T09:13:03-05:00"
+      },
+      {
+        "id": 2930414,
+        "date": "2006-11-30T11:00:25-06:00"
+      },
+      {
+        "id": 2930415,
+        "date": "2007-02-15T10:04:48-06:00"
+      },
+      {
+        "id": 2930417,
+        "date": "2005-05-05T23:42:33-05:00"
+      },
+      {
+        "id": 2930418,
+        "date": "2006-06-15T08:40:30-05:00"
+      },
+      {
+        "id": 2930419,
+        "date": "2006-11-27T03:54:16-06:00"
+      },
+      {
+        "id": 2930420,
+        "date": "2005-12-23T06:02:29-06:00"
+      },
+      {
+        "id": 2930421,
+        "date": "2005-12-28T16:27:36-06:00"
+      },
+      {
+        "id": 2930422,
+        "date": "2006-06-14T07:30:57-05:00"
+      },
+      {
+        "id": 2930423,
+        "date": "2006-06-27T12:57:57-05:00"
+      },
+      {
+        "id": 2930424,
+        "date": "2006-07-03T09:47:11-05:00"
+      },
+      {
+        "id": 2930425,
+        "date": "2006-10-13T19:31:20-05:00"
+      },
+      {
+        "id": 2930426,
+        "date": "2007-05-02T04:03:02-05:00"
+      },
+      {
+        "id": 2930428,
+        "date": "2005-10-09T01:42:40-05:00"
+      },
+      {
+        "id": 2930429,
+        "date": "2006-06-14T04:28:29-05:00"
+      },
+      {
+        "id": 2930430,
+        "date": "2006-06-14T13:13:08-05:00"
+      },
+      {
+        "id": 2930431,
+        "date": "2006-08-26T17:20:23-05:00"
+      },
+      {
+        "id": 2930432,
+        "date": "2007-05-11T02:49:01-05:00"
+      },
+      {
+        "id": 2930434,
+        "date": "2004-11-28T03:43:57-06:00"
+      },
+      {
+        "id": 2930435,
+        "date": "2006-06-15T02:51:08-05:00"
+      },
+      {
+        "id": 2930437,
+        "date": "2006-10-28T13:42:21-05:00"
+      },
+      {
+        "id": 2930440,
+        "date": "2005-01-09T10:20:37-06:00"
+      },
+      {
+        "id": 2930441,
+        "date": "2006-10-28T06:19:46-05:00"
+      },
+      {
+        "id": 2930443,
+        "date": "2005-11-26T16:50:56-06:00"
+      },
+      {
+        "id": 2930444,
+        "date": "2006-10-26T01:06:11-05:00"
+      },
+      {
+        "id": 2930445,
+        "date": "2007-03-31T04:59:25-05:00"
+      },
+      {
+        "id": 2930447,
+        "date": "2006-04-18T03:50:28-05:00"
+      },
+      {
+        "id": 2930448,
+        "date": "2006-06-14T14:37:31-05:00"
+      },
+      {
+        "id": 2930449,
+        "date": "2006-12-08T09:26:00-06:00"
+      },
+      {
+        "id": 2930450,
+        "date": "2006-06-15T00:13:16-05:00"
+      },
+      {
+        "id": 2930451,
+        "date": "2006-10-28T20:21:00-05:00"
+      },
+      {
+        "id": 2930455,
+        "date": "2005-11-06T12:44:40-06:00"
+      },
+      {
+        "id": 2930456,
+        "date": "2006-06-15T06:41:05-05:00"
+      },
+      {
+        "id": 2930457,
+        "date": "2006-10-09T03:57:10-05:00"
+      },
+      {
+        "id": 2930458,
+        "date": "2007-03-27T10:11:18-05:00"
+      },
+      {
+        "id": 2930460,
+        "date": "2005-02-09T04:44:26-06:00"
+      },
+      {
+        "id": 2930461,
+        "date": "2005-09-29T13:47:32-05:00"
+      },
+      {
+        "id": 2930462,
+        "date": "2006-04-17T17:05:25-05:00"
+      },
+      {
+        "id": 2930463,
+        "date": "2006-06-14T12:17:37-05:00"
+      },
+      {
+        "id": 2930464,
+        "date": "2006-10-19T10:36:48-05:00"
+      },
+      {
+        "id": 2930465,
+        "date": "2006-10-30T05:57:52-06:00"
+      },
+      {
+        "id": 2930467,
+        "date": "2006-06-16T04:35:00-05:00"
+      },
+      {
+        "id": 2930468,
+        "date": "2006-10-11T17:45:37-05:00"
+      },
+      {
+        "id": 3251569,
+        "date": "2020-11-21T10:59:06-06:00"
+      },
+      {
+        "id": 3372758,
+        "date": "2021-04-01T17:00:18-05:00"
+      },
+      {
+        "id": 5159220,
+        "date": "2021-04-22T18:44:06-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 239,
+    "url": "https://www.wowhead.com/forever/quest=239",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "9833c6ae6692bdc07d3c612b2962fc390f355f5341cde6a77aa7cb425c9a3cc2",
+    "metadata": {
+      "id": 239,
+      "level": 10,
+      "name": "Westbrook Garrison Needs Help!",
+      "reqlevel": 6,
+      "side": 1,
+      "xp": 210
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 240,
+          "name": "Marshal Dughan"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 963,
+          "name": "Deputy Rainer"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 49656,
+        "date": "2007-03-11T17:11:03-05:00"
+      },
+      {
+        "id": 2750777,
+        "date": "2005-09-26T20:18:34-05:00"
+      },
+      {
+        "id": 2750792,
+        "date": "2006-01-14T08:18:34-06:00"
+      },
+      {
+        "id": 2931694,
+        "date": "2005-05-26T04:48:19-05:00"
+      },
+      {
+        "id": 2931695,
+        "date": "2006-10-08T23:59:58-05:00"
+      },
+      {
+        "id": 3164077,
+        "date": "2019-10-14T12:15:41-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 783,
+    "url": "https://www.wowhead.com/forever/quest=783",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "9e7456f639233af43d2257c3c398131af0b91b9eefc9311ea6b5236209aa03f8",
+    "metadata": {
+      "id": 783,
+      "level": 1,
+      "name": "A Threat Within",
+      "reqlevel": 1,
+      "side": 1,
+      "xp": 40
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 823,
+          "name": "Deputy Willem"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 197,
+          "name": "Marshal McBride"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 7002,
+        "date": "2006-12-06T05:32:07-06:00"
+      },
+      {
+        "id": 19401,
+        "date": "2007-01-04T23:57:14-06:00"
+      },
+      {
+        "id": 2868611,
+        "date": "2019-01-28T07:58:15-06:00"
+      },
+      {
+        "id": 2941221,
+        "date": "2006-03-28T02:58:28-06:00"
+      },
+      {
+        "id": 2941222,
+        "date": "2005-03-16T09:43:28-06:00"
+      },
+      {
+        "id": 2941223,
+        "date": "2006-12-22T14:35:05-06:00"
+      },
+      {
+        "id": 2941224,
+        "date": "2006-01-02T02:10:32-06:00"
+      },
+      {
+        "id": 2941225,
+        "date": "2006-02-03T16:09:17-06:00"
+      },
+      {
+        "id": 2941226,
+        "date": "2005-12-23T01:01:17-06:00"
+      },
+      {
+        "id": 2941227,
+        "date": "2007-03-24T05:47:58-05:00"
+      },
+      {
+        "id": 2941229,
+        "date": "2006-06-01T02:53:17-05:00"
+      },
+      {
+        "id": 3143472,
+        "date": "2019-07-27T04:01:30-05:00"
+      },
+      {
+        "id": 3159763,
+        "date": "2019-09-29T04:33:40-05:00"
+      },
+      {
+        "id": 3224976,
+        "date": "2020-08-23T11:28:47-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 1598,
+    "url": "https://www.wowhead.com/forever/quest=1598",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "17b1b4f54eec7cc9f59a14a4c242c7ba0cff126796e8280bf6aa5b83cefc5d70",
+    "metadata": {
+      "id": 1598,
+      "level": 4,
+      "name": "The Stolen Tome",
+      "reqclass": 256,
+      "reqlevel": 1,
+      "side": 1,
+      "xp": 355
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {},
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 459,
+          "name": "Drusilla La Salle"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 459,
+          "name": "Drusilla La Salle"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 6785,
+          "name": "Powers of the Void",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 55662,
+        "date": "2007-03-23T00:45:53-05:00"
+      },
+      {
+        "id": 2777881,
+        "date": "2005-10-10T13:15:51-05:00"
+      },
+      {
+        "id": 2777905,
+        "date": "2005-10-10T13:15:51-05:00"
+      },
+      {
+        "id": 2777926,
+        "date": "2005-10-10T13:15:51-05:00"
+      },
+      {
+        "id": 2777938,
+        "date": "2005-10-10T13:15:51-05:00"
+      },
+      {
+        "id": 2777951,
+        "date": "2005-12-22T13:15:51-06:00"
+      },
+      {
+        "id": 2777967,
+        "date": "2006-04-11T01:15:51-05:00"
+      },
+      {
+        "id": 2777983,
+        "date": "2006-05-17T13:15:51-05:00"
+      },
+      {
+        "id": 2777996,
+        "date": "2006-06-23T01:15:51-05:00"
+      },
+      {
+        "id": 2778008,
+        "date": "2006-07-29T13:15:51-05:00"
+      },
+      {
+        "id": 2778021,
+        "date": "2006-10-10T13:15:51-05:00"
+      },
+      {
+        "id": 2778031,
+        "date": "2006-12-22T13:15:51-06:00"
+      },
+      {
+        "id": 2778041,
+        "date": "2006-12-22T13:15:51-06:00"
+      },
+      {
+        "id": 2778073,
+        "date": "2007-04-11T01:15:51-05:00"
+      },
+      {
+        "id": 2778088,
+        "date": "2007-05-17T13:15:51-05:00"
+      },
+      {
+        "id": 2778102,
+        "date": "2007-05-17T13:15:51-05:00"
+      },
+      {
+        "id": 2951461,
+        "date": "2006-07-26T07:39:13-05:00"
+      },
+      {
+        "id": 2951463,
+        "date": "2005-05-08T17:32:33-05:00"
+      },
+      {
+        "id": 2951464,
+        "date": "2005-02-03T21:01:33-06:00"
+      },
+      {
+        "id": 2951465,
+        "date": "2006-09-07T19:05:44-05:00"
+      },
+      {
+        "id": 2951466,
+        "date": "2007-02-04T21:57:43-06:00"
+      },
+      {
+        "id": 2951468,
+        "date": "2006-11-06T03:55:35-06:00"
+      },
+      {
+        "id": 2951469,
+        "date": "2005-05-04T16:22:17-05:00"
+      },
+      {
+        "id": 2951470,
+        "date": "2005-05-20T02:54:34-05:00"
+      },
+      {
+        "id": 2951471,
+        "date": "2004-11-22T00:39:02-06:00"
+      },
+      {
+        "id": 2951472,
+        "date": "2006-09-09T13:43:38-05:00"
+      },
+      {
+        "id": 2951474,
+        "date": "2006-04-19T21:29:09-05:00"
+      },
+      {
+        "id": 2951475,
+        "date": "2005-02-10T03:44:25-06:00"
+      },
+      {
+        "id": 2951476,
+        "date": "2006-10-22T10:13:38-05:00"
+      },
+      {
+        "id": 2951477,
+        "date": "2006-12-01T22:28:27-06:00"
+      },
+      {
+        "id": 2951478,
+        "date": "2004-11-06T22:52:26-06:00"
+      },
+      {
+        "id": 2951479,
+        "date": "2004-11-07T18:23:06-06:00"
+      },
+      {
+        "id": 2951480,
+        "date": "2004-11-17T04:30:49-06:00"
+      },
+      {
+        "id": 3150219,
+        "date": "2019-08-28T14:13:45-05:00"
+      },
+      {
+        "id": 3167129,
+        "date": "2019-10-25T20:05:19-05:00"
+      },
+      {
+        "id": 3240844,
+        "date": "2020-10-21T02:33:50-05:00"
+      },
+      {
+        "id": 3240845,
+        "date": "2020-10-21T02:35:27-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 1638,
+    "url": "https://www.wowhead.com/forever/quest=1638",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "583822f996a450ca5d3e15daf7e8078f4fca6e04e8e10b3c1a33798154bd4277",
+    "metadata": {
+      "id": 1638,
+      "level": 10,
+      "name": "A Warrior's Training",
+      "reqclass": 1,
+      "reqlevel": 10,
+      "side": 1,
+      "xp": 85
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {},
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 913,
+          "name": "Lyria Du Lac"
+        },
+        {
+          "entityType": "npc",
+          "entityID": 5480,
+          "name": "Ilsa Corbin"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 6089,
+          "name": "Harry Burlguard"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 2772122,
+        "date": "2006-06-20T06:18:04-05:00"
+      },
+      {
+        "id": 2772176,
+        "date": "2006-06-20T06:18:04-05:00"
+      },
+      {
+        "id": 2772188,
+        "date": "2006-07-26T18:18:04-05:00"
+      },
+      {
+        "id": 2772198,
+        "date": "2006-07-26T18:18:04-05:00"
+      },
+      {
+        "id": 2772208,
+        "date": "2006-12-19T18:18:04-06:00"
+      },
+      {
+        "id": 2772220,
+        "date": "2007-05-14T18:18:04-05:00"
+      },
+      {
+        "id": 2951497,
+        "date": "2007-02-25T11:47:35-06:00"
+      },
+      {
+        "id": 2951498,
+        "date": "2006-01-01T09:17:24-06:00"
+      },
+      {
+        "id": 2951500,
+        "date": "2006-08-29T02:09:30-05:00"
+      },
+      {
+        "id": 2951503,
+        "date": "2005-04-25T13:41:06-05:00"
+      },
+      {
+        "id": 2951504,
+        "date": "2005-09-19T23:10:39-05:00"
+      },
+      {
+        "id": 2951505,
+        "date": "2005-11-17T20:59:49-06:00"
+      },
+      {
+        "id": 2951506,
+        "date": "2006-08-12T00:08:14-05:00"
+      },
+      {
+        "id": 2951507,
+        "date": "2005-09-30T21:36:53-05:00"
+      },
+      {
+        "id": 3154373,
+        "date": "2019-09-12T13:58:34-05:00"
+      },
+      {
+        "id": 3305503,
+        "date": "2021-03-03T00:04:57-06:00"
+      }
+    ]
+  },
+  {
+    "questID": 1639,
+    "url": "https://www.wowhead.com/forever/quest=1639",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "7f0bae184591c66c94555add54b756da17ceca5fa15d0a4fd824a6fc2a827e2b",
+    "metadata": {
+      "id": 1639,
+      "level": 10,
+      "name": "Bartleby the Drunk",
+      "reqclass": 1,
+      "reqlevel": 10,
+      "side": 1,
+      "xp": 85
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {},
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 6089,
+          "name": "Harry Burlguard"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 6090,
+          "name": "Bartleby"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 1638
+    },
+    "comments": [
+      {
+        "id": 2748706,
+        "date": "2005-10-22T22:37:33-05:00"
+      },
+      {
+        "id": 2748717,
+        "date": "2005-10-22T22:37:33-05:00"
+      },
+      {
+        "id": 2748737,
+        "date": "2005-10-22T22:37:33-05:00"
+      },
+      {
+        "id": 2748758,
+        "date": "2006-02-09T10:37:33-06:00"
+      },
+      {
+        "id": 2748769,
+        "date": "2006-04-23T10:37:33-05:00"
+      },
+      {
+        "id": 2748778,
+        "date": "2006-08-10T22:37:33-05:00"
+      },
+      {
+        "id": 2748805,
+        "date": "2006-09-16T10:37:33-05:00"
+      },
+      {
+        "id": 2748817,
+        "date": "2007-03-17T22:37:33-05:00"
+      },
+      {
+        "id": 2951508,
+        "date": "2005-04-25T13:43:37-05:00"
+      },
+      {
+        "id": 2951509,
+        "date": "2006-07-11T17:17:13-05:00"
+      },
+      {
+        "id": 2951510,
+        "date": "2006-07-31T17:26:18-05:00"
+      },
+      {
+        "id": 2951511,
+        "date": "2006-02-04T12:30:05-06:00"
+      }
+    ]
+  },
+  {
+    "questID": 1640,
+    "url": "https://www.wowhead.com/forever/quest=1640",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "1bd9c399f7d4ca1b5a457be3c1f5d3f6d5b4c60cfb298eaf65c293697c4aa2e9",
+    "metadata": {
+      "id": 1640,
+      "level": 10,
+      "name": "Beat Bartleby",
+      "reqclass": 1,
+      "reqlevel": 10,
+      "side": 1,
+      "xp": 210
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 1
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 6090,
+          "name": "Bartleby"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 6090,
+          "name": "Bartleby"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 1639
+    },
+    "comments": [
+      {
+        "id": 2951512,
+        "date": "2005-10-07T13:53:11-05:00"
+      },
+      {
+        "id": 2951513,
+        "date": "2007-03-01T07:29:40-06:00"
+      },
+      {
+        "id": 2951514,
+        "date": "2006-04-23T22:22:01-05:00"
+      },
+      {
+        "id": 3149977,
+        "date": "2019-08-27T09:04:25-05:00"
+      },
+      {
+        "id": 3201293,
+        "date": "2020-04-21T06:13:49-05:00"
+      },
+      {
+        "id": 3203311,
+        "date": "2020-04-30T18:20:00-05:00"
+      },
+      {
+        "id": 3269216,
+        "date": "2020-12-07T06:45:40-06:00"
+      }
+    ]
+  },
+  {
+    "questID": 1665,
+    "url": "https://www.wowhead.com/forever/quest=1665",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "85ad000bf5dc49a68f8443d84df354d5c42bd4605e60a906daea451feb2c423a",
+    "metadata": {
+      "id": 1665,
+      "level": 10,
+      "name": "Bartleby's Mug",
+      "reqclass": 1,
+      "reqlevel": 10,
+      "side": 1,
+      "xp": 420
+    },
+    "forever_status": "updated",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 1
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 6090,
+          "name": "Bartleby"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 6089,
+          "name": "Harry Burlguard"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 6781,
+          "name": "Bartleby's Mug",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_display": {
+      "previousQuest": 1640
+    },
+    "comments": [
+      {
+        "id": 84178,
+        "date": "2007-05-16T17:25:20-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 1666,
+    "url": "https://www.wowhead.com/forever/quest=1666",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "cde926799e792e4f25f34c43f2aa94cd410095b47fde2aabd62c86a49a4f59ff",
+    "metadata": {
+      "id": 1666,
+      "level": 10,
+      "name": "Marshal Haggard",
+      "reqclass": 1,
+      "reqlevel": 10,
+      "side": 1,
+      "xp": 420
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 1
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 6089,
+          "name": "Harry Burlguard"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 294,
+          "name": "Marshal Haggard"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 14389,
+        "date": "2006-12-12T19:08:54-06:00"
+      },
+      {
+        "id": 2726678,
+        "date": "2006-05-16T03:02:25-05:00"
+      },
+      {
+        "id": 2726705,
+        "date": "2006-06-21T15:02:25-05:00"
+      },
+      {
+        "id": 2726718,
+        "date": "2006-07-28T03:02:25-05:00"
+      },
+      {
+        "id": 2726728,
+        "date": "2007-03-04T03:02:25-06:00"
+      },
+      {
+        "id": 2726742,
+        "date": "2007-04-09T15:02:25-05:00"
+      },
+      {
+        "id": 2951731,
+        "date": "2006-10-16T19:18:30-05:00"
+      },
+      {
+        "id": 3150581,
+        "date": "2019-08-29T19:10:13-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 1667,
+    "url": "https://www.wowhead.com/forever/quest=1667",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "c07d58ba4493ec01398d42166cb7db44362f9f092e1b605eb2b9ea421081984d",
+    "metadata": {
+      "id": 1667,
+      "level": 10,
+      "name": "Dead-tooth Jack",
+      "reqclass": 1,
+      "reqlevel": 10,
+      "side": 1,
+      "xp": 840
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 1
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 294,
+          "name": "Marshal Haggard"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 294,
+          "name": "Marshal Haggard"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 6782,
+          "name": "Marshal Haggard's Badge",
+          "quantity": 1
+        },
+        {
+          "entityType": "item",
+          "entityID": 6783,
+          "name": "Dead-tooth's Key",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 1666
+    },
+    "comments": [
+      {
+        "id": 48063,
+        "date": "2007-03-08T05:00:31-06:00"
+      },
+      {
+        "id": 2747927,
+        "date": "2005-10-31T05:18:55-06:00"
+      },
+      {
+        "id": 2747943,
+        "date": "2005-10-31T05:18:55-06:00"
+      },
+      {
+        "id": 2747959,
+        "date": "2006-02-17T17:18:55-06:00"
+      },
+      {
+        "id": 2747968,
+        "date": "2006-02-17T17:18:55-06:00"
+      },
+      {
+        "id": 2747979,
+        "date": "2006-03-26T05:18:55-06:00"
+      },
+      {
+        "id": 2747992,
+        "date": "2006-03-26T05:18:55-06:00"
+      },
+      {
+        "id": 2748002,
+        "date": "2006-05-01T17:18:55-05:00"
+      },
+      {
+        "id": 2748015,
+        "date": "2006-05-01T17:18:55-05:00"
+      },
+      {
+        "id": 2748029,
+        "date": "2006-06-07T05:18:55-05:00"
+      },
+      {
+        "id": 2748043,
+        "date": "2006-07-13T17:18:55-05:00"
+      },
+      {
+        "id": 2748055,
+        "date": "2006-07-13T17:18:55-05:00"
+      },
+      {
+        "id": 2748070,
+        "date": "2006-08-19T05:18:55-05:00"
+      },
+      {
+        "id": 2748083,
+        "date": "2006-09-24T17:18:55-05:00"
+      },
+      {
+        "id": 2748098,
+        "date": "2007-03-26T05:18:55-05:00"
+      },
+      {
+        "id": 2748111,
+        "date": "2007-03-26T05:18:55-05:00"
+      },
+      {
+        "id": 2951733,
+        "date": "2005-03-06T23:51:51-06:00"
+      },
+      {
+        "id": 2951734,
+        "date": "2005-03-21T04:31:00-06:00"
+      },
+      {
+        "id": 2951735,
+        "date": "2006-05-04T16:00:58-05:00"
+      },
+      {
+        "id": 2951736,
+        "date": "2004-11-15T22:24:30-06:00"
+      },
+      {
+        "id": 2951737,
+        "date": "2005-09-15T02:33:02-05:00"
+      },
+      {
+        "id": 2951738,
+        "date": "2004-11-24T21:53:51-06:00"
+      }
+    ]
+  },
+  {
+    "questID": 1678,
+    "url": "https://www.wowhead.com/forever/quest=1678",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "bafbdd7aa0715c4aff975be774dd0bee044ca322c771cd1b9455d26a05392559",
+    "metadata": {
+      "id": 1678,
+      "level": 11,
+      "name": "Vejrek",
+      "reqclass": 1,
+      "reqlevel": 10,
+      "side": 1,
+      "xp": 1100
+    },
+    "forever_status": "updated",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 1
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 6114,
+          "name": "Muren Stormpike"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 6114,
+          "name": "Muren Stormpike"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 6799,
+          "name": "Vejrek's Head",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 1679
+    },
+    "comments": [
+      {
+        "id": 26276,
+        "date": "2007-01-28T09:17:15-06:00"
+      },
+      {
+        "id": 2745084,
+        "date": "2005-10-12T06:42:07-05:00"
+      },
+      {
+        "id": 2745098,
+        "date": "2005-10-12T06:42:07-05:00"
+      },
+      {
+        "id": 2745113,
+        "date": "2005-10-12T06:42:07-05:00"
+      },
+      {
+        "id": 2745126,
+        "date": "2005-10-12T06:42:07-05:00"
+      },
+      {
+        "id": 2745138,
+        "date": "2005-10-12T06:42:07-05:00"
+      },
+      {
+        "id": 2745163,
+        "date": "2005-10-12T06:42:07-05:00"
+      },
+      {
+        "id": 2745176,
+        "date": "2005-12-24T06:42:07-06:00"
+      },
+      {
+        "id": 2745186,
+        "date": "2006-01-29T18:42:07-06:00"
+      },
+      {
+        "id": 2745199,
+        "date": "2006-01-29T18:42:07-06:00"
+      },
+      {
+        "id": 2745213,
+        "date": "2006-03-07T06:42:07-06:00"
+      },
+      {
+        "id": 2745226,
+        "date": "2006-04-12T18:42:07-05:00"
+      },
+      {
+        "id": 2745238,
+        "date": "2006-07-31T06:42:07-05:00"
+      },
+      {
+        "id": 2745253,
+        "date": "2006-07-31T06:42:07-05:00"
+      },
+      {
+        "id": 2745280,
+        "date": "2006-07-31T06:42:07-05:00"
+      },
+      {
+        "id": 2745293,
+        "date": "2006-10-12T06:42:07-05:00"
+      },
+      {
+        "id": 2745306,
+        "date": "2006-10-12T06:42:07-05:00"
+      },
+      {
+        "id": 2745317,
+        "date": "2006-10-12T06:42:07-05:00"
+      },
+      {
+        "id": 2745343,
+        "date": "2007-01-29T18:42:07-06:00"
+      },
+      {
+        "id": 2745354,
+        "date": "2007-03-07T06:42:07-06:00"
+      },
+      {
+        "id": 2745367,
+        "date": "2007-03-07T06:42:07-06:00"
+      },
+      {
+        "id": 2745377,
+        "date": "2007-03-07T06:42:07-06:00"
+      },
+      {
+        "id": 2745389,
+        "date": "2007-03-07T06:42:07-06:00"
+      },
+      {
+        "id": 2745401,
+        "date": "2007-03-07T06:42:07-06:00"
+      },
+      {
+        "id": 2745416,
+        "date": "2007-03-07T06:42:07-06:00"
+      },
+      {
+        "id": 2745427,
+        "date": "2007-05-01T05:15:43-05:00"
+      },
+      {
+        "id": 2951741,
+        "date": "2006-09-09T20:22:58-05:00"
+      },
+      {
+        "id": 2951742,
+        "date": "2005-01-29T21:45:29-06:00"
+      },
+      {
+        "id": 2951743,
+        "date": "2005-07-13T20:17:42-05:00"
+      },
+      {
+        "id": 2951745,
+        "date": "2005-01-31T17:33:51-06:00"
+      },
+      {
+        "id": 2951746,
+        "date": "2005-09-07T03:53:53-05:00"
+      },
+      {
+        "id": 2951747,
+        "date": "2006-06-22T01:11:02-05:00"
+      },
+      {
+        "id": 2951748,
+        "date": "2006-03-17T00:04:39-06:00"
+      }
+    ]
+  },
+  {
+    "questID": 1683,
+    "url": "https://www.wowhead.com/forever/quest=1683",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "3a37f5a4ff50b4b7ff16c08b520671e8e24d900b2e4937c29b581123c47f338d",
+    "metadata": {
+      "id": 1683,
+      "level": 10,
+      "name": "Vorlus Vilehoof",
+      "reqclass": 1,
+      "reqlevel": 10,
+      "side": 1,
+      "xp": 840
+    },
+    "forever_status": "updated",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 1
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 4088,
+          "name": "Elanaria"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 4088,
+          "name": "Elanaria"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 6805,
+          "name": "Horn of Vorlus",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 1684
+    },
+    "comments": [
+      {
+        "id": 63312,
+        "date": "2007-04-07T11:31:55-05:00"
+      },
+      {
+        "id": 83714,
+        "date": "2007-05-15T21:47:25-05:00"
+      },
+      {
+        "id": 2776998,
+        "date": "2005-10-04T08:48:20-05:00"
+      },
+      {
+        "id": 2777027,
+        "date": "2005-10-04T08:48:20-05:00"
+      },
+      {
+        "id": 2777039,
+        "date": "2005-10-04T08:48:20-05:00"
+      },
+      {
+        "id": 2777063,
+        "date": "2005-12-16T08:48:20-06:00"
+      },
+      {
+        "id": 2777075,
+        "date": "2006-04-04T20:48:20-05:00"
+      },
+      {
+        "id": 2777089,
+        "date": "2006-05-11T08:48:20-05:00"
+      },
+      {
+        "id": 2777100,
+        "date": "2006-05-11T08:48:20-05:00"
+      },
+      {
+        "id": 2777108,
+        "date": "2006-06-16T20:48:20-05:00"
+      },
+      {
+        "id": 2777118,
+        "date": "2006-07-23T08:48:20-05:00"
+      },
+      {
+        "id": 2777145,
+        "date": "2006-08-28T20:48:20-05:00"
+      },
+      {
+        "id": 2777158,
+        "date": "2006-08-28T20:48:20-05:00"
+      },
+      {
+        "id": 2777171,
+        "date": "2006-08-28T20:48:20-05:00"
+      },
+      {
+        "id": 2777185,
+        "date": "2006-12-16T08:48:20-06:00"
+      },
+      {
+        "id": 2777197,
+        "date": "2007-01-21T20:48:20-06:00"
+      },
+      {
+        "id": 2777222,
+        "date": "2007-01-21T20:48:20-06:00"
+      },
+      {
+        "id": 2777246,
+        "date": "2007-01-21T20:48:20-06:00"
+      },
+      {
+        "id": 2777257,
+        "date": "2007-04-23T07:21:56-05:00"
+      },
+      {
+        "id": 2951765,
+        "date": "2005-10-30T21:42:08-06:00"
+      },
+      {
+        "id": 2951766,
+        "date": "2006-04-08T03:42:33-05:00"
+      },
+      {
+        "id": 2951767,
+        "date": "2006-08-03T01:59:24-05:00"
+      },
+      {
+        "id": 2951769,
+        "date": "2005-10-21T01:57:14-05:00"
+      },
+      {
+        "id": 2951770,
+        "date": "2004-12-17T19:24:47-06:00"
+      },
+      {
+        "id": 2951771,
+        "date": "2005-02-16T21:02:08-06:00"
+      },
+      {
+        "id": 2951772,
+        "date": "2005-05-06T01:00:11-05:00"
+      },
+      {
+        "id": 2951773,
+        "date": "2005-08-27T04:17:40-05:00"
+      },
+      {
+        "id": 2951774,
+        "date": "2006-08-27T13:12:05-05:00"
+      },
+      {
+        "id": 2951775,
+        "date": "2006-06-20T08:40:23-05:00"
+      },
+      {
+        "id": 2951777,
+        "date": "2006-01-23T04:49:27-06:00"
+      },
+      {
+        "id": 2951780,
+        "date": "2007-04-07T02:06:57-05:00"
+      },
+      {
+        "id": 3210545,
+        "date": "2020-06-03T23:05:22-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 1685,
+    "url": "https://www.wowhead.com/forever/quest=1685",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "1d654c377d4cf6d49ecdba4a817dcc7be8c25454b127859b4c303c256f8b0d73",
+    "metadata": {
+      "id": 1685,
+      "level": 10,
+      "name": "Gakin's Summons",
+      "reqclass": 256,
+      "reqlevel": 10,
+      "side": 1,
+      "xp": 420
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 65,
+      "reqclass": 256
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 6121,
+          "name": "Remen Marcot"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 6122,
+          "name": "Gakin the Darkbinder"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 80332,
+        "date": "2007-05-09T11:07:12-05:00"
+      },
+      {
+        "id": 2732396,
+        "date": "2005-10-03T08:53:33-05:00"
+      },
+      {
+        "id": 2732407,
+        "date": "2005-12-15T08:53:33-06:00"
+      },
+      {
+        "id": 2732419,
+        "date": "2005-12-15T08:53:33-06:00"
+      },
+      {
+        "id": 2732455,
+        "date": "2006-02-26T08:53:33-06:00"
+      },
+      {
+        "id": 2732468,
+        "date": "2006-05-10T08:53:33-05:00"
+      },
+      {
+        "id": 2732481,
+        "date": "2006-05-10T08:53:33-05:00"
+      },
+      {
+        "id": 2732492,
+        "date": "2006-05-10T08:53:33-05:00"
+      },
+      {
+        "id": 2732518,
+        "date": "2006-10-03T08:53:33-05:00"
+      },
+      {
+        "id": 2732533,
+        "date": "2006-11-08T20:53:33-06:00"
+      },
+      {
+        "id": 2951782,
+        "date": "2006-08-24T09:06:58-05:00"
+      },
+      {
+        "id": 2951783,
+        "date": "2004-12-04T06:49:51-06:00"
+      },
+      {
+        "id": 2951784,
+        "date": "2004-11-27T13:28:43-06:00"
+      },
+      {
+        "id": 2951785,
+        "date": "2005-05-05T10:21:22-05:00"
+      },
+      {
+        "id": 2951786,
+        "date": "2006-01-19T02:56:53-06:00"
+      },
+      {
+        "id": 2951787,
+        "date": "2006-02-03T03:38:52-06:00"
+      },
+      {
+        "id": 2951789,
+        "date": "2005-11-24T22:59:19-06:00"
+      },
+      {
+        "id": 3150076,
+        "date": "2019-08-27T21:45:39-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 1860,
+    "url": "https://www.wowhead.com/forever/quest=1860",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "0323e2c0f7d9554e1a1db21b45fed5f85c8a4051d4f0b28d5a7589bf6b0c1aac",
+    "metadata": {
+      "id": 1860,
+      "level": 10,
+      "name": "Speak with Jennea",
+      "reqclass": 128,
+      "reqlevel": 10,
+      "side": 1,
+      "xp": 420
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {},
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 328,
+          "name": "Zaldimar Wefhellt"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 5497,
+          "name": "Jennea Cannon"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 2772710,
+        "date": "2005-11-26T18:41:25-06:00"
+      },
+      {
+        "id": 2772723,
+        "date": "2005-11-26T18:41:25-06:00"
+      },
+      {
+        "id": 2772748,
+        "date": "2006-08-09T06:41:25-05:00"
+      },
+      {
+        "id": 2772761,
+        "date": "2006-10-21T06:41:25-05:00"
+      },
+      {
+        "id": 2953066,
+        "date": "2007-04-22T11:31:38-05:00"
+      },
+      {
+        "id": 2953067,
+        "date": "2005-12-21T17:33:25-06:00"
+      },
+      {
+        "id": 2953068,
+        "date": "2004-12-06T19:09:58-06:00"
+      }
+    ]
+  },
+  {
+    "questID": 2158,
+    "url": "https://www.wowhead.com/forever/quest=2158",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "0b6fa20e7dd0f047b9ce672c19277f3d72c8cc27c4eee9569bafd3bf85d1a32a",
+    "metadata": {
+      "id": 2158,
+      "level": 5,
+      "name": "Rest and Relaxation",
+      "reqlevel": 1,
+      "side": 1,
+      "xp": 110
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 6774,
+          "name": "Falkhaan Isenstrider"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 295,
+          "name": "Innkeeper Farley"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 2766566,
+        "date": "2007-01-08T14:27:28-06:00"
+      },
+      {
+        "id": 2953873,
+        "date": "2005-03-16T09:53:21-06:00"
+      },
+      {
+        "id": 3159880,
+        "date": "2019-09-29T12:23:22-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 2205,
+    "url": "https://www.wowhead.com/forever/quest=2205",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "9237bc3d7cf5f07544582c37a2aa57259fb4f91c472a7ab8df04879aca18a935",
+    "metadata": {
+      "id": 2205,
+      "level": 10,
+      "name": "Seek out SI: 7",
+      "reqclass": 8,
+      "reqlevel": 10,
+      "side": 1,
+      "xp": 210
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {},
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 917,
+          "name": "Keryn Sylvius"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 332,
+          "name": "Master Mathias Shaw"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 7674,
+          "name": "Delivery to Mathias",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 2771508,
+        "date": "2006-09-17T07:14:42-05:00"
+      },
+      {
+        "id": 2771523,
+        "date": "2007-01-04T19:14:42-06:00"
+      },
+      {
+        "id": 2953990,
+        "date": "2005-02-04T00:02:38-06:00"
+      },
+      {
+        "id": 2953991,
+        "date": "2006-12-31T08:42:35-06:00"
+      },
+      {
+        "id": 3149901,
+        "date": "2019-08-26T22:24:05-05:00"
+      },
+      {
+        "id": 3166566,
+        "date": "2019-10-23T14:43:09-05:00"
+      },
+      {
+        "id": 3211430,
+        "date": "2020-06-09T02:46:30-05:00"
+      },
+      {
+        "id": 3218078,
+        "date": "2020-07-18T16:05:40-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 3100,
+    "url": "https://www.wowhead.com/forever/quest=3100",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "801aa2f1fae55bffe1cc63180ad0aeb2caffe9edae895e609d726b75312da771",
+    "metadata": {
+      "id": 3100,
+      "level": 1,
+      "name": "Simple Letter",
+      "reqclass": 1,
+      "reqlevel": 1,
+      "side": 1,
+      "xp": 40
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 1,
+      "reqclass": 1
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 197,
+          "name": "Marshal McBride"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 911,
+          "name": "Llane Beshere"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 9542,
+          "name": "Simple Letter",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 2738461,
+        "date": "2007-01-04T14:00:17-06:00"
+      },
+      {
+        "id": 2957913,
+        "date": "2006-02-03T16:14:42-06:00"
+      },
+      {
+        "id": 3159795,
+        "date": "2019-09-29T06:58:20-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 3101,
+    "url": "https://www.wowhead.com/forever/quest=3101",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "c34427f2e24f8aa5095e831b011046bb33af12b0a27465502f653e36979ce938",
+    "metadata": {
+      "id": 3101,
+      "level": 1,
+      "name": "Consecrated Letter",
+      "reqclass": 2,
+      "reqlevel": 1,
+      "side": 1,
+      "xp": 40
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 1,
+      "reqclass": 2
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 197,
+          "name": "Marshal McBride"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 925,
+          "name": "Brother Sammuel"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 9570,
+          "name": "Consecrated Letter",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 2957915,
+        "date": "2005-03-16T09:45:48-06:00"
+      }
+    ]
+  },
+  {
+    "questID": 3102,
+    "url": "https://www.wowhead.com/forever/quest=3102",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "3a435acb665478c7e27178eb7f7e7b20acd2a39094e3af889fb70af4f40fc951",
+    "metadata": {
+      "id": 3102,
+      "level": 1,
+      "name": "Encrypted Letter",
+      "reqclass": 8,
+      "reqlevel": 1,
+      "side": 1,
+      "xp": 40
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 1,
+      "reqclass": 8
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 197,
+          "name": "Marshal McBride"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 915,
+          "name": "Jorik Kerridan"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 9555,
+          "name": "Encrypted Letter",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_display": {},
+    "comments": []
+  },
+  {
+    "questID": 3103,
+    "url": "https://www.wowhead.com/forever/quest=3103",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "4985abeada838cd71eccc5e8d1f31f15d8211a8b26db9cbffe307bd86965710c",
+    "metadata": {
+      "id": 3103,
+      "level": 1,
+      "name": "Hallowed Letter",
+      "reqclass": 16,
+      "reqlevel": 1,
+      "side": 1,
+      "xp": 40
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 1,
+      "reqclass": 16
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 197,
+          "name": "Marshal McBride"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 375,
+          "name": "Priestess Anetta"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 9548,
+          "name": "Hallowed Letter",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 2957919,
+        "date": "2005-12-23T01:27:51-06:00"
+      }
+    ]
+  },
+  {
+    "questID": 3104,
+    "url": "https://www.wowhead.com/forever/quest=3104",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "a0d5f95848cc85455f4a3a4f0fefde64b52a757f685729a7b9f3b57faea29b3c",
+    "metadata": {
+      "id": 3104,
+      "level": 1,
+      "name": "Glyphic Letter",
+      "reqclass": 128,
+      "reqlevel": 1,
+      "side": 1,
+      "xp": 40
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 1,
+      "reqclass": 128
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 197,
+          "name": "Marshal McBride"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 198,
+          "name": "Khelden Bremen"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 9571,
+          "name": "Glyphic Letter",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 2957920,
+        "date": "2007-01-23T21:37:21-06:00"
+      }
+    ]
+  },
+  {
+    "questID": 3105,
+    "url": "https://www.wowhead.com/forever/quest=3105",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "67052cb63e756f2c8d9a42c577da859b72d70148ed4f526c6e04149e56f8c3ea",
+    "metadata": {
+      "id": 3105,
+      "level": 1,
+      "name": "Tainted Letter",
+      "reqclass": 256,
+      "reqlevel": 1,
+      "side": 1,
+      "xp": 40
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 65,
+      "reqclass": 256
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 197,
+          "name": "Marshal McBride"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 459,
+          "name": "Drusilla La Salle"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 9576,
+          "name": "Tainted Letter",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 60778,
+        "date": "2007-04-01T23:06:21-05:00"
+      },
+      {
+        "id": 3150216,
+        "date": "2019-08-28T14:06:06-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 3903,
+    "url": "https://www.wowhead.com/forever/quest=3903",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "6b30454f77f918e86e31cc1b980acc29901f0d4454ef5d70d71d235743b253cc",
+    "metadata": {
+      "id": 3903,
+      "level": 4,
+      "name": "Milly Osworth",
+      "reqlevel": 2,
+      "side": 1,
+      "xp": 35
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {},
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 823,
+          "name": "Deputy Willem"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 9296,
+          "name": "Milly Osworth"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 25372,
+        "date": "2007-01-26T22:17:55-06:00"
+      },
+      {
+        "id": 2960614,
+        "date": "2005-03-16T09:49:20-06:00"
+      },
+      {
+        "id": 2960616,
+        "date": "2006-11-05T07:53:26-06:00"
+      },
+      {
+        "id": 2960617,
+        "date": "2006-08-02T14:46:22-05:00"
+      },
+      {
+        "id": 3159824,
+        "date": "2019-09-29T08:36:25-05:00"
+      },
+      {
+        "id": 6440150,
+        "date": "2026-10-02T17:41:56-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 3904,
+    "url": "https://www.wowhead.com/forever/quest=3904",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "d484c0dedf8d42ca6bab8bd2ffbcd7af642c6b3a61880379f311e5c076ea823d",
+    "metadata": {
+      "id": 3904,
+      "level": 4,
+      "name": "Milly's Harvest",
+      "reqlevel": 2,
+      "side": 1,
+      "xp": 180
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 9296,
+          "name": "Milly Osworth"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 9296,
+          "name": "Milly Osworth"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 11119,
+          "name": "Milly's Harvest",
+          "quantity": 8
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 3903
+    },
+    "comments": [
+      {
+        "id": 18123,
+        "date": "2006-12-27T17:14:21-06:00"
+      },
+      {
+        "id": 42466,
+        "date": "2007-02-26T02:40:30-06:00"
+      },
+      {
+        "id": 2760116,
+        "date": "2005-10-06T08:55:28-05:00"
+      },
+      {
+        "id": 2760129,
+        "date": "2005-12-18T08:55:28-06:00"
+      },
+      {
+        "id": 2760143,
+        "date": "2006-06-18T20:55:28-05:00"
+      },
+      {
+        "id": 2760169,
+        "date": "2006-08-30T20:55:28-05:00"
+      },
+      {
+        "id": 2760181,
+        "date": "2007-04-13T03:38:40-05:00"
+      },
+      {
+        "id": 2760194,
+        "date": "2007-04-22T06:31:28-05:00"
+      },
+      {
+        "id": 2960618,
+        "date": "2005-03-25T12:55:01-06:00"
+      },
+      {
+        "id": 2960619,
+        "date": "2005-03-16T09:49:47-06:00"
+      },
+      {
+        "id": 2960620,
+        "date": "2006-09-20T13:25:10-05:00"
+      },
+      {
+        "id": 3159865,
+        "date": "2019-09-29T11:38:20-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 3905,
+    "url": "https://www.wowhead.com/forever/quest=3905",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "ee7d8e01c45f9da245b78427244490c6ce3c9de0345522cb6718bf40b12e34cc",
+    "metadata": {
+      "id": 3905,
+      "level": 4,
+      "name": "Grape Manifest",
+      "reqlevel": 2,
+      "side": 1,
+      "xp": 355
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 9296,
+          "name": "Milly Osworth"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 952,
+          "name": "Brother Neals"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 11125,
+          "name": "Grape Manifest",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_display": {
+      "previousQuest": 3904
+    },
+    "comments": [
+      {
+        "id": 18125,
+        "date": "2006-12-27T17:17:01-06:00"
+      },
+      {
+        "id": 2791760,
+        "date": "2005-09-25T02:38:06-05:00"
+      },
+      {
+        "id": 2960621,
+        "date": "2005-11-26T13:16:52-06:00"
+      },
+      {
+        "id": 2960624,
+        "date": "2005-03-16T09:50:21-06:00"
+      },
+      {
+        "id": 2960626,
+        "date": "2005-04-30T10:11:26-05:00"
+      },
+      {
+        "id": 2960627,
+        "date": "2006-04-07T22:57:33-05:00"
+      },
+      {
+        "id": 3159876,
+        "date": "2019-09-29T12:09:40-05:00"
+      },
+      {
+        "id": 3219049,
+        "date": "2020-07-24T09:38:00-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 5261,
+    "url": "https://www.wowhead.com/forever/quest=5261",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "1a1ed6f11468d9938daebce5666de056d1e5970e7f00c3f344d56f626475584a",
+    "metadata": {
+      "id": 5261,
+      "level": 2,
+      "name": "Eagan Peltskinner",
+      "reqlevel": 1,
+      "side": 1,
+      "xp": 85
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 823,
+          "name": "Deputy Willem"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 196,
+          "name": "Eagan Peltskinner"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 25370,
+        "date": "2007-01-26T22:13:24-06:00"
+      },
+      {
+        "id": 2967686,
+        "date": "2005-03-16T09:44:30-06:00"
+      },
+      {
+        "id": 5199992,
+        "date": "2021-06-20T09:07:37-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 5545,
+    "url": "https://www.wowhead.com/forever/quest=5545",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "5c9c0565328c46d8c9c1de480f2c216fbb32270713197ffa0a3bad613daede4f",
+    "metadata": {
+      "id": 5545,
+      "level": 9,
+      "name": "A Bundle of Trouble",
+      "reqlevel": 5,
+      "side": 1,
+      "xp": 780
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 10616,
+          "name": "Supervisor Raelen"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 10616,
+          "name": "Supervisor Raelen"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 13872,
+          "name": "Bundle of Wood",
+          "quantity": 8
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 12868,
+        "date": "2006-12-10T16:54:30-06:00"
+      },
+      {
+        "id": 83125,
+        "date": "2007-05-14T20:00:43-05:00"
+      },
+      {
+        "id": 2777312,
+        "date": "2006-01-28T01:15:55-06:00"
+      },
+      {
+        "id": 2777323,
+        "date": "2006-01-28T01:15:55-06:00"
+      },
+      {
+        "id": 2777366,
+        "date": "2007-05-17T13:15:55-05:00"
+      },
+      {
+        "id": 2968578,
+        "date": "2004-11-25T08:49:13-06:00"
+      },
+      {
+        "id": 2968579,
+        "date": "2006-02-23T20:48:12-06:00"
+      },
+      {
+        "id": 2968580,
+        "date": "2005-06-29T14:37:43-05:00"
+      },
+      {
+        "id": 2968581,
+        "date": "2006-08-13T16:21:44-05:00"
+      },
+      {
+        "id": 2968582,
+        "date": "2006-06-01T02:10:25-05:00"
+      },
+      {
+        "id": 2968584,
+        "date": "2004-11-15T21:53:21-06:00"
+      },
+      {
+        "id": 3153068,
+        "date": "2019-09-07T13:21:56-05:00"
+      },
+      {
+        "id": 3154175,
+        "date": "2019-09-11T18:27:55-05:00"
+      },
+      {
+        "id": 3164392,
+        "date": "2019-10-15T13:58:47-05:00"
+      },
+      {
+        "id": 3365325,
+        "date": "2021-03-27T19:06:08-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 5623,
+    "url": "https://www.wowhead.com/forever/quest=5623",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "cf2962b888d40f4798b70b796a7a507add4d4acc1a63ab71bbada700e9375298",
+    "metadata": {
+      "id": 5623,
+      "level": 4,
+      "name": "In Favor of the Light",
+      "reqclass": 16,
+      "reqlevel": 5,
+      "side": 1,
+      "xp": 90
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 1,
+      "reqclass": 16
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 375,
+          "name": "Priestess Anetta"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 377,
+          "name": "Priestess Josetta"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 2782083,
+        "date": "2005-10-23T04:18:13-05:00"
+      },
+      {
+        "id": 2782094,
+        "date": "2006-11-28T16:18:13-06:00"
+      },
+      {
+        "id": 2968689,
+        "date": "2006-05-19T17:12:31-05:00"
+      },
+      {
+        "id": 3226138,
+        "date": "2020-08-28T10:13:49-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 5624,
+    "url": "https://www.wowhead.com/forever/quest=5624",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "5a67738742fe70d5e94e17346ed5d971f9c3fbf91e6a9235f58091785525ae4f",
+    "metadata": {
+      "id": 5624,
+      "itemrewards": [
+        [
+          16605,
+          1
+        ]
+      ],
+      "level": 4,
+      "name": "Garments of the Light",
+      "reqclass": 16,
+      "reqlevel": 5,
+      "side": 1,
+      "xp": 270
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 1,
+      "reqclass": 16
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 377,
+          "name": "Priestess Josetta"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 377,
+          "name": "Priestess Josetta"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "entityID": 12423,
+          "name": "Heal and fortify Guard Roberts",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 5623
+    },
+    "comments": [
+      {
+        "id": 68130,
+        "date": "2007-04-16T12:43:54-05:00"
+      },
+      {
+        "id": 2790973,
+        "date": "2005-10-01T02:19:56-05:00"
+      },
+      {
+        "id": 2790986,
+        "date": "2005-10-01T02:19:56-05:00"
+      },
+      {
+        "id": 2791027,
+        "date": "2005-10-01T02:19:56-05:00"
+      },
+      {
+        "id": 2791037,
+        "date": "2005-11-06T14:19:56-06:00"
+      },
+      {
+        "id": 2791051,
+        "date": "2005-11-06T14:19:56-06:00"
+      },
+      {
+        "id": 2791066,
+        "date": "2005-11-06T14:19:56-06:00"
+      },
+      {
+        "id": 2791080,
+        "date": "2006-04-01T14:19:56-06:00"
+      },
+      {
+        "id": 2791117,
+        "date": "2006-06-13T14:19:56-05:00"
+      },
+      {
+        "id": 2791130,
+        "date": "2006-06-13T14:19:56-05:00"
+      },
+      {
+        "id": 2791143,
+        "date": "2006-06-13T14:19:56-05:00"
+      },
+      {
+        "id": 2791158,
+        "date": "2006-07-20T02:19:56-05:00"
+      },
+      {
+        "id": 2791199,
+        "date": "2006-07-20T02:19:56-05:00"
+      },
+      {
+        "id": 2791213,
+        "date": "2006-12-13T02:19:56-06:00"
+      },
+      {
+        "id": 2791240,
+        "date": "2007-01-18T14:19:56-06:00"
+      },
+      {
+        "id": 2791255,
+        "date": "2007-04-01T14:19:56-05:00"
+      },
+      {
+        "id": 2791268,
+        "date": "2007-04-07T21:03:08-05:00"
+      },
+      {
+        "id": 2791279,
+        "date": "2007-04-16T23:55:56-05:00"
+      },
+      {
+        "id": 2791291,
+        "date": "2007-04-16T23:55:56-05:00"
+      },
+      {
+        "id": 2968691,
+        "date": "2005-03-09T05:33:04-06:00"
+      },
+      {
+        "id": 2968692,
+        "date": "2005-07-06T14:38:31-05:00"
+      },
+      {
+        "id": 2968693,
+        "date": "2005-07-09T02:44:12-05:00"
+      },
+      {
+        "id": 2968694,
+        "date": "2005-06-14T19:45:14-05:00"
+      },
+      {
+        "id": 2968695,
+        "date": "2006-11-19T04:03:35-06:00"
+      },
+      {
+        "id": 2968696,
+        "date": "2007-03-04T20:03:55-06:00"
+      },
+      {
+        "id": 2968699,
+        "date": "2004-12-16T04:08:50-06:00"
+      },
+      {
+        "id": 2968701,
+        "date": "2006-08-24T11:36:50-05:00"
+      },
+      {
+        "id": 3151221,
+        "date": "2019-09-01T07:13:32-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 5628,
+    "url": "https://www.wowhead.com/forever/quest=5628",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "6c347ad956297a113ca45925fb790bf9fdce4790184c8f83d63ebdb86f658c1c",
+    "metadata": {
+      "id": 5628,
+      "level": 10,
+      "name": "Returning Home",
+      "reqclass": 16,
+      "reqlevel": 10,
+      "side": 1,
+      "xp": 210
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 8,
+      "reqclass": 16
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 377,
+          "name": "Priestess Josetta"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 11401,
+          "name": "Priestess Alathea"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 2968724,
+        "date": "2005-03-07T05:39:29-06:00"
+      },
+      {
+        "id": 2968725,
+        "date": "2005-03-24T17:39:37-06:00"
+      },
+      {
+        "id": 3209020,
+        "date": "2020-05-27T05:28:24-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 5635,
+    "url": "https://www.wowhead.com/forever/quest=5635",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "730656e661b360f6c3260a5a09459804e591f539e8977ec2edef9ef6e59f027e",
+    "metadata": {
+      "id": 5635,
+      "level": 10,
+      "name": "Desperate Prayer",
+      "reqclass": 16,
+      "reqlevel": 10,
+      "side": 1,
+      "xp": 210
+    },
+    "forever_status": "updated",
+    "raw_identity_masks": {
+      "reqrace": 5,
+      "reqclass": 16
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 377,
+          "name": "Priestess Josetta"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 376,
+          "name": "High Priestess Laurena"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 2781619,
+        "date": "2005-10-07T16:47:05-05:00"
+      },
+      {
+        "id": 2781631,
+        "date": "2005-10-07T16:47:05-05:00"
+      },
+      {
+        "id": 2781652,
+        "date": "2005-10-07T16:47:05-05:00"
+      },
+      {
+        "id": 2781665,
+        "date": "2005-10-07T16:47:05-05:00"
+      },
+      {
+        "id": 2781676,
+        "date": "2005-10-07T16:47:05-05:00"
+      },
+      {
+        "id": 2781698,
+        "date": "2005-10-07T16:47:05-05:00"
+      },
+      {
+        "id": 2781727,
+        "date": "2006-09-01T04:47:05-05:00"
+      },
+      {
+        "id": 2781739,
+        "date": "2006-09-01T04:47:05-05:00"
+      },
+      {
+        "id": 2781779,
+        "date": "2007-04-08T04:47:05-05:00"
+      },
+      {
+        "id": 2968733,
+        "date": "2007-05-04T02:09:24-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 7962,
+    "url": "https://www.wowhead.com/forever/quest=7962",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "9ace3c01708405e5c8388973c6c51edca98367e000612bf4d8c31db5723145c3",
+    "metadata": {
+      "id": 7962,
+      "itemrewards": [
+        [
+          13913,
+          1
+        ]
+      ],
+      "level": 1,
+      "name": "Wabbit Pelts",
+      "reqlevel": 1,
+      "xp": 100
+    },
+    "forever_status": "unchanged",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [],
+      "ends": [],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 19482,
+          "name": "LeCraft Rabbit Pelt",
+          "quantity": 3
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 3178892,
+        "date": "2019-12-29T11:48:11-06:00"
+      }
+    ]
+  },
+  {
+    "questID": 91723,
+    "url": "https://www.wowhead.com/forever/quest=91723",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "ee332db1d1ecdcee8126deb4ad180aad3f33a7d4b3ac798dd1914cd1196e06bb",
+    "metadata": {
+      "id": 91723,
+      "level": 10,
+      "name": "Delicate Instruments",
+      "reqlevel": 7,
+      "side": 1,
+      "xp": 630
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {},
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 248242,
+          "name": "Hamish Bergwort"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 248242,
+          "name": "Hamish Bergwort"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "entityID": 476,
+          "name": "Kobold Geomancer",
+          "quantity": 8
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 6436573,
+        "date": "2026-09-26T15:12:35-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 91724,
+    "url": "https://www.wowhead.com/forever/quest=91724",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "f8a786b2d0737533edac432d2ee55c4642c89fdef997869d63806414ce958bee",
+    "metadata": {
+      "id": 91724,
+      "level": 10,
+      "name": "Delicate Instruments",
+      "reqlevel": 7,
+      "side": 1,
+      "xp": 840
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {},
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 248242,
+          "name": "Hamish Bergwort"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 248242,
+          "name": "Hamish Bergwort"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "entityID": 474,
+          "name": "Defias Rogue Wizard",
+          "quantity": 6
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 6436575,
+        "date": "2026-09-26T15:18:13-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 91725,
+    "url": "https://www.wowhead.com/forever/quest=91725",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "edede42a5e44f4e6170d52f95d4f6ff171c56a7040905941265c413eee5e3f60",
+    "metadata": {
+      "id": 91725,
+      "level": 10,
+      "name": "Stolen Enchanting Supplies",
+      "reqlevel": 7,
+      "side": 1,
+      "xp": 630
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {},
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 248248,
+          "name": "Blixie Fitzwink"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 248248,
+          "name": "Blixie Fitzwink"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 247805,
+          "name": "Stolen Enchanting Supplies",
+          "quantity": 5
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 6436577,
+        "date": "2026-09-26T15:20:55-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 91732,
+    "url": "https://www.wowhead.com/forever/quest=91732",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "c18e25742c0ee04817b2e6910222bd7749cf2f1c59438b1565d1a225efd01544",
+    "metadata": {
+      "id": 91732,
+      "level": 10,
+      "name": "Good Steel",
+      "reqlevel": 7,
+      "side": 1,
+      "xp": 630
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {
+      "reqrace": 4294967372,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 248266,
+          "name": "Hagar Lowe"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 248266,
+          "name": "Hagar Lowe"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 247816,
+          "name": "Mining Tools",
+          "quantity": 4
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 6436571,
+        "date": "2026-09-26T15:08:10-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 91733,
+    "url": "https://www.wowhead.com/forever/quest=91733",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "24c77c15f68c973dfb477872b30084a1c49cbc2a3453447dac1aec716993a8b8",
+    "metadata": {
+      "id": 91733,
+      "level": 10,
+      "name": "Downstream",
+      "reqlevel": 7,
+      "side": 1,
+      "xp": 630
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {
+      "reqrace": 4294967372,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 248265,
+          "name": "Ormin Pelford"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 248265,
+          "name": "Ormin Pelford"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 247817,
+          "name": "Waterlogged Axe",
+          "quantity": 1
+        },
+        {
+          "entityType": "item",
+          "entityID": 247813,
+          "name": "Waterlogged Saw",
+          "quantity": 1
+        },
+        {
+          "entityType": "item",
+          "entityID": 247818,
+          "name": "Waterlogged Toolbox",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 6430284,
+        "date": "2026-09-20T04:56:08-05:00"
+      },
+      {
+        "id": 6431879,
+        "date": "2026-09-21T11:09:00-05:00"
+      },
+      {
+        "id": 6433866,
+        "date": "2026-09-23T01:49:16-05:00"
+      },
+      {
+        "id": 6436442,
+        "date": "2026-09-26T10:31:02-05:00"
+      },
+      {
+        "id": 6436530,
+        "date": "2026-09-26T14:13:49-05:00"
+      },
+      {
+        "id": 6436568,
+        "date": "2026-09-26T15:06:54-05:00"
+      },
+      {
+        "id": 6437944,
+        "date": "2026-09-28T22:27:19-05:00"
+      },
+      {
+        "id": 6438800,
+        "date": "2026-09-30T15:36:00-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 91736,
+    "url": "https://www.wowhead.com/forever/quest=91736",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "f093f60c4fcfd1d7f5e4cd25eb0b7428b1d7baeac576d810939657419cc181aa",
+    "metadata": {
+      "id": 91736,
+      "itemrewards": [
+        [
+          247824,
+          1
+        ]
+      ],
+      "name": "Applejack Still",
+      "side": 1,
+      "wflags": 16
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {},
+    "relations": {
+      "starts": [
+        {
+          "entityType": "object",
+          "entityID": 562131,
+          "name": "Applejack Still"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "object",
+          "entityID": 562131,
+          "name": "Applejack Still"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 4536,
+          "name": "Shiny Red Apple",
+          "quantity": 4
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 6431251,
+        "date": "2026-09-20T21:49:05-05:00"
+      },
+      {
+        "id": 6436543,
+        "date": "2026-09-26T14:45:33-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 91738,
+    "url": "https://www.wowhead.com/forever/quest=91738",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "d0fd33c375f675828eaa8a73920f18d05e87cfcba4e200dee9a40c9fa8a37c1b",
+    "metadata": {
+      "id": 91738,
+      "level": 10,
+      "name": "An Apple Treat",
+      "reqlevel": 7,
+      "side": 1,
+      "xp": 630
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {},
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 955,
+          "name": "Sergeant De Vries"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 955,
+          "name": "Sergeant De Vries"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 247824,
+          "name": "Thunder Applejack",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 6436540,
+        "date": "2026-09-26T14:40:36-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 91740,
+    "url": "https://www.wowhead.com/forever/quest=91740",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "a66622704a9f0a89560cb9acbf7e70e9b28f0fe12c6e308b989c473ec97bafcb",
+    "metadata": {
+      "id": 91740,
+      "level": 10,
+      "name": "Croaky's Head",
+      "reqlevel": 7,
+      "side": 1,
+      "xp": 840
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 248277,
+          "name": "Merell Ross"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 247826,
+          "name": "Croaky's Head",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 6431859,
+        "date": "2026-09-21T10:53:35-05:00"
+      },
+      {
+        "id": 6434635,
+        "date": "2026-09-24T01:26:24-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 91741,
+    "url": "https://www.wowhead.com/forever/quest=91741",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "4916336f73530804f538fdd284c4cb56a40cd031f0fa5610e8b3b9dbad9fa588",
+    "metadata": {
+      "id": 91741,
+      "level": 2,
+      "name": "Nibbled-On Book",
+      "reqlevel": 1,
+      "side": 1,
+      "xp": 85
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 951,
+          "name": "Brother Paxton"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 247857,
+          "name": "Nibbled-On Book",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 6436192,
+        "date": "2026-09-25T22:59:40-05:00"
+      },
+      {
+        "id": 6447065,
+        "date": "2026-10-08T05:39:34-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 91743,
+    "url": "https://www.wowhead.com/forever/quest=91743",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "d2f7ba2067b9d708172d87f6e1b170bc2f93fa538bb3f6eba7540db277b7dc23",
+    "metadata": {
+      "id": 91743,
+      "level": 2,
+      "name": "Rascally Rodents",
+      "reqlevel": 1,
+      "side": 1,
+      "xp": 170
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {
+      "reqrace": 4294967372,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 951,
+          "name": "Brother Paxton"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 951,
+          "name": "Brother Paxton"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 247839,
+          "name": "Stolen Book",
+          "quantity": 8
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 91741
+    },
+    "comments": [
+      {
+        "id": 6436193,
+        "date": "2026-09-25T23:02:54-05:00"
+      },
+      {
+        "id": 6447082,
+        "date": "2026-10-08T05:41:23-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 91745,
+    "url": "https://www.wowhead.com/forever/quest=91745",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "389285540f67b2f25205c812cc955a137aa7e4109d9bd99f48ecccdb360bb5d4",
+    "metadata": {
+      "id": 91745,
+      "level": 3,
+      "name": "Mining Consultant",
+      "reqlevel": 1,
+      "side": 1,
+      "xp": 125
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {
+      "reqrace": 4294967368,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 951,
+          "name": "Brother Paxton"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 247226,
+          "name": "Kelsey Fargo"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 91743
+    },
+    "comments": [
+      {
+        "id": 6436195,
+        "date": "2026-09-25T23:09:04-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 91746,
+    "url": "https://www.wowhead.com/forever/quest=91746",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "f87b64fa0f838bcea4cf55460a0731f260c725a8bb28ffbd66edbb48b7713c7a",
+    "metadata": {
+      "id": 91746,
+      "level": 10,
+      "name": "Elmpaw's Head",
+      "reqlevel": 7,
+      "side": 1,
+      "xp": 840
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 6306,
+          "name": "Helene Peltskinner"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 247862,
+          "name": "Elmpaw's Head",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 6436588,
+        "date": "2026-09-26T15:36:59-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 91751,
+    "url": "https://www.wowhead.com/forever/quest=91751",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "b84cbed59b0a313938ec9e10aa8cebd5166250b9214635b77c8495647f9dfe8c",
+    "metadata": {
+      "id": 91751,
+      "level": 7,
+      "name": "Rough Wolf Pelts",
+      "reqlevel": 5,
+      "side": 1,
+      "xp": 475
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {},
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 6306,
+          "name": "Helene Peltskinner"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 6306,
+          "name": "Helene Peltskinner"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 247877,
+          "name": "Rough Wolf Pelt",
+          "quantity": 7
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 6436585,
+        "date": "2026-09-26T15:33:21-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 91752,
+    "url": "https://www.wowhead.com/forever/quest=91752",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "c6c48923556de50d2e1e7898413138fcb953950a5835426f90c5b5baa02bce7a",
+    "metadata": {
+      "id": 91752,
+      "level": 3,
+      "name": "The Big Picture",
+      "reqlevel": 1,
+      "side": 1,
+      "xp": 315
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {
+      "reqrace": 4294967372,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 247226,
+          "name": "Kelsey Fargo"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 197,
+          "name": "Marshal McBride"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 247886,
+          "name": "Sack of \"Picture\" Books",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 91745
+    },
+    "comments": [
+      {
+        "id": 6440039,
+        "date": "2026-10-02T14:05:16-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 91753,
+    "url": "https://www.wowhead.com/forever/quest=91753",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "7413279995dc59f7880fd7aa1adfa58ebca81fa81398c11447c5075ccc3abe04",
+    "metadata": {
+      "id": 91753,
+      "level": 7,
+      "name": "An Enchanting Lesson",
+      "reqlevel": 5,
+      "side": 1,
+      "xp": 475
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {
+      "reqrace": 4294967372,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 11072,
+          "name": "Kitta Firewind"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 11072,
+          "name": "Kitta Firewind"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 247884,
+          "name": "Luminous Residue",
+          "quantity": 3
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": []
+  },
+  {
+    "questID": 91758,
+    "url": "https://www.wowhead.com/forever/quest=91758",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "54727d9794abe5914428c8fc94c5520b6d9261659286e57fec296aac698d0446",
+    "metadata": {
+      "id": 91758,
+      "level": 4,
+      "name": "Follow That Kobold!",
+      "reqlevel": 1,
+      "side": 1,
+      "xp": 180
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {
+      "reqrace": 76,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 197,
+          "name": "Marshal McBride"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 248415,
+          "name": "Tordrin Sternblade"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 91752
+    },
+    "comments": [
+      {
+        "id": 6436196,
+        "date": "2026-09-25T23:13:29-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 91772,
+    "url": "https://www.wowhead.com/forever/quest=91772",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "2f3e0be1b1c4513ad1d0a1376976e8397cb78b5884278853cf4ecda61e910484",
+    "metadata": {
+      "id": 91772,
+      "level": 4,
+      "name": "Shhh! We're Hunting Kobolds",
+      "reqlevel": 1,
+      "side": 1,
+      "xp": 270
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {
+      "reqrace": 76,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 248415,
+          "name": "Tordrin Sternblade"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 240,
+          "name": "Marshal Dughan"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "object",
+          "entityID": 563442,
+          "name": "Followed Kobold Tracks",
+          "quantity": 6
+        }
+      ],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 247970,
+          "name": "Kobold Tracking Kit",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_display": {
+      "previousQuest": 91758
+    },
+    "comments": [
+      {
+        "id": 6436191,
+        "date": "2026-09-25T22:53:50-05:00"
+      },
+      {
+        "id": 6441294,
+        "date": "2026-10-05T14:33:29-05:00"
+      },
+      {
+        "id": 6447090,
+        "date": "2026-10-08T05:43:50-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 91775,
+    "url": "https://www.wowhead.com/forever/quest=91775",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "bbf970cf6e9836943e685ef720cd9adcbe63c7a5ffb67f218843e8865f432f93",
+    "metadata": {
+      "id": 91775,
+      "itemrewards": [
+        [
+          279936,
+          1
+        ]
+      ],
+      "level": 6,
+      "name": "Book Return",
+      "reqlevel": 1,
+      "side": 1,
+      "xp": 680
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {
+      "reqrace": 76,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 240,
+          "name": "Marshal Dughan"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 240,
+          "name": "Marshal Dughan"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 248002,
+          "name": "Picture Book: Fun with Elementals",
+          "quantity": 1
+        },
+        {
+          "entityType": "item",
+          "entityID": 248001,
+          "name": "Lost Book",
+          "quantity": 6
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 91772
+    },
+    "comments": [
+      {
+        "id": 6432329,
+        "date": "2026-09-21T16:19:57-05:00"
+      },
+      {
+        "id": 6434138,
+        "date": "2026-09-23T11:14:58-05:00"
+      },
+      {
+        "id": 6447111,
+        "date": "2026-10-08T05:47:18-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 91777,
+    "url": "https://www.wowhead.com/forever/quest=91777",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "ce7f27457ccae76fecbb816953f3ffb3d117e584c66e623439d1c25b5a2e0159",
+    "metadata": {
+      "id": 91777,
+      "level": 7,
+      "name": "Rare Books",
+      "reqlevel": 1,
+      "side": 1,
+      "xp": 790
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {
+      "reqrace": 76,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 240,
+          "name": "Marshal Dughan"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 951,
+          "name": "Brother Paxton"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 248003,
+          "name": "Geomancy for Curious Young Wizards",
+          "quantity": 1
+        },
+        {
+          "entityType": "item",
+          "entityID": 248004,
+          "name": "Arcane Explainer: Magical Stuff in Simple Words",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 91775
+    },
+    "comments": [
+      {
+        "id": 6440037,
+        "date": "2026-10-02T13:58:50-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 92124,
+    "url": "https://www.wowhead.com/forever/quest=92124",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "e411efed0749d732b09cb65ddfee3aca04d93f0fa1a6672b122c22f9f2835c59",
+    "metadata": {
+      "id": 92124,
+      "level": 2,
+      "name": "Book Inventory",
+      "reqlevel": 1,
+      "side": 1,
+      "xp": 15
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {
+      "reqrace": 4294967372,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 951,
+          "name": "Brother Paxton"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 247229,
+          "name": "Daniel"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": []
+  },
+  {
+    "questID": 92479,
+    "url": "https://www.wowhead.com/forever/quest=92479",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "641b80bc15d29b00f9090e85355a939b3d0a2c1a364dcd545794fa212db1b9f6",
+    "metadata": {
+      "id": 92479,
+      "level": 1,
+      "name": "A Scribbled Letter",
+      "reqclass": 1,
+      "reqlevel": 1,
+      "side": 1,
+      "xp": 40
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {
+      "reqrace": 1,
+      "reqclass": 1
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 197,
+          "name": "Marshal McBride"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 248415,
+          "name": "Tordrin Sternblade"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 251941,
+          "name": "Scribbled Letter",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_display": {},
+    "comments": []
+  },
+  {
+    "questID": 94774,
+    "url": "https://www.wowhead.com/forever/quest=94774",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "f4909ee0a97ba56cd9cced6755e8d7dc80386ac2ee89730c4aa4d62167915bcd",
+    "metadata": {
+      "id": 94774,
+      "level": 10,
+      "name": "Divine Grace",
+      "reqclass": 16,
+      "reqlevel": 10,
+      "side": 1,
+      "xp": 210
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {
+      "reqrace": 1,
+      "reqclass": 16
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 377,
+          "name": "Priestess Josetta"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 376,
+          "name": "High Priestess Laurena"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": []
+  },
+  {
+    "questID": 94792,
+    "url": "https://www.wowhead.com/forever/quest=94792",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "6fb3c4fc9f919e43763d44fd719bc4a00fa31fcdb96bbb0b4e0643b162b96499",
+    "metadata": {
+      "id": 94792,
+      "level": 10,
+      "name": "Taming the Beast",
+      "reqclass": 4,
+      "reqlevel": 10,
+      "side": 1,
+      "xp": 840
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {
+      "reqrace": 12,
+      "reqclass": 4
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 251507,
+          "name": "Josephine Carson"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 251507,
+          "name": "Josephine Carson"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 266158,
+          "name": "Taming Rod",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 6438722,
+        "date": "2026-09-30T12:17:57-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 94793,
+    "url": "https://www.wowhead.com/forever/quest=94793",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "cdcf0a57fd663a8ebfe562bd996b36e4299547467a93e65c0ff846249dbcdcf3",
+    "metadata": {
+      "id": 94793,
+      "level": 10,
+      "name": "Training the Beast",
+      "reqclass": 4,
+      "reqlevel": 10,
+      "side": 1,
+      "xp": 420
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {
+      "reqrace": 8,
+      "reqclass": 4
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 251507,
+          "name": "Josephine Carson"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 258930,
+          "name": "Isaac Chan"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {
+      "previousQuest": 94864
+    },
+    "comments": []
+  },
+  {
+    "questID": 94863,
+    "url": "https://www.wowhead.com/forever/quest=94863",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "5d091bde97c970150c99db79f04c516b99e0b64e5dfb1353d38097951341ae72",
+    "metadata": {
+      "id": 94863,
+      "level": 10,
+      "name": "Taming the Beast",
+      "reqclass": 4,
+      "reqlevel": 10,
+      "side": 1,
+      "xp": 840
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {
+      "reqrace": 8,
+      "reqclass": 4
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 251507,
+          "name": "Josephine Carson"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 251507,
+          "name": "Josephine Carson"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 266253,
+          "name": "Taming Rod",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_display": {
+      "previousQuest": 94792
+    },
+    "comments": []
+  },
+  {
+    "questID": 94864,
+    "url": "https://www.wowhead.com/forever/quest=94864",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "9f824a99c1324ea5038a45cbbe7ac1ec5c97f8bdffbbdfed1a45117156631e84",
+    "metadata": {
+      "id": 94864,
+      "level": 10,
+      "name": "Taming the Beast",
+      "reqclass": 4,
+      "reqlevel": 10,
+      "side": 1,
+      "xp": 840
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {
+      "reqrace": 12,
+      "reqclass": 4
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 251507,
+          "name": "Josephine Carson"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 251507,
+          "name": "Josephine Carson"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 266254,
+          "name": "Taming Rod",
+          "quantity": 1
+        }
+      ]
+    },
+    "prerequisite_display": {
+      "previousQuest": 94863
+    },
+    "comments": []
+  },
+  {
+    "questID": 95771,
+    "url": "https://www.wowhead.com/forever/quest=95771",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "d273feef5ed8ca996cad9fa60d15c637bae79f74d578b436a0ec3320031cfeba",
+    "metadata": {
+      "id": 95771,
+      "itemrewards": [
+        [
+          270298,
+          1
+        ]
+      ],
+      "level": 10,
+      "name": "A Taste of Darkness",
+      "reqlevel": 6,
+      "xp": 840
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {
+      "reqrace": 0,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [],
+      "ends": [],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": []
+  },
+  {
+    "questID": 99127,
+    "url": "https://www.wowhead.com/forever/quest=99127",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "fec79f9aa00a3a28179ae15be64c62967d1e4f522d47ead2ac011b595e74c3d6",
+    "metadata": {
+      "id": 99127,
+      "level": 7,
+      "name": "A Net Disaster",
+      "reqlevel": 4,
+      "side": 1,
+      "xp": 630
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {
+      "reqrace": 4294967372,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 383,
+          "name": "Jason Mathers"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 383,
+          "name": "Jason Mathers"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 286205,
+          "name": "Half-Eaten Fish",
+          "quantity": 7
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 6430574,
+        "date": "2026-09-20T10:44:08-05:00"
+      },
+      {
+        "id": 6434638,
+        "date": "2026-09-24T01:35:22-05:00"
+      },
+      {
+        "id": 6436545,
+        "date": "2026-09-26T14:47:24-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 99128,
+    "url": "https://www.wowhead.com/forever/quest=99128",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "8d5ddd4591c3ef027aef8eebd657794cbda2521a00f5a511bd57499e69684a19",
+    "metadata": {
+      "id": 99128,
+      "level": 7,
+      "name": "Slimy Menace",
+      "reqlevel": 4,
+      "side": 1,
+      "xp": 630
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {
+      "reqrace": 4294967372,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 383,
+          "name": "Jason Mathers"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 383,
+          "name": "Jason Mathers"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "entityID": 735,
+          "name": "Murloc Streamrunner",
+          "quantity": 4
+        },
+        {
+          "entityType": "npc",
+          "entityID": 285,
+          "name": "Murloc",
+          "quantity": 7
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 6436555,
+        "date": "2026-09-26T14:56:07-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 99129,
+    "url": "https://www.wowhead.com/forever/quest=99129",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "cc6aa9063300275801eef13737c025c0bc6ae0fd97383a1304757a7082b663d7",
+    "metadata": {
+      "id": 99129,
+      "level": 7,
+      "name": "A Man About a Murloc",
+      "reqlevel": 4,
+      "side": 1,
+      "xp": 65
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {
+      "reqrace": 4294967372,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 383,
+          "name": "Jason Mathers"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 241,
+          "name": "Remy \"Two Times\""
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 6436558,
+        "date": "2026-09-26T14:57:34-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 99130,
+    "url": "https://www.wowhead.com/forever/quest=99130",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "892ae38ed43fe402ffa00f780d4b0ccbb605615376953af7a31de8126ab08688",
+    "metadata": {
+      "id": 99130,
+      "itemrewards": [
+        [
+          286733,
+          1
+        ]
+      ],
+      "level": 7,
+      "name": "An Enticing Offer",
+      "reqlevel": 4,
+      "side": 1,
+      "xp": 630
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {
+      "reqrace": 4294967372,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 241,
+          "name": "Remy \"Two Times\""
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 241,
+          "name": "Remy \"Two Times\""
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 286214,
+          "name": "Duskweed Petal",
+          "quantity": 18
+        },
+        {
+          "entityType": "item",
+          "entityID": 286215,
+          "name": "Vial of Animal Blood",
+          "quantity": 6
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 6434425,
+        "date": "2026-09-23T18:07:05-05:00"
+      },
+      {
+        "id": 6436561,
+        "date": "2026-09-26T15:01:39-05:00"
+      },
+      {
+        "id": 6440544,
+        "date": "2026-10-03T13:53:30-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 99131,
+    "url": "https://www.wowhead.com/forever/quest=99131",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "0f29979cdd2d16ca791537cea7097c960085b1577226ea620ef3fbc64e4f2d2b",
+    "metadata": {
+      "id": 99131,
+      "level": 7,
+      "name": "Baited for Success",
+      "reqlevel": 4,
+      "side": 1,
+      "xp": 630
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {
+      "reqrace": 4294967372,
+      "reqclass": 0
+    },
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 241,
+          "name": "Remy \"Two Times\""
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 383,
+          "name": "Jason Mathers"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 6436565,
+        "date": "2026-09-26T15:03:26-05:00"
+      }
+    ]
+  },
+  {
+    "questID": 99143,
+    "url": "https://www.wowhead.com/forever/quest=99143",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "e7266a9069a5824340f50e975c90150ab8df570503ab515ecb29b98056166f5d",
+    "metadata": {
+      "id": 99143,
+      "itemrewards": [
+        [
+          286732,
+          1
+        ]
+      ],
+      "level": 7,
+      "name": "Bottles and Baubles",
+      "reqlevel": 4,
+      "side": 1,
+      "xp": 630
+    },
+    "forever_status": "new",
+    "raw_identity_masks": {},
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 1651,
+          "name": "Lee Brown"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 1651,
+          "name": "Lee Brown"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 286209,
+          "name": "Shiny Junk",
+          "quantity": 6
+        }
+      ],
+      "provided": []
+    },
+    "prerequisite_display": {},
+    "comments": [
+      {
+        "id": 6436552,
+        "date": "2026-09-26T14:52:06-05:00"
+      }
+    ]
+  }
+]

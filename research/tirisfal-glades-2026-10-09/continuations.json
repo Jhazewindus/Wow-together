@@ -1,0 +1,827 @@
+{
+  "direct_ids": [
+    8,
+    354,
+    355,
+    356,
+    358,
+    359,
+    360,
+    361,
+    362,
+    363,
+    364,
+    365,
+    366,
+    367,
+    368,
+    369,
+    370,
+    371,
+    372,
+    374,
+    375,
+    376,
+    380,
+    381,
+    382,
+    383,
+    398,
+    404,
+    405,
+    407,
+    408,
+    409,
+    410,
+    411,
+    426,
+    427,
+    431,
+    445,
+    492,
+    590,
+    3901,
+    3902,
+    5481,
+    5482,
+    5847,
+    5901,
+    5902,
+    6395,
+    86784,
+    95314,
+    95328,
+    96895,
+    96896,
+    96897,
+    96898,
+    96899,
+    97558,
+    98389,
+    98545,
+    99134,
+    99141,
+    99142,
+    99144,
+    99152,
+    99153,
+    99156
+  ],
+  "compiled_ids": [
+    8,
+    354,
+    355,
+    356,
+    357,
+    358,
+    359,
+    360,
+    361,
+    362,
+    363,
+    364,
+    365,
+    366,
+    367,
+    368,
+    369,
+    370,
+    371,
+    372,
+    374,
+    375,
+    376,
+    380,
+    381,
+    382,
+    383,
+    398,
+    404,
+    405,
+    407,
+    408,
+    409,
+    411,
+    426,
+    427,
+    445,
+    492,
+    590,
+    1470,
+    1478,
+    1498,
+    1818,
+    1819,
+    1820,
+    1821,
+    1822,
+    1881,
+    1885,
+    3095,
+    3096,
+    3097,
+    3098,
+    3099,
+    3901,
+    3902,
+    5481,
+    5482,
+    5650,
+    5651,
+    5901,
+    5902,
+    6395,
+    86784,
+    90902,
+    91208,
+    91209,
+    91282,
+    91285,
+    91294,
+    91316,
+    91317,
+    94427,
+    94436,
+    94438,
+    94440,
+    94441,
+    95314,
+    95328,
+    95803,
+    96895,
+    96896,
+    96897,
+    96898,
+    96899,
+    97558,
+    98389,
+    98545,
+    98601,
+    99134,
+    99141,
+    99142,
+    99144,
+    99152,
+    99153,
+    99156
+  ],
+  "uncompiled_direct_ids": [
+    410,
+    431,
+    5847
+  ],
+  "related_catalogue_records": {
+    "410": {
+      "prerequisitesRead": true,
+      "zone": "Tirisfal Glades",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 3080,
+          "name": "Candle of Beckoning"
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisitesUnverified": true,
+      "otherLocationsIncomplete": false,
+      "level": 10,
+      "areaID": 85,
+      "repeatable": true,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Lillith's Dinner Table",
+          "entityID": 1557
+        }
+      ],
+      "xp": 0,
+      "minLevel": 5,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 3080,
+            "name": "Candle of Beckoning"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Lillith's Dinner Table",
+            "entityID": 1557
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "Lillith's Dinner Table",
+            "entityID": 1557
+          }
+        ]
+      },
+      "categoryPath": "eastern-kingdoms/tirisfal-glades",
+      "raceMask": 8589934770,
+      "mapID": 1420,
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Lillith's Dinner Table",
+          "entityID": 1557
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Candle of Beckoning",
+          "itemID": 3080
+        }
+      ],
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "prerequisiteAny": [
+        366
+      ],
+      "ends": [
+        {
+          "entityType": "object",
+          "mapID": 1420,
+          "name": "Lillith's Dinner Table",
+          "y": 0.44880000000000003,
+          "entityID": 1557,
+          "x": 0.6664,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "sourceAreaID": 85
+        }
+      ],
+      "shareable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1420,
+          "action": "gather",
+          "entityID": 1586,
+          "x": 0.6816,
+          "y": 0.4202,
+          "objectiveKey": "item:3080",
+          "itemID": 3080,
+          "quantity": 1,
+          "sourceAreaID": 85,
+          "itemName": "Candle of Beckoning",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Crate of Candles"
+        }
+      ],
+      "objectiveFactsSource": "Warcraft DB Forever structured objectives",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "starts": [
+        {
+          "entityType": "object",
+          "mapID": 1420,
+          "name": "Lillith's Dinner Table",
+          "y": 0.44880000000000003,
+          "entityID": 1557,
+          "x": 0.6664,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "sourceAreaID": 85
+        }
+      ],
+      "requirementSource": "Warcraft DB Forever structured objectives",
+      "classMask": 0,
+      "title": "The Dormant Shade",
+      "foreverStatus": "unchanged"
+    },
+    "431": {
+      "prerequisitesRead": true,
+      "mapID": 1420,
+      "objectives": {},
+      "zone": "Tirisfal Glades",
+      "requirements": {},
+      "starts": [
+        {
+          "entityType": "object",
+          "mapID": 1420,
+          "name": "Crate of Candles",
+          "y": 0.4202,
+          "entityID": 1586,
+          "x": 0.6816,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "sourceAreaID": 85
+        }
+      ],
+      "shareable": true,
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "prerequisitesUnverified": true,
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "object",
+          "mapID": 1420,
+          "name": "Crate of Candles",
+          "y": 0.4202,
+          "entityID": 1586,
+          "x": 0.6816,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "sourceAreaID": 85
+        }
+      ],
+      "level": 10,
+      "areaID": 85,
+      "repeatable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "prerequisiteAny": [
+        366
+      ],
+      "side": "Horde",
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Crate of Candles",
+          "entityID": 1586
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Crate of Candles",
+          "entityID": 1586
+        }
+      ],
+      "xp": 0,
+      "title": "Candles of Beckoning",
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 5,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 8589934770,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Crate of Candles",
+            "entityID": 1586
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "Crate of Candles",
+            "entityID": 1586
+          }
+        ]
+      },
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "categoryPath": "eastern-kingdoms/tirisfal-glades"
+    },
+    "1499": {
+      "prerequisitesRead": true,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Ruzan",
+          "entityID": 5765
+        }
+      ],
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "classMask": 256,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 3145,
+          "npc": true,
+          "sourceZone": "Durotar",
+          "x": 0.428,
+          "name": "Zureetha Fargaze",
+          "sourceAreaID": 14,
+          "y": 0.69
+        }
+      ],
+      "level": 4,
+      "objectives": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 5765,
+          "npc": true,
+          "y": 0.69,
+          "x": 0.42590000000000006,
+          "name": "Ruzan",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "title": "Vile Familiars",
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Zureetha Fargaze",
+          "entityID": 3145
+        }
+      ],
+      "xp": 35,
+      "prerequisiteAny": [
+        1470,
+        1485
+      ],
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 1,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 8589934770,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Ruzan",
+            "entityID": 5765
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Zureetha Fargaze",
+            "entityID": 3145
+          }
+        ]
+      },
+      "foreverStatus": "unchanged",
+      "categoryPath": "classes/warlock"
+    },
+    "1502": {
+      "prerequisitesRead": true,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Uzzek",
+          "entityID": 5810
+        }
+      ],
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "classMask": 1,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "entityID": 5878,
+          "npc": true,
+          "y": 0.3034,
+          "x": 0.5722999999999999,
+          "name": "Thun'grim Firegaze",
+          "sourceAreaID": 17,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "level": 10,
+      "objectives": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "entityID": 5810,
+          "npc": true,
+          "y": 0.2112,
+          "x": 0.6138,
+          "name": "Uzzek",
+          "sourceAreaID": 17,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "title": "Thun'grim Firegaze",
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Thun'grim Firegaze",
+          "entityID": 5878
+        }
+      ],
+      "xp": 210,
+      "prerequisiteAny": [
+        1498,
+        1819
+      ],
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 10,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 8589934770,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Uzzek",
+            "entityID": 5810
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Thun'grim Firegaze",
+            "entityID": 5878
+          }
+        ]
+      },
+      "foreverStatus": "unchanged",
+      "categoryPath": "classes/warrior"
+    },
+    "1886": {
+      "prerequisitesRead": true,
+      "npcTargets": [
+        {
+          "itemName": "Astor's Letter of Introduction",
+          "name": "Astor Hadren",
+          "entityID": 6497,
+          "npc": true,
+          "action": "loot"
+        }
+      ],
+      "zone": "Rogue",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 7231,
+          "name": "Astor's Letter of Introduction"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "action": "loot",
+          "entityID": 6497,
+          "patrol": true,
+          "npc": true,
+          "x": 0.5428000000000001,
+          "y": 0.7539,
+          "objectiveKey": "item:7231",
+          "itemID": 7231,
+          "quantity": 1,
+          "sourceAreaID": 85,
+          "itemName": "Astor's Letter of Introduction",
+          "locationSource": "Published Forever converted-baseline patrol waypoints",
+          "name": "Astor Hadren"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Astor's Letter of Introduction",
+          "itemID": 7231
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1458,
+          "entityID": 6467,
+          "npc": true,
+          "y": 0.6911,
+          "x": 0.8351000000000001,
+          "name": "Mennet Carkad",
+          "sourceAreaID": 1497,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "classMask": 8,
+      "otherLocationsIncomplete": false,
+      "title": "The Deathstalkers",
+      "level": 13,
+      "raceMask": 16,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mennet Carkad",
+          "entityID": 6467
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1458,
+          "entityID": 6467,
+          "npc": true,
+          "y": 0.6911,
+          "x": 0.8351000000000001,
+          "name": "Mennet Carkad",
+          "sourceAreaID": 1497,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "side": "Horde",
+      "previousQuest": 1885,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mennet Carkad",
+          "entityID": 6467
+        }
+      ],
+      "xp": 680,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        5
+      ],
+      "minLevel": 10,
+      "requirementSource": "Warcraft DB Forever structured objectives",
+      "shareable": true,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 7231,
+            "name": "Astor's Letter of Introduction"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Mennet Carkad",
+            "entityID": 6467
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Mennet Carkad",
+            "entityID": 6467
+          }
+        ]
+      },
+      "objectiveFactsSource": "Warcraft DB Forever structured objectives",
+      "categoryPath": "classes/rogue"
+    },
+    "6390": {
+      "prerequisitesRead": true,
+      "mapID": 1422,
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Termite Barrel",
+          "entityID": 177491
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Barrel of Plagueland Termites",
+          "entityID": 15044
+        }
+      ],
+      "objectives": {},
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Barrel of Plagueland Termites",
+          "itemID": 15044
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "starts": [
+        {
+          "entityType": "object",
+          "mapID": 1422,
+          "name": "Termite Barrel",
+          "y": 0.31989999999999996,
+          "entityID": 177491,
+          "x": 0.48340000000000005,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "sourceAreaID": 28
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 11615,
+          "npc": true,
+          "y": 0.7234,
+          "x": 0.8329000000000001,
+          "name": "Mickey Levine",
+          "sourceAreaID": 85,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "title": "A Plague Upon Thee",
+      "level": 55,
+      "areaID": 28,
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Barrel of Plagueland Termites",
+          "entityID": 15044
+        }
+      ],
+      "side": "Horde",
+      "prerequisiteAny": [
+        5902
+      ],
+      "money": 8500,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mickey Levine",
+          "entityID": 11615
+        }
+      ],
+      "xp": 5650,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 48,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 8589934770,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Barrel of Plagueland Termites",
+            "entityID": 15044
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Termite Barrel",
+            "entityID": 177491
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Mickey Levine",
+            "entityID": 11615
+          }
+        ]
+      },
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "eastern-kingdoms/western-plaguelands"
+    }
+  }
+}

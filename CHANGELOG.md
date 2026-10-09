@@ -1,5 +1,34 @@
 # Wow Together changelog
 
+## 0.8.62
+
+**REVIEWED ZONE UPDATES**
+
+- Integrate the guide agent's researched leveling changes from 22 zones:
+  Durotar, Mulgore, Dun Morogh, Elwynn Forest, Teldrassil, Tirisfal Glades,
+  Westfall, the Barrens, Hillsbrad Foothills, Duskwood, Dustwallow Marsh,
+  Stranglethorn Vale, Swamp of Sorrows, Tanaris, Un'Goro Crater,
+  Western Plaguelands, Wetlands, Winterspring, Hinterlands,
+  Thousand Needles, Thoradin's Wall and Zephras Isle.
+- Update 201 quest records using 148 identity-checked stage rules. Correct
+  named drops, actual object interactions, supplied delivery items,
+  preparation/output quantities, known prerequisites and reviewed NPC points.
+  Exclude explicit testing/gossip placeholders, profession-only quests and
+  raid campaigns from ordinary leveling while retaining their catalogue facts.
+  Elite/group quests, actual class options and uncertain offer checks remain.
+- Protect the compiler's first distance-based optimization pass with complete
+  journey checks. Shortcuts cannot increase quest-log pressure, known level XP
+  shortfalls, repeated-kill estimates, difficulty or uncertain/blocked legs;
+  every objective retains its already-collected quest rewards. Check several
+  chapter starting states and preserve missing-location/review boundaries.
+  Useful safe work/bundle moves remain; generation yields during long searches.
+- Keep fixed guide order, accepted/completed work, manual skips and session
+  checkpoints. Installing the version rebuilds saved blueprints with the new
+  facts; subsequent same-version reloads preserve their order.
+- Retain source evidence, native-testing checklists and unresolved eligibility,
+  handoff, preparation and terrain issues. Published points are not proof of
+  walkable approaches or a globally optimal route. The travel graph is unchanged.
+
 ## 0.8.61
 
 **SESSION CHECKPOINTS AND DUNGEON TRACKING**

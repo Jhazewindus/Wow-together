@@ -1,6 +1,6 @@
 {
   "source_data_complete": false,
-  "remaining_quest_records": 453,
+  "remaining_quest_records": 365,
   "limitations": [
     "This queue identifies missing facts, not a license to invent them",
     "Source capture must respect access policy and stop after denials",
@@ -19,20 +19,6 @@
       "quest_url": "https://www.wowhead.com/forever/quest=19",
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=382"
-      ]
-    },
-    {
-      "questID": 90,
-      "title": "Seasoned Wolf Kabobs",
-      "guides": [
-        "Alliance / Duskwood"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=90",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=272"
       ]
     },
     {
@@ -203,22 +189,6 @@
       ]
     },
     {
-      "questID": 519,
-      "title": "The Crown of Will",
-      "guides": [
-        "Horde / Hillsbrad Foothills"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=519",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=3551",
-        "https://www.wowhead.com/forever/item=3552",
-        "https://www.wowhead.com/forever/npc=2278"
-      ]
-    },
-    {
       "questID": 535,
       "title": "Valik",
       "guides": [
@@ -243,23 +213,9 @@
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=565",
       "entity_urls": [
+        "https://www.wowhead.com/forever/item=2997",
         "https://www.wowhead.com/forever/item=3719",
         "https://www.wowhead.com/forever/npc=2438"
-      ]
-    },
-    {
-      "questID": 592,
-      "title": "Saving Yenniku",
-      "guides": [
-        "Horde / Stranglethorn Vale"
-      ],
-      "needs": [
-        "objective quantities"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=592",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=2497",
-        "https://www.wowhead.com/forever/npc=2519"
       ]
     },
     {
@@ -795,21 +751,6 @@
       ]
     },
     {
-      "questID": 1150,
-      "title": "Test of Endurance",
-      "guides": [
-        "Horde / Thousand Needles"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1150",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=5845",
-        "https://www.wowhead.com/forever/npc=2986"
-      ]
-    },
-    {
       "questID": 1203,
       "title": "Jarl Needs a Blade",
       "guides": [
@@ -826,51 +767,6 @@
       ]
     },
     {
-      "questID": 1263,
-      "title": "The Burning Inn <CHANGE TO GOSSIP>",
-      "guides": [
-        "Alliance / Dustwallow Marsh",
-        "Horde / Dustwallow Marsh"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1263",
-      "entity_urls": []
-    },
-    {
-      "questID": 1272,
-      "title": "Finding Reethe <CHANGE INTO GOSSIP>",
-      "guides": [
-        "Alliance / Dustwallow Marsh",
-        "Horde / Dustwallow Marsh"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1272",
-      "entity_urls": []
-    },
-    {
-      "questID": 1281,
-      "title": "Jim's Song <CHANGE TO GOSSIP>",
-      "guides": [
-        "Alliance / Dustwallow Marsh",
-        "Horde / Dustwallow Marsh"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1281",
-      "entity_urls": []
-    },
-    {
       "questID": 1282,
       "title": "They Call Him Smiling Jim",
       "guides": [
@@ -884,21 +780,6 @@
         "https://www.wowhead.com/forever/npc=4921",
         "https://www.wowhead.com/forever/npc=4944"
       ]
-    },
-    {
-      "questID": 1283,
-      "title": "Fire at the Shady Rest <CHANGE TO GOSSIP>",
-      "guides": [
-        "Alliance / Dustwallow Marsh",
-        "Horde / Dustwallow Marsh"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1283",
-      "entity_urls": []
     },
     {
       "questID": 1288,
@@ -1083,22 +964,6 @@
       ]
     },
     {
-      "questID": 1383,
-      "title": "Nothing But The Truth",
-      "guides": [
-        "Horde / Duskwood"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1383",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=6081",
-        "https://www.wowhead.com/forever/item=6082",
-        "https://www.wowhead.com/forever/npc=5414"
-      ]
-    },
-    {
       "questID": 1384,
       "title": "Raid on the Kolkar",
       "guides": [
@@ -1139,22 +1004,6 @@
       "quest_url": "https://www.wowhead.com/forever/quest=1386",
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=5398"
-      ]
-    },
-    {
-      "questID": 1452,
-      "title": "Rhapsody's Kalimdor Kocktail",
-      "guides": [
-        "Alliance / The Hinterlands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1452",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=6258",
-        "https://www.wowhead.com/forever/item=6259",
-        "https://www.wowhead.com/forever/npc=5634"
       ]
     },
     {
@@ -1296,22 +1145,6 @@
       ]
     },
     {
-      "questID": 1518,
-      "title": "Call of Earth",
-      "guides": [
-        "Horde / Durotar"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1518",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=6656",
-        "https://www.wowhead.com/forever/npc=5887",
-        "https://www.wowhead.com/forever/npc=5891"
-      ]
-    },
-    {
       "questID": 1519,
       "title": "Call of Earth",
       "guides": [
@@ -1325,69 +1158,6 @@
       "quest_url": "https://www.wowhead.com/forever/quest=1519",
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=5888"
-      ]
-    },
-    {
-      "questID": 1521,
-      "title": "Call of Earth",
-      "guides": [
-        "Horde / Durotar"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1521",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=6656",
-        "https://www.wowhead.com/forever/npc=5888",
-        "https://www.wowhead.com/forever/npc=5891"
-      ]
-    },
-    {
-      "questID": 1524,
-      "title": "Call of Fire",
-      "guides": [
-        "Horde / Durotar"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1524",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=6653",
-        "https://www.wowhead.com/forever/npc=5900",
-        "https://www.wowhead.com/forever/npc=5907"
-      ]
-    },
-    {
-      "questID": 1525,
-      "title": "Call of Fire",
-      "guides": [
-        "Horde / Durotar"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1525",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=6652",
-        "https://www.wowhead.com/forever/npc=5900"
-      ]
-    },
-    {
-      "questID": 1527,
-      "title": "Call of Fire",
-      "guides": [
-        "Horde / Durotar"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1527",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=6654",
-        "https://www.wowhead.com/forever/npc=5907",
-        "https://www.wowhead.com/forever/object=61934"
       ]
     },
     {
@@ -1436,27 +1206,12 @@
       ]
     },
     {
-      "questID": 1640,
-      "title": "Beat Bartleby",
-      "guides": [
-        "Alliance / Elwynn Forest"
-      ],
-      "needs": [
-        "objective quantities"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1640",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=6090"
-      ]
-    },
-    {
       "questID": 1678,
       "title": "Vejrek",
       "guides": [
         "Alliance / Elwynn Forest"
       ],
       "needs": [
-        "objective quantities",
         "pickup requirements"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=1678",
@@ -1471,7 +1226,6 @@
         "Alliance / Elwynn Forest"
       ],
       "needs": [
-        "objective quantities",
         "pickup requirements"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=1683",
@@ -1631,22 +1385,6 @@
       ]
     },
     {
-      "questID": 2205,
-      "title": "Seek out SI: 7",
-      "guides": [
-        "Alliance / Elwynn Forest"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=2205",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=7674",
-        "https://www.wowhead.com/forever/npc=332",
-        "https://www.wowhead.com/forever/npc=917"
-      ]
-    },
-    {
       "questID": 2380,
       "title": "To Orgrimmar!",
       "guides": [
@@ -1690,22 +1428,6 @@
       "entity_urls": [
         "https://www.wowhead.com/forever/item=9250",
         "https://www.wowhead.com/forever/npc=7882"
-      ]
-    },
-    {
-      "questID": 2938,
-      "title": "Venom to the Undercity",
-      "guides": [
-        "Horde / The Hinterlands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=2938",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=9436",
-        "https://www.wowhead.com/forever/npc=2055",
-        "https://www.wowhead.com/forever/npc=2216"
       ]
     },
     {
@@ -1849,54 +1571,6 @@
       ]
     },
     {
-      "questID": 3095,
-      "title": "Simple Scroll",
-      "guides": [
-        "Horde / Tirisfal Glades"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=3095",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=9546",
-        "https://www.wowhead.com/forever/npc=1569",
-        "https://www.wowhead.com/forever/npc=2119"
-      ]
-    },
-    {
-      "questID": 3100,
-      "title": "Simple Letter",
-      "guides": [
-        "Alliance / Elwynn Forest"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=3100",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=9542",
-        "https://www.wowhead.com/forever/npc=197",
-        "https://www.wowhead.com/forever/npc=911"
-      ]
-    },
-    {
-      "questID": 3102,
-      "title": "Encrypted Letter",
-      "guides": [
-        "Alliance / Elwynn Forest"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=3102",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=9555",
-        "https://www.wowhead.com/forever/npc=197",
-        "https://www.wowhead.com/forever/npc=915"
-      ]
-    },
-    {
       "questID": 3121,
       "title": "A Strange Request",
       "guides": [
@@ -1959,48 +1633,6 @@
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=3381",
       "entity_urls": []
-    },
-    {
-      "questID": 3511,
-      "title": "The Name of the Beast",
-      "guides": [
-        "Alliance / Azshara",
-        "Alliance / Blasted Lands",
-        "Alliance / Stranglethorn Vale",
-        "Horde / Azshara",
-        "Horde / Blasted Lands",
-        "Horde / Stranglethorn Vale"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=3511",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=10610",
-        "https://www.wowhead.com/forever/npc=6134",
-        "https://www.wowhead.com/forever/npc=7783"
-      ]
-    },
-    {
-      "questID": 3621,
-      "title": "The Formation of Felbane",
-      "guides": [
-        "Alliance / Azshara",
-        "Alliance / Blasted Lands",
-        "Alliance / Stranglethorn Vale",
-        "Horde / Azshara",
-        "Horde / Blasted Lands",
-        "Horde / Stranglethorn Vale"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=3621",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=10738",
-        "https://www.wowhead.com/forever/npc=7783",
-        "https://www.wowhead.com/forever/npc=7802"
-      ]
     },
     {
       "questID": 3721,
@@ -2078,6 +1710,7 @@
       "entity_urls": [
         "https://www.wowhead.com/forever/item=11104",
         "https://www.wowhead.com/forever/item=11105",
+        "https://www.wowhead.com/forever/item=11106",
         "https://www.wowhead.com/forever/npc=8737",
         "https://www.wowhead.com/forever/object=161504"
       ]
@@ -2125,22 +1758,6 @@
       "quest_url": "https://www.wowhead.com/forever/quest=4023",
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=9459"
-      ]
-    },
-    {
-      "questID": 4084,
-      "title": "Silver Heart",
-      "guides": [
-        "Alliance / Ungoro Crater",
-        "Horde / Ungoro Crater"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=4084",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=11173",
-        "https://www.wowhead.com/forever/npc=9116"
       ]
     },
     {
@@ -2205,55 +1822,6 @@
         "https://www.wowhead.com/forever/item=11723",
         "https://www.wowhead.com/forever/npc=5411",
         "https://www.wowhead.com/forever/object=173265"
-      ]
-    },
-    {
-      "questID": 4492,
-      "title": "Lost!",
-      "guides": [
-        "Alliance / Ungoro Crater",
-        "Horde / Ungoro Crater"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=4492",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=15722",
-        "https://www.wowhead.com/forever/npc=9997",
-        "https://www.wowhead.com/forever/npc=9999"
-      ]
-    },
-    {
-      "questID": 4508,
-      "title": "Calm Before the Storm",
-      "guides": [
-        "Alliance / Tanaris"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=4508",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=11844",
-        "https://www.wowhead.com/forever/npc=5594",
-        "https://www.wowhead.com/forever/npc=7740"
-      ]
-    },
-    {
-      "questID": 4509,
-      "title": "Calm Before the Storm",
-      "guides": [
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=4509",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=11844",
-        "https://www.wowhead.com/forever/npc=5594",
-        "https://www.wowhead.com/forever/npc=7010"
       ]
     },
     {
@@ -2334,55 +1902,6 @@
       ]
     },
     {
-      "questID": 4976,
-      "title": "Returning the Cleansed Orb",
-      "guides": [
-        "Alliance / Dustwallow Marsh",
-        "Horde / Dustwallow Marsh"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=4976",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=12642",
-        "https://www.wowhead.com/forever/npc=6266",
-        "https://www.wowhead.com/forever/npc=6546"
-      ]
-    },
-    {
-      "questID": 4986,
-      "title": "Glyphed Oaken Branch",
-      "guides": [
-        "Alliance / Western Plaguelands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=4986",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=12663",
-        "https://www.wowhead.com/forever/npc=4217",
-        "https://www.wowhead.com/forever/npc=10739"
-      ]
-    },
-    {
-      "questID": 4987,
-      "title": "Glyphed Oaken Branch",
-      "guides": [
-        "Horde / Western Plaguelands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=4987",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=12663",
-        "https://www.wowhead.com/forever/npc=5770",
-        "https://www.wowhead.com/forever/npc=10739"
-      ]
-    },
-    {
       "questID": 5050,
       "title": "Good Luck Charm",
       "guides": [
@@ -2428,6 +1947,21 @@
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=2198",
         "https://www.wowhead.com/forever/npc=10838"
+      ]
+    },
+    {
+      "questID": 5088,
+      "title": "Arikara",
+      "guides": [
+        "Horde / Thousand Needles"
+      ],
+      "needs": [
+        "objective quantities"
+      ],
+      "quest_url": "https://www.wowhead.com/forever/quest=5088",
+      "entity_urls": [
+        "https://www.wowhead.com/forever/npc=4046",
+        "https://www.wowhead.com/forever/npc=10428"
       ]
     },
     {
@@ -2503,39 +2037,6 @@
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=10837",
         "https://www.wowhead.com/forever/npc=10881"
-      ]
-    },
-    {
-      "questID": 5124,
-      "title": "Fiery Plate Gauntlets",
-      "guides": [
-        "Alliance / Winterspring",
-        "Horde / Winterspring"
-      ],
-      "needs": [
-        "objective area",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5124",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=12655",
-        "https://www.wowhead.com/forever/item=12812",
-        "https://www.wowhead.com/forever/npc=10637"
-      ]
-    },
-    {
-      "questID": 5126,
-      "title": "Lorax's Tale",
-      "guides": [
-        "Alliance / Winterspring",
-        "Horde / Winterspring"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5126",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=10918"
       ]
     },
     {
@@ -2630,70 +2131,6 @@
       ]
     },
     {
-      "questID": 5223,
-      "title": "Return to Chillwind Camp",
-      "guides": [
-        "Alliance / Western Plaguelands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5223",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=13192",
-        "https://www.wowhead.com/forever/npc=11053",
-        "https://www.wowhead.com/forever/object=176393"
-      ]
-    },
-    {
-      "questID": 5232,
-      "title": "Return to the Bulwark",
-      "guides": [
-        "Horde / Western Plaguelands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5232",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=13191",
-        "https://www.wowhead.com/forever/npc=11055",
-        "https://www.wowhead.com/forever/object=177289"
-      ]
-    },
-    {
-      "questID": 5234,
-      "title": "Return to the Bulwark",
-      "guides": [
-        "Horde / Western Plaguelands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5234",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=13192",
-        "https://www.wowhead.com/forever/npc=11055",
-        "https://www.wowhead.com/forever/object=176393"
-      ]
-    },
-    {
-      "questID": 5236,
-      "title": "Return to the Bulwark",
-      "guides": [
-        "Horde / Western Plaguelands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5236",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=13193",
-        "https://www.wowhead.com/forever/npc=11055",
-        "https://www.wowhead.com/forever/object=176392"
-      ]
-    },
-    {
       "questID": 5244,
       "title": "The Ruins of Kel'Theril",
       "guides": [
@@ -2761,40 +2198,6 @@
       ]
     },
     {
-      "questID": 5252,
-      "title": "Remorseful Highborne",
-      "guides": [
-        "Alliance / Eastern Plaguelands",
-        "Alliance / Winterspring"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5252",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=13347",
-        "https://www.wowhead.com/forever/npc=10684",
-        "https://www.wowhead.com/forever/npc=11079"
-      ]
-    },
-    {
-      "questID": 5253,
-      "title": "The Crystal of Zin-Malor",
-      "guides": [
-        "Alliance / Eastern Plaguelands",
-        "Alliance / Winterspring"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5253",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=13347",
-        "https://www.wowhead.com/forever/npc=3516",
-        "https://www.wowhead.com/forever/npc=11079"
-      ]
-    },
-    {
       "questID": 5321,
       "title": "The Sleeper Has Awakened",
       "guides": [
@@ -2821,22 +2224,6 @@
       "quest_url": "https://www.wowhead.com/forever/quest=5342",
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=11022"
-      ]
-    },
-    {
-      "questID": 5361,
-      "title": "Family Tree",
-      "guides": [
-        "Horde / Thousand Needles"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5361",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=13507",
-        "https://www.wowhead.com/forever/npc=10537",
-        "https://www.wowhead.com/forever/npc=11259"
       ]
     },
     {
@@ -2894,32 +2281,12 @@
         "Horde / Western Plaguelands"
       ],
       "needs": [
-        "objective area",
         "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=5464",
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=11036",
         "https://www.wowhead.com/forever/object=176631"
-      ]
-    },
-    {
-      "questID": 5465,
-      "title": "Soulbound Keepsake",
-      "guides": [
-        "Alliance / Eastern Plaguelands",
-        "Alliance / Western Plaguelands",
-        "Horde / Eastern Plaguelands",
-        "Horde / Western Plaguelands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5465",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=13624",
-        "https://www.wowhead.com/forever/npc=11036",
-        "https://www.wowhead.com/forever/npc=11286"
       ]
     },
     {
@@ -2987,22 +2354,6 @@
       ]
     },
     {
-      "questID": 5514,
-      "title": "Mold Rhymes With...",
-      "guides": [
-        "Horde / Western Plaguelands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5514",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=14628",
-        "https://www.wowhead.com/forever/npc=5411",
-        "https://www.wowhead.com/forever/npc=11057"
-      ]
-    },
-    {
       "questID": 5517,
       "title": "Chromatic Mantle of the Dawn",
       "guides": [
@@ -3049,22 +2400,6 @@
       "entity_urls": [
         "https://www.wowhead.com/forever/item=12844",
         "https://www.wowhead.com/forever/npc=10856"
-      ]
-    },
-    {
-      "questID": 5538,
-      "title": "Mold Rhymes With...",
-      "guides": [
-        "Alliance / Western Plaguelands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5538",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=14628",
-        "https://www.wowhead.com/forever/npc=5411",
-        "https://www.wowhead.com/forever/npc=11056"
       ]
     },
     {
@@ -3188,25 +2523,6 @@
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=4606",
         "https://www.wowhead.com/forever/npc=11407"
-      ]
-    },
-    {
-      "questID": 5861,
-      "title": "Find Myranda",
-      "guides": [
-        "Alliance / Eastern Plaguelands",
-        "Alliance / Western Plaguelands",
-        "Horde / Eastern Plaguelands",
-        "Horde / Western Plaguelands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5861",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=14872",
-        "https://www.wowhead.com/forever/npc=1855",
-        "https://www.wowhead.com/forever/npc=11872"
       ]
     },
     {
@@ -3551,22 +2867,6 @@
       ]
     },
     {
-      "questID": 6601,
-      "title": "Ascension...",
-      "guides": [
-        "Horde / Dustwallow Marsh"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=6601",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=16888",
-        "https://www.wowhead.com/forever/npc=10182",
-        "https://www.wowhead.com/forever/npc=10321"
-      ]
-    },
-    {
       "questID": 6661,
       "title": "Deeprun Rat Roundup",
       "guides": [
@@ -3797,23 +3097,6 @@
       ]
     },
     {
-      "questID": 7732,
-      "title": "Zukk'ash Report",
-      "guides": [
-        "Horde / Feralas",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=7732",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=19020",
-        "https://www.wowhead.com/forever/npc=7010",
-        "https://www.wowhead.com/forever/npc=7875"
-      ]
-    },
-    {
       "questID": 7863,
       "title": "Sentinel Basic Care Package",
       "guides": [
@@ -3872,22 +3155,6 @@
       "entity_urls": []
     },
     {
-      "questID": 7962,
-      "title": "Wabbit Pelts",
-      "guides": [
-        "Alliance / Elwynn Forest"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=7962",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=19482"
-      ]
-    },
-    {
       "questID": 8287,
       "title": "A Terrible Purpose",
       "guides": [
@@ -3902,59 +3169,6 @@
         "https://www.wowhead.com/forever/item=20405",
         "https://www.wowhead.com/forever/npc=15181",
         "https://www.wowhead.com/forever/npc=15194"
-      ]
-    },
-    {
-      "questID": 8288,
-      "title": "Only One May Rise",
-      "guides": [
-        "Alliance / Silithus",
-        "Horde / Azshara",
-        "Horde / Silithus",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8288",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=20383",
-        "https://www.wowhead.com/forever/npc=15180"
-      ]
-    },
-    {
-      "questID": 8303,
-      "title": "Anachronos",
-      "guides": [
-        "Horde / Azshara",
-        "Horde / Silithus",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8303",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=15180",
-        "https://www.wowhead.com/forever/npc=15192"
-      ]
-    },
-    {
-      "questID": 8305,
-      "title": "Long Forgotten Memories",
-      "guides": [
-        "Horde / Azshara",
-        "Horde / Silithus",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8305",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=15192",
-        "https://www.wowhead.com/forever/object=180633"
       ]
     },
     {
@@ -4135,22 +3349,6 @@
       ]
     },
     {
-      "questID": 8416,
-      "title": "Inert Scourgestones",
-      "guides": [
-        "Alliance / Western Plaguelands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8416",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=20612",
-        "https://www.wowhead.com/forever/npc=1854",
-        "https://www.wowhead.com/forever/npc=10838"
-      ]
-    },
-    {
       "questID": 8419,
       "title": "An Imp's Request",
       "guides": [
@@ -4217,41 +3415,6 @@
       ]
     },
     {
-      "questID": 8519,
-      "title": "A Pawn on the Eternal Board",
-      "guides": [
-        "Alliance / Azshara",
-        "Alliance / Silithus",
-        "Alliance / Tanaris",
-        "Horde / Azshara",
-        "Horde / Silithus",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8519",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=15192",
-        "https://www.wowhead.com/forever/object=180633"
-      ]
-    },
-    {
-      "questID": 8551,
-      "title": "The Captain's Chest",
-      "guides": [
-        "Alliance / Stranglethorn Vale",
-        "Horde / Stranglethorn Vale"
-      ],
-      "needs": [
-        "objective quantities"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8551",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=2500"
-      ]
-    },
-    {
       "questID": 8552,
       "title": "The Monogrammed Sash",
       "guides": [
@@ -4259,13 +3422,14 @@
         "Horde / Stranglethorn Vale"
       ],
       "needs": [
-        "hand-in",
-        "objective area",
         "pickup",
         "pickup requirements"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=8552",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/item=3985",
+        "https://www.wowhead.com/forever/npc=2500"
+      ]
     },
     {
       "questID": 8553,
@@ -4275,13 +3439,13 @@
         "Horde / Stranglethorn Vale"
       ],
       "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
         "pickup requirements"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=8553",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/npc=2500",
+        "https://www.wowhead.com/forever/npc=2594"
+      ]
     },
     {
       "questID": 8554,
@@ -4291,31 +3455,14 @@
         "Horde / Stranglethorn Vale"
       ],
       "needs": [
-        "hand-in",
         "objective area",
-        "pickup",
         "pickup requirements"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=8554",
-      "entity_urls": []
-    },
-    {
-      "questID": 8555,
-      "title": "The Charge of the Dragonflights",
-      "guides": [
-        "Alliance / Azshara",
-        "Alliance / Silithus",
-        "Alliance / Tanaris",
-        "Horde / Azshara",
-        "Horde / Silithus",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8555",
       "entity_urls": [
-        "https://www.wowhead.com/forever/npc=15192"
+        "https://www.wowhead.com/forever/item=3935",
+        "https://www.wowhead.com/forever/npc=2500",
+        "https://www.wowhead.com/forever/npc=2594"
       ]
     },
     {
@@ -4370,272 +3517,6 @@
         "https://www.wowhead.com/forever/item=20873",
         "https://www.wowhead.com/forever/item=20886",
         "https://www.wowhead.com/forever/npc=15499"
-      ]
-    },
-    {
-      "questID": 8575,
-      "title": "Azuregos's Magical Ledger",
-      "guides": [
-        "Alliance / Azshara",
-        "Alliance / Silithus",
-        "Alliance / Tanaris",
-        "Horde / Azshara",
-        "Horde / Silithus",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8575",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=20949",
-        "https://www.wowhead.com/forever/npc=11811",
-        "https://www.wowhead.com/forever/npc=15481"
-      ]
-    },
-    {
-      "questID": 8576,
-      "title": "Translating the Ledger",
-      "guides": [
-        "Alliance / Azshara",
-        "Alliance / Silithus",
-        "Alliance / Tanaris",
-        "Horde / Azshara",
-        "Horde / Silithus",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8576",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=11811"
-      ]
-    },
-    {
-      "questID": 8577,
-      "title": "Stewvul, Ex-B.F.F.",
-      "guides": [
-        "Alliance / Azshara",
-        "Alliance / Silithus",
-        "Alliance / Tanaris",
-        "Horde / Azshara",
-        "Horde / Silithus",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8577",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=11811",
-        "https://www.wowhead.com/forever/object=180642"
-      ]
-    },
-    {
-      "questID": 8578,
-      "title": "Scrying Goggles? No Problem!",
-      "guides": [
-        "Alliance / Azshara",
-        "Alliance / Silithus",
-        "Alliance / Tanaris",
-        "Horde / Azshara",
-        "Horde / Silithus",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8578",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=20951",
-        "https://www.wowhead.com/forever/npc=11811",
-        "https://www.wowhead.com/forever/object=180642"
-      ]
-    },
-    {
-      "questID": 8584,
-      "title": "Never Ask Me About My Business",
-      "guides": [
-        "Alliance / Azshara",
-        "Alliance / Silithus",
-        "Alliance / Tanaris",
-        "Horde / Azshara",
-        "Horde / Silithus",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8584",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=8125",
-        "https://www.wowhead.com/forever/npc=11811"
-      ]
-    },
-    {
-      "questID": 8585,
-      "title": "The Isle of Dread!",
-      "guides": [
-        "Alliance / Azshara",
-        "Alliance / Silithus",
-        "Alliance / Tanaris",
-        "Horde / Azshara",
-        "Horde / Silithus",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8585",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=8125"
-      ]
-    },
-    {
-      "questID": 8586,
-      "title": "Dirge's Kickin' Chimaerok Chops",
-      "guides": [
-        "Alliance / Azshara",
-        "Alliance / Silithus",
-        "Alliance / Tanaris",
-        "Horde / Azshara",
-        "Horde / Silithus",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8586",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=8125"
-      ]
-    },
-    {
-      "questID": 8587,
-      "title": "Return to Narain",
-      "guides": [
-        "Alliance / Azshara",
-        "Alliance / Silithus",
-        "Alliance / Tanaris",
-        "Horde / Azshara",
-        "Horde / Silithus",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8587",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=21028",
-        "https://www.wowhead.com/forever/npc=8125",
-        "https://www.wowhead.com/forever/npc=11811"
-      ]
-    },
-    {
-      "questID": 8597,
-      "title": "Draconic for Dummies",
-      "guides": [
-        "Alliance / Azshara",
-        "Alliance / Silithus",
-        "Alliance / Tanaris",
-        "Horde / Azshara",
-        "Horde / Silithus",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8597",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=11811",
-        "https://www.wowhead.com/forever/object=180652"
-      ]
-    },
-    {
-      "questID": 8598,
-      "title": "rAnS0m",
-      "guides": [
-        "Alliance / Azshara",
-        "Alliance / Silithus",
-        "Alliance / Tanaris",
-        "Horde / Azshara",
-        "Horde / Silithus",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area",
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8598",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=21029",
-        "https://www.wowhead.com/forever/npc=11811",
-        "https://www.wowhead.com/forever/object=180652"
-      ]
-    },
-    {
-      "questID": 8599,
-      "title": "Love Song for Narain",
-      "guides": [
-        "Alliance / Tanaris",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8599",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=21032",
-        "https://www.wowhead.com/forever/npc=11811",
-        "https://www.wowhead.com/forever/npc=15526"
-      ]
-    },
-    {
-      "questID": 8606,
-      "title": "Decoy!",
-      "guides": [
-        "Alliance / Azshara",
-        "Alliance / Silithus",
-        "Alliance / Tanaris",
-        "Horde / Azshara",
-        "Horde / Silithus",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8606",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=11811"
-      ]
-    },
-    {
-      "questID": 8620,
-      "title": "The Only Prescription",
-      "guides": [
-        "Alliance / Azshara",
-        "Alliance / Silithus",
-        "Alliance / Tanaris",
-        "Horde / Azshara",
-        "Horde / Silithus",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8620",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=21111",
-        "https://www.wowhead.com/forever/npc=11811"
       ]
     },
     {
@@ -5056,167 +3937,6 @@
       ]
     },
     {
-      "questID": 8728,
-      "title": "The Good News and The Bad News",
-      "guides": [
-        "Alliance / Azshara",
-        "Alliance / Silithus",
-        "Alliance / Tanaris",
-        "Horde / Azshara",
-        "Horde / Silithus",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8728",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=12360",
-        "https://www.wowhead.com/forever/item=18562",
-        "https://www.wowhead.com/forever/npc=11811"
-      ]
-    },
-    {
-      "questID": 8729,
-      "title": "The Wrath of Neptulon",
-      "guides": [
-        "Alliance / Azshara",
-        "Alliance / Silithus",
-        "Alliance / Tanaris",
-        "Horde / Azshara",
-        "Horde / Silithus",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8729",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=21137",
-        "https://www.wowhead.com/forever/npc=11811",
-        "https://www.wowhead.com/forever/npc=15192"
-      ]
-    },
-    {
-      "questID": 8730,
-      "title": "Nefarius's Corruption",
-      "guides": [
-        "Alliance / Silithus",
-        "Alliance / Tanaris",
-        "Horde / Silithus",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area",
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8730",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=21138",
-        "https://www.wowhead.com/forever/item=21142",
-        "https://www.wowhead.com/forever/npc=13020",
-        "https://www.wowhead.com/forever/npc=15192"
-      ]
-    },
-    {
-      "questID": 8734,
-      "title": "Tyrande and Remulos",
-      "guides": [
-        "Alliance / Moonglade",
-        "Alliance / Silithus",
-        "Alliance / Tanaris",
-        "Horde / Moonglade",
-        "Horde / Silithus",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8734",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=11832",
-        "https://www.wowhead.com/forever/npc=15624"
-      ]
-    },
-    {
-      "questID": 8735,
-      "title": "The Nightmare's Corruption",
-      "guides": [
-        "Alliance / Moonglade",
-        "Alliance / Silithus",
-        "Alliance / Tanaris",
-        "Horde / Moonglade",
-        "Horde / Silithus",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8735",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=11832"
-      ]
-    },
-    {
-      "questID": 8736,
-      "title": "The Nightmare Manifests",
-      "guides": [
-        "Alliance / Moonglade",
-        "Alliance / Silithus",
-        "Alliance / Tanaris",
-        "Horde / Moonglade",
-        "Horde / Silithus",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8736",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=11832"
-      ]
-    },
-    {
-      "questID": 8741,
-      "title": "The Champion Returns",
-      "guides": [
-        "Alliance / Moonglade",
-        "Alliance / Silithus",
-        "Alliance / Tanaris",
-        "Horde / Moonglade",
-        "Horde / Silithus",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8741",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=11832",
-        "https://www.wowhead.com/forever/npc=15192"
-      ]
-    },
-    {
-      "questID": 8742,
-      "title": "The Might of Kalimdor",
-      "guides": [
-        "Alliance / Silithus",
-        "Alliance / Tanaris",
-        "Horde / Silithus",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8742",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=15192"
-      ]
-    },
-    {
       "questID": 8743,
       "title": "Bang a Gong!",
       "guides": [
@@ -5246,268 +3966,6 @@
       "quest_url": "https://www.wowhead.com/forever/quest=8745",
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=15693"
-      ]
-    },
-    {
-      "questID": 8747,
-      "title": "The Path of the Protector",
-      "guides": [
-        "Alliance / Tanaris",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8747",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=15192"
-      ]
-    },
-    {
-      "questID": 8748,
-      "title": "The Path of the Protector",
-      "guides": [
-        "Alliance / Tanaris",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8748",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=21196",
-        "https://www.wowhead.com/forever/npc=15192"
-      ]
-    },
-    {
-      "questID": 8749,
-      "title": "The Path of the Protector",
-      "guides": [
-        "Alliance / Tanaris",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8749",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=21197",
-        "https://www.wowhead.com/forever/npc=15192"
-      ]
-    },
-    {
-      "questID": 8750,
-      "title": "The Path of the Protector",
-      "guides": [
-        "Alliance / Tanaris",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8750",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=21198",
-        "https://www.wowhead.com/forever/npc=15192"
-      ]
-    },
-    {
-      "questID": 8751,
-      "title": "The Protector of Kalimdor",
-      "guides": [
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8751",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=21199",
-        "https://www.wowhead.com/forever/npc=15192"
-      ]
-    },
-    {
-      "questID": 8752,
-      "title": "The Path of the Conqueror",
-      "guides": [
-        "Alliance / Tanaris",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8752",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=15192"
-      ]
-    },
-    {
-      "questID": 8753,
-      "title": "The Path of the Conqueror",
-      "guides": [
-        "Alliance / Tanaris",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8753",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=21201",
-        "https://www.wowhead.com/forever/npc=15192"
-      ]
-    },
-    {
-      "questID": 8754,
-      "title": "The Path of the Conqueror",
-      "guides": [
-        "Alliance / Tanaris",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8754",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=21202",
-        "https://www.wowhead.com/forever/npc=15192"
-      ]
-    },
-    {
-      "questID": 8755,
-      "title": "The Path of the Conqueror",
-      "guides": [
-        "Alliance / Tanaris",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8755",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=21203",
-        "https://www.wowhead.com/forever/npc=15192"
-      ]
-    },
-    {
-      "questID": 8756,
-      "title": "The Qiraji Conqueror",
-      "guides": [
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8756",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=21204",
-        "https://www.wowhead.com/forever/npc=15192"
-      ]
-    },
-    {
-      "questID": 8757,
-      "title": "The Path of the Invoker",
-      "guides": [
-        "Alliance / Tanaris",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8757",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=15192"
-      ]
-    },
-    {
-      "questID": 8758,
-      "title": "The Path of the Invoker",
-      "guides": [
-        "Alliance / Tanaris",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8758",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=21206",
-        "https://www.wowhead.com/forever/npc=15192"
-      ]
-    },
-    {
-      "questID": 8759,
-      "title": "The Path of the Invoker",
-      "guides": [
-        "Alliance / Tanaris",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8759",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=21207",
-        "https://www.wowhead.com/forever/npc=15192"
-      ]
-    },
-    {
-      "questID": 8760,
-      "title": "The Path of the Invoker",
-      "guides": [
-        "Alliance / Tanaris",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8760",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=21208",
-        "https://www.wowhead.com/forever/npc=15192"
-      ]
-    },
-    {
-      "questID": 8761,
-      "title": "The Grand Invoker",
-      "guides": [
-        "Alliance / Tanaris",
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8761",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=21209",
-        "https://www.wowhead.com/forever/npc=15192"
-      ]
-    },
-    {
-      "questID": 8798,
-      "title": "A Yeti of Your Own",
-      "guides": [
-        "Alliance / Winterspring",
-        "Horde / Winterspring"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8798",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=10305"
       ]
     },
     {
@@ -5559,38 +4017,6 @@
         "https://www.wowhead.com/forever/item=21533",
         "https://www.wowhead.com/forever/npc=11034",
         "https://www.wowhead.com/forever/npc=15797"
-      ]
-    },
-    {
-      "questID": 8922,
-      "title": "A Supernatural Device",
-      "guides": [
-        "Alliance / Tanaris"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8922",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=21985",
-        "https://www.wowhead.com/forever/npc=16013",
-        "https://www.wowhead.com/forever/npc=16014"
-      ]
-    },
-    {
-      "questID": 8923,
-      "title": "A Supernatural Device",
-      "guides": [
-        "Horde / Tanaris"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=8923",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=22382",
-        "https://www.wowhead.com/forever/npc=16012",
-        "https://www.wowhead.com/forever/npc=16014"
       ]
     },
     {
@@ -5667,7 +4093,8 @@
         "Horde / Ungoro Crater"
       ],
       "needs": [
-        "objective area"
+        "objective area",
+        "objective quantities"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=9051",
       "entity_urls": [
@@ -6221,36 +4648,6 @@
       "entity_urls": []
     },
     {
-      "questID": 91317,
-      "title": "The Tarnished",
-      "guides": [
-        "Horde / Tirisfal Glades"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=91317",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=270435",
-        "https://www.wowhead.com/forever/npc=246378"
-      ]
-    },
-    {
-      "questID": 91738,
-      "title": "An Apple Treat",
-      "guides": [
-        "Alliance / Elwynn Forest"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=91738",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=247824",
-        "https://www.wowhead.com/forever/npc=955"
-      ]
-    },
-    {
       "questID": 91753,
       "title": "An Enchanting Lesson",
       "guides": [
@@ -6415,6 +4812,20 @@
       "quest_url": "https://www.wowhead.com/forever/quest=92818",
       "entity_urls": [
         "https://www.wowhead.com/forever/item=3855"
+      ]
+    },
+    {
+      "questID": 92819,
+      "title": "Destruction in Deadmines",
+      "guides": [
+        "Alliance / Westfall"
+      ],
+      "needs": [
+        "objective area"
+      ],
+      "quest_url": "https://www.wowhead.com/forever/quest=92819",
+      "entity_urls": [
+        "https://www.wowhead.com/forever/npc=253279"
       ]
     },
     {
@@ -6845,6 +5256,20 @@
       ]
     },
     {
+      "questID": 96896,
+      "title": "A Righteous Cause",
+      "guides": [
+        "Horde / Tirisfal Glades"
+      ],
+      "needs": [
+        "objective area"
+      ],
+      "quest_url": "https://www.wowhead.com/forever/quest=96896",
+      "entity_urls": [
+        "https://www.wowhead.com/forever/npc=267008"
+      ]
+    },
+    {
       "questID": 96897,
       "title": "The Cult of the Damned",
       "guides": [
@@ -6976,7 +5401,9 @@
         "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=97331",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/npc=268992"
+      ]
     },
     {
       "questID": 97539,
@@ -7226,6 +5653,21 @@
       "entity_urls": []
     },
     {
+      "questID": 99053,
+      "title": "Escaping Ban'ethil",
+      "guides": [
+        "Alliance / Teldrassil"
+      ],
+      "needs": [
+        "objective area"
+      ],
+      "quest_url": "https://www.wowhead.com/forever/quest=99053",
+      "entity_urls": [
+        "https://www.wowhead.com/forever/npc=2081",
+        "https://www.wowhead.com/forever/npc=275744"
+      ]
+    },
+    {
       "questID": 99082,
       "title": "The High Chieftain",
       "guides": [
@@ -7271,6 +5713,20 @@
       ]
     },
     {
+      "questID": 99134,
+      "title": "Discipline",
+      "guides": [
+        "Horde / Tirisfal Glades"
+      ],
+      "needs": [
+        "objective area"
+      ],
+      "quest_url": "https://www.wowhead.com/forever/quest=99134",
+      "entity_urls": [
+        "https://www.wowhead.com/forever/npc=1515"
+      ]
+    },
+    {
       "questID": 99141,
       "title": "Patience",
       "guides": [
@@ -7285,6 +5741,21 @@
         "https://www.wowhead.com/forever/item=286201",
         "https://www.wowhead.com/forever/item=286202",
         "https://www.wowhead.com/forever/npc=1515"
+      ]
+    },
+    {
+      "questID": 99144,
+      "title": "Seeking Refuge",
+      "guides": [
+        "Horde / Tirisfal Glades"
+      ],
+      "needs": [
+        "objective area"
+      ],
+      "quest_url": "https://www.wowhead.com/forever/quest=99144",
+      "entity_urls": [
+        "https://www.wowhead.com/forever/npc=246152",
+        "https://www.wowhead.com/forever/npc=275954"
       ]
     }
   ]

@@ -1,0 +1,5577 @@
+{
+  "scope": "All distinct compiled Durotar quest IDs; retained dataset facts, not a claim of independent live verification.",
+  "quests": [
+    {
+      "questID": 784,
+      "title": "Vanquish the Betrayers",
+      "zone": "Durotar",
+      "minLevel": 3,
+      "level": 7,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.434,
+          "mapID": 1411,
+          "name": "Gar'Thok",
+          "entityID": 3139,
+          "npc": true,
+          "x": 0.52
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 3128,
+          "mapID": 1411,
+          "action": "kill",
+          "entityID": 3128,
+          "npc": true,
+          "y": 0.588,
+          "objectiveKey": "npc:3128",
+          "name": "Kul Tiras Sailor",
+          "x": 0.594,
+          "quantity": 10
+        },
+        {
+          "sourceObjective": 3129,
+          "mapID": 1411,
+          "action": "kill",
+          "entityID": 3129,
+          "npc": true,
+          "y": 0.578,
+          "objectiveKey": "npc:3129",
+          "name": "Kul Tiras Marine",
+          "x": 0.5920000000000001,
+          "quantity": 8
+        },
+        {
+          "sourceObjective": 3192,
+          "mapID": 1411,
+          "action": "kill",
+          "entityID": 3192,
+          "npc": true,
+          "y": 0.5820000000000001,
+          "objectiveKey": "npc:3192",
+          "name": "Lieutenant Benedict",
+          "x": 0.5920000000000001,
+          "quantity": 1
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.434,
+          "mapID": 1411,
+          "name": "Gar'Thok",
+          "entityID": 3139,
+          "npc": true,
+          "x": 0.52
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "name": "Kul Tiras Sailor",
+          "entityID": 3128
+        },
+        {
+          "entityType": "npc",
+          "quantity": 8,
+          "name": "Kul Tiras Marine",
+          "entityID": 3129
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Lieutenant Benedict",
+          "entityID": 3192
+        }
+      ]
+    },
+    {
+      "questID": 785,
+      "title": "A Strategic Alliance",
+      "minLevel": 5,
+      "level": 8,
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "objectives": {},
+      "requirements": {}
+    },
+    {
+      "questID": 786,
+      "title": "Thwarting Kolkar Aggression",
+      "zone": "Durotar",
+      "minLevel": 5,
+      "level": 8,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.732,
+          "mapID": 1411,
+          "name": "Lar Prowltusk",
+          "entityID": 3140,
+          "npc": true,
+          "x": 0.542
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "objectiveKey": "object:3189",
+          "name": "Attack Plan: Valley of Trials",
+          "y": 0.813,
+          "entityID": 3189,
+          "x": 0.498,
+          "quantity": 1,
+          "mapID": 1411
+        },
+        {
+          "sourceObjective": 1,
+          "objectiveKey": "object:3190",
+          "name": "Attack Plan: Sen'jin Village",
+          "y": 0.774,
+          "entityID": 3190,
+          "x": 0.47700000000000004,
+          "quantity": 1,
+          "mapID": 1411
+        },
+        {
+          "sourceObjective": 2,
+          "objectiveKey": "object:3192",
+          "name": "Attack Plan: Orgrimmar",
+          "y": 0.79,
+          "entityID": 3192,
+          "x": 0.46299999999999997,
+          "quantity": 1,
+          "mapID": 1411
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.732,
+          "mapID": 1411,
+          "name": "Lar Prowltusk",
+          "entityID": 3140,
+          "npc": true,
+          "x": 0.542
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "name": "Attack Plan: Valley of Trials destroyed",
+          "entityID": 3189
+        },
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "name": "Attack Plan: Sen'jin Village destroyed",
+          "entityID": 3190
+        },
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "name": "Attack Plan: Orgrimmar destroyed",
+          "entityID": 3192
+        }
+      ]
+    },
+    {
+      "questID": 787,
+      "title": "The New Horde",
+      "minLevel": 1,
+      "level": 1,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1454,
+          "entityID": 3144,
+          "npc": true,
+          "y": 0.3935,
+          "x": 0.3428,
+          "name": "Eitrigg",
+          "sourceAreaID": 1637,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 3143,
+          "npc": true,
+          "sourceZone": "Durotar",
+          "x": 0.42,
+          "name": "Gornek",
+          "sourceAreaID": 14,
+          "y": 0.684
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 788,
+      "title": "Cutting Teeth",
+      "zone": "Durotar",
+      "minLevel": 1,
+      "level": 2,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.684,
+          "mapID": 1411,
+          "name": "Gornek",
+          "entityID": 3143,
+          "npc": true,
+          "x": 0.42
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 3098,
+          "mapID": 1411,
+          "entityID": 3098,
+          "npc": true,
+          "y": 0.662,
+          "objectiveKey": "npc:3098",
+          "name": "Mottled Boar",
+          "x": 0.43799999999999994,
+          "quantity": 10
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.684,
+          "mapID": 1411,
+          "name": "Gornek",
+          "entityID": 3143,
+          "npc": true,
+          "x": 0.42
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 10,
+          "name": "Mottled Boar",
+          "entityID": 3098
+        }
+      ]
+    },
+    {
+      "questID": 789,
+      "title": "Sting of the Scorpid",
+      "zone": "Durotar",
+      "minLevel": 1,
+      "level": 3,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.684,
+          "mapID": 1411,
+          "name": "Gornek",
+          "entityID": 3143,
+          "npc": true,
+          "x": 0.42
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1411,
+          "legacyStepKey": "q:1411:npc:3281",
+          "entityID": 3124,
+          "npc": true,
+          "x": 0.406,
+          "y": 0.6559999999999999,
+          "objectiveKey": "item:4862",
+          "itemID": 4862,
+          "quantity": 10,
+          "name": "Scorpid Worker",
+          "itemName": "Scorpid Worker Tail",
+          "alternativeCount": 2,
+          "action": "collect"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.684,
+          "mapID": 1411,
+          "name": "Gornek",
+          "entityID": 3143,
+          "npc": true,
+          "x": 0.42
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 10,
+          "name": "Scorpid Worker Tail",
+          "entityID": 4862
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 10,
+          "name": "Scorpid Worker Tail",
+          "itemID": 4862
+        }
+      ]
+    },
+    {
+      "questID": 790,
+      "title": "Sarkoth",
+      "zone": "Durotar",
+      "minLevel": 1,
+      "level": 5,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.626,
+          "mapID": 1411,
+          "name": "Hana'zua",
+          "entityID": 3287,
+          "npc": true,
+          "x": 0.406
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1411,
+          "action": "collect",
+          "entityID": 3281,
+          "npc": true,
+          "y": 0.662,
+          "objectiveKey": "item:4905",
+          "name": "Sarkoth",
+          "x": 0.406,
+          "quantity": 1,
+          "legacyStepKey": "q:1411:npc:3281",
+          "itemName": "Sarkoth's Mangled Claw",
+          "itemID": 4905
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.626,
+          "mapID": 1411,
+          "name": "Hana'zua",
+          "entityID": 3287,
+          "npc": true,
+          "x": 0.406
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Sarkoth's Mangled Claw",
+          "entityID": 4905
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Sarkoth's Mangled Claw",
+          "itemID": 4905
+        }
+      ]
+    },
+    {
+      "questID": 791,
+      "title": "Carry Your Weight",
+      "zone": "Durotar",
+      "minLevel": 4,
+      "level": 7,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.40399999999999997,
+          "mapID": 1411,
+          "name": "Furl Scornbrow",
+          "entityID": 3147,
+          "npc": true,
+          "x": 0.498
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1411,
+          "legacyStepKey": "q:1411:npc:3125",
+          "entityID": 3125,
+          "npc": true,
+          "x": 0.574,
+          "y": 0.426,
+          "objectiveKey": "item:4870",
+          "itemID": 4870,
+          "quantity": 8,
+          "name": "Clattering Scorpid",
+          "itemName": "Canvas Scraps",
+          "alternativeCount": 17,
+          "action": "collect"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.40399999999999997,
+          "mapID": 1411,
+          "name": "Furl Scornbrow",
+          "entityID": 3147,
+          "npc": true,
+          "x": 0.498
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "name": "Canvas Scraps",
+          "entityID": 4870
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 8,
+          "name": "Canvas Scraps",
+          "itemID": 4870
+        }
+      ]
+    },
+    {
+      "questID": 792,
+      "title": "Vile Familiars",
+      "zone": "Durotar",
+      "minLevel": 2,
+      "level": 4,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.69,
+          "mapID": 1411,
+          "name": "Zureetha Fargaze",
+          "entityID": 3145,
+          "npc": true,
+          "x": 0.428
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 3101,
+          "mapID": 1411,
+          "action": "kill",
+          "entityID": 3101,
+          "npc": true,
+          "y": 0.55,
+          "objectiveKey": "npc:3101",
+          "name": "Vile Familiar",
+          "x": 0.452,
+          "quantity": 12
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.69,
+          "mapID": 1411,
+          "name": "Zureetha Fargaze",
+          "entityID": 3145,
+          "npc": true,
+          "x": 0.428
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 12,
+          "name": "Vile Familiar",
+          "entityID": 3101
+        }
+      ]
+    },
+    {
+      "questID": 794,
+      "title": "Burning Blade Medallion",
+      "zone": "Durotar",
+      "minLevel": 1,
+      "level": 5,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.69,
+          "mapID": 1411,
+          "name": "Zureetha Fargaze",
+          "entityID": 3145,
+          "npc": true,
+          "x": 0.428
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1411,
+          "action": "collect",
+          "entityID": 3183,
+          "npc": true,
+          "y": 0.528,
+          "objectiveKey": "item:4859",
+          "name": "Yarrog Baneshadow",
+          "x": 0.426,
+          "quantity": 1,
+          "legacyStepKey": "q:1411:npc:3183",
+          "itemName": "Burning Blade Medallion",
+          "itemID": 4859
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.69,
+          "mapID": 1411,
+          "name": "Zureetha Fargaze",
+          "entityID": 3145,
+          "npc": true,
+          "x": 0.428
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Burning Blade Medallion",
+          "entityID": 4859
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Burning Blade Medallion",
+          "itemID": 4859
+        }
+      ]
+    },
+    {
+      "questID": 804,
+      "title": "Sarkoth",
+      "zone": "Durotar",
+      "minLevel": 1,
+      "level": 5,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.626,
+          "mapID": 1411,
+          "name": "Hana'zua",
+          "entityID": 3287,
+          "npc": true,
+          "x": 0.406
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.684,
+          "mapID": 1411,
+          "name": "Gornek",
+          "entityID": 3143,
+          "npc": true,
+          "x": 0.42
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 805,
+      "title": "Report to Sen'jin Village",
+      "zone": "Durotar",
+      "minLevel": 1,
+      "level": 5,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.69,
+          "mapID": 1411,
+          "name": "Zureetha Fargaze",
+          "entityID": 3145,
+          "npc": true,
+          "x": 0.428
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.746,
+          "mapID": 1411,
+          "name": "Master Gadrin",
+          "entityID": 3188,
+          "npc": true,
+          "x": 0.56
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 806,
+      "title": "Dark Storms",
+      "zone": "Durotar",
+      "minLevel": 4,
+      "level": 12,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.43200000000000005,
+          "mapID": 1411,
+          "name": "Orgnil Soulscar",
+          "entityID": 3142,
+          "npc": true,
+          "x": 0.522
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1411,
+          "legacyStepKey": "q:1411:npc:3203",
+          "entityID": 3203,
+          "npc": true,
+          "x": 0.42,
+          "y": 0.266,
+          "objectiveKey": "item:4869",
+          "itemID": 4869,
+          "quantity": 1,
+          "name": "Fizzle Darkstorm",
+          "itemName": "Fizzle's Claw",
+          "alternativeCount": 6,
+          "action": "collect"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.43200000000000005,
+          "mapID": 1411,
+          "name": "Orgnil Soulscar",
+          "entityID": 3142,
+          "npc": true,
+          "x": 0.522
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Fizzle's Claw",
+          "entityID": 4869
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Fizzle's Claw",
+          "itemID": 4869
+        }
+      ]
+    },
+    {
+      "questID": 808,
+      "title": "Minshina's Skull",
+      "zone": "Durotar",
+      "minLevel": 4,
+      "level": 9,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.746,
+          "mapID": 1411,
+          "name": "Master Gadrin",
+          "entityID": 3188,
+          "npc": true,
+          "x": 0.56
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1411,
+          "action": "gather",
+          "entityID": 3237,
+          "x": 0.6744,
+          "y": 0.8782,
+          "objectiveKey": "item:4864",
+          "itemID": 4864,
+          "quantity": 1,
+          "sourceAreaID": 14,
+          "itemName": "Minshina's Skull",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Imprisoned Darkspear"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.746,
+          "mapID": 1411,
+          "name": "Master Gadrin",
+          "entityID": 3188,
+          "npc": true,
+          "x": 0.56
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Minshina's Skull",
+          "entityID": 4864
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Minshina's Skull",
+          "itemID": 4864
+        }
+      ]
+    },
+    {
+      "questID": 809,
+      "title": "Ak'Zeloth",
+      "minLevel": 4,
+      "level": 13,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.504,
+          "mapID": 1454,
+          "name": "Neeru Fireblade",
+          "entityID": 3216,
+          "npc": true,
+          "x": 0.496
+        }
+      ],
+      "objectives": [
+        {
+          "y": 0.2007,
+          "mapID": 1413,
+          "action": "event",
+          "x": 0.6234000000000001,
+          "locationSource": "Published Forever converted-baseline event area",
+          "name": "Ak'Zeloth"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.2,
+          "mapID": 1413,
+          "name": "Ak'Zeloth",
+          "entityID": 3521,
+          "npc": true,
+          "x": 0.624
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 815,
+      "title": "Break a Few Eggs",
+      "zone": "Durotar",
+      "minLevel": 6,
+      "level": 8,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.424,
+          "mapID": 1411,
+          "name": "Cook Torka",
+          "entityID": 3191,
+          "npc": true,
+          "x": 0.512
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1411,
+          "action": "gather",
+          "entityID": 3240,
+          "x": 0.6781,
+          "y": 0.6984999999999999,
+          "objectiveKey": "item:4890",
+          "itemID": 4890,
+          "quantity": 3,
+          "sourceAreaID": 14,
+          "itemName": "Taillasher Egg",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Taillasher Eggs"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.424,
+          "mapID": 1411,
+          "name": "Cook Torka",
+          "entityID": 3191,
+          "npc": true,
+          "x": 0.512
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 3,
+          "name": "Taillasher Egg",
+          "entityID": 4890
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 3,
+          "name": "Taillasher Egg",
+          "itemID": 4890
+        }
+      ]
+    },
+    {
+      "questID": 816,
+      "title": "Lost But Not Forgotten",
+      "zone": "Durotar",
+      "minLevel": 8,
+      "level": 11,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.302,
+          "mapID": 1411,
+          "name": "Misha Tor'kren",
+          "entityID": 3193,
+          "npc": true,
+          "x": 0.43
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1411,
+          "legacyStepKey": "q:1411:npc:3110",
+          "entityID": 3110,
+          "npc": true,
+          "x": 0.35,
+          "y": 0.3,
+          "objectiveKey": "item:4891",
+          "itemID": 4891,
+          "quantity": 1,
+          "name": "Dreadmaw Crocolisk",
+          "itemName": "Kron's Amulet",
+          "alternativeCount": 2,
+          "action": "collect"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.302,
+          "mapID": 1411,
+          "name": "Misha Tor'kren",
+          "entityID": 3193,
+          "npc": true,
+          "x": 0.43
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Kron's Amulet",
+          "entityID": 4891
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Kron's Amulet",
+          "itemID": 4891
+        }
+      ]
+    },
+    {
+      "questID": 817,
+      "title": "Practical Prey",
+      "zone": "Durotar",
+      "minLevel": 5,
+      "level": 8,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.74,
+          "mapID": 1411,
+          "name": "Vel'rin Fang",
+          "entityID": 3194,
+          "npc": true,
+          "x": 0.5579999999999999
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1411,
+          "legacyStepKey": "q:1411:npc:3121",
+          "entityID": 3121,
+          "npc": true,
+          "x": 0.6,
+          "y": 0.7979999999999999,
+          "objectiveKey": "item:4892",
+          "itemID": 4892,
+          "quantity": 4,
+          "name": "Durotar Tiger",
+          "itemName": "Durotar Tiger Fur",
+          "alternativeCount": 2,
+          "action": "collect"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.74,
+          "mapID": 1411,
+          "name": "Vel'rin Fang",
+          "entityID": 3194,
+          "npc": true,
+          "x": 0.5579999999999999
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 4,
+          "name": "Durotar Tiger Fur",
+          "entityID": 4892
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 4,
+          "name": "Durotar Tiger Fur",
+          "itemID": 4892
+        }
+      ]
+    },
+    {
+      "questID": 818,
+      "title": "A Solvent Spirit",
+      "zone": "Durotar",
+      "minLevel": 5,
+      "level": 7,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.7440000000000001,
+          "mapID": 1411,
+          "name": "Master Vornal",
+          "entityID": 3304,
+          "npc": true,
+          "x": 0.5579999999999999
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1411,
+          "legacyStepKey": "q:1411:npc:3104",
+          "entityID": 3104,
+          "npc": true,
+          "x": 0.598,
+          "y": 0.7140000000000001,
+          "objectiveKey": "item:4887",
+          "itemID": 4887,
+          "quantity": 4,
+          "name": "Makrura Shellhide",
+          "itemName": "Intact Makrura Eye",
+          "alternativeCount": 4,
+          "action": "collect"
+        },
+        {
+          "sourceObjective": 1,
+          "mapID": 1411,
+          "legacyStepKey": "q:1411:npc:3106",
+          "entityID": 3106,
+          "npc": true,
+          "x": 0.578,
+          "y": 0.78,
+          "objectiveKey": "item:4888",
+          "itemID": 4888,
+          "quantity": 8,
+          "name": "Pygmy Surf Crawler",
+          "itemName": "Crawler Mucus",
+          "alternativeCount": 4,
+          "action": "collect"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.7440000000000001,
+          "mapID": 1411,
+          "name": "Master Vornal",
+          "entityID": 3304,
+          "npc": true,
+          "x": 0.5579999999999999
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 4,
+          "name": "Intact Makrura Eye",
+          "entityID": 4887
+        },
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "name": "Crawler Mucus",
+          "entityID": 4888
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 4,
+          "name": "Intact Makrura Eye",
+          "itemID": 4887
+        },
+        {
+          "quantity": 8,
+          "name": "Crawler Mucus",
+          "itemID": 4888
+        }
+      ]
+    },
+    {
+      "questID": 823,
+      "title": "Report to Orgnil",
+      "zone": "Durotar",
+      "minLevel": 4,
+      "level": 7,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.746,
+          "mapID": 1411,
+          "name": "Master Gadrin",
+          "entityID": 3188,
+          "npc": true,
+          "x": 0.56
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.43200000000000005,
+          "mapID": 1411,
+          "name": "Orgnil Soulscar",
+          "entityID": 3142,
+          "npc": true,
+          "x": 0.522
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 825,
+      "title": "From The Wreckage....",
+      "zone": "Durotar",
+      "minLevel": 3,
+      "level": 8,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.434,
+          "mapID": 1411,
+          "name": "Gar'Thok",
+          "entityID": 3139,
+          "npc": true,
+          "x": 0.52
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1411,
+          "action": "gather",
+          "entityID": 3236,
+          "x": 0.6217,
+          "y": 0.4254,
+          "objectiveKey": "item:4863",
+          "itemID": 4863,
+          "quantity": 3,
+          "sourceAreaID": 14,
+          "itemName": "Gnomish Tools",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Gnomish Toolbox"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.434,
+          "mapID": 1411,
+          "name": "Gar'Thok",
+          "entityID": 3139,
+          "npc": true,
+          "x": 0.52
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 3,
+          "name": "Gnomish Tools",
+          "entityID": 4863
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 3,
+          "name": "Gnomish Tools",
+          "itemID": 4863
+        }
+      ]
+    },
+    {
+      "questID": 826,
+      "title": "Zalazane",
+      "zone": "Durotar",
+      "minLevel": 4,
+      "level": 10,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.746,
+          "mapID": 1411,
+          "name": "Master Gadrin",
+          "entityID": 3188,
+          "npc": true,
+          "x": 0.56
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 3206,
+          "mapID": 1411,
+          "action": "kill",
+          "entityID": 3206,
+          "npc": true,
+          "y": 0.8340000000000001,
+          "objectiveKey": "npc:3206",
+          "name": "Voodoo Troll",
+          "x": 0.674,
+          "quantity": 8
+        },
+        {
+          "sourceObjective": 3207,
+          "mapID": 1411,
+          "action": "kill",
+          "entityID": 3207,
+          "npc": true,
+          "y": 0.8340000000000001,
+          "objectiveKey": "npc:3207",
+          "name": "Hexed Troll",
+          "x": 0.6759999999999999,
+          "quantity": 8
+        },
+        {
+          "sourceObjective": 2,
+          "mapID": 1411,
+          "action": "collect",
+          "entityID": 3205,
+          "npc": true,
+          "y": 0.866,
+          "objectiveKey": "item:4866",
+          "name": "Zalazane",
+          "x": 0.674,
+          "quantity": 1,
+          "legacyStepKey": "q:1411:npc:3205",
+          "itemName": "Zalazane's Head",
+          "itemID": 4866
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.746,
+          "mapID": 1411,
+          "name": "Master Gadrin",
+          "entityID": 3188,
+          "npc": true,
+          "x": 0.56
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 8,
+          "name": "Hexed Troll",
+          "entityID": 3207
+        },
+        {
+          "entityType": "npc",
+          "quantity": 8,
+          "name": "Voodoo Troll",
+          "entityID": 3206
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Zalazane's Head",
+          "entityID": 4866
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Zalazane's Head",
+          "itemID": 4866
+        }
+      ]
+    },
+    {
+      "questID": 827,
+      "title": "Skull Rock",
+      "zone": "Durotar",
+      "minLevel": 4,
+      "level": 12,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.2,
+          "mapID": 1411,
+          "name": "Margoz",
+          "entityID": 3208,
+          "npc": true,
+          "x": 0.564
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1411,
+          "legacyStepKey": "q:1411:npc:3123",
+          "entityID": 3123,
+          "npc": true,
+          "x": 0.5479999999999999,
+          "y": 0.17800000000000002,
+          "objectiveKey": "item:4871",
+          "itemID": 4871,
+          "quantity": 6,
+          "name": "Bloodtalon Scythemaw",
+          "itemName": "Searing Collar",
+          "alternativeCount": 9,
+          "action": "collect"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.2,
+          "mapID": 1411,
+          "name": "Margoz",
+          "entityID": 3208,
+          "npc": true,
+          "x": 0.564
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 6,
+          "name": "Searing Collar",
+          "entityID": 4871
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 6,
+          "name": "Searing Collar",
+          "itemID": 4871
+        }
+      ]
+    },
+    {
+      "questID": 828,
+      "title": "Margoz",
+      "zone": "Durotar",
+      "minLevel": 4,
+      "level": 12,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.43200000000000005,
+          "mapID": 1411,
+          "name": "Orgnil Soulscar",
+          "entityID": 3142,
+          "npc": true,
+          "x": 0.522
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.2,
+          "mapID": 1411,
+          "name": "Margoz",
+          "entityID": 3208,
+          "npc": true,
+          "x": 0.564
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 829,
+      "title": "Neeru Fireblade",
+      "zone": "Durotar",
+      "minLevel": 4,
+      "level": 12,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.2,
+          "mapID": 1411,
+          "name": "Margoz",
+          "entityID": 3208,
+          "npc": true,
+          "x": 0.564
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.504,
+          "mapID": 1454,
+          "name": "Neeru Fireblade",
+          "entityID": 3216,
+          "npc": true,
+          "x": 0.496
+        }
+      ],
+      "requirements": {},
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Example Collar",
+          "entityID": 6658
+        }
+      ]
+    },
+    {
+      "questID": 830,
+      "title": "The Admiral's Orders",
+      "zone": "Durotar",
+      "minLevel": 1,
+      "level": 7,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "object",
+          "mapID": 1411,
+          "action": "start-item",
+          "entityID": 3239,
+          "sourceAction": "gather",
+          "x": 0.5926,
+          "itemID": 4881,
+          "y": 0.5765,
+          "sourceAreaID": 14,
+          "itemName": "Aged Envelope",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Benedict's Chest"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.434,
+          "mapID": 1411,
+          "name": "Gar'Thok",
+          "entityID": 3139,
+          "npc": true,
+          "x": 0.52
+        }
+      ],
+      "requirements": {},
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Admiral Proudmoore's Orders",
+          "entityID": 4883
+        }
+      ]
+    },
+    {
+      "questID": 831,
+      "title": "The Admiral's Orders",
+      "zone": "Durotar",
+      "minLevel": 1,
+      "level": 7,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.434,
+          "mapID": 1411,
+          "name": "Gar'Thok",
+          "entityID": 3139,
+          "npc": true,
+          "x": 0.52
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.36,
+          "mapID": 1454,
+          "name": "Nazgrel",
+          "entityID": 3230,
+          "npc": true,
+          "x": 0.324
+        }
+      ],
+      "requirements": {},
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Admiral Proudmoore's Orders",
+          "entityID": 4883
+        }
+      ]
+    },
+    {
+      "questID": 832,
+      "title": "Burning Shadows",
+      "zone": "Durotar",
+      "minLevel": 4,
+      "level": 12,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "action": "start-item",
+          "entityID": 3204,
+          "npc": true,
+          "sourceAction": "loot",
+          "x": 0.5261,
+          "itemID": 4903,
+          "y": 0.0882,
+          "sourceAreaID": 14,
+          "itemName": "Eye of Burning Shadow",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Gazz'uz"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.504,
+          "mapID": 1454,
+          "name": "Neeru Fireblade",
+          "entityID": 3216,
+          "npc": true,
+          "x": 0.496
+        }
+      ],
+      "requirements": {},
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Eye of Burning Shadow",
+          "entityID": 4903
+        }
+      ]
+    },
+    {
+      "questID": 834,
+      "title": "Winds in the Desert",
+      "zone": "Durotar",
+      "minLevel": 7,
+      "level": 9,
+      "side": "Both",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.23,
+          "mapID": 1411,
+          "name": "Rezlak",
+          "entityID": 3293,
+          "npc": true,
+          "x": 0.46399999999999997
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1411,
+          "action": "gather",
+          "entityID": 3290,
+          "y": 0.243,
+          "sourceZone": "Durotar",
+          "objectiveKey": "item:4918",
+          "itemID": 4918,
+          "x": 0.49700000000000005,
+          "sourceAreaID": 14,
+          "quantity": 5,
+          "itemName": "Sack of Supplies",
+          "name": "Stolen Supply Sack"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.23,
+          "mapID": 1411,
+          "name": "Rezlak",
+          "entityID": 3293,
+          "npc": true,
+          "x": 0.46399999999999997
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 5,
+          "name": "Sack of Supplies",
+          "entityID": 4918
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 5,
+          "name": "Sack of Supplies",
+          "itemID": 4918
+        }
+      ]
+    },
+    {
+      "questID": 835,
+      "title": "Securing the Lines",
+      "zone": "Durotar",
+      "minLevel": 7,
+      "level": 11,
+      "side": "Both",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.23,
+          "mapID": 1411,
+          "name": "Rezlak",
+          "entityID": 3293,
+          "npc": true,
+          "x": 0.46399999999999997
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 3117,
+          "mapID": 1411,
+          "action": "kill",
+          "entityID": 3117,
+          "npc": true,
+          "y": 0.278,
+          "objectiveKey": "npc:3117",
+          "name": "Dustwind Savage",
+          "x": 0.5379999999999999,
+          "quantity": 12
+        },
+        {
+          "sourceObjective": 3118,
+          "mapID": 1411,
+          "action": "kill",
+          "entityID": 3118,
+          "npc": true,
+          "y": 0.22399999999999998,
+          "objectiveKey": "npc:3118",
+          "name": "Dustwind Storm Witch",
+          "x": 0.54,
+          "quantity": 8
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.23,
+          "mapID": 1411,
+          "name": "Rezlak",
+          "entityID": 3293,
+          "npc": true,
+          "x": 0.46399999999999997
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 12,
+          "name": "Dustwind Savage",
+          "entityID": 3117
+        },
+        {
+          "entityType": "npc",
+          "quantity": 8,
+          "name": "Dustwind Storm Witch",
+          "entityID": 3118
+        }
+      ]
+    },
+    {
+      "questID": 837,
+      "title": "Encroachment",
+      "zone": "Durotar",
+      "minLevel": 6,
+      "level": 10,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.434,
+          "mapID": 1411,
+          "name": "Gar'Thok",
+          "entityID": 3139,
+          "npc": true,
+          "x": 0.52
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 3111,
+          "mapID": 1411,
+          "action": "kill",
+          "entityID": 3111,
+          "npc": true,
+          "y": 0.49200000000000005,
+          "objectiveKey": "npc:3111",
+          "name": "Razormane Quilboar",
+          "x": 0.496,
+          "quantity": 4
+        },
+        {
+          "sourceObjective": 3112,
+          "mapID": 1411,
+          "action": "kill",
+          "entityID": 3112,
+          "npc": true,
+          "y": 0.48700000000000004,
+          "objectiveKey": "npc:3112",
+          "name": "Razormane Scout",
+          "x": 0.47600000000000003,
+          "quantity": 4
+        },
+        {
+          "sourceObjective": 3113,
+          "mapID": 1411,
+          "action": "kill",
+          "entityID": 3113,
+          "npc": true,
+          "y": 0.39799999999999996,
+          "objectiveKey": "npc:3113",
+          "name": "Razormane Dustrunner",
+          "x": 0.43,
+          "quantity": 4
+        },
+        {
+          "sourceObjective": 3114,
+          "mapID": 1411,
+          "action": "kill",
+          "entityID": 3114,
+          "npc": true,
+          "y": 0.40399999999999997,
+          "objectiveKey": "npc:3114",
+          "name": "Razormane Battleguard",
+          "x": 0.43200000000000005,
+          "quantity": 4
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.434,
+          "mapID": 1411,
+          "name": "Gar'Thok",
+          "entityID": 3139,
+          "npc": true,
+          "x": 0.52
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 4,
+          "name": "Razormane Quilboar",
+          "entityID": 3111
+        },
+        {
+          "entityType": "npc",
+          "quantity": 4,
+          "name": "Razormane Scout",
+          "entityID": 3112
+        },
+        {
+          "entityType": "npc",
+          "quantity": 4,
+          "name": "Razormane Dustrunner",
+          "entityID": 3113
+        },
+        {
+          "entityType": "npc",
+          "quantity": 4,
+          "name": "Razormane Battleguard",
+          "entityID": 3114
+        }
+      ]
+    },
+    {
+      "questID": 840,
+      "title": "Conscript of the Horde",
+      "zone": "Durotar",
+      "minLevel": 10,
+      "level": 12,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.436,
+          "mapID": 1411,
+          "name": "Takrin Pathseeker",
+          "entityID": 3336,
+          "npc": true,
+          "x": 0.508
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.19399999999999998,
+          "mapID": 1413,
+          "name": "Kargal Battlescar",
+          "entityID": 3337,
+          "npc": true,
+          "x": 0.622
+        }
+      ],
+      "requirements": {},
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Recruitment Letter",
+          "entityID": 4992
+        }
+      ]
+    },
+    {
+      "questID": 842,
+      "title": "Crossroads Conscription",
+      "minLevel": 10,
+      "level": 12,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.19399999999999998,
+          "mapID": 1413,
+          "name": "Kargal Battlescar",
+          "entityID": 3337,
+          "npc": true,
+          "x": 0.622
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.31,
+          "mapID": 1413,
+          "name": "Sergra Darkthorn",
+          "entityID": 3338,
+          "npc": true,
+          "x": 0.522
+        }
+      ],
+      "requirements": {},
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Signed Recruitment Letter",
+          "entityID": 4995
+        }
+      ]
+    },
+    {
+      "questID": 924,
+      "title": "The Demon Seed",
+      "zone": "Durotar",
+      "minLevel": 9,
+      "level": 14,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.2,
+          "mapID": 1413,
+          "name": "Ak'Zeloth",
+          "entityID": 3521,
+          "npc": true,
+          "x": 0.624
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "objectiveKey": "object:3525",
+          "name": "The Altar of Fire",
+          "y": 0.191,
+          "entityID": 3525,
+          "x": 0.479,
+          "quantity": 1,
+          "mapID": 1413
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.2,
+          "mapID": 1413,
+          "name": "Ak'Zeloth",
+          "entityID": 3521,
+          "npc": true,
+          "x": 0.624
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "name": "Destroy the Demon Seed",
+          "entityID": 3525
+        }
+      ]
+    },
+    {
+      "questID": 1470,
+      "title": "Piercing the Veil",
+      "zone": "Warlock",
+      "minLevel": 1,
+      "level": 3,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 256,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 5667,
+          "npc": true,
+          "y": 0.6640999999999999,
+          "x": 0.3098,
+          "name": "Venya Marthand",
+          "sourceAreaID": 85,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "action": "loot",
+          "entityID": 1890,
+          "npc": true,
+          "x": 0.32909999999999995,
+          "y": 0.6162,
+          "objectiveKey": "item:6281",
+          "itemID": 6281,
+          "quantity": 3,
+          "sourceAreaID": 85,
+          "itemName": "Rattlecage Skull",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Rattlecage Skeleton"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 5667,
+          "npc": true,
+          "y": 0.6640999999999999,
+          "x": 0.3098,
+          "name": "Venya Marthand",
+          "sourceAreaID": 85,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 3,
+          "action": "collect",
+          "entityID": 6281,
+          "name": "Rattlecage Skull"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 3,
+          "name": "Rattlecage Skull",
+          "itemID": 6281
+        }
+      ]
+    },
+    {
+      "questID": 1485,
+      "title": "Vile Familiars",
+      "minLevel": 1,
+      "level": 4,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 256,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 5765,
+          "npc": true,
+          "y": 0.69,
+          "x": 0.42590000000000006,
+          "name": "Ruzan",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "action": "loot",
+          "entityID": 3101,
+          "npc": true,
+          "x": 0.4424,
+          "y": 0.5526,
+          "objectiveKey": "item:6487",
+          "itemID": 6487,
+          "quantity": 6,
+          "sourceAreaID": 14,
+          "itemName": "Vile Familiar Head",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Vile Familiar"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 5765,
+          "npc": true,
+          "y": 0.69,
+          "x": 0.42590000000000006,
+          "name": "Ruzan",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 6,
+          "action": "collect",
+          "entityID": 6487,
+          "name": "Vile Familiar Head"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 6,
+          "name": "Vile Familiar Head",
+          "itemID": 6487
+        }
+      ]
+    },
+    {
+      "questID": 1499,
+      "title": "Vile Familiars",
+      "minLevel": 1,
+      "level": 4,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 256,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 5765,
+          "npc": true,
+          "y": 0.69,
+          "x": 0.42590000000000006,
+          "name": "Ruzan",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 3145,
+          "npc": true,
+          "sourceZone": "Durotar",
+          "x": 0.428,
+          "name": "Zureetha Fargaze",
+          "sourceAreaID": 14,
+          "y": 0.69
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 1505,
+      "title": "Veteran Uzzek",
+      "minLevel": 10,
+      "level": 10,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 1,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "name": "Tarshaw Jaggedscar",
+          "y": 0.425,
+          "entityID": 3169,
+          "x": 0.541,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "entityID": 5810,
+          "npc": true,
+          "y": 0.2112,
+          "x": 0.6138,
+          "name": "Uzzek",
+          "sourceAreaID": 17,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 1506,
+      "title": "Gan'rul's Summons",
+      "minLevel": 10,
+      "level": 10,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 256,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 3294,
+          "npc": true,
+          "y": 0.4129,
+          "x": 0.5437,
+          "name": "Ophek",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1454,
+          "entityID": 5875,
+          "npc": true,
+          "y": 0.45280000000000004,
+          "x": 0.4825,
+          "name": "Gan'rul Bloodeye",
+          "sourceAreaID": 1637,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 1516,
+      "title": "Call of Earth",
+      "minLevel": 4,
+      "level": 4,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 64,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 5887,
+          "npc": true,
+          "y": 0.6917,
+          "x": 0.424,
+          "name": "Canaga Earthcaller",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "action": "loot",
+          "entityID": 3102,
+          "npc": true,
+          "x": 0.4429,
+          "y": 0.5418999999999999,
+          "objectiveKey": "item:6640",
+          "itemID": 6640,
+          "quantity": 2,
+          "sourceAreaID": 14,
+          "itemName": "Felstalker Hoof",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Felstalker"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 5887,
+          "npc": true,
+          "y": 0.6917,
+          "x": 0.424,
+          "name": "Canaga Earthcaller",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 2,
+          "action": "collect",
+          "entityID": 6640,
+          "name": "Felstalker Hoof"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 2,
+          "name": "Felstalker Hoof",
+          "itemID": 6640
+        }
+      ]
+    },
+    {
+      "questID": 1517,
+      "title": "Call of Earth",
+      "minLevel": 4,
+      "level": 4,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 64,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 5887,
+          "npc": true,
+          "y": 0.6917,
+          "x": 0.424,
+          "name": "Canaga Earthcaller",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 5891,
+          "npc": true,
+          "y": 0.762,
+          "x": 0.4403,
+          "name": "Minor Manifestation of Earth",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 1518,
+      "title": "Call of Earth",
+      "minLevel": 4,
+      "level": 4,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 64,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 5891,
+          "npc": true,
+          "y": 0.762,
+          "x": 0.4403,
+          "name": "Minor Manifestation of Earth",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "action": "talk",
+          "entityID": 5887,
+          "npc": true,
+          "y": 0.6917,
+          "x": 0.424,
+          "name": "Canaga Earthcaller",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": {},
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Rough Quartz",
+          "itemID": 6656
+        }
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Rough Quartz",
+          "entityID": 6656
+        }
+      ]
+    },
+    {
+      "questID": 1519,
+      "title": "Call of Earth",
+      "minLevel": 4,
+      "level": 4,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 64,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 5888,
+          "npc": true,
+          "y": 0.7676999999999999,
+          "x": 0.4435,
+          "name": "Seer Ravenfeather",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "loot",
+          "entityID": 2953,
+          "npc": true,
+          "x": 0.5717,
+          "y": 0.7664,
+          "objectiveKey": "item:6634",
+          "itemID": 6634,
+          "quantity": 2,
+          "sourceAreaID": 215,
+          "itemName": "Ritual Salve",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Bristleback Shaman"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 5888,
+          "npc": true,
+          "y": 0.7676999999999999,
+          "x": 0.4435,
+          "name": "Seer Ravenfeather",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 2,
+          "action": "collect",
+          "entityID": 6634,
+          "name": "Ritual Salve"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 2,
+          "name": "Ritual Salve",
+          "itemID": 6634
+        }
+      ]
+    },
+    {
+      "questID": 1520,
+      "title": "Call of Earth",
+      "minLevel": 4,
+      "level": 4,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 64,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 5888,
+          "npc": true,
+          "y": 0.7676999999999999,
+          "x": 0.4435,
+          "name": "Seer Ravenfeather",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 5891,
+          "npc": true,
+          "y": 0.804,
+          "x": 0.5199,
+          "name": "Minor Manifestation of Earth",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 1521,
+      "title": "Call of Earth",
+      "minLevel": 4,
+      "level": 4,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 64,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 5891,
+          "npc": true,
+          "y": 0.762,
+          "x": 0.4403,
+          "name": "Minor Manifestation of Earth",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "action": "talk",
+          "entityID": 5888,
+          "npc": true,
+          "y": 0.7676999999999999,
+          "x": 0.4435,
+          "name": "Seer Ravenfeather",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": {},
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Rough Quartz",
+          "itemID": 6656
+        }
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Rough Quartz",
+          "entityID": 6656
+        }
+      ]
+    },
+    {
+      "questID": 1524,
+      "title": "Call of Fire",
+      "minLevel": 10,
+      "level": 11,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 64,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "entityID": 5907,
+          "npc": true,
+          "y": 0.1989,
+          "x": 0.5603,
+          "name": "Kranal Fiss",
+          "sourceAreaID": 17,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "action": "talk",
+          "entityID": 5900,
+          "npc": true,
+          "y": 0.5896,
+          "x": 0.38549999999999995,
+          "name": "Telf Joolam",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": {},
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Torch of the Dormant Flame",
+          "itemID": 6653
+        }
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Torch of the Dormant Flame",
+          "entityID": 6653
+        }
+      ]
+    },
+    {
+      "questID": 1525,
+      "title": "Call of Fire",
+      "minLevel": 10,
+      "level": 12,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 64,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 5900,
+          "npc": true,
+          "y": 0.5896,
+          "x": 0.38549999999999995,
+          "name": "Telf Joolam",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "action": "loot",
+          "entityID": 3267,
+          "npc": true,
+          "y": 0.23800000000000002,
+          "sourceZone": "The Barrens",
+          "objectiveKey": "item:5026",
+          "itemID": 5026,
+          "x": 0.258,
+          "sourceAreaID": 17,
+          "quantity": 1,
+          "itemName": "Fire Tar",
+          "name": "Razormane Water Seeker"
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "action": "loot",
+          "entityID": 3199,
+          "npc": true,
+          "x": 0.518,
+          "y": 0.258,
+          "objectiveKey": "item:6652",
+          "itemID": 6652,
+          "quantity": 1,
+          "sourceAreaID": 14,
+          "itemName": "Reagent Pouch",
+          "locationSource": "Wowhead Forever NPC 3199; captured 2026-10-08",
+          "name": "Burning Blade Cultist"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 5900,
+          "npc": true,
+          "y": 0.5896,
+          "x": 0.38549999999999995,
+          "name": "Telf Joolam",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 5026,
+          "name": "Fire Tar"
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 6652,
+          "name": "Reagent Pouch"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Fire Tar",
+          "itemID": 5026
+        },
+        {
+          "quantity": 1,
+          "name": "Reagent Pouch",
+          "itemID": 6652
+        }
+      ]
+    },
+    {
+      "questID": 1526,
+      "title": "Call of Fire",
+      "minLevel": 10,
+      "level": 13,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 64,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 5900,
+          "npc": true,
+          "y": 0.5896,
+          "x": 0.38549999999999995,
+          "name": "Telf Joolam",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "action": "loot",
+          "entityID": 5893,
+          "npc": true,
+          "x": 0.3872,
+          "y": 0.5829,
+          "objectiveKey": "item:6655",
+          "itemID": 6655,
+          "quantity": 1,
+          "sourceAreaID": 14,
+          "itemName": "Glowing Ember",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Minor Manifestation of Fire"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "object",
+          "mapID": 1411,
+          "name": "Brazier of the Dormant Flame",
+          "y": 0.5821999999999999,
+          "entityID": 61934,
+          "x": 0.3896,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "sourceAreaID": 14
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 6655,
+          "name": "Glowing Ember"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Glowing Ember",
+          "itemID": 6655
+        }
+      ]
+    },
+    {
+      "questID": 1527,
+      "title": "Call of Fire",
+      "minLevel": 10,
+      "level": 13,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 64,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "object",
+          "mapID": 1411,
+          "name": "Brazier of the Dormant Flame",
+          "y": 0.5821999999999999,
+          "entityID": 61934,
+          "x": 0.3896,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "sourceAreaID": 14
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "action": "talk",
+          "entityID": 5907,
+          "npc": true,
+          "y": 0.1989,
+          "x": 0.5603,
+          "name": "Kranal Fiss",
+          "sourceAreaID": 17,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": {},
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Torch of the Eternal Flame",
+          "itemID": 6654
+        }
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Torch of the Eternal Flame",
+          "entityID": 6654
+        }
+      ]
+    },
+    {
+      "questID": 1859,
+      "title": "Therzok",
+      "minLevel": 10,
+      "level": 10,
+      "side": "Horde",
+      "raceMask": 2,
+      "classMask": 8,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 3170,
+          "npc": true,
+          "y": 0.43689999999999996,
+          "x": 0.5197999999999999,
+          "name": "Kaplak",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1454,
+          "entityID": 6446,
+          "npc": true,
+          "y": 0.5355,
+          "x": 0.42729999999999996,
+          "name": "Therzok",
+          "sourceAreaID": 1637,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 1884,
+      "title": "Ju-Ju Heaps",
+      "minLevel": 10,
+      "level": 10,
+      "side": "Horde",
+      "raceMask": 146,
+      "classMask": 128,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "name": "Un'Thuwa",
+          "y": 0.75,
+          "entityID": 5880,
+          "x": 0.562,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1411,
+          "action": "interact",
+          "entityID": 102986,
+          "y": 0.8418000000000001,
+          "objectiveKey": "object:102986",
+          "name": "Ju-Ju Heap",
+          "sourceAreaID": 14,
+          "x": 0.6853,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "quantity": 4
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "name": "Un'Thuwa",
+          "y": 0.75,
+          "entityID": 5880,
+          "x": 0.562,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantity": 4,
+          "action": "interact",
+          "entityID": 102986,
+          "name": "Ju-Ju Heap"
+        }
+      ]
+    },
+    {
+      "questID": 1959,
+      "title": "Report to Anastasia",
+      "minLevel": 15,
+      "level": 15,
+      "side": "Horde",
+      "raceMask": 144,
+      "classMask": 128,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "name": "Un'Thuwa",
+          "y": 0.75,
+          "entityID": 5880,
+          "x": 0.562,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1458,
+          "name": "Anastasia Hartwell",
+          "y": 0.1391,
+          "entityID": 4568,
+          "x": 0.8491,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 2161,
+      "title": "A Peon's Burden",
+      "zone": "Durotar",
+      "minLevel": 1,
+      "level": 5,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.682,
+          "mapID": 1411,
+          "name": "Ukor",
+          "entityID": 6786,
+          "npc": true,
+          "x": 0.52
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.41600000000000004,
+          "mapID": 1411,
+          "name": "Innkeeper Grosk",
+          "entityID": 6928,
+          "npc": true,
+          "x": 0.516
+        }
+      ],
+      "requirements": {},
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Ukor's Burden",
+          "entityID": 7629
+        }
+      ]
+    },
+    {
+      "questID": 2380,
+      "title": "To Orgrimmar!",
+      "minLevel": 16,
+      "level": 16,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 8,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 3170,
+          "npc": true,
+          "y": 0.43689999999999996,
+          "x": 0.5197999999999999,
+          "name": "Kaplak",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1454,
+          "entityID": 3401,
+          "npc": true,
+          "y": 0.5374,
+          "x": 0.4305,
+          "name": "Shenthul",
+          "sourceAreaID": 1637,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 2383,
+      "title": "Simple Parchment",
+      "minLevel": 1,
+      "level": 1,
+      "side": "Horde",
+      "raceMask": 2,
+      "classMask": 1,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.684,
+          "mapID": 1411,
+          "name": "Gornek",
+          "entityID": 3143,
+          "npc": true,
+          "x": 0.42
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.6940000000000001,
+          "mapID": 1411,
+          "name": "Frang",
+          "entityID": 3153,
+          "npc": true,
+          "x": 0.428
+        }
+      ],
+      "requirements": {},
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Simple Parchment",
+          "entityID": 12635
+        }
+      ]
+    },
+    {
+      "questID": 2983,
+      "title": "Call of Fire",
+      "minLevel": 10,
+      "level": 10,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 64,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "name": "Swart",
+          "y": 0.425,
+          "entityID": 3173,
+          "x": 0.544,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "entityID": 5907,
+          "npc": true,
+          "y": 0.1989,
+          "x": 0.5603,
+          "name": "Kranal Fiss",
+          "sourceAreaID": 17,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 2985,
+      "title": "Call of Water",
+      "minLevel": 20,
+      "level": 20,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 64,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "name": "Swart",
+          "y": 0.425,
+          "entityID": 3173,
+          "x": 0.544,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "entityID": 5901,
+          "npc": true,
+          "sourceZone": "The Barrens",
+          "x": 0.6579999999999999,
+          "name": "Islen Waterseer",
+          "sourceAreaID": 17,
+          "y": 0.43799999999999994
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 3065,
+      "title": "Simple Tablet",
+      "minLevel": 1,
+      "level": 1,
+      "side": "Horde",
+      "raceMask": 128,
+      "classMask": 1,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.684,
+          "mapID": 1411,
+          "name": "Gornek",
+          "entityID": 3143,
+          "npc": true,
+          "x": 0.42
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.6940000000000001,
+          "mapID": 1411,
+          "name": "Frang",
+          "entityID": 3153,
+          "npc": true,
+          "x": 0.428
+        }
+      ],
+      "requirements": {},
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Simple Tablet",
+          "entityID": 6488
+        }
+      ]
+    },
+    {
+      "questID": 3082,
+      "title": "Etched Tablet",
+      "minLevel": 1,
+      "level": 1,
+      "side": "Horde",
+      "raceMask": 128,
+      "classMask": 4,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.684,
+          "mapID": 1411,
+          "name": "Gornek",
+          "entityID": 3143,
+          "npc": true,
+          "x": 0.42
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.6920000000000001,
+          "mapID": 1411,
+          "name": "Jen'shan",
+          "entityID": 3154,
+          "npc": true,
+          "x": 0.428
+        }
+      ],
+      "requirements": {},
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Etched Tablet",
+          "entityID": 9564
+        }
+      ]
+    },
+    {
+      "questID": 3083,
+      "title": "Encrypted Tablet",
+      "minLevel": 1,
+      "level": 1,
+      "side": "Horde",
+      "raceMask": 128,
+      "classMask": 8,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.684,
+          "mapID": 1411,
+          "name": "Gornek",
+          "entityID": 3143,
+          "npc": true,
+          "x": 0.42
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.68,
+          "mapID": 1411,
+          "name": "Rwag",
+          "entityID": 3155,
+          "npc": true,
+          "x": 0.41200000000000003
+        }
+      ],
+      "requirements": {},
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Encrypted Tablet",
+          "entityID": 9554
+        }
+      ]
+    },
+    {
+      "questID": 3084,
+      "title": "Rune-Inscribed Tablet",
+      "minLevel": 1,
+      "level": 1,
+      "side": "Horde",
+      "raceMask": 128,
+      "classMask": 64,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.684,
+          "mapID": 1411,
+          "name": "Gornek",
+          "entityID": 3143,
+          "npc": true,
+          "x": 0.42
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.69,
+          "mapID": 1411,
+          "name": "Shikrik",
+          "entityID": 3157,
+          "npc": true,
+          "x": 0.424
+        }
+      ],
+      "requirements": {},
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Rune-Inscribed Tablet",
+          "entityID": 9562
+        }
+      ]
+    },
+    {
+      "questID": 3085,
+      "title": "Hallowed Tablet",
+      "minLevel": 1,
+      "level": 1,
+      "side": "Horde",
+      "raceMask": 128,
+      "classMask": 16,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.684,
+          "mapID": 1411,
+          "name": "Gornek",
+          "entityID": 3143,
+          "npc": true,
+          "x": 0.42
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.688,
+          "mapID": 1411,
+          "name": "Ken'jai",
+          "entityID": 3707,
+          "npc": true,
+          "x": 0.424
+        }
+      ],
+      "requirements": {},
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Hallowed Tablet",
+          "entityID": 9561
+        }
+      ]
+    },
+    {
+      "questID": 3086,
+      "title": "Glyphic Tablet",
+      "minLevel": 1,
+      "level": 1,
+      "side": "Horde",
+      "raceMask": 128,
+      "classMask": 128,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.684,
+          "mapID": 1411,
+          "name": "Gornek",
+          "entityID": 3143,
+          "npc": true,
+          "x": 0.42
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.69,
+          "mapID": 1411,
+          "name": "Mai'ah",
+          "entityID": 5884,
+          "npc": true,
+          "x": 0.424
+        }
+      ],
+      "requirements": {},
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Glyphic Tablet",
+          "entityID": 9575
+        }
+      ]
+    },
+    {
+      "questID": 3087,
+      "title": "Etched Parchment",
+      "minLevel": 1,
+      "level": 1,
+      "side": "Horde",
+      "raceMask": 2,
+      "classMask": 4,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.684,
+          "mapID": 1411,
+          "name": "Gornek",
+          "entityID": 3143,
+          "npc": true,
+          "x": 0.42
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.6920000000000001,
+          "mapID": 1411,
+          "name": "Jen'shan",
+          "entityID": 3154,
+          "npc": true,
+          "x": 0.428
+        }
+      ],
+      "requirements": {},
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Etched Parchment",
+          "entityID": 9553
+        }
+      ]
+    },
+    {
+      "questID": 3088,
+      "title": "Encrypted Parchment",
+      "minLevel": 1,
+      "level": 1,
+      "side": "Horde",
+      "raceMask": 2,
+      "classMask": 8,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.684,
+          "mapID": 1411,
+          "name": "Gornek",
+          "entityID": 3143,
+          "npc": true,
+          "x": 0.42
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.68,
+          "mapID": 1411,
+          "name": "Rwag",
+          "entityID": 3155,
+          "npc": true,
+          "x": 0.41200000000000003
+        }
+      ],
+      "requirements": {},
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Encrypted Parchment",
+          "entityID": 9560
+        }
+      ]
+    },
+    {
+      "questID": 3089,
+      "title": "Rune-Inscribed Parchment",
+      "minLevel": 1,
+      "level": 1,
+      "side": "Horde",
+      "raceMask": 2,
+      "classMask": 64,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.684,
+          "mapID": 1411,
+          "name": "Gornek",
+          "entityID": 3143,
+          "npc": true,
+          "x": 0.42
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.69,
+          "mapID": 1411,
+          "name": "Shikrik",
+          "entityID": 3157,
+          "npc": true,
+          "x": 0.424
+        }
+      ],
+      "requirements": {},
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Rune-Inscribed Parchment",
+          "entityID": 9568
+        }
+      ]
+    },
+    {
+      "questID": 3090,
+      "title": "Tainted Parchment",
+      "minLevel": 1,
+      "level": 1,
+      "side": "Horde",
+      "raceMask": 2,
+      "classMask": 256,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.684,
+          "mapID": 1411,
+          "name": "Gornek",
+          "entityID": 3143,
+          "npc": true,
+          "x": 0.42
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.684,
+          "mapID": 1411,
+          "name": "Nartok",
+          "entityID": 3156,
+          "npc": true,
+          "x": 0.406
+        }
+      ],
+      "requirements": {},
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Tainted Parchment",
+          "entityID": 9579
+        }
+      ]
+    },
+    {
+      "questID": 4402,
+      "title": "Galgar's Cactus Apple Surprise",
+      "zone": "Durotar",
+      "minLevel": 1,
+      "level": 3,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.672,
+          "mapID": 1411,
+          "name": "Galgar",
+          "entityID": 9796,
+          "npc": true,
+          "x": 0.426
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1411,
+          "action": "gather",
+          "entityID": 171938,
+          "x": 0.3994,
+          "y": 0.6809999999999999,
+          "objectiveKey": "item:11583",
+          "itemID": 11583,
+          "quantity": 10,
+          "sourceAreaID": 14,
+          "itemName": "Cactus Apple",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Cactus Apple"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.672,
+          "mapID": 1411,
+          "name": "Galgar",
+          "entityID": 9796,
+          "npc": true,
+          "x": 0.426
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 10,
+          "name": "Cactus Apple",
+          "entityID": 11583
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 10,
+          "name": "Cactus Apple",
+          "itemID": 11583
+        }
+      ]
+    },
+    {
+      "questID": 4641,
+      "title": "Your Place in the World",
+      "zone": "Durotar",
+      "minLevel": 1,
+      "level": 1,
+      "side": "Horde",
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.6859999999999999,
+          "mapID": 1411,
+          "name": "Kaltunk",
+          "entityID": 10176,
+          "npc": true,
+          "x": 0.43200000000000005
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.684,
+          "mapID": 1411,
+          "name": "Gornek",
+          "entityID": 3143,
+          "npc": true,
+          "x": 0.42
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 5441,
+      "title": "Lazy Peons",
+      "zone": "Durotar",
+      "minLevel": 3,
+      "level": 4,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.6859999999999999,
+          "mapID": 1411,
+          "name": "Foreman Thazz'ril",
+          "entityID": 11378,
+          "npc": true,
+          "x": 0.446
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 10556,
+          "mapID": 1411,
+          "action": "use",
+          "entityID": 10556,
+          "npc": true,
+          "y": 0.69,
+          "objectiveKey": "npc:10556",
+          "name": "Lazy Peon",
+          "x": 0.44799999999999995,
+          "useItemName": "Foreman's Blackjack",
+          "quantity": 5
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.6859999999999999,
+          "mapID": 1411,
+          "name": "Foreman Thazz'ril",
+          "entityID": 11378,
+          "npc": true,
+          "x": 0.446
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 5,
+          "action": "use",
+          "entityID": 10556,
+          "useItemName": "Foreman's Blackjack",
+          "name": "Peons Awoken"
+        }
+      ],
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Foreman's Blackjack",
+          "entityID": 16114
+        }
+      ]
+    },
+    {
+      "questID": 5648,
+      "title": "Garments of Spirituality",
+      "minLevel": 5,
+      "level": 4,
+      "side": "Horde",
+      "raceMask": 128,
+      "classMask": 16,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "name": "Tai'jin",
+          "y": 0.428,
+          "entityID": 3706,
+          "x": 0.542,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "action": "interact",
+          "entityID": 12430,
+          "npc": true,
+          "y": 0.4646,
+          "objectiveKey": "npc:12430",
+          "name": "Grunt Kor'ja",
+          "sourceAreaID": 14,
+          "x": 0.531,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "quantity": 1
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "name": "Tai'jin",
+          "y": 0.428,
+          "entityID": 3706,
+          "x": 0.542,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "action": "interact",
+          "entityID": 12430,
+          "name": "Grunt Kor'ja"
+        }
+      ]
+    },
+    {
+      "questID": 5649,
+      "title": "In Favor of Spirituality",
+      "minLevel": 5,
+      "level": 4,
+      "side": "Horde",
+      "raceMask": 128,
+      "classMask": 16,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 3707,
+          "npc": true,
+          "y": 0.6881,
+          "x": 0.4236,
+          "name": "Ken'jai",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 3706,
+          "npc": true,
+          "y": 0.4293,
+          "x": 0.5426,
+          "name": "Tai'jin",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 5654,
+      "title": "Hex of Weakness",
+      "minLevel": 10,
+      "level": 10,
+      "side": "Horde",
+      "raceMask": 128,
+      "classMask": 16,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "name": "Tai'jin",
+          "y": 0.428,
+          "entityID": 3706,
+          "x": 0.542,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1454,
+          "name": "Ur'kyo",
+          "y": 0.8749,
+          "entityID": 6018,
+          "x": 0.3554,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 5660,
+      "title": "Touch of Weakness",
+      "minLevel": 10,
+      "level": 10,
+      "side": "Horde",
+      "raceMask": 16,
+      "classMask": 16,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "name": "Tai'jin",
+          "y": 0.428,
+          "entityID": 3706,
+          "x": 0.542,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1458,
+          "name": "Aelthalyste",
+          "y": 0.1765,
+          "entityID": 4606,
+          "x": 0.4862,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 6062,
+      "title": "Taming the Beast",
+      "minLevel": 10,
+      "level": 10,
+      "side": "Horde",
+      "raceMask": 130,
+      "classMask": 4,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "name": "Thotar",
+          "y": 0.435,
+          "entityID": 3171,
+          "x": 0.518,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "action": "interact",
+          "entityID": 3099,
+          "npc": true,
+          "y": 0.46159999999999995,
+          "objectiveKey": "npc:3099",
+          "name": "Dire Mottled Boar",
+          "sourceAreaID": 14,
+          "x": 0.5343,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "quantityUnknown": true
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "name": "Thotar",
+          "y": 0.435,
+          "entityID": 3171,
+          "x": 0.518,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantityUnknown": true,
+          "action": "interact",
+          "entityID": 3099,
+          "name": "Dire Mottled Boar"
+        }
+      ]
+    },
+    {
+      "questID": 6067,
+      "title": "The Hunter's Path",
+      "minLevel": 10,
+      "level": 10,
+      "side": "Horde",
+      "raceMask": 32,
+      "classMask": 4,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "name": "Thotar",
+          "y": 0.435,
+          "entityID": 3171,
+          "x": 0.518,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1412,
+          "entityID": 3065,
+          "npc": true,
+          "y": 0.5965,
+          "x": 0.4693,
+          "name": "Yaw Sharpmane",
+          "sourceAreaID": 215,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 6069,
+      "title": "The Hunter's Path",
+      "minLevel": 10,
+      "level": 10,
+      "side": "Horde",
+      "raceMask": 130,
+      "classMask": 4,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 11814,
+          "npc": true,
+          "y": 0.7424,
+          "x": 0.5613,
+          "name": "Kali Remik",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "name": "Thotar",
+          "y": 0.435,
+          "entityID": 3171,
+          "x": 0.518,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 6081,
+      "title": "Training the Beast",
+      "minLevel": 10,
+      "level": 10,
+      "side": "Horde",
+      "raceMask": 130,
+      "classMask": 4,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "name": "Thotar",
+          "y": 0.435,
+          "entityID": 3171,
+          "x": 0.518,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1454,
+          "entityID": 3352,
+          "npc": true,
+          "y": 0.18530000000000002,
+          "x": 0.6605,
+          "name": "Ormak Grimshot",
+          "sourceAreaID": 1637,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 6082,
+      "title": "Taming the Beast",
+      "minLevel": 10,
+      "level": 10,
+      "side": "Horde",
+      "raceMask": 130,
+      "classMask": 4,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "name": "Thotar",
+          "y": 0.435,
+          "entityID": 3171,
+          "x": 0.518,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "action": "interact",
+          "entityID": 3126,
+          "npc": true,
+          "y": 0.3553,
+          "objectiveKey": "npc:3126",
+          "name": "Armored Scorpid",
+          "sourceAreaID": 14,
+          "x": 0.46840000000000004,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "quantityUnknown": true
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "name": "Thotar",
+          "y": 0.435,
+          "entityID": 3171,
+          "x": 0.518,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantityUnknown": true,
+          "action": "interact",
+          "entityID": 3126,
+          "name": "Armored Scorpid"
+        }
+      ]
+    },
+    {
+      "questID": 6083,
+      "title": "Taming the Beast",
+      "minLevel": 10,
+      "level": 10,
+      "side": "Horde",
+      "raceMask": 130,
+      "classMask": 4,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "name": "Thotar",
+          "y": 0.435,
+          "entityID": 3171,
+          "x": 0.518,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "action": "interact",
+          "entityID": 3107,
+          "npc": true,
+          "sourceZone": "Durotar",
+          "objectiveKey": "npc:3107",
+          "name": "Surf Crawler",
+          "sourceAreaID": 14,
+          "y": 0.434,
+          "x": 0.518,
+          "quantityUnknown": true
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "name": "Thotar",
+          "y": 0.435,
+          "entityID": 3171,
+          "x": 0.518,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantityUnknown": true,
+          "action": "interact",
+          "entityID": 3107,
+          "name": "Surf Crawler"
+        }
+      ]
+    },
+    {
+      "questID": 6394,
+      "title": "Thazz'ril's Pick",
+      "zone": "Durotar",
+      "minLevel": 3,
+      "level": 4,
+      "side": "Horde",
+      "raceMask": 0,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.6859999999999999,
+          "mapID": 1411,
+          "name": "Foreman Thazz'ril",
+          "entityID": 11378,
+          "npc": true,
+          "x": 0.446
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1411,
+          "action": "gather",
+          "entityID": 178087,
+          "x": 0.43729999999999997,
+          "y": 0.5379,
+          "objectiveKey": "item:16332",
+          "itemID": 16332,
+          "quantity": 1,
+          "sourceAreaID": 14,
+          "itemName": "Thazz'ril's Pick",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Thazz'ril's Pick"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.6859999999999999,
+          "mapID": 1411,
+          "name": "Foreman Thazz'ril",
+          "entityID": 11378,
+          "npc": true,
+          "x": 0.446
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Thazz'ril's Pick",
+          "entityID": 16332
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Thazz'ril's Pick",
+          "itemID": 16332
+        }
+      ]
+    },
+    {
+      "questID": 94375,
+      "title": "Call of Earth",
+      "zone": "Shaman",
+      "minLevel": 4,
+      "level": 4,
+      "side": "Alliance",
+      "raceMask": 4294967373,
+      "classMask": 64,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 5891,
+          "npc": true,
+          "y": 0.762,
+          "x": 0.4403,
+          "name": "Minor Manifestation of Earth",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1426,
+          "name": "Teo Hammerstorm",
+          "y": 0.662,
+          "entityID": 257446,
+          "x": 0.288,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "requirements": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "name": "Rough Quartz",
+          "entityID": 6656
+        }
+      ]
+    },
+    {
+      "questID": 94468,
+      "title": "Call of Fire",
+      "zone": "Shaman",
+      "minLevel": 10,
+      "level": 14,
+      "side": "Alliance",
+      "raceMask": 4294967373,
+      "classMask": 64,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "object",
+          "mapID": 1411,
+          "name": "Brazier of the Dormant Flame",
+          "y": 0.5821999999999999,
+          "entityID": 61934,
+          "x": 0.3896,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "sourceAreaID": 14
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1426,
+          "entityID": 257597,
+          "npc": true,
+          "y": 0.4372,
+          "x": 0.8758,
+          "name": "Bruegs Kindleborn",
+          "sourceAreaID": 1,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "requirements": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "name": "Torch of the Eternal Flame",
+          "entityID": 6654
+        }
+      ]
+    },
+    {
+      "questID": 96821,
+      "title": "Legging It",
+      "zone": "Durotar",
+      "minLevel": 1,
+      "level": 6,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.74,
+          "mapID": 1411,
+          "name": "Vel'rin Fang",
+          "entityID": 3194,
+          "npc": true,
+          "x": 0.5579999999999999
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "action": "kill",
+          "entityID": 266850,
+          "npc": true,
+          "y": 0.6203,
+          "objectiveKey": "npc:266850",
+          "name": "Ridgeshade Creeper",
+          "sourceAreaID": 14,
+          "x": 0.5204,
+          "locationSource": "Published Forever beta-observation entity position",
+          "quantity": 6
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "action": "kill",
+          "entityID": 266849,
+          "npc": true,
+          "sourceZone": "Durotar",
+          "objectiveKey": "npc:266849",
+          "name": "Ridgeshade Lurker",
+          "sourceAreaID": 14,
+          "y": 0.63,
+          "x": 0.516,
+          "quantity": 6
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.434,
+          "mapID": 1411,
+          "name": "Gar'Thok",
+          "entityID": 3139,
+          "npc": true,
+          "x": 0.52
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 6,
+          "action": "kill",
+          "entityID": 266850,
+          "name": "Ridgeshade Creeper"
+        },
+        {
+          "entityType": "npc",
+          "quantity": 6,
+          "action": "kill",
+          "entityID": 266849,
+          "name": "Ridgeshade Lurker"
+        }
+      ]
+    },
+    {
+      "questID": 96822,
+      "title": "For Honor",
+      "zone": "Durotar",
+      "minLevel": 3,
+      "level": 6,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.426,
+          "mapID": 1411,
+          "name": "Turroc",
+          "entityID": 266940,
+          "npc": true,
+          "x": 0.54
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1411,
+          "action": "gather",
+          "entityID": 656180,
+          "x": 0.573,
+          "y": 0.579,
+          "objectiveKey": "item:275713",
+          "itemID": 275713,
+          "quantity": 1,
+          "sourceAreaID": 14,
+          "itemName": "Raider's Bow",
+          "locationSource": "Published Forever beta-delta entity position",
+          "name": "Raider's Bow"
+        },
+        {
+          "entityType": "object",
+          "mapID": 1411,
+          "action": "gather",
+          "entityID": 656181,
+          "x": 0.574,
+          "y": 0.564,
+          "objectiveKey": "item:275716",
+          "itemID": 275716,
+          "quantity": 1,
+          "sourceAreaID": 14,
+          "itemName": "Raider's Battleaxe",
+          "locationSource": "Published Forever beta-delta entity position",
+          "name": "Raider's Battleaxe"
+        },
+        {
+          "entityType": "object",
+          "mapID": 1411,
+          "action": "gather",
+          "entityID": 656182,
+          "x": 0.5660000000000001,
+          "y": 0.53,
+          "objectiveKey": "item:275717",
+          "itemID": 275717,
+          "quantity": 1,
+          "sourceAreaID": 14,
+          "itemName": "Raider's Shield",
+          "locationSource": "Published Forever beta-delta entity position",
+          "name": "Raider's Shield"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.426,
+          "mapID": 1411,
+          "name": "Turroc",
+          "entityID": 266940,
+          "npc": true,
+          "x": 0.54
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 275713,
+          "name": "Raider's Bow"
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 275716,
+          "name": "Raider's Battleaxe"
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 275717,
+          "name": "Raider's Shield"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Raider's Bow",
+          "itemID": 275713
+        },
+        {
+          "quantity": 1,
+          "name": "Raider's Battleaxe",
+          "itemID": 275716
+        },
+        {
+          "quantity": 1,
+          "name": "Raider's Shield",
+          "itemID": 275717
+        }
+      ]
+    },
+    {
+      "questID": 96825,
+      "title": "This Fruit Could Bite Back",
+      "zone": "Durotar",
+      "minLevel": 3,
+      "level": 6,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.424,
+          "mapID": 1411,
+          "name": "Cook Torka",
+          "entityID": 3191,
+          "npc": true,
+          "x": 0.512
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1411,
+          "action": "gather",
+          "entityID": 656177,
+          "x": 0.478,
+          "y": 0.488,
+          "objectiveKey": "item:275718",
+          "itemID": 275718,
+          "quantity": 8,
+          "sourceAreaID": 14,
+          "itemName": "Prickly Pear Fruit",
+          "locationSource": "Published Forever beta-delta entity position",
+          "name": "Prickly Pear Fruit"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.424,
+          "mapID": 1411,
+          "name": "Cook Torka",
+          "entityID": 3191,
+          "npc": true,
+          "x": 0.512
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "action": "collect",
+          "entityID": 275718,
+          "name": "Prickly Pear Fruit"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 8,
+          "name": "Prickly Pear Fruit",
+          "itemID": 275718
+        }
+      ]
+    },
+    {
+      "questID": 96873,
+      "title": "A Pain in the Neck",
+      "zone": "Durotar",
+      "minLevel": 5,
+      "level": 8,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.736,
+          "mapID": 1411,
+          "name": "Pa'zula",
+          "entityID": 266881,
+          "npc": true,
+          "x": 0.5660000000000001
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.736,
+          "mapID": 1411,
+          "name": "Pa'zula",
+          "entityID": 266881,
+          "npc": true,
+          "x": 0.5660000000000001
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 3,
+          "action": "collect",
+          "entityID": 247884,
+          "name": "Luminous Residue"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 3,
+          "name": "Luminous Residue",
+          "itemID": 247884
+        }
+      ],
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 3,
+          "action": "collect",
+          "entityID": 247884,
+          "name": "Luminous Residue"
+        }
+      ],
+      "objectiveLocationsIncomplete": true
+    },
+    {
+      "questID": 96874,
+      "title": "This Is Spinal Axe",
+      "zone": "Durotar",
+      "minLevel": 6,
+      "level": 10,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.23399999999999999,
+          "mapID": 1454,
+          "name": "Ug'thok",
+          "entityID": 10266,
+          "npc": true,
+          "x": 0.8059999999999999
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "legacyStepKey": "q:1411:npc:3130",
+          "entityID": 3130,
+          "y": 0.266,
+          "npc": true,
+          "x": 0.39,
+          "sourceZone": "Durotar",
+          "objectiveKey": "item:275719",
+          "itemID": 275719,
+          "quantity": 5,
+          "sourceAreaID": 14,
+          "itemName": "Weathered Spine",
+          "action": "loot",
+          "name": "Thunder Lizard"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.23399999999999999,
+          "mapID": 1454,
+          "name": "Ug'thok",
+          "entityID": 10266,
+          "npc": true,
+          "x": 0.8059999999999999
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 5,
+          "action": "collect",
+          "entityID": 275719,
+          "name": "Weathered Spine"
+        },
+        {
+          "entityType": "item",
+          "quantity": 5,
+          "action": "collect",
+          "entityID": 3470,
+          "name": "Rough Grinding Stone"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 5,
+          "name": "Weathered Spine",
+          "itemID": 275719
+        },
+        {
+          "quantity": 5,
+          "name": "Rough Grinding Stone",
+          "itemID": 3470
+        }
+      ],
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 5,
+          "action": "collect",
+          "entityID": 3470,
+          "name": "Rough Grinding Stone"
+        }
+      ],
+      "objectiveLocationsIncomplete": true
+    },
+    {
+      "questID": 96875,
+      "title": "Beasts of Thunder Ridge",
+      "zone": "Durotar",
+      "minLevel": 6,
+      "level": 10,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.45,
+          "mapID": 1454,
+          "name": "Kamari",
+          "entityID": 5811,
+          "npc": true,
+          "x": 0.63
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "action": "loot",
+          "entityID": 3130,
+          "npc": true,
+          "y": 0.266,
+          "sourceZone": "Durotar",
+          "objectiveKey": "item:275720",
+          "itemID": 275720,
+          "x": 0.39,
+          "sourceAreaID": 14,
+          "quantity": 5,
+          "itemName": "Rough Lizard Hide",
+          "name": "Thunder Lizard"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.45,
+          "mapID": 1454,
+          "name": "Kamari",
+          "entityID": 5811,
+          "npc": true,
+          "x": 0.63
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 5,
+          "action": "collect",
+          "entityID": 275720,
+          "name": "Rough Lizard Hide"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 5,
+          "name": "Rough Lizard Hide",
+          "itemID": 275720
+        },
+        {
+          "quantity": 2,
+          "name": "Cured Light Hide",
+          "itemID": 4231
+        }
+      ]
+    },
+    {
+      "questID": 96876,
+      "title": "Ukor's Lost Pack",
+      "zone": "Durotar",
+      "minLevel": 5,
+      "level": 8,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "action": "start-item",
+          "entityID": 266851,
+          "npc": true,
+          "sourceAction": "loot",
+          "x": 0.4962,
+          "itemID": 275722,
+          "y": 0.5678,
+          "sourceAreaID": 14,
+          "itemName": "Ukor's Lost Pack",
+          "locationSource": "Published Forever beta-observation entity position",
+          "name": "Ukorsbane"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.682,
+          "mapID": 1411,
+          "name": "Ukor",
+          "entityID": 6786,
+          "npc": true,
+          "x": 0.52
+        }
+      ],
+      "requirements": {},
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Ukor's Lost Pack",
+          "entityID": 275722
+        }
+      ]
+    },
+    {
+      "questID": 96877,
+      "title": "Halikor's Hoof",
+      "minLevel": 6,
+      "level": 12,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "action": "start-item",
+          "entityID": 266852,
+          "npc": true,
+          "sourceAction": "loot",
+          "x": 0.41950000000000004,
+          "itemID": 275723,
+          "y": 0.24239999999999998,
+          "sourceAreaID": 14,
+          "itemName": "Halikor's Hoof",
+          "locationSource": "Published Forever beta-observation entity position",
+          "name": "Halikor"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.45,
+          "mapID": 1454,
+          "name": "Kamari",
+          "entityID": 5811,
+          "npc": true,
+          "x": 0.63
+        }
+      ],
+      "requirements": {},
+      "requiredItems": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Halikor's Hoof",
+          "entityID": 275723
+        }
+      ]
+    },
+    {
+      "questID": 97223,
+      "title": "Bloodtalon Matriarch",
+      "zone": "Durotar",
+      "minLevel": 5,
+      "level": 8,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.754,
+          "mapID": 1411,
+          "name": "Xar'Ti",
+          "entityID": 7953,
+          "npc": true,
+          "x": 0.552
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "action": "loot",
+          "entityID": 268530,
+          "npc": true,
+          "x": 0.6839,
+          "y": 0.7178,
+          "objectiveKey": "item:277128",
+          "itemID": 277128,
+          "quantity": 1,
+          "sourceAreaID": 14,
+          "itemName": "Bloodtalon Martriarch Eggs",
+          "locationSource": "Published Forever beta-observation entity position",
+          "name": "Bloodtalon Matriarch"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.754,
+          "mapID": 1411,
+          "name": "Xar'Ti",
+          "entityID": 7953,
+          "npc": true,
+          "x": 0.552
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 277128,
+          "name": "Bloodtalon Martriarch Eggs"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Bloodtalon Matriarch Eggs",
+          "itemID": 277128
+        }
+      ]
+    },
+    {
+      "questID": 97225,
+      "title": "Forgotten Loa Idols",
+      "zone": "Durotar",
+      "minLevel": 4,
+      "level": 9,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.7440000000000001,
+          "mapID": 1411,
+          "name": "Master Vornal",
+          "entityID": 3304,
+          "npc": true,
+          "x": 0.5579999999999999
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1411,
+          "action": "gather",
+          "entityID": 660647,
+          "x": 0.655,
+          "y": 0.847,
+          "objectiveKey": "item:277135",
+          "itemID": 277135,
+          "quantity": 8,
+          "sourceAreaID": 14,
+          "itemName": "Forgotten Loa Idol",
+          "locationSource": "Published Forever beta-delta entity position",
+          "name": "Forgotten Loa Idol"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.746,
+          "mapID": 1411,
+          "name": "Master Gadrin",
+          "entityID": 3188,
+          "npc": true,
+          "x": 0.56
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 8,
+          "action": "collect",
+          "entityID": 277135,
+          "name": "Forgotten Loa Idol"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 8,
+          "name": "Forgotten Loa Idol",
+          "itemID": 277135
+        }
+      ]
+    },
+    {
+      "questID": 97279,
+      "title": "Wayward Weapons",
+      "zone": "Durotar",
+      "minLevel": 1,
+      "level": 2,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.684,
+          "mapID": 1411,
+          "name": "Gornek",
+          "entityID": 3143,
+          "npc": true,
+          "x": 0.42
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1411,
+          "action": "gather",
+          "entityID": 673476,
+          "x": 0.43200000000000005,
+          "y": 0.7170000000000001,
+          "objectiveKey": "item:277653",
+          "itemID": 277653,
+          "quantity": 6,
+          "sourceAreaID": 14,
+          "itemName": "Abandoned Training Weapon",
+          "locationSource": "Published Forever beta-delta entity position",
+          "name": "Abandoned Training Weapon"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.68,
+          "mapID": 1411,
+          "name": "Kzan Thornslash",
+          "entityID": 3159,
+          "npc": true,
+          "x": 0.40399999999999997
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 6,
+          "action": "collect",
+          "entityID": 277653,
+          "name": "Abandoned Training Weapon"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 6,
+          "name": "Abandoned Training Weapon",
+          "itemID": 277653
+        }
+      ]
+    },
+    {
+      "questID": 97281,
+      "title": "A Simmering Storm",
+      "zone": "Durotar",
+      "minLevel": 7,
+      "level": 11,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "action": "start-item",
+          "entityID": 3118,
+          "npc": true,
+          "sourceAction": "loot",
+          "x": 0.5136,
+          "itemID": 277661,
+          "y": 0.23070000000000002,
+          "sourceAreaID": 14,
+          "itemName": "Dull Storm Orb",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Dustwind Storm Witch"
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.23,
+          "mapID": 1411,
+          "name": "Rezlak",
+          "entityID": 3293,
+          "npc": true,
+          "x": 0.46399999999999997
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 97282,
+      "title": "Stormy Potential",
+      "zone": "Durotar",
+      "minLevel": 7,
+      "level": 11,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.23,
+          "mapID": 1411,
+          "name": "Rezlak",
+          "entityID": 3293,
+          "npc": true,
+          "x": 0.46399999999999997
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "action": "loot",
+          "entityID": 3130,
+          "npc": true,
+          "y": 0.266,
+          "sourceZone": "Durotar",
+          "objectiveKey": "item:277665",
+          "itemID": 277665,
+          "x": 0.39,
+          "sourceAreaID": 14,
+          "quantity": 5,
+          "itemName": "Charged Thunder Lizard Organ",
+          "name": "Thunder Lizard"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.23,
+          "mapID": 1411,
+          "name": "Rezlak",
+          "entityID": 3293,
+          "npc": true,
+          "x": 0.46399999999999997
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 5,
+          "action": "collect",
+          "entityID": 277665,
+          "name": "Charged Thunder Lizard Organ"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 5,
+          "name": "Charged Thunder Lizard Organ",
+          "itemID": 277665
+        }
+      ]
+    },
+    {
+      "questID": 98575,
+      "title": "Tainted Tablet",
+      "minLevel": 1,
+      "level": 1,
+      "side": "Horde",
+      "raceMask": 128,
+      "classMask": 256,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 3143,
+          "npc": true,
+          "sourceZone": "Durotar",
+          "x": 0.42,
+          "name": "Gornek",
+          "sourceAreaID": 14,
+          "y": 0.684
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 3156,
+          "npc": true,
+          "y": 0.6851999999999999,
+          "x": 0.4065,
+          "name": "Nartok",
+          "sourceAreaID": 14,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 98576,
+      "title": "Glyphic Parchment",
+      "minLevel": 1,
+      "level": 1,
+      "side": "Horde",
+      "raceMask": 2,
+      "classMask": 128,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 3143,
+          "npc": true,
+          "sourceZone": "Durotar",
+          "x": 0.42,
+          "name": "Gornek",
+          "sourceAreaID": 14,
+          "y": 0.684
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "entityID": 5884,
+          "npc": true,
+          "sourceZone": "Durotar",
+          "x": 0.424,
+          "name": "Mai'ah",
+          "sourceAreaID": 14,
+          "y": 0.69
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 99048,
+      "title": "A Missing Hand",
+      "zone": "Durotar",
+      "minLevel": 9,
+      "level": 11,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.43200000000000005,
+          "mapID": 1411,
+          "name": "Orgnil Soulscar",
+          "entityID": 3142,
+          "npc": true,
+          "x": 0.522
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.456,
+          "mapID": 1411,
+          "name": "Heglan Shadeeye",
+          "entityID": 275657,
+          "npc": true,
+          "x": 0.586
+        }
+      ],
+      "requirements": {}
+    },
+    {
+      "questID": 99049,
+      "title": "Threat from Below",
+      "zone": "Durotar",
+      "minLevel": 9,
+      "level": 11,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.456,
+          "mapID": 1411,
+          "name": "Heglan Shadeeye",
+          "entityID": 275657,
+          "npc": true,
+          "x": 0.586
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1411,
+          "action": "gather",
+          "entityID": 693674,
+          "x": 0.589,
+          "y": 0.445,
+          "objectiveKey": "item:286012",
+          "itemID": 286012,
+          "quantity": 1,
+          "sourceAreaID": 14,
+          "itemName": "Orcish Dagger",
+          "locationSource": "Published Forever beta-delta entity position",
+          "name": "Abandoned Dagger"
+        },
+        {
+          "entityType": "object",
+          "mapID": 1411,
+          "action": "gather",
+          "entityID": 693670,
+          "x": 0.601,
+          "y": 0.424,
+          "objectiveKey": "item:286011",
+          "itemID": 286011,
+          "quantity": 1,
+          "sourceAreaID": 14,
+          "itemName": "Banner Scrap",
+          "locationSource": "Published Forever beta-delta entity position",
+          "name": "Strange Debris"
+        },
+        {
+          "entityType": "object",
+          "mapID": 1411,
+          "action": "gather",
+          "entityID": 693669,
+          "x": 0.601,
+          "y": 0.44799999999999995,
+          "objectiveKey": "item:286010",
+          "itemID": 286010,
+          "quantity": 1,
+          "sourceAreaID": 14,
+          "itemName": "Broken Bone Trident",
+          "locationSource": "Published Forever beta-delta entity position",
+          "name": "Weapon Piece"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.43200000000000005,
+          "mapID": 1411,
+          "name": "Orgnil Soulscar",
+          "entityID": 3142,
+          "npc": true,
+          "x": 0.522
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 286012,
+          "name": "Orcish Dagger"
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 286011,
+          "name": "Banner Scrap"
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 286010,
+          "name": "Broken Bone Trident"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Orcish Dagger",
+          "itemID": 286012
+        },
+        {
+          "quantity": 1,
+          "name": "Banner Scrap",
+          "itemID": 286011
+        },
+        {
+          "quantity": 1,
+          "name": "Broken Bone Trident",
+          "itemID": 286010
+        }
+      ]
+    },
+    {
+      "questID": 99051,
+      "title": "Threat from Below",
+      "zone": "Durotar",
+      "minLevel": 9,
+      "level": 11,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.43200000000000005,
+          "mapID": 1411,
+          "name": "Orgnil Soulscar",
+          "entityID": 3142,
+          "npc": true,
+          "x": 0.522
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "action": "loot",
+          "entityID": 275662,
+          "npc": true,
+          "y": 0.31,
+          "sourceZone": "Durotar",
+          "objectiveKey": "item:286008",
+          "itemID": 286008,
+          "x": 0.5660000000000001,
+          "sourceAreaID": 14,
+          "quantity": 9,
+          "itemName": "Naga Spinefin",
+          "name": "Spitelash Scout"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.43200000000000005,
+          "mapID": 1411,
+          "name": "Orgnil Soulscar",
+          "entityID": 3142,
+          "npc": true,
+          "x": 0.522
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 9,
+          "action": "collect",
+          "entityID": 286008,
+          "name": "Naga Spinefin"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 9,
+          "name": "Naga Spinefin",
+          "itemID": 286008
+        }
+      ]
+    },
+    {
+      "questID": 99052,
+      "title": "Threat from Below",
+      "zone": "Durotar",
+      "minLevel": 10,
+      "level": 12,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.43200000000000005,
+          "mapID": 1411,
+          "name": "Orgnil Soulscar",
+          "entityID": 3142,
+          "npc": true,
+          "x": 0.522
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1411,
+          "action": "loot",
+          "entityID": 275666,
+          "npc": true,
+          "x": 0.586,
+          "y": 0.1634,
+          "objectiveKey": "item:286009",
+          "itemID": 286009,
+          "quantity": 1,
+          "sourceAreaID": 14,
+          "itemName": "Aggor's Belt",
+          "locationSource": "Published Forever beta-observation entity position",
+          "name": "Aggor the Young"
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.43200000000000005,
+          "mapID": 1411,
+          "name": "Orgnil Soulscar",
+          "entityID": 3142,
+          "npc": true,
+          "x": 0.522
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 286009,
+          "name": "Aggor's Belt"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Aggor's Belt",
+          "itemID": 286009
+        }
+      ]
+    },
+    {
+      "questID": 99123,
+      "title": "Lost in the Shadows",
+      "zone": "Durotar",
+      "minLevel": 4,
+      "level": 8,
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "classMask": 0,
+      "prerequisitesRead": true,
+      "starts": [
+        {
+          "y": 0.7859999999999999,
+          "mapID": 1411,
+          "name": "Pal'juh",
+          "entityID": 275811,
+          "npc": true,
+          "x": 0.462
+        }
+      ],
+      "objectives": {},
+      "ends": [
+        {
+          "y": 0.7440000000000001,
+          "mapID": 1411,
+          "name": "Master Vornal",
+          "entityID": 3304,
+          "npc": true,
+          "x": 0.5579999999999999
+        }
+      ],
+      "requirements": {},
+      "missingRequirements": [
+        {
+          "entityID": 275811,
+          "name": "Pal'juh",
+          "action": "escort",
+          "entityType": "npc"
+        }
+      ],
+      "objectiveLocationsIncomplete": true
+    }
+  ]
+}

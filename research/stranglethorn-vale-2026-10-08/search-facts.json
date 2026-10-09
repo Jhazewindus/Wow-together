@@ -1,0 +1,139 @@
+[
+  {
+    "query": "Captain Aransas",
+    "url": "https://www.wowhead.com/forever/search?q=Captain+Aransas",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "edc76746c27eafd8206c7699d2b8da1930ab7e252780e0c43a9ec76db1fcfa70",
+    "results": [
+      {
+        "type": 1,
+        "entityID": 218229,
+        "name": "Captain Aransas"
+      },
+      {
+        "type": 3,
+        "entityID": 216618,
+        "name": "Captain Aransas' Reward"
+      },
+      {
+        "type": 6,
+        "entityID": 437807,
+        "name": "[DNT] Captain Aransas Give Reward"
+      }
+    ]
+  },
+  {
+    "query": "Wendel",
+    "url": "https://www.wowhead.com/forever/search?q=Wendel",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "fc8d7e47d869918f4753acc2600482726d67823b9e958cfeb3d7bfd8de568f32",
+    "results": [
+      {
+        "type": 1,
+        "entityID": 218230,
+        "name": "Wendel Mathers"
+      },
+      {
+        "type": 6,
+        "entityID": 437589,
+        "name": "[DNT] Wendel Mathers Escape"
+      },
+      {
+        "type": 1,
+        "entityID": 218683,
+        "name": "Wendel Mathers"
+      },
+      {
+        "type": 1,
+        "entityID": 211033,
+        "name": "Garion Wendell"
+      },
+      {
+        "type": 100,
+        "entityID": 34987,
+        "name": "Library Book Locations and Rewards"
+      }
+    ]
+  },
+  {
+    "query": "Zimmix Sputterspark",
+    "url": "https://www.wowhead.com/forever/search?q=Zimmix+Sputterspark",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "e94765ba6f2063253dc15191dd71f588af462fe72b6a1fbc26a163900d8a7df3",
+    "results": [
+      {
+        "type": 1,
+        "entityID": 268992,
+        "name": "Zimmix Sputterspark"
+      }
+    ]
+  },
+  {
+    "query": "Wharfmaster Lozgil",
+    "url": "https://www.wowhead.com/forever/search?q=Wharfmaster+Lozgil",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "795bdf0361eff250052884ed940c7ed4f08f38662119a5966d7495ff758dba00",
+    "results": [
+      {
+        "type": 1,
+        "entityID": 4631,
+        "name": "Wharfmaster Lozgil"
+      }
+    ]
+  },
+  {
+    "query": "Short John Mithril",
+    "url": "https://www.wowhead.com/forever/search?q=Short+John+Mithril",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "bdc45a3b8f5be698d15f1a47a076b956bb995be5f0de58818eed9ad921c12ef4",
+    "results": [
+      {
+        "type": 1,
+        "entityID": 14508,
+        "name": "Short John Mithril"
+      }
+    ]
+  },
+  {
+    "query": "Negolash",
+    "url": "https://www.wowhead.com/forever/search?q=Negolash",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "87a30f4c3f553dcba0b86303a12e7e5555dfc74861ab8d2f1ac0f85ec7eb5e2d",
+    "results": [
+      {
+        "type": 1,
+        "entityID": 1494,
+        "name": "Negolash"
+      },
+      {
+        "type": 5,
+        "entityID": 8554,
+        "name": "Facing Negolash"
+      },
+      {
+        "type": 5,
+        "entityID": 618,
+        "name": "Facing Negolash"
+      },
+      {
+        "type": 5,
+        "entityID": 619,
+        "name": "Enticing Negolash"
+      }
+    ]
+  },
+  {
+    "query": "Thoril",
+    "url": "https://www.wowhead.com/forever/search?q=Thoril",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "50490210fec62bb27748584b53108028cd1edab49e3956e9f9aff7cc59354454",
+    "results": []
+  }
+]

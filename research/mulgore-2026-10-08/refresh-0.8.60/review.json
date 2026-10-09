@@ -1,0 +1,163 @@
+{
+  "date": "2026-10-08",
+  "baseline": {
+    "main": "eec9b995631b1aa036b03e5935663bcebbb16f10",
+    "branch_before": "73c0aeed16374ba86b866905ca6330c0c6888525",
+    "version": "0.8.60"
+  },
+  "status": "Research follow-up; existing corrections retained. Race-source conflict, isolated elite visibility and guarded route tradeoffs remain unresolved.",
+  "shipped_data_changes": [],
+  "previous_correction_commit": "d6ed2aece01678c37db37d75076633fde5402666",
+  "scope": {
+    "compiled_distinct_ids": 74,
+    "standard_actions": [
+      191,
+      66,
+      13
+    ],
+    "tauren_actions": [
+      200,
+      69,
+      13
+    ],
+    "category_entries": 61,
+    "isolated_elite_outside_capture": 96261
+  },
+  "source_review": {
+    "pinned_manifest_commit": "e0a6eaa86f181ac99262e34126bcd2ed1a1712d6",
+    "files_sha256_verified": 24,
+    "cached_quest_pages_sha256_verified": 75,
+    "fresh_quest_pages": 21,
+    "fresh_entity_pages": 6,
+    "current_zone_list": true,
+    "prior_same_day_secondary_evidence": "Parent research retains forum/reference findings and recorded access denials; no denied source bypassed."
+  },
+  "before": {
+    "missing_location_quest_ids_by_stage": {
+      "a": [
+        96294
+      ],
+      "q": [],
+      "t": []
+    },
+    "unverified_pickup_requirement_quest_ids": [
+      861,
+      1516,
+      1519,
+      2984,
+      2986,
+      5655,
+      5661,
+      5928,
+      99082,
+      99101
+    ]
+  },
+  "after": {
+    "missing_location_quest_ids_by_stage": {
+      "a": [
+        96294
+      ],
+      "q": [],
+      "t": []
+    },
+    "unverified_pickup_requirement_quest_ids": [
+      861,
+      1516,
+      1519,
+      2984,
+      2986,
+      5655,
+      5661,
+      5928,
+      99082,
+      99101
+    ]
+  },
+  "additional_tauren_unverified_pickup": [
+    854
+  ],
+  "race_source_conflicts": [
+    {
+      "questID": 99101,
+      "pinned_requiredRaces": 8589934770,
+      "pinned_tier": "beta-delta",
+      "current_wowhead_reqrace": 48,
+      "current_wowhead_races": [
+        "Tauren",
+        "Undead"
+      ],
+      "decision": "Retain pinned-priority existing Horde gate and actual predecessor hand-ins. Preserve existing real-offer checks and additional unknown offer flags. Need current-beta actor/build evidence before changing eligibility.",
+      "source": "https://www.wowhead.com/forever/quest=99101",
+      "pinned_source": "pinned-facts.json",
+      "page_evidence": "page-facts.json"
+    },
+    {
+      "questID": 99080,
+      "pinned_requiredRaces": 8589934770,
+      "pinned_tier": "beta-delta",
+      "current_wowhead_reqrace": 48,
+      "current_wowhead_races": [
+        "Tauren",
+        "Undead"
+      ],
+      "decision": "Retain pinned-priority existing Horde gate and actual predecessor hand-ins. Preserve existing real-offer checks and additional unknown offer flags. Need current-beta actor/build evidence before changing eligibility.",
+      "source": "https://www.wowhead.com/forever/quest=99080",
+      "pinned_source": "pinned-facts.json",
+      "page_evidence": "page-facts.json"
+    },
+    {
+      "questID": 99082,
+      "pinned_requiredRaces": 8589934770,
+      "pinned_tier": "beta-delta",
+      "current_wowhead_reqrace": 32,
+      "current_wowhead_races": [
+        "Tauren"
+      ],
+      "decision": "Retain pinned-priority existing Horde gate and actual predecessor hand-ins. Preserve existing real-offer checks and additional unknown offer flags. Need current-beta actor/build evidence before changing eligibility.",
+      "source": "https://www.wowhead.com/forever/quest=99082",
+      "pinned_source": "pinned-facts.json",
+      "page_evidence": "page-facts.json"
+    }
+  ],
+  "route_review": {
+    "candidate_valid_states": 24,
+    "all_actions_and_endpoints_preserved": true,
+    "baseline_1_10_valid_under_corrected_facts": false,
+    "passes_optimization_guard": false,
+    "same_runtime": "Current 0.8.60 in both before/after captures",
+    "before_catalogue_commit": "2249deb628be5f076842beed80fb240de910dd3e",
+    "note": "Old route under corrected prerequisites is invalid; do not benchmark it as a completed guide."
+  },
+  "validation": {
+    "mulgore_tests": {
+      "tests": 7,
+      "passed": 7
+    },
+    "offer_progress_tests": {
+      "tests": 30,
+      "passed": 30
+    },
+    "lua51_files_compiled": 84,
+    "interface": 16001,
+    "scoped_audit": {
+      "guides": 3,
+      "source_points": 116,
+      "passed": true
+    },
+    "combined_full_suite_before_documentation_only_refresh": {
+      "tests": 1493,
+      "passed": 1492,
+      "failed": 1,
+      "failure": "Known historical test_0829 catalogue fingerprint assertion; fixture unchanged.",
+      "run_at_branch": "2aa164c data with main0.8.60; follow-up commits only research/docs."
+    },
+    "native_beta": "Not run; player checklist required"
+  },
+  "shared_code_handoff": [
+    "Conflicting current/pinned race facts for99101/99080/99082 need build/actor observations before eligibility changes.",
+    "Broodmother96261 level31/min23 is preserved but isolated section suppressed by shared builder two-record minimum.",
+    "Corrected valid full routes still fail optimization guards on travel/XP/reward timing."
+  ],
+  "player_checklist": "README.md#player-checklist"
+}

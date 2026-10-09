@@ -1,0 +1,190 @@
+{
+  "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
+  "quest_records": 26,
+  "static_points_checked": 77,
+  "fixed_zone_guides_checked": 4,
+  "catalogue_reason_stages_checked": 90,
+  "catalogue_reason_codes": {
+    "level-work": 28,
+    "quest-objective": 36,
+    "quest-reward": 26
+  },
+  "reason_review_quest_ids": [
+    32,
+    82,
+    113,
+    162,
+    243,
+    379,
+    654,
+    841,
+    992,
+    1690,
+    1691,
+    1707,
+    1878,
+    2606,
+    2661,
+    2741,
+    2781,
+    2872,
+    2873,
+    2874,
+    2875,
+    2876,
+    3022,
+    3520,
+    8365,
+    8366
+  ],
+  "source_data_gap_free_guides": 0,
+  "guides": [
+    {
+      "faction": "Alliance",
+      "zone": "Tanaris",
+      "key": "level-zone:kalimdor/tanaris:levels:41-50",
+      "quests": 33,
+      "steps": 108,
+      "unknown_location_steps": 1,
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          2876
+        ],
+        "q": [],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 12,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 108,
+      "destination_reason_codes": {
+        "early-reward": 1,
+        "outside-level-range": 60,
+        "prerequisite": 21,
+        "quest-reward": 24,
+        "return-hub": 2
+      },
+      "reason_review_steps": 66,
+      "cross_zone_reason_steps": 10,
+      "flow_alternatives_evaluated": 27,
+      "flow_loop_changes": 1,
+      "flow_state_valid": true,
+      "quest_log_peak": 9,
+      "quest_reward_only_xp_shortfall": 619915,
+      "uncertain_travel_legs": 19,
+      "estimated_distance_before": 220168.85,
+      "estimated_distance_after": 217051.02
+    },
+    {
+      "faction": "Alliance",
+      "zone": "Tanaris",
+      "key": "level-zone:kalimdor/tanaris:levels:51-60",
+      "quests": 13,
+      "steps": 40,
+      "unknown_location_steps": 0,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 9,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 40,
+      "destination_reason_codes": {
+        "outside-level-range": 23,
+        "prerequisite": 6,
+        "quest-reward": 11
+      },
+      "reason_review_steps": 26,
+      "cross_zone_reason_steps": 11,
+      "flow_alternatives_evaluated": 6,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 2640250,
+      "uncertain_travel_legs": 13,
+      "estimated_distance_before": 176687.02,
+      "estimated_distance_after": 176687.02
+    },
+    {
+      "faction": "Horde",
+      "zone": "Tanaris",
+      "key": "level-zone:kalimdor/tanaris:levels:41-50",
+      "quests": 38,
+      "steps": 129,
+      "unknown_location_steps": 5,
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          654,
+          2876
+        ],
+        "q": [
+          654
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 12,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 129,
+      "destination_reason_codes": {
+        "early-reward": 1,
+        "outside-level-range": 62,
+        "prerequisite": 40,
+        "quest-reward": 23,
+        "return-hub": 3
+      },
+      "reason_review_steps": 72,
+      "cross_zone_reason_steps": 13,
+      "flow_alternatives_evaluated": 39,
+      "flow_loop_changes": 1,
+      "flow_state_valid": true,
+      "quest_log_peak": 8,
+      "quest_reward_only_xp_shortfall": 609235,
+      "uncertain_travel_legs": 26,
+      "estimated_distance_before": 271654.02,
+      "estimated_distance_after": 271654.02
+    },
+    {
+      "faction": "Horde",
+      "zone": "Tanaris",
+      "key": "level-zone:kalimdor/tanaris:levels:51-60",
+      "quests": 20,
+      "steps": 61,
+      "unknown_location_steps": 0,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 9,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 61,
+      "destination_reason_codes": {
+        "outside-level-range": 27,
+        "prerequisite": 21,
+        "quest-reward": 13
+      },
+      "reason_review_steps": 30,
+      "cross_zone_reason_steps": 12,
+      "flow_alternatives_evaluated": 12,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 2,
+      "quest_reward_only_xp_shortfall": 2617350,
+      "uncertain_travel_legs": 10,
+      "estimated_distance_before": 212103.85,
+      "estimated_distance_after": 212103.85
+    }
+  ],
+  "scope": {
+    "zone": "Tanaris",
+    "catalogue_records": "Exact quest zone; guide dependencies still compile normally"
+  }
+}

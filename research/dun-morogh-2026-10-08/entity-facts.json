@@ -1,0 +1,583 @@
+[
+  {
+    "kind": "item",
+    "entityID": 281030,
+    "url": "https://www.wowhead.com/forever/item=281030",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "83a12b18d1cb1fe9b8c8230b3cebba35e24f89a72a0096191df98ca028612553",
+    "facts": {
+      "name": "Treaty of Understanding",
+      "locations": [],
+      "source": "Wowhead Forever"
+    }
+  },
+  {
+    "kind": "item",
+    "entityID": 2840,
+    "url": "https://www.wowhead.com/forever/item=2840",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "4cf360dc5b992607335aaa5cf0d09393f01cd6bb5d7c500689baa659491fb569",
+    "facts": {
+      "name": "Copper Bar",
+      "locations": [],
+      "source": "Wowhead Forever",
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 223340,
+          "name": "Fel Interloper",
+          "action": "loot",
+          "minlevel": 15,
+          "maxlevel": 18,
+          "areas": [
+            40,
+            17,
+            130
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 223542,
+          "name": "Fel Interloper",
+          "action": "loot",
+          "minlevel": 25,
+          "maxlevel": 28,
+          "areas": [
+            44,
+            331,
+            17
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "kind": "npc",
+    "entityID": 1698,
+    "url": "https://www.wowhead.com/forever/npc=1698",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "0500de4d92c3b0a239f9d4fc5d8827a440c4c656bbd4263be297aebeec54bd2c",
+    "facts": {
+      "name": "Frast Dokner <Apprentice Weaponsmith>",
+      "locations": [
+        {
+          "mapID": 1426,
+          "x": 0.688,
+          "y": 0.5579999999999999,
+          "sourceAreaID": 1,
+          "sourceZone": "Dun Morogh"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 10,
+      "maxlevel": 10,
+      "classification": 0
+    }
+  },
+  {
+    "kind": "npc",
+    "entityID": 2784,
+    "url": "https://www.wowhead.com/forever/npc=2784",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "9a01c86a99d519cbd4b03a8c5f40db49bad9b6a5a8c74beac3851888a2280b2f",
+    "facts": {
+      "name": "King Magni Bronzebeard <Lord of Ironforge>",
+      "locations": [
+        {
+          "mapID": 1455,
+          "x": 0.396,
+          "y": 0.556,
+          "sourceAreaID": 1537,
+          "sourceZone": "Ironforge"
+        },
+        {
+          "mapID": 1455,
+          "x": 0.4,
+          "y": 0.552,
+          "sourceAreaID": 1537,
+          "sourceZone": "Ironforge"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "classification": 3
+    }
+  },
+  {
+    "kind": "npc",
+    "entityID": 1253,
+    "url": "https://www.wowhead.com/forever/npc=1253",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "6cf782b1bee3995175ed8a1abc3ef130328b38295510004c9e66ad65e20c861b",
+    "facts": {
+      "name": "Father Gavin <The Argent Dawn>",
+      "locations": [
+        {
+          "mapID": 1426,
+          "x": 0.574,
+          "y": 0.44799999999999995,
+          "sourceAreaID": 1,
+          "sourceZone": "Dun Morogh"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 15,
+      "maxlevel": 15,
+      "classification": 0
+    }
+  },
+  {
+    "kind": "npc",
+    "entityID": 1689,
+    "url": "https://www.wowhead.com/forever/npc=1689",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "a3aae7ae7dcdade008917ee4edf1b93e22dd9ae5078374cd6d2945e2c9a683c8",
+    "facts": {
+      "name": "Scarred Crag Boar",
+      "locations": [
+        {
+          "mapID": 1426,
+          "x": 0.738,
+          "y": 0.526,
+          "sourceAreaID": 1,
+          "sourceZone": "Dun Morogh"
+        },
+        {
+          "mapID": 1426,
+          "x": 0.828,
+          "y": 0.35600000000000004,
+          "sourceAreaID": 1,
+          "sourceZone": "Dun Morogh"
+        },
+        {
+          "mapID": 1426,
+          "x": 0.78,
+          "y": 0.494,
+          "sourceAreaID": 1,
+          "sourceZone": "Dun Morogh"
+        },
+        {
+          "mapID": 1426,
+          "x": 0.8640000000000001,
+          "y": 0.48,
+          "sourceAreaID": 1,
+          "sourceZone": "Dun Morogh"
+        },
+        {
+          "mapID": 1426,
+          "x": 0.816,
+          "y": 0.532,
+          "sourceAreaID": 1,
+          "sourceZone": "Dun Morogh"
+        },
+        {
+          "mapID": 1426,
+          "x": 0.7440000000000001,
+          "y": 0.608,
+          "sourceAreaID": 1,
+          "sourceZone": "Dun Morogh"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 9,
+      "maxlevel": 10,
+      "classification": 0
+    }
+  },
+  {
+    "kind": "npc",
+    "entityID": 1131,
+    "url": "https://www.wowhead.com/forever/npc=1131",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "c0e5729d5e93c37f063375285da8c817cd4eb3fd9187ea66b868c0040b093595",
+    "facts": {
+      "name": "Winter Wolf",
+      "locations": [
+        {
+          "mapID": 1426,
+          "x": 0.45,
+          "y": 0.446,
+          "sourceAreaID": 1,
+          "sourceZone": "Dun Morogh"
+        },
+        {
+          "mapID": 1426,
+          "x": 0.514,
+          "y": 0.466,
+          "sourceAreaID": 1,
+          "sourceZone": "Dun Morogh"
+        },
+        {
+          "mapID": 1426,
+          "x": 0.342,
+          "y": 0.42200000000000004,
+          "sourceAreaID": 1,
+          "sourceZone": "Dun Morogh"
+        },
+        {
+          "mapID": 1426,
+          "x": 0.506,
+          "y": 0.516,
+          "sourceAreaID": 1,
+          "sourceZone": "Dun Morogh"
+        },
+        {
+          "mapID": 1426,
+          "x": 0.494,
+          "y": 0.506,
+          "sourceAreaID": 1,
+          "sourceZone": "Dun Morogh"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 7,
+      "maxlevel": 8,
+      "classification": 0
+    },
+    "selected_drop_relation": {
+      "itemID": 769,
+      "name": "Chunk of Boar Meat",
+      "sourceList": "drops",
+      "meaning": "Broad published relation; native quest flags and unfinished objective checks still apply."
+    }
+  },
+  {
+    "kind": "item",
+    "entityID": 267416,
+    "url": "https://www.wowhead.com/forever/item=267416",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "db09ee72e32623e8f35344a01a0802ac3387194ed75805fdc9bf319e28c72660",
+    "facts": {
+      "name": "Toughened Boar Hide",
+      "locations": [],
+      "source": "Wowhead Forever",
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 1689,
+          "name": "Scarred Crag Boar",
+          "action": "loot",
+          "minlevel": 9,
+          "maxlevel": 10,
+          "areas": [
+            1
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "kind": "item",
+    "entityID": 769,
+    "url": "https://www.wowhead.com/forever/item=769",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "2246538655d29077a67d22c475007c2ff1383c748d01fc92d22bf782bae443d6",
+    "facts": {
+      "name": "Chunk of Boar Meat",
+      "locations": [],
+      "source": "Wowhead Forever",
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 113,
+          "name": "Stonetusk Boar",
+          "action": "loot",
+          "minlevel": 5,
+          "maxlevel": 6,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 119,
+          "name": "Longsnout",
+          "action": "loot",
+          "minlevel": 10,
+          "maxlevel": 11,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 157,
+          "name": "Goretusk",
+          "action": "loot",
+          "minlevel": 14,
+          "maxlevel": 15,
+          "areas": [
+            40
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 330,
+          "name": "Princess",
+          "action": "loot",
+          "minlevel": 9,
+          "maxlevel": 9,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 390,
+          "name": "Porcine Entourage",
+          "action": "loot",
+          "minlevel": 7,
+          "maxlevel": 7,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 454,
+          "name": "Young Goretusk",
+          "action": "loot",
+          "minlevel": 12,
+          "maxlevel": 13,
+          "areas": [
+            40
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 478,
+          "name": "Riverpaw Outrunner",
+          "action": "loot",
+          "minlevel": 9,
+          "maxlevel": 10,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 524,
+          "name": "Rockhide Boar",
+          "action": "loot",
+          "minlevel": 7,
+          "maxlevel": 8,
+          "areas": [
+            12
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 547,
+          "name": "Great Goretusk",
+          "action": "loot",
+          "minlevel": 16,
+          "maxlevel": 17,
+          "areas": [
+            44,
+            40
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1125,
+          "name": "Crag Boar",
+          "action": "loot",
+          "minlevel": 5,
+          "maxlevel": 6,
+          "areas": [
+            1
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1126,
+          "name": "Large Crag Boar",
+          "action": "loot",
+          "minlevel": 6,
+          "maxlevel": 7,
+          "areas": [
+            1
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1127,
+          "name": "Elder Crag Boar",
+          "action": "loot",
+          "minlevel": 7,
+          "maxlevel": 8,
+          "areas": [
+            1
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1131,
+          "name": "Winter Wolf",
+          "action": "loot",
+          "minlevel": 7,
+          "maxlevel": 8,
+          "areas": [
+            1
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1190,
+          "name": "Mountain Boar",
+          "action": "loot",
+          "minlevel": 10,
+          "maxlevel": 11,
+          "areas": [
+            38
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1191,
+          "name": "Mangy Mountain Boar",
+          "action": "loot",
+          "minlevel": 14,
+          "maxlevel": 15,
+          "areas": [
+            38
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1192,
+          "name": "Elder Mountain Boar",
+          "action": "loot",
+          "minlevel": 16,
+          "maxlevel": 17,
+          "areas": [
+            38
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1553,
+          "name": "Greater Duskbat",
+          "action": "loot",
+          "minlevel": 6,
+          "maxlevel": 7,
+          "areas": [
+            85
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1689,
+          "name": "Scarred Crag Boar",
+          "action": "loot",
+          "minlevel": 9,
+          "maxlevel": 10,
+          "areas": [
+            1
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3099,
+          "name": "Dire Mottled Boar",
+          "action": "loot",
+          "minlevel": 6,
+          "maxlevel": 7,
+          "areas": [
+            14
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3100,
+          "name": "Elder Mottled Boar",
+          "action": "loot",
+          "minlevel": 8,
+          "maxlevel": 9,
+          "areas": [
+            14,
+            1637
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3225,
+          "name": "Corrupted Mottled Boar",
+          "action": "loot",
+          "minlevel": 10,
+          "maxlevel": 11,
+          "areas": [
+            14
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 208638,
+          "name": "Fyodi",
+          "action": "loot",
+          "minlevel": 7,
+          "maxlevel": 7,
+          "areas": [
+            1
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "kind": "npc",
+    "entityID": 276003,
+    "url": "https://www.wowhead.com/forever/npc=276003",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "3a925b2901d7174a2847bc706e425dd0a9df24e5f202201523cde274587514e8",
+    "facts": {
+      "name": "Minor Ice Elemental",
+      "locations": [
+        {
+          "mapID": 1426,
+          "x": 0.5539999999999999,
+          "y": 0.446,
+          "sourceAreaID": 1,
+          "sourceZone": "Dun Morogh"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 7,
+      "maxlevel": 8,
+      "classification": 0
+    }
+  },
+  {
+    "kind": "npc",
+    "entityID": 276009,
+    "url": "https://www.wowhead.com/forever/npc=276009",
+    "captured": "2026-10-08",
+    "status": 200,
+    "sha256": "c9603c5ef84c3d10498e780bb4b8c77b511acf1e2f4f7cb982579c1237a2e46b",
+    "facts": {
+      "name": "Avala <The Lost Rime>",
+      "locations": [
+        {
+          "mapID": 1426,
+          "x": 0.574,
+          "y": 0.428,
+          "sourceAreaID": 1,
+          "sourceZone": "Dun Morogh"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 8,
+      "maxlevel": 8,
+      "classification": 0
+    }
+  }
+]

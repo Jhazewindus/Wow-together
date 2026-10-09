@@ -1,0 +1,141 @@
+{
+  "zone": "Tanaris",
+  "date": "2026-10-08",
+  "baseline_branch_commit": "1f0336c775cbb27cb0134dc3ef67785232122dfa",
+  "addon_version": "0.8.61",
+  "stage_corrections": [
+    654,
+    4508,
+    4509,
+    7732,
+    8922,
+    8923
+  ],
+  "quarantined_endgame_ids": [
+    8286,
+    8288,
+    8301,
+    8303,
+    8305,
+    8519,
+    8555,
+    8575,
+    8576,
+    8577,
+    8578,
+    8584,
+    8585,
+    8586,
+    8587,
+    8597,
+    8598,
+    8599,
+    8606,
+    8620,
+    8728,
+    8729,
+    8730,
+    8734,
+    8735,
+    8736,
+    8741,
+    8742,
+    8747,
+    8748,
+    8749,
+    8750,
+    8751,
+    8752,
+    8753,
+    8754,
+    8755,
+    8756,
+    8757,
+    8758,
+    8759,
+    8760,
+    8761
+  ],
+  "scope": {
+    "original_compiled_ids": 103,
+    "original_actions": 587,
+    "ordinary_compiled_ids": 60,
+    "ordinary_actions": 338,
+    "ordinary_chapter_actions": {
+      "Horde": [
+        129,
+        61
+      ],
+      "Alliance": [
+        108,
+        40
+      ]
+    },
+    "excluded_action_occurrences": 249,
+    "interpretation": "Evidenced endgame scope exclusions, not route savings or closed source gaps."
+  },
+  "gaps": {
+    "original": {
+      "pickup": 4,
+      "objective": 30,
+      "handin": 1,
+      "uncertain_pickup": 39,
+      "unknown_quantity": 0
+    },
+    "ordinary_before_corrections": {
+      "pickup": [
+        654,
+        2876
+      ],
+      "objective": [
+        654,
+        4508,
+        4509,
+        7732,
+        8922,
+        8923
+      ],
+      "handin": [],
+      "uncertain_pickup": [],
+      "unknown_quantity": []
+    },
+    "ordinary_after": {
+      "pickup": [
+        654,
+        2876
+      ],
+      "objective": [
+        654
+      ],
+      "handin": [],
+      "uncertain_pickup": [],
+      "unknown_quantity": []
+    },
+    "quarantined_gaps": "Retained in original audit and before/after catalogue snapshots; 39 pickup conditions and endgame mappings remain unresolved."
+  },
+  "source_654": "Typed hand-in objectives and source-input IDs are distinct. Retain eight acceptable samples of each type and one Field Testing Kit; remove three 999 raw-source-item hand-in requirements; retain acquisition areas with unknown raw counts and kit vendor action. Actual testing interaction and acceptable-output work points remain unknown.",
+  "validation": {
+    "focused_tests": 6,
+    "strict_replays": 16,
+    "strict_states_valid": 16,
+    "actions_and_endpoints_preserved": true,
+    "optimization_guard": "REVIEW REQUIRED: Horde 51-60 distance and reward timing regress; other three chapters unchanged",
+    "lua51_toc_files": 86,
+    "corrections_idempotent": true,
+    "native_beta_tested": false,
+    "zone_regressions": {
+      "passed": 59,
+      "tests": 59
+    },
+    "global_audit": {
+      "sections": 152,
+      "source_points": 11831,
+      "gap_free_sections": 33,
+      "source_queue_records": 392
+    }
+  },
+  "shared_coordination": [
+    "Horde 51-60 travel 204295.22 -> 212103.85; rewards delayed before 992/82/10/110/113/32. No shared runtime changes."
+  ],
+  "source_access": "Verified all 24 pinned source file hashes. Existing current-page/older-world provenance retained. Further Wowhead/wiki/WarcraftDB/Reddit captures withheld after prior denials; no guessed coordinates or gates."
+}

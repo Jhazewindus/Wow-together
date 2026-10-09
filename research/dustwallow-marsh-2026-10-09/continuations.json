@@ -1,0 +1,1437 @@
+{
+  "direct_ids": [
+    1,
+    1133,
+    1135,
+    1166,
+    1168,
+    1169,
+    1170,
+    1171,
+    1172,
+    1173,
+    1177,
+    1201,
+    1202,
+    1203,
+    1204,
+    1205,
+    1206,
+    1218,
+    1219,
+    1220,
+    1222,
+    1238,
+    1239,
+    1240,
+    1251,
+    1252,
+    1253,
+    1258,
+    1259,
+    1260,
+    1261,
+    1262,
+    1263,
+    1268,
+    1269,
+    1270,
+    1271,
+    1272,
+    1273,
+    1276,
+    1280,
+    1281,
+    1282,
+    1283,
+    1284,
+    1285,
+    1286,
+    1287,
+    1288,
+    1292,
+    1293,
+    1294,
+    1295,
+    1296,
+    1297,
+    1319,
+    1320,
+    1321,
+    1322,
+    1323,
+    6570,
+    6582,
+    6583,
+    6584,
+    6585,
+    6601,
+    7541,
+    8970,
+    9065
+  ],
+  "compiled_ids": [
+    1132,
+    1133,
+    1166,
+    1168,
+    1169,
+    1170,
+    1171,
+    1172,
+    1173,
+    1177,
+    1201,
+    1202,
+    1203,
+    1204,
+    1205,
+    1206,
+    1218,
+    1219,
+    1220,
+    1222,
+    1238,
+    1239,
+    1240,
+    1251,
+    1252,
+    1253,
+    1259,
+    1260,
+    1261,
+    1262,
+    1268,
+    1269,
+    1270,
+    1271,
+    1273,
+    1276,
+    1282,
+    1284,
+    1285,
+    1286,
+    1287,
+    1288,
+    1302,
+    1319,
+    1320,
+    1321,
+    1322,
+    1323,
+    1799,
+    1947,
+    1948,
+    1949,
+    1952,
+    1953,
+    1954,
+    1955,
+    1957,
+    1958,
+    4961,
+    4962,
+    4976,
+    6570,
+    6582,
+    6583,
+    6584,
+    6585,
+    6601,
+    7541,
+    8970
+  ],
+  "uncompiled_direct_ids": [
+    1,
+    1135,
+    1258,
+    1263,
+    1272,
+    1280,
+    1281,
+    1283,
+    1292,
+    1293,
+    1294,
+    1295,
+    1296,
+    1297,
+    9065
+  ],
+  "related_catalogue_records": {
+    "1258": {
+      "prerequisitesRead": true,
+      "mapID": 1445,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Morgan Stern",
+          "entityID": 4794
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 12,
+          "action": "collect",
+          "entityID": 5938,
+          "name": "Pristine Crawler Leg"
+        }
+      ],
+      "npcTargets": [
+        {
+          "itemName": "Pristine Crawler Leg",
+          "name": "Silt Crawler",
+          "entityID": 922,
+          "npc": true,
+          "action": "loot"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 12,
+          "name": "Pristine Crawler Leg",
+          "itemID": 5938
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1435,
+          "action": "loot",
+          "entityID": 922,
+          "npc": true,
+          "x": 0.7748999999999999,
+          "y": 0.052199999999999996,
+          "objectiveKey": "item:5938",
+          "itemID": 5938,
+          "quantity": 12,
+          "sourceAreaID": 8,
+          "itemName": "Pristine Crawler Leg",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Silt Crawler"
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1445,
+          "entityID": 4794,
+          "npc": true,
+          "y": 0.4547,
+          "x": 0.6634,
+          "name": "Morgan Stern",
+          "sourceAreaID": 15,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "level": 40,
+      "areaID": 15,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 4294967373,
+      "side": "Alliance",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1445,
+          "entityID": 4794,
+          "npc": true,
+          "y": 0.4547,
+          "x": 0.6634,
+          "name": "Morgan Stern",
+          "sourceAreaID": 15,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Morgan Stern",
+          "entityID": 4794
+        }
+      ],
+      "xp": 3150,
+      "prerequisiteAny": [
+        1204
+      ],
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 33,
+      "requirementSource": "Published Forever typed objectives",
+      "title": "... and Bugs",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 12,
+            "action": "collect",
+            "entityID": 5938,
+            "name": "Pristine Crawler Leg"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Morgan Stern",
+            "entityID": 4794
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Morgan Stern",
+            "entityID": 4794
+          }
+        ]
+      },
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "kalimdor/dustwallow-marsh"
+    },
+    "1950": {
+      "prerequisitesRead": true,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Magus Tirth",
+          "entityID": 6548
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantityUnknown": true,
+          "action": "event",
+          "entityID": 6626,
+          "name": "\"Plucky\" Johnson"
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "npcTargets": [
+        {
+          "entityID": 6626,
+          "npc": true,
+          "action": "event",
+          "name": "\"Plucky\" Johnson"
+        }
+      ],
+      "classMask": 128,
+      "otherLocationsIncomplete": false,
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "action": "event",
+          "entityID": 6626,
+          "npc": true,
+          "sourceZone": "Thousand Needles",
+          "objectiveKey": "npc:6626",
+          "name": "\"Plucky\" Johnson",
+          "sourceAreaID": 400,
+          "y": 0.7559999999999999,
+          "x": 0.7959999999999999,
+          "quantityUnknown": true
+        }
+      ],
+      "level": 30,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "entityID": 6548,
+          "npc": true,
+          "y": 0.757,
+          "x": 0.7829,
+          "name": "Magus Tirth",
+          "sourceAreaID": 400,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "side": "Both",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "entityID": 6548,
+          "npc": true,
+          "y": 0.757,
+          "x": 0.7829,
+          "name": "Magus Tirth",
+          "sourceAreaID": 400,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Magus Tirth",
+          "entityID": 6548
+        }
+      ],
+      "xp": 1850,
+      "prerequisiteAny": [
+        1949
+      ],
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "minLevel": 30,
+      "requirementSource": "Published Forever typed objectives",
+      "title": "Get the Scoop",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantityUnknown": true,
+            "action": "event",
+            "entityID": 6626,
+            "name": "\"Plucky\" Johnson"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Magus Tirth",
+            "entityID": 6548
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Magus Tirth",
+            "entityID": 6548
+          }
+        ]
+      },
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "classes/mage"
+    },
+    "1956": {
+      "prerequisitesRead": true,
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 8053,
+          "name": "Obsidian Power Source"
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Tabetha",
+          "entityID": 6546
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 8053,
+          "name": "Obsidian Power Source"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Obsidian Power Source",
+          "itemID": 8053
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "objectives": {},
+      "classMask": 128,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1445,
+          "entityID": 6546,
+          "npc": true,
+          "y": 0.5709000000000001,
+          "x": 0.4606,
+          "name": "Tabetha",
+          "sourceAreaID": 15,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1445,
+          "entityID": 6546,
+          "npc": true,
+          "y": 0.5709000000000001,
+          "x": 0.4606,
+          "name": "Tabetha",
+          "sourceAreaID": 15,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "level": 40,
+      "title": "Power in Uldaman",
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Both",
+      "prerequisiteAny": [
+        1955
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Tabetha",
+          "entityID": 6546
+        }
+      ],
+      "xp": 3900,
+      "questType": "Dungeon",
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "minLevel": 35,
+      "requirementSource": "Published Forever typed objectives",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 8053,
+            "name": "Obsidian Power Source"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Tabetha",
+            "entityID": 6546
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Tabetha",
+            "entityID": 6546
+          }
+        ]
+      },
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "classes/mage"
+    },
+    "4964": {
+      "prerequisitesRead": true,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Menara Voidrender",
+          "entityID": 6266
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantityUnknown": true,
+          "action": "event",
+          "entityID": 6266,
+          "name": "Menara Voidrender"
+        }
+      ],
+      "npcTargets": [
+        {
+          "entityID": 6266,
+          "npc": true,
+          "action": "event",
+          "name": "Menara Voidrender"
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "action": "event",
+          "entityID": 6266,
+          "npc": true,
+          "y": 0.35450000000000004,
+          "objectiveKey": "npc:6266",
+          "name": "Menara Voidrender",
+          "sourceAreaID": 17,
+          "x": 0.6251,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "quantityUnknown": true
+        }
+      ],
+      "classMask": 256,
+      "otherLocationsIncomplete": false,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "entityID": 6266,
+          "npc": true,
+          "y": 0.35450000000000004,
+          "x": 0.6251,
+          "name": "Menara Voidrender",
+          "sourceAreaID": 17,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "level": 40,
+      "title": "The Completed Orb of Dar'Orahil",
+      "prerequisiteAll": [
+        4976
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "prerequisitesUnverified": true,
+      "side": "Both",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "entityID": 6266,
+          "npc": true,
+          "y": 0.35450000000000004,
+          "x": 0.6251,
+          "name": "Menara Voidrender",
+          "sourceAreaID": 17,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Menara Voidrender",
+          "entityID": 6266
+        }
+      ],
+      "xp": 3900,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "minLevel": 35,
+      "requirementSource": "Published Forever typed objectives",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantityUnknown": true,
+            "action": "event",
+            "entityID": 6266,
+            "name": "Menara Voidrender"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Menara Voidrender",
+            "entityID": 6266
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Menara Voidrender",
+            "entityID": 6266
+          }
+        ]
+      },
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "classes/warlock"
+    },
+    "4975": {
+      "prerequisitesRead": true,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Menara Voidrender",
+          "entityID": 6266
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantityUnknown": true,
+          "action": "event",
+          "entityID": 6266,
+          "name": "Menara Voidrender"
+        }
+      ],
+      "npcTargets": [
+        {
+          "entityID": 6266,
+          "npc": true,
+          "action": "event",
+          "name": "Menara Voidrender"
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "action": "event",
+          "entityID": 6266,
+          "npc": true,
+          "y": 0.35450000000000004,
+          "objectiveKey": "npc:6266",
+          "name": "Menara Voidrender",
+          "sourceAreaID": 17,
+          "x": 0.6251,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "quantityUnknown": true
+        }
+      ],
+      "classMask": 256,
+      "otherLocationsIncomplete": false,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "entityID": 6266,
+          "npc": true,
+          "y": 0.35450000000000004,
+          "x": 0.6251,
+          "name": "Menara Voidrender",
+          "sourceAreaID": 17,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "level": 40,
+      "title": "The Completed Orb of Noh'Orahil",
+      "prerequisiteAll": [
+        4976
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "prerequisitesUnverified": true,
+      "side": "Both",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "entityID": 6266,
+          "npc": true,
+          "y": 0.35450000000000004,
+          "x": 0.6251,
+          "name": "Menara Voidrender",
+          "sourceAreaID": 17,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Menara Voidrender",
+          "entityID": 6266
+        }
+      ],
+      "xp": 3900,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "minLevel": 35,
+      "requirementSource": "Published Forever typed objectives",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantityUnknown": true,
+            "action": "event",
+            "entityID": 6266,
+            "name": "Menara Voidrender"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Menara Voidrender",
+            "entityID": 6266
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Menara Voidrender",
+            "entityID": 6266
+          }
+        ]
+      },
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "classes/warlock"
+    },
+    "6602": {
+      "prerequisitesRead": true,
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 16663,
+          "name": "Blood of the Black Dragon Champion"
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Rexxar",
+          "entityID": 10182
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 16663,
+          "name": "Blood of the Black Dragon Champion"
+        }
+      ],
+      "objectives": {},
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Blood of the Black Dragon Champion",
+          "itemID": 16663
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1442,
+          "patrol": true,
+          "entityID": 10182,
+          "npc": true,
+          "y": 0.7798999999999999,
+          "x": 0.29719999999999996,
+          "name": "Rexxar",
+          "sourceAreaID": 406,
+          "locationSource": "Published Forever converted-baseline patrol waypoints"
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1442,
+          "patrol": true,
+          "entityID": 10182,
+          "npc": true,
+          "y": 0.7798999999999999,
+          "x": 0.29719999999999996,
+          "name": "Rexxar",
+          "sourceAreaID": 406,
+          "locationSource": "Published Forever converted-baseline patrol waypoints"
+        }
+      ],
+      "title": "Blood of the Black Dragon Champion",
+      "level": 60,
+      "areaID": 1583,
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "prerequisiteAny": [
+        6601
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Rexxar",
+          "entityID": 10182
+        }
+      ],
+      "xp": 9950,
+      "questType": "Raid",
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 55,
+      "requirementSource": "Published Forever typed objectives",
+      "raceMask": 8589934770,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 16663,
+            "name": "Blood of the Black Dragon Champion"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Rexxar",
+            "entityID": 10182
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Rexxar",
+            "entityID": 10182
+          }
+        ]
+      },
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "dungeons/blackrock-spire"
+    },
+    "8985": {
+      "prerequisitesRead": true,
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Starbreeze Village Relic",
+          "entityID": 22227
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisitesUnverified": true,
+      "otherLocationsIncomplete": false,
+      "level": 60,
+      "areaID": 25,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Bodley",
+          "entityID": 16033
+        }
+      ],
+      "xp": 6600,
+      "questType": "Elite",
+      "minLevel": 58,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Starbreeze Village Relic",
+            "entityID": 22227
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Bodley",
+            "entityID": 16033
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Bodley",
+            "entityID": 16033
+          }
+        ]
+      },
+      "categoryPath": "eastern-kingdoms/blackrock-mountain",
+      "raceMask": 0,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Bodley",
+          "entityID": 16033
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Starbreeze Village Relic",
+          "itemID": 22227
+        }
+      ],
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1427,
+          "name": "Bodley",
+          "y": 0.96457,
+          "entityID": 16033,
+          "x": 0.39875,
+          "locationSource": "Older-world fallback; published Forever 1.60.1.69893 map bounds",
+          "npc": true
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Both",
+      "prerequisiteAny": [
+        8970
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1452,
+          "action": "loot",
+          "entityID": 7428,
+          "npc": true,
+          "x": 0.5806,
+          "y": 0.687,
+          "objectiveKey": "item:22227",
+          "itemID": 22227,
+          "quantity": 1,
+          "sourceAreaID": 618,
+          "itemName": "Starbreeze Village Relic",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Frostmaul Giant"
+        }
+      ],
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1427,
+          "name": "Bodley",
+          "y": 0.96457,
+          "entityID": 16033,
+          "x": 0.39875,
+          "locationSource": "Older-world fallback; published Forever 1.60.1.69893 map bounds",
+          "npc": true
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "classMask": 9,
+      "title": "More Components of Importance",
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "itemName": "Starbreeze Village Relic",
+          "name": "Frostmaul Giant",
+          "entityID": 7428,
+          "npc": true,
+          "action": "loot"
+        }
+      ]
+    },
+    "8986": {
+      "prerequisitesRead": true,
+      "npcTargets": [
+        {
+          "itemName": "Druidical Remains",
+          "name": "Hive'Regal Ambusher",
+          "entityID": 11730,
+          "npc": true,
+          "action": "loot"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1451,
+          "action": "loot",
+          "entityID": 11730,
+          "npc": true,
+          "x": 0.4854,
+          "y": 0.7624,
+          "objectiveKey": "item:22226",
+          "itemID": 22226,
+          "quantity": 1,
+          "sourceAreaID": 1377,
+          "itemName": "Druidical Remains",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Hive'Regal Ambusher"
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Bodley",
+          "entityID": 16033
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Druidical Remains",
+          "entityID": 22226
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1427,
+          "name": "Bodley",
+          "y": 0.96457,
+          "entityID": 16033,
+          "x": 0.39875,
+          "locationSource": "Older-world fallback; published Forever 1.60.1.69893 map bounds",
+          "npc": true
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Druidical Remains",
+          "itemID": 22226
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "title": "More Components of Importance",
+      "level": 60,
+      "areaID": 25,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1427,
+          "name": "Bodley",
+          "y": 0.96457,
+          "entityID": 16033,
+          "x": 0.39875,
+          "locationSource": "Older-world fallback; published Forever 1.60.1.69893 map bounds",
+          "npc": true
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "prerequisiteAny": [
+        8970
+      ],
+      "side": "Both",
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Bodley",
+          "entityID": 16033
+        }
+      ],
+      "xp": 6600,
+      "questType": "Elite",
+      "foreverStatus": "unchanged",
+      "raceMask": 0,
+      "minLevel": 58,
+      "requirementSource": "Wowhead Forever objective table",
+      "prerequisitesUnverified": true,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Druidical Remains",
+            "entityID": 22226
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Bodley",
+            "entityID": 16033
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Bodley",
+            "entityID": 16033
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/blackrock-mountain"
+    },
+    "8987": {
+      "prerequisitesRead": true,
+      "npcTargets": [
+        {
+          "itemName": "Brilliant Sword of Zealotry",
+          "name": "Scarlet Praetorian",
+          "entityID": 9448,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Brilliant Sword of Zealotry",
+          "name": "Scarlet Praetorian",
+          "entityID": 242547,
+          "npc": true,
+          "action": "collect"
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1423,
+          "action": "collect",
+          "entityID": 9448,
+          "npc": true,
+          "y": 0.8320000000000001,
+          "objectiveKey": "item:22228",
+          "name": "Scarlet Praetorian",
+          "x": 0.84,
+          "quantity": 1,
+          "legacyStepKey": "q:1423:npc:9448",
+          "itemName": "Brilliant Sword of Zealotry",
+          "itemID": 22228
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Bodley",
+          "entityID": 16033
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Brilliant Sword of Zealotry",
+          "entityID": 22228
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1427,
+          "name": "Bodley",
+          "y": 0.96457,
+          "entityID": 16033,
+          "x": 0.39875,
+          "locationSource": "Older-world fallback; published Forever 1.60.1.69893 map bounds",
+          "npc": true
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Brilliant Sword of Zealotry",
+          "itemID": 22228
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "title": "More Components of Importance",
+      "level": 60,
+      "areaID": 25,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1427,
+          "name": "Bodley",
+          "y": 0.96457,
+          "entityID": 16033,
+          "x": 0.39875,
+          "locationSource": "Older-world fallback; published Forever 1.60.1.69893 map bounds",
+          "npc": true
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "prerequisiteAny": [
+        8970
+      ],
+      "side": "Both",
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Bodley",
+          "entityID": 16033
+        }
+      ],
+      "xp": 6600,
+      "questType": "Elite",
+      "foreverStatus": "unchanged",
+      "raceMask": 0,
+      "minLevel": 58,
+      "requirementSource": "Wowhead Forever objective table",
+      "prerequisitesUnverified": true,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Brilliant Sword of Zealotry",
+            "entityID": 22228
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Bodley",
+            "entityID": 16033
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Bodley",
+            "entityID": 16033
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/blackrock-mountain"
+    },
+    "8988": {
+      "prerequisitesRead": true,
+      "npcTargets": [
+        {
+          "itemName": "Soul Ashes of the Banished",
+          "name": "Condemned Acolyte",
+          "entityID": 7068,
+          "npc": true,
+          "action": "loot"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1424,
+          "action": "loot",
+          "entityID": 7068,
+          "npc": true,
+          "x": 0.19760000000000003,
+          "y": 0.7692,
+          "objectiveKey": "item:22229",
+          "itemID": 22229,
+          "quantity": 1,
+          "sourceAreaID": 267,
+          "itemName": "Soul Ashes of the Banished",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Condemned Acolyte"
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Bodley",
+          "entityID": 16033
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Soul Ashes of the Banished",
+          "entityID": 22229
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1427,
+          "name": "Bodley",
+          "y": 0.96457,
+          "entityID": 16033,
+          "x": 0.39875,
+          "locationSource": "Older-world fallback; published Forever 1.60.1.69893 map bounds",
+          "npc": true
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Soul Ashes of the Banished",
+          "itemID": 22229
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "title": "More Components of Importance",
+      "level": 60,
+      "areaID": 25,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1427,
+          "name": "Bodley",
+          "y": 0.96457,
+          "entityID": 16033,
+          "x": 0.39875,
+          "locationSource": "Older-world fallback; published Forever 1.60.1.69893 map bounds",
+          "npc": true
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "prerequisiteAny": [
+        8970
+      ],
+      "side": "Both",
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Bodley",
+          "entityID": 16033
+        }
+      ],
+      "xp": 6600,
+      "questType": "Elite",
+      "foreverStatus": "unchanged",
+      "raceMask": 0,
+      "minLevel": 58,
+      "requirementSource": "Wowhead Forever objective table",
+      "prerequisitesUnverified": true,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Soul Ashes of the Banished",
+            "entityID": 22229
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Bodley",
+            "entityID": 16033
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Bodley",
+            "entityID": 16033
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/blackrock-mountain"
+    }
+  }
+}

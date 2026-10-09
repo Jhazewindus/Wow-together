@@ -1,0 +1,1847 @@
+{
+  "direct_category_ids": [
+    105,
+    211,
+    838,
+    964,
+    4971,
+    4972,
+    4973,
+    4984,
+    4985,
+    4986,
+    4987,
+    5021,
+    5022,
+    5023,
+    5050,
+    5051,
+    5058,
+    5059,
+    5060,
+    5092,
+    5093,
+    5094,
+    5095,
+    5096,
+    5097,
+    5098,
+    5154,
+    5162,
+    5164,
+    5166,
+    5167,
+    5215,
+    5216,
+    5217,
+    5218,
+    5219,
+    5220,
+    5221,
+    5222,
+    5223,
+    5224,
+    5225,
+    5226,
+    5227,
+    5228,
+    5229,
+    5230,
+    5231,
+    5232,
+    5233,
+    5234,
+    5235,
+    5236,
+    5237,
+    5238,
+    5342,
+    5344,
+    5401,
+    5402,
+    5403,
+    5404,
+    5405,
+    5406,
+    5407,
+    5408,
+    5461,
+    5462,
+    5465,
+    5504,
+    5505,
+    5507,
+    5511,
+    5514,
+    5521,
+    5524,
+    5533,
+    5537,
+    5538,
+    5803,
+    5804,
+    5861,
+    5862,
+    5903,
+    5904,
+    5944,
+    6004,
+    6023,
+    6025,
+    6165,
+    6184,
+    6389,
+    6390
+  ],
+  "compiled_scope_ids": [
+    105,
+    211,
+    838,
+    964,
+    4971,
+    4972,
+    4984,
+    4985,
+    4986,
+    4987,
+    5021,
+    5022,
+    5023,
+    5048,
+    5049,
+    5050,
+    5051,
+    5058,
+    5060,
+    5066,
+    5090,
+    5091,
+    5092,
+    5093,
+    5094,
+    5095,
+    5096,
+    5097,
+    5098,
+    5142,
+    5149,
+    5152,
+    5153,
+    5154,
+    5161,
+    5162,
+    5164,
+    5166,
+    5167,
+    5215,
+    5216,
+    5217,
+    5219,
+    5220,
+    5222,
+    5223,
+    5225,
+    5226,
+    5228,
+    5229,
+    5230,
+    5231,
+    5232,
+    5233,
+    5234,
+    5235,
+    5236,
+    5237,
+    5238,
+    5342,
+    5401,
+    5405,
+    5464,
+    5465,
+    5504,
+    5505,
+    5507,
+    5511,
+    5514,
+    5521,
+    5524,
+    5533,
+    5537,
+    5538,
+    5601,
+    5801,
+    5802,
+    5803,
+    5804,
+    5861,
+    5862,
+    5901,
+    5902,
+    5903,
+    5904,
+    5944,
+    6004,
+    6023,
+    6025,
+    6182,
+    6183,
+    6184,
+    6389,
+    6390,
+    8414,
+    8416
+  ],
+  "related_catalogue_records": {
+    "5403": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5401,
+        5503,
+        5405
+      ],
+      "levelingExcluded": null,
+      "repeatable": true,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Invader's Scourgestones",
+      "level": 55,
+      "minLevel": 50
+    },
+    "5404": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5401,
+        5503,
+        5405
+      ],
+      "levelingExcluded": null,
+      "repeatable": true,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Corruptor's Scourgestones",
+      "level": 55,
+      "minLevel": 50
+    },
+    "5021": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Better Late Than Never",
+      "level": 52,
+      "minLevel": 50
+    },
+    "5149": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/eastern-plaguelands",
+      "title": "Pamela's Doll",
+      "level": 55,
+      "minLevel": 50
+    },
+    "5405": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Argent Dawn Commission",
+      "level": 55,
+      "minLevel": 50
+    },
+    "5533": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5097
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Scholomance",
+      "level": 55,
+      "minLevel": 55
+    },
+    "105": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5098
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": "Elite",
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Alas, Andorhal",
+      "level": 60,
+      "minLevel": 50
+    },
+    "211": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5097
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": "Elite",
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Alas, Andorhal",
+      "level": 60,
+      "minLevel": 50
+    },
+    "964": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        838
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Skeletal Fragments",
+      "level": 57,
+      "minLevel": 55
+    },
+    "5023": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5021
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Better Late Than Never",
+      "level": 52,
+      "minLevel": 50
+    },
+    "5215": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5092
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "The Scourge Cauldrons",
+      "level": 53,
+      "minLevel": 50
+    },
+    "5407": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5401,
+        5503,
+        5405
+      ],
+      "levelingExcluded": null,
+      "repeatable": true,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Invader's Scourgestones",
+      "level": 55,
+      "minLevel": 50
+    },
+    "5152": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5149
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/eastern-plaguelands",
+      "title": "Auntie Marlene",
+      "level": 56,
+      "minLevel": 50
+    },
+    "5216": {
+      "previousQuest": 5215,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Target: Felstone Field",
+      "level": 53,
+      "minLevel": 50
+    },
+    "5344": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5343
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": "PvP",
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "The Last Barov",
+      "level": 60,
+      "minLevel": 52
+    },
+    "5408": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5401,
+        5503,
+        5405
+      ],
+      "levelingExcluded": null,
+      "repeatable": true,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Minion's Scourgestones",
+      "level": 55,
+      "minLevel": 50
+    },
+    "5504": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Mantles of the Dawn",
+      "level": 60,
+      "minLevel": 55
+    },
+    "5153": {
+      "previousQuest": 5152,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": "Elite",
+      "categoryPath": "eastern-kingdoms/eastern-plaguelands",
+      "title": "A Strange Historian",
+      "level": 56,
+      "minLevel": 50
+    },
+    "5217": {
+      "previousQuest": 5216,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Return to Chillwind Camp",
+      "level": 53,
+      "minLevel": 50
+    },
+    "5505": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5803
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "The Key to Scholomance",
+      "level": 60,
+      "minLevel": 55
+    },
+    "5537": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5533
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Skeletal Fragments",
+      "level": 57,
+      "minLevel": 55
+    },
+    "5601": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/eastern-plaguelands",
+      "title": "Sister Pamela",
+      "level": 55,
+      "minLevel": 50
+    },
+    "5058": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Mrs. Dalson's Diary",
+      "level": 55,
+      "minLevel": 52
+    },
+    "5090": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/ironforge",
+      "title": "A Call to Arms: The Plaguelands!",
+      "level": 50,
+      "minLevel": 50
+    },
+    "5154": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5153
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "The Annals of Darrowshire",
+      "level": 56,
+      "minLevel": 50
+    },
+    "5218": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5217,
+        5230
+      ],
+      "levelingExcluded": null,
+      "repeatable": true,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Felstone Field Cauldron",
+      "level": 53,
+      "minLevel": 50
+    },
+    "5538": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5537
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Mold Rhymes With...",
+      "level": 57,
+      "minLevel": 55
+    },
+    "5219": {
+      "previousQuest": 5217,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Target: Dalson's Tears",
+      "level": 55,
+      "minLevel": 50
+    },
+    "5507": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Mantles of the Dawn",
+      "level": 60,
+      "minLevel": 55
+    },
+    "5060": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Locked Away",
+      "level": 55,
+      "minLevel": 52
+    },
+    "5092": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5066,
+        5090,
+        5091
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Clear the Way",
+      "level": 52,
+      "minLevel": 50
+    },
+    "5220": {
+      "previousQuest": 5219,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Return to Chillwind Camp",
+      "level": 55,
+      "minLevel": 50
+    },
+    "5508": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5401,
+        5503,
+        5405
+      ],
+      "levelingExcluded": null,
+      "repeatable": true,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/eastern-plaguelands",
+      "title": "Corruptor's Scourgestones",
+      "level": 55,
+      "minLevel": 50
+    },
+    "5093": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "A Call to Arms: The Plaguelands!",
+      "level": 50,
+      "minLevel": 50
+    },
+    "5221": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5220,
+        5232
+      ],
+      "levelingExcluded": null,
+      "repeatable": true,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Dalson's Tears Cauldron",
+      "level": 55,
+      "minLevel": 50
+    },
+    "5509": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5401,
+        5503,
+        5405
+      ],
+      "levelingExcluded": null,
+      "repeatable": true,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/eastern-plaguelands",
+      "title": "Invader's Scourgestones",
+      "level": 55,
+      "minLevel": 50
+    },
+    "5861": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5848
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Find Myranda",
+      "level": 60,
+      "minLevel": 52
+    },
+    "5094": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "A Call to Arms: The Plaguelands!",
+      "level": 50,
+      "minLevel": 50
+    },
+    "5222": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5220
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Target: Writhing Haunt",
+      "level": 55,
+      "minLevel": 50
+    },
+    "5510": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5401,
+        5503,
+        5405
+      ],
+      "levelingExcluded": null,
+      "repeatable": true,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/eastern-plaguelands",
+      "title": "Minion's Scourgestones",
+      "level": 55,
+      "minLevel": 50
+    },
+    "5862": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5861
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": "Elite",
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Scarlet Subterfuge",
+      "level": 60,
+      "minLevel": 52
+    },
+    "6182": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": "Elite",
+      "categoryPath": "eastern-kingdoms/stormwind-city",
+      "title": "The First and the Last",
+      "level": 60,
+      "minLevel": 56
+    },
+    "5223": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5222
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Return to Chillwind Camp",
+      "level": 55,
+      "minLevel": 50
+    },
+    "5511": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5804
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "The Key to Scholomance",
+      "level": 60,
+      "minLevel": 55
+    },
+    "6183": {
+      "previousQuest": 6182,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": "Elite",
+      "categoryPath": "eastern-kingdoms/stormwind-city",
+      "title": "Honor the Dead",
+      "level": 60,
+      "minLevel": 56
+    },
+    "5096": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5093,
+        5094,
+        5095
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Scarlet Diversions",
+      "level": 53,
+      "minLevel": 50
+    },
+    "5224": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5223,
+        5234
+      ],
+      "levelingExcluded": null,
+      "repeatable": true,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Writhing Haunt Cauldron",
+      "level": 55,
+      "minLevel": 50
+    },
+    "6184": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        6183
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": "Elite",
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Flint Shadowmore",
+      "level": 60,
+      "minLevel": 56
+    },
+    "5097": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5092
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "All Along the Watchtowers",
+      "level": 56,
+      "minLevel": 50
+    },
+    "5161": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5160
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "kalimdor/winterspring",
+      "title": "Wrath of the Blue Flight",
+      "level": 60,
+      "minLevel": 57
+    },
+    "5225": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5223
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Target: Gahrron's Withering",
+      "level": 58,
+      "minLevel": 50
+    },
+    "5801": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5538
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "kalimdor/tanaris",
+      "title": "Fire Plume Forged",
+      "level": 57,
+      "minLevel": 55
+    },
+    "6025": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        6023
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": "Elite",
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Unfinished Business",
+      "level": 58,
+      "minLevel": 50
+    },
+    "6185": {
+      "previousQuest": 6184,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": "Elite",
+      "categoryPath": "eastern-kingdoms/eastern-plaguelands",
+      "title": "The Eastern Plagues",
+      "level": 60,
+      "minLevel": 56
+    },
+    "5066": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/stormwind-city",
+      "title": "A Call to Arms: The Plaguelands!",
+      "level": 50,
+      "minLevel": 50
+    },
+    "5098": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5096
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": "Elite",
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "All Along the Watchtowers",
+      "level": 56,
+      "minLevel": 50
+    },
+    "5162": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5161
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": "Elite",
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Wrath of the Blue Flight",
+      "level": 60,
+      "minLevel": 57
+    },
+    "5226": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5225
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Return to Chillwind Camp",
+      "level": 58,
+      "minLevel": 50
+    },
+    "5514": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        964
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Mold Rhymes With...",
+      "level": 57,
+      "minLevel": 55
+    },
+    "5802": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5514
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "kalimdor/tanaris",
+      "title": "Fire Plume Forged",
+      "level": 57,
+      "minLevel": 55
+    },
+    "5227": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5226,
+        5236
+      ],
+      "levelingExcluded": null,
+      "repeatable": true,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Gahrron's Withering Cauldron",
+      "level": 58,
+      "minLevel": 50
+    },
+    "4972": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        4971
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Counting Out Time",
+      "level": 56,
+      "minLevel": 53
+    },
+    "5164": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5162
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": "Elite",
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Catalogue of the Wayward",
+      "level": 60,
+      "minLevel": 57
+    },
+    "5228": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5096
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "The Scourge Cauldrons",
+      "level": 53,
+      "minLevel": 50
+    },
+    "5804": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5802
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": "Elite",
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Araj's Scarab",
+      "level": 60,
+      "minLevel": 55
+    },
+    "4973": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        4972
+      ],
+      "levelingExcluded": null,
+      "repeatable": true,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Counting Out Time",
+      "level": 56,
+      "minLevel": 53
+    },
+    "5229": {
+      "previousQuest": 5228,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Target: Felstone Field",
+      "level": 53,
+      "minLevel": 50
+    },
+    "5901": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/tirisfal-glades",
+      "title": "A Plague Upon Thee",
+      "level": 55,
+      "minLevel": 48
+    },
+    "5230": {
+      "previousQuest": 5229,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Return to the Bulwark",
+      "level": 53,
+      "minLevel": 50
+    },
+    "838": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5098
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Scholomance",
+      "level": 55,
+      "minLevel": 55
+    },
+    "5231": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5230
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Target: Dalson's Tears",
+      "level": 55,
+      "minLevel": 50
+    },
+    "8414": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "classes/paladin",
+      "title": "Dispelling Evil",
+      "level": 52,
+      "minLevel": 50
+    },
+    "5232": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5231
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Return to the Bulwark",
+      "level": 55,
+      "minLevel": 50
+    },
+    "5904": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5903
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "A Plague Upon Thee",
+      "level": 55,
+      "minLevel": 48
+    },
+    "8416": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        8414
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "classes/paladin",
+      "title": "Inert Scourgestones",
+      "level": 52,
+      "minLevel": 50
+    },
+    "5233": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5232
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Target: Writhing Haunt",
+      "level": 55,
+      "minLevel": 50
+    },
+    "5521": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Chromatic Mantle of the Dawn",
+      "level": 60,
+      "minLevel": 55
+    },
+    "8418": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        8416
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": "Dungeon",
+      "categoryPath": "classes/paladin",
+      "title": "Forging the Mightstone",
+      "level": 52,
+      "minLevel": 50
+    },
+    "5234": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5233
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Return to the Bulwark",
+      "level": 55,
+      "minLevel": 50
+    },
+    "5235": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5234
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Target: Gahrron's Withering",
+      "level": 58,
+      "minLevel": 50
+    },
+    "6023": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        6004
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Unfinished Business",
+      "level": 57,
+      "minLevel": 50
+    },
+    "5236": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5235
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Return to the Bulwark",
+      "level": 58,
+      "minLevel": 50
+    },
+    "5524": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Chromatic Mantle of the Dawn",
+      "level": 60,
+      "minLevel": 55
+    },
+    "6004": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Unfinished Business",
+      "level": 56,
+      "minLevel": 50
+    },
+    "5237": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5226
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Mission Accomplished!",
+      "level": 58,
+      "minLevel": 50
+    },
+    "5461": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5384
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": "Elite",
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "The Human, Ras Frostwhisper",
+      "level": 60,
+      "minLevel": 57
+    },
+    "6165": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "<NYI> <TXT> Archmage Timolain's Remains",
+      "level": 58,
+      "minLevel": 50
+    },
+    "6389": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5904
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "A Plague Upon Thee",
+      "level": 55,
+      "minLevel": 48
+    },
+    "5142": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/eastern-plaguelands",
+      "title": "Little Pamela",
+      "level": 55,
+      "minLevel": 50
+    },
+    "5238": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5236
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Mission Accomplished!",
+      "level": 58,
+      "minLevel": 50
+    },
+    "5462": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5461
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": "Elite",
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "The Dying, Ras Frostwhisper",
+      "level": 60,
+      "minLevel": 57
+    },
+    "6390": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5902
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "A Plague Upon Thee",
+      "level": 55,
+      "minLevel": 48
+    },
+    "5902": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5901
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/tirisfal-glades",
+      "title": "A Plague Upon Thee",
+      "level": 55,
+      "minLevel": 48
+    },
+    "4984": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "The Wildlife Suffers Too",
+      "level": 54,
+      "minLevel": 51
+    },
+    "5048": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5022,
+        5023
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/stormwind-city",
+      "title": "Good Natured Emma",
+      "level": 52,
+      "minLevel": 50
+    },
+    "5464": {
+      "previousQuest": 5463,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": "Elite",
+      "categoryPath": "eastern-kingdoms/eastern-plaguelands",
+      "title": "Menethil's Gift",
+      "level": 60,
+      "minLevel": 57
+    },
+    "5903": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "A Plague Upon Thee",
+      "level": 55,
+      "minLevel": 48
+    },
+    "5944": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5862
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": "Elite",
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "In Dreams",
+      "level": 60,
+      "minLevel": 52
+    },
+    "5059": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": true,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Locked Away",
+      "level": 55,
+      "minLevel": 52
+    },
+    "4985": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        4984
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "The Wildlife Suffers Too",
+      "level": 56,
+      "minLevel": 51
+    },
+    "5049": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5022,
+        5023
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/undercity",
+      "title": "The Jeremiah Blues",
+      "level": 52,
+      "minLevel": 50
+    },
+    "5241": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5149
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/eastern-plaguelands",
+      "title": "Uncle Carlin",
+      "level": 56,
+      "minLevel": 50
+    },
+    "5401": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Argent Dawn Commission",
+      "level": 55,
+      "minLevel": 50
+    },
+    "5465": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5464
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": "Elite",
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Soulbound Keepsake",
+      "level": 60,
+      "minLevel": 57
+    },
+    "5803": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5801
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": "Elite",
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Araj's Scarab",
+      "level": 60,
+      "minLevel": 55
+    },
+    "5406": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5401,
+        5503,
+        5405
+      ],
+      "levelingExcluded": null,
+      "repeatable": true,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Corruptor's Scourgestones",
+      "level": 55,
+      "minLevel": 50
+    },
+    "5342": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5341
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": "PvP",
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "The Last Barov",
+      "level": 60,
+      "minLevel": 52
+    },
+    "5167": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5164
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": "Elite",
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Legplates of the Chromatic Defier",
+      "level": 60,
+      "minLevel": 57
+    },
+    "5166": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5164
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": "Elite",
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Breastplate of the Chromatic Flight",
+      "level": 60,
+      "minLevel": 57
+    },
+    "5095": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "A Call to Arms: The Plaguelands!",
+      "level": 50,
+      "minLevel": 50
+    },
+    "5091": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "kalimdor/darnassus",
+      "title": "A Call to Arms: The Plaguelands!",
+      "level": 50,
+      "minLevel": 50
+    },
+    "5051": {
+      "previousQuest": 5050,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Two Halves Become One",
+      "level": 54,
+      "minLevel": 50
+    },
+    "5022": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5021
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Better Late Than Never",
+      "level": 52,
+      "minLevel": 50
+    },
+    "4987": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        4985
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Glyphed Oaken Branch",
+      "level": 56,
+      "minLevel": 51
+    },
+    "4971": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": null,
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "A Matter of Time",
+      "level": 56,
+      "minLevel": 53
+    },
+    "4986": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        4985
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Glyphed Oaken Branch",
+      "level": 56,
+      "minLevel": 51
+    },
+    "5050": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5048,
+        5049
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Good Luck Charm",
+      "level": 52,
+      "minLevel": 50
+    },
+    "5210": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5154
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/eastern-plaguelands",
+      "title": "Brother Carlin",
+      "level": 56,
+      "minLevel": 50
+    },
+    "5402": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5401,
+        5503,
+        5405
+      ],
+      "levelingExcluded": null,
+      "repeatable": true,
+      "questType": null,
+      "categoryPath": "eastern-kingdoms/western-plaguelands",
+      "title": "Minion's Scourgestones",
+      "level": 55,
+      "minLevel": 50
+    },
+    "5466": {
+      "previousQuest": null,
+      "prerequisiteAll": null,
+      "prerequisiteAny": [
+        5465
+      ],
+      "levelingExcluded": null,
+      "repeatable": null,
+      "questType": "Dungeon",
+      "categoryPath": "dungeons/scholomance",
+      "title": "The Lich, Ras Frostwhisper",
+      "level": 60,
+      "minLevel": 57
+    }
+  },
+  "uncompiled_direct_ids": [
+    4973,
+    5059,
+    5218,
+    5221,
+    5224,
+    5227,
+    5344,
+    5402,
+    5403,
+    5404,
+    5406,
+    5407,
+    5408,
+    5461,
+    5462,
+    6165
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
+  "quest_records": 39,
+  "static_points_checked": 112,
+  "fixed_zone_guides_checked": 3,
+  "catalogue_reason_stages_checked": 130,
+  "catalogue_reason_codes": {
+    "level-work": 39,
+    "quest-objective": 52,
+    "quest-reward": 39
+  },
+  "reason_review_quest_ids": [
+    9,
+    12,
+    13,
+    14,
+    22,
+    36,
+    38,
+    64,
+    65,
+    102,
+    103,
+    104,
+    117,
+    132,
+    135,
+    136,
+    138,
+    139,
+    141,
+    142,
+    151,
+    152,
+    153,
+    184,
+    6181,
+    6261,
+    6281,
+    6285,
+    79008,
+    92742,
+    92744,
+    92745,
+    92747,
+    92749,
+    92753,
+    92909,
+    92911,
+    93928,
+    98021
+  ],
+  "source_data_gap_free_guides": 2,
+  "guides": [
+    {
+      "faction": "Alliance",
+      "zone": "Westfall",
+      "key": "level-zone:eastern-kingdoms/westfall:levels:1-10",
+      "quests": 8,
+      "steps": 26,
+      "unknown_location_steps": 0,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": true,
+      "reason_steps_checked": 26,
+      "destination_reason_codes": {
+        "outside-level-range": 14,
+        "prerequisite": 5,
+        "quest-reward": 7
+      },
+      "reason_review_steps": 14,
+      "cross_zone_reason_steps": 7,
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 11480,
+      "uncertain_travel_legs": 8,
+      "estimated_distance_before": 95741.28,
+      "estimated_distance_after": 94240.2
+    },
+    {
+      "faction": "Alliance",
+      "zone": "Westfall",
+      "key": "level-zone:eastern-kingdoms/westfall:levels:11-20",
+      "quests": 38,
+      "steps": 127,
+      "unknown_location_steps": 1,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [
+          92749
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 127,
+      "destination_reason_codes": {
+        "outside-level-range": 86,
+        "prerequisite": 4,
+        "quest-log-space": 1,
+        "quest-reward": 34,
+        "return-hub": 2
+      },
+      "reason_review_steps": 86,
+      "cross_zone_reason_steps": 7,
+      "flow_alternatives_evaluated": 92,
+      "flow_loop_changes": 2,
+      "flow_state_valid": true,
+      "quest_log_peak": 13,
+      "quest_reward_only_xp_shortfall": 59210,
+      "uncertain_travel_legs": 31,
+      "estimated_distance_before": 136738.89,
+      "estimated_distance_after": 133286.65
+    },
+    {
+      "faction": "Horde",
+      "zone": "Westfall",
+      "key": "level-zone:eastern-kingdoms/westfall:levels:11-20",
+      "quests": 7,
+      "steps": 24,
+      "unknown_location_steps": 0,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": true,
+      "reason_steps_checked": 24,
+      "destination_reason_codes": {
+        "outside-level-range": 17,
+        "quest-reward": 6,
+        "return-hub": 1
+      },
+      "reason_review_steps": 17,
+      "cross_zone_reason_steps": 0,
+      "flow_alternatives_evaluated": 3,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 49650,
+      "uncertain_travel_legs": 9,
+      "estimated_distance_before": 20061.7,
+      "estimated_distance_after": 20061.7
+    }
+  ],
+  "scope": {
+    "zone": "Westfall",
+    "catalogue_records": "Exact quest zone; guide dependencies still compile normally"
+  }
+}

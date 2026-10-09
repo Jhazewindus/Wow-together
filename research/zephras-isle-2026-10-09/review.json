@@ -1,0 +1,71 @@
+{
+  "zone": "Zephras Isle",
+  "date": "2026-10-09 Europe/Amsterdam",
+  "addon": "0.8.61",
+  "baseline_commit": "19f7d7906c71835fdb31665c4d2fc5efcc01a0ae",
+  "main_commit": "09155ca265278572649a3529b8ce7ea1b4eb8431",
+  "stage_corrected_ids": [
+    92597,
+    92598
+  ],
+  "direct_map_category_records": 116,
+  "compiled_standard_and_racial_ids": 132,
+  "standard_actions_before_and_after": {
+    "Horde": [
+      234,
+      171
+    ],
+    "Alliance": [
+      207,
+      175
+    ]
+  },
+  "racial_actions_before_and_after": {
+    "Ironborn96": [
+      240,
+      171
+    ],
+    "Skyborn95": [
+      213,
+      175
+    ]
+  },
+  "all_stage_gap_ids_retained": [
+    94901,
+    94902
+  ],
+  "uncertain_pickup_union_retained": [
+    1516,
+    1519,
+    92464,
+    92466,
+    92595,
+    92596,
+    94484,
+    94493
+  ],
+  "strict_states": 32,
+  "all_orders_valid": true,
+  "all_endpoints_preserved": true,
+  "guard": "PASS: unchanged same-facts metrics",
+  "optimization_gain_claimed": false,
+  "tests": {
+    "zone": 126,
+    "focused": 5,
+    "host": 122,
+    "importer": 49,
+    "Lua51_compile": 86
+  },
+  "global_audit": {
+    "sections": 152,
+    "points": 11829,
+    "recorded_gap_free": 33,
+    "unresolved_ordinary_records": 375
+  },
+  "global_audit_rows_changed": [],
+  "source_hashes_verified": 24,
+  "entity_world_completion_xp_preserved": true,
+  "shared_runtime_modules_authored": false,
+  "native_beta_verified": false,
+  "full_suite_rerun": false
+}

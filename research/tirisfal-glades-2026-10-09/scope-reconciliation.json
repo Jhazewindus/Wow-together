@@ -1,0 +1,13 @@
+{
+  "raw_guard": "ValueError: Required action scope changed",
+  "reason": "The newly exposed Discipline gap adds one unlocated work placeholder. The Tarnished maps its existing unknown head work occurrence, without adding an action.",
+  "method": "Retain every old action and add only the explicit unknown placeholder before its actual hand-in. Compare same complete corrected scope; no travel gain from an omitted unknown goal.",
+  "changes": [
+    {
+      "key": "level-zone:eastern-kingdoms/tirisfal-glades:levels:1-10",
+      "questID": 99134,
+      "added": "explicit unlocated unmodeled punishment placeholder before actual hand-in",
+      "old_actions_removed": 0
+    }
+  ]
+}

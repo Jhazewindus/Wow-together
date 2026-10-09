@@ -1,0 +1,116 @@
+{
+  "applied": false,
+  "shared_runtime_modules_authored": false,
+  "reproducers": {
+    "6395_Marlas_Last_Wish": {
+      "steps": {
+        "before": [
+          {
+            "id": 6395,
+            "kind": "a",
+            "mapID": 1420,
+            "x": 0.308,
+            "y": 0.66,
+            "entityID": 1661
+          },
+          {
+            "id": 6395,
+            "kind": "q",
+            "mapID": 1420,
+            "x": 0.312,
+            "y": 0.65,
+            "entityID": 178090,
+            "objectiveKey": "object:178090",
+            "quantity": 1
+          },
+          {
+            "id": 6395,
+            "kind": "q",
+            "mapID": 1420,
+            "x": 0.366,
+            "y": 0.616,
+            "action": "collect",
+            "entityID": 1919,
+            "objectiveKey": "item:16333",
+            "quantity": 1
+          },
+          {
+            "id": 6395,
+            "kind": "t",
+            "mapID": 1420,
+            "x": 0.308,
+            "y": 0.66,
+            "entityID": 1661
+          }
+        ],
+        "after": [
+          {
+            "id": 6395,
+            "kind": "a",
+            "mapID": 1420,
+            "x": 0.308,
+            "y": 0.66,
+            "entityID": 1661
+          },
+          {
+            "id": 6395,
+            "kind": "q",
+            "mapID": 1420,
+            "x": 0.312,
+            "y": 0.65,
+            "action": "interact",
+            "entityID": 178090,
+            "entityType": "object",
+            "objectiveKey": "object:178090",
+            "quantity": 1
+          },
+          {
+            "id": 6395,
+            "kind": "q",
+            "mapID": 1420,
+            "x": 0.366,
+            "y": 0.616,
+            "action": "collect",
+            "entityID": 1919,
+            "objectiveKey": "item:16333",
+            "quantity": 1
+          },
+          {
+            "id": 6395,
+            "kind": "t",
+            "mapID": 1420,
+            "x": 0.308,
+            "y": 0.66,
+            "entityID": 1661
+          }
+        ]
+      },
+      "problem": "Both complete captured 1\u201310 plans put grave interaction before Samuel remains acquisition. Source explicitly requires acquisition then burial. Catalogue input is no longer an extra hand-in; shared objective-stage dependency/order support is needed before merge.",
+      "native_verified": false
+    },
+    "99134_Discipline": {
+      "published_goal": "Punish five Deathguards",
+      "providedItem": 286176,
+      "current_problem": "Existing six individual requirements plus legacy Cyrus point are treated as mandatory; friendly targets include kill-action fallbacks. No typed published target list or five-of-many completion model. Input retained and incomplete-work placeholder added, target instructions/counts withheld from further edits pending coordination.",
+      "native_verified": false
+    }
+  },
+  "remaining_gaps": {
+    "99141": "Obtain three reports; item facts name no NPC drop/vendor/dialogue relation, so matching NPC names/positions do not prove report acquisition work.",
+    "99144": "Published escort/escape lacks path and completion trigger; recipient is not an evidenced escort endpoint.",
+    "96896": "Observed conversation lacks mapped event trigger; giver/recipient coordinates alone are insufficient.",
+    "1819": "Published Ulag singular goal has no explicit typed count; keep quantity unknown and extra offer conditions.",
+    "96897": "Prose names eight Neophytes/eight Enforcers but typed list additionally names Decrepit Darkhound without count. Preserve conflict; no invented count or silently removed target."
+  },
+  "class_pickups_uncertain": [
+    1470,
+    1498,
+    1818,
+    1819,
+    1881,
+    1885
+  ],
+  "branches": "Published exclusiveTo links require actual offer/completed-hand-in observations; preserve current confirmation safeguards. Trainer setting and exact class/race masks remain.",
+  "source_access": "Pinned verified cache used; no new forum/comment access or native beta evidence claimed.",
+  "access": "Deathknell/Brill/Undercity lifts and interiors, Night Web hollow entrance, Agamand crypt descent and Bareth escort require native checks. Existing map positions do not prove safe roads, transports or personal flight unlocks."
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "url": "https://classicdb.ch/?quest=1150",
+    "questID": 1150,
+    "http_status": 200,
+    "access_date": "2026-10-09 Europe/Amsterdam",
+    "sha256": "2e666f882fa1a6ad6f3ce949f9020be35d8046765312b8e1bb974423d52b2f33",
+    "scope": "Exact unchanged identity and preparation only; no measured beta map point, lift or hidden-gate proof. Raw source prose/comments omitted."
+  },
+  {
+    "url": "https://classicdb.ch/?quest=5088",
+    "questID": 5088,
+    "http_status": 200,
+    "access_date": "2026-10-09 Europe/Amsterdam",
+    "sha256": "7a59fe06ccfd24440951069e7a50ba11d0eac9ec20d051ec430186fd1ac487cf",
+    "scope": "Exact unchanged identity and preparation only; no measured beta map point, lift or hidden-gate proof. Raw source prose/comments omitted."
+  },
+  {
+    "url": "https://classicdb.ch/?quest=5151",
+    "questID": 5151,
+    "http_status": 200,
+    "access_date": "2026-10-09 Europe/Amsterdam",
+    "sha256": "5b69a1cf511028dd3abd7c8d1af509611ec039e67ee9f82d94fa21639ebd48b5",
+    "scope": "Exact unchanged identity and preparation only; no measured beta map point, lift or hidden-gate proof. Raw source prose/comments omitted."
+  }
+]

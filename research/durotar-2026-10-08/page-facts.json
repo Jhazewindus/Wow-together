@@ -1,0 +1,332 @@
+[
+  {
+    "questID": 1518,
+    "url": "https://www.wowhead.com/forever/quest=1518",
+    "sha256": "507c0436c8e6a5497119953a9907de147a9e89c26492f7ec5c66c32f076ce405",
+    "captured": "2026-10-08",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 5891,
+          "name": "Minor Manifestation of Earth"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 5887,
+          "name": "Canaga Earthcaller"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 6656,
+          "name": "Rough Quartz",
+          "quantity": 1
+        }
+      ]
+    },
+    "current_comment_ids": []
+  },
+  {
+    "questID": 1521,
+    "url": "https://www.wowhead.com/forever/quest=1521",
+    "sha256": "629bc9c9f60a895622d078102726775831fa27ef0ced6f4b1ff5c60749e6755f",
+    "captured": "2026-10-08",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 5891,
+          "name": "Minor Manifestation of Earth"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 5888,
+          "name": "Seer Ravenfeather"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 6656,
+          "name": "Rough Quartz",
+          "quantity": 1
+        }
+      ]
+    },
+    "current_comment_ids": []
+  },
+  {
+    "questID": 1524,
+    "url": "https://www.wowhead.com/forever/quest=1524",
+    "sha256": "1c572321f109bf813e51e0d8c57de7d26b693741843fb6a200582f94974a11d4",
+    "captured": "2026-10-08",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 5907,
+          "name": "Kranal Fiss"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 5900,
+          "name": "Telf Joolam"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 6653,
+          "name": "Torch of the Dormant Flame",
+          "quantity": 1
+        }
+      ]
+    },
+    "current_comment_ids": []
+  },
+  {
+    "questID": 1525,
+    "url": "https://www.wowhead.com/forever/quest=1525",
+    "sha256": "e0d51ccb317bc5875fd75e64c4527f2d7a0322bd2cf9fda2ddf90b1204265fe6",
+    "captured": "2026-10-08",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 5900,
+          "name": "Telf Joolam"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 5900,
+          "name": "Telf Joolam"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 5026,
+          "name": "Fire Tar",
+          "quantity": 1
+        },
+        {
+          "entityType": "item",
+          "entityID": 6652,
+          "name": "Reagent Pouch",
+          "quantity": 1
+        }
+      ],
+      "provided": []
+    },
+    "current_comment_ids": [
+      6430512
+    ]
+  },
+  {
+    "questID": 1527,
+    "url": "https://www.wowhead.com/forever/quest=1527",
+    "sha256": "e96affc9b3e291bfbbcc27b71d90505072b579b8eea933cabfa7e994e87113ea",
+    "captured": "2026-10-08",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "object",
+          "entityID": 61934,
+          "name": "Brazier of the Dormant Flame"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 5907,
+          "name": "Kranal Fiss"
+        }
+      ],
+      "requirements": [],
+      "provided": [
+        {
+          "entityType": "item",
+          "entityID": 6654,
+          "name": "Torch of the Eternal Flame",
+          "quantity": 1
+        }
+      ]
+    },
+    "current_comment_ids": []
+  },
+  {
+    "questID": 785,
+    "url": "https://www.wowhead.com/forever/quest=785",
+    "sha256": "4c45126c0404af8d2b376e324b96b502ae37ac92eb7b2602cb0ede769af607e7",
+    "captured": "2026-10-08",
+    "relations": {
+      "starts": [],
+      "ends": [],
+      "requirements": [],
+      "provided": []
+    },
+    "current_comment_ids": []
+  },
+  {
+    "questID": 787,
+    "url": "https://www.wowhead.com/forever/quest=787",
+    "sha256": "9670ee291e52df9af785b1b3553de3e862a208bf24d981d44530427cad97fac2",
+    "captured": "2026-10-08",
+    "relations": {
+      "starts": [],
+      "ends": [],
+      "requirements": [],
+      "provided": []
+    },
+    "current_comment_ids": [
+      6436200
+    ]
+  },
+  {
+    "questID": 96873,
+    "url": "https://www.wowhead.com/forever/quest=96873",
+    "sha256": "7e53718d0ab00ba9531d47b4853f639d70a51f19355cb084b9490c6bc0998fc2",
+    "captured": "2026-10-08",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 266881,
+          "name": "Pa'zula"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 266881,
+          "name": "Pa'zula"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 247884,
+          "name": "Luminous Residue",
+          "quantity": 3
+        }
+      ],
+      "provided": []
+    },
+    "current_comment_ids": [
+      6435030,
+      6438993
+    ]
+  },
+  {
+    "questID": 96874,
+    "url": "https://www.wowhead.com/forever/quest=96874",
+    "sha256": "b489fa7ed387a03b72ed918e6225a30efa1b338634d6542d74af1bea86fba521",
+    "captured": "2026-10-08",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 10266,
+          "name": "Ug'thok"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 10266,
+          "name": "Ug'thok"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 275719,
+          "name": "Weathered Spine",
+          "quantity": 5
+        },
+        {
+          "entityType": "item",
+          "entityID": 3470,
+          "name": "Rough Grinding Stone",
+          "quantity": 5
+        }
+      ],
+      "provided": []
+    },
+    "current_comment_ids": [
+      6441571
+    ]
+  },
+  {
+    "questID": 99123,
+    "url": "https://www.wowhead.com/forever/quest=99123",
+    "sha256": "809b853bca6444f08455e80d754c60ebf39680b3c961a2e29acdb8289dacb6c7",
+    "captured": "2026-10-08",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 275811,
+          "name": "Pal'juh"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 3304,
+          "name": "Master Vornal"
+        }
+      ],
+      "requirements": [],
+      "provided": []
+    },
+    "current_comment_ids": []
+  },
+  {
+    "questID": 4402,
+    "url": "https://www.wowhead.com/forever/quest=4402",
+    "sha256": "9497cf782ca1d67973c53a971e6a6b6d651e5c2f8f811e8a31d71536fedc0883",
+    "captured": "2026-10-08",
+    "relations": {
+      "starts": [
+        {
+          "entityType": "npc",
+          "entityID": 9796,
+          "name": "Galgar"
+        }
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "entityID": 9796,
+          "name": "Galgar"
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "entityID": 11583,
+          "name": "Cactus Apple",
+          "quantity": 10
+        }
+      ],
+      "provided": []
+    },
+    "current_comment_ids": [
+      6434923
+    ]
+  }
+]

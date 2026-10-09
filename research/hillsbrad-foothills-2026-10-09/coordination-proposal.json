@@ -1,0 +1,19 @@
+{
+  "applied": false,
+  "shared_runtime_modules_authored": false,
+  "completion": {
+    "observed_current_host_bug": false,
+    "cases": 5,
+    "full_horde_unfinished": 43,
+    "full_horde_temporary_deferrals": 8,
+    "source": "completion-reproducer.json",
+    "request": "Compare failing native addon/build/guide key, public quest snapshot and checkpoint across Scan/reload/zone entry. Do not assume the historical 0.8.59 report still applies to 0.8.61."
+  },
+  "remaining_unknowns": {
+    "515": "Potion procurement: no actual current vendor/recipe/drop point. Keep one potion and actual component farm counts.",
+    "565": "Cloth/cloak procurement unknown after removing unsupported flight-master acquisition; no profession eligibility invented.",
+    "98059_98071": "No pinned beta quest entries; current typed delivery/case/hops facts do not establish objective points.",
+    "98095": "Three peak placements still unmapped; source category preserved; no invented Scout Support prerequisite."
+  },
+  "routing": "20 strict states PASS; full action/endpoints and same-facts metrics unchanged. Host geography is not measured terrain; native event/escort/transport ordering needs checklist."
+}

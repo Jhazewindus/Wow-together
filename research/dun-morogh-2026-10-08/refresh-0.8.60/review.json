@@ -1,0 +1,146 @@
+{
+  "date": "2026-10-08",
+  "baseline": {
+    "main": "eec9b995631b1aa036b03e5935663bcebbb16f10",
+    "branch_before": "8371d248e4f1b88c3d1ded580026dd8256412a42",
+    "version": "0.8.60"
+  },
+  "status": "Research follow-up; retained corrections and tester gate. Routing tradeoffs, unknown source facts and later cross-zone inclusion remain explicit.",
+  "shipped_data_changes": [],
+  "previous_data_commit": "2aa164c44c7fdc0d3d448c1ff4065aca4b15aac6",
+  "scope": {
+    "compiled_distinct_ids": 55,
+    "standard_actions": [
+      151,
+      30
+    ],
+    "dwarf_actions": [
+      151,
+      30
+    ],
+    "category_entries": 60,
+    "later_handoffs_outside_compiled_scope": [
+      466,
+      467
+    ]
+  },
+  "source_review": {
+    "pinned_manifest_commit": "e0a6eaa86f181ac99262e34126bcd2ed1a1712d6",
+    "verified_source_files": 24,
+    "verified_cached_quest_pages": 57,
+    "fresh_quest_pages": 22,
+    "fresh_entity_pages": 13,
+    "prior_secondary_findings": "Same-day parent review retained; earlier denials not bypassed."
+  },
+  "before": {
+    "missing_location_quest_ids_by_stage": {
+      "a": [
+        98423
+      ],
+      "q": [
+        95217
+      ],
+      "t": []
+    },
+    "unverified_pickup_requirement_quest_ids": [
+      282
+    ],
+    "unverified_objective_quantity_quest_ids": []
+  },
+  "after": {
+    "missing_location_quest_ids_by_stage": {
+      "a": [
+        98423
+      ],
+      "q": [
+        95217
+      ],
+      "t": []
+    },
+    "unverified_pickup_requirement_quest_ids": [
+      282
+    ],
+    "unverified_objective_quantity_quest_ids": []
+  },
+  "priority_decisions": {
+    "retained_tester_gate": {
+      "questID": 99161,
+      "previousQuest": 99162,
+      "source": "Tester report2026-10-07; level7 Alliance dwarf, build70245, addon0.8.42; exact retained rule in tools/quest_corrections.json.",
+      "current_web_prerequisite_confirmation": false
+    },
+    "distinct_rime_objectives": {
+      "99160": {
+        "entityID": 276003,
+        "quantity": 10
+      },
+      "99161": {
+        "itemID": 286325,
+        "entityID": 276009,
+        "quantity": 1
+      }
+    },
+    "winter_wolf": {
+      "entityID": 1131,
+      "published_item_relation": 769,
+      "live_objective_proof": false,
+      "generic_markers_restored": false,
+      "source_list_count_note": "Listview count is aggregated source data, not objective quantity or guaranteed drops."
+    },
+    "retained_boar_point": {
+      "questID": 95217,
+      "entityID": 1689,
+      "mapID": 1426,
+      "x": 0.738,
+      "y": 0.526,
+      "missing_material": 2840
+    }
+  },
+  "validation": {
+    "focused_tests": {
+      "tests": 55,
+      "passed": 55,
+      "modules": [
+        "test_dun_morogh_coverage",
+        "test_0844",
+        "test_zone_coverage",
+        "test_0819"
+      ]
+    },
+    "lua51_files_compiled": 84,
+    "interface": 16001,
+    "scoped_audit": {
+      "guides": 2,
+      "source_points": 164,
+      "passed": true
+    },
+    "identity_replay_passed": true,
+    "packed_catalogue_identical_to_last_full_suite": true,
+    "last_combined_full_suite": {
+      "tests": 1493,
+      "passed": 1492,
+      "failed": 1,
+      "failure": "Known historical test_0829 catalogue fingerprint mismatch; fixture unchanged.",
+      "note": "Subsequent commits changed only research/docs; no repeated full run needed for this follow-up."
+    },
+    "native_beta": "Not run; player checklist required"
+  },
+  "route_review": {
+    "standard": "repriced-flow.json",
+    "dwarf": "repriced-dwarf-flow.json",
+    "historical_baselines": [
+      "../before-flow.json",
+      "../before-dwarf-flow.json"
+    ],
+    "candidate_valid_states": 16,
+    "baseline_valid_under_corrected_facts": true,
+    "actions_and_endpoints_preserved": true,
+    "passes_optimization_guard": false,
+    "note": "Historical boar correction repriced under unchanged current runtime; this documentation-only follow-up does not itself change the route."
+  },
+  "shared_code_handoff": [
+    "Early route log peak8 to10, uncertain legs25 to26 and reward delays before319/320/412/413/415/417/419/95212 remain.",
+    "Search for Incendicite466 pickup/handin inDun Morogh but work inWetlands; localWork excludes it. Decide later useful pickup/handoff coverage with main before engine changes."
+  ],
+  "player_checklist": "README.md#player-checklist"
+}

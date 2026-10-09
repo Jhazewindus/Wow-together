@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.61"
-ns.RELEASE_NAME = "SESSION CHECKPOINTS AND DUNGEON TRACKING"
+ns.VERSION = "0.8.62"
+ns.RELEASE_NAME = "REVIEWED ZONE UPDATES"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}
