@@ -1,0 +1,21 @@
+{
+  "baseline_commit": "116bd8bd306e52af7b13596cc50f6249ae25740c",
+  "questID": 5901,
+  "corrected_instruction": "Gather 100 Plagueland Termites",
+  "supplied_jar_retained": 15042,
+  "supplied_count_unknown": true,
+  "actual_output_count_retained": 100,
+  "tests": {
+    "Tirisfal_focused": 6,
+    "text": 20,
+    "importer": 49,
+    "Lua51_compile": 86
+  },
+  "strict_states": 20,
+  "same_facts_guard": "PASS: unchanged complete-route metrics",
+  "old_Tirisfal_review_blockers_cleared": false,
+  "global_counts_or_gaps_changed": false,
+  "shared_runtime_modules_authored": false,
+  "native_beta_verified": false,
+  "full_suite_rerun": false
+}

@@ -7546,7 +7546,7 @@
   {
     "questID": 5901,
     "title": "A Plague Upon Thee",
-    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Use the explicitly supplied empty jar at the mapped termite mound; preserve 100 termites, real hand-in and cross-zone destination. Supplied count remains unknown. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09.",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Keep explicitly supplied empty jar with unknown supply count, actual 100-termite output and existing mound/gather instruction. Generic use text incorrectly turns output count into a 100-target requirement, so retain working gather behavior pending coordinated input/output tool-text support. Verified pinned facts; research/tirisfal-glades-2026-10-09/termite-count-follow-up.",
     "stageCorrection": {
       "kind": "stage-facts",
       "minLevel": 48,
@@ -7619,7 +7619,7 @@
           {
             "entityType": "object",
             "mapID": 1423,
-            "action": "use",
+            "action": "gather",
             "entityID": 177464,
             "x": 0.18,
             "y": 0.2257,
@@ -7629,9 +7629,7 @@
             "sourceAreaID": 139,
             "itemName": "Plagueland Termites",
             "locationSource": "Published Forever converted-baseline entity position",
-            "name": "Large Termite Mound",
-            "useItemName": "Empty Termite Jar",
-            "useItemID": 15042
+            "name": "Large Termite Mound"
           }
         ],
         "npcTargets": [],

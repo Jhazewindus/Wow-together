@@ -1,0 +1,4 @@
+Horde: level-zone:eastern-kingdoms/tirisfal-glades:levels:1-10: 223 actions
+Horde: level-zone:eastern-kingdoms/tirisfal-glades:levels:11-20: 170 actions
+Horde: level-zone:eastern-kingdoms/tirisfal-glades:levels:51-60: 6 actions
+Saved 3 complete guides to /tmp/termite-count-review/after-flow.json

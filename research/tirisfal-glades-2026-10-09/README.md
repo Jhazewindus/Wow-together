@@ -1,5 +1,7 @@
 # Tirisfal Glades review — 9 October 2026
 
+Current follow-up: [termite output-count correction](termite-count-follow-up/README.md) restores the counted gather instruction while preserving the supplied jar; generic use text was treating 100 termites as 100 mound targets. Earlier source/route evidence below is retained as its dated baseline.
+
 Refreshed addon 0.8.61 at guides/coverage `5bec9dfde8fdcbc70ae59f808a0e4b445ce88117`; main `09155ca265278572649a3529b8ce7ea1b4eb8431`. The supplied 0.8.59 snapshot is historical. Inventory: 66 direct category records, 96 compiled IDs across Horde 1–10, 11–20 and 51–60, with class/cross-zone continuations. Three direct uncompiled records remain: Dormant Shade, Candles of Beckoning and Welcome!; their absent pinned quest facts do not justify new offers or ordinary route insertion. Twenty-four Orc/Undead class/Ironborn chapter profiles retain the 96-ID union. Alliance/Horde identity restrictions and existing Include class quests remain unchanged.
 
 Ten guarded corrections map Rudolph Gelhardt's head to its actual published drop/spawn, preserve the supplied trainer scroll, retain looted residue acquisition without a second farm, use the supplied termite jar for 100 termites, interact with the real Northridge barrel, distinguish burial input from hand-in requirements, and interact with six Webbed Victims. Published escape, observed-conversation and punishment work becomes explicitly incomplete. No profession gate, race/class mask or universal hidden prerequisite is inferred from a name.
