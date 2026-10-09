@@ -1,0 +1,18 @@
+Eastern Plaguelands validation — 2026-10-09
+Runtime: /workspace/.wow-together-tests/bin/python (Lua 5.1 host runtime)
+
+PASS: python tools/audit_quest_guides.py --zone 'Eastern Plaguelands' --output after-audit.json
+PASS: python tools/audit_quest_flow.py --zone 'Eastern Plaguelands' --output after-flow.json
+PASS: python tools/reprice_quest_stage_routes.py --before before-flow-repriced.json --after after-flow.json --output full-route-reprice.json
+PASS: python -m unittest discover -s tests -p 'test_eastern_plaguelands_coverage.py' -v (3 tests)
+PASS: python -m unittest discover -s tests -p '*coverage.py' -v (156 tests in 209.778s)
+PASS: python tools/audit_quest_guides.py --output full-audit.json (152 guides, 11,833 source points)
+PASS: fresh and existing global audit reports have identical SHA-256
+PASS: all 24 QuestieDB files match tools/forever_source_manifest.json at e0a6eaa86f181ac99262e34126bcd2ed1a1712d6
+PASS: git diff --check
+
+Host checks cover Lua 5.1 catalogue loading and guide invariants. Native beta
+quest offers, item-use events, terrain, map rendering and route walkability are
+not established by these checks.
+Global audit SHA-256 (fresh and repository report):
+f95a1f3a996145dc2c9d994fef572bb9bc3f2b9dd0a6b7c51df4c0c16b45ef0b

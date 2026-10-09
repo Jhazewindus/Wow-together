@@ -5,6 +5,15 @@ sessions and beta builds. These are observations from players, not a complete
 quest database. Only supported corrections enter the shipped catalogue. Raw
 exports are not included in the addon ZIP.
 
+## 2026-10-09 — Eastern Plaguelands hand-in stages
+
+[The full-zone review](eastern-plaguelands-2026-10-09/README.md) preserves the
+refreshed Alliance/Horde chapter baselines, all 109 direct catalogue records,
+pinned source facts and full-route comparisons. Two corrections separate
+Fetid Skull and Living Rot preparation inputs from their final hand-ins. Pickup
+and objective location gaps remain open; current work areas and NPCs are
+preserved, and the two item transformation interactions need in-game review.
+
 ## 2026-10-08 — expanded Dun Morogh review after main 0.8.60
 
 [The full-zone review](dun-morogh-2026-10-08/README.md) captures all 55 compiled
