@@ -1,0 +1,2468 @@
+{
+  "direct_ids": [
+    819,
+    821,
+    822,
+    843,
+    844,
+    845,
+    846,
+    848,
+    849,
+    850,
+    851,
+    852,
+    853,
+    855,
+    857,
+    858,
+    859,
+    860,
+    863,
+    865,
+    867,
+    868,
+    869,
+    870,
+    871,
+    872,
+    873,
+    874,
+    875,
+    876,
+    877,
+    878,
+    879,
+    880,
+    881,
+    882,
+    883,
+    884,
+    885,
+    886,
+    887,
+    888,
+    889,
+    890,
+    891,
+    892,
+    893,
+    894,
+    895,
+    896,
+    897,
+    898,
+    899,
+    900,
+    901,
+    902,
+    903,
+    905,
+    906,
+    907,
+    913,
+    1060,
+    1069,
+    1145,
+    1153,
+    1483,
+    1492,
+    3261,
+    3281,
+    3301,
+    3369,
+    3370,
+    3513,
+    3514,
+    3921,
+    3922,
+    3923,
+    3924,
+    4021,
+    4921,
+    5041,
+    5042,
+    5043,
+    5044,
+    5045,
+    5046,
+    5052,
+    6361,
+    6362,
+    6363,
+    6364,
+    6365,
+    6382,
+    6384,
+    6385,
+    6386,
+    6541,
+    6543,
+    9267,
+    79192,
+    92706,
+    95494,
+    95495,
+    95507,
+    95508,
+    95621,
+    95774,
+    95819,
+    97003,
+    97005,
+    97250,
+    97253,
+    98024,
+    98093,
+    98094,
+    98095
+  ],
+  "compiled_ids": [
+    819,
+    821,
+    843,
+    844,
+    845,
+    846,
+    848,
+    849,
+    850,
+    851,
+    852,
+    853,
+    855,
+    857,
+    858,
+    860,
+    861,
+    863,
+    865,
+    867,
+    868,
+    869,
+    870,
+    871,
+    872,
+    873,
+    874,
+    875,
+    876,
+    877,
+    878,
+    879,
+    880,
+    881,
+    882,
+    883,
+    884,
+    885,
+    886,
+    887,
+    888,
+    890,
+    891,
+    892,
+    893,
+    894,
+    895,
+    896,
+    897,
+    898,
+    899,
+    900,
+    901,
+    902,
+    903,
+    905,
+    906,
+    907,
+    913,
+    1060,
+    1093,
+    1094,
+    1095,
+    1096,
+    1145,
+    1146,
+    1147,
+    1483,
+    1492,
+    3261,
+    3281,
+    3301,
+    3369,
+    3370,
+    3513,
+    3514,
+    3921,
+    3922,
+    3923,
+    3924,
+    4021,
+    4921,
+    5041,
+    5052,
+    6382,
+    6541,
+    79007,
+    79008,
+    79192,
+    92706,
+    95494,
+    95495,
+    95507,
+    95508,
+    95621,
+    95774,
+    97003,
+    97005,
+    97250,
+    97253,
+    98093,
+    98094,
+    98095
+  ],
+  "uncompiled_direct_ids": [
+    822,
+    859,
+    889,
+    1069,
+    1153,
+    5042,
+    5043,
+    5044,
+    5045,
+    5046,
+    6361,
+    6362,
+    6363,
+    6364,
+    6365,
+    6384,
+    6385,
+    6386,
+    6543,
+    9267,
+    95819,
+    98024
+  ],
+  "related_catalogue_records": {
+    "822": {
+      "prerequisitesRead": true,
+      "zone": "The Barrens",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 5,
+          "name": "Lightning Gland",
+          "entityID": 4898
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Thunderhawk Saliva Gland",
+          "entityID": 4897
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Kodo Liver",
+          "entityID": 4896
+        }
+      ],
+      "otherLocationsIncomplete": false,
+      "level": 24,
+      "areaID": 17,
+      "repeatable": true,
+      "seriesPosition": 3,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Brewmaster Drohn",
+          "entityID": 3292
+        }
+      ],
+      "xp": 970,
+      "minLevel": 11,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 5,
+            "name": "Lightning Gland",
+            "entityID": 4898
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Thunderhawk Saliva Gland",
+            "entityID": 4897
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Kodo Liver",
+            "entityID": 4896
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Brewmaster Drohn",
+            "entityID": 3292
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Brewmaster Drohn",
+            "entityID": 3292
+          }
+        ]
+      },
+      "categoryPath": "kalimdor/the-barrens",
+      "raceMask": 0,
+      "mapID": 1413,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Brewmaster Drohn",
+          "entityID": 3292
+        }
+      ],
+      "seriesRoot": 819,
+      "requiredItems": [
+        {
+          "quantity": 5,
+          "name": "Lightning Gland",
+          "itemID": 4898
+        },
+        {
+          "quantity": 1,
+          "name": "Thunderhawk Saliva Gland",
+          "itemID": 4897
+        },
+        {
+          "quantity": 1,
+          "name": "Kodo Liver",
+          "itemID": 4896
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.384,
+          "mapID": 1413,
+          "name": "Brewmaster Drohn",
+          "entityID": 3292,
+          "npc": true,
+          "x": 0.622
+        }
+      ],
+      "shareable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "previousQuest": 821,
+      "objectives": [
+        {
+          "sourceObjective": 2,
+          "mapID": 1413,
+          "legacyStepKey": "q:1413:npc:3234",
+          "entityID": 3234,
+          "npc": true,
+          "x": 0.5479999999999999,
+          "y": 0.4,
+          "objectiveKey": "item:4896",
+          "itemID": 4896,
+          "quantity": 1,
+          "name": "Lost Barrens Kodo",
+          "itemName": "Kodo Liver",
+          "alternativeCount": 6,
+          "action": "collect"
+        },
+        {
+          "sourceObjective": 0,
+          "mapID": 1413,
+          "action": "collect",
+          "entityID": 3238,
+          "npc": true,
+          "y": 0.7979999999999999,
+          "objectiveKey": "item:4898",
+          "name": "Stormhide",
+          "x": 0.46399999999999997,
+          "quantity": 5,
+          "legacyStepKey": "q:1413:npc:3238",
+          "itemName": "Lightning Gland",
+          "itemID": 4898
+        },
+        {
+          "sourceObjective": 1,
+          "mapID": 1413,
+          "action": "collect",
+          "entityID": 3249,
+          "npc": true,
+          "y": 0.74,
+          "objectiveKey": "item:4897",
+          "name": "Greater Thunderhawk",
+          "x": 0.452,
+          "quantity": 1,
+          "legacyStepKey": "q:1413:npc:3249",
+          "itemName": "Thunderhawk Saliva Gland",
+          "itemID": 4897
+        }
+      ],
+      "series": [
+        819,
+        821,
+        822
+      ],
+      "title": "Chen's Empty Keg",
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.384,
+          "mapID": 1413,
+          "name": "Brewmaster Drohn",
+          "entityID": 3292,
+          "npc": true,
+          "x": 0.622
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "objectiveAlternatives": [
+        {
+          "sourceObjective": 2,
+          "itemName": "Kodo Liver",
+          "locations": [
+            {
+              "sourceObjective": 2,
+              "itemName": "Kodo Liver",
+              "action": "collect",
+              "entityID": 3234,
+              "npc": true,
+              "y": 0.4,
+              "x": 0.5479999999999999,
+              "name": "Lost Barrens Kodo",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 2,
+              "itemName": "Kodo Liver",
+              "action": "collect",
+              "entityID": 3235,
+              "npc": true,
+              "y": 0.634,
+              "x": 0.484,
+              "name": "Greater Barrens Kodo",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 2,
+              "itemName": "Kodo Liver",
+              "action": "collect",
+              "entityID": 3236,
+              "npc": true,
+              "y": 0.758,
+              "x": 0.455,
+              "name": "Barrens Kodo",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 2,
+              "itemName": "Kodo Liver",
+              "action": "collect",
+              "entityID": 3237,
+              "npc": true,
+              "y": 0.622,
+              "x": 0.486,
+              "name": "Wooly Kodo",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 2,
+              "itemName": "Kodo Liver",
+              "action": "collect",
+              "entityID": 3474,
+              "npc": true,
+              "y": 0.532,
+              "x": 0.498,
+              "name": "Lakota'mani",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 2,
+              "itemName": "Kodo Liver",
+              "action": "collect",
+              "entityID": 5827,
+              "npc": true,
+              "y": 0.74,
+              "x": 0.46,
+              "name": "Brontus",
+              "mapID": 1413
+            }
+          ]
+        }
+      ],
+      "classMask": 0,
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "itemName": "Kodo Liver",
+          "name": "Lost Barrens Kodo",
+          "entityID": 3234,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Kodo Liver",
+          "name": "Greater Barrens Kodo",
+          "entityID": 3235,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Kodo Liver",
+          "name": "Barrens Kodo",
+          "entityID": 3236,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Kodo Liver",
+          "name": "Wooly Kodo",
+          "entityID": 3237,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Lightning Gland",
+          "name": "Stormhide",
+          "entityID": 3238,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Thunderhawk Saliva Gland",
+          "name": "Greater Thunderhawk",
+          "entityID": 3249,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Kodo Liver",
+          "name": "Lakota'mani",
+          "entityID": 3474,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Kodo Liver",
+          "name": "Brontus",
+          "entityID": 5827,
+          "npc": true,
+          "action": "collect"
+        }
+      ]
+    },
+    "889": {
+      "prerequisitesRead": true,
+      "zone": "The Barrens",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 10,
+          "name": "Blood Shard",
+          "entityID": 5075
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "otherLocationsIncomplete": false,
+      "level": 20,
+      "areaID": 17,
+      "repeatable": true,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mangletooth",
+          "entityID": 3430
+        }
+      ],
+      "xp": 0,
+      "minLevel": 14,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 10,
+            "name": "Blood Shard",
+            "entityID": 5075
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Mangletooth",
+            "entityID": 3430
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Mangletooth",
+            "entityID": 3430
+          }
+        ]
+      },
+      "categoryPath": "kalimdor/the-barrens",
+      "raceMask": 0,
+      "mapID": 1413,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mangletooth",
+          "entityID": 3430
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 10,
+          "name": "Blood Shard",
+          "itemID": 5075
+        }
+      ],
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "prerequisiteAny": [
+        5052
+      ],
+      "ends": [
+        {
+          "y": 0.5920000000000001,
+          "mapID": 1413,
+          "name": "Mangletooth",
+          "entityID": 3430,
+          "npc": true,
+          "x": 0.446
+        }
+      ],
+      "shareable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "title": "Spirit of the Wind",
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1413,
+          "legacyStepKey": "q:1413:npc:3261",
+          "entityID": 3261,
+          "npc": true,
+          "x": 0.43200000000000005,
+          "y": 0.524,
+          "objectiveKey": "item:5075",
+          "itemID": 5075,
+          "quantity": 10,
+          "name": "Bristleback Thornweaver",
+          "itemName": "Blood Shard",
+          "alternativeCount": 4,
+          "action": "collect"
+        }
+      ],
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.5920000000000001,
+          "mapID": 1413,
+          "name": "Mangletooth",
+          "entityID": 3430,
+          "npc": true,
+          "x": 0.446
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "objectiveAlternatives": [
+        {
+          "sourceObjective": 0,
+          "itemName": "Blood Shard",
+          "locations": [
+            {
+              "sourceObjective": 0,
+              "itemName": "Blood Shard",
+              "action": "collect",
+              "entityID": 3258,
+              "npc": true,
+              "y": 0.542,
+              "x": 0.51,
+              "name": "Bristleback Hunter",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Blood Shard",
+              "action": "collect",
+              "entityID": 3260,
+              "npc": true,
+              "y": 0.526,
+              "x": 0.526,
+              "name": "Bristleback Water Seeker",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Blood Shard",
+              "action": "collect",
+              "entityID": 3261,
+              "npc": true,
+              "y": 0.524,
+              "x": 0.43200000000000005,
+              "name": "Bristleback Thornweaver",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Blood Shard",
+              "action": "collect",
+              "entityID": 3263,
+              "npc": true,
+              "y": 0.532,
+              "x": 0.526,
+              "name": "Bristleback Geomancer",
+              "mapID": 1413
+            }
+          ]
+        }
+      ],
+      "classMask": 0,
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "itemName": "Blood Shard",
+          "name": "Bristleback Hunter",
+          "entityID": 3258,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Blood Shard",
+          "name": "Bristleback Water Seeker",
+          "entityID": 3260,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Blood Shard",
+          "name": "Bristleback Thornweaver",
+          "entityID": 3261,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Blood Shard",
+          "name": "Bristleback Geomancer",
+          "entityID": 3263,
+          "npc": true,
+          "action": "collect"
+        }
+      ]
+    },
+    "1148": {
+      "prerequisitesRead": true,
+      "mapID": 1441,
+      "startRefs": [
+        {
+          "entityType": "item",
+          "name": "Cracked Silithid Carapace",
+          "entityID": 5877
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 5855,
+          "name": "Silithid Heart"
+        },
+        {
+          "entityType": "item",
+          "quantity": 5,
+          "action": "collect",
+          "entityID": 5854,
+          "name": "Silithid Talon"
+        },
+        {
+          "entityType": "item",
+          "quantity": 3,
+          "action": "collect",
+          "entityID": 5853,
+          "name": "Intact Silithid Carapace"
+        }
+      ],
+      "npcTargets": [
+        {
+          "itemName": "Silithid Heart",
+          "name": "Silithid Searcher",
+          "entityID": 4130,
+          "npc": true,
+          "action": "loot"
+        },
+        {
+          "itemName": "Silithid Talon",
+          "name": "Silithid Searcher",
+          "entityID": 4130,
+          "npc": true,
+          "action": "loot"
+        },
+        {
+          "itemName": "Intact Silithid Carapace",
+          "name": "Silithid Searcher",
+          "entityID": 4130,
+          "npc": true,
+          "action": "loot"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Silithid Heart",
+          "itemID": 5855
+        },
+        {
+          "quantity": 5,
+          "name": "Silithid Talon",
+          "itemID": 5854
+        },
+        {
+          "quantity": 3,
+          "name": "Intact Silithid Carapace",
+          "itemID": 5853
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "action": "loot",
+          "entityID": 4130,
+          "npc": true,
+          "x": 0.6772,
+          "y": 0.8351000000000001,
+          "objectiveKey": "item:5855",
+          "itemID": 5855,
+          "quantity": 1,
+          "sourceAreaID": 400,
+          "itemName": "Silithid Heart",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Silithid Searcher"
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "action": "loot",
+          "entityID": 4130,
+          "npc": true,
+          "x": 0.6772,
+          "y": 0.8351000000000001,
+          "objectiveKey": "item:5854",
+          "itemID": 5854,
+          "quantity": 5,
+          "sourceAreaID": 400,
+          "itemName": "Silithid Talon",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Silithid Searcher"
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "action": "loot",
+          "entityID": 4130,
+          "npc": true,
+          "x": 0.6772,
+          "y": 0.8351000000000001,
+          "objectiveKey": "item:5853",
+          "itemID": 5853,
+          "quantity": 3,
+          "sourceAreaID": 400,
+          "itemName": "Intact Silithid Carapace",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Silithid Searcher"
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "action": "start-item",
+          "entityID": 4130,
+          "npc": true,
+          "sourceAction": "loot",
+          "x": 0.6772,
+          "itemID": 5877,
+          "y": 0.8351000000000001,
+          "sourceAreaID": 400,
+          "itemName": "Cracked Silithid Carapace",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Silithid Searcher"
+        }
+      ],
+      "level": 35,
+      "areaID": 400,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 8589934770,
+      "side": "Horde",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "entityID": 3428,
+          "npc": true,
+          "sourceZone": "The Barrens",
+          "x": 0.51,
+          "name": "Korran",
+          "sourceAreaID": 17,
+          "y": 0.294
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Korran",
+          "entityID": 3428
+        }
+      ],
+      "xp": 2750,
+      "prerequisiteAny": [
+        1146
+      ],
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 28,
+      "requirementSource": "Published Forever typed objectives",
+      "title": "Parts of the Swarm",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 5855,
+            "name": "Silithid Heart"
+          },
+          {
+            "entityType": "item",
+            "quantity": 5,
+            "action": "collect",
+            "entityID": 5854,
+            "name": "Silithid Talon"
+          },
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "action": "collect",
+            "entityID": 5853,
+            "name": "Intact Silithid Carapace"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "item",
+            "name": "Cracked Silithid Carapace",
+            "entityID": 5877
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Korran",
+            "entityID": 3428
+          }
+        ]
+      },
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "kalimdor/thousand-needles"
+    },
+    "1153": {
+      "prerequisitesRead": true,
+      "mapID": 1413,
+      "npcTargets": [
+        {
+          "itemName": "Unrefined Ore Sample",
+          "name": "Gravelsnout Digger",
+          "entityID": 4113,
+          "npc": true,
+          "action": "loot"
+        }
+      ],
+      "zone": "The Barrens",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Unrefined Ore Sample",
+          "entityID": 5842
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "action": "loot",
+          "entityID": 4113,
+          "npc": true,
+          "x": 0.1185,
+          "y": 0.21309999999999998,
+          "objectiveKey": "item:5842",
+          "itemID": 5842,
+          "quantity": 1,
+          "sourceAreaID": 400,
+          "itemName": "Unrefined Ore Sample",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Gravelsnout Digger"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Unrefined Ore Sample",
+          "itemID": 5842
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "starts": [
+        {
+          "y": 0.5760000000000001,
+          "mapID": 1413,
+          "name": "Tatternack Steelforge",
+          "entityID": 3433,
+          "npc": true,
+          "x": 0.45
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "level": 29,
+      "areaID": 17,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Tatternack Steelforge",
+          "entityID": 3433
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "ends": [
+        {
+          "y": 0.5760000000000001,
+          "mapID": 1413,
+          "name": "Tatternack Steelforge",
+          "entityID": 3433,
+          "npc": true,
+          "x": 0.45
+        }
+      ],
+      "side": "Horde",
+      "prerequisiteAny": [
+        893
+      ],
+      "money": 2500,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Tatternack Steelforge",
+          "entityID": 3433
+        }
+      ],
+      "xp": 2350,
+      "foreverStatus": "unchanged",
+      "title": "A New Ore Sample",
+      "minLevel": 25,
+      "requirementSource": "Wowhead Forever objective table",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Unrefined Ore Sample",
+            "entityID": 5842
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Tatternack Steelforge",
+            "entityID": 3433
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Tatternack Steelforge",
+            "entityID": 3433
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/the-barrens"
+    },
+    "1491": {
+      "prerequisitesRead": true,
+      "zone": "Wailing Caverns",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 6,
+          "action": "collect",
+          "entityID": 6464,
+          "name": "Wailing Essence"
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "otherLocationsIncomplete": false,
+      "level": 18,
+      "areaID": 718,
+      "money": 1000,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mebok Mizzyrix",
+          "entityID": 3446
+        }
+      ],
+      "xp": 1350,
+      "questType": "Dungeon",
+      "minLevel": 13,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 6,
+            "action": "collect",
+            "entityID": 6464,
+            "name": "Wailing Essence"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Mebok Mizzyrix",
+            "entityID": 3446
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Mebok Mizzyrix",
+            "entityID": 3446
+          }
+        ]
+      },
+      "categoryPath": "dungeons/wailing-caverns",
+      "raceMask": 0,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mebok Mizzyrix",
+          "entityID": 3446
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 6,
+          "name": "Wailing Essence",
+          "itemID": 6464
+        }
+      ],
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "prerequisiteAny": [
+        865
+      ],
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "entityID": 3446,
+          "npc": true,
+          "y": 0.3762,
+          "x": 0.6236999999999999,
+          "name": "Mebok Mizzyrix",
+          "sourceAreaID": 17,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "shareable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Both",
+      "foreverStatus": "unchanged",
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "action": "loot",
+          "entityID": 3638,
+          "npc": true,
+          "x": 0.4758,
+          "y": 0.33049999999999996,
+          "objectiveKey": "item:6464",
+          "itemID": 6464,
+          "quantity": 6,
+          "sourceAreaID": 17,
+          "itemName": "Wailing Essence",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Devouring Ectoplasm"
+        }
+      ],
+      "objectiveFactsSource": "Warcraft DB Forever structured objectives",
+      "allowedRaceIDs": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "entityID": 3446,
+          "npc": true,
+          "y": 0.3762,
+          "x": 0.6236999999999999,
+          "name": "Mebok Mizzyrix",
+          "sourceAreaID": 17,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirementSource": "Warcraft DB Forever structured objectives",
+      "title": "Smart Drinks",
+      "classMask": 0,
+      "npcTargets": [
+        {
+          "itemName": "Wailing Essence",
+          "name": "Devouring Ectoplasm",
+          "entityID": 3638,
+          "npc": true,
+          "action": "loot"
+        }
+      ]
+    },
+    "5042": {
+      "prerequisitesRead": true,
+      "zone": "The Barrens",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 4,
+          "name": "Blood Shard",
+          "entityID": 5075
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "otherLocationsIncomplete": false,
+      "level": 20,
+      "areaID": 17,
+      "repeatable": true,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mangletooth",
+          "entityID": 3430
+        }
+      ],
+      "xp": 0,
+      "minLevel": 14,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 4,
+            "name": "Blood Shard",
+            "entityID": 5075
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Mangletooth",
+            "entityID": 3430
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Mangletooth",
+            "entityID": 3430
+          }
+        ]
+      },
+      "categoryPath": "kalimdor/the-barrens",
+      "raceMask": 0,
+      "mapID": 1413,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mangletooth",
+          "entityID": 3430
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 4,
+          "name": "Blood Shard",
+          "itemID": 5075
+        }
+      ],
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "prerequisiteAny": [
+        5052
+      ],
+      "ends": [
+        {
+          "y": 0.5920000000000001,
+          "mapID": 1413,
+          "name": "Mangletooth",
+          "entityID": 3430,
+          "npc": true,
+          "x": 0.446
+        }
+      ],
+      "shareable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "title": "Agamaggan's Strength",
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1413,
+          "legacyStepKey": "q:1413:npc:3261",
+          "entityID": 3261,
+          "npc": true,
+          "x": 0.43200000000000005,
+          "y": 0.524,
+          "objectiveKey": "item:5075",
+          "itemID": 5075,
+          "quantity": 4,
+          "name": "Bristleback Thornweaver",
+          "itemName": "Blood Shard",
+          "alternativeCount": 4,
+          "action": "collect"
+        }
+      ],
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.5920000000000001,
+          "mapID": 1413,
+          "name": "Mangletooth",
+          "entityID": 3430,
+          "npc": true,
+          "x": 0.446
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "objectiveAlternatives": [
+        {
+          "sourceObjective": 0,
+          "itemName": "Blood Shard",
+          "locations": [
+            {
+              "sourceObjective": 0,
+              "itemName": "Blood Shard",
+              "action": "collect",
+              "entityID": 3258,
+              "npc": true,
+              "y": 0.542,
+              "x": 0.51,
+              "name": "Bristleback Hunter",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Blood Shard",
+              "action": "collect",
+              "entityID": 3260,
+              "npc": true,
+              "y": 0.526,
+              "x": 0.526,
+              "name": "Bristleback Water Seeker",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Blood Shard",
+              "action": "collect",
+              "entityID": 3261,
+              "npc": true,
+              "y": 0.524,
+              "x": 0.43200000000000005,
+              "name": "Bristleback Thornweaver",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Blood Shard",
+              "action": "collect",
+              "entityID": 3263,
+              "npc": true,
+              "y": 0.532,
+              "x": 0.526,
+              "name": "Bristleback Geomancer",
+              "mapID": 1413
+            }
+          ]
+        }
+      ],
+      "classMask": 0,
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "itemName": "Blood Shard",
+          "name": "Bristleback Hunter",
+          "entityID": 3258,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Blood Shard",
+          "name": "Bristleback Water Seeker",
+          "entityID": 3260,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Blood Shard",
+          "name": "Bristleback Thornweaver",
+          "entityID": 3261,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Blood Shard",
+          "name": "Bristleback Geomancer",
+          "entityID": 3263,
+          "npc": true,
+          "action": "collect"
+        }
+      ]
+    },
+    "5043": {
+      "prerequisitesRead": true,
+      "zone": "The Barrens",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 4,
+          "name": "Blood Shard",
+          "entityID": 5075
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "otherLocationsIncomplete": false,
+      "level": 20,
+      "areaID": 17,
+      "repeatable": true,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mangletooth",
+          "entityID": 3430
+        }
+      ],
+      "xp": 0,
+      "minLevel": 14,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 4,
+            "name": "Blood Shard",
+            "entityID": 5075
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Mangletooth",
+            "entityID": 3430
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Mangletooth",
+            "entityID": 3430
+          }
+        ]
+      },
+      "categoryPath": "kalimdor/the-barrens",
+      "raceMask": 0,
+      "mapID": 1413,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mangletooth",
+          "entityID": 3430
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 4,
+          "name": "Blood Shard",
+          "itemID": 5075
+        }
+      ],
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "prerequisiteAny": [
+        5052
+      ],
+      "ends": [
+        {
+          "y": 0.5920000000000001,
+          "mapID": 1413,
+          "name": "Mangletooth",
+          "entityID": 3430,
+          "npc": true,
+          "x": 0.446
+        }
+      ],
+      "shareable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "title": "Agamaggan's Agility",
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1413,
+          "legacyStepKey": "q:1413:npc:3261",
+          "entityID": 3261,
+          "npc": true,
+          "x": 0.43200000000000005,
+          "y": 0.524,
+          "objectiveKey": "item:5075",
+          "itemID": 5075,
+          "quantity": 4,
+          "name": "Bristleback Thornweaver",
+          "itemName": "Blood Shard",
+          "alternativeCount": 4,
+          "action": "collect"
+        }
+      ],
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.5920000000000001,
+          "mapID": 1413,
+          "name": "Mangletooth",
+          "entityID": 3430,
+          "npc": true,
+          "x": 0.446
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "objectiveAlternatives": [
+        {
+          "sourceObjective": 0,
+          "itemName": "Blood Shard",
+          "locations": [
+            {
+              "sourceObjective": 0,
+              "itemName": "Blood Shard",
+              "action": "collect",
+              "entityID": 3258,
+              "npc": true,
+              "y": 0.542,
+              "x": 0.51,
+              "name": "Bristleback Hunter",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Blood Shard",
+              "action": "collect",
+              "entityID": 3260,
+              "npc": true,
+              "y": 0.526,
+              "x": 0.526,
+              "name": "Bristleback Water Seeker",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Blood Shard",
+              "action": "collect",
+              "entityID": 3261,
+              "npc": true,
+              "y": 0.524,
+              "x": 0.43200000000000005,
+              "name": "Bristleback Thornweaver",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Blood Shard",
+              "action": "collect",
+              "entityID": 3263,
+              "npc": true,
+              "y": 0.532,
+              "x": 0.526,
+              "name": "Bristleback Geomancer",
+              "mapID": 1413
+            }
+          ]
+        }
+      ],
+      "classMask": 0,
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "itemName": "Blood Shard",
+          "name": "Bristleback Hunter",
+          "entityID": 3258,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Blood Shard",
+          "name": "Bristleback Water Seeker",
+          "entityID": 3260,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Blood Shard",
+          "name": "Bristleback Thornweaver",
+          "entityID": 3261,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Blood Shard",
+          "name": "Bristleback Geomancer",
+          "entityID": 3263,
+          "npc": true,
+          "action": "collect"
+        }
+      ]
+    },
+    "5044": {
+      "prerequisitesRead": true,
+      "zone": "The Barrens",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 4,
+          "name": "Blood Shard",
+          "entityID": 5075
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "otherLocationsIncomplete": false,
+      "level": 20,
+      "areaID": 17,
+      "repeatable": true,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mangletooth",
+          "entityID": 3430
+        }
+      ],
+      "xp": 0,
+      "minLevel": 14,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 4,
+            "name": "Blood Shard",
+            "entityID": 5075
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Mangletooth",
+            "entityID": 3430
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Mangletooth",
+            "entityID": 3430
+          }
+        ]
+      },
+      "categoryPath": "kalimdor/the-barrens",
+      "raceMask": 0,
+      "mapID": 1413,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mangletooth",
+          "entityID": 3430
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 4,
+          "name": "Blood Shard",
+          "itemID": 5075
+        }
+      ],
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "prerequisiteAny": [
+        5052
+      ],
+      "ends": [
+        {
+          "y": 0.5920000000000001,
+          "mapID": 1413,
+          "name": "Mangletooth",
+          "entityID": 3430,
+          "npc": true,
+          "x": 0.446
+        }
+      ],
+      "shareable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "title": "Wisdom of Agamaggan",
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1413,
+          "legacyStepKey": "q:1413:npc:3261",
+          "entityID": 3261,
+          "npc": true,
+          "x": 0.43200000000000005,
+          "y": 0.524,
+          "objectiveKey": "item:5075",
+          "itemID": 5075,
+          "quantity": 4,
+          "name": "Bristleback Thornweaver",
+          "itemName": "Blood Shard",
+          "alternativeCount": 4,
+          "action": "collect"
+        }
+      ],
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.5920000000000001,
+          "mapID": 1413,
+          "name": "Mangletooth",
+          "entityID": 3430,
+          "npc": true,
+          "x": 0.446
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "objectiveAlternatives": [
+        {
+          "sourceObjective": 0,
+          "itemName": "Blood Shard",
+          "locations": [
+            {
+              "sourceObjective": 0,
+              "itemName": "Blood Shard",
+              "action": "collect",
+              "entityID": 3258,
+              "npc": true,
+              "y": 0.542,
+              "x": 0.51,
+              "name": "Bristleback Hunter",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Blood Shard",
+              "action": "collect",
+              "entityID": 3260,
+              "npc": true,
+              "y": 0.526,
+              "x": 0.526,
+              "name": "Bristleback Water Seeker",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Blood Shard",
+              "action": "collect",
+              "entityID": 3261,
+              "npc": true,
+              "y": 0.524,
+              "x": 0.43200000000000005,
+              "name": "Bristleback Thornweaver",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Blood Shard",
+              "action": "collect",
+              "entityID": 3263,
+              "npc": true,
+              "y": 0.532,
+              "x": 0.526,
+              "name": "Bristleback Geomancer",
+              "mapID": 1413
+            }
+          ]
+        }
+      ],
+      "classMask": 0,
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "itemName": "Blood Shard",
+          "name": "Bristleback Hunter",
+          "entityID": 3258,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Blood Shard",
+          "name": "Bristleback Water Seeker",
+          "entityID": 3260,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Blood Shard",
+          "name": "Bristleback Thornweaver",
+          "entityID": 3261,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Blood Shard",
+          "name": "Bristleback Geomancer",
+          "entityID": 3263,
+          "npc": true,
+          "action": "collect"
+        }
+      ]
+    },
+    "5045": {
+      "prerequisitesRead": true,
+      "zone": "The Barrens",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 4,
+          "name": "Blood Shard",
+          "entityID": 5075
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "otherLocationsIncomplete": false,
+      "level": 20,
+      "areaID": 17,
+      "repeatable": true,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mangletooth",
+          "entityID": 3430
+        }
+      ],
+      "xp": 0,
+      "minLevel": 14,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 4,
+            "name": "Blood Shard",
+            "entityID": 5075
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Mangletooth",
+            "entityID": 3430
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Mangletooth",
+            "entityID": 3430
+          }
+        ]
+      },
+      "categoryPath": "kalimdor/the-barrens",
+      "raceMask": 0,
+      "mapID": 1413,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mangletooth",
+          "entityID": 3430
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 4,
+          "name": "Blood Shard",
+          "itemID": 5075
+        }
+      ],
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "prerequisiteAny": [
+        5052
+      ],
+      "ends": [
+        {
+          "y": 0.5920000000000001,
+          "mapID": 1413,
+          "name": "Mangletooth",
+          "entityID": 3430,
+          "npc": true,
+          "x": 0.446
+        }
+      ],
+      "shareable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "title": "Rising Spirit",
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1413,
+          "legacyStepKey": "q:1413:npc:3261",
+          "entityID": 3261,
+          "npc": true,
+          "x": 0.43200000000000005,
+          "y": 0.524,
+          "objectiveKey": "item:5075",
+          "itemID": 5075,
+          "quantity": 4,
+          "name": "Bristleback Thornweaver",
+          "itemName": "Blood Shard",
+          "alternativeCount": 4,
+          "action": "collect"
+        }
+      ],
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.5920000000000001,
+          "mapID": 1413,
+          "name": "Mangletooth",
+          "entityID": 3430,
+          "npc": true,
+          "x": 0.446
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "objectiveAlternatives": [
+        {
+          "sourceObjective": 0,
+          "itemName": "Blood Shard",
+          "locations": [
+            {
+              "sourceObjective": 0,
+              "itemName": "Blood Shard",
+              "action": "collect",
+              "entityID": 3258,
+              "npc": true,
+              "y": 0.542,
+              "x": 0.51,
+              "name": "Bristleback Hunter",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Blood Shard",
+              "action": "collect",
+              "entityID": 3260,
+              "npc": true,
+              "y": 0.526,
+              "x": 0.526,
+              "name": "Bristleback Water Seeker",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Blood Shard",
+              "action": "collect",
+              "entityID": 3261,
+              "npc": true,
+              "y": 0.524,
+              "x": 0.43200000000000005,
+              "name": "Bristleback Thornweaver",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Blood Shard",
+              "action": "collect",
+              "entityID": 3263,
+              "npc": true,
+              "y": 0.532,
+              "x": 0.526,
+              "name": "Bristleback Geomancer",
+              "mapID": 1413
+            }
+          ]
+        }
+      ],
+      "classMask": 0,
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "itemName": "Blood Shard",
+          "name": "Bristleback Hunter",
+          "entityID": 3258,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Blood Shard",
+          "name": "Bristleback Water Seeker",
+          "entityID": 3260,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Blood Shard",
+          "name": "Bristleback Thornweaver",
+          "entityID": 3261,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Blood Shard",
+          "name": "Bristleback Geomancer",
+          "entityID": 3263,
+          "npc": true,
+          "action": "collect"
+        }
+      ]
+    },
+    "5046": {
+      "prerequisitesRead": true,
+      "zone": "The Barrens",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 4,
+          "name": "Blood Shard",
+          "entityID": 5075
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "otherLocationsIncomplete": false,
+      "level": 20,
+      "areaID": 17,
+      "repeatable": true,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mangletooth",
+          "entityID": 3430
+        }
+      ],
+      "xp": 0,
+      "minLevel": 14,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 4,
+            "name": "Blood Shard",
+            "entityID": 5075
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Mangletooth",
+            "entityID": 3430
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Mangletooth",
+            "entityID": 3430
+          }
+        ]
+      },
+      "categoryPath": "kalimdor/the-barrens",
+      "raceMask": 0,
+      "mapID": 1413,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mangletooth",
+          "entityID": 3430
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 4,
+          "name": "Blood Shard",
+          "itemID": 5075
+        }
+      ],
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "prerequisiteAny": [
+        5052
+      ],
+      "ends": [
+        {
+          "y": 0.5920000000000001,
+          "mapID": 1413,
+          "name": "Mangletooth",
+          "entityID": 3430,
+          "npc": true,
+          "x": 0.446
+        }
+      ],
+      "shareable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "title": "Razorhide",
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1413,
+          "legacyStepKey": "q:1413:npc:3261",
+          "entityID": 3261,
+          "npc": true,
+          "x": 0.43200000000000005,
+          "y": 0.524,
+          "objectiveKey": "item:5075",
+          "itemID": 5075,
+          "quantity": 4,
+          "name": "Bristleback Thornweaver",
+          "itemName": "Blood Shard",
+          "alternativeCount": 4,
+          "action": "collect"
+        }
+      ],
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.5920000000000001,
+          "mapID": 1413,
+          "name": "Mangletooth",
+          "entityID": 3430,
+          "npc": true,
+          "x": 0.446
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "objectiveAlternatives": [
+        {
+          "sourceObjective": 0,
+          "itemName": "Blood Shard",
+          "locations": [
+            {
+              "sourceObjective": 0,
+              "itemName": "Blood Shard",
+              "action": "collect",
+              "entityID": 3258,
+              "npc": true,
+              "y": 0.542,
+              "x": 0.51,
+              "name": "Bristleback Hunter",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Blood Shard",
+              "action": "collect",
+              "entityID": 3260,
+              "npc": true,
+              "y": 0.526,
+              "x": 0.526,
+              "name": "Bristleback Water Seeker",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Blood Shard",
+              "action": "collect",
+              "entityID": 3261,
+              "npc": true,
+              "y": 0.524,
+              "x": 0.43200000000000005,
+              "name": "Bristleback Thornweaver",
+              "mapID": 1413
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Blood Shard",
+              "action": "collect",
+              "entityID": 3263,
+              "npc": true,
+              "y": 0.532,
+              "x": 0.526,
+              "name": "Bristleback Geomancer",
+              "mapID": 1413
+            }
+          ]
+        }
+      ],
+      "classMask": 0,
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "itemName": "Blood Shard",
+          "name": "Bristleback Hunter",
+          "entityID": 3258,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Blood Shard",
+          "name": "Bristleback Water Seeker",
+          "entityID": 3260,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Blood Shard",
+          "name": "Bristleback Thornweaver",
+          "entityID": 3261,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Blood Shard",
+          "name": "Bristleback Geomancer",
+          "entityID": 3263,
+          "npc": true,
+          "action": "collect"
+        }
+      ]
+    },
+    "6543": {
+      "prerequisitesRead": true,
+      "zone": "The Barrens",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Warsong Scout Update",
+          "entityID": 16764
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Warsong Runner Update",
+          "entityID": 16763
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Warsong Outrider Update",
+          "entityID": 16765
+        }
+      ],
+      "level": 19,
+      "areaID": 17,
+      "money": 2000,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Kadrak",
+          "entityID": 8582
+        }
+      ],
+      "xp": 1800,
+      "minLevel": 17,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Warsong Scout Update",
+            "entityID": 16764
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Warsong Runner Update",
+            "entityID": 16763
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Warsong Outrider Update",
+            "entityID": 16765
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Kadrak",
+            "entityID": 8582
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "name": "Bundle of Reports",
+            "entityID": 16783
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Kadrak",
+            "entityID": 8582
+          }
+        ]
+      },
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "kalimdor/the-barrens",
+      "raceMask": 8589934770,
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Warsong Runner Update",
+          "entityID": 16763
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Warsong Outrider Update",
+          "entityID": 16765
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Kadrak",
+          "entityID": 8582
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "buyable": true,
+          "itemID": 16764,
+          "name": "Warsong Scout Update"
+        },
+        {
+          "quantity": 1,
+          "name": "Warsong Runner Update",
+          "itemID": 16763
+        },
+        {
+          "quantity": 1,
+          "name": "Warsong Outrider Update",
+          "itemID": 16765
+        }
+      ],
+      "prerequisiteSource": "Wowhead Forever series variants",
+      "prerequisiteAny": [
+        6541,
+        6542
+      ],
+      "ends": [
+        {
+          "y": 0.054000000000000006,
+          "mapID": 1413,
+          "name": "Kadrak",
+          "entityID": 8582,
+          "npc": true,
+          "x": 0.48
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "title": "The Warsong Reports",
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1440,
+          "action": "buy",
+          "entityID": 12862,
+          "npc": true,
+          "y": 0.6859999999999999,
+          "sourceZone": "Ashenvale",
+          "objectiveKey": "item:16764",
+          "itemID": 16764,
+          "x": 0.71,
+          "sourceAreaID": 331,
+          "quantity": 1,
+          "itemName": "Warsong Scout Update",
+          "name": "Warsong Scout"
+        }
+      ],
+      "mapID": 1413,
+      "providedItems": [
+        {
+          "entityType": "item",
+          "name": "Bundle of Reports",
+          "entityID": 16783
+        }
+      ],
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "starts": [
+        {
+          "y": 0.054000000000000006,
+          "mapID": 1413,
+          "name": "Kadrak",
+          "entityID": 8582,
+          "npc": true,
+          "x": 0.48
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "classMask": 0,
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "itemName": "Warsong Scout Update",
+          "name": "Warsong Scout",
+          "entityID": 12862,
+          "npc": true,
+          "action": "buy"
+        }
+      ]
+    }
+  }
+}

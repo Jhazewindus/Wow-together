@@ -1,0 +1,140 @@
+[
+  {
+    "questID": 882,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "requiredSourceItems": "converted-baseline",
+      "questFlags": "converted-baseline"
+    },
+    "decision": "Retain mapped acquisition inputs, distinct farming areas and actual assembled/output hand-in only; do not require consumed preparation components at return. Carcass bait at dead tree is supported by unchanged vanilla identity, but its beta use trigger/point is unknown; expose preparation gap rather than substitute Ishamuhale NPC coordinates.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 894,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "decision": "Interact with the published actual console/valves or return object. Preserve all existing points, real predecessor hand-ins, multiple item/object starts and key acquisition/count.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 900,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline"
+    },
+    "decision": "Interact with the published actual console/valves or return object. Preserve all existing points, real predecessor hand-ins, multiple item/object starts and key acquisition/count.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 901,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "decision": "Interact with the published actual console/valves or return object. Preserve all existing points, real predecessor hand-ins, multiple item/object starts and key acquisition/count.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 905,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "requiredSourceItems": "converted-baseline",
+      "questFlags": "converted-baseline"
+    },
+    "decision": "Use the actual raptor feather on each counted nest, rather than generic conversation. Preserve three separate one-target objectives and parent hand-in; feathers are acquired input, not supplied or extra hand-in. No unsupported inventory count or new farming point.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 3924,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "requiredSourceItems": "converted-baseline",
+      "questFlags": "converted-baseline"
+    },
+    "decision": "Retain mapped acquisition inputs, distinct farming areas and actual assembled/output hand-in only; do not require consumed preparation components at return. Five pages and cover remain acquisition goals; manual assembly stays explicitly unmapped.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 79192,
+    "origins": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "objectivesText": "beta-observation",
+      "zoneOrSort": "beta-delta"
+    },
+    "decision": "Interact with the published actual console/valves or return object. Preserve all existing points, real predecessor hand-ins, multiple item/object starts and key acquisition/count.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 98095,
+    "origins": {
+      "_identityName": "beta-delta",
+      "name": "beta-delta",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-delta",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-delta",
+      "sourceItemId": "beta-delta",
+      "zoneOrSort": "beta-delta"
+    },
+    "decision": "Retain explicitly supplied Apothecary Vials with unknown supplied count, three counted placements and actual Hillsbrad giver/return. Peak placement points remain unknown; category and prerequisite unchanged.",
+    "native_beta_verified": false
+  }
+]

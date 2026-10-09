@@ -1,0 +1,23 @@
+# The Barrens quest facts — 9 October 2026 (Europe/Amsterdam)
+
+Refreshed addon 0.8.61/main 09155ca on guides/coverage after 42743b6. All 116 direct records and related continuations inspected; 103 distinct compiled IDs in five chapters. Horde 11–20/21–30/31–40 retains 216/143/11 actions; Alliance 11–20/21–30 retains 43/27. Chapters are inventory scopes, not gameplay minimums.
+
+Eight guarded corrections separate consumed carcass/manual components from actual hand-ins, type console/valve/return-object interactions, name the feather used at three counted nests, and retain supplied vials without guessing a count. Existing acquisition points, counts, gates, predecessor hand-ins, class setting and automatic fixed guide behavior remain. No engine/UI edit or release publication.
+
+All 24 pinned source hashes verified. Literal factual fields, origins, direct/compiled/continuation inventory and exact record changes are retained. Supporting ClassicDB 882/905 pages returned HTTP200 under normal verified TLS; exact identity agrees with current data. Their unchanged preparation mechanics do not prove beta spawn points, hidden gates or supplied counts. Raw third-party prose/comments are omitted. Current Forever providers remain unavailable under previously recorded access failures; no bypass or unsupported replacement evidence.
+
+Recorded compiled objective gaps remain two IDs: 3924 (manual assembly) and 98095 (three peak placements). None closed. Ishamuhale's bait trigger is explicitly incomplete in source data, but the existing compiler does not surface an additional unknown stage for an already mapped quest: a coordination limitation, not a verified complete quest. Pickup uncertainty remains 861/6382/95495. No new count/gate is guessed. No pickup/return gaps are recorded. Centaur Bracers 855 already occurs only in 11–20, with no evidenced useful higher-level continuation; no exclusion rewrite needed. Its existing representative Kromzar farm area and manual-page representative area need beta checks.
+
+Twenty strict replay states PASS with every action and endpoint retained and unchanged travel/log/reward metrics under identical corrected facts. Crossroads/Ratchet/Taurajo hub behavior, real console hand-ins, item-start deliveries and elite choices are retained. This verifies preservation, not optimal terrain or native offers. Wailing Caverns/Thousand Needles onward chains and Mulgore/Ashenvale handoffs remain represented in continuation inventory; no universal parent invented.
+
+Five focused regressions, 122 transport/class/offer/session checks, 49 importer/source checks and all 86 TOC Lua files pass under Lua 5.1/interface16001. Empty packed fields and the actual beta feather name required test-fixture corrections; no product code changed to satisfy them. Whole-zone run completed 131 tests: 130 pass and one new fixture error (empty packed requiredItems omitted). The corrected five-test Barrens rerun passes, including actual Sunscale Feather text. No all-131 rerun is claimed; the other 126 existing zone regressions pass in the retained initial run. The historical full-suite catalogue fingerprint failure remains recorded in integration evidence; no fresh full-suite claim.
+
+## Player checklist
+
+- Fresh and mid-zone Horde: Crossroads, Ratchet and Taurajo pickups stay grouped; scan/reload/zone entry preserves automatic progress and personal skips.
+- Finish and actually hand in each Samophlange parent. Operate each valve once; obtain the key, then use the console. Gather five pages/cover, assemble the manual and return with the manual alone.
+- Obtain a fresh carcass in its supported farm area; use it at the real dead tree, then kill/loot Ishamuhale and return the fang. Report bait point/timer and any premature completion; do not infer the use point from the mob point.
+- Acquire Sunscale Feathers, use one on each actual nest and return. Check consumption and re-acquisition; these are preparation items, not extra return items.
+- Verify the three Valuable Vantages Hillsbrad peak placements with actual vials; record build, map, coordinates and offered/completed parent. No giver-as-peak substitution.
+- Alliance chapters and Horde 31–40 preserve complete scopes and onward endpoints; higher chapters omit Centaur Bracers. Check ordinary/class toggle, actual race/class gates, elite choice, temporary unavailable pickups returning after a confirmed offer, and personal skips persisting.
+- Confirm roads, caves, elevated Sludge Fen approaches, safe entrances, boats and personal flight unlocks in beta. Host geometry and flight-master points do not certify safe travel.

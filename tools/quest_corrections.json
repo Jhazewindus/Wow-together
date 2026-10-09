@@ -8643,5 +8643,1183 @@
         "npcTargets": []
       }
     }
+  },
+  {
+    "questID": 882,
+    "title": "Ishamuhale",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Retain mapped acquisition inputs, distinct farming areas and actual assembled/output hand-in only; do not require consumed preparation components at return. Carcass bait at dead tree is supported by unchanged vanilla identity, but its beta use trigger/point is unknown; expose preparation gap rather than substitute Ishamuhale NPC coordinates. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/the-barrens-2026-10-09. Supporting unchanged mechanics: https://classicdb.ch/?quest=882; accessed 2026-10-09; not beta position evidence.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 10,
+      "level": 19,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Ishamuhale's Fang",
+          "itemID": 5101
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Ishamuhale's Fang",
+            "entityID": 5101
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Fresh Zhevra Carcass",
+            "entityID": 10338
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Ishamuhale's Fang",
+            "itemID": 5101
+          },
+          {
+            "quantity": 1,
+            "name": "Fresh Zhevra Carcass",
+            "itemID": 10338
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 1,
+            "mapID": 1413,
+            "legacyStepKey": "q:1413:npc:3466",
+            "entityID": 3466,
+            "npc": true,
+            "x": 0.45799999999999996,
+            "y": 0.68,
+            "objectiveKey": "item:10338",
+            "itemID": 10338,
+            "quantity": 1,
+            "name": "Zhevra Courser",
+            "itemName": "Fresh Zhevra Carcass",
+            "alternativeCount": 3,
+            "action": "collect"
+          },
+          {
+            "sourceObjective": 0,
+            "mapID": 1413,
+            "action": "collect",
+            "entityID": 3257,
+            "npc": true,
+            "y": 0.304,
+            "objectiveKey": "item:5101",
+            "name": "Ishamuhale",
+            "x": 0.598,
+            "quantity": 1,
+            "legacyStepKey": "q:1413:npc:3257",
+            "itemName": "Ishamuhale's Fang",
+            "itemID": 5101
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Fresh Zhevra Carcass",
+            "name": "Zhevra Runner",
+            "entityID": 3242,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Ishamuhale's Fang",
+            "name": "Ishamuhale",
+            "entityID": 3257,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Fresh Zhevra Carcass",
+            "name": "Zhevra Charger",
+            "entityID": 3426,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Fresh Zhevra Carcass",
+            "name": "Zhevra Courser",
+            "entityID": 3466,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Ishamuhale's Fang",
+            "entityID": 5101
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Fresh Zhevra Carcass",
+            "entityID": 10338
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Ishamuhale's Fang",
+            "itemID": 5101
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 1,
+            "mapID": 1413,
+            "legacyStepKey": "q:1413:npc:3466",
+            "entityID": 3466,
+            "npc": true,
+            "x": 0.45799999999999996,
+            "y": 0.68,
+            "objectiveKey": "item:10338",
+            "itemID": 10338,
+            "quantity": 1,
+            "name": "Zhevra Courser",
+            "itemName": "Fresh Zhevra Carcass",
+            "alternativeCount": 3,
+            "action": "collect"
+          },
+          {
+            "sourceObjective": 0,
+            "mapID": 1413,
+            "action": "collect",
+            "entityID": 3257,
+            "npc": true,
+            "y": 0.304,
+            "objectiveKey": "item:5101",
+            "name": "Ishamuhale",
+            "x": 0.598,
+            "quantity": 1,
+            "legacyStepKey": "q:1413:npc:3257",
+            "itemName": "Ishamuhale's Fang",
+            "itemID": 5101
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Fresh Zhevra Carcass",
+            "name": "Zhevra Runner",
+            "entityID": 3242,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Ishamuhale's Fang",
+            "name": "Ishamuhale",
+            "entityID": 3257,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Fresh Zhevra Carcass",
+            "name": "Zhevra Charger",
+            "entityID": 3426,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Fresh Zhevra Carcass",
+            "name": "Zhevra Courser",
+            "entityID": 3466,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": true
+      }
+    }
+  },
+  {
+    "questID": 894,
+    "title": "Samophlange",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Interact with the published actual console/valves or return object. Preserve all existing points, real predecessor hand-ins, multiple item/object starts and key acquisition/count. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/the-barrens-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 10,
+      "level": 14,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "y": 0.37200000000000005,
+            "mapID": 1413,
+            "name": "Sputtervalve",
+            "entityID": 3442,
+            "npc": true,
+            "x": 0.63
+          }
+        ],
+        "ends": [
+          {
+            "y": 0.11699999999999999,
+            "x": 0.524,
+            "name": "Control Console",
+            "entityID": 4141,
+            "mapID": 1413
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "y": 0.37200000000000005,
+            "mapID": 1413,
+            "name": "Sputtervalve",
+            "entityID": 3442,
+            "npc": true,
+            "x": 0.63
+          }
+        ],
+        "ends": [
+          {
+            "y": 0.11699999999999999,
+            "x": 0.524,
+            "name": "Control Console",
+            "entityID": 4141,
+            "mapID": 1413,
+            "entityType": "object",
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 900,
+    "title": "Samophlange",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Interact with the published actual console/valves or return object. Preserve all existing points, real predecessor hand-ins, multiple item/object starts and key acquisition/count. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/the-barrens-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 10,
+      "level": 14,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Shut off Main Control Valve",
+            "entityID": 4072
+          },
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Shut off Fuel Control Valve",
+            "entityID": 61936
+          },
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Shut off Regulator Valve",
+            "entityID": 61935
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "objectiveKey": "object:4072",
+            "name": "Main Control Valve",
+            "y": 0.11599999999999999,
+            "entityID": 4072,
+            "x": 0.523,
+            "quantity": 1,
+            "mapID": 1413
+          },
+          {
+            "sourceObjective": 2,
+            "objectiveKey": "object:61935",
+            "name": "Regulator Valve",
+            "y": 0.114,
+            "entityID": 61935,
+            "x": 0.523,
+            "quantity": 1,
+            "mapID": 1413
+          },
+          {
+            "sourceObjective": 1,
+            "objectiveKey": "object:61936",
+            "name": "Fuel Control Valve",
+            "y": 0.114,
+            "entityID": 61936,
+            "x": 0.524,
+            "quantity": 1,
+            "mapID": 1413
+          }
+        ],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "y": 0.11699999999999999,
+            "x": 0.524,
+            "name": "Control Console",
+            "entityID": 4141,
+            "mapID": 1413
+          }
+        ],
+        "ends": [
+          {
+            "y": 0.11699999999999999,
+            "x": 0.524,
+            "name": "Control Console",
+            "entityID": 4141,
+            "mapID": 1413
+          }
+        ]
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Shut off Main Control Valve",
+            "entityID": 4072,
+            "action": "interact"
+          },
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Shut off Fuel Control Valve",
+            "entityID": 61936,
+            "action": "interact"
+          },
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Shut off Regulator Valve",
+            "entityID": 61935,
+            "action": "interact"
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "objectiveKey": "object:4072",
+            "name": "Main Control Valve",
+            "y": 0.11599999999999999,
+            "entityID": 4072,
+            "x": 0.523,
+            "quantity": 1,
+            "mapID": 1413,
+            "entityType": "object",
+            "action": "interact"
+          },
+          {
+            "sourceObjective": 2,
+            "objectiveKey": "object:61935",
+            "name": "Regulator Valve",
+            "y": 0.114,
+            "entityID": 61935,
+            "x": 0.523,
+            "quantity": 1,
+            "mapID": 1413,
+            "entityType": "object",
+            "action": "interact"
+          },
+          {
+            "sourceObjective": 1,
+            "objectiveKey": "object:61936",
+            "name": "Fuel Control Valve",
+            "y": 0.114,
+            "entityID": 61936,
+            "x": 0.524,
+            "quantity": 1,
+            "mapID": 1413,
+            "entityType": "object",
+            "action": "interact"
+          }
+        ],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "y": 0.11699999999999999,
+            "x": 0.524,
+            "name": "Control Console",
+            "entityID": 4141,
+            "mapID": 1413,
+            "entityType": "object",
+            "action": "interact"
+          }
+        ],
+        "ends": [
+          {
+            "y": 0.11699999999999999,
+            "x": 0.524,
+            "name": "Control Console",
+            "entityID": 4141,
+            "mapID": 1413,
+            "entityType": "object",
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 901,
+    "title": "Samophlange",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Interact with the published actual console/valves or return object. Preserve all existing points, real predecessor hand-ins, multiple item/object starts and key acquisition/count. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/the-barrens-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 10,
+      "level": 14,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Console Key",
+          "itemID": 5089
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Console Key",
+            "entityID": 5089
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Console Key",
+            "itemID": 5089
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "mapID": 1413,
+            "action": "collect",
+            "entityID": 3471,
+            "npc": true,
+            "y": 0.10400000000000001,
+            "objectiveKey": "item:5089",
+            "name": "Tinkerer Sniggles",
+            "x": 0.528,
+            "quantity": 1,
+            "legacyStepKey": "q:1413:npc:3471",
+            "itemName": "Console Key",
+            "itemID": 5089
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Console Key",
+            "name": "Tinkerer Sniggles",
+            "entityID": 3471,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "y": 0.11699999999999999,
+            "x": 0.524,
+            "name": "Control Console",
+            "entityID": 4141,
+            "mapID": 1413
+          }
+        ],
+        "ends": [
+          {
+            "y": 0.11699999999999999,
+            "x": 0.524,
+            "name": "Control Console",
+            "entityID": 4141,
+            "mapID": 1413
+          }
+        ]
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Console Key",
+            "entityID": 5089
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Console Key",
+            "itemID": 5089
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "mapID": 1413,
+            "action": "collect",
+            "entityID": 3471,
+            "npc": true,
+            "y": 0.10400000000000001,
+            "objectiveKey": "item:5089",
+            "name": "Tinkerer Sniggles",
+            "x": 0.528,
+            "quantity": 1,
+            "legacyStepKey": "q:1413:npc:3471",
+            "itemName": "Console Key",
+            "itemID": 5089
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Console Key",
+            "name": "Tinkerer Sniggles",
+            "entityID": 3471,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "y": 0.11699999999999999,
+            "x": 0.524,
+            "name": "Control Console",
+            "entityID": 4141,
+            "mapID": 1413,
+            "entityType": "object",
+            "action": "interact"
+          }
+        ],
+        "ends": [
+          {
+            "y": 0.11699999999999999,
+            "x": 0.524,
+            "name": "Control Console",
+            "entityID": 4141,
+            "mapID": 1413,
+            "entityType": "object",
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 905,
+    "title": "The Angry Scytheclaws",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Use the actual raptor feather on each counted nest, rather than generic conversation. Preserve three separate one-target objectives and parent hand-in; feathers are acquired input, not supplied or extra hand-in. No unsupported inventory count or new farming point. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/the-barrens-2026-10-09. Supporting unchanged mechanics: https://classicdb.ch/?quest=905; accessed 2026-10-09; not beta position evidence.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 10,
+      "level": 17,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Visit Blue Raptor Nest",
+            "entityID": 6907
+          },
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Visit Yellow Raptor Nest",
+            "entityID": 6908
+          },
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Visit Red Raptor Nest",
+            "entityID": 6906
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "sourceObjective": 2,
+            "objectiveKey": "object:6906",
+            "name": "Red Raptor Nest",
+            "y": 0.465,
+            "entityID": 6906,
+            "x": 0.525,
+            "quantity": 1,
+            "mapID": 1413
+          },
+          {
+            "sourceObjective": 0,
+            "objectiveKey": "object:6907",
+            "name": "Blue Raptor Nest",
+            "y": 0.461,
+            "entityID": 6907,
+            "x": 0.526,
+            "quantity": 1,
+            "mapID": 1413
+          },
+          {
+            "sourceObjective": 1,
+            "objectiveKey": "object:6908",
+            "name": "Yellow Raptor Nest",
+            "y": 0.465,
+            "entityID": 6908,
+            "x": 0.52,
+            "quantity": 1,
+            "mapID": 1413
+          }
+        ],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Visit Blue Raptor Nest",
+            "entityID": 6907,
+            "action": "use"
+          },
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Visit Yellow Raptor Nest",
+            "entityID": 6908,
+            "action": "use"
+          },
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Visit Red Raptor Nest",
+            "entityID": 6906,
+            "action": "use"
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "sourceObjective": 2,
+            "objectiveKey": "object:6906",
+            "name": "Red Raptor Nest",
+            "y": 0.465,
+            "entityID": 6906,
+            "x": 0.525,
+            "quantity": 1,
+            "mapID": 1413,
+            "entityType": "object",
+            "action": "use",
+            "useItemName": "Sunscale Feather",
+            "useItemID": 5165
+          },
+          {
+            "sourceObjective": 0,
+            "objectiveKey": "object:6907",
+            "name": "Blue Raptor Nest",
+            "y": 0.461,
+            "entityID": 6907,
+            "x": 0.526,
+            "quantity": 1,
+            "mapID": 1413,
+            "entityType": "object",
+            "action": "use",
+            "useItemName": "Sunscale Feather",
+            "useItemID": 5165
+          },
+          {
+            "sourceObjective": 1,
+            "objectiveKey": "object:6908",
+            "name": "Yellow Raptor Nest",
+            "y": 0.465,
+            "entityID": 6908,
+            "x": 0.52,
+            "quantity": 1,
+            "mapID": 1413,
+            "entityType": "object",
+            "action": "use",
+            "useItemName": "Sunscale Feather",
+            "useItemID": 5165
+          }
+        ],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      }
+    }
+  },
+  {
+    "questID": 3924,
+    "title": "Samophlange Manual",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Retain mapped acquisition inputs, distinct farming areas and actual assembled/output hand-in only; do not require consumed preparation components at return. Five pages and cover remain acquisition goals; manual assembly stays explicitly unmapped. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/the-barrens-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 10,
+      "level": 19,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Samophlange Manual",
+          "itemID": 11149
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Samophlange Manual",
+            "entityID": 11149
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Samophlange Manual Cover",
+            "entityID": 11147
+          },
+          {
+            "entityType": "item",
+            "quantity": 5,
+            "name": "Samophlange Manual Page",
+            "entityID": 11148
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Samophlange Manual",
+            "itemID": 11149
+          },
+          {
+            "quantity": 1,
+            "name": "Samophlange Manual Cover",
+            "itemID": 11147
+          },
+          {
+            "quantity": 5,
+            "name": "Samophlange Manual Page",
+            "itemID": 11148
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1413,
+            "legacyStepKey": "q:1413:npc:9336",
+            "entityID": 9336,
+            "y": 0.034,
+            "npc": true,
+            "x": 0.598,
+            "sourceZone": "The Barrens",
+            "objectiveKey": "item:11147",
+            "itemID": 11147,
+            "quantity": 1,
+            "sourceAreaID": 17,
+            "itemName": "Samophlange Manual Cover",
+            "action": "loot",
+            "name": "Boss Copperplug"
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1413,
+            "legacyStepKey": "q:1413:npc:3283",
+            "entityID": 3283,
+            "y": 0.23800000000000002,
+            "npc": true,
+            "x": 0.258,
+            "sourceZone": "The Barrens",
+            "objectiveKey": "item:11148",
+            "itemID": 11148,
+            "quantity": 5,
+            "sourceAreaID": 17,
+            "itemName": "Samophlange Manual Page",
+            "action": "loot",
+            "name": "Venture Co. Enforcer"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Samophlange Manual Cover",
+            "name": "Boss Copperplug",
+            "entityID": 9336,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "Samophlange Manual Page",
+            "name": "Venture Co. Enforcer",
+            "entityID": 3283,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Samophlange Manual",
+            "entityID": 11149
+          }
+        ],
+        "objectiveLocationsIncomplete": true
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Samophlange Manual",
+            "entityID": 11149
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Samophlange Manual Cover",
+            "entityID": 11147
+          },
+          {
+            "entityType": "item",
+            "quantity": 5,
+            "name": "Samophlange Manual Page",
+            "entityID": 11148
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Samophlange Manual",
+            "itemID": 11149
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1413,
+            "legacyStepKey": "q:1413:npc:9336",
+            "entityID": 9336,
+            "y": 0.034,
+            "npc": true,
+            "x": 0.598,
+            "sourceZone": "The Barrens",
+            "objectiveKey": "item:11147",
+            "itemID": 11147,
+            "quantity": 1,
+            "sourceAreaID": 17,
+            "itemName": "Samophlange Manual Cover",
+            "action": "loot",
+            "name": "Boss Copperplug"
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1413,
+            "legacyStepKey": "q:1413:npc:3283",
+            "entityID": 3283,
+            "y": 0.23800000000000002,
+            "npc": true,
+            "x": 0.258,
+            "sourceZone": "The Barrens",
+            "objectiveKey": "item:11148",
+            "itemID": 11148,
+            "quantity": 5,
+            "sourceAreaID": 17,
+            "itemName": "Samophlange Manual Page",
+            "action": "loot",
+            "name": "Venture Co. Enforcer"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Samophlange Manual Cover",
+            "name": "Boss Copperplug",
+            "entityID": 9336,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "Samophlange Manual Page",
+            "name": "Venture Co. Enforcer",
+            "entityID": 3283,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Samophlange Manual",
+            "entityID": 11149
+          }
+        ],
+        "objectiveLocationsIncomplete": true
+      }
+    }
+  },
+  {
+    "questID": 79192,
+    "title": "Stepping Stones",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Interact with the published actual console/valves or return object. Preserve all existing points, real predecessor hand-ins, multiple item/object starts and key acquisition/count. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/the-barrens-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 14,
+      "level": 24,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "y": 0.7390000000000001,
+            "x": 0.46399999999999997,
+            "name": "Burned-Out Remains",
+            "entityID": 415106,
+            "mapID": 1413
+          },
+          {
+            "y": 0.738,
+            "x": 0.46399999999999997,
+            "name": "Nailed Plank",
+            "entityID": 417072,
+            "mapID": 1413
+          },
+          {
+            "y": 0.507,
+            "x": 0.375,
+            "name": "Burned-Out Remains",
+            "entityID": 415106,
+            "mapID": 1436
+          },
+          {
+            "y": 0.507,
+            "x": 0.375,
+            "name": "Burned-Out Remains",
+            "entityID": 415107,
+            "mapID": 1436
+          },
+          {
+            "y": 0.508,
+            "x": 0.375,
+            "name": "Nailed Plank",
+            "entityID": 424010,
+            "mapID": 1436
+          }
+        ],
+        "ends": [
+          {
+            "y": 0.526,
+            "x": 0.408,
+            "name": "Pocket Litter",
+            "entityID": 424005,
+            "mapID": 1442
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "y": 0.7390000000000001,
+            "x": 0.46399999999999997,
+            "name": "Burned-Out Remains",
+            "entityID": 415106,
+            "mapID": 1413
+          },
+          {
+            "y": 0.738,
+            "x": 0.46399999999999997,
+            "name": "Nailed Plank",
+            "entityID": 417072,
+            "mapID": 1413
+          },
+          {
+            "y": 0.507,
+            "x": 0.375,
+            "name": "Burned-Out Remains",
+            "entityID": 415106,
+            "mapID": 1436
+          },
+          {
+            "y": 0.507,
+            "x": 0.375,
+            "name": "Burned-Out Remains",
+            "entityID": 415107,
+            "mapID": 1436
+          },
+          {
+            "y": 0.508,
+            "x": 0.375,
+            "name": "Nailed Plank",
+            "entityID": 424010,
+            "mapID": 1436
+          }
+        ],
+        "ends": [
+          {
+            "y": 0.526,
+            "x": 0.408,
+            "name": "Pocket Litter",
+            "entityID": 424005,
+            "mapID": 1442,
+            "entityType": "object",
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 98095,
+    "title": "Valuable Vantages",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Retain explicitly supplied Apothecary Vials with unknown supplied count, three counted placements and actual Hillsbrad giver/return. Peak placement points remain unknown; category and prerequisite unchanged. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/the-barrens-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 19,
+      "level": 25,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Western vial placed",
+            "entityID": 270575
+          },
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Northern vial placed",
+            "entityID": 270574
+          },
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Southern vial placed",
+            "entityID": 270573
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Western vial placed",
+            "entityID": 270575
+          },
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Northern vial placed",
+            "entityID": 270574
+          },
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Southern vial placed",
+            "entityID": 270573
+          }
+        ],
+        "objectiveLocationsIncomplete": true,
+        "providedItems": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Western vial placed",
+            "entityID": 270575
+          },
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Northern vial placed",
+            "entityID": 270574
+          },
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Southern vial placed",
+            "entityID": 270573
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Western vial placed",
+            "entityID": 270575
+          },
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Northern vial placed",
+            "entityID": 270574
+          },
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Southern vial placed",
+            "entityID": 270573
+          }
+        ],
+        "objectiveLocationsIncomplete": true,
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 279395,
+            "name": "Apothecary Vials",
+            "quantityUnknown": true
+          }
+        ]
+      }
+    }
   }
 ]

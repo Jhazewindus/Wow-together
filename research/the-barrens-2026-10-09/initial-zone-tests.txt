@@ -1,0 +1,14 @@
+...E...............................................................................................................................
+======================================================================
+ERROR: test_feathers_are_acquired_tool_and_each_nest_is_one_target (test_barrens_coverage.BarrensCoverageTests.test_feathers_are_acquired_tool_and_each_nest_is_one_target)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/workspace/Wow-together-guides/tests/test_barrens_coverage.py", line 21, in test_feathers_are_acquired_tool_and_each_nest_is_one_target
+    q=self.q[905];self.assertFalse(q['requiredItems']);self.assertFalse(q.get('providedItems'));self.assertEqual({p['entityID']for p in q['objectives']},{6906,6907,6908})
+                                   ~^^^^^^^^^^^^^^^^^
+KeyError: 'requiredItems'
+
+----------------------------------------------------------------------
+Ran 131 tests in 167.376s
+
+FAILED (errors=1)

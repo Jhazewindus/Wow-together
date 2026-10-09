@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://classicdb.ch/?quest=882",
+    "questID": 882,
+    "access_date": "2026-10-09 Europe/Amsterdam",
+    "http_status": 200,
+    "sha256": "7db0d90734bf99d41cd3159c9f95fbc717f80104520ea9ac806495a5625a9e7b",
+    "scope": "Unchanged quest identity and preparation mechanics only; no native-beta position or prerequisite evidence; raw prose/comments not retained."
+  },
+  {
+    "url": "https://classicdb.ch/?quest=905",
+    "questID": 905,
+    "access_date": "2026-10-09 Europe/Amsterdam",
+    "http_status": 200,
+    "sha256": "e4779b85b41a4943a37c961e8b49a2dc7d904f37789a8d3e33663d47714bebe9",
+    "scope": "Unchanged quest identity and preparation mechanics only; no native-beta position or prerequisite evidence; raw prose/comments not retained."
+  }
+]
