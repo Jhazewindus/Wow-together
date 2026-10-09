@@ -9,6 +9,16 @@ function ns.UpdateGuideQuestFocus()
         ns.guideQuestFocusStatus = "Off in settings."
         return
     end
+    -- The secret-aura client can run objective-tracker layout in the context
+    -- of native quest selection/supertracking. Outside combat is not enough
+    -- to make that layout safe. Keep automatic writes away from Blizzard's
+    -- tracker; do not hook, replace or catch its aura/layout functions.
+    if type(issecretvalue) == "function" and C_UnitAuras
+        and type(C_UnitAuras.GetAuraDataByIndex) == "function" then
+        ns.guideQuestFocusTarget, ns.guideQuestFocusPending = nil, nil
+        ns.guideQuestFocusStatus = "Automatic native selection disabled on the secret-aura client; addon routes remain active."
+        return
+    end
     local route = ns.routeSelection and ns.selectedRoute
     local stop = route and (route.stops and route.stops[1] or route.pendingStop)
     local id = stop and stop.id

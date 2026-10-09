@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.63
-## X-ReleaseName: CONTINUE YOUR GUIDE
+## Version: 0.8.64
+## X-ReleaseName: DUNGEON POSITION AND ROLE FILTERS
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua
@@ -88,6 +88,7 @@ DungeonJournal.lua
 DungeonMapQuests.lua
 DungeonViewer.lua
 DungeonPlayer.lua
+GroupFinderRoles.lua
 Recommended.lua
 RecommendedUI.lua
 SessionCheckpoints.lua

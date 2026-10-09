@@ -1,14 +1,14 @@
 # Wow Together — friend test script
 
-For **0.8.63** — **CONTINUE YOUR GUIDE**, World of Warcraft: Forever beta,
+For **0.8.64** — **DUNGEON POSITION AND ROLE FILTERS**, World of Warcraft: Forever beta,
 interface **16001**.
-Allow **5–10 minutes for Continue anyway**; the wider optional checks take 45–60
+Allow **10–15 minutes for this update**; the wider optional checks take 45–60
 minutes. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The retained expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 86 Lua files** and
+1. Replace the complete WowTogether folder, including **all 87 Lua files** and
    the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    **Fully restart the client for this update**, rather than only `/reload`.
@@ -20,6 +20,44 @@ The retained expanded-guide checks below take about **15–25 minutes**.
 4. Installing a new version rebuilds the saved guide with the updated rules,
    applying completed/accepted quests and manual skips. Step numbers may change.
    A reload on the same version should preserve the saved order.
+
+## Tracker taint, Ragefire position and role filters — this update
+
+1. Replace the full addon folder and **fully exit/restart WoW**. Keep Lua errors
+   enabled. Quest normally, complete/accept quests, change guide steps, fight,
+   and open/close the world map. Check for the reported MawBuffs/scenario tracker
+   GetAuraDataByIndex error. Addon routes/arrow should work; automatic native
+   game-map quest selection is deliberately disabled on this secret-aura client.
+   Report any recurrence with version/build, stack, guide, combat and open UI.
+2. Open WoW Together's Ragefire Chasm map before entering, disable the entry
+   prompt, and enter RFC. Its native map/player renderer should refresh without
+   reopening. Try **Locate me**, walk/turn, resize, move the map and enter combat.
+   Confirm the arrow/player stays correctly aligned with the actual room.
+   This is the addon map, not Blizzard's round minimap. If no player appears,
+   capture `/wt probe`, especially **Dungeon player**, the map image and current
+   floor. Reference-only maps and unsupported coordinates may remain static.
+3. On a multi-floor dungeon, test automatic following, manual boss/floor browsing
+   and Locate me. A manually selected other floor should remain selected with
+   no stale player marker. Leaving the instance must not leave a player at its
+   last dungeon coordinates. Resizing must preserve letterbox alignment.
+4. Open Blizzard's player search/group applicant list and load results. The
+   **Player roles** companion should appear beside it. Test All roles, Tank,
+   Healer, Damage and Unspecified; compare names/roles with native data. Use
+   pagination and multi-role applicants if available. Missing names/roles must
+   not be invented from class. Native results/invite controls stay intact.
+5. Move/close the role view; it stays closed until reopening the finder. Disable
+   it in Settings → Party progress. Close the finder: the companion hides.
+   No automatic searches, invites, declines or whispers should occur. If the
+   client has no public player-role API, report the Group finder roles line and
+   relevant C_LFGList capability lines in `/wt probe`, plus the exact native tab.
+6. Optional Eastern Plaguelands: verify Marauders of Darrowshire returns five
+   Resonating Skulls, with Fetid Skulls as preparation; To Kill With Purpose
+   returns one Coagulated Rot, with seven Living Rot as preparation. Item-use
+   locations remain unresolved and should not become invented destinations.
+
+Host checks cover native UI isolation, dungeon entry/floor/geometry handling,
+public coordinate/native-renderer adapters, role filtering and reviewed hand-ins.
+They cannot verify actual beta rendering, API delivery or absence of taint.
 
 ## Continue anyway — this update
 

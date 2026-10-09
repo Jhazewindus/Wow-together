@@ -125,12 +125,19 @@ function ns.DungeonViewerData(key)
     if not mapID and C_Map then
         local current = ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
         local roots = {947}
+        local insideKey = ns.DungeonEntryKey()
+        local function isDungeonMap(info)
+            if not publicTable(info) or not matches(key, info.name) then return false end
+            local dungeonType = Enum and Enum.UIMapType and Enum.UIMapType.Dungeon
+            -- Orphan/micro maps occur on Classic interiors. Accept these only
+            -- while the instance itself confirms this exact dungeon name.
+            return insideKey == key or dungeonType and ns.Public(info.mapType) and info.mapType == dungeonType
+        end
         if ns.GuideInteger(current) and current > 0 then
             for _ = 1, 8 do
                 local info = ns.ReadPublic(C_Map.GetMapInfo, current)
                 if not publicTable(info) then break end
-                local dungeonType = Enum and Enum.UIMapType and Enum.UIMapType.Dungeon
-                if dungeonType and ns.Public(info.mapType) and info.mapType == dungeonType and matches(key, info.name) then mapID = current; break end
+                if isDungeonMap(info) then mapID = current; break end
                 if not ns.GuideInteger(info.parentMapID) or info.parentMapID < 1 or info.parentMapID == current then break end
                 current = info.parentMapID
             end
@@ -142,8 +149,7 @@ function ns.DungeonViewerData(key)
                 if publicTable(children) then
                     for index = 1, math.min(#children, 1024) do
                         local info = children[index]
-                        if publicTable(info) and matches(key, info.name) and ns.GuideInteger(info.mapID)
-                            and Enum and Enum.UIMapType and ns.Public(info.mapType) and info.mapType == Enum.UIMapType.Dungeon then
+                        if isDungeonMap(info) and ns.GuideInteger(info.mapID) then
                             mapID = info.mapID; break
                         end
                     end

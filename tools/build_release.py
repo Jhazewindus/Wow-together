@@ -55,6 +55,15 @@ then fully restart the client; the release includes taint mitigation (a /reload 
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+0.8.64 DUNGEON POSITION AND ROLE FILTERS avoids automatic native quest-selection
+writes on the secret-aura client; addon routes/arrow still work. Fully restart
+WoW after replacing the folder, then retest the reported tracker error.
+Dungeon maps refresh on entry and use matching native position/conversion/drawing
+adapters. Reference-only maps remain static; test Locate me inside Ragefire Chasm.
+The Player roles view beside Blizzard's finder filters declared roles without
+changing native results or invites. Eastern Plaguelands hand-in facts are updated.
+See TESTING.md for the relevant beta checks and current limitations.
+
 0.8.63 CONTINUE YOUR GUIDE adds Continue anyway when a fixed leveling guide
 pauses outside its recommended quest difficulty range. Resume available work
 without changing fixed order, pickup requirements or manual skips. The map

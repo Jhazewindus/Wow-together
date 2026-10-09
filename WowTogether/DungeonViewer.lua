@@ -537,6 +537,17 @@ end
 function ns.CheckDungeonViewerEntry()
     if not ns.db then return end
     local key, instance = ns.DungeonEntryKey()
+    -- A viewer opened outside the dungeon can hold reference data. Refresh
+    -- once per entry even if prompts are off, already answered or in combat.
+    local viewer = ns.dungeonViewer
+    local context = key and key .. ":" .. instance or "outside"
+    if viewer and viewer:IsShown() and viewer.entryContext ~= context then
+        viewer.entryContext = context
+        if selected == key then
+            ns.RefreshDungeonViewer(true)
+            if viewer.followPlayer ~= false then ns.LocateDungeonPlayer(viewer); ns.RenderDungeonViewer() end
+        end
+    end
     if not key then entered = nil; if ns.dungeonEntryPrompt then ns.dungeonEntryPrompt:Hide() end; return end
     local entry = key .. ":" .. instance
     if entered == entry or not ns.Option("dungeonMapPrompt") or ns.RouteInCombat() then return end
@@ -587,4 +598,12 @@ function ns.DungeonViewerDiagnostics(output)
     output("Dungeon reference markers: " .. (positions.mappedBosses or 0) .. " bosses; " .. (positions.questsWithInteriorMarkers or 0)
         .. " quests with interior positions. Exact matching floor artwork required; native coordinates take precedence.")
     output("Dungeon player: " .. ns.dungeonPlayerStatus)
+    local viewer = ns.dungeonViewer
+    if viewer and viewer:IsShown() then
+        local map = viewer.data and viewer.data.maps[viewer.floor]
+        local current = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
+        output("Dungeon player maps: current " .. (ns.GuideInteger(current) and current or "unknown")
+            .. "; displayed " .. (map and map.mapID or "unknown") .. (map and map.reference and " (reference)" or " (native)")
+            .. "; native renderer " .. (viewer.nativePlayerFailed and "failed" or viewer.nativePlayer and "available" or "unavailable") .. ".")
+    end
 end

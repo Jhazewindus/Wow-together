@@ -1,5 +1,31 @@
 # Wow Together changelog
 
+## 0.8.64
+
+**DUNGEON POSITION AND ROLE FILTERS**
+
+- Mitigate the secret-aura tracker error by disabling automatic native quest
+  selection/supertracking on this client, including outside combat. Addon arrows,
+  routes and markers remain. Fully restart WoW; the error still needs a live
+  retest. Blizzard's aura functions and secure UI scripts are untouched.
+- Refresh open dungeon maps on entry, including with prompts off. Handle
+  instance-confirmed native floors, missing/outdoor best-map IDs on single-floor
+  instances, matching public world-to-map coordinates and an owned native player
+  renderer. Resize alignment/floor browsing remain. Reference-only maps stay
+  static; Blizzard's round minimap is unchanged. Retest inside Ragefire Chasm.
+- Add a movable **Player roles** view beside Blizzard's player search/applicant
+  list: All roles, Tank, Healer, Damage and Unspecified. Filter public declared
+  roles; multi-role applicants match each selected role. Keep native results and
+  invites untouched. Close the view or disable it in Settings → Party progress.
+  Missing/private data is not guessed from class; only loaded results are read.
+- Integrate the reviewed Eastern Plaguelands corrections: Marauders of Darrowshire
+  and To Kill With Purpose distinguish preparation inputs from final hand-in
+  items. Preserve quantities, targets, prerequisites and unmapped action locations.
+  Retain the guide agent's evidence and checks.
+
+Host checks cover UI isolation, position adapters, role filtering and reviewed
+hand-ins. They cannot establish beta API behavior, map rendering or taint removal.
+
 ## 0.8.63
 
 **CONTINUE YOUR GUIDE**

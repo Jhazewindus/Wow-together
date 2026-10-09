@@ -9,11 +9,36 @@ local function number(value, maximum)
 end
 local function currentFloor(frame)
     local id = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
-    if not ns.GuideInteger(id) or id < 1 then return end
-    for floor, map in ipairs(frame.data and frame.data.maps or {}) do
-        -- Only an exact native UI map can provide coordinates for its artwork.
-        if not map.reference and map.mapID == id then return floor, id end
+    if ns.GuideInteger(id) and id > 0 then
+        for floor, map in ipairs(frame.data and frame.data.maps or {}) do
+            -- Only an exact native UI map can provide coordinates for its artwork.
+            if not map.reference and map.mapID == id then return floor, id end
+        end
     end
+    -- Some Classic interiors retain the outdoor best-map ID. A confirmed
+    -- instance with exactly one native floor is unambiguous; multi-floor maps
+    -- still require the client's actual floor ID.
+    local maps = frame.data and frame.data.maps or {}
+    local key = ns.DungeonEntryKey()
+    if key and frame.data and key == frame.data.key and #maps == 1 and not maps[1].reference
+        and ns.GuideInteger(maps[1].mapID) then return 1, maps[1].mapID end
+end
+local function coordinates(vector)
+    if not ns.Public(vector) or type(vector) ~= "table" and type(vector) ~= "userdata" then return end
+    local x, y = ns.ReadPublic(vector.GetXY, vector)
+    if number(x, 1) and number(y, 1) and not (x == 0 and y == 0) then return x, y end
+end
+local function worldPosition(id)
+    if not C_Map or type(CreateVector2D) ~= "function" or type(UnitPosition) ~= "function" then return end
+    local wx, wy, _, instance = ns.ReadPublic(UnitPosition, "player")
+    if not ns.Public(wx) or not ns.Public(wy) or type(wx) ~= "number" or type(wy) ~= "number"
+        or wx ~= wx or wy ~= wy or math.abs(wx) >= 1000000 or math.abs(wy) >= 1000000
+        or not ns.GuideInteger(instance) then return end
+    local continent = ns.ReadPublic(C_Map.GetWorldPosFromMapPos, id, CreateVector2D(0, 0))
+    if continent ~= instance then return end
+    local mapID, vector = ns.ReadPublic(C_Map.GetMapPosFromWorldPos, instance, CreateVector2D(wx, wy), id)
+    if mapID ~= id then return end
+    return coordinates(vector)
 end
 function ns.LocateDungeonPlayer(frame)
     frame = frame or ns.dungeonViewer
@@ -28,6 +53,7 @@ function ns.UpdateDungeonPlayer(frame)
     if not frame or not frame.playerMarker then return end
     local marker, geometry = frame.playerMarker, frame.playerGeometry
     marker:Hide()
+    if frame.nativePlayer then frame.nativePlayer:Hide() end
     if not frame:IsShown() then return end
     local floor, id = currentFloor(frame)
     if not floor then ns.dungeonPlayerStatus = "No matching native player floor; map stays static."; return end
@@ -38,13 +64,17 @@ function ns.UpdateDungeonPlayer(frame)
     end
     if floor ~= frame.floor then ns.dungeonPlayerStatus = "Viewing another floor; click Locate me to return."; return end
     if not geometry or geometry.mapID ~= id then ns.dungeonPlayerStatus = "Map artwork unavailable; live marker hidden."; return end
-    local vector = C_Map and ns.ReadPublic(C_Map.GetPlayerMapPosition, id, "player")
-    if not ns.Public(vector) or type(vector) ~= "table" and type(vector) ~= "userdata" then
-        ns.dungeonPlayerStatus = "Client returned no public player position for this floor."; return
-    end
-    local x, y = ns.ReadPublic(vector.GetXY, vector)
-    if not number(x, 1) or not number(y, 1) or x == 0 and y == 0 then
-        ns.dungeonPlayerStatus = "Player position missing, restricted or outside this floor."; return
+    local x, y = coordinates(C_Map and ns.ReadPublic(C_Map.GetPlayerMapPosition, id, "player"))
+    local source = "native"
+    if not x then x, y = worldPosition(id); source = "world-to-map" end
+    if not x then
+        if frame.nativePlayer and frame.nativePlayer.mapID == id and not frame.nativePlayerFailed then
+            -- The native frame renders a unit directly. It does not return
+            -- restricted coordinates to addon Lua or borrow reference geometry.
+            frame.nativePlayer:Show()
+            ns.dungeonPlayerStatus = "Native player renderer on floor " .. id .. "; Lua position unavailable."
+        else ns.dungeonPlayerStatus = "No public position for native floor " .. id .. "; map stays static." end
+        return
     end
     local facing = ns.ReadPublic(GetPlayerFacing)
     local directional = number(facing, math.pi * 2) and marker.hasArrow
@@ -53,12 +83,37 @@ function ns.UpdateDungeonPlayer(frame)
     marker:ClearAllPoints()
     marker:SetPoint("CENTER", frame.map, "TOPLEFT", geometry.x + x * geometry.width, -geometry.y - y * geometry.height)
     marker:Show()
-    ns.dungeonPlayerStatus = directional and "Live native player position and facing." or "Live native position; facing unavailable."
+    ns.dungeonPlayerStatus = "Live " .. source .. " position on floor " .. id .. (directional and " with facing." or "; facing unavailable.")
 end
 
 function ns.SetDungeonPlayerGeometry(frame, map, ox, oy, scale)
     frame.playerGeometry = map and not map.reference and map.mapID and {
         mapID = map.mapID, x = ox, y = oy, width = map.width * scale, height = map.height * scale} or nil
+    if frame.playerGeometry then
+        if not frame.nativePlayerTried then
+            frame.nativePlayerTried = true
+            local ok, renderer = pcall(CreateFrame, "UnitPositionFrame", nil, frame.map)
+            if ok and renderer and type(renderer.SetUiMapID) == "function" and type(renderer.AddUnit) == "function"
+                and type(renderer.FinalizeUnits) == "function" and type(renderer.ClearUnits) == "function" then
+                frame.nativePlayer = renderer
+                renderer:Hide(); renderer:EnableMouse(false); renderer:SetFrameLevel(frame.map:GetFrameLevel() + 30)
+            end
+        end
+        local renderer, geometry = frame.nativePlayer, frame.playerGeometry
+        if renderer and not frame.nativePlayerFailed then
+            renderer:Hide(); renderer:ClearAllPoints()
+            renderer:SetPoint("TOPLEFT", frame.map, "TOPLEFT", geometry.x, -geometry.y)
+            renderer:SetSize(geometry.width, geometry.height)
+            -- No Blizzard Lua mixin, native-map frame, aura reader or tooltip
+            -- hook is involved. These are documented methods of our own frame.
+            local ok = pcall(function()
+                renderer:SetUiMapID(geometry.mapID); renderer:ClearUnits()
+                renderer:AddUnit("player", "Interface\\Minimap\\MinimapArrow", 26, 26, 1, 1, 1, 1, 7, true)
+                renderer:FinalizeUnits()
+            end)
+            if ok then renderer.mapID = geometry.mapID else frame.nativePlayerFailed = true; renderer:Hide() end
+        end
+    elseif frame.nativePlayer then frame.nativePlayer:Hide() end
     ns.UpdateDungeonPlayer(frame)
 end
 

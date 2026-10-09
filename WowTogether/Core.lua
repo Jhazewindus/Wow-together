@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.63"
-ns.RELEASE_NAME = "CONTINUE YOUR GUIDE"
+ns.VERSION = "0.8.64"
+ns.RELEASE_NAME = "DUNGEON POSITION AND ROLE FILTERS"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}
@@ -155,6 +155,15 @@ function ns.Diagnostics()
         {"C_Map.GetMapGroupMembersInfo", C_Map and C_Map.GetMapGroupMembersInfo},
         {"C_Map.GetMapWorldSize", C_Map and C_Map.GetMapWorldSize},
         {"GetPlayerFacing", GetPlayerFacing},
+        {"UnitPosition", UnitPosition},
+        {"C_LFGList.GetSearchResults", C_LFGList and C_LFGList.GetSearchResults},
+        {"C_LFGList.GetFilteredSearchResults", C_LFGList and C_LFGList.GetFilteredSearchResults},
+        {"C_LFGList.GetSearchResultPlayerInfo", C_LFGList and C_LFGList.GetSearchResultPlayerInfo},
+        {"C_LFGList.GetSearchResultMemberInfo", C_LFGList and C_LFGList.GetSearchResultMemberInfo},
+        {"C_LFGList.GetApplicants", C_LFGList and C_LFGList.GetApplicants},
+        {"C_LFGList.GetSearchResultInfo", C_LFGList and C_LFGList.GetSearchResultInfo},
+        {"C_LFGList.GetApplicantInfo", C_LFGList and C_LFGList.GetApplicantInfo},
+        {"C_LFGList.GetApplicantMemberInfo", C_LFGList and C_LFGList.GetApplicantMemberInfo},
         {"C_Map.GetWorldPosFromMapPos", C_Map and C_Map.GetWorldPosFromMapPos},
         {"C_Map.GetMapLinksForMap", C_Map and C_Map.GetMapLinksForMap},
         {"CreateVector2D", CreateVector2D},
@@ -281,6 +290,7 @@ function ns.Diagnostics()
     ns.InventoryServiceDiagnostics(output)
     ns.DungeonArtworkDiagnostics(output)
     ns.DungeonViewerDiagnostics(output)
+    ns.GroupFinderRoleDiagnostics(output)
     local low, high = ns.PreferredQuestLevels()
     if low then
         local level, _, name = ns.PartyLevelFloor()
@@ -331,6 +341,7 @@ ns.On("ADDON_LOADED", function(name)
     if ns.InitializeProfessionGuides then ns.InitializeProfessionGuides() end
     ns.InitializeAuctionMarket()
     ns.InitializeDungeonViewer()
+    ns.InitializeGroupFinderRoles()
     ns.InitializeInventoryServices()
     ns.InitializeSessionCheckpoints()
     ns.Refresh()

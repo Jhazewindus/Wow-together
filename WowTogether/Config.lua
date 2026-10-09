@@ -9,7 +9,7 @@ local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, cl
     useLearnedQuests = true, exportCharacterNames = false, fixedZoneGuides = true,
     standaloneArrow = false, travelNetwork = true, soloMode = false, questGiverStars = true, patrolHints = true, eliteSpawnHints = true, hearthstoneTips = true,
     guideOpaque = true, highlightGuideQuest = true, classTraining = true,
-    inventoryServices = true, restockSupplies = true, supplyTarget = 20}
+    inventoryServices = true, restockSupplies = true, supplyTarget = 20, groupFinderRoles = true}
 
 function ns.Option(key)
     local value = ns.db and ns.db.config and ns.db.config[key]
@@ -33,7 +33,7 @@ local sections = {
         {"scanSkipped", "Reconsider skips when scanning", "A successful Scan guide clears saved skips for quests in the selected guide. Leave off to keep skips; failed or cancelled scans keep them."},
         {"circuitRadius", "Nearby pickup distance", "Limit how much additional walking a nearby pickup adds to the current trip.", {{0.10, "Stay close"}, {0.16, "Small detours"}, {0.22, "Wider loop"}}}}},
     {"navigation", "Arrow and map", {
-        {"highlightGuideQuest", "Highlight the current guide quest", "Highlight your current accepted quest on the game map after combat."},
+        {"highlightGuideQuest", "Automatic game-map highlights", "Select the current accepted quest on supported clients. Disabled on the secret-aura beta client; addon route markers remain available."},
         {"routeArrow", "Show the direction arrow", "A movable guide panel with the current instruction and step controls."},
         {"guideOpaque", "Opaque guide background", "Use a solid background. Turn off for a see-through guide."},
         {"standaloneArrow", "Show a standalone direction arrow", "Show the arrow, distance and travel time in a separate small panel."},
@@ -51,6 +51,7 @@ local sections = {
         {"restockSupplies", "Include food and drink", "Suggest common level-appropriate supplies when 5 or fewer remain. Drink is suggested for mana classes. Buy manually; other consumables are not counted."},
         {"supplyTarget", "Restock amount", "How much food or drink to carry after a suggested vendor visit.", {{10, "10 of each"}, {20, "20 of each"}, {40, "40 of each"}}}}},
     {"party", "Party progress", {
+        {"groupFinderRoles", "Group finder role filter", "Show a movable player-role view beside Blizzard's search or applicant list. Filter declared Tank, Healer or Damage roles; invites stay in the game finder."},
         {"trackerAuto", "Show party progress automatically", "Show when joining a party; hide when solo or in a raid. You can close it for the current party session."},
         {"trackerOpacity", "Party panel background", "Choose readability behind quest progress text.", {{0, "Transparent"}, {0.08, "Subtle"}, {0.25, "Dark glass"}, {0.5, "Dark"}}},
         {"trackerHeight", "Party panel size", "How much progress is visible before you scroll.", {{220, "Compact"}, {350, "Comfortable"}, {500, "Tall"}}}}},
