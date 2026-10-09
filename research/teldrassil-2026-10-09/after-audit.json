@@ -1,0 +1,139 @@
+{
+  "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
+  "quest_records": 38,
+  "static_points_checked": 110,
+  "fixed_zone_guides_checked": 2,
+  "catalogue_reason_stages_checked": 129,
+  "catalogue_reason_codes": {
+    "level-work": 38,
+    "quest-objective": 53,
+    "quest-reward": 38
+  },
+  "reason_review_quest_ids": [
+    456,
+    457,
+    458,
+    459,
+    475,
+    476,
+    483,
+    488,
+    490,
+    916,
+    917,
+    920,
+    921,
+    923,
+    928,
+    929,
+    930,
+    931,
+    932,
+    935,
+    941,
+    997,
+    2159,
+    2459,
+    2541,
+    2561,
+    3519,
+    3521,
+    3522,
+    4495,
+    5842,
+    7383,
+    97236,
+    97977,
+    98392,
+    98403,
+    99046,
+    99050
+  ],
+  "source_data_gap_free_guides": 0,
+  "guides": [
+    {
+      "faction": "Alliance",
+      "zone": "Teldrassil",
+      "key": "level-zone:kalimdor/teldrassil:levels:1-10",
+      "quests": 48,
+      "steps": 157,
+      "unknown_location_steps": 2,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [
+          2459,
+          99053
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 157,
+      "destination_reason_codes": {
+        "level-work": 6,
+        "outside-level-range": 69,
+        "prerequisite": 37,
+        "quest-objective": 8,
+        "quest-reward": 33,
+        "return-hub": 2,
+        "reward-first": 1,
+        "unlock-loop": 1
+      },
+      "reason_review_steps": 75,
+      "cross_zone_reason_steps": 4,
+      "flow_alternatives_evaluated": 243,
+      "flow_loop_changes": 9,
+      "flow_state_valid": true,
+      "quest_log_peak": 12,
+      "quest_reward_only_xp_shortfall": 2700,
+      "uncertain_travel_legs": 32,
+      "estimated_distance_before": 84608.2,
+      "estimated_distance_after": 74343.33
+    },
+    {
+      "faction": "Alliance",
+      "zone": "Teldrassil",
+      "key": "level-zone:kalimdor/teldrassil:levels:11-20",
+      "quests": 26,
+      "steps": 84,
+      "unknown_location_steps": 2,
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          934
+        ],
+        "q": [],
+        "t": [
+          934
+        ]
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 84,
+      "destination_reason_codes": {
+        "outside-level-range": 42,
+        "prerequisite": 23,
+        "quest-reward": 17,
+        "return-hub": 1,
+        "unlock-loop": 1
+      },
+      "reason_review_steps": 43,
+      "cross_zone_reason_steps": 4,
+      "flow_alternatives_evaluated": 28,
+      "flow_loop_changes": 1,
+      "flow_state_valid": true,
+      "quest_log_peak": 6,
+      "quest_reward_only_xp_shortfall": 13370,
+      "uncertain_travel_legs": 22,
+      "estimated_distance_before": 82327.17,
+      "estimated_distance_after": 81954.19
+    }
+  ],
+  "scope": {
+    "zone": "Teldrassil",
+    "catalogue_records": "Exact quest zone; guide dependencies still compile normally"
+  }
+}

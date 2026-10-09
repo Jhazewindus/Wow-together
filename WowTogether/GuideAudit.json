@@ -1,7 +1,7 @@
 {
   "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
   "quest_records": 5230,
-  "static_points_checked": 11831,
+  "static_points_checked": 11829,
   "fixed_zone_guides_checked": 152,
   "catalogue_reason_stages_checked": 16849,
   "catalogue_reason_codes": {
@@ -7609,11 +7609,12 @@
       "key": "level-zone:kalimdor/teldrassil:levels:1-10",
       "quests": 48,
       "steps": 157,
-      "unknown_location_steps": 1,
+      "unknown_location_steps": 2,
       "missing_location_quest_ids_by_stage": {
         "a": [],
         "q": [
-          2459
+          2459,
+          99053
         ],
         "t": []
       },
@@ -7627,20 +7628,21 @@
         "outside-level-range": 69,
         "prerequisite": 37,
         "quest-objective": 8,
-        "quest-reward": 34,
+        "quest-reward": 33,
         "return-hub": 2,
+        "reward-first": 1,
         "unlock-loop": 1
       },
       "reason_review_steps": 75,
       "cross_zone_reason_steps": 4,
-      "flow_alternatives_evaluated": 274,
-      "flow_loop_changes": 6,
+      "flow_alternatives_evaluated": 243,
+      "flow_loop_changes": 9,
       "flow_state_valid": true,
-      "quest_log_peak": 11,
+      "quest_log_peak": 12,
       "quest_reward_only_xp_shortfall": 2700,
-      "uncertain_travel_legs": 29,
-      "estimated_distance_before": 82094.96,
-      "estimated_distance_after": 79804.19
+      "uncertain_travel_legs": 32,
+      "estimated_distance_before": 84608.2,
+      "estimated_distance_after": 74343.33
     },
     {
       "faction": "Alliance",
@@ -7672,7 +7674,7 @@
       },
       "reason_review_steps": 43,
       "cross_zone_reason_steps": 4,
-      "flow_alternatives_evaluated": 30,
+      "flow_alternatives_evaluated": 28,
       "flow_loop_changes": 1,
       "flow_state_valid": true,
       "quest_log_peak": 6,

@@ -1,0 +1,2852 @@
+{
+  "921": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1438,
+      "zone": "Teldrassil",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Filled Crystal Phial",
+          "entityID": 5184
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Filled Crystal Phial",
+          "itemID": 5184
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1438,
+          "action": "gather",
+          "entityID": 19549,
+          "x": 0.5995,
+          "y": 0.33049999999999996,
+          "objectiveKey": "item:5184",
+          "itemID": 5184,
+          "quantity": 1,
+          "sourceAreaID": 141,
+          "itemName": "Filled Crystal Phial",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Shadowglen Moonwell"
+        }
+      ],
+      "starts": [
+        {
+          "y": 0.39399999999999996,
+          "mapID": 1438,
+          "name": "Tenaron Stormgrip",
+          "entityID": 3514,
+          "npc": true,
+          "x": 0.59
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "level": 5,
+      "areaID": 141,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Tenaron Stormgrip",
+          "entityID": 3514
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "ends": [
+        {
+          "y": 0.39399999999999996,
+          "mapID": 1438,
+          "name": "Tenaron Stormgrip",
+          "entityID": 3514,
+          "npc": true,
+          "x": 0.59
+        }
+      ],
+      "side": "Alliance",
+      "previousQuest": 920,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Tenaron Stormgrip",
+          "entityID": 3514
+        }
+      ],
+      "xp": 335,
+      "foreverStatus": "unchanged",
+      "title": "Crown of the Earth",
+      "minLevel": 1,
+      "requirementSource": "Wowhead Forever objective table",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Filled Crystal Phial",
+            "entityID": 5184
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Tenaron Stormgrip",
+            "entityID": 3514
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Tenaron Stormgrip",
+            "entityID": 3514
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/teldrassil"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1438,
+      "zone": "Teldrassil",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Filled Crystal Phial",
+          "entityID": 5184
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1438,
+          "action": "use",
+          "entityID": 19549,
+          "useItemID": 5185,
+          "useItemName": "Crystal Phial",
+          "x": 0.5995,
+          "y": 0.33049999999999996,
+          "objectiveKey": "item:5184",
+          "itemID": 5184,
+          "quantity": 1,
+          "sourceAreaID": 141,
+          "itemName": "Filled Crystal Phial",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Shadowglen Moonwell"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Filled Crystal Phial",
+          "itemID": 5184
+        }
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "name": "Crystal Phial",
+          "entityID": 5185
+        }
+      ],
+      "starts": [
+        {
+          "y": 0.39399999999999996,
+          "mapID": 1438,
+          "name": "Tenaron Stormgrip",
+          "entityID": 3514,
+          "npc": true,
+          "x": 0.59
+        }
+      ],
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "level": 5,
+      "areaID": 141,
+      "ends": [
+        {
+          "y": 0.39399999999999996,
+          "mapID": 1438,
+          "name": "Tenaron Stormgrip",
+          "entityID": 3514,
+          "npc": true,
+          "x": 0.59
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Tenaron Stormgrip",
+          "entityID": 3514
+        }
+      ],
+      "side": "Alliance",
+      "previousQuest": 920,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Tenaron Stormgrip",
+          "entityID": 3514
+        }
+      ],
+      "xp": 335,
+      "title": "Crown of the Earth",
+      "foreverStatus": "unchanged",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Use the published supplied empty phial at the existing verified moonwell; keep filled output, quantity one, actual hand-in and source map. Supplied count is unknown. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/teldrassil-2026-10-09.",
+      "minLevel": 1,
+      "requirementSource": "Wowhead Forever objective table",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Filled Crystal Phial",
+            "entityID": 5184
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Tenaron Stormgrip",
+            "entityID": 3514
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantityUnknown": true,
+            "name": "Crystal Phial",
+            "entityID": 5185
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Tenaron Stormgrip",
+            "entityID": 3514
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/teldrassil"
+    }
+  },
+  "922": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1438,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Denalan",
+          "entityID": 2080
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Timberling Seed",
+          "entityID": 5168
+        }
+      ],
+      "npcTargets": [
+        {
+          "itemName": "Timberling Seed",
+          "name": "Timberling",
+          "entityID": 2022,
+          "npc": true,
+          "action": "loot"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Timberling Seed",
+          "itemID": 5168
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "action": "loot",
+          "entityID": 2022,
+          "npc": true,
+          "y": 0.67,
+          "sourceZone": "Teldrassil",
+          "objectiveKey": "item:5168",
+          "itemID": 5168,
+          "x": 0.612,
+          "sourceAreaID": 141,
+          "quantity": 1,
+          "itemName": "Timberling Seed",
+          "name": "Timberling"
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "entityID": 2080,
+          "npc": true,
+          "sourceZone": "Teldrassil",
+          "x": 0.608,
+          "name": "Denalan",
+          "sourceAreaID": 141,
+          "y": 0.684
+        }
+      ],
+      "level": 7,
+      "areaID": 141,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 4294967373,
+      "side": "Alliance",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1457,
+          "entityID": 3517,
+          "npc": true,
+          "y": 0.2164,
+          "x": 0.3818,
+          "name": "Rellian Greenspyre",
+          "sourceAreaID": 1657,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Rellian Greenspyre",
+          "entityID": 3517
+        }
+      ],
+      "xp": 315,
+      "prerequisiteAny": [
+        918
+      ],
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 4,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "title": "Rellian Greenspyre",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Timberling Seed",
+            "entityID": 5168
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Denalan",
+            "entityID": 2080
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Rellian Greenspyre",
+            "entityID": 3517
+          }
+        ]
+      },
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "categoryPath": "kalimdor/teldrassil"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "otherLocationsIncomplete": false,
+      "level": 7,
+      "areaID": 141,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Rellian Greenspyre",
+          "entityID": 3517
+        }
+      ],
+      "xp": 315,
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied delivery/already-held item starter: keep real hand-in and initial loot acquisition; remove redundant post-acceptance farming. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/teldrassil-2026-10-09.",
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Denalan",
+            "entityID": 2080
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Timberling Seed",
+            "entityID": 5168
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Rellian Greenspyre",
+            "entityID": 3517
+          }
+        ]
+      },
+      "categoryPath": "kalimdor/teldrassil",
+      "raceMask": 4294967373,
+      "mapID": 1438,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Denalan",
+          "entityID": 2080
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Timberling Seed",
+          "itemID": 5168
+        }
+      ],
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1457,
+          "action": "talk",
+          "entityID": 3517,
+          "npc": true,
+          "y": 0.2164,
+          "x": 0.3818,
+          "name": "Rellian Greenspyre",
+          "sourceAreaID": 1657,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Alliance",
+      "minLevel": 4,
+      "objectives": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Timberling Seed",
+          "entityID": 5168
+        }
+      ],
+      "classMask": 0,
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "entityID": 2080,
+          "npc": true,
+          "sourceZone": "Teldrassil",
+          "x": 0.608,
+          "name": "Denalan",
+          "sourceAreaID": 141,
+          "y": 0.684
+        }
+      ],
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "title": "Rellian Greenspyre",
+      "prerequisiteAny": [
+        918
+      ],
+      "foreverStatus": "unchanged",
+      "npcTargets": {}
+    }
+  },
+  "927": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1438,
+      "startRefs": [
+        {
+          "entityType": "item",
+          "name": "Moss-twined Heart",
+          "entityID": 5179
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Moss-twined Heart",
+          "entityID": 5179
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Moss-twined Heart",
+          "itemID": 5179
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "npcTargets": [
+        {
+          "itemName": "Moss-twined Heart",
+          "name": "Blackmoss the Fetid",
+          "entityID": 3535,
+          "npc": true,
+          "action": "loot"
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "action": "loot",
+          "entityID": 3535,
+          "npc": true,
+          "y": 0.38799999999999996,
+          "sourceZone": "Teldrassil",
+          "objectiveKey": "item:5179",
+          "itemID": 5179,
+          "x": 0.386,
+          "sourceAreaID": 141,
+          "quantity": 1,
+          "itemName": "Moss-twined Heart",
+          "name": "Blackmoss the Fetid"
+        }
+      ],
+      "level": 12,
+      "areaID": 141,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "action": "start-item",
+          "entityID": 3535,
+          "npc": true,
+          "sourceAction": "loot",
+          "x": 0.386,
+          "itemID": 5179,
+          "y": 0.38799999999999996,
+          "sourceAreaID": 141,
+          "sourceZone": "Teldrassil",
+          "itemName": "Moss-twined Heart",
+          "name": "Blackmoss the Fetid"
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Alliance",
+      "raceMask": 4294967373,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Denalan",
+          "entityID": 2080
+        }
+      ],
+      "xp": 455,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "entityID": 2080,
+          "npc": true,
+          "sourceZone": "Teldrassil",
+          "x": 0.608,
+          "name": "Denalan",
+          "sourceAreaID": 141,
+          "y": 0.684
+        }
+      ],
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 5,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "title": "The Moss-twined Heart",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Moss-twined Heart",
+            "entityID": 5179
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "item",
+            "name": "Moss-twined Heart",
+            "entityID": 5179
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Denalan",
+            "entityID": 2080
+          }
+        ]
+      },
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "categoryPath": "kalimdor/teldrassil"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1438,
+      "startRefs": [
+        {
+          "entityType": "item",
+          "name": "Moss-twined Heart",
+          "entityID": 5179
+        }
+      ],
+      "requirements": {},
+      "npcTargets": {},
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Moss-twined Heart",
+          "itemID": 5179
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "objectives": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Moss-twined Heart",
+          "entityID": 5179
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "action": "start-item",
+          "entityID": 3535,
+          "npc": true,
+          "sourceAction": "loot",
+          "x": 0.386,
+          "itemID": 5179,
+          "y": 0.38799999999999996,
+          "sourceAreaID": 141,
+          "sourceZone": "Teldrassil",
+          "itemName": "Moss-twined Heart",
+          "name": "Blackmoss the Fetid"
+        }
+      ],
+      "level": 12,
+      "areaID": 141,
+      "title": "The Moss-twined Heart",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 4294967373,
+      "side": "Alliance",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "action": "talk",
+          "entityID": 2080,
+          "npc": true,
+          "sourceZone": "Teldrassil",
+          "x": 0.608,
+          "name": "Denalan",
+          "sourceAreaID": 141,
+          "y": 0.684
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Denalan",
+          "entityID": 2080
+        }
+      ],
+      "xp": 455,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 5,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied delivery/already-held item starter: keep real hand-in and initial loot acquisition; remove redundant post-acceptance farming. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/teldrassil-2026-10-09.",
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "item",
+            "name": "Moss-twined Heart",
+            "entityID": 5179
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Moss-twined Heart",
+            "entityID": 5179
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Denalan",
+            "entityID": 2080
+          }
+        ]
+      },
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "categoryPath": "kalimdor/teldrassil"
+    }
+  },
+  "929": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1438,
+      "zone": "Teldrassil",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Filled Jade Phial",
+          "entityID": 5639
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Filled Jade Phial",
+          "itemID": 5639
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1438,
+          "action": "gather",
+          "entityID": 19550,
+          "x": 0.6338,
+          "y": 0.5809000000000001,
+          "objectiveKey": "item:5639",
+          "itemID": 5639,
+          "quantity": 1,
+          "sourceAreaID": 141,
+          "itemName": "Filled Jade Phial",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Starbreeze Village Moonwell"
+        }
+      ],
+      "starts": [
+        {
+          "y": 0.616,
+          "mapID": 1438,
+          "name": "Corithras Moonrage",
+          "entityID": 3515,
+          "npc": true,
+          "x": 0.562
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "level": 5,
+      "areaID": 141,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Corithras Moonrage",
+          "entityID": 3515
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "ends": [
+        {
+          "y": 0.616,
+          "mapID": 1438,
+          "name": "Corithras Moonrage",
+          "entityID": 3515,
+          "npc": true,
+          "x": 0.562
+        }
+      ],
+      "side": "Alliance",
+      "previousQuest": 928,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Corithras Moonrage",
+          "entityID": 3515
+        }
+      ],
+      "xp": 335,
+      "foreverStatus": "unchanged",
+      "title": "Crown of the Earth",
+      "minLevel": 1,
+      "requirementSource": "Wowhead Forever objective table",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Filled Jade Phial",
+            "entityID": 5639
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Corithras Moonrage",
+            "entityID": 3515
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Corithras Moonrage",
+            "entityID": 3515
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/teldrassil"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1438,
+      "zone": "Teldrassil",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Filled Jade Phial",
+          "entityID": 5639
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1438,
+          "action": "use",
+          "entityID": 19550,
+          "useItemID": 5619,
+          "useItemName": "Jade Phial",
+          "x": 0.6338,
+          "y": 0.5809000000000001,
+          "objectiveKey": "item:5639",
+          "itemID": 5639,
+          "quantity": 1,
+          "sourceAreaID": 141,
+          "itemName": "Filled Jade Phial",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Starbreeze Village Moonwell"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Filled Jade Phial",
+          "itemID": 5639
+        }
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "name": "Jade Phial",
+          "entityID": 5619
+        }
+      ],
+      "starts": [
+        {
+          "y": 0.616,
+          "mapID": 1438,
+          "name": "Corithras Moonrage",
+          "entityID": 3515,
+          "npc": true,
+          "x": 0.562
+        }
+      ],
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "level": 5,
+      "areaID": 141,
+      "ends": [
+        {
+          "y": 0.616,
+          "mapID": 1438,
+          "name": "Corithras Moonrage",
+          "entityID": 3515,
+          "npc": true,
+          "x": 0.562
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Corithras Moonrage",
+          "entityID": 3515
+        }
+      ],
+      "side": "Alliance",
+      "previousQuest": 928,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Corithras Moonrage",
+          "entityID": 3515
+        }
+      ],
+      "xp": 335,
+      "title": "Crown of the Earth",
+      "foreverStatus": "unchanged",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Use the published supplied empty phial at the existing verified moonwell; keep filled output, quantity one, actual hand-in and source map. Supplied count is unknown. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/teldrassil-2026-10-09.",
+      "minLevel": 1,
+      "requirementSource": "Wowhead Forever objective table",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Filled Jade Phial",
+            "entityID": 5639
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Corithras Moonrage",
+            "entityID": 3515
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantityUnknown": true,
+            "name": "Jade Phial",
+            "entityID": 5619
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Corithras Moonrage",
+            "entityID": 3515
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/teldrassil"
+    }
+  },
+  "933": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1438,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Corithras Moonrage",
+          "entityID": 3515
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 5645,
+          "name": "Filled Tourmaline Phial"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Filled Tourmaline Phial",
+          "itemID": 5645
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1438,
+          "action": "gather",
+          "entityID": 19551,
+          "x": 0.4241,
+          "y": 0.6707,
+          "objectiveKey": "item:5645",
+          "itemID": 5645,
+          "quantity": 1,
+          "sourceAreaID": 141,
+          "itemName": "Filled Tourmaline Phial",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Pools of Arlithrien Moonwell"
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "entityID": 3515,
+          "npc": true,
+          "y": 0.6171,
+          "x": 0.5614,
+          "name": "Corithras Moonrage",
+          "sourceAreaID": 141,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "level": 9,
+      "areaID": 141,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 4294967373,
+      "side": "Alliance",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "entityID": 3515,
+          "npc": true,
+          "y": 0.6171,
+          "x": 0.5614,
+          "name": "Corithras Moonrage",
+          "sourceAreaID": 141,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Corithras Moonrage",
+          "entityID": 3515
+        }
+      ],
+      "xp": 780,
+      "prerequisiteAny": [
+        929
+      ],
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 1,
+      "requirementSource": "Published Forever typed objectives",
+      "title": "Crown of the Earth",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 5645,
+            "name": "Filled Tourmaline Phial"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Corithras Moonrage",
+            "entityID": 3515
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Corithras Moonrage",
+            "entityID": 3515
+          }
+        ]
+      },
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "kalimdor/teldrassil"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1438,
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1438,
+          "action": "use",
+          "entityID": 19551,
+          "useItemID": 5621,
+          "useItemName": "Tourmaline Phial",
+          "x": 0.4241,
+          "y": 0.6707,
+          "objectiveKey": "item:5645",
+          "itemID": 5645,
+          "quantity": 1,
+          "sourceAreaID": 141,
+          "itemName": "Filled Tourmaline Phial",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Pools of Arlithrien Moonwell"
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Corithras Moonrage",
+          "entityID": 3515
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 5645,
+          "name": "Filled Tourmaline Phial"
+        }
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "name": "Tourmaline Phial",
+          "entityID": 5621
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Filled Tourmaline Phial",
+          "itemID": 5645
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "entityID": 3515,
+          "npc": true,
+          "y": 0.6171,
+          "x": 0.5614,
+          "name": "Corithras Moonrage",
+          "sourceAreaID": 141,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "title": "Crown of the Earth",
+      "level": 9,
+      "areaID": 141,
+      "raceMask": 4294967373,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "prerequisiteAny": [
+        929
+      ],
+      "side": "Alliance",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "entityID": 3515,
+          "npc": true,
+          "y": 0.6171,
+          "x": 0.5614,
+          "name": "Corithras Moonrage",
+          "sourceAreaID": 141,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Corithras Moonrage",
+          "entityID": 3515
+        }
+      ],
+      "xp": 780,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 1,
+      "requirementSource": "Published Forever typed objectives",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Use the published supplied empty phial at the existing verified moonwell; keep filled output, quantity one, actual hand-in and source map. Supplied count is unknown. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/teldrassil-2026-10-09.",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 5645,
+            "name": "Filled Tourmaline Phial"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Corithras Moonrage",
+            "entityID": 3515
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantityUnknown": true,
+            "name": "Tourmaline Phial",
+            "entityID": 5621
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Corithras Moonrage",
+            "entityID": 3515
+          }
+        ]
+      },
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "kalimdor/teldrassil"
+    }
+  },
+  "934": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1438,
+      "startRefs": {},
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Vial of Blessed Water",
+          "entityID": 5646
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Vial of Blessed Water",
+          "itemID": 5646
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1457,
+          "legacyStepKey": "q:1457:npc:138498",
+          "entityID": 138498,
+          "name": "Temple of the Moon Fountain",
+          "x": 0.3918,
+          "y": 0.8559,
+          "objectiveKey": "item:5646",
+          "itemID": 5646,
+          "quantity": 1,
+          "sourceAreaID": 1657,
+          "itemName": "Vial of Blessed Water",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "action": "gather"
+        }
+      ],
+      "level": 11,
+      "areaID": 141,
+      "title": "Crown of the Earth",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "side": "Alliance",
+      "previousQuest": 933,
+      "money": 0,
+      "endRefs": {},
+      "xp": 660,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 1,
+      "requirementSource": "Wowhead Forever objective table",
+      "raceMask": 4294967373,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Vial of Blessed Water",
+            "entityID": 5646
+          }
+        ],
+        "starts": {},
+        "provided": {},
+        "ends": {}
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/teldrassil"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1438,
+      "startRefs": {},
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Vial of Blessed Water",
+          "entityID": 5646
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Vial of Blessed Water",
+          "itemID": 5646
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1457,
+          "legacyStepKey": "q:1457:npc:138498",
+          "entityID": 138498,
+          "name": "Temple of the Moon Fountain",
+          "x": 0.3918,
+          "y": 0.8559,
+          "objectiveKey": "item:5646",
+          "itemID": 5646,
+          "quantity": 1,
+          "sourceAreaID": 1657,
+          "itemName": "Vial of Blessed Water",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "action": "gather"
+        }
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "name": "Amethyst Phial",
+          "entityID": 5623
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Retain explicitly supplied delivery input without inventing supplied count, new giver/parent links or additional farming. Preserve exact-ID destinations and existing objective/hand-in facts. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/teldrassil-2026-10-09.",
+      "level": 11,
+      "areaID": 141,
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Alliance",
+      "previousQuest": 933,
+      "money": 0,
+      "endRefs": {},
+      "xp": 660,
+      "title": "Crown of the Earth",
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 1,
+      "requirementSource": "Wowhead Forever objective table",
+      "raceMask": 4294967373,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Vial of Blessed Water",
+            "entityID": 5646
+          }
+        ],
+        "starts": {},
+        "provided": [
+          {
+            "entityType": "item",
+            "quantityUnknown": true,
+            "name": "Amethyst Phial",
+            "entityID": 5623
+          }
+        ],
+        "ends": {}
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/teldrassil"
+    }
+  },
+  "941": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1438,
+      "zone": "Teldrassil",
+      "requirements": {},
+      "objectives": {},
+      "requiredItems": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Tainted Heart",
+          "entityID": 5217
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.685,
+          "x": 0.608,
+          "name": "Denalan's Planter",
+          "entityID": 7923,
+          "mapID": 1438
+        }
+      ],
+      "starts": [
+        {
+          "y": 0.684,
+          "mapID": 1438,
+          "name": "Denalan",
+          "entityID": 2080,
+          "npc": true,
+          "x": 0.608
+        }
+      ],
+      "level": 12,
+      "areaID": 141,
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Denalan",
+          "entityID": 2080
+        }
+      ],
+      "side": "Alliance",
+      "prerequisiteAny": [
+        927
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Denalan's Planter",
+          "entityID": 7923
+        }
+      ],
+      "xp": 910,
+      "foreverStatus": "unchanged",
+      "title": "Planting the Heart",
+      "minLevel": 9,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Denalan",
+            "entityID": 2080
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Tainted Heart",
+            "entityID": 5217
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "Denalan's Planter",
+            "entityID": 7923
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/teldrassil"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1438,
+      "objectives": {},
+      "zone": "Teldrassil",
+      "requirements": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Tainted Heart",
+          "entityID": 5217
+        }
+      ],
+      "requiredItems": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "starts": [
+        {
+          "y": 0.684,
+          "mapID": 1438,
+          "name": "Denalan",
+          "entityID": 2080,
+          "npc": true,
+          "x": 0.608
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "object",
+          "mapID": 1438,
+          "action": "interact",
+          "entityID": 7923,
+          "y": 0.685,
+          "x": 0.608,
+          "name": "Denalan's Planter"
+        }
+      ],
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "level": 12,
+      "areaID": 141,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "prerequisiteAny": [
+        927
+      ],
+      "side": "Alliance",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Denalan",
+          "entityID": 2080
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Denalan's Planter",
+          "entityID": 7923
+        }
+      ],
+      "xp": 910,
+      "title": "Planting the Heart",
+      "foreverStatus": "unchanged",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Interact with the actual planter return object; preserve supplied Tainted Heart and completed Moss-twined Heart parent. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/teldrassil-2026-10-09.",
+      "minLevel": 9,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Denalan",
+            "entityID": 2080
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Tainted Heart",
+            "entityID": 5217
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "Denalan's Planter",
+            "entityID": 7923
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/teldrassil"
+    }
+  },
+  "2459": {
+    "before": {
+      "prerequisitesRead": true,
+      "zone": "Teldrassil",
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 7,
+          "name": "Gnarlpine Mystic",
+          "entityID": 7235
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Tallonkai's Jewel",
+          "entityID": 8050
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Gnarlpine Necklace",
+          "entityID": 8049
+        }
+      ],
+      "level": 8,
+      "areaID": 141,
+      "seriesPosition": 2,
+      "money": 450,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Tallonkai Swiftroot",
+          "entityID": 3567
+        }
+      ],
+      "xp": 880,
+      "minLevel": 1,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantity": 7,
+            "name": "Gnarlpine Mystic",
+            "entityID": 7235
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Tallonkai's Jewel",
+            "entityID": 8050
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Gnarlpine Necklace",
+            "entityID": 8049
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Tallonkai Swiftroot",
+            "entityID": 3567
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Tallonkai Swiftroot",
+            "entityID": 3567
+          }
+        ]
+      },
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "kalimdor/teldrassil",
+      "raceMask": 0,
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Tallonkai's Jewel",
+          "entityID": 8050
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Tallonkai Swiftroot",
+          "entityID": 3567
+        }
+      ],
+      "seriesRoot": 2438,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Tallonkai's Jewel",
+          "itemID": 8050
+        },
+        {
+          "quantity": 1,
+          "name": "Gnarlpine Necklace",
+          "itemID": 8049
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.568,
+          "mapID": 1438,
+          "name": "Tallonkai Swiftroot",
+          "entityID": 3567,
+          "npc": true,
+          "x": 0.5539999999999999
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Alliance",
+      "previousQuest": 2438,
+      "objectives": [
+        {
+          "sourceObjective": 7235,
+          "mapID": 1438,
+          "action": "kill",
+          "entityID": 7235,
+          "npc": true,
+          "y": 0.528,
+          "objectiveKey": "npc:7235",
+          "name": "Gnarlpine Mystic",
+          "x": 0.6859999999999999,
+          "quantity": 7
+        },
+        {
+          "sourceObjective": 2,
+          "mapID": 1438,
+          "action": "collect",
+          "entityID": 7234,
+          "npc": true,
+          "y": 0.536,
+          "objectiveKey": "item:8049",
+          "name": "Ferocitas the Dream Eater",
+          "x": 0.688,
+          "quantity": 1,
+          "legacyStepKey": "q:1438:npc:7234",
+          "itemName": "Gnarlpine Necklace",
+          "itemID": 8049
+        }
+      ],
+      "mapID": 1438,
+      "series": [
+        2438,
+        2459
+      ],
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.568,
+          "mapID": 1438,
+          "name": "Tallonkai Swiftroot",
+          "entityID": 3567,
+          "npc": true,
+          "x": 0.5539999999999999
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "title": "Ferocitas the Dream Eater",
+      "classMask": 0,
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "entityID": 7235,
+          "npc": true,
+          "action": "kill",
+          "name": "Gnarlpine Mystic"
+        },
+        {
+          "itemName": "Gnarlpine Necklace",
+          "name": "Ferocitas the Dream Eater",
+          "entityID": 7234,
+          "npc": true,
+          "action": "collect"
+        }
+      ]
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "zone": "Teldrassil",
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 7,
+          "name": "Gnarlpine Mystic",
+          "entityID": 7235
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Tallonkai's Jewel",
+          "entityID": 8050
+        }
+      ],
+      "level": 8,
+      "areaID": 141,
+      "seriesPosition": 2,
+      "money": 450,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Tallonkai Swiftroot",
+          "entityID": 3567
+        }
+      ],
+      "xp": 880,
+      "minLevel": 1,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantity": 7,
+            "name": "Gnarlpine Mystic",
+            "entityID": 7235
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Tallonkai's Jewel",
+            "entityID": 8050
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Tallonkai Swiftroot",
+            "entityID": 3567
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Tallonkai Swiftroot",
+            "entityID": 3567
+          }
+        ]
+      },
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "kalimdor/teldrassil",
+      "raceMask": 0,
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Tallonkai's Jewel",
+          "entityID": 8050
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Tallonkai Swiftroot",
+          "entityID": 3567
+        }
+      ],
+      "seriesRoot": 2438,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Tallonkai's Jewel",
+          "itemID": 8050
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.568,
+          "mapID": 1438,
+          "name": "Tallonkai Swiftroot",
+          "entityID": 3567,
+          "npc": true,
+          "x": 0.5539999999999999
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Alliance",
+      "previousQuest": 2438,
+      "objectives": [
+        {
+          "sourceObjective": 7235,
+          "mapID": 1438,
+          "action": "kill",
+          "entityID": 7235,
+          "npc": true,
+          "y": 0.528,
+          "objectiveKey": "npc:7235",
+          "name": "Gnarlpine Mystic",
+          "x": 0.6859999999999999,
+          "quantity": 7
+        },
+        {
+          "sourceObjective": 2,
+          "mapID": 1438,
+          "action": "collect",
+          "entityID": 7234,
+          "npc": true,
+          "y": 0.536,
+          "objectiveKey": "item:8049",
+          "name": "Ferocitas the Dream Eater",
+          "x": 0.688,
+          "quantity": 1,
+          "legacyStepKey": "q:1438:npc:7234",
+          "itemName": "Gnarlpine Necklace",
+          "itemID": 8049
+        }
+      ],
+      "series": [
+        2438,
+        2459
+      ],
+      "mapID": 1438,
+      "title": "Ferocitas the Dream Eater",
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.568,
+          "mapID": 1438,
+          "name": "Tallonkai Swiftroot",
+          "entityID": 3567,
+          "npc": true,
+          "x": 0.5539999999999999
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "classMask": 0,
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Necklace is an acquisition container, not a hand-in requirement. Keep seven Mystic kills and real Ferocitas necklace loot; jewel opening remains an explicit unmapped objective. Do not substitute NPC location for inventory opening. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/teldrassil-2026-10-09.",
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "entityID": 7235,
+          "npc": true,
+          "action": "kill",
+          "name": "Gnarlpine Mystic"
+        },
+        {
+          "itemName": "Gnarlpine Necklace",
+          "name": "Ferocitas the Dream Eater",
+          "entityID": 7234,
+          "npc": true,
+          "action": "collect"
+        }
+      ]
+    }
+  },
+  "7383": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1438,
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1438,
+          "action": "gather",
+          "entityID": 19552,
+          "x": 0.38439999999999996,
+          "y": 0.3406,
+          "objectiveKey": "item:18151",
+          "itemID": 18151,
+          "quantity": 1,
+          "sourceAreaID": 141,
+          "itemName": "Filled Amethyst Phial",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Oracle Glade Moonwell"
+        }
+      ],
+      "zone": "Teldrassil",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 18151,
+          "name": "Filled Amethyst Phial"
+        }
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "name": "Amethyst Phial",
+          "entityID": 18152
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Filled Amethyst Phial",
+          "itemID": 18151
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "entityID": 3515,
+          "npc": true,
+          "y": 0.6171,
+          "x": 0.5614,
+          "name": "Corithras Moonrage",
+          "sourceAreaID": 141,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "level": 11,
+      "areaID": 141,
+      "raceMask": 4294967373,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "prerequisiteAny": [
+        933
+      ],
+      "side": "Alliance",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "entityID": 3515,
+          "npc": true,
+          "y": 0.6171,
+          "x": 0.5614,
+          "name": "Corithras Moonrage",
+          "sourceAreaID": 141,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Corithras Moonrage",
+          "entityID": 3515
+        }
+      ],
+      "xp": 660,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Corithras Moonrage",
+          "entityID": 3515
+        }
+      ],
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 1,
+      "requirementSource": "Warcraft DB Forever structured objectives",
+      "title": "Crown of the Earth",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 18151,
+            "name": "Filled Amethyst Phial"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Corithras Moonrage",
+            "entityID": 3515
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "name": "Amethyst Phial",
+            "entityID": 18152
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Corithras Moonrage",
+            "entityID": 3515
+          }
+        ]
+      },
+      "objectiveFactsSource": "Warcraft DB Forever structured objectives",
+      "categoryPath": "kalimdor/teldrassil"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "zone": "Teldrassil",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 18151,
+          "name": "Filled Amethyst Phial"
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "otherLocationsIncomplete": false,
+      "level": 11,
+      "areaID": 141,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Corithras Moonrage",
+          "entityID": 3515
+        }
+      ],
+      "xp": 660,
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Use the published supplied empty phial at the existing verified moonwell; keep filled output, quantity one, actual hand-in and source map. Supplied count is unknown. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/teldrassil-2026-10-09.",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 18151,
+            "name": "Filled Amethyst Phial"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Corithras Moonrage",
+            "entityID": 3515
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "name": "Amethyst Phial",
+            "entityID": 18152
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Corithras Moonrage",
+            "entityID": 3515
+          }
+        ]
+      },
+      "categoryPath": "kalimdor/teldrassil",
+      "raceMask": 4294967373,
+      "mapID": 1438,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Corithras Moonrage",
+          "entityID": 3515
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Filled Amethyst Phial",
+          "itemID": 18151
+        }
+      ],
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "entityID": 3515,
+          "npc": true,
+          "y": 0.6171,
+          "x": 0.5614,
+          "name": "Corithras Moonrage",
+          "sourceAreaID": 141,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Alliance",
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1438,
+          "action": "use",
+          "entityID": 19552,
+          "useItemID": 18152,
+          "useItemName": "Amethyst Phial",
+          "x": 0.38439999999999996,
+          "y": 0.3406,
+          "objectiveKey": "item:18151",
+          "itemID": 18151,
+          "quantity": 1,
+          "sourceAreaID": 141,
+          "itemName": "Filled Amethyst Phial",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Oracle Glade Moonwell"
+        }
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "name": "Amethyst Phial",
+          "entityID": 18152
+        }
+      ],
+      "title": "Crown of the Earth",
+      "objectiveFactsSource": "Warcraft DB Forever structured objectives",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "entityID": 3515,
+          "npc": true,
+          "y": 0.6171,
+          "x": 0.5614,
+          "name": "Corithras Moonrage",
+          "sourceAreaID": 141,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requirementSource": "Warcraft DB Forever structured objectives",
+      "classMask": 0,
+      "prerequisiteAny": [
+        933
+      ],
+      "foreverStatus": "unchanged",
+      "minLevel": 1
+    }
+  },
+  "98046": {
+    "before": {
+      "raceMask": 4294967373,
+      "mapID": 1438,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Arch Druid Fandral Staghelm",
+          "entityID": 3516
+        }
+      ],
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1457,
+          "name": "Lariia",
+          "y": 0.885,
+          "entityID": 4092,
+          "x": 0.4017,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "level": 11,
+      "areaID": 141,
+      "side": "Alliance",
+      "objectives": {},
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Lariia",
+          "entityID": 4092
+        }
+      ],
+      "xp": 90,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1457,
+          "entityID": 3516,
+          "npc": true,
+          "sourceZone": "Darnassus",
+          "x": 0.344,
+          "name": "Arch Druid Fandral Staghelm",
+          "sourceAreaID": 1657,
+          "y": 0.086
+        }
+      ],
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 1,
+      "prerequisitesRead": true,
+      "title": "Crown of the Earth",
+      "foreverStatus": "new",
+      "categoryPath": "kalimdor/teldrassil"
+    },
+    "after": {
+      "raceMask": 4294967373,
+      "mapID": 1438,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Arch Druid Fandral Staghelm",
+          "entityID": 3516
+        }
+      ],
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1457,
+          "name": "Lariia",
+          "y": 0.885,
+          "entityID": 4092,
+          "x": 0.4017,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "level": 11,
+      "areaID": 141,
+      "objectives": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "name": "Drained Vessel",
+          "entityID": 279291
+        }
+      ],
+      "side": "Alliance",
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1457,
+          "entityID": 3516,
+          "npc": true,
+          "sourceZone": "Darnassus",
+          "x": 0.344,
+          "name": "Arch Druid Fandral Staghelm",
+          "sourceAreaID": 1657,
+          "y": 0.086
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Lariia",
+          "entityID": 4092
+        }
+      ],
+      "xp": 90,
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 1,
+      "prerequisitesRead": true,
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Retain explicitly supplied delivery input without inventing supplied count, new giver/parent links or additional farming. Preserve exact-ID destinations and existing objective/hand-in facts. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/teldrassil-2026-10-09.",
+      "title": "Crown of the Earth",
+      "foreverStatus": "new",
+      "categoryPath": "kalimdor/teldrassil"
+    }
+  },
+  "98065": {
+    "before": {
+      "raceMask": 4294967373,
+      "mapID": 1438,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Lariia",
+          "entityID": 4092
+        }
+      ],
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1457,
+          "entityID": 7999,
+          "npc": true,
+          "y": 0.8159000000000001,
+          "x": 0.391,
+          "name": "Tyrande Whisperwind",
+          "sourceAreaID": 1657,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "level": 11,
+      "areaID": 141,
+      "side": "Alliance",
+      "objectives": {},
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Tyrande Whisperwind",
+          "entityID": 7999
+        }
+      ],
+      "xp": 90,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1457,
+          "name": "Lariia",
+          "y": 0.885,
+          "entityID": 4092,
+          "x": 0.4017,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 1,
+      "prerequisitesRead": true,
+      "title": "Crown of the Earth",
+      "foreverStatus": "new",
+      "categoryPath": "kalimdor/teldrassil"
+    },
+    "after": {
+      "raceMask": 4294967373,
+      "mapID": 1438,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Lariia",
+          "entityID": 4092
+        }
+      ],
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1457,
+          "entityID": 7999,
+          "npc": true,
+          "y": 0.8159000000000001,
+          "x": 0.391,
+          "name": "Tyrande Whisperwind",
+          "sourceAreaID": 1657,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "level": 11,
+      "areaID": 141,
+      "objectives": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "name": "Moonwell Remnants",
+          "entityID": 279331
+        }
+      ],
+      "side": "Alliance",
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1457,
+          "name": "Lariia",
+          "y": 0.885,
+          "entityID": 4092,
+          "x": 0.4017,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Tyrande Whisperwind",
+          "entityID": 7999
+        }
+      ],
+      "xp": 90,
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 1,
+      "prerequisitesRead": true,
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Retain explicitly supplied delivery input without inventing supplied count, new giver/parent links or additional farming. Preserve exact-ID destinations and existing objective/hand-in facts. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/teldrassil-2026-10-09.",
+      "title": "Crown of the Earth",
+      "foreverStatus": "new",
+      "categoryPath": "kalimdor/teldrassil"
+    }
+  },
+  "99053": {
+    "before": {
+      "raceMask": 4294967373,
+      "mapID": 1438,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Sentinel Lynessa Duskblossom",
+          "entityID": 275744
+        }
+      ],
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "entityID": 2081,
+          "npc": true,
+          "y": 0.5952000000000001,
+          "x": 0.56,
+          "name": "Sentinel Kyra Starsong",
+          "sourceAreaID": 141,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "level": 9,
+      "areaID": 141,
+      "side": "Alliance",
+      "objectives": {},
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Sentinel Kyra Starsong",
+          "entityID": 2081
+        }
+      ],
+      "xp": 0,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "entityID": 275744,
+          "npc": true,
+          "y": 0.5898,
+          "x": 0.4464,
+          "name": "Sentinel Lynessa Duskblossom",
+          "sourceAreaID": 141,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 4,
+      "prerequisitesRead": true,
+      "title": "Escaping Ban'ethil",
+      "foreverStatus": "new",
+      "categoryPath": "kalimdor/teldrassil"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1438,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Sentinel Lynessa Duskblossom",
+          "entityID": 275744
+        }
+      ],
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "entityID": 2081,
+          "npc": true,
+          "y": 0.5952000000000001,
+          "x": 0.56,
+          "name": "Sentinel Kyra Starsong",
+          "sourceAreaID": 141,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "level": 9,
+      "areaID": 141,
+      "objectives": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "entityID": 275744,
+          "npc": true,
+          "y": 0.5898,
+          "x": 0.4464,
+          "name": "Sentinel Lynessa Duskblossom",
+          "sourceAreaID": 141,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "side": "Alliance",
+      "title": "Escaping Ban'ethil",
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Sentinel Kyra Starsong",
+          "entityID": 2081
+        }
+      ],
+      "xp": 0,
+      "foreverStatus": "new",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 4,
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Published beta observation explicitly describes escape work. Pickup and final recipient do not establish the escort path or completion trigger; retain unmapped work instead of claiming a complete conversation-only objective. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/teldrassil-2026-10-09.",
+      "raceMask": 4294967373,
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "kalimdor/teldrassil"
+    }
+  },
+  "99073": {
+    "before": {
+      "raceMask": 4294967373,
+      "mapID": 1438,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Byancie",
+          "entityID": 6094
+        }
+      ],
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "entityID": 275683,
+          "npc": true,
+          "y": 0.36840000000000006,
+          "x": 0.3757,
+          "name": "Sentinel Eralya Leafshadow",
+          "sourceAreaID": 141,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "level": 10,
+      "areaID": 141,
+      "side": "Alliance",
+      "objectives": {},
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Sentinel Eralya Leafshadow",
+          "entityID": 275683
+        }
+      ],
+      "xp": 85,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "entityID": 6094,
+          "npc": true,
+          "sourceZone": "Teldrassil",
+          "x": 0.552,
+          "name": "Byancie",
+          "sourceAreaID": 141,
+          "y": 0.568
+        }
+      ],
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 4,
+      "prerequisitesRead": true,
+      "title": "Easing Suffering",
+      "foreverStatus": "new",
+      "categoryPath": "kalimdor/teldrassil"
+    },
+    "after": {
+      "raceMask": 4294967373,
+      "mapID": 1438,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Byancie",
+          "entityID": 6094
+        }
+      ],
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "entityID": 275683,
+          "npc": true,
+          "y": 0.36840000000000006,
+          "x": 0.3757,
+          "name": "Sentinel Eralya Leafshadow",
+          "sourceAreaID": 141,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "level": 10,
+      "areaID": 141,
+      "objectives": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "name": "Lashwater Salve",
+          "entityID": 286069
+        }
+      ],
+      "side": "Alliance",
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1438,
+          "entityID": 6094,
+          "npc": true,
+          "sourceZone": "Teldrassil",
+          "x": 0.552,
+          "name": "Byancie",
+          "sourceAreaID": 141,
+          "y": 0.568
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Sentinel Eralya Leafshadow",
+          "entityID": 275683
+        }
+      ],
+      "xp": 85,
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 4,
+      "prerequisitesRead": true,
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Retain explicitly supplied delivery input without inventing supplied count, new giver/parent links or additional farming. Preserve exact-ID destinations and existing objective/hand-in facts. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/teldrassil-2026-10-09.",
+      "title": "Easing Suffering",
+      "foreverStatus": "new",
+      "categoryPath": "kalimdor/teldrassil"
+    }
+  }
+}

@@ -1,0 +1,226 @@
+[
+  {
+    "questID": 921,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "decision": "Use the published supplied empty phial at the existing verified moonwell; keep filled output, quantity one, actual hand-in and source map. Supplied count is unknown.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 922,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "decision": "Supplied delivery/already-held item starter: keep real hand-in and initial loot acquisition; remove redundant post-acceptance farming.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 927,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "_identityName": "converted-baseline"
+    },
+    "decision": "Supplied delivery/already-held item starter: keep real hand-in and initial loot acquisition; remove redundant post-acceptance farming.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 929,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "decision": "Use the published supplied empty phial at the existing verified moonwell; keep filled output, quantity one, actual hand-in and source map. Supplied count is unknown.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 933,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "decision": "Use the published supplied empty phial at the existing verified moonwell; keep filled output, quantity one, actual hand-in and source map. Supplied count is unknown.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 934,
+    "origins": {
+      "name": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "decision": "Retain explicitly supplied delivery input without inventing supplied count, new giver/parent links or additional farming. Preserve exact-ID destinations and existing objective/hand-in facts.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 941,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "decision": "Interact with the actual planter return object; preserve supplied Tainted Heart and completed Moss-twined Heart parent.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 2459,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "requiredSourceItems": "converted-baseline",
+      "questFlags": "converted-baseline"
+    },
+    "decision": "Necklace is an acquisition container, not a hand-in requirement. Keep seven Mystic kills and real Ferocitas necklace loot; jewel opening remains an explicit unmapped objective. Do not substitute NPC location for inventory opening.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 7383,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "decision": "Use the published supplied empty phial at the existing verified moonwell; keep filled output, quantity one, actual hand-in and source map. Supplied count is unknown.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 98046,
+    "origins": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "sourceItemId": "beta-delta",
+      "zoneOrSort": "beta-delta"
+    },
+    "decision": "Retain explicitly supplied delivery input without inventing supplied count, new giver/parent links or additional farming. Preserve exact-ID destinations and existing objective/hand-in facts.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 98065,
+    "origins": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "sourceItemId": "beta-delta",
+      "zoneOrSort": "beta-delta"
+    },
+    "decision": "Retain explicitly supplied delivery input without inventing supplied count, new giver/parent links or additional farming. Preserve exact-ID destinations and existing objective/hand-in facts.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 99053,
+    "origins": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "zoneOrSort": "beta-delta"
+    },
+    "decision": "Published beta observation explicitly describes escape work. Pickup and final recipient do not establish the escort path or completion trigger; retain unmapped work instead of claiming a complete conversation-only objective.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 99073,
+    "origins": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "sourceItemId": "beta-delta",
+      "zoneOrSort": "beta-delta"
+    },
+    "decision": "Retain explicitly supplied delivery input without inventing supplied count, new giver/parent links or additional farming. Preserve exact-ID destinations and existing objective/hand-in facts.",
+    "native_beta_verified": false
+  }
+]

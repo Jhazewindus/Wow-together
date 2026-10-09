@@ -11,7 +11,7 @@
     "count": 5230,
     "detailed_quests": 2232,
     "with_starters": 4283,
-    "with_objectives": 2150,
+    "with_objectives": 2148,
     "with_turnins": 4452,
     "with_prerequisites": 2466,
     "entities": {
@@ -2117,13 +2117,14 @@
     "kalimdor/teldrassil": {
       "quests": 62,
       "pickups": 60,
-      "objectives": 35,
+      "objectives": 33,
       "turnins": 61,
-      "complete_locations": 59,
+      "complete_locations": 58,
       "missing_quest_ids": [
         934,
         2459,
-        5842
+        5842,
+        99053
       ]
     },
     "kalimdor/the-barrens": {
@@ -13310,6 +13311,13 @@
     758,
     759,
     760,
+    921,
+    922,
+    927,
+    929,
+    933,
+    934,
+    941,
     1452,
     1518,
     1521,
@@ -13320,6 +13328,7 @@
     1678,
     1683,
     2205,
+    2459,
     2938,
     3100,
     3102,
@@ -13354,6 +13363,7 @@
     5514,
     5538,
     5861,
+    7383,
     7732,
     8416,
     8551,
@@ -13379,6 +13389,10 @@
     94501,
     95217,
     97331,
+    98046,
+    98065,
+    99053,
+    99073,
     99082,
     99101,
     99123
