@@ -1,11 +1,13 @@
 local addonName, ns = ...
 
--- Independent native-map adapter. A reference image or entrance location never
--- establishes the player's dungeon coordinates. HiddenMaps' public description
--- likewise limits its live tracking to supported pre-instance areas.
+-- Owned player marker: exact native floors or published reference-world bounds.
+-- Outdoor coordinates and dungeon entrances never establish interior position.
 ns.dungeonPlayerStatus = "Open a dungeon map to check live position."
 local function number(value, maximum)
     return ns.Public(value) and type(value) == "number" and value == value and value >= 0 and value <= maximum
+end
+local function worldNumber(value)
+    return ns.Public(value) and type(value) == "number" and value == value and math.abs(value) < 1000000
 end
 local function currentFloor(frame)
     local id = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")
@@ -23,6 +25,31 @@ local function currentFloor(frame)
     if key and frame.data and key == frame.data.key and #maps == 1 and not maps[1].reference
         and ns.GuideInteger(maps[1].mapID) then return 1, maps[1].mapID end
 end
+local function referencePosition(frame)
+    local key, instance = ns.DungeonEntryKey()
+    if not key or not frame.data or key ~= frame.data.key or not ns.GuideInteger(instance) or instance < 1 then
+        return nil, nil, nil, nil, "Not inside this dungeon; reference player hidden."
+    end
+    local wx, wy, _, world = ns.ReadPublic(UnitPosition, "player")
+    if not worldNumber(wx) or not worldNumber(wy) or not ns.GuideInteger(world) or world ~= instance then
+        return nil, nil, nil, nil, "No public matching instance world position; reference map stays static."
+    end
+    local found, x, y
+    for floor, map in ipairs(frame.data.maps or {}) do
+        local b = map.reference and map.worldBounds
+        if b and b.instanceMapID == instance and worldNumber(b.left) and worldNumber(b.right)
+            and worldNumber(b.bottom) and worldNumber(b.top) and b.left ~= b.right and b.bottom ~= b.top then
+            -- Same axis reversal as the compiler's static spawn projection.
+            local px, py = (b.right - wy) / (b.right - b.left), (b.top - wx) / (b.top - b.bottom)
+            if number(px, 1) and number(py, 1) then
+                if found then return nil, nil, nil, nil, "Overlapping reference floors; player floor is unconfirmed." end
+                found, x, y = floor, px, py
+            end
+        end
+    end
+    if found then return found, instance, x, y end
+    return nil, nil, nil, nil, "World position outside mapped reference floors; player hidden."
+end
 local function coordinates(vector)
     if not ns.Public(vector) or type(vector) ~= "table" and type(vector) ~= "userdata" then return end
     local x, y = ns.ReadPublic(vector.GetXY, vector)
@@ -31,8 +58,7 @@ end
 local function worldPosition(id)
     if not C_Map or type(CreateVector2D) ~= "function" or type(UnitPosition) ~= "function" then return end
     local wx, wy, _, instance = ns.ReadPublic(UnitPosition, "player")
-    if not ns.Public(wx) or not ns.Public(wy) or type(wx) ~= "number" or type(wy) ~= "number"
-        or wx ~= wx or wy ~= wy or math.abs(wx) >= 1000000 or math.abs(wy) >= 1000000
+    if not worldNumber(wx) or not worldNumber(wy)
         or not ns.GuideInteger(instance) then return end
     local continent = ns.ReadPublic(C_Map.GetWorldPosFromMapPos, id, CreateVector2D(0, 0))
     if continent ~= instance then return end
@@ -44,6 +70,7 @@ function ns.LocateDungeonPlayer(frame)
     frame = frame or ns.dungeonViewer
     if not frame then return false end
     local floor = currentFloor(frame)
+    if not floor then floor = referencePosition(frame) end
     if not floor then return false end
     frame.floor, frame.followPlayer = floor, true
     return true
@@ -56,17 +83,24 @@ function ns.UpdateDungeonPlayer(frame)
     if frame.nativePlayer then frame.nativePlayer:Hide() end
     if not frame:IsShown() then return end
     local floor, id = currentFloor(frame)
-    if not floor then ns.dungeonPlayerStatus = "No matching native player floor; map stays static."; return end
+    local x, y, reason, source
+    if not floor then
+        floor, id, x, y, reason = referencePosition(frame)
+        source = "reference-world"
+    end
+    if not floor then ns.dungeonPlayerStatus = reason or "No matching player floor; map stays static."; return end
     if frame.followPlayer and floor ~= frame.floor and not frame.sizing and not frame.rendering and not frame.layingOut then
         frame.floor = floor
         ns.RenderDungeonViewer()
         return
     end
     if floor ~= frame.floor then ns.dungeonPlayerStatus = "Viewing another floor; click Locate me to return."; return end
-    if not geometry or geometry.mapID ~= id then ns.dungeonPlayerStatus = "Map artwork unavailable; live marker hidden."; return end
-    local x, y = coordinates(C_Map and ns.ReadPublic(C_Map.GetPlayerMapPosition, id, "player"))
-    local source = "native"
-    if not x then x, y = worldPosition(id); source = "world-to-map" end
+    if not geometry or geometry.map ~= frame.data.maps[floor] then ns.dungeonPlayerStatus = "Map artwork unavailable; live marker hidden."; return end
+    if not source then
+        x, y = coordinates(C_Map and ns.ReadPublic(C_Map.GetPlayerMapPosition, id, "player"))
+        source = "native"
+        if not x then x, y = worldPosition(id); source = "world-to-map" end
+    end
     if not x then
         if frame.nativePlayer and frame.nativePlayer.mapID == id and not frame.nativePlayerFailed then
             -- The native frame renders a unit directly. It does not return
@@ -87,9 +121,10 @@ function ns.UpdateDungeonPlayer(frame)
 end
 
 function ns.SetDungeonPlayerGeometry(frame, map, ox, oy, scale)
-    frame.playerGeometry = map and not map.reference and map.mapID and {
-        mapID = map.mapID, x = ox, y = oy, width = map.width * scale, height = map.height * scale} or nil
-    if frame.playerGeometry then
+    frame.playerGeometry = map and (not map.reference and map.mapID or map.reference and map.worldBounds) and {
+        map = map, mapID = not map.reference and map.mapID or nil,
+        x = ox, y = oy, width = map.width * scale, height = map.height * scale} or nil
+    if frame.playerGeometry and frame.playerGeometry.mapID then
         if not frame.nativePlayerTried then
             frame.nativePlayerTried = true
             local ok, renderer = pcall(CreateFrame, "UnitPositionFrame", nil, frame.map)
@@ -134,4 +169,17 @@ function ns.CreateDungeonPlayer(frame)
         frame.playerElapsed = (frame.playerElapsed or 0) + elapsed
         if frame.playerElapsed >= .1 then frame.playerElapsed = 0; ns.UpdateDungeonPlayer(frame) end
     end)
+end
+
+function ns.DungeonPlayerDiagnostics(output, frame)
+    if not frame or not frame:IsShown() then return end
+    local key, instance = ns.DungeonEntryKey()
+    local wx, wy, _, world = ns.ReadPublic(UnitPosition, "player")
+    local xy = worldNumber(wx) and worldNumber(wy) and string.format("%.2f, %.2f", wx, wy) or "unavailable/restricted"
+    local map = frame.data and frame.data.maps[frame.floor]
+    local b = map and map.worldBounds
+    output("Dungeon world position: matching instance " .. (key == (frame.data and frame.data.key) and "yes" or "no")
+        .. "; instance " .. (ns.GuideInteger(instance) and instance or "unknown")
+        .. "; UnitPosition map " .. (ns.GuideInteger(world) and world or "unknown") .. "; XY " .. xy
+        .. "; reference rectangle " .. (b and b.sourceTable .. " " .. b.sourceID or "unavailable") .. ".")
 end

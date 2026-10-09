@@ -599,6 +599,7 @@ function ns.DungeonViewerDiagnostics(output)
         .. " quests with interior positions. Exact matching floor artwork required; native coordinates take precedence.")
     output("Dungeon player: " .. ns.dungeonPlayerStatus)
     local viewer = ns.dungeonViewer
+    ns.DungeonPlayerDiagnostics(output, viewer)
     if viewer and viewer:IsShown() then
         local map = viewer.data and viewer.data.maps[viewer.floor]
         local current = C_Map and ns.ReadPublic(C_Map.GetBestMapForUnit, "player")

@@ -2,11 +2,12 @@
   "schema": 1,
   "captured": "2026-10-06",
   "counts": {
-    "dungeons": 28,
     "referenceDungeons": 19,
     "mappedBosses": 158,
+    "questsWithInteriorMarkers": 139,
     "questMarkers": 414,
-    "questsWithInteriorMarkers": 139
+    "dungeons": 28,
+    "worldProjectedFloors": 51
   },
   "sources": [
     {

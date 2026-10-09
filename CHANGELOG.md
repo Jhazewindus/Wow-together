@@ -1,5 +1,30 @@
 # Wow Together changelog
 
+## 0.8.65
+
+**CLASSIC DUNGEON TRACKING AND FINDER FILTERS**
+
+- Correct the finder adapter to recognize Forever's Classic **Looking For
+  Group → Browse** window. Add a compact **Find players** view beside it with
+  both role and class dropdowns. Read Forever's declared multi-role structures,
+  respect its activity filter, and combine class/role choices. Native search,
+  messaging and invite controls stay intact; no automatic searches or invites.
+- Project public instance world coordinates onto matching Classic reference
+  artwork, including Ragefire Chasm, without requiring a native dungeon map.
+  Retain 51 published floor rectangles from the same attributed client data
+  used for static boss placement. Movement and resizing update the player
+  marker; invalid/private positions, wrong instances and overlapping floors
+  hide it. These older layout bounds need an in-game alignment check.
+- Add instance-coordinate and actual finder-context details to `/wt probe` so
+  a missing marker/filter can be investigated with one report. Normal screens
+  keep their existing concise labels. Preserve the secret-aura taint mitigation.
+- No new guide commits were pending at the release branch review. Existing
+  boss/quest positions, loot, guide order and character progress are retained.
+
+Host Lua 5.1 checks cover reference transforms, resize/floor safety, Forever
+role structures, class filtering and native UI isolation. They cannot confirm
+the beta client supplies public interior coordinates or verify live alignment.
+
 ## 0.8.64
 
 **DUNGEON POSITION AND ROLE FILTERS**

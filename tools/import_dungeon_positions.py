@@ -69,6 +69,72 @@ def project(spawn, bounds):
     return {"x": round(x, 6), "y": round(y, 6)}
 
 
+def add_world_geometry(data, journal, tables):
+    """Retain the same published rectangles used to project reference spawns.
+
+    Never infer a world rectangle from a picture, boss proximity or UI map ID.
+    Multiple distinct rectangles for one ordinal are unresolved.
+    """
+    areas = {normalized(row["Unknown0"]): row for row in tables["WorldMapArea"]}
+    count = 0
+    for key, entry in data["dungeons"].items():
+        maps = journal["dungeons"][key]["maps"]
+        for floor in entry["floors"]:
+            floor.pop("worldBounds", None)
+        if not maps:
+            continue
+        folder = maps[0]["tiles"][0].split("\\")[2]
+        area = areas.get(normalized(folder))
+        if not area and folder.lower().endswith("old"):
+            area = areas.get(normalized(folder[:-3]))
+        if not area:
+            continue
+        game_map = int(area["Unknown5"])
+        rows = [row for row in tables["DungeonMap"] if int(row["Unknown2"]) == game_map]
+        for ordinal, floor in enumerate(entry["floors"], 1):
+            candidates = [row for row in rows if int(row["Unknown4"]) == ordinal]
+            bounds = {rectangle(row) for row in candidates}
+            source = None
+            if len(bounds) == 1:
+                values = next(iter(bounds))
+                source = {"sourceTable": "DungeonMap", "sourceID": int(candidates[0]["Id"])}
+            elif not rows and len(maps) == 1:
+                values = tuple(float(area[k]) for k in ("Unknown2", "Unknown1", "Unknown4", "Unknown3"))
+                source = {"sourceTable": "WorldMapArea", "sourceID": int(area["Id"])}
+            if not source or not all(math.isfinite(v) and abs(v) < 1000000 for v in values):
+                continue
+            left, right, bottom, top = values
+            if left == right or bottom == top or game_map <= 0:
+                continue
+            floor["worldBounds"] = dict(zip(("left", "right", "bottom", "top"), values),
+                                        instanceMapID=game_map, **source)
+            count += 1
+    data["counts"]["worldProjectedFloors"] = count
+    return count
+
+
+def update_geometry_only(client_db):
+    """Add geometry without regenerating reviewed boss/quest relationships."""
+    path = ROOT / "WowTogether/DungeonMapData.json"
+    manifest = json.loads(path.read_text())
+    tables = {}
+    for name in ("DungeonMap", "WorldMapArea"):
+        source = client_db / ("clientdb-" + name + ".csv")
+        expected = next(s["sha256"] for s in manifest["sources"] if s["url"].endswith("/" + name + ".csv"))
+        if hashlib.sha256(source.read_bytes()).hexdigest() != expected:
+            raise ValueError("Geometry source hash mismatch: " + name)
+        tables[name] = list(csv.DictReader(source.open()))
+    data = own_lua(ROOT / "WowTogether/DungeonMapData.lua", "dungeonMapData")
+    journal = own_lua(ROOT / "WowTogether/DungeonJournalData.lua", "dungeonJournalData")
+    add_world_geometry(data, journal, tables)
+    from pack_data import dungeon_code
+    (ROOT / "WowTogether/DungeonMapData.lua").write_text(dungeon_code('dungeonMapData', 'dungeon-maps', data,
+        'Reference floor facts; native coordinates take precedence. See DUNGEON_VIEWER.md.'))
+    manifest["counts"] = data["counts"]
+    path.write_text(json.dumps(manifest, indent=2) + "\n")
+    print(json.dumps(data["counts"]))
+
+
 def targets(quest, entities):
     result, seen = [], set()
 
@@ -106,9 +172,15 @@ def targets(quest, entities):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--client-db", type=Path, required=True)
-    parser.add_argument("--snapshot", type=Path, required=True)
-    parser.add_argument("--listfile", type=Path, required=True)
+    parser.add_argument("--snapshot", type=Path)
+    parser.add_argument("--listfile", type=Path)
+    parser.add_argument("--geometry-only", action="store_true", help="Retain existing markers; add hash-verified world rectangles only.")
     args = parser.parse_args()
+    if args.geometry_only:
+        update_geometry_only(args.client_db)
+        return
+    if not args.snapshot or not args.listfile:
+        parser.error("--snapshot and --listfile are required for a full import")
     journal = own_lua(ROOT / "WowTogether/DungeonJournalData.lua", "dungeonJournalData")
     definitions = own_lua(ROOT / "WowTogether/DungeonData.lua", "dungeonData")["dungeons"]
     catalogue = own_lua(ROOT / "WowTogether/QuestCatalogue.lua", "catalogue")["quests"]
@@ -221,6 +293,7 @@ def main():
               "questMarkers": sum(c["questMarkers"] for c in coverage.values()),
               "questsWithInteriorMarkers": sum(c["questsWithInteriorMarkers"] for c in coverage.values())}
     data = {"schema": 1, "captured": "2026-10-06", "counts": counts, "dungeons": result}
+    add_world_geometry(data, journal, tables)
     from pack_data import dungeon_code
     (ROOT / "WowTogether/DungeonMapData.lua").write_text(dungeon_code('dungeonMapData', 'dungeon-maps', data,
         'Reference floor facts; native coordinates take precedence. See DUNGEON_VIEWER.md.'))

@@ -51,7 +51,7 @@ local sections = {
         {"restockSupplies", "Include food and drink", "Suggest common level-appropriate supplies when 5 or fewer remain. Drink is suggested for mana classes. Buy manually; other consumables are not counted."},
         {"supplyTarget", "Restock amount", "How much food or drink to carry after a suggested vendor visit.", {{10, "10 of each"}, {20, "20 of each"}, {40, "40 of each"}}}}},
     {"party", "Party progress", {
-        {"groupFinderRoles", "Group finder role filter", "Show a movable player-role view beside Blizzard's search or applicant list. Filter declared Tank, Healer or Damage roles; invites stay in the game finder."},
+        {"groupFinderRoles", "Group finder filters", "Show a movable player list beside Looking For Group. Filter by class and declared role; invites stay in the game finder."},
         {"trackerAuto", "Show party progress automatically", "Show when joining a party; hide when solo or in a raid. You can close it for the current party session."},
         {"trackerOpacity", "Party panel background", "Choose readability behind quest progress text.", {{0, "Transparent"}, {0.08, "Subtle"}, {0.25, "Dark glass"}, {0.5, "Dark"}}},
         {"trackerHeight", "Party panel size", "How much progress is visible before you scroll.", {{220, "Compact"}, {350, "Comfortable"}, {500, "Tall"}}}}},

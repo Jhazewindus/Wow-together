@@ -55,12 +55,19 @@ then fully restart the client; the release includes taint mitigation (a /reload 
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+0.8.65 CLASSIC DUNGEON TRACKING AND FINDER FILTERS adds a Find players view
+beside Forever's Looking For Group Browse tab, with combined role/class filters.
+Ragefire's reference map can now project public instance world coordinates;
+no native dungeon map is required. Missing/private positions or ambiguous
+floors stay static. Test alignment while INSIDE the dungeon and capture
+/wt probe there if the marker is missing. See TESTING.md for the short checks.
+
 0.8.64 DUNGEON POSITION AND ROLE FILTERS avoids automatic native quest-selection
 writes on the secret-aura client; addon routes/arrow still work. Fully restart
 WoW after replacing the folder, then retest the reported tracker error.
 Dungeon maps refresh on entry and use matching native position/conversion/drawing
-adapters. Reference-only maps remain static; test Locate me inside Ragefire Chasm.
-The Player roles view beside Blizzard's finder filters declared roles without
+adapters, supplemented by reference-world projection in 0.8.65.
+The Find players view beside Blizzard's finder filters declared roles without
 changing native results or invites. Eastern Plaguelands hand-in facts are updated.
 See TESTING.md for the relevant beta checks and current limitations.
 

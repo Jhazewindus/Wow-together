@@ -1,4 +1,4 @@
-# Dungeon viewer — 0.8.31 — VANILLA LOOT AUDIT
+# Dungeon viewer — 0.8.65 — CLASSIC DUNGEON TRACKING
 
 **See dungeon** opens the full journal from the main addon's Dungeon quests cards
 from anywhere. Cards place **Quest list** beside **Start route**; clicking the
@@ -212,6 +212,44 @@ the old boss point and corresponding quest-target point. A redesigned/native
 map with different art uses only its available native boss/related quest points.
 Outside pickups/turn-ins are deliberately absent from interior coverage counts.
 Retest positions, changed encounters and portrait availability in the beta.
+
+## Live player on Classic reference maps
+
+The runtime now retains **51 published world rectangles** for the reference
+floors, with their game instance map ID and source row. `UnitPosition("player")`
+can be projected with exactly the same world-X/world-Y reversal as static
+spawns. This does not require `C_Map.GetPlayerMapPosition` or native dungeon
+artwork. Ragefire uses `DungeonMap` row 136, game map 389. The current dungeon
+name, instance ID and public position must agree. The marker uses the rendered
+image's scaled/letterboxed rectangle, updating at 10 Hz without redrawing loot.
+
+Only a unique matching floor is accepted. Overlapping world rectangles cannot
+establish height/floor; no floor is chosen from proximity to a boss or entrance.
+Nil, restricted, failed, nonfinite, out-of-bounds or mismatched positions hide
+the marker. Native floor tracking remains available on exact native art.
+These are attributed older-world rectangles, so runtime coordinate availability
+and Forever alignment still require an in-instance retest. `/wt probe` reports
+the actual public coordinate/instance state while the addon map is open.
+
+Reproduce geometry augmentation while retaining reviewed boss/quest positions:
+
+```sh
+/workspace/.wow-together-tests/bin/python tools/import_dungeon_positions.py \
+  --client-db /tmp/wt-0827-positions --geometry-only
+```
+
+This mode verifies both CSV SHA-256s against `DungeonMapData.json` before writing.
+
+## Forever finder filters
+
+The owned **Find players** view recognizes `LFGParentFrame` / `LFGBrowseFrame`
+on the Classic Browse tab, in addition to the modern search/applicant fallback.
+It reads currently loaded public `C_LFGList` results and matches the native
+activity selection. Role/class filters intersect; class identity comes from
+the API's `classFilename`, and Forever's `lfgRoles` structure supplies explicit
+`tank`, `healer` and `dps` flags. Class never implies role. No native scripts,
+rows, providers, search calls or invite actions are replaced. Reference API/UI
+facts are pinned in `research/release-0.8.65-2026-10-09/README.md`.
 
 Reproduce the separate factual compilation:
 

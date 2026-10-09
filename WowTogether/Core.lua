@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.64"
-ns.RELEASE_NAME = "DUNGEON POSITION AND ROLE FILTERS"
+ns.VERSION = "0.8.65"
+ns.RELEASE_NAME = "CLASSIC DUNGEON TRACKING AND FINDER FILTERS"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}

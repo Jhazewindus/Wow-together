@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.64** — **DUNGEON POSITION AND ROLE FILTERS**, World of Warcraft: Forever beta,
+For **0.8.65** — **CLASSIC DUNGEON TRACKING AND FINDER FILTERS**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **10–15 minutes for this update**; the wider optional checks take 45–60
 minutes. Each tester reports Pass / Fail / Skip with a reason.
@@ -21,7 +21,7 @@ The retained expanded-guide checks below take about **15–25 minutes**.
    applying completed/accepted quests and manual skips. Step numbers may change.
    A reload on the same version should preserve the saved order.
 
-## Tracker taint, Ragefire position and role filters — this update
+## Classic dungeon position and finder filters — this update
 
 1. Replace the full addon folder and **fully exit/restart WoW**. Keep Lua errors
    enabled. Quest normally, complete/accept quests, change guide steps, fight,
@@ -30,33 +30,38 @@ The retained expanded-guide checks below take about **15–25 minutes**.
    game-map quest selection is deliberately disabled on this secret-aura client.
    Report any recurrence with version/build, stack, guide, combat and open UI.
 2. Open WoW Together's Ragefire Chasm map before entering, disable the entry
-   prompt, and enter RFC. Its native map/player renderer should refresh without
-   reopening. Try **Locate me**, walk/turn, resize, move the map and enter combat.
+   prompt, and enter RFC. The player marker should use its reference artwork
+   when public instance coordinates are available. Try **Locate me**, walk/turn,
+   resize, move the map and enter combat.
    Confirm the arrow/player stays correctly aligned with the actual room.
    This is the addon map, not Blizzard's round minimap. If no player appears,
-   capture `/wt probe`, especially **Dungeon player**, the map image and current
-   floor. Reference-only maps and unsupported coordinates may remain static.
+   capture `/wt probe` **while inside RFC with the addon map open**, especially
+   **Dungeon player**, **Dungeon world position**, the map image and current
+   room. Also report a marker in the wrong place. Unavailable/private positions
+   and overlapping reference floors may remain static; do not test from Orgrimmar.
 3. On a multi-floor dungeon, test automatic following, manual boss/floor browsing
    and Locate me. A manually selected other floor should remain selected with
    no stale player marker. Leaving the instance must not leave a player at its
    last dungeon coordinates. Resizing must preserve letterbox alignment.
-4. Open Blizzard's player search/group applicant list and load results. The
-   **Player roles** companion should appear beside it. Test All roles, Tank,
-   Healer, Damage and Unspecified; compare names/roles with native data. Use
-   pagination and multi-role applicants if available. Missing names/roles must
-   not be invented from class. Native results/invite controls stay intact.
-5. Move/close the role view; it stays closed until reopening the finder. Disable
+4. Open Forever's **Looking For Group → Browse** tab and load results. The
+   **Find players** companion should appear beside it. Test **both dropdowns**:
+   All roles/Tank/Healer/Damage/Unspecified, and All classes/a specific class.
+   Combine Healer + Shaman (or another listed combination), test multi-role
+   players, then change the native activity selection. Compare results with
+   the native list. Missing names/roles/classes must not be inferred.
+5. Move/close the view; it stays closed until reopening Browse. Disable
    it in Settings → Party progress. Close the finder: the companion hides.
    No automatic searches, invites, declines or whispers should occur. If the
-   client has no public player-role API, report the Group finder roles line and
-   relevant C_LFGList capability lines in `/wt probe`, plus the exact native tab.
+   view is missing, capture `/wt probe` with **Browse open**, including **Group
+   finder filters**, **Group finder context**, and relevant C_LFGList capability
+   lines. Include the native tab and screenshot. Check no tracker taint appears.
 6. Optional Eastern Plaguelands: verify Marauders of Darrowshire returns five
    Resonating Skulls, with Fetid Skulls as preparation; To Kill With Purpose
    returns one Coagulated Rot, with seven Living Rot as preparation. Item-use
    locations remain unresolved and should not become invented destinations.
 
-Host checks cover native UI isolation, dungeon entry/floor/geometry handling,
-public coordinate/native-renderer adapters, role filtering and reviewed hand-ins.
+Host checks cover native UI isolation, reference-world projection, dungeon
+entry/floor/resize handling, role structures, class filtering and reviewed markers.
 They cannot verify actual beta rendering, API delivery or absence of taint.
 
 ## Continue anyway — this update

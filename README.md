@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.64 — DUNGEON POSITION AND ROLE FILTERS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.65 — CLASSIC DUNGEON TRACKING AND FINDER FILTERS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -23,25 +23,31 @@ files** and the **Media folder**, then fully restart the client. Restart if a ne
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
 
-**0.8.64 adds a taint mitigation and dungeon-position fallbacks.** Automatic
+**0.8.65 fixes the Forever Classic finder adapter and adds class filtering.**
+Open Looking For Group → Browse to see the movable **Find players** list beside
+it. Choose a role and class together; the list follows the native activity
+filter and uses players' declared roles. Native messaging/invites stay in the
+game finder. Close/reopen Browse to restore the view, or disable it in Settings
+→ Party progress → Group finder filters.
+
+The player marker can now use public instance world coordinates on Classic
+reference maps, including **Ragefire Chasm**, without a native dungeon map.
+Matching published floor rectangles preserve movement/resize alignment.
+Private/unavailable coordinates or ambiguous floors keep the map static.
+Please test inside RFC; `/wt probe` now includes the actual instance coordinate
+state. These older layout references still need Forever alignment testing.
+
+**The 0.8.64 taint mitigation remains.** Automatic
 native quest selection/supertracking is disabled on the secret-aura client;
 WoW Together's quest routes, arrows and markers continue normally. Fully restart
 WoW after replacing the addon. The reported Blizzard aura error still needs a
 live retest; host checks cannot establish that every taint source is eliminated.
 
-Open dungeon maps refresh their native floor data when entering the instance.
-Public world-to-map coordinates and an owned native player renderer supplement
-the existing position arrow on exact native floors. Reference images stay static;
-these changes do not alter Blizzard's round minimap. In Ragefire Chasm, open our
-map and use Locate me; capture the Dungeon player line from `/wt probe` if missing.
-
-Blizzard's visible player search/applicant list gets a movable **Player roles**
-view beside it, with All roles, Tank, Healer, Damage and Unspecified filters.
-It uses public declared roles and currently loaded results. Invites and native
-results remain in Blizzard's finder; close/reopen that finder to reopen the view.
-Settings → Party progress can turn the view off. Unsupported/private role data
-stays unavailable. Eastern Plaguelands preparation items and final hand-ins are
-also corrected from the reviewed guide branch.
+Open dungeon maps refresh on entry. Exact native floors retain their map-position,
+world-conversion and owned native-renderer adapters. This update concerns WoW
+Together's dungeon window; Blizzard's round minimap is unchanged. Unsupported
+player/class/role data stays unavailable. Eastern Plaguelands hand-in corrections
+from the reviewed guide branch remain included.
 
 **0.8.63 adds Continue anyway to the small guide window** when a fixed leveling
 guide pauses because its remaining work is outside the recommended level range.

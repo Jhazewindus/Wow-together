@@ -183,6 +183,9 @@ function ns.DungeonViewerData(key)
         local reference = referenceFloor(map, stored, positions, floor)
         local located = {}
         if reference then
+            -- The world rectangle belongs to this exact reference artwork,
+            -- independently of whether Classic exposes a native dungeon map.
+            map.worldBounds = reference.worldBounds and copy(reference.worldBounds) or nil
             for _, point in ipairs(reference.bosses) do
                 if validPoint(point) then map.bosses[#map.bosses + 1] = copy(point); located[point.id] = #map.bosses end
             end
