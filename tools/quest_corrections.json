@@ -12128,5 +12128,641 @@
         "objectiveLocationsIncomplete": null
       }
     }
+  },
+  {
+    "questID": 1219,
+    "title": "The Orc Report",
+    "source": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 30,
+      "level": 35,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "y": 0.26,
+            "x": 0.5539999999999999,
+            "name": "Loose Dirt",
+            "entityID": 20985,
+            "mapID": 1445
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "y": 0.26,
+            "x": 0.5539999999999999,
+            "name": "Loose Dirt",
+            "entityID": 20985,
+            "mapID": 1445,
+            "entityType": "object",
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 1238,
+    "title": "The Lost Report",
+    "source": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 30,
+      "level": 35,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "y": 0.26,
+            "x": 0.5539999999999999,
+            "name": "Loose Dirt",
+            "entityID": 20985,
+            "mapID": 1445
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "y": 0.26,
+            "x": 0.5539999999999999,
+            "name": "Loose Dirt",
+            "entityID": 20985,
+            "mapID": 1445,
+            "entityType": "object",
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 1239,
+    "title": "The Severed Head",
+    "source": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 30,
+      "level": 35,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "y": 0.26,
+            "x": 0.5539999999999999,
+            "name": "Loose Dirt",
+            "entityID": 20985,
+            "mapID": 1445
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "y": 0.26,
+            "x": 0.5539999999999999,
+            "name": "Loose Dirt",
+            "entityID": 20985,
+            "mapID": 1445,
+            "entityType": "object",
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 1251,
+    "title": "The Black Shield",
+    "source": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 30,
+      "level": 35,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "y": 0.485,
+            "x": 0.29600000000000004,
+            "name": "Black Shield",
+            "entityID": 20992,
+            "mapID": 1445
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "y": 0.485,
+            "x": 0.29600000000000004,
+            "name": "Black Shield",
+            "entityID": 20992,
+            "mapID": 1445,
+            "entityType": "object",
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 1252,
+    "title": "Lieutenant Paval Reethe",
+    "source": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 30,
+      "level": 40,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "y": 0.48200000000000004,
+            "x": 0.298,
+            "name": "Theramore Guard Badge",
+            "entityID": 21042,
+            "mapID": 1445
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "y": 0.48200000000000004,
+            "x": 0.298,
+            "name": "Theramore Guard Badge",
+            "entityID": 21042,
+            "mapID": 1445,
+            "entityType": "object",
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 1253,
+    "title": "The Black Shield",
+    "source": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 30,
+      "level": 35,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "y": 0.485,
+            "x": 0.29600000000000004,
+            "name": "Black Shield",
+            "entityID": 20992,
+            "mapID": 1445
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "y": 0.485,
+            "x": 0.29600000000000004,
+            "name": "Black Shield",
+            "entityID": 20992,
+            "mapID": 1445,
+            "entityType": "object",
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 1268,
+    "title": "Suspicious Hoofprints",
+    "source": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 30,
+      "level": 35,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "entityType": "object",
+            "mapID": 1445,
+            "name": "Hoofprints",
+            "y": 0.4764,
+            "entityID": 21015,
+            "x": 0.297,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 15
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "entityType": "object",
+            "mapID": 1445,
+            "name": "Hoofprints",
+            "y": 0.4764,
+            "entityID": 21015,
+            "x": 0.297,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 15,
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 1269,
+    "title": "Lieutenant Paval Reethe",
+    "source": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 30,
+      "level": 37,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "y": 0.48200000000000004,
+            "x": 0.298,
+            "name": "Theramore Guard Badge",
+            "entityID": 21042,
+            "mapID": 1445
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "y": 0.48200000000000004,
+            "x": 0.298,
+            "name": "Theramore Guard Badge",
+            "entityID": 21042,
+            "mapID": 1445,
+            "entityType": "object",
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 1284,
+    "title": "Suspicious Hoofprints",
+    "source": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 30,
+      "level": 35,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "entityType": "object",
+            "mapID": 1445,
+            "name": "Hoofprints",
+            "y": 0.4764,
+            "entityID": 21015,
+            "x": 0.297,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 15
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "entityType": "object",
+            "mapID": 1445,
+            "name": "Hoofprints",
+            "y": 0.4764,
+            "entityID": 21015,
+            "x": 0.297,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 15,
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 4976,
+    "title": "Returning the Cleansed Orb",
+    "source": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Actual supplied delivery, not a second post-acceptance farm. Preserve output count, earlier parent hand-in, class/faction scope and real remote recipient; Rexxar patrol remains a search area. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 35,
+      "level": 40,
+      "classMask": 256,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Cleansed Infernal Orb",
+          "itemID": 12642
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Cleansed Infernal Orb",
+            "entityID": 12642
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Cleansed Infernal Orb",
+            "itemID": 12642
+          }
+        ],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Cleansed Infernal Orb",
+            "entityID": 12642
+          }
+        ],
+        "objectiveLocationsIncomplete": true,
+        "providedItems": [],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1413,
+            "entityID": 6266,
+            "npc": true,
+            "y": 0.35450000000000004,
+            "x": 0.6251,
+            "name": "Menara Voidrender",
+            "sourceAreaID": 17,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Cleansed Infernal Orb",
+            "itemID": 12642
+          }
+        ],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 12642,
+            "name": "Cleansed Infernal Orb",
+            "quantity": 1
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1413,
+            "entityID": 6266,
+            "npc": true,
+            "y": 0.35450000000000004,
+            "x": 0.6251,
+            "name": "Menara Voidrender",
+            "sourceAreaID": 17,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "talk"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 6601,
+    "title": "Ascension...",
+    "source": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Actual supplied delivery, not a second post-acceptance farm. Preserve output count, earlier parent hand-in, class/faction scope and real remote recipient; Rexxar patrol remains a search area. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 55,
+      "level": 60,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Dull Drakefire Amulet",
+          "itemID": 16888
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Dull Drakefire Amulet",
+            "entityID": 16888
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Dull Drakefire Amulet",
+            "itemID": 16888
+          }
+        ],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Dull Drakefire Amulet",
+            "entityID": 16888
+          }
+        ],
+        "objectiveLocationsIncomplete": true,
+        "providedItems": [],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1442,
+            "patrol": true,
+            "entityID": 10182,
+            "npc": true,
+            "y": 0.7798999999999999,
+            "x": 0.29719999999999996,
+            "name": "Rexxar",
+            "sourceAreaID": 406,
+            "locationSource": "Published Forever converted-baseline patrol waypoints"
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Dull Drakefire Amulet",
+            "itemID": 16888
+          }
+        ],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 16888,
+            "name": "Dull Drakefire Amulet",
+            "quantity": 1
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1442,
+            "patrol": true,
+            "entityID": 10182,
+            "npc": true,
+            "y": 0.7798999999999999,
+            "x": 0.29719999999999996,
+            "name": "Rexxar",
+            "sourceAreaID": 406,
+            "locationSource": "Published Forever converted-baseline patrol waypoints",
+            "action": "talk"
+          }
+        ]
+      }
+    }
   }
 ]

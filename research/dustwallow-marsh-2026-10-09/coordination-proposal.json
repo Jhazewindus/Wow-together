@@ -1,0 +1,73 @@
+{
+  "applied": false,
+  "shared_runtime_modules_authored": false,
+  "review_before_merge": "Alliance31-40 regresses travel/log/reward timing despite all endpoints/actions retained after explicit placeholder classification. Coordinate optimizer edits before implementation.",
+  "delayed_work_rewards": [
+    {
+      "questID": 1177,
+      "objectiveKey": "item:5847",
+      "before": 7915,
+      "after": 5065
+    },
+    {
+      "questID": 1206,
+      "objectiveKey": "item:5884",
+      "before": 7915,
+      "after": 5065
+    },
+    {
+      "questID": 1203,
+      "objectiveKey": "item:3853",
+      "before": 13465,
+      "after": 10615
+    },
+    {
+      "questID": 1284,
+      "objectiveKey": null,
+      "before": 21145,
+      "after": 14065
+    },
+    {
+      "questID": 1253,
+      "objectiveKey": null,
+      "before": 22495,
+      "after": 15415
+    },
+    {
+      "questID": 1286,
+      "objectiveKey": null,
+      "before": 24810,
+      "after": 23185
+    },
+    {
+      "questID": 1288,
+      "objectiveKey": null,
+      "before": 27660,
+      "after": 26035
+    },
+    {
+      "questID": 1271,
+      "objectiveKey": null,
+      "before": 27945,
+      "after": 26320
+    },
+    {
+      "questID": 1302,
+      "objectiveKey": null,
+      "before": 27945,
+      "after": 26595
+    }
+  ],
+  "other_coordination": {
+    "remote_handoffs": "1135 and1258 have Theramore pickups but remote-only work, excluded by localWork; absent in saved Needles/Swamp compilations. Propose optional source-linked excursions without reclassifying local leveling work.",
+    "4962_4963": "different-title exclusive branches need coordinated schema/eligibility support. Ruby use versus modeled loot and return/supply count require source/native identity review.",
+    "6570": "amulet disguise before Emberstrife needs supported equip/use lifecycle and actual supplied count.",
+    "1133": "captured1132 mandatory hand-in versus explicitly empty published parent retained pending native review."
+  },
+  "source_gaps": {
+    "1288": "all stages unknown; no justified placeholder exclusion",
+    "1203": "Moonsteel Broadsword procurement point unknown",
+    "1282_4962": "actual offer conditions unverified"
+  },
+  "route_result": "20 valid states;16 strict PASS,4 Alliance31-40 REVIEW; all reconciled full scopes/endpoints retained"
+}

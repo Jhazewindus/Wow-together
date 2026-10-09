@@ -1,0 +1,299 @@
+{
+  "before": {
+    "static_points_checked": 11833,
+    "source_data_gap_free_guides": 35
+  },
+  "after": {
+    "static_points_checked": 11833,
+    "source_data_gap_free_guides": 35
+  },
+  "changed_rows": [
+    {
+      "faction": "Alliance",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+      "before": {
+        "faction": "Alliance",
+        "zone": "Dustwallow Marsh",
+        "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+        "quests": 39,
+        "steps": 118,
+        "unknown_location_steps": 17,
+        "missing_location_quest_ids_by_stage": {
+          "a": [
+            1263,
+            1272,
+            1281,
+            1283,
+            1288
+          ],
+          "q": [
+            1203,
+            1263,
+            1272,
+            1281,
+            1283,
+            1288,
+            4976
+          ],
+          "t": [
+            1263,
+            1272,
+            1281,
+            1283,
+            1288
+          ]
+        },
+        "unverified_pickup_requirement_quest_ids": [
+          1282,
+          4962
+        ],
+        "unverified_objective_quantity_quest_ids": [],
+        "prerequisite_review_steps": 9,
+        "source_data_gap_free": false,
+        "reason_steps_checked": 118,
+        "destination_reason_codes": {
+          "class-progression": 27,
+          "early-reward": 3,
+          "outside-level-range": 44,
+          "prerequisite": 12,
+          "quest-reward": 32
+        },
+        "reason_review_steps": 63,
+        "cross_zone_reason_steps": 12,
+        "flow_alternatives_evaluated": 114,
+        "flow_loop_changes": 4,
+        "flow_state_valid": true,
+        "quest_log_peak": 5,
+        "quest_reward_only_xp_shortfall": 246155,
+        "uncertain_travel_legs": 30,
+        "estimated_distance_before": 340076.05,
+        "estimated_distance_after": 340076.05
+      },
+      "after": {
+        "faction": "Alliance",
+        "zone": "Dustwallow Marsh",
+        "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+        "quests": 35,
+        "steps": 106,
+        "unknown_location_steps": 4,
+        "missing_location_quest_ids_by_stage": {
+          "a": [
+            1288
+          ],
+          "q": [
+            1203,
+            1288
+          ],
+          "t": [
+            1288
+          ]
+        },
+        "unverified_pickup_requirement_quest_ids": [
+          1282,
+          4962
+        ],
+        "unverified_objective_quantity_quest_ids": [],
+        "prerequisite_review_steps": 9,
+        "source_data_gap_free": false,
+        "reason_steps_checked": 106,
+        "destination_reason_codes": {
+          "class-progression": 27,
+          "early-reward": 2,
+          "outside-level-range": 36,
+          "prerequisite": 12,
+          "quest-reward": 29
+        },
+        "reason_review_steps": 50,
+        "cross_zone_reason_steps": 12,
+        "flow_alternatives_evaluated": 70,
+        "flow_loop_changes": 2,
+        "flow_state_valid": true,
+        "quest_log_peak": 6,
+        "quest_reward_only_xp_shortfall": 247780,
+        "uncertain_travel_legs": 16,
+        "estimated_distance_before": 189083.27,
+        "estimated_distance_after": 189083.27
+      }
+    },
+    {
+      "faction": "Horde",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+      "before": {
+        "faction": "Horde",
+        "zone": "Dustwallow Marsh",
+        "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+        "quests": 39,
+        "steps": 118,
+        "unknown_location_steps": 17,
+        "missing_location_quest_ids_by_stage": {
+          "a": [
+            1263,
+            1272,
+            1281,
+            1283,
+            1288
+          ],
+          "q": [
+            1203,
+            1263,
+            1272,
+            1281,
+            1283,
+            1288,
+            4976
+          ],
+          "t": [
+            1263,
+            1272,
+            1281,
+            1283,
+            1288
+          ]
+        },
+        "unverified_pickup_requirement_quest_ids": [
+          4962
+        ],
+        "unverified_objective_quantity_quest_ids": [],
+        "prerequisite_review_steps": 9,
+        "source_data_gap_free": false,
+        "reason_steps_checked": 118,
+        "destination_reason_codes": {
+          "class-progression": 27,
+          "early-reward": 1,
+          "outside-level-range": 42,
+          "prerequisite": 15,
+          "quest-reward": 31,
+          "return-hub": 2
+        },
+        "reason_review_steps": 60,
+        "cross_zone_reason_steps": 14,
+        "flow_alternatives_evaluated": 109,
+        "flow_loop_changes": 2,
+        "flow_state_valid": true,
+        "quest_log_peak": 7,
+        "quest_reward_only_xp_shortfall": 240290,
+        "uncertain_travel_legs": 32,
+        "estimated_distance_before": 401065.61,
+        "estimated_distance_after": 401065.61
+      },
+      "after": {
+        "faction": "Horde",
+        "zone": "Dustwallow Marsh",
+        "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
+        "quests": 35,
+        "steps": 106,
+        "unknown_location_steps": 4,
+        "missing_location_quest_ids_by_stage": {
+          "a": [
+            1288
+          ],
+          "q": [
+            1203,
+            1288
+          ],
+          "t": [
+            1288
+          ]
+        },
+        "unverified_pickup_requirement_quest_ids": [
+          4962
+        ],
+        "unverified_objective_quantity_quest_ids": [],
+        "prerequisite_review_steps": 9,
+        "source_data_gap_free": false,
+        "reason_steps_checked": 106,
+        "destination_reason_codes": {
+          "class-progression": 27,
+          "early-reward": 1,
+          "outside-level-range": 34,
+          "prerequisite": 15,
+          "quest-reward": 27,
+          "return-hub": 2
+        },
+        "reason_review_steps": 47,
+        "cross_zone_reason_steps": 14,
+        "flow_alternatives_evaluated": 109,
+        "flow_loop_changes": 2,
+        "flow_state_valid": true,
+        "quest_log_peak": 6,
+        "quest_reward_only_xp_shortfall": 240290,
+        "uncertain_travel_legs": 18,
+        "estimated_distance_before": 247531.23,
+        "estimated_distance_after": 247531.23
+      }
+    },
+    {
+      "faction": "Horde",
+      "key": "level-zone:kalimdor/dustwallow-marsh:levels:51-60",
+      "before": {
+        "faction": "Horde",
+        "zone": "Dustwallow Marsh",
+        "key": "level-zone:kalimdor/dustwallow-marsh:levels:51-60",
+        "quests": 7,
+        "steps": 21,
+        "unknown_location_steps": 1,
+        "missing_location_quest_ids_by_stage": {
+          "a": [],
+          "q": [
+            6601
+          ],
+          "t": []
+        },
+        "unverified_pickup_requirement_quest_ids": [],
+        "unverified_objective_quantity_quest_ids": [],
+        "prerequisite_review_steps": 21,
+        "source_data_gap_free": false,
+        "reason_steps_checked": 21,
+        "destination_reason_codes": {
+          "outside-level-range": 8,
+          "prerequisite": 9,
+          "quest-reward": 4
+        },
+        "reason_review_steps": 21,
+        "cross_zone_reason_steps": 13,
+        "flow_alternatives_evaluated": 0,
+        "flow_loop_changes": 0,
+        "flow_state_valid": true,
+        "quest_log_peak": 1,
+        "quest_reward_only_xp_shortfall": 527400,
+        "uncertain_travel_legs": 13,
+        "estimated_distance_before": 201506.72,
+        "estimated_distance_after": 201506.72
+      },
+      "after": {
+        "faction": "Horde",
+        "zone": "Dustwallow Marsh",
+        "key": "level-zone:kalimdor/dustwallow-marsh:levels:51-60",
+        "quests": 7,
+        "steps": 21,
+        "unknown_location_steps": 0,
+        "missing_location_quest_ids_by_stage": {
+          "a": [],
+          "q": [],
+          "t": []
+        },
+        "unverified_pickup_requirement_quest_ids": [],
+        "unverified_objective_quantity_quest_ids": [],
+        "prerequisite_review_steps": 21,
+        "source_data_gap_free": false,
+        "reason_steps_checked": 21,
+        "destination_reason_codes": {
+          "outside-level-range": 8,
+          "prerequisite": 9,
+          "quest-reward": 4
+        },
+        "reason_review_steps": 21,
+        "cross_zone_reason_steps": 13,
+        "flow_alternatives_evaluated": 0,
+        "flow_loop_changes": 0,
+        "flow_state_valid": true,
+        "quest_log_peak": 1,
+        "quest_reward_only_xp_shortfall": 527400,
+        "uncertain_travel_legs": 12,
+        "estimated_distance_before": 201506.72,
+        "estimated_distance_after": 201506.72
+      }
+    }
+  ],
+  "unrelated_rows_changed": 0
+}

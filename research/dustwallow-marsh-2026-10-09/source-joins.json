@@ -1,0 +1,191 @@
+[
+  {
+    "questID": 1219,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "decision": "Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 1238,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "_identityName": "converted-baseline"
+    },
+    "decision": "Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 1239,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "decision": "Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 1251,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "decision": "Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 1252,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "_identityName": "converted-baseline",
+      "preQuestSingle": "converted-baseline"
+    },
+    "decision": "Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 1253,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "_identityName": "converted-baseline",
+      "preQuestSingle": "converted-baseline"
+    },
+    "decision": "Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 1268,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "_identityName": "converted-baseline"
+    },
+    "decision": "Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 1269,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "_identityName": "converted-baseline"
+    },
+    "decision": "Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 1284,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "_identityName": "converted-baseline",
+      "preQuestSingle": "converted-baseline"
+    },
+    "decision": "Interact with the actual dirt, shield, badge or hoofprints starter. Preserve captured point, separate faction-specific quest ID/recipient, supplied report/head/shield and actual parent hand-ins. No duplicate farm or invented gossip prerequisite.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 4976,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "requiredClasses": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "decision": "Actual supplied delivery, not a second post-acceptance farm. Preserve output count, earlier parent hand-in, class/faction scope and real remote recipient; Rexxar patrol remains a search area.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 6601,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "decision": "Actual supplied delivery, not a second post-acceptance farm. Preserve output count, earlier parent hand-in, class/faction scope and real remote recipient; Rexxar patrol remains a search area.",
+    "native_beta_verified": false
+  }
+]

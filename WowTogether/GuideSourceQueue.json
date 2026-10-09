@@ -1,6 +1,6 @@
 {
   "source_data_complete": false,
-  "remaining_quest_records": 371,
+  "remaining_quest_records": 365,
   "limitations": [
     "This queue identifies missing facts, not a license to invent them",
     "Source capture must respect access policy and stop after denials",
@@ -767,51 +767,6 @@
       ]
     },
     {
-      "questID": 1263,
-      "title": "The Burning Inn <CHANGE TO GOSSIP>",
-      "guides": [
-        "Alliance / Dustwallow Marsh",
-        "Horde / Dustwallow Marsh"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1263",
-      "entity_urls": []
-    },
-    {
-      "questID": 1272,
-      "title": "Finding Reethe <CHANGE INTO GOSSIP>",
-      "guides": [
-        "Alliance / Dustwallow Marsh",
-        "Horde / Dustwallow Marsh"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1272",
-      "entity_urls": []
-    },
-    {
-      "questID": 1281,
-      "title": "Jim's Song <CHANGE TO GOSSIP>",
-      "guides": [
-        "Alliance / Dustwallow Marsh",
-        "Horde / Dustwallow Marsh"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1281",
-      "entity_urls": []
-    },
-    {
       "questID": 1282,
       "title": "They Call Him Smiling Jim",
       "guides": [
@@ -825,21 +780,6 @@
         "https://www.wowhead.com/forever/npc=4921",
         "https://www.wowhead.com/forever/npc=4944"
       ]
-    },
-    {
-      "questID": 1283,
-      "title": "Fire at the Shady Rest <CHANGE TO GOSSIP>",
-      "guides": [
-        "Alliance / Dustwallow Marsh",
-        "Horde / Dustwallow Marsh"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1283",
-      "entity_urls": []
     },
     {
       "questID": 1288,
@@ -1962,23 +1902,6 @@
       ]
     },
     {
-      "questID": 4976,
-      "title": "Returning the Cleansed Orb",
-      "guides": [
-        "Alliance / Dustwallow Marsh",
-        "Horde / Dustwallow Marsh"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=4976",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=12642",
-        "https://www.wowhead.com/forever/npc=6266",
-        "https://www.wowhead.com/forever/npc=6546"
-      ]
-    },
-    {
       "questID": 5050,
       "title": "Good Luck Charm",
       "guides": [
@@ -2941,22 +2864,6 @@
         "https://www.wowhead.com/forever/item=16785",
         "https://www.wowhead.com/forever/npc=10182",
         "https://www.wowhead.com/forever/npc=11872"
-      ]
-    },
-    {
-      "questID": 6601,
-      "title": "Ascension...",
-      "guides": [
-        "Horde / Dustwallow Marsh"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=6601",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=16888",
-        "https://www.wowhead.com/forever/npc=10182",
-        "https://www.wowhead.com/forever/npc=10321"
       ]
     },
     {
