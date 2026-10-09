@@ -1,0 +1,127 @@
+[
+  {
+    "questID": 1150,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline"
+    },
+    "decision": "Foodstuffs are the interaction/ambush trigger, not the claw drop. Keep captured food and actual Grenka alternative coordinates; join claw to actual Grenka. Remove unsupported Flank of Meat goal/hand-in. Number of food interactions/waves remains unknown; real 1149 hand-in retained.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 1183,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "decision": "Actual supplied/already-earned delivery input, not a second post-acceptance farm. Keep output hand-in count, actual earlier acquisition/parent hand-in and recipient destination.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 1188,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "decision": "Actual supplied/already-earned delivery input, not a second post-acceptance farm. Keep output hand-in count, actual earlier acquisition/parent hand-in and recipient destination.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 1194,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "_identityName": "converted-baseline"
+    },
+    "decision": "Interact with actual captured unguarded-plans starter; retain supplied ore sample with unknown supplied count and real 1190 hand-in. Do not invent a new farm, inventory total or move the alternate starter.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 5088,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "specialFlags": "converted-baseline",
+      "_identityName": "converted-baseline"
+    },
+    "decision": "Use actual supplied preparation tool at the distinct published fire/cage before actual skin/gizmo loot; preserve mapped mob drop, output count and return. Interaction/supplied-key count not guessed. Prose mentions returning powder/key but typed objectives identify actual output; no invented extra consumed-input hand-in.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 5151,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "_identityName": "converted-baseline"
+    },
+    "decision": "Use actual supplied preparation tool at the distinct published fire/cage before actual skin/gizmo loot; preserve mapped mob drop, output count and return. Interaction/supplied-key count not guessed. Prose mentions returning powder/key but typed objectives identify actual output; no invented extra consumed-input hand-in.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 5361,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "decision": "Actual supplied/already-earned delivery input, not a second post-acceptance farm. Keep output hand-in count, actual earlier acquisition/parent hand-in and recipient destination.",
+    "native_beta_verified": false
+  }
+]

@@ -1,0 +1,1883 @@
+{
+  "1150": {
+    "before": {
+      "prerequisitesRead": true,
+      "zone": "Thousand Needles",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Grenka's Claw",
+          "entityID": 5843
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Flank of Meat",
+          "entityID": 5845
+        }
+      ],
+      "level": 30,
+      "areaID": 400,
+      "objectiveAlternatives": [
+        {
+          "sourceObjective": 0,
+          "itemName": "Grenka's Claw",
+          "locations": [
+            {
+              "sourceObjective": 0,
+              "itemName": "Grenka's Claw",
+              "action": "collect",
+              "entityID": 4490,
+              "npc": true,
+              "y": 0.556,
+              "x": 0.26,
+              "name": "Grenka Bloodscreech",
+              "mapID": 1441
+            },
+            {
+              "sourceObjective": 0,
+              "mapID": 1441,
+              "action": "collect",
+              "y": 0.5479999999999999,
+              "entityID": 20447,
+              "x": 0.259,
+              "name": "Harpy Foodstuffs",
+              "itemName": "Grenka's Claw"
+            }
+          ]
+        }
+      ],
+      "seriesPosition": 2,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Dorn Plainstalker",
+          "entityID": 2986
+        }
+      ],
+      "xp": 2450,
+      "minLevel": 25,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Grenka's Claw",
+            "entityID": 5843
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Flank of Meat",
+            "entityID": 5845
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Dorn Plainstalker",
+            "entityID": 2986
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Dorn Plainstalker",
+            "entityID": 2986
+          }
+        ]
+      },
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "kalimdor/thousand-needles",
+      "raceMask": 0,
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Flank of Meat",
+          "entityID": 5845
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Dorn Plainstalker",
+          "entityID": 2986
+        }
+      ],
+      "seriesRoot": 1149,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Grenka's Claw",
+          "itemID": 5843
+        },
+        {
+          "quantity": 1,
+          "name": "Flank of Meat",
+          "itemID": 5845
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.41600000000000004,
+          "mapID": 1441,
+          "name": "Dorn Plainstalker",
+          "entityID": 2986,
+          "npc": true,
+          "x": 0.5379999999999999
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "previousQuest": 1149,
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1441,
+          "legacyStepKey": "q:1441:npc:20447",
+          "entityID": 20447,
+          "x": 0.259,
+          "y": 0.5479999999999999,
+          "objectiveKey": "item:5843",
+          "itemID": 5843,
+          "quantity": 1,
+          "name": "Harpy Foodstuffs",
+          "itemName": "Grenka's Claw",
+          "alternativeCount": 2,
+          "action": "collect"
+        }
+      ],
+      "series": [
+        1149,
+        1150,
+        1151,
+        1152,
+        1154,
+        6627,
+        1159,
+        1160,
+        6628,
+        1394
+      ],
+      "mapID": 1441,
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.41600000000000004,
+          "mapID": 1441,
+          "name": "Dorn Plainstalker",
+          "entityID": 2986,
+          "npc": true,
+          "x": 0.5379999999999999
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "title": "Test of Endurance",
+      "classMask": 0,
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "itemName": "Grenka's Claw",
+          "name": "Grenka Bloodscreech",
+          "entityID": 4490,
+          "npc": true,
+          "action": "collect"
+        }
+      ]
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "zone": "Thousand Needles",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Grenka's Claw",
+          "entityID": 5843
+        }
+      ],
+      "level": 30,
+      "areaID": 400,
+      "objectiveAlternatives": [
+        {
+          "sourceObjective": 0,
+          "itemName": "Grenka's Claw",
+          "locations": [
+            {
+              "sourceObjective": 0,
+              "itemName": "Grenka's Claw",
+              "action": "collect",
+              "entityID": 4490,
+              "npc": true,
+              "y": 0.556,
+              "x": 0.26,
+              "name": "Grenka Bloodscreech",
+              "mapID": 1441
+            }
+          ]
+        }
+      ],
+      "previousQuest": 1149,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Dorn Plainstalker",
+          "entityID": 2986
+        }
+      ],
+      "xp": 2450,
+      "minLevel": 25,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Grenka's Claw",
+            "entityID": 5843
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Dorn Plainstalker",
+            "entityID": 2986
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Dorn Plainstalker",
+            "entityID": 2986
+          }
+        ]
+      },
+      "categoryPath": "kalimdor/thousand-needles",
+      "raceMask": 0,
+      "mapID": 1441,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Dorn Plainstalker",
+          "entityID": 2986
+        }
+      ],
+      "seriesRoot": 1149,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Grenka's Claw",
+          "itemID": 5843
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.41600000000000004,
+          "mapID": 1441,
+          "name": "Dorn Plainstalker",
+          "entityID": 2986,
+          "npc": true,
+          "x": 0.5379999999999999
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Foodstuffs are the interaction/ambush trigger, not the claw drop. Keep captured food and actual Grenka alternative coordinates; join claw to actual Grenka. Remove unsupported Flank of Meat goal/hand-in. Number of food interactions/waves remains unknown; real 1149 hand-in retained. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/thousand-needles-2026-10-09. Supporting unchanged mechanics: https://classicdb.ch/?quest=1150; accessed 2026-10-09; no beta terrain proof.",
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1441,
+          "legacyStepKey": "q:1441:npc:20447",
+          "entityID": 20447,
+          "y": 0.5479999999999999,
+          "objectiveKey": "object:20447",
+          "name": "Harpy Foodstuffs",
+          "x": 0.259,
+          "sourceObjective": 0,
+          "action": "interact",
+          "quantityUnknown": true
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "action": "loot",
+          "entityID": 4490,
+          "npc": true,
+          "y": 0.556,
+          "objectiveKey": "item:5843",
+          "itemID": 5843,
+          "x": 0.26,
+          "sourceObjective": 0,
+          "quantity": 1,
+          "itemName": "Grenka's Claw",
+          "name": "Grenka Bloodscreech"
+        }
+      ],
+      "series": [
+        1149,
+        1150,
+        1151,
+        1152,
+        1154,
+        6627,
+        1159,
+        1160,
+        6628,
+        1394
+      ],
+      "missingRequirements": {},
+      "classMask": 0,
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.41600000000000004,
+          "mapID": 1441,
+          "name": "Dorn Plainstalker",
+          "entityID": 2986,
+          "npc": true,
+          "x": 0.5379999999999999
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "title": "Test of Endurance",
+      "seriesPosition": 2,
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "itemName": "Grenka's Claw",
+          "name": "Grenka Bloodscreech",
+          "entityID": 4490,
+          "npc": true,
+          "action": "collect"
+        }
+      ]
+    }
+  },
+  "1183": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1441,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Baron Revilgaz",
+          "entityID": 2496
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Fuel Regulator Blueprints",
+          "entityID": 5852
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Fuel Regulator Blueprints",
+          "itemID": 5852
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1434,
+          "action": "gather",
+          "entityID": 20691,
+          "x": 0.43329999999999996,
+          "y": 0.20329999999999998,
+          "objectiveKey": "item:5852",
+          "itemID": 5852,
+          "quantity": 1,
+          "sourceAreaID": 33,
+          "itemName": "Fuel Regulator Blueprints",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Cozzle's Footlocker"
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1434,
+          "entityID": 2496,
+          "npc": true,
+          "sourceZone": "Stranglethorn Vale",
+          "x": 0.272,
+          "name": "Baron Revilgaz",
+          "sourceAreaID": 33,
+          "y": 0.768
+        }
+      ],
+      "level": 37,
+      "areaID": 400,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "side": "Both",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "entityID": 4630,
+          "npc": true,
+          "y": 0.7587999999999999,
+          "x": 0.8018000000000001,
+          "name": "Pozzik",
+          "sourceAreaID": 400,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Pozzik",
+          "entityID": 4630
+        }
+      ],
+      "xp": 710,
+      "prerequisiteAny": [
+        1182
+      ],
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "minLevel": 29,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "title": "Goblin Sponsorship",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Fuel Regulator Blueprints",
+            "entityID": 5852
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Baron Revilgaz",
+            "entityID": 2496
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Pozzik",
+            "entityID": 4630
+          }
+        ]
+      },
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "categoryPath": "kalimdor/thousand-needles"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1441,
+      "objectives": {},
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Baron Revilgaz",
+          "entityID": 2496
+        }
+      ],
+      "requirements": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Fuel Regulator Blueprints",
+          "entityID": 5852
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Fuel Regulator Blueprints",
+          "itemID": 5852
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1434,
+          "entityID": 2496,
+          "npc": true,
+          "sourceZone": "Stranglethorn Vale",
+          "x": 0.272,
+          "name": "Baron Revilgaz",
+          "sourceAreaID": 33,
+          "y": 0.768
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "title": "Goblin Sponsorship",
+      "level": 37,
+      "areaID": 400,
+      "raceMask": 0,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "prerequisiteAny": [
+        1182
+      ],
+      "side": "Both",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "action": "talk",
+          "entityID": 4630,
+          "npc": true,
+          "y": 0.7587999999999999,
+          "x": 0.8018000000000001,
+          "name": "Pozzik",
+          "sourceAreaID": 400,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Pozzik",
+          "entityID": 4630
+        }
+      ],
+      "xp": 710,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "minLevel": 29,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Actual supplied/already-earned delivery input, not a second post-acceptance farm. Keep output hand-in count, actual earlier acquisition/parent hand-in and recipient destination. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/thousand-needles-2026-10-09.",
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Baron Revilgaz",
+            "entityID": 2496
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Fuel Regulator Blueprints",
+            "entityID": 5852
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Pozzik",
+            "entityID": 4630
+          }
+        ]
+      },
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "categoryPath": "kalimdor/thousand-needles"
+    }
+  },
+  "1188": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1441,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Razzeric",
+          "entityID": 4706
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Seaforium Booster",
+          "entityID": 5862
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Seaforium Booster",
+          "itemID": 5862
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1445,
+          "action": "gather",
+          "entityID": 20727,
+          "x": 0.5407,
+          "y": 0.5649000000000001,
+          "objectiveKey": "item:5862",
+          "itemID": 5862,
+          "quantity": 1,
+          "sourceAreaID": 15,
+          "itemName": "Seaforium Booster",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Gizmorium Shipping Crate"
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "entityID": 4706,
+          "npc": true,
+          "sourceZone": "Thousand Needles",
+          "x": 0.802,
+          "name": "Razzeric",
+          "sourceAreaID": 400,
+          "y": 0.76
+        }
+      ],
+      "level": 41,
+      "areaID": 400,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "side": "Both",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1446,
+          "entityID": 4708,
+          "npc": true,
+          "y": 0.2724,
+          "x": 0.5096,
+          "name": "Shreev",
+          "sourceAreaID": 440,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Shreev",
+          "entityID": 4708
+        }
+      ],
+      "xp": 820,
+      "prerequisiteAny": [
+        1187
+      ],
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "minLevel": 29,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "title": "Safety First",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Seaforium Booster",
+            "entityID": 5862
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Razzeric",
+            "entityID": 4706
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Shreev",
+            "entityID": 4708
+          }
+        ]
+      },
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "categoryPath": "kalimdor/thousand-needles"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1441,
+      "objectives": {},
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Razzeric",
+          "entityID": 4706
+        }
+      ],
+      "requirements": {},
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Seaforium Booster",
+          "entityID": 5862
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Seaforium Booster",
+          "itemID": 5862
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "entityID": 4706,
+          "npc": true,
+          "sourceZone": "Thousand Needles",
+          "x": 0.802,
+          "name": "Razzeric",
+          "sourceAreaID": 400,
+          "y": 0.76
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "title": "Safety First",
+      "level": 41,
+      "areaID": 400,
+      "raceMask": 0,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "prerequisiteAny": [
+        1187
+      ],
+      "side": "Both",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1446,
+          "action": "talk",
+          "entityID": 4708,
+          "npc": true,
+          "y": 0.2724,
+          "x": 0.5096,
+          "name": "Shreev",
+          "sourceAreaID": 440,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Shreev",
+          "entityID": 4708
+        }
+      ],
+      "xp": 820,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "minLevel": 29,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Actual supplied/already-earned delivery input, not a second post-acceptance farm. Keep output hand-in count, actual earlier acquisition/parent hand-in and recipient destination. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/thousand-needles-2026-10-09.",
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Razzeric",
+            "entityID": 4706
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Seaforium Booster",
+            "entityID": 5862
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Shreev",
+            "entityID": 4708
+          }
+        ]
+      },
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "categoryPath": "kalimdor/thousand-needles"
+    }
+  },
+  "1194": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1441,
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Rizzle's Unguarded Plans",
+          "entityID": 20805
+        },
+        {
+          "entityType": "object",
+          "name": "Rizzle's Guarded Plans",
+          "entityID": 179888
+        }
+      ],
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "entityID": 4630,
+          "npc": true,
+          "y": 0.7587999999999999,
+          "x": 0.8018000000000001,
+          "name": "Pozzik",
+          "sourceAreaID": 400,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectives": {},
+      "level": 41,
+      "areaID": 400,
+      "starts": [
+        {
+          "entityType": "object",
+          "mapID": 1441,
+          "name": "Rizzle's Unguarded Plans",
+          "y": 0.7739,
+          "entityID": 20805,
+          "x": 0.7720999999999999,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "sourceAreaID": 400
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Both",
+      "raceMask": 0,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Pozzik",
+          "entityID": 4630
+        }
+      ],
+      "xp": 1650,
+      "prerequisiteAny": [
+        1190
+      ],
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "minLevel": 29,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "title": "Rizzle's Schematics",
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Rizzle's Unguarded Plans",
+            "entityID": 20805
+          },
+          {
+            "entityType": "object",
+            "name": "Rizzle's Guarded Plans",
+            "entityID": 179888
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Pozzik",
+            "entityID": 4630
+          }
+        ]
+      },
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "categoryPath": "kalimdor/thousand-needles"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1441,
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "Rizzle's Unguarded Plans",
+          "entityID": 20805
+        },
+        {
+          "entityType": "object",
+          "name": "Rizzle's Guarded Plans",
+          "entityID": 179888
+        }
+      ],
+      "requirements": {},
+      "objectives": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "name": "Sample of Indurium Ore",
+          "entityID": 5866
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "entityID": 4630,
+          "npc": true,
+          "y": 0.7587999999999999,
+          "x": 0.8018000000000001,
+          "name": "Pozzik",
+          "sourceAreaID": 400,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "object",
+          "mapID": 1441,
+          "action": "interact",
+          "entityID": 20805,
+          "y": 0.7739,
+          "x": 0.7720999999999999,
+          "name": "Rizzle's Unguarded Plans",
+          "sourceAreaID": 400,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "level": 41,
+      "areaID": 400,
+      "title": "Rizzle's Schematics",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "side": "Both",
+      "prerequisiteAny": [
+        1190
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Pozzik",
+          "entityID": 4630
+        }
+      ],
+      "xp": 1650,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "minLevel": 29,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Interact with actual captured unguarded-plans starter; retain supplied ore sample with unknown supplied count and real 1190 hand-in. Do not invent a new farm, inventory total or move the alternate starter. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/thousand-needles-2026-10-09.",
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "Rizzle's Unguarded Plans",
+            "entityID": 20805
+          },
+          {
+            "entityType": "object",
+            "name": "Rizzle's Guarded Plans",
+            "entityID": 179888
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantityUnknown": true,
+            "name": "Sample of Indurium Ore",
+            "entityID": 5866
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Pozzik",
+            "entityID": 4630
+          }
+        ]
+      },
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "categoryPath": "kalimdor/thousand-needles"
+    }
+  },
+  "5088": {
+    "before": {
+      "prerequisitesRead": true,
+      "zone": "Thousand Needles",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Arikara Serpent Skin",
+          "entityID": 12925
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "otherLocationsIncomplete": false,
+      "level": 28,
+      "areaID": 400,
+      "money": 2500,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Motega Firemane",
+          "entityID": 10428
+        }
+      ],
+      "xp": 2300,
+      "questType": "Elite",
+      "minLevel": 24,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Arikara Serpent Skin",
+            "entityID": 12925
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Magatha Grimtotem",
+            "entityID": 4046
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Incendia Powder",
+            "entityID": 12785
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Motega Firemane",
+            "entityID": 10428
+          }
+        ]
+      },
+      "categoryPath": "kalimdor/thousand-needles",
+      "raceMask": 0,
+      "mapID": 1441,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Magatha Grimtotem",
+          "entityID": 4046
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Arikara Serpent Skin",
+          "itemID": 12925
+        }
+      ],
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "prerequisiteAny": [
+        5062
+      ],
+      "ends": [
+        {
+          "y": 0.322,
+          "mapID": 1441,
+          "name": "Motega Firemane",
+          "entityID": 10428,
+          "npc": true,
+          "x": 0.214
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "title": "Arikara",
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "action": "loot",
+          "entityID": 10882,
+          "npc": true,
+          "x": 0.3809,
+          "y": 0.3538,
+          "objectiveKey": "item:12925",
+          "itemID": 12925,
+          "quantity": 1,
+          "sourceAreaID": 400,
+          "itemName": "Arikara Serpent Skin",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Arikara"
+        }
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Incendia Powder",
+          "entityID": 12785
+        }
+      ],
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.308,
+          "mapID": 1456,
+          "name": "Magatha Grimtotem",
+          "entityID": 4046,
+          "npc": true,
+          "x": 0.7020000000000001
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "classMask": 0,
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "itemName": "Arikara Serpent Skin",
+          "name": "Arikara",
+          "entityID": 10882,
+          "npc": true,
+          "action": "loot"
+        }
+      ]
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "zone": "Thousand Needles",
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantityUnknown": true,
+          "action": "use",
+          "entityID": 175944,
+          "name": "Sacred Fire of Life"
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Arikara Serpent Skin",
+          "entityID": 12925
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "otherLocationsIncomplete": false,
+      "level": 28,
+      "areaID": 400,
+      "money": 2500,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Motega Firemane",
+          "entityID": 10428
+        }
+      ],
+      "xp": 2300,
+      "questType": "Elite",
+      "minLevel": 24,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "object",
+            "quantityUnknown": true,
+            "action": "use",
+            "entityID": 175944,
+            "name": "Sacred Fire of Life"
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Arikara Serpent Skin",
+            "entityID": 12925
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Magatha Grimtotem",
+            "entityID": 4046
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Incendia Powder",
+            "entityID": 12785
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Motega Firemane",
+            "entityID": 10428
+          }
+        ]
+      },
+      "categoryPath": "kalimdor/thousand-needles",
+      "raceMask": 0,
+      "mapID": 1441,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Magatha Grimtotem",
+          "entityID": 4046
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Arikara Serpent Skin",
+          "itemID": 12925
+        }
+      ],
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "ends": [
+        {
+          "y": 0.322,
+          "mapID": 1441,
+          "name": "Motega Firemane",
+          "entityID": 10428,
+          "npc": true,
+          "x": 0.214
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Use actual supplied preparation tool at the distinct published fire/cage before actual skin/gizmo loot; preserve mapped mob drop, output count and return. Interaction/supplied-key count not guessed. Prose mentions returning powder/key but typed objectives identify actual output; no invented extra consumed-input hand-in. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/thousand-needles-2026-10-09. Supporting unchanged mechanics: https://classicdb.ch/?quest=5088; accessed 2026-10-09; no beta terrain proof.",
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1441,
+          "action": "use",
+          "entityID": 175944,
+          "useItemName": "Incendia Powder",
+          "y": 0.35369999999999996,
+          "objectiveKey": "object:175944",
+          "name": "Sacred Fire of Life",
+          "x": 0.38060000000000005,
+          "sourceAreaID": 400,
+          "useItemID": 12785,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "quantityUnknown": true
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "action": "loot",
+          "entityID": 10882,
+          "npc": true,
+          "x": 0.3809,
+          "y": 0.3538,
+          "objectiveKey": "item:12925",
+          "itemID": 12925,
+          "quantity": 1,
+          "sourceAreaID": 400,
+          "itemName": "Arikara Serpent Skin",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Arikara"
+        }
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Incendia Powder",
+          "entityID": 12785
+        }
+      ],
+      "title": "Arikara",
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.308,
+          "mapID": 1456,
+          "name": "Magatha Grimtotem",
+          "entityID": 4046,
+          "npc": true,
+          "x": 0.7020000000000001
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "classMask": 0,
+      "prerequisiteAny": [
+        5062
+      ],
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "itemName": "Arikara Serpent Skin",
+          "name": "Arikara",
+          "entityID": 10882,
+          "npc": true,
+          "action": "loot"
+        }
+      ]
+    }
+  },
+  "5151": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1441,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Wizlo Bearingshiner",
+          "entityID": 10941
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 12946,
+          "name": "Hypercapacitor Gizmo"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Hypercapacitor Gizmo",
+          "itemID": 12946
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "npcTargets": [
+        {
+          "itemName": "Hypercapacitor Gizmo",
+          "name": "Enraged Panther",
+          "entityID": 10992,
+          "npc": true,
+          "action": "loot"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "action": "loot",
+          "entityID": 10992,
+          "npc": true,
+          "x": 0.22760000000000002,
+          "y": 0.2462,
+          "objectiveKey": "item:12946",
+          "itemID": 12946,
+          "quantity": 1,
+          "sourceAreaID": 400,
+          "itemName": "Hypercapacitor Gizmo",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Enraged Panther"
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "entityID": 10941,
+          "npc": true,
+          "y": 0.32549999999999996,
+          "x": 0.2143,
+          "name": "Wizlo Bearingshiner",
+          "sourceAreaID": 400,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "level": 30,
+      "areaID": 400,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 8589934770,
+      "side": "Horde",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "entityID": 10941,
+          "npc": true,
+          "y": 0.32549999999999996,
+          "x": 0.2143,
+          "name": "Wizlo Bearingshiner",
+          "sourceAreaID": 400,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Wizlo Bearingshiner",
+          "entityID": 10941
+        }
+      ],
+      "xp": 3050,
+      "questType": "Elite",
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 24,
+      "requirementSource": "Published Forever typed objectives",
+      "title": "Hypercapacitor Gizmo",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 12946,
+            "name": "Hypercapacitor Gizmo"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Wizlo Bearingshiner",
+            "entityID": 10941
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Wizlo Bearingshiner",
+            "entityID": 10941
+          }
+        ]
+      },
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "kalimdor/thousand-needles"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1441,
+      "npcTargets": [
+        {
+          "itemName": "Hypercapacitor Gizmo",
+          "name": "Enraged Panther",
+          "entityID": 10992,
+          "npc": true,
+          "action": "loot"
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Wizlo Bearingshiner",
+          "entityID": 10941
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 12946,
+          "name": "Hypercapacitor Gizmo"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1441,
+          "action": "use",
+          "entityID": 176195,
+          "useItemName": "Panther Cage Key",
+          "y": 0.2465,
+          "objectiveKey": "object:176195",
+          "name": "Panther Cage",
+          "x": 0.2275,
+          "sourceAreaID": 400,
+          "useItemID": 12942,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "quantityUnknown": true
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "action": "loot",
+          "entityID": 10992,
+          "npc": true,
+          "x": 0.22760000000000002,
+          "y": 0.2462,
+          "objectiveKey": "item:12946",
+          "itemID": 12946,
+          "quantity": 1,
+          "sourceAreaID": 400,
+          "itemName": "Hypercapacitor Gizmo",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Enraged Panther"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Hypercapacitor Gizmo",
+          "itemID": 12946
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "name": "Panther Cage Key",
+          "entityID": 12942
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "entityID": 10941,
+          "npc": true,
+          "y": 0.32549999999999996,
+          "x": 0.2143,
+          "name": "Wizlo Bearingshiner",
+          "sourceAreaID": 400,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "title": "Hypercapacitor Gizmo",
+      "level": 30,
+      "areaID": 400,
+      "raceMask": 8589934770,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "entityID": 10941,
+          "npc": true,
+          "y": 0.32549999999999996,
+          "x": 0.2143,
+          "name": "Wizlo Bearingshiner",
+          "sourceAreaID": 400,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Wizlo Bearingshiner",
+          "entityID": 10941
+        }
+      ],
+      "xp": 3050,
+      "questType": "Elite",
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 24,
+      "requirementSource": "Published Forever typed objectives",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Use actual supplied preparation tool at the distinct published fire/cage before actual skin/gizmo loot; preserve mapped mob drop, output count and return. Interaction/supplied-key count not guessed. Prose mentions returning powder/key but typed objectives identify actual output; no invented extra consumed-input hand-in. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/thousand-needles-2026-10-09.",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 12946,
+            "name": "Hypercapacitor Gizmo"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Wizlo Bearingshiner",
+            "entityID": 10941
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantityUnknown": true,
+            "name": "Panther Cage Key",
+            "entityID": 12942
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Wizlo Bearingshiner",
+            "entityID": 10941
+          }
+        ]
+      },
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "kalimdor/thousand-needles"
+    }
+  },
+  "5361": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1441,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Cliffwatcher Longhorn",
+          "entityID": 10537
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Cliffwatcher Longhorn Report",
+          "entityID": 13507
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Cliffwatcher Longhorn Report",
+          "itemID": 13507
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "objectives": {},
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1443,
+          "entityID": 11259,
+          "npc": true,
+          "y": 0.5581,
+          "x": 0.5540999999999999,
+          "name": "Nataka Longhorn",
+          "sourceAreaID": 405,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "entityID": 10537,
+          "npc": true,
+          "sourceZone": "Thousand Needles",
+          "x": 0.456,
+          "name": "Cliffwatcher Longhorn",
+          "sourceAreaID": 400,
+          "y": 0.504
+        }
+      ],
+      "level": 35,
+      "areaID": 400,
+      "title": "Family Tree",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Cliffwatcher Longhorn Report",
+          "entityID": 13507
+        }
+      ],
+      "money": 2500,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Nataka Longhorn",
+          "entityID": 11259
+        }
+      ],
+      "xp": 2050,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 32,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 8589934770,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Cliffwatcher Longhorn Report",
+            "entityID": 13507
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Cliffwatcher Longhorn",
+            "entityID": 10537
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Nataka Longhorn",
+            "entityID": 11259
+          }
+        ]
+      },
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "kalimdor/thousand-needles"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1441,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Cliffwatcher Longhorn",
+          "entityID": 10537
+        }
+      ],
+      "requirements": {},
+      "objectives": {},
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Cliffwatcher Longhorn Report",
+          "itemID": 13507
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Cliffwatcher Longhorn Report",
+          "entityID": 13507
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "entityID": 10537,
+          "npc": true,
+          "sourceZone": "Thousand Needles",
+          "x": 0.456,
+          "name": "Cliffwatcher Longhorn",
+          "sourceAreaID": 400,
+          "y": 0.504
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1443,
+          "action": "talk",
+          "entityID": 11259,
+          "npc": true,
+          "y": 0.5581,
+          "x": 0.5540999999999999,
+          "name": "Nataka Longhorn",
+          "sourceAreaID": 405,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Actual supplied/already-earned delivery input, not a second post-acceptance farm. Keep output hand-in count, actual earlier acquisition/parent hand-in and recipient destination. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/thousand-needles-2026-10-09.",
+      "level": 35,
+      "areaID": 400,
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "missingRequirements": {},
+      "money": 2500,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Nataka Longhorn",
+          "entityID": 11259
+        }
+      ],
+      "xp": 2050,
+      "title": "Family Tree",
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 32,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 8589934770,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Cliffwatcher Longhorn",
+            "entityID": 10537
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Cliffwatcher Longhorn Report",
+            "entityID": 13507
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Nataka Longhorn",
+            "entityID": 11259
+          }
+        ]
+      },
+      "categoryPath": "kalimdor/thousand-needles"
+    }
+  }
+}

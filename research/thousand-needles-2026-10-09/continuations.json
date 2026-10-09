@@ -1,0 +1,898 @@
+{
+  "direct_ids": [
+    1099,
+    1100,
+    1104,
+    1105,
+    1106,
+    1107,
+    1108,
+    1110,
+    1111,
+    1112,
+    1114,
+    1115,
+    1116,
+    1117,
+    1118,
+    1119,
+    1120,
+    1121,
+    1122,
+    1137,
+    1147,
+    1148,
+    1149,
+    1150,
+    1151,
+    1152,
+    1154,
+    1159,
+    1174,
+    1175,
+    1176,
+    1178,
+    1179,
+    1180,
+    1181,
+    1182,
+    1183,
+    1184,
+    1186,
+    1187,
+    1188,
+    1189,
+    1190,
+    1191,
+    1192,
+    1194,
+    1394,
+    2769,
+    4323,
+    4542,
+    4767,
+    4770,
+    4821,
+    4841,
+    4865,
+    4881,
+    4904,
+    4966,
+    5062,
+    5064,
+    5088,
+    5147,
+    5151,
+    5361,
+    5762,
+    6627,
+    6628,
+    98069,
+    98070,
+    98155,
+    98156
+  ],
+  "compiled_ids": [
+    621,
+    1100,
+    1104,
+    1105,
+    1106,
+    1108,
+    1110,
+    1111,
+    1112,
+    1114,
+    1115,
+    1116,
+    1117,
+    1118,
+    1119,
+    1120,
+    1121,
+    1122,
+    1137,
+    1145,
+    1146,
+    1147,
+    1148,
+    1149,
+    1150,
+    1151,
+    1152,
+    1154,
+    1159,
+    1175,
+    1176,
+    1178,
+    1179,
+    1180,
+    1181,
+    1182,
+    1183,
+    1184,
+    1186,
+    1187,
+    1188,
+    1189,
+    1190,
+    1194,
+    1394,
+    1947,
+    1949,
+    1950,
+    4542,
+    4767,
+    4770,
+    4821,
+    4841,
+    4865,
+    4881,
+    4904,
+    4966,
+    5062,
+    5064,
+    5088,
+    5147,
+    5151,
+    5361,
+    5762,
+    6627,
+    6628,
+    98069,
+    98070,
+    98155,
+    98156
+  ],
+  "uncompiled_direct_ids": [
+    1099,
+    1107,
+    1174,
+    1191,
+    1192,
+    2769,
+    4323
+  ],
+  "related_catalogue_records": {
+    "1101": {
+      "prerequisitesRead": true,
+      "mapID": 1413,
+      "objectives": {},
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Falfindel Waywarder",
+          "entityID": 4048
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 5792,
+          "name": "Razorflank's Medallion"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1444,
+          "entityID": 4048,
+          "npc": true,
+          "sourceZone": "Feralas",
+          "x": 0.8959999999999999,
+          "name": "Falfindel Waywarder",
+          "sourceAreaID": 357,
+          "y": 0.46399999999999997
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Razorflank's Medallion",
+          "itemID": 5792
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "title": "The Crone of the Kraul",
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1444,
+          "entityID": 4048,
+          "npc": true,
+          "sourceZone": "Feralas",
+          "x": 0.8959999999999999,
+          "name": "Falfindel Waywarder",
+          "sourceAreaID": 357,
+          "y": 0.46399999999999997
+        }
+      ],
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "level": 34,
+      "areaID": 491,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "prerequisiteAny": [
+        1100
+      ],
+      "side": "Alliance",
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 5792,
+          "name": "Razorflank's Medallion"
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Falfindel Waywarder",
+          "entityID": 4048
+        }
+      ],
+      "xp": 3350,
+      "questType": "Dungeon",
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        1,
+        3,
+        4,
+        7,
+        95
+      ],
+      "minLevel": 29,
+      "requirementSource": "Published Forever typed objectives",
+      "raceMask": 4294967373,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 5792,
+            "name": "Razorflank's Medallion"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Falfindel Waywarder",
+            "entityID": 4048
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Falfindel Waywarder",
+            "entityID": 4048
+          }
+        ]
+      },
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "dungeons/razorfen-kraul"
+    },
+    "1107": {
+      "prerequisitesRead": true,
+      "zone": "Thousand Needles",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 10,
+          "action": "collect",
+          "entityID": 5796,
+          "name": "Encrusted Tail Fin"
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "otherLocationsIncomplete": false,
+      "level": 35,
+      "areaID": 400,
+      "money": 7500,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Wizzle Brassbolts",
+          "entityID": 4453
+        }
+      ],
+      "xp": 3450,
+      "questType": "Elite",
+      "prerequisiteAll": [
+        1104,
+        1105
+      ],
+      "minLevel": 28,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 10,
+            "action": "collect",
+            "entityID": 5796,
+            "name": "Encrusted Tail Fin"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Wizzle Brassbolts",
+            "entityID": 4453
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Wizzle Brassbolts",
+            "entityID": 4453
+          }
+        ]
+      },
+      "categoryPath": "kalimdor/thousand-needles",
+      "raceMask": 0,
+      "mapID": 1441,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Wizzle Brassbolts",
+          "entityID": 4453
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 10,
+          "name": "Encrusted Tail Fin",
+          "itemID": 5796
+        }
+      ],
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "entityID": 4453,
+          "npc": true,
+          "sourceZone": "Thousand Needles",
+          "x": 0.78,
+          "name": "Wizzle Brassbolts",
+          "sourceAreaID": 400,
+          "y": 0.77
+        }
+      ],
+      "shareable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Both",
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Warcraft DB Forever structured objectives",
+      "allowedRaceIDs": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "entityID": 4453,
+          "npc": true,
+          "sourceZone": "Thousand Needles",
+          "x": 0.78,
+          "name": "Wizzle Brassbolts",
+          "sourceAreaID": 400,
+          "y": 0.77
+        }
+      ],
+      "requirementSource": "Warcraft DB Forever structured objectives",
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1434,
+          "action": "loot",
+          "entityID": 871,
+          "npc": true,
+          "y": 0.262,
+          "sourceZone": "Stranglethorn Vale",
+          "objectiveKey": "item:5796",
+          "itemID": 5796,
+          "x": 0.254,
+          "sourceAreaID": 33,
+          "quantity": 10,
+          "itemName": "Encrusted Tail Fin",
+          "name": "Saltscale Warrior"
+        }
+      ],
+      "title": "Encrusted Tail Fins",
+      "classMask": 0,
+      "npcTargets": [
+        {
+          "itemName": "Encrusted Tail Fin",
+          "name": "Saltscale Warrior",
+          "entityID": 871,
+          "npc": true,
+          "action": "loot"
+        }
+      ]
+    },
+    "1160": {
+      "prerequisitesRead": true,
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Beginnings of the Undead Threat",
+          "entityID": 5861
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Parqual Fintallas",
+          "entityID": 4488
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Beginnings of the Undead Threat",
+          "entityID": 5861
+        }
+      ],
+      "seriesRoot": 1149,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Beginnings of the Undead Threat",
+          "itemID": 5861
+        }
+      ],
+      "objectives": {},
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.65,
+          "mapID": 1458,
+          "name": "Parqual Fintallas",
+          "entityID": 4488,
+          "npc": true,
+          "x": 0.578
+        }
+      ],
+      "starts": [
+        {
+          "y": 0.65,
+          "mapID": 1458,
+          "name": "Parqual Fintallas",
+          "entityID": 4488,
+          "npc": true,
+          "x": 0.578
+        }
+      ],
+      "level": 36,
+      "areaID": 796,
+      "title": "Test of Lore",
+      "seriesPosition": 8,
+      "side": "Horde",
+      "previousQuest": 1159,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Parqual Fintallas",
+          "entityID": 4488
+        }
+      ],
+      "xp": 2100,
+      "questType": "Dungeon",
+      "foreverStatus": "updated",
+      "raceMask": 0,
+      "minLevel": 25,
+      "requirementSource": "Wowhead Forever objective table",
+      "objectiveLocationsIncomplete": true,
+      "series": [
+        1149,
+        1150,
+        1151,
+        1152,
+        1154,
+        6627,
+        1159,
+        1160,
+        6628,
+        1394
+      ],
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "dungeons/scarlet-monastery"
+    },
+    "1192": {
+      "prerequisitesRead": true,
+      "mapID": 1441,
+      "objectives": {},
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Pozzik",
+          "entityID": 4630
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 4,
+          "action": "collect",
+          "entityID": 5833,
+          "name": "Indurium Ore"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "entityID": 4630,
+          "npc": true,
+          "y": 0.7587999999999999,
+          "x": 0.8018000000000001,
+          "name": "Pozzik",
+          "sourceAreaID": 400,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 4,
+          "name": "Indurium Ore",
+          "itemID": 5833
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "title": "Indurium Ore",
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "entityID": 4630,
+          "npc": true,
+          "y": 0.7587999999999999,
+          "x": 0.8018000000000001,
+          "name": "Pozzik",
+          "sourceAreaID": 400,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "level": 42,
+      "areaID": 400,
+      "repeatable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 4,
+          "action": "collect",
+          "entityID": 5833,
+          "name": "Indurium Ore"
+        }
+      ],
+      "side": "Both",
+      "prerequisiteAny": [
+        1194
+      ],
+      "money": 600,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Pozzik",
+          "entityID": 4630
+        }
+      ],
+      "xp": 0,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "minLevel": 29,
+      "requirementSource": "Published Forever typed objectives",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 4,
+            "action": "collect",
+            "entityID": 5833,
+            "name": "Indurium Ore"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Pozzik",
+            "entityID": 4630
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Pozzik",
+            "entityID": 4630
+          }
+        ]
+      },
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "kalimdor/thousand-needles"
+    },
+    "1948": {
+      "prerequisitesRead": true,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Tabetha",
+          "entityID": 6546
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 1529,
+          "name": "Jade"
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 7272,
+          "name": "Bolt Charged Bramble"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Jade",
+          "itemID": 1529
+        },
+        {
+          "quantity": 1,
+          "name": "Bolt Charged Bramble",
+          "itemID": 7272
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "classMask": 128,
+      "otherLocationsIncomplete": false,
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1445,
+          "action": "gather",
+          "entityID": 4149,
+          "x": 0.4409,
+          "y": 0.6494,
+          "objectiveKey": "item:1529",
+          "itemID": 1529,
+          "quantity": 1,
+          "sourceAreaID": 15,
+          "itemName": "Jade",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Solid Chest"
+        },
+        {
+          "entityType": "object",
+          "mapID": 1417,
+          "action": "gather",
+          "entityID": 103662,
+          "x": 0.52,
+          "y": 0.508,
+          "objectiveKey": "item:7272",
+          "itemID": 7272,
+          "quantity": 1,
+          "sourceAreaID": 45,
+          "itemName": "Bolt Charged Bramble",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Bolt Charged Bramble"
+        }
+      ],
+      "level": 40,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1445,
+          "entityID": 6546,
+          "npc": true,
+          "y": 0.5709000000000001,
+          "x": 0.4606,
+          "name": "Tabetha",
+          "sourceAreaID": 15,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "side": "Both",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1445,
+          "entityID": 6546,
+          "npc": true,
+          "y": 0.5709000000000001,
+          "x": 0.4606,
+          "name": "Tabetha",
+          "sourceAreaID": 15,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Tabetha",
+          "entityID": 6546
+        }
+      ],
+      "xp": 3150,
+      "prerequisiteAny": [
+        1947
+      ],
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "minLevel": 30,
+      "requirementSource": "Published Forever typed objectives",
+      "title": "Items of Power",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 1529,
+            "name": "Jade"
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 7272,
+            "name": "Bolt Charged Bramble"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Tabetha",
+            "entityID": 6546
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Tabetha",
+            "entityID": 6546
+          }
+        ]
+      },
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "classes/mage"
+    },
+    "1951": {
+      "prerequisitesRead": true,
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 7274,
+          "name": "Rituals of Power"
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Magus Tirth",
+          "entityID": 6548
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 7274,
+          "name": "Rituals of Power"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Rituals of Power",
+          "itemID": 7274
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "objectives": {},
+      "classMask": 128,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1445,
+          "entityID": 6546,
+          "npc": true,
+          "y": 0.5709000000000001,
+          "x": 0.4606,
+          "name": "Tabetha",
+          "sourceAreaID": 15,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1441,
+          "entityID": 6548,
+          "npc": true,
+          "y": 0.757,
+          "x": 0.7829,
+          "name": "Magus Tirth",
+          "sourceAreaID": 400,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "level": 40,
+      "title": "Rituals of Power",
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Both",
+      "prerequisiteAny": [
+        1950
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Tabetha",
+          "entityID": 6546
+        }
+      ],
+      "xp": 3150,
+      "questType": "Dungeon",
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": {},
+      "minLevel": 30,
+      "requirementSource": "Published Forever typed objectives",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 7274,
+            "name": "Rituals of Power"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Magus Tirth",
+            "entityID": 6548
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Tabetha",
+            "entityID": 6546
+          }
+        ]
+      },
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "classes/mage"
+    }
+  }
+}

@@ -1,0 +1,1913 @@
+{
+  "scope": "Complete old and new orders, both repriced with corrected stage facts and default host geometry.",
+  "catalogue_sha256": "023f157aaf70fcf391a750f3d7d8611f055fa7f4539254d785360b5d61a7177e",
+  "guides": [
+    {
+      "faction": "Horde",
+      "key": "level-zone:kalimdor/thousand-needles:levels:21-30",
+      "actions_preserved": 91,
+      "endpoints_preserved": true,
+      "states": [
+        {
+          "level": 21,
+          "xp": 0,
+          "valid": true,
+          "baseline_valid_under_corrected_facts": true,
+          "metrics": {
+            "distance": {
+              "before": 494983.29471507354,
+              "after": 529622.838843955
+            },
+            "peakLog": {
+              "before": 11,
+              "after": 11
+            },
+            "levelDeficitXP": {
+              "before": 262495,
+              "after": 262495
+            },
+            "questXP": {
+              "before": 49935,
+              "after": 49935
+            },
+            "rewardXPBeforeWork": {
+              "before": 669580,
+              "after": 700380
+            },
+            "uncertainTravelLegs": {
+              "before": 16,
+              "after": 14
+            },
+            "difficultyPressure": {
+              "before": 22,
+              "after": 22
+            },
+            "blockedTravelLegs": {
+              "before": 17,
+              "after": 19
+            }
+          },
+          "regressed_metrics": [
+            "distance",
+            "blockedTravelLegs"
+          ],
+          "delayed_work_rewards": []
+        },
+        {
+          "level": 25,
+          "xp": 0,
+          "valid": true,
+          "baseline_valid_under_corrected_facts": true,
+          "metrics": {
+            "distance": {
+              "before": 494983.29471507354,
+              "after": 529622.838843955
+            },
+            "peakLog": {
+              "before": 11,
+              "after": 11
+            },
+            "levelDeficitXP": {
+              "before": 148895,
+              "after": 148895
+            },
+            "questXP": {
+              "before": 49935,
+              "after": 49935
+            },
+            "rewardXPBeforeWork": {
+              "before": 669580,
+              "after": 700380
+            },
+            "uncertainTravelLegs": {
+              "before": 16,
+              "after": 14
+            },
+            "difficultyPressure": {
+              "before": 22,
+              "after": 22
+            },
+            "blockedTravelLegs": {
+              "before": 17,
+              "after": 19
+            }
+          },
+          "regressed_metrics": [
+            "distance",
+            "blockedTravelLegs"
+          ],
+          "delayed_work_rewards": []
+        },
+        {
+          "level": 25,
+          "xp": 17000,
+          "valid": true,
+          "baseline_valid_under_corrected_facts": true,
+          "metrics": {
+            "distance": {
+              "before": 494983.29471507354,
+              "after": 529622.838843955
+            },
+            "peakLog": {
+              "before": 11,
+              "after": 11
+            },
+            "levelDeficitXP": {
+              "before": 131895,
+              "after": 131895
+            },
+            "questXP": {
+              "before": 49935,
+              "after": 49935
+            },
+            "rewardXPBeforeWork": {
+              "before": 669580,
+              "after": 700380
+            },
+            "uncertainTravelLegs": {
+              "before": 16,
+              "after": 14
+            },
+            "difficultyPressure": {
+              "before": 22,
+              "after": 22
+            },
+            "blockedTravelLegs": {
+              "before": 17,
+              "after": 19
+            }
+          },
+          "regressed_metrics": [
+            "distance",
+            "blockedTravelLegs"
+          ],
+          "delayed_work_rewards": []
+        },
+        {
+          "level": 30,
+          "xp": 0,
+          "valid": true,
+          "baseline_valid_under_corrected_facts": true,
+          "metrics": {
+            "distance": {
+              "before": 494983.29471507354,
+              "after": 529622.838843955
+            },
+            "peakLog": {
+              "before": 11,
+              "after": 11
+            },
+            "levelDeficitXP": {
+              "before": 0,
+              "after": 0
+            },
+            "questXP": {
+              "before": 49935,
+              "after": 49935
+            },
+            "rewardXPBeforeWork": {
+              "before": 669580,
+              "after": 700380
+            },
+            "uncertainTravelLegs": {
+              "before": 16,
+              "after": 14
+            },
+            "difficultyPressure": {
+              "before": 10,
+              "after": 10
+            },
+            "blockedTravelLegs": {
+              "before": 17,
+              "after": 19
+            }
+          },
+          "regressed_metrics": [
+            "distance",
+            "blockedTravelLegs"
+          ],
+          "delayed_work_rewards": []
+        }
+      ]
+    },
+    {
+      "faction": "Horde",
+      "key": "level-zone:kalimdor/thousand-needles:levels:31-40",
+      "actions_preserved": 101,
+      "endpoints_preserved": true,
+      "states": [
+        {
+          "level": 31,
+          "xp": 0,
+          "valid": true,
+          "baseline_valid_under_corrected_facts": true,
+          "metrics": {
+            "distance": {
+              "before": 330919.76027062314,
+              "after": 299427.74111703015
+            },
+            "peakLog": {
+              "before": 7,
+              "after": 7
+            },
+            "levelDeficitXP": {
+              "before": 34500,
+              "after": 43850
+            },
+            "questXP": {
+              "before": 57395,
+              "after": 57395
+            },
+            "rewardXPBeforeWork": {
+              "before": 909455,
+              "after": 960495
+            },
+            "uncertainTravelLegs": {
+              "before": 22,
+              "after": 21
+            },
+            "difficultyPressure": {
+              "before": 26,
+              "after": 26
+            },
+            "blockedTravelLegs": {
+              "before": 3,
+              "after": 4
+            }
+          },
+          "regressed_metrics": [
+            "levelDeficitXP",
+            "blockedTravelLegs"
+          ],
+          "delayed_work_rewards": [
+            {
+              "questID": 98069,
+              "objectiveKey": "item:279383",
+              "before": 11300,
+              "after": 6950
+            },
+            {
+              "questID": 98070,
+              "objectiveKey": "npc:4100",
+              "before": 13800,
+              "after": 9450
+            },
+            {
+              "questID": 98070,
+              "objectiveKey": "npc:4101",
+              "before": 13800,
+              "after": 9450
+            },
+            {
+              "questID": 98070,
+              "objectiveKey": "npc:4104",
+              "before": 13800,
+              "after": 9450
+            },
+            {
+              "questID": 1106,
+              "objectiveKey": null,
+              "before": 35755,
+              "after": 32905
+            },
+            {
+              "questID": 1108,
+              "objectiveKey": "item:5797",
+              "before": 37105,
+              "after": 34255
+            },
+            {
+              "questID": 1116,
+              "objectiveKey": "item:5803",
+              "before": 40105,
+              "after": 37255
+            },
+            {
+              "questID": 1186,
+              "objectiveKey": null,
+              "before": 49265,
+              "after": 44315
+            },
+            {
+              "questID": 1137,
+              "objectiveKey": null,
+              "before": 47105,
+              "after": 44600
+            }
+          ]
+        },
+        {
+          "level": 35,
+          "xp": 0,
+          "valid": true,
+          "baseline_valid_under_corrected_facts": true,
+          "metrics": {
+            "distance": {
+              "before": 330919.76027062314,
+              "after": 299427.74111703015
+            },
+            "peakLog": {
+              "before": 7,
+              "after": 7
+            },
+            "levelDeficitXP": {
+              "before": 0,
+              "after": 0
+            },
+            "questXP": {
+              "before": 57395,
+              "after": 57395
+            },
+            "rewardXPBeforeWork": {
+              "before": 909455,
+              "after": 960495
+            },
+            "uncertainTravelLegs": {
+              "before": 22,
+              "after": 21
+            },
+            "difficultyPressure": {
+              "before": 1,
+              "after": 1
+            },
+            "blockedTravelLegs": {
+              "before": 3,
+              "after": 4
+            }
+          },
+          "regressed_metrics": [
+            "blockedTravelLegs"
+          ],
+          "delayed_work_rewards": [
+            {
+              "questID": 98069,
+              "objectiveKey": "item:279383",
+              "before": 11300,
+              "after": 6950
+            },
+            {
+              "questID": 98070,
+              "objectiveKey": "npc:4100",
+              "before": 13800,
+              "after": 9450
+            },
+            {
+              "questID": 98070,
+              "objectiveKey": "npc:4101",
+              "before": 13800,
+              "after": 9450
+            },
+            {
+              "questID": 98070,
+              "objectiveKey": "npc:4104",
+              "before": 13800,
+              "after": 9450
+            },
+            {
+              "questID": 1106,
+              "objectiveKey": null,
+              "before": 35755,
+              "after": 32905
+            },
+            {
+              "questID": 1108,
+              "objectiveKey": "item:5797",
+              "before": 37105,
+              "after": 34255
+            },
+            {
+              "questID": 1116,
+              "objectiveKey": "item:5803",
+              "before": 40105,
+              "after": 37255
+            },
+            {
+              "questID": 1186,
+              "objectiveKey": null,
+              "before": 49265,
+              "after": 44315
+            },
+            {
+              "questID": 1137,
+              "objectiveKey": null,
+              "before": 47105,
+              "after": 44600
+            }
+          ]
+        },
+        {
+          "level": 35,
+          "xp": 33550,
+          "valid": true,
+          "baseline_valid_under_corrected_facts": true,
+          "metrics": {
+            "distance": {
+              "before": 330919.76027062314,
+              "after": 299427.74111703015
+            },
+            "peakLog": {
+              "before": 7,
+              "after": 7
+            },
+            "levelDeficitXP": {
+              "before": 0,
+              "after": 0
+            },
+            "questXP": {
+              "before": 57346,
+              "after": 57346
+            },
+            "rewardXPBeforeWork": {
+              "before": 909455,
+              "after": 960495
+            },
+            "uncertainTravelLegs": {
+              "before": 22,
+              "after": 21
+            },
+            "difficultyPressure": {
+              "before": 0,
+              "after": 0
+            },
+            "blockedTravelLegs": {
+              "before": 3,
+              "after": 4
+            }
+          },
+          "regressed_metrics": [
+            "blockedTravelLegs"
+          ],
+          "delayed_work_rewards": [
+            {
+              "questID": 98069,
+              "objectiveKey": "item:279383",
+              "before": 11300,
+              "after": 6950
+            },
+            {
+              "questID": 98070,
+              "objectiveKey": "npc:4100",
+              "before": 13800,
+              "after": 9450
+            },
+            {
+              "questID": 98070,
+              "objectiveKey": "npc:4101",
+              "before": 13800,
+              "after": 9450
+            },
+            {
+              "questID": 98070,
+              "objectiveKey": "npc:4104",
+              "before": 13800,
+              "after": 9450
+            },
+            {
+              "questID": 1106,
+              "objectiveKey": null,
+              "before": 35755,
+              "after": 32905
+            },
+            {
+              "questID": 1108,
+              "objectiveKey": "item:5797",
+              "before": 37105,
+              "after": 34255
+            },
+            {
+              "questID": 1116,
+              "objectiveKey": "item:5803",
+              "before": 40105,
+              "after": 37255
+            },
+            {
+              "questID": 1186,
+              "objectiveKey": null,
+              "before": 49265,
+              "after": 44315
+            },
+            {
+              "questID": 1137,
+              "objectiveKey": null,
+              "before": 47105,
+              "after": 44600
+            }
+          ]
+        },
+        {
+          "level": 40,
+          "xp": 0,
+          "valid": true,
+          "baseline_valid_under_corrected_facts": true,
+          "metrics": {
+            "distance": {
+              "before": 330919.76027062314,
+              "after": 299427.74111703015
+            },
+            "peakLog": {
+              "before": 7,
+              "after": 7
+            },
+            "levelDeficitXP": {
+              "before": 0,
+              "after": 0
+            },
+            "questXP": {
+              "before": 42275,
+              "after": 42275
+            },
+            "rewardXPBeforeWork": {
+              "before": 471890,
+              "after": 505819
+            },
+            "uncertainTravelLegs": {
+              "before": 22,
+              "after": 21
+            },
+            "difficultyPressure": {
+              "before": 0,
+              "after": 0
+            },
+            "blockedTravelLegs": {
+              "before": 3,
+              "after": 4
+            }
+          },
+          "regressed_metrics": [
+            "blockedTravelLegs"
+          ],
+          "delayed_work_rewards": [
+            {
+              "questID": 98069,
+              "objectiveKey": "item:279383",
+              "before": 2704,
+              "after": 2020
+            },
+            {
+              "questID": 98070,
+              "objectiveKey": "npc:4100",
+              "before": 3203,
+              "after": 2519
+            },
+            {
+              "questID": 98070,
+              "objectiveKey": "npc:4101",
+              "before": 3203,
+              "after": 2519
+            },
+            {
+              "questID": 98070,
+              "objectiveKey": "npc:4104",
+              "before": 3203,
+              "after": 2519
+            },
+            {
+              "questID": 1106,
+              "objectiveKey": null,
+              "before": 20856,
+              "after": 18006
+            },
+            {
+              "questID": 1108,
+              "objectiveKey": "item:5797",
+              "before": 22206,
+              "after": 19356
+            },
+            {
+              "questID": 1116,
+              "objectiveKey": "item:5803",
+              "before": 25206,
+              "after": 22356
+            },
+            {
+              "questID": 1186,
+              "objectiveKey": null,
+              "before": 34366,
+              "after": 29416
+            },
+            {
+              "questID": 1137,
+              "objectiveKey": null,
+              "before": 32206,
+              "after": 29701
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "faction": "Horde",
+      "key": "level-zone:kalimdor/thousand-needles:levels:41-50",
+      "actions_preserved": 87,
+      "endpoints_preserved": true,
+      "states": [
+        {
+          "level": 41,
+          "xp": 0,
+          "valid": true,
+          "baseline_valid_under_corrected_facts": true,
+          "metrics": {
+            "distance": {
+              "before": 183006.60140085357,
+              "after": 163536.41335080395
+            },
+            "peakLog": {
+              "before": 3,
+              "after": 4
+            },
+            "levelDeficitXP": {
+              "before": 0,
+              "after": 0
+            },
+            "questXP": {
+              "before": 42825,
+              "after": 42825
+            },
+            "rewardXPBeforeWork": {
+              "before": 512390,
+              "after": 527330
+            },
+            "uncertainTravelLegs": {
+              "before": 10,
+              "after": 10
+            },
+            "difficultyPressure": {
+              "before": 0,
+              "after": 0
+            },
+            "blockedTravelLegs": {
+              "before": 0,
+              "after": 0
+            }
+          },
+          "regressed_metrics": [
+            "peakLog"
+          ],
+          "delayed_work_rewards": [
+            {
+              "questID": 1180,
+              "objectiveKey": null,
+              "before": 12005,
+              "after": 10355
+            },
+            {
+              "questID": 1115,
+              "objectiveKey": null,
+              "before": 12715,
+              "after": 11065
+            },
+            {
+              "questID": 1181,
+              "objectiveKey": null,
+              "before": 14115,
+              "after": 12465
+            },
+            {
+              "questID": 1116,
+              "objectiveKey": "item:5803",
+              "before": 19895,
+              "after": 12750
+            },
+            {
+              "questID": 1182,
+              "objectiveKey": "item:5852",
+              "before": 14400,
+              "after": 12750
+            },
+            {
+              "questID": 1117,
+              "objectiveKey": null,
+              "before": 23395,
+              "after": 19100
+            },
+            {
+              "questID": 1118,
+              "objectiveKey": null,
+              "before": 26895,
+              "after": 25245
+            },
+            {
+              "questID": 1187,
+              "objectiveKey": "item:5862",
+              "before": 31535,
+              "after": 29885
+            },
+            {
+              "questID": 1188,
+              "objectiveKey": null,
+              "before": 39335,
+              "after": 34835
+            }
+          ]
+        },
+        {
+          "level": 45,
+          "xp": 0,
+          "valid": true,
+          "baseline_valid_under_corrected_facts": true,
+          "metrics": {
+            "distance": {
+              "before": 183006.60140085357,
+              "after": 163536.41335080395
+            },
+            "peakLog": {
+              "before": 3,
+              "after": 4
+            },
+            "levelDeficitXP": {
+              "before": 0,
+              "after": 0
+            },
+            "questXP": {
+              "before": 27838,
+              "after": 27838
+            },
+            "rewardXPBeforeWork": {
+              "before": 283645,
+              "after": 272255
+            },
+            "uncertainTravelLegs": {
+              "before": 10,
+              "after": 10
+            },
+            "difficultyPressure": {
+              "before": 0,
+              "after": 0
+            },
+            "blockedTravelLegs": {
+              "before": 0,
+              "after": 0
+            }
+          },
+          "regressed_metrics": [
+            "peakLog",
+            "rewardXPBeforeWork"
+          ],
+          "delayed_work_rewards": [
+            {
+              "questID": 1180,
+              "objectiveKey": null,
+              "before": 6650,
+              "after": 5000
+            },
+            {
+              "questID": 1115,
+              "objectiveKey": null,
+              "before": 6933,
+              "after": 5283
+            },
+            {
+              "questID": 1181,
+              "objectiveKey": null,
+              "before": 7212,
+              "after": 5562
+            },
+            {
+              "questID": 1116,
+              "objectiveKey": "item:5803",
+              "before": 10510,
+              "after": 5675
+            },
+            {
+              "questID": 1182,
+              "objectiveKey": "item:5852",
+              "before": 7325,
+              "after": 5675
+            },
+            {
+              "questID": 1117,
+              "objectiveKey": null,
+              "before": 11209,
+              "after": 7513
+            },
+            {
+              "questID": 1183,
+              "objectiveKey": null,
+              "before": 8464,
+              "after": 8212
+            },
+            {
+              "questID": 1186,
+              "objectiveKey": null,
+              "before": 8747,
+              "after": 8495
+            },
+            {
+              "questID": 1118,
+              "objectiveKey": null,
+              "before": 11908,
+              "after": 10258
+            },
+            {
+              "questID": 621,
+              "objectiveKey": "item:4016",
+              "before": 11209,
+              "after": 11148
+            },
+            {
+              "questID": 1187,
+              "objectiveKey": "item:5862",
+              "before": 16548,
+              "after": 14898
+            },
+            {
+              "questID": 1188,
+              "objectiveKey": null,
+              "before": 24348,
+              "after": 19848
+            }
+          ]
+        },
+        {
+          "level": 45,
+          "xp": 58750,
+          "valid": true,
+          "baseline_valid_under_corrected_facts": true,
+          "metrics": {
+            "distance": {
+              "before": 183006.60140085357,
+              "after": 163536.41335080395
+            },
+            "peakLog": {
+              "before": 3,
+              "after": 4
+            },
+            "levelDeficitXP": {
+              "before": 0,
+              "after": 0
+            },
+            "questXP": {
+              "before": 27838,
+              "after": 27838
+            },
+            "rewardXPBeforeWork": {
+              "before": 283645,
+              "after": 272255
+            },
+            "uncertainTravelLegs": {
+              "before": 10,
+              "after": 10
+            },
+            "difficultyPressure": {
+              "before": 0,
+              "after": 0
+            },
+            "blockedTravelLegs": {
+              "before": 0,
+              "after": 0
+            }
+          },
+          "regressed_metrics": [
+            "peakLog",
+            "rewardXPBeforeWork"
+          ],
+          "delayed_work_rewards": [
+            {
+              "questID": 1180,
+              "objectiveKey": null,
+              "before": 6650,
+              "after": 5000
+            },
+            {
+              "questID": 1115,
+              "objectiveKey": null,
+              "before": 6933,
+              "after": 5283
+            },
+            {
+              "questID": 1181,
+              "objectiveKey": null,
+              "before": 7212,
+              "after": 5562
+            },
+            {
+              "questID": 1116,
+              "objectiveKey": "item:5803",
+              "before": 10510,
+              "after": 5675
+            },
+            {
+              "questID": 1182,
+              "objectiveKey": "item:5852",
+              "before": 7325,
+              "after": 5675
+            },
+            {
+              "questID": 1117,
+              "objectiveKey": null,
+              "before": 11209,
+              "after": 7513
+            },
+            {
+              "questID": 1183,
+              "objectiveKey": null,
+              "before": 8464,
+              "after": 8212
+            },
+            {
+              "questID": 1186,
+              "objectiveKey": null,
+              "before": 8747,
+              "after": 8495
+            },
+            {
+              "questID": 1118,
+              "objectiveKey": null,
+              "before": 11908,
+              "after": 10258
+            },
+            {
+              "questID": 621,
+              "objectiveKey": "item:4016",
+              "before": 11209,
+              "after": 11148
+            },
+            {
+              "questID": 1187,
+              "objectiveKey": "item:5862",
+              "before": 16548,
+              "after": 14898
+            },
+            {
+              "questID": 1188,
+              "objectiveKey": null,
+              "before": 24348,
+              "after": 19848
+            }
+          ]
+        },
+        {
+          "level": 50,
+          "xp": 0,
+          "valid": true,
+          "baseline_valid_under_corrected_facts": true,
+          "metrics": {
+            "distance": {
+              "before": 183006.60140085357,
+              "after": 163536.41335080395
+            },
+            "peakLog": {
+              "before": 3,
+              "after": 4
+            },
+            "levelDeficitXP": {
+              "before": 0,
+              "after": 0
+            },
+            "questXP": {
+              "before": 13196,
+              "after": 13196
+            },
+            "rewardXPBeforeWork": {
+              "before": 110050,
+              "after": 110020
+            },
+            "uncertainTravelLegs": {
+              "before": 10,
+              "after": 10
+            },
+            "difficultyPressure": {
+              "before": 0,
+              "after": 0
+            },
+            "blockedTravelLegs": {
+              "before": 0,
+              "after": 0
+            }
+          },
+          "regressed_metrics": [
+            "peakLog",
+            "rewardXPBeforeWork"
+          ],
+          "delayed_work_rewards": [
+            {
+              "questID": 1180,
+              "objectiveKey": null,
+              "before": 1945,
+              "after": 1616
+            },
+            {
+              "questID": 1115,
+              "objectiveKey": null,
+              "before": 2016,
+              "after": 1687
+            },
+            {
+              "questID": 1181,
+              "objectiveKey": null,
+              "before": 2156,
+              "after": 1827
+            },
+            {
+              "questID": 1116,
+              "objectiveKey": "item:5803",
+              "before": 2897,
+              "after": 1855
+            },
+            {
+              "questID": 1182,
+              "objectiveKey": "item:5852",
+              "before": 2184,
+              "after": 1855
+            },
+            {
+              "questID": 1117,
+              "objectiveKey": null,
+              "before": 3247,
+              "after": 2490
+            },
+            {
+              "questID": 1118,
+              "objectiveKey": null,
+              "before": 3597,
+              "after": 3268
+            },
+            {
+              "questID": 1187,
+              "objectiveKey": "item:5862",
+              "before": 7131,
+              "after": 6802
+            },
+            {
+              "questID": 1188,
+              "objectiveKey": null,
+              "before": 11390,
+              "after": 7790
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "faction": "Alliance",
+      "key": "level-zone:kalimdor/thousand-needles:levels:21-30",
+      "actions_preserved": 21,
+      "endpoints_preserved": true,
+      "states": [
+        {
+          "level": 21,
+          "xp": 0,
+          "valid": true,
+          "baseline_valid_under_corrected_facts": true,
+          "metrics": {
+            "distance": {
+              "before": 80224.43005649511,
+              "after": 80224.43005649511
+            },
+            "peakLog": {
+              "before": 5,
+              "after": 5
+            },
+            "levelDeficitXP": {
+              "before": 308600,
+              "after": 308600
+            },
+            "questXP": {
+              "before": 12185,
+              "after": 12185
+            },
+            "rewardXPBeforeWork": {
+              "before": 16655,
+              "after": 16655
+            },
+            "uncertainTravelLegs": {
+              "before": 4,
+              "after": 4
+            },
+            "difficultyPressure": {
+              "before": 10,
+              "after": 10
+            },
+            "blockedTravelLegs": {
+              "before": 0,
+              "after": 0
+            }
+          },
+          "regressed_metrics": [],
+          "delayed_work_rewards": []
+        },
+        {
+          "level": 25,
+          "xp": 0,
+          "valid": true,
+          "baseline_valid_under_corrected_facts": true,
+          "metrics": {
+            "distance": {
+              "before": 80224.43005649511,
+              "after": 80224.43005649511
+            },
+            "peakLog": {
+              "before": 5,
+              "after": 5
+            },
+            "levelDeficitXP": {
+              "before": 195000,
+              "after": 195000
+            },
+            "questXP": {
+              "before": 12185,
+              "after": 12185
+            },
+            "rewardXPBeforeWork": {
+              "before": 16655,
+              "after": 16655
+            },
+            "uncertainTravelLegs": {
+              "before": 4,
+              "after": 4
+            },
+            "difficultyPressure": {
+              "before": 10,
+              "after": 10
+            },
+            "blockedTravelLegs": {
+              "before": 0,
+              "after": 0
+            }
+          },
+          "regressed_metrics": [],
+          "delayed_work_rewards": []
+        },
+        {
+          "level": 25,
+          "xp": 17000,
+          "valid": true,
+          "baseline_valid_under_corrected_facts": true,
+          "metrics": {
+            "distance": {
+              "before": 80224.43005649511,
+              "after": 80224.43005649511
+            },
+            "peakLog": {
+              "before": 5,
+              "after": 5
+            },
+            "levelDeficitXP": {
+              "before": 178000,
+              "after": 178000
+            },
+            "questXP": {
+              "before": 12185,
+              "after": 12185
+            },
+            "rewardXPBeforeWork": {
+              "before": 16655,
+              "after": 16655
+            },
+            "uncertainTravelLegs": {
+              "before": 4,
+              "after": 4
+            },
+            "difficultyPressure": {
+              "before": 10,
+              "after": 10
+            },
+            "blockedTravelLegs": {
+              "before": 0,
+              "after": 0
+            }
+          },
+          "regressed_metrics": [],
+          "delayed_work_rewards": []
+        },
+        {
+          "level": 30,
+          "xp": 0,
+          "valid": true,
+          "baseline_valid_under_corrected_facts": true,
+          "metrics": {
+            "distance": {
+              "before": 80224.43005649511,
+              "after": 80224.43005649511
+            },
+            "peakLog": {
+              "before": 5,
+              "after": 5
+            },
+            "levelDeficitXP": {
+              "before": 0,
+              "after": 0
+            },
+            "questXP": {
+              "before": 12185,
+              "after": 12185
+            },
+            "rewardXPBeforeWork": {
+              "before": 16655,
+              "after": 16655
+            },
+            "uncertainTravelLegs": {
+              "before": 4,
+              "after": 4
+            },
+            "difficultyPressure": {
+              "before": 10,
+              "after": 10
+            },
+            "blockedTravelLegs": {
+              "before": 0,
+              "after": 0
+            }
+          },
+          "regressed_metrics": [],
+          "delayed_work_rewards": []
+        }
+      ]
+    },
+    {
+      "faction": "Alliance",
+      "key": "level-zone:kalimdor/thousand-needles:levels:31-40",
+      "actions_preserved": 74,
+      "endpoints_preserved": false,
+      "states": [
+        {
+          "level": 31,
+          "xp": 0,
+          "valid": false,
+          "baseline_valid_under_corrected_facts": true,
+          "metrics": {
+            "distance": {
+              "before": 202981.70321138503,
+              "after": 179795.69697118094
+            },
+            "peakLog": {
+              "before": 6,
+              "after": 6
+            },
+            "levelDeficitXP": {
+              "before": 0,
+              "after": 0
+            },
+            "questXP": {
+              "before": 42150,
+              "after": 42150
+            },
+            "rewardXPBeforeWork": {
+              "before": 480810,
+              "after": 487465
+            },
+            "uncertainTravelLegs": {
+              "before": 13,
+              "after": 13
+            },
+            "difficultyPressure": {
+              "before": 40,
+              "after": 40
+            },
+            "blockedTravelLegs": {
+              "before": 0,
+              "after": 0
+            }
+          },
+          "regressed_metrics": [],
+          "delayed_work_rewards": [
+            {
+              "questID": 1116,
+              "objectiveKey": "item:5803",
+              "before": 34155,
+              "after": 31305
+            },
+            {
+              "questID": 1117,
+              "objectiveKey": null,
+              "before": 38650,
+              "after": 37655
+            }
+          ]
+        },
+        {
+          "level": 35,
+          "xp": 0,
+          "valid": false,
+          "baseline_valid_under_corrected_facts": true,
+          "metrics": {
+            "distance": {
+              "before": 202981.70321138503,
+              "after": 179795.69697118094
+            },
+            "peakLog": {
+              "before": 6,
+              "after": 6
+            },
+            "levelDeficitXP": {
+              "before": 0,
+              "after": 0
+            },
+            "questXP": {
+              "before": 42150,
+              "after": 42150
+            },
+            "rewardXPBeforeWork": {
+              "before": 480810,
+              "after": 487465
+            },
+            "uncertainTravelLegs": {
+              "before": 13,
+              "after": 13
+            },
+            "difficultyPressure": {
+              "before": 1,
+              "after": 1
+            },
+            "blockedTravelLegs": {
+              "before": 0,
+              "after": 0
+            }
+          },
+          "regressed_metrics": [],
+          "delayed_work_rewards": [
+            {
+              "questID": 1116,
+              "objectiveKey": "item:5803",
+              "before": 34155,
+              "after": 31305
+            },
+            {
+              "questID": 1117,
+              "objectiveKey": null,
+              "before": 38650,
+              "after": 37655
+            }
+          ]
+        },
+        {
+          "level": 35,
+          "xp": 33550,
+          "valid": false,
+          "baseline_valid_under_corrected_facts": true,
+          "metrics": {
+            "distance": {
+              "before": 202981.70321138503,
+              "after": 179795.69697118094
+            },
+            "peakLog": {
+              "before": 6,
+              "after": 6
+            },
+            "levelDeficitXP": {
+              "before": 0,
+              "after": 0
+            },
+            "questXP": {
+              "before": 42150,
+              "after": 42150
+            },
+            "rewardXPBeforeWork": {
+              "before": 480810,
+              "after": 487465
+            },
+            "uncertainTravelLegs": {
+              "before": 13,
+              "after": 13
+            },
+            "difficultyPressure": {
+              "before": 1,
+              "after": 1
+            },
+            "blockedTravelLegs": {
+              "before": 0,
+              "after": 0
+            }
+          },
+          "regressed_metrics": [],
+          "delayed_work_rewards": [
+            {
+              "questID": 1116,
+              "objectiveKey": "item:5803",
+              "before": 34155,
+              "after": 31305
+            },
+            {
+              "questID": 1117,
+              "objectiveKey": null,
+              "before": 38650,
+              "after": 37655
+            }
+          ]
+        },
+        {
+          "level": 40,
+          "xp": 0,
+          "valid": false,
+          "baseline_valid_under_corrected_facts": true,
+          "metrics": {
+            "distance": {
+              "before": 202981.70321138503,
+              "after": 179795.69697118094
+            },
+            "peakLog": {
+              "before": 6,
+              "after": 6
+            },
+            "levelDeficitXP": {
+              "before": 0,
+              "after": 0
+            },
+            "questXP": {
+              "before": 28281,
+              "after": 28281
+            },
+            "rewardXPBeforeWork": {
+              "before": 238508,
+              "after": 245163
+            },
+            "uncertainTravelLegs": {
+              "before": 13,
+              "after": 13
+            },
+            "difficultyPressure": {
+              "before": 0,
+              "after": 0
+            },
+            "blockedTravelLegs": {
+              "before": 0,
+              "after": 0
+            }
+          },
+          "regressed_metrics": [],
+          "delayed_work_rewards": [
+            {
+              "questID": 1116,
+              "objectiveKey": "item:5803",
+              "before": 20286,
+              "after": 17436
+            },
+            {
+              "questID": 1117,
+              "objectiveKey": null,
+              "before": 24781,
+              "after": 23786
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "faction": "Alliance",
+      "key": "level-zone:kalimdor/thousand-needles:levels:41-50",
+      "actions_preserved": 87,
+      "endpoints_preserved": true,
+      "states": [
+        {
+          "level": 41,
+          "xp": 0,
+          "valid": true,
+          "baseline_valid_under_corrected_facts": true,
+          "metrics": {
+            "distance": {
+              "before": 188673.92289638647,
+              "after": 167906.9188715904
+            },
+            "peakLog": {
+              "before": 3,
+              "after": 4
+            },
+            "levelDeficitXP": {
+              "before": 0,
+              "after": 0
+            },
+            "questXP": {
+              "before": 42825,
+              "after": 42825
+            },
+            "rewardXPBeforeWork": {
+              "before": 513280,
+              "after": 527330
+            },
+            "uncertainTravelLegs": {
+              "before": 8,
+              "after": 8
+            },
+            "difficultyPressure": {
+              "before": 0,
+              "after": 0
+            },
+            "blockedTravelLegs": {
+              "before": 0,
+              "after": 0
+            }
+          },
+          "regressed_metrics": [
+            "peakLog"
+          ],
+          "delayed_work_rewards": [
+            {
+              "questID": 1180,
+              "objectiveKey": null,
+              "before": 12005,
+              "after": 10355
+            },
+            {
+              "questID": 1115,
+              "objectiveKey": null,
+              "before": 12715,
+              "after": 11065
+            },
+            {
+              "questID": 1181,
+              "objectiveKey": null,
+              "before": 14115,
+              "after": 12465
+            },
+            {
+              "questID": 1116,
+              "objectiveKey": "item:5803",
+              "before": 19895,
+              "after": 12750
+            },
+            {
+              "questID": 1182,
+              "objectiveKey": "item:5852",
+              "before": 14400,
+              "after": 12750
+            },
+            {
+              "questID": 1117,
+              "objectiveKey": null,
+              "before": 23395,
+              "after": 19100
+            },
+            {
+              "questID": 1118,
+              "objectiveKey": null,
+              "before": 26895,
+              "after": 25245
+            },
+            {
+              "questID": 1187,
+              "objectiveKey": "item:5862",
+              "before": 31535,
+              "after": 29885
+            },
+            {
+              "questID": 1188,
+              "objectiveKey": null,
+              "before": 38960,
+              "after": 34835
+            },
+            {
+              "questID": 1121,
+              "objectiveKey": null,
+              "before": 40600,
+              "after": 39780
+            }
+          ]
+        },
+        {
+          "level": 45,
+          "xp": 0,
+          "valid": true,
+          "baseline_valid_under_corrected_facts": true,
+          "metrics": {
+            "distance": {
+              "before": 188673.92289638647,
+              "after": 167906.9188715904
+            },
+            "peakLog": {
+              "before": 3,
+              "after": 4
+            },
+            "levelDeficitXP": {
+              "before": 0,
+              "after": 0
+            },
+            "questXP": {
+              "before": 27838,
+              "after": 27838
+            },
+            "rewardXPBeforeWork": {
+              "before": 284535,
+              "after": 272255
+            },
+            "uncertainTravelLegs": {
+              "before": 8,
+              "after": 8
+            },
+            "difficultyPressure": {
+              "before": 0,
+              "after": 0
+            },
+            "blockedTravelLegs": {
+              "before": 0,
+              "after": 0
+            }
+          },
+          "regressed_metrics": [
+            "peakLog",
+            "rewardXPBeforeWork"
+          ],
+          "delayed_work_rewards": [
+            {
+              "questID": 1180,
+              "objectiveKey": null,
+              "before": 6650,
+              "after": 5000
+            },
+            {
+              "questID": 1115,
+              "objectiveKey": null,
+              "before": 6933,
+              "after": 5283
+            },
+            {
+              "questID": 1181,
+              "objectiveKey": null,
+              "before": 7212,
+              "after": 5562
+            },
+            {
+              "questID": 1116,
+              "objectiveKey": "item:5803",
+              "before": 10510,
+              "after": 5675
+            },
+            {
+              "questID": 1182,
+              "objectiveKey": "item:5852",
+              "before": 7325,
+              "after": 5675
+            },
+            {
+              "questID": 1117,
+              "objectiveKey": null,
+              "before": 11209,
+              "after": 7513
+            },
+            {
+              "questID": 1183,
+              "objectiveKey": null,
+              "before": 8464,
+              "after": 8212
+            },
+            {
+              "questID": 1186,
+              "objectiveKey": null,
+              "before": 8747,
+              "after": 8495
+            },
+            {
+              "questID": 1118,
+              "objectiveKey": null,
+              "before": 11908,
+              "after": 10258
+            },
+            {
+              "questID": 621,
+              "objectiveKey": "item:4016",
+              "before": 11209,
+              "after": 11148
+            },
+            {
+              "questID": 1187,
+              "objectiveKey": "item:5862",
+              "before": 16548,
+              "after": 14898
+            },
+            {
+              "questID": 1188,
+              "objectiveKey": null,
+              "before": 23973,
+              "after": 19848
+            },
+            {
+              "questID": 1121,
+              "objectiveKey": null,
+              "before": 25613,
+              "after": 24793
+            }
+          ]
+        },
+        {
+          "level": 45,
+          "xp": 58750,
+          "valid": true,
+          "baseline_valid_under_corrected_facts": true,
+          "metrics": {
+            "distance": {
+              "before": 188673.92289638647,
+              "after": 167906.9188715904
+            },
+            "peakLog": {
+              "before": 3,
+              "after": 4
+            },
+            "levelDeficitXP": {
+              "before": 0,
+              "after": 0
+            },
+            "questXP": {
+              "before": 27838,
+              "after": 27838
+            },
+            "rewardXPBeforeWork": {
+              "before": 284535,
+              "after": 272255
+            },
+            "uncertainTravelLegs": {
+              "before": 8,
+              "after": 8
+            },
+            "difficultyPressure": {
+              "before": 0,
+              "after": 0
+            },
+            "blockedTravelLegs": {
+              "before": 0,
+              "after": 0
+            }
+          },
+          "regressed_metrics": [
+            "peakLog",
+            "rewardXPBeforeWork"
+          ],
+          "delayed_work_rewards": [
+            {
+              "questID": 1180,
+              "objectiveKey": null,
+              "before": 6650,
+              "after": 5000
+            },
+            {
+              "questID": 1115,
+              "objectiveKey": null,
+              "before": 6933,
+              "after": 5283
+            },
+            {
+              "questID": 1181,
+              "objectiveKey": null,
+              "before": 7212,
+              "after": 5562
+            },
+            {
+              "questID": 1116,
+              "objectiveKey": "item:5803",
+              "before": 10510,
+              "after": 5675
+            },
+            {
+              "questID": 1182,
+              "objectiveKey": "item:5852",
+              "before": 7325,
+              "after": 5675
+            },
+            {
+              "questID": 1117,
+              "objectiveKey": null,
+              "before": 11209,
+              "after": 7513
+            },
+            {
+              "questID": 1183,
+              "objectiveKey": null,
+              "before": 8464,
+              "after": 8212
+            },
+            {
+              "questID": 1186,
+              "objectiveKey": null,
+              "before": 8747,
+              "after": 8495
+            },
+            {
+              "questID": 1118,
+              "objectiveKey": null,
+              "before": 11908,
+              "after": 10258
+            },
+            {
+              "questID": 621,
+              "objectiveKey": "item:4016",
+              "before": 11209,
+              "after": 11148
+            },
+            {
+              "questID": 1187,
+              "objectiveKey": "item:5862",
+              "before": 16548,
+              "after": 14898
+            },
+            {
+              "questID": 1188,
+              "objectiveKey": null,
+              "before": 23973,
+              "after": 19848
+            },
+            {
+              "questID": 1121,
+              "objectiveKey": null,
+              "before": 25613,
+              "after": 24793
+            }
+          ]
+        },
+        {
+          "level": 50,
+          "xp": 0,
+          "valid": true,
+          "baseline_valid_under_corrected_facts": true,
+          "metrics": {
+            "distance": {
+              "before": 188673.92289638647,
+              "after": 167906.9188715904
+            },
+            "peakLog": {
+              "before": 3,
+              "after": 4
+            },
+            "levelDeficitXP": {
+              "before": 0,
+              "after": 0
+            },
+            "questXP": {
+              "before": 13196,
+              "after": 13196
+            },
+            "rewardXPBeforeWork": {
+              "before": 109776,
+              "after": 110020
+            },
+            "uncertainTravelLegs": {
+              "before": 8,
+              "after": 8
+            },
+            "difficultyPressure": {
+              "before": 0,
+              "after": 0
+            },
+            "blockedTravelLegs": {
+              "before": 0,
+              "after": 0
+            }
+          },
+          "regressed_metrics": [
+            "peakLog"
+          ],
+          "delayed_work_rewards": [
+            {
+              "questID": 1180,
+              "objectiveKey": null,
+              "before": 1945,
+              "after": 1616
+            },
+            {
+              "questID": 1115,
+              "objectiveKey": null,
+              "before": 2016,
+              "after": 1687
+            },
+            {
+              "questID": 1181,
+              "objectiveKey": null,
+              "before": 2156,
+              "after": 1827
+            },
+            {
+              "questID": 1116,
+              "objectiveKey": "item:5803",
+              "before": 2897,
+              "after": 1855
+            },
+            {
+              "questID": 1182,
+              "objectiveKey": "item:5852",
+              "before": 2184,
+              "after": 1855
+            },
+            {
+              "questID": 1117,
+              "objectiveKey": null,
+              "before": 3247,
+              "after": 2490
+            },
+            {
+              "questID": 1118,
+              "objectiveKey": null,
+              "before": 3597,
+              "after": 3268
+            },
+            {
+              "questID": 1187,
+              "objectiveKey": "item:5862",
+              "before": 7131,
+              "after": 6802
+            },
+            {
+              "questID": 1188,
+              "objectiveKey": null,
+              "before": 11090,
+              "after": 7790
+            },
+            {
+              "questID": 1121,
+              "objectiveKey": null,
+              "before": 11416,
+              "after": 11253
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "passes_optimization_guard": false
+}

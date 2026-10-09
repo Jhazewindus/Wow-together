@@ -10967,5 +10967,844 @@
         ]
       }
     }
+  },
+  {
+    "questID": 1150,
+    "title": "Test of Endurance",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Foodstuffs are the interaction/ambush trigger, not the claw drop. Keep captured food and actual Grenka alternative coordinates; join claw to actual Grenka. Remove unsupported Flank of Meat goal/hand-in. Number of food interactions/waves remains unknown; real 1149 hand-in retained. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/thousand-needles-2026-10-09. Supporting unchanged mechanics: https://classicdb.ch/?quest=1150; accessed 2026-10-09; no beta terrain proof.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 25,
+      "level": 30,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Grenka's Claw",
+          "itemID": 5843
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Grenka's Claw",
+            "entityID": 5843
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Flank of Meat",
+            "entityID": 5845
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Grenka's Claw",
+            "itemID": 5843
+          },
+          {
+            "quantity": 1,
+            "name": "Flank of Meat",
+            "itemID": 5845
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "mapID": 1441,
+            "legacyStepKey": "q:1441:npc:20447",
+            "entityID": 20447,
+            "x": 0.259,
+            "y": 0.5479999999999999,
+            "objectiveKey": "item:5843",
+            "itemID": 5843,
+            "quantity": 1,
+            "name": "Harpy Foodstuffs",
+            "itemName": "Grenka's Claw",
+            "alternativeCount": 2,
+            "action": "collect"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Grenka's Claw",
+            "name": "Grenka Bloodscreech",
+            "entityID": 4490,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Flank of Meat",
+            "entityID": 5845
+          }
+        ],
+        "objectiveLocationsIncomplete": true,
+        "objectiveAlternatives": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Grenka's Claw",
+            "locations": [
+              {
+                "sourceObjective": 0,
+                "itemName": "Grenka's Claw",
+                "action": "collect",
+                "entityID": 4490,
+                "npc": true,
+                "y": 0.556,
+                "x": 0.26,
+                "name": "Grenka Bloodscreech",
+                "mapID": 1441
+              },
+              {
+                "sourceObjective": 0,
+                "mapID": 1441,
+                "action": "collect",
+                "y": 0.5479999999999999,
+                "entityID": 20447,
+                "x": 0.259,
+                "name": "Harpy Foodstuffs",
+                "itemName": "Grenka's Claw"
+              }
+            ]
+          }
+        ]
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Grenka's Claw",
+            "entityID": 5843
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Grenka's Claw",
+            "itemID": 5843
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "mapID": 1441,
+            "legacyStepKey": "q:1441:npc:20447",
+            "entityID": 20447,
+            "x": 0.259,
+            "y": 0.5479999999999999,
+            "objectiveKey": "object:20447",
+            "name": "Harpy Foodstuffs",
+            "action": "interact",
+            "entityType": "object",
+            "quantityUnknown": true
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Grenka's Claw",
+            "action": "loot",
+            "entityID": 4490,
+            "npc": true,
+            "y": 0.556,
+            "x": 0.26,
+            "name": "Grenka Bloodscreech",
+            "mapID": 1441,
+            "entityType": "npc",
+            "objectiveKey": "item:5843",
+            "itemID": 5843,
+            "quantity": 1
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Grenka's Claw",
+            "name": "Grenka Bloodscreech",
+            "entityID": 4490,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "objectiveAlternatives": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Grenka's Claw",
+            "locations": [
+              {
+                "sourceObjective": 0,
+                "itemName": "Grenka's Claw",
+                "action": "collect",
+                "entityID": 4490,
+                "npc": true,
+                "y": 0.556,
+                "x": 0.26,
+                "name": "Grenka Bloodscreech",
+                "mapID": 1441
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 1183,
+    "title": "Goblin Sponsorship",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Actual supplied/already-earned delivery input, not a second post-acceptance farm. Keep output hand-in count, actual earlier acquisition/parent hand-in and recipient destination. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/thousand-needles-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 29,
+      "level": 37,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Fuel Regulator Blueprints",
+          "itemID": 5852
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Fuel Regulator Blueprints",
+            "entityID": 5852
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Fuel Regulator Blueprints",
+            "itemID": 5852
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "object",
+            "mapID": 1434,
+            "action": "gather",
+            "entityID": 20691,
+            "x": 0.43329999999999996,
+            "y": 0.20329999999999998,
+            "objectiveKey": "item:5852",
+            "itemID": 5852,
+            "quantity": 1,
+            "sourceAreaID": 33,
+            "itemName": "Fuel Regulator Blueprints",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "name": "Cozzle's Footlocker"
+          }
+        ],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "providedItems": [],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1441,
+            "entityID": 4630,
+            "npc": true,
+            "y": 0.7587999999999999,
+            "x": 0.8018000000000001,
+            "name": "Pozzik",
+            "sourceAreaID": 400,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Fuel Regulator Blueprints",
+            "itemID": 5852
+          }
+        ],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 5852,
+            "name": "Fuel Regulator Blueprints",
+            "quantity": 1
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1441,
+            "entityID": 4630,
+            "npc": true,
+            "y": 0.7587999999999999,
+            "x": 0.8018000000000001,
+            "name": "Pozzik",
+            "sourceAreaID": 400,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "talk"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 1188,
+    "title": "Safety First",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Actual supplied/already-earned delivery input, not a second post-acceptance farm. Keep output hand-in count, actual earlier acquisition/parent hand-in and recipient destination. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/thousand-needles-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 29,
+      "level": 41,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Seaforium Booster",
+          "itemID": 5862
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Seaforium Booster",
+            "entityID": 5862
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Seaforium Booster",
+            "itemID": 5862
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "object",
+            "mapID": 1445,
+            "action": "gather",
+            "entityID": 20727,
+            "x": 0.5407,
+            "y": 0.5649000000000001,
+            "objectiveKey": "item:5862",
+            "itemID": 5862,
+            "quantity": 1,
+            "sourceAreaID": 15,
+            "itemName": "Seaforium Booster",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "name": "Gizmorium Shipping Crate"
+          }
+        ],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "providedItems": [],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1446,
+            "entityID": 4708,
+            "npc": true,
+            "y": 0.2724,
+            "x": 0.5096,
+            "name": "Shreev",
+            "sourceAreaID": 440,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Seaforium Booster",
+            "itemID": 5862
+          }
+        ],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 5862,
+            "name": "Seaforium Booster",
+            "quantity": 1
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1446,
+            "entityID": 4708,
+            "npc": true,
+            "y": 0.2724,
+            "x": 0.5096,
+            "name": "Shreev",
+            "sourceAreaID": 440,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "talk"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 1194,
+    "title": "Rizzle's Schematics",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Interact with actual captured unguarded-plans starter; retain supplied ore sample with unknown supplied count and real 1190 hand-in. Do not invent a new farm, inventory total or move the alternate starter. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/thousand-needles-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 29,
+      "level": 41,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "providedItems": [],
+        "starts": [
+          {
+            "entityType": "object",
+            "mapID": 1441,
+            "name": "Rizzle's Unguarded Plans",
+            "y": 0.7739,
+            "entityID": 20805,
+            "x": 0.7720999999999999,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 400
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 5866,
+            "name": "Sample of Indurium Ore",
+            "quantityUnknown": true
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "object",
+            "mapID": 1441,
+            "name": "Rizzle's Unguarded Plans",
+            "y": 0.7739,
+            "entityID": 20805,
+            "x": 0.7720999999999999,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 400,
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 5088,
+    "title": "Arikara",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Use actual supplied preparation tool at the distinct published fire/cage before actual skin/gizmo loot; preserve mapped mob drop, output count and return. Interaction/supplied-key count not guessed. Prose mentions returning powder/key but typed objectives identify actual output; no invented extra consumed-input hand-in. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/thousand-needles-2026-10-09. Supporting unchanged mechanics: https://classicdb.ch/?quest=5088; accessed 2026-10-09; no beta terrain proof.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 24,
+      "level": 28,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Arikara Serpent Skin",
+          "itemID": 12925
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Arikara Serpent Skin",
+            "entityID": 12925
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Arikara Serpent Skin",
+            "itemID": 12925
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1441,
+            "action": "loot",
+            "entityID": 10882,
+            "npc": true,
+            "x": 0.3809,
+            "y": 0.3538,
+            "objectiveKey": "item:12925",
+            "itemID": 12925,
+            "quantity": 1,
+            "sourceAreaID": 400,
+            "itemName": "Arikara Serpent Skin",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "name": "Arikara"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Arikara Serpent Skin",
+            "name": "Arikara",
+            "entityID": 10882,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Incendia Powder",
+            "entityID": 12785
+          }
+        ]
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "object",
+            "entityID": 175944,
+            "name": "Sacred Fire of Life",
+            "action": "use",
+            "quantityUnknown": true
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Arikara Serpent Skin",
+            "entityID": 12925
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Arikara Serpent Skin",
+            "itemID": 12925
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "object",
+            "entityID": 175944,
+            "name": "Sacred Fire of Life",
+            "mapID": 1441,
+            "x": 0.38060000000000005,
+            "y": 0.35369999999999996,
+            "sourceAreaID": 400,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "use",
+            "useItemName": "Incendia Powder",
+            "useItemID": 12785,
+            "quantityUnknown": true,
+            "objectiveKey": "object:175944"
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1441,
+            "action": "loot",
+            "entityID": 10882,
+            "npc": true,
+            "x": 0.3809,
+            "y": 0.3538,
+            "objectiveKey": "item:12925",
+            "itemID": 12925,
+            "quantity": 1,
+            "sourceAreaID": 400,
+            "itemName": "Arikara Serpent Skin",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "name": "Arikara"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Arikara Serpent Skin",
+            "name": "Arikara",
+            "entityID": 10882,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "providedItems": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Incendia Powder",
+            "entityID": 12785
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 5151,
+    "title": "Hypercapacitor Gizmo",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Use actual supplied preparation tool at the distinct published fire/cage before actual skin/gizmo loot; preserve mapped mob drop, output count and return. Interaction/supplied-key count not guessed. Prose mentions returning powder/key but typed objectives identify actual output; no invented extra consumed-input hand-in. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/thousand-needles-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 24,
+      "level": 30,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Hypercapacitor Gizmo",
+          "itemID": 12946
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 12946,
+            "name": "Hypercapacitor Gizmo"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Hypercapacitor Gizmo",
+            "itemID": 12946
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1441,
+            "action": "loot",
+            "entityID": 10992,
+            "npc": true,
+            "x": 0.22760000000000002,
+            "y": 0.2462,
+            "objectiveKey": "item:12946",
+            "itemID": 12946,
+            "quantity": 1,
+            "sourceAreaID": 400,
+            "itemName": "Hypercapacitor Gizmo",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "name": "Enraged Panther"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Hypercapacitor Gizmo",
+            "name": "Enraged Panther",
+            "entityID": 10992,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "providedItems": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 12946,
+            "name": "Hypercapacitor Gizmo"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Hypercapacitor Gizmo",
+            "itemID": 12946
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "object",
+            "entityID": 176195,
+            "name": "Panther Cage",
+            "mapID": 1441,
+            "x": 0.2275,
+            "y": 0.2465,
+            "sourceAreaID": 400,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "use",
+            "useItemName": "Panther Cage Key",
+            "useItemID": 12942,
+            "quantityUnknown": true,
+            "objectiveKey": "object:176195"
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1441,
+            "action": "loot",
+            "entityID": 10992,
+            "npc": true,
+            "x": 0.22760000000000002,
+            "y": 0.2462,
+            "objectiveKey": "item:12946",
+            "itemID": 12946,
+            "quantity": 1,
+            "sourceAreaID": 400,
+            "itemName": "Hypercapacitor Gizmo",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "name": "Enraged Panther"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Hypercapacitor Gizmo",
+            "name": "Enraged Panther",
+            "entityID": 10992,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 12942,
+            "name": "Panther Cage Key",
+            "quantityUnknown": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 5361,
+    "title": "Family Tree",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Actual supplied/already-earned delivery input, not a second post-acceptance farm. Keep output hand-in count, actual earlier acquisition/parent hand-in and recipient destination. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/thousand-needles-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 32,
+      "level": 35,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Cliffwatcher Longhorn Report",
+          "itemID": 13507
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Cliffwatcher Longhorn Report",
+            "entityID": 13507
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Cliffwatcher Longhorn Report",
+            "itemID": 13507
+          }
+        ],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Cliffwatcher Longhorn Report",
+            "entityID": 13507
+          }
+        ],
+        "objectiveLocationsIncomplete": true,
+        "providedItems": [],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1443,
+            "entityID": 11259,
+            "npc": true,
+            "y": 0.5581,
+            "x": 0.5540999999999999,
+            "name": "Nataka Longhorn",
+            "sourceAreaID": 405,
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Cliffwatcher Longhorn Report",
+            "itemID": 13507
+          }
+        ],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 13507,
+            "name": "Cliffwatcher Longhorn Report",
+            "quantity": 1
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1443,
+            "entityID": 11259,
+            "npc": true,
+            "y": 0.5581,
+            "x": 0.5540999999999999,
+            "name": "Nataka Longhorn",
+            "sourceAreaID": 405,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "talk"
+          }
+        ]
+      }
+    }
   }
 ]

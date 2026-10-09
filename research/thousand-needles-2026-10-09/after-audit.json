@@ -1,0 +1,278 @@
+{
+  "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
+  "quest_records": 40,
+  "static_points_checked": 109,
+  "fixed_zone_guides_checked": 6,
+  "catalogue_reason_stages_checked": 130,
+  "catalogue_reason_codes": {
+    "level-work": 40,
+    "quest-objective": 50,
+    "quest-reward": 40
+  },
+  "reason_review_quest_ids": [
+    1104,
+    1105,
+    1106,
+    1107,
+    1111,
+    1112,
+    1114,
+    1117,
+    1118,
+    1119,
+    1120,
+    1121,
+    1122,
+    1149,
+    1150,
+    1151,
+    1152,
+    1154,
+    1175,
+    1179,
+    1180,
+    1189,
+    4323,
+    4542,
+    4767,
+    4770,
+    4821,
+    4841,
+    4865,
+    4881,
+    4904,
+    4966,
+    5062,
+    5064,
+    5088,
+    5147,
+    5762,
+    98069,
+    98070,
+    98155
+  ],
+  "source_data_gap_free_guides": 1,
+  "guides": [
+    {
+      "faction": "Alliance",
+      "zone": "Thousand Needles",
+      "key": "level-zone:kalimdor/thousand-needles:levels:21-30",
+      "quests": 7,
+      "steps": 21,
+      "unknown_location_steps": 0,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": true,
+      "reason_steps_checked": 21,
+      "destination_reason_codes": {
+        "class-progression": 6,
+        "outside-level-range": 8,
+        "quest-reward": 6,
+        "return-hub": 1
+      },
+      "reason_review_steps": 8,
+      "cross_zone_reason_steps": 5,
+      "flow_alternatives_evaluated": 14,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 5,
+      "quest_reward_only_xp_shortfall": 85700,
+      "uncertain_travel_legs": 4,
+      "estimated_distance_before": 80224.43,
+      "estimated_distance_after": 80224.43
+    },
+    {
+      "faction": "Alliance",
+      "zone": "Thousand Needles",
+      "key": "level-zone:kalimdor/thousand-needles:levels:31-40",
+      "quests": 24,
+      "steps": 74,
+      "unknown_location_steps": 2,
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          98156
+        ],
+        "q": [
+          98156
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 74,
+      "destination_reason_codes": {
+        "outside-level-range": 40,
+        "prerequisite": 15,
+        "quest-reward": 19
+      },
+      "reason_review_steps": 40,
+      "cross_zone_reason_steps": 12,
+      "flow_alternatives_evaluated": 53,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 6,
+      "quest_reward_only_xp_shortfall": 151550,
+      "uncertain_travel_legs": 11,
+      "estimated_distance_before": 179795.7,
+      "estimated_distance_after": 179795.7
+    },
+    {
+      "faction": "Alliance",
+      "zone": "Thousand Needles",
+      "key": "level-zone:kalimdor/thousand-needles:levels:41-50",
+      "quests": 29,
+      "steps": 87,
+      "unknown_location_steps": 0,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        1120,
+        1121
+      ],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 87,
+      "destination_reason_codes": {
+        "outside-level-range": 44,
+        "prerequisite": 21,
+        "quest-reward": 22
+      },
+      "reason_review_steps": 46,
+      "cross_zone_reason_steps": 13,
+      "flow_alternatives_evaluated": 151,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 4,
+      "quest_reward_only_xp_shortfall": 404050,
+      "uncertain_travel_legs": 6,
+      "estimated_distance_before": 167906.92,
+      "estimated_distance_after": 167906.92
+    },
+    {
+      "faction": "Horde",
+      "zone": "Thousand Needles",
+      "key": "level-zone:kalimdor/thousand-needles:levels:21-30",
+      "quests": 28,
+      "steps": 91,
+      "unknown_location_steps": 0,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [
+        4966,
+        5088
+      ],
+      "prerequisite_review_steps": 3,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 91,
+      "destination_reason_codes": {
+        "class-progression": 6,
+        "early-reward": 1,
+        "outside-level-range": 44,
+        "prerequisite": 19,
+        "quest-reward": 19,
+        "return-hub": 2
+      },
+      "reason_review_steps": 45,
+      "cross_zone_reason_steps": 10,
+      "flow_alternatives_evaluated": 13,
+      "flow_loop_changes": 1,
+      "flow_state_valid": true,
+      "quest_log_peak": 11,
+      "quest_reward_only_xp_shortfall": 209995,
+      "uncertain_travel_legs": 8,
+      "estimated_distance_before": 529622.84,
+      "estimated_distance_after": 529622.84
+    },
+    {
+      "faction": "Horde",
+      "zone": "Thousand Needles",
+      "key": "level-zone:kalimdor/thousand-needles:levels:31-40",
+      "quests": 31,
+      "steps": 101,
+      "unknown_location_steps": 1,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [
+          98069
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 6,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 101,
+      "destination_reason_codes": {
+        "outside-level-range": 60,
+        "prerequisite": 15,
+        "quest-reward": 26
+      },
+      "reason_review_steps": 62,
+      "cross_zone_reason_steps": 14,
+      "flow_alternatives_evaluated": 45,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 7,
+      "quest_reward_only_xp_shortfall": 286250,
+      "uncertain_travel_legs": 19,
+      "estimated_distance_before": 299427.74,
+      "estimated_distance_after": 299427.74
+    },
+    {
+      "faction": "Horde",
+      "zone": "Thousand Needles",
+      "key": "level-zone:kalimdor/thousand-needles:levels:41-50",
+      "quests": 29,
+      "steps": 87,
+      "unknown_location_steps": 0,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        1120,
+        1121
+      ],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 87,
+      "destination_reason_codes": {
+        "outside-level-range": 44,
+        "prerequisite": 21,
+        "quest-reward": 22
+      },
+      "reason_review_steps": 46,
+      "cross_zone_reason_steps": 13,
+      "flow_alternatives_evaluated": 151,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 4,
+      "quest_reward_only_xp_shortfall": 404050,
+      "uncertain_travel_legs": 8,
+      "estimated_distance_before": 163536.41,
+      "estimated_distance_after": 163536.41
+    }
+  ],
+  "scope": {
+    "zone": "Thousand Needles",
+    "catalogue_records": "Exact quest zone; guide dependencies still compile normally"
+  }
+}

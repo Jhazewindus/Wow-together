@@ -1,0 +1,22 @@
+{
+  "raw_guard": "Required action scope changed; retain raw failure.",
+  "method": "Keep every original action; insert only two evidenced supplied-tool preparation uses before their actual output loot. Existing delivery work occurrences become recipient conversations under corrected facts; no old action removed. Price full corrected scope in both orders, not a shortened prefix.",
+  "additions": [
+    {
+      "faction": "Horde",
+      "key": "level-zone:kalimdor/thousand-needles:levels:21-30",
+      "questID": 5088,
+      "objectiveKey": "object:175944",
+      "inserted_before": "original output loot work, after original acceptance",
+      "removed_actions": 0
+    },
+    {
+      "faction": "Horde",
+      "key": "level-zone:kalimdor/thousand-needles:levels:21-30",
+      "questID": 5151,
+      "objectiveKey": "object:176195",
+      "inserted_before": "original output loot work, after original acceptance",
+      "removed_actions": 0
+    }
+  ]
+}

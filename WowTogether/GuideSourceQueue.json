@@ -1,6 +1,6 @@
 {
   "source_data_complete": false,
-  "remaining_quest_records": 374,
+  "remaining_quest_records": 373,
   "limitations": [
     "This queue identifies missing facts, not a license to invent them",
     "Source capture must respect access policy and stop after denials",
@@ -762,21 +762,6 @@
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=4452",
         "https://www.wowhead.com/forever/npc=4496"
-      ]
-    },
-    {
-      "questID": 1150,
-      "title": "Test of Endurance",
-      "guides": [
-        "Horde / Thousand Needles"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1150",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=5845",
-        "https://www.wowhead.com/forever/npc=2986"
       ]
     },
     {
@@ -2072,6 +2057,21 @@
       ]
     },
     {
+      "questID": 5088,
+      "title": "Arikara",
+      "guides": [
+        "Horde / Thousand Needles"
+      ],
+      "needs": [
+        "objective quantities"
+      ],
+      "quest_url": "https://www.wowhead.com/forever/quest=5088",
+      "entity_urls": [
+        "https://www.wowhead.com/forever/npc=4046",
+        "https://www.wowhead.com/forever/npc=10428"
+      ]
+    },
+    {
       "questID": 5090,
       "title": "A Call to Arms: The Plaguelands!",
       "guides": [
@@ -2331,22 +2331,6 @@
       "quest_url": "https://www.wowhead.com/forever/quest=5342",
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=11022"
-      ]
-    },
-    {
-      "questID": 5361,
-      "title": "Family Tree",
-      "guides": [
-        "Horde / Thousand Needles"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=5361",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=13507",
-        "https://www.wowhead.com/forever/npc=10537",
-        "https://www.wowhead.com/forever/npc=11259"
       ]
     },
     {
