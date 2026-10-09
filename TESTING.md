@@ -1,11 +1,11 @@
 # Wow Together — friend test script
 
-For **0.8.62** — **REVIEWED ZONE UPDATES**, World of Warcraft: Forever beta,
+For **0.8.63** — **CONTINUE YOUR GUIDE**, World of Warcraft: Forever beta,
 interface **16001**.
-Allow **15–25 minutes for the updated quest checks**; the wider optional checks take 45–60
+Allow **5–10 minutes for Continue anyway**; the wider optional checks take 45–60
 minutes. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
-The expanded-guide checks below take about **15–25 minutes**.
+The retained expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
 1. Replace the complete WowTogether folder, including **all 86 Lua files** and
@@ -21,7 +21,28 @@ The expanded-guide checks below take about **15–25 minutes**.
    applying completed/accepted quests and manual skips. Step numbers may change.
    A reload on the same version should preserve the saved order.
 
-## Reviewed zone updates — test your current zone
+## Continue anyway — this update
+
+1. Open a fixed leveling guide that pauses because its remaining quests are
+   outside your recommended level range. Record level, guide and unfinished
+   quest names. If you have no matching paused guide, mark this check Skip.
+2. **Continue anyway** should appear beside **Scan guide**, replacing the disabled
+   skip buttons. Click it: available work should return immediately, including
+   accepted harder quests. The arrow and map update without reopening the addon.
+3. Known unmet prerequisites/minimum pickup levels and NPC-confirmed absences
+   must stay blocked. Skipped quests/steps stay skipped; class options and
+   faction/race restrictions remain. Elite quests retain their party warning.
+   Auto-accept must leave unrelated NPC quests manual.
+4. Scan and reload: the choice and fixed order persist. Save & pause/Resume should
+   also preserve them. Stop then restart the guide, or select a different guide:
+   the normal level range returns. Completed quests still advance normally;
+   the click must never grant quest-completion credit.
+5. Resize the small window and test with the world map open. Buttons should fit
+   without overlapping. Guides waiting on prerequisites, missing locations or
+   all-manual-skips must not offer a difficulty override as their solution.
+   Report any error with `/wt probe` and the current quest/step.
+
+## Reviewed zone updates — optional retained checks
 
 - **Barrens:** Samophlange console/valves should say Interact; each nest should
   name Sunscale Feather. Ishamuhale's carcass and manual pages/cover remain

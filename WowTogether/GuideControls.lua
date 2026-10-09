@@ -95,6 +95,32 @@ function ns.ResetGuideSkips()
     ns.Refresh()
 end
 
+function ns.CanContinueGuideAnyway()
+    local guide, route = ns.routeSelection, ns.selectedRoute
+    return not ns.guideScanning and not ns.routePlanning and guide ~= nil and route ~= nil
+        and guide.fullGuide == true and guide.fixedRoute == true
+        and (guide.mode == "zone" or guide.mode == "bundle")
+        and guide.continueOutsideLevels ~= true and route.key == guide.key
+        and route.rangePaused == true and not route.complete
+end
+
+function ns.ContinueGuideAnyway()
+    if not ns.CanContinueGuideAnyway() then return end
+    local state = ns.navigation and ns.navigation.state
+    if ns.navigationPreview or state and (state.flight or state.stop and state.stop.kind == "corpse") then return end
+    local guide = ns.routeSelection
+    guide.continueOutsideLevels = true
+    ns.navigationPreview, ns.routeSignature = nil, nil
+    ns.ResetTravelPath()
+    -- Like Skip, this explicit edit must update a hidden/resizing map now.
+    -- Keep the fixed plan and saved skips; never manufacture quest credit.
+    ns.UpdateSelectedRoute(nil, ns.NewQuestQuery())
+    ns.SaveSelectedGuide()
+    ns.UpdateNavigation()
+    ns.DrawRoute(nil, true)
+    ns.Refresh()
+end
+
 local function readScanSnapshot(cooperative)
     for attempt = 1, cooperative and 3 or 1 do
         if ns.ReadQuests() then ns.ReadGuide(); return true end
@@ -325,6 +351,7 @@ function ns.MergeCurrentQuests(guide)
     end
     copy.records, copy.pickupIDs, copy.mode, copy.baseGuide = records, pickups, "bundle", guide
     copy.fixedPlan = nil -- Explicitly including extra work creates a new fixed sequence.
+    copy.continueOutsideLevels = nil -- A new guide does not inherit its source's difficulty choice.
     copy.batchIDs = nil -- A new selection must not inherit the previous trip's quest set.
     copy.mapID = guide.mapID or guide.target and guide.target.mapID or ns.profile.mapID
     copy.key, copy.title = "with-log:" .. guide.key, guide.title .. " + current quests"

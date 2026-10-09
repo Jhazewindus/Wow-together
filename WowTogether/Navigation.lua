@@ -343,6 +343,10 @@ function ns.UpdateNavigation()
             frame.professionControls = nil
         end
     end
+    local continue = ns.CanContinueGuideAnyway() and not ns.navigationPreview and not state.flight
+        and state.stop.kind == "notice" and not state.busy
+    frame.continue:SetShown(continue); frame.continue:SetEnabled(continue)
+    frame.skipStep:SetShown(not continue); frame.skipQuest:SetShown(not continue)
     local paused = ns.PausedSessionCheckpoint and ns.PausedSessionCheckpoint()
     frame.stop:SetEnabled(not state.idle or paused ~= nil)
     frame.pause.caption:SetText(paused and "Resume" or "Pause")
@@ -386,6 +390,7 @@ function ns.LayoutNavigation()
     frame.skipQuest:SetWidth(training and 88 or 80)
     frame.skipQuest:ClearAllPoints(); frame.skipQuest:SetPoint("BOTTOMLEFT", offset + (training and 124 or 128), 8)
     frame.scan:ClearAllPoints(); frame.scan:SetPoint("BOTTOMLEFT", offset + (training and 218 or 214), 8)
+    frame.continue:ClearAllPoints(); frame.continue:SetPoint("BOTTOMLEFT", offset + 42, 8)
     frame.back:ClearAllPoints(); frame.back:SetPoint("BOTTOMLEFT", offset + 12, 8)
     frame.next:ClearAllPoints(); frame.next:SetPoint("BOTTOMLEFT", offset + 316, 8)
     frame.tip:SetWidth(width); frame.tip.text:SetWidth(width - 44)
@@ -477,6 +482,9 @@ function ns.CreateNavigation()
     ns.UIHelp(frame.skipQuest, "Skip the current quest. During a training stop, Done training records your personal check and resumes quests; no skills are purchased automatically.")
     frame.scan = ns.UIButton(frame, "Scan guide", 96, function() ns.ScanGuideProgress() end)
     frame.scan:SetHeight(24); frame.scan:SetPoint("BOTTOMLEFT", 214, 8)
+    frame.continue = ns.UIButton(frame, "Continue anyway", 166, ns.ContinueGuideAnyway, true)
+    frame.continue:SetHeight(24); frame.continue:SetPoint("BOTTOMLEFT", 42, 8); frame.continue:Hide()
+    ns.UIHelp(frame.continue, "Include quests outside the recommended level range for this guide. Pickup requirements and manual skips still apply; elite quests may need a party. Saved across reloads; Stop guide restores the normal range.")
     frame.back = ns.UIButton(frame, "‹", 24, function() ns.PreviewGuideStep(-1) end)
     frame.back:SetHeight(24); frame.back:SetPoint("BOTTOMLEFT", 12, 8)
     frame.next = ns.UIButton(frame, "›", 24, function() ns.PreviewGuideStep(1) end)

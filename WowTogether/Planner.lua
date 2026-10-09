@@ -319,10 +319,10 @@ function ns.ClassQuestLabel(id)
     return #classes > 0 and ("Class quest: " .. table.concat(classes, ", ")) or "Class quest • restriction needs checking"
 end
 
-function ns.LevelingQuestEnabled(id)
+function ns.LevelingQuestEnabled(id, guide)
     return not ns.IsLevelingExcludedQuest(id) and not ns.IsProfessionQuest(id) and not ns.IsDungeonQuest(id) and not ns.IsRepeatableQuest(id) and not ns.GuideQuestSkipped(id)
         and ns.ClassQuestEnabled(id)
-        and ns.LevelingValue(id) ~= false
+        and (ns.LevelingValue(id) ~= false or ns.GuideDifficultyOverride(guide))
 end
 
 function ns.IsRepeatableQuest(id)

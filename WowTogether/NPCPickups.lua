@@ -72,7 +72,7 @@ end
 
 local function usefulPickup(guide, id, query)
     if ns.active[id] or ns.CatalogueCompletion(ns.self, id, query) ~= false
-        or not ns.LevelingQuestEnabled(id) then return end
+        or not ns.LevelingQuestEnabled(id, guide) then return end
     local step = pickupStep(guide, id)
     if not step or #ns.FilterGuideStages({step}) == 0 then return end
     if ns.CatalogueAllowed(id, ns.profile, ns.self, query) == false then return end

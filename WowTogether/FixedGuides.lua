@@ -196,7 +196,7 @@ local function remaining(stop, query, guide)
     for _, person in ipairs(query.profiles) do
         if ns.CatalogueIdentityAllowed(stop.id, person.profile) ~= false
             and not ns.CatalogueAlternativeTaken(stop.id, person.key, query) then
-            local keep = ns.LevelingWorkAllowed(stop.id, person.key, query)
+            local keep = ns.GuideWorkAllowed(guide, stop.id, person.key, query)
                 or guide.catchupRequired and guide.catchupRequired[stop.id]
             -- Keep the compiled order intact. Level-filtered steps receive no
             -- completion/skip credit and can return if party context changes.
@@ -310,13 +310,16 @@ function ns.BuildFixedGuideRoute(guide, includeOrigin, cooperative, query)
         pendingStop, pending = firstDeferred, firstReason or "No pickups are currently available. Progress and NPC offers will recheck this guide."
     end
     local progress, level = completionProgress(guide, query), ns.PartyLevelFloor(query)
+    local rangePaused
     if #stops == 0 and not pending then
         if progress.total == 0 then pending = "No quests in this guide match your character and settings."
         elseif progress.unfinished > 0 then
             if filteredSteps > 0 and ns.GuideInteger(guide.earlyStartLevel) and level and level < guide.earlyStartLevel then
                 pending = "Guide for later: recommended from level " .. guide.earlyStartLevel .. "; current level " .. level .. "."
+                rangePaused = true
             elseif filteredSteps > 0 then
                 pending = "Guide paused: unfinished quests are outside your leveling range."
+                rangePaused = true
             elseif #plan == 0 then pending = "Guide steps are unavailable. Scan guide or choose another guide."
             elseif ns.GuideSelectionHasSkips(guide) then
                 pending = "Remaining guide steps are skipped. Reset guide skips in Settings to restore them."
@@ -332,7 +335,7 @@ function ns.BuildFixedGuideRoute(guide, includeOrigin, cooperative, query)
     local route = {key = guide.key, title = guide.title, mapID = mapID, stops = stops, previewStops = preview,
         origin = includeOrigin and ns.PlayerPoint(mapID) or nil, missing = unknown, otherMaps = 0,
         fixed = true, guideQuests = #guide.records, totalSteps = #plan, remainingSteps = incomplete,
-        completionProgress = progress, filteredSteps = filteredSteps,
+        completionProgress = progress, filteredSteps = filteredSteps, rangePaused = rangePaused,
         eligibleMappedQuests = count, deferredQuests = deferredCount, partial = unknown > 0,
         pendingReason = pending, pendingStop = pendingStop, focusKey = guide.focusKey}
     return ns.AddNPCVisitPickups(guide, route, query)

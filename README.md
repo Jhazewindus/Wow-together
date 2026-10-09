@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.62 — REVIEWED ZONE UPDATES** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.63 — CONTINUE YOUR GUIDE** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -22,6 +22,14 @@ Replace the folder on **every party member's client**, including all **86 Lua
 files** and the **Media folder**, then fully restart the client. Restart if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.63 adds Continue anyway to the small guide window** when a fixed leveling
+guide pauses because its remaining work is outside the recommended level range.
+It resumes available steps at any quest difficulty, keeping pickup requirements,
+class options, personal skips and the fixed order. The map updates immediately;
+elite warnings remain. Your choice survives Scan, reload and Save & pause/Resume.
+Stop the guide or select a different guide to restore the normal range. This
+does not unlock unavailable quests or add quests outside the selected guide.
 
 **0.8.62 integrates the reviewed leveling updates from 22 zones**, including
 starting zones, Barrens, Hillsbrad, Duskwood and Dustwallow. The update changes 201 quest records and corrects

@@ -1,5 +1,25 @@
 # Wow Together changelog
 
+## 0.8.63
+
+**CONTINUE YOUR GUIDE**
+
+- Add **Continue anyway** beside Scan guide when a fixed leveling guide pauses
+  because unfinished work is outside its recommended level range. Resume
+  available pickups/objectives/returns at any quest difficulty, without
+  changing the guide's fixed order. The arrow and map refresh immediately.
+- Keep minimum pickup levels, faction/class/race rules, prerequisites, actual
+  NPC absences, manual skips and the class-quest option. Elite warnings remain;
+  unknown pickup requirements still need confirmation. Auto-accept continues
+  to use only eligible quests inside the selected guide.
+- Save the choice for this active guide across Scan, reload and session
+  pause/resume. Stop or select another guide to restore the normal level range.
+  Quest-list statuses reflect the choice; other guides keep their normal filter.
+- Retain the reviewed zone updates from 0.8.62. No new guide-agent commits were
+  pending at the initial branch check. Host checks cover the override, normal
+  completion/range filters, pickup gates, saved progress and UI regressions;
+  live beta rendering remains on the friend-testing checklist.
+
 ## 0.8.62
 
 **REVIEWED ZONE UPDATES**

@@ -15,10 +15,10 @@ local function layout(frame)
     end
 end
 
-local function status(stop, query)
+local function status(stop, query, guide)
     if ns.GuideQuestSkipped(stop.id) or #ns.FilterGuideStages({stop}) == 0 then return "Skipped" end
     if ns.Completed(stop.id, query) == true then return "Done" end
-    if not ns.LevelingWorkAllowed(stop.id, ns.self, query) then return "Outside level range" end
+    if not ns.GuideWorkAllowed(guide, stop.id, ns.self, query) then return "Outside level range" end
     local active = ns.active and ns.active[stop.id]
     if active then
         if stop.kind == "a" then return "Accepted" end
@@ -27,7 +27,6 @@ local function status(stop, query)
         end
         return stop.kind == "q" and "In progress" or "Later"
     end
-    if ns.LevelingValue(stop.id, query) == false then return "Outside level range" end
     local allowed = ns.CatalogueAllowed(stop.id, ns.profile, ns.self, query)
     return allowed == true and stop.kind == "a" and "Available" or "Later"
 end
@@ -87,6 +86,7 @@ function ns.RenderGuideQuestList()
     frame.rendering = true
     for _, row in ipairs(frame.rows) do row:Hide() end
     local plan, quests, query = {}, {}, ns.NewQuestQuery()
+    local policyGuide = ns.routeSelection and ns.routeSelection.key == frame.guide.key and ns.routeSelection or frame.guide
     for _, stop in ipairs(frame.plan or {}) do
         if ns.ClassQuestEnabled(stop.id) then plan[#plan + 1], quests[stop.id] = stop, true end
     end
@@ -137,7 +137,7 @@ function ns.RenderGuideQuestList()
         row.title:SetText((phases[stop.kind] or "Quest") .. " • " .. stop.title); row.title:SetTextColor(unpack(color))
         row.detail:SetText(ns.StopInstruction(stop) .. " • " .. ns.StopLocationText(stop))
         row.state:SetText((quest and quest.level and ("Lv " .. quest.level .. " • ") or "")
-            .. (ns.IsGroupQuest(stop.id) and (quest.questType .. " • ") or "") .. status(stop, query))
+            .. (ns.IsGroupQuest(stop.id) and (quest.questType .. " • ") or "") .. status(stop, query, policyGuide))
         row.stop, row.step = stop, stop.guideStep or index; row:Show()
     end
     layout(frame); frame.rendering = nil

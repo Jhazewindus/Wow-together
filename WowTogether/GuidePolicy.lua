@@ -178,6 +178,18 @@ function ns.LevelingWorkAllowed(id, key, query)
         or key == ns.self and ns.readyToTurnIn[id] == true) or false
 end
 
+function ns.GuideDifficultyOverride(guide)
+    return guide ~= nil and guide.fullGuide == true and guide.fixedRoute == true
+        and (guide.mode == "zone" or guide.mode == "bundle") and guide.continueOutsideLevels == true
+end
+
+-- This is a choice for one active leveling guide, not a global pickup gate.
+-- Identity, actual requirements and skips are still checked by its callers.
+function ns.GuideWorkAllowed(guide, id, key, query)
+    return ns.LevelingWorkAllowed(id, key, query)
+        or ns.GuideDifficultyOverride(guide) and ns.ClassQuestEnabled(id)
+end
+
 function ns.QuestLogReview()
     local result = {}
     for id in pairs(ns.active or {}) do

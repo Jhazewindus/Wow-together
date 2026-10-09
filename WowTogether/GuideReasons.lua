@@ -213,6 +213,9 @@ local function explain(goal, ctx)
         return result("class-progression", "Optional class progression; follow it for your class, or use Skip quest.", true)
     end
     if useful == false and not (guide and guide.mode == "dungeon") then
+        if ns.GuideDifficultyOverride(guide) then
+            return result("chosen-level-range", "Outside the recommended level range; included because you chose Continue anyway.", true)
+        end
         return result("outside-level-range", "Outside your useful leveling range; this saved or previewed step can be skipped.", false)
     end
     if goal.kind == "q" then

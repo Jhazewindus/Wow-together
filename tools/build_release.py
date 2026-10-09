@@ -55,6 +55,12 @@ then fully restart the client; the release includes taint mitigation (a /reload 
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+0.8.63 CONTINUE YOUR GUIDE adds Continue anyway when a fixed leveling guide
+pauses outside its recommended quest difficulty range. Resume available work
+without changing fixed order, pickup requirements or manual skips. The map
+updates immediately. The choice survives Scan/reload/pause-resume; Stop or
+switch guides to restore the normal range. See TESTING.md for the short checks.
+
 0.8.62 REVIEWED ZONE UPDATES integrates the leveling research from 22 zones,
 including the starting areas, Barrens, Duskwood, Dustwallow and later zones.
 Drops, supplied items, object actions, prerequisites and NPC positions are

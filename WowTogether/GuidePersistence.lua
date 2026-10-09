@@ -4,14 +4,14 @@ local addonName, ns = ...
 local guideFields = {"key", "title", "zone", "mode", "mapID", "homeMapID", "fullGuide", "fixedRoute", "personal",
     "rangeLow", "rangeHigh", "reason", "kind", "destination", "catchup", "guideKey", "xpStartLevel", "xpStart",
     "xpFinishLevel", "xpReward", "xpUnknown", "xpBaseline", "xpUnavailable", "xpAssumedStart", "classQuestScope", "earlyStartLevel", "dungeonKey", "pickupQuestID", "dungeonPhase",
-    "zoneGuideKey", "sectionLow", "sectionHigh", "minLevel", "maxLevel", "mainLevelLow", "mainLevelHigh", "professionID", "targetSkill"}
+    "zoneGuideKey", "sectionLow", "sectionHigh", "minLevel", "maxLevel", "mainLevelLow", "mainLevelHigh", "professionID", "targetSkill", "continueOutsideLevels"}
 local recordFields = {"id", "title", "level", "mapID", "x", "y", "npc", "source", "lineID", "lineName", "seriesRoot", "seriesName"}
 local stepFields = {"id", "kind", "mapID", "x", "y", "title", "label", "entityID", "action", "itemName", "targetName",
     "npcName", "published", "planned", "unknownLocation", "guideStep", "planNeedsReview", "learnedSource", "alternativeCount",
     "quantity", "itemID", "objectiveKey", "useItemName", "spellID", "entityType", "worldFallback", "legacyStepKey", "sourceAction",
     "progressName", "objectiveLabel", "quantityUnknown", "sourceZone", "flowWithQuestID", "flowUnlockQuestID",
     "flowRewardFirst", "flowLogSpace", "flowEarlyReward"}
-local cachedGuide, cachedPlan, cachedBatch, cachedVisit, cachedPhase, cachedProfessionBatch
+local cachedGuide, cachedPlan, cachedBatch, cachedVisit, cachedPhase, cachedProfessionBatch, cachedOutsideLevels
 local professionBatchFields = {"recipeID", "remaining", "total", "startSkill", "finish", "goal", "maximum"}
 ns.guideResumeStatus = "No saved guide to resume."
 
@@ -97,7 +97,8 @@ function ns.SaveSelectedGuide()
     local batchSignature = batch and table.concat({batch.recipeID, batch.remaining, batch.total, batch.startSkill,
         batch.finish, batch.goal, batch.maximum}, ":")
     if cachedGuide == guide and cachedPlan == guide.fixedPlan and cachedBatch == guide.batchIDs and cachedVisit == guide.npcVisitPickupIDs
-        and cachedPhase == guide.dungeonPhase and cachedProfessionBatch == batchSignature then return end
+        and cachedPhase == guide.dungeonPhase and cachedProfessionBatch == batchSignature
+        and cachedOutsideLevels == guide.continueOutsideLevels then return end
     local saved = descriptor(guide, 0)
     if not saved then return end
     local entry = ns.db.guideState[ns.self]
@@ -108,12 +109,14 @@ function ns.SaveSelectedGuide()
     cachedVisit = guide.npcVisitPickupIDs
     cachedPhase = guide.dungeonPhase
     cachedProfessionBatch = batchSignature
+    cachedOutsideLevels = guide.continueOutsideLevels
 end
 
 function ns.ClearSavedGuide(preserveCheckpoint)
     ns.pendingSavedGuide, ns.resumingGuide = nil, nil
     cachedGuide, cachedPlan, cachedBatch, cachedVisit, cachedPhase = nil, nil, nil, nil, nil
     cachedProfessionBatch = nil
+    cachedOutsideLevels = nil
     if not preserveCheckpoint and ns.db and ns.db.guideState and ns.self then ns.db.guideState[ns.self] = nil end
 end
 

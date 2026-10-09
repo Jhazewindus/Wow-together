@@ -847,6 +847,7 @@ function ns.AttachRouteProvider()
 end
 
 function ns.ActivateRoute(guide, route)
+    if ns.routeSelection and ns.routeSelection ~= guide then ns.routeSelection.continueOutsideLevels = nil end
     if ns.BeginGuideSession then ns.BeginGuideSession(guide) end
     ns.CancelGuideScan()
     if ns.CancelGuidePlanning then ns.CancelGuidePlanning() end
@@ -1019,6 +1020,7 @@ function ns.ClearRoute(preserveCheckpoint)
     ns.pendingGuideMap, ns.pendingPartyRouteStart = nil, nil
     ns.preparedLevelingRoute, ns.partyRouteHistoryScope = nil, nil
     ns.routeZoneViewPending, ns.routeRedrawPending = nil, nil
+    if ns.routeSelection then ns.routeSelection.continueOutsideLevels = nil end
     ns.selectedRoute, ns.routeSelection, ns.routeSignature, ns.routeWaypointPending, ns.routePaused = nil, nil, nil, nil, nil
     ns.navigationPreview, ns.guideStepHistory, ns.forceRouteReplan = nil, {}, nil
     -- Cancel the logical guide immediately, including in combat. Only map

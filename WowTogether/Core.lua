@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.62"
-ns.RELEASE_NAME = "REVIEWED ZONE UPDATES"
+ns.VERSION = "0.8.63"
+ns.RELEASE_NAME = "CONTINUE YOUR GUIDE"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}
