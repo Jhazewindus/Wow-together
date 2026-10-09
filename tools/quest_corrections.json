@@ -12764,5 +12764,333 @@
         ]
       }
     }
+  },
+  {
+    "questID": 5206,
+    "title": "Marauders of Darrowshire",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 50,
+      "level": 60,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "itemID": 13155,
+          "name": "Resonating Skull",
+          "quantity": 5
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 5,
+            "name": "Resonating Skull",
+            "entityID": 13155
+          },
+          {
+            "entityType": "item",
+            "quantity": 99,
+            "name": "Fetid Skull",
+            "entityID": 13157
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 5,
+            "name": "Resonating Skull",
+            "itemID": 13155
+          },
+          {
+            "quantity": 99,
+            "name": "Fetid Skull",
+            "itemID": 13157
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 2,
+            "mapID": 1423,
+            "action": "collect",
+            "entityID": 8529,
+            "npc": true,
+            "y": 0.434,
+            "objectiveKey": "item:13157",
+            "name": "Scourge Champion",
+            "x": 0.8059999999999999,
+            "quantity": 99,
+            "legacyStepKey": "q:1423:npc:8529",
+            "itemName": "Fetid Skull",
+            "itemID": 13157
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Fetid Skull",
+            "name": "Scourge Champion",
+            "entityID": 8529,
+            "npc": true,
+            "action": "collect"
+          }
+        ]
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 5,
+            "name": "Resonating Skull",
+            "entityID": 13155
+          },
+          {
+            "entityType": "item",
+            "quantity": 99,
+            "name": "Fetid Skull",
+            "entityID": 13157
+          }
+        ],
+        "requiredItems": [
+          {
+            "itemID": 13155,
+            "name": "Resonating Skull",
+            "quantity": 5
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 2,
+            "mapID": 1423,
+            "action": "collect",
+            "entityID": 8529,
+            "npc": true,
+            "y": 0.434,
+            "objectiveKey": "item:13157",
+            "name": "Scourge Champion",
+            "x": 0.8059999999999999,
+            "quantity": 99,
+            "legacyStepKey": "q:1423:npc:8529",
+            "itemName": "Fetid Skull",
+            "itemID": 13157
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Fetid Skull",
+            "name": "Scourge Champion",
+            "entityID": 8529,
+            "npc": true,
+            "action": "collect"
+          }
+        ]
+      }
+    },
+    "source": "Questie/QuestieDB Forever factual fields at pinned revision e0a6eaa86f181ac99262e34126bcd2ed1a1712d6: objectives names only the final hand-in item; requiredSourceItems identifies the source input. Current action area for the input is retained and no combine point is invented. Reviewed 2026-10-09; research/eastern-plaguelands-2026-10-09."
+  },
+  {
+    "questID": 6022,
+    "title": "To Kill With Purpose",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 54,
+      "level": 58,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "itemID": 15448,
+          "name": "Coagulated Rot",
+          "quantity": 1
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Coagulated Rot",
+            "entityID": 15448
+          },
+          {
+            "entityType": "item",
+            "quantity": 7,
+            "name": "Living Rot",
+            "entityID": 15447
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Coagulated Rot",
+            "itemID": 15448
+          },
+          {
+            "quantity": 7,
+            "name": "Living Rot",
+            "itemID": 15447
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 2,
+            "mapID": 1423,
+            "legacyStepKey": "q:1423:npc:8543",
+            "entityID": 8543,
+            "npc": true,
+            "x": 0.58,
+            "y": 0.7040000000000001,
+            "objectiveKey": "item:15447",
+            "itemID": 15447,
+            "quantity": 7,
+            "name": "Stitched Horror",
+            "itemName": "Living Rot",
+            "alternativeCount": 7,
+            "action": "collect"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Living Rot",
+            "name": "Scourge Warder",
+            "entityID": 8525,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Living Rot",
+            "name": "Dark Caster",
+            "entityID": 8526,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Living Rot",
+            "name": "Gibbering Ghoul",
+            "entityID": 8531,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Living Rot",
+            "name": "Unseen Servant",
+            "entityID": 8538,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Living Rot",
+            "name": "Hate Shrieker",
+            "entityID": 8541,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Living Rot",
+            "name": "Stitched Horror",
+            "entityID": 8543,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Living Rot",
+            "name": "Ziggurat Protector",
+            "entityID": 12262,
+            "npc": true,
+            "action": "collect"
+          }
+        ]
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Coagulated Rot",
+            "entityID": 15448
+          },
+          {
+            "entityType": "item",
+            "quantity": 7,
+            "name": "Living Rot",
+            "entityID": 15447
+          }
+        ],
+        "requiredItems": [
+          {
+            "itemID": 15448,
+            "name": "Coagulated Rot",
+            "quantity": 1
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 2,
+            "mapID": 1423,
+            "legacyStepKey": "q:1423:npc:8543",
+            "entityID": 8543,
+            "npc": true,
+            "x": 0.58,
+            "y": 0.7040000000000001,
+            "objectiveKey": "item:15447",
+            "itemID": 15447,
+            "quantity": 7,
+            "name": "Stitched Horror",
+            "itemName": "Living Rot",
+            "alternativeCount": 7,
+            "action": "collect"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Living Rot",
+            "name": "Scourge Warder",
+            "entityID": 8525,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Living Rot",
+            "name": "Dark Caster",
+            "entityID": 8526,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Living Rot",
+            "name": "Gibbering Ghoul",
+            "entityID": 8531,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Living Rot",
+            "name": "Unseen Servant",
+            "entityID": 8538,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Living Rot",
+            "name": "Hate Shrieker",
+            "entityID": 8541,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Living Rot",
+            "name": "Stitched Horror",
+            "entityID": 8543,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Living Rot",
+            "name": "Ziggurat Protector",
+            "entityID": 12262,
+            "npc": true,
+            "action": "collect"
+          }
+        ]
+      }
+    },
+    "source": "Questie/QuestieDB Forever factual fields at pinned revision e0a6eaa86f181ac99262e34126bcd2ed1a1712d6: objectives names only the final hand-in item; requiredSourceItems identifies the source input. Current action area for the input is retained and no combine point is invented. Reviewed 2026-10-09; research/eastern-plaguelands-2026-10-09."
   }
 ]
