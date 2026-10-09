@@ -1,0 +1,90 @@
+{
+  "zone": "Tirisfal Glades",
+  "date": "2026-10-09 Europe/Amsterdam",
+  "addon": "0.8.61",
+  "baseline_commit": "5bec9dfde8fdcbc70ae59f808a0e4b445ce88117",
+  "main_commit": "09155ca265278572649a3529b8ce7ea1b4eb8431",
+  "stage_corrected_ids": [
+    3095,
+    5901,
+    5902,
+    6395,
+    91317,
+    95328,
+    96896,
+    98389,
+    99134,
+    99144
+  ],
+  "direct_category_records": 66,
+  "compiled_ids": 96,
+  "actions_before": [
+    222,
+    170,
+    6
+  ],
+  "actions_after": [
+    223,
+    170,
+    6
+  ],
+  "gap_ids_before": [
+    3095,
+    91317,
+    99141
+  ],
+  "gap_ids_after": [
+    96896,
+    99134,
+    99141,
+    99144
+  ],
+  "closed_gap_ids": [
+    3095,
+    91317
+  ],
+  "newly_exposed_gap_ids": [
+    96896,
+    99134,
+    99144
+  ],
+  "uncertain_pickups_retained": [
+    1470,
+    1498,
+    1818,
+    1819,
+    1881,
+    1885
+  ],
+  "unknown_counts_retained": [
+    1819,
+    96897
+  ],
+  "strict_states": {
+    "Tirisfal": 12,
+    "Western_Plaguelands": 8
+  },
+  "all_candidate_and_same_scope_old_states_valid": true,
+  "all_endpoints_preserved": true,
+  "guard": "REVIEW REQUIRED: Tirisfal rewards/log/travel; Western PASS unchanged metrics",
+  "known_unmodeled_dependencies": "Marla acquisition-before-burial; Discipline five-of-many targets",
+  "tests": {
+    "zone": 121,
+    "focused": 6,
+    "host": 122,
+    "importer": 49,
+    "Lua51_compile": 86
+  },
+  "initial_zone_test_failure": "nine evidence-note idempotence assertions; re-packed note, second application changes no records, rerun passes unchanged assertions",
+  "global_audit": {
+    "sections": 152,
+    "points": 11829,
+    "recorded_gap_free": 33,
+    "unresolved_ordinary_records": 375
+  },
+  "source_hashes_verified": 24,
+  "entity_world_completion_xp_preserved": true,
+  "shared_runtime_modules_authored": false,
+  "native_beta_verified": false,
+  "full_suite_rerun": false
+}

@@ -11,7 +11,7 @@
     "count": 5230,
     "detailed_quests": 2232,
     "with_starters": 4283,
-    "with_objectives": 2148,
+    "with_objectives": 2147,
     "with_turnins": 4452,
     "with_prerequisites": 2466,
     "entities": {
@@ -232,7 +232,7 @@
       "pickups": 84,
       "objectives": 27,
       "turnins": 87,
-      "complete_locations": 73,
+      "complete_locations": 74,
       "missing_quest_ids": [
         1642,
         1646,
@@ -257,7 +257,6 @@
         78091,
         78092,
         78093,
-        91317,
         91860,
         91861,
         95036,
@@ -422,7 +421,7 @@
       "pickups": 73,
       "objectives": 27,
       "turnins": 73,
-      "complete_locations": 59,
+      "complete_locations": 60,
       "missing_quest_ids": [
         1692,
         1700,
@@ -433,7 +432,6 @@
         1705,
         1712,
         1838,
-        3095,
         3106,
         3112,
         3116,
@@ -1539,12 +1537,15 @@
     "eastern-kingdoms/tirisfal-glades": {
       "quests": 66,
       "pickups": 65,
-      "objectives": 44,
+      "objectives": 43,
       "turnins": 66,
-      "complete_locations": 64,
+      "complete_locations": 61,
       "missing_quest_ids": [
         5847,
-        99141
+        96896,
+        99134,
+        99141,
+        99144
       ]
     },
     "eastern-kingdoms/undercity": {
@@ -13330,6 +13331,7 @@
     2205,
     2459,
     2938,
+    3095,
     3100,
     3102,
     3511,
@@ -13363,6 +13365,9 @@
     5514,
     5538,
     5861,
+    5901,
+    5902,
+    6395,
     7383,
     7732,
     8416,
@@ -13375,6 +13380,7 @@
     9051,
     79975,
     79976,
+    91317,
     91738,
     92742,
     92744,
@@ -13388,13 +13394,18 @@
     94500,
     94501,
     95217,
+    95328,
+    96896,
     97331,
     98046,
     98065,
+    98389,
     99053,
     99073,
     99082,
     99101,
-    99123
+    99123,
+    99134,
+    99144
   ]
 }

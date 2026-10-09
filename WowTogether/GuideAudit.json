@@ -3,12 +3,12 @@
   "quest_records": 5230,
   "static_points_checked": 11829,
   "fixed_zone_guides_checked": 152,
-  "catalogue_reason_stages_checked": 16849,
+  "catalogue_reason_stages_checked": 16850,
   "catalogue_reason_codes": {
     "class-progression": 1822,
     "level-work": 4459,
     "outside-level-range": 2,
-    "quest-objective": 5222,
+    "quest-objective": 5223,
     "quest-reward": 5313,
     "selected-guide": 31
   },
@@ -4280,7 +4280,6 @@
     88757,
     88758,
     91282,
-    91317,
     91723,
     91724,
     91725,
@@ -11028,13 +11027,14 @@
       "zone": "Tirisfal Glades",
       "key": "level-zone:eastern-kingdoms/tirisfal-glades:levels:1-10",
       "quests": 67,
-      "steps": 222,
-      "unknown_location_steps": 4,
+      "steps": 223,
+      "unknown_location_steps": 5,
       "missing_location_quest_ids_by_stage": {
         "a": [],
         "q": [
-          3095,
-          99141
+          99134,
+          99141,
+          99144
         ],
         "t": []
       },
@@ -11051,28 +11051,26 @@
       ],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
-      "reason_steps_checked": 222,
+      "reason_steps_checked": 223,
       "destination_reason_codes": {
         "class-progression": 38,
-        "early-reward": 3,
         "level-work": 8,
-        "outside-level-range": 82,
+        "outside-level-range": 83,
         "prerequisite": 23,
         "quest-objective": 11,
-        "quest-reward": 51,
-        "return-hub": 5,
-        "reward-first": 1
+        "quest-reward": 56,
+        "return-hub": 4
       },
       "reason_review_steps": 109,
       "cross_zone_reason_steps": 8,
-      "flow_alternatives_evaluated": 1181,
-      "flow_loop_changes": 10,
+      "flow_alternatives_evaluated": 619,
+      "flow_loop_changes": 1,
       "flow_state_valid": true,
-      "quest_log_peak": 13,
-      "quest_reward_only_xp_shortfall": 18240,
-      "uncertain_travel_legs": 37,
-      "estimated_distance_before": 161657.89,
-      "estimated_distance_after": 160419.13
+      "quest_log_peak": 12,
+      "quest_reward_only_xp_shortfall": 15890,
+      "uncertain_travel_legs": 38,
+      "estimated_distance_before": 165125.46,
+      "estimated_distance_after": 164646.26
     },
     {
       "faction": "Horde",
@@ -11084,7 +11082,7 @@
       "missing_location_quest_ids_by_stage": {
         "a": [],
         "q": [
-          91317
+          96896
         ],
         "t": []
       },
@@ -11106,19 +11104,19 @@
         "outside-level-range": 60,
         "prerequisite": 21,
         "quest-objective": 5,
-        "quest-reward": 40,
-        "return-hub": 1
+        "quest-reward": 39,
+        "return-hub": 2
       },
-      "reason_review_steps": 70,
+      "reason_review_steps": 69,
       "cross_zone_reason_steps": 8,
-      "flow_alternatives_evaluated": 247,
+      "flow_alternatives_evaluated": 236,
       "flow_loop_changes": 1,
       "flow_state_valid": true,
-      "quest_log_peak": 14,
+      "quest_log_peak": 16,
       "quest_reward_only_xp_shortfall": 30970,
-      "uncertain_travel_legs": 32,
-      "estimated_distance_before": 185100.24,
-      "estimated_distance_after": 185100.24
+      "uncertain_travel_legs": 33,
+      "estimated_distance_before": 185500.94,
+      "estimated_distance_after": 185500.94
     },
     {
       "faction": "Horde",

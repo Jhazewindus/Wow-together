@@ -1,6 +1,6 @@
 {
   "source_data_complete": false,
-  "remaining_quest_records": 374,
+  "remaining_quest_records": 375,
   "limitations": [
     "This queue identifies missing facts, not a license to invent them",
     "Source capture must respect access policy and stop after denials",
@@ -1688,22 +1688,6 @@
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=3066",
         "https://www.wowhead.com/forever/npc=5901"
-      ]
-    },
-    {
-      "questID": 3095,
-      "title": "Simple Scroll",
-      "guides": [
-        "Horde / Tirisfal Glades"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=3095",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=9546",
-        "https://www.wowhead.com/forever/npc=1569",
-        "https://www.wowhead.com/forever/npc=2119"
       ]
     },
     {
@@ -4818,21 +4802,6 @@
       "entity_urls": []
     },
     {
-      "questID": 91317,
-      "title": "The Tarnished",
-      "guides": [
-        "Horde / Tirisfal Glades"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=91317",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=270435",
-        "https://www.wowhead.com/forever/npc=246378"
-      ]
-    },
-    {
       "questID": 91753,
       "title": "An Enchanting Lesson",
       "guides": [
@@ -5441,6 +5410,20 @@
       ]
     },
     {
+      "questID": 96896,
+      "title": "A Righteous Cause",
+      "guides": [
+        "Horde / Tirisfal Glades"
+      ],
+      "needs": [
+        "objective area"
+      ],
+      "quest_url": "https://www.wowhead.com/forever/quest=96896",
+      "entity_urls": [
+        "https://www.wowhead.com/forever/npc=267008"
+      ]
+    },
+    {
       "questID": 96897,
       "title": "The Cult of the Damned",
       "guides": [
@@ -5884,6 +5867,20 @@
       ]
     },
     {
+      "questID": 99134,
+      "title": "Discipline",
+      "guides": [
+        "Horde / Tirisfal Glades"
+      ],
+      "needs": [
+        "objective area"
+      ],
+      "quest_url": "https://www.wowhead.com/forever/quest=99134",
+      "entity_urls": [
+        "https://www.wowhead.com/forever/npc=1515"
+      ]
+    },
+    {
       "questID": 99141,
       "title": "Patience",
       "guides": [
@@ -5898,6 +5895,21 @@
         "https://www.wowhead.com/forever/item=286201",
         "https://www.wowhead.com/forever/item=286202",
         "https://www.wowhead.com/forever/npc=1515"
+      ]
+    },
+    {
+      "questID": 99144,
+      "title": "Seeking Refuge",
+      "guides": [
+        "Horde / Tirisfal Glades"
+      ],
+      "needs": [
+        "objective area"
+      ],
+      "quest_url": "https://www.wowhead.com/forever/quest=99144",
+      "entity_urls": [
+        "https://www.wowhead.com/forever/npc=246152",
+        "https://www.wowhead.com/forever/npc=275954"
       ]
     }
   ]

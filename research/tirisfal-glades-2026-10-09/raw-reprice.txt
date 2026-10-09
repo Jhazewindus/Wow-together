@@ -1,0 +1,1 @@
+Expected raw guard rejection: ValueError: Required action scope changed (one newly exposed unlocated Discipline placeholder).

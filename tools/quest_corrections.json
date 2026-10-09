@@ -7130,5 +7130,1380 @@
         ]
       }
     }
+  },
+  {
+    "questID": 3095,
+    "title": "Simple Scroll",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied trainer scroll/already-held residue starter: preserve actual hand-in item, class/race gate, prior hand-in and initial loot acquisition; remove only redundant post-acceptance farming/missing acquisition. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 1,
+      "level": 1,
+      "classMask": 1,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Simple Scroll",
+          "itemID": 9546
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Simple Scroll",
+            "entityID": 9546
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Simple Scroll",
+            "itemID": 9546
+          }
+        ],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Simple Scroll",
+            "entityID": 9546
+          }
+        ],
+        "objectiveLocationsIncomplete": true,
+        "providedItems": [],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "name": "Dannal Stern",
+            "y": 0.656,
+            "entityID": 2119,
+            "x": 0.325,
+            "npc": true,
+            "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Simple Scroll",
+            "itemID": 9546
+          }
+        ],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 9546,
+            "name": "Simple Scroll",
+            "quantity": 1
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "name": "Dannal Stern",
+            "y": 0.656,
+            "entityID": 2119,
+            "x": 0.325,
+            "npc": true,
+            "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)",
+            "action": "talk"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 91317,
+    "title": "The Tarnished",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Join actual head item drop to Rudolph Gelhardt and one published spawn, not the giver or another Tarnished mob. Preserve eight Drudges, six Zealots, one head and Undead Paladin gates. Maps the existing unknown head-acquisition occurrence; no action is added. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 9,
+      "level": 12,
+      "classMask": 2,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Rudolph Gelhardt's Head",
+          "itemID": 270435
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantity": 8,
+            "action": "kill",
+            "entityID": 259434,
+            "name": "Tarnished Drudge"
+          },
+          {
+            "entityType": "npc",
+            "quantity": 6,
+            "action": "kill",
+            "entityID": 259433,
+            "name": "Tarnished Zealot"
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 270435,
+            "name": "Rudolph Gelhardt's Head"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Rudolph Gelhardt's Head",
+            "itemID": 270435
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "action": "kill",
+            "entityID": 259434,
+            "npc": true,
+            "y": 0.5972,
+            "objectiveKey": "npc:259434",
+            "name": "Tarnished Drudge",
+            "sourceAreaID": 85,
+            "x": 0.11789999999999999,
+            "locationSource": "Published Forever beta-observation entity position",
+            "quantity": 8
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "action": "kill",
+            "entityID": 259433,
+            "npc": true,
+            "y": 0.6401,
+            "objectiveKey": "npc:259433",
+            "name": "Tarnished Zealot",
+            "sourceAreaID": 85,
+            "x": 0.1259,
+            "locationSource": "Published Forever beta-observation entity position",
+            "quantity": 6
+          }
+        ],
+        "npcTargets": [
+          {
+            "entityID": 259434,
+            "npc": true,
+            "action": "kill",
+            "name": "Tarnished Drudge"
+          },
+          {
+            "entityID": 259433,
+            "npc": true,
+            "action": "kill",
+            "name": "Tarnished Zealot"
+          }
+        ],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 270435,
+            "name": "Rudolph Gelhardt's Head"
+          }
+        ],
+        "objectiveLocationsIncomplete": true
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantity": 8,
+            "action": "kill",
+            "entityID": 259434,
+            "name": "Tarnished Drudge"
+          },
+          {
+            "entityType": "npc",
+            "quantity": 6,
+            "action": "kill",
+            "entityID": 259433,
+            "name": "Tarnished Zealot"
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 270435,
+            "name": "Rudolph Gelhardt's Head"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Rudolph Gelhardt's Head",
+            "itemID": 270435
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "action": "kill",
+            "entityID": 259434,
+            "npc": true,
+            "y": 0.5972,
+            "objectiveKey": "npc:259434",
+            "name": "Tarnished Drudge",
+            "sourceAreaID": 85,
+            "x": 0.11789999999999999,
+            "locationSource": "Published Forever beta-observation entity position",
+            "quantity": 8
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "action": "kill",
+            "entityID": 259433,
+            "npc": true,
+            "y": 0.6401,
+            "objectiveKey": "npc:259433",
+            "name": "Tarnished Zealot",
+            "sourceAreaID": 85,
+            "x": 0.1259,
+            "locationSource": "Published Forever beta-observation entity position",
+            "quantity": 6
+          },
+          {
+            "entityType": "npc",
+            "entityID": 259431,
+            "npc": true,
+            "name": "Rudolph Gelhardt",
+            "mapID": 1420,
+            "x": 0.114,
+            "y": 0.6436,
+            "sourceAreaID": 85,
+            "locationSource": "Published Forever beta-observation entity position",
+            "action": "loot",
+            "itemID": 270435,
+            "itemName": "Rudolph Gelhardt's Head",
+            "quantity": 1,
+            "objectiveKey": "item:270435"
+          }
+        ],
+        "npcTargets": [
+          {
+            "entityID": 259434,
+            "npc": true,
+            "action": "kill",
+            "name": "Tarnished Drudge"
+          },
+          {
+            "entityID": 259433,
+            "npc": true,
+            "action": "kill",
+            "name": "Tarnished Zealot"
+          },
+          {
+            "entityID": 259431,
+            "npc": true,
+            "name": "Rudolph Gelhardt",
+            "action": "loot",
+            "itemName": "Rudolph Gelhardt's Head"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      }
+    }
+  },
+  {
+    "questID": 95328,
+    "title": "Whispering Horror Residue",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied trainer scroll/already-held residue starter: preserve actual hand-in item, class/race gate, prior hand-in and initial loot acquisition; remove only redundant post-acceptance farming/missing acquisition. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 7,
+      "level": 10,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Whispering Horror Residue",
+          "itemID": 268812
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 268812,
+            "name": "Whispering Horror Residue"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Whispering Horror Residue",
+            "itemID": 268812
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "action": "loot",
+            "entityID": 260396,
+            "npc": true,
+            "x": 0.0932,
+            "y": 0.6139,
+            "objectiveKey": "item:268812",
+            "itemID": 268812,
+            "quantity": 1,
+            "sourceAreaID": 85,
+            "itemName": "Whispering Horror Residue",
+            "locationSource": "Published Forever beta-observation entity position",
+            "name": "Whispering Horror"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Whispering Horror Residue",
+            "name": "Whispering Horror",
+            "entityID": 260396,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "providedItems": [],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1458,
+            "name": "Father Lankester",
+            "y": 0.1765,
+            "entityID": 4607,
+            "x": 0.4862,
+            "npc": true,
+            "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Whispering Horror Residue",
+            "itemID": 268812
+          }
+        ],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 268812,
+            "name": "Whispering Horror Residue",
+            "quantity": 1
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1458,
+            "name": "Father Lankester",
+            "y": 0.1765,
+            "entityID": 4607,
+            "x": 0.4862,
+            "npc": true,
+            "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)",
+            "action": "talk"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 5901,
+    "title": "A Plague Upon Thee",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Use the explicitly supplied empty jar at the mapped termite mound; preserve 100 termites, real hand-in and cross-zone destination. Supplied count remains unknown. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 48,
+      "level": 55,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 100,
+          "name": "Plagueland Termites",
+          "itemID": 15043
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 100,
+            "action": "collect",
+            "entityID": 15043,
+            "name": "Plagueland Termites"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 100,
+            "name": "Plagueland Termites",
+            "itemID": 15043
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "object",
+            "mapID": 1423,
+            "action": "gather",
+            "entityID": 177464,
+            "x": 0.18,
+            "y": 0.2257,
+            "objectiveKey": "item:15043",
+            "itemID": 15043,
+            "quantity": 100,
+            "sourceAreaID": 139,
+            "itemName": "Plagueland Termites",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "name": "Large Termite Mound"
+          }
+        ],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "providedItems": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 100,
+            "action": "collect",
+            "entityID": 15043,
+            "name": "Plagueland Termites"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 100,
+            "name": "Plagueland Termites",
+            "itemID": 15043
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "object",
+            "mapID": 1423,
+            "action": "use",
+            "entityID": 177464,
+            "x": 0.18,
+            "y": 0.2257,
+            "objectiveKey": "item:15043",
+            "itemID": 15043,
+            "quantity": 100,
+            "sourceAreaID": 139,
+            "itemName": "Plagueland Termites",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "name": "Large Termite Mound",
+            "useItemName": "Empty Termite Jar",
+            "useItemID": 15042
+          }
+        ],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 15042,
+            "name": "Empty Termite Jar",
+            "quantityUnknown": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 5902,
+    "title": "A Plague Upon Thee",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Interact with the actual Northridge termite-barrel return object, retaining supplied barrel and completed gathering parent. No separate barrel farming or invented placement count. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 48,
+      "level": 55,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "providedItems": [],
+        "ends": [
+          {
+            "entityType": "object",
+            "mapID": 1422,
+            "name": "Termite Barrel",
+            "y": 0.31989999999999996,
+            "entityID": 177491,
+            "x": 0.48340000000000005,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 28
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 15044,
+            "name": "Barrel of Plagueland Termites",
+            "quantityUnknown": true
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "object",
+            "mapID": 1422,
+            "name": "Termite Barrel",
+            "y": 0.31989999999999996,
+            "entityID": 177491,
+            "x": 0.48340000000000005,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "sourceAreaID": 28,
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 6395,
+    "title": "Marla's Last Wish",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Remains are burial input, not an additional hand-in item. Preserve Samuel acquisition and counted grave interaction. Acquisition-before-burial stage ordering requires shared dependency review and native validation. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 3,
+      "level": 5,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Samuel's Remains Buried",
+            "entityID": 178090
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Samuel's Remains",
+            "entityID": 16333
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Samuel's Remains",
+            "itemID": 16333
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "objectiveKey": "object:178090",
+            "name": "Marla's Grave",
+            "y": 0.65,
+            "entityID": 178090,
+            "x": 0.312,
+            "quantity": 1,
+            "mapID": 1420
+          },
+          {
+            "sourceObjective": 1,
+            "mapID": 1420,
+            "action": "collect",
+            "entityID": 1919,
+            "npc": true,
+            "y": 0.616,
+            "objectiveKey": "item:16333",
+            "name": "Samuel Fipps",
+            "x": 0.366,
+            "quantity": 1,
+            "legacyStepKey": "q:1420:npc:1919",
+            "itemName": "Samuel's Remains",
+            "itemID": 16333
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Samuel's Remains",
+            "name": "Samuel Fipps",
+            "entityID": 1919,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Samuel's Remains Buried",
+            "entityID": 178090
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "objectiveKey": "object:178090",
+            "name": "Marla's Grave",
+            "y": 0.65,
+            "entityID": 178090,
+            "x": 0.312,
+            "quantity": 1,
+            "mapID": 1420,
+            "entityType": "object",
+            "action": "interact"
+          },
+          {
+            "sourceObjective": 1,
+            "mapID": 1420,
+            "action": "collect",
+            "entityID": 1919,
+            "npc": true,
+            "y": 0.616,
+            "objectiveKey": "item:16333",
+            "name": "Samuel Fipps",
+            "x": 0.366,
+            "quantity": 1,
+            "legacyStepKey": "q:1420:npc:1919",
+            "itemName": "Samuel's Remains",
+            "itemID": 16333
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Samuel's Remains",
+            "name": "Samuel Fipps",
+            "entityID": 1919,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      }
+    }
+  },
+  {
+    "questID": 98389,
+    "title": "A Light in the Darkness",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Published goal frees six Webbed Victims; interact rather than infer killing a friendly victim from a bare NPC point. Preserve six-count area and return. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 2,
+      "level": 4,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantity": 6,
+            "name": "Webbed Forsaken freed",
+            "entityID": 271961
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "sourceObjective": 271961,
+            "mapID": 1420,
+            "entityID": 271961,
+            "npc": true,
+            "y": 0.594,
+            "objectiveKey": "npc:271961",
+            "name": "Webbed Forsaken",
+            "x": 0.266,
+            "quantity": 6
+          }
+        ],
+        "npcTargets": [
+          {
+            "entityID": 271961,
+            "name": "Webbed Forsaken",
+            "npc": true
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantity": 6,
+            "name": "Webbed Forsaken freed",
+            "entityID": 271961,
+            "action": "interact"
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "sourceObjective": 271961,
+            "mapID": 1420,
+            "entityID": 271961,
+            "npc": true,
+            "y": 0.594,
+            "objectiveKey": "npc:271961",
+            "name": "Webbed Forsaken",
+            "x": 0.266,
+            "quantity": 6,
+            "action": "interact"
+          }
+        ],
+        "npcTargets": [
+          {
+            "entityID": 271961,
+            "name": "Webbed Forsaken",
+            "npc": true,
+            "action": "interact"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      }
+    }
+  },
+  {
+    "questID": 99144,
+    "title": "Seeking Refuge",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Published beta observation requires escape/observed-conversation work. No path or event trigger is published; expose missing objective rather than assert conversation-only completion or borrow giver coordinates. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 5,
+      "level": 7,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": true
+      }
+    }
+  },
+  {
+    "questID": 96896,
+    "title": "A Righteous Cause",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Published beta observation requires escape/observed-conversation work. No path or event trigger is published; expose missing objective rather than assert conversation-only completion or borrow giver coordinates. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 10,
+      "level": 13,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": true
+      }
+    }
+  },
+  {
+    "questID": 99134,
+    "title": "Discipline",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Retain published supplied motivator and expose unmodeled five-of-many punishment mechanics. Existing target/count conflicts are retained for coordination, not silently rewritten as a new eligibility/completion rule. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 4,
+      "level": 6,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Deathguard Linnea",
+            "entityID": 1495
+          },
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Deathguard Abraham",
+            "entityID": 1735
+          },
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Deathguard Phillip",
+            "entityID": 1739
+          },
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Deathguard Lawrence",
+            "entityID": 1743
+          },
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Deathguard Gavin",
+            "entityID": 2209
+          },
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Deathguard Billmuth",
+            "entityID": 257655
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "sourceObjective": 1746,
+            "mapID": 1420,
+            "name": "Deathguard Cyrus",
+            "entityID": 1746,
+            "y": 0.52,
+            "npc": true,
+            "x": 0.606
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "action": "kill",
+            "entityID": 1495,
+            "npc": true,
+            "sourceZone": "Tirisfal Glades",
+            "objectiveKey": "npc:1495",
+            "name": "Deathguard Linnea",
+            "sourceAreaID": 85,
+            "y": 0.602,
+            "x": 0.654,
+            "quantity": 1
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "action": "kill",
+            "entityID": 1735,
+            "npc": true,
+            "y": 0.5302,
+            "objectiveKey": "npc:1735",
+            "name": "Deathguard Abraham",
+            "sourceAreaID": 85,
+            "x": 0.5363,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "quantity": 1
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "entityID": 1739,
+            "npc": true,
+            "sourceZone": "Tirisfal Glades",
+            "objectiveKey": "npc:1739",
+            "name": "Deathguard Phillip",
+            "sourceAreaID": 85,
+            "y": 0.66,
+            "x": 0.324,
+            "quantity": 1
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "entityID": 1743,
+            "npc": true,
+            "y": 0.5142,
+            "objectiveKey": "npc:1743",
+            "name": "Deathguard Lawrence",
+            "sourceAreaID": 85,
+            "x": 0.5854,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "quantity": 1
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "entityID": 2209,
+            "npc": true,
+            "y": 0.5141,
+            "objectiveKey": "npc:2209",
+            "name": "Deathguard Gavin",
+            "sourceAreaID": 85,
+            "x": 0.6174000000000001,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "quantity": 1
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "entityID": 257655,
+            "npc": true,
+            "sourceZone": "Tirisfal Glades",
+            "objectiveKey": "npc:257655",
+            "name": "Deathguard Billmuth",
+            "sourceAreaID": 85,
+            "y": 0.444,
+            "x": 0.22,
+            "quantity": 1
+          }
+        ],
+        "npcTargets": [
+          {
+            "entityID": 1495,
+            "npc": true,
+            "action": "kill",
+            "name": "Deathguard Linnea"
+          },
+          {
+            "entityID": 1496,
+            "npc": true,
+            "action": "kill",
+            "name": "Deathguard Dillinger"
+          },
+          {
+            "entityID": 1519,
+            "name": "Deathguard Simmer",
+            "npc": true
+          },
+          {
+            "entityID": 1652,
+            "name": "Deathguard Burgess",
+            "npc": true
+          },
+          {
+            "entityID": 1735,
+            "npc": true,
+            "action": "kill",
+            "name": "Deathguard Abraham"
+          },
+          {
+            "entityID": 1736,
+            "name": "Deathguard Randolph",
+            "npc": true
+          },
+          {
+            "entityID": 1737,
+            "name": "Deathguard Oliver",
+            "npc": true
+          },
+          {
+            "entityID": 1738,
+            "npc": true,
+            "action": "kill",
+            "name": "Deathguard Terrence"
+          },
+          {
+            "entityID": 1739,
+            "name": "Deathguard Phillip",
+            "npc": true
+          },
+          {
+            "entityID": 1740,
+            "name": "Deathguard Saltain",
+            "npc": true
+          },
+          {
+            "entityID": 1741,
+            "name": "Deathguard Bartrand",
+            "npc": true
+          },
+          {
+            "entityID": 1742,
+            "name": "Deathguard Bartholomew",
+            "npc": true
+          },
+          {
+            "entityID": 1743,
+            "name": "Deathguard Lawrence",
+            "npc": true
+          },
+          {
+            "entityID": 1744,
+            "npc": true,
+            "action": "kill",
+            "name": "Deathguard Mort"
+          },
+          {
+            "entityID": 1745,
+            "name": "Deathguard Morris",
+            "npc": true
+          },
+          {
+            "entityID": 1746,
+            "name": "Deathguard Cyrus",
+            "npc": true
+          },
+          {
+            "entityID": 2209,
+            "name": "Deathguard Gavin",
+            "npc": true
+          },
+          {
+            "entityID": 2210,
+            "name": "Deathguard Royann",
+            "npc": true
+          },
+          {
+            "entityID": 5725,
+            "npc": true,
+            "action": "kill",
+            "name": "Deathguard Lundmark"
+          },
+          {
+            "entityID": 251001,
+            "name": "Deathguard Kristof",
+            "npc": true
+          },
+          {
+            "entityID": 257655,
+            "name": "Deathguard Billmuth",
+            "npc": true
+          },
+          {
+            "entityID": 272101,
+            "name": "Deathguard Lizabetha",
+            "npc": true
+          },
+          {
+            "entityID": 275103,
+            "name": "Deathguard Veteran",
+            "npc": true
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "providedItems": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Deathguard Linnea",
+            "entityID": 1495
+          },
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Deathguard Abraham",
+            "entityID": 1735
+          },
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Deathguard Phillip",
+            "entityID": 1739
+          },
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Deathguard Lawrence",
+            "entityID": 1743
+          },
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Deathguard Gavin",
+            "entityID": 2209
+          },
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Deathguard Billmuth",
+            "entityID": 257655
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "sourceObjective": 1746,
+            "mapID": 1420,
+            "name": "Deathguard Cyrus",
+            "entityID": 1746,
+            "y": 0.52,
+            "npc": true,
+            "x": 0.606
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "action": "kill",
+            "entityID": 1495,
+            "npc": true,
+            "sourceZone": "Tirisfal Glades",
+            "objectiveKey": "npc:1495",
+            "name": "Deathguard Linnea",
+            "sourceAreaID": 85,
+            "y": 0.602,
+            "x": 0.654,
+            "quantity": 1
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "action": "kill",
+            "entityID": 1735,
+            "npc": true,
+            "y": 0.5302,
+            "objectiveKey": "npc:1735",
+            "name": "Deathguard Abraham",
+            "sourceAreaID": 85,
+            "x": 0.5363,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "quantity": 1
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "entityID": 1739,
+            "npc": true,
+            "sourceZone": "Tirisfal Glades",
+            "objectiveKey": "npc:1739",
+            "name": "Deathguard Phillip",
+            "sourceAreaID": 85,
+            "y": 0.66,
+            "x": 0.324,
+            "quantity": 1
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "entityID": 1743,
+            "npc": true,
+            "y": 0.5142,
+            "objectiveKey": "npc:1743",
+            "name": "Deathguard Lawrence",
+            "sourceAreaID": 85,
+            "x": 0.5854,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "quantity": 1
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "entityID": 2209,
+            "npc": true,
+            "y": 0.5141,
+            "objectiveKey": "npc:2209",
+            "name": "Deathguard Gavin",
+            "sourceAreaID": 85,
+            "x": 0.6174000000000001,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "quantity": 1
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1420,
+            "entityID": 257655,
+            "npc": true,
+            "sourceZone": "Tirisfal Glades",
+            "objectiveKey": "npc:257655",
+            "name": "Deathguard Billmuth",
+            "sourceAreaID": 85,
+            "y": 0.444,
+            "x": 0.22,
+            "quantity": 1
+          }
+        ],
+        "npcTargets": [
+          {
+            "entityID": 1495,
+            "npc": true,
+            "action": "kill",
+            "name": "Deathguard Linnea"
+          },
+          {
+            "entityID": 1496,
+            "npc": true,
+            "action": "kill",
+            "name": "Deathguard Dillinger"
+          },
+          {
+            "entityID": 1519,
+            "name": "Deathguard Simmer",
+            "npc": true
+          },
+          {
+            "entityID": 1652,
+            "name": "Deathguard Burgess",
+            "npc": true
+          },
+          {
+            "entityID": 1735,
+            "npc": true,
+            "action": "kill",
+            "name": "Deathguard Abraham"
+          },
+          {
+            "entityID": 1736,
+            "name": "Deathguard Randolph",
+            "npc": true
+          },
+          {
+            "entityID": 1737,
+            "name": "Deathguard Oliver",
+            "npc": true
+          },
+          {
+            "entityID": 1738,
+            "npc": true,
+            "action": "kill",
+            "name": "Deathguard Terrence"
+          },
+          {
+            "entityID": 1739,
+            "name": "Deathguard Phillip",
+            "npc": true
+          },
+          {
+            "entityID": 1740,
+            "name": "Deathguard Saltain",
+            "npc": true
+          },
+          {
+            "entityID": 1741,
+            "name": "Deathguard Bartrand",
+            "npc": true
+          },
+          {
+            "entityID": 1742,
+            "name": "Deathguard Bartholomew",
+            "npc": true
+          },
+          {
+            "entityID": 1743,
+            "name": "Deathguard Lawrence",
+            "npc": true
+          },
+          {
+            "entityID": 1744,
+            "npc": true,
+            "action": "kill",
+            "name": "Deathguard Mort"
+          },
+          {
+            "entityID": 1745,
+            "name": "Deathguard Morris",
+            "npc": true
+          },
+          {
+            "entityID": 1746,
+            "name": "Deathguard Cyrus",
+            "npc": true
+          },
+          {
+            "entityID": 2209,
+            "name": "Deathguard Gavin",
+            "npc": true
+          },
+          {
+            "entityID": 2210,
+            "name": "Deathguard Royann",
+            "npc": true
+          },
+          {
+            "entityID": 5725,
+            "npc": true,
+            "action": "kill",
+            "name": "Deathguard Lundmark"
+          },
+          {
+            "entityID": 251001,
+            "name": "Deathguard Kristof",
+            "npc": true
+          },
+          {
+            "entityID": 257655,
+            "name": "Deathguard Billmuth",
+            "npc": true
+          },
+          {
+            "entityID": 272101,
+            "name": "Deathguard Lizabetha",
+            "npc": true
+          },
+          {
+            "entityID": 275103,
+            "name": "Deathguard Veteran",
+            "npc": true
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": true,
+        "providedItems": [
+          {
+            "entityType": "item",
+            "entityID": 286176,
+            "name": "Executor's Motivator",
+            "quantityUnknown": true
+          }
+        ]
+      }
+    }
   }
 ]

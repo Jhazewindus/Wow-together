@@ -1,0 +1,2530 @@
+{
+  "3095": {
+    "before": {
+      "prerequisitesRead": true,
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Simple Scroll",
+          "entityID": 9546
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Shadow Priest Sarvis",
+          "entityID": 1569
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Simple Scroll",
+          "entityID": 9546
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Simple Scroll",
+          "itemID": 9546
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "classMask": 1,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "name": "Dannal Stern",
+          "y": 0.656,
+          "entityID": 2119,
+          "x": 0.325,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "objectives": {},
+      "level": 1,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 1569,
+          "npc": true,
+          "sourceZone": "Tirisfal Glades",
+          "x": 0.308,
+          "name": "Shadow Priest Sarvis",
+          "sourceAreaID": 85,
+          "y": 0.662
+        }
+      ],
+      "title": "Simple Scroll",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "prerequisiteAny": [
+        364
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Dannal Stern",
+          "entityID": 2119
+        }
+      ],
+      "xp": 40,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        5
+      ],
+      "minLevel": 1,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 16,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Simple Scroll",
+            "entityID": 9546
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Shadow Priest Sarvis",
+            "entityID": 1569
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Dannal Stern",
+            "entityID": 2119
+          }
+        ]
+      },
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "classes/warrior"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "missingRequirements": {},
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Shadow Priest Sarvis",
+          "entityID": 1569
+        }
+      ],
+      "requirements": {},
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Simple Scroll",
+          "itemID": 9546
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "objectives": {},
+      "classMask": 1,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "action": "talk",
+          "entityID": 2119,
+          "npc": true,
+          "y": 0.656,
+          "x": 0.325,
+          "name": "Dannal Stern",
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Simple Scroll",
+          "entityID": 9546
+        }
+      ],
+      "level": 1,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 1569,
+          "npc": true,
+          "sourceZone": "Tirisfal Glades",
+          "x": 0.308,
+          "name": "Shadow Priest Sarvis",
+          "sourceAreaID": 85,
+          "y": 0.662
+        }
+      ],
+      "title": "Simple Scroll",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 16,
+      "side": "Horde",
+      "prerequisiteAny": [
+        364
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Dannal Stern",
+          "entityID": 2119
+        }
+      ],
+      "xp": 40,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        5
+      ],
+      "minLevel": 1,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied trainer scroll/already-held residue starter: preserve actual hand-in item, class/race gate, prior hand-in and initial loot acquisition; remove only redundant post-acceptance farming/missing acquisition. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09.",
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Shadow Priest Sarvis",
+            "entityID": 1569
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Simple Scroll",
+            "entityID": 9546
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Dannal Stern",
+            "entityID": 2119
+          }
+        ]
+      },
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "categoryPath": "classes/warrior"
+    }
+  },
+  "5901": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1420,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mickey Levine",
+          "entityID": 11615
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 100,
+          "action": "collect",
+          "entityID": 15043,
+          "name": "Plagueland Termites"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 100,
+          "name": "Plagueland Termites",
+          "itemID": 15043
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1423,
+          "action": "gather",
+          "entityID": 177464,
+          "x": 0.18,
+          "y": 0.2257,
+          "objectiveKey": "item:15043",
+          "itemID": 15043,
+          "quantity": 100,
+          "sourceAreaID": 139,
+          "itemName": "Plagueland Termites",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Large Termite Mound"
+        }
+      ],
+      "level": 55,
+      "areaID": 85,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 11615,
+          "npc": true,
+          "y": 0.7234,
+          "x": 0.8329000000000001,
+          "name": "Mickey Levine",
+          "sourceAreaID": 85,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "money": 8500,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mickey Levine",
+          "entityID": 11615
+        }
+      ],
+      "xp": 5650,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 11615,
+          "npc": true,
+          "y": 0.7234,
+          "x": 0.8329000000000001,
+          "name": "Mickey Levine",
+          "sourceAreaID": 85,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 48,
+      "requirementSource": "Published Forever typed objectives",
+      "title": "A Plague Upon Thee",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 100,
+            "action": "collect",
+            "entityID": 15043,
+            "name": "Plagueland Termites"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Mickey Levine",
+            "entityID": 11615
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Mickey Levine",
+            "entityID": 11615
+          }
+        ]
+      },
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "eastern-kingdoms/tirisfal-glades"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1420,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mickey Levine",
+          "entityID": 11615
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 100,
+          "action": "collect",
+          "entityID": 15043,
+          "name": "Plagueland Termites"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 100,
+          "name": "Plagueland Termites",
+          "itemID": 15043
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "objectives": [
+        {
+          "entityType": "object",
+          "mapID": 1423,
+          "action": "use",
+          "entityID": 177464,
+          "useItemID": 15042,
+          "useItemName": "Empty Termite Jar",
+          "x": 0.18,
+          "y": 0.2257,
+          "objectiveKey": "item:15043",
+          "itemID": 15043,
+          "quantity": 100,
+          "sourceAreaID": 139,
+          "itemName": "Plagueland Termites",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Large Termite Mound"
+        }
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "name": "Empty Termite Jar",
+          "entityID": 15042
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 11615,
+          "npc": true,
+          "y": 0.7234,
+          "x": 0.8329000000000001,
+          "name": "Mickey Levine",
+          "sourceAreaID": 85,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "level": 55,
+      "areaID": 85,
+      "title": "A Plague Upon Thee",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 8589934770,
+      "side": "Horde",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 11615,
+          "npc": true,
+          "y": 0.7234,
+          "x": 0.8329000000000001,
+          "name": "Mickey Levine",
+          "sourceAreaID": 85,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "money": 8500,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mickey Levine",
+          "entityID": 11615
+        }
+      ],
+      "xp": 5650,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 48,
+      "requirementSource": "Published Forever typed objectives",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Use the explicitly supplied empty jar at the mapped termite mound; preserve 100 termites, real hand-in and cross-zone destination. Supplied count remains unknown. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09.",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 100,
+            "action": "collect",
+            "entityID": 15043,
+            "name": "Plagueland Termites"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Mickey Levine",
+            "entityID": 11615
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantityUnknown": true,
+            "name": "Empty Termite Jar",
+            "entityID": 15042
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Mickey Levine",
+            "entityID": 11615
+          }
+        ]
+      },
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "eastern-kingdoms/tirisfal-glades"
+    }
+  },
+  "5902": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1420,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mickey Levine",
+          "entityID": 11615
+        }
+      ],
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "object",
+          "mapID": 1422,
+          "name": "Termite Barrel",
+          "y": 0.31989999999999996,
+          "entityID": 177491,
+          "x": 0.48340000000000005,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "sourceAreaID": 28
+        }
+      ],
+      "objectives": {},
+      "level": 55,
+      "areaID": 85,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 11615,
+          "npc": true,
+          "y": 0.7234,
+          "x": 0.8329000000000001,
+          "name": "Mickey Levine",
+          "sourceAreaID": 85,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "raceMask": 8589934770,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Termite Barrel",
+          "entityID": 177491
+        }
+      ],
+      "xp": 2800,
+      "prerequisiteAny": [
+        5901
+      ],
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 48,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "title": "A Plague Upon Thee",
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Mickey Levine",
+            "entityID": 11615
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "Termite Barrel",
+            "entityID": 177491
+          }
+        ]
+      },
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "categoryPath": "eastern-kingdoms/tirisfal-glades"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1420,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Mickey Levine",
+          "entityID": 11615
+        }
+      ],
+      "requirements": {},
+      "objectives": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "name": "Barrel of Plagueland Termites",
+          "entityID": 15044
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "object",
+          "mapID": 1422,
+          "action": "interact",
+          "entityID": 177491,
+          "y": 0.31989999999999996,
+          "x": 0.48340000000000005,
+          "name": "Termite Barrel",
+          "sourceAreaID": 28,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 11615,
+          "npc": true,
+          "y": 0.7234,
+          "x": 0.8329000000000001,
+          "name": "Mickey Levine",
+          "sourceAreaID": 85,
+          "locationSource": "Published Forever converted-baseline entity position"
+        }
+      ],
+      "level": 55,
+      "areaID": 85,
+      "title": "A Plague Upon Thee",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 8589934770,
+      "side": "Horde",
+      "prerequisiteAny": [
+        5901
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Termite Barrel",
+          "entityID": 177491
+        }
+      ],
+      "xp": 2800,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 48,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Interact with the actual Northridge termite-barrel return object, retaining supplied barrel and completed gathering parent. No separate barrel farming or invented placement count. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09.",
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Mickey Levine",
+            "entityID": 11615
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantityUnknown": true,
+            "name": "Barrel of Plagueland Termites",
+            "entityID": 15044
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "Termite Barrel",
+            "entityID": 177491
+          }
+        ]
+      },
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "categoryPath": "eastern-kingdoms/tirisfal-glades"
+    }
+  },
+  "6395": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1420,
+      "zone": "Tirisfal Glades",
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "name": "Samuel's Remains Buried",
+          "entityID": 178090
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Samuel's Remains",
+          "entityID": 16333
+        }
+      ],
+      "npcTargets": [
+        {
+          "itemName": "Samuel's Remains",
+          "name": "Samuel Fipps",
+          "entityID": 1919,
+          "npc": true,
+          "action": "collect"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Samuel's Remains",
+          "itemID": 16333
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "objectiveKey": "object:178090",
+          "name": "Marla's Grave",
+          "y": 0.65,
+          "entityID": 178090,
+          "x": 0.312,
+          "quantity": 1,
+          "mapID": 1420
+        },
+        {
+          "sourceObjective": 1,
+          "mapID": 1420,
+          "action": "collect",
+          "entityID": 1919,
+          "npc": true,
+          "y": 0.616,
+          "objectiveKey": "item:16333",
+          "name": "Samuel Fipps",
+          "x": 0.366,
+          "quantity": 1,
+          "legacyStepKey": "q:1420:npc:1919",
+          "itemName": "Samuel's Remains",
+          "itemID": 16333
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "starts": [
+        {
+          "y": 0.66,
+          "mapID": 1420,
+          "name": "Novice Elreth",
+          "entityID": 1661,
+          "npc": true,
+          "x": 0.308
+        }
+      ],
+      "level": 5,
+      "areaID": 85,
+      "ends": [
+        {
+          "y": 0.66,
+          "mapID": 1420,
+          "name": "Novice Elreth",
+          "entityID": 1661,
+          "npc": true,
+          "x": 0.308
+        }
+      ],
+      "prerequisiteAny": [
+        376
+      ],
+      "side": "Horde",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Novice Elreth",
+          "entityID": 1661
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Novice Elreth",
+          "entityID": 1661
+        }
+      ],
+      "xp": 450,
+      "title": "Marla's Last Wish",
+      "foreverStatus": "updated",
+      "shareable": true,
+      "minLevel": 3,
+      "requirementSource": "Wowhead Forever objective table",
+      "raceMask": 146,
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/tirisfal-glades"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1420,
+      "npcTargets": [
+        {
+          "itemName": "Samuel's Remains",
+          "name": "Samuel Fipps",
+          "entityID": 1919,
+          "npc": true,
+          "action": "collect"
+        }
+      ],
+      "zone": "Tirisfal Glades",
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "name": "Samuel's Remains Buried",
+          "entityID": 178090
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1420,
+          "action": "interact",
+          "entityID": 178090,
+          "y": 0.65,
+          "objectiveKey": "object:178090",
+          "name": "Marla's Grave",
+          "x": 0.312,
+          "entityType": "object",
+          "quantity": 1
+        },
+        {
+          "sourceObjective": 1,
+          "mapID": 1420,
+          "action": "collect",
+          "entityID": 1919,
+          "npc": true,
+          "y": 0.616,
+          "objectiveKey": "item:16333",
+          "name": "Samuel Fipps",
+          "x": 0.366,
+          "quantity": 1,
+          "legacyStepKey": "q:1420:npc:1919",
+          "itemName": "Samuel's Remains",
+          "itemID": 16333
+        }
+      ],
+      "requiredItems": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "starts": [
+        {
+          "y": 0.66,
+          "mapID": 1420,
+          "name": "Novice Elreth",
+          "entityID": 1661,
+          "npc": true,
+          "x": 0.308
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "title": "Marla's Last Wish",
+      "level": 5,
+      "areaID": 85,
+      "ends": [
+        {
+          "y": 0.66,
+          "mapID": 1420,
+          "name": "Novice Elreth",
+          "entityID": 1661,
+          "npc": true,
+          "x": 0.308
+        }
+      ],
+      "prerequisiteAny": [
+        376
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Novice Elreth",
+          "entityID": 1661
+        }
+      ],
+      "side": "Horde",
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Novice Elreth",
+          "entityID": 1661
+        }
+      ],
+      "xp": 450,
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Remains are burial input, not an additional hand-in item. Preserve Samuel acquisition and counted grave interaction. Acquisition-before-burial stage ordering requires shared dependency review and native validation. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09.",
+      "foreverStatus": "updated",
+      "shareable": true,
+      "minLevel": 3,
+      "requirementSource": "Wowhead Forever objective table",
+      "raceMask": 146,
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/tirisfal-glades"
+    }
+  },
+  "91317": {
+    "before": {
+      "raceMask": 16,
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 270435,
+          "name": "Rudolph Gelhardt's Head"
+        }
+      ],
+      "zone": "Paladin",
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 8,
+          "action": "kill",
+          "entityID": 259434,
+          "name": "Tarnished Drudge"
+        },
+        {
+          "entityType": "npc",
+          "quantity": 6,
+          "action": "kill",
+          "entityID": 259433,
+          "name": "Tarnished Zealot"
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 270435,
+          "name": "Rudolph Gelhardt's Head"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Rudolph Gelhardt's Head",
+          "itemID": 270435
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 2,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 246378,
+          "npc": true,
+          "y": 0.447,
+          "x": 0.2205,
+          "name": "Danitha Morr",
+          "sourceAreaID": 85,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "level": 12,
+      "npcTargets": [
+        {
+          "entityID": 259434,
+          "npc": true,
+          "action": "kill",
+          "name": "Tarnished Drudge"
+        },
+        {
+          "entityID": 259433,
+          "npc": true,
+          "action": "kill",
+          "name": "Tarnished Zealot"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "action": "kill",
+          "entityID": 259434,
+          "npc": true,
+          "y": 0.5972,
+          "objectiveKey": "npc:259434",
+          "name": "Tarnished Drudge",
+          "sourceAreaID": 85,
+          "x": 0.11789999999999999,
+          "locationSource": "Published Forever beta-observation entity position",
+          "quantity": 8
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "action": "kill",
+          "entityID": 259433,
+          "npc": true,
+          "y": 0.6401,
+          "objectiveKey": "npc:259433",
+          "name": "Tarnished Zealot",
+          "sourceAreaID": 85,
+          "x": 0.1259,
+          "locationSource": "Published Forever beta-observation entity position",
+          "quantity": 6
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 246378,
+          "npc": true,
+          "y": 0.447,
+          "x": 0.2205,
+          "name": "Danitha Morr",
+          "sourceAreaID": 85,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "prerequisitesRead": true,
+      "side": "Horde",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Danitha Morr",
+          "entityID": 246378
+        }
+      ],
+      "money": 500,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Danitha Morr",
+          "entityID": 246378
+        }
+      ],
+      "xp": 910,
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "allowedRaceIDs": [
+        5
+      ],
+      "title": "The Tarnished",
+      "requirementSource": "Published Forever typed objectives",
+      "minLevel": 9,
+      "foreverStatus": "new",
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "classes/paladin"
+    },
+    "after": {
+      "raceMask": 16,
+      "missingRequirements": {},
+      "zone": "Paladin",
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 8,
+          "action": "kill",
+          "entityID": 259434,
+          "name": "Tarnished Drudge"
+        },
+        {
+          "entityType": "npc",
+          "quantity": 6,
+          "action": "kill",
+          "entityID": 259433,
+          "name": "Tarnished Zealot"
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 270435,
+          "name": "Rudolph Gelhardt's Head"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Rudolph Gelhardt's Head",
+          "itemID": 270435
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 2,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 246378,
+          "npc": true,
+          "y": 0.447,
+          "x": 0.2205,
+          "name": "Danitha Morr",
+          "sourceAreaID": 85,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "level": 12,
+      "npcTargets": [
+        {
+          "entityID": 259434,
+          "npc": true,
+          "action": "kill",
+          "name": "Tarnished Drudge"
+        },
+        {
+          "entityID": 259433,
+          "npc": true,
+          "action": "kill",
+          "name": "Tarnished Zealot"
+        },
+        {
+          "itemName": "Rudolph Gelhardt's Head",
+          "name": "Rudolph Gelhardt",
+          "entityID": 259431,
+          "npc": true,
+          "action": "loot"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "action": "kill",
+          "entityID": 259434,
+          "npc": true,
+          "y": 0.5972,
+          "objectiveKey": "npc:259434",
+          "name": "Tarnished Drudge",
+          "sourceAreaID": 85,
+          "x": 0.11789999999999999,
+          "locationSource": "Published Forever beta-observation entity position",
+          "quantity": 8
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "action": "kill",
+          "entityID": 259433,
+          "npc": true,
+          "y": 0.6401,
+          "objectiveKey": "npc:259433",
+          "name": "Tarnished Zealot",
+          "sourceAreaID": 85,
+          "x": 0.1259,
+          "locationSource": "Published Forever beta-observation entity position",
+          "quantity": 6
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "action": "loot",
+          "entityID": 259431,
+          "npc": true,
+          "x": 0.114,
+          "y": 0.6436,
+          "objectiveKey": "item:270435",
+          "itemID": 270435,
+          "quantity": 1,
+          "sourceAreaID": 85,
+          "itemName": "Rudolph Gelhardt's Head",
+          "locationSource": "Published Forever beta-observation entity position",
+          "name": "Rudolph Gelhardt"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 246378,
+          "npc": true,
+          "y": 0.447,
+          "x": 0.2205,
+          "name": "Danitha Morr",
+          "sourceAreaID": 85,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "prerequisitesRead": true,
+      "side": "Horde",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Danitha Morr",
+          "entityID": 246378
+        }
+      ],
+      "money": 500,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Danitha Morr",
+          "entityID": 246378
+        }
+      ],
+      "xp": 910,
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "allowedRaceIDs": [
+        5
+      ],
+      "minLevel": 9,
+      "requirementSource": "Published Forever typed objectives",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Join actual head item drop to Rudolph Gelhardt and one published spawn, not the giver or another Tarnished mob. Preserve eight Drudges, six Zealots, one head and Undead Paladin gates. Maps the existing unknown head-acquisition occurrence; no action is added. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09.",
+      "title": "The Tarnished",
+      "foreverStatus": "new",
+      "categoryPath": "classes/paladin"
+    }
+  },
+  "95328": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1420,
+      "zone": "Tirisfal Glades",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "action": "collect",
+          "entityID": 268812,
+          "name": "Whispering Horror Residue"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Whispering Horror Residue",
+          "itemID": 268812
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "npcTargets": [
+        {
+          "itemName": "Whispering Horror Residue",
+          "name": "Whispering Horror",
+          "entityID": 260396,
+          "npc": true,
+          "action": "loot"
+        }
+      ],
+      "level": 10,
+      "areaID": 85,
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "action": "loot",
+          "entityID": 260396,
+          "npc": true,
+          "x": 0.0932,
+          "y": 0.6139,
+          "objectiveKey": "item:268812",
+          "itemID": 268812,
+          "quantity": 1,
+          "sourceAreaID": 85,
+          "itemName": "Whispering Horror Residue",
+          "locationSource": "Published Forever beta-observation entity position",
+          "name": "Whispering Horror"
+        }
+      ],
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "action": "start-item",
+          "entityID": 260396,
+          "npc": true,
+          "sourceAction": "loot",
+          "x": 0.0932,
+          "itemID": 268812,
+          "y": 0.6139,
+          "sourceAreaID": 85,
+          "itemName": "Whispering Horror Residue",
+          "locationSource": "Published Forever beta-observation entity position",
+          "name": "Whispering Horror"
+        }
+      ],
+      "side": "Horde",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1458,
+          "name": "Father Lankester",
+          "y": 0.1765,
+          "entityID": 4607,
+          "x": 0.4862,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "money": 350,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Father Lankester",
+          "entityID": 4607
+        }
+      ],
+      "xp": 840,
+      "startRefs": [
+        {
+          "entityType": "item",
+          "name": "Whispering Horror Residue",
+          "entityID": 268812
+        }
+      ],
+      "foreverStatus": "new",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 7,
+      "requirementSource": "Published Forever typed objectives",
+      "title": "Whispering Horror Residue",
+      "raceMask": 8589934770,
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "eastern-kingdoms/tirisfal-glades"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1420,
+      "zone": "Tirisfal Glades",
+      "requirements": {},
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Whispering Horror Residue",
+          "itemID": 268812
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "npcTargets": {},
+      "objectives": {},
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Whispering Horror Residue",
+          "entityID": 268812
+        }
+      ],
+      "level": 10,
+      "areaID": 85,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "action": "start-item",
+          "entityID": 260396,
+          "npc": true,
+          "sourceAction": "loot",
+          "x": 0.0932,
+          "itemID": 268812,
+          "y": 0.6139,
+          "sourceAreaID": 85,
+          "itemName": "Whispering Horror Residue",
+          "locationSource": "Published Forever beta-observation entity position",
+          "name": "Whispering Horror"
+        }
+      ],
+      "title": "Whispering Horror Residue",
+      "startRefs": [
+        {
+          "entityType": "item",
+          "name": "Whispering Horror Residue",
+          "entityID": 268812
+        }
+      ],
+      "side": "Horde",
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1458,
+          "action": "talk",
+          "entityID": 4607,
+          "npc": true,
+          "y": 0.1765,
+          "x": 0.4862,
+          "name": "Father Lankester",
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "money": 350,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Father Lankester",
+          "entityID": 4607
+        }
+      ],
+      "xp": 840,
+      "foreverStatus": "new",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 7,
+      "requirementSource": "Published Forever typed objectives",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Supplied trainer scroll/already-held residue starter: preserve actual hand-in item, class/race gate, prior hand-in and initial loot acquisition; remove only redundant post-acceptance farming/missing acquisition. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09.",
+      "raceMask": 8589934770,
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "categoryPath": "eastern-kingdoms/tirisfal-glades"
+    }
+  },
+  "96896": {
+    "before": {
+      "raceMask": 8589934770,
+      "mapID": 1420,
+      "zone": "Tirisfal Glades",
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 267008,
+          "npc": true,
+          "y": 0.44770000000000004,
+          "x": 0.22010000000000002,
+          "name": "Leonid Barthalomew the Revered",
+          "sourceAreaID": 85,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "level": 13,
+      "areaID": 85,
+      "objectives": {},
+      "side": "Horde",
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 267008,
+          "npc": true,
+          "y": 0.44770000000000004,
+          "x": 0.22010000000000002,
+          "name": "Leonid Barthalomew the Revered",
+          "sourceAreaID": 85,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Leonid Barthalomew the Revered",
+          "entityID": 267008
+        }
+      ],
+      "xp": 90,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Leonid Barthalomew the Revered",
+          "entityID": 267008
+        }
+      ],
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 10,
+      "prerequisitesRead": true,
+      "title": "A Righteous Cause",
+      "foreverStatus": "new",
+      "categoryPath": "eastern-kingdoms/tirisfal-glades"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1420,
+      "zone": "Tirisfal Glades",
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 267008,
+          "npc": true,
+          "y": 0.44770000000000004,
+          "x": 0.22010000000000002,
+          "name": "Leonid Barthalomew the Revered",
+          "sourceAreaID": 85,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "level": 13,
+      "areaID": 85,
+      "objectives": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 267008,
+          "npc": true,
+          "y": 0.44770000000000004,
+          "x": 0.22010000000000002,
+          "name": "Leonid Barthalomew the Revered",
+          "sourceAreaID": 85,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "title": "A Righteous Cause",
+      "side": "Horde",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Leonid Barthalomew the Revered",
+          "entityID": 267008
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Leonid Barthalomew the Revered",
+          "entityID": 267008
+        }
+      ],
+      "xp": 90,
+      "foreverStatus": "new",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 10,
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Published beta observation requires escape/observed-conversation work. No path or event trigger is published; expose missing objective rather than assert conversation-only completion or borrow giver coordinates. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09.",
+      "raceMask": 8589934770,
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "eastern-kingdoms/tirisfal-glades"
+    }
+  },
+  "98389": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1420,
+      "zone": "Tirisfal Glades",
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 6,
+          "name": "Webbed Forsaken freed",
+          "entityID": 271961
+        }
+      ],
+      "npcTargets": [
+        {
+          "entityID": 271961,
+          "name": "Webbed Forsaken",
+          "npc": true
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 271961,
+          "mapID": 1420,
+          "entityID": 271961,
+          "npc": true,
+          "y": 0.594,
+          "objectiveKey": "npc:271961",
+          "name": "Webbed Forsaken",
+          "x": 0.266,
+          "quantity": 6
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "starts": [
+        {
+          "y": 0.662,
+          "mapID": 1420,
+          "name": "Aramis Hammerhand",
+          "entityID": 244808,
+          "npc": true,
+          "x": 0.31
+        }
+      ],
+      "level": 4,
+      "areaID": 85,
+      "shareable": true,
+      "ends": [
+        {
+          "y": 0.662,
+          "mapID": 1420,
+          "name": "Aramis Hammerhand",
+          "entityID": 244808,
+          "npc": true,
+          "x": 0.31
+        }
+      ],
+      "side": "Horde",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Aramis Hammerhand",
+          "entityID": 244808
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Aramis Hammerhand",
+          "entityID": 244808
+        }
+      ],
+      "xp": 355,
+      "title": "A Light in the Darkness",
+      "foreverStatus": "new",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 2,
+      "requirementSource": "Wowhead Forever objective table",
+      "raceMask": 8589934770,
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/tirisfal-glades"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1420,
+      "zone": "Tirisfal Glades",
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 6,
+          "action": "interact",
+          "entityID": 271961,
+          "name": "Webbed Forsaken freed"
+        }
+      ],
+      "npcTargets": [
+        {
+          "entityID": 271961,
+          "npc": true,
+          "action": "interact",
+          "name": "Webbed Forsaken"
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 271961,
+          "mapID": 1420,
+          "action": "interact",
+          "entityID": 271961,
+          "npc": true,
+          "y": 0.594,
+          "objectiveKey": "npc:271961",
+          "name": "Webbed Forsaken",
+          "x": 0.266,
+          "quantity": 6
+        }
+      ],
+      "starts": [
+        {
+          "y": 0.662,
+          "mapID": 1420,
+          "name": "Aramis Hammerhand",
+          "entityID": 244808,
+          "npc": true,
+          "x": 0.31
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "shareable": true,
+      "level": 4,
+      "areaID": 85,
+      "title": "A Light in the Darkness",
+      "ends": [
+        {
+          "y": 0.662,
+          "mapID": 1420,
+          "name": "Aramis Hammerhand",
+          "entityID": 244808,
+          "npc": true,
+          "x": 0.31
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Aramis Hammerhand",
+          "entityID": 244808
+        }
+      ],
+      "side": "Horde",
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Aramis Hammerhand",
+          "entityID": 244808
+        }
+      ],
+      "xp": 355,
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Published goal frees six Webbed Victims; interact rather than infer killing a friendly victim from a bare NPC point. Preserve six-count area and return. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09.",
+      "foreverStatus": "new",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 2,
+      "requirementSource": "Wowhead Forever objective table",
+      "raceMask": 8589934770,
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/tirisfal-glades"
+    }
+  },
+  "99134": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1420,
+      "zone": "Tirisfal Glades",
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Deathguard Linnea",
+          "entityID": 1495
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Deathguard Abraham",
+          "entityID": 1735
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Deathguard Phillip",
+          "entityID": 1739
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Deathguard Lawrence",
+          "entityID": 1743
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Deathguard Gavin",
+          "entityID": 2209
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Deathguard Billmuth",
+          "entityID": 257655
+        }
+      ],
+      "npcTargets": [
+        {
+          "entityID": 1495,
+          "npc": true,
+          "action": "kill",
+          "name": "Deathguard Linnea"
+        },
+        {
+          "entityID": 1496,
+          "npc": true,
+          "action": "kill",
+          "name": "Deathguard Dillinger"
+        },
+        {
+          "entityID": 1519,
+          "name": "Deathguard Simmer",
+          "npc": true
+        },
+        {
+          "entityID": 1652,
+          "name": "Deathguard Burgess",
+          "npc": true
+        },
+        {
+          "entityID": 1735,
+          "npc": true,
+          "action": "kill",
+          "name": "Deathguard Abraham"
+        },
+        {
+          "entityID": 1736,
+          "name": "Deathguard Randolph",
+          "npc": true
+        },
+        {
+          "entityID": 1737,
+          "name": "Deathguard Oliver",
+          "npc": true
+        },
+        {
+          "entityID": 1738,
+          "npc": true,
+          "action": "kill",
+          "name": "Deathguard Terrence"
+        },
+        {
+          "entityID": 1739,
+          "name": "Deathguard Phillip",
+          "npc": true
+        },
+        {
+          "entityID": 1740,
+          "name": "Deathguard Saltain",
+          "npc": true
+        },
+        {
+          "entityID": 1741,
+          "name": "Deathguard Bartrand",
+          "npc": true
+        },
+        {
+          "entityID": 1742,
+          "name": "Deathguard Bartholomew",
+          "npc": true
+        },
+        {
+          "entityID": 1743,
+          "name": "Deathguard Lawrence",
+          "npc": true
+        },
+        {
+          "entityID": 1744,
+          "npc": true,
+          "action": "kill",
+          "name": "Deathguard Mort"
+        },
+        {
+          "entityID": 1745,
+          "name": "Deathguard Morris",
+          "npc": true
+        },
+        {
+          "entityID": 1746,
+          "name": "Deathguard Cyrus",
+          "npc": true
+        },
+        {
+          "entityID": 2209,
+          "name": "Deathguard Gavin",
+          "npc": true
+        },
+        {
+          "entityID": 2210,
+          "name": "Deathguard Royann",
+          "npc": true
+        },
+        {
+          "entityID": 5725,
+          "npc": true,
+          "action": "kill",
+          "name": "Deathguard Lundmark"
+        },
+        {
+          "entityID": 251001,
+          "name": "Deathguard Kristof",
+          "npc": true
+        },
+        {
+          "entityID": 257655,
+          "name": "Deathguard Billmuth",
+          "npc": true
+        },
+        {
+          "entityID": 272101,
+          "name": "Deathguard Lizabetha",
+          "npc": true
+        },
+        {
+          "entityID": 275103,
+          "name": "Deathguard Veteran",
+          "npc": true
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 1746,
+          "mapID": 1420,
+          "name": "Deathguard Cyrus",
+          "entityID": 1746,
+          "y": 0.52,
+          "npc": true,
+          "x": 0.606
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "action": "kill",
+          "entityID": 1495,
+          "npc": true,
+          "sourceZone": "Tirisfal Glades",
+          "objectiveKey": "npc:1495",
+          "name": "Deathguard Linnea",
+          "sourceAreaID": 85,
+          "y": 0.602,
+          "x": 0.654,
+          "quantity": 1
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "action": "kill",
+          "entityID": 1735,
+          "npc": true,
+          "y": 0.5302,
+          "objectiveKey": "npc:1735",
+          "name": "Deathguard Abraham",
+          "sourceAreaID": 85,
+          "x": 0.5363,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "quantity": 1
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 1739,
+          "npc": true,
+          "sourceZone": "Tirisfal Glades",
+          "objectiveKey": "npc:1739",
+          "name": "Deathguard Phillip",
+          "sourceAreaID": 85,
+          "y": 0.66,
+          "x": 0.324,
+          "quantity": 1
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 1743,
+          "npc": true,
+          "y": 0.5142,
+          "objectiveKey": "npc:1743",
+          "name": "Deathguard Lawrence",
+          "sourceAreaID": 85,
+          "x": 0.5854,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "quantity": 1
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 2209,
+          "npc": true,
+          "y": 0.5141,
+          "objectiveKey": "npc:2209",
+          "name": "Deathguard Gavin",
+          "sourceAreaID": 85,
+          "x": 0.6174000000000001,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "quantity": 1
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 257655,
+          "npc": true,
+          "sourceZone": "Tirisfal Glades",
+          "objectiveKey": "npc:257655",
+          "name": "Deathguard Billmuth",
+          "sourceAreaID": 85,
+          "y": 0.444,
+          "x": 0.22,
+          "quantity": 1
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "starts": [
+        {
+          "y": 0.518,
+          "mapID": 1420,
+          "name": "Executor Zygand",
+          "entityID": 1515,
+          "npc": true,
+          "x": 0.606
+        }
+      ],
+      "level": 6,
+      "areaID": 85,
+      "shareable": true,
+      "ends": [
+        {
+          "y": 0.518,
+          "mapID": 1420,
+          "name": "Executor Zygand",
+          "entityID": 1515,
+          "npc": true,
+          "x": 0.606
+        }
+      ],
+      "side": "Horde",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Executor Zygand",
+          "entityID": 1515
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Executor Zygand",
+          "entityID": 1515
+        }
+      ],
+      "xp": 405,
+      "title": "Discipline",
+      "foreverStatus": "new",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 4,
+      "requirementSource": "Wowhead Forever objective table",
+      "raceMask": 8589934770,
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/tirisfal-glades"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1420,
+      "zone": "Tirisfal Glades",
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Deathguard Linnea",
+          "entityID": 1495
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Deathguard Abraham",
+          "entityID": 1735
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Deathguard Phillip",
+          "entityID": 1739
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Deathguard Lawrence",
+          "entityID": 1743
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Deathguard Gavin",
+          "entityID": 2209
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Deathguard Billmuth",
+          "entityID": 257655
+        }
+      ],
+      "npcTargets": [
+        {
+          "entityID": 1495,
+          "npc": true,
+          "action": "kill",
+          "name": "Deathguard Linnea"
+        },
+        {
+          "entityID": 1496,
+          "npc": true,
+          "action": "kill",
+          "name": "Deathguard Dillinger"
+        },
+        {
+          "entityID": 1519,
+          "name": "Deathguard Simmer",
+          "npc": true
+        },
+        {
+          "entityID": 1652,
+          "name": "Deathguard Burgess",
+          "npc": true
+        },
+        {
+          "entityID": 1735,
+          "npc": true,
+          "action": "kill",
+          "name": "Deathguard Abraham"
+        },
+        {
+          "entityID": 1736,
+          "name": "Deathguard Randolph",
+          "npc": true
+        },
+        {
+          "entityID": 1737,
+          "name": "Deathguard Oliver",
+          "npc": true
+        },
+        {
+          "entityID": 1738,
+          "npc": true,
+          "action": "kill",
+          "name": "Deathguard Terrence"
+        },
+        {
+          "entityID": 1739,
+          "name": "Deathguard Phillip",
+          "npc": true
+        },
+        {
+          "entityID": 1740,
+          "name": "Deathguard Saltain",
+          "npc": true
+        },
+        {
+          "entityID": 1741,
+          "name": "Deathguard Bartrand",
+          "npc": true
+        },
+        {
+          "entityID": 1742,
+          "name": "Deathguard Bartholomew",
+          "npc": true
+        },
+        {
+          "entityID": 1743,
+          "name": "Deathguard Lawrence",
+          "npc": true
+        },
+        {
+          "entityID": 1744,
+          "npc": true,
+          "action": "kill",
+          "name": "Deathguard Mort"
+        },
+        {
+          "entityID": 1745,
+          "name": "Deathguard Morris",
+          "npc": true
+        },
+        {
+          "entityID": 1746,
+          "name": "Deathguard Cyrus",
+          "npc": true
+        },
+        {
+          "entityID": 2209,
+          "name": "Deathguard Gavin",
+          "npc": true
+        },
+        {
+          "entityID": 2210,
+          "name": "Deathguard Royann",
+          "npc": true
+        },
+        {
+          "entityID": 5725,
+          "npc": true,
+          "action": "kill",
+          "name": "Deathguard Lundmark"
+        },
+        {
+          "entityID": 251001,
+          "name": "Deathguard Kristof",
+          "npc": true
+        },
+        {
+          "entityID": 257655,
+          "name": "Deathguard Billmuth",
+          "npc": true
+        },
+        {
+          "entityID": 272101,
+          "name": "Deathguard Lizabetha",
+          "npc": true
+        },
+        {
+          "entityID": 275103,
+          "name": "Deathguard Veteran",
+          "npc": true
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 1746,
+          "mapID": 1420,
+          "name": "Deathguard Cyrus",
+          "entityID": 1746,
+          "y": 0.52,
+          "npc": true,
+          "x": 0.606
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "action": "kill",
+          "entityID": 1495,
+          "npc": true,
+          "sourceZone": "Tirisfal Glades",
+          "objectiveKey": "npc:1495",
+          "name": "Deathguard Linnea",
+          "sourceAreaID": 85,
+          "y": 0.602,
+          "x": 0.654,
+          "quantity": 1
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "action": "kill",
+          "entityID": 1735,
+          "npc": true,
+          "y": 0.5302,
+          "objectiveKey": "npc:1735",
+          "name": "Deathguard Abraham",
+          "sourceAreaID": 85,
+          "x": 0.5363,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "quantity": 1
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 1739,
+          "npc": true,
+          "sourceZone": "Tirisfal Glades",
+          "objectiveKey": "npc:1739",
+          "name": "Deathguard Phillip",
+          "sourceAreaID": 85,
+          "y": 0.66,
+          "x": 0.324,
+          "quantity": 1
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 1743,
+          "npc": true,
+          "y": 0.5142,
+          "objectiveKey": "npc:1743",
+          "name": "Deathguard Lawrence",
+          "sourceAreaID": 85,
+          "x": 0.5854,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "quantity": 1
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 2209,
+          "npc": true,
+          "y": 0.5141,
+          "objectiveKey": "npc:2209",
+          "name": "Deathguard Gavin",
+          "sourceAreaID": 85,
+          "x": 0.6174000000000001,
+          "locationSource": "Published Forever converted-baseline entity position",
+          "quantity": 1
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 257655,
+          "npc": true,
+          "sourceZone": "Tirisfal Glades",
+          "objectiveKey": "npc:257655",
+          "name": "Deathguard Billmuth",
+          "sourceAreaID": 85,
+          "y": 0.444,
+          "x": 0.22,
+          "quantity": 1
+        }
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "name": "Executor's Motivator",
+          "entityID": 286176
+        }
+      ],
+      "starts": [
+        {
+          "y": 0.518,
+          "mapID": 1420,
+          "name": "Executor Zygand",
+          "entityID": 1515,
+          "npc": true,
+          "x": 0.606
+        }
+      ],
+      "raceMask": 8589934770,
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "title": "Discipline",
+      "level": 6,
+      "areaID": 85,
+      "ends": [
+        {
+          "y": 0.518,
+          "mapID": 1420,
+          "name": "Executor Zygand",
+          "entityID": 1515,
+          "npc": true,
+          "x": 0.606
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Executor Zygand",
+          "entityID": 1515
+        }
+      ],
+      "side": "Horde",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Retain published supplied motivator and expose unmodeled five-of-many punishment mechanics. Existing target/count conflicts are retained for coordination, not silently rewritten as a new eligibility/completion rule. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09.",
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Executor Zygand",
+          "entityID": 1515
+        }
+      ],
+      "xp": 405,
+      "shareable": true,
+      "foreverStatus": "new",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 4,
+      "requirementSource": "Wowhead Forever objective table",
+      "objectiveLocationsIncomplete": true,
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/tirisfal-glades"
+    }
+  },
+  "99144": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1420,
+      "zone": "Tirisfal Glades",
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "name": "Shari Stilwell",
+          "y": 0.526,
+          "entityID": 246152,
+          "x": 0.602,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "level": 7,
+      "areaID": 85,
+      "objectives": {},
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 275954,
+          "npc": true,
+          "y": 0.46340000000000003,
+          "x": 0.3196,
+          "name": "Bareth Dawnstone",
+          "sourceAreaID": 85,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "side": "Horde",
+      "money": 175,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Shari Stilwell",
+          "entityID": 246152
+        }
+      ],
+      "xp": 630,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Bareth Dawnstone",
+          "entityID": 275954
+        }
+      ],
+      "foreverStatus": "new",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 5,
+      "title": "Seeking Refuge",
+      "shareable": true,
+      "raceMask": 8589934770,
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "categoryPath": "eastern-kingdoms/tirisfal-glades"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1420,
+      "zone": "Tirisfal Glades",
+      "requirements": {},
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "classMask": 0,
+      "ends": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "name": "Shari Stilwell",
+          "y": 0.526,
+          "entityID": 246152,
+          "x": 0.602,
+          "npc": true,
+          "geographySource": "Mapzeroth Forever 0.6.0 NPC facts (MIT)"
+        }
+      ],
+      "objectives": {},
+      "level": 7,
+      "areaID": 85,
+      "starts": [
+        {
+          "entityType": "npc",
+          "mapID": 1420,
+          "entityID": 275954,
+          "npc": true,
+          "y": 0.46340000000000003,
+          "x": 0.3196,
+          "name": "Bareth Dawnstone",
+          "sourceAreaID": 85,
+          "locationSource": "Published Forever beta-observation entity position"
+        }
+      ],
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Published beta observation requires escape/observed-conversation work. No path or event trigger is published; expose missing objective rather than assert conversation-only completion or borrow giver coordinates. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/tirisfal-glades-2026-10-09.",
+      "side": "Horde",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Bareth Dawnstone",
+          "entityID": 275954
+        }
+      ],
+      "money": 175,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Shari Stilwell",
+          "entityID": 246152
+        }
+      ],
+      "xp": 630,
+      "title": "Seeking Refuge",
+      "foreverStatus": "new",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 5,
+      "shareable": true,
+      "raceMask": 8589934770,
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "eastern-kingdoms/tirisfal-glades"
+    }
+  }
+}
