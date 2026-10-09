@@ -1,0 +1,18 @@
+[
+  {
+    "url": "https://classicdb.ch/?quest=519",
+    "questID": 519,
+    "http_status": 200,
+    "access_date": "2026-10-09 Europe/Amsterdam",
+    "sha256": "d649b3d36c500bf132ff9b0848a8054a5e58cef92d2fbc189417ed8a0b01f54b",
+    "scope": "Exact unchanged identity, counts and preparation only; not beta spawn/location or hidden-gate evidence. No copied source prose/comments."
+  },
+  {
+    "url": "https://classicdb.ch/?quest=565",
+    "questID": 565,
+    "http_status": 200,
+    "access_date": "2026-10-09 Europe/Amsterdam",
+    "sha256": "454e10f619526a7c7ebe65981935d4c189301e34ad08a7daea8d4d9616d17008",
+    "scope": "Exact unchanged identity, counts and preparation only; not beta spawn/location or hidden-gate evidence. No copied source prose/comments."
+  }
+]

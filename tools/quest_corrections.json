@@ -9821,5 +9821,1151 @@
         ]
       }
     }
+  },
+  {
+    "questID": 519,
+    "title": "The Crown of Will",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Join both actual head drops to Muckrake/Glommus and published Alterac positions; preserve Targ point, all three one-head counts, elite warning and actual 518 hand-in. Converted-baseline facts, not measured beta paths. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/hillsbrad-foothills-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 34,
+      "level": 41,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Targ's Head",
+          "itemID": 3550
+        },
+        {
+          "quantity": 1,
+          "name": "Muckrake's Head",
+          "itemID": 3551
+        },
+        {
+          "quantity": 1,
+          "name": "Glommus's Head",
+          "itemID": 3552
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Targ's Head",
+            "entityID": 3550
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Muckrake's Head",
+            "entityID": 3551
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Glommus's Head",
+            "entityID": 3552
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Targ's Head",
+            "itemID": 3550
+          },
+          {
+            "quantity": 1,
+            "name": "Muckrake's Head",
+            "itemID": 3551
+          },
+          {
+            "quantity": 1,
+            "name": "Glommus's Head",
+            "itemID": 3552
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1416,
+            "legacyStepKey": "q:1416:npc:2420",
+            "entityID": 2420,
+            "name": "Targ",
+            "npc": true,
+            "x": 0.3957,
+            "y": 0.5289,
+            "objectiveKey": "item:3550",
+            "itemID": 3550,
+            "quantity": 1,
+            "sourceAreaID": 36,
+            "itemName": "Targ's Head",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Targ's Head",
+            "name": "Targ",
+            "entityID": 2420,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Muckrake's Head",
+            "entityID": 3551
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Glommus's Head",
+            "entityID": 3552
+          }
+        ],
+        "objectiveLocationsIncomplete": true
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Targ's Head",
+            "entityID": 3550
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Muckrake's Head",
+            "entityID": 3551
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Glommus's Head",
+            "entityID": 3552
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Targ's Head",
+            "itemID": 3550
+          },
+          {
+            "quantity": 1,
+            "name": "Muckrake's Head",
+            "itemID": 3551
+          },
+          {
+            "quantity": 1,
+            "name": "Glommus's Head",
+            "itemID": 3552
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1416,
+            "legacyStepKey": "q:1416:npc:2420",
+            "entityID": 2420,
+            "name": "Targ",
+            "npc": true,
+            "x": 0.3957,
+            "y": 0.5289,
+            "objectiveKey": "item:3550",
+            "itemID": 3550,
+            "quantity": 1,
+            "sourceAreaID": 36,
+            "itemName": "Targ's Head",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot"
+          },
+          {
+            "entityType": "npc",
+            "entityID": 2421,
+            "npc": true,
+            "name": "Muckrake",
+            "mapID": 1416,
+            "x": 0.3865,
+            "y": 0.4675,
+            "sourceAreaID": 36,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot",
+            "itemID": 3551,
+            "itemName": "Muckrake's Head",
+            "quantity": 1,
+            "objectiveKey": "item:3551"
+          },
+          {
+            "entityType": "npc",
+            "entityID": 2422,
+            "npc": true,
+            "name": "Glommus",
+            "mapID": 1416,
+            "x": 0.395,
+            "y": 0.4182,
+            "sourceAreaID": 36,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot",
+            "itemID": 3552,
+            "itemName": "Glommus's Head",
+            "quantity": 1,
+            "objectiveKey": "item:3552"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Targ's Head",
+            "name": "Targ",
+            "entityID": 2420,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "entityID": 2421,
+            "npc": true,
+            "name": "Muckrake",
+            "action": "loot",
+            "itemName": "Muckrake's Head"
+          },
+          {
+            "entityID": 2422,
+            "npc": true,
+            "name": "Glommus",
+            "action": "loot",
+            "itemName": "Glommus's Head"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      }
+    }
+  },
+  {
+    "questID": 524,
+    "title": "Elixir of Agony",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Interact with actual Dusty Rug return object for supplied Tainted Keg; preserve supply and actual 517 hand-in. No invented extra placement quantity or farming. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/hillsbrad-foothills-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 24,
+      "level": 30,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "ends": [
+          {
+            "y": 0.188,
+            "x": 0.628,
+            "name": "Dusty Rug",
+            "entityID": 1728,
+            "mapID": 1424
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "ends": [
+          {
+            "y": 0.188,
+            "x": 0.628,
+            "name": "Dusty Rug",
+            "entityID": 1728,
+            "mapID": 1424,
+            "entityType": "object",
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 532,
+    "title": "Battle of Hillsbrad",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Interact with actual proclamation objective while retaining required destroyed-credit count, registry gathering, kills and real previous hand-in. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/hillsbrad-foothills-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 19,
+      "level": 26,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Hillsbrad Town Registry",
+          "itemID": 3657
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Magistrate Burnside",
+            "entityID": 2335
+          },
+          {
+            "entityType": "npc",
+            "quantity": 5,
+            "name": "Hillsbrad Councilman",
+            "entityID": 2387
+          },
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Hillsbrad Proclamation destroyed",
+            "entityID": 1761
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Hillsbrad Town Registry",
+            "entityID": 3657
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Hillsbrad Town Registry",
+            "itemID": 3657
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 2335,
+            "mapID": 1424,
+            "action": "kill",
+            "entityID": 2335,
+            "npc": true,
+            "y": 0.41600000000000004,
+            "objectiveKey": "npc:2335",
+            "name": "Magistrate Burnside",
+            "x": 0.29600000000000004,
+            "quantity": 1
+          },
+          {
+            "sourceObjective": 2387,
+            "mapID": 1424,
+            "action": "kill",
+            "entityID": 2387,
+            "npc": true,
+            "y": 0.428,
+            "objectiveKey": "npc:2387",
+            "name": "Hillsbrad Councilman",
+            "x": 0.3,
+            "quantity": 5
+          },
+          {
+            "sourceObjective": 2,
+            "objectiveKey": "object:1761",
+            "name": "Hillsbrad Proclamation",
+            "y": 0.41700000000000004,
+            "entityID": 1761,
+            "x": 0.29600000000000004,
+            "quantity": 1,
+            "mapID": 1424
+          },
+          {
+            "entityType": "object",
+            "mapID": 1424,
+            "action": "gather",
+            "entityID": 1759,
+            "x": 0.2952,
+            "y": 0.4153,
+            "objectiveKey": "item:3657",
+            "itemID": 3657,
+            "quantity": 1,
+            "sourceAreaID": 267,
+            "itemName": "Hillsbrad Town Registry",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "name": "Hillsbrad Town Registry"
+          }
+        ],
+        "npcTargets": [
+          {
+            "entityID": 2335,
+            "npc": true,
+            "action": "kill",
+            "name": "Magistrate Burnside"
+          },
+          {
+            "entityID": 2387,
+            "npc": true,
+            "action": "kill",
+            "name": "Hillsbrad Councilman"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Magistrate Burnside",
+            "entityID": 2335
+          },
+          {
+            "entityType": "npc",
+            "quantity": 5,
+            "name": "Hillsbrad Councilman",
+            "entityID": 2387
+          },
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Hillsbrad Proclamation destroyed",
+            "entityID": 1761,
+            "action": "interact"
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Hillsbrad Town Registry",
+            "entityID": 3657
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Hillsbrad Town Registry",
+            "itemID": 3657
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 2335,
+            "mapID": 1424,
+            "action": "kill",
+            "entityID": 2335,
+            "npc": true,
+            "y": 0.41600000000000004,
+            "objectiveKey": "npc:2335",
+            "name": "Magistrate Burnside",
+            "x": 0.29600000000000004,
+            "quantity": 1
+          },
+          {
+            "sourceObjective": 2387,
+            "mapID": 1424,
+            "action": "kill",
+            "entityID": 2387,
+            "npc": true,
+            "y": 0.428,
+            "objectiveKey": "npc:2387",
+            "name": "Hillsbrad Councilman",
+            "x": 0.3,
+            "quantity": 5
+          },
+          {
+            "sourceObjective": 2,
+            "objectiveKey": "object:1761",
+            "name": "Hillsbrad Proclamation",
+            "y": 0.41700000000000004,
+            "entityID": 1761,
+            "x": 0.29600000000000004,
+            "quantity": 1,
+            "mapID": 1424,
+            "entityType": "object",
+            "action": "interact"
+          },
+          {
+            "entityType": "object",
+            "mapID": 1424,
+            "action": "gather",
+            "entityID": 1759,
+            "x": 0.2952,
+            "y": 0.4153,
+            "objectiveKey": "item:3657",
+            "itemID": 3657,
+            "quantity": 1,
+            "sourceAreaID": 267,
+            "itemName": "Hillsbrad Town Registry",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "name": "Hillsbrad Town Registry"
+          }
+        ],
+        "npcTargets": [
+          {
+            "entityID": 2335,
+            "npc": true,
+            "action": "kill",
+            "name": "Magistrate Burnside"
+          },
+          {
+            "entityID": 2387,
+            "npc": true,
+            "action": "kill",
+            "name": "Hillsbrad Councilman"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      }
+    }
+  },
+  {
+    "questID": 553,
+    "title": "Helcular's Revenge",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Use supplied Rod of Helcular at each of three counted flames and interact with actual grave return; preserve output credits, cross-zone flame, supplied rod count and 552 hand-in. Native grave event/combat remains unverified. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/hillsbrad-foothills-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 29,
+      "level": 33,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Flame of Azel charged",
+            "entityID": 1768
+          },
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Flame of Veraz charged",
+            "entityID": 1769
+          },
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Flame of Uzel charged",
+            "entityID": 1770
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "objectiveKey": "object:1768",
+            "name": "Flame of Azel",
+            "y": 0.281,
+            "entityID": 1768,
+            "x": 0.44,
+            "quantity": 1,
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 1,
+            "objectiveKey": "object:1769",
+            "name": "Flame of Veraz",
+            "y": 0.264,
+            "entityID": 1769,
+            "x": 0.442,
+            "quantity": 1,
+            "mapID": 1424
+          },
+          {
+            "sourceObjective": 2,
+            "objectiveKey": "object:1770",
+            "name": "Flame of Uzel",
+            "y": 0.6709999999999999,
+            "entityID": 1770,
+            "x": 0.375,
+            "quantity": 1,
+            "mapID": 1416
+          }
+        ],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "ends": [
+          {
+            "y": 0.5329999999999999,
+            "x": 0.528,
+            "name": "Helcular's Grave",
+            "entityID": 1767,
+            "mapID": 1424
+          }
+        ]
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Flame of Azel charged",
+            "entityID": 1768,
+            "action": "use"
+          },
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Flame of Veraz charged",
+            "entityID": 1769,
+            "action": "use"
+          },
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Flame of Uzel charged",
+            "entityID": 1770,
+            "action": "use"
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "objectiveKey": "object:1768",
+            "name": "Flame of Azel",
+            "y": 0.281,
+            "entityID": 1768,
+            "x": 0.44,
+            "quantity": 1,
+            "mapID": 1424,
+            "entityType": "object",
+            "action": "use",
+            "useItemName": "Rod of Helcular",
+            "useItemID": 3710
+          },
+          {
+            "sourceObjective": 1,
+            "objectiveKey": "object:1769",
+            "name": "Flame of Veraz",
+            "y": 0.264,
+            "entityID": 1769,
+            "x": 0.442,
+            "quantity": 1,
+            "mapID": 1424,
+            "entityType": "object",
+            "action": "use",
+            "useItemName": "Rod of Helcular",
+            "useItemID": 3710
+          },
+          {
+            "sourceObjective": 2,
+            "objectiveKey": "object:1770",
+            "name": "Flame of Uzel",
+            "y": 0.6709999999999999,
+            "entityID": 1770,
+            "x": 0.375,
+            "quantity": 1,
+            "mapID": 1416,
+            "entityType": "object",
+            "action": "use",
+            "useItemName": "Rod of Helcular",
+            "useItemID": 3710
+          }
+        ],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "ends": [
+          {
+            "y": 0.5329999999999999,
+            "x": 0.528,
+            "name": "Helcular's Grave",
+            "entityID": 1767,
+            "mapID": 1424,
+            "entityType": "object",
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 565,
+    "title": "Bartolo's Yeti Fur Cloak",
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Remove unsupported cloth acquisition from flight master Darla Harris; actual item has no published NPC drops. Preserve counted cloak/cloth/fur/thread hand-ins, yeti work, real thread vendor and optional captured chest alternatives. Cloth procurement remains unknown; do not substitute random chest loot as guaranteed vendor or impose a profession gate. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/hillsbrad-foothills-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 29,
+      "level": 34,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Bolt of Woolen Cloth",
+          "itemID": 2997
+        },
+        {
+          "buyable": true,
+          "name": "Fine Thread",
+          "buyPrice": 100,
+          "quantity": 1,
+          "itemID": 2321
+        },
+        {
+          "quantity": 1,
+          "name": "Hillman's Cloak",
+          "itemID": 3719
+        },
+        {
+          "quantity": 10,
+          "name": "Yeti Fur",
+          "itemID": 3720
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Bolt of Woolen Cloth",
+            "entityID": 2997
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Fine Thread",
+            "entityID": 2321
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Hillman's Cloak",
+            "entityID": 3719
+          },
+          {
+            "entityType": "item",
+            "quantity": 10,
+            "name": "Yeti Fur",
+            "entityID": 3720
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Bolt of Woolen Cloth",
+            "itemID": 2997
+          },
+          {
+            "buyable": true,
+            "name": "Fine Thread",
+            "buyPrice": 100,
+            "quantity": 1,
+            "itemID": 2321
+          },
+          {
+            "quantity": 1,
+            "name": "Hillman's Cloak",
+            "itemID": 3719
+          },
+          {
+            "quantity": 10,
+            "name": "Yeti Fur",
+            "itemID": 3720
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 3,
+            "mapID": 1424,
+            "legacyStepKey": "q:1424:npc:2249",
+            "entityID": 2249,
+            "npc": true,
+            "x": 0.44799999999999995,
+            "y": 0.284,
+            "objectiveKey": "item:3720",
+            "itemID": 3720,
+            "quantity": 10,
+            "name": "Ferocious Yeti",
+            "itemName": "Yeti Fur",
+            "alternativeCount": 2,
+            "action": "collect"
+          },
+          {
+            "sourceObjective": 0,
+            "mapID": 1424,
+            "legacyStepKey": "q:1424:npc:2432",
+            "entityID": 2432,
+            "npc": true,
+            "x": 0.494,
+            "y": 0.522,
+            "objectiveKey": "item:2997",
+            "itemID": 2997,
+            "quantity": 1,
+            "name": "Darla Harris",
+            "itemName": "Bolt of Woolen Cloth",
+            "alternativeCount": 6,
+            "action": "collect"
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1424,
+            "legacyStepKey": "q:1424:npc:2381",
+            "entityID": 2381,
+            "name": "Micha Yance",
+            "npc": true,
+            "x": 0.4894,
+            "y": 0.5503,
+            "objectiveKey": "item:2321",
+            "itemID": 2321,
+            "quantity": 1,
+            "sourceAreaID": 267,
+            "itemName": "Fine Thread",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "buy"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Yeti Fur",
+            "name": "Cave Yeti",
+            "entityID": 2248,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Yeti Fur",
+            "name": "Ferocious Yeti",
+            "entityID": 2249,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Bolt of Woolen Cloth",
+            "name": "Darla Harris",
+            "entityID": 2432,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Fine Thread",
+            "name": "Micha Yance",
+            "entityID": 2381,
+            "npc": true,
+            "action": "buy"
+          }
+        ],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Hillman's Cloak",
+            "entityID": 3719
+          }
+        ],
+        "objectiveLocationsIncomplete": true,
+        "objectiveAlternatives": [
+          {
+            "sourceObjective": 3,
+            "itemName": "Yeti Fur",
+            "locations": [
+              {
+                "sourceObjective": 3,
+                "itemName": "Yeti Fur",
+                "action": "collect",
+                "entityID": 2248,
+                "npc": true,
+                "y": 0.278,
+                "x": 0.444,
+                "name": "Cave Yeti",
+                "mapID": 1424
+              },
+              {
+                "sourceObjective": 3,
+                "itemName": "Yeti Fur",
+                "action": "collect",
+                "entityID": 2249,
+                "npc": true,
+                "y": 0.284,
+                "x": 0.44799999999999995,
+                "name": "Ferocious Yeti",
+                "mapID": 1424
+              }
+            ]
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Bolt of Woolen Cloth",
+            "locations": [
+              {
+                "sourceObjective": 0,
+                "itemName": "Bolt of Woolen Cloth",
+                "action": "collect",
+                "entityID": 2432,
+                "npc": true,
+                "y": 0.522,
+                "x": 0.494,
+                "name": "Darla Harris",
+                "mapID": 1424
+              },
+              {
+                "sourceObjective": 0,
+                "mapID": 1424,
+                "action": "collect",
+                "y": 0.389,
+                "entityID": 2850,
+                "x": 0.773,
+                "name": "Solid Chest",
+                "itemName": "Bolt of Woolen Cloth"
+              },
+              {
+                "sourceObjective": 0,
+                "mapID": 1424,
+                "action": "collect",
+                "y": 0.605,
+                "entityID": 2852,
+                "x": 0.6629999999999999,
+                "name": "Solid Chest",
+                "itemName": "Bolt of Woolen Cloth"
+              },
+              {
+                "sourceObjective": 0,
+                "mapID": 1424,
+                "action": "collect",
+                "y": 0.281,
+                "entityID": 2855,
+                "x": 0.44,
+                "name": "Solid Chest",
+                "itemName": "Bolt of Woolen Cloth"
+              },
+              {
+                "sourceObjective": 0,
+                "mapID": 1424,
+                "action": "collect",
+                "y": 0.374,
+                "entityID": 3715,
+                "x": 0.35200000000000004,
+                "name": "Alliance Chest",
+                "itemName": "Bolt of Woolen Cloth"
+              },
+              {
+                "sourceObjective": 0,
+                "mapID": 1424,
+                "action": "collect",
+                "y": 0.562,
+                "entityID": 4096,
+                "x": 0.312,
+                "name": "Alliance Chest",
+                "itemName": "Bolt of Woolen Cloth"
+              }
+            ]
+          }
+        ]
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Bolt of Woolen Cloth",
+            "entityID": 2997
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Fine Thread",
+            "entityID": 2321
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Hillman's Cloak",
+            "entityID": 3719
+          },
+          {
+            "entityType": "item",
+            "quantity": 10,
+            "name": "Yeti Fur",
+            "entityID": 3720
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Bolt of Woolen Cloth",
+            "itemID": 2997
+          },
+          {
+            "buyable": true,
+            "name": "Fine Thread",
+            "buyPrice": 100,
+            "quantity": 1,
+            "itemID": 2321
+          },
+          {
+            "quantity": 1,
+            "name": "Hillman's Cloak",
+            "itemID": 3719
+          },
+          {
+            "quantity": 10,
+            "name": "Yeti Fur",
+            "itemID": 3720
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 3,
+            "mapID": 1424,
+            "legacyStepKey": "q:1424:npc:2249",
+            "entityID": 2249,
+            "npc": true,
+            "x": 0.44799999999999995,
+            "y": 0.284,
+            "objectiveKey": "item:3720",
+            "itemID": 3720,
+            "quantity": 10,
+            "name": "Ferocious Yeti",
+            "itemName": "Yeti Fur",
+            "alternativeCount": 2,
+            "action": "collect"
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1424,
+            "legacyStepKey": "q:1424:npc:2381",
+            "entityID": 2381,
+            "name": "Micha Yance",
+            "npc": true,
+            "x": 0.4894,
+            "y": 0.5503,
+            "objectiveKey": "item:2321",
+            "itemID": 2321,
+            "quantity": 1,
+            "sourceAreaID": 267,
+            "itemName": "Fine Thread",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "buy"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Yeti Fur",
+            "name": "Cave Yeti",
+            "entityID": 2248,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Yeti Fur",
+            "name": "Ferocious Yeti",
+            "entityID": 2249,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Fine Thread",
+            "name": "Micha Yance",
+            "entityID": 2381,
+            "npc": true,
+            "action": "buy"
+          }
+        ],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Hillman's Cloak",
+            "entityID": 3719
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Bolt of Woolen Cloth",
+            "entityID": 2997
+          }
+        ],
+        "objectiveLocationsIncomplete": true,
+        "objectiveAlternatives": [
+          {
+            "sourceObjective": 3,
+            "itemName": "Yeti Fur",
+            "locations": [
+              {
+                "sourceObjective": 3,
+                "itemName": "Yeti Fur",
+                "action": "collect",
+                "entityID": 2248,
+                "npc": true,
+                "y": 0.278,
+                "x": 0.444,
+                "name": "Cave Yeti",
+                "mapID": 1424
+              },
+              {
+                "sourceObjective": 3,
+                "itemName": "Yeti Fur",
+                "action": "collect",
+                "entityID": 2249,
+                "npc": true,
+                "y": 0.284,
+                "x": 0.44799999999999995,
+                "name": "Ferocious Yeti",
+                "mapID": 1424
+              }
+            ]
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Bolt of Woolen Cloth",
+            "locations": [
+              {
+                "sourceObjective": 0,
+                "mapID": 1424,
+                "action": "collect",
+                "y": 0.389,
+                "entityID": 2850,
+                "x": 0.773,
+                "name": "Solid Chest",
+                "itemName": "Bolt of Woolen Cloth"
+              },
+              {
+                "sourceObjective": 0,
+                "mapID": 1424,
+                "action": "collect",
+                "y": 0.605,
+                "entityID": 2852,
+                "x": 0.6629999999999999,
+                "name": "Solid Chest",
+                "itemName": "Bolt of Woolen Cloth"
+              },
+              {
+                "sourceObjective": 0,
+                "mapID": 1424,
+                "action": "collect",
+                "y": 0.281,
+                "entityID": 2855,
+                "x": 0.44,
+                "name": "Solid Chest",
+                "itemName": "Bolt of Woolen Cloth"
+              },
+              {
+                "sourceObjective": 0,
+                "mapID": 1424,
+                "action": "collect",
+                "y": 0.374,
+                "entityID": 3715,
+                "x": 0.35200000000000004,
+                "name": "Alliance Chest",
+                "itemName": "Bolt of Woolen Cloth"
+              },
+              {
+                "sourceObjective": 0,
+                "mapID": 1424,
+                "action": "collect",
+                "y": 0.562,
+                "entityID": 4096,
+                "x": 0.312,
+                "name": "Alliance Chest",
+                "itemName": "Bolt of Woolen Cloth"
+              }
+            ]
+          }
+        ]
+      }
+    }
   }
 ]

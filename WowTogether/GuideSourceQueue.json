@@ -1,6 +1,6 @@
 {
   "source_data_complete": false,
-  "remaining_quest_records": 375,
+  "remaining_quest_records": 374,
   "limitations": [
     "This queue identifies missing facts, not a license to invent them",
     "Source capture must respect access policy and stop after denials",
@@ -203,22 +203,6 @@
       ]
     },
     {
-      "questID": 519,
-      "title": "The Crown of Will",
-      "guides": [
-        "Horde / Hillsbrad Foothills"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=519",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=3551",
-        "https://www.wowhead.com/forever/item=3552",
-        "https://www.wowhead.com/forever/npc=2278"
-      ]
-    },
-    {
       "questID": 535,
       "title": "Valik",
       "guides": [
@@ -243,6 +227,7 @@
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=565",
       "entity_urls": [
+        "https://www.wowhead.com/forever/item=2997",
         "https://www.wowhead.com/forever/item=3719",
         "https://www.wowhead.com/forever/npc=2438"
       ]

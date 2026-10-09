@@ -1,0 +1,147 @@
+[
+  {
+    "case": "accepted unfinished",
+    "level": 25,
+    "questIDs": [
+      527
+    ],
+    "complete": false,
+    "pendingReason": null,
+    "completionProgress": {
+      "completed": 0,
+      "total": 1,
+      "skipped": 0,
+      "unknown": 0,
+      "unfinished": 1
+    },
+    "remainingSteps": 5,
+    "deferredQuests": 0,
+    "routePaused": null,
+    "stops": 5
+  },
+  {
+    "case": "deferred parent hand-in",
+    "level": 25,
+    "questIDs": [
+      528
+    ],
+    "complete": false,
+    "pendingReason": "Finish Battle of Hillsbrad first.",
+    "completionProgress": {
+      "completed": 0,
+      "total": 1,
+      "skipped": 0,
+      "unknown": 0,
+      "unfinished": 1
+    },
+    "remainingSteps": 3,
+    "deferredQuests": 1,
+    "routePaused": "Finish Battle of Hillsbrad first.",
+    "stops": 0
+  },
+  {
+    "case": "higher-level remaining",
+    "level": 21,
+    "questIDs": [
+      519
+    ],
+    "complete": false,
+    "pendingReason": "Guide paused: unfinished quests are outside your leveling range.",
+    "completionProgress": {
+      "completed": 0,
+      "total": 1,
+      "skipped": 0,
+      "unknown": 0,
+      "unfinished": 1
+    },
+    "remainingSteps": 5,
+    "deferredQuests": 0,
+    "routePaused": "Guide paused: unfinished quests are outside your leveling range.",
+    "stops": 0
+  },
+  {
+    "case": "mixed remainder",
+    "level": 25,
+    "questIDs": [
+      527,
+      528,
+      519,
+      98094
+    ],
+    "complete": false,
+    "pendingReason": null,
+    "completionProgress": {
+      "completed": 0,
+      "total": 4,
+      "skipped": 0,
+      "unknown": 0,
+      "unfinished": 4
+    },
+    "remainingSteps": 16,
+    "deferredQuests": 1,
+    "routePaused": null,
+    "stops": 8
+  },
+  {
+    "case": "full Hillsbrad guide",
+    "level": 25,
+    "questIDs": [
+      494,
+      496,
+      499,
+      498,
+      501,
+      502,
+      533,
+      503,
+      506,
+      507,
+      508,
+      509,
+      513,
+      515,
+      517,
+      524,
+      495,
+      518,
+      519,
+      520,
+      521,
+      527,
+      528,
+      529,
+      532,
+      539,
+      541,
+      550,
+      544,
+      545,
+      546,
+      547,
+      549,
+      552,
+      553,
+      556,
+      557,
+      566,
+      567,
+      676,
+      677,
+      678,
+      679
+    ],
+    "complete": false,
+    "pendingReason": null,
+    "completionProgress": {
+      "completed": 0,
+      "total": 43,
+      "skipped": 0,
+      "unknown": 0,
+      "unfinished": 43
+    },
+    "remainingSteps": 164,
+    "deferredQuests": 8,
+    "routePaused": null,
+    "stops": 31
+  }
+]

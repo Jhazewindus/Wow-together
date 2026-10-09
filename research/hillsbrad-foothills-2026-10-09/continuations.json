@@ -1,0 +1,251 @@
+{
+  "direct_ids": [
+    494,
+    496,
+    498,
+    499,
+    501,
+    502,
+    503,
+    506,
+    507,
+    508,
+    509,
+    513,
+    515,
+    517,
+    518,
+    519,
+    520,
+    521,
+    524,
+    527,
+    528,
+    529,
+    532,
+    533,
+    536,
+    539,
+    540,
+    541,
+    544,
+    545,
+    546,
+    547,
+    549,
+    550,
+    552,
+    553,
+    555,
+    556,
+    557,
+    559,
+    560,
+    561,
+    562,
+    563,
+    564,
+    565,
+    566,
+    567,
+    657,
+    658,
+    659,
+    660,
+    661,
+    676,
+    98059,
+    98071
+  ],
+  "compiled_ids": [
+    495,
+    496,
+    498,
+    499,
+    501,
+    502,
+    503,
+    506,
+    507,
+    508,
+    509,
+    513,
+    515,
+    517,
+    518,
+    519,
+    520,
+    521,
+    524,
+    527,
+    528,
+    529,
+    532,
+    533,
+    536,
+    539,
+    541,
+    546,
+    547,
+    549,
+    550,
+    552,
+    553,
+    555,
+    559,
+    560,
+    561,
+    562,
+    563,
+    564,
+    565,
+    567,
+    657,
+    658,
+    659,
+    660,
+    661,
+    95125,
+    95126,
+    98059,
+    98071
+  ],
+  "uncompiled_direct_ids": [
+    494,
+    540,
+    544,
+    545,
+    556,
+    557,
+    566,
+    676
+  ],
+  "related_catalogue_records": {
+    "566": {
+      "prerequisitesRead": true,
+      "mapID": 1424,
+      "npcTargets": [
+        {
+          "itemName": "Head of Baron Vardus",
+          "name": "Baron Vardus",
+          "entityID": 2306,
+          "npc": true,
+          "action": "loot"
+        }
+      ],
+      "zone": "Hillsbrad Foothills",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Head of Baron Vardus",
+          "entityID": 3626
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1416,
+          "action": "loot",
+          "entityID": 2306,
+          "npc": true,
+          "x": 0.4783,
+          "y": 0.1711,
+          "objectiveKey": "item:3626",
+          "itemID": 3626,
+          "quantity": 1,
+          "sourceAreaID": 36,
+          "itemName": "Head of Baron Vardus",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Baron Vardus"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Head of Baron Vardus",
+          "itemID": 3626
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "prerequisiteSource": "Published converted-baseline prerequisites",
+      "starts": [
+        {
+          "y": 0.207,
+          "x": 0.626,
+          "name": "WANTED",
+          "entityID": 1763,
+          "mapID": 1424
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "level": 40,
+      "areaID": 267,
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "WANTED",
+          "entityID": 1763
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "ends": [
+        {
+          "y": 0.20199999999999999,
+          "mapID": 1424,
+          "name": "High Executor Darthalia",
+          "entityID": 2215,
+          "npc": true,
+          "x": 0.622
+        }
+      ],
+      "side": "Horde",
+      "prerequisiteAny": [
+        549
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "High Executor Darthalia",
+          "entityID": 2215
+        }
+      ],
+      "xp": 3150,
+      "foreverStatus": "unchanged",
+      "title": "WANTED: Baron Vardus",
+      "minLevel": 35,
+      "requirementSource": "Wowhead Forever objective table",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Head of Baron Vardus",
+            "entityID": 3626
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "WANTED",
+            "entityID": 1763
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "High Executor Darthalia",
+            "entityID": 2215
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+    }
+  }
+}

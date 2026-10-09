@@ -1,0 +1,403 @@
+{
+  "records": {
+    "98093": {
+      "prerequisitesRead": true,
+      "mapID": 1413,
+      "zone": "The Barrens",
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 7,
+          "action": "kill",
+          "entityID": 4128,
+          "name": "Hecklefang Stalker"
+        },
+        {
+          "entityType": "npc",
+          "quantity": 7,
+          "action": "kill",
+          "entityID": 3238,
+          "name": "Stormhide"
+        }
+      ],
+      "betaFactsSource": "https://github.com/Questie/QuestieDB",
+      "npcTargets": [
+        {
+          "entityID": 3238,
+          "npc": true,
+          "action": "kill",
+          "name": "Stormhide"
+        },
+        {
+          "entityID": 4128,
+          "npc": true,
+          "action": "kill",
+          "name": "Hecklefang Stalker"
+        }
+      ],
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "action": "kill",
+          "entityID": 4128,
+          "npc": true,
+          "sourceZone": "The Barrens",
+          "objectiveKey": "npc:4128",
+          "name": "Hecklefang Stalker",
+          "sourceAreaID": 17,
+          "y": 0.774,
+          "x": 0.466,
+          "quantity": 7
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1413,
+          "action": "kill",
+          "entityID": 3238,
+          "npc": true,
+          "sourceZone": "The Barrens",
+          "objectiveKey": "npc:3238",
+          "name": "Stormhide",
+          "sourceAreaID": 17,
+          "y": 0.768,
+          "x": 0.46399999999999997,
+          "quantity": 7
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "starts": [
+        {
+          "y": 0.7759999999999999,
+          "mapID": 1413,
+          "name": "Sulhasa",
+          "entityID": 14242,
+          "npc": true,
+          "x": 0.478
+        }
+      ],
+      "level": 23,
+      "areaID": 17,
+      "shareable": true,
+      "ends": [
+        {
+          "y": 0.7759999999999999,
+          "mapID": 1413,
+          "name": "Sulhasa",
+          "entityID": 14242,
+          "npc": true,
+          "x": 0.478
+        }
+      ],
+      "side": "Horde",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Sulhasa",
+          "entityID": 14242
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Sulhasa",
+          "entityID": 14242
+        }
+      ],
+      "xp": 1850,
+      "title": "Field to Clear",
+      "foreverStatus": "new",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 18,
+      "requirementSource": "Published Forever typed objectives",
+      "raceMask": 8589934770,
+      "objectiveFactsSource": "Published Forever typed objectives",
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/the-barrens"
+    },
+    "98094": {
+      "prerequisitesRead": true,
+      "mapID": 1413,
+      "zone": "The Barrens",
+      "requirements": {},
+      "seriesRoot": 98094,
+      "requiredItems": {},
+      "objectives": {},
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.5379999999999999,
+          "mapID": 1424,
+          "name": "Deathstalker Masoj",
+          "entityID": 270438,
+          "npc": true,
+          "x": 0.64
+        }
+      ],
+      "objectiveFactsSource": "Published Forever quest/entity relations",
+      "level": 25,
+      "areaID": 17,
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Darthalia's Orders",
+          "entityID": 279394
+        }
+      ],
+      "starts": [
+        {
+          "y": 0.20199999999999999,
+          "mapID": 1424,
+          "name": "High Executor Darthalia",
+          "entityID": 2215,
+          "npc": true,
+          "x": 0.622
+        }
+      ],
+      "side": "Horde",
+      "seriesPosition": 1,
+      "money": 900,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Deathstalker Masoj",
+          "entityID": 270438
+        }
+      ],
+      "xp": 2000,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "High Executor Darthalia",
+          "entityID": 2215
+        }
+      ],
+      "foreverStatus": "new",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 19,
+      "title": "Scout Support",
+      "raceMask": 8589934770,
+      "series": [
+        98094,
+        98095
+      ],
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/the-barrens"
+    },
+    "98095": {
+      "prerequisitesRead": true,
+      "mapID": 1413,
+      "objectives": {},
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Deathstalker Masoj",
+          "entityID": 270438
+        }
+      ],
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Western vial placed",
+          "entityID": 270575
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Northern vial placed",
+          "entityID": 270574
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Southern vial placed",
+          "entityID": 270573
+        }
+      ],
+      "seriesRoot": 98094,
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantityUnknown": true,
+          "name": "Apothecary Vials",
+          "entityID": 279395
+        }
+      ],
+      "starts": [
+        {
+          "y": 0.5379999999999999,
+          "mapID": 1424,
+          "name": "Deathstalker Masoj",
+          "entityID": 270438,
+          "npc": true,
+          "x": 0.64
+        }
+      ],
+      "raceMask": 8589934770,
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.5379999999999999,
+          "mapID": 1424,
+          "name": "Deathstalker Masoj",
+          "entityID": 270438,
+          "npc": true,
+          "x": 0.64
+        }
+      ],
+      "title": "Valuable Vantages",
+      "level": 25,
+      "areaID": 17,
+      "missingRequirements": [
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Western vial placed",
+          "entityID": 270575
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Northern vial placed",
+          "entityID": 270574
+        },
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Southern vial placed",
+          "entityID": 270573
+        }
+      ],
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Retain explicitly supplied Apothecary Vials with unknown supplied count, three counted placements and actual Hillsbrad giver/return. Peak placement points remain unknown; category and prerequisite unchanged. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/the-barrens-2026-10-09.",
+      "side": "Horde",
+      "previousQuest": 98094,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Deathstalker Masoj",
+          "entityID": 270438
+        }
+      ],
+      "xp": 2000,
+      "seriesPosition": 2,
+      "foreverStatus": "new",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "minLevel": 19,
+      "requirementSource": "Wowhead Forever objective table",
+      "objectiveLocationsIncomplete": true,
+      "series": [
+        98094,
+        98095
+      ],
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "kalimdor/the-barrens"
+    }
+  },
+  "pinned_quests": {
+    "98093": {
+      "_identityName": "Field to Clear",
+      "name": "Field to Clear",
+      "requiredLevel": 18,
+      "questLevel": 23,
+      "requiredRaces": 8589934770,
+      "objectives": {
+        "1": {
+          "1": {
+            "1": 4128
+          },
+          "2": {
+            "1": 3238
+          }
+        }
+      },
+      "zoneOrSort": 17,
+      "startedBy": {
+        "1": {
+          "1": 14242
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 14242
+        }
+      }
+    },
+    "98094": {
+      "_identityName": "Scout Support",
+      "name": "Scout Support",
+      "requiredLevel": 19,
+      "questLevel": 25,
+      "requiredRaces": 8589934770,
+      "sourceItemId": 279394,
+      "zoneOrSort": 17
+    },
+    "98095": {
+      "_identityName": "Valuable Vantages",
+      "name": "Valuable Vantages",
+      "requiredLevel": 19,
+      "questLevel": 25,
+      "requiredRaces": 8589934770,
+      "sourceItemId": 279395,
+      "zoneOrSort": 17
+    }
+  },
+  "origins": {
+    "98093": {
+      "_identityName": "beta-delta",
+      "name": "beta-observation",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-observation",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-observation",
+      "objectives": "beta-observation",
+      "zoneOrSort": "beta-delta",
+      "startedBy": "beta-observation",
+      "finishedBy": "beta-observation"
+    },
+    "98094": {
+      "_identityName": "beta-delta",
+      "name": "beta-delta",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-delta",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-delta",
+      "sourceItemId": "beta-delta",
+      "zoneOrSort": "beta-delta"
+    },
+    "98095": {
+      "_identityName": "beta-delta",
+      "name": "beta-delta",
+      "requiredLevel": "beta-delta",
+      "questLevel": "beta-delta",
+      "requiredRaces": "beta-delta",
+      "objectivesText": "beta-delta",
+      "sourceItemId": "beta-delta",
+      "zoneOrSort": "beta-delta"
+    }
+  },
+  "decision": "Keep current Hillsbrad actual pickup/return and Barrens source category; no published Scout Support predecessor, so do not invent Field to Clear dependency. Valuable Vantages requires actual Scout Support hand-in; three peak points remain unknown. Barrens commit supplies actual vials with unknown count."
+}

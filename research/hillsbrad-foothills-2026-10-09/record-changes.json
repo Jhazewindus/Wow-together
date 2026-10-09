@@ -1,0 +1,2041 @@
+{
+  "519": {
+    "before": {
+      "prerequisitesRead": true,
+      "zone": "Hillsbrad Foothills",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Targ's Head",
+          "entityID": 3550
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Muckrake's Head",
+          "entityID": 3551
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Glommus's Head",
+          "entityID": 3552
+        }
+      ],
+      "level": 41,
+      "areaID": 267,
+      "previousQuest": 518,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Melisara",
+          "entityID": 2278
+        }
+      ],
+      "xp": 3300,
+      "questType": "Elite",
+      "minLevel": 34,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Targ's Head",
+            "entityID": 3550
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Muckrake's Head",
+            "entityID": 3551
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Glommus's Head",
+            "entityID": 3552
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Melisara",
+            "entityID": 2278
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Melisara",
+            "entityID": 2278
+          }
+        ]
+      },
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "eastern-kingdoms/hillsbrad-foothills",
+      "raceMask": 0,
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Muckrake's Head",
+          "entityID": 3551
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Glommus's Head",
+          "entityID": 3552
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Melisara",
+          "entityID": 2278
+        }
+      ],
+      "seriesRoot": 495,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Targ's Head",
+          "itemID": 3550
+        },
+        {
+          "quantity": 1,
+          "name": "Muckrake's Head",
+          "itemID": 3551
+        },
+        {
+          "quantity": 1,
+          "name": "Glommus's Head",
+          "itemID": 3552
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.20600000000000002,
+          "mapID": 1424,
+          "name": "Melisara",
+          "entityID": 2278,
+          "npc": true,
+          "x": 0.626
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "seriesPosition": 3,
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1416,
+          "legacyStepKey": "q:1416:npc:2420",
+          "entityID": 2420,
+          "name": "Targ",
+          "npc": true,
+          "x": 0.3957,
+          "y": 0.5289,
+          "objectiveKey": "item:3550",
+          "itemID": 3550,
+          "quantity": 1,
+          "sourceAreaID": 36,
+          "itemName": "Targ's Head",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "action": "loot"
+        }
+      ],
+      "series": [
+        495,
+        518,
+        519,
+        520,
+        521
+      ],
+      "mapID": 1424,
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.20600000000000002,
+          "mapID": 1424,
+          "name": "Melisara",
+          "entityID": 2278,
+          "npc": true,
+          "x": 0.626
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "title": "The Crown of Will",
+      "classMask": 0,
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "itemName": "Targ's Head",
+          "name": "Targ",
+          "entityID": 2420,
+          "npc": true,
+          "action": "loot"
+        }
+      ]
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "zone": "Hillsbrad Foothills",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Targ's Head",
+          "entityID": 3550
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Muckrake's Head",
+          "entityID": 3551
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Glommus's Head",
+          "entityID": 3552
+        }
+      ],
+      "level": 41,
+      "areaID": 267,
+      "seriesPosition": 3,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Melisara",
+          "entityID": 2278
+        }
+      ],
+      "xp": 3300,
+      "questType": "Elite",
+      "title": "The Crown of Will",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Targ's Head",
+            "entityID": 3550
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Muckrake's Head",
+            "entityID": 3551
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Glommus's Head",
+            "entityID": 3552
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Melisara",
+            "entityID": 2278
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Melisara",
+            "entityID": 2278
+          }
+        ]
+      },
+      "categoryPath": "eastern-kingdoms/hillsbrad-foothills",
+      "raceMask": 0,
+      "mapID": 1424,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Melisara",
+          "entityID": 2278
+        }
+      ],
+      "seriesRoot": 495,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Targ's Head",
+          "itemID": 3550
+        },
+        {
+          "quantity": 1,
+          "name": "Muckrake's Head",
+          "itemID": 3551
+        },
+        {
+          "quantity": 1,
+          "name": "Glommus's Head",
+          "itemID": 3552
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.20600000000000002,
+          "mapID": 1424,
+          "name": "Melisara",
+          "entityID": 2278,
+          "npc": true,
+          "x": 0.626
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "minLevel": 34,
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1416,
+          "legacyStepKey": "q:1416:npc:2420",
+          "entityID": 2420,
+          "name": "Targ",
+          "npc": true,
+          "x": 0.3957,
+          "y": 0.5289,
+          "objectiveKey": "item:3550",
+          "itemID": 3550,
+          "quantity": 1,
+          "sourceAreaID": 36,
+          "itemName": "Targ's Head",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "action": "loot"
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1416,
+          "action": "loot",
+          "entityID": 2421,
+          "npc": true,
+          "x": 0.3865,
+          "y": 0.4675,
+          "objectiveKey": "item:3551",
+          "itemID": 3551,
+          "quantity": 1,
+          "sourceAreaID": 36,
+          "itemName": "Muckrake's Head",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Muckrake"
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1416,
+          "action": "loot",
+          "entityID": 2422,
+          "npc": true,
+          "x": 0.395,
+          "y": 0.4182,
+          "objectiveKey": "item:3552",
+          "itemID": 3552,
+          "quantity": 1,
+          "sourceAreaID": 36,
+          "itemName": "Glommus's Head",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Glommus"
+        }
+      ],
+      "series": [
+        495,
+        518,
+        519,
+        520,
+        521
+      ],
+      "missingRequirements": {},
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.20600000000000002,
+          "mapID": 1424,
+          "name": "Melisara",
+          "entityID": 2278,
+          "npc": true,
+          "x": 0.626
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Join both actual head drops to Muckrake/Glommus and published Alterac positions; preserve Targ point, all three one-head counts, elite warning and actual 518 hand-in. Converted-baseline facts, not measured beta paths. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/hillsbrad-foothills-2026-10-09.",
+      "previousQuest": 518,
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "itemName": "Targ's Head",
+          "name": "Targ",
+          "entityID": 2420,
+          "npc": true,
+          "action": "loot"
+        },
+        {
+          "itemName": "Muckrake's Head",
+          "name": "Muckrake",
+          "entityID": 2421,
+          "npc": true,
+          "action": "loot"
+        },
+        {
+          "itemName": "Glommus's Head",
+          "name": "Glommus",
+          "entityID": 2422,
+          "npc": true,
+          "action": "loot"
+        }
+      ]
+    }
+  },
+  "524": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1424,
+      "objectives": {},
+      "zone": "Hillsbrad Foothills",
+      "requirements": {},
+      "seriesRoot": 509,
+      "requiredItems": {},
+      "series": [
+        509,
+        513,
+        515,
+        517,
+        524
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Tainted Keg",
+          "entityID": 3520
+        }
+      ],
+      "starts": [
+        {
+          "y": 0.192,
+          "mapID": 1424,
+          "name": "Apothecary Lydon",
+          "entityID": 2216,
+          "npc": true,
+          "x": 0.614
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.188,
+          "x": 0.628,
+          "name": "Dusty Rug",
+          "entityID": 1728,
+          "mapID": 1424
+        }
+      ],
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "level": 30,
+      "areaID": 267,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Apothecary Lydon",
+          "entityID": 2216
+        }
+      ],
+      "side": "Horde",
+      "previousQuest": 517,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Dusty Rug",
+          "entityID": 1728
+        }
+      ],
+      "xp": 3650,
+      "title": "Elixir of Agony",
+      "foreverStatus": "unchanged",
+      "seriesPosition": 5,
+      "minLevel": 24,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Apothecary Lydon",
+            "entityID": 2216
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Tainted Keg",
+            "entityID": 3520
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "Dusty Rug",
+            "entityID": 1728
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "zone": "Hillsbrad Foothills",
+      "requirements": {},
+      "level": 30,
+      "areaID": 267,
+      "seriesPosition": 5,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Dusty Rug",
+          "entityID": 1728
+        }
+      ],
+      "xp": 3650,
+      "minLevel": 24,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Apothecary Lydon",
+            "entityID": 2216
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Tainted Keg",
+            "entityID": 3520
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "Dusty Rug",
+            "entityID": 1728
+          }
+        ]
+      },
+      "categoryPath": "eastern-kingdoms/hillsbrad-foothills",
+      "raceMask": 0,
+      "mapID": 1424,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Apothecary Lydon",
+          "entityID": 2216
+        }
+      ],
+      "seriesRoot": 509,
+      "requiredItems": {},
+      "ends": [
+        {
+          "entityType": "object",
+          "mapID": 1424,
+          "action": "interact",
+          "entityID": 1728,
+          "y": 0.188,
+          "x": 0.628,
+          "name": "Dusty Rug"
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "objectives": {},
+      "series": [
+        509,
+        513,
+        515,
+        517,
+        524
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Tainted Keg",
+          "entityID": 3520
+        }
+      ],
+      "classMask": 0,
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "starts": [
+        {
+          "y": 0.192,
+          "mapID": 1424,
+          "name": "Apothecary Lydon",
+          "entityID": 2216,
+          "npc": true,
+          "x": 0.614
+        }
+      ],
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "title": "Elixir of Agony",
+      "previousQuest": 517,
+      "locationSource": "Wowhead Forever",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Interact with actual Dusty Rug return object for supplied Tainted Keg; preserve supply and actual 517 hand-in. No invented extra placement quantity or farming. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/hillsbrad-foothills-2026-10-09."
+    }
+  },
+  "532": {
+    "before": {
+      "prerequisitesRead": true,
+      "zone": "Hillsbrad Foothills",
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Magistrate Burnside",
+          "entityID": 2335
+        },
+        {
+          "entityType": "npc",
+          "quantity": 5,
+          "name": "Hillsbrad Councilman",
+          "entityID": 2387
+        },
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "name": "Hillsbrad Proclamation destroyed",
+          "entityID": 1761
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Hillsbrad Town Registry",
+          "entityID": 3657
+        }
+      ],
+      "otherLocationsIncomplete": false,
+      "level": 26,
+      "areaID": 267,
+      "seriesPosition": 4,
+      "money": 2000,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "High Executor Darthalia",
+          "entityID": 2215
+        }
+      ],
+      "xp": 2100,
+      "minLevel": 19,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Magistrate Burnside",
+            "entityID": 2335
+          },
+          {
+            "entityType": "npc",
+            "quantity": 5,
+            "name": "Hillsbrad Councilman",
+            "entityID": 2387
+          },
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Hillsbrad Proclamation destroyed",
+            "entityID": 1761
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Hillsbrad Town Registry",
+            "entityID": 3657
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "High Executor Darthalia",
+            "entityID": 2215
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "High Executor Darthalia",
+            "entityID": 2215
+          }
+        ]
+      },
+      "categoryPath": "eastern-kingdoms/hillsbrad-foothills",
+      "raceMask": 0,
+      "mapID": 1424,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "High Executor Darthalia",
+          "entityID": 2215
+        }
+      ],
+      "seriesRoot": 527,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Hillsbrad Town Registry",
+          "itemID": 3657
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.20199999999999999,
+          "mapID": 1424,
+          "name": "High Executor Darthalia",
+          "entityID": 2215,
+          "npc": true,
+          "x": 0.622
+        }
+      ],
+      "shareable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "previousQuest": 529,
+      "objectives": [
+        {
+          "sourceObjective": 2335,
+          "mapID": 1424,
+          "action": "kill",
+          "entityID": 2335,
+          "npc": true,
+          "y": 0.41600000000000004,
+          "objectiveKey": "npc:2335",
+          "name": "Magistrate Burnside",
+          "x": 0.29600000000000004,
+          "quantity": 1
+        },
+        {
+          "sourceObjective": 2387,
+          "mapID": 1424,
+          "action": "kill",
+          "entityID": 2387,
+          "npc": true,
+          "y": 0.428,
+          "objectiveKey": "npc:2387",
+          "name": "Hillsbrad Councilman",
+          "x": 0.3,
+          "quantity": 5
+        },
+        {
+          "sourceObjective": 2,
+          "objectiveKey": "object:1761",
+          "name": "Hillsbrad Proclamation",
+          "y": 0.41700000000000004,
+          "entityID": 1761,
+          "x": 0.29600000000000004,
+          "quantity": 1,
+          "mapID": 1424
+        },
+        {
+          "entityType": "object",
+          "mapID": 1424,
+          "action": "gather",
+          "entityID": 1759,
+          "x": 0.2952,
+          "y": 0.4153,
+          "objectiveKey": "item:3657",
+          "itemID": 3657,
+          "quantity": 1,
+          "sourceAreaID": 267,
+          "itemName": "Hillsbrad Town Registry",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Hillsbrad Town Registry"
+        }
+      ],
+      "series": [
+        527,
+        528,
+        529,
+        532,
+        539,
+        541,
+        550
+      ],
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.20199999999999999,
+          "mapID": 1424,
+          "name": "High Executor Darthalia",
+          "entityID": 2215,
+          "npc": true,
+          "x": 0.622
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "title": "Battle of Hillsbrad",
+      "classMask": 0,
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "entityID": 2335,
+          "npc": true,
+          "action": "kill",
+          "name": "Magistrate Burnside"
+        },
+        {
+          "entityID": 2387,
+          "npc": true,
+          "action": "kill",
+          "name": "Hillsbrad Councilman"
+        }
+      ]
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "zone": "Hillsbrad Foothills",
+      "requirements": [
+        {
+          "entityType": "npc",
+          "quantity": 1,
+          "name": "Magistrate Burnside",
+          "entityID": 2335
+        },
+        {
+          "entityType": "npc",
+          "quantity": 5,
+          "name": "Hillsbrad Councilman",
+          "entityID": 2387
+        },
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "action": "interact",
+          "entityID": 1761,
+          "name": "Hillsbrad Proclamation destroyed"
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Hillsbrad Town Registry",
+          "entityID": 3657
+        }
+      ],
+      "otherLocationsIncomplete": false,
+      "level": 26,
+      "areaID": 267,
+      "seriesPosition": 4,
+      "money": 2000,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "High Executor Darthalia",
+          "entityID": 2215
+        }
+      ],
+      "xp": 2100,
+      "minLevel": 19,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantity": 1,
+            "name": "Magistrate Burnside",
+            "entityID": 2335
+          },
+          {
+            "entityType": "npc",
+            "quantity": 5,
+            "name": "Hillsbrad Councilman",
+            "entityID": 2387
+          },
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "action": "interact",
+            "entityID": 1761,
+            "name": "Hillsbrad Proclamation destroyed"
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Hillsbrad Town Registry",
+            "entityID": 3657
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "High Executor Darthalia",
+            "entityID": 2215
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "High Executor Darthalia",
+            "entityID": 2215
+          }
+        ]
+      },
+      "categoryPath": "eastern-kingdoms/hillsbrad-foothills",
+      "raceMask": 0,
+      "mapID": 1424,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "High Executor Darthalia",
+          "entityID": 2215
+        }
+      ],
+      "seriesRoot": 527,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Hillsbrad Town Registry",
+          "itemID": 3657
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.20199999999999999,
+          "mapID": 1424,
+          "name": "High Executor Darthalia",
+          "entityID": 2215,
+          "npc": true,
+          "x": 0.622
+        }
+      ],
+      "shareable": true,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "previousQuest": 529,
+      "objectives": [
+        {
+          "sourceObjective": 2335,
+          "mapID": 1424,
+          "action": "kill",
+          "entityID": 2335,
+          "npc": true,
+          "y": 0.41600000000000004,
+          "objectiveKey": "npc:2335",
+          "name": "Magistrate Burnside",
+          "x": 0.29600000000000004,
+          "quantity": 1
+        },
+        {
+          "sourceObjective": 2387,
+          "mapID": 1424,
+          "action": "kill",
+          "entityID": 2387,
+          "npc": true,
+          "y": 0.428,
+          "objectiveKey": "npc:2387",
+          "name": "Hillsbrad Councilman",
+          "x": 0.3,
+          "quantity": 5
+        },
+        {
+          "sourceObjective": 2,
+          "mapID": 1424,
+          "action": "interact",
+          "entityID": 1761,
+          "y": 0.41700000000000004,
+          "objectiveKey": "object:1761",
+          "name": "Hillsbrad Proclamation",
+          "x": 0.29600000000000004,
+          "entityType": "object",
+          "quantity": 1
+        },
+        {
+          "entityType": "object",
+          "mapID": 1424,
+          "action": "gather",
+          "entityID": 1759,
+          "x": 0.2952,
+          "y": 0.4153,
+          "objectiveKey": "item:3657",
+          "itemID": 3657,
+          "quantity": 1,
+          "sourceAreaID": 267,
+          "itemName": "Hillsbrad Town Registry",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Hillsbrad Town Registry"
+        }
+      ],
+      "series": [
+        527,
+        528,
+        529,
+        532,
+        539,
+        541,
+        550
+      ],
+      "title": "Battle of Hillsbrad",
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.20199999999999999,
+          "mapID": 1424,
+          "name": "High Executor Darthalia",
+          "entityID": 2215,
+          "npc": true,
+          "x": 0.622
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "classMask": 0,
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Interact with actual proclamation objective while retaining required destroyed-credit count, registry gathering, kills and real previous hand-in. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/hillsbrad-foothills-2026-10-09.",
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "entityID": 2335,
+          "npc": true,
+          "action": "kill",
+          "name": "Magistrate Burnside"
+        },
+        {
+          "entityID": 2387,
+          "npc": true,
+          "action": "kill",
+          "name": "Hillsbrad Councilman"
+        }
+      ]
+    }
+  },
+  "553": {
+    "before": {
+      "prerequisitesRead": true,
+      "zone": "Hillsbrad Foothills",
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "name": "Flame of Azel charged",
+          "entityID": 1768
+        },
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "name": "Flame of Veraz charged",
+          "entityID": 1769
+        },
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "name": "Flame of Uzel charged",
+          "entityID": 1770
+        }
+      ],
+      "otherLocationsIncomplete": false,
+      "level": 33,
+      "areaID": 267,
+      "previousQuest": 552,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Helcular's Grave",
+          "entityID": 1767
+        }
+      ],
+      "xp": 3300,
+      "minLevel": 29,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Flame of Azel charged",
+            "entityID": 1768
+          },
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Flame of Veraz charged",
+            "entityID": 1769
+          },
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "name": "Flame of Uzel charged",
+            "entityID": 1770
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Novice Thaivand",
+            "entityID": 2429
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Rod of Helcular",
+            "entityID": 3710
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "Helcular's Grave",
+            "entityID": 1767
+          }
+        ]
+      },
+      "categoryPath": "eastern-kingdoms/hillsbrad-foothills",
+      "raceMask": 8589934770,
+      "mapID": 1424,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Novice Thaivand",
+          "entityID": 2429
+        }
+      ],
+      "seriesRoot": 552,
+      "requiredItems": {},
+      "ends": [
+        {
+          "y": 0.5329999999999999,
+          "x": 0.528,
+          "name": "Helcular's Grave",
+          "entityID": 1767,
+          "mapID": 1424
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "objectiveKey": "object:1768",
+          "name": "Flame of Azel",
+          "y": 0.281,
+          "entityID": 1768,
+          "x": 0.44,
+          "quantity": 1,
+          "mapID": 1424
+        },
+        {
+          "sourceObjective": 1,
+          "objectiveKey": "object:1769",
+          "name": "Flame of Veraz",
+          "y": 0.264,
+          "entityID": 1769,
+          "x": 0.442,
+          "quantity": 1,
+          "mapID": 1424
+        },
+        {
+          "sourceObjective": 2,
+          "objectiveKey": "object:1770",
+          "name": "Flame of Uzel",
+          "y": 0.6709999999999999,
+          "entityID": 1770,
+          "x": 0.375,
+          "quantity": 1,
+          "mapID": 1416
+        }
+      ],
+      "series": [
+        552,
+        553
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Rod of Helcular",
+          "entityID": 3710
+        }
+      ],
+      "seriesPosition": 2,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "starts": [
+        {
+          "y": 0.196,
+          "mapID": 1424,
+          "name": "Novice Thaivand",
+          "entityID": 2429,
+          "npc": true,
+          "x": 0.638
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "classMask": 0,
+      "locationSource": "Wowhead Forever",
+      "title": "Helcular's Revenge"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "zone": "Hillsbrad Foothills",
+      "requirements": [
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "action": "use",
+          "entityID": 1768,
+          "name": "Flame of Azel charged"
+        },
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "action": "use",
+          "entityID": 1769,
+          "name": "Flame of Veraz charged"
+        },
+        {
+          "entityType": "object",
+          "quantity": 1,
+          "action": "use",
+          "entityID": 1770,
+          "name": "Flame of Uzel charged"
+        }
+      ],
+      "otherLocationsIncomplete": false,
+      "level": 33,
+      "areaID": 267,
+      "previousQuest": 552,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "Helcular's Grave",
+          "entityID": 1767
+        }
+      ],
+      "xp": 3300,
+      "minLevel": 29,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "action": "use",
+            "entityID": 1768,
+            "name": "Flame of Azel charged"
+          },
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "action": "use",
+            "entityID": 1769,
+            "name": "Flame of Veraz charged"
+          },
+          {
+            "entityType": "object",
+            "quantity": 1,
+            "action": "use",
+            "entityID": 1770,
+            "name": "Flame of Uzel charged"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Novice Thaivand",
+            "entityID": 2429
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Rod of Helcular",
+            "entityID": 3710
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "Helcular's Grave",
+            "entityID": 1767
+          }
+        ]
+      },
+      "categoryPath": "eastern-kingdoms/hillsbrad-foothills",
+      "raceMask": 8589934770,
+      "mapID": 1424,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Novice Thaivand",
+          "entityID": 2429
+        }
+      ],
+      "seriesRoot": 552,
+      "requiredItems": {},
+      "ends": [
+        {
+          "entityType": "object",
+          "mapID": 1424,
+          "action": "interact",
+          "entityID": 1767,
+          "y": 0.5329999999999999,
+          "x": 0.528,
+          "name": "Helcular's Grave"
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1424,
+          "action": "use",
+          "entityID": 1768,
+          "useItemName": "Rod of Helcular",
+          "y": 0.281,
+          "objectiveKey": "object:1768",
+          "name": "Flame of Azel",
+          "useItemID": 3710,
+          "x": 0.44,
+          "entityType": "object",
+          "quantity": 1
+        },
+        {
+          "sourceObjective": 1,
+          "mapID": 1424,
+          "action": "use",
+          "entityID": 1769,
+          "useItemName": "Rod of Helcular",
+          "y": 0.264,
+          "objectiveKey": "object:1769",
+          "name": "Flame of Veraz",
+          "useItemID": 3710,
+          "x": 0.442,
+          "entityType": "object",
+          "quantity": 1
+        },
+        {
+          "sourceObjective": 2,
+          "mapID": 1416,
+          "action": "use",
+          "entityID": 1770,
+          "useItemName": "Rod of Helcular",
+          "y": 0.6709999999999999,
+          "objectiveKey": "object:1770",
+          "name": "Flame of Uzel",
+          "useItemID": 3710,
+          "x": 0.375,
+          "entityType": "object",
+          "quantity": 1
+        }
+      ],
+      "series": [
+        552,
+        553
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Rod of Helcular",
+          "entityID": 3710
+        }
+      ],
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "seriesPosition": 2,
+      "foreverStatus": "unchanged",
+      "allowedRaceIDs": [
+        2,
+        5,
+        6,
+        8,
+        96
+      ],
+      "starts": [
+        {
+          "y": 0.196,
+          "mapID": 1424,
+          "name": "Novice Thaivand",
+          "entityID": 2429,
+          "npc": true,
+          "x": 0.638
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "title": "Helcular's Revenge",
+      "classMask": 0,
+      "locationSource": "Wowhead Forever",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Use supplied Rod of Helcular at each of three counted flames and interact with actual grave return; preserve output credits, cross-zone flame, supplied rod count and 552 hand-in. Native grave event/combat remains unverified. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/hillsbrad-foothills-2026-10-09."
+    }
+  },
+  "565": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1424,
+      "zone": "Hillsbrad Foothills",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Bolt of Woolen Cloth",
+          "entityID": 2997
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Fine Thread",
+          "entityID": 2321
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Hillman's Cloak",
+          "entityID": 3719
+        },
+        {
+          "entityType": "item",
+          "quantity": 10,
+          "name": "Yeti Fur",
+          "entityID": 3720
+        }
+      ],
+      "npcTargets": [
+        {
+          "itemName": "Yeti Fur",
+          "name": "Cave Yeti",
+          "entityID": 2248,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Yeti Fur",
+          "name": "Ferocious Yeti",
+          "entityID": 2249,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Bolt of Woolen Cloth",
+          "name": "Darla Harris",
+          "entityID": 2432,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Fine Thread",
+          "name": "Micha Yance",
+          "entityID": 2381,
+          "npc": true,
+          "action": "buy"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Bolt of Woolen Cloth",
+          "itemID": 2997
+        },
+        {
+          "buyable": true,
+          "name": "Fine Thread",
+          "buyPrice": 100,
+          "quantity": 1,
+          "itemID": 2321
+        },
+        {
+          "quantity": 1,
+          "name": "Hillman's Cloak",
+          "itemID": 3719
+        },
+        {
+          "quantity": 10,
+          "name": "Yeti Fur",
+          "itemID": 3720
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 3,
+          "mapID": 1424,
+          "legacyStepKey": "q:1424:npc:2249",
+          "entityID": 2249,
+          "npc": true,
+          "x": 0.44799999999999995,
+          "y": 0.284,
+          "objectiveKey": "item:3720",
+          "itemID": 3720,
+          "quantity": 10,
+          "name": "Ferocious Yeti",
+          "itemName": "Yeti Fur",
+          "alternativeCount": 2,
+          "action": "collect"
+        },
+        {
+          "sourceObjective": 0,
+          "mapID": 1424,
+          "legacyStepKey": "q:1424:npc:2432",
+          "entityID": 2432,
+          "npc": true,
+          "x": 0.494,
+          "y": 0.522,
+          "objectiveKey": "item:2997",
+          "itemID": 2997,
+          "quantity": 1,
+          "name": "Darla Harris",
+          "itemName": "Bolt of Woolen Cloth",
+          "alternativeCount": 6,
+          "action": "collect"
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1424,
+          "legacyStepKey": "q:1424:npc:2381",
+          "entityID": 2381,
+          "name": "Micha Yance",
+          "npc": true,
+          "x": 0.4894,
+          "y": 0.5503,
+          "objectiveKey": "item:2321",
+          "itemID": 2321,
+          "quantity": 1,
+          "sourceAreaID": 267,
+          "itemName": "Fine Thread",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "action": "buy"
+        }
+      ],
+      "starts": [
+        {
+          "y": 0.556,
+          "mapID": 1424,
+          "name": "Bartolo Ginsetti",
+          "entityID": 2438,
+          "npc": true,
+          "x": 0.494
+        }
+      ],
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.556,
+          "mapID": 1424,
+          "name": "Bartolo Ginsetti",
+          "entityID": 2438,
+          "npc": true,
+          "x": 0.494
+        }
+      ],
+      "level": 34,
+      "areaID": 267,
+      "objectiveAlternatives": [
+        {
+          "sourceObjective": 3,
+          "itemName": "Yeti Fur",
+          "locations": [
+            {
+              "sourceObjective": 3,
+              "itemName": "Yeti Fur",
+              "action": "collect",
+              "entityID": 2248,
+              "npc": true,
+              "y": 0.278,
+              "x": 0.444,
+              "name": "Cave Yeti",
+              "mapID": 1424
+            },
+            {
+              "sourceObjective": 3,
+              "itemName": "Yeti Fur",
+              "action": "collect",
+              "entityID": 2249,
+              "npc": true,
+              "y": 0.284,
+              "x": 0.44799999999999995,
+              "name": "Ferocious Yeti",
+              "mapID": 1424
+            }
+          ]
+        },
+        {
+          "sourceObjective": 0,
+          "itemName": "Bolt of Woolen Cloth",
+          "locations": [
+            {
+              "sourceObjective": 0,
+              "itemName": "Bolt of Woolen Cloth",
+              "action": "collect",
+              "entityID": 2432,
+              "npc": true,
+              "y": 0.522,
+              "x": 0.494,
+              "name": "Darla Harris",
+              "mapID": 1424
+            },
+            {
+              "sourceObjective": 0,
+              "mapID": 1424,
+              "action": "collect",
+              "y": 0.389,
+              "entityID": 2850,
+              "x": 0.773,
+              "name": "Solid Chest",
+              "itemName": "Bolt of Woolen Cloth"
+            },
+            {
+              "sourceObjective": 0,
+              "mapID": 1424,
+              "action": "collect",
+              "y": 0.605,
+              "entityID": 2852,
+              "x": 0.6629999999999999,
+              "name": "Solid Chest",
+              "itemName": "Bolt of Woolen Cloth"
+            },
+            {
+              "sourceObjective": 0,
+              "mapID": 1424,
+              "action": "collect",
+              "y": 0.281,
+              "entityID": 2855,
+              "x": 0.44,
+              "name": "Solid Chest",
+              "itemName": "Bolt of Woolen Cloth"
+            },
+            {
+              "sourceObjective": 0,
+              "mapID": 1424,
+              "action": "collect",
+              "y": 0.374,
+              "entityID": 3715,
+              "x": 0.35200000000000004,
+              "name": "Alliance Chest",
+              "itemName": "Bolt of Woolen Cloth"
+            },
+            {
+              "sourceObjective": 0,
+              "mapID": 1424,
+              "action": "collect",
+              "y": 0.562,
+              "entityID": 4096,
+              "x": 0.312,
+              "name": "Alliance Chest",
+              "itemName": "Bolt of Woolen Cloth"
+            }
+          ]
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Bartolo Ginsetti",
+          "entityID": 2438
+        }
+      ],
+      "side": "Alliance",
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Hillman's Cloak",
+          "entityID": 3719
+        }
+      ],
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Bartolo Ginsetti",
+          "entityID": 2438
+        }
+      ],
+      "xp": 2700,
+      "title": "Bartolo's Yeti Fur Cloak",
+      "foreverStatus": "unchanged",
+      "raceMask": 0,
+      "minLevel": 29,
+      "requirementSource": "Wowhead Forever objective table",
+      "objectiveLocationsIncomplete": true,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Bolt of Woolen Cloth",
+            "entityID": 2997
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Fine Thread",
+            "entityID": 2321
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Hillman's Cloak",
+            "entityID": 3719
+          },
+          {
+            "entityType": "item",
+            "quantity": 10,
+            "name": "Yeti Fur",
+            "entityID": 3720
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Bartolo Ginsetti",
+            "entityID": 2438
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Bartolo Ginsetti",
+            "entityID": 2438
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1424,
+      "npcTargets": [
+        {
+          "itemName": "Yeti Fur",
+          "name": "Cave Yeti",
+          "entityID": 2248,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Yeti Fur",
+          "name": "Ferocious Yeti",
+          "entityID": 2249,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Fine Thread",
+          "name": "Micha Yance",
+          "entityID": 2381,
+          "npc": true,
+          "action": "buy"
+        }
+      ],
+      "zone": "Hillsbrad Foothills",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Bolt of Woolen Cloth",
+          "entityID": 2997
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Fine Thread",
+          "entityID": 2321
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Hillman's Cloak",
+          "entityID": 3719
+        },
+        {
+          "entityType": "item",
+          "quantity": 10,
+          "name": "Yeti Fur",
+          "entityID": 3720
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 3,
+          "mapID": 1424,
+          "legacyStepKey": "q:1424:npc:2249",
+          "entityID": 2249,
+          "npc": true,
+          "x": 0.44799999999999995,
+          "y": 0.284,
+          "objectiveKey": "item:3720",
+          "itemID": 3720,
+          "quantity": 10,
+          "name": "Ferocious Yeti",
+          "itemName": "Yeti Fur",
+          "alternativeCount": 2,
+          "action": "collect"
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1424,
+          "legacyStepKey": "q:1424:npc:2381",
+          "entityID": 2381,
+          "name": "Micha Yance",
+          "npc": true,
+          "x": 0.4894,
+          "y": 0.5503,
+          "objectiveKey": "item:2321",
+          "itemID": 2321,
+          "quantity": 1,
+          "sourceAreaID": 267,
+          "itemName": "Fine Thread",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "action": "buy"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Bolt of Woolen Cloth",
+          "itemID": 2997
+        },
+        {
+          "buyable": true,
+          "name": "Fine Thread",
+          "buyPrice": 100,
+          "quantity": 1,
+          "itemID": 2321
+        },
+        {
+          "quantity": 1,
+          "name": "Hillman's Cloak",
+          "itemID": 3719
+        },
+        {
+          "quantity": 10,
+          "name": "Yeti Fur",
+          "itemID": 3720
+        }
+      ],
+      "starts": [
+        {
+          "y": 0.556,
+          "mapID": 1424,
+          "name": "Bartolo Ginsetti",
+          "entityID": 2438,
+          "npc": true,
+          "x": 0.494
+        }
+      ],
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "title": "Bartolo's Yeti Fur Cloak",
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.556,
+          "mapID": 1424,
+          "name": "Bartolo Ginsetti",
+          "entityID": 2438,
+          "npc": true,
+          "x": 0.494
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Bartolo Ginsetti",
+          "entityID": 2438
+        }
+      ],
+      "level": 34,
+      "areaID": 267,
+      "objectiveAlternatives": [
+        {
+          "sourceObjective": 3,
+          "itemName": "Yeti Fur",
+          "locations": [
+            {
+              "sourceObjective": 3,
+              "itemName": "Yeti Fur",
+              "action": "collect",
+              "entityID": 2248,
+              "npc": true,
+              "y": 0.278,
+              "x": 0.444,
+              "name": "Cave Yeti",
+              "mapID": 1424
+            },
+            {
+              "sourceObjective": 3,
+              "itemName": "Yeti Fur",
+              "action": "collect",
+              "entityID": 2249,
+              "npc": true,
+              "y": 0.284,
+              "x": 0.44799999999999995,
+              "name": "Ferocious Yeti",
+              "mapID": 1424
+            }
+          ]
+        },
+        {
+          "sourceObjective": 0,
+          "itemName": "Bolt of Woolen Cloth",
+          "locations": [
+            {
+              "sourceObjective": 0,
+              "mapID": 1424,
+              "action": "collect",
+              "y": 0.389,
+              "entityID": 2850,
+              "x": 0.773,
+              "name": "Solid Chest",
+              "itemName": "Bolt of Woolen Cloth"
+            },
+            {
+              "sourceObjective": 0,
+              "mapID": 1424,
+              "action": "collect",
+              "y": 0.605,
+              "entityID": 2852,
+              "x": 0.6629999999999999,
+              "name": "Solid Chest",
+              "itemName": "Bolt of Woolen Cloth"
+            },
+            {
+              "sourceObjective": 0,
+              "mapID": 1424,
+              "action": "collect",
+              "y": 0.281,
+              "entityID": 2855,
+              "x": 0.44,
+              "name": "Solid Chest",
+              "itemName": "Bolt of Woolen Cloth"
+            },
+            {
+              "sourceObjective": 0,
+              "mapID": 1424,
+              "action": "collect",
+              "y": 0.374,
+              "entityID": 3715,
+              "x": 0.35200000000000004,
+              "name": "Alliance Chest",
+              "itemName": "Bolt of Woolen Cloth"
+            },
+            {
+              "sourceObjective": 0,
+              "mapID": 1424,
+              "action": "collect",
+              "y": 0.562,
+              "entityID": 4096,
+              "x": 0.312,
+              "name": "Alliance Chest",
+              "itemName": "Bolt of Woolen Cloth"
+            }
+          ]
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Hillman's Cloak",
+          "entityID": 3719
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Bolt of Woolen Cloth",
+          "entityID": 2997
+        }
+      ],
+      "side": "Alliance",
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Bartolo Ginsetti",
+          "entityID": 2438
+        }
+      ],
+      "xp": 2700,
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Remove unsupported cloth acquisition from flight master Darla Harris; actual item has no published NPC drops. Preserve counted cloak/cloth/fur/thread hand-ins, yeti work, real thread vendor and optional captured chest alternatives. Cloth procurement remains unknown; do not substitute random chest loot as guaranteed vendor or impose a profession gate. Verified pinned hashes 2026-10-09 Europe/Amsterdam; research/hillsbrad-foothills-2026-10-09.",
+      "foreverStatus": "unchanged",
+      "raceMask": 0,
+      "minLevel": 29,
+      "requirementSource": "Wowhead Forever objective table",
+      "objectiveLocationsIncomplete": true,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Bolt of Woolen Cloth",
+            "entityID": 2997
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Fine Thread",
+            "entityID": 2321
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Hillman's Cloak",
+            "entityID": 3719
+          },
+          {
+            "entityType": "item",
+            "quantity": 10,
+            "name": "Yeti Fur",
+            "entityID": 3720
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Bartolo Ginsetti",
+            "entityID": 2438
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Bartolo Ginsetti",
+            "entityID": 2438
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/hillsbrad-foothills"
+    }
+  }
+}

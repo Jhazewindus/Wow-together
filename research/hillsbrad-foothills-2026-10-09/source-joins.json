@@ -1,0 +1,91 @@
+[
+  {
+    "questID": 519,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline"
+    },
+    "decision": "Join both actual head drops to Muckrake/Glommus and published Alterac positions; preserve Targ point, all three one-head counts, elite warning and actual 518 hand-in. Converted-baseline facts, not measured beta paths.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 524,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "decision": "Interact with actual Dusty Rug return object for supplied Tainted Keg; preserve supply and actual 517 hand-in. No invented extra placement quantity or farming.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 532,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "_identityName": "converted-baseline"
+    },
+    "decision": "Interact with actual proclamation objective while retaining required destroyed-credit count, registry gathering, kills and real previous hand-in.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 553,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "sourceItemId": "converted-baseline",
+      "preQuestSingle": "converted-baseline",
+      "zoneOrSort": "converted-baseline"
+    },
+    "decision": "Use supplied Rod of Helcular at each of three counted flames and interact with actual grave return; preserve output credits, cross-zone flame, supplied rod count and 552 hand-in. Native grave event/combat remains unverified.",
+    "native_beta_verified": false
+  },
+  {
+    "questID": 565,
+    "origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline"
+    },
+    "decision": "Remove unsupported cloth acquisition from flight master Darla Harris; actual item has no published NPC drops. Preserve counted cloak/cloth/fur/thread hand-ins, yeti work, real thread vendor and optional captured chest alternatives. Cloth procurement remains unknown; do not substitute random chest loot as guaranteed vendor or impose a profession gate.",
+    "native_beta_verified": false
+  }
+]

@@ -1,14 +1,14 @@
 {
   "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
   "quest_records": 5230,
-  "static_points_checked": 11829,
+  "static_points_checked": 11830,
   "fixed_zone_guides_checked": 152,
-  "catalogue_reason_stages_checked": 16850,
+  "catalogue_reason_stages_checked": 16851,
   "catalogue_reason_codes": {
     "class-progression": 1822,
     "level-work": 4459,
     "outside-level-range": 2,
-    "quest-objective": 5223,
+    "quest-objective": 5224,
     "quest-reward": 5313,
     "selected-guide": 31
   },
@@ -5093,7 +5093,7 @@
     99267,
     99411
   ],
-  "source_data_gap_free_guides": 33,
+  "source_data_gap_free_guides": 34,
   "guides": [
     {
       "faction": "Alliance",
@@ -6655,7 +6655,7 @@
       "key": "level-zone:eastern-kingdoms/hillsbrad-foothills:levels:31-40",
       "quests": 14,
       "steps": 49,
-      "unknown_location_steps": 1,
+      "unknown_location_steps": 2,
       "missing_location_quest_ids_by_stage": {
         "a": [],
         "q": [
@@ -6675,14 +6675,14 @@
       },
       "reason_review_steps": 17,
       "cross_zone_reason_steps": 3,
-      "flow_alternatives_evaluated": 17,
+      "flow_alternatives_evaluated": 16,
       "flow_loop_changes": 0,
       "flow_state_valid": true,
       "quest_log_peak": 5,
       "quest_reward_only_xp_shortfall": 190600,
-      "uncertain_travel_legs": 6,
-      "estimated_distance_before": 38673.0,
-      "estimated_distance_after": 38673.0
+      "uncertain_travel_legs": 7,
+      "estimated_distance_before": 38716.31,
+      "estimated_distance_after": 38716.31
     },
     {
       "faction": "Alliance",
@@ -9700,34 +9700,32 @@
       "key": "level-zone:eastern-kingdoms/hillsbrad-foothills:levels:41-50",
       "quests": 5,
       "steps": 18,
-      "unknown_location_steps": 2,
+      "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
-        "q": [
-          519
-        ],
+        "q": [],
         "t": []
       },
       "unverified_pickup_requirement_quest_ids": [],
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 0,
-      "source_data_gap_free": false,
+      "source_data_gap_free": true,
       "reason_steps_checked": 18,
       "destination_reason_codes": {
         "outside-level-range": 2,
         "prerequisite": 15,
         "quest-reward": 1
       },
-      "reason_review_steps": 4,
+      "reason_review_steps": 2,
       "cross_zone_reason_steps": 8,
       "flow_alternatives_evaluated": 0,
       "flow_loop_changes": 0,
       "flow_state_valid": true,
       "quest_log_peak": 1,
       "quest_reward_only_xp_shortfall": 0,
-      "uncertain_travel_legs": 10,
-      "estimated_distance_before": 120000,
-      "estimated_distance_after": 120000
+      "uncertain_travel_legs": 8,
+      "estimated_distance_before": 120683.12,
+      "estimated_distance_after": 120683.12
     },
     {
       "faction": "Horde",

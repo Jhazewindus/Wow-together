@@ -1,0 +1,252 @@
+{
+  "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
+  "quest_records": 53,
+  "static_points_checked": 177,
+  "fixed_zone_guides_checked": 5,
+  "catalogue_reason_stages_checked": 198,
+  "catalogue_reason_codes": {
+    "level-work": 55,
+    "quest-objective": 90,
+    "quest-reward": 53
+  },
+  "reason_review_quest_ids": [
+    494,
+    496,
+    498,
+    499,
+    501,
+    502,
+    503,
+    506,
+    507,
+    508,
+    509,
+    513,
+    515,
+    517,
+    518,
+    519,
+    520,
+    521,
+    524,
+    527,
+    528,
+    529,
+    532,
+    533,
+    536,
+    539,
+    540,
+    541,
+    544,
+    545,
+    546,
+    547,
+    549,
+    550,
+    552,
+    553,
+    555,
+    556,
+    557,
+    559,
+    560,
+    561,
+    562,
+    563,
+    564,
+    565,
+    566,
+    567,
+    659,
+    661,
+    676,
+    98059,
+    98071
+  ],
+  "source_data_gap_free_guides": 1,
+  "guides": [
+    {
+      "faction": "Alliance",
+      "zone": "Hillsbrad Foothills",
+      "key": "level-zone:eastern-kingdoms/hillsbrad-foothills:levels:21-30",
+      "quests": 8,
+      "steps": 27,
+      "unknown_location_steps": 3,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [
+          98059,
+          98071
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 27,
+      "destination_reason_codes": {
+        "outside-level-range": 7,
+        "prerequisite": 17,
+        "quest-reward": 3
+      },
+      "reason_review_steps": 7,
+      "cross_zone_reason_steps": 1,
+      "flow_alternatives_evaluated": 3,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 56700,
+      "uncertain_travel_legs": 5,
+      "estimated_distance_before": 15933.12,
+      "estimated_distance_after": 15933.12
+    },
+    {
+      "faction": "Alliance",
+      "zone": "Hillsbrad Foothills",
+      "key": "level-zone:eastern-kingdoms/hillsbrad-foothills:levels:31-40",
+      "quests": 14,
+      "steps": 49,
+      "unknown_location_steps": 1,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [
+          565
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 49,
+      "destination_reason_codes": {
+        "outside-level-range": 17,
+        "prerequisite": 26,
+        "quest-reward": 6
+      },
+      "reason_review_steps": 17,
+      "cross_zone_reason_steps": 3,
+      "flow_alternatives_evaluated": 17,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 5,
+      "quest_reward_only_xp_shortfall": 190600,
+      "uncertain_travel_legs": 6,
+      "estimated_distance_before": 38673.0,
+      "estimated_distance_after": 38673.0
+    },
+    {
+      "faction": "Horde",
+      "zone": "Hillsbrad Foothills",
+      "key": "level-zone:eastern-kingdoms/hillsbrad-foothills:levels:21-30",
+      "quests": 23,
+      "steps": 91,
+      "unknown_location_steps": 1,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [
+          515
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 91,
+      "destination_reason_codes": {
+        "class-progression": 4,
+        "early-reward": 1,
+        "outside-level-range": 25,
+        "prerequisite": 49,
+        "quest-reward": 9,
+        "return-hub": 1,
+        "unlock-loop": 2
+      },
+      "reason_review_steps": 26,
+      "cross_zone_reason_steps": 5,
+      "flow_alternatives_evaluated": 178,
+      "flow_loop_changes": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 6,
+      "quest_reward_only_xp_shortfall": 201325,
+      "uncertain_travel_legs": 23,
+      "estimated_distance_before": 132484.86,
+      "estimated_distance_after": 131589.96
+    },
+    {
+      "faction": "Horde",
+      "zone": "Hillsbrad Foothills",
+      "key": "level-zone:eastern-kingdoms/hillsbrad-foothills:levels:31-40",
+      "quests": 15,
+      "steps": 62,
+      "unknown_location_steps": 0,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": true,
+      "reason_steps_checked": 62,
+      "destination_reason_codes": {
+        "outside-level-range": 13,
+        "prerequisite": 45,
+        "quest-reward": 4
+      },
+      "reason_review_steps": 13,
+      "cross_zone_reason_steps": 7,
+      "flow_alternatives_evaluated": 17,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 330800,
+      "uncertain_travel_legs": 20,
+      "estimated_distance_before": 157569.34,
+      "estimated_distance_after": 157569.34
+    },
+    {
+      "faction": "Horde",
+      "zone": "Hillsbrad Foothills",
+      "key": "level-zone:eastern-kingdoms/hillsbrad-foothills:levels:41-50",
+      "quests": 5,
+      "steps": 18,
+      "unknown_location_steps": 2,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [
+          519
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 18,
+      "destination_reason_codes": {
+        "outside-level-range": 2,
+        "prerequisite": 15,
+        "quest-reward": 1
+      },
+      "reason_review_steps": 4,
+      "cross_zone_reason_steps": 8,
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 10,
+      "estimated_distance_before": 120000,
+      "estimated_distance_after": 120000
+    }
+  ],
+  "scope": {
+    "zone": "Hillsbrad Foothills",
+    "catalogue_records": "Exact quest zone; guide dependencies still compile normally"
+  }
+}
