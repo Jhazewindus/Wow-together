@@ -1,0 +1,110 @@
+[
+  {
+    "questID": 81733,
+    "quest_entry_pinned": false,
+    "required_items": [
+      {
+        "id": 219776,
+        "quantity": 1,
+        "pinned_item_facts": {},
+        "origins": {}
+      }
+    ]
+  },
+  {
+    "questID": 81734,
+    "quest_entry_pinned": false,
+    "required_items": [
+      {
+        "id": 219778,
+        "quantity": 1,
+        "pinned_item_facts": {},
+        "origins": {}
+      }
+    ]
+  },
+  {
+    "questID": 81735,
+    "quest_entry_pinned": false,
+    "required_items": [
+      {
+        "id": 219803,
+        "quantity": 1,
+        "pinned_item_facts": {},
+        "origins": {}
+      }
+    ]
+  },
+  {
+    "questID": 81736,
+    "quest_entry_pinned": false,
+    "required_items": [
+      {
+        "id": 219404,
+        "quantity": 1,
+        "pinned_item_facts": {},
+        "origins": {}
+      }
+    ]
+  },
+  {
+    "questID": 81737,
+    "quest_entry_pinned": false,
+    "required_items": [
+      {
+        "id": 219405,
+        "quantity": 1,
+        "pinned_item_facts": {},
+        "origins": {}
+      }
+    ]
+  },
+  {
+    "questID": 81738,
+    "quest_entry_pinned": false,
+    "required_items": [
+      {
+        "id": 219406,
+        "quantity": 1,
+        "pinned_item_facts": {},
+        "origins": {}
+      }
+    ]
+  },
+  {
+    "questID": 81739,
+    "quest_entry_pinned": false,
+    "required_items": [
+      {
+        "id": 219399,
+        "quantity": 10,
+        "pinned_item_facts": {
+          "_identityName": "Nightmare Moss",
+          "name": "Nightmare Moss"
+        },
+        "origins": {
+          "_identityName": "beta-delta",
+          "name": "beta-delta"
+        }
+      }
+    ]
+  },
+  {
+    "questID": 81740,
+    "quest_entry_pinned": false,
+    "required_items": [
+      {
+        "id": 219401,
+        "quantity": 10,
+        "pinned_item_facts": {
+          "_identityName": "Cold Iron Ore",
+          "name": "Cold Iron Ore"
+        },
+        "origins": {
+          "_identityName": "beta-delta",
+          "name": "beta-delta"
+        }
+      }
+    ]
+  }
+]

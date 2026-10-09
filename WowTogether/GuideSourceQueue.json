@@ -1,6 +1,6 @@
 {
   "source_data_complete": false,
-  "remaining_quest_records": 373,
+  "remaining_quest_records": 371,
   "limitations": [
     "This queue identifies missing facts, not a license to invent them",
     "Source capture must respect access policy and stop after denials",
@@ -19,20 +19,6 @@
       "quest_url": "https://www.wowhead.com/forever/quest=19",
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=382"
-      ]
-    },
-    {
-      "questID": 90,
-      "title": "Seasoned Wolf Kabobs",
-      "guides": [
-        "Alliance / Duskwood"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=90",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=272"
       ]
     },
     {
@@ -1035,22 +1021,6 @@
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=5396",
         "https://www.wowhead.com/forever/npc=5397"
-      ]
-    },
-    {
-      "questID": 1383,
-      "title": "Nothing But The Truth",
-      "guides": [
-        "Horde / Duskwood"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=1383",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=6081",
-        "https://www.wowhead.com/forever/item=6082",
-        "https://www.wowhead.com/forever/npc=5414"
       ]
     },
     {

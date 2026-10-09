@@ -1,0 +1,1221 @@
+{
+  "90": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1431,
+      "zone": "Duskwood",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 10,
+          "name": "Lean Wolf Flank",
+          "entityID": 1015
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 10,
+          "name": "Lean Wolf Flank",
+          "itemID": 1015
+        }
+      ],
+      "npcTargets": [
+        {
+          "itemName": "Lean Wolf Flank",
+          "name": "Starving Dire Wolf",
+          "entityID": 213,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Lean Wolf Flank",
+          "name": "Lupos",
+          "entityID": 521,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Lean Wolf Flank",
+          "name": "Rabid Dire Wolf",
+          "entityID": 565,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Lean Wolf Flank",
+          "name": "Black Ravager",
+          "entityID": 628,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Lean Wolf Flank",
+          "name": "Young Black Ravager",
+          "entityID": 923,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Lean Wolf Flank",
+          "name": "Black Ravager Mastiff",
+          "entityID": 1258,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Lean Wolf Flank",
+          "name": "Dire Wolf Alpha",
+          "entityID": 221168,
+          "npc": true,
+          "action": "collect"
+        }
+      ],
+      "prerequisitesUnverified": true,
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1431,
+          "legacyStepKey": "q:1431:npc:628",
+          "entityID": 628,
+          "npc": true,
+          "x": 0.677,
+          "y": 0.31,
+          "objectiveKey": "item:1015",
+          "itemID": 1015,
+          "quantity": 10,
+          "name": "Black Ravager",
+          "itemName": "Lean Wolf Flank",
+          "alternativeCount": 7,
+          "action": "collect"
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "starts": [
+        {
+          "y": 0.436,
+          "mapID": 1431,
+          "name": "Chef Grual",
+          "entityID": 272,
+          "npc": true,
+          "x": 0.738
+        }
+      ],
+      "level": 25,
+      "areaID": 10,
+      "objectiveAlternatives": [
+        {
+          "sourceObjective": 0,
+          "itemName": "Lean Wolf Flank",
+          "locations": [
+            {
+              "sourceObjective": 0,
+              "itemName": "Lean Wolf Flank",
+              "action": "collect",
+              "entityID": 213,
+              "npc": true,
+              "y": 0.198,
+              "x": 0.37200000000000005,
+              "name": "Starving Dire Wolf",
+              "mapID": 1431
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Lean Wolf Flank",
+              "action": "collect",
+              "entityID": 521,
+              "npc": true,
+              "y": 0.298,
+              "x": 0.33799999999999997,
+              "name": "Lupos",
+              "mapID": 1431
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Lean Wolf Flank",
+              "action": "collect",
+              "entityID": 565,
+              "npc": true,
+              "y": 0.298,
+              "x": 0.13,
+              "name": "Rabid Dire Wolf",
+              "mapID": 1431
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Lean Wolf Flank",
+              "action": "collect",
+              "entityID": 628,
+              "npc": true,
+              "y": 0.31,
+              "x": 0.677,
+              "name": "Black Ravager",
+              "mapID": 1431
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Lean Wolf Flank",
+              "action": "collect",
+              "entityID": 923,
+              "npc": true,
+              "y": 0.79,
+              "x": 0.23800000000000002,
+              "name": "Young Black Ravager",
+              "mapID": 1431
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Lean Wolf Flank",
+              "action": "collect",
+              "entityID": 1258,
+              "npc": true,
+              "y": 0.298,
+              "x": 0.638,
+              "name": "Black Ravager Mastiff",
+              "mapID": 1431
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Lean Wolf Flank",
+              "action": "collect",
+              "entityID": 221168,
+              "npc": true,
+              "y": 0.594,
+              "x": 0.456,
+              "name": "Dire Wolf Alpha",
+              "mapID": 1431
+            }
+          ]
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.436,
+          "mapID": 1431,
+          "name": "Chef Grual",
+          "entityID": 272,
+          "npc": true,
+          "x": 0.738
+        }
+      ],
+      "side": "Alliance",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Chef Grual",
+          "entityID": 272
+        }
+      ],
+      "money": 1800,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Chef Grual",
+          "entityID": 272
+        }
+      ],
+      "xp": 2000,
+      "title": "Seasoned Wolf Kabobs",
+      "foreverStatus": "updated",
+      "shareable": true,
+      "minLevel": 18,
+      "requirementSource": "Wowhead Forever objective table",
+      "raceMask": 0,
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/duskwood"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1431,
+      "zone": "Duskwood",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 10,
+          "name": "Lean Wolf Flank",
+          "entityID": 1015
+        }
+      ],
+      "npcTargets": [
+        {
+          "itemName": "Lean Wolf Flank",
+          "name": "Starving Dire Wolf",
+          "entityID": 213,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Lean Wolf Flank",
+          "name": "Lupos",
+          "entityID": 521,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Lean Wolf Flank",
+          "name": "Rabid Dire Wolf",
+          "entityID": 565,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Lean Wolf Flank",
+          "name": "Black Ravager",
+          "entityID": 628,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Lean Wolf Flank",
+          "name": "Young Black Ravager",
+          "entityID": 923,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Lean Wolf Flank",
+          "name": "Black Ravager Mastiff",
+          "entityID": 1258,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Lean Wolf Flank",
+          "name": "Dire Wolf Alpha",
+          "entityID": 221168,
+          "npc": true,
+          "action": "collect"
+        }
+      ],
+      "requiredItems": [
+        {
+          "quantity": 10,
+          "name": "Lean Wolf Flank",
+          "itemID": 1015
+        }
+      ],
+      "objectives": [
+        {
+          "sourceObjective": 0,
+          "mapID": 1431,
+          "legacyStepKey": "q:1431:npc:628",
+          "entityID": 628,
+          "npc": true,
+          "x": 0.677,
+          "y": 0.31,
+          "objectiveKey": "item:1015",
+          "itemID": 1015,
+          "quantity": 10,
+          "name": "Black Ravager",
+          "itemName": "Lean Wolf Flank",
+          "alternativeCount": 7,
+          "action": "collect"
+        }
+      ],
+      "prerequisitesUnverified": true,
+      "starts": [
+        {
+          "y": 0.436,
+          "mapID": 1431,
+          "name": "Chef Grual",
+          "entityID": 272,
+          "npc": true,
+          "x": 0.738
+        }
+      ],
+      "classMask": 0,
+      "otherLocationsIncomplete": false,
+      "title": "Seasoned Wolf Kabobs",
+      "level": 25,
+      "areaID": 10,
+      "objectiveAlternatives": [
+        {
+          "sourceObjective": 0,
+          "itemName": "Lean Wolf Flank",
+          "locations": [
+            {
+              "sourceObjective": 0,
+              "itemName": "Lean Wolf Flank",
+              "action": "collect",
+              "entityID": 213,
+              "npc": true,
+              "y": 0.198,
+              "x": 0.37200000000000005,
+              "name": "Starving Dire Wolf",
+              "mapID": 1431
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Lean Wolf Flank",
+              "action": "collect",
+              "entityID": 521,
+              "npc": true,
+              "y": 0.298,
+              "x": 0.33799999999999997,
+              "name": "Lupos",
+              "mapID": 1431
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Lean Wolf Flank",
+              "action": "collect",
+              "entityID": 565,
+              "npc": true,
+              "y": 0.298,
+              "x": 0.13,
+              "name": "Rabid Dire Wolf",
+              "mapID": 1431
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Lean Wolf Flank",
+              "action": "collect",
+              "entityID": 628,
+              "npc": true,
+              "y": 0.31,
+              "x": 0.677,
+              "name": "Black Ravager",
+              "mapID": 1431
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Lean Wolf Flank",
+              "action": "collect",
+              "entityID": 923,
+              "npc": true,
+              "y": 0.79,
+              "x": 0.23800000000000002,
+              "name": "Young Black Ravager",
+              "mapID": 1431
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Lean Wolf Flank",
+              "action": "collect",
+              "entityID": 1258,
+              "npc": true,
+              "y": 0.298,
+              "x": 0.638,
+              "name": "Black Ravager Mastiff",
+              "mapID": 1431
+            },
+            {
+              "sourceObjective": 0,
+              "itemName": "Lean Wolf Flank",
+              "action": "collect",
+              "entityID": 221168,
+              "npc": true,
+              "y": 0.594,
+              "x": 0.456,
+              "name": "Dire Wolf Alpha",
+              "mapID": 1431
+            }
+          ]
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.436,
+          "mapID": 1431,
+          "name": "Chef Grual",
+          "entityID": 272,
+          "npc": true,
+          "x": 0.738
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Chef Grual",
+          "entityID": 272
+        }
+      ],
+      "side": "Alliance",
+      "money": 1800,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Chef Grual",
+          "entityID": 272
+        }
+      ],
+      "xp": 2000,
+      "shareable": true,
+      "foreverStatus": "updated",
+      "raceMask": 0,
+      "minLevel": 18,
+      "requirementSource": "Wowhead Forever objective table",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "levelingExcluded": "Cooking-only quest (skill 50)",
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/duskwood"
+    }
+  },
+  "225": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1431,
+      "zone": "Duskwood",
+      "requirements": {},
+      "seriesRoot": 225,
+      "objectives": {},
+      "series": [
+        225,
+        227,
+        228,
+        229,
+        231
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.47600000000000003,
+          "mapID": 1431,
+          "name": "Sirra Von'Indi",
+          "entityID": 268,
+          "npc": true,
+          "x": 0.726
+        }
+      ],
+      "starts": [
+        {
+          "y": 0.292,
+          "x": 0.177,
+          "name": "A Weathered Grave",
+          "entityID": 61,
+          "mapID": 1431
+        }
+      ],
+      "level": 35,
+      "areaID": 10,
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "A Weathered Grave",
+          "entityID": 61
+        }
+      ],
+      "side": "Alliance",
+      "seriesPosition": 1,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Sirra Von'Indi",
+          "entityID": 268
+        }
+      ],
+      "xp": 690,
+      "foreverStatus": "unchanged",
+      "title": "The Weathered Grave",
+      "minLevel": 28,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "A Weathered Grave",
+            "entityID": 61
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Sirra Von'Indi",
+            "entityID": 268
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/duskwood"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "mapID": 1431,
+      "zone": "Duskwood",
+      "requirements": {},
+      "seriesRoot": 225,
+      "objectives": {},
+      "series": [
+        225,
+        227,
+        228,
+        229,
+        231
+      ],
+      "starts": [
+        {
+          "entityType": "object",
+          "mapID": 1431,
+          "action": "interact",
+          "entityID": 61,
+          "y": 0.292,
+          "x": 0.177,
+          "name": "A Weathered Grave"
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.47600000000000003,
+          "mapID": 1431,
+          "name": "Sirra Von'Indi",
+          "entityID": 268,
+          "npc": true,
+          "x": 0.726
+        }
+      ],
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "level": 35,
+      "areaID": 10,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "startRefs": [
+        {
+          "entityType": "object",
+          "name": "A Weathered Grave",
+          "entityID": 61
+        }
+      ],
+      "side": "Alliance",
+      "seriesPosition": 1,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Sirra Von'Indi",
+          "entityID": 268
+        }
+      ],
+      "xp": 690,
+      "title": "The Weathered Grave",
+      "foreverStatus": "unchanged",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Interact with the actual Weathered Grave starter/return object. Preserve captured location, Sarah's supplied ring and actual parent hand-in; no extra grave farming goal. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/duskwood-2026-10-09.",
+      "minLevel": 28,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "object",
+            "name": "A Weathered Grave",
+            "entityID": 61
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Sirra Von'Indi",
+            "entityID": 268
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/duskwood"
+    }
+  },
+  "231": {
+    "before": {
+      "prerequisitesRead": true,
+      "mapID": 1431,
+      "objectives": {},
+      "zone": "Duskwood",
+      "requirements": {},
+      "seriesRoot": 225,
+      "requiredItems": {},
+      "series": [
+        225,
+        227,
+        228,
+        229,
+        231
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Sarah's Ring",
+          "entityID": 2162
+        }
+      ],
+      "starts": [
+        {
+          "y": 0.46799999999999997,
+          "mapID": 1431,
+          "name": "Watcher Ladimore",
+          "entityID": 576,
+          "npc": true,
+          "x": 0.736
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.292,
+          "x": 0.177,
+          "name": "A Weathered Grave",
+          "entityID": 61,
+          "mapID": 1431
+        }
+      ],
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "level": 35,
+      "areaID": 10,
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Watcher Ladimore",
+          "entityID": 576
+        }
+      ],
+      "side": "Alliance",
+      "previousQuest": 229,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "A Weathered Grave",
+          "entityID": 61
+        }
+      ],
+      "xp": 1350,
+      "title": "A Daughter's Love",
+      "foreverStatus": "unchanged",
+      "seriesPosition": 5,
+      "minLevel": 28,
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "raceMask": 0,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Watcher Ladimore",
+            "entityID": 576
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Sarah's Ring",
+            "entityID": 2162
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "A Weathered Grave",
+            "entityID": 61
+          }
+        ]
+      },
+      "locationSource": "Wowhead Forever",
+      "categoryPath": "eastern-kingdoms/duskwood"
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "zone": "Duskwood",
+      "requirements": {},
+      "level": 35,
+      "areaID": 10,
+      "seriesPosition": 5,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "object",
+          "name": "A Weathered Grave",
+          "entityID": 61
+        }
+      ],
+      "xp": 1350,
+      "minLevel": 28,
+      "worldReferences": {
+        "requirements": {},
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Watcher Ladimore",
+            "entityID": 576
+          }
+        ],
+        "provided": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Sarah's Ring",
+            "entityID": 2162
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "object",
+            "name": "A Weathered Grave",
+            "entityID": 61
+          }
+        ]
+      },
+      "categoryPath": "eastern-kingdoms/duskwood",
+      "raceMask": 0,
+      "mapID": 1431,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Watcher Ladimore",
+          "entityID": 576
+        }
+      ],
+      "seriesRoot": 225,
+      "requiredItems": {},
+      "ends": [
+        {
+          "entityType": "object",
+          "mapID": 1431,
+          "action": "interact",
+          "entityID": 61,
+          "y": 0.292,
+          "x": 0.177,
+          "name": "A Weathered Grave"
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Alliance",
+      "objectives": {},
+      "series": [
+        225,
+        227,
+        228,
+        229,
+        231
+      ],
+      "providedItems": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Sarah's Ring",
+          "entityID": 2162
+        }
+      ],
+      "classMask": 0,
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "starts": [
+        {
+          "y": 0.46799999999999997,
+          "mapID": 1431,
+          "name": "Watcher Ladimore",
+          "entityID": 576,
+          "npc": true,
+          "x": 0.736
+        }
+      ],
+      "requirementSource": "Identity-matched unchanged quest: https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "title": "A Daughter's Love",
+      "previousQuest": 229,
+      "locationSource": "Wowhead Forever",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Interact with the actual Weathered Grave starter/return object. Preserve captured location, Sarah's supplied ring and actual parent hand-in; no extra grave farming goal. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/duskwood-2026-10-09."
+    }
+  },
+  "1383": {
+    "before": {
+      "prerequisitesRead": true,
+      "zone": "Duskwood",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 5,
+          "name": "Shadow Panther Heart",
+          "entityID": 6080
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Mire Lord Fungus",
+          "entityID": 6081
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Deepstrider Tumor",
+          "entityID": 6082
+        }
+      ],
+      "level": 42,
+      "areaID": 10,
+      "previousQuest": 1372,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Apothecary Faustin",
+          "entityID": 5414
+        }
+      ],
+      "xp": 4300,
+      "questType": "Elite",
+      "minLevel": 37,
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 5,
+            "name": "Shadow Panther Heart",
+            "entityID": 6080
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Mire Lord Fungus",
+            "entityID": 6081
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Deepstrider Tumor",
+            "entityID": 6082
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Apothecary Faustin",
+            "entityID": 5414
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Apothecary Faustin",
+            "entityID": 5414
+          }
+        ]
+      },
+      "objectiveLocationsIncomplete": true,
+      "categoryPath": "eastern-kingdoms/duskwood",
+      "raceMask": 0,
+      "missingRequirements": [
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Mire Lord Fungus",
+          "entityID": 6081
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Deepstrider Tumor",
+          "entityID": 6082
+        }
+      ],
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Apothecary Faustin",
+          "entityID": 5414
+        }
+      ],
+      "seriesRoot": 1372,
+      "requiredItems": [
+        {
+          "quantity": 5,
+          "name": "Shadow Panther Heart",
+          "itemID": 6080
+        },
+        {
+          "quantity": 1,
+          "name": "Mire Lord Fungus",
+          "itemID": 6081
+        },
+        {
+          "quantity": 1,
+          "name": "Deepstrider Tumor",
+          "itemID": 6082
+        }
+      ],
+      "ends": [
+        {
+          "y": 0.354,
+          "mapID": 1431,
+          "name": "Apothecary Faustin",
+          "entityID": 5414,
+          "npc": true,
+          "x": 0.8740000000000001
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "seriesPosition": 2,
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1435,
+          "legacyStepKey": "q:1435:npc:768",
+          "entityID": 768,
+          "name": "Shadow Panther",
+          "npc": true,
+          "x": 0.67,
+          "y": 0.68,
+          "objectiveKey": "item:6080",
+          "itemID": 6080,
+          "quantity": 5,
+          "sourceAreaID": 8,
+          "itemName": "Shadow Panther Heart",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "action": "loot"
+        }
+      ],
+      "series": [
+        1372,
+        1383
+      ],
+      "mapID": 1431,
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.354,
+          "mapID": 1431,
+          "name": "Apothecary Faustin",
+          "entityID": 5414,
+          "npc": true,
+          "x": 0.8740000000000001
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "title": "Nothing But The Truth",
+      "classMask": 0,
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "itemName": "Shadow Panther Heart",
+          "name": "Shadow Panther",
+          "entityID": 768,
+          "npc": true,
+          "action": "loot"
+        }
+      ]
+    },
+    "after": {
+      "prerequisitesRead": true,
+      "zone": "Duskwood",
+      "requirements": [
+        {
+          "entityType": "item",
+          "quantity": 5,
+          "name": "Shadow Panther Heart",
+          "entityID": 6080
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Mire Lord Fungus",
+          "entityID": 6081
+        },
+        {
+          "entityType": "item",
+          "quantity": 1,
+          "name": "Deepstrider Tumor",
+          "entityID": 6082
+        }
+      ],
+      "level": 42,
+      "areaID": 10,
+      "seriesPosition": 2,
+      "money": 0,
+      "endRefs": [
+        {
+          "entityType": "npc",
+          "name": "Apothecary Faustin",
+          "entityID": 5414
+        }
+      ],
+      "xp": 4300,
+      "questType": "Elite",
+      "title": "Nothing But The Truth",
+      "worldReferences": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 5,
+            "name": "Shadow Panther Heart",
+            "entityID": 6080
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Mire Lord Fungus",
+            "entityID": 6081
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Deepstrider Tumor",
+            "entityID": 6082
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "name": "Apothecary Faustin",
+            "entityID": 5414
+          }
+        ],
+        "provided": {},
+        "ends": [
+          {
+            "entityType": "npc",
+            "name": "Apothecary Faustin",
+            "entityID": 5414
+          }
+        ]
+      },
+      "categoryPath": "eastern-kingdoms/duskwood",
+      "raceMask": 0,
+      "mapID": 1431,
+      "startRefs": [
+        {
+          "entityType": "npc",
+          "name": "Apothecary Faustin",
+          "entityID": 5414
+        }
+      ],
+      "seriesRoot": 1372,
+      "requiredItems": [
+        {
+          "quantity": 5,
+          "name": "Shadow Panther Heart",
+          "itemID": 6080
+        },
+        {
+          "quantity": 1,
+          "name": "Mire Lord Fungus",
+          "itemID": 6081
+        },
+        {
+          "quantity": 1,
+          "name": "Deepstrider Tumor",
+          "itemID": 6082
+        }
+      ],
+      "classMask": 0,
+      "ends": [
+        {
+          "y": 0.354,
+          "mapID": 1431,
+          "name": "Apothecary Faustin",
+          "entityID": 5414,
+          "npc": true,
+          "x": 0.8740000000000001
+        }
+      ],
+      "legacyFactsSource": "https://github.com/cmangos/classic-db/tree/ec4f596146be6467ea93c57397858e329e2db852",
+      "side": "Horde",
+      "minLevel": 37,
+      "objectives": [
+        {
+          "entityType": "npc",
+          "mapID": 1435,
+          "legacyStepKey": "q:1435:npc:768",
+          "entityID": 768,
+          "name": "Shadow Panther",
+          "npc": true,
+          "x": 0.67,
+          "y": 0.68,
+          "objectiveKey": "item:6080",
+          "itemID": 6080,
+          "quantity": 5,
+          "sourceAreaID": 8,
+          "itemName": "Shadow Panther Heart",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "action": "loot"
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1435,
+          "action": "loot",
+          "entityID": 1081,
+          "npc": true,
+          "x": 0.055,
+          "y": 0.31379999999999997,
+          "objectiveKey": "item:6081",
+          "itemID": 6081,
+          "quantity": 1,
+          "sourceAreaID": 8,
+          "itemName": "Mire Lord Fungus",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Mire Lord"
+        },
+        {
+          "entityType": "npc",
+          "mapID": 1443,
+          "action": "loot",
+          "entityID": 4687,
+          "patrol": true,
+          "npc": true,
+          "x": 0.3207,
+          "y": 0.2466,
+          "objectiveKey": "item:6082",
+          "itemID": 6082,
+          "quantity": 1,
+          "sourceAreaID": 405,
+          "itemName": "Deepstrider Tumor",
+          "locationSource": "Published Forever converted-baseline entity position",
+          "name": "Deepstrider Searcher"
+        }
+      ],
+      "series": [
+        1372,
+        1383
+      ],
+      "missingRequirements": {},
+      "foreverStatus": "unchanged",
+      "objectiveFactsSource": "Wowhead Forever objective table",
+      "starts": [
+        {
+          "y": 0.354,
+          "mapID": 1431,
+          "name": "Apothecary Faustin",
+          "entityID": 5414,
+          "npc": true,
+          "x": 0.8740000000000001
+        }
+      ],
+      "requirementSource": "Wowhead Forever objective table",
+      "stageCorrectionSource": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Join Mire Lord Fungus to Mire Lord in Swamp of Sorrows and Deepstrider Tumor to the actual elite Deepstrider Searcher drop in Desolace. Published point is a search representative, not a guaranteed stationary spawn or safe approach. Giant 4686 is an alternative drop, not an extra mandatory kill. Preserve Shadow Panther capture, 5/1/1 hand-in, elite warning, 1372 hand-in and Faustin return. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/duskwood-2026-10-09.",
+      "previousQuest": 1372,
+      "locationSource": "Wowhead Forever",
+      "npcTargets": [
+        {
+          "itemName": "Shadow Panther Heart",
+          "name": "Shadow Panther",
+          "entityID": 768,
+          "npc": true,
+          "action": "loot"
+        },
+        {
+          "itemName": "Mire Lord Fungus",
+          "name": "Mire Lord",
+          "entityID": 1081,
+          "npc": true,
+          "action": "collect"
+        },
+        {
+          "itemName": "Deepstrider Tumor",
+          "name": "Deepstrider Searcher",
+          "entityID": 4687,
+          "npc": true,
+          "action": "collect"
+        }
+      ]
+    }
+  }
+}

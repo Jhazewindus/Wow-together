@@ -11806,5 +11806,327 @@
         ]
       }
     }
+  },
+  {
+    "questID": 225,
+    "title": "The Weathered Grave",
+    "source": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Interact with the actual Weathered Grave starter/return object. Preserve captured location, Sarah's supplied ring and actual parent hand-in; no extra grave farming goal. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/duskwood-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 28,
+      "level": 35,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "y": 0.292,
+            "x": 0.177,
+            "name": "A Weathered Grave",
+            "entityID": 61,
+            "mapID": 1431
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "starts": [
+          {
+            "y": 0.292,
+            "x": 0.177,
+            "name": "A Weathered Grave",
+            "entityID": 61,
+            "mapID": 1431,
+            "entityType": "object",
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 231,
+    "title": "A Daughter's Love",
+    "source": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Interact with the actual Weathered Grave starter/return object. Preserve captured location, Sarah's supplied ring and actual parent hand-in; no extra grave farming goal. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/duskwood-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 28,
+      "level": 35,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "ends": [
+          {
+            "y": 0.292,
+            "x": 0.177,
+            "name": "A Weathered Grave",
+            "entityID": 61,
+            "mapID": 1431
+          }
+        ]
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null,
+        "ends": [
+          {
+            "y": 0.292,
+            "x": 0.177,
+            "name": "A Weathered Grave",
+            "entityID": 61,
+            "mapID": 1431,
+            "entityType": "object",
+            "action": "interact"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 1383,
+    "title": "Nothing But The Truth",
+    "source": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; Join Mire Lord Fungus to Mire Lord in Swamp of Sorrows and Deepstrider Tumor to the actual elite Deepstrider Searcher drop in Desolace. Published point is a search representative, not a guaranteed stationary spawn or safe approach. Giant 4686 is an alternative drop, not an extra mandatory kill. Preserve Shadow Panther capture, 5/1/1 hand-in, elite warning, 1372 hand-in and Faustin return. Verified 24 pinned file hashes 2026-10-09 Europe/Amsterdam; research/duskwood-2026-10-09.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 37,
+      "level": 42,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 5,
+          "name": "Shadow Panther Heart",
+          "itemID": 6080
+        },
+        {
+          "quantity": 1,
+          "name": "Mire Lord Fungus",
+          "itemID": 6081
+        },
+        {
+          "quantity": 1,
+          "name": "Deepstrider Tumor",
+          "itemID": 6082
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 5,
+            "name": "Shadow Panther Heart",
+            "entityID": 6080
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Mire Lord Fungus",
+            "entityID": 6081
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Deepstrider Tumor",
+            "entityID": 6082
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 5,
+            "name": "Shadow Panther Heart",
+            "itemID": 6080
+          },
+          {
+            "quantity": 1,
+            "name": "Mire Lord Fungus",
+            "itemID": 6081
+          },
+          {
+            "quantity": 1,
+            "name": "Deepstrider Tumor",
+            "itemID": 6082
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1435,
+            "legacyStepKey": "q:1435:npc:768",
+            "entityID": 768,
+            "name": "Shadow Panther",
+            "npc": true,
+            "x": 0.67,
+            "y": 0.68,
+            "objectiveKey": "item:6080",
+            "itemID": 6080,
+            "quantity": 5,
+            "sourceAreaID": 8,
+            "itemName": "Shadow Panther Heart",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Shadow Panther Heart",
+            "name": "Shadow Panther",
+            "entityID": 768,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Mire Lord Fungus",
+            "entityID": 6081
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Deepstrider Tumor",
+            "entityID": 6082
+          }
+        ],
+        "objectiveLocationsIncomplete": true
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 5,
+            "name": "Shadow Panther Heart",
+            "entityID": 6080
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Mire Lord Fungus",
+            "entityID": 6081
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Deepstrider Tumor",
+            "entityID": 6082
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 5,
+            "name": "Shadow Panther Heart",
+            "itemID": 6080
+          },
+          {
+            "quantity": 1,
+            "name": "Mire Lord Fungus",
+            "itemID": 6081
+          },
+          {
+            "quantity": 1,
+            "name": "Deepstrider Tumor",
+            "itemID": 6082
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1435,
+            "legacyStepKey": "q:1435:npc:768",
+            "entityID": 768,
+            "name": "Shadow Panther",
+            "npc": true,
+            "x": 0.67,
+            "y": 0.68,
+            "objectiveKey": "item:6080",
+            "itemID": 6080,
+            "quantity": 5,
+            "sourceAreaID": 8,
+            "itemName": "Shadow Panther Heart",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot"
+          },
+          {
+            "entityType": "npc",
+            "entityID": 1081,
+            "name": "Mire Lord",
+            "npc": true,
+            "mapID": 1435,
+            "x": 0.055,
+            "y": 0.31379999999999997,
+            "sourceAreaID": 8,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot",
+            "objectiveKey": "item:6081",
+            "itemID": 6081,
+            "itemName": "Mire Lord Fungus",
+            "quantity": 1
+          },
+          {
+            "entityType": "npc",
+            "entityID": 4687,
+            "name": "Deepstrider Searcher",
+            "npc": true,
+            "mapID": 1443,
+            "x": 0.3207,
+            "y": 0.2466,
+            "sourceAreaID": 405,
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot",
+            "objectiveKey": "item:6082",
+            "itemID": 6082,
+            "itemName": "Deepstrider Tumor",
+            "quantity": 1,
+            "patrol": true
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Shadow Panther Heart",
+            "name": "Shadow Panther",
+            "entityID": 768,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "entityID": 1081,
+            "name": "Mire Lord",
+            "npc": true,
+            "action": "collect",
+            "itemName": "Mire Lord Fungus"
+          },
+          {
+            "entityID": 4687,
+            "name": "Deepstrider Searcher",
+            "npc": true,
+            "action": "collect",
+            "itemName": "Deepstrider Tumor"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": null
+      }
+    }
   }
 ]

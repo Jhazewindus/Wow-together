@@ -1,0 +1,26 @@
+[
+  {
+    "questID": 1383,
+    "url": "https://classicdb.ch/?quest=1383",
+    "http_status": 200,
+    "sha256": "2f5fe8792fd4ef5a404b8abca1cebe7e6654d3bb18b2bbb4bd854b327dd0664d",
+    "access_date": "2026-10-09 Europe/Amsterdam",
+    "scope": "Identity-matched unchanged mechanics only. No beta positions or safe terrain proof. Raw prose not bundled."
+  },
+  {
+    "questID": 225,
+    "url": "https://classicdb.ch/?quest=225",
+    "http_status": 200,
+    "sha256": "2cac4a139af04a5fe36df5af064a7c8183f90831a053e3e4991396d8f4f948d0",
+    "access_date": "2026-10-09 Europe/Amsterdam",
+    "scope": "Identity-matched unchanged mechanics only. No beta positions or safe terrain proof. Raw prose not bundled."
+  },
+  {
+    "questID": 231,
+    "url": "https://classicdb.ch/?quest=231",
+    "http_status": 200,
+    "sha256": "30481983a68d0d0ae8c25b5219506f01c62f89034e911843c9c740e7e9ac4559",
+    "access_date": "2026-10-09 Europe/Amsterdam",
+    "scope": "Identity-matched unchanged mechanics only. No beta positions or safe terrain proof. Raw prose not bundled."
+  }
+]

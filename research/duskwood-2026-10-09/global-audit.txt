@@ -1,0 +1,153 @@
+Horde: Durotar: 246 steps checked
+Horde: Mulgore: 191 steps checked
+Horde: Zephras Isle: 234 steps checked
+Horde: Alterac Mountains: 16 steps checked
+Horde: Arathi Highlands: 131 steps checked
+Horde: Arathi Highlands: 70 steps checked
+Horde: Ashenvale: 6 steps checked
+Horde: Ashenvale: 69 steps checked
+Horde: Ashenvale: 6 steps checked
+Horde: Azshara: 12 steps checked
+Horde: Azshara: 101 steps checked
+Horde: Badlands: 53 steps checked
+Horde: Badlands: 59 steps checked
+Horde: Badlands: 12 steps checked
+Horde: Blasted Lands: 32 steps checked
+Horde: Blasted Lands: 73 steps checked
+Horde: Burning Steppes: 86 steps checked
+Horde: Desolace: 139 steps checked
+Horde: Desolace: 45 steps checked
+Horde: Desolace: 12 steps checked
+Horde: Durotar: 85 steps checked
+Horde: Duskwood: 67 steps checked
+Horde: Duskwood: 14 steps checked
+Horde: Dustwallow Marsh: 118 steps checked
+Horde: Dustwallow Marsh: 29 steps checked
+Horde: Dustwallow Marsh: 21 steps checked
+Horde: Eastern Plaguelands: 201 steps checked
+Horde: Felwood: 13 steps checked
+Horde: Felwood: 131 steps checked
+Horde: Feralas: 112 steps checked
+Horde: Hillsbrad Foothills: 91 steps checked
+Horde: Hillsbrad Foothills: 62 steps checked
+Horde: Hillsbrad Foothills: 18 steps checked
+Horde: Moonglade: 34 steps checked
+Horde: Mulgore: 66 steps checked
+Horde: Mulgore: 13 steps checked
+Horde: Searing Gorge: 70 steps checked
+Horde: Searing Gorge: 28 steps checked
+Horde: Silithus: 326 steps checked
+Horde: Silverpine Forest: 18 steps checked
+Horde: Silverpine Forest: 132 steps checked
+Horde: Silverpine Forest: 55 steps checked
+Horde: Stonetalon Mountains: 48 steps checked
+Horde: Stonetalon Mountains: 80 steps checked
+Horde: Stonetalon Mountains: 6 steps checked
+Horde: Stonewrought Dam: 6 steps checked
+Horde: Stranglethorn Vale: 155 steps checked
+Horde: Stranglethorn Vale: 194 steps checked
+Horde: Stranglethorn Vale: 84 steps checked
+Horde: Swamp Of Sorrows: 51 steps checked
+Horde: Swamp Of Sorrows: 43 steps checked
+Horde: Swamp Of Sorrows: 21 steps checked
+Horde: Tanaris: 129 steps checked
+Horde: Tanaris: 61 steps checked
+Horde: The Barrens: 216 steps checked
+Horde: The Barrens: 143 steps checked
+Horde: The Barrens: 11 steps checked
+Horde: The Hinterlands: 93 steps checked
+Horde: The Hinterlands: 25 steps checked
+Horde: Thoradin's Wall: 9 steps checked
+Horde: Thousand Needles: 91 steps checked
+Horde: Thousand Needles: 101 steps checked
+Horde: Thousand Needles: 87 steps checked
+Horde: Tirisfal Glades: 223 steps checked
+Horde: Tirisfal Glades: 170 steps checked
+Horde: Tirisfal Glades: 6 steps checked
+Horde: Ungoro Crater: 141 steps checked
+Horde: Western Plaguelands: 197 steps checked
+Horde: Westfall: 24 steps checked
+Horde: Winterspring: 116 steps checked
+Horde: Zephras Isle: 171 steps checked
+Horde: Redridge Mountains: 7 steps checked
+Alliance: Darkshore: 24 steps checked
+Alliance: Dun Morogh: 151 steps checked
+Alliance: Elwynn Forest: 301 steps checked
+Alliance: Teldrassil: 157 steps checked
+Alliance: Zephras Isle: 207 steps checked
+Alliance: Alterac Mountains: 48 steps checked
+Alliance: Arathi Highlands: 87 steps checked
+Alliance: Arathi Highlands: 46 steps checked
+Alliance: Ashenvale: 43 steps checked
+Alliance: Ashenvale: 129 steps checked
+Alliance: Ashenvale: 23 steps checked
+Alliance: Ashenvale: 6 steps checked
+Alliance: Azshara: 12 steps checked
+Alliance: Azshara: 74 steps checked
+Alliance: Badlands: 73 steps checked
+Alliance: Badlands: 87 steps checked
+Alliance: Blasted Lands: 23 steps checked
+Alliance: Blasted Lands: 76 steps checked
+Alliance: Burning Steppes: 112 steps checked
+Alliance: Darkshore: 225 steps checked
+Alliance: Darkshore: 41 steps checked
+Alliance: Darkshore: 28 steps checked
+Alliance: Deeprun Tram: 6 steps checked
+Alliance: Desolace: 150 steps checked
+Alliance: Desolace: 53 steps checked
+Alliance: Dun Morogh: 30 steps checked
+Alliance: Durotar: 13 steps checked
+Alliance: Durotar: 10 steps checked
+Alliance: Duskwood: 12 steps checked
+Alliance: Duskwood: 250 steps checked
+Alliance: Duskwood: 114 steps checked
+Alliance: Duskwood: 6 steps checked
+Alliance: Dustwallow Marsh: 6 steps checked
+Alliance: Dustwallow Marsh: 118 steps checked
+Alliance: Eastern Plaguelands: 217 steps checked
+Alliance: Felwood: 13 steps checked
+Alliance: Felwood: 146 steps checked
+Alliance: Feralas: 127 steps checked
+Alliance: Hillsbrad Foothills: 27 steps checked
+Alliance: Hillsbrad Foothills: 49 steps checked
+Alliance: Loch Modan: 15 steps checked
+Alliance: Loch Modan: 129 steps checked
+Alliance: Loch Modan: 6 steps checked
+Alliance: Moonglade: 37 steps checked
+Alliance: Redridge Mountains: 74 steps checked
+Alliance: Redridge Mountains: 71 steps checked
+Alliance: Ruttheran Village: 12 steps checked
+Alliance: Searing Gorge: 94 steps checked
+Alliance: Searing Gorge: 44 steps checked
+Alliance: Silithus: 323 steps checked
+Alliance: Stonetalon Mountains: 90 steps checked
+Alliance: Stonetalon Mountains: 6 steps checked
+Alliance: Stonewrought Dam: 6 steps checked
+Alliance: Stranglethorn Vale: 196 steps checked
+Alliance: Stranglethorn Vale: 169 steps checked
+Alliance: Stranglethorn Vale: 87 steps checked
+Alliance: Swamp Of Sorrows: 42 steps checked
+Alliance: Swamp Of Sorrows: 14 steps checked
+Alliance: Swamp Of Sorrows: 9 steps checked
+Alliance: Tanaris: 108 steps checked
+Alliance: Tanaris: 40 steps checked
+Alliance: Teldrassil: 84 steps checked
+Alliance: The Barrens: 43 steps checked
+Alliance: The Barrens: 27 steps checked
+Alliance: The Hinterlands: 56 steps checked
+Alliance: The Hinterlands: 9 steps checked
+Alliance: Thoradin's Wall: 9 steps checked
+Alliance: Thousand Needles: 21 steps checked
+Alliance: Thousand Needles: 74 steps checked
+Alliance: Thousand Needles: 87 steps checked
+Alliance: Ungoro Crater: 138 steps checked
+Alliance: Western Plaguelands: 210 steps checked
+Alliance: Westfall: 26 steps checked
+Alliance: Westfall: 127 steps checked
+Alliance: Wetlands: 6 steps checked
+Alliance: Wetlands: 180 steps checked
+Alliance: Wetlands: 77 steps checked
+Alliance: Winterspring: 142 steps checked
+Alliance: Zephras Isle: 175 steps checked
+Alliance: Redridge Mountains: 7 steps checked
+Checked 152 guides and 11833 source points.

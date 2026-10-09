@@ -325,5 +325,13 @@
     "title": "A Yeti of Your Own",
     "reason": "Engineering-only quest (skill 250)",
     "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; exact title/level/minimum identity and explicit requiredSkill 202/250. Exclude from ordinary leveling only; retain catalogue, actual dependencies and unresolved gaps. Reviewed 2026-10-09 Europe/Amsterdam; research/winterspring-2026-10-09."
+  },
+  {
+    "questIDs": [
+      90
+    ],
+    "title": "Seasoned Wolf Kabobs",
+    "reason": "Cooking-only quest (skill 50)",
+    "source": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever; exact title/level/minimum identity and requiredSkill 185/50, converted-baseline. Exclude ordinary leveling only; retain catalogue and unresolved capture conflict over second seasoning objective. Native beta Cooking offer remains unverified. Reviewed 2026-10-09 Europe/Amsterdam; research/duskwood-2026-10-09."
   }
 ]

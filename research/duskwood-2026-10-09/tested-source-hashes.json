@@ -1,0 +1,8 @@
+{
+  "WowTogether/QuestCatalogue.lua": "1ff4c450b1b3c2729ff45d6f34b738854284ba15604adad356665857907cf78c",
+  "tools/quest_corrections.json": "03fde82bacab690053d3ebb9f3a6e7b3a1603864ab23caa89b15fe172e19ce19",
+  "tools/quest_exclusions.json": "11adc8982eeaeb09f815bb5ccb834d757878f5eb78f30370c506eb306b53a522",
+  "tests/test_duskwood_coverage.py": "53b00e62a77efee5a76eeac9fec4528197bb78cd8c177b3194ad0b9b8ebb2f90",
+  "WowTogether/TravelData.lua": "1970f9f8d5298253b468a584fb40a72c62a67061c6f193e92de8ebf89d3de686",
+  "WowTogether/TravelTerrainData.lua": "a74342fe846efb3a0530814049514b93d54b0a07cb56fbf6b012e6c7f0dcdec0"
+}
