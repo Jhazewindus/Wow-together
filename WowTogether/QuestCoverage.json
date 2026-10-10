@@ -12,7 +12,7 @@
     "detailed_quests": 2232,
     "with_starters": 4285,
     "with_objectives": 2147,
-    "with_turnins": 4454,
+    "with_turnins": 4457,
     "with_prerequisites": 2466,
     "entities": {
       "npc": 13340,
@@ -961,16 +961,15 @@
       "quests": 54,
       "pickups": 50,
       "objectives": 32,
-      "turnins": 50,
-      "complete_locations": 47,
+      "turnins": 53,
+      "complete_locations": 48,
       "missing_quest_ids": [
         636,
         8384,
         8438,
         79624,
         92519,
-        92707,
-        97539
+        92707
       ]
     },
     "eastern-kingdoms/badlands": {
@@ -3816,6 +3815,26 @@
     },
     "2972": {
       "status": 403
+    },
+    "92519": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "813b1a68c673c26e86efbc2b7cedd61f274f37dbbc10bddd89a3471ece564eaf"
+    },
+    "92707": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "b8ba40d3801f093e4247638ef4274d896bbea412012aa56a8d900ef3edafdc42"
+    },
+    "97539": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "0e67c394a6d567be8929e5c8ccf5ed5caf2564c2379970012def8720d25336af"
+    },
+    "79624": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "f8287ba53eab5f5a190b1774fd492df268ed25e63d55f5f7ab5eef7d0af4f637"
     }
   },
   "entity_capture": {
@@ -4540,8 +4559,8 @@
     },
     "item-278462": {
       "status": 200,
-      "captured": "2026-10-05",
-      "sha256": "59f0da8446fbeff8ebb98e16d113139fc6e72302d5f85597dc7d4a413cfda8bc"
+      "captured": "2026-10-10",
+      "sha256": "9f383e9d4f51ef757490a1dcb464c6b09c29fff8282ee6f9abd70bca7aed2158"
     },
     "npc-254797": {
       "status": 200,
@@ -4565,18 +4584,18 @@
     },
     "npc-12920": {
       "status": 200,
-      "captured": "2026-10-05",
-      "sha256": "a5eb20d2c61740c225a3a4bdfa0b2ad39e0a20e810be115f06b5405c9b4cc30a"
+      "captured": "2026-10-10",
+      "sha256": "5bbfa442dd2a2a35cba4c785a979e9a0fecbb9fa04442d184855481e2fd6995d"
     },
     "item-213422": {
       "status": 200,
-      "captured": "2026-10-05",
-      "sha256": "96939f1940173ebf245ccf91a10a3356c7050dcde82058993970d431c3f66c2b"
+      "captured": "2026-10-10",
+      "sha256": "a883095794df9058281b1b69067058d51b1bdf8d9eb5e011ca9bb402861b0e65"
     },
     "npc-217300": {
       "status": 200,
-      "captured": "2026-10-05",
-      "sha256": "f1a7a454a9ec07cd433a554f540318609d66b04041214eea7f1835989fa94d6b"
+      "captured": "2026-10-10",
+      "sha256": "d35f3a2b0334bd657643f2bac7bc7a0d84840c48d15642c1205e23354308d99f"
     },
     "item-5188": {
       "status": 200,
@@ -6076,6 +6095,86 @@
       "status": 200,
       "captured": "2026-10-10",
       "sha256": "a8cdab59b4ccd3865ab0f6b40309597e1826f00797afd2141dfd5e5b5b41bed1"
+    },
+    "npc-2771": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "fee50e480df8f56005a19f2e614187c30d46538f20e200641885b0f81a227378"
+    },
+    "npc-2733": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "57d2a92d24ff4b84c48aeac2bf9a7e48c8a02e540183a124f06ded00c789806f"
+    },
+    "npc-2566": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "7eca1916501d87a05139bfc1435abdd1acfe097e7ef06938ee4bb0833aa4f992"
+    },
+    "npc-218032": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "e0da56c6d684c686345763aad875c1c8cfc7caaafe264b77f4fdaf847d39b683"
+    },
+    "item-253711": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "bd6b3f26f5cb3088e845370e297da6d656fa62bfa6041ad7052d3c5db4d7afde"
+    },
+    "npc-2254": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "bd7a894af547cc73b25e9c5516670656597ba6b4e027b8adeace8bf5702141d9"
+    },
+    "npc-2255": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "7bcbb80f5a8b42ca1c535ba49244bf45fd6e74f7c016b961d54d34fc019b471e"
+    },
+    "npc-2256": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "0667b0a1bed45f5dd649c8081d2726a168c64a37ac3fd6bd91cfb9869cad039c"
+    },
+    "npc-2287": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "8137975b043707b6f415f4e3620b6d89c4c2d34d3c22a44406112d395768dc01"
+    },
+    "npc-2567": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "af85ecd8dd6ebef8094f7c1fc3bf1dd34849d839fa8bfbbeb69843d6306736f0"
+    },
+    "npc-2569": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "141c1ea532772d59541d809a52371c111d7d29426a976ca118f7f495eef2f0bd"
+    },
+    "npc-2570": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "0ef8de6d7a3c3c6e8d9a37fd64ebd43820ad3a082b1b8fa6b86dd0738b8a7651"
+    },
+    "npc-2571": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "1255c7fab52ed7174f4db506fdbb857bab3f0d0da77f93b71a304c91bd7b5037"
+    },
+    "item-278225": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "4fdc48ed662fa355363b9fc8af284d429e36658cd6c9eb3d0130cbd6f8323efb"
+    },
+    "npc-2563": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "33bb7aa7160437bfbe210f375ddafefa610c2b2cfcc0b55973b19cdf890ee165"
+    },
+    "npc-2565": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "3ee1fcb89e6c8b07a8ead1a43ffc786047f7eccad15aad8eaa486acb8545508e"
     }
   },
   "legacy_fallback": {
@@ -12298,47 +12397,44 @@
   },
   "supplemental_capture": {
     "captured": "2026-10-10",
-    "pages": 6,
+    "pages": 4,
     "changed_quest_ids": [
-      535,
-      93680
+      79624,
+      92519,
+      92707,
+      97539
     ],
     "added_points": {
       "starts": 0,
-      "ends": 0,
+      "ends": 3,
       "objectives": 0
     },
     "invalid_quest_ids": [],
     "incomplete_objectives_before": 1319,
     "incomplete_objectives_after": 1319,
     "evidence": {
-      "535": {
-        "source": "https://www.wowhead.com/forever/quest=535",
-        "sha256": "0d63d0d9c24116c03e27d19ff9377c15897ad2463c5252e4ab7f25941248487f"
+      "79624": {
+        "source": "https://www.wowhead.com/forever/quest=79624",
+        "sha256": "f8287ba53eab5f5a190b1774fd492df268ed25e63d55f5f7ab5eef7d0af4f637"
       },
-      "92434": {
-        "source": "https://www.wowhead.com/forever/quest=92434",
-        "sha256": "421fa5e13fcdefc8769cbe9a0f5f0b427343a14841ff2941c87e8c10036327b1"
+      "92519": {
+        "source": "https://www.wowhead.com/forever/quest=92519",
+        "sha256": "813b1a68c673c26e86efbc2b7cedd61f274f37dbbc10bddd89a3471ece564eaf"
       },
-      "93680": {
-        "source": "https://www.wowhead.com/forever/quest=93680",
-        "sha256": "7ba322ed4763b8abf8d4e12375815a2e6589600d9e2e1bee8649a749803831b7"
+      "92707": {
+        "source": "https://www.wowhead.com/forever/quest=92707",
+        "sha256": "b8ba40d3801f093e4247638ef4274d896bbea412012aa56a8d900ef3edafdc42"
       },
-      "95534": {
-        "source": "https://www.wowhead.com/forever/quest=95534",
-        "sha256": "e6eb2fecdbc3b48becc7434911e394604a080bc77dda4fe0d3e6b4d5cb89a4f2"
-      },
-      "96984": {
-        "source": "https://www.wowhead.com/forever/quest=96984",
-        "sha256": "ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7"
-      },
-      "97287": {
-        "source": "https://www.wowhead.com/forever/quest=97287",
-        "sha256": "2e4ea06dceacb55e070624fd1251be70cffdef2f2256ef1b1ca9be57f286896c"
+      "97539": {
+        "source": "https://www.wowhead.com/forever/quest=97539",
+        "sha256": "0e67c394a6d567be8929e5c8ccf5ed5caf2564c2379970012def8720d25336af"
       }
     },
     "reviewed_stage_corrections": [
-      535
+      79624,
+      92519,
+      92707,
+      97539
     ],
     "reviewed_quest_corrections": [
       99161,
@@ -13701,6 +13797,63 @@
         99101,
         99082,
         95534
+      ]
+    },
+    {
+      "captured": "2026-10-10",
+      "pages": 6,
+      "changed_quest_ids": [
+        535,
+        93680
+      ],
+      "added_points": {
+        "starts": 0,
+        "ends": 0,
+        "objectives": 0
+      },
+      "invalid_quest_ids": [],
+      "incomplete_objectives_before": 1319,
+      "incomplete_objectives_after": 1319,
+      "evidence": {
+        "535": {
+          "source": "https://www.wowhead.com/forever/quest=535",
+          "sha256": "0d63d0d9c24116c03e27d19ff9377c15897ad2463c5252e4ab7f25941248487f"
+        },
+        "92434": {
+          "source": "https://www.wowhead.com/forever/quest=92434",
+          "sha256": "421fa5e13fcdefc8769cbe9a0f5f0b427343a14841ff2941c87e8c10036327b1"
+        },
+        "93680": {
+          "source": "https://www.wowhead.com/forever/quest=93680",
+          "sha256": "7ba322ed4763b8abf8d4e12375815a2e6589600d9e2e1bee8649a749803831b7"
+        },
+        "95534": {
+          "source": "https://www.wowhead.com/forever/quest=95534",
+          "sha256": "e6eb2fecdbc3b48becc7434911e394604a080bc77dda4fe0d3e6b4d5cb89a4f2"
+        },
+        "96984": {
+          "source": "https://www.wowhead.com/forever/quest=96984",
+          "sha256": "ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7"
+        },
+        "97287": {
+          "source": "https://www.wowhead.com/forever/quest=97287",
+          "sha256": "2e4ea06dceacb55e070624fd1251be70cffdef2f2256ef1b1ca9be57f286896c"
+        }
+      },
+      "reviewed_stage_corrections": [
+        535
+      ],
+      "reviewed_quest_corrections": [
+        99161,
+        750,
+        787,
+        99082,
+        99101,
+        6541,
+        6542,
+        99081,
+        99101,
+        99082
       ]
     }
   ]

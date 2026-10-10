@@ -1,7 +1,7 @@
 {
   "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
   "quest_records": 5230,
-  "static_points_checked": 11839,
+  "static_points_checked": 11842,
   "fixed_zone_guides_checked": 152,
   "catalogue_reason_stages_checked": 16855,
   "catalogue_reason_codes": {
@@ -8569,7 +8569,7 @@
       "key": "level-zone:eastern-kingdoms/arathi-highlands:levels:31-40",
       "quests": 40,
       "steps": 131,
-      "unknown_location_steps": 7,
+      "unknown_location_steps": 4,
       "missing_location_quest_ids_by_stage": {
         "a": [
           79624,
@@ -8579,11 +8579,7 @@
         "q": [
           92519
         ],
-        "t": [
-          92519,
-          92707,
-          97539
-        ]
+        "t": []
       },
       "unverified_pickup_requirement_quest_ids": [],
       "unverified_objective_quantity_quest_ids": [],
@@ -8596,18 +8592,18 @@
         "quest-reward": 18,
         "return-hub": 1
       },
-      "reason_review_steps": 46,
+      "reason_review_steps": 43,
       "cross_zone_reason_steps": 6,
-      "flow_alternatives_evaluated": 32,
-      "flow_loop_changes": 0,
-      "geometric_guard_rejections": 86,
+      "flow_alternatives_evaluated": 36,
+      "flow_loop_changes": 1,
+      "geometric_guard_rejections": 137,
       "geometric_bracket_replays": 4,
       "flow_state_valid": true,
       "quest_log_peak": 6,
       "quest_reward_only_xp_shortfall": 309165,
-      "uncertain_travel_legs": 34,
-      "estimated_distance_before": 309886.14,
-      "estimated_distance_after": 309886.14
+      "uncertain_travel_legs": 30,
+      "estimated_distance_before": 291456.33,
+      "estimated_distance_after": 291302.16
     },
     {
       "faction": "Horde",

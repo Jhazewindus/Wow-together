@@ -10,6 +10,18 @@ actions remain. The 535 active-parent requirement needs main-developer
 eligibility coordination. Source hashes, scoped before/after audits, route
 metrics and a player checklist are retained with the review.
 
+## 2026-10-10 — Arathi Highlands full-scope refresh
+
+[The Arathi Highlands review](arathi-highlands-2026-10-10/README.md) maps
+confirmed returns for Ward Restocking, The Giant in the Den and Silky Sutures,
+records all 22 Illegible Recipe search points across nine ogres, and routes the
+giant quest through the existing elite warning/Skip policy. Four chapter/faction
+guides preserve all 334 actions; recorded stage gaps fall 8 → 5. The complete
+route audit remains valid; Horde 31–40 estimated travel falls about 18.6k units
+with the same 131 actions. The full audit checks 152 guides / 11,842 source
+points, and the source queue drops 363 → 362. Unknown pickup givers and the
+Packaged Tonics work point remain documented for beta follow-up.
+
 ## Main release review — 0.8.66 (10 October 2026)
 
 The nine commits through `53d5e12` are integrated as research. Seven zone audit

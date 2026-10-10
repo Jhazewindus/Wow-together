@@ -13100,7 +13100,7 @@
       "before": null,
       "side": "Horde"
     },
-    "source": "https://www.wowhead.com/forever/quest=95534 \u2014 captured 2026-10-10, SHA-256 e6eb2fecdbc3b48becc7434911e394604a080bc77dda4fe0d3e6b4d5cb89a4f2; the page reports Horde, minimum level 25, and no class/race mask."
+    "source": "https://www.wowhead.com/forever/quest=95534 — captured 2026-10-10, SHA-256 e6eb2fecdbc3b48becc7434911e394604a080bc77dda4fe0d3e6b4d5cb89a4f2; the page reports Horde, minimum level 25, and no class/race mask."
   },
   {
     "questID": 93680,
@@ -13140,7 +13140,7 @@
   {
     "questID": 96984,
     "title": "Heart of Disruption",
-    "source": "https://www.wowhead.com/forever/quest=96984 \u2014 captured 2026-10-10, SHA-256 ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7. The page maps the local Shade of the Archmage source but lists Rath'ma\u00ebl (NPC 250657) without usable coordinates; that alternate location remains incomplete.",
+    "source": "https://www.wowhead.com/forever/quest=96984 — captured 2026-10-10, SHA-256 ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7. The page maps the local Shade of the Archmage source but lists Rath'maël (NPC 250657) without usable coordinates; that alternate location remains incomplete.",
     "stageCorrection": {
       "kind": "stage-facts",
       "minLevel": 24,
@@ -13393,6 +13393,774 @@
                 "locationSource": "Wowhead Forever NPC 2440 entity page"
               }
             ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 79624,
+    "title": "Anyone Can Cook",
+    "source": "Wowhead Forever quest 79624 (captured 2026-10-10, SHA-256 f8287ba53eab5f5a190b1774fd492df268ed25e63d55f5f7ab5eef7d0af4f637), item 213422 (SHA-256 a883095794df9058281b1b69067058d51b1bdf8d9eb5e011ca9bb402861b0e65), and all nine linked NPC pages with hashes recorded in research/arathi-highlands-2026-10-10/source-facts.json. The item page links the same recipe to five Boulderfist ogres in Arathi and four Crushridge ogres in Alterac; each source page maps its representative spawn points. The quest page does not identify a giver.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "level": 40,
+      "minLevel": 32,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Illegible Recipe",
+          "itemID": 213422
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Illegible Recipe",
+            "entityID": 213422
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Illegible Recipe",
+            "itemID": 213422
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1417,
+            "legacyStepKey": "q:1417:npc:2566",
+            "entityID": 2566,
+            "name": "Boulderfist Brute",
+            "npc": true,
+            "x": 0.531,
+            "y": 0.7593000000000001,
+            "objectiveKey": "item:213422",
+            "itemID": 213422,
+            "quantity": 1,
+            "sourceAreaID": 45,
+            "itemName": "Illegible Recipe",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Illegible Recipe",
+            "name": "Boulderfist Brute",
+            "entityID": 2566,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "objectiveAlternatives": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Illegible Recipe",
+            "entityID": 213422
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Illegible Recipe",
+            "itemID": 213422
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1417,
+            "legacyStepKey": "q:1417:npc:2566",
+            "entityID": 2566,
+            "name": "Boulderfist Brute",
+            "npc": true,
+            "x": 0.531,
+            "y": 0.7593000000000001,
+            "objectiveKey": "item:213422",
+            "itemID": 213422,
+            "quantity": 1,
+            "sourceAreaID": 45,
+            "itemName": "Illegible Recipe",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot",
+            "alternativeCount": 22
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Illegible Recipe",
+            "name": "Boulderfist Brute",
+            "entityID": 2566,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "objectiveAlternatives": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Illegible Recipe",
+            "locations": [
+              {
+                "mapID": 1416,
+                "x": 0.43200000000000005,
+                "y": 0.46799999999999997,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2254,
+                "name": "Crushridge Mauler",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2254 entity page"
+              },
+              {
+                "mapID": 1416,
+                "x": 0.396,
+                "y": 0.402,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2254,
+                "name": "Crushridge Mauler",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2254 entity page"
+              },
+              {
+                "mapID": 1416,
+                "x": 0.43799999999999994,
+                "y": 0.51,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2254,
+                "name": "Crushridge Mauler",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2254 entity page"
+              },
+              {
+                "mapID": 1416,
+                "x": 0.424,
+                "y": 0.456,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2255,
+                "name": "Crushridge Mage",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2255 entity page"
+              },
+              {
+                "mapID": 1416,
+                "x": 0.384,
+                "y": 0.406,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2255,
+                "name": "Crushridge Mage",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2255 entity page"
+              },
+              {
+                "mapID": 1416,
+                "x": 0.38,
+                "y": 0.546,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2256,
+                "name": "Crushridge Enforcer",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2256 entity page"
+              },
+              {
+                "mapID": 1416,
+                "x": 0.37799999999999995,
+                "y": 0.49200000000000005,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2256,
+                "name": "Crushridge Enforcer",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2256 entity page"
+              },
+              {
+                "mapID": 1416,
+                "x": 0.406,
+                "y": 0.524,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2256,
+                "name": "Crushridge Enforcer",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2256 entity page"
+              },
+              {
+                "mapID": 1416,
+                "x": 0.376,
+                "y": 0.61,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2256,
+                "name": "Crushridge Enforcer",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2256 entity page"
+              },
+              {
+                "mapID": 1416,
+                "x": 0.4,
+                "y": 0.484,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2256,
+                "name": "Crushridge Enforcer",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2256 entity page"
+              },
+              {
+                "mapID": 1416,
+                "x": 0.366,
+                "y": 0.546,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2287,
+                "name": "Crushridge Warmonger",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2287 entity page"
+              },
+              {
+                "mapID": 1416,
+                "x": 0.406,
+                "y": 0.526,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2287,
+                "name": "Crushridge Warmonger",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2287 entity page"
+              },
+              {
+                "mapID": 1417,
+                "x": 0.526,
+                "y": 0.758,
+                "sourceAreaID": 45,
+                "sourceZone": "Arathi Highlands",
+                "entityID": 2566,
+                "name": "Boulderfist Brute",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2566 entity page"
+              },
+              {
+                "mapID": 1417,
+                "x": 0.546,
+                "y": 0.8059999999999999,
+                "sourceAreaID": 45,
+                "sourceZone": "Arathi Highlands",
+                "entityID": 2566,
+                "name": "Boulderfist Brute",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2566 entity page"
+              },
+              {
+                "mapID": 1417,
+                "x": 0.522,
+                "y": 0.7559999999999999,
+                "sourceAreaID": 45,
+                "sourceZone": "Arathi Highlands",
+                "entityID": 2567,
+                "name": "Boulderfist Magus",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2567 entity page"
+              },
+              {
+                "mapID": 1417,
+                "x": 0.544,
+                "y": 0.812,
+                "sourceAreaID": 45,
+                "sourceZone": "Arathi Highlands",
+                "entityID": 2567,
+                "name": "Boulderfist Magus",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2567 entity page"
+              },
+              {
+                "mapID": 1417,
+                "x": 0.218,
+                "y": 0.654,
+                "sourceAreaID": 45,
+                "sourceZone": "Arathi Highlands",
+                "entityID": 2569,
+                "name": "Boulderfist Mauler",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2569 entity page"
+              },
+              {
+                "mapID": 1417,
+                "x": 0.188,
+                "y": 0.6759999999999999,
+                "sourceAreaID": 45,
+                "sourceZone": "Arathi Highlands",
+                "entityID": 2569,
+                "name": "Boulderfist Mauler",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2569 entity page"
+              },
+              {
+                "mapID": 1417,
+                "x": 0.18600000000000003,
+                "y": 0.662,
+                "sourceAreaID": 45,
+                "sourceZone": "Arathi Highlands",
+                "entityID": 2570,
+                "name": "Boulderfist Shaman",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2570 entity page"
+              },
+              {
+                "mapID": 1417,
+                "x": 0.21,
+                "y": 0.674,
+                "sourceAreaID": 45,
+                "sourceZone": "Arathi Highlands",
+                "entityID": 2570,
+                "name": "Boulderfist Shaman",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2570 entity page"
+              },
+              {
+                "mapID": 1417,
+                "x": 0.19,
+                "y": 0.674,
+                "sourceAreaID": 45,
+                "sourceZone": "Arathi Highlands",
+                "entityID": 2571,
+                "name": "Boulderfist Lord",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2571 entity page"
+              },
+              {
+                "mapID": 1417,
+                "x": 0.21,
+                "y": 0.674,
+                "sourceAreaID": 45,
+                "sourceZone": "Arathi Highlands",
+                "entityID": 2571,
+                "name": "Boulderfist Lord",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2571 entity page"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 92519,
+    "title": "Ward Restocking",
+    "source": "Wowhead Forever quest 92519 (captured 2026-10-10, SHA-256 813b1a68c673c26e86efbc2b7cedd61f274f37dbbc10bddd89a3471ece564eaf) explicitly says to return Packaged Tonics to Doctor Gregory Victor. Its series lists Silky Sutures (97539) immediately before it, but neither quest nor item page identifies a quest giver, so the pickup remains unmapped. NPC 12920 entity capture SHA-256 5bbfa442dd2a2a35cba4c785a979e9a0fecbb9fa04442d184855481e2fd6995d supplies the mapped return point. The Packaged Tonics item page has no mapped source; its objective area remains unknown.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "level": 36,
+      "minLevel": 30,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Packaged Tonics",
+          "itemID": 278462
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Packaged Tonics",
+            "entityID": 278462
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Packaged Tonics",
+            "itemID": 278462
+          }
+        ],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [],
+        "endRefs": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Packaged Tonics",
+            "entityID": 278462
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Packaged Tonics",
+            "itemID": 278462
+          }
+        ],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [
+          {
+            "mapID": 1417,
+            "x": 0.734,
+            "y": 0.364,
+            "name": "Doctor Gregory Victor",
+            "entityID": 12920,
+            "npc": true,
+            "locationSource": "Wowhead Forever NPC 12920 entity page"
+          }
+        ],
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "entityID": 12920,
+            "name": "Doctor Gregory Victor"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 92707,
+    "title": "The Giant in the Den",
+    "source": "Wowhead Forever quest 92707 (captured 2026-10-10, SHA-256 b8ba40d3801f093e4247638ef4274d896bbea412012aa56a8d900ef3edafdc42) says to bring Goliath's Wristguards to Drum Fel in Hammerfall. Item 253711 page (SHA-256 bd6b3f26f5cb3088e845370e297da6d656fa62bfa6041ad7052d3c5db4d7afde) confirms Witherbark Goliath as its source; quest mapper already maps the objective. NPC 2771 entity capture SHA-256 fee50e480df8f56005a19f2e614187c30d46538f20e200641885b0f81a227378 supplies the hand-in point. The same NPC page identifies the target as elite, level 35, above the quest minimum 30; classify this quest as Elite so the existing party-warning/Skip quest choice appears. The quest page does not identify a pickup giver.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "level": 33,
+      "minLevel": 30,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Goliath's Wristguards",
+          "itemID": 253711
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Goliath's Wristguards",
+            "entityID": 253711
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Goliath's Wristguards",
+            "itemID": 253711
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "mapID": 1417,
+            "action": "collect",
+            "entityID": 218032,
+            "npc": true,
+            "y": 0.816,
+            "objectiveKey": "item:253711",
+            "name": "Witherbark Goliath",
+            "x": 0.6940000000000001,
+            "quantity": 1,
+            "legacyStepKey": "q:1417:npc:218032",
+            "itemName": "Goliath's Wristguards",
+            "itemID": 253711
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Goliath's Wristguards",
+            "name": "Witherbark Goliath",
+            "entityID": 218032,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "ends": [],
+        "endRefs": [],
+        "questType": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Goliath's Wristguards",
+            "entityID": 253711
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Goliath's Wristguards",
+            "itemID": 253711
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "mapID": 1417,
+            "action": "collect",
+            "entityID": 218032,
+            "npc": true,
+            "y": 0.816,
+            "objectiveKey": "item:253711",
+            "name": "Witherbark Goliath",
+            "x": 0.6940000000000001,
+            "quantity": 1,
+            "legacyStepKey": "q:1417:npc:218032",
+            "itemName": "Goliath's Wristguards",
+            "itemID": 253711
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Goliath's Wristguards",
+            "name": "Witherbark Goliath",
+            "entityID": 218032,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "ends": [
+          {
+            "mapID": 1417,
+            "x": 0.742,
+            "y": 0.338,
+            "name": "Drum Fel",
+            "entityID": 2771,
+            "npc": true,
+            "locationSource": "Wowhead Forever NPC 2771 entity page"
+          }
+        ],
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "entityID": 2771,
+            "name": "Drum Fel"
+          }
+        ],
+        "questType": "Elite"
+      }
+    }
+  },
+  {
+    "questID": 97539,
+    "title": "Silky Sutures",
+    "source": "Wowhead Forever quest 97539 (captured 2026-10-10, SHA-256 0e67c394a6d567be8929e5c8ccf5ed5caf2564c2379970012def8720d25336af) says to return 12 Surgical Spidersilk to Doctor Gregory Victor in Hammerfall. Warcraft DB Forever quest 97539 (captured 2026-10-10, SHA-256 9985d84e6c6a64a0ada0b2f1ac4170c994bc6a2074ea305afc1d5cacd24d05c9) independently confirms the item, count and return text. NPC 12920 entity page (SHA-256 5bbfa442dd2a2a35cba4c785a979e9a0fecbb9fa04442d184855481e2fd6995d) supplies current hand-in coordinates.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "level": 36,
+      "minLevel": 30,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 12,
+          "name": "Surgical Spidersilk",
+          "itemID": 278225
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 12,
+            "name": "Surgical Spidersilk",
+            "entityID": 278225
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 12,
+            "name": "Surgical Spidersilk",
+            "itemID": 278225
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "mapID": 1417,
+            "legacyStepKey": "q:1417:npc:2563",
+            "entityID": 2563,
+            "npc": true,
+            "x": 0.708,
+            "y": 0.494,
+            "objectiveKey": "item:278225",
+            "itemID": 278225,
+            "quantity": 12,
+            "name": "Plains Creeper",
+            "itemName": "Surgical Spidersilk",
+            "alternativeCount": 2,
+            "action": "collect"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Surgical Spidersilk",
+            "name": "Plains Creeper",
+            "entityID": 2563,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Surgical Spidersilk",
+            "name": "Giant Plains Creeper",
+            "entityID": 2565,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "ends": [],
+        "endRefs": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 12,
+            "name": "Surgical Spidersilk",
+            "entityID": 278225
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 12,
+            "name": "Surgical Spidersilk",
+            "itemID": 278225
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "mapID": 1417,
+            "legacyStepKey": "q:1417:npc:2563",
+            "entityID": 2563,
+            "npc": true,
+            "x": 0.708,
+            "y": 0.494,
+            "objectiveKey": "item:278225",
+            "itemID": 278225,
+            "quantity": 12,
+            "name": "Plains Creeper",
+            "itemName": "Surgical Spidersilk",
+            "alternativeCount": 2,
+            "action": "collect"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Surgical Spidersilk",
+            "name": "Plains Creeper",
+            "entityID": 2563,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Surgical Spidersilk",
+            "name": "Giant Plains Creeper",
+            "entityID": 2565,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "ends": [
+          {
+            "mapID": 1417,
+            "x": 0.734,
+            "y": 0.364,
+            "name": "Doctor Gregory Victor",
+            "entityID": 12920,
+            "npc": true,
+            "locationSource": "Wowhead Forever NPC 12920 entity page"
+          }
+        ],
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "entityID": 12920,
+            "name": "Doctor Gregory Victor"
           }
         ]
       }

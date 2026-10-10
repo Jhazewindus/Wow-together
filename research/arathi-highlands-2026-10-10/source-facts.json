@@ -1,0 +1,1594 @@
+{
+  "captured": "2026-10-10",
+  "addon": "0.8.66",
+  "branchBase": "2240f4bceb509139ec697c8c29b3ad1266740351",
+  "scope": "level-zone:eastern-kingdoms/arathi-highlands",
+  "chapters": [
+    "31-40",
+    "41-50"
+  ],
+  "refresh": "Current repository audit refreshed before accepting the 8 October 0.8.59 baseline.",
+  "auditBefore": {
+    "guides": [
+      {
+        "faction": "Alliance",
+        "key": "level-zone:eastern-kingdoms/arathi-highlands:levels:31-40",
+        "quests": 25,
+        "steps": 87,
+        "missing_location_quest_ids_by_stage": {
+          "a": [
+            79624
+          ],
+          "q": [],
+          "t": []
+        },
+        "source_data_gap_free": false
+      },
+      {
+        "faction": "Alliance",
+        "key": "level-zone:eastern-kingdoms/arathi-highlands:levels:41-50",
+        "quests": 14,
+        "steps": 46,
+        "missing_location_quest_ids_by_stage": {
+          "a": [],
+          "q": [],
+          "t": []
+        },
+        "source_data_gap_free": true
+      },
+      {
+        "faction": "Horde",
+        "key": "level-zone:eastern-kingdoms/arathi-highlands:levels:31-40",
+        "quests": 40,
+        "steps": 131,
+        "missing_location_quest_ids_by_stage": {
+          "a": [
+            79624,
+            92519,
+            92707
+          ],
+          "q": [
+            92519
+          ],
+          "t": [
+            92519,
+            92707,
+            97539
+          ]
+        },
+        "source_data_gap_free": false
+      },
+      {
+        "faction": "Horde",
+        "key": "level-zone:eastern-kingdoms/arathi-highlands:levels:41-50",
+        "quests": 22,
+        "steps": 70,
+        "missing_location_quest_ids_by_stage": {
+          "a": [],
+          "q": [],
+          "t": []
+        },
+        "source_data_gap_free": true
+      }
+    ],
+    "totalGuideCount": 4,
+    "sourcePointsChecked": 169
+  },
+  "fullFlowBefore": {
+    "guides": [
+      {
+        "faction": "Horde",
+        "key": "level-zone:eastern-kingdoms/arathi-highlands:levels:31-40",
+        "actions": 131,
+        "flow": {
+          "uncertainTravelLegs": 34,
+          "blockedTravelLegs": 0,
+          "externalPrerequisites": 0,
+          "logOverflow": 0,
+          "peakLog": 6,
+          "unknownRewards": 0,
+          "finishXP": 18560,
+          "levelDeficitXP": 309165,
+          "progressionNeedsReview": true,
+          "valid": true,
+          "logCapacityKnown": false,
+          "combatXPUnknown": 25,
+          "startXP": 0,
+          "finishLog": 0,
+          "distance": 309886.1351955501,
+          "finishLevel": 36,
+          "questXP": 94895,
+          "rewardXPBeforeWork": 1960405,
+          "minimumKills": 98,
+          "requiredItemsUnknown": 19,
+          "difficultyPressure": 61,
+          "missingLocations": 7,
+          "missingLevelCurve": 0,
+          "initialLog": 0
+        }
+      },
+      {
+        "faction": "Horde",
+        "key": "level-zone:eastern-kingdoms/arathi-highlands:levels:41-50",
+        "actions": 70,
+        "flow": {
+          "uncertainTravelLegs": 11,
+          "blockedTravelLegs": 0,
+          "externalPrerequisites": 0,
+          "logOverflow": 0,
+          "peakLog": 3,
+          "unknownRewards": 0,
+          "finishXP": 59065,
+          "levelDeficitXP": 270540,
+          "progressionNeedsReview": true,
+          "valid": true,
+          "logCapacityKnown": false,
+          "combatXPUnknown": 10,
+          "startXP": 0,
+          "finishLog": 0,
+          "distance": 164233.41834933782,
+          "finishLevel": 35,
+          "questXP": 62625,
+          "rewardXPBeforeWork": 676850,
+          "minimumKills": 0,
+          "requiredItemsUnknown": 10,
+          "difficultyPressure": 70,
+          "missingLocations": 0,
+          "missingLevelCurve": 0,
+          "initialLog": 0
+        }
+      },
+      {
+        "faction": "Alliance",
+        "key": "level-zone:eastern-kingdoms/arathi-highlands:levels:31-40",
+        "actions": 87,
+        "flow": {
+          "uncertainTravelLegs": 23,
+          "blockedTravelLegs": 0,
+          "externalPrerequisites": 0,
+          "logOverflow": 0,
+          "peakLog": 7,
+          "unknownRewards": 0,
+          "finishXP": 64515,
+          "levelDeficitXP": 271600,
+          "progressionNeedsReview": true,
+          "valid": true,
+          "logCapacityKnown": false,
+          "combatXPUnknown": 16,
+          "startXP": 0,
+          "finishLog": 0,
+          "distance": 154291.95158612265,
+          "finishLevel": 35,
+          "questXP": 67015,
+          "rewardXPBeforeWork": 996005,
+          "minimumKills": 29,
+          "requiredItemsUnknown": 15,
+          "difficultyPressure": 51,
+          "missingLocations": 1,
+          "missingLevelCurve": 0,
+          "initialLog": 0
+        }
+      },
+      {
+        "faction": "Alliance",
+        "key": "level-zone:eastern-kingdoms/arathi-highlands:levels:41-50",
+        "actions": 46,
+        "flow": {
+          "uncertainTravelLegs": 9,
+          "blockedTravelLegs": 0,
+          "externalPrerequisites": 0,
+          "logOverflow": 0,
+          "peakLog": 2,
+          "unknownRewards": 0,
+          "finishXP": 40840,
+          "levelDeficitXP": 271250,
+          "progressionNeedsReview": true,
+          "valid": true,
+          "logCapacityKnown": false,
+          "combatXPUnknown": 6,
+          "startXP": 0,
+          "finishLog": 0,
+          "distance": 112214.97268222453,
+          "finishLevel": 35,
+          "questXP": 43690,
+          "rewardXPBeforeWork": 333540,
+          "minimumKills": 0,
+          "requiredItemsUnknown": 6,
+          "difficultyPressure": 49,
+          "missingLocations": 0,
+          "missingLevelCurve": 0,
+          "initialLog": 0
+        }
+      }
+    ],
+    "validation": "Lua 5.1 host. Complete action sequences; estimated geography, no play-time optimality claim."
+  },
+  "questPages": [
+    {
+      "questID": 79624,
+      "title": "Anyone Can Cook",
+      "level": 40,
+      "minimumLevel": 32,
+      "faction": "Both",
+      "sourceStatus": "updated",
+      "series": null,
+      "previousQuest": null,
+      "mapperFacts": {
+        "starts": [],
+        "objectives": [],
+        "ends": [
+          {
+            "mapID": 1417,
+            "x": 0.5760000000000001,
+            "y": 0.746,
+            "name": "Skonk",
+            "entityID": 217300,
+            "npc": true
+          }
+        ],
+        "requiredItems": [
+          {
+            "itemID": 213422,
+            "quantity": 1,
+            "name": "Illegible Recipe"
+          }
+        ],
+        "objectiveLocationsIncomplete": true
+      },
+      "linkedQuestEntities": {
+        "starts": [],
+        "ends": [
+          {
+            "entityType": "npc",
+            "entityID": 217300,
+            "name": "Skonk"
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "entityID": 213422,
+            "name": "Illegible Recipe",
+            "quantity": 1
+          }
+        ],
+        "provided": []
+      },
+      "shortPageDescription": "Find an ogre who can read the Illegible Recipe. A level 40 Arathi Highlands Quest. Rewards . Added in Classic World of Warcraft. Always up to date.",
+      "pageHasCommentBodies": false
+    },
+    {
+      "questID": 92519,
+      "title": "Ward Restocking",
+      "level": 36,
+      "minimumLevel": 30,
+      "faction": "Horde",
+      "sourceStatus": "new",
+      "series": [
+        97539,
+        92519
+      ],
+      "previousQuest": 97539,
+      "mapperFacts": {
+        "starts": [],
+        "objectives": [],
+        "ends": [],
+        "requiredItems": [
+          {
+            "itemID": 278462,
+            "quantity": 1,
+            "name": "Packaged Tonics"
+          }
+        ],
+        "objectiveLocationsIncomplete": null
+      },
+      "linkedQuestEntities": {
+        "starts": [],
+        "ends": [],
+        "requirements": [
+          {
+            "entityType": "item",
+            "entityID": 278462,
+            "name": "Packaged Tonics",
+            "quantity": 1
+          }
+        ],
+        "provided": []
+      },
+      "shortPageDescription": "Pick up a case of Packaged Tonics at Jorell's lab in Go'shek Farm and return to Doctor Gregory Victor in Hammerfall. A level 36 Arathi Highlands Quest. Rewards .",
+      "pageHasCommentBodies": false
+    },
+    {
+      "questID": 92707,
+      "title": "The Giant in the Den",
+      "level": 33,
+      "minimumLevel": 30,
+      "faction": "Horde",
+      "sourceStatus": "new",
+      "series": null,
+      "previousQuest": null,
+      "mapperFacts": {
+        "starts": [],
+        "objectives": [
+          {
+            "mapID": 1417,
+            "x": 0.6940000000000001,
+            "y": 0.816,
+            "name": "Witherbark Goliath",
+            "entityID": 218032,
+            "npc": true,
+            "action": "collect",
+            "itemName": "Goliath's Wristguards",
+            "sourceObjective": 0
+          }
+        ],
+        "ends": [],
+        "requiredItems": [
+          {
+            "itemID": 253711,
+            "quantity": 1,
+            "name": "Goliath's Wristguards"
+          }
+        ],
+        "objectiveLocationsIncomplete": null
+      },
+      "linkedQuestEntities": {
+        "starts": [],
+        "ends": [],
+        "requirements": [
+          {
+            "entityType": "item",
+            "entityID": 253711,
+            "name": "Goliath's Wristguards",
+            "quantity": 1
+          }
+        ],
+        "provided": []
+      },
+      "shortPageDescription": "Bring the Goliath's Wristguards to Drum Fel in Hammerfall. A level 33 Arathi Highlands Quest. +100 reputation with Orgrimmar. Added in Classic World of Warcraft.",
+      "pageHasCommentBodies": false
+    },
+    {
+      "questID": 97539,
+      "title": "Silky Sutures",
+      "level": 36,
+      "minimumLevel": 30,
+      "faction": "Horde",
+      "sourceStatus": "new",
+      "series": [
+        97539,
+        92519
+      ],
+      "previousQuest": null,
+      "mapperFacts": {
+        "starts": [
+          {
+            "mapID": 1417,
+            "x": 0.7340000000000001,
+            "y": 0.368,
+            "name": "Doctor Gregory Victor",
+            "entityID": 12920,
+            "npc": true
+          }
+        ],
+        "objectives": [
+          {
+            "mapID": 1417,
+            "x": 0.708,
+            "y": 0.494,
+            "name": "Plains Creeper",
+            "entityID": 2563,
+            "npc": true,
+            "action": "collect",
+            "itemName": "Surgical Spidersilk",
+            "sourceObjective": 0,
+            "alternativeCount": 2
+          }
+        ],
+        "ends": [],
+        "requiredItems": [
+          {
+            "itemID": 278225,
+            "quantity": 12,
+            "name": "Surgical Spidersilk"
+          }
+        ],
+        "objectiveLocationsIncomplete": null
+      },
+      "linkedQuestEntities": {
+        "starts": [
+          {
+            "entityType": "npc",
+            "entityID": 12920,
+            "name": "Doctor Gregory Victor"
+          }
+        ],
+        "ends": [],
+        "requirements": [
+          {
+            "entityType": "item",
+            "entityID": 278225,
+            "name": "Surgical Spidersilk",
+            "quantity": 12
+          }
+        ],
+        "provided": []
+      },
+      "shortPageDescription": "Return 12 Surgical Spidersilk to Doctor Gregory Victor in Hammerfall, Arathi Highlands. A level 36 Arathi Highlands Quest. +100 reputation with Orgrimmar",
+      "pageHasCommentBodies": false
+    }
+  ],
+  "entityFacts": {
+    "item-213422": {
+      "url": "https://www.wowhead.com/forever/item=213422",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "a883095794df9058281b1b69067058d51b1bdf8d9eb5e011ca9bb402861b0e65",
+      "name": "Illegible Recipe",
+      "locations": [],
+      "source": "Wowhead Forever",
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 2254,
+          "name": "Crushridge Mauler",
+          "action": "loot",
+          "minlevel": 36,
+          "maxlevel": 37,
+          "areas": [
+            36
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2255,
+          "name": "Crushridge Mage",
+          "action": "loot",
+          "minlevel": 37,
+          "maxlevel": 38,
+          "areas": [
+            36
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2256,
+          "name": "Crushridge Enforcer",
+          "action": "loot",
+          "minlevel": 38,
+          "maxlevel": 39,
+          "areas": [
+            36
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2287,
+          "name": "Crushridge Warmonger",
+          "action": "loot",
+          "minlevel": 39,
+          "maxlevel": 40,
+          "areas": [
+            36
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2566,
+          "name": "Boulderfist Brute",
+          "action": "loot",
+          "minlevel": 35,
+          "maxlevel": 36,
+          "areas": [
+            45
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2567,
+          "name": "Boulderfist Magus",
+          "action": "loot",
+          "minlevel": 36,
+          "maxlevel": 37,
+          "areas": [
+            45
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2569,
+          "name": "Boulderfist Mauler",
+          "action": "loot",
+          "minlevel": 37,
+          "maxlevel": 38,
+          "areas": [
+            45
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2570,
+          "name": "Boulderfist Shaman",
+          "action": "loot",
+          "minlevel": 38,
+          "maxlevel": 39,
+          "areas": [
+            45
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2571,
+          "name": "Boulderfist Lord",
+          "action": "loot",
+          "minlevel": 39,
+          "maxlevel": 40,
+          "areas": [
+            45
+          ]
+        }
+      ]
+    },
+    "item-253711": {
+      "url": "https://www.wowhead.com/forever/item=253711",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "bd6b3f26f5cb3088e845370e297da6d656fa62bfa6041ad7052d3c5db4d7afde",
+      "name": "Goliath's Wristguards",
+      "locations": [],
+      "source": "Wowhead Forever",
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 218032,
+          "name": "Witherbark Goliath",
+          "action": "loot",
+          "minlevel": 35,
+          "maxlevel": 35,
+          "areas": [
+            45
+          ]
+        }
+      ]
+    },
+    "item-278225": {
+      "url": "https://www.wowhead.com/forever/item=278225",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "4fdc48ed662fa355363b9fc8af284d429e36658cd6c9eb3d0130cbd6f8323efb",
+      "name": "Surgical Spidersilk",
+      "locations": [],
+      "source": "Wowhead Forever",
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 2563,
+          "name": "Plains Creeper",
+          "action": "loot",
+          "minlevel": 32,
+          "maxlevel": 33,
+          "areas": [
+            45
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2565,
+          "name": "Giant Plains Creeper",
+          "action": "loot",
+          "minlevel": 35,
+          "maxlevel": 36,
+          "areas": [
+            45
+          ]
+        }
+      ]
+    },
+    "item-278462": {
+      "url": "https://www.wowhead.com/forever/item=278462",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "9f383e9d4f51ef757490a1dcb464c6b09c29fff8282ee6f9abd70bca7aed2158",
+      "name": "Packaged Tonics",
+      "locations": [],
+      "source": "Wowhead Forever"
+    },
+    "npc-12920": {
+      "url": "https://www.wowhead.com/forever/npc=12920",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "5bbfa442dd2a2a35cba4c785a979e9a0fecbb9fa04442d184855481e2fd6995d",
+      "name": "Doctor Gregory Victor <Trauma Surgeon>",
+      "locations": [
+        {
+          "mapID": 1417,
+          "x": 0.7340000000000001,
+          "y": 0.364,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 48,
+      "maxlevel": 48,
+      "classification": 0
+    },
+    "npc-217300": {
+      "url": "https://www.wowhead.com/forever/npc=217300",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "d35f3a2b0334bd657643f2bac7bc7a0d84840c48d15642c1205e23354308d99f",
+      "name": "Skonk <Amateur Chef>",
+      "locations": [
+        {
+          "mapID": 1417,
+          "x": 0.5760000000000001,
+          "y": 0.7440000000000001,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 40,
+      "maxlevel": 40,
+      "classification": 0
+    },
+    "npc-218032": {
+      "url": "https://www.wowhead.com/forever/npc=218032",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "e0da56c6d684c686345763aad875c1c8cfc7caaafe264b77f4fdaf847d39b683",
+      "name": "Witherbark Goliath",
+      "locations": [
+        {
+          "mapID": 1417,
+          "x": 0.6920000000000001,
+          "y": 0.8140000000000001,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.6779999999999999,
+          "y": 0.794,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 35,
+      "maxlevel": 35,
+      "classification": 1
+    },
+    "npc-2254": {
+      "url": "https://www.wowhead.com/forever/npc=2254",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "bd7a894af547cc73b25e9c5516670656597ba6b4e027b8adeace8bf5702141d9",
+      "name": "Crushridge Mauler",
+      "locations": [
+        {
+          "mapID": 1416,
+          "x": 0.43200000000000005,
+          "y": 0.46799999999999997,
+          "sourceAreaID": 36,
+          "sourceZone": "Alterac Mountains"
+        },
+        {
+          "mapID": 1416,
+          "x": 0.396,
+          "y": 0.402,
+          "sourceAreaID": 36,
+          "sourceZone": "Alterac Mountains"
+        },
+        {
+          "mapID": 1416,
+          "x": 0.43799999999999994,
+          "y": 0.51,
+          "sourceAreaID": 36,
+          "sourceZone": "Alterac Mountains"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 36,
+      "maxlevel": 37,
+      "classification": 1
+    },
+    "npc-2255": {
+      "url": "https://www.wowhead.com/forever/npc=2255",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "7bcbb80f5a8b42ca1c535ba49244bf45fd6e74f7c016b961d54d34fc019b471e",
+      "name": "Crushridge Mage",
+      "locations": [
+        {
+          "mapID": 1416,
+          "x": 0.424,
+          "y": 0.456,
+          "sourceAreaID": 36,
+          "sourceZone": "Alterac Mountains"
+        },
+        {
+          "mapID": 1416,
+          "x": 0.384,
+          "y": 0.406,
+          "sourceAreaID": 36,
+          "sourceZone": "Alterac Mountains"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 37,
+      "maxlevel": 38,
+      "classification": 1
+    },
+    "npc-2256": {
+      "url": "https://www.wowhead.com/forever/npc=2256",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "0667b0a1bed45f5dd649c8081d2726a168c64a37ac3fd6bd91cfb9869cad039c",
+      "name": "Crushridge Enforcer",
+      "locations": [
+        {
+          "mapID": 1416,
+          "x": 0.38,
+          "y": 0.546,
+          "sourceAreaID": 36,
+          "sourceZone": "Alterac Mountains"
+        },
+        {
+          "mapID": 1416,
+          "x": 0.37799999999999995,
+          "y": 0.49200000000000005,
+          "sourceAreaID": 36,
+          "sourceZone": "Alterac Mountains"
+        },
+        {
+          "mapID": 1416,
+          "x": 0.406,
+          "y": 0.524,
+          "sourceAreaID": 36,
+          "sourceZone": "Alterac Mountains"
+        },
+        {
+          "mapID": 1416,
+          "x": 0.376,
+          "y": 0.61,
+          "sourceAreaID": 36,
+          "sourceZone": "Alterac Mountains"
+        },
+        {
+          "mapID": 1416,
+          "x": 0.4,
+          "y": 0.484,
+          "sourceAreaID": 36,
+          "sourceZone": "Alterac Mountains"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 38,
+      "maxlevel": 39,
+      "classification": 1
+    },
+    "npc-2287": {
+      "url": "https://www.wowhead.com/forever/npc=2287",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "8137975b043707b6f415f4e3620b6d89c4c2d34d3c22a44406112d395768dc01",
+      "name": "Crushridge Warmonger",
+      "locations": [
+        {
+          "mapID": 1416,
+          "x": 0.366,
+          "y": 0.546,
+          "sourceAreaID": 36,
+          "sourceZone": "Alterac Mountains"
+        },
+        {
+          "mapID": 1416,
+          "x": 0.406,
+          "y": 0.526,
+          "sourceAreaID": 36,
+          "sourceZone": "Alterac Mountains"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 39,
+      "maxlevel": 40,
+      "classification": 1
+    },
+    "npc-2563": {
+      "url": "https://www.wowhead.com/forever/npc=2563",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "33bb7aa7160437bfbe210f375ddafefa610c2b2cfcc0b55973b19cdf890ee165",
+      "name": "Plains Creeper",
+      "locations": [
+        {
+          "mapID": 1417,
+          "x": 0.648,
+          "y": 0.452,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.674,
+          "y": 0.526,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.552,
+          "y": 0.348,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.674,
+          "y": 0.36200000000000004,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.5579999999999999,
+          "y": 0.446,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.7240000000000001,
+          "y": 0.466,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.42,
+          "y": 0.564,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.45799999999999996,
+          "y": 0.622,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.478,
+          "y": 0.366,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.456,
+          "y": 0.418,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.266,
+          "y": 0.386,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.36200000000000004,
+          "y": 0.332,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.418,
+          "y": 0.732,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.5920000000000001,
+          "y": 0.512,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.708,
+          "y": 0.518,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.35,
+          "y": 0.634,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 32,
+      "maxlevel": 33,
+      "classification": 0
+    },
+    "npc-2565": {
+      "url": "https://www.wowhead.com/forever/npc=2565",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "3ee1fcb89e6c8b07a8ead1a43ffc786047f7eccad15aad8eaa486acb8545508e",
+      "name": "Giant Plains Creeper",
+      "locations": [
+        {
+          "mapID": 1417,
+          "x": 0.568,
+          "y": 0.62,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.446,
+          "y": 0.32,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.578,
+          "y": 0.59,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.616,
+          "y": 0.696,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 35,
+      "maxlevel": 36,
+      "classification": 0
+    },
+    "npc-2566": {
+      "url": "https://www.wowhead.com/forever/npc=2566",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "7eca1916501d87a05139bfc1435abdd1acfe097e7ef06938ee4bb0833aa4f992",
+      "name": "Boulderfist Brute",
+      "locations": [
+        {
+          "mapID": 1417,
+          "x": 0.526,
+          "y": 0.758,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.546,
+          "y": 0.8059999999999999,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 35,
+      "maxlevel": 36,
+      "classification": 0
+    },
+    "npc-2567": {
+      "url": "https://www.wowhead.com/forever/npc=2567",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "af85ecd8dd6ebef8094f7c1fc3bf1dd34849d839fa8bfbbeb69843d6306736f0",
+      "name": "Boulderfist Magus",
+      "locations": [
+        {
+          "mapID": 1417,
+          "x": 0.522,
+          "y": 0.7559999999999999,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.544,
+          "y": 0.812,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 36,
+      "maxlevel": 37,
+      "classification": 0
+    },
+    "npc-2569": {
+      "url": "https://www.wowhead.com/forever/npc=2569",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "141c1ea532772d59541d809a52371c111d7d29426a976ca118f7f495eef2f0bd",
+      "name": "Boulderfist Mauler",
+      "locations": [
+        {
+          "mapID": 1417,
+          "x": 0.218,
+          "y": 0.654,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.188,
+          "y": 0.6759999999999999,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 37,
+      "maxlevel": 38,
+      "classification": 1
+    },
+    "npc-2570": {
+      "url": "https://www.wowhead.com/forever/npc=2570",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "0ef8de6d7a3c3c6e8d9a37fd64ebd43820ad3a082b1b8fa6b86dd0738b8a7651",
+      "name": "Boulderfist Shaman",
+      "locations": [
+        {
+          "mapID": 1417,
+          "x": 0.18600000000000003,
+          "y": 0.662,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.21,
+          "y": 0.674,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 38,
+      "maxlevel": 39,
+      "classification": 1
+    },
+    "npc-2571": {
+      "url": "https://www.wowhead.com/forever/npc=2571",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "1255c7fab52ed7174f4db506fdbb857bab3f0d0da77f93b71a304c91bd7b5037",
+      "name": "Boulderfist Lord",
+      "locations": [
+        {
+          "mapID": 1417,
+          "x": 0.19,
+          "y": 0.674,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.21,
+          "y": 0.674,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 39,
+      "maxlevel": 40,
+      "classification": 1
+    },
+    "npc-2733": {
+      "url": "https://www.wowhead.com/forever/npc=2733",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "57d2a92d24ff4b84c48aeac2bf9a7e48c8a02e540183a124f06ded00c789806f",
+      "name": "Apothecary Jorell",
+      "locations": [
+        {
+          "mapID": 1417,
+          "x": 0.602,
+          "y": 0.59,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 36,
+      "maxlevel": 36,
+      "classification": 0
+    },
+    "npc-2771": {
+      "url": "https://www.wowhead.com/forever/npc=2771",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "fee50e480df8f56005a19f2e614187c30d46538f20e200641885b0f81a227378",
+      "name": "Drum Fel",
+      "locations": [
+        {
+          "mapID": 1417,
+          "x": 0.742,
+          "y": 0.33799999999999997,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 30,
+      "maxlevel": 30,
+      "classification": 0
+    }
+  },
+  "warcraftdbFacts": [
+    {
+      "questID": 79624,
+      "status": 404,
+      "url": "https://forever.warcraftdb.com/api/data/node/quest/79624",
+      "note": "No record returned from the public detail endpoint."
+    },
+    {
+      "questID": 92519,
+      "status": 404,
+      "url": "https://forever.warcraftdb.com/api/data/node/quest/92519",
+      "note": "No record returned from the public detail endpoint."
+    },
+    {
+      "questID": 92707,
+      "status": 404,
+      "url": "https://forever.warcraftdb.com/api/data/node/quest/92707",
+      "note": "No record returned from the public detail endpoint."
+    },
+    {
+      "questID": 97539,
+      "status": 200,
+      "url": "https://forever.warcraftdb.com/api/data/node/quest/97539",
+      "sha256": "9985d84e6c6a64a0ada0b2f1ac4170c994bc6a2074ea305afc1d5cacd24d05c9",
+      "title": "Silky Sutures",
+      "level": 36,
+      "minimumLevel": 30,
+      "zone": "Arathi Highlands",
+      "questType": null,
+      "objectiveRows": [
+        {
+          "description": "Surgical Spidersilk",
+          "amount": 12,
+          "type": 1,
+          "object_id": 278225,
+          "link_node": "item",
+          "link_id": 278225,
+          "icon": 136113,
+          "color": "#ffffff"
+        }
+      ],
+      "logDescription": "Return 12 Surgical Spidersilk to Doctor Gregory Victor in Hammerfall, Arathi Highlands."
+    }
+  ],
+  "evidencePages": [
+    {
+      "kind": "quest",
+      "id": 79624,
+      "url": "https://www.wowhead.com/forever/quest=79624",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "f8287ba53eab5f5a190b1774fd492df268ed25e63d55f5f7ab5eef7d0af4f637"
+    },
+    {
+      "kind": "quest",
+      "id": 92519,
+      "url": "https://www.wowhead.com/forever/quest=92519",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "813b1a68c673c26e86efbc2b7cedd61f274f37dbbc10bddd89a3471ece564eaf"
+    },
+    {
+      "kind": "quest",
+      "id": 92707,
+      "url": "https://www.wowhead.com/forever/quest=92707",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "b8ba40d3801f093e4247638ef4274d896bbea412012aa56a8d900ef3edafdc42"
+    },
+    {
+      "kind": "quest",
+      "id": 97539,
+      "url": "https://www.wowhead.com/forever/quest=97539",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "0e67c394a6d567be8929e5c8ccf5ed5caf2564c2379970012def8720d25336af"
+    },
+    {
+      "kind": "item",
+      "id": 213422,
+      "url": "https://www.wowhead.com/forever/item=213422",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "a883095794df9058281b1b69067058d51b1bdf8d9eb5e011ca9bb402861b0e65"
+    },
+    {
+      "kind": "item",
+      "id": 253711,
+      "url": "https://www.wowhead.com/forever/item=253711",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "bd6b3f26f5cb3088e845370e297da6d656fa62bfa6041ad7052d3c5db4d7afde"
+    },
+    {
+      "kind": "item",
+      "id": 278225,
+      "url": "https://www.wowhead.com/forever/item=278225",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "4fdc48ed662fa355363b9fc8af284d429e36658cd6c9eb3d0130cbd6f8323efb"
+    },
+    {
+      "kind": "item",
+      "id": 278462,
+      "url": "https://www.wowhead.com/forever/item=278462",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "9f383e9d4f51ef757490a1dcb464c6b09c29fff8282ee6f9abd70bca7aed2158"
+    },
+    {
+      "kind": "npc",
+      "id": 12920,
+      "url": "https://www.wowhead.com/forever/npc=12920",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "5bbfa442dd2a2a35cba4c785a979e9a0fecbb9fa04442d184855481e2fd6995d"
+    },
+    {
+      "kind": "npc",
+      "id": 217300,
+      "url": "https://www.wowhead.com/forever/npc=217300",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "d35f3a2b0334bd657643f2bac7bc7a0d84840c48d15642c1205e23354308d99f"
+    },
+    {
+      "kind": "npc",
+      "id": 218032,
+      "url": "https://www.wowhead.com/forever/npc=218032",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "e0da56c6d684c686345763aad875c1c8cfc7caaafe264b77f4fdaf847d39b683"
+    },
+    {
+      "kind": "npc",
+      "id": 2254,
+      "url": "https://www.wowhead.com/forever/npc=2254",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "bd7a894af547cc73b25e9c5516670656597ba6b4e027b8adeace8bf5702141d9"
+    },
+    {
+      "kind": "npc",
+      "id": 2255,
+      "url": "https://www.wowhead.com/forever/npc=2255",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "7bcbb80f5a8b42ca1c535ba49244bf45fd6e74f7c016b961d54d34fc019b471e"
+    },
+    {
+      "kind": "npc",
+      "id": 2256,
+      "url": "https://www.wowhead.com/forever/npc=2256",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "0667b0a1bed45f5dd649c8081d2726a168c64a37ac3fd6bd91cfb9869cad039c"
+    },
+    {
+      "kind": "npc",
+      "id": 2287,
+      "url": "https://www.wowhead.com/forever/npc=2287",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "8137975b043707b6f415f4e3620b6d89c4c2d34d3c22a44406112d395768dc01"
+    },
+    {
+      "kind": "npc",
+      "id": 2563,
+      "url": "https://www.wowhead.com/forever/npc=2563",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "33bb7aa7160437bfbe210f375ddafefa610c2b2cfcc0b55973b19cdf890ee165"
+    },
+    {
+      "kind": "npc",
+      "id": 2565,
+      "url": "https://www.wowhead.com/forever/npc=2565",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "3ee1fcb89e6c8b07a8ead1a43ffc786047f7eccad15aad8eaa486acb8545508e"
+    },
+    {
+      "kind": "npc",
+      "id": 2566,
+      "url": "https://www.wowhead.com/forever/npc=2566",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "7eca1916501d87a05139bfc1435abdd1acfe097e7ef06938ee4bb0833aa4f992"
+    },
+    {
+      "kind": "npc",
+      "id": 2567,
+      "url": "https://www.wowhead.com/forever/npc=2567",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "af85ecd8dd6ebef8094f7c1fc3bf1dd34849d839fa8bfbbeb69843d6306736f0"
+    },
+    {
+      "kind": "npc",
+      "id": 2569,
+      "url": "https://www.wowhead.com/forever/npc=2569",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "141c1ea532772d59541d809a52371c111d7d29426a976ca118f7f495eef2f0bd"
+    },
+    {
+      "kind": "npc",
+      "id": 2570,
+      "url": "https://www.wowhead.com/forever/npc=2570",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "0ef8de6d7a3c3c6e8d9a37fd64ebd43820ad3a082b1b8fa6b86dd0738b8a7651"
+    },
+    {
+      "kind": "npc",
+      "id": 2571,
+      "url": "https://www.wowhead.com/forever/npc=2571",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "1255c7fab52ed7174f4db506fdbb857bab3f0d0da77f93b71a304c91bd7b5037"
+    },
+    {
+      "kind": "npc",
+      "id": 2733,
+      "url": "https://www.wowhead.com/forever/npc=2733",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "57d2a92d24ff4b84c48aeac2bf9a7e48c8a02e540183a124f06ded00c789806f"
+    },
+    {
+      "kind": "npc",
+      "id": 2771,
+      "url": "https://www.wowhead.com/forever/npc=2771",
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "fee50e480df8f56005a19f2e614187c30d46538f20e200641885b0f81a227378"
+    }
+  ],
+  "comments": "Wowhead page captures contain comment controls but no rendered comment bodies; no comment-derived claims were used.",
+  "pinnedFactsContext": {
+    "repository": "Questie/QuestieDB",
+    "revision": "e0a6eaa86f181ac99262e34126bcd2ed1a1712d6",
+    "sourceFile": "data/Forever/foreverQuestDB.lua",
+    "sha256": "d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87",
+    "note": "Existing repository source manifest retained; no new Questie quest-order or engine facts were copied into this zone correction."
+  },
+  "unresolved": [
+    "Anyone Can Cook (79624) pickup giver; its page identifies no Start relation.",
+    "Ward Restocking (92519) pickup giver and exact Packaged Tonics pickup object/coordinate; the page says Jorell’s lab at Go’shek Farm, but the item page has no mapped source.",
+    "The Giant in the Den (92707) pickup giver; return to Drum Fel is explicit and mapped."
+  ],
+  "limitations": [
+    "Mapped points do not establish safe roads, cave/settlement approaches, live quest offers, or beta completion behavior.",
+    "The recipe has source mobs in both Alterac Mountains and Arathi Highlands; route guidance retains one representative objective point and records alternative spawn locations.",
+    "WarcraftDB Forever returned no detail record for quest IDs 79624, 92519, and 92707; its 97539 record corroborates level and item/return text."
+  ],
+  "auditAfter": {
+    "guides": [
+      {
+        "faction": "Alliance",
+        "key": "level-zone:eastern-kingdoms/arathi-highlands:levels:31-40",
+        "quests": 25,
+        "steps": 87,
+        "missing_location_quest_ids_by_stage": {
+          "a": [
+            79624
+          ],
+          "q": [],
+          "t": []
+        },
+        "source_data_gap_free": false
+      },
+      {
+        "faction": "Alliance",
+        "key": "level-zone:eastern-kingdoms/arathi-highlands:levels:41-50",
+        "quests": 14,
+        "steps": 46,
+        "missing_location_quest_ids_by_stage": {
+          "a": [],
+          "q": [],
+          "t": []
+        },
+        "source_data_gap_free": true
+      },
+      {
+        "faction": "Horde",
+        "key": "level-zone:eastern-kingdoms/arathi-highlands:levels:31-40",
+        "quests": 40,
+        "steps": 131,
+        "missing_location_quest_ids_by_stage": {
+          "a": [
+            79624,
+            92519,
+            92707
+          ],
+          "q": [
+            92519
+          ],
+          "t": []
+        },
+        "source_data_gap_free": false
+      },
+      {
+        "faction": "Horde",
+        "key": "level-zone:eastern-kingdoms/arathi-highlands:levels:41-50",
+        "quests": 22,
+        "steps": 70,
+        "missing_location_quest_ids_by_stage": {
+          "a": [],
+          "q": [],
+          "t": []
+        },
+        "source_data_gap_free": true
+      }
+    ],
+    "totalGuideCount": 4,
+    "sourcePointsChecked": 171
+  },
+  "fullFlowAfter": {
+    "guides": [
+      {
+        "faction": "Horde",
+        "key": "level-zone:eastern-kingdoms/arathi-highlands:levels:31-40",
+        "actions": 131,
+        "flow": {
+          "uncertainTravelLegs": 30,
+          "blockedTravelLegs": 0,
+          "externalPrerequisites": 0,
+          "logOverflow": 0,
+          "peakLog": 6,
+          "unknownRewards": 0,
+          "finishXP": 18560,
+          "levelDeficitXP": 309165,
+          "progressionNeedsReview": true,
+          "valid": true,
+          "logCapacityKnown": false,
+          "combatXPUnknown": 25,
+          "startXP": 0,
+          "finishLog": 0,
+          "distance": 291302.1554154157,
+          "finishLevel": 36,
+          "questXP": 94895,
+          "rewardXPBeforeWork": 1960405,
+          "minimumKills": 98,
+          "requiredItemsUnknown": 19,
+          "difficultyPressure": 61,
+          "missingLocations": 4,
+          "missingLevelCurve": 0,
+          "initialLog": 0
+        }
+      },
+      {
+        "faction": "Horde",
+        "key": "level-zone:eastern-kingdoms/arathi-highlands:levels:41-50",
+        "actions": 70,
+        "flow": {
+          "uncertainTravelLegs": 11,
+          "blockedTravelLegs": 0,
+          "externalPrerequisites": 0,
+          "logOverflow": 0,
+          "peakLog": 3,
+          "unknownRewards": 0,
+          "finishXP": 59065,
+          "levelDeficitXP": 270540,
+          "progressionNeedsReview": true,
+          "valid": true,
+          "logCapacityKnown": false,
+          "combatXPUnknown": 10,
+          "startXP": 0,
+          "finishLog": 0,
+          "distance": 164233.41834933782,
+          "finishLevel": 35,
+          "questXP": 62625,
+          "rewardXPBeforeWork": 676850,
+          "minimumKills": 0,
+          "requiredItemsUnknown": 10,
+          "difficultyPressure": 70,
+          "missingLocations": 0,
+          "missingLevelCurve": 0,
+          "initialLog": 0
+        }
+      },
+      {
+        "faction": "Alliance",
+        "key": "level-zone:eastern-kingdoms/arathi-highlands:levels:31-40",
+        "actions": 87,
+        "flow": {
+          "uncertainTravelLegs": 23,
+          "blockedTravelLegs": 0,
+          "externalPrerequisites": 0,
+          "logOverflow": 0,
+          "peakLog": 7,
+          "unknownRewards": 0,
+          "finishXP": 64515,
+          "levelDeficitXP": 271600,
+          "progressionNeedsReview": true,
+          "valid": true,
+          "logCapacityKnown": false,
+          "combatXPUnknown": 16,
+          "startXP": 0,
+          "finishLog": 0,
+          "distance": 154291.95158612265,
+          "finishLevel": 35,
+          "questXP": 67015,
+          "rewardXPBeforeWork": 996005,
+          "minimumKills": 29,
+          "requiredItemsUnknown": 15,
+          "difficultyPressure": 51,
+          "missingLocations": 1,
+          "missingLevelCurve": 0,
+          "initialLog": 0
+        }
+      },
+      {
+        "faction": "Alliance",
+        "key": "level-zone:eastern-kingdoms/arathi-highlands:levels:41-50",
+        "actions": 46,
+        "flow": {
+          "uncertainTravelLegs": 9,
+          "blockedTravelLegs": 0,
+          "externalPrerequisites": 0,
+          "logOverflow": 0,
+          "peakLog": 2,
+          "unknownRewards": 0,
+          "finishXP": 40840,
+          "levelDeficitXP": 271250,
+          "progressionNeedsReview": true,
+          "valid": true,
+          "logCapacityKnown": false,
+          "combatXPUnknown": 6,
+          "startXP": 0,
+          "finishLog": 0,
+          "distance": 112214.97268222453,
+          "finishLevel": 35,
+          "questXP": 43690,
+          "rewardXPBeforeWork": 333540,
+          "minimumKills": 0,
+          "requiredItemsUnknown": 6,
+          "difficultyPressure": 49,
+          "missingLocations": 0,
+          "missingLevelCurve": 0,
+          "initialLog": 0
+        }
+      }
+    ],
+    "validation": "Lua 5.1 host. Complete action sequences; estimated geography, no play-time optimality claim."
+  },
+  "fullCatalogueAuditAfter": {
+    "guides": 152,
+    "sourcePointsChecked": 11842,
+    "sourceDataGapFreeGuides": 36,
+    "remainingQuestRecords": 362
+  }
+}

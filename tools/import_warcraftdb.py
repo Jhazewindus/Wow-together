@@ -137,9 +137,10 @@ def apply_stage_corrections(records):
         elif rule['kind'] in ('objective-facts', 'stage-facts'):
             core = {'requirements', 'requiredItems', 'objectives', 'npcTargets'}
             allowed = core | {'starts', 'ends', 'startRefs', 'endRefs', 'providedItems',
-                              'missingRequirements', 'objectiveLocationsIncomplete', 'objectiveAlternatives'}
+                              'missingRequirements', 'objectiveLocationsIncomplete', 'objectiveAlternatives', 'questType'}
             fields = set(rule['before'])
             if not core <= fields or not fields <= allowed or set(rule['after']) != fields or \
+                    ('questType' in fields and rule['kind'] != 'stage-facts') or \
                     (rule['kind'] == 'objective-facts' and fields != core) or rule['after']['requiredItems'] != required:
                 raise ValueError('Unsupported reviewed objective fields: ' + str(ident))
             def value(field):

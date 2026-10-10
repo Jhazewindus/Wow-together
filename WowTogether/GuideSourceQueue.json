@@ -1,6 +1,6 @@
 {
   "source_data_complete": false,
-  "remaining_quest_records": 363,
+  "remaining_quest_records": 362,
   "limitations": [
     "This queue identifies missing facts, not a license to invent them",
     "Source capture must respect access policy and stop after denials",
@@ -4714,13 +4714,13 @@
         "Horde / Arathi Highlands"
       ],
       "needs": [
-        "hand-in",
         "objective area",
         "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=92519",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=278462"
+        "https://www.wowhead.com/forever/item=278462",
+        "https://www.wowhead.com/forever/npc=12920"
       ]
     },
     {
@@ -4758,11 +4758,12 @@
         "Horde / Arathi Highlands"
       ],
       "needs": [
-        "hand-in",
         "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=92707",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/npc=2771"
+      ]
     },
     {
       "questID": 92743,
@@ -5373,20 +5374,6 @@
       "quest_url": "https://www.wowhead.com/forever/quest=97331",
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=268992"
-      ]
-    },
-    {
-      "questID": 97539,
-      "title": "Silky Sutures",
-      "guides": [
-        "Horde / Arathi Highlands"
-      ],
-      "needs": [
-        "hand-in"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=97539",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=12920"
       ]
     },
     {

@@ -156,7 +156,7 @@
   "detail_requests_stopped_after_denials": true,
   "with_starters": 4285,
   "with_objectives": 2147,
-  "with_turnins": 4454,
+  "with_turnins": 4457,
   "with_series": 938,
   "with_prerequisites": 2466,
   "repeatable_quests": 627,
@@ -7483,21 +7483,26 @@
   },
   "supplemental_capture": {
     "captured": "2026-10-10",
-    "pages": 6,
+    "pages": 4,
     "changed_quest_ids": [
-      535,
-      93680
+      79624,
+      92519,
+      92707,
+      97539
     ],
     "added_points": {
       "starts": 0,
-      "ends": 0,
+      "ends": 3,
       "objectives": 0
     },
     "invalid_quest_ids": [],
     "incomplete_objectives_before": 1319,
     "incomplete_objectives_after": 1319,
     "reviewed_stage_corrections": [
-      535
+      79624,
+      92519,
+      92707,
+      97539
     ],
     "reviewed_quest_corrections": [
       99161,
@@ -8008,6 +8013,37 @@
         99101,
         99082,
         95534
+      ]
+    },
+    {
+      "captured": "2026-10-10",
+      "pages": 6,
+      "changed_quest_ids": [
+        535,
+        93680
+      ],
+      "added_points": {
+        "starts": 0,
+        "ends": 0,
+        "objectives": 0
+      },
+      "invalid_quest_ids": [],
+      "incomplete_objectives_before": 1319,
+      "incomplete_objectives_after": 1319,
+      "reviewed_stage_corrections": [
+        535
+      ],
+      "reviewed_quest_corrections": [
+        99161,
+        750,
+        787,
+        99082,
+        99101,
+        6541,
+        6542,
+        99081,
+        99101,
+        99082
       ]
     }
   ]
