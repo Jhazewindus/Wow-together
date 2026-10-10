@@ -1,0 +1,123 @@
+{
+  "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
+  "quest_records": 21,
+  "static_points_checked": 57,
+  "fixed_zone_guides_checked": 2,
+  "catalogue_reason_stages_checked": 68,
+  "catalogue_reason_codes": {
+    "level-work": 21,
+    "quest-objective": 26,
+    "quest-reward": 21
+  },
+  "reason_review_quest_ids": [
+    975,
+    977,
+    3783,
+    4809,
+    4810,
+    4842,
+    5054,
+    5055,
+    5082,
+    5083,
+    5084,
+    5085,
+    5086,
+    5087,
+    5244,
+    5245,
+    6028,
+    6029,
+    6030,
+    6603,
+    6605
+  ],
+  "source_data_gap_free_guides": 0,
+  "guides": [
+    {
+      "faction": "Alliance",
+      "zone": "Winterspring",
+      "key": "level-zone:kalimdor/winterspring:levels:51-60",
+      "quests": 44,
+      "steps": 142,
+      "unknown_location_steps": 4,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [
+          975,
+          5247,
+          8471
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        5244,
+        5249,
+        5250
+      ],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 3,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 142,
+      "destination_reason_codes": {
+        "outside-level-range": 65,
+        "prerequisite": 48,
+        "quest-reward": 29
+      },
+      "reason_review_steps": 71,
+      "cross_zone_reason_steps": 26,
+      "flow_alternatives_evaluated": 25,
+      "flow_loop_changes": 0,
+      "geometric_guard_rejections": 69,
+      "geometric_bracket_replays": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 9,
+      "quest_reward_only_xp_shortfall": 1954540,
+      "uncertain_travel_legs": 33,
+      "estimated_distance_before": 443755.84,
+      "estimated_distance_after": 443755.84
+    },
+    {
+      "faction": "Horde",
+      "zone": "Winterspring",
+      "key": "level-zone:kalimdor/winterspring:levels:51-60",
+      "quests": 37,
+      "steps": 116,
+      "unknown_location_steps": 2,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [
+          975,
+          8471
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 3,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 116,
+      "destination_reason_codes": {
+        "outside-level-range": 53,
+        "prerequisite": 39,
+        "quest-reward": 24
+      },
+      "reason_review_steps": 54,
+      "cross_zone_reason_steps": 16,
+      "flow_alternatives_evaluated": 19,
+      "flow_loop_changes": 0,
+      "geometric_guard_rejections": 101,
+      "geometric_bracket_replays": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 9,
+      "quest_reward_only_xp_shortfall": 1150620,
+      "uncertain_travel_legs": 24,
+      "estimated_distance_before": 305370.85,
+      "estimated_distance_after": 305370.85
+    }
+  ],
+  "scope": {
+    "zone": "Winterspring",
+    "catalogue_records": "Exact quest zone; guide dependencies still compile normally"
+  }
+}

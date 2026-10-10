@@ -1,5 +1,32 @@
 # Reviewed player quest research
 
+## Main release review — 0.8.66 (10 October 2026)
+
+The nine commits through `53d5e12` are integrated as research. Seven zone audit
+refreshes contain no new runtime data. Felwood (`d0023c8`) and Feralas
+(`649d55c`) candidate catalogue/correction/exclusion changes and their candidate
+regression tests are **deferred, not shipped**: their complete-route repricers
+fail reward-timing/difficulty guards; Felwood's short-guide comparison also
+reports invalid order and changed endpoints. Main retains its 0.8.65 quest data.
+The source evidence and before/after reports below remain available for a
+follow-up that reconciles complete action sets and corrects compiler behavior.
+Their coverage gains describe the candidate, not the current released data.
+Do not treat merging this research history as approval of those data changes.
+
+## 2026-10-10 — Winterspring audit refresh
+
+[The Winterspring refresh](winterspring-2026-10-10/README.md) reruns the scoped
+0.8.65 audit and complete Horde/Alliance flow capture. It confirms the previously
+reviewed stage corrections remain intact, with 116/142 actions, no missing
+pickup/hand-in coordinates and the same open objective and Alliance pickup
+gaps. Seven focused coverage tests, 18 route regressions, and a Lua 5.1 host
+load of all 87 TOC files pass. No new data or shared engine behavior changed;
+native offers, access, and route checks remain on the player checklist.
+
+The [Felwood review](felwood-2026-10-09/README.md) refreshes all four faction/chapter guides, documents current NPC/item evidence and profession-only Salve exclusions, and retains the Hunter raid-location unknowns. Its scoped compilation passes; full route repricing exposes data-driven order and reward-timing tradeoffs for main-developer review.
+
+The [Feralas review](feralas-2026-10-10/README.md) corrects nine supplied-item false farms and the Morrow Stone two-item handoff. Both complete faction chapters retain all 239 actions; objective-location gaps fall 11 → 1, with Elixir acquisition still unknown. The Horde full-route guard requires review for reward timing and difficulty pressure.
+
 Keep supplied exports unchanged here, with their original event versions,
 sessions and beta builds. These are observations from players, not a complete
 quest database. Only supported corrections enter the shipped catalogue. Raw
@@ -207,13 +234,21 @@ The [Stranglethorn Vale review](stranglethorn-vale-2026-10-08/README.md) correct
 
 The [Swamp of Sorrows review](swamp-of-sorrows-2026-10-08/README.md) preserves 32 quest IDs / 180 actions and all source gaps after checking pinned facts. It repairs the audit tool's catalogue/chapter capitalization mismatch, validates six chapters and retains a native player checklist. Contemporary acquisition/event facts remain unavailable; no coordinates or counts are invented.
 
+The [Swamp of Sorrows refresh](swamp-of-sorrows-2026-10-10/README.md) reruns its six-guide audit and full-flow capture on `guides/coverage`, based on main 0.8.65. Scope and gaps remain unchanged; current compiler estimates are recorded separately from the older 0.8.61 comparison. No new public source evidence or native-beta observations support changing quest facts.
+
 The [Tanaris review](tanaris-2026-10-08/README.md) corrects five supplied deliveries and field-sampling input/count semantics. It quarantines 43 evidenced level-60 scepter/reputation records while preserving their catalogue facts and unresolved gaps. The whole ordinary scope retains 60 IDs / 338 actions; same-scope comparisons expose a Horde travel/reward regression requiring shared-compiler review.
 
+The [Tanaris refresh](tanaris-2026-10-10/README.md) reruns the four-guide audit and full-flow estimate on the 0.8.65-based branch. Ordinary scope remains 60 quest IDs / 338 actions with 2 pickup and 1 objective location gap; the previously reviewed endgame gates and their source gaps remain documented. No new Tanaris source evidence or data change supports another correction; the earlier Horde 51–60 route guard remains REVIEW REQUIRED.
+
 The [Hinterlands review](hinterlands-2026-10-08/README.md) corrects the supplied venom parcel and maps Rhapsody's two missing liver drops to actual published Feralas points. All 50 IDs / 183 actions and all 16 strict replay states survive; recorded objective gaps 2 → 0. Elevation/approach uncertainty and three external Zul'Farrak prerequisite handoffs remain explicit coordination/player-check items.
+
+The [Hinterlands refresh](hinterlands-2026-10-10/README.md) rechecks four full chapters and 64 points on the 0.8.65-based branch. All 50 IDs / 183 actions and zero recorded stage-location gaps remain; prerequisite review steps and external Zul'Farrak facts remain open. Current flow estimates are recorded separately from the earlier same-facts comparison, and no terrain or native-beta claim is added.
 
 [Final combined guide validation](coverage-integration-2026-10-08/README.md): 1,562/1,563 host tests pass, including all 64 zone regressions; the sole historical catalogue fingerprint assertion remains. All 152 sections / 11,833 source points are checked, with 33 recorded gap-free sections and 390 unresolved ordinary records. No native beta or complete-terrain claim.
 
 The [Thoradin's Wall review](thoradins-wall-2026-10-08/README.md) reconciles two records' object handoffs using published beta-observation positions in Loch Modan and Arathi. Both factions retain the full three-quest/nine-action chain, actual hand-in gates and saved guide key; zero recorded gaps stay zero. Treating the single local category as optional Arathi support remains a concrete, unapplied lifecycle/presentation proposal.
+
+The [Thoradin's Wall refresh](thoradins-wall-2026-10-10/README.md) confirms both nine-action faction guides still have zero recorded stage gaps and the current full-flow estimates remain unchanged. The standalone category is not supported as a recommended region; optional Arathi handoff support remains a proposal for main-developer coordination because presentation changes affect saved guide progress.
 
 The [Un'Goro Crater review](ungoro-crater-2026-10-08/README.md) corrects five records: container contents, a supported Felwood heart farm with alternatives, Lost!/Ringo escort separation and Devilsaur Barb use. The full 44-ID scope retains 141 Horde / 138 Alliance actions after removing only false canteen farming. Objective gaps fall 6 → 4; an existing unknown item-use count becomes explicit. Complete-route evidence records delayed rewards, an Alliance log-peak increase and omitted dungeon handoffs requiring shared-builder coordination. All 76 zone regressions pass; current source queue has 388 unresolved ordinary records.
 
@@ -221,7 +256,11 @@ The [Western Plaguelands review](western-plaguelands-2026-10-08/README.md) corre
 
 The [Westfall review](westfall-2026-10-09/README.md) corrects eleven records: treasure-object interactions, actual Alba hub positions and explicit unknown detonator work. Standard full scope retains 45 IDs / 177 actions; separate Skyborn scope retains 26/224 actions and its actual cross-zone hand-in chain. Recorded objective gaps increase 1 → 2 by exposing a false conversation mapping. Twenty strict complete-route states pass with unchanged same-facts metrics. Dungeon handoffs, unlocated acquisition/use instructions, coarse Odd Child geography and optional Sweet Amber support remain documented. All 93 zone regressions pass; source queue has 378 unresolved ordinary records.
 
+The [Westfall refresh](westfall-2026-10-10/README.md) reruns the standard audit and captures current 0.8.65 flows for standard and Skyborn scopes. Westfall remains 45 standard compiled IDs / 177 actions plus 26 Skyborn IDs / 224 actions. Objective gaps remain 92749 and 92819; route metrics are kept separate from the earlier 0.8.61 same-facts comparisons.
+
 The [Wetlands review](wetlands-2026-10-09/README.md) corrects ten records: crate/barrel/corpse interactions, supplied tinder use, separate Algaz traversal and distinct Call of Water inputs. All 73 compiled IDs remain; 6/179/76 actions become 6/180/77 by adding actual traversal work. Recorded 5/11/5 source gaps remain. Twelve reconciled full-scope states preserve endpoints and valid orders, but delayed rewards and an uncertain-travel increase keep the guard REVIEW REQUIRED. Explicit ship endpoints, source conflicts and native player checklist accompany the review. All 102 zone regressions pass; global audit checks 11,835 points and source queue retains 378 unresolved ordinary records.
+
+The [Wetlands refresh](wetlands-2026-10-10/README.md) reruns the three-guide audit and full-flow capture on the 0.8.65-based branch. Scope remains 6/180/77 actions; source gaps remain 5/11/5 with six uncertain pickup requirements and three unknown Call of Water quantities. Current metrics are separated from the earlier 0.8.61 comparison, whose 21–30 guard remains REVIEW REQUIRED.
 
 The [Winterspring review](winterspring-2026-10-09/README.md) corrects ten stage records: object investigations, item-start and supplied deliveries, and the mechanical-yeti input. Three explicitly profession-only records leave ordinary scope while catalogue facts/gaps remain. All remaining 56 IDs / 116 Horde / 142 Alliance actions survive; objective-gap union 6 → 3 represents two crystal closures and one profession gap excluded, not solved. Eight Winterspring and eight affected Eastern states preserve valid complete orders/endpoints but expose Alliance reward delays requiring review. All 109 zone regressions pass; global audit checks 11,831 points and source queue has 373 unresolved ordinary records.
 

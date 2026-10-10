@@ -1,0 +1,26 @@
+Scoped audit
+/workspace/.wow-together-tests/bin/python tools/audit_quest_guides.py --zone Winterspring --output /tmp/winterspring-refresh-audit.json
+PASS: Horde 116 steps; Alliance 142 steps; 2 guides; 57 source points.
+
+Full-flow capture
+/workspace/.wow-together-tests/bin/python tools/audit_quest_flow.py --zone Winterspring --output /tmp/winterspring-refresh-flow.json
+PASS: complete Horde (116 actions) and Alliance (142 actions) sequences captured.
+
+Focused zone tests
+/workspace/.wow-together-tests/bin/python -m unittest test_winterspring_coverage -v
+PASS: 7 tests.
+
+Route regressions
+/workspace/.wow-together-tests/bin/python -m unittest test_routes -v
+PASS: 18 tests.
+
+Lua host load
+PYTHONPATH=tests /workspace/.wow-together-tests/bin/python - <<'PY'
+from test_addon import Client, ROOT
+Client()
+files=[line for line in (ROOT/'WowTogether/WowTogether.toc').read_text().splitlines() if line.endswith('.lua')]
+print(f'Lua 5.1 host load passed for {len(files)} TOC Lua files; interface target 16001')
+PY
+PASS: all 87 TOC Lua files loaded by the Lua 5.1 host.
+
+Native-client checklist remains open; host tests cannot validate beta NPC offers, map rendering, terrain, routes or actual quest credit.

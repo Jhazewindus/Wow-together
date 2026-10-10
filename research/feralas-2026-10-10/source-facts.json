@@ -1,0 +1,269 @@
+{
+  "captured": "2026-10-10",
+  "facts_only": true,
+  "quest_pages": {
+    "2879": {
+      "url": "https://www.wowhead.com/forever/quest=2879",
+      "sha256": "1189b48fa72ebf155a175d52eb06e2d6e5e7d1836b238f152db05f32a4435524",
+      "title": "The Stave of Equinex",
+      "reward_items": [
+        {
+          "id": 9307,
+          "name": "A Sparkling Stone",
+          "quantity": 1
+        }
+      ]
+    },
+    "2941": {
+      "url": "https://www.wowhead.com/forever/quest=2941",
+      "sha256": "348b562ba55099ddbe61e300f1ba0d029713c54ede15fe96117247f37747cc90",
+      "title": "The Borrower",
+      "provided_items": [
+        {
+          "id": 9329,
+          "name": "A Short Note",
+          "quantity": 1
+        }
+      ]
+    },
+    "2942": {
+      "url": "https://www.wowhead.com/forever/quest=2942",
+      "sha256": "dd49d607fe324e5d538125adf9350ec83c7a43160b34478b407ac2db6c906f17",
+      "title": "The Morrow Stone",
+      "required_items": [
+        {
+          "id": 9307,
+          "name": "A Sparkling Stone",
+          "quantity": 1
+        },
+        {
+          "id": 9306,
+          "name": "Stave of Equinex",
+          "quantity": 1
+        }
+      ],
+      "provided_items": [
+        {
+          "id": 9306,
+          "name": "Stave of Equinex",
+          "quantity": 1
+        }
+      ],
+      "prerequisite": [
+        2879
+      ]
+    },
+    "2943": {
+      "url": "https://www.wowhead.com/forever/quest=2943",
+      "sha256": "dbd9354b69e44d35054007a5363f59af2a69b4d934fdcbfece6b8df4d955b577",
+      "title": "Return to Troyas",
+      "provided_items": [
+        {
+          "id": 9331,
+          "name": "Feralas: A History",
+          "quantity": 1
+        }
+      ]
+    },
+    "2972": {
+      "url": "https://www.wowhead.com/forever/quest=2972",
+      "sha256": "918fe28a65f8e1da543c821062bcaa213b1bd1858f87e817fca8b0ff8429c2e5",
+      "title": "Doling Justice",
+      "provided_items": [
+        {
+          "id": 9368,
+          "name": "Jer'kai's Signet Ring",
+          "quantity": 1
+        }
+      ]
+    },
+    "2976": {
+      "url": "https://www.wowhead.com/forever/quest=2976",
+      "sha256": "acbfe5b67e2b434ea5ea401b7bdde3436c46232e984048ee851e004ee6344cad",
+      "title": "A Grim Discovery",
+      "provided_items": [
+        {
+          "id": 9462,
+          "name": "Crate of Grimtotem Horns",
+          "quantity": 1
+        }
+      ]
+    },
+    "3121": {
+      "url": "https://www.wowhead.com/forever/quest=3121",
+      "sha256": "687709c0e4251d1f19a446581833d96ae92c5e71e8243f8596c5a6bf58e6e521",
+      "title": "A Strange Request",
+      "provided_items": [
+        {
+          "id": 9629,
+          "name": "A Shrunken Head",
+          "quantity": 1
+        }
+      ]
+    },
+    "3122": {
+      "url": "https://www.wowhead.com/forever/quest=3122",
+      "sha256": "c5f94763802b8c01bac2b3c8d70f9f522abfb0582f7853e373a70448b5f291e7",
+      "title": "Return to Witch Doctor Uzer'i",
+      "provided_items": [
+        {
+          "id": 9628,
+          "name": "Neeru's Herb Pouch",
+          "quantity": 1
+        }
+      ],
+      "prerequisite": [
+        3121
+      ]
+    },
+    "3841": {
+      "url": "https://www.wowhead.com/forever/quest=3841",
+      "sha256": "6fbb587efe0b391ebd5ae9e0062a1f25a51cc14d6d090c942a7afb0e31d2904e",
+      "title": "An Orphan Looking For a Home",
+      "provided_items": [
+        {
+          "id": 11102,
+          "name": "Unhatched Sprite Darter Egg",
+          "quantity": 1
+        }
+      ]
+    },
+    "3842": {
+      "url": "https://www.wowhead.com/forever/quest=3842",
+      "sha256": "d0839a25fcca44a8fa708a464cd0c056d1da0f616046c37b320c6737d2186257",
+      "title": "A Short Incubation",
+      "required_items": [
+        {
+          "id": 3825,
+          "name": "Elixir of Lesser Fortitude",
+          "quantity": 2
+        }
+      ],
+      "provided_items": [],
+      "source_location": "unresolved"
+    },
+    "3843": {
+      "url": "https://www.wowhead.com/forever/quest=3843",
+      "sha256": "6cfe1868d386b346df8e56fcd2e7d72d14bb9b579ed737ed71a96d997451b864",
+      "title": "The Newest Member of the Family",
+      "provided_items": [
+        {
+          "id": 11471,
+          "name": "Fragile Sprite Darter Egg",
+          "quantity": 1
+        }
+      ]
+    },
+    "4267": {
+      "url": "https://www.wowhead.com/forever/quest=4267",
+      "sha256": "b4a52bf950d6462c67b4b540fcec578a3c24074a3b3a1f5ec413b1db59f89236",
+      "title": "Rise of the Silithid",
+      "provided_items": [
+        {
+          "id": 11466,
+          "name": "Raschal's Report",
+          "quantity": 1
+        }
+      ]
+    },
+    "7732": {
+      "url": "https://www.wowhead.com/forever/quest=7732",
+      "sha256": "c90f0379637c6958c6d1d94f28b1bc10e30932b611f96401485c72b789aaf845",
+      "title": "Zukk'ash Report",
+      "required_items": [
+        {
+          "id": 19020,
+          "name": "Camp Mojache Zukk'ash Report",
+          "quantity": 1
+        }
+      ],
+      "provided_items": [
+        {
+          "id": 19020,
+          "name": "Camp Mojache Zukk'ash Report",
+          "quantity": 1
+        }
+      ],
+      "prerequisite_all": [
+        7730,
+        7731
+      ]
+    }
+  },
+  "item_pages": {
+    "3825": {
+      "url": "https://www.wowhead.com/forever/item=3825",
+      "sha256": "e9f8812370bcf6b3ef7afd9e2b906efc8391b9c4107bbf4124939abdc9422b34",
+      "name": "Elixir of Fortitude",
+      "acquisition_summary": "Crafted, looted and quest-reward methods appear; no single applicable Feralas source position established."
+    },
+    "9306": {
+      "url": "https://www.wowhead.com/forever/item=9306",
+      "sha256": "c69fcb446d1897550ad99ac21f6f0c99e37bad8fc7f2f5b781fca357f92bb4a4",
+      "name": "Stave of Equinex"
+    },
+    "9307": {
+      "url": "https://www.wowhead.com/forever/item=9307",
+      "sha256": "8c4d26ac5578fa866d73946024581be6e36040b277b0dad70c8ae4b37a239fd6",
+      "name": "A Sparkling Stone",
+      "quest_relation": {
+        "type": "reward",
+        "quest_id": 2879
+      }
+    },
+    "9329": {
+      "url": "https://www.wowhead.com/forever/item=9329",
+      "sha256": "aaed887749e257b1bd3ba3057cfac323599e937cd9051f6b1002487e8ceb7819",
+      "name": "A Short Note"
+    },
+    "9331": {
+      "url": "https://www.wowhead.com/forever/item=9331",
+      "sha256": "1d1ec7ccbe97ed139c70303c763363fbc1f25eab7bc7b6e56ead831438e67631",
+      "name": "Feralas: A History"
+    },
+    "9368": {
+      "url": "https://www.wowhead.com/forever/item=9368",
+      "sha256": "546a43473ee395d2cf4ba6610e60603a8d97b6a75fc3465c892ac14713a06223",
+      "name": "Jer'kai's Signet Ring"
+    },
+    "9462": {
+      "url": "https://www.wowhead.com/forever/item=9462",
+      "sha256": "56b28fe05035699cc62deada64fad306590df504436e81c8c2acdd23786d73e1",
+      "name": "Crate of Grimtotem Horns"
+    },
+    "9628": {
+      "url": "https://www.wowhead.com/forever/item=9628",
+      "sha256": "4431ca32ab85d85bc4e0e4b64b15a878d2c021ba87648f8383e539f39d94b103",
+      "name": "Neeru's Herb Pouch"
+    },
+    "9629": {
+      "url": "https://www.wowhead.com/forever/item=9629",
+      "sha256": "e65067b42748779f88483659157c12e733bb5e43b42d1ec9b5c5fd102794f925",
+      "name": "A Shrunken Head"
+    },
+    "11102": {
+      "url": "https://www.wowhead.com/forever/item=11102",
+      "sha256": "24db7c967b095f974c4e829a5b875e0622f137364a361470564a80807787137e",
+      "name": "Unhatched Sprite Darter Egg"
+    },
+    "11466": {
+      "url": "https://www.wowhead.com/forever/item=11466",
+      "sha256": "bc7c786ebf9f0ecbe5b17c11a87261b405b81e10dbb11f15ce76d2834c855114",
+      "name": "Raschal's Report"
+    },
+    "11471": {
+      "url": "https://www.wowhead.com/forever/item=11471",
+      "sha256": "5baa22b4aa0c9e3671c662238e9be0e6f1b86041b9a4781b1d255a5d5aaab36b",
+      "name": "Fragile Sprite Darter Egg"
+    },
+    "19020": {
+      "url": "https://www.wowhead.com/forever/item=19020",
+      "sha256": "336fd375decda2cb6cf5e93c23e07b72137bd8841f59915e832f2b6f4e09a1db",
+      "name": "Camp Mojache Zukk'ash Report"
+    }
+  },
+  "notes": [
+    "Wowhead quest 3842 identifies item 3825 as Elixir of Lesser Fortitude; the item page name is Elixir of Fortitude. Keep the pinned two-item count and exact Feralas source location unresolved.",
+    "Provided rows are represented in quest_pages.provided_items; no item farm positions are inferred for those handoffs."
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "reviewed": "2026-10-09",
+  "sources": [
+    {
+      "url": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever",
+      "revision": "e0a6eaa86f181ac99262e34126bcd2ed1a1712d6",
+      "files": {
+        "foreverQuestDB.lua": "d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87",
+        "foreverNpcDB.lua": "a8c4169690726323dac3c6441f74f7a4d9cafcc08ec42231d72ff28c9471f0ee",
+        "foreverItemDB.lua": "987d037b6df94d5b0b1dc326c1670581e3abb952736a4ae055fd9f161328b71c"
+      },
+      "facts": [
+        "NPC11554 Grazle has a Felwood spawn at 50.93,85.01.",
+        "NPC7092 Tainted Ooze has 34 current Felwood spawns; selected representative is 42.64,47.58.",
+        "NPC9862 Jaedenar Legionnaire has current Felwood spawns; selected representative is 36.23,45.87.",
+        "NPC6011 Felguard Sentry is in Blasted Lands (source area 4); selected representative is 57.73,50.62.",
+        "requiredSkill facts mark 5883/5888 Mining 186, 5884/5889 Herbalism 182, 5885/5890 Skinning 393 and 5886/5891 Enchanting 333, each rank 1.",
+        "Questie Forever records preserve Warlock class mask 256 on 7602 and 8421, and Hunter class mask 4 on 7632 and 7635."
+      ]
+    },
+    {
+      "url": "https://classicdb.ch/?quest=5385",
+      "sha256": "935085fe8290d9495e4cd71c602aaa7f66c4ed594656f0b179361ed9fc01ff29",
+      "facts": ["Quest 5385 lists item 13562 as a provided item and NPC11020/NPC11019 as start/return; exact ID/title/levels match the catalogue."]
+    },
+    {
+      "url": "https://classicdb.ch/?quest=6131",
+      "sha256": "da30b7203fb83d96f543b649edece0742ac5c4f9014bca6639f1f9a6d2553a70",
+      "facts": ["Quest 6131 identifies NPC11554 Grazle as start and end, with three five-kill goals; exact title, level and faction match the catalogue."]
+    },
+    {
+      "url": "https://classicdb.ch/?quest=7602",
+      "sha256": "9cffa6d417a91e8236a910800134b3da9eac87ef525637bb55179997f06ed55e",
+      "facts": ["Quest 7602 identity and required essences agree with catalogue; item pages associate 18622 with NPC9862 and 18623 with NPC6011. These are unchanged-vanilla fallback relations, not Forever drop-rate evidence."]
+    },
+    {
+      "url": "https://classicdb.ch/?quest=8421",
+      "sha256": "27130f678c6f240ac862d2016caf724ca6d5d3e506693b5d54efc40114990304",
+      "facts": ["Quest 8421 identity and Warlock class match catalogue; item 20614 has NPC7092 as a listed source. This is unchanged-vanilla fallback evidence, not a drop-rate claim."]
+    }
+  ],
+  "additional_item_page_hashes": {
+    "https://classicdb.ch/?item=18622": "998db7e72f976fecccde4dfe1c71de2729e3aa5147b19fcb52dba0c319c211c5",
+    "https://classicdb.ch/?item=18623": "7543b0b8091a23bf078e8f17eef87aeb5ea9f5ea4193406d9d1dc026e4c3a0d8",
+    "https://classicdb.ch/?item=20614": "26b60543d0c1ca051ce300663e954f6443fcf74dfe67559de11c5659bb9177ac"
+  }
+}
