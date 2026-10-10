@@ -1,5 +1,14 @@
 # Reviewed player quest research
 
+## 2026-10-10 — Swamp of Sorrows branch-head refresh
+
+[The 0.8.66 branch-head refresh](swamp-of-sorrows-2026-10-10/refresh-0.8.66/README.md)
+rechecks all six guides after unrelated branch updates. The scoped audit and
+ordered full-route captures remain identical to the prior Swamp review: 180
+actions, 3/6/4 pickup/objective/hand-in location gaps, no unverified pickup
+requirements and one unknown 3374 quantity. No new source facts justified data
+changes; existing source limitations and native-player checks remain open.
+
 ## 2026-10-10 — Eastern Plaguelands audit refresh
 
 [The Eastern Plaguelands refresh](eastern-plaguelands-2026-10-10/README.md)
