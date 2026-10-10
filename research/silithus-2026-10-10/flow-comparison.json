@@ -1,0 +1,121 @@
+{
+  "comparison": "Current source/action facts before vs refreshed facts with new leveling exclusions temporarily lifted, per same 80 quest IDs/faction. Full-chain figures reflect actual published exclusions.",
+  "matched_scope": {
+    "Horde": {
+      "sameQuestIDs": true,
+      "questCountBefore": 80,
+      "questCountAfter": 80,
+      "actionsBefore": 326,
+      "actionsAfter": 326,
+      "metrics": {
+        "distance": {
+          "before": 304871.1318901475,
+          "after": 308529.6426359157,
+          "delta": 3658.51
+        },
+        "peakLog": {
+          "before": 41,
+          "after": 41,
+          "delta": 0
+        },
+        "levelDeficitXP": {
+          "before": 4064600,
+          "after": 4064600,
+          "delta": 0
+        },
+        "questXP": {
+          "before": 470870,
+          "after": 470870,
+          "delta": 0
+        },
+        "rewardXPBeforeWork": {
+          "before": 29136010,
+          "after": 30214220,
+          "delta": 1078210
+        },
+        "uncertainTravelLegs": {
+          "before": 157,
+          "after": 149,
+          "delta": -8
+        },
+        "missingLocations": {
+          "before": 91,
+          "after": 85,
+          "delta": -6
+        }
+      }
+    },
+    "Alliance": {
+      "sameQuestIDs": true,
+      "questCountBefore": 80,
+      "questCountAfter": 80,
+      "actionsBefore": 323,
+      "actionsAfter": 323,
+      "metrics": {
+        "distance": {
+          "before": 258332.23136489882,
+          "after": 260414.58869958864,
+          "delta": 2082.36
+        },
+        "peakLog": {
+          "before": 36,
+          "after": 36,
+          "delta": 0
+        },
+        "levelDeficitXP": {
+          "before": 4035910,
+          "after": 4035910,
+          "delta": 0
+        },
+        "questXP": {
+          "before": 464830,
+          "after": 464830,
+          "delta": 0
+        },
+        "rewardXPBeforeWork": {
+          "before": 28114710,
+          "after": 29225420,
+          "delta": 1110710
+        },
+        "uncertainTravelLegs": {
+          "before": 154,
+          "after": 147,
+          "delta": -7
+        },
+        "missingLocations": {
+          "before": 88,
+          "after": 82,
+          "delta": -6
+        }
+      }
+    }
+  },
+  "full_leveling_guide": {
+    "Horde": {
+      "quests": 43,
+      "actions": 142,
+      "metrics": {
+        "distance": 287631.6118194188,
+        "peakLog": 14,
+        "levelDeficitXP": 4064600,
+        "questXP": 232510,
+        "rewardXPBeforeWork": 5915380,
+        "uncertainTravelLegs": 40,
+        "missingLocations": 3
+      }
+    },
+    "Alliance": {
+      "quests": 44,
+      "actions": 145,
+      "metrics": {
+        "distance": 240290.49760458077,
+        "peakLog": 15,
+        "levelDeficitXP": 4035910,
+        "questXP": 233070,
+        "rewardXPBeforeWork": 5319030,
+        "uncertainTravelLegs": 42,
+        "missingLocations": 3
+      }
+    }
+  }
+}

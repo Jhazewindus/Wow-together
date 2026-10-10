@@ -397,5 +397,284 @@
     "title": "Clear the Forest!",
     "reason": "Daily repeatable PvP quest",
     "source": "https://www.wowhead.com/forever/quest=79098; captured 2026-10-10; SHA-256 498d5c0825c781ad7457f8f763e65b9f60c3d6b80d79b010cffe7ce2dde6614e. Wowhead Forever quest metadata has daily=1 and wflags=2. Retain the catalogue record, exclude the repeatable from ordinary leveling routes. Reviewed 2026-10-10; see research/ashenvale-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8315
+    ],
+    "title": "The Calling",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8316,
+      8376,
+      8377,
+      8378,
+      8379,
+      8380,
+      8381,
+      8382
+    ],
+    "title": "Armaments of War",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8351
+    ],
+    "title": "Bor Wishes to Speak",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8352
+    ],
+    "title": "Scepter of the Council",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8556
+    ],
+    "title": "Signet of Unyielding Strength",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8557
+    ],
+    "title": "Drape of Unyielding Strength",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8558
+    ],
+    "title": "Sickle of Unyielding Strength",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8689
+    ],
+    "title": "Shroud of Infinite Wisdom",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8690
+    ],
+    "title": "Cloak of the Gathering Storm",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8691
+    ],
+    "title": "Drape of Vaulted Secrets",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8692
+    ],
+    "title": "Cloak of Unending Life",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8693
+    ],
+    "title": "Cloak of Veiled Shadows",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8694
+    ],
+    "title": "Shroud of Unspoken Names",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8695
+    ],
+    "title": "Cape of Eternal Justice",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8696
+    ],
+    "title": "Cloak of the Unseen Path",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8697
+    ],
+    "title": "Ring of Infinite Wisdom",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8698
+    ],
+    "title": "Ring of the Gathering Storm",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8699
+    ],
+    "title": "Band of Vaulted Secrets",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8700
+    ],
+    "title": "Band of Unending Life",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8701
+    ],
+    "title": "Band of Veiled Shadows",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8702
+    ],
+    "title": "Ring of Unspoken Names",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8703
+    ],
+    "title": "Ring of Eternal Justice",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8704
+    ],
+    "title": "Signet of the Unseen Path",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8705
+    ],
+    "title": "Gavel of Infinite Wisdom",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8706
+    ],
+    "title": "Hammer of the Gathering Storm",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8707
+    ],
+    "title": "Blade of Vaulted Secrets",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8708
+    ],
+    "title": "Mace of Unending Life",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8709
+    ],
+    "title": "Dagger of Veiled Shadows",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8710
+    ],
+    "title": "Kris of Unspoken Names",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8711
+    ],
+    "title": "Blade of Eternal Justice",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8712
+    ],
+    "title": "Scythe of the Unseen Path",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      9023
+    ],
+    "title": "The Perfect Poison",
+    "reason": "Level-60 Ahn’Qiraj raid, war effort or class set reward",
+    "source": "Pinned Forever quest facts (QuestieDB commit e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; pinned source manifest); Raid flag/minimum level 58–60 identifies Ahn’Qiraj raid, war-effort or class-set turn-ins, not ordinary zone leveling. Retain catalogue facts; exclude from Silithus leveling guide. See research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8743
+    ],
+    "title": "Bang a Gong!",
+    "reason": "Ahn’Qiraj Scarab Gong world event",
+    "source": "Pinned Forever quest chain facts show this is a level-60 Ahn’Qiraj event path, not ordinary Silithus leveling; 8743 is explicitly World Event; 8745 follows quest 8742. Retain catalogue facts and source gaps; see research/silithus-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      8745
+    ],
+    "title": "Treasure of the Timeless One",
+    "reason": "Level-60 Ahn’Qiraj event/raid follow-up",
+    "source": "Pinned Forever quest chain facts show this is a level-60 Ahn’Qiraj event path, not ordinary Silithus leveling; 8743 is explicitly World Event; 8745 follows quest 8742. Retain catalogue facts and source gaps; see research/silithus-2026-10-10/source-facts.json."
   }
 ]

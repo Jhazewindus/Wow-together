@@ -1,0 +1,2660 @@
+{
+  "zone": "Silithus",
+  "reviewed": "2026-10-10",
+  "addonBaseline": "0.8.59 at main 67ff36412ede50154ec3a8b2aecb148e72ffb568; refreshed branch baseline 1528d8c; audits regenerated from current repository.",
+  "publishedForeverFacts": {
+    "source": "https://github.com/Questie/QuestieDB",
+    "commit": "e0a6eaa86f181ac99262e34126bcd2ed1a1712d6",
+    "questDBSha256": "d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87",
+    "sourceManifest": "tools/forever_source_manifest.json",
+    "use": "literal quest type, level, prerequisite, item/NPC/object relationships; no routing/order imported"
+  },
+  "questPages": {
+    "8287": {
+      "url": "https://www.wowhead.com/forever/quest=8287",
+      "captured": "2026-10-10",
+      "sha256": "dadff8e37c5b6713cf71e2267195fec75f912d22af082f339064dfba4a74d86c"
+    },
+    "8305": {
+      "url": "https://www.wowhead.com/forever/quest=8305",
+      "captured": "2026-10-10",
+      "sha256": "c848399414e4a43d92b52b30b8c82ce9e7a31c6e667741825893aa7cd988ee05"
+    },
+    "8306": {
+      "url": "https://www.wowhead.com/forever/quest=8306",
+      "captured": "2026-10-10",
+      "sha256": "5fd7c32aa882479141b2425f2d268a1cad18c3a7e3e28e4456f0c96d6179c59c"
+    },
+    "8309": {
+      "url": "https://www.wowhead.com/forever/quest=8309",
+      "captured": "2026-10-10",
+      "sha256": "90964a610bb9abe6110e25404d94ba3bb6ba416ad8838454744a168093cc75d9"
+    },
+    "8314": {
+      "url": "https://www.wowhead.com/forever/quest=8314",
+      "captured": "2026-10-10",
+      "sha256": "5a26e8cdd29e444e7e0141b67f208f1aa01ac67a0a3266c725c99b885058c417"
+    },
+    "8315": {
+      "url": "https://www.wowhead.com/forever/quest=8315",
+      "captured": "2026-10-10",
+      "sha256": "66c21dfda9db8d605cd5d183f29376b2adc4c85b454a7edf031cd71a1f17e6a9"
+    },
+    "8316": {
+      "url": "https://www.wowhead.com/forever/quest=8316",
+      "captured": "2026-10-10",
+      "sha256": "c9b9facc138b3755396b45b1056274af62fd10d5d1c775ece2e0362e1a77d8e7"
+    },
+    "8318": {
+      "url": "https://www.wowhead.com/forever/quest=8318",
+      "captured": "2026-10-10",
+      "sha256": "c5bd90ff9754c620577881e74671c3869c685b1eb96b63733461028f811fa1b4"
+    },
+    "8332": {
+      "url": "https://www.wowhead.com/forever/quest=8332",
+      "captured": "2026-10-10",
+      "sha256": "686e2a8aadb7b22c0c091b5ad8972c77712091f4dab5e3e57336b028fa0a0db1"
+    },
+    "8341": {
+      "url": "https://www.wowhead.com/forever/quest=8341",
+      "captured": "2026-10-10",
+      "sha256": "a634fc9fea86bc5e9c5a2d136a05cfc798ce51aaed493d48918a53abcd693064"
+    },
+    "8351": {
+      "url": "https://www.wowhead.com/forever/quest=8351",
+      "captured": "2026-10-10",
+      "sha256": "af4f2ec0602a9b22e45b72311ff2d9b499464ae01dd670806dcc6f7b4bc1aa56"
+    },
+    "8352": {
+      "url": "https://www.wowhead.com/forever/quest=8352",
+      "captured": "2026-10-10",
+      "sha256": "f571fbfd5dc788cb100037ec23941055390baa2a7b01e3a0fe50b704a3a4d42f"
+    },
+    "8376": {
+      "url": "https://www.wowhead.com/forever/quest=8376",
+      "captured": "2026-10-10",
+      "sha256": "c348d7edcce04e8f89eb09faf2af3002be4910d8bc0b29641837627edeba7232"
+    },
+    "8377": {
+      "url": "https://www.wowhead.com/forever/quest=8377",
+      "captured": "2026-10-10",
+      "sha256": "527da6740377ff5d4c729311dcc9b7f446c665dd3ee26359ad5b5513eb20a4dc"
+    },
+    "8378": {
+      "url": "https://www.wowhead.com/forever/quest=8378",
+      "captured": "2026-10-10",
+      "sha256": "a695a14e10eb1c4ba0db1af2fc99d00cb3e6ebcf533b162e37d1fe5958a2f91d"
+    },
+    "8379": {
+      "url": "https://www.wowhead.com/forever/quest=8379",
+      "captured": "2026-10-10",
+      "sha256": "ba1241323b68e5e46b30902fbba6690a9d497621deebb550e881b3bc2a15b9f0"
+    },
+    "8380": {
+      "url": "https://www.wowhead.com/forever/quest=8380",
+      "captured": "2026-10-10",
+      "sha256": "30bc9a3f75bc7479f0c6ba7cc478438daab2e071bcff48a3752f550e7d14fbea"
+    },
+    "8381": {
+      "url": "https://www.wowhead.com/forever/quest=8381",
+      "captured": "2026-10-10",
+      "sha256": "ed0179007781596ab200363acf45f63c89344957e62009c37616b36cb98cdcbb"
+    },
+    "8382": {
+      "url": "https://www.wowhead.com/forever/quest=8382",
+      "captured": "2026-10-10",
+      "sha256": "58a9e741b7433990e05239e02b4420e67a26ff15a5ea1faee8fd796742b22fc3"
+    },
+    "8743": {
+      "url": "https://www.wowhead.com/forever/quest=8743",
+      "captured": "2026-10-10",
+      "sha256": "821dca358b6f1c56f914032efb114a719cc500dac6f90b741c7e840315e45643"
+    },
+    "8745": {
+      "url": "https://www.wowhead.com/forever/quest=8745",
+      "captured": "2026-10-10",
+      "sha256": "b6067f916c4de1997525a83842d355310d13487079cdc56e0a57e54b175f324c"
+    },
+    "8857": {
+      "url": "https://www.wowhead.com/forever/quest=8857",
+      "captured": "2026-10-10",
+      "sha256": "a1095a6f56c80905d9afd03ee417fa84778d65f45b9c33d4e78a80edbeb4ca6d"
+    },
+    "8858": {
+      "url": "https://www.wowhead.com/forever/quest=8858",
+      "captured": "2026-10-10",
+      "sha256": "dc87af3b65dc4d11012a1fae20cffbf3f2234e89f7717968de7eae410d35115d"
+    },
+    "8859": {
+      "url": "https://www.wowhead.com/forever/quest=8859",
+      "captured": "2026-10-10",
+      "sha256": "213ddf475cae668d27cf5a0c3eb60a57ee1a9d2a3cfe4592a65a59e4e25a6430"
+    },
+    "9023": {
+      "url": "https://www.wowhead.com/forever/quest=9023",
+      "captured": "2026-10-10",
+      "sha256": "192b42cad4f77a9e51304eef476e803fd7431a05054be24634a4402d5dfa5f84"
+    },
+    "9248": {
+      "url": "https://www.wowhead.com/forever/quest=9248",
+      "captured": "2026-10-10",
+      "sha256": "348987e871db7db238154d7fb91f1f06dada1f2f583c64a81634a19dbbe996c4"
+    }
+  },
+  "entityPages": {
+    "item:14344": {
+      "url": "https://www.wowhead.com/forever/item=14344",
+      "captured": "2026-10-10",
+      "sha256": "394221eab1a32d81479e3d52843496c40ce20cf485b1ce92be9dc3f69604ab82",
+      "name": "Large Brilliant Shard",
+      "locations": [],
+      "source": "Wowhead Forever"
+    },
+    "item:20383": {
+      "url": "https://www.wowhead.com/forever/item=20383",
+      "captured": "2026-10-10",
+      "sha256": "c69b8cfa3aee339fb5d3dc3cb400bc179e50b9ecad38c459a0a65f7231aec24c",
+      "name": "Head of the Broodlord Lashlayer",
+      "locations": [],
+      "source": "Wowhead Forever",
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 12017,
+          "name": "Broodlord Lashlayer",
+          "action": "loot",
+          "areas": [
+            2677
+          ]
+        }
+      ]
+    },
+    "item:20404": {
+      "url": "https://www.wowhead.com/forever/item=20404",
+      "captured": "2026-10-10",
+      "sha256": "80374c508f1353987f1b8bb99c2de0bacecd827bd43d4272756ebe8c60e72c5a",
+      "name": "Encrypted Twilight Text",
+      "locations": [],
+      "source": "Wowhead Forever",
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 11880,
+          "name": "Twilight Avenger",
+          "action": "loot",
+          "minlevel": 58,
+          "maxlevel": 59,
+          "areas": [
+            1377
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 11881,
+          "name": "Twilight Geolord",
+          "action": "loot",
+          "minlevel": 59,
+          "maxlevel": 60,
+          "areas": [
+            1377
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 11882,
+          "name": "Twilight Stonecaller",
+          "action": "loot",
+          "minlevel": 59,
+          "maxlevel": 60,
+          "areas": [
+            1377
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 11883,
+          "name": "Twilight Master",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 60,
+          "areas": [
+            1377
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 14479,
+          "name": "Twilight Lord Everun",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 60,
+          "areas": [
+            1377
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15201,
+          "name": "Twilight Flamereaver",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 60,
+          "areas": [
+            1377
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15213,
+          "name": "Twilight Overlord",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 61,
+          "areas": [
+            1377
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15308,
+          "name": "Twilight Prophet",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 60,
+          "areas": [
+            1377
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15541,
+          "name": "Twilight Marauder Morna",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 60,
+          "areas": [
+            1377
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15542,
+          "name": "Twilight Marauder",
+          "action": "loot",
+          "minlevel": 58,
+          "maxlevel": 59,
+          "areas": [
+            1377
+          ]
+        }
+      ]
+    },
+    "item:20405": {
+      "url": "https://www.wowhead.com/forever/item=20405",
+      "captured": "2026-10-10",
+      "sha256": "27df2546d1ae90f1f6c717a8eb356658ec809288178750cfd106c8aed8abb57d",
+      "name": "Decoded Tablet Transcription",
+      "locations": [],
+      "source": "Wowhead Forever"
+    },
+    "item:20456": {
+      "url": "https://www.wowhead.com/forever/item=20456",
+      "captured": "2026-10-10",
+      "sha256": "603a571391a77e9f975e66cffe41b35b06efd77493e407696eed5786831d510c",
+      "name": "Hive'Regal Rubbing",
+      "locations": [],
+      "source": "Wowhead Forever"
+    },
+    "item:20463": {
+      "url": "https://www.wowhead.com/forever/item=20463",
+      "captured": "2026-10-10",
+      "sha256": "b01355f5a8919c193cab368f130641fa75b731bce53bc6db605c9390473eb226",
+      "name": "Glyphed Crystal Prism",
+      "locations": [],
+      "source": "Wowhead Forever"
+    },
+    "item:20513": {
+      "url": "https://www.wowhead.com/forever/item=20513",
+      "captured": "2026-10-10",
+      "sha256": "ee68835c9e0c9a61a4e9b44c965949b5dac518bfae8fe6663548bc34e4c3ee15",
+      "name": "Abyssal Crest",
+      "locations": [],
+      "source": "Wowhead Forever",
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 15209,
+          "name": "Crimson Templar",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 60,
+          "areas": [
+            1377
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15211,
+          "name": "Azure Templar",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 60,
+          "areas": [
+            1377
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15212,
+          "name": "Hoary Templar",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 60,
+          "areas": [
+            1377
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15307,
+          "name": "Earthen Templar",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 60,
+          "areas": [
+            1377
+          ]
+        }
+      ]
+    },
+    "item:20514": {
+      "url": "https://www.wowhead.com/forever/item=20514",
+      "captured": "2026-10-10",
+      "sha256": "a1097b5861451c7f4866a43f93a96c573d011b2373a374bf524982e7c1e2724b",
+      "name": "Abyssal Signet",
+      "locations": [],
+      "source": "Wowhead Forever",
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 15206,
+          "name": "The Duke of Cynders",
+          "action": "loot",
+          "minlevel": 62,
+          "maxlevel": 62,
+          "areas": [
+            1377
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15207,
+          "name": "The Duke of Fathoms",
+          "action": "loot",
+          "minlevel": 62,
+          "maxlevel": 62,
+          "areas": [
+            1377
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15208,
+          "name": "The Duke of Shards",
+          "action": "loot",
+          "minlevel": 62,
+          "maxlevel": 62,
+          "areas": [
+            1377
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15220,
+          "name": "The Duke of Zephyrs",
+          "action": "loot",
+          "minlevel": 62,
+          "maxlevel": 62,
+          "areas": [
+            1377
+          ]
+        }
+      ]
+    },
+    "item:20515": {
+      "url": "https://www.wowhead.com/forever/item=20515",
+      "captured": "2026-10-10",
+      "sha256": "9c3f34ccdde849d68ace917c65a5e8ad6315a58c1a2f0cea8740c0f9dd72e3d2",
+      "name": "Abyssal Scepter",
+      "locations": [],
+      "source": "Wowhead Forever",
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 15203,
+          "name": "Prince Skaldrenox",
+          "action": "loot",
+          "areas": [
+            1377
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15204,
+          "name": "High Marshal Whirlaxis",
+          "action": "loot",
+          "areas": [
+            1377
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15205,
+          "name": "Baron Kazum",
+          "action": "loot",
+          "areas": [
+            1377
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15305,
+          "name": "Lord Skwol",
+          "action": "loot",
+          "areas": [
+            1377
+          ]
+        }
+      ]
+    },
+    "item:20860": {
+      "url": "https://www.wowhead.com/forever/item=20860",
+      "captured": "2026-10-10",
+      "sha256": "c1ee6cbea2bc14c7a7dd0c6507ed0c5f976e83a5028088a2420d81ed97255d10",
+      "name": "Silver Scarab",
+      "locations": [],
+      "source": "Wowhead Forever",
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 15184,
+          "name": "Cenarion Hold Infantry",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 60,
+          "areas": [
+            1377
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15229,
+          "name": "Vekniss Soldier",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3428
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15230,
+          "name": "Vekniss Warrior",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3428
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15233,
+          "name": "Vekniss Guardian",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3428
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15235,
+          "name": "Vekniss Stinger",
+          "action": "loot",
+          "minlevel": 62,
+          "maxlevel": 62,
+          "areas": [
+            3428
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15236,
+          "name": "Vekniss Wasp",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 60,
+          "areas": [
+            3428
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15240,
+          "name": "Vekniss Hive Crawler",
+          "action": "loot",
+          "minlevel": 62,
+          "maxlevel": 62,
+          "areas": [
+            3428
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15246,
+          "name": "Qiraji Mindslayer",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3428
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15247,
+          "name": "Qiraji Brainwasher",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3428
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15249,
+          "name": "Qiraji Lasher",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3428
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15250,
+          "name": "Qiraji Slayer",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3428
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15252,
+          "name": "Qiraji Champion",
+          "action": "loot",
+          "minlevel": 63,
+          "maxlevel": 63,
+          "areas": [
+            3428
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15262,
+          "name": "Obsidian Eradicator",
+          "action": "loot",
+          "minlevel": 59,
+          "maxlevel": 60,
+          "areas": [
+            3428
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15264,
+          "name": "Anubisath Sentinel",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 61,
+          "areas": [
+            3428
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15277,
+          "name": "Anubisath Defender",
+          "action": "loot",
+          "minlevel": 62,
+          "maxlevel": 62,
+          "areas": [
+            3428
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15311,
+          "name": "Anubisath Warder",
+          "action": "loot",
+          "minlevel": 63,
+          "maxlevel": 63,
+          "areas": [
+            3428
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15312,
+          "name": "Obsidian Nullifier",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3428
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15318,
+          "name": "Hive'Zara Drone",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 60,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15319,
+          "name": "Hive'Zara Collector",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 60,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15320,
+          "name": "Hive'Zara Soldier",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15323,
+          "name": "Hive'Zara Sandstalker",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15324,
+          "name": "Qiraji Gladiator",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 61,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15325,
+          "name": "Hive'Zara Wasp",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15327,
+          "name": "Hive'Zara Stinger",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15333,
+          "name": "Silicate Feeder",
+          "action": "loot",
+          "minlevel": 55,
+          "maxlevel": 55,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15335,
+          "name": "Flesh Hunter",
+          "action": "loot",
+          "minlevel": 62,
+          "maxlevel": 62,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15336,
+          "name": "Hive'Zara Tail Lasher",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15338,
+          "name": "Obsidian Destroyer",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15343,
+          "name": "Qiraji Swarmguard",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15355,
+          "name": "Anubisath Guardian",
+          "action": "loot",
+          "minlevel": 62,
+          "maxlevel": 62,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15385,
+          "name": "Colonel Zerran",
+          "action": "loot",
+          "minlevel": 63,
+          "maxlevel": 63,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15386,
+          "name": "Major Yeggeth",
+          "action": "loot",
+          "minlevel": 63,
+          "maxlevel": 63,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15388,
+          "name": "Major Pakkon",
+          "action": "loot",
+          "minlevel": 63,
+          "maxlevel": 63,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15389,
+          "name": "Captain Drenn",
+          "action": "loot",
+          "minlevel": 63,
+          "maxlevel": 63,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15390,
+          "name": "Captain Xurrem",
+          "action": "loot",
+          "minlevel": 63,
+          "maxlevel": 63,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15391,
+          "name": "Captain Qeez",
+          "action": "loot",
+          "minlevel": 63,
+          "maxlevel": 63,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15392,
+          "name": "Captain Tuubid",
+          "action": "loot",
+          "minlevel": 63,
+          "maxlevel": 63,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15461,
+          "name": "Shrieker Scarab",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 60,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15462,
+          "name": "Spitting Scarab",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 60,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15500,
+          "name": "Keyl Swiftclaw",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 60,
+          "areas": [
+            1377
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15503,
+          "name": "Kandrostrasz",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 60,
+          "areas": [
+            3428
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 234762,
+          "name": "Qiraji Mindslayer",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3428
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 234798,
+          "name": "Qiraji Champion",
+          "action": "loot",
+          "minlevel": 63,
+          "maxlevel": 63,
+          "areas": [
+            3428
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 234800,
+          "name": "Qiraji Slayer",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3428
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 234814,
+          "name": "Qiraji Warlord",
+          "action": "loot",
+          "minlevel": 63,
+          "maxlevel": 63,
+          "areas": [
+            3428
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 234830,
+          "name": "Anubisath Defender",
+          "action": "loot",
+          "minlevel": 62,
+          "maxlevel": 62,
+          "areas": [
+            3428
+          ]
+        }
+      ]
+    },
+    "item:20867": {
+      "url": "https://www.wowhead.com/forever/item=20867",
+      "captured": "2026-10-10",
+      "sha256": "af78103c3bf721c9628ee3840e590033fec8429dac5aee76dbe2340c46655f39",
+      "name": "Onyx Idol",
+      "locations": [],
+      "source": "Wowhead Forever",
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 15318,
+          "name": "Hive'Zara Drone",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 60,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15319,
+          "name": "Hive'Zara Collector",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 60,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15320,
+          "name": "Hive'Zara Soldier",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15323,
+          "name": "Hive'Zara Sandstalker",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15324,
+          "name": "Qiraji Gladiator",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 61,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15325,
+          "name": "Hive'Zara Wasp",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15327,
+          "name": "Hive'Zara Stinger",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15333,
+          "name": "Silicate Feeder",
+          "action": "loot",
+          "minlevel": 55,
+          "maxlevel": 55,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15335,
+          "name": "Flesh Hunter",
+          "action": "loot",
+          "minlevel": 62,
+          "maxlevel": 62,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15336,
+          "name": "Hive'Zara Tail Lasher",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15338,
+          "name": "Obsidian Destroyer",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15343,
+          "name": "Qiraji Swarmguard",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15355,
+          "name": "Anubisath Guardian",
+          "action": "loot",
+          "minlevel": 62,
+          "maxlevel": 62,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15385,
+          "name": "Colonel Zerran",
+          "action": "loot",
+          "minlevel": 63,
+          "maxlevel": 63,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15386,
+          "name": "Major Yeggeth",
+          "action": "loot",
+          "minlevel": 63,
+          "maxlevel": 63,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15388,
+          "name": "Major Pakkon",
+          "action": "loot",
+          "minlevel": 63,
+          "maxlevel": 63,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15389,
+          "name": "Captain Drenn",
+          "action": "loot",
+          "minlevel": 63,
+          "maxlevel": 63,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15390,
+          "name": "Captain Xurrem",
+          "action": "loot",
+          "minlevel": 63,
+          "maxlevel": 63,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15391,
+          "name": "Captain Qeez",
+          "action": "loot",
+          "minlevel": 63,
+          "maxlevel": 63,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15392,
+          "name": "Captain Tuubid",
+          "action": "loot",
+          "minlevel": 63,
+          "maxlevel": 63,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15461,
+          "name": "Shrieker Scarab",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 60,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15462,
+          "name": "Spitting Scarab",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 60,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "object",
+          "entityID": 180691,
+          "name": "Scarab Coffer",
+          "action": "gather",
+          "areas": [
+            3429
+          ]
+        }
+      ]
+    },
+    "item:20868": {
+      "url": "https://www.wowhead.com/forever/item=20868",
+      "captured": "2026-10-10",
+      "sha256": "dd683399fdcdf56e52ad2ae060acbd18daab006dbe6ef907baef55bace14bb2c",
+      "name": "Lambent Idol",
+      "locations": [],
+      "source": "Wowhead Forever",
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 15319,
+          "name": "Hive'Zara Collector",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 60,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15320,
+          "name": "Hive'Zara Soldier",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15323,
+          "name": "Hive'Zara Sandstalker",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15324,
+          "name": "Qiraji Gladiator",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 61,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15325,
+          "name": "Hive'Zara Wasp",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15327,
+          "name": "Hive'Zara Stinger",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15333,
+          "name": "Silicate Feeder",
+          "action": "loot",
+          "minlevel": 55,
+          "maxlevel": 55,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15335,
+          "name": "Flesh Hunter",
+          "action": "loot",
+          "minlevel": 62,
+          "maxlevel": 62,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15336,
+          "name": "Hive'Zara Tail Lasher",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15338,
+          "name": "Obsidian Destroyer",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15343,
+          "name": "Qiraji Swarmguard",
+          "action": "loot",
+          "minlevel": 61,
+          "maxlevel": 61,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15355,
+          "name": "Anubisath Guardian",
+          "action": "loot",
+          "minlevel": 62,
+          "maxlevel": 62,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15389,
+          "name": "Captain Drenn",
+          "action": "loot",
+          "minlevel": 63,
+          "maxlevel": 63,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15461,
+          "name": "Shrieker Scarab",
+          "action": "loot",
+          "minlevel": 60,
+          "maxlevel": 60,
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "object",
+          "entityID": 180691,
+          "name": "Scarab Coffer",
+          "action": "gather",
+          "areas": [
+            3429
+          ]
+        }
+      ]
+    },
+    "item:20884": {
+      "url": "https://www.wowhead.com/forever/item=20884",
+      "captured": "2026-10-10",
+      "sha256": "801088cb44a84e4e475ac1d68e709e46cbb8cbc34ab16d1e24f8549f6aeea7f0",
+      "name": "Qiraji Magisterial Ring",
+      "locations": [],
+      "source": "Wowhead Forever",
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 15339,
+          "name": "Ossirian the Unscarred",
+          "action": "loot",
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15340,
+          "name": "Moam",
+          "action": "loot",
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15341,
+          "name": "General Rajaxx",
+          "action": "loot",
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15348,
+          "name": "Kurinnaxx",
+          "action": "loot",
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15369,
+          "name": "Ayamiss the Hunter",
+          "action": "loot",
+          "areas": [
+            3429
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 15370,
+          "name": "Buru the Gorger",
+          "action": "loot",
+          "areas": [
+            3429
+          ]
+        }
+      ]
+    },
+    "item:22216": {
+      "url": "https://www.wowhead.com/forever/item=22216",
+      "captured": "2026-10-10",
+      "sha256": "6e3d4cf63165001bef0db41b772b3d90810e1f60c7417d82ccee5c3851767022",
+      "name": "Venoxis's Venom Sac",
+      "locations": [],
+      "source": "Wowhead Forever",
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 14507,
+          "name": "High Priest Venoxis",
+          "action": "loot",
+          "areas": [
+            1977
+          ]
+        }
+      ]
+    },
+    "item:22217": {
+      "url": "https://www.wowhead.com/forever/item=22217",
+      "captured": "2026-10-10",
+      "sha256": "12804586fdd616d9219fb0728fbf4e203de8caaebe9685121350728789dcaf31",
+      "name": "Kurinnaxx's Venom Sac",
+      "locations": [],
+      "source": "Wowhead Forever",
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 15348,
+          "name": "Kurinnaxx",
+          "action": "loot",
+          "areas": [
+            3429
+          ]
+        }
+      ]
+    },
+    "npc:11880": {
+      "url": "https://www.wowhead.com/forever/npc=11880",
+      "captured": "2026-10-10",
+      "sha256": "c3743da00fba286d5e6766b65a78c3e19379492b38a4ce5a1df810bc002aeb89",
+      "name": "Twilight Avenger <Twilight's Hammer>",
+      "locations": [
+        {
+          "mapID": 1451,
+          "x": 0.262,
+          "y": 0.344,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.192,
+          "y": 0.838,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.38,
+          "y": 0.446,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.674,
+          "y": 0.166,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.408,
+          "y": 0.446,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.20600000000000002,
+          "y": 0.8540000000000001,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.6559999999999999,
+          "y": 0.212,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.184,
+          "y": 0.316,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.17600000000000002,
+          "y": 0.794,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 58,
+      "maxlevel": 59,
+      "classification": 0
+    },
+    "npc:11881": {
+      "url": "https://www.wowhead.com/forever/npc=11881",
+      "status": 403
+    },
+    "npc:11882": {
+      "url": "https://www.wowhead.com/forever/npc=11882",
+      "captured": "2026-10-10",
+      "sha256": "bd6a5e56d3bc3fd8f69caf34fe350d60a8d42f78ea78cb48a2ddf1a4157f1e7d",
+      "name": "Twilight Stonecaller <Twilight's Hammer>",
+      "locations": [
+        {
+          "mapID": 1451,
+          "x": 0.268,
+          "y": 0.332,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.384,
+          "y": 0.442,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.182,
+          "y": 0.838,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 59,
+      "maxlevel": 60,
+      "classification": 0
+    },
+    "npc:11883": {
+      "url": "https://www.wowhead.com/forever/npc=11883",
+      "captured": "2026-10-10",
+      "sha256": "ba5ee372f0fad75b12f0715a8fff7b2f934224a11d9e2d94f5fa39299b83ffae",
+      "name": "Twilight Master <Twilight's Hammer>",
+      "locations": [
+        {
+          "mapID": 1451,
+          "x": 0.6659999999999999,
+          "y": 0.17800000000000002,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.19399999999999998,
+          "y": 0.8440000000000001,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.664,
+          "y": 0.214,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 60,
+      "maxlevel": 60,
+      "classification": 0
+    },
+    "npc:14479": {
+      "url": "https://www.wowhead.com/forever/npc=14479",
+      "captured": "2026-10-10",
+      "sha256": "9fbb10b23824efb5231966518205b7b6d3c03d9032652651c330c94acda14dbb",
+      "name": "Twilight Lord Everun <Twilight's Hammer>",
+      "locations": [
+        {
+          "mapID": 1451,
+          "x": 0.262,
+          "y": 0.34,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.382,
+          "y": 0.43799999999999994,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.17600000000000002,
+          "y": 0.836,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.406,
+          "y": 0.45,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.20600000000000002,
+          "y": 0.8440000000000001,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.258,
+          "y": 0.294,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.406,
+          "y": 0.55,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.198,
+          "y": 0.782,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.20600000000000002,
+          "y": 0.782,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.39799999999999996,
+          "y": 0.5,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.424,
+          "y": 0.37799999999999995,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 60,
+      "maxlevel": 60,
+      "classification": 4
+    },
+    "npc:15170": {
+      "url": "https://www.wowhead.com/forever/npc=15170",
+      "captured": "2026-10-10",
+      "sha256": "45b141605db457bd0766f2ee351bc376cea1074a83c8d9102334a54d6c8486ef",
+      "name": "Rutgar Glyphshaper",
+      "locations": [
+        {
+          "mapID": 1451,
+          "x": 0.41200000000000003,
+          "y": 0.884,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 60,
+      "maxlevel": 60,
+      "classification": 0
+    },
+    "npc:15180": {
+      "url": "https://www.wowhead.com/forever/npc=15180",
+      "captured": "2026-10-10",
+      "sha256": "e79b790bf9d89d76c7dcda009840711fd57756e74fa9003c22fb5446f896c240",
+      "name": "Baristolth of the Shifting Sands",
+      "locations": [
+        {
+          "mapID": 1451,
+          "x": 0.494,
+          "y": 0.364,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 60,
+      "maxlevel": 60,
+      "classification": 0
+    },
+    "npc:15181": {
+      "url": "https://www.wowhead.com/forever/npc=15181",
+      "captured": "2026-10-10",
+      "sha256": "44b262cb049e47c03452ed5212f7e9e344feea6d77c1bcd8b81090c84f715716",
+      "name": "Commander Mar'alith",
+      "locations": [
+        {
+          "mapID": 1451,
+          "x": 0.49200000000000005,
+          "y": 0.34600000000000003,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 62,
+      "maxlevel": 62,
+      "classification": 1
+    },
+    "npc:15192": {
+      "url": "https://www.wowhead.com/forever/npc=15192",
+      "captured": "2026-10-10",
+      "sha256": "0b13b6f1b377650d2f9f32dcc0e90b430a99928c1ddfcbd1a0bcbc7d307f980d",
+      "name": "Anachronos",
+      "locations": [
+        {
+          "mapID": 1446,
+          "x": 0.652,
+          "y": 0.5,
+          "sourceAreaID": 440,
+          "sourceZone": "Tanaris"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "classification": 3
+    },
+    "npc:15201": {
+      "url": "https://www.wowhead.com/forever/npc=15201",
+      "captured": "2026-10-10",
+      "sha256": "59d5c2f0f63c2556c3f094b228408b1198b970ff488b2ce05153e99d1d20e70e",
+      "name": "Twilight Flamereaver",
+      "locations": [
+        {
+          "mapID": 1451,
+          "x": 0.7240000000000001,
+          "y": 0.136,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.69,
+          "y": 0.15,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 60,
+      "maxlevel": 60,
+      "classification": 0
+    },
+    "npc:15203": {
+      "url": "https://www.wowhead.com/forever/npc=15203",
+      "status": 403
+    },
+    "npc:15204": {
+      "url": "https://www.wowhead.com/forever/npc=15204",
+      "captured": "2026-10-10",
+      "sha256": "e53a984dac9cd2d4fbf8bd9b9033ff5dca0f2e957412dbbcf9cc96f0f335b1be",
+      "name": "High Marshal Whirlaxis <Abyssal High Council>",
+      "locations": [
+        {
+          "mapID": 1451,
+          "x": 0.254,
+          "y": 0.344,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.184,
+          "y": 0.8240000000000001,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.39399999999999996,
+          "y": 0.452,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.406,
+          "y": 0.46399999999999997,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "classification": 3
+    },
+    "npc:15205": {
+      "url": "https://www.wowhead.com/forever/npc=15205",
+      "captured": "2026-10-10",
+      "sha256": "910f402b444418d15fa2e1d84cafc7b18728ab1fab826cb517933665939fc996",
+      "name": "Baron Kazum <Abyssal High Council>",
+      "locations": [
+        {
+          "mapID": 1451,
+          "x": 0.184,
+          "y": 0.83,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.252,
+          "y": 0.344,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.39399999999999996,
+          "y": 0.45399999999999996,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.4,
+          "y": 0.456,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "classification": 3
+    },
+    "npc:15206": {
+      "url": "https://www.wowhead.com/forever/npc=15206",
+      "captured": "2026-10-10",
+      "sha256": "25031693232c1c90cb5463693b5d82cc4e26a9f2ce67525e5b6701449d812280",
+      "name": "The Duke of Cynders <Abyssal Council>",
+      "locations": [
+        {
+          "mapID": 1451,
+          "x": 0.248,
+          "y": 0.324,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.37799999999999995,
+          "y": 0.44799999999999995,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.172,
+          "y": 0.846,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 62,
+      "maxlevel": 62,
+      "classification": 1
+    },
+    "npc:15207": {
+      "url": "https://www.wowhead.com/forever/npc=15207",
+      "captured": "2026-10-10",
+      "sha256": "7b012ef18b326f16b5903fa44c1a89737b507d73a23a4b2f29542fda087121d2",
+      "name": "The Duke of Fathoms <Abyssal Council>",
+      "locations": [
+        {
+          "mapID": 1451,
+          "x": 0.248,
+          "y": 0.324,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.374,
+          "y": 0.452,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.172,
+          "y": 0.8440000000000001,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 62,
+      "maxlevel": 62,
+      "classification": 1
+    },
+    "npc:15208": {
+      "url": "https://www.wowhead.com/forever/npc=15208",
+      "captured": "2026-10-10",
+      "sha256": "1a825f93521df00dbe920ed20f7cb83a4d1f319f4d15993f51df49eade46938b",
+      "name": "The Duke of Shards <Abyssal Council>",
+      "locations": [
+        {
+          "mapID": 1451,
+          "x": 0.248,
+          "y": 0.324,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.37799999999999995,
+          "y": 0.44799999999999995,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.172,
+          "y": 0.8440000000000001,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 62,
+      "maxlevel": 62,
+      "classification": 1
+    },
+    "npc:15209": {
+      "url": "https://www.wowhead.com/forever/npc=15209",
+      "status": 403
+    },
+    "npc:15211": {
+      "url": "https://www.wowhead.com/forever/npc=15211",
+      "captured": "2026-10-10",
+      "sha256": "273069275442487dd6971c7e5e8cfa9735f8380e56cac63205e2531b6a6f1d13",
+      "name": "Azure Templar <Abyssal Council>",
+      "locations": [
+        {
+          "mapID": 1451,
+          "x": 0.24600000000000002,
+          "y": 0.354,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.386,
+          "y": 0.45799999999999996,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.204,
+          "y": 0.862,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.182,
+          "y": 0.81,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 60,
+      "maxlevel": 60,
+      "classification": 1
+    },
+    "npc:15212": {
+      "url": "https://www.wowhead.com/forever/npc=15212",
+      "captured": "2026-10-10",
+      "sha256": "ab9b37fd803882b350660f234166fcfcceea1184a9512f0029fda7609df57a27",
+      "name": "Hoary Templar <Abyssal Council>",
+      "locations": [
+        {
+          "mapID": 1451,
+          "x": 0.24600000000000002,
+          "y": 0.358,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.382,
+          "y": 0.46399999999999997,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.204,
+          "y": 0.862,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.182,
+          "y": 0.81,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 60,
+      "maxlevel": 60,
+      "classification": 1
+    },
+    "npc:15213": {
+      "url": "https://www.wowhead.com/forever/npc=15213",
+      "captured": "2026-10-10",
+      "sha256": "c559cccd387076a370ffe775ace983e2610cb359ed96e54ff31d0816e3b683b6",
+      "name": "Twilight Overlord <Twilight's Hammer>",
+      "locations": [
+        {
+          "mapID": 1451,
+          "x": 0.6559999999999999,
+          "y": 0.168,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.6659999999999999,
+          "y": 0.21600000000000003,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.722,
+          "y": 0.122,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 60,
+      "maxlevel": 61,
+      "classification": 0
+    },
+    "npc:15215": {
+      "url": "https://www.wowhead.com/forever/npc=15215",
+      "captured": "2026-10-10",
+      "sha256": "fb7e8c9b1e3d003cf12e5145f4c4143a3c0e8849604adb8b2ebd2540a47aec5a",
+      "name": "Mistress Natalia Mar'alith <High Priestess of C'Thun>",
+      "locations": [
+        {
+          "mapID": 1451,
+          "x": 0.534,
+          "y": 0.9640000000000001,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.5379999999999999,
+          "y": 0.882,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 62,
+      "maxlevel": 62,
+      "classification": 1
+    },
+    "npc:15220": {
+      "url": "https://www.wowhead.com/forever/npc=15220",
+      "captured": "2026-10-10",
+      "sha256": "751faba3dea8a34790e963bd2bd32a523b8f0784cddfbc228c17ee8dab30c1d5",
+      "name": "The Duke of Zephyrs <Abyssal Council>",
+      "locations": [
+        {
+          "mapID": 1451,
+          "x": 0.16399999999999998,
+          "y": 0.8440000000000001,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.248,
+          "y": 0.324,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.37799999999999995,
+          "y": 0.44799999999999995,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 62,
+      "maxlevel": 62,
+      "classification": 1
+    },
+    "npc:15282": {
+      "url": "https://www.wowhead.com/forever/npc=15282",
+      "captured": "2026-10-10",
+      "sha256": "dae19436238c58e98f0e8bf493a397b2d4526645b068dcdca87288b655bdb33f",
+      "name": "Aurel Goldleaf",
+      "locations": [
+        {
+          "mapID": 1451,
+          "x": 0.518,
+          "y": 0.38,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 60,
+      "maxlevel": 60,
+      "classification": 0
+    },
+    "npc:15305": {
+      "url": "https://www.wowhead.com/forever/npc=15305",
+      "captured": "2026-10-10",
+      "sha256": "74353517ee34fa21881f7d81bcac016ea4e3959b7e238a6bd01885d90cfe0d54",
+      "name": "Lord Skwol <Abyssal High Council>",
+      "locations": [
+        {
+          "mapID": 1451,
+          "x": 0.18600000000000003,
+          "y": 0.83,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.39399999999999996,
+          "y": 0.456,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.254,
+          "y": 0.344,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "classification": 3
+    },
+    "npc:15307": {
+      "url": "https://www.wowhead.com/forever/npc=15307",
+      "captured": "2026-10-10",
+      "sha256": "75a5b7db76838700799cb38167f77d2b1e1a951a5a64e7e68d5962b8d852a0fd",
+      "name": "Earthen Templar <Abyssal Council>",
+      "locations": [
+        {
+          "mapID": 1451,
+          "x": 0.386,
+          "y": 0.45799999999999996,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.278,
+          "y": 0.306,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.20600000000000002,
+          "y": 0.8640000000000001,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.182,
+          "y": 0.81,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 60,
+      "maxlevel": 60,
+      "classification": 1
+    },
+    "npc:15308": {
+      "url": "https://www.wowhead.com/forever/npc=15308",
+      "captured": "2026-10-10",
+      "sha256": "3b153ded588540187b3f874cda7a90f3e61bff0415e4add42fe0f2ad8d098466",
+      "name": "Twilight Prophet <Twilight's Hammer>",
+      "locations": [
+        {
+          "mapID": 1451,
+          "x": 0.24600000000000002,
+          "y": 0.35600000000000004,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.254,
+          "y": 0.752,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.364,
+          "y": 0.43200000000000005,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.226,
+          "y": 0.8320000000000001,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.272,
+          "y": 0.428,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.35200000000000004,
+          "y": 0.364,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.23399999999999999,
+          "y": 0.684,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.182,
+          "y": 0.326,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.182,
+          "y": 0.828,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.23800000000000002,
+          "y": 0.284,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.18,
+          "y": 0.784,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.304,
+          "y": 0.682,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.302,
+          "y": 0.726,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.414,
+          "y": 0.41200000000000003,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.172,
+          "y": 0.29600000000000004,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.392,
+          "y": 0.27399999999999997,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 60,
+      "maxlevel": 60,
+      "classification": 1
+    },
+    "npc:15541": {
+      "url": "https://www.wowhead.com/forever/npc=15541",
+      "captured": "2026-10-10",
+      "sha256": "5fbec1398e7db7d6aad92e7cdfcd9761b7a9ea34f4784f667e4a6bc406742492",
+      "name": "Twilight Marauder Morna <Twilight's Hammer>",
+      "locations": [
+        {
+          "mapID": 1451,
+          "x": 0.69,
+          "y": 0.36,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.392,
+          "y": 0.774,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.706,
+          "y": 0.322,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.512,
+          "y": 0.688,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 60,
+      "maxlevel": 60,
+      "classification": 1
+    },
+    "npc:15542": {
+      "url": "https://www.wowhead.com/forever/npc=15542",
+      "captured": "2026-10-10",
+      "sha256": "a416f68c9382e1ed918e074611d5910c0934f5a76847de8d9cb74f531ab01188",
+      "name": "Twilight Marauder <Twilight's Hammer>",
+      "locations": [
+        {
+          "mapID": 1451,
+          "x": 0.39,
+          "y": 0.778,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.69,
+          "y": 0.36200000000000004,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.516,
+          "y": 0.684,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.40399999999999997,
+          "y": 0.764,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.7,
+          "y": 0.318,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        },
+        {
+          "mapID": 1451,
+          "x": 0.5760000000000001,
+          "y": 0.18,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        }
+      ],
+      "source": "Wowhead Forever",
+      "minlevel": 58,
+      "maxlevel": 59,
+      "classification": 0
+    },
+    "object:180453": {
+      "url": "https://www.wowhead.com/forever/object=180453",
+      "captured": "2026-10-10",
+      "sha256": "6cf377f386a7c4d35c42c71f3c3ec5a8396f30aad7f140d17e56b7ecc2e529e2",
+      "name": "Hive'Regal Glyphed Crystal",
+      "locations": [],
+      "source": "Wowhead Forever"
+    },
+    "object:180454": {
+      "url": "https://www.wowhead.com/forever/object=180454",
+      "status": "not requested after access denials"
+    },
+    "object:180455": {
+      "url": "https://www.wowhead.com/forever/object=180455",
+      "status": "not requested after access denials"
+    },
+    "object:180633": {
+      "url": "https://www.wowhead.com/forever/object=180633",
+      "captured": "2026-10-10",
+      "sha256": "00be0d3f5fd9d0eefd8ee5441102c38da6f0c5399fbaa279352fe490ec30b2de",
+      "name": "Crystalline Tear",
+      "locations": [
+        {
+          "mapID": 1451,
+          "x": 0.287,
+          "y": 0.8909999999999999,
+          "sourceAreaID": 1377,
+          "sourceZone": "Silithus"
+        }
+      ],
+      "source": "Wowhead Forever"
+    }
+  },
+  "reviewedFindings": [
+    {
+      "questIDs": [
+        8287,
+        8314,
+        8857,
+        8858,
+        8859
+      ],
+      "fact": "Forever quest pages explicitly mark the required item as provided. It remains a delivery requirement at turn-in; no farming objective is generated."
+    },
+    {
+      "questIDs": [
+        8318
+      ],
+      "fact": "Item 20404 page lists ten local Silithus NPC loot sources. Their page coordinates are mapped as objective alternatives; NPC 11881 page returned 403, so its existing quest-page location is retained."
+    },
+    {
+      "questIDs": [
+        8332,
+        8341
+      ],
+      "fact": "Item pages identify four templar or duke sources in Silithus. Direct captured NPC locations are alternatives. Large Brilliant Shard (14344) has no published source relation here, so its requirement and incomplete flag remain."
+    },
+    {
+      "questIDs": [
+        8309
+      ],
+      "fact": "Quest text requires three hive rubbings. Objects 180454 and 180455 are mapped; Regal object 180453 has no published location and item 20456 has no source list. Its objective remains explicitly incomplete."
+    },
+    {
+      "questIDs": [
+        8306
+      ],
+      "fact": "Quest is Elite and its event target is mapped from the Forever quest page. Captured NPC 15215 page has two appearance locations; the event waypoint is retained because it represents the quest event, not merely a static spawn."
+    },
+    {
+      "questIDs": [
+        9248
+      ],
+      "fact": "Item 20515 lists four Abyssal Scepter world-boss sources. Captured NPC pages show classifications 3 for High Marshal Whirlaxis, Baron Kazum and Lord Skwol; captured NPC 15203 page was denied. Quest is marked Elite to trigger existing party warning/skip behavior; its unknown objective semantics remain."
+    },
+    {
+      "questIDs": [
+        8315,
+        8316,
+        8351,
+        8352,
+        8376,
+        8377,
+        8378,
+        8379,
+        8380,
+        8381,
+        8382,
+        8556,
+        8557,
+        8558,
+        8689,
+        8690,
+        8691,
+        8692,
+        8693,
+        8694,
+        8695,
+        8696,
+        8697,
+        8698,
+        8699,
+        8700,
+        8701,
+        8702,
+        8703,
+        8704,
+        8705,
+        8706,
+        8707,
+        8708,
+        8709,
+        8710,
+        8711,
+        8712,
+        9023
+      ],
+      "fact": "These route records are typed Raid in published Forever data, level 58–60, and require AQ raid rewards, class set pieces, war effort, or endgame tokens. Excluded from ordinary leveling; retained in catalogue."
+    },
+    {
+      "questIDs": [
+        8743,
+        8745
+      ],
+      "fact": "Bang a Gong (8743) is typed World Event. Treasure of the Timeless One (8745) follows the level-60 Ahn’Qiraj campaign branch (8742). Both excluded from ordinary leveling; full factual records remain."
+    },
+    {
+      "questIDs": [
+        8288,
+        8305
+      ],
+      "fact": "Already excluded as AQ campaign/raid work by established reviewed policy; no route exclusion duplicated."
+    }
+  ],
+  "unresolved": [
+    "Hive Regal Glyphed Crystal (object 180453) and Hive Regal Rubbing source locations: no verified coordinates or item source list.",
+    "Large Brilliant Shard (14344) source for quests 8332/8341: trade/enchanting may be relevant, but no Forever item-source relation was published; no Silithus farm point inferred.",
+    "Mistress Natalia event execution/trigger and live encounter route: host data does not establish beta event behavior.",
+    "Some linked NPC pages were denied (11881, 15203, 15209); preserve the previously mapped locations for 11881, 15203, and 15209 where their pages were denied; other NPC multipoint pages represent published spawn spots, not verified safe paths.",
+    "q9248 objective semantics/other incomplete flag remains unresolved; source relations do not prove an objective count or exact live turn-in acceptance."
+  ]
+}

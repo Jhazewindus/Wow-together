@@ -1,0 +1,137 @@
+{
+  "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
+  "quest_records": 14,
+  "static_points_checked": 46,
+  "fixed_zone_guides_checked": 2,
+  "catalogue_reason_stages_checked": 48,
+  "catalogue_reason_codes": {
+    "level-work": 14,
+    "quest-objective": 20,
+    "quest-reward": 14
+  },
+  "reason_review_quest_ids": [
+    1125,
+    1126,
+    6844,
+    8277,
+    8278,
+    8279,
+    8280,
+    8281,
+    8282,
+    8283,
+    8284,
+    8285,
+    8323,
+    8324
+  ],
+  "source_data_gap_free_guides": 0,
+  "guides": [
+    {
+      "faction": "Alliance",
+      "zone": "Silithus",
+      "key": "level-zone:kalimdor/silithus:levels:51-60",
+      "quests": 44,
+      "steps": 145,
+      "unknown_location_steps": 3,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [
+          8309,
+          8332,
+          8341
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        1015,
+        1019,
+        1047,
+        8331,
+        8332,
+        8341,
+        8343,
+        8348,
+        8349,
+        9248
+      ],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 145,
+      "destination_reason_codes": {
+        "outside-level-range": 80,
+        "prerequisite": 29,
+        "quest-reward": 34,
+        "return-hub": 2
+      },
+      "reason_review_steps": 91,
+      "cross_zone_reason_steps": 9,
+      "flow_alternatives_evaluated": 73,
+      "flow_loop_changes": 0,
+      "geometric_guard_rejections": 131,
+      "geometric_bracket_replays": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 15,
+      "quest_reward_only_xp_shortfall": 4035910,
+      "uncertain_travel_legs": 42,
+      "estimated_distance_before": 240290.5,
+      "estimated_distance_after": 240290.5
+    },
+    {
+      "faction": "Horde",
+      "zone": "Silithus",
+      "key": "level-zone:kalimdor/silithus:levels:51-60",
+      "quests": 43,
+      "steps": 142,
+      "unknown_location_steps": 3,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [
+          8309,
+          8332,
+          8341
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        1000,
+        1004,
+        1018,
+        8331,
+        8332,
+        8341,
+        8343,
+        8348,
+        8349,
+        9248
+      ],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 25,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 142,
+      "destination_reason_codes": {
+        "outside-level-range": 78,
+        "prerequisite": 29,
+        "quest-reward": 33,
+        "return-hub": 2
+      },
+      "reason_review_steps": 101,
+      "cross_zone_reason_steps": 12,
+      "flow_alternatives_evaluated": 71,
+      "flow_loop_changes": 0,
+      "geometric_guard_rejections": 80,
+      "geometric_bracket_replays": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 14,
+      "quest_reward_only_xp_shortfall": 4064600,
+      "uncertain_travel_legs": 40,
+      "estimated_distance_before": 287631.61,
+      "estimated_distance_after": 287631.61
+    }
+  ],
+  "scope": {
+    "zone": "Silithus",
+    "catalogue_records": "Exact quest zone; guide dependencies still compile normally"
+  }
+}

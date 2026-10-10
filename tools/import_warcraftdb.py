@@ -25,6 +25,22 @@ def apply_corrections(records):
     for correction in corrections:
         if correction.get('stageCorrection'):
             continue  # Stage facts apply after enrichment, not as eligibility rules.
+        if correction.get('questTypeCorrection'):
+            quest = records.get(correction['questID'])
+            if quest is None:
+                continue
+            if quest.get('title') != correction['title']:
+                raise ValueError('Reviewed quest-type identity changed; review required')
+            rule = correction['questTypeCorrection']
+            if set(rule) != {'before', 'after'} or rule['after'] not in ('Elite', 'Raid', 'Dungeon', 'World Event'):
+                raise ValueError('Reviewed quest-type correction is invalid')
+            if quest.get('questType') not in (rule['before'], rule['after']):
+                raise ValueError('Reviewed quest type conflicts with source; review required')
+            if quest.get('questType') != rule['after']:
+                applied.append(correction['questID'])
+            quest['questType'] = rule['after']
+            quest['questTypeCorrectionSource'] = correction['source']
+            continue
         if correction.get('factionCorrection'):
             quest = records.get(correction['questID'])
             if quest is None:

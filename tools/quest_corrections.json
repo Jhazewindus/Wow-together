@@ -14856,7 +14856,7 @@
       "before": null,
       "side": "Horde"
     },
-    "source": "https://www.wowhead.com/forever/quest=95534 \u2014 captured 2026-10-10, SHA-256 e6eb2fecdbc3b48becc7434911e394604a080bc77dda4fe0d3e6b4d5cb89a4f2; the page reports Horde, minimum level 25, and no class/race mask."
+    "source": "https://www.wowhead.com/forever/quest=95534 — captured 2026-10-10, SHA-256 e6eb2fecdbc3b48becc7434911e394604a080bc77dda4fe0d3e6b4d5cb89a4f2; the page reports Horde, minimum level 25, and no class/race mask."
   },
   {
     "questID": 93680,
@@ -14896,7 +14896,7 @@
   {
     "questID": 96984,
     "title": "Heart of Disruption",
-    "source": "https://www.wowhead.com/forever/quest=96984 \u2014 captured 2026-10-10, SHA-256 ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7. The page maps the local Shade of the Archmage source but lists Rath'ma\u00ebl (NPC 250657) without usable coordinates; that alternate location remains incomplete.",
+    "source": "https://www.wowhead.com/forever/quest=96984 — captured 2026-10-10, SHA-256 ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7. The page maps the local Shade of the Archmage source but lists Rath'maël (NPC 250657) without usable coordinates; that alternate location remains incomplete.",
     "stageCorrection": {
       "kind": "stage-facts",
       "minLevel": 24,
@@ -16089,7 +16089,7 @@
     "prerequisiteCorrection": {
       "previousQuest": 6821
     },
-    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6822 lists series 6821\u20136824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
+    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6822 lists series 6821–6824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
   },
   {
     "questID": 6823,
@@ -16098,7 +16098,7 @@
     "prerequisiteCorrection": {
       "previousQuest": 6822
     },
-    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6823 lists series 6821\u20136824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
+    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6823 lists series 6821–6824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
   },
   {
     "questID": 6824,
@@ -16107,7 +16107,7 @@
     "prerequisiteCorrection": {
       "previousQuest": 6823
     },
-    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6824 lists series 6821\u20136824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
+    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6824 lists series 6821–6824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
   },
   {
     "questID": 6823,
@@ -17190,6 +17190,1828 @@
           }
         ]
       }
+    }
+  },
+  {
+    "questID": 8287,
+    "title": "A Terrible Purpose",
+    "source": "Wowhead Forever quest 8287 (captured 2026-10-10; SHA-256 dadff8e37c5b6713cf71e2267195fec75f912d22af082f339064dfba4a74d86c) explicitly labels Decoded Tablet Transcription (20405) as provided. Keep it as a hand-in token, not an objective to farm.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 54,
+      "level": 60,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Decoded Tablet Transcription",
+          "itemID": 20405
+        }
+      ],
+      "clearIncompleteObjectives": true
+    }
+  },
+  {
+    "questID": 8314,
+    "title": "Unraveling the Mystery",
+    "source": "Wowhead Forever quest 8314 (captured 2026-10-10; SHA-256 5a26e8cdd29e444e7e0141b67f208f1aa01ac67a0a3266c725c99b885058c417) explicitly labels Glyphed Crystal Prism (20463) as provided. Keep it as a hand-in token, not an objective to farm.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 58,
+      "level": 60,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Glyphed Crystal Prism",
+          "itemID": 20463
+        }
+      ],
+      "clearIncompleteObjectives": true
+    }
+  },
+  {
+    "questID": 8857,
+    "title": "Secrets of the Colossus - Ashi",
+    "source": "Wowhead Forever quest 8857 (captured 2026-10-10; SHA-256 a1095a6f56c80905d9afd03ee417fa84778d65f45b9c33d4e78a80edbeb4ca6d) explicitly labels Colossus of Ashi's Husk (21534) as provided. Keep it as a hand-in token, not an objective to farm.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 51,
+      "level": 60,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Colossus of Ashi's Husk",
+          "itemID": 21534
+        }
+      ],
+      "clearIncompleteObjectives": true
+    }
+  },
+  {
+    "questID": 8858,
+    "title": "Secrets of the Colossus - Regal",
+    "source": "Wowhead Forever quest 8858 (captured 2026-10-10; SHA-256 dc87af3b65dc4d11012a1fae20cffbf3f2234e89f7717968de7eae410d35115d) explicitly labels Colossus of Regal's Husk (21535) as provided. Keep it as a hand-in token, not an objective to farm.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 51,
+      "level": 60,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Colossus of Regal's Husk",
+          "itemID": 21535
+        }
+      ],
+      "clearIncompleteObjectives": true
+    }
+  },
+  {
+    "questID": 8859,
+    "title": "Secrets of the Colossus - Zora",
+    "source": "Wowhead Forever quest 8859 (captured 2026-10-10; SHA-256 213ddf475cae668d27cf5a0c3eb60a57ee1a9d2a3cfe4592a65a59e4e25a6430) explicitly labels Colossus of Zora's Husk (21533) as provided. Keep it as a hand-in token, not an objective to farm.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 51,
+      "level": 60,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Colossus of Zora's Husk",
+          "itemID": 21533
+        }
+      ],
+      "clearIncompleteObjectives": true
+    }
+  },
+  {
+    "questID": 8318,
+    "title": "Secret Communication",
+    "source": "Captured Forever item page and linked NPC pages (2026-10-10); source URLs and hashes are recorded in research/silithus-2026-10-10/source-facts.json. Exact zone/map and named source relations are retained; unavailable NPC pages keep their prior mapped point.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 57,
+      "level": 60,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 10,
+          "name": "Encrypted Twilight Text",
+          "itemID": 20404
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 10,
+            "action": "collect",
+            "entityID": 20404,
+            "name": "Encrypted Twilight Text"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 10,
+            "name": "Encrypted Twilight Text",
+            "itemID": 20404
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1451,
+            "legacyStepKey": "q:1451:npc:14479",
+            "entityID": 14479,
+            "y": 0.37799999999999995,
+            "npc": true,
+            "x": 0.424,
+            "sourceZone": "Silithus",
+            "objectiveKey": "item:20404",
+            "itemID": 20404,
+            "quantity": 10,
+            "sourceAreaID": 1377,
+            "itemName": "Encrypted Twilight Text",
+            "action": "loot",
+            "name": "Twilight Lord Everun"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Encrypted Twilight Text",
+            "name": "Twilight Lord Everun",
+            "entityID": 14479,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "objectiveAlternatives": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Encrypted Twilight Text",
+            "locations": [
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 11880,
+                "npc": true,
+                "y": 0.446,
+                "x": 0.38,
+                "name": "Twilight Avenger",
+                "mapID": 1451
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 11881,
+                "npc": true,
+                "y": 0.444,
+                "x": 0.37799999999999995,
+                "name": "Twilight Geolord",
+                "mapID": 1451
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 11882,
+                "npc": true,
+                "y": 0.436,
+                "x": 0.392,
+                "name": "Twilight Stonecaller",
+                "mapID": 1451
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 11883,
+                "npc": true,
+                "y": 0.8220000000000001,
+                "x": 0.188,
+                "name": "Twilight Master",
+                "mapID": 1451
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 14479,
+                "npc": true,
+                "y": 0.35200000000000004,
+                "x": 0.25,
+                "name": "Twilight Lord Everun",
+                "mapID": 1451
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15201,
+                "npc": true,
+                "y": 0.14400000000000002,
+                "x": 0.708,
+                "name": "Twilight Flamereaver",
+                "mapID": 1451
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15213,
+                "npc": true,
+                "y": 0.11800000000000001,
+                "x": 0.742,
+                "name": "Twilight Overlord",
+                "mapID": 1451
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15308,
+                "npc": true,
+                "y": 0.314,
+                "x": 0.184,
+                "name": "Twilight Prophet",
+                "mapID": 1451
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15541,
+                "npc": true,
+                "y": 0.778,
+                "x": 0.39,
+                "name": "Twilight Marauder Morna",
+                "mapID": 1451
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15542,
+                "npc": true,
+                "y": 0.778,
+                "x": 0.39,
+                "name": "Twilight Marauder",
+                "mapID": 1451
+              }
+            ]
+          }
+        ]
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 10,
+            "action": "collect",
+            "entityID": 20404,
+            "name": "Encrypted Twilight Text"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 10,
+            "name": "Encrypted Twilight Text",
+            "itemID": 20404
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1451,
+            "legacyStepKey": "q:1451:npc:14479",
+            "entityID": 14479,
+            "y": 0.37799999999999995,
+            "npc": true,
+            "x": 0.424,
+            "sourceZone": "Silithus",
+            "objectiveKey": "item:20404",
+            "itemID": 20404,
+            "quantity": 10,
+            "sourceAreaID": 1377,
+            "itemName": "Encrypted Twilight Text",
+            "action": "loot",
+            "name": "Twilight Lord Everun"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Encrypted Twilight Text",
+            "name": "Twilight Lord Everun",
+            "entityID": 14479,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "objectiveAlternatives": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Encrypted Twilight Text",
+            "locations": [
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 11880,
+                "npc": true,
+                "name": "Twilight Avenger",
+                "mapID": 1451,
+                "x": 0.262,
+                "y": 0.344,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 11880,
+                "npc": true,
+                "name": "Twilight Avenger",
+                "mapID": 1451,
+                "x": 0.192,
+                "y": 0.838,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 11880,
+                "npc": true,
+                "name": "Twilight Avenger",
+                "mapID": 1451,
+                "x": 0.38,
+                "y": 0.446,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 11880,
+                "npc": true,
+                "name": "Twilight Avenger",
+                "mapID": 1451,
+                "x": 0.674,
+                "y": 0.166,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 11880,
+                "npc": true,
+                "name": "Twilight Avenger",
+                "mapID": 1451,
+                "x": 0.408,
+                "y": 0.446,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 11880,
+                "npc": true,
+                "name": "Twilight Avenger",
+                "mapID": 1451,
+                "x": 0.20600000000000002,
+                "y": 0.8540000000000001,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 11880,
+                "npc": true,
+                "name": "Twilight Avenger",
+                "mapID": 1451,
+                "x": 0.6559999999999999,
+                "y": 0.212,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 11880,
+                "npc": true,
+                "name": "Twilight Avenger",
+                "mapID": 1451,
+                "x": 0.184,
+                "y": 0.316,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 11880,
+                "npc": true,
+                "name": "Twilight Avenger",
+                "mapID": 1451,
+                "x": 0.17600000000000002,
+                "y": 0.794,
+                "sourceAreaID": 1377
+              }
+            ]
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Encrypted Twilight Text",
+            "locations": [
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 11881,
+                "npc": true,
+                "y": 0.444,
+                "x": 0.37799999999999995,
+                "name": "Twilight Geolord",
+                "mapID": 1451
+              }
+            ]
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Encrypted Twilight Text",
+            "locations": [
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 11882,
+                "npc": true,
+                "name": "Twilight Stonecaller",
+                "mapID": 1451,
+                "x": 0.268,
+                "y": 0.332,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 11882,
+                "npc": true,
+                "name": "Twilight Stonecaller",
+                "mapID": 1451,
+                "x": 0.384,
+                "y": 0.442,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 11882,
+                "npc": true,
+                "name": "Twilight Stonecaller",
+                "mapID": 1451,
+                "x": 0.182,
+                "y": 0.838,
+                "sourceAreaID": 1377
+              }
+            ]
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Encrypted Twilight Text",
+            "locations": [
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 11883,
+                "npc": true,
+                "name": "Twilight Master",
+                "mapID": 1451,
+                "x": 0.6659999999999999,
+                "y": 0.17800000000000002,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 11883,
+                "npc": true,
+                "name": "Twilight Master",
+                "mapID": 1451,
+                "x": 0.19399999999999998,
+                "y": 0.8440000000000001,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 11883,
+                "npc": true,
+                "name": "Twilight Master",
+                "mapID": 1451,
+                "x": 0.664,
+                "y": 0.214,
+                "sourceAreaID": 1377
+              }
+            ]
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Encrypted Twilight Text",
+            "locations": [
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 14479,
+                "npc": true,
+                "name": "Twilight Lord Everun",
+                "mapID": 1451,
+                "x": 0.262,
+                "y": 0.34,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 14479,
+                "npc": true,
+                "name": "Twilight Lord Everun",
+                "mapID": 1451,
+                "x": 0.382,
+                "y": 0.43799999999999994,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 14479,
+                "npc": true,
+                "name": "Twilight Lord Everun",
+                "mapID": 1451,
+                "x": 0.17600000000000002,
+                "y": 0.836,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 14479,
+                "npc": true,
+                "name": "Twilight Lord Everun",
+                "mapID": 1451,
+                "x": 0.406,
+                "y": 0.45,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 14479,
+                "npc": true,
+                "name": "Twilight Lord Everun",
+                "mapID": 1451,
+                "x": 0.20600000000000002,
+                "y": 0.8440000000000001,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 14479,
+                "npc": true,
+                "name": "Twilight Lord Everun",
+                "mapID": 1451,
+                "x": 0.258,
+                "y": 0.294,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 14479,
+                "npc": true,
+                "name": "Twilight Lord Everun",
+                "mapID": 1451,
+                "x": 0.406,
+                "y": 0.55,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 14479,
+                "npc": true,
+                "name": "Twilight Lord Everun",
+                "mapID": 1451,
+                "x": 0.198,
+                "y": 0.782,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 14479,
+                "npc": true,
+                "name": "Twilight Lord Everun",
+                "mapID": 1451,
+                "x": 0.20600000000000002,
+                "y": 0.782,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 14479,
+                "npc": true,
+                "name": "Twilight Lord Everun",
+                "mapID": 1451,
+                "x": 0.39799999999999996,
+                "y": 0.5,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 14479,
+                "npc": true,
+                "name": "Twilight Lord Everun",
+                "mapID": 1451,
+                "x": 0.424,
+                "y": 0.37799999999999995,
+                "sourceAreaID": 1377
+              }
+            ]
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Encrypted Twilight Text",
+            "locations": [
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15201,
+                "npc": true,
+                "name": "Twilight Flamereaver",
+                "mapID": 1451,
+                "x": 0.7240000000000001,
+                "y": 0.136,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15201,
+                "npc": true,
+                "name": "Twilight Flamereaver",
+                "mapID": 1451,
+                "x": 0.69,
+                "y": 0.15,
+                "sourceAreaID": 1377
+              }
+            ]
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Encrypted Twilight Text",
+            "locations": [
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15213,
+                "npc": true,
+                "name": "Twilight Overlord",
+                "mapID": 1451,
+                "x": 0.6559999999999999,
+                "y": 0.168,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15213,
+                "npc": true,
+                "name": "Twilight Overlord",
+                "mapID": 1451,
+                "x": 0.6659999999999999,
+                "y": 0.21600000000000003,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15213,
+                "npc": true,
+                "name": "Twilight Overlord",
+                "mapID": 1451,
+                "x": 0.722,
+                "y": 0.122,
+                "sourceAreaID": 1377
+              }
+            ]
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Encrypted Twilight Text",
+            "locations": [
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15308,
+                "npc": true,
+                "name": "Twilight Prophet",
+                "mapID": 1451,
+                "x": 0.24600000000000002,
+                "y": 0.35600000000000004,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15308,
+                "npc": true,
+                "name": "Twilight Prophet",
+                "mapID": 1451,
+                "x": 0.254,
+                "y": 0.752,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15308,
+                "npc": true,
+                "name": "Twilight Prophet",
+                "mapID": 1451,
+                "x": 0.364,
+                "y": 0.43200000000000005,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15308,
+                "npc": true,
+                "name": "Twilight Prophet",
+                "mapID": 1451,
+                "x": 0.226,
+                "y": 0.8320000000000001,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15308,
+                "npc": true,
+                "name": "Twilight Prophet",
+                "mapID": 1451,
+                "x": 0.272,
+                "y": 0.428,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15308,
+                "npc": true,
+                "name": "Twilight Prophet",
+                "mapID": 1451,
+                "x": 0.35200000000000004,
+                "y": 0.364,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15308,
+                "npc": true,
+                "name": "Twilight Prophet",
+                "mapID": 1451,
+                "x": 0.23399999999999999,
+                "y": 0.684,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15308,
+                "npc": true,
+                "name": "Twilight Prophet",
+                "mapID": 1451,
+                "x": 0.182,
+                "y": 0.326,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15308,
+                "npc": true,
+                "name": "Twilight Prophet",
+                "mapID": 1451,
+                "x": 0.182,
+                "y": 0.828,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15308,
+                "npc": true,
+                "name": "Twilight Prophet",
+                "mapID": 1451,
+                "x": 0.23800000000000002,
+                "y": 0.284,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15308,
+                "npc": true,
+                "name": "Twilight Prophet",
+                "mapID": 1451,
+                "x": 0.18,
+                "y": 0.784,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15308,
+                "npc": true,
+                "name": "Twilight Prophet",
+                "mapID": 1451,
+                "x": 0.304,
+                "y": 0.682,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15308,
+                "npc": true,
+                "name": "Twilight Prophet",
+                "mapID": 1451,
+                "x": 0.302,
+                "y": 0.726,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15308,
+                "npc": true,
+                "name": "Twilight Prophet",
+                "mapID": 1451,
+                "x": 0.414,
+                "y": 0.41200000000000003,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15308,
+                "npc": true,
+                "name": "Twilight Prophet",
+                "mapID": 1451,
+                "x": 0.172,
+                "y": 0.29600000000000004,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15308,
+                "npc": true,
+                "name": "Twilight Prophet",
+                "mapID": 1451,
+                "x": 0.392,
+                "y": 0.27399999999999997,
+                "sourceAreaID": 1377
+              }
+            ]
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Encrypted Twilight Text",
+            "locations": [
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15541,
+                "npc": true,
+                "name": "Twilight Marauder Morna",
+                "mapID": 1451,
+                "x": 0.69,
+                "y": 0.36,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15541,
+                "npc": true,
+                "name": "Twilight Marauder Morna",
+                "mapID": 1451,
+                "x": 0.392,
+                "y": 0.774,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15541,
+                "npc": true,
+                "name": "Twilight Marauder Morna",
+                "mapID": 1451,
+                "x": 0.706,
+                "y": 0.322,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15541,
+                "npc": true,
+                "name": "Twilight Marauder Morna",
+                "mapID": 1451,
+                "x": 0.512,
+                "y": 0.688,
+                "sourceAreaID": 1377
+              }
+            ]
+          },
+          {
+            "sourceObjective": 0,
+            "itemName": "Encrypted Twilight Text",
+            "locations": [
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15542,
+                "npc": true,
+                "name": "Twilight Marauder",
+                "mapID": 1451,
+                "x": 0.39,
+                "y": 0.778,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15542,
+                "npc": true,
+                "name": "Twilight Marauder",
+                "mapID": 1451,
+                "x": 0.69,
+                "y": 0.36200000000000004,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15542,
+                "npc": true,
+                "name": "Twilight Marauder",
+                "mapID": 1451,
+                "x": 0.516,
+                "y": 0.684,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15542,
+                "npc": true,
+                "name": "Twilight Marauder",
+                "mapID": 1451,
+                "x": 0.40399999999999997,
+                "y": 0.764,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15542,
+                "npc": true,
+                "name": "Twilight Marauder",
+                "mapID": 1451,
+                "x": 0.7,
+                "y": 0.318,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 0,
+                "itemName": "Encrypted Twilight Text",
+                "action": "collect",
+                "entityID": 15542,
+                "npc": true,
+                "name": "Twilight Marauder",
+                "mapID": 1451,
+                "x": 0.5760000000000001,
+                "y": 0.18,
+                "sourceAreaID": 1377
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 8332,
+    "title": "Dukes of the Council",
+    "source": "Captured Forever item page and linked NPC pages (2026-10-10); source URLs and hashes are recorded in research/silithus-2026-10-10/source-facts.json. Exact zone/map and named source relations are retained; unavailable NPC pages keep their prior mapped point.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 60,
+      "level": 60,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Large Brilliant Shard",
+          "itemID": 14344
+        },
+        {
+          "quantity": 3,
+          "name": "Abyssal Crest",
+          "itemID": 20513
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 14344,
+            "name": "Large Brilliant Shard"
+          },
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "action": "collect",
+            "entityID": 20513,
+            "name": "Abyssal Crest"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Large Brilliant Shard",
+            "itemID": 14344
+          },
+          {
+            "quantity": 3,
+            "name": "Abyssal Crest",
+            "itemID": 20513
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1451,
+            "legacyStepKey": "q:1451:npc:15209",
+            "entityID": 15209,
+            "name": "Crimson Templar",
+            "npc": true,
+            "x": 0.3829,
+            "y": 0.4646,
+            "objectiveKey": "item:20513",
+            "itemID": 20513,
+            "quantity": 3,
+            "sourceAreaID": 1377,
+            "itemName": "Abyssal Crest",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Abyssal Crest",
+            "name": "Crimson Templar",
+            "entityID": 15209,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "objectiveAlternatives": [
+          {
+            "sourceObjective": 1,
+            "itemName": "Abyssal Crest",
+            "locations": [
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Crest",
+                "action": "collect",
+                "entityID": 15209,
+                "npc": true,
+                "y": 0.46399999999999997,
+                "x": 0.382,
+                "name": "Crimson Templar",
+                "mapID": 1451
+              },
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Crest",
+                "action": "collect",
+                "entityID": 15211,
+                "npc": true,
+                "y": 0.466,
+                "x": 0.382,
+                "name": "Azure Templar",
+                "mapID": 1451
+              },
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Crest",
+                "action": "collect",
+                "entityID": 15212,
+                "npc": true,
+                "y": 0.424,
+                "x": 0.38799999999999996,
+                "name": "Hoary Templar",
+                "mapID": 1451
+              },
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Crest",
+                "action": "collect",
+                "entityID": 15307,
+                "npc": true,
+                "y": 0.466,
+                "x": 0.382,
+                "name": "Earthen Templar",
+                "mapID": 1451
+              }
+            ]
+          }
+        ]
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 14344,
+            "name": "Large Brilliant Shard"
+          },
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "action": "collect",
+            "entityID": 20513,
+            "name": "Abyssal Crest"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Large Brilliant Shard",
+            "itemID": 14344
+          },
+          {
+            "quantity": 3,
+            "name": "Abyssal Crest",
+            "itemID": 20513
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1451,
+            "legacyStepKey": "q:1451:npc:15209",
+            "entityID": 15209,
+            "name": "Crimson Templar",
+            "npc": true,
+            "x": 0.3829,
+            "y": 0.4646,
+            "objectiveKey": "item:20513",
+            "itemID": 20513,
+            "quantity": 3,
+            "sourceAreaID": 1377,
+            "itemName": "Abyssal Crest",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Abyssal Crest",
+            "name": "Crimson Templar",
+            "entityID": 15209,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "objectiveAlternatives": [
+          {
+            "sourceObjective": 1,
+            "itemName": "Abyssal Crest",
+            "locations": [
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Crest",
+                "action": "collect",
+                "entityID": 15209,
+                "npc": true,
+                "y": 0.46399999999999997,
+                "x": 0.382,
+                "name": "Crimson Templar",
+                "mapID": 1451
+              }
+            ]
+          },
+          {
+            "sourceObjective": 1,
+            "itemName": "Abyssal Crest",
+            "locations": [
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Crest",
+                "action": "collect",
+                "entityID": 15211,
+                "npc": true,
+                "name": "Azure Templar",
+                "mapID": 1451,
+                "x": 0.24600000000000002,
+                "y": 0.354,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Crest",
+                "action": "collect",
+                "entityID": 15211,
+                "npc": true,
+                "name": "Azure Templar",
+                "mapID": 1451,
+                "x": 0.386,
+                "y": 0.45799999999999996,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Crest",
+                "action": "collect",
+                "entityID": 15211,
+                "npc": true,
+                "name": "Azure Templar",
+                "mapID": 1451,
+                "x": 0.204,
+                "y": 0.862,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Crest",
+                "action": "collect",
+                "entityID": 15211,
+                "npc": true,
+                "name": "Azure Templar",
+                "mapID": 1451,
+                "x": 0.182,
+                "y": 0.81,
+                "sourceAreaID": 1377
+              }
+            ]
+          },
+          {
+            "sourceObjective": 1,
+            "itemName": "Abyssal Crest",
+            "locations": [
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Crest",
+                "action": "collect",
+                "entityID": 15212,
+                "npc": true,
+                "name": "Hoary Templar",
+                "mapID": 1451,
+                "x": 0.24600000000000002,
+                "y": 0.358,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Crest",
+                "action": "collect",
+                "entityID": 15212,
+                "npc": true,
+                "name": "Hoary Templar",
+                "mapID": 1451,
+                "x": 0.382,
+                "y": 0.46399999999999997,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Crest",
+                "action": "collect",
+                "entityID": 15212,
+                "npc": true,
+                "name": "Hoary Templar",
+                "mapID": 1451,
+                "x": 0.204,
+                "y": 0.862,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Crest",
+                "action": "collect",
+                "entityID": 15212,
+                "npc": true,
+                "name": "Hoary Templar",
+                "mapID": 1451,
+                "x": 0.182,
+                "y": 0.81,
+                "sourceAreaID": 1377
+              }
+            ]
+          },
+          {
+            "sourceObjective": 1,
+            "itemName": "Abyssal Crest",
+            "locations": [
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Crest",
+                "action": "collect",
+                "entityID": 15307,
+                "npc": true,
+                "name": "Earthen Templar",
+                "mapID": 1451,
+                "x": 0.386,
+                "y": 0.45799999999999996,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Crest",
+                "action": "collect",
+                "entityID": 15307,
+                "npc": true,
+                "name": "Earthen Templar",
+                "mapID": 1451,
+                "x": 0.278,
+                "y": 0.306,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Crest",
+                "action": "collect",
+                "entityID": 15307,
+                "npc": true,
+                "name": "Earthen Templar",
+                "mapID": 1451,
+                "x": 0.20600000000000002,
+                "y": 0.8640000000000001,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Crest",
+                "action": "collect",
+                "entityID": 15307,
+                "npc": true,
+                "name": "Earthen Templar",
+                "mapID": 1451,
+                "x": 0.182,
+                "y": 0.81,
+                "sourceAreaID": 1377
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 8341,
+    "title": "Lords of the Council",
+    "source": "Captured Forever item page and linked NPC pages (2026-10-10); source URLs and hashes are recorded in research/silithus-2026-10-10/source-facts.json. Exact zone/map and named source relations are retained; unavailable NPC pages keep their prior mapped point.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 60,
+      "level": 60,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 5,
+          "name": "Large Brilliant Shard",
+          "itemID": 14344
+        },
+        {
+          "quantity": 3,
+          "name": "Abyssal Signet",
+          "itemID": 20514
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 5,
+            "action": "collect",
+            "entityID": 14344,
+            "name": "Large Brilliant Shard"
+          },
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "action": "collect",
+            "entityID": 20514,
+            "name": "Abyssal Signet"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 5,
+            "name": "Large Brilliant Shard",
+            "itemID": 14344
+          },
+          {
+            "quantity": 3,
+            "name": "Abyssal Signet",
+            "itemID": 20514
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1451,
+            "legacyStepKey": "q:1451:npc:15206",
+            "entityID": 15206,
+            "name": "The Duke of Cynders",
+            "npc": true,
+            "x": 0.3763,
+            "y": 0.44799999999999995,
+            "objectiveKey": "item:20514",
+            "itemID": 20514,
+            "quantity": 3,
+            "sourceAreaID": 1377,
+            "itemName": "Abyssal Signet",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Abyssal Signet",
+            "name": "The Duke of Cynders",
+            "entityID": 15206,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "objectiveAlternatives": [
+          {
+            "sourceObjective": 1,
+            "itemName": "Abyssal Signet",
+            "locations": [
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Signet",
+                "action": "collect",
+                "entityID": 15206,
+                "npc": true,
+                "y": 0.44799999999999995,
+                "x": 0.37799999999999995,
+                "name": "The Duke of Cynders",
+                "mapID": 1451
+              },
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Signet",
+                "action": "collect",
+                "entityID": 15207,
+                "npc": true,
+                "y": 0.44799999999999995,
+                "x": 0.37799999999999995,
+                "name": "The Duke of Fathoms",
+                "mapID": 1451
+              },
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Signet",
+                "action": "collect",
+                "entityID": 15208,
+                "npc": true,
+                "y": 0.44799999999999995,
+                "x": 0.37799999999999995,
+                "name": "The Duke of Shards",
+                "mapID": 1451
+              },
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Signet",
+                "action": "collect",
+                "entityID": 15220,
+                "npc": true,
+                "y": 0.44799999999999995,
+                "x": 0.37799999999999995,
+                "name": "The Duke of Zephyrs",
+                "mapID": 1451
+              }
+            ]
+          }
+        ]
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 5,
+            "action": "collect",
+            "entityID": 14344,
+            "name": "Large Brilliant Shard"
+          },
+          {
+            "entityType": "item",
+            "quantity": 3,
+            "action": "collect",
+            "entityID": 20514,
+            "name": "Abyssal Signet"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 5,
+            "name": "Large Brilliant Shard",
+            "itemID": 14344
+          },
+          {
+            "quantity": 3,
+            "name": "Abyssal Signet",
+            "itemID": 20514
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1451,
+            "legacyStepKey": "q:1451:npc:15206",
+            "entityID": 15206,
+            "name": "The Duke of Cynders",
+            "npc": true,
+            "x": 0.3763,
+            "y": 0.44799999999999995,
+            "objectiveKey": "item:20514",
+            "itemID": 20514,
+            "quantity": 3,
+            "sourceAreaID": 1377,
+            "itemName": "Abyssal Signet",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Abyssal Signet",
+            "name": "The Duke of Cynders",
+            "entityID": 15206,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "objectiveAlternatives": [
+          {
+            "sourceObjective": 1,
+            "itemName": "Abyssal Signet",
+            "locations": [
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Signet",
+                "action": "collect",
+                "entityID": 15206,
+                "npc": true,
+                "name": "The Duke of Cynders",
+                "mapID": 1451,
+                "x": 0.248,
+                "y": 0.324,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Signet",
+                "action": "collect",
+                "entityID": 15206,
+                "npc": true,
+                "name": "The Duke of Cynders",
+                "mapID": 1451,
+                "x": 0.37799999999999995,
+                "y": 0.44799999999999995,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Signet",
+                "action": "collect",
+                "entityID": 15206,
+                "npc": true,
+                "name": "The Duke of Cynders",
+                "mapID": 1451,
+                "x": 0.172,
+                "y": 0.846,
+                "sourceAreaID": 1377
+              }
+            ]
+          },
+          {
+            "sourceObjective": 1,
+            "itemName": "Abyssal Signet",
+            "locations": [
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Signet",
+                "action": "collect",
+                "entityID": 15207,
+                "npc": true,
+                "name": "The Duke of Fathoms",
+                "mapID": 1451,
+                "x": 0.248,
+                "y": 0.324,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Signet",
+                "action": "collect",
+                "entityID": 15207,
+                "npc": true,
+                "name": "The Duke of Fathoms",
+                "mapID": 1451,
+                "x": 0.374,
+                "y": 0.452,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Signet",
+                "action": "collect",
+                "entityID": 15207,
+                "npc": true,
+                "name": "The Duke of Fathoms",
+                "mapID": 1451,
+                "x": 0.172,
+                "y": 0.8440000000000001,
+                "sourceAreaID": 1377
+              }
+            ]
+          },
+          {
+            "sourceObjective": 1,
+            "itemName": "Abyssal Signet",
+            "locations": [
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Signet",
+                "action": "collect",
+                "entityID": 15208,
+                "npc": true,
+                "name": "The Duke of Shards",
+                "mapID": 1451,
+                "x": 0.248,
+                "y": 0.324,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Signet",
+                "action": "collect",
+                "entityID": 15208,
+                "npc": true,
+                "name": "The Duke of Shards",
+                "mapID": 1451,
+                "x": 0.37799999999999995,
+                "y": 0.44799999999999995,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Signet",
+                "action": "collect",
+                "entityID": 15208,
+                "npc": true,
+                "name": "The Duke of Shards",
+                "mapID": 1451,
+                "x": 0.172,
+                "y": 0.8440000000000001,
+                "sourceAreaID": 1377
+              }
+            ]
+          },
+          {
+            "sourceObjective": 1,
+            "itemName": "Abyssal Signet",
+            "locations": [
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Signet",
+                "action": "collect",
+                "entityID": 15220,
+                "npc": true,
+                "name": "The Duke of Zephyrs",
+                "mapID": 1451,
+                "x": 0.16399999999999998,
+                "y": 0.8440000000000001,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Signet",
+                "action": "collect",
+                "entityID": 15220,
+                "npc": true,
+                "name": "The Duke of Zephyrs",
+                "mapID": 1451,
+                "x": 0.248,
+                "y": 0.324,
+                "sourceAreaID": 1377
+              },
+              {
+                "sourceObjective": 1,
+                "itemName": "Abyssal Signet",
+                "action": "collect",
+                "entityID": 15220,
+                "npc": true,
+                "name": "The Duke of Zephyrs",
+                "mapID": 1451,
+                "x": 0.37799999999999995,
+                "y": 0.44799999999999995,
+                "sourceAreaID": 1377
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 9248,
+    "title": "A Humble Offering",
+    "source": "Captured Forever item 20515 and linked NPC pages (2026-10-10; URLs and hashes in research/silithus-2026-10-10/source-facts.json) identify the four Abyssal Scepter sources as level-62 elite Dukes/world bosses. Mark A Humble Offering as Elite so the existing party warning and skip choice apply; its objective semantics remain otherwise unchanged.",
+    "questTypeCorrection": {
+      "before": null,
+      "after": "Elite"
     }
   }
 ]
