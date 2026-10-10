@@ -13558,7 +13558,7 @@
         "objectiveLocationsIncomplete": false
       }
     },
-    "source": "ClassicDB quest 7602 and item pages link 18622→NPC9862 Jaedenar Legionnaire and 18623→NPC6011 Felguard Sentry; pinned Questie Forever NPC identities and spawn positions match. Add one representative location for each missing required essence; existing Azshara item 18624 remains. Blasted Lands is the cross-zone leg. Quest remains Warlock-only under class setting. ClassicDB relations are unchanged-vanilla fallback, not Forever drop-rate or beta-route evidence. Reviewed 2026-10-09; research/felwood-2026-10-09."
+    "source": "ClassicDB quest 7602 and item pages link 18622\u2192NPC9862 Jaedenar Legionnaire and 18623\u2192NPC6011 Felguard Sentry; pinned Questie Forever NPC identities and spawn positions match. Add one representative location for each missing required essence; existing Azshara item 18624 remains. Blasted Lands is the cross-zone leg. Quest remains Warlock-only under class setting. ClassicDB relations are unchanged-vanilla fallback, not Forever drop-rate or beta-route evidence. Reviewed 2026-10-09; research/felwood-2026-10-09."
   },
   {
     "questID": 8421,
@@ -13983,6 +13983,170 @@
         ],
         "missingRequirements": [],
         "objectiveLocationsIncomplete": false
+      }
+    }
+  },
+  {
+    "questID": 95534,
+    "title": "Strahnbrad Mystery",
+    "factionCorrection": {
+      "before": null,
+      "side": "Horde"
+    },
+    "source": "https://www.wowhead.com/forever/quest=95534 \u2014 captured 2026-10-10, SHA-256 e6eb2fecdbc3b48becc7434911e394604a080bc77dda4fe0d3e6b4d5cb89a4f2; the page reports Horde, minimum level 25, and no class/race mask."
+  },
+  {
+    "questID": 93680,
+    "title": "Key to the City",
+    "source": "https://www.wowhead.com/forever/quest=93680 (2026-10-10, SHA-256 7ba322ed4763b8abf8d4e12375815a2e6589600d9e2e1bee8649a749803831b7) requires one Grimy Key. https://www.wowhead.com/forever/item=279469 (SHA-256 6eb698e1cdf8e878673aa5aab49e19f9afcf15b2504d0b8dfa16a9f566e7e104) lists object 670427 Warden's Footlocker; https://www.wowhead.com/forever/object=670427 (SHA-256 a8cdab59b4ccd3865ab0f6b40309597e1826f00797afd2141dfd5e5b5b41bed1) locates it on Alterac Mountains map 1416 at 0.164, 0.893. https://www.wowhead.com/forever/quest=92434 (SHA-256 421fa5e13fcdefc8769cbe9a0f5f0b427343a14841ff2941c87e8c10036327b1) also provides one Grimy Key, so a carried reward satisfies the item objective without a second farm.",
+    "stageCorrection": {
+      "kind": "item-source",
+      "minLevel": 30,
+      "level": 33,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "itemID": 279469,
+          "name": "Grimy Key",
+          "quantity": 1
+        }
+      ],
+      "point": {
+        "entityType": "object",
+        "entityID": 670427,
+        "name": "Warden's Footlocker",
+        "npc": false,
+        "mapID": 1416,
+        "sourceAreaID": 36,
+        "sourceZone": "Alterac Mountains",
+        "x": 0.164,
+        "y": 0.893,
+        "action": "gather",
+        "objectiveKey": "item:279469",
+        "itemID": 279469,
+        "itemName": "Grimy Key",
+        "quantity": 1,
+        "locationSource": "Wowhead Forever object 670427 entity page"
+      }
+    }
+  },
+  {
+    "questID": 96984,
+    "title": "Heart of Disruption",
+    "source": "https://www.wowhead.com/forever/quest=96984 \u2014 captured 2026-10-10, SHA-256 ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7. The page maps the local Shade of the Archmage source but lists Rath'ma\u00ebl (NPC 250657) without usable coordinates; that alternate location remains incomplete.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 24,
+      "level": 33,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Arcane Mote",
+          "itemID": 251961
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Arcane Mote",
+            "entityID": 251961
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Arcane Mote",
+            "itemID": 251961
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "mapID": 1416,
+            "action": "collect",
+            "entityID": 246020,
+            "npc": true,
+            "y": 0.5589999999999999,
+            "objectiveKey": "item:251961",
+            "name": "Shade of the Archmage",
+            "x": 0.152,
+            "quantity": 1,
+            "legacyStepKey": "q:1416:npc:246020",
+            "itemName": "Arcane Mote",
+            "itemID": 251961
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Arcane Mote",
+            "name": "Shade of the Archmage",
+            "entityID": 246020,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Arcane Mote",
+            "name": "Rath'mael",
+            "entityID": 250657,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "objectiveLocationsIncomplete": null
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Arcane Mote",
+            "entityID": 251961
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Arcane Mote",
+            "itemID": 251961
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "mapID": 1416,
+            "action": "collect",
+            "entityID": 246020,
+            "npc": true,
+            "y": 0.5589999999999999,
+            "objectiveKey": "item:251961",
+            "name": "Shade of the Archmage",
+            "x": 0.152,
+            "quantity": 1,
+            "legacyStepKey": "q:1416:npc:246020",
+            "itemName": "Arcane Mote",
+            "itemID": 251961
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Arcane Mote",
+            "name": "Shade of the Archmage",
+            "entityID": 246020,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Arcane Mote",
+            "name": "Rath'mael",
+            "entityID": 250657,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "objectiveLocationsIncomplete": true
       }
     }
   }

@@ -1,6 +1,6 @@
 {
   "source_data_complete": false,
-  "remaining_quest_records": 365,
+  "remaining_quest_records": 363,
   "limitations": [
     "This queue identifies missing facts, not a license to invent them",
     "Source capture must respect access policy and stop after denials",
@@ -1441,7 +1441,6 @@
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=2941",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=9329",
         "https://www.wowhead.com/forever/npc=7763",
         "https://www.wowhead.com/forever/npc=7907"
       ]
@@ -1457,7 +1456,6 @@
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=2942",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=9307",
         "https://www.wowhead.com/forever/npc=7764",
         "https://www.wowhead.com/forever/object=144063"
       ]
@@ -1473,7 +1471,6 @@
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=2943",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=9331",
         "https://www.wowhead.com/forever/npc=7764",
         "https://www.wowhead.com/forever/npc=7907"
       ]
@@ -1489,7 +1486,6 @@
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=2972",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=9368",
         "https://www.wowhead.com/forever/npc=7957",
         "https://www.wowhead.com/forever/npc=7999"
       ]
@@ -1505,7 +1501,6 @@
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=2976",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=9462",
         "https://www.wowhead.com/forever/npc=4485",
         "https://www.wowhead.com/forever/npc=4544"
       ]
@@ -1581,7 +1576,6 @@
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=3121",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=9629",
         "https://www.wowhead.com/forever/npc=3216",
         "https://www.wowhead.com/forever/npc=8115"
       ]
@@ -1597,7 +1591,6 @@
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=3122",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=9628",
         "https://www.wowhead.com/forever/npc=3216",
         "https://www.wowhead.com/forever/npc=8115"
       ]
@@ -1660,7 +1653,6 @@
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=3841",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=11102",
         "https://www.wowhead.com/forever/npc=7956",
         "https://www.wowhead.com/forever/npc=9238"
       ]
@@ -1691,7 +1683,6 @@
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=3843",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=11471",
         "https://www.wowhead.com/forever/npc=9238",
         "https://www.wowhead.com/forever/npc=9660"
       ]
@@ -1787,7 +1778,6 @@
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=4267",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=11466",
         "https://www.wowhead.com/forever/npc=3936",
         "https://www.wowhead.com/forever/npc=7740"
       ]
@@ -2238,7 +2228,6 @@
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=5385",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=13562",
         "https://www.wowhead.com/forever/npc=11019",
         "https://www.wowhead.com/forever/npc=11020"
       ]
@@ -2754,7 +2743,9 @@
         "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=6131",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/npc=11554"
+      ]
     },
     {
       "questID": 6146,
@@ -2990,8 +2981,6 @@
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=7602",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=18622",
-        "https://www.wowhead.com/forever/item=18623",
         "https://www.wowhead.com/forever/npc=14470"
       ]
     },
@@ -3394,7 +3383,6 @@
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=8421",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=20614",
         "https://www.wowhead.com/forever/npc=14470"
       ]
     },
@@ -4955,21 +4943,6 @@
       ]
     },
     {
-      "questID": 93680,
-      "title": "Key to the City",
-      "guides": [
-        "Horde / Alterac Mountains"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=93680",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=279469",
-        "https://www.wowhead.com/forever/npc=2410"
-      ]
-    },
-    {
       "questID": 94484,
       "title": "Unnerving Silence",
       "guides": [
@@ -5141,7 +5114,6 @@
       "questID": 95534,
       "title": "Strahnbrad Mystery",
       "guides": [
-        "Alliance / Alterac Mountains",
         "Horde / Alterac Mountains"
       ],
       "needs": [
@@ -5341,20 +5313,6 @@
         "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=97284",
-      "entity_urls": []
-    },
-    {
-      "questID": 97287,
-      "title": "Shrewd Negotiations",
-      "guides": [
-        "Horde / Alterac Mountains"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=97287",
       "entity_urls": []
     },
     {

@@ -1,0 +1,851 @@
+{
+  "captured": "2026-10-10",
+  "addon": "0.8.65",
+  "base_commit": "53d5e12b96a4bb44dd27c34ea2ce4748b2cb8e3f",
+  "scope": "level-zone:eastern-kingdoms/alterac-mountains, chapters 31-40",
+  "map_conversion": {
+    "36": 1416,
+    "267": 1424,
+    "130": 1421
+  },
+  "wowhead_quests": {
+    "535": {
+      "url": "https://www.wowhead.com/forever/quest=535",
+      "captured": "2026-10-10",
+      "sha256": "0d63d0d9c24116c03e27d19ff9377c15897ad2463c5252e4ab7f25941248487f",
+      "facts": {
+        "title": "Valik",
+        "side": "Horde",
+        "level": 34,
+        "minLevel": 29,
+        "classMask": 0,
+        "raceMask": 0,
+        "starts": [
+          {
+            "mapID": 1416,
+            "x": 0.57,
+            "y": 0.6940000000000001,
+            "name": "Henchman Valik",
+            "entityID": 2333,
+            "npc": true
+          }
+        ],
+        "ends": [
+          {
+            "mapID": 1416,
+            "x": 0.57,
+            "y": 0.6940000000000001,
+            "name": "Henchman Valik",
+            "entityID": 2333,
+            "npc": true
+          }
+        ],
+        "objectives": [
+          {
+            "mapID": 1416,
+            "x": 0.588,
+            "y": 0.696,
+            "name": "Drunken Footpad",
+            "entityID": 2440,
+            "npc": true,
+            "action": "collect",
+            "itemName": "Southshore Stout",
+            "sourceObjective": 0
+          }
+        ],
+        "npcTargets": [
+          {
+            "entityID": 2440,
+            "npc": true,
+            "name": "Drunken Footpad",
+            "action": "collect",
+            "itemName": "Southshore Stout"
+          }
+        ],
+        "requiredItems": [
+          {
+            "itemID": 3703,
+            "quantity": 1,
+            "name": "Southshore Stout"
+          }
+        ],
+        "prerequisitesRead": true
+      },
+      "relations": {
+        "starts": [
+          {
+            "entityType": "npc",
+            "entityID": 2333,
+            "name": "Henchman Valik"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "entityID": 2333,
+            "name": "Henchman Valik"
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "entityID": 3703,
+            "name": "Southshore Stout",
+            "quantity": 1
+          }
+        ],
+        "provided": []
+      },
+      "series": []
+    },
+    "92434": {
+      "url": "https://www.wowhead.com/forever/quest=92434",
+      "captured": "2026-10-10",
+      "sha256": "421fa5e13fcdefc8769cbe9a0f5f0b427343a14841ff2941c87e8c10036327b1",
+      "facts": {
+        "title": "Blood in the Streets",
+        "side": "Horde",
+        "level": 34,
+        "minLevel": 30,
+        "classMask": 0,
+        "raceMask": 0,
+        "starts": [
+          {
+            "mapID": 1424,
+            "x": 0.616,
+            "y": 0.20800000000000002,
+            "name": "Magus Wordeen Voidglare",
+            "entityID": 2410,
+            "npc": true
+          }
+        ],
+        "ends": [
+          {
+            "mapID": 1421,
+            "x": 0.6859999999999999,
+            "y": 0.452,
+            "name": "Image of Archmage Modera",
+            "entityID": 269127,
+            "npc": true
+          }
+        ],
+        "requiredItems": [
+          {
+            "itemID": 279469,
+            "quantity": 1,
+            "name": "Grimy Key"
+          }
+        ],
+        "objectiveLocationsIncomplete": true,
+        "prerequisitesRead": true,
+        "seriesRoot": 92434,
+        "seriesPosition": 1
+      },
+      "relations": {
+        "starts": [
+          {
+            "entityType": "npc",
+            "entityID": 2410,
+            "name": "Magus Wordeen Voidglare"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "entityID": 269127,
+            "name": "Image of Archmage Modera"
+          }
+        ],
+        "requirements": [],
+        "provided": [
+          {
+            "entityType": "item",
+            "entityID": 279469,
+            "name": "Grimy Key",
+            "quantity": 1
+          }
+        ]
+      },
+      "series": [
+        92434,
+        96984,
+        97287
+      ]
+    },
+    "93680": {
+      "url": "https://www.wowhead.com/forever/quest=93680",
+      "captured": "2026-10-10",
+      "sha256": "7ba322ed4763b8abf8d4e12375815a2e6589600d9e2e1bee8649a749803831b7",
+      "facts": {
+        "title": "Key to the City",
+        "side": "Horde",
+        "level": 33,
+        "minLevel": 30,
+        "classMask": 0,
+        "raceMask": 0,
+        "starts": [
+          {
+            "mapID": 1424,
+            "x": 0.616,
+            "y": 0.20800000000000002,
+            "name": "Magus Wordeen Voidglare",
+            "entityID": 2410,
+            "npc": true
+          }
+        ],
+        "ends": [
+          {
+            "mapID": 1424,
+            "x": 0.616,
+            "y": 0.20800000000000002,
+            "name": "Magus Wordeen Voidglare",
+            "entityID": 2410,
+            "npc": true
+          }
+        ],
+        "requiredItems": [
+          {
+            "itemID": 279469,
+            "quantity": 1,
+            "name": "Grimy Key"
+          }
+        ],
+        "objectiveLocationsIncomplete": true,
+        "prerequisitesRead": true
+      },
+      "relations": {
+        "starts": [
+          {
+            "entityType": "npc",
+            "entityID": 2410,
+            "name": "Magus Wordeen Voidglare"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "entityID": 2410,
+            "name": "Magus Wordeen Voidglare"
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "entityID": 279469,
+            "name": "Grimy Key",
+            "quantity": 1
+          }
+        ],
+        "provided": []
+      },
+      "series": []
+    },
+    "95534": {
+      "url": "https://www.wowhead.com/forever/quest=95534",
+      "captured": "2026-10-10",
+      "sha256": "e6eb2fecdbc3b48becc7434911e394604a080bc77dda4fe0d3e6b4d5cb89a4f2",
+      "facts": {
+        "title": "Strahnbrad Mystery",
+        "side": "Horde",
+        "level": 36,
+        "minLevel": 25,
+        "classMask": 0,
+        "raceMask": 0,
+        "ends": [
+          {
+            "mapID": 1424,
+            "x": 0.636,
+            "y": 0.21,
+            "name": "Shara Blazen",
+            "entityID": 2402,
+            "npc": true
+          }
+        ],
+        "objectives": [
+          {
+            "mapID": 1416,
+            "x": 0.6,
+            "y": 0.456,
+            "name": "Ancient Fire Elemental",
+            "entityID": 217305,
+            "npc": true,
+            "action": "kill",
+            "sourceObjective": 217305
+          }
+        ],
+        "npcTargets": [
+          {
+            "entityID": 217305,
+            "npc": true,
+            "name": "Ancient Fire Elemental",
+            "action": "kill"
+          }
+        ],
+        "requiredItems": [
+          {
+            "itemID": 213421,
+            "quantity": 1,
+            "name": "Singed Note"
+          }
+        ],
+        "objectiveLocationsIncomplete": true,
+        "prerequisitesRead": true
+      },
+      "relations": {
+        "starts": [],
+        "ends": [
+          {
+            "entityType": "npc",
+            "entityID": 2402,
+            "name": "Shara Blazen"
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "npc",
+            "entityID": 217305,
+            "name": "Discover the fiery mystery of Strahnbrad",
+            "quantity": 1
+          },
+          {
+            "entityType": "item",
+            "entityID": 213421,
+            "name": "Singed Note",
+            "quantity": 1
+          }
+        ],
+        "provided": []
+      },
+      "series": []
+    },
+    "96984": {
+      "url": "https://www.wowhead.com/forever/quest=96984",
+      "captured": "2026-10-10",
+      "sha256": "ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7",
+      "facts": {
+        "title": "Heart of Disruption",
+        "side": "Horde",
+        "level": 33,
+        "minLevel": 24,
+        "classMask": 0,
+        "raceMask": 0,
+        "questType": "Dungeon",
+        "starts": [
+          {
+            "mapID": 1421,
+            "x": 0.6859999999999999,
+            "y": 0.452,
+            "name": "Image of Archmage Modera",
+            "entityID": 269127,
+            "npc": true
+          }
+        ],
+        "ends": [
+          {
+            "mapID": 1424,
+            "x": 0.616,
+            "y": 0.20800000000000002,
+            "name": "Magus Wordeen Voidglare",
+            "entityID": 2410,
+            "npc": true
+          }
+        ],
+        "objectives": [
+          {
+            "mapID": 1416,
+            "x": 0.152,
+            "y": 0.5589999999999999,
+            "name": "Shade of the Archmage",
+            "entityID": 246020,
+            "npc": true,
+            "action": "collect",
+            "itemName": "Arcane Mote",
+            "sourceObjective": 0
+          }
+        ],
+        "npcTargets": [
+          {
+            "entityID": 246020,
+            "npc": true,
+            "name": "Shade of the Archmage",
+            "action": "collect",
+            "itemName": "Arcane Mote"
+          },
+          {
+            "entityID": 250657,
+            "npc": true,
+            "name": "Rath'mael",
+            "action": "collect",
+            "itemName": "Arcane Mote"
+          }
+        ],
+        "requiredItems": [
+          {
+            "itemID": 251961,
+            "quantity": 1,
+            "name": "Arcane Mote"
+          }
+        ],
+        "objectiveLocationsIncomplete": true,
+        "prerequisitesRead": true,
+        "previousQuest": 92434,
+        "seriesRoot": 92434,
+        "seriesPosition": 2
+      },
+      "relations": {
+        "starts": [
+          {
+            "entityType": "npc",
+            "entityID": 269127,
+            "name": "Image of Archmage Modera"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "entityID": 2410,
+            "name": "Magus Wordeen Voidglare"
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "entityID": 251961,
+            "name": "Arcane Mote",
+            "quantity": 1
+          }
+        ],
+        "provided": []
+      },
+      "series": [
+        92434,
+        96984,
+        97287
+      ]
+    },
+    "97287": {
+      "url": "https://www.wowhead.com/forever/quest=97287",
+      "captured": "2026-10-10",
+      "sha256": "2e4ea06dceacb55e070624fd1251be70cffdef2f2256ef1b1ca9be57f286896c",
+      "facts": {
+        "title": "Shrewd Negotiations",
+        "side": "Horde",
+        "level": 33,
+        "minLevel": 24,
+        "classMask": 0,
+        "raceMask": 0,
+        "starts": [
+          {
+            "mapID": 1424,
+            "x": 0.616,
+            "y": 0.20800000000000002,
+            "name": "Magus Wordeen Voidglare",
+            "entityID": 2410,
+            "npc": true
+          }
+        ],
+        "ends": [
+          {
+            "mapID": 1416,
+            "x": 0.142,
+            "y": 0.6,
+            "name": "Archmage Celindra",
+            "entityID": 252085,
+            "npc": true
+          }
+        ],
+        "requiredItems": [
+          {
+            "itemID": 251961,
+            "quantity": 1,
+            "name": "Arcane Mote"
+          }
+        ],
+        "prerequisitesRead": true,
+        "previousQuest": 96984,
+        "seriesRoot": 92434,
+        "seriesPosition": 3
+      },
+      "relations": {
+        "starts": [
+          {
+            "entityType": "npc",
+            "entityID": 2410,
+            "name": "Magus Wordeen Voidglare"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "entityID": 252085,
+            "name": "Archmage Celindra"
+          }
+        ],
+        "requirements": [],
+        "provided": [
+          {
+            "entityType": "item",
+            "entityID": 251961,
+            "name": "Arcane Mote",
+            "quantity": 1
+          }
+        ]
+      },
+      "series": [
+        92434,
+        96984,
+        97287
+      ]
+    }
+  },
+  "wowhead_entities": {
+    "item-279469": {
+      "url": "https://www.wowhead.com/forever/item=279469",
+      "captured": "2026-10-10",
+      "sha256": "6eb698e1cdf8e878673aa5aab49e19f9afcf15b2504d0b8dfa16a9f566e7e104",
+      "facts": {
+        "name": "Grimy Key",
+        "locations": [],
+        "source": "Wowhead Forever",
+        "sources": [
+          {
+            "entityType": "object",
+            "entityID": 670427,
+            "name": "Warden's Footlocker",
+            "action": "gather",
+            "areas": [
+              36
+            ]
+          }
+        ]
+      }
+    },
+    "npc-217305": {
+      "url": "https://www.wowhead.com/forever/npc=217305",
+      "captured": "2026-10-10",
+      "sha256": "2c117b2d6714851a638d5a8bd63dd6b4a20a2eaec782135fed9af19ee939de5a",
+      "facts": {
+        "name": "Ancient Fire Elemental",
+        "locations": [
+          {
+            "mapID": 1416,
+            "x": 0.6,
+            "y": 0.456,
+            "sourceAreaID": 36,
+            "sourceZone": "Alterac Mountains"
+          },
+          {
+            "mapID": 1416,
+            "x": 0.594,
+            "y": 0.46399999999999997,
+            "sourceAreaID": 36,
+            "sourceZone": "Alterac Mountains"
+          }
+        ],
+        "source": "Wowhead Forever",
+        "minlevel": 34,
+        "maxlevel": 35,
+        "classification": 0
+      }
+    },
+    "npc-2318": {
+      "url": "https://www.wowhead.com/forever/npc=2318",
+      "captured": "2026-10-10",
+      "sha256": "6969e53efbacfadde4d9902ecd3844a0504f9a9af82378d788d24b96e9f2560d",
+      "facts": {
+        "name": "Argus Shadow Mage",
+        "locations": [
+          {
+            "mapID": 1416,
+            "x": 0.602,
+            "y": 0.434,
+            "sourceAreaID": 36,
+            "sourceZone": "Alterac Mountains"
+          },
+          {
+            "mapID": 1416,
+            "x": 0.47600000000000003,
+            "y": 0.174,
+            "sourceAreaID": 36,
+            "sourceZone": "Alterac Mountains"
+          },
+          {
+            "mapID": 1416,
+            "x": 0.532,
+            "y": 0.20800000000000002,
+            "sourceAreaID": 36,
+            "sourceZone": "Alterac Mountains"
+          },
+          {
+            "mapID": 1416,
+            "x": 0.584,
+            "y": 0.306,
+            "sourceAreaID": 36,
+            "sourceZone": "Alterac Mountains"
+          },
+          {
+            "mapID": 1416,
+            "x": 0.574,
+            "y": 0.462,
+            "sourceAreaID": 36,
+            "sourceZone": "Alterac Mountains"
+          }
+        ],
+        "source": "Wowhead Forever",
+        "minlevel": 35,
+        "maxlevel": 36,
+        "classification": 0
+      }
+    },
+    "npc-2319": {
+      "url": "https://www.wowhead.com/forever/npc=2319",
+      "captured": "2026-10-10",
+      "sha256": "5932e1b0720ce5092267814928a677516c4abd48ab2f421a68dd5471f2a89998",
+      "facts": {
+        "name": "Syndicate Wizard",
+        "locations": [
+          {
+            "mapID": 1416,
+            "x": 0.618,
+            "y": 0.43799999999999994,
+            "sourceAreaID": 36,
+            "sourceZone": "Alterac Mountains"
+          },
+          {
+            "mapID": 1416,
+            "x": 0.5820000000000001,
+            "y": 0.684,
+            "sourceAreaID": 36,
+            "sourceZone": "Alterac Mountains"
+          },
+          {
+            "mapID": 1416,
+            "x": 0.598,
+            "y": 0.43799999999999994,
+            "sourceAreaID": 36,
+            "sourceZone": "Alterac Mountains"
+          }
+        ],
+        "source": "Wowhead Forever",
+        "minlevel": 34,
+        "maxlevel": 35,
+        "classification": 0
+      }
+    },
+    "npc-2402": {
+      "url": "https://www.wowhead.com/forever/npc=2402",
+      "captured": "2026-10-10",
+      "sha256": "b4cab4d5947666ab6d426c6587c61691bbea44dc9e122971329a4c6b3b26a7ff",
+      "facts": {
+        "name": "Shara Blazen",
+        "locations": [
+          {
+            "mapID": 1424,
+            "x": 0.634,
+            "y": 0.20800000000000002,
+            "sourceAreaID": 267,
+            "sourceZone": "Hillsbrad Foothills"
+          }
+        ],
+        "source": "Wowhead Forever",
+        "minlevel": 32,
+        "maxlevel": 32,
+        "classification": 0
+      }
+    },
+    "npc-2410": {
+      "url": "https://www.wowhead.com/forever/npc=2410",
+      "captured": "2026-10-10",
+      "sha256": "21f9a29e90b47cf5f9295ff30ffc1461d03e24bbc79929f76093c1f2fa68c858",
+      "facts": {
+        "name": "Magus Wordeen Voidglare",
+        "locations": [
+          {
+            "mapID": 1424,
+            "x": 0.616,
+            "y": 0.20800000000000002,
+            "sourceAreaID": 267,
+            "sourceZone": "Hillsbrad Foothills"
+          }
+        ],
+        "source": "Wowhead Forever",
+        "minlevel": 42,
+        "maxlevel": 42,
+        "classification": 0
+      }
+    },
+    "npc-2440": {
+      "url": "https://www.wowhead.com/forever/npc=2440",
+      "captured": "2026-10-10",
+      "sha256": "79f3acdb779fcc91c2a4048b54b5a3560225199d9a5feeacfa27972b992e7a89",
+      "facts": {
+        "name": "Drunken Footpad",
+        "locations": [
+          {
+            "mapID": 1416,
+            "x": 0.5820000000000001,
+            "y": 0.672,
+            "sourceAreaID": 36,
+            "sourceZone": "Alterac Mountains"
+          },
+          {
+            "mapID": 1416,
+            "x": 0.584,
+            "y": 0.706,
+            "sourceAreaID": 36,
+            "sourceZone": "Alterac Mountains"
+          }
+        ],
+        "source": "Wowhead Forever",
+        "minlevel": 32,
+        "maxlevel": 33,
+        "classification": 0
+      }
+    },
+    "npc-246020": {
+      "url": "https://www.wowhead.com/forever/npc=246020",
+      "captured": "2026-10-10",
+      "sha256": "eb30531a7679bc6304d57a2102d9cc8db88118068e698cec4d4375f42207bca1",
+      "facts": {
+        "name": "Shade of the Archmage",
+        "locations": [
+          {
+            "mapID": 1416,
+            "x": 0.152,
+            "y": 0.5589999999999999,
+            "sourceAreaID": 36,
+            "sourceZone": "Alterac Mountains"
+          }
+        ],
+        "source": "Wowhead Forever",
+        "classification": 1
+      }
+    },
+    "npc-252085": {
+      "url": "https://www.wowhead.com/forever/npc=252085",
+      "captured": "2026-10-10",
+      "sha256": "969a333a68626a52b56afee75941648a25ed2fa70b9be89f79c04e424357e731",
+      "facts": {
+        "name": "Archmage Celindra <Kirin Tor>",
+        "locations": [
+          {
+            "mapID": 1416,
+            "x": 0.142,
+            "y": 0.6,
+            "sourceAreaID": 36,
+            "sourceZone": "Alterac Mountains"
+          }
+        ],
+        "source": "Wowhead Forever",
+        "minlevel": 40,
+        "maxlevel": 40,
+        "classification": 0
+      }
+    },
+    "npc-269127": {
+      "url": "https://www.wowhead.com/forever/npc=269127",
+      "captured": "2026-10-10",
+      "sha256": "e5a42fa5cb80ba6e8baf884e01fc73b844f616c6af136940c21cf61dcaf6e2e5",
+      "facts": {
+        "name": "Image of Archmage Modera",
+        "locations": [
+          {
+            "mapID": 1421,
+            "x": 0.6859999999999999,
+            "y": 0.452,
+            "sourceAreaID": 130,
+            "sourceZone": "Silverpine Forest"
+          }
+        ],
+        "source": "Wowhead Forever",
+        "minlevel": 60,
+        "maxlevel": 60,
+        "classification": 0
+      }
+    },
+    "object-670427": {
+      "url": "https://www.wowhead.com/forever/object=670427",
+      "captured": "2026-10-10",
+      "sha256": "a8cdab59b4ccd3865ab0f6b40309597e1826f00797afd2141dfd5e5b5b41bed1",
+      "facts": {
+        "name": "Warden's Footlocker",
+        "locations": [
+          {
+            "mapID": 1416,
+            "x": 0.16399999999999998,
+            "y": 0.893,
+            "sourceAreaID": 36,
+            "sourceZone": "Alterac Mountains"
+          }
+        ],
+        "source": "Wowhead Forever"
+      }
+    }
+  },
+  "questie_primary_facts": {
+    "source": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua",
+    "commit": "e0a6eaa86f181ac99262e34126bcd2ed1a1712d6",
+    "file_sha256": "d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87",
+    "quest_535": {
+      "name": "Valik",
+      "startedBy": {
+        "1": {
+          "1": 2333
+        }
+      },
+      "finishedBy": {
+        "1": {
+          "1": 2333
+        }
+      },
+      "requiredLevel": 29,
+      "questLevel": 34,
+      "requiredRaces": 8589934770,
+      "objectives": {
+        "1": null,
+        "2": null,
+        "3": {
+          "1": {
+            "1": 3703
+          }
+        }
+      },
+      "zoneOrSort": 36,
+      "questFlags": 8,
+      "parentQuest": 533
+    },
+    "field_origins": {
+      "name": "converted-baseline",
+      "startedBy": "converted-baseline",
+      "finishedBy": "converted-baseline",
+      "requiredLevel": "converted-baseline",
+      "questLevel": "converted-baseline",
+      "requiredRaces": "converted-baseline",
+      "objectivesText": "converted-baseline",
+      "objectives": "converted-baseline",
+      "zoneOrSort": "converted-baseline",
+      "questFlags": "converted-baseline",
+      "_identityName": "converted-baseline",
+      "parentQuest": "converted-baseline"
+    }
+  },
+  "prior_entity_capture_hashes": {
+    "npc-2410": {
+      "captured": "2026-10-05",
+      "sha256": "a0e4ce2bcb511d520491ff7381c70c9dcaeb1984bc324cf4e2f8a649892bb00a"
+    },
+    "npc-269127": {
+      "captured": "2026-10-05",
+      "sha256": "5cbc952e631e76015595a4355a39c0f77295f97b30f05e62c5c388f5de5c6950"
+    },
+    "item-279469": {
+      "captured": "2026-10-05",
+      "sha256": "cec70f58252c24d32819ceb6e8dfdfa804ee7fc6e45061a76cb65878ba0ebbcd"
+    }
+  },
+  "comments_review": "The captured Forever pages contained comment controls but no embedded comment bodies. No comment-derived facts or prose were used.",
+  "limitations": [
+    "QuestieDB and Wowhead facts are source evidence, not native beta offer or completion checks.",
+    "No walkable terrain or safe-road claims are inferred from point coordinates."
+  ]
+}

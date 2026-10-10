@@ -1,5 +1,16 @@
 # Reviewed player quest research
 
+## 2026-10-10 — Alterac Mountains faction, key source and chain handoffs
+
+[The Alterac Mountains review](alterac-mountains-2026-10-10/README.md) refreshes
+the 31–40 chapter on the 0.8.65 branch, gates Strahnbrad Mystery to Horde,
+maps Key to the City’s Grimy Key footlocker objective, and fills Shrewd
+Negotiations’ start/return points. The full faction routes remain intact except
+for four now-ineligible Alliance actions. Two recorded stage gaps remain; the
+Valik active-parent requirement needs main-developer eligibility coordination.
+Source hashes, scoped before/after audits, route metrics and a player checklist
+are retained with the review.
+
 ## 2026-10-10 — Winterspring audit refresh
 
 [The Winterspring refresh](winterspring-2026-10-10/README.md) reruns the scoped

@@ -1,0 +1,106 @@
+{
+  "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
+  "quest_records": 8,
+  "static_points_checked": 28,
+  "fixed_zone_guides_checked": 2,
+  "catalogue_reason_stages_checked": 31,
+  "catalogue_reason_codes": {
+    "level-work": 12,
+    "quest-objective": 11,
+    "quest-reward": 8
+  },
+  "reason_review_quest_ids": [
+    504,
+    505,
+    510,
+    511,
+    535,
+    537,
+    95534,
+    99191
+  ],
+  "source_data_gap_free_guides": 1,
+  "guides": [
+    {
+      "faction": "Alliance",
+      "zone": "Alterac Mountains",
+      "key": "level-zone:eastern-kingdoms/alterac-mountains:levels:31-40",
+      "quests": 14,
+      "steps": 44,
+      "unknown_location_steps": 0,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": true,
+      "reason_steps_checked": 44,
+      "destination_reason_codes": {
+        "early-reward": 1,
+        "outside-level-range": 16,
+        "prerequisite": 21,
+        "quest-reward": 4,
+        "return-hub": 2
+      },
+      "reason_review_steps": 16,
+      "cross_zone_reason_steps": 7,
+      "flow_alternatives_evaluated": 24,
+      "flow_loop_changes": 1,
+      "geometric_guard_rejections": 2,
+      "geometric_bracket_replays": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 7,
+      "quest_reward_only_xp_shortfall": 161000,
+      "uncertain_travel_legs": 12,
+      "estimated_distance_before": 115307.03,
+      "estimated_distance_after": 115307.03
+    },
+    {
+      "faction": "Horde",
+      "zone": "Alterac Mountains",
+      "key": "level-zone:eastern-kingdoms/alterac-mountains:levels:31-40",
+      "quests": 5,
+      "steps": 16,
+      "unknown_location_steps": 2,
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          95534
+        ],
+        "q": [
+          92434
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        535
+      ],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 3,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 16,
+      "destination_reason_codes": {
+        "outside-level-range": 11,
+        "quest-reward": 5
+      },
+      "reason_review_steps": 13,
+      "cross_zone_reason_steps": 5,
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "geometric_guard_rejections": 0,
+      "geometric_bracket_replays": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 226430,
+      "uncertain_travel_legs": 8,
+      "estimated_distance_before": 89512.56,
+      "estimated_distance_after": 89512.56
+    }
+  ],
+  "scope": {
+    "zone": "Alterac Mountains",
+    "catalogue_records": "Exact quest zone; guide dependencies still compile normally"
+  }
+}
