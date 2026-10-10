@@ -1,5 +1,15 @@
 # Reviewed player quest research
 
+## 2026-10-10 — Stranglethorn Vale audit refresh
+
+[The Stranglethorn Vale refresh](stranglethorn-vale-2026-10-10/README.md)
+rechecks all six faction/chapter flows and 36 zone records against the current
+catalogue. The prior eight evidence-backed corrections remain integrated;
+remaining pickup/objective/hand-in gaps are 11/11/11, with 12 uncertain pickup
+requirements and no unknown quantities. All 885 actions compile and all six
+flow states remain valid. No new data changes were justified; Green Hills
+chapter reward timing and native travel/offer checks remain open.
+
 ## 2026-10-10 — Badlands chain stages and objective locations
 
 [The Badlands review](badlands-2026-10-10/README.md) refreshes all five guide

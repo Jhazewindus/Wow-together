@@ -1,0 +1,68 @@
+{
+  "zone": "Stranglethorn Vale",
+  "refreshed_date": "2026-10-10",
+  "audit_scope": {
+    "zone": "Stranglethorn Vale",
+    "catalogue_records": "Exact quest zone; guide dependencies still compile normally"
+  },
+  "quest_records": 36,
+  "static_source_points": 103,
+  "remaining_gaps": {
+    "pickup": [
+      614,
+      615,
+      618,
+      620,
+      7908,
+      8552,
+      95748,
+      97047,
+      97048,
+      97329,
+      97331
+    ],
+    "objective": [
+      338,
+      615,
+      620,
+      1036,
+      1796,
+      7908,
+      8554,
+      97047,
+      97048,
+      97328,
+      97331
+    ],
+    "hand_in": [
+      614,
+      615,
+      618,
+      620,
+      7908,
+      95748,
+      97047,
+      97048,
+      97328,
+      97329,
+      97331
+    ]
+  },
+  "unverified_pickup_requirements": [
+    339,
+    340,
+    341,
+    342,
+    1036,
+    3721,
+    4621,
+    7908,
+    8552,
+    8553,
+    8554,
+    9272
+  ],
+  "unverified_objective_quantities": [],
+  "source_data_gap_free_guides": 0,
+  "guides_checked": 6
+}
