@@ -1,0 +1,131 @@
+{
+  "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
+  "quest_records": 23,
+  "static_points_checked": 60,
+  "fixed_zone_guides_checked": 2,
+  "catalogue_reason_stages_checked": 75,
+  "catalogue_reason_codes": {
+    "level-work": 23,
+    "quest-objective": 29,
+    "quest-reward": 23
+  },
+  "reason_review_quest_ids": [
+    2766,
+    2767,
+    2862,
+    2863,
+    2866,
+    2867,
+    2869,
+    2902,
+    2903,
+    2975,
+    2978,
+    2980,
+    2982,
+    2987,
+    3130,
+    3567,
+    4124,
+    4125,
+    4127,
+    4129,
+    4130,
+    4131,
+    4281
+  ],
+  "source_data_gap_free_guides": 0,
+  "guides": [
+    {
+      "faction": "Alliance",
+      "zone": "Feralas",
+      "key": "level-zone:kalimdor/feralas:levels:41-50",
+      "quests": 41,
+      "steps": 127,
+      "unknown_location_steps": 8,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [
+          2941,
+          2942,
+          2943,
+          2972,
+          3841,
+          3842,
+          3843,
+          4267
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 127,
+      "destination_reason_codes": {
+        "early-reward": 1,
+        "outside-level-range": 72,
+        "prerequisite": 19,
+        "quest-reward": 34,
+        "unlock-loop": 1
+      },
+      "reason_review_steps": 72,
+      "cross_zone_reason_steps": 10,
+      "flow_alternatives_evaluated": 87,
+      "flow_loop_changes": 2,
+      "geometric_guard_rejections": 103,
+      "geometric_bracket_replays": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 7,
+      "quest_reward_only_xp_shortfall": 692905,
+      "uncertain_travel_legs": 31,
+      "estimated_distance_before": 231802.27,
+      "estimated_distance_after": 231445.32
+    },
+    {
+      "faction": "Horde",
+      "zone": "Feralas",
+      "key": "level-zone:kalimdor/feralas:levels:41-50",
+      "quests": 34,
+      "steps": 112,
+      "unknown_location_steps": 3,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [
+          2976,
+          3121,
+          3122
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 112,
+      "destination_reason_codes": {
+        "early-reward": 1,
+        "outside-level-range": 53,
+        "prerequisite": 34,
+        "quest-reward": 23,
+        "return-hub": 1
+      },
+      "reason_review_steps": 53,
+      "cross_zone_reason_steps": 5,
+      "flow_alternatives_evaluated": 38,
+      "flow_loop_changes": 2,
+      "geometric_guard_rejections": 83,
+      "geometric_bracket_replays": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 8,
+      "quest_reward_only_xp_shortfall": 704250,
+      "uncertain_travel_legs": 21,
+      "estimated_distance_before": 148429.44,
+      "estimated_distance_after": 145888.63
+    }
+  ],
+  "scope": {
+    "zone": "Feralas",
+    "catalogue_records": "Exact quest zone; guide dependencies still compile normally"
+  }
+}

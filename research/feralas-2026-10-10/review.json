@@ -1,0 +1,123 @@
+{
+  "zone": "Feralas",
+  "date": "2026-10-10",
+  "base_commit": "d0023c80ac5315c1aa09f20da7459932e6407acb",
+  "main_commit": "cbd1e7608dc32c2080d8b1d967fb577c10084053",
+  "addon_version": "0.8.65",
+  "changed_quest_ids": [
+    2941,
+    2942,
+    2943,
+    2972,
+    2976,
+    3121,
+    3122,
+    3841,
+    3843,
+    4267
+  ],
+  "scope": {
+    "category_inventory_records": 78,
+    "catalogue_zone_records": 23,
+    "guide_chapters": 2,
+    "static_points": 60,
+    "actions_before": 239,
+    "actions_after": 239
+  },
+  "gaps": {
+    "objective_quest_ids_before": [
+      2941,
+      2942,
+      2943,
+      2972,
+      2976,
+      3121,
+      3122,
+      3841,
+      3842,
+      3843,
+      4267
+    ],
+    "objective_quest_ids_after": [
+      3842
+    ],
+    "pickup_quest_ids_after": [],
+    "handin_quest_ids_after": [],
+    "unverified_pickup_requirements_after": [],
+    "unverified_objective_quantities_after": []
+  },
+  "source_summary": {
+    "quest_pages": 13,
+    "item_pages": 13,
+    "questie_revision": "e0a6eaa86f181ac99262e34126bcd2ed1a1712d6",
+    "questie_manifest_files": 24,
+    "questie_manifest_files_verified": 24,
+    "wowhead_tls": "verified",
+    "raw_html_committed": false
+  },
+  "route_comparison": {
+    "guard_passed": false,
+    "actions_preserved": true,
+    "endpoints_preserved": true,
+    "horde_distance_before_after": [
+      223239.3942864313,
+      147010.70068403232
+    ],
+    "alliance_distance_before_after": [
+      296914.3374682576,
+      238335.6378798008
+    ],
+    "horde_work_rewards_delayed": [
+      7,
+      7,
+      7,
+      6
+    ],
+    "alliance_work_rewards_delayed": [
+      0,
+      0,
+      0,
+      0
+    ],
+    "level45_zero_xp_difficulty_pressure_regression": true
+  },
+  "validation": {
+    "focused_feralas_tests": "5/5 passed",
+    "zone_audit_regressions": "8/8 passed",
+    "route_session_regressions": "18/18 passed",
+    "packed_data_tests": "10/10 passed",
+    "toc_interface": "16001",
+    "toc_lua_files_compiled": 87,
+    "lua_runtime": "Lua 5.1",
+    "native_beta_tested": false,
+    "global_guides": 152,
+    "global_source_points": 11839
+  },
+  "limitations": [
+    "Quest 3842 item 3825 count/name is supported but a useful source area is not; page/item name differs.",
+    "Route repricer requires main review for Horde delayed rewards/difficulty tradeoff.",
+    "Boat boarding, dock approaches and actual terrain are player-check items."
+  ],
+  "coverage_report": {
+    "category_records": 78,
+    "pickup_records_before_after": [
+      78,
+      78
+    ],
+    "objective_points_before_after": [
+      43,
+      44
+    ],
+    "turnin_records_before_after": [
+      78,
+      78
+    ],
+    "complete_locations_before_after": [
+      67,
+      77
+    ],
+    "remaining_missing_quest_ids": [
+      3842
+    ]
+  }
+}

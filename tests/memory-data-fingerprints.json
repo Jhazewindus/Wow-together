@@ -3,7 +3,7 @@
   "datasets": {
     "catalogue": {
       "file": "QuestCatalogue.lua",
-      "sha256": "746a28c5e1155ff63efdcedbcde34ebb5235fb24719a71259290f2ee434f208b"
+      "sha256": "f713998fab9a4e4d56026b5754b8f7f24ac432cf50e4a53629664e8e84d2480d"
     },
     "questEntities": {
       "file": "QuestCatalogue.lua",
@@ -26,5 +26,5 @@
       "sha256": "0f11a23183f2795831cb078a12d6953e6c23542d3459f71eb0c70b9b512f629d"
     }
   },
-  "revision": "0.8.31: audited loot relationships and original Vanilla BFD marker identities. 0.8.42: additive source-supplemented quest catalogue; all original quest gates and point fields independently preserved. Main 0.8.65 includes updated dungeon map positions. 2026-10-10 guides/coverage Felwood: additive staged corrections and source-backed profession exclusions. Catalogue and dungeon-map fingerprints reflect these reviewed updates; other datasets unchanged."
+  "revision": "0.8.31: audited loot relationships and original Vanilla BFD marker identities. 0.8.42: additive source-supplemented quest catalogue; all original quest gates and point fields independently preserved. Main 0.8.65 includes updated dungeon map positions. 2026-10-10 guides/coverage Felwood: additive staged corrections and source-backed profession exclusions. Catalogue and dungeon-map fingerprints reflect these reviewed updates; other datasets unchanged. 2026-10-10 guides/coverage Feralas: ten reviewed stage corrections preserve supplied hand-in items and the 2879 \u2192 2942 requirement; one elixir objective remains unmapped."
 }

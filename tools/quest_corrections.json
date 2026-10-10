@@ -13558,7 +13558,7 @@
         "objectiveLocationsIncomplete": false
       }
     },
-    "source": "ClassicDB quest 7602 and item pages link 18622\u2192NPC9862 Jaedenar Legionnaire and 18623\u2192NPC6011 Felguard Sentry; pinned Questie Forever NPC identities and spawn positions match. Add one representative location for each missing required essence; existing Azshara item 18624 remains. Blasted Lands is the cross-zone leg. Quest remains Warlock-only under class setting. ClassicDB relations are unchanged-vanilla fallback, not Forever drop-rate or beta-route evidence. Reviewed 2026-10-09; research/felwood-2026-10-09."
+    "source": "ClassicDB quest 7602 and item pages link 18622→NPC9862 Jaedenar Legionnaire and 18623→NPC6011 Felguard Sentry; pinned Questie Forever NPC identities and spawn positions match. Add one representative location for each missing required essence; existing Azshara item 18624 remains. Blasted Lands is the cross-zone leg. Quest remains Warlock-only under class setting. ClassicDB relations are unchanged-vanilla fallback, not Forever drop-rate or beta-route evidence. Reviewed 2026-10-09; research/felwood-2026-10-09."
   },
   {
     "questID": 8421,
@@ -13731,5 +13731,259 @@
       }
     },
     "source": "ClassicDB item 20614 links Bloodvenom Essence to NPC7092 Tainted Ooze in Felwood; pinned Questie Forever NPC7092 identity and 34 current Felwood positions agree. Add one representative objective location for the required four essences, preserving the existing ten Rotting Wood stage. ClassicDB is unchanged-vanilla source-relation evidence, not a Forever drop-rate claim. Quest remains Warlock-only under class setting. Reviewed 2026-10-09; research/felwood-2026-10-09."
+  },
+  {
+    "questID": 2941,
+    "title": "The Borrower",
+    "source": "Reviewed Forever page https://www.wowhead.com/forever/quest=2941, captured 2026-10-10 (SHA-256 348b562ba55099ddbe61e300f1ba0d029713c54ede15fe96117247f37747cc90); matching pinned Forever sourceItemId and quest-page Provided row confirm the item is supplied on acceptance. Keep it required for the existing hand-in; do not invent a farm objective.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 42,
+      "level": 48,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "itemID": 9329,
+          "name": "A Short Note",
+          "quantity": 1
+        }
+      ]
+    }
+  },
+  {
+    "questID": 2943,
+    "title": "Return to Troyas",
+    "source": "Reviewed Forever page https://www.wowhead.com/forever/quest=2943, captured 2026-10-10 (SHA-256 dbd9354b69e44d35054007a5363f59af2a69b4d934fdcbfece6b8df4d955b577); matching pinned Forever sourceItemId and quest-page Provided row confirm the item is supplied on acceptance. Keep it required for the existing hand-in; do not invent a farm objective.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 42,
+      "level": 48,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "itemID": 9331,
+          "name": "Feralas: A History",
+          "quantity": 1
+        }
+      ]
+    }
+  },
+  {
+    "questID": 2972,
+    "title": "Doling Justice",
+    "source": "Reviewed Forever page https://www.wowhead.com/forever/quest=2972, captured 2026-10-10 (SHA-256 918fe28a65f8e1da543c821062bcaa213b1bd1858f87e817fca8b0ff8429c2e5); matching pinned Forever sourceItemId and quest-page Provided row confirm the item is supplied on acceptance. Keep it required for the existing hand-in; do not invent a farm objective.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 38,
+      "level": 47,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "itemID": 9368,
+          "name": "Jer'kai's Signet Ring",
+          "quantity": 1
+        }
+      ]
+    }
+  },
+  {
+    "questID": 2976,
+    "title": "A Grim Discovery",
+    "source": "Reviewed Forever page https://www.wowhead.com/forever/quest=2976, captured 2026-10-10 (SHA-256 acbfe5b67e2b434ea5ea401b7bdde3436c46232e984048ee851e004ee6344cad); matching pinned Forever sourceItemId and quest-page Provided row confirm the item is supplied on acceptance. Keep it required for the existing hand-in; do not invent a farm objective.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 37,
+      "level": 45,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "itemID": 9462,
+          "name": "Crate of Grimtotem Horns",
+          "quantity": 1
+        }
+      ]
+    }
+  },
+  {
+    "questID": 3121,
+    "title": "A Strange Request",
+    "source": "Reviewed Forever page https://www.wowhead.com/forever/quest=3121, captured 2026-10-10 (SHA-256 687709c0e4251d1f19a446581833d96ae92c5e71e8243f8596c5a6bf58e6e521); matching pinned Forever sourceItemId and quest-page Provided row confirm the item is supplied on acceptance. Keep it required for the existing hand-in; do not invent a farm objective.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 40,
+      "level": 45,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "itemID": 9629,
+          "name": "A Shrunken Head",
+          "quantity": 1
+        }
+      ]
+    }
+  },
+  {
+    "questID": 3122,
+    "title": "Return to Witch Doctor Uzer'i",
+    "source": "Reviewed Forever page https://www.wowhead.com/forever/quest=3122, captured 2026-10-10 (SHA-256 c5f94763802b8c01bac2b3c8d70f9f522abfb0582f7853e373a70448b5f291e7); matching pinned Forever sourceItemId and quest-page Provided row confirm the item is supplied on acceptance. Keep it required for the existing hand-in; do not invent a farm objective.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 40,
+      "level": 45,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "itemID": 9628,
+          "name": "Neeru's Herb Pouch",
+          "quantity": 1
+        }
+      ]
+    }
+  },
+  {
+    "questID": 3841,
+    "title": "An Orphan Looking For a Home",
+    "source": "Reviewed Forever page https://www.wowhead.com/forever/quest=3841, captured 2026-10-10 (SHA-256 6fbb587efe0b391ebd5ae9e0062a1f25a51cc14d6d090c942a7afb0e31d2904e); matching pinned Forever sourceItemId and quest-page Provided row confirm the item is supplied on acceptance. Keep it required for the existing hand-in; do not invent a farm objective.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 38,
+      "level": 47,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "itemID": 11102,
+          "name": "Unhatched Sprite Darter Egg",
+          "quantity": 1
+        }
+      ]
+    }
+  },
+  {
+    "questID": 3843,
+    "title": "The Newest Member of the Family",
+    "source": "Reviewed Forever page https://www.wowhead.com/forever/quest=3843, captured 2026-10-10 (SHA-256 6cfe1868d386b346df8e56fcd2e7d72d14bb9b579ed737ed71a96d997451b864); matching pinned Forever sourceItemId and quest-page Provided row confirm the item is supplied on acceptance. Keep it required for the existing hand-in; do not invent a farm objective.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 38,
+      "level": 47,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "itemID": 11471,
+          "name": "Fragile Sprite Darter Egg",
+          "quantity": 1
+        }
+      ]
+    }
+  },
+  {
+    "questID": 4267,
+    "title": "Rise of the Silithid",
+    "source": "Reviewed Forever page https://www.wowhead.com/forever/quest=4267, captured 2026-10-10 (SHA-256 b4a52bf950d6462c67b4b540fcec578a3c24074a3b3a1f5ec413b1db59f89236); matching pinned Forever sourceItemId and quest-page Provided row confirm the item is supplied on acceptance. Keep it required for the existing hand-in; do not invent a farm objective.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 40,
+      "level": 46,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "itemID": 11466,
+          "name": "Raschal's Report",
+          "quantity": 1
+        }
+      ]
+    }
+  },
+  {
+    "questID": 2942,
+    "title": "The Morrow Stone",
+    "source": "Reviewed Forever page https://www.wowhead.com/forever/quest=2942 (SHA-256 dd49d607fe324e5d538125adf9350ec83c7a43160b34478b407ac2db6c906f17), item pages 9306 (SHA-256 c69fcb446d1897550ad99ac21f6f0c99e37bad8fc7f2f5b781fca357f92bb4a4) and 9307 (SHA-256 8c4d26ac5578fa866d73946024581be6e36040b277b0dad70c8ae4b37a239fd6); predecessor quest 2879 rewards item 9307 (quest page SHA-256 1189b48fa72ebf155a175d52eb06e2d6e5e7d1836b238f152db05f32a4435524). Retain prerequisite 2879; 9306 is supplied on acceptance while both items remain required for Troyas hand-in. No separate farming position is supported.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 42,
+      "level": 50,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "itemID": 9307,
+          "name": "A Sparkling Stone",
+          "quantity": 1
+        },
+        {
+          "itemID": 9306,
+          "name": "Stave of Equinex",
+          "quantity": 1
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 9307,
+            "name": "A Sparkling Stone"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "A Sparkling Stone",
+            "itemID": 9307
+          }
+        ],
+        "objectives": [],
+        "npcTargets": [],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 9307,
+            "name": "A Sparkling Stone"
+          }
+        ],
+        "objectiveLocationsIncomplete": true
+      },
+      "after": {
+        "requirements": [],
+        "requiredItems": [
+          {
+            "itemID": 9307,
+            "name": "A Sparkling Stone",
+            "quantity": 1
+          },
+          {
+            "itemID": 9306,
+            "name": "Stave of Equinex",
+            "quantity": 1
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1444,
+            "entityID": 7764,
+            "npc": true,
+            "y": 0.455,
+            "x": 0.3178,
+            "name": "Troyas Moonbreeze",
+            "action": "talk",
+            "objectiveKey": "npc:7764",
+            "locationSource": "Published Forever converted-baseline entity position"
+          }
+        ],
+        "npcTargets": [
+          {
+            "name": "Troyas Moonbreeze",
+            "entityID": 7764,
+            "npc": true,
+            "action": "talk"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": false
+      }
+    }
   }
 ]

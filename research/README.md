@@ -2,6 +2,8 @@
 
 The [Felwood review](felwood-2026-10-09/README.md) refreshes all four faction/chapter guides, documents current NPC/item evidence and profession-only Salve exclusions, and retains the Hunter raid-location unknowns. Its scoped compilation passes; full route repricing exposes data-driven order and reward-timing tradeoffs for main-developer review.
 
+The [Feralas review](feralas-2026-10-10/README.md) corrects nine supplied-item false farms and the Morrow Stone two-item handoff. Both complete faction chapters retain all 239 actions; objective-location gaps fall 11 → 1, with Elixir acquisition still unknown. The Horde full-route guard requires review for reward timing and difficulty pressure.
+
 Keep supplied exports unchanged here, with their original event versions,
 sessions and beta builds. These are observations from players, not a complete
 quest database. Only supported corrections enter the shipped catalogue. Raw
