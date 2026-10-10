@@ -219,6 +219,8 @@ The [Tanaris refresh](tanaris-2026-10-10/README.md) reruns the four-guide audit 
 
 The [Hinterlands review](hinterlands-2026-10-08/README.md) corrects the supplied venom parcel and maps Rhapsody's two missing liver drops to actual published Feralas points. All 50 IDs / 183 actions and all 16 strict replay states survive; recorded objective gaps 2 → 0. Elevation/approach uncertainty and three external Zul'Farrak prerequisite handoffs remain explicit coordination/player-check items.
 
+The [Hinterlands refresh](hinterlands-2026-10-10/README.md) rechecks four full chapters and 64 points on the 0.8.65-based branch. All 50 IDs / 183 actions and zero recorded stage-location gaps remain; prerequisite review steps and external Zul'Farrak facts remain open. Current flow estimates are recorded separately from the earlier same-facts comparison, and no terrain or native-beta claim is added.
+
 [Final combined guide validation](coverage-integration-2026-10-08/README.md): 1,562/1,563 host tests pass, including all 64 zone regressions; the sole historical catalogue fingerprint assertion remains. All 152 sections / 11,833 source points are checked, with 33 recorded gap-free sections and 390 unresolved ordinary records. No native beta or complete-terrain claim.
 
 The [Thoradin's Wall review](thoradins-wall-2026-10-08/README.md) reconciles two records' object handoffs using published beta-observation positions in Loch Modan and Arathi. Both factions retain the full three-quest/nine-action chain, actual hand-in gates and saved guide key; zero recorded gaps stay zero. Treating the single local category as optional Arathi support remains a concrete, unapplied lifecycle/presentation proposal.
