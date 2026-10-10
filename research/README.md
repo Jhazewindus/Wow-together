@@ -215,6 +215,8 @@ The [Swamp of Sorrows refresh](swamp-of-sorrows-2026-10-10/README.md) reruns its
 
 The [Tanaris review](tanaris-2026-10-08/README.md) corrects five supplied deliveries and field-sampling input/count semantics. It quarantines 43 evidenced level-60 scepter/reputation records while preserving their catalogue facts and unresolved gaps. The whole ordinary scope retains 60 IDs / 338 actions; same-scope comparisons expose a Horde travel/reward regression requiring shared-compiler review.
 
+The [Tanaris refresh](tanaris-2026-10-10/README.md) reruns the four-guide audit and full-flow estimate on the 0.8.65-based branch. Ordinary scope remains 60 quest IDs / 338 actions with 2 pickup and 1 objective location gap; the previously reviewed endgame gates and their source gaps remain documented. No new Tanaris source evidence or data change supports another correction; the earlier Horde 51–60 route guard remains REVIEW REQUIRED.
+
 The [Hinterlands review](hinterlands-2026-10-08/README.md) corrects the supplied venom parcel and maps Rhapsody's two missing liver drops to actual published Feralas points. All 50 IDs / 183 actions and all 16 strict replay states survive; recorded objective gaps 2 → 0. Elevation/approach uncertainty and three external Zul'Farrak prerequisite handoffs remain explicit coordination/player-check items.
 
 [Final combined guide validation](coverage-integration-2026-10-08/README.md): 1,562/1,563 host tests pass, including all 64 zone regressions; the sole historical catalogue fingerprint assertion remains. All 152 sections / 11,833 source points are checked, with 33 recorded gap-free sections and 390 unresolved ordinary records. No native beta or complete-terrain claim.
