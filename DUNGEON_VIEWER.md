@@ -1,4 +1,4 @@
-# Dungeon viewer — 0.8.65 — CLASSIC DUNGEON TRACKING
+# Dungeon viewer — 0.8.66 — NATIVE FINDER FILTERS
 
 **See dungeon** opens the full journal from the main addon's Dungeon quests cards
 from anywhere. Cards place **Quest list** beside **Start route**; clicking the
@@ -242,14 +242,24 @@ This mode verifies both CSV SHA-256s against `DungeonMapData.json` before writin
 
 ## Forever finder filters
 
-The owned **Find players** view recognizes `LFGParentFrame` / `LFGBrowseFrame`
-on the Classic Browse tab, in addition to the modern search/applicant fallback.
-It reads currently loaded public `C_LFGList` results and matches the native
-activity selection. Role/class filters intersect; class identity comes from
-the API's `classFilename`, and Forever's `lfgRoles` structure supplies explicit
-`tank`, `healer` and `dps` flags. Class never implies role. No native scripts,
-rows, providers, search calls or invite actions are replaced. Reference API/UI
-facts are pinned in `research/release-0.8.65-2026-10-09/README.md`.
+Forever's Classic `LFGBrowseFrame` now owns a compact header bar with combined
+role/class choices. It filters the native ScrollBox tree while preserving
+original result IDs/order and retaining Groups/self-listings. Original results
+are restored for All/All, disabling the option or leaving Browse. Native search,
+activity controls, handlers and invite/message actions are not replaced.
+Changes wait during combat; protected/unsupported providers remain untouched.
+The legacy retail search/applicant companion remains a fallback for those UIs.
+Roles come from public assigned roles / `lfgRoles` flags, never from class.
+
+RFC's submitted 0.8.65 probe has instance 389 but no public X/Y, so its map
+stays static and the button says **Static map** (click to recheck). This is not
+an inferred position at the entrance or a fabricated native floor. A matching
+usable position restores Locate me and the marker automatically. HiddenMaps'
+public description also limits live tracking to supported pre-instance areas.
+
+Reference facts and host checks are recorded in
+`research/release-0.8.66-2026-10-10/README.md`. Actual beta UI integration,
+selection/invite behavior and position availability still need live checks.
 
 Reproduce the separate factual compilation:
 

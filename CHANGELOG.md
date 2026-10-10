@@ -1,5 +1,31 @@
 # Wow Together changelog
 
+## 0.8.66
+
+**NATIVE GROUP FINDER FILTERS**
+
+- Move Forever's role/class controls into Looking For Group → Browse, beneath
+  its category/activity row. Filter native Players rows using both choices;
+  keep groups and your own listing. Select, message and invite using the game
+  controls. All/All restores the original list; no separate Classic finder view.
+- Preserve native result IDs, ordering, activity choices and search behavior.
+  Refresh filters on listing changes; idle refreshes preserve selection. Defer
+  changes during combat and restore results when disabled or leaving Browse.
+  Unsupported/protected providers remain unchanged; no automated social actions.
+- Show **Static map** when a dungeon supplies no usable player position. The
+  reported RFC build provides instance identity without X/Y, so this release
+  does not claim to fix live interior tracking. Public-coordinate adapters and
+  static boss/quest markers remain; click the button to check again.
+- Review guide-agent commits through `53d5e12`: retain audit refreshes for Swamp
+  of Sorrows, Tanaris, Hinterlands, Thoradin's Wall, Westfall, Wetlands and
+  Winterspring. Preserve Felwood/Feralas research but defer their data candidates
+  because full-route guards report reward/difficulty regressions and a Felwood
+  order/endpoint failure. Existing quest data and player progress remain.
+
+Lua 5.1 host checks cover native list filtering, stable IDs/selection, refresh,
+combat deferral, restoring results, provider failures, and the reported missing
+RFC coordinates. Native rendering, invites and taint still need live beta checks.
+
 ## 0.8.65
 
 **CLASSIC DUNGEON TRACKING AND FINDER FILTERS**

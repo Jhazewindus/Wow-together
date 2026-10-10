@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.65** — **CLASSIC DUNGEON TRACKING AND FINDER FILTERS**, World of Warcraft: Forever beta,
+For **0.8.66** — **NATIVE GROUP FINDER FILTERS**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **10–15 minutes for this update**; the wider optional checks take 45–60
 minutes. Each tester reports Pass / Fail / Skip with a reason.
@@ -8,7 +8,7 @@ Keep tester names and reports separate; label the main developer's report.
 The retained expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 87 Lua files** and
+1. Replace the complete WowTogether folder, including **all 88 Lua files** and
    the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    **Fully restart the client for this update**, rather than only `/reload`.
@@ -21,50 +21,42 @@ The retained expanded-guide checks below take about **15–25 minutes**.
    applying completed/accepted quests and manual skips. Step numbers may change.
    A reload on the same version should preserve the saved order.
 
-## Classic dungeon position and finder filters — this update
+## Native finder filters — this update
 
-1. Replace the full addon folder and **fully exit/restart WoW**. Keep Lua errors
-   enabled. Quest normally, complete/accept quests, change guide steps, fight,
-   and open/close the world map. Check for the reported MawBuffs/scenario tracker
-   GetAuraDataByIndex error. Addon routes/arrow should work; automatic native
-   game-map quest selection is deliberately disabled on this secret-aura client.
-   Report any recurrence with version/build, stack, guide, combat and open UI.
-2. Open WoW Together's Ragefire Chasm map before entering, disable the entry
-   prompt, and enter RFC. The player marker should use its reference artwork
-   when public instance coordinates are available. Try **Locate me**, walk/turn,
-   resize, move the map and enter combat.
-   Confirm the arrow/player stays correctly aligned with the actual room.
-   This is the addon map, not Blizzard's round minimap. If no player appears,
-   capture `/wt probe` **while inside RFC with the addon map open**, especially
-   **Dungeon player**, **Dungeon world position**, the map image and current
-   room. Also report a marker in the wrong place. Unavailable/private positions
-   and overlapping reference floors may remain static; do not test from Orgrimmar.
-3. On a multi-floor dungeon, test automatic following, manual boss/floor browsing
-   and Locate me. A manually selected other floor should remain selected with
-   no stale player marker. Leaving the instance must not leave a player at its
-   last dungeon coordinates. Resizing must preserve letterbox alignment.
-4. Open Forever's **Looking For Group → Browse** tab and load results. The
-   **Find players** companion should appear beside it. Test **both dropdowns**:
-   All roles/Tank/Healer/Damage/Unspecified, and All classes/a specific class.
-   Combine Healer + Shaman (or another listed combination), test multi-role
-   players, then change the native activity selection. Compare results with
-   the native list. Missing names/roles/classes must not be inferred.
-5. Move/close the view; it stays closed until reopening Browse. Disable
-   it in Settings → Party progress. Close the finder: the companion hides.
-   No automatic searches, invites, declines or whispers should occur. If the
-   view is missing, capture `/wt probe` with **Browse open**, including **Group
-   finder filters**, **Group finder context**, and relevant C_LFGList capability
-   lines. Include the native tab and screenshot. Check no tracker taint appears.
-6. Optional Eastern Plaguelands: verify Marauders of Darrowshire returns five
-   Resonating Skulls, with Fetid Skulls as preparation; To Kill With Purpose
-   returns one Coagulated Rot, with seven Living Rot as preparation. Item-use
-   locations remain unresolved and should not become invented destinations.
+1. Fully restart WoW after replacing the complete addon folder. Open Blizzard's
+   **Looking For Group → Browse** and load results. Role/Class dropdowns should
+   sit beneath category/activity inside the header, with no companion window.
+   Check different UI scales: no overlap with activities, refresh or results.
+2. Select Healer, then Shaman (or another listed combination). Only matching
+   solo **Players** remain. Declared multi-role players match each declared role.
+   Groups and your own listing remain. All roles + All classes restores all
+   native results. Missing role/class data must not be guessed from class.
+3. Scroll, collapse/expand sections, select a player, and wait several seconds.
+   Selection must not disappear on idle refresh. Verify the selected player
+   matches the native Send Message / Group Invite target before using either.
+   Change filters: stale selection should clear. Nothing sends automatically.
+4. Change native activity/category and refresh results. Filters follow the
+   new native list with no duplicate/stale rows. Test a combination matching
+   nobody; return to All. Hide/reopen Browse and disable/re-enable the setting
+   in Party progress. Native rows must restore normally.
+5. Enter combat with the finder open: filter controls disable, with no protected
+   action or secret-aura errors. After combat they enable and refresh. Quest,
+   accept/return work, and change maps too: the earlier tracker taint mitigation
+   remains. Report errors with stack, addon/client build and open UI.
+6. Open the addon map **inside RFC**. The reported build supplies no usable X/Y:
+   **Static map** and no player arrow are expected in that case. Click to recheck;
+   capture Dungeon player / Dungeon world position from `/wt probe`. If public
+   coordinates do appear, Locate me and a marker should return automatically.
+   Walk/turn/resize and verify room alignment; other floors/outdoors must never
+   retain a stale marker. Static bosses/quest markers should remain available.
+7. Scan/reload an existing leveling guide: accepted/completed work and skips
+   remain. This release reviews additional zone research but ships no new
+   Felwood/Feralas data candidate; their failed route guards still need correction.
 
-Host checks cover native UI isolation, reference-world projection, dungeon
-entry/floor/resize handling, role structures, class filtering and reviewed markers.
-They cannot verify actual beta rendering, API delivery or absence of taint.
+Host checks cannot establish native beta rendering, invite behavior, taint
+absence or whether the client exposes dungeon-interior coordinates.
 
-## Continue anyway — this update
+## Continue anyway — retained checks
 
 1. Open a fixed leveling guide that pauses because its remaining quests are
    outside your recommended level range. Record level, guide and unfinished

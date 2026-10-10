@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.65 — CLASSIC DUNGEON TRACKING AND FINDER FILTERS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.66 — NATIVE GROUP FINDER FILTERS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -18,24 +18,30 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **87 Lua
+Replace the folder on **every party member's client**, including all **88 Lua
 files** and the **Media folder**, then fully restart the client. Restart if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
 
-**0.8.65 fixes the Forever Classic finder adapter and adds class filtering.**
-Open Looking For Group → Browse to see the movable **Find players** list beside
-it. Choose a role and class together; the list follows the native activity
-filter and uses players' declared roles. Native messaging/invites stay in the
-game finder. Close/reopen Browse to restore the view, or disable it in Settings
-→ Party progress → Group finder filters.
+**0.8.66 puts role and class filters inside Blizzard's finder.**
+Open Looking For Group → Browse. Choose a role and class beneath the existing
+category/activity controls to filter its native **Players** rows. Groups and
+your own listing remain visible; use the normal selection, message and invite
+buttons. Select All roles / All classes to restore the list. Disable the controls
+in Settings → Party progress → Group finder filters. Changes wait during combat.
 
-The player marker can now use public instance world coordinates on Classic
-reference maps, including **Ragefire Chasm**, without a native dungeon map.
-Matching published floor rectangles preserve movement/resize alignment.
-Private/unavailable coordinates or ambiguous floors keep the map static.
-Please test inside RFC; `/wt probe` now includes the actual instance coordinate
-state. These older layout references still need Forever alignment testing.
+The supplied RFC 0.8.65 probe confirms instance 389 but no usable player X/Y.
+No live arrow can be drawn from that report: the reference map now says
+**Static map** instead of offering a misleading Locate me label. Click to
+check again. Public coordinates, if available, still enable the marker and
+Locate me automatically; native floor/reference alignment remains beta-tested.
+HiddenMaps also describes instance interiors as static, with live tracking in
+supported pre-instance areas only. Boss and quest markers remain available.
+
+Nine new guide-agent commits were reviewed. Seven audit refreshes are retained;
+Felwood/Feralas candidate data changes are deferred because their complete-route
+checks regress reward timing/difficulty (and Felwood short-guide order).
+Their evidence is saved in research; shipped quest facts remain at 0.8.65.
 
 **The 0.8.64 taint mitigation remains.** Automatic
 native quest selection/supertracking is disabled on the secret-aura client;

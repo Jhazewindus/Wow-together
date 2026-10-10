@@ -160,31 +160,32 @@ class ForeverFinderTests(unittest.TestCase):
         c.lua.execute('finderInfo[2].hasSelf=true')
         self.assertEqual(self.names(c, activities=activities), [])
 
-    def test_classic_sidebar_appears_with_both_dropdowns_and_never_changes_native_ui(self):
-        c = self.client()
+    def test_classic_header_has_both_dropdowns_without_reparenting_native_frames(self):
+        from test_0866 import NATIVE_FINDER
+        c = Client(before_load=NATIVE_FINDER)
         c.lua.execute('''
           function LFGParentFrame:SetScript()error('native hook')end
           function LFGBrowseFrame:SetScript()error('native hook')end
           function LFGBrowseFrame:SetParent()error('native reparent')end
           function LFGBrowseFrame:Hide()error('native hide')end
         ''')
-        c.ns.RefreshGroupFinderRoles(); f = c.ns.groupFinderRoleWindow
-        self.assertTrue(f.IsShown(f)); self.assertEqual(f.context, 'classic')
-        f.filter.options.HEALER.OnClick(); f.classFilter.options[7].OnClick()
-        self.assertEqual(f.rows[1].data.name, 'Mystery')
-        self.assertFalse(f.rows[2].IsShown(f.rows[2]))
-        self.assertEqual(f.classFilter.width, 130)
+        c.ns.RefreshGroupFinderRoles(); f = c.ns.groupFinderNativeBar
+        self.assertTrue(f.IsShown(f)); self.assertIsNone(c.ns.groupFinderRoleWindow)
+        f.roles.options.HEALER.OnClick(); f.classes.options[7].OnClick()
+        self.assertEqual(list(c.lua.globals().shownIDs().values()), [1,2])
+        self.assertEqual(f.classes.width, 120)
 
     def test_classic_tab_changes_close_reopen_and_native_activity_refresh(self):
-        c = self.client(); c.ns.RefreshGroupFinderRoles(); f = c.ns.groupFinderRoleWindow
-        c.lua.execute('LFGBrowseFrame.ActivityDropdown.selectedValues={20}')
-        c.ns.RefreshGroupFinderRoles(); self.assertEqual(f.rows[1].data.name, 'Mystery')
+        from test_0866 import NATIVE_FINDER
+        c = Client(before_load=NATIVE_FINDER); c.ns.RefreshGroupFinderRoles(); f = c.ns.groupFinderNativeBar
+        c.lua.execute('LFGBrowseFrame.ActivityDropdown.selectedValues={20};LFGBrowseFrame.results={2};LFGBrowseFrame:UpdateResults()')
+        c.ns.RefreshGroupFinderRoles(); self.assertEqual(list(c.lua.globals().shownIDs().values()), [2])
         c.lua.execute('LFGBrowseFrame:Hide()'); c.ns.RefreshGroupFinderRoles()
         self.assertFalse(f.IsShown(f))
         c.lua.execute('LFGBrowseFrame:Show()'); c.ns.RefreshGroupFinderRoles()
         self.assertTrue(f.IsShown(f))
-        f.close.OnClick(); c.ns.RefreshGroupFinderRoles(); self.assertFalse(f.IsShown(f))
         c.lua.execute('LFGParentFrame:Hide()'); c.ns.RefreshGroupFinderRoles()
+        self.assertFalse(f.IsShown(f))
         c.lua.execute('LFGParentFrame:Show()'); c.ns.RefreshGroupFinderRoles()
         self.assertTrue(f.IsShown(f))
 

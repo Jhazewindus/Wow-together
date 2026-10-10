@@ -88,6 +88,14 @@ function ns.UpdateDungeonPlayer(frame)
         floor, id, x, y, reason = referencePosition(frame)
         source = "reference-world"
     end
+    if frame.refresh and frame.playerLocatable ~= (floor ~= nil) then
+        -- Keep the refresh action available, but do not offer a misleading
+        -- Locate me label when Classic provides no usable interior position.
+        frame.playerLocatable = floor ~= nil
+        frame.refresh.caption:SetText(floor and "Locate me" or "Static map")
+        ns.UIHelp(frame.refresh, floor and "Refresh the map and follow your current floor."
+            or "Live player position is unavailable here. Click to check again.")
+    end
     if not floor then ns.dungeonPlayerStatus = reason or "No matching player floor; map stays static."; return end
     if frame.followPlayer and floor ~= frame.floor and not frame.sizing and not frame.rendering and not frame.layingOut then
         frame.floor = floor

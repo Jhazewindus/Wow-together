@@ -1,7 +1,6 @@
 local addonName, ns = ...
 
--- A separate, read-only view of the finder's current public player data.
--- Never replace native filters, scroll-box providers, scripts or row visibility.
+-- Public player data shared by the Forever native filters and legacy sidebar.
 local roles = {{"all", "All roles"}, {"TANK", "Tank"}, {"HEALER", "Healer"}, {"DAMAGER", "Damage"}, {"unknown", "Unspecified"}}
 local labels = {TANK = "Tank", HEALER = "Healer", DAMAGER = "Damage"}
 local classes = {{0, "All classes"}, {11, "Druid"}, {3, "Hunter"}, {8, "Mage"}, {2, "Paladin"},
@@ -49,6 +48,8 @@ local function searchPlayer(id, index, info)
         if index == 1 then return player(info.leaderName, class, level, role, nil, nil, nil, classFile) end
     end
 end
+ns.GroupFinderListedPlayer = searchPlayer
+ns.GroupFinderRoleChoices, ns.GroupFinderClassChoices = roles, classes
 local function applicantPlayer(id, index)
     if type(C_LFGList.GetApplicantMemberInfo) ~= "function" then return end
     local ok, name, classFile, class, level, _, _, tank, healer, damage, role = pcall(C_LFGList.GetApplicantMemberInfo, id, index)
@@ -170,6 +171,12 @@ end
 function ns.RefreshGroupFinderRoles()
     local finder, mode = finderContext()
     local frame = ns.groupFinderRoleWindow
+    if mode == "classic" then
+        if frame then frame:Hide() end
+        ns.RefreshNativeGroupFinder()
+        return
+    end
+    ns.RefreshNativeGroupFinder()
     if not finder or not ns.Option("groupFinderRoles") then
         if frame then frame:Hide(); frame.dismissed = nil; frame.context = nil end
         return
@@ -209,8 +216,8 @@ function ns.RefreshGroupFinderRoles()
     frame:Show()
 end
 function ns.InitializeGroupFinderRoles()
-    -- Only the owned controller is polled/hooked. Read data once per second
-    -- while the relevant native panel is visible, and promptly on its events.
+    -- Own controller only; the native adapter uses a post-hook, not a method
+    -- replacement. Updates are batched and deferred while in combat.
     local controller, elapsed, dirty = CreateFrame("Frame"), 0, true
     ns.groupFinderRoleController = controller
     controller:SetScript("OnUpdate", function(_, delta)
@@ -222,7 +229,7 @@ function ns.InitializeGroupFinderRoles()
             elapsed, dirty = 0, nil; ns.RefreshGroupFinderRoles()
         end
     end)
-    for _, event in ipairs({"LFG_LIST_SEARCH_RESULTS_RECEIVED", "LFG_LIST_SEARCH_RESULT_UPDATED", "LFG_LIST_APPLICANT_LIST_UPDATED", "LFG_LIST_APPLICANT_UPDATED"}) do
+    for _, event in ipairs({"LFG_LIST_SEARCH_RESULTS_RECEIVED", "LFG_LIST_SEARCH_RESULT_UPDATED", "LFG_LIST_APPLICANT_LIST_UPDATED", "LFG_LIST_APPLICANT_UPDATED", "PLAYER_REGEN_ENABLED"}) do
         local previous = ns.handlers[event]
         ns.On(event, function(...) if previous then previous(...) end; dirty = true end)
     end
@@ -232,4 +239,5 @@ function ns.GroupFinderRoleDiagnostics(output)
     output("Group finder filters: " .. (ns.groupFinderRoleStatus or "Open Blizzard's player search or applicant list."))
     output("Group finder context: " .. (mode == "classic" and "Forever LFGParentFrame / LFGBrowseFrame"
         or mode or "no visible supported Browse/applicant panel") .. "; filters " .. (ns.Option("groupFinderRoles") and "enabled" or "disabled") .. ".")
+    if ns.groupFinderNativeStatus then output("Native finder filters: " .. ns.groupFinderNativeStatus) end
 end
