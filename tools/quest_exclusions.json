@@ -381,5 +381,21 @@
     "title": "Badlands Reagent Run II",
     "reason": "Alchemy profession quest (skill line 171; minimum rank 210)",
     "source": "Pinned QuestieDB Forever quest record at https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua records requiredSkill={1:171,2:210}; Wowhead comment 53995 independently identifies the quest as Alchemy-only. Quest ID 2203 remains in the catalogue for eligible characters; excluded from ordinary leveling routes. Reviewed 2026-10-10; see research/badlands-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      79090
+    ],
+    "title": "Repelling Invaders",
+    "reason": "Daily repeatable PvP quest",
+    "source": "https://www.wowhead.com/forever/quest=79090; captured 2026-10-10; SHA-256 4b2704fd9a25a490251006b72668cbde5e19ae51362fa0995a924798755b1fe9. Wowhead Forever quest metadata has daily=1 and wflags=2. Retain the catalogue record, exclude the repeatable from ordinary leveling routes. Reviewed 2026-10-10; see research/ashenvale-2026-10-10/source-facts.json."
+  },
+  {
+    "questIDs": [
+      79098
+    ],
+    "title": "Clear the Forest!",
+    "reason": "Daily repeatable PvP quest",
+    "source": "https://www.wowhead.com/forever/quest=79098; captured 2026-10-10; SHA-256 498d5c0825c781ad7457f8f763e65b9f60c3d6b80d79b010cffe7ce2dde6614e. Wowhead Forever quest metadata has daily=1 and wflags=2. Retain the catalogue record, exclude the repeatable from ordinary leveling routes. Reviewed 2026-10-10; see research/ashenvale-2026-10-10/source-facts.json."
   }
 ]

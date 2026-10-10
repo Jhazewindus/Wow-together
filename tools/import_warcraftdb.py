@@ -44,11 +44,33 @@ def apply_corrections(records):
             quest = records.get(correction['questID'])
             alternatives = correction['exclusiveQuests']
             if quest is None or any(other not in records for other in alternatives): continue
+            expected_titles = correction.get('exclusiveTitles', {})
             if quest['title'] != correction['title'] or any(
-                other == correction['questID'] or records[other]['title'] != correction['title'] for other in alternatives):
+                other == correction['questID'] or records[other]['title'] !=
+                expected_titles.get(str(other), correction['title']) for other in alternatives):
                 raise ValueError('Reviewed alternative quest identity changed; review required')
             quest['exclusiveQuests'] = sorted(set(alternatives))
             quest['exclusiveQuestSource'] = correction['source']
+            applied.append(correction['questID'])
+            continue
+        if correction.get('identityCorrection'):
+            quest = records.get(correction['questID'])
+            if quest is None:
+                continue
+            if quest.get('title') != correction['title']:
+                raise ValueError('Reviewed identity quest changed; review required')
+            rule = correction['identityCorrection']
+            before = correction.get('identityBefore', {})
+            allowed = {'classMask', 'raceMask'}
+            if not rule or set(rule) - allowed or set(before) - set(rule) or any(
+                    type(value) is not int or value < 0 for value in (*rule.values(), *before.values())):
+                raise ValueError('Reviewed identity correction is invalid')
+            for key, value in rule.items():
+                if quest.get(key, 0) not in (0, value, before.get(key, value)):
+                    raise ValueError('Reviewed identity fact conflicts with source; review required')
+            for key, value in rule.items():
+                quest[key] = value
+            quest['identityCorrectionSource'] = correction['source']
             applied.append(correction['questID'])
             continue
         if correction.get('pickupRequiresOffer'):

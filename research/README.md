@@ -312,3 +312,13 @@ and adds complete-journey safeguards to the initial geometric optimization.
 [Dustwallow Marsh](dustwallow-marsh-2026-10-09/README.md) includes faction object
 pickups, supplied deliveries and explicit gossip-placeholder exclusions. Original
 source comparisons and unresolved coordination proposals remain available.
+
+## 2026-10-10 — Ashenvale source coverage and faction stages
+
+[The Ashenvale review](ashenvale-2026-10-10/README.md) refreshes seven
+baseline sections, maps Shandrina's Horde Scout/Grunt item objectives, records
+mutually exclusive Alliance escape choices, retains care-package reputation
+facts and excludes two daily PvP quests from ordinary leveling. The hostile
+Astranaar route guard remains. Five complete routes pass; the Alliance 31–40
+action count rises 23 → 24 and its three location gaps close. Unknown
+Blackfathom, item-source and offer facts stay documented for beta follow-up.

@@ -1,15 +1,15 @@
 {
   "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
   "quest_records": 5230,
-  "static_points_checked": 11846,
-  "fixed_zone_guides_checked": 152,
-  "catalogue_reason_stages_checked": 16857,
+  "static_points_checked": 11854,
+  "fixed_zone_guides_checked": 150,
+  "catalogue_reason_stages_checked": 16860,
   "catalogue_reason_codes": {
     "class-progression": 1822,
     "level-work": 4459,
     "outside-level-range": 2,
-    "quest-objective": 5230,
-    "quest-reward": 5313,
+    "quest-objective": 5231,
+    "quest-reward": 5315,
     "selected-guide": 31
   },
   "reason_review_quest_ids": [
@@ -5293,18 +5293,12 @@
       "zone": "Ashenvale",
       "key": "level-zone:kalimdor/ashenvale:levels:31-40",
       "quests": 7,
-      "steps": 23,
-      "unknown_location_steps": 3,
+      "steps": 24,
+      "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
-        "a": [
-          86757
-        ],
-        "q": [
-          86757
-        ],
-        "t": [
-          86757
-        ]
+        "a": [],
+        "q": [],
+        "t": []
       },
       "unverified_pickup_requirement_quest_ids": [
         7863,
@@ -5313,66 +5307,23 @@
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
-      "reason_steps_checked": 23,
+      "reason_steps_checked": 24,
       "destination_reason_codes": {
-        "outside-level-range": 16,
+        "outside-level-range": 17,
         "quest-reward": 7
       },
       "reason_review_steps": 18,
       "cross_zone_reason_steps": 0,
       "flow_alternatives_evaluated": 4,
       "flow_loop_changes": 0,
-      "geometric_guard_rejections": 5,
+      "geometric_guard_rejections": 8,
       "geometric_bracket_replays": 4,
       "flow_state_valid": true,
       "quest_log_peak": 2,
-      "quest_reward_only_xp_shortfall": 88630,
-      "uncertain_travel_legs": 6,
-      "estimated_distance_before": 81594.04,
-      "estimated_distance_after": 81594.04
-    },
-    {
-      "faction": "Alliance",
-      "zone": "Ashenvale",
-      "key": "level-zone:kalimdor/ashenvale:levels:51-60",
-      "quests": 2,
-      "steps": 6,
-      "unknown_location_steps": 3,
-      "missing_location_quest_ids_by_stage": {
-        "a": [
-          79090
-        ],
-        "q": [
-          79090
-        ],
-        "t": [
-          79090
-        ]
-      },
-      "unverified_pickup_requirement_quest_ids": [
-        7865,
-        79090
-      ],
-      "unverified_objective_quantity_quest_ids": [],
-      "prerequisite_review_steps": 0,
-      "source_data_gap_free": false,
-      "reason_steps_checked": 6,
-      "destination_reason_codes": {
-        "outside-level-range": 4,
-        "quest-reward": 2
-      },
-      "reason_review_steps": 6,
-      "cross_zone_reason_steps": 0,
-      "flow_alternatives_evaluated": 0,
-      "flow_loop_changes": 0,
-      "geometric_guard_rejections": 0,
-      "geometric_bracket_replays": 4,
-      "flow_state_valid": true,
-      "quest_log_peak": 1,
-      "quest_reward_only_xp_shortfall": 1533500,
+      "quest_reward_only_xp_shortfall": 99480,
       "uncertain_travel_legs": 3,
-      "estimated_distance_before": 36000,
-      "estimated_distance_after": 36000
+      "estimated_distance_before": 62218.46,
+      "estimated_distance_after": 62218.46
     },
     {
       "faction": "Alliance",
@@ -8716,49 +8667,6 @@
       "uncertain_travel_legs": 12,
       "estimated_distance_before": 165014.36,
       "estimated_distance_after": 164532.5
-    },
-    {
-      "faction": "Horde",
-      "zone": "Ashenvale",
-      "key": "level-zone:kalimdor/ashenvale:levels:51-60",
-      "quests": 2,
-      "steps": 6,
-      "unknown_location_steps": 3,
-      "missing_location_quest_ids_by_stage": {
-        "a": [
-          79098
-        ],
-        "q": [
-          79098
-        ],
-        "t": [
-          79098
-        ]
-      },
-      "unverified_pickup_requirement_quest_ids": [
-        7868,
-        79098
-      ],
-      "unverified_objective_quantity_quest_ids": [],
-      "prerequisite_review_steps": 0,
-      "source_data_gap_free": false,
-      "reason_steps_checked": 6,
-      "destination_reason_codes": {
-        "outside-level-range": 4,
-        "quest-reward": 2
-      },
-      "reason_review_steps": 6,
-      "cross_zone_reason_steps": 1,
-      "flow_alternatives_evaluated": 0,
-      "flow_loop_changes": 0,
-      "geometric_guard_rejections": 0,
-      "geometric_bracket_replays": 4,
-      "flow_state_valid": true,
-      "quest_log_peak": 1,
-      "quest_reward_only_xp_shortfall": 1533500,
-      "uncertain_travel_legs": 3,
-      "estimated_distance_before": 36000,
-      "estimated_distance_after": 36000
     },
     {
       "faction": "Horde",

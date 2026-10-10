@@ -15921,5 +15921,154 @@
         ]
       }
     }
+  },
+  {
+    "questID": 994,
+    "title": "Escape Through Force",
+    "exclusiveQuests": [
+      995
+    ],
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; pinned SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87; reviewed 2026-10-10; see research/ashenvale-2026-10-10/source-facts.json. Published exclusiveTo field identifies the mutually exclusive escape choice; Wowhead comments 3156340/3156343 confirm the shared A Lost Master predecessor and 3150535 notes only one branch is completed.",
+    "exclusiveTitles": {
+      "995": "Escape Through Stealth"
+    }
+  },
+  {
+    "questID": 995,
+    "title": "Escape Through Stealth",
+    "exclusiveQuests": [
+      994
+    ],
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; pinned SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87; reviewed 2026-10-10; see research/ashenvale-2026-10-10/source-facts.json. Published exclusiveTo field identifies the mutually exclusive escape choice; Wowhead comments 3156340/3156343 confirm the shared A Lost Master predecessor and 3150535 notes only one branch is completed.",
+    "exclusiveTitles": {
+      "994": "Escape Through Force"
+    }
+  },
+  {
+    "questID": 7863,
+    "title": "Sentinel Basic Care Package",
+    "exclusiveQuests": [
+      7864,
+      7865
+    ],
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; pinned SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87; reviewed 2026-10-10; see research/ashenvale-2026-10-10/source-facts.json. Published exclusiveTo fields make the three reputation-tier package choices mutually exclusive within each faction.",
+    "exclusiveTitles": {
+      "7864": "Sentinel Standard Care Package",
+      "7865": "Sentinel Advanced Care Package"
+    }
+  },
+  {
+    "questID": 7863,
+    "title": "Sentinel Basic Care Package",
+    "pickupRequiresOffer": true,
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; pinned SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87; reviewed 2026-10-10; see research/ashenvale-2026-10-10/source-facts.json. requiredMinRep records Friendly (3000) with faction 890 Silverwing Sentinels (Alliance) or 889 Warsong Outriders (Horde). Route pickup stays offer-checked; minimum reputation is retained in research because runtime eligibility does not model reputation."
+  },
+  {
+    "questID": 7864,
+    "title": "Sentinel Standard Care Package",
+    "exclusiveQuests": [
+      7863,
+      7865
+    ],
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; pinned SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87; reviewed 2026-10-10; see research/ashenvale-2026-10-10/source-facts.json. Published exclusiveTo fields make the three reputation-tier package choices mutually exclusive within each faction.",
+    "exclusiveTitles": {
+      "7863": "Sentinel Basic Care Package",
+      "7865": "Sentinel Advanced Care Package"
+    }
+  },
+  {
+    "questID": 7864,
+    "title": "Sentinel Standard Care Package",
+    "pickupRequiresOffer": true,
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; pinned SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87; reviewed 2026-10-10; see research/ashenvale-2026-10-10/source-facts.json. requiredMinRep records Friendly (3000) with faction 890 Silverwing Sentinels (Alliance) or 889 Warsong Outriders (Horde). Route pickup stays offer-checked; minimum reputation is retained in research because runtime eligibility does not model reputation."
+  },
+  {
+    "questID": 7865,
+    "title": "Sentinel Advanced Care Package",
+    "exclusiveQuests": [
+      7863,
+      7864
+    ],
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; pinned SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87; reviewed 2026-10-10; see research/ashenvale-2026-10-10/source-facts.json. Published exclusiveTo fields make the three reputation-tier package choices mutually exclusive within each faction.",
+    "exclusiveTitles": {
+      "7863": "Sentinel Basic Care Package",
+      "7864": "Sentinel Standard Care Package"
+    }
+  },
+  {
+    "questID": 7865,
+    "title": "Sentinel Advanced Care Package",
+    "pickupRequiresOffer": true,
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; pinned SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87; reviewed 2026-10-10; see research/ashenvale-2026-10-10/source-facts.json. requiredMinRep records Friendly (3000) with faction 890 Silverwing Sentinels (Alliance) or 889 Warsong Outriders (Horde). Route pickup stays offer-checked; minimum reputation is retained in research because runtime eligibility does not model reputation."
+  },
+  {
+    "questID": 7866,
+    "title": "Outrider Basic Care Package",
+    "exclusiveQuests": [
+      7867,
+      7868
+    ],
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; pinned SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87; reviewed 2026-10-10; see research/ashenvale-2026-10-10/source-facts.json. Published exclusiveTo fields make the three reputation-tier package choices mutually exclusive within each faction.",
+    "exclusiveTitles": {
+      "7867": "Outrider Standard Care Package",
+      "7868": "Outrider Advanced Care Package"
+    }
+  },
+  {
+    "questID": 7866,
+    "title": "Outrider Basic Care Package",
+    "pickupRequiresOffer": true,
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; pinned SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87; reviewed 2026-10-10; see research/ashenvale-2026-10-10/source-facts.json. requiredMinRep records Friendly (3000) with faction 890 Silverwing Sentinels (Alliance) or 889 Warsong Outriders (Horde). Route pickup stays offer-checked; minimum reputation is retained in research because runtime eligibility does not model reputation."
+  },
+  {
+    "questID": 7867,
+    "title": "Outrider Standard Care Package",
+    "exclusiveQuests": [
+      7866,
+      7868
+    ],
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; pinned SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87; reviewed 2026-10-10; see research/ashenvale-2026-10-10/source-facts.json. Published exclusiveTo fields make the three reputation-tier package choices mutually exclusive within each faction.",
+    "exclusiveTitles": {
+      "7866": "Outrider Basic Care Package",
+      "7868": "Outrider Advanced Care Package"
+    }
+  },
+  {
+    "questID": 7867,
+    "title": "Outrider Standard Care Package",
+    "pickupRequiresOffer": true,
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; pinned SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87; reviewed 2026-10-10; see research/ashenvale-2026-10-10/source-facts.json. requiredMinRep records Friendly (3000) with faction 890 Silverwing Sentinels (Alliance) or 889 Warsong Outriders (Horde). Route pickup stays offer-checked; minimum reputation is retained in research because runtime eligibility does not model reputation."
+  },
+  {
+    "questID": 7868,
+    "title": "Outrider Advanced Care Package",
+    "exclusiveQuests": [
+      7866,
+      7867
+    ],
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; pinned SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87; reviewed 2026-10-10; see research/ashenvale-2026-10-10/source-facts.json. Published exclusiveTo fields make the three reputation-tier package choices mutually exclusive within each faction.",
+    "exclusiveTitles": {
+      "7866": "Outrider Basic Care Package",
+      "7867": "Outrider Standard Care Package"
+    }
+  },
+  {
+    "questID": 7868,
+    "title": "Outrider Advanced Care Package",
+    "pickupRequiresOffer": true,
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; pinned SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87; reviewed 2026-10-10; see research/ashenvale-2026-10-10/source-facts.json. requiredMinRep records Friendly (3000) with faction 890 Silverwing Sentinels (Alliance) or 889 Warsong Outriders (Horde). Route pickup stays offer-checked; minimum reputation is retained in research because runtime eligibility does not model reputation."
+  },
+  {
+    "questID": 95042,
+    "title": "Seeking the Kor Gem",
+    "identityCorrection": {
+      "classMask": 2,
+      "raceMask": 16
+    },
+    "source": "https://www.wowhead.com/forever/quest=95042; captured 2026-10-10; SHA-256 8d9539fd1a0e33577b64b51e421288cedb00eadd008c34d2a62b183fa92c182d. Wowhead Forever metadata carries reqclass=2 and reqrace=16 (pinned class/race mask encoding: Paladin bit 2 and Undead race bit 16). Retain the source restriction; class quest display remains governed by the existing setting. Actual beta offer confirmation remains required.",
+    "identityBefore": {
+      "classMask": 2,
+      "raceMask": 8589934770
+    }
   }
 ]

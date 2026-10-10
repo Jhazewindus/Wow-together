@@ -1,6 +1,6 @@
 {
   "source_data_complete": false,
-  "remaining_quest_records": 359,
+  "remaining_quest_records": 355,
   "limitations": [
     "This queue identifies missing facts, not a license to invent them",
     "Source capture must respect access policy and stop after denials",
@@ -3060,34 +3060,6 @@
       ]
     },
     {
-      "questID": 7865,
-      "title": "Sentinel Advanced Care Package",
-      "guides": [
-        "Alliance / Ashenvale"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=7865",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=14753"
-      ]
-    },
-    {
-      "questID": 7868,
-      "title": "Outrider Advanced Care Package",
-      "guides": [
-        "Horde / Ashenvale"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=7868",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=14754"
-      ]
-    },
-    {
       "questID": 7908,
       "title": "Arena Master",
       "guides": [
@@ -4208,36 +4180,6 @@
       ]
     },
     {
-      "questID": 79090,
-      "title": "Repelling Invaders",
-      "guides": [
-        "Alliance / Ashenvale"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=79090",
-      "entity_urls": []
-    },
-    {
-      "questID": 79098,
-      "title": "Clear the Forest!",
-      "guides": [
-        "Horde / Ashenvale"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=79098",
-      "entity_urls": []
-    },
-    {
       "questID": 79229,
       "title": "Highway Robbery",
       "guides": [
@@ -4511,13 +4453,12 @@
         "Alliance / Ashenvale"
       ],
       "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
         "pickup requirements"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=86757",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/npc=3955"
+      ]
     },
     {
       "questID": 87318,
