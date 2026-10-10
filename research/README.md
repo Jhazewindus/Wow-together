@@ -1,5 +1,15 @@
 # Reviewed player quest research
 
+## 2026-10-10 — Winterspring audit refresh
+
+[The Winterspring refresh](winterspring-2026-10-10/README.md) reruns the scoped
+0.8.65 audit and complete Horde/Alliance flow capture. It confirms the previously
+reviewed stage corrections remain intact, with 116/142 actions, no missing
+pickup/hand-in coordinates and the same open objective and Alliance pickup
+gaps. Seven focused coverage tests, 18 route regressions, and a Lua 5.1 host
+load of all 87 TOC files pass. No new data or shared engine behavior changed;
+native offers, access, and route checks remain on the player checklist.
+
 The [Felwood review](felwood-2026-10-09/README.md) refreshes all four faction/chapter guides, documents current NPC/item evidence and profession-only Salve exclusions, and retains the Hunter raid-location unknowns. Its scoped compilation passes; full route repricing exposes data-driven order and reward-timing tradeoffs for main-developer review.
 
 The [Feralas review](feralas-2026-10-10/README.md) corrects nine supplied-item false farms and the Morrow Stone two-item handoff. Both complete faction chapters retain all 239 actions; objective-location gaps fall 11 → 1, with Elixir acquisition still unknown. The Horde full-route guard requires review for reward timing and difficulty pressure.
