@@ -1,5 +1,40 @@
 # Reviewed player quest research
 
+## 2026-10-10 — Badlands chain stages and objective locations
+
+[The Badlands review](badlands-2026-10-10/README.md) refreshes all five guide
+chapters and expands the source check from 38 exact-zone records to all 44
+category records. It maps the 722 → 723 amulet delivery, the three separate
+item sources for Alliance 735 and Horde 736, all 11 Badlands Primitive Drawing
+drop sources, and current Solid Chest alternatives for 715. Unknown pickup and
+item-acquisition facts remain visible. All 284 guide actions, log peaks and XP
+timing are retained; route estimates rise where previously unmapped required
+work now has real cross-zone locations. Captured evidence, scoped audits,
+complete-route comparisons, focused tests and a beta player checklist accompany
+the data.
+
+## 2026-10-10 — Alterac Mountains faction, key source and chain handoffs
+
+[The Alterac Mountains review](alterac-mountains-2026-10-10/README.md) refreshes
+the 31–40 chapter, gates Strahnbrad Mystery to Horde, maps Key to the City’s
+Grimy Key footlocker objective, and fills Shrewd Negotiations’ start/return
+points. Four now-ineligible Alliance actions are removed; other full-guide
+actions remain. The 535 active-parent requirement needs main-developer
+eligibility coordination. Source hashes, scoped before/after audits, route
+metrics and a player checklist are retained with the review.
+
+## 2026-10-10 — Arathi Highlands full-scope refresh
+
+[The Arathi Highlands review](arathi-highlands-2026-10-10/README.md) maps
+confirmed returns for Ward Restocking, The Giant in the Den and Silky Sutures,
+records all 22 Illegible Recipe search points across nine ogres, and routes the
+giant quest through the existing elite warning/Skip policy. Four chapter/faction
+guides preserve all 334 actions; recorded stage gaps fall 8 → 5. The complete
+route audit remains valid; Horde 31–40 estimated travel falls about 18.6k units
+with the same 131 actions. The full audit checks 152 guides / 11,842 source
+points, and the source queue drops 363 → 362. Unknown pickup givers and the
+Packaged Tonics work point remain documented for beta follow-up.
+
 ## Main release review — 0.8.66 (10 October 2026)
 
 The nine commits through `53d5e12` are integrated as research. Seven zone audit

@@ -1,5 +1,1761 @@
 [
   {
+    "questID": 715,
+    "title": "Liquid Stone",
+    "source": "Wowhead Forever quest 715 links the Healing Potion objective to Solid Chest object 2857 (quest page captured 2026-10-10; SHA-256 f8757c22e3acd8bf882c00a02092cbf3b3badc00dd1fe9aadb4474cec45bfeb3). Current object positions: https://www.wowhead.com/forever/object=2857 (captured 2026-10-10; SHA-256 589ed896d234d2a9e353451a03352ae1c70a044369277e2205cefd2370d0ed0e); retain all published Badlands spawn points as alternatives. The separate Lesser Invisibility Potion requirement (item 3823) is alchemy-sourced; no local source was verified, so the quest's remaining incomplete-location flag stays.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 35,
+      "level": 37,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "buyable": true,
+          "name": "Healing Potion",
+          "buyPrice": 300,
+          "quantity": 1,
+          "itemID": 929
+        },
+        {
+          "quantity": 1,
+          "name": "Lesser Invisibility Potion",
+          "itemID": 3823
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Healing Potion",
+            "entityID": 929
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Lesser Invisibility Potion",
+            "entityID": 3823
+          }
+        ],
+        "requiredItems": [
+          {
+            "buyable": true,
+            "name": "Healing Potion",
+            "buyPrice": 300,
+            "quantity": 1,
+            "itemID": 929
+          },
+          {
+            "quantity": 1,
+            "name": "Lesser Invisibility Potion",
+            "itemID": 3823
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "mapID": 1418,
+            "action": "collect",
+            "entityID": 2857,
+            "y": 0.28800000000000003,
+            "objectiveKey": "item:929",
+            "name": "Solid Chest",
+            "x": 0.423,
+            "quantity": 1,
+            "itemName": "Healing Potion",
+            "itemID": 929,
+            "legacyStepKey": "q:1418:npc:2857"
+          }
+        ],
+        "npcTargets": [],
+        "objectiveAlternatives": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Healing Potion",
+            "entityID": 929
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Lesser Invisibility Potion",
+            "entityID": 3823
+          }
+        ],
+        "requiredItems": [
+          {
+            "buyable": true,
+            "name": "Healing Potion",
+            "buyPrice": 300,
+            "quantity": 1,
+            "itemID": 929
+          },
+          {
+            "quantity": 1,
+            "name": "Lesser Invisibility Potion",
+            "itemID": 3823
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "mapID": 1418,
+            "action": "collect",
+            "entityID": 2857,
+            "y": 0.28800000000000003,
+            "objectiveKey": "item:929",
+            "name": "Solid Chest",
+            "x": 0.423,
+            "quantity": 1,
+            "itemName": "Healing Potion",
+            "itemID": 929,
+            "legacyStepKey": "q:1418:npc:2857"
+          }
+        ],
+        "npcTargets": [],
+        "objectiveAlternatives": [
+          {
+            "itemName": "Healing Potion",
+            "locations": [
+              {
+                "entityType": "object",
+                "entityID": 2857,
+                "name": "Solid Chest",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.41600000000000004,
+                "y": 0.265,
+                "action": "loot",
+                "itemID": 929,
+                "itemName": "Healing Potion",
+                "quantity": 1,
+                "objectiveKey": "item:929",
+                "locationSource": "Wowhead Forever object=2857; captured 2026-10-10; SHA-256 589ed896d234d2a9e353451a03352ae1c70a044369277e2205cefd2370d0ed0e"
+              },
+              {
+                "entityType": "object",
+                "entityID": 2857,
+                "name": "Solid Chest",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.295,
+                "y": 0.565,
+                "action": "loot",
+                "itemID": 929,
+                "itemName": "Healing Potion",
+                "quantity": 1,
+                "objectiveKey": "item:929",
+                "locationSource": "Wowhead Forever object=2857; captured 2026-10-10; SHA-256 589ed896d234d2a9e353451a03352ae1c70a044369277e2205cefd2370d0ed0e"
+              },
+              {
+                "entityType": "object",
+                "entityID": 2857,
+                "name": "Solid Chest",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.536,
+                "y": 0.294,
+                "action": "loot",
+                "itemID": 929,
+                "itemName": "Healing Potion",
+                "quantity": 1,
+                "objectiveKey": "item:929",
+                "locationSource": "Wowhead Forever object=2857; captured 2026-10-10; SHA-256 589ed896d234d2a9e353451a03352ae1c70a044369277e2205cefd2370d0ed0e"
+              },
+              {
+                "entityType": "object",
+                "entityID": 2857,
+                "name": "Solid Chest",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.626,
+                "y": 0.705,
+                "action": "loot",
+                "itemID": 929,
+                "itemName": "Healing Potion",
+                "quantity": 1,
+                "objectiveKey": "item:929",
+                "locationSource": "Wowhead Forever object=2857; captured 2026-10-10; SHA-256 589ed896d234d2a9e353451a03352ae1c70a044369277e2205cefd2370d0ed0e"
+              },
+              {
+                "entityType": "object",
+                "entityID": 2857,
+                "name": "Solid Chest",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.138,
+                "y": 0.75,
+                "action": "loot",
+                "itemID": 929,
+                "itemName": "Healing Potion",
+                "quantity": 1,
+                "objectiveKey": "item:929",
+                "locationSource": "Wowhead Forever object=2857; captured 2026-10-10; SHA-256 589ed896d234d2a9e353451a03352ae1c70a044369277e2205cefd2370d0ed0e"
+              },
+              {
+                "entityType": "object",
+                "entityID": 2857,
+                "name": "Solid Chest",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.53,
+                "y": 0.349,
+                "action": "loot",
+                "itemID": 929,
+                "itemName": "Healing Potion",
+                "quantity": 1,
+                "objectiveKey": "item:929",
+                "locationSource": "Wowhead Forever object=2857; captured 2026-10-10; SHA-256 589ed896d234d2a9e353451a03352ae1c70a044369277e2205cefd2370d0ed0e"
+              },
+              {
+                "entityType": "object",
+                "entityID": 2857,
+                "name": "Solid Chest",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.508,
+                "y": 0.6829999999999999,
+                "action": "loot",
+                "itemID": 929,
+                "itemName": "Healing Potion",
+                "quantity": 1,
+                "objectiveKey": "item:929",
+                "locationSource": "Wowhead Forever object=2857; captured 2026-10-10; SHA-256 589ed896d234d2a9e353451a03352ae1c70a044369277e2205cefd2370d0ed0e"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 78823,
+    "title": "Terror of the Desert Skies",
+    "source": "Published Forever item-source relation: https://www.wowhead.com/forever/item=211269 (captured 2026-10-10; SHA-256 8d4c054b1129e05137dc5998832ff6815d274fa2b6c444637d7f7fb896668e11). Its item page identifies 11 Badlands NPC source IDs; all current Badlands spawn positions from those NPC pages are retained as alternate work locations. Quest 78823 page: https://www.wowhead.com/forever/quest=78823 (captured 2026-10-10; SHA-256 c50400bcce864ab7ea4a9b8f45907b5a4acfa640a1f95c84cfee8c30ffc677d6). This verifies the objective sources, not the missing quest starter; keep pickup unresolved.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 26,
+      "level": 40,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Primitive Drawing",
+          "itemID": 211269
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Primitive Drawing",
+            "entityID": 211269
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Primitive Drawing",
+            "itemID": 211269
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1418,
+            "legacyStepKey": "q:1418:npc:2701",
+            "entityID": 2701,
+            "y": 0.568,
+            "npc": true,
+            "x": 0.294,
+            "sourceZone": "Badlands",
+            "objectiveKey": "item:211269",
+            "itemID": 211269,
+            "quantity": 1,
+            "sourceAreaID": 3,
+            "itemName": "Primitive Drawing",
+            "action": "loot",
+            "name": "Dustbelcher Ogre"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Primitive Drawing",
+            "name": "Dustbelcher Ogre",
+            "entityID": 2701,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "objectiveAlternatives": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Primitive Drawing",
+            "entityID": 211269
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Primitive Drawing",
+            "itemID": 211269
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1418,
+            "legacyStepKey": "q:1418:npc:2701",
+            "entityID": 2701,
+            "y": 0.568,
+            "npc": true,
+            "x": 0.294,
+            "sourceZone": "Badlands",
+            "objectiveKey": "item:211269",
+            "itemID": 211269,
+            "quantity": 1,
+            "sourceAreaID": 3,
+            "itemName": "Primitive Drawing",
+            "action": "loot",
+            "name": "Dustbelcher Ogre"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Primitive Drawing",
+            "name": "Dustbelcher Ogre",
+            "entityID": 2701,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "Primitive Drawing",
+            "name": "Dustbelcher Brute",
+            "entityID": 2715,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "Primitive Drawing",
+            "name": "Dustbelcher Wyrmhunter",
+            "entityID": 2716,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "Primitive Drawing",
+            "name": "Dustbelcher Mauler",
+            "entityID": 2717,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "Primitive Drawing",
+            "name": "Dustbelcher Shaman",
+            "entityID": 2718,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "Primitive Drawing",
+            "name": "Dustbelcher Ogre Mage",
+            "entityID": 2720,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "Primitive Drawing",
+            "name": "Stonevault Seer",
+            "entityID": 2892,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "Primitive Drawing",
+            "name": "Stonevault Bonesnapper",
+            "entityID": 2893,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "Primitive Drawing",
+            "name": "Stonevault Shaman",
+            "entityID": 2894,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "Primitive Drawing",
+            "name": "Dustbelcher Warrior",
+            "entityID": 2906,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "Primitive Drawing",
+            "name": "Dustbelcher Mystic",
+            "entityID": 2907,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "objectiveAlternatives": [
+          {
+            "itemName": "Primitive Drawing",
+            "locations": [
+              {
+                "entityType": "npc",
+                "entityID": 2701,
+                "name": "Dustbelcher Ogre",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.278,
+                "y": 0.622,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2701; captured 2026-10-10; SHA-256 b0dcded2d8a7a950cd975d709ff0feb43882b09f5224fd18dce7ebaed12a740d",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2701,
+                "name": "Dustbelcher Ogre",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.276,
+                "y": 0.584,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2701; captured 2026-10-10; SHA-256 b0dcded2d8a7a950cd975d709ff0feb43882b09f5224fd18dce7ebaed12a740d",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2701,
+                "name": "Dustbelcher Ogre",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.622,
+                "y": 0.682,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2701; captured 2026-10-10; SHA-256 b0dcded2d8a7a950cd975d709ff0feb43882b09f5224fd18dce7ebaed12a740d",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2701,
+                "name": "Dustbelcher Ogre",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.308,
+                "y": 0.56,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2701; captured 2026-10-10; SHA-256 b0dcded2d8a7a950cd975d709ff0feb43882b09f5224fd18dce7ebaed12a740d",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2701,
+                "name": "Dustbelcher Ogre",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.62,
+                "y": 0.7,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2701; captured 2026-10-10; SHA-256 b0dcded2d8a7a950cd975d709ff0feb43882b09f5224fd18dce7ebaed12a740d",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2715,
+                "name": "Dustbelcher Brute",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.284,
+                "y": 0.568,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2715; captured 2026-10-10; SHA-256 61b36262b385c894a7e7013cc938c3b3ca10ddfdbbd1e8b72b0efdd47d69bdf4",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2715,
+                "name": "Dustbelcher Brute",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.28300000000000003,
+                "y": 0.63,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2715; captured 2026-10-10; SHA-256 61b36262b385c894a7e7013cc938c3b3ca10ddfdbbd1e8b72b0efdd47d69bdf4",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2715,
+                "name": "Dustbelcher Brute",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.626,
+                "y": 0.6920000000000001,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2715; captured 2026-10-10; SHA-256 61b36262b385c894a7e7013cc938c3b3ca10ddfdbbd1e8b72b0efdd47d69bdf4",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2715,
+                "name": "Dustbelcher Brute",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.306,
+                "y": 0.564,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2715; captured 2026-10-10; SHA-256 61b36262b385c894a7e7013cc938c3b3ca10ddfdbbd1e8b72b0efdd47d69bdf4",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2715,
+                "name": "Dustbelcher Brute",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.626,
+                "y": 0.7040000000000001,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2715; captured 2026-10-10; SHA-256 61b36262b385c894a7e7013cc938c3b3ca10ddfdbbd1e8b72b0efdd47d69bdf4",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2716,
+                "name": "Dustbelcher Wyrmhunter",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.122,
+                "y": 0.762,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2716; captured 2026-10-10; SHA-256 af8f3cc28fff7af891424c8ce16be49f2ee9e0378afa528489fe81e20e2076e7",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2716,
+                "name": "Dustbelcher Wyrmhunter",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.08199999999999999,
+                "y": 0.726,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2716; captured 2026-10-10; SHA-256 af8f3cc28fff7af891424c8ce16be49f2ee9e0378afa528489fe81e20e2076e7",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2716,
+                "name": "Dustbelcher Wyrmhunter",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.11,
+                "y": 0.8140000000000001,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2716; captured 2026-10-10; SHA-256 af8f3cc28fff7af891424c8ce16be49f2ee9e0378afa528489fe81e20e2076e7",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2716,
+                "name": "Dustbelcher Wyrmhunter",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.616,
+                "y": 0.68,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2716; captured 2026-10-10; SHA-256 af8f3cc28fff7af891424c8ce16be49f2ee9e0378afa528489fe81e20e2076e7",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2717,
+                "name": "Dustbelcher Mauler",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.132,
+                "y": 0.7559999999999999,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2717; captured 2026-10-10; SHA-256 0593cb0a59c908d9397c6739417447bc8ce86ccdf2778cacac272be5876bd11a",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2717,
+                "name": "Dustbelcher Mauler",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.084,
+                "y": 0.76,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2717; captured 2026-10-10; SHA-256 0593cb0a59c908d9397c6739417447bc8ce86ccdf2778cacac272be5876bd11a",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2717,
+                "name": "Dustbelcher Mauler",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.09,
+                "y": 0.818,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2717; captured 2026-10-10; SHA-256 0593cb0a59c908d9397c6739417447bc8ce86ccdf2778cacac272be5876bd11a",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2717,
+                "name": "Dustbelcher Mauler",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.106,
+                "y": 0.816,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2717; captured 2026-10-10; SHA-256 0593cb0a59c908d9397c6739417447bc8ce86ccdf2778cacac272be5876bd11a",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2717,
+                "name": "Dustbelcher Mauler",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.616,
+                "y": 0.68,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2717; captured 2026-10-10; SHA-256 0593cb0a59c908d9397c6739417447bc8ce86ccdf2778cacac272be5876bd11a",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2718,
+                "name": "Dustbelcher Shaman",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.094,
+                "y": 0.774,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2718; captured 2026-10-10; SHA-256 09c9d25823264f6f31d8ea1ce8e3a595c4e65dd24f90528fda91f6e10d1ffea4",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2718,
+                "name": "Dustbelcher Shaman",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.08,
+                "y": 0.846,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2718; captured 2026-10-10; SHA-256 09c9d25823264f6f31d8ea1ce8e3a595c4e65dd24f90528fda91f6e10d1ffea4",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2718,
+                "name": "Dustbelcher Shaman",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.134,
+                "y": 0.75,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2718; captured 2026-10-10; SHA-256 09c9d25823264f6f31d8ea1ce8e3a595c4e65dd24f90528fda91f6e10d1ffea4",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2718,
+                "name": "Dustbelcher Shaman",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.11,
+                "y": 0.8,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2718; captured 2026-10-10; SHA-256 09c9d25823264f6f31d8ea1ce8e3a595c4e65dd24f90528fda91f6e10d1ffea4",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2718,
+                "name": "Dustbelcher Shaman",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.616,
+                "y": 0.6779999999999999,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2718; captured 2026-10-10; SHA-256 09c9d25823264f6f31d8ea1ce8e3a595c4e65dd24f90528fda91f6e10d1ffea4",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2720,
+                "name": "Dustbelcher Ogre Mage",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.08199999999999999,
+                "y": 0.88,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2720; captured 2026-10-10; SHA-256 1e9ecd578b1118be849b67073f41b6544462c84e08ed18bda2b676232993b61f",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2720,
+                "name": "Dustbelcher Ogre Mage",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.08199999999999999,
+                "y": 0.9079999999999999,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2720; captured 2026-10-10; SHA-256 1e9ecd578b1118be849b67073f41b6544462c84e08ed18bda2b676232993b61f",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2892,
+                "name": "Stonevault Seer",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.644,
+                "y": 0.436,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2892; captured 2026-10-10; SHA-256 1a02d7f1cedc16c22a068f972dae69460679840d1e2c7756430fdbe409b1ddcd",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2893,
+                "name": "Stonevault Bonesnapper",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.522,
+                "y": 0.662,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2893; captured 2026-10-10; SHA-256 f88a7ee47eb09556a27b89f098ecb6040fc75b05ded5f80ab0c87081df6120fd",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2893,
+                "name": "Stonevault Bonesnapper",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.486,
+                "y": 0.7140000000000001,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2893; captured 2026-10-10; SHA-256 f88a7ee47eb09556a27b89f098ecb6040fc75b05ded5f80ab0c87081df6120fd",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2893,
+                "name": "Stonevault Bonesnapper",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.486,
+                "y": 0.6940000000000001,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2893; captured 2026-10-10; SHA-256 f88a7ee47eb09556a27b89f098ecb6040fc75b05ded5f80ab0c87081df6120fd",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2893,
+                "name": "Stonevault Bonesnapper",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.51,
+                "y": 0.7140000000000001,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2893; captured 2026-10-10; SHA-256 f88a7ee47eb09556a27b89f098ecb6040fc75b05ded5f80ab0c87081df6120fd",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2894,
+                "name": "Stonevault Shaman",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.51,
+                "y": 0.6759999999999999,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2894; captured 2026-10-10; SHA-256 d0d76c3f3f73ebc68dc26ff5f5f16ea7969e1bc263897490c618cef1dbc6df50",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2894,
+                "name": "Stonevault Shaman",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.48200000000000004,
+                "y": 0.688,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2894; captured 2026-10-10; SHA-256 d0d76c3f3f73ebc68dc26ff5f5f16ea7969e1bc263897490c618cef1dbc6df50",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2894,
+                "name": "Stonevault Shaman",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.494,
+                "y": 0.706,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2894; captured 2026-10-10; SHA-256 d0d76c3f3f73ebc68dc26ff5f5f16ea7969e1bc263897490c618cef1dbc6df50",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2906,
+                "name": "Dustbelcher Warrior",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.6559999999999999,
+                "y": 0.244,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2906; captured 2026-10-10; SHA-256 c4be4c4ee6cfc5a6fcf9e657a49a9f7848068bb8a501d06fdf31b25af06f53b7",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2907,
+                "name": "Dustbelcher Mystic",
+                "mapID": 1418,
+                "sourceAreaID": 3,
+                "x": 0.664,
+                "y": 0.23600000000000002,
+                "action": "loot",
+                "itemID": 211269,
+                "itemName": "Primitive Drawing",
+                "quantity": 1,
+                "objectiveKey": "item:211269",
+                "locationSource": "Wowhead Forever npc=2907; captured 2026-10-10; SHA-256 476ae7a79e8199f1a4e7e39f80e20efbc12f06a98dcd45cfa83a81586aef8311",
+                "npc": true
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 723,
+    "title": "Prospect of Faith",
+    "source": "Published Forever delivery facts: https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua (quest 723; sourceItemId 4635 and previous quest 722); Wowhead Forever quest 723 https://www.wowhead.com/forever/quest=723 (captured 2026-10-10; SHA-256 14b75aff812ddc26030aaf18b746de9c1ceafba98cc60ca608a380daadfe2b69); item 4635 https://www.wowhead.com/forever/item=4635 (captured 2026-10-10; SHA-256 494de9dba0221712e8fb0ecb83e3d5ef4117f5860466973e8586cb99037a51c4). The amulet handoff follows quest 722; do not add an independent farm objective.",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 35,
+      "level": 40,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "itemID": 4635,
+          "name": "Hammertoe's Amulet",
+          "quantity": 1
+        }
+      ]
+    }
+  },
+  {
+    "questID": 735,
+    "title": "The Star, the Hand and the Heart",
+    "source": "Published Forever objective item requirements and predecessor 727: https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Wowhead Forever quest 735 captured 2026-10-10 (SHA-256 b73476371c77d182e6faa34e35c12edaec8fe654ec3aa1a8ce52051a90c5d225); item 4646 https://www.wowhead.com/forever/item=4646 (SHA-256 e9f956787b9f6d303f0d19bc37ea972e0b4169b1dd86a49fd5b36c8c9b9934c8), Grel'borg 2417 https://www.wowhead.com/forever/npc=2417 (SHA-256 c614f7ab2083b4287cc83eb4a2637af806497f7377430eb8f29acf7b874ea22a); item 4641 https://www.wowhead.com/forever/item=4641 (SHA-256 1fdf018e0913c33b86bce8f2fa271b6ac987f65e0c1054fa7fdecc09b3105006), Dagun 2937 https://www.wowhead.com/forever/npc=2937 (SHA-256 f3bb14d40d1cda9b0aa6a030d26421bc7eae6c4395e32952db73e44407bccf7a); item 4644 https://www.wowhead.com/forever/item=4644 (SHA-256 d2749e46510f8523168bf474c95238e123db0179f0fae456a9db0133ae45c1d2), Mogh 1060 https://www.wowhead.com/forever/npc=1060 (SHA-256 137249f20483224129d76083bfc6077c14c8cd44bf34e7e39ed77f312888671a). This is the distinct Ironforge quest ID. Keep elite policy, faction/race gates and published chain; the additional pickup requirements remain unverified.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 30,
+      "level": 44,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "itemID": 4646,
+          "name": "Star of Xil'yeh",
+          "quantity": 1
+        },
+        {
+          "itemID": 4641,
+          "name": "Hand of Dagun",
+          "quantity": 1
+        },
+        {
+          "itemID": 4644,
+          "name": "The Legacy Heart",
+          "quantity": 1
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "entityID": 4646,
+            "name": "Star of Xil'yeh",
+            "quantity": 1
+          },
+          {
+            "entityType": "item",
+            "entityID": 4641,
+            "name": "Hand of Dagun",
+            "quantity": 1
+          },
+          {
+            "entityType": "item",
+            "entityID": 4644,
+            "name": "The Legacy Heart",
+            "quantity": 1
+          }
+        ],
+        "requiredItems": [
+          {
+            "itemID": 4646,
+            "name": "Star of Xil'yeh",
+            "quantity": 1
+          },
+          {
+            "itemID": 4641,
+            "name": "Hand of Dagun",
+            "quantity": 1
+          },
+          {
+            "itemID": 4644,
+            "name": "The Legacy Heart",
+            "quantity": 1
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1416,
+            "legacyStepKey": "q:1416:npc:2417",
+            "entityID": 2417,
+            "name": "Grel'borg the Miser",
+            "npc": true,
+            "x": 0.3558,
+            "y": 0.5442,
+            "objectiveKey": "item:4646",
+            "itemID": 4646,
+            "quantity": 1,
+            "sourceAreaID": 36,
+            "itemName": "Star of Xil'yeh",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Star of Xil'yeh",
+            "name": "Grel'borg the Miser",
+            "entityID": 2417,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "entityID": 4641,
+            "name": "Hand of Dagun",
+            "quantity": 1
+          },
+          {
+            "entityType": "item",
+            "entityID": 4644,
+            "name": "The Legacy Heart",
+            "quantity": 1
+          }
+        ],
+        "objectiveLocationsIncomplete": true,
+        "questType": "Elite",
+        "objectiveAlternatives": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "entityID": 4646,
+            "name": "Star of Xil'yeh",
+            "quantity": 1
+          },
+          {
+            "entityType": "item",
+            "entityID": 4641,
+            "name": "Hand of Dagun",
+            "quantity": 1
+          },
+          {
+            "entityType": "item",
+            "entityID": 4644,
+            "name": "The Legacy Heart",
+            "quantity": 1
+          }
+        ],
+        "requiredItems": [
+          {
+            "itemID": 4646,
+            "name": "Star of Xil'yeh",
+            "quantity": 1
+          },
+          {
+            "itemID": 4641,
+            "name": "Hand of Dagun",
+            "quantity": 1
+          },
+          {
+            "itemID": 4644,
+            "name": "The Legacy Heart",
+            "quantity": 1
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1416,
+            "entityID": 2417,
+            "name": "Grel'borg the Miser",
+            "npc": true,
+            "x": 0.366,
+            "y": 0.536,
+            "objectiveKey": "item:4646",
+            "itemID": 4646,
+            "quantity": 1,
+            "sourceAreaID": 36,
+            "itemName": "Star of Xil'yeh",
+            "locationSource": "Wowhead Forever npc=2417; captured 2026-10-10; SHA-256 c614f7ab2083b4287cc83eb4a2637af806497f7377430eb8f29acf7b874ea22a",
+            "action": "loot"
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1445,
+            "entityID": 2937,
+            "name": "Dagun the Ravenous",
+            "npc": true,
+            "x": 0.594,
+            "y": 0.098,
+            "objectiveKey": "item:4641",
+            "itemID": 4641,
+            "quantity": 1,
+            "sourceAreaID": 15,
+            "itemName": "Hand of Dagun",
+            "locationSource": "Wowhead Forever npc=2937; captured 2026-10-10; SHA-256 f3bb14d40d1cda9b0aa6a030d26421bc7eae6c4395e32952db73e44407bccf7a",
+            "action": "loot"
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "entityID": 1060,
+            "name": "Mogh the Undying",
+            "npc": true,
+            "x": 0.474,
+            "y": 0.442,
+            "objectiveKey": "item:4644",
+            "itemID": 4644,
+            "quantity": 1,
+            "sourceAreaID": 33,
+            "itemName": "The Legacy Heart",
+            "locationSource": "Wowhead Forever npc=1060; captured 2026-10-10; SHA-256 137249f20483224129d76083bfc6077c14c8cd44bf34e7e39ed77f312888671a",
+            "action": "loot"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Star of Xil'yeh",
+            "name": "Grel'borg the Miser",
+            "entityID": 2417,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "Hand of Dagun",
+            "name": "Dagun the Ravenous",
+            "entityID": 2937,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "The Legacy Heart",
+            "name": "Mogh the Undying",
+            "entityID": 1060,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": false,
+        "questType": "Elite",
+        "objectiveAlternatives": [
+          {
+            "itemName": "Star of Xil'yeh",
+            "locations": [
+              {
+                "entityType": "npc",
+                "entityID": 2417,
+                "name": "Grel'borg the Miser",
+                "mapID": 1416,
+                "sourceAreaID": 36,
+                "x": 0.366,
+                "y": 0.536,
+                "action": "loot",
+                "itemID": 4646,
+                "itemName": "Star of Xil'yeh",
+                "quantity": 1,
+                "objectiveKey": "item:4646",
+                "locationSource": "Wowhead Forever npc=2417; captured 2026-10-10; SHA-256 c614f7ab2083b4287cc83eb4a2637af806497f7377430eb8f29acf7b874ea22a",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2417,
+                "name": "Grel'borg the Miser",
+                "mapID": 1416,
+                "sourceAreaID": 36,
+                "x": 0.39799999999999996,
+                "y": 0.484,
+                "action": "loot",
+                "itemID": 4646,
+                "itemName": "Star of Xil'yeh",
+                "quantity": 1,
+                "objectiveKey": "item:4646",
+                "locationSource": "Wowhead Forever npc=2417; captured 2026-10-10; SHA-256 c614f7ab2083b4287cc83eb4a2637af806497f7377430eb8f29acf7b874ea22a",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2417,
+                "name": "Grel'borg the Miser",
+                "mapID": 1416,
+                "sourceAreaID": 36,
+                "x": 0.406,
+                "y": 0.466,
+                "action": "loot",
+                "itemID": 4646,
+                "itemName": "Star of Xil'yeh",
+                "quantity": 1,
+                "objectiveKey": "item:4646",
+                "locationSource": "Wowhead Forever npc=2417; captured 2026-10-10; SHA-256 c614f7ab2083b4287cc83eb4a2637af806497f7377430eb8f29acf7b874ea22a",
+                "npc": true
+              }
+            ]
+          },
+          {
+            "itemName": "Hand of Dagun",
+            "locations": [
+              {
+                "entityType": "npc",
+                "entityID": 2937,
+                "name": "Dagun the Ravenous",
+                "mapID": 1445,
+                "sourceAreaID": 15,
+                "x": 0.594,
+                "y": 0.098,
+                "action": "loot",
+                "itemID": 4641,
+                "itemName": "Hand of Dagun",
+                "quantity": 1,
+                "objectiveKey": "item:4641",
+                "locationSource": "Wowhead Forever npc=2937; captured 2026-10-10; SHA-256 f3bb14d40d1cda9b0aa6a030d26421bc7eae6c4395e32952db73e44407bccf7a",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2937,
+                "name": "Dagun the Ravenous",
+                "mapID": 1445,
+                "sourceAreaID": 15,
+                "x": 0.596,
+                "y": 0.106,
+                "action": "loot",
+                "itemID": 4641,
+                "itemName": "Hand of Dagun",
+                "quantity": 1,
+                "objectiveKey": "item:4641",
+                "locationSource": "Wowhead Forever npc=2937; captured 2026-10-10; SHA-256 f3bb14d40d1cda9b0aa6a030d26421bc7eae6c4395e32952db73e44407bccf7a",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2937,
+                "name": "Dagun the Ravenous",
+                "mapID": 1445,
+                "sourceAreaID": 15,
+                "x": 0.606,
+                "y": 0.102,
+                "action": "loot",
+                "itemID": 4641,
+                "itemName": "Hand of Dagun",
+                "quantity": 1,
+                "objectiveKey": "item:4641",
+                "locationSource": "Wowhead Forever npc=2937; captured 2026-10-10; SHA-256 f3bb14d40d1cda9b0aa6a030d26421bc7eae6c4395e32952db73e44407bccf7a",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2937,
+                "name": "Dagun the Ravenous",
+                "mapID": 1445,
+                "sourceAreaID": 15,
+                "x": 0.604,
+                "y": 0.094,
+                "action": "loot",
+                "itemID": 4641,
+                "itemName": "Hand of Dagun",
+                "quantity": 1,
+                "objectiveKey": "item:4641",
+                "locationSource": "Wowhead Forever npc=2937; captured 2026-10-10; SHA-256 f3bb14d40d1cda9b0aa6a030d26421bc7eae6c4395e32952db73e44407bccf7a",
+                "npc": true
+              }
+            ]
+          },
+          {
+            "itemName": "The Legacy Heart",
+            "locations": [
+              {
+                "entityType": "npc",
+                "entityID": 1060,
+                "name": "Mogh the Undying <Skullsplitter Clan Witchdoctor>",
+                "mapID": 1434,
+                "sourceAreaID": 33,
+                "x": 0.474,
+                "y": 0.442,
+                "action": "loot",
+                "itemID": 4644,
+                "itemName": "The Legacy Heart",
+                "quantity": 1,
+                "objectiveKey": "item:4644",
+                "locationSource": "Wowhead Forever npc=1060; captured 2026-10-10; SHA-256 137249f20483224129d76083bfc6077c14c8cd44bf34e7e39ed77f312888671a",
+                "npc": true
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 736,
+    "title": "The Star, the Hand and the Heart",
+    "source": "Published Forever objective item requirements and predecessor 728: https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua; Wowhead Forever quest 736 captured 2026-10-10 (SHA-256 38ab3a5b9c2025eb5f0bd044dfa4c651131e96aa84c4997824e5a39dff112c52); item 4646 https://www.wowhead.com/forever/item=4646 (SHA-256 e9f956787b9f6d303f0d19bc37ea972e0b4169b1dd86a49fd5b36c8c9b9934c8), Grel'borg 2417 https://www.wowhead.com/forever/npc=2417 (SHA-256 c614f7ab2083b4287cc83eb4a2637af806497f7377430eb8f29acf7b874ea22a); item 4641 https://www.wowhead.com/forever/item=4641 (SHA-256 1fdf018e0913c33b86bce8f2fa271b6ac987f65e0c1054fa7fdecc09b3105006), Dagun 2937 https://www.wowhead.com/forever/npc=2937 (SHA-256 f3bb14d40d1cda9b0aa6a030d26421bc7eae6c4395e32952db73e44407bccf7a); item 4644 https://www.wowhead.com/forever/item=4644 (SHA-256 d2749e46510f8523168bf474c95238e123db0179f0fae456a9db0133ae45c1d2), Mogh 1060 https://www.wowhead.com/forever/npc=1060 (SHA-256 137249f20483224129d76083bfc6077c14c8cd44bf34e7e39ed77f312888671a). This is the distinct Undercity quest ID. Keep elite policy, faction/race gates and published chain; the additional pickup requirements remain unverified.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 30,
+      "level": 44,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "itemID": 4646,
+          "name": "Star of Xil'yeh",
+          "quantity": 1
+        },
+        {
+          "itemID": 4641,
+          "name": "Hand of Dagun",
+          "quantity": 1
+        },
+        {
+          "itemID": 4644,
+          "name": "The Legacy Heart",
+          "quantity": 1
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "entityID": 4646,
+            "name": "Star of Xil'yeh",
+            "quantity": 1
+          },
+          {
+            "entityType": "item",
+            "entityID": 4641,
+            "name": "Hand of Dagun",
+            "quantity": 1
+          },
+          {
+            "entityType": "item",
+            "entityID": 4644,
+            "name": "The Legacy Heart",
+            "quantity": 1
+          }
+        ],
+        "requiredItems": [
+          {
+            "itemID": 4646,
+            "name": "Star of Xil'yeh",
+            "quantity": 1
+          },
+          {
+            "itemID": 4641,
+            "name": "Hand of Dagun",
+            "quantity": 1
+          },
+          {
+            "itemID": 4644,
+            "name": "The Legacy Heart",
+            "quantity": 1
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1416,
+            "legacyStepKey": "q:1416:npc:2417",
+            "entityID": 2417,
+            "name": "Grel'borg the Miser",
+            "npc": true,
+            "x": 0.3558,
+            "y": 0.5442,
+            "objectiveKey": "item:4646",
+            "itemID": 4646,
+            "quantity": 1,
+            "sourceAreaID": 36,
+            "itemName": "Star of Xil'yeh",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Star of Xil'yeh",
+            "name": "Grel'borg the Miser",
+            "entityID": 2417,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "entityID": 4641,
+            "name": "Hand of Dagun",
+            "quantity": 1
+          },
+          {
+            "entityType": "item",
+            "entityID": 4644,
+            "name": "The Legacy Heart",
+            "quantity": 1
+          }
+        ],
+        "objectiveLocationsIncomplete": true,
+        "questType": "Elite",
+        "objectiveAlternatives": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "entityID": 4646,
+            "name": "Star of Xil'yeh",
+            "quantity": 1
+          },
+          {
+            "entityType": "item",
+            "entityID": 4641,
+            "name": "Hand of Dagun",
+            "quantity": 1
+          },
+          {
+            "entityType": "item",
+            "entityID": 4644,
+            "name": "The Legacy Heart",
+            "quantity": 1
+          }
+        ],
+        "requiredItems": [
+          {
+            "itemID": 4646,
+            "name": "Star of Xil'yeh",
+            "quantity": 1
+          },
+          {
+            "itemID": 4641,
+            "name": "Hand of Dagun",
+            "quantity": 1
+          },
+          {
+            "itemID": 4644,
+            "name": "The Legacy Heart",
+            "quantity": 1
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1416,
+            "entityID": 2417,
+            "name": "Grel'borg the Miser",
+            "npc": true,
+            "x": 0.366,
+            "y": 0.536,
+            "objectiveKey": "item:4646",
+            "itemID": 4646,
+            "quantity": 1,
+            "sourceAreaID": 36,
+            "itemName": "Star of Xil'yeh",
+            "locationSource": "Wowhead Forever npc=2417; captured 2026-10-10; SHA-256 c614f7ab2083b4287cc83eb4a2637af806497f7377430eb8f29acf7b874ea22a",
+            "action": "loot"
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1445,
+            "entityID": 2937,
+            "name": "Dagun the Ravenous",
+            "npc": true,
+            "x": 0.594,
+            "y": 0.098,
+            "objectiveKey": "item:4641",
+            "itemID": 4641,
+            "quantity": 1,
+            "sourceAreaID": 15,
+            "itemName": "Hand of Dagun",
+            "locationSource": "Wowhead Forever npc=2937; captured 2026-10-10; SHA-256 f3bb14d40d1cda9b0aa6a030d26421bc7eae6c4395e32952db73e44407bccf7a",
+            "action": "loot"
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1434,
+            "entityID": 1060,
+            "name": "Mogh the Undying",
+            "npc": true,
+            "x": 0.474,
+            "y": 0.442,
+            "objectiveKey": "item:4644",
+            "itemID": 4644,
+            "quantity": 1,
+            "sourceAreaID": 33,
+            "itemName": "The Legacy Heart",
+            "locationSource": "Wowhead Forever npc=1060; captured 2026-10-10; SHA-256 137249f20483224129d76083bfc6077c14c8cd44bf34e7e39ed77f312888671a",
+            "action": "loot"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Star of Xil'yeh",
+            "name": "Grel'borg the Miser",
+            "entityID": 2417,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "Hand of Dagun",
+            "name": "Dagun the Ravenous",
+            "entityID": 2937,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "The Legacy Heart",
+            "name": "Mogh the Undying",
+            "entityID": 1060,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": false,
+        "questType": "Elite",
+        "objectiveAlternatives": [
+          {
+            "itemName": "Star of Xil'yeh",
+            "locations": [
+              {
+                "entityType": "npc",
+                "entityID": 2417,
+                "name": "Grel'borg the Miser",
+                "mapID": 1416,
+                "sourceAreaID": 36,
+                "x": 0.366,
+                "y": 0.536,
+                "action": "loot",
+                "itemID": 4646,
+                "itemName": "Star of Xil'yeh",
+                "quantity": 1,
+                "objectiveKey": "item:4646",
+                "locationSource": "Wowhead Forever npc=2417; captured 2026-10-10; SHA-256 c614f7ab2083b4287cc83eb4a2637af806497f7377430eb8f29acf7b874ea22a",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2417,
+                "name": "Grel'borg the Miser",
+                "mapID": 1416,
+                "sourceAreaID": 36,
+                "x": 0.39799999999999996,
+                "y": 0.484,
+                "action": "loot",
+                "itemID": 4646,
+                "itemName": "Star of Xil'yeh",
+                "quantity": 1,
+                "objectiveKey": "item:4646",
+                "locationSource": "Wowhead Forever npc=2417; captured 2026-10-10; SHA-256 c614f7ab2083b4287cc83eb4a2637af806497f7377430eb8f29acf7b874ea22a",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2417,
+                "name": "Grel'borg the Miser",
+                "mapID": 1416,
+                "sourceAreaID": 36,
+                "x": 0.406,
+                "y": 0.466,
+                "action": "loot",
+                "itemID": 4646,
+                "itemName": "Star of Xil'yeh",
+                "quantity": 1,
+                "objectiveKey": "item:4646",
+                "locationSource": "Wowhead Forever npc=2417; captured 2026-10-10; SHA-256 c614f7ab2083b4287cc83eb4a2637af806497f7377430eb8f29acf7b874ea22a",
+                "npc": true
+              }
+            ]
+          },
+          {
+            "itemName": "Hand of Dagun",
+            "locations": [
+              {
+                "entityType": "npc",
+                "entityID": 2937,
+                "name": "Dagun the Ravenous",
+                "mapID": 1445,
+                "sourceAreaID": 15,
+                "x": 0.594,
+                "y": 0.098,
+                "action": "loot",
+                "itemID": 4641,
+                "itemName": "Hand of Dagun",
+                "quantity": 1,
+                "objectiveKey": "item:4641",
+                "locationSource": "Wowhead Forever npc=2937; captured 2026-10-10; SHA-256 f3bb14d40d1cda9b0aa6a030d26421bc7eae6c4395e32952db73e44407bccf7a",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2937,
+                "name": "Dagun the Ravenous",
+                "mapID": 1445,
+                "sourceAreaID": 15,
+                "x": 0.596,
+                "y": 0.106,
+                "action": "loot",
+                "itemID": 4641,
+                "itemName": "Hand of Dagun",
+                "quantity": 1,
+                "objectiveKey": "item:4641",
+                "locationSource": "Wowhead Forever npc=2937; captured 2026-10-10; SHA-256 f3bb14d40d1cda9b0aa6a030d26421bc7eae6c4395e32952db73e44407bccf7a",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2937,
+                "name": "Dagun the Ravenous",
+                "mapID": 1445,
+                "sourceAreaID": 15,
+                "x": 0.606,
+                "y": 0.102,
+                "action": "loot",
+                "itemID": 4641,
+                "itemName": "Hand of Dagun",
+                "quantity": 1,
+                "objectiveKey": "item:4641",
+                "locationSource": "Wowhead Forever npc=2937; captured 2026-10-10; SHA-256 f3bb14d40d1cda9b0aa6a030d26421bc7eae6c4395e32952db73e44407bccf7a",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 2937,
+                "name": "Dagun the Ravenous",
+                "mapID": 1445,
+                "sourceAreaID": 15,
+                "x": 0.604,
+                "y": 0.094,
+                "action": "loot",
+                "itemID": 4641,
+                "itemName": "Hand of Dagun",
+                "quantity": 1,
+                "objectiveKey": "item:4641",
+                "locationSource": "Wowhead Forever npc=2937; captured 2026-10-10; SHA-256 f3bb14d40d1cda9b0aa6a030d26421bc7eae6c4395e32952db73e44407bccf7a",
+                "npc": true
+              }
+            ]
+          },
+          {
+            "itemName": "The Legacy Heart",
+            "locations": [
+              {
+                "entityType": "npc",
+                "entityID": 1060,
+                "name": "Mogh the Undying <Skullsplitter Clan Witchdoctor>",
+                "mapID": 1434,
+                "sourceAreaID": 33,
+                "x": 0.474,
+                "y": 0.442,
+                "action": "loot",
+                "itemID": 4644,
+                "itemName": "The Legacy Heart",
+                "quantity": 1,
+                "objectiveKey": "item:4644",
+                "locationSource": "Wowhead Forever npc=1060; captured 2026-10-10; SHA-256 137249f20483224129d76083bfc6077c14c8cd44bf34e7e39ed77f312888671a",
+                "npc": true
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
     "questID": 99161,
     "title": "Rime's Wrath",
     "previousQuest": 99162,
@@ -13092,5 +14848,1078 @@
       }
     },
     "source": "Questie/QuestieDB Forever factual fields at pinned revision e0a6eaa86f181ac99262e34126bcd2ed1a1712d6: objectives names only the final hand-in item; requiredSourceItems identifies the source input. Current action area for the input is retained and no combine point is invented. Reviewed 2026-10-09; research/eastern-plaguelands-2026-10-09."
+  },
+  {
+    "questID": 95534,
+    "title": "Strahnbrad Mystery",
+    "factionCorrection": {
+      "before": null,
+      "side": "Horde"
+    },
+    "source": "https://www.wowhead.com/forever/quest=95534 — captured 2026-10-10, SHA-256 e6eb2fecdbc3b48becc7434911e394604a080bc77dda4fe0d3e6b4d5cb89a4f2; the page reports Horde, minimum level 25, and no class/race mask."
+  },
+  {
+    "questID": 93680,
+    "title": "Key to the City",
+    "source": "https://www.wowhead.com/forever/quest=93680 (2026-10-10, SHA-256 7ba322ed4763b8abf8d4e12375815a2e6589600d9e2e1bee8649a749803831b7) requires one Grimy Key. https://www.wowhead.com/forever/item=279469 (SHA-256 6eb698e1cdf8e878673aa5aab49e19f9afcf15b2504d0b8dfa16a9f566e7e104) lists object 670427 Warden's Footlocker; https://www.wowhead.com/forever/object=670427 (SHA-256 a8cdab59b4ccd3865ab0f6b40309597e1826f00797afd2141dfd5e5b5b41bed1) locates it on Alterac Mountains map 1416 at 0.164, 0.893. https://www.wowhead.com/forever/quest=92434 (SHA-256 421fa5e13fcdefc8769cbe9a0f5f0b427343a14841ff2941c87e8c10036327b1) also provides one Grimy Key, so a carried reward satisfies the item objective without a second farm.",
+    "stageCorrection": {
+      "kind": "item-source",
+      "minLevel": 30,
+      "level": 33,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "itemID": 279469,
+          "name": "Grimy Key",
+          "quantity": 1
+        }
+      ],
+      "point": {
+        "entityType": "object",
+        "entityID": 670427,
+        "name": "Warden's Footlocker",
+        "npc": false,
+        "mapID": 1416,
+        "sourceAreaID": 36,
+        "sourceZone": "Alterac Mountains",
+        "x": 0.164,
+        "y": 0.893,
+        "action": "gather",
+        "objectiveKey": "item:279469",
+        "itemID": 279469,
+        "itemName": "Grimy Key",
+        "quantity": 1,
+        "locationSource": "Wowhead Forever object 670427 entity page"
+      }
+    }
+  },
+  {
+    "questID": 96984,
+    "title": "Heart of Disruption",
+    "source": "https://www.wowhead.com/forever/quest=96984 — captured 2026-10-10, SHA-256 ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7. The page maps the local Shade of the Archmage source but lists Rath'maël (NPC 250657) without usable coordinates; that alternate location remains incomplete.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 24,
+      "level": 33,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Arcane Mote",
+          "itemID": 251961
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Arcane Mote",
+            "entityID": 251961
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Arcane Mote",
+            "itemID": 251961
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "mapID": 1416,
+            "action": "collect",
+            "entityID": 246020,
+            "npc": true,
+            "y": 0.5589999999999999,
+            "objectiveKey": "item:251961",
+            "name": "Shade of the Archmage",
+            "x": 0.152,
+            "quantity": 1,
+            "legacyStepKey": "q:1416:npc:246020",
+            "itemName": "Arcane Mote",
+            "itemID": 251961
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Arcane Mote",
+            "name": "Shade of the Archmage",
+            "entityID": 246020,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Arcane Mote",
+            "name": "Rath'mael",
+            "entityID": 250657,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "objectiveLocationsIncomplete": null
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Arcane Mote",
+            "entityID": 251961
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Arcane Mote",
+            "itemID": 251961
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "mapID": 1416,
+            "action": "collect",
+            "entityID": 246020,
+            "npc": true,
+            "y": 0.5589999999999999,
+            "objectiveKey": "item:251961",
+            "name": "Shade of the Archmage",
+            "x": 0.152,
+            "quantity": 1,
+            "legacyStepKey": "q:1416:npc:246020",
+            "itemName": "Arcane Mote",
+            "itemID": 251961
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Arcane Mote",
+            "name": "Shade of the Archmage",
+            "entityID": 246020,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Arcane Mote",
+            "name": "Rath'mael",
+            "entityID": 250657,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "objectiveLocationsIncomplete": true
+      }
+    }
+  },
+  {
+    "questID": 535,
+    "title": "Valik",
+    "source": "https://www.wowhead.com/forever/quest=535 (2026-10-10, SHA-256 0d63d0d9c24116c03e27d19ff9377c15897ad2463c5252e4ab7f25941248487f) maps Southshore Stout to Drunken Footpad 2440; https://www.wowhead.com/forever/npc=2440 (SHA-256 79f3acdb779fcc91c2a4048b54b5a3560225199d9a5feeacfa27972b992e7a89) supplies its two spawn areas.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 29,
+      "level": 34,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Southshore Stout",
+          "itemID": 3703
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Southshore Stout",
+            "entityID": 3703
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Southshore Stout",
+            "itemID": 3703
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "mapID": 1416,
+            "action": "collect",
+            "entityID": 2440,
+            "npc": true,
+            "y": 0.696,
+            "objectiveKey": "item:3703",
+            "name": "Drunken Footpad",
+            "x": 0.588,
+            "quantity": 1,
+            "legacyStepKey": "q:1416:npc:2440",
+            "itemName": "Southshore Stout",
+            "itemID": 3703
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Southshore Stout",
+            "name": "Drunken Footpad",
+            "entityID": 2440,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "objectiveAlternatives": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Southshore Stout",
+            "entityID": 3703
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Southshore Stout",
+            "itemID": 3703
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "mapID": 1416,
+            "action": "collect",
+            "entityID": 2440,
+            "npc": true,
+            "y": 0.696,
+            "objectiveKey": "item:3703",
+            "name": "Drunken Footpad",
+            "x": 0.588,
+            "quantity": 1,
+            "legacyStepKey": "q:1416:npc:2440",
+            "itemName": "Southshore Stout",
+            "itemID": 3703
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Southshore Stout",
+            "name": "Drunken Footpad",
+            "entityID": 2440,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "objectiveAlternatives": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Southshore Stout",
+            "locations": [
+              {
+                "mapID": 1416,
+                "x": 0.5820000000000001,
+                "y": 0.672,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2440,
+                "name": "Drunken Footpad",
+                "npc": true,
+                "action": "collect",
+                "itemName": "Southshore Stout",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2440 entity page"
+              },
+              {
+                "mapID": 1416,
+                "x": 0.584,
+                "y": 0.706,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2440,
+                "name": "Drunken Footpad",
+                "npc": true,
+                "action": "collect",
+                "itemName": "Southshore Stout",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2440 entity page"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 79624,
+    "title": "Anyone Can Cook",
+    "source": "Wowhead Forever quest 79624 (captured 2026-10-10, SHA-256 f8287ba53eab5f5a190b1774fd492df268ed25e63d55f5f7ab5eef7d0af4f637), item 213422 (SHA-256 a883095794df9058281b1b69067058d51b1bdf8d9eb5e011ca9bb402861b0e65), and all nine linked NPC pages with hashes recorded in research/arathi-highlands-2026-10-10/source-facts.json. The item page links the same recipe to five Boulderfist ogres in Arathi and four Crushridge ogres in Alterac; each source page maps its representative spawn points. The quest page does not identify a giver.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "level": 40,
+      "minLevel": 32,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Illegible Recipe",
+          "itemID": 213422
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Illegible Recipe",
+            "entityID": 213422
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Illegible Recipe",
+            "itemID": 213422
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1417,
+            "legacyStepKey": "q:1417:npc:2566",
+            "entityID": 2566,
+            "name": "Boulderfist Brute",
+            "npc": true,
+            "x": 0.531,
+            "y": 0.7593000000000001,
+            "objectiveKey": "item:213422",
+            "itemID": 213422,
+            "quantity": 1,
+            "sourceAreaID": 45,
+            "itemName": "Illegible Recipe",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Illegible Recipe",
+            "name": "Boulderfist Brute",
+            "entityID": 2566,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "objectiveAlternatives": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Illegible Recipe",
+            "entityID": 213422
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Illegible Recipe",
+            "itemID": 213422
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1417,
+            "legacyStepKey": "q:1417:npc:2566",
+            "entityID": 2566,
+            "name": "Boulderfist Brute",
+            "npc": true,
+            "x": 0.531,
+            "y": 0.7593000000000001,
+            "objectiveKey": "item:213422",
+            "itemID": 213422,
+            "quantity": 1,
+            "sourceAreaID": 45,
+            "itemName": "Illegible Recipe",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot",
+            "alternativeCount": 22
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Illegible Recipe",
+            "name": "Boulderfist Brute",
+            "entityID": 2566,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "objectiveAlternatives": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Illegible Recipe",
+            "locations": [
+              {
+                "mapID": 1416,
+                "x": 0.43200000000000005,
+                "y": 0.46799999999999997,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2254,
+                "name": "Crushridge Mauler",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2254 entity page"
+              },
+              {
+                "mapID": 1416,
+                "x": 0.396,
+                "y": 0.402,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2254,
+                "name": "Crushridge Mauler",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2254 entity page"
+              },
+              {
+                "mapID": 1416,
+                "x": 0.43799999999999994,
+                "y": 0.51,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2254,
+                "name": "Crushridge Mauler",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2254 entity page"
+              },
+              {
+                "mapID": 1416,
+                "x": 0.424,
+                "y": 0.456,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2255,
+                "name": "Crushridge Mage",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2255 entity page"
+              },
+              {
+                "mapID": 1416,
+                "x": 0.384,
+                "y": 0.406,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2255,
+                "name": "Crushridge Mage",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2255 entity page"
+              },
+              {
+                "mapID": 1416,
+                "x": 0.38,
+                "y": 0.546,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2256,
+                "name": "Crushridge Enforcer",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2256 entity page"
+              },
+              {
+                "mapID": 1416,
+                "x": 0.37799999999999995,
+                "y": 0.49200000000000005,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2256,
+                "name": "Crushridge Enforcer",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2256 entity page"
+              },
+              {
+                "mapID": 1416,
+                "x": 0.406,
+                "y": 0.524,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2256,
+                "name": "Crushridge Enforcer",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2256 entity page"
+              },
+              {
+                "mapID": 1416,
+                "x": 0.376,
+                "y": 0.61,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2256,
+                "name": "Crushridge Enforcer",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2256 entity page"
+              },
+              {
+                "mapID": 1416,
+                "x": 0.4,
+                "y": 0.484,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2256,
+                "name": "Crushridge Enforcer",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2256 entity page"
+              },
+              {
+                "mapID": 1416,
+                "x": 0.366,
+                "y": 0.546,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2287,
+                "name": "Crushridge Warmonger",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2287 entity page"
+              },
+              {
+                "mapID": 1416,
+                "x": 0.406,
+                "y": 0.526,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2287,
+                "name": "Crushridge Warmonger",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2287 entity page"
+              },
+              {
+                "mapID": 1417,
+                "x": 0.526,
+                "y": 0.758,
+                "sourceAreaID": 45,
+                "sourceZone": "Arathi Highlands",
+                "entityID": 2566,
+                "name": "Boulderfist Brute",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2566 entity page"
+              },
+              {
+                "mapID": 1417,
+                "x": 0.546,
+                "y": 0.8059999999999999,
+                "sourceAreaID": 45,
+                "sourceZone": "Arathi Highlands",
+                "entityID": 2566,
+                "name": "Boulderfist Brute",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2566 entity page"
+              },
+              {
+                "mapID": 1417,
+                "x": 0.522,
+                "y": 0.7559999999999999,
+                "sourceAreaID": 45,
+                "sourceZone": "Arathi Highlands",
+                "entityID": 2567,
+                "name": "Boulderfist Magus",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2567 entity page"
+              },
+              {
+                "mapID": 1417,
+                "x": 0.544,
+                "y": 0.812,
+                "sourceAreaID": 45,
+                "sourceZone": "Arathi Highlands",
+                "entityID": 2567,
+                "name": "Boulderfist Magus",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2567 entity page"
+              },
+              {
+                "mapID": 1417,
+                "x": 0.218,
+                "y": 0.654,
+                "sourceAreaID": 45,
+                "sourceZone": "Arathi Highlands",
+                "entityID": 2569,
+                "name": "Boulderfist Mauler",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2569 entity page"
+              },
+              {
+                "mapID": 1417,
+                "x": 0.188,
+                "y": 0.6759999999999999,
+                "sourceAreaID": 45,
+                "sourceZone": "Arathi Highlands",
+                "entityID": 2569,
+                "name": "Boulderfist Mauler",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2569 entity page"
+              },
+              {
+                "mapID": 1417,
+                "x": 0.18600000000000003,
+                "y": 0.662,
+                "sourceAreaID": 45,
+                "sourceZone": "Arathi Highlands",
+                "entityID": 2570,
+                "name": "Boulderfist Shaman",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2570 entity page"
+              },
+              {
+                "mapID": 1417,
+                "x": 0.21,
+                "y": 0.674,
+                "sourceAreaID": 45,
+                "sourceZone": "Arathi Highlands",
+                "entityID": 2570,
+                "name": "Boulderfist Shaman",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2570 entity page"
+              },
+              {
+                "mapID": 1417,
+                "x": 0.19,
+                "y": 0.674,
+                "sourceAreaID": 45,
+                "sourceZone": "Arathi Highlands",
+                "entityID": 2571,
+                "name": "Boulderfist Lord",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2571 entity page"
+              },
+              {
+                "mapID": 1417,
+                "x": 0.21,
+                "y": 0.674,
+                "sourceAreaID": 45,
+                "sourceZone": "Arathi Highlands",
+                "entityID": 2571,
+                "name": "Boulderfist Lord",
+                "npc": true,
+                "action": "loot",
+                "itemName": "Illegible Recipe",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2571 entity page"
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 92519,
+    "title": "Ward Restocking",
+    "source": "Wowhead Forever quest 92519 (captured 2026-10-10, SHA-256 813b1a68c673c26e86efbc2b7cedd61f274f37dbbc10bddd89a3471ece564eaf) explicitly says to return Packaged Tonics to Doctor Gregory Victor. Its series lists Silky Sutures (97539) immediately before it, but neither quest nor item page identifies a quest giver, so the pickup remains unmapped. NPC 12920 entity capture SHA-256 5bbfa442dd2a2a35cba4c785a979e9a0fecbb9fa04442d184855481e2fd6995d supplies the mapped return point. The Packaged Tonics item page has no mapped source; its objective area remains unknown.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "level": 36,
+      "minLevel": 30,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Packaged Tonics",
+          "itemID": 278462
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Packaged Tonics",
+            "entityID": 278462
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Packaged Tonics",
+            "itemID": 278462
+          }
+        ],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [],
+        "endRefs": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Packaged Tonics",
+            "entityID": 278462
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Packaged Tonics",
+            "itemID": 278462
+          }
+        ],
+        "objectives": [],
+        "npcTargets": [],
+        "ends": [
+          {
+            "mapID": 1417,
+            "x": 0.734,
+            "y": 0.364,
+            "name": "Doctor Gregory Victor",
+            "entityID": 12920,
+            "npc": true,
+            "locationSource": "Wowhead Forever NPC 12920 entity page"
+          }
+        ],
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "entityID": 12920,
+            "name": "Doctor Gregory Victor"
+          }
+        ]
+      }
+    }
+  },
+  {
+    "questID": 92707,
+    "title": "The Giant in the Den",
+    "source": "Wowhead Forever quest 92707 (captured 2026-10-10, SHA-256 b8ba40d3801f093e4247638ef4274d896bbea412012aa56a8d900ef3edafdc42) says to bring Goliath's Wristguards to Drum Fel in Hammerfall. Item 253711 page (SHA-256 bd6b3f26f5cb3088e845370e297da6d656fa62bfa6041ad7052d3c5db4d7afde) confirms Witherbark Goliath as its source; quest mapper already maps the objective. NPC 2771 entity capture SHA-256 fee50e480df8f56005a19f2e614187c30d46538f20e200641885b0f81a227378 supplies the hand-in point. The same NPC page identifies the target as elite, level 35, above the quest minimum 30; classify this quest as Elite so the existing party-warning/Skip quest choice appears. The quest page does not identify a pickup giver.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "level": 33,
+      "minLevel": 30,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Goliath's Wristguards",
+          "itemID": 253711
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Goliath's Wristguards",
+            "entityID": 253711
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Goliath's Wristguards",
+            "itemID": 253711
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "mapID": 1417,
+            "action": "collect",
+            "entityID": 218032,
+            "npc": true,
+            "y": 0.816,
+            "objectiveKey": "item:253711",
+            "name": "Witherbark Goliath",
+            "x": 0.6940000000000001,
+            "quantity": 1,
+            "legacyStepKey": "q:1417:npc:218032",
+            "itemName": "Goliath's Wristguards",
+            "itemID": 253711
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Goliath's Wristguards",
+            "name": "Witherbark Goliath",
+            "entityID": 218032,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "ends": [],
+        "endRefs": [],
+        "questType": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Goliath's Wristguards",
+            "entityID": 253711
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Goliath's Wristguards",
+            "itemID": 253711
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "mapID": 1417,
+            "action": "collect",
+            "entityID": 218032,
+            "npc": true,
+            "y": 0.816,
+            "objectiveKey": "item:253711",
+            "name": "Witherbark Goliath",
+            "x": 0.6940000000000001,
+            "quantity": 1,
+            "legacyStepKey": "q:1417:npc:218032",
+            "itemName": "Goliath's Wristguards",
+            "itemID": 253711
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Goliath's Wristguards",
+            "name": "Witherbark Goliath",
+            "entityID": 218032,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "ends": [
+          {
+            "mapID": 1417,
+            "x": 0.742,
+            "y": 0.338,
+            "name": "Drum Fel",
+            "entityID": 2771,
+            "npc": true,
+            "locationSource": "Wowhead Forever NPC 2771 entity page"
+          }
+        ],
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "entityID": 2771,
+            "name": "Drum Fel"
+          }
+        ],
+        "questType": "Elite"
+      }
+    }
+  },
+  {
+    "questID": 97539,
+    "title": "Silky Sutures",
+    "source": "Wowhead Forever quest 97539 (captured 2026-10-10, SHA-256 0e67c394a6d567be8929e5c8ccf5ed5caf2564c2379970012def8720d25336af) says to return 12 Surgical Spidersilk to Doctor Gregory Victor in Hammerfall. Warcraft DB Forever quest 97539 (captured 2026-10-10, SHA-256 9985d84e6c6a64a0ada0b2f1ac4170c994bc6a2074ea305afc1d5cacd24d05c9) independently confirms the item, count and return text. NPC 12920 entity page (SHA-256 5bbfa442dd2a2a35cba4c785a979e9a0fecbb9fa04442d184855481e2fd6995d) supplies current hand-in coordinates.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "level": 36,
+      "minLevel": 30,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 12,
+          "name": "Surgical Spidersilk",
+          "itemID": 278225
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 12,
+            "name": "Surgical Spidersilk",
+            "entityID": 278225
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 12,
+            "name": "Surgical Spidersilk",
+            "itemID": 278225
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "mapID": 1417,
+            "legacyStepKey": "q:1417:npc:2563",
+            "entityID": 2563,
+            "npc": true,
+            "x": 0.708,
+            "y": 0.494,
+            "objectiveKey": "item:278225",
+            "itemID": 278225,
+            "quantity": 12,
+            "name": "Plains Creeper",
+            "itemName": "Surgical Spidersilk",
+            "alternativeCount": 2,
+            "action": "collect"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Surgical Spidersilk",
+            "name": "Plains Creeper",
+            "entityID": 2563,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Surgical Spidersilk",
+            "name": "Giant Plains Creeper",
+            "entityID": 2565,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "ends": [],
+        "endRefs": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 12,
+            "name": "Surgical Spidersilk",
+            "entityID": 278225
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 12,
+            "name": "Surgical Spidersilk",
+            "itemID": 278225
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "mapID": 1417,
+            "legacyStepKey": "q:1417:npc:2563",
+            "entityID": 2563,
+            "npc": true,
+            "x": 0.708,
+            "y": 0.494,
+            "objectiveKey": "item:278225",
+            "itemID": 278225,
+            "quantity": 12,
+            "name": "Plains Creeper",
+            "itemName": "Surgical Spidersilk",
+            "alternativeCount": 2,
+            "action": "collect"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Surgical Spidersilk",
+            "name": "Plains Creeper",
+            "entityID": 2563,
+            "npc": true,
+            "action": "collect"
+          },
+          {
+            "itemName": "Surgical Spidersilk",
+            "name": "Giant Plains Creeper",
+            "entityID": 2565,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "ends": [
+          {
+            "mapID": 1417,
+            "x": 0.734,
+            "y": 0.364,
+            "name": "Doctor Gregory Victor",
+            "entityID": 12920,
+            "npc": true,
+            "locationSource": "Wowhead Forever NPC 12920 entity page"
+          }
+        ],
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "entityID": 12920,
+            "name": "Doctor Gregory Victor"
+          }
+        ]
+      }
+    }
   }
 ]

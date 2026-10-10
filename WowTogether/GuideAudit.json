@@ -1,14 +1,14 @@
 {
   "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
   "quest_records": 5230,
-  "static_points_checked": 11833,
+  "static_points_checked": 11846,
   "fixed_zone_guides_checked": 152,
-  "catalogue_reason_stages_checked": 16854,
+  "catalogue_reason_stages_checked": 16857,
   "catalogue_reason_codes": {
     "class-progression": 1822,
     "level-work": 4459,
     "outside-level-range": 2,
-    "quest-objective": 5227,
+    "quest-objective": 5230,
     "quest-reward": 5313,
     "selected-guide": 31
   },
@@ -5093,45 +5093,44 @@
     99267,
     99411
   ],
-  "source_data_gap_free_guides": 35,
+  "source_data_gap_free_guides": 36,
   "guides": [
     {
       "faction": "Alliance",
       "zone": "Alterac Mountains",
       "key": "level-zone:eastern-kingdoms/alterac-mountains:levels:31-40",
-      "quests": 15,
-      "steps": 48,
-      "unknown_location_steps": 1,
+      "quests": 14,
+      "steps": 44,
+      "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
-        "a": [
-          95534
-        ],
+        "a": [],
         "q": [],
         "t": []
       },
       "unverified_pickup_requirement_quest_ids": [],
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 0,
-      "source_data_gap_free": false,
-      "reason_steps_checked": 48,
+      "source_data_gap_free": true,
+      "reason_steps_checked": 44,
       "destination_reason_codes": {
-        "outside-level-range": 19,
+        "early-reward": 1,
+        "outside-level-range": 16,
         "prerequisite": 21,
-        "quest-reward": 6,
+        "quest-reward": 4,
         "return-hub": 2
       },
-      "reason_review_steps": 19,
+      "reason_review_steps": 16,
       "cross_zone_reason_steps": 7,
-      "flow_alternatives_evaluated": 17,
-      "flow_loop_changes": 0,
-      "geometric_guard_rejections": 0,
+      "flow_alternatives_evaluated": 24,
+      "flow_loop_changes": 1,
+      "geometric_guard_rejections": 2,
       "geometric_bracket_replays": 4,
       "flow_state_valid": true,
-      "quest_log_peak": 8,
-      "quest_reward_only_xp_shortfall": 195000,
-      "uncertain_travel_legs": 16,
-      "estimated_distance_before": 129304.85,
-      "estimated_distance_after": 129304.85
+      "quest_log_peak": 7,
+      "quest_reward_only_xp_shortfall": 161000,
+      "uncertain_travel_legs": 12,
+      "estimated_distance_before": 115307.03,
+      "estimated_distance_after": 115307.03
     },
     {
       "faction": "Alliance",
@@ -5476,18 +5475,14 @@
       "faction": "Alliance",
       "zone": "Badlands",
       "key": "level-zone:eastern-kingdoms/badlands:levels:31-40",
-      "quests": 23,
-      "steps": 73,
-      "unknown_location_steps": 5,
+      "quests": 20,
+      "steps": 63,
+      "unknown_location_steps": 1,
       "missing_location_quest_ids_by_stage": {
         "a": [
           78823
         ],
-        "q": [
-          715,
-          723,
-          735
-        ],
+        "q": [],
         "t": []
       },
       "unverified_pickup_requirement_quest_ids": [
@@ -5496,26 +5491,26 @@
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 23,
       "source_data_gap_free": false,
-      "reason_steps_checked": 73,
+      "reason_steps_checked": 63,
       "destination_reason_codes": {
         "class-progression": 2,
-        "outside-level-range": 32,
-        "prerequisite": 23,
-        "quest-reward": 15,
+        "outside-level-range": 27,
+        "prerequisite": 20,
+        "quest-reward": 13,
         "unlock-loop": 1
       },
-      "reason_review_steps": 43,
-      "cross_zone_reason_steps": 17,
+      "reason_review_steps": 38,
+      "cross_zone_reason_steps": 15,
       "flow_alternatives_evaluated": 9,
       "flow_loop_changes": 1,
-      "geometric_guard_rejections": 24,
+      "geometric_guard_rejections": 11,
       "geometric_bracket_replays": 4,
       "flow_state_valid": true,
-      "quest_log_peak": 4,
+      "quest_log_peak": 3,
       "quest_reward_only_xp_shortfall": 435100,
-      "uncertain_travel_legs": 43,
-      "estimated_distance_before": 293553.83,
-      "estimated_distance_after": 293255.76
+      "uncertain_travel_legs": 36,
+      "estimated_distance_before": 277963.68,
+      "estimated_distance_after": 277665.61
     },
     {
       "faction": "Alliance",
@@ -5523,12 +5518,11 @@
       "key": "level-zone:eastern-kingdoms/badlands:levels:41-50",
       "quests": 27,
       "steps": 87,
-      "unknown_location_steps": 2,
+      "unknown_location_steps": 1,
       "missing_location_quest_ids_by_stage": {
         "a": [],
         "q": [
-          716,
-          723
+          716
         ],
         "t": []
       },
@@ -5551,7 +5545,7 @@
       "flow_state_valid": true,
       "quest_log_peak": 4,
       "quest_reward_only_xp_shortfall": 625050,
-      "uncertain_travel_legs": 43,
+      "uncertain_travel_legs": 42,
       "estimated_distance_before": 237335.47,
       "estimated_distance_after": 237335.47
     },
@@ -8530,20 +8524,15 @@
       "key": "level-zone:eastern-kingdoms/alterac-mountains:levels:31-40",
       "quests": 5,
       "steps": 16,
-      "unknown_location_steps": 6,
+      "unknown_location_steps": 2,
       "missing_location_quest_ids_by_stage": {
         "a": [
-          95534,
-          97287
+          95534
         ],
         "q": [
-          92434,
-          93680,
-          97287
+          92434
         ],
-        "t": [
-          97287
-        ]
+        "t": []
       },
       "unverified_pickup_requirement_quest_ids": [
         535
@@ -8557,7 +8546,7 @@
         "quest-reward": 5
       },
       "reason_review_steps": 13,
-      "cross_zone_reason_steps": 3,
+      "cross_zone_reason_steps": 5,
       "flow_alternatives_evaluated": 0,
       "flow_loop_changes": 0,
       "geometric_guard_rejections": 0,
@@ -8565,9 +8554,9 @@
       "flow_state_valid": true,
       "quest_log_peak": 3,
       "quest_reward_only_xp_shortfall": 226430,
-      "uncertain_travel_legs": 10,
-      "estimated_distance_before": 90722.62,
-      "estimated_distance_after": 90722.62
+      "uncertain_travel_legs": 8,
+      "estimated_distance_before": 89512.56,
+      "estimated_distance_after": 89512.56
     },
     {
       "faction": "Horde",
@@ -8575,7 +8564,7 @@
       "key": "level-zone:eastern-kingdoms/arathi-highlands:levels:31-40",
       "quests": 40,
       "steps": 131,
-      "unknown_location_steps": 7,
+      "unknown_location_steps": 4,
       "missing_location_quest_ids_by_stage": {
         "a": [
           79624,
@@ -8585,11 +8574,7 @@
         "q": [
           92519
         ],
-        "t": [
-          92519,
-          92707,
-          97539
-        ]
+        "t": []
       },
       "unverified_pickup_requirement_quest_ids": [],
       "unverified_objective_quantity_quest_ids": [],
@@ -8602,18 +8587,18 @@
         "quest-reward": 18,
         "return-hub": 1
       },
-      "reason_review_steps": 46,
+      "reason_review_steps": 43,
       "cross_zone_reason_steps": 6,
-      "flow_alternatives_evaluated": 32,
-      "flow_loop_changes": 0,
-      "geometric_guard_rejections": 86,
+      "flow_alternatives_evaluated": 36,
+      "flow_loop_changes": 1,
+      "geometric_guard_rejections": 137,
       "geometric_bracket_replays": 4,
       "flow_state_valid": true,
       "quest_log_peak": 6,
       "quest_reward_only_xp_shortfall": 309165,
-      "uncertain_travel_legs": 34,
-      "estimated_distance_before": 309886.14,
-      "estimated_distance_after": 309886.14
+      "uncertain_travel_legs": 30,
+      "estimated_distance_before": 291456.33,
+      "estimated_distance_after": 291302.16
     },
     {
       "faction": "Horde",
@@ -8876,17 +8861,14 @@
       "faction": "Horde",
       "zone": "Badlands",
       "key": "level-zone:eastern-kingdoms/badlands:levels:31-40",
-      "quests": 16,
-      "steps": 53,
-      "unknown_location_steps": 4,
+      "quests": 13,
+      "steps": 43,
+      "unknown_location_steps": 1,
       "missing_location_quest_ids_by_stage": {
         "a": [
           78823
         ],
-        "q": [
-          715,
-          736
-        ],
+        "q": [],
         "t": []
       },
       "unverified_pickup_requirement_quest_ids": [
@@ -8895,32 +8877,32 @@
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 11,
       "source_data_gap_free": false,
-      "reason_steps_checked": 53,
+      "reason_steps_checked": 43,
       "destination_reason_codes": {
         "class-progression": 2,
-        "outside-level-range": 27,
-        "prerequisite": 12,
-        "quest-reward": 12
+        "outside-level-range": 22,
+        "prerequisite": 9,
+        "quest-reward": 10
       },
-      "reason_review_steps": 30,
-      "cross_zone_reason_steps": 15,
+      "reason_review_steps": 25,
+      "cross_zone_reason_steps": 14,
       "flow_alternatives_evaluated": 2,
       "flow_loop_changes": 0,
-      "geometric_guard_rejections": 21,
+      "geometric_guard_rejections": 23,
       "geometric_bracket_replays": 4,
       "flow_state_valid": true,
-      "quest_log_peak": 4,
+      "quest_log_peak": 3,
       "quest_reward_only_xp_shortfall": 496350,
-      "uncertain_travel_legs": 28,
-      "estimated_distance_before": 233873.75,
-      "estimated_distance_after": 233873.75
+      "uncertain_travel_legs": 21,
+      "estimated_distance_before": 207965.38,
+      "estimated_distance_after": 207965.38
     },
     {
       "faction": "Horde",
       "zone": "Badlands",
       "key": "level-zone:eastern-kingdoms/badlands:levels:41-50",
-      "quests": 18,
-      "steps": 59,
+      "quests": 17,
+      "steps": 56,
       "unknown_location_steps": 1,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -8929,19 +8911,17 @@
         ],
         "t": []
       },
-      "unverified_pickup_requirement_quest_ids": [
-        2203
-      ],
+      "unverified_pickup_requirement_quest_ids": [],
       "unverified_objective_quantity_quest_ids": [],
-      "prerequisite_review_steps": 3,
+      "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
-      "reason_steps_checked": 59,
+      "reason_steps_checked": 56,
       "destination_reason_codes": {
-        "outside-level-range": 17,
+        "outside-level-range": 15,
         "prerequisite": 35,
-        "quest-reward": 7
+        "quest-reward": 6
       },
-      "reason_review_steps": 18,
+      "reason_review_steps": 15,
       "cross_zone_reason_steps": 7,
       "flow_alternatives_evaluated": 4,
       "flow_loop_changes": 0,
@@ -8950,9 +8930,9 @@
       "flow_state_valid": true,
       "quest_log_peak": 2,
       "quest_reward_only_xp_shortfall": 632050,
-      "uncertain_travel_legs": 21,
-      "estimated_distance_before": 185256.26,
-      "estimated_distance_after": 185256.26
+      "uncertain_travel_legs": 19,
+      "estimated_distance_before": 171569.03,
+      "estimated_distance_after": 171569.03
     },
     {
       "faction": "Horde",

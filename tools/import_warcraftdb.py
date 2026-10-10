@@ -25,6 +25,21 @@ def apply_corrections(records):
     for correction in corrections:
         if correction.get('stageCorrection'):
             continue  # Stage facts apply after enrichment, not as eligibility rules.
+        if correction.get('factionCorrection'):
+            quest = records.get(correction['questID'])
+            if quest is None:
+                continue
+            rule = correction['factionCorrection']
+            if quest.get('title') != correction['title'] or rule.get('side') not in ('Alliance', 'Horde'):
+                raise ValueError('Reviewed faction identity changed; review required')
+            current = quest.get('side')
+            if current not in (rule.get('before'), rule['side']):
+                raise ValueError('Reviewed faction fact conflicts with source; review required')
+            quest['side'] = rule['side']
+            quest['factionCorrectionSource'] = correction['source']
+            if current != rule['side']:
+                applied.append(correction['questID'])
+            continue
         if correction.get('exclusiveQuests'):
             quest = records.get(correction['questID'])
             alternatives = correction['exclusiveQuests']
@@ -122,9 +137,10 @@ def apply_stage_corrections(records):
         elif rule['kind'] in ('objective-facts', 'stage-facts'):
             core = {'requirements', 'requiredItems', 'objectives', 'npcTargets'}
             allowed = core | {'starts', 'ends', 'startRefs', 'endRefs', 'providedItems',
-                              'missingRequirements', 'objectiveLocationsIncomplete', 'objectiveAlternatives'}
+                              'missingRequirements', 'objectiveLocationsIncomplete', 'objectiveAlternatives', 'questType'}
             fields = set(rule['before'])
             if not core <= fields or not fields <= allowed or set(rule['after']) != fields or \
+                    ('questType' in fields and rule['kind'] != 'stage-facts') or \
                     (rule['kind'] == 'objective-facts' and fields != core) or rule['after']['requiredItems'] != required:
                 raise ValueError('Unsupported reviewed objective fields: ' + str(ident))
             def value(field):
@@ -199,7 +215,11 @@ def apply_stage_corrections(records):
             point = rule['point']
             points = list(quest.get('objectives') or [])
             matches = [p for p in points if p.get('itemID') == point['itemID']]
-            if matches and matches != [point]:
+            def source_point_matches(actual):
+                # Supplemental enrichment may add this generated lookup key;
+                # it does not change the reviewed source identity or location.
+                return {k:v for k,v in actual.items() if k != 'legacyStepKey'} == point
+            if matches and (len(matches) != 1 or not source_point_matches(matches[0])):
                 raise ValueError('Reviewed source conflicts with an existing objective: ' + str(ident))
             if not matches:
                 points.append(copy.deepcopy(point))

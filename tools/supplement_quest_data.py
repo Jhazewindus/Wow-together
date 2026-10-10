@@ -52,6 +52,14 @@ def supplement(quest, detail, refs, entities):
     return result
 
 
+def capture_history(previous, history):
+    """Retain the prior hashed evidence report when a newer batch is captured."""
+    result = copy.deepcopy(history or [])
+    if previous and previous not in result:
+        result.append(copy.deepcopy(previous))
+    return result
+
+
 def build(directory, cache, output):
     source=directory/'QuestCatalogue.lua'
     catalogue=own_lua(source, 'catalogue')
@@ -59,7 +67,7 @@ def build(directory, cache, output):
     checks=own_lua(source, 'worldQuestChecks');xp=own_lua(source, 'xpBaseline')
     metadata=json.loads((directory/'QuestCatalogue.json').read_text())
     maps={int(k):v for k,v in metadata['area_ui_maps'].items()}
-    records=catalogue['quests']; parsed=[]; geography={'npc':{},'object':{},'item':{}}
+    records=catalogue['quests']; before_records=copy.deepcopy(records); parsed=[]; geography={'npc':{},'object':{},'item':{}}
     evidence={};invalid=[]
     for file in sorted(cache.glob('quest-*.html')):
         ident=int(file.stem.split('-')[1]);quest=records.get(ident)
@@ -90,6 +98,11 @@ def build(directory, cache, output):
             if target and not target.get('name') and value['name']:target['name']=value['name']
     corrections=apply_corrections(records)
     stage_corrections=apply_stage_corrections(records)
+    changed=sorted(ident for ident,quest in records.items() if quest!=before_records[ident])
+    added=collections.Counter()
+    for ident in changed:
+        for role in ROLES:
+            added[role]+=max(0,len(records[ident].get(role) or [])-len(before_records[ident].get(role) or []))
     now=datetime.date.today().isoformat()
     report={'captured':now,'pages':len(parsed),'changed_quest_ids':changed,'added_points':dict(added),
         'invalid_quest_ids':invalid,'incomplete_objectives_before':old,
@@ -99,10 +112,22 @@ def build(directory, cache, output):
     catalogue['captured']=now;output.mkdir(parents=True,exist_ok=True)
     (output/'QuestCatalogue.lua').write_text(quest_code(catalogue,entities,checks,xp))
     for key,role in [('with_starters','starts'),('with_objectives','objectives'),('with_turnins','ends')]:metadata[key]=sum(bool(q.get(role)) for q in records.values())
+    metadata_history=capture_history(metadata.get('supplemental_capture'),
+                                     metadata.get('supplemental_capture_history'))
+    if metadata_history:
+        metadata['supplemental_capture_history']=metadata_history
     metadata['captured']=now;metadata['incomplete_objective_locations']=report['incomplete_objectives_after']
     metadata['supplemental_capture']={key:value for key,value in report.items() if key!='evidence'}
     (output/'QuestCatalogue.json').write_text(json.dumps(metadata,indent=2)+'\n')
-    coverage=json.loads((directory/'QuestCoverage.json').read_text());coverage['captured']=now
+    coverage=json.loads((directory/'QuestCoverage.json').read_text())
+    previous_capture=coverage.get('supplemental_capture')
+    prior_history=coverage.get('supplemental_capture_history')
+    if prior_history is None:
+        prior_history=metadata.get('supplemental_capture_history', [])
+    history=capture_history(previous_capture, prior_history)
+    if history:
+        coverage['supplemental_capture_history']=history
+    coverage['captured']=now
     for key in ['with_starters','with_objectives','with_turnins']:coverage['summary'][key]=metadata[key]
     zones=collections.defaultdict(lambda:{'quests':0,'pickups':0,'objectives':0,'turnins':0,'complete_locations':0,'missing_quest_ids':[]})
     for ident,q in sorted(records.items()):

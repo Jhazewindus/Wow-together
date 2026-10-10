@@ -1,6 +1,6 @@
 {
   "source_data_complete": false,
-  "remaining_quest_records": 365,
+  "remaining_quest_records": 359,
   "limitations": [
     "This queue identifies missing facts, not a license to invent them",
     "Source capture must respect access policy and stop after denials",
@@ -296,22 +296,6 @@
       ]
     },
     {
-      "questID": 715,
-      "title": "Liquid Stone",
-      "guides": [
-        "Alliance / Badlands",
-        "Horde / Badlands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=715",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=3823",
-        "https://www.wowhead.com/forever/npc=2920"
-      ]
-    },
-    {
       "questID": 716,
       "title": "Stone Is Better than Cloth",
       "guides": [
@@ -328,34 +312,16 @@
       ]
     },
     {
-      "questID": 723,
-      "title": "Prospect of Faith",
-      "guides": [
-        "Alliance / Badlands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=723",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=2909",
-        "https://www.wowhead.com/forever/npc=2910"
-      ]
-    },
-    {
       "questID": 735,
       "title": "The Star, the Hand and the Heart",
       "guides": [
         "Alliance / Badlands"
       ],
       "needs": [
-        "objective area",
         "pickup requirements"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=735",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=4641",
-        "https://www.wowhead.com/forever/item=4644",
         "https://www.wowhead.com/forever/npc=2786"
       ]
     },
@@ -366,13 +332,10 @@
         "Horde / Badlands"
       ],
       "needs": [
-        "objective area",
         "pickup requirements"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=736",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=4641",
-        "https://www.wowhead.com/forever/item=4644",
         "https://www.wowhead.com/forever/npc=2934"
       ]
     },
@@ -1368,20 +1331,6 @@
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=2130",
         "https://www.wowhead.com/forever/npc=6467"
-      ]
-    },
-    {
-      "questID": 2203,
-      "title": "Badlands Reagent Run II",
-      "guides": [
-        "Horde / Badlands"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=2203",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=6868"
       ]
     },
     {
@@ -4714,13 +4663,13 @@
         "Horde / Arathi Highlands"
       ],
       "needs": [
-        "hand-in",
         "objective area",
         "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=92519",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=278462"
+        "https://www.wowhead.com/forever/item=278462",
+        "https://www.wowhead.com/forever/npc=12920"
       ]
     },
     {
@@ -4758,11 +4707,12 @@
         "Horde / Arathi Highlands"
       ],
       "needs": [
-        "hand-in",
         "pickup"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=92707",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/npc=2771"
+      ]
     },
     {
       "questID": 92743,
@@ -4955,21 +4905,6 @@
       ]
     },
     {
-      "questID": 93680,
-      "title": "Key to the City",
-      "guides": [
-        "Horde / Alterac Mountains"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=93680",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=279469",
-        "https://www.wowhead.com/forever/npc=2410"
-      ]
-    },
-    {
       "questID": 94484,
       "title": "Unnerving Silence",
       "guides": [
@@ -5141,7 +5076,6 @@
       "questID": 95534,
       "title": "Strahnbrad Mystery",
       "guides": [
-        "Alliance / Alterac Mountains",
         "Horde / Alterac Mountains"
       ],
       "needs": [
@@ -5344,20 +5278,6 @@
       "entity_urls": []
     },
     {
-      "questID": 97287,
-      "title": "Shrewd Negotiations",
-      "guides": [
-        "Horde / Alterac Mountains"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=97287",
-      "entity_urls": []
-    },
-    {
       "questID": 97328,
       "title": "Anything of Value",
       "guides": [
@@ -5403,20 +5323,6 @@
       "quest_url": "https://www.wowhead.com/forever/quest=97331",
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=268992"
-      ]
-    },
-    {
-      "questID": 97539,
-      "title": "Silky Sutures",
-      "guides": [
-        "Horde / Arathi Highlands"
-      ],
-      "needs": [
-        "hand-in"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=97539",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=12920"
       ]
     },
     {

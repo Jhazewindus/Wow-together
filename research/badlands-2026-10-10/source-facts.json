@@ -1,0 +1,4163 @@
+{
+  "generated": "2026-10-10",
+  "addonVersion": "0.8.66",
+  "branchHead": "7c600807f6f9395d2320818b890386c7a6831c54",
+  "scope": {
+    "categoryPath": "eastern-kingdoms/badlands",
+    "categoryPathQuestCount": 44,
+    "directZonePropertyQuestCount": 38,
+    "categoryPathOnlyQuestIDs": [
+      708,
+      725,
+      726,
+      735,
+      762,
+      78823
+    ],
+    "categoryPathQuestIDs": [
+      692,
+      703,
+      705,
+      706,
+      708,
+      710,
+      711,
+      712,
+      713,
+      714,
+      715,
+      716,
+      717,
+      718,
+      719,
+      720,
+      723,
+      724,
+      725,
+      726,
+      727,
+      728,
+      732,
+      733,
+      734,
+      735,
+      737,
+      738,
+      739,
+      762,
+      777,
+      778,
+      779,
+      782,
+      793,
+      795,
+      1419,
+      1420,
+      2203,
+      2258,
+      3821,
+      4062,
+      78823,
+      78830
+    ],
+    "guideActionQuestIDs": [
+      642,
+      651,
+      652,
+      653,
+      687,
+      688,
+      692,
+      703,
+      706,
+      707,
+      710,
+      711,
+      712,
+      713,
+      714,
+      715,
+      716,
+      717,
+      718,
+      719,
+      720,
+      723,
+      724,
+      725,
+      726,
+      727,
+      728,
+      732,
+      733,
+      734,
+      735,
+      736,
+      737,
+      738,
+      739,
+      762,
+      777,
+      778,
+      782,
+      793,
+      1418,
+      1419,
+      1420,
+      2203,
+      2258,
+      3821,
+      3822,
+      4061,
+      4062,
+      78823,
+      78830
+    ],
+    "ordinaryRouteProfessionExclusions": {
+      "715": {
+        "skill": 171,
+        "minimum": 0,
+        "reason": "Alchemy profession quest; not included in ordinary leveling."
+      },
+      "2203": {
+        "skill": 171,
+        "minimum": 210,
+        "reason": "Alchemy profession quest; not included in ordinary leveling."
+      }
+    },
+    "routeComparisonScope": "Pre-Badlands branch catalogue and reviewed catalogue both apply the same profession exclusions to quest 715 and 2203; current guide data is otherwise compared in full."
+  },
+  "pinnedForeverSource": {
+    "url": "https://github.com/Questie/QuestieDB",
+    "commit": "e0a6eaa86f181ac99262e34126bcd2ed1a1712d6",
+    "questFileSHA256": "d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87",
+    "npcFileSHA256": "a8c4169690726323dac3c6441f74f7a4d9cafcc08ec42231d72ff28c9471f0ee",
+    "itemFileSHA256": "987d037b6df94d5b0b1dc326a1670581e3abb952736a4ae055fd9f161328b71c",
+    "questSkillGates": {
+      "715": {
+        "requiredSkill": {
+          "skill": 171,
+          "minimum": 0
+        },
+        "interpretation": "Alchemy skill-line quest; remains in catalogue but excluded from ordinary leveling."
+      },
+      "2203": {
+        "requiredSkill": {
+          "skill": 171,
+          "minimum": 210
+        },
+        "interpretation": "Alchemy quest requiring rank 210; remains in catalogue but excluded from ordinary leveling."
+      }
+    }
+  },
+  "questPages": {
+    "712": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "cbccefba72e32c5c76a9543abde57d741061f94732e1a58ede5a8eb446b3d656",
+      "url": "https://www.wowhead.com/forever/quest=712",
+      "title": "Study of the Elements: Rock",
+      "level": 42,
+      "requiredLevel": 35,
+      "side": 3,
+      "relations": {
+        "starts": [
+          {
+            "entityType": "npc",
+            "entityID": 2921,
+            "name": "Lotwil Veriatus"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "entityID": 2921,
+            "name": "Lotwil Veriatus"
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "entityID": 4628,
+            "name": "Bracers of Rock Binding",
+            "quantity": 5
+          }
+        ],
+        "provided": []
+      }
+    },
+    "714": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "b8b5bae5c2a4c837eaf813a33f0ca80bb10f829a7b22ee4283eb0c5b3b9e2cda",
+      "url": "https://www.wowhead.com/forever/quest=714",
+      "title": "Gyro... What?",
+      "level": 37,
+      "requiredLevel": 35,
+      "side": 3,
+      "relations": {
+        "starts": [
+          {
+            "entityType": "npc",
+            "entityID": 2921,
+            "name": "Lotwil Veriatus"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "entityID": 2921,
+            "name": "Lotwil Veriatus"
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "entityID": 4389,
+            "name": "Gyrochronatom",
+            "quantity": 1
+          }
+        ],
+        "provided": []
+      }
+    },
+    "715": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "f8757c22e3acd8bf882c00a02092cbf3b3badc00dd1fe9aadb4474cec45bfeb3",
+      "url": "https://www.wowhead.com/forever/quest=715",
+      "title": "Liquid Stone",
+      "level": 37,
+      "requiredLevel": 35,
+      "side": 3,
+      "relations": {
+        "starts": [
+          {
+            "entityType": "npc",
+            "entityID": 2920,
+            "name": "Lucien Tosselwrench"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "entityID": 2920,
+            "name": "Lucien Tosselwrench"
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "entityID": 929,
+            "name": "Healing Potion",
+            "quantity": 1
+          },
+          {
+            "entityType": "item",
+            "entityID": 3823,
+            "name": "Lesser Invisibility Potion",
+            "quantity": 1
+          }
+        ],
+        "provided": []
+      }
+    },
+    "716": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "7719fd9ad24054193a00d06f05bdff8e8ce18e5def2f80feecc2c1c8c9610ec0",
+      "url": "https://www.wowhead.com/forever/quest=716",
+      "title": "Stone Is Better than Cloth",
+      "level": 42,
+      "requiredLevel": 35,
+      "side": 3,
+      "relations": {
+        "starts": [
+          {
+            "entityType": "npc",
+            "entityID": 2920,
+            "name": "Lucien Tosselwrench"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "entityID": 2920,
+            "name": "Lucien Tosselwrench"
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "entityID": 2868,
+            "name": "Patterned Bronze Bracers",
+            "quantity": 1
+          }
+        ],
+        "provided": []
+      }
+    },
+    "722": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "06efbd3f2f7a2d8626e60729896664adbfe60d87122c4577187e890f4ce53a2c",
+      "url": "https://www.wowhead.com/forever/quest=722",
+      "title": "Amulet of Secrets",
+      "level": 40,
+      "requiredLevel": 35,
+      "side": 1,
+      "relations": {
+        "starts": [
+          {
+            "entityType": "npc",
+            "entityID": 2909,
+            "name": "Hammertoe Grez"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "entityID": 2909,
+            "name": "Hammertoe Grez"
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "entityID": 4635,
+            "name": "Hammertoe's Amulet",
+            "quantity": 1
+          }
+        ],
+        "provided": []
+      }
+    },
+    "723": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "14b75aff812ddc26030aaf18b746de9c1ceafba98cc60ca608a380daadfe2b69",
+      "url": "https://www.wowhead.com/forever/quest=723",
+      "title": "Prospect of Faith",
+      "level": 40,
+      "requiredLevel": 35,
+      "side": 1,
+      "relations": {
+        "starts": [
+          {
+            "entityType": "npc",
+            "entityID": 2909,
+            "name": "Hammertoe Grez"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "entityID": 2910,
+            "name": "Prospector Ryedol"
+          }
+        ],
+        "requirements": [],
+        "provided": [
+          {
+            "entityType": "item",
+            "entityID": 4635,
+            "name": "Hammertoe's Amulet",
+            "quantity": 1
+          }
+        ]
+      }
+    },
+    "727": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "b4200acb7f5e10288e8215d0421a75c84c1581f3493f7d34a6c335207fef282a",
+      "url": "https://www.wowhead.com/forever/quest=727",
+      "title": "To Ironforge for Yagyin's Digest",
+      "level": 40,
+      "requiredLevel": 30,
+      "side": 1,
+      "relations": {
+        "starts": [
+          {
+            "entityType": "npc",
+            "entityID": 2785,
+            "name": "Theldurin the Lost"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "entityID": 2786,
+            "name": "Gerrig Bonegrip"
+          }
+        ],
+        "requirements": [],
+        "provided": [
+          {
+            "entityType": "item",
+            "entityID": 4648,
+            "name": "Sigil of the Hammer",
+            "quantity": 1
+          }
+        ]
+      }
+    },
+    "728": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "d7296d753c1195966f9257582e19ff1a4cd9a4ab1562ed29206743d6874a97ef",
+      "url": "https://www.wowhead.com/forever/quest=728",
+      "title": "To the Undercity for Yagyin's Digest",
+      "level": 40,
+      "requiredLevel": 30,
+      "side": 2,
+      "relations": {
+        "starts": [
+          {
+            "entityType": "npc",
+            "entityID": 2785,
+            "name": "Theldurin the Lost"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "entityID": 2934,
+            "name": "Keeper Bel'dugur"
+          }
+        ],
+        "requirements": [],
+        "provided": [
+          {
+            "entityType": "item",
+            "entityID": 4648,
+            "name": "Sigil of the Hammer",
+            "quantity": 1
+          }
+        ]
+      }
+    },
+    "735": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "b73476371c77d182e6faa34e35c12edaec8fe654ec3aa1a8ce52051a90c5d225",
+      "url": "https://www.wowhead.com/forever/quest=735",
+      "title": "The Star, the Hand and the Heart",
+      "level": 44,
+      "requiredLevel": 30,
+      "side": 1,
+      "relations": {
+        "starts": [
+          {
+            "entityType": "npc",
+            "entityID": 2786,
+            "name": "Gerrig Bonegrip"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "entityID": 2786,
+            "name": "Gerrig Bonegrip"
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "entityID": 4646,
+            "name": "Star of Xil'yeh",
+            "quantity": 1
+          },
+          {
+            "entityType": "item",
+            "entityID": 4641,
+            "name": "Hand of Dagun",
+            "quantity": 1
+          },
+          {
+            "entityType": "item",
+            "entityID": 4644,
+            "name": "The Legacy Heart",
+            "quantity": 1
+          }
+        ],
+        "provided": []
+      }
+    },
+    "736": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "38ab3a5b9c2025eb5f0bd044dfa4c651131e96aa84c4997824e5a39dff112c52",
+      "url": "https://www.wowhead.com/forever/quest=736",
+      "title": "The Star, the Hand and the Heart",
+      "level": 44,
+      "requiredLevel": 30,
+      "side": 2,
+      "relations": {
+        "starts": [
+          {
+            "entityType": "npc",
+            "entityID": 2934,
+            "name": "Keeper Bel'dugur"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "entityID": 2934,
+            "name": "Keeper Bel'dugur"
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "entityID": 4646,
+            "name": "Star of Xil'yeh",
+            "quantity": 1
+          },
+          {
+            "entityType": "item",
+            "entityID": 4641,
+            "name": "Hand of Dagun",
+            "quantity": 1
+          },
+          {
+            "entityType": "item",
+            "entityID": 4644,
+            "name": "The Legacy Heart",
+            "quantity": 1
+          }
+        ],
+        "provided": []
+      }
+    },
+    "2202": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "f5b46cccca9d0cceeb54b7708cf86db942396d68ccf4455e3de034eabdcedc90",
+      "url": "https://www.wowhead.com/forever/quest=2202",
+      "title": "Uldaman Reagent Run",
+      "level": 42,
+      "requiredLevel": 36,
+      "side": 2,
+      "relations": {
+        "starts": [
+          {
+            "entityType": "npc",
+            "entityID": 6868,
+            "name": "Jarkal Mossmeld"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "entityID": 6868,
+            "name": "Jarkal Mossmeld"
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "entityID": 8047,
+            "name": "Magenta Fungus Cap",
+            "quantity": 12
+          }
+        ],
+        "provided": []
+      }
+    },
+    "2203": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "4ca9e1a34656422e94fd7a6934b4866a43a69d39c1fd86d47422e8d3d3345186",
+      "url": "https://www.wowhead.com/forever/quest=2203",
+      "title": "Badlands Reagent Run II",
+      "level": 44,
+      "requiredLevel": 40,
+      "side": 2,
+      "relations": {
+        "starts": [
+          {
+            "entityType": "npc",
+            "entityID": 6868,
+            "name": "Jarkal Mossmeld"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "entityID": 6868,
+            "name": "Jarkal Mossmeld"
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "entityID": 7867,
+            "name": "Vessel of Dragon's Blood",
+            "quantity": 3
+          }
+        ],
+        "provided": []
+      }
+    },
+    "78823": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "c50400bcce864ab7ea4a9b8f45907b5a4acfa640a1f95c84cfee8c30ffc677d6",
+      "url": "https://www.wowhead.com/forever/quest=78823",
+      "title": "Terror of the Desert Skies",
+      "level": 40,
+      "requiredLevel": 26,
+      "side": 3,
+      "relations": {
+        "starts": [],
+        "ends": [
+          {
+            "entityType": "npc",
+            "entityID": 715,
+            "name": "Hemet Nesingwary"
+          }
+        ],
+        "requirements": [
+          {
+            "entityType": "item",
+            "entityID": 211269,
+            "name": "Primitive Drawing",
+            "quantity": 1
+          }
+        ],
+        "provided": []
+      }
+    }
+  },
+  "entityPages": {
+    "npc-2920": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "a77ebe345c03f81a64c187488ac617c36aa1e795507ca643e12ca0dbdab7a28d",
+      "url": "https://www.wowhead.com/forever/npc=2920",
+      "name": "Lucien Tosselwrench",
+      "locations": [
+        {
+          "mapID": 1418,
+          "x": 0.258,
+          "y": 0.444,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        }
+      ],
+      "sources": []
+    },
+    "npc-2909": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "627d346a05339ae79e2093ea00ea1ee9dc5c3d2fd24fc45c0e876cef52ce6baf",
+      "url": "https://www.wowhead.com/forever/npc=2909",
+      "name": "Hammertoe Grez",
+      "locations": [
+        {
+          "mapID": 1415,
+          "x": 0.54,
+          "y": 0.5760000000000001,
+          "sourceAreaID": -3,
+          "sourceZone": "Eastern Kingdoms"
+        }
+      ],
+      "sources": []
+    },
+    "npc-2910": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "f3d4fcbe82ebeb146f51b159f54527755dd94463323a3a98a43aa33a0ccb8114",
+      "url": "https://www.wowhead.com/forever/npc=2910",
+      "name": "Prospector Ryedol <Explorers' League>",
+      "locations": [
+        {
+          "mapID": 1418,
+          "x": 0.534,
+          "y": 0.43200000000000005,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        }
+      ],
+      "sources": []
+    },
+    "item-929": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "f194354552943d8bf3380ff946acb6bdda734257112101d26ba0b1d42774a225",
+      "url": "https://www.wowhead.com/forever/item=929",
+      "name": "Healing Potion",
+      "locations": [
+        {
+          "mapID": 1431,
+          "x": 0.8140000000000001,
+          "y": 0.198,
+          "sourceAreaID": 10,
+          "sourceZone": "Duskwood"
+        },
+        {
+          "mapID": 1437,
+          "x": 0.502,
+          "y": 0.37799999999999995,
+          "sourceAreaID": 11,
+          "sourceZone": "Wetlands"
+        },
+        {
+          "mapID": 1445,
+          "x": 0.364,
+          "y": 0.304,
+          "sourceAreaID": 15,
+          "sourceZone": "Dustwallow Marsh"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.27,
+          "y": 0.588,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1421,
+          "x": 0.46399999999999997,
+          "y": 0.8640000000000001,
+          "sourceAreaID": 130,
+          "sourceZone": "Silverpine Forest"
+        },
+        {
+          "mapID": 1440,
+          "x": 0.508,
+          "y": 0.67,
+          "sourceAreaID": 331,
+          "sourceZone": "Ashenvale"
+        },
+        {
+          "mapID": 1441,
+          "x": 0.45,
+          "y": 0.504,
+          "sourceAreaID": 400,
+          "sourceZone": "Thousand Needles"
+        },
+        {
+          "mapID": 1442,
+          "x": 0.474,
+          "y": 0.618,
+          "sourceAreaID": 406,
+          "sourceZone": "Stonetalon Mountains"
+        },
+        {
+          "mapID": 1453,
+          "x": 0.324,
+          "y": 0.8,
+          "sourceAreaID": 1519,
+          "sourceZone": "Stormwind City"
+        },
+        {
+          "mapID": 1453,
+          "x": 0.326,
+          "y": 0.7979999999999999,
+          "sourceAreaID": 1519,
+          "sourceZone": "Stormwind City"
+        },
+        {
+          "mapID": 1453,
+          "x": 0.44799999999999995,
+          "y": 0.862,
+          "sourceAreaID": 1519,
+          "sourceZone": "Stormwind City"
+        }
+      ],
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 205,
+          "name": "Nightbane Dark Runner",
+          "action": "loot",
+          "minlevel": 28,
+          "maxlevel": 29,
+          "areas": [
+            10
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 215,
+          "name": "Defias Night Runner",
+          "action": "loot",
+          "minlevel": 24,
+          "maxlevel": 25,
+          "areas": [
+            10
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 232,
+          "name": "Farmer Ray",
+          "action": "loot",
+          "minlevel": 23,
+          "maxlevel": 23,
+          "areas": [
+            267
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 300,
+          "name": "Zzarc' Vul",
+          "action": "loot",
+          "minlevel": 30,
+          "maxlevel": 30,
+          "areas": [
+            10
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 431,
+          "name": "Shadowhide Slayer",
+          "action": "loot",
+          "minlevel": 25,
+          "maxlevel": 26,
+          "areas": [
+            44
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 507,
+          "name": "Fenros",
+          "action": "loot",
+          "minlevel": 32,
+          "maxlevel": 32,
+          "areas": [
+            10
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 533,
+          "name": "Nightbane Shadow Weaver",
+          "action": "loot",
+          "minlevel": 27,
+          "maxlevel": 28,
+          "areas": [
+            10
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 544,
+          "name": "Murloc Nightcrawler",
+          "action": "loot",
+          "minlevel": 21,
+          "maxlevel": 22,
+          "areas": [
+            44
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 579,
+          "name": "Shadowhide Assassin",
+          "action": "loot",
+          "minlevel": 23,
+          "maxlevel": 24,
+          "areas": [
+            44
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 615,
+          "name": "Blackrock Tracker",
+          "action": "loot",
+          "minlevel": 23,
+          "maxlevel": 24,
+          "areas": [
+            44
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 711,
+          "name": "Ardo Dirtpaw",
+          "action": "loot",
+          "minlevel": 24,
+          "maxlevel": 24,
+          "areas": [
+            44
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 889,
+          "name": "Splinter Fist Ogre",
+          "action": "loot",
+          "minlevel": 25,
+          "maxlevel": 26,
+          "areas": [
+            10
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 891,
+          "name": "Splinter Fist Fire Weaver",
+          "action": "loot",
+          "minlevel": 26,
+          "maxlevel": 27,
+          "areas": [
+            10
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 892,
+          "name": "Splinter Fist Taskmaster",
+          "action": "loot",
+          "minlevel": 27,
+          "maxlevel": 28,
+          "areas": [
+            10
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 898,
+          "name": "Nightbane Worgen",
+          "action": "loot",
+          "minlevel": 26,
+          "maxlevel": 27,
+          "areas": [
+            10
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 920,
+          "name": "Nightbane Tainted One",
+          "action": "loot",
+          "minlevel": 30,
+          "maxlevel": 31,
+          "areas": [
+            10
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1011,
+          "name": "Mosshide Trapper",
+          "action": "loot",
+          "minlevel": 23,
+          "maxlevel": 24,
+          "areas": [
+            11
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1014,
+          "name": "Mosshide Alpha",
+          "action": "loot",
+          "minlevel": 27,
+          "maxlevel": 27,
+          "areas": [
+            11
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1029,
+          "name": "Bluegill Oracle",
+          "action": "loot",
+          "minlevel": 25,
+          "maxlevel": 26,
+          "areas": [
+            11
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1037,
+          "name": "Dragonmaw Battlemaster",
+          "action": "loot",
+          "minlevel": 30,
+          "maxlevel": 30,
+          "areas": [
+            11
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1038,
+          "name": "Dragonmaw Shadowwarder",
+          "action": "loot",
+          "minlevel": 28,
+          "maxlevel": 29,
+          "areas": [
+            11
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1039,
+          "name": "Fen Dweller",
+          "action": "loot",
+          "minlevel": 20,
+          "maxlevel": 26,
+          "areas": [
+            11
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1200,
+          "name": "Morbent Fel",
+          "action": "loot",
+          "minlevel": 32,
+          "maxlevel": 32,
+          "areas": [
+            10
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1251,
+          "name": "Splinter Fist Firemonger",
+          "action": "loot",
+          "minlevel": 28,
+          "maxlevel": 29,
+          "areas": [
+            10
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1487,
+          "name": "Splinter Fist Enslaver",
+          "action": "loot",
+          "minlevel": 30,
+          "maxlevel": 31,
+          "areas": [
+            10
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1754,
+          "name": "Lord Gregor Lescovar",
+          "action": "loot",
+          "minlevel": 31,
+          "maxlevel": 31,
+          "areas": [
+            1519
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1755,
+          "name": "Marzon the Silent Blade",
+          "action": "loot",
+          "minlevel": 30,
+          "maxlevel": 30,
+          "areas": [
+            1519
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2102,
+          "name": "Dragonmaw Grunt",
+          "action": "loot",
+          "minlevel": 20,
+          "maxlevel": 21,
+          "areas": [
+            11
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2108,
+          "name": "Garneg Charskull",
+          "action": "loot",
+          "minlevel": 29,
+          "maxlevel": 29,
+          "areas": [
+            11
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2264,
+          "name": "Hillsbrad Tailor",
+          "action": "loot",
+          "minlevel": 24,
+          "maxlevel": 25,
+          "areas": [
+            267
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2266,
+          "name": "Hillsbrad Farmer",
+          "action": "loot",
+          "minlevel": 23,
+          "maxlevel": 24,
+          "areas": [
+            267
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2269,
+          "name": "Hillsbrad Miner",
+          "action": "loot",
+          "minlevel": 26,
+          "maxlevel": 27,
+          "areas": [
+            267
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2270,
+          "name": "Hillsbrad Sentry",
+          "action": "loot",
+          "minlevel": 27,
+          "maxlevel": 28,
+          "areas": [
+            267
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2335,
+          "name": "Magistrate Burnside",
+          "action": "loot",
+          "minlevel": 30,
+          "maxlevel": 30,
+          "areas": [
+            267
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2337,
+          "name": "Dark Strand Voidcaller",
+          "action": "loot",
+          "minlevel": 28,
+          "maxlevel": 29,
+          "areas": [
+            148
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2346,
+          "name": "Dun Garok Priest",
+          "action": "loot",
+          "minlevel": 29,
+          "maxlevel": 30,
+          "areas": [
+            267
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2372,
+          "name": "Mudsnout Gnoll",
+          "action": "loot",
+          "minlevel": 26,
+          "maxlevel": 27,
+          "areas": [
+            267
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2387,
+          "name": "Hillsbrad Councilman",
+          "action": "loot",
+          "minlevel": 25,
+          "maxlevel": 26,
+          "areas": [
+            267
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2403,
+          "name": "Farmer Getz",
+          "action": "loot",
+          "minlevel": 24,
+          "maxlevel": 24,
+          "areas": [
+            267
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2404,
+          "name": "Blacksmith Verringtan",
+          "action": "loot",
+          "minlevel": 26,
+          "maxlevel": 26,
+          "areas": [
+            267
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2427,
+          "name": "Jailor Eston",
+          "action": "loot",
+          "minlevel": 24,
+          "maxlevel": 24,
+          "areas": [
+            267
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2428,
+          "name": "Jailor Marlgen",
+          "action": "loot",
+          "minlevel": 24,
+          "maxlevel": 24,
+          "areas": [
+            267
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2448,
+          "name": "Clerk Horrace Whitesteed",
+          "action": "loot",
+          "minlevel": 26,
+          "maxlevel": 26,
+          "areas": [
+            267
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2449,
+          "name": "Citizen Wilkes",
+          "action": "loot",
+          "minlevel": 25,
+          "maxlevel": 25,
+          "areas": [
+            267
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2450,
+          "name": "Miner Hackett",
+          "action": "loot",
+          "minlevel": 29,
+          "maxlevel": 29,
+          "areas": [
+            267
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2451,
+          "name": "Farmer Kalaba",
+          "action": "loot",
+          "minlevel": 25,
+          "maxlevel": 25,
+          "areas": [
+            267
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3375,
+          "name": "Bael'dun Foreman",
+          "action": "loot",
+          "minlevel": 22,
+          "maxlevel": 23,
+          "areas": [
+            17
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3392,
+          "name": "Prospector Khazgorm",
+          "action": "loot",
+          "minlevel": 24,
+          "maxlevel": 24,
+          "areas": [
+            17
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3434,
+          "name": "Nak",
+          "action": "loot",
+          "minlevel": 23,
+          "maxlevel": 23,
+          "areas": [
+            17
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3435,
+          "name": "Lok Orcbane",
+          "action": "loot",
+          "minlevel": 25,
+          "maxlevel": 25,
+          "areas": [
+            17
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3725,
+          "name": "Dark Strand Cultist",
+          "action": "loot",
+          "minlevel": 18,
+          "maxlevel": 19,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3732,
+          "name": "Forsaken Seeker",
+          "action": "loot",
+          "minlevel": 18,
+          "maxlevel": 19,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3733,
+          "name": "Forsaken Herbalist",
+          "action": "loot",
+          "minlevel": 18,
+          "maxlevel": 19,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3735,
+          "name": "Apothecary Falthis",
+          "action": "loot",
+          "minlevel": 22,
+          "maxlevel": 22,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3736,
+          "name": "Darkslayer Mordenthal",
+          "action": "loot",
+          "minlevel": 23,
+          "maxlevel": 23,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3740,
+          "name": "Saltspittle Muckdweller",
+          "action": "loot",
+          "minlevel": 20,
+          "maxlevel": 21,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3746,
+          "name": "Foulweald Den Watcher",
+          "action": "loot",
+          "minlevel": 24,
+          "maxlevel": 25,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3748,
+          "name": "Foulweald Shaman",
+          "action": "loot",
+          "minlevel": 24,
+          "maxlevel": 25,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3749,
+          "name": "Foulweald Ursa",
+          "action": "loot",
+          "minlevel": 24,
+          "maxlevel": 25,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3754,
+          "name": "Xavian Betrayer",
+          "action": "loot",
+          "minlevel": 28,
+          "maxlevel": 29,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3780,
+          "name": "Shadethicket Moss Eater",
+          "action": "loot",
+          "minlevel": 21,
+          "maxlevel": 23,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3781,
+          "name": "Shadethicket Wood Shaper",
+          "action": "loot",
+          "minlevel": 23,
+          "maxlevel": 24,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3782,
+          "name": "Shadethicket Stone Mover",
+          "action": "loot",
+          "minlevel": 25,
+          "maxlevel": 26,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3783,
+          "name": "Shadethicket Raincaller",
+          "action": "loot",
+          "minlevel": 22,
+          "maxlevel": 23,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3784,
+          "name": "Shadethicket Bark Ripper",
+          "action": "loot",
+          "minlevel": 26,
+          "maxlevel": 27,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3789,
+          "name": "Terrowulf Fleshripper",
+          "action": "loot",
+          "minlevel": 28,
+          "maxlevel": 29,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3791,
+          "name": "Terrowulf Shadow Weaver",
+          "action": "loot",
+          "minlevel": 29,
+          "maxlevel": 30,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3799,
+          "name": "Severed Druid",
+          "action": "loot",
+          "minlevel": 28,
+          "maxlevel": 29,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3801,
+          "name": "Severed Sleeper",
+          "action": "loot",
+          "minlevel": 28,
+          "maxlevel": 29,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3803,
+          "name": "Severed Keeper",
+          "action": "loot",
+          "minlevel": 29,
+          "maxlevel": 30,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3804,
+          "name": "Forsaken Intruder",
+          "action": "loot",
+          "minlevel": 28,
+          "maxlevel": 29,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3806,
+          "name": "Forsaken Infiltrator",
+          "action": "loot",
+          "minlevel": 29,
+          "maxlevel": 30,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3833,
+          "name": "Cenarion Vindicator",
+          "action": "loot",
+          "minlevel": 26,
+          "maxlevel": 27,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3834,
+          "name": "Crazed Ancient",
+          "action": "loot",
+          "minlevel": 27,
+          "maxlevel": 28,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3854,
+          "name": "Shadowfang Wolfguard",
+          "action": "loot",
+          "minlevel": 20,
+          "maxlevel": 21,
+          "areas": [
+            209
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3857,
+          "name": "Shadowfang Glutton",
+          "action": "loot",
+          "minlevel": 21,
+          "maxlevel": 22,
+          "areas": [
+            209
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3859,
+          "name": "Shadowfang Ragetooth",
+          "action": "loot",
+          "minlevel": 23,
+          "maxlevel": 24,
+          "areas": [
+            209
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3873,
+          "name": "Tormented Officer",
+          "action": "loot",
+          "minlevel": 23,
+          "maxlevel": 24,
+          "areas": [
+            209
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3875,
+          "name": "Haunted Servitor",
+          "action": "loot",
+          "minlevel": 20,
+          "maxlevel": 21,
+          "areas": [
+            209
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3877,
+          "name": "Wailing Guardsman",
+          "action": "loot",
+          "minlevel": 21,
+          "maxlevel": 22,
+          "areas": [
+            209
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3879,
+          "name": "Dark Strand Assassin",
+          "action": "loot",
+          "minlevel": 21,
+          "maxlevel": 21,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3886,
+          "name": "Razorclaw the Butcher",
+          "action": "loot",
+          "minlevel": 22,
+          "maxlevel": 22,
+          "areas": [
+            209
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3893,
+          "name": "Forsaken Scout",
+          "action": "loot",
+          "minlevel": 23,
+          "maxlevel": 23,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3898,
+          "name": "Aligar the Tormentor",
+          "action": "loot",
+          "minlevel": 24,
+          "maxlevel": 24,
+          "areas": [
+            148
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3899,
+          "name": "Balizar the Umbrage",
+          "action": "loot",
+          "minlevel": 24,
+          "maxlevel": 24,
+          "areas": [
+            148
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3900,
+          "name": "Caedakar the Vicious",
+          "action": "loot",
+          "minlevel": 24,
+          "maxlevel": 24,
+          "areas": [
+            148
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3914,
+          "name": "Rethilgore",
+          "action": "loot",
+          "minlevel": 20,
+          "maxlevel": 20,
+          "areas": [
+            209
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3919,
+          "name": "Withered Ancient",
+          "action": "loot",
+          "minlevel": 26,
+          "maxlevel": 27,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3940,
+          "name": "Taneel Darkwood",
+          "action": "loot",
+          "minlevel": 32,
+          "maxlevel": 32,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3941,
+          "name": "Uthil Mooncall",
+          "action": "loot",
+          "minlevel": 32,
+          "maxlevel": 32,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3942,
+          "name": "Mavoris Cloudsbreak",
+          "action": "loot",
+          "minlevel": 32,
+          "maxlevel": 32,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3944,
+          "name": "Wrathtail Priestess",
+          "action": "loot",
+          "minlevel": 20,
+          "maxlevel": 21,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3987,
+          "name": "Dal Bloodclaw",
+          "action": "loot",
+          "minlevel": 25,
+          "maxlevel": 25,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3999,
+          "name": "Windshear Digger",
+          "action": "loot",
+          "minlevel": 21,
+          "maxlevel": 22,
+          "areas": [
+            406
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4002,
+          "name": "Windshear Stonecutter",
+          "action": "loot",
+          "minlevel": 22,
+          "maxlevel": 23,
+          "areas": [
+            406
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4028,
+          "name": "Charred Ancient",
+          "action": "loot",
+          "minlevel": 25,
+          "maxlevel": 26,
+          "areas": [
+            406
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4029,
+          "name": "Blackened Ancient",
+          "action": "loot",
+          "minlevel": 27,
+          "maxlevel": 28,
+          "areas": [
+            406
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4050,
+          "name": "Cenarion Caretaker",
+          "action": "loot",
+          "minlevel": 25,
+          "maxlevel": 26,
+          "areas": [
+            406
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4056,
+          "name": "Mirkfallon Keeper",
+          "action": "loot",
+          "minlevel": 26,
+          "maxlevel": 27,
+          "areas": [
+            406
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4057,
+          "name": "Son of Cenarius",
+          "action": "loot",
+          "minlevel": 24,
+          "maxlevel": 25,
+          "areas": [
+            406
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4061,
+          "name": "Mirkfallon Dryad",
+          "action": "loot",
+          "minlevel": 25,
+          "maxlevel": 26,
+          "areas": [
+            406
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4095,
+          "name": "Galak Mauler",
+          "action": "loot",
+          "minlevel": 27,
+          "maxlevel": 28,
+          "areas": [
+            400
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4096,
+          "name": "Galak Windchaser",
+          "action": "loot",
+          "minlevel": 24,
+          "maxlevel": 25,
+          "areas": [
+            400
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4097,
+          "name": "Galak Stormer",
+          "action": "loot",
+          "minlevel": 26,
+          "maxlevel": 27,
+          "areas": [
+            400
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4099,
+          "name": "Galak Marauder",
+          "action": "loot",
+          "minlevel": 26,
+          "maxlevel": 27,
+          "areas": [
+            400
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4111,
+          "name": "Gravelsnout Kobold",
+          "action": "loot",
+          "minlevel": 26,
+          "maxlevel": 27,
+          "areas": [
+            400
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4113,
+          "name": "Gravelsnout Digger",
+          "action": "loot",
+          "minlevel": 28,
+          "maxlevel": 29,
+          "areas": [
+            400
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4114,
+          "name": "Gravelsnout Forager",
+          "action": "loot",
+          "minlevel": 27,
+          "maxlevel": 28,
+          "areas": [
+            400
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4116,
+          "name": "Gravelsnout Surveyor",
+          "action": "loot",
+          "minlevel": 29,
+          "maxlevel": 30,
+          "areas": [
+            400
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4409,
+          "name": "Gatekeeper Kordurus",
+          "action": "loot",
+          "minlevel": 25,
+          "maxlevel": 25,
+          "areas": [
+            406
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4427,
+          "name": "Ward Guardian",
+          "action": "loot",
+          "minlevel": 31,
+          "maxlevel": 31,
+          "areas": [
+            491
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4435,
+          "name": "Razorfen Warrior",
+          "action": "loot",
+          "minlevel": 24,
+          "maxlevel": 25,
+          "areas": [
+            491
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4436,
+          "name": "Razorfen Quilguard",
+          "action": "loot",
+          "minlevel": 25,
+          "maxlevel": 26,
+          "areas": [
+            491
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4437,
+          "name": "Razorfen Warden",
+          "action": "loot",
+          "minlevel": 25,
+          "maxlevel": 26,
+          "areas": [
+            491
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4438,
+          "name": "Razorfen Spearhide",
+          "action": "loot",
+          "minlevel": 29,
+          "maxlevel": 30,
+          "areas": [
+            491
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4440,
+          "name": "Razorfen Totemic",
+          "action": "loot",
+          "minlevel": 29,
+          "maxlevel": 29,
+          "areas": [
+            491
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4516,
+          "name": "Death's Head Adept",
+          "action": "loot",
+          "minlevel": 27,
+          "maxlevel": 28,
+          "areas": [
+            491
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4519,
+          "name": "Death's Head Seer",
+          "action": "loot",
+          "minlevel": 28,
+          "maxlevel": 29,
+          "areas": [
+            491
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4520,
+          "name": "Razorfen Geomancer",
+          "action": "loot",
+          "minlevel": 25,
+          "maxlevel": 26,
+          "areas": [
+            491
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4522,
+          "name": "Razorfen Dustweaver",
+          "action": "loot",
+          "minlevel": 28,
+          "maxlevel": 29,
+          "areas": [
+            491
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4523,
+          "name": "Razorfen Groundshaker",
+          "action": "loot",
+          "minlevel": 27,
+          "maxlevel": 28,
+          "areas": [
+            491
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4525,
+          "name": "Razorfen Earthbreaker",
+          "action": "loot",
+          "minlevel": 30,
+          "maxlevel": 31,
+          "areas": [
+            491
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4530,
+          "name": "Razorfen Handler",
+          "action": "loot",
+          "minlevel": 25,
+          "maxlevel": 26,
+          "areas": [
+            491
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4531,
+          "name": "Razorfen Beast Trainer",
+          "action": "loot",
+          "minlevel": 28,
+          "maxlevel": 29,
+          "areas": [
+            491
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4535,
+          "name": "Tamed Battleboar",
+          "action": "loot",
+          "minlevel": 22,
+          "maxlevel": 26,
+          "areas": [
+            491
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4541,
+          "name": "Blood of Agamaggan",
+          "action": "loot",
+          "minlevel": 27,
+          "maxlevel": 27,
+          "areas": [
+            491
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4619,
+          "name": "Geltharis",
+          "action": "loot",
+          "minlevel": 32,
+          "maxlevel": 32,
+          "areas": [
+            331
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4788,
+          "name": "Fallenroot Satyr",
+          "action": "loot",
+          "minlevel": 20,
+          "maxlevel": 21,
+          "areas": [
+            331
+          ]
+        }
+      ]
+    },
+    "item-3823": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "dddee1b6e524391a751d420cdb985d6ca307d2b76728013a82e0d2d045e3ee6f",
+      "url": "https://www.wowhead.com/forever/item=3823",
+      "name": "Lesser Invisibility Potion",
+      "locations": [],
+      "sources": []
+    },
+    "item-2868": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "edf0008755352a463ee50c10a8730f08cb7bf56ef66c39b9ef6c08cb69dede1c",
+      "url": "https://www.wowhead.com/forever/item=2868",
+      "name": "Patterned Bronze Bracers",
+      "locations": [],
+      "sources": []
+    },
+    "item-4646": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "e9f956787b9f6d303f0d19bc37ea972e0b4169b1dd86a49fd5b36c8c9b9934c8",
+      "url": "https://www.wowhead.com/forever/item=4646",
+      "name": "Star of Xil'yeh",
+      "locations": [],
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 2417,
+          "name": "Grel'borg the Miser",
+          "action": "loot",
+          "minlevel": 39,
+          "maxlevel": 39,
+          "areas": [
+            36
+          ]
+        }
+      ]
+    },
+    "item-4641": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "1fdf018e0913c33b86bce8f2fa271b6ac987f65e0c1054fa7fdecc09b3105006",
+      "url": "https://www.wowhead.com/forever/item=4641",
+      "name": "Hand of Dagun",
+      "locations": [],
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 2937,
+          "name": "Dagun the Ravenous",
+          "action": "loot",
+          "minlevel": 43,
+          "maxlevel": 43,
+          "areas": [
+            15
+          ]
+        }
+      ]
+    },
+    "item-4644": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "d2749e46510f8523168bf474c95238e123db0179f0fae456a9db0133ae45c1d2",
+      "url": "https://www.wowhead.com/forever/item=4644",
+      "name": "The Legacy Heart",
+      "locations": [],
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 1060,
+          "name": "Mogh the Undying",
+          "action": "loot",
+          "minlevel": 44,
+          "maxlevel": 44,
+          "areas": [
+            33
+          ]
+        }
+      ]
+    },
+    "npc-2786": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "b09cbb6f0801f452c9fd2b2f628db606971772b7cb17d23473202bc1b6bc5d40",
+      "url": "https://www.wowhead.com/forever/npc=2786",
+      "name": "Gerrig Bonegrip",
+      "locations": [
+        {
+          "mapID": 1455,
+          "x": 0.504,
+          "y": 0.06,
+          "sourceAreaID": 1537,
+          "sourceZone": "Ironforge"
+        }
+      ],
+      "sources": []
+    },
+    "npc-2934": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "417330d49c996a1fee59e0f0e81a3bed3321b530c34c37dc26a62be2338d4ec8",
+      "url": "https://www.wowhead.com/forever/npc=2934",
+      "name": "Keeper Bel'dugur",
+      "locations": [
+        {
+          "mapID": 1458,
+          "x": 0.536,
+          "y": 0.54,
+          "sourceAreaID": 1497,
+          "sourceZone": "Undercity"
+        }
+      ],
+      "sources": []
+    },
+    "npc-2417": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "c614f7ab2083b4287cc83eb4a2637af806497f7377430eb8f29acf7b874ea22a",
+      "url": "https://www.wowhead.com/forever/npc=2417",
+      "name": "Grel'borg the Miser",
+      "locations": [
+        {
+          "mapID": 1416,
+          "x": 0.366,
+          "y": 0.536,
+          "sourceAreaID": 36,
+          "sourceZone": "Alterac Mountains"
+        },
+        {
+          "mapID": 1416,
+          "x": 0.39799999999999996,
+          "y": 0.484,
+          "sourceAreaID": 36,
+          "sourceZone": "Alterac Mountains"
+        },
+        {
+          "mapID": 1416,
+          "x": 0.406,
+          "y": 0.466,
+          "sourceAreaID": 36,
+          "sourceZone": "Alterac Mountains"
+        }
+      ],
+      "sources": []
+    },
+    "npc-715": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "c8ad10b5deb27eb9e519d5c4aa6c7ddd10d4b2b1dbfa9107591e2c539adaee71",
+      "url": "https://www.wowhead.com/forever/npc=715",
+      "name": "Hemet Nesingwary",
+      "locations": [
+        {
+          "mapID": 1434,
+          "x": 0.35600000000000004,
+          "y": 0.10800000000000001,
+          "sourceAreaID": 33,
+          "sourceZone": "Stranglethorn Vale"
+        }
+      ],
+      "sources": []
+    },
+    "npc-2701": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "b0dcded2d8a7a950cd975d709ff0feb43882b09f5224fd18dce7ebaed12a740d",
+      "url": "https://www.wowhead.com/forever/npc=2701",
+      "name": "Dustbelcher Ogre",
+      "locations": [
+        {
+          "mapID": 1418,
+          "x": 0.278,
+          "y": 0.622,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.276,
+          "y": 0.584,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.622,
+          "y": 0.682,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.308,
+          "y": 0.56,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.62,
+          "y": 0.7,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        }
+      ],
+      "sources": []
+    },
+    "npc-2726": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "efc3f9b49ce8cf5ee84cd672710b7b3c5852f9905232a6fbafb54c05bd67155c",
+      "url": "https://www.wowhead.com/forever/npc=2726",
+      "name": "Scorched Guardian",
+      "locations": [
+        {
+          "mapID": 1418,
+          "x": 0.816,
+          "y": 0.5539999999999999,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.8140000000000001,
+          "y": 0.46799999999999997,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.784,
+          "y": 0.524,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.792,
+          "y": 0.478,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.802,
+          "y": 0.6,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        }
+      ],
+      "sources": []
+    },
+    "item-7867": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "3d549f48d668a94a19f333f0053842d6796e0833fa8eb9e6b99a85a7a5e51d03",
+      "url": "https://www.wowhead.com/forever/item=7867",
+      "name": "Vessel of Dragon's Blood",
+      "locations": [],
+      "sources": []
+    },
+    "npc-6868": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "887cd4a891bf056a8b1e1dffe0ae8919c0d1d594fe31b4d7e83cba7880bc9f48",
+      "url": "https://www.wowhead.com/forever/npc=6868",
+      "name": "Jarkal Mossmeld",
+      "locations": [
+        {
+          "mapID": 1418,
+          "x": 0.024,
+          "y": 0.46,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        }
+      ],
+      "sources": []
+    },
+    "npc-213795": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "9c14d8dfb2b11268ad28157172f000e7dfaaa4ea5305a3598edf9f104848aea8",
+      "url": "https://www.wowhead.com/forever/npc=213795",
+      "name": "Gharrik",
+      "locations": [
+        {
+          "mapID": 1418,
+          "x": 0.226,
+          "y": 0.674,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        }
+      ],
+      "sources": []
+    },
+    "object-2857": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "589ed896d234d2a9e353451a03352ae1c70a044369277e2205cefd2370d0ed0e",
+      "url": "https://www.wowhead.com/forever/object=2857",
+      "name": "Solid Chest",
+      "locations": [
+        {
+          "mapID": 1418,
+          "x": 0.41600000000000004,
+          "y": 0.265,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.295,
+          "y": 0.565,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.536,
+          "y": 0.294,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.626,
+          "y": 0.705,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.138,
+          "y": 0.75,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.53,
+          "y": 0.349,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.508,
+          "y": 0.6829999999999999,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1435,
+          "x": 0.625,
+          "y": 0.23399999999999999,
+          "sourceAreaID": 8,
+          "sourceZone": "Swamp of Sorrows"
+        },
+        {
+          "mapID": 1435,
+          "x": 0.11599999999999999,
+          "y": 0.341,
+          "sourceAreaID": 8,
+          "sourceZone": "Swamp of Sorrows"
+        },
+        {
+          "mapID": 1435,
+          "x": 0.139,
+          "y": 0.7140000000000001,
+          "sourceAreaID": 8,
+          "sourceZone": "Swamp of Sorrows"
+        },
+        {
+          "mapID": 1435,
+          "x": 0.5489999999999999,
+          "y": 0.29600000000000004,
+          "sourceAreaID": 8,
+          "sourceZone": "Swamp of Sorrows"
+        },
+        {
+          "mapID": 1435,
+          "x": 0.6559999999999999,
+          "y": 0.184,
+          "sourceAreaID": 8,
+          "sourceZone": "Swamp of Sorrows"
+        },
+        {
+          "mapID": 1435,
+          "x": 0.049,
+          "y": 0.316,
+          "sourceAreaID": 8,
+          "sourceZone": "Swamp of Sorrows"
+        },
+        {
+          "mapID": 1435,
+          "x": 0.14,
+          "y": 0.561,
+          "sourceAreaID": 8,
+          "sourceZone": "Swamp of Sorrows"
+        },
+        {
+          "mapID": 1445,
+          "x": 0.315,
+          "y": 0.21600000000000003,
+          "sourceAreaID": 15,
+          "sourceZone": "Dustwallow Marsh"
+        },
+        {
+          "mapID": 1445,
+          "x": 0.573,
+          "y": 0.151,
+          "sourceAreaID": 15,
+          "sourceZone": "Dustwallow Marsh"
+        },
+        {
+          "mapID": 1445,
+          "x": 0.644,
+          "y": 0.268,
+          "sourceAreaID": 15,
+          "sourceZone": "Dustwallow Marsh"
+        },
+        {
+          "mapID": 1445,
+          "x": 0.629,
+          "y": 0.092,
+          "sourceAreaID": 15,
+          "sourceZone": "Dustwallow Marsh"
+        },
+        {
+          "mapID": 1445,
+          "x": 0.631,
+          "y": 0.19,
+          "sourceAreaID": 15,
+          "sourceZone": "Dustwallow Marsh"
+        },
+        {
+          "mapID": 1445,
+          "x": 0.591,
+          "y": 0.098,
+          "sourceAreaID": 15,
+          "sourceZone": "Dustwallow Marsh"
+        },
+        {
+          "mapID": 1434,
+          "x": 0.48700000000000004,
+          "y": 0.06,
+          "sourceAreaID": 33,
+          "sourceZone": "Stranglethorn Vale"
+        },
+        {
+          "mapID": 1434,
+          "x": 0.254,
+          "y": 0.09699999999999999,
+          "sourceAreaID": 33,
+          "sourceZone": "Stranglethorn Vale"
+        },
+        {
+          "mapID": 1434,
+          "x": 0.355,
+          "y": 0.23800000000000002,
+          "sourceAreaID": 33,
+          "sourceZone": "Stranglethorn Vale"
+        },
+        {
+          "mapID": 1434,
+          "x": 0.37,
+          "y": 0.313,
+          "sourceAreaID": 33,
+          "sourceZone": "Stranglethorn Vale"
+        },
+        {
+          "mapID": 1434,
+          "x": 0.418,
+          "y": 0.35600000000000004,
+          "sourceAreaID": 33,
+          "sourceZone": "Stranglethorn Vale"
+        },
+        {
+          "mapID": 1434,
+          "x": 0.204,
+          "y": 0.11800000000000001,
+          "sourceAreaID": 33,
+          "sourceZone": "Stranglethorn Vale"
+        },
+        {
+          "mapID": 1434,
+          "x": 0.473,
+          "y": 0.4,
+          "sourceAreaID": 33,
+          "sourceZone": "Stranglethorn Vale"
+        },
+        {
+          "mapID": 1416,
+          "x": 0.355,
+          "y": 0.542,
+          "sourceAreaID": 36,
+          "sourceZone": "Alterac Mountains"
+        },
+        {
+          "mapID": 1416,
+          "x": 0.387,
+          "y": 0.149,
+          "sourceAreaID": 36,
+          "sourceZone": "Alterac Mountains"
+        },
+        {
+          "mapID": 1416,
+          "x": 0.565,
+          "y": 0.27,
+          "sourceAreaID": 36,
+          "sourceZone": "Alterac Mountains"
+        },
+        {
+          "mapID": 1416,
+          "x": 0.584,
+          "y": 0.304,
+          "sourceAreaID": 36,
+          "sourceZone": "Alterac Mountains"
+        },
+        {
+          "mapID": 1416,
+          "x": 0.40299999999999997,
+          "y": 0.204,
+          "sourceAreaID": 36,
+          "sourceZone": "Alterac Mountains"
+        },
+        {
+          "mapID": 1416,
+          "x": 0.475,
+          "y": 0.171,
+          "sourceAreaID": 36,
+          "sourceZone": "Alterac Mountains"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.251,
+          "y": 0.645,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.539,
+          "y": 0.757,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.856,
+          "y": 0.324,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.209,
+          "y": 0.8490000000000001,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.182,
+          "y": 0.665,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.16699999999999998,
+          "y": 0.8740000000000001,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.542,
+          "y": 0.8140000000000001,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1417,
+          "x": 0.84,
+          "y": 0.28800000000000003,
+          "sourceAreaID": 45,
+          "sourceZone": "Arathi Highlands"
+        },
+        {
+          "mapID": 1443,
+          "x": 0.327,
+          "y": 0.551,
+          "sourceAreaID": 405,
+          "sourceZone": "Desolace"
+        },
+        {
+          "mapID": 1443,
+          "x": 0.738,
+          "y": 0.737,
+          "sourceAreaID": 405,
+          "sourceZone": "Desolace"
+        },
+        {
+          "mapID": 1443,
+          "x": 0.35200000000000004,
+          "y": 0.614,
+          "sourceAreaID": 405,
+          "sourceZone": "Desolace"
+        },
+        {
+          "mapID": 1443,
+          "x": 0.39799999999999996,
+          "y": 0.941,
+          "sourceAreaID": 405,
+          "sourceZone": "Desolace"
+        },
+        {
+          "mapID": 1443,
+          "x": 0.695,
+          "y": 0.785,
+          "sourceAreaID": 405,
+          "sourceZone": "Desolace"
+        },
+        {
+          "mapID": 1443,
+          "x": 0.29600000000000004,
+          "y": 0.58,
+          "sourceAreaID": 405,
+          "sourceZone": "Desolace"
+        },
+        {
+          "mapID": 1443,
+          "x": 0.294,
+          "y": 0.606,
+          "sourceAreaID": 405,
+          "sourceZone": "Desolace"
+        },
+        {
+          "mapID": 1443,
+          "x": 0.406,
+          "y": 0.9470000000000001,
+          "sourceAreaID": 405,
+          "sourceZone": "Desolace"
+        },
+        {
+          "mapID": 1443,
+          "x": 0.66,
+          "y": 0.807,
+          "sourceAreaID": 405,
+          "sourceZone": "Desolace"
+        }
+      ],
+      "sources": []
+    },
+    "item-211269": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "8d4c054b1129e05137dc5998832ff6815d274fa2b6c444637d7f7fb896668e11",
+      "url": "https://www.wowhead.com/forever/item=211269",
+      "name": "Primitive Drawing",
+      "locations": [],
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 2701,
+          "name": "Dustbelcher Ogre",
+          "action": "loot",
+          "minlevel": 38,
+          "maxlevel": 39,
+          "areas": [
+            3
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2715,
+          "name": "Dustbelcher Brute",
+          "action": "loot",
+          "minlevel": 39,
+          "maxlevel": 40,
+          "areas": [
+            3
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2716,
+          "name": "Dustbelcher Wyrmhunter",
+          "action": "loot",
+          "minlevel": 40,
+          "maxlevel": 41,
+          "areas": [
+            3
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2717,
+          "name": "Dustbelcher Mauler",
+          "action": "loot",
+          "minlevel": 41,
+          "maxlevel": 42,
+          "areas": [
+            3
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2718,
+          "name": "Dustbelcher Shaman",
+          "action": "loot",
+          "minlevel": 42,
+          "maxlevel": 43,
+          "areas": [
+            3
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2720,
+          "name": "Dustbelcher Ogre Mage",
+          "action": "loot",
+          "minlevel": 43,
+          "maxlevel": 44,
+          "areas": [
+            3
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2892,
+          "name": "Stonevault Seer",
+          "action": "loot",
+          "minlevel": 39,
+          "maxlevel": 40,
+          "areas": [
+            3
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2893,
+          "name": "Stonevault Bonesnapper",
+          "action": "loot",
+          "minlevel": 39,
+          "maxlevel": 40,
+          "areas": [
+            3
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2894,
+          "name": "Stonevault Shaman",
+          "action": "loot",
+          "minlevel": 40,
+          "maxlevel": 41,
+          "areas": [
+            3
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2906,
+          "name": "Dustbelcher Warrior",
+          "action": "loot",
+          "minlevel": 35,
+          "maxlevel": 37,
+          "areas": [
+            3
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2907,
+          "name": "Dustbelcher Mystic",
+          "action": "loot",
+          "minlevel": 36,
+          "maxlevel": 37,
+          "areas": [
+            3
+          ]
+        }
+      ]
+    },
+    "item-4635": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "494de9dba0221712e8fb0ecb83e3d5ef4117f5860466973e8586cb99037a51c4",
+      "url": "https://www.wowhead.com/forever/item=4635",
+      "name": "Hammertoe's Amulet",
+      "locations": [],
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 2932,
+          "name": "Magregan Deepshadow",
+          "action": "loot",
+          "minlevel": 38,
+          "maxlevel": 38,
+          "areas": [
+            3
+          ]
+        }
+      ]
+    },
+    "item-4648": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "1521872dee76b20cb1b762ccc7ee542bbd57a48aa5e4ba5a84f16a91f326dd56",
+      "url": "https://www.wowhead.com/forever/item=4648",
+      "name": "Sigil of the Hammer",
+      "locations": [],
+      "sources": []
+    },
+    "item-4628": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "f05fabe890d0fadb0355d1197a7c77b0bafe4410bf5baf87bbe20caa0aed2e74",
+      "url": "https://www.wowhead.com/forever/item=4628",
+      "name": "Bracers of Rock Binding",
+      "locations": [],
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 2736,
+          "name": "Greater Rock Elemental",
+          "action": "loot",
+          "minlevel": 42,
+          "maxlevel": 44,
+          "areas": [
+            3
+          ]
+        }
+      ]
+    },
+    "item-4389": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "3effbaea03347dc74274e89690d0986e3ae8f561540e587b895171dc905686de",
+      "url": "https://www.wowhead.com/forever/item=4389",
+      "name": "Gyrochronatom",
+      "locations": [
+        {
+          "mapID": 1426,
+          "x": 0.5,
+          "y": 0.494,
+          "sourceAreaID": 1,
+          "sourceZone": "Dun Morogh"
+        },
+        {
+          "mapID": 1431,
+          "x": 0.778,
+          "y": 0.48200000000000004,
+          "sourceAreaID": 10,
+          "sourceZone": "Duskwood"
+        },
+        {
+          "mapID": 1437,
+          "x": 0.106,
+          "y": 0.568,
+          "sourceAreaID": 11,
+          "sourceZone": "Wetlands"
+        },
+        {
+          "mapID": 1447,
+          "x": 0.452,
+          "y": 0.9079999999999999,
+          "sourceAreaID": 16,
+          "sourceZone": "Azshara"
+        },
+        {
+          "mapID": 1413,
+          "x": 0.626,
+          "y": 0.36200000000000004,
+          "sourceAreaID": 17,
+          "sourceZone": "The Barrens"
+        },
+        {
+          "mapID": 1434,
+          "x": 0.51,
+          "y": 0.35200000000000004,
+          "sourceAreaID": 33,
+          "sourceZone": "Stranglethorn Vale"
+        },
+        {
+          "mapID": 1416,
+          "x": 0.86,
+          "y": 0.8,
+          "sourceAreaID": 36,
+          "sourceZone": "Alterac Mountains"
+        },
+        {
+          "mapID": 1428,
+          "x": 0.66,
+          "y": 0.22,
+          "sourceAreaID": 46,
+          "sourceZone": "Burning Steppes"
+        },
+        {
+          "mapID": 1425,
+          "x": 0.342,
+          "y": 0.37799999999999995,
+          "sourceAreaID": 47,
+          "sourceZone": "The Hinterlands"
+        },
+        {
+          "mapID": 1444,
+          "x": 0.44799999999999995,
+          "y": 0.434,
+          "sourceAreaID": 357,
+          "sourceZone": "Feralas"
+        },
+        {
+          "mapID": 1441,
+          "x": 0.7759999999999999,
+          "y": 0.778,
+          "sourceAreaID": 400,
+          "sourceZone": "Thousand Needles"
+        },
+        {
+          "mapID": 1452,
+          "x": 0.608,
+          "y": 0.384,
+          "sourceAreaID": 618,
+          "sourceZone": "Winterspring"
+        },
+        {
+          "mapID": 1458,
+          "x": 0.754,
+          "y": 0.738,
+          "sourceAreaID": 1497,
+          "sourceZone": "Undercity"
+        },
+        {
+          "mapID": 1453,
+          "x": 0.552,
+          "y": 0.07400000000000001,
+          "sourceAreaID": 1519,
+          "sourceZone": "Stormwind City"
+        },
+        {
+          "mapID": 1453,
+          "x": 0.624,
+          "y": 0.302,
+          "sourceAreaID": 1519,
+          "sourceZone": "Stormwind City"
+        },
+        {
+          "mapID": 1455,
+          "x": 0.6779999999999999,
+          "y": 0.43,
+          "sourceAreaID": 1537,
+          "sourceZone": "Ironforge"
+        },
+        {
+          "mapID": 1454,
+          "x": 0.754,
+          "y": 0.25,
+          "sourceAreaID": 1637,
+          "sourceZone": "Orgrimmar"
+        },
+        {
+          "mapID": 2548,
+          "x": 0.7759999999999999,
+          "y": 0.508,
+          "sourceAreaID": 16591,
+          "sourceZone": "Riverglades"
+        }
+      ],
+      "sources": [
+        {
+          "entityType": "npc",
+          "entityID": 677,
+          "name": "Venture Co. Tinkerer",
+          "action": "loot",
+          "minlevel": 40,
+          "maxlevel": 41,
+          "areas": [
+            33
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1097,
+          "name": "Venture Co. Mechanic",
+          "action": "loot",
+          "minlevel": 34,
+          "maxlevel": 35,
+          "areas": [
+            33
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2674,
+          "name": "Advanced Target Dummy",
+          "action": "loot"
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4260,
+          "name": "Venture Co. Shredder",
+          "action": "loot",
+          "minlevel": 37,
+          "maxlevel": 37,
+          "areas": [
+            33
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1448,
+          "name": "Neal Allen",
+          "action": "buy",
+          "minlevel": 20,
+          "maxlevel": 20,
+          "areas": [
+            11
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 1694,
+          "name": "Loslor Rudge",
+          "action": "buy",
+          "minlevel": 10,
+          "maxlevel": 10,
+          "areas": [
+            1
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2682,
+          "name": "Fradd Swiftgear",
+          "action": "buy",
+          "minlevel": 24,
+          "maxlevel": 24,
+          "areas": [
+            11
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2683,
+          "name": "Namdo Bizzfizzle",
+          "action": "buy",
+          "minlevel": 24,
+          "maxlevel": 24,
+          "areas": []
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2684,
+          "name": "Rizz Loosebolt",
+          "action": "buy",
+          "minlevel": 31,
+          "maxlevel": 31,
+          "areas": [
+            36
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2685,
+          "name": "Mazk Snipeshot",
+          "action": "buy",
+          "minlevel": 36,
+          "maxlevel": 36,
+          "areas": [
+            33
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2687,
+          "name": "Gnaz Blunderflame",
+          "action": "buy",
+          "minlevel": 42,
+          "maxlevel": 42,
+          "areas": [
+            33
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 2688,
+          "name": "Ruppo Zipcoil",
+          "action": "buy",
+          "minlevel": 52,
+          "maxlevel": 52,
+          "areas": [
+            47
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3133,
+          "name": "Herble Baubbletump",
+          "action": "buy",
+          "minlevel": 30,
+          "maxlevel": 30,
+          "areas": [
+            10
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3413,
+          "name": "Sovik",
+          "action": "buy",
+          "minlevel": 30,
+          "maxlevel": 30,
+          "areas": [
+            1637
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 3495,
+          "name": "Gagsprocket",
+          "action": "buy",
+          "minlevel": 20,
+          "maxlevel": 20,
+          "areas": [
+            17
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 4587,
+          "name": "Elizabeth Van Talen",
+          "action": "buy",
+          "minlevel": 30,
+          "maxlevel": 30,
+          "areas": [
+            1497
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 5175,
+          "name": "Gearcutter Cogspinner",
+          "action": "buy",
+          "minlevel": 30,
+          "maxlevel": 30,
+          "areas": [
+            1537
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 5519,
+          "name": "Billibub Cogspinner",
+          "action": "buy",
+          "minlevel": 30,
+          "maxlevel": 30,
+          "areas": [
+            1519
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 6730,
+          "name": "Jinky Twizzlefixxit",
+          "action": "buy",
+          "minlevel": 30,
+          "maxlevel": 30,
+          "areas": [
+            400
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 6777,
+          "name": "Zan Shivsproket",
+          "action": "buy",
+          "minlevel": 60,
+          "maxlevel": 60,
+          "areas": [
+            36
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 8678,
+          "name": "Jubie Gadgetspring",
+          "action": "buy",
+          "minlevel": 55,
+          "maxlevel": 55,
+          "areas": [
+            16
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 8679,
+          "name": "Knaz Blunderflame",
+          "action": "buy",
+          "minlevel": 42,
+          "maxlevel": 42,
+          "areas": [
+            33
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 9544,
+          "name": "Yuka Screwspigot",
+          "action": "buy",
+          "minlevel": 53,
+          "maxlevel": 53,
+          "areas": [
+            46
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 9676,
+          "name": "Tink Sprocketwhistle",
+          "action": "buy",
+          "minlevel": 24,
+          "maxlevel": 40,
+          "areas": [
+            721
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 11185,
+          "name": "Xizzer Fizzbolt",
+          "action": "buy",
+          "minlevel": 57,
+          "maxlevel": 57,
+          "areas": [
+            618
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 14637,
+          "name": "Zorbin Fandazzle",
+          "action": "buy",
+          "minlevel": 40,
+          "maxlevel": 40,
+          "areas": [
+            357
+          ]
+        },
+        {
+          "entityType": "npc",
+          "entityID": 216672,
+          "name": "Namdo Bizzfizzle",
+          "action": "buy",
+          "minlevel": 40,
+          "maxlevel": 40
+        },
+        {
+          "entityType": "npc",
+          "entityID": 240654,
+          "name": "Fizzlefuse",
+          "action": "buy",
+          "minlevel": 60,
+          "maxlevel": 60,
+          "areas": []
+        },
+        {
+          "entityType": "npc",
+          "entityID": 260565,
+          "name": "Kor'gar",
+          "action": "buy",
+          "minlevel": 41,
+          "maxlevel": 41,
+          "areas": [
+            16591
+          ]
+        }
+      ]
+    },
+    "item-8047": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "0cccdc107b38e72d5c1db4d71f2c374f1c09350174be92fcf214453610065793",
+      "url": "https://www.wowhead.com/forever/item=8047",
+      "name": "Magenta Fungus Cap",
+      "locations": [],
+      "sources": [
+        {
+          "entityType": "object",
+          "entityID": 126049,
+          "name": "Magenta Cap Clusters",
+          "action": "gather",
+          "areas": [
+            1337
+          ]
+        },
+        {
+          "entityType": "object",
+          "entityID": 128293,
+          "name": "Magenta Cap Clusters",
+          "action": "gather",
+          "areas": [
+            1337
+          ]
+        }
+      ]
+    },
+    "npc-2937": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "f3bb14d40d1cda9b0aa6a030d26421bc7eae6c4395e32952db73e44407bccf7a",
+      "url": "https://www.wowhead.com/forever/npc=2937",
+      "name": "Dagun the Ravenous",
+      "locations": [
+        {
+          "mapID": 1445,
+          "x": 0.594,
+          "y": 0.098,
+          "sourceAreaID": 15,
+          "sourceZone": "Dustwallow Marsh"
+        },
+        {
+          "mapID": 1445,
+          "x": 0.596,
+          "y": 0.106,
+          "sourceAreaID": 15,
+          "sourceZone": "Dustwallow Marsh"
+        },
+        {
+          "mapID": 1445,
+          "x": 0.606,
+          "y": 0.102,
+          "sourceAreaID": 15,
+          "sourceZone": "Dustwallow Marsh"
+        },
+        {
+          "mapID": 1445,
+          "x": 0.604,
+          "y": 0.094,
+          "sourceAreaID": 15,
+          "sourceZone": "Dustwallow Marsh"
+        }
+      ],
+      "sources": []
+    },
+    "npc-1060": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "137249f20483224129d76083bfc6077c14c8cd44bf34e7e39ed77f312888671a",
+      "url": "https://www.wowhead.com/forever/npc=1060",
+      "name": "Mogh the Undying <Skullsplitter Clan Witchdoctor>",
+      "locations": [
+        {
+          "mapID": 1434,
+          "x": 0.474,
+          "y": 0.442,
+          "sourceAreaID": 33,
+          "sourceZone": "Stranglethorn Vale"
+        }
+      ],
+      "sources": []
+    },
+    "npc-2857": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "d2f5dfa7f701f306852bc8eb1e811c522fd745c260d8556f2753fa8bb0f15427",
+      "url": "https://www.wowhead.com/forever/npc=2857",
+      "name": "Thund <Journeyman Engineer>",
+      "locations": [
+        {
+          "mapID": 1454,
+          "x": 0.758,
+          "y": 0.244,
+          "sourceAreaID": 1637,
+          "sourceZone": "Orgrimmar"
+        }
+      ],
+      "sources": []
+    },
+    "object-19027": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "ff8b7648228dc0f57f715c0f3fa38f798ffabc216218d60b46c753cf0ed5fb7b",
+      "url": "https://www.wowhead.com/forever/object=19027",
+      "name": "Tome of Mel'Thandris",
+      "locations": [
+        {
+          "mapID": 1440,
+          "x": 0.506,
+          "y": 0.39,
+          "sourceAreaID": 331,
+          "sourceZone": "Ashenvale"
+        }
+      ],
+      "sources": []
+    },
+    "npc-2715": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "61b36262b385c894a7e7013cc938c3b3ca10ddfdbbd1e8b72b0efdd47d69bdf4",
+      "url": "https://www.wowhead.com/forever/npc=2715",
+      "name": "Dustbelcher Brute",
+      "locations": [
+        {
+          "mapID": 1418,
+          "x": 0.284,
+          "y": 0.568,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.28300000000000003,
+          "y": 0.63,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.626,
+          "y": 0.6920000000000001,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.306,
+          "y": 0.564,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.626,
+          "y": 0.7040000000000001,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        }
+      ],
+      "sources": []
+    },
+    "npc-2716": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "af8f3cc28fff7af891424c8ce16be49f2ee9e0378afa528489fe81e20e2076e7",
+      "url": "https://www.wowhead.com/forever/npc=2716",
+      "name": "Dustbelcher Wyrmhunter",
+      "locations": [
+        {
+          "mapID": 1418,
+          "x": 0.122,
+          "y": 0.762,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.08199999999999999,
+          "y": 0.726,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.11,
+          "y": 0.8140000000000001,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.616,
+          "y": 0.68,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        }
+      ],
+      "sources": []
+    },
+    "npc-2717": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "0593cb0a59c908d9397c6739417447bc8ce86ccdf2778cacac272be5876bd11a",
+      "url": "https://www.wowhead.com/forever/npc=2717",
+      "name": "Dustbelcher Mauler",
+      "locations": [
+        {
+          "mapID": 1418,
+          "x": 0.132,
+          "y": 0.7559999999999999,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.084,
+          "y": 0.76,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.09,
+          "y": 0.818,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.106,
+          "y": 0.816,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.616,
+          "y": 0.68,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        }
+      ],
+      "sources": []
+    },
+    "npc-2718": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "09c9d25823264f6f31d8ea1ce8e3a595c4e65dd24f90528fda91f6e10d1ffea4",
+      "url": "https://www.wowhead.com/forever/npc=2718",
+      "name": "Dustbelcher Shaman",
+      "locations": [
+        {
+          "mapID": 1418,
+          "x": 0.094,
+          "y": 0.774,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.08,
+          "y": 0.846,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.134,
+          "y": 0.75,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.11,
+          "y": 0.8,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.616,
+          "y": 0.6779999999999999,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        }
+      ],
+      "sources": []
+    },
+    "npc-2720": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "1e9ecd578b1118be849b67073f41b6544462c84e08ed18bda2b676232993b61f",
+      "url": "https://www.wowhead.com/forever/npc=2720",
+      "name": "Dustbelcher Ogre Mage",
+      "locations": [
+        {
+          "mapID": 1418,
+          "x": 0.08199999999999999,
+          "y": 0.88,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.08199999999999999,
+          "y": 0.9079999999999999,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        }
+      ],
+      "sources": []
+    },
+    "npc-2892": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "1a02d7f1cedc16c22a068f972dae69460679840d1e2c7756430fdbe409b1ddcd",
+      "url": "https://www.wowhead.com/forever/npc=2892",
+      "name": "Stonevault Seer",
+      "locations": [
+        {
+          "mapID": 1418,
+          "x": 0.644,
+          "y": 0.436,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        }
+      ],
+      "sources": []
+    },
+    "npc-2893": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "f88a7ee47eb09556a27b89f098ecb6040fc75b05ded5f80ab0c87081df6120fd",
+      "url": "https://www.wowhead.com/forever/npc=2893",
+      "name": "Stonevault Bonesnapper",
+      "locations": [
+        {
+          "mapID": 1418,
+          "x": 0.522,
+          "y": 0.662,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.486,
+          "y": 0.7140000000000001,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.486,
+          "y": 0.6940000000000001,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.51,
+          "y": 0.7140000000000001,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        }
+      ],
+      "sources": []
+    },
+    "npc-2894": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "d0d76c3f3f73ebc68dc26ff5f5f16ea7969e1bc263897490c618cef1dbc6df50",
+      "url": "https://www.wowhead.com/forever/npc=2894",
+      "name": "Stonevault Shaman",
+      "locations": [
+        {
+          "mapID": 1418,
+          "x": 0.51,
+          "y": 0.6759999999999999,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.48200000000000004,
+          "y": 0.688,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        },
+        {
+          "mapID": 1418,
+          "x": 0.494,
+          "y": 0.706,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        }
+      ],
+      "sources": []
+    },
+    "npc-2906": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "c4be4c4ee6cfc5a6fcf9e657a49a9f7848068bb8a501d06fdf31b25af06f53b7",
+      "url": "https://www.wowhead.com/forever/npc=2906",
+      "name": "Dustbelcher Warrior",
+      "locations": [
+        {
+          "mapID": 1418,
+          "x": 0.6559999999999999,
+          "y": 0.244,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        }
+      ],
+      "sources": []
+    },
+    "npc-2907": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "476ae7a79e8199f1a4e7e39f80e20efbc12f06a98dcd45cfa83a81586aef8311",
+      "url": "https://www.wowhead.com/forever/npc=2907",
+      "name": "Dustbelcher Mystic",
+      "locations": [
+        {
+          "mapID": 1418,
+          "x": 0.664,
+          "y": 0.23600000000000002,
+          "sourceAreaID": 3,
+          "sourceZone": "Badlands"
+        }
+      ],
+      "sources": []
+    }
+  },
+  "audit": {
+    "directZoneBefore": {
+      "quest_records": 38,
+      "static_points": 113
+    },
+    "directZoneAfter": {
+      "quest_records": 38,
+      "static_points": 113
+    },
+    "categoryScopeAfter": {
+      "quest_records": 44,
+      "static_points": 128
+    },
+    "routeMetrics": [
+      {
+        "faction": "Horde",
+        "chapter": "31-40",
+        "actions_before": 53,
+        "actions_after": 53,
+        "valid_before": true,
+        "valid_after": true,
+        "distance_before": 233873.75,
+        "distance_after": 263873.75,
+        "uncertain_legs_before": 28,
+        "uncertain_legs_after": 28,
+        "quest_log_peak_before": 4,
+        "quest_log_peak_after": 4,
+        "xp_shortfall_before": 496350,
+        "xp_shortfall_after": 496350,
+        "reward_xp_before_work_before": 420070,
+        "reward_xp_before_work_after": 420070,
+        "unknown_locations_before": 4,
+        "unknown_locations_after": 2,
+        "difficulty_pressure_before": 26,
+        "difficulty_pressure_after": 26
+      },
+      {
+        "faction": "Horde",
+        "chapter": "41-50",
+        "actions_before": 59,
+        "actions_after": 59,
+        "valid_before": true,
+        "valid_after": true,
+        "distance_before": 185256.26,
+        "distance_after": 185256.26,
+        "uncertain_legs_before": 21,
+        "uncertain_legs_after": 21,
+        "quest_log_peak_before": 2,
+        "quest_log_peak_after": 2,
+        "xp_shortfall_before": 632050,
+        "xp_shortfall_after": 632050,
+        "reward_xp_before_work_before": 541500,
+        "reward_xp_before_work_after": 541500,
+        "unknown_locations_before": 1,
+        "unknown_locations_after": 1,
+        "difficulty_pressure_before": 61,
+        "difficulty_pressure_after": 61
+      },
+      {
+        "faction": "Horde",
+        "chapter": "51-60",
+        "actions_before": 12,
+        "actions_after": 12,
+        "valid_before": true,
+        "valid_after": true,
+        "distance_before": 29936.33,
+        "distance_after": 29936.33,
+        "uncertain_legs_before": 3,
+        "uncertain_legs_after": 3,
+        "quest_log_peak_before": 2,
+        "quest_log_peak_after": 2,
+        "xp_shortfall_before": 577700,
+        "xp_shortfall_after": 577700,
+        "reward_xp_before_work_before": 26000,
+        "reward_xp_before_work_after": 26000,
+        "unknown_locations_before": 0,
+        "unknown_locations_after": 0,
+        "difficulty_pressure_before": 0,
+        "difficulty_pressure_after": 0
+      },
+      {
+        "faction": "Alliance",
+        "chapter": "31-40",
+        "actions_before": 73,
+        "actions_after": 73,
+        "valid_before": true,
+        "valid_after": true,
+        "distance_before": 293255.76,
+        "distance_after": 323255.76,
+        "uncertain_legs_before": 43,
+        "uncertain_legs_after": 42,
+        "quest_log_peak_before": 4,
+        "quest_log_peak_after": 4,
+        "xp_shortfall_before": 435100,
+        "xp_shortfall_after": 435100,
+        "reward_xp_before_work_before": 758600,
+        "reward_xp_before_work_after": 758600,
+        "unknown_locations_before": 5,
+        "unknown_locations_after": 2,
+        "difficulty_pressure_before": 51,
+        "difficulty_pressure_after": 51
+      },
+      {
+        "faction": "Alliance",
+        "chapter": "41-50",
+        "actions_before": 87,
+        "actions_after": 87,
+        "valid_before": true,
+        "valid_after": true,
+        "distance_before": 237335.47,
+        "distance_after": 237335.47,
+        "uncertain_legs_before": 43,
+        "uncertain_legs_after": 42,
+        "quest_log_peak_before": 4,
+        "quest_log_peak_after": 4,
+        "xp_shortfall_before": 625050,
+        "xp_shortfall_after": 625050,
+        "reward_xp_before_work_before": 1075960,
+        "reward_xp_before_work_after": 1075960,
+        "unknown_locations_before": 2,
+        "unknown_locations_after": 1,
+        "difficulty_pressure_before": 74,
+        "difficulty_pressure_after": 74
+      }
+    ],
+    "routeComparison": [
+      {
+        "faction": "Horde",
+        "race": 2,
+        "chapter": "31-40",
+        "actions_before": 43,
+        "actions_after": 43,
+        "valid_before": true,
+        "valid_after": true,
+        "distance_before": 177965.38,
+        "distance_after": 207965.38,
+        "uncertain_legs_before": 21,
+        "uncertain_legs_after": 21,
+        "quest_log_peak_before": 3,
+        "quest_log_peak_after": 3,
+        "xp_shortfall_before": 496350,
+        "xp_shortfall_after": 496350,
+        "reward_xp_before_work_before": 270870,
+        "reward_xp_before_work_after": 270870,
+        "unknown_locations_before": 3,
+        "unknown_locations_after": 1
+      },
+      {
+        "faction": "Horde",
+        "race": 2,
+        "chapter": "41-50",
+        "actions_before": 56,
+        "actions_after": 56,
+        "valid_before": true,
+        "valid_after": true,
+        "distance_before": 171569.03,
+        "distance_after": 171569.03,
+        "uncertain_legs_before": 19,
+        "uncertain_legs_after": 19,
+        "quest_log_peak_before": 2,
+        "quest_log_peak_after": 2,
+        "xp_shortfall_before": 632050,
+        "xp_shortfall_after": 632050,
+        "reward_xp_before_work_before": 493250,
+        "reward_xp_before_work_after": 493250,
+        "unknown_locations_before": 1,
+        "unknown_locations_after": 1
+      },
+      {
+        "faction": "Horde",
+        "race": 2,
+        "chapter": "51-60",
+        "actions_before": 12,
+        "actions_after": 12,
+        "valid_before": true,
+        "valid_after": true,
+        "distance_before": 29936.33,
+        "distance_after": 29936.33,
+        "uncertain_legs_before": 3,
+        "uncertain_legs_after": 3,
+        "quest_log_peak_before": 2,
+        "quest_log_peak_after": 2,
+        "xp_shortfall_before": 577700,
+        "xp_shortfall_after": 577700,
+        "reward_xp_before_work_before": 26000,
+        "reward_xp_before_work_after": 26000,
+        "unknown_locations_before": 0,
+        "unknown_locations_after": 0
+      },
+      {
+        "faction": "Alliance",
+        "race": 1,
+        "chapter": "31-40",
+        "actions_before": 63,
+        "actions_after": 63,
+        "valid_before": true,
+        "valid_after": true,
+        "distance_before": 247665.61,
+        "distance_after": 277665.61,
+        "uncertain_legs_before": 37,
+        "uncertain_legs_after": 36,
+        "quest_log_peak_before": 3,
+        "quest_log_peak_after": 3,
+        "xp_shortfall_before": 435100,
+        "xp_shortfall_after": 435100,
+        "reward_xp_before_work_before": 562600,
+        "reward_xp_before_work_after": 562600,
+        "unknown_locations_before": 4,
+        "unknown_locations_after": 1
+      },
+      {
+        "faction": "Alliance",
+        "race": 1,
+        "chapter": "41-50",
+        "actions_before": 87,
+        "actions_after": 87,
+        "valid_before": true,
+        "valid_after": true,
+        "distance_before": 237335.47,
+        "distance_after": 237335.47,
+        "uncertain_legs_before": 43,
+        "uncertain_legs_after": 42,
+        "quest_log_peak_before": 4,
+        "quest_log_peak_after": 4,
+        "xp_shortfall_before": 625050,
+        "xp_shortfall_after": 625050,
+        "reward_xp_before_work_before": 1075960,
+        "reward_xp_before_work_after": 1075960,
+        "unknown_locations_before": 2,
+        "unknown_locations_after": 1
+      }
+    ]
+  },
+  "reviewedFacts": {
+    "723": "Quest 722 supplies Hammertoe’s Amulet; 723 is a handoff to Prospector Ryedol.",
+    "735": "Alliance quest: 3 separate required items from Grel'borg the Miser (2417), Dagun the Ravenous (2937) and Mogh the Undying (1060); previous quest 727; elite type; extra pickup conditions remain unverified.",
+    "736": "Horde quest: distinct ID, Undercity keeper, same 3 item sources; previous quest 728; elite type; Horde race mask retained; extra pickup conditions remain unverified.",
+    "78823": "Primitive Drawing (211269) drops from 11 Badlands NPC IDs and 36 captured Badlands spawn points; Hemet (715) is the confirmed hand-in, but no verified starter relation.",
+    "715": "Lucien Tosselwrench (2920) starts/ends; Healing Potion objective uses Solid Chest object 2857 alternatives at 7 Badlands positions; Lesser Invisibility Potion source/acquisition remains unmapped. Pinned Forever requiredSkill={skill 171, minimum 0}; profession-only, excluded from ordinary guide route.",
+    "716": "Lucien Tosselwrench (2920) starts/ends; requires Patterned Bronze Bracers (2868); no verified work-area source.",
+    "2203": "Horde-only, 3 Vessel of Dragon's Blood from Scorched Guardian, with published predecessor 2202; actual extra availability remains unverified. Pinned Forever requiredSkill={skill 171, minimum 210}; profession-only, excluded from ordinary guide route."
+  },
+  "unresolved": [
+    "Quest 78823 starter/acceptance mechanism and current offer conditions.",
+    "Quest 715 Lesser Invisibility Potion acquisition point; no local source verified.",
+    "Quest 716 Patterned Bronze Bracers acquisition point; crafting/reagent/source location not verified.",
+    "Quest 735/736 additional pickup requirements beyond the published 727/728 chain.",
+    "Quest 2203 additional pickup requirements beyond 2202.",
+    "NPC/object availability, elite encounter viability, portals/travel and actual terrain require the player checklist."
+  ],
+  "communityCommentCrossChecks": [
+    {
+      "questID": 2203,
+      "commentID": 53995,
+      "source": "https://www.wowhead.com/forever/quest=2203",
+      "observation": "Comment independently describes the quest as Alchemy-only; used as a cross-check to the pinned requiredSkill field."
+    },
+    {
+      "questID": 715,
+      "commentID": 2940366,
+      "source": "https://www.wowhead.com/forever/quest=715",
+      "observation": "Player comment discusses an Alchemy character and quest availability; not relied on as the gate evidence."
+    }
+  ]
+}
