@@ -14856,7 +14856,7 @@
       "before": null,
       "side": "Horde"
     },
-    "source": "https://www.wowhead.com/forever/quest=95534 — captured 2026-10-10, SHA-256 e6eb2fecdbc3b48becc7434911e394604a080bc77dda4fe0d3e6b4d5cb89a4f2; the page reports Horde, minimum level 25, and no class/race mask."
+    "source": "https://www.wowhead.com/forever/quest=95534 \u2014 captured 2026-10-10, SHA-256 e6eb2fecdbc3b48becc7434911e394604a080bc77dda4fe0d3e6b4d5cb89a4f2; the page reports Horde, minimum level 25, and no class/race mask."
   },
   {
     "questID": 93680,
@@ -14896,7 +14896,7 @@
   {
     "questID": 96984,
     "title": "Heart of Disruption",
-    "source": "https://www.wowhead.com/forever/quest=96984 — captured 2026-10-10, SHA-256 ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7. The page maps the local Shade of the Archmage source but lists Rath'maël (NPC 250657) without usable coordinates; that alternate location remains incomplete.",
+    "source": "https://www.wowhead.com/forever/quest=96984 \u2014 captured 2026-10-10, SHA-256 ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7. The page maps the local Shade of the Archmage source but lists Rath'ma\u00ebl (NPC 250657) without usable coordinates; that alternate location remains incomplete.",
     "stageCorrection": {
       "kind": "stage-facts",
       "minLevel": 24,
@@ -16069,6 +16069,1127 @@
     "identityBefore": {
       "classMask": 2,
       "raceMask": 8589934770
+    }
+  },
+  {
+    "questID": 6821,
+    "title": "Eye of the Emberseer",
+    "prerequisiteCorrection": {
+      "prerequisiteAll": [
+        6804,
+        6805
+      ]
+    },
+    "source": "Pinned QuestieDB Forever quest facts (manifest revision e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; QuestDB SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87): preQuestGroup explicitly requires Poisoned Water (6804) and Stormers and Rumblers (6805). AND semantics follow tools/forever_beta_facts.py. Current Forever pages captured 2026-10-10: https://www.wowhead.com/forever/quest=6821 and https://www.wowhead.com/forever/quest=6804 and https://www.wowhead.com/forever/quest=6805; quest-page SHA-256s recorded in research/azshara-2026-10-10/source-facts.json."
+  },
+  {
+    "questID": 6822,
+    "title": "The Molten Core",
+    "previousTitle": "Eye of the Emberseer",
+    "prerequisiteCorrection": {
+      "previousQuest": 6821
+    },
+    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6822 lists series 6821\u20136824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
+  },
+  {
+    "questID": 6823,
+    "title": "Agent of Hydraxis",
+    "previousTitle": "The Molten Core",
+    "prerequisiteCorrection": {
+      "previousQuest": 6822
+    },
+    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6823 lists series 6821\u20136824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
+  },
+  {
+    "questID": 6824,
+    "title": "Hands of the Enemy",
+    "previousTitle": "Agent of Hydraxis",
+    "prerequisiteCorrection": {
+      "previousQuest": 6823
+    },
+    "source": "Current Forever quest-series facts captured 2026-10-10: https://www.wowhead.com/forever/quest=6824 lists series 6821\u20136824; pinned QuestieDB Forever previousQuest field agrees. Source capture hashes are recorded in research/azshara-2026-10-10/source-facts.json."
+  },
+  {
+    "questID": 6823,
+    "title": "Agent of Hydraxis",
+    "pickupRequiresOffer": true,
+    "source": "Pinned QuestieDB Forever quest facts (manifest revision e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; QuestDB SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87) records a 9000 Hydraxian Waterlords reputation requirement. The offer must be confirmed in the beta; do not treat reputation as a route prerequisite."
+  },
+  {
+    "questID": 8575,
+    "title": "Azuregos's Magical Ledger",
+    "source": "Current Forever quest 8575 captured 2026-10-10 (SHA-256 from research/azshara-2026-10-10/source-facts.json) explicitly provides Magical Ledger (20949) and sends the player to Narain Soothfancy. The item is a delivery token, not a local farming objective. https://www.wowhead.com/forever/quest=8575",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 60,
+      "level": 60,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "itemID": 20949,
+          "name": "Magical Ledger",
+          "quantity": 1
+        }
+      ],
+      "clearIncompleteObjectives": true
+    }
+  },
+  {
+    "questID": 3381,
+    "title": "A Meeting with the Master",
+    "source": "Wowhead Forever quest and linked entity/item facts captured 2026-10-10; quest=3381 identifies Undamaged Hippogryph Feather x2, and item=10450 lists all Azshara source NPCs. Entity page hashes and positions are recorded for NPC 6375, 6377, 6378, 6379, 6380, 6648 and 223068 in research/azshara-2026-10-10/source-facts.json. No pickup or turn-in location was published; those stages remain unknown.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 45,
+      "level": 48,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 2,
+          "name": "Undamaged Hippogryph Feather",
+          "itemID": 10450
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 2,
+            "name": "Undamaged Hippogryph Feather",
+            "entityID": 10450
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 2,
+            "name": "Undamaged Hippogryph Feather",
+            "itemID": 10450
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1447,
+            "legacyStepKey": "q:1447:npc:6375",
+            "entityID": 6375,
+            "name": "Thunderhead Hippogryph",
+            "npc": true,
+            "x": 0.16010000000000002,
+            "y": 0.4915,
+            "objectiveKey": "item:10450",
+            "itemID": 10450,
+            "quantity": 2,
+            "sourceAreaID": 16,
+            "itemName": "Undamaged Hippogryph Feather",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Undamaged Hippogryph Feather",
+            "name": "Thunderhead Hippogryph",
+            "entityID": 6375,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "objectiveAlternatives": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 2,
+            "name": "Undamaged Hippogryph Feather",
+            "entityID": 10450
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 2,
+            "name": "Undamaged Hippogryph Feather",
+            "itemID": 10450
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1447,
+            "legacyStepKey": "q:1447:npc:6375",
+            "entityID": 6375,
+            "name": "Thunderhead Hippogryph",
+            "npc": true,
+            "x": 0.16010000000000002,
+            "y": 0.4915,
+            "objectiveKey": "item:10450",
+            "itemID": 10450,
+            "quantity": 2,
+            "sourceAreaID": 16,
+            "itemName": "Undamaged Hippogryph Feather",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "action": "loot"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Undamaged Hippogryph Feather",
+            "name": "Thunderhead Hippogryph",
+            "entityID": 6375,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "objectiveAlternatives": [
+          {
+            "itemName": "Undamaged Hippogryph Feather from Thunderhead Hippogryph",
+            "locations": [
+              {
+                "entityType": "npc",
+                "entityID": 6375,
+                "name": "Thunderhead Hippogryph",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.18,
+                "y": 0.544,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6375; captured 2026-10-10; SHA-256 f33f25ef453ab1c7f1578cd740ffc5e0882845054272deb75f2747ff5ad0312c",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6375,
+                "name": "Thunderhead Hippogryph",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.18,
+                "y": 0.64,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6375; captured 2026-10-10; SHA-256 f33f25ef453ab1c7f1578cd740ffc5e0882845054272deb75f2747ff5ad0312c",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6375,
+                "name": "Thunderhead Hippogryph",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.20800000000000002,
+                "y": 0.574,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6375; captured 2026-10-10; SHA-256 f33f25ef453ab1c7f1578cd740ffc5e0882845054272deb75f2747ff5ad0312c",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6375,
+                "name": "Thunderhead Hippogryph",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.16,
+                "y": 0.496,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6375; captured 2026-10-10; SHA-256 f33f25ef453ab1c7f1578cd740ffc5e0882845054272deb75f2747ff5ad0312c",
+                "npc": true
+              }
+            ]
+          },
+          {
+            "itemName": "Undamaged Hippogryph Feather from Thunderhead Stagwing",
+            "locations": [
+              {
+                "entityType": "npc",
+                "entityID": 6377,
+                "name": "Thunderhead Stagwing",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.444,
+                "y": 0.35200000000000004,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6377; captured 2026-10-10; SHA-256 0ccea15fb1513597688ebdfe7d94e80bb67bddcea9cb35cd6f910206aa261a2e",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6377,
+                "name": "Thunderhead Stagwing",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.322,
+                "y": 0.816,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6377; captured 2026-10-10; SHA-256 0ccea15fb1513597688ebdfe7d94e80bb67bddcea9cb35cd6f910206aa261a2e",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6377,
+                "name": "Thunderhead Stagwing",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.366,
+                "y": 0.43,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6377; captured 2026-10-10; SHA-256 0ccea15fb1513597688ebdfe7d94e80bb67bddcea9cb35cd6f910206aa261a2e",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6377,
+                "name": "Thunderhead Stagwing",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.174,
+                "y": 0.7879999999999999,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6377; captured 2026-10-10; SHA-256 0ccea15fb1513597688ebdfe7d94e80bb67bddcea9cb35cd6f910206aa261a2e",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6377,
+                "name": "Thunderhead Stagwing",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.244,
+                "y": 0.792,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6377; captured 2026-10-10; SHA-256 0ccea15fb1513597688ebdfe7d94e80bb67bddcea9cb35cd6f910206aa261a2e",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6377,
+                "name": "Thunderhead Stagwing",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.264,
+                "y": 0.8059999999999999,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6377; captured 2026-10-10; SHA-256 0ccea15fb1513597688ebdfe7d94e80bb67bddcea9cb35cd6f910206aa261a2e",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6377,
+                "name": "Thunderhead Stagwing",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.386,
+                "y": 0.386,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6377; captured 2026-10-10; SHA-256 0ccea15fb1513597688ebdfe7d94e80bb67bddcea9cb35cd6f910206aa261a2e",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6377,
+                "name": "Thunderhead Stagwing",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.406,
+                "y": 0.42200000000000004,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6377; captured 2026-10-10; SHA-256 0ccea15fb1513597688ebdfe7d94e80bb67bddcea9cb35cd6f910206aa261a2e",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6377,
+                "name": "Thunderhead Stagwing",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.418,
+                "y": 0.27399999999999997,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6377; captured 2026-10-10; SHA-256 0ccea15fb1513597688ebdfe7d94e80bb67bddcea9cb35cd6f910206aa261a2e",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6377,
+                "name": "Thunderhead Stagwing",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.336,
+                "y": 0.794,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6377; captured 2026-10-10; SHA-256 0ccea15fb1513597688ebdfe7d94e80bb67bddcea9cb35cd6f910206aa261a2e",
+                "npc": true
+              }
+            ]
+          },
+          {
+            "itemName": "Undamaged Hippogryph Feather from Thunderhead Skystormer",
+            "locations": [
+              {
+                "entityType": "npc",
+                "entityID": 6378,
+                "name": "Thunderhead Skystormer",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.54,
+                "y": 0.24600000000000002,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6378; captured 2026-10-10; SHA-256 e37b5db0e253bdd956046ed54f3d12cc3bf91da5ec33cae1ccf95d16275a4ef3",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6378,
+                "name": "Thunderhead Skystormer",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.486,
+                "y": 0.23600000000000002,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6378; captured 2026-10-10; SHA-256 e37b5db0e253bdd956046ed54f3d12cc3bf91da5ec33cae1ccf95d16275a4ef3",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6378,
+                "name": "Thunderhead Skystormer",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.568,
+                "y": 0.184,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6378; captured 2026-10-10; SHA-256 e37b5db0e253bdd956046ed54f3d12cc3bf91da5ec33cae1ccf95d16275a4ef3",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6378,
+                "name": "Thunderhead Skystormer",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.624,
+                "y": 0.184,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6378; captured 2026-10-10; SHA-256 e37b5db0e253bdd956046ed54f3d12cc3bf91da5ec33cae1ccf95d16275a4ef3",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6378,
+                "name": "Thunderhead Skystormer",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.518,
+                "y": 0.336,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6378; captured 2026-10-10; SHA-256 e37b5db0e253bdd956046ed54f3d12cc3bf91da5ec33cae1ccf95d16275a4ef3",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6378,
+                "name": "Thunderhead Skystormer",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.624,
+                "y": 0.21,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6378; captured 2026-10-10; SHA-256 e37b5db0e253bdd956046ed54f3d12cc3bf91da5ec33cae1ccf95d16275a4ef3",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6378,
+                "name": "Thunderhead Skystormer",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.484,
+                "y": 0.19,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6378; captured 2026-10-10; SHA-256 e37b5db0e253bdd956046ed54f3d12cc3bf91da5ec33cae1ccf95d16275a4ef3",
+                "npc": true
+              }
+            ]
+          },
+          {
+            "itemName": "Undamaged Hippogryph Feather from Thunderhead Patriarch",
+            "locations": [
+              {
+                "entityType": "npc",
+                "entityID": 6379,
+                "name": "Thunderhead Patriarch",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.5579999999999999,
+                "y": 0.84,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6379; captured 2026-10-10; SHA-256 2b35972420a58faee784b0b1d9bcbbf1a9494ccbfc6f8ba9b3545d652b693147",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6379,
+                "name": "Thunderhead Patriarch",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.528,
+                "y": 0.794,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6379; captured 2026-10-10; SHA-256 2b35972420a58faee784b0b1d9bcbbf1a9494ccbfc6f8ba9b3545d652b693147",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6379,
+                "name": "Thunderhead Patriarch",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.634,
+                "y": 0.8740000000000001,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6379; captured 2026-10-10; SHA-256 2b35972420a58faee784b0b1d9bcbbf1a9494ccbfc6f8ba9b3545d652b693147",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6379,
+                "name": "Thunderhead Patriarch",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.46,
+                "y": 0.736,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6379; captured 2026-10-10; SHA-256 2b35972420a58faee784b0b1d9bcbbf1a9494ccbfc6f8ba9b3545d652b693147",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6379,
+                "name": "Thunderhead Patriarch",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.672,
+                "y": 0.262,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6379; captured 2026-10-10; SHA-256 2b35972420a58faee784b0b1d9bcbbf1a9494ccbfc6f8ba9b3545d652b693147",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6379,
+                "name": "Thunderhead Patriarch",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.762,
+                "y": 0.268,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6379; captured 2026-10-10; SHA-256 2b35972420a58faee784b0b1d9bcbbf1a9494ccbfc6f8ba9b3545d652b693147",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6379,
+                "name": "Thunderhead Patriarch",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.474,
+                "y": 0.8340000000000001,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6379; captured 2026-10-10; SHA-256 2b35972420a58faee784b0b1d9bcbbf1a9494ccbfc6f8ba9b3545d652b693147",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6379,
+                "name": "Thunderhead Patriarch",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.608,
+                "y": 0.794,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6379; captured 2026-10-10; SHA-256 2b35972420a58faee784b0b1d9bcbbf1a9494ccbfc6f8ba9b3545d652b693147",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6379,
+                "name": "Thunderhead Patriarch",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.72,
+                "y": 0.306,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6379; captured 2026-10-10; SHA-256 2b35972420a58faee784b0b1d9bcbbf1a9494ccbfc6f8ba9b3545d652b693147",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6379,
+                "name": "Thunderhead Patriarch",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.804,
+                "y": 0.264,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6379; captured 2026-10-10; SHA-256 2b35972420a58faee784b0b1d9bcbbf1a9494ccbfc6f8ba9b3545d652b693147",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6379,
+                "name": "Thunderhead Patriarch",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.722,
+                "y": 0.172,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6379; captured 2026-10-10; SHA-256 2b35972420a58faee784b0b1d9bcbbf1a9494ccbfc6f8ba9b3545d652b693147",
+                "npc": true
+              }
+            ]
+          },
+          {
+            "itemName": "Undamaged Hippogryph Feather from Thunderhead Consort",
+            "locations": [
+              {
+                "entityType": "npc",
+                "entityID": 6380,
+                "name": "Thunderhead Consort",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.672,
+                "y": 0.24,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6380; captured 2026-10-10; SHA-256 3ec91f59afc3b21366b9ee0a5e5868fb0e27fdac1ec29baa72ab5e05e2555fc2",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6380,
+                "name": "Thunderhead Consort",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.762,
+                "y": 0.268,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6380; captured 2026-10-10; SHA-256 3ec91f59afc3b21366b9ee0a5e5868fb0e27fdac1ec29baa72ab5e05e2555fc2",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6380,
+                "name": "Thunderhead Consort",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.568,
+                "y": 0.85,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6380; captured 2026-10-10; SHA-256 3ec91f59afc3b21366b9ee0a5e5868fb0e27fdac1ec29baa72ab5e05e2555fc2",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6380,
+                "name": "Thunderhead Consort",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.526,
+                "y": 0.794,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6380; captured 2026-10-10; SHA-256 3ec91f59afc3b21366b9ee0a5e5868fb0e27fdac1ec29baa72ab5e05e2555fc2",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6380,
+                "name": "Thunderhead Consort",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.46,
+                "y": 0.736,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6380; captured 2026-10-10; SHA-256 3ec91f59afc3b21366b9ee0a5e5868fb0e27fdac1ec29baa72ab5e05e2555fc2",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6380,
+                "name": "Thunderhead Consort",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.65,
+                "y": 0.816,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6380; captured 2026-10-10; SHA-256 3ec91f59afc3b21366b9ee0a5e5868fb0e27fdac1ec29baa72ab5e05e2555fc2",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6380,
+                "name": "Thunderhead Consort",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.7340000000000001,
+                "y": 0.308,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6380; captured 2026-10-10; SHA-256 3ec91f59afc3b21366b9ee0a5e5868fb0e27fdac1ec29baa72ab5e05e2555fc2",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6380,
+                "name": "Thunderhead Consort",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.474,
+                "y": 0.836,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6380; captured 2026-10-10; SHA-256 3ec91f59afc3b21366b9ee0a5e5868fb0e27fdac1ec29baa72ab5e05e2555fc2",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6380,
+                "name": "Thunderhead Consort",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.812,
+                "y": 0.254,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6380; captured 2026-10-10; SHA-256 3ec91f59afc3b21366b9ee0a5e5868fb0e27fdac1ec29baa72ab5e05e2555fc2",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6380,
+                "name": "Thunderhead Consort",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.77,
+                "y": 0.16399999999999998,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6380; captured 2026-10-10; SHA-256 3ec91f59afc3b21366b9ee0a5e5868fb0e27fdac1ec29baa72ab5e05e2555fc2",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6380,
+                "name": "Thunderhead Consort",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.608,
+                "y": 0.7959999999999999,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6380; captured 2026-10-10; SHA-256 3ec91f59afc3b21366b9ee0a5e5868fb0e27fdac1ec29baa72ab5e05e2555fc2",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6380,
+                "name": "Thunderhead Consort",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.552,
+                "y": 0.9059999999999999,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6380; captured 2026-10-10; SHA-256 3ec91f59afc3b21366b9ee0a5e5868fb0e27fdac1ec29baa72ab5e05e2555fc2",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6380,
+                "name": "Thunderhead Consort",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.696,
+                "y": 0.306,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6380; captured 2026-10-10; SHA-256 3ec91f59afc3b21366b9ee0a5e5868fb0e27fdac1ec29baa72ab5e05e2555fc2",
+                "npc": true
+              }
+            ]
+          },
+          {
+            "itemName": "Undamaged Hippogryph Feather from Antilos",
+            "locations": [
+              {
+                "entityType": "npc",
+                "entityID": 6648,
+                "name": "Antilos",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.532,
+                "y": 0.254,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6648; captured 2026-10-10; SHA-256 12dbfa451a670922da5890ef6e6a6dcd0e183bd37b3053fe1fc21dcc007910ee",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6648,
+                "name": "Antilos",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.17,
+                "y": 0.546,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6648; captured 2026-10-10; SHA-256 12dbfa451a670922da5890ef6e6a6dcd0e183bd37b3053fe1fc21dcc007910ee",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6648,
+                "name": "Antilos",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.488,
+                "y": 0.23600000000000002,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6648; captured 2026-10-10; SHA-256 12dbfa451a670922da5890ef6e6a6dcd0e183bd37b3053fe1fc21dcc007910ee",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6648,
+                "name": "Antilos",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.516,
+                "y": 0.322,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6648; captured 2026-10-10; SHA-256 12dbfa451a670922da5890ef6e6a6dcd0e183bd37b3053fe1fc21dcc007910ee",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6648,
+                "name": "Antilos",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.17800000000000002,
+                "y": 0.624,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6648; captured 2026-10-10; SHA-256 12dbfa451a670922da5890ef6e6a6dcd0e183bd37b3053fe1fc21dcc007910ee",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6648,
+                "name": "Antilos",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.48,
+                "y": 0.192,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6648; captured 2026-10-10; SHA-256 12dbfa451a670922da5890ef6e6a6dcd0e183bd37b3053fe1fc21dcc007910ee",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 6648,
+                "name": "Antilos",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.562,
+                "y": 0.19399999999999998,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=6648; captured 2026-10-10; SHA-256 12dbfa451a670922da5890ef6e6a6dcd0e183bd37b3053fe1fc21dcc007910ee",
+                "npc": true
+              }
+            ]
+          },
+          {
+            "itemName": "Undamaged Hippogryph Feather from Thunderhead Hippogryph",
+            "locations": [
+              {
+                "entityType": "npc",
+                "entityID": 223068,
+                "name": "Thunderhead Hippogryph",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.18600000000000003,
+                "y": 0.544,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=223068; captured 2026-10-10; SHA-256 b554754926e4dc357c7be84e9ebaa2273dda4557978e8826452236a069e0b45b",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 223068,
+                "name": "Thunderhead Hippogryph",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.17800000000000002,
+                "y": 0.636,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=223068; captured 2026-10-10; SHA-256 b554754926e4dc357c7be84e9ebaa2273dda4557978e8826452236a069e0b45b",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 223068,
+                "name": "Thunderhead Hippogryph",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.20600000000000002,
+                "y": 0.564,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=223068; captured 2026-10-10; SHA-256 b554754926e4dc357c7be84e9ebaa2273dda4557978e8826452236a069e0b45b",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 223068,
+                "name": "Thunderhead Hippogryph",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.20800000000000002,
+                "y": 0.6559999999999999,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=223068; captured 2026-10-10; SHA-256 b554754926e4dc357c7be84e9ebaa2273dda4557978e8826452236a069e0b45b",
+                "npc": true
+              },
+              {
+                "entityType": "npc",
+                "entityID": 223068,
+                "name": "Thunderhead Hippogryph",
+                "mapID": 1447,
+                "sourceAreaID": 16,
+                "x": 0.15,
+                "y": 0.498,
+                "action": "loot",
+                "itemID": 10450,
+                "itemName": "Undamaged Hippogryph Feather",
+                "quantity": 2,
+                "objectiveKey": "item:10450",
+                "locationSource": "Wowhead Forever npc=223068; captured 2026-10-10; SHA-256 b554754926e4dc357c7be84e9ebaa2273dda4557978e8826452236a069e0b45b",
+                "npc": true
+              }
+            ]
+          }
+        ]
+      }
     }
   }
 ]

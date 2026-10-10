@@ -1,0 +1,194 @@
+{
+  "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
+  "quest_records": 13,
+  "static_points_checked": 40,
+  "fixed_zone_guides_checked": 4,
+  "catalogue_reason_stages_checked": 48,
+  "catalogue_reason_codes": {
+    "level-work": 13,
+    "quest-objective": 22,
+    "quest-reward": 13
+  },
+  "reason_review_quest_ids": [
+    3517,
+    3518,
+    3541,
+    3542,
+    3561,
+    3562,
+    3563,
+    3564,
+    3565,
+    3601,
+    5534,
+    5535,
+    5536
+  ],
+  "source_data_gap_free_guides": 0,
+  "guides": [
+    {
+      "faction": "Alliance",
+      "zone": "Azshara",
+      "key": "level-zone:kalimdor/azshara:levels:41-50",
+      "quests": 3,
+      "steps": 12,
+      "unknown_location_steps": 2,
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          3381
+        ],
+        "q": [],
+        "t": [
+          3381
+        ]
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 12,
+      "destination_reason_codes": {
+        "outside-level-range": 9,
+        "quest-reward": 3
+      },
+      "reason_review_steps": 10,
+      "cross_zone_reason_steps": 0,
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "geometric_guard_rejections": 4,
+      "geometric_bracket_replays": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 2,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 3,
+      "estimated_distance_before": 28049.98,
+      "estimated_distance_after": 28049.98
+    },
+    {
+      "faction": "Alliance",
+      "zone": "Azshara",
+      "key": "level-zone:kalimdor/azshara:levels:51-60",
+      "quests": 24,
+      "steps": 87,
+      "unknown_location_steps": 9,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [
+          6821,
+          6822,
+          6824
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        6823,
+        7486
+      ],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 87,
+      "destination_reason_codes": {
+        "outside-level-range": 39,
+        "prerequisite": 34,
+        "quest-reward": 14
+      },
+      "reason_review_steps": 43,
+      "cross_zone_reason_steps": 12,
+      "flow_alternatives_evaluated": 21,
+      "flow_loop_changes": 0,
+      "geometric_guard_rejections": 3,
+      "geometric_bracket_replays": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 1435800,
+      "uncertain_travel_legs": 37,
+      "estimated_distance_before": 177150.13,
+      "estimated_distance_after": 177150.13
+    },
+    {
+      "faction": "Horde",
+      "zone": "Azshara",
+      "key": "level-zone:kalimdor/azshara:levels:41-50",
+      "quests": 3,
+      "steps": 12,
+      "unknown_location_steps": 2,
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          3381
+        ],
+        "q": [],
+        "t": [
+          3381
+        ]
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 12,
+      "destination_reason_codes": {
+        "outside-level-range": 9,
+        "quest-reward": 3
+      },
+      "reason_review_steps": 10,
+      "cross_zone_reason_steps": 0,
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "geometric_guard_rejections": 4,
+      "geometric_bracket_replays": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 2,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 3,
+      "estimated_distance_before": 28049.98,
+      "estimated_distance_after": 28049.98
+    },
+    {
+      "faction": "Horde",
+      "zone": "Azshara",
+      "key": "level-zone:kalimdor/azshara:levels:51-60",
+      "quests": 32,
+      "steps": 114,
+      "unknown_location_steps": 9,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [
+          6821,
+          6822,
+          6824
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        6823,
+        7486
+      ],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 47,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 114,
+      "destination_reason_codes": {
+        "outside-level-range": 52,
+        "prerequisite": 43,
+        "quest-reward": 19
+      },
+      "reason_review_steps": 83,
+      "cross_zone_reason_steps": 17,
+      "flow_alternatives_evaluated": 17,
+      "flow_loop_changes": 0,
+      "geometric_guard_rejections": 16,
+      "geometric_bracket_replays": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 6,
+      "quest_reward_only_xp_shortfall": 1424350,
+      "uncertain_travel_legs": 46,
+      "estimated_distance_before": 296595.83,
+      "estimated_distance_after": 296595.83
+    }
+  ],
+  "scope": {
+    "zone": "Azshara",
+    "catalogue_records": "Exact quest zone; guide dependencies still compile normally"
+  }
+}

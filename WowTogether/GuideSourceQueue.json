@@ -2838,13 +2838,13 @@
         "Horde / Azshara"
       ],
       "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
+        "objective area"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=6821",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/item=17322",
+        "https://www.wowhead.com/forever/npc=13278"
+      ]
     },
     {
       "questID": 6822,
@@ -2854,13 +2854,16 @@
         "Horde / Azshara"
       ],
       "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
+        "objective area"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=6822",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/npc=11658",
+        "https://www.wowhead.com/forever/npc=11668",
+        "https://www.wowhead.com/forever/npc=11673",
+        "https://www.wowhead.com/forever/npc=12101",
+        "https://www.wowhead.com/forever/npc=13278"
+      ]
     },
     {
       "questID": 6823,
@@ -2870,13 +2873,12 @@
         "Horde / Azshara"
       ],
       "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
         "pickup requirements"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=6823",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/npc=13278"
+      ]
     },
     {
       "questID": 6824,
@@ -2886,13 +2888,16 @@
         "Horde / Azshara"
       ],
       "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
-        "pickup requirements"
+        "objective area"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=6824",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/item=17329",
+        "https://www.wowhead.com/forever/item=17330",
+        "https://www.wowhead.com/forever/item=17331",
+        "https://www.wowhead.com/forever/item=17332",
+        "https://www.wowhead.com/forever/npc=13278"
+      ]
     },
     {
       "questID": 7486,
@@ -2902,13 +2907,13 @@
         "Horde / Azshara"
       ],
       "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
         "pickup requirements"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=7486",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/npc=13278",
+        "https://www.wowhead.com/forever/object=179551"
+      ]
     },
     {
       "questID": 7564,

@@ -73,6 +73,36 @@ def apply_corrections(records):
             quest['identityCorrectionSource'] = correction['source']
             applied.append(correction['questID'])
             continue
+        if correction.get('prerequisiteCorrection'):
+            quest = records.get(correction['questID'])
+            if quest is None:
+                continue
+            if quest.get('title') != correction['title']:
+                raise ValueError('Reviewed prerequisite identity changed; review required')
+            rule = correction['prerequisiteCorrection']
+            if not rule or set(rule) - {'previousQuest', 'prerequisiteAny', 'prerequisiteAll'}:
+                raise ValueError('Reviewed prerequisite correction is invalid')
+            before = correction.get('prerequisiteBefore', {})
+            for key in set(rule) | set(before):
+                if key not in {'previousQuest', 'prerequisiteAny', 'prerequisiteAll'}:
+                    raise ValueError('Unsupported prerequisite field')
+                current = quest.get(key)
+                desired = rule.get(key)
+                if current not in (None, [], desired, before.get(key)):
+                    raise ValueError('Reviewed prerequisite conflicts with source; review required')
+            for key, value in rule.items():
+                if key == 'previousQuest':
+                    if value not in records or value == correction['questID']:
+                        raise ValueError('Reviewed prerequisite parent is unavailable')
+                    if records[value].get('title') != correction.get('previousTitle'):
+                        raise ValueError('Reviewed prerequisite parent identity changed')
+                elif not isinstance(value, list) or any(type(i) is not int or i not in records for i in value):
+                    raise ValueError('Reviewed prerequisite alternatives are invalid')
+                quest[key] = copy.deepcopy(value)
+            quest['prerequisiteSource'] = correction['source']
+            quest['prerequisitesRead'] = True
+            applied.append(correction['questID'])
+            continue
         if correction.get('pickupRequiresOffer'):
             quest = records.get(correction['questID'])
             if quest is None: continue
@@ -153,6 +183,14 @@ def apply_stage_corrections(records):
                 points[0]['locationSource'] = correction['source']
             quest['providedItems'] = provided
             quest['requirements'] = {}
+            if rule.get('clearIncompleteObjectives'):
+                missing = list(quest.get('missingRequirements') or [])
+                if quest.get('objectives') or quest.get('unmodeledObjectiveKinds') or quest.get('otherLocationsIncomplete') or \
+                        any(r.get('entityType') != 'item' or r.get('entityID') != item['itemID'] or
+                            r.get('quantity') != item['quantity'] for r in missing):
+                    raise ValueError('Delivery correction cannot clear independent incomplete work: ' + str(ident))
+                quest['missingRequirements'] = []
+                quest['objectiveLocationsIncomplete'] = False
             if quest.get('worldReferences'):
                 quest['worldReferences']['requirements'] = {}
                 quest['worldReferences']['provided'] = copy.deepcopy(provided)

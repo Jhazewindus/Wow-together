@@ -1,7 +1,7 @@
 {
   "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
   "quest_records": 5230,
-  "static_points_checked": 11854,
+  "static_points_checked": 11865,
   "fixed_zone_guides_checked": 150,
   "catalogue_reason_stages_checked": 16860,
   "catalogue_reason_codes": {
@@ -5367,60 +5367,43 @@
       "faction": "Alliance",
       "zone": "Azshara",
       "key": "level-zone:kalimdor/azshara:levels:51-60",
-      "quests": 22,
-      "steps": 74,
-      "unknown_location_steps": 15,
+      "quests": 24,
+      "steps": 87,
+      "unknown_location_steps": 9,
       "missing_location_quest_ids_by_stage": {
-        "a": [
-          6821,
-          6822,
-          6823,
-          6824,
-          7486
-        ],
+        "a": [],
         "q": [
           6821,
           6822,
-          6823,
-          6824,
-          7486
+          6824
         ],
-        "t": [
-          6821,
-          6822,
-          6823,
-          6824,
-          7486
-        ]
+        "t": []
       },
       "unverified_pickup_requirement_quest_ids": [
-        6821,
-        6822,
         6823,
-        6824,
         7486
       ],
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 0,
       "source_data_gap_free": false,
-      "reason_steps_checked": 74,
+      "reason_steps_checked": 87,
       "destination_reason_codes": {
-        "outside-level-range": 37,
-        "prerequisite": 21,
-        "quest-reward": 16
+        "outside-level-range": 39,
+        "prerequisite": 34,
+        "quest-reward": 14
       },
-      "reason_review_steps": 42,
-      "cross_zone_reason_steps": 8,
-      "flow_alternatives_evaluated": 29,
+      "reason_review_steps": 43,
+      "cross_zone_reason_steps": 12,
+      "flow_alternatives_evaluated": 21,
       "flow_loop_changes": 0,
-      "geometric_guard_rejections": 0,
+      "geometric_guard_rejections": 3,
       "geometric_bracket_replays": 4,
       "flow_state_valid": true,
-      "quest_log_peak": 5,
+      "quest_log_peak": 3,
       "quest_reward_only_xp_shortfall": 1435800,
-      "uncertain_travel_legs": 33,
-      "estimated_distance_before": 276471.84,
-      "estimated_distance_after": 276471.84
+      "uncertain_travel_legs": 37,
+      "estimated_distance_before": 177150.13,
+      "estimated_distance_after": 177150.13
     },
     {
       "faction": "Alliance",
@@ -8710,60 +8693,43 @@
       "faction": "Horde",
       "zone": "Azshara",
       "key": "level-zone:kalimdor/azshara:levels:51-60",
-      "quests": 30,
-      "steps": 101,
-      "unknown_location_steps": 15,
+      "quests": 32,
+      "steps": 114,
+      "unknown_location_steps": 9,
       "missing_location_quest_ids_by_stage": {
-        "a": [
-          6821,
-          6822,
-          6823,
-          6824,
-          7486
-        ],
+        "a": [],
         "q": [
           6821,
           6822,
-          6823,
-          6824,
-          7486
+          6824
         ],
-        "t": [
-          6821,
-          6822,
-          6823,
-          6824,
-          7486
-        ]
+        "t": []
       },
       "unverified_pickup_requirement_quest_ids": [
-        6821,
-        6822,
         6823,
-        6824,
         7486
       ],
       "unverified_objective_quantity_quest_ids": [],
       "prerequisite_review_steps": 47,
       "source_data_gap_free": false,
-      "reason_steps_checked": 101,
+      "reason_steps_checked": 114,
       "destination_reason_codes": {
-        "outside-level-range": 50,
-        "prerequisite": 30,
-        "quest-reward": 21
+        "outside-level-range": 52,
+        "prerequisite": 43,
+        "quest-reward": 19
       },
-      "reason_review_steps": 82,
-      "cross_zone_reason_steps": 13,
-      "flow_alternatives_evaluated": 16,
+      "reason_review_steps": 83,
+      "cross_zone_reason_steps": 17,
+      "flow_alternatives_evaluated": 17,
       "flow_loop_changes": 0,
-      "geometric_guard_rejections": 6,
+      "geometric_guard_rejections": 16,
       "geometric_bracket_replays": 4,
       "flow_state_valid": true,
-      "quest_log_peak": 5,
-      "quest_reward_only_xp_shortfall": 1405300,
-      "uncertain_travel_legs": 42,
-      "estimated_distance_before": 403827.78,
-      "estimated_distance_after": 403827.78
+      "quest_log_peak": 6,
+      "quest_reward_only_xp_shortfall": 1424350,
+      "uncertain_travel_legs": 46,
+      "estimated_distance_before": 296595.83,
+      "estimated_distance_after": 296595.83
     },
     {
       "faction": "Horde",
