@@ -3,13 +3,25 @@
 ## 2026-10-10 — Alterac Mountains faction, key source and chain handoffs
 
 [The Alterac Mountains review](alterac-mountains-2026-10-10/README.md) refreshes
-the 31–40 chapter on the 0.8.65 branch, gates Strahnbrad Mystery to Horde,
-maps Key to the City’s Grimy Key footlocker objective, and fills Shrewd
-Negotiations’ start/return points. The full faction routes remain intact except
-for four now-ineligible Alliance actions. Two recorded stage gaps remain; the
-Valik active-parent requirement needs main-developer eligibility coordination.
-Source hashes, scoped before/after audits, route metrics and a player checklist
-are retained with the review.
+the 31–40 chapter, gates Strahnbrad Mystery to Horde, maps Key to the City’s
+Grimy Key footlocker objective, and fills Shrewd Negotiations’ start/return
+points. Four now-ineligible Alliance actions are removed; other full-guide
+actions remain. The 535 active-parent requirement needs main-developer
+eligibility coordination. Source hashes, scoped before/after audits, route
+metrics and a player checklist are retained with the review.
+
+## Main release review — 0.8.66 (10 October 2026)
+
+The nine commits through `53d5e12` are integrated as research. Seven zone audit
+refreshes contain no new runtime data. Felwood (`d0023c8`) and Feralas
+(`649d55c`) candidate catalogue/correction/exclusion changes and their candidate
+regression tests are **deferred, not shipped**: their complete-route repricers
+fail reward-timing/difficulty guards; Felwood's short-guide comparison also
+reports invalid order and changed endpoints. Main retains its 0.8.65 quest data.
+The source evidence and before/after reports below remain available for a
+follow-up that reconciles complete action sets and corrects compiler behavior.
+Their coverage gains describe the candidate, not the current released data.
+Do not treat merging this research history as approval of those data changes.
 
 ## 2026-10-10 — Winterspring audit refresh
 

@@ -1,6 +1,6 @@
 {
   "schema": 1,
-  "addon": "0.8.65",
+  "addon": "0.8.66",
   "flow_module_sha256": "28d8cf8f6d3bb3e49404bcf6b9608e48f746e16020009a33afe96d5b35420040",
   "optimizer_module_sha256": "b4603407226a3ad34621f2c49fc7403022702f671208fc42d15f13dac1ad8b28",
   "fixed_guides_sha256": "8ad2585f9991aec052705e89d1e97c470edfb88b7e7052bda4d00bf45fd780e8",
@@ -8,7 +8,7 @@
   "travel_network_sha256": "be7e15c2927a3b80429f62b6eb39336b69bf39669af247daa6e38ce97bd62105",
   "terrain_geometry_sha256": "fb44a466d339d0c0f27258816f1ffb64cd5c5a2e379a72b8574d8f77084a9971",
   "terrain_data_sha256": "a74342fe846efb3a0530814049514b93d54b0a07cb56fbf6b012e6c7f0dcdec0",
-  "catalogue_sha256": "94fea9404eb2365b55056d07813b102e59d449f51e21d0b9c75717e6107cf0c5",
+  "catalogue_sha256": "99d5680a4f868aa1dee96999c608de203e0cca16cb479c66d1ba69088b6ba7f5",
   "travel_sha256": "1970f9f8d5298253b468a584fb40a72c62a67061c6f193e92de8ebf89d3de686",
   "geometry_source": null,
   "validation": "Lua 5.1 host. Complete action sequences; estimated geography, no play-time optimality claim.",
@@ -20,7 +20,7 @@
       "zone": "Alterac Mountains",
       "start_level": 31,
       "flow_start_level": 24,
-      "compile_ms": 2989.06,
+      "compile_ms": 385.34,
       "stops": [
         {
           "id": 535,
@@ -197,7 +197,7 @@
       "zone": "Alterac Mountains",
       "start_level": 31,
       "flow_start_level": 26,
-      "compile_ms": 150.28,
+      "compile_ms": 92.32,
       "stops": [
         {
           "id": 505,

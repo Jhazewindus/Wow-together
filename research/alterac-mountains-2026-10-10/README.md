@@ -1,11 +1,13 @@
 # Alterac Mountains quest guide review — 2026-10-10
 
-This review refreshes the supplied 0.8.59 / 8 October lead list against the
-existing `guides/coverage` branch at `53d5e12` (addon 0.8.65). The scope is the
-existing Eastern Kingdoms Alterac Mountains chapter, levels 31–40; chapter
-labels are not verified minimum gameplay levels. The refreshed Lua 5.1 audit
-checks 2 faction guides and 28 stage points. It is not a complete terrain map
-or a claim that every quest in the zone is suitable for this leveling band.
+This review refreshes the supplied 0.8.59 / 8 October lead list. Its before
+audit uses the existing `guides/coverage` branch at `53d5e12` (addon 0.8.65);
+the final data and audit are regenerated on main’s merged 0.8.66 base
+`eba4f29`. The scope is the existing Eastern Kingdoms Alterac Mountains
+chapter, levels 31–40; chapter labels are not verified minimum gameplay
+levels. The refreshed Lua 5.1 audit checks 2 faction guides and 60 stage
+points (44 Alliance, 16 Horde). It is not a complete terrain map or a claim that every quest in the
+zone is suitable for this leveling band.
 
 ## Changes
 
@@ -47,7 +49,7 @@ Alliance 95534 pickup disappears because that quest is not Alliance-eligible.
 The remaining zone gaps are the 95534 pickup NPC and the 92434 objective area.
 The capture of Heart of Disruption also identifies a separate unmapped dungeon
 alternative, outside the ordinary leveling-guide stage-gap count.
-The regenerated global source queue drops from 365 to 363 records: 93680 and
+The regenerated global source queue has 363 records remaining (down from the pre-zone 365): 93680 and
 97287 no longer need stage locations, while 95534 remains queued for Horde’s
 pickup NPC and 535 remains queued for its pickup requirement.
 
@@ -102,9 +104,8 @@ The freshly generated scoped guide audits are in
 ## Validation
 
 - `test_alterac_coverage`, `test_routes`, `test_importers`, `test_lua_console`,
-  and `test_addon`: 92 tests passed under the Lua 5.1 host (`lupa` 2.8,
-  interface 16001). After the final source-provenance regeneration,
-  `test_alterac_coverage` and `test_addon` ran again: 55 tests passed.
+  `test_addon`, and `test_0866`: 109 tests passed under the Lua 5.1 host
+  (`lupa` 2.8, interface 16001) against main 0.8.66 plus the Alterac corrections.
 - Scoped guide and flow audits pass for both factions; the complete sequences
   remain valid. Audit artifacts above distinguish missing locations from the
   remaining 535 prerequisite review.

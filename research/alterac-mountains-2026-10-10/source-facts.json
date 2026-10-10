@@ -847,5 +847,7 @@
   "limitations": [
     "QuestieDB and Wowhead facts are source evidence, not native beta offer or completion checks.",
     "No walkable terrain or safe-road claims are inferred from point coordinates."
-  ]
+  ],
+  "candidate_base_commit": "eba4f294cc8807d8b5ff865ed0664bfe24a26676",
+  "candidate_addon": "0.8.66"
 }

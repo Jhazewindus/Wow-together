@@ -365,41 +365,5 @@
     "title": "Fire at the Shady Rest <CHANGE TO GOSSIP>",
     "reason": "Unfinished change-to-gossip placeholder",
     "source": "https://www.wowhead.com/forever/quest=1283; existing captured exact title explicitly marks CHANGE TO/INTO GOSSIP, with no starter/return/objective. Published pinned quest entry absent. Exclude placeholder from ordinary leveling; preserve catalogue and unknown locations. No inference that real Smiling Jim, Reethe or Shady Rest quest requires this record. Reviewed 2026-10-09 Europe/Amsterdam; research/dustwallow-marsh-2026-10-09."
-  },
-  {
-    "questIDs": [
-      5883,
-      5888
-    ],
-    "title": "Salve via Mining",
-    "reason": "Mining-only profession quest (Mining skill 1)",
-    "source": "Questie/QuestieDB Forever requiredSkill facts at pinned revision e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; foreverQuestDB.lua SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87; exact IDs/title, skill 186/1. Exclude from ordinary leveling while preserving faction/race requirements, catalogue records and dependency data. Reviewed 2026-10-09; research/felwood-2026-10-09."
-  },
-  {
-    "questIDs": [
-      5884,
-      5889
-    ],
-    "title": "Salve via Gathering",
-    "reason": "Herbalism-only profession quest (Herbalism skill 1)",
-    "source": "Questie/QuestieDB Forever requiredSkill facts at pinned revision e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; foreverQuestDB.lua SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87; exact IDs/title, skill 182/1. Exclude from ordinary leveling while preserving faction/race requirements, catalogue records and dependency data. Reviewed 2026-10-09; research/felwood-2026-10-09."
-  },
-  {
-    "questIDs": [
-      5885,
-      5890
-    ],
-    "title": "Salve via Skinning",
-    "reason": "Skinning-only profession quest (Skinning skill 1)",
-    "source": "Questie/QuestieDB Forever requiredSkill facts at pinned revision e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; foreverQuestDB.lua SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87; exact IDs/title, skill 393/1. Exclude from ordinary leveling while preserving faction/race requirements, catalogue records and dependency data. Reviewed 2026-10-09; research/felwood-2026-10-09."
-  },
-  {
-    "questIDs": [
-      5886,
-      5891
-    ],
-    "title": "Salve via Disenchanting",
-    "reason": "Enchanting-only profession quest (Enchanting skill 1)",
-    "source": "Questie/QuestieDB Forever requiredSkill facts at pinned revision e0a6eaa86f181ac99262e34126bcd2ed1a1712d6; foreverQuestDB.lua SHA-256 d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87; exact IDs/title, skill 333/1. Exclude from ordinary leveling while preserving faction/race requirements, catalogue records and dependency data. Reviewed 2026-10-09; research/felwood-2026-10-09."
   }
 ]

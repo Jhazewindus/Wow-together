@@ -55,12 +55,15 @@ then fully restart the client; the release includes taint mitigation (a /reload 
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
-0.8.65 CLASSIC DUNGEON TRACKING AND FINDER FILTERS adds a Find players view
-beside Forever's Looking For Group Browse tab, with combined role/class filters.
-Ragefire's reference map can now project public instance world coordinates;
-no native dungeon map is required. Missing/private positions or ambiguous
-floors stay static. Test alignment while INSIDE the dungeon and capture
-/wt probe there if the marker is missing. See TESTING.md for the short checks.
+0.8.66 NATIVE GROUP FINDER FILTERS places role/class dropdowns inside Forever's
+Looking For Group Browse header and filters the native Players list. Groups and
+self-listings stay visible; selection, messages and invites use the game controls.
+Choose All/All to restore results. Changes wait during combat. See TESTING.md.
+RFC's supplied probe has instance identity but no usable player X/Y: Static map
+now reflects that limitation. Click to check again; usable coordinates still
+enable the marker. This release does not claim live interior tracking is fixed.
+Seven zone audit refreshes are retained; Felwood/Feralas data candidates are
+held for failed route guards, with their research preserved on GitHub.
 
 0.8.64 DUNGEON POSITION AND ROLE FILTERS avoids automatic native quest-selection
 writes on the secret-aura client; addon routes/arrow still work. Fully restart

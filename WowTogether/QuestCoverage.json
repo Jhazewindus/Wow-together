@@ -10,9 +10,9 @@
   "summary": {
     "count": 5230,
     "detailed_quests": 2232,
-    "with_starters": 4286,
-    "with_objectives": 2148,
-    "with_turnins": 4455,
+    "with_starters": 4285,
+    "with_objectives": 2147,
+    "with_turnins": 4454,
     "with_prerequisites": 2466,
     "entities": {
       "npc": 13340,
@@ -378,7 +378,7 @@
       "pickups": 95,
       "objectives": 38,
       "turnins": 91,
-      "complete_locations": 71,
+      "complete_locations": 69,
       "missing_quest_ids": [
         1471,
         1472,
@@ -400,11 +400,13 @@
         4784,
         7564,
         7581,
+        7602,
         7626,
         7627,
         7629,
         7630,
         7631,
+        8421,
         8422,
         65593,
         65597,
@@ -1787,10 +1789,10 @@
     },
     "kalimdor/felwood": {
       "quests": 87,
-      "pickups": 84,
+      "pickups": 83,
       "objectives": 39,
-      "turnins": 84,
-      "complete_locations": 45,
+      "turnins": 83,
+      "complete_locations": 43,
       "missing_quest_ids": [
         996,
         998,
@@ -1829,21 +1831,33 @@
         5207,
         5208,
         5209,
+        5385,
         5885,
         5886,
         5890,
         5891,
+        6131,
         8470
       ]
     },
     "kalimdor/feralas": {
       "quests": 78,
       "pickups": 78,
-      "objectives": 44,
+      "objectives": 43,
       "turnins": 78,
-      "complete_locations": 77,
+      "complete_locations": 67,
       "missing_quest_ids": [
-        3842
+        2941,
+        2942,
+        2943,
+        2972,
+        2976,
+        3121,
+        3122,
+        3841,
+        3842,
+        3843,
+        4267
       ]
     },
     "kalimdor/field-of-giants": {
@@ -12286,9 +12300,8 @@
     "captured": "2026-10-10",
     "pages": 6,
     "changed_quest_ids": [
-      93680,
-      95534,
-      96984
+      535,
+      93680
     ],
     "added_points": {
       "starts": 0,
@@ -12296,8 +12309,8 @@
       "objectives": 0
     },
     "invalid_quest_ids": [],
-    "incomplete_objectives_before": 1306,
-    "incomplete_objectives_after": 1306,
+    "incomplete_objectives_before": 1319,
+    "incomplete_objectives_after": 1319,
     "evidence": {
       "535": {
         "source": "https://www.wowhead.com/forever/quest=535",
@@ -12325,8 +12338,7 @@
       }
     },
     "reviewed_stage_corrections": [
-      93680,
-      96984
+      535
     ],
     "reviewed_quest_corrections": [
       99161,
@@ -12404,24 +12416,14 @@
     2205,
     2459,
     2938,
-    2941,
-    2942,
-    2943,
-    2972,
-    2976,
     3095,
     3100,
     3102,
-    3121,
-    3122,
     3511,
     3621,
-    3841,
-    3843,
     3845,
     3924,
     4084,
-    4267,
     4491,
     4492,
     4508,
@@ -12449,7 +12451,6 @@
     5252,
     5253,
     5361,
-    5385,
     5464,
     5465,
     5514,
@@ -12458,14 +12459,11 @@
     5901,
     5902,
     6022,
-    6131,
     6395,
     6601,
     7383,
-    7602,
     7732,
     8416,
-    8421,
     8551,
     8552,
     8553,
@@ -13648,17 +13646,19 @@
       "captured": "2026-10-10",
       "pages": 6,
       "changed_quest_ids": [
+        93680,
+        95534,
         96984,
         97287
       ],
       "added_points": {
         "starts": 2,
         "ends": 2,
-        "objectives": 1
+        "objectives": 2
       },
       "invalid_quest_ids": [],
-      "incomplete_objectives_before": 1306,
-      "incomplete_objectives_after": 1306,
+      "incomplete_objectives_before": 1319,
+      "incomplete_objectives_after": 1319,
       "evidence": {
         "535": {
           "source": "https://www.wowhead.com/forever/quest=535",
@@ -13685,7 +13685,10 @@
           "sha256": "2e4ea06dceacb55e070624fd1251be70cffdef2f2256ef1b1ca9be57f286896c"
         }
       },
-      "reviewed_stage_corrections": [],
+      "reviewed_stage_corrections": [
+        93680,
+        96984
+      ],
       "reviewed_quest_corrections": [
         99161,
         750,
@@ -13698,175 +13701,6 @@
         99101,
         99082,
         95534
-      ]
-    },
-    {
-      "captured": "2026-10-10",
-      "pages": 6,
-      "changed_quest_ids": [
-        93680
-      ],
-      "added_points": {
-        "starts": 0,
-        "ends": 0,
-        "objectives": 1
-      },
-      "invalid_quest_ids": [],
-      "incomplete_objectives_before": 1306,
-      "incomplete_objectives_after": 1305,
-      "evidence": {
-        "535": {
-          "source": "https://www.wowhead.com/forever/quest=535",
-          "sha256": "0d63d0d9c24116c03e27d19ff9377c15897ad2463c5252e4ab7f25941248487f"
-        },
-        "92434": {
-          "source": "https://www.wowhead.com/forever/quest=92434",
-          "sha256": "421fa5e13fcdefc8769cbe9a0f5f0b427343a14841ff2941c87e8c10036327b1"
-        },
-        "93680": {
-          "source": "https://www.wowhead.com/forever/quest=93680",
-          "sha256": "7ba322ed4763b8abf8d4e12375815a2e6589600d9e2e1bee8649a749803831b7"
-        },
-        "95534": {
-          "source": "https://www.wowhead.com/forever/quest=95534",
-          "sha256": "e6eb2fecdbc3b48becc7434911e394604a080bc77dda4fe0d3e6b4d5cb89a4f2"
-        },
-        "96984": {
-          "source": "https://www.wowhead.com/forever/quest=96984",
-          "sha256": "ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7"
-        },
-        "97287": {
-          "source": "https://www.wowhead.com/forever/quest=97287",
-          "sha256": "2e4ea06dceacb55e070624fd1251be70cffdef2f2256ef1b1ca9be57f286896c"
-        }
-      },
-      "reviewed_stage_corrections": [
-        93680
-      ],
-      "reviewed_quest_corrections": [
-        99161,
-        750,
-        787,
-        99082,
-        99101,
-        6541,
-        6542,
-        99081,
-        99101,
-        99082
-      ]
-    },
-    {
-      "captured": "2026-10-10",
-      "pages": 6,
-      "changed_quest_ids": [
-        535,
-        93680
-      ],
-      "added_points": {
-        "starts": 0,
-        "ends": 0,
-        "objectives": 0
-      },
-      "invalid_quest_ids": [],
-      "incomplete_objectives_before": 1305,
-      "incomplete_objectives_after": 1305,
-      "evidence": {
-        "535": {
-          "source": "https://www.wowhead.com/forever/quest=535",
-          "sha256": "0d63d0d9c24116c03e27d19ff9377c15897ad2463c5252e4ab7f25941248487f"
-        },
-        "92434": {
-          "source": "https://www.wowhead.com/forever/quest=92434",
-          "sha256": "421fa5e13fcdefc8769cbe9a0f5f0b427343a14841ff2941c87e8c10036327b1"
-        },
-        "93680": {
-          "source": "https://www.wowhead.com/forever/quest=93680",
-          "sha256": "7ba322ed4763b8abf8d4e12375815a2e6589600d9e2e1bee8649a749803831b7"
-        },
-        "95534": {
-          "source": "https://www.wowhead.com/forever/quest=95534",
-          "sha256": "e6eb2fecdbc3b48becc7434911e394604a080bc77dda4fe0d3e6b4d5cb89a4f2"
-        },
-        "96984": {
-          "source": "https://www.wowhead.com/forever/quest=96984",
-          "sha256": "ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7"
-        },
-        "97287": {
-          "source": "https://www.wowhead.com/forever/quest=97287",
-          "sha256": "2e4ea06dceacb55e070624fd1251be70cffdef2f2256ef1b1ca9be57f286896c"
-        }
-      },
-      "reviewed_stage_corrections": [
-        535
-      ],
-      "reviewed_quest_corrections": [
-        99161,
-        750,
-        787,
-        99082,
-        99101,
-        6541,
-        6542,
-        99081,
-        99101,
-        99082
-      ]
-    },
-    {
-      "captured": "2026-10-10",
-      "pages": 6,
-      "changed_quest_ids": [
-        96984
-      ],
-      "added_points": {
-        "starts": 0,
-        "ends": 0,
-        "objectives": 0
-      },
-      "invalid_quest_ids": [],
-      "incomplete_objectives_before": 1305,
-      "incomplete_objectives_after": 1306,
-      "evidence": {
-        "535": {
-          "source": "https://www.wowhead.com/forever/quest=535",
-          "sha256": "0d63d0d9c24116c03e27d19ff9377c15897ad2463c5252e4ab7f25941248487f"
-        },
-        "92434": {
-          "source": "https://www.wowhead.com/forever/quest=92434",
-          "sha256": "421fa5e13fcdefc8769cbe9a0f5f0b427343a14841ff2941c87e8c10036327b1"
-        },
-        "93680": {
-          "source": "https://www.wowhead.com/forever/quest=93680",
-          "sha256": "7ba322ed4763b8abf8d4e12375815a2e6589600d9e2e1bee8649a749803831b7"
-        },
-        "95534": {
-          "source": "https://www.wowhead.com/forever/quest=95534",
-          "sha256": "e6eb2fecdbc3b48becc7434911e394604a080bc77dda4fe0d3e6b4d5cb89a4f2"
-        },
-        "96984": {
-          "source": "https://www.wowhead.com/forever/quest=96984",
-          "sha256": "ef5a1ca0bbc3a807d53dc35deb5e26f76080abcc7341727388432397b21025b7"
-        },
-        "97287": {
-          "source": "https://www.wowhead.com/forever/quest=97287",
-          "sha256": "2e4ea06dceacb55e070624fd1251be70cffdef2f2256ef1b1ca9be57f286896c"
-        }
-      },
-      "reviewed_stage_corrections": [
-        96984
-      ],
-      "reviewed_quest_corrections": [
-        99161,
-        750,
-        787,
-        99082,
-        99101,
-        6541,
-        6542,
-        99081,
-        99101,
-        99082
       ]
     }
   ]

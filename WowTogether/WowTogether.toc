@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.65
-## X-ReleaseName: CLASSIC DUNGEON TRACKING AND FINDER FILTERS
+## Version: 0.8.66
+## X-ReleaseName: NATIVE GROUP FINDER FILTERS
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua
@@ -89,6 +89,7 @@ DungeonMapQuests.lua
 DungeonViewer.lua
 DungeonPlayer.lua
 GroupFinderRoles.lua
+GroupFinderNative.lua
 Recommended.lua
 RecommendedUI.lua
 SessionCheckpoints.lua

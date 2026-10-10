@@ -13094,899 +13094,6 @@
     "source": "Questie/QuestieDB Forever factual fields at pinned revision e0a6eaa86f181ac99262e34126bcd2ed1a1712d6: objectives names only the final hand-in item; requiredSourceItems identifies the source input. Current action area for the input is retained and no combine point is invented. Reviewed 2026-10-09; research/eastern-plaguelands-2026-10-09."
   },
   {
-    "questID": 5385,
-    "title": "The Remains of Trey Lightforge",
-    "stageCorrection": {
-      "kind": "provided-delivery",
-      "minLevel": 49,
-      "level": 57,
-      "classMask": 0,
-      "requiredItems": [
-        {
-          "quantity": 1,
-          "name": "Remains of Trey Lightforge",
-          "itemID": 13562
-        }
-      ]
-    },
-    "source": "ClassicDB quest 5385 explicitly lists item 13562 as a Provided Item and names NPC11020 as start and NPC11019 as return; Questie/QuestieDB Forever matches quest title/ID, levels and NPC links. Exact item count 1; no extra farm or source coordinate. ClassicDB fallback only after identity match. Reviewed 2026-10-09; research/felwood-2026-10-09."
-  },
-  {
-    "questID": 6131,
-    "title": "Timbermaw Ally",
-    "stageCorrection": {
-      "kind": "stage-facts",
-      "minLevel": 45,
-      "level": 48,
-      "classMask": 0,
-      "requiredItems": [],
-      "before": {
-        "requirements": [
-          {
-            "entityType": "npc",
-            "quantity": 5,
-            "name": "Deadwood Warrior",
-            "entityID": 7153
-          },
-          {
-            "entityType": "npc",
-            "quantity": 5,
-            "name": "Deadwood Pathfinder",
-            "entityID": 7155
-          },
-          {
-            "entityType": "npc",
-            "quantity": 5,
-            "name": "Deadwood Gardener",
-            "entityID": 7154
-          }
-        ],
-        "requiredItems": [],
-        "objectives": [
-          {
-            "sourceObjective": 7153,
-            "mapID": 1448,
-            "action": "kill",
-            "entityID": 7153,
-            "npc": true,
-            "y": 0.904,
-            "objectiveKey": "npc:7153",
-            "name": "Deadwood Warrior",
-            "x": 0.488,
-            "quantity": 5
-          },
-          {
-            "sourceObjective": 7154,
-            "mapID": 1448,
-            "action": "kill",
-            "entityID": 7154,
-            "npc": true,
-            "y": 0.894,
-            "objectiveKey": "npc:7154",
-            "name": "Deadwood Gardener",
-            "x": 0.484,
-            "quantity": 5
-          },
-          {
-            "sourceObjective": 7155,
-            "mapID": 1448,
-            "action": "kill",
-            "entityID": 7155,
-            "npc": true,
-            "y": 0.894,
-            "objectiveKey": "npc:7155",
-            "name": "Deadwood Pathfinder",
-            "x": 0.484,
-            "quantity": 5
-          }
-        ],
-        "npcTargets": [
-          {
-            "entityID": 7153,
-            "npc": true,
-            "action": "kill",
-            "name": "Deadwood Warrior"
-          },
-          {
-            "entityID": 7154,
-            "npc": true,
-            "action": "kill",
-            "name": "Deadwood Gardener"
-          },
-          {
-            "entityID": 7155,
-            "npc": true,
-            "action": "kill",
-            "name": "Deadwood Pathfinder"
-          }
-        ],
-        "starts": [],
-        "ends": [],
-        "startRefs": [],
-        "endRefs": []
-      },
-      "after": {
-        "requirements": [
-          {
-            "entityType": "npc",
-            "quantity": 5,
-            "name": "Deadwood Warrior",
-            "entityID": 7153
-          },
-          {
-            "entityType": "npc",
-            "quantity": 5,
-            "name": "Deadwood Pathfinder",
-            "entityID": 7155
-          },
-          {
-            "entityType": "npc",
-            "quantity": 5,
-            "name": "Deadwood Gardener",
-            "entityID": 7154
-          }
-        ],
-        "requiredItems": [],
-        "objectives": [
-          {
-            "sourceObjective": 7153,
-            "mapID": 1448,
-            "action": "kill",
-            "entityID": 7153,
-            "npc": true,
-            "y": 0.904,
-            "objectiveKey": "npc:7153",
-            "name": "Deadwood Warrior",
-            "x": 0.488,
-            "quantity": 5
-          },
-          {
-            "sourceObjective": 7154,
-            "mapID": 1448,
-            "action": "kill",
-            "entityID": 7154,
-            "npc": true,
-            "y": 0.894,
-            "objectiveKey": "npc:7154",
-            "name": "Deadwood Gardener",
-            "x": 0.484,
-            "quantity": 5
-          },
-          {
-            "sourceObjective": 7155,
-            "mapID": 1448,
-            "action": "kill",
-            "entityID": 7155,
-            "npc": true,
-            "y": 0.894,
-            "objectiveKey": "npc:7155",
-            "name": "Deadwood Pathfinder",
-            "x": 0.484,
-            "quantity": 5
-          }
-        ],
-        "npcTargets": [
-          {
-            "entityID": 7153,
-            "npc": true,
-            "action": "kill",
-            "name": "Deadwood Warrior"
-          },
-          {
-            "entityID": 7154,
-            "npc": true,
-            "action": "kill",
-            "name": "Deadwood Gardener"
-          },
-          {
-            "entityID": 7155,
-            "npc": true,
-            "action": "kill",
-            "name": "Deadwood Pathfinder"
-          }
-        ],
-        "starts": [
-          {
-            "entityType": "npc",
-            "mapID": 1448,
-            "entityID": 11554,
-            "npc": true,
-            "x": 0.5093,
-            "y": 0.8501,
-            "name": "Grazle",
-            "sourceAreaID": 361,
-            "locationSource": "ClassicDB quest 6131 start/end ID 11554; pinned Questie Forever NPC11554 Felwood position; captured 2026-10-09"
-          }
-        ],
-        "ends": [
-          {
-            "entityType": "npc",
-            "mapID": 1448,
-            "entityID": 11554,
-            "npc": true,
-            "x": 0.5093,
-            "y": 0.8501,
-            "name": "Grazle",
-            "sourceAreaID": 361,
-            "locationSource": "ClassicDB quest 6131 start/end ID 11554; pinned Questie Forever NPC11554 Felwood position; captured 2026-10-09"
-          }
-        ],
-        "startRefs": [
-          {
-            "entityType": "npc",
-            "entityID": 11554,
-            "name": "Grazle"
-          }
-        ],
-        "endRefs": [
-          {
-            "entityType": "npc",
-            "entityID": 11554,
-            "name": "Grazle"
-          }
-        ]
-      }
-    },
-    "source": "ClassicDB quest 6131 identifies NPC11554 Grazle as both start and end; exact title, Both faction, level 48/minimum 45 and three 5-kill goals agree with the captured catalogue. Questie/QuestieDB Forever NPC11554 current Felwood spawn is 50.93,85.01. Quest 6131 itself is absent from pinned Questie quest facts, so no prerequisite or reputation gate is inferred. Offer still needs beta confirmation. Reviewed 2026-10-09; research/felwood-2026-10-09."
-  },
-  {
-    "questID": 7602,
-    "title": "Flawless Fel Essence",
-    "stageCorrection": {
-      "kind": "stage-facts",
-      "minLevel": 50,
-      "level": 55,
-      "classMask": 256,
-      "requiredItems": [
-        {
-          "quantity": 1,
-          "name": "Flawless Fel Essence (Azshara)",
-          "itemID": 18624
-        },
-        {
-          "quantity": 1,
-          "name": "Flawless Fel Essence (Jaedenar)",
-          "itemID": 18622
-        },
-        {
-          "quantity": 1,
-          "name": "Flawless Fel Essence (Dark Portal)",
-          "itemID": 18623
-        }
-      ],
-      "before": {
-        "requirements": [
-          {
-            "entityType": "item",
-            "quantity": 1,
-            "action": "collect",
-            "entityID": 18624,
-            "name": "Flawless Fel Essence (Azshara)"
-          },
-          {
-            "entityType": "item",
-            "quantity": 1,
-            "action": "collect",
-            "entityID": 18622,
-            "name": "Flawless Fel Essence (Jaedenar)"
-          },
-          {
-            "entityType": "item",
-            "quantity": 1,
-            "action": "collect",
-            "entityID": 18623,
-            "name": "Flawless Fel Essence (Dark Portal)"
-          }
-        ],
-        "requiredItems": [
-          {
-            "quantity": 1,
-            "name": "Flawless Fel Essence (Azshara)",
-            "itemID": 18624
-          },
-          {
-            "quantity": 1,
-            "name": "Flawless Fel Essence (Jaedenar)",
-            "itemID": 18622
-          },
-          {
-            "quantity": 1,
-            "name": "Flawless Fel Essence (Dark Portal)",
-            "itemID": 18623
-          }
-        ],
-        "objectives": [
-          {
-            "entityType": "npc",
-            "mapID": 1447,
-            "action": "loot",
-            "entityID": 6200,
-            "npc": true,
-            "x": 0.5207,
-            "y": 0.1866,
-            "objectiveKey": "item:18624",
-            "itemID": 18624,
-            "quantity": 1,
-            "sourceAreaID": 16,
-            "itemName": "Flawless Fel Essence (Azshara)",
-            "locationSource": "Published Forever converted-baseline entity position",
-            "name": "Legashi Satyr"
-          }
-        ],
-        "npcTargets": [
-          {
-            "itemName": "Flawless Fel Essence (Azshara)",
-            "name": "Legashi Satyr",
-            "entityID": 6200,
-            "npc": true,
-            "action": "loot"
-          }
-        ],
-        "missingRequirements": [
-          {
-            "entityType": "item",
-            "quantity": 1,
-            "action": "collect",
-            "entityID": 18622,
-            "name": "Flawless Fel Essence (Jaedenar)"
-          },
-          {
-            "entityType": "item",
-            "quantity": 1,
-            "action": "collect",
-            "entityID": 18623,
-            "name": "Flawless Fel Essence (Dark Portal)"
-          }
-        ],
-        "objectiveLocationsIncomplete": true
-      },
-      "after": {
-        "requirements": [
-          {
-            "entityType": "item",
-            "quantity": 1,
-            "action": "collect",
-            "entityID": 18624,
-            "name": "Flawless Fel Essence (Azshara)"
-          },
-          {
-            "entityType": "item",
-            "quantity": 1,
-            "action": "collect",
-            "entityID": 18622,
-            "name": "Flawless Fel Essence (Jaedenar)"
-          },
-          {
-            "entityType": "item",
-            "quantity": 1,
-            "action": "collect",
-            "entityID": 18623,
-            "name": "Flawless Fel Essence (Dark Portal)"
-          }
-        ],
-        "requiredItems": [
-          {
-            "quantity": 1,
-            "name": "Flawless Fel Essence (Azshara)",
-            "itemID": 18624
-          },
-          {
-            "quantity": 1,
-            "name": "Flawless Fel Essence (Jaedenar)",
-            "itemID": 18622
-          },
-          {
-            "quantity": 1,
-            "name": "Flawless Fel Essence (Dark Portal)",
-            "itemID": 18623
-          }
-        ],
-        "objectives": [
-          {
-            "entityType": "npc",
-            "mapID": 1447,
-            "action": "loot",
-            "entityID": 6200,
-            "npc": true,
-            "x": 0.5207,
-            "y": 0.1866,
-            "objectiveKey": "item:18624",
-            "itemID": 18624,
-            "quantity": 1,
-            "sourceAreaID": 16,
-            "itemName": "Flawless Fel Essence (Azshara)",
-            "locationSource": "Published Forever converted-baseline entity position",
-            "name": "Legashi Satyr"
-          },
-          {
-            "entityType": "npc",
-            "mapID": 1448,
-            "action": "loot",
-            "entityID": 9862,
-            "npc": true,
-            "x": 0.3623,
-            "y": 0.4587,
-            "objectiveKey": "item:18622",
-            "itemID": 18622,
-            "quantity": 1,
-            "sourceAreaID": 361,
-            "itemName": "Flawless Fel Essence (Jaedenar)",
-            "locationSource": "ClassicDB item 18622 source NPC9862; pinned Questie Forever Felwood NPC position; captured 2026-10-09",
-            "name": "Jaedenar Legionnaire"
-          },
-          {
-            "entityType": "npc",
-            "mapID": 1419,
-            "action": "loot",
-            "entityID": 6011,
-            "npc": true,
-            "x": 0.5773,
-            "y": 0.5062,
-            "objectiveKey": "item:18623",
-            "itemID": 18623,
-            "quantity": 1,
-            "sourceAreaID": 4,
-            "itemName": "Flawless Fel Essence (Dark Portal)",
-            "locationSource": "ClassicDB item 18623 source NPC6011; pinned Questie Forever area-4 Blasted Lands NPC position; captured 2026-10-09",
-            "name": "Felguard Sentry"
-          }
-        ],
-        "npcTargets": [
-          {
-            "itemName": "Flawless Fel Essence (Azshara)",
-            "name": "Legashi Satyr",
-            "entityID": 6200,
-            "npc": true,
-            "action": "loot"
-          },
-          {
-            "itemName": "Flawless Fel Essence (Jaedenar)",
-            "name": "Jaedenar Legionnaire",
-            "entityID": 9862,
-            "npc": true,
-            "action": "loot"
-          },
-          {
-            "itemName": "Flawless Fel Essence (Dark Portal)",
-            "name": "Felguard Sentry",
-            "entityID": 6011,
-            "npc": true,
-            "action": "loot"
-          }
-        ],
-        "missingRequirements": [],
-        "objectiveLocationsIncomplete": false
-      }
-    },
-    "source": "ClassicDB quest 7602 and item pages link 18622\u2192NPC9862 Jaedenar Legionnaire and 18623\u2192NPC6011 Felguard Sentry; pinned Questie Forever NPC identities and spawn positions match. Add one representative location for each missing required essence; existing Azshara item 18624 remains. Blasted Lands is the cross-zone leg. Quest remains Warlock-only under class setting. ClassicDB relations are unchanged-vanilla fallback, not Forever drop-rate or beta-route evidence. Reviewed 2026-10-09; research/felwood-2026-10-09."
-  },
-  {
-    "questID": 8421,
-    "title": "The Wrong Stuff",
-    "stageCorrection": {
-      "kind": "stage-facts",
-      "minLevel": 50,
-      "level": 52,
-      "classMask": 256,
-      "requiredItems": [
-        {
-          "quantity": 10,
-          "name": "Rotting Wood",
-          "itemID": 20613
-        },
-        {
-          "quantity": 4,
-          "name": "Bloodvenom Essence",
-          "itemID": 20614
-        }
-      ],
-      "before": {
-        "requirements": [
-          {
-            "entityType": "item",
-            "quantity": 10,
-            "action": "collect",
-            "entityID": 20613,
-            "name": "Rotting Wood"
-          },
-          {
-            "entityType": "item",
-            "quantity": 4,
-            "action": "collect",
-            "entityID": 20614,
-            "name": "Bloodvenom Essence"
-          }
-        ],
-        "requiredItems": [
-          {
-            "quantity": 10,
-            "name": "Rotting Wood",
-            "itemID": 20613
-          },
-          {
-            "quantity": 4,
-            "name": "Bloodvenom Essence",
-            "itemID": 20614
-          }
-        ],
-        "objectives": [
-          {
-            "entityType": "npc",
-            "mapID": 1448,
-            "action": "loot",
-            "entityID": 7139,
-            "npc": true,
-            "x": 0.47840000000000005,
-            "y": 0.2645,
-            "objectiveKey": "item:20613",
-            "itemID": 20613,
-            "quantity": 10,
-            "sourceAreaID": 361,
-            "itemName": "Rotting Wood",
-            "locationSource": "Published Forever converted-baseline entity position",
-            "name": "Irontree Stomper"
-          }
-        ],
-        "npcTargets": [
-          {
-            "itemName": "Rotting Wood",
-            "name": "Irontree Stomper",
-            "entityID": 7139,
-            "npc": true,
-            "action": "loot"
-          }
-        ],
-        "missingRequirements": [
-          {
-            "entityType": "item",
-            "quantity": 4,
-            "action": "collect",
-            "entityID": 20614,
-            "name": "Bloodvenom Essence"
-          }
-        ],
-        "objectiveLocationsIncomplete": true
-      },
-      "after": {
-        "requirements": [
-          {
-            "entityType": "item",
-            "quantity": 10,
-            "action": "collect",
-            "entityID": 20613,
-            "name": "Rotting Wood"
-          },
-          {
-            "entityType": "item",
-            "quantity": 4,
-            "action": "collect",
-            "entityID": 20614,
-            "name": "Bloodvenom Essence"
-          }
-        ],
-        "requiredItems": [
-          {
-            "quantity": 10,
-            "name": "Rotting Wood",
-            "itemID": 20613
-          },
-          {
-            "quantity": 4,
-            "name": "Bloodvenom Essence",
-            "itemID": 20614
-          }
-        ],
-        "objectives": [
-          {
-            "entityType": "npc",
-            "mapID": 1448,
-            "action": "loot",
-            "entityID": 7139,
-            "npc": true,
-            "x": 0.47840000000000005,
-            "y": 0.2645,
-            "objectiveKey": "item:20613",
-            "itemID": 20613,
-            "quantity": 10,
-            "sourceAreaID": 361,
-            "itemName": "Rotting Wood",
-            "locationSource": "Published Forever converted-baseline entity position",
-            "name": "Irontree Stomper"
-          },
-          {
-            "entityType": "npc",
-            "mapID": 1448,
-            "action": "loot",
-            "entityID": 7092,
-            "npc": true,
-            "x": 0.4264,
-            "y": 0.4758,
-            "objectiveKey": "item:20614",
-            "itemID": 20614,
-            "quantity": 4,
-            "sourceAreaID": 361,
-            "itemName": "Bloodvenom Essence",
-            "locationSource": "ClassicDB item 20614 source NPC7092; pinned Questie Forever Felwood NPC position; captured 2026-10-09",
-            "name": "Tainted Ooze"
-          }
-        ],
-        "npcTargets": [
-          {
-            "itemName": "Rotting Wood",
-            "name": "Irontree Stomper",
-            "entityID": 7139,
-            "npc": true,
-            "action": "loot"
-          },
-          {
-            "itemName": "Bloodvenom Essence",
-            "name": "Tainted Ooze",
-            "entityID": 7092,
-            "npc": true,
-            "action": "loot"
-          }
-        ],
-        "missingRequirements": [],
-        "objectiveLocationsIncomplete": false
-      }
-    },
-    "source": "ClassicDB item 20614 links Bloodvenom Essence to NPC7092 Tainted Ooze in Felwood; pinned Questie Forever NPC7092 identity and 34 current Felwood positions agree. Add one representative objective location for the required four essences, preserving the existing ten Rotting Wood stage. ClassicDB is unchanged-vanilla source-relation evidence, not a Forever drop-rate claim. Quest remains Warlock-only under class setting. Reviewed 2026-10-09; research/felwood-2026-10-09."
-  },
-  {
-    "questID": 2941,
-    "title": "The Borrower",
-    "source": "Reviewed Forever page https://www.wowhead.com/forever/quest=2941, captured 2026-10-10 (SHA-256 348b562ba55099ddbe61e300f1ba0d029713c54ede15fe96117247f37747cc90); matching pinned Forever sourceItemId and quest-page Provided row confirm the item is supplied on acceptance. Keep it required for the existing hand-in; do not invent a farm objective.",
-    "stageCorrection": {
-      "kind": "provided-delivery",
-      "minLevel": 42,
-      "level": 48,
-      "classMask": 0,
-      "requiredItems": [
-        {
-          "itemID": 9329,
-          "name": "A Short Note",
-          "quantity": 1
-        }
-      ]
-    }
-  },
-  {
-    "questID": 2943,
-    "title": "Return to Troyas",
-    "source": "Reviewed Forever page https://www.wowhead.com/forever/quest=2943, captured 2026-10-10 (SHA-256 dbd9354b69e44d35054007a5363f59af2a69b4d934fdcbfece6b8df4d955b577); matching pinned Forever sourceItemId and quest-page Provided row confirm the item is supplied on acceptance. Keep it required for the existing hand-in; do not invent a farm objective.",
-    "stageCorrection": {
-      "kind": "provided-delivery",
-      "minLevel": 42,
-      "level": 48,
-      "classMask": 0,
-      "requiredItems": [
-        {
-          "itemID": 9331,
-          "name": "Feralas: A History",
-          "quantity": 1
-        }
-      ]
-    }
-  },
-  {
-    "questID": 2972,
-    "title": "Doling Justice",
-    "source": "Reviewed Forever page https://www.wowhead.com/forever/quest=2972, captured 2026-10-10 (SHA-256 918fe28a65f8e1da543c821062bcaa213b1bd1858f87e817fca8b0ff8429c2e5); matching pinned Forever sourceItemId and quest-page Provided row confirm the item is supplied on acceptance. Keep it required for the existing hand-in; do not invent a farm objective.",
-    "stageCorrection": {
-      "kind": "provided-delivery",
-      "minLevel": 38,
-      "level": 47,
-      "classMask": 0,
-      "requiredItems": [
-        {
-          "itemID": 9368,
-          "name": "Jer'kai's Signet Ring",
-          "quantity": 1
-        }
-      ]
-    }
-  },
-  {
-    "questID": 2976,
-    "title": "A Grim Discovery",
-    "source": "Reviewed Forever page https://www.wowhead.com/forever/quest=2976, captured 2026-10-10 (SHA-256 acbfe5b67e2b434ea5ea401b7bdde3436c46232e984048ee851e004ee6344cad); matching pinned Forever sourceItemId and quest-page Provided row confirm the item is supplied on acceptance. Keep it required for the existing hand-in; do not invent a farm objective.",
-    "stageCorrection": {
-      "kind": "provided-delivery",
-      "minLevel": 37,
-      "level": 45,
-      "classMask": 0,
-      "requiredItems": [
-        {
-          "itemID": 9462,
-          "name": "Crate of Grimtotem Horns",
-          "quantity": 1
-        }
-      ]
-    }
-  },
-  {
-    "questID": 3121,
-    "title": "A Strange Request",
-    "source": "Reviewed Forever page https://www.wowhead.com/forever/quest=3121, captured 2026-10-10 (SHA-256 687709c0e4251d1f19a446581833d96ae92c5e71e8243f8596c5a6bf58e6e521); matching pinned Forever sourceItemId and quest-page Provided row confirm the item is supplied on acceptance. Keep it required for the existing hand-in; do not invent a farm objective.",
-    "stageCorrection": {
-      "kind": "provided-delivery",
-      "minLevel": 40,
-      "level": 45,
-      "classMask": 0,
-      "requiredItems": [
-        {
-          "itemID": 9629,
-          "name": "A Shrunken Head",
-          "quantity": 1
-        }
-      ]
-    }
-  },
-  {
-    "questID": 3122,
-    "title": "Return to Witch Doctor Uzer'i",
-    "source": "Reviewed Forever page https://www.wowhead.com/forever/quest=3122, captured 2026-10-10 (SHA-256 c5f94763802b8c01bac2b3c8d70f9f522abfb0582f7853e373a70448b5f291e7); matching pinned Forever sourceItemId and quest-page Provided row confirm the item is supplied on acceptance. Keep it required for the existing hand-in; do not invent a farm objective.",
-    "stageCorrection": {
-      "kind": "provided-delivery",
-      "minLevel": 40,
-      "level": 45,
-      "classMask": 0,
-      "requiredItems": [
-        {
-          "itemID": 9628,
-          "name": "Neeru's Herb Pouch",
-          "quantity": 1
-        }
-      ]
-    }
-  },
-  {
-    "questID": 3841,
-    "title": "An Orphan Looking For a Home",
-    "source": "Reviewed Forever page https://www.wowhead.com/forever/quest=3841, captured 2026-10-10 (SHA-256 6fbb587efe0b391ebd5ae9e0062a1f25a51cc14d6d090c942a7afb0e31d2904e); matching pinned Forever sourceItemId and quest-page Provided row confirm the item is supplied on acceptance. Keep it required for the existing hand-in; do not invent a farm objective.",
-    "stageCorrection": {
-      "kind": "provided-delivery",
-      "minLevel": 38,
-      "level": 47,
-      "classMask": 0,
-      "requiredItems": [
-        {
-          "itemID": 11102,
-          "name": "Unhatched Sprite Darter Egg",
-          "quantity": 1
-        }
-      ]
-    }
-  },
-  {
-    "questID": 3843,
-    "title": "The Newest Member of the Family",
-    "source": "Reviewed Forever page https://www.wowhead.com/forever/quest=3843, captured 2026-10-10 (SHA-256 6cfe1868d386b346df8e56fcd2e7d72d14bb9b579ed737ed71a96d997451b864); matching pinned Forever sourceItemId and quest-page Provided row confirm the item is supplied on acceptance. Keep it required for the existing hand-in; do not invent a farm objective.",
-    "stageCorrection": {
-      "kind": "provided-delivery",
-      "minLevel": 38,
-      "level": 47,
-      "classMask": 0,
-      "requiredItems": [
-        {
-          "itemID": 11471,
-          "name": "Fragile Sprite Darter Egg",
-          "quantity": 1
-        }
-      ]
-    }
-  },
-  {
-    "questID": 4267,
-    "title": "Rise of the Silithid",
-    "source": "Reviewed Forever page https://www.wowhead.com/forever/quest=4267, captured 2026-10-10 (SHA-256 b4a52bf950d6462c67b4b540fcec578a3c24074a3b3a1f5ec413b1db59f89236); matching pinned Forever sourceItemId and quest-page Provided row confirm the item is supplied on acceptance. Keep it required for the existing hand-in; do not invent a farm objective.",
-    "stageCorrection": {
-      "kind": "provided-delivery",
-      "minLevel": 40,
-      "level": 46,
-      "classMask": 0,
-      "requiredItems": [
-        {
-          "itemID": 11466,
-          "name": "Raschal's Report",
-          "quantity": 1
-        }
-      ]
-    }
-  },
-  {
-    "questID": 2942,
-    "title": "The Morrow Stone",
-    "source": "Reviewed Forever page https://www.wowhead.com/forever/quest=2942 (SHA-256 dd49d607fe324e5d538125adf9350ec83c7a43160b34478b407ac2db6c906f17), item pages 9306 (SHA-256 c69fcb446d1897550ad99ac21f6f0c99e37bad8fc7f2f5b781fca357f92bb4a4) and 9307 (SHA-256 8c4d26ac5578fa866d73946024581be6e36040b277b0dad70c8ae4b37a239fd6); predecessor quest 2879 rewards item 9307 (quest page SHA-256 1189b48fa72ebf155a175d52eb06e2d6e5e7d1836b238f152db05f32a4435524). Retain prerequisite 2879; 9306 is supplied on acceptance while both items remain required for Troyas hand-in. No separate farming position is supported.",
-    "stageCorrection": {
-      "kind": "stage-facts",
-      "minLevel": 42,
-      "level": 50,
-      "classMask": 0,
-      "requiredItems": [
-        {
-          "itemID": 9307,
-          "name": "A Sparkling Stone",
-          "quantity": 1
-        },
-        {
-          "itemID": 9306,
-          "name": "Stave of Equinex",
-          "quantity": 1
-        }
-      ],
-      "before": {
-        "requirements": [
-          {
-            "entityType": "item",
-            "quantity": 1,
-            "action": "collect",
-            "entityID": 9307,
-            "name": "A Sparkling Stone"
-          }
-        ],
-        "requiredItems": [
-          {
-            "quantity": 1,
-            "name": "A Sparkling Stone",
-            "itemID": 9307
-          }
-        ],
-        "objectives": [],
-        "npcTargets": [],
-        "missingRequirements": [
-          {
-            "entityType": "item",
-            "quantity": 1,
-            "action": "collect",
-            "entityID": 9307,
-            "name": "A Sparkling Stone"
-          }
-        ],
-        "objectiveLocationsIncomplete": true
-      },
-      "after": {
-        "requirements": [],
-        "requiredItems": [
-          {
-            "itemID": 9307,
-            "name": "A Sparkling Stone",
-            "quantity": 1
-          },
-          {
-            "itemID": 9306,
-            "name": "Stave of Equinex",
-            "quantity": 1
-          }
-        ],
-        "objectives": [
-          {
-            "entityType": "npc",
-            "mapID": 1444,
-            "entityID": 7764,
-            "npc": true,
-            "y": 0.455,
-            "x": 0.3178,
-            "name": "Troyas Moonbreeze",
-            "action": "talk",
-            "objectiveKey": "npc:7764",
-            "locationSource": "Published Forever converted-baseline entity position"
-          }
-        ],
-        "npcTargets": [
-          {
-            "name": "Troyas Moonbreeze",
-            "entityID": 7764,
-            "npc": true,
-            "action": "talk"
-          }
-        ],
-        "missingRequirements": [],
-        "objectiveLocationsIncomplete": false
-      }
-    }
-  },
-  {
     "questID": 95534,
     "title": "Strahnbrad Mystery",
     "factionCorrection": {
@@ -14147,6 +13254,147 @@
           }
         ],
         "objectiveLocationsIncomplete": true
+      }
+    }
+  },
+  {
+    "questID": 535,
+    "title": "Valik",
+    "source": "https://www.wowhead.com/forever/quest=535 (2026-10-10, SHA-256 0d63d0d9c24116c03e27d19ff9377c15897ad2463c5252e4ab7f25941248487f) maps Southshore Stout to Drunken Footpad 2440; https://www.wowhead.com/forever/npc=2440 (SHA-256 79f3acdb779fcc91c2a4048b54b5a3560225199d9a5feeacfa27972b992e7a89) supplies its two spawn areas.",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 29,
+      "level": 34,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Southshore Stout",
+          "itemID": 3703
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Southshore Stout",
+            "entityID": 3703
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Southshore Stout",
+            "itemID": 3703
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "mapID": 1416,
+            "action": "collect",
+            "entityID": 2440,
+            "npc": true,
+            "y": 0.696,
+            "objectiveKey": "item:3703",
+            "name": "Drunken Footpad",
+            "x": 0.588,
+            "quantity": 1,
+            "legacyStepKey": "q:1416:npc:2440",
+            "itemName": "Southshore Stout",
+            "itemID": 3703
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Southshore Stout",
+            "name": "Drunken Footpad",
+            "entityID": 2440,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "objectiveAlternatives": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "name": "Southshore Stout",
+            "entityID": 3703
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Southshore Stout",
+            "itemID": 3703
+          }
+        ],
+        "objectives": [
+          {
+            "sourceObjective": 0,
+            "mapID": 1416,
+            "action": "collect",
+            "entityID": 2440,
+            "npc": true,
+            "y": 0.696,
+            "objectiveKey": "item:3703",
+            "name": "Drunken Footpad",
+            "x": 0.588,
+            "quantity": 1,
+            "legacyStepKey": "q:1416:npc:2440",
+            "itemName": "Southshore Stout",
+            "itemID": 3703
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Southshore Stout",
+            "name": "Drunken Footpad",
+            "entityID": 2440,
+            "npc": true,
+            "action": "collect"
+          }
+        ],
+        "objectiveAlternatives": [
+          {
+            "sourceObjective": 0,
+            "itemName": "Southshore Stout",
+            "locations": [
+              {
+                "mapID": 1416,
+                "x": 0.5820000000000001,
+                "y": 0.672,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2440,
+                "name": "Drunken Footpad",
+                "npc": true,
+                "action": "collect",
+                "itemName": "Southshore Stout",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2440 entity page"
+              },
+              {
+                "mapID": 1416,
+                "x": 0.584,
+                "y": 0.706,
+                "sourceAreaID": 36,
+                "sourceZone": "Alterac Mountains",
+                "entityID": 2440,
+                "name": "Drunken Footpad",
+                "npc": true,
+                "action": "collect",
+                "itemName": "Southshore Stout",
+                "sourceObjective": 0,
+                "locationSource": "Wowhead Forever NPC 2440 entity page"
+              }
+            ]
+          }
+        ]
       }
     }
   }

@@ -1,14 +1,14 @@
 {
   "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
   "quest_records": 5230,
-  "static_points_checked": 11833,
+  "static_points_checked": 11839,
   "fixed_zone_guides_checked": 152,
-  "catalogue_reason_stages_checked": 16854,
+  "catalogue_reason_stages_checked": 16855,
   "catalogue_reason_codes": {
     "class-progression": 1822,
     "level-work": 4459,
     "outside-level-range": 2,
-    "quest-objective": 5227,
+    "quest-objective": 5228,
     "quest-reward": 5313,
     "selected-guide": 31
   },
