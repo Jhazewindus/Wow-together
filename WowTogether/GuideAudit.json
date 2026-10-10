@@ -1,14 +1,14 @@
 {
   "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
   "quest_records": 5230,
-  "static_points_checked": 11867,
+  "static_points_checked": 11882,
   "fixed_zone_guides_checked": 150,
-  "catalogue_reason_stages_checked": 16860,
+  "catalogue_reason_stages_checked": 16861,
   "catalogue_reason_codes": {
     "class-progression": 1822,
     "level-work": 4459,
     "outside-level-range": 2,
-    "quest-objective": 5231,
+    "quest-objective": 5232,
     "quest-reward": 5315,
     "selected-guide": 31
   },
@@ -5794,16 +5794,11 @@
       "key": "level-zone:kalimdor/desolace:levels:31-40",
       "quests": 46,
       "steps": 150,
-      "unknown_location_steps": 27,
+      "unknown_location_steps": 14,
       "missing_location_quest_ids_by_stage": {
         "a": [
-          79229,
-          79235,
-          79236,
           79242,
-          92743,
           92818,
-          93224,
           97284
         ],
         "q": [
@@ -5811,22 +5806,14 @@
           1382,
           1385,
           5561,
-          79229,
-          79235,
           79236,
           79242,
           92743,
-          92818,
-          93224
+          92818
         ],
         "t": [
-          79229,
-          79235,
-          79236,
           79242,
-          92743,
           92818,
-          93224,
           97284
         ]
       },
@@ -5855,18 +5842,18 @@
         "prerequisite": 17,
         "quest-reward": 41
       },
-      "reason_review_steps": 109,
-      "cross_zone_reason_steps": 7,
-      "flow_alternatives_evaluated": 9,
+      "reason_review_steps": 104,
+      "cross_zone_reason_steps": 8,
+      "flow_alternatives_evaluated": 12,
       "flow_loop_changes": 0,
-      "geometric_guard_rejections": 56,
+      "geometric_guard_rejections": 85,
       "geometric_bracket_replays": 4,
       "flow_state_valid": true,
-      "quest_log_peak": 10,
+      "quest_log_peak": 6,
       "quest_reward_only_xp_shortfall": 163900,
-      "uncertain_travel_legs": 75,
-      "estimated_distance_before": 551759.55,
-      "estimated_distance_after": 551759.55
+      "uncertain_travel_legs": 68,
+      "estimated_distance_before": 384119.39,
+      "estimated_distance_after": 384119.39
     },
     {
       "faction": "Alliance",
@@ -5874,22 +5861,15 @@
       "key": "level-zone:kalimdor/desolace:levels:41-50",
       "quests": 16,
       "steps": 53,
-      "unknown_location_steps": 10,
+      "unknown_location_steps": 4,
       "missing_location_quest_ids_by_stage": {
-        "a": [
-          93227,
-          94872
-        ],
+        "a": [],
         "q": [
           1371,
           1382,
-          1385,
-          93227,
-          94872
+          1385
         ],
         "t": [
-          93227,
-          94872,
           96222
         ]
       },
@@ -5913,18 +5893,18 @@
         "outside-level-range": 37,
         "quest-reward": 16
       },
-      "reason_review_steps": 50,
+      "reason_review_steps": 48,
       "cross_zone_reason_steps": 2,
-      "flow_alternatives_evaluated": 2,
+      "flow_alternatives_evaluated": 4,
       "flow_loop_changes": 0,
-      "geometric_guard_rejections": 2,
+      "geometric_guard_rejections": 5,
       "geometric_bracket_replays": 4,
       "flow_state_valid": true,
       "quest_log_peak": 3,
       "quest_reward_only_xp_shortfall": 0,
-      "uncertain_travel_legs": 24,
-      "estimated_distance_before": 179489.41,
-      "estimated_distance_after": 179489.41
+      "uncertain_travel_legs": 18,
+      "estimated_distance_before": 114825.65,
+      "estimated_distance_after": 114825.65
     },
     {
       "faction": "Alliance",
@@ -8929,14 +8909,10 @@
       "key": "level-zone:kalimdor/desolace:levels:31-40",
       "quests": 42,
       "steps": 139,
-      "unknown_location_steps": 25,
+      "unknown_location_steps": 15,
       "missing_location_quest_ids_by_stage": {
         "a": [
-          79229,
-          79235,
-          79236,
           79242,
-          92743,
           92818,
           97284
         ],
@@ -8945,19 +8921,13 @@
           1368,
           1371,
           5561,
-          79229,
-          79235,
           79236,
           79242,
           92743,
           92818
         ],
         "t": [
-          79229,
-          79235,
-          79236,
           79242,
-          92743,
           92818,
           97265,
           97284
@@ -8986,18 +8956,18 @@
         "prerequisite": 6,
         "quest-reward": 40
       },
-      "reason_review_steps": 110,
-      "cross_zone_reason_steps": 7,
-      "flow_alternatives_evaluated": 2,
+      "reason_review_steps": 106,
+      "cross_zone_reason_steps": 9,
+      "flow_alternatives_evaluated": 3,
       "flow_loop_changes": 0,
       "geometric_guard_rejections": 109,
       "geometric_bracket_replays": 4,
       "flow_state_valid": true,
       "quest_log_peak": 6,
-      "quest_reward_only_xp_shortfall": 339905,
-      "uncertain_travel_legs": 82,
-      "estimated_distance_before": 492810.89,
-      "estimated_distance_after": 492810.89
+      "quest_reward_only_xp_shortfall": 346155,
+      "uncertain_travel_legs": 77,
+      "estimated_distance_before": 385075.93,
+      "estimated_distance_after": 385075.93
     },
     {
       "faction": "Horde",
@@ -9005,22 +8975,15 @@
       "key": "level-zone:kalimdor/desolace:levels:41-50",
       "quests": 14,
       "steps": 45,
-      "unknown_location_steps": 10,
+      "unknown_location_steps": 4,
       "missing_location_quest_ids_by_stage": {
-        "a": [
-          93227,
-          94872
-        ],
+        "a": [],
         "q": [
           1367,
           1368,
-          1371,
-          93227,
-          94872
+          1371
         ],
         "t": [
-          93227,
-          94872,
           96222
         ]
       },
@@ -9042,18 +9005,18 @@
         "outside-level-range": 31,
         "quest-reward": 14
       },
-      "reason_review_steps": 44,
+      "reason_review_steps": 42,
       "cross_zone_reason_steps": 2,
-      "flow_alternatives_evaluated": 0,
+      "flow_alternatives_evaluated": 1,
       "flow_loop_changes": 0,
-      "geometric_guard_rejections": 0,
+      "geometric_guard_rejections": 6,
       "geometric_bracket_replays": 4,
       "flow_state_valid": true,
       "quest_log_peak": 2,
       "quest_reward_only_xp_shortfall": 0,
-      "uncertain_travel_legs": 23,
-      "estimated_distance_before": 213751.76,
-      "estimated_distance_after": 213751.76
+      "uncertain_travel_legs": 19,
+      "estimated_distance_before": 140950.24,
+      "estimated_distance_after": 140950.24
     },
     {
       "faction": "Horde",

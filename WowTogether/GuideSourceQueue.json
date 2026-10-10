@@ -1,6 +1,6 @@
 {
   "source_data_complete": false,
-  "remaining_quest_records": 318,
+  "remaining_quest_records": 315,
   "limitations": [
     "This queue identifies missing facts, not a license to invent them",
     "Source capture must respect access policy and stop after denials",
@@ -2363,6 +2363,7 @@
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=5561",
       "entity_urls": [
+        "https://www.wowhead.com/forever/npc=4700",
         "https://www.wowhead.com/forever/npc=11596"
       ]
     },
@@ -3540,13 +3541,13 @@
         "Horde / Desolace"
       ],
       "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
         "pickup requirements"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=79229",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/npc=11438",
+        "https://www.wowhead.com/forever/object=417353"
+      ]
     },
     {
       "questID": 79235,
@@ -3556,13 +3557,13 @@
         "Horde / Desolace"
       ],
       "needs": [
-        "hand-in",
-        "objective area",
-        "pickup",
         "pickup requirements"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=79235",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/npc=11438",
+        "https://www.wowhead.com/forever/npc=215643"
+      ]
     },
     {
       "questID": 79236,
@@ -3572,13 +3573,14 @@
         "Horde / Desolace"
       ],
       "needs": [
-        "hand-in",
         "objective area",
-        "pickup",
         "pickup requirements"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=79236",
-      "entity_urls": []
+      "entity_urls": [
+        "https://www.wowhead.com/forever/item=4600",
+        "https://www.wowhead.com/forever/npc=215643"
+      ]
     },
     {
       "questID": 79242,
@@ -4016,14 +4018,13 @@
         "Horde / Desolace"
       ],
       "needs": [
-        "hand-in",
         "objective area",
-        "pickup",
         "pickup requirements"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=92743",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=254392"
+        "https://www.wowhead.com/forever/item=254392",
+        "https://www.wowhead.com/forever/npc=5398"
       ]
     },
     {
@@ -4089,37 +4090,6 @@
         "https://www.wowhead.com/forever/item=213568",
         "https://www.wowhead.com/forever/npc=217412"
       ]
-    },
-    {
-      "questID": 93224,
-      "title": "Carved Centaur Totems",
-      "guides": [
-        "Alliance / Desolace"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=93224",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=254432"
-      ]
-    },
-    {
-      "questID": 93227,
-      "title": "Buying Friendship: Gelkis",
-      "guides": [
-        "Alliance / Desolace",
-        "Horde / Desolace"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=93227",
-      "entity_urls": []
     },
     {
       "questID": 93429,
@@ -4276,21 +4246,6 @@
         "https://www.wowhead.com/forever/item=265773",
         "https://www.wowhead.com/forever/npc=258203"
       ]
-    },
-    {
-      "questID": 94872,
-      "title": "Buying Friendship: Magram",
-      "guides": [
-        "Alliance / Desolace",
-        "Horde / Desolace"
-      ],
-      "needs": [
-        "hand-in",
-        "objective area",
-        "pickup"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=94872",
-      "entity_urls": []
     },
     {
       "questID": 94901,

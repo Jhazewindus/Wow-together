@@ -1,0 +1,364 @@
+{
+  "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
+  "quest_records": 37,
+  "static_points_checked": 108,
+  "fixed_zone_guides_checked": 5,
+  "catalogue_reason_stages_checked": 127,
+  "catalogue_reason_codes": {
+    "level-work": 39,
+    "quest-objective": 51,
+    "quest-reward": 37
+  },
+  "reason_review_quest_ids": [
+    1052,
+    1361,
+    1362,
+    1366,
+    1367,
+    1368,
+    1369,
+    1370,
+    1371,
+    1373,
+    1374,
+    1375,
+    1380,
+    1381,
+    1382,
+    1384,
+    1385,
+    1386,
+    1387,
+    1437,
+    1438,
+    1439,
+    1440,
+    1458,
+    1465,
+    1467,
+    1480,
+    1481,
+    1484,
+    1488,
+    5421,
+    5741,
+    5763,
+    93225,
+    96222,
+    97265,
+    97284
+  ],
+  "source_data_gap_free_guides": 0,
+  "guides": [
+    {
+      "faction": "Alliance",
+      "zone": "Desolace",
+      "key": "level-zone:kalimdor/desolace:levels:31-40",
+      "quests": 46,
+      "steps": 150,
+      "unknown_location_steps": 27,
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          79229,
+          79235,
+          79236,
+          79242,
+          92743,
+          92818,
+          93224,
+          97284
+        ],
+        "q": [
+          1371,
+          1382,
+          1385,
+          5561,
+          79229,
+          79235,
+          79236,
+          79242,
+          92743,
+          92818,
+          93224
+        ],
+        "t": [
+          79229,
+          79235,
+          79236,
+          79242,
+          92743,
+          92818,
+          93224,
+          97284
+        ]
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        1369,
+        1370,
+        1371,
+        1373,
+        1374,
+        1375,
+        1381,
+        1384,
+        1386,
+        79229,
+        79235,
+        79236,
+        79242,
+        92743
+      ],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 150,
+      "destination_reason_codes": {
+        "outside-level-range": 92,
+        "prerequisite": 17,
+        "quest-reward": 41
+      },
+      "reason_review_steps": 109,
+      "cross_zone_reason_steps": 7,
+      "flow_alternatives_evaluated": 9,
+      "flow_loop_changes": 0,
+      "geometric_guard_rejections": 56,
+      "geometric_bracket_replays": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 10,
+      "quest_reward_only_xp_shortfall": 163900,
+      "uncertain_travel_legs": 75,
+      "estimated_distance_before": 551759.55,
+      "estimated_distance_after": 551759.55
+    },
+    {
+      "faction": "Alliance",
+      "zone": "Desolace",
+      "key": "level-zone:kalimdor/desolace:levels:41-50",
+      "quests": 16,
+      "steps": 53,
+      "unknown_location_steps": 10,
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          93227,
+          94872
+        ],
+        "q": [
+          1371,
+          1382,
+          1385,
+          93227,
+          94872
+        ],
+        "t": [
+          93227,
+          94872,
+          96222
+        ]
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        1369,
+        1370,
+        1371,
+        1373,
+        1374,
+        1375,
+        1380,
+        1381,
+        1384,
+        1386
+      ],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 53,
+      "destination_reason_codes": {
+        "outside-level-range": 37,
+        "quest-reward": 16
+      },
+      "reason_review_steps": 50,
+      "cross_zone_reason_steps": 2,
+      "flow_alternatives_evaluated": 2,
+      "flow_loop_changes": 0,
+      "geometric_guard_rejections": 2,
+      "geometric_bracket_replays": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 3,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 24,
+      "estimated_distance_before": 179489.41,
+      "estimated_distance_after": 179489.41
+    },
+    {
+      "faction": "Horde",
+      "zone": "Desolace",
+      "key": "level-zone:kalimdor/desolace:levels:31-40",
+      "quests": 42,
+      "steps": 139,
+      "unknown_location_steps": 25,
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          79229,
+          79235,
+          79236,
+          79242,
+          92743,
+          92818,
+          97284
+        ],
+        "q": [
+          1367,
+          1368,
+          1371,
+          5561,
+          79229,
+          79235,
+          79236,
+          79242,
+          92743,
+          92818
+        ],
+        "t": [
+          79229,
+          79235,
+          79236,
+          79242,
+          92743,
+          92818,
+          97265,
+          97284
+        ]
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        1369,
+        1370,
+        1371,
+        1373,
+        1374,
+        1375,
+        1381,
+        79229,
+        79235,
+        79236,
+        79242,
+        92743
+      ],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 28,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 139,
+      "destination_reason_codes": {
+        "outside-level-range": 93,
+        "prerequisite": 6,
+        "quest-reward": 40
+      },
+      "reason_review_steps": 110,
+      "cross_zone_reason_steps": 7,
+      "flow_alternatives_evaluated": 2,
+      "flow_loop_changes": 0,
+      "geometric_guard_rejections": 109,
+      "geometric_bracket_replays": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 6,
+      "quest_reward_only_xp_shortfall": 339905,
+      "uncertain_travel_legs": 82,
+      "estimated_distance_before": 492810.89,
+      "estimated_distance_after": 492810.89
+    },
+    {
+      "faction": "Horde",
+      "zone": "Desolace",
+      "key": "level-zone:kalimdor/desolace:levels:41-50",
+      "quests": 14,
+      "steps": 45,
+      "unknown_location_steps": 10,
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          93227,
+          94872
+        ],
+        "q": [
+          1367,
+          1368,
+          1371,
+          93227,
+          94872
+        ],
+        "t": [
+          93227,
+          94872,
+          96222
+        ]
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        1369,
+        1370,
+        1371,
+        1373,
+        1374,
+        1375,
+        1380,
+        1381
+      ],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 32,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 45,
+      "destination_reason_codes": {
+        "outside-level-range": 31,
+        "quest-reward": 14
+      },
+      "reason_review_steps": 44,
+      "cross_zone_reason_steps": 2,
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "geometric_guard_rejections": 0,
+      "geometric_bracket_replays": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 2,
+      "quest_reward_only_xp_shortfall": 0,
+      "uncertain_travel_legs": 23,
+      "estimated_distance_before": 213751.76,
+      "estimated_distance_after": 213751.76
+    },
+    {
+      "faction": "Horde",
+      "zone": "Desolace",
+      "key": "level-zone:kalimdor/desolace:levels:51-60",
+      "quests": 4,
+      "steps": 12,
+      "unknown_location_steps": 1,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [
+          6568
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 9,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 12,
+      "destination_reason_codes": {
+        "outside-level-range": 8,
+        "quest-reward": 4
+      },
+      "reason_review_steps": 11,
+      "cross_zone_reason_steps": 4,
+      "flow_alternatives_evaluated": 0,
+      "flow_loop_changes": 0,
+      "geometric_guard_rejections": 0,
+      "geometric_bracket_replays": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 1,
+      "quest_reward_only_xp_shortfall": 3108900,
+      "uncertain_travel_legs": 4,
+      "estimated_distance_before": 45710.25,
+      "estimated_distance_after": 45710.25
+    }
+  ],
+  "scope": {
+    "zone": "Desolace",
+    "catalogue_records": "Exact quest zone; guide dependencies still compile normally"
+  }
+}

@@ -1,0 +1,3776 @@
+{
+  "schema": 1,
+  "addon": "0.8.66",
+  "flow_module_sha256": "28d8cf8f6d3bb3e49404bcf6b9608e48f746e16020009a33afe96d5b35420040",
+  "optimizer_module_sha256": "b4603407226a3ad34621f2c49fc7403022702f671208fc42d15f13dac1ad8b28",
+  "fixed_guides_sha256": "8ad2585f9991aec052705e89d1e97c470edfb88b7e7052bda4d00bf45fd780e8",
+  "fixed_travel_cost_sha256": "4f2f5ab93373a0e6abf5b8e2241b4f81265218e671b093de05c89d00dbf4eee9",
+  "travel_network_sha256": "be7e15c2927a3b80429f62b6eb39336b69bf39669af247daa6e38ce97bd62105",
+  "terrain_geometry_sha256": "fb44a466d339d0c0f27258816f1ffb64cd5c5a2e379a72b8574d8f77084a9971",
+  "terrain_data_sha256": "a74342fe846efb3a0530814049514b93d54b0a07cb56fbf6b012e6c7f0dcdec0",
+  "catalogue_sha256": "4ca5d3ca4635dd30d9e254804077c309feda432ad34619856e09e45bd69ec04c",
+  "travel_sha256": "1970f9f8d5298253b468a584fb40a72c62a67061c6f193e92de8ebf89d3de686",
+  "geometry_source": null,
+  "validation": "Lua 5.1 host. Complete action sequences; estimated geography, no play-time optimality claim.",
+  "guides": [
+    {
+      "faction": "Horde",
+      "race": 2,
+      "key": "level-zone:kalimdor/desolace:levels:31-40",
+      "zone": "Desolace",
+      "start_level": 31,
+      "flow_start_level": 25,
+      "compile_ms": 1674.71,
+      "stops": [
+        {
+          "id": 1361,
+          "kind": "a",
+          "mapID": 1424,
+          "x": 0.632,
+          "y": 0.20600000000000002,
+          "entityID": 2229
+        },
+        {
+          "id": 97284,
+          "kind": "a",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 1480,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.5029,
+          "y": 0.7234,
+          "action": "start-item",
+          "entityID": 4668,
+          "entityType": "npc"
+        },
+        {
+          "id": 1484,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.522,
+          "y": 0.534,
+          "entityID": 4498
+        },
+        {
+          "id": 1480,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.522,
+          "y": 0.534,
+          "entityID": 4498
+        },
+        {
+          "id": 1480,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.522,
+          "y": 0.534,
+          "entityID": 4498
+        },
+        {
+          "id": 1481,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.522,
+          "y": 0.534,
+          "entityID": 4498
+        },
+        {
+          "id": 1484,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.526,
+          "y": 0.542,
+          "entityID": 5641
+        },
+        {
+          "id": 1484,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.526,
+          "y": 0.542,
+          "entityID": 5641
+        },
+        {
+          "id": 97284,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.552,
+          "y": 0.3,
+          "action": "kill",
+          "entityID": 4663,
+          "objectiveKey": "npc:4663",
+          "quantity": 4
+        },
+        {
+          "id": 97284,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.56,
+          "y": 0.29600000000000004,
+          "action": "kill",
+          "entityID": 4664,
+          "objectiveKey": "npc:4664",
+          "quantity": 4
+        },
+        {
+          "id": 97284,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.55,
+          "y": 0.262,
+          "action": "kill",
+          "entityID": 4665,
+          "objectiveKey": "npc:4665",
+          "quantity": 4
+        },
+        {
+          "id": 97284,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.552,
+          "y": 0.302,
+          "action": "kill",
+          "entityID": 4666,
+          "objectiveKey": "npc:4666",
+          "quantity": 4
+        },
+        {
+          "id": 97284,
+          "kind": "t",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 5741,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.38799999999999996,
+          "y": 0.272,
+          "entityID": 11863
+        },
+        {
+          "id": 5741,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.552,
+          "y": 0.3,
+          "action": "collect",
+          "entityID": 13019,
+          "objectiveKey": "item:15750",
+          "quantity": 1
+        },
+        {
+          "id": 5741,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.38799999999999996,
+          "y": 0.272,
+          "entityID": 11863
+        },
+        {
+          "id": 5763,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.25,
+          "y": 0.722,
+          "entityID": 11877
+        },
+        {
+          "id": 6142,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.22640000000000002,
+          "y": 0.7197,
+          "entityID": 12031,
+          "entityType": "npc"
+        },
+        {
+          "id": 97265,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.252,
+          "y": 0.672,
+          "entityID": 268705
+        },
+        {
+          "id": 97265,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.716,
+          "y": 0.17800000000000002,
+          "action": "kill",
+          "entityID": 4670,
+          "objectiveKey": "npc:4670",
+          "quantity": 2
+        },
+        {
+          "id": 97265,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.73,
+          "y": 0.222,
+          "action": "kill",
+          "entityID": 4671,
+          "objectiveKey": "npc:4671",
+          "quantity": 2
+        },
+        {
+          "id": 97265,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.722,
+          "y": 0.21,
+          "action": "kill",
+          "entityID": 4672,
+          "objectiveKey": "npc:4672",
+          "quantity": 2
+        },
+        {
+          "id": 1481,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.726,
+          "y": 0.168,
+          "action": "collect",
+          "entityID": 4674,
+          "objectiveKey": "item:6441",
+          "quantity": 1
+        },
+        {
+          "id": 97265,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.726,
+          "y": 0.168,
+          "action": "kill",
+          "entityID": 4674,
+          "objectiveKey": "npc:4674",
+          "quantity": 2
+        },
+        {
+          "id": 97265,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.77,
+          "y": 0.184,
+          "action": "kill",
+          "entityID": 4675,
+          "objectiveKey": "npc:4675",
+          "quantity": 2
+        },
+        {
+          "id": 97265,
+          "kind": "t",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 5561,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.6086,
+          "y": 0.6186,
+          "entityID": 11596,
+          "entityType": "npc"
+        },
+        {
+          "id": 1481,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.522,
+          "y": 0.534,
+          "entityID": 4498
+        },
+        {
+          "id": 5561,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.5427000000000001,
+          "y": 0.6324000000000001,
+          "action": "interact",
+          "entityID": 4701,
+          "entityType": "npc",
+          "objectiveKey": "npc:4700",
+          "quantityUnknown": true
+        },
+        {
+          "id": 5561,
+          "kind": "q",
+          "mapID": 1443,
+          "action": "interact",
+          "entityID": 4700,
+          "entityType": "npc",
+          "objectiveKey": "npc:4700",
+          "unknownLocation": true
+        },
+        {
+          "id": 5561,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.6086,
+          "y": 0.6186,
+          "entityID": 11596,
+          "entityType": "npc"
+        },
+        {
+          "id": 1365,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.5619,
+          "y": 0.5957,
+          "entityID": 5395,
+          "entityType": "npc"
+        },
+        {
+          "id": 1482,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.522,
+          "y": 0.534,
+          "entityID": 4498,
+          "entityType": "npc"
+        },
+        {
+          "id": 5821,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.6654000000000001,
+          "y": 0.3751,
+          "entityID": 11625,
+          "entityType": "npc"
+        },
+        {
+          "id": 5821,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.6717,
+          "y": 0.5661999999999999,
+          "action": "escort"
+        },
+        {
+          "id": 5821,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.6086,
+          "y": 0.6186,
+          "entityID": 11596,
+          "entityType": "npc"
+        },
+        {
+          "id": 1365,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.73,
+          "y": 0.456,
+          "action": "loot",
+          "entityID": 5600,
+          "entityType": "npc",
+          "objectiveKey": "item:6066",
+          "quantity": 1
+        },
+        {
+          "id": 5386,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.5540999999999999,
+          "y": 0.5581,
+          "entityID": 11259,
+          "entityType": "npc"
+        },
+        {
+          "id": 1365,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.5619,
+          "y": 0.5957,
+          "entityID": 5395,
+          "entityType": "npc"
+        },
+        {
+          "id": 1366,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.562,
+          "y": 0.594,
+          "entityID": 5395
+        },
+        {
+          "id": 1366,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.6779999999999999,
+          "y": 0.46,
+          "action": "collect",
+          "entityID": 12977,
+          "objectiveKey": "item:6067",
+          "quantity": 15
+        },
+        {
+          "id": 1366,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.562,
+          "y": 0.594,
+          "entityID": 5395
+        },
+        {
+          "id": 6142,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.254,
+          "y": 0.478,
+          "action": "gather",
+          "entityID": 177784,
+          "entityType": "object",
+          "objectiveKey": "item:15924",
+          "quantity": 10
+        },
+        {
+          "id": 6142,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.22640000000000002,
+          "y": 0.7197,
+          "entityID": 12031,
+          "entityType": "npc"
+        },
+        {
+          "id": 6143,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.2332,
+          "y": 0.7287,
+          "entityID": 12340,
+          "entityType": "npc"
+        },
+        {
+          "id": 6143,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.32530000000000003,
+          "y": 0.22469999999999998,
+          "action": "kill",
+          "entityID": 4714,
+          "entityType": "npc",
+          "objectiveKey": "npc:4714",
+          "quantity": 7
+        },
+        {
+          "id": 1482,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.3297,
+          "y": 0.2212,
+          "action": "loot",
+          "entityID": 4718,
+          "entityType": "npc",
+          "objectiveKey": "item:6442",
+          "quantity": 1
+        },
+        {
+          "id": 1482,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.522,
+          "y": 0.534,
+          "entityID": 4498,
+          "entityType": "npc"
+        },
+        {
+          "id": 6161,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.3607,
+          "y": 0.3041,
+          "entityID": 177787,
+          "entityType": "object"
+        },
+        {
+          "id": 6161,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.3471,
+          "y": 0.3345,
+          "action": "loot",
+          "entityID": 11562,
+          "entityType": "npc",
+          "objectiveKey": "item:15878",
+          "quantity": 1
+        },
+        {
+          "id": 6027,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.38799999999999996,
+          "y": 0.272,
+          "entityID": 11863,
+          "entityType": "npc"
+        },
+        {
+          "id": 6143,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.3625,
+          "y": 0.2314,
+          "action": "kill",
+          "entityID": 4711,
+          "entityType": "npc",
+          "objectiveKey": "npc:4711",
+          "quantity": 7
+        },
+        {
+          "id": 6161,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.3605,
+          "y": 0.24780000000000002,
+          "action": "loot",
+          "entityID": 4712,
+          "entityType": "npc",
+          "objectiveKey": "item:15881",
+          "quantity": 1
+        },
+        {
+          "id": 6143,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.3605,
+          "y": 0.24780000000000002,
+          "action": "kill",
+          "entityID": 4712,
+          "entityType": "npc",
+          "objectiveKey": "npc:4712",
+          "quantity": 5
+        },
+        {
+          "id": 6161,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.3,
+          "y": 0.08710000000000001,
+          "entityID": 177786,
+          "entityType": "object"
+        },
+        {
+          "id": 5381,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.2582,
+          "y": 0.6820999999999999,
+          "entityID": 11624,
+          "entityType": "npc"
+        },
+        {
+          "id": 6143,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.2332,
+          "y": 0.7287,
+          "entityID": 12340,
+          "entityType": "npc"
+        },
+        {
+          "id": 5386,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.22399999999999998,
+          "y": 0.73,
+          "action": "loot",
+          "entityID": 11317,
+          "entityType": "npc",
+          "objectiveKey": "item:13546",
+          "quantity": 2
+        },
+        {
+          "id": 5386,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.5540999999999999,
+          "y": 0.5581,
+          "entityID": 11259,
+          "entityType": "npc"
+        },
+        {
+          "id": 5943,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.45399999999999996,
+          "y": 0.7529,
+          "entityID": 11626,
+          "entityType": "npc"
+        },
+        {
+          "id": 5943,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.5569,
+          "y": 0.6779000000000001,
+          "action": "escort"
+        },
+        {
+          "id": 5943,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.6086,
+          "y": 0.6186,
+          "entityID": 11596,
+          "entityType": "npc"
+        },
+        {
+          "id": 5381,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.55,
+          "y": 0.266,
+          "action": "loot",
+          "entityID": 11876,
+          "entityType": "npc",
+          "objectiveKey": "item:13542",
+          "quantity": 1
+        },
+        {
+          "id": 6027,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.2824,
+          "y": 0.0667,
+          "action": "loot",
+          "entityID": 12369,
+          "entityType": "npc",
+          "objectiveKey": "item:15803",
+          "quantity": 1
+        },
+        {
+          "id": 6027,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.38799999999999996,
+          "y": 0.272,
+          "entityID": 11863,
+          "entityType": "npc"
+        },
+        {
+          "id": 5381,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.2582,
+          "y": 0.6820999999999999,
+          "entityID": 11624,
+          "entityType": "npc"
+        },
+        {
+          "id": 5581,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.2582,
+          "y": 0.6820999999999999,
+          "entityID": 11624,
+          "entityType": "npc"
+        },
+        {
+          "id": 5581,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.496,
+          "y": 0.76,
+          "action": "event",
+          "entityID": 11937,
+          "entityType": "npc",
+          "objectiveKey": "npc:11937",
+          "quantity": 6
+        },
+        {
+          "id": 5581,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.2582,
+          "y": 0.6820999999999999,
+          "entityID": 11624,
+          "entityType": "npc"
+        },
+        {
+          "id": 1361,
+          "kind": "q",
+          "mapID": 1413,
+          "x": 0.45399999999999996,
+          "y": 0.284,
+          "entityID": 3389
+        },
+        {
+          "id": 1361,
+          "kind": "t",
+          "mapID": 1413,
+          "x": 0.45399999999999996,
+          "y": 0.284,
+          "entityID": 3389
+        },
+        {
+          "id": 1362,
+          "kind": "a",
+          "mapID": 1413,
+          "x": 0.45399999999999996,
+          "y": 0.284,
+          "entityID": 3389
+        },
+        {
+          "id": 1362,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.562,
+          "y": 0.594,
+          "entityID": 5395
+        },
+        {
+          "id": 1362,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.562,
+          "y": 0.594,
+          "entityID": 5395
+        },
+        {
+          "id": 5763,
+          "kind": "q",
+          "mapID": 1434,
+          "x": 0.35600000000000004,
+          "y": 0.10800000000000001,
+          "entityID": 715
+        },
+        {
+          "id": 5763,
+          "kind": "t",
+          "mapID": 1434,
+          "x": 0.35600000000000004,
+          "y": 0.10800000000000001,
+          "entityID": 715
+        },
+        {
+          "id": 92818,
+          "kind": "a",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 92818,
+          "kind": "q",
+          "mapID": 1443,
+          "entityID": 3855,
+          "entityType": "item",
+          "objectiveKey": "item:3855",
+          "quantity": 2,
+          "unknownLocation": true
+        },
+        {
+          "id": 92818,
+          "kind": "t",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 79229,
+          "kind": "a",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 79235,
+          "kind": "a",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 79236,
+          "kind": "a",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 79242,
+          "kind": "a",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 92743,
+          "kind": "a",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 79229,
+          "kind": "q",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 79229,
+          "kind": "t",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 79235,
+          "kind": "q",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 79235,
+          "kind": "t",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 79236,
+          "kind": "q",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 79236,
+          "kind": "t",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 79242,
+          "kind": "q",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 79242,
+          "kind": "t",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 92743,
+          "kind": "q",
+          "mapID": 1443,
+          "entityID": 254392,
+          "entityType": "item",
+          "objectiveKey": "item:254392",
+          "quantity": 1,
+          "unknownLocation": true
+        },
+        {
+          "id": 92743,
+          "kind": "t",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 93225,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.562,
+          "y": 0.596,
+          "entityID": 5412
+        },
+        {
+          "id": 1488,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.526,
+          "y": 0.542,
+          "entityID": 5641
+        },
+        {
+          "id": 6132,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.3395,
+          "y": 0.535,
+          "entityID": 12277,
+          "entityType": "npc"
+        },
+        {
+          "id": 6132,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.40149999999999997,
+          "y": 0.6158,
+          "action": "escort"
+        },
+        {
+          "id": 6134,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.4783,
+          "y": 0.6183,
+          "entityID": 6019,
+          "entityType": "npc"
+        },
+        {
+          "id": 6132,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.4783,
+          "y": 0.6183,
+          "entityID": 6019,
+          "entityType": "npc"
+        },
+        {
+          "id": 1488,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.59,
+          "y": 0.78,
+          "action": "kill",
+          "entityID": 5760,
+          "objectiveKey": "npc:5760",
+          "quantity": 1
+        },
+        {
+          "id": 1488,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.5579999999999999,
+          "y": 0.7759999999999999,
+          "action": "kill",
+          "entityID": 5771,
+          "objectiveKey": "npc:5771",
+          "quantity": 1
+        },
+        {
+          "id": 6134,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.6418,
+          "y": 0.9163,
+          "action": "loot",
+          "entityID": 11560,
+          "entityType": "npc",
+          "objectiveKey": "item:15849",
+          "quantity": 8
+        },
+        {
+          "id": 93225,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.7,
+          "y": 0.7240000000000001,
+          "action": "collect",
+          "entityID": 4642,
+          "objectiveKey": "item:254432",
+          "quantity": 5
+        },
+        {
+          "id": 5501,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.6233,
+          "y": 0.3899,
+          "entityID": 11438,
+          "entityType": "npc"
+        },
+        {
+          "id": 93225,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.562,
+          "y": 0.596,
+          "entityID": 5412
+        },
+        {
+          "id": 6134,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.4783,
+          "y": 0.6183,
+          "entityID": 6019,
+          "entityType": "npc"
+        },
+        {
+          "id": 1488,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.526,
+          "y": 0.542,
+          "entityID": 5641
+        },
+        {
+          "id": 5501,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.5389,
+          "y": 0.5811999999999999,
+          "action": "gather",
+          "entityID": 176752,
+          "entityType": "object",
+          "objectiveKey": "item:13703",
+          "quantity": 10
+        },
+        {
+          "id": 5501,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.6233,
+          "y": 0.3899,
+          "entityID": 11438,
+          "entityType": "npc"
+        },
+        {
+          "id": 1367,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.562,
+          "y": 0.596,
+          "entityID": 5412,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1367,
+          "kind": "q",
+          "mapID": 1443,
+          "unknownLocation": true,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1367,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1368,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.562,
+          "y": 0.596,
+          "entityID": 5412,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1368,
+          "kind": "q",
+          "mapID": 1443,
+          "unknownLocation": true,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1368,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1369,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1369,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.4083,
+          "y": 0.9475,
+          "action": "gather",
+          "entityID": 22246,
+          "entityType": "object",
+          "objectiveKey": "item:6083",
+          "quantity": 3,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1369,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1370,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1370,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.6653,
+          "y": 0.8054000000000001,
+          "action": "gather",
+          "entityID": 22245,
+          "entityType": "object",
+          "objectiveKey": "item:6069",
+          "quantity": 6,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1370,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1371,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1371,
+          "kind": "q",
+          "mapID": 1443,
+          "entityID": 4392,
+          "entityType": "item",
+          "objectiveKey": "item:4392",
+          "quantity": 1,
+          "unknownLocation": true,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1371,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1373,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1373,
+          "kind": "q",
+          "mapID": 1435,
+          "x": 0.6507,
+          "y": 0.21969999999999998,
+          "action": "loot",
+          "entityID": 5622,
+          "entityType": "npc",
+          "objectiveKey": "item:6190",
+          "quantity": 1,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1373,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1374,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1374,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.66,
+          "y": 0.804,
+          "action": "collect",
+          "entityID": 5601,
+          "objectiveKey": "item:6072",
+          "quantity": 1,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1374,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1375,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1375,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.402,
+          "y": 0.9540000000000001,
+          "action": "collect",
+          "entityID": 5602,
+          "objectiveKey": "item:6073",
+          "quantity": 1,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1375,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1381,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1381,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.358,
+          "y": 0.588,
+          "action": "collect",
+          "entityID": 4654,
+          "objectiveKey": "item:6074",
+          "quantity": 1,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1381,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.298,
+          "y": 0.528,
+          "action": "collect",
+          "entityID": 5402,
+          "objectiveKey": "item:6077",
+          "quantity": 1,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1381,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398,
+          "planNeedsReview": true
+        }
+      ],
+      "flow": {
+        "uncertainTravelLegs": 82,
+        "blockedTravelLegs": 0,
+        "externalPrerequisites": 2,
+        "logOverflow": 0,
+        "peakLog": 6,
+        "unknownRewards": 0,
+        "finishXP": 33220,
+        "levelDeficitXP": 339905,
+        "progressionNeedsReview": true,
+        "valid": true,
+        "logCapacityKnown": false,
+        "combatXPUnknown": 31,
+        "startXP": 0,
+        "finishLog": 0,
+        "distance": 492810.8868848938,
+        "finishLevel": 34,
+        "questXP": 99615,
+        "rewardXPBeforeWork": 2306545,
+        "minimumKills": 47,
+        "requiredItemsUnknown": 22,
+        "difficultyPressure": 71,
+        "missingLocations": 25,
+        "missingLevelCurve": 0,
+        "initialLog": 0
+      }
+    },
+    {
+      "faction": "Horde",
+      "race": 2,
+      "key": "level-zone:kalimdor/desolace:levels:41-50",
+      "zone": "Desolace",
+      "start_level": 41,
+      "flow_start_level": 30,
+      "compile_ms": 529.87,
+      "stops": [
+        {
+          "id": 96222,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.434,
+          "y": 0.7879999999999999,
+          "entityID": 253066
+        },
+        {
+          "id": 96222,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.358,
+          "y": 0.588,
+          "action": "collect",
+          "entityID": 4654,
+          "objectiveKey": "item:6074",
+          "quantity": 1
+        },
+        {
+          "id": 96222,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.298,
+          "y": 0.528,
+          "action": "collect",
+          "entityID": 5402,
+          "objectiveKey": "item:6077",
+          "quantity": 1
+        },
+        {
+          "id": 96222,
+          "kind": "t",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 94873,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.562,
+          "y": 0.596,
+          "entityID": 5412
+        },
+        {
+          "id": 94873,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.35600000000000004,
+          "y": 0.92,
+          "entityID": 253140
+        },
+        {
+          "id": 94873,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.35600000000000004,
+          "y": 0.92,
+          "entityID": 253140
+        },
+        {
+          "id": 93227,
+          "kind": "a",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 94872,
+          "kind": "a",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 93227,
+          "kind": "q",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 93227,
+          "kind": "t",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 94872,
+          "kind": "q",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 94872,
+          "kind": "t",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 1367,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.562,
+          "y": 0.596,
+          "entityID": 5412,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1367,
+          "kind": "q",
+          "mapID": 1443,
+          "unknownLocation": true,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1367,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1368,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.562,
+          "y": 0.596,
+          "entityID": 5412,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1368,
+          "kind": "q",
+          "mapID": 1443,
+          "unknownLocation": true,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1368,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1369,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1369,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.4083,
+          "y": 0.9475,
+          "action": "gather",
+          "entityID": 22246,
+          "entityType": "object",
+          "objectiveKey": "item:6083",
+          "quantity": 3,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1369,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1370,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1370,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.6653,
+          "y": 0.8054000000000001,
+          "action": "gather",
+          "entityID": 22245,
+          "entityType": "object",
+          "objectiveKey": "item:6069",
+          "quantity": 6,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1370,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1371,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1371,
+          "kind": "q",
+          "mapID": 1443,
+          "entityID": 4392,
+          "entityType": "item",
+          "objectiveKey": "item:4392",
+          "quantity": 1,
+          "unknownLocation": true,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1371,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1373,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1373,
+          "kind": "q",
+          "mapID": 1435,
+          "x": 0.6507,
+          "y": 0.21969999999999998,
+          "action": "loot",
+          "entityID": 5622,
+          "entityType": "npc",
+          "objectiveKey": "item:6190",
+          "quantity": 1,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1373,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1374,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1374,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.66,
+          "y": 0.804,
+          "action": "collect",
+          "entityID": 5601,
+          "objectiveKey": "item:6072",
+          "quantity": 1,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1374,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1375,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1375,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.402,
+          "y": 0.9540000000000001,
+          "action": "collect",
+          "entityID": 5602,
+          "objectiveKey": "item:6073",
+          "quantity": 1,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1375,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1380,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1380,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.358,
+          "y": 0.588,
+          "action": "collect",
+          "entityID": 4654,
+          "objectiveKey": "item:6074",
+          "quantity": 1,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1380,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.298,
+          "y": 0.528,
+          "action": "collect",
+          "entityID": 5402,
+          "objectiveKey": "item:6077",
+          "quantity": 1,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1380,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1381,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1381,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.358,
+          "y": 0.588,
+          "action": "collect",
+          "entityID": 4654,
+          "objectiveKey": "item:6074",
+          "quantity": 1,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1381,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.298,
+          "y": 0.528,
+          "action": "collect",
+          "entityID": 5402,
+          "objectiveKey": "item:6077",
+          "quantity": 1,
+          "planNeedsReview": true
+        },
+        {
+          "id": 1381,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398,
+          "planNeedsReview": true
+        }
+      ],
+      "flow": {
+        "uncertainTravelLegs": 23,
+        "blockedTravelLegs": 0,
+        "externalPrerequisites": 2,
+        "logOverflow": 0,
+        "peakLog": 2,
+        "unknownRewards": 0,
+        "finishXP": 29990,
+        "levelDeficitXP": 0,
+        "progressionNeedsReview": false,
+        "valid": true,
+        "logCapacityKnown": false,
+        "combatXPUnknown": 9,
+        "startXP": 0,
+        "finishLog": 0,
+        "distance": 213751.76161314698,
+        "finishLevel": 30,
+        "questXP": 29990,
+        "rewardXPBeforeWork": 193920,
+        "minimumKills": 0,
+        "requiredItemsUnknown": 12,
+        "difficultyPressure": 106,
+        "missingLocations": 10,
+        "missingLevelCurve": 0,
+        "initialLog": 0
+      }
+    },
+    {
+      "faction": "Horde",
+      "race": 2,
+      "key": "level-zone:kalimdor/desolace:levels:51-60",
+      "zone": "Desolace",
+      "start_level": 51,
+      "flow_start_level": 1,
+      "compile_ms": 680.13,
+      "stops": [
+        {
+          "id": 92812,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.35600000000000004,
+          "y": 0.92,
+          "entityID": 253140
+        },
+        {
+          "id": 92812,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.36,
+          "y": 0.9059999999999999,
+          "action": "collect",
+          "entityID": 4652,
+          "objectiveKey": "item:254432",
+          "quantity": 5
+        },
+        {
+          "id": 92812,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.35600000000000004,
+          "y": 0.92,
+          "entityID": 253140
+        },
+        {
+          "id": 6566,
+          "kind": "a",
+          "mapID": 1454,
+          "x": 0.3173,
+          "y": 0.3782,
+          "entityID": 4949,
+          "entityType": "npc",
+          "planNeedsReview": true
+        },
+        {
+          "id": 6566,
+          "kind": "q",
+          "mapID": 1454,
+          "x": 0.3178,
+          "y": 0.37810000000000005,
+          "action": "event",
+          "planNeedsReview": true
+        },
+        {
+          "id": 6566,
+          "kind": "t",
+          "mapID": 1454,
+          "x": 0.3173,
+          "y": 0.3782,
+          "entityID": 4949,
+          "entityType": "npc",
+          "planNeedsReview": true
+        },
+        {
+          "id": 6567,
+          "kind": "a",
+          "mapID": 1454,
+          "x": 0.3173,
+          "y": 0.3782,
+          "entityID": 4949,
+          "entityType": "npc",
+          "planNeedsReview": true
+        },
+        {
+          "id": 6567,
+          "kind": "q",
+          "mapID": 1442,
+          "x": 0.29719999999999996,
+          "y": 0.7798999999999999,
+          "entityID": 10182,
+          "entityType": "npc",
+          "planNeedsReview": true
+        },
+        {
+          "id": 6567,
+          "kind": "t",
+          "mapID": 1442,
+          "x": 0.29719999999999996,
+          "y": 0.7798999999999999,
+          "entityID": 10182,
+          "entityType": "npc",
+          "planNeedsReview": true
+        },
+        {
+          "id": 6568,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.54,
+          "y": 0.02,
+          "entityID": 10182,
+          "entityType": "npc",
+          "planNeedsReview": true
+        },
+        {
+          "id": 6568,
+          "kind": "q",
+          "mapID": 1443,
+          "entityID": 16785,
+          "entityType": "item",
+          "objectiveKey": "item:16785",
+          "quantity": 1,
+          "unknownLocation": true,
+          "planNeedsReview": true
+        },
+        {
+          "id": 6568,
+          "kind": "t",
+          "mapID": 1422,
+          "x": 0.5079,
+          "y": 0.7785,
+          "entityID": 11872,
+          "entityType": "npc",
+          "planNeedsReview": true
+        }
+      ],
+      "flow": {
+        "uncertainTravelLegs": 4,
+        "blockedTravelLegs": 0,
+        "externalPrerequisites": 1,
+        "logOverflow": 0,
+        "peakLog": 1,
+        "unknownRewards": 0,
+        "finishXP": 8910,
+        "levelDeficitXP": 3108900,
+        "progressionNeedsReview": true,
+        "valid": true,
+        "logCapacityKnown": false,
+        "combatXPUnknown": 1,
+        "startXP": 0,
+        "finishLog": 0,
+        "distance": 45710.24587589494,
+        "finishLevel": 55,
+        "questXP": 8910,
+        "rewardXPBeforeWork": 4620,
+        "minimumKills": 0,
+        "requiredItemsUnknown": 2,
+        "difficultyPressure": 62,
+        "missingLocations": 1,
+        "missingLevelCurve": 0,
+        "initialLog": 0
+      }
+    },
+    {
+      "faction": "Alliance",
+      "race": 1,
+      "key": "level-zone:kalimdor/desolace:levels:31-40",
+      "zone": "Desolace",
+      "start_level": 31,
+      "flow_start_level": 30,
+      "compile_ms": 4327.12,
+      "stops": [
+        {
+          "id": 1387,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.6659999999999999,
+          "y": 0.10800000000000001,
+          "entityID": 5752
+        },
+        {
+          "id": 1437,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.664,
+          "y": 0.11800000000000001,
+          "entityID": 5642
+        },
+        {
+          "id": 1437,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.5660000000000001,
+          "y": 0.179,
+          "entityID": 50961
+        },
+        {
+          "id": 1437,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.5660000000000001,
+          "y": 0.179,
+          "entityID": 50961
+        },
+        {
+          "id": 1465,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.5660000000000001,
+          "y": 0.179,
+          "entityID": 50961
+        },
+        {
+          "id": 1465,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.664,
+          "y": 0.11800000000000001,
+          "entityID": 5642
+        },
+        {
+          "id": 1465,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.664,
+          "y": 0.11800000000000001,
+          "entityID": 5642
+        },
+        {
+          "id": 1438,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.664,
+          "y": 0.11800000000000001,
+          "entityID": 5642
+        },
+        {
+          "id": 1438,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.5479999999999999,
+          "y": 0.262,
+          "entityID": 5644
+        },
+        {
+          "id": 1438,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.5479999999999999,
+          "y": 0.262,
+          "entityID": 5644
+        },
+        {
+          "id": 1439,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.5479999999999999,
+          "y": 0.262,
+          "entityID": 5644
+        },
+        {
+          "id": 1439,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.53,
+          "y": 0.29,
+          "action": "collect",
+          "entityID": 5643,
+          "objectiveKey": "item:6767",
+          "quantity": 1
+        },
+        {
+          "id": 1439,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.5479999999999999,
+          "y": 0.262,
+          "entityID": 5644
+        },
+        {
+          "id": 1440,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.5479999999999999,
+          "y": 0.262,
+          "entityID": 5644
+        },
+        {
+          "id": 1440,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.5827,
+          "y": 0.3091,
+          "action": "escort"
+        },
+        {
+          "id": 1387,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.6859999999999999,
+          "y": 0.41200000000000003,
+          "action": "collect",
+          "entityID": 4633,
+          "objectiveKey": "item:6067",
+          "quantity": 15
+        },
+        {
+          "id": 1440,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.664,
+          "y": 0.11800000000000001,
+          "entityID": 5642
+        },
+        {
+          "id": 1387,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.6659999999999999,
+          "y": 0.10800000000000001,
+          "entityID": 5752
+        },
+        {
+          "id": 1382,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.6659999999999999,
+          "y": 0.11,
+          "entityID": 5396
+        },
+        {
+          "id": 1385,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.6659999999999999,
+          "y": 0.11,
+          "entityID": 5396
+        },
+        {
+          "id": 1382,
+          "kind": "q",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 1385,
+          "kind": "q",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 5821,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.6654000000000001,
+          "y": 0.3751,
+          "entityID": 11625,
+          "entityType": "npc"
+        },
+        {
+          "id": 5821,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.6717,
+          "y": 0.5661999999999999,
+          "action": "escort"
+        },
+        {
+          "id": 5561,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.6086,
+          "y": 0.6186,
+          "entityID": 11596,
+          "entityType": "npc"
+        },
+        {
+          "id": 5821,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.6086,
+          "y": 0.6186,
+          "entityID": 11596,
+          "entityType": "npc"
+        },
+        {
+          "id": 5561,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.5427000000000001,
+          "y": 0.6324000000000001,
+          "action": "interact",
+          "entityID": 4701,
+          "entityType": "npc",
+          "objectiveKey": "npc:4700",
+          "quantityUnknown": true
+        },
+        {
+          "id": 5561,
+          "kind": "q",
+          "mapID": 1443,
+          "action": "interact",
+          "entityID": 4700,
+          "entityType": "npc",
+          "objectiveKey": "npc:4700",
+          "unknownLocation": true
+        },
+        {
+          "id": 5561,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.6086,
+          "y": 0.6186,
+          "entityID": 11596,
+          "entityType": "npc"
+        },
+        {
+          "id": 1385,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398
+        },
+        {
+          "id": 1386,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398
+        },
+        {
+          "id": 1386,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.6920000000000001,
+          "y": 0.42200000000000004,
+          "action": "kill",
+          "entityID": 4632,
+          "objectiveKey": "npc:4632",
+          "quantity": 12
+        },
+        {
+          "id": 1386,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.6859999999999999,
+          "y": 0.41200000000000003,
+          "action": "kill",
+          "entityID": 4633,
+          "objectiveKey": "npc:4633",
+          "quantity": 12
+        },
+        {
+          "id": 1386,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.728,
+          "y": 0.424,
+          "action": "kill",
+          "entityID": 4634,
+          "objectiveKey": "npc:4634",
+          "quantity": 6
+        },
+        {
+          "id": 1386,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398
+        },
+        {
+          "id": 1369,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398
+        },
+        {
+          "id": 1382,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397
+        },
+        {
+          "id": 1384,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397
+        },
+        {
+          "id": 1369,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.4083,
+          "y": 0.9475,
+          "action": "gather",
+          "entityID": 22246,
+          "entityType": "object",
+          "objectiveKey": "item:6083",
+          "quantity": 3
+        },
+        {
+          "id": 1369,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398
+        },
+        {
+          "id": 1384,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.6779999999999999,
+          "y": 0.46,
+          "action": "collect",
+          "entityID": 12977,
+          "objectiveKey": "item:6079",
+          "quantity": 10
+        },
+        {
+          "id": 5741,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.38799999999999996,
+          "y": 0.272,
+          "entityID": 11863
+        },
+        {
+          "id": 5741,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.552,
+          "y": 0.3,
+          "action": "collect",
+          "entityID": 13019,
+          "objectiveKey": "item:15750",
+          "quantity": 1
+        },
+        {
+          "id": 5741,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.38799999999999996,
+          "y": 0.272,
+          "entityID": 11863
+        },
+        {
+          "id": 1384,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397
+        },
+        {
+          "id": 1370,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397
+        },
+        {
+          "id": 1370,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.6653,
+          "y": 0.8054000000000001,
+          "action": "gather",
+          "entityID": 22245,
+          "entityType": "object",
+          "objectiveKey": "item:6069",
+          "quantity": 6
+        },
+        {
+          "id": 1371,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398
+        },
+        {
+          "id": 1371,
+          "kind": "q",
+          "mapID": 1443,
+          "entityID": 4392,
+          "entityType": "item",
+          "objectiveKey": "item:4392",
+          "quantity": 1,
+          "unknownLocation": true
+        },
+        {
+          "id": 1371,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398
+        },
+        {
+          "id": 1375,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398
+        },
+        {
+          "id": 1370,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397
+        },
+        {
+          "id": 1373,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397
+        },
+        {
+          "id": 6161,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.3607,
+          "y": 0.3041,
+          "entityID": 177787,
+          "entityType": "object"
+        },
+        {
+          "id": 6161,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.3471,
+          "y": 0.3345,
+          "action": "loot",
+          "entityID": 11562,
+          "entityType": "npc",
+          "objectiveKey": "item:15878",
+          "quantity": 1
+        },
+        {
+          "id": 6161,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.3605,
+          "y": 0.24780000000000002,
+          "action": "loot",
+          "entityID": 4712,
+          "entityType": "npc",
+          "objectiveKey": "item:15881",
+          "quantity": 1
+        },
+        {
+          "id": 6161,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.3,
+          "y": 0.08710000000000001,
+          "entityID": 177786,
+          "entityType": "object"
+        },
+        {
+          "id": 1375,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.402,
+          "y": 0.9540000000000001,
+          "action": "collect",
+          "entityID": 5602,
+          "objectiveKey": "item:6073",
+          "quantity": 1
+        },
+        {
+          "id": 1375,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398
+        },
+        {
+          "id": 5943,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.45399999999999996,
+          "y": 0.7529,
+          "entityID": 11626,
+          "entityType": "npc"
+        },
+        {
+          "id": 5943,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.5569,
+          "y": 0.6779000000000001,
+          "action": "escort"
+        },
+        {
+          "id": 5943,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.6086,
+          "y": 0.6186,
+          "entityID": 11596,
+          "entityType": "npc"
+        },
+        {
+          "id": 6132,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.3395,
+          "y": 0.535,
+          "entityID": 12277,
+          "entityType": "npc"
+        },
+        {
+          "id": 6132,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.40149999999999997,
+          "y": 0.6158,
+          "action": "escort"
+        },
+        {
+          "id": 6134,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.4783,
+          "y": 0.6183,
+          "entityID": 6019,
+          "entityType": "npc"
+        },
+        {
+          "id": 6132,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.4783,
+          "y": 0.6183,
+          "entityID": 6019,
+          "entityType": "npc"
+        },
+        {
+          "id": 6027,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.38799999999999996,
+          "y": 0.272,
+          "entityID": 11863,
+          "entityType": "npc"
+        },
+        {
+          "id": 6027,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.2824,
+          "y": 0.0667,
+          "action": "loot",
+          "entityID": 12369,
+          "entityType": "npc",
+          "objectiveKey": "item:15803",
+          "quantity": 1
+        },
+        {
+          "id": 6027,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.38799999999999996,
+          "y": 0.272,
+          "entityID": 11863,
+          "entityType": "npc"
+        },
+        {
+          "id": 92818,
+          "kind": "a",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 97284,
+          "kind": "a",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 97284,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.552,
+          "y": 0.3,
+          "action": "kill",
+          "entityID": 4663,
+          "objectiveKey": "npc:4663",
+          "quantity": 4
+        },
+        {
+          "id": 97284,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.56,
+          "y": 0.29600000000000004,
+          "action": "kill",
+          "entityID": 4664,
+          "objectiveKey": "npc:4664",
+          "quantity": 4
+        },
+        {
+          "id": 97284,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.55,
+          "y": 0.262,
+          "action": "kill",
+          "entityID": 4665,
+          "objectiveKey": "npc:4665",
+          "quantity": 4
+        },
+        {
+          "id": 97284,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.552,
+          "y": 0.302,
+          "action": "kill",
+          "entityID": 4666,
+          "objectiveKey": "npc:4666",
+          "quantity": 4
+        },
+        {
+          "id": 97284,
+          "kind": "t",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 5501,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.6233,
+          "y": 0.3899,
+          "entityID": 11438,
+          "entityType": "npc"
+        },
+        {
+          "id": 5501,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.5389,
+          "y": 0.5811999999999999,
+          "action": "gather",
+          "entityID": 176752,
+          "entityType": "object",
+          "objectiveKey": "item:13703",
+          "quantity": 10
+        },
+        {
+          "id": 5501,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.6233,
+          "y": 0.3899,
+          "entityID": 11438,
+          "entityType": "npc"
+        },
+        {
+          "id": 261,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.664,
+          "y": 0.078,
+          "entityID": 1182,
+          "entityType": "npc"
+        },
+        {
+          "id": 92818,
+          "kind": "q",
+          "mapID": 1443,
+          "entityID": 3855,
+          "entityType": "item",
+          "objectiveKey": "item:3855",
+          "quantity": 2,
+          "unknownLocation": true
+        },
+        {
+          "id": 92818,
+          "kind": "t",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 6134,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.6418,
+          "y": 0.9163,
+          "action": "loot",
+          "entityID": 11560,
+          "entityType": "npc",
+          "objectiveKey": "item:15849",
+          "quantity": 8
+        },
+        {
+          "id": 261,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.6518999999999999,
+          "y": 0.8653,
+          "action": "kill",
+          "entityID": 11561,
+          "entityType": "npc",
+          "objectiveKey": "npc:11561",
+          "quantity": 30
+        },
+        {
+          "id": 6134,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.4783,
+          "y": 0.6183,
+          "entityID": 6019,
+          "entityType": "npc"
+        },
+        {
+          "id": 261,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.664,
+          "y": 0.078,
+          "entityID": 1182,
+          "entityType": "npc"
+        },
+        {
+          "id": 1052,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.664,
+          "y": 0.078,
+          "entityID": 1182
+        },
+        {
+          "id": 1453,
+          "kind": "a",
+          "mapID": 1455,
+          "x": 0.696,
+          "y": 0.21,
+          "entityID": 5637
+        },
+        {
+          "id": 1453,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.662,
+          "y": 0.096,
+          "entityID": 5638
+        },
+        {
+          "id": 1453,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.662,
+          "y": 0.096,
+          "entityID": 5638
+        },
+        {
+          "id": 1458,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.662,
+          "y": 0.096,
+          "entityID": 5638
+        },
+        {
+          "id": 1458,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.726,
+          "y": 0.168,
+          "action": "collect",
+          "entityID": 4674,
+          "objectiveKey": "item:6247",
+          "quantity": 10
+        },
+        {
+          "id": 1458,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.726,
+          "y": 0.168,
+          "action": "loot",
+          "entityID": 4674,
+          "entityType": "npc",
+          "objectiveKey": "item:6246",
+          "quantity": 10
+        },
+        {
+          "id": 1458,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.662,
+          "y": 0.096,
+          "entityID": 5638
+        },
+        {
+          "id": 1459,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.662,
+          "y": 0.094,
+          "entityID": 5638,
+          "entityType": "npc"
+        },
+        {
+          "id": 1459,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.6346,
+          "y": 0.17850000000000002,
+          "action": "loot",
+          "entityID": 4696,
+          "entityType": "npc",
+          "objectiveKey": "item:6248",
+          "quantity": 7
+        },
+        {
+          "id": 1459,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.44920000000000004,
+          "y": 0.19649999999999998,
+          "action": "loot",
+          "entityID": 4700,
+          "entityType": "npc",
+          "objectiveKey": "item:6249",
+          "quantity": 3
+        },
+        {
+          "id": 1459,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.662,
+          "y": 0.094,
+          "entityID": 5638,
+          "entityType": "npc"
+        },
+        {
+          "id": 1454,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.662,
+          "y": 0.094,
+          "entityID": 5638,
+          "entityType": "npc"
+        },
+        {
+          "id": 1466,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.662,
+          "y": 0.094,
+          "entityID": 5638,
+          "entityType": "npc"
+        },
+        {
+          "id": 1454,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.3611,
+          "y": 0.3045,
+          "entityID": 35251,
+          "entityType": "object"
+        },
+        {
+          "id": 1454,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.3611,
+          "y": 0.3045,
+          "entityID": 35251,
+          "entityType": "object"
+        },
+        {
+          "id": 1455,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.3611,
+          "y": 0.3045,
+          "entityID": 35251,
+          "entityType": "object"
+        },
+        {
+          "id": 1455,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.662,
+          "y": 0.09630000000000001,
+          "entityID": 5638,
+          "entityType": "npc"
+        },
+        {
+          "id": 1455,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.662,
+          "y": 0.09630000000000001,
+          "entityID": 5638,
+          "entityType": "npc"
+        },
+        {
+          "id": 1456,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.662,
+          "y": 0.094,
+          "entityID": 5638,
+          "entityType": "npc"
+        },
+        {
+          "id": 1456,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.3436,
+          "y": 0.08070000000000001,
+          "action": "loot",
+          "entityID": 4719,
+          "entityType": "npc",
+          "objectiveKey": "item:6245",
+          "quantity": 1
+        },
+        {
+          "id": 1456,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.662,
+          "y": 0.094,
+          "entityID": 5638,
+          "entityType": "npc"
+        },
+        {
+          "id": 1457,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.662,
+          "y": 0.094,
+          "entityID": 5638,
+          "entityType": "npc"
+        },
+        {
+          "id": 1466,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.5291,
+          "y": 0.6814,
+          "action": "loot",
+          "entityID": 4678,
+          "entityType": "npc",
+          "objectiveKey": "item:6250",
+          "quantity": 10
+        },
+        {
+          "id": 1466,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.5059,
+          "y": 0.7170000000000001,
+          "action": "loot",
+          "entityID": 4679,
+          "entityType": "npc",
+          "objectiveKey": "item:6251",
+          "quantity": 10
+        },
+        {
+          "id": 1466,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.5760000000000001,
+          "y": 0.758,
+          "action": "loot",
+          "entityID": 5760,
+          "entityType": "npc",
+          "objectiveKey": "item:6252",
+          "quantity": 10
+        },
+        {
+          "id": 1381,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398
+        },
+        {
+          "id": 1466,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.662,
+          "y": 0.094,
+          "entityID": 5638,
+          "entityType": "npc"
+        },
+        {
+          "id": 1467,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.662,
+          "y": 0.096,
+          "entityID": 5638
+        },
+        {
+          "id": 1457,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.3436,
+          "y": 0.08070000000000001,
+          "action": "loot",
+          "entityID": 4719,
+          "entityType": "npc",
+          "objectiveKey": "item:6245",
+          "quantity": 1
+        },
+        {
+          "id": 1381,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.358,
+          "y": 0.588,
+          "action": "collect",
+          "entityID": 4654,
+          "objectiveKey": "item:6074",
+          "quantity": 1
+        },
+        {
+          "id": 1381,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.298,
+          "y": 0.528,
+          "action": "collect",
+          "entityID": 5402,
+          "objectiveKey": "item:6077",
+          "quantity": 1
+        },
+        {
+          "id": 1381,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398
+        },
+        {
+          "id": 79229,
+          "kind": "a",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 79235,
+          "kind": "a",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 79236,
+          "kind": "a",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 79242,
+          "kind": "a",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 92743,
+          "kind": "a",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 93224,
+          "kind": "a",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 79229,
+          "kind": "q",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 79229,
+          "kind": "t",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 79235,
+          "kind": "q",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 79235,
+          "kind": "t",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 79236,
+          "kind": "q",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 79236,
+          "kind": "t",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 79242,
+          "kind": "q",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 79242,
+          "kind": "t",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 92743,
+          "kind": "q",
+          "mapID": 1443,
+          "entityID": 254392,
+          "entityType": "item",
+          "objectiveKey": "item:254392",
+          "quantity": 1,
+          "unknownLocation": true
+        },
+        {
+          "id": 92743,
+          "kind": "t",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 93224,
+          "kind": "q",
+          "mapID": 1443,
+          "entityID": 254432,
+          "entityType": "item",
+          "objectiveKey": "item:254432",
+          "quantity": 5,
+          "unknownLocation": true
+        },
+        {
+          "id": 93224,
+          "kind": "t",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 6141,
+          "kind": "a",
+          "mapID": 1453,
+          "x": 0.5262,
+          "y": 0.4318,
+          "entityID": 12336,
+          "entityType": "npc"
+        },
+        {
+          "id": 1373,
+          "kind": "q",
+          "mapID": 1435,
+          "x": 0.6507,
+          "y": 0.21969999999999998,
+          "action": "loot",
+          "entityID": 5622,
+          "entityType": "npc",
+          "objectiveKey": "item:6190",
+          "quantity": 1
+        },
+        {
+          "id": 1373,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397
+        },
+        {
+          "id": 1374,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397
+        },
+        {
+          "id": 1374,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.66,
+          "y": 0.804,
+          "action": "collect",
+          "entityID": 5601,
+          "objectiveKey": "item:6072",
+          "quantity": 1
+        },
+        {
+          "id": 1374,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397
+        },
+        {
+          "id": 6141,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.664,
+          "y": 0.078,
+          "entityID": 1182,
+          "entityType": "npc"
+        },
+        {
+          "id": 6141,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.664,
+          "y": 0.078,
+          "entityID": 1182,
+          "entityType": "npc"
+        },
+        {
+          "id": 1052,
+          "kind": "q",
+          "mapID": 1424,
+          "x": 0.514,
+          "y": 0.584,
+          "entityID": 3980
+        },
+        {
+          "id": 1052,
+          "kind": "t",
+          "mapID": 1424,
+          "x": 0.514,
+          "y": 0.584,
+          "entityID": 3980
+        },
+        {
+          "id": 1457,
+          "kind": "t",
+          "mapID": 1455,
+          "x": 0.68,
+          "y": 0.17800000000000002,
+          "entityID": 5637,
+          "entityType": "npc"
+        },
+        {
+          "id": 1467,
+          "kind": "q",
+          "mapID": 1455,
+          "x": 0.696,
+          "y": 0.21,
+          "entityID": 5637
+        },
+        {
+          "id": 1467,
+          "kind": "t",
+          "mapID": 1455,
+          "x": 0.696,
+          "y": 0.21,
+          "entityID": 5637
+        }
+      ],
+      "flow": {
+        "uncertainTravelLegs": 75,
+        "blockedTravelLegs": 0,
+        "externalPrerequisites": 0,
+        "logOverflow": 0,
+        "peakLog": 10,
+        "unknownRewards": 0,
+        "finishXP": 3850,
+        "levelDeficitXP": 163900,
+        "progressionNeedsReview": true,
+        "valid": true,
+        "logCapacityKnown": false,
+        "combatXPUnknown": 30,
+        "startXP": 0,
+        "finishLog": 0,
+        "distance": 551759.5505138296,
+        "finishLevel": 35,
+        "questXP": 114050,
+        "rewardXPBeforeWork": 3184150,
+        "minimumKills": 76,
+        "requiredItemsUnknown": 23,
+        "difficultyPressure": 86,
+        "missingLocations": 27,
+        "missingLevelCurve": 0,
+        "initialLog": 0
+      }
+    },
+    {
+      "faction": "Alliance",
+      "race": 1,
+      "key": "level-zone:kalimdor/desolace:levels:41-50",
+      "zone": "Desolace",
+      "start_level": 41,
+      "flow_start_level": 30,
+      "compile_ms": 494.12,
+      "stops": [
+        {
+          "id": 1382,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.6659999999999999,
+          "y": 0.11,
+          "entityID": 5396
+        },
+        {
+          "id": 1385,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.6659999999999999,
+          "y": 0.11,
+          "entityID": 5396
+        },
+        {
+          "id": 1382,
+          "kind": "q",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 1385,
+          "kind": "q",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 1385,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398
+        },
+        {
+          "id": 1386,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398
+        },
+        {
+          "id": 1386,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.6920000000000001,
+          "y": 0.42200000000000004,
+          "action": "kill",
+          "entityID": 4632,
+          "objectiveKey": "npc:4632",
+          "quantity": 12
+        },
+        {
+          "id": 1386,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.6859999999999999,
+          "y": 0.41200000000000003,
+          "action": "kill",
+          "entityID": 4633,
+          "objectiveKey": "npc:4633",
+          "quantity": 12
+        },
+        {
+          "id": 1386,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.728,
+          "y": 0.424,
+          "action": "kill",
+          "entityID": 4634,
+          "objectiveKey": "npc:4634",
+          "quantity": 6
+        },
+        {
+          "id": 1386,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398
+        },
+        {
+          "id": 1369,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398
+        },
+        {
+          "id": 1382,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397
+        },
+        {
+          "id": 1384,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397
+        },
+        {
+          "id": 1369,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.4083,
+          "y": 0.9475,
+          "action": "gather",
+          "entityID": 22246,
+          "entityType": "object",
+          "objectiveKey": "item:6083",
+          "quantity": 3
+        },
+        {
+          "id": 1369,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398
+        },
+        {
+          "id": 1384,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.6779999999999999,
+          "y": 0.46,
+          "action": "collect",
+          "entityID": 12977,
+          "objectiveKey": "item:6079",
+          "quantity": 10
+        },
+        {
+          "id": 1384,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397
+        },
+        {
+          "id": 1370,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397
+        },
+        {
+          "id": 1370,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.6653,
+          "y": 0.8054000000000001,
+          "action": "gather",
+          "entityID": 22245,
+          "entityType": "object",
+          "objectiveKey": "item:6069",
+          "quantity": 6
+        },
+        {
+          "id": 1371,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398
+        },
+        {
+          "id": 1371,
+          "kind": "q",
+          "mapID": 1443,
+          "entityID": 4392,
+          "entityType": "item",
+          "objectiveKey": "item:4392",
+          "quantity": 1,
+          "unknownLocation": true
+        },
+        {
+          "id": 1371,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398
+        },
+        {
+          "id": 1375,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398
+        },
+        {
+          "id": 1370,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397
+        },
+        {
+          "id": 1373,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397
+        },
+        {
+          "id": 1375,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.402,
+          "y": 0.9540000000000001,
+          "action": "collect",
+          "entityID": 5602,
+          "objectiveKey": "item:6073",
+          "quantity": 1
+        },
+        {
+          "id": 1375,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398
+        },
+        {
+          "id": 1381,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398
+        },
+        {
+          "id": 96222,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.434,
+          "y": 0.7879999999999999,
+          "entityID": 253066
+        },
+        {
+          "id": 1381,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.358,
+          "y": 0.588,
+          "action": "collect",
+          "entityID": 4654,
+          "objectiveKey": "item:6074",
+          "quantity": 1
+        },
+        {
+          "id": 96222,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.358,
+          "y": 0.588,
+          "action": "collect",
+          "entityID": 4654,
+          "objectiveKey": "item:6074",
+          "quantity": 1
+        },
+        {
+          "id": 1381,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.298,
+          "y": 0.528,
+          "action": "collect",
+          "entityID": 5402,
+          "objectiveKey": "item:6077",
+          "quantity": 1
+        },
+        {
+          "id": 96222,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.298,
+          "y": 0.528,
+          "action": "collect",
+          "entityID": 5402,
+          "objectiveKey": "item:6077",
+          "quantity": 1
+        },
+        {
+          "id": 96222,
+          "kind": "t",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 1381,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.748,
+          "y": 0.68,
+          "entityID": 5398
+        },
+        {
+          "id": 1373,
+          "kind": "q",
+          "mapID": 1435,
+          "x": 0.6507,
+          "y": 0.21969999999999998,
+          "action": "loot",
+          "entityID": 5622,
+          "entityType": "npc",
+          "objectiveKey": "item:6190",
+          "quantity": 1
+        },
+        {
+          "id": 1373,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397
+        },
+        {
+          "id": 1374,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397
+        },
+        {
+          "id": 1374,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.66,
+          "y": 0.804,
+          "action": "collect",
+          "entityID": 5601,
+          "objectiveKey": "item:6072",
+          "quantity": 1
+        },
+        {
+          "id": 1374,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397
+        },
+        {
+          "id": 1380,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397
+        },
+        {
+          "id": 1380,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.358,
+          "y": 0.588,
+          "action": "collect",
+          "entityID": 4654,
+          "objectiveKey": "item:6074",
+          "quantity": 1
+        },
+        {
+          "id": 1380,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.298,
+          "y": 0.528,
+          "action": "collect",
+          "entityID": 5402,
+          "objectiveKey": "item:6077",
+          "quantity": 1
+        },
+        {
+          "id": 1380,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.36200000000000004,
+          "y": 0.792,
+          "entityID": 5397
+        },
+        {
+          "id": 94873,
+          "kind": "a",
+          "mapID": 1443,
+          "x": 0.562,
+          "y": 0.596,
+          "entityID": 5412
+        },
+        {
+          "id": 94873,
+          "kind": "q",
+          "mapID": 1443,
+          "x": 0.35600000000000004,
+          "y": 0.92,
+          "entityID": 253140
+        },
+        {
+          "id": 94873,
+          "kind": "t",
+          "mapID": 1443,
+          "x": 0.35600000000000004,
+          "y": 0.92,
+          "entityID": 253140
+        },
+        {
+          "id": 93227,
+          "kind": "a",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 94872,
+          "kind": "a",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 93227,
+          "kind": "q",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 93227,
+          "kind": "t",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 94872,
+          "kind": "q",
+          "mapID": 1443,
+          "unknownLocation": true
+        },
+        {
+          "id": 94872,
+          "kind": "t",
+          "mapID": 1443,
+          "unknownLocation": true
+        }
+      ],
+      "flow": {
+        "uncertainTravelLegs": 24,
+        "blockedTravelLegs": 0,
+        "externalPrerequisites": 0,
+        "logOverflow": 0,
+        "peakLog": 3,
+        "unknownRewards": 0,
+        "finishXP": 37870,
+        "levelDeficitXP": 0,
+        "progressionNeedsReview": false,
+        "valid": true,
+        "logCapacityKnown": false,
+        "combatXPUnknown": 13,
+        "startXP": 0,
+        "finishLog": 0,
+        "distance": 179489.4141421552,
+        "finishLevel": 30,
+        "questXP": 37870,
+        "rewardXPBeforeWork": 365770,
+        "minimumKills": 30,
+        "requiredItemsUnknown": 13,
+        "difficultyPressure": 110,
+        "missingLocations": 10,
+        "missingLevelCurve": 0,
+        "initialLog": 0
+      }
+    }
+  ],
+  "zone": "Desolace"
+}

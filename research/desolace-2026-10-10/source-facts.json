@@ -1,0 +1,428 @@
+{
+  "captured": "2026-10-10",
+  "sourceBuild": "Current public WoW Forever pages; no live client character/build was available.",
+  "questPages": [
+    {
+      "questID": 1367,
+      "url": "https://www.wowhead.com/forever/quest=1367",
+      "captured": "2026-10-10",
+      "sha256": "639bed7ff9b0472cf96dd7230e2c8bf85d5ed5c33e01023bf937d411f19486ab",
+      "applied_to_catalogue": false,
+      "held_back": false
+    },
+    {
+      "questID": 1368,
+      "url": "https://www.wowhead.com/forever/quest=1368",
+      "captured": "2026-10-10",
+      "sha256": "3b35e9adb29da2d813eb9d7f0e5f4c330d26162e376b3194d51dd649d368b8e2",
+      "applied_to_catalogue": false,
+      "held_back": false
+    },
+    {
+      "questID": 1369,
+      "url": "https://www.wowhead.com/forever/quest=1369",
+      "captured": "2026-10-10",
+      "sha256": "ebddd9d9f533b9bd9a174d7f40860a27408c0488e383d38c8124c8db737b66a0",
+      "applied_to_catalogue": false,
+      "held_back": false
+    },
+    {
+      "questID": 1370,
+      "url": "https://www.wowhead.com/forever/quest=1370",
+      "captured": "2026-10-10",
+      "sha256": "9472016207b0e3cdc2bf92bf381956551b41ace4ae505fa1ea005b563c9369c6",
+      "applied_to_catalogue": false,
+      "held_back": false
+    },
+    {
+      "questID": 1371,
+      "url": "https://www.wowhead.com/forever/quest=1371",
+      "captured": "2026-10-10",
+      "sha256": "1b9781a4ff8d34ee2510169a891c3cc7f9169c5782a69aceac52c2e786efbe42",
+      "applied_to_catalogue": false,
+      "held_back": false
+    },
+    {
+      "questID": 1373,
+      "url": "https://www.wowhead.com/forever/quest=1373",
+      "captured": "2026-10-10",
+      "sha256": "4b72fa324952faa219381200432fd30f5e4024e853dde8a89b9cdaa8c03959b6",
+      "applied_to_catalogue": false,
+      "held_back": false
+    },
+    {
+      "questID": 1374,
+      "url": "https://www.wowhead.com/forever/quest=1374",
+      "captured": "2026-10-10",
+      "sha256": "af6a0013c894593b56394fa4fa356f67f89bc17a507f8f197aaa91cc86b495f9",
+      "applied_to_catalogue": false,
+      "held_back": false
+    },
+    {
+      "questID": 1375,
+      "url": "https://www.wowhead.com/forever/quest=1375",
+      "captured": "2026-10-10",
+      "sha256": "1adf00b9573cce53a21691c20016325eb1fda7be1f551f9ab6f360b4956c0417",
+      "applied_to_catalogue": false,
+      "held_back": false
+    },
+    {
+      "questID": 1380,
+      "url": "https://www.wowhead.com/forever/quest=1380",
+      "captured": "2026-10-10",
+      "sha256": "56f42c7e5766d5a4aa28ac09eb061fd52f5174785295773f1211c8477efa1464",
+      "applied_to_catalogue": false,
+      "held_back": false
+    },
+    {
+      "questID": 1381,
+      "url": "https://www.wowhead.com/forever/quest=1381",
+      "captured": "2026-10-10",
+      "sha256": "4ef46d89173b5ec2d00a9c4179fcf7ef4e123c29d7a7b533f291a7c839edff6e",
+      "applied_to_catalogue": false,
+      "held_back": false
+    },
+    {
+      "questID": 1382,
+      "url": "https://www.wowhead.com/forever/quest=1382",
+      "captured": "2026-10-10",
+      "sha256": "d35530cc54b0bec3d055b18248f7afc7255ba902deb099b76a65387779ed9a01",
+      "applied_to_catalogue": false,
+      "held_back": false
+    },
+    {
+      "questID": 1384,
+      "url": "https://www.wowhead.com/forever/quest=1384",
+      "captured": "2026-10-10",
+      "sha256": "4dd53d8ed6632764f4c62a58de07aaa859b7f5bad1b58d0c5ed456fd81ead156",
+      "applied_to_catalogue": false,
+      "held_back": false
+    },
+    {
+      "questID": 1385,
+      "url": "https://www.wowhead.com/forever/quest=1385",
+      "captured": "2026-10-10",
+      "sha256": "746757371557e310142aaef68d8fcb5c3938d934751baa2d97b0bcfb4113685f",
+      "applied_to_catalogue": false,
+      "held_back": false
+    },
+    {
+      "questID": 1386,
+      "url": "https://www.wowhead.com/forever/quest=1386",
+      "captured": "2026-10-10",
+      "sha256": "cc0986e8cac7ed9cb25d259f676072c4988598690da2f13d483768a61a49f799",
+      "applied_to_catalogue": false,
+      "held_back": false
+    },
+    {
+      "questID": 5561,
+      "url": "https://www.wowhead.com/forever/quest=5561",
+      "captured": "2026-10-10",
+      "sha256": "f9422455fea5d7796698f4c9601bc932e9cf809a84216cc455d1d9377ebbe90f",
+      "applied_to_catalogue": true,
+      "held_back": false
+    },
+    {
+      "questID": 6568,
+      "url": "https://www.wowhead.com/forever/quest=6568",
+      "captured": "2026-10-10",
+      "sha256": "dd15bc2dad3ff69c9b84ece8e840b2b5e4eabbbd55172defb7c0783ce956f66f",
+      "applied_to_catalogue": true,
+      "held_back": false
+    },
+    {
+      "questID": 79229,
+      "url": "https://www.wowhead.com/forever/quest=79229",
+      "captured": "2026-10-10",
+      "sha256": "49b6b1535f1d8151fc7209cacaa6f472194b98a76ed6797fb3bd3185fe68567e",
+      "applied_to_catalogue": true,
+      "held_back": false
+    },
+    {
+      "questID": 79235,
+      "url": "https://www.wowhead.com/forever/quest=79235",
+      "captured": "2026-10-10",
+      "sha256": "bb56da9901199236de722794a23cd7a6a3784804b38bba09a4a53b7c01771ece",
+      "applied_to_catalogue": true,
+      "held_back": false
+    },
+    {
+      "questID": 79236,
+      "url": "https://www.wowhead.com/forever/quest=79236",
+      "captured": "2026-10-10",
+      "sha256": "fef5e9bf673e78e6f74a6ada1602fc860362d52703473a4940efe0cf1066de75",
+      "applied_to_catalogue": true,
+      "held_back": false
+    },
+    {
+      "questID": 79242,
+      "url": "https://www.wowhead.com/forever/quest=79242",
+      "captured": "2026-10-10",
+      "sha256": "8f623c01fbdb4f994db6e184d1cb1541d6b264513a075a8df81abde50ed30476",
+      "applied_to_catalogue": false,
+      "held_back": true
+    },
+    {
+      "questID": 92743,
+      "url": "https://www.wowhead.com/forever/quest=92743",
+      "captured": "2026-10-10",
+      "sha256": "6b4f1e712a05f932280b4b47d7ed8da2801e5cb4525d171520c31c6d3e7e2339",
+      "applied_to_catalogue": true,
+      "held_back": false
+    },
+    {
+      "questID": 92818,
+      "url": "https://www.wowhead.com/forever/quest=92818",
+      "captured": "2026-10-10",
+      "sha256": "6e731acb08cf964f67596962e06143234fe95bfe4d23320339a3bc081a74d240",
+      "applied_to_catalogue": false,
+      "held_back": false
+    },
+    {
+      "questID": 93224,
+      "url": "https://www.wowhead.com/forever/quest=93224",
+      "captured": "2026-10-10",
+      "sha256": "36c5f6e21d8c97b77dacf8172edd8e121946b74ae0516a07add386759a963b9a",
+      "applied_to_catalogue": true,
+      "held_back": false
+    },
+    {
+      "questID": 93227,
+      "url": "https://www.wowhead.com/forever/quest=93227",
+      "captured": "2026-10-10",
+      "sha256": "be15cb7371d21cca8e59e4ffc6873fff7e0a7e3a2d3b3d1c3a79bdc07bfe8a12",
+      "applied_to_catalogue": true,
+      "held_back": false
+    },
+    {
+      "questID": 94872,
+      "url": "https://www.wowhead.com/forever/quest=94872",
+      "captured": "2026-10-10",
+      "sha256": "af52b2481d6c99277042f041fd20bb2d57bb244a195857a2bbbbb87988fab100",
+      "applied_to_catalogue": true,
+      "held_back": false
+    },
+    {
+      "questID": 96222,
+      "url": "https://www.wowhead.com/forever/quest=96222",
+      "captured": "2026-10-10",
+      "sha256": "15c7c6caad694f36356d851721ca2cd14518521cbe76891ec263b15e6f3a226d",
+      "applied_to_catalogue": false,
+      "held_back": false
+    },
+    {
+      "questID": 97265,
+      "url": "https://www.wowhead.com/forever/quest=97265",
+      "captured": "2026-10-10",
+      "sha256": "1a127dce111968c78be63cd4e4ead72301952e1bf4005e71089bceb3d01605b3",
+      "applied_to_catalogue": false,
+      "held_back": false
+    },
+    {
+      "questID": 97284,
+      "url": "https://www.wowhead.com/forever/quest=97284",
+      "captured": "2026-10-10",
+      "sha256": "d68f1588c082028fb406e69516e7e2db7fa30c8bbbddbd679aacdf1cb051c609",
+      "applied_to_catalogue": false,
+      "held_back": false
+    }
+  ],
+  "entityPages": [
+    {
+      "entityType": "item",
+      "entityID": 3855,
+      "name": "Massive Iron Axe",
+      "url": "https://www.wowhead.com/forever/item=3855",
+      "captured": "2026-10-10",
+      "sha256": "c3a381ef4de0245a429bd87c705c08eab018ed96ca31568fbd59694650220280"
+    },
+    {
+      "entityType": "item",
+      "entityID": 4392,
+      "name": "Advanced Target Dummy",
+      "url": "https://www.wowhead.com/forever/item=4392",
+      "captured": "2026-10-10",
+      "sha256": "05957c8fab0b8b9b652c1aa6042896a35c9e2c315561fb8f93a3d6a5de23b0c7"
+    },
+    {
+      "entityType": "item",
+      "entityID": 16785,
+      "name": "Rexxar's Testament",
+      "url": "https://www.wowhead.com/forever/item=16785",
+      "captured": "2026-10-10",
+      "sha256": "9fe2390ae4f1230c9d55184b9d87c30b16d4717c3f52b016f483314d03f338d0"
+    },
+    {
+      "entityType": "item",
+      "entityID": 212347,
+      "name": "Illari's Key",
+      "url": "https://www.wowhead.com/forever/item=212347",
+      "captured": "2026-10-10",
+      "sha256": "6663d5213b8318a6be706ef1df0c12b3c1fb2432dbddb99700c51c3a7d6ba111"
+    },
+    {
+      "entityType": "item",
+      "entityID": 254392,
+      "name": "Conqueror's Helm",
+      "url": "https://www.wowhead.com/forever/item=254392",
+      "captured": "2026-10-10",
+      "sha256": "3a9ff64e226f5cee6619ac57855f9712683ed7940623e779d77ae8ab13f35149"
+    },
+    {
+      "entityType": "item",
+      "entityID": 254432,
+      "name": "Carved Centaur Totem",
+      "url": "https://www.wowhead.com/forever/item=254432",
+      "captured": "2026-10-10",
+      "sha256": "0e13df40eb645d01061c6191e2025f32d6959f80e1ef00e733db7faeaedb53d8"
+    },
+    {
+      "entityType": "npc",
+      "entityID": 5396,
+      "name": "Captain Pentigast",
+      "url": "https://www.wowhead.com/forever/npc=5396",
+      "captured": "2026-10-10",
+      "sha256": "1c776866a233efb3a8359ec7166427edd529b289b8c6f1aeb039a0ce15f3ab09"
+    },
+    {
+      "entityType": "npc",
+      "entityID": 5397,
+      "name": "Uthek the Wise",
+      "url": "https://www.wowhead.com/forever/npc=5397",
+      "captured": "2026-10-10",
+      "sha256": "9d6f61950b28e6868ca6c29648f6bbd0850abd6129c05dbf2d43a647493108c9"
+    },
+    {
+      "entityType": "npc",
+      "entityID": 5398,
+      "name": "Warug",
+      "url": "https://www.wowhead.com/forever/npc=5398",
+      "captured": "2026-10-10",
+      "sha256": "3d5f350dcb8fea328b0c5f5b91a0a3b411679daa08a3472325c81a345cbe774b"
+    },
+    {
+      "entityType": "npc",
+      "entityID": 5412,
+      "name": "Gurda Wildmane",
+      "url": "https://www.wowhead.com/forever/npc=5412",
+      "captured": "2026-10-10",
+      "sha256": "0e50b7b0388c04c27616d1700f0d2f91b515696b074b7d783fbd802b24c52d4d"
+    },
+    {
+      "entityType": "npc",
+      "entityID": 10182,
+      "name": "Rexxar <Champion of the Horde>",
+      "url": "https://www.wowhead.com/forever/npc=10182",
+      "captured": "2026-10-10",
+      "sha256": "35736cfc365b9837b8913f10d8aafc1a2bc78febd10ddaff5bf1a4a018d2ddd5"
+    },
+    {
+      "entityType": "npc",
+      "entityID": 11438,
+      "name": "Bibbly F'utzbuckle",
+      "url": "https://www.wowhead.com/forever/npc=11438",
+      "captured": "2026-10-10",
+      "sha256": "ddb395f7d73e56ed54190120a4d6f3381a305477bb0ed195c9e198ace06a60ec"
+    },
+    {
+      "entityType": "npc",
+      "entityID": 11596,
+      "name": "Smeed Scrabblescrew",
+      "url": "https://www.wowhead.com/forever/npc=11596",
+      "captured": "2026-10-10",
+      "sha256": "bff8d0cc86b3b68a0ee29a3fe3be31f1317eacef7612c6151939eb1cdc6f042b"
+    },
+    {
+      "entityType": "npc",
+      "entityID": 11872,
+      "name": "Myranda the Hag",
+      "url": "https://www.wowhead.com/forever/npc=11872",
+      "captured": "2026-10-10",
+      "sha256": "8bc179a40322f0b0beb9947e038108faa631da756bfa20a8fd48b184add49179"
+    },
+    {
+      "entityType": "npc",
+      "entityID": 215643,
+      "name": "Tokal",
+      "url": "https://www.wowhead.com/forever/npc=215643",
+      "captured": "2026-10-10",
+      "sha256": "5284fe738aed1940ec8528eafdb95ee62abe998c0704417fa2dad8a2e2b028e3"
+    },
+    {
+      "entityType": "npc",
+      "entityID": 215655,
+      "name": "Illari Duskfeather",
+      "url": "https://www.wowhead.com/forever/npc=215655",
+      "captured": "2026-10-10",
+      "sha256": "7c1b5e801d05edea21fc8cdc0e6a04b09662364149607a783e29b4074edc5bff"
+    },
+    {
+      "entityType": "npc",
+      "entityID": 253066,
+      "name": "Umarak <Kolkar Clan>",
+      "url": "https://www.wowhead.com/forever/npc=253066",
+      "captured": "2026-10-10",
+      "sha256": "28b58680d7af2585096498467c6377cc2e4dbb91dff91e0edcbd585a225559ed"
+    },
+    {
+      "entityType": "npc",
+      "entityID": 253139,
+      "name": "Gorhak <Magram Clan Quartermaster>",
+      "url": "https://www.wowhead.com/forever/npc=253139",
+      "captured": "2026-10-10",
+      "sha256": "27eb74bf49b3b7a459f6dfe939990bbb08eb1f4ca17c55d317b152c33b2910e0"
+    },
+    {
+      "entityType": "npc",
+      "entityID": 253140,
+      "name": "Molkar <Gelkis Clan Quartermaster>",
+      "url": "https://www.wowhead.com/forever/npc=253140",
+      "captured": "2026-10-10",
+      "sha256": "2fe2414da3248620a1ce2471f14c625cba1b12b8c74a49daf6e815bfd9b9818c"
+    },
+    {
+      "entityType": "npc",
+      "entityID": 268705,
+      "name": "Aka'rai",
+      "url": "https://www.wowhead.com/forever/npc=268705",
+      "captured": "2026-10-10",
+      "sha256": "57d94116d3c3a17db8de062dcabe006439e86ef11f239d677a7168a44a661176"
+    },
+    {
+      "entityType": "object",
+      "entityID": 417353,
+      "name": "Extinguished Campfire",
+      "url": "https://www.wowhead.com/forever/object=417353",
+      "captured": "2026-10-10",
+      "sha256": "90ed1ecde23acd3f6055f72b27e6d00a52c3939dcc27dacbe33553884bbb1168"
+    },
+    {
+      "entityType": "object",
+      "entityID": 418855,
+      "name": "Illari's Loot Cache",
+      "url": "https://www.wowhead.com/forever/object=418855",
+      "captured": "2026-10-10",
+      "sha256": "c283540842654fa5c79af20aec3e059d91da971173da57d356eb1efcdf80c776"
+    }
+  ],
+  "pinnedQuestieDB": {
+    "commit": "e0a6eaa86f181ac99262e34126bcd2ed1a1712d6",
+    "url": "https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever",
+    "use": "Literal factual fields for quest IDs, givers/turn-ins, explicit previous quest and reputation values; no routing engine used."
+  },
+  "deferredChanges": [
+    {
+      "questID": 79242,
+      "reason": "The captured page supplies Tokal as starter, Illari Duskfeather as the NPC target, an Illari\u2019s Loot Cache turn-in and an additional Illari\u2019s Key requirement, but no verified source location for the key. Marking this objective incomplete causes the current fixed guide compiler to omit all three guide stages. The shipped record is retained pending main-developer coordination."
+    }
+  ],
+  "knownUnknowns": [
+    "Magram/Gelkis reputation availability on Forever beta NPC offers is not confirmed from quest ordering alone. Preserve existing unverified pickup flags for quests 1369, 1370, 1371, 1373, 1374, 1375, 1380, 1381, 1384 and 1386.",
+    "Quest 1371 Advanced Target Dummy source remains unmapped; no relation between an item and named vendors/mobs was inferred.",
+    "Quest 5561 Kodo Roundup has an unmapped Aged Kodo alternative and an unknown number of lasso interactions.",
+    "Quest 6568 Testament of Rexxar has no verified local objective/action location.",
+    "Quest 79236 requires Cherry Grog, but its supported item acquisition location remains unknown.",
+    "Quest 92818, 96222, 97265 and 97284 still have unmapped guide-stage locations.",
+    "Coast, road, mountain, cave and flight access were not validated on a live client; coordinate points are not safe-path claims."
+  ]
+}
