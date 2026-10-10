@@ -1,5 +1,7 @@
 # Reviewed player quest research
 
+The [Felwood review](felwood-2026-10-09/README.md) refreshes all four faction/chapter guides, documents current NPC/item evidence and profession-only Salve exclusions, and retains the Hunter raid-location unknowns. Its scoped compilation passes; full route repricing exposes data-driven order and reward-timing tradeoffs for main-developer review.
+
 Keep supplied exports unchanged here, with their original event versions,
 sessions and beta builds. These are observations from players, not a complete
 quest database. Only supported corrections enter the shipped catalogue. Raw

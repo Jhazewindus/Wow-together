@@ -1,0 +1,203 @@
+{
+  "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
+  "quest_records": 20,
+  "static_points_checked": 66,
+  "fixed_zone_guides_checked": 4,
+  "catalogue_reason_stages_checked": 74,
+  "catalogue_reason_codes": {
+    "level-work": 20,
+    "quest-objective": 34,
+    "quest-reward": 20
+  },
+  "reason_review_quest_ids": [
+    939,
+    996,
+    998,
+    1514,
+    2523,
+    2878,
+    4421,
+    4441,
+    4442,
+    4505,
+    4506,
+    4906,
+    5155,
+    5156,
+    5157,
+    5158,
+    5159,
+    6131,
+    6162,
+    8460
+  ],
+  "source_data_gap_free_guides": 2,
+  "guides": [
+    {
+      "faction": "Alliance",
+      "zone": "Felwood",
+      "key": "level-zone:kalimdor/felwood:levels:41-50",
+      "quests": 3,
+      "steps": 13,
+      "unknown_location_steps": 0,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": true,
+      "reason_steps_checked": 13,
+      "destination_reason_codes": {
+        "class-progression": 2,
+        "outside-level-range": 8,
+        "quest-reward": 3
+      },
+      "reason_review_steps": 8,
+      "cross_zone_reason_steps": 0,
+      "flow_alternatives_evaluated": 6,
+      "flow_loop_changes": 0,
+      "geometric_guard_rejections": 0,
+      "geometric_bracket_replays": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 2,
+      "quest_reward_only_xp_shortfall": 641700,
+      "uncertain_travel_legs": 1,
+      "estimated_distance_before": 3380.73,
+      "estimated_distance_after": 3380.73
+    },
+    {
+      "faction": "Alliance",
+      "zone": "Felwood",
+      "key": "level-zone:kalimdor/felwood:levels:51-60",
+      "quests": 37,
+      "steps": 134,
+      "unknown_location_steps": 3,
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          7632
+        ],
+        "q": [
+          7632,
+          7635
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        5249,
+        8419,
+        8420
+      ],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 134,
+      "destination_reason_codes": {
+        "class-progression": 28,
+        "early-reward": 1,
+        "outside-level-range": 60,
+        "prerequisite": 12,
+        "quest-reward": 32,
+        "return-hub": 1
+      },
+      "reason_review_steps": 70,
+      "cross_zone_reason_steps": 15,
+      "flow_alternatives_evaluated": 129,
+      "flow_loop_changes": 4,
+      "geometric_guard_rejections": 96,
+      "geometric_bracket_replays": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 7,
+      "quest_reward_only_xp_shortfall": 2278450,
+      "uncertain_travel_legs": 42,
+      "estimated_distance_before": 334112.44,
+      "estimated_distance_after": 312720.75
+    },
+    {
+      "faction": "Horde",
+      "zone": "Felwood",
+      "key": "level-zone:kalimdor/felwood:levels:41-50",
+      "quests": 3,
+      "steps": 13,
+      "unknown_location_steps": 0,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": true,
+      "reason_steps_checked": 13,
+      "destination_reason_codes": {
+        "class-progression": 2,
+        "outside-level-range": 8,
+        "quest-reward": 3
+      },
+      "reason_review_steps": 8,
+      "cross_zone_reason_steps": 0,
+      "flow_alternatives_evaluated": 6,
+      "flow_loop_changes": 0,
+      "geometric_guard_rejections": 0,
+      "geometric_bracket_replays": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 2,
+      "quest_reward_only_xp_shortfall": 641700,
+      "uncertain_travel_legs": 0,
+      "estimated_distance_before": 5542.36,
+      "estimated_distance_after": 5542.36
+    },
+    {
+      "faction": "Horde",
+      "zone": "Felwood",
+      "key": "level-zone:kalimdor/felwood:levels:51-60",
+      "quests": 34,
+      "steps": 119,
+      "unknown_location_steps": 3,
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          7632
+        ],
+        "q": [
+          7632,
+          7635
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        8419,
+        8420
+      ],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 119,
+      "destination_reason_codes": {
+        "class-progression": 28,
+        "outside-level-range": 48,
+        "prerequisite": 12,
+        "quest-reward": 30,
+        "return-hub": 1
+      },
+      "reason_review_steps": 57,
+      "cross_zone_reason_steps": 11,
+      "flow_alternatives_evaluated": 120,
+      "flow_loop_changes": 2,
+      "geometric_guard_rejections": 83,
+      "geometric_bracket_replays": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 6,
+      "quest_reward_only_xp_shortfall": 2297240,
+      "uncertain_travel_legs": 19,
+      "estimated_distance_before": 323115.41,
+      "estimated_distance_after": 288798.26
+    }
+  ],
+  "scope": {
+    "zone": "Felwood",
+    "catalogue_records": "Exact quest zone; guide dependencies still compile normally"
+  }
+}

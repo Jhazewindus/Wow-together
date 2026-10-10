@@ -13092,5 +13092,644 @@
       }
     },
     "source": "Questie/QuestieDB Forever factual fields at pinned revision e0a6eaa86f181ac99262e34126bcd2ed1a1712d6: objectives names only the final hand-in item; requiredSourceItems identifies the source input. Current action area for the input is retained and no combine point is invented. Reviewed 2026-10-09; research/eastern-plaguelands-2026-10-09."
+  },
+  {
+    "questID": 5385,
+    "title": "The Remains of Trey Lightforge",
+    "stageCorrection": {
+      "kind": "provided-delivery",
+      "minLevel": 49,
+      "level": 57,
+      "classMask": 0,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Remains of Trey Lightforge",
+          "itemID": 13562
+        }
+      ]
+    },
+    "source": "ClassicDB quest 5385 explicitly lists item 13562 as a Provided Item and names NPC11020 as start and NPC11019 as return; Questie/QuestieDB Forever matches quest title/ID, levels and NPC links. Exact item count 1; no extra farm or source coordinate. ClassicDB fallback only after identity match. Reviewed 2026-10-09; research/felwood-2026-10-09."
+  },
+  {
+    "questID": 6131,
+    "title": "Timbermaw Ally",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 45,
+      "level": 48,
+      "classMask": 0,
+      "requiredItems": [],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantity": 5,
+            "name": "Deadwood Warrior",
+            "entityID": 7153
+          },
+          {
+            "entityType": "npc",
+            "quantity": 5,
+            "name": "Deadwood Pathfinder",
+            "entityID": 7155
+          },
+          {
+            "entityType": "npc",
+            "quantity": 5,
+            "name": "Deadwood Gardener",
+            "entityID": 7154
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "sourceObjective": 7153,
+            "mapID": 1448,
+            "action": "kill",
+            "entityID": 7153,
+            "npc": true,
+            "y": 0.904,
+            "objectiveKey": "npc:7153",
+            "name": "Deadwood Warrior",
+            "x": 0.488,
+            "quantity": 5
+          },
+          {
+            "sourceObjective": 7154,
+            "mapID": 1448,
+            "action": "kill",
+            "entityID": 7154,
+            "npc": true,
+            "y": 0.894,
+            "objectiveKey": "npc:7154",
+            "name": "Deadwood Gardener",
+            "x": 0.484,
+            "quantity": 5
+          },
+          {
+            "sourceObjective": 7155,
+            "mapID": 1448,
+            "action": "kill",
+            "entityID": 7155,
+            "npc": true,
+            "y": 0.894,
+            "objectiveKey": "npc:7155",
+            "name": "Deadwood Pathfinder",
+            "x": 0.484,
+            "quantity": 5
+          }
+        ],
+        "npcTargets": [
+          {
+            "entityID": 7153,
+            "npc": true,
+            "action": "kill",
+            "name": "Deadwood Warrior"
+          },
+          {
+            "entityID": 7154,
+            "npc": true,
+            "action": "kill",
+            "name": "Deadwood Gardener"
+          },
+          {
+            "entityID": 7155,
+            "npc": true,
+            "action": "kill",
+            "name": "Deadwood Pathfinder"
+          }
+        ],
+        "starts": [],
+        "ends": [],
+        "startRefs": [],
+        "endRefs": []
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "npc",
+            "quantity": 5,
+            "name": "Deadwood Warrior",
+            "entityID": 7153
+          },
+          {
+            "entityType": "npc",
+            "quantity": 5,
+            "name": "Deadwood Pathfinder",
+            "entityID": 7155
+          },
+          {
+            "entityType": "npc",
+            "quantity": 5,
+            "name": "Deadwood Gardener",
+            "entityID": 7154
+          }
+        ],
+        "requiredItems": [],
+        "objectives": [
+          {
+            "sourceObjective": 7153,
+            "mapID": 1448,
+            "action": "kill",
+            "entityID": 7153,
+            "npc": true,
+            "y": 0.904,
+            "objectiveKey": "npc:7153",
+            "name": "Deadwood Warrior",
+            "x": 0.488,
+            "quantity": 5
+          },
+          {
+            "sourceObjective": 7154,
+            "mapID": 1448,
+            "action": "kill",
+            "entityID": 7154,
+            "npc": true,
+            "y": 0.894,
+            "objectiveKey": "npc:7154",
+            "name": "Deadwood Gardener",
+            "x": 0.484,
+            "quantity": 5
+          },
+          {
+            "sourceObjective": 7155,
+            "mapID": 1448,
+            "action": "kill",
+            "entityID": 7155,
+            "npc": true,
+            "y": 0.894,
+            "objectiveKey": "npc:7155",
+            "name": "Deadwood Pathfinder",
+            "x": 0.484,
+            "quantity": 5
+          }
+        ],
+        "npcTargets": [
+          {
+            "entityID": 7153,
+            "npc": true,
+            "action": "kill",
+            "name": "Deadwood Warrior"
+          },
+          {
+            "entityID": 7154,
+            "npc": true,
+            "action": "kill",
+            "name": "Deadwood Gardener"
+          },
+          {
+            "entityID": 7155,
+            "npc": true,
+            "action": "kill",
+            "name": "Deadwood Pathfinder"
+          }
+        ],
+        "starts": [
+          {
+            "entityType": "npc",
+            "mapID": 1448,
+            "entityID": 11554,
+            "npc": true,
+            "x": 0.5093,
+            "y": 0.8501,
+            "name": "Grazle",
+            "sourceAreaID": 361,
+            "locationSource": "ClassicDB quest 6131 start/end ID 11554; pinned Questie Forever NPC11554 Felwood position; captured 2026-10-09"
+          }
+        ],
+        "ends": [
+          {
+            "entityType": "npc",
+            "mapID": 1448,
+            "entityID": 11554,
+            "npc": true,
+            "x": 0.5093,
+            "y": 0.8501,
+            "name": "Grazle",
+            "sourceAreaID": 361,
+            "locationSource": "ClassicDB quest 6131 start/end ID 11554; pinned Questie Forever NPC11554 Felwood position; captured 2026-10-09"
+          }
+        ],
+        "startRefs": [
+          {
+            "entityType": "npc",
+            "entityID": 11554,
+            "name": "Grazle"
+          }
+        ],
+        "endRefs": [
+          {
+            "entityType": "npc",
+            "entityID": 11554,
+            "name": "Grazle"
+          }
+        ]
+      }
+    },
+    "source": "ClassicDB quest 6131 identifies NPC11554 Grazle as both start and end; exact title, Both faction, level 48/minimum 45 and three 5-kill goals agree with the captured catalogue. Questie/QuestieDB Forever NPC11554 current Felwood spawn is 50.93,85.01. Quest 6131 itself is absent from pinned Questie quest facts, so no prerequisite or reputation gate is inferred. Offer still needs beta confirmation. Reviewed 2026-10-09; research/felwood-2026-10-09."
+  },
+  {
+    "questID": 7602,
+    "title": "Flawless Fel Essence",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 50,
+      "level": 55,
+      "classMask": 256,
+      "requiredItems": [
+        {
+          "quantity": 1,
+          "name": "Flawless Fel Essence (Azshara)",
+          "itemID": 18624
+        },
+        {
+          "quantity": 1,
+          "name": "Flawless Fel Essence (Jaedenar)",
+          "itemID": 18622
+        },
+        {
+          "quantity": 1,
+          "name": "Flawless Fel Essence (Dark Portal)",
+          "itemID": 18623
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 18624,
+            "name": "Flawless Fel Essence (Azshara)"
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 18622,
+            "name": "Flawless Fel Essence (Jaedenar)"
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 18623,
+            "name": "Flawless Fel Essence (Dark Portal)"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Flawless Fel Essence (Azshara)",
+            "itemID": 18624
+          },
+          {
+            "quantity": 1,
+            "name": "Flawless Fel Essence (Jaedenar)",
+            "itemID": 18622
+          },
+          {
+            "quantity": 1,
+            "name": "Flawless Fel Essence (Dark Portal)",
+            "itemID": 18623
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1447,
+            "action": "loot",
+            "entityID": 6200,
+            "npc": true,
+            "x": 0.5207,
+            "y": 0.1866,
+            "objectiveKey": "item:18624",
+            "itemID": 18624,
+            "quantity": 1,
+            "sourceAreaID": 16,
+            "itemName": "Flawless Fel Essence (Azshara)",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "name": "Legashi Satyr"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Flawless Fel Essence (Azshara)",
+            "name": "Legashi Satyr",
+            "entityID": 6200,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 18622,
+            "name": "Flawless Fel Essence (Jaedenar)"
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 18623,
+            "name": "Flawless Fel Essence (Dark Portal)"
+          }
+        ],
+        "objectiveLocationsIncomplete": true
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 18624,
+            "name": "Flawless Fel Essence (Azshara)"
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 18622,
+            "name": "Flawless Fel Essence (Jaedenar)"
+          },
+          {
+            "entityType": "item",
+            "quantity": 1,
+            "action": "collect",
+            "entityID": 18623,
+            "name": "Flawless Fel Essence (Dark Portal)"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 1,
+            "name": "Flawless Fel Essence (Azshara)",
+            "itemID": 18624
+          },
+          {
+            "quantity": 1,
+            "name": "Flawless Fel Essence (Jaedenar)",
+            "itemID": 18622
+          },
+          {
+            "quantity": 1,
+            "name": "Flawless Fel Essence (Dark Portal)",
+            "itemID": 18623
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1447,
+            "action": "loot",
+            "entityID": 6200,
+            "npc": true,
+            "x": 0.5207,
+            "y": 0.1866,
+            "objectiveKey": "item:18624",
+            "itemID": 18624,
+            "quantity": 1,
+            "sourceAreaID": 16,
+            "itemName": "Flawless Fel Essence (Azshara)",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "name": "Legashi Satyr"
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1448,
+            "action": "loot",
+            "entityID": 9862,
+            "npc": true,
+            "x": 0.3623,
+            "y": 0.4587,
+            "objectiveKey": "item:18622",
+            "itemID": 18622,
+            "quantity": 1,
+            "sourceAreaID": 361,
+            "itemName": "Flawless Fel Essence (Jaedenar)",
+            "locationSource": "ClassicDB item 18622 source NPC9862; pinned Questie Forever Felwood NPC position; captured 2026-10-09",
+            "name": "Jaedenar Legionnaire"
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1419,
+            "action": "loot",
+            "entityID": 6011,
+            "npc": true,
+            "x": 0.5773,
+            "y": 0.5062,
+            "objectiveKey": "item:18623",
+            "itemID": 18623,
+            "quantity": 1,
+            "sourceAreaID": 4,
+            "itemName": "Flawless Fel Essence (Dark Portal)",
+            "locationSource": "ClassicDB item 18623 source NPC6011; pinned Questie Forever area-4 Blasted Lands NPC position; captured 2026-10-09",
+            "name": "Felguard Sentry"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Flawless Fel Essence (Azshara)",
+            "name": "Legashi Satyr",
+            "entityID": 6200,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "Flawless Fel Essence (Jaedenar)",
+            "name": "Jaedenar Legionnaire",
+            "entityID": 9862,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "Flawless Fel Essence (Dark Portal)",
+            "name": "Felguard Sentry",
+            "entityID": 6011,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": false
+      }
+    },
+    "source": "ClassicDB quest 7602 and item pages link 18622\u2192NPC9862 Jaedenar Legionnaire and 18623\u2192NPC6011 Felguard Sentry; pinned Questie Forever NPC identities and spawn positions match. Add one representative location for each missing required essence; existing Azshara item 18624 remains. Blasted Lands is the cross-zone leg. Quest remains Warlock-only under class setting. ClassicDB relations are unchanged-vanilla fallback, not Forever drop-rate or beta-route evidence. Reviewed 2026-10-09; research/felwood-2026-10-09."
+  },
+  {
+    "questID": 8421,
+    "title": "The Wrong Stuff",
+    "stageCorrection": {
+      "kind": "stage-facts",
+      "minLevel": 50,
+      "level": 52,
+      "classMask": 256,
+      "requiredItems": [
+        {
+          "quantity": 10,
+          "name": "Rotting Wood",
+          "itemID": 20613
+        },
+        {
+          "quantity": 4,
+          "name": "Bloodvenom Essence",
+          "itemID": 20614
+        }
+      ],
+      "before": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 10,
+            "action": "collect",
+            "entityID": 20613,
+            "name": "Rotting Wood"
+          },
+          {
+            "entityType": "item",
+            "quantity": 4,
+            "action": "collect",
+            "entityID": 20614,
+            "name": "Bloodvenom Essence"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 10,
+            "name": "Rotting Wood",
+            "itemID": 20613
+          },
+          {
+            "quantity": 4,
+            "name": "Bloodvenom Essence",
+            "itemID": 20614
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1448,
+            "action": "loot",
+            "entityID": 7139,
+            "npc": true,
+            "x": 0.47840000000000005,
+            "y": 0.2645,
+            "objectiveKey": "item:20613",
+            "itemID": 20613,
+            "quantity": 10,
+            "sourceAreaID": 361,
+            "itemName": "Rotting Wood",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "name": "Irontree Stomper"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Rotting Wood",
+            "name": "Irontree Stomper",
+            "entityID": 7139,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "missingRequirements": [
+          {
+            "entityType": "item",
+            "quantity": 4,
+            "action": "collect",
+            "entityID": 20614,
+            "name": "Bloodvenom Essence"
+          }
+        ],
+        "objectiveLocationsIncomplete": true
+      },
+      "after": {
+        "requirements": [
+          {
+            "entityType": "item",
+            "quantity": 10,
+            "action": "collect",
+            "entityID": 20613,
+            "name": "Rotting Wood"
+          },
+          {
+            "entityType": "item",
+            "quantity": 4,
+            "action": "collect",
+            "entityID": 20614,
+            "name": "Bloodvenom Essence"
+          }
+        ],
+        "requiredItems": [
+          {
+            "quantity": 10,
+            "name": "Rotting Wood",
+            "itemID": 20613
+          },
+          {
+            "quantity": 4,
+            "name": "Bloodvenom Essence",
+            "itemID": 20614
+          }
+        ],
+        "objectives": [
+          {
+            "entityType": "npc",
+            "mapID": 1448,
+            "action": "loot",
+            "entityID": 7139,
+            "npc": true,
+            "x": 0.47840000000000005,
+            "y": 0.2645,
+            "objectiveKey": "item:20613",
+            "itemID": 20613,
+            "quantity": 10,
+            "sourceAreaID": 361,
+            "itemName": "Rotting Wood",
+            "locationSource": "Published Forever converted-baseline entity position",
+            "name": "Irontree Stomper"
+          },
+          {
+            "entityType": "npc",
+            "mapID": 1448,
+            "action": "loot",
+            "entityID": 7092,
+            "npc": true,
+            "x": 0.4264,
+            "y": 0.4758,
+            "objectiveKey": "item:20614",
+            "itemID": 20614,
+            "quantity": 4,
+            "sourceAreaID": 361,
+            "itemName": "Bloodvenom Essence",
+            "locationSource": "ClassicDB item 20614 source NPC7092; pinned Questie Forever Felwood NPC position; captured 2026-10-09",
+            "name": "Tainted Ooze"
+          }
+        ],
+        "npcTargets": [
+          {
+            "itemName": "Rotting Wood",
+            "name": "Irontree Stomper",
+            "entityID": 7139,
+            "npc": true,
+            "action": "loot"
+          },
+          {
+            "itemName": "Bloodvenom Essence",
+            "name": "Tainted Ooze",
+            "entityID": 7092,
+            "npc": true,
+            "action": "loot"
+          }
+        ],
+        "missingRequirements": [],
+        "objectiveLocationsIncomplete": false
+      }
+    },
+    "source": "ClassicDB item 20614 links Bloodvenom Essence to NPC7092 Tainted Ooze in Felwood; pinned Questie Forever NPC7092 identity and 34 current Felwood positions agree. Add one representative objective location for the required four essences, preserving the existing ten Rotting Wood stage. ClassicDB is unchanged-vanilla source-relation evidence, not a Forever drop-rate claim. Quest remains Warlock-only under class setting. Reviewed 2026-10-09; research/felwood-2026-10-09."
   }
 ]

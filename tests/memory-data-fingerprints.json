@@ -3,7 +3,7 @@
   "datasets": {
     "catalogue": {
       "file": "QuestCatalogue.lua",
-      "sha256": "c252d39f33455584a5cf7080fc5a5b219443bea125c83e8f50207d654bc3d54b"
+      "sha256": "746a28c5e1155ff63efdcedbcde34ebb5235fb24719a71259290f2ee434f208b"
     },
     "questEntities": {
       "file": "QuestCatalogue.lua",
@@ -23,8 +23,8 @@
     },
     "dungeonMapData": {
       "file": "DungeonMapData.lua",
-      "sha256": "8ad9cbfd94f5a674acf7e616565c320b5fde9345c425eaba1cf72dcd20ebc6a5"
+      "sha256": "0f11a23183f2795831cb078a12d6953e6c23542d3459f71eb0c70b9b512f629d"
     }
   },
-  "revision": "0.8.31: audited loot relationships and original Vanilla BFD marker identities. 0.8.42: additive source-supplemented quest catalogue; all original quest gates and point fields independently preserved; other datasets unchanged."
+  "revision": "0.8.31: audited loot relationships and original Vanilla BFD marker identities. 0.8.42: additive source-supplemented quest catalogue; all original quest gates and point fields independently preserved. Main 0.8.65 includes updated dungeon map positions. 2026-10-10 guides/coverage Felwood: additive staged corrections and source-backed profession exclusions. Catalogue and dungeon-map fingerprints reflect these reviewed updates; other datasets unchanged."
 }
