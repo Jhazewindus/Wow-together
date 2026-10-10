@@ -161,7 +161,7 @@
   "with_prerequisites": 2466,
   "repeatable_quests": 627,
   "unverified_prerequisites": 18,
-  "incomplete_objective_locations": 1319,
+  "incomplete_objective_locations": 1316,
   "area_ui_maps": {
     "40": 1436,
     "17": 1413,
@@ -7483,26 +7483,33 @@
   },
   "supplemental_capture": {
     "captured": "2026-10-10",
-    "pages": 4,
+    "pages": 13,
     "changed_quest_ids": [
-      79624,
-      92519,
-      92707,
-      97539
+      714,
+      715,
+      722,
+      723,
+      727,
+      728,
+      735,
+      736,
+      2202,
+      78823
     ],
     "added_points": {
       "starts": 0,
-      "ends": 3,
-      "objectives": 0
+      "ends": 0,
+      "objectives": 4
     },
     "invalid_quest_ids": [],
     "incomplete_objectives_before": 1319,
-    "incomplete_objectives_after": 1319,
+    "incomplete_objectives_after": 1316,
     "reviewed_stage_corrections": [
-      79624,
-      92519,
-      92707,
-      97539
+      715,
+      723,
+      735,
+      736,
+      78823
     ],
     "reviewed_quest_corrections": [
       99161,
@@ -8032,6 +8039,42 @@
       "incomplete_objectives_after": 1319,
       "reviewed_stage_corrections": [
         535
+      ],
+      "reviewed_quest_corrections": [
+        99161,
+        750,
+        787,
+        99082,
+        99101,
+        6541,
+        6542,
+        99081,
+        99101,
+        99082
+      ]
+    },
+    {
+      "captured": "2026-10-10",
+      "pages": 4,
+      "changed_quest_ids": [
+        79624,
+        92519,
+        92707,
+        97539
+      ],
+      "added_points": {
+        "starts": 0,
+        "ends": 3,
+        "objectives": 0
+      },
+      "invalid_quest_ids": [],
+      "incomplete_objectives_before": 1319,
+      "incomplete_objectives_after": 1319,
+      "reviewed_stage_corrections": [
+        79624,
+        92519,
+        92707,
+        97539
       ],
       "reviewed_quest_corrections": [
         99161,

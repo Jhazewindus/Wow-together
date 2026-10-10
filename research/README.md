@@ -1,5 +1,18 @@
 # Reviewed player quest research
 
+## 2026-10-10 — Badlands chain stages and objective locations
+
+[The Badlands review](badlands-2026-10-10/README.md) refreshes all five guide
+chapters and expands the source check from 38 exact-zone records to all 44
+category records. It maps the 722 → 723 amulet delivery, the three separate
+item sources for Alliance 735 and Horde 736, all 11 Badlands Primitive Drawing
+drop sources, and current Solid Chest alternatives for 715. Unknown pickup and
+item-acquisition facts remain visible. All 284 guide actions, log peaks and XP
+timing are retained; route estimates rise where previously unmapped required
+work now has real cross-zone locations. Captured evidence, scoped audits,
+complete-route comparisons, focused tests and a beta player checklist accompany
+the data.
+
 ## 2026-10-10 — Alterac Mountains faction, key source and chain handoffs
 
 [The Alterac Mountains review](alterac-mountains-2026-10-10/README.md) refreshes

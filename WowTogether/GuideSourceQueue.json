@@ -1,6 +1,6 @@
 {
   "source_data_complete": false,
-  "remaining_quest_records": 362,
+  "remaining_quest_records": 359,
   "limitations": [
     "This queue identifies missing facts, not a license to invent them",
     "Source capture must respect access policy and stop after denials",
@@ -296,22 +296,6 @@
       ]
     },
     {
-      "questID": 715,
-      "title": "Liquid Stone",
-      "guides": [
-        "Alliance / Badlands",
-        "Horde / Badlands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=715",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/item=3823",
-        "https://www.wowhead.com/forever/npc=2920"
-      ]
-    },
-    {
       "questID": 716,
       "title": "Stone Is Better than Cloth",
       "guides": [
@@ -328,34 +312,16 @@
       ]
     },
     {
-      "questID": 723,
-      "title": "Prospect of Faith",
-      "guides": [
-        "Alliance / Badlands"
-      ],
-      "needs": [
-        "objective area"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=723",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=2909",
-        "https://www.wowhead.com/forever/npc=2910"
-      ]
-    },
-    {
       "questID": 735,
       "title": "The Star, the Hand and the Heart",
       "guides": [
         "Alliance / Badlands"
       ],
       "needs": [
-        "objective area",
         "pickup requirements"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=735",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=4641",
-        "https://www.wowhead.com/forever/item=4644",
         "https://www.wowhead.com/forever/npc=2786"
       ]
     },
@@ -366,13 +332,10 @@
         "Horde / Badlands"
       ],
       "needs": [
-        "objective area",
         "pickup requirements"
       ],
       "quest_url": "https://www.wowhead.com/forever/quest=736",
       "entity_urls": [
-        "https://www.wowhead.com/forever/item=4641",
-        "https://www.wowhead.com/forever/item=4644",
         "https://www.wowhead.com/forever/npc=2934"
       ]
     },
@@ -1368,20 +1331,6 @@
       "entity_urls": [
         "https://www.wowhead.com/forever/npc=2130",
         "https://www.wowhead.com/forever/npc=6467"
-      ]
-    },
-    {
-      "questID": 2203,
-      "title": "Badlands Reagent Run II",
-      "guides": [
-        "Horde / Badlands"
-      ],
-      "needs": [
-        "pickup requirements"
-      ],
-      "quest_url": "https://www.wowhead.com/forever/quest=2203",
-      "entity_urls": [
-        "https://www.wowhead.com/forever/npc=6868"
       ]
     },
     {
