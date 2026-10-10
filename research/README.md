@@ -1,5 +1,16 @@
 # Reviewed player quest research
 
+## 2026-10-10 — Eastern Plaguelands audit refresh
+
+[The Eastern Plaguelands refresh](eastern-plaguelands-2026-10-10/README.md)
+rechecks the full Alliance and Horde 51–60 guides against the 8 October prompt
+baseline. The reviewed preparation/final-item corrections remain intact; both
+complete action sequences, stops and flow metrics match the 9 October review.
+The audit still shows two missing pickup points, 14 unique objective-area gaps,
+no missing hand-ins, 18 uncertain pickup requirements and no unknown counts.
+No new data change was justified; chapel, road and reputation/dungeon offers
+remain on the player checklist.
+
 ## 2026-10-10 — Stranglethorn Vale audit refresh
 
 [The Stranglethorn Vale refresh](stranglethorn-vale-2026-10-10/README.md)

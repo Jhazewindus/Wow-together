@@ -1,0 +1,132 @@
+{
+  "zone": "Eastern Plaguelands",
+  "refreshed_date": "2026-10-10",
+  "addon_version": "0.8.66",
+  "guides": {
+    "Alliance": {
+      "steps": 217,
+      "unknown_location_steps": 17,
+      "missing_locations": {
+        "a": [
+          5464,
+          8946
+        ],
+        "q": [
+          5149,
+          5206,
+          5247,
+          5513,
+          5517,
+          5862,
+          6026,
+          8946,
+          9121,
+          9122,
+          9123,
+          9141
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirements": [
+        5142,
+        5149,
+        5244,
+        5249,
+        5250,
+        5503,
+        5513,
+        5517,
+        5601,
+        8929,
+        9121,
+        9122,
+        9123,
+        9124,
+        9126,
+        9128,
+        9141
+      ],
+      "unverified_objective_quantities": [],
+      "flow_state_valid": true,
+      "flow_alternatives_evaluated": 48,
+      "flow_loop_changes": 0,
+      "estimated_distance": 617955.14,
+      "quest_log_peak": 12,
+      "quest_xp_shortfall": 2867410,
+      "uncertain_travel_legs": 62
+    },
+    "Horde": {
+      "steps": 201,
+      "unknown_location_steps": 17,
+      "missing_locations": {
+        "a": [
+          5464,
+          8946
+        ],
+        "q": [
+          5149,
+          5206,
+          5513,
+          5517,
+          5862,
+          6022,
+          6026,
+          6146,
+          8946,
+          9121,
+          9122,
+          9123,
+          9141
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirements": [
+        5142,
+        5149,
+        5503,
+        5513,
+        5517,
+        5601,
+        8930,
+        9121,
+        9122,
+        9123,
+        9124,
+        9126,
+        9128,
+        9141
+      ],
+      "unverified_objective_quantities": [],
+      "flow_state_valid": true,
+      "flow_alternatives_evaluated": 37,
+      "flow_loop_changes": 0,
+      "estimated_distance": 483811.57,
+      "quest_log_peak": 12,
+      "quest_xp_shortfall": 2855010,
+      "uncertain_travel_legs": 69
+    }
+  },
+  "catalogue_scope": {
+    "exact_zone_records": 102,
+    "static_source_points": 252,
+    "guide_count": 2
+  },
+  "prompt_snapshot_comparison": {
+    "pickup_coordinate_ids": 2,
+    "objective_coordinate_ids_before": 19,
+    "objective_coordinate_ids_current_union": 14,
+    "hand_in_coordinate_ids_before": 0,
+    "hand_in_coordinate_ids_current": 0,
+    "unverified_pickup_requirements_before": 18,
+    "unverified_pickup_requirements_current_union": 18,
+    "unknown_objective_quantities_before": 0,
+    "unknown_objective_quantities_current": 0,
+    "interpretation": "8 October prompt snapshot compared with current audit; earlier documented item-stage corrections are already integrated."
+  },
+  "previous_review_comparison": {
+    "audit_json_identical": "current audit guide metrics and gap sets match research/eastern-plaguelands-2026-10-09/after-audit.json",
+    "flow_actions_and_stops_identical": true,
+    "flow_metrics_identical": true,
+    "strict_flow_baseline_cli": "Not comparable by catalogue hash because later unrelated zone data changed the whole-catalogue fingerprint."
+  }
+}
