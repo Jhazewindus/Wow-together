@@ -68,8 +68,9 @@ complete wall/terrain inventory. No unsupported low-level exception is added.
 The scoped audit compiles both factions and checks the Wall record's two source
 points; zero recorded gaps remain zero. Whole-chain same-facts comparisons cover
 eight starting states. Every action and both endpoints survive, with unchanged
-estimated distance 30,000.9, log peak 1, reward XP 7,050 and two uncertain travel
-legs. XP shortfall and rewards before work do not regress. Strict guard PASS;
+estimated distance 30,000.9, log peak 1, quest XP 7,050, reward XP before work
+7,650 and two uncertain travel legs. XP shortfall and rewards before work do
+not regress. Strict guard PASS;
 precision/source improvements are not claimed as routing gains or walkability.
 
 Five focused tests pass: shared object/frame consistency, exact hand-in unlocks,
