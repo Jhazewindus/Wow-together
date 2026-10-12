@@ -1,4 +1,11 @@
-# Dungeon viewer — 0.8.66 — NATIVE FINDER FILTERS
+# Dungeon viewer — 0.8.68 — DUNGEON JOURNAL FACT UPDATES
+
+The 0.8.68 journal adds individually owner-confirmed Forever records for Lorgus
+Jett, Fenrus the Devourer, Azshir the Sleepless and Shade of the Archmage.
+City of Dalaran has only the Shade record so far and is explicitly labeled
+**Partial data** in the viewer. Its encounter/map coverage remains incomplete;
+no map location or unlisted drop is inferred. Starving Arcane follows An
+Alarming Request in the leveling catalogue.
 
 **See dungeon** opens the full journal from the main addon's Dungeon quests cards
 from anywhere. Cards place **Quest list** beside **Start route**; clicking the

@@ -87,7 +87,8 @@ function ns.DungeonViewerData(key)
     local stored = ns.dungeonJournalData and ns.dungeonJournalData.dungeons[key]
     local definition = ns.dungeonData and ns.dungeonData.dungeons[key]
     if not stored or not definition then return end
-    local data = {key = key, name = definition.name, definition = definition, bosses = {}, trash = {}, containers = {}, maps = {}}
+    local data = {key = key, name = definition.name, definition = definition, partial = stored.partial == true,
+        bosses = {}, trash = {}, containers = {}, maps = {}}
     local positions = ns.dungeonMapData and ns.dungeonMapData.dungeons[key]
     local byName = {}
     for index, boss in ipairs(stored.bosses) do

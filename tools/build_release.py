@@ -55,6 +55,11 @@ then fully restart the client; the release includes taint mitigation (a /reload 
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+0.8.68 DUNGEON JOURNAL FACT UPDATES adds four owner-confirmed boss/item records
+and the An Alarming Request prerequisite for Starving Arcane. City of Dalaran
+shows its current Shade of the Archmage entry as Partial data; the full encounter
+list and interior map remain unknown. See TESTING.md and THIRD_PARTY_NOTICES.md.
+
 0.8.67 LIVE DUNGEON APPROACH MAPS adds seven live outdoor cave maps using the
 client's own textures. Your marker follows public outdoor coordinates; entering
 the matching instance opens its existing static map. Dungeon interiors remain
@@ -681,7 +686,7 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
                      'forever_map_geometry.py', 'quest_event_areas.py', 'lua_data_literal.py', 'forever_beta_facts.py',
                      'quest_observation_facts.py', 'capture_quest_pages.py', 'audit_quest_guides.py', 'audit_quest_flow.py',
                      'import_professions.py', 'import_warcraftdb.py', 'import_wowhead.py', 'import_travel_network.py', 'import_guide_services.py', 'import_dungeons.py', 'import_dungeon_journal.py', 'import_dungeon_positions.py',
-                     'audit_dungeon_loot.py', 'capture_dungeon_loot.py', 'import_vanilla_loot.py', 'dungeon_encounters.json',
+                     'audit_dungeon_loot.py', 'capture_dungeon_loot.py', 'import_vanilla_loot.py', 'dungeon_encounters.json', 'dungeon_fact_corrections.json',
                      'guide_source_queue.py', 'forever_source_manifest.json', 'quest_corrections.json', 'quest_exclusions.json'):
             archive.write(ROOT / 'tools' / name, 'WowTogether/data-tools/' + name)
         archive.writestr('WowTogether/INSTALL.md', instructions)

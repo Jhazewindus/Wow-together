@@ -2,22 +2,24 @@
   "schema": 2,
   "captured": "2026-10-06",
   "counts": {
-    "dungeons": 28,
-    "dungeonsWithBosses": 22,
-    "bosses": 263,
-    "items": 5557,
-    "lootEntries": 1214,
-    "sharedBossDrops": 16228,
-    "trashSources": 532,
-    "trashDrops": 313233,
-    "containers": 103,
-    "containerDrops": 6087,
-    "portraits": 171,
-    "mapReferences": 19,
     "vanillaNPCTables": 933,
+    "dungeonsWithBosses": 23,
     "vanillaContainerTables": 95,
+    "mapReferences": 19,
+    "sharedBossDrops": 16228,
+    "trashDrops": 313233,
+    "containerDrops": 6087,
+    "dungeons": 28,
+    "items": 5557,
+    "trashSources": 532,
     "sourceDropRowsAudited": 415670,
-    "seasonOnlyRowsExcluded": 13127
+    "seasonOnlyRowsExcluded": 13127,
+    "bosses": 264,
+    "containers": 103,
+    "portraits": 171,
+    "lootEntries": 1218,
+    "partialDungeons": 1,
+    "userConfirmedFacts": 4
   },
   "coverage": {
     "the-hall-of-thanes": {
@@ -54,7 +56,8 @@
         10000,
         14682
       ],
-      "unpublished": false
+      "unpublished": false,
+      "userConfirmedFacts": 1
     },
     "scarlet-monastery": {
       "zoneNPCs": 44,
@@ -66,7 +69,8 @@
       "trashSources": 28,
       "containers": 10,
       "missingForeverNPCs": [],
-      "unpublished": false
+      "unpublished": false,
+      "userConfirmedFacts": 1
     },
     "zulfarrak": {
       "zoneNPCs": 43,
@@ -425,11 +429,13 @@
       "vanillaNPCTablesCaptured": 0,
       "foreverNPCTablesCaptured": 0,
       "reportedBosses": 0,
-      "bosses": 0,
+      "bosses": 1,
       "trashSources": 0,
       "containers": 0,
       "missingForeverNPCs": [],
-      "unpublished": true
+      "unpublished": false,
+      "userConfirmedFacts": 1,
+      "partial": true
     },
     "razorfen-downs": {
       "zoneNPCs": 35,
@@ -525,7 +531,8 @@
       "missingForeverNPCs": [
         8996
       ],
-      "unpublished": false
+      "unpublished": false,
+      "userConfirmedFacts": 1
     },
     "scholomance": {
       "zoneNPCs": 59,
@@ -10155,6 +10162,56 @@
     "Unpublished new dungeons and missing beta NPC tables remain unknown. No encounter/map/loot relationship is guessed.",
     "Shared/world drops are separate from encounter loot. Containers are not NPC drops.",
     "Loot tables do not include vendor stock, quest rewards, skinning or gathering resources.",
-    "No source scripts, guide prose or external artwork are included."
-  ]
+    "No source scripts, guide prose or external artwork are included.",
+    "Four individual NPC/item relationships are owner-confirmed from the identified user-supplied reference archive; no source code, prose, artwork or bulk tables are included."
+  ],
+  "userConfirmedFacts": {
+    "archive": "ForeverDungeonJournal1.6.3.zip",
+    "archiveSHA256": "7dbb7da3960cc696fde9382fe5b76f517f1a7b2d4fc8e998eb980962dfde0e02",
+    "confirmationDate": "2026-10-12",
+    "confirmation": "The project owner confirmed the listed NPC/item relationships and prerequisite as correct from the supplied reference. This file records only these individual facts; it does not import addon code, prose, layouts, images, or bulk tables.",
+    "limitations": [
+      "The reference archive had no license notice.",
+      "The archive is not included in this repository or release.",
+      "Review URLs identify records but were not fetched during this update."
+    ],
+    "records": [
+      {
+        "dungeonKey": "blackfathom-deeps",
+        "npcID": 12902,
+        "npcName": "Lorgus Jett",
+        "itemID": 251377,
+        "itemName": "Plans: Protector's Silvered Chain Leggings",
+        "relationship": "dropIDs",
+        "referenceURL": "https://www.wowhead.com/forever/npc=12902"
+      },
+      {
+        "dungeonKey": "shadowfang-keep",
+        "npcID": 4274,
+        "npcName": "Fenrus the Devourer",
+        "itemID": 251380,
+        "itemName": "Plans: Veteran's Silvered Chain Helm",
+        "relationship": "dropIDs",
+        "referenceURL": "https://www.wowhead.com/forever/npc=4274"
+      },
+      {
+        "dungeonKey": "scarlet-monastery",
+        "npcID": 6490,
+        "npcName": "Azshir the Sleepless",
+        "itemID": 252456,
+        "itemName": "Totemic Leather Helm",
+        "relationship": "dropIDs",
+        "referenceURL": "https://www.wowhead.com/forever/npc=6490"
+      },
+      {
+        "dungeonKey": "city-of-dalaran",
+        "npcID": 246020,
+        "npcName": "Shade of the Archmage",
+        "itemID": 273103,
+        "itemName": "Blueprint: Arcane Salvager",
+        "relationship": "dropIDs",
+        "referenceURL": "https://www.wowhead.com/forever/npc=246020"
+      }
+    ]
+  }
 }

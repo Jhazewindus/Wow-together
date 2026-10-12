@@ -129,3 +129,13 @@ no website JavaScript, guide prose, screenshots or source addon code is bundled.
 Explicit community boss/drop reports on three Wowhead Forever zone pages retain
 their comment IDs, authors, dates and page hashes in the provenance manifest.
 They are reported beta evidence, not official or exhaustive loot guarantees.
+
+Version 0.8.68 also contains four individually owner-confirmed NPC/item facts
+from the user-supplied `ForeverDungeonJournal1.6.3.zip` reference (SHA-256
+`7dbb7da3960cc696fde9382fe5b76f517f1a7b2d4fc8e998eb980962dfde0e02`). The
+archive had no license notice. The repository retains the archive identity and
+the exact selected IDs in `tools/dungeon_fact_corrections.json` and
+`DungeonJournalData.json`; it does not bundle the archive. No source code,
+interface layout, images, prose or bulk tables were incorporated. These are
+selected factual relationships, not a claim that the full reference database
+is licensed or that every City of Dalaran encounter is known.

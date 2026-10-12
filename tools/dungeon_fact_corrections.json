@@ -1,0 +1,99 @@
+{
+  "schema": 1,
+  "source": {
+    "archive": "ForeverDungeonJournal1.6.3.zip",
+    "archiveSHA256": "7dbb7da3960cc696fde9382fe5b76f517f1a7b2d4fc8e998eb980962dfde0e02",
+    "confirmationDate": "2026-10-12",
+    "confirmation": "The project owner confirmed the listed NPC/item relationships and prerequisite as correct from the supplied reference. This file records only these individual facts; it does not import addon code, prose, layouts, images, or bulk tables.",
+    "limitations": [
+      "The reference archive had no license notice.",
+      "The archive is not included in this repository or release.",
+      "Review URLs identify records but were not fetched during this update."
+    ]
+  },
+  "records": [
+    {
+      "dungeonKey": "blackfathom-deeps",
+      "npcID": 12902,
+      "npcName": "Lorgus Jett",
+      "itemID": 251377,
+      "itemName": "Plans: Protector's Silvered Chain Leggings",
+      "relationship": "dropIDs",
+      "referenceURL": "https://www.wowhead.com/forever/npc=12902",
+      "itemMetadata": {
+        "id": 251377,
+        "name": "Plans: Protector's Silvered Chain Leggings",
+        "quality": 3,
+        "classID": 9,
+        "subclass": 4,
+        "slot": 0,
+        "level": 30,
+        "status": "new",
+        "icon": "Interface\\Icons\\inv_scroll_03"
+      }
+    },
+    {
+      "dungeonKey": "shadowfang-keep",
+      "npcID": 4274,
+      "npcName": "Fenrus the Devourer",
+      "itemID": 251380,
+      "itemName": "Plans: Veteran's Silvered Chain Helm",
+      "relationship": "dropIDs",
+      "referenceURL": "https://www.wowhead.com/forever/npc=4274",
+      "itemMetadata": {
+        "id": 251380,
+        "name": "Plans: Veteran's Silvered Chain Helm",
+        "quality": 3,
+        "classID": 9,
+        "subclass": 4,
+        "slot": 0,
+        "level": 25,
+        "status": "new",
+        "icon": "Interface\\Icons\\inv_scroll_03"
+      }
+    },
+    {
+      "dungeonKey": "scarlet-monastery",
+      "npcID": 6490,
+      "npcName": "Azshir the Sleepless",
+      "itemID": 252456,
+      "itemName": "Totemic Leather Helm",
+      "relationship": "dropIDs",
+      "referenceURL": "https://www.wowhead.com/forever/npc=6490",
+      "itemMetadata": {
+        "id": 252456,
+        "name": "Totemic Leather Helm",
+        "quality": 3,
+        "classID": 4,
+        "subclass": 2,
+        "slot": 1,
+        "requiredLevel": 25,
+        "level": 30,
+        "status": "new",
+        "icon": "Interface\\Icons\\inv_helmet_24"
+      }
+    },
+    {
+      "dungeonKey": "city-of-dalaran",
+      "npcID": 246020,
+      "npcName": "Shade of the Archmage",
+      "itemID": 273103,
+      "itemName": "Blueprint: Arcane Salvager",
+      "relationship": "dropIDs",
+      "referenceURL": "https://www.wowhead.com/forever/npc=246020",
+      "createPartialBoss": true,
+      "partialDungeon": true,
+      "itemMetadata": {
+        "id": 273103,
+        "name": "Blueprint: Arcane Salvager",
+        "quality": 2,
+        "classID": 9,
+        "subclass": 8,
+        "slot": 0,
+        "level": 25,
+        "status": "new",
+        "icon": "Interface\\Icons\\inv_garrison_blueprints3"
+      }
+    }
+  ]
+}

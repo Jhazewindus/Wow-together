@@ -1,5 +1,26 @@
 # Wow Together changelog
 
+## 0.8.68
+
+**DUNGEON JOURNAL FACT UPDATES**
+
+- Add four individually confirmed Forever loot records: Lorgus Jett's
+  Protector's Silvered Chain Leggings plans, Fenrus's Veteran's Silvered Chain
+  Helm plans, Azshir's Totemic Leather Helm and Shade of the Archmage's Arcane
+  Salvager blueprint.
+- Add Shade of the Archmage to City of Dalaran's journal as partial data. The
+  journal labels it partial rather than suggesting the full boss/loot list is
+  known; no interior map position is inferred.
+- Add An Alarming Request as Starving Arcane's prerequisite so the quest guide
+  respects the chain.
+- Record the small user-confirmed fact set and reference provenance. No addon
+  implementation, prose, layouts or artwork are taken from the supplied
+  reference archive.
+
+Host checks verify the boss/item links, partial label, rebuildable provenance
+corrections and prerequisite chain. Dalaran still needs encounter/map capture;
+this update does not claim its dungeon journal is complete.
+
 ## 0.8.67
 
 **LIVE DUNGEON APPROACH MAPS**

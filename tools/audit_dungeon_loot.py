@@ -36,6 +36,93 @@ def item_record(row, icon=None, evidence='vanilla'):
     return {key: value for key, value in values.items() if value is not None}
 
 
+def apply_user_confirmed_fact_corrections(data, coverage, item_rows, correction_path=None):
+    """Apply the small, explicitly user-confirmed fact set after source audit.
+
+    These rows do not import addon code, presentation, prose or whole tables.
+    The archive identity and confirmation limits are retained in the manifest.
+    """
+    path = correction_path or ROOT / 'tools/dungeon_fact_corrections.json'
+    corrections = json.loads(path.read_text())
+    if corrections.get('schema') != 1 or not isinstance(corrections.get('records'), list):
+        raise ValueError('Invalid user-confirmed dungeon fact corrections')
+    source = corrections.get('source') or {}
+    if not re.fullmatch(r'[0-9a-f]{64}', source.get('archiveSHA256', '')):
+        raise ValueError('User-confirmed fact source has no archive checksum')
+    manual_facts = []
+    per_dungeon = {}
+    for fact in corrections['records']:
+        key, npc_id, item_id = fact.get('dungeonKey'), fact.get('npcID'), fact.get('itemID')
+        if key not in data or type(npc_id) is not int or type(item_id) is not int:
+            raise ValueError('User-confirmed dungeon fact has invalid identities')
+        field = fact.get('relationship')
+        if field not in ('dropIDs', 'sharedDropIDs'):
+            raise ValueError('User-confirmed dungeon fact has an invalid relationship type')
+        item = item_rows.get(item_id)
+        if item is None:
+            item = fact.get('itemMetadata')
+            if item is not None:
+                if item.get('id') != item_id or item.get('name') != fact.get('itemName'):
+                    raise ValueError('User-confirmed dungeon item metadata conflicts with its identity')
+                item_rows[item_id] = item
+        if not item or item.get('name') != fact.get('itemName'):
+            raise ValueError('User-confirmed dungeon fact item is absent or has a conflicting name')
+        dungeon = data[key]
+        bosses = dungeon.get('bosses', [])
+        if isinstance(bosses, dict):
+            if bosses and sorted(bosses) != list(range(1, len(bosses) + 1)):
+                raise ValueError('User-confirmed dungeon boss field is not a sequential list')
+            bosses = [bosses[index] for index in range(1, len(bosses) + 1)]
+            dungeon['bosses'] = bosses
+        if not isinstance(bosses, list):
+            raise ValueError('User-confirmed dungeon boss field is not a list')
+        boss = next((row for row in bosses if row.get('id') == npc_id), None)
+        if boss is None:
+            if fact.get('createPartialBoss') is not True or not fact.get('partialDungeon'):
+                raise ValueError('User-confirmed fact has no reviewed encounter identity')
+            boss = {'id': npc_id, 'name': fact.get('npcName'), 'dropIDs': [], 'sharedDropIDs': [],
+                    'userConfirmedDropIDs': []}
+            if not boss['name']:
+                raise ValueError('Partial encounter needs a reviewed name')
+            bosses.append(boss)
+        elif boss.get('name') != fact.get('npcName'):
+            raise ValueError('User-confirmed fact encounter name conflicts with the audited table')
+        ids = boss.get(field, [])
+        if isinstance(ids, dict):
+            if ids and sorted(ids) != list(range(1, len(ids) + 1)):
+                raise ValueError('User-confirmed dungeon loot field is not a sequential list')
+            ids = [ids[index] for index in range(1, len(ids) + 1)]
+            boss[field] = ids
+        if not isinstance(ids, list):
+            raise ValueError('User-confirmed dungeon loot field is not a list')
+        if item_id not in ids:
+            ids.append(item_id)
+        ids.sort(key=lambda ident: (-item_rows[ident].get('quality', 0), item_rows[ident]['name'], ident))
+        confirmed = boss.setdefault('userConfirmedDropIDs', [])
+        if item_id not in confirmed:
+            confirmed.append(item_id)
+            confirmed.sort()
+        if fact.get('partialDungeon'):
+            dungeon['partial'] = True
+        per_dungeon[key] = per_dungeon.get(key, 0) + 1
+        manual_facts.append({k: v for k, v in fact.items()
+            if k not in ('createPartialBoss', 'partialDungeon', 'itemMetadata')})
+
+    for key, count in per_dungeon.items():
+        entry = data[key]
+        row = coverage[key]
+        row['bosses'] = len(entry['bosses'])
+        row['reportedBosses'] = sum(bool(boss.get('reported')) for boss in entry['bosses'])
+        row['unpublished'] = not bool(entry['bosses'])
+        row['userConfirmedFacts'] = count
+        if entry.get('partial'):
+            row['partial'] = True
+
+    source = {k: v for k, v in source.items()}
+    source['records'] = manual_facts
+    return source
+
+
 def vanilla_icons(page):
     result = {}
     for match in re.finditer(r'_\[(\d+)\]\s*=\s*\{', page):
@@ -271,10 +358,13 @@ def audit(args):
             'bosses': len(entry['bosses']), 'trashSources': len(entry['trash']), 'containers': len(entry['containers']),
             'missingForeverNPCs': sorted(ident for ident in expected if ident not in boss_ids and str(ident) not in npc_sources),
             'unpublished': not expected}
+    user_confirmed_source = apply_user_confirmed_fact_corrections(data, coverage, item_rows)
     counts = {'dungeons': len(data), 'dungeonsWithBosses': sum(bool(value['bosses']) for value in data.values()),
         'bosses': sum(len(value['bosses']) for value in data.values()), 'items': len(item_rows),
         'lootEntries': sum(len(boss['dropIDs']) for value in data.values() for boss in value['bosses']),
         'sharedBossDrops': sum(len(boss['sharedDropIDs']) for value in data.values() for boss in value['bosses']),
+        'partialDungeons': sum(bool(value.get('partial')) for value in data.values()),
+        'userConfirmedFacts': sum(row.get('userConfirmedFacts', 0) for row in coverage.values()),
         'trashSources': sum(len(value['trash']) for value in data.values()),
         'trashDrops': sum(len(npc['dropIDs']) for value in data.values() for npc in value['trash']),
         'containers': sum(len(value['containers']) for value in data.values()),
@@ -293,7 +383,8 @@ def audit(args):
     manifest = {'schema': 2, 'captured': result['captured'], 'counts': counts, 'coverage': coverage,
         'zoneSources': sources, 'bossSources': {key: value for key, value in npc_sources.items() if int(key) in boss_ids},
         'npcSources': npc_sources, 'vanillaNPCSources': vanilla_sources, 'vanillaContainerSources': container_sources,
-        'communityReports': reports, 'encounterReviewSHA256': hashlib.sha256(args.encounters.read_bytes()).hexdigest(),
+        'communityReports': reports, 'userConfirmedFacts': user_confirmed_source,
+        'encounterReviewSHA256': hashlib.sha256(args.encounters.read_bytes()).hexdigest(),
         'clientFilenameSource': {'repository': 'wowdev/wow-listfile', 'commit': '2ee24a9d0ff98f614997587e32ee6a0074d0de65',
             'sha256': hashlib.sha256(args.listfile.read_bytes()).hexdigest()},
         'limitations': ['All captured Vanilla NPC/container drop rows are mapped; this is source coverage, not measured Forever drop rates.',
@@ -303,7 +394,8 @@ def audit(args):
             'Unpublished new dungeons and missing beta NPC tables remain unknown. No encounter/map/loot relationship is guessed.',
             'Shared/world drops are separate from encounter loot. Containers are not NPC drops.',
             'Loot tables do not include vendor stock, quest rewards, skinning or gathering resources.',
-            'No source scripts, guide prose or external artwork are included.']}
+            'No source scripts, guide prose or external artwork are included.',
+            'A small, explicitly identified set of individual facts is user-confirmed from the reference archive; the archive is not included.']}
     (ROOT / 'WowTogether/DungeonJournalData.json').write_text(json.dumps(manifest, indent=2) + '\n')
     print(json.dumps(counts, indent=2))
 

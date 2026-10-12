@@ -3,7 +3,7 @@
   "datasets": {
     "catalogue": {
       "file": "QuestCatalogue.lua",
-      "sha256": "c252d39f33455584a5cf7080fc5a5b219443bea125c83e8f50207d654bc3d54b"
+      "sha256": "1c2800bbef774e3816869aff9aff12ecec68280c2b196ddd8e105ddbb9e67fb9"
     },
     "questEntities": {
       "file": "QuestCatalogue.lua",
@@ -19,11 +19,11 @@
     },
     "dungeonJournalData": {
       "file": "DungeonJournalData.lua",
-      "sha256": "d113de074c27e4255b94d74cd839158d83ede608f99ef8c13c53a8cee2381385"
+      "sha256": "f24a2b08eaa6ec7a0f9e50cef72f7de19d7fbf07b97d740b37b7df139cf18a52"
     },
     "dungeonMapData": {
       "file": "DungeonMapData.lua",
-      "sha256": "8ad9cbfd94f5a674acf7e616565c320b5fde9345c425eaba1cf72dcd20ebc6a5"
+      "sha256": "0f11a23183f2795831cb078a12d6953e6c23542d3459f71eb0c70b9b512f629d"
     }
   },
   "revision": "0.8.31: audited loot relationships and original Vanilla BFD marker identities. 0.8.42: additive source-supplemented quest catalogue; all original quest gates and point fields independently preserved; other datasets unchanged."

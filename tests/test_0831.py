@@ -9,11 +9,67 @@ from test_navigation import navigator
 from test_074 import scanning_client
 
 sys.path.insert(0, str(ROOT / 'tools'))
-from audit_dungeon_loot import reported_tables, season_allowed
+from audit_dungeon_loot import apply_user_confirmed_fact_corrections, reported_tables, season_allowed
+from build_quest_dataset import own_lua
 from import_vanilla_loot import LiteralReader, vanilla_rows
 
 
 class LootAuditTests(unittest.TestCase):
+    def test_owner_confirmed_drop_records_and_partial_dalaran_journal(self):
+        c = Client(use_catalogue=True)
+        expected = {
+            'blackfathom-deeps': (12902, 251377),
+            'shadowfang-keep': (4274, 251380),
+            'scarlet-monastery': (6490, 252456),
+        }
+        for key, (npc_id, item_id) in expected.items():
+            data = c.ns.DungeonViewerData(key)
+            boss = next(row for row in data.bosses.values() if row.id == npc_id)
+            self.assertIn(item_id, {item.id for item in boss.loot.values()})
+
+        data = c.ns.DungeonViewerData('city-of-dalaran')
+        self.assertTrue(data.partial)
+        boss = next(row for row in data.bosses.values() if row.id == 246020)
+        self.assertEqual(boss.name, 'Shade of the Archmage')
+        self.assertIn(273103, {item.id for item in boss.loot.values()})
+        c.ns.ShowDungeonViewer('city-of-dalaran')
+        self.assertIn('Partial data', c.ns.dungeonViewer.summary.text)
+
+        manifest = json.loads((ROOT / 'WowTogether/DungeonJournalData.json').read_text())
+        self.assertEqual(manifest['counts']['userConfirmedFacts'], 4)
+        self.assertEqual(manifest['counts']['partialDungeons'], 1)
+        self.assertEqual(manifest['userConfirmedFacts']['archiveSHA256'],
+                         '7dbb7da3960cc696fde9382fe5b76f517f1a7b2d4fc8e998eb980962dfde0e02')
+
+    def test_user_confirmed_dungeon_corrections_are_rebuildable_and_idempotent(self):
+        data = {key: {'bosses': [{'id': npc, 'name': name, 'dropIDs': [], 'sharedDropIDs': []}]}
+                for key, npc, name in (
+                    ('blackfathom-deeps', 12902, 'Lorgus Jett'),
+                    ('shadowfang-keep', 4274, 'Fenrus the Devourer'),
+                    ('scarlet-monastery', 6490, 'Azshir the Sleepless'))}
+        data['city-of-dalaran'] = {'bosses': []}
+        coverage = {key: {'bosses': len(row['bosses']), 'reportedBosses': 0, 'unpublished': not row['bosses']}
+                    for key, row in data.items()}
+        items = {}
+        for _ in range(2):
+            source = apply_user_confirmed_fact_corrections(data, coverage, items)
+        self.assertEqual(len(data['city-of-dalaran']['bosses']), 1)
+        self.assertEqual(sum(len(row.get('userConfirmedDropIDs', []))
+                             for dungeon in data.values() for row in dungeon['bosses']), 4)
+        self.assertEqual(len(source['records']), 4)
+        self.assertTrue(all('itemMetadata' not in fact for fact in source['records']))
+
+    def test_dalaran_starving_arcane_prerequisite_is_published(self):
+        c = Client(use_catalogue=True)
+        quest = c.ns.CatalogueQuest(92457)
+        self.assertEqual(quest.title, 'Starving Arcane')
+        self.assertEqual(quest.previousQuest, 92432)
+        manifest = json.loads((ROOT / 'WowTogether/QuestCatalogue.json').read_text())
+        catalogue = own_lua(ROOT / 'WowTogether/QuestCatalogue.lua', 'catalogue')
+        actual = sum(bool(row.get('previousQuest') or row.get('prerequisiteAny')
+                           or row.get('prerequisiteAll')) for row in catalogue['quests'].values())
+        self.assertEqual(manifest['with_prerequisites'], actual)
+
     def test_bfd_uses_original_encounters_and_exact_ghamoora_drops(self):
         c = Client(use_catalogue=True)
         data = c.ns.DungeonViewerData('blackfathom-deeps')

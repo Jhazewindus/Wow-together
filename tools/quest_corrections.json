@@ -19013,5 +19013,14 @@
       "before": null,
       "after": "Elite"
     }
+  },
+  {
+    "questID": 92457,
+    "title": "Starving Arcane",
+    "previousTitle": "An Alarming Request",
+    "prerequisiteCorrection": {
+      "previousQuest": 92432
+    },
+    "source": "User-confirmed prerequisite fact from the supplied ForeverDungeonJournal 1.6.3 reference archive (SHA-256 7dbb7da3960cc696fde9382fe5b76f517f1a7b2d4fc8e998eb980962dfde0e02), confirmed 2026-10-12. Lookup pointers: https://www.wowhead.com/forever/quest=92457 and https://www.wowhead.com/forever/quest=92432; these pages were not fetched for this update. No addon code, quest prose, images or bulk tables were used."
   }
 ]

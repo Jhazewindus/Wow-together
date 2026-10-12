@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.67 — LIVE DUNGEON APPROACH MAPS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.68 — DUNGEON JOURNAL FACT UPDATES** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -22,6 +22,12 @@ Replace the folder on **every party member's client**, including all **91 Lua
 files** and the **Media folder**, then fully restart the client. Restart if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.68 adds four confirmed dungeon loot records and a Dalaran quest prerequisite.**
+City of Dalaran's current journal entry is labeled **Partial data**; further
+encounters and its interior map are not yet catalogued. The source notes identify
+the supplied reference archive and selected facts without bundling its code,
+text, layout or artwork.
 
 **0.8.67 adds live outdoor maps for seven dungeon approaches.** The original
 game-client textures are positioned from independently derived Blizzard

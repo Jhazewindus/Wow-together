@@ -35,7 +35,8 @@ class DungeonViewerTests(unittest.TestCase):
     def test_snapshot_has_attributed_facts_and_no_external_assets(self):
         c=self.client(); data=c.ns.dungeonJournalData
         self.assertEqual(28,len(list(data.dungeons.keys())))
-        self.assertEqual(22,data.counts.dungeonsWithBosses)
+        self.assertEqual(23,data.counts.dungeonsWithBosses)
+        self.assertTrue(data.dungeons['city-of-dalaran'].partial)
         self.assertGreater(data.counts.lootEntries,1000)
         for key,entry in data.dungeons.items():
             self.assertTrue(c.ns.dungeonData.dungeons[key])

@@ -40,6 +40,9 @@ def apply(directory):
     for key, role in (('with_starters', 'starts'), ('with_objectives', 'objectives'), ('with_turnins', 'ends')):
         metadata[key] = sum(bool(q.get(role)) for q in records.values())
         coverage['summary'][key] = metadata[key]
+    metadata['with_prerequisites'] = sum(bool(q.get('previousQuest') or q.get('prerequisiteAll')
+                                                or q.get('prerequisiteAny')) for q in records.values())
+    coverage['summary']['with_prerequisites'] = metadata['with_prerequisites']
     metadata['incomplete_objective_locations'] = sum(bool(q.get('objectiveLocationsIncomplete')) for q in records.values())
     reviewed = sorted(set(metadata.get('reviewed_stage_corrections', [])) | set(stage_changes))
     metadata['reviewed_stage_corrections'] = reviewed

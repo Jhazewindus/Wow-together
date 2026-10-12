@@ -1,11 +1,22 @@
 # Wow Together — friend test script
 
-For **0.8.67** — **LIVE DUNGEON APPROACH MAPS**, World of Warcraft: Forever beta,
+For **0.8.68** — **DUNGEON JOURNAL FACT UPDATES**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **10–15 minutes for this update**; the wider optional checks take 45–60
 minutes. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The retained expanded-guide checks below take about **15–25 minutes**.
+
+## Dungeon records and Dalaran partial state — this update
+
+1. In the journal, verify the following boss loot: Lorgus Jett — Plans:
+   Protector's Silvered Chain Leggings; Fenrus the Devourer — Plans: Veteran's
+   Silvered Chain Helm; Azshir the Sleepless — Totemic Leather Helm.
+2. Open City of Dalaran. Shade of the Archmage should list Blueprint: Arcane
+   Salvager, and the dungeon header should say **Partial data**. This is one
+   confirmed encounter, not a complete boss list or map.
+3. Inspect the Dalaran quest guide. Starving Arcane should remain behind An
+   Alarming Request in its prerequisite chain.
 ## Install and capture context
 
 1. Replace the complete WowTogether folder, including **all 91 Lua files** and

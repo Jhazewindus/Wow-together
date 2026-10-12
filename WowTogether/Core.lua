@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.67"
-ns.RELEASE_NAME = "LIVE DUNGEON APPROACH MAPS"
+ns.VERSION = "0.8.68"
+ns.RELEASE_NAME = "DUNGEON JOURNAL FACT UPDATES"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}
