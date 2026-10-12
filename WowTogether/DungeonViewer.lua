@@ -260,6 +260,10 @@ local function create()
         if coordinate(x) and coordinate(y) then frame:ClearAllPoints(); frame:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", x, y) end
         layout(frame); save(frame)
     end); frame.mode:SetPoint("TOPRIGHT", -20, -47)
+    frame.approach = ns.UIButton(frame, "Approach", 88, function()
+        if selected then ns.ShowDungeonApproach(selected) end
+    end); frame.approach:SetPoint("TOPRIGHT", -280, -47)
+    ns.UIHelp(frame.approach, "Open the live outdoor cave approach map when supported.")
     frame.background = ns.UIButton(frame, "BG", 34, function()
         frame.transparent = not frame.transparent
         frame:SetBackdropColor(colors.background[1], colors.background[2], colors.background[3], frame.transparent and .08 or .98)
@@ -447,6 +451,8 @@ function ns.RenderDungeonViewer()
     frame.questList:SetEnabled(group ~= nil)
     frame.startRoute:SetEnabled(unfinished)
     frame.title:SetText(data.name)
+    frame.approach:SetShown(not frame.compact and ns.Option("approachMaps")
+        and ns.HasDungeonApproach and ns.HasDungeonApproach(data.key) == true)
     ns.UIButtonTone(frame.questsToggle, frame.showQuests)
     frame.summary:SetText("Lv " .. data.definition.runLevelLow .. "–" .. data.definition.runLevelHigh
         .. (#data.bosses > 0 and (" • " .. #data.bosses .. " bosses") or ""))

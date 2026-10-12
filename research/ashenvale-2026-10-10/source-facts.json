@@ -1,0 +1,391 @@
+{
+  "captured": "2026-10-10",
+  "pinned_quest_facts": {
+    "source": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua",
+    "revision": "e0a6eaa86f181ac99262e34126bcd2ed1a1712d6",
+    "quest_database_sha256": "d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87"
+  },
+  "wowhead_quest_captures": {
+    "95042": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "8d9539fd1a0e33577b64b51e421288cedb00eadd008c34d2a62b183fa92c182d"
+    },
+    "98027": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "0fe51025ea5538bed667f17f17e62f745bfbc0b8d5abc9993f33a471e95befd3"
+    },
+    "98417": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "ad353a1934bf942aea708c573dd5e44f122c059328981a3cfb03c778cc219f93"
+    },
+    "908": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "daaca073dcd7ef73421f896bc6c6f8d72af63bd891918d659dfbf8d51bc8d7c7"
+    },
+    "909": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "914542b520e4974fec0387b4a681740bb3be8881f02121522c62db9d1e9c3353"
+    },
+    "994": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "5f14570281e2a042ad2cff6b4e61967aac033f38da6fd8ac979f9a274b704e0e"
+    },
+    "995": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "3df21a1d7fbaaf13d453d329ff5bd73f878fbb4690b851822e57d213137cbd34"
+    },
+    "1016": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "6b8e9d781fd13cdb069e33943fba7cdaa34e12a4907393069822670f3077de32"
+    },
+    "1046": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "5ebe8edb7b003bd75b901e43e33d0fd1d1eaed149fa8a95d8549f639556d8208"
+    },
+    "6504": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "749a00cf7168aa9a6635e08c7bb1d11f5cad28de6b14a84a7bdefd3ff721ea3e"
+    },
+    "7863": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "b06e4698bffbf7f2d9648407895a9dbfc14c0b2c8fdb31dd3edc1d028a955a5e"
+    },
+    "7865": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "9a4e602694db23ac3205383b1c11b87abdfed2aa5f3a8f51811e78e25db72cca"
+    },
+    "7868": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "8c6cae42753fd6f127e2c6c023edd443e3d7b52b5af0a9c09c7ed878588d01bc"
+    },
+    "79090": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "4b2704fd9a25a490251006b72668cbde5e19ae51362fa0995a924798755b1fe9"
+    },
+    "79098": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "498d5c0825c781ad7457f8f763e65b9f60c3d6b80d79b010cffe7ce2dde6614e"
+    },
+    "86757": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "2c78cafdc609ef1055ab2ec293537a66319108b76ccf912bd20c21bfb3bb1809"
+    },
+    "1045": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "a50d04518b39b330d56581bc34b44bc378f39e1cf79bf5ec5e83ef1857c7629c"
+    },
+    "6921": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "2e183f2560cfc4836fd7c676435cbd314f71686361b06a8768974550b4937073"
+    },
+    "6922": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "31934a35a2cbf38311dcb7b069b34104005b850cb79edbcce3c3d945696df9ca"
+    }
+  },
+  "wowhead_entity_captures": {
+    "npc-3917": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "e2e7da2fe31a708d7284af619f815c20e6778a8810e661a845b1da94388d91ad"
+    },
+    "npc-12759": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "baa3b03d0caaf3840b8ff61bfadb964a1695d423e2c096cbe74656f2b9cadb8a"
+    },
+    "npc-11680": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "60539c669ca23e4c587d9b854ccccd76acd1793d4f7e052b0b9bd6dad1dc9f81"
+    },
+    "npc-11682": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "413f1ea4e6f3896d4c3675a4692d6dc21948cc4b9c19b6f54366604b52882d86"
+    },
+    "npc-3955": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "d7e64e7cd9be0a9f3405fe720ea8e0fa64043e1e5ed3883d5f32a9ed9bbcdd85"
+    },
+    "npc-212970": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "48ba572d04dcf706506dc18152f0b2cbd2a87feefc4afa536d3f29399979cb81"
+    },
+    "npc-217707": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "0fefd6326acd8300de48bf4ff14616c75c8da8efff1e8138aea7180fee2182ec"
+    },
+    "npc-212969": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "f7eb55aa53f07b0ba2fb4a437c07e3fdb0ca6b73704bda88dd52e5048f34c4d5"
+    },
+    "npc-217706": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "a85c3fa6364c3a8c1323dbeb4bec6630e6c4e56379f4a79c8dc4128ff77851f4"
+    },
+    "npc-4802": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "8419fa0c970c212423cdbc70e0139fdb4c15e150f7e29e0378c6bc216563bb5e"
+    },
+    "npc-4803": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "9c39a914a9d7078c788c939538d870b95793387650db188cd5706344c47ec426"
+    },
+    "npc-4805": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "4d44d2bdf5be1d7d30c000f25beea0428c20ebb90e8a9d32b3aedc1d557e7569"
+    },
+    "npc-216661": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "9918bea0de530dae3376c978a73fc27516cb6e89d4529a67ee4cafce65c9cfdc"
+    },
+    "npc-216662": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "9014c447c80fbbcc9a1590b08dd736b7bf707dcbb4a0d91f8a96f8acad7b7388"
+    },
+    "npc-259649": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "57a6f3b95296399b940b1a329d6e8c8e5e21700cf094419c2d209fa114eab16e"
+    },
+    "npc-3961": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "2172714c67dd3c9f22f86b0389d0e948d995dced6a42a8eae9d42126ac2f9150"
+    },
+    "npc-221269": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "3a31b6307257e3883b712da2dd16d2ba09967ff40b8fc9369cb1539b9c782325"
+    },
+    "npc-12736": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "8dee2ad2bbfb495c71f010a0e4329b32c78195d86c360248f442c4e4e8d7e36a"
+    },
+    "npc-12876": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "a7cf859d437c06454c747f68b1ea7e22f84d4ebada800a7491ec9eeae493b52c"
+    },
+    "npc-3691": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "48401b8fa13f1bb20911995822eb295c53dabb24e677dbc9915d3ddf6f3cda8b"
+    },
+    "npc-3897": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "6f1fa79071f6685fec7b59298e7dd28cb51fdce8654a2526084bdb0b9bd33f22"
+    },
+    "npc-3696": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "fcb06fb3c677e60f52c7191f9dd6e503f1865737e7a289157901c972e449a0ab"
+    },
+    "npc-3932": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "f37cc964fcbaa2902489cf23c490455eaf968b063fb57eda4f8842fe3ea16d03"
+    },
+    "npc-12718": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "41ceb79437249cf27b533a065afb06d4088ca504f9c1eb02b98d01de0d39a13d"
+    },
+    "item-16762": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "e591a7975212bee7f95fe3c41aa23e0971b538d5b9a255fc538c47f29a54069e"
+    },
+    "item-16782": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "1c796d9d119886eeb16d53ff8ce7493a7a2660acf44ef2fb0d3c505e71c717b2"
+    },
+    "item-12220": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "4d1365598143cf3580f5e2c76d06fbe0d2225584e0e0280f173d49f4be80ebc8"
+    },
+    "item-5455": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "8a742bc765ce5c72649d4c3d12124a945bced157c31211fa8f294b8aaa42c1a1"
+    },
+    "item-5462": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "567b00cbbd02d3ac89e40cd73bacca5d6ba5eb06d1b56e0df85ee9d297a30a79"
+    },
+    "item-5388": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "aea61a4cca792309dc5e6bd51dc6b79ed1a3a5ced54194e14ac2bc94cbba27e9"
+    },
+    "item-16642": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "d84956a2ea51a6f8aaf2af7e2e39b2f3fbd918925982845eb7c93672f3a98c42"
+    },
+    "item-16643": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "948bc529fe91ff8a8d6bb2463cacef338159cff188eb46cfec8909ca1f5aae8e"
+    },
+    "item-16644": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "84a5087b39e65b9d3a6b724b026f84098f036f3bba0526c3843f8389c54037fd"
+    },
+    "item-211814": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "66474f8491024a57e285926a5f6c56a6c1960b348036569d23490fe5b90db175"
+    },
+    "item-211813": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "14a83d5943fbbaddc674ef3e86e7b31bdc305efdb583b3bbfdd4a7c5f910d54f"
+    },
+    "item-279505": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "f4aa8a060554858666544050a04709aaaf6ae38850d42b330d1967a8cb656467"
+    },
+    "item-279507": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "57ac2c4ff1aaf22fdf7f5ef8d31a88d102a492dc04aaa96b0ddf9e6be2b602af"
+    },
+    "item-6995": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "d3ea41a3a6d2ebf986dc92dbf835f4bbf1bb9d96119a0ac54ff4f9b7d776a671"
+    },
+    "item-279274": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "99d4ade1b4e13dcdc66b289f1853c715f27adc822ed03eb391193e7810d02318"
+    },
+    "item-281014": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "5499fff555ec6756ea2fa156673c78297518dbc2a1b5a1f976d02ef0898eee32"
+    },
+    "object-177964": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "c7423ea049ff9ea596314d3e3e93894d311fd4f8173de71233a2e2fc446cb85c"
+    },
+    "object-669176": {
+      "status": 200,
+      "captured": "2026-10-10",
+      "sha256": "7cfd9fba03cf27b9bd9f11ff26ec8c0011c3265064c2345dab1d23fdf84fbfd9"
+    }
+  },
+  "source_interpretation": [
+    "Quest pages were captured from public Wowhead Forever quest pages. Literal metadata and relations were parsed without executing page scripts.",
+    "Entity pages were used for published item-to-source relations and map points. Page prose/comments were treated as anecdotal cross-checks, not live beta proof.",
+    "IDs 908 and 909 remain distinct from Blackfathom quests 6921 and 6922; captured comments did not prove identity equivalence or a safe Ashenvale pickup route.",
+    "Quest 95042 keeps the page-specified classMask 2 and raceMask 16, with unknown objective quantity retained. Actual offer eligibility needs beta confirmation.",
+    "NPC and objective coordinates are map points, not verified walkable terrain or route safety."
+  ],
+  "reviewed_ids": {
+    "chain_choices": [
+      994,
+      995
+    ],
+    "objective_stage": [
+      86757,
+      1016,
+      1046,
+      6504,
+      98027,
+      98417
+    ],
+    "faction_repeatables": [
+      79090,
+      79098
+    ],
+    "care_packages": [
+      7863,
+      7864,
+      7865,
+      7866,
+      7867,
+      7868
+    ],
+    "identity_and_elite": [
+      908,
+      909,
+      95042
+    ]
+  },
+  "open_data_gaps": {
+    "908": [
+      "pickup",
+      "objective",
+      "hand-in",
+      "relationship to 6921 remains unproven"
+    ],
+    "909": [
+      "pickup",
+      "objective",
+      "hand-in",
+      "current relationship to an Ashenvale stage unverified"
+    ],
+    "1016": [
+      "Divined Scroll acquisition and complete water elemental objective coverage"
+    ],
+    "1046": [
+      "Dartol's Rod transformation/hand-off point"
+    ],
+    "6504": [
+      "chapter item acquisition sources"
+    ],
+    "98027": [
+      "provided necklace delivery semantics not proven by item relation"
+    ],
+    "98417": [
+      "scroll source coordinates incomplete"
+    ],
+    "95042": [
+      "objective quantity unknown"
+    ]
+  },
+  "astranaar": {
+    "evidence_file": "research/2026-10-06-astranaar-review.json",
+    "interpretation": "Partial old tester export says only the Horde map line crossed Astranaar; no named waypoint. Not live terrain verification. Existing hostile-settlement ground-travel guard retained."
+  }
+}

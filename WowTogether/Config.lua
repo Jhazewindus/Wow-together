@@ -9,7 +9,8 @@ local defaults = {autoAccept = false, npcHints = true, nameplateHints = true, cl
     useLearnedQuests = true, exportCharacterNames = false, fixedZoneGuides = true,
     standaloneArrow = false, travelNetwork = true, soloMode = false, questGiverStars = true, patrolHints = true, eliteSpawnHints = true, hearthstoneTips = true,
     guideOpaque = true, highlightGuideQuest = true, classTraining = true,
-    inventoryServices = true, restockSupplies = true, supplyTarget = 20, groupFinderRoles = true}
+    inventoryServices = true, restockSupplies = true, supplyTarget = 20, groupFinderRoles = true,
+    unitNumbers = false, approachMaps = true}
 
 function ns.Option(key)
     local value = ns.db and ns.db.config and ns.db.config[key]
@@ -21,7 +22,8 @@ function ns.PartyFeaturesEnabled() return not ns.Option("soloMode") end
 
 local sections = {
     {"play", "Play mode", {
-        {"soloMode", "Solo leveling mode", "Disable party messages, shared progress, route invitations and catch-up. Guides use only your own progress, even while grouped."}}},
+        {"soloMode", "Solo leveling mode", "Disable party messages, shared progress, route invitations and catch-up. Guides use only your own progress, even while grouped."},
+        {"unitNumbers", "Always show health and resource numbers", "Keep numeric values visible on Blizzard's unit bars. Turn off to restore your previous display setting."}}},
     {"guides", "Leveling guides", {
         {"fixedZoneGuides", "Follow fixed zone guides", "Keep a set quest order. Turn off to plan trips around your current quests and location; restart the guide to apply."},
         {"nearbyPickups", "Collect useful quests nearby", "Collect suitable guide quests within 100 yards of your next pickup."},
@@ -37,6 +39,7 @@ local sections = {
         {"routeArrow", "Show the direction arrow", "A movable guide panel with the current instruction and step controls."},
         {"guideOpaque", "Opaque guide background", "Use a solid background. Turn off for a see-through guide."},
         {"standaloneArrow", "Show a standalone direction arrow", "Show the arrow, distance and travel time in a separate small panel."},
+        {"approachMaps", "Show dungeon approach maps", "Open a live map in supported caves and tunnels leading to dungeons."},
         {"distanceUnits", "Distance units", "Choose how distances appear under the arrow.", {{"yards", "Yards"}, {"metres", "Metres"}}},
         {"mapLegend", "Show route explanation on the map", "Show route status below the world map. Route controls remain available."}}},
     {"travel", "Travel routing", {
@@ -102,6 +105,16 @@ function ns.SetOption(key, value)
     if key == "recordQuestData" and ns.Option(key) ~= value then ns.ResearchCaptureBoundary() end
     ns.db.config[key] = value
     ns.InitializeConfig()
+    if key == "unitNumbers" then
+        if ns.ApplyUnitNumbers then ns.ApplyUnitNumbers() end
+        if ns.RenderSettings then ns.RenderSettings() end
+        return
+    end
+    if key == "approachMaps" then
+        if ns.CheckApproachMap then ns.CheckApproachMap() end
+        if ns.RenderSettings then ns.RenderSettings() end
+        return
+    end
     if key == "guideOpaque" then
         ns.UpdateNavigationBackground()
         if ns.RenderSettings then ns.RenderSettings() end

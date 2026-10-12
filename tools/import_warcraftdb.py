@@ -25,15 +25,98 @@ def apply_corrections(records):
     for correction in corrections:
         if correction.get('stageCorrection'):
             continue  # Stage facts apply after enrichment, not as eligibility rules.
+        if correction.get('questTypeCorrection'):
+            quest = records.get(correction['questID'])
+            if quest is None:
+                continue
+            if quest.get('title') != correction['title']:
+                raise ValueError('Reviewed quest-type identity changed; review required')
+            rule = correction['questTypeCorrection']
+            if set(rule) != {'before', 'after'} or rule['after'] not in ('Elite', 'Raid', 'Dungeon', 'World Event'):
+                raise ValueError('Reviewed quest-type correction is invalid')
+            if quest.get('questType') not in (rule['before'], rule['after']):
+                raise ValueError('Reviewed quest type conflicts with source; review required')
+            if quest.get('questType') != rule['after']:
+                applied.append(correction['questID'])
+            quest['questType'] = rule['after']
+            quest['questTypeCorrectionSource'] = correction['source']
+            continue
+        if correction.get('factionCorrection'):
+            quest = records.get(correction['questID'])
+            if quest is None:
+                continue
+            rule = correction['factionCorrection']
+            if quest.get('title') != correction['title'] or rule.get('side') not in ('Alliance', 'Horde'):
+                raise ValueError('Reviewed faction identity changed; review required')
+            current = quest.get('side')
+            if current not in (rule.get('before'), rule['side']):
+                raise ValueError('Reviewed faction fact conflicts with source; review required')
+            quest['side'] = rule['side']
+            quest['factionCorrectionSource'] = correction['source']
+            if current != rule['side']:
+                applied.append(correction['questID'])
+            continue
         if correction.get('exclusiveQuests'):
             quest = records.get(correction['questID'])
             alternatives = correction['exclusiveQuests']
             if quest is None or any(other not in records for other in alternatives): continue
+            expected_titles = correction.get('exclusiveTitles', {})
             if quest['title'] != correction['title'] or any(
-                other == correction['questID'] or records[other]['title'] != correction['title'] for other in alternatives):
+                other == correction['questID'] or records[other]['title'] !=
+                expected_titles.get(str(other), correction['title']) for other in alternatives):
                 raise ValueError('Reviewed alternative quest identity changed; review required')
             quest['exclusiveQuests'] = sorted(set(alternatives))
             quest['exclusiveQuestSource'] = correction['source']
+            applied.append(correction['questID'])
+            continue
+        if correction.get('identityCorrection'):
+            quest = records.get(correction['questID'])
+            if quest is None:
+                continue
+            if quest.get('title') != correction['title']:
+                raise ValueError('Reviewed identity quest changed; review required')
+            rule = correction['identityCorrection']
+            before = correction.get('identityBefore', {})
+            allowed = {'classMask', 'raceMask'}
+            if not rule or set(rule) - allowed or set(before) - set(rule) or any(
+                    type(value) is not int or value < 0 for value in (*rule.values(), *before.values())):
+                raise ValueError('Reviewed identity correction is invalid')
+            for key, value in rule.items():
+                if quest.get(key, 0) not in (0, value, before.get(key, value)):
+                    raise ValueError('Reviewed identity fact conflicts with source; review required')
+            for key, value in rule.items():
+                quest[key] = value
+            quest['identityCorrectionSource'] = correction['source']
+            applied.append(correction['questID'])
+            continue
+        if correction.get('prerequisiteCorrection'):
+            quest = records.get(correction['questID'])
+            if quest is None:
+                continue
+            if quest.get('title') != correction['title']:
+                raise ValueError('Reviewed prerequisite identity changed; review required')
+            rule = correction['prerequisiteCorrection']
+            if not rule or set(rule) - {'previousQuest', 'prerequisiteAny', 'prerequisiteAll'}:
+                raise ValueError('Reviewed prerequisite correction is invalid')
+            before = correction.get('prerequisiteBefore', {})
+            for key in set(rule) | set(before):
+                if key not in {'previousQuest', 'prerequisiteAny', 'prerequisiteAll'}:
+                    raise ValueError('Unsupported prerequisite field')
+                current = quest.get(key)
+                desired = rule.get(key)
+                if current not in (None, [], desired, before.get(key)):
+                    raise ValueError('Reviewed prerequisite conflicts with source; review required')
+            for key, value in rule.items():
+                if key == 'previousQuest':
+                    if value not in records or value == correction['questID']:
+                        raise ValueError('Reviewed prerequisite parent is unavailable')
+                    if records[value].get('title') != correction.get('previousTitle'):
+                        raise ValueError('Reviewed prerequisite parent identity changed')
+                elif not isinstance(value, list) or any(type(i) is not int or i not in records for i in value):
+                    raise ValueError('Reviewed prerequisite alternatives are invalid')
+                quest[key] = copy.deepcopy(value)
+            quest['prerequisiteSource'] = correction['source']
+            quest['prerequisitesRead'] = True
             applied.append(correction['questID'])
             continue
         if correction.get('pickupRequiresOffer'):
@@ -116,15 +199,24 @@ def apply_stage_corrections(records):
                 points[0]['locationSource'] = correction['source']
             quest['providedItems'] = provided
             quest['requirements'] = {}
+            if rule.get('clearIncompleteObjectives'):
+                missing = list(quest.get('missingRequirements') or [])
+                if quest.get('objectives') or quest.get('unmodeledObjectiveKinds') or quest.get('otherLocationsIncomplete') or \
+                        any(r.get('entityType') != 'item' or r.get('entityID') != item['itemID'] or
+                            r.get('quantity') != item['quantity'] for r in missing):
+                    raise ValueError('Delivery correction cannot clear independent incomplete work: ' + str(ident))
+                quest['missingRequirements'] = []
+                quest['objectiveLocationsIncomplete'] = False
             if quest.get('worldReferences'):
                 quest['worldReferences']['requirements'] = {}
                 quest['worldReferences']['provided'] = copy.deepcopy(provided)
         elif rule['kind'] in ('objective-facts', 'stage-facts'):
             core = {'requirements', 'requiredItems', 'objectives', 'npcTargets'}
             allowed = core | {'starts', 'ends', 'startRefs', 'endRefs', 'providedItems',
-                              'missingRequirements', 'objectiveLocationsIncomplete', 'objectiveAlternatives'}
+                              'missingRequirements', 'objectiveLocationsIncomplete', 'objectiveAlternatives', 'questType'}
             fields = set(rule['before'])
             if not core <= fields or not fields <= allowed or set(rule['after']) != fields or \
+                    ('questType' in fields and rule['kind'] != 'stage-facts') or \
                     (rule['kind'] == 'objective-facts' and fields != core) or rule['after']['requiredItems'] != required:
                 raise ValueError('Unsupported reviewed objective fields: ' + str(ident))
             def value(field):
@@ -199,7 +291,11 @@ def apply_stage_corrections(records):
             point = rule['point']
             points = list(quest.get('objectives') or [])
             matches = [p for p in points if p.get('itemID') == point['itemID']]
-            if matches and matches != [point]:
+            def source_point_matches(actual):
+                # Supplemental enrichment may add this generated lookup key;
+                # it does not change the reviewed source identity or location.
+                return {k:v for k,v in actual.items() if k != 'legacyStepKey'} == point
+            if matches and (len(matches) != 1 or not source_point_matches(matches[0])):
                 raise ValueError('Reviewed source conflicts with an existing objective: ' + str(ident))
             if not matches:
                 points.append(copy.deepcopy(point))

@@ -1,0 +1,259 @@
+{
+  "validation": "Lua 5.1 host; native map APIs unavailable; no terrain/XP optimality claim",
+  "quest_records": 38,
+  "static_points_checked": 113,
+  "fixed_zone_guides_checked": 5,
+  "catalogue_reason_stages_checked": 127,
+  "catalogue_reason_codes": {
+    "class-progression": 2,
+    "level-work": 38,
+    "quest-objective": 49,
+    "quest-reward": 38
+  },
+  "reason_review_quest_ids": [
+    692,
+    703,
+    705,
+    706,
+    710,
+    711,
+    712,
+    713,
+    714,
+    715,
+    716,
+    717,
+    718,
+    719,
+    720,
+    723,
+    724,
+    727,
+    728,
+    732,
+    733,
+    734,
+    737,
+    738,
+    739,
+    777,
+    778,
+    779,
+    782,
+    793,
+    795,
+    1419,
+    1420,
+    2203,
+    2258,
+    3821,
+    4062
+  ],
+  "source_data_gap_free_guides": 1,
+  "guides": [
+    {
+      "faction": "Alliance",
+      "zone": "Badlands",
+      "key": "level-zone:eastern-kingdoms/badlands:levels:31-40",
+      "quests": 23,
+      "steps": 73,
+      "unknown_location_steps": 5,
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          78823
+        ],
+        "q": [
+          715,
+          723,
+          735
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        735
+      ],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 23,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 73,
+      "destination_reason_codes": {
+        "class-progression": 2,
+        "outside-level-range": 32,
+        "prerequisite": 23,
+        "quest-reward": 15,
+        "unlock-loop": 1
+      },
+      "reason_review_steps": 43,
+      "cross_zone_reason_steps": 17,
+      "flow_alternatives_evaluated": 9,
+      "flow_loop_changes": 1,
+      "geometric_guard_rejections": 24,
+      "geometric_bracket_replays": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 4,
+      "quest_reward_only_xp_shortfall": 435100,
+      "uncertain_travel_legs": 43,
+      "estimated_distance_before": 293553.83,
+      "estimated_distance_after": 293255.76
+    },
+    {
+      "faction": "Alliance",
+      "zone": "Badlands",
+      "key": "level-zone:eastern-kingdoms/badlands:levels:41-50",
+      "quests": 27,
+      "steps": 87,
+      "unknown_location_steps": 2,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [
+          716,
+          723
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 15,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 87,
+      "destination_reason_codes": {
+        "outside-level-range": 26,
+        "prerequisite": 50,
+        "quest-reward": 11
+      },
+      "reason_review_steps": 37,
+      "cross_zone_reason_steps": 11,
+      "flow_alternatives_evaluated": 6,
+      "flow_loop_changes": 0,
+      "geometric_guard_rejections": 5,
+      "geometric_bracket_replays": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 4,
+      "quest_reward_only_xp_shortfall": 625050,
+      "uncertain_travel_legs": 43,
+      "estimated_distance_before": 237335.47,
+      "estimated_distance_after": 237335.47
+    },
+    {
+      "faction": "Horde",
+      "zone": "Badlands",
+      "key": "level-zone:eastern-kingdoms/badlands:levels:31-40",
+      "quests": 16,
+      "steps": 53,
+      "unknown_location_steps": 4,
+      "missing_location_quest_ids_by_stage": {
+        "a": [
+          78823
+        ],
+        "q": [
+          715,
+          736
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        736
+      ],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 11,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 53,
+      "destination_reason_codes": {
+        "class-progression": 2,
+        "outside-level-range": 27,
+        "prerequisite": 12,
+        "quest-reward": 12
+      },
+      "reason_review_steps": 30,
+      "cross_zone_reason_steps": 15,
+      "flow_alternatives_evaluated": 2,
+      "flow_loop_changes": 0,
+      "geometric_guard_rejections": 21,
+      "geometric_bracket_replays": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 4,
+      "quest_reward_only_xp_shortfall": 496350,
+      "uncertain_travel_legs": 28,
+      "estimated_distance_before": 233873.75,
+      "estimated_distance_after": 233873.75
+    },
+    {
+      "faction": "Horde",
+      "zone": "Badlands",
+      "key": "level-zone:eastern-kingdoms/badlands:levels:41-50",
+      "quests": 18,
+      "steps": 59,
+      "unknown_location_steps": 1,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [
+          716
+        ],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [
+        2203
+      ],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 3,
+      "source_data_gap_free": false,
+      "reason_steps_checked": 59,
+      "destination_reason_codes": {
+        "outside-level-range": 17,
+        "prerequisite": 35,
+        "quest-reward": 7
+      },
+      "reason_review_steps": 18,
+      "cross_zone_reason_steps": 7,
+      "flow_alternatives_evaluated": 4,
+      "flow_loop_changes": 0,
+      "geometric_guard_rejections": 11,
+      "geometric_bracket_replays": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 2,
+      "quest_reward_only_xp_shortfall": 632050,
+      "uncertain_travel_legs": 21,
+      "estimated_distance_before": 185256.26,
+      "estimated_distance_after": 185256.26
+    },
+    {
+      "faction": "Horde",
+      "zone": "Badlands",
+      "key": "level-zone:eastern-kingdoms/badlands:levels:51-60",
+      "quests": 4,
+      "steps": 12,
+      "unknown_location_steps": 0,
+      "missing_location_quest_ids_by_stage": {
+        "a": [],
+        "q": [],
+        "t": []
+      },
+      "unverified_pickup_requirement_quest_ids": [],
+      "unverified_objective_quantity_quest_ids": [],
+      "prerequisite_review_steps": 0,
+      "source_data_gap_free": true,
+      "reason_steps_checked": 12,
+      "destination_reason_codes": {
+        "outside-level-range": 4,
+        "prerequisite": 6,
+        "quest-reward": 2
+      },
+      "reason_review_steps": 4,
+      "cross_zone_reason_steps": 2,
+      "flow_alternatives_evaluated": 3,
+      "flow_loop_changes": 0,
+      "geometric_guard_rejections": 0,
+      "geometric_bracket_replays": 4,
+      "flow_state_valid": true,
+      "quest_log_peak": 2,
+      "quest_reward_only_xp_shortfall": 577700,
+      "uncertain_travel_legs": 3,
+      "estimated_distance_before": 29936.33,
+      "estimated_distance_after": 29936.33
+    }
+  ],
+  "scope": {
+    "zone": "Badlands",
+    "catalogue_records": "Exact quest zone; guide dependencies still compile normally"
+  }
+}

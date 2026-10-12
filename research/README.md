@@ -1,5 +1,81 @@
 # Reviewed player quest research
 
+## 2026-10-12 — 0.8.67 seven-zone integration review
+
+The current release integrates the guide branch's source-backed updates for
+Alterac Mountains, Arathi Highlands, Ashenvale, Azshara, Badlands, Desolace and
+Silithus. Focused tests accompany each zone. Eastern Plaguelands, Stranglethorn
+Vale and Swamp of Sorrows received current audit refreshes without data changes.
+The Desolace full-route comparison records an estimated travel reduction with
+a 6,250 XP increase in the modeled shortfall; the order is therefore not
+described as a global optimum. Its exact metrics remain in
+`desolace-2026-10-10/flow-comparison.json`.
+
+## 2026-10-10 — Swamp of Sorrows branch-head refresh
+
+[The 0.8.66 branch-head refresh](swamp-of-sorrows-2026-10-10/refresh-0.8.66/README.md)
+rechecks all six guides after unrelated branch updates. The scoped audit and
+ordered full-route captures remain identical to the prior Swamp review: 180
+actions, 3/6/4 pickup/objective/hand-in location gaps, no unverified pickup
+requirements and one unknown 3374 quantity. No new source facts justified data
+changes; existing source limitations and native-player checks remain open.
+
+## 2026-10-10 — Eastern Plaguelands audit refresh
+
+[The Eastern Plaguelands refresh](eastern-plaguelands-2026-10-10/README.md)
+rechecks the full Alliance and Horde 51–60 guides against the 8 October prompt
+baseline. The reviewed preparation/final-item corrections remain intact; both
+complete action sequences, stops and flow metrics match the 9 October review.
+The audit still shows two missing pickup points, 14 unique objective-area gaps,
+no missing hand-ins, 18 uncertain pickup requirements and no unknown counts.
+No new data change was justified; chapel, road and reputation/dungeon offers
+remain on the player checklist.
+
+## 2026-10-10 — Stranglethorn Vale audit refresh
+
+[The Stranglethorn Vale refresh](stranglethorn-vale-2026-10-10/README.md)
+rechecks all six faction/chapter flows and 36 zone records against the current
+catalogue. The prior eight evidence-backed corrections remain integrated;
+remaining pickup/objective/hand-in gaps are 11/11/11, with 12 uncertain pickup
+requirements and no unknown quantities. All 885 actions compile and all six
+flow states remain valid. No new data changes were justified; Green Hills
+chapter reward timing and native travel/offer checks remain open.
+
+## 2026-10-10 — Badlands chain stages and objective locations
+
+[The Badlands review](badlands-2026-10-10/README.md) refreshes all five guide
+chapters and expands the source check from 38 exact-zone records to all 44
+category records. It maps the 722 → 723 amulet delivery, the three separate
+item sources for Alliance 735 and Horde 736, all 11 Badlands Primitive Drawing
+drop sources, and current Solid Chest alternatives for 715. Unknown pickup and
+item-acquisition facts remain visible. All 284 guide actions, log peaks and XP
+timing are retained; route estimates rise where previously unmapped required
+work now has real cross-zone locations. Captured evidence, scoped audits,
+complete-route comparisons, focused tests and a beta player checklist accompany
+the data.
+
+## 2026-10-10 — Alterac Mountains faction, key source and chain handoffs
+
+[The Alterac Mountains review](alterac-mountains-2026-10-10/README.md) refreshes
+the 31–40 chapter, gates Strahnbrad Mystery to Horde, maps Key to the City’s
+Grimy Key footlocker objective, and fills Shrewd Negotiations’ start/return
+points. Four now-ineligible Alliance actions are removed; other full-guide
+actions remain. The 535 active-parent requirement needs main-developer
+eligibility coordination. Source hashes, scoped before/after audits, route
+metrics and a player checklist are retained with the review.
+
+## 2026-10-10 — Arathi Highlands full-scope refresh
+
+[The Arathi Highlands review](arathi-highlands-2026-10-10/README.md) maps
+confirmed returns for Ward Restocking, The Giant in the Den and Silky Sutures,
+records all 22 Illegible Recipe search points across nine ogres, and routes the
+giant quest through the existing elite warning/Skip policy. Four chapter/faction
+guides preserve all 334 actions; recorded stage gaps fall 8 → 5. The complete
+route audit remains valid; Horde 31–40 estimated travel falls about 18.6k units
+with the same 131 actions. The full audit checks 152 guides / 11,842 source
+points, and the source queue drops 363 → 362. Unknown pickup givers and the
+Packaged Tonics work point remain documented for beta follow-up.
+
 ## Main release review — 0.8.66 (10 October 2026)
 
 The nine commits through `53d5e12` are integrated as research. Seven zone audit
@@ -277,3 +353,13 @@ and adds complete-journey safeguards to the initial geometric optimization.
 [Dustwallow Marsh](dustwallow-marsh-2026-10-09/README.md) includes faction object
 pickups, supplied deliveries and explicit gossip-placeholder exclusions. Original
 source comparisons and unresolved coordination proposals remain available.
+
+## 2026-10-10 — Ashenvale source coverage and faction stages
+
+[The Ashenvale review](ashenvale-2026-10-10/README.md) refreshes seven
+baseline sections, maps Shandrina's Horde Scout/Grunt item objectives, records
+mutually exclusive Alliance escape choices, retains care-package reputation
+facts and excludes two daily PvP quests from ordinary leveling. The hostile
+Astranaar route guard remains. Five complete routes pass; the Alliance 31–40
+action count rises 23 → 24 and its three location gaps close. Unknown
+Blackfathom, item-source and offer facts stay documented for beta follow-up.

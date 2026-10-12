@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.66"
-ns.RELEASE_NAME = "NATIVE GROUP FINDER FILTERS"
+ns.VERSION = "0.8.67"
+ns.RELEASE_NAME = "LIVE DUNGEON APPROACH MAPS"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}
@@ -291,6 +291,8 @@ function ns.Diagnostics()
     ns.DungeonArtworkDiagnostics(output)
     ns.DungeonViewerDiagnostics(output)
     ns.GroupFinderRoleDiagnostics(output)
+    ns.ApproachMapDiagnostics(output)
+    output("Unit numbers: " .. ns.unitNumbersStatus)
     local low, high = ns.PreferredQuestLevels()
     if low then
         local level, _, name = ns.PartyLevelFloor()
@@ -317,6 +319,7 @@ ns.On("ADDON_LOADED", function(name)
     WowTogetherDB.version = 1
     ns.db = WowTogetherDB
     ns.InitializeConfig()
+    ns.InitializeUnitNumbers()
     ns.CreateUI()
     ns.CreateSettings()
     ns.CreateMinimap()
@@ -341,6 +344,7 @@ ns.On("ADDON_LOADED", function(name)
     if ns.InitializeProfessionGuides then ns.InitializeProfessionGuides() end
     ns.InitializeAuctionMarket()
     ns.InitializeDungeonViewer()
+    ns.InitializeApproachMaps()
     ns.InitializeGroupFinderRoles()
     ns.InitializeInventoryServices()
     ns.InitializeSessionCheckpoints()

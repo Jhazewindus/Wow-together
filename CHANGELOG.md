@@ -1,5 +1,34 @@
 # Wow Together changelog
 
+## 0.8.67
+
+**LIVE DUNGEON APPROACH MAPS**
+
+- Add live outdoor approach maps for Wailing Caverns, Deadmines, Blackfathom
+  Deeps, Gnomeregan, Scarlet Monastery, Uldaman and Razorfen Downs. The map
+  uses original textures supplied by the game client and independently derived
+  Blizzard WMO/ADT geometry; no third-party code or artwork is included.
+- Open a supported approach while walking through its cave, track your outdoor
+  position and mark the dungeon entrance. Leaving closes the automatic map;
+  entering the matching instance switches to its existing static dungeon map.
+  The journal also has an Approach button, and the feature can be disabled in
+  Settings → Arrow and map. Dungeon interiors remain static.
+- Add **Always show health and resource numbers**. It saves Blizzard's previous
+  status-text settings, restores them when switched off, and defers changes in
+  combat without reading or hooking unit frames or auras.
+- Integrate the guide branch's source-backed quest-data updates for Alterac
+  Mountains, Arathi Highlands, Ashenvale, Azshara, Badlands, Desolace and
+  Silithus. Preserve refreshed no-change audits for Eastern Plaguelands,
+  Stranglethorn Vale and Swamp of Sorrows, with their evidence and coverage
+  tests.
+- The Desolace comparison records a travel/reward tradeoff rather than claiming
+  a global optimum. See `research/desolace-2026-10-10/flow-comparison.json`.
+
+Host checks cover the seven guide updates, live-map projection and movement,
+map dismissal, settings and status-text restoration. Actual client textures,
+outdoor coordinate alignment, instance handoff and visible Blizzard status bars
+still need beta-client testing.
+
 ## 0.8.66
 
 **NATIVE GROUP FINDER FILTERS**

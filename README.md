@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.66 — NATIVE GROUP FINDER FILTERS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.67 — LIVE DUNGEON APPROACH MAPS** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -18,12 +18,29 @@ Extract the release ZIP and copy the complete `WowTogether` folder to:
 World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
 ```
 
-Replace the folder on **every party member's client**, including all **88 Lua
+Replace the folder on **every party member's client**, including all **91 Lua
 files** and the **Media folder**, then fully restart the client. Restart if a new addon folder does
 not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
 
-**0.8.66 puts role and class filters inside Blizzard's finder.**
+**0.8.67 adds live outdoor maps for seven dungeon approaches.** The original
+game-client textures are positioned from independently derived Blizzard
+geometry; no HiddenMaps code or artwork is shipped. The current outdoor map
+shows your position and the dungeon entrance, then hands off to the existing
+static dungeon map on entry. Dungeon interiors remain static. Open an approach
+from the dungeon journal or Settings → Arrow and map → Show dungeon approach
+maps to enable/disable automatic maps.
+
+Settings → Play mode → **Always show health and resource numbers** uses
+Blizzard's status text. It restores your prior setting when turned off.
+
+This release integrates source-backed leveling-guide updates for Alterac
+Mountains, Arathi Highlands, Ashenvale, Azshara, Badlands, Desolace and Silithus.
+Eastern Plaguelands, Stranglethorn Vale and Swamp of Sorrows audits were
+refreshed without changing their guide data. Desolace's recorded route
+comparison shows a travel/reward tradeoff; details are in the research review.
+
+**0.8.66 put role and class filters inside Blizzard's finder.**
 Open Looking For Group → Browse. Choose a role and class beneath the existing
 category/activity controls to filter its native **Players** rows. Groups and
 your own listing remain visible; use the normal selection, message and invite

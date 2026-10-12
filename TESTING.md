@@ -1,6 +1,6 @@
 # Wow Together — friend test script
 
-For **0.8.66** — **NATIVE GROUP FINDER FILTERS**, World of Warcraft: Forever beta,
+For **0.8.67** — **LIVE DUNGEON APPROACH MAPS**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **10–15 minutes for this update**; the wider optional checks take 45–60
 minutes. Each tester reports Pass / Fail / Skip with a reason.
@@ -8,7 +8,7 @@ Keep tester names and reports separate; label the main developer's report.
 The retained expanded-guide checks below take about **15–25 minutes**.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 88 Lua files** and
+1. Replace the complete WowTogether folder, including **all 91 Lua files** and
    the **Media folder**, in
    `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
    **Fully restart the client for this update**, rather than only `/reload`.
@@ -20,6 +20,44 @@ The retained expanded-guide checks below take about **15–25 minutes**.
 4. Installing a new version rebuilds the saved guide with the updated rules,
    applying completed/accepted quests and manual skips. Step numbers may change.
    A reload on the same version should preserve the saved order.
+
+## Live dungeon approach maps and unit numbers — this update
+
+1. Near the outdoor entrances, test Wailing Caverns, Deadmines, Blackfathom
+   Deeps, Gnomeregan, Scarlet Monastery, Uldaman and Razorfen Downs. In each
+   supported cave, an approach map should open with your marker and a gold
+   entrance marker. Move around and resize the window: the player marker should
+   stay aligned with the game-client map.
+2. Leave the supported approach area. Its automatic map should close. Return to
+   the area after disabling and re-enabling **Show dungeon approach maps**; it
+   should reopen. Use the dungeon journal's **Approach** button to open the
+   supported outdoor map manually.
+3. Walk through the marked entrance into that same dungeon. The approach map
+   should hand off to the existing static dungeon map. Interior live tracking
+   is not part of this feature; the static map and its boss/quest markers should
+   remain usable. If a map or coordinates fail, report the dungeon, zone,
+   character position and `/wt probe` output.
+4. In Settings → Play mode, enable **Always show health and resource numbers**.
+   Blizzard's unit bars should show numeric values. Disable it and verify the
+   previous display style returns. If you change Blizzard's own setting while
+   WoW Together's option is on, turning the addon option off should preserve
+   your newer game setting. Test toggling during combat; it should apply after
+   combat without a Lua error.
+
+## Reviewed zone-guide updates — this update
+
+1. On characters for Alterac Mountains, Arathi Highlands, Ashenvale, Azshara,
+   Badlands, Desolace and Silithus, open the matching guide and use **Show quest
+   list** to inspect the current ordered work. Existing accepted/completed
+   quests and skips should be reflected after starting or scanning the guide.
+2. Check changed quest chains, stage hand-ins, pickup/objective locations and
+   faction limits against the linked evidence in `research/`. Do not treat an
+   unverified pickup prerequisite or unmapped location as confirmed. The other
+   audit refreshes (Eastern Plaguelands, Stranglethorn Vale and Swamp of
+   Sorrows) did not change their shipped quest data.
+3. Desolace's comparison found shorter estimated travel but a slightly larger
+   modeled XP shortfall. Report an actual route if a hand-in is delayed or the
+   guide sends you farther than the shown reason justifies.
 
 ## Native finder filters — this update
 

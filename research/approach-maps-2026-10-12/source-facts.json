@@ -1,0 +1,3245 @@
+{
+  "build": "1.15.9.70003",
+  "buildConfig": "2417084b8b041ee120d02d4adf31b0bc",
+  "models": [
+    {
+      "adtFileDataID": 785781,
+      "adtSHA256": "7b2656701b2e96d586e44e77fc395a4fed4307dbe332524a3316fcb8fc358471",
+      "continent": 1,
+      "groups": [
+        {
+          "flags": 8192,
+          "max": [
+            373.59320068359375,
+            52.66025161743164,
+            1.96806001663208
+          ],
+          "min": [
+            313.8447265625,
+            -24.867992401123047,
+            -35.096500396728516
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            187.76751708984375,
+            -111.26618194580078,
+            -52.36782455444336
+          ],
+          "min": [
+            97.74879455566406,
+            -156.75982666015625,
+            -90.15091705322266
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            135.53396606445312,
+            -146.75685119628906,
+            -58.35016632080078
+          ],
+          "min": [
+            65.49764251708984,
+            -261.13177490234375,
+            -95.89557647705078
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            175.79751586914062,
+            101.12397766113281,
+            9.24300479888916
+          ],
+          "min": [
+            128.67361450195312,
+            25.086557388305664,
+            -18.824810028076172
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            223.3095703125,
+            31.112674713134766,
+            4.166934967041016
+          ],
+          "min": [
+            122.46672821044922,
+            -64.58621215820312,
+            -24.206689834594727
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            239.49920654296875,
+            0.26992493867874146,
+            4.904837131500244
+          ],
+          "min": [
+            207.4910430908203,
+            -40.025428771972656,
+            -22.422435760498047
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            247.6123809814453,
+            44.98244857788086,
+            -0.14742237329483032
+          ],
+          "min": [
+            208.71548461914062,
+            0.21436363458633423,
+            -22.603044509887695
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            290.2255554199219,
+            45.59664535522461,
+            4.194822788238525
+          ],
+          "min": [
+            241.21778869628906,
+            -1.0667985677719116,
+            -36.77098846435547
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            343.6865539550781,
+            71.17344665527344,
+            5.213694095611572
+          ],
+          "min": [
+            270.80792236328125,
+            25.37581443786621,
+            -27.185855865478516
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            282.2944030761719,
+            80.29778289794922,
+            -3.5188820362091064
+          ],
+          "min": [
+            231.1374053955078,
+            35.572021484375,
+            -26.317276000976562
+          ]
+        },
+        {
+          "flags": 8,
+          "max": [
+            183.23385620117188,
+            100.2042007446289,
+            46.93661117553711
+          ],
+          "min": [
+            84.20536804199219,
+            -1.231998085975647,
+            -15.781217575073242
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            144.86407470703125,
+            63.55303955078125,
+            19.836347579956055
+          ],
+          "min": [
+            118.07050323486328,
+            29.76490592956543,
+            8.019941329956055
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            128.72943115234375,
+            64.73094177246094,
+            9.104496002197266
+          ],
+          "min": [
+            94.75008392333984,
+            39.777488708496094,
+            -7.945801734924316
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            381.83087158203125,
+            -16.839059829711914,
+            5.58344030380249
+          ],
+          "min": [
+            298.1903076171875,
+            -91.68656921386719,
+            -52.27416229248047
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            380.4528503417969,
+            -81.50816345214844,
+            26.24881935119629
+          ],
+          "min": [
+            244.9462127685547,
+            -335.6686706542969,
+            -85.83203125
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            287.16326904296875,
+            -87.2890853881836,
+            56.4967155456543
+          ],
+          "min": [
+            147.58554077148438,
+            -337.2889709472656,
+            -90.15091705322266
+          ]
+        }
+      ],
+      "key": "wailing-caverns",
+      "parentMapID": 1413,
+      "placement": {
+        "altitude": 87.65638732910156,
+        "id": 371662,
+        "scale": 1.0,
+        "x": 19161.916015625,
+        "yaw": 186.0,
+        "z": 17995.37109375
+      },
+      "tiles": [
+        {
+          "column": 0,
+          "fileDataID": 213133,
+          "group": 0,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Wailing/wailingcaverns_000_00_00.blp",
+          "row": 0,
+          "sha256": "e091a24cc1bb96820be8bfae152748c87d5f1dbf57f684600a1628e818d99a92",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213134,
+          "group": 1,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Wailing/wailingcaverns_001_00_00.blp",
+          "row": 0,
+          "sha256": "8c2f185e773815ac8ba768903f481b7d25ea74a239fa5e94b5b947df7134cbbf",
+          "width": 256
+        },
+        {
+          "column": 0,
+          "fileDataID": 213135,
+          "group": 2,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Wailing/wailingcaverns_002_00_00.blp",
+          "row": 0,
+          "sha256": "deda616f71fc7881048780518f530abdf365e0eea5c9a417c3ad61eb66cd9281",
+          "width": 256
+        },
+        {
+          "column": 0,
+          "fileDataID": 213136,
+          "group": 3,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Wailing/wailingcaverns_003_00_00.blp",
+          "row": 0,
+          "sha256": "367713f691f0fca35abff98b5106da6bddab690827a5c132725a9575b2ffd994",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213137,
+          "group": 4,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Wailing/wailingcaverns_004_00_00.blp",
+          "row": 0,
+          "sha256": "a11e9406f0fc4330ce52cb0bab06a4b7b0a7919726a8144ac6466ac2e4f06f73",
+          "width": 256
+        },
+        {
+          "column": 0,
+          "fileDataID": 213138,
+          "group": 5,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Wailing/wailingcaverns_005_00_00.blp",
+          "row": 0,
+          "sha256": "10aa3cc651fefb36819b347cba671f007e70e07384607f126a63df15ba0bd3bb",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213139,
+          "group": 6,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Wailing/wailingcaverns_006_00_00.blp",
+          "row": 0,
+          "sha256": "8e39ac90379536c59a466ad6e8008c54bd5eb4200f408b5708dea656e534d2f4",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213140,
+          "group": 7,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Wailing/wailingcaverns_007_00_00.blp",
+          "row": 0,
+          "sha256": "2f3c35879535731193a24608e5116c2cd968618b6e1897dbdf1419fd9ca06819",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213141,
+          "group": 8,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Wailing/wailingcaverns_008_00_00.blp",
+          "row": 0,
+          "sha256": "6eaa526dd4285ba936610d359134b0764a20ff831e449aeccd72c85fcfb4495c",
+          "width": 256
+        },
+        {
+          "column": 0,
+          "fileDataID": 213142,
+          "group": 9,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Wailing/wailingcaverns_009_00_00.blp",
+          "row": 0,
+          "sha256": "9b5e79e9d080fba013272872d2781260efd33b843a60aa22bc4ae9bde8239944",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213143,
+          "group": 11,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Wailing/wailingcaverns_011_00_00.blp",
+          "row": 0,
+          "sha256": "169972f96adce60a0d4da5ee9baf083cea462366ec4104f84d3e4f7f5030c340",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 213144,
+          "group": 12,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Wailing/wailingcaverns_012_00_00.blp",
+          "row": 0,
+          "sha256": "f7ca396dbd27cf2be5540d9a206b161bb66f0845213340cc54749610e372feeb",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213145,
+          "group": 13,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Wailing/wailingcaverns_013_00_00.blp",
+          "row": 0,
+          "sha256": "d72f7d883a333c299c6e972b6de9134c12fea392d71861e332572d5c30ea2c0b",
+          "width": 256
+        },
+        {
+          "column": 0,
+          "fileDataID": 213146,
+          "group": 14,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Wailing/wailingcaverns_014_00_00.blp",
+          "row": 0,
+          "sha256": "7b07b83d809e57d2f4458c0be6c127935d652649b4077295de987e1179daaf6d",
+          "width": 256
+        },
+        {
+          "column": 0,
+          "fileDataID": 213147,
+          "group": 14,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Wailing/wailingcaverns_014_00_01.blp",
+          "row": 1,
+          "sha256": "5fc6f0cec0ed3f20c22ce2ff6bc8c409c5eba5377ae167c3fd9984228bca336e",
+          "width": 256
+        },
+        {
+          "column": 0,
+          "fileDataID": 213150,
+          "group": 15,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Wailing/wailingcaverns_015_00_00.blp",
+          "row": 0,
+          "sha256": "c7a586af04e363836c3599548362dd7f54ee85f9ed2f409fd8396185f32ac770",
+          "width": 256
+        },
+        {
+          "column": 0,
+          "fileDataID": 213151,
+          "group": 15,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Wailing/wailingcaverns_015_00_01.blp",
+          "row": 1,
+          "sha256": "dcfd82c7b27410aa8f9800e1f7a8e3b4ee2542ca73081578f4f244a17aa24597",
+          "width": 256
+        },
+        {
+          "column": 1,
+          "fileDataID": 459287,
+          "group": 15,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Wailing/wailingcaverns_015_01_00.blp",
+          "row": 0,
+          "sha256": "b6ed0ccd3d4555aa6b50da4112c8a00a6382468bb1b9afe9e8037c329c128c92",
+          "width": 256
+        },
+        {
+          "column": 1,
+          "fileDataID": 459288,
+          "group": 15,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Wailing/wailingcaverns_015_01_01.blp",
+          "row": 1,
+          "sha256": "b6ed0ccd3d4555aa6b50da4112c8a00a6382468bb1b9afe9e8037c329c128c92",
+          "width": 256
+        },
+        {
+          "column": 1,
+          "fileDataID": 2257358,
+          "group": 14,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Wailing/wailingcaverns_014_01_00.blp",
+          "row": 0,
+          "sha256": "42efa692238ea6086ef33fb89a56760cb4dd2ccd81c60703c86bcdf4515bfcbb",
+          "width": 256
+        },
+        {
+          "column": 1,
+          "fileDataID": 2257363,
+          "group": 14,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Wailing/wailingcaverns_014_01_01.blp",
+          "row": 1,
+          "sha256": "412eb2892251540c768172ea9d9dd6416f46ea89ebae0d79fc5a29f13af733a7",
+          "width": 256
+        }
+      ],
+      "wmoFileDataID": 109550,
+      "wmoSHA256": "ffc3a5c3efc3ca2ee25722e3c835264aa1e5f0cb2271403e94e68445b2b35ebd"
+    },
+    {
+      "adtFileDataID": 777448,
+      "adtSHA256": "bfdd76d0e200264920ec21d618e3bde1c9c37b599c2404134dd7f40c21d4ef09",
+      "continent": 0,
+      "groups": [
+        {
+          "flags": 8192,
+          "max": [
+            -8.246870994567871,
+            113.42157745361328,
+            -18.032329559326172
+          ],
+          "min": [
+            -37.524959564208984,
+            90.93275451660156,
+            -30.846717834472656
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            -32.52781677246094,
+            116.96827697753906,
+            -20.29523468017578
+          ],
+          "min": [
+            -53.82986831665039,
+            89.80829620361328,
+            -31.44954490661621
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            -39.44225311279297,
+            105.94953155517578,
+            -17.909814834594727
+          ],
+          "min": [
+            -78.66931915283203,
+            63.14073181152344,
+            -31.500041961669922
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            -40.990516662597656,
+            141.03805541992188,
+            -17.61390495300293
+          ],
+          "min": [
+            -72.38703155517578,
+            115.90843200683594,
+            -28.911375045776367
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            -32.34587478637695,
+            153.37660217285156,
+            -10.468619346618652
+          ],
+          "min": [
+            -63.51460266113281,
+            131.97891235351562,
+            -22.343585968017578
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            68.92949676513672,
+            167.0714111328125,
+            -2.1152331829071045
+          ],
+          "min": [
+            36.81646728515625,
+            143.67762756347656,
+            -12.73123836517334
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            104.75956726074219,
+            107.3813705444336,
+            -6.197330474853516
+          ],
+          "min": [
+            85.91698455810547,
+            76.70498657226562,
+            -18.71434211730957
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            117.79324340820312,
+            82.27831268310547,
+            -7.818848609924316
+          ],
+          "min": [
+            89.90774536132812,
+            56.359649658203125,
+            -22.37511444091797
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            85.51206970214844,
+            147.0764923095703,
+            -1.868643879890442
+          ],
+          "min": [
+            53.86384201049805,
+            117.52092742919922,
+            -13.259366035461426
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            -14.237455368041992,
+            139.18038940429688,
+            -7.879710674285889
+          ],
+          "min": [
+            -39.21792221069336,
+            125.92005920410156,
+            -21.45523452758789
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            54.28929138183594,
+            130.44786071777344,
+            -3.2522799968719482
+          ],
+          "min": [
+            23.869768142700195,
+            100.50138092041016,
+            -16.774412155151367
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            69.74787139892578,
+            109.74613189697266,
+            -8.570124626159668
+          ],
+          "min": [
+            20.452451705932617,
+            78.4977035522461,
+            -21.70146369934082
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            8.83548355102539,
+            64.70651245117188,
+            -14.685494422912598
+          ],
+          "min": [
+            -20.75059700012207,
+            34.76441192626953,
+            -26.135271072387695
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            48.23793029785156,
+            67.76140594482422,
+            -15.009143829345703
+          ],
+          "min": [
+            0.7872568964958191,
+            35.515445709228516,
+            -26.019617080688477
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            29.24182891845703,
+            103.31869506835938,
+            0.16848799586296082
+          ],
+          "min": [
+            -19.169103622436523,
+            59.77790451049805,
+            -28.002925872802734
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            5.87656307220459,
+            13.234864234924316,
+            -5.547042369842529
+          ],
+          "min": [
+            -30.773183822631836,
+            -19.001018524169922,
+            -19.770870208740234
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            -4.973620891571045,
+            30.659116744995117,
+            -1.0948798656463623
+          ],
+          "min": [
+            -24.59955596923828,
+            6.111753463745117,
+            -15.045625686645508
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            -19.397031784057617,
+            37.677337646484375,
+            11.462105751037598
+          ],
+          "min": [
+            -34.736568450927734,
+            22.754846572875977,
+            -17.64824867248535
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            -28.90032958984375,
+            42.131160736083984,
+            -0.8123765587806702
+          ],
+          "min": [
+            -55.404747009277344,
+            13.010376930236816,
+            -13.094919204711914
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            52.765380859375,
+            87.14896392822266,
+            -13.224611282348633
+          ],
+          "min": [
+            25.35919761657715,
+            64.89786529541016,
+            -24.822002410888672
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            -23.07316017150879,
+            16.649311065673828,
+            39.49517822265625
+          ],
+          "min": [
+            -52.50765609741211,
+            -6.633066654205322,
+            -13.094919204711914
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            -15.311742782592773,
+            1.7765060663223267,
+            10.138643264770508
+          ],
+          "min": [
+            -28.563810348510742,
+            -3.0178043842315674,
+            4.406702518463135
+          ]
+        },
+        {
+          "flags": 8,
+          "max": [
+            11.154425621032715,
+            20.399782180786133,
+            44.23152542114258
+          ],
+          "min": [
+            -50.143367767333984,
+            -39.21186828613281,
+            -5.277577877044678
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            -10.105082511901855,
+            46.354923248291016,
+            -0.9971733093261719
+          ],
+          "min": [
+            -46.909217834472656,
+            0.04751858115196228,
+            -23.457809448242188
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            8.027107238769531,
+            -7.426263809204102,
+            8.600528717041016
+          ],
+          "min": [
+            -7.260889530181885,
+            -21.8728084564209,
+            -2.179246187210083
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            -8.137344360351562,
+            1.7526116371154785,
+            3.807464599609375
+          ],
+          "min": [
+            -26.298677444458008,
+            -8.836641311645508,
+            -2.541731834411621
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            147.1729736328125,
+            169.6872100830078,
+            2.70501708984375
+          ],
+          "min": [
+            85.044921875,
+            104.0735855102539,
+            -21.133060455322266
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            -5.571187496185303,
+            2.2773663997650146,
+            21.455307006835938
+          ],
+          "min": [
+            -31.910045623779297,
+            -30.155942916870117,
+            -3.5476694107055664
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            172.7906494140625,
+            143.40792846679688,
+            -11.55075740814209
+          ],
+          "min": [
+            140.45004272460938,
+            101.80799865722656,
+            -29.376834869384766
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            38.782283782958984,
+            180.48109436035156,
+            3.4376134872436523
+          ],
+          "min": [
+            -5.564046859741211,
+            139.1842041015625,
+            -18.26567840576172
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            34.24032974243164,
+            162.10304260253906,
+            2.6527788639068604
+          ],
+          "min": [
+            -25.11751937866211,
+            110.69188690185547,
+            -18.423269271850586
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            40.14512634277344,
+            221.05599975585938,
+            1.6645333766937256
+          ],
+          "min": [
+            -3.9147677421569824,
+            183.37074279785156,
+            -11.835358619689941
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            66.27591705322266,
+            254.16416931152344,
+            -0.6096329092979431
+          ],
+          "min": [
+            21.235788345336914,
+            220.77468872070312,
+            -14.81894588470459
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            23.416994094848633,
+            256.4222106933594,
+            -5.1610894203186035
+          ],
+          "min": [
+            -11.41799259185791,
+            218.27499389648438,
+            -17.552961349487305
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            74.4504623413086,
+            226.02516174316406,
+            0.30825331807136536
+          ],
+          "min": [
+            32.477352142333984,
+            173.55001831054688,
+            -11.57252025604248
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            59.90321350097656,
+            244.20089721679688,
+            -8.121712684631348
+          ],
+          "min": [
+            16.638948440551758,
+            218.8934783935547,
+            -24.152339935302734
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            10.232165336608887,
+            193.12684631347656,
+            5.893339157104492
+          ],
+          "min": [
+            -35.06284713745117,
+            144.386474609375,
+            -8.745576858520508
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            64.85884857177734,
+            208.41050720214844,
+            12.446287155151367
+          ],
+          "min": [
+            49.52638244628906,
+            191.72731018066406,
+            -4.917189598083496
+          ]
+        }
+      ],
+      "key": "deadmines",
+      "parentMapID": 1436,
+      "placement": {
+        "altitude": 45.27324676513672,
+        "id": 35530,
+        "scale": 1.0,
+        "x": 15538.4404296875,
+        "yaw": 269.0,
+        "z": 28165.39453125
+      },
+      "tiles": [
+        {
+          "column": 0,
+          "fileDataID": 211372,
+          "group": 0,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_000_00_00.blp",
+          "row": 0,
+          "sha256": "3c802e75b210312c15a661e7c4125ad098dbf7cd0275660bfb02566bc0841b57",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 211373,
+          "group": 1,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_001_00_00.blp",
+          "row": 0,
+          "sha256": "48237e1c6290fd27a81dab4728593766363414058544eb571174b2eea4ae0f1c",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 211374,
+          "group": 2,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_002_00_00.blp",
+          "row": 0,
+          "sha256": "d22dd9feedb9d1a030356f492825e8000435cc5e24d10e9d19bda91e7486e886",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 211375,
+          "group": 3,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_003_00_00.blp",
+          "row": 0,
+          "sha256": "c133a5b23624bd665061fa9c4a5ca1bd45466688c3b2d81f9094de264da2c9ae",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 211376,
+          "group": 4,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_004_00_00.blp",
+          "row": 0,
+          "sha256": "6ff8bb344d1cef3a42a52a99c99208a2e960fe3eff955efd977b95e2cae65299",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 211377,
+          "group": 5,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_005_00_00.blp",
+          "row": 0,
+          "sha256": "2045d7434af2e228ed4fde84ef535881147a693e9a1c2507e428b38154135ddf",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 211378,
+          "group": 6,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_006_00_00.blp",
+          "row": 0,
+          "sha256": "21e91d8243e6bdf3a6d2fbd3f89609b0e3363f83d777a2867fb32f0c236495ea",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 211379,
+          "group": 7,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_007_00_00.blp",
+          "row": 0,
+          "sha256": "155c64aa58a7b8739d7435448a86b79ecc46b85c3e8b88389821e9d3c13bc93a",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 211380,
+          "group": 8,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_008_00_00.blp",
+          "row": 0,
+          "sha256": "9e8bb028d2e3a4b3118d39fdbc7393f038f5ec75f4d22cc26695b2015e2bbaf1",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 211381,
+          "group": 9,
+          "height": 32,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_009_00_00.blp",
+          "row": 0,
+          "sha256": "a2e0398d1896df6363f4ca4219b4684ffebbe60cc92f3fe022a9977e1af7a279",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 211382,
+          "group": 10,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_010_00_00.blp",
+          "row": 0,
+          "sha256": "a327230c41eac1bb23c46f89f4b0ca7ed72f8a4743bb4d19bdc3d33214e87b7b",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 211383,
+          "group": 11,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_011_00_00.blp",
+          "row": 0,
+          "sha256": "cc49508b538670b74638c1a89f64b436f27c58f6b4593b901ecf18dff86a5b2d",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 211384,
+          "group": 12,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_012_00_00.blp",
+          "row": 0,
+          "sha256": "fe3efda9313d30038cff881af1909d416dc798daf99dfb9d2689d9891ada4411",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 211385,
+          "group": 13,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_013_00_00.blp",
+          "row": 0,
+          "sha256": "b62cc500c9d221f09c6dbe1c4aef6fad169f15b65027d5b022a128edd5740597",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 211386,
+          "group": 14,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_014_00_00.blp",
+          "row": 0,
+          "sha256": "acb7576b245bb57e9287c40e80d4f9475db94155e8310cd3bc45eb132cda7487",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 211387,
+          "group": 15,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_015_00_00.blp",
+          "row": 0,
+          "sha256": "c3672fca788e5d5d9e27080dfbc085892d024cd0fbf0b5c9abdfbd7ac4296a03",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 211388,
+          "group": 16,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_016_00_00.blp",
+          "row": 0,
+          "sha256": "c96c00952af76db7068f26742665d25ba4d2addd395cd0c6f91f77074fb94a47",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 211389,
+          "group": 17,
+          "height": 32,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_017_00_00.blp",
+          "row": 0,
+          "sha256": "a2dca5683dc29dfb17092d2d33a4dab80797928b09bc85c04c60667c688830c7",
+          "width": 32
+        },
+        {
+          "column": 0,
+          "fileDataID": 211390,
+          "group": 18,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_018_00_00.blp",
+          "row": 0,
+          "sha256": "b007e7dbe4d3270f0bac71bbe5651ef04d2a714d98297cd0420e358a3e6ff783",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 211391,
+          "group": 19,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_019_00_00.blp",
+          "row": 0,
+          "sha256": "346729329a0795eeca503e8002c1bba173ccfd4fe9b5aa493166208abf16528a",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 211392,
+          "group": 20,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_020_00_00.blp",
+          "row": 0,
+          "sha256": "0b5f6ae9ebb4644950c37b7f131adde9c366ef27e81f5bd10f7208d125c433c3",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 211393,
+          "group": 21,
+          "height": 32,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_021_00_00.blp",
+          "row": 0,
+          "sha256": "10c1959d18b2042626496ff534e30527c118a8041ae732aa2db8e9681aee6d57",
+          "width": 32
+        },
+        {
+          "column": 0,
+          "fileDataID": 211394,
+          "group": 23,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_023_00_00.blp",
+          "row": 0,
+          "sha256": "b586150804f3def248ae61a0c20230c443a53cc02c846fb6d973f0a1558c9cd3",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 211395,
+          "group": 24,
+          "height": 32,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_024_00_00.blp",
+          "row": 0,
+          "sha256": "256f276c2d15e3f20b1f32d30954ee6ad5006e396902264050fa4219123c18fe",
+          "width": 32
+        },
+        {
+          "column": 0,
+          "fileDataID": 211396,
+          "group": 25,
+          "height": 32,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_025_00_00.blp",
+          "row": 0,
+          "sha256": "33f78e6acf653210555a83befaadbb6397ed6ece0f9e1c4271d3679031c4aaea",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 211397,
+          "group": 26,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_026_00_00.blp",
+          "row": 0,
+          "sha256": "94123bdf703ce8b13dd64d06c2a8f91c4d3325ca6884cbf6f0c149539c91f092",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 211398,
+          "group": 27,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_027_00_00.blp",
+          "row": 0,
+          "sha256": "1d9df54adcc5db2d63418921884a6ab03b5948cdf4b58f34fdc9a608ba067aa8",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 211399,
+          "group": 28,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_028_00_00.blp",
+          "row": 0,
+          "sha256": "91a6cb36e152130450d7b96e56460b117567383274cb06ad6602ad78ec6d24dc",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 211400,
+          "group": 29,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_029_00_00.blp",
+          "row": 0,
+          "sha256": "6f523b5afe7f610d31ada167c0c44dc29b4e083496bd21170c4eb205bbfb88ea",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 211401,
+          "group": 30,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_030_00_00.blp",
+          "row": 0,
+          "sha256": "46d30b2ad4c1ccf7495ea02ef4146deaa4d11618fab4b73dbefa392125958701",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 211402,
+          "group": 31,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_031_00_00.blp",
+          "row": 0,
+          "sha256": "080ccfb2f22006065d43786d6edb8ca9eba36b1ddafcdffa736e98cd52a98b47",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 211403,
+          "group": 32,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_032_00_00.blp",
+          "row": 0,
+          "sha256": "bb4ab4ce9e51bd8b669f1beae25122bd44dc36cff72edb7ec07b42bd4468a8eb",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 211404,
+          "group": 33,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_033_00_00.blp",
+          "row": 0,
+          "sha256": "ad10c6c4b48c77515a13a23880ef80bb4d512bf5e91e2c4e824af4227bd21b1b",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 211405,
+          "group": 34,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_034_00_00.blp",
+          "row": 0,
+          "sha256": "84c19147f4d9f1d3d97992d06c5696df69b13a7278f80c70544d9ff149c35b73",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 211406,
+          "group": 35,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_035_00_00.blp",
+          "row": 0,
+          "sha256": "8a9eb0263161c52e9190d8baba4086faf8e9e611d58a78119df9ed7b6c61f79a",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 211407,
+          "group": 36,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_036_00_00.blp",
+          "row": 0,
+          "sha256": "c36174c2f8556431f2c8e903890868f01de794004a2ab32eef56f42746fcce6d",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 211408,
+          "group": 37,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/AZ_Deadmines/AZ_Deadmines_A_037_00_00.blp",
+          "row": 0,
+          "sha256": "84d1754905364c9264538871ae6c8db8b5ce4f3e0e1c1ed0fa7c332596e43fdf",
+          "width": 32
+        }
+      ],
+      "wmoFileDataID": 108444,
+      "wmoSHA256": "2c4894bf6f0d1328964fee9102089227c922358e9b834052e92954f868e9de80"
+    },
+    {
+      "adtFileDataID": 784366,
+      "adtSHA256": "e5b2d552503f24e327ca414b6c5a30bb3b3dc62a8f75709be9d824695c8a8c5f",
+      "continent": 1,
+      "groups": [
+        {
+          "flags": 8192,
+          "max": [
+            36.036678314208984,
+            75.54669189453125,
+            -20.155920028686523
+          ],
+          "min": [
+            -2.7956161499023438,
+            24.018577575683594,
+            -39.053165435791016
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            28.753849029541016,
+            24.07464599609375,
+            -17.327407836914062
+          ],
+          "min": [
+            -10.259988784790039,
+            -36.342708587646484,
+            -46.92357635498047
+          ]
+        },
+        {
+          "flags": 8,
+          "max": [
+            40.2662467956543,
+            19.79308319091797,
+            23.342273712158203
+          ],
+          "min": [
+            -27.375743865966797,
+            -48.04560089111328,
+            -9.886722564697266
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            28.684463500976562,
+            8.157297134399414,
+            -7.490336894989014
+          ],
+          "min": [
+            -15.81554126739502,
+            -36.342708587646484,
+            -37.27173614501953
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            78.81067657470703,
+            58.1578254699707,
+            -15.1798677444458
+          ],
+          "min": [
+            21.995023727416992,
+            27.189735412597656,
+            -36.1922607421875
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            131.06805419921875,
+            47.2741813659668,
+            -9.42228889465332
+          ],
+          "min": [
+            70.97819519042969,
+            5.014853477478027,
+            -32.73997116088867
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            168.44622802734375,
+            136.83822631835938,
+            -18.512781143188477
+          ],
+          "min": [
+            108.85948181152344,
+            31.20330047607422,
+            -43.729881286621094
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            188.00390625,
+            107.61759185791016,
+            -19.24993324279785
+          ],
+          "min": [
+            142.80628967285156,
+            39.40029525756836,
+            -40.135623931884766
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            225.53883361816406,
+            59.126888275146484,
+            -18.729799270629883
+          ],
+          "min": [
+            170.34388732910156,
+            2.1299924850463867,
+            -41.41346740722656
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            183.7098388671875,
+            23.84138298034668,
+            -11.68643856048584
+          ],
+          "min": [
+            133.56153869628906,
+            -26.504348754882812,
+            -33.892433166503906
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            153.3287811279297,
+            -21.527311325073242,
+            -8.265156745910645
+          ],
+          "min": [
+            115.22669982910156,
+            -65.88218688964844,
+            -30.62345314025879
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            137.07371520996094,
+            -55.993465423583984,
+            -21.531490325927734
+          ],
+          "min": [
+            109.43029022216797,
+            -111.32804870605469,
+            -40.384803771972656
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            136.80096435546875,
+            -111.27249145507812,
+            -29.701614379882812
+          ],
+          "min": [
+            76.81781768798828,
+            -172.03933715820312,
+            -48.20819091796875
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            186.827392578125,
+            -62.541358947753906,
+            -24.207128524780273
+          ],
+          "min": [
+            134.50413513183594,
+            -128.4318084716797,
+            -55.54186248779297
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            240.1997528076172,
+            -19.862398147583008,
+            -40.804813385009766
+          ],
+          "min": [
+            186.7711181640625,
+            -54.908775329589844,
+            -55.81224822998047
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            199.84156799316406,
+            -38.07732391357422,
+            -35.70277786254883
+          ],
+          "min": [
+            161.45777893066406,
+            -79.33837890625,
+            -55.81224822998047
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            194.04100036621094,
+            -102.41207122802734,
+            -24.38602638244629
+          ],
+          "min": [
+            136.74542236328125,
+            -208.67523193359375,
+            -49.231868743896484
+          ]
+        }
+      ],
+      "key": "blackfathom-deeps",
+      "parentMapID": 1440,
+      "placement": {
+        "altitude": 17.17609405517578,
+        "id": 574320,
+        "scale": 1.0,
+        "x": 16167.8642578125,
+        "yaw": 164.0,
+        "z": 12929.984375
+      },
+      "tiles": [
+        {
+          "column": 0,
+          "fileDataID": 212428,
+          "group": 0,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Blackfathom/Blackfathom_000_00_00.blp",
+          "row": 0,
+          "sha256": "d1e6a3e7cb9fea420d5dc70966fa9d64f85a83a1bf6470ed96a5f1dd53c78069",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 212429,
+          "group": 1,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Blackfathom/Blackfathom_001_00_00.blp",
+          "row": 0,
+          "sha256": "5f0c9f68e70d9aad2a286d4bcedd38fea4ae989b53d046bd0d9bb5f7ba5b7e84",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 212430,
+          "group": 3,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Blackfathom/Blackfathom_003_00_00.blp",
+          "row": 0,
+          "sha256": "86a318d507e0077aefc53fab880531bea0bcdf6dc12dc1d49ddcf5cd635b2c4d",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 212431,
+          "group": 4,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Blackfathom/Blackfathom_004_00_00.blp",
+          "row": 0,
+          "sha256": "3e8900e48b4daedc00bd4d49c3e1f0d96f068f06806c95dd852c3f9ea1506108",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 212432,
+          "group": 5,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Blackfathom/Blackfathom_005_00_00.blp",
+          "row": 0,
+          "sha256": "e4c101e2f612e7c77e53249250a8263a02801243c4646f2f6bce000273a13d4d",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 212433,
+          "group": 6,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Blackfathom/Blackfathom_006_00_00.blp",
+          "row": 0,
+          "sha256": "c5fbc8a1148752763cf3e0783f1d71bd942364741d9558195d90d956eb8ab4fb",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 212434,
+          "group": 7,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Blackfathom/Blackfathom_007_00_00.blp",
+          "row": 0,
+          "sha256": "7662454e19bbd37b23325c8d9193ef2a500617d49d89c95bf7a9a74f9b98582a",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 212435,
+          "group": 8,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Blackfathom/Blackfathom_008_00_00.blp",
+          "row": 0,
+          "sha256": "a4cc331df6da8e5d5f905c1d659c8b248fcdcc21c91d78e5a17aaafa65516a99",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 212436,
+          "group": 9,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Blackfathom/Blackfathom_009_00_00.blp",
+          "row": 0,
+          "sha256": "1c65450c446064c6f66373bfcdc5264b95108a00064213a27cf92ff204009be1",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 212437,
+          "group": 10,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Blackfathom/Blackfathom_010_00_00.blp",
+          "row": 0,
+          "sha256": "7700b6f4c833669d0bcff18f92d11769b343c9461d4245c9044f945b660b27ce",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 212438,
+          "group": 11,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Blackfathom/Blackfathom_011_00_00.blp",
+          "row": 0,
+          "sha256": "8be8550200c2d4089c6f3473ce3edc8e2ed54229ab40ef01bcd7a340c0c08ba6",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 212439,
+          "group": 12,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Blackfathom/Blackfathom_012_00_00.blp",
+          "row": 0,
+          "sha256": "599eee589d630d0133d497208bcf6ad4f9398128990b10c6e1e0352b86e7a065",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 212440,
+          "group": 13,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Blackfathom/Blackfathom_013_00_00.blp",
+          "row": 0,
+          "sha256": "78facb0d8bb1ba9ec4cbc250816cb679669048804f5faad71ff6c723917ee3cf",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 212441,
+          "group": 14,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Blackfathom/Blackfathom_014_00_00.blp",
+          "row": 0,
+          "sha256": "3b4af15d2a3d3b6b190f4efd754c948e5a5304452d790177b21314c73bded78d",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 212442,
+          "group": 15,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Blackfathom/Blackfathom_015_00_00.blp",
+          "row": 0,
+          "sha256": "4c5ab531825c9effed39e26758e9b87663b4cc4a05d65d5b3335e69485d585e8",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 212443,
+          "group": 16,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KL_Blackfathom/Blackfathom_016_00_00.blp",
+          "row": 0,
+          "sha256": "c66941db28e052ba8df47f6f3c8361d2b82dc787349afacf578f34d60ee102bf",
+          "width": 128
+        }
+      ],
+      "wmoFileDataID": 109179,
+      "wmoSHA256": "4d2c5d6afe9cbd464979f885b1f69179bfe59087ea7d47668ac67aa12506c986"
+    },
+    {
+      "adtFileDataID": 777593,
+      "adtSHA256": "3acb0e9992748ac3ab09ae9ebcd19d413fcc8ceaa1e557fa7943c46ffb033bb1",
+      "continent": 0,
+      "groups": [
+        {
+          "flags": 8192,
+          "max": [
+            99.42485809326172,
+            7.39369535446167,
+            12.043719291687012
+          ],
+          "min": [
+            5.294620037078857,
+            -7.697968482971191,
+            -40.29024887084961
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            102.97300720214844,
+            -188.77296447753906,
+            -115.74701690673828
+          ],
+          "min": [
+            60.20894241333008,
+            -290.0249328613281,
+            -160.6630401611328
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            153.49093627929688,
+            -148.05010986328125,
+            -122.94094848632812
+          ],
+          "min": [
+            112.62770080566406,
+            -186.47799682617188,
+            -153.6800079345703
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            205.60377502441406,
+            -61.28640365600586,
+            -111.34286499023438
+          ],
+          "min": [
+            137.06822204589844,
+            -147.11463928222656,
+            -153.59381103515625
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            248.658203125,
+            -97.67227172851562,
+            -122.90335845947266
+          ],
+          "min": [
+            200.89434814453125,
+            -143.39471435546875,
+            -153.15452575683594
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            266.5913391113281,
+            -44.25254440307617,
+            -126.27842712402344
+          ],
+          "min": [
+            223.81515502929688,
+            -88.18193817138672,
+            -156.5295867919922
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            210.36419677734375,
+            -188.77293395996094,
+            -116.201416015625
+          ],
+          "min": [
+            169.09310913085938,
+            -290.02490234375,
+            -160.66307067871094
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            164.4163818359375,
+            -79.3661880493164,
+            -112.8617172241211
+          ],
+          "min": [
+            104.87689208984375,
+            -148.10694885253906,
+            -153.58047485351562
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            169.14865112304688,
+            -188.6993408203125,
+            -116.45833587646484
+          ],
+          "min": [
+            102.91744995117188,
+            -290.0488586425781,
+            -160.6977996826172
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            265.4696960449219,
+            -211.25665283203125,
+            -139.13644409179688
+          ],
+          "min": [
+            208.94984436035156,
+            -267.9721984863281,
+            -162.586181640625
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            266.5894470214844,
+            -88.1002197265625,
+            -122.90335845947266
+          ],
+          "min": [
+            218.39573669433594,
+            -127.93484497070312,
+            -156.5295867919922
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            269.5291442871094,
+            -3.3948476314544678,
+            -126.2784423828125
+          ],
+          "min": [
+            223.81370544433594,
+            -44.308101654052734,
+            -158.77957153320312
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            279.267822265625,
+            14.550393104553223,
+            -125.53374481201172
+          ],
+          "min": [
+            239.26661682128906,
+            -33.6573486328125,
+            -158.77957153320312
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            128.454345703125,
+            -30.997591018676758,
+            -139.84547424316406
+          ],
+          "min": [
+            112.10350799560547,
+            -79.42195892333984,
+            -162.68678283691406
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            65.83203125,
+            8.686391830444336,
+            -37.90605926513672
+          ],
+          "min": [
+            26.1563720703125,
+            -40.08372116088867,
+            -162.7871551513672
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            106.24298858642578,
+            4.327532768249512,
+            -136.705078125
+          ],
+          "min": [
+            65.77640533447266,
+            -35.653785705566406,
+            -164.18101501464844
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            133.57801818847656,
+            -0.7369615435600281,
+            -140.01136779785156
+          ],
+          "min": [
+            106.18677520751953,
+            -31.053342819213867,
+            -166.6497344970703
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            150.13442993164062,
+            -186.42245483398438,
+            -127.47612762451172
+          ],
+          "min": [
+            116.08602905273438,
+            -198.88502502441406,
+            -153.79934692382812
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            99.94329071044922,
+            -9.622212409973145,
+            -28.141868591308594
+          ],
+          "min": [
+            60.76095962524414,
+            -22.16288948059082,
+            -61.12357711791992
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            116.54383850097656,
+            6.978308200836182,
+            -27.049917221069336
+          ],
+          "min": [
+            99.36930084228516,
+            -23.10553550720215,
+            -40.290252685546875
+          ]
+        },
+        {
+          "flags": 8,
+          "max": [
+            29.409618377685547,
+            38.2764892578125,
+            47.06474304199219
+          ],
+          "min": [
+            -4.8144731521606445,
+            -38.22335433959961,
+            -1.0950138568878174
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            324.8019104003906,
+            14.55142593383789,
+            -126.13999938964844
+          ],
+          "min": [
+            279.1864929199219,
+            -30.21941566467285,
+            -156.52955627441406
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            140.33657836914062,
+            -288.4722900390625,
+            -144.06735229492188
+          ],
+          "min": [
+            126.0123291015625,
+            -300.84381103515625,
+            -160.66302490234375
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            156.3296356201172,
+            -300.7882080078125,
+            -142.18975830078125
+          ],
+          "min": [
+            124.41326141357422,
+            -322.3982849121094,
+            -164.80517578125
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            194.17764282226562,
+            -302.6862487792969,
+            -147.8990020751953
+          ],
+          "min": [
+            156.27406311035156,
+            -319.2760314941406,
+            -169.31956481933594
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            239.7563934326172,
+            -302.58868408203125,
+            -156.30393981933594
+          ],
+          "min": [
+            194.12210083007812,
+            -383.7392272949219,
+            -181.8396453857422
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            490.87750244140625,
+            14.553356170654297,
+            -94.51911163330078
+          ],
+          "min": [
+            323.0942687988281,
+            -160.58433532714844,
+            -175.46620178222656
+          ]
+        }
+      ],
+      "key": "gnomeregan",
+      "parentMapID": 1426,
+      "placement": {
+        "altitude": 410.0280456542969,
+        "id": 324550,
+        "scale": 1.0,
+        "x": 16460.017578125,
+        "yaw": 265.5,
+        "z": 22250.119140625
+      },
+      "tiles": [
+        {
+          "column": 0,
+          "fileDataID": 213228,
+          "group": 0,
+          "height": 32,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_000_00_00.blp",
+          "row": 0,
+          "sha256": "3cf655127ace2760cfab9f05c1af47961832aeed5023177dcd521feb198ad6e2",
+          "width": 256
+        },
+        {
+          "column": 0,
+          "fileDataID": 213229,
+          "group": 1,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_001_00_00.blp",
+          "row": 0,
+          "sha256": "1f11ee7413103d59d2e36ec76168700434a4a9db9ed8da85b243b2a7f27d9dd3",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213230,
+          "group": 2,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_002_00_00.blp",
+          "row": 0,
+          "sha256": "ae869c2fa00049dfcbfed6aa9b0c835920ce08f0793b2d600a9ed3d82a78f0aa",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213231,
+          "group": 3,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_003_00_00.blp",
+          "row": 0,
+          "sha256": "1498f311b5b673e8de09bae0cd4ab8621d788608685235adaedd952eac3692d9",
+          "width": 256
+        },
+        {
+          "column": 0,
+          "fileDataID": 213232,
+          "group": 4,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_004_00_00.blp",
+          "row": 0,
+          "sha256": "db97a3dc1aba5f3757763883bbcfd18455bac2d1f4972d564aaa875c8af9bd81",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213233,
+          "group": 5,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_005_00_00.blp",
+          "row": 0,
+          "sha256": "dec07a4e2c7facf931b139924cdc5e0761053e0d7ab7717840349c62a44499c6",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213234,
+          "group": 6,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_006_00_00.blp",
+          "row": 0,
+          "sha256": "a73f5f20bb784e68206c1672bd8e0003a1b5e92f0e647c8e7dbf05802cb99877",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213235,
+          "group": 7,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_007_00_00.blp",
+          "row": 0,
+          "sha256": "9f1d516cff388311742e688d78a443694a866e1ce7ca83d61cc5cb5c188edc13",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213236,
+          "group": 8,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_008_00_00.blp",
+          "row": 0,
+          "sha256": "b74b22c8bd3a5da540c09bf6802f7b97e28e7bb369bf22ddbaace0dd21ce5b8c",
+          "width": 256
+        },
+        {
+          "column": 0,
+          "fileDataID": 213237,
+          "group": 9,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_009_00_00.blp",
+          "row": 0,
+          "sha256": "e7b50dd1416cb847144435b5fbce297dcfca05211ceb6024f73a4350e9f2ea35",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213238,
+          "group": 10,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_010_00_00.blp",
+          "row": 0,
+          "sha256": "5110c895fcb376605999a847a578f7c41dfb38357fc417504c21b03ccab5df4f",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213239,
+          "group": 11,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_011_00_00.blp",
+          "row": 0,
+          "sha256": "6d9294e33e6357040dc61b5e7146c52f12d61997579dee975af1a9383972159d",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213240,
+          "group": 12,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_012_00_00.blp",
+          "row": 0,
+          "sha256": "39a6d6cac8a913b5b76c18e8f8bb0f35b93ef62613c4f94c64df444a3ac63ab5",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213241,
+          "group": 13,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_013_00_00.blp",
+          "row": 0,
+          "sha256": "5149ab11327c2a70fd10239456108a60a216368218d45f3af4da70cab8e78644",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 213242,
+          "group": 14,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_014_00_00.blp",
+          "row": 0,
+          "sha256": "c07e3790d3794345c7a8a3137098ed1f4f2ea3c2764e484b429567967ce5296e",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213243,
+          "group": 15,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_015_00_00.blp",
+          "row": 0,
+          "sha256": "7e4eeb5040ec7fb300a87e87ae4278f8395f4180beac4352097c9a64e5e8007c",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213244,
+          "group": 16,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_016_00_00.blp",
+          "row": 0,
+          "sha256": "edda05269acfbdd2c27b88e57606ff64d39f388e019915cc1b899e42d1bef9d1",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 213245,
+          "group": 17,
+          "height": 32,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_017_00_00.blp",
+          "row": 0,
+          "sha256": "22adbbe4eb0b5da3b51ef2fd0ce9c8af26f31ff0734090cab669e9ed491b9ea9",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213246,
+          "group": 18,
+          "height": 32,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_018_00_00.blp",
+          "row": 0,
+          "sha256": "57d8555a3a32c8a3310f6beeeeddd72aba89720b9ae9beec13297276a67b3647",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213247,
+          "group": 19,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_019_00_00.blp",
+          "row": 0,
+          "sha256": "302377c1f61927e9a09ba125bb57737ca36aaaee2deaaab70f26a6ba6f13fc3b",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 213248,
+          "group": 21,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_021_00_00.blp",
+          "row": 0,
+          "sha256": "506e19d14a4ee20d61cfdd1abb6487868db4de1be81d0ce4035fd6681466816f",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213249,
+          "group": 22,
+          "height": 32,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_022_00_00.blp",
+          "row": 0,
+          "sha256": "586e380222437a738b1e7ada2faf5b413cf9a913ab5a939bdaa568e4ee21fbb1",
+          "width": 32
+        },
+        {
+          "column": 0,
+          "fileDataID": 213250,
+          "group": 23,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_023_00_00.blp",
+          "row": 0,
+          "sha256": "a3615723b8f888d1e687596e49ef135d37f93b286d4ce858c7b0ad1f367131a6",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 213251,
+          "group": 24,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_024_00_00.blp",
+          "row": 0,
+          "sha256": "5d1ed14af97308b5999955b8ccd868789c1a5dc9ff40b3ef39103743d4ad9b14",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213252,
+          "group": 25,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_025_00_00.blp",
+          "row": 0,
+          "sha256": "eb2648ec879d4f036143b0fb2801015378a6444a6b731956798e54076e717471",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213253,
+          "group": 26,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_026_00_00.blp",
+          "row": 0,
+          "sha256": "5d9a6fb784aa2db60d7a3ce062191712b2ba46a68cbf27623fa97debba03cd8e",
+          "width": 256
+        },
+        {
+          "column": 0,
+          "fileDataID": 213254,
+          "group": 26,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_026_00_01.blp",
+          "row": 1,
+          "sha256": "e2276c8b624465bec39b2768630f6c4c448284682d0be083ce9afd341e666f0d",
+          "width": 256
+        },
+        {
+          "column": 1,
+          "fileDataID": 213255,
+          "group": 26,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_026_01_00.blp",
+          "row": 0,
+          "sha256": "6ebb30832d6c83d19845ffd42509702718a8705de32f08a4d6e470ab3dc4b78d",
+          "width": 256
+        },
+        {
+          "column": 1,
+          "fileDataID": 213256,
+          "group": 26,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Gnomeragon/KZ_Gnomeragon_026_01_01.blp",
+          "row": 1,
+          "sha256": "b6ed0ccd3d4555aa6b50da4112c8a00a6382468bb1b9afe9e8037c329c128c92",
+          "width": 256
+        }
+      ],
+      "wmoFileDataID": 109593,
+      "wmoSHA256": "2b81923c8e78b1e6987ec627f9d700ae1f619403f0ee9093bdf1b696ecbb2450"
+    },
+    {
+      "adtFileDataID": 778118,
+      "adtSHA256": "31c74f67d4b3b16c9dd1e8fbc4ed98124815783647f1f1cc2c35e09371442c40",
+      "continent": 0,
+      "groups": [
+        {
+          "flags": 8,
+          "max": [
+            14.55909538269043,
+            115.57390594482422,
+            180.36862182617188
+          ],
+          "min": [
+            -223.80397033691406,
+            -102.80757904052734,
+            -4.873684406280518
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            -58.170257568359375,
+            -4.701179504394531,
+            25.21063232421875
+          ],
+          "min": [
+            -69.45623016357422,
+            -17.360082626342773,
+            18.64944839477539
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            -58.15822219848633,
+            19.05652618408203,
+            25.21063232421875
+          ],
+          "min": [
+            -69.45623016357422,
+            6.264988899230957,
+            18.64944839477539
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            -9.515623092651367,
+            5.321038722991943,
+            14.880436897277832
+          ],
+          "min": [
+            -29.615459442138672,
+            -3.6454386711120605,
+            -2.3524413108825684
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            -29.559846878051758,
+            5.321066856384277,
+            25.821327209472656
+          ],
+          "min": [
+            -69.52362823486328,
+            -3.645437717437744,
+            7.480811595916748
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            8.790003776550293,
+            10.162288665771484,
+            27.85056495666504
+          ],
+          "min": [
+            -9.571187973022461,
+            -8.476428985595703,
+            -2.356593608856201
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            -69.40067291259766,
+            35.39586639404297,
+            30.786222457885742
+          ],
+          "min": [
+            -140.53607177734375,
+            -31.92166519165039,
+            12.222923278808594
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            -122.76049041748047,
+            37.88926315307617,
+            27.131135940551758
+          ],
+          "min": [
+            -139.7850341796875,
+            23.64080810546875,
+            12.222923278808594
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            -123.39862060546875,
+            -21.44287109375,
+            26.928958892822266
+          ],
+          "min": [
+            -146.85186767578125,
+            -41.909210205078125,
+            13.639351844787598
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            -157.3179168701172,
+            36.833805084228516,
+            28.83155059814453
+          ],
+          "min": [
+            -173.44276428222656,
+            13.156445503234863,
+            17.94159698486328
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            -140.47537231445312,
+            30.549654006958008,
+            24.501014709472656
+          ],
+          "min": [
+            -157.37362670898438,
+            9.778276443481445,
+            12.669099807739258
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            -157.3180389404297,
+            -11.041202545166016,
+            28.83011245727539
+          ],
+          "min": [
+            -174.62139892578125,
+            -35.12665557861328,
+            17.940170288085938
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            -140.47537231445312,
+            -8.090749740600586,
+            24.796430587768555
+          ],
+          "min": [
+            -157.37362670898438,
+            -28.862136840820312,
+            12.964515686035156
+          ]
+        }
+      ],
+      "key": "scarlet-monastery",
+      "parentMapID": 1420,
+      "placement": {
+        "altitude": 141.6554718017578,
+        "id": 129262,
+        "scale": 1.0,
+        "x": 17758.65625,
+        "yaw": 292.5,
+        "z": 14222.65234375
+      },
+      "tiles": [
+        {
+          "column": 0,
+          "fileDataID": 210148,
+          "group": 1,
+          "height": 32,
+          "path": "World/Minimaps/WMO/Azeroth/Buildings/Scarlet_Monestary/Scarlet_Monestary_001_00_00.blp",
+          "row": 0,
+          "sha256": "2412d42ab7c672edf32f10da0aa4ab987546c6cfd87e3baacc6fe721620756f3",
+          "width": 32
+        },
+        {
+          "column": 0,
+          "fileDataID": 210149,
+          "group": 2,
+          "height": 32,
+          "path": "World/Minimaps/WMO/Azeroth/Buildings/Scarlet_Monestary/Scarlet_Monestary_002_00_00.blp",
+          "row": 0,
+          "sha256": "4a1145c3e2d572b6f91bfa550b1475540e140aa5c33686c894eb7f922ef8c815",
+          "width": 32
+        },
+        {
+          "column": 0,
+          "fileDataID": 210150,
+          "group": 3,
+          "height": 32,
+          "path": "World/Minimaps/WMO/Azeroth/Buildings/Scarlet_Monestary/Scarlet_Monestary_003_00_00.blp",
+          "row": 0,
+          "sha256": "cd6bb46fc506d0c59e86ad509fdeeb045d56a375199c106996d57955ed96db66",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 210151,
+          "group": 4,
+          "height": 32,
+          "path": "World/Minimaps/WMO/Azeroth/Buildings/Scarlet_Monestary/Scarlet_Monestary_004_00_00.blp",
+          "row": 0,
+          "sha256": "085eb9686cab756912c88406716f14afb82b58ca200a23daca94551c967246f4",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 210152,
+          "group": 5,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Azeroth/Buildings/Scarlet_Monestary/Scarlet_Monestary_005_00_00.blp",
+          "row": 0,
+          "sha256": "8b4bde0c1d882654927a302f5a7bd5eb60ca0e2ad7f2fa87de1262cc1dae0f06",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 210153,
+          "group": 6,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Azeroth/Buildings/Scarlet_Monestary/Scarlet_Monestary_006_00_00.blp",
+          "row": 0,
+          "sha256": "8bc5ee63cf57c720bad656bf23644d8de2fb6ff1f4095962f9a965b594e99cf0",
+          "width": 256
+        },
+        {
+          "column": 0,
+          "fileDataID": 210154,
+          "group": 7,
+          "height": 32,
+          "path": "World/Minimaps/WMO/Azeroth/Buildings/Scarlet_Monestary/Scarlet_Monestary_007_00_00.blp",
+          "row": 0,
+          "sha256": "b82a5dafecd81a9114196ef60ac747f6ca43cd0a6c9ed24ac4b98afc892a5cbb",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 210155,
+          "group": 8,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Azeroth/Buildings/Scarlet_Monestary/Scarlet_Monestary_008_00_00.blp",
+          "row": 0,
+          "sha256": "0311d561c199c321a0f0b8ebb193b121f0e577db681f837548cdb8fc2fea5589",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 210156,
+          "group": 9,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Azeroth/Buildings/Scarlet_Monestary/Scarlet_Monestary_009_00_00.blp",
+          "row": 0,
+          "sha256": "6739b5c38d20915d5f37b26df90458cd5301f614f8f947284570ef3f4011eb40",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 210157,
+          "group": 10,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Azeroth/Buildings/Scarlet_Monestary/Scarlet_Monestary_010_00_00.blp",
+          "row": 0,
+          "sha256": "6e64c83f835e240f844fe5dd621fcb3938e0afb397ed86779938a1167a4001f8",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 210158,
+          "group": 11,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Azeroth/Buildings/Scarlet_Monestary/Scarlet_Monestary_011_00_00.blp",
+          "row": 0,
+          "sha256": "6acbba0d420f0c236641bdc10d9b26f6f8e524f40ae64782b64f57a8bd32ca38",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 210159,
+          "group": 12,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Azeroth/Buildings/Scarlet_Monestary/Scarlet_Monestary_012_00_00.blp",
+          "row": 0,
+          "sha256": "a8aadb9f90fd57a572bd4433d50f5545d54069454557c85e0d4a9f0a50c767fd",
+          "width": 64
+        }
+      ],
+      "wmoFileDataID": 107218,
+      "wmoSHA256": "2f66eac1bd27aaa9051a7881041c07ac5d43ad4116e5356b4d29e37d7217c98b"
+    },
+    {
+      "adtFileDataID": 778998,
+      "adtSHA256": "4461bedbc0d824b060547bad501e5ca096b9d6dbc3b5fc1b3c20261b84246204",
+      "continent": 0,
+      "groups": [
+        {
+          "flags": 8192,
+          "max": [
+            297.2974853515625,
+            32.477169036865234,
+            -33.37607955932617
+          ],
+          "min": [
+            270.3096618652344,
+            8.858500480651855,
+            -45.34933090209961
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            180.19912719726562,
+            58.80582046508789,
+            -18.154979705810547
+          ],
+          "min": [
+            141.23484802246094,
+            6.808078289031982,
+            -36.72467041015625
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            150.09959411621094,
+            70.34294128417969,
+            -17.505929946899414
+          ],
+          "min": [
+            112.81705474853516,
+            45.818946838378906,
+            -35.54225158691406
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            153.17494201660156,
+            -5.55023193359375,
+            -8.81262493133545
+          ],
+          "min": [
+            124.87374877929688,
+            -26.572797775268555,
+            -23.372034072875977
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            159.4757080078125,
+            30.029375076293945,
+            22.663053512573242
+          ],
+          "min": [
+            62.71841049194336,
+            -40.09723663330078,
+            -18.754384994506836
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            279.05682373046875,
+            42.51022720336914,
+            -31.612361907958984
+          ],
+          "min": [
+            257.6910705566406,
+            22.6414794921875,
+            -45.69334411621094
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            58.13875961303711,
+            -13.586121559143066,
+            9.782610893249512
+          ],
+          "min": [
+            28.055471420288086,
+            -47.141578674316406,
+            -3.060957908630371
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            67.232421875,
+            1.0096418857574463,
+            7.667674541473389
+          ],
+          "min": [
+            45.18204879760742,
+            -14.382308959960938,
+            -4.181557655334473
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            33.129764556884766,
+            10.195595741271973,
+            11.491471290588379
+          ],
+          "min": [
+            7.56120491027832,
+            -30.317481994628906,
+            -2.7323825359344482
+          ]
+        },
+        {
+          "flags": 8,
+          "max": [
+            15.450702667236328,
+            13.506757736206055,
+            12.608707427978516
+          ],
+          "min": [
+            -4.087019443511963,
+            -12.010269165039062,
+            -1.183272123336792
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            253.71014404296875,
+            -42.19059371948242,
+            -21.971284866333008
+          ],
+          "min": [
+            202.21595764160156,
+            -78.33991241455078,
+            -48.13133239746094
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            247.07028198242188,
+            128.3271026611328,
+            -8.25422191619873
+          ],
+          "min": [
+            209.28753662109375,
+            86.30489349365234,
+            -32.89608383178711
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            299.0309753417969,
+            -51.1729850769043,
+            -24.1885929107666
+          ],
+          "min": [
+            253.6542205810547,
+            -100.23648834228516,
+            -49.29973220825195
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            202.27310180664062,
+            -51.17288589477539,
+            -24.188594818115234
+          ],
+          "min": [
+            151.1837615966797,
+            -101.9658203125,
+            -50.004844665527344
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            289.0357360839844,
+            198.0345916748047,
+            -1.7333682775497437
+          ],
+          "min": [
+            209.83969116210938,
+            125.98882293701172,
+            -34.87311553955078
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            323.34527587890625,
+            62.43775939941406,
+            -19.611427307128906
+          ],
+          "min": [
+            281.1759338378906,
+            21.982973098754883,
+            -45.67635726928711
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            160.5947723388672,
+            138.61810302734375,
+            -3.90604829788208
+          ],
+          "min": [
+            109.4801025390625,
+            67.43936920166016,
+            -43.77505111694336
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            211.62574768066406,
+            108.9072265625,
+            -5.506805419921875
+          ],
+          "min": [
+            153.0540008544922,
+            51.52981948852539,
+            -36.417232513427734
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            118.18360900878906,
+            70.73896026611328,
+            -12.57188892364502
+          ],
+          "min": [
+            79.67754364013672,
+            36.48006820678711,
+            -33.79801940917969
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            290.9107360839844,
+            100.19221496582031,
+            -17.39411735534668
+          ],
+          "min": [
+            243.4239501953125,
+            52.70545959472656,
+            -43.554161071777344
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            198.79901123046875,
+            38.439327239990234,
+            -23.850872039794922
+          ],
+          "min": [
+            179.09986877441406,
+            7.2783732414245605,
+            -36.25607681274414
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            188.46998596191406,
+            -2.1995019912719727,
+            -8.81262493133545
+          ],
+          "min": [
+            148.58534240722656,
+            -43.15796661376953,
+            -26.45305824279785
+          ]
+        },
+        {
+          "flags": 8192,
+          "max": [
+            264.1685791015625,
+            69.76377868652344,
+            -10.319414138793945
+          ],
+          "min": [
+            183.27859497070312,
+            -42.26528549194336,
+            -52.007808685302734
+          ]
+        }
+      ],
+      "key": "uldaman",
+      "parentMapID": 1418,
+      "placement": {
+        "altitude": 255.78746032714844,
+        "id": 180253,
+        "scale": 1.0,
+        "x": 20251.458984375,
+        "yaw": 273.0,
+        "z": 23157.859375
+      },
+      "tiles": [
+        {
+          "column": 0,
+          "fileDataID": 213412,
+          "group": 0,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Uldaman/KZ_Uldaman_A_000_00_00.blp",
+          "row": 0,
+          "sha256": "439b372aca21a970613f7926f036911b7b1fdf794a8c1a0d478a715cb5137073",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 213413,
+          "group": 1,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Uldaman/KZ_Uldaman_A_001_00_00.blp",
+          "row": 0,
+          "sha256": "fa0a8d8faf6bc345681c2ca7bd083097cb90bf660ce90a99c6a4dc806ed7e410",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213414,
+          "group": 2,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Uldaman/KZ_Uldaman_A_002_00_00.blp",
+          "row": 0,
+          "sha256": "871049a1030c21ad03b0e634eb7ef8344df67d160a79feee8d06fe25e3b62820",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213415,
+          "group": 3,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Uldaman/KZ_Uldaman_A_003_00_00.blp",
+          "row": 0,
+          "sha256": "1c1817bd1e084332630dc5bd0e7db2967fc5ad1b2075f20a52eacbef7a060544",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 213416,
+          "group": 4,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Uldaman/KZ_Uldaman_A_004_00_00.blp",
+          "row": 0,
+          "sha256": "3ff5f75221cdb8e823507ab26d4cc6679616b812144cec30b8e2dfe67bda4794",
+          "width": 256
+        },
+        {
+          "column": 0,
+          "fileDataID": 213417,
+          "group": 5,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Uldaman/KZ_Uldaman_A_005_00_00.blp",
+          "row": 0,
+          "sha256": "d82ffa6c06f4c625ed98d472ffd9432568e206fbe1b68354aa3bbc1df3e303a2",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 213418,
+          "group": 6,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Uldaman/KZ_Uldaman_A_006_00_00.blp",
+          "row": 0,
+          "sha256": "31a721879871e6e3f37c23f80468a17ddf01792aa54a16080cabd3e48843fe52",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 213419,
+          "group": 7,
+          "height": 32,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Uldaman/KZ_Uldaman_A_007_00_00.blp",
+          "row": 0,
+          "sha256": "ff0c0f15dea6d548dd0a851651c9efbb6dfb7264a3609ca2ca655f4c2c3430af",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 213420,
+          "group": 8,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Uldaman/KZ_Uldaman_A_008_00_00.blp",
+          "row": 0,
+          "sha256": "be8e9b6d7ee30ed021cdc6c76378b3b14bf9324bbf3ce1d6b0341c621fe4a9e2",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 213421,
+          "group": 10,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Uldaman/KZ_Uldaman_A_010_00_00.blp",
+          "row": 0,
+          "sha256": "31a2790bb0b47d2753c17d1cb5cfabc084f2344dbe735d705cf65120fd20b1f0",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213422,
+          "group": 11,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Uldaman/KZ_Uldaman_A_011_00_00.blp",
+          "row": 0,
+          "sha256": "dda3556ac93642832c138e1c0c7590501d0f82322f730aa7af0fb3277a5edf20",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213423,
+          "group": 12,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Uldaman/KZ_Uldaman_A_012_00_00.blp",
+          "row": 0,
+          "sha256": "de581a6d4ba6e59b6e843170c0000c3d7aeda40b06e70633e196566edefa1265",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213424,
+          "group": 13,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Uldaman/KZ_Uldaman_A_013_00_00.blp",
+          "row": 0,
+          "sha256": "bd71a7ce282ca10b875ea890d2853428bb54cf8970dc679fc2993a332945ebde",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213425,
+          "group": 14,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Uldaman/KZ_Uldaman_A_014_00_00.blp",
+          "row": 0,
+          "sha256": "d35e8f6f627d06ddf2d172997d67de5332560a2d828a2f7d2c6ae18c84d83354",
+          "width": 256
+        },
+        {
+          "column": 0,
+          "fileDataID": 213426,
+          "group": 15,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Uldaman/KZ_Uldaman_A_015_00_00.blp",
+          "row": 0,
+          "sha256": "b45f96fbb06941ef5c0d70d909e49050885310781ce5fc9bdeaefddda17fae18",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213427,
+          "group": 16,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Uldaman/KZ_Uldaman_A_016_00_00.blp",
+          "row": 0,
+          "sha256": "46deaf45285129b6575386d6fbbab239bdc90bef3f743170cd231e1596da4e41",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213428,
+          "group": 17,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Uldaman/KZ_Uldaman_A_017_00_00.blp",
+          "row": 0,
+          "sha256": "51928c94c085424ffd7a9ce72589d61f92b4b52ca403bdf56c2e3fd2d044c877",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213429,
+          "group": 18,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Uldaman/KZ_Uldaman_A_018_00_00.blp",
+          "row": 0,
+          "sha256": "cd2da8d0a8354e8f6300a4f6e050291d1833c96c0e94b6fdf93675754684dc7e",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213430,
+          "group": 19,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Uldaman/KZ_Uldaman_A_019_00_00.blp",
+          "row": 0,
+          "sha256": "21e22f6e099b4ac147941cc2f9da88aaadbf421d52a79701220ca198dc663f9a",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213431,
+          "group": 20,
+          "height": 64,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Uldaman/KZ_Uldaman_A_020_00_00.blp",
+          "row": 0,
+          "sha256": "6645040ab18108ef8d86cfdfbb5a01a7b386579f8d1de19ce7062f4c41d58330",
+          "width": 64
+        },
+        {
+          "column": 0,
+          "fileDataID": 213432,
+          "group": 21,
+          "height": 128,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Uldaman/KZ_Uldaman_A_021_00_00.blp",
+          "row": 0,
+          "sha256": "117d00d3922e9977eeaf27aacc1e2862a84092c36792c7c885e857e1f9eddeac",
+          "width": 128
+        },
+        {
+          "column": 0,
+          "fileDataID": 213433,
+          "group": 22,
+          "height": 256,
+          "path": "World/Minimaps/WMO/Dungeon/KZ_Uldaman/KZ_Uldaman_A_022_00_00.blp",
+          "row": 0,
+          "sha256": "8f080e27cdc1bef1702ec283b1b5066de256c88e90a13443f0870bbc0d6776ff",
+          "width": 256
+        }
+      ],
+      "wmoFileDataID": 109758,
+      "wmoSHA256": "45ef061344293e83597ea53102c15aab0c0053b4dea33efd6633f545b73c9548"
+    }
+  ],
+  "schema": 1
+}

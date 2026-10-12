@@ -55,6 +55,14 @@ then fully restart the client; the release includes taint mitigation (a /reload 
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+0.8.67 LIVE DUNGEON APPROACH MAPS adds seven live outdoor cave maps using the
+client's own textures. Your marker follows public outdoor coordinates; entering
+the matching instance opens its existing static map. Dungeon interiors remain
+static. Always show health and resource numbers is an optional Blizzard setting
+with restoration of your previous display mode. Source-backed guide data for
+Alterac Mountains, Arathi Highlands, Ashenvale, Azshara, Badlands, Desolace and
+Silithus is included. See TESTING.md for client checks and known limits.
+
 0.8.66 NATIVE GROUP FINDER FILTERS places role/class dropdowns inside Forever's
 Looking For Group Browse header and filters the native Players list. Groups and
 self-listings stay visible; selection, messages and invites use the game controls.
