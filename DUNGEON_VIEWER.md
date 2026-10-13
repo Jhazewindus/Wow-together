@@ -1,11 +1,23 @@
-# Dungeon viewer — 0.8.68 — DUNGEON JOURNAL FACT UPDATES
+# Dungeon viewer — 0.8.75 — ROYS BIG DUNGEON BANANZA
 
-The 0.8.68 journal adds individually owner-confirmed Forever records for Lorgus
-Jett, Fenrus the Devourer, Azshir the Sleepless and Shade of the Archmage.
-City of Dalaran has only the Shade record so far and is explicitly labeled
-**Partial data** in the viewer. Its encounter/map coverage remains incomplete;
-no map location or unlisted drop is inferred. Starving Arcane follows An
-Alarming Request in the leveling catalogue.
+The 0.8.75 journal adds eight documented City of Dalaran encounters and 27
+specific boss/item links from captured public Forever NPC pages. The Method.gg
+guide page independently cross-checks the listed Dalaran roster and loot IDs.
+City of Dalaran remains labeled **Partial data** because its interior map and
+exhaustive encounter coverage are not established. No map position or unlisted
+drop is inferred. The records include IDs, names, item metadata, source URLs and
+capture hashes; no site code, prose, artwork, layout or map image is included.
+
+Method.gg currently has guides for four of the nine newer Forever dungeons:
+City of Dalaran, Excavation Site: Wetlands, Hall of Thanes and Ruins of
+Lordaeron. The listed Wetlands and Hall bosses/drops match the current journal.
+Ruins' six Method-listed bosses match too; Lordaeron Captain is a separate
+seventh local record. The Drowned City, Krol'dok Stronghold, Alcaz Prison,
+Blackmaw Hold and Shaper's Terrace have no page in that guide index, so their
+boss/loot data stays unknown until another source is captured. No Method map
+images are redistributed.
+
+Starving Arcane follows An Alarming Request in the leveling catalogue.
 
 **See dungeon** opens the full journal from the main addon's Dungeon quests cards
 from anywhere. Cards place **Quest list** beside **Start route**; clicking the

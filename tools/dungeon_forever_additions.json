@@ -1,0 +1,496 @@
+{
+  "schema": 1,
+  "captured": "2026-10-13",
+  "purpose": "Specific Forever boss/item facts from public NPC pages. Method.gg pages independently cross-check the documented new-dungeon roster and listed loot IDs. No code, prose, artwork, map images, page layout, or site data exports are bundled.",
+  "methodCrossChecks": {
+    "city-of-dalaran": {
+      "url": "https://www.method.gg/wow-forever/dungeons/city-of-dalaran",
+      "sha256": "58ed77161887af9ffadf7bd6c9760cb40b4292ff92377179f1b54915c5d79f7c",
+      "bytes": 240161,
+      "listedBosses": 8,
+      "listedItemLinks": 27
+    },
+    "excavation-site-wetlands": {
+      "url": "https://www.method.gg/wow-forever/dungeons/excavation-site-wetlands",
+      "sha256": "5f5399f32d4ed7d6f349beb642f2aa2dcd73edcaf3c29331d9ec24a1d1031fca",
+      "bytes": 227376,
+      "listedBosses": 3,
+      "listedItemLinks": 10
+    },
+    "the-hall-of-thanes": {
+      "url": "https://www.method.gg/wow-forever/dungeons/hall-of-thanes",
+      "sha256": "00f416cb9ce662f55d9c033256753fc6cf9c99ace5a8a6d26f38ad90d98b4f39",
+      "bytes": 221411,
+      "listedBosses": 4,
+      "listedItemLinks": 12
+    },
+    "ruins-of-lordaeron": {
+      "url": "https://www.method.gg/wow-forever/dungeons/ruins-of-lordaeron",
+      "sha256": "22d4a71100cfe1f296dcc5e46ecf6530428c8893109e90d83846c319ee607ff4",
+      "bytes": 228526,
+      "listedBosses": 6,
+      "listedItemLinks": 18
+    }
+  },
+  "cityOfDalaran": {
+    "bosses": [
+      {
+        "id": 247126,
+        "name": "Atrexis the Grave Knight",
+        "dropIDs": [
+          273032,
+          273033,
+          273036
+        ],
+        "source": {
+          "url": "https://www.wowhead.com/forever/npc=247126",
+          "sha256": "c845753bba1e061c7b609e4d022c16f62fa3c0e890af3a72257273d82e6f45fb",
+          "bytes": 42152
+        }
+      },
+      {
+        "id": 247032,
+        "name": "Lyn the Ignored",
+        "dropIDs": [
+          273053,
+          273054,
+          273055
+        ],
+        "source": {
+          "url": "https://www.wowhead.com/forever/npc=247032",
+          "sha256": "2ce4cc6c8c4cc56184da74afb46f8d7c818d922f4eda1e5d092e7c8d70999cba",
+          "bytes": 41608
+        }
+      },
+      {
+        "id": 245999,
+        "name": "Arcane Anomaly",
+        "dropIDs": [
+          273031,
+          273034,
+          273035
+        ],
+        "source": {
+          "url": "https://www.wowhead.com/forever/npc=245999",
+          "sha256": "c4de98a9198f6eaf465d69550a6b80d56896d43b82188a1554f4d5e36bb99c30",
+          "bytes": 39618
+        }
+      },
+      {
+        "id": 246016,
+        "name": "Arcanic Enigma",
+        "dropIDs": [
+          273043,
+          273044,
+          273045
+        ],
+        "source": {
+          "url": "https://www.wowhead.com/forever/npc=246016",
+          "sha256": "8d326bdae610499af1a774747fb5ebf4ac686af1196a3406a4d9d8eec8e412ee",
+          "bytes": 41364
+        }
+      },
+      {
+        "id": 246017,
+        "name": "Unstable Sentinel",
+        "dropIDs": [
+          273046,
+          273047,
+          273048,
+          273099
+        ],
+        "source": {
+          "url": "https://www.wowhead.com/forever/npc=246017",
+          "sha256": "0f4a760c5461091a113509d98ce10f996cce06643ad35a918bbe0c31c0b59f49",
+          "bytes": 41295
+        }
+      },
+      {
+        "id": 246003,
+        "name": "Fel Ancient",
+        "dropIDs": [
+          273037,
+          273038,
+          273039
+        ],
+        "source": {
+          "url": "https://www.wowhead.com/forever/npc=246003",
+          "sha256": "22e0f4ec415e4c658162e39f06fbd3964b7d7806b9ff87cb744aaa0939bc3322",
+          "bytes": 42215
+        }
+      },
+      {
+        "id": 246008,
+        "name": "Mana Devourer",
+        "dropIDs": [
+          273040,
+          273041,
+          273042
+        ],
+        "source": {
+          "url": "https://www.wowhead.com/forever/npc=246008",
+          "sha256": "5a8daf667fde2cfa7ae6de9768eee90c3950add974ce5b5b5e4780416cb6dca7",
+          "bytes": 40289
+        }
+      },
+      {
+        "id": 246020,
+        "name": "Shade of the Archmage",
+        "dropIDs": [
+          251961,
+          273049,
+          273051,
+          273052,
+          273103
+        ],
+        "source": {
+          "url": "https://www.wowhead.com/forever/npc=246020",
+          "sha256": "54efcf63f30b34f9a40b895c51a2cb71112e47e9c13efd99601cf36c3a1a6796",
+          "bytes": 47484
+        }
+      }
+    ]
+  },
+  "items": {
+    "251961": {
+      "id": 251961,
+      "name": "Arcane Mote",
+      "quality": 1,
+      "classID": 12,
+      "subclass": 0,
+      "slot": 0,
+      "level": 1,
+      "status": "new"
+    },
+    "273031": {
+      "id": 273031,
+      "name": "Runemender's Seal",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -2,
+      "slot": 11,
+      "level": 32,
+      "requiredLevel": 27,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_jewelry_ring_28"
+    },
+    "273032": {
+      "id": 273032,
+      "name": "Bonebinder's Signet",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -2,
+      "slot": 11,
+      "level": 31,
+      "requiredLevel": 25,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_jewelry_ring_28"
+    },
+    "273033": {
+      "id": 273033,
+      "name": "Gravespike Repeater",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 18,
+      "slot": 15,
+      "level": 31,
+      "requiredLevel": 26,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_weapon_crossbow_06"
+    },
+    "273034": {
+      "id": 273034,
+      "name": "Ephemeral Grips",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 1,
+      "slot": 10,
+      "level": 32,
+      "requiredLevel": 27,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_gauntlets_24"
+    },
+    "273035": {
+      "id": 273035,
+      "name": "Mana-Warped Chain Shirt",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 3,
+      "slot": 5,
+      "level": 32,
+      "requiredLevel": 27,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_chest_chain_04"
+    },
+    "273036": {
+      "id": 273036,
+      "name": "Graveweave Bindings",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 1,
+      "slot": 9,
+      "level": 31,
+      "requiredLevel": 26,
+      "status": "new",
+      "icon": "Interface\\Icons\\inv_bracer_10"
+    },
+    "273037": {
+      "id": 273037,
+      "name": "Felbough Arm",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 6,
+      "slot": 17,
+      "level": 34,
+      "requiredLevel": 29,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_spear_08"
+    },
+    "273038": {
+      "id": 273038,
+      "name": "Garb of Fallen Felbark",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 2,
+      "slot": 5,
+      "level": 34,
+      "requiredLevel": 29,
+      "status": "new",
+      "icon": "Interface\\Icons\\inv_shirt_09"
+    },
+    "273039": {
+      "id": 273039,
+      "name": "Blightleaf Rope",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 1,
+      "slot": 6,
+      "level": 34,
+      "requiredLevel": 29,
+      "status": "new",
+      "icon": "Interface\\Icons\\inv_belt_10"
+    },
+    "273040": {
+      "id": 273040,
+      "name": "Spine of the Devourer",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 10,
+      "slot": 17,
+      "level": 33,
+      "requiredLevel": 28,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_staff_07"
+    },
+    "273041": {
+      "id": 273041,
+      "name": "Slitherwrap Girdle",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 2,
+      "slot": 6,
+      "level": 33,
+      "requiredLevel": 28,
+      "status": "new",
+      "icon": "Interface\\Icons\\inv_belt_15"
+    },
+    "273042": {
+      "id": 273042,
+      "name": "Manascale Treads",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 3,
+      "slot": 8,
+      "level": 33,
+      "requiredLevel": 28,
+      "status": "new",
+      "icon": "Interface\\Icons\\inv_boots_chain_08"
+    },
+    "273043": {
+      "id": 273043,
+      "name": "Wand of Mana Concentration",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 19,
+      "slot": 15,
+      "level": 32,
+      "requiredLevel": 27,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_wand_06"
+    },
+    "273044": {
+      "id": 273044,
+      "name": "Violet Sorcerer's Robes",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 1,
+      "slot": 5,
+      "level": 32,
+      "requiredLevel": 27,
+      "status": "new",
+      "icon": "Interface\\Icons\\inv_chest_cloth_17"
+    },
+    "273045": {
+      "id": 273045,
+      "name": "Drape of Shifting Energy",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -6,
+      "slot": 16,
+      "level": 32,
+      "requiredLevel": 27,
+      "status": "new",
+      "icon": "Interface\\Icons\\inv_misc_cape_18"
+    },
+    "273046": {
+      "id": 273046,
+      "name": "Guardian's Dualblade",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 1,
+      "slot": 17,
+      "level": 33,
+      "requiredLevel": 28,
+      "status": "new",
+      "icon": "Interface\\Icons\\inv_throwingaxe_05"
+    },
+    "273047": {
+      "id": 273047,
+      "name": "Unstable Crystalline Shoulderpads",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 2,
+      "slot": 3,
+      "level": 33,
+      "requiredLevel": 28,
+      "status": "new",
+      "icon": "Interface\\Icons\\inv_shoulder_07"
+    },
+    "273048": {
+      "id": 273048,
+      "name": "Refractory Scaleguards",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 3,
+      "slot": 7,
+      "level": 33,
+      "requiredLevel": 28,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_pants_mail_12"
+    },
+    "273049": {
+      "id": 273049,
+      "name": "Archmagister's Faceted Pendant",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -3,
+      "slot": 2,
+      "level": 35,
+      "requiredLevel": 30,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_misc_necklacea8"
+    },
+    "273051": {
+      "id": 273051,
+      "name": "Violet Sorcerer's Mantle",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 1,
+      "slot": 3,
+      "level": 35,
+      "requiredLevel": 30,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_shoulder_02"
+    },
+    "273052": {
+      "id": 273052,
+      "name": "Ponderous Orb",
+      "quality": 3,
+      "classID": 4,
+      "subclass": -5,
+      "slot": 23,
+      "level": 35,
+      "requiredLevel": 30,
+      "status": "new",
+      "icon": "Interface\\Icons\\inv_misc_orb_04"
+    },
+    "273053": {
+      "id": 273053,
+      "name": "Tendonscraper Dagger",
+      "quality": 3,
+      "classID": 2,
+      "subclass": 15,
+      "slot": 21,
+      "level": 33,
+      "requiredLevel": 28,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_misc_bone_06"
+    },
+    "273054": {
+      "id": 273054,
+      "name": "Cartilage Shapers",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 2,
+      "slot": 10,
+      "level": 33,
+      "requiredLevel": 28,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_gauntlets_18"
+    },
+    "273055": {
+      "id": 273055,
+      "name": "Bonepile Gaze",
+      "quality": 3,
+      "classID": 4,
+      "subclass": 6,
+      "slot": 14,
+      "level": 33,
+      "requiredLevel": 28,
+      "status": "forever-specific",
+      "icon": "Interface\\Icons\\inv_shield_02"
+    },
+    "273099": {
+      "id": 273099,
+      "name": "Blueprint: Spinning Wheel",
+      "quality": 2,
+      "classID": 9,
+      "subclass": 2,
+      "slot": 0,
+      "level": 25,
+      "status": "new",
+      "icon": "Interface\\Icons\\inv_garrison_blueprints3"
+    },
+    "273103": {
+      "id": 273103,
+      "name": "Blueprint: Arcane Salvager",
+      "quality": 2,
+      "classID": 9,
+      "subclass": 8,
+      "slot": 0,
+      "level": 25,
+      "status": "new",
+      "icon": "Interface\\Icons\\inv_garrison_blueprints3"
+    }
+  },
+  "newForeverDungeonsNotInMethodGuideIndex": [
+    "the-drowned-city",
+    "kroldok-stronghold",
+    "alcaz-prison",
+    "blackmaw-hold",
+    "shapers-terrace"
+  ],
+  "methodIndex": {
+    "url": "https://www.method.gg/wow-forever/dungeons",
+    "sha256": "e048cb6534add34b53dfd830751ace2607849fcbec098d9727bfc82ce2a608c4",
+    "bytes": 208875,
+    "guides": [
+      "city-of-dalaran",
+      "excavation-site-wetlands",
+      "hall-of-thanes",
+      "ragefire-chasm",
+      "ruins-of-lordaeron",
+      "the-stockade"
+    ]
+  }
+}

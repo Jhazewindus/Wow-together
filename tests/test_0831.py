@@ -9,7 +9,8 @@ from test_navigation import navigator
 from test_074 import scanning_client
 
 sys.path.insert(0, str(ROOT / 'tools'))
-from audit_dungeon_loot import apply_user_confirmed_fact_corrections, reported_tables, season_allowed
+from audit_dungeon_loot import (apply_forever_dungeon_additions,
+    apply_user_confirmed_fact_corrections, reported_tables, season_allowed)
 from build_quest_dataset import own_lua
 from import_vanilla_loot import LiteralReader, vanilla_rows
 
@@ -29,17 +30,42 @@ class LootAuditTests(unittest.TestCase):
 
         data = c.ns.DungeonViewerData('city-of-dalaran')
         self.assertTrue(data.partial)
+        self.assertEqual(len(data.bosses), 8)
+        bosses = {row.name: row for row in data.bosses.values()}
+        self.assertIn('Atrexis the Grave Knight', bosses)
+        self.assertIn('Lyn the Ignored', bosses)
         boss = next(row for row in data.bosses.values() if row.id == 246020)
         self.assertEqual(boss.name, 'Shade of the Archmage')
         self.assertIn(273103, {item.id for item in boss.loot.values()})
+        self.assertIn(273049, {item.id for item in boss.loot.values()})
+        self.assertEqual(sum(len(row.loot) for row in bosses.values()), 27)
         c.ns.ShowDungeonViewer('city-of-dalaran')
         self.assertIn('Partial data', c.ns.dungeonViewer.summary.text)
 
         manifest = json.loads((ROOT / 'WowTogether/DungeonJournalData.json').read_text())
         self.assertEqual(manifest['counts']['userConfirmedFacts'], 4)
         self.assertEqual(manifest['counts']['partialDungeons'], 1)
+        self.assertEqual(manifest['foreverDungeonAdditions']['city-of-dalaran']['specificBossesCaptured'], 8)
+        self.assertEqual(manifest['foreverDungeonAdditions']['city-of-dalaran']['specificDropLinksCaptured'], 27)
         self.assertEqual(manifest['userConfirmedFacts']['archiveSHA256'],
                          '7dbb7da3960cc696fde9382fe5b76f517f1a7b2d4fc8e998eb980962dfde0e02')
+
+    def test_public_new_dungeon_facts_merge_rebuildably_and_idempotently(self):
+        additions = json.loads((ROOT / 'tools/dungeon_forever_additions.json').read_text())
+        items = {273103: additions['items']['273103']}
+        data = {'city-of-dalaran': {'name': 'City of Dalaran', 'partial': True, 'bosses': [
+            {'id': 246020, 'name': 'Shade of the Archmage', 'dropIDs': [273103], 'sharedDropIDs': []}]}}
+        coverage = {'city-of-dalaran': {'bosses': 1, 'foreverNPCTablesCaptured': 0, 'unpublished': False}}
+        sources = {}
+        for _ in range(2):
+            provenance = apply_forever_dungeon_additions(data, coverage, items, sources)
+        self.assertEqual(len(data['city-of-dalaran']['bosses']), 8)
+        self.assertEqual(sum(len(row['dropIDs']) for row in data['city-of-dalaran']['bosses']), 27)
+        self.assertEqual(len(items), 27)
+        self.assertEqual(len(sources), 8)
+        self.assertEqual(len(additions['methodIndex']['guides']), 6)
+        self.assertEqual(provenance['methodCrossChecks']['city-of-dalaran']['listedBosses'], 8)
+        self.assertEqual(coverage['city-of-dalaran']['specificForeverNPCsCaptured'], 8)
 
     def test_user_confirmed_dungeon_corrections_are_rebuildable_and_idempotent(self):
         data = {key: {'bosses': [{'id': npc, 'name': name, 'dropIDs': [], 'sharedDropIDs': []}]}

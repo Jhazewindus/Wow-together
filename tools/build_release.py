@@ -88,6 +88,13 @@ Quest, profession, and dungeon reference payloads now load on demand from their
 matching data folders. Keep all four folders installed so each guide browser can
 load its data when first opened.
 
+0.8.75 ROYS BIG DUNGEON BANANZA adds eight documented City of Dalaran bosses
+and 27 specific boss/item links. Method.gg's four newer-dungeon pages are
+cross-checked; five other new instances are absent from its index. The Dalaran
+entry remains Partial because its interior map and exhaustive coverage are
+unknown. Only factual IDs and item metadata are included, not website code,
+prose, artwork, layouts or map images. See DUNGEON_VIEWER.md and TESTING.md.
+
 0.8.72 INSTANT GUIDE START lets a zone route start while its ordered quest list
 is still compiling in the background. The normal route-loading state appears;
 quest order and guide rules are unchanged. See TESTING.md.
@@ -107,10 +114,11 @@ Long route legs with incomplete evidence are called out, and the guide probe
 reports per-guide source coverage. Coverage is descriptive, not a completeness
 claim; actual beta memory and navigation need friend testing. See TESTING.md.
 
-0.8.68 DUNGEON JOURNAL FACT UPDATES adds four owner-confirmed boss/item records
-and the An Alarming Request prerequisite for Starving Arcane. City of Dalaran
-shows its current Shade of the Archmage entry as Partial data; the full encounter
-list and interior map remain unknown. See TESTING.md and THIRD_PARTY_NOTICES.md.
+0.8.68 DUNGEON JOURNAL FACT UPDATES originally added four owner-confirmed
+boss/item records and the An Alarming Request prerequisite for Starving Arcane.
+The 0.8.75 update expands City of Dalaran's recorded encounters; its exhaustive
+coverage and interior map remain unknown. See TESTING.md and
+THIRD_PARTY_NOTICES.md.
 
 0.8.67 LIVE DUNGEON APPROACH MAPS adds seven live outdoor cave maps using the
 client's own textures. Your marker follows public outdoor coordinates; entering

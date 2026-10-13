@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.74"
-ns.RELEASE_NAME = "CARD NAVIGATION"
+ns.VERSION = "0.8.75"
+ns.RELEASE_NAME = "ROYS BIG DUNGEON BANANZA"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}

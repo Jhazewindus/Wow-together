@@ -23,6 +23,13 @@ no membership is guessed from mob/item names or an NPC's pickup zone.
   pinned revision `fd68cfe2153379898680c66a01833846f9933587` (MIT).
   Only the 23 non-raid `instance` point records are selected. No upstream
   engine, route logic, UI, guide prose, screenshots or artwork are included.
+- [Method.gg dungeon guides](https://www.method.gg/wow-forever/dungeons),
+  captured October 13, 2026. The index lists six dungeons: four newer Forever
+  instances and the classic Ragefire Chasm and Stockade. The new-dungeon pages
+  are a second factual check on encounter and listed-item IDs; current
+  Excavation Site, Hall of Thanes and the six listed Ruins of Lordaeron bosses
+  match. Five newer instances are absent from the index. No site code, guide
+  prose, images or map artwork are included.
 
 `WowTogether/DungeonData.json` keeps all source URLs, SHA256 hashes, fields,
 quest memberships and remaining gaps. Its overview SHA256 is

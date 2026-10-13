@@ -1,13 +1,32 @@
 # Wow Together — friend test script
 
-For **0.8.74** — **CARD NAVIGATION**, World of Warcraft: Forever beta,
+For **0.8.75** — **ROYS BIG DUNGEON BANANZA**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **5–10 minutes for this update**; the wider optional checks take 45–60
 minutes. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The retained expanded-guide checks below take about **15–25 minutes**.
 
-## Recommended card actions — this update
+## Dungeon journal source update — 0.8.75
+
+1. Open City of Dalaran in the dungeon journal. Confirm the boss list includes
+   eight named encounters and the header still says **Partial data**.
+2. Inspect boss loot: Atrexis the Grave Knight should include Bonebinder's
+   Signet; Lyn the Ignored should include Tendonscraper Dagger; Shade of the
+   Archmage should include Blueprint: Arcane Salvager and its other listed
+   items. Search an item name and confirm the item icon/tooltip still loads.
+3. Check Excavation Site: Wetlands, Hall of Thanes and Ruins of Lordaeron.
+   Their current boss/item lists should remain unchanged. No Method-hosted map
+   image should appear in the addon.
+4. Missing journal facts for The Drowned City, Krol'dok Stronghold, Alcaz
+   Prison, Blackmaw Hold and Shaper's Terrace should remain unavailable rather
+   than being inferred from unrelated instances.
+
+The captured-source hashes and numeric boss/item links are in
+`WowTogether/DungeonJournalData.json`. Host checks cover fact merging and lazy
+item lookup; verify the viewer and item loading in the Forever beta client.
+
+## Recommended card actions — regression
 
 1. On Recommended, click the leveling card body. It opens the guide's quest
    list without starting it; Start route remains available in that view. The

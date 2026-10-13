@@ -123,6 +123,98 @@ def apply_user_confirmed_fact_corrections(data, coverage, item_rows, correction_
     return source
 
 
+def apply_forever_dungeon_additions(data, coverage, item_rows, npc_sources, additions_path=None):
+    """Merge individually captured Forever boss/item facts and source receipts.
+
+    This file contains factual NPC/item IDs and parsed public item metadata;
+    it does not copy website text, code, images, maps, or presentation.
+    """
+    path = additions_path or ROOT / 'tools/dungeon_forever_additions.json'
+    additions = json.loads(path.read_text())
+    if additions.get('schema') != 1 or not isinstance(additions.get('cityOfDalaran'), dict):
+        raise ValueError('Invalid Forever dungeon additions dataset')
+    item_metadata = additions.get('items')
+    bosses = additions['cityOfDalaran'].get('bosses')
+    if not isinstance(item_metadata, dict) or not isinstance(bosses, list):
+        raise ValueError('Forever dungeon additions need item and boss records')
+
+    parsed_items = {}
+    for key, item in item_metadata.items():
+        if not key.isdigit() or not isinstance(item, dict) or item.get('id') != int(key):
+            raise ValueError('Invalid Forever dungeon item identity')
+        if not isinstance(item.get('name'), str) or not item['name']:
+            raise ValueError('Forever dungeon item has no name')
+        if item.get('status') not in ('forever-specific', 'new'):
+            raise ValueError('Forever dungeon item has an unexpected source status')
+        parsed_items[int(key)] = item
+
+    dungeon_key = 'city-of-dalaran'
+    if dungeon_key not in data or dungeon_key not in coverage:
+        raise ValueError('City of Dalaran is missing from dungeon definitions')
+    entry = data[dungeon_key]
+    indexed = {row['id']: row for row in entry.get('bosses', [])}
+    source_ids = set()
+    for source_boss in bosses:
+        ident, name = source_boss.get('id'), source_boss.get('name')
+        drop_ids = source_boss.get('dropIDs')
+        source = source_boss.get('source')
+        if type(ident) is not int or ident < 1 or not isinstance(name, str) or not name:
+            raise ValueError('Invalid Forever dungeon boss identity')
+        if ident in source_ids or not isinstance(drop_ids, list) or not drop_ids:
+            raise ValueError('Duplicate or empty Forever dungeon boss record')
+        source_ids.add(ident)
+        if not isinstance(source, dict) or not source.get('url') or not re.fullmatch(r'[0-9a-f]{64}', source.get('sha256', '')):
+            raise ValueError('Forever dungeon boss has no source receipt')
+        if type(source.get('bytes')) is not int or source['bytes'] < 1:
+            raise ValueError('Forever dungeon boss source receipt has no byte count')
+        if any(type(item_id) is not int or item_id not in parsed_items for item_id in drop_ids):
+            raise ValueError('Forever dungeon boss references uncaptured item metadata')
+        current = indexed.get(ident)
+        if current is None:
+            current = {'id': ident, 'name': name, 'dropIDs': [], 'sharedDropIDs': []}
+            entry.setdefault('bosses', []).append(current)
+            indexed[ident] = current
+        elif current.get('name') != name:
+            raise ValueError('Forever dungeon boss name conflicts with existing data')
+        current_ids = current.setdefault('dropIDs', [])
+        current_ids.extend(item_id for item_id in drop_ids if item_id not in current_ids)
+        current['dropIDs'] = sorted(current_ids, key=lambda item_id: (
+            -parsed_items[item_id].get('quality', 0), parsed_items[item_id]['name'], item_id))
+        source_key = str(ident)
+        prior_source = npc_sources.get(source_key)
+        if prior_source is not None and prior_source != source:
+            raise ValueError('Forever dungeon boss source receipt conflicts with captured page')
+        npc_sources[source_key] = source
+
+    for ident, item in parsed_items.items():
+        existing = item_rows.get(ident)
+        if existing is not None and existing != item:
+            raise ValueError('Forever dungeon item metadata conflicts with existing data: ' + str(ident))
+        item_rows[ident] = item
+
+    entry['bosses'].sort(key=lambda boss: (boss.get('level', 0), boss['name'], boss['id']))
+    entry['partial'] = True
+    coverage_row = coverage[dungeon_key]
+    coverage_row['bosses'] = len(entry['bosses'])
+    coverage_row['foreverNPCTablesCaptured'] = len(source_ids)
+    coverage_row['specificForeverNPCsCaptured'] = len(source_ids)
+    coverage_row['unpublished'] = False
+    coverage_row['partial'] = True
+
+    return {
+        'captured': additions.get('captured'),
+        'purpose': additions.get('purpose'),
+        'methodIndex': additions.get('methodIndex', {}),
+        'methodCrossChecks': additions.get('methodCrossChecks', {}),
+        'newForeverDungeonsNotInMethodGuideIndex': additions.get('newForeverDungeonsNotInMethodGuideIndex', []),
+        'city-of-dalaran': {
+            'specificBossesCaptured': len(source_ids),
+            'specificDropLinksCaptured': sum(len(row['dropIDs']) for row in bosses),
+            'bossSources': {str(row['id']): row['source'] for row in bosses},
+        },
+    }
+
+
 def vanilla_icons(page):
     result = {}
     for match in re.finditer(r'_\[(\d+)\]\s*=\s*\{', page):
@@ -359,6 +451,8 @@ def audit(args):
             'missingForeverNPCs': sorted(ident for ident in expected if ident not in boss_ids and str(ident) not in npc_sources),
             'unpublished': not expected}
     user_confirmed_source = apply_user_confirmed_fact_corrections(data, coverage, item_rows)
+    forever_dungeon_sources = apply_forever_dungeon_additions(data, coverage, item_rows, npc_sources)
+    total_rows += forever_dungeon_sources['city-of-dalaran']['specificDropLinksCaptured']
     counts = {'dungeons': len(data), 'dungeonsWithBosses': sum(bool(value['bosses']) for value in data.values()),
         'bosses': sum(len(value['bosses']) for value in data.values()), 'items': len(item_rows),
         'lootEntries': sum(len(boss['dropIDs']) for value in data.values() for boss in value['bosses']),
@@ -373,7 +467,8 @@ def audit(args):
         'mapReferences': sum(bool(value['maps']) for value in data.values()),
         'vanillaNPCTables': len(vanilla_sources), 'vanillaContainerTables': len(container_sources),
         'sourceDropRowsAudited': total_rows, 'seasonOnlyRowsExcluded': seasonal}
-    result = {'schema': 2, 'captured': '2026-10-06', 'counts': counts, 'dungeons': data, 'items': item_rows}
+    result = {'schema': 2, 'captured': forever_dungeon_sources['captured'] or '2026-10-06',
+        'counts': counts, 'dungeons': data, 'items': item_rows}
     packer = Packer()
     from import_travel_network import encode
     body = 'ns.dungeonJournalData = ' + encode({k: v for k, v in result.items() if k not in ('dungeons', 'items')}) + '\n'
@@ -384,6 +479,7 @@ def audit(args):
         'zoneSources': sources, 'bossSources': {key: value for key, value in npc_sources.items() if int(key) in boss_ids},
         'npcSources': npc_sources, 'vanillaNPCSources': vanilla_sources, 'vanillaContainerSources': container_sources,
         'communityReports': reports, 'userConfirmedFacts': user_confirmed_source,
+        'foreverDungeonAdditions': forever_dungeon_sources,
         'encounterReviewSHA256': hashlib.sha256(args.encounters.read_bytes()).hexdigest(),
         'clientFilenameSource': {'repository': 'wowdev/wow-listfile', 'commit': '2ee24a9d0ff98f614997587e32ee6a0074d0de65',
             'sha256': hashlib.sha256(args.listfile.read_bytes()).hexdigest()},

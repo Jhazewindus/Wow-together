@@ -2,8 +2,8 @@
 
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
-progress. Version **0.8.74 — CARD NAVIGATION** targets interface **16001**,
-uses Lua **5.1**, and reads capabilities rather than choosing a Classic
+progress. Version **0.8.75 — ROYS BIG DUNGEON BANANZA** targets interface
+**16001**, uses Lua **5.1**, and reads capabilities rather than choosing a Classic
 implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -14,6 +14,13 @@ routes and shows whose progress needs the next step. It also works solo.
 its details; start it from the guide view. Click the resume card to continue or
 resume your guide. On Recommended, the separate Start guide, Continue and Session
 buttons are gone; the session summary remains visible on the card.
+
+**0.8.75 expands City of Dalaran's journal** to eight documented encounters
+and 27 sourced boss/item links. The viewer continues to mark it partial because
+the interior map and exhaustive encounter coverage are not confirmed. Four new
+Forever dungeons have Method.gg reference pages; five others do not. Only facts
+and source hashes are recorded; external code, prose, artwork and map images are
+not included.
 
 **0.8.73 organizes Settings by task** and makes the Recommended cards clickable
 to open their quest or profession details. Use **Browse all leveling guides**
@@ -56,11 +63,10 @@ whose supporting pickup/location data is incomplete; `/wt probe` reports per-
 guide location coverage without adding routine UI clutter. See TESTING.md and
 PERFORMANCE.md. Host measurements do not establish exact beta memory savings.
 
-**0.8.68 adds four confirmed dungeon loot records and a Dalaran quest prerequisite.**
-City of Dalaran's current journal entry is labeled **Partial data**; further
-encounters and its interior map are not yet catalogued. The source notes identify
-the supplied reference archive and selected facts without bundling its code,
-text, layout or artwork.
+**0.8.68 added four confirmed dungeon loot records and a Dalaran quest prerequisite.**
+The 0.8.75 journal update adds further independently sourced Dalaran encounters;
+the source notes identify the selected facts without bundling the supplied
+reference archive's code, text, layout or artwork.
 
 **0.8.67 adds live outdoor maps for seven dungeon approaches.** The original
 game-client textures are positioned from independently derived Blizzard

@@ -139,3 +139,10 @@ the exact selected IDs in `tools/dungeon_fact_corrections.json` and
 interface layout, images, prose or bulk tables were incorporated. These are
 selected factual relationships, not a claim that the full reference database
 is licensed or that every City of Dalaran encounter is known.
+
+Version 0.8.75 adds selected public factual NPC/item relationships from
+Wowhead Forever NPC pages and cross-checks four newer dungeon guides on
+Method.gg. Capture URLs and SHA-256 hashes are recorded in
+`WowTogether/DungeonJournalData.json`. Only numeric identities, names, item
+attributes and encounter-to-item relationships are included. The release does
+not contain either site's code, prose, artwork, page layout or map images.

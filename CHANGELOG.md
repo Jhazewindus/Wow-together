@@ -1,5 +1,21 @@
 # Wow Together changelog
 
+## 0.8.75
+
+**ROYS BIG DUNGEON BANANZA**
+
+- Expand City of Dalaran's dungeon journal from one confirmed encounter to eight
+  documented bosses and 27 specific boss/item links, using captured public
+  Forever NPC facts. Keep the journal marked partial because its interior map
+  and exhaustive encounter coverage are still unconfirmed.
+- Cross-check the published Method.gg guides for City of Dalaran, Excavation
+  Site: Wetlands, Hall of Thanes and Ruins of Lordaeron against the existing
+  journal records. The three existing lists remain unchanged.
+- Record source URLs and capture hashes. Include numeric game facts and parsed
+  item metadata only; no website code, prose, artwork, page layout or map image
+  is copied. Five of the nine newer Forever instances still lack Method dungeon
+  pages and remain unmapped in the journal.
+
 ## 0.8.74
 
 **CARD NAVIGATION**
