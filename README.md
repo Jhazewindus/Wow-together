@@ -2,13 +2,17 @@
 
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
-progress. Version **0.8.71 — CLEANER GUIDE TOOLTIPS** targets interface **16001**,
+progress. Version **0.8.72 — INSTANT GUIDE START** targets interface **16001**,
 uses Lua **5.1**, and reads capabilities rather than choosing a Classic
 implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
 public character context. The guide combines nearby work, preserves selected
 routes and shows whose progress needs the next step. It also works solo.
+
+**0.8.72 lets you start a zone route while its ordered quest list is still
+preparing.** The list continues in the background; the route shows its normal
+loading state. Quest order and guide rules are unchanged.
 
 **0.8.71 cleans up guide hover text.** It removes duplicate reasons/locations
 and generic drag or NPC offer reminders while keeping the quest action and useful

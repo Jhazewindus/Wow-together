@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.71"
-ns.RELEASE_NAME = "CLEANER GUIDE TOOLTIPS"
+ns.VERSION = "0.8.72"
+ns.RELEASE_NAME = "INSTANT GUIDE START"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}

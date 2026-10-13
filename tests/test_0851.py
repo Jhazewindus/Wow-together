@@ -11,8 +11,8 @@ class GuidePreviewTests(unittest.TestCase):
     def test_loading_closed_and_replaced_previews_cannot_start_stale_guide(self):
         c = browser(); c.ns.ui.cards[1].OnClick()
         frame = c.ns.guideQuestList
-        self.assertFalse(frame.start.IsEnabled(frame.start))
-        frame.start.OnClick(); self.assertIsNone(c.ns.routeSelection)
+        self.assertTrue(frame.start.IsEnabled(frame.start))
+        self.assertIsNone(frame.plan)
         frame.Hide(frame); frame.start.OnClick(); c.drain()
         self.assertIsNone(c.ns.routeSelection)
         self.assertIsNone(frame.plan)
@@ -21,6 +21,20 @@ class GuidePreviewTests(unittest.TestCase):
         self.assertEqual({s.id for s in frame.plan.values()}, {910, 911})
         self.assertEqual(frame.startGuide.key, future(c).key)
         self.assertIsNone(c.ns.routeSelection)
+
+    def test_start_route_works_before_ordered_quest_list_finishes_loading(self):
+        c = guide_client(4); c.ns.SetFilter('guides')
+        c.ns.ui.cards[1].OnClick()
+        frame = c.ns.guideQuestList
+        self.assertIsNone(frame.plan)
+        self.assertTrue(frame.start.IsEnabled(frame.start))
+        self.assertEqual(frame.startGuide.key, frame.guide.key)
+
+        frame.start.OnClick()
+        self.assertFalse(frame.IsShown(frame))
+        self.assertEqual(c.ns.navigation.state.status, 'Loading route…')
+        run_plan(c)
+        self.assertEqual(c.ns.routeSelection.key, frame.guide.key)
 
     def test_start_uses_the_previewed_order_and_closes_preview(self):
         c = guide_client(4); c.ns.SetFilter('guides')

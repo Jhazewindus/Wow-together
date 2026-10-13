@@ -88,6 +88,10 @@ Quest, profession, and dungeon reference payloads now load on demand from their
 matching data folders. Keep all four folders installed so each guide browser can
 load its data when first opened.
 
+0.8.72 INSTANT GUIDE START lets a zone route start while its ordered quest list
+is still compiling in the background. The normal route-loading state appears;
+quest order and guide rules are unchanged. See TESTING.md.
+
 0.8.71 CLEANER GUIDE TOOLTIPS removes duplicate reasons/locations and generic
 hover instructions from arrow, map, and guide tooltips while retaining useful
 quest and route context. The route order is unchanged. See TESTING.md.

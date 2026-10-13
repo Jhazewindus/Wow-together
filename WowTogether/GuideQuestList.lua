@@ -59,7 +59,7 @@ local function create()
     frame.empty = ns.UILabel(frame.scroll, nil, 12, ns.UIColors.muted)
     frame.empty:SetPoint("TOPLEFT", 20, -20); frame.empty:SetWordWrap(true); frame.empty:SetJustifyV("TOP"); frame.empty:Hide()
     frame.start = ns.UIButton(frame, "Start route", 136, function()
-        if not frame:IsShown() or not frame.plan or not frame.startGuide then return end
+        if not frame:IsShown() or not frame.startGuide then return end
         local guide = frame.startGuide
         frame:Hide(); ns.RequestStartRoute(guide)
     end, true)
@@ -148,16 +148,18 @@ function ns.ShowGuideQuestList(guide)
     local frame = create()
     frame.generation = frame.generation + 1
     local generation = frame.generation
-    frame.plan, frame.visiblePlan, frame.xpGuide, frame.offset, frame.guide, frame.startGuide = nil, nil, nil, 0, guide, nil
-    frame.start:SetEnabled(false); frame.more:Hide()
+    local current = ns.routeSelection
+    local startGuide = current and current.key == guide.key and current or guide
+    frame.plan, frame.visiblePlan, frame.xpGuide, frame.offset, frame.guide, frame.startGuide = nil, nil, nil, 0, guide, startGuide
+    frame.start:SetEnabled(true); frame.more:Hide()
     frame.title:SetText(guide.title or (guide.zone .. " leveling guide"))
     frame:SetFrameLevel((ns.window and ns.window:GetFrameLevel() or 0) + 30)
-    frame.summary:SetText("Loading quests…"); frame:Show(); ns.RenderGuideQuestList()
+    frame.summary:SetText("Preparing the ordered quest list… You can start the route now.")
+    frame:Show(); ns.RenderGuideQuestList()
     if guide.mode == "travel" then
         frame.plan, frame.startGuide = {}, guide
         frame.start:SetEnabled(true); ns.RenderGuideQuestList(); return
     end
-    local current = ns.routeSelection
     local existing = guide.fixedPlan or current and current.key == guide.key and current.fixedPlan
     local copy = {}; for key, value in pairs(guide) do copy[key] = value end
     local job = not existing and coroutine.create(function() return ns.GenerateFixedGuide(copy, true) end)
@@ -165,7 +167,7 @@ function ns.ShowGuideQuestList(guide)
         if frame.generation ~= generation or not frame:IsShown() then return end
         local okay, plan = true, existing
         if job then okay, plan = coroutine.resume(job) end
-        if not okay then frame.summary:SetText("Couldn't load quests. Please try again."); return end
+        if not okay then frame.summary:SetText("Couldn't load the quest list. Start route is still available."); return end
         if job and coroutine.status(job) ~= "dead" then C_Timer.After(0.01, advance); return end
         frame.plan = {}
         for _, stop in ipairs(plan) do

@@ -251,7 +251,8 @@ class GuideBrowseTests(unittest.TestCase):
         self.assertFalse(card.mapButton.IsShown(card.mapButton))
         self.assertFalse(card.detailsButton.IsShown(card.detailsButton))
         card.OnClick();frame=c.ns.guideQuestList
-        self.assertIn('Loading',frame.summary.text);frame.Hide(frame);c.drain()
+        self.assertIn('ordered quest list',frame.summary.text)
+        self.assertTrue(frame.start.IsEnabled(frame.start));frame.Hide(frame);c.drain()
         self.assertIsNone(frame.plan);self.assertIsNone(c.ns.routeSelection)
         card.OnClick();c.drain()
         self.assertIsNotNone(frame.plan);self.assertIsNone(c.ns.routeSelection)

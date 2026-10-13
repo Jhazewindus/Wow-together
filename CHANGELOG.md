@@ -1,5 +1,15 @@
 # Wow Together changelog
 
+## 0.8.72
+
+**INSTANT GUIDE START**
+
+- Keep Start route enabled while the full ordered quest list is being prepared.
+- Show that the order is compiling and that the route can already be started.
+- If the preview is closed or a new guide is opened, cancel the old list job so
+  it cannot overwrite or start a stale guide.
+- Preserve fixed guide order and the existing asynchronous route-loading state.
+
 ## 0.8.71
 
 **CLEANER GUIDE TOOLTIPS**

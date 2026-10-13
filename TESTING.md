@@ -1,13 +1,26 @@
 # Wow Together — friend test script
 
-For **0.8.71** — **CLEANER GUIDE TOOLTIPS**, World of Warcraft: Forever beta,
+For **0.8.72** — **INSTANT GUIDE START**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **10–15 minutes for this update**; the wider optional checks take 45–60
 minutes. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The retained expanded-guide checks below take about **15–25 minutes**.
 
-## Cleaner guide hover text — this update
+## Start a route while the quest list prepares — this update
+
+1. Open a zone guide's quest list. While its ordered list is still preparing,
+   confirm **Start route** is enabled and the message says the route can start.
+2. Click **Start route** immediately. The preview should close and the guide
+   arrow should show its normal route-loading state before navigation begins.
+3. Reopen the quest list and let it finish. Confirm the displayed order is the
+   same order used by the started guide. Close a still-loading preview and check
+   that it does not later replace or start another guide.
+
+Host tests cover early start, preview cancellation and retained route order.
+Actual beta load time and visual timing need an in-client check.
+
+## Cleaner guide hover text — 0.8.71
 
 1. Start a leveling or dungeon guide and hover over the navigation arrow. The
    quest action, useful reason and location should each appear at most once;
