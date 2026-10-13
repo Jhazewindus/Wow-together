@@ -1,0 +1,54 @@
+{
+  "zone": "Durotar",
+  "addon_version": "0.8.66",
+  "audit_profile": "Orc Shaman, class quests enabled; fresh and mid-chapter levels",
+  "applicable_guides": {
+    "Horde 1-10": {"stops": 159, "objective_stops": 63},
+    "Horde 11-20": {"stops": 79, "objective_stops": 29}
+  },
+  "allied_guide": "No Alliance Durotar leveling guide is recommended by the current guide catalog.",
+  "direct_zone_catalogue_records": 54,
+  "zone_authored_optional_text_fields": {
+    "travelReason": 0,
+    "description": 0,
+    "forPlayer": 0,
+    "confirmationReason": 0
+  },
+  "route_authored_optional_text_fields": 0,
+  "text_counts": {
+    "zone_text_kept": 0,
+    "zone_text_rewritten": 0,
+    "zone_text_removed": 0,
+    "actionable_objective_steps_preserved": 92,
+    "generated_objective_context_stops_checked": 92
+  },
+  "current_display_samples": [
+    {
+      "chapter": "1-10",
+      "quest": "Lazy Peons",
+      "instruction": "Use Foreman's Blackjack on 5 × Lazy Peon",
+      "generic_hint": "Use the item on 5 targets in total.",
+      "context": "Required for Thazz'ril's Pick later in this guide; finish and turn in Lazy Peons first.",
+      "assessment": "The prerequisite is useful context; the generic hint repeats the instruction's item, count and target."
+    },
+    {
+      "chapter": "11-20",
+      "quest": "Securing the Lines",
+      "instruction": "Kill 12 × Dustwind Savage",
+      "generic_hint": "Finish this quest objective in the marked area.",
+      "context": "Dustwind Savage is needed to finish Securing the Lines.",
+      "assessment": "Both extra lines restate that this ordinary objective advances the named quest; they add no decision value."
+    }
+  ],
+  "source_files_inspected": [
+    "WowTogether/GuideText.lua",
+    "WowTogether/GuideReasons.lua",
+    "WowTogether/Navigation.lua",
+    "WowTogether/StandaloneArrow.lua",
+    "WowTogether/GuideQuestList.lua",
+    "WowTogether/QuestCatalogue.lua"
+  ],
+  "shared_behavior_issue": "GuideStepDescription adds a generic GuideStepHint and a generated reason to every objective tooltip. GuideDestinationPurpose/GuideVisibleReason also generates objective context for navigation. The Durotar catalogue has no zone-authored flavor fields that can remove this repetition. A Durotar-only data edit cannot fix it; coordinate a shared rendering/reason policy with the main developer.",
+  "proposed_shared_policy": "Show the objective action once. Add a context line only for a meaningful decision such as an actual prerequisite, useful lower-level exception, unusual detour, danger or dungeon preparation. Suppress generic text that only says the target is needed for the quest or that work should be completed in the marked area.",
+  "native_beta_verified": false
+}
