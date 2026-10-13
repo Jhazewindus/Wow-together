@@ -216,7 +216,7 @@ class GuideControlTests(unittest.TestCase):
         self.assertEqual(c.ns.FormatDistance(100), '91 m')
         c.ns.settings.section.options['navigation'].OnClick()
         self.assertTrue(c.ns.settings.pages.navigation.IsShown(c.ns.settings.pages.navigation))
-        self.assertFalse(c.ns.settings.pages.guides.IsShown(c.ns.settings.pages.guides))
+        self.assertFalse(c.ns.settings.pages.leveling.IsShown(c.ns.settings.pages.leveling))
         c.ns.ui.viewChoice.options['library'].OnClick()
         self.assertEqual(c.ns.ui.viewChoice.caption.text, 'All quests')
         c.ns.ui.viewChoice.options['professions'].OnClick()

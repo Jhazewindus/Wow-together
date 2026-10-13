@@ -10,6 +10,16 @@ local function makeCard(parent, featured)
     local c = ns.UIColors
     local card = CreateFrame("Frame", nil, parent, "BackdropTemplate")
     ns.UIPanel(card)
+    card:EnableMouse(true)
+    card:SetScript("OnMouseUp", function(self, mouseButton)
+        if mouseButton ~= "LeftButton" or not self.data then return end
+        if self.data.inspect then self.data.inspect()
+        elseif self.data.start then self.data.start() end
+    end)
+    card:SetScript("OnEnter", function(self)
+        if self.data and (self.data.inspect or self.data.start) then self:SetBackdropBorderColor(unpack(c.gold)) end
+    end)
+    card:SetScript("OnLeave", function(self) self:SetBackdropBorderColor(unpack(c.border)) end)
     card.category = ns.UILabel(card, nil, 9, c.gold)
     card.category:SetPoint("TOPLEFT", 16, -12); card.category:SetHeight(12); card.category:SetWordWrap(false)
     card.title = heading(card, "", featured and 21 or 17, c.text)
@@ -30,10 +40,6 @@ local function makeCard(parent, featured)
         if card.data and card.data.start then card.data.start() end
     end, true)
     card.start:SetPoint("BOTTOMLEFT", 16, 10)
-    card.inspect = ns.UIButton(card, "Quest list", 112, function()
-        if card.data and card.data.inspect then card.data.inspect() end
-    end)
-    card.inspect:SetPoint("BOTTOMRIGHT", -16, 10)
     if not featured then
         card.icon = card:CreateTexture(nil, "ARTWORK")
         card.icon:SetPoint("TOPLEFT", 16, -32); card.icon:SetSize(44, 44); card.icon:SetAlpha(1)
@@ -47,8 +53,6 @@ local function updateCard(card, item)
     card.title:SetText(item.title); card.count:SetText(item.count or "")
     card.detail:SetText(item.detail or ""); card.progress:SetText(item.progress or "")
     card.start.caption:SetText(item.action or "View guide"); card.start:SetEnabled(item.start ~= nil)
-    card.inspect.caption:SetText(item.secondary or "View guide")
-    card.inspect:SetShown(item.inspect ~= nil and item.secondary ~= item.action)
     if card.icon then card.icon:SetTexture(item.icon or "Interface\\Icons\\INV_Misc_Book_09") end
     local total, value = tonumber(item.progressTotal) or 0, tonumber(item.progressValue) or 0
     card.fraction = total > 0 and math.max(0, math.min(1, value / total)) or 0
@@ -61,7 +65,7 @@ local function createHome()
     home:SetPoint("TOPLEFT", 0, 0)
     home.title = heading(home, "Recommended for you", 19, ns.UIColors.text)
     home.title:SetPoint("TOPLEFT", 0, -2)
-    home.browseLeveling = ns.UIButton(home, "Browse leveling", 136, function() ns.SetFilter("guides") end)
+    home.browseLeveling = ns.UIButton(home, "Browse all leveling guides", 208, function() ns.SetFilter("guides") end)
     home.browseLeveling:SetPoint("TOPRIGHT", 0, 0)
     home.resume = CreateFrame("Frame", nil, home, "BackdropTemplate")
     ns.UIPanel(home.resume, ns.UIColors.background)
@@ -81,7 +85,7 @@ local function createHome()
     home.resume.session:SetPoint("BOTTOMRIGHT", -14, 9)
     home.leveling = makeCard(home, true)
     home.professionTitle = heading(home, "Your professions", 16, ns.UIColors.text)
-    home.browseProfessions = ns.UIButton(home, "Browse professions", 150, function() ns.SetFilter("professions") end)
+    home.browseProfessions = ns.UIButton(home, "Browse all professions", 180, function() ns.SetFilter("professions") end)
     home.professionEmpty = CreateFrame("Frame", nil, home, "BackdropTemplate")
     ns.UIPanel(home.professionEmpty)
     home.professionEmpty.text = ns.UILabel(home.professionEmpty, nil, 12, ns.UIColors.muted)
@@ -110,7 +114,7 @@ function ns.LayoutRecommended()
     local home = ns.ui.home
     if not home then return end
     local width, top, gap = ns.ui.contentWidth, 32, 12
-    home:SetWidth(width); home.title:SetWidth(width - 160)
+    home:SetWidth(width); home.title:SetWidth(width - 226)
     if home.resume:IsShown() then
         home.resume:ClearAllPoints(); home.resume:SetPoint("TOPLEFT", 0, -top); home.resume:SetSize(width, 82)
         home.resume.title:SetWidth(width - 168); home.resume.detail:SetWidth(width - 168); top = top + 94
@@ -118,7 +122,7 @@ function ns.LayoutRecommended()
     home.leveling:ClearAllPoints(); home.leveling:SetPoint("TOPLEFT", 0, -top)
     layoutCard(home.leveling, width, 164); top = top + 176
     home.professionTitle:ClearAllPoints(); home.professionTitle:SetPoint("TOPLEFT", 0, -top - 4)
-    home.professionTitle:SetWidth(width - 166)
+    home.professionTitle:SetWidth(width - 196)
     home.browseProfessions:ClearAllPoints(); home.browseProfessions:SetPoint("TOPRIGHT", 0, -top)
     top = top + 32
     local columns = width >= 640 and 2 or 1
@@ -163,7 +167,7 @@ function ns.RenderRecommended(query)
         end
     end
     updateCard(home.leveling, featured or {title = "Your next zone", category = "LEVELING",
-        detail = states.leveling or "Browse leveling guides to find your next zone.", action = "Browse guides",
+        detail = states.leveling or "Browse all leveling guides to find your next zone.", action = "Browse guides",
         start = function() ns.SetFilter("guides") end})
     home.professionEmpty:SetShown(home.professionCount == 0)
     home.professionEmpty.text:SetText(states.professions or "Browse professions to find a crafting guide.")

@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.72"
-ns.RELEASE_NAME = "INSTANT GUIDE START"
+ns.VERSION = "0.8.73"
+ns.RELEASE_NAME = "SETTINGS SORTED"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}

@@ -21,58 +21,67 @@ end
 function ns.PartyFeaturesEnabled() return not ns.Option("soloMode") end
 
 local sections = {
-    {"play", "Play mode", {
-        {"soloMode", "Solo leveling mode", "Disable party messages, shared progress, route invitations and catch-up. Guides use only your own progress, even while grouped."},
-        {"unitNumbers", "Always show health and resource numbers", "Keep numeric values visible on Blizzard's unit bars. Turn off to restore your previous display setting."}}},
-    {"guides", "Leveling guides", {
-        {"fixedZoneGuides", "Follow fixed zone guides", "Keep a set quest order. Turn off to plan trips around your current quests and location; restart the guide to apply."},
-        {"nearbyPickups", "Collect useful quests nearby", "Collect suitable guide quests within 100 yards of your next pickup."},
-        {"classQuests", "Include class quests", "Include quests for your class in leveling guides."},
-        {"classTraining", "Include convenient class training", "Suggest nearby class training at even levels."},
-        {"dungeonPrompts", "Suggest dungeon quest collection", "Suggest collecting dungeon quests once you meet their pickup levels. Earlier quests may still be required."},
-        {"dungeonMapPrompt", "Offer the map when entering a dungeon", "Ask whether to open the map when you enter a dungeon."},
-        {"zonePrompts", "Suggest the next nearby zone", "Suggest a suitable neighbouring zone when it's time to move on."},
-        {"scanSkipped", "Reconsider skips when scanning", "A successful Scan guide clears saved skips for quests in the selected guide. Leave off to keep skips; failed or cancelled scans keep them."},
-        {"circuitRadius", "Nearby pickup distance", "Limit how much additional walking a nearby pickup adds to the current trip.", {{0.10, "Stay close"}, {0.16, "Small detours"}, {0.22, "Wider loop"}}}}},
-    {"navigation", "Arrow and map", {
-        {"highlightGuideQuest", "Automatic game-map highlights", "Select the current accepted quest on supported clients. Disabled on the secret-aura beta client; addon route markers remain available."},
-        {"routeArrow", "Show the direction arrow", "A movable guide panel with the current instruction and step controls."},
-        {"guideOpaque", "Opaque guide background", "Use a solid background. Turn off for a see-through guide."},
-        {"standaloneArrow", "Show a standalone direction arrow", "Show the arrow, distance and travel time in a separate small panel."},
-        {"approachMaps", "Show dungeon approach maps", "Open a live map in supported caves and tunnels leading to dungeons."},
-        {"distanceUnits", "Distance units", "Choose how distances appear under the arrow.", {{"yards", "Yards"}, {"metres", "Metres"}}},
-        {"mapLegend", "Show route explanation on the map", "Show route status below the world map. Route controls remain available."}}},
-    {"travel", "Travel routing", {
-        {"travelNetwork", "Use travel connections", "Use mapped terrain waypoints, zone crossings, city gates and transports to reach your destination."},
-        {"suggestFlights", "Suggest faster known flights", "Suggest an unlocked flight when it should be faster than walking."},
-        {"nearbyFlights", "Nearby flight-path tips", "Suggest friendly unlearned flight masters within 350 metres, or a short detour on your current route. Shows beneath either arrow; dismiss without skipping quests."},
-        {"hearthstoneTips", "Useful hearthstone tips", "Suggest a nearby inn when setting your hearthstone could help with later turn-ins."},
-        {"autoFly", "Select the suggested flight", "Take the suggested flight when you open its flight master's map, outside combat."},
-        {"corpseArrow", "Point to my corpse while dead", "Temporarily replace quest directions while you are a ghost, then resume the guide."}}},
-    {"services", "Bags, repairs and supplies", {
-        {"inventoryServices", "Suggest nearby vendor visits", "Optional advice at 4 or fewer free bag slots, or equipment at 25% durability. Click the tip to visit; Done resumes quests. Vendors are learned when you visit them."},
-        {"restockSupplies", "Include food and drink", "Suggest common level-appropriate supplies when 5 or fewer remain. Drink is suggested for mana classes. Buy manually; other consumables are not counted."},
-        {"supplyTarget", "Restock amount", "How much food or drink to carry after a suggested vendor visit.", {{10, "10 of each"}, {20, "20 of each"}, {40, "40 of each"}}}}},
-    {"party", "Party progress", {
-        {"groupFinderRoles", "Group finder filters", "Add role and class choices to Looking For Group's Browse header. Filter the native Players list; select and invite players normally."},
-        {"trackerAuto", "Show party progress automatically", "Show when joining a party; hide when solo or in a raid. You can close it for the current party session."},
-        {"trackerOpacity", "Party panel background", "Choose readability behind quest progress text.", {{0, "Transparent"}, {0.08, "Subtle"}, {0.25, "Dark glass"}, {0.5, "Dark"}}},
-        {"trackerHeight", "Party panel size", "How much progress is visible before you scroll.", {{220, "Compact"}, {350, "Comfortable"}, {500, "Tall"}}}}},
+    {"leveling", "Leveling", {
+        {"fixedZoneGuides", "Keep the zone guide order fixed", "Follow the guide's planned order. Turn this off to plan around your current quests and location."},
+        {"nearbyPickups", "Add useful nearby quests", "Add eligible quests when their giver is close to your planned pickup route."},
+        {"classQuests", "Include class quests", "Show quests that are only available to your class."},
+        {"classTraining", "Suggest class training", "Add a nearby trainer stop at even levels when it fits the route."},
+        {"zonePrompts", "Suggest the next zone", "Offer a suitable neighbouring zone when your level and progress are a good fit."},
+        {"scanSkipped", "Recheck skipped quests on scan", "A successful scan clears skips for this guide so eligible quests can return."},
+        {"circuitRadius", "Nearby quest detours", "Limit extra walking when adding a nearby pickup.", {{0.10, "Shortest"}, {0.16, "Small"}, {0.22, "Wider"}}}},
+        "Set how zone guides choose quests and suggest your next area."},
+    {"dungeons", "Dungeons", {
+        {"dungeonPrompts", "Suggest dungeon quests", "Offer dungeon quests when you reach their pickup level. Earlier chain quests may still be needed."},
+        {"dungeonMapPrompt", "Ask to open the dungeon map", "Ask when you enter a dungeon; you can keep playing without opening it."},
+        {"approachMaps", "Show maps near dungeon entrances", "Open a live map in supported caves and tunnels outside a dungeon."}},
+        "Choose when dungeon quests and maps appear in your route."},
+    {"quests", "Quest log and dialogs", {
+        {"highlightGuideQuest", "Highlight the current guide quest", "Select it in the game quest log and show Blizzard's map highlights when supported."},
+        {"autoSelectQuests", "Open guide quests at NPCs", "Open a suitable guide quest or ready turn-in when you talk to its NPC."},
+        {"autoAccept", "Auto-accept guide quests", "Accept only an opened quest that belongs to your active guide."},
+        {"autoTurnIn", "Auto-turn in quests with no reward choice", "Turn in when the dialog opens if there is no reward to choose."}},
+        "Choose how the addon uses the quest log and handles NPC dialogs."},
+    {"navigation", "Arrow and display", {
+        {"routeArrow", "Show the guide window", "Show the current step, direction and guide controls."},
+        {"guideOpaque", "Solid guide background", "Use a solid background for easier reading; turn off for a translucent panel."},
+        {"standaloneArrow", "Show a separate direction arrow", "Show direction, distance and travel time in a small separate panel."},
+        {"distanceUnits", "Distance units", "Choose the unit shown below the arrow.", {{"yards", "Yards"}, {"metres", "Metres"}}},
+        {"mapLegend", "Show map route details", "Show a short route explanation below the world map."},
+        {"unitNumbers", "Always show health and resource numbers", "Keep numbers visible on Blizzard's unit bars. Turn off to restore your previous setting."}},
+        "Choose what you see while following a guide step."},
+    {"travel", "Travel and tips", {
+        {"travelNetwork", "Use mapped travel routes", "Route through known terrain points, zone links, city gates and transports."},
+        {"suggestFlights", "Suggest faster flight paths", "Suggest a flight you have unlocked when it should save time."},
+        {"nearbyFlights", "Suggest nearby flight masters", "Point out a friendly unlearned flight master near you or your route."},
+        {"autoFly", "Select suggested flights automatically", "Select the route's flight when its flight-master map is open, outside combat."},
+        {"hearthstoneTips", "Suggest useful inns", "Suggest setting your hearthstone when a nearby inn could help later."},
+        {"corpseArrow", "Guide me to my corpse", "Temporarily point to your corpse while you are a ghost, then resume the guide."}},
+        "Choose which travel options and nearby tips the guide uses."},
     {"markers", "Quest markers", {
-        {"npcHints", "Mark needed quest NPCs and items", "Mark quest NPCs beside their names and quest items in tooltips, outside combat."},
-        {"nameplateHints", "Show quest markers beside names", "Turn nameplate markers on or off separately from quest-item tooltip hints. Markers hide during combat."},
-        {"questGiverStars", "Star above guide quest givers", "Highlight eligible pickups in your selected guide with a large gold star. Requires visible friendly NPC nameplates; hides during combat."},
-        {"patrolHints", "Show quest-giver patrols on the map", "Show a possible patrol path for wandering quest givers."},
-        {"eliteSpawnHints", "Show elite target spawns on the map", "Show skulls at known possible spawns only during the current unfinished elite objective."},
-        {"npcMarker", "Objective marker style", "Choose a star, cross, kill skull, or quest ! beside needed enemy names.", {{"star", "Star"}, {"cross", "Cross"}, {"skull", "Skull for kills"}, {"quest", "Quest !"}}}}},
-    {"automation", "Quest dialogs", {
-        {"autoSelectQuests", "Open guide quests at an NPC", "Open suitable guide quests and ready turn-ins when you talk to an NPC."},
-        {"autoAccept", "Accept guide quests only", "Automatically accept opened quests from your current guide."},
-        {"autoTurnIn", "Turn in quests without a reward choice", "Turn in completed quests when you open their dialog. Choose item rewards yourself."}}},
-    {"research", "Quest data for testing", {
-        {"recordQuestData", "Record NPC offers and quest progression", "Save the latest 300 local observations for prerequisite research. Export manually; no chat or automatic uploads."},
-        {"useLearnedQuests", "Use observed prerequisite patterns", "Ordinary findings apply across classes/races within a faction and build. Restricted quests keep their class/race scope. Requires an observed unlock; skipping alone teaches no prerequisite."},
-        {"exportCharacterNames", "Include source names in guide findings", "Optional: attribute findings to the character that observed them. Quest data exports always omit character names."}}}
+        {"npcHints", "Mark quest NPCs and items", "Mark useful NPCs beside their names and quest items in tooltips."},
+        {"nameplateHints", "Show markers beside nameplates", "Show or hide quest markers beside unit names. Markers are hidden in combat."},
+        {"questGiverStars", "Star guide quest givers", "Show a gold star over an eligible quest giver in your selected guide."},
+        {"patrolHints", "Show quest giver patrols", "Show known wandering paths on the map."},
+        {"eliteSpawnHints", "Show elite spawn points", "Show known spawn points while the matching elite quest step is active."},
+        {"npcMarker", "Enemy marker style", "Choose the marker beside quest enemies.", {{"star", "Star"}, {"cross", "Cross"}, {"skull", "Skull"}, {"quest", "Quest !"}}}},
+        "Choose which quest targets are marked in the world."},
+    {"party", "Party and group finder", {
+        {"soloMode", "Use solo leveling mode", "Turn off party messages, shared progress, invites and catch-up routes."},
+        {"groupFinderRoles", "Add filters to Looking For Group", "Filter Blizzard's player list by role and class."},
+        {"trackerAuto", "Show party progress when grouped", "Show in a party; hide when solo or in a raid. You can close it for this session."},
+        {"trackerOpacity", "Party panel background", "Choose how dark the progress panel appears.", {{0, "Clear"}, {0.08, "Light"}, {0.25, "Medium"}, {0.5, "Dark"}}},
+        {"trackerHeight", "Party panel height", "Choose how many members appear before scrolling.", {{220, "Compact"}, {350, "Standard"}, {500, "Tall"}}}},
+        "Set up group finder filters and party progress."},
+    {"services", "Bags and supplies", {
+        {"inventoryServices", "Suggest vendor stops", "Suggest a nearby vendor when bags are nearly full or gear is badly damaged."},
+        {"restockSupplies", "Suggest food and drink", "Suggest basic food or mana drink when your supply is low. Buying stays manual."},
+        {"supplyTarget", "Food and drink amount", "How many of each to carry after a restock.", {{10, "10 each"}, {20, "20 each"}, {40, "40 each"}}}},
+        "Optional stops for bags, repairs, food and drink."},
+    {"data", "Quest data and saved progress", {
+        {"recordQuestData", "Record quest offers and progress", "Save up to 300 local observations for guide research. Exports are manual."},
+        {"useLearnedQuests", "Use observed quest prerequisites", "Use confirmed unlock patterns for your faction and client build."},
+        {"exportCharacterNames", "Name characters in guide findings", "Include character names in guide findings. Quest research exports never include them."}},
+        "Manage local quest research and saved guide skips."}
 }
 
 function ns.InitializeConfig()
@@ -167,42 +176,58 @@ function ns.CreateSettings()
         choices[#choices + 1] = {section[1], section[2]}
         local page = CreateFrame("Frame", nil, frame)
         page:SetPoint("TOPLEFT", 22, -104); page:SetSize(576, 374); frame.pages[section[1]] = page
-        page.contentHeight = section[1] == "research" and 310 or #section[3] * 52
-        for index, entry in ipairs(section[3]) do
-            local key, y = entry[1], -(index - 1) * 52
+        page.heading = ns.UILabel(page, "GameFontNormal", 13)
+        page.heading:SetPoint("TOPLEFT", 32, -2); page.heading:SetSize(540, 18); page.heading:SetWordWrap(false)
+        page.heading:SetText(section[2])
+        page.description = ns.UILabel(page, nil, 10)
+        page.description:SetPoint("TOPLEFT", 32, -22); page.description:SetSize(540, 28); page.description:SetWordWrap(true)
+        page.description:SetJustifyV("TOP"); page.description:SetText(section[4]); page.description:SetTextColor(unpack(ns.UIColors.muted))
+        local cursor = 54
+        for _, entry in ipairs(section[3]) do
+            local key = entry[1]
             local caption = ns.UILabel(page, "GameFontNormal", 12)
-            caption:SetPoint("TOPLEFT", 32, y - 3); caption:SetSize(entry[4] and 318 or 544, 16); caption:SetWordWrap(false); caption:SetText(entry[2])
+            caption:SetPoint("TOPLEFT", 32, -cursor); caption:SetSize(entry[4] and 318 or 544, 16); caption:SetWordWrap(false); caption:SetText(entry[2])
             local help = ns.UILabel(page, nil, 10)
-            help:SetPoint("TOPLEFT", 32, y - 22); help:SetSize(540, 26); help:SetJustifyV("TOP"); help:SetText(entry[3]); help:SetTextColor(unpack(ns.UIColors.muted))
+            help:SetPoint("TOPLEFT", 32, -cursor - 18); help:SetWidth(540); help:SetHeight(42); help:SetWordWrap(true); help:SetJustifyV("TOP"); help:SetText(entry[3]); help:SetTextColor(unpack(ns.UIColors.muted))
+            local measured = ns.ReadPublic(help.GetStringHeight, help)
+            local helpHeight = type(measured) == "number" and math.max(16, math.min(42, measured)) or 30
+            help:SetHeight(helpHeight)
             if entry[4] then
                 local select = ns.UIDropdown(page, entry[4], 200, function(value) ns.SetOption(key, value) end)
-                select:SetPoint("TOPRIGHT", -4, y + 4); frame.dropdowns[key] = select
+                select:SetPoint("TOPRIGHT", -4, -cursor + 4); frame.dropdowns[key] = select
             else
                 local check = CreateFrame("CheckButton", nil, page, "UICheckButtonTemplate")
-                check:SetSize(24, 24); check:SetPoint("TOPLEFT", 0, y + 2)
+                check:SetSize(24, 24); check:SetPoint("TOPLEFT", 0, -cursor + 2)
                 check:SetScript("OnClick", function(self) ns.SetOption(key, self:GetChecked() == true) end)
                 frame.checks[key] = check
             end
+            cursor = cursor + 18 + helpHeight + 10
         end
+        page.optionsHeight = cursor + 4
+        page.contentHeight = page.optionsHeight
         page:Hide()
     end
-    local research = frame.pages.research
+    local research = frame.pages.data
     local instructions = ns.UILabel(research, nil, 11)
-    instructions:SetPoint("TOPLEFT", 32, -180); instructions:SetSize(520, 80)
-    instructions:SetText("Visit quest givers before and after turning in a prerequisite.\nExport after your session, then Select all and Ctrl+C. Send the export as a text file, labeled with your tester name.\nLevel/reputation changes are recorded as possible alternative causes.")
+    local extraTop = research.optionsHeight + 8
+    instructions:SetPoint("TOPLEFT", 32, -extraTop); instructions:SetSize(520, 64); instructions:SetWordWrap(true); instructions:SetJustifyV("TOP")
+    instructions:SetText("For useful findings, check the quest giver before and after a chain step. Export after your session and share the text file with the tester name.")
     local export = ns.UIButton(research, "Export quest data", 150, ns.ShowQuestResearch)
-    export:SetPoint("TOPLEFT", 32, -272)
+    local buttonTop = extraTop + 72
+    export:SetPoint("TOPLEFT", 32, -buttonTop)
     frame.researchExport = export
     frame.findingsExport = ns.UIButton(research, "Export guide findings", 175, ns.ShowGuideFindings)
-    frame.findingsExport:SetPoint("TOPLEFT", 196, -272)
+    frame.findingsExport:SetPoint("TOPLEFT", 194, -buttonTop)
+    local reset = ns.UIButton(research, "Reset guide skips", 135, ns.ResetGuideSkips)
+    reset:SetPoint("TOPRIGHT", -4, -buttonTop)
+    ns.UIHelp(reset, "Clear saved quest and step skips for this character across every guide and zone. Quest completion is unchanged.")
+    frame.resetSkips = reset
+    research.contentHeight = buttonTop + 38
     frame.section = ns.UIDropdown(frame, choices, 280, function(key) frame.sectionKey = key; ns.RenderSettings() end)
-    frame.section:SetPoint("TOPLEFT", 22, -51); frame.sectionKey = "play"
+    frame.section:SetPoint("TOPLEFT", 22, -51); frame.sectionKey = "leveling"
     frame.note = ns.UILabel(frame, nil, 11)
     frame.note:SetPoint("BOTTOMLEFT", 22, 16); frame.note:SetWidth(390); frame.note:SetHeight(28); frame.note:SetTextColor(unpack(ns.UIColors.muted))
     frame.note:Hide()
-    local reset = ns.UIButton(frame, "Reset guide skips", 135, ns.ResetGuideSkips)
-    reset:SetPoint("BOTTOMRIGHT", -22, 18)
-    ns.UIHelp(reset, "Clear every saved quest/step skip for this character, across all guides and zones. Quest completion is unchanged.")
     frame:Hide()
     if type(UISpecialFrames) == "table" then table.insert(UISpecialFrames, "WowTogetherSettings") end
 end

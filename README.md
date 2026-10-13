@@ -2,13 +2,20 @@
 
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
-progress. Version **0.8.72 — INSTANT GUIDE START** targets interface **16001**,
+progress. Version **0.8.73 — SETTINGS SORTED** targets interface **16001**,
 uses Lua **5.1**, and reads capabilities rather than choosing a Classic
 implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
 public character context. The guide combines nearby work, preserves selected
 routes and shows whose progress needs the next step. It also works solo.
+
+**0.8.73 organizes Settings by task** and makes the Recommended cards clickable
+to open their quest or profession details. Use **Browse all leveling guides**
+to see every zone guide. The main-window footer no longer has Diagnostics or
+Open guide buttons; diagnostics are still available from `/wt probe` or by
+right-clicking the minimap button. Settings values and guide behavior are
+unchanged.
 
 **0.8.72 lets you start a zone route while its ordered quest list is still
 preparing.** The list continues in the background; the route shows its normal
@@ -55,10 +62,10 @@ game-client textures are positioned from independently derived Blizzard
 geometry; no HiddenMaps code or artwork is shipped. The current outdoor map
 shows your position and the dungeon entrance, then hands off to the existing
 static dungeon map on entry. Dungeon interiors remain static. Open an approach
-from the dungeon journal or Settings → Arrow and map → Show dungeon approach
-maps to enable/disable automatic maps.
+from the dungeon journal or use Settings → Dungeons → Show maps near dungeon
+entrances to enable or disable automatic maps.
 
-Settings → Play mode → **Always show health and resource numbers** uses
+Settings → Arrow and display → **Always show health and resource numbers** uses
 Blizzard's status text. It restores your prior setting when turned off.
 
 This release integrates source-backed leveling-guide updates for Alterac
@@ -72,7 +79,8 @@ Open Looking For Group → Browse. Choose a role and class beneath the existing
 category/activity controls to filter its native **Players** rows. Groups and
 your own listing remain visible; use the normal selection, message and invite
 buttons. Select All roles / All classes to restore the list. Disable the controls
-in Settings → Party progress → Group finder filters. Changes wait during combat.
+in Settings → Party and group finder → Add filters to Looking For Group.
+Changes wait during combat.
 
 The supplied RFC 0.8.65 probe confirms instance 389 but no usable player X/Y.
 No live arrow can be drawn from that report: the reference map now says
@@ -152,7 +160,7 @@ regular bag slots, or an equipped item at 25% durability, the arrow can suggest 
 nearby vendor you have visited. Optional common food/drink reminders show how
 much to buy toward your chosen target. Click the tip to visit, then Done to resume
 your quest guide. Selling, buying and repairing are manual; quest order is retained.
-Settings → **Bags, repairs and supplies** controls this advice and restock amounts.
+Settings → **Bags and supplies** controls this advice and restock amounts.
 Vendor observations are shared across your compatible characters on the same
 realm/build/faction; needs and dismissals stay personal. Locations are approximate
 dialogue positions. Common Classic supplies are counted; custom foods and other
@@ -321,8 +329,9 @@ Completed individual objectives hide their stars while other work remains.
 Synced party needs and friendly pickup/turn-in markers remain separate. These
 rules apply across quests, without changing guides, skips or source data. The
 reported Winter Wolf star's owner remains unconfirmed: our star normally has a
-quest tooltip. Test Settings → Quest markers → Nameplate markers when back online,
-and capture the tooltip plus `/wt probe`. Actual beta flags still need retesting.
+quest tooltip. Test **Show markers beside nameplates** in Settings → Quest
+markers when back online, and capture the tooltip plus `/wt probe`. Actual beta
+flags still need retesting.
 
 **0.8.43 improves nearby flight-path discovery.** A friendly unlearned master
 within 350 metres gets a reminder beneath the guide window or standalone arrow.
@@ -446,12 +455,12 @@ after reload, transport boarding/arrival and dungeon returns in the beta.
 unfinished elite kill/drop target show as skulls on the world map. They clear
 when that objective finishes, is skipped or the guide changes/stops. Full-route
 preview never adds future hunt skulls. In synced parties, markers remain while
-a member still needs the objective. Turn the overlay off in Settings → Quest
-markers. Positions are reference facts, not live spawns; older-world coordinates
+a member still needs the objective. Turn off **Show elite spawn points** in
+Settings → Quest markers. Positions are reference facts, not live spawns; older-world coordinates
 apply only to unchanged quests and need beta retesting. See [QUEST_DATA.md](QUEST_DATA.md).
-**Open guide**, beside Diagnostics, brings the small guide window back. After
-Exit (×), it opens empty; starting a guide reuses it. An active hidden guide keeps
-its current progress when reopened. The browser closes so the guide is visible.
+Closing the small guide window only hides it. Starting or continuing a guide
+opens it again; Exit stops the guide. The Diagnostics and Open guide footer
+buttons were removed to keep the browser uncluttered.
 
 **0.8.31 corrects dungeon loot.** Classic encounters use original Vanilla IDs,
 with captured Forever changes. All 933 published Vanilla NPC tables and 95
@@ -566,8 +575,7 @@ are documented in [DUNGEON_ARTWORK.md](DUNGEON_ARTWORK.md). Client asset availab
 and actual beta rendering still need testing; `/wt probe` reports capabilities
 and resolved-image counts. Restart fully if newly referenced textures stay blank.
 
-**0.8.21 adds optional class-training stops.** Under **Settings → Leveling guides →
-Include convenient class training** (default on), each even level makes a personal
+**0.8.21 adds optional class-training stops.** Under **Settings → Leveling → Suggest class training** (default on), each even level makes a personal
 training check due. It appears near a pickup/return or before leaving a known hub:
 the trainer must be within 150 metres and the estimated added walk at most 150
 yards. Nearby objective work is not interrupted. The same rules apply across
@@ -698,8 +706,7 @@ guide has no useful work ready. Missing-location/NPC checks keep their place;
 
 **0.8.14 adds a tiny BG button at the guide panel's top-right.** Switch between
 an opaque background and a see-through fill; instructions, arrow and controls
-stay fully visible. The same choice is in Settings → Arrow and map → Opaque
-guide background. It also covers the attached nearby-objective/tip panels and
+stay fully visible. The same choice is in Settings → Arrow and display → Solid guide background. It also covers the attached nearby-objective/tip panels and
 persists after reload. Toggling it does not change the route, skips or travel.
 
 The friends' 23-event Durotar export is preserved and reviewed under `research/`.
@@ -833,7 +840,7 @@ The dashboard dropdown contains **Leveling**, **Professions**, **Dungeons**,
 **Quest log** and **All quests**, in that order. Optional party progress uses
 the Tracker button; sync and guide catch-up controls remain available.
 
-For solo leveling, enable **Settings → Play mode → Solo leveling mode**. This
+For solo leveling, enable **Settings → Party and group finder → Use solo leveling mode**. This
 stops outgoing and incoming party messages, clears peer snapshots/invitations and
 hides party views and controls. Even while grouped, the planner uses only your
 progress. Local quest updates, guides, arrows and research recording continue.
@@ -1108,12 +1115,12 @@ locations stay explicitly partial instead of inventing targets or early turn-ins
 
 ## Travel, NPCs and personal tools
 
-**Show a standalone direction arrow** in **Settings → Arrow and map** enables a
+**Show a standalone direction arrow** in **Settings → Arrow and display** enables a
 small transparent arrow with its own saved position. Drag it separately from the
 guide controls. Hide the large direction panel if desired; the standalone arrow
 continues updating. Both arrows use the same navigation state and one poll.
 
-**Use travel connections** in **Settings → Travel routing** is on by default.
+**Use mapped travel routes** in **Settings → Travel and tips** is on by default.
 Our own Dijkstra search chooses travel between quest steps using 256 Forever
 border/gate/transport points and 1,620 directed geographic links adapted from
 Mapzeroth with its source credit and MIT notice. No upstream engine/UI is included.
@@ -1230,7 +1237,7 @@ in adaptive mode newly eligible nearby work can join the trip while its unfinish
 first. Fixed guides advance through their existing steps. Accepted work remains. Scan guide also rechecks. Diagnostics show candidate,
 blocked and unknown counts plus sample per-quest reasons and NPC offer evidence.
 
-Quest research is enabled locally in **Settings → Quest data for testing**.
+Quest research is enabled locally in **Settings → Quest data and saved progress**.
 Each character retains the latest 300 observations across reloads: public NPC
 offers (complete lists distinguished from individual dialogs), accepted quests,
 turn-ins, build, level/class/race/faction/map and relevant completion-history

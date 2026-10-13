@@ -27,6 +27,15 @@ class RecommendedHomeTests(unittest.TestCase):
         self.assertFalse(any(w.IsShown(w) for w in c.ns.ui.guideControls.values()))
         self.assertIsNone(c.ns.routeSelection)
 
+    def test_recommended_card_opens_its_details_and_footer_stays_clean(self):
+        c = browser(); c.ns.SetFilter("recommended")
+        home = c.ns.ui.home
+        self.assertEqual(home.browseLeveling.caption.text, "Browse all leveling guides")
+        self.assertIsNone(c.ns.ui.openGuideButton)
+        home.leveling.OnMouseUp(home.leveling, "LeftButton")
+        self.assertTrue(c.ns.guideQuestList.IsShown(c.ns.guideQuestList))
+        self.assertIsNone(c.ns.routeSelection)
+
     def test_default_and_empty_states_are_honest(self):
         c = Client(default_guide=True, quests=())
         self.assertEqual(c.ns.filter, 'recommended')
@@ -92,7 +101,7 @@ class RecommendedHomeTests(unittest.TestCase):
         c = browser(); g = zone(c)
         c.ns.ShowGuideOnMap(g); run_plan(c); before = order(c.ns.routeSelection)
         c.ns.SetFilter('recommended')
-        c.ns.ui.home.leveling.inspect.OnClick(); c.drain()
+        c.ns.ui.home.leveling.OnMouseUp(c.ns.ui.home.leveling, 'LeftButton'); c.drain()
         self.assertTrue(c.ns.guideQuestList.IsShown(c.ns.guideQuestList))
         self.assertEqual(order(c.ns.routeSelection), before)
         c.ns.ui.home.browseProfessions.OnClick()
@@ -178,7 +187,7 @@ class RecommendedProfessionTests(unittest.TestCase):
         c = crafting(); c.ns.StartProfessionGuide(171, 75)
         c.ns.SetFilter('recommended')
         before = c.ns.routeSelection.professionBatch.remaining
-        c.ns.ui.home.cards[1].inspect.OnClick()
+        c.ns.ui.home.cards[1].OnMouseUp(c.ns.ui.home.cards[1], 'LeftButton')
         self.assertEqual(c.ns.routeSelection.professionID, 171)
         self.assertEqual(c.ns.routeSelection.professionBatch.remaining, before)
         self.assertEqual(c.ns.ui.home.cards[1].start.caption.text, 'Continue guide')

@@ -86,10 +86,10 @@ ns.RegisterRecommendationProvider("leveling", function(query)
                 progressValue = completed, progressTotal = completed + remaining,
                 action = running and "Continue guide" or "Start guide",
                 start = running and ns.OpenGuideWindow or function() ns.RequestStartRoute(guide) end,
-                secondary = "Quest list", inspect = function() ns.ShowGuideQuestList(guide) end}}, "ready"
+                inspect = function() ns.ShowGuideQuestList(guide) end}}, "ready"
         end
     end
-    return {}, "No suitable unfinished zone guide is ready. Browse leveling guides to explore your next zone."
+    return {}, "No suitable unfinished zone guide is ready. Browse all leveling guides to explore your next zone."
 end)
 
 ns.RegisterRecommendationProvider("professions", function()

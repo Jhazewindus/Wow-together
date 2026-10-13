@@ -1,5 +1,24 @@
 # Wow Together changelog
 
+## 0.8.73
+
+**SETTINGS SORTED**
+
+- Reorganize Settings into pages for Leveling, Dungeons, Quest log and dialogs,
+  Arrow and display, Travel and tips, Quest markers, Party, Bags and supplies,
+  and Quest data and saved progress.
+- Tighten labels and descriptions, let help text wrap to its measured height,
+  and move Reset guide skips beside saved quest data.
+- Make Recommended cards open their detail view when clicked, rename the link to
+  **Browse all leveling guides**, and remove the Diagnostics and Open guide
+  buttons from the main-window footer. Diagnostics remain available through
+  `/wt probe` and the minimap button.
+- Keep settings values and route behavior unchanged. Profession targets and
+  craft quantities remain handled by the profession guide.
+- Reviewed the new Durotar, Hillsbrad and Barrens audits. They contain shared
+  tooltip-cleanup proposals but no quest-data changes, so this settings update
+  does not mix in an unrelated guide-rendering change.
+
 ## 0.8.72
 
 **INSTANT GUIDE START**

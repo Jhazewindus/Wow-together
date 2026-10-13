@@ -98,6 +98,19 @@ class CircuitTests(unittest.TestCase):
 
 
 class SettingsTests(unittest.TestCase):
+    def test_settings_are_grouped_by_player_task_and_reset_is_with_saved_progress(self):
+        c = solo()
+        settings = c.ns.settings
+        labels = [settings.section.entries[i][2] for i in range(1, len(settings.section.entries) + 1)]
+        self.assertEqual(labels, ["Leveling", "Dungeons", "Quest log and dialogs", "Arrow and display",
+                                  "Travel and tips", "Quest markers", "Party and group finder",
+                                  "Bags and supplies", "Quest data and saved progress"])
+        self.assertIsNone(settings.pages.professions)  # Profession crafting targets are handled by the guide.
+        self.assertTrue(c.lua.globals().rawequal(settings.resetSkips.GetParent(settings.resetSkips), settings.pages.data))
+        self.assertGreater(settings.pages.data.contentHeight, settings.pages.data.optionsHeight)
+        self.assertEqual(settings.pages.leveling.description.GetText(settings.pages.leveling.description),
+                         "Set how zone guides choose quests and suggest your next area.")
+
     def test_acceptance_requires_opt_in_public_dialog_and_no_combat(self):
         c = solo()
         c.lua.execute('accepts=0; function AcceptQuest() accepts=accepts+1 end; function CanAcceptQuest() return allowed end; function GetQuestID() return 900 end; allowed=true')

@@ -192,12 +192,12 @@ class EliteSpawnTests(unittest.TestCase):
 
 
 class ReopenGuideTests(unittest.TestCase):
-    def test_main_button_reopens_exited_guide_as_idle_without_reviving_it(self):
+    def test_open_guide_action_reopens_exited_guide_as_idle_without_reviving_it(self):
         c, _ = scanning_client()
         frame = c.ns.navigation
         frame.close.OnClick(); self.assertFalse(frame.IsShown(frame))
         c.ns.window.Show(c.ns.window)
-        c.ns.ui.openGuideButton.OnClick()
+        c.ns.OpenGuideWindow()
         self.assertTrue(frame.IsShown(frame))
         self.assertFalse(c.ns.window.IsShown(c.ns.window))
         self.assertEqual(frame.title.text, 'No guide selected')
@@ -211,7 +211,7 @@ class ReopenGuideTests(unittest.TestCase):
         before = [(p.id, p.kind) for p in route.stops.values()]
         c.ns.SetOption('routeArrow', False)
         self.assertFalse(c.ns.navigation.IsShown(c.ns.navigation))
-        c.ns.ui.openGuideButton.OnClick()
+        c.ns.OpenGuideWindow()
         self.assertTrue(c.ns.navigation.IsShown(c.ns.navigation))
         self.assertEqual(c.ns.routeSelection.key, key)
         self.assertEqual([(p.id, p.kind) for p in c.ns.selectedRoute.stops.values()], before)

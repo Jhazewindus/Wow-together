@@ -1,11 +1,27 @@
 # Wow Together — friend test script
 
-For **0.8.72** — **INSTANT GUIDE START**, World of Warcraft: Forever beta,
+For **0.8.73** — **SETTINGS SORTED**, World of Warcraft: Forever beta,
 interface **16001**.
-Allow **10–15 minutes for this update**; the wider optional checks take 45–60
+Allow **5–10 minutes for this update**; the wider optional checks take 45–60
 minutes. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The retained expanded-guide checks below take about **15–25 minutes**.
+
+## Settings and Recommended screen — this update
+
+1. Open Settings and switch between the pages. Confirm controls are grouped by
+   feature, descriptions are fully readable, and Reset guide skips is under
+   Quest data and saved progress. No setting should reset when changing pages.
+2. On Recommended, click the leveling card body. It should open the guide's
+   quest list without starting it. Start guide remains available on the card;
+   **Browse all leveling guides** opens the full leveling browser.
+3. Click a profession recommendation card and confirm it opens that guide's
+   details. Use its Start guide button when ready.
+4. Confirm the footer has no Diagnostics or Open guide buttons. `/wt probe` and
+   right-clicking the minimap button should still open diagnostics.
+
+Host checks cover settings grouping, card clicks and retained start actions.
+Check the pages fit and read cleanly at your normal UI scale in the beta client.
 
 ## Start a route while the quest list prepares — this update
 
@@ -121,7 +137,7 @@ tracking, protected APIs and gameplay timing need this client check.
    is not part of this feature; the static map and its boss/quest markers should
    remain usable. If a map or coordinates fail, report the dungeon, zone,
    character position and `/wt probe` output.
-4. In Settings → Play mode, enable **Always show health and resource numbers**.
+4. In Settings → Arrow and display, enable **Always show health and resource numbers**.
    Blizzard's unit bars should show numeric values. Disable it and verify the
    previous display style returns. If you change Blizzard's own setting while
    WoW Together's option is on, turning the addon option off should preserve
@@ -304,7 +320,7 @@ absence or whether the client exposes dungeon-interior coordinates.
 
 ## Inventory-aware service stops — optional regression
 
-- Start a leveling guide. In Settings → Bags, repairs and supplies, enable
+- Start a leveling guide. In Settings → Bags and supplies, enable
   vendor advice. Visit a nearby merchant once, close the shop, and stay near
   your next quest stop. The vendor must be learned from a real visit, not an inn
   or class trainer's presence. Include `/wt probe` if advice fails to appear.
@@ -661,8 +677,8 @@ absence or whether the client exposes dungeon-interior coordinates.
 ## Active quest-mob stars — about 5–10 minutes
 
 - On the Dwarf tester, revisit Winter Wolves. Hover directly over a WoW Together
-  star: its tooltip should name the quest. Toggle Settings → Quest markers →
-  Nameplate markers off. Our stars should disappear, while other addons' icons
+  star: its tooltip should name the quest. Turn off **Show markers beside
+  nameplates** in Settings → Quest markers. Our stars should disappear, while other addons' icons
   and Blizzard raid marks remain. A star without our tooltip or one that stays
   when disabled needs a source check; record other addons before attributing it.
 - With Stocking Jetsteam active, verify what mobs the client actually flags for
@@ -975,13 +991,11 @@ absence or whether the client exposes dungeon-interior coordinates.
 - Zoom, pan, resize and view another map, including during combat. Skulls should
   stay anchored and clipped to the map. Ghost directions, flight, Scan guide and
   previous/next previews must not show hunt skulls. Resume the objective to restore them.
-- Toggle Settings → Quest markers → Show elite target spawns on the map. Only
+- Toggle Settings → Quest markers → Show elite spawn points. Only
   those skulls should change. A missing source location must not create a guessed pin.
-- Exit the guide with ×, then press Open guide beside Diagnostics in the main
-  window. Expect No guide selected; the stopped guide must not resume. Start a
-  new guide. Hide its arrow in settings, then Open guide: expect the same current
-  step, position and size. The browser closes to reveal it. Check these buttons
-  also fit at the minimum main-window size.
+- Exit the guide with ×, then start a different route from the main browser.
+  The guide window should reopen on the new route. The main-window footer should
+  have no Diagnostics or Open guide buttons; `/wt probe` should still work.
 
 ## Dungeon loot and Stop / Exit — about 10 minutes
 
@@ -1415,7 +1429,7 @@ do not treat the example below as a confirmed diagnosis of that tester's route.
    arrow/instruction panel: the opaque fill should become see-through. Click
    again for solid. Hover for help; check long guide titles do not overlap it.
    Instructions, arrow and buttons should remain fully visible in both modes.
-2. Check Settings → Arrow and map → **Opaque guide background** reflects the
+2. Check Settings → Arrow and display → **Solid guide background** reflects the
    button's state. Change the checkbox and check the panel immediately updates.
    Nearby-objective and travel/inn-tip panels should use the same background.
 3. Leave it see-through, `/reload` and resume: the choice should persist. Change
@@ -1798,8 +1812,8 @@ return "end of output"
   Digging offered. Enable Collect useful quests nearby. All useful unaccepted
   guide pickups should be collected in that visit, instead of leaving after one.
   Check both normal gossip and the quest-greeting list where available.
-- **Optional automation:** enable Open guide quests at an NPC and Accept the
-  quest dialog I open. Each returned native list should select/accept the next
+- **Optional automation:** enable **Open guide quests at NPCs** and
+  **Auto-accept guide quests**. Open a quest dialog. Each returned native list should select/accept the next
   guide pickup. Test another multi-quest NPC with already mapped locations.
   Turn each automation option off separately: selection and acceptance remain
   independent, and closing the NPC doesn't reopen it remotely. Retest protected
