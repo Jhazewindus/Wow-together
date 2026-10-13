@@ -1,0 +1,185 @@
+{
+  "profile": "host fixture: classID 8 (Mage), Orc/Human representative faction race, class quest setting off; synthetic map API",
+  "views": [
+    {
+      "faction": "Horde",
+      "guide": "level-zone:eastern-kingdoms/hillsbrad-foothills:levels:21-30",
+      "title": "Hillsbrad Foothills leveling guide \u2022 Levels 21\u201330",
+      "view": "fresh",
+      "level": 22,
+      "stopCount": 91,
+      "objectiveCount": 45,
+      "actionVisibleForEveryObjective": true,
+      "allStepDescriptionsGenerated": 91,
+      "sample": [
+        {
+          "quest": "Elixir of Suffering",
+          "action": "Loot Creeper Ichor from Forest Moss Creeper",
+          "description": "Elixir of Suffering\nLoot Creeper Ichor from Forest Moss Creeper\nKill and loot Forest Moss Creeper.\nRequired for Elixir of Suffering later in this guide; finish and turn in Elixir of Suffering first.\nTest Hills \u2022 57.6, 24.4"
+        }
+      ]
+    },
+    {
+      "faction": "Horde",
+      "guide": "level-zone:eastern-kingdoms/hillsbrad-foothills:levels:21-30",
+      "title": "Hillsbrad Foothills leveling guide \u2022 Levels 21\u201330",
+      "view": "mid",
+      "level": 26,
+      "stopCount": 91,
+      "objectiveCount": 45,
+      "actionVisibleForEveryObjective": true,
+      "allStepDescriptionsGenerated": 91,
+      "sample": [
+        {
+          "quest": "Elixir of Suffering",
+          "action": "Loot Creeper Ichor from Forest Moss Creeper",
+          "description": "Elixir of Suffering\nLoot Creeper Ichor from Forest Moss Creeper\nKill and loot Forest Moss Creeper.\nRequired for Elixir of Suffering later in this guide; finish and turn in Elixir of Suffering first.\nTest Hills \u2022 57.6, 24.4"
+        }
+      ]
+    },
+    {
+      "faction": "Horde",
+      "guide": "level-zone:eastern-kingdoms/hillsbrad-foothills:levels:31-40",
+      "title": "Hillsbrad Foothills leveling guide \u2022 Levels 31\u201340",
+      "view": "fresh",
+      "level": 32,
+      "stopCount": 62,
+      "objectiveCount": 32,
+      "actionVisibleForEveryObjective": true,
+      "allStepDescriptionsGenerated": 62,
+      "sample": [
+        {
+          "quest": "The Rescue",
+          "action": "Use the quest item on Locked ball and chain",
+          "description": "The Rescue\nUse the quest item on Locked ball and chain\nUse the item at the marked target.\nLower-level step: Unlocks Infiltration (level 34).\nTest Hills \u2022 75.3, 41.6"
+        }
+      ]
+    },
+    {
+      "faction": "Horde",
+      "guide": "level-zone:eastern-kingdoms/hillsbrad-foothills:levels:31-40",
+      "title": "Hillsbrad Foothills leveling guide \u2022 Levels 31\u201340",
+      "view": "mid",
+      "level": 36,
+      "stopCount": 62,
+      "objectiveCount": 32,
+      "actionVisibleForEveryObjective": true,
+      "allStepDescriptionsGenerated": 62,
+      "sample": [
+        {
+          "quest": "The Rescue",
+          "action": "Use the quest item on Locked ball and chain",
+          "description": "The Rescue\nUse the quest item on Locked ball and chain\nUse the item at the marked target.\nLower-level step: Unlocks Infiltration (level 34).\nTest Hills \u2022 75.3, 41.6"
+        }
+      ]
+    },
+    {
+      "faction": "Horde",
+      "guide": "level-zone:eastern-kingdoms/hillsbrad-foothills:levels:41-50",
+      "title": "Hillsbrad Foothills leveling guide \u2022 Levels 41\u201350",
+      "view": "fresh",
+      "level": 43,
+      "stopCount": 18,
+      "objectiveCount": 8,
+      "actionVisibleForEveryObjective": true,
+      "allStepDescriptionsGenerated": 18,
+      "sample": [
+        {
+          "quest": "The Crown of Will",
+          "action": "Complete the Melisara objective",
+          "description": "The Crown of Will\nComplete the Melisara objective\nFinish this quest objective in the marked area.\nLower-level step: Unlocks The Crown of Will (level 41).\nTest Hills \u2022 62.6, 20.6"
+        }
+      ]
+    },
+    {
+      "faction": "Horde",
+      "guide": "level-zone:eastern-kingdoms/hillsbrad-foothills:levels:41-50",
+      "title": "Hillsbrad Foothills leveling guide \u2022 Levels 41\u201350",
+      "view": "mid",
+      "level": 43,
+      "stopCount": 18,
+      "objectiveCount": 8,
+      "actionVisibleForEveryObjective": true,
+      "allStepDescriptionsGenerated": 18,
+      "sample": [
+        {
+          "quest": "The Crown of Will",
+          "action": "Complete the Melisara objective",
+          "description": "The Crown of Will\nComplete the Melisara objective\nFinish this quest objective in the marked area.\nLower-level step: Unlocks The Crown of Will (level 41).\nTest Hills \u2022 62.6, 20.6"
+        }
+      ]
+    },
+    {
+      "faction": "Alliance",
+      "guide": "level-zone:eastern-kingdoms/hillsbrad-foothills:levels:21-30",
+      "title": "Hillsbrad Foothills leveling guide \u2022 Levels 21\u201330",
+      "view": "fresh",
+      "level": 27,
+      "stopCount": 27,
+      "objectiveCount": 11,
+      "actionVisibleForEveryObjective": true,
+      "allStepDescriptionsGenerated": 27,
+      "sample": [
+        {
+          "quest": "Hillsbrad's Hoard",
+          "action": "Complete the Sealed Company Request delivered to Hillsbrad council objective",
+          "description": "Hillsbrad's Hoard\nComplete the Sealed Company Request delivered to Hillsbrad council objective\nFinish this quest objective in the marked area.\nSealed Company Request delivered to Hillsbrad council is needed to finish Hillsbrad's Hoard.\nExact destination not mapped; check the quest tracker.\nTest Hills \u2022 location not mapped"
+        }
+      ]
+    },
+    {
+      "faction": "Alliance",
+      "guide": "level-zone:eastern-kingdoms/hillsbrad-foothills:levels:21-30",
+      "title": "Hillsbrad Foothills leveling guide \u2022 Levels 21\u201330",
+      "view": "mid",
+      "level": 28,
+      "stopCount": 27,
+      "objectiveCount": 11,
+      "actionVisibleForEveryObjective": true,
+      "allStepDescriptionsGenerated": 27,
+      "sample": [
+        {
+          "quest": "Hillsbrad's Hoard",
+          "action": "Complete the Sealed Company Request delivered to Hillsbrad council objective",
+          "description": "Hillsbrad's Hoard\nComplete the Sealed Company Request delivered to Hillsbrad council objective\nFinish this quest objective in the marked area.\nSealed Company Request delivered to Hillsbrad council is needed to finish Hillsbrad's Hoard.\nExact destination not mapped; check the quest tracker.\nTest Hills \u2022 location not mapped"
+        }
+      ]
+    },
+    {
+      "faction": "Alliance",
+      "guide": "level-zone:eastern-kingdoms/hillsbrad-foothills:levels:31-40",
+      "title": "Hillsbrad Foothills leveling guide \u2022 Levels 31\u201340",
+      "view": "fresh",
+      "level": 31,
+      "stopCount": 49,
+      "objectiveCount": 21,
+      "actionVisibleForEveryObjective": true,
+      "allStepDescriptionsGenerated": 49,
+      "sample": [
+        {
+          "quest": "Down the Coast",
+          "action": "Kill 10 \u00d7 Torn Fin Oracle",
+          "description": "Down the Coast\nKill 10 \u00d7 Torn Fin Oracle\nFinish this quest objective in the marked area.\nRequired for Farren's Proof later in this guide; finish and turn in Down the Coast first.\nTest Hills \u2022 46.2, 63.0"
+        }
+      ]
+    },
+    {
+      "faction": "Alliance",
+      "guide": "level-zone:eastern-kingdoms/hillsbrad-foothills:levels:31-40",
+      "title": "Hillsbrad Foothills leveling guide \u2022 Levels 31\u201340",
+      "view": "mid",
+      "level": 34,
+      "stopCount": 49,
+      "objectiveCount": 21,
+      "actionVisibleForEveryObjective": true,
+      "allStepDescriptionsGenerated": 49,
+      "sample": [
+        {
+          "quest": "Down the Coast",
+          "action": "Kill 10 \u00d7 Torn Fin Oracle",
+          "description": "Down the Coast\nKill 10 \u00d7 Torn Fin Oracle\nFinish this quest objective in the marked area.\nLower-level step: Unlocks Farren's Proof (level 32).\nTest Hills \u2022 46.2, 63.0"
+        }
+      ]
+    }
+  ]
+}
