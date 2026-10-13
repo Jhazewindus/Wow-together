@@ -1,5 +1,14 @@
 # Reviewed player quest research
 
+## 2026-10-13 — The Barrens player-facing text audit
+
+[The Barrens text audit](the-barrens-2026-10-13/README.md) refreshes all five
+Horde/Alliance chapters and checks fresh and mid-level previews. The 111 direct
+records contain no zone-authored optional context strings to clean; all 174
+objective steps remain intact. Repeated generic hints/reasons come from shared
+rendering, so the report records a coordinated policy proposal without changing
+zone data or UI.
+
 ## 2026-10-13 — Hillsbrad Foothills player-facing text audit
 
 [The Hillsbrad text audit](hillsbrad-foothills-2026-10-13/README.md) refreshes
