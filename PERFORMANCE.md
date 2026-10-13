@@ -1,4 +1,20 @@
-# Performance maintenance — 0.6.9
+# Performance maintenance — current through 0.8.70
+
+## Fixed guide geometry cache in 0.8.70
+
+Fixed guide compilation now memoizes geometry distances by the two point
+objects for the duration of that compilation. The symmetric cache holds at most
+65,536 pairs, uses weak point keys, and is discarded with the planning closure;
+it does not change route costs or order. Existing cooperative/time-sliced
+optimization and its progression guards remain in place. `/wt probe` and
+`tools/benchmark_addon.py` expose cache hits, misses and bounded resets.
+
+In the same Lua 5.1 host fixture, Mulgore's compiled-order fingerprint stayed
+`851e8ebcc4b09a8a99f0e2394adcfddade93522fb13ab20be41385b851533dbd` while
+`WalkingDistance` calls fell from 170,551 to 17,979 and median compilation fell
+from 2,315 ms to 1,816 ms. These are host measurements, not native Forever
+loading-time or FPS guarantees. `tests/test_0870_performance.py` guards the
+fingerprint and confirms repeated geometry work is reused.
 
 ## Event batching and on-demand data in 0.8.69
 

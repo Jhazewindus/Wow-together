@@ -88,6 +88,11 @@ Quest, profession, and dungeon reference payloads now load on demand from their
 matching data folders. Keep all four folders installed so each guide browser can
 load its data when first opened.
 
+0.8.70 PLANNER PERFORMANCE AND ROUTE STABILITY caches repeated geometry
+measurements during fixed guide compilation without changing route order. The
+host benchmark and /wt probe report cache activity; host timings do not predict
+beta FPS or loading time. See TESTING.md and PERFORMANCE.md.
+
 0.8.69 GUIDE PERFORMANCE AND DATA COVERAGE batches repeated event refreshes,
 uses adaptive outdoor map polling and defers profession/dungeon payload loading.
 Long route legs with incomplete evidence are called out, and the guide probe

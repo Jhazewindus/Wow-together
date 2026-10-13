@@ -73,6 +73,46 @@ local function distance(a, b, metrics)
 end
 ns.FixedGuideGeometry = distance
 
+local MAX_GEOMETRY_CACHE_PAIRS = 65536
+local function memoizedGeometry(cost)
+    local pairCache, identities, nextIdentity = setmetatable({}, {__mode = "k"}), setmetatable({}, {__mode = "k"}), 0
+    local entries = 0
+    local stats = {calls = 0, hits = 0, misses = 0, resets = 0}
+    local function identity(point)
+        local value = identities[point]
+        if not value then nextIdentity = nextIdentity + 1; value = nextIdentity; identities[point] = value end
+        return value
+    end
+    local function clear()
+        pairCache, identities, nextIdentity, entries = setmetatable({}, {__mode = "k"}), setmetatable({}, {__mode = "k"}), 0, 0
+        stats.resets = stats.resets + 1
+    end
+    local function cached(a, b)
+        stats.calls = stats.calls + 1
+        if type(a) ~= "table" or type(b) ~= "table" then
+            stats.misses = stats.misses + 1
+            return cost(a, b)
+        end
+        local first, second = a, b
+        if identity(first) > identity(second) then first, second = second, first end
+        local row = pairCache[first]
+        local value = row and row[second]
+        if value ~= nil then
+            stats.hits = stats.hits + 1
+            if value == false then return nil end
+            return value
+        end
+        stats.misses = stats.misses + 1
+        value = cost(a, b)
+        if entries >= MAX_GEOMETRY_CACHE_PAIRS then clear(); row = nil end
+        if not row then row = {}; pairCache[first] = row end
+        if value == nil then row[second] = false else row[second] = value end
+        entries = entries + 1
+        return value
+    end
+    return cached, stats
+end
+
 function ns.GenerateFixedGuide(guide, cooperative)
     local tasks, done, ordered, work = {}, {}, {}, 0
     local metrics, learned, locations = {}, {}, {cooperative = cooperative}
@@ -155,7 +195,7 @@ function ns.GenerateFixedGuide(guide, cooperative)
             end
         end
     end
-    local geometry = function(a, b) return distance(a, b, metrics) end
+    local geometry, geometryCache = memoizedGeometry(function(a, b) return distance(a, b, metrics) end)
     local resetTravel, resetTerrain, resetConnections
     local onYield = function()
         metrics, learned = {}, {}
@@ -171,6 +211,7 @@ function ns.GenerateFixedGuide(guide, cooperative)
     guide.optimization = ns.OptimizeFixedPlan(ordered, geometry, cooperative, onYield, travelCost,
         {levelLow = guide.sectionLow or guide.minLevel, levelHigh = guide.sectionHigh or guide.maxLevel},
         terrainCost, connectionCost)
+    if guide.optimization then guide.optimization.geometryCache = geometryCache end
     for index, stop in ipairs(ordered) do stop.guideStep = index end
     guide.fixedPlan = ordered
     return ordered

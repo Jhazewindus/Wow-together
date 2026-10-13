@@ -1,13 +1,27 @@
 # Wow Together — friend test script
 
-For **0.8.69** — **GUIDE PERFORMANCE AND DATA COVERAGE**, World of Warcraft: Forever beta,
+For **0.8.70** — **PLANNER PERFORMANCE AND ROUTE STABILITY**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **10–15 minutes for this update**; the wider optional checks take 45–60
 minutes. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The retained expanded-guide checks below take about **15–25 minutes**.
 
-## Refresh batching, optional data and guide coverage — this update
+## Fixed guide compile cache — this update
+
+1. Start a fixed leveling guide and wait for its route to finish compiling.
+   In `/wt probe`, confirm a `Route geometry cache` line appears with cached
+   checks, distance calculations and bounded resets.
+2. Use Scan guide and verify the current step order remains the same. Scan and
+   ordinary progress updates should not restart route compilation.
+3. Open another zone guide and compile it. Cache counts should describe that
+   guide's current compilation rather than accumulate across guides.
+
+The host regression test compares the Mulgore compiled-order fingerprint and
+checks that cached geometry calls exceed fresh measurements. Host timings are
+not in-game FPS or loading-time guarantees.
+
+## Refresh batching, optional data and guide coverage — 0.8.69
 
 1. Update all four sibling addon folders: `WowTogether`, `WowTogether_QuestData`,
    `WowTogether_ProfessionData` and `WowTogether_DungeonData`. Fully restart WoW.

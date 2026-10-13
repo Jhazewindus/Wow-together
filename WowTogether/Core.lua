@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.69"
-ns.RELEASE_NAME = "GUIDE PERFORMANCE AND DATA COVERAGE"
+ns.VERSION = "0.8.70"
+ns.RELEASE_NAME = "PLANNER PERFORMANCE AND ROUTE STABILITY"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}

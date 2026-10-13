@@ -88,6 +88,8 @@ def benchmark():
     for name, callback in (('browse', c.ns.LevelingGuideChoices), ('compile', compile_guide),
                            ('progress', progress), ('dashboard_refresh', c.ns.Refresh)):
         result[name + '_calls'] = calls(c, callback)
+    cache = guide.optimization.geometryCache
+    result['compile_geometry_cache'] = {key: int(cache[key]) for key in ('calls', 'hits', 'misses', 'resets')}
 
     m = client()
     maps(m)

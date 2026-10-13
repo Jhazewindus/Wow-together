@@ -3,12 +3,17 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.69 — GUIDE PERFORMANCE AND DATA COVERAGE** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.70 — PLANNER PERFORMANCE AND ROUTE STABILITY** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
 public character context. The guide combines nearby work, preserves selected
 routes and shows whose progress needs the next step. It also works solo.
+
+**0.8.70 caches repeated geometry checks during fixed guide compilation** while
+preserving the compiled route order. `/wt probe` reports cache activity for a
+selected fixed guide. Host measurements show fewer repeated distance calls;
+they do not establish in-game FPS or load time. See PERFORMANCE.md and TESTING.md.
 
 ## Install
 

@@ -1,5 +1,18 @@
 # Wow Together changelog
 
+## 0.8.70
+
+**PLANNER PERFORMANCE AND ROUTE STABILITY**
+
+- Cache repeated route-geometry distance checks during fixed guide compilation,
+  with a bounded per-compilation cache. Keep existing time-sliced planning,
+  fixed guide decisions and route order intact.
+- Add a stable Mulgore route fingerprint regression check and report cache hit,
+  miss and reset counts in `/wt probe` and the host benchmark.
+- The Lua 5.1 host benchmark reduced `WalkingDistance` calls from 170,551 to
+  17,979 (about 89%) and Mulgore compile median from 2,315 ms to 1,816 ms
+  (about 22%). These measurements do not predict beta FPS or loading time.
+
 ## 0.8.69
 
 **GUIDE PERFORMANCE AND DATA COVERAGE**
