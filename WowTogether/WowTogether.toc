@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.70
-## X-ReleaseName: PLANNER PERFORMANCE AND ROUTE STABILITY
+## Version: 0.8.71
+## X-ReleaseName: CLEANER GUIDE TOOLTIPS
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua

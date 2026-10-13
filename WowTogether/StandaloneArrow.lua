@@ -51,12 +51,6 @@ function ns.CreateStandaloneArrow()
     frame.tip.text:SetPoint("LEFT", 8, 0); frame.tip.text:SetSize(214, 44); frame.tip.text:SetWordWrap(true)
     frame.tip.close = ns.UIButton(frame.tip, "×", 20, ns.DismissGuideTip)
     frame.tip.close:SetHeight(20); frame.tip.close:SetPoint("RIGHT", -4, 0)
-    frame.tip:SetScript("OnEnter", function()
-        if not GameTooltip or not frame.guideTip then return end
-        GameTooltip:SetOwner(frame.tip, "ANCHOR_RIGHT")
-        GameTooltip:AddLine(frame.guideTip.detail, 1, 0.82, 0.3, true); GameTooltip:Show()
-    end)
-    frame.tip:SetScript("OnLeave", function() if GameTooltip then GameTooltip:Hide() end end)
     frame.tip:SetScript("OnMouseUp", function(_, button)
         if button == "LeftButton" then ns.AcceptInventoryServiceTip(frame.guideTip) end
     end)
@@ -64,9 +58,11 @@ function ns.CreateStandaloneArrow()
     frame:SetScript("OnEnter", function(self)
         if not GameTooltip then return end
         GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-        if self.state and self.state.stop then GameTooltip:AddLine(ns.GuideStepDescription(self.state.stop), 1, 0.82, 0.3, true) end
-        if self.guideTip then GameTooltip:AddLine(self.guideTip.detail, 1, 0.82, 0.3, true) end
-        GameTooltip:AddLine("Drag to move • Configure in Arrow and map", 1, 1, 1, true); GameTooltip:Show()
+        local description = self.state and self.state.stop and ns.GuideStepDescription(self.state.stop) or ""
+        local tip = self.guideTip and self.guideTip.detail or ""
+        local content = ns.CompactGuideTooltip(description, tip)
+        if content ~= "" then GameTooltip:AddLine(content, 1, 0.82, 0.3, true) end
+        GameTooltip:Show()
     end)
     frame:SetScript("OnLeave", function() if GameTooltip then GameTooltip:Hide() end end)
     frame.elapsed = 0

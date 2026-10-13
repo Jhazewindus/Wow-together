@@ -1,5 +1,18 @@
 # Wow Together changelog
 
+## 0.8.71
+
+**CLEANER GUIDE TOOLTIPS**
+
+- Remove repeated route reasons and locations from guide, map and arrow hover
+  text. Keep one copy of each line and retain useful quest actions, progress,
+  prerequisites and route context.
+- Drop the generic NPC offer-list reminder when the step already says to accept
+  the named quest from that NPC. Remove repeated hover text and drag instructions
+  from the guide arrow; the visible tip stays clickable.
+- Keep the route plan and quest order unchanged. Host checks cover shared tooltip
+  composition; native client hover layout still needs a beta check.
+
 ## 0.8.70
 
 **PLANNER PERFORMANCE AND ROUTE STABILITY**

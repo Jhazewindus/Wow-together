@@ -3,6 +3,24 @@ local addonName, ns = ...
 -- Instructions use structured quest facts and matching public progress.
 -- They never turn a planning anchor or an unknown objective into a location.
 local function text(value) return ns.SafeTitle(value) end
+local function compactTooltipText(...)
+    local output, seen = {}, {}
+    for index = 1, select("#", ...) do
+        local value = select(index, ...)
+        if type(value) == "string" then
+            for line in string.gmatch(value .. "\n", "([^\n]*)\n") do
+                line = string.gsub(line, "^%s*(.-)%s*$", "%1")
+                if line ~= "" and not seen[line] then
+                    seen[line] = true
+                    output[#output + 1] = line
+                end
+            end
+        end
+    end
+    return table.concat(output, "\n")
+end
+ns.CompactGuideTooltip = compactTooltipText
+
 local function count(value)
     return ns.Public(value) and type(value) == "number" and value >= 0 and value <= 1000000
         and value == math.floor(value) and value or nil
@@ -194,7 +212,8 @@ local function compactStepHint(stop, facts)
         or stop.kind == "corpse" or stop.kind == "loading" or stop.kind == "notice"
         or stop.confirmation or action == "start-item" then return hint end
     if stop.kind == "a" or stop.kind == "t" then
-        if hint == "Hand in the completed quest." or hint == "Interact with the quest starter." then return end
+        if hint == "Hand in the completed quest." or hint == "Interact with the quest starter."
+            or hint == "Choose this quest in the NPC's offer list." then return end
         return hint
     end
     if action == "escort" or action == "heal" then return hint end
@@ -234,13 +253,13 @@ function ns.GuideStepDescription(stop, facts, guide, route)
     if facts.stop.professionStep then
         if facts.stop.description then parts[#parts + 1] = facts.stop.description end
         if not facts.stop.unknownLocation then parts[#parts + 1] = ns.StopLocationText(facts.stop) end
-        return table.concat(parts, "\n")
+        return compactTooltipText(table.concat(parts, "\n"))
     end
     if facts.stop.inventoryService then
         parts[#parts + 1] = facts.stop.serviceReason
         parts[#parts + 1] = facts.stop.serviceInstructions
         parts[#parts + 1] = "Done resumes your guide."
-        return table.concat(parts, "\n")
+        return compactTooltipText(table.concat(parts, "\n"))
     end
     local groupWarning = ns.QuestGroupWarning(facts.stop.id)
     if groupWarning then parts[#parts + 1] = groupWarning end
@@ -260,5 +279,5 @@ function ns.GuideStepDescription(stop, facts, guide, route)
             if name then parts[#parts + 1] = "Quest item: " .. name .. " (provided)" end
         end
     end
-    return table.concat(parts, "\n")
+    return compactTooltipText(table.concat(parts, "\n"))
 end

@@ -36,15 +36,13 @@ local function updateTooltip(frame, opening)
     local description = stop and ns.GuideStepDescription(stop) or ""
     local status = stop and stop.kind == "notice" and state.status or ""
     local context = stop and not ns.GuideDestination(stop).professionStep and frame.context and frame.context:GetText() or ""
+    local content = ns.CompactGuideTooltip(description, status, context)
     local previous = frame.tooltipContent
-    if not opening and previous and previous[1] == description and previous[2] == status and previous[3] == context then return end
+    if not opening and previous == content then return end
     if opening or type(GameTooltip.ClearLines) ~= "function" then GameTooltip:SetOwner(frame, "ANCHOR_RIGHT")
     else GameTooltip:ClearLines() end
-    frame.tooltipContent = {description, status, context}
-    if description ~= "" then GameTooltip:AddLine(description, 1, 1, 1, true) end
-    if status ~= "" then GameTooltip:AddLine(status, 1, 0.82, 0.3, true) end
-    if context ~= "" then GameTooltip:AddLine(context, 0.8, 0.85, 0.9, true) end
-    GameTooltip:AddLine("Drag to move.", 1, 1, 1, true)
+    frame.tooltipContent = content
+    if content ~= "" then GameTooltip:AddLine(content, 1, 1, 1, true) end
     GameTooltip:Show()
 end
 
@@ -498,11 +496,6 @@ function ns.CreateNavigation()
     frame.tip.close = ns.UIButton(frame.tip, "×", 20, ns.DismissGuideTip)
     frame.tip.close:SetHeight(20); frame.tip.close:SetPoint("RIGHT", -4, 0)
     frame.tip.close.caption:ClearAllPoints(); frame.tip.close.caption:SetPoint("CENTER"); frame.tip.close.caption:SetSize(16, 16)
-    frame.tip:SetScript("OnEnter", function(self)
-        if not GameTooltip or not self.value then return end
-        GameTooltip:SetOwner(self, "ANCHOR_RIGHT"); GameTooltip:AddLine(self.value.detail, 1, 0.82, 0.3, true); GameTooltip:Show()
-    end)
-    frame.tip:SetScript("OnLeave", function() if GameTooltip then GameTooltip:Hide() end end)
     frame.tip:SetScript("OnMouseUp", function(self, button)
         if button == "LeftButton" then ns.AcceptInventoryServiceTip(self.value) end
     end)

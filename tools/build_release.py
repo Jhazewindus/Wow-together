@@ -88,6 +88,10 @@ Quest, profession, and dungeon reference payloads now load on demand from their
 matching data folders. Keep all four folders installed so each guide browser can
 load its data when first opened.
 
+0.8.71 CLEANER GUIDE TOOLTIPS removes duplicate reasons/locations and generic
+hover instructions from arrow, map, and guide tooltips while retaining useful
+quest and route context. The route order is unchanged. See TESTING.md.
+
 0.8.70 PLANNER PERFORMANCE AND ROUTE STABILITY caches repeated geometry
 measurements during fixed guide compilation without changing route order. The
 host benchmark and /wt probe report cache activity; host timings do not predict

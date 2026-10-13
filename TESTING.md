@@ -1,13 +1,27 @@
 # Wow Together — friend test script
 
-For **0.8.70** — **PLANNER PERFORMANCE AND ROUTE STABILITY**, World of Warcraft: Forever beta,
+For **0.8.71** — **CLEANER GUIDE TOOLTIPS**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **10–15 minutes for this update**; the wider optional checks take 45–60
 minutes. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The retained expanded-guide checks below take about **15–25 minutes**.
 
-## Fixed guide compile cache — this update
+## Cleaner guide hover text — this update
+
+1. Start a leveling or dungeon guide and hover over the navigation arrow. The
+   quest action, useful reason and location should each appear at most once;
+   the generic “Drag to move” line should be gone.
+2. Hover an accept step and confirm its action already names the NPC and quest;
+   the generic “Choose this quest in the NPC's offer list” line should not repeat it.
+3. Hover a quest row and a map objective. Useful progress, prerequisite, elite
+   warning and travel context should remain, without repeated reason/location
+   lines. The visible clickable tip should work without a second hover tooltip.
+
+Host tests verify shared tooltip line deduplication and retained quest context.
+Check wrapping and layout on the Forever beta client.
+
+## Fixed guide compile cache — 0.8.70
 
 1. Start a fixed leveling guide and wait for its route to finish compiling.
    In `/wt probe`, confirm a `Route geometry cache` line appears with cached

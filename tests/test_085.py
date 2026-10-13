@@ -99,6 +99,19 @@ class GuideTextTests(unittest.TestCase):
             self.assertIn(full, c.ns.GuideStepDescription(stop))
             self.assertIsNone(c.ns.GuideStepFacts(stop).progress)
 
+    def test_accept_tooltip_does_not_repeat_the_npc_offer_click(self):
+        c = route_client()
+        stop = step(c, kind='a', action=None, itemName=None, title='The Restless Dead',
+                    npcName='Afra Dunwall', targetName=None)
+        description = c.ns.GuideStepDescription(stop)
+        self.assertIn('Accept The Restless Dead from Afra Dunwall', description)
+        self.assertNotIn("Choose this quest in the NPC's offer list", description)
+
+    def test_shared_tooltip_composition_deduplicates_hover_sources(self):
+        c = route_client()
+        self.assertEqual(c.ns.CompactGuideTooltip('Action\nReason\nZone', 'Reason\nZone', 'Action'),
+                         'Action\nReason\nZone')
+
     def test_location_shows_real_coordinates_and_cross_zone_destination(self):
         c = route_client()
         stop = step(c)
