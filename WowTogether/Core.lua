@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.68"
-ns.RELEASE_NAME = "DUNGEON JOURNAL FACT UPDATES"
+ns.VERSION = "0.8.69"
+ns.RELEASE_NAME = "GUIDE PERFORMANCE AND DATA COVERAGE"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}
@@ -41,6 +41,33 @@ function ns.Refresh(background)
     if ns.CaptureSessionCheckpoint then ns.CaptureSessionCheckpoint() end
 end
 
+-- Event storms often request the same route, tracker and dashboard refresh in
+-- one frame. Coalesce background invalidations, while keeping explicit UI
+-- actions on the synchronous Refresh path.
+ns.refreshStats = {requested = 0, coalesced = 0, completed = 0}
+local refreshPending, refreshQueued, refreshBackground = false, false, true
+function ns.ScheduleRefresh(background)
+    ns.refreshStats.requested = ns.refreshStats.requested + 1
+    if refreshPending then
+        ns.refreshStats.coalesced = ns.refreshStats.coalesced + 1
+        refreshQueued = true
+        refreshBackground = refreshBackground and background == true
+        return
+    end
+    refreshPending, refreshQueued, refreshBackground = true, false, background == true
+    ns.refreshStats.completed = ns.refreshStats.completed + 1
+    ns.Refresh(background == true)
+    local function finishBurst()
+        local useBackground, queued = refreshBackground, refreshQueued
+        refreshPending, refreshQueued, refreshBackground = false, false, true
+        if not queued then return end
+        ns.refreshStats.completed = ns.refreshStats.completed + 1
+        ns.Refresh(useBackground)
+    end
+    if C_Timer and type(C_Timer.After) == "function" then C_Timer.After(0.04, finishBurst)
+    else finishBurst() end
+end
+
 local progressPending = false
 ns.guideProgressStats = {updates = 0, coalesced = 0, retries = 0}
 function ns.ScheduleGuideProgress()
@@ -60,7 +87,7 @@ function ns.ScheduleGuideProgress()
         -- Read objectives/destinations only after a complete quest-log snapshot.
         if ready then ns.ReadGuide() end
         ns.guideProgressStats.updates = ns.guideProgressStats.updates + 1
-        ns.Refresh(true)
+        ns.ScheduleRefresh(true)
         if not ready and attempts < 3 and not progressPending then
             progressPending = true
             ns.guideProgressStats.retries = ns.guideProgressStats.retries + 1
@@ -281,6 +308,8 @@ function ns.Diagnostics()
     output("Personal guide updates: " .. ns.guideProgressStats.updates .. " refreshes; "
         .. ns.guideProgressStats.coalesced .. " overlapping events batched; "
         .. ns.guideProgressStats.retries .. " quest-log retries. Dashboard work is deferred while hidden/resizing.")
+    output("Refresh scheduler: " .. ns.refreshStats.requested .. " requests; " .. ns.refreshStats.coalesced
+        .. " coalesced; " .. ns.refreshStats.completed .. " passes.")
     output("Scan guide: fresh quest log, objectives and history; fixed order retained. Useful lower-level prerequisites explain their unlock.")
     ns.NavigationDiagnostics(output)
     ns.GuideReasonDiagnostics(output)
@@ -360,7 +389,7 @@ ns.On("QUEST_LOG_UPDATE", function()
     ns.ScheduleSync()
 end)
 ns.On("ZONE_CHANGED_NEW_AREA", function()
-    ns.ResetZoneConnections(); ns.ReadGuide(); ns.ScheduleFlightDiscovery(); ns.ScheduleSync(); ns.Refresh(true)
+    ns.ResetZoneConnections(); ns.ReadGuide(); ns.ScheduleFlightDiscovery(); ns.ScheduleSync(); ns.ScheduleRefresh(true)
 end)
 ns.On("PLAYER_LEVEL_UP", function(level)
     ns.ReadGuideXP(); ns.RecordQuestResearch("level", {level = level}); ns.ScheduleSync()

@@ -1,0 +1,6 @@
+## Interface: 16001
+## Title: Wow Together Profession Data
+## Notes: Crafting guide facts loaded when profession guides are used.
+## LoadOnDemand: 1
+## Dependencies: WowTogether
+ProfessionData.lua

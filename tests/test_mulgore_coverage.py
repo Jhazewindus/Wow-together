@@ -67,7 +67,7 @@ class MulgoreCoverageTests(unittest.TestCase):
         self.assertTrue(all(abs(p.x-.576)<1e-8 and p.y==.852 for p in q.objectives.values()))
 
     def test_corrections_preserve_unknowns_and_reject_new_location_conflicts(self):
-        quests = own_lua(ROOT/'WowTogether/QuestCatalogue.lua', 'catalogue')['quests']
+        quests = own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua', 'catalogue')['quests']
         before = copy.deepcopy(quests)
         apply_corrections(quests)
         self.assertEqual(apply_stage_corrections(quests), [])

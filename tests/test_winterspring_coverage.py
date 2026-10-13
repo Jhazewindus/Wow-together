@@ -12,7 +12,7 @@ from import_warcraftdb import apply_stage_corrections
 
 class WinterspringCoverageTests(unittest.TestCase):
     @classmethod
-    def setUpClass(cls):cls.q=own_lua(ROOT/'WowTogether/QuestCatalogue.lua','catalogue')['quests']
+    def setUpClass(cls):cls.q=own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','catalogue')['quests']
 
     def test_object_investigations_interact_instead_of_speak(self):
         c=client('Alliance',level=58);g=guide(c,(4861,4863,5084));g.fixedRoute=True;c.ns.GenerateFixedGuide(g,False)

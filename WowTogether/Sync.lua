@@ -710,6 +710,17 @@ function ns.SyncDiagnostics(output)
         if route and route.fixed then
             output("Fixed zone guide: " .. route.totalSteps .. " total steps; " .. route.remainingSteps .. " remaining; "
                 .. route.eligibleMappedQuests .. " eligible quests with mapped steps; " .. route.missing .. " missing-location steps.")
+            local coverage = ns.GuideLocationCoverage and ns.GuideLocationCoverage(selection.records or {})
+            if coverage and coverage.quests > 0 then
+                local function part(label, value)
+                    return label .. " " .. value .. "/" .. coverage.quests .. " ("
+                        .. math.floor(value * 100 / coverage.quests + 0.5) .. "%)"
+                end
+                output("Guide data coverage: " .. part("pickups", coverage.pickups) .. "; "
+                    .. part("objectives complete", coverage.completeObjectives) .. "; "
+                    .. part("turn-ins", coverage.turnins) .. "; " .. part("verified prerequisites", coverage.details)
+                    .. "; fully located quests " .. coverage.fullyLocated .. "/" .. coverage.quests .. ".")
+            end
             output("Temporarily deferred pickups: " .. (route.deferredQuests or 0) .. ". Progress and NPC offers recheck them; manual skips remain separate.")
             local progress = route.completionProgress
             if progress then

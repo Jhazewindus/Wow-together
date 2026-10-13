@@ -47,8 +47,8 @@ def build(args):
     if digest != SNAPSHOT_SHA256:
         raise ValueError('Spawn snapshot differs from the reviewed Vanilla source')
     transforms, _, geometry = read_geometry(args.geometry)
-    catalogue = own_lua(ROOT / 'WowTogether/QuestCatalogue.lua', 'catalogue')
-    entities = own_lua(ROOT / 'WowTogether/QuestCatalogue.lua', 'questEntities')['npc']
+    catalogue = own_lua(ROOT / 'WowTogether_QuestData/QuestCatalogue.lua', 'catalogue')
+    entities = own_lua(ROOT / 'WowTogether_QuestData/QuestCatalogue.lua', 'questEntities')['npc']
     targets, references = {}, {}
     for ident, quest in catalogue['quests'].items():
         for npc in target_ids(quest):
@@ -103,7 +103,7 @@ def build(args):
         'quests': len(set().union(*targets.values()))}
     meta = {'schema': 1, 'captured': datetime.date.today().isoformat(), 'counts': counts}
     (ROOT / 'WowTogether/EliteSpawnData.lua').write_text(elite_spawn_code(dict(meta, npcs=rows)))
-    manifest = dict(meta, questCatalogueSHA256=hashlib.sha256((ROOT / 'WowTogether/QuestCatalogue.lua').read_bytes()).hexdigest(),
+    manifest = dict(meta, questCatalogueSHA256=hashlib.sha256((ROOT / 'WowTogether_QuestData/QuestCatalogue.lua').read_bytes()).hexdigest(),
         sources=[{'url': 'https://github.com/cmangos/classic-db/blob/' + COMMIT + '/Full_DB/ClassicDB_1_12_1_z2815.sql.gz',
             'commit': COMMIT, 'sha256': digest}, geometry],
         limitations=['Every selected reference spawn is retained; duplicate coordinates are merged.',

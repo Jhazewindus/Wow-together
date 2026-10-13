@@ -61,10 +61,11 @@ def capture_history(previous, history):
 
 
 def build(directory, cache, output):
-    source=directory/'QuestCatalogue.lua'
+    source_directory=ROOT/'WowTogether_QuestData' if directory.resolve()==(ROOT/'WowTogether').resolve() else directory
+    source=source_directory/'QuestCatalogue.lua'
     catalogue=own_lua(source, 'catalogue')
     entities=own_lua(source, 'questEntities')
-    checks=own_lua(source, 'worldQuestChecks');xp=own_lua(source, 'xpBaseline')
+    checks=own_lua(source, 'worldQuestChecks')
     metadata=json.loads((directory/'QuestCatalogue.json').read_text())
     maps={int(k):v for k,v in metadata['area_ui_maps'].items()}
     records=catalogue['quests']; before_records=copy.deepcopy(records); parsed=[]; geography={'npc':{},'object':{},'item':{}}
@@ -110,7 +111,9 @@ def build(directory, cache, output):
     report['reviewed_stage_corrections']=stage_corrections
     report['reviewed_quest_corrections']=corrections
     catalogue['captured']=now;output.mkdir(parents=True,exist_ok=True)
-    (output/'QuestCatalogue.lua').write_text(quest_code(catalogue,entities,checks,xp))
+    lua_output=ROOT/'WowTogether_QuestData' if output.resolve()==(ROOT/'WowTogether').resolve() else output
+    lua_output.mkdir(parents=True,exist_ok=True)
+    (lua_output/'QuestCatalogue.lua').write_text(quest_code(catalogue,entities,checks,None))
     for key,role in [('with_starters','starts'),('with_objectives','objectives'),('with_turnins','ends')]:metadata[key]=sum(bool(q.get(role)) for q in records.values())
     metadata_history=capture_history(metadata.get('supplemental_capture'),
                                      metadata.get('supplemental_capture_history'))

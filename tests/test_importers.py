@@ -51,7 +51,9 @@ class ImportTests(unittest.TestCase):
         self.assertNotIn('starts', facts)
         self.assertNotIn('mapID', facts)
         self.assertNotIn('side', facts)
-        self.assertTrue(generate({42: facts}, '2026-10-04').startswith('local addonName, ns = ...'))
+        generated = generate({42: facts}, '2026-10-04')
+        self.assertTrue(generated.startswith('local addonName, namespace = ...'))
+        self.assertIn('_G.WowTogetherSharedNamespace or namespace', generated)
 
     def test_category_tree_uses_published_leaf_paths_and_rejects_foreign_paths(self):
         tree = {'categories': [{'url': 'kalimdor', 'categories': [{'url': 'durotar'}, {'url': 'the-barrens'}]},

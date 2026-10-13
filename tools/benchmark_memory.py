@@ -31,6 +31,22 @@ def measure(source):
     c.lua.globals().player, c.lua.globals().peer = 'Alice', 'Bob'
     c.lua.globals().grouped = False
     c.ns = c.lua.table()
+    g = c.lua.globals()
+    loaded = set()
+    def load_data_addon(name):
+        name = str(name)
+        if name in loaded: return True
+        package = ROOT / name
+        toc = package / (name + '.toc')
+        if not toc.is_file(): return False
+        for line in toc.read_text().splitlines():
+            if line.endswith('.lua'):
+                text = (package / line).read_text()
+                c.lua.execute('assert(loadstring(...))(select(2,...))', text, name, c.lua.table())
+        loaded.add(name)
+        return True
+    g._load_data_addon = load_data_addon
+    c.lua.execute('LoadAddOn=function(name) return _load_data_addon(name) end')
     def retained():
         c.lua.eval('collectgarbage')('collect')
         return round(c.lua.eval('collectgarbage')('count') / 1024, 3)

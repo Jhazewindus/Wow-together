@@ -1,5 +1,25 @@
 # Performance maintenance — 0.6.9
 
+## Event batching and on-demand data in 0.8.69
+
+Rapid background invalidations now share one 40 ms refresh pass. The scheduled
+route/progress work still updates quest state and navigation; direct button
+actions keep the synchronous path. Diagnostics expose request/coalescing/pass
+counts so a beta report can distinguish duplicate work from delayed UI actions.
+
+Quest, profession and dungeon literals are separate load-on-demand addons. The
+main addon keeps a small quest count/source summary available without parsing the
+quest records. Native active-quest waypoints can avoid the offline catalogue;
+catalogue fallbacks load that pack only when needed. Profession and dungeon packs
+load when their views are used. These packs are not evicted after use, and route
+recommendations may load quest data when their evidence is needed. This limits
+unneeded startup parsing for some sessions but does not promise a fixed memory
+ceiling or a specific beta MiB reduction. Keep all four folders installed.
+
+Outdoor approach maps check rarely when no map is relevant and update at 5 Hz
+while a supported live map is shown. This avoids repeatedly scanning map geometry
+at a fixed idle rate; actual coordinate rendering and frame cost need client tests.
+
 ## Fixed travel comparison in 0.8.54
 
 The added graph-aware step/bundle pass reuses the existing bounded search.

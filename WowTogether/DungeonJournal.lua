@@ -84,6 +84,7 @@ local function imageMap(id, title)
 end
 
 function ns.DungeonViewerData(key)
+    if ns.EnsureOptionalData and not ns.EnsureOptionalData("WowTogether_DungeonData") then return end
     local stored = ns.dungeonJournalData and ns.dungeonJournalData.dungeons[key]
     local definition = ns.dungeonData and ns.dungeonData.dungeons[key]
     if not stored or not definition then return end

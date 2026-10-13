@@ -379,7 +379,7 @@ def audit(args):
     body = 'ns.dungeonJournalData = ' + encode({k: v for k, v in result.items() if k not in ('dungeons', 'items')}) + '\n'
     body += packer.records('dungeon-journal', 'ns.dungeonJournalData.dungeons', data)
     body += packer.records('dungeon-loot-items', 'ns.dungeonJournalData.items', item_rows, lazy_rows=True)
-    (ROOT / 'WowTogether/DungeonJournalData.lua').write_text(packer.code(body, 'Audited Vanilla/Forever relationships; item records load on demand. See DUNGEON_VIEWER.md.'))
+    (ROOT / 'WowTogether_DungeonData/DungeonJournalData.lua').write_text(packer.code(body, 'Audited Vanilla/Forever relationships; item records load on demand. See DUNGEON_VIEWER.md.'))
     manifest = {'schema': 2, 'captured': result['captured'], 'counts': counts, 'coverage': coverage,
         'zoneSources': sources, 'bossSources': {key: value for key, value in npc_sources.items() if int(key) in boss_ids},
         'npcSources': npc_sources, 'vanillaNPCSources': vanilla_sources, 'vanillaContainerSources': container_sources,

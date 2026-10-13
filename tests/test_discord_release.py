@@ -21,6 +21,15 @@ def release(path, note='A change', version='1.2.3'):
     with zipfile.ZipFile(path, 'w') as z:
         z.writestr('WowTogether/WowTogether.toc', '## Interface: 16001\n## Version: '+version+'\nCore.lua\n')
         z.writestr('WowTogether/Core.lua', 'local addonName, ns = ...\n')
+        for folder, sources in {
+            'WowTogether_QuestData': ['QuestCatalogue.lua'],
+            'WowTogether_ProfessionData': ['ProfessionData.lua'],
+            'WowTogether_DungeonData': ['DungeonJournalData.lua', 'DungeonMapData.lua'],
+        }.items():
+            toc = '## Interface: 16001\n## LoadOnDemand: 1\n## Dependencies: WowTogether\n' + ''.join(name+'\n' for name in sources)
+            z.writestr(folder+'/'+folder+'.toc', toc)
+            for name in sources:
+                z.writestr(folder+'/'+name, 'local addonName, namespace = ...\n')
         z.writestr('WowTogether/CHANGELOG.md', '# Changelog\n\n## '+version+'\n\n- '+note+'\n\n## 1.0.0\n\n- Older\n')
         z.writestr('WowTogether/TESTING.md', 'For **'+version+'**. Test this change.\n')
 

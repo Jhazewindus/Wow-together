@@ -7,7 +7,7 @@ sys.path.insert(0,str(ROOT/'tools'));from build_quest_dataset import own_lua
 from import_warcraftdb import apply_stage_corrections
 class BarrensCoverageTests(unittest.TestCase):
  @classmethod
- def setUpClass(cls):cls.q=own_lua(ROOT/'WowTogether/QuestCatalogue.lua','catalogue')['quests']
+ def setUpClass(cls):cls.q=own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','catalogue')['quests']
  def test_consumed_inputs_are_not_additional_handins(self):
   for i,output,inputs in [(882,5101,{10338}),(3924,11149,{11147,11148})]:
    q=self.q[i];self.assertEqual([v['itemID']for v in q['requiredItems']],[output]);self.assertTrue(inputs.issubset({v.get('itemID')for v in q['objectives']}));self.assertTrue(q['objectiveLocationsIncomplete'])

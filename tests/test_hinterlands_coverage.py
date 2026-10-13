@@ -14,7 +14,7 @@ from import_warcraftdb import apply_stage_corrections
 class HinterlandsCoverageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.quests=own_lua(ROOT/'WowTogether/QuestCatalogue.lua','catalogue')['quests']
+        cls.quests=own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','catalogue')['quests']
 
     def test_rhapsody_retains_every_item_goal_and_maps_only_proven_sources(self):
         q=self.quests[1452]

@@ -7,7 +7,7 @@ sys.path.insert(0,str(ROOT/'tools'));from build_quest_dataset import own_lua
 from import_warcraftdb import apply_stage_corrections
 class DuskwoodCoverageTests(unittest.TestCase):
  @classmethod
- def setUpClass(cls):cls.q=own_lua(ROOT/'WowTogether/QuestCatalogue.lua','catalogue')['quests']
+ def setUpClass(cls):cls.q=own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','catalogue')['quests']
  def test_cross_zone_drop_relations_counts_search_and_elite_warning(self):
   q=self.q[1383];self.assertFalse(q.get('missingRequirements'));self.assertFalse(q.get('objectiveLocationsIncomplete'))
   self.assertEqual([(p['entityID'],p['itemID'],p['quantity'],p['mapID'])for p in q['objectives']],[(768,6080,5,1435),(1081,6081,1,1435),(4687,6082,1,1443)])

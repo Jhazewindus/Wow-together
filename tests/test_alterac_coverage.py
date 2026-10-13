@@ -16,7 +16,7 @@ from supplement_quest_data import capture_history
 class AlteracCoverageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.records = own_lua(ROOT / 'WowTogether/QuestCatalogue.lua', 'catalogue')['quests']
+        cls.records = own_lua(ROOT / 'WowTogether_QuestData/QuestCatalogue.lua', 'catalogue')['quests']
 
     def test_strahnbrad_mystery_is_reviewed_horde_only(self):
         quests = {95534: copy.deepcopy(self.records[95534])}

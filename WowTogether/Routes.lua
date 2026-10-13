@@ -43,7 +43,10 @@ function ns.ReadRouteLocations()
             if validPoint(targetMap, x, y) then points[id] = {id = id, mapID = targetMap, x = x, y = y, kind = "q"} end
             local complete = query(C_QuestLog.IsComplete, id)
             ns.readyToTurnIn[id] = complete == true
-            local quest = ns.CatalogueQuest(id)
+            -- Native waypoints already cover this active objective. Load the
+            -- larger offline catalogue only for a completed quest's hand-in
+            -- override or when the client supplies no usable waypoint.
+            local quest = (complete == true or not points[id]) and ns.CatalogueQuest(id) or nil
             local finish = complete == true and quest and quest.ends and quest.ends[1]
             if finish and validPoint(finish.mapID, finish.x, finish.y) then
                 -- IsComplete can arrive before GetNextWaypoint stops pointing

@@ -14,7 +14,7 @@ from import_warcraftdb import apply_corrections, apply_stage_corrections
 class SilithusCoverageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.catalogue = own_lua(ROOT / 'WowTogether/QuestCatalogue.lua', 'catalogue')
+        cls.catalogue = own_lua(ROOT / 'WowTogether_QuestData/QuestCatalogue.lua', 'catalogue')
         cls.quests = cls.catalogue['quests']
         cls.sources = json.loads((ROOT / 'research/silithus-2026-10-10/source-facts.json').read_text())
 

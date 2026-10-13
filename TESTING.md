@@ -1,11 +1,42 @@
 # Wow Together — friend test script
 
-For **0.8.68** — **DUNGEON JOURNAL FACT UPDATES**, World of Warcraft: Forever beta,
+For **0.8.69** — **GUIDE PERFORMANCE AND DATA COVERAGE**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **10–15 minutes for this update**; the wider optional checks take 45–60
 minutes. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The retained expanded-guide checks below take about **15–25 minutes**.
+
+## Refresh batching, optional data and guide coverage — this update
+
+1. Update all four sibling addon folders: `WowTogether`, `WowTogether_QuestData`,
+   `WowTogether_ProfessionData` and `WowTogether_DungeonData`. Fully restart WoW.
+   Do not nest the data folders inside `WowTogether` or disable them in the addon
+   list; they stay unloaded until needed.
+2. Log in with a leveling guide and active quests. Change objectives/turn one in
+   during ordinary play; no duplicate map/tracker flicker or Lua error should
+   appear. In `/wt probe`, Refresh scheduler requests should exceed passes when
+   multiple events arrive together. Explicit guide actions should still respond
+   immediately.
+3. Open a supported outdoor approach map and move around it. The player marker
+   should update smoothly. Leave the approach area; the idle map check should
+   slow down and the automatic map should close. Reopen and verify its marker
+   resumes tracking.
+4. Open Professions and then a dungeon journal. Each should populate its data on
+   first use. If a folder is missing/disabled, the related view should show an
+   unavailable/empty state without a Lua error; reinstall all four folders.
+5. Start a zone guide and check `/wt probe` for pickups, complete objective
+   locations, turn-ins, verified prerequisites and fully located quests. These
+   counts describe known records, not an assertion of 100% source coverage.
+   For a long route step with incomplete source evidence, read the arrow reason;
+   it should say that the detour needs confirmation.
+6. After several map/quest events, inspect refresh counts in `/wt probe`. Run
+   guide scans and manual route actions to ensure the new event batching does
+   not delay their visible result.
+
+Host tests verify coalescing, adaptive intervals, optional-pack boundaries,
+coverage math and reason confidence. Exact memory savings, textures, map
+tracking, protected APIs and gameplay timing need this client check.
 
 ## Dungeon records and Dalaran partial state — this update
 
@@ -19,10 +50,11 @@ The retained expanded-guide checks below take about **15–25 minutes**.
    Alarming Request in its prerequisite chain.
 ## Install and capture context
 
-1. Replace the complete WowTogether folder, including **all 91 Lua files** and
-   the **Media folder**, in
-   `World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\`.
-   **Fully restart the client for this update**, rather than only `/reload`.
+1. Replace the four sibling folders `WowTogether`, `WowTogether_QuestData`,
+   `WowTogether_ProfessionData` and `WowTogether_DungeonData` in
+   `World of Warcraft\_classic_beta_\Interface\AddOns\`. Do not nest
+   data folders inside the main addon. **Fully restart the client for this
+   update**, rather than only `/reload`.
 2. Enable `/console scriptErrors 1`. Record version, build, level, faction, class,
    race, zone, party size and relevant settings. Update every party member.
 3. Leave **Follow fixed zone guides**, **Record NPC offers and quest progression**

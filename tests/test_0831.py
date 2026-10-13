@@ -65,7 +65,7 @@ class LootAuditTests(unittest.TestCase):
         self.assertEqual(quest.title, 'Starving Arcane')
         self.assertEqual(quest.previousQuest, 92432)
         manifest = json.loads((ROOT / 'WowTogether/QuestCatalogue.json').read_text())
-        catalogue = own_lua(ROOT / 'WowTogether/QuestCatalogue.lua', 'catalogue')
+        catalogue = own_lua(ROOT / 'WowTogether_QuestData/QuestCatalogue.lua', 'catalogue')
         actual = sum(bool(row.get('previousQuest') or row.get('prerequisiteAny')
                            or row.get('prerequisiteAll')) for row in catalogue['quests'].values())
         self.assertEqual(manifest['with_prerequisites'], actual)

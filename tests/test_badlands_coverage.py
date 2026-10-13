@@ -13,7 +13,7 @@ from import_warcraftdb import apply_stage_corrections
 class BadlandsCoverageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.records = own_lua(ROOT / 'WowTogether/QuestCatalogue.lua', 'catalogue')['quests']
+        cls.records = own_lua(ROOT / 'WowTogether_QuestData/QuestCatalogue.lua', 'catalogue')['quests']
 
     def test_amulet_delivery_follows_the_confirmed_chain(self):
         quest = self.records[723]

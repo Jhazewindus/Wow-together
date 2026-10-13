@@ -152,11 +152,12 @@ class DestinationPurposeTests(unittest.TestCase):
         self.assertIn('Take the zeppelin',context);self.assertIn('Important return',context);self.assertIn('Named giver',context)
         self.assertIn('Important return',context.splitlines()[0])
 
-    def test_objective_purpose_uses_live_action_instead_of_a_crossing_name(self):
+    def test_long_objective_purpose_explains_quest_without_repeating_the_action(self):
         c=navigator();goal=c.lua.table_from({'id':900,'kind':'q','title':'Quest goal','npcName':'Target','action':'kill','quantity':7},recursive=True)
         wrapper=c.lua.table_from({'kind':'travel','title':'Crossing','goal':goal})
-        reason=c.ns.GuideDestinationPurpose(wrapper)
-        self.assertIn('Kill',reason);self.assertIn('7',reason);self.assertIn('Quest goal',reason)
+        reason=c.ns.GuideDestinationPurpose(wrapper,501,1500)
+        self.assertIn('advances Quest goal',reason)
+        self.assertNotIn('Kill',reason);self.assertNotIn('7',reason)
         self.assertNotIn('Crossing',reason)
 
     def test_long_trainer_trip_explains_blocking_cap_before_recipe_details(self):

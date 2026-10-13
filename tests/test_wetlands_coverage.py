@@ -14,7 +14,7 @@ from import_warcraftdb import apply_stage_corrections
 class WetlandsCoverageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.quests=own_lua(ROOT/'WowTogether/QuestCatalogue.lua','catalogue')['quests']
+        cls.quests=own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','catalogue')['quests']
 
     def test_search_and_corpse_handoffs_interact_with_actual_objects(self):
         c=client('Alliance',level=32);g=guide(c,(281,284,285,631));g.fixedRoute=True;c.ns.GenerateFixedGuide(g,False)

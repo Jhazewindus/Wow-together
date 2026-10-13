@@ -8,7 +8,7 @@ sys.path.insert(0,str(ROOT/'tools'));from build_quest_dataset import own_lua
 from import_warcraftdb import apply_stage_corrections
 class TirisfalCoverageTests(unittest.TestCase):
  @classmethod
- def setUpClass(cls):cls.q=own_lua(ROOT/'WowTogether/QuestCatalogue.lua','catalogue')['quests']
+ def setUpClass(cls):cls.q=own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','catalogue')['quests']
  def test_scroll_keeps_class_race_parent_and_supplied_delivery(self):
   q=self.q[3095];self.assertFalse(q['requirements']);self.assertFalse(q['missingRequirements']);self.assertEqual(q['providedItems'][0]['entityID'],9546);self.assertEqual(q['requiredItems'][0]['itemID'],9546);self.assertEqual((q['classMask'],q['allowedRaceIDs'],q['prerequisiteAny']),(1,[5],[364]))
   c=client('Horde',class_id=1,level=10);c.ns.SetOption('classQuests',False);self.assertFalse(c.ns.ClassQuestEnabled(3095));self.assertTrue(c.ns.ClassQuestEnabled(6395))

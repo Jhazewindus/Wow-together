@@ -13,9 +13,15 @@ from build_quest_dataset import own_lua
 from import_warcraftdb import apply_corrections, apply_stage_corrections
 from pack_data import quest_code
 
+ROOT = Path(__file__).resolve().parents[1]
+
 
 def apply(directory):
     path = directory / 'QuestCatalogue.lua'
+    if not path.is_file():
+        package_path = ROOT / 'WowTogether_QuestData' / 'QuestCatalogue.lua'
+        if package_path.is_file():
+            path = package_path
     catalogue = own_lua(path, 'catalogue')
     before = copy.deepcopy(catalogue['quests'])
     exclusions = json.loads((Path(__file__).resolve().parent / 'quest_exclusions.json').read_text())
@@ -33,9 +39,10 @@ def apply(directory):
     if not changed:
         return []
     code = quest_code(catalogue, own_lua(path, 'questEntities'),
-                      own_lua(path, 'worldQuestChecks'), own_lua(path, 'xpBaseline'))
-    metadata = json.loads((directory / 'QuestCatalogue.json').read_text())
-    coverage = json.loads((directory / 'QuestCoverage.json').read_text())
+                      own_lua(path, 'worldQuestChecks'), None)
+    metadata_directory = ROOT / 'WowTogether' if directory.resolve() == (ROOT / 'WowTogether_QuestData').resolve() else directory
+    metadata = json.loads((metadata_directory / 'QuestCatalogue.json').read_text())
+    coverage = json.loads((metadata_directory / 'QuestCoverage.json').read_text())
     records = catalogue['quests']
     for key, role in (('with_starters', 'starts'), ('with_objectives', 'objectives'), ('with_turnins', 'ends')):
         metadata[key] = sum(bool(q.get(role)) for q in records.values())
@@ -66,13 +73,13 @@ def apply(directory):
             row['missing_quest_ids'].append(ident)
     coverage['zones'] = dict(sorted(zones.items()))
     path.write_text(code)
-    (directory / 'QuestCatalogue.json').write_text(json.dumps(metadata, indent=2) + '\n')
-    (directory / 'QuestCoverage.json').write_text(json.dumps(coverage, indent=2) + '\n')
+    (metadata_directory / 'QuestCatalogue.json').write_text(json.dumps(metadata, indent=2) + '\n')
+    (metadata_directory / 'QuestCoverage.json').write_text(json.dumps(coverage, indent=2) + '\n')
     return changed
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--directory', type=Path, default=Path(__file__).resolve().parents[1] / 'WowTogether')
+    parser.add_argument('--directory', type=Path, default=Path(__file__).resolve().parents[1] / 'WowTogether_QuestData')
     args = parser.parse_args()
     print('Changed quest records:', apply(args.directory))

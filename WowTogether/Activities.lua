@@ -231,7 +231,7 @@ function ns.ScheduleActivitySuggestions()
         tostring(ns.Option("dungeonPrompts")), tostring(ns.Option("zonePrompts")),
         tostring(ns.Option("classQuests")), tostring(ns.questReady), tostring(ns.catalogue),
         tostring(ns.profile and ns.profile.faction), tostring(ns.profile and ns.profile.classID), tostring(ns.profile and ns.profile.raceID),
-        tostring(ns.routeSelection and ns.routeSelection.mode), tostring(ns.HasCurrentPartyQuests()),
+        tostring(ns.routeSelection and ns.routeSelection.mode),
         ns.routeSelection and ns.routeSelection.key or "", ns.selectedRoute and ns.selectedRoute.mapID or 0}
     for _, person in ipairs(ns.PartyProfiles()) do
         local member = ns.members[person.key]

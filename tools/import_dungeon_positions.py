@@ -124,11 +124,11 @@ def update_geometry_only(client_db):
         if hashlib.sha256(source.read_bytes()).hexdigest() != expected:
             raise ValueError("Geometry source hash mismatch: " + name)
         tables[name] = list(csv.DictReader(source.open()))
-    data = own_lua(ROOT / "WowTogether/DungeonMapData.lua", "dungeonMapData")
-    journal = own_lua(ROOT / "WowTogether/DungeonJournalData.lua", "dungeonJournalData")
+    data = own_lua(ROOT / "WowTogether_DungeonData/DungeonMapData.lua", "dungeonMapData")
+    journal = own_lua(ROOT / "WowTogether_DungeonData/DungeonJournalData.lua", "dungeonJournalData")
     add_world_geometry(data, journal, tables)
     from pack_data import dungeon_code
-    (ROOT / "WowTogether/DungeonMapData.lua").write_text(dungeon_code('dungeonMapData', 'dungeon-maps', data,
+    (ROOT / "WowTogether_DungeonData/DungeonMapData.lua").write_text(dungeon_code('dungeonMapData', 'dungeon-maps', data,
         'Reference floor facts; native coordinates take precedence. See DUNGEON_VIEWER.md.'))
     manifest["counts"] = data["counts"]
     path.write_text(json.dumps(manifest, indent=2) + "\n")
@@ -181,10 +181,10 @@ def main():
         return
     if not args.snapshot or not args.listfile:
         parser.error("--snapshot and --listfile are required for a full import")
-    journal = own_lua(ROOT / "WowTogether/DungeonJournalData.lua", "dungeonJournalData")
+    journal = own_lua(ROOT / "WowTogether_DungeonData/DungeonJournalData.lua", "dungeonJournalData")
     definitions = own_lua(ROOT / "WowTogether/DungeonData.lua", "dungeonData")["dungeons"]
-    catalogue = own_lua(ROOT / "WowTogether/QuestCatalogue.lua", "catalogue")["quests"]
-    entities = own_lua(ROOT / "WowTogether/QuestCatalogue.lua", "questEntities")
+    catalogue = own_lua(ROOT / "WowTogether_QuestData/QuestCatalogue.lua", "catalogue")["quests"]
+    entities = own_lua(ROOT / "WowTogether_QuestData/QuestCatalogue.lua", "questEntities")
     tables = {}
     sources = []
     for name in ("JournalEncounter", "DungeonMap", "WorldMapArea"):
@@ -295,7 +295,7 @@ def main():
     data = {"schema": 1, "captured": "2026-10-06", "counts": counts, "dungeons": result}
     add_world_geometry(data, journal, tables)
     from pack_data import dungeon_code
-    (ROOT / "WowTogether/DungeonMapData.lua").write_text(dungeon_code('dungeonMapData', 'dungeon-maps', data,
+    (ROOT / "WowTogether_DungeonData/DungeonMapData.lua").write_text(dungeon_code('dungeonMapData', 'dungeon-maps', data,
         'Reference floor facts; native coordinates take precedence. See DUNGEON_VIEWER.md.'))
     manifest = {"schema": 1, "captured": data["captured"], "counts": counts, "sources": sources, "coverage": coverage,
                 "limitations": ["Older Classic layout/spawn references require Forever beta verification.",

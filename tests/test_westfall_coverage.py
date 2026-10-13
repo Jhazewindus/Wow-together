@@ -14,7 +14,7 @@ from import_warcraftdb import apply_stage_corrections
 class WestfallCoverageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.quests=own_lua(ROOT/'WowTogether/QuestCatalogue.lua','catalogue')['quests']
+        cls.quests=own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','catalogue')['quests']
 
     def test_treasure_chain_interacts_with_objects_without_changing_loot_start(self):
         c=client('Alliance',level=16);g=guide(c,(136,138,139,140));g.fixedRoute=True;c.ns.GenerateFixedGuide(g,False)

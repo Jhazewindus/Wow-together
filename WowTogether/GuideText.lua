@@ -178,9 +178,39 @@ function ns.GuideDestinationPurpose(stop, mapID, distance, guide, route)
     local reason = ns.GuideVisibleReason(stop, mapID or ns.profile and ns.profile.mapID, distance, guide, route)
     if goal.dungeonEntrance or goal.kind == "trainer" then return reason end
     if goal.kind ~= "a" and goal.kind ~= "q" and goal.kind ~= "t" then return end
-    local instruction = ns.StopInstruction(goal)
-    if goal.kind == "q" then instruction = instruction .. " for " .. (text(goal.title) or "this quest") end
-    return reason and (reason .. "\n" .. instruction) or instruction
+    if goal.kind == "t" and reason and text(goal.npcName) then
+        return string.gsub(reason, "%.$", "") .. " from " .. text(goal.npcName) .. "."
+    end
+    -- The arrow status already gives the current action. Keep the context line
+    -- for the reason to travel, rather than repeating that action a second time.
+    return reason
+end
+
+local function compactStepHint(stop, facts)
+    local hint = ns.GuideStepHint(stop, facts)
+    local action = facts.action
+    if stop.professionStep or stop.inventoryService or stop.dungeonEntrance
+        or stop.kind == "trainer" or stop.kind == "travel" or stop.kind == "f"
+        or stop.kind == "corpse" or stop.kind == "loading" or stop.kind == "notice"
+        or stop.confirmation or action == "start-item" then return hint end
+    if stop.kind == "a" or stop.kind == "t" then
+        if hint == "Hand in the completed quest." or hint == "Interact with the quest starter." then return end
+        return hint
+    end
+    if action == "escort" or action == "heal" then return hint end
+    if (action == "collect" or action == "loot" or action == "item" or action == "gather")
+        and text(stop.targetName) and text(stop.targetName) ~= facts.item
+        and hint == ("Collect from " .. text(stop.targetName) .. ".") then return hint end
+    return
+end
+
+local function meaningfulDecision(decision)
+    if not decision then return end
+    local generic = {
+        ["quest-objective"] = true, ["level-work"] = true,
+        ["selected-guide"] = true, ["guide-status"] = true,
+    }
+    if not generic[decision.code] then return decision.why end
 end
 
 function ns.StopLocationText(stop, mapID)
@@ -216,16 +246,12 @@ function ns.GuideStepDescription(stop, facts, guide, route)
     if groupWarning then parts[#parts + 1] = groupWarning end
     if facts.progress then parts[#parts + 1] = "Progress: " .. facts.progress end
     if text(facts.stop.forPlayer) then parts[#parts + 1] = "For " .. text(facts.stop.forPlayer) end
-    parts[#parts + 1] = ns.GuideStepHint(stop, facts)
-    if stop.goal then
-        local purpose = ns.GuideDestinationPurpose(stop, nil, nil, guide, route)
-        if purpose then parts[#parts + 1] = purpose end
-    else
-        local decision = ns.GuideDestinationDecision(stop, guide, route)
-        local reason = decision.why
-        if reason then parts[#parts + 1] = reason end
-        if decision.caution then parts[#parts + 1] = decision.caution end
-    end
+    local hint = compactStepHint(facts.stop, facts)
+    if hint then parts[#parts + 1] = hint end
+    local decision = ns.GuideDestinationDecision(stop, guide, route)
+    local reason = meaningfulDecision(decision)
+    if reason then parts[#parts + 1] = reason end
+    if decision.caution and decision.caution ~= reason then parts[#parts + 1] = decision.caution end
     parts[#parts + 1] = ns.StopLocationText(stop)
     local quest = ns.CatalogueQuest(facts.stop.id)
     if quest then

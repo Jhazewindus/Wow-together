@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 class AzsharaCoverageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.catalogue = own_lua(ROOT / 'WowTogether/QuestCatalogue.lua', 'catalogue')
+        cls.catalogue = own_lua(ROOT / 'WowTogether_QuestData/QuestCatalogue.lua', 'catalogue')
         cls.quests = cls.catalogue['quests']
 
     def test_hydraxian_prerequisite_chain_is_explicit(self):

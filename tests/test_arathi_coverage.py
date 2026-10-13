@@ -15,7 +15,7 @@ from import_warcraftdb import apply_stage_corrections
 class ArathiCoverageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.records = own_lua(ROOT / 'WowTogether/QuestCatalogue.lua', 'catalogue')['quests']
+        cls.records = own_lua(ROOT / 'WowTogether_QuestData/QuestCatalogue.lua', 'catalogue')['quests']
         cls.source_facts = json.loads((ROOT / 'research/arathi-highlands-2026-10-10/source-facts.json').read_text())
 
     def test_anyone_can_cook_retains_all_verified_ogre_sources(self):

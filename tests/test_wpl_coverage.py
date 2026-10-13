@@ -15,7 +15,7 @@ from import_warcraftdb import apply_stage_corrections
 class WplCoverageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.quests=own_lua(ROOT/'WowTogether/QuestCatalogue.lua','catalogue')['quests']
+        cls.quests=own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','catalogue')['quests']
 
     def test_cauldron_returns_deliver_supplied_bottles_and_keep_faction_destinations(self):
         for ident,parent,item,receiver,side in [(5223,5222,13192,11053,'Alliance'),(5232,5231,13191,11055,'Horde'),(5234,5233,13192,11055,'Horde'),(5236,5235,13193,11055,'Horde')]:

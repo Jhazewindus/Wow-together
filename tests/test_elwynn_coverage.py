@@ -31,7 +31,7 @@ def client(class_id=1, level=10):
 class ElwynnFactsTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.quests = own_lua(ROOT / 'WowTogether/QuestCatalogue.lua', 'catalogue')['quests']
+        cls.quests = own_lua(ROOT / 'WowTogether_QuestData/QuestCatalogue.lua', 'catalogue')['quests']
 
     def test_supplied_letters_keep_handin_items_and_mapped_speech(self):
         for ident, item in ((2205, 7674), (3100, 9542), (3102, 9555)):

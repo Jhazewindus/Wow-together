@@ -7,7 +7,7 @@ sys.path.insert(0,str(ROOT/'tools'));from build_quest_dataset import own_lua
 from import_warcraftdb import apply_stage_corrections
 class DustwallowCoverageTests(unittest.TestCase):
  @classmethod
- def setUpClass(cls):cls.q=own_lua(ROOT/'WowTogether/QuestCatalogue.lua','catalogue')['quests']
+ def setUpClass(cls):cls.q=own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','catalogue')['quests']
  def test_faction_object_pickups_preserve_real_recipients(self):
   for a,h,obj,an,hn in [(1219,1238,20985,4947,4791),(1253,1251,20992,4944,4926),(1252,1269,21042,4944,4926),(1284,1268,21015,4944,4926)]:
    for i,faction,npc in [(a,'Alliance',an),(h,'Horde',hn)]:

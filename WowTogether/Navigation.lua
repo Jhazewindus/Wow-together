@@ -122,8 +122,9 @@ function ns.RouteContext(stop, mapID, facts, travelDistance)
         facts.lowerLevelClassQuest = ns.IsClassQuest(stop.id)
     end
     local groupWarning = ns.QuestGroupWarning(stop.id)
-    if groupWarning then reason = groupWarning .. " " .. reason end
-    return reason .. "\n" .. context
+    if groupWarning then reason = reason and (groupWarning .. " " .. reason) or groupWarning end
+    local sourceHint = stop.kind == "q" and stop.clientLocation and "Quest tracker marked area." or nil
+    return (reason and (reason .. "\n") or "") .. (sourceHint and (sourceHint .. "\n") or "") .. context
 end
 
 function ns.NavigationState()

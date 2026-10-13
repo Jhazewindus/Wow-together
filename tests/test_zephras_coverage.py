@@ -8,7 +8,7 @@ sys.path.insert(0,str(ROOT/'tools'));from build_quest_dataset import own_lua
 from import_warcraftdb import apply_stage_corrections
 class ZephrasCoverageTests(unittest.TestCase):
  @classmethod
- def setUpClass(cls):cls.q=own_lua(ROOT/'WowTogether/QuestCatalogue.lua','catalogue')['quests']
+ def setUpClass(cls):cls.q=own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','catalogue')['quests']
  def test_racial_use_names_are_abilities_without_invented_item_spell_or_count(self):
   for i,race,ability,obj in [(92597,95,'Read Ley Line',450002),(92598,96,'Skysight',450001)]:
    q=self.q[i];self.assertEqual(q['allowedRaceIDs'],[race]);self.assertEqual(q['classMask'],0);self.assertFalse(q.get('providedItems'));self.assertFalse(q.get('requiredItems'));p=q['objectives'][0]

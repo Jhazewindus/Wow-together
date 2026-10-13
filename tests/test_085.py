@@ -79,6 +79,17 @@ class GuideTextTests(unittest.TestCase):
         self.assertEqual(c.ns.GuideStepAction(stop), 'Buy 8 × Apple')
         self.assertIn('vendor', c.ns.GuideStepHint(stop))
 
+    def test_objective_hover_keeps_the_action_and_drops_generic_repeated_filler(self):
+        c = route_client()
+        stop = step(c)
+        description = c.ns.GuideStepDescription(stop)
+        self.assertEqual(description.count('Loot 8 × Boar Flank'), 1)
+        self.assertNotIn('Kill and loot Battleboar', description)
+        self.assertNotIn('Boar Flank is needed to finish Supplies', description)
+        stop.action = 'gather'; stop.targetName = 'Apple tree'; stop.itemName = 'Apple'
+        description = c.ns.GuideStepDescription(stop)
+        self.assertIn('Collect from Apple tree.', description)
+
     def test_accept_and_turn_in_name_the_npc_and_preserve_the_quest_on_hover(self):
         c = route_client()
         for kind, action, full in [('a', 'Accept from Gornek', 'Accept Cutting Teeth from Gornek'),
@@ -142,7 +153,7 @@ class GuideTextTests(unittest.TestCase):
         self.assertEqual(c.ns.navigation.status.text, 'Loot 5 more Boar Flank')
         self.assertEqual(c.ns.navigation.distance.text, '100 yd • 3/8 • ~0m 14s travel')
         self.assertEqual(c.ns.navigation.context.text.splitlines(),
-                         ['Boar Flank is needed to finish Supplies. Kill and loot Battleboar.', 'Test Coast • 21.0, 27.0'])
+                         ['Test Coast • 21.0, 27.0'])
         self.assertEqual(c.ns.selectedRoute.stops[1].x, .21)
 
     def test_pending_step_keeps_its_facts_and_blocking_reason(self):

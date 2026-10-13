@@ -1,5 +1,31 @@
 # Wow Together changelog
 
+## 0.8.69
+
+**GUIDE PERFORMANCE AND DATA COVERAGE**
+
+- Coalesce overlapping background route/progress refresh requests over a short
+  window while keeping direct UI actions synchronous. Hidden dashboard rendering
+  remains deferred.
+- Poll outdoor dungeon-approach maps at an adaptive rate: idle checks slow down,
+  while a visible live map updates five times per second.
+- Package the quest, profession and dungeon reference tables as matching
+  load-on-demand sibling addons. Keep small quest-catalogue summary metadata
+  available without loading its records. A route can use native waypoints first
+  and defer offline data until a fallback is needed.
+- Add evidence confidence to route reasoning. Long detours with incomplete
+  location/pickup evidence now ask the player to confirm before travelling.
+- Report guide coverage for pickups, complete objective locations, turn-ins,
+  verified prerequisite data and fully located quests in `/wt probe` and the
+  generated audit. Coverage is descriptive; it does not claim complete sources.
+- Integrate the latest Durotar, Hillsbrad Foothills and Barrens player-text
+  audits. Their common issue was repeated action text from shared rendering, so
+  objective tooltips now keep concise actions while retaining meaningful chain
+  and travel reasons across all guides. The audit records are in `research/`.
+- Update installation and friend-check instructions for all four sibling
+  folders. Host checks cover the new loading boundaries and calculations;
+  actual beta memory and map behavior still need live testing.
+
 ## 0.8.68
 
 **DUNGEON JOURNAL FACT UPDATES**

@@ -236,7 +236,8 @@ end
 function ns.GuideDestinationDecision(stop, guide, route)
     if stop and stop.flightDiscovery then
         local decision = result("flight-check", ns.TravelPathSummary(stop) or "Check the nearer flight master's connections.", true)
-        decision.estimated = true; return decision
+        decision.estimated, decision.confidence = true, "estimated"
+        return decision
     end
     local goal = ns.GuideDestination(stop)
     if goal.inventoryService then return result("service", goal.serviceReason, true) end
@@ -250,6 +251,7 @@ function ns.GuideDestinationDecision(stop, guide, route)
     end
     decision.needsReview = not decision.specificBenefit or goal.unknownLocation == true or goal.planNeedsReview == true
         or quest and quest.prerequisitesUnverified == true or false
+    decision.confidence = decision.needsReview and "review" or "supported"
     if goal.unknownLocation and not goal.professionStep then decision.caution = "Exact destination not mapped; check the quest tracker."
     elseif goal.kind == "a" and quest and (not quest.prerequisitesRead or quest.prerequisitesUnverified or goal.planNeedsReview)
         and ns.PickupOfferEvidence(goal.memberKey or ns.self, goal.id) ~= true then
@@ -269,13 +271,23 @@ function ns.GuideVisibleReason(stop, mapID, distance, guide, route)
     local long = ns.GuideInteger(mapID) and mapID > 0 and ns.GuideInteger(goal.mapID) and goal.mapID > 0 and mapID ~= goal.mapID
         or ns.Public(distance) and type(distance) == "number" and distance >= 1000
     local why = decision.why
-    if long and (decision.code == "level-work" or decision.code == "selected-guide") then
-        why = why .. " No special unlock is known; use Skip quest if this detour isn't worth it."
+    if decision.code == "quest-objective" and long then
+        why = "This objective advances " .. (text(goal.title) or "the selected quest") .. "."
+    elseif not long and (decision.code == "quest-objective"
+        or decision.code == "selected-guide" or decision.code == "guide-status") then
+        why = nil
     end
-    if decision.caution then why = why .. " " .. decision.caution end
+    if long and decision.confidence == "review" and not decision.caution then
+        why = why .. " Route evidence is incomplete; confirm before making this detour."
+    elseif long and (decision.code == "level-work" or decision.code == "selected-guide") then
+        why = why .. " No special unlock is known; Skip quest if this detour isn't worth it."
+    end
+    if decision.caution and not (why and string.find(why, decision.caution, 1, true)) then
+        why = why and (why .. " " .. decision.caution) or decision.caution
+    end
     local hint = ns.GuideStepHint(goal)
-    if goal.kind == "q" or goal.action == "start-item" or hint == "This quest giver patrols; search nearby." then
-        why = why .. " " .. hint
+    if goal.action == "start-item" or hint == "This quest giver patrols; search nearby." then
+        why = why and (why .. " " .. hint) or hint
     end
     return why
 end

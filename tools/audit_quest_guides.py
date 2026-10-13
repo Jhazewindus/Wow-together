@@ -149,7 +149,13 @@ def audit(zone=None):
                             assert i>0 and plan[i-1].id==s.id and plan[i-1].kind in ('a','q'),(key,s.id,'escort adjacency')
                     unknown=sum(bool(s.unknownLocation) for s in plan)
                     review=sum(bool(s.planNeedsReview) for s in plan)
+                    coverage=c.ns.GuideLocationCoverage(g.records)
+                    coverage_values={key:int(coverage[key]) for key in ('quests','pickups','objectives','completeObjectives',
+                        'turnins','details','fullyLocated')}
+                    coverage_values['percent']={key:round(coverage_values[key]*100/coverage_values['quests'],1)
+                        if coverage_values['quests'] else 0 for key in ('pickups','objectives','completeObjectives','turnins','details','fullyLocated')}
                     guides.append({'faction':faction,'zone':g.zone,'key':g.key,'quests':len(kinds),'steps':len(plan),
+                        'location_coverage':coverage_values,
                         'unknown_location_steps':unknown, 'missing_location_quest_ids_by_stage':gaps,
                         'unverified_pickup_requirement_quest_ids':unread,
                         'unverified_objective_quantity_quest_ids':unknown_counts,

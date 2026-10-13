@@ -59,6 +59,10 @@ class UnitNumbersTests(unittest.TestCase):
 
 
 class ApproachMapTests(unittest.TestCase):
+    def test_polling_slows_when_idle_and_runs_five_times_per_second_when_visible(self):
+        idle = Client(use_catalogue=True, before_load=CVARS + world_api(9999, continent=99))
+        self.assertEqual(idle.ns.CheckApproachMap(), 2.5)
+
     def test_live_position_tracks_original_tile_map_and_closes_when_player_leaves(self):
         c = Client(use_catalogue=True, before_load=CVARS + world_api(1413))
         ns = c.ns
@@ -81,7 +85,8 @@ class ApproachMapTests(unittest.TestCase):
         frame.Hide(frame)
         frame.dismissed = None
         frame.model = None
-        ns.CheckApproachMap()
+        interval = ns.CheckApproachMap()
+        self.assertEqual(interval, .2)
         self.assertTrue(frame.IsShown(frame))
         self.assertTrue(frame.marker.IsShown(frame.marker))
         self.assertGreater(len(frame.tiles), 0)
@@ -98,8 +103,9 @@ class ApproachMapTests(unittest.TestCase):
         ns.CheckApproachMap()
         self.assertNotEqual((first[4], first[5]), (frame.marker.point[4], frame.marker.point[5]))
         c.lua.globals().worldX += 5000
-        ns.CheckApproachMap()
+        interval = ns.CheckApproachMap()
         self.assertFalse(frame.IsShown(frame))
+        self.assertEqual(interval, .8)
 
     def test_approach_option_disables_automatic_and_manual_maps(self):
         c = Client(use_catalogue=True, before_load=CVARS + world_api(1413))

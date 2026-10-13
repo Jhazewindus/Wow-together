@@ -9,7 +9,7 @@ from build_quest_dataset import own_lua
 from import_warcraftdb import apply_stage_corrections
 class TeldrassilCoverageTests(unittest.TestCase):
  @classmethod
- def setUpClass(cls):cls.q=own_lua(ROOT/'WowTogether/QuestCatalogue.lua','catalogue')['quests']
+ def setUpClass(cls):cls.q=own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','catalogue')['quests']
  def test_seed_and_heart_delivery_keeps_handin_without_duplicate_farming(self):
   for i,item in [(922,5168),(927,5179)]:
    q=self.q[i];self.assertFalse(q['requirements']);self.assertFalse(q['objectives']);self.assertEqual(q['requiredItems'][0]['itemID'],item);self.assertEqual(q['providedItems'][0]['entityID'],item)

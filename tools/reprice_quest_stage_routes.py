@@ -24,12 +24,12 @@ def compare(before, after):
                 'travel_network_sha256', 'terrain_geometry_sha256'):
         if before.get(key) != after.get(key):
             raise ValueError('Comparison changed more than stage facts: ' + key)
-    for key, file in (('catalogue_sha256', 'QuestCatalogue.lua'), ('travel_sha256', 'TravelData.lua'),
+    for key, file in (('catalogue_sha256', '../WowTogether_QuestData/QuestCatalogue.lua'), ('travel_sha256', 'TravelData.lua'),
                       ('terrain_data_sha256', 'TravelTerrainData.lua'), ('flow_module_sha256', 'QuestFlow.lua'),
                       ('optimizer_module_sha256', 'FixedRouteOptimizer.lua'), ('fixed_guides_sha256', 'FixedGuides.lua'),
                       ('fixed_travel_cost_sha256', 'FixedTravelCost.lua'), ('travel_network_sha256', 'TravelNetwork.lua'),
                       ('terrain_geometry_sha256', 'TravelTerrain.lua')):
-        if after[key] != hashlib.sha256((ROOT / 'WowTogether' / file).read_bytes()).hexdigest():
+        if after[key] != hashlib.sha256((ROOT / 'WowTogether' / file).resolve().read_bytes()).hexdigest():
             raise ValueError('Candidate capture does not match current source: ' + file)
     prior = {(g['faction'], g['key']): g for g in before['guides']}
     current = {(g['faction'], g['key']): g for g in after['guides']}

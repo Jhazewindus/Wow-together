@@ -14,7 +14,7 @@ from import_warcraftdb import apply_stage_corrections
 class EasternPlaguelandsCoverageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.quests = own_lua(ROOT / 'WowTogether/QuestCatalogue.lua', 'catalogue')['quests']
+        cls.quests = own_lua(ROOT / 'WowTogether_QuestData/QuestCatalogue.lua', 'catalogue')['quests']
         cls.corrections = json.loads((ROOT / 'tools/quest_corrections.json').read_text())
 
     def test_preparation_inputs_are_not_reported_as_final_handins(self):

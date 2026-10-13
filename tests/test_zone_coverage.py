@@ -25,7 +25,7 @@ class ZoneCoverageTests(unittest.TestCase):
         if not cls.output.exists():
             raise AssertionError(cls.completed.stdout + cls.completed.stderr)
         cls.report = json.loads(cls.output.read_text())
-        cls.quests = own_lua(ROOT / 'WowTogether/QuestCatalogue.lua', 'catalogue')['quests']
+        cls.quests = own_lua(ROOT / 'WowTogether_QuestData/QuestCatalogue.lua', 'catalogue')['quests']
         cls.review = json.loads((ROOT / 'research/2026-10-08-dun-morogh-review.json').read_text())
 
     def test_one_zone_compiles_both_chapters_without_claiming_completeness(self):

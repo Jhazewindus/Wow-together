@@ -5101,6 +5101,23 @@
       "key": "level-zone:eastern-kingdoms/alterac-mountains:levels:31-40",
       "quests": 14,
       "steps": 44,
+      "location_coverage": {
+        "quests": 14,
+        "pickups": 14,
+        "objectives": 6,
+        "completeObjectives": 14,
+        "turnins": 14,
+        "details": 14,
+        "fullyLocated": 14,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 42.9,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -5138,6 +5155,23 @@
       "key": "level-zone:eastern-kingdoms/arathi-highlands:levels:31-40",
       "quests": 25,
       "steps": 87,
+      "location_coverage": {
+        "quests": 25,
+        "pickups": 24,
+        "objectives": 16,
+        "completeObjectives": 25,
+        "turnins": 25,
+        "details": 25,
+        "fullyLocated": 24,
+        "percent": {
+          "pickups": 96.0,
+          "objectives": 64.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 96.0
+        }
+      },
       "unknown_location_steps": 1,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -5176,6 +5210,23 @@
       "key": "level-zone:eastern-kingdoms/arathi-highlands:levels:41-50",
       "quests": 14,
       "steps": 46,
+      "location_coverage": {
+        "quests": 14,
+        "pickups": 14,
+        "objectives": 8,
+        "completeObjectives": 14,
+        "turnins": 14,
+        "details": 14,
+        "fullyLocated": 14,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 57.1,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -5211,6 +5262,23 @@
       "key": "level-zone:kalimdor/ashenvale:levels:11-20",
       "quests": 14,
       "steps": 43,
+      "location_coverage": {
+        "quests": 14,
+        "pickups": 14,
+        "objectives": 9,
+        "completeObjectives": 14,
+        "turnins": 14,
+        "details": 12,
+        "fullyLocated": 14,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 64.3,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 85.7,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -5249,6 +5317,23 @@
       "key": "level-zone:kalimdor/ashenvale:levels:21-30",
       "quests": 40,
       "steps": 129,
+      "location_coverage": {
+        "quests": 40,
+        "pickups": 39,
+        "objectives": 20,
+        "completeObjectives": 35,
+        "turnins": 39,
+        "details": 40,
+        "fullyLocated": 35,
+        "percent": {
+          "pickups": 97.5,
+          "objectives": 50.0,
+          "completeObjectives": 87.5,
+          "turnins": 97.5,
+          "details": 100.0,
+          "fullyLocated": 87.5
+        }
+      },
       "unknown_location_steps": 7,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -5294,6 +5379,23 @@
       "key": "level-zone:kalimdor/ashenvale:levels:31-40",
       "quests": 7,
       "steps": 24,
+      "location_coverage": {
+        "quests": 7,
+        "pickups": 7,
+        "objectives": 5,
+        "completeObjectives": 7,
+        "turnins": 7,
+        "details": 5,
+        "fullyLocated": 7,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 71.4,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 71.4,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -5331,6 +5433,23 @@
       "key": "level-zone:kalimdor/azshara:levels:41-50",
       "quests": 3,
       "steps": 12,
+      "location_coverage": {
+        "quests": 3,
+        "pickups": 2,
+        "objectives": 3,
+        "completeObjectives": 3,
+        "turnins": 2,
+        "details": 3,
+        "fullyLocated": 2,
+        "percent": {
+          "pickups": 66.7,
+          "objectives": 100.0,
+          "completeObjectives": 100.0,
+          "turnins": 66.7,
+          "details": 100.0,
+          "fullyLocated": 66.7
+        }
+      },
       "unknown_location_steps": 2,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -5369,6 +5488,23 @@
       "key": "level-zone:kalimdor/azshara:levels:51-60",
       "quests": 24,
       "steps": 87,
+      "location_coverage": {
+        "quests": 24,
+        "pickups": 24,
+        "objectives": 10,
+        "completeObjectives": 21,
+        "turnins": 24,
+        "details": 22,
+        "fullyLocated": 21,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 41.7,
+          "completeObjectives": 87.5,
+          "turnins": 100.0,
+          "details": 91.7,
+          "fullyLocated": 87.5
+        }
+      },
       "unknown_location_steps": 9,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -5411,6 +5547,23 @@
       "key": "level-zone:eastern-kingdoms/badlands:levels:31-40",
       "quests": 20,
       "steps": 63,
+      "location_coverage": {
+        "quests": 20,
+        "pickups": 19,
+        "objectives": 11,
+        "completeObjectives": 20,
+        "turnins": 20,
+        "details": 19,
+        "fullyLocated": 19,
+        "percent": {
+          "pickups": 95.0,
+          "objectives": 55.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 95.0,
+          "fullyLocated": 95.0
+        }
+      },
       "unknown_location_steps": 1,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -5452,6 +5605,23 @@
       "key": "level-zone:eastern-kingdoms/badlands:levels:41-50",
       "quests": 27,
       "steps": 87,
+      "location_coverage": {
+        "quests": 27,
+        "pickups": 27,
+        "objectives": 16,
+        "completeObjectives": 26,
+        "turnins": 27,
+        "details": 27,
+        "fullyLocated": 26,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 59.3,
+          "completeObjectives": 96.3,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 96.3
+        }
+      },
       "unknown_location_steps": 1,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -5489,6 +5659,23 @@
       "key": "level-zone:eastern-kingdoms/blasted-lands:levels:41-50",
       "quests": 5,
       "steps": 23,
+      "location_coverage": {
+        "quests": 5,
+        "pickups": 5,
+        "objectives": 5,
+        "completeObjectives": 5,
+        "turnins": 5,
+        "details": 5,
+        "fullyLocated": 5,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 100.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -5524,6 +5711,23 @@
       "key": "level-zone:eastern-kingdoms/blasted-lands:levels:51-60",
       "quests": 23,
       "steps": 76,
+      "location_coverage": {
+        "quests": 23,
+        "pickups": 23,
+        "objectives": 13,
+        "completeObjectives": 23,
+        "turnins": 23,
+        "details": 23,
+        "fullyLocated": 23,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 56.5,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -5560,6 +5764,23 @@
       "key": "level-zone:eastern-kingdoms/burning-steppes:levels:51-60",
       "quests": 34,
       "steps": 112,
+      "location_coverage": {
+        "quests": 34,
+        "pickups": 34,
+        "objectives": 20,
+        "completeObjectives": 30,
+        "turnins": 34,
+        "details": 32,
+        "fullyLocated": 30,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 58.8,
+          "completeObjectives": 88.2,
+          "turnins": 100.0,
+          "details": 94.1,
+          "fullyLocated": 88.2
+        }
+      },
       "unknown_location_steps": 4,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -5604,6 +5825,23 @@
       "key": "level-zone:kalimdor/darkshore:levels:1-10",
       "quests": 8,
       "steps": 24,
+      "location_coverage": {
+        "quests": 8,
+        "pickups": 8,
+        "objectives": 2,
+        "completeObjectives": 8,
+        "turnins": 8,
+        "details": 8,
+        "fullyLocated": 8,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 25.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -5642,6 +5880,23 @@
       "key": "level-zone:kalimdor/darkshore:levels:11-20",
       "quests": 72,
       "steps": 225,
+      "location_coverage": {
+        "quests": 72,
+        "pickups": 72,
+        "objectives": 51,
+        "completeObjectives": 70,
+        "turnins": 72,
+        "details": 71,
+        "fullyLocated": 70,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 70.8,
+          "completeObjectives": 97.2,
+          "turnins": 100.0,
+          "details": 98.6,
+          "fullyLocated": 97.2
+        }
+      },
       "unknown_location_steps": 2,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -5687,6 +5942,23 @@
       "key": "level-zone:kalimdor/darkshore:levels:21-30",
       "quests": 13,
       "steps": 41,
+      "location_coverage": {
+        "quests": 13,
+        "pickups": 13,
+        "objectives": 8,
+        "completeObjectives": 13,
+        "turnins": 13,
+        "details": 12,
+        "fullyLocated": 13,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 61.5,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 92.3,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -5724,6 +5996,23 @@
       "key": "level-zone:kalimdor/darkshore:levels:31-40",
       "quests": 9,
       "steps": 28,
+      "location_coverage": {
+        "quests": 9,
+        "pickups": 9,
+        "objectives": 5,
+        "completeObjectives": 9,
+        "turnins": 9,
+        "details": 9,
+        "fullyLocated": 9,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 55.6,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -5758,6 +6047,23 @@
       "key": "level-zone:eastern-kingdoms/deeprun-tram:levels:11-20",
       "quests": 2,
       "steps": 6,
+      "location_coverage": {
+        "quests": 2,
+        "pickups": 2,
+        "objectives": 0,
+        "completeObjectives": 1,
+        "turnins": 2,
+        "details": 2,
+        "fullyLocated": 1,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 0.0,
+          "completeObjectives": 50.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 50.0
+        }
+      },
       "unknown_location_steps": 1,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -5794,6 +6100,23 @@
       "key": "level-zone:kalimdor/desolace:levels:31-40",
       "quests": 46,
       "steps": 150,
+      "location_coverage": {
+        "quests": 46,
+        "pickups": 43,
+        "objectives": 28,
+        "completeObjectives": 39,
+        "turnins": 43,
+        "details": 32,
+        "fullyLocated": 37,
+        "percent": {
+          "pickups": 93.5,
+          "objectives": 60.9,
+          "completeObjectives": 84.8,
+          "turnins": 93.5,
+          "details": 69.6,
+          "fullyLocated": 80.4
+        }
+      },
       "unknown_location_steps": 14,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -5861,6 +6184,23 @@
       "key": "level-zone:kalimdor/desolace:levels:41-50",
       "quests": 16,
       "steps": 53,
+      "location_coverage": {
+        "quests": 16,
+        "pickups": 16,
+        "objectives": 10,
+        "completeObjectives": 13,
+        "turnins": 15,
+        "details": 6,
+        "fullyLocated": 12,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 62.5,
+          "completeObjectives": 81.2,
+          "turnins": 93.8,
+          "details": 37.5,
+          "fullyLocated": 75.0
+        }
+      },
       "unknown_location_steps": 4,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -5912,6 +6252,23 @@
       "key": "level-zone:eastern-kingdoms/dun-morogh:levels:1-10",
       "quests": 47,
       "steps": 151,
+      "location_coverage": {
+        "quests": 47,
+        "pickups": 47,
+        "objectives": 27,
+        "completeObjectives": 46,
+        "turnins": 47,
+        "details": 46,
+        "fullyLocated": 46,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 57.4,
+          "completeObjectives": 97.9,
+          "turnins": 100.0,
+          "details": 97.9,
+          "fullyLocated": 97.9
+        }
+      },
       "unknown_location_steps": 1,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -5957,6 +6314,23 @@
       "key": "level-zone:eastern-kingdoms/dun-morogh:levels:11-20",
       "quests": 10,
       "steps": 30,
+      "location_coverage": {
+        "quests": 10,
+        "pickups": 9,
+        "objectives": 6,
+        "completeObjectives": 10,
+        "turnins": 10,
+        "details": 10,
+        "fullyLocated": 9,
+        "percent": {
+          "pickups": 90.0,
+          "objectives": 60.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 90.0
+        }
+      },
       "unknown_location_steps": 1,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -5994,6 +6368,23 @@
       "key": "level-zone:kalimdor/durotar:levels:1-10",
       "quests": 4,
       "steps": 13,
+      "location_coverage": {
+        "quests": 4,
+        "pickups": 3,
+        "objectives": 2,
+        "completeObjectives": 4,
+        "turnins": 3,
+        "details": 4,
+        "fullyLocated": 3,
+        "percent": {
+          "pickups": 75.0,
+          "objectives": 50.0,
+          "completeObjectives": 100.0,
+          "turnins": 75.0,
+          "details": 100.0,
+          "fullyLocated": 75.0
+        }
+      },
       "unknown_location_steps": 3,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -6036,6 +6427,23 @@
       "key": "level-zone:kalimdor/durotar:levels:11-20",
       "quests": 3,
       "steps": 10,
+      "location_coverage": {
+        "quests": 3,
+        "pickups": 3,
+        "objectives": 2,
+        "completeObjectives": 3,
+        "turnins": 3,
+        "details": 3,
+        "fullyLocated": 3,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 66.7,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -6072,6 +6480,23 @@
       "key": "level-zone:eastern-kingdoms/duskwood:levels:11-20",
       "quests": 4,
       "steps": 12,
+      "location_coverage": {
+        "quests": 4,
+        "pickups": 4,
+        "objectives": 1,
+        "completeObjectives": 4,
+        "turnins": 4,
+        "details": 4,
+        "fullyLocated": 4,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 25.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -6107,6 +6532,23 @@
       "key": "level-zone:eastern-kingdoms/duskwood:levels:21-30",
       "quests": 79,
       "steps": 250,
+      "location_coverage": {
+        "quests": 79,
+        "pickups": 78,
+        "objectives": 34,
+        "completeObjectives": 71,
+        "turnins": 78,
+        "details": 78,
+        "fullyLocated": 70,
+        "percent": {
+          "pickups": 98.7,
+          "objectives": 43.0,
+          "completeObjectives": 89.9,
+          "turnins": 98.7,
+          "details": 98.7,
+          "fullyLocated": 88.6
+        }
+      },
       "unknown_location_steps": 10,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -6158,6 +6600,23 @@
       "key": "level-zone:eastern-kingdoms/duskwood:levels:31-40",
       "quests": 37,
       "steps": 114,
+      "location_coverage": {
+        "quests": 37,
+        "pickups": 37,
+        "objectives": 10,
+        "completeObjectives": 37,
+        "turnins": 37,
+        "details": 36,
+        "fullyLocated": 37,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 27.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 97.3,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -6196,6 +6655,23 @@
       "key": "level-zone:eastern-kingdoms/duskwood:levels:41-50",
       "quests": 2,
       "steps": 6,
+      "location_coverage": {
+        "quests": 2,
+        "pickups": 2,
+        "objectives": 0,
+        "completeObjectives": 2,
+        "turnins": 2,
+        "details": 2,
+        "fullyLocated": 2,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 0.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -6231,6 +6707,23 @@
       "key": "level-zone:kalimdor/dustwallow-marsh:levels:11-20",
       "quests": 2,
       "steps": 6,
+      "location_coverage": {
+        "quests": 2,
+        "pickups": 2,
+        "objectives": 0,
+        "completeObjectives": 2,
+        "turnins": 2,
+        "details": 2,
+        "fullyLocated": 2,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 0.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -6266,6 +6759,23 @@
       "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
       "quests": 35,
       "steps": 106,
+      "location_coverage": {
+        "quests": 35,
+        "pickups": 34,
+        "objectives": 12,
+        "completeObjectives": 34,
+        "turnins": 34,
+        "details": 33,
+        "fullyLocated": 33,
+        "percent": {
+          "pickups": 97.1,
+          "objectives": 34.3,
+          "completeObjectives": 97.1,
+          "turnins": 97.1,
+          "details": 94.3,
+          "fullyLocated": 94.3
+        }
+      },
       "unknown_location_steps": 4,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -6313,6 +6823,23 @@
       "key": "level-zone:eastern-kingdoms/eastern-plaguelands:levels:51-60",
       "quests": 64,
       "steps": 217,
+      "location_coverage": {
+        "quests": 64,
+        "pickups": 62,
+        "objectives": 33,
+        "completeObjectives": 52,
+        "turnins": 64,
+        "details": 47,
+        "fullyLocated": 51,
+        "percent": {
+          "pickups": 96.9,
+          "objectives": 51.6,
+          "completeObjectives": 81.2,
+          "turnins": 100.0,
+          "details": 73.4,
+          "fullyLocated": 79.7
+        }
+      },
       "unknown_location_steps": 17,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -6384,6 +6911,23 @@
       "key": "level-zone:eastern-kingdoms/elwynn-forest:levels:1-10",
       "quests": 98,
       "steps": 301,
+      "location_coverage": {
+        "quests": 98,
+        "pickups": 97,
+        "objectives": 43,
+        "completeObjectives": 97,
+        "turnins": 97,
+        "details": 90,
+        "fullyLocated": 96,
+        "percent": {
+          "pickups": 99.0,
+          "objectives": 43.9,
+          "completeObjectives": 99.0,
+          "turnins": 99.0,
+          "details": 91.8,
+          "fullyLocated": 98.0
+        }
+      },
       "unknown_location_steps": 4,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -6440,6 +6984,23 @@
       "key": "level-zone:kalimdor/felwood:levels:41-50",
       "quests": 3,
       "steps": 13,
+      "location_coverage": {
+        "quests": 3,
+        "pickups": 2,
+        "objectives": 2,
+        "completeObjectives": 3,
+        "turnins": 2,
+        "details": 3,
+        "fullyLocated": 2,
+        "percent": {
+          "pickups": 66.7,
+          "objectives": 66.7,
+          "completeObjectives": 100.0,
+          "turnins": 66.7,
+          "details": 100.0,
+          "fullyLocated": 66.7
+        }
+      },
       "unknown_location_steps": 2,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -6479,6 +7040,23 @@
       "key": "level-zone:kalimdor/felwood:levels:51-60",
       "quests": 41,
       "steps": 146,
+      "location_coverage": {
+        "quests": 41,
+        "pickups": 40,
+        "objectives": 27,
+        "completeObjectives": 34,
+        "turnins": 41,
+        "details": 34,
+        "fullyLocated": 34,
+        "percent": {
+          "pickups": 97.6,
+          "objectives": 65.9,
+          "completeObjectives": 82.9,
+          "turnins": 100.0,
+          "details": 82.9,
+          "fullyLocated": 82.9
+        }
+      },
       "unknown_location_steps": 9,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -6534,6 +7112,23 @@
       "key": "level-zone:kalimdor/feralas:levels:41-50",
       "quests": 41,
       "steps": 127,
+      "location_coverage": {
+        "quests": 41,
+        "pickups": 41,
+        "objectives": 16,
+        "completeObjectives": 33,
+        "turnins": 41,
+        "details": 41,
+        "fullyLocated": 33,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 39.0,
+          "completeObjectives": 80.5,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 80.5
+        }
+      },
       "unknown_location_steps": 8,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -6580,6 +7175,23 @@
       "key": "level-zone:eastern-kingdoms/hillsbrad-foothills:levels:21-30",
       "quests": 8,
       "steps": 27,
+      "location_coverage": {
+        "quests": 8,
+        "pickups": 8,
+        "objectives": 3,
+        "completeObjectives": 6,
+        "turnins": 8,
+        "details": 8,
+        "fullyLocated": 6,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 37.5,
+          "completeObjectives": 75.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 75.0
+        }
+      },
       "unknown_location_steps": 3,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -6618,6 +7230,23 @@
       "key": "level-zone:eastern-kingdoms/hillsbrad-foothills:levels:31-40",
       "quests": 14,
       "steps": 49,
+      "location_coverage": {
+        "quests": 14,
+        "pickups": 14,
+        "objectives": 8,
+        "completeObjectives": 13,
+        "turnins": 14,
+        "details": 14,
+        "fullyLocated": 13,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 57.1,
+          "completeObjectives": 92.9,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 92.9
+        }
+      },
       "unknown_location_steps": 2,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -6655,6 +7284,23 @@
       "key": "level-zone:eastern-kingdoms/loch-modan:levels:1-10",
       "quests": 5,
       "steps": 15,
+      "location_coverage": {
+        "quests": 5,
+        "pickups": 5,
+        "objectives": 0,
+        "completeObjectives": 4,
+        "turnins": 5,
+        "details": 5,
+        "fullyLocated": 4,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 0.0,
+          "completeObjectives": 80.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 80.0
+        }
+      },
       "unknown_location_steps": 1,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -6691,6 +7337,23 @@
       "key": "level-zone:eastern-kingdoms/loch-modan:levels:11-20",
       "quests": 38,
       "steps": 129,
+      "location_coverage": {
+        "quests": 38,
+        "pickups": 37,
+        "objectives": 20,
+        "completeObjectives": 38,
+        "turnins": 37,
+        "details": 38,
+        "fullyLocated": 37,
+        "percent": {
+          "pickups": 97.4,
+          "objectives": 52.6,
+          "completeObjectives": 100.0,
+          "turnins": 97.4,
+          "details": 100.0,
+          "fullyLocated": 97.4
+        }
+      },
       "unknown_location_steps": 3,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -6732,6 +7395,23 @@
       "key": "level-zone:eastern-kingdoms/loch-modan:levels:41-50",
       "quests": 2,
       "steps": 6,
+      "location_coverage": {
+        "quests": 2,
+        "pickups": 2,
+        "objectives": 0,
+        "completeObjectives": 2,
+        "turnins": 2,
+        "details": 2,
+        "fullyLocated": 2,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 0.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -6767,6 +7447,23 @@
       "key": "level-zone:kalimdor/moonglade:levels:51-60",
       "quests": 12,
       "steps": 37,
+      "location_coverage": {
+        "quests": 12,
+        "pickups": 12,
+        "objectives": 2,
+        "completeObjectives": 12,
+        "turnins": 12,
+        "details": 9,
+        "fullyLocated": 12,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 16.7,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 75.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -6807,6 +7504,23 @@
       "key": "level-zone:eastern-kingdoms/redridge-mountains:levels:11-20",
       "quests": 23,
       "steps": 74,
+      "location_coverage": {
+        "quests": 23,
+        "pickups": 23,
+        "objectives": 10,
+        "completeObjectives": 23,
+        "turnins": 23,
+        "details": 23,
+        "fullyLocated": 23,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 43.5,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -6843,6 +7557,23 @@
       "key": "level-zone:eastern-kingdoms/redridge-mountains:levels:21-30",
       "quests": 23,
       "steps": 71,
+      "location_coverage": {
+        "quests": 23,
+        "pickups": 23,
+        "objectives": 16,
+        "completeObjectives": 21,
+        "turnins": 23,
+        "details": 22,
+        "fullyLocated": 21,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 69.6,
+          "completeObjectives": 91.3,
+          "turnins": 100.0,
+          "details": 95.7,
+          "fullyLocated": 91.3
+        }
+      },
       "unknown_location_steps": 3,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -6885,6 +7616,23 @@
       "key": "level-zone:eastern-kingdoms/redridge-mountains:levels:51-60",
       "quests": 2,
       "steps": 7,
+      "location_coverage": {
+        "quests": 2,
+        "pickups": 0,
+        "objectives": 1,
+        "completeObjectives": 0,
+        "turnins": 1,
+        "details": 2,
+        "fullyLocated": 0,
+        "percent": {
+          "pickups": 0.0,
+          "objectives": 50.0,
+          "completeObjectives": 0.0,
+          "turnins": 50.0,
+          "details": 100.0,
+          "fullyLocated": 0.0
+        }
+      },
       "unknown_location_steps": 5,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -6927,6 +7675,23 @@
       "key": "level-zone:kalimdor/ruttheran-village:levels:51-60",
       "quests": 4,
       "steps": 12,
+      "location_coverage": {
+        "quests": 4,
+        "pickups": 4,
+        "objectives": 2,
+        "completeObjectives": 4,
+        "turnins": 4,
+        "details": 3,
+        "fullyLocated": 4,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 50.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 75.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -6964,6 +7729,23 @@
       "key": "level-zone:eastern-kingdoms/searing-gorge:levels:41-50",
       "quests": 28,
       "steps": 94,
+      "location_coverage": {
+        "quests": 28,
+        "pickups": 27,
+        "objectives": 19,
+        "completeObjectives": 27,
+        "turnins": 28,
+        "details": 28,
+        "fullyLocated": 26,
+        "percent": {
+          "pickups": 96.4,
+          "objectives": 67.9,
+          "completeObjectives": 96.4,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 92.9
+        }
+      },
       "unknown_location_steps": 2,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -7005,6 +7787,23 @@
       "key": "level-zone:eastern-kingdoms/searing-gorge:levels:51-60",
       "quests": 13,
       "steps": 44,
+      "location_coverage": {
+        "quests": 13,
+        "pickups": 13,
+        "objectives": 9,
+        "completeObjectives": 13,
+        "turnins": 13,
+        "details": 13,
+        "fullyLocated": 13,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 69.2,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -7040,6 +7839,23 @@
       "key": "level-zone:kalimdor/silithus:levels:51-60",
       "quests": 44,
       "steps": 145,
+      "location_coverage": {
+        "quests": 44,
+        "pickups": 44,
+        "objectives": 25,
+        "completeObjectives": 41,
+        "turnins": 44,
+        "details": 34,
+        "fullyLocated": 41,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 56.8,
+          "completeObjectives": 93.2,
+          "turnins": 100.0,
+          "details": 77.3,
+          "fullyLocated": 93.2
+        }
+      },
       "unknown_location_steps": 3,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -7091,6 +7907,23 @@
       "key": "level-zone:kalimdor/stonetalon-mountains:levels:21-30",
       "quests": 28,
       "steps": 90,
+      "location_coverage": {
+        "quests": 28,
+        "pickups": 27,
+        "objectives": 14,
+        "completeObjectives": 26,
+        "turnins": 27,
+        "details": 28,
+        "fullyLocated": 25,
+        "percent": {
+          "pickups": 96.4,
+          "objectives": 50.0,
+          "completeObjectives": 92.9,
+          "turnins": 96.4,
+          "details": 100.0,
+          "fullyLocated": 89.3
+        }
+      },
       "unknown_location_steps": 7,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -7137,6 +7970,23 @@
       "key": "level-zone:kalimdor/stonetalon-mountains:levels:31-40",
       "quests": 2,
       "steps": 6,
+      "location_coverage": {
+        "quests": 2,
+        "pickups": 1,
+        "objectives": 0,
+        "completeObjectives": 2,
+        "turnins": 1,
+        "details": 1,
+        "fullyLocated": 1,
+        "percent": {
+          "pickups": 50.0,
+          "objectives": 0.0,
+          "completeObjectives": 100.0,
+          "turnins": 50.0,
+          "details": 50.0,
+          "fullyLocated": 50.0
+        }
+      },
       "unknown_location_steps": 3,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -7179,6 +8029,23 @@
       "key": "level-zone:eastern-kingdoms/stonewrought-dam:levels:31-40",
       "quests": 2,
       "steps": 6,
+      "location_coverage": {
+        "quests": 2,
+        "pickups": 2,
+        "objectives": 0,
+        "completeObjectives": 2,
+        "turnins": 2,
+        "details": 2,
+        "fullyLocated": 2,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 0.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -7214,6 +8081,23 @@
       "key": "level-zone:eastern-kingdoms/stranglethorn-vale:levels:31-40",
       "quests": 58,
       "steps": 196,
+      "location_coverage": {
+        "quests": 58,
+        "pickups": 54,
+        "objectives": 38,
+        "completeObjectives": 53,
+        "turnins": 53,
+        "details": 54,
+        "fullyLocated": 51,
+        "percent": {
+          "pickups": 93.1,
+          "objectives": 65.5,
+          "completeObjectives": 91.4,
+          "turnins": 91.4,
+          "details": 93.1,
+          "fullyLocated": 87.9
+        }
+      },
       "unknown_location_steps": 18,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -7275,6 +8159,23 @@
       "key": "level-zone:eastern-kingdoms/stranglethorn-vale:levels:41-50",
       "quests": 52,
       "steps": 169,
+      "location_coverage": {
+        "quests": 52,
+        "pickups": 47,
+        "objectives": 39,
+        "completeObjectives": 51,
+        "turnins": 48,
+        "details": 48,
+        "fullyLocated": 46,
+        "percent": {
+          "pickups": 90.4,
+          "objectives": 75.0,
+          "completeObjectives": 98.1,
+          "turnins": 92.3,
+          "details": 92.3,
+          "fullyLocated": 88.5
+        }
+      },
       "unknown_location_steps": 12,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -7331,6 +8232,23 @@
       "key": "level-zone:eastern-kingdoms/stranglethorn-vale:levels:51-60",
       "quests": 27,
       "steps": 87,
+      "location_coverage": {
+        "quests": 27,
+        "pickups": 26,
+        "objectives": 9,
+        "completeObjectives": 26,
+        "turnins": 26,
+        "details": 23,
+        "fullyLocated": 25,
+        "percent": {
+          "pickups": 96.3,
+          "objectives": 33.3,
+          "completeObjectives": 96.3,
+          "turnins": 96.3,
+          "details": 85.2,
+          "fullyLocated": 92.6
+        }
+      },
       "unknown_location_steps": 4,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -7378,6 +8296,23 @@
       "key": "level-zone:eastern-kingdoms/swamp-of-sorrows:levels:31-40",
       "quests": 12,
       "steps": 42,
+      "location_coverage": {
+        "quests": 12,
+        "pickups": 9,
+        "objectives": 7,
+        "completeObjectives": 9,
+        "turnins": 8,
+        "details": 12,
+        "fullyLocated": 7,
+        "percent": {
+          "pickups": 75.0,
+          "objectives": 58.3,
+          "completeObjectives": 75.0,
+          "turnins": 66.7,
+          "details": 100.0,
+          "fullyLocated": 58.3
+        }
+      },
       "unknown_location_steps": 13,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -7427,6 +8362,23 @@
       "key": "level-zone:eastern-kingdoms/swamp-of-sorrows:levels:41-50",
       "quests": 4,
       "steps": 14,
+      "location_coverage": {
+        "quests": 4,
+        "pickups": 4,
+        "objectives": 3,
+        "completeObjectives": 4,
+        "turnins": 4,
+        "details": 4,
+        "fullyLocated": 4,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 75.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -7462,6 +8414,23 @@
       "key": "level-zone:eastern-kingdoms/swamp-of-sorrows:levels:51-60",
       "quests": 3,
       "steps": 9,
+      "location_coverage": {
+        "quests": 3,
+        "pickups": 3,
+        "objectives": 0,
+        "completeObjectives": 2,
+        "turnins": 3,
+        "details": 3,
+        "fullyLocated": 2,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 0.0,
+          "completeObjectives": 66.7,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 66.7
+        }
+      },
       "unknown_location_steps": 1,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -7501,6 +8470,23 @@
       "key": "level-zone:kalimdor/tanaris:levels:41-50",
       "quests": 33,
       "steps": 108,
+      "location_coverage": {
+        "quests": 33,
+        "pickups": 32,
+        "objectives": 20,
+        "completeObjectives": 33,
+        "turnins": 33,
+        "details": 33,
+        "fullyLocated": 32,
+        "percent": {
+          "pickups": 97.0,
+          "objectives": 60.6,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 97.0
+        }
+      },
       "unknown_location_steps": 1,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -7539,6 +8525,23 @@
       "key": "level-zone:kalimdor/tanaris:levels:51-60",
       "quests": 13,
       "steps": 40,
+      "location_coverage": {
+        "quests": 13,
+        "pickups": 13,
+        "objectives": 5,
+        "completeObjectives": 13,
+        "turnins": 13,
+        "details": 13,
+        "fullyLocated": 13,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 38.5,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -7574,6 +8577,23 @@
       "key": "level-zone:kalimdor/teldrassil:levels:1-10",
       "quests": 48,
       "steps": 157,
+      "location_coverage": {
+        "quests": 48,
+        "pickups": 48,
+        "objectives": 28,
+        "completeObjectives": 46,
+        "turnins": 48,
+        "details": 48,
+        "fullyLocated": 46,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 58.3,
+          "completeObjectives": 95.8,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 95.8
+        }
+      },
       "unknown_location_steps": 2,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -7617,6 +8637,23 @@
       "key": "level-zone:kalimdor/teldrassil:levels:11-20",
       "quests": 26,
       "steps": 84,
+      "location_coverage": {
+        "quests": 26,
+        "pickups": 25,
+        "objectives": 14,
+        "completeObjectives": 26,
+        "turnins": 25,
+        "details": 26,
+        "fullyLocated": 25,
+        "percent": {
+          "pickups": 96.2,
+          "objectives": 53.8,
+          "completeObjectives": 100.0,
+          "turnins": 96.2,
+          "details": 100.0,
+          "fullyLocated": 96.2
+        }
+      },
       "unknown_location_steps": 2,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -7657,6 +8694,23 @@
       "key": "level-zone:kalimdor/the-barrens:levels:11-20",
       "quests": 13,
       "steps": 43,
+      "location_coverage": {
+        "quests": 13,
+        "pickups": 13,
+        "objectives": 9,
+        "completeObjectives": 13,
+        "turnins": 13,
+        "details": 13,
+        "fullyLocated": 13,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 69.2,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -7694,6 +8748,23 @@
       "key": "level-zone:kalimdor/the-barrens:levels:21-30",
       "quests": 9,
       "steps": 27,
+      "location_coverage": {
+        "quests": 9,
+        "pickups": 9,
+        "objectives": 3,
+        "completeObjectives": 9,
+        "turnins": 9,
+        "details": 9,
+        "fullyLocated": 9,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 33.3,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -7729,6 +8800,23 @@
       "key": "level-zone:eastern-kingdoms/the-hinterlands:levels:41-50",
       "quests": 17,
       "steps": 56,
+      "location_coverage": {
+        "quests": 17,
+        "pickups": 17,
+        "objectives": 10,
+        "completeObjectives": 17,
+        "turnins": 17,
+        "details": 17,
+        "fullyLocated": 17,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 58.8,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -7764,6 +8852,23 @@
       "key": "level-zone:eastern-kingdoms/the-hinterlands:levels:51-60",
       "quests": 3,
       "steps": 9,
+      "location_coverage": {
+        "quests": 3,
+        "pickups": 3,
+        "objectives": 2,
+        "completeObjectives": 3,
+        "turnins": 3,
+        "details": 3,
+        "fullyLocated": 3,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 66.7,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -7799,6 +8904,23 @@
       "key": "level-zone:eastern-kingdoms/thoradins-wall:levels:31-40",
       "quests": 3,
       "steps": 9,
+      "location_coverage": {
+        "quests": 3,
+        "pickups": 3,
+        "objectives": 0,
+        "completeObjectives": 3,
+        "turnins": 3,
+        "details": 3,
+        "fullyLocated": 3,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 0.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -7834,6 +8956,23 @@
       "key": "level-zone:kalimdor/thousand-needles:levels:21-30",
       "quests": 7,
       "steps": 21,
+      "location_coverage": {
+        "quests": 7,
+        "pickups": 7,
+        "objectives": 4,
+        "completeObjectives": 7,
+        "turnins": 7,
+        "details": 7,
+        "fullyLocated": 7,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 57.1,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -7869,6 +9008,23 @@
       "key": "level-zone:kalimdor/thousand-needles:levels:31-40",
       "quests": 24,
       "steps": 74,
+      "location_coverage": {
+        "quests": 24,
+        "pickups": 23,
+        "objectives": 9,
+        "completeObjectives": 23,
+        "turnins": 24,
+        "details": 24,
+        "fullyLocated": 23,
+        "percent": {
+          "pickups": 95.8,
+          "objectives": 37.5,
+          "completeObjectives": 95.8,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 95.8
+        }
+      },
       "unknown_location_steps": 2,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -7908,6 +9064,23 @@
       "key": "level-zone:kalimdor/thousand-needles:levels:41-50",
       "quests": 29,
       "steps": 87,
+      "location_coverage": {
+        "quests": 29,
+        "pickups": 29,
+        "objectives": 8,
+        "completeObjectives": 29,
+        "turnins": 29,
+        "details": 27,
+        "fullyLocated": 29,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 27.6,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 93.1,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -7948,6 +9121,23 @@
       "key": "level-zone:kalimdor/ungoro-crater:levels:51-60",
       "quests": 41,
       "steps": 138,
+      "location_coverage": {
+        "quests": 41,
+        "pickups": 41,
+        "objectives": 29,
+        "completeObjectives": 38,
+        "turnins": 41,
+        "details": 41,
+        "fullyLocated": 38,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 70.7,
+          "completeObjectives": 92.7,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 92.7
+        }
+      },
       "unknown_location_steps": 5,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -7992,6 +9182,23 @@
       "key": "level-zone:eastern-kingdoms/western-plaguelands:levels:51-60",
       "quests": 64,
       "steps": 210,
+      "location_coverage": {
+        "quests": 64,
+        "pickups": 63,
+        "objectives": 28,
+        "completeObjectives": 56,
+        "turnins": 64,
+        "details": 54,
+        "fullyLocated": 55,
+        "percent": {
+          "pickups": 98.4,
+          "objectives": 43.8,
+          "completeObjectives": 87.5,
+          "turnins": 100.0,
+          "details": 84.4,
+          "fullyLocated": 85.9
+        }
+      },
       "unknown_location_steps": 13,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -8050,6 +9257,23 @@
       "key": "level-zone:eastern-kingdoms/westfall:levels:1-10",
       "quests": 8,
       "steps": 26,
+      "location_coverage": {
+        "quests": 8,
+        "pickups": 8,
+        "objectives": 2,
+        "completeObjectives": 8,
+        "turnins": 8,
+        "details": 8,
+        "fullyLocated": 8,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 25.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -8085,6 +9309,23 @@
       "key": "level-zone:eastern-kingdoms/westfall:levels:11-20",
       "quests": 38,
       "steps": 127,
+      "location_coverage": {
+        "quests": 38,
+        "pickups": 38,
+        "objectives": 21,
+        "completeObjectives": 36,
+        "turnins": 38,
+        "details": 38,
+        "fullyLocated": 36,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 55.3,
+          "completeObjectives": 94.7,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 94.7
+        }
+      },
       "unknown_location_steps": 2,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -8124,6 +9365,23 @@
       "key": "level-zone:eastern-kingdoms/wetlands:levels:11-20",
       "quests": 2,
       "steps": 6,
+      "location_coverage": {
+        "quests": 2,
+        "pickups": 2,
+        "objectives": 0,
+        "completeObjectives": 2,
+        "turnins": 2,
+        "details": 2,
+        "fullyLocated": 2,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 0.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -8159,6 +9417,23 @@
       "key": "level-zone:eastern-kingdoms/wetlands:levels:21-30",
       "quests": 53,
       "steps": 180,
+      "location_coverage": {
+        "quests": 53,
+        "pickups": 53,
+        "objectives": 24,
+        "completeObjectives": 47,
+        "turnins": 53,
+        "details": 52,
+        "fullyLocated": 47,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 45.3,
+          "completeObjectives": 88.7,
+          "turnins": 100.0,
+          "details": 98.1,
+          "fullyLocated": 88.7
+        }
+      },
       "unknown_location_steps": 6,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -8209,6 +9484,23 @@
       "key": "level-zone:eastern-kingdoms/wetlands:levels:31-40",
       "quests": 23,
       "steps": 77,
+      "location_coverage": {
+        "quests": 23,
+        "pickups": 18,
+        "objectives": 9,
+        "completeObjectives": 22,
+        "turnins": 18,
+        "details": 18,
+        "fullyLocated": 18,
+        "percent": {
+          "pickups": 78.3,
+          "objectives": 39.1,
+          "completeObjectives": 95.7,
+          "turnins": 78.3,
+          "details": 78.3,
+          "fullyLocated": 78.3
+        }
+      },
       "unknown_location_steps": 15,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -8269,6 +9561,23 @@
       "key": "level-zone:kalimdor/winterspring:levels:51-60",
       "quests": 44,
       "steps": 142,
+      "location_coverage": {
+        "quests": 44,
+        "pickups": 44,
+        "objectives": 19,
+        "completeObjectives": 41,
+        "turnins": 44,
+        "details": 41,
+        "fullyLocated": 41,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 43.2,
+          "completeObjectives": 93.2,
+          "turnins": 100.0,
+          "details": 93.2,
+          "fullyLocated": 93.2
+        }
+      },
       "unknown_location_steps": 4,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -8312,6 +9621,23 @@
       "key": "level-zone:map:2521:levels:1-10",
       "quests": 63,
       "steps": 207,
+      "location_coverage": {
+        "quests": 63,
+        "pickups": 63,
+        "objectives": 40,
+        "completeObjectives": 63,
+        "turnins": 63,
+        "details": 61,
+        "fullyLocated": 63,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 63.5,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 96.8,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -8354,6 +9680,23 @@
       "key": "level-zone:map:2521:levels:11-20",
       "quests": 53,
       "steps": 175,
+      "location_coverage": {
+        "quests": 53,
+        "pickups": 51,
+        "objectives": 33,
+        "completeObjectives": 53,
+        "turnins": 51,
+        "details": 51,
+        "fullyLocated": 51,
+        "percent": {
+          "pickups": 96.2,
+          "objectives": 62.3,
+          "completeObjectives": 100.0,
+          "turnins": 96.2,
+          "details": 96.2,
+          "fullyLocated": 96.2
+        }
+      },
       "unknown_location_steps": 6,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -8402,6 +9745,23 @@
       "key": "level-zone:eastern-kingdoms/alterac-mountains:levels:31-40",
       "quests": 5,
       "steps": 16,
+      "location_coverage": {
+        "quests": 5,
+        "pickups": 4,
+        "objectives": 3,
+        "completeObjectives": 4,
+        "turnins": 5,
+        "details": 4,
+        "fullyLocated": 3,
+        "percent": {
+          "pickups": 80.0,
+          "objectives": 60.0,
+          "completeObjectives": 80.0,
+          "turnins": 100.0,
+          "details": 80.0,
+          "fullyLocated": 60.0
+        }
+      },
       "unknown_location_steps": 2,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -8442,6 +9802,23 @@
       "key": "level-zone:eastern-kingdoms/arathi-highlands:levels:31-40",
       "quests": 40,
       "steps": 131,
+      "location_coverage": {
+        "quests": 40,
+        "pickups": 37,
+        "objectives": 23,
+        "completeObjectives": 39,
+        "turnins": 40,
+        "details": 40,
+        "fullyLocated": 37,
+        "percent": {
+          "pickups": 92.5,
+          "objectives": 57.5,
+          "completeObjectives": 97.5,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 92.5
+        }
+      },
       "unknown_location_steps": 4,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -8484,6 +9861,23 @@
       "key": "level-zone:eastern-kingdoms/arathi-highlands:levels:41-50",
       "quests": 22,
       "steps": 70,
+      "location_coverage": {
+        "quests": 22,
+        "pickups": 22,
+        "objectives": 12,
+        "completeObjectives": 22,
+        "turnins": 22,
+        "details": 22,
+        "fullyLocated": 22,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 54.5,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -8519,6 +9913,23 @@
       "key": "level-zone:kalimdor/ashenvale:levels:11-20",
       "quests": 2,
       "steps": 6,
+      "location_coverage": {
+        "quests": 2,
+        "pickups": 2,
+        "objectives": 1,
+        "completeObjectives": 2,
+        "turnins": 2,
+        "details": 2,
+        "fullyLocated": 2,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 50.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -8553,6 +9964,23 @@
       "key": "level-zone:kalimdor/ashenvale:levels:21-30",
       "quests": 21,
       "steps": 69,
+      "location_coverage": {
+        "quests": 21,
+        "pickups": 19,
+        "objectives": 14,
+        "completeObjectives": 19,
+        "turnins": 19,
+        "details": 21,
+        "fullyLocated": 18,
+        "percent": {
+          "pickups": 90.5,
+          "objectives": 66.7,
+          "completeObjectives": 90.5,
+          "turnins": 90.5,
+          "details": 100.0,
+          "fullyLocated": 85.7
+        }
+      },
       "unknown_location_steps": 9,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -8601,6 +10029,23 @@
       "key": "level-zone:kalimdor/azshara:levels:41-50",
       "quests": 3,
       "steps": 12,
+      "location_coverage": {
+        "quests": 3,
+        "pickups": 2,
+        "objectives": 3,
+        "completeObjectives": 3,
+        "turnins": 2,
+        "details": 3,
+        "fullyLocated": 2,
+        "percent": {
+          "pickups": 66.7,
+          "objectives": 100.0,
+          "completeObjectives": 100.0,
+          "turnins": 66.7,
+          "details": 100.0,
+          "fullyLocated": 66.7
+        }
+      },
       "unknown_location_steps": 2,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -8639,6 +10084,23 @@
       "key": "level-zone:kalimdor/azshara:levels:51-60",
       "quests": 32,
       "steps": 114,
+      "location_coverage": {
+        "quests": 32,
+        "pickups": 32,
+        "objectives": 11,
+        "completeObjectives": 29,
+        "turnins": 32,
+        "details": 30,
+        "fullyLocated": 29,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 34.4,
+          "completeObjectives": 90.6,
+          "turnins": 100.0,
+          "details": 93.8,
+          "fullyLocated": 90.6
+        }
+      },
       "unknown_location_steps": 9,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -8681,6 +10143,23 @@
       "key": "level-zone:eastern-kingdoms/badlands:levels:31-40",
       "quests": 13,
       "steps": 43,
+      "location_coverage": {
+        "quests": 13,
+        "pickups": 12,
+        "objectives": 9,
+        "completeObjectives": 13,
+        "turnins": 13,
+        "details": 12,
+        "fullyLocated": 12,
+        "percent": {
+          "pickups": 92.3,
+          "objectives": 69.2,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 92.3,
+          "fullyLocated": 92.3
+        }
+      },
       "unknown_location_steps": 1,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -8721,6 +10200,23 @@
       "key": "level-zone:eastern-kingdoms/badlands:levels:41-50",
       "quests": 17,
       "steps": 56,
+      "location_coverage": {
+        "quests": 17,
+        "pickups": 17,
+        "objectives": 12,
+        "completeObjectives": 16,
+        "turnins": 17,
+        "details": 17,
+        "fullyLocated": 16,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 70.6,
+          "completeObjectives": 94.1,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 94.1
+        }
+      },
       "unknown_location_steps": 1,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -8758,6 +10254,23 @@
       "key": "level-zone:eastern-kingdoms/badlands:levels:51-60",
       "quests": 4,
       "steps": 12,
+      "location_coverage": {
+        "quests": 4,
+        "pickups": 4,
+        "objectives": 2,
+        "completeObjectives": 4,
+        "turnins": 4,
+        "details": 4,
+        "fullyLocated": 4,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 50.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -8793,6 +10306,23 @@
       "key": "level-zone:eastern-kingdoms/blasted-lands:levels:41-50",
       "quests": 8,
       "steps": 32,
+      "location_coverage": {
+        "quests": 8,
+        "pickups": 8,
+        "objectives": 6,
+        "completeObjectives": 8,
+        "turnins": 8,
+        "details": 8,
+        "fullyLocated": 8,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 75.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -8829,6 +10359,23 @@
       "key": "level-zone:eastern-kingdoms/blasted-lands:levels:51-60",
       "quests": 22,
       "steps": 73,
+      "location_coverage": {
+        "quests": 22,
+        "pickups": 22,
+        "objectives": 13,
+        "completeObjectives": 22,
+        "turnins": 22,
+        "details": 22,
+        "fullyLocated": 22,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 59.1,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -8865,6 +10412,23 @@
       "key": "level-zone:eastern-kingdoms/burning-steppes:levels:51-60",
       "quests": 27,
       "steps": 86,
+      "location_coverage": {
+        "quests": 27,
+        "pickups": 27,
+        "objectives": 15,
+        "completeObjectives": 23,
+        "turnins": 27,
+        "details": 25,
+        "fullyLocated": 23,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 55.6,
+          "completeObjectives": 85.2,
+          "turnins": 100.0,
+          "details": 92.6,
+          "fullyLocated": 85.2
+        }
+      },
       "unknown_location_steps": 4,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -8909,6 +10473,23 @@
       "key": "level-zone:kalimdor/desolace:levels:31-40",
       "quests": 42,
       "steps": 139,
+      "location_coverage": {
+        "quests": 42,
+        "pickups": 39,
+        "objectives": 28,
+        "completeObjectives": 35,
+        "turnins": 38,
+        "details": 30,
+        "fullyLocated": 32,
+        "percent": {
+          "pickups": 92.9,
+          "objectives": 66.7,
+          "completeObjectives": 83.3,
+          "turnins": 90.5,
+          "details": 71.4,
+          "fullyLocated": 76.2
+        }
+      },
       "unknown_location_steps": 15,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -8975,6 +10556,23 @@
       "key": "level-zone:kalimdor/desolace:levels:41-50",
       "quests": 14,
       "steps": 45,
+      "location_coverage": {
+        "quests": 14,
+        "pickups": 14,
+        "objectives": 8,
+        "completeObjectives": 11,
+        "turnins": 13,
+        "details": 6,
+        "fullyLocated": 10,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 57.1,
+          "completeObjectives": 78.6,
+          "turnins": 92.9,
+          "details": 42.9,
+          "fullyLocated": 71.4
+        }
+      },
       "unknown_location_steps": 4,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -9024,6 +10622,23 @@
       "key": "level-zone:kalimdor/desolace:levels:51-60",
       "quests": 4,
       "steps": 12,
+      "location_coverage": {
+        "quests": 4,
+        "pickups": 4,
+        "objectives": 2,
+        "completeObjectives": 3,
+        "turnins": 4,
+        "details": 4,
+        "fullyLocated": 3,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 50.0,
+          "completeObjectives": 75.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 75.0
+        }
+      },
       "unknown_location_steps": 1,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -9060,6 +10675,23 @@
       "key": "level-zone:kalimdor/durotar:levels:1-10",
       "quests": 77,
       "steps": 246,
+      "location_coverage": {
+        "quests": 77,
+        "pickups": 76,
+        "objectives": 37,
+        "completeObjectives": 74,
+        "turnins": 76,
+        "details": 63,
+        "fullyLocated": 73,
+        "percent": {
+          "pickups": 98.7,
+          "objectives": 48.1,
+          "completeObjectives": 96.1,
+          "turnins": 98.7,
+          "details": 81.8,
+          "fullyLocated": 94.8
+        }
+      },
       "unknown_location_steps": 6,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -9123,6 +10755,23 @@
       "key": "level-zone:kalimdor/durotar:levels:11-20",
       "quests": 27,
       "steps": 85,
+      "location_coverage": {
+        "quests": 27,
+        "pickups": 27,
+        "objectives": 13,
+        "completeObjectives": 27,
+        "turnins": 27,
+        "details": 25,
+        "fullyLocated": 27,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 48.1,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 92.6,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -9163,6 +10812,23 @@
       "key": "level-zone:eastern-kingdoms/duskwood:levels:21-30",
       "quests": 21,
       "steps": 67,
+      "location_coverage": {
+        "quests": 21,
+        "pickups": 20,
+        "objectives": 13,
+        "completeObjectives": 13,
+        "turnins": 20,
+        "details": 21,
+        "fullyLocated": 12,
+        "percent": {
+          "pickups": 95.2,
+          "objectives": 61.9,
+          "completeObjectives": 61.9,
+          "turnins": 95.2,
+          "details": 100.0,
+          "fullyLocated": 57.1
+        }
+      },
       "unknown_location_steps": 10,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -9212,6 +10878,23 @@
       "key": "level-zone:eastern-kingdoms/duskwood:levels:41-50",
       "quests": 4,
       "steps": 14,
+      "location_coverage": {
+        "quests": 4,
+        "pickups": 4,
+        "objectives": 1,
+        "completeObjectives": 4,
+        "turnins": 4,
+        "details": 4,
+        "fullyLocated": 4,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 25.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -9247,6 +10930,23 @@
       "key": "level-zone:kalimdor/dustwallow-marsh:levels:31-40",
       "quests": 35,
       "steps": 106,
+      "location_coverage": {
+        "quests": 35,
+        "pickups": 34,
+        "objectives": 17,
+        "completeObjectives": 34,
+        "turnins": 34,
+        "details": 34,
+        "fullyLocated": 33,
+        "percent": {
+          "pickups": 97.1,
+          "objectives": 48.6,
+          "completeObjectives": 97.1,
+          "turnins": 97.1,
+          "details": 97.1,
+          "fullyLocated": 94.3
+        }
+      },
       "unknown_location_steps": 4,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -9292,6 +10992,23 @@
       "key": "level-zone:kalimdor/dustwallow-marsh:levels:41-50",
       "quests": 8,
       "steps": 29,
+      "location_coverage": {
+        "quests": 8,
+        "pickups": 8,
+        "objectives": 6,
+        "completeObjectives": 8,
+        "turnins": 8,
+        "details": 8,
+        "fullyLocated": 8,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 75.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -9326,6 +11043,23 @@
       "key": "level-zone:kalimdor/dustwallow-marsh:levels:51-60",
       "quests": 7,
       "steps": 21,
+      "location_coverage": {
+        "quests": 7,
+        "pickups": 7,
+        "objectives": 5,
+        "completeObjectives": 7,
+        "turnins": 7,
+        "details": 7,
+        "fullyLocated": 7,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 71.4,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -9361,6 +11095,23 @@
       "key": "level-zone:eastern-kingdoms/eastern-plaguelands:levels:51-60",
       "quests": 59,
       "steps": 201,
+      "location_coverage": {
+        "quests": 59,
+        "pickups": 57,
+        "objectives": 36,
+        "completeObjectives": 46,
+        "turnins": 59,
+        "details": 45,
+        "fullyLocated": 45,
+        "percent": {
+          "pickups": 96.6,
+          "objectives": 61.0,
+          "completeObjectives": 78.0,
+          "turnins": 100.0,
+          "details": 76.3,
+          "fullyLocated": 76.3
+        }
+      },
       "unknown_location_steps": 17,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -9430,6 +11181,23 @@
       "key": "level-zone:kalimdor/felwood:levels:41-50",
       "quests": 3,
       "steps": 13,
+      "location_coverage": {
+        "quests": 3,
+        "pickups": 2,
+        "objectives": 2,
+        "completeObjectives": 3,
+        "turnins": 2,
+        "details": 3,
+        "fullyLocated": 2,
+        "percent": {
+          "pickups": 66.7,
+          "objectives": 66.7,
+          "completeObjectives": 100.0,
+          "turnins": 66.7,
+          "details": 100.0,
+          "fullyLocated": 66.7
+        }
+      },
       "unknown_location_steps": 2,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -9469,6 +11237,23 @@
       "key": "level-zone:kalimdor/felwood:levels:51-60",
       "quests": 38,
       "steps": 131,
+      "location_coverage": {
+        "quests": 38,
+        "pickups": 37,
+        "objectives": 25,
+        "completeObjectives": 31,
+        "turnins": 38,
+        "details": 32,
+        "fullyLocated": 31,
+        "percent": {
+          "pickups": 97.4,
+          "objectives": 65.8,
+          "completeObjectives": 81.6,
+          "turnins": 100.0,
+          "details": 84.2,
+          "fullyLocated": 81.6
+        }
+      },
       "unknown_location_steps": 9,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -9522,6 +11307,23 @@
       "key": "level-zone:kalimdor/feralas:levels:41-50",
       "quests": 34,
       "steps": 112,
+      "location_coverage": {
+        "quests": 34,
+        "pickups": 34,
+        "objectives": 24,
+        "completeObjectives": 31,
+        "turnins": 34,
+        "details": 34,
+        "fullyLocated": 31,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 70.6,
+          "completeObjectives": 91.2,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 91.2
+        }
+      },
       "unknown_location_steps": 3,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -9563,6 +11365,23 @@
       "key": "level-zone:eastern-kingdoms/hillsbrad-foothills:levels:21-30",
       "quests": 23,
       "steps": 91,
+      "location_coverage": {
+        "quests": 23,
+        "pickups": 23,
+        "objectives": 16,
+        "completeObjectives": 22,
+        "turnins": 23,
+        "details": 23,
+        "fullyLocated": 22,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 69.6,
+          "completeObjectives": 95.7,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 95.7
+        }
+      },
       "unknown_location_steps": 1,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -9601,6 +11420,23 @@
       "key": "level-zone:eastern-kingdoms/hillsbrad-foothills:levels:31-40",
       "quests": 15,
       "steps": 62,
+      "location_coverage": {
+        "quests": 15,
+        "pickups": 15,
+        "objectives": 12,
+        "completeObjectives": 15,
+        "turnins": 15,
+        "details": 15,
+        "fullyLocated": 15,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 80.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -9636,6 +11472,23 @@
       "key": "level-zone:eastern-kingdoms/hillsbrad-foothills:levels:41-50",
       "quests": 5,
       "steps": 18,
+      "location_coverage": {
+        "quests": 5,
+        "pickups": 5,
+        "objectives": 3,
+        "completeObjectives": 5,
+        "turnins": 5,
+        "details": 5,
+        "fullyLocated": 5,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 60.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -9671,6 +11524,23 @@
       "key": "level-zone:kalimdor/moonglade:levels:51-60",
       "quests": 11,
       "steps": 34,
+      "location_coverage": {
+        "quests": 11,
+        "pickups": 11,
+        "objectives": 2,
+        "completeObjectives": 11,
+        "turnins": 11,
+        "details": 8,
+        "fullyLocated": 11,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 18.2,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 72.7,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -9711,6 +11581,23 @@
       "key": "level-zone:kalimdor/mulgore:levels:1-10",
       "quests": 59,
       "steps": 191,
+      "location_coverage": {
+        "quests": 59,
+        "pickups": 59,
+        "objectives": 29,
+        "completeObjectives": 59,
+        "turnins": 59,
+        "details": 50,
+        "fullyLocated": 59,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 49.2,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 84.7,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -9762,6 +11649,23 @@
       "key": "level-zone:kalimdor/mulgore:levels:11-20",
       "quests": 21,
       "steps": 66,
+      "location_coverage": {
+        "quests": 21,
+        "pickups": 21,
+        "objectives": 7,
+        "completeObjectives": 21,
+        "turnins": 21,
+        "details": 20,
+        "fullyLocated": 21,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 33.3,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 95.2,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -9800,6 +11704,23 @@
       "key": "level-zone:kalimdor/mulgore:levels:21-30",
       "quests": 4,
       "steps": 13,
+      "location_coverage": {
+        "quests": 4,
+        "pickups": 3,
+        "objectives": 3,
+        "completeObjectives": 4,
+        "turnins": 4,
+        "details": 4,
+        "fullyLocated": 3,
+        "percent": {
+          "pickups": 75.0,
+          "objectives": 75.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 75.0
+        }
+      },
       "unknown_location_steps": 1,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -9836,6 +11757,23 @@
       "key": "level-zone:eastern-kingdoms/redridge-mountains:levels:51-60",
       "quests": 2,
       "steps": 7,
+      "location_coverage": {
+        "quests": 2,
+        "pickups": 0,
+        "objectives": 1,
+        "completeObjectives": 0,
+        "turnins": 1,
+        "details": 2,
+        "fullyLocated": 0,
+        "percent": {
+          "pickups": 0.0,
+          "objectives": 50.0,
+          "completeObjectives": 0.0,
+          "turnins": 50.0,
+          "details": 100.0,
+          "fullyLocated": 0.0
+        }
+      },
       "unknown_location_steps": 5,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -9878,6 +11816,23 @@
       "key": "level-zone:eastern-kingdoms/searing-gorge:levels:41-50",
       "quests": 20,
       "steps": 70,
+      "location_coverage": {
+        "quests": 20,
+        "pickups": 19,
+        "objectives": 15,
+        "completeObjectives": 19,
+        "turnins": 20,
+        "details": 20,
+        "fullyLocated": 18,
+        "percent": {
+          "pickups": 95.0,
+          "objectives": 75.0,
+          "completeObjectives": 95.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 90.0
+        }
+      },
       "unknown_location_steps": 2,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -9919,6 +11874,23 @@
       "key": "level-zone:eastern-kingdoms/searing-gorge:levels:51-60",
       "quests": 8,
       "steps": 28,
+      "location_coverage": {
+        "quests": 8,
+        "pickups": 8,
+        "objectives": 6,
+        "completeObjectives": 8,
+        "turnins": 8,
+        "details": 8,
+        "fullyLocated": 8,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 75.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -9954,6 +11926,23 @@
       "key": "level-zone:kalimdor/silithus:levels:51-60",
       "quests": 43,
       "steps": 142,
+      "location_coverage": {
+        "quests": 43,
+        "pickups": 43,
+        "objectives": 25,
+        "completeObjectives": 40,
+        "turnins": 43,
+        "details": 33,
+        "fullyLocated": 40,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 58.1,
+          "completeObjectives": 93.0,
+          "turnins": 100.0,
+          "details": 76.7,
+          "fullyLocated": 93.0
+        }
+      },
       "unknown_location_steps": 3,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -10005,6 +11994,23 @@
       "key": "level-zone:eastern-kingdoms/silverpine-forest:levels:1-10",
       "quests": 6,
       "steps": 18,
+      "location_coverage": {
+        "quests": 6,
+        "pickups": 6,
+        "objectives": 2,
+        "completeObjectives": 6,
+        "turnins": 6,
+        "details": 6,
+        "fullyLocated": 6,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 33.3,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -10040,6 +12046,23 @@
       "key": "level-zone:eastern-kingdoms/silverpine-forest:levels:11-20",
       "quests": 42,
       "steps": 132,
+      "location_coverage": {
+        "quests": 42,
+        "pickups": 42,
+        "objectives": 20,
+        "completeObjectives": 42,
+        "turnins": 42,
+        "details": 42,
+        "fullyLocated": 42,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 47.6,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -10079,6 +12102,23 @@
       "key": "level-zone:eastern-kingdoms/silverpine-forest:levels:21-30",
       "quests": 18,
       "steps": 55,
+      "location_coverage": {
+        "quests": 18,
+        "pickups": 18,
+        "objectives": 9,
+        "completeObjectives": 18,
+        "turnins": 18,
+        "details": 17,
+        "fullyLocated": 18,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 50.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 94.4,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -10118,6 +12158,23 @@
       "key": "level-zone:kalimdor/stonetalon-mountains:levels:11-20",
       "quests": 15,
       "steps": 48,
+      "location_coverage": {
+        "quests": 15,
+        "pickups": 15,
+        "objectives": 7,
+        "completeObjectives": 15,
+        "turnins": 14,
+        "details": 11,
+        "fullyLocated": 14,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 46.7,
+          "completeObjectives": 100.0,
+          "turnins": 93.3,
+          "details": 73.3,
+          "fullyLocated": 93.3
+        }
+      },
       "unknown_location_steps": 2,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -10164,6 +12221,23 @@
       "key": "level-zone:kalimdor/stonetalon-mountains:levels:21-30",
       "quests": 24,
       "steps": 80,
+      "location_coverage": {
+        "quests": 24,
+        "pickups": 24,
+        "objectives": 17,
+        "completeObjectives": 24,
+        "turnins": 23,
+        "details": 24,
+        "fullyLocated": 23,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 70.8,
+          "completeObjectives": 100.0,
+          "turnins": 95.8,
+          "details": 100.0,
+          "fullyLocated": 95.8
+        }
+      },
       "unknown_location_steps": 1,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -10205,6 +12279,23 @@
       "key": "level-zone:kalimdor/stonetalon-mountains:levels:31-40",
       "quests": 2,
       "steps": 6,
+      "location_coverage": {
+        "quests": 2,
+        "pickups": 1,
+        "objectives": 0,
+        "completeObjectives": 2,
+        "turnins": 1,
+        "details": 1,
+        "fullyLocated": 1,
+        "percent": {
+          "pickups": 50.0,
+          "objectives": 0.0,
+          "completeObjectives": 100.0,
+          "turnins": 50.0,
+          "details": 50.0,
+          "fullyLocated": 50.0
+        }
+      },
       "unknown_location_steps": 3,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -10247,6 +12338,23 @@
       "key": "level-zone:eastern-kingdoms/stonewrought-dam:levels:31-40",
       "quests": 2,
       "steps": 6,
+      "location_coverage": {
+        "quests": 2,
+        "pickups": 2,
+        "objectives": 0,
+        "completeObjectives": 2,
+        "turnins": 2,
+        "details": 2,
+        "fullyLocated": 2,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 0.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -10282,6 +12390,23 @@
       "key": "level-zone:eastern-kingdoms/stranglethorn-vale:levels:31-40",
       "quests": 45,
       "steps": 155,
+      "location_coverage": {
+        "quests": 45,
+        "pickups": 40,
+        "objectives": 37,
+        "completeObjectives": 40,
+        "turnins": 39,
+        "details": 41,
+        "fullyLocated": 37,
+        "percent": {
+          "pickups": 88.9,
+          "objectives": 82.2,
+          "completeObjectives": 88.9,
+          "turnins": 86.7,
+          "details": 91.1,
+          "fullyLocated": 82.2
+        }
+      },
       "unknown_location_steps": 20,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -10344,6 +12469,23 @@
       "key": "level-zone:eastern-kingdoms/stranglethorn-vale:levels:41-50",
       "quests": 60,
       "steps": 194,
+      "location_coverage": {
+        "quests": 60,
+        "pickups": 55,
+        "objectives": 47,
+        "completeObjectives": 59,
+        "turnins": 56,
+        "details": 56,
+        "fullyLocated": 54,
+        "percent": {
+          "pickups": 91.7,
+          "objectives": 78.3,
+          "completeObjectives": 98.3,
+          "turnins": 93.3,
+          "details": 93.3,
+          "fullyLocated": 90.0
+        }
+      },
       "unknown_location_steps": 12,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -10401,6 +12543,23 @@
       "key": "level-zone:eastern-kingdoms/stranglethorn-vale:levels:51-60",
       "quests": 26,
       "steps": 84,
+      "location_coverage": {
+        "quests": 26,
+        "pickups": 25,
+        "objectives": 9,
+        "completeObjectives": 25,
+        "turnins": 25,
+        "details": 22,
+        "fullyLocated": 24,
+        "percent": {
+          "pickups": 96.2,
+          "objectives": 34.6,
+          "completeObjectives": 96.2,
+          "turnins": 96.2,
+          "details": 84.6,
+          "fullyLocated": 92.3
+        }
+      },
       "unknown_location_steps": 4,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -10448,6 +12607,23 @@
       "key": "level-zone:eastern-kingdoms/swamp-of-sorrows:levels:31-40",
       "quests": 15,
       "steps": 51,
+      "location_coverage": {
+        "quests": 15,
+        "pickups": 12,
+        "objectives": 7,
+        "completeObjectives": 12,
+        "turnins": 12,
+        "details": 15,
+        "fullyLocated": 10,
+        "percent": {
+          "pickups": 80.0,
+          "objectives": 46.7,
+          "completeObjectives": 80.0,
+          "turnins": 80.0,
+          "details": 100.0,
+          "fullyLocated": 66.7
+        }
+      },
       "unknown_location_steps": 12,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -10497,6 +12673,23 @@
       "key": "level-zone:eastern-kingdoms/swamp-of-sorrows:levels:41-50",
       "quests": 13,
       "steps": 43,
+      "location_coverage": {
+        "quests": 13,
+        "pickups": 13,
+        "objectives": 7,
+        "completeObjectives": 13,
+        "turnins": 13,
+        "details": 13,
+        "fullyLocated": 13,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 53.8,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -10533,6 +12726,23 @@
       "key": "level-zone:eastern-kingdoms/swamp-of-sorrows:levels:51-60",
       "quests": 7,
       "steps": 21,
+      "location_coverage": {
+        "quests": 7,
+        "pickups": 7,
+        "objectives": 2,
+        "completeObjectives": 6,
+        "turnins": 7,
+        "details": 7,
+        "fullyLocated": 6,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 28.6,
+          "completeObjectives": 85.7,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 85.7
+        }
+      },
       "unknown_location_steps": 1,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -10573,6 +12783,23 @@
       "key": "level-zone:kalimdor/tanaris:levels:41-50",
       "quests": 38,
       "steps": 129,
+      "location_coverage": {
+        "quests": 38,
+        "pickups": 36,
+        "objectives": 22,
+        "completeObjectives": 37,
+        "turnins": 38,
+        "details": 38,
+        "fullyLocated": 36,
+        "percent": {
+          "pickups": 94.7,
+          "objectives": 57.9,
+          "completeObjectives": 97.4,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 94.7
+        }
+      },
       "unknown_location_steps": 5,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -10616,6 +12843,23 @@
       "key": "level-zone:kalimdor/tanaris:levels:51-60",
       "quests": 20,
       "steps": 61,
+      "location_coverage": {
+        "quests": 20,
+        "pickups": 20,
+        "objectives": 9,
+        "completeObjectives": 20,
+        "turnins": 20,
+        "details": 20,
+        "fullyLocated": 20,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 45.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -10651,6 +12895,23 @@
       "key": "level-zone:kalimdor/the-barrens:levels:11-20",
       "quests": 66,
       "steps": 216,
+      "location_coverage": {
+        "quests": 66,
+        "pickups": 66,
+        "objectives": 49,
+        "completeObjectives": 65,
+        "turnins": 66,
+        "details": 63,
+        "fullyLocated": 65,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 74.2,
+          "completeObjectives": 98.5,
+          "turnins": 100.0,
+          "details": 95.5,
+          "fullyLocated": 98.5
+        }
+      },
       "unknown_location_steps": 1,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -10695,6 +12956,23 @@
       "key": "level-zone:kalimdor/the-barrens:levels:21-30",
       "quests": 42,
       "steps": 143,
+      "location_coverage": {
+        "quests": 42,
+        "pickups": 42,
+        "objectives": 25,
+        "completeObjectives": 41,
+        "turnins": 42,
+        "details": 41,
+        "fullyLocated": 41,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 59.5,
+          "completeObjectives": 97.6,
+          "turnins": 100.0,
+          "details": 97.6,
+          "fullyLocated": 97.6
+        }
+      },
       "unknown_location_steps": 3,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -10734,6 +13012,23 @@
       "key": "level-zone:kalimdor/the-barrens:levels:31-40",
       "quests": 3,
       "steps": 11,
+      "location_coverage": {
+        "quests": 3,
+        "pickups": 3,
+        "objectives": 1,
+        "completeObjectives": 3,
+        "turnins": 3,
+        "details": 3,
+        "fullyLocated": 3,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 33.3,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -10769,6 +13064,23 @@
       "key": "level-zone:eastern-kingdoms/the-hinterlands:levels:41-50",
       "quests": 29,
       "steps": 93,
+      "location_coverage": {
+        "quests": 29,
+        "pickups": 29,
+        "objectives": 20,
+        "completeObjectives": 29,
+        "turnins": 29,
+        "details": 29,
+        "fullyLocated": 29,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 69.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -10805,6 +13117,23 @@
       "key": "level-zone:eastern-kingdoms/the-hinterlands:levels:51-60",
       "quests": 7,
       "steps": 25,
+      "location_coverage": {
+        "quests": 7,
+        "pickups": 7,
+        "objectives": 4,
+        "completeObjectives": 7,
+        "turnins": 7,
+        "details": 7,
+        "fullyLocated": 7,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 57.1,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -10840,6 +13169,23 @@
       "key": "level-zone:eastern-kingdoms/thoradins-wall:levels:31-40",
       "quests": 3,
       "steps": 9,
+      "location_coverage": {
+        "quests": 3,
+        "pickups": 3,
+        "objectives": 0,
+        "completeObjectives": 3,
+        "turnins": 3,
+        "details": 3,
+        "fullyLocated": 3,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 0.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -10875,6 +13221,23 @@
       "key": "level-zone:kalimdor/thousand-needles:levels:21-30",
       "quests": 28,
       "steps": 91,
+      "location_coverage": {
+        "quests": 28,
+        "pickups": 28,
+        "objectives": 21,
+        "completeObjectives": 28,
+        "turnins": 28,
+        "details": 28,
+        "fullyLocated": 28,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 75.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -10914,6 +13277,23 @@
       "key": "level-zone:kalimdor/thousand-needles:levels:31-40",
       "quests": 31,
       "steps": 101,
+      "location_coverage": {
+        "quests": 31,
+        "pickups": 31,
+        "objectives": 12,
+        "completeObjectives": 30,
+        "turnins": 31,
+        "details": 31,
+        "fullyLocated": 30,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 38.7,
+          "completeObjectives": 96.8,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 96.8
+        }
+      },
       "unknown_location_steps": 1,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -10951,6 +13331,23 @@
       "key": "level-zone:kalimdor/thousand-needles:levels:41-50",
       "quests": 29,
       "steps": 87,
+      "location_coverage": {
+        "quests": 29,
+        "pickups": 29,
+        "objectives": 8,
+        "completeObjectives": 29,
+        "turnins": 29,
+        "details": 27,
+        "fullyLocated": 29,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 27.6,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 93.1,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -10991,6 +13388,23 @@
       "key": "level-zone:eastern-kingdoms/tirisfal-glades:levels:1-10",
       "quests": 67,
       "steps": 223,
+      "location_coverage": {
+        "quests": 67,
+        "pickups": 67,
+        "objectives": 40,
+        "completeObjectives": 64,
+        "turnins": 67,
+        "details": 61,
+        "fullyLocated": 64,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 59.7,
+          "completeObjectives": 95.5,
+          "turnins": 100.0,
+          "details": 91.0,
+          "fullyLocated": 95.5
+        }
+      },
       "unknown_location_steps": 5,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -11043,6 +13457,23 @@
       "key": "level-zone:eastern-kingdoms/tirisfal-glades:levels:11-20",
       "quests": 48,
       "steps": 170,
+      "location_coverage": {
+        "quests": 48,
+        "pickups": 48,
+        "objectives": 31,
+        "completeObjectives": 47,
+        "turnins": 48,
+        "details": 46,
+        "fullyLocated": 47,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 64.6,
+          "completeObjectives": 97.9,
+          "turnins": 100.0,
+          "details": 95.8,
+          "fullyLocated": 97.9
+        }
+      },
       "unknown_location_steps": 1,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -11091,6 +13522,23 @@
       "key": "level-zone:eastern-kingdoms/tirisfal-glades:levels:51-60",
       "quests": 2,
       "steps": 6,
+      "location_coverage": {
+        "quests": 2,
+        "pickups": 2,
+        "objectives": 1,
+        "completeObjectives": 2,
+        "turnins": 2,
+        "details": 2,
+        "fullyLocated": 2,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 50.0,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -11125,6 +13573,23 @@
       "key": "level-zone:kalimdor/ungoro-crater:levels:51-60",
       "quests": 41,
       "steps": 141,
+      "location_coverage": {
+        "quests": 41,
+        "pickups": 41,
+        "objectives": 28,
+        "completeObjectives": 37,
+        "turnins": 41,
+        "details": 41,
+        "fullyLocated": 37,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 68.3,
+          "completeObjectives": 90.2,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 90.2
+        }
+      },
       "unknown_location_steps": 6,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -11170,6 +13635,23 @@
       "key": "level-zone:eastern-kingdoms/western-plaguelands:levels:51-60",
       "quests": 60,
       "steps": 197,
+      "location_coverage": {
+        "quests": 60,
+        "pickups": 59,
+        "objectives": 28,
+        "completeObjectives": 52,
+        "turnins": 60,
+        "details": 50,
+        "fullyLocated": 51,
+        "percent": {
+          "pickups": 98.3,
+          "objectives": 46.7,
+          "completeObjectives": 86.7,
+          "turnins": 100.0,
+          "details": 83.3,
+          "fullyLocated": 85.0
+        }
+      },
       "unknown_location_steps": 13,
       "missing_location_quest_ids_by_stage": {
         "a": [
@@ -11230,6 +13712,23 @@
       "key": "level-zone:eastern-kingdoms/westfall:levels:11-20",
       "quests": 7,
       "steps": 24,
+      "location_coverage": {
+        "quests": 7,
+        "pickups": 7,
+        "objectives": 3,
+        "completeObjectives": 7,
+        "turnins": 7,
+        "details": 7,
+        "fullyLocated": 7,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 42.9,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -11265,6 +13764,23 @@
       "key": "level-zone:kalimdor/winterspring:levels:51-60",
       "quests": 37,
       "steps": 116,
+      "location_coverage": {
+        "quests": 37,
+        "pickups": 37,
+        "objectives": 18,
+        "completeObjectives": 35,
+        "turnins": 37,
+        "details": 37,
+        "fullyLocated": 35,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 48.6,
+          "completeObjectives": 94.6,
+          "turnins": 100.0,
+          "details": 100.0,
+          "fullyLocated": 94.6
+        }
+      },
       "unknown_location_steps": 2,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -11303,6 +13819,23 @@
       "key": "level-zone:map:2521:levels:1-10",
       "quests": 71,
       "steps": 234,
+      "location_coverage": {
+        "quests": 71,
+        "pickups": 71,
+        "objectives": 46,
+        "completeObjectives": 71,
+        "turnins": 71,
+        "details": 66,
+        "fullyLocated": 71,
+        "percent": {
+          "pickups": 100.0,
+          "objectives": 64.8,
+          "completeObjectives": 100.0,
+          "turnins": 100.0,
+          "details": 93.0,
+          "fullyLocated": 100.0
+        }
+      },
       "unknown_location_steps": 0,
       "missing_location_quest_ids_by_stage": {
         "a": [],
@@ -11348,6 +13881,23 @@
       "key": "level-zone:map:2521:levels:11-20",
       "quests": 51,
       "steps": 171,
+      "location_coverage": {
+        "quests": 51,
+        "pickups": 49,
+        "objectives": 31,
+        "completeObjectives": 51,
+        "turnins": 49,
+        "details": 49,
+        "fullyLocated": 49,
+        "percent": {
+          "pickups": 96.1,
+          "objectives": 60.8,
+          "completeObjectives": 100.0,
+          "turnins": 96.1,
+          "details": 96.1,
+          "fullyLocated": 96.1
+        }
+      },
       "unknown_location_steps": 6,
       "missing_location_quest_ids_by_stage": {
         "a": [

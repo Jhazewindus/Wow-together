@@ -28,8 +28,35 @@ def main():
     for name in names:
         if not re.fullmatch(r'[A-Za-z0-9_]+\.lua', name):
             raise ValueError('Unexpected addon source path: ' + name)
-        if not (addon / name).read_text().startswith('local addonName, ns = ...\n'):
+        source = (addon / name).read_text()
+        private_namespace = source.startswith('local addonName, ns = ...\n')
+        shared_namespace = source.startswith('local addonName, namespace = ...\nlocal ns = _G.WowTogetherSharedNamespace or namespace\n')
+        if not (private_namespace or shared_namespace):
             raise ValueError('Missing namespace declaration: ' + name)
+    data_packages = {
+        'WowTogether_QuestData': ['QuestCatalogue.lua'],
+        'WowTogether_ProfessionData': ['ProfessionData.lua'],
+        'WowTogether_DungeonData': ['DungeonJournalData.lua', 'DungeonMapData.lua'],
+    }
+    catalogue_lua = (ROOT / 'WowTogether_QuestData' / 'QuestCatalogue.lua').read_text()
+    catalogue_offset = catalogue_lua.find('ns.catalogue =')
+    catalogue_header = catalogue_lua[catalogue_offset:catalogue_offset + 400]
+    catalogue_count = coverage.get('count')
+    if not isinstance(catalogue_count, int) or not re.search(
+            r'(?:\["count"\]\s*=\s*|\bcount\s*=\s*)' + str(catalogue_count) + r'\b', catalogue_header):
+        raise ValueError('Quest catalogue summary metadata does not match its data payload')
+    for folder, sources in data_packages.items():
+        package = ROOT / folder
+        package_toc = package / f'{folder}.toc'
+        if not package_toc.is_file():
+            raise ValueError('Missing optional data package: ' + folder)
+        metadata = package_toc.read_text()
+        if '## Interface: 16001' not in metadata or '## LoadOnDemand: 1' not in metadata or '## Dependencies: WowTogether' not in metadata:
+            raise ValueError('Invalid load-on-demand data package metadata: ' + folder)
+        for name in sources:
+            path = package / name
+            if not path.read_text().startswith('local addonName, namespace = ...\n'):
+                raise ValueError('Missing shared namespace declaration: ' + str(path))
     media = addon / 'Media' / 'GuideThemes'
     art = json.loads((media / 'manifest.json').read_text())
     if art.get('schema') != 1 or art.get('source') != 'source-atlas.png' or len(art.get('textures', [])) != 16:
@@ -49,11 +76,23 @@ def main():
 Copy the complete WowTogether folder to:
 World of Warcraft\\_classic_beta_\\Interface\\AddOns\\WowTogether\\
 
-Update EVERY party member to {version}, including ALL {len(names)} Lua files
-and the Media folder,
-then fully restart the client; the release includes taint mitigation (a /reload is insufficient
+Update EVERY party member to {version}, copying the WowTogether folder and
+all three matching WowTogether_*Data folders side by side into AddOns.
+Do not put the data folders inside WowTogether. Keep all three enabled in the
+addon list; they load only when their data is first needed. Then fully restart the client;
+the release includes taint mitigation (a /reload is insufficient
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
+
+Quest, profession, and dungeon reference payloads now load on demand from their
+matching data folders. Keep all four folders installed so each guide browser can
+load its data when first opened.
+
+0.8.69 GUIDE PERFORMANCE AND DATA COVERAGE batches repeated event refreshes,
+uses adaptive outdoor map polling and defers profession/dungeon payload loading.
+Long route legs with incomplete evidence are called out, and the guide probe
+reports per-guide source coverage. Coverage is descriptive, not a completeness
+claim; actual beta memory and navigation need friend testing. See TESTING.md.
 
 0.8.68 DUNGEON JOURNAL FACT UPDATES adds four owner-confirmed boss/item records
 and the An Alarming Request prerequisite for Starving Arcane. City of Dalaran
@@ -218,8 +257,8 @@ GuideFlowAudit.json. ROUTE_OPTIMIZATION.md explains
 assumptions. This is not proof of optimal XP/hour or complete terrain mapping:
 33 sections meet the source-gap-free gate; 119 still need source facts.
 
-Database details unpack only when used. Keep DataStore.lua and the complete
-generated data files together. /wt probe reports per-compartment load counts and
+Database details unpack only when used. Keep DataStore.lua and all three sibling
+data packs together. /wt probe reports per-compartment load counts and
 client memory when its API exists. No quest/NPC/loot facts are removed; guide
 order and behavior remain. Retained host Lua memory is about 28.7 MiB at startup,
 versus 52 MiB before compartment loading; actual beta memory needs testing with
@@ -261,7 +300,9 @@ fresh offer; this evidence is personal/build-scoped, not an inferred prerequisit
 Our Ancient Enemy and The High Chieftain need actual offers while unlocks remain
 unresolved. Documented Report to Kadrak alternatives no longer request a duplicate
 pickup when one version is active/completed; the chosen turn-in remains.
-Keep fixed order and manual skips. All {len(names)} Lua files are required.
+Keep fixed order and manual skips. Install the main addon and all three matching
+data folders as siblings; copying the main folder alone leaves guides without
+their reference database.
 
 /wt opens the Classic-style resizable dashboard on Recommended. Its dropdown has Recommended, Leveling,
 Professions, Dungeons, Quest log and All quests, in that order. All quests searches
@@ -669,10 +710,14 @@ establish actual WoW Forever API, protected-action or rendering compatibility.
 '''
     args.output.mkdir(parents=True, exist_ok=True)
     destination = args.output / f'WowTogether-{version}.zip'
-    files = ['WowTogether.toc', *names, 'QuestCatalogue.json', 'QuestCoverage.json', 'GuideAudit.json', 'GuideFlowAudit.json', 'GuideSourceQueue.json', 'TravelData.json', 'GuideServiceData.json', 'DungeonData.json', 'DungeonJournalData.json', 'DungeonMapData.json', 'EliteSpawnData.json', 'ProfessionData.json']
+    files = ['WowTogether.toc', *names, 'QuestCatalogue.json', 'QuestCoverage.json', 'GuideAudit.json', 'GuideFlowAudit.json', 'GuideSourceQueue.json', 'TravelData.json', 'GuideServiceData.json', 'DungeonData.json', 'EliteSpawnData.json']
     with zipfile.ZipFile(destination, 'w', zipfile.ZIP_DEFLATED) as archive:
         for name in files:
             archive.write(addon / name, 'WowTogether/' + name)
+        for folder, sources in data_packages.items():
+            archive.write(ROOT / folder / f'{folder}.toc', folder + '/' + f'{folder}.toc')
+            for name in sources:
+                archive.write(ROOT / folder / name, folder + '/' + name)
         for name in media_names:
             archive.write(media / name, 'WowTogether/Media/GuideThemes/' + name)
         for name in ('README.md', 'TESTING.md', 'CHANGELOG.md'):

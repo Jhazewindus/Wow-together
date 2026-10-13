@@ -27,7 +27,7 @@ def client():
 class DurotarStageFactsTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.quests = own_lua(ROOT / 'WowTogether/QuestCatalogue.lua', 'catalogue')['quests']
+        cls.quests = own_lua(ROOT / 'WowTogether_QuestData/QuestCatalogue.lua', 'catalogue')['quests']
 
     def test_delivery_items_remain_required_and_are_not_farming_objectives(self):
         for ident, item in DELIVERIES.items():

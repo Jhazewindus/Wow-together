@@ -33,6 +33,11 @@ class DestinationReasonTests(unittest.TestCase):
         self.assertIn('Skip quest', far)
         self.assertNotIn('optimal', far)
         self.assertFalse(c.ns.GuideDestinationDecision(s).specificBenefit)
+        self.assertIn('No special unlock is known', far)
+        c.ns.PickupOfferEvidence = c.lua.eval('function() return true end')
+        c.ns.objectiveDisplayRevision = 1
+        verified = c.ns.GuideVisibleReason(s, 502, 1500)
+        self.assertIn('Route evidence is incomplete', verified)
 
     def test_mutated_stop_cannot_keep_a_pickup_reason_after_becoming_a_return(self):
         c = guide_client(1); s = step(c); select(c, [s], (900,))
@@ -125,7 +130,9 @@ class DestinationReasonTests(unittest.TestCase):
     def test_low_ready_return_still_explains_the_reward(self):
         c = guide_client(1); c.ns.profile.level = 30
         s = step(c, kind='t'); select(c, [s], (900,))
-        self.assertEqual(c.ns.GuideDestinationDecision(s).code, 'quest-reward')
+        decision = c.ns.GuideDestinationDecision(s)
+        self.assertEqual(decision.code, 'quest-reward')
+        self.assertEqual(decision.confidence, 'supported')
         self.assertIn('collect the reward', c.ns.GuideDestinationReason(s))
 
     def test_unknown_pickup_requirements_name_the_giver_without_inventing_access(self):
@@ -134,9 +141,12 @@ class DestinationReasonTests(unittest.TestCase):
         d = c.ns.GuideDestinationDecision(s)
         self.assertIn('Named giver', d.caution)
         self.assertTrue(d.needsReview)
+        self.assertEqual(d.confidence, 'review')
         self.assertIn('Confirm availability with Named giver', c.ns.RouteContext(s, 501))
         missing = step(c, unknownLocation=True)
-        self.assertIn('not mapped', c.ns.GuideDestinationDecision(missing).caution)
+        missing_decision = c.ns.GuideDestinationDecision(missing)
+        self.assertIn('not mapped', missing_decision.caution)
+        self.assertEqual(missing_decision.confidence, 'review')
 
     def test_preview_reason_uses_preview_guide_without_changing_the_active_guide(self):
         c = guide_client(2); c.ns.catalogue.quests[901].previousQuest = 900

@@ -421,7 +421,7 @@ must agree. No source acquisition is hidden inside the offline builder.
 python3 tools/import_warcraftdb.py
 python3 tools/import_wowhead.py --all-categories --spread-details
 /workspace/.wow-together-tests/bin/python tools/collect_quest_entities.py \
-  --from-catalogue WowTogether/QuestCatalogue.lua
+  --from-catalogue WowTogether_QuestData/QuestCatalogue.lua
 /workspace/.wow-together-tests/bin/python tools/build_quest_dataset.py \
   --legacy-snapshot /tmp/wow-together-classic-facts/source/Full_DB/ClassicDB_1_12_1_z2815.sql.gz \
   --forever-pois /tmp/wow-together-mapzeroth-source/Data/Forever/Pois.lua \

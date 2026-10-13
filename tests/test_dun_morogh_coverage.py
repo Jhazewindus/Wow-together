@@ -29,7 +29,7 @@ class DunMoroghCoverageTests(unittest.TestCase):
         self.assertIn('Copper Bar',c.ns.GuideStepAction(next(s for s in work if s.itemID == 2840)))
 
     def test_location_correction_is_atomic_and_does_not_clear_gaps(self):
-        records = own_lua(ROOT/'WowTogether/QuestCatalogue.lua','catalogue')['quests']
+        records = own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','catalogue')['quests']
         original = copy.deepcopy(records)
         self.assertEqual(apply_stage_corrections(records),[])
         self.assertEqual(records,original)

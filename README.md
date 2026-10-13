@@ -3,7 +3,7 @@
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
 progress. Version
-**0.8.68 — DUNGEON JOURNAL FACT UPDATES** targets interface **16001**, uses Lua **5.1**, and reads capabilities
+**0.8.69 — GUIDE PERFORMANCE AND DATA COVERAGE** targets interface **16001**, uses Lua **5.1**, and reads capabilities
 rather than choosing a Classic implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
@@ -12,16 +12,24 @@ routes and shows whose progress needs the next step. It also works solo.
 
 ## Install
 
-Extract the release ZIP and copy the complete `WowTogether` folder to:
+Extract the release ZIP and copy all four addon folders side by side to:
 
 ```text
-World of Warcraft\_classic_beta_\Interface\AddOns\WowTogether\
+World of Warcraft\_classic_beta_\Interface\AddOns\
 ```
 
-Replace the folder on **every party member's client**, including all **91 Lua
-files** and the **Media folder**, then fully restart the client. Restart if a new addon folder does
-not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
+Install `WowTogether`, `WowTogether_QuestData`, `WowTogether_ProfessionData` and
+`WowTogether_DungeonData` as sibling folders in `AddOns`. Update all four on
+**every party member's client** and fully restart WoW. Leave the three matching
+data add-ons enabled; they load only when their data is first needed. Restart if
+a new addon folder does not appear. Enable Lua errors with `/console scriptErrors 1` during testing.
 No Battle.net credentials, external API service or in-game HTTP access is needed.
+
+**0.8.69 batches rapid event refreshes, adapts outdoor dungeon-map polling and
+loads profession/dungeon data on demand.** Route reasons now flag long steps
+whose supporting pickup/location data is incomplete; `/wt probe` reports per-
+guide location coverage without adding routine UI clutter. See TESTING.md and
+PERFORMANCE.md. Host measurements do not establish exact beta memory savings.
 
 **0.8.68 adds four confirmed dungeon loot records and a Dalaran quest prerequisite.**
 City of Dalaran's current journal entry is labeled **Partial data**; further

@@ -8,9 +8,14 @@ local function normalize(value)
 end
 
 function ns.ResolveCatalogueMaps()
+    -- Profile reads happen during addon startup. Do not turn an optional data
+    -- pack into an eager load merely to resolve map aliases before a guide is
+    -- requested. EnsureOptionalData retries this after quest data is loaded.
+    local catalogue = ns.catalogue
+    if type(catalogue) ~= "table" or type(rawget(catalogue, "quests")) ~= "table" then return end
     local current = ns.profile and ns.profile.mapID or 0
-    if resolved == ns.catalogue and resolvedMap == current then return end
-    resolved, resolvedMap = ns.catalogue, current
+    if resolved == catalogue and resolvedMap == current then return end
+    resolved, resolvedMap = catalogue, current
     local names, ambiguous = {}, {}
     local function remember(name, id)
         local key = normalize(name)
@@ -27,7 +32,7 @@ function ns.ResolveCatalogueMaps()
     end
     local fields = {a = "starts", q = "objectives", t = "ends"}
     local changed = false
-    for _, quest in pairs(ns.catalogue and ns.catalogue.quests or {}) do
+    for _, quest in pairs(catalogue.quests) do
         local zoneKey = normalize(quest.zone and quest.zone ~= "" and quest.zone or ns.CatalogueZone(quest))
         if (quest.mapID or 0) == 0 and names[zoneKey] and not ambiguous[zoneKey] then
             quest.mapID, changed = names[zoneKey], true

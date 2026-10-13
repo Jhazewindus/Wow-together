@@ -34,7 +34,7 @@ def queue(audit,quests):
 
 def main():
     result=queue(json.loads((ROOT/'WowTogether/GuideAudit.json').read_text()),
-        own_lua(ROOT/'WowTogether/QuestCatalogue.lua','catalogue')['quests'])
+        own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','catalogue')['quests'])
     (ROOT/'WowTogether/GuideSourceQueue.json').write_text(json.dumps(result,indent=2)+'\n')
     print(str(result['remaining_quest_records'])+' quest records still need source facts.')
 

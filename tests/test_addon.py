@@ -125,7 +125,7 @@ C_QuestLog = {
 '''
 
 class Client:
-    def __init__(self, name='Alice', peer='Bob', quests=(1, 2), completed=(), default_guide=False, use_catalogue=False, saved_variables=None, before_load=None):
+    def __init__(self, name='Alice', peer='Bob', quests=(1, 2), completed=(), default_guide=False, use_catalogue=False, use_lazy_data=False, saved_variables=None, before_load=None):
         self.lua = LuaRuntime(unpack_returned_tuples=True)
         self.lua.execute(MOCK)
         g = self.lua.globals()
@@ -137,12 +137,28 @@ class Client:
         if before_load:
             self.lua.execute(before_load)
         self.ns = self.lua.table()
+        self.data_addons_loaded = set()
+        def load_data_addon(name):
+            if name in self.data_addons_loaded:
+                return True
+            package = ROOT / str(name)
+            toc_path = package / (str(name) + '.toc')
+            if not toc_path.is_file():
+                return False
+            for line in toc_path.read_text().splitlines():
+                if line.endswith('.lua'):
+                    source = (package / line).read_text()
+                    self.lua.execute('assert(loadstring(...))(select(2, ...))', source, str(name), self.lua.table())
+            self.data_addons_loaded.add(str(name))
+            return True
+        g._load_data_addon = load_data_addon
+        self.lua.execute('LoadAddOn = function(name) return _load_data_addon(name) end')
         toc = (ROOT / 'WowTogether/WowTogether.toc').read_text()
         for line in toc.splitlines():
             if line.endswith('.lua'):
                 self.lua.execute('assert(loadstring(...))(select(2, ...))',
                                  (ROOT / 'WowTogether' / line).read_text(), 'WowTogether', self.ns)
-        if not use_catalogue:
+        if not use_catalogue and not use_lazy_data:
             self.ns.catalogue = self.lua.table_from({'count': 0, 'quests': self.lua.table()})
             self.ns.dungeonData = None  # Synthetic quest fixtures have their own dungeon definitions.
         if saved_variables is not None:

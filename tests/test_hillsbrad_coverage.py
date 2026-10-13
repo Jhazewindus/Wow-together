@@ -7,7 +7,7 @@ sys.path.insert(0,str(ROOT/'tools'));from build_quest_dataset import own_lua
 from import_warcraftdb import apply_stage_corrections
 class HillsbradCoverageTests(unittest.TestCase):
  @classmethod
- def setUpClass(cls):cls.q=own_lua(ROOT/'WowTogether/QuestCatalogue.lua','catalogue')['quests']
+ def setUpClass(cls):cls.q=own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','catalogue')['quests']
  def test_elite_heads_use_actual_drop_actors_and_alterac_frame(self):
   q=self.q[519];self.assertFalse(q.get('missingRequirements'));self.assertFalse(q.get('objectiveLocationsIncomplete'));self.assertEqual(q['questType'],'Elite');self.assertEqual(q['previousQuest'],518)
   self.assertEqual([(p['entityID'],p['itemID'],p['quantity'],p['mapID'])for p in q['objectives']],[(2420,3550,1,1416),(2421,3551,1,1416),(2422,3552,1,1416)])

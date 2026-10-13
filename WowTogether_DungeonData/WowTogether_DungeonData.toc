@@ -1,0 +1,7 @@
+## Interface: 16001
+## Title: Wow Together Dungeon Data
+## Notes: Dungeon journal and map reference facts loaded when the journal is opened.
+## LoadOnDemand: 1
+## Dependencies: WowTogether
+DungeonJournalData.lua
+DungeonMapData.lua

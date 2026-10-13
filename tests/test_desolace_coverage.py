@@ -11,7 +11,7 @@ from build_quest_dataset import own_lua
 class DesolaceCoverageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.quests = own_lua(ROOT / 'WowTogether/QuestCatalogue.lua', 'catalogue')['quests']
+        cls.quests = own_lua(ROOT / 'WowTogether_QuestData/QuestCatalogue.lua', 'catalogue')['quests']
         cls.coverage = json.loads((ROOT / 'WowTogether/QuestCoverage.json').read_text())
         cls.sources = json.loads((ROOT / 'research/desolace-2026-10-10/source-facts.json').read_text())
 

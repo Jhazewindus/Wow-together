@@ -18,7 +18,7 @@ from import_warcraftdb import apply_stage_corrections
 class UngoroCoverageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.quests=own_lua(ROOT/'WowTogether/QuestCatalogue.lua','catalogue')['quests']
+        cls.quests=own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','catalogue')['quests']
 
     def test_container_contents_are_not_collected_from_a_flight_master(self):
         q=self.quests[3845]

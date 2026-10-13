@@ -7,7 +7,7 @@ sys.path.insert(0,str(ROOT/'tools'));from build_quest_dataset import own_lua
 from import_warcraftdb import apply_stage_corrections
 class ThousandNeedlesCoverageTests(unittest.TestCase):
  @classmethod
- def setUpClass(cls):cls.q=own_lua(ROOT/'WowTogether/QuestCatalogue.lua','catalogue')['quests']
+ def setUpClass(cls):cls.q=own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','catalogue')['quests']
  def test_endurance_keeps_food_trigger_distinct_from_real_claw_drop(self):
   q=self.q[1150];self.assertEqual([v['itemID']for v in q['requiredItems']],[5843]);self.assertEqual([v['entityID']for v in q['requirements']],[5843]);self.assertFalse(q.get('missingRequirements'))
   a,b=q['objectives'];self.assertEqual((a['entityType'],a['entityID'],a['action']),('object',20447,'interact'));self.assertTrue(a['quantityUnknown']);self.assertNotIn('itemID',a);self.assertEqual((b['entityID'],b['itemID'],b['action'],b['quantity']),(4490,5843,'loot',1));self.assertAlmostEqual(b['x'],.26);self.assertAlmostEqual(b['y'],.556)

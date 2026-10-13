@@ -39,6 +39,18 @@ def prepare(archive):
         for name in toc.splitlines():
             if name.endswith('.lua'):
                 z.getinfo('WowTogether/' + name)
+        data_packages = {
+            'WowTogether_QuestData': ['QuestCatalogue.lua'],
+            'WowTogether_ProfessionData': ['ProfessionData.lua'],
+            'WowTogether_DungeonData': ['DungeonJournalData.lua', 'DungeonMapData.lua'],
+        }
+        for folder, sources in data_packages.items():
+            metadata = z.read(folder + '/' + folder + '.toc').decode()
+            if ('## Interface: 16001' not in metadata or '## LoadOnDemand: 1' not in metadata
+                    or '## Dependencies: WowTogether' not in metadata):
+                raise ValueError('Release is missing valid optional data package metadata.')
+            for name in sources:
+                z.getinfo(folder + '/' + name)
         changelog = z.read('WowTogether/CHANGELOG.md')
         testing = z.read('WowTogether/TESTING.md')
     section = re.search(r'^## ' + re.escape(version) + r'\s*\n(.*?)(?=^## |\Z)',
@@ -47,8 +59,8 @@ def prepare(archive):
         raise ValueError('Changelog/test checklist do not match the release version.')
     heading = '**Wow Together ' + release_label + ' — Forever beta**\n\n'
     notes = section.group(1).strip()
-    footer = ('\n\n**Install:** replace the complete `WowTogether` folder on every party member’s client in '
-               '`World of Warcraft\\_classic_beta_\\Interface\\AddOns\\WowTogether\\`, then fully restart the client. '
+    footer = ('\n\n**Install:** replace `WowTogether` and all three matching `WowTogether_*Data` sibling folders in '
+               '`World of Warcraft\\_classic_beta_\\Interface\\AddOns\\` on every party member’s client, then fully restart. '
                'Restart the client if the addon folder does not appear.\n\n'
                '**Testing:** use the attached leveling checklist and report template. '
                'Host checks do not establish beta API/rendering compatibility.')

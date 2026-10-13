@@ -97,7 +97,7 @@ def generate(cache):
     packer = Packer()
     body = 'ns.professionGuideData = {schema=1,captured="2026-10-07"}\n'
     body += packer.records('crafting-professions', 'ns.professionGuideData.professions', professions)
-    (ROOT/'WowTogether/ProfessionData.lua').write_text(packer.code(body, 'Public Forever recipe/trainer facts; see PROFESSIONS.md. No source guide ordering or prose.'))
+    (ROOT/'WowTogether_ProfessionData/ProfessionData.lua').write_text(packer.code(body, 'Public Forever recipe/trainer facts; see PROFESSIONS.md. No source guide ordering or prose.'))
     (ROOT/'WowTogether/ProfessionData.json').write_text(json.dumps(data, indent=2)+'\n')
     print(f'{sum(len(p["recipes"]) for p in professions.values())} recipes; {sum(len(p["trainers"]) for p in professions.values())} trainer locations; {len(professions)} crafting professions')
 

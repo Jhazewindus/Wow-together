@@ -212,15 +212,13 @@ function ns.ShowDungeonApproach(key)
     return false
 end
 
-local lastMap
 function ns.CheckApproachMap()
     if not ns.db or not ns.Option("approachMaps") then
         if ns.approachMap then
             if ns.approachMap:IsShown() then ns.approachMap:Hide() end
             ns.approachMap.dismissed, ns.approachMap.autoOpened = nil, false
         end
-        lastMap = nil
-        return
+        return 3
     end
     local frame = ns.approachMap
     local entry = ns.DungeonEntryKey and ns.DungeonEntryKey()
@@ -232,21 +230,20 @@ function ns.CheckApproachMap()
                 frame.transition = true; frame:Hide(); frame.transition = nil
             end
         end
-        lastMap = nil
-        return
+        return 3
     end
     local mapID, continent, wx, wy = currentWorld()
     if not continent then
         if frame and frame.autoOpened and frame:IsShown() then frame.transition = true; frame:Hide(); frame.transition = nil end
-        lastMap = nil
-        return
+        return 2.5
     end
     local mapInfo = C_Map and ns.ReadPublic(C_Map.GetMapInfo, mapID)
     local parentMapID = type(mapInfo) == "table" and ns.Public(mapInfo.parentMapID) and mapInfo.parentMapID
-    local match, mx, my
+    local match, mx, my, nearbyMap
     local smallest = math.huge
     for _, model in ipairs(ns.approachMapData.models) do
         if continent == model.continent and (model.terrain or mapID == model.mapID or parentMapID == model.mapID) then
+            nearbyMap = true
             prepare(model)
             local x, y = position(model, wx, wy)
             if model.ready and inside(model, x, y) then
@@ -258,22 +255,20 @@ function ns.CheckApproachMap()
     end
     if not match then
         if frame and frame.model and frame.autoOpened and frame:IsShown() then frame.transition = true; frame:Hide(); frame.transition = nil end
-        lastMap = nil
         if frame then frame.dismissed = nil end
-        return
+        return nearbyMap and 0.8 or 2.5
     end
     frame = create()
-    if frame.dismissed == match.key then lastMap = match.key; return end
+    if frame.dismissed == match.key then return 0.8 end
     if not frame:IsShown() then
         frame.model, frame.autoOpened = match, true
         frame.title:SetText(titles[match.key] or "Dungeon approach")
         frame:Show(); frame:Raise()
         ns.DrawApproachMap(frame)
-        lastMap = match.key
     elseif frame.model ~= match then
         frame.model, frame.autoOpened = match, true
         frame.title:SetText(titles[match.key] or "Dungeon approach")
-        ns.DrawApproachMap(frame); lastMap = match.key
+        ns.DrawApproachMap(frame)
     end
     local geometry = frame.mapGeometry
     if geometry and inside(match, mx, my) then
@@ -284,20 +279,27 @@ function ns.CheckApproachMap()
         frame.marker:Show()
         frame.status:SetText("Live position • Walk to the gold entrance marker")
     else frame.marker:Hide() end
+    return frame:IsShown() and 0.2 or 0.8
 end
 
 function ns.InitializeApproachMaps()
     create()
     local poll = CreateFrame("Frame")
-    local elapsed = 0
+    local untilPoll = 0
+    for _, event in ipairs({"PLAYER_ENTERING_WORLD", "ZONE_CHANGED_NEW_AREA", "ZONE_CHANGED", "ZONE_CHANGED_INDOORS"}) do
+        local previous = ns.handlers[event]
+        ns.On(event, function(...)
+            if previous then previous(...) end
+            untilPoll = 0
+        end)
+    end
     poll:SetScript("OnUpdate", function(_, delta)
-        elapsed = elapsed + delta
-        if elapsed < .5 then return end
-        elapsed = 0
-        ns.CheckApproachMap()
+        untilPoll = untilPoll - delta
+        if untilPoll > 0 then return end
+        untilPoll = ns.CheckApproachMap() or 2.5
     end)
 end
 
 function ns.ApproachMapDiagnostics(output)
-    output("Dungeon approach maps: seven Blizzard client maps; live position is outdoors only.")
+    output("Dungeon approach maps: seven client maps; idle checks are throttled, active maps update five times per second; live position is outdoors only.")
 end

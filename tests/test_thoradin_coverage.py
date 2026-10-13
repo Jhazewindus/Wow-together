@@ -14,7 +14,7 @@ from import_warcraftdb import apply_stage_corrections
 class ThoradinCoverageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.quests=own_lua(ROOT/'WowTogether/QuestCatalogue.lua','catalogue')['quests']
+        cls.quests=own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','catalogue')['quests']
 
     def test_shared_handoffs_use_same_observed_object_and_real_map_frame(self):
         q=self.quests

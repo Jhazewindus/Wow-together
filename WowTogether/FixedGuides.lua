@@ -8,13 +8,21 @@ local function copy(value)
 end
 
 function ns.GuideLocationCoverage(records)
-    local result = {quests = #records, pickups = 0, objectives = 0, turnins = 0, details = 0}
+    local result = {quests = #records, pickups = 0, objectives = 0, completeObjectives = 0,
+        turnins = 0, details = 0, fullyLocated = 0}
     for _, record in ipairs(records) do
         local quest = ns.CatalogueQuest(record.id) or {}
-        if quest.starts and #quest.starts > 0 then result.pickups = result.pickups + 1 end
-        if quest.objectives and #quest.objectives > 0 then result.objectives = result.objectives + 1 end
-        if quest.ends and #quest.ends > 0 then result.turnins = result.turnins + 1 end
-        if quest.prerequisitesRead then result.details = result.details + 1 end
+        local pickup = quest.starts and #quest.starts > 0
+        local turnin = quest.ends and #quest.ends > 0
+        local objective = quest.objectives and #quest.objectives > 0
+        local hasRequirements = type(quest.requirements) == "table" and next(quest.requirements) ~= nil
+        local objectiveComplete = (objective or not hasRequirements) and quest.objectiveLocationsIncomplete ~= true
+        if pickup then result.pickups = result.pickups + 1 end
+        if objective then result.objectives = result.objectives + 1 end
+        if objectiveComplete then result.completeObjectives = result.completeObjectives + 1 end
+        if turnin then result.turnins = result.turnins + 1 end
+        if quest.prerequisitesRead and quest.prerequisitesUnverified ~= true then result.details = result.details + 1 end
+        if pickup and objectiveComplete and turnin then result.fullyLocated = result.fullyLocated + 1 end
     end
     return result
 end

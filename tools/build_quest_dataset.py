@@ -310,8 +310,10 @@ def build(args):
     from pack_data import quest_code
     catalogue={'source':BASE+'/list/quests', 'detailSource':'https://www.wowhead.com/forever/quests',
         'captured':datetime.date.today().isoformat(), 'count':len(records), 'quests':records}
-    (output/'QuestCatalogue.lua').write_text(quest_code(catalogue, runtime_entities,
-        world_checks if args.legacy_snapshot else None, legacy['xpBaseline'] if args.legacy_snapshot else None))
+    lua_output = ROOT/'WowTogether_QuestData' if output.resolve() == (ROOT/'WowTogether').resolve() else output
+    lua_output.mkdir(parents=True, exist_ok=True)
+    (lua_output/'QuestCatalogue.lua').write_text(quest_code(catalogue, runtime_entities,
+        world_checks if args.legacy_snapshot else None, None))
     summary=dict(previous,captured=datetime.date.today().isoformat(),count=len(records),detailed_quests=valid_pages,
         with_starters=sum(bool(q.get('starts')) for q in records.values()),with_objectives=sum(bool(q.get('objectives')) for q in records.values()),
         with_turnins=sum(bool(q.get('ends')) for q in records.values()),with_series=sum(bool(q.get('series')) for q in records.values()),

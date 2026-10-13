@@ -29,7 +29,7 @@ def client(faction='Horde', class_id=9, level=40):
 class StranglethornFactsTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.quests = own_lua(ROOT / 'WowTogether/QuestCatalogue.lua', 'catalogue')['quests']
+        cls.quests = own_lua(ROOT / 'WowTogether_QuestData/QuestCatalogue.lua', 'catalogue')['quests']
 
     def test_supplied_cross_zone_deliveries_retain_required_items(self):
         for ident, item in ((3511, 10610), (3621, 10738)):

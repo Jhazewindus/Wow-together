@@ -1,0 +1,6 @@
+## Interface: 16001
+## Title: Wow Together Quest Data
+## Notes: Quest reference data loaded when quest guides are used.
+## LoadOnDemand: 1
+## Dependencies: WowTogether
+QuestCatalogue.lua

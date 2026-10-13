@@ -15,7 +15,7 @@ from import_warcraftdb import apply_stage_corrections
 class TanarisFactsTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.quests = own_lua(ROOT / 'WowTogether/QuestCatalogue.lua', 'catalogue')['quests']
+        cls.quests = own_lua(ROOT / 'WowTogether_QuestData/QuestCatalogue.lua', 'catalogue')['quests']
 
     def test_testing_inputs_are_not_999_item_turnin_goals(self):
         q = self.quests[654]
@@ -57,8 +57,10 @@ class TanarisFactsTests(unittest.TestCase):
 
     def test_raid_campaign_quarantine_keeps_catalogue_gaps_and_ordinary_elites(self):
         excluded=[r for r in self.quests.values()if r.get('levelingExcluded','').startswith('Level-60 Ahn')]
-        self.assertEqual(len(excluded),43)
-        for q in excluded:self.assertEqual((q['level'],q['minLevel']),(60,60))
+        self.assertEqual(len(excluded),83)
+        for q in excluded:
+            self.assertEqual(q['level'],60)
+            self.assertIn(q['minLevel'],(58,60))
         self.assertTrue(self.quests[8730]['objectiveLocationsIncomplete'])
         self.assertEqual(self.quests[8728]['prerequisiteAll'],[8578,8587,8620])
         self.assertEqual(self.quests[8742]['prerequisiteAll'],[8729,8730,8741])

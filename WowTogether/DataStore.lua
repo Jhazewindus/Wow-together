@@ -1,5 +1,90 @@
 local addonName, ns = ...
 
+-- Public empty shells keep unrelated guide/runtime features safe before the
+-- optional quest reference package is requested.
+ns.questEntities = ns.questEntities or {npc = {}, object = {}, item = {}}
+
+-- Optional data add-ons share this private namespace through one temporary
+-- global. The payloads remain separate LoadOnDemand add-ons so the client does
+-- not parse their large literal tables while loading the main companion.
+ns.optionalDataState = ns.optionalDataState or {}
+local dataAddons = {
+    ["WowTogether_QuestData"] = {field = "catalogue", tableField = "quests"},
+    ["WowTogether_ProfessionData"] = {field = "professionGuideData", tableField = "professions"},
+    ["WowTogether_DungeonData"] = {field = "dungeonJournalData", tableField = "dungeons",
+        extraField = "dungeonMapData", extraTableField = "dungeons"},
+}
+
+local function dataReady(definition)
+    local primary = ns[definition.field]
+    if type(primary) ~= "table" or type(rawget(primary, definition.tableField)) ~= "table" then return false end
+    if definition.extraField then
+        local extra = ns[definition.extraField]
+        if type(extra) ~= "table" or type(rawget(extra, definition.extraTableField)) ~= "table" then return false end
+    end
+    return true
+end
+
+function ns.EnsureOptionalData(addon)
+    local definition = dataAddons[addon]
+    if not definition then return false end
+    local function markLoaded()
+        ns.optionalDataState[addon] = "loaded"
+        if addon == "WowTogether_QuestData" and ns.ResolveCatalogueMaps then ns.ResolveCatalogueMaps() end
+        return true
+    end
+    if dataReady(definition) then return markLoaded() end
+    local state = ns.optionalDataState[addon]
+    if state == "loading" or state == "missing" or state == "data missing" or state == "load failed" then return false end
+    if type(InCombatLockdown) == "function" then
+        local okay, combat = pcall(InCombatLockdown)
+        if okay and ns.Public(combat) and combat == true then
+            ns.optionalDataState[addon] = "deferred combat"
+            return false
+        end
+    end
+    ns.optionalDataState[addon] = "loading"
+    local loader = C_AddOns and C_AddOns.LoadAddOn or LoadAddOn
+    if type(loader) ~= "function" then
+        ns.optionalDataState[addon] = "unavailable"
+        return false
+    end
+    _G.WowTogetherSharedNamespace = ns
+    local okay, loadResult = pcall(loader, addon)
+    if _G.WowTogetherSharedNamespace == ns then _G.WowTogetherSharedNamespace = nil end
+    if okay and ns.Public(loadResult) and loadResult == true and dataReady(definition) then
+        return markLoaded()
+    end
+    -- Missing folders must not cause a retry from every planner field access.
+    -- An explicit retry remains possible after clearing this diagnostic state.
+    ns.optionalDataState[addon] = okay and "data missing" or "load failed"
+    return false
+end
+
+local function proxy(field, addon, publicMetadata, safeEmpty)
+    local empty = {}
+    for key, enabled in pairs(safeEmpty or {}) do if enabled then empty[key] = {} end end
+    return setmetatable({}, {__index = function(_, key)
+        if publicMetadata and publicMetadata[key] ~= nil then return publicMetadata[key] end
+        ns.EnsureOptionalData(addon)
+        local value = ns[field]
+        local result = type(value) == "table" and rawget(value, key) or nil
+        if result ~= nil then return result end
+        return empty[key]
+    end})
+end
+
+-- Keep summary labels available without parsing the 9.5 MiB quest payload.
+-- The large quest table is loaded only when a guide/library actually asks for it.
+ns.catalogue = proxy("catalogue", "WowTogether_QuestData", {
+    count = 5230, captured = "2026-10-10",
+    source = "https://forever.warcraftdb.com/list/quests",
+    detailSource = "https://www.wowhead.com/forever/quests",
+}, {quests = true})
+ns.professionGuideData = proxy("professionGuideData", "WowTogether_ProfessionData", nil, {professions = true})
+ns.dungeonJournalData = proxy("dungeonJournalData", "WowTogether_DungeonData", nil, {dungeons = true, items = true})
+ns.dungeonMapData = proxy("dungeonMapData", "WowTogether_DungeonData", nil, {dungeons = true})
+
 -- Bundled, literal-only data. Keep each nested field packed until it is used.
 -- A decoded field becomes an ordinary, stable table: map resolution and other
 -- runtime annotations must survive collection and subsequent reads.
@@ -114,16 +199,42 @@ function ns.PackedDataStats()
     return result
 end
 
+function ns.OptionalDataDiagnostics(output)
+    for _, addon in ipairs({"WowTogether_QuestData", "WowTogether_ProfessionData", "WowTogether_DungeonData"}) do
+        output("Optional data " .. addon .. ": " .. (ns.optionalDataState[addon] or "not loaded"))
+    end
+end
+
 function ns.MemoryDiagnostics(output)
     -- Capability probe only; no garbage-collector manipulation or polling.
     local addons = C_AddOns
     local update = addons and addons.UpdateAddOnMemoryUsage or UpdateAddOnMemoryUsage
     local get = addons and addons.GetAddOnMemoryUsage or GetAddOnMemoryUsage
     output("Addon memory API: " .. (type(update) == "function" and type(get) == "function" and "present" or "unavailable"))
+    ns.OptionalDataDiagnostics(output)
     if type(update) == "function" and type(get) == "function" then
         ns.ReadPublic(update)
-        local used = ns.ReadPublic(get, addonName)
-        if ns.Public(used) and type(used) == "number" then output(string.format("Addon Lua memory: %.1f MiB (client attribution; includes allocated garbage).", used / 1024)) end
+        local names = {addonName, "WowTogether_QuestData", "WowTogether_ProfessionData", "WowTogether_DungeonData"}
+        local total, main, optional = 0, nil, {}
+        for index, name in ipairs(names) do
+            local used = ns.ReadPublic(get, name)
+            if ns.Public(used) and type(used) == "number" and used >= 0 then
+                total = total + used
+                if index == 1 then main = used else optional[name] = used end
+            end
+        end
+        if main then
+            local details = {}
+            for _, name in ipairs({"WowTogether_QuestData", "WowTogether_ProfessionData", "WowTogether_DungeonData"}) do
+                if optional[name] and optional[name] > 0 then
+                    details[#details + 1] = name:gsub("WowTogether_", "") .. " " .. string.format("%.1f MiB", optional[name] / 1024)
+                end
+            end
+            output("Addon Lua memory: " .. string.format("%.1f MiB total", total / 1024)
+                .. " (main " .. string.format("%.1f MiB", main / 1024) .. "; data "
+                .. (#details > 0 and table.concat(details, ", ") or "none loaded")
+                .. "; client attribution includes allocated garbage).")
+        end
     end
     for _, stat in ipairs(ns.PackedDataStats()) do
         output(string.format("Data %s: %d/%d records loaded; %d/%d detail fields unpacked; %.2f MiB still packed.",

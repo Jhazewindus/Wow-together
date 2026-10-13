@@ -13,7 +13,7 @@ from import_warcraftdb import apply_corrections
 class AshenvaleCoverageTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.records = own_lua(ROOT / 'WowTogether/QuestCatalogue.lua', 'catalogue')['quests']
+        cls.records = own_lua(ROOT / 'WowTogether_QuestData/QuestCatalogue.lua', 'catalogue')['quests']
 
     def test_escape_choices_are_mutually_exclusive_and_share_the_proven_gate(self):
         force, stealth = self.records[994], self.records[995]

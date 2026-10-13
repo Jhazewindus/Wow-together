@@ -2,13 +2,11 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.68
-## X-ReleaseName: DUNGEON JOURNAL FACT UPDATES
+## Version: 0.8.69
+## X-ReleaseName: GUIDE PERFORMANCE AND DATA COVERAGE
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua
-ProfessionData.lua
-QuestCatalogue.lua
 EliteSpawnData.lua
 ZoneConnections.lua
 MapProjection.lua
@@ -16,8 +14,7 @@ TravelData.lua
 GuideServiceData.lua
 TravelSafety.lua
 DungeonData.lua
-DungeonJournalData.lua
-DungeonMapData.lua
+ExperienceData.lua
 TravelNetwork.lua
 TravelTerrainData.lua
 TravelTerrain.lua

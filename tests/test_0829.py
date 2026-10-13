@@ -83,8 +83,9 @@ class PackedDataTests(unittest.TestCase):
         self.assertEqual(c.ns.catalogue.count, 5230)
         for key in ('entities-npc', 'entities-object', 'entities-item'):
             self.assertEqual(stats[key].loadedRows, 0)
-        for key in ('dungeon-journal', 'dungeon-maps'):
-            self.assertEqual(stats[key].decoded, 0)
+        self.assertNotIn('WowTogether_DungeonData', c.data_addons_loaded)
+        self.assertNotIn('dungeon-journal', stats)
+        self.assertNotIn('dungeon-maps', stats)
         c.lua.eval('collectgarbage')('collect')
         self.assertLess(c.lua.eval('collectgarbage')('count') / 1024, 32)
 
@@ -104,7 +105,7 @@ class PackedDataTests(unittest.TestCase):
         c.ns.MemoryDiagnostics(lines.append)
         self.assertIn('Addon memory API: unavailable', lines)
         before = [(r.name, r.decoded) for r in c.ns.PackedDataStats().values()]
-        c.lua.execute('memoryUpdates=0;C_AddOns={UpdateAddOnMemoryUsage=function() memoryUpdates=memoryUpdates+1 end,GetAddOnMemoryUsage=function() return 40960 end}')
+        c.lua.execute('memoryUpdates=0;C_AddOns={UpdateAddOnMemoryUsage=function() memoryUpdates=memoryUpdates+1 end,GetAddOnMemoryUsage=function(name) return name=="WowTogether" and 40960 or 0 end}')
         c.ns.MemoryDiagnostics(lines.append)
         self.assertTrue(any('40.0 MiB' in s for s in lines))
         self.assertEqual(c.lua.globals().memoryUpdates, 1)
@@ -119,7 +120,15 @@ class PackedDataTests(unittest.TestCase):
             return value
         baseline = json.loads((ROOT / 'tests/memory-data-fingerprints.json').read_text())
         for field, expected in baseline['datasets'].items():
-            value = canonical(own_lua(ROOT / 'WowTogether' / expected['file'], field))
+            name = expected['file']
+            if field == 'xpBaseline':
+                source = ROOT / 'WowTogether/ExperienceData.lua'
+            else:
+                package = ('WowTogether_QuestData' if name == 'QuestCatalogue.lua' else
+                           'WowTogether_DungeonData' if name in ('DungeonJournalData.lua', 'DungeonMapData.lua') else
+                           'WowTogether')
+                source = ROOT / package / name
+            value = canonical(own_lua(source, field))
             digest = hashlib.sha256(json.dumps(value, sort_keys=True, ensure_ascii=False, separators=(',', ':')).encode()).hexdigest()
             self.assertEqual(digest, expected['sha256'], field)
 

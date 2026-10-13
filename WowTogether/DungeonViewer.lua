@@ -527,6 +527,13 @@ end
 function ns.ShowDungeonViewer(group, mapOnly)
     local key = type(group) == "table" and group.key or group
     if type(key) ~= "string" or not ns.dungeonData or not ns.dungeonData.dungeons[key] then return end
+    if ns.EnsureOptionalData and not ns.EnsureOptionalData("WowTogether_DungeonData") then
+        if not ns.dungeonDataLoadWarningShown then
+            ns.dungeonDataLoadWarningShown = true
+            ns.Print("Dungeon reference files are missing. Install all WoW Together data folders beside WowTogether.")
+        end
+        return false
+    end
     if ns.DiscoverDungeonArtwork then ns.DiscoverDungeonArtwork() end
     local frame = create()
     if (frame.compact == true) ~= (mapOnly == true) then frame.mode:GetScript("OnClick")() end
