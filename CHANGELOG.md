@@ -1,5 +1,16 @@
 # Wow Together changelog
 
+## 0.8.74
+
+**CARD NAVIGATION**
+
+- Remove Start guide buttons from Recommended cards; click a card to open its
+  details and start from the guide view.
+- Make the Continue your guide card resume or reopen the active guide when
+  clicked. Remove its Continue and Session buttons; keep the session summary
+  visible on the card.
+- Preserve session checkpoint controls in the guide flow and session window.
+
 ## 0.8.73
 
 **SETTINGS SORTED**

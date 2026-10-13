@@ -1,27 +1,37 @@
 # Wow Together — friend test script
 
-For **0.8.73** — **SETTINGS SORTED**, World of Warcraft: Forever beta,
+For **0.8.74** — **CARD NAVIGATION**, World of Warcraft: Forever beta,
 interface **16001**.
 Allow **5–10 minutes for this update**; the wider optional checks take 45–60
 minutes. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The retained expanded-guide checks below take about **15–25 minutes**.
 
-## Settings and Recommended screen — this update
+## Recommended card actions — this update
 
-1. Open Settings and switch between the pages. Confirm controls are grouped by
-   feature, descriptions are fully readable, and Reset guide skips is under
-   Quest data and saved progress. No setting should reset when changing pages.
-2. On Recommended, click the leveling card body. It should open the guide's
-   quest list without starting it. Start guide remains available on the card;
-   **Browse all leveling guides** opens the full leveling browser.
-3. Click a profession recommendation card and confirm it opens that guide's
-   details. Use its Start guide button when ready.
-4. Confirm the footer has no Diagnostics or Open guide buttons. `/wt probe` and
-   right-clicking the minimap button should still open diagnostics.
+1. On Recommended, click the leveling card body. It opens the guide's quest
+   list without starting it; Start route remains available in that view. The
+   card itself has no separate Start guide button.
+2. Click a profession recommendation card. It opens that guide's details, with
+   its start action in the details view.
+3. With a guide active, click the Continue your guide card. It opens the small
+   guide window. With a paused checkpoint, clicking the card resumes it. Neither
+   state shows separate Continue or Session buttons; the session summary stays
+   readable on the card.
+4. Click a last-session summary card. It opens the leveling browser without
+   changing the saved summary. Cards should highlight their border on hover.
 
-Host checks cover settings grouping, card clicks and retained start actions.
-Check the pages fit and read cleanly at your normal UI scale in the beta client.
+Host checks cover card actions, guide start from details and checkpoint resume.
+Check the cards fit and read cleanly at your normal UI scale in the beta client.
+
+## Settings and footer — regression
+
+1. Switch Settings pages. Confirm descriptions wrap, controls stay grouped, and
+   Reset guide skips remains under Quest data and saved progress. Changing pages
+   must not reset settings.
+2. **Browse all leveling guides** opens the full leveling browser. The main
+   footer has no Diagnostics or Open guide buttons; `/wt probe` and right-clicking
+   the minimap button still open diagnostics.
 
 ## Start a route while the quest list prepares — this update
 

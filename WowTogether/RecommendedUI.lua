@@ -30,16 +30,12 @@ local function makeCard(parent, featured)
     card.detail:SetPoint("TOPLEFT", 16, featured and -66 or -76)
     card.detail:SetHeight(featured and 34 or 35); card.detail:SetWordWrap(true); card.detail:SetJustifyV("TOP")
     card.progress = ns.UILabel(card, nil, 10, c.muted)
-    card.progress:SetPoint("BOTTOMLEFT", 16, 47); card.progress:SetHeight(14); card.progress:SetWordWrap(false)
+    card.progress:SetPoint("BOTTOMLEFT", 16, 23); card.progress:SetHeight(14); card.progress:SetWordWrap(false)
     card.track = card:CreateTexture(nil, "ARTWORK")
     card.track:SetColorTexture(0.30, 0.28, 0.23, 0.75); card.track:SetHeight(2)
-    card.track:SetPoint("BOTTOMLEFT", 16, 42)
+    card.track:SetPoint("BOTTOMLEFT", 16, 17)
     card.fill = card:CreateTexture(nil, "OVERLAY")
     card.fill:SetColorTexture(unpack(c.gold)); card.fill:SetHeight(2); card.fill:SetPoint("LEFT", card.track, "LEFT", 0, 0)
-    card.start = ns.UIButton(card, "Start guide", 126, function()
-        if card.data and card.data.start then card.data.start() end
-    end, true)
-    card.start:SetPoint("BOTTOMLEFT", 16, 10)
     if not featured then
         card.icon = card:CreateTexture(nil, "ARTWORK")
         card.icon:SetPoint("TOPLEFT", 16, -32); card.icon:SetSize(44, 44); card.icon:SetAlpha(1)
@@ -52,7 +48,6 @@ local function updateCard(card, item)
     card.category:SetText(item.category or "RECOMMENDED")
     card.title:SetText(item.title); card.count:SetText(item.count or "")
     card.detail:SetText(item.detail or ""); card.progress:SetText(item.progress or "")
-    card.start.caption:SetText(item.action or "View guide"); card.start:SetEnabled(item.start ~= nil)
     if card.icon then card.icon:SetTexture(item.icon or "Interface\\Icons\\INV_Misc_Book_09") end
     local total, value = tonumber(item.progressTotal) or 0, tonumber(item.progressValue) or 0
     card.fraction = total > 0 and math.max(0, math.min(1, value / total)) or 0
@@ -69,20 +64,21 @@ local function createHome()
     home.browseLeveling:SetPoint("TOPRIGHT", 0, 0)
     home.resume = CreateFrame("Frame", nil, home, "BackdropTemplate")
     ns.UIPanel(home.resume, ns.UIColors.background)
+    home.resume:EnableMouse(true)
+    home.resume:SetScript("OnMouseUp", function(self, mouseButton)
+        if mouseButton ~= "LeftButton" then return end
+        if ns.PausedSessionCheckpoint() then ns.ResumeGuideSession()
+        elseif ns.routeSelection then ns.OpenGuideWindow()
+        else ns.SetFilter("guides") end
+    end)
+    home.resume:SetScript("OnEnter", function(self) self:SetBackdropBorderColor(unpack(ns.UIColors.gold)) end)
+    home.resume:SetScript("OnLeave", function(self) self:SetBackdropBorderColor(unpack(ns.UIColors.border)) end)
     home.resume.category = ns.UILabel(home.resume, nil, 9, ns.UIColors.muted)
     home.resume.category:SetPoint("TOPLEFT", 14, -8); home.resume.category:SetText("CONTINUE YOUR GUIDE")
     home.resume.title = heading(home.resume, "", 13)
     home.resume.title:SetPoint("TOPLEFT", 14, -23); home.resume.title:SetHeight(18)
     home.resume.detail = ns.UILabel(home.resume, nil, 10, ns.UIColors.muted)
     home.resume.detail:SetPoint("TOPLEFT", 14, -46); home.resume.detail:SetHeight(28); home.resume.detail:SetWordWrap(true)
-    home.resume.button = ns.UIButton(home.resume, "Continue", 112, function()
-        if ns.PausedSessionCheckpoint() then ns.ResumeGuideSession()
-        elseif ns.routeSelection then ns.OpenGuideWindow()
-        else ns.SetFilter("guides") end
-    end, true)
-    home.resume.button:SetPoint("TOPRIGHT", -14, -9)
-    home.resume.session = ns.UIButton(home.resume, "Session", 112, ns.ShowSessionCheckpoint)
-    home.resume.session:SetPoint("BOTTOMRIGHT", -14, 9)
     home.leveling = makeCard(home, true)
     home.professionTitle = heading(home, "Your professions", 16, ns.UIColors.text)
     home.browseProfessions = ns.UIButton(home, "Browse all professions", 180, function() ns.SetFilter("professions") end)
@@ -117,7 +113,7 @@ function ns.LayoutRecommended()
     home:SetWidth(width); home.title:SetWidth(width - 226)
     if home.resume:IsShown() then
         home.resume:ClearAllPoints(); home.resume:SetPoint("TOPLEFT", 0, -top); home.resume:SetSize(width, 82)
-        home.resume.title:SetWidth(width - 168); home.resume.detail:SetWidth(width - 168); top = top + 94
+        home.resume.title:SetWidth(width - 28); home.resume.detail:SetWidth(width - 28); top = top + 94
     end
     home.leveling:ClearAllPoints(); home.leveling:SetPoint("TOPLEFT", 0, -top)
     layoutCard(home.leveling, width, 164); top = top + 176

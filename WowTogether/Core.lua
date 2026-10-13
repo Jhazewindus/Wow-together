@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.73"
-ns.RELEASE_NAME = "SETTINGS SORTED"
+ns.VERSION = "0.8.74"
+ns.RELEASE_NAME = "CARD NAVIGATION"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}

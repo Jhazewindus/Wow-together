@@ -90,8 +90,8 @@ class RecommendedHomeTests(unittest.TestCase):
         before = order(c.ns.routeSelection)
         c.ns.window.Hide(c.ns.window); c.ns.ToggleWindow()
         self.assertTrue(c.ns.ui.home.resume.IsShown(c.ns.ui.home.resume))
-        self.assertEqual(c.ns.ui.home.leveling.start.caption.text, 'Continue guide')
-        c.ns.ui.home.leveling.start.OnClick()
+        self.assertIsNone(c.ns.ui.home.leveling.start)
+        c.ns.ui.home.resume.OnMouseUp(c.ns.ui.home.resume, 'LeftButton')
         self.assertEqual(c.ns.routeSelection.key, g.key)
         self.assertEqual(order(c.ns.routeSelection), before)
         self.assertIsNone(c.ns.routePlanning)
@@ -111,7 +111,9 @@ class RecommendedHomeTests(unittest.TestCase):
 
     def test_start_card_activates_the_existing_fixed_guide(self):
         c = browser(); c.ns.SetFilter('recommended')
-        c.ns.ui.home.leveling.start.OnClick(); run_plan(c)
+        c.ns.ui.home.leveling.OnMouseUp(c.ns.ui.home.leveling, 'LeftButton')
+        self.assertTrue(c.ns.guideQuestList.IsShown(c.ns.guideQuestList))
+        c.ns.guideQuestList.start.OnClick(); run_plan(c)
         self.assertEqual(c.ns.routeSelection.zone, 'Test Coast')
         self.assertTrue(c.ns.routeSelection.fixedRoute)
         self.assertEqual({s.id for s in c.ns.selectedRoute.stops.values()}, {900, 901})
@@ -150,7 +152,7 @@ class RecommendedHomeTests(unittest.TestCase):
         self.assertEqual(c.ns.ui.home.extraCount, 1)
         self.assertEqual(c.ns.ui.home.leveling.data.guide.zone, 'Test Coast')
         self.assertIn('bad provider', c.ns.recommendationErrors.broken)
-        c.ns.ui.home.extraCards[1].start.OnClick()
+        c.ns.ui.home.extraCards[1].OnMouseUp(c.ns.ui.home.extraCards[1], 'LeftButton')
         self.assertTrue(c.lua.globals().futureClicked)
 
 
@@ -190,8 +192,8 @@ class RecommendedProfessionTests(unittest.TestCase):
         c.ns.ui.home.cards[1].OnMouseUp(c.ns.ui.home.cards[1], 'LeftButton')
         self.assertEqual(c.ns.routeSelection.professionID, 171)
         self.assertEqual(c.ns.routeSelection.professionBatch.remaining, before)
-        self.assertEqual(c.ns.ui.home.cards[1].start.caption.text, 'Continue guide')
-        c.ns.ui.home.cards[1].start.OnClick()
+        self.assertIsNone(c.ns.ui.home.cards[1].start)
+        c.ns.ui.home.resume.OnMouseUp(c.ns.ui.home.resume, 'LeftButton')
         self.assertEqual(c.ns.routeSelection.targetSkill, 75)
         self.assertEqual(c.ns.routeSelection.professionBatch.remaining, before)
 

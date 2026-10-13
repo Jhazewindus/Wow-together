@@ -180,7 +180,6 @@ function ns.UpdateSessionResumeBar()
     home.resume:SetShown(running ~= nil or saved ~= nil or summary ~= nil)
     home.resume.category:SetText(saved and "PAUSED GUIDE" or running and "CONTINUE YOUR GUIDE" or "LAST SESSION")
     home.resume.title:SetText(running and guide.title or saved and saved.guide.title or summary and summary.title or "")
-    home.resume.button.caption:SetText(saved and "Resume" or running and "Continue" or "Browse guides")
     home.resume.detail:SetText(ns.GuideSessionSummaryText())
 end
 

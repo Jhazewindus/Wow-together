@@ -165,8 +165,8 @@ class SessionCheckpointTests(unittest.TestCase):
         self.assertIsNotNone(n.ns.PausedSessionCheckpoint())
         self.assertEqual((session(n).xp, session(n).seconds), (100, 60))
         n.ns.SetFilter('recommended')
-        self.assertEqual(n.ns.ui.home.resume.button.caption.text, 'Resume')
-        n.ns.ui.home.resume.button.OnClick(); run_plan(n)
+        self.assertIsNone(n.ns.ui.home.resume.button)
+        n.ns.ui.home.resume.OnMouseUp(n.ns.ui.home.resume, 'LeftButton'); run_plan(n)
         self.assertNotIn(900, {s.id for s in n.ns.selectedRoute.stops.values()})
         self.assertEqual((session(n).xp, session(n).seconds), (0, 0))
 
@@ -252,12 +252,13 @@ class SessionCheckpointTests(unittest.TestCase):
 
 
 class SessionUITests(unittest.TestCase):
-    def test_resume_bar_continue_is_read_only_and_session_panel_close_keeps_guide(self):
+    def test_resume_bar_click_continues_and_session_panel_close_keeps_guide(self):
         c = playing(); before = order(c.ns.routeSelection)
         c.ns.SetFilter('recommended')
-        self.assertEqual(c.ns.ui.home.resume.button.caption.text, 'Continue')
-        c.ns.ui.home.resume.button.OnClick()
-        c.ns.ui.home.resume.session.OnClick()
+        self.assertIsNone(c.ns.ui.home.resume.button)
+        self.assertIsNone(c.ns.ui.home.resume.session)
+        c.ns.ui.home.resume.OnMouseUp(c.ns.ui.home.resume, 'LeftButton')
+        c.ns.ShowSessionCheckpoint()
         self.assertTrue(c.ns.sessionWindow.IsShown(c.ns.sessionWindow))
         c.ns.sessionWindow.close.OnClick()
         self.assertEqual(order(c.ns.routeSelection), before)
@@ -288,8 +289,12 @@ class SessionUITests(unittest.TestCase):
         home = c.ns.ui.home
         self.assertTrue(home.resume.IsShown(home.resume))
         self.assertEqual(home.resume.category.text, 'LAST SESSION')
-        self.assertEqual(home.resume.button.caption.text, 'Browse guides')
-        home.resume.session.OnClick()
+        self.assertIsNone(home.resume.button)
+        self.assertIsNone(home.resume.session)
+        self.assertIn('100 XP', home.resume.detail.text)
+        home.resume.OnMouseUp(home.resume, 'LeftButton')
+        self.assertEqual(c.ns.filter, 'guides')
+        c.ns.ShowSessionCheckpoint()
         self.assertIn('100 XP', c.ns.sessionWindow.stats.text)
         self.assertFalse(c.ns.sessionWindow.action.IsEnabled(c.ns.sessionWindow.action))
         self.assertIsNone(c.ns.routeSelection)

@@ -2,13 +2,18 @@
 
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
-progress. Version **0.8.73 — SETTINGS SORTED** targets interface **16001**,
+progress. Version **0.8.74 — CARD NAVIGATION** targets interface **16001**,
 uses Lua **5.1**, and reads capabilities rather than choosing a Classic
 implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
 public character context. The guide combines nearby work, preserves selected
 routes and shows whose progress needs the next step. It also works solo.
+
+**0.8.74 makes Recommended cards the action.** Click a recommendation to open
+its details; start it from the guide view. Click the resume card to continue or
+resume your guide. On Recommended, the separate Start guide, Continue and Session
+buttons are gone; the session summary remains visible on the card.
 
 **0.8.73 organizes Settings by task** and makes the Recommended cards clickable
 to open their quest or profession details. Use **Browse all leveling guides**

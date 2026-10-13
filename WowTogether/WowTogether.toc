@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.73
-## X-ReleaseName: SETTINGS SORTED
+## Version: 0.8.74
+## X-ReleaseName: CARD NAVIGATION
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua
