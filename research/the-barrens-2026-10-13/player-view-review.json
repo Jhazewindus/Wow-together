@@ -1,0 +1,185 @@
+{
+  "profile": "host fixture: classID 8 (Mage), Orc/Human faction race, class quest setting off; synthetic map API",
+  "views": [
+    {
+      "faction": "Horde",
+      "guide": "level-zone:kalimdor/the-barrens:levels:11-20",
+      "title": "The Barrens leveling guide \u2022 Levels 11\u201320",
+      "view": "fresh",
+      "level": 11,
+      "stopCount": 216,
+      "objectiveCount": 84,
+      "actionVisibleForEveryObjective": true,
+      "allStepDescriptionsGenerated": 216,
+      "sample": [
+        {
+          "quest": "The Hunter's Way",
+          "action": "Loot 4 \u00d7 Flatland Prowler Claw from Flatland Prowler",
+          "description": "The Hunter's Way\nLoot 4 \u00d7 Flatland Prowler Claw from Flatland Prowler\nKill and loot Flatland Prowler.\nFlatland Prowler Claw is needed to finish The Hunter's Way.\nTest Hills \u2022 52.6, 12.8"
+        }
+      ]
+    },
+    {
+      "faction": "Horde",
+      "guide": "level-zone:kalimdor/the-barrens:levels:11-20",
+      "title": "The Barrens leveling guide \u2022 Levels 11\u201320",
+      "view": "mid",
+      "level": 15,
+      "stopCount": 216,
+      "objectiveCount": 84,
+      "actionVisibleForEveryObjective": true,
+      "allStepDescriptionsGenerated": 216,
+      "sample": [
+        {
+          "quest": "The Hunter's Way",
+          "action": "Loot 4 \u00d7 Flatland Prowler Claw from Flatland Prowler",
+          "description": "The Hunter's Way\nLoot 4 \u00d7 Flatland Prowler Claw from Flatland Prowler\nKill and loot Flatland Prowler.\nLower-level step: Unlocks Plainstrider Menace (level 12).\nTest Hills \u2022 52.6, 12.8"
+        }
+      ]
+    },
+    {
+      "faction": "Horde",
+      "guide": "level-zone:kalimdor/the-barrens:levels:21-30",
+      "title": "The Barrens leveling guide \u2022 Levels 21\u201330",
+      "view": "fresh",
+      "level": 21,
+      "stopCount": 143,
+      "objectiveCount": 59,
+      "actionVisibleForEveryObjective": true,
+      "allStepDescriptionsGenerated": 143,
+      "sample": [
+        {
+          "quest": "The Hunter's Way",
+          "action": "Loot 4 \u00d7 Flatland Prowler Claw from Flatland Prowler",
+          "description": "The Hunter's Way\nLoot 4 \u00d7 Flatland Prowler Claw from Flatland Prowler\nKill and loot Flatland Prowler.\nLower-level step: Unlocks Jorn Skyseer (level 18).\nTest Hills \u2022 52.6, 12.8"
+        }
+      ]
+    },
+    {
+      "faction": "Horde",
+      "guide": "level-zone:kalimdor/the-barrens:levels:21-30",
+      "title": "The Barrens leveling guide \u2022 Levels 21\u201330",
+      "view": "mid",
+      "level": 25,
+      "stopCount": 143,
+      "objectiveCount": 59,
+      "actionVisibleForEveryObjective": true,
+      "allStepDescriptionsGenerated": 143,
+      "sample": [
+        {
+          "quest": "The Hunter's Way",
+          "action": "Loot 4 \u00d7 Flatland Prowler Claw from Flatland Prowler",
+          "description": "The Hunter's Way\nLoot 4 \u00d7 Flatland Prowler Claw from Flatland Prowler\nKill and loot Flatland Prowler.\nLower-level step: Unlocks Mahren Skyseer (level 27).\nTest Hills \u2022 52.6, 12.8"
+        }
+      ]
+    },
+    {
+      "faction": "Horde",
+      "guide": "level-zone:kalimdor/the-barrens:levels:31-40",
+      "title": "The Barrens leveling guide \u2022 Levels 31\u201340",
+      "view": "fresh",
+      "level": 33,
+      "stopCount": 11,
+      "objectiveCount": 5,
+      "actionVisibleForEveryObjective": true,
+      "allStepDescriptionsGenerated": 11,
+      "sample": [
+        {
+          "quest": "The Swarm Grows",
+          "action": "Complete the Belgrom Rockmaul objective",
+          "description": "The Swarm Grows\nComplete the Belgrom Rockmaul objective\nFinish this quest objective in the marked area.\nRequired for The Swarm Grows later in this guide; finish and turn in The Swarm Grows first.\nTest Hills \u2022 75.0, 34.2\nQuest item: Korran's Sealed Note (provided)"
+        }
+      ]
+    },
+    {
+      "faction": "Horde",
+      "guide": "level-zone:kalimdor/the-barrens:levels:31-40",
+      "title": "The Barrens leveling guide \u2022 Levels 31\u201340",
+      "view": "mid",
+      "level": 33,
+      "stopCount": 11,
+      "objectiveCount": 5,
+      "actionVisibleForEveryObjective": true,
+      "allStepDescriptionsGenerated": 11,
+      "sample": [
+        {
+          "quest": "The Swarm Grows",
+          "action": "Complete the Belgrom Rockmaul objective",
+          "description": "The Swarm Grows\nComplete the Belgrom Rockmaul objective\nFinish this quest objective in the marked area.\nRequired for The Swarm Grows later in this guide; finish and turn in The Swarm Grows first.\nTest Hills \u2022 75.0, 34.2\nQuest item: Korran's Sealed Note (provided)"
+        }
+      ]
+    },
+    {
+      "faction": "Alliance",
+      "guide": "level-zone:kalimdor/the-barrens:levels:11-20",
+      "title": "The Barrens leveling guide \u2022 Levels 11\u201320",
+      "view": "fresh",
+      "level": 14,
+      "stopCount": 43,
+      "objectiveCount": 17,
+      "actionVisibleForEveryObjective": true,
+      "allStepDescriptionsGenerated": 43,
+      "sample": [
+        {
+          "quest": "Southsea Freebooters",
+          "action": "Kill 12 \u00d7 Southsea Brigand",
+          "description": "Southsea Freebooters\nKill 12 \u00d7 Southsea Brigand\nFinish this quest objective in the marked area.\nRequired for The Missing Shipment later in this guide; finish and turn in Southsea Freebooters first.\nTest Hills \u2022 63.4, 43.2"
+        }
+      ]
+    },
+    {
+      "faction": "Alliance",
+      "guide": "level-zone:kalimdor/the-barrens:levels:11-20",
+      "title": "The Barrens leveling guide \u2022 Levels 11\u201320",
+      "view": "mid",
+      "level": 16,
+      "stopCount": 43,
+      "objectiveCount": 17,
+      "actionVisibleForEveryObjective": true,
+      "allStepDescriptionsGenerated": 43,
+      "sample": [
+        {
+          "quest": "Southsea Freebooters",
+          "action": "Kill 12 \u00d7 Southsea Brigand",
+          "description": "Southsea Freebooters\nKill 12 \u00d7 Southsea Brigand\nFinish this quest objective in the marked area.\nRequired for The Missing Shipment later in this guide; finish and turn in Southsea Freebooters first.\nTest Hills \u2022 63.4, 43.2"
+        }
+      ]
+    },
+    {
+      "faction": "Alliance",
+      "guide": "level-zone:kalimdor/the-barrens:levels:21-30",
+      "title": "The Barrens leveling guide \u2022 Levels 21\u201330",
+      "view": "fresh",
+      "level": 21,
+      "stopCount": 27,
+      "objectiveCount": 9,
+      "actionVisibleForEveryObjective": true,
+      "allStepDescriptionsGenerated": 27,
+      "sample": [
+        {
+          "quest": "Chol'aruk the Ravener",
+          "action": "Loot Chol'aruk's Head from Chol'aruk",
+          "description": "Chol'aruk the Ravener\nLoot Chol'aruk's Head from Chol'aruk\nElite quest: bring a party for its objectives, or use Skip quest.\nKill and loot Chol'aruk.\nChol'aruk's Head is needed to finish Chol'aruk the Ravener.\nTest Hills \u2022 57.6, 27.4"
+        }
+      ]
+    },
+    {
+      "faction": "Alliance",
+      "guide": "level-zone:kalimdor/the-barrens:levels:21-30",
+      "title": "The Barrens leveling guide \u2022 Levels 21\u201330",
+      "view": "mid",
+      "level": 23,
+      "stopCount": 27,
+      "objectiveCount": 9,
+      "actionVisibleForEveryObjective": true,
+      "allStepDescriptionsGenerated": 27,
+      "sample": [
+        {
+          "quest": "Chol'aruk the Ravener",
+          "action": "Loot Chol'aruk's Head from Chol'aruk",
+          "description": "Chol'aruk the Ravener\nLoot Chol'aruk's Head from Chol'aruk\nElite quest: bring a party for its objectives, or use Skip quest.\nKill and loot Chol'aruk.\nChol'aruk's Head is needed to finish Chol'aruk the Ravener.\nTest Hills \u2022 57.6, 27.4"
+        }
+      ]
+    }
+  ]
+}
