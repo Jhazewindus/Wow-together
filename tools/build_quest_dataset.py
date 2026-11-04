@@ -52,6 +52,28 @@ def merge_entity(entities,kind,ident,value):
         if key in value:target[key]=value[key]
 
 
+def merge_prior_fields(current, prior):
+    """Fill unpublished nested fields without replacing refreshed source values."""
+    if isinstance(current,dict) and isinstance(prior,dict):
+        for key,value in prior.items():
+            if current.get('quantityUnknown') is True and key=='quantity':continue
+            if current.get('quantity') is not None and key=='quantityUnknown' and value is True:continue
+            if key not in current:
+                current[key]=value
+            else:
+                merge_prior_fields(current[key],value)
+    elif isinstance(current,list) and isinstance(prior,list):
+        identity=('entityType','entityID','itemID','action','spellID')
+        for old in prior:
+            if not isinstance(old,dict):continue
+            old_id=tuple(old.get(key) for key in identity)
+            if not any(isinstance(row,dict) and tuple(row.get(key) for key in identity)==old_id
+                       for row in current):continue
+            row=next(row for row in current if isinstance(row,dict) and
+                     tuple(row.get(key) for key in identity)==old_id)
+            merge_prior_fields(row,old)
+
+
 def forever_pois(path, entities):
     """Read only the reviewed data rows, never the source addon's engine."""
     metadata=json.loads((ROOT/'WowTogether/TravelData.json').read_text())
@@ -82,7 +104,14 @@ def build(args):
     source_requirements={}
     source_provided={}
     source_maps={}
+    # Keep the published catalogue available as a field-level fallback. A
+    # refreshed source may update a value, but a page omitted from the latest
+    # capture is not evidence that its previously reviewed facts were false.
+    prior_catalogue=own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','catalogue')
+    prior_world_checks=own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua','worldQuestChecks')
+    prior_records=prior_catalogue.get('quests',{})
     previous=json.loads((ROOT/'WowTogether/QuestCatalogue.json').read_text())
+    prior_coverage=json.loads((ROOT/'WowTogether/QuestCoverage.json').read_text())
     area_maps={int(k):v for k,v in previous['area_ui_maps'].items()}
     geometry, geometry_source = {}, {}
     if args.forever_geometry:
@@ -168,7 +197,12 @@ def build(args):
     # Tester-confirmed Forever gates must precede fallback imports so an older
     # alternative branch cannot weaken or conflict with a tested requirement.
     apply_corrections(records)
-    beta_source = merge_beta_facts(records,refs,entities,area_maps,args.forever_beta_data) if args.forever_beta_data else {}
+    correction_rows=json.loads((ROOT/'tools/quest_corrections.json').read_text())
+    reviewed_stage_ids={row['questID'] for row in correction_rows if row.get('stageCorrection')}
+    reviewed_item_source_ids={r['itemID'] for row in correction_rows if row.get('stageCorrection')
+        for r in row['stageCorrection'].get('requiredItems',[])}
+    beta_source = merge_beta_facts(records,refs,entities,area_maps,args.forever_beta_data,
+        preserve_item_sources=reviewed_item_source_ids) if args.forever_beta_data else {}
     if args.legacy_snapshot:
         print('Reading pinned older-world facts (no SQL execution)...',flush=True)
         legacy=indexed(read_snapshot(args.legacy_snapshot))
@@ -269,11 +303,14 @@ def build(args):
         # Clear stale generated enrichment on reproducible rebuilds.
         quest.pop('missingRequirements',None)
         for ref in relation['requirements']:
-            if ref['entityType']=='item' and ref.get('quantity'):
+            if ref['entityType']=='item' and (ref.get('quantity') or ref.get('quantityUnknown')):
                 items=quest.setdefault('requiredItems',[])
                 if not any(i['itemID']==ref['entityID'] for i in items):
-                    items.append({'itemID':ref['entityID'],'name':ref['name'],'quantity':ref['quantity']})
-        enrich(quest,relation,entities)
+                    item={'itemID':ref['entityID'],'name':ref['name']}
+                    if ref.get('quantity') is not None:item['quantity']=ref['quantity']
+                    else:item['quantityUnknown']=True
+                    items.append(item)
+        enrich(quest,relation,entities,preserve_reviewed_objectives=ident in reviewed_stage_ids)
     native_maps={'source':'https://forever.warcraftdb.com/list/quests','stages_added':0,'quests':[]}
     known_maps=set(area_maps.values())|set(geometry)|{n['mapID'] for n in travel['nodes'].values()}
     for ident,raw in sorted(source_maps.items()):
@@ -289,6 +326,36 @@ def build(args):
             legacy['quests'], legacy['item'], area_maps)
     corrections=apply_corrections(records)
     stage_corrections=apply_stage_corrections(records)
+    prior_snapshot_fields=0
+    prior_snapshot_quests=0
+    for ident, prior in prior_records.items():
+        current=records.get(ident)
+        if current is None:continue
+        retained=[]
+        for key,value in prior.items():
+            if current.get('stageCorrectionSource') and key in ('objectives','objectiveAlternatives'):
+                continue
+            if key not in current:
+                current[key]=value
+                retained.append(key)
+            else:
+                before=repr(current[key])
+                merge_prior_fields(current[key],value)
+                if repr(current[key])!=before:retained.append(key)
+        # Keep a previously reviewed objective label for native progress text
+        # when the refreshed row names only its target entity.
+        prior_objectives=(prior.get('worldReferences') or {}).get('requirements') or []
+        for requirement in current.get('requirements') or []:
+            prior_requirement=next((row for row in prior_objectives if row.get('entityType')==requirement.get('entityType')
+                and row.get('entityID')==requirement.get('entityID') and row.get('name')
+                and row.get('name')!=requirement.get('name')),None)
+            if prior_requirement and not requirement.get('progressName'):
+                requirement['progressName']=prior_requirement['name']
+                retained.append('requirements.progressName')
+        if retained:
+            current['retainedPriorSnapshotFields']=retained
+            prior_snapshot_fields+=len(retained)
+            prior_snapshot_quests+=1
     # Importing a whole factual item database must not make the game load
     # thousands of unrelated loot tables. Retain every item used by a quest,
     # including starters/provided items and all of their actual source facts.
@@ -313,7 +380,7 @@ def build(args):
     lua_output = ROOT/'WowTogether_QuestData' if output.resolve() == (ROOT/'WowTogether').resolve() else output
     lua_output.mkdir(parents=True, exist_ok=True)
     (lua_output/'QuestCatalogue.lua').write_text(quest_code(catalogue, runtime_entities,
-        world_checks if args.legacy_snapshot else None, None))
+        world_checks if args.legacy_snapshot else prior_world_checks, None))
     summary=dict(previous,captured=datetime.date.today().isoformat(),count=len(records),detailed_quests=valid_pages,
         with_starters=sum(bool(q.get('starts')) for q in records.values()),with_objectives=sum(bool(q.get('objectives')) for q in records.values()),
         with_turnins=sum(bool(q.get('ends')) for q in records.values()),with_series=sum(bool(q.get('series')) for q in records.values()),
@@ -322,7 +389,10 @@ def build(args):
         repeatable_quests=sum(q.get('repeatable') is True for q in records.values()),area_ui_maps=area_maps,
         entities={k:len(v) for k,v in runtime_entities.items()},source_entities={k:len(v) for k,v in entities.items()},additional_map_joins=joins,legacy_fallback=legacy_stats,
         forever_npc_geography=poi_source,forever_beta_facts=beta_source,community_coordinate_facts=community_source,
-        warcraftdb_native_maps=native_maps,tester_corrections=corrections,reviewed_stage_corrections=stage_corrections)
+        warcraftdb_native_maps=native_maps,tester_corrections=corrections,reviewed_stage_corrections=stage_corrections,
+        prior_snapshot_fallback={'source_commit':subprocess.check_output(['git','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
+            'quests_with_retained_fields':prior_snapshot_quests,'retained_fields':prior_snapshot_fields,
+            'rule':'current facts take precedence; prior reviewed fields fill omissions'})
     (output/'QuestCatalogue.json').write_text(json.dumps(summary,indent=2)+'\n')
     coverage=collections.defaultdict(lambda: {'quests':0,'pickups':0,'objectives':0,'turnins':0,'complete_locations':0,'missing_quest_ids':[]})
     for ident,quest in sorted(records.items()):
@@ -342,7 +412,10 @@ def build(args):
         'quest_capture':json.loads((args.quest_cache/'capture.json').read_text()) if (args.quest_cache/'capture.json').exists() else {},
         'entity_capture':json.loads((args.entity_cache/'capture.json').read_text()) if (args.entity_cache/'capture.json').exists() else {},
         'legacy_fallback':legacy_stats,'forever_beta_facts':beta_source,'community_coordinate_facts':community_source,
-        'warcraftdb_native_maps':native_maps}
+        'warcraftdb_native_maps':native_maps,
+        'prior_snapshot_fallback':summary['prior_snapshot_fallback']}
+    for key,value in prior_coverage.items():
+        if key not in report:report[key]=value
     if geometry_source:report['sources'].append(geometry_source['source'])
     if beta_source:report['sources'].append(beta_source['source'])
     (output/'QuestCoverage.json').write_text(json.dumps(report,indent=2)+'\n')

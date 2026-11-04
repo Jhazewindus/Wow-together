@@ -21,7 +21,8 @@ class ArathiCoverageTests(unittest.TestCase):
     def test_anyone_can_cook_retains_all_verified_ogre_sources(self):
         quest = self.records[79624]
         self.assertEqual((quest['side'], quest['level'], quest['minLevel']), ('Both', 40, 32))
-        self.assertEqual((quest['classMask'], quest['raceMask']), (0, 0))
+        self.assertEqual(quest['classMask'], 0)
+        self.assertEqual(quest.get('raceMask'), 0)
         self.assertFalse(quest.get('starts'))  # The page provides no starter relation.
         self.assertEqual(quest['ends'][0]['entityID'], 217300)
         self.assertEqual((quest['objectives'][0]['itemID'], quest['objectives'][0]['quantity']), (213422, 1))
@@ -37,13 +38,13 @@ class ArathiCoverageTests(unittest.TestCase):
     def test_hammerfall_suture_and_restock_chain_keeps_unknown_stages_visible(self):
         suture, restock = self.records[97539], self.records[92519]
         self.assertEqual((suture['side'], suture['level'], suture['minLevel']), ('Horde', 36, 30))
-        self.assertEqual((suture['classMask'], suture['raceMask']), (0, 0))
+        self.assertEqual((suture['classMask'], suture['raceMask']), (0, 8589934770))
         self.assertEqual((suture['starts'][0]['entityID'], suture['ends'][0]['entityID']), (12920, 12920))
         self.assertEqual((suture['requiredItems'][0]['itemID'], suture['requiredItems'][0]['quantity']), (278225, 12))
         silk_sources = suture['objectiveAlternatives'][0]['locations']
         self.assertEqual({point['entityID'] for point in silk_sources}, {2563, 2565})
         self.assertEqual((restock['side'], restock['level'], restock['minLevel']), ('Horde', 36, 30))
-        self.assertEqual((restock['classMask'], restock['raceMask']), (0, 0))
+        self.assertEqual((restock['classMask'], restock['raceMask']), (0, 8589934770))
         self.assertEqual(restock['previousQuest'], 97539)  # The prior quest must be handed in.
         self.assertFalse(restock.get('starts'))  # No source identifies who offers the follow-up.
         self.assertEqual(restock['ends'][0]['entityID'], 12920)
@@ -55,7 +56,7 @@ class ArathiCoverageTests(unittest.TestCase):
     def test_giant_in_the_den_maps_confirmed_return_and_warns_for_elite(self):
         quest = self.records[92707]
         self.assertEqual((quest['side'], quest['level'], quest['minLevel']), ('Horde', 33, 30))
-        self.assertEqual((quest['classMask'], quest['raceMask']), (0, 0))
+        self.assertEqual((quest['classMask'], quest['raceMask']), (0, 8589934770))
         self.assertFalse(quest.get('starts'))
         self.assertEqual((quest['objectives'][0]['entityID'], quest['objectives'][0]['itemID'],
                           quest['objectives'][0]['quantity']), (218032, 253711, 1))

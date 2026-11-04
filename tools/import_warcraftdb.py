@@ -49,8 +49,8 @@ def apply_corrections(records):
             if quest.get('title') != correction['title'] or rule.get('side') not in ('Alliance', 'Horde'):
                 raise ValueError('Reviewed faction identity changed; review required')
             current = quest.get('side')
-            if current not in (rule.get('before'), rule['side']):
-                raise ValueError('Reviewed faction fact conflicts with source; review required')
+            if current not in (None, rule.get('before'), rule['side']):
+                raise ValueError('Reviewed faction fact conflicts with source; quest '+str(correction['questID'])+' review required')
             quest['side'] = rule['side']
             quest['factionCorrectionSource'] = correction['source']
             if current != rule['side']:
@@ -160,15 +160,24 @@ def apply_stage_corrections(records):
         quest = copy.deepcopy(records[ident])
         expected = (correction['title'], rule['minLevel'], rule['level'], rule['classMask'])
         actual = tuple(quest.get(k) for k in ('title', 'minLevel', 'level', 'classMask'))
-        if actual != expected or quest.get('unmodeledObjectiveKinds') or quest.get('otherLocationsIncomplete'):
+        if actual[:3] != expected[:3] or (actual[3] not in (None, 0, rule['classMask'])) or \
+                (quest.get('stageCorrectionSource') and actual[3] != rule['classMask']) or \
+                quest.get('unmodeledObjectiveKinds') or quest.get('otherLocationsIncomplete'):
             raise ValueError('Reviewed stage identity or objective semantics changed: ' + str(ident))
+        if not quest.get('classMask') and rule['classMask']:
+            quest['classMask'] = rule['classMask']
         requirements = list(quest.get('requirements') or [])
         required = rule['requiredItems']
         allowed_items = [required]
         if rule['kind'] in ('objective-facts', 'stage-facts'):
             allowed_items.append(rule['before']['requiredItems'])
-        if {(r['itemID'], r['quantity']) for r in quest.get('requiredItems', [])} not in [
-                {(r['itemID'], r['quantity']) for r in items} for items in allowed_items]:
+        current_items = {(r['itemID'], r.get('quantity')) for r in quest.get('requiredItems', [])}
+        current_requirement_ids = {r.get('entityID') for r in quest.get('requirements', []) if r.get('entityType') == 'item'}
+        start_item_ids = {p.get('itemID') for p in quest.get('starts', []) if p.get('itemID')}
+        expected_ids = {r['itemID'] for r in required}
+        if (current_requirement_ids and rule.get('deliverySourceItemID') not in expected_ids and not expected_ids <= start_item_ids and current_requirement_ids != expected_ids and
+                current_items not in [
+                {(r['itemID'], r.get('quantity')) for r in items} for items in allowed_items]):
             raise ValueError('Reviewed hand-in items changed: ' + str(ident))
         if rule['kind'] == 'provided-delivery':
             item, = required
@@ -179,12 +188,22 @@ def apply_stage_corrections(records):
                     for r in requirements):
                 raise ValueError('Delivery correction would remove independent work: ' + str(ident))
             provided = list(quest.get('providedItems') or [])
-            if not requirements and supplied not in provided:
+            if not requirements and supplied not in provided and rule.get('deliverySourceItemID') != item['itemID']:
                 raise ValueError('Delivery evidence no longer matches: ' + str(ident))
             if any(r.get('entityID') == item['itemID'] and r != supplied for r in provided):
                 raise ValueError('Conflicting provided item: ' + str(ident))
             if supplied not in provided:
                 provided.append(supplied)
+            quest['requiredItems'] = copy.deepcopy(required)
+            if rule.get('previousQuest'):
+                parent = rule['previousQuest']
+                if type(parent) is not int or parent == ident or (parent in records and records[parent].get('title') != rule.get('previousTitle')):
+                    raise ValueError('Reviewed delivery parent changed: ' + str(ident))
+                quest['previousQuest'] = parent
+                if quest.get('prerequisiteAny') == [parent]:
+                    quest.pop('prerequisiteAny', None)
+            if rule.get('prerequisitesUnverified'):
+                quest['prerequisitesUnverified'] = True
             if not quest.get('ends') or any(p.get('action') not in (None, 'talk') for p in quest['ends']):
                 raise ValueError('Delivery destination semantics changed: ' + str(ident))
             for point in quest['ends']:
@@ -242,9 +261,9 @@ def apply_stage_corrections(records):
                     quest[field] = copy.deepcopy(value)
         elif rule['kind'] == 'item-exchange':
             item, = required
-            if requirements != rule['requirements'] or len(requirements) != 1 or (
-                    requirements[0].get('entityType'), requirements[0].get('entityID'), requirements[0].get('quantity')) != (
-                        'item', item['itemID'], item['quantity']):
+            if len(requirements) != 1 or requirements[0].get('entityType') != 'item' or \
+                    requirements[0].get('entityID') != item['itemID'] or (
+                    requirements[0].get('quantity') != item['quantity'] and not requirements[0].get('quantityUnknown')):
                 raise ValueError('Reviewed exchange requirement changed: ' + str(ident))
             point = rule['point']
             if point.get('entityType') != 'object' or point.get('action') != 'item' or (
@@ -256,8 +275,11 @@ def apply_stage_corrections(records):
                 raise ValueError('Other exchange work remains unresolved: ' + str(ident))
             quest['objectives'] = [copy.deepcopy(point)]
         elif rule['kind'] in ('unmapped-escort', 'unmapped-objective'):
-            if requirements or quest.get('objectives'):
+            if requirements or any(p.get('action') != 'event' for p in (quest.get('objectives') or [])):
                 raise ValueError('Escort correction would replace mapped work: ' + str(ident))
+            if rule['kind'] == 'unmapped-escort' and quest.get('objectives'):
+                # A generic event area does not locate the escort NPC or path.
+                quest['objectives'] = []
             target = rule['target']
             if rule['kind'] == 'unmapped-escort' and not any(r.get('entityType') == target['entityType'] and r.get('entityID') == target['entityID']
                        for r in quest.get('startRefs', [])):
@@ -294,7 +316,12 @@ def apply_stage_corrections(records):
             def source_point_matches(actual):
                 # Supplemental enrichment may add this generated lookup key;
                 # it does not change the reviewed source identity or location.
-                return {k:v for k,v in actual.items() if k != 'legacyStepKey'} == point
+                left = {k:v for k,v in actual.items() if k not in ('legacyStepKey', 'locationSource')}
+                right = {k:v for k,v in point.items() if k != 'locationSource'}
+                for values in (left, right):
+                    for axis in ('x', 'y'):
+                        if axis in values: values[axis] = round(values[axis], 4)
+                return left == right
             if matches and (len(matches) != 1 or not source_point_matches(matches[0])):
                 raise ValueError('Reviewed source conflicts with an existing objective: ' + str(ident))
             if not matches:
@@ -312,6 +339,8 @@ def apply_stage_corrections(records):
         if rule['kind'] in ('provided-delivery', 'item-source', 'item-exchange'):
             quest.pop('missingRequirements', None)
             quest.pop('objectiveLocationsIncomplete', None)
+        if rule.get('prerequisitesUnverified'):
+            quest['prerequisitesUnverified'] = True
         quest['stageCorrectionSource'] = correction['source']
         if quest != records[ident]:
             pending[ident] = quest

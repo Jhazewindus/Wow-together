@@ -61,7 +61,7 @@ class AlteracCoverageTests(unittest.TestCase):
 
         # The supplemental page capture adds the ordinary chain endpoints.
         for ident, giver, receiver, start, end in (
-            (97287, 2410, 252085, (1424, .616, .208), (1416, .142, .6)),
+            (97287, 2410, 252085, (1424, .616, .208), (1416, .1415, .6005)),
             (96984, 269127, 2410, (1421, .686, .452), (1424, .616, .208)),
         ):
             quest = self.records[ident]

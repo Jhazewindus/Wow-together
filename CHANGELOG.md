@@ -1,5 +1,27 @@
 # Wow Together changelog
 
+## 0.8.76
+
+**QUESTIE LIVE ROUTE REFRESH**
+
+- Refresh the quest catalogue from QuestieDB Forever at pinned revision
+  `4ab64311b6f0be1a96b38a5b95bfa27fa95416af`, alongside the captured Wowhead
+  and Warcraft DB quest references. The catalogue now contains 5,307 quests
+  across 123 zones; source URLs and hashes remain recorded with the data.
+- Carry current NPC spawn positions, item-specific quest sources, delivery
+  requirements and prerequisite links into their matching zone records and
+  route steps. Keep unresolved quantities, pickup rules, escort paths and
+  objective locations explicitly unknown rather than guessing.
+- Preserve earlier reviewed facts only when the refreshed capture has no value
+  for that field; the latest captured values take precedence. The coverage
+  report records the previous catalogue revision and retained-field counts.
+- Refresh reviewed Badlands, Arathi Highlands, Durotar and Dun Morogh facts.
+  Quest 95534 still has conflicting faction evidence, and its Horde restriction
+  remains a reviewed candidate pending confirmation in the live client.
+- Keep this a partial source-backed catalogue: QuestieDB changes are not
+  treated as proof that every route is complete or optimal. No source code,
+  quest prose, artwork or page layout is copied.
+
 ## 0.8.75
 
 **ROYS BIG DUNGEON BANANZA**

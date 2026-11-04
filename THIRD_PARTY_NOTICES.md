@@ -92,7 +92,7 @@ the addon engine. Version 0.8.7 also uses these facts for optional service tips;
 GuideServiceData.json records the scope. Neutral settlement ownership is not
 used as proof of a flight master's faction.
 
-## Published Forever facts
+## Earlier published Forever facts (through 0.8.75)
 
 Factual IDs, short names, counts, relationships, map bounds, explicit patrol paths and coordinates
 were selected from Questie/QuestieDB revision
@@ -139,6 +139,14 @@ the exact selected IDs in `tools/dungeon_fact_corrections.json` and
 interface layout, images, prose or bulk tables were incorporated. These are
 selected factual relationships, not a claim that the full reference database
 is licensed or that every City of Dalaran encounter is known.
+
+Version 0.8.76 refreshes selected public factual quest IDs, relationships,
+quantities, restrictions and positions from Questie/QuestieDB Forever revision
+`4ab64311b6f0be1a96b38a5b95bfa27fa95416af`. Exact source file hashes are
+recorded in `tools/forever_source_manifest.json` and the generated coverage
+report. Only factual game fields are selected; no Questie code, functions,
+quest prose, artwork or UI is included. Several unresolved source conflicts and
+missing quest locations remain explicitly incomplete.
 
 Version 0.8.75 adds selected public factual NPC/item relationships from
 Wowhead Forever NPC pages and cross-checks four newer dungeon guides on

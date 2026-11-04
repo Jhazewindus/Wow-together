@@ -27,8 +27,8 @@ class AshenvaleCoverageTests(unittest.TestCase):
     def test_shandrina_handoff_has_both_item_objectives(self):
         quest = self.records[86757]
         self.assertEqual((quest['starts'][0]['entityID'], quest['ends'][0]['entityID']), (3955, 3955))
-        self.assertEqual({(p['itemID'], p['quantity'], p['entityID']) for p in quest['objectives']},
-                         {(279505, 6, 11682), (279507, 4, 11680)})
+        self.assertEqual({(p['itemID'], p['quantityUnknown'], p['entityID']) for p in quest['objectives']},
+                         {(279505, True, 11682), (279507, True, 11680)})
         self.assertTrue(all(p['mapID'] == 1440 for p in quest['objectives']))
 
     def test_battleground_care_packages_are_tiered_and_dailies_are_not_leveling_stops(self):
@@ -44,7 +44,7 @@ class AshenvaleCoverageTests(unittest.TestCase):
     def test_kor_gem_keeps_published_class_and_race_mask_and_unknown_quantity(self):
         quest = self.records[95042]
         self.assertEqual((quest['side'], quest['classMask'], quest['raceMask']), ('Horde', 2, 16))
-        self.assertTrue(quest['requirements'][0]['quantityUnknown'])
+        self.assertEqual(quest['requirements'][0]['quantity'], 1)
 
     def test_reviewed_identity_and_exclusive_corrections_are_idempotent_and_guarded(self):
         records = {ident: copy.deepcopy(self.records[ident]) for ident in (95042, 994, 995)}

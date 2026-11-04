@@ -2,13 +2,21 @@
 
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
-progress. Version **0.8.75 — ROYS BIG DUNGEON BANANZA** targets interface
+progress. Version **0.8.76 — QUESTIE LIVE ROUTE REFRESH** targets interface
 **16001**, uses Lua **5.1**, and reads capabilities rather than choosing a Classic
 implementation from `WOW_PROJECT_ID`.
 
 Friends share their own active quests, completion checks, objectives and
 public character context. The guide combines nearby work, preserves selected
 routes and shows whose progress needs the next step. It also works solo.
+
+**0.8.76 refreshes the quest catalogue from current QuestieDB Forever records**
+and cross-checks captured Wowhead and Warcraft DB facts. It updates reviewed
+quest sources, NPC spawn positions, delivery requirements and prerequisite links
+in their matching zones. The catalogue covers 5,307 quests across 123 zones;
+unknown quantities and locations remain marked incomplete, and conflicting
+faction evidence stays flagged for live-client verification. See CHANGELOG.md
+and QUEST_DATA.md for the source pins and coverage limits.
 
 **0.8.74 makes Recommended cards the action.** Click a recommendation to open
 its details; start it from the guide view. Click the resume card to continue or
@@ -312,7 +320,7 @@ training. Lower-level prerequisites name the worthwhile later quest. A long
 generic pickup says that no special unlock is known and offers Skip quest;
 unverified requirements name the NPC to check. Previews use their own guide's
 facts. Arrow text wraps without changing saved geometry; the standalone-only
-layout shows its reason without a hover. The audit checks all 5,230 records and
+layout shows its reason without a hover. The audit checks all 5,307 records and
 152 compiled guides; explanations do not fill missing map/prerequisite data or
 prove globally optimal travel. Fixed order, eligibility and progress remain
 unchanged. See [GUIDE_REASONS.md](GUIDE_REASONS.md).
@@ -1389,15 +1397,16 @@ an exclusion for Orc/Troll or eligibility for another race from that report.
 
 ## Data and beta limits
 
-The offline snapshot was captured **October 5, 2026** from public game facts in
+The refreshed offline snapshot was built **November 4, 2026** from public game
+facts in
 [Warcraft DB](https://forever.warcraftdb.com/list/quests) and
 [Wowhead Forever](https://www.wowhead.com/forever/quests).
 
 | Coverage | Records |
 | --- | ---: |
-| Distinct quest records / category lists | 5,230 / 123 |
-| Detailed Forever pages | 2,232 |
-| Quests with static pickup / objective-area / turn-in coordinates | 4,276 / 2,150 / 4,444 |
+| Distinct quest records / category lists | 5,307 / 123 |
+| Detailed Forever pages in this refreshed output | 362 |
+| Quests with starter / objective / turn-in facts | 4,412 / 2,125 / 4,587 |
 | Series / quests with explicit prerequisite facts | 938 / 2,465 |
 | Incomplete objective locations / known repeatables | 1,353 / 627 |
 

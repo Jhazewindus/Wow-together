@@ -23,8 +23,8 @@ class SwampCoverageTests(unittest.TestCase):
         self.assertEqual(global_path.read_bytes(), before)
         self.assertEqual(report['fixed_zone_guides_checked'], 6)
         chapters = {(g['faction'], g['key'].split(':')[-1]): g['steps'] for g in report['guides']}
-        self.assertEqual(chapters, {('Horde','31-40'):51, ('Horde','41-50'):43,
-                                   ('Horde','51-60'):21, ('Alliance','31-40'):42,
+        self.assertEqual(chapters, {('Horde','31-40'):49, ('Horde','41-50'):43,
+                                   ('Horde','51-60'):21, ('Alliance','31-40'):39,
                                    ('Alliance','41-50'):14, ('Alliance','51-60'):9})
         gaps = {s: set() for s in ('a','q','t')}
         quantities = set()
@@ -33,7 +33,7 @@ class SwampCoverageTests(unittest.TestCase):
             for stage, ids in guide['missing_location_quest_ids_by_stage'].items():
                 gaps[stage].update(ids)
             quantities.update(guide['unverified_objective_quantity_quest_ids'])
-        self.assertEqual(gaps['a'], {93429,93430,93464})
-        self.assertEqual(gaps['q'], {3374,93176,93429,93464,93585,93663})
-        self.assertEqual(gaps['t'], {93429,93430,93464,93585})
-        self.assertEqual(quantities, {3374})
+        self.assertEqual(gaps['a'], {93430,93464,93465})
+        self.assertEqual(gaps['q'], {3374,93176,93429,93464,93465,93585,93663})
+        self.assertEqual(gaps['t'], {93430,93464,93465})
+        self.assertEqual(quantities, {3374,1398,2623,93465})

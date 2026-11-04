@@ -79,7 +79,7 @@ class WplCoverageTests(unittest.TestCase):
         self.assertFalse(c.ns.CatalogueIdentityAllowed(8416,c.ns.profile)[0])
 
     def test_full_fixed_guide_and_mid_zone_progress_preserve_required_actions(self):
-        for faction,class_id,count in [('Horde',9,197),('Alliance',9,204),('Alliance',2,210)]:
+        for faction,class_id,count in [('Horde',9,204),('Alliance',9,210),('Alliance',2,216)]:
             c=client(faction,class_id=class_id,level=55);c.ns.guideLevel='all'
             choices=[g for g in c.ns.LevelingGuideChoices().values()if g.zone=='Western Plaguelands']
             self.assertEqual(len(choices),1);g=choices[0];c.ns.BuildGuideRoute(g,False)

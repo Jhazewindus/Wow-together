@@ -3,11 +3,11 @@
   "datasets": {
     "catalogue": {
       "file": "QuestCatalogue.lua",
-      "sha256": "40423a7026c2481f8338e9883c0c72edc4c915c55f450f91397f8e70ab040963"
+      "sha256": "173cb8259a494a4774bc3f87bf29c6143c55be0799c9603f092ba390025501fc"
     },
     "questEntities": {
       "file": "QuestCatalogue.lua",
-      "sha256": "dd0a1aad63912759c4310a146cb06912ae264d050a56f4cae19f95923d4aa7da"
+      "sha256": "bb3a5ab159a58907387373767de54515d395630df3d0994e949ea1ea3bb7dcd3"
     },
     "worldQuestChecks": {
       "file": "QuestCatalogue.lua",
@@ -19,12 +19,12 @@
     },
     "dungeonJournalData": {
       "file": "DungeonJournalData.lua",
-      "sha256": "f24a2b08eaa6ec7a0f9e50cef72f7de19d7fbf07b97d740b37b7df139cf18a52"
+      "sha256": "2978aeac909c744aab27dc303968780216fc5a42e8c62c30d6df81996dea1d1f"
     },
     "dungeonMapData": {
       "file": "DungeonMapData.lua",
       "sha256": "0f11a23183f2795831cb078a12d6953e6c23542d3459f71eb0c70b9b512f629d"
     }
   },
-  "revision": "0.8.31: audited loot relationships and original Vanilla BFD marker identities. 0.8.42: additive source-supplemented quest catalogue; all original quest gates and point fields independently preserved; other datasets unchanged."
+  "revision": "v0.8.28 packing baseline; v0.8.76 refreshes QuestieDB-backed catalogue and source-linked quest/entity facts while preserving packing behavior."
 }

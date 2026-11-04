@@ -88,6 +88,14 @@ Quest, profession, and dungeon reference payloads now load on demand from their
 matching data folders. Keep all four folders installed so each guide browser can
 load its data when first opened.
 
+0.8.76 QUESTIE LIVE ROUTE REFRESH updates the partial quest catalogue from
+QuestieDB Forever revision 4ab64311b6f0be1a96b38a5b95bfa27fa95416af, alongside
+captured Wowhead and Warcraft DB references. The catalogue covers 5,307 quests
+across 123 zones and refreshes reviewed sources, positions, delivery requirements
+and prerequisite links. Unknown quantities, locations and pickup rules remain
+explicitly incomplete. Quest 95534 still has conflicting faction evidence and
+needs live-client confirmation. See CHANGELOG.md, QUEST_DATA.md and TESTING.md.
+
 0.8.75 ROYS BIG DUNGEON BANANZA adds eight documented City of Dalaran bosses
 and 27 specific boss/item links. Method.gg's four newer-dungeon pages are
 cross-checked; five other new instances are absent from its index. The Dalaran

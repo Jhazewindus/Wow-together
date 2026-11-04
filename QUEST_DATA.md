@@ -70,19 +70,24 @@ the prerequisite's turn-in before the follow-up pickup. The source/invariant
 audit checks all 152 sections; source mapping completeness does not change.
 
 1. Current Forever quest/entity pages and reviewed tester corrections.
-2. Explicit public Forever beta delta, observation and reviewed factual fields.
-3. Identity-matched published converted-baseline facts; separately attributed
+2. Explicit public Forever data and reviewed factual fields.
+3. Previously reviewed catalogue fields are retained only where the refreshed
+   capture has no value for that field; newly captured values take precedence.
+   Each record lists retained fields, and the coverage report pins the source
+   catalogue revision and retained-field count.
+4. Identity-matched published converted-baseline facts; separately attributed
    older-world fallbacks only for strictly unchanged quest identities.
-4. Explicit, consistent community ID/zone/coordinate observations for otherwise
+5. Explicit, consistent community ID/zone/coordinate observations for otherwise
    unmapped ground items. Published entity positions take precedence.
 
-The category union contains **5,230 quests from 123 leaf lists**. The
+The category union contains **5,307 quests from 123 leaf lists**. The
 Wowhead root list is truncated at 1,000 and is never treated as a complete index.
-There are **2,232 captured Forever detail pages** and 1,143 Warcraft
-DB detail records. Static pickup / objective-area / hand-in coverage is
-**4,281 / 2,151 / 4,449 quests**.
-Runtime named entities: **13,340 NPCs / 6,981 objects /
-3,129 quest-used items**. Unrelated item loot tables are omitted.
+There are **362 captured Forever detail pages** in this refreshed output, plus
+the retained Warcraft DB and Wowhead references. The catalogue records **4,412
+starters / 2,125 objectives / 4,587 turn-ins / 2,565 prerequisite links**.
+Runtime named entities: **13,397 NPCs / 7,035 objects / 3,014 quest-used
+items**. Unrelated item loot tables are omitted. Detailed page coverage is
+partial; an absent detail page does not mean a quest is unavailable.
 
 Source capture uses normal proxy routing and verified TLS. Individual failed
 IDs remain excluded; renewed denials stop a batch. Successful captures remain
@@ -115,7 +120,7 @@ pass. Existing running guide order stays saved. Distance scores are estimates.
 
 ## Published Forever database facts
 
-Source: https://github.com/Questie/QuestieDB/tree/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6
+Source: https://github.com/Questie/QuestieDB/tree/4ab64311b6f0be1a96b38a5b95bfa27fa95416af
 
 `tools/forever_source_manifest.json` pins the selected factual files and hashes.
 Our literal-only parser reads raw entity fields, inherited literal corrections,

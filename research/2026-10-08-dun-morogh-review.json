@@ -1,28 +1,28 @@
 {
   "zone": "Dun Morogh",
-  "reviewed": "2026-10-08",
+  "reviewed": "2026-11-04",
   "catalogue_commit": "67ff36412ede50154ec3a8b2aecb148e72ffb568",
   "source": "https://github.com/Questie/QuestieDB",
-  "source_commit": "e0a6eaa86f181ac99262e34126bcd2ed1a1712d6",
+  "source_commit": "4ab64311b6f0be1a96b38a5b95bfa27fa95416af",
   "files": [
     {
       "path": "data/Forever/foreverQuestDB.lua",
-      "url": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverQuestDB.lua",
-      "sha256": "d5be8516877505334f02073826ea0f22a394ddbf604bb5a33f5a39de5bb1ee87"
+      "url": "https://github.com/Questie/QuestieDB/blob/4ab64311b6f0be1a96b38a5b95bfa27fa95416af/data/Forever/foreverQuestDB.lua",
+      "sha256": "621d4a1670232c047e7d171d8f1fdbd31581458935ee59dd70836016838dc942"
     },
     {
       "path": "src/corrections/Forever/generated/foreverBaseQuest.lua",
-      "url": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/generated/foreverBaseQuest.lua",
-      "sha256": "c92ebcb106f72913e5e666db48539e60d9e77a77c3e08938bf2df682d83dd714"
+      "url": "https://github.com/Questie/QuestieDB/blob/4ab64311b6f0be1a96b38a5b95bfa27fa95416af/src/corrections/Forever/generated/foreverBaseQuest.lua",
+      "sha256": "25a5eec6855e8e63098217b2dbe87b0725e2a2df61b54bb65857fef931a2e1b4"
     },
     {
       "path": "src/corrections/Forever/generated/foreverBaseItem.lua",
-      "url": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/src/corrections/Forever/generated/foreverBaseItem.lua",
-      "sha256": "870bb7ab64bec27210c3f9e40fd5bb957c0441aba22d3944a87ddd5c66d0add4"
+      "url": "https://github.com/Questie/QuestieDB/blob/4ab64311b6f0be1a96b38a5b95bfa27fa95416af/src/corrections/Forever/generated/foreverBaseItem.lua",
+      "sha256": "4824f55dbb542dcf62e65eb9b9129c330e2188ff431163c2bfe1501088208424"
     },
     {
       "path": "data/Forever/foreverNpcDB.lua",
-      "url": "https://github.com/Questie/QuestieDB/blob/e0a6eaa86f181ac99262e34126bcd2ed1a1712d6/data/Forever/foreverNpcDB.lua",
+      "url": "https://github.com/Questie/QuestieDB/blob/4ab64311b6f0be1a96b38a5b95bfa27fa95416af/data/Forever/foreverNpcDB.lua",
       "sha256": "a8c4169690726323dac3c6441f74f7a4d9cafcc08ec42231d72ff28c9471f0ee"
     }
   ],

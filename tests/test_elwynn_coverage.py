@@ -75,7 +75,8 @@ class ElwynnFactsTests(unittest.TestCase):
         c = client(); q = c.ns.CatalogueQuest(91738)
         self.assertIsNone(q.previousQuest)
         self.assertIsNone(q.prerequisiteAny)
-        self.assertEqual((q.requiredItems[1].itemID, q.requiredItems[1].quantity), (247824, 1))
+        self.assertEqual((q.requiredItems[1].itemID, q.requiredItems[1].quantity), (247824, None))
+        self.assertTrue(q.requiredItems[1].quantityUnknown)
         g = guide(c, (91738,)); g.fixedRoute = True
         c.ns.GenerateFixedGuide(g, False)
         stop = next(s for s in g.fixedPlan.values() if s.kind == 'q')

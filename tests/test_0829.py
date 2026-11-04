@@ -80,7 +80,7 @@ class PackedDataTests(unittest.TestCase):
     def test_shipped_startup_leaves_entities_and_dungeons_packed(self):
         c = Client(use_catalogue=True, default_guide=True)
         stats = {row.name: row for row in c.ns.PackedDataStats().values()}
-        self.assertEqual(c.ns.catalogue.count, 5230)
+        self.assertEqual(c.ns.catalogue.count, 5307)
         for key in ('entities-npc', 'entities-object', 'entities-item'):
             self.assertEqual(stats[key].loadedRows, 0)
         self.assertNotIn('WowTogether_DungeonData', c.data_addons_loaded)

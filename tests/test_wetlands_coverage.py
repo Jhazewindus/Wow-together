@@ -75,10 +75,10 @@ class WetlandsCoverageTests(unittest.TestCase):
     def test_full_chapters_preserve_fixed_orders_after_real_handin(self):
         c=client('Alliance',class_id=7,level=25);c.ns.guideLevel='all'
         choices=[g for g in c.ns.LevelingGuideChoices().values()if g.zone=='Wetlands']
-        self.assertEqual({g.sectionLow for g in choices},{11,21,31})
+        self.assertEqual({g.sectionLow for g in choices},{21,31})
         for g in choices:
             c.ns.BuildGuideRoute(g,False);before=order(g)
-            self.assertEqual(len(list(g.fixedPlan.values())),{11:6,21:180,31:77}[g.sectionLow])
+            self.assertEqual(len(list(g.fixedPlan.values())),{21:189,31:76}[g.sectionLow])
             self.assertEqual({r.id for r in g.records.values()},{s.id for s in g.fixedPlan.values()})
             c.lua.globals().finished[455]=True;c.ns.active[98246]='Trying Times'
             c.ns.BuildGuideRoute(g,False);self.assertEqual(order(g),before)
@@ -88,7 +88,7 @@ class WetlandsCoverageTests(unittest.TestCase):
 
     def test_unknown_elites_and_existing_actual_gates_are_preserved(self):
         for ident in [87318,87491,88756,88757,88758]:
-            q=self.quests[ident];self.assertEqual(q['questType'],'Elite');self.assertFalse(q.get('starts'));self.assertFalse(q.get('ends'));self.assertFalse(q.get('objectives'))
+            q=self.quests[ident];self.assertEqual(q['questType'],'Elite');self.assertTrue(q.get('starts'));self.assertTrue(q.get('ends'));self.assertFalse(q.get('objectives'))
         self.assertTrue(self.quests[484]['prerequisitesUnverified'])
         self.assertEqual(self.quests[484]['previousQuest'],469)
         self.assertEqual(self.quests[471]['prerequisiteAny'],[484])

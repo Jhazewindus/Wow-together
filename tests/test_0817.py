@@ -19,6 +19,7 @@ from import_dungeons import overview_ranges
 def shipped(level=60):
     c = Client(quests=(), use_catalogue=True)
     c.guide_environment(level=level)
+    c.lua.execute("function UnitRace() return 'Orc','Orc',2 end; function UnitFactionGroup() return 'Horde','Horde' end")
     c.ns.ReadProfile()
     c.ns.profile.classID, c.ns.profile.raceID = 1, 2
     c.ns.db.config.soloMode = True
@@ -61,7 +62,7 @@ class DungeonDataTests(unittest.TestCase):
             self.assertTrue(all(c.ns.CatalogueQuest(id) is not None for id in source['questIDs']))
             count += len(source['questIDs'])
         self.assertEqual(count, 339)
-        self.assertEqual(c.ns.catalogue.count, 5230)
+        self.assertEqual(c.ns.catalogue.count, 5307)
         # Explicit zone identity folds this formerly separate dungeon card in.
         self.assertIn(92401, list(gs['ruins-of-lordaeron'].ids.values()))
         # Unresolved dungeon-tagged class/city/raid records stay in the library.

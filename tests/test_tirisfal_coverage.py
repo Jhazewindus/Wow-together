@@ -30,10 +30,11 @@ class TirisfalCoverageTests(unittest.TestCase):
   for s in g.fixedPlan.values():
    if s.kind=='q'and s.entityID in [178090,271961]:self.assertTrue(c.ns.GuideStepAction(s).startswith('Interact with '))
  def test_unknown_mechanics_pickups_quantities_and_atomic_guard_remain(self):
+  self.assertEqual([r['quantity'] for r in self.q[96897]['requirements']],[8,8])
   for i in [99144,96896,99134,99141]:self.assertTrue(self.q[i]['objectiveLocationsIncomplete'])
   self.assertEqual(self.q[99134]['providedItems'][0]['entityID'],286176)
   for i in [1470,1498,1818,1819,1881,1885]:self.assertTrue(self.q[i]['prerequisitesUnverified'])
-  self.assertTrue(self.q[1819]['requirements'][0]['quantityUnknown']);self.assertTrue(self.q[96897]['requirements'][-1]['quantityUnknown'])
+  self.assertTrue(self.q[1819]['requirements'][0]['quantityUnknown'])
   q=copy.deepcopy(self.q);self.assertEqual(apply_stage_corrections(q),[]);q[91317]['requiredItems'][0]['quantity']=2;old=copy.deepcopy(q)
   with self.assertRaises(ValueError):apply_stage_corrections(q)
   self.assertEqual(q,old)

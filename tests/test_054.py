@@ -22,6 +22,8 @@ def valley_client():
     c.unit_names({'player': ['Alice', 'TestRealm']})
     c.guide_environment(level=4, current_quests_first=True)
     c.lua.execute('''
+    function UnitRace() return 'Orc','Orc',2 end
+    function UnitFactionGroup() return 'Horde','Horde' end
     C_Map.GetBestMapForUnit=function() return 1411 end
     C_Map.GetPlayerMapPosition=function() return {GetXY=function() return .446,.686 end} end
     C_Map.GetMapInfo=function() return {name='Durotar'} end

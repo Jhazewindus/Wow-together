@@ -1,7 +1,7 @@
 """Active mob hints need unfinished objectives and respect public native vetoes.
 
-These are Lua 5.1 host regressions with synthetic client answers. They do not
-establish the Winter Wolf's live flag, drops, or the source of a beta tester's star.
+These are Lua 5.1 host regressions with synthetic client answers. They use a
+current QuestieDB source NPC and do not establish live client behavior.
 """
 import unittest
 
@@ -10,7 +10,7 @@ from test_057 import mob_client
 from test_071 import giver_client
 
 
-def wolf_client():
+def boar_client():
     c = Client(quests=(317,), use_catalogue=True,
                saved_variables={'config': {'soloMode': True}})
     c.lua.execute('''
@@ -25,7 +25,7 @@ def wolf_client():
       plate=CreateFrame('Frame'); plate.namePlateUnitToken='nameplate1'
       C_NamePlate={GetNamePlateForUnit=function() return plate end,
                   GetNamePlates=function() return {plate} end}
-      function UnitGUID() return 'Creature-0-1-2-3-1131-ABC' end
+      function UnitGUID() return 'Creature-0-1-2-3-1125-ABC' end
       function SetRaidTarget() error('Cosmetic hints must never set raid marks') end
     ''')
     c.ns.ReadProgress()
@@ -34,8 +34,8 @@ def wolf_client():
 
 
 class ActiveMobHintTests(unittest.TestCase):
-    def test_winter_wolf_native_false_removes_broad_drop_hint_without_changing_quest(self):
-        c = wolf_client()
+    def test_crag_boar_native_false_removes_source_hint_without_changing_quest(self):
+        c = boar_client()
         self.assertEqual(c.ns.npcHintCount, 1)
         hint = c.ns.npcHints['nameplate1']
         self.assertIn(317, hint.target.quests)
@@ -52,14 +52,14 @@ class ActiveMobHintTests(unittest.TestCase):
                       c.ns.diagnosticsText.text)
 
     def test_confirmed_pending_item_source_hides_when_only_other_item_remains(self):
-        c = wolf_client()
+        c = boar_client()
         c.lua.globals().boarMeat = 4
         c.ns.ReadProgress(); c.ns.UpdateNPCHints()
         self.assertEqual(c.ns.npcHintCount, 0)
         self.assertFalse(c.ns.QuestProgressReady(c.ns.self, 317))
 
     def test_readable_objectives_reject_outdated_source_even_when_native_true(self):
-        c = wolf_client()
+        c = boar_client()
         c.lua.execute('''C_QuestLog.GetQuestObjectives=function() return {
           {text='Changed Forever objective: 0/8', numFulfilled=0,
            numRequired=8, finished=false, type='monster'}} end''')
@@ -70,7 +70,7 @@ class ActiveMobHintTests(unittest.TestCase):
         for objective_list in ('nil', 'secret', '{{text=secret, finished=secret}}'):
             for native in ('nil', 'secret', 'false'):
                 with self.subTest(objectives=objective_list, native=native):
-                    c = wolf_client()
+                    c = boar_client()
                     c.lua.execute('C_QuestLog.GetQuestObjectives=function() return '
                                   + objective_list + ' end; related=' + native)
                     c.ns.ReadProgress(); c.ns.UpdateNPCHints()
@@ -79,7 +79,7 @@ class ActiveMobHintTests(unittest.TestCase):
     def test_absent_and_failing_native_api_cannot_confirm_an_unmatched_source(self):
         for implementation in ('nil', 'function() error("restricted query") end'):
             with self.subTest(api=implementation):
-                c = wolf_client()
+                c = boar_client()
                 c.lua.execute('C_QuestLog.GetQuestObjectives=nil; '
                               'C_QuestLog.UnitIsRelatedToActiveQuest=' + implementation)
                 c.ns.ReadProgress(); c.ns.UpdateNPCHints()
@@ -95,7 +95,7 @@ class ActiveMobHintTests(unittest.TestCase):
                 self.assertEqual(c.ns.npcHintCount, 2)
 
     def test_secret_counts_do_not_complete_matching_pending_collection(self):
-        c = wolf_client()
+        c = boar_client()
         c.lua.execute('''C_QuestLog.GetQuestObjectives=function() return {
           {text='Chunk of Boar Meat', numFulfilled=secret, numRequired=secret,
            finished=secret, type='item'}} end; related=secret''')
@@ -103,7 +103,7 @@ class ActiveMobHintTests(unittest.TestCase):
         self.assertEqual(c.ns.npcHintCount, 1)
 
     def test_abandoning_and_marker_toggle_hide_owned_star_only(self):
-        c = wolf_client(); hint = c.ns.npcHints['nameplate1']
+        c = boar_client(); hint = c.ns.npcHints['nameplate1']
         c.ns.SetOption('nameplateHints', False); c.ns.UpdateNPCHints()
         self.assertFalse(hint.IsShown(hint))
         self.assertTrue(c.ns.Option('npcHints'))
@@ -159,11 +159,11 @@ class ActiveMobHintTests(unittest.TestCase):
         self.assertEqual(c.ns.npcHintCount, 0)
 
     def test_native_true_cannot_mark_unknown_or_future_quest_mobs(self):
-        c = wolf_client()
+        c = boar_client()
         c.lua.execute("function UnitGUID() return 'Creature-0-1-2-3-999999-ABC' end")
         c.ns.UpdateNPCHints()
         self.assertEqual(c.ns.npcHintCount, 0)
-        c.lua.execute("function UnitGUID() return 'Creature-0-1-2-3-1131-ABC' end")
+        c.lua.execute("function UnitGUID() return 'Creature-0-1-2-3-1125-ABC' end")
         c.ns.active[317] = None
         c.ns.UpdateNPCHints()
         self.assertEqual(c.ns.npcHintCount, 0)

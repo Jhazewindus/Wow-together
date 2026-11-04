@@ -20,7 +20,7 @@ MANIFEST = Path(__file__).with_name('forever_source_manifest.json')
 KIND_NAMES = {'quest':'Quest', 'npc':'Npc', 'object':'Object', 'item':'Item'}
 FIELDS = {
     'quest': {'name','startedBy','finishedBy','requiredLevel','questLevel','requiredRaces','requiredClasses',
-        'objectives','objectivesText','sourceItemId','preQuestGroup','preQuestSingle','zoneOrSort','requiredSkill',
+        'objectives','objectivesText','description','sourceItemId','preQuestGroup','preQuestSingle','zoneOrSort','requiredSkill',
         'triggerEnd','requiredSourceItems','questFlags','specialFlags','requiredMaxLevel','exclusiveTo',
         'availableUntilCompleted','availableStartingWith','parentQuest','requiredMinRep','requiredMaxRep'},
     'npc': {'name','minLevel','maxLevel','rank','spawns','waypoints','zoneID','questStarts','questEnds'},
@@ -218,19 +218,30 @@ def relations(value, data):
 def objective_facts(row, data):
     """Typed IDs and explicit counts only; the source's prose stays transient."""
     result = []
+    source_item = row.get('sourceItemId')
+    source_item_name = entity_name('item',source_item,data) if source_item else ''
+    description = row.get('description') if isinstance(row.get('description'),str) else ''
+    if not description:description=' '.join(value for value in sequence(row.get('objectivesText')) if isinstance(value,str))
+    use_source_item = bool(source_item_name and re.search(
+        r'\bUse\s+(?:the\s+)?'+re.escape(source_item_name)+r'\s+on\b',description,re.I))
     for slot,kind,default in ((1,'npc','kill'), (2,'object','interact'), (3,'item','collect')):
         for value in sequence((row.get('objectives') or {}).get(slot)):
             if not isinstance(value,dict) or type(value.get(1)) is not int: continue
             ident = value[1]; name = entity_name(kind,ident,data)
             if kind=='item' and ident==row.get('sourceItemId'): continue
             action = value.get(3, '').replace('action:', '') if isinstance(value.get(3),str) else default
+            if kind=='npc' and use_source_item:
+                # The explicit Forever description establishes a supplied-item
+                # interaction when the typed target itself only says "kill".
+                action='use'
             label = value.get(2)
             if action==default and isinstance(label,str) and kind=='npc':
                 if re.search(r'\b(?:spoken to|speak|talk|listen)\b',label,re.I): action='talk'
                 elif not re.search(r'\b(?:slain|killed)\b',label,re.I): action='event'
             action = {'slay':'kill', 'loot':'collect'}.get(action,action)
-            if action not in ('kill','interact','talk','collect','event'): action = default
+            if action not in ('kill','interact','talk','collect','event','use'): action = default
             ref = {'entityType':kind, 'entityID':ident, 'name':name, 'action':action, 'quantityUnknown':True}
+            if kind=='npc' and action=='use' and use_source_item:ref['useItemName']=source_item_name
             # Match only exact named targets with an explicit numeric amount.
             # A vague "bring me supplies" sentence cannot invent a count.
             counts = set()
@@ -284,7 +295,8 @@ def event_point(row, quest, data, area_maps, basis):
     return chosen
 
 
-def merge_beta_facts(records, refs, entities, area_maps, root):
+def merge_beta_facts(records, refs, entities, area_maps, root, preserve_item_sources=None):
+    preserve_item_sources=preserve_item_sources or set()
     data, native_maps, provenance, origins = read_beta_facts(root)
     for area,map_id in native_maps.items():
         if area in area_maps and area_maps[area] != map_id:
@@ -322,7 +334,12 @@ def merge_beta_facts(records, refs, entities, area_maps, root):
                                 value['locations'].append({'mapID':patrol['mapID'],'x':x,'y':y,
                                     'sourceAreaID':area,'patrol':True,'locationSource':patrol['source']})
             else:
-                sources = value.setdefault('sources',[])
+                # The pinned Forever item table is the refreshed source list;
+                # don't append older cached Wowhead relations that it no longer
+                # publishes for the same item.
+                sources=value.setdefault('sources',[])
+                if ident not in preserve_item_sources:
+                    sources=[];value['sources']=sources
                 for field,source_kind,action in (('npcDrops','npc','loot'),('objectDrops','object','gather'),('vendors','npc','buy')):
                     for target in ids(row.get(field)):
                         point = {'entityType':source_kind, 'entityID':target, 'name':entity_name(source_kind,target,data),'action':action}
@@ -362,7 +379,11 @@ def merge_beta_facts(records, refs, entities, area_maps, root):
                 values = relations(row.get(field),data) or inverse[ident][role]
                 if not relation[role] and values:
                     relation[role]=[{k:v for k,v in r.items() if k!='_basis'} for r in values]; used=True
-        explicit_objectives = source.get('objectives','converted-baseline')!='converted-baseline'
+        description=' '.join(v for v in sequence(row.get('objectivesText')) if isinstance(v,str))
+        source_item_name=entity_name('item',row.get('sourceItemId'),data) if row.get('sourceItemId') else ''
+        explicit_use=bool(exact and source_item_name and re.search(
+            r'\bUse\s+(?:the\s+)?'+re.escape(source_item_name)+r'\s+on\b',description,re.I))
+        explicit_objectives = source.get('objectives','converted-baseline')!='converted-baseline' or explicit_use
         if explicit_objectives or not relation['requirements'] and exact:
             values = objective_facts(row,data)
             old = {(p['entityType'],p['entityID']):p for p in relation['requirements']}
@@ -382,8 +403,24 @@ def merge_beta_facts(records, refs, entities, area_maps, root):
             if values or explicit_objectives:
                 relation['requirements']=values; used=True; quest['requirementSource']='Published Forever typed objectives'
                 if explicit_objectives:
-                    quest['objectives']=[]; quest.pop('missingRequirements',None)
-                    quest.pop('objectiveLocationsIncomplete',None)
+                    # The source publishes typed targets, not their locations.
+                    # Keep independently reviewed points that still map to a
+                    # current target, and retain gaps for targets without one.
+                    required_items={r['entityID'] for r in values if r.get('entityType')=='item'}
+                    required_entities={(r.get('entityType'),r.get('entityID')) for r in values}
+                    retained=[]
+                    for point in quest.get('objectives',[]):
+                        item_id=point.get('itemID')
+                        identity=(point.get('entityType'),point.get('entityID'))
+                        if item_id in required_items or identity in required_entities:
+                            retained.append(point)
+                    quest['objectives']=retained
+                    mapped_items={p.get('itemID') for p in retained if p.get('itemID')}
+                    missing=[r for r in quest.get('missingRequirements',[])
+                        if r.get('entityType')!='item' or r.get('entityID') not in mapped_items]
+                    if missing: quest['missingRequirements']=missing
+                    else: quest.pop('missingRequirements',None)
+                    if not missing: quest.pop('objectiveLocationsIncomplete',None)
                     provenance['corrected_objective_quest_ids'].append(ident)
             if (row.get('objectives') or {}).get(6) or (row.get('objectives') or {}).get(4):
                 # Reputation/spell credit is not a physical NPC requirement.
@@ -437,6 +474,9 @@ def merge_beta_facts(records, refs, entities, area_maps, root):
                 if not current:
                     quest[key]=parents; used=True
                     quest['prerequisiteSource']='Published Forever beta prerequisites' if source.get(field,'converted-baseline')!='converted-baseline' else 'Published converted-baseline prerequisites'
+                if field=='preQuestSingle' and len(parents)==1 and not quest.get('previousQuest'):
+                    quest['previousQuest']=parents[0]; used=True
+                    quest['prerequisiteSource']='Published Forever beta prerequisites'
         if exact:
             quest.setdefault('prerequisitesRead',True)
             for field in ('requiredSkill','requiredMinRep','requiredMaxRep','parentQuest','availableStartingWith','availableUntilCompleted','exclusiveTo'):

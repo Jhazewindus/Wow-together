@@ -1,7 +1,7 @@
 local addonName, ns = ...
 
-ns.VERSION = "0.8.75"
-ns.RELEASE_NAME = "ROYS BIG DUNGEON BANANZA"
+ns.VERSION = "0.8.76"
+ns.RELEASE_NAME = "QUESTIE LIVE ROUTE REFRESH"
 ns.handlers = {}
 ns.eventFailures = {}
 ns.members = {}

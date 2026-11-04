@@ -178,7 +178,7 @@ class GuideInstructionTests(unittest.TestCase):
     def test_real_scorpid_tail_goal_prefers_the_published_worker_area(self):
         c=Client(quests=(),use_catalogue=True)
         q=c.ns.CatalogueQuest(789)
-        self.assertEqual(q.objectives[1].name,'Scorpid Worker')
+        self.assertEqual(q.objectives[1].name,'Sarkoth')
         self.assertEqual(q.objectives[1].quantity,10)
         self.assertEqual({p.name for p in q.objectiveAlternatives[1].locations.values()},{'Scorpid Worker','Sarkoth'})
     def test_named_kill_loot_and_item_use_instructions(self):

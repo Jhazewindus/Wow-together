@@ -26,11 +26,11 @@ class ThoradinCoverageTests(unittest.TestCase):
                          (b['entityID'],b['mapID'],b['x'],b['y']))
         self.assertEqual((a['entityID'],a['mapID'],a['sourceAreaID']), (406918,1417,45))
         self.assertAlmostEqual(a['x'],.2248)
-        self.assertAlmostEqual(a['y'],.2423)
+        self.assertAlmostEqual(a['y'],.2419)
         satchel=q[79976]['ends'][0]
         self.assertEqual((satchel['entityID'],satchel['mapID']), (424006,1417))
         self.assertAlmostEqual(satchel['x'],.2247)
-        self.assertAlmostEqual(satchel['y'],.2423)
+        self.assertAlmostEqual(satchel['y'],.242)
         for role in ('starts','ends'):
             self.assertTrue(all(p['entityType']=='object' for p in q[79976][role]))
         self.assertFalse(q[79976].get('objectives'))

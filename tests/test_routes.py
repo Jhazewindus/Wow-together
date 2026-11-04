@@ -58,7 +58,7 @@ class RouteTests(unittest.TestCase):
         self.assertEqual(q.minLevel, 5)
         self.assertEqual(q.starts[1].name, "Xar'Ti")
         self.assertEqual(q.starts[1].mapID, 1411)
-        self.assertAlmostEqual(q.starts[1].x, .552)
+        self.assertAlmostEqual(q.starts[1].x, .5528)
         self.assertEqual(q.objectives[1].entityID, 268530)
         skull = c.ns.CatalogueQuest(827)
         self.assertEqual(skull.previousQuest, 828)

@@ -290,10 +290,28 @@ def named_item_source(item_name, source_name):
     return len(source) if len(source)>=5 and source in item else 0
 
 
-def enrich(quest, refs, entities):
+def enrich(quest, refs, entities, preserve_reviewed_objectives=False):
     """Fill real source gaps. Existing mapped instructions take precedence."""
     quest['requirements'] = refs['requirements']
     if refs.get('provided'):quest['providedItems'] = refs['provided']
+    # A current Forever observation for the exact NPC/object can supersede a
+    # stale quest-page pin. Only move a relation when the current source has a
+    # single position for that entity on the same map; ambiguous spawn sets
+    # keep their quest-specific point.
+    for role in ('starts', 'ends'):
+        for point in quest.get(role) or []:
+            ident, map_id = point.get('entityID'), point.get('mapID')
+            relation = next((ref for ref in refs.get(role, []) if ref.get('entityID') == ident), {})
+            kind = point.get('entityType') or ('npc' if point.get('npc') else relation.get('entityType'))
+            if kind not in ('npc', 'object') or type(ident) is not int or not map_id:
+                continue
+            entity = entities.get(kind, {}).get(ident, {})
+            current = [p for p in entity.get('locations', []) if p.get('mapID') == map_id
+                and p.get('locationSource') == 'Published Forever beta-observation entity position']
+            if len(current) == 1:
+                observed = current[0]
+                point.update(x=observed['x'], y=observed['y'],
+                    sourceAreaID=observed.get('sourceAreaID'), locationSource=observed['locationSource'])
     def locations(ref):
         if ref.get('alternativeEntityIDs'):
             result = []
@@ -328,6 +346,35 @@ def enrich(quest, refs, entities):
             or (req['entityType'] == 'item' and p.get('itemID') == req['entityID'])
             or (req['entityType'] != 'item' and p.get('entityID') == req['entityID'])]
         for point in matches:
+            if req['entityType']=='item' and not preserve_reviewed_objectives:
+                item=entities.get('item',{}).get(req['entityID'],{})
+                sources=item.get('sources',[])
+                local=[]
+                for source in sources:
+                    if source.get('action')!='loot':continue
+                    for found in locations(source):
+                        if found.get('mapID')!=quest.get('mapID'):continue
+                        found.update(action='loot',itemID=req['entityID'],itemName=req['name'],
+                            objectiveKey='item:'+str(req['entityID']))
+                        local.append(found)
+                if local:
+                    group=next((g for g in quest.get('objectiveAlternatives',[])
+                        if g.get('itemName')==req['name']),None)
+                    if group is None:
+                        group={'itemName':req['name'],'source':'Current QuestieDB item source NPCs'}
+                        quest.setdefault('objectiveAlternatives',[]).append(group)
+                    group['locations']=local
+                    target_ids={p['entityID'] for p in local}
+                    quest['npcTargets']=[t for t in quest.get('npcTargets',[]) if t.get('itemName')!=req['name']]
+                    for source in sources:
+                        if source.get('action')!='loot' or source.get('entityID') not in target_ids:continue
+                        target={k:source[k] for k in ('entityID','name','action','entityType') if k in source}
+                        target.update(npc=True,itemName=req['name'])
+                        if target not in quest.setdefault('npcTargets',[]):quest['npcTargets'].append(target)
+                    if point.get('entityID') not in target_ids:
+                        chosen=choose_location(local,quest)
+                        point.update({k:chosen[k] for k in ('mapID','x','y','name','entityID','npc','action') if k in chosen})
+                    point['alternativeCount']=len(local)
             if req['entityType']=='item' and point.get('entityID') and point.get('mapID'):
                 point['legacyStepKey']='q:'+str(point['mapID'])+':npc:'+str(point['entityID'])
                 alternatives=[p for group in quest.get('objectiveAlternatives',[]) if group.get('itemName')==req['name']
@@ -356,8 +403,6 @@ def enrich(quest, refs, entities):
             targets = {p.get('entityID') for p in quest.get('npcTargets',[])}
             for source in sources:
                 if source.get('action')=='loot' and source.get('minlevel',0)>quest.get('level',255)+5:continue
-                if targets and source['entityType'] == 'npc' and source['entityID'] not in targets:
-                    continue
                 for point in locations(source):
                     point['action'] = source['action']
                     candidates.append(point_for(point,'q',req))
@@ -402,6 +447,31 @@ def enrich(quest, refs, entities):
                 target = {k:chosen[k] for k in ('entityID','name','action','itemName','npc','alternativeEntityIDs','progressName','objectiveLabel') if k in chosen}
                 if target not in quest.setdefault('npcTargets',[]):
                     quest['npcTargets'].append(target)
+            if req['entityType']=='item' and not preserve_reviewed_objectives:
+                item=entities.get('item',{}).get(req['entityID'],{})
+                local=[]
+                for source in item.get('sources',[]):
+                    if source.get('action')!='loot':continue
+                    for found in locations(source):
+                        if found.get('mapID')!=quest.get('mapID'):continue
+                        found.update(action='loot',itemID=req['entityID'],itemName=req['name'],
+                            objectiveKey='item:'+str(req['entityID']))
+                        local.append(found)
+                if local:
+                    group=next((g for g in quest.get('objectiveAlternatives',[])
+                        if g.get('itemName')==req['name']),None)
+                    if group is None:
+                        group={'itemName':req['name'],'source':'Current QuestieDB item source NPCs'}
+                        quest.setdefault('objectiveAlternatives',[]).append(group)
+                    group['locations']=local
+                    chosen['alternativeCount']=len(local)
+                    targets={p['entityID'] for p in local}
+                    quest['npcTargets']=[t for t in quest.get('npcTargets',[]) if t.get('itemName')!=req['name']]
+                    for source in item.get('sources',[]):
+                        if source.get('action')!='loot' or source.get('entityID') not in targets:continue
+                        target={k:source[k] for k in ('entityID','name','action','entityType') if k in source}
+                        target.update(npc=True,itemName=req['name'])
+                        if target not in quest['npcTargets']:quest['npcTargets'].append(target)
         else:
             unresolved.append(req)
     if unresolved:

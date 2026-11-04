@@ -54,7 +54,7 @@ class BadlandsCoverageTests(unittest.TestCase):
             self.assertEqual(quest['questType'], 'Elite')
             self.assertEqual(quest['classMask'], 0)
             if race_ids is None:
-                self.assertFalse(quest.get('allowedRaceIDs'))
+                self.assertEqual(quest['allowedRaceIDs'], [1, 3, 4, 7, 95])
             else:
                 self.assertEqual(quest['allowedRaceIDs'], race_ids)
             self.assertEqual({p['itemID'] for p in quest['objectives']}, {4646, 4641, 4644})
@@ -75,16 +75,17 @@ class BadlandsCoverageTests(unittest.TestCase):
         alternatives = next(g['locations'] for g in quest['objectiveAlternatives']
                             if g['itemName'] == 'Primitive Drawing')
         self.assertEqual({p['entityID'] for p in alternatives},
-                         {2701, 2715, 2716, 2717, 2718, 2720, 2892, 2893, 2894, 2906, 2907})
+                         {2701, 2715, 2716, 2717, 2893, 2894, 2906, 2907})
         self.assertTrue(all(p['mapID'] == 1418 and p['sourceAreaID'] == 3 for p in alternatives))
-        self.assertEqual(len(alternatives), 36)
+        self.assertEqual(len(alternatives), 28)
 
     def test_reagent_run_ii_keeps_horde_elite_and_prior_handoff(self):
         quest = self.records[2203]
         self.assertEqual(quest['levelingExcluded'], 'Alchemy profession quest (skill line 171; minimum rank 210)')
         self.assertEqual((quest['side'], quest['questType'], quest['prerequisiteAny']), ('Horde', 'Elite', [2202]))
         self.assertTrue(quest['prerequisitesUnverified'])
-        self.assertEqual((quest['requiredItems'][0]['itemID'], quest['requiredItems'][0]['quantity']), (7867, 3))
+        self.assertEqual(quest['requiredItems'][0]['itemID'], 7867)
+        self.assertTrue(quest['requiredItems'][0].get('quantityUnknown'))
         self.assertEqual(quest['objectives'][0]['entityID'], 2726)
 
     def test_reviewed_stage_corrections_are_idempotent_and_guarded(self):

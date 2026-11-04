@@ -35,11 +35,11 @@ class WestfallCoverageTests(unittest.TestCase):
             for role in ['starts','ends']:
                 for p in self.quests[ident][role]:
                     if p['entityID']==253092:
-                        self.assertEqual((p['mapID'],p['x'],p['y']),(1436,.524,.529))
+                        self.assertEqual((p['mapID'],round(p['x'],4),round(p['y'],4)),(1436,.5248,.5297))
                         self.assertFalse(p.get('patrol'))
         # Two Alba actors are distinct; the Deadmines-exit actor is not moved to the hub.
         self.assertEqual(self.quests[92819]['starts'][0]['entityID'],253279)
-        self.assertAlmostEqual(self.quests[92819]['starts'][0]['x'],.3869)
+        self.assertAlmostEqual(self.quests[92819]['starts'][0]['x'],.3868)
         self.assertEqual(self.quests[92747]['level'],15)
 
     def test_detonator_work_is_unknown_and_never_substituted_with_the_giver(self):
@@ -54,7 +54,7 @@ class WestfallCoverageTests(unittest.TestCase):
 
     def test_dynamite_is_not_given_by_sprite_or_a_profession_only_quest(self):
         q=self.quests[92749]
-        self.assertEqual([(r['itemID'],r['quantity'])for r in q['requiredItems']],[(4365,10)])
+        self.assertEqual([(r['itemID'],r['quantity'])for r in q['requiredItems']],[(4358,10)])
         self.assertTrue(q['objectiveLocationsIncomplete']);self.assertFalse(q['objectives'])
         self.assertFalse(q.get('providedItems'))
         c=client('Alliance',class_id=9,level=16);c.ns.SetOption('classQuests',False)
@@ -74,7 +74,7 @@ class WestfallCoverageTests(unittest.TestCase):
         c.lua.globals().finished[155]=True;self.assertTrue(c.ns.CataloguePrerequisitesAllowed(166,c.ns.self))
 
     def test_all_chapters_keep_full_orders_during_mid_zone_progress(self):
-        for faction,chapters in [('Alliance',{'1-10':26,'11-20':127}),('Horde',{'11-20':24})]:
+        for faction,chapters in [('Alliance',{'1-10':26,'11-20':129}),('Horde',{'11-20':24})]:
             c=client(faction,level=16);c.ns.guideLevel='all'
             choices=[g for g in c.ns.LevelingGuideChoices().values()if g.zone=='Westfall']
             self.assertEqual({g.key.split(':')[-1]for g in choices},set(chapters))
@@ -105,7 +105,7 @@ class WestfallCoverageTests(unittest.TestCase):
         g=next(g for g in c.ns.LevelingGuideChoices().values()
                if g.zone=='Westfall' and g.sectionLow==11)
         c.ns.BuildGuideRoute(g,False);before=order(g)
-        self.assertEqual(len(list(g.fixedPlan.values())),224)
+        self.assertEqual(len(list(g.fixedPlan.values())),226)
         self.assertIn(94947,{r.id for r in g.records.values()})
         self.assertIn(98021,{r.id for r in g.records.values()})
         c.ns.active[94947]='Welcome to Azeroth';c.ns.readyToTurnIn[94947]=True

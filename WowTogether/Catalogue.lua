@@ -188,16 +188,18 @@ function ns.CatalogueAllowed(id, profile, key, query)
 end
 
 function ns.CataloguePrerequisiteIDs(id)
-    local quest, ids = ns.CatalogueQuest(id), {}
+    local quest, ids, seen = ns.CatalogueQuest(id), {}, {}
+    local function add(previous)
+        if previous and not seen[previous] then ids[#ids + 1], seen[previous] = previous, true end
+    end
     if quest then
-        if quest.previousQuest then ids[#ids + 1] = quest.previousQuest end
-        for _, previous in ipairs(quest.prerequisiteAll or {}) do ids[#ids + 1] = previous end
-        for _, previous in ipairs(quest.prerequisiteAny or quest.prerequisiteCandidates or {}) do ids[#ids + 1] = previous end
+        add(quest.previousQuest)
+        for _, previous in ipairs(quest.prerequisiteAll or {}) do add(previous) end
+        for _, previous in ipairs(quest.prerequisiteAny or quest.prerequisiteCandidates or {}) do add(previous) end
     end
     if ns.LearnedPrerequisiteIDs then
-        local seen = {}; for _, previous in ipairs(ids) do seen[previous] = true end
         for _, previous in ipairs(ns.LearnedPrerequisiteIDs(id)) do
-            if not seen[previous] then ids[#ids + 1], seen[previous] = previous, true end
+            add(previous)
         end
     end
     return ids

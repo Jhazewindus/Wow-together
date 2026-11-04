@@ -156,7 +156,7 @@ class GuideBrowseTests(unittest.TestCase):
         self.assertFalse(any(s.id == 791 for s in c.ns.BuildFixedGuideRoute(g, False).previewStops.values()))
         starter = next(g for g in c.ns.LevelingGuideChoices(True, None, '1-10').values() if g.zone == 'Durotar')
         c.ns.GenerateFixedGuide(starter, False)
-        self.assertTrue(any(s.id == 791 for s in c.ns.BuildFixedGuideRoute(starter, False).previewStops.values()))
+        self.assertTrue(any(s.id == 791 and s.kind == 'q' for s in starter.fixedPlan.values()))
 
     def test_fixed_guide_keeps_useful_chains_and_ready_turnins_but_filters_current_old_work(self):
         c = guide_client(2)

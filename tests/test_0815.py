@@ -276,7 +276,8 @@ class UsefulPrerequisiteTests(unittest.TestCase):
         c.guide_environment(level=21)
         c.lua.globals().grouped = False
         c.unit_names({'player': ['Alice', 'TestRealm']})
-        self.assertIn('Serena Bloodfeather (level 20)', c.ns.LevelingValue(875)[1])
+        self.assertEqual(c.ns.CatalogueQuest(875).previousQuest, 867)
+        self.assertIn('no worthwhile follow-up is known', c.ns.LevelingValue(875)[1])
         self.assertEqual(c.ns.LevelingValue(888)[0], False)
 
 

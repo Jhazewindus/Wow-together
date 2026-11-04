@@ -64,7 +64,7 @@ class MulgoreCoverageTests(unittest.TestCase):
         q = c.ns.CatalogueQuest(780)
         self.assertEqual({(p.itemID,p.quantity,p.entityID) for p in q.objectives.values()},
                          {(4848,8,2966),(4849,8,2966)})
-        self.assertTrue(all(abs(p.x-.576)<1e-8 and p.y==.852 for p in q.objectives.values()))
+        self.assertTrue(all(abs(p.x-.5206)<1e-8 and abs(p.y-.7739)<1e-8 for p in q.objectives.values()))
 
     def test_corrections_preserve_unknowns_and_reject_new_location_conflicts(self):
         quests = own_lua(ROOT/'WowTogether_QuestData/QuestCatalogue.lua', 'catalogue')['quests']
@@ -81,7 +81,8 @@ class MulgoreCoverageTests(unittest.TestCase):
     def test_darker_truth_pickup_remains_unknown_and_edition_stays_excluded(self):
         c = client()
         q = c.ns.CatalogueQuest(96294)
-        self.assertFalse(q.starts and len(q.starts))
+        self.assertEqual((q.starts[1].entityID, q.starts[1].itemID, q.starts[1].action),
+                         (264082, 273658, 'start-item'))
         self.assertEqual(q.requiredItems[1].itemID, 273659)
         self.assertTrue(c.ns.IsLevelingExcludedQuest(5844))
         self.assertTrue(c.ns.IsLevelingExcludedQuest(774))

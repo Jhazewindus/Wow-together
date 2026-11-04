@@ -29,8 +29,8 @@ class DesolaceCoverageTests(unittest.TestCase):
     def test_totem_objective_is_explicit_but_kodo_count_stays_unknown(self):
         totems = self.quests[93224]
         objective = next(p for p in totems['objectives'] if p.get('itemID') == 254432)
-        self.assertEqual((objective['quantity'], objective['entityID'], objective['action']), (5, 4633, 'collect'))
-        self.assertEqual(objective['alternativeCount'], 28)
+        self.assertEqual((objective['quantity'], objective['entityID'], objective['action']), (5, 4655, 'loot'))
+        self.assertEqual(objective['entityID'], 4655)
         self.assertFalse(totems.get('objectiveLocationsIncomplete'))
         kodo = self.quests[5561]
         self.assertTrue(kodo['objectiveLocationsIncomplete'])

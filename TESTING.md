@@ -1,11 +1,28 @@
 # Wow Together — friend test script
 
-For **0.8.75** — **ROYS BIG DUNGEON BANANZA**, World of Warcraft: Forever beta,
+For **0.8.76** — **QUESTIE LIVE ROUTE REFRESH**, World of Warcraft: Forever,
 interface **16001**.
 Allow **5–10 minutes for this update**; the wider optional checks take 45–60
 minutes. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The retained expanded-guide checks below take about **15–25 minutes**.
+
+## Quest catalogue and route source update — 0.8.76
+
+1. Open Dun Morogh, Durotar, Arathi Highlands and Badlands guides. Confirm
+   refreshed quest starters, turn-ins, prerequisites and objective locations
+   appear in the matching zones, with route order still compiling successfully.
+2. Check quest 78823, Terror of the Desert Skies: its Badlands drop alternatives
+   should show the eight current source NPCs and their available spawn points.
+3. Inspect quests with missing drop quantities or incomplete source locations.
+   They should retain the quest requirement while clearly showing unknown data;
+   no guessed escort route or pickup point should appear.
+4. Quest 95534 remains under faction review because current references conflict.
+   Confirm its availability in the live client before treating Horde eligibility
+   as final.
+
+Host checks validate the imported catalogue and route invariants. They cannot
+confirm live NPC availability, faction eligibility or route optimality.
 
 ## Dungeon journal source update — 0.8.75
 

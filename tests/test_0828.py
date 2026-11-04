@@ -50,7 +50,7 @@ class DungeonRefreshTests(unittest.TestCase):
 
     def test_reported_party_dungeon_background_sync_does_not_scan_closed_browser(self):
         c = self.dungeon_client()
-        self.assertEqual(c.ns.catalogue.count, 5230)
+        self.assertEqual(c.ns.catalogue.count, 5307)
         self.assertEqual(c.ns.profile.mapID, 0)
         self.assertEqual(len(c.ns.partyNames), 4)
         selected = c.ns.routeSelection.key

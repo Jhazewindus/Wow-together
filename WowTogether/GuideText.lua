@@ -42,7 +42,7 @@ function ns.GuideStepFacts(stop)
             local kind = text(requirement.entityType)
             local key = kind and ns.GuideInteger(requirement.entityID) and (kind .. ":" .. requirement.entityID)
             if (requirement.objectiveKey or key) == stop.objectiveKey then
-                point.progressName = text(requirement.name)
+                point.progressName = text(requirement.progressName) or text(requirement.name)
                 break
             end
         end
