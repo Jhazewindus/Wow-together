@@ -1,5 +1,30 @@
 # Wow Together changelog
 
+## 0.8.77
+
+**EXACT TRIP ORDERING**
+
+- The live leveling route now orders each trip's pickups, objectives and
+  hand-ins with an exact dynamic-programming search over the per-quest stage
+  progress vector (at most 60,000 states; a trip of six quests and twenty
+  stops fits). The width-24 beam search remains as the fallback for larger
+  trips and produces identical results to before in that case. In a 400-trip
+  synthetic comparison, 99 trips became strictly shorter and none longer; total
+  modeled walking fell about 2.3%. Host fixtures, not Forever measurements.
+- Trip distances are computed once into a per-trip matrix with a shared
+  map-size cache: `C_Map.GetMapWorldSize` is now read once per trip instead of
+  once per distance query (about 330 reads per worst-case trip before). The
+  batch selection and the preview order reuse the same cache.
+- Routes report `tripSearch` ("exact" or "beam") for diagnostics; the trip
+  optimizer is exposed as `ns.OptimizeTripOrder` for host tests.
+- Trip selection keeps its last-pickup scoring, but the "Nearby quest
+  detours" cutoff now measures a candidate against the nearest stop already in
+  the trip (origin, pickups, objectives, hand-ins) instead of only the last
+  chosen pickup. In 200 synthetic full-zone playthroughs this gave 43 shorter
+  and 21 longer zones (about 0.5% less total walking) with 6% fewer trips.
+  Two bolder replacements (nearest-stop scoring, cheapest insertion) were
+  measured worse on the same fixtures and were not adopted.
+
 ## 0.8.76
 
 **QUESTIE LIVE ROUTE REFRESH**

@@ -1,11 +1,29 @@
 # Wow Together — friend test script
 
-For **0.8.76** — **QUESTIE LIVE ROUTE REFRESH**, World of Warcraft: Forever,
+For **0.8.77** — **EXACT TRIP ORDERING**, World of Warcraft: Forever,
 interface **16001**.
 Allow **5–10 minutes for this update**; the wider optional checks take 45–60
 minutes. Each tester reports Pass / Fail / Skip with a reason.
 Keep tester names and reports separate; label the main developer's report.
 The retained expanded-guide checks below take about **15–25 minutes**.
+
+## Live trip ordering — 0.8.77
+
+1. Start or preview a live leveling route with several available quests. Confirm
+   its actions remain in per-quest pickup, objective and hand-in order, and that
+   navigation continues to advance after each stage.
+2. Inspect route diagnostics and confirm the live trip search reports `exact`
+   for a normal trip; larger trips may report `beam` when the bounded exact
+   search budget is exceeded.
+3. Repeat after a reload and with an unknown starting position. Confirm the
+   route still builds and does not skip quest stages.
+4. Check a fixed leveling guide and confirm its established stop order is
+   unchanged.
+
+Host regression tests cover exact ordering, brute-force optimality on small
+trips, beam fallback equivalence, route-level map-size caching and cooperative
+yields. Host distance estimates do not establish in-game route quality or frame
+time; verify navigation in the Forever client.
 
 ## Quest catalogue and route source update — 0.8.76
 
