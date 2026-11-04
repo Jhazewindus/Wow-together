@@ -1,6 +1,6 @@
 # Wow Together changelog
 
-## Unreleased
+## 0.8.77
 
 **EXACT TRIP ORDERING**
 

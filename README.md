@@ -2,9 +2,16 @@
 
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
-progress. Version **0.8.76 — QUESTIE LIVE ROUTE REFRESH** targets interface
+progress. Version **0.8.77 — EXACT TRIP ORDERING** targets interface
 **16001**, uses Lua **5.1**, and reads capabilities rather than choosing a Classic
 implementation from `WOW_PROJECT_ID`.
+
+**0.8.77 improves live leveling trips** with exact stop ordering for trips
+within a bounded search budget, a beam-search fallback, one per-trip distance
+matrix, and a detour cutoff measured from the nearest stop already selected.
+Fixed leveling guides keep their existing order. Synthetic host fixtures found
+99 of 400 trips shorter, 301 equal, and none longer; these measurements are
+not Forever gameplay results. See CHANGELOG.md and TESTING.md.
 
 Friends share their own active quests, completion checks, objectives and
 public character context. The guide combines nearby work, preserves selected

@@ -88,6 +88,11 @@ Quest, profession, and dungeon reference payloads now load on demand from their
 matching data folders. Keep all four folders installed so each guide browser can
 load its data when first opened.
 
+0.8.77 EXACT TRIP ORDERING improves live route stop order within a bounded
+search budget, keeps the beam fallback, and caches one distance matrix per trip.
+Fixed leveling guide order is unchanged. Host fixtures do not establish Forever
+route quality. See CHANGELOG.md and TESTING.md.
+
 0.8.76 QUESTIE LIVE ROUTE REFRESH updates the partial quest catalogue from
 QuestieDB Forever revision 4ab64311b6f0be1a96b38a5b95bfa27fa95416af, alongside
 captured Wowhead and Warcraft DB references. The catalogue covers 5,307 quests

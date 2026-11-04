@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.76
-## X-ReleaseName: QUESTIE LIVE ROUTE REFRESH
+## Version: 0.8.77
+## X-ReleaseName: EXACT TRIP ORDERING
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua
