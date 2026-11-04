@@ -1,9 +1,17 @@
 local addonName, ns = ...
 
 local BEAM_WIDTH, QUESTS_PER_TRIP, MAX_STOPS = 24, 6, 20
-local function distance(mapID, a, b)
+-- Exact trip ordering is attempted while the progress-vector state space
+-- (product of stage counts + 1, times the task count) stays within this
+-- budget; larger trips fall back to the bounded beam search.
+local EXACT_STATE_BUDGET = 60000
+local function distance(mapID, a, b, metrics)
     if not a or not b then return 0 end
-    return ns.WalkingDistance(mapID, a, b) or ns.NormalizedDistance(a, b) * 6000
+    return ns.WalkingDistance(mapID, a, b, metrics) or ns.NormalizedDistance(a, b) * 6000
+end
+
+local function resetMetrics(metrics)
+    for mapID in pairs(metrics) do metrics[mapID] = nil end
 end
 
 local function activeForParty(id, readyOnly)
@@ -49,7 +57,7 @@ local function availableTasks(guide)
     return tasks, missing, complete, #records
 end
 
-local function chooseBatch(guide, tasks, mapID, position)
+local function chooseBatch(guide, tasks, mapID, position, metrics)
     local selected, seen, previous, stops = {}, {}, position, 0
     -- Keep the trip's quest set until its work is finished; accepting a pickup
     -- must not discard its objective or change the rest of the committed loop.
@@ -67,7 +75,7 @@ local function chooseBatch(guide, tasks, mapID, position)
         for _, task in ipairs(tasks) do
             if not seen[task.id] and task.first.kind == "a" and task.first.mapID == mapID and position
                 and #selected < QUESTS_PER_TRIP and stops + #task.stages <= MAX_STOPS
-                and distance(mapID, position, task.first) <= math.min(150, ns.Option("circuitRadius") * 6000) then
+                and distance(mapID, position, task.first, metrics) <= math.min(150, ns.Option("circuitRadius") * 6000) then
                 selected[#selected + 1], seen[task.id] = task, true
                 stops = stops + #task.stages
             end
@@ -75,15 +83,36 @@ local function chooseBatch(guide, tasks, mapID, position)
         guide.batchIDs = {}; for _, task in ipairs(selected) do guide.batchIDs[#guide.batchIDs + 1] = task.id end
         return selected
     end
+    -- Candidates are still priced from the last chosen pickup, which keeps
+    -- the greedy chain compact. The detour cutoff, however, measures the
+    -- candidate against the nearest stop already in the trip (origin,
+    -- pickups, objectives and hand-ins): a quest beside the origin or an
+    -- earlier stop is still worth the trip even if the last pickup drifted.
+    -- The exact ordering pass afterwards decides the actual visit order.
+    local anchors = {}
+    if position then anchors[1] = position end
+    local function anchor(task)
+        for _, stage in ipairs(task.stages) do
+            if stage.mapID ~= mapID then break end
+            anchors[#anchors + 1] = stage
+        end
+    end
+    local function nearest(task)
+        local best = math.huge
+        for _, point in ipairs(anchors) do best = math.min(best, distance(mapID, point, task.first, metrics)) end
+        return best
+    end
+    for _, task in ipairs(selected) do anchor(task) end
+    local radius = ns.Option("circuitRadius") * 6000
     while #selected < QUESTS_PER_TRIP do
         local best, cost
         for _, task in ipairs(tasks) do
             if not seen[task.id] and task.first.mapID == mapID and stops + #task.stages <= MAX_STOPS then
-                local d = distance(mapID, previous, task.first)
+                local d = distance(mapID, previous, task.first, metrics)
                 local detour, last = 0, task.first
                 for _, stage in ipairs(task.stages) do
                     if stage.mapID ~= mapID then break end
-                    detour = detour + distance(mapID, last, stage); last = stage
+                    detour = detour + distance(mapID, last, stage, metrics); last = stage
                 end
                 -- Walking dominates. XP is a bounded tie preference, never a
                 -- reason to cross a zone for an otherwise unrelated pickup.
@@ -94,9 +123,10 @@ local function chooseBatch(guide, tasks, mapID, position)
             end
         end
         if not best then break end
-        if #selected > 0 and previous and distance(mapID, previous, best.first) > ns.Option("circuitRadius") * 6000 then break end
+        if #selected > 0 and #anchors > 0 and nearest(best) > radius then break end
         selected[#selected + 1], seen[best.id], previous = best, true, best.first
         stops = stops + #best.stages
+        anchor(best)
     end
     guide.batchIDs = {}; for _, task in ipairs(selected) do guide.batchIDs[#guide.batchIDs + 1] = task.id end
     return selected
@@ -110,29 +140,117 @@ local function orderKey(state)
     return state.orderKey
 end
 
-local function optimize(tasks, mapID, position, cooperative)
+-- Every trip stop plus the origin, with a symmetric distance matrix computed
+-- once per trip. Row/column 0 is the origin; an unknown origin costs nothing.
+local function tripMatrix(tasks, mapID, position, cooperative, metrics)
+    local points, index, work = {}, {}, 0
+    metrics = metrics or {}
+    for i, task in ipairs(tasks) do
+        index[i] = {}
+        for k, stop in ipairs(task.stages) do points[#points + 1] = stop; index[i][k] = #points end
+    end
+    local matrix = {}
+    for a = 0, #points do matrix[a] = {} end
+    for a = 1, #points do
+        matrix[0][a] = distance(mapID, position, points[a], metrics)
+        matrix[a][0] = matrix[0][a]
+        matrix[a][a] = 0
+        for b = a + 1, #points do
+            local d = distance(mapID, points[a], points[b], metrics)
+            matrix[a][b], matrix[b][a] = d, d
+            work = work + 1
+            if cooperative and work % 150 == 0 then coroutine.yield(); resetMetrics(metrics) end
+        end
+    end
+    return points, index, matrix
+end
+
+-- Exact shortest interleaving of the per-quest stage sequences. A state is
+-- the per-task progress vector (mixed-radix code) plus the task whose stage was
+-- visited last, so identical prefixes with the same endpoint share one entry.
+-- Codes only grow along transitions, so a single increasing sweep is a
+-- topological order. Returns nil when the trip exceeds the state budget.
+local function exactOrder(tasks, points, index, matrix, cooperative, metrics)
+    local count, radix, stride, states, total = #tasks, {}, {}, 1, 0
+    for i, task in ipairs(tasks) do
+        radix[i], stride[i] = #task.stages + 1, states
+        states, total = states * radix[i], total + #task.stages
+    end
+    if total == 0 then return {}, 0 end
+    if total > MAX_STOPS or states * count > EXACT_STATE_BUDGET then return nil end
+    local width = count + 1
+    local best, parent, work = {}, {}, 0
+    -- Fill sequentially so Lua keeps both tables in their array parts.
+    for state = 1, states * width - 1 do best[state], parent[state] = false, false end
+    best[0] = 0
+    -- Walk the progress vector as an odometer: code = sum(progress[i] * stride[i]).
+    local progress = {}
+    for i = 1, count do progress[i] = 0 end
+    for code = 0, states - 2 do
+        local base = code * width
+        for last = 0, count do
+            local cost = best[base + last]
+            if cost then
+                local row = matrix[last == 0 and 0 or index[last][progress[last]]]
+                for i = 1, count do
+                    local step = progress[i] + 1
+                    if step < radix[i] then
+                        local nextState = (code + stride[i]) * width + i
+                        local value = cost + row[index[i][step]]
+                        local previous = best[nextState]
+                        if not previous or value < previous then best[nextState], parent[nextState] = value, base + last end
+                    end
+                end
+                work = work + 1
+                if cooperative and work % 150 == 0 then coroutine.yield(); resetMetrics(metrics) end
+            end
+        end
+        local i = 1
+        while i <= count do
+            progress[i] = progress[i] + 1
+            if progress[i] < radix[i] then break end
+            progress[i], i = 0, i + 1
+        end
+    end
+    local finalBase, state, cost = (states - 1) * width, nil, nil
+    for last = 1, count do
+        local value = best[finalBase + last]
+        if value and (not cost or value < cost) then state, cost = finalBase + last, value end
+    end
+    if not state then return nil end
+    local ordered = {}
+    while state and state ~= 0 do
+        local code, last = math.floor(state / width), state % width
+        ordered[#ordered + 1] = points[index[last][math.floor(code / stride[last]) % radix[last]]]
+        state = parent[state]
+    end
+    for i = 1, math.floor(#ordered / 2) do ordered[i], ordered[#ordered - i + 1] = ordered[#ordered - i + 1], ordered[i] end
+    return ordered, cost
+end
+
+local function beamOrder(tasks, points, index, matrix, cooperative, metrics)
     local initial, total, work = {}, 0, 0
     for i, task in ipairs(tasks) do initial[i] = 1; total = total + #task.stages end
-    local beam = {{next = initial, stops = {}, last = position, cost = 0}}
+    local beam = {{next = initial, stops = {}, last = 0, cost = 0}}
     for _ = 1, math.min(total, MAX_STOPS) do
         local expanded, signatures = {}, {}
         for _, state in ipairs(beam) do
-            for index, task in ipairs(tasks) do
-                local stop = task.stages[state.next[index]]
+            for i, task in ipairs(tasks) do
+                local stop = task.stages[state.next[i]]
                 if stop then
                     local nextState = {}; for k, value in ipairs(state.next) do nextState[k] = value end
-                    nextState[index] = nextState[index] + 1
-                    local cost = state.cost + distance(mapID, state.last, stop)
-                    local key = table.concat(nextState, ",") .. ":" .. index
+                    nextState[i] = nextState[i] + 1
+                    local to = index[i][state.next[i]]
+                    local cost = state.cost + matrix[state.last][to]
+                    local key = table.concat(nextState, ",") .. ":" .. i
                     local previous = signatures[key]
                     if not previous or cost < previous.cost then
                         local ordered = {}; for k, value in ipairs(state.stops) do ordered[k] = value end
                         ordered[#ordered + 1] = stop
-                        local candidate = {next = nextState, stops = ordered, last = stop, cost = cost}
-                        signatures[key] = candidate
+                        signatures[key] = {next = nextState, stops = ordered, last = to, cost = cost}
                     end
                     work = work + 1
-                    if cooperative and work % 150 == 0 then coroutine.yield() end
+                    if cooperative and work % 150 == 0 then coroutine.yield(); resetMetrics(metrics) end
                 end
             end
         end
@@ -147,19 +265,30 @@ local function optimize(tasks, mapID, position, cooperative)
     return beam[1] and beam[1].stops or {}, beam[1] and beam[1].cost or 0
 end
 
-local function completePreview(tasks, position, cooperative)
+local function optimize(tasks, mapID, position, cooperative, metrics)
+    metrics = metrics or {}
+    local points, index, matrix = tripMatrix(tasks, mapID, position, cooperative, metrics)
+    local stops, cost = exactOrder(tasks, points, index, matrix, cooperative, metrics)
+    if stops then return stops, cost, "exact" end
+    stops, cost = beamOrder(tasks, points, index, matrix, cooperative, metrics)
+    return stops, cost, "beam"
+end
+ns.OptimizeTripOrder = optimize
+
+local function completePreview(tasks, position, cooperative, metrics)
     local nextStage, ordered, previous, work = {}, {}, position, 0
+    metrics = metrics or {}
     for index in ipairs(tasks) do nextStage[index] = 1 end
     while true do
         local best, cost
         for index, task in ipairs(tasks) do
             local stop = task.stages[nextStage[index]]
             if stop then
-                local d = previous and previous.mapID ~= stop.mapID and 15000 or distance(stop.mapID, previous, stop)
+                local d = previous and previous.mapID ~= stop.mapID and 15000 or distance(stop.mapID, previous, stop, metrics)
                 if not cost or d < cost or d == cost and stop.id < tasks[best].id then best, cost = index, d end
             end
             work = work + 1
-            if cooperative and work % 200 == 0 then coroutine.yield() end
+            if cooperative and work % 200 == 0 then coroutine.yield(); resetMetrics(metrics) end
         end
         if not best then break end
         previous = tasks[best].stages[nextStage[best]]
@@ -178,7 +307,8 @@ function ns.BuildLevelingRoute(guide, includeOrigin, cooperative)
     for _, task in ipairs(tasks) do if task.first.mapID == current then mapID, hasMap = current, true; break end end
     if not hasMap and tasks[1] then mapID = tasks[1].first.mapID end
     local position = current == mapID and ns.PlayerPoint(mapID) or nil
-    local batch = chooseBatch(guide, tasks, mapID, position)
+    local metrics = {}
+    local batch = chooseBatch(guide, tasks, mapID, position, metrics)
     local localTasks, otherMaps, partial = {}, 0, false
     for _, task in ipairs(batch) do
         local stages = {}
@@ -190,16 +320,16 @@ function ns.BuildLevelingRoute(guide, includeOrigin, cooperative)
         local quest = ns.CatalogueQuest(task.id)
         if quest and quest.objectiveLocationsIncomplete then partial = true end
     end
-    local stops, cost = optimize(localTasks, mapID, position, cooperative)
+    local stops, cost, method = optimize(localTasks, mapID, position, cooperative, metrics)
     if #stops == 0 and not guide.pendingReason then
         guide.pendingReason = complete == enabled and "This guide's selected quests are completed."
             or "Visit a quest giver in " .. guide.zone .. "; the next pickup or objective location is not known yet."
     end
     return {key = guide.key, title = guide.title, mapID = mapID, stops = stops, origin = includeOrigin and position or nil,
-        previewStops = completePreview(tasks, position, cooperative), eligibleMappedQuests = #tasks,
+        previewStops = completePreview(tasks, position, cooperative, metrics), eligibleMappedQuests = #tasks,
         missing = missing, otherMaps = otherMaps, limited = math.max(0, #tasks - #batch), focusKey = guide.focusKey,
         partial = partial or missing > 0 or otherMaps > 0, estimatedWalkingCost = cost,
-        guideQuests = #guide.records, tripQuests = #batch, completed = complete, optimized = true}
+        guideQuests = #guide.records, tripQuests = #batch, completed = complete, optimized = true, tripSearch = method}
 end
 
 function ns.CancelGuidePlanning()
