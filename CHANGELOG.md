@@ -2,6 +2,21 @@
 
 ## Unreleased
 
+## 0.8.81
+
+**DUNGEON ENTRANCE RECOVERY**
+
+- Keep the dungeon entrance reachable after all confirmed preparation steps,
+  even when some quest pickups or hand-ins still lack mapped locations. The
+  route marks those plans partial and names the missing work where possible.
+- Separate captured in-dungeon quest work from external prerequisites. The
+  guide can continue with partial dungeon work, while a known external chain or
+  unavailable offer still blocks the entrance.
+- Entering the selected instance advances the guide into its dungeon-run phase
+  even when an earlier preparation location could not be mapped.
+- Check every eligible dungeon route for Horde and Alliance profiles. Preserve
+  dependency order for mapped quest steps; do not invent interior locations.
+
 ## 0.8.80
 
 **LIVE QUEST PREREQUISITE ROUTING**

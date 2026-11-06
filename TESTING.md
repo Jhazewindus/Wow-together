@@ -1,5 +1,28 @@
 # Wow Together — friend test script
 
+For **0.8.81** — **DUNGEON ENTRANCE RECOVERY**, World of Warcraft: Forever.
+
+## Dungeon entrance and run phase — 0.8.81
+
+1. Open dungeon preparation with at least one quest whose pickup or hand-in
+   location is unavailable. The confirmed preparation stops should still lead
+   to the known entrance, and the route should mark itself partial with a useful
+   explanation of the missing step.
+2. Enter that dungeon without completing every mapped preparation step first.
+   Confirm the guide changes to the dungeon-run phase instead of returning to
+   the generic waiting state.
+3. Check a normal quest prerequisite chain and the Ruins of Lordaeron item-start
+   quests. Mapped prerequisite order and the in-run Abominable Head / The Baron
+   note should remain intact.
+
+Host verification builds **41 eligible faction/dungeon route combinations**
+from the 28 dungeon definitions. **26** can safely route to their known
+entrance; 15 remain paused by an unresolved known external prerequisite,
+turn-in or eligibility gate. There are zero mapped prerequisite-order
+violations. The host audit reports **36 unmapped quest steps** across those
+profile runs; those remain partial and receive no invented coordinates. Host
+tests do not verify live WoW offers, dungeon floor transitions or map rendering.
+
 For **0.8.80** — **LIVE QUEST PREREQUISITE ROUTING**, World of Warcraft: Forever.
 
 ## Live prerequisite routing — 0.8.80

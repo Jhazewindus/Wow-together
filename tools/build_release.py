@@ -84,6 +84,12 @@ the release includes taint mitigation (a /reload is insufficient
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+0.8.81 DUNGEON ENTRANCE RECOVERY keeps known dungeon entrances reachable when
+some quest locations are uncaptured. The confirmed route remains partial, and
+entering the selected dungeon advances the guide into its run phase. Known
+external prerequisite and offer gates still block entry. No interior coordinates
+are guessed. See CHANGELOG.md and TESTING.md.
+
 0.8.80 LIVE QUEST PREREQUISITE ROUTING expands verified unfinished quest chains
 into ordinary live leveling routes. Dungeon preparation now treats item-start
 quests sourced inside Ruins of Lordaeron as in-run goals, so those pickups do

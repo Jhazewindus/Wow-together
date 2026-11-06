@@ -55,6 +55,50 @@ class DungeonDataTests(unittest.TestCase):
         self.assertIn('The Baron', reason)
         self.assertIn('not mapped yet', reason)
 
+    def test_every_available_dungeon_route_keeps_its_entrance_reachable_when_quest_steps_are_missing(self):
+        built, entrances = 0, 0
+        for faction, race in (('Horde', 2), ('Alliance', 1)):
+            c = shipped(60)
+            c.ns.profile.faction, c.ns.profile.raceID = faction, race
+            for group in groups(c).values():
+                guide = c.ns.DungeonGuide(group)
+                if not guide:
+                    continue
+                built += 1
+                route = c.ns.BuildDungeonRoute(guide, False, False)
+                if route.missing:
+                    self.assertTrue(route.pendingReason, (faction, group.key, route.missing))
+                if c.ns.DungeonEntrance(group):
+                    last = route.stops[len(route.stops)] if len(route.stops) else None
+                    if not route.entranceBlocked and route.limited == 0:
+                        entrances += 1
+                        self.assertTrue(last and last.dungeonEntrance,
+                                        (faction, group.key, route.missing, route.limited, route.pendingReason))
+                    else:
+                        self.assertFalse(any(stop.dungeonEntrance for stop in route.stops.values()),
+                                         (faction, group.key, route.entranceBlocked, route.limited))
+                positions = {}
+                for index, stop in enumerate(route.stops.values(), 1):
+                    positions.setdefault(stop.id, {})[stop.kind] = index
+                for child, parents in guide.collectionDependencies.items():
+                    if guide.collectionDeferred[child]:
+                        continue
+                    pickup = positions.get(child, {}).get('a')
+                    for parent in parents.values():
+                        turn_in = positions.get(parent, {}).get('t')
+                        if pickup and turn_in:
+                            self.assertLess(turn_in, pickup, (faction, group.key, parent, child))
+        self.assertEqual(built, 41)
+        self.assertGreater(entrances, 10)
+
+    def test_entering_a_dungeon_advances_past_unmapped_prep_steps(self):
+        c = shipped(20)
+        group = groups(c)['ruins-of-lordaeron']
+        guide = c.ns.DungeonGuide(group)
+        c.lua.execute("local ns=...; ns.DungeonEntryKey=function() return '" + group.key + "' end", c.ns)
+        c.ns.AdvanceDungeonGuide(guide)
+        self.assertEqual(guide.dungeonPhase, 'run')
+
     def test_all_classic_complexes_are_mapped_and_all_overview_dungeons_are_present(self):
         c = shipped()
         gs = groups(c)

@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.80
-## X-ReleaseName: LIVE QUEST PREREQUISITE ROUTING
+## Version: 0.8.81
+## X-ReleaseName: DUNGEON ENTRANCE RECOVERY
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua
