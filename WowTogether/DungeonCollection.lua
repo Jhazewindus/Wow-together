@@ -85,7 +85,10 @@ function ns.DungeonGuide(group, pickupQuestID)
         local q = ns.CatalogueQuest(id)
         if not q then return end
         records[#records + 1] = ns.CatalogueRecord(id)
-        local inside = inDungeonScope(q)
+        -- Explicit group membership (Wowhead category or supplemental Method
+        -- table) is authoritative evidence that the quest's work belongs to
+        -- this instance, even when its catalogue zone predates that mapping.
+        local inside = inDungeonScope(q) or goals[id] == true
         if inside and not hasMappedStart(q) then deferred[id] = true end
         dependencies[id] = {}
         -- An accepted quest needs no earlier pickup chain. A confirmed beta
@@ -138,7 +141,8 @@ function ns.DungeonGuide(group, pickupQuestID)
         destination = pickupQuestID and "Go to the quest giver." or "Collect quests, then go to the dungeon entrance.",
         pendingReason = "Waiting for a quest offer, prerequisite or pickup location."}
     for _, record in ipairs(records) do
-        guide.collectionInDungeon[record.id] = inDungeonScope(ns.CatalogueQuest(record.id) or {})
+        guide.collectionInDungeon[record.id] = goals[record.id] == true
+            or inDungeonScope(ns.CatalogueQuest(record.id) or {})
         local stages = ns.RouteStages(record, ns.self)
         if #stages > 0 then guide.hasPoint = true end
     end

@@ -2,9 +2,14 @@
 
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
-progress. Version **0.8.82 — DUNGEON PREREQUISITE TRIPS** targets interface
+progress. Version **0.8.83 — DUNGEON FINDER QUEST COVERAGE** targets interface
 **16001**, uses Lua **5.1**, and reads capabilities rather than choosing a Classic
 implementation from `WOW_PROJECT_ID`.
+
+**0.8.83 fills eight confirmed dungeon finder quest-list gaps** across City of
+Dalaran and Hall of Thanes, using current Method.gg guide tables alongside
+Wowhead category lists. Five newer dungeons still have no dedicated public guide
+page and retain unknown quest sets. See DUNGEONS.md, CHANGELOG.md and TESTING.md.
 
 **0.8.82 routes multi-instance dungeon quest chains in order.** The Stockade
 preparation route now sends players through The Deadmines for An Unsent Letter.

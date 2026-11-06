@@ -84,6 +84,11 @@ the release includes taint mitigation (a /reload is insufficient
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+0.8.83 DUNGEON FINDER QUEST COVERAGE adds eight Method-listed dungeon quests
+missing from Wowhead categories: seven for City of Dalaran and one for Hall of
+Thanes. Five newer dungeons remain without dedicated guide pages or confirmed
+quest lists. See DUNGEONS.md, CHANGELOG.md and TESTING.md.
+
 0.8.82 DUNGEON PREREQUISITE TRIPS routes the Stockade chain through the
 Deadmines item drop, then through the known return and Stockade pickup. Other
 cross-dungeon prerequisites use confirmed dungeon entrances and quest-tracker
@@ -128,7 +133,7 @@ needs live-client confirmation. See CHANGELOG.md, QUEST_DATA.md and TESTING.md.
 
 0.8.78 LIVE DUNGEON DATA REFRESH records 341 current dungeon quest memberships
 and adds one reported Wetlands encounter with independently sourced item facts.
-Five newer instances remain absent from Method.gg's index. Encounter/loot
+All nine newer instances appear in Method.gg's index cards, but five lack dedicated guide pages. Encounter/loot
 coverage remains partial; only factual IDs and item metadata are included, not
 website code, prose, artwork, layouts or map images. See DUNGEON_VIEWER.md and
 TESTING.md.

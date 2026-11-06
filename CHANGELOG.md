@@ -2,6 +2,28 @@
 
 ## Unreleased
 
+## 0.8.83
+
+**DUNGEON FINDER QUEST COVERAGE**
+
+- Add eight source-listed quests missing from the finder: seven City of Dalaran
+  quests and The Treaty of Understanding for Hall of Thanes. Dungeon totals now
+  include 341 Wowhead category memberships plus eight supplemental Method.gg
+  memberships; quest catalogue facts are unchanged.
+- Compare Method's available quest tables against all four matching Wowhead
+  dungeon lists. The other listed memberships already agree; do not guess quest
+  sets for five newer dungeons whose Method cards have no dedicated guide page.
+- Treat a quest explicitly listed by a dungeon source as in-instance work even
+  when its legacy catalogue zone differs. This lets preparation reach City of
+  Dalaran instead of stalling on mapped return steps for older quest records.
+- Keep the known Underground Map prerequisite routed before Old Ironforge
+  Incursion in Hall of Thanes. It was already present in the quest dependency
+  graph and did not need a duplicate dungeon membership.
+- Record current source URLs and capture hashes, and correct the documentation:
+  Method's index lists all nine newer dungeons, but only four have dedicated
+  guide pages. Preserve Wowhead's chart level ranges where Method's ranges
+  differ; they are documented as a source discrepancy, not silently changed.
+
 ## 0.8.82
 
 **DUNGEON PREREQUISITE TRIPS**

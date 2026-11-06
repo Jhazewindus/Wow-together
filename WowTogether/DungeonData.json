@@ -128,6 +128,45 @@
       "quests": 10
     }
   },
+  "method_quest_guides": {
+    "captured": "2026-11-06",
+    "pages": {
+      "the-hall-of-thanes": {
+        "url": "https://www.method.gg/wow-forever/dungeons/hall-of-thanes",
+        "sha256": "c2b343eb381128e887c37de8424d0ead5394cc2f2a8b07266bcaf669ea1748f5",
+        "quests": 5,
+        "supplementalQuestIDs": [
+          98423
+        ]
+      },
+      "ruins-of-lordaeron": {
+        "url": "https://www.method.gg/wow-forever/dungeons/ruins-of-lordaeron",
+        "sha256": "7d41b2b0833e4d17b2a6a4f5282287ab67502503b0b4d96782283c11e714d1b1",
+        "quests": 9,
+        "supplementalQuestIDs": []
+      },
+      "excavation-site-wetlands": {
+        "url": "https://www.method.gg/wow-forever/dungeons/excavation-site-wetlands",
+        "sha256": "9444c07118b03eff5a946b46ccfafb6b152483a5b64a387185ef143b63fbd1a4",
+        "quests": 9,
+        "supplementalQuestIDs": []
+      },
+      "city-of-dalaran": {
+        "url": "https://www.method.gg/wow-forever/dungeons/city-of-dalaran",
+        "sha256": "b9ec8fefb9ac276ab79bc0cacce52b5022c3e23240d0f169de0e3832c0fb9df0",
+        "quests": 15,
+        "supplementalQuestIDs": [
+          544,
+          545,
+          556,
+          557,
+          92432,
+          92434,
+          93680
+        ]
+      }
+    }
+  },
   "classic_complexes": 19,
   "forever_dungeons": 9,
   "published_entrance_areas": 23,
@@ -193,7 +232,8 @@
         96393,
         96394,
         96395,
-        96403
+        96403,
+        98423
       ],
       "locationHint": "Ironforge"
     },
@@ -782,10 +822,17 @@
         }
       ],
       "questIDs": [
+        544,
+        545,
+        556,
+        557,
+        92432,
+        92434,
         92456,
         92457,
         92458,
         92489,
+        93680,
         96984,
         96986,
         96987,

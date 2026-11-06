@@ -2,8 +2,8 @@
 ## Title: Wow Together
 ## Notes: Forever beta quest library, party guides, map routes, and progress comparison.
 ## Author: Wow Together contributors
-## Version: 0.8.82
-## X-ReleaseName: DUNGEON PREREQUISITE TRIPS
+## Version: 0.8.83
+## X-ReleaseName: DUNGEON FINDER QUEST COVERAGE
 ## SavedVariables: WowTogetherDB
 Core.lua
 DataStore.lua

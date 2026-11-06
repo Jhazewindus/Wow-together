@@ -12,13 +12,14 @@ or unlisted drop is inferred. Source URLs and capture hashes remain in
 `DungeonJournalData.json`; no site code, prose, artwork, layout or map image is
 included.
 
-Method.gg's November 5, 2026 index has guides for four of the nine newer Forever dungeons:
-City of Dalaran, Excavation Site: Wetlands, Hall of Thanes and Ruins of
-Lordaeron. The listed Wetlands and Hall bosses/drops match the current journal.
+Method.gg's November 6, 2026 index lists all nine newer Forever dungeons. Four
+have dedicated guide pages: City of Dalaran, Excavation Site: Wetlands, Hall of
+Thanes and Ruins of Lordaeron. The listed Wetlands and Hall bosses/drops match
+the current journal.
 Ruins' six Method-listed bosses match too; Lordaeron Captain is a separate
 seventh local record. The Drowned City, Krol'dok Stronghold, Alcaz Prison,
-Blackmaw Hold and Shaper's Terrace have no page in that guide index, so their
-boss/loot data stays unknown until another source is captured. No Method map
+Blackmaw Hold and Shaper's Terrace have index cards but no dedicated guide
+pages, so their boss/loot data stays unknown until another source is captured. No Method map
 images are redistributed.
 
 Starving Arcane follows An Alarming Request in the leveling catalogue.

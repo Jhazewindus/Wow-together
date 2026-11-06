@@ -17,6 +17,32 @@ from import_guide_services import POIS_SHA256
 
 ROOT = Path(__file__).resolve().parents[1]
 OVERVIEW = 'https://www.wowhead.com/forever/guide/dungeons-overview-locations-details'
+# Method's current guide quest tables include additional explicit membership
+# rows omitted from the corresponding Wowhead category pages. Store only quest
+# IDs, source URLs and capture hashes; quest details remain sourced elsewhere.
+METHOD_QUEST_GUIDES = {
+    'the-hall-of-thanes': {
+        'url': 'https://www.method.gg/wow-forever/dungeons/hall-of-thanes',
+        'sha256': 'c2b343eb381128e887c37de8424d0ead5394cc2f2a8b07266bcaf669ea1748f5',
+        'questIDs': [96393, 96394, 96395, 96403, 98423],
+    },
+    'ruins-of-lordaeron': {
+        'url': 'https://www.method.gg/wow-forever/dungeons/ruins-of-lordaeron',
+        'sha256': '7d41b2b0833e4d17b2a6a4f5282287ab67502503b0b4d96782283c11e714d1b1',
+        'questIDs': [92415, 92421, 92422, 95189, 95195, 95204, 95216, 95250, 97288],
+    },
+    'excavation-site-wetlands': {
+        'url': 'https://www.method.gg/wow-forever/dungeons/excavation-site-wetlands',
+        'sha256': '9444c07118b03eff5a946b46ccfafb6b152483a5b64a387185ef143b63fbd1a4',
+        'questIDs': [95646, 95647, 95664, 95682, 95697, 95737, 95772, 95810, 98815],
+    },
+    'city-of-dalaran': {
+        'url': 'https://www.method.gg/wow-forever/dungeons/city-of-dalaran',
+        'sha256': 'b9ec8fefb9ac276ab79bc0cacce52b5022c3e23240d0f169de0e3832c0fb9df0',
+        'questIDs': [544, 545, 556, 557, 92432, 92434, 92456, 92457, 92458,
+                     92489, 93680, 96984, 96986, 96987, 96988],
+    },
+}
 FAMILIES = {
     'Ragefire Chasm': ('ragefire-chasm', 2437),
     'Wailing Caverns': ('wailing-caverns', 718),
@@ -144,13 +170,25 @@ def combine(overview, pois, quest_cache, captured):
         records[key]['questIDs'] = sorted(set(ids))
         sources[key] = {'url': 'https://www.wowhead.com/forever/quests/dungeons/' + key,
                         'sha256': digest(path), 'quests': len(set(ids))}
+    method_sources = {}
+    for key, source in METHOD_QUEST_GUIDES.items():
+        if key not in records:
+            raise ValueError('Method quest page names an unknown dungeon: ' + key)
+        category_ids = set(records[key]['questIDs'])
+        method_ids = set(source['questIDs'])
+        records[key]['questIDs'] = sorted(category_ids | method_ids)
+        method_sources[key] = {'url': source['url'], 'sha256': source['sha256'],
+                               'quests': len(method_ids),
+                               'supplementalQuestIDs': sorted(method_ids - category_ids)}
     if any(key not in sources for key, r in records.items() if r['entrances']):
         raise ValueError('Missing captured quest lists for mapped dungeons')
     date.fromisoformat(captured)
     metadata = {'schema': 1, 'captured': captured, 'overview': {'url': OVERVIEW, 'sha256': digest(overview)},
         'entrance_source': {'url': 'https://github.com/tr0tsky0/Mapzeroth/blob/' + COMMIT + '/Data/Forever/Pois.lua',
                             'commit': COMMIT, 'sha256': POIS_SHA256, 'license': 'MIT'},
-        'quest_categories': sources, 'classic_complexes': 19, 'forever_dungeons': 9,
+        'quest_categories': sources,
+        'method_quest_guides': {'captured': '2026-11-06', 'pages': method_sources},
+        'classic_complexes': 19, 'forever_dungeons': 9,
         'published_entrance_areas': points, 'unmapped_entrances': sorted(k for k, r in records.items() if not r['entrances']),
         'level_conflicts': {'city-of-dalaran': {'chart': [28, 33], 'paragraph': [20, 35]},
                             'kroldok-stronghold': {'chart': [40, 45], 'paragraph': [40, 55]}},
@@ -171,9 +209,9 @@ def main():
     args = parser.parse_args()
     records, metadata = combine(args.overview, args.pois, args.quest_cache, args.captured)
     (ROOT / 'WowTogether/DungeonData.lua').write_text('local addonName, ns = ...\n\n'
-        '-- Factual dungeon ranges/membership from Wowhead Forever; geographic facts from\n'
-        '-- the attributed MIT Forever snapshot. See DUNGEONS.md / DungeonData.json.\n'
-        '-- No source guide prose, artwork or addon engine/UI is included.\n'
+        '-- Factual dungeon ranges from Wowhead Forever; quest memberships from Wowhead and Method;\n'
+        '-- geographic facts from the attributed MIT Forever snapshot.\n'
+        '-- See DUNGEONS.md / DungeonData.json. No source guide prose, artwork or addon engine/UI is included.\n'
         'ns.dungeonData = ' + encode({'schema': 1, 'dungeons': records}) + '\n')
     (ROOT / 'WowTogether/DungeonData.json').write_text(json.dumps(metadata, indent=2, ensure_ascii=False) + '\n')
     print(f'Generated {len(records)} dungeon entries; {sum(len(r["questIDs"]) for r in records.values())} quest memberships; 23 entrance areas.')

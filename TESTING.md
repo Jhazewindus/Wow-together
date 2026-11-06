@@ -1,5 +1,27 @@
 # Wow Together — friend test script
 
+For **0.8.83** — **DUNGEON FINDER QUEST COVERAGE**, World of Warcraft: Forever.
+
+## Dungeon finder quest lists — 0.8.83
+
+1. Open Dungeon quests and confirm City of Dalaran lists the seven newly
+   sourced quests (544, 545, 556, 557, 92432, 92434 and 93680), and Hall of
+   Thanes lists The Treaty of Understanding (98423).
+2. Start Hall of Thanes preparation with the relevant quest uncompleted.
+   Confirm Underground Map (96391) remains before Old Ironforge Incursion
+   (96393); the outdoor prerequisite is routed by the existing dependency data.
+3. Keep quest sets for The Drowned City, Krol'dok Stronghold, Alcaz Prison,
+   Blackmaw Hold and Shaper's Terrace marked unknown until dedicated quest
+   tables or other direct evidence become available. Do not infer from comments
+   alone or from geography.
+
+Host verification: `/workspace/.wow-together-tests/bin/python -m pytest tests/`
+passes **1,807 tests and 310 subtests**. All **92 Lua files compile under Lua
+5.1**. The suite checks the 349 memberships, the new method-source IDs and all
+41 eligible faction/dungeon routes; explicit finder membership is recognized as
+in-instance work. Host checks cannot confirm current in-client availability or
+the five unmapped quest sets.
+
 For **0.8.82** — **DUNGEON PREREQUISITE TRIPS**, World of Warcraft: Forever.
 
 ## Cross-instance dungeon preparation — 0.8.82

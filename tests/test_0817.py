@@ -149,6 +149,23 @@ class DungeonDataTests(unittest.TestCase):
         self.assertLess(child_pickup, goal_entry)
         self.assertFalse(route.entranceBlocked)
 
+    def test_hall_of_thanes_prerequisite_is_in_the_live_dungeon_preparation_route(self):
+        c = shipped(20)
+        c.ns.profile.faction, c.ns.profile.raceID = 'Alliance', 1
+        guide = c.ns.DungeonGuide(groups(c)['the-hall-of-thanes'])
+        self.assertEqual(list(guide.collectionDependencies[96393].values()), [96391])
+
+        route = c.ns.BuildDungeonRoute(guide, False, False)
+        steps = list(route.stops.values())
+        parent_pickup = next(i for i, stop in enumerate(steps)
+                             if stop.id == 96391 and stop.kind == 'a')
+        parent_return = next(i for i, stop in enumerate(steps)
+                             if stop.id == 96391 and stop.kind == 't')
+        child_pickup = next(i for i, stop in enumerate(steps)
+                            if stop.id == 96393 and stop.kind == 'a')
+        self.assertLess(parent_pickup, parent_return)
+        self.assertLess(parent_return, child_pickup)
+
     def test_stockade_chain_routes_the_unsent_letter_item_drop_to_the_deadmines(self):
         c = shipped(30)
         c.ns.profile.faction, c.ns.profile.raceID = 'Alliance', 1
@@ -229,7 +246,7 @@ class DungeonDataTests(unittest.TestCase):
             self.assertTrue(set(source['questIDs']).issubset(ids))
             self.assertTrue(all(c.ns.CatalogueQuest(id) is not None for id in source['questIDs']))
             count += len(source['questIDs'])
-        self.assertEqual(count, 341)
+        self.assertEqual(count, 349)
         self.assertEqual(c.ns.catalogue.count, 5307)
         # Explicit zone identity folds this formerly separate dungeon card in.
         self.assertIn(92401, list(gs['ruins-of-lordaeron'].ids.values()))
@@ -238,6 +255,37 @@ class DungeonDataTests(unittest.TestCase):
         self.assertIsNotNone(c.ns.CatalogueQuest(92753))
         # Unresolved dungeon-tagged class/city/raid records stay in the library.
         self.assertIsNotNone(c.ns.CatalogueQuest(7487))
+
+    def test_method_guide_supplemental_memberships_are_source_tracked_and_in_their_dungeons(self):
+        data = json.loads((ROOT / 'WowTogether/DungeonData.json').read_text())
+        pages = data['method_quest_guides']['pages']
+        expected = {
+            'city-of-dalaran': [544, 545, 556, 557, 92432, 92434, 93680],
+            'the-hall-of-thanes': [98423],
+        }
+        for key, ids in expected.items():
+            with self.subTest(dungeon=key):
+                self.assertEqual(pages[key]['supplementalQuestIDs'], ids)
+                self.assertTrue(pages[key]['url'].startswith('https://www.method.gg/wow-forever/dungeons/'))
+                self.assertRegex(pages[key]['sha256'], r'^[0-9a-f]{64}$')
+        seen = set()
+        for faction, race in (('Horde', 2), ('Alliance', 1)):
+            c = shipped()
+            c.ns.profile.faction, c.ns.profile.raceID = faction, race
+            gs = groups(c)
+            for key, ids in expected.items():
+                guide = c.ns.DungeonGuide(gs[key])
+                for quest_id in ids:
+                    self.assertIn(quest_id, list(gs[key].ids.values()))
+                    self.assertIsNotNone(c.ns.CatalogueQuest(quest_id))
+                    if guide and guide.collectionGoals[quest_id]:
+                        self.assertTrue(guide.collectionInDungeon[quest_id])
+                        seen.add(quest_id)
+        self.assertEqual(seen, {quest_id for ids in expected.values() for quest_id in ids})
+        # Method also reproduces the non-supplemental IDs already in Wowhead's
+        # category pages; the merge should retain all four bounded page lists.
+        self.assertEqual(set(pages), {'city-of-dalaran', 'excavation-site-wetlands',
+                                      'ruins-of-lordaeron', 'the-hall-of-thanes'})
 
     def test_wing_ranges_survive_family_merge_and_unmapped_new_dungeons_stay_unknown(self):
         c = shipped()

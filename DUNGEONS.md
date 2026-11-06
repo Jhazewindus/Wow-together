@@ -1,4 +1,4 @@
-# Combined dungeon data — updated for 0.8.78
+# Combined dungeon data — updated for 0.8.83
 
 All **19 Classic dungeon complexes** have published entrance areas. The supplied
 Wowhead overview contains **25 Classic range/wing rows**; Scarlet Monastery,
@@ -6,12 +6,15 @@ Maraudon and Blackrock Spire are kept as families with their wing ranges. All
 nine new Forever dungeons are listed; four have published entrance areas and
 five have broad location descriptions without usable coordinates or quest sets.
 
-The 23 bounded Forever dungeon category pages, recaptured November 5, 2026,
-supply 341 quest memberships. Since the prior capture, Deadmines gained quest
-92753 and the Lordaeron list was refreshed. The overview's 28 ranges were
-unchanged. These source lists do not establish that every live quest is
-categorized.
-Every captured member already exists in the 5,230-quest catalogue. Runtime also
+The 23 bounded Forever dungeon category pages, captured November 5, 2026,
+supply 341 memberships. Four current Method.gg quest tables supplement these
+with eight listed quests missing from Wowhead's categories: seven for City of
+Dalaran and The Treaty of Understanding (98423) for Hall of Thanes. The merged
+finder now has 349 memberships, all present in the 5,307-quest catalogue. These
+source lists do not establish that every live quest is categorized.
+The Method tables for Ruins of Lordaeron and Excavation Site: Wetlands add no
+new IDs beyond Wowhead's lists. The overview's 28 ranges and the other quest
+facts are unchanged. Runtime also
 recognizes explicit matching dungeon area/name facts, folding the formerly
 separate Lordaeron label together. A generic Dungeon tag alone does not create
 Mage, Orgrimmar or raid cards. Unassigned tagged quests remain in All quests;
@@ -30,12 +33,15 @@ no membership is guessed from mob/item names or an NPC's pickup zone.
   Only the 23 non-raid `instance` point records are selected. No upstream
   engine, route logic, UI, guide prose, screenshots or artwork are included.
 - [Method.gg dungeon guides](https://www.method.gg/wow-forever/dungeons),
-  captured November 5, 2026. The index lists ten dungeons: four newer Forever
-  instances and six Classic dungeons. Current newer-dungeon pages cross-check
-  encounter and item IDs. Wetlands lists four encounters including Highland
-  Horror; its NPC and linked item facts also match current Wowhead Forever
-  pages. Five newer instances are absent from the index. No site code, guide
-  prose, images or map artwork are included.
+  checked November 6, 2026. The index lists all nine newer Forever dungeons,
+  while only City of Dalaran, Excavation Site: Wetlands, Hall of Thanes and
+  Ruins of Lordaeron have dedicated guide pages. Their explicit quest tables
+  are merged as supplemental memberships; the seven City and one Hall IDs are
+  absent from their Wowhead category captures. The remaining five have no
+  dedicated quest page, so their memberships stay unknown. Guide range labels
+  differ from the Wowhead chart for the four available pages; current finder
+  recommendations retain the Wowhead chart ranges. No site code, guide prose,
+  images or map artwork are included.
 
 `WowTogether/DungeonData.json` keeps all source URLs, SHA256 hashes, fields,
 quest memberships and remaining gaps. Its overview SHA256 is
@@ -45,9 +51,11 @@ its entrance-source SHA256 is
 The source's MIT notice is retained in THIRD_PARTY_NOTICES.md.
 
 The overview's chart/table disagrees with its paragraphs for City of Dalaran
-(28–33 versus 20–35) and Krol'dok Stronghold (40–45 versus 40–55). Use the
-consistent chart/table ranges as run recommendations, with the conflict retained
-in the metadata. These ranges are neither minimum entry levels nor quest pickup
+(28–33 versus 20–35) and Krol'dok Stronghold (40–45 versus 40–55). Method.gg's
+guide ranges for Hall of Thanes, Ruins of Lordaeron, Wetlands and City of
+Dalaran also differ from the Wowhead chart (13–20 vs 13–18, 15–22 vs 15–20,
+26–33 vs 24–29, and 28–35 vs 28–33 respectively). Use Wowhead's consistent
+chart/table ranges as run recommendations, with source conflicts documented. These ranges are neither minimum entry levels nor quest pickup
 requirements. Collection popups still use the highest relevant known quest
 minimum for this character; faction, race, class, repeatable/profession filters,
 prerequisites, actual offers and saved skips remain independent.
