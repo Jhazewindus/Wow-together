@@ -2,6 +2,20 @@
 
 ## Unreleased
 
+## 0.8.80
+
+**LIVE QUEST PREREQUISITE ROUTING**
+
+- Expand ordinary live leveling routes with unfinished, verified prerequisite
+  quests. A blocked destination can now be approached through its required
+  parents, with pickup/objective/turn-in order retained.
+- Treat Ruins of Lordaeron quest pickups tied to item drops inside the instance
+  as dungeon-run goals instead of missing pre-entry stops. The prep route can
+  still reach the entrance, and its status names the item/source when captured
+  facts identify them.
+- Replace generic stalled-route text with the missing quest or item source when
+  available. Unknown pickup coordinates remain unknown; no marker is invented.
+
 ## 0.8.79
 
 **QUESTIE DUNGEON PREREQUISITES**

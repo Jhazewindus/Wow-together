@@ -1,5 +1,26 @@
 # Wow Together — friend test script
 
+For **0.8.80** — **LIVE QUEST PREREQUISITE ROUTING**, World of Warcraft: Forever.
+
+## Live prerequisite routing — 0.8.80
+
+1. Select a live leveling route containing a quest with an unfinished recorded
+   prerequisite. Confirm the guide routes the prerequisite first, then advances
+   to the original quest after the prerequisite is completed. Existing fixed
+   zone-guide order should stay unchanged.
+2. Open Ruins of Lordaeron preparation as Horde. Confirm the mapped outdoor
+   chains remain before the entrance, and that item-start quests for Crest of
+   Lordaeron and Unending Torment do not block the entrance. The guide status
+   should identify Abominable Head / The Baron as an in-run pickup where shown.
+3. Check any other quest with an unmapped pickup. The guide should name the
+   quest and captured item source when available, while leaving the map marker
+   absent until a location is verified.
+
+Host verification: `/workspace/.wow-together-tests/bin/python -m pytest tests/`
+passes **1,799 tests and 308 subtests**. These checks cover the live prerequisite
+route and the Lordaeron in-dungeon deferral. They do not confirm native quest
+offers or beta map rendering; verify those in game.
+
 For **0.8.79** — **QUESTIE DUNGEON PREREQUISITES**, World of Warcraft: Forever.
 
 ## Dungeon prerequisite audit — 0.8.79

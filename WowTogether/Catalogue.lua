@@ -6,6 +6,30 @@ function ns.CatalogueQuest(id)
     return ns.catalogue and ns.catalogue.quests[id]
 end
 
+-- Explain a missing pickup with captured item-source facts when available.
+-- These facts can identify what starts a quest, but do not imply a map point.
+function ns.QuestStartGapReason(id)
+    local quest = ns.CatalogueQuest(id)
+    if not quest or quest.starts and #quest.starts > 0 then return end
+    for _, item in ipairs(quest.providedItems or {}) do
+        if item.entityType == "item" and item.entityID then
+            local data = ns.questEntities and ns.questEntities.item and ns.questEntities.item[item.entityID]
+            local source = data and data.sources and data.sources[1]
+            local itemName = ns.SafeTitle(item.name or data and data.name)
+            local sourceName = source and ns.SafeTitle(source.name)
+            if itemName then
+                if sourceName then
+                    return "To start " .. quest.title .. ", obtain " .. itemName .. " from " .. sourceName
+                        .. ". Its pickup location is not mapped yet."
+                end
+                return "To start " .. quest.title .. ", obtain " .. itemName
+                    .. ". Its pickup location is not mapped yet."
+            end
+        end
+    end
+    return "The pickup location for " .. quest.title .. " is not mapped yet."
+end
+
 function ns.IsRetiredQuest(id)
     local quest = ns.CatalogueQuest(id)
     local title = quest and quest.title

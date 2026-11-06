@@ -41,13 +41,23 @@ local function eligibleIdentity(id)
 end
 
 function ns.DungeonGuide(group, pickupQuestID)
-    local records, goals, required, dependencies, seen = {}, {}, {}, {}, {}
+    local records, goals, required, dependencies, deferred, seen = {}, {}, {}, {}, {}, {}
+    local dungeonName = string.lower(group.name or "")
+    local function startsInsideDungeon(quest)
+        if (quest.starts and #quest.starts > 0) or not quest.startRefs or not quest.zone
+            or string.lower(quest.zone) ~= dungeonName then return false end
+        for _, point in ipairs(quest.startRefs) do
+            if point.entityType == "item" then return true end
+        end
+        return false
+    end
     local function visit(id, depth)
         if seen[id] or depth > 24 or #records >= 512 then return end
         seen[id] = true
         local q = ns.CatalogueQuest(id)
         if not q then return end
         records[#records + 1] = ns.CatalogueRecord(id)
+        if startsInsideDungeon(q) then deferred[id] = true end
         dependencies[id] = {}
         -- An accepted quest needs no earlier pickup chain. A confirmed beta
         -- offer may also override explicitly marked older-world prerequisites,
@@ -78,6 +88,7 @@ function ns.DungeonGuide(group, pickupQuestID)
         for _, previous in ipairs(parents) do
             required[previous], dependencies[id][#dependencies[id] + 1] = true, previous
             visit(previous, depth + 1)
+            if deferred[previous] then deferred[id] = true end
         end
     end
     for _, id in ipairs(group.ids) do
@@ -91,7 +102,7 @@ function ns.DungeonGuide(group, pickupQuestID)
         dungeonKey = group.key, dungeon = group, pickupQuestID = pickupQuestID, mode = "dungeon", personal = true,
         title = pickupQuestID and ("Get " .. ns.QuestTitle(pickupQuestID)) or ("Get " .. group.name .. " quests"),
         kind = "Dungeon preparation", records = records, target = records[1], collectionGoals = goals,
-        collectionRequired = required, collectionDependencies = dependencies, focusKey = ns.self,
+        collectionRequired = required, collectionDependencies = dependencies, collectionDeferred = deferred, focusKey = ns.self,
         mapID = ns.profile.mapID, level = group.level, zone = group.name, profilesReady = true, entrance = entrance,
         reason = "Collect the quests and finish required prerequisites before entering.",
         destination = pickupQuestID and "Go to the quest giver." or "Collect quests, then go to the dungeon entrance.",
@@ -123,10 +134,17 @@ end
 
 function ns.AdvanceDungeonGuide(guide)
     if guide.pickupQuestID or not guide.collectionGoals then return end
+    guide.collectionDeferred = guide.collectionDeferred or {}
     local progress = ns.DungeonRunProgress(guide)
     local phase = guide.dungeonPhase or "collect"
     local inside = ns.DungeonEntryKey() == guide.dungeonKey
-    if phase == "collect" and progress.total > 0 and progress.collected == progress.total
+    local preparationComplete = true
+    for id in pairs(guide.collectionGoals) do
+        if not guide.collectionDeferred[id] and not complete(id) and not ns.GuideQuestSkipped(id) and not ns.active[id] then
+            preparationComplete = false; break
+        end
+    end
+    if phase == "collect" and progress.total > 0 and preparationComplete
         and (inside or progress.ready > 0 and progress.ready + progress.finished + progress.skipped == progress.total) then
         phase = "run"
     end
@@ -199,22 +217,36 @@ function ns.BuildDungeonRoute(guide, includeOrigin, cooperative)
         if fresh then guide = fresh
         else
             local copy = {}; for key, value in pairs(guide) do copy[key] = value end
-            copy.collectionGoals, copy.collectionRequired, copy.collectionDependencies = {}, {}, {}
+            copy.collectionGoals, copy.collectionRequired, copy.collectionDependencies, copy.collectionDeferred = {}, {}, {}, {}
             for _, record in ipairs(copy.records) do copy.collectionGoals[record.id] = true end
             guide = copy
         end
     end
-    local tasks, terminal, byID, missing = {}, {}, {}, 0
+    guide.collectionDeferred = guide.collectionDeferred or {}
+    local tasks, terminal, byID, missing, pendingReason, deferredNote = {}, {}, {}, 0, nil, nil
     local visiting = {}
     local function append(id)
         if complete(id) then return true end
         if visiting[id] then return false end
         if byID[id] ~= nil then return byID[id] end
+        if guide.collectionDeferred[id] then
+            byID[id] = true
+            local reason = ns.QuestStartGapReason(id)
+            if reason and (not deferredNote or string.find(reason, " from ", 1, true)
+                and not string.find(deferredNote, " from ", 1, true)) then deferredNote = reason end
+            return true
+        end
         visiting[id] = true
         local dependencies, parentsReady = {}, true
+        local deferredParent = false
         for _, previous in ipairs(guide.collectionDependencies[id] or {}) do
             if not append(previous) then parentsReady = false end
+            if guide.collectionDeferred[previous] then deferredParent = true end
             if terminal[previous] then dependencies[#dependencies + 1] = terminal[previous] end
+        end
+        if deferredParent then
+            guide.collectionDeferred[id], visiting[id], byID[id] = true, nil, true
+            return true
         end
         local record = ns.CatalogueRecord(id)
         local goalOnly = guide.collectionGoals[id] and not guide.collectionRequired[id]
@@ -250,6 +282,12 @@ function ns.BuildDungeonRoute(guide, includeOrigin, cooperative)
                 tasks[#tasks + 1] = task; dependencies = {#tasks}
             end
             if valid then terminal[id] = dependencies[1] end
+        else
+            local reason = ns.QuestStartGapReason(id)
+                or ("A pickup or route step for " .. record.title .. " is not mapped yet.")
+            if not pendingReason or string.find(reason, " from ", 1, true) and not string.find(pendingReason, " from ", 1, true) then
+                pendingReason = reason
+            end
         end
         visiting[id], byID[id] = nil, valid
         return valid
@@ -337,7 +375,8 @@ function ns.BuildDungeonRoute(guide, includeOrigin, cooperative)
     return {key = guide.key, title = guide.title, mapID = mapID, stops = stops,
         origin = includeOrigin and start and start.mapID == mapID and start or nil, focusKey = ns.self,
         missing = missing, remote = 0, limited = #tasks - #order, otherMaps = otherMaps,
-        partial = missing > 0 or #tasks ~= #order or not guide.pickupQuestID and not entrance}
+        partial = missing > 0 or #tasks ~= #order or not guide.pickupQuestID and not entrance,
+        pendingReason = pendingReason or deferredNote and (deferredNote .. " This is picked up during the dungeon run.")}
 end
 
 function ns.DungeonPreparationArrived(guide)

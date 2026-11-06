@@ -84,6 +84,12 @@ the release includes taint mitigation (a /reload is insufficient
 to clear an existing tainted session). Restart if a new addon folder does not appear.
 No Battle.net credentials or external API service are needed.
 
+0.8.80 LIVE QUEST PREREQUISITE ROUTING expands verified unfinished quest chains
+into ordinary live leveling routes. Dungeon preparation now treats item-start
+quests sourced inside Ruins of Lordaeron as in-run goals, so those pickups do
+not hide the dungeon entrance. Unknown pickup coordinates remain unknown. See
+CHANGELOG.md and TESTING.md.
+
 0.8.79 QUESTIE DUNGEON PREREQUISITES refreshes the live QuestieDB snapshot and
 adds seven source-checked dungeon prerequisite links. Lordaeron, Wailing
 Caverns and other eligible dungeon chains are ordered before pickups where

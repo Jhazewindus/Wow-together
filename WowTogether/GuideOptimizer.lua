@@ -23,10 +23,68 @@ local function activeForParty(id, readyOnly)
     return false
 end
 
+-- Pull verified, unfinished prerequisites into ordinary live leveling routes
+-- so a blocked destination can be reached through its actual quest chain.
+local function prerequisiteRecords(guide)
+    local records, seen = {}, {}
+    for _, record in ipairs(guide.records or {}) do
+        if record and record.id and not seen[record.id] then
+            records[#records + 1], seen[record.id] = record, true
+        end
+    end
+    local cursor = 1
+    while cursor <= #records and #records < 256 do
+        local id = records[cursor].id
+        local quest = ns.CatalogueQuest(id)
+        if quest then
+            local parents, added = {}, {}
+            local function add(parent)
+                if ns.GuideInteger(parent) and parent > 0 and parent ~= id and not added[parent]
+                    and ns.CatalogueCompletion(ns.self, parent) ~= true then
+                    parents[#parents + 1], added[parent] = parent, true
+                end
+            end
+            add(quest.previousQuest)
+            for _, parent in ipairs(quest.prerequisiteAll or {}) do add(parent) end
+            if not quest.prerequisitesUnverified then
+                for _, parent in ipairs(ns.LearnedPrerequisiteIDs and ns.LearnedPrerequisiteIDs(id) or {}) do add(parent) end
+            end
+            if quest.prerequisiteAny and not quest.prerequisitesUnverified then
+                local met, best, score = false, nil, nil
+                for _, parent in ipairs(quest.prerequisiteAny) do
+                    if ns.CatalogueCompletion(ns.self, parent) == true then met = true; break end
+                    local candidate = ns.CatalogueQuest(parent)
+                    local allowed = ns.CatalogueIdentityAllowed(parent, ns.profile)
+                    if candidate and allowed == true and (candidate.minLevel or candidate.level or 255) <= (ns.profile.level or 0)
+                        and not ns.GuideQuestSkipped(parent) then
+                        local point = ns.NPCPickupPoint(parent) or candidate.starts and candidate.starts[1]
+                        local value = point and ns.PlayerPoint(point.mapID)
+                            and ns.TravelPointDistance(ns.PlayerPoint(point.mapID), point) or 100000
+                        if not score or value < score or value == score and parent < best then best, score = parent, value end
+                    end
+                end
+                if not met and best then add(best) end
+            end
+            for _, parent in ipairs(parents) do
+                local candidate = ns.CatalogueQuest(parent)
+                local allowed = candidate and ns.CatalogueIdentityAllowed(parent, ns.profile)
+                local levelReady = candidate and (candidate.minLevel or candidate.level or 255) <= (ns.profile.level or 0)
+                if not seen[parent] and candidate and allowed == true and levelReady and ns.ClassQuestEnabled(parent)
+                    and not ns.GuideQuestSkipped(parent) and #records < 256 then
+                    local record = ns.CatalogueRecord(parent)
+                    if record then records[#records + 1], seen[parent] = record, true end
+                end
+            end
+        end
+        cursor = cursor + 1
+    end
+    return records
+end
+
 local function availableTasks(guide)
     local tasks, missing, complete, live = {}, 0, 0, ns.AllGuideRecords()
     local records = {}
-    for _, record in ipairs(guide.records) do
+    for _, record in ipairs(prerequisiteRecords(guide)) do
         if ns.ClassQuestEnabled(record.id) then records[#records + 1] = record end
     end
     local focus = ns.GuideFocus(records)
@@ -46,12 +104,12 @@ local function availableTasks(guide)
             else
                 missing = missing + 1
                 local _, reason = ns.CatalogueAllowed(record.id, ns.profile, ns.self)
-                guide.pendingReason = guide.pendingReason or reason
+                guide.pendingReason = guide.pendingReason or reason or ns.QuestStartGapReason(record.id)
             end
         else
             missing = missing + 1
             local _, reason = ns.CatalogueAllowed(record.id, ns.profile, ns.self)
-            guide.pendingReason = guide.pendingReason or reason
+            guide.pendingReason = guide.pendingReason or reason or ns.QuestStartGapReason(record.id)
         end
     end
     return tasks, missing, complete, #records

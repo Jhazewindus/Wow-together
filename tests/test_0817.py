@@ -31,6 +31,30 @@ def groups(c):
 
 
 class DungeonDataTests(unittest.TestCase):
+    def test_lordaeron_item_started_quests_are_dungeon_run_goals_not_blocking_preparation(self):
+        c = shipped(20)
+        group = groups(c)['ruins-of-lordaeron']
+        guide = c.ns.DungeonGuide(group)
+        self.assertTrue(guide.collectionDeferred[95204])
+        self.assertTrue(guide.collectionDeferred[97288])
+        self.assertTrue(guide.collectionDeferred[97289])
+
+        route = c.ns.BuildDungeonRoute(guide, False, False)
+        self.assertEqual(route.missing, 0)
+        self.assertTrue(route.stops[len(route.stops)].dungeonEntrance)
+        self.assertTrue(route.pendingReason)
+        self.assertIn('Abominable Head', route.pendingReason)
+        self.assertIn('The Baron', route.pendingReason)
+        self.assertIn('picked up during the dungeon run', route.pendingReason)
+
+    def test_unmapped_general_quest_start_names_the_item_source_without_inventing_a_route_point(self):
+        c = shipped(20)
+        reason = c.ns.QuestStartGapReason(97288)
+        self.assertIn('Unending Torment', reason)
+        self.assertIn('Abominable Head', reason)
+        self.assertIn('The Baron', reason)
+        self.assertIn('not mapped yet', reason)
+
     def test_all_classic_complexes_are_mapped_and_all_overview_dungeons_are_present(self):
         c = shipped()
         gs = groups(c)

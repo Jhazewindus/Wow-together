@@ -375,6 +375,7 @@ local function buildGuideRoute(guide, includeOrigin, cooperative)
     if guide.mode == "dungeon" and ns.BuildDungeonRoute then return ns.BuildDungeonRoute(guide, includeOrigin, cooperative) end
     if guide.mode == "circuit" and ns.BuildCircuitRoute then return ns.BuildCircuitRoute(guide, includeOrigin) end
     local blocks, missing, focusKey = {}, 0, guide.focusKey or ns.self
+    guide.pendingReason = nil
     local partial = false
     for _, record in ipairs(guide.records or {guide.target}) do
         local stages = {}
@@ -385,7 +386,10 @@ local function buildGuideRoute(guide, includeOrigin, cooperative)
             blocks[#blocks + 1] = stages
             local quest = ns.CatalogueQuest(record.id)
             if quest and quest.objectiveLocationsIncomplete then partial = true end
-        else missing = missing + 1 end
+        else
+            missing = missing + 1
+            guide.pendingReason = guide.pendingReason or ns.QuestStartGapReason(record.id)
+        end
     end
     local mapID = blocks[1] and blocks[1][1].mapID or 0
     local otherMaps = 0
@@ -423,7 +427,8 @@ local function buildGuideRoute(guide, includeOrigin, cooperative)
     end
     for _, task in ipairs(tasks) do remaining = remaining + math.max(0, #task.stages - task.next + 1) end
     return {key = guide.key, title = guide.title, mapID = mapID, stops = ordered, origin = start,
-        missing = missing, otherMaps = otherMaps, limited = remaining, focusKey = focusKey, partial = partial}
+        missing = missing, otherMaps = otherMaps, limited = remaining, focusKey = focusKey, partial = partial,
+        pendingReason = guide.pendingReason}
 end
 
 function ns.BuildGuideRoute(guide, includeOrigin, cooperative)
@@ -1011,6 +1016,7 @@ function ns.UpdateSelectedRoute(choices, query)
     ns.routeSelection, ns.selectedRoute, ns.routeSignature, ns.routePaused = guide, route, signature, nil
     ns.DrawRoute()
     ns.guideAction = #route.stops .. " route stop(s): " .. after.label .. "."
+    if route.pendingReason then ns.guideAction = ns.guideAction .. " " .. route.pendingReason end
     if ns.UpdateNPCHints then ns.UpdateNPCHints() end
 end
 

@@ -94,6 +94,21 @@ class RouteTests(unittest.TestCase):
         p.level, p.faction = 12, 'Alliance'
         self.assertFalse(c.ns.CatalogueAllowed(900, p, c.ns.self)[0])
 
+    def test_live_leveling_route_expands_a_known_prerequisite_before_the_selected_quest(self):
+        c = route_client()
+        catalogue(c, {900: quest('Goal', previousQuest=899), 899: quest('Prerequisite')})
+        records = c.lua.table_from([c.ns.CatalogueRecord(900)])
+        guide = c.lua.table_from({'key': 'synthetic', 'title': 'Synthetic route', 'records': records,
+                                  'mapID': 501, 'zone': 'Test Coast', 'focusKey': c.ns.self, 'fullGuide': True})
+
+        route = c.ns.BuildLevelingRoute(guide, False, False)
+        self.assertEqual({stop.id for stop in route.stops.values()}, {899})
+        self.assertIn('Finish Prerequisite first', guide.pendingReason)
+
+        c.lua.globals().finished[899] = True
+        route = c.ns.BuildLevelingRoute(guide, False, False)
+        self.assertEqual({stop.id for stop in route.stops.values()}, {900})
+
     def test_class_and_race_capabilities_and_secret_ids(self):
         c = route_client()
         c.lua.execute("function UnitClass() return 'Mage', 'MAGE', 8 end; function UnitRace() return 'Troll', 'Troll', 8 end")

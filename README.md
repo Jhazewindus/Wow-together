@@ -2,9 +2,14 @@
 
 A **WoW Forever companion** for the **World of Warcraft: Forever beta**, with
 leveling at its core and optional tools for travel, dungeon preparation and party
-progress. Version **0.8.79 — QUESTIE DUNGEON PREREQUISITES** targets interface
+progress. Version **0.8.80 — LIVE QUEST PREREQUISITE ROUTING** targets interface
 **16001**, uses Lua **5.1**, and reads capabilities rather than choosing a Classic
 implementation from `WOW_PROJECT_ID`.
+
+**0.8.80 routes through verified quest prerequisites across live leveling and
+dungeon preparation.** In-dungeon item-start quests no longer block the route to
+the instance entrance, and missing pickup guidance identifies the quest or item
+source when the captured facts support it. See CHANGELOG.md and TESTING.md.
 
 **0.8.79 refreshes QuestieDB facts and dungeon prerequisite links.** Dungeon
 preparation now follows verified prerequisite chains before eligible quest
